@@ -34,7 +34,7 @@ function c55415564.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c55415564.disfilter1(c,e,tp)
-	return c:IsSummonPlayer(1-tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and (not e or c:IsRelateToEffect(e))
+	return c:IsSummonPlayer(1-tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and (not e or c:IsRelateToChain(0))
 end
 function c55415564.discon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c55415564.disfilter1,1,nil,nil,tp)
@@ -45,7 +45,7 @@ function c55415564.distg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c55415564.disop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=eg:Filter(c55415564.disfilter1,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
@@ -82,7 +82,7 @@ function c55415564.distg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c55415564.disop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

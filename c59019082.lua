@@ -30,7 +30,7 @@ function c59019082.filter(c)
 end
 function c59019082.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if c:GetControler()~=tp or not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.DiscardDeck(tp,2,REASON_EFFECT)
 	local dg=Duel.GetOperatedGroup()
 	local d=dg:FilterCount(c59019082.filter,nil)

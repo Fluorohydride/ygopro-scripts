@@ -49,7 +49,7 @@ end
 function c70156997.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsAttribute(ATTRIBUTE_EARTH) then
+	if tc and tc:IsRelateToChain(0) and tc:IsAttribute(ATTRIBUTE_EARTH) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

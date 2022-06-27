@@ -74,7 +74,7 @@ function c76375976.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76375976.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.Destroy(c,REASON_EFFECT)
 	end
 end

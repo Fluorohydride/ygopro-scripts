@@ -75,7 +75,7 @@ end
 function c8836329.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	local rg=Group.FromCards(c,tc)
 	Duel.SendtoHand(rg,nil,REASON_EFFECT)
 end

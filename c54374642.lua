@@ -42,7 +42,7 @@ function c54374642.fselect(g,ft1,ft2,ect,ft,atk)
 end
 function c54374642.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() or not tc:IsAttackAbove(2300) then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() or not tc:IsAttackAbove(2300) then return end
 	local g=Duel.GetMatchingGroup(c54374642.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
 	if #g==0 then return end
 	local ft1=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)

@@ -81,7 +81,7 @@ function c90448279.ovtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90448279.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c90448279.ofilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e)
 		local tc=g:GetFirst()

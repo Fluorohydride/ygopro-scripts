@@ -27,7 +27,7 @@ function c29228350.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c29228350.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 then
 		local sg=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 		Duel.Destroy(sg,REASON_EFFECT)
 	end

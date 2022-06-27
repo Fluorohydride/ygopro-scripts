@@ -70,8 +70,8 @@ end
 function c53143898.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc1,tc2=Duel.GetFirstTarget()
 	if tc1~=e:GetLabelObject() then tc1,tc2=tc2,tc1 end
-	if tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)>0
-		and tc1:IsLocation(LOCATION_GRAVE) and tc2:IsRelateToEffect(e)
+	if tc1:IsRelateToChain(0) and Duel.SendtoGrave(tc1,REASON_EFFECT)>0
+		and tc1:IsLocation(LOCATION_GRAVE) and tc2:IsRelateToChain(0)
 		and aux.NecroValleyFilter()(tc2) then
 		Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)
 	end

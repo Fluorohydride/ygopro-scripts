@@ -98,7 +98,7 @@ function c37972500.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c37972500.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local scale=tc:GetCurrentScale()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c37972500.adfilter,tp,LOCATION_DECK,0,1,1,nil,scale)

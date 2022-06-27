@@ -32,10 +32,10 @@ end
 function c41493640.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFaceup() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFaceup() then return end
 	Duel.ConfirmCards(tp,tc)
 	if tc:IsType(TYPE_TRAP) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:IsFaceup() and c:IsRelateToChain(0) then
 			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+41493640,e,0,tp,tp,0)
 		end
 	end

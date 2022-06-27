@@ -69,7 +69,7 @@ function c47355498.conntp(e)
 	return not Duel.IsPlayerAffectedByEffect(1-e:GetHandler():GetControler(),EFFECT_NECRO_VALLEY_IM)
 end
 function c47355498.disfilter(c,re)
-	return c:IsHasEffect(EFFECT_NECRO_VALLEY) and c:IsRelateToEffect(re)
+	return c:IsHasEffect(EFFECT_NECRO_VALLEY) and c:IsRelateToChain(ev)
 end
 function c47355498.discheck(ev,category,re,im0,im1)
 	local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,category)

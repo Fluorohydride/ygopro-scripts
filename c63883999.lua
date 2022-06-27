@@ -49,7 +49,7 @@ function c63883999.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63883999.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local rg=Duel.SelectMatchingCard(tp,c63883999.rfilter,tp,LOCATION_MZONE,0,1,1,tc)
 		if rg:GetCount()>0 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)>0 then

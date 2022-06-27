@@ -44,7 +44,7 @@ function c83116692.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mc=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)
 	local sc=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_SPELL+TYPE_TRAP)
 	if mc>sc then
-		if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+		if c:IsRelateToChain(0) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
 			local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83116692.rmfilter),tp,0,LOCATION_GRAVE,nil)
 			if g:GetCount()>0 then
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
@@ -53,7 +53,7 @@ function c83116692.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
 			end
 		end
 	elseif mc<sc then
-		if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
+		if c:IsRelateToChain(0) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
 			local g=Duel.GetMatchingGroup(c83116692.tgfilter,tp,0,LOCATION_MZONE,nil)
 			if g:GetCount()>0 then
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
@@ -77,6 +77,6 @@ function c83116692.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83116692.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

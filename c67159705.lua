@@ -51,8 +51,8 @@ end
 function c67159705.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c67159705.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c67159705.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -68,7 +68,7 @@ function c67159705.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67159705.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c67159705.desfilter(c)
@@ -84,7 +84,7 @@ function c67159705.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67159705.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local ec=c:GetEquipTarget()
 	if ec:GetAttack()<1000 then return end
 	local e1=Effect.CreateEffect(c)
@@ -94,7 +94,7 @@ function c67159705.desop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	ec:RegisterEffect(e1)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not ec:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not ec:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

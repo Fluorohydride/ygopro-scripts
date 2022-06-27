@@ -32,7 +32,7 @@ function c77135531.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c77135531.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -58,7 +58,7 @@ function c77135531.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77135531.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
+	if tc and tc:IsRelateToChain(0) and tc:IsRace(RACE_DRAGON) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

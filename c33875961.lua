@@ -33,7 +33,7 @@ function c33875961.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x28)
 end
 function c33875961.addc(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		e:GetHandler():AddCounter(0x28,1)
 	end
 end
@@ -57,7 +57,7 @@ function c33875961.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33875961.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if g:FilterCount(Card.IsRelateToEffect,nil,e)==g:GetCount() then
+	if g:FilterCount(Card.IsRelateToChain,nil,0)==g:GetCount() then
 		Duel.Destroy(g,REASON_EFFECT)
 	end
 	local ct=e:GetHandler():GetCounter(0x28)

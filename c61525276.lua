@@ -57,7 +57,7 @@ end
 function c61525276.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local atk=tc:GetAttack()
 		local g=Duel.GetMatchingGroup(c61525276.disfilter,tp,0,LOCATION_MZONE,nil,atk)
 		local tc=g:GetFirst()

@@ -47,7 +47,7 @@ end
 function c39987164.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsAttackPos() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and tc:IsAttackPos() and tc:IsRelateToChain(0) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
 		tc:RegisterFlagEffect(39987164,RESET_EVENT+RESETS_STANDARD,0,0)

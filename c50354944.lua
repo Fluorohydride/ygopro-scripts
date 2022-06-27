@@ -49,7 +49,7 @@ function c50354944.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50354944.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c50354944.condition(e,c)
@@ -70,7 +70,7 @@ function c50354944.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50354944.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

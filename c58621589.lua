@@ -34,7 +34,7 @@ function c58621589.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,eg,eg:GetCount(),0,0)
 end
 function c58621589.filter3(c,e)
-	return c:IsFacedown() and c:IsRelateToEffect(e)
+	return c:IsFacedown() and c:IsRelateToChain(0)
 end
 function c58621589.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c58621589.filter3,nil,e,tp)

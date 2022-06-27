@@ -65,7 +65,7 @@ function c33773528.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33773528.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SSet(tp,tc)
 	end
 end

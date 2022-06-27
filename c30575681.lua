@@ -61,7 +61,7 @@ function c30575681.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==ec then tc=g:GetNext() end
-	if ec:IsFaceup() and ec:IsRelateToEffect(e) and ec:CheckEquipTarget(tc) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ec:IsFaceup() and ec:IsRelateToChain(0) and ec:CheckEquipTarget(tc) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Equip(tp,ec,tc)
 	end
 end

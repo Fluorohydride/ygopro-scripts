@@ -29,7 +29,7 @@ function c3648368.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c3648368.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c3648368.filter(tc) then
+	if tc:IsRelateToChain(0) and c3648368.filter(tc) then
 		Duel.ChangePosition(tc,0,0,0,POS_FACEUP_ATTACK,true)
 	end
 end

@@ -46,7 +46,7 @@ function c75180828.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75180828.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 end
 function c75180828.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -67,7 +67,7 @@ function c75180828.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75180828.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -75,7 +75,7 @@ function c75180828.desop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(g,REASON_EFFECT)
 end
 function c75180828.atkcon(e,tp,eg,ep,ev,re,r,rp)
@@ -94,7 +94,7 @@ function c75180828.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75180828.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		--destroy
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(75180828,3))

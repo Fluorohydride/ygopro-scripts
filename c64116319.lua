@@ -59,8 +59,8 @@ function c64116319.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64116319.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if not c:IsRelateToChain(0) then return end
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
 		if #g>0 and Duel.IsExistingMatchingCard(c64116319.cfilter2,tp,LOCATION_ONFIELD,0,1,c)
 			and Duel.SelectYesNo(tp,aux.Stringid(64116319,1)) then

@@ -37,7 +37,7 @@ end
 function c32472237.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cg=c:GetColumnGroup():Filter(Card.IsControler,nil,1-tp)
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)>0 and cg:GetCount()>0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)>0 and cg:GetCount()>0 then
 		Duel.BreakEffect()
 		Duel.Destroy(cg,REASON_EFFECT)
 	end

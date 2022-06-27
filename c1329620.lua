@@ -35,14 +35,14 @@ end
 function c1329620.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c1329620.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,eg,1,0,0)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)
 end
 function c1329620.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
-	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and ec:IsRelateToChain(ev) then
 		ec:CancelToGrave()
 		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
@@ -69,7 +69,7 @@ function c1329620.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1329620.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

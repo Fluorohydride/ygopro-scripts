@@ -40,7 +40,7 @@ function c98700941.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c98700941.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c98700941.thcon(e,tp,eg,ep,ev,re,r,rp)
@@ -58,7 +58,7 @@ function c98700941.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c98700941.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

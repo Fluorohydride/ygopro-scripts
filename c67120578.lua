@@ -61,7 +61,7 @@ function c67120578.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67120578.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=tg:Filter(Card.IsRelateToChain,nil,0)
 	local ct=g:GetCount()
 	if ct>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133)) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

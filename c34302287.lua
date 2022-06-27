@@ -47,7 +47,7 @@ function c34302287.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c34302287.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -69,7 +69,7 @@ function c34302287.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c34302287.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c34302287.eqfilter,tp,LOCATION_SZONE,0,nil,tc)
 	local eq=g:GetFirst()
 	while eq do

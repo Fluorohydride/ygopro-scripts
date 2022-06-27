@@ -32,7 +32,7 @@ function c63708033.sfilter(c)
 end
 function c63708033.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	local ct=g:GetCount()
 	local g2=Duel.GetMatchingGroup(c63708033.sfilter,tp,LOCATION_MZONE,0,nil)
 	if g2:GetCount()<ct then return end

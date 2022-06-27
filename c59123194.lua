@@ -44,7 +44,7 @@ function c59123194.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59123194.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -59,7 +59,7 @@ function c59123194.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c59123194.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 		local dam=tc:GetTextAttack()
 		if dam<0 then dam=0 end

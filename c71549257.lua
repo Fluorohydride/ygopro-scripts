@@ -39,7 +39,7 @@ function c71549257.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71549257.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -57,8 +57,8 @@ end
 function c71549257.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e)
-		and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsLevel(c:GetLevel()) then
+	if c:IsFaceup() and c:IsRelateToChain(0)
+		and tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsLevel(c:GetLevel()) then
 		local g=Group.FromCards(c,tc)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(71549257,2))
 		local sg=g:Select(tp,1,1,nil)

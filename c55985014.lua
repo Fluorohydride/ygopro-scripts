@@ -22,7 +22,7 @@ end
 function c55985014.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local val=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,32679370)*400
-	if val>0 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if val>0 and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

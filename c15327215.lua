@@ -38,7 +38,7 @@ function c15327215.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15327215.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -56,7 +56,7 @@ end
 function c15327215.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local lv=tc:GetLevel()
 		local att=tc:GetAttribute()
 		local atk=tc:GetAttack()

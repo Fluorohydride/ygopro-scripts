@@ -58,7 +58,7 @@ function c5861892.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5861892.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local res=0
 	if c:IsHasEffect(73206827) then
 		res=1-Duel.SelectOption(tp,60,61)
@@ -107,7 +107,7 @@ function c5861892.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c5861892.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end
@@ -126,17 +126,17 @@ function c5861892.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		c:RegisterFlagEffect(5861892,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) and re:GetHandler():IsDestructable() then
+	if re:GetHandler():IsRelateToChain(ev) and re:GetHandler():IsDestructable() then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
 function c5861892.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or c:GetAttack()<1000 or not c:IsRelateToEffect(e) or Duel.GetCurrentChain()~=ev+1 then
+	if not c:IsFaceup() or c:GetAttack()<1000 or not c:IsRelateToChain(0) or Duel.GetCurrentChain()~=ev+1 then
 		return
 	end
 	if Duel.NegateActivation(ev) then
-		if re:GetHandler():IsRelateToEffect(re) then
+		if re:GetHandler():IsRelateToChain(ev) then
 			Duel.Destroy(re:GetHandler(),REASON_EFFECT)
 		end
 		local e1=Effect.CreateEffect(c)

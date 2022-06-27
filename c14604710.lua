@@ -62,7 +62,7 @@ function c14604710.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetMatchingGroup(c14604710.spfilter2,tp,LOCATION_DECK,0,nil,e,tp,tc)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and ft>1 and g:GetClassCount(Card.GetCode)>1 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		and ft>1 and g:GetClassCount(Card.GetCode)>1 and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)

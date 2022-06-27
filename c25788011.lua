@@ -22,7 +22,7 @@ end
 function c25788011.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local lv=Duel.SelectOption(tp,aux.Stringid(25788011,1),aux.Stringid(25788011,2),aux.Stringid(25788011,3))
 		local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

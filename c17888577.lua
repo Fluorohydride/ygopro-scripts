@@ -86,7 +86,7 @@ function c17888577.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17888577.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local att=tc:GetAttribute()
 		local race=tc:GetRace()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

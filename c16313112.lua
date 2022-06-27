@@ -61,7 +61,7 @@ function c16313112.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16313112.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(16313112,2))
 		e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)

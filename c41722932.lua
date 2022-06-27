@@ -29,7 +29,7 @@ function c41722932.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c41722932.activate(e)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

@@ -22,7 +22,7 @@ end
 function c74416026.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
@@ -36,8 +36,8 @@ function c74416026.spfilter(c,e,tp,tc)
 end
 function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):Filter(c74416026.filter,nil,tp)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
-		local tg=g:Filter(Card.IsRelateToEffect,nil,re)
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
+		local tg=g:Filter(Card.IsRelateToChain,nil,ev)
 		if tg:IsExists(c74416026.tgfilter,1,nil,e,tp) and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL)
 			and Duel.SelectYesNo(tp,aux.Stringid(74416026,0)) then
 			Duel.BreakEffect()

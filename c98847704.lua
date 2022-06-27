@@ -29,7 +29,7 @@ function c98847704.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c98847704.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		local dg=Duel.GetMatchingGroup(c98847704.filter2,tp,0,LOCATION_SZONE,nil)
 		dg:AddCard(tc)
 		Duel.Destroy(dg,REASON_EFFECT)

@@ -20,7 +20,7 @@ function c46656406.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c46656406.filter2(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsSummonPlayer(1-tp) and c:IsPreviousLocation(LOCATION_DECK)
+	return c:IsRelateToChain(0) and c:IsSummonPlayer(1-tp) and c:IsPreviousLocation(LOCATION_DECK)
 end
 function c46656406.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c46656406.filter2,nil,e,tp)

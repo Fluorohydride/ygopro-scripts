@@ -49,7 +49,7 @@ function c35842855.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35842855.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)==1 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)==1 then
 		local atk=math.floor(tc:GetTextAttack()/2)
 		if atk>0 then
 			Duel.Damage(tp,atk,REASON_EFFECT,true)

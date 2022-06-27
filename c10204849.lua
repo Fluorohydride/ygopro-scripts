@@ -43,7 +43,7 @@ end
 function c10204849.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -111,7 +111,7 @@ function c10204849.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c10204849.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c10204849.eqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()

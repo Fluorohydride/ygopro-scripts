@@ -67,7 +67,7 @@ function c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c78765160.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not e:GetHandler():IsRelateToEffect(e) or not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=2 then return end
+	if not e:GetHandler():IsRelateToChain(0) or not tg or tg:FilterCount(Card.IsRelateToChain,nil,0)~=2 then return end
 	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end

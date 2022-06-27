@@ -87,7 +87,7 @@ end
 function c24070330.pdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	local g=Group.FromCards(c,tc):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Group.FromCards(c,tc):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()==2 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end
@@ -117,7 +117,7 @@ function c24070330.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24070330.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

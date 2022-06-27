@@ -83,7 +83,7 @@ end
 function c2250266.opd2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackPos()
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsAttackPos()
 		and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)~=0 and c:IsRelateToBattle() then
 		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_ATTACK,0,POS_FACEUP_ATTACK,0)
 	end

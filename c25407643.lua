@@ -52,7 +52,7 @@ function c25407643.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local c=e:GetHandler()
 	while tc do
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_ATTACK)

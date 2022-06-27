@@ -37,7 +37,7 @@ function c63364266.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63364266.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local atk=tc:GetAttack()
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(e:GetHandler())

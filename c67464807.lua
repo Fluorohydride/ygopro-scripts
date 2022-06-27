@@ -25,7 +25,7 @@ function c67464807.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67464807.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local lv=tc:GetLevel()
 		if lv>1 then
 			local e1=Effect.CreateEffect(e:GetHandler())

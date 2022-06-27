@@ -35,7 +35,7 @@ function c56827051.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56827051.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local ct=e:GetLabel()
 	local sel=nil
 	if c:IsLevel(1) then

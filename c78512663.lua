@@ -43,7 +43,7 @@ function c78512663.atkval(e,c)
 end
 function c78512663.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c78512663.thcon(e,tp,eg,ep,ev,re,r,rp)

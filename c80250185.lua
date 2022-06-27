@@ -35,7 +35,7 @@ function c80250185.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
 end
 function c80250185.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)>0 then
+	if e:GetHandler():IsRelateToChain(0) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
 		if g:GetCount()==0 then return end
 		Duel.BreakEffect()

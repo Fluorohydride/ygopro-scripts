@@ -61,7 +61,7 @@ function c27769400.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27769400.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 end
 function c27769400.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -76,7 +76,7 @@ function c27769400.desop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	local g=Duel.GetMatchingGroup(c27769400.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,rc)
 	Duel.Destroy(g,REASON_EFFECT)
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:SetHint(CHINT_ATTRIBUTE,rc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)

@@ -54,8 +54,8 @@ end
 function c49370016.drcon(e,tp,eg,ep,ev,re,r,rp)
 	if not (tp==ep and re and re:IsActivated() and re:GetActivateLocation()==LOCATION_MZONE) then return false end
 	local rc=re:GetHandler()
-	return rc:IsRelateToEffect(re) and rc:IsRace(RACE_PSYCHO)
-		or not rc:IsRelateToEffect(re) and rc:GetPreviousRaceOnField()&RACE_PSYCHO~=0
+	return rc:IsRelateToChain(ev) and rc:IsRace(RACE_PSYCHO)
+		or not rc:IsRelateToChain(ev) and rc:GetPreviousRaceOnField()&RACE_PSYCHO~=0
 end
 function c49370016.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

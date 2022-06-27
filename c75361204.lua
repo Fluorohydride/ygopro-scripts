@@ -49,9 +49,9 @@ end
 function c75361204.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Equip(tp,c,tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)
@@ -109,7 +109,7 @@ function c75361204.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75361204.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject()
-	if ec:IsRelateToEffect(e) and ec:IsFaceup() and Duel.Destroy(ec,REASON_EFFECT)~=0
+	if ec:IsRelateToChain(0) and ec:IsFaceup() and Duel.Destroy(ec,REASON_EFFECT)~=0
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 then
 		local fid=e:GetHandler():GetFieldID()

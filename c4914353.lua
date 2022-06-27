@@ -53,7 +53,7 @@ function c4914353.spop(e,tp,eg,ep,ev,re,r,rp)
 	for tc in aux.Next(lg) do
 		zone=bit.bor(zone,tc:GetLinkedZone())
 	end
-	if c:IsRelateToEffect(e) and zone~=0 and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP,zone) then
+	if c:IsRelateToChain(0) and zone~=0 and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP,zone) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

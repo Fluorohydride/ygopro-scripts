@@ -58,7 +58,7 @@ end
 function c39317553.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetMZoneCount(tp)<1 then return end
 	local c=Duel.GetFirstTarget()
-	if c and c:IsRelateToEffect(e) then
+	if c and c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

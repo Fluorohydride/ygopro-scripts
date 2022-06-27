@@ -53,7 +53,7 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>Duel.GetLocationCount(tp,LOCATION_MZONE) then return end
 	local tc=g:GetFirst()
 	while tc do
-		if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
+		if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToChain(0) then
 			c:SetCardTarget(tc)
 		end
 		tc=g:GetNext()

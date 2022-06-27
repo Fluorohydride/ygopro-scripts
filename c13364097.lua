@@ -53,7 +53,7 @@ function c13364097.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	if sg then
 		if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA)
-			and tc:IsRelateToEffect(e) then
+			and tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end
@@ -72,7 +72,7 @@ function c13364097.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13364097.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local sel=0
 		local lvl=3
 		if tc:IsLevelBelow(3) or tc:IsRankBelow(3) then

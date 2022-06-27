@@ -42,7 +42,7 @@ end
 function c57605303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c57605303.atkfilter,tp,LOCATION_GRAVE,0,nil,tc:GetLevel())
 		local ct=g:GetClassCount(Card.GetCode)
 		if ct>0 then
@@ -87,7 +87,7 @@ function c57605303.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57605303.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

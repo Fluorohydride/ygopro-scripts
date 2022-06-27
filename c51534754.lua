@@ -23,7 +23,7 @@ function c51534754.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51534754.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.GetFirstTarget()
-	if rc:IsRelateToEffect(e) then
+	if rc:IsRelateToChain(0) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

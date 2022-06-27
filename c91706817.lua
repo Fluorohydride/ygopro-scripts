@@ -45,7 +45,7 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local p=tc:GetControler()
 		local dam=Duel.GetFieldGroupCount(p,0,LOCATION_HAND)*200
 		if dam==0 or Duel.Damage(1-p,dam,REASON_EFFECT)==0 then return end

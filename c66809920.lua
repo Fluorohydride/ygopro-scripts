@@ -40,7 +40,7 @@ function c66809920.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66809920.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -61,7 +61,7 @@ function c66809920.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=Duel.SelectMatchingCard(tp,c66809920.rmfilter,tp,0,LOCATION_GRAVE,1,1,nil):GetFirst()
 	if rc then
-		if Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+		if Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToChain(0) and c:IsFaceup() then
 			Duel.BreakEffect()
 			local atk=rc:GetBaseAttack()
 			local e1=Effect.CreateEffect(c)

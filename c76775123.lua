@@ -24,9 +24,9 @@ function c76775123.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c76775123.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 	end
 end

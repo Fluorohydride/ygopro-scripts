@@ -39,7 +39,7 @@ function c66970385.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local ec=tg:GetFirst()
 	if ec==tc then ec=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and ec:IsRelateToEffect(e) and ec:CheckUniqueOnField(tp) and ec:CheckEquipTarget(tc)
+	if tc:IsRelateToChain(0) and ec:IsRelateToChain(0) and ec:CheckUniqueOnField(tp) and ec:CheckEquipTarget(tc)
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Equip(tp,ec,tc)
 	end

@@ -23,7 +23,7 @@ function c79418153.piercetg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79418153.pierceop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
-	if a:IsRelateToEffect(e) and a:IsFaceup() then
+	if a:IsRelateToChain(0) and a:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)

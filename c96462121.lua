@@ -48,7 +48,7 @@ function c96462121.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c96462121.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and tc:IsFaceup()
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) and tc:IsFaceup()
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c96462121.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetRank()+2,tc)

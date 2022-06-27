@@ -48,7 +48,7 @@ function c84121193.spfilter(c,e,tp)
 	return ok
 end
 function c84121193.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
+	if chk==0 then return e:GetHandler():IsRelateToChain(0)
 		and Duel.IsExistingMatchingCard(c84121193.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
@@ -105,7 +105,7 @@ function c84121193.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84121193.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

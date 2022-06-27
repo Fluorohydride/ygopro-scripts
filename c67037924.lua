@@ -38,7 +38,7 @@ end
 function c67037924.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetAttack()>0 then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -68,7 +68,7 @@ function c67037924.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67037924.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SSet(tp,c)
 	end
 end

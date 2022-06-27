@@ -50,7 +50,7 @@ end
 function c26640671.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	c:SetCardTarget(tc)
 end
 function c26640671.regop(e,tp,eg,ep,ev,re,r,rp)

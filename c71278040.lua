@@ -78,7 +78,7 @@ function c71278040.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local zone=tc:GetLinkedZone(tp)
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and zone&0x1f~=0 then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and zone&0x1f~=0 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

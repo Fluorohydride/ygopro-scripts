@@ -50,7 +50,7 @@ end
 function c7142724.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
+	if not (tc:IsRelateToChain(0) and tc:IsFaceup()) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	g:AddCard(tc)
 	local tc1=g:GetFirst()

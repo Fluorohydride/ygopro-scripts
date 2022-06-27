@@ -49,7 +49,7 @@ function c65612454.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65612454.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
@@ -68,7 +68,7 @@ function c65612454.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65612454.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c65612454.filter(tc) then
+	if tc:IsRelateToChain(0) and c65612454.filter(tc) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

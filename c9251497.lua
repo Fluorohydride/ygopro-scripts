@@ -29,7 +29,7 @@ function c9251497.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,1)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetDecktopGroup(tp,1)
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if g:GetFirst():GetAttribute()&tc:GetAttribute()~=0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)

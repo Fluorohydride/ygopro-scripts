@@ -37,7 +37,7 @@ function c97697678.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c97697678.operation(e,tp,eg,ep,ev,re,r,rp)
 	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown()then return end
+	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToChain(0) or e:GetHandler():IsFacedown()then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c97697678.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

@@ -24,7 +24,7 @@ function c14430063.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14430063.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToEffect(e) then
+	if c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToChain(0) then
 		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 		Duel.Damage(p,d,REASON_EFFECT)
 	end

@@ -11,7 +11,7 @@ function c47247413.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c47247413.filter(c,e,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsControler(tp) and (not e or c:IsRelateToEffect(e))
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsControler(tp) and (not e or c:IsRelateToChain(0))
 end
 function c47247413.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47247413.filter,1,nil,nil,1-tp)

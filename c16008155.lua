@@ -52,7 +52,7 @@ function c16008155.desop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c16008155.desop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re==e:GetLabelObject():GetLabelObject() and c:IsRelateToEffect(re) then
+	if re==e:GetLabelObject():GetLabelObject() and c:IsRelateToChain(ev) then
 		if Duel.GetCurrentPhase()==PHASE_DAMAGE and not Duel.IsDamageCalculated() then
 			e:GetLabelObject():SetLabel(1)
 		else

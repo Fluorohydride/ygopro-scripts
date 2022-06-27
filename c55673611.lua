@@ -27,7 +27,7 @@ function c55673611.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c55673611.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)==2 then
 		Duel.Draw(tp,2,REASON_EFFECT)
 	end

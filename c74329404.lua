@@ -47,7 +47,7 @@ function c74329404.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c74329404.filter1(c,e,tp)
-	return c:IsFaceup() and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and (not e or c:IsRelateToChain(0))
 		and Duel.IsExistingMatchingCard(c74329404.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c:GetCode())
 end
 function c74329404.filter2(c,code)

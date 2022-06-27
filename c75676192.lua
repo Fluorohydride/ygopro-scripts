@@ -53,7 +53,7 @@ function c75676192.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75676192.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e4=Effect.CreateEffect(c)
 		e4:SetType(EFFECT_TYPE_SINGLE)
 		e4:SetCode(EFFECT_UPDATE_LEVEL)
@@ -83,7 +83,7 @@ function c75676192.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75676192.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

@@ -45,7 +45,7 @@ function c77406972.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c77406972.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c77406972.rmfilter,tp,0,LOCATION_MZONE,1,1,nil,c:GetAttack())
 	if g:GetCount()>0 then

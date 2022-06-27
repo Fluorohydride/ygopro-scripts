@@ -38,7 +38,7 @@ function c79068663.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c79068663.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
@@ -56,7 +56,7 @@ end
 function c79068663.damop(e,tp,eg,ep,ev,re,r,rp)
 	local des=eg:GetFirst()
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	if des:IsRelateToEffect(e) then
+	if des:IsRelateToChain(0) then
 		local dam=math.floor(des:GetAttack()/2)
 		if dam<0 then dam=0 end
 		Duel.Damage(p,dam,REASON_EFFECT)

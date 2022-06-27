@@ -38,7 +38,7 @@ function c92133240.ssop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectMatchingCard(tp,c92133240.ssfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SSet(tp,tc)~=0 and Duel.GetLP(tp)<=2000 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if tc and Duel.SSet(tp,tc)~=0 and Duel.GetLP(tp)<=2000 and c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.BreakEffect()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

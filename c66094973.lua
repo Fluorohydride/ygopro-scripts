@@ -58,7 +58,7 @@ function c66094973.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroup(tp,LOCATION_HAND,0)==0 then return end
 	Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end
@@ -108,7 +108,7 @@ function c66094973.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c66094973.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummon(tp) then
+	if tc:IsRelateToChain(0) and Duel.IsPlayerCanSpecialSummon(tp) then
 		if Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)==0 then
 			Duel.SendtoGrave(tc,REASON_EFFECT)
 		end

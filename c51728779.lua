@@ -50,7 +50,7 @@ function c51728779.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c51728779.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -83,7 +83,7 @@ end
 function c51728779.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	if not te then return end
-	if not te:GetHandler():IsRelateToEffect(e) then return end
+	if not te:GetHandler():IsRelateToChain(0) then return end
 	e:SetLabelObject(te:GetLabelObject())
 	local op=te:GetOperation()
 	if op then op(e,tp,eg,ep,ev,re,r,rp) end

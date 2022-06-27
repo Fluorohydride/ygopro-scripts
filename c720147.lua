@@ -54,9 +54,9 @@ function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c720147.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		local rg=e:GetLabelObject()
-		local exg=rg:Filter(Card.IsRelateToEffect,nil,e)
+		local exg=rg:Filter(Card.IsRelateToChain,nil,0)
 		exg:AddCard(tc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c720147.matfilter2),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,rg:GetCount(),rg:GetCount(),exg)

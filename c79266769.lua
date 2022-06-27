@@ -35,7 +35,7 @@ function c79266769.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local zone=bit.band(c:GetLinkedZone(tp),0x1f)
-	if tc and tc:IsRelateToEffect(e) and zone~=0
+	if tc and tc:IsRelateToChain(0) and zone~=0
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE,zone) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

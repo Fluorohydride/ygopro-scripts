@@ -41,7 +41,7 @@ function c42256406.potg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42256406.poop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
@@ -55,7 +55,7 @@ function c42256406.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42256406.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if c:IsRelateToChain(0) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(c)
 	end
 end
@@ -79,7 +79,7 @@ function c42256406.defcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42256406.defop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local ct=e:GetLabel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

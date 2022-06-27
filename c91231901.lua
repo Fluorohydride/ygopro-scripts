@@ -41,7 +41,7 @@ function c91231901.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:GetFirst()
 		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 and sg:IsLocation(LOCATION_GRAVE) then
 			local tc=Duel.GetFirstTarget()
-			if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+			if tc:IsFaceup() and tc:IsRelateToChain(0) then
 				tc:AddCounter(0x100e,sg:GetLevel())
 			end
 		end

@@ -68,7 +68,7 @@ function c64184058.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64184058.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
+	if c:IsRelateToChain(0) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
 		and Duel.GetCurrentChain()==ev+1 then
 		local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 		local e1=Effect.CreateEffect(c)

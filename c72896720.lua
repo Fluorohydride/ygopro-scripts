@@ -42,7 +42,7 @@ function c72896720.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c72896720.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local atk=0
 		if tc:IsFaceup() then atk=tc:GetAttack() end
 		if Duel.Destroy(tc,REASON_EFFECT)==0 then return end

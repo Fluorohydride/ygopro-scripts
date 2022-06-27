@@ -60,7 +60,7 @@ function c58383100.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		local ec=Duel.GetFirstTarget()
-		if ec:IsRelateToEffect(e) then
+		if ec:IsRelateToChain(0) then
 			Duel.SpecialSummon(ec,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

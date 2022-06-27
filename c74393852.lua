@@ -68,7 +68,7 @@ function c74393852.operation(e,tp,eg,ep,ev,re,r,rp)
 	if og:GetCount()>0 then
 		Duel.BreakEffect()
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) and c:IsFaceup() then
+		if c:IsRelateToChain(0) and c:IsFaceup() then
 			Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 		end
 	end

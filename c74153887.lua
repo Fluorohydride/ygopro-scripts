@@ -45,7 +45,7 @@ end
 function c74153887.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 	else

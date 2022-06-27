@@ -51,13 +51,13 @@ function c12079734.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if e:GetLabel()==0 then
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e)
+		if c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0)
 			and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 			and aux.CheckUnionEquip(tc,c) and Duel.Equip(tp,tc,c,false) then
 			aux.SetUnionState(tc)
 		end
 	else
-		if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if tc:IsRelateToChain(0) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			if tc:IsLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)

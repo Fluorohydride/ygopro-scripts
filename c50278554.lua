@@ -40,8 +40,8 @@ end
 function c50278554.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
-	if g1:GetFirst():IsRelateToEffect(e) and Duel.Destroy(g1,REASON_EFFECT)~=0 then
-		local hg=g2:Filter(Card.IsRelateToEffect,nil,e)
+	if g1:GetFirst():IsRelateToChain(0) and Duel.Destroy(g1,REASON_EFFECT)~=0 then
+		local hg=g2:Filter(Card.IsRelateToChain,nil,0)
 		Duel.SendtoHand(hg,nil,REASON_EFFECT)
 	end
 end
@@ -61,7 +61,7 @@ function c50278554.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50278554.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

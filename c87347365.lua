@@ -41,11 +41,11 @@ end
 function c87347365.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==1 then
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
 		end
 	elseif e:GetLabel()==2 then
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SendtoHand(c,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,c)
 		end

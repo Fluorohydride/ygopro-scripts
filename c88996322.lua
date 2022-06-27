@@ -47,7 +47,7 @@ function c88996322.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88996322.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
 	c:RegisterFlagEffect(c:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 end

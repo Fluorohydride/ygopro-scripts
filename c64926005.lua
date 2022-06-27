@@ -22,7 +22,7 @@ function c64926005.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64926005.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)~=0 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end

@@ -42,7 +42,7 @@ function c64689404.ractg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(rc)
 end
 function c64689404.racop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and e:GetHandler():IsFaceup() then
 		local prc=e:GetLabelObject():GetLabel()
 		local rc=bit.bor(e:GetLabel(),prc)
 		e:GetLabelObject():SetLabel(rc)

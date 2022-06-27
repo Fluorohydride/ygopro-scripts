@@ -51,7 +51,7 @@ function c1833916.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c1833916.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		if g:GetCount()>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-			if c:IsRelateToEffect(e) then
+			if c:IsRelateToChain(0) then
 				Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 			end
 		end
@@ -78,7 +78,7 @@ function c1833916.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1833916.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
 end

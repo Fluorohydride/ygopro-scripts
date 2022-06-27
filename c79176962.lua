@@ -40,7 +40,7 @@ end
 function c79176962.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cg=c:GetColumnGroup()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c79176962.thfilter,tp,0,LOCATION_ONFIELD,nil,cg)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)

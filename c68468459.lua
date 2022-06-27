@@ -62,7 +62,7 @@ function c68468459.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			end
 		end
 		aux.FCheckAdditional=nil
-		return res and c:IsRelateToEffect(e)
+		return res and c:IsRelateToChain(0)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
@@ -70,7 +70,7 @@ function c68468459.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
 	if Duel.GetCurrentPhase()&(PHASE_DAMAGE+PHASE_DAMAGE_CAL)~=0 then return end
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToChain(0) or c:IsImmuneToEffect(e) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil):Filter(c68468459.filter1,nil,e)
 	local mg2=Duel.GetMatchingGroup(c68468459.filter0,tp,0,LOCATION_MZONE,nil):Filter(c68468459.filter1,nil,e)
 	if mg2:GetCount()>0 then

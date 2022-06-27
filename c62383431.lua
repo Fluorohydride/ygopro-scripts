@@ -40,7 +40,7 @@ function c62383431.spfilter(c,e,tp)
 end
 function c62383431.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c62383431.spfilter),tp,0,LOCATION_GRAVE,1,nil,e,tp)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(62383431,2)) then
@@ -76,7 +76,7 @@ function c62383431.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62383431.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)

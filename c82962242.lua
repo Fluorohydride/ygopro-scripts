@@ -63,7 +63,7 @@ function c82962242.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not tc:IsType(TYPE_MONSTER) then return end
+	if not tc:IsRelateToChain(0) or not tc:IsType(TYPE_MONSTER) then return end
 	local atk=tc:GetTextAttack()
 	if tc:IsFacedown() or atk<0 then atk=0 end
 	if not Duel.Equip(tp,tc,c) then return end
@@ -104,7 +104,7 @@ function c82962242.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c82962242.spop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
 	end
 end

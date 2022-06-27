@@ -107,7 +107,7 @@ function c82791472.ctltg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82791472.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.GetControl(c,1-tp)
 	end
 end

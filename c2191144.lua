@@ -24,7 +24,7 @@ function c2191144.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2191144.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local ct=Duel.GetOverlayCount(tp,1,1)
 		if ct>0 then
 			local e1=Effect.CreateEffect(c)

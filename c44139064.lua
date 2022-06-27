@@ -63,7 +63,7 @@ function c44139064.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c44139064.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c44139064.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then

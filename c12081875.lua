@@ -50,7 +50,7 @@ function c12081875.efftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c12081875.effop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local te=tc.discard_effect
 		local op=te:GetOperation()
 		if op then op(e,tp,eg,ep,ev,re,r,rp) end

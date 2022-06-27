@@ -57,7 +57,7 @@ end
 function c21454943.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if not tc or not tc:IsRelateToEffect(e) or not tc:IsControler(1-tp) then return end
+	if not tc or not tc:IsRelateToChain(0) or not tc:IsControler(1-tp) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

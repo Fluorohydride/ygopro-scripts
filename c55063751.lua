@@ -64,7 +64,7 @@ function c55063751.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,1,0x37,2,REASON_COST)
 end
 function c55063751.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 	end
 end

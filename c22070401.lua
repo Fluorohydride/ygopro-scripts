@@ -65,7 +65,7 @@ function c22070401.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c22070401.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c22070401.ctfilter,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
@@ -119,7 +119,7 @@ function c22070401.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c22070401.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

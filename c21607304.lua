@@ -46,7 +46,7 @@ function c21607304.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tct=1
 	if Duel.GetTurnPlayer()~=tp then tct=2
 	elseif Duel.GetCurrentPhase()==PHASE_END then tct=3 end
-	if tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if tc:IsFacedown() and tc:IsRelateToChain(0) then
 		Duel.GetControl(tc,tp,PHASE_END,tct)
 	end
 end
@@ -65,7 +65,7 @@ function c21607304.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21607304.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c21607304.postg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -76,7 +76,7 @@ function c21607304.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21607304.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

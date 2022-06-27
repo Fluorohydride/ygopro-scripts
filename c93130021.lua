@@ -53,7 +53,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==1 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		if tc:IsFaceup() and tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	elseif e:GetLabel()==2 then
@@ -62,7 +62,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		local lv=c:GetLevel()
 		local race=c:GetRace()
 		local att=c:GetAttribute()
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c:IsRelateToEffect(e) or c:IsFacedown()
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c:IsRelateToChain(0) or c:IsFacedown()
 			or not Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,atk,def,lv,race,att) then return end
 		local token=Duel.CreateToken(tp,93130022)
 		c:CreateRelation(token,RESET_EVENT+RESETS_STANDARD)
@@ -107,7 +107,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		token:RegisterEffect(e6,true)
 		Duel.SpecialSummonComplete()
 	else
-		if c:IsRelateToEffect(e) and c:IsFaceup() then
+		if c:IsRelateToChain(0) and c:IsFaceup() then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)

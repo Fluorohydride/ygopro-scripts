@@ -45,7 +45,7 @@ end
 function c10131855.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
 		local g=Group.CreateGroup()
 		Duel.ChangeTargetCard(ev,g)
 		Duel.ChangeChainOperation(ev,c10131855.repop)

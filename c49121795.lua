@@ -54,7 +54,7 @@ function c49121795.daop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetLabel(tc:GetFieldID())
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

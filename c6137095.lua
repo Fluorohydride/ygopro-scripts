@@ -25,13 +25,13 @@ function c6137095.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		else return true end
 	end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) and re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
+	if re:GetHandler():IsRelateToChain(ev) and re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,eg,1,0,0)
 	end
 end
 function c6137095.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and rc:IsRelateToChain(ev) then
 		if rc:IsStatus(STATUS_ACT_FROM_HAND) then
 			rc:CancelToGrave()
 			Duel.SendtoHand(rc,nil,REASON_EFFECT)

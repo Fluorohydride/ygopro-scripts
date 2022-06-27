@@ -32,7 +32,7 @@ function c27104921.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27104921.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:AddCounter(0x61,1)
 		local ct=c:GetCounter(0x61)
 		if ct==1 and Duel.SelectYesNo(tp,aux.Stringid(27104921,0)) then

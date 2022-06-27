@@ -54,8 +54,8 @@ end
 function c67680512.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp)
-		and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and c:IsControler(tp)
+		and tc:IsFaceup() and tc:IsRelateToChain(0) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e) then
 		local mg=Group.FromCards(c,tc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c67680512.lfilter,tp,LOCATION_EXTRA,0,1,1,nil,mg)
@@ -80,7 +80,7 @@ function c67680512.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67680512.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

@@ -53,7 +53,7 @@ function c18249921.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c18249921.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	end
 end
@@ -76,7 +76,7 @@ end
 function c18249921.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local res=Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 	if res then
 		local e1=Effect.CreateEffect(c)

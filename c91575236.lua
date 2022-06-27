@@ -41,7 +41,7 @@ function c91575236.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91575236.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
+	if not c:IsFaceup() or not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c91575236.tgfilter,tp,LOCATION_DECK,0,1,1,nil,c:GetLevel(),c:GetOriginalLevel())
 	local tc=g:GetFirst()
@@ -67,7 +67,7 @@ function c91575236.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91575236.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

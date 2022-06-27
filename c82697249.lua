@@ -49,7 +49,7 @@ function c82697249.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local ct=Duel.GetOperatedGroup():FilterCount(c82697249.ctfilter,nil)
-		if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+		if ct>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

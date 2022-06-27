@@ -25,7 +25,7 @@ function c66194206.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c66194206.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:CancelToGrave()
 		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end

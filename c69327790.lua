@@ -77,7 +77,7 @@ function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
 	local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
 	if g1 then
-		local sg1=g1:Filter(Card.IsRelateToEffect,nil,e)
+		local sg1=g1:Filter(Card.IsRelateToChain,nil,0)
 		if sg1:GetCount()>0 and Duel.SendtoDeck(sg1,nil,SEQ_DECKTOP,REASON_EFFECT)>1 then
 			local gc=e:GetLabelObject()
 			local fc=sg1:GetFirst()
@@ -94,7 +94,7 @@ function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if e:GetLabel()==1 and g2 then
 		local tc=g2:GetFirst()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.SendtoHand(g2,nil,REASON_EFFECT)
 		end

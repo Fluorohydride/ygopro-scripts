@@ -31,12 +31,12 @@ function c5041348.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5041348.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=re:GetHandler()
-	if chk==0 then return rc:IsRelateToEffect(re) and rc:IsAbleToRemove() and not rc:IsLocation(LOCATION_REMOVED) end
+	if chk==0 then return rc:IsRelateToChain(ev) and rc:IsAbleToRemove() and not rc:IsLocation(LOCATION_REMOVED) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,rc,1,0,0)
 end
 function c5041348.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) then
+	if rc:IsRelateToChain(ev) then
 		Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)
 	end
 end
@@ -54,7 +54,7 @@ function c5041348.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToBattle() and c:IsFaceup() then
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)

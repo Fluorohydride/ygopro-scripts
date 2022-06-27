@@ -61,7 +61,7 @@ function c45014450.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
-	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and ct>0 then
+	if c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) and ct>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -86,7 +86,7 @@ end
 function c45014450.copyop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsType(TYPE_TOKEN) then
+	if tc and c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsType(TYPE_TOKEN) then
 		local code=tc:GetOriginalCodeRule()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -145,7 +145,7 @@ function c45014450.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c45014450.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
+	if not c:IsRelateToChain(0) or Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c45014450.penfilter,tp,LOCATION_PZONE,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then

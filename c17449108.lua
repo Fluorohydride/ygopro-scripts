@@ -23,7 +23,7 @@ function c17449108.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17449108.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFacedown() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT,LOCATION_REMOVED)
 		if tc:IsType(TYPE_TRAP) then
 			local code=tc:GetCode()

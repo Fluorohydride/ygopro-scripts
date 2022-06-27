@@ -17,7 +17,7 @@ end
 function c15595052.ancop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,15595052)
-	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if ct>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local att=Duel.AnnounceAttribute(tp,ct,ATTRIBUTE_ALL)
 		e:GetHandler():SetHint(CHINT_ATTRIBUTE,att)

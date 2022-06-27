@@ -37,7 +37,7 @@ function c59560625.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59560625.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(tc)
 	end
 end
@@ -60,7 +60,7 @@ function c59560625.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59560625.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if g:GetFirst():IsRelateToEffect(e) then
+	if g:GetFirst():IsRelateToChain(0) then
 		Duel.ChangeTargetCard(ev,g)
 	end
 end

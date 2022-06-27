@@ -53,7 +53,7 @@ function c75498415.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75498415.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local atk=0
 		local g=Duel.GetMatchingGroup(c75498415.filter,tp,LOCATION_MZONE,LOCATION_MZONE,tc)
 		local bc=g:GetFirst()

@@ -20,7 +20,7 @@ function c81171949.initial_effect(c)
 end
 function c81171949.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:CancelToGrave()
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
@@ -37,7 +37,7 @@ function c81171949.filter(c)
 end
 function c81171949.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
 		c:RegisterFlagEffect(81171949,RESET_EVENT+RESETS_STANDARD,0,0)
 		if Duel.IsExistingMatchingCard(c81171949.filter,tp,LOCATION_REMOVED,0,3,nil) then
 			local WIN_REASON_JACKPOT7=0x19

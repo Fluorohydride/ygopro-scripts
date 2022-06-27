@@ -49,7 +49,7 @@ function c93595154.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c93595154.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c93595154.desfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 		if g:GetCount()>0 then
 			Duel.Destroy(g,REASON_EFFECT)
@@ -73,7 +73,7 @@ function c93595154.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93595154.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SSet(tp,c)
 	end
 end

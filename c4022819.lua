@@ -56,7 +56,7 @@ function c4022819.lvfilter2(c)
 end
 function c4022819.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(c4022819.lvfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,tc)
 	local lc=g:GetFirst()
 	local lv=tc:GetLevel()

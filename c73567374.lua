@@ -19,7 +19,7 @@ function c73567374.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(g)
 end
 function c73567374.filter2(c,e)
-	return c:IsFaceup() and c:IsType(TYPE_DUAL) and not c:IsDualState() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsFaceup() and c:IsType(TYPE_DUAL) and not c:IsDualState() and c:IsRelateToChain(0) and not c:IsImmuneToEffect(e)
 end
 function c73567374.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -25,7 +25,7 @@ function c90519313.cftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90519313.cfop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 	end
 end

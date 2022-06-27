@@ -39,7 +39,7 @@ end
 function c79559912.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
@@ -48,8 +48,8 @@ function c79559912.atkfilter(c)
 end
 function c79559912.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
-		and Duel.Destroy(eg,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup()
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev)
+		and Duel.Destroy(eg,REASON_EFFECT)~=0 and c:IsRelateToChain(0) and c:IsFaceup()
 		and Duel.IsExistingMatchingCard(c79559912.atkfilter,tp,LOCATION_MZONE,0,1,c)
 		and Duel.SelectYesNo(tp,aux.Stringid(79559912,1)) then
 		Duel.BreakEffect()

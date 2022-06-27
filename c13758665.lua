@@ -25,7 +25,7 @@ end
 function c13758665.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,13758665)
 	local rc=re:GetHandler()
-	if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev,true) and rc:IsRelateToChain(ev) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

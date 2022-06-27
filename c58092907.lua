@@ -67,7 +67,7 @@ end
 function c58092907.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=Duel.GetFirstTarget()
-	if ec:IsRelateToEffect(e) and Duel.SpecialSummon(ec,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if ec:IsRelateToChain(0) and Duel.SpecialSummon(ec,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		Duel.Destroy(c,REASON_EFFECT)
 	end
@@ -96,9 +96,9 @@ end
 function c58092907.meop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c58092907.mefilter1,tp,LOCATION_MZONE,0,aux.ExceptThisCard(e))
-	local b1=c:IsRelateToEffect(e) and g:IsExists(c58092907.cfilter,1,nil,TYPE_FUSION)
+	local b1=c:IsRelateToChain(0) and g:IsExists(c58092907.cfilter,1,nil,TYPE_FUSION)
 	local b2=g:IsExists(c58092907.cfilter,1,nil,TYPE_SYNCHRO)
-	local b3=c:IsRelateToEffect(e) and c:IsFaceup() and g:IsExists(c58092907.cfilter,1,nil,TYPE_XYZ)
+	local b3=c:IsRelateToChain(0) and c:IsFaceup() and g:IsExists(c58092907.cfilter,1,nil,TYPE_XYZ)
 	local b4=Duel.IsExistingMatchingCard(c58092907.mefilter2,tp,LOCATION_MZONE,0,1,aux.ExceptThisCard(e))
 		and Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_DECK,0,1,nil,TYPE_PENDULUM)
 	if b1 then

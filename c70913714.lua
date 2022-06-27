@@ -22,7 +22,7 @@ function c70913714.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
-		and e:GetHandler():IsRelateToEffect(e) end
+		and e:GetHandler():IsRelateToChain(0) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
@@ -34,7 +34,7 @@ function c70913714.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Equip(tp,c,tc)
 		--Add Equip limit
 		local e1=Effect.CreateEffect(tc)
@@ -78,7 +78,7 @@ function c70913714.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70913714.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=Duel.GetFirstTarget()
-	if ec and ec:IsRelateToEffect(e) then
+	if ec and ec:IsRelateToChain(0) then
 		Duel.GetControl(ec,tp)
 	end
 	e:Reset()

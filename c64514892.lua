@@ -56,7 +56,7 @@ function c64514892.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c64514892.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()>0 then
 		Duel.Destroy(tg,REASON_EFFECT)
 	end
@@ -73,7 +73,7 @@ function c64514892.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c64514892.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

@@ -31,7 +31,7 @@ function c71587526.rfilter(c,tc)
 end
 function c71587526.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
 		local rg=Duel.GetMatchingGroup(c71587526.rfilter,tp,0,LOCATION_GRAVE,nil,tc)
 		if #rg>0 then
 			Duel.BreakEffect()

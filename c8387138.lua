@@ -51,7 +51,7 @@ function c8387138.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8387138.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e)
+	if c:IsFaceup() and c:IsRelateToChain(0) and c:IsControler(tp) and not c:IsImmuneToEffect(e)
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c8387138.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c)

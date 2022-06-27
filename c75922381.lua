@@ -51,7 +51,7 @@ function c75922381.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75922381.disop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) and rc:IsDestructable()
+	if Duel.NegateEffect(ev) and rc:IsRelateToChain(ev) and rc:IsDestructable()
 		and (e:GetLabelObject():IsRank(2) or e:GetLabelObject():IsLink(2))
 		and Duel.SelectYesNo(tp,aux.Stringid(75922381,2)) then
 		Duel.BreakEffect()

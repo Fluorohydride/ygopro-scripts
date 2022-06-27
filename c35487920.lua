@@ -57,7 +57,7 @@ function c35487920.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35487920.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if Duel.GetMatchingGroupCount(nil,tp,LOCATION_MZONE,0,nil)==0 and tc:IsAbleToHand()
 		and (not tc:IsAbleToDeck() or Duel.SelectOption(tp,1190,aux.Stringid(35487920,2))==0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

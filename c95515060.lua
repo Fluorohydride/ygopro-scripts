@@ -55,7 +55,7 @@ function c95515060.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95515060.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
@@ -70,7 +70,7 @@ function c95515060.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not ec:GetEquipTarget() or not re:IsActiveType(TYPE_SPELL) or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or not g:IsContains(ec:GetEquipTarget()) then return end
-	if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(re:GetHandler(),REASON_EFFECT)
 	end
 end

@@ -26,7 +26,7 @@ function c24131534.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24131534.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local dg=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	if dg:GetCount()<2 then return end
 	if Duel.Destroy(dg,REASON_EFFECT)~=2 then return end

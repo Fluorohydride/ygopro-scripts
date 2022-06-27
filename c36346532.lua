@@ -55,7 +55,7 @@ function c36346532.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c36346532.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
+	if tc:IsRelateToChain(0) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g=Duel.SelectMatchingCard(tp,c36346532.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local sc=g:GetFirst()

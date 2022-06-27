@@ -47,7 +47,7 @@ function c70939418.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70939418.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		c:RegisterFlagEffect(70939418,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_BATTLE,0,1)
 	end
@@ -66,7 +66,7 @@ function c70939418.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70939418.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) then return end
+	if c:GetControler()~=tp or not c:IsRelateToChain(0) then return end
 	local mg=Duel.GetMatchingGroup(Card.IsAttribute,tp,LOCATION_MZONE,0,nil,ATTRIBUTE_WIND)
 	local g=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,c,mg)
 	if g:GetCount()>0 then

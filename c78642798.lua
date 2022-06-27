@@ -35,7 +35,7 @@ function c78642798.rnop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(tp,g)
 		Duel.ShuffleHand(1-tp)
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:IsFaceup() and c:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_CODE)
@@ -66,14 +66,14 @@ function c78642798.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc1=Duel.GetFirstTarget()
-	if tc1:IsRelateToEffect(e) and tc1:IsAbleToChangeControler() then
+	if tc1:IsRelateToChain(0) and tc1:IsAbleToChangeControler() then
 		local atk=tc1:GetTextAttack()
 		if atk<0 then atk=0 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local sg=Duel.SelectMatchingCard(tp,c78642798.eqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 		if sg:GetCount()>0 then
 			local tc2=sg:GetFirst()
-			if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2 then
+			if tc1:IsFaceup() and tc1:IsRelateToChain(0) and tc2 then
 				Duel.Equip(tp,tc1,tc2,atk)
 				--Gains ATK
 				local e1=Effect.CreateEffect(tc1)

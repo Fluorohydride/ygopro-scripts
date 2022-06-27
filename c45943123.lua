@@ -41,7 +41,7 @@ function c45943123.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45943123.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
+	if tc:IsRelateToChain(0) and tc:RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
 		local ct=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 		if ct>0 then
 			local atk=Duel.Damage(1-tp,ct*400,REASON_EFFECT)

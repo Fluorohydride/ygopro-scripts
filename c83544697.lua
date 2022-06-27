@@ -27,9 +27,9 @@ end
 function c83544697.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
-	if g1:GetFirst():IsRelateToEffect(e) and g1:GetNext():IsRelateToEffect(e) then
+	if g1:GetFirst():IsRelateToChain(0) and g1:GetNext():IsRelateToChain(0) then
 		Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
-		if g2:GetFirst():IsRelateToEffect(e) then
+		if g2:GetFirst():IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.Destroy(g2,REASON_EFFECT)
 		end

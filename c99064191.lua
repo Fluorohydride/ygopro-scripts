@@ -34,7 +34,7 @@ function c99064191.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsChainDisablable(ct-1) and Duel.SelectYesNo(tp,aux.Stringid(99064191,1)) then
 		Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 		Duel.SetOperationInfo(0,CATEGORY_DISABLE,tc,1,0,0)
-		if tc:IsRelateToEffect(pe) then
+		if tc:IsRelateToChain(ct-1) then
 			Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 		end
 		e:SetLabel(1)
@@ -43,11 +43,11 @@ function c99064191.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99064191.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabel()~=1 or not c:IsRelateToEffect(e) then return end
+	if e:GetLabel()~=1 or not c:IsRelateToChain(0) then return end
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	local te=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	local tc=te:GetHandler()
-	if Duel.NegateEffect(ct-1) and tc:IsRelateToEffect(te) then
+	if Duel.NegateEffect(ct-1) and tc:IsRelateToChain(ct-1) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -62,13 +62,13 @@ end
 function c99064191.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(99064191)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 	e:GetHandler():RegisterFlagEffect(99064191,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c99064191.activate2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

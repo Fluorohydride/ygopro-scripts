@@ -71,10 +71,10 @@ function c35199656.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35199656.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 	end

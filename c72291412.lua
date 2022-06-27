@@ -44,7 +44,7 @@ end
 function c72291412.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToChain(0) or c:IsImmuneToEffect(e) then return end
 	local mg1=Duel.GetMatchingGroup(c72291412.filter1,tp,LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c72291412.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)
 	local mg2=nil

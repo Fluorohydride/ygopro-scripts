@@ -34,7 +34,7 @@ function c33750025.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33750025.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND)
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND)
 		and (tc:IsSummonable(true,nil,1) or tc:IsMSetable(true,nil,1))
 		and Duel.SelectYesNo(tp,aux.Stringid(33750025,0)) then
 		Duel.BreakEffect()

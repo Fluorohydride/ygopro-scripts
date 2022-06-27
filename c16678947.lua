@@ -33,7 +33,7 @@ function c16678947.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c16678947.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,e:GetLabel()*300,REASON_EFFECT)
 	end
 end

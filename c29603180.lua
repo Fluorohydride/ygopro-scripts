@@ -27,8 +27,8 @@ function c29603180.atkfilter(c)
 end
 function c29603180.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if tg:GetCount()>0 and Duel.Destroy(tg,REASON_EFFECT)~=0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
+	if tg:GetCount()>0 and Duel.Destroy(tg,REASON_EFFECT)~=0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local og=Duel.GetOperatedGroup()
 		local ag=og:Filter(c29603180.atkfilter,nil)
 		local atk=ag:GetSum(Card.GetTextAttack)/2

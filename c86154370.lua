@@ -52,7 +52,7 @@ function c86154370.desop(e,tp,eg,ep,ev,re,r,rp)
 		local dg=g:Select(tp,1,yc,nil)
 		Duel.HintSelection(dg)
 		local ct=Duel.Destroy(dg,REASON_EFFECT)
-		if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+		if ct>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)

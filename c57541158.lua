@@ -39,9 +39,9 @@ function c57541158.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57541158.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and c:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and c:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		c:SetCardTarget(tc)
 		--indes
 		local e1=Effect.CreateEffect(c)
@@ -70,7 +70,7 @@ function c57541158.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57541158.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57541158.eqfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 		local ec=g:GetFirst()

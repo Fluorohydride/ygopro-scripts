@@ -22,7 +22,7 @@ function c56605802.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c56605802.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

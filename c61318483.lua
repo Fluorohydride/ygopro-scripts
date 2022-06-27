@@ -41,7 +41,7 @@ function c61318483.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61318483.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -60,7 +60,7 @@ function c61318483.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local at=Duel.GetAttacker()
 	if at:IsControler(1-tp) and at:IsRelateToBattle() and at:IsFaceup() and Duel.ChangePosition(at,POS_FACEDOWN_DEFENSE)>0 then
-		if not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToChain(0) then return end
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)~=0 then
 			Duel.ConfirmCards(1-tp,c)
 		end

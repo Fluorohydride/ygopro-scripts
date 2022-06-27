@@ -30,7 +30,7 @@ function c90812044.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90812044.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local rk=tc:GetRank()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c90812044.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,rk)

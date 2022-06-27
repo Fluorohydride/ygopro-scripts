@@ -47,7 +47,7 @@ end
 function c88069166.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		c:SetCardTarget(tc)
 		local g1=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 		local g2=Duel.GetMatchingGroup(Card.IsFacedown,tp,0,LOCATION_ONFIELD,nil)

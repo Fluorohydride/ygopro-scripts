@@ -48,7 +48,7 @@ function c63503850.desop(e,tp,eg,ep,ev,re,r,rp)
 			return
 		end
 	end
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

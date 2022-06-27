@@ -53,7 +53,7 @@ function c5186893.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5186893.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_ZOMBIE) then
+	if tc:IsRelateToChain(0) and tc:IsRace(RACE_ZOMBIE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

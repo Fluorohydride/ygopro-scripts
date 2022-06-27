@@ -28,7 +28,7 @@ function c22318971.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c22318971.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if c:IsRelateToChain(0) and c:IsFaceup() and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -38,7 +38,7 @@ function c22318971.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c22318971.retop)
 		Duel.RegisterEffect(e1,tp)
 		local ac=Duel.GetFirstTarget()
-		if ac:IsRelateToEffect(e) and ac:IsFaceup() then
+		if ac:IsRelateToChain(0) and ac:IsFaceup() then
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_MUST_ATTACK)

@@ -17,7 +17,7 @@ function c58446973.filter(c)
 	return c:IsSetCard(0xbb) and c:IsType(TYPE_MONSTER) and not c:IsCode(58446973) and c:IsAbleToGrave()
 end
 function c58446973.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
+	if chk==0 then return e:GetHandler():IsRelateToChain(0)
 		and Duel.IsExistingMatchingCard(c58446973.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
@@ -27,7 +27,7 @@ function c58446973.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
-		and c:IsRelateToEffect(e) and c:IsFaceup() then
+		and c:IsRelateToChain(0) and c:IsFaceup() then
 		local code=tc:GetCode()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

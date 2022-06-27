@@ -44,7 +44,7 @@ function c36016907.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36016907.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -67,7 +67,7 @@ end
 function c36016907.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
@@ -75,7 +75,7 @@ function c36016907.spop2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
 		e1:SetValue(LOCATION_REMOVED)
 		tc:RegisterEffect(e1,true)
-		if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsAbleToRemove() then
+		if c:IsFaceup() and c:IsRelateToChain(0) and c:IsAbleToRemove() then
 			Duel.BreakEffect()
 			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 				local e2=Effect.CreateEffect(c)

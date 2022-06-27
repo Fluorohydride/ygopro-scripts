@@ -68,7 +68,7 @@ end
 function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,c)
 	if mg:GetCount()==0 then return end
 	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE) then
@@ -98,7 +98,7 @@ function c16719140.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16719140.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

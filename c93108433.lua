@@ -33,7 +33,7 @@ function c93108433.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	local ct=g:GetCount()
-	if tc:IsRelateToEffect(e) and ct>0 then
+	if tc:IsRelateToChain(0) and ct>0 then
 		g:AddCard(tc)
 		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.ShuffleDeck(tp)

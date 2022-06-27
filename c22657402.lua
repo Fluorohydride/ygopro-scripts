@@ -50,7 +50,7 @@ function c22657402.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabel(lv)
 end
 function c22657402.lvfilter(c,e)
-	return c:IsFaceup() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsRelateToChain(0)
 end
 function c22657402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c22657402.lvfilter,nil,e)

@@ -45,7 +45,7 @@ function c49681811.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or g:GetCount()==0 then return end
 	if g:IsContains(e:GetHandler()) then
-		if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToChain(ev) then
 			Duel.Destroy(re:GetHandler(),REASON_EFFECT)
 		end
 	end
@@ -76,7 +76,7 @@ function c49681811.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49681811.operation(e,tp,eg,ep,ev,re,r,rp)
 	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
+	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToChain(0) or e:GetHandler():IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c49681811.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()~=0 then

@@ -36,7 +36,7 @@ function c12950294.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12950294.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		local val=Duel.Damage(1-tp,ev,REASON_EFFECT)
 		if val>0 then

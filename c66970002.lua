@@ -44,7 +44,7 @@ function c66970002.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66970002.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end
@@ -65,7 +65,7 @@ function c66970002.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66970002.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+	if tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 		local atk=tc:GetAttack()
 		if atk<0 or tc:IsFacedown() then atk=0 end
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 then

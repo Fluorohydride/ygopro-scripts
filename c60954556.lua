@@ -39,7 +39,7 @@ end
 function c60954556.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not c:IsRelateToChain(0) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c60954556.spfilter,tp,LOCATION_HAND,0,1,1,c,e,tp)
 	if g:GetCount()>0 then
@@ -90,7 +90,7 @@ end
 function c60954556.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

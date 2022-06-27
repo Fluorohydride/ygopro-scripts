@@ -41,7 +41,7 @@ function c57869175.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c57869175.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsLevelAbove(12) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) or c:IsLevelAbove(12) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)
@@ -67,7 +67,7 @@ function c57869175.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local ec=nil
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		ec=tc
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -75,7 +75,7 @@ function c57869175.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if rg:GetCount()>0 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local lv=og:FilterCount(Card.IsLocation,nil,LOCATION_REMOVED)
-		if lv>0 and tc:IsRelateToEffect(e) then
+		if lv>0 and tc:IsRelateToChain(0) then
 			local op=0
 			if tc:IsLevelBelow(lv) then op=Duel.SelectOption(tp,aux.Stringid(57869175,2))
 			else op=Duel.SelectOption(tp,aux.Stringid(57869175,2),aux.Stringid(57869175,3)) end

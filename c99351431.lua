@@ -18,7 +18,7 @@ function c99351431.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99351431.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and tc:GetFlagEffect(99351431)==0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and tc:GetFlagEffect(99351431)==0 then
 		tc:RegisterFlagEffect(99351431,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(99351431,0))

@@ -40,9 +40,9 @@ function c24842059.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c24842059.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
+	if chk==0 then return aux.nbcon(tp,re,ev) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
 	end
 	if re:GetActivateLocation()==LOCATION_GRAVE then
@@ -52,7 +52,7 @@ function c24842059.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c24842059.disop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 	end
 end
@@ -70,7 +70,7 @@ function c24842059.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24842059.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

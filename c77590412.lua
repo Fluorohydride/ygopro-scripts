@@ -42,7 +42,7 @@ end
 function c77590412.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c77590412.tgfilter,tp,LOCATION_DECK,0,nil)
-	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE) and #g>0 then
+	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToChain(0) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE) and #g>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
@@ -68,10 +68,10 @@ end
 function c77590412.clop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)>0 and c:IsLocation(LOCATION_GRAVE) and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and Duel.SendtoGrave(c,REASON_EFFECT)>0 and c:IsLocation(LOCATION_GRAVE) and tc:IsRelateToChain(0)
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local a=Duel.GetAttacker()
-		if a:IsAttackable() and a:IsRelateToEffect(e) and not a:IsImmuneToEffect(e) then
+		if a:IsAttackable() and a:IsRelateToChain(0) and not a:IsImmuneToEffect(e) then
 			Duel.BreakEffect()
 			Duel.ChangeAttackTarget(tc)
 		end

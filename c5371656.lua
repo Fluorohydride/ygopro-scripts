@@ -43,7 +43,7 @@ end
 function c5371656.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Equip(tp,e:GetHandler(),tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)

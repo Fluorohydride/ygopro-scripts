@@ -23,7 +23,7 @@ function c42560034.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42560034.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup()
+	if tc:IsRelateToChain(0) and tc:IsFaceup()
 		and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)

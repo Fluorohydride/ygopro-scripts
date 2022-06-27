@@ -40,10 +40,10 @@ function c31863912.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c31863912.filter(c,sp,e,lv)
-	return c:IsFaceup() and c:IsSummonPlayer(sp) and c:IsLevel(lv) and c:IsAbleToHand() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsSummonPlayer(sp) and c:IsLevel(lv) and c:IsAbleToHand() and c:IsRelateToChain(0)
 end
 function c31863912.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetLabel()==0 or not e:GetHandler():IsRelateToChain(0) then return end
 	local dc=Duel.TossDice(tp,1)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c31863912.filter,nil,1-tp,e,dc)
 	if g:GetCount()>0 then

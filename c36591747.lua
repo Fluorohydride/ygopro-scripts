@@ -75,8 +75,8 @@ end
 function c36591747.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
+		if c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
 			--Add Equip limit
 			local e1=Effect.CreateEffect(c)
@@ -87,7 +87,7 @@ function c36591747.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(c36591747.eqlimit)
 			c:RegisterEffect(e1)
 		end
-	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	elseif c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end
@@ -112,7 +112,7 @@ function c36591747.stop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
 	local g=Duel.GetMatchingGroup(c36591747.stfilter,tp,LOCATION_GRAVE,0,nil)
-	if ec and c:IsRelateToEffect(e)
+	if ec and c:IsRelateToChain(0)
 		and Duel.ChangePosition(ec,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0
 		and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SET)
@@ -134,7 +134,7 @@ end
 function c36591747.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
-	if ec and c:IsRelateToEffect(e) and Duel.Remove(ec,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if ec and c:IsRelateToChain(0) and Duel.Remove(ec,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

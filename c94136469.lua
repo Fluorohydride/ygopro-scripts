@@ -34,7 +34,7 @@ function c94136469.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94136469.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 		local rec=math.ceil(c:GetDefense()/2)
 		Duel.BreakEffect()

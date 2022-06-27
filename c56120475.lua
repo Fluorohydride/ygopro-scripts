@@ -23,7 +23,7 @@ function c56120475.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c56120475.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
+	if tc:IsRelateToChain(0) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

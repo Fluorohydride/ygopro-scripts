@@ -21,7 +21,7 @@ function c84640866.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,ct,0,0)
 end
 function c84640866.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c84640866.filter,nil,tp):Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(c84640866.filter,nil,tp):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()>0 then
 		Duel.Remove(g,POS_FACEDOWN,REASON_EFFECT)
 	end

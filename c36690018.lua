@@ -20,7 +20,7 @@ function c36690018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c36690018.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and c36690018.filter(tc) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and c36690018.filter(tc) then
 		local val=tc:GetFlagEffectLabel(36690018)
 		tc:SetFlagEffectLabel(36690018,1-val)
 	end

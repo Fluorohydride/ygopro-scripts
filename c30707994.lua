@@ -21,7 +21,7 @@ function c30707994.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30707994.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local dice=Duel.TossDice(tp,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

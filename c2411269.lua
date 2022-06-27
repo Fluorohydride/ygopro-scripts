@@ -36,7 +36,7 @@ function c2411269.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct1>0 then
 		Duel.Damage(1-tp,ct1*100,REASON_EFFECT)
 	end
-	if ct2>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if ct2>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		if ct1>0 then Duel.BreakEffect() end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

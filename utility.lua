@@ -207,7 +207,7 @@ function Auxiliary.SpiritReturnTargetOptional(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end
@@ -2498,7 +2498,7 @@ function Auxiliary.UrsarcticSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function Auxiliary.UrsarcticSpSummonOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 	local e1=Effect.CreateEffect(c)
@@ -2584,7 +2584,7 @@ end
 function Auxiliary.DrytronSpSummonOperation(func)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
-		if not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToChain(0) then return end
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then func(e,tp) end
 	end
 end
@@ -2665,7 +2665,7 @@ end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then return c else return nil end
+	if c:IsRelateToChain(0) then return c else return nil end
 end
 --used for multi-linked zone(zone linked by two or more link monsters)
 function Auxiliary.GetMultiLinkedZone(tp)
@@ -2833,15 +2833,15 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	end
 end
 --condition of "negate activation and banish"
-function Auxiliary.nbcon(tp,re)
+function Auxiliary.nbcon(tp,re,ev)
 	local rc=re:GetHandler()
 	return Duel.IsPlayerCanRemove(tp)
-		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
+		and (not rc:IsRelateToChain(ev) or rc:IsAbleToRemove())
 end
 function Auxiliary.nbtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
+	if chk==0 then return aux.nbcon(tp,re,ev) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
 	end
 	if re:GetActivateLocation()==LOCATION_GRAVE then
@@ -2851,9 +2851,9 @@ function Auxiliary.nbtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 --condition of "negate activation and return to deck"
-function Auxiliary.ndcon(tp,re)
+function Auxiliary.ndcon(tp,re,ev)
 	local rc=re:GetHandler()
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or not rc:IsRelateToEffect(re) or rc:IsAbleToDeck()
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or not rc:IsRelateToChain(ev) or rc:IsAbleToDeck()
 end
 --send to deck of contact fusion
 function Auxiliary.tdcfop(c)

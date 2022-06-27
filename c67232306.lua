@@ -19,7 +19,7 @@ end
 function c67232306.operation(e,tp,eg,ep,ev,re,r,rp)
 	local at=eg:GetFirst()
 	local a=Duel.GetAttacker()
-	if not a:IsRelateToEffect(e) or not at:IsRelateToEffect(e) or a:IsFacedown() or at:IsFacedown() then return end
+	if not a:IsRelateToChain(0) or not at:IsRelateToChain(0) or a:IsFacedown() or at:IsFacedown() then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK_FINAL)

@@ -65,7 +65,7 @@ function c7443908.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7443908.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and c:IsAttackAbove(500) then
+	if c:IsRelateToChain(0) and c:IsFaceup() and c:IsAttackAbove(500) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)

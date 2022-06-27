@@ -36,7 +36,7 @@ function c5439384.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5439384.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=2 then return end
+	if not tg or tg:FilterCount(Card.IsRelateToChain,nil,0)~=2 then return end
 	if Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)==2 then
 		local og=Duel.GetOperatedGroup()
 		local lv=og:GetSum(Card.GetLevel)

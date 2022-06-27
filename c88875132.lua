@@ -46,7 +46,7 @@ end
 function c88875132.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -89,8 +89,8 @@ end
 function c88875132.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e)
-		and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsLevel(c:GetLevel()) then
+	if c:IsFaceup() and c:IsRelateToChain(0)
+		and tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsLevel(c:GetLevel()) then
 		local g=Group.FromCards(c,tc)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(88875132,2))
 		local sg=g:Select(tp,1,1,nil)

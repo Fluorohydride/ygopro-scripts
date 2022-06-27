@@ -39,7 +39,7 @@ function c72700231.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c72700231.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c72700231.tgfilter,tp,LOCATION_DECK,0,1,1,nil)

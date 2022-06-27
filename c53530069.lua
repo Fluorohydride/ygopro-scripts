@@ -26,7 +26,7 @@ end
 function c53530069.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	local c=e:GetHandler()
-	if c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToEffect(e) then
+	if c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToChain(0) then
 		Duel.Recover(p,d,REASON_EFFECT)
 	end
 end

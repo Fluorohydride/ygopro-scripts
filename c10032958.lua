@@ -12,7 +12,7 @@ function c10032958.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,10032958)
 	if ct>3 then ct=3 end
-	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if ct>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local opt1=Duel.SelectOption(tp,aux.Stringid(10032958,1),aux.Stringid(10032958,2),aux.Stringid(10032958,3))
 		local opt2=0
 		local opt3=0

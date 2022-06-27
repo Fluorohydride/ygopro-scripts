@@ -32,7 +32,7 @@ function c99189322.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==regc then tc=g:GetNext() end
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and c99189322.filter(tc) and regc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and c99189322.filter(tc) and regc:IsRelateToChain(0) then
 		Duel.Remove(regc,POS_FACEUP,REASON_EFFECT)
 		local regfun=regc.arcanareg
 		if not regfun then return end

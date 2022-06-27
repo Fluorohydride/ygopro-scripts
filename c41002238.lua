@@ -41,7 +41,7 @@ function c41002238.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41002238.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -51,7 +51,7 @@ end
 function c41002238.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c41002238.filter(chkc,c:GetAttack()) end
-	if chk==0 then return c:IsRelateToEffect(e)
+	if chk==0 then return c:IsRelateToChain(0)
 		and Duel.IsExistingTarget(c41002238.filter,tp,0,LOCATION_MZONE,1,nil,c:GetAttack()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c41002238.filter,tp,0,LOCATION_MZONE,1,1,nil,c:GetAttack())
@@ -59,7 +59,7 @@ end
 function c41002238.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

@@ -45,7 +45,7 @@ function c59208943.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59208943.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -65,7 +65,7 @@ function c59208943.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59208943.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c59208943.matfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then

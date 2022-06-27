@@ -30,7 +30,7 @@ function c56001930.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56001930.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c56001930.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tc:GetAttack())
 		if g:GetCount()>0 then
 			Duel.Destroy(g,REASON_EFFECT)

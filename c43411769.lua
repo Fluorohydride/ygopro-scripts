@@ -38,7 +38,7 @@ function c43411769.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c43411769.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -57,7 +57,7 @@ function c43411769.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c43411769.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

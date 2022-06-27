@@ -55,7 +55,7 @@ function c87804365.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
 end
 function c87804365.spfilter2(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRelateToChain(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c87804365.activate(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()

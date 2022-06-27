@@ -45,7 +45,7 @@ function c8339504.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c8339504.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,rk,race,att,code,e,tp,nil)
 	local sc=g:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			c:CancelToGrave()
 			Duel.Overlay(sc,Group.FromCards(c))
 		end

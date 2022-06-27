@@ -27,7 +27,7 @@ function c85352446.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c85352446.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local dg=Duel.GetMatchingGroup(c85352446.filter2,0,LOCATION_MZONE,LOCATION_MZONE,tc,tc:GetLevel())
 		Duel.Destroy(dg,REASON_EFFECT)
 	end

@@ -37,10 +37,10 @@ end
 function c2067935.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local code=tc:GetOriginalCode()
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
-		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+		if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

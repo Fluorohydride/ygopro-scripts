@@ -54,7 +54,7 @@ function c65563871.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c65563871.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.Destroy(c,REASON_EFFECT)
 	end
 end
@@ -70,7 +70,7 @@ function c65563871.rectg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65563871.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetLink()>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetLink()>0 then
 		Duel.Recover(tp,tc:GetLink()*300,REASON_EFFECT)
 	end
 end

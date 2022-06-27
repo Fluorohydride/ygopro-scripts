@@ -36,7 +36,7 @@ function c8129306.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8129306.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
@@ -50,7 +50,7 @@ function c8129306.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c8129306.lvfilter,tp,LOCATION_MZONE,0,1,2,nil)
 end
 function c8129306.cfilter(c,e)
-	return c:IsFaceup() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsRelateToChain(0)
 end
 function c8129306.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c8129306.cfilter,nil,e)

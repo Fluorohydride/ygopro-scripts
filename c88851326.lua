@@ -79,7 +79,7 @@ function c88851326.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88851326.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.NegateAttack() and tc:IsRelateToEffect(e) then
+	if Duel.NegateAttack() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -131,8 +131,8 @@ function c88851326.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
 function c88851326.checkcon1(e,tp,eg,ep,ev,re,r,rp)
-	local cid,orig_effect=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID,CHAININFO_TRIGGERING_EFFECT)
-	return cid==e:GetLabel() and not e:GetOwner():IsRelateToEffect(orig_effect)
+	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
+	return cid==e:GetLabel() and not e:GetOwner():IsRelateToChain(ev)
 end
 function c88851326.checkop1(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():Reset()
@@ -140,7 +140,7 @@ function c88851326.checkop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88851326.thop(e,tp,eg,ep,ev,re,r,rp)
 	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToEffect(e) then return end
+	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c88851326.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then

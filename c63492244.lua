@@ -49,7 +49,7 @@ end
 function c63492244.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
+	if tc and tc:IsRelateToChain(0) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -79,7 +79,7 @@ function c63492244.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) and tc:GetFlagEffectLabel(63492245)==cid then
+	if c:IsRelateToChain(0) and tc:IsFacedown() and tc:IsRelateToChain(0) and tc:GetFlagEffectLabel(63492245)==cid then
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
 		c:ResetFlagEffect(63492244)

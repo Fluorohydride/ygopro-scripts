@@ -24,7 +24,7 @@ function c23639291.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c23639291.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(23639291,0))
 		e1:SetType(EFFECT_TYPE_SINGLE)

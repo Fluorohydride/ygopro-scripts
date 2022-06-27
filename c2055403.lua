@@ -21,7 +21,7 @@ function c2055403.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,ct,0,0)
 end
 function c2055403.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c2055403.filter,nil,tp):Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(c2055403.filter,nil,tp):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()>0 then
 		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup()

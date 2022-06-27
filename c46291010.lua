@@ -22,7 +22,7 @@ function c46291010.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c46291010.filter,tp,LOCATION_DECK,0,1,1,nil,c:GetLevel())
 	local tc=g:GetFirst()
-	if tc and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if tc and c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

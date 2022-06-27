@@ -79,7 +79,7 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		tc:SetMaterial(nil)
 		Duel.SpecialSummonStep(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)
-		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+		if c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
 			--Add Equip limit
 			local e1=Effect.CreateEffect(tc)
@@ -104,7 +104,7 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e2,tp)
 		Duel.SpecialSummonComplete()
 		tc:CompleteProcedure()
-	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	elseif c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end

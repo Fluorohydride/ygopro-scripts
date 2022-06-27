@@ -23,7 +23,7 @@ function c61175706.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61175706.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local res=0
 	if c:IsHasEffect(73206827) then
 		res=1-Duel.SelectOption(tp,60,61)

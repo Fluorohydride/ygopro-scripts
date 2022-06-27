@@ -124,7 +124,7 @@ function c71159974.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71159974.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c71159974.desfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttribute())
 		Duel.Destroy(g,REASON_EFFECT)
 	end

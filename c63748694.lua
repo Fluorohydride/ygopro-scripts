@@ -42,7 +42,7 @@ end
 function c63748694.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c63748694.filter,tp,LOCATION_DECK,0,nil,e,tp,c)
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) and Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and mg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63748694,0)) then

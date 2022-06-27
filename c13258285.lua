@@ -104,7 +104,7 @@ function c13258285.sctarg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c13258285.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) then return end
+	if c:IsControler(1-tp) or not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c13258285.syncfilter,tp,LOCATION_EXTRA,0,nil)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

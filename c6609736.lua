@@ -52,7 +52,7 @@ function c6609736.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local sc=e:GetLabelObject()
 	local g=Group.FromCards(c,sc)
-	local fg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local fg=g:Filter(Card.IsRelateToChain,nil,0)
 	if fg:GetCount()~=2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=fg:FilterSelect(tp,c6609736.tgspfilter,1,1,nil,fg,e,tp)
@@ -76,7 +76,7 @@ function c6609736.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c6609736.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

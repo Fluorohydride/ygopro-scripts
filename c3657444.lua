@@ -62,7 +62,7 @@ end
 function c3657444.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and tc:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) and tc:IsFaceup() and c:IsRelateToChain(0) then
 		local sg=Group.FromCards(c,tc)
 		if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=2 then return end
 		Duel.BreakEffect()
@@ -82,14 +82,14 @@ function c3657444.target3(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c3657444.operation3(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local hg=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_HAND,0,1,1,nil)
 	if hg:GetCount()>0 then
 		hg:AddCard(c)
 		if Duel.Remove(hg,POS_FACEUP,REASON_EFFECT)~=2 then return end
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end

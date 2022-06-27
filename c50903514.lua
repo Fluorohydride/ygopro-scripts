@@ -44,8 +44,8 @@ end
 function c50903514.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:GetAttack()<600
-		or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) or c:GetAttack()<600
+		or tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -77,7 +77,7 @@ function c50903514.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50903514.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_WARRIOR) and tc:IsAttribute(ATTRIBUTE_FIRE) then
+	if tc and tc:IsRelateToChain(0) and tc:IsRace(RACE_WARRIOR) and tc:IsAttribute(ATTRIBUTE_FIRE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

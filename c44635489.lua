@@ -45,7 +45,7 @@ end
 function c44635489.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0)
 		and (not tc:IsLocation(LOCATION_MZONE) or tc:IsFaceup()) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

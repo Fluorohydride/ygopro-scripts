@@ -52,7 +52,7 @@ function c86165817.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86165817.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c86165817.filter,tp,0,LOCATION_MZONE,nil,c:GetAttack())
 		local ct=Duel.Destroy(g,REASON_EFFECT)
 		if ct>0 then

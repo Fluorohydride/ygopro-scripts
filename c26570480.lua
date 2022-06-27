@@ -32,7 +32,7 @@ function c26570480.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c26570480.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -62,7 +62,7 @@ end
 function c26570480.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsPosition(POS_FACEUP_DEFENSE) then
+	if tc:IsRelateToChain(0) and not tc:IsPosition(POS_FACEUP_DEFENSE) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		if not tc:IsSetCard(0x71) then
 			local e1=Effect.CreateEffect(c)

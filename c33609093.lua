@@ -46,7 +46,7 @@ function c33609093.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	if hc:IsRelateToEffect(e) and hc:IsFaceup() then
+	if hc:IsRelateToChain(0) and hc:IsFaceup() then
 		local atk=hc:GetAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -54,7 +54,7 @@ function c33609093.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(math.ceil(atk/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		hc:RegisterEffect(e1)
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() then
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_UPDATE_ATTACK)
 			tc:RegisterEffect(e2)

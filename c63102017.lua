@@ -19,7 +19,7 @@ function c63102017.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63102017.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsAttackPos() then
+	if tc:IsRelateToChain(0) and not tc:IsAttackPos() then
 		Duel.ChangePosition(tc,0,0,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	end
 end

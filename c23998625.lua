@@ -39,8 +39,8 @@ end
 function c23998625.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup()
-		and tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
+	if c:IsRelateToChain(0) and c:IsFaceup()
+		and tc:IsRelateToChain(0) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 		local atk=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -74,7 +74,7 @@ function c23998625.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c23998625.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not c:IsRelateToChain(0) or not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	local tc=Duel.GetFirstMatchingCard(c23998625.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
 	if tc then
 		local cg=Group.FromCards(c)

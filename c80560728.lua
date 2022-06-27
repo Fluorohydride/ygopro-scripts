@@ -50,7 +50,7 @@ end
 function c80560728.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):GetFirst()
-	if c:IsRelateToEffect(re) and tc:IsFaceup() and tc:IsRelateToEffect(re) then
+	if c:IsRelateToChain(ev) and tc:IsFaceup() and tc:IsRelateToChain(ev) then
 		c:SetCardTarget(tc)
 	end
 end

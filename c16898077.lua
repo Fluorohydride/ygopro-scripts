@@ -75,7 +75,7 @@ function c16898077.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c16898077.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -83,7 +83,7 @@ function c16898077.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c16898077.dfilter(c,e,sp)
-	return c:IsSummonPlayer(sp) and (not e or c:IsRelateToEffect(e))
+	return c:IsSummonPlayer(sp) and (not e or c:IsRelateToChain(0))
 end
 function c16898077.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.dfilter,1,nil,nil,1-tp) end
@@ -94,7 +94,7 @@ function c16898077.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16898077.damop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c16898077.dfilter,nil,e,1-tp)
-	if e:GetHandler():IsRelateToEffect(e) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
+	if e:GetHandler():IsRelateToChain(0) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end
 end
@@ -110,7 +110,7 @@ function c16898077.damtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16898077.damop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c16898077.sfilter,nil,e)
-	if e:GetHandler():IsRelateToEffect(e) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
+	if e:GetHandler():IsRelateToChain(0) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end
 end
@@ -118,7 +118,7 @@ function c16898077.damcon3(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and rp==1-tp
 end
 function c16898077.sfilter(c,e)
-	return c:IsFacedown() and (not e or c:IsRelateToEffect(e))
+	return c:IsFacedown() and (not e or c:IsRelateToChain(0))
 end
 function c16898077.damtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.sfilter,1,nil) end
@@ -129,7 +129,7 @@ function c16898077.damtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16898077.damop3(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c16898077.sfilter,nil,e)
-	if e:GetHandler():IsRelateToEffect(e) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
+	if e:GetHandler():IsRelateToChain(0) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end
 end

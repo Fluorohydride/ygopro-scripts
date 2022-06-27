@@ -24,7 +24,7 @@ function c81028112.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c81028112.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if tc:IsExtraDeckMonster()
 			or Duel.SelectOption(tp,aux.Stringid(81028112,1),aux.Stringid(81028112,2))==0 then
 			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)

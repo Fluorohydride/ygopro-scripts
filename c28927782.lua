@@ -57,13 +57,13 @@ function c28927782.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	else
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 		local ec=Duel.GetFirstTarget()
-		if ec:IsRelateToEffect(e) and ec:IsFaceup() then
+		if ec:IsRelateToChain(0) and ec:IsFaceup() then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28927782.eqfilter2),tp,LOCATION_GRAVE,0,1,1,nil,ec,tp)
 			local tc=g:GetFirst()

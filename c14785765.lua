@@ -41,7 +41,7 @@ function c14785765.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14785765.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Damage(tp,400,REASON_EFFECT)
 	end
 end

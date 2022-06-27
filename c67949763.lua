@@ -32,7 +32,7 @@ function c67949763.activate(e,tp,eg,ep,ev,re,r,rp)
 		local rfid=tc:GetRealFieldID()
 		local atk=0
 		local cr=false
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		if tc:IsFaceup() and tc:IsRelateToChain(0) then
 			atk=tc:GetAttack()
 			cr=true
 		end

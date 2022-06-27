@@ -30,7 +30,7 @@ end
 function c10365322.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if not tc:IsRelateToEffect(e) or not c:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) or not c:IsRelateToChain(0) then return end
 	if not tc:IsControler(1-tp) then return end
 	local dg=Group.FromCards(c,tc)
 	if Duel.Destroy(dg,REASON_EFFECT)==2 and tc:IsLocation(LOCATION_GRAVE) and c:IsLocation(LOCATION_GRAVE) then

@@ -55,7 +55,7 @@ function c57288708.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end
 function c57288708.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c57288708.tgfilter,nil):Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(c57288708.tgfilter,nil):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end

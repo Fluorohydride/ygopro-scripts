@@ -55,7 +55,7 @@ function c50005218.thop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.ConfirmCards(1-tp,sg)
 				Duel.ShuffleHand(tp)
 			end
-			if tc:IsRelateToEffect(e) then
+			if tc:IsRelateToChain(0) then
 				Duel.SendtoGrave(tc,REASON_EFFECT)
 			end
 		end

@@ -65,7 +65,7 @@ end
 function c27705190.spoperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27705190.spfilter2),tp,0x13,0,1,1,c,e,tp,zone)

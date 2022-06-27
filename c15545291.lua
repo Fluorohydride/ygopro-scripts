@@ -63,7 +63,7 @@ function c15545291.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c15545291.dfilter(c,e)
-	return c:IsFacedown() and c:IsRelateToEffect(e)
+	return c:IsFacedown() and c:IsRelateToChain(0)
 end
 function c15545291.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c15545291.dfilter,nil,e)

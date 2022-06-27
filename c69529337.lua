@@ -42,7 +42,7 @@ end
 function c69529337.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+	if tc:IsRelateToChain(0) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 		local g=Duel.GetMatchingGroup(c69529337.atkfilter,tp,LOCATION_MZONE,0,nil)
 		local sc=g:GetFirst()
 		while sc do
@@ -76,7 +76,7 @@ function c69529337.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69529337.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local g=Duel.SelectMatchingCard(tp,c69529337.filter,tp,LOCATION_DECK,0,1,1,nil,tp,tc:GetCode())
 		if g:GetCount()>0 then

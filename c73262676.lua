@@ -24,7 +24,7 @@ function c73262676.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c73262676.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local lv=tc:GetLevel()
 		if Duel.Destroy(tc,REASON_EFFECT)==0 then return end
 		local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,nil,0x100e,1)

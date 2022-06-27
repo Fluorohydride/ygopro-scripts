@@ -55,7 +55,7 @@ function c45349196.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45349196.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Damage(1-tp,tc:GetBaseAttack(),REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Damage(1-tp,tc:GetBaseAttack(),REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end

@@ -46,7 +46,7 @@ function c46502744.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46502744.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 		c:RegisterFlagEffect(46502745,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD,0,1)
 	end

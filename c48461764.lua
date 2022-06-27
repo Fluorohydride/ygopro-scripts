@@ -38,7 +38,7 @@ function c48461764.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48461764.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetAttacker()
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
 	if tc:IsRelateToBattle() and not tc:IsImmuneToEffect(e) then
@@ -64,7 +64,7 @@ function c48461764.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c48461764.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

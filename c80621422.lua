@@ -52,7 +52,7 @@ end
 function c80621422.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
 		Duel.Equip(tp,c,tc)
 	end
 end
@@ -84,7 +84,7 @@ function c80621422.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc then return end
 	if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	local ec=e:GetLabelObject()
-	if not ec:IsRelateToEffect(e) then return end
+	if not ec:IsRelateToChain(0) then return end
 	Duel.BreakEffect()
 	if not Duel.Equip(tp,ec,tc,false) then return end
 	--Atk up

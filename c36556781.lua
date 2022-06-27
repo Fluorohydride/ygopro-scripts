@@ -44,7 +44,7 @@ end
 function c36556781.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if tc:IsRelateToChain(0) and c:IsRelateToChain(0) and c:IsFaceup() then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -76,6 +76,6 @@ function c36556781.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c36556781.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 end

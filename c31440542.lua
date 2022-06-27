@@ -22,7 +22,7 @@ function c31440542.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c31440542.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

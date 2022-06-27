@@ -55,7 +55,7 @@ function c57314798.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57314798.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c57314798.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		local atk=g:GetSum(Card.GetRank)
 		if atk>0 then
@@ -112,7 +112,7 @@ function c57314798.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57314798.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

@@ -64,8 +64,8 @@ end
 function c11738489.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
-		if not c:IsRelateToEffect(e) then return end
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+		if not c:IsRelateToChain(0) then return end
 		local zone=bit.band(c:GetLinkedZone(tp),0x1f)
 		if Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0x135,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK,POS_FACEUP,tp,0,zone) then
 			local token=Duel.CreateToken(tp,11738490)

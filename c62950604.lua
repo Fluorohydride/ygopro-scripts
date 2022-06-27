@@ -35,7 +35,7 @@ end
 function c62950604.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToChain(0) then
 		c:RegisterFlagEffect(62950604,RESET_EVENT+0x1680000,0,0)
 		tc:RegisterFlagEffect(62950604,RESET_EVENT+RESETS_STANDARD,0,0)
 		e:GetLabelObject():SetLabelObject(tc)
@@ -58,7 +58,7 @@ function c62950604.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62950604.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

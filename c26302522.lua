@@ -59,9 +59,9 @@ function c26302522.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c26302522.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local ec=e:GetLabelObject()
-	if ec:IsRelateToEffect(e) and ec:IsFaceup() then
+	if ec:IsRelateToChain(0) and ec:IsFaceup() then
 		local atk=ec:GetAttack()
 		if Duel.Destroy(ec,REASON_EFFECT)~=0 then
 			Duel.Damage(1-tp,atk,REASON_EFFECT)

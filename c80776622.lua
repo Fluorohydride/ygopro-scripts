@@ -121,7 +121,7 @@ function c80776622.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,#g,0,0)
 end
 function c80776622.disfilter(c,e)
-	return c:IsRelateToEffect(e) and aux.NegateAnyFilter(c)
+	return c:IsRelateToChain(0) and aux.NegateAnyFilter(c)
 end
 function c80776622.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -155,7 +155,7 @@ function c80776622.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c80776622.descon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if not (rc:IsRelateToEffect(re) and rc:IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER)) then return false end
+	if not (rc:IsRelateToChain(ev) and rc:IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER)) then return false end
 	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	if g:GetCount()==0 then return false end
 	local _,max=g:GetMaxGroup(Card.GetCurrentScale)
@@ -166,7 +166,7 @@ function c80776622.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 end
 function c80776622.desop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

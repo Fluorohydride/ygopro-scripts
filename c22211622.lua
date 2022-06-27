@@ -69,7 +69,7 @@ function c22211622.rctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c22211622.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Recover(tp,tc:GetAttack(),REASON_EFFECT)
 	end
 end
@@ -93,7 +93,7 @@ end
 function c22211622.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	local dg=Group.FromCards(c,tc)
 	if Duel.Destroy(dg,REASON_EFFECT)==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -141,7 +141,7 @@ function c22211622.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c22211622.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

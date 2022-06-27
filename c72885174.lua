@@ -28,7 +28,7 @@ function c72885174.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 	local a=Duel.GetAttacker()
 	local tc=Duel.GetAttackTarget()
-	if a:IsRelateToEffect(e) and a:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if a:IsRelateToChain(0) and a:IsFaceup() and tc:IsRelateToChain(0) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)

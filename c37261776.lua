@@ -44,7 +44,7 @@ function c37261776.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c37261776.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local g=c:GetMaterial()
 	local atk=g:GetSum(Card.GetBaseAttack)
 	local e1=Effect.CreateEffect(c)
@@ -65,7 +65,7 @@ function c37261776.atkcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c37261776.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=c:GetAttack()*2
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

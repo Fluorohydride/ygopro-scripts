@@ -38,7 +38,7 @@ function c86325573.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c86325573.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local lv=tc:GetLevel()
 	local g=Duel.GetMatchingGroup(c86325573.lvfilter,tp,LOCATION_MZONE,0,nil)
 	local lc=g:GetFirst()

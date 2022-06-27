@@ -54,7 +54,7 @@ end
 function c60004971.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 	end
 end
@@ -76,7 +76,7 @@ function c60004971.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
-	if c:IsRelateToEffect(e) and ec:IsFaceup() then
+	if c:IsRelateToChain(0) and ec:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c60004971.eqfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=g:GetFirst()

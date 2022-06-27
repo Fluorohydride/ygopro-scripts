@@ -43,7 +43,7 @@ end
 function c952523.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return Duel.GetFlagEffect(tp,952523)==0 and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_TRAP)
-		and rc:GetType()==TYPE_TRAP and rc:IsRelateToEffect(re) and rc:IsCanTurnSet() and rc:IsStatus(STATUS_LEAVE_CONFIRMED) and rc:IsSetCard(0x4c,0x89)
+		and rc:GetType()==TYPE_TRAP and rc:IsRelateToChain(ev) and rc:IsCanTurnSet() and rc:IsStatus(STATUS_LEAVE_CONFIRMED) and rc:IsSetCard(0x4c,0x89)
 end
 function c952523.setop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
@@ -69,7 +69,7 @@ function c952523.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c952523.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

@@ -22,7 +22,7 @@ function c4440873.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
 end
 function c4440873.filter(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_DECK)
+	return c:IsRelateToChain(0) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_DECK)
 end
 function c4440873.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=eg:Filter(c4440873.filter,nil,e,1-tp)

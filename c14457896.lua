@@ -33,10 +33,10 @@ function c14457896.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c14457896.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsFacedown() or not tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -88,7 +88,7 @@ function c14457896.atlimit(e,c)
 	return c:IsRace(RACE_INSECT) and c:IsFaceup()
 end
 function c14457896.disfilter(c,re)
-	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsRelateToEffect(re)
+	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsRelateToChain(ev)
 end
 function c14457896.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

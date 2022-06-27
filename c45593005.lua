@@ -47,7 +47,7 @@ function c45593005.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
 function c45593005.filter(c,e)
-	return c:IsFaceup() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsRelateToChain(0)
 end
 function c45593005.opa(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
@@ -55,7 +55,7 @@ function c45593005.opa(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()==0 then return end
 	local atk=sg:GetSum(Card.GetAttack)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

@@ -52,7 +52,7 @@ function c2609443.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sc=g:GetFirst()
 	if sc==tc then sc=g:GetNext() end
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or not sc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) or not sc:IsRelateToChain(0) then return end
 	local ac=e:GetLabelObject()
 	if tc==ac then tc=sc end
 	if not ac:IsImmuneToEffect(e) then
@@ -63,7 +63,7 @@ function c2609443.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(math.ceil(atk/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		ac:RegisterEffect(e1)
-		if not ac:IsHasEffect(EFFECT_REVERSE_UPDATE) and e:GetHandler():IsRelateToEffect(e) then
+		if not ac:IsHasEffect(EFFECT_REVERSE_UPDATE) and e:GetHandler():IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.Overlay(e:GetHandler(),tc)
 		end

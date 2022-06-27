@@ -44,7 +44,7 @@ function c45283341.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	if sg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if sg:GetCount()>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -87,7 +87,7 @@ end
 function c45283341.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.GetControl(tc,tp)~=0 then
+	if tc:IsRelateToChain(0) and Duel.GetControl(tc,tp)~=0 then
 		local atk=0
 		local g=Duel.GetMatchingGroup(c45283341.atkfilter,tp,LOCATION_MZONE,0,nil)
 		if g:GetCount()>0 then atk=g:GetSum(Card.GetBaseAttack) end

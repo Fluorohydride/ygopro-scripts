@@ -85,7 +85,7 @@ end
 function c24521754.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetLabel()
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) or not c:IsControler(tp) or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
+	if not c:IsRelateToChain(0) or c:IsImmuneToEffect(e) or not c:IsControler(tp) or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
 	local pseq=c:GetSequence()
 	if pseq>4 then return end
 	Duel.MoveSequence(c,seq)

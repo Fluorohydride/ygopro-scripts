@@ -57,7 +57,7 @@ function c92408984.operation1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()~=1 then return end
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	local tc=Duel.GetFirstTarget()
-	if Duel.NegateEffect(ct-1) and tc and tc:IsRelateToEffect(e) then
+	if Duel.NegateEffect(ct-1) and tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -82,7 +82,7 @@ function c92408984.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92408984.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

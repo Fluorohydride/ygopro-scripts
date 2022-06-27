@@ -46,7 +46,7 @@ function c92510265.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT+REASON_RETURN)~=0 and lc:IsRelateToEffect(e) and lc:IsControler(1-tp) then
+	if tc:IsRelateToChain(0) and Duel.SendtoGrave(tc,REASON_EFFECT+REASON_RETURN)~=0 and lc:IsRelateToChain(0) and lc:IsControler(1-tp) then
 		Duel.Remove(lc,POS_FACEUP,REASON_EFFECT)
 	end
 end
@@ -62,7 +62,7 @@ function c92510265.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c92510265.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

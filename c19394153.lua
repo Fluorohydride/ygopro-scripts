@@ -34,7 +34,7 @@ function c19394153.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c19394153.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local ct=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
 		if ct>1 then
 			local e1=Effect.CreateEffect(e:GetHandler())

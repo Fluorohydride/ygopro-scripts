@@ -57,7 +57,7 @@ function c58793369.confilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x154)
 end
 function c58793369.lvfilter(c,e)
-	return c:IsFaceup() and c:IsLevelAbove(2) and c:IsAttackAbove(1000) and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and c:IsLevelAbove(2) and c:IsAttackAbove(1000) and (not e or c:IsRelateToChain(0))
 end
 function c58793369.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c58793369.confilter,tp,LOCATION_MZONE,0,nil)

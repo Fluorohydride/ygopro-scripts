@@ -40,7 +40,7 @@ function c49105782.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c49105782.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

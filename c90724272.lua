@@ -38,7 +38,7 @@ function c90724272.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90724272.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -53,7 +53,7 @@ function c90724272.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c90724272.tdop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		local opt=Duel.SelectOption(tp,aux.Stringid(90724272,2),aux.Stringid(90724272,3))
 		Duel.SendtoDeck(e:GetHandler(),nil,opt,REASON_EFFECT)
 	end

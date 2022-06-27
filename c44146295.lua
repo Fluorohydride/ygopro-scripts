@@ -64,7 +64,7 @@ function c44146295.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 	end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:RegisterFlagEffect(44146295,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 	end
 end

@@ -40,7 +40,7 @@ function c55277252.op(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local tc=g:Select(tp,1,1,nil):GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT+REASON_DISCARD)>0 and tc:IsLocation(LOCATION_GRAVE)
-		and c:IsRelateToEffect(e) then
+		and c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 	end
 end

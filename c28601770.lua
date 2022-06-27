@@ -35,7 +35,7 @@ function c28601770.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28601770.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.Destroy(c,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and c:IsFaceup() and Duel.Destroy(c,REASON_EFFECT)~=0 then
 		Duel.Damage(tp,1000,REASON_EFFECT)
 	end
 end

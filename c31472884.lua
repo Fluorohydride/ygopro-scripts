@@ -65,7 +65,7 @@ function c31472884.activate(e,tp,eg,ep,ev,re,r,rp)
 	local atk=cc:GetAttack()
 	local def=cc:GetDefense()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

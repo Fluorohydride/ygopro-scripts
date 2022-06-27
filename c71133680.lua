@@ -51,7 +51,7 @@ function c71133680.atkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local dc=Duel.SelectMatchingCard(tp,c71133680.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,tc):GetFirst()
 	if dc and Duel.Destroy(dc,REASON_EFFECT)~=0 then
-		if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+		if tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 		local atk=dc:GetBaseAttack()
 		local def=dc:GetBaseDefense()
 		if atk<0 then atk=0 end

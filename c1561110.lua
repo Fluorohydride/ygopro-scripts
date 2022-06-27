@@ -56,7 +56,7 @@ function c1561110.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1561110.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
@@ -87,7 +87,7 @@ function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1561110.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()==0 or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	if g:GetCount()<=ft then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

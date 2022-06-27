@@ -50,7 +50,7 @@ end
 function c91969909.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	local tc=Duel.GetFirstTarget()
-	if not (e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFacedown()) then return end
+	if not (e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFacedown()) then return end
 	Duel.ConfirmCards(tp,tc)
 	if tc:IsCode(ac) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)

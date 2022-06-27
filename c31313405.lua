@@ -80,7 +80,7 @@ function c31313405.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c31313405.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP)
 	end
 end
@@ -97,7 +97,7 @@ function c31313405.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c31313405.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Damage(1-tp,tc:GetBaseAttack(),REASON_EFFECT)
 	end
 end

@@ -35,7 +35,7 @@ function c69529567.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69529567.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
 		e:GetHandler():RegisterFlagEffect(69529567,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
@@ -47,7 +47,7 @@ function c69529567.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c69529567.spop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
 	end
 end

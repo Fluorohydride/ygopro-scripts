@@ -44,7 +44,7 @@ end
 function c88210105.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ct=tc:GetLevel()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and ct>0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and ct>0 then
 		tc:AddCounter(0x1019,ct)
 	end
 end

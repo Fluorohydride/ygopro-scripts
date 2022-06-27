@@ -46,7 +46,7 @@ function c8323633.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8323633.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=eg:Filter(c8323633.filter,nil,e:GetLabel()):Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(c8323633.filter,nil,e:GetLabel()):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()>0 then
 		g:AddCard(c)
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)

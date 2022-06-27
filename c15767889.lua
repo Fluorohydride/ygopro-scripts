@@ -30,7 +30,7 @@ function c15767889.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c15767889.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end

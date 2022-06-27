@@ -33,7 +33,7 @@ end
 function c3056267.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and tc and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc and tc:IsRelateToChain(0) then
 		Duel.SwapControl(c,tc)
 	end
 end

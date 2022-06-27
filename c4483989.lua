@@ -45,10 +45,10 @@ function c4483989.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function c4483989.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetLabel()==0 or not e:GetHandler():IsRelateToChain(0) then return end
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
-	if a:IsFaceup() and a:IsRelateToEffect(e) and at:IsFaceup() and at:IsRelateToEffect(e) then
+	if a:IsFaceup() and a:IsRelateToChain(0) and at:IsFaceup() and at:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_COIN)
 		local coin=Duel.AnnounceCoin(1-tp)
 		local res=Duel.TossCoin(1-tp,1)

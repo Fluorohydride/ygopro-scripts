@@ -37,7 +37,7 @@ function c85638822.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85638822.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:AddCounter(0x46,3)
 	end
 end
@@ -49,7 +49,7 @@ function c85638822.rccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85638822.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:RemoveCounter(tp,0x46,1,REASON_EFFECT)
 		c:RegisterFlagEffect(85638822,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,0)
 	end

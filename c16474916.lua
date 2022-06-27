@@ -42,7 +42,7 @@ function c16474916.cfilter1(c)
 end
 function c16474916.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(c16474916.cfilter1,tp,LOCATION_ONFIELD,0,1,nil) then
 		Duel.BreakEffect()
 		Duel.Recover(tp,800,REASON_EFFECT)
@@ -64,7 +64,7 @@ end
 function c16474916.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c16474916.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c)
 		local sc=g:GetFirst()

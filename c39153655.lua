@@ -34,9 +34,9 @@ function c39153655.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39153655.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsLevel(4) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsLevel(4) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -73,7 +73,7 @@ function c39153655.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39153655.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

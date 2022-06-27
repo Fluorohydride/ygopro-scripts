@@ -110,7 +110,7 @@ function c92435533.rtdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92435533.rtdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

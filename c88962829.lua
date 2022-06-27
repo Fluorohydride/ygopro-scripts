@@ -40,7 +40,7 @@ function c88962829.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g1,#g1,0,0)
 end
 function c88962829.thop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if #g>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		local tg=g:Filter(c88962829.check,nil,tp)
 		if #tg<=0 then return end
@@ -80,7 +80,7 @@ function c88962829.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88962829.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)>0 and c:IsLocation(LOCATION_HAND) then
+	if c:IsRelateToChain(0) and Duel.SendtoHand(c,nil,REASON_EFFECT)>0 and c:IsLocation(LOCATION_HAND) then
 		Duel.NegateAttack()
 	end
 end

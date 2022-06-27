@@ -56,7 +56,7 @@ function c9659580.activate(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		local n=og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() and n>0 then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() and n>0 then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -74,7 +74,7 @@ function c9659580.lpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c9659580.lpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
+	if c:IsRelateToChain(0) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
 		Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 	end
 end

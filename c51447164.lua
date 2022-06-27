@@ -79,7 +79,7 @@ function c51447164.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51447164.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
 		if Duel.GetCurrentPhase()==PHASE_STANDBY then
 			c:RegisterFlagEffect(51447164,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,2,Duel.GetTurnCount())
 		else
@@ -98,6 +98,6 @@ function c51447164.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51447164.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

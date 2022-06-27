@@ -62,7 +62,7 @@ function c45115956.atttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45115956.attop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local catt=tc:GetAttribute()
 		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-catt)

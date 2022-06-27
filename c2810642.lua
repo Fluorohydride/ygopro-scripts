@@ -41,7 +41,7 @@ function c2810642.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2810642.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or not e:GetHandler():IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c2810642.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetCount()==0 then return end
@@ -66,7 +66,7 @@ function c2810642.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOperation(c2810642.rmop)
 	Duel.RegisterEffect(e1,tp)
 	local dc=Duel.GetFirstTarget()
-	if dc:IsRelateToEffect(e) and Duel.Destroy(dc,REASON_EFFECT)~=0 then
+	if dc:IsRelateToChain(0) and Duel.Destroy(dc,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end

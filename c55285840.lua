@@ -32,7 +32,7 @@ end
 function c55285840.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetDecktopGroup(1-tp,1)
-	if c:IsRelateToEffect(e) and g:GetCount()==1 then
+	if c:IsRelateToChain(0) and g:GetCount()==1 then
 		Duel.DisableShuffleCheck()
 		Duel.Overlay(c,g)
 	end
@@ -62,7 +62,7 @@ function c55285840.check(g)
 end
 function c55285840.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
+	if not c:IsRelateToChain(0) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
 	local g=c:GetOverlayGroup()
 	local tg=Group.CreateGroup()
 	if c:IsAbleToRemove() then

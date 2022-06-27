@@ -93,10 +93,10 @@ function c40939228.negcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c40939228.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsAbleToRemove() and aux.nbcon(tp,re) end
+	if chk==0 then return c:IsAbleToRemove() and aux.nbcon(tp,re,ev) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,c,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		local g=eg:Clone()+c
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,#g,0,0)
 	end
@@ -108,7 +108,7 @@ function c40939228.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:IsLocation(LOCATION_REMOVED) then
+	if c:IsRelateToChain(0) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:IsLocation(LOCATION_REMOVED) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
@@ -117,7 +117,7 @@ function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCountLimit(1)
 		e1:SetOperation(c40939228.retop)
 		Duel.RegisterEffect(e1,tp)
-		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 			Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 		end
 	end

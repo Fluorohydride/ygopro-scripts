@@ -23,7 +23,7 @@ end
 function c90263923.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,nil,POS_FACEUP_ATTACK)
-	if g:GetCount()>0 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if g:GetCount()>0 and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local sc=g:GetFirst()
 		local atk=tc:GetAttack()
 		while sc do

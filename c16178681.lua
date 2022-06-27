@@ -57,7 +57,7 @@ function c16178681.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16178681.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or Duel.Destroy(c,REASON_EFFECT)==0 then return end
+	if not c:IsRelateToChain(0) or Duel.Destroy(c,REASON_EFFECT)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c16178681.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

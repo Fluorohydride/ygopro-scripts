@@ -19,7 +19,7 @@ function c13532663.filter(c)
 end
 function c13532663.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsStatus(STATUS_BATTLE_DESTROYED) or not c:IsRelateToEffect(e)
+	if c:IsStatus(STATUS_BATTLE_DESTROYED) or not c:IsRelateToChain(0)
 		or not c:IsAbleToChangeControler() or Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)<=0
 		or not Duel.IsExistingMatchingCard(c13532663.filter,tp,0,LOCATION_MZONE,1,nil) then
 		return

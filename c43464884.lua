@@ -57,7 +57,7 @@ end
 function c43464884.cgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and c:IsFaceup() and c:IsRelateToChain(0) then
 		local lv=tc:GetLevel()
 		local att=tc:GetAttribute()
 		local e1=Effect.CreateEffect(c)

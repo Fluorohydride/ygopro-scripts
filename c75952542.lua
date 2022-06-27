@@ -58,7 +58,7 @@ function c75952542.seqfilter(c,seq)
 end
 function c75952542.stop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e)) then return end
+	if not (tc:IsRelateToChain(0) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e)) then return end
 	local zone=1<<tc:GetSequence()
 	local oc=Duel.GetMatchingGroup(c75952542.seqfilter,tp,0,LOCATION_SZONE,nil,tc:GetSequence()):GetFirst()
 	if oc then

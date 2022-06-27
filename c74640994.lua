@@ -104,7 +104,7 @@ function c74640994.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 		Duel.RegisterFlagEffect(tp,74640994,RESET_PHASE+PHASE_END,0,1)
 	end
-	if c:IsRelateToEffect(e) and c:IsCanTurnSet() and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
+	if c:IsRelateToChain(0) and c:IsCanTurnSet() and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		Duel.BreakEffect()
 		c:CancelToGrave()
 		Duel.ChangePosition(c,POS_FACEDOWN)

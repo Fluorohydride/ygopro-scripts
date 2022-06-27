@@ -55,7 +55,7 @@ end
 function c24212820.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,24212820,0x10db,TYPES_EFFECT_TRAP_MONSTER,300,600,4,RACE_WARRIOR,ATTRIBUTE_DARK) then
+	if c:IsRelateToChain(0) and Duel.IsPlayerCanSpecialSummonMonster(tp,24212820,0x10db,TYPES_EFFECT_TRAP_MONSTER,300,600,4,RACE_WARRIOR,ATTRIBUTE_DARK) then
 		c:AddMonsterAttribute(TYPE_EFFECT)
 		Duel.SpecialSummonStep(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		--redirect

@@ -34,7 +34,7 @@ function c33622465.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33622465.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -52,7 +52,7 @@ end
 function c33622465.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,33622465,0,TYPES_NORMAL_TRAP_MONSTER,1200,400,3,RACE_WARRIOR,ATTRIBUTE_EARTH) then
+	if c:IsRelateToChain(0) and Duel.IsPlayerCanSpecialSummonMonster(tp,33622465,0,TYPES_NORMAL_TRAP_MONSTER,1200,400,3,RACE_WARRIOR,ATTRIBUTE_EARTH) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		--redirect

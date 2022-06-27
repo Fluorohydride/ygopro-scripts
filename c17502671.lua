@@ -30,7 +30,7 @@ function c17502671.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17502671.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<sg:GetCount()
 		or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	local tc=sg:GetFirst()

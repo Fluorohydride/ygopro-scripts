@@ -60,7 +60,7 @@ function c48285768.exfilter(c)
 end
 function c48285768.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local ct=c:GetOverlayCount()
 		Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)
 		local e1=Effect.CreateEffect(c)

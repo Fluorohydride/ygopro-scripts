@@ -38,7 +38,7 @@ function c34103656.lvfilter(c)
 end
 function c34103656.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local lv=Duel.GetMatchingGroupCount(c34103656.lvfilter,tp,LOCATION_MZONE,0,nil)
 		local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 		local mg,fid=g:GetMaxGroup(Card.GetFieldID)

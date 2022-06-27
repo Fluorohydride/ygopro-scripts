@@ -49,8 +49,8 @@ end
 function c99249638.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c99249638.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c99249638.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -66,7 +66,7 @@ function c99249638.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99249638.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
 function c99249638.recost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -88,7 +88,7 @@ function c99249638.retg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99249638.reop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c99249638.refilter,tp,LOCATION_DECK,0,1,1,nil,tc,tp)
 		local ec=g:GetFirst()

@@ -22,7 +22,7 @@ function c77972406.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77972406.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	if tc:IsRelateToEffect(e) and Duel.NegateAttack() then
+	if tc:IsRelateToChain(0) and Duel.NegateAttack() then
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 		Duel.BreakEffect()
 		local atk=tc:GetAttack()

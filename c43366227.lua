@@ -58,7 +58,7 @@ function c43366227.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43366227.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	end
 end
@@ -80,7 +80,7 @@ function c43366227.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43366227.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

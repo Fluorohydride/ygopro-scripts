@@ -39,7 +39,7 @@ function c41091257.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local opt=e:GetLabel()
 	if (opt==0 and tc:IsType(TYPE_MONSTER)) or (opt==1 and tc:IsType(TYPE_SPELL)) or (opt==2 and tc:IsType(TYPE_TRAP)) then
-		if not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToChain(0) then return end
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -55,7 +55,7 @@ function c41091257.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c41091257.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

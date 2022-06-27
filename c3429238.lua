@@ -49,7 +49,7 @@ function c3429238.dattg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3429238.datop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
@@ -74,7 +74,7 @@ function c3429238.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
-		if c:IsRelateToEffect(e) and Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)~=0 then
+		if c:IsRelateToChain(0) and Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)~=0 then
 			e:GetHandler():RegisterFlagEffect(3429238,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
 		end
 	end
@@ -94,7 +94,7 @@ function c3429238.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(c3429238.filter,tp,LOCATION_GRAVE,0,nil)
 	if aux.NecroValleyNegateCheck(tg) then return end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

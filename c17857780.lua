@@ -37,7 +37,7 @@ function c17857780.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17857780.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=tc:GetAttack()
 		local batk=tc:GetBaseAttack()
 		if atk==batk then return end

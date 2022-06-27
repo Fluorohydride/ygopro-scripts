@@ -24,7 +24,7 @@ function c21007444.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c21007444.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if sg:GetCount()==0 or ft<=0 or (sg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	if ft<sg:GetCount() then

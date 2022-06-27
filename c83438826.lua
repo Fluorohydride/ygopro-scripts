@@ -57,7 +57,7 @@ end
 function c83438826.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
 		Duel.Equip(tp,c,tc)
 	end
 end
@@ -77,14 +77,14 @@ function c83438826.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local eq=c:GetEquipTarget()
-	if not c:IsRelateToEffect(e) or eq:IsImmuneToEffect(e) or not eq:IsAttackAbove(500) then return end
+	if not c:IsRelateToChain(0) or eq:IsImmuneToEffect(e) or not eq:IsAttackAbove(500) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(-500)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	eq:RegisterEffect(e1)
-	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and tc:IsFacedown() then
+	if tc:IsRelateToChain(0) and tc:IsControler(1-tp) and tc:IsFacedown() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -97,7 +97,7 @@ function c83438826.eqfilter2(c)
 end
 function c83438826.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c83438826.eqfilter2(chkc) end
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c83438826.eqfilter2,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c83438826.eqfilter2,tp,LOCATION_MZONE,0,1,1,nil)

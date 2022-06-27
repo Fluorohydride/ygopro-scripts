@@ -39,7 +39,7 @@ function c40267580.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc and not c:IsStatus(STATUS_BATTLE_DESTROYED)
-		and c:IsFaceup() and c:IsRelateToEffect(e) and Duel.Equip(tp,c,tc) then
+		and c:IsFaceup() and c:IsRelateToChain(0) and Duel.Equip(tp,c,tc) then
 		--Add Equip limit
 		local e1=Effect.CreateEffect(tc)
 		e1:SetType(EFFECT_TYPE_SINGLE)

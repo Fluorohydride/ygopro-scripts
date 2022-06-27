@@ -35,7 +35,7 @@ function c29590752.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c29590752.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFacedown() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -49,7 +49,7 @@ function c29590752.dtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29590752.dop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
+	if not c:IsFaceup() or not c:IsRelateToChain(0) then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 and Duel.SelectYesNo(tp,aux.Stringid(29590752,2)) then
 		Duel.DiscardHand(tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 	else

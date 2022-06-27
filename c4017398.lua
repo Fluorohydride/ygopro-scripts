@@ -36,7 +36,7 @@ function c4017398.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4017398.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if aux.NecroValleyNegateCheck(tc) then return end
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
@@ -61,7 +61,7 @@ function c4017398.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4017398.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

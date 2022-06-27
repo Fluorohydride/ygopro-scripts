@@ -103,7 +103,7 @@ function c10669138.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Remove(sg,POS_FACEDOWN,REASON_EFFECT)
 		if Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_REMOVED)==5 then res=true end
 	end
-	if not res and c:IsRelateToEffect(e) then
+	if not res and c:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 	end
 end

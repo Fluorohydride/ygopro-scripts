@@ -33,7 +33,7 @@ function c51510279.rfilter(c,e,tp)
 end
 function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 	local th=Duel.GetFirstTarget()
-	if not th:IsRelateToEffect(e) or Duel.SendtoHand(th,nil,REASON_EFFECT)==0 or not th:IsLocation(LOCATION_HAND) then return end
+	if not th:IsRelateToChain(0) or Duel.SendtoHand(th,nil,REASON_EFFECT)==0 or not th:IsLocation(LOCATION_HAND) then return end
 	local chkf=tp
 	local fmg1=Duel.GetFusionMaterial(tp):Filter(c51510279.ffilter1,nil,e)
 	local fsg1=Duel.GetMatchingGroup(c51510279.ffilter2,tp,LOCATION_EXTRA,0,nil,e,tp,fmg1,nil,chkf)

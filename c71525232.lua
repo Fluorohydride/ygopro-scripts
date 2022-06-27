@@ -51,7 +51,7 @@ function c71525232.operation(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		local mg,atk=og:GetMaxGroup(c71525232.filter)
 		local dam=Duel.Damage(1-tp,atk,REASON_EFFECT)
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:IsFaceup() and c:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)

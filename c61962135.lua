@@ -51,7 +51,7 @@ end
 function c61962135.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 		c:SetCardTarget(tc)
 	end
@@ -79,6 +79,6 @@ function c61962135.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61962135.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if c:GetControler()~=tp or not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.DiscardDeck(tp,2,REASON_EFFECT)
 end

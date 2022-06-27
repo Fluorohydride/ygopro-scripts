@@ -33,7 +33,7 @@ function c78990927.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local lv=c:GetLevel()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c78990927.thfilter(chkc,lv) end
-	if chk==0 then return c:IsLevelAbove(1) and c:IsRelateToEffect(e)
+	if chk==0 then return c:IsLevelAbove(1) and c:IsRelateToChain(0)
 		and Duel.IsExistingTarget(c78990927.thfilter,tp,LOCATION_GRAVE,0,1,nil,lv) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c78990927.thfilter,tp,LOCATION_GRAVE,0,1,1,nil,lv)
@@ -42,7 +42,7 @@ end
 function c78990927.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		local lv=tc:GetLevel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

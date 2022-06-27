@@ -36,7 +36,7 @@ function c564541.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c564541.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
+	if c:IsRelateToChain(0) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 		and not Duel.IsExistingMatchingCard(c564541.cfilter,tp,LOCATION_GRAVE,0,1,nil) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 		local e1=Effect.CreateEffect(c)

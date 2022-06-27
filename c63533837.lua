@@ -53,7 +53,7 @@ function c63533837.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and tc:IsRelateToBattle() then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
-	if c:IsRelateToEffect(e) and c:IsChainAttackable() then
+	if c:IsRelateToChain(0) and c:IsChainAttackable() then
 		Duel.ChainAttack()
 	end
 end

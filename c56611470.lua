@@ -49,7 +49,7 @@ function c56611470.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c56611470.tfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFaceup()
+	return c:IsRelateToChain(0) and c:IsFaceup()
 end
 function c56611470.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

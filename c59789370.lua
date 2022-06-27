@@ -37,7 +37,7 @@ function c59789370.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c59789370.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c59789370.tcfilter(c,tp)
@@ -58,7 +58,7 @@ function c59789370.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59789370.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=Duel.SelectMatchingCard(tp,c59789370.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel())
 	local sc=sg:GetFirst()

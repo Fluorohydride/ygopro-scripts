@@ -55,7 +55,7 @@ function c81524756.dbop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetLabel(tc:GetFieldID())
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		tc:RegisterFlagEffect(81524756,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

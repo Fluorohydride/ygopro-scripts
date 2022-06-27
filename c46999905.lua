@@ -64,7 +64,7 @@ function c46999905.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46999905.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsRelateToEffect(e) and c:IsFaceup()) then return end
+	if not (c:IsRelateToChain(0) and c:IsFaceup()) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c46999905.spfilter2,tp,LOCATION_HAND,0,1,1,nil,e,tp,c)

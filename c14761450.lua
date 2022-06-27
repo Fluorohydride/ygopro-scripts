@@ -60,7 +60,7 @@ function c14761450.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14761450.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 and c:IsLevelAbove(2) then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 and c:IsLevelAbove(2) then
 		local off=1
 		local ops,opval={},{}
 		ops[off]=aux.Stringid(14761450,2)
@@ -97,7 +97,7 @@ function c14761450.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c14761450.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsPosition(POS_FACEUP_DEFENSE) then
+	if tc:IsRelateToChain(0) and not tc:IsPosition(POS_FACEUP_DEFENSE) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		if tc:IsPosition(POS_FACEUP_DEFENSE) and not tc:IsSetCard(0x5a) then
 			local c=e:GetHandler()

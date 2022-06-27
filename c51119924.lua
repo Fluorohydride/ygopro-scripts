@@ -28,7 +28,7 @@ function c51119924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c51119924.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRace(RACE_WARRIOR+RACE_SPELLCASTER) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRace(RACE_WARRIOR+RACE_SPELLCASTER) then
 		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

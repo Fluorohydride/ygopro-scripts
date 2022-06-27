@@ -30,7 +30,7 @@ function c9748752.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c9748752.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 		if tc:IsLocation(LOCATION_REMOVED) and tc:IsType(TYPE_MONSTER) and tc:IsAttribute(ATTRIBUTE_DARK) then
 			Duel.Damage(1-tp,1000,REASON_EFFECT)

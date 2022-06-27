@@ -40,7 +40,7 @@ function c54490275.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54490275.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -56,7 +56,7 @@ function c54490275.postg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54490275.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.GetFirstTarget()
-	if rc:IsFaceup() and rc:IsRelateToEffect(e) then
+	if rc:IsFaceup() and rc:IsRelateToChain(0) then
 		Duel.ChangePosition(rc,POS_FACEDOWN_DEFENSE)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

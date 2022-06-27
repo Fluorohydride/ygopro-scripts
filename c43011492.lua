@@ -34,7 +34,7 @@ function c43011492.filter1(c)
 end
 function c43011492.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if Duel.IsExistingMatchingCard(c43011492.filter1,tp,LOCATION_SZONE,0,1,nil) then
 			Duel.Destroy(tc,REASON_EFFECT,LOCATION_REMOVED)
 		else

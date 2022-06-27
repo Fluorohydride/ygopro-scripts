@@ -24,7 +24,7 @@ function c24920410.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c24920410.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=tc:GetAttack()*2
 		local def=tc:GetDefense()*2
 		local e1=Effect.CreateEffect(e:GetHandler())

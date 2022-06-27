@@ -63,9 +63,9 @@ end
 function c18096222.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 		--Atkup
 		local e1=Effect.CreateEffect(c)
@@ -108,7 +108,7 @@ function c18096222.datg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c18096222.daop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and c18096222.dafilter(tc) then
+	if tc and tc:IsRelateToChain(0) and c18096222.dafilter(tc) then
 		tc:EnableDualState()
 	end
 end

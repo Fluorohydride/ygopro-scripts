@@ -40,7 +40,7 @@ function c98787535.thfilter(c,tp)
 end
 function c98787535.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c98787535.thfilter),tp,0,LOCATION_GRAVE,1,nil,tp)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(98787535,2)) then
 		Duel.BreakEffect()
@@ -66,7 +66,7 @@ function c98787535.rgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,sg,2,0,0)
 end
 function c98787535.rgop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if #g>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)
 	end

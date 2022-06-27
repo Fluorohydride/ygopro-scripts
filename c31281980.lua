@@ -24,7 +24,7 @@ function c31281980.rectg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c31281980.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Recover(tp,tc:GetLevel()*100,REASON_EFFECT)
 	end
 end

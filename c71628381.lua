@@ -31,7 +31,7 @@ function c71628381.mgfilter(c,e,tp,fusc,mg)
 end
 function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local mg=c:GetMaterial()
 	local ct=mg:GetCount()
 	local sumtype=c:GetSummonType()

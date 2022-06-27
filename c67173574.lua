@@ -47,7 +47,7 @@ function c67173574.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayCount()==0
 end
 function c67173574.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() end
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) and e:GetHandler():IsFaceup() end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(1500)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,1-tp,1500)
@@ -75,7 +75,7 @@ end
 function c67173574.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()>0 and tc:IsControler(1-tp) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetAttack()>0 and tc:IsControler(1-tp) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

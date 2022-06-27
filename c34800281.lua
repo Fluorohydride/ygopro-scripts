@@ -66,7 +66,7 @@ function c34800281.synfilter(c,mc,tp)
 end
 function c34800281.synop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then return end
+	if not c:IsRelateToChain(0) or Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	if Duel.IsExistingMatchingCard(c34800281.synfilter,tp,LOCATION_EXTRA,0,1,nil,c,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(34800281,2)) then
 		Duel.BreakEffect()
@@ -94,7 +94,7 @@ end
 function c34800281.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and c:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		Duel.Overlay(tc,Group.FromCards(c))
 	end
 end

@@ -84,7 +84,7 @@ end
 function c99585850.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,nil)
-	if c:IsAbleToRemove() and c:IsRelateToEffect(e) then g:AddCard(c) end
+	if c:IsAbleToRemove() and c:IsRelateToChain(0) then g:AddCard(c) end
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)~=0 then
 		local op=Duel.GetOperatedGroup()
 		if op:IsContains(c) then
@@ -114,7 +114,7 @@ function c99585850.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99585850.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

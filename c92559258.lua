@@ -86,7 +86,7 @@ function c92559258.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92559258.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not c:IsRelateToChain(0) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c92559258.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
@@ -119,7 +119,7 @@ end
 function c92559258.counterop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,c,0x1,1)
-	if c:IsRelateToEffect(e) then g:AddCard(c) end
+	if c:IsRelateToChain(0) then g:AddCard(c) end
 	for tc in aux.Next(g) do
 		if tc:IsCanAddCounter(0x1,1) then
 			tc:AddCounter(0x1,1)
@@ -136,7 +136,7 @@ end
 function c92559258.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=e:GetLabel()
-	if c:IsRelateToEffect(e) and Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
+	if c:IsRelateToChain(0) and Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		and ct>0 then
 		c:AddCounter(0x1,ct)
 	end

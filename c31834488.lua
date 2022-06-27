@@ -27,7 +27,7 @@ function c31834488.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,2,0,0)
 end
 function c31834488.filter(c,e)
-	return c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)
+	return c:IsRelateToChain(0) and c:IsLocation(LOCATION_MZONE)
 end
 function c31834488.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c31834488.filter,nil,e)

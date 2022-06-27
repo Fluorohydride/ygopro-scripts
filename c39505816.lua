@@ -32,7 +32,7 @@ function c39505816.damfilter(c,tp)
 end
 function c39505816.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=eg:Filter(c39505816.damfilter,nil,tp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
 		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(39505816,1)) then

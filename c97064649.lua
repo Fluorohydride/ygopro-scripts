@@ -27,7 +27,7 @@ function c97064649.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c97064649.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SSet(tp,tc)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)

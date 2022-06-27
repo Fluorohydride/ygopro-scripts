@@ -50,7 +50,7 @@ function c11759079.sffilter(c,e,tp,tc)
 end
 function c11759079.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(c11759079.desfilter,tp,LOCATION_MZONE,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(11759079,2)) then

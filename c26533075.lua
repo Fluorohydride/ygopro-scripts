@@ -34,7 +34,7 @@ function c26533075.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c26533075.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
+	if tc:IsRelateToChain(0) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 	end
 end
@@ -52,7 +52,7 @@ function c26533075.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c26533075.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

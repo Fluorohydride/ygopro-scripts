@@ -69,7 +69,7 @@ function c39015.chtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39015.chop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c39015.cfilter,tp,LOCATION_EXTRA,0,1,1,nil,tc)
 	if cg:GetCount()==0 then return end

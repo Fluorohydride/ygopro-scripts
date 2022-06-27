@@ -25,9 +25,9 @@ function c38468214.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38468214.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:GetCounter(0x100e)>0 and tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

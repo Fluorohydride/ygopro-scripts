@@ -58,7 +58,7 @@ function c47710198.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47710198.filter(c,e,tp)
 	return c:IsSummonPlayer(1-tp) and c:IsLocation(LOCATION_MZONE) and c:IsAbleToRemove()
-		and (not e or c:IsRelateToEffect(e))
+		and (not e or c:IsRelateToChain(0))
 end
 function c47710198.remtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c47710198.filter,1,nil,nil,tp) end
@@ -81,7 +81,7 @@ function c47710198.remop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47710198.remcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ep==1-tp and re:GetHandler():IsRelateToEffect(re) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
+	return ep==1-tp and re:GetHandler():IsRelateToChain(ev) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function c47710198.remtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return re:GetHandler():IsAbleToRemove() end
@@ -90,7 +90,7 @@ function c47710198.remtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47710198.remop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
-	if tc:IsRelateToEffect(re) then
+	if tc:IsRelateToChain(ev) then
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 			 Duel.Damage(1-tp,1200,REASON_EFFECT)
 		end

@@ -27,7 +27,7 @@ end
 function c60800381.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c60800381.filter,tp,LOCATION_MZONE,0,nil)
-	if g:GetCount()>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if g:GetCount()>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=0
 		local tc=g:GetFirst()
 		while tc do

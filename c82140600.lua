@@ -37,7 +37,7 @@ function c82140600.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c82140600.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=tg:Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()==5 and Duel.Remove(g,POS_FACEUP,REASON_EFFECT)>0 then
 		local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		Duel.Destroy(dg,REASON_EFFECT)

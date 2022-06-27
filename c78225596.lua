@@ -79,7 +79,7 @@ function c78225596.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78225596.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local ac=e:GetLabelObject()
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToChain(0) then return end
 	local g=e:GetHandler():GetMutualLinkedGroup()
 	if ac:IsRelateToBattle() and ac:IsFaceup() and ac:IsControler(tp) then
 		local e1=Effect.CreateEffect(e:GetHandler())

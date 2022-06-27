@@ -47,7 +47,7 @@ function c32247099.initial_effect(c)
 end
 function c32247099.checkop1(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) then
+	if rc:IsRelateToChain(ev) then
 		local ct=rc:GetFlagEffectLabel(32247099)
 		if not ct then
 			rc:RegisterFlagEffect(32247099,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,1)
@@ -89,7 +89,7 @@ end
 function c32247099.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0
 		and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.BreakEffect()
 		Duel.ChangeAttackTarget(tc)

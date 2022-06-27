@@ -94,7 +94,7 @@ function c4059313.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4059313.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

@@ -18,7 +18,7 @@ function c67959180.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67959180.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
 		local opt=Duel.AnnounceCoin(tp)
 		local coin=Duel.TossCoin(tp,1)

@@ -50,9 +50,9 @@ end
 function c18446701.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetControler()==c:GetControler() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetControler()==c:GetControler() then
 		Duel.Equip(tp,c,tc)
 		--draw
 		local e1=Effect.CreateEffect(c)

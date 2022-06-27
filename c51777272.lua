@@ -46,7 +46,7 @@ function c51777272.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c51777272.indct)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_ATTACK_ALL)

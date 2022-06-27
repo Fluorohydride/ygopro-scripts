@@ -64,7 +64,7 @@ function c3507053.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3507053.chop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c3507053.chfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local sg=g:SelectSubGroup(tp,c3507053.fselect,false,2,2,c)

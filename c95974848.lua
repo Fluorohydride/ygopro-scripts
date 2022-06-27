@@ -32,7 +32,7 @@ function c95974848.ettg(e,c)
 	return cg:IsExists(c95974848.etfilter,1,nil,e:GetHandlerPlayer())
 end
 function c95974848.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsRelateToEffect(re) and re:GetHandler():IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER) and rp==1-tp
+	return re:GetHandler():IsRelateToChain(ev) and re:GetHandler():IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER) and rp==1-tp
 end
 function c95974848.costfilter(c,e,tp)
 	if c:IsLocation(LOCATION_HAND) then
@@ -58,7 +58,7 @@ function c95974848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 end
 function c95974848.desop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

@@ -62,7 +62,7 @@ end
 function c28570310.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		local g=Group.FromCards(c,tc)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
@@ -93,8 +93,8 @@ function c28570310.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28570310.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g=eg:Filter(c28570310.cfilter,nil,1-tp):Filter(Card.IsRelateToEffect,nil,e)
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		local g=eg:Filter(c28570310.cfilter,nil,1-tp):Filter(Card.IsRelateToChain,nil,0)
 		if g:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.SendtoHand(g,nil,REASON_EFFECT)

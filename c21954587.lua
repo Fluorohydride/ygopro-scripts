@@ -45,7 +45,7 @@ function c21954587.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21954587.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 end
 function c21954587.thcon(e,tp,eg,ep,ev,re,r,rp)
@@ -82,7 +82,7 @@ function c21954587.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21954587.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

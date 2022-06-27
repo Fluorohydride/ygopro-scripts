@@ -52,7 +52,7 @@ function c2857636.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c2857636.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0
 		and e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)
 		and Duel.SelectYesNo(tp,aux.Stringid(2857636,1)) then
 		Duel.BreakEffect()

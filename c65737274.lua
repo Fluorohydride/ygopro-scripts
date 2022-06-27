@@ -36,7 +36,7 @@ function c65737274.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65737274.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
@@ -59,7 +59,7 @@ function c65737274.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65737274.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsLevel(8) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsLevel(8) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

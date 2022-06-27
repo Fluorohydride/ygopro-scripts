@@ -38,7 +38,7 @@ function c58504745.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,4,0,0)
 end
 function c58504745.filter3(c,e)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsRelateToEffect(e)
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsRelateToChain(0)
 end
 function c58504745.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c58504745.filter3,nil,e)

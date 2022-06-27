@@ -26,7 +26,7 @@ function c53077251.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c53077251.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local atk=tc:GetAttack()
 	local g=Duel.GetMatchingGroup(c53077251.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,tc,atk)
 	for sc in aux.Next(g) do

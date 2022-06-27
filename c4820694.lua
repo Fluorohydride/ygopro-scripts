@@ -46,7 +46,7 @@ function c4820694.lpop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
-	if tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e) then
+	if tc1:IsRelateToChain(0) and tc2:IsRelateToChain(0) then
 		local og1=tc1:GetOverlayGroup()
 		local og2=tc2:GetOverlayGroup()
 		og1:Merge(og2)
@@ -73,8 +73,8 @@ function c4820694.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4820694.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,tc,e)
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) or tc:IsImmuneToEffect(e) then return end
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,tc,0)
 	if g:GetCount()>0 then
 		Duel.Overlay(tc,g)
 	end

@@ -40,7 +40,7 @@ function c14577226.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c14577226.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
 	end
 end
@@ -65,7 +65,7 @@ end
 function c14577226.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c14577226.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,tc:GetLevel())
 		local sg=g:GetFirst()

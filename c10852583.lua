@@ -48,7 +48,7 @@ function c10852583.seqcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10852583.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) then return end
+	if not c:IsRelateToChain(0) or c:IsControler(1-tp) then return end
 	local seq=c:GetSequence()
 	if seq>4 then return end
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
@@ -79,8 +79,8 @@ end
 function c10852583.mvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()
-	if not c:IsRelateToEffect(e) or c:IsControler(1-tp)
-	 	or not tc:IsRelateToEffect(e) or tc:IsControler(tp) then return end
+	if not c:IsRelateToChain(0) or c:IsControler(1-tp)
+	 	or not tc:IsRelateToChain(0) or tc:IsControler(tp) then return end
 	local seq1=c:GetSequence()
 	local seq2=tc:GetSequence()
 	if seq1>4 then return end

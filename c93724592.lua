@@ -36,7 +36,7 @@ function c93724592.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c93724592.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
@@ -49,7 +49,7 @@ function c93724592.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c93724592.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	end
 end

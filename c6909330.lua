@@ -71,7 +71,7 @@ function c6909330.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c6909330.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.Damage(tp,800,REASON_EFFECT)~=0 and Duel.GetLP(tp)>0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.Damage(tp,800,REASON_EFFECT)~=0 and Duel.GetLP(tp)>0 then
 		Duel.BreakEffect()
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end

@@ -48,7 +48,7 @@ end
 function c22011689.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
 		local e1=Effect.CreateEffect(c)
@@ -81,7 +81,7 @@ function c22011689.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c22011689.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local atk=tc:GetTextAttack()
 		Duel.Recover(tp,atk,REASON_EFFECT)
 	end

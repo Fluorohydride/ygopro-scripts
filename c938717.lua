@@ -40,7 +40,7 @@ function c938717.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c938717.tgfilter(c,e)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsRelateToEffect(e)
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsRelateToChain(0)
 end
 function c938717.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

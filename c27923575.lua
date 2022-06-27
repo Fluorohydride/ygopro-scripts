@@ -49,7 +49,7 @@ function c27923575.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c27923575.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if #tg==0 or ft<=0 then return end
 	if #tg>ft then

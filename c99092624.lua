@@ -73,7 +73,7 @@ end
 function c99092624.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)>0 then
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -88,7 +88,7 @@ function c99092624.tdop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		e1:SetOperation(c99092624.retop)
 		Duel.RegisterEffect(e1,tp)
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end

@@ -49,7 +49,7 @@ function c1825445.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1825445.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
+	if not tc:IsRelateToChain(0) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c1825445.filter2,tp,LOCATION_MZONE,0,1,1,tc,e)
 	if g:GetCount()>0 then

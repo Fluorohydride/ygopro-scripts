@@ -60,7 +60,7 @@ function c78202553.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78202553.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c78202553.postg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -71,7 +71,7 @@ function c78202553.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78202553.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

@@ -32,6 +32,6 @@ function c77334267.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77334267.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local dg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local dg=g:Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(dg,REASON_EFFECT)
 end

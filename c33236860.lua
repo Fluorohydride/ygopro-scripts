@@ -50,11 +50,11 @@ function c33236860.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c33236860.desfilter(c,e,atk)
-	return c:IsFaceup() and c:IsRelateToEffect(e) and c:IsDefenseBelow(atk-1)
+	return c:IsFaceup() and c:IsRelateToChain(0) and c:IsDefenseBelow(atk-1)
 end
 function c33236860.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sg=g:Filter(c33236860.desfilter,nil,e,c:GetAttack())
 	Duel.Destroy(sg,REASON_EFFECT)

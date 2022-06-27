@@ -53,7 +53,7 @@ function c98558751.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c98558751.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -82,7 +82,7 @@ function c98558751.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c98558751.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) then return end
+	if c:GetControler()~=tp or not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,c)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

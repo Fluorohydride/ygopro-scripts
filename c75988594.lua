@@ -36,7 +36,7 @@ function c75988594.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75988594.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		if Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP) then
 			local e1=Effect.CreateEffect(e:GetHandler())

@@ -96,7 +96,7 @@ function c90965652.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetTargetCard(sg)
 end
 function c90965652.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0):Filter(Card.IsFaceup,nil)
 	if #g<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90965652,4))
 	local g1=g:FilterSelect(tp,c90965652.atkfilter,1,1,nil)

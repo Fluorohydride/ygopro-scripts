@@ -34,7 +34,7 @@ function c65357623.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc,race)
 end
 function c65357623.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=1000
 		if Duel.SelectOption(tp,aux.Stringid(65357623,1),aux.Stringid(65357623,2))==1 then atk=-1000 end
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -58,7 +58,7 @@ function c65357623.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c65357623.retfilter,tp,LOCATION_REMOVED,0,1,1,nil)
 	if #g>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0
-		and c:IsRelateToEffect(e) and Duel.SSet(tp,c)~=0 then
+		and c:IsRelateToChain(0) and Duel.SSet(tp,c)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)

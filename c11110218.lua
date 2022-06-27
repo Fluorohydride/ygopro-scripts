@@ -26,7 +26,7 @@ function c11110218.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g2,#g2,0,0)
 end
 function c11110218.filter(c,loc,e)
-	return c:IsLocation(loc) and c:IsRelateToEffect(e)
+	return c:IsLocation(loc) and c:IsRelateToChain(0)
 end
 function c11110218.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

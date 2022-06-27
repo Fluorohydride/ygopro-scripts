@@ -49,7 +49,7 @@ function c63633694.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63633694.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -71,7 +71,7 @@ end
 function c63633694.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		tc:RegisterFlagEffect(63633694,RESET_EVENT+RESETS_STANDARD,0,0)
 		e:SetLabelObject(tc)

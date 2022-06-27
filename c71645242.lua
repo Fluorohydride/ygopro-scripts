@@ -62,7 +62,7 @@ function c71645242.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c71645242.opfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsRelateToChain(0) and not c:IsImmuneToEffect(e)
 end
 function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c71645242.opfilter,nil,e)
@@ -119,7 +119,7 @@ function c71645242.spop2(e,tp,eg,ep,ev,re,r,rp)
 	dg:AddCard(c)
 	if Duel.Destroy(dg,REASON_EFFECT)==dg:GetCount() then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,SUMMON_VALUE_BLACK_GARDEN,tp,tp,false,false,POS_FACEUP)
 		end
 	end

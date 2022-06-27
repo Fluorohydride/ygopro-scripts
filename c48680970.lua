@@ -71,7 +71,7 @@ function c48680970.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 end
 function c48680970.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==2 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetLabel()==2 or not e:GetHandler():IsRelateToChain(0) then return end
 	if e:GetLabel()==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

@@ -55,7 +55,7 @@ end
 function c77967790.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local fid=c:GetFieldID()
 		Duel.RegisterFlagEffect(tp,77967790,RESET_PHASE+PHASE_BATTLE,0,1)
 		tc:RegisterFlagEffect(77967790,RESET_PHASE+PHASE_BATTLE+RESET_EVENT+RESETS_STANDARD,0,1,fid)

@@ -35,7 +35,7 @@ function c7030340.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7030340.filter1,tp,LOCATION_GRAVE,0,nil)
 	local ct=Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
-	if ct>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ct>0 and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

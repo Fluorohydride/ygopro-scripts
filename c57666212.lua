@@ -32,7 +32,7 @@ function c57666212.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57666212.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=tg:Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(sg,REASON_EFFECT)
 	sg=Duel.GetOperatedGroup()
 	local d1=0

@@ -61,7 +61,7 @@ end
 function c69700783.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
-		if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
+		if not (tc:IsRelateToChain(0) and tc:IsFaceup()) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c69700783.tgfilter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel())
 		if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
@@ -78,7 +78,7 @@ function c69700783.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local tg=Duel.SelectMatchingCard(tp,c69700783.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
 		if tg:GetCount()>0 and Duel.SendtoGrave(tg,REASON_EFFECT)~=0 and tg:GetFirst():IsLocation(LOCATION_GRAVE)
-			and tc:IsRelateToEffect(e) then
+			and tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

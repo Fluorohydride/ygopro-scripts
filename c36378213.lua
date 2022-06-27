@@ -23,7 +23,7 @@ function c36378213.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36378213.spfilter(c,e,tp)
 	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp) and c:IsSetCard(0x16)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsRelateToEffect(e)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsRelateToChain(0)
 end
 function c36378213.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

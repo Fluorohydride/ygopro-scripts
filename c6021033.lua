@@ -36,9 +36,9 @@ end
 function c6021033.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_ZOMBIE)
+	if tc:IsRelateToChain(0) and tc:IsRace(RACE_ZOMBIE)
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
-		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+		if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
 		tc:RegisterFlagEffect(6021033,RESET_EVENT+RESETS_STANDARD,0,0)

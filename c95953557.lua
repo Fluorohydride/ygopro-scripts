@@ -39,7 +39,7 @@ function c95953557.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95953557.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local lv=e:GetLabel()
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==1
 		and lv>0 and c:GetLevel()~=lv and Duel.SelectYesNo(tp,aux.Stringid(95953557,2)) then

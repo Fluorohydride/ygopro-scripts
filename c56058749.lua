@@ -77,7 +77,7 @@ function c56058749.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end

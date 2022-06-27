@@ -46,7 +46,7 @@ function c12247206.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft1>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft1=1 end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c12247206.spfilter1),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,tc,e,tp)
-	if ft1>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ft1>0 and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		if g:GetCount()<=ft1 then
 			c12247206.sp(g,tp,POS_FACEUP_ATTACK)
 		else

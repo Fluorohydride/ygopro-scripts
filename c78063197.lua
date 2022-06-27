@@ -115,7 +115,7 @@ function c78063197.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		local tc2=g:GetFirst()
 		local m=_G["c"..tc2:GetCode()]
-		if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc1:IsControler(1-tp) and tc2 then
+		if tc1:IsFaceup() and tc1:IsRelateToChain(0) and tc1:IsControler(1-tp) and tc2 then
 			m.equip_monster(tc2,tp,tc1)
 		end
 	end

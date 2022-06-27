@@ -44,7 +44,7 @@ function c24101897.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24101897.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -52,7 +52,7 @@ function c24101897.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c24101897.sfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c24101897.filter(c,e)
-	return c:IsFaceup() and c:IsLevelAbove(4) and c:IsCanTurnSet() and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and c:IsLevelAbove(4) and c:IsCanTurnSet() and (not e or c:IsRelateToChain(0))
 end
 function c24101897.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c24101897.filter,1,nil) end

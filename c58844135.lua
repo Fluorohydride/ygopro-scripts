@@ -67,7 +67,7 @@ function c58844135.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(58844135,2))
 	local g=Duel.SelectMatchingCard(tp,c58844135.tefilter,tp,LOCATION_HAND+LOCATION_PZONE,0,1,1,c)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoExtraP(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) and c:IsRelateToEffect(e) then
+	if tc and Duel.SendtoExtraP(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) and c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -80,7 +80,7 @@ function c58844135.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(g)
 end
 function c58844135.tgfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsRelateToChain(0) and not c:IsImmuneToEffect(e)
 end
 function c58844135.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c58844135.tgfilter,nil,e)

@@ -41,7 +41,7 @@ function c79552283.adatktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c79552283.adatkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	--defense attack
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

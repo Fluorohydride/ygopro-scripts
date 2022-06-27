@@ -51,7 +51,7 @@ end
 function c63767246.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if Duel.NegateEffect(ev) and c:IsRelateToEffect(e) and rc:IsRelateToEffect(re) and c:IsType(TYPE_XYZ) then
+	if Duel.NegateEffect(ev) and c:IsRelateToChain(0) and rc:IsRelateToChain(ev) and c:IsType(TYPE_XYZ) then
 		rc:CancelToGrave()
 		Duel.Overlay(c,Group.FromCards(rc))
 	end
@@ -65,7 +65,7 @@ function c63767246.cbcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63767246.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local at=Duel.GetAttacker()
 		if at:IsAttackable() and not at:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(at,c)
@@ -96,7 +96,7 @@ function c63767246.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local g=e:GetLabelObject()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		if g:GetCount()>=2 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			g=g:Select(tp,1,1,nil)

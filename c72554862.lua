@@ -66,7 +66,7 @@ end
 function c72554862.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 	local g=Duel.GetMatchingGroup(c72554862.atkfilter,tp,LOCATION_MZONE,0,nil)

@@ -74,7 +74,7 @@ function c37542782.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c37542782.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsFaceup() and c:IsRelateToEffect(e)) then return end
+	if not (c:IsFaceup() and c:IsRelateToChain(0)) then return end
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c37542782.eqfilter),tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,tp)

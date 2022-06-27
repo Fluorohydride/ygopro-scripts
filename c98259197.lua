@@ -29,7 +29,7 @@ function c98259197.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local dg=Duel.GetMatchingGroup(c98259197.filter2,0,LOCATION_MZONE,LOCATION_MZONE,tc)
 	local ct=Duel.Destroy(dg,REASON_EFFECT)
-	if ct>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ct>0 and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

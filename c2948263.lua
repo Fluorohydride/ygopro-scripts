@@ -69,7 +69,7 @@ function c2948263.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2948263.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or c:GetAttack()<1500 or not c:IsRelateToEffect(e) or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then
+	if c:IsFacedown() or c:GetAttack()<1500 or not c:IsRelateToChain(0) or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then
 		return
 	end
 	Duel.NegateEffect(ev)

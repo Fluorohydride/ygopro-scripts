@@ -11,7 +11,7 @@ function c40410110.initial_effect(c)
 end
 function c40410110.attop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local catt=c:GetAttribute()
 		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-catt)

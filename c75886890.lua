@@ -42,7 +42,7 @@ end
 function c75886890.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Equip(tp,c,tc)
 		--equip limit
 		local e1=Effect.CreateEffect(c)
@@ -77,7 +77,7 @@ end
 function c75886890.eqop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ec=e:GetLabelObject()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Equip(tp,tc,ec)
 	end
 end

@@ -29,7 +29,7 @@ function c49936169.cfilter(c)
 end
 function c49936169.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local d=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 		if Duel.Recover(tp,d,REASON_EFFECT)<=0 then return end

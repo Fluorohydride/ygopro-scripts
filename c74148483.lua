@@ -53,7 +53,7 @@ function c74148483.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74148483.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local opt=0
 		if c:IsLevel(1) then
 			opt=Duel.SelectOption(tp,aux.Stringid(74148483,1))

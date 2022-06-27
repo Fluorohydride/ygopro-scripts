@@ -70,9 +70,9 @@ function c21521304.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_REMOVE)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_SPECIAL_SUMMON)
 	local tc1=g1:GetFirst()
-	if not tc1:IsRelateToEffect(e) or Duel.Remove(tc1,POS_FACEUP,REASON_EFFECT)==0 then return end
+	if not tc1:IsRelateToChain(0) or Duel.Remove(tc1,POS_FACEUP,REASON_EFFECT)==0 then return end
 	local tc2=g2:GetFirst()
-	if not tc2:IsRelateToEffect(e) or Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)==0 then return end
+	if not tc2:IsRelateToChain(0) or Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	Duel.BreakEffect()
 	Duel.Recover(tp,1250,REASON_EFFECT)
 end

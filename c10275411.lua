@@ -32,7 +32,7 @@ function c10275411.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c10275411.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g1=Duel.GetOverlayGroup(tp,0,1)
 		if g1:GetCount()==0 then return end
 		Duel.BreakEffect()

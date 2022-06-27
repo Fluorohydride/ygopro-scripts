@@ -53,7 +53,7 @@ function c40005099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c40005099.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -69,7 +69,7 @@ function c40005099.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c40005099.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_RETURN)
 	end
 end

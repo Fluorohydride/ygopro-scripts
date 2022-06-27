@@ -37,7 +37,7 @@ function c20899496.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local res=false
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		res=Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 		if res then
 			local e1=Effect.CreateEffect(c)

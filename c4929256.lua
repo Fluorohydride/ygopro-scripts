@@ -27,6 +27,6 @@ function c4929256.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4929256.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=tg:Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(sg,REASON_EFFECT)
 end

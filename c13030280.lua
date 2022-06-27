@@ -46,7 +46,7 @@ function c13030280.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c13030280.damop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
-	if bc:IsRelateToEffect(e) and Duel.Remove(bc,POS_FACEUP,REASON_EFFECT)>0 then
+	if bc:IsRelateToChain(0) and Duel.Remove(bc,POS_FACEUP,REASON_EFFECT)>0 then
 		Duel.Damage(1-tp,bc:GetBaseAttack(),REASON_EFFECT)
 	end
 end

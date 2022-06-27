@@ -21,7 +21,7 @@ end
 function c43270827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=re:GetHandler()
 	local b1=Duel.IsChainDisablable(ev)
-	local b2=rc:IsRelateToEffect(re) and rc:IsAbleToRemove() and not rc:IsLocation(LOCATION_REMOVED)
+	local b2=rc:IsRelateToChain(ev) and rc:IsAbleToRemove() and not rc:IsLocation(LOCATION_REMOVED)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
@@ -42,7 +42,7 @@ function c43270827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		else
 			e:SetCategory(CATEGORY_REMOVE+CATEGORY_DISABLE)
 		end
-		if rc:IsRelateToEffect(re) then
+		if rc:IsRelateToChain(ev) then
 			Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
 		end
 	else
@@ -57,7 +57,7 @@ function c43270827.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if op~=0 then
 		local rc=re:GetHandler()
-		if rc:IsRelateToEffect(re) then
+		if rc:IsRelateToChain(ev) then
 			Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)
 		end
 	end

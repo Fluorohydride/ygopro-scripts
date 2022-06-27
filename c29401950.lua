@@ -36,7 +36,7 @@ function c29401950.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29401950.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()>=1500 then
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetAttack()>=1500 then
 		Duel.Destroy(tc,REASON_EFFECT,LOCATION_REMOVED)
 	end
 end
@@ -53,7 +53,7 @@ function c29401950.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29401950.filter3(c,e,tp)
 	return c:IsFaceup() and c:GetAttack()>=1500 and c:IsSummonPlayer(1-tp)
-		and c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)
+		and c:IsRelateToChain(0) and c:IsLocation(LOCATION_MZONE)
 end
 function c29401950.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c29401950.filter3,nil,e,tp)

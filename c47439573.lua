@@ -22,7 +22,7 @@ function c47439573.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,0,1-tp,LOCATION_HAND)
 end
 function c47439573.filter(c,e,tp)
-	return c:IsRelateToEffect(e) and c47439573.cfilter(c,tp)
+	return c:IsRelateToChain(0) and c47439573.cfilter(c,tp)
 end
 function c47439573.rmfilter(c,g)
 	return c:IsAbleToRemove() and g:IsExists(Card.IsCode,1,nil,c:GetCode())

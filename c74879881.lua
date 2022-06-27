@@ -38,7 +38,7 @@ function c74879881.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCondition(c74879881.retcon)
 			e1:SetOperation(c74879881.retop)
 			Duel.RegisterEffect(e1,tp)
-			if c:IsRelateToEffect(e) then
+			if c:IsRelateToChain(0) then
 				Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 			end
 		end

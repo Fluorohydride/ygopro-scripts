@@ -67,7 +67,7 @@ end
 function c21065189.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsControler(tp) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and c:IsControler(tp) and tc:IsRelateToChain(0) then
 		local zone=c21065189.get_zone(tc,c:GetSequence())
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 	end

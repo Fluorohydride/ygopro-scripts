@@ -46,7 +46,7 @@ function c91740879.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91740879.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:AddCounter(0x55,1)
 	end
 end
@@ -68,7 +68,7 @@ function c91740879.recop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=c:GetCounter(0x55)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	if c:IsRelateToEffect(e) and ct>0 then
+	if c:IsRelateToChain(0) and ct>0 then
 		Duel.Recover(p,ct*500,REASON_EFFECT)
 	end
 end
@@ -83,7 +83,7 @@ function c91740879.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=c:GetCounter(0x55)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	if c:IsRelateToEffect(e) and ct>0 then
+	if c:IsRelateToChain(0) and ct>0 then
 		Duel.Damage(p,ct*300,REASON_EFFECT)
 	end
 end

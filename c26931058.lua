@@ -48,7 +48,7 @@ end
 function c26931058.efop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
-		if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+		if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c26931058.filter2,tp,LOCATION_MZONE,0,1,1,tc,tc)
 		local ec=g:GetFirst()
@@ -57,7 +57,7 @@ function c26931058.efop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 		end
 	end

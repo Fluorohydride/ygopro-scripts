@@ -50,7 +50,7 @@ end
 function c3897065.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsType(TYPE_MONSTER) and not tc:IsRace(RACE_MACHINE) and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsType(TYPE_MONSTER) and not tc:IsRace(RACE_MACHINE) and tc:IsRelateToChain(0) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--equip limit
 		local e1=Effect.CreateEffect(c)

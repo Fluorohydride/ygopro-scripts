@@ -65,7 +65,7 @@ end
 function c9634146.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_FZONE,LOCATION_FZONE)
-	if c:IsRelateToEffect(e) then g:AddCard(c) end
+	if c:IsRelateToChain(0) then g:AddCard(c) end
 	for tc in aux.Next(g) do
 		if tc:IsCanAddCounter(0x104d,1) then
 			tc:AddCounter(0x104d,1)

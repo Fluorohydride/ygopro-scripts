@@ -83,7 +83,7 @@ function c33545259.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33545259.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -102,7 +102,7 @@ function c33545259.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33545259.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

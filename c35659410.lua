@@ -69,7 +69,7 @@ end
 function c35659410.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local code=tc:GetOriginalCode()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local g1=Duel.GetMatchingGroup(c35659410.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 		if code==89631139 and #g1>0
 			and Duel.SelectYesNo(tp,aux.Stringid(35659410,1)) then

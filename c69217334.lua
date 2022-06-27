@@ -44,7 +44,7 @@ function c69217334.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local ec=tc
-	if not tc:IsRelateToEffect(e) then ec=nil end
+	if not tc:IsRelateToChain(0) then ec=nil end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c69217334.lvcfilter,tp,LOCATION_HAND,0,1,1,nil,ec)
 	if cg:GetCount()>0 then
@@ -57,7 +57,7 @@ function c69217334.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		pc:RegisterEffect(e2)
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_LEVEL)

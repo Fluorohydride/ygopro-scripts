@@ -30,7 +30,7 @@ function c17653779.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17653779.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if g:GetFirst():IsRelateToEffect(e) then
+	if g:GetFirst():IsRelateToChain(0) then
 		Duel.ChangeTargetCard(ev,g)
 	end
 end

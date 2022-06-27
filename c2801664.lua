@@ -43,7 +43,7 @@ function c2801664.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2801664.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c2801664.atkcon(e)
@@ -62,7 +62,7 @@ function c2801664.xatktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2801664.xatkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)

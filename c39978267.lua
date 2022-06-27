@@ -56,12 +56,12 @@ function c39978267.operation(e,tp,eg,ep,ev,re,r,rp)
 	if sel==0 then return end
 	local tc=Duel.GetFirstTarget()
 	if sel==1 then
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	else
 		local c=e:GetHandler()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.Equip(tp,tc,c)
 		end
 	end

@@ -50,7 +50,7 @@ function c38107923.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38107923.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		c:RegisterFlagEffect(38107923,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
 	end
@@ -67,7 +67,7 @@ function c38107923.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38107923.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -83,7 +83,7 @@ function c38107923.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38107923.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

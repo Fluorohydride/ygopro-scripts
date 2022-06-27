@@ -59,7 +59,7 @@ function c59531356.drytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59531356.dryop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

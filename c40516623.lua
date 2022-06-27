@@ -32,7 +32,7 @@ function c40516623.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c40516623.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SendtoHand(c,nil,REASON_EFFECT)
 end
 function c40516623.tgfilter(c,tp)

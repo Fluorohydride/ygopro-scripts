@@ -32,7 +32,7 @@ function c42548470.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetNext()
 	local lv1=tc1:GetLevel()
 	local lv2=tc2:GetLevel()
-	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
+	if tc1:IsFaceup() and tc1:IsRelateToChain(0) and tc2:IsFaceup() and tc2:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TARGET)
 		local sg=g:Select(1-tp,1,1,nil)
 		if lv1==lv2 then return end

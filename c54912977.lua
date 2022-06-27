@@ -33,7 +33,7 @@ end
 function c54912977.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local a=Duel.GetAttacker()
-	if tc and tc:IsRelateToEffect(e)
+	if tc and tc:IsRelateToChain(0)
 		and a:IsAttackable() and not a:IsImmuneToEffect(e) then
 		Duel.CalculateDamage(a,tc)
 	end
@@ -48,7 +48,7 @@ function c54912977.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54912977.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
+	if not e:GetHandler():IsRelateToChain(0) or e:GetHandler():IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c54912977.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

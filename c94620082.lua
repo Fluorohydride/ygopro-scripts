@@ -65,7 +65,7 @@ function c94620082.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94620082.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(c94620082.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(94620082,3)) then
 			Duel.BreakEffect()

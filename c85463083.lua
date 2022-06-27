@@ -42,7 +42,7 @@ function c85463083.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85463083.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -66,7 +66,7 @@ function c85463083.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c85463083.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local atk=0
 		local g=Duel.GetMatchingGroup(c85463083.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		local bc=g:GetFirst()

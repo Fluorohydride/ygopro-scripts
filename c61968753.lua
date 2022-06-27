@@ -36,7 +36,7 @@ function c61968753.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c61968753.pfilter(c,e)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToEffect(e)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToChain(0)
 end
 function c61968753.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c61968753.pfilter,nil,e)

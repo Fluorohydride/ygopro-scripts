@@ -76,7 +76,7 @@ end
 function c14466224.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local atk=tc:GetTextAttack()
 		local def=tc:GetTextDefense()
 		if atk<0 then atk=0 end

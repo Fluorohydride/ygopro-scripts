@@ -69,7 +69,7 @@ function c53318263.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53318263.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local pos=0
 	if c:IsSummonable(true,nil,1) then pos=pos+POS_FACEUP_ATTACK end
 	if c:IsMSetable(true,nil,1) then pos=pos+POS_FACEDOWN_DEFENSE end

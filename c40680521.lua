@@ -68,7 +68,7 @@ function c40680521.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c40680521.pop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local zone=1<<c:GetSequence()
 	if e:GetLabel()==0 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
@@ -105,7 +105,7 @@ function c40680521.sttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c40680521.stop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e)) then return end
+	if not (tc:IsRelateToChain(0) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e)) then return end
 	local zone=1<<tc:GetSequence()
 	local oc=Duel.GetMatchingGroup(c40680521.seqfilter,tp,0,LOCATION_SZONE,nil,tc:GetSequence()):GetFirst()
 	if oc and Duel.Destroy(oc,REASON_RULE)>0 and oc:IsType(TYPE_MONSTER) then
@@ -134,7 +134,7 @@ function c40680521.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c40680521.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

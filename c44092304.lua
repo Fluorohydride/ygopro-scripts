@@ -50,7 +50,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 		e:GetHandler():SetTurnCounter(0)
 	end
@@ -63,7 +63,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	if ec and ec:IsRelateToEffect(e) then
+	if ec and ec:IsRelateToChain(0) then
 		Duel.Destroy(ec,REASON_EFFECT)
 	end
 end
@@ -106,7 +106,7 @@ function s.tkop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(atk)
 		token:RegisterEffect(e3)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.Equip(tp,c,token)
 		end

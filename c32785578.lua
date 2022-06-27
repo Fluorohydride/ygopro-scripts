@@ -30,7 +30,7 @@ end
 function c32785578.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local res=0
-	if Duel.NegateAttack() and tc:IsRelateToEffect(e) then
+	if Duel.NegateAttack() and tc:IsRelateToChain(0) then
 		res=Duel.Destroy(tc,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(c32785578.stfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 		if res>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(32785578,0)) then

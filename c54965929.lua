@@ -63,9 +63,9 @@ function c54965929.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c54965929.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0
+		if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0
 			and tc:IsCanAddCounter(0x1,1) then
 			tc:AddCounter(0x1,1)
 		end
@@ -93,7 +93,7 @@ function c54965929.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c54965929.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

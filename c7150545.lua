@@ -42,7 +42,7 @@ function c7150545.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7150545.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local lv=tc:GetLevel()
 		local code=tc:GetCode()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

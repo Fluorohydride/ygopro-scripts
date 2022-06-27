@@ -63,7 +63,7 @@ end
 function c39528955.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ttp=tc:GetControler()
-	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e)
+	if not tc:IsRelateToChain(0) or tc:IsImmuneToEffect(e)
 		or Duel.GetLocationCount(ttp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 	local p1,p2
 	if tc:IsControler(tp) then

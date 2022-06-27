@@ -57,7 +57,7 @@ function c9547962.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c9547962.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) then
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) then
 		Duel.GetControl(tc,1-tp)
 	end
 end

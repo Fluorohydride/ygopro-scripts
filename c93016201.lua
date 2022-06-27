@@ -64,7 +64,7 @@ function c93016201.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local te=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	local tc=te:GetHandler()
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,tc,1,0,0)
-	if tc:IsRelateToEffect(te) then
+	if tc:IsRelateToChain(ct-1) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 	end
 end
@@ -74,7 +74,7 @@ function c93016201.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	local te=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	local tc=te:GetHandler()
-	if Duel.NegateEffect(ct-1) and tc:IsRelateToEffect(te) then
+	if Duel.NegateEffect(ct-1) and tc:IsRelateToChain(ct-1) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -104,12 +104,12 @@ end
 function c93016201.target3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
 function c93016201.activate3(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

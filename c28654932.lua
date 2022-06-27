@@ -11,7 +11,7 @@ function c28654932.initial_effect(c)
 end
 function c28654932.filter(c,e)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsLevelAbove(5)
-		and (not e or c:IsRelateToEffect(e)) and c:IsAbleToRemove()
+		and (not e or c:IsRelateToChain(0)) and c:IsAbleToRemove()
 end
 function c28654932.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c28654932.filter,1,nil,nil) end

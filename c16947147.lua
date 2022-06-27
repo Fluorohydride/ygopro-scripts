@@ -27,7 +27,7 @@ function c16947147.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16947147.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
 		local g=Duel.GetMatchingGroup(c16947147.filter,tp,0,LOCATION_MZONE,nil)
 		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)

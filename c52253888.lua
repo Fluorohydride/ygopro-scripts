@@ -36,8 +36,8 @@ function c52253888.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52253888.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsRelateToEffect(e) and c:IsFaceup() and c:IsControler(tp)) then return end
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if not (c:IsRelateToChain(0) and c:IsFaceup() and c:IsControler(tp)) then return end
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local tc=tg:GetFirst()
 	while tc do
 		c:CreateRelation(tc,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)

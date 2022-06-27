@@ -61,7 +61,7 @@ function c69954399.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69954399.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 		e:GetHandler():SetTurnCounter(0)
 	end
@@ -86,7 +86,7 @@ function c69954399.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69954399.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	if ec and ec:IsRelateToEffect(e) and Duel.Destroy(ec,REASON_EFFECT)~=0 then
+	if ec and ec:IsRelateToChain(0) and Duel.Destroy(ec,REASON_EFFECT)~=0 then
 		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+69954400,e,0,0,0,0)
 	end
 end
@@ -95,7 +95,7 @@ function c69954399.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c69954399.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,e:GetHandler())
 	end

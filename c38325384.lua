@@ -38,7 +38,7 @@ function c38325384.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38325384.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		if tc:IsCanAddCounter(0x1,2) and Duel.SelectYesNo(tp,aux.Stringid(38325384,0)) then
 			tc:AddCounter(0x1,2)
 		else

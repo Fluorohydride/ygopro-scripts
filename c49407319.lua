@@ -57,7 +57,7 @@ function c49407319.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,2000)
 end
 function c49407319.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)>0 and Duel.Damage(tp,2000,REASON_EFFECT)>0 then
+	if e:GetHandler():IsRelateToChain(0) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)>0 and Duel.Damage(tp,2000,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		Duel.Damage(1-tp,2000,REASON_EFFECT)
 	end

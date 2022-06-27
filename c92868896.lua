@@ -39,7 +39,7 @@ function c92868896.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92868896.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c92868896.eqfilter,tp,LOCATION_DECK,0,1,1,nil,c)
 		if g:GetCount()>0 then

@@ -26,7 +26,7 @@ function c7565547.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7565547.eqfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
 	local ec=g:GetFirst()
 	while ec do
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) and ec:CheckEquipTarget(tc) then
+		if tc:IsFaceup() and tc:IsRelateToChain(0) and ec:CheckEquipTarget(tc) then
 			Duel.Equip(tp,ec,tc,false,false)
 		else
 			dg:AddCard(ec)

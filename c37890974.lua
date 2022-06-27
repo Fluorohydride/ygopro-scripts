@@ -41,7 +41,7 @@ end
 function c37890974.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not tc:IsRelateToEffect(e) then return end
+		or not tc:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c37890974.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetLevel())
 	if g:GetCount()>0 then

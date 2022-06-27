@@ -28,7 +28,7 @@ function c72083436.datg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c72083436.filter,tp,LOCATION_MZONE,0,1,ct,nil)
 end
 function c72083436.dafilter(c,e)
-	return not c:IsHasEffect(EFFECT_DIRECT_ATTACK) and c:IsRelateToEffect(e)
+	return not c:IsHasEffect(EFFECT_DIRECT_ATTACK) and c:IsRelateToChain(0)
 end
 function c72083436.daop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

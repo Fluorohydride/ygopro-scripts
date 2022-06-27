@@ -27,7 +27,7 @@ function c11508758.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11508758.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		if Duel.GetControl(tc,tp,PHASE_BATTLE,1)~=0 then
 			if tc:IsAttackable() and not tc:IsImmuneToEffect(e) then
 				local ats=tc:GetAttackableTarget()

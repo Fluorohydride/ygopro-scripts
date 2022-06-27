@@ -55,7 +55,7 @@ end
 function c66768175.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local tc=Duel.GetFirstTarget()
-	if a:IsFaceup() and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if a:IsFaceup() and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local atk=math.max(0,a:GetAttack())
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

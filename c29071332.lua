@@ -26,8 +26,8 @@ end
 function c29071332.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -83,7 +83,7 @@ function c29071332.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29071332.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c29071332.damcon(e,tp,eg,ep,ev,re,r,rp)
@@ -100,7 +100,7 @@ end
 function c29071332.damop(e,tp,eg,ep,ev,re,r,rp)
 	local des=eg:GetFirst()
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	if des:IsRelateToEffect(e) then
+	if des:IsRelateToChain(0) then
 		local dam=des:GetAttack()
 		if dam<0 then dam=0 end
 		Duel.Damage(p,dam,REASON_EFFECT)

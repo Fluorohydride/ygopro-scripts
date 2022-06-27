@@ -33,7 +33,7 @@ end
 function c60434101.op(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsDefenseBelow(c:GetAttack()) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) and tc:IsDefenseBelow(c:GetAttack()) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

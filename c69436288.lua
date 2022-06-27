@@ -51,15 +51,15 @@ function c69436288.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69436288.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local hc=e:GetLabelObject()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=g:GetFirst()
 		if tc==hc then tc=g:GetNext() end
-		if hc:IsRelateToEffect(e) and hc:IsControler(tp)
+		if hc:IsRelateToChain(0) and hc:IsControler(tp)
 			and Duel.SendtoHand(hc,nil,REASON_EFFECT)~=0 and hc:IsLocation(LOCATION_HAND)
-			and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+			and tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end
@@ -73,7 +73,7 @@ function c69436288.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69436288.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)>0 and c:IsLocation(LOCATION_HAND) then
+	if c:IsRelateToChain(0) and Duel.SendtoHand(c,nil,REASON_EFFECT)>0 and c:IsLocation(LOCATION_HAND) then
 		Duel.NegateAttack()
 	end
 end

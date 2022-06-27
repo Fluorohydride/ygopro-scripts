@@ -68,7 +68,7 @@ function c42421606.efop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Destroy(g,REASON_EFFECT)
 		end
 	elseif dc==6 then
-		if e:GetHandler():IsRelateToEffect(e) then
+		if e:GetHandler():IsRelateToChain(0) then
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end
 	end

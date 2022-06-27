@@ -51,7 +51,7 @@ end
 function c86170989.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==2 then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	elseif e:GetLabel()==1 then

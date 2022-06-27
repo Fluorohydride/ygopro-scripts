@@ -25,7 +25,7 @@ end
 function c50947142.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsCanTurnSet() then
+	if c:IsRelateToChain(0) and c:IsCanTurnSet() then
 		Duel.BreakEffect()
 		c:CancelToGrave()
 		Duel.ChangePosition(c,POS_FACEDOWN)

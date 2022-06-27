@@ -19,7 +19,7 @@ function c55773067.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
 end
 function c55773067.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=eg:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=eg:Filter(Card.IsRelateToChain,nil,0)
 	if sg:GetCount()==0 then
 	elseif sg:GetCount()==1 then
 		Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)

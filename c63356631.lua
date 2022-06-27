@@ -26,7 +26,7 @@ function c63356631.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63356631.activate(e)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

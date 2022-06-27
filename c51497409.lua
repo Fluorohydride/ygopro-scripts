@@ -42,7 +42,7 @@ function c51497409.ddtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c51497409.ddop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
@@ -53,7 +53,7 @@ function c51497409.incon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51497409.inop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)

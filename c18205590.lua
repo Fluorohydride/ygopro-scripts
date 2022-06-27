@@ -30,7 +30,7 @@ end
 function c18205590.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
+	if not (tc:IsRelateToChain(0) and tc:IsFaceup()) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c18205590.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetCode())
 	if g:GetCount()>0 then

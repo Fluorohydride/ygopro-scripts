@@ -40,7 +40,7 @@ function c90176467.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 and g:GetFirst():IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,g)
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) and c:IsFaceup() and not c:IsAttribute(ATTRIBUTE_LIGHT)
+		if c:IsRelateToChain(0) and c:IsFaceup() and not c:IsAttribute(ATTRIBUTE_LIGHT)
 			and Duel.SelectYesNo(tp,aux.Stringid(90176467,2)) then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)

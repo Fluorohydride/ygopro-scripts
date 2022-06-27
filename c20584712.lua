@@ -26,7 +26,7 @@ end
 function c20584712.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)==0 then return end
 	local dc=Duel.GetFirstTarget()
-	if not dc:IsRelateToEffect(e) then return end
+	if not dc:IsRelateToChain(0) then return end
 	Duel.ConfirmDecktop(1-tp,1)
 	local g=Duel.GetDecktopGroup(1-tp,1)
 	local tc=g:GetFirst()

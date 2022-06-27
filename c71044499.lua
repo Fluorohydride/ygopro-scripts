@@ -23,7 +23,7 @@ function c71044499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71044499.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFacedown() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT,LOCATION_REMOVED)
 		if tc:IsType(TYPE_FLIP) then
 			local code=tc:GetCode()

@@ -30,7 +30,7 @@ function c67955331.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67955331.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup()
+	if tc:IsRelateToChain(0) and tc:IsFaceup()
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c67955331.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp,tc:GetOriginalLevel())

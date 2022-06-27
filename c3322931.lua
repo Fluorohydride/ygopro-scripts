@@ -55,7 +55,7 @@ function c3322931.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3322931.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_MZONE,nil)
 		if g:GetCount()>0 then
 			g:AddCard(c)

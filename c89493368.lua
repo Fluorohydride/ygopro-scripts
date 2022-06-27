@@ -51,7 +51,7 @@ function c89493368.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 end
 function c89493368.damop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end
 end
@@ -66,7 +66,7 @@ function c89493368.natg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c89493368.naop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.NegateAttack()
 	end
 end

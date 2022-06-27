@@ -62,7 +62,7 @@ function c95192919.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95192919.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -78,7 +78,7 @@ function c95192919.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95192919.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

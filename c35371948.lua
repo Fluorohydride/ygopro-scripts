@@ -58,7 +58,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) and tc:GetFlagEffectLabel(35371949)==cid then
+	if c:IsRelateToChain(0) and tc:IsFacedown() and tc:IsRelateToChain(0) and tc:GetFlagEffectLabel(35371949)==cid then
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
 		c:ResetFlagEffect(35371948)

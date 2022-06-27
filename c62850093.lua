@@ -30,7 +30,7 @@ function c62850093.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62850093.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToGrave,tp,0,LOCATION_HAND,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(62850093,1)) then

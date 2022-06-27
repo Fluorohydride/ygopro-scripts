@@ -39,7 +39,7 @@ function c81344070.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81344070.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c81344070.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -53,7 +53,7 @@ function c81344070.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81344070.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 	local e1=Effect.CreateEffect(c)

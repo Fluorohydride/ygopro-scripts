@@ -57,7 +57,7 @@ function c11790356.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11790356.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -79,7 +79,7 @@ end
 function c11790356.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-	if not tc:IsFaceup() or not tc:IsRelateToEffect(e) then return end
+	if not tc:IsFaceup() or not tc:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=Duel.SelectMatchingCard(tp,c11790356.filter2,tp,LOCATION_GRAVE,0,1,1,nil)
 	local sc=sg:GetFirst()

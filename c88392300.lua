@@ -25,7 +25,7 @@ function c88392300.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88392300.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsControler(tp)
+	if not tc:IsRelateToChain(0) or tc:IsControler(tp)
 		or Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local s=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0)

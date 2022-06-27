@@ -41,7 +41,7 @@ function c50920465.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg2=g2:Select(tp,1,1,nil)
 	sg1:Merge(sg2)
 	Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.BreakEffect()
 		Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
 	end

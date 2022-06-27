@@ -64,7 +64,7 @@ function c65959844.desop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=g:GetFirst()
 	if rc and Duel.Remove(rc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and rc:IsLocation(LOCATION_REMOVED) then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 		rc:RegisterFlagEffect(65959844,RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,1)

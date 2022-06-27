@@ -42,7 +42,7 @@ end
 function c20447641.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,TYPES_EFFECT_TRAP_MONSTER,1800,1000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then
+	if c:IsRelateToChain(0) and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,TYPES_EFFECT_TRAP_MONSTER,1800,1000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then
 		c:AddMonsterAttribute(TYPE_EFFECT)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
 		c:RegisterFlagEffect(20447641,RESET_EVENT+RESETS_STANDARD,0,1)

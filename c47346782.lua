@@ -50,7 +50,7 @@ function c47346782.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c47346782.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsAttackPos() and c:IsRelateToEffect(e) then
+	if c:IsAttackPos() and c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
@@ -77,9 +77,9 @@ function c47346782.ctfilter3(c,seq1,seq2)
 end
 function c47346782.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) or not c:IsPosition(POS_FACEUP_DEFENSE) then return end
+	if not c:IsRelateToChain(0) or c:IsControler(1-tp) or not c:IsPosition(POS_FACEUP_DEFENSE) then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not tc:IsControler(1-tp) then return end
+	if not tc:IsRelateToChain(0) or not tc:IsControler(1-tp) then return end
 	local seq=tc:GetSequence()
 	if seq>4 then return end
 	if (seq>0 and Duel.CheckLocation(1-tp,LOCATION_MZONE,seq-1))

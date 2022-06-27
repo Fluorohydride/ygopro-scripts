@@ -28,7 +28,7 @@ end
 function c56840427.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLP(tp)>1000 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)

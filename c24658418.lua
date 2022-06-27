@@ -33,7 +33,7 @@ function c24658418.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24658418.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c24658418.spcon(e,tp,eg,ep,ev,re,r,rp)

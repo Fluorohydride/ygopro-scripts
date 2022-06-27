@@ -34,7 +34,7 @@ function c8809344.rkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8809344.rkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_UPDATE_RANK)
@@ -59,7 +59,7 @@ end
 function c8809344.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		local og=c:GetOverlayGroup()
 		if og:GetCount()==0 then return end
 		Duel.SendtoGrave(og,REASON_EFFECT)

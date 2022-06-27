@@ -43,8 +43,8 @@ function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=e:GetLabelObject()
 	local tc2=tg:GetFirst()
 	if tc2==tc1 then tc2=tg:GetNext() end
-	if tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
-		and tc2:IsRelateToEffect(e) then
+	if tc1:IsRelateToChain(0) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
+		and tc2:IsRelateToChain(0) then
 		if tc2:IsType(TYPE_MONSTER) then
 			Duel.SpecialSummon(tc2,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 		else

@@ -24,7 +24,7 @@ function c52340274.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52340274.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c52340274.filter2,tp,LOCATION_MZONE,0,tc)
 		local lc=g:GetFirst()
 		local lv=tc:GetLevel()

@@ -77,7 +77,7 @@ function c44478599.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local ct=Duel.GetMatchingGroupCount(c44478599.valfilter,tp,LOCATION_MZONE,0,nil)
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if ct>1 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

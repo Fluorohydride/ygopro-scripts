@@ -37,7 +37,7 @@ function c45358284.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45358284.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,c)
 	local lvs=g:GetSum(Card.GetLevel)
 	if lvs~=0 then

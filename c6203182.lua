@@ -52,7 +52,7 @@ end
 function c6203182.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0)
 		and Duel.SpecialSummonStep(tc,0,tp,1-tp,false,false,POS_FACEUP) then
 		Duel.Equip(tp,c,tc)
 		local e1=Effect.CreateEffect(tc)
@@ -96,7 +96,7 @@ function c6203182.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
 	local rc=ec:GetReasonCard()
-	if rc and rc:IsRelateToEffect(e) then
+	if rc and rc:IsRelateToChain(0) then
 		Duel.GetControl(rc,tp)
 	end
 end

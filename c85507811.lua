@@ -31,7 +31,7 @@ function c85507811.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c85507811.retop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
+	if not e:GetHandler():IsRelateToChain(0) or e:GetHandler():IsFacedown() then return end
 	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c85507811.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -49,10 +49,10 @@ function c85507811.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c85507811.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Destroy(tc,REASON_EFFECT)
 		local c=e:GetHandler()
-		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+		if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 		if tc:IsType(TYPE_MONSTER) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

@@ -47,7 +47,7 @@ function c88482761.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88482761.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local lv=tc:GetOriginalLevel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c88482761.rmfilter2,tp,LOCATION_HAND,0,1,1,nil,e,tp,lv)
@@ -78,7 +78,7 @@ function c88482761.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(g2:GetFirst())
 end
 function c88482761.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()==2 then
 		local c1=g:GetFirst()
 		local c2=g:GetNext()

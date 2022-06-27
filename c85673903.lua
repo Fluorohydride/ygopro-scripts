@@ -36,9 +36,9 @@ end
 function c85673903.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
-	if c:IsRelateToEffect(e) and zone~=0 then
+	if c:IsRelateToChain(0) and zone~=0 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 	local e1=Effect.CreateEffect(c)

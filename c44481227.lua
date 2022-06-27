@@ -50,7 +50,7 @@ function c44481227.operation(e,tp,eg,ep,ev,re,r,rp)
 		gc:RegisterEffect(e1)
 		gc=g:GetNext()
 	end
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_PIERCE)

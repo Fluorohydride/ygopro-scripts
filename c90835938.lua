@@ -51,7 +51,7 @@ function c90835938.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90835938.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -61,7 +61,7 @@ end
 function c90835938.efilter(e,re)
 	if not re:IsActiveType(TYPE_MONSTER) then return false end
 	local rc=re:GetHandler()
-	if (re:IsActivated() and rc:IsRelateToEffect(re) or not re:IsHasProperty(EFFECT_FLAG_FIELD_ONLY))
+	if (re:IsActivated() and rc:IsRelateToChain(ev) or not re:IsHasProperty(EFFECT_FLAG_FIELD_ONLY))
 		and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
 		return rc:IsAttribute(ATTRIBUTE_DARK)
 	else
@@ -92,7 +92,7 @@ function c90835938.rmop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c90835938.retop)
 		Duel.RegisterEffect(e1,tp)
 	end
-	if c:IsRelateToEffect(e) and c:IsChainAttackable() then
+	if c:IsRelateToChain(0) and c:IsChainAttackable() then
 		Duel.ChainAttack()
 	end
 end

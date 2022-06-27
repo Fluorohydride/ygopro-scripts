@@ -95,7 +95,7 @@ end
 function c93729065.copyop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc and c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local cid=0
 		local e1=Effect.CreateEffect(c)
@@ -167,7 +167,7 @@ function c93729065.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93729065.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

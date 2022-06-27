@@ -60,7 +60,7 @@ function c4179255.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4179255.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK)
+	if tc:IsRelateToChain(0) and tc:IsPosition(POS_FACEUP_ATTACK)
 		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end

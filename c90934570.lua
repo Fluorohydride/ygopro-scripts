@@ -28,8 +28,8 @@ end
 function c90934570.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_REMOVE)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
-	if g1:GetFirst():IsRelateToEffect(e) and g1:GetFirst():IsFaceup() and Duel.Remove(g1,POS_FACEUP,REASON_EFFECT)~=0 then
-		local hg=g2:Filter(Card.IsRelateToEffect,nil,e)
+	if g1:GetFirst():IsRelateToChain(0) and g1:GetFirst():IsFaceup() and Duel.Remove(g1,POS_FACEUP,REASON_EFFECT)~=0 then
+		local hg=g2:Filter(Card.IsRelateToChain,nil,0)
 		Duel.SendtoHand(hg,nil,REASON_EFFECT)
 	end
 end

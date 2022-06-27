@@ -51,7 +51,7 @@ function c94821366.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94821366.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -75,7 +75,7 @@ end
 function c94821366.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-	if not tc:IsFaceup() or not tc:IsRelateToEffect(e) or tc:IsControler(tp) then return end
+	if not tc:IsFaceup() or not tc:IsRelateToChain(0) or tc:IsControler(tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=Duel.SelectMatchingCard(tp,c94821366.eqfilter2,tp,LOCATION_DECK,0,1,1,nil)
 	local sc=sg:GetFirst()
@@ -115,7 +115,7 @@ function c94821366.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c94821366.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local rg=tg:Filter(Card.IsRelateToChain,nil,0)
 	if #rg>0 then
 		Duel.Destroy(rg,REASON_EFFECT)
 	end

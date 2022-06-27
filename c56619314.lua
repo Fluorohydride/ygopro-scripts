@@ -59,7 +59,7 @@ function c56619314.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56619314.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c56619314.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -71,7 +71,7 @@ function c56619314.filter(c)
 end
 function c56619314.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and not c:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

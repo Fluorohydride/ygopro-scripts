@@ -55,7 +55,7 @@ function c68934651.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c68934651.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local ct=0
 	for i,type in ipairs({TYPE_FUSION,TYPE_RITUAL,TYPE_SYNCHRO,TYPE_XYZ}) do
 		if Duel.IsExistingMatchingCard(c68934651.cfilter,tp,LOCATION_GRAVE,0,1,nil,type) then
@@ -92,7 +92,7 @@ end
 function c68934651.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.NegateActivation(ev)
-	if e:GetLabel()==1 and c:IsRelateToEffect(e) and c:IsChainAttackable(0) then
+	if e:GetLabel()==1 and c:IsRelateToChain(0) and c:IsChainAttackable(0) then
 		Duel.ChainAttack()
 	end
 end

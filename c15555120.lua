@@ -34,7 +34,7 @@ end
 function c15555120.activate(e,tp,eg,ep,ev,re,r,rp)
 	local lv=e:GetLabel()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsLevel(lv) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsLevel(lv) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)

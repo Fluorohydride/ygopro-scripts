@@ -55,7 +55,7 @@ end
 function c2407234.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and c:IsRelateToChain(0) and c:IsFaceup() and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local code=tc:GetCode()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

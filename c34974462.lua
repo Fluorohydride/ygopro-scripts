@@ -66,7 +66,7 @@ function c34974462.spop(e,tp,eg,ep,ev,re,r,rp)
 	local zone=bit.band(c:GetLinkedZone(tp),0x1f)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 	local g=Duel.GetMatchingGroup(c34974462.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
-	if c:IsRelateToEffect(e) and not Duel.IsPlayerAffectedByEffect(tp,59822133) and ft>1 and g:GetClassCount(Card.GetLevel)>=2 then
+	if c:IsRelateToChain(0) and not Duel.IsPlayerAffectedByEffect(tp,59822133) and ft>1 and g:GetClassCount(Card.GetLevel)>=2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:SelectSubGroup(tp,aux.dlvcheck,false,2,2)
 		if sg and sg:GetCount()==2 then

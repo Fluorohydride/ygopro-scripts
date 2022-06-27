@@ -41,7 +41,7 @@ function c43318266.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x18)
 end
 function c43318266.addc(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		local ct=Duel.GetMatchingGroupCount(c43318266.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		e:GetHandler():AddCounter(0x1019,ct)
 	end
@@ -59,7 +59,7 @@ function c43318266.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43318266.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

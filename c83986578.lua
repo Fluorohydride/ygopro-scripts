@@ -28,11 +28,11 @@ function c83986578.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c83986578.filter(c,e)
-	return c:IsFaceup() and c:IsAttackBelow(1400) and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsAttackBelow(1400) and c:IsRelateToChain(0)
 end
 function c83986578.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsFaceup() and c:IsRelateToEffect(e)) then return end
+	if not (c:IsFaceup() and c:IsRelateToChain(0)) then return end
 	local g=eg:Filter(c83986578.filter,nil,e)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)

@@ -64,7 +64,7 @@ function c90162951.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90162951.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(c90162951.desfilter,tp,0,LOCATION_MZONE,nil,c:GetAttack())
 	Duel.Destroy(g,REASON_EFFECT)
 end

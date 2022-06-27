@@ -34,7 +34,7 @@ function c82197831.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82197831.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=e:GetLabel()*700
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

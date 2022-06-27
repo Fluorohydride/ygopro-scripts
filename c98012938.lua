@@ -36,7 +36,7 @@ function c98012938.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c98012938.hfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFaceup()
+	return c:IsRelateToChain(0) and c:IsFaceup()
 end
 function c98012938.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

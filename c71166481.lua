@@ -61,7 +61,7 @@ end
 function c71166481.xop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		local mg=c:GetOverlayGroup()
 		if mg:GetCount()>0 then Duel.Overlay(tc,mg,false) end
 		Duel.Overlay(tc,Group.FromCards(c))

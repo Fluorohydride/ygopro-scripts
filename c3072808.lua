@@ -33,8 +33,8 @@ function c3072808.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
-	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
-	if not tc or not tc:IsRelateToEffect(e) or not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not c:IsRelateToChain(0) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not tc or not tc:IsRelateToChain(0) or not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_DISABLE)

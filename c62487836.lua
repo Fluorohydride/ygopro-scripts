@@ -30,7 +30,7 @@ end
 function c62487836.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_REMOVED) then
 		--disable
 		local e2=Effect.CreateEffect(c)

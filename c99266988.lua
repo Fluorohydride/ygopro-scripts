@@ -70,7 +70,7 @@ function c99266988.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99266988.op(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)

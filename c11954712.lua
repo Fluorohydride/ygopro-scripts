@@ -36,7 +36,7 @@ function c11954712.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11954712.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)==0 then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -92,7 +92,7 @@ function c20654247.posop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=tg:GetNext()
 	end
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

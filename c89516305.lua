@@ -57,7 +57,7 @@ end
 function c89516305.stop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsFacedown() and tc:IsRelateToChain(0) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_TARGET)
@@ -79,7 +79,7 @@ function c89516305.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c89516305.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRace(RACE_PLANT) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRace(RACE_PLANT) then
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -91,7 +91,7 @@ function c89516305.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c89516305.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

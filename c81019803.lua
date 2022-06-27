@@ -48,7 +48,7 @@ function c81019803.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c81019803.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -72,7 +72,7 @@ function c81019803.spfilter(c,e,tp)
 end
 function c81019803.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e)
+	if c:IsRelateToChain(0)
 		and Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_EXTRA)
 		and Duel.IsExistingMatchingCard(c81019803.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(81019803,2)) then

@@ -37,13 +37,13 @@ end
 function c39139935.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=tc:GetAttack()
 		local batk=tc:GetBaseAttack()
 		if batk~=atk then
 			local dif=(batk>atk) and (batk-atk) or (atk-batk)
 			local dam=Duel.Damage(1-tp,dif,REASON_EFFECT)
-			if dam>0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+			if dam>0 and c:IsRelateToChain(0) and c:IsFaceup() then
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_UPDATE_ATTACK)

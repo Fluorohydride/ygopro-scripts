@@ -95,7 +95,7 @@ function c23361526.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		local mg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-		local g=mg:Filter(Card.IsRelateToEffect,nil,e)
+		local g=mg:Filter(Card.IsRelateToChain,nil,0)
 		if g:GetCount()<mg:GetCount() then return end
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

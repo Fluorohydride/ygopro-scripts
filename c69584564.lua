@@ -24,7 +24,7 @@ function c69584564.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69584564.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c69584564.filter(tc) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and c69584564.filter(tc) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local ct=Duel.Draw(tp,1,REASON_EFFECT)
 		if ct==0 then return end
 		local dc=Duel.GetOperatedGroup():GetFirst()

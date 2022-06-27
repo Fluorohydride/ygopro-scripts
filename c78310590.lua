@@ -60,7 +60,7 @@ function c78310590.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78310590.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c78310590.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -98,7 +98,7 @@ function c78310590.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78310590.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c78310590.spcon2(e,tp,eg,ep,ev,re,r,rp)

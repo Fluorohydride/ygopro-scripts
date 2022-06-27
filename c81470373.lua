@@ -70,7 +70,7 @@ function c81470373.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetOperation(c81470373.tgop)
 		tc:RegisterEffect(e1)
-		if not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToChain(0) then return end
 		local se=e:GetLabelObject()
 		if c:IsSummonable(true,se)
 			and (not c:IsAbleToGrave() or Duel.SelectOption(tp,1151,1191)==0) then

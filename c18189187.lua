@@ -38,7 +38,7 @@ function c18189187.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18189187.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and not c:IsAttribute(ATTRIBUTE_DARK)
 			and Duel.SelectYesNo(tp,aux.Stringid(18189187,1)) then
 			Duel.BreakEffect()

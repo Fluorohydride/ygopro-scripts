@@ -45,8 +45,8 @@ end
 function c83094004.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) or c:IsImmuneToEffect(e)
-		or not tc:IsRelateToEffect(e) or tc:IsControler(tp) or tc:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToChain(0) or c:IsControler(1-tp) or c:IsImmuneToEffect(e)
+		or not tc:IsRelateToChain(0) or tc:IsControler(tp) or tc:IsImmuneToEffect(e) then return end
 	local filter=0
 	for i=0,4 do
 		local s1=Duel.CheckLocation(tp,LOCATION_MZONE,i)

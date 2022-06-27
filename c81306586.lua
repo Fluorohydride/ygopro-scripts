@@ -29,7 +29,7 @@ function c81306586.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c81306586.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+	if tc and tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

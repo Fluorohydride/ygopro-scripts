@@ -29,7 +29,7 @@ end
 function c58720904.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)-Duel.GetFieldGroupCount(tp,0,LOCATION_EXTRA)
-	if ct>=1 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if ct>=1 and c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -37,7 +37,7 @@ function c58720904.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		c:RegisterEffect(e1)
 	end
-	if ct>=5 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if ct>=5 and c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.BreakEffect()
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)

@@ -39,7 +39,7 @@ function c89594399.spfilter(c,e,tp)
 end
 function c89594399.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local cg=Duel.GetMatchingGroup(c89594399.cgfilter,tp,0,LOCATION_MZONE,nil)
 		local ct=math.min(#cg,(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 		if ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end

@@ -29,7 +29,7 @@ function c91351370.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91351370.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if not e:GetHandler():IsRelateToEffect(e) or not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not e:GetHandler():IsRelateToChain(0) or not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c91351370.filter,tp,LOCATION_DECK,0,1,1,nil,tc:GetAttack())
 	if g:GetCount()>0 then

@@ -42,7 +42,7 @@ end
 function c59120809.immval(e,re)
 	local rc=re:GetHandler()
 	return re:IsActiveType(TYPE_MONSTER) and re:IsActivated() and re:GetActivateLocation()==LOCATION_MZONE
-		and (rc:IsRelateToEffect(re) and rc:IsDefensePos() or not rc:IsRelateToEffect(re) and rc:IsPreviousPosition(POS_DEFENSE))
+		and (rc:IsRelateToChain(ev) and rc:IsDefensePos() or not rc:IsRelateToChain(ev) and rc:IsPreviousPosition(POS_DEFENSE))
 end
 function c59120809.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSequence()>4
@@ -65,7 +65,7 @@ function c59120809.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59120809.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g2=Duel.SelectMatchingCard(tp,c59120809.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g2:GetCount()>0 then

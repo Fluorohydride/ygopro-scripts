@@ -54,7 +54,7 @@ end
 function c18326736.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsControler(1-tp) or c:IsImmuneToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) or c:IsControler(1-tp) or c:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c18326736.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c:GetRank()+1,c)
 	local sc=g:GetFirst()
@@ -99,7 +99,7 @@ function c18326736.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18326736.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c18326736.mtfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if g:GetCount()>0 then
