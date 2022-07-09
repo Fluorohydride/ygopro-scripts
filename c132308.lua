@@ -57,6 +57,7 @@ function c132308.costfilter(c,tp)
 end
 function c132308.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() and Duel.CheckReleaseGroup(tp,c132308.costfilter,1,nil,tp) end
+	Duel.ConfirmCards(1-tp,e:GetHandler())
 	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c132308.costfilter,1,1,nil,tp)
