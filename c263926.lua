@@ -53,11 +53,8 @@ function c263926.sprcon(e,c)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 end
-function c263926.confil(c,tp,tc)
-	return c:IsControler(tp) and c~=tc
-end
 function c263926.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c263926.confil,1,nil,tp,e:GetHandler())
+	return eg:IsExists(Card.IsControler,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c263926.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) end
