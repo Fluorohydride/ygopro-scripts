@@ -12,7 +12,10 @@ function c30494314.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30494314.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE) and re:GetHandler():IsRace(RACE_ZOMBIE)
+	if not re then return false end
+	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
+	if re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE) and re:IsActiveType(TYPE_MONSTER) and race&RACE_ZOMBIE~=0
 end
 function c30494314.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsLevelAbove(0)

@@ -28,9 +28,10 @@ function c40607210.cfilter(c,tp)
 	return c:IsLevelAbove(5) and c:IsRace(RACE_ZOMBIE) and c:IsControler(tp)
 end
 function c40607210.condition(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	return rc and rc:IsRace(RACE_ZOMBIE) and eg:IsExists(c40607210.cfilter,1,nil,tp)
-		and (re:GetCode()~=EFFECT_SPSUMMON_PROC or not rc:IsHasEffect(EFFECT_REVIVE_LIMIT))
+	if not re then return false end
+	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
+	if not re:IsActivated() or re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	return race&RACE_ZOMBIE~=0 and re:IsActiveType(TYPE_MONSTER) and aux.IsSpecialSummonedByEffect(re) and eg:IsExists(c40607210.cfilter,1,nil,tp)
 end
 function c40607210.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end

@@ -20,7 +20,10 @@ function c37675138.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37675138.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetOwner():IsRace(RACE_ZOMBIE) and e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
+	if not re then return false end
+	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
+	if re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	return re:IsActiveType(TYPE_MONSTER) and race&RACE_ZOMBIE~=0 and e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 		and e:GetHandler():IsPreviousControler(tp)
 end
 function c37675138.desfilter(c)

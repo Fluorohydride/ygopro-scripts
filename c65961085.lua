@@ -14,7 +14,10 @@ function c65961085.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65961085.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsRace(RACE_SPELLCASTER)
+	if not re then return false end
+	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
+	if re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	return re:IsActiveType(TYPE_MONSTER) and race&RACE_SPELLCASTER~=0
 end
 function c65961085.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL) and c:IsAbleToDeck()

@@ -20,7 +20,10 @@ function c44451698.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44451698.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsRace(RACE_PLANT)
+	if not re then return false end
+	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
+	if re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	return re:IsActiveType(TYPE_MONSTER) and race&RACE_PLANT~=0
 end
 function c44451698.filter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsLevelAbove(6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
