@@ -67,18 +67,7 @@ function c22908820.atkfilter(c)
 end
 function c22908820.val(e,c)
 	local g=Duel.GetMatchingGroup(c22908820.atkfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,nil)
-	local att=0
-	local tc=g:GetFirst()
-	while tc do
-		att=bit.bor(att,tc:GetAttribute())
-		tc=g:GetNext()
-	end
-	local ct=0
-	while att~=0 do
-		if bit.band(att,0x1)~=0 then ct=ct+1 end
-		att=bit.rshift(att,1)
-	end
-	return ct*200
+	return aux.GetAttributeCount(g)*200
 end
 function c22908820.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

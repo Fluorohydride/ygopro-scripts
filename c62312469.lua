@@ -32,19 +32,8 @@ function c62312469.atktg(e,c)
 end
 function c62312469.value(e,c)
 	local tp=e:GetHandlerPlayer()
-	local att=0
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-	local tc=g:GetFirst()
-	while tc do
-		att=bit.bor(att,tc:GetAttribute())
-		tc=g:GetNext()
-	end
-	local ct=0
-	while att~=0 do
-		if bit.band(att,0x1)~=0 then ct=ct+1 end
-		att=bit.rshift(att,1)
-	end
-	return ct*200
+	return aux.GetAttributeCount(g)*200
 end
 function c62312469.sttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAttribute,tp,LOCATION_DECK,0,1,nil,ATTRIBUTE_EARTH)
