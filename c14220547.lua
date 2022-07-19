@@ -32,7 +32,7 @@ function c14220547.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c14220547.tcfilter(c,tp,re,rp)
-	return c:IsFaceup() and c:IsType(TYPE_RITUAL) and re and re:IsActiveType(TYPE_SPELL) and rp==tp
+	return c:IsFaceup() and c:IsType(TYPE_RITUAL) and re and re:IsActivated() and re:IsActiveType(TYPE_SPELL) and rp==tp
 end
 function c14220547.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetCount()==1 and eg:FilterCount(c14220547.tcfilter,nil,tp,re,rp)==1
