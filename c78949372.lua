@@ -64,6 +64,5 @@ end
 function c78949372.effectfilter(e,ct)
 	local p=e:GetHandlerPlayer()
 	local te,tp,loc=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER,CHAININFO_TRIGGERING_LOCATION)
-	local tc=te:GetHandler()
-	return p==tp and bit.band(loc,LOCATION_ONFIELD)~=0 and tc:IsSetCard(0xd0) and tc~=e:GetHandler()
+	return p==tp and bit.band(loc,LOCATION_ONFIELD)~=0 and te:IsActiveSetCard(0xd0) and te:GetHandler()~=e:GetHandler()
 end

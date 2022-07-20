@@ -30,7 +30,7 @@ function s.initial_effect(c)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and re:IsActiveType(TYPE_SPELL) and re:IsActiveType(TYPE_QUICKPLAY) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and re:GetHandler():IsSetCard(0x17f)
+		and re:IsActiveSetCard(0x17f)
 end
 function s.filter(c)
 	return c:IsSetCard(0x17f) and c:IsType(TYPE_QUICKPLAY) and c:IsAbleToDeck()

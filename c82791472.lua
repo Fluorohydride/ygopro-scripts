@@ -45,8 +45,7 @@ function c82791472.initial_effect(c)
 	Duel.AddCustomActivityCounter(82791472,ACTIVITY_CHAIN,c82791472.chainfilter)
 end
 function c82791472.chainfilter(re,tp,cid)
-	local rc=re:GetHandler()
-	return rc:IsSetCard(0x137) or not re:IsActiveType(TYPE_MONSTER)
+	return re:IsActiveSetCard(0x137) or not re:IsActiveType(TYPE_MONSTER)
 end
 function c82791472.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x137)
@@ -71,7 +70,7 @@ function c82791472.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c82791472.aclimit(e,re,tp)
-	return not re:GetHandler():IsSetCard(0x137) and re:IsActiveType(TYPE_MONSTER)
+	return not re:IsActiveSetCard(0x137) and re:IsActiveType(TYPE_MONSTER)
 end
 function c82791472.descon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

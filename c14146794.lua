@@ -43,7 +43,7 @@ function c14146794.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c14146794.damcon2(e,tp,eg,ep,ev,re,r,rp)
-	return ((re:GetHandler():IsSetCard(0x135) and re:IsActiveType(TYPE_MONSTER)) or (re:GetHandler():IsSetCard(0x136) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)))
+	return ((re:IsActiveSetCard(0x135) and re:IsActiveType(TYPE_MONSTER)) or (re:IsActiveSetCard(0x136) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)))
 		and aux.damcon1(e,1-tp,eg,ep,ev,re,r,rp)
 end
 function c14146794.damop2(e,tp,eg,ep,ev,re,r,rp)

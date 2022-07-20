@@ -113,6 +113,5 @@ function c74640994.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74640994.effectfilter(e,ct)
 	local te=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT)
-	local tc=te:GetHandler()
-	return tc:IsSetCard(0xed)
+	return te:IsActiveSetCard(0xed)
 end

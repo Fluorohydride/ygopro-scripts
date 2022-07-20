@@ -73,8 +73,7 @@ function c73639099.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c73639099.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rc~=c and rc:IsSetCard(0x108a) and rc:IsControler(tp)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler()~=c and re:IsActiveSetCard(0x108a) and rp==tp
 end
 function c73639099.setfilter(c)
 	return c:IsSetCard(0x4c,0x89) and c:GetType()==TYPE_TRAP and c:IsSSetable()

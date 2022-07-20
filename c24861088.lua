@@ -25,7 +25,7 @@ function c24861088.initial_effect(c)
 	Duel.AddCustomActivityCounter(24861088,ACTIVITY_CHAIN,c24861088.chainfilter)
 end
 function c24861088.chainfilter(re,tp,cid)
-	return re:GetHandler():IsSetCard(0x70)
+	return re:IsActiveSetCard(0x70)
 end
 function c24861088.filter(c)
 	return c:IsSetCard(0x70) and not c:IsCode(24861088) and c:IsAbleToHand()
@@ -61,7 +61,7 @@ function c24861088.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c24861088.aclimit(e,re,tp)
-	return not re:GetHandler():IsSetCard(0x70)
+	return not re:IsActiveSetCard(0x70)
 end
 function c24861088.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

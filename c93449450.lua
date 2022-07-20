@@ -53,7 +53,7 @@ function c93449450.immval(e,te)
 	else return false end
 end
 function c93449450.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:IsActiveSetCard(0x107)
 end
 function c93449450.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -58,7 +58,7 @@ function c28403802.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetCurrentChain()
 	if ct<2 then return end
 	local te,p=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	return te and te:GetHandler():IsSetCard(0x171) and p==tp and rp==1-tp
+	return te and te:IsActiveSetCard(0x171) and p==tp and rp==1-tp
 end
 function c28403802.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

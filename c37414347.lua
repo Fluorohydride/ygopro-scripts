@@ -56,7 +56,7 @@ function c37414347.atkval(e,c)
 	return lg:GetSum(Card.GetLevel)*300
 end
 function c37414347.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:IsActiveSetCard(0x107)
 end
 function c37414347.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

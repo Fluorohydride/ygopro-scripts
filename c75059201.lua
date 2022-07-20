@@ -75,7 +75,7 @@ function c75059201.tgval(e,re,rp)
 	else return false end
 end
 function c75059201.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:IsActiveSetCard(0x107)
 end
 function c75059201.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

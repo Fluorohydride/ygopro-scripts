@@ -68,8 +68,7 @@ function c36429703.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c36429703.setcon(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_XYZ) and rc:IsSetCard(0xba) and rc:IsControler(tp)
+	return re:IsActiveType(TYPE_XYZ) and re:IsActiveSetCard(0xba) and rp==tp
 end
 function c36429703.setfilter(c)
 	return c:IsSetCard(0x95) and c:IsType(TYPE_SPELL) and c:IsSSetable()

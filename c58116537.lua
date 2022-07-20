@@ -104,5 +104,5 @@ function c58116537.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58116537.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp
+	return re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x137) and rp==tp
 end

@@ -19,7 +19,7 @@ function c55870497.initial_effect(c)
 end
 function c55870497.skipcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and re:GetHandler():IsSetCard(0x60)
+		and re:IsActiveSetCard(0x60)
 end
 function c55870497.skiptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_SKIP_M1) end
