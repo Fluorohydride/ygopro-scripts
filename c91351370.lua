@@ -17,7 +17,7 @@ function c91351370.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c91351370.filter(c,val)
-	local atk=c:GetAttack()
+	local atk=c:GetTextAttack()
 	return atk>=0 and atk<val and c:IsSetCard(0x33) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c91351370.target(e,tp,eg,ep,ev,re,r,rp,chk)
