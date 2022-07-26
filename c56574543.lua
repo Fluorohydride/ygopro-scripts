@@ -23,7 +23,7 @@ function c56574543.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsControler(1-tp) then c=Duel.GetAttacker() end
 	return c and c:IsSetCard(0x88) and c:IsRace(RACE_BEASTWARRIOR) and c:IsRelateToBattle()
 end
-function c56574543.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c56574543.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if not a:IsRelateToBattle() or a:IsFacedown() or not d:IsRelateToBattle() or d:IsFacedown() then return end

@@ -54,7 +54,7 @@ function c55154048.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 	end
 end
-function c55154048.thcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c55154048.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousPosition(POS_FACEUP)
 		and bit.band(e:GetHandler():GetReason(),0x41)==0x41
 end

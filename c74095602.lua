@@ -11,7 +11,7 @@ function c74095602.initial_effect(c)
 	e1:SetOperation(c74095602.activate)
 	c:RegisterEffect(e1)
 end
-function c74095602.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c74095602.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	return tc:IsPreviousControler(tp) and tc:IsType(TYPE_FUSION) and tc:IsSetCard(0x3008)
 		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)

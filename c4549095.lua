@@ -27,7 +27,7 @@ function c4549095.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
-function c4549095.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c4549095.operation(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	if Duel.GetTurnPlayer()~=tp then a=Duel.GetAttackTarget() end
 	if not a:IsRelateToBattle() then return end

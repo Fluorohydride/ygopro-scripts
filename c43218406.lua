@@ -109,7 +109,7 @@ function c43218406.retg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,0)
 end
-function c43218406.reop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c43218406.reop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local tc=Duel.SelectMatchingCard(tp,c43218406.filter,tp,0,LOCATION_GRAVE,1,1,nil):GetFirst()
 	if not tc then return end

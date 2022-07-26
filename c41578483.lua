@@ -56,7 +56,7 @@ end
 function c41578483.can_equip_monster(c)
 	return true
 end
-function c41578483.eqcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41578483.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and re:IsActiveType(TYPE_MONSTER)
 end
 function c41578483.eqfilter(c)

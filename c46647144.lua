@@ -47,7 +47,7 @@ function c46647144.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:IsDiscardable() end
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
-function c46647144.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c46647144.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsFaceup() and tc:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())

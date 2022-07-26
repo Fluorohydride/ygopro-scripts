@@ -84,6 +84,6 @@ function c99011763.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and c:IsCanRemoveCounter(tp,0x1049,1,REASON_EFFECT) end
 	return true
 end
-function c99011763.repop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99011763.repop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(tp,0x1049,1,REASON_EFFECT)
 end
