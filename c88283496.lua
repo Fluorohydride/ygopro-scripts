@@ -19,7 +19,7 @@ function c88283496.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return tc:IsLevelBelow(4) and not tc:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c88283496.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk ==0 then	return e:GetLabelObject():IsAbleToHand() end
+	if chk==0 then return e:GetLabelObject():IsAbleToHand() end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetLabelObject(),0,0,0)
 end
 function c88283496.retop(e,tp,eg,ep,ev,re,r,rp)
