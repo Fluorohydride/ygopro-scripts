@@ -78,7 +78,7 @@ function c16255173.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c16255173.spfilter,tp,LOCATION_SZONE,0,1,1,nil,e,tp,c)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
-function c16255173.spop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c16255173.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

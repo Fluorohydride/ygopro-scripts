@@ -32,7 +32,7 @@ function c37926346.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE_SUMMON,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
-function c37926346.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c37926346.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c37926346.filter,nil)
 	Duel.NegateSummon(g)
 	Duel.Destroy(g,REASON_EFFECT)

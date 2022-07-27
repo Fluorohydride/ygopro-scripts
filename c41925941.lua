@@ -51,7 +51,7 @@ function c41925941.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetCard(tc)
 end
-function c41925941.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41925941.operation(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
 	local val=e:GetLabel()
 	if not bc or not bc:IsRelateToEffect(e) or not bc:IsControler(1-tp) then return end

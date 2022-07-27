@@ -75,6 +75,6 @@ function c4694209.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE) and e:GetHandler():GetCounter(0x1021)>0 end
 	return true
 end
-function c4694209.repop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c4694209.repop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(tp,0x1021,1,REASON_EFFECT)
 end

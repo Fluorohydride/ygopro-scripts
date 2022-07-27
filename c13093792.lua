@@ -40,7 +40,7 @@ function c13093792.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
-function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetTurnID()~=Duel.GetTurnCount()
 end
 function c13093792.spelltg(e,tp,eg,ep,ev,re,r,rp,chk)

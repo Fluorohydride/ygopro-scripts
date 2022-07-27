@@ -43,7 +43,7 @@ aux.xyz_number[8165596]=90
 function c8165596.indcon(e)
 	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsSetCard,1,nil,0x55)
 end
-function c8165596.negcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c8165596.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
 end
