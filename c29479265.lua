@@ -1,7 +1,7 @@
 --破械雙王神ライゴウ
 function c29479265.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c29479265.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c29479265.lcheck)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

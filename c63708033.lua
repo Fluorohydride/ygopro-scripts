@@ -19,7 +19,7 @@ function c63708033.thfilter(c)
 	return c:IsFaceup() and c:IsAbleToHand()
 end
 function c63708033.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) and c63708033.thfilter(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c63708033.thfilter(chkc) end
 	local g=Duel.GetMatchingGroup(c63708033.cfilter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then return #g>0 and Duel.IsExistingTarget(c63708033.thfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)

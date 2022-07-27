@@ -52,14 +52,14 @@ function c49868263.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
-function c49868263.disop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c49868263.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c49868263.disop2(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsActiveType(TYPE_SPELL) and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
 		local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 		if g and g:IsContains(e:GetHandler()) then
-			if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
+			if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToEffect(re) then
 				Duel.Destroy(re:GetHandler(),REASON_EFFECT)
 			end
 		end

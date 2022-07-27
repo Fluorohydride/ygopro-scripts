@@ -22,7 +22,7 @@ function c50712728.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(500)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
-function c50712728.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c50712728.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

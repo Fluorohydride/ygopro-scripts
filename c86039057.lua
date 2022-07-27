@@ -15,7 +15,7 @@ function c86039057.initial_effect(c)
 end
 function c86039057.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
+	return at:IsControler(1-tp) and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
 end
 function c86039057.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

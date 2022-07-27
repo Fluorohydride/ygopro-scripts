@@ -17,6 +17,9 @@ function c70534340.initial_effect(c)
 	e1:SetOperation(c70534340.spop)
 	c:RegisterEffect(e1)
 end
+function c70534340.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsFusionAttribute,ATTRIBUTE_DARK)
+end
 function c70534340.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end

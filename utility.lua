@@ -520,22 +520,24 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				end
 				local g=Group.CreateGroup()
 				local mg
+				local mgchk=false
 				if mg1 then
 					mg=mg1
+					mgchk=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc):GetFirst()
+				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):GetFirst()
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc):GetFirst()
+					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):GetFirst()
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc):GetFirst()
+						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):GetFirst()
 						g:AddCard(c3)
 					end
 				end
@@ -547,10 +549,10 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					else
 						mg2:Sub(g)
 					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk)
 					if cg:GetCount()==0 then break end
 					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc) then
+					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk) then
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -1993,7 +1995,7 @@ function Auxiliary.LConditionFilter(c,f,lc,e)
 		and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
 end
 function Auxiliary.LExtraFilter(c,f,lc,tp)
-	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
+	if c:IsOnField() and c:IsFacedown() then return false end
 	if not c:IsCanBeLinkMaterial(lc) or f and not f(c) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
 	for _,te in pairs(le) do
@@ -2215,6 +2217,19 @@ function Auxiliary.IsCounterAdded(c,counter)
 end
 function Auxiliary.IsTypeInText(c,type)
 	return c.has_text_type and type&c.has_text_type==type
+end
+function Auxiliary.GetAttributeCount(g)
+	if #g==0 then return 0 end
+	local att=0
+	for tc in Auxiliary.Next(g) do
+		att=att|tc:GetAttribute()
+	end
+	local ct=0
+	while att~=0 do
+		if att&0x1~=0 then ct=ct+1 end
+		att=att>>1
+	end
+	return ct
 end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
@@ -2851,6 +2866,18 @@ function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()
 	return Duel.IsPlayerCanRemove(tp)
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
+end
+function Auxiliary.nbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.nbcon(tp,re) end
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
+	if re:GetHandler():IsRelateToEffect(re) then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
+	end
+	if re:GetActivateLocation()==LOCATION_GRAVE then
+		e:SetCategory(e:GetCategory()|CATEGORY_GRAVE_ACTION)
+	else
+		e:SetCategory(e:GetCategory()&~CATEGORY_GRAVE_ACTION)
+	end
 end
 --condition of "negate activation and return to deck"
 function Auxiliary.ndcon(tp,re)

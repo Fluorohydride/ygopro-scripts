@@ -32,7 +32,7 @@ function c744887.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(rg,REASON_COST)
 end
 function c744887.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsAbleToRemove() end
+	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)

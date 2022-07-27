@@ -1,7 +1,7 @@
 --焔凰神－ネフティス
 function c87054946.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c87054946.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c87054946.lcheck)
 	c:EnableReviveLimit()
 	--effect gain
 	local e1=Effect.CreateEffect(c)

@@ -32,7 +32,7 @@ end
 function c49980185.clear(e,tp,eg,ep,ev,re,r,rp)
 	c49980185[0]=0
 end
-function c49980185.reccon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c49980185.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_END
 end
 function c49980185.rectg(e,tp,eg,ep,ev,re,r,rp,chk)

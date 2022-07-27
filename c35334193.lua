@@ -65,7 +65,7 @@ function c35334193.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
-		if not c:IsRelateToEffect(e) or not c:IsFaceup() or tc:IsImmuneToEffect(e) then return end
+		if not c:IsRelateToEffect(e) or c:IsFacedown() or tc:IsImmuneToEffect(e) then return end
 		Duel.AdjustInstantly()
 		local zone=bit.band(c:GetLinkedZone(1-tp),0x1f)
 		if tc:IsDisabled() and tc:IsControler(1-tp) and Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 and Duel.SelectYesNo(tp,aux.Stringid(35334193,2)) then

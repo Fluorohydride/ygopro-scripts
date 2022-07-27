@@ -80,13 +80,17 @@ function c59255742.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c59255742.costfilter(c,tp,g)
+	return c59255742.ffilter(c) and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0 and g:IsExists(aux.TRUE,1,c)
+end
 function c59255742.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c59255742.ffilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c59255742.ffilter,1,1,nil)
+	local g=eg:Filter(c59255742.filter,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c59255742.costfilter,1,nil,tp,g) end
+	local g=Duel.SelectReleaseGroup(tp,c59255742.costfilter,1,1,nil,tp,g)
 	Duel.Release(g,REASON_COST)
 end
 function c59255742.filter(c,tp)
-	return c:IsSummonPlayer(1-tp) and c:IsControlerCanBeChanged()
+	return c:IsSummonPlayer(1-tp) and c:IsControlerCanBeChanged(true)
 end
 function c59255742.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c59255742.filter,nil,tp)

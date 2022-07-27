@@ -40,7 +40,7 @@ function c16313112.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(g,REASON_EFFECT)
 end
 function c16313112.valfilter(c,tp)
-	return c:IsCode(16313112) and c:IsLocation(LOCATION_ONFIELD) and c:IsControler(tp)
+	return c:IsCode(16313112) and c:IsOnField() and c:IsControler(tp)
 end
 function c16313112.valcheck(e,c)
 	local g=c:GetMaterial()

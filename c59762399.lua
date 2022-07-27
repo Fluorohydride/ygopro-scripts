@@ -30,7 +30,7 @@ function c59762399.initial_effect(c)
 end
 function c59762399.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c59762399.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

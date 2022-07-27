@@ -81,7 +81,7 @@ function c99585850.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:GetCount()>0 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
-function c99585850.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99585850.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,nil)
 	if c:IsAbleToRemove() and c:IsRelateToEffect(e) then g:AddCard(c) end
@@ -112,7 +112,7 @@ function c99585850.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
-function c99585850.spop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99585850.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)

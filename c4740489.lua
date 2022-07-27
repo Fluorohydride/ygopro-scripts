@@ -56,7 +56,7 @@ function c4740489.atcon(e,tp,eg,ep,ev,re,r,rp)
 	if not a or not d then return false end
 	e:SetLabelObject(d)
 	return a:IsRace(RACE_ROCK) and a:IsAttribute(ATTRIBUTE_EARTH)
-		and d:IsRelateToBattle() and d:IsLocation(LOCATION_ONFIELD)
+		and d:IsRelateToBattle() and d:IsOnField()
 end
 function c4740489.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -43,6 +43,9 @@ function c3410461.initial_effect(c)
 	e4:SetOperation(c3410461.thop)
 	c:RegisterEffect(e4)
 end
+function c3410461.branded_fusion_check(tp,sg,fc)
+	return #sg<2 or aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsRace,RACE_DRAGON)
+end
 function c3410461.cfilter(c,fc)
 	return c:IsAbleToGraveAsCost() and (c:IsControler(fc:GetControler()) or c:IsFaceup())
 end

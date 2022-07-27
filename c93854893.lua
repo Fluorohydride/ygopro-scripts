@@ -74,7 +74,7 @@ function c93854893.op(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c93854893.repfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsControler(tp) and c:IsOnField()
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c93854893.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

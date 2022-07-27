@@ -24,7 +24,7 @@ function c63251695.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c63251695.tfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsOnField()
 end
 function c63251695.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)

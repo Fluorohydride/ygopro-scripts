@@ -25,5 +25,5 @@ function c45141013.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c45141013.sumlimit(e,c,sump,sumtype,sumpos,targetp)
-	return c:IsType(TYPE_EFFECT)
+	return c:GetOriginalType()&TYPE_EFFECT>0 and sumtype~=SUMMON_TYPE_DUAL
 end

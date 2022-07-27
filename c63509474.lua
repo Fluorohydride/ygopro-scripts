@@ -48,25 +48,27 @@ function c63509474.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and c:IsReason(REASON_DESTROY)
 		and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
-function c63509474.filter(c,e,tp)
-	return c:IsRace(RACE_FISH) and (c:IsAbleToHand() or c:IsCanBeSpecialSummoned(e,0,tp,false,false))
+function c63509474.filter(c,e,tp,spchk)
+	return c:IsRace(RACE_FISH) and (c:IsAbleToHand() or spchk and c:IsCanBeSpecialSummoned(e,0,tp,false,false))
 end
 function c63509474.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c63509474.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then
+		local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		return Duel.IsExistingMatchingCard(c63509474.filter,tp,LOCATION_DECK,0,1,nil,e,tp,spchk)
+	end
 end
 function c63509474.operation(e,tp,eg,ep,ev,re,r,rp)
+	local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-	local g=Duel.SelectMatchingCard(tp,c63509474.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c63509474.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp,spchk)
 	if g:GetCount()>0 then
 		local sc=g:GetFirst()
-		if sc then
-			if sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-				and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
-				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-			else
-				Duel.SendtoHand(sc,nil,REASON_EFFECT)
-				Duel.ConfirmCards(1-tp,sc)
-			end
+		if spchk and sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
+			and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
+			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
+		else
+			Duel.SendtoHand(sc,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,sc)
 		end
 	end
 end

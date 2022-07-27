@@ -55,7 +55,8 @@ function c75116619.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75116619.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e)
+		and Duel.IsExistingMatchingCard(c75116619.cfilter,tp,LOCATION_MZONE,0,1,nil) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

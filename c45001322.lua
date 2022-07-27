@@ -24,7 +24,7 @@ function s.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_REMOVE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(1,1)
-	e3:SetTarget(function(e,c,tp,r) return c==e:GetHandler() and r==REASON_EFFECT end)
+	e3:SetTarget(s.rmlimit)
 	e3:SetCondition(s.matcon)
 	c:RegisterEffect(e3)
 	--buff atk/def
@@ -52,6 +52,9 @@ end
 function s.matcon(e)
 	local c=e:GetHandler()
 	return c:IsSummonType(SUMMON_TYPE_RITUAL) and c:GetFlagEffect(id)>0
+end
+function s.rmlimit(e,c,tp,r)
+	return c==e:GetHandler() and r==REASON_EFFECT
 end
 function s.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)

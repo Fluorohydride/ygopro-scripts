@@ -24,7 +24,7 @@ function c13093792.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		local ae=tc:GetActivateEffect()
-		if tc:GetLocation()==LOCATION_GRAVE and ae then
+		if tc:IsLocation(LOCATION_GRAVE) and ae then
 			local e1=Effect.CreateEffect(tc)
 			e1:SetDescription(ae:GetDescription())
 			e1:SetType(EFFECT_TYPE_IGNITION)
@@ -40,7 +40,7 @@ function c13093792.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
-function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetTurnID()~=Duel.GetTurnCount()
 end
 function c13093792.spelltg(e,tp,eg,ep,ev,re,r,rp,chk)

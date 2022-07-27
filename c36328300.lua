@@ -29,7 +29,7 @@ function c36328300.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c36328300.confilter,1,nil,tp)
 end
 function c36328300.cfilter(c)
-	return c:IsSetCard(0x1034) and (c:IsFaceup() or not c:IsLocation(LOCATION_ONFIELD)) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x1034) and (c:IsFaceup() or not c:IsOnField()) and c:IsAbleToGraveAsCost()
 end
 function c36328300.exfilter(c,tp)
 	return Duel.GetLocationCountFromEx(tp,tp,c,TYPE_FUSION)>0

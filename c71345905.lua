@@ -64,6 +64,7 @@ function c71345905.activate(e,tp,eg,ep,ev,re,r,rp)
 		sc:RegisterEffect(e3)
 		local e4=e3:Clone()
 		e4:SetCode(EFFECT_DISABLE_EFFECT)
+		e4:SetValue(RESET_TURN_SET)
 		sc:RegisterEffect(e4)
 		sc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(71345905,0))
 	end

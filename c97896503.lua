@@ -12,7 +12,7 @@ function c97896503.initial_effect(c)
 end
 function c97896503.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler()
+	if chk==0 then return Duel.GetAttacker()==e:GetHandler()
 		and d~=nil and d:IsPosition(POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end

@@ -29,7 +29,7 @@ end
 function c5352328.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x172)
 end
-function c5352328.effcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c5352328.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c5352328.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c5352328.efftg(e,tp,eg,ep,ev,re,r,rp,chk)

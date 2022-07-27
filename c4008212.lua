@@ -45,7 +45,7 @@ function c4008212.desop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_SKIP_M1)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetTargetRange(0,1)
-		if Duel.GetTurnPlayer()==1-tp and Duel.GetCurrentPhase()==PHASE_MAIN1 then
+		if Duel.GetTurnPlayer()==1-tp and Duel.GetCurrentPhase()>=PHASE_MAIN1 then
 			e1:SetLabel(Duel.GetTurnCount())
 			e1:SetCondition(c4008212.turncon)
 			e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
