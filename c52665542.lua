@@ -75,7 +75,7 @@ function c52665542.acop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x5,1)
 end
 function c52665542.dfilter(c,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsOnField()
 		and c:IsSetCard(0x38) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c52665542.destg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -87,7 +87,7 @@ function c52665542.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c52665542.value(e,c)
-	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsOnField()
 		and c:IsSetCard(0x38) and c:IsControler(e:GetHandlerPlayer()) and c:IsReason(REASON_EFFECT)
 end
 function c52665542.desop(e,tp,eg,ep,ev,re,r,rp)

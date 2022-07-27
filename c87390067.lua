@@ -15,8 +15,8 @@ function c87390067.condition(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if not d then return false end
-	return (a:GetControler()==tp and a:IsSetCard(0x33))
-		or (d:GetControler()==tp and d:IsSetCard(0x33))
+	return (a:IsControler(tp) and a:IsSetCard(0x33))
+		or (d:IsControler(tp) and d:IsSetCard(0x33))
 end
 function c87390067.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

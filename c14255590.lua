@@ -22,7 +22,7 @@ function c14255590.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14255590.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local ct=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,14255590)
 	if ct>0 then
 		Duel.DiscardDeck(1-tp,ct,REASON_EFFECT)

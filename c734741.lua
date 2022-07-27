@@ -32,7 +32,7 @@ function c734741.synlimit(e,c)
 	return not c:IsSetCard(0xb1)
 end
 function c734741.sdfilter(c)
-	return not c:IsFaceup() or not c:IsSetCard(0xb1)
+	return c:IsFacedown() or not c:IsSetCard(0xb1)
 end
 function c734741.sdcon(e)
 	return Duel.IsExistingMatchingCard(c734741.sdfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)

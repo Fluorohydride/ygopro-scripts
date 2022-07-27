@@ -47,7 +47,7 @@ function c61318483.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61318483.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c61318483.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local at=Duel.GetAttacker()

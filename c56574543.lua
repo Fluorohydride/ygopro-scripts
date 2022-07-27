@@ -27,7 +27,7 @@ function c56574543.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if not a:IsRelateToBattle() or a:IsFacedown() or not d:IsRelateToBattle() or d:IsFacedown() then return end
-	if a:GetControler()~=tp then a,d=d,a end
+	if a:IsControler(1-tp) then a,d=d,a end
 	if a:IsImmuneToEffect(e) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetOwnerPlayer(tp)

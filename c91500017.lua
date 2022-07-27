@@ -36,7 +36,7 @@ function c91500017.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c91500017.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsCode(15259703)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsCode(15259703)
 		and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c91500017.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
