@@ -14,6 +14,7 @@ function c14799437.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e2:SetCondition(c14799437.spcon)
+	e2:SetTarget(c14799437.sptg)
 	e2:SetOperation(c14799437.spop)
 	c:RegisterEffect(e2)
 	--destroy
@@ -36,7 +37,7 @@ function c14799437.initial_effect(c)
 	e4:SetCountLimit(1)
 	e4:SetCondition(c14799437.negcon)
 	e4:SetCost(c14799437.negcost)
-	e4:SetTarget(c14799437.negtg)
+	e4:SetTarget(aux.nbtg)
 	e4:SetOperation(c14799437.negop)
 	c:RegisterEffect(e4)
 end
@@ -55,42 +56,27 @@ function c14799437.spcon(e,c)
 	local tp=c:GetControler()
 	local sum=Duel.GetMatchingGroup(c14799437.sumfilter,tp,LOCATION_MZONE,0,nil):GetSum(c14799437.lv_or_rk)
 	if sum>8 then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-2 then return false end
-	if c:IsHasEffect(34822850) then
-		if ft>0 then
-			return Duel.IsExistingMatchingCard(c14799437.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_HAND,0,3,c)
-		else
-			local ct=-ft+1
-			return Duel.IsExistingMatchingCard(c14799437.spfilter,tp,LOCATION_MZONE,0,ct,nil)
-				and Duel.IsExistingMatchingCard(c14799437.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_HAND,0,3,c)
-		end
-	else
-		return ft>0 and Duel.IsExistingMatchingCard(c14799437.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,3,c)
-	end
+	local loc=LOCATION_GRAVE+LOCATION_HAND
+	if c:IsHasEffect(34822850) then loc=loc+LOCATION_MZONE end
+	local g=Duel.GetMatchingGroup(c14799437.spfilter,tp,loc,0,c)
+	return g:CheckSubGroup(aux.mzctcheck,3,3,tp)
+end
+function c14799437.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local loc=LOCATION_GRAVE+LOCATION_HAND
+	if c:IsHasEffect(34822850) then loc=loc+LOCATION_MZONE end
+	local g=Duel.GetMatchingGroup(c14799437.spfilter,tp,loc,0,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,3,3,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c14799437.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=nil
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	if c:IsHasEffect(34822850) then
-		if ft>0 then
-			g=Duel.SelectMatchingCard(tp,c14799437.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_HAND,0,3,3,c)
-		else
-			local sg=Duel.GetMatchingGroup(c14799437.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_HAND,0,c)
-			local ct=-ft+1
-			g=sg:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
-			if ct<3 then
-				sg:Sub(g)
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-				local g2=sg:Select(tp,3-ct,3-ct,nil)
-				g:Merge(g2)
-			end
-		end
-	else
-		g=Duel.SelectMatchingCard(tp,c14799437.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,3,3,c)
-	end
+	local g=e:GetLabelObject()
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	g:DeleteGroup()
 end
 function c14799437.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
@@ -114,13 +100,6 @@ function c14799437.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c14799437.cfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c14799437.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
-end
-function c14799437.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c14799437.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then

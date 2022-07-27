@@ -23,7 +23,7 @@ function c78362751.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78362751.cfilter(c)
-	if not c:IsFaceup() then return false end
+	if c:IsFacedown() then return false end
 	local oc=c:GetOverlayGroup()
 	return c:IsCode(24639891) or c:IsType(TYPE_XYZ) and oc and oc:IsExists(Card.IsCode,1,nil,24639891)
 end
@@ -67,7 +67,7 @@ function c78362751.spop2(e,tp,eg,ep,ev,re,r,rp)
 				if tc:IsLocation(LOCATION_GRAVE) then
 					Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 				end
-				Duel.MoveSequence(tc,0)
+				Duel.MoveSequence(tc,SEQ_DECKTOP)
 				tc=dg:GetNext()
 			end
 			Duel.SortDecktop(tp,tp,#dg)

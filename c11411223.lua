@@ -15,7 +15,7 @@ function c11411223.initial_effect(c)
 	e1:SetOperation(c11411223.operation)
 	c:RegisterEffect(e1)
 end
-c11411223.xyz_number=10
+aux.xyz_number[11411223]=10
 function c11411223.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
@@ -25,7 +25,7 @@ function c11411223.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function c11411223.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c11411223.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()==0 then return end

@@ -1,9 +1,15 @@
 --弩級軍貫－いくら型一番艦
 function c75215744.initial_effect(c)
+	aux.AddCodeList(c,24639891,61027400)
 	--xyz procedure
 	aux.AddXyzProcedure(c,nil,4,2)
 	c:EnableReviveLimit()
 	--apply the effect
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c75215744.valcheck)
+	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75215744,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -13,6 +19,7 @@ function c75215744.initial_effect(c)
 	e1:SetTarget(c75215744.efftg)
 	e1:SetOperation(c75215744.effop)
 	c:RegisterEffect(e1)
+	e0:SetLabelObject(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(75215744,1))
@@ -27,13 +34,19 @@ function c75215744.initial_effect(c)
 	e2:SetOperation(c75215744.desop)
 	c:RegisterEffect(e2)
 end
+function c75215744.valcheck(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local flag=0
+	if c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0 then flag=flag|1 end
+	if c:GetMaterial():FilterCount(Card.IsCode,nil,61027400)>0 then flag=flag|2 end
+	e:GetLabelObject():SetLabel(flag)
+end
 function c75215744.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c75215744.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	local chk1=c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0
-	local chk2=c:GetMaterial():FilterCount(Card.IsCode,nil,61027400)>0
+	local chk1=e:GetLabel()&1>0
+	local chk2=e:GetLabel()&2>0
 	if chk==0 then return (chk1 and Duel.IsPlayerCanDraw(tp,1) or chk2) end
 	if chk1 then
 		e:SetCategory(CATEGORY_DRAW)
@@ -44,8 +57,8 @@ function c75215744.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75215744.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local chk1=c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0
-	local chk2=c:GetMaterial():FilterCount(Card.IsCode,nil,61027400)>0
+	local chk1=e:GetLabel()&1>0
+	local chk2=e:GetLabel()&2>0
 	if chk1 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

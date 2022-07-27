@@ -20,7 +20,7 @@ function c85431040.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,300)
 end
 function c85431040.filter(c,e,tp)
-	return c:IsCode(85431040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(85431040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c85431040.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Damage(1-tp,300,REASON_EFFECT)==0 then return end

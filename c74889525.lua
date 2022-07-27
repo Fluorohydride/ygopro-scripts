@@ -64,7 +64,7 @@ function c74889525.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74889525.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and Duel.GetControl(tc,tp) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -74,6 +74,5 @@ function c74889525.ctop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_CANNOT_TRIGGER)
 		tc:RegisterEffect(e2)
-		Duel.GetControl(tc,tp)
 	end
 end

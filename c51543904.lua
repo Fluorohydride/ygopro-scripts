@@ -28,7 +28,7 @@ function c51543904.initial_effect(c)
 	e2:SetOperation(c51543904.disop)
 	c:RegisterEffect(e2)
 end
-c51543904.xyz_number=99
+aux.xyz_number[51543904]=99
 function c51543904.cfilter(c)
 	return c:IsSetCard(0x95) and c:IsType(TYPE_SPELL) and c:IsDiscardable()
 end
@@ -62,6 +62,7 @@ function c51543904.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end

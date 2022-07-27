@@ -18,7 +18,7 @@ function c24207889.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e4:SetCode(EFFECT_LIMIT_SPECIAL_SUMMON_POSITION)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetTargetRange(1,1)
 	e4:SetTarget(c24207889.sumlimit)
@@ -44,7 +44,7 @@ function c24207889.initial_effect(c)
 	end
 end
 function c24207889.rmfilter(c,rc)
-	return c:IsFaceup() and c:IsRace(rc)
+	return c:IsFaceup() and c:IsRace(rc) and c:IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c24207889.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumtype==SUMMON_TYPE_DUAL then return false end

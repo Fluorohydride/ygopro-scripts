@@ -14,7 +14,6 @@ function c76515293.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_TARGET)
 	e2:SetCode(EFFECT_CANNOT_TRIGGER)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetValue(1)
 	c:RegisterEffect(e2)
 end
 function c76515293.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

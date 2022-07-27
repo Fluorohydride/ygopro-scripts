@@ -42,7 +42,7 @@ function c89516305.initial_effect(c)
 	e3:SetOperation(c89516305.atkop)
 	c:RegisterEffect(e3)
 end
-c89516305.xyz_number=87
+aux.xyz_number[89516305]=87
 function c89516305.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
@@ -59,13 +59,11 @@ function c89516305.stop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_TARGET)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
-		e1:SetValue(1)
 		c:RegisterEffect(e1)
 	end
 end

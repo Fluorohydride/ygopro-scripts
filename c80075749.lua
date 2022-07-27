@@ -1,5 +1,6 @@
 --バブルイリュージョン
 function c80075749.initial_effect(c)
+	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

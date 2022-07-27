@@ -9,6 +9,7 @@ function c38369349.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c38369349.spcon)
+	e2:SetTarget(c38369349.sptg)
 	e2:SetOperation(c38369349.spop)
 	c:RegisterEffect(e2)
 	--destroy
@@ -53,36 +54,27 @@ end
 function c38369349.cfilter(c)
 	return c:IsFaceup() and c:IsCode(15259703)
 end
-function c38369349.mzfilter(c,tp)
-	return c:IsControler(tp) and c:GetSequence()<5
-end
 function c38369349.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetReleaseGroup(tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
 	return Duel.IsExistingMatchingCard(c38369349.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		and ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c38369349.mzfilter,ct,nil,tp))
+		and rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+end
+function c38369349.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local rg=Duel.GetReleaseGroup(tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c38369349.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local rg=Duel.GetReleaseGroup(tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=nil
-	if ft>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:Select(tp,2,2,nil)
-	elseif ft==0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c38369349.mzfilter,1,1,nil,tp)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g2=rg:Select(tp,1,1,g:GetFirst())
-		g:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c38369349.mzfilter,2,2,nil,tp)
-	end
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c38369349.sfilter(c)
 	return c:IsReason(REASON_DESTROY) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousCodeOnField()==15259703 and c:IsPreviousLocation(LOCATION_ONFIELD)

@@ -14,7 +14,7 @@ function c26842483.initial_effect(c)
 	e1:SetOperation(c26842483.operation)
 	c:RegisterEffect(e1)
 end
-function c26842483.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c26842483.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return ep~=tp and loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 		and re:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)

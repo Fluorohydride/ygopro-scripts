@@ -91,9 +91,8 @@ function c68934651.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c68934651.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.NegateActivation(ev)~=0 and e:GetLabel()>0 then
-		if c:IsRelateToEffect(e) and c:IsChainAttackable() then
-			Duel.ChainAttack()
-		end
+	Duel.NegateActivation(ev)
+	if e:GetLabel()==1 and c:IsRelateToEffect(e) and c:IsChainAttackable(0) then
+		Duel.ChainAttack()
 	end
 end

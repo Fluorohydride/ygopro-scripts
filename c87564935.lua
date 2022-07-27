@@ -79,7 +79,7 @@ function c87564935.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87564935.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(87564935)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP_ATTACK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	e:GetHandler():RegisterFlagEffect(87564935,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end
@@ -92,5 +92,5 @@ function c87564935.efilter1(e,re,rp)
 	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
 end
 function c87564935.efilter2(e,te)
-	return te:GetHandlerPlayer()~=e:GetHandlerPlayer() and te:IsActiveType(TYPE_MONSTER)
+	return te:GetOwnerPlayer()~=e:GetHandlerPlayer() and te:IsActiveType(TYPE_MONSTER)
 end

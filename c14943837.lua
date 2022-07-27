@@ -32,7 +32,7 @@ function c14943837.synlimit2(e,c)
 	return not c:IsLevel(4)
 end
 function c14943837.filter2(c,e,sp)
-	return c:IsAttackBelow(500) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsAttackBelow(500) and c:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEUP_ATTACK)
 end
 function c14943837.sumtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c14943837.filter2(chkc,e,tp) end
@@ -54,6 +54,7 @@ function c14943837.sumop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
 	end

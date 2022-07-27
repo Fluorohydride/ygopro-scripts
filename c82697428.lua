@@ -1,4 +1,4 @@
---V・HEROウィッチ・レイド
+--V・HERO ウィッチ・レイド
 function c82697428.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --フェザー・ショット
 function c19394153.initial_effect(c)
+	aux.AddSetNameMonsterList(c,0x3008)
 	--multi atk
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

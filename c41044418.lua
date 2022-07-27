@@ -99,10 +99,10 @@ function c41044418.regfilter(c)
 	return c:IsCode(10000010) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MONSTER_REBORN
 end
 function c41044418.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsCode,1,nil,10000010)
+	return eg:IsExists(c41044418.regfilter,1,nil)
 end
 function c41044418.regop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(Card.IsCode,nil,10000010)
+	local g=eg:Filter(c41044418.regfilter,nil)
 	for tc in aux.Next(g) do
 		tc:RegisterFlagEffect(41044418,RESET_EVENT+0x1fe0000,0,0)
 	end

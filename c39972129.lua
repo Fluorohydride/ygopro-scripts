@@ -27,7 +27,7 @@ function c39972129.initial_effect(c)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	c:RegisterEffect(e3)
 end
-c39972129.xyz_number=64
+aux.xyz_number[39972129]=64
 function c39972129.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
@@ -42,14 +42,15 @@ function c39972129.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,39972130,0,TYPES_TOKEN_MONSTER,-2,0,1,RACE_BEAST,ATTRIBUTE_EARTH) then return end
 	local token=Duel.CreateToken(tp,39972130)
-	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
-	local g,atk=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil):GetMaxGroup(Card.GetAttack)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_ATTACK)
-	e1:SetValue(atk)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	token:RegisterEffect(e1)
+	if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP) then
+		local g,atk=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil):GetMaxGroup(Card.GetAttack)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_SET_ATTACK)
+		e1:SetValue(atk)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		token:RegisterEffect(e1)
+	end
 	Duel.SpecialSummonComplete()
 end
 function c39972129.ifilter(c)

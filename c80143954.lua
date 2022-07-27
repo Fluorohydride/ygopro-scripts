@@ -81,7 +81,7 @@ function c80143954.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
 		e2:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
-		e2:SetValue(aux.imval1)
+		e2:SetValue(1)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
 	else
@@ -101,7 +101,7 @@ function c80143954.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c80143954.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsOnField()
 		and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function c80143954.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

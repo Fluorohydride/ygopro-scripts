@@ -112,7 +112,7 @@ end
 function c4538826.gyop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c4538826.gyfilter,tp,LOCATION_ONFIELD,0,nil)
 	if g:GetCount()==0 or Duel.SendtoGrave(g,REASON_EFFECT)==0 then return end
-	local oc=Duel.GetOperatedGroup():FilterCount(c4538826.sgfilter,nil,tp)
+	local oc=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
 	if oc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local og=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_ONFIELD,1,oc,nil)

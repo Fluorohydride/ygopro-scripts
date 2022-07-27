@@ -41,7 +41,7 @@ function c3900605.operation(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetCode(EFFECT_CANNOT_TURN_SET)
 	Duel.RegisterEffect(e3,tp)
 	local e4=e1:Clone()
-	e4:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e4:SetCode(EFFECT_LIMIT_SPECIAL_SUMMON_POSITION)
 	e4:SetTarget(c3900605.sumlimit)
 	Duel.RegisterEffect(e4,tp)
 end

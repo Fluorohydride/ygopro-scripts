@@ -8,6 +8,7 @@ function c75347539.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c75347539.spcon)
+	e1:SetTarget(c75347539.sptg)
 	e1:SetOperation(c75347539.spop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -22,20 +23,30 @@ function c75347539.initial_effect(c)
 	e2:SetOperation(c75347539.operation)
 	c:RegisterEffect(e2)
 end
+c75347539.spchecks=aux.CreateChecks(Card.IsCode,{99785935,39256679,11549357})
+function c75347539.fselect(g,tp)
+	return aux.mzctcheck(g,tp) and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+end
 function c75347539.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroupEx(tp,Card.IsCode,1,nil,99785935)
-		and Duel.CheckReleaseGroupEx(tp,Card.IsCode,1,nil,39256679)
-		and Duel.CheckReleaseGroupEx(tp,Card.IsCode,1,nil,11549357)
+	local g=Duel.GetReleaseGroup(tp,true)
+	return g:CheckSubGroupEach(c75347539.spchecks,c75347539.fselect,tp)
+end
+function c75347539.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,true)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=g:SelectSubGroupEach(tp,c75347539.spchecks,true,c75347539.fselect,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c75347539.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=Duel.SelectReleaseGroupEx(tp,Card.IsCode,1,1,nil,99785935)
-	local g2=Duel.SelectReleaseGroupEx(tp,Card.IsCode,1,1,nil,39256679)
-	local g3=Duel.SelectReleaseGroupEx(tp,Card.IsCode,1,1,nil,11549357)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.Release(g1,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c75347539.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

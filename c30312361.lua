@@ -1,4 +1,5 @@
 --ファントム・オブ・カオス
+local s,id,o=GetID()
 function c30312361.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)
@@ -37,6 +38,7 @@ function c30312361.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then return end
+		--copy name, base atk
 		local code=tc:GetOriginalCode()
 		local ba=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(c)
@@ -51,25 +53,26 @@ function c30312361.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e2:SetLabelObject(e1)
-		e2:SetCode(EFFECT_SET_BASE_ATTACK)
+		e2:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
 		e2:SetValue(ba)
 		c:RegisterEffect(e2)
+		--copy effect
 		local cid=c:CopyEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,1)
 		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(aux.Stringid(30312361,1))
+		e3:SetDescription(1162)
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e3:SetCode(EVENT_PHASE+PHASE_END)
-		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e3:SetCountLimit(1)
 		e3:SetRange(LOCATION_MZONE)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e3:SetLabel(cid)
 		e3:SetLabelObject(e2)
-		e3:SetOperation(c30312361.rstop)
+		e3:SetOperation(s.rstop)
 		c:RegisterEffect(e3)
 	end
 end
-function c30312361.rstop(e,tp,eg,ep,ev,re,r,rp)
+function s.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cid=e:GetLabel()
 	c:ResetEffect(cid,RESET_COPY)

@@ -38,7 +38,7 @@ function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		Duel.HintSelection(g)
 		if tc:IsLocation(LOCATION_DECK) then
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 		else
 			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end

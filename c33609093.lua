@@ -65,14 +65,8 @@ function c33609093.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x137)
 end
 function c33609093.tfcon(e,tp,eg,ep,ev,re,r,rp)
-	local att=0
 	local g=Duel.GetMatchingGroup(c33609093.cfilter,tp,LOCATION_MZONE,0,nil)
-	local tc=g:GetFirst()
-	while tc do
-		att=bit.bor(att,tc:GetAttribute())
-		tc=g:GetNext()
-	end
-	return bit.band(att,att-1)~=0
+	return aux.GetAttributeCount(g)>1
 end
 function c33609093.tffilter(c,tp)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0x137) and not c:IsCode(33609093)

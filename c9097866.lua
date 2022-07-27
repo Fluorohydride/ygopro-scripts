@@ -58,7 +58,7 @@ function c9097866.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c9097866.atkfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 end
-function c9097866.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c9097866.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local a=e:GetLabelObject()
 	local tc=Duel.GetFirstTarget()

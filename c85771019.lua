@@ -55,28 +55,25 @@ end
 function c85771019.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,85771020,0,TYPES_TOKEN_MONSTER,1800,1300,5,RACE_FAIRY,ATTRIBUTE_DARK) then
-		local token=Duel.CreateToken(tp,85771020)
-		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		token:RegisterEffect(e1)
-	end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,85771021,0,TYPES_TOKEN_MONSTER,1200,1200,3,RACE_FAIRY,ATTRIBUTE_DARK) then
-		local token=Duel.CreateToken(tp,85771021)
-		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		token:RegisterEffect(e1)
-	end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,85771020,0,TYPES_TOKEN_MONSTER,1800,1300,5,RACE_FAIRY,ATTRIBUTE_DARK)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,85771021,0,TYPES_TOKEN_MONSTER,1200,1200,3,RACE_FAIRY,ATTRIBUTE_DARK) then return end
+	local token=Duel.CreateToken(tp,85771020)
+	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetValue(1)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	token:RegisterEffect(e1)
+	local token2=Duel.CreateToken(tp,85771021)
+	Duel.SpecialSummonStep(token2,0,tp,tp,false,false,POS_FACEUP)
+	local e2=Effect.CreateEffect(e:GetHandler())
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetValue(1)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+	token2:RegisterEffect(e2)
 	Duel.SpecialSummonComplete()
 end

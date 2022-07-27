@@ -15,6 +15,7 @@ function c88619463.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c88619463.spcon)
+	e2:SetTarget(c88619463.sptg)
 	e2:SetOperation(c88619463.spop)
 	c:RegisterEffect(e2)
 	--negate
@@ -33,35 +34,26 @@ end
 function c88619463.rfilter(c,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsLevelAbove(6) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c88619463.mzfilter(c,tp)
-	return c:IsControler(tp) and c:GetSequence()<5
-end
 function c88619463.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetReleaseGroup(tp):Filter(c88619463.rfilter,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c88619463.mzfilter,ct,nil,tp))
+	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+end
+function c88619463.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c88619463.rfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c88619463.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c88619463.rfilter,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=nil
-	if ft>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:Select(tp,2,2,nil)
-	elseif ft==0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c88619463.mzfilter,1,1,nil,tp)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g2=rg:Select(tp,1,1,g:GetFirst())
-		g:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c88619463.mzfilter,2,2,nil,tp)
-	end
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c88619463.discon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)

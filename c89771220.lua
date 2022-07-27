@@ -24,7 +24,7 @@ function c89771220.deckconfilter(c)
 	return c:IsCode(97148796,27693363) and c:IsFaceup()
 end
 function c89771220.deckcon(tp)
-	return Duel.IsExistingMatchingCard(c89771220.deckconfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c89771220.deckconfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
 function c89771220.cfilter(c)
 	return c:IsCode(89264428,58793369) and c:IsAbleToRemove()

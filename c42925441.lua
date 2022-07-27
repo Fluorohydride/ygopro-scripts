@@ -128,32 +128,22 @@ end
 function c42925441.effop(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()
 	local cc=e:GetLabelObject()
-	if op==0 then
+	local res=0
+	if op~=1 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c42925441.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp,cc)
 		if g:GetCount()>0 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+			res=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
-	elseif op==1 then
+	end
+	if op~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c42925441.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
+			if op==2 and res~=0 then Duel.BreakEffect() end
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
-		end
-	else
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c42925441.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,cc)
-		if g1:GetCount()>0 and Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)~=0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local g2=Duel.SelectMatchingCard(tp,c42925441.thfilter,tp,LOCATION_DECK,0,1,1,nil)
-			if g2:GetCount()>0 then
-				Duel.BreakEffect()
-				Duel.SendtoHand(g2,nil,REASON_EFFECT)
-				Duel.ConfirmCards(1-tp,g2)
-			end
 		end
 	end
 end

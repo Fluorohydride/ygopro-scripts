@@ -26,14 +26,16 @@ function c43359262.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
+		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+		e1:SetRange(LOCATION_MZONE)
+		e1:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
+		e1:SetTarget(c43359262.distg)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetCondition(c43359262.rcon)
-		e1:SetValue(1)
-		tc:RegisterEffect(e1)
+		c:RegisterEffect(e1)
 	end
 end
-function c43359262.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
+function c43359262.distg(e,c)
+	return c:IsFacedown() and e:GetHandler():IsHasCardTarget(c)
 end

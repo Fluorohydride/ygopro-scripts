@@ -36,8 +36,8 @@ function c67696066.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_SET_DEFENSE)
 		tc:RegisterEffect(e2)
-		Duel.SpecialSummonComplete()
 		Duel.BreakEffect()
 		Duel.Damage(tp,1000,REASON_EFFECT)
 	end
+	Duel.SpecialSummonComplete()
 end

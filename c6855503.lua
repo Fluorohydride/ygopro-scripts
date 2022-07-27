@@ -20,6 +20,7 @@ function c6855503.initial_effect(c)
 	e2:SetCode(0x10000000+6855503)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetCondition(c6855503.costcon)
 	e2:SetTargetRange(0,1)
 	c:RegisterEffect(e2)
 	--spsummon

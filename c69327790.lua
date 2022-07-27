@@ -85,9 +85,9 @@ function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 			if fc:GetControler()==gc:GetControler() and fc:IsLocation(LOCATION_DECK) and gc:IsLocation(LOCATION_DECK) then
 				local op=Duel.SelectOption(tp,aux.Stringid(69327790,3),aux.Stringid(69327790,4))
 				if op==0 then
-					Duel.MoveSequence(fc,0)
+					Duel.MoveSequence(fc,SEQ_DECKTOP)
 				else
-					Duel.MoveSequence(gc,0)
+					Duel.MoveSequence(gc,SEQ_DECKTOP)
 				end
 			end
 		end

@@ -71,10 +71,13 @@ function c32245230.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c32245230.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 		local sc=sg:GetFirst()
-		if sc and Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
-			sc:CompleteProcedure()
-			if c:IsRelateToEffect(e) then
-				Duel.Overlay(sc,Group.FromCards(c))
+		if sc then
+			sc:SetMaterial(nil)
+			if Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
+				sc:CompleteProcedure()
+				if c:IsRelateToEffect(e) then
+					Duel.Overlay(sc,Group.FromCards(c))
+				end
 			end
 		end
 	end

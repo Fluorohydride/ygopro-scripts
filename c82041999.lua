@@ -45,7 +45,7 @@ function c82041999.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c82041999.cfilter(c,tp)
-	return c:IsControler(1-tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsControler(1-tp) and c:IsOnField()
 end
 function c82041999.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and re:GetHandler():IsSetCard(0x171) and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))

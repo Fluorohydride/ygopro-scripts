@@ -20,7 +20,7 @@ function c71983925.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_TRIGGER)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetTargetRange(0xa,0xa)
+	e3:SetTargetRange(LOCATION_HAND+LOCATION_SZONE,LOCATION_HAND+LOCATION_SZONE)
 	e3:SetTarget(c71983925.distg)
 	c:RegisterEffect(e3)
 	--disable

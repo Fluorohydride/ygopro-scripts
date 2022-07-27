@@ -96,7 +96,7 @@ function c29062925.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if exmat then
-				aux.FCheckAdditional=c29062925.fcheck
+				aux.FCheckAdditional=c29062925.frcheck
 				aux.GCheckAdditional=c29062925.gcheck
 			end
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)

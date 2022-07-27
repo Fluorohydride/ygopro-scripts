@@ -8,6 +8,7 @@ function c91588074.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c91588074.spcon)
+	e1:SetTarget(c91588074.sptg)
 	e1:SetOperation(c91588074.spop)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
@@ -34,22 +35,33 @@ end
 function c91588074.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	local g=Duel.GetMatchingGroup(Card.IsAbleToDeckOrExtraAsCost,c:GetControler(),LOCATION_HAND+LOCATION_ONFIELD,0,c)
-	return g:GetClassCount(Card.GetCode)>=10 and (ft>0 or g:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))
+	local g=Duel.GetMatchingGroup(Card.IsAbleToDeckOrExtraAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,c)
+	aux.GCheckAdditional=aux.dncheck
+	local res=g:CheckSubGroup(aux.mzctcheck,10,10,tp)
+	aux.GCheckAdditional=nil
+	return res
 end
-function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c91588074.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeckOrExtraAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	aux.GCheckAdditional=aux.dncheck
-	local rg=g:SelectSubGroup(tp,aux.mzctcheck,false,10,10,tp)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,10,10,tp)
 	aux.GCheckAdditional=nil
-	local cg=rg:Filter(Card.IsFacedown,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+
+function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	local cg=g:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 	end
-	Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	g:DeleteGroup()
 end
 function c91588074.tdfilter(c)
 	return (c:IsLocation(0x1e) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and c:IsAbleToDeck()

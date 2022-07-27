@@ -27,7 +27,7 @@ function c3648368.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c3648368.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
-function c3648368.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c3648368.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and c3648368.filter(tc) then
 		Duel.ChangePosition(tc,0,0,0,POS_FACEUP_ATTACK,true)

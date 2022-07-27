@@ -40,7 +40,7 @@ function c93713837.initial_effect(c)
 	e4:SetOperation(c93713837.tgop)
 	c:RegisterEffect(e4)
 end
-c93713837.xyz_number=24
+aux.xyz_number[93713837]=24
 function c93713837.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

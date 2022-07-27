@@ -37,6 +37,9 @@ function c41373230.initial_effect(c)
 	e4:SetOperation(c41373230.thop)
 	c:RegisterEffect(e4)
 end
+function c41373230.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsAttackAbove,2500)
+end
 function c41373230.matfilter(c)
 	return c:IsFusionType(TYPE_MONSTER) and c:GetOriginalLevel()>0
 end
@@ -63,8 +66,9 @@ function c41373230.imop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c41373230.efilter(e,te)
-	return e:GetHandler()~=te:GetHandler() and te:GetActivateLocation()==LOCATION_MZONE and te:IsActiveType(TYPE_MONSTER)
-		and te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_EXTRA)
+	local tc=te:GetOwner()
+	return tc~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
+		and te:GetActivateLocation()==LOCATION_MZONE and tc:IsSummonLocation(LOCATION_EXTRA)
 end
 function c41373230.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

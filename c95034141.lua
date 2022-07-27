@@ -95,7 +95,7 @@ function c95034141.alfilter(c)
 	return c:IsRace(RACE_ZOMBIE) and c:IsFaceup()
 end
 function c95034141.alcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c95034141.alfilter,1,nil) and re:IsHasType(EFFECT_TYPE_ACTIONS)
+	return eg:IsExists(c95034141.alfilter,1,nil) and aux.IsSpecialSummonedByEffect(re)
 end
 function c95034141.cfilter(c)
 	return c:IsFacedown() and c:GetSequence()<5
@@ -114,6 +114,6 @@ function c95034141.alop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 	end
 end

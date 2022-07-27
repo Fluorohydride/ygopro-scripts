@@ -45,8 +45,16 @@ function bit.replace(r,v,field,width)
 	return (r&~(m<<f))|((v&m)<< f)
 end
 
+--the table of xyz number
+Auxiliary.xyz_number={}
+function Auxiliary.GetXyzNumber(v)
+	local id
+	if Auxiliary.GetValueType(v)=="Card" then id=v:GetCode() end
+	if Auxiliary.GetValueType(v)=="number" then id=v end
+	return Auxiliary.xyz_number[id]
+end
+
 --the chain id of the results modified by EVENT_TOSS_DICE_NEGATE
-Auxiliary.dice_chain_id=0
 Auxiliary.idx_table=table.pack(1,2,3,4,5,6,7,8)
 
 function Auxiliary.Stringid(code,id)
@@ -203,9 +211,49 @@ function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end
+function Auxiliary.EnableNeosReturn(c,operation,set_category)
+	--return
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(1193)
+	e1:SetCategory(CATEGORY_TODECK)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1)
+	e1:SetCondition(Auxiliary.NeosReturnConditionForced)
+	e1:SetTarget(Auxiliary.NeosReturnTargetForced(set_category))
+	e1:SetOperation(operation)
+	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetCondition(Auxiliary.NeosReturnConditionOptional)
+	e2:SetTarget(Auxiliary.NeosReturnTargetOptional(set_category))
+	c:RegisterEffect(e2)
+	return e1,e2
+end
+function Auxiliary.NeosReturnConditionForced(e,tp,eg,ep,ev,re,r,rp)
+	return not e:GetHandler():IsHasEffect(42015635)
+end
+function Auxiliary.NeosReturnTargetForced(set_category)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
+				if chk==0 then return true end
+				Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
+				if set_category then set_category(e,tp,eg,ep,ev,re,r,rp) end
+			end
+end
+function Auxiliary.NeosReturnConditionOptional(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsHasEffect(42015635)
+end
+function Auxiliary.NeosReturnTargetOptional(set_category)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
+				if chk==0 then return e:GetHandler():IsAbleToExtra() end
+				Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
+				if set_category then set_category(e,tp,eg,ep,ev,re,r,rp) end
+			end
+end
 function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
-	return c:IsHasEffect(EFFECT_UNION_STATUS)
+	return c:IsHasEffect(EFFECT_UNION_STATUS) and c:GetEquipTarget()
 end
 --set EFFECT_EQUIP_LIMIT after equipping
 function Auxiliary.SetUnionState(c)
@@ -259,6 +307,7 @@ function Auxiliary.EnableChangeCode(c,code,location,condition)
 	Auxiliary.AddCodeList(c,code)
 	local loc=c:GetOriginalType()&TYPE_MONSTER~=0 and LOCATION_MZONE or LOCATION_SZONE
 	loc=location or loc
+	if condition==nil then condition=Auxiliary.TRUE end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -471,22 +520,24 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				end
 				local g=Group.CreateGroup()
 				local mg
+				local mgchk=false
 				if mg1 then
 					mg=mg1
+					mgchk=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc):GetFirst()
+				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):GetFirst()
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc):GetFirst()
+					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):GetFirst()
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc):GetFirst()
+						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):GetFirst()
 						g:AddCard(c3)
 					end
 				end
@@ -498,10 +549,10 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					else
 						mg2:Sub(g)
 					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk)
 					if cg:GetCount()==0 then break end
 					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc) then
+					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk) then
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -836,7 +887,7 @@ function Auxiliary.AddXyzProcedureLevelFree(c,f,gf,minc,maxc,alterf,desc,op)
 end
 --Xyz Summon(level free)
 function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
-	return c:IsFaceup() and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
+	return (not c:IsOnField() or c:IsFaceup()) and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
 	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
@@ -1077,9 +1128,12 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 			mat[val[i]]=true
 		end
 	end
-	if c.material==nil then
-		local mt=getmetatable(c)
+	local mt=getmetatable(c)
+	if mt.material==nil then
 		mt.material=mat
+	end
+	if mt.material_count==nil then
+		mt.material_count={#fun,#fun}
 	end
 	for index,_ in pairs(mat) do
 		Auxiliary.AddCodeList(c,index)
@@ -1193,9 +1247,12 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 			mat[val[i]]=true
 		end
 	end
-	if c.material==nil then
-		local mt=getmetatable(c)
+	local mt=getmetatable(c)
+	if mt.material==nil then
 		mt.material=mat
+	end
+	if mt.material_count==nil then
+		mt.material_count={#fun+minc-1,#fun+maxc-1}
 	end
 	for index,_ in pairs(mat) do
 		Auxiliary.AddCodeList(c,index)
@@ -1451,8 +1508,8 @@ end
 function Auxiliary.FShaddollFilter(c,fc,attr)
 	return (Auxiliary.FShaddollFilter1(c) or Auxiliary.FShaddollFilter2(c,attr)) and c:IsCanBeFusionMaterial(fc) and not c:IsHasEffect(6205579)
 end
-function Auxiliary.FShaddollExFilter(c,fc,attr)
-	return c:IsFaceup() and Auxiliary.FShaddollFilter(c,fc,attr)
+function Auxiliary.FShaddollExFilter(c,fc,attr,fe)
+	return c:IsFaceup() and not c:IsImmuneToEffect(fe) and Auxiliary.FShaddollFilter(c,fc,attr)
 end
 function Auxiliary.FShaddollFilter1(c)
 	return c:IsFusionSetCard(0x9d)
@@ -1483,7 +1540,8 @@ function Auxiliary.FShaddollCondition(attr)
 				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 				local exg=nil
 				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+					local fe=fc:IsHasEffect(81788994)
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr,fe)
 				end
 				if gc then
 					if not mg:IsContains(gc) then return false end
@@ -1499,7 +1557,8 @@ function Auxiliary.FShaddollOperation(attr)
 				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 				local exg=nil
 				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+					local fe=fc:IsHasEffect(81788994)
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr,fe)
 				end
 				local g=nil
 				if gc then
@@ -1922,7 +1981,7 @@ function Auxiliary.LConditionFilter(c,f,lc,e)
 		and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
 end
 function Auxiliary.LExtraFilter(c,f,lc,tp)
-	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
+	if c:IsOnField() and c:IsFacedown() then return false end
 	if not c:IsCanBeLinkMaterial(lc) or f and not f(c) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
 	for _,te in pairs(le) do
@@ -2093,6 +2152,10 @@ end
 function Auxiliary.IsMaterialListType(c,type)
 	return c.material_type and type&c.material_type==type
 end
+function Auxiliary.GetMaterialListCount(c)
+	if not c.material_count then return 0,0 end
+	return c.material_count[1],c.material_count[2]
+end
 function Auxiliary.AddCodeList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.card_code_list==nil then
@@ -2140,6 +2203,19 @@ function Auxiliary.IsCounterAdded(c,counter)
 end
 function Auxiliary.IsTypeInText(c,type)
 	return c.has_text_type and type&c.has_text_type==type
+end
+function Auxiliary.GetAttributeCount(g)
+	if #g==0 then return 0 end
+	local att=0
+	for tc in Auxiliary.Next(g) do
+		att=att|tc:GetAttribute()
+	end
+	local ct=0
+	while att~=0 do
+		if att&0x1~=0 then ct=ct+1 end
+		att=att>>1
+	end
+	return ct
 end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
@@ -2376,7 +2452,7 @@ end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
 	return	function(target,...)
-				return (not f or f(target,...)) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
+				return (not f or f(target,...)) and not target:IsHasEffect(EFFECT_NECRO_VALLEY)
 			end
 end
 --Necrovalley test for effect with not certain target or not certain action
@@ -2525,6 +2601,25 @@ function Auxiliary.DrytronSpSummonOperation(func)
 		local c=e:GetHandler()
 		if not c:IsRelateToEffect(e) then return end
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then func(e,tp) end
+	end
+end
+--additional destroy effect for the Labrynth field
+function Auxiliary.LabrynthDestroyOp(e,tp,res)
+	local c=e:GetHandler()
+	local chk=not c:IsStatus(STATUS_ACT_FROM_HAND) and c:IsSetCard(0x117e) and c:GetType()==TYPE_TRAP and e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	local exc=nil
+	if c:IsStatus(STATUS_LEAVE_CONFIRMED) then exc=c end
+	local te=Duel.IsPlayerAffectedByEffect(tp,33407125)
+	if chk and te
+		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exc)
+		and Duel.SelectYesNo(tp,aux.Stringid(33407125,0)) then
+		if res>0 then Duel.BreakEffect() end
+		Duel.Hint(HINT_CARD,0,33407125)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local dg=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exc)
+		Duel.HintSelection(dg)
+		Duel.Destroy(dg,REASON_EFFECT)
+		te:UseCountLimit(tp)
 	end
 end
 --shortcut for Gizmek cards
@@ -2758,6 +2853,23 @@ function Auxiliary.nbcon(tp,re)
 	return Duel.IsPlayerCanRemove(tp)
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
 end
+function Auxiliary.nbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.nbcon(tp,re) end
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
+	if re:GetHandler():IsRelateToEffect(re) then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
+	end
+	if re:GetActivateLocation()==LOCATION_GRAVE then
+		e:SetCategory(e:GetCategory()|CATEGORY_GRAVE_ACTION)
+	else
+		e:SetCategory(e:GetCategory()&~CATEGORY_GRAVE_ACTION)
+	end
+end
+--condition of "negate activation and return to deck"
+function Auxiliary.ndcon(tp,re)
+	local rc=re:GetHandler()
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or not rc:IsRelateToEffect(re) or rc:IsAbleToDeck()
+end
 --send to deck of contact fusion
 function Auxiliary.tdcfop(c)
 	return	function(g)
@@ -2799,4 +2911,66 @@ function Auxiliary.UseExtraReleaseCount(g,tp)
 end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
+end
+function Auxiliary.IsSpecialSummonedByEffect(e)
+	return not ((e:GetCode()==EFFECT_SPSUMMON_PROC or e:GetCode()==EFFECT_SPSUMMON_PROC_G) and e:GetProperty()&(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)==(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE))
+end
+--
+function Auxiliary.GetCappedLevel(c)
+	local lv=c:GetLevel()
+	if lv>MAX_PARAMETER then
+		return MAX_PARAMETER
+	else
+		return lv
+	end
+end
+--
+function Auxiliary.GetCappedAttack(c)
+	local x=c:GetAttack()
+	if x>MAX_PARAMETER then
+		return MAX_PARAMETER
+	else
+		return x
+	end
+end
+--when this card is sent to grave, record the reason effect
+--to check whether the reason effect do something simultaneously
+--so the "while this card is in your GY" condition isn't met
+function Auxiliary.AddThisCardInGraveAlreadyCheck(c)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_TO_GRAVE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(Auxiliary.ThisCardInGraveAlreadyCheckOperation)
+	c:RegisterEffect(e1)
+	return e1
+end
+function Auxiliary.ThisCardInGraveAlreadyCheckOperation(e,tp,eg,ep,ev,re,r,rp)
+	if (r&REASON_EFFECT)>0 then
+		e:SetLabelObject(re)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAIN_END)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetOperation(Auxiliary.ThisCardInGraveAlreadyReset1)
+		e1:SetLabelObject(e)
+		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetOperation(Auxiliary.ThisCardInGraveAlreadyReset2)
+		e2:SetReset(RESET_CHAIN)
+		e2:SetLabelObject(e1)
+		Duel.RegisterEffect(e2,tp)
+	end
+end
+function Auxiliary.ThisCardInGraveAlreadyReset1(e)
+	--this will run after EVENT_SPSUMMON_SUCCESS
+	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function Auxiliary.ThisCardInGraveAlreadyReset2(e)
+	local e1=e:GetLabelObject()
+	e1:GetLabelObject():SetLabelObject(nil)
+	e1:Reset()
+	e:Reset()
 end

@@ -17,8 +17,8 @@ function c3790062.initial_effect(c)
 	e1:SetOperation(c3790062.operation)
 	c:RegisterEffect(e1)
 end
-c3790062.xyz_number=65
-function c3790062.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+aux.xyz_number[3790062]=65
+function c3790062.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end

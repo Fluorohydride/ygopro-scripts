@@ -37,7 +37,7 @@ function c11434258.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(p,p,2)
 		for i=1,2 do
 			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

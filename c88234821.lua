@@ -14,7 +14,7 @@ function c88234821.initial_effect(c)
 	e1:SetCountLimit(1,88234821)
 	e1:SetCondition(c88234821.negcon)
 	e1:SetCost(c88234821.negcost)
-	e1:SetTarget(c88234821.negtg)
+	e1:SetTarget(aux.nbtg)
 	e1:SetOperation(c88234821.negop)
 	c:RegisterEffect(e1)
 	--remove
@@ -52,13 +52,6 @@ function c88234821.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c88234821.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
-end
-function c88234821.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c88234821.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then

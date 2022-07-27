@@ -47,7 +47,7 @@ function c54927180.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(tc1,REASON_EFFECT)
 		end
 	else
-		Duel.MoveSequence(tc1,1)
-		Duel.MoveSequence(tc2,1)
+		Duel.MoveSequence(tc1,SEQ_DECKBOTTOM)
+		Duel.MoveSequence(tc2,SEQ_DECKBOTTOM)
 	end
 end

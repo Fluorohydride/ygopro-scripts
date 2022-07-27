@@ -36,7 +36,7 @@ function c95134948.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-c95134948.xyz_number=99
+aux.xyz_number[95134948]=99
 function c95134948.counterfilter(c)
 	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_XYZ)
 end
@@ -87,7 +87,7 @@ function c95134948.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
 function c95134948.spfilter(c,e,tp)
-	local no=c.xyz_number
+	local no=aux.GetXyzNumber(c)
 	return no and no>=1 and no<=100 and c:IsSetCard(0x48)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
@@ -101,8 +101,10 @@ function c95134948.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,c95134948.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp):GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
-		tc:CompleteProcedure()
+		tc:SetMaterial(nil)
+		if Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)>0 then
+			tc:CompleteProcedure()
+		end
 	end
 end
 function c95134948.atkcon(e,tp,eg,ep,ev,re,r,rp)

@@ -34,7 +34,7 @@ function c68468459.filter2(c,e,tp,m,f,gc,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,gc,chkf)
 end
 function c68468459.chkfilter(c,tp)
-	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp)
+	return c:IsOnField() and c:IsControler(tp)
 end
 function c68468459.fcheck(c)
 	return function(tp,sg,fc)

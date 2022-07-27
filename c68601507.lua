@@ -23,7 +23,7 @@ function c68601507.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
-function c68601507.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c68601507.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetLabelObject()
 	if c:IsFaceup() and c:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())

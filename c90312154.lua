@@ -24,13 +24,16 @@ function c90312154.initial_effect(c)
 	e2:SetOperation(c90312154.disop)
 	c:RegisterEffect(e2)
 end
-function c90312154.filter(c)
+function c90312154.filter(c,ft)
 	return (c:IsCode(56433456) or aux.IsCodeListed(c,56433456)) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+		and (ft==nil or ft>0 or c:IsType(TYPE_FIELD))
 end
 function c90312154.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ct=ct-1 end
-	if chk==0 then return ct>0 and Duel.IsExistingMatchingCard(c90312154.filter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then
+		local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
+		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ft=ft-1 end
+		return Duel.IsExistingMatchingCard(c90312154.filter,tp,LOCATION_DECK,0,1,nil,ft)
+	end
 end
 function c90312154.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)

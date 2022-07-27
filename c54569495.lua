@@ -44,7 +44,7 @@ function c54569495.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
-function c54569495.spop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c54569495.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local e1=Effect.CreateEffect(c)
@@ -68,18 +68,19 @@ function c54569495.damtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c54569495.damfilter,tp,LOCATION_GRAVE,0,1,nil) end
 end
 function c54569495.damop1(e,tp,eg,ep,ev,re,r,rp)
+	local g=Duel.GetMatchingGroup(c54569495.damfilter,tp,LOCATION_GRAVE,0,nil)
+	local ct=g:GetSum(Card.GetLink)*1000
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(1,0)
-	e1:SetCondition(c54569495.damcon3)
+	e1:SetLabel(ct)
+	e1:SetCondition(c54569495.valcon)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
-function c54569495.damcon3(e)
+function c54569495.valcon(e)
 	local tp=e:GetHandlerPlayer()
-	local g=Duel.GetMatchingGroup(c54569495.damfilter,tp,LOCATION_GRAVE,0,nil)
-	local ct=g:GetSum(Card.GetLink)*1000
-	return Duel.GetBattleDamage(tp)<=ct
+	return Duel.GetBattleDamage(tp)<=e:GetLabel()
 end

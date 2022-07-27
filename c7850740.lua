@@ -1,5 +1,7 @@
 --エクシーズ・スライドルフィン
 function c7850740.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(7850740,0))
@@ -21,6 +23,7 @@ function c7850740.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,7850741)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c7850740.matcon)
 	e2:SetTarget(c7850740.mattg)
 	e2:SetOperation(c7850740.matop)
@@ -43,11 +46,13 @@ function c7850740.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c7850740.cfilter1(c,e,tp)
+function c7850740.cfilter1(c,e,tp,se)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsControler(tp) and c:IsCanBeEffectTarget(e)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c7850740.matcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.exccon(e) and eg:IsExists(c7850740.cfilter1,1,nil,e,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return aux.exccon(e) and eg:IsExists(c7850740.cfilter1,1,nil,e,tp,se)
 end
 function c7850740.tgfilter(c,tp,eg)
 	return eg:IsContains(c) and c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsControler(tp)

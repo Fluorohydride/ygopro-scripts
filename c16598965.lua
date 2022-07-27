@@ -34,7 +34,7 @@ function c16598965.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,2)
 		for i=1,2 do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 	if f2 and (not res or Duel.SelectYesNo(tp,aux.Stringid(16598965,2))) and Duel.Draw(1-tp,1,REASON_EFFECT)==1 then

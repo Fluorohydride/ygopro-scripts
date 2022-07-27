@@ -47,7 +47,7 @@ function c36099130.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c36099130.eqfilter,tp,LOCATION_EXTRA,0,1,1,nil,tp)
 		local sc=g:GetFirst()
-		if not Duel.Equip(tp,sc,tc) then return end
+		if not sc or not Duel.Equip(tp,sc,tc) then return end
 		--equip limit
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -92,6 +92,7 @@ function c36099130.spop(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 		end

@@ -1,4 +1,5 @@
 --鬼動武者
+local s,id,o=GetID()
 function c40509732.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()
@@ -15,20 +16,19 @@ function c40509732.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_BE_BATTLE_TARGET)
+	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetOperation(c40509732.disop)
+	e2:SetCondition(s.discon1)
+	e2:SetOperation(s.disop1)
 	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EVENT_BE_BATTLE_TARGET)
-	c:RegisterEffect(e3)
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_FIELD)
 	e6:SetCode(EFFECT_DISABLE)
 	e6:SetRange(LOCATION_MZONE)
 	e6:SetTargetRange(0,LOCATION_MZONE)
-	e6:SetTarget(c40509732.distg)
+	e6:SetTarget(s.distg)
 	c:RegisterEffect(e6)
 	local e7=e6:Clone()
 	e7:SetCode(EFFECT_DISABLE_EFFECT)
@@ -49,14 +49,18 @@ function c40509732.actcon(e)
 	local c=e:GetHandler()
 	return (Duel.GetAttacker()==c and c:GetBattleTarget()) or Duel.GetAttackTarget()==c
 end
-function c40509732.disop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetHandler():GetBattleTarget()
-	if not tc then return end
-	tc:RegisterFlagEffect(40509732,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
-	Duel.AdjustInstantly(e:GetHandler())
+function s.discon1(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return (c==Duel.GetAttacker() or c==Duel.GetAttackTarget()) and c:GetBattleTarget()
 end
-function c40509732.distg(e,c)
-	return c:GetFlagEffect(40509732)~=0
+function s.disop1(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=c:GetBattleTarget()
+	tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+	Duel.AdjustInstantly(c)
+end
+function s.distg(e,c)
+	return c:GetFlagEffect(id)~=0
 end
 function c40509732.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -86,7 +86,7 @@ function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(token,SUMMON_VALUE_BLACK_GARDEN,tp,1-tp,false,false,POS_FACEUP_ATTACK)
 	end
 	if bit.extract(ev,1-tp)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE,1-tp)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(1-tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK) then
+		and Duel.IsPlayerCanSpecialSummonMonster(1-tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) then
 		local token=Duel.CreateToken(1-tp,71645243)
 		Duel.SpecialSummonStep(token,SUMMON_VALUE_BLACK_GARDEN,1-tp,tp,false,false,POS_FACEUP_ATTACK)
 	end

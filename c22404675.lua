@@ -25,7 +25,7 @@ function c22404675.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,22404676,0,TYPES_TOKEN_MONSTER,800,1000,1,RACE_THUNDER,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,22404676,0,TYPES_TOKEN_MONSTER,800,1000,1,RACE_THUNDER,ATTRIBUTE_LIGHT,POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
@@ -34,7 +34,7 @@ function c22404675.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and c:IsRelateToEffect(e) then
 		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 			if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
-				and Duel.IsPlayerCanSpecialSummonMonster(tp,22404676,0,TYPES_TOKEN_MONSTER,800,1000,1,RACE_THUNDER,ATTRIBUTE_LIGHT) then
+				and Duel.IsPlayerCanSpecialSummonMonster(tp,22404676,0,TYPES_TOKEN_MONSTER,800,1000,1,RACE_THUNDER,ATTRIBUTE_LIGHT,POS_FACEUP_DEFENSE) then
 				local token=Duel.CreateToken(tp,22404676)
 				Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)
 			end

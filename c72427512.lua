@@ -53,6 +53,12 @@ function c72427512.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c72427512.efilter(e,re,rp)
-	local race=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_RACE)
-	return re:IsActiveType(TYPE_MONSTER) and e:GetHandler():IsRace(race)
+	if not re:IsActiveType(TYPE_MONSTER) then return false end
+	local rc=re:GetHandler()
+	if (re:IsActivated() and rc:IsRelateToEffect(re) or not re:IsHasProperty(EFFECT_FLAG_FIELD_ONLY))
+		and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
+		return e:GetHandler():IsRace(rc:GetRace())
+	else
+		return e:GetHandler():IsRace(rc:GetOriginalRace())
+	end
 end

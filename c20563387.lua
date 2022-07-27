@@ -26,7 +26,7 @@ function c20563387.initial_effect(c)
 	e2:SetOperation(c20563387.rmop)
 	c:RegisterEffect(e2)
 end
-c20563387.xyz_number=80
+aux.xyz_number[20563387]=80
 function c20563387.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 end
@@ -41,7 +41,7 @@ function c20563387.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end

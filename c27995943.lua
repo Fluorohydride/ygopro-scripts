@@ -26,7 +26,7 @@ function c27995943.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,1)
 	Duel.ConfirmCards(tp,g)
 	if not g:GetFirst():IsAbleToHand() or Duel.SelectYesNo(tp,aux.Stringid(27995943,0)) then
-		Duel.MoveSequence(g:GetFirst(),1)
+		Duel.MoveSequence(g:GetFirst(),SEQ_DECKBOTTOM)
 	else
 		Duel.DisableShuffleCheck()
 		Duel.SendtoHand(g,nil,REASON_EFFECT)

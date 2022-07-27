@@ -32,7 +32,7 @@ function c62957424.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c62957424.sdfilter(c)
-	return not c:IsFaceup() or not c:IsSetCard(0xb1)
+	return c:IsFacedown() or not c:IsSetCard(0xb1)
 end
 function c62957424.sdcon(e)
 	return Duel.IsExistingMatchingCard(c62957424.sdfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
@@ -75,6 +75,7 @@ function c62957424.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
 	end

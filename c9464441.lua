@@ -45,7 +45,7 @@ function c9464441.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,g:GetCount())
 		for i=1,g:GetCount() do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

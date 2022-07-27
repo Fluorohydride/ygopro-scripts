@@ -60,7 +60,7 @@ function c99357565.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c99357565.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,e:GetLabel(),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK)
 end
-function c99357565.spop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99357565.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>=ct then

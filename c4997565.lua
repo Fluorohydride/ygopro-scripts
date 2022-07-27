@@ -30,7 +30,7 @@ function c4997565.initial_effect(c)
 	e2:SetOperation(c4997565.disop)
 	c:RegisterEffect(e2)
 end
-c4997565.xyz_number=3
+aux.xyz_number[4997565]=3
 function c4997565.spfilter(c,e,tp)
 	return c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
