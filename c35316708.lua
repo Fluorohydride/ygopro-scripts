@@ -18,6 +18,6 @@ function c35316708.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
 	e1:SetCode(EFFECT_SKIP_DP)
-	e1:SetReset(RESET_PHASE+PHASE_DRAW+RESET_OPPO_TURN)
+	e1:SetReset(RESET_PHASE+PHASE_END,3)
 	Duel.RegisterEffect(e1,tp)
 end
