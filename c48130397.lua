@@ -44,7 +44,7 @@ function c48130397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c48130397.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
-		return res
+		return res and mg1:IsExists(aux.NOT(Card.IsImmuneToEffect),2,nil,e)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then

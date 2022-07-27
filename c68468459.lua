@@ -62,7 +62,7 @@ function c68468459.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			end
 		end
 		aux.FCheckAdditional=nil
-		return res and c:IsRelateToEffect(e)
+		return res and c:IsRelateToEffect(e) and mg1:IsExists(aux.NOT(Card.IsImmuneToEffect),2,nil,e)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
