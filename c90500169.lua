@@ -38,7 +38,7 @@ function c90500169.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local code=tc:GetCode()
 	local op=tc:GetOwner()
-	if not tc:IsRelateToEffect(e) or not tc:IsFaceup() then return end
+	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
 	if Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)==0 then return end
 	if Duel.GetLocationCount(op,LOCATION_MZONE)<=0 then return end
 	local class=_G["c"..code]

@@ -106,7 +106,7 @@ function c39261576.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	tc:CreateEffectRelation(e)
 	Duel.SetTargetCard(g)
 end
-function c39261576.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c39261576.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local sc=eg:GetFirst()
 	if not sc:IsRelateToEffect(e) or sc:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()

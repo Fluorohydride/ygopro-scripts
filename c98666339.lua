@@ -11,7 +11,7 @@ function c98666339.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98666339.filter(c,e,tp)
-	return c:GetControler()==tp and c:IsFaceup() and c:GetReasonPlayer()==1-tp
+	return c:IsControler(tp) and c:IsFaceup() and c:GetReasonPlayer()==1-tp
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c98666339.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

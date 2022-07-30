@@ -23,7 +23,7 @@ function c40450317.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c40450317.filter(c,e,tp)
-	if not c:IsFaceup() or not c:IsLevelBelow(4) then return false end
+	if c:IsFacedown() or not c:IsLevelBelow(4) then return false end
 	local g=Duel.GetMatchingGroup(c40450317.filter2,tp,LOCATION_DECK,0,nil,e,tp,c)
 	return g:GetClassCount(Card.GetCode)>1
 end

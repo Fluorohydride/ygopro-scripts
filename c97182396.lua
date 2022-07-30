@@ -96,7 +96,7 @@ end
 function c97182396.nacon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	local ec=e:GetHandler():GetEquipTarget()
-	return at:GetControler()~=tp and ec and ec:IsControler(tp)
+	return at:IsControler(1-tp) and ec and ec:IsControler(tp)
 end
 function c97182396.natg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=e:GetHandler():GetEquipTarget()

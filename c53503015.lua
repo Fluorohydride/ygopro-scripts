@@ -24,7 +24,6 @@ function c53503015.thfilter(c)
 end
 function c53503015.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local chk1=Duel.IsExistingMatchingCard(c53503015.cfilter,tp,LOCATION_MZONE,0,1,nil,0,true)
-		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>1
 	local chk2=Duel.IsExistingMatchingCard(c53503015.cfilter,tp,LOCATION_MZONE,0,1,nil,0,false)
 		and Duel.IsExistingMatchingCard(c53503015.thfilter,tp,LOCATION_DECK,0,1,nil)
 	if chk==0 then

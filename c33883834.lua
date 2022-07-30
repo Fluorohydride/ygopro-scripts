@@ -15,7 +15,7 @@ end
 function c33883834.con(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return d and ((a:GetControler()==tp and a:IsSetCard(0x3d)) or (d:GetControler()==tp and d:IsSetCard(0x3d)))
+	return d and ((a:IsControler(tp) and a:IsSetCard(0x3d)) or (d:IsControler(tp) and d:IsSetCard(0x3d)))
 		and Duel.GetFlagEffect(tp,33883834)==0
 end
 function c33883834.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -23,7 +23,7 @@ function c33883834.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 	Duel.RegisterFlagEffect(tp,33883834,RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
 end
-function c33883834.op(e,tp,eg,ep,ev,re,r,rp,chk)
+function c33883834.op(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if not a:IsRelateToBattle() or not d:IsRelateToBattle() then return end
@@ -33,7 +33,7 @@ function c33883834.op(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	e1:SetValue(1)
-	if a:GetControler()==tp then
+	if a:IsControler(tp) then
 		a:RegisterEffect(e1)
 	else
 		d:RegisterEffect(e1)

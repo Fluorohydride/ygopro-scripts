@@ -43,7 +43,7 @@ function c2525268.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c2525268.value(e,c)
-	return c:IsFaceup() and c:GetLocation()==LOCATION_MZONE and c:IsRace(RACE_SPELLCASTER)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_SPELLCASTER)
 end
 function c2525268.desop(e,tp,eg,ep,ev,re,r,rp)
 	local count=e:GetLabel()

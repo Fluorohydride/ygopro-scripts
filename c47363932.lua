@@ -44,7 +44,7 @@ function c47363932.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,1,0,0)
 end
-function c47363932.spop1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c47363932.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

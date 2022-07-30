@@ -1981,7 +1981,7 @@ function Auxiliary.LConditionFilter(c,f,lc,e)
 		and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
 end
 function Auxiliary.LExtraFilter(c,f,lc,tp)
-	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
+	if c:IsOnField() and c:IsFacedown() then return false end
 	if not c:IsCanBeLinkMaterial(lc) or f and not f(c) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
 	for _,te in pairs(le) do
@@ -2203,6 +2203,19 @@ function Auxiliary.IsCounterAdded(c,counter)
 end
 function Auxiliary.IsTypeInText(c,type)
 	return c.has_text_type and type&c.has_text_type==type
+end
+function Auxiliary.GetAttributeCount(g)
+	if #g==0 then return 0 end
+	local att=0
+	for tc in Auxiliary.Next(g) do
+		att=att|tc:GetAttribute()
+	end
+	local ct=0
+	while att~=0 do
+		if att&0x1~=0 then ct=ct+1 end
+		att=att>>1
+	end
+	return ct
 end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)

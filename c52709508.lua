@@ -91,7 +91,7 @@ function c52709508.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local t=Duel.GetAttackTarget()
 	if ev==1 then t=Duel.GetAttacker() end
 	e:SetLabel(t:GetAttack())
-	return t:GetLocation()==LOCATION_GRAVE and t:IsType(TYPE_MONSTER)
+	return t:IsLocation(LOCATION_GRAVE) and t:IsType(TYPE_MONSTER)
 end
 function c52709508.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

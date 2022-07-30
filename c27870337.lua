@@ -82,7 +82,7 @@ function c27870337.activate(e,tp,eg,ep,ev,re,r,rp)
 	elseif sel==1 then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27870337,3))
 		local g=Duel.SelectMatchingCard(tp,c27870337.toexfilter,tp,LOCATION_HAND,0,1,1,nil)
-		if g:GetCount()>0 and Duel.SendtoExtraP(g,tp,REASON_EFFECT)~=0
+		if g:GetCount()>0 and Duel.SendtoExtraP(g,nil,REASON_EFFECT)~=0
 			and Duel.CheckLocation(tp,LOCATION_PZONE,0) and Duel.CheckLocation(tp,LOCATION_PZONE,1) then
 			local g1=Duel.GetMatchingGroup(c27870337.pendfilter1,tp,LOCATION_DECK,0,nil)
 			local g2=Duel.GetMatchingGroup(c27870337.pendfilter2,tp,LOCATION_DECK,0,nil)
@@ -106,7 +106,7 @@ function c27870337.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27870337,3))
 		local g2=Duel.SelectMatchingCard(tp,c27870337.toexfilter2,tp,LOCATION_PZONE,0,1,1,nil)
 		g1:Merge(g2)
-		if Duel.SendtoExtraP(g1,tp,REASON_EFFECT)~=0 then
+		if Duel.SendtoExtraP(g1,nil,REASON_EFFECT)~=0 then
 			local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 			Duel.Draw(p,d,REASON_EFFECT)
 		end

@@ -25,7 +25,7 @@ function c2851070.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return c==e:GetHandler() and c:GetBattlePosition()==POS_FACEUP_ATTACK
 end
 function c2851070.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk ==0 then	return true end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 end

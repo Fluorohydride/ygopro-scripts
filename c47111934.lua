@@ -24,7 +24,7 @@ end
 function c47111934.cfilter(c)
 	return c:IsFaceup() and c:IsCode(11722335)
 end
-function c47111934.spcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c47111934.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==1
 		and Duel.IsExistingMatchingCard(c47111934.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end

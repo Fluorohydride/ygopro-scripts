@@ -17,7 +17,7 @@ function c36092504.rmfilter1(c)
 	return c:IsFacedown() and c:IsLocation(LOCATION_EXTRA)
 end
 function c36092504.rmfilter2(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsOnField()
 end
 function c36092504.lmfilter(c)
 	return c:IsFaceup() and c:IsAttackAbove(3000)

@@ -27,7 +27,7 @@ function c68120130.initial_effect(c)
 end
 function c68120130.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c68120130.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
