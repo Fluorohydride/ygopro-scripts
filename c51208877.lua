@@ -31,10 +31,7 @@ function c51208877.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local tg=g:GetMaxGroup(Card.GetAttack)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
-	local dam=0
-	for tc in aux.Next(tg) do
-		if dam<tc:GetBaseAttack() then dam=tc:GetBaseAttack() end
-	end
+	local _,dam=tg:GetMaxGroup(Card.GetBaseAttack)
 	if dam>0 then
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
 	end
