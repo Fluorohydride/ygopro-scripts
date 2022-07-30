@@ -51,7 +51,7 @@ function c28534130.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetValue(RESET_TURN_SET)
 	tc:RegisterEffect(e2)
 	Duel.SpecialSummonComplete()
-	Duel.RaiseEvent(c,EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	if not tc:IsLocation(LOCATION_MZONE) then return end
 	local tg=Duel.GetMatchingGroup(c28534130.lkfilter,tp,LOCATION_EXTRA,0,nil,tc)
 	if tg:GetCount()>0 then

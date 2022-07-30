@@ -56,7 +56,7 @@ function c40493210.activate(e,tp,eg,ep,ev,re,r,rp)
 		g=g:Select(tp,ft,ft,nil)
 	end
 	local res=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-	Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	local b1=Duel.IsExistingMatchingCard(c40493210.syncsumfilter,tp,LOCATION_EXTRA,0,1,nil)
 	local b2=Duel.IsExistingMatchingCard(c40493210.xyzsumfilter,tp,LOCATION_EXTRA,0,1,nil)
 	if res~=0 and (b1 or b2) then

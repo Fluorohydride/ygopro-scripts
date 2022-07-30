@@ -131,7 +131,7 @@ function c97769122.xyzop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	Duel.SpecialSummonComplete()
-	Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	if g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<#g then return end
 	local exg=Duel.GetMatchingGroup(c97769122.xyzfilter2,tp,LOCATION_EXTRA,0,nil)
 	local xyzg=exg:Filter(c97769122.ovfilter,nil,tp,g)
