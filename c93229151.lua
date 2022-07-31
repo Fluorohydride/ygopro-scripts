@@ -3,64 +3,63 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
-	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
-	--spsummon
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetType(EFFECT_TYPE_ACTIVATE)
-	e2:SetCode(EVENT_FREE_CHAIN)
-	e2:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
-	e2:SetTarget(s.sptg)
-	e2:SetOperation(s.spop)
-	c:RegisterEffect(e2)
-end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)>0
-		and Duel.GetDecktopGroup(1-tp,1):FilterCount(Card.IsAbleToRemove,nil)>0 end
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_DECK)
-end
-function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ct1=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
-	local ct2=Duel.GetDecktopGroup(1-tp,ct1):FilterCount(Card.IsAbleToRemove,nil)
-	if ct1>0 and ct2>0 then
-		local num={}
-		local i=1
-		while i<=ct1 and i<=ct2 do
-			num[i]=i
-			i=i+1
-		end
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
-		local ct=Duel.AnnounceNumber(tp,table.unpack(num))
-		local g=Duel.GetDecktopGroup(1-tp,ct)
-		Duel.DisableShuffleCheck()
-		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
-	end
-	s.skipop(e,tp)
 end
 function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x17f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.GetLocationCountFromEx(tp,tp,nil,c,0x60)>0
 end
-function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local b1=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)>0
+		and Duel.GetDecktopGroup(1-tp,1):FilterCount(Card.IsAbleToRemove,nil)>0
+	local b2=Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
+	if chk==0 then return b1 or b2 end
+	local op=0
+	if b1 and b2 then
+		op=Duel.SelectOption(tp,aux.Stringid(id,0),aux.Stringid(id,1))
+	elseif b1 then
+		op=Duel.SelectOption(tp,aux.Stringid(id,0))
+	else
+		op=Duel.SelectOption(tp,aux.Stringid(id,1))+1
+	end
+	e:SetLabel(op)
+	if op==0 then
+		e:SetCategory(CATEGORY_REMOVE)
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_DECK)
+	else
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	end
 end
-function s.spop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
-	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP,0x60)
+function s.activate(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==0 then
+		local ct1=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
+		local ct2=Duel.GetDecktopGroup(1-tp,ct1):FilterCount(Card.IsAbleToRemove,nil)
+		if ct1>0 and ct2>0 then
+			local num={}
+			local i=1
+			while i<=ct1 and i<=ct2 do
+				num[i]=i
+				i=i+1
+			end
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
+			local ct=Duel.AnnounceNumber(tp,table.unpack(num))
+			local g=Duel.GetDecktopGroup(1-tp,ct)
+			Duel.DisableShuffleCheck()
+			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
+		end
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+		if g:GetCount()>0 then
+			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP,0x60)
+		end
 	end
 	s.skipop(e,tp)
 end
