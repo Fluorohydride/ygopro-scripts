@@ -38,8 +38,18 @@ function c19605133.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c19605133.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	local fe=Duel.IsPlayerAffectedByEffect(tp,29942771)
+	local b1=fe and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
+	local b2=c:IsReleasable()
+	if chk==0 then return b1 or b2 end
+	if b1 and (not b2 or Duel.SelectYesNo(tp,fe:GetDescription())) then
+		Duel.Hint(HINT_CARD,0,29942771)
+		fe:UseCountLimit(tp)
+		Duel.DiscardDeck(tp,2,REASON_COST)
+	else
+		Duel.Release(c,REASON_COST)
+	end
 end
 function c19605133.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2a)
