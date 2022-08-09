@@ -37,6 +37,6 @@ function c61844784.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and e:GetHandler():GetCounter(0x102a)>0 end
 	return true
 end
-function c61844784.repop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c61844784.repop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(tp,0x102a,1,REASON_EFFECT)
 end

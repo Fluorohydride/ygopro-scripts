@@ -41,7 +41,7 @@ function c90020065.damfilter(c)
 		return c:GetPreviousAttackOnField()
 	else return 0 end
 end
-function c90020065.desop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c90020065.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
 	if Duel.Destroy(g1,REASON_EFFECT)==0 then return end
 	local og=Duel.GetOperatedGroup()

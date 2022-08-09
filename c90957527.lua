@@ -47,10 +47,10 @@ function c90957527.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if c==a then
 		e:SetLabel(d:GetDefense())
-		return c:IsRelateToBattle() and d:GetLocation()==LOCATION_GRAVE and d:IsType(TYPE_MONSTER)
+		return c:IsRelateToBattle() and d:IsLocation(LOCATION_GRAVE) and d:IsType(TYPE_MONSTER)
 	else
 		e:SetLabel(a:GetDefense())
-		return c:IsRelateToBattle() and a:GetLocation()==LOCATION_GRAVE and a:IsType(TYPE_MONSTER)
+		return c:IsRelateToBattle() and a:IsLocation(LOCATION_GRAVE) and a:IsType(TYPE_MONSTER)
 	end
 end
 function c90957527.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

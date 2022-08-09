@@ -42,7 +42,7 @@ end
 function c64753157.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	if not d or a:GetControler()==d:GetControler() or not d:IsFaceup() or not a:IsFaceup() then return end
+	if not d or a:GetControler()==d:GetControler() or d:IsFacedown() or a:IsFacedown() then return end
 	if a:IsControler(tp) and a:IsCode(41091257) then e:SetLabelObject(d)
 	elseif d:IsControler(tp) and d:IsCode(41091257) then e:SetLabelObject(a)
 	else return false end

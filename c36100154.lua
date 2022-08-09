@@ -18,6 +18,7 @@ function c36100154.initial_effect(c)
 end
 function c36100154.atkcon(e)
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and Duel.GetAttackTarget()
+		and Duel.GetAttacker():IsControler(e:GetHandlerPlayer())
 end
 function c36100154.atktg(e,c)
 	return c==Duel.GetAttacker() and c:IsSetCard(0x4)

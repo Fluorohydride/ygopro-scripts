@@ -42,9 +42,6 @@ end
 function s.dfilter(c,tp)
 	return c:IsLocation(LOCATION_DECK) and c:IsControler(tp)
 end
-function s.exfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:IsCode(89943723)
-end
 function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp|0x200
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.fsfilter1),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
@@ -60,6 +57,7 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)
 		end
+		local ng=mat:Filter(Card.IsCode,nil,89943723)
 		if #mat>0 and Duel.SendtoDeck(mat,nil,SEQ_DECKTOP,REASON_EFFECT)>0 then
 			local p=tp
 			for i=1,2 do
@@ -76,7 +74,7 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
-		if mat:IsExists(s.exfilter,1,nil) then
+		if ng:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetDescription(aux.Stringid(id,1))
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)

@@ -57,7 +57,7 @@ end
 function c42155488.sumlimit(e,c)
 	return c:GetRace()~=e:GetLabel()
 end
-function c42155488.decop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c42155488.decop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local rc=e:GetLabel()

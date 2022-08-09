@@ -63,7 +63,10 @@ function c44146295.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(sg)
 		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 	end
-	e:GetHandler():RegisterFlagEffect(44146295,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		c:RegisterFlagEffect(44146295,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+	end
 end
 function c44146295.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

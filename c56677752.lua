@@ -48,7 +48,7 @@ function c56677752.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56677752,0))
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56677752.negfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoExtraP(tc,tp,REASON_EFFECT) and tc:IsLocation(LOCATION_EXTRA) and Duel.NegateAttack()
+	if tc and Duel.SendtoExtraP(tc,nil,REASON_EFFECT) and tc:IsLocation(LOCATION_EXTRA) and Duel.NegateAttack()
 		and tc:GetAttack()>0 and Duel.SelectYesNo(tp,aux.Stringid(56677752,1)) then
 		Duel.BreakEffect()
 		Duel.Recover(tp,tc:GetAttack(),REASON_EFFECT)

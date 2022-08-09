@@ -14,7 +14,6 @@ function s.initial_effect(c)
 	--Level Change (Increase)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -56,10 +55,9 @@ function s.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.targetfilter2(chkc) end
-	if chk==0 then return true end
+	if chk==0 then return Duel.IsExistingTarget(s.targetfilter2,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,s.targetfilter2,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_LVCHANGE,g,1,0,0)
+	Duel.SelectTarget(tp,s.targetfilter2,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function s.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

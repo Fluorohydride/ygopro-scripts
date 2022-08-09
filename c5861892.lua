@@ -132,7 +132,7 @@ function c5861892.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5861892.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or c:GetAttack()<1000 or not c:IsRelateToEffect(e) or Duel.GetCurrentChain()~=ev+1 then
+	if c:IsFacedown() or c:GetAttack()<1000 or not c:IsRelateToEffect(e) or Duel.GetCurrentChain()~=ev+1 then
 		return
 	end
 	if Duel.NegateActivation(ev) then

@@ -24,7 +24,7 @@ function c44178886.initial_effect(c)
 end
 function c44178886.targ(e,tp,eg,ep,ev,re,r,rp,chk)
 	local t=Duel.GetAttackTarget()
-	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler() and t~=nil and not t:IsAttackPos() and t:IsAbleToDeck() end
+	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and t~=nil and not t:IsAttackPos() and t:IsAbleToDeck() end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,t,1,0,0)
 end
 function c44178886.op(e,tp,eg,ep,ev,re,r,rp)

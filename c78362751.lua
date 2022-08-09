@@ -23,7 +23,7 @@ function c78362751.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78362751.cfilter(c)
-	if not c:IsFaceup() then return false end
+	if c:IsFacedown() then return false end
 	local oc=c:GetOverlayGroup()
 	return c:IsCode(24639891) or c:IsType(TYPE_XYZ) and oc and oc:IsExists(Card.IsCode,1,nil,24639891)
 end

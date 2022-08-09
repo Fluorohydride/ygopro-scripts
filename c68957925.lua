@@ -14,7 +14,7 @@ function c68957925.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK)
 end
 function c68957925.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetMatchingGroup(c68957925.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil):GetClassCount(Card.GetAttribute)
+	local ct=Duel.GetMatchingGroup(c68957925.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil):GetClassCount(Card.GetOriginalAttribute)
 	if chk==0 then return (ct==1 and Duel.IsExistingMatchingCard(c68957925.filter,tp,LOCATION_MZONE,0,1,nil))
 	 	or (ct==2 and Duel.IsExistingMatchingCard(c68957925.filter,tp,0,LOCATION_MZONE,1,nil))
 		or ct==3 or ct==4
@@ -38,7 +38,7 @@ function c68957925.desfilter(c)
 	return c:IsFaceup() and c:IsAttackBelow(3000)
 end
 function c68957925.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroup(c68957925.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil):GetClassCount(Card.GetAttribute)
+	local ct=Duel.GetMatchingGroup(c68957925.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil):GetClassCount(Card.GetOriginalAttribute)
 	local g1=Duel.GetMatchingGroup(c68957925.filter,tp,LOCATION_MZONE,0,nil)
 	if ct==1 and g1:GetCount()>0 then
 		local tc1=g1:GetFirst()

@@ -40,7 +40,7 @@ function c89538537.rthtgfilter(c,tc)
 end
 function c89538537.rthtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsAbleToHand() end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsAbleToHand() end
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
@@ -80,7 +80,7 @@ function c89538537.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c89538537.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

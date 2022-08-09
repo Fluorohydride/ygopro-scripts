@@ -42,18 +42,7 @@ function c62256492.atkfilter(c)
 end
 function c62256492.atkval(e,c)
 	local g=Duel.GetMatchingGroup(c62256492.atkfilter,c:GetControler(),LOCATION_MZONE,0,nil)
-	local att=0
-	local tc=g:GetFirst()
-	while tc do
-		att=bit.bor(att,tc:GetAttribute())
-		tc=g:GetNext()
-	end
-	local ct=0
-	while att~=0 do
-		if bit.band(att,0x1)~=0 then ct=ct+1 end
-		att=bit.rshift(att,1)
-	end
-	return ct*300
+	return aux.GetAttributeCount(g)*300
 end
 function c62256492.target(e,c)
 	return c:IsSetCard(0xbf,0x10c0)

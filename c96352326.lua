@@ -59,7 +59,7 @@ function c96352326.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c96352326.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 end
-function c96352326.posop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c96352326.posop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 	local g=Duel.SelectMatchingCard(tp,c96352326.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()

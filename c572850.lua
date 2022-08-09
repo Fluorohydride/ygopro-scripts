@@ -81,7 +81,7 @@ end
 function c572850.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToChain() or c:IsImmuneToEffect(e) then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c572850.filter0),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c572850.filter1,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg2=nil

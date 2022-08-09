@@ -52,7 +52,7 @@ function c83725008.lptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83725008.lpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.Recover(tp,500,REASON_EFFECT)
 	Duel.Damage(1-tp,500,REASON_EFFECT)
 end

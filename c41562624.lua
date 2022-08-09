@@ -56,7 +56,7 @@ function c41562624.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function c41562624.drop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41562624.drop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Draw(tp,1,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		Duel.ShuffleHand(tp)

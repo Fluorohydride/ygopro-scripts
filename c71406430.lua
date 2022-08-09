@@ -31,7 +31,7 @@ function s.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCode(EVENT_BATTLE_DAMAGE)
 	e4:SetCountLimit(1,id+o)
-	e4:SetCondition(function(e,tp,eg,ep) return ep==1-tp end)
+	e4:SetCondition(s.f2dcon)
 	e4:SetTarget(s.f2dtg)
 	e4:SetOperation(s.f2dop)
 	c:RegisterEffect(e4)
@@ -58,6 +58,9 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if #g>0 then
 		Duel.SSet(tp,g)
 	end
+end
+function s.f2dcon(e,tp,eg,ep,ev,re,r,rp)
+	return ep==1-tp
 end
 function s.f2dtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() and chkc:IsAbleToDeck() end

@@ -54,7 +54,7 @@ function c26914168.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return d end
 	Duel.SetTargetCard(d)
 end
-function c26914168.operation2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c26914168.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetFirstTarget()
 	if not (d:IsRelateToBattle() and d:IsFaceup() and d:IsControler(1-tp)) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())

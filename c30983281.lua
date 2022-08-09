@@ -145,7 +145,7 @@ function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	Duel.SpecialSummonComplete()
-	Duel.RaiseEvent(c,EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	local tg=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,nil)
 	if res and tg:GetCount()>0 then
 		Duel.BreakEffect()

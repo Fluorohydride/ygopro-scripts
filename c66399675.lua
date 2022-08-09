@@ -12,7 +12,7 @@ end
 function c66399675.filter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsAbleToHand()
 end
-function c66399675.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c66399675.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<3 then return end
 	local g=Duel.GetDecktopGroup(tp,3)
 	Duel.ConfirmCards(tp,g)
