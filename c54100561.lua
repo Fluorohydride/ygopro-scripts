@@ -44,7 +44,7 @@ function c54100561.teop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(54100561,1))
 	local g=Duel.SelectMatchingCard(tp,c54100561.tefilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
-		Duel.SendtoExtraP(g,tp,REASON_EFFECT)
+		Duel.SendtoExtraP(g,nil,REASON_EFFECT)
 	end
 end
 function c54100561.pfilter(c)

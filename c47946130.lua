@@ -70,7 +70,7 @@ function c47946130.ChainUniqueCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:GetFlagEffect(47946130)==0 end
 	c:RegisterFlagEffect(47946130,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 end
-function c47946130.negop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c47946130.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or c:GetAttack()<500 or not c:IsRelateToEffect(e)
 		or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then

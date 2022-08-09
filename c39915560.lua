@@ -33,8 +33,7 @@ function c39915560.fusmatfilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsFusionType(TYPE_FUSION)
 end
 function c39915560.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==1-tp and Duel.IsChainNegatable(ev)
-		and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
+	return Duel.IsChainNegatable(ev) and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c39915560.negcfilter(c)
 	return c:IsFaceup() and c:GetCounter(0x1041)>0 and c:IsReleasableByEffect()

@@ -53,7 +53,7 @@ function c66938505.scop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.SpecialSummonComplete()==0 then return end
 	if not c:IsRelateToEffect(e) then return end
-	Duel.RaiseEvent(c,EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	local mg=Group.FromCards(c,tc)
 	if mg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetMatchingGroup(c66938505.scfilter2,tp,LOCATION_EXTRA,0,nil,mg)

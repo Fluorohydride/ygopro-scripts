@@ -45,7 +45,7 @@ function c43210483.pfilter(c)
 end
 function c43210483.ptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and chkc~=c and c43210483.pfilter(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc~=c and c43210483.pfilter(chkc) end
 	if chk==0 then return c:IsAbleToHand()
 		and Duel.IsExistingTarget(c43210483.pfilter,tp,LOCATION_ONFIELD,0,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)

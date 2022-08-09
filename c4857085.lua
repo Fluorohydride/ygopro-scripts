@@ -14,7 +14,7 @@ function c4857085.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_EQUIP_LIMIT)
-	e2:SetValue(1)
+	e2:SetValue(c4857085.eqlimit)
 	c:RegisterEffect(e2)
 	--confirm
 	local e3=Effect.CreateEffect(c)
@@ -26,6 +26,9 @@ function c4857085.initial_effect(c)
 	e3:SetTarget(c4857085.cftg)
 	e3:SetOperation(c4857085.cfop)
 	c:RegisterEffect(e3)
+end
+function c4857085.eqlimit(e,c)
+	return c:IsControler(e:GetHandlerPlayer())
 end
 function c4857085.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end

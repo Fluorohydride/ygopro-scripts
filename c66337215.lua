@@ -21,7 +21,7 @@ function c66337215.filter(c)
 	return c:IsLevelAbove(7) and c:IsAbleToHand()
 end
 function c66337215.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_GRAVE and chkc:GetControler()==tp and c66337215.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c66337215.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c66337215.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c66337215.filter,tp,LOCATION_GRAVE,0,1,1,nil)

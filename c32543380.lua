@@ -55,7 +55,7 @@ function c32543380.descon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if a~=c then d=a end
 	return c:IsRelateToBattle() and c:IsFaceup()
-		and d and d:GetLocation()==LOCATION_GRAVE and d:IsType(TYPE_MONSTER)
+		and d and d:IsLocation(LOCATION_GRAVE) and d:IsType(TYPE_MONSTER)
 end
 function c32543380.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

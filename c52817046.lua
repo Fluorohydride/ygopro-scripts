@@ -11,7 +11,7 @@ function c52817046.initial_effect(c)
 	e1:SetOperation(c52817046.activate)
 	c:RegisterEffect(e1)
 end
-function c52817046.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c52817046.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
 	return ct>0 and ct<=3
 end

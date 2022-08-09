@@ -46,7 +46,7 @@ function c79400597.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 	end
 end
-function c79400597.activate(e,tp,eg,ep,ev,re,r,rp,chk)
+function c79400597.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and e:GetLabel()==1 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

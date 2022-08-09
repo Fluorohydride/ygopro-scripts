@@ -23,8 +23,8 @@ function s.initial_effect(c)
 	e2:SetOperation(s.fusop)
 	c:RegisterEffect(e2)
 	--workaround
-	if not aux.fus_mat_hack_check2 then
-		aux.fus_mat_hack_check2=true
+	if not aux.fus_mat_hack_check then
+		aux.fus_mat_hack_check=true
 		function aux.fus_mat_hack_exmat_filter(c)
 			return c:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,c:GetControler())
 		end
@@ -40,13 +40,16 @@ function s.initial_effect(c)
 			if reason~=REASON_EFFECT+REASON_MATERIAL+REASON_FUSION or aux.GetValueType(tg)~="Group" then
 				return _SendtoGrave(tg,reason)
 			end
-			local rg=tg:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
-			local tc=rg:Filter(aux.fus_mat_hack_exmat_filter,nil):GetFirst()
+			local tc=tg:Filter(Card.IsLocation,nil,LOCATION_EXTRA+LOCATION_GRAVE):Filter(aux.fus_mat_hack_exmat_filter,nil):GetFirst()
 			if tc then
 				local te=tc:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,tc:GetControler())
 				te:UseCountLimit(tc:GetControler())
 			end
-			return _SendtoGrave(tg,reason)
+			local rg=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
+			tg:Sub(rg)
+			local ct1=_SendtoGrave(tg,reason)
+			local ct2=Duel.Remove(rg,POS_FACEUP,reason)
+			return ct1+ct2
 		end
 	end
 end

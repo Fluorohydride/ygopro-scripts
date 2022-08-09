@@ -64,7 +64,7 @@ function c44891812.defop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44891812.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c44891812.spfilter(c,e,tp)
 	return c:IsSetCard(0x9a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

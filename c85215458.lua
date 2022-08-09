@@ -19,14 +19,14 @@ function c85215458.condition(e,tp,eg,ep,ev,re,r,rp)
 	if phase~=PHASE_DAMAGE or Duel.IsDamageCalculated() then return false end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return (a:GetControler()==tp and a:IsSetCard(0x33) and a:IsRelateToBattle())
-		or (d and d:GetControler()==tp and d:IsSetCard(0x33) and d:IsRelateToBattle())
+	return (a:IsControler(tp) and a:IsSetCard(0x33) and a:IsRelateToBattle())
+		or (d and d:IsControler(tp) and d:IsSetCard(0x33) and d:IsRelateToBattle())
 end
 function c85215458.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
-function c85215458.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c85215458.operation(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	if Duel.GetTurnPlayer()~=tp then a=Duel.GetAttackTarget() end
 	if not a:IsRelateToBattle() then return end

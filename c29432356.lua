@@ -59,7 +59,7 @@ function c29432356.scop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29432356,1))
 	local g=Duel.SelectMatchingCard(tp,c29432356.scfilter,tp,LOCATION_DECK,0,1,1,nil,c)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoExtraP(tc,tp,REASON_EFFECT)>0 then
+	if tc and Duel.SendtoExtraP(tc,nil,REASON_EFFECT)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LSCALE)

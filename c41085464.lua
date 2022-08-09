@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,45001322,88106656)
 	--ritual summon
-	aux.AddRitualProcGreater(c,aux.FilterBoolFunction(Card.IsSetCard,0x17c),LOCATION_HAND,nil,nil,false,s.extraop)
+	aux.AddRitualProcGreater2(c,aux.FilterBoolFunction(Card.IsSetCard,0x17c),LOCATION_HAND,nil,nil,false,s.extraop)
 end
 function s.filter(c)
 	return c:IsCode(45001322) and c:IsPreviousLocation(LOCATION_ONFIELD)

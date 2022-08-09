@@ -3,7 +3,7 @@ function c40939228.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309)
 	aux.AddCodeList(c,44508094)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,c40939228.mfilter,nil,nil,aux.NonTuner(nil),1,99,c40939228.gfilter)
+	aux.AddSynchroMixProcedure(c,aux.Tuner(Card.IsCode,21159309),nil,nil,aux.NonTuner(nil),1,99,c40939228.syncheck(c))
 	c:EnableReviveLimit()
 	--special summon condition
 	local e1=Effect.CreateEffect(c)
@@ -46,20 +46,19 @@ function c40939228.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c40939228.material_type=TYPE_SYNCHRO
-function c40939228.mfilter(c)
-	return c:IsCode(21159309) and c:IsSynchroType(TYPE_TUNER)
+function c40939228.cfilter(c,syncard)
+	return c:IsRace(RACE_DRAGON) and c:IsSynchroType(TYPE_SYNCHRO) and c:IsNotTuner(syncard)
 end
-function c40939228.cfilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsSynchroType(TYPE_SYNCHRO)
-end
-function c40939228.gfilter(g,syncard,c1)
-	return g:IsExists(c40939228.cfilter,1,c1)
+function c40939228.syncheck(syncard)
+	return	function(g)
+				return g:IsExists(c40939228.cfilter,1,nil,syncard)
+			end
 end
 function c40939228.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,nil,1,tp,LOCATION_MZONE)
 end
-function c40939228.disop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c40939228.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
