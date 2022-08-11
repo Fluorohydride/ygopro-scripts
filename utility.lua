@@ -581,14 +581,18 @@ function Auxiliary.SynMixFilter1(c,f1,f2,f3,f4,minc,maxc,syncard,mg,smat,gc,mgch
 end
 function Auxiliary.SynMixFilter2(c,f2,f3,f4,minc,maxc,syncard,mg,smat,c1,gc,mgchk)
 	if f2 then
-		return f2(c,syncard,c1) and mg:IsExists(Auxiliary.SynMixFilter3,1,Group.FromCards(c1,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c,gc,mgchk)
+		return f2(c,syncard,c1)
+			and (mg:IsExists(Auxiliary.SynMixFilter3,1,Group.FromCards(c1,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c,gc,mgchk)
+				or minc==0 and Auxiliary.SynMixFilter4(c,nil,minc+1,maxc+1,syncard,mg,smat,c1,nil,nil,gc,mgchk))
 	else
 		return mg:IsExists(Auxiliary.SynMixFilter4,1,c1,f4,minc,maxc,syncard,mg,smat,c1,nil,nil,gc,mgchk)
 	end
 end
 function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc,mgchk)
 	if f3 then
-		return f3(c,syncard,c1,c2) and mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2,c),f4,minc,maxc,syncard,mg,smat,c1,c2,c,gc,mgchk)
+		return f3(c,syncard,c1,c2)
+			and (mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2,c),f4,minc,maxc,syncard,mg,smat,c1,c2,c,gc,mgchk)
+				or minc==0 and Auxiliary.SynMixFilter4(c,nil,minc+1,maxc+1,syncard,mg,smat,c1,c2,nil,gc,mgchk))
 	else
 		return mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2),f4,minc,maxc,syncard,mg,smat,c1,c2,nil,gc,mgchk)
 	end
