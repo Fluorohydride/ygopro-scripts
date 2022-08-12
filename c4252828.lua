@@ -69,7 +69,8 @@ function c4252828.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local ec=e:GetLabelObject():GetLabelObject()
 	if chk==0 then return ec and ec:IsHasCardTarget(c) and ec:GetFlagEffect(4252828)~=0
-		and ec:IsDestructable(e) and not ec:IsStatus(STATUS_DESTROY_CONFIRMED) end
+		and ec:IsDestructable(e) and not ec:IsStatus(STATUS_DESTROY_CONFIRMED)
+		and not c:IsReason(REASON_REPLACE) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c4252828.desrepop(e,tp,eg,ep,ev,re,r,rp)
