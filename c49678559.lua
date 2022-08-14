@@ -63,11 +63,13 @@ function c49678559.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c49678559.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		local g=e:GetHandler():GetOverlayGroup()
+	local c=e:GetHandler()
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		local g=c:GetOverlayGroup()
 		Duel.SendtoGrave(g,REASON_EFFECT)
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

@@ -58,7 +58,8 @@ function c50186558.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c50186558.repfilter(c,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_DRAGON) and c:IsControler(tp) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_DRAGON) and c:IsControler(tp)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c50186558.tgfilter(c)
 	return c:IsType(TYPE_NORMAL) and c:IsAbleToGrave()
