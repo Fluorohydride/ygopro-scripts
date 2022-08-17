@@ -56,8 +56,10 @@ function c1281505.eqlimit(e,c)
 	return c:IsControler(tp)
 end
 function c1281505.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
+		and not c:GetEquipTarget():IsReason(REASON_REPLACE) end
+	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c1281505.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)

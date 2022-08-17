@@ -43,8 +43,8 @@ end
 function c73082255.eval(e,re,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and not rc:IsSummonLocation(LOCATION_GRAVE) and rc:IsSummonType(SUMMON_TYPE_SPECIAL)
-		and re:GetActivateLocation()==LOCATION_MZONE
+	return re:IsActiveType(TYPE_MONSTER) and re:GetActivateLocation()==LOCATION_MZONE and rc:IsSummonType(SUMMON_TYPE_SPECIAL)
+		and (not rc:IsSummonLocation(LOCATION_GRAVE) or (rc:GetOriginalType()&TYPE_TRAP~=0))
 end
 function c73082255.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

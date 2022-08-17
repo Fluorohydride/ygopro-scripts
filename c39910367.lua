@@ -54,12 +54,12 @@ function c39910367.rop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(ep,0x1,ev,REASON_EFFECT)
 end
 function c39910367.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)
-		and e:GetHandler():GetCounter(0x1)>0 end
+	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE+REASON_REPLACE)
+		and e:GetHandler():IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c39910367.desrepop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RemoveCounter(ep,0x1,1,REASON_EFFECT)
+	e:GetHandler():RemoveCounter(tp,0x1,1,REASON_EFFECT)
 end
 function c39910367.addop2(e,tp,eg,ep,ev,re,r,rp)
 	local count=0

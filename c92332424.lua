@@ -57,14 +57,16 @@ function c92332424.srop(e,tp,eg,ep,ev,re,r,rp)
 	if not oc then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tc=Duel.SelectMatchingCard(tp,c92332424.srfilter,tp,LOCATION_DECK,0,1,1,nil,oc):GetFirst()
-	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND)
-		and Duel.SelectYesNo(tp,aux.Stringid(92332424,1)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0):Select(tp,1,1,nil)
-		if g:GetCount()>0 then
+	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
+		Duel.ConfirmCards(1-tp,tc)
+		Duel.ShuffleHand(tp)
+		local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
+		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(92332424,1)) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+			local sg=g:Select(tp,1,1,nil)
 			Duel.BreakEffect()
-			Duel.HintSelection(g)
-			Duel.Destroy(g,REASON_EFFECT)
+			Duel.HintSelection(sg)
+			Duel.Destroy(sg,REASON_EFFECT)
 		end
 	end
 end

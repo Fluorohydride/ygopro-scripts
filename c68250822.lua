@@ -102,11 +102,11 @@ function c68250822.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Overlay(tc2,Group.FromCards(tc))
 		end
 	elseif op==2 then
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToEffect(e) and zone~=0 then
 			Duel.GetControl(tc,tp,0,0,zone)
 		end
 	elseif op==3 then
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToEffect(e) and zone~=0 then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 		end
 	end

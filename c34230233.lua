@@ -47,8 +47,11 @@ function c34230233.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
-	if rp==tp then e:SetCategory(CATEGORY_DESTROY)
-	else e:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON) end
+	if rp==1-tp and tp==e:GetLabel() then
+		e:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
+	else
+		e:SetCategory(CATEGORY_DESTROY)
+	end
 end
 function c34230233.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
