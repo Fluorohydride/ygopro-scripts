@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,nil,2,2,s.lcheck)
+	aux.AddLinkProcedure(c,nil,2,2,aux.DifferentLinkRace)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -26,9 +26,6 @@ function s.initial_effect(c)
 	e2:SetTarget(s.sptg)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
-end
-function s.lcheck(g,lc)
-	return g:GetClassCount(Card.GetLinkRace)==g:GetCount()
 end
 function s.desfilter(c)
 	return c:IsSetCard(0x114) and c:IsFaceup()
