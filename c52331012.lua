@@ -91,7 +91,7 @@ function c52331012.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52331012.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(c52331012.atkfilter,tp,LOCATION_MZONE,0,nil)
-	local ct=tg:GetClassCount(Card.GetRace)
+	local ct=tg:GetBinClassCount(Card.GetRace)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
