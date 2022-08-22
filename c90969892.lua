@@ -14,21 +14,25 @@ function c90969892.filter(c,e,tp,race)
 	return c:IsType(TYPE_MONSTER) and (c:IsAbleToHand() or c:IsCanBeSpecialSummoned(e,0,tp,false,false)) and c:IsRace(race)
 end
 function c90969892.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-	local ct1=mg:GetClassCount(Card.GetRace)
-	local mc=mg:GetFirst()
-	local mrc=0
-	while mc do
-		mrc=mrc|mc:GetRace()
-		mc=mg:GetNext()
+	if chk==0 then
+		local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
+		local ct1=mg:GetBinClassCount(Card.GetRace)
+		if ct1<3 then return false end
+		local mc=mg:GetFirst()
+		local mrc=0
+		while mc do
+			mrc=mrc|mc:GetRace()
+			mc=mg:GetNext()
+		end
+		local g=Duel.GetMatchingGroup(c90969892.filter,tp,LOCATION_DECK,0,nil,e,tp,mrc)
+		local ct2=g:GetBinClassCount(Card.GetRace)
+		return ct2>=3 and g:CheckSubGroup(aux.drccheck,3,3)
 	end
-	local g=Duel.GetMatchingGroup(c90969892.filter,tp,LOCATION_DECK,0,nil,e,tp,mrc)
-	local ct2=g:GetClassCount(Card.GetRace)
-	if chk==0 then return ct1>=3 and ct2>=3 and g:CheckSubGroup(aux.drccheck,3,3) end
 end
 function c90969892.operation(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-	local ct1=mg:GetClassCount(Card.GetRace)
+	local ct1=mg:GetBinClassCount(Card.GetRace)
+	if ct1<3 then return end
 	local mc=mg:GetFirst()
 	local mrc=0
 	while mc do
@@ -36,8 +40,8 @@ function c90969892.operation(e,tp,eg,ep,ev,re,r,rp)
 		mc=mg:GetNext()
 	end
 	local g=Duel.GetMatchingGroup(c90969892.filter,tp,LOCATION_DECK,0,nil,e,tp,mrc)
-	local ct2=g:GetClassCount(Card.GetRace)
-	if ct1<3 or ct2<3 then return end
+	local ct2=g:GetBinClassCount(Card.GetRace)
+	if ct2<3 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local sg=g:SelectSubGroup(tp,aux.drccheck,false,3,3)
 	if sg then
