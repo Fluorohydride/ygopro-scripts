@@ -30,7 +30,7 @@ function c97973962.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c97973962.spcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==g:GetCount() and g:GetClassCount(Card.GetLinkAttribute)==g:GetCount()
+	return aux.DifferentLinkRace(g) and aux.DifferentLinkAttribute(g)
 end
 function c97973962.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsSummonType,1,nil,SUMMON_TYPE_FUSION)
