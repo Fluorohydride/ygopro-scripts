@@ -42,7 +42,7 @@ function c82386016.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82386016.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c82386016.filter,tp,LOCATION_MZONE,0,nil)
-	local ct=g:GetClassCount(Card.GetRace)
+	local ct=g:GetBinClassCount(Card.GetRace)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	Duel.Draw(p,ct,REASON_EFFECT)
 end
