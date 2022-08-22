@@ -68,7 +68,7 @@ end
 function c71159974.valcheck(e,c)
 	local mg=c:GetMaterial()
 	local fg=mg:Filter(c71159974.attfilter,nil,c)
-	if fg:GetClassCount(Card.GetAttribute)==2 then
+	if fg:GetBinClassCount(Card.GetAttribute)==2 then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)
