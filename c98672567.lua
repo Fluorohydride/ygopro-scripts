@@ -33,7 +33,7 @@ function c98672567.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if not Duel.IsPlayerCanDraw(tp,2) then return false end
 		local g=Duel.GetMatchingGroup(c98672567.filter,tp,LOCATION_GRAVE,0,nil,e)
-		return g:GetClassCount(Card.GetRace)>=3
+		return g:CheckSubGroup(aux.drccheck,3,3)
 	end
 	local g=Duel.GetMatchingGroup(c98672567.filter,tp,LOCATION_GRAVE,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
