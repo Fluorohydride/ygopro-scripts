@@ -31,7 +31,7 @@ function c61641818.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_MONSTER) and c:IsXyzLevel(xyzc,3)
 end
 function c61641818.xyzcheck(g)
-	return g:GetClassCount(Card.GetRace)==1 and g:GetClassCount(Card.GetAttribute)==1
+	return aux.SameRace(g) and aux.SameAttribute(g)
 end
 function c61641818.etcon(e)
 	return e:GetHandler():GetOverlayCount()~=0
