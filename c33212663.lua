@@ -34,7 +34,7 @@ function c33212663.sprfilter(c)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsAbleToRemoveAsCost() and c:IsType(TYPE_MONSTER)
 end
 function c33212663.fselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0 and g:GetClassCount(Card.GetRace)==#g
+	return Duel.GetMZoneCount(tp,g)>0 and aux.DifferentRace(g)
 end
 function c33212663.sprcon(e,c)
 	if c==nil then return true end
