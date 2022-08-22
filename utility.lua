@@ -2688,22 +2688,22 @@ end
 function Auxiliary.DifferentAttribute(g)
 	return Auxiliary.DifferentBin(g,Card.GetAttribute)
 end
-function Auxiliary.DifferentFusionAttribute(g,tp)
-	return Auxiliary.DifferentBin(g,Card.GetFusionAttribute,tp)
+function Auxiliary.DifferentFusionAttribute(g)
+	return Auxiliary.DifferentBin(g,Card.GetFusionAttribute)
 end
-function Auxiliary.DifferentLinkAttribute(g,tp)
-	return Auxiliary.DifferentBin(g,Card.GetLinkAttribute,tp)
+function Auxiliary.DifferentLinkAttribute(g)
+	return Auxiliary.DifferentBin(g,Card.GetLinkAttribute)
 end
 Auxiliary.dabcheck=Auxiliary.DifferentAttribute
 --check for cards with different races
 function Auxiliary.DifferentRace(g)
 	return Auxiliary.DifferentBin(g,Card.GetRace)
 end
-function Auxiliary.DifferentFusionRace(g,tp)
-	return Auxiliary.DifferentBin(g,Card.GetFusionRace,tp)
+function Auxiliary.DifferentFusionRace(g)
+	return Auxiliary.DifferentBin(g,Card.GetFusionRace)
 end
-function Auxiliary.DifferentLinkRace(g,tp)
-	return Auxiliary.DifferentBin(g,Card.GetLinkRace,tp)
+function Auxiliary.DifferentLinkRace(g)
+	return Auxiliary.DifferentBin(g,Card.GetLinkRace)
 end
 function Auxiliary.drccheck=Auxiliary.DifferentRace
 --check for group with 2 cards, each card match f with a1/a2 as argument
