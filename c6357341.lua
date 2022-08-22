@@ -14,7 +14,7 @@ function c6357341.filter(c)
 end
 function c6357341.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c6357341.filter,tp,LOCATION_MZONE,0,nil)
-	return g:GetClassCount(Card.GetAttribute)==6
+	return #g==6 and aux.DifferentAttribute(g)
 end
 function c6357341.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_SKIP_TURN) end
