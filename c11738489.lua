@@ -3,7 +3,7 @@ function c11738489.initial_effect(c)
 	c:SetUniqueOnField(1,0,11738489)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,nil,3,6,c11738489.lcheck)
+	aux.AddLinkProcedure(c,nil,3,6,aux.DifferentLinkAttribute)
 	--base atk
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -28,9 +28,6 @@ function c11738489.initial_effect(c)
 	e3:SetTarget(c11738489.destg)
 	e3:SetOperation(c11738489.desop)
 	c:RegisterEffect(e3)
-end
-function c11738489.lcheck(g)
-	return g:GetClassCount(Card.GetLinkAttribute)==g:GetCount()
 end
 function c11738489.matcheck(e,c)
 	local ct=c:GetMaterialCount()
