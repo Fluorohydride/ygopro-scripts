@@ -2705,7 +2705,7 @@ end
 function Auxiliary.DifferentLinkRace(g)
 	return Auxiliary.DifferentBin(g,Card.GetLinkRace)
 end
-function Auxiliary.drccheck=Auxiliary.DifferentRace
+Auxiliary.drccheck=Auxiliary.DifferentRace
 --check for group with 2 cards, each card match f with a1/a2 as argument
 function Auxiliary.gfcheck(g,f,a1,a2)
 	if #g~=2 then return false end
