@@ -26,9 +26,6 @@ end
 function c78348934.filter1(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
 end
-function c78348934.fselect(g)
-	return g:GetClassCount(Card.GetRace)==1
-end
 function c78348934.filter3(c)
 	return c:IsFaceup() and c:IsSetCard(0xd6,0xd7)
 end
@@ -38,7 +35,7 @@ function c78348934.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingMatchingCard(c78348934.filter3,tp,LOCATION_MZONE,0,1,nil) end
 	local g=Duel.GetMatchingGroup(c78348934.filter1,tp,0,LOCATION_GRAVE,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroup(tp,c78348934.fselect,false,1,3)
+	local sg=g:SelectSubGroup(tp,aux.SameRace,false,1,3)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,sg,#sg,0,0)
 end
