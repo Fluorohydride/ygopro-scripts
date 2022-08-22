@@ -1,7 +1,7 @@
 --Ra'ten, the Heavenly General
 function c30163008.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,nil,2,nil,c30163008.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,aux.SameLinkRace)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -24,9 +24,6 @@ function c30163008.initial_effect(c)
 	e2:SetTarget(c30163008.destg)
 	e2:SetOperation(c30163008.desop)
 	c:RegisterEffect(e2)
-end
-function c30163008.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==1
 end
 function c30163008.cfilter(c,e,tp,lg,zone)
 	return c:IsFaceup() and lg:IsContains(c)
