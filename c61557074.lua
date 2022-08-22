@@ -38,7 +38,7 @@ function c61557074.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c61557074.atkval(e,c)
-	return Duel.GetMatchingGroup(Card.IsType,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,TYPE_MONSTER):GetClassCount(Card.GetAttribute)*200
+	return Duel.GetMatchingGroup(Card.IsType,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,TYPE_MONSTER):GetBinClassCount(Card.GetAttribute)*200
 end
 function c61557074.thfilter(c)
 	return c:IsSetCard(0x400d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
