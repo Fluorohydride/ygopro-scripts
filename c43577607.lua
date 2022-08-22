@@ -70,7 +70,7 @@ function c43577607.confilter(c)
 end
 function c43577607.effcon(e)
 	local g=Duel.GetMatchingGroup(c43577607.confilter,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil)
-	return g:GetClassCount(Card.GetAttribute)>=e:GetLabel()
+	return g:GetBinClassCount(Card.GetAttribute)>=e:GetLabel()
 end
 function c43577607.atktg(e,c)
 	return c:IsSetCard(0x9e)
