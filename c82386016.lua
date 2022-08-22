@@ -29,20 +29,25 @@ end
 function c82386016.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
-function c82386016.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST)
+function c82386016.drct(tp)
+	local ct=0
+	if Duel.IsExistingMatchingCard(c82386016.filter,tp,LOCATION_MZONE,0,1,nil,RACE_BEAST) then ct=ct+1 end
+	if Duel.IsExistingMatchingCard(c82386016.filter,tp,LOCATION_MZONE,0,1,nil,RACE_BEASTWARRIOR) then ct=ct+1 end
+	if Duel.IsExistingMatchingCard(c82386016.filter,tp,LOCATION_MZONE,0,1,nil,RACE_WINDBEAST) then ct=ct+1 end
+	return ct
+end
+function c82386016.filter(c,race)
+	return c:IsFaceup() and c:IsRace(race)
 end
 function c82386016.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c82386016.filter,tp,LOCATION_MZONE,0,nil)
-	local ct=g:GetClassCount(Card.GetRace)
+	local ct=c82386016.drct(tp)
 	if chk==0 then return ct>0 and Duel.IsPlayerCanDraw(tp,ct) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(ct)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,ct)
 end
 function c82386016.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c82386016.filter,tp,LOCATION_MZONE,0,nil)
-	local ct=g:GetBinClassCount(Card.GetRace)
+	local ct=c82386016.drct(tp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	Duel.Draw(p,ct,REASON_EFFECT)
 end
