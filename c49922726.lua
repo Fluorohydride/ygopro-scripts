@@ -27,7 +27,7 @@ end
 function c49922726.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
-	local val=g:GetClassCount(Card.GetRace)*100
+	local val=g:GetClassBinCount(Card.GetRace)*100
 	if c:IsFaceup() and c:IsRelateToEffect(e) and val>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
