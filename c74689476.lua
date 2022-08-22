@@ -2,7 +2,7 @@
 function c74689476.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	aux.AddXyzProcedureLevelFree(c,c74689476.mfilter,c74689476.xyzcheck,2,2)
+	aux.AddXyzProcedureLevelFree(c,c74689476.mfilter,aux.DifferentAttribute,2,2)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(74689476,0))
@@ -29,9 +29,6 @@ function c74689476.initial_effect(c)
 end
 function c74689476.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_MONSTER) and c:IsXyzLevel(xyzc,4) and c:IsRace(RACE_SPELLCASTER)
-end
-function c74689476.xyzcheck(g)
-	return g:GetClassCount(Card.GetAttribute)==#g
 end
 function c74689476.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
