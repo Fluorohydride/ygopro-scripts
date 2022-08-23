@@ -15,9 +15,18 @@ function c84905691.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2a)
 end
 function c84905691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c84905691.cfilter,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(tp,c84905691.cfilter,1,1,e:GetHandler())
-	Duel.Release(g,REASON_COST)
+	local fe=Duel.IsPlayerAffectedByEffect(tp,29942771)
+	local b1=fe and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
+	local b2=Duel.CheckReleaseGroup(tp,c84905691.cfilter,1,e:GetHandler())
+	if chk==0 then return b1 or b2 end
+	if b1 and (not b2 or Duel.SelectYesNo(tp,fe:GetDescription())) then
+		Duel.Hint(HINT_CARD,0,29942771)
+		fe:UseCountLimit(tp)
+		Duel.DiscardDeck(tp,2,REASON_COST)
+	else
+		local g=Duel.SelectReleaseGroup(tp,c84905691.cfilter,1,1,e:GetHandler())
+		Duel.Release(g,REASON_COST)
+	end
 end
 function c84905691.filter(c,e,tp)
 	return c:IsSummonPlayer(1-tp) and (not e or c:IsRelateToEffect(e))

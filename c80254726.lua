@@ -1,5 +1,6 @@
 --ブラック・バード・クローズ
 function c80254726.initial_effect(c)
+	aux.AddCodeList(c,9012916)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_NEGATE+CATEGORY_DESTROY)

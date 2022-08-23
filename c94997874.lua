@@ -7,7 +7,7 @@ function c94997874.initial_effect(c)
 	e1:SetCategory(CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE+TIMING_STANDBY_PHASE)
+	e1:SetHintTiming(TIMING_END_PHASE,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE+TIMING_STANDBY_PHASE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCountLimit(1,94997874)
@@ -68,7 +68,8 @@ function c94997874.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c94997874.spfilter(c,e,tp)
-	return c:IsType(TYPE_FLIP) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
+	local proc=c:IsCode(42932862) and e:GetHandler():IsCode(94997874)
+	return c:IsType(TYPE_FLIP) and c:IsCanBeSpecialSummoned(e,0,tp,proc,proc,POS_FACEDOWN_DEFENSE)
 end
 function c94997874.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -80,8 +81,11 @@ function c94997874.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c94997874.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
-	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		Duel.ConfirmCards(1-tp,g)
+	local tc=g:GetFirst()
+	if tc then
+		local proc=tc:IsCode(42932862) and e:GetHandler():IsCode(94997874)
+		Duel.SpecialSummon(tc,0,tp,tp,proc,proc,POS_FACEDOWN_DEFENSE)
+		Duel.ConfirmCards(1-tp,tc)
+		if proc then tc:CompleteProcedure() end
 	end
 end

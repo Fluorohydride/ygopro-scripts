@@ -34,14 +34,17 @@ function c32086564.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttackTarget()~=nil
 		and (c32086564.check(Duel.GetAttacker(),tp) or c32086564.check(Duel.GetAttackTarget(),tp)) end
 	if c32086564.check(Duel.GetAttacker(),tp) then
+		e:SetLabelObject(Duel.GetAttacker())
 		Duel.SetTargetCard(Duel.GetAttackTarget())
 	else
+		e:SetLabelObject(Duel.GetAttackTarget())
 		Duel.SetTargetCard(Duel.GetAttacker())
 	end
 end
 function c32086564.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	local ec=e:GetLabelObject()
+	if c32086564.check(ec,tp) and tc:IsControler(1-tp) and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

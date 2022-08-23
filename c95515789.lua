@@ -1,6 +1,4 @@
 --赫の聖女カルテシア
---Red Cartesia, the Virtuous
---Script by Lyris12
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,68468459)
@@ -20,6 +18,7 @@ function s.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetHintTiming(0,TIMING_MAIN_END)
 	e2:SetCountLimit(1,id+o)
 	e2:SetCondition(s.condition)
 	e2:SetTarget(s.target)

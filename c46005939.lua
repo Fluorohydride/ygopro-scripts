@@ -77,7 +77,7 @@ function c46005939.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e4=e2:Clone()
 	tc2:RegisterEffect(e4)
 	Duel.SpecialSummonComplete()
-	Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	if g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 	local e5=nil
 	local e6=nil

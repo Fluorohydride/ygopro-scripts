@@ -114,7 +114,7 @@ function c71095768.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e4=e3:Clone()
 		tc2:RegisterEffect(e4)
 		Duel.SpecialSummonComplete()
-		Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+		Duel.AdjustAll()
 		if sg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 		local xyzg=Duel.GetMatchingGroup(Card.IsXyzSummonable,tp,LOCATION_EXTRA,0,nil,sg,2,2)
 		if xyzg:GetCount()>0 then

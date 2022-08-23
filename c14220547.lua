@@ -38,7 +38,7 @@ function c14220547.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetCount()==1 and eg:FilterCount(c14220547.tcfilter,nil,tp,re,rp)==1
 end
 function c14220547.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)>0 or Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)>0 end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,LOCATION_EXTRA)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,PLAYER_ALL,LOCATION_EXTRA)
 end
 function c14220547.tgop(e,tp,eg,ep,ev,re,r,rp)

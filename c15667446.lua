@@ -33,7 +33,7 @@ end
 function c15667446.spop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)>0 then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		if tc and c15667446.atfilter(tc) and tc:IsRelateToEffect(e) then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)

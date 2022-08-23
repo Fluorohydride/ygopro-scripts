@@ -56,6 +56,7 @@ function c89771220.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.SelectMatchingCard(tp,c89771220.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 		if #sg>0 then
 			Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
+			sg:GetFirst():CompleteProcedure()
 		end
 	end
 end
