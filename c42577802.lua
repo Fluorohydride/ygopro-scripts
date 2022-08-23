@@ -98,7 +98,7 @@ function c42577802.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			aux.FCheckAdditional=nil
 			aux.GCheckAdditional=nil
-			if not mat or #mat1<2 then mg1:AddCard(tc) goto cancel end
+			if #mat1<2 then mg1:AddCard(tc) goto cancel end
 			tc:SetMaterial(mat1)
 			Duel.Remove(mat1,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
