@@ -27,9 +27,6 @@ end
 function c32086564.target(e,c)
 	return c:GetOverlayCount()>=2
 end
-function c32086564.check(c,tp)
-	return c:IsControler(tp) and c:GetOverlayCount()>=2
-end
 function c32086564.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a,d=Duel.GetBattleMonster(tp)
 	if chk==0 then return a and d and a:GetOverlayCount()>=2 end
