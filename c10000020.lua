@@ -101,10 +101,11 @@ function c10000020.atkfilter(c,tp)
 end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,nil,1-tp) end
-	Duel.SetTargetCard(eg)
+	local g=eg:Filter(c10000020.atkfilter,nil,1-tp)
+	Duel.SetTargetCard(g)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
+	local g=Duel.GetTargetsRelateToChain():Filter(Card.IsFaceup,nil)
 	local dg=Group.CreateGroup()
 	local c=e:GetHandler()
 	local tc=g:GetFirst()
