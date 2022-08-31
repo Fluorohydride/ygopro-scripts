@@ -1,6 +1,5 @@
 --スクラップ・キマイラ
-function c56746202.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_SCRAP_CHIMERA)
+function c56746202.initial_effect(c
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(56746202,0))
@@ -22,7 +21,7 @@ function c56746202.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(56746202,1))
 	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_SCRAP_CHIMERA)
+	e3:SetCode(EFFECT_TUNE_MAGICIAN_S)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetValue(c56746202.synlimit2)
 	c:RegisterEffect(e3)
