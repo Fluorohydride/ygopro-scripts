@@ -435,25 +435,20 @@ function Auxiliary.SynCheckAdditionalLevel(c,syncard)
 end
 function Auxiliary.SynCheckAdditional(syncard)
 	local lv=syncard:GetLevel()
-	return function(g)
-		if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(g,syncard) then return false end
-		local chklv=false
+	return function(sg)
+		if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(sg,syncard) then return false end
 		local mono=false
-		for c in aux.Next(g) do
-			if c:IsHasEffect(56897896) then
-				mono=true
-				local raw_level=c:GetSynchroLevel(syncard)
-				local lv1=raw_level&0xffff
-				local lv2=raw_level>>16
-				chklv=chklv or lv>=(lv1+#g-1) or lv2>0 and lv>=(lv2+#g-1)
+		if c56897896 then
+			for c in aux.Next(sg) do
+				if c:IsHasEffect(56897896) then
+					mono=true
+					if lv<(Auxiliary.SynCheckAdditionalLevel(c,syncard)+#sg-1) then return false end
+				end
+				if mono then return true end
 			end
-			if chklv then break end
 		end
-		if not mono then
-			chklv=chklv or lv>=g:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard)
-		end
-		chklv=chklv or (g:IsExists(Card.IsHasEffect,1,nil,89818984) and lv>=#g*2)
-		return chklv
+		return (lv>=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard))
+			or sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2)
 	end
 end
 function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatCheck)
@@ -464,23 +459,27 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatChec
 	if Auxiliary.SCheckAdditionalLimbo[syncard] and not Auxiliary.SCheckAdditionalLimbo[syncard](sg,syncard,tp) then return false end
 
 	--synchro level
-	local chklv=false
 	local mono=false
-	for c in aux.Next(sg) do
-		if c:IsHasEffect(56897896) then
-			mono=true
-			local raw_level=c:GetSynchroLevel(syncard)
-			local lv1=raw_level&0xffff
-			local lv2=raw_level>>16
-			chklv=chklv or lv==(lv1+#sg-1) or lv2>0 and lv==(lv2+#sg-1)
+	local lv=syncard:GetLevel()
+	if c56897896 then
+		for c in aux.Next(sg) do
+			if c:IsHasEffect(56897896) then
+				mono=true
+				local raw_level=c:GetSynchroLevel(syncard)
+				local lv1=raw_level&0xffff
+				local lv2=raw_level>>16
+				if not (lv==(lv1+#sg-1) or lv2>0 and lv==(lv2+#sg-1)) then
+					return false
+				end
+			end
 		end
-		if chklv then break end
 	end
 	if not mono then
-		chklv=sg:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),#sg,#sg,syncard)
+		if not sg:CheckWithSumEqual(Card.GetSynchroLevel,lv,#sg,#sg,syncard)
+			and not (sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (#sg*2==lv)) then
+			return false
+		end
 	end
-	chklv=chklv or sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (#sg*2==syncard:GetLevel())
-	if not chklv then return false end
 
 	--synchro material requirement
 	if goal then
