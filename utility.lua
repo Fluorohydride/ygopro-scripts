@@ -390,7 +390,7 @@ function Auxiliary.MustMaterialCounterFilter(c,g)
 end
 --Synchro monster, using min to max monsters that fits a goal
 --filter: function(c,sync) if returns false for a potential material, it will never be usable, disregarding effects such as Genomix Fighter
---goal: function(g,sync) a group restriction imposed to the whole synchro material group
+--goal: function(g,sync) a group restriction imposed on the whole synchro material group
 function Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc,maxc)
 	if maxc==nil then maxc=99 end
 	local e1=Effect.CreateEffect(c)
@@ -431,7 +431,6 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatChec
 	--synchro level
 	local chklv=nil
 	if sg:IsExists(Card.IsHasEffect,1,nil,56897896) then
-		--TODO: change c56897896.lua
 		chklv=#sg==syncard:GetLevel()
 	else
 		chklv=sg:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),#g,#g,syncard)
@@ -443,7 +442,6 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatChec
 
 	--synchro material requirement
 	if goal then
-		--TODO: change c42155488.lua
 		Auxiliary.GenomixRace=0
 		local gfg=sg:Filter(Auxiliary.SynUltimateGoalGenomixFilter,nil)
 		if #gfg>0 then
@@ -573,7 +571,7 @@ function Auxiliary.SynOperationUltimate(filter,goal,minc,maxc)
 			end
 end
 --Synchro monster, 1 tuner + min to max monsters
---additionalGoal: a group restriction imposed to the whole synchro material group
+--additionalGoal: a group restriction imposed on the whole synchro material group
 --tunerAlterable: if true, disables the default behavior which requires f1 to be a tuner
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc,additionalGoal,tunerAlterable)
 	if not tunerAlterable then f1=aux.Tuner(f1) end
