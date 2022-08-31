@@ -32,18 +32,8 @@ end
 function c77783947.mfilter(c)
 	return c:IsSetCard(0x9e) and c:IsType(TYPE_MONSTER)
 end
-function c77783947.mfilter2(c)
-	return c:IsHasEffect(EFFECT_HAND_SYNCHRO) and c:IsType(TYPE_MONSTER)
-end
-function c77783947.cfilter(c,syn)
-	local b1=true
-	if c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
-		b1=Duel.CheckTunerMaterial(syn,c,nil,c77783947.mfilter,1,99)
-	end
-	return b1 and syn:IsSynchroSummonable(c)
-end
-function c77783947.spfilter(c,mg)
-	return mg:IsExists(c77783947.cfilter,1,nil,c)
+function c77783947.mat_group(g,sync,tp)
+	return g:IsExists(c77783947.mfilter,1,nil)
 end
 function c77783947.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -51,23 +41,20 @@ function c77783947.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c77783947.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetMatchingGroup(c77783947.mfilter,tp,LOCATION_MZONE,0,nil)
-		local exg=Duel.GetMatchingGroup(c77783947.mfilter2,tp,LOCATION_MZONE,0,nil)
-		mg:Merge(exg)
-		return Duel.IsExistingMatchingCard(c77783947.spfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
+		Auxiliary.SCheckAdditional=c77783947.mat_group
+		local res=Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,nil)
+		Auxiliary.SCheckAdditional=nil
+		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c77783947.scop(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetMatchingGroup(c77783947.mfilter,tp,LOCATION_MZONE,0,nil)
-	local exg=Duel.GetMatchingGroup(c77783947.mfilter2,tp,LOCATION_MZONE,0,nil)
-	mg:Merge(exg)
-	local g=Duel.GetMatchingGroup(c77783947.spfilter,tp,LOCATION_EXTRA,0,nil,mg)
+	Auxiliary.SCheckAdditional=c77783947.mat_group
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,1,nil,nil)
+	Auxiliary.SCheckAdditional=nil
 	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local tg=mg:FilterSelect(tp,c77783947.cfilter,1,1,nil,sg:GetFirst())
-		Duel.SynchroSummon(tp,sg:GetFirst(),tg:GetFirst())
+		Auxiliary.SCheckAdditionalLimbo[g:GetFirst()]=c77783947.mat_group
+		Duel.SynchroSummon(tp,g:GetFirst(),nil)
 	end
 end

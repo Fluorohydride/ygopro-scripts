@@ -423,30 +423,42 @@ function Auxiliary.GetSynMaterials(tp,syncard,filter)
 	end
 	return mg
 end
+Auxiliary.SCheckAdditional=nil
+Auxiliary.SCheckAdditionalLimbo={}
 function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatCheck)
 	--misc
 	if smat and not sg:IsContains(smat) then return false end
 	if Duel.GetLocationCountFromEx(tp,tp,sg,syncard)<=0 then return false end
+	if Auxiliary.SCheckAdditional and not Auxiliary.SCheckAdditional(sg,syncard,tp) then return false end
+	if Auxiliary.SCheckAdditionalLimbo[syncard] and not Auxiliary.SCheckAdditionalLimbo[syncard](sg,syncard,tp) then return false end
 
 	--synchro level
 	local chklv=nil
 	if sg:IsExists(Card.IsHasEffect,1,nil,56897896) then
 		chklv=#sg==syncard:GetLevel()
 	else
-		chklv=sg:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),#g,#g,syncard)
+		chklv=sg:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),#sg,#sg,syncard)
 	end
 	if not chklv and sg:IsExists(Card.IsHasEffect,1,nil,89818984) then
-		chklv=sg:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),#g,#g,syncard)
+		chklv=sg:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),#sg,#sg,syncard)
 	end
 	if not chklv then return false end
 
 	--synchro material requirement
 	if goal then
-		Auxiliary.GenomixRace=0
-		local gfg=sg:Filter(Auxiliary.SynUltimateGoalGenomixFilter,nil)
+		local gfg=sg:Filter(Card.IsHasEffect,nil,42155488)
 		if #gfg>0 then
+			local genomix_fid=-1
+			local genomix_race=0
 			for c in aux.Next(gfg) do
-				Auxiliary.GenomixRace=Auxiliary.GenomixRace|c:GetFlagEffectLabel(42155488)
+				local ges={c:IsHasEffect(42155488)}
+				for _, ge in pairs(ges) do
+					if ge:GetFieldID()>genomix_fid then
+						genomix_fid=ge:GetFieldID()
+						genomix_race=ge:GetLabel()
+					end
+				end
+				Auxiliary.GenomixRace=genomix_race
 			end
 		end
 		local res=goal(sg,syncard)
@@ -490,10 +502,11 @@ end
 Auxiliary.GenomixRace=0
 Auxiliary._CardIsRace=Card.IsRace
 function Card.IsRace(c,race)
-	return Auxiliary.GenomixRace&race>0 or Auxiliary._CardIsRace(c,race)
-end
-function Auxiliary.SynUltimateGoalGenomixFilter(c)
-	return c:GetFlagEffect(42155488)>0
+	if Auxiliary.GenomixRace>0 then
+		return Auxiliary.GenomixRace&race>0
+	else
+		return Auxiliary._CardIsRace(c,race)
+	end
 end
 function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 	return	function(e,c,smat,og,min,max)
@@ -553,11 +566,12 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
 				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_S)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,maxc,tp,c,goal,smat,ignoreHandSyncMatCheck)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat,ignoreHandSyncMatCheck)
 				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
+					Auxiliary.SCheckAdditionalLimbo[c]=nil
 					return true
 				else return false end
 			end
@@ -566,7 +580,25 @@ function Auxiliary.SynOperationUltimate(filter,goal,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,og,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
-				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
+				local skipToGrave=false
+				if g:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
+					for mc in aux.Next(g) do
+						local he,hf,hmin,hmax=mc:GetHandSynchro()
+						if he then
+							local op=he:GetOperation()
+							if op then
+								local res=op(he,tp,c,g)
+								if res==true then
+									skipToGrave=true
+									break
+								end
+							end
+						end
+					end
+				end
+				if not skipToGrave then
+					Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
+				end
 				g:DeleteGroup()
 			end
 end
@@ -575,9 +607,11 @@ end
 --tunerAlterable: if true, disables the default behavior which requires f1 to be a tuner
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc,additionalGoal,tunerAlterable)
 	if not tunerAlterable then f1=aux.Tuner(f1) end
+	local filter=function(c,sync) return Duel.GetFlagEffect(0,42155488)>0 or (not f1 or f1(c,sync)) or (not f2 or f2(c,sync)) end
 	local goal_filter=function(c,sync,g) return (not f1 or f1(c,sync)) and (not f2 or not g:IsExists(aux.NOT(f2),1,c,sync)) end
 	local goal=function(g,sync) return g:IsExists(goal_filter,1,nil,sync,g) and (not additionalGoal or additionalGoal(g,sync)) end
-	return Auxiliary.AddSynchroProcedureUltimate(c,nil,goal,minc+1,maxc+1)
+	if maxc==nil then maxc=99 end
+	return Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc+1,maxc+1)
 end
 --Synchro monster, 1 tuner + 1 monster
 --backward compatibility
@@ -590,13 +624,17 @@ function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,additionalGoal
 	if f1 then table.insert(checks,f1) end
 	if f2 then table.insert(checks,f2) end
 	if f3 then table.insert(checks,f3) end
+	local filter=nil
 	local goal=nil
 	if #checks>0 then
+		subfilter=aux.OR(table.unpack(checks))
+		filter=function(c,sync) return Duel.GetFlagEffect(0,42155488)>0 or not f4 or f4(c,sync) or subfilter(c,sync) end
 		goal=Auxiliary.SynchroMixGoal(checks,f4,minc+#checks,maxc+#checks,additionalGoal)
-	else
-		goal=function(g,sync) return not f4 or not g:IsExists(aux.NOT(f4),1,nil,sync) end
+	elseif f4 then
+		filter=function(c,sync) return Duel.GetFlagEffect(0,42155488)>0 or f4(c,sync) end
+		goal=function(g,sync) return not g:IsExists(aux.NOT(f4),1,nil,sync) end
 	end
-	return Auxiliary.AddSynchroProcedureUltimate(c,nil,goal,minc+#checks,maxc+#checks)
+	return Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc+#checks,maxc+#checks)
 end
 function Auxiliary.SynchroMixGoal(checks,otherFilter,minc,maxc,additionalGoal)
 	return function(g,sync)
