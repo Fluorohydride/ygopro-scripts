@@ -419,9 +419,6 @@ function Auxiliary.SExtraFilter(c,syncard,filter,tp)
 	end
 	return false
 end
---[[function Auxiliary.SynLimitFilter(c,f,e,syncard)
-	return f and not f(e,c,syncard)
-end]]
 function Auxiliary.GetSynMaterials(tp,syncard,filter)
 	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard,filter)
 	local mg2=Duel.GetMatchingGroup(Auxiliary.SExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,syncard,filter,tp)

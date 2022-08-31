@@ -17,8 +17,8 @@ function c64910482.initial_effect(c)
 	e3:SetValue(c64910482.matval)
 	c:RegisterEffect(e3)
 end
-function c64910482.hsyntg(e,c,syncard)
-	return c:IsSetCard(0x27) and c:IsNotTuner(syncard)
+function c64910482.hsyntg(e,c)
+	return c:IsSetCard(0x27) and not c:IsType(TYPE_TUNER)
 end
 function c64910482.matval(e,lc,mg,c,tp)
 	return true,not mg or mg:IsContains(e:GetHandler())
