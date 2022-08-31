@@ -642,7 +642,7 @@ end
 function Auxiliary.SynchroMixGoalRecursiveEach(c,sg,g,sync,checks,otherFilter)
 	local check=checks[1+#sg]
 	if check then
-		if not check(c,sync) then return false end
+		if not check(c,sync,sg) then return false end
 		sg:AddCard(c)
 		local res=g:IsExists(Auxiliary.SynchroMixGoalRecursiveEach,1,sg,sg,g,sync,checks,otherFilter)
 		sg:RemoveCard(c)

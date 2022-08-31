@@ -2,7 +2,7 @@
 function c7841112.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309,44508094)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,aux.FilterBoolFunction(Card.IsCode,21159309),aux.FilterBoolFunction(Card.IsCode,44508094),nil,aux.NonTuner(nil),1,1,c7841112.mat_goal)
+	aux.AddSynchroMixProcedure(c,c7841112.mfilter1,c7841112.mfilter2,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
 	--Negate
 	local e2=Effect.CreateEffect(c)
@@ -49,8 +49,11 @@ function c7841112.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c7841112.material_type=TYPE_SYNCHRO
-function c7841112.mat_goal(g)
-	return g:IsExists(Card.IsType,nil,TYPE_TUNER)
+function c7841112.mfilter1(c,syncard,sg)
+	return c:IsCode(21159309)
+end
+function c7841112.mfilter2(c,syncard,sg)
+	return c:IsCode(44508094) and (c:IsType(TYPE_TUNER) or sg:IsExists(aux.Tuner(c7841112.mfilter1),1,nil))
 end
 function c7841112.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp and Duel.IsChainNegatable(ev)
