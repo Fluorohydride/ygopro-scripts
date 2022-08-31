@@ -62,16 +62,17 @@ function c42155488.decop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local rc=e:GetLabel()
 		c:SetHint(CHINT_RACE,rc)
-		local e1=Effect.CreateEffect(c)
+		--[[local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SYNCHRO_CHECK)
 		e1:SetValue(c42155488.syncheck)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetLabel(rc)
-		c:RegisterEffect(e1)
+		c:RegisterEffect(e1)]]
+		c:RegisterFlagEffect(42155488,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,rc)
 	end
 end
-function c42155488.syncheck(e,c)
+--[[function c42155488.syncheck(e,c)
 	c:AssumeProperty(ASSUME_RACE,e:GetLabel())
-end
+end]]
