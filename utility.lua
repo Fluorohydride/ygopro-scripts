@@ -412,9 +412,6 @@ end
 function Auxiliary.SynLimitFilter(c,f,e,syncard)
 	return f and not f(e,c,syncard)
 end
-function Auxiliary.GetSynchroLevelFlowerCardian(c)
-	return 2
-end
 function Auxiliary.GetSynMaterials(tp,syncard,filter)
 	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard,filter)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
@@ -425,6 +422,25 @@ function Auxiliary.GetSynMaterials(tp,syncard,filter)
 end
 Auxiliary.SCheckAdditional=nil
 Auxiliary.SCheckAdditionalLimbo={}
+Auxiliary.SGCheckAdditional=nil
+function Auxiliary.SynCheckAdditionalLevel(c,syncard)
+	local raw_level=c:GetSynchroLevel(syncard)
+	local lv1=raw_level&0xffff
+	local lv2=raw_level>>16
+	if lv2>0 then
+		return math.min(lv1,lv2)
+	else
+		return lv1
+	end
+end
+function Auxiliary.SynCheckAdditional(sync)
+	local lv=sync:GetLevel()
+	return function(g)
+		return (not Auxiliary.SGCheckAdditional or Auxiliary.SGCheckAdditional(g)) and g:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)<=lv
+			or g:IsExists(Card.IsHasEffect,1,nil,56897896) and #g==lv
+			or g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g*2==lv
+	end
+end
 function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatCheck)
 	--misc
 	if smat and not sg:IsContains(smat) then return false end
@@ -435,12 +451,12 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatChec
 	--synchro level
 	local chklv=nil
 	if sg:IsExists(Card.IsHasEffect,1,nil,56897896) then
-		chklv=#sg==syncard:GetLevel()
+		chklv=(#sg==syncard:GetLevel())
 	else
 		chklv=sg:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),#sg,#sg,syncard)
 	end
 	if not chklv and sg:IsExists(Card.IsHasEffect,1,nil,89818984) then
-		chklv=sg:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),#sg,#sg,syncard)
+		chklv=(#sg*2==syncard:GetLevel())
 	end
 	if not chklv then return false end
 
@@ -497,6 +513,7 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatChec
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
 		end
 	end
+
 	return true
 end
 Auxiliary.GenomixRace=0
@@ -535,7 +552,10 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
-				return mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,maxc,tp,c,goal,smat,ignoreHandSyncMatCheck)
+				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c)
+				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,goal,smat,ignoreHandSyncMatCheck)
+				Auxiliary.GCheckAdditional=nil
+				return res
 			end
 end
 function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
@@ -562,7 +582,9 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				Duel.SetSelectedCard(fg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
+				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat,ignoreHandSyncMatCheck)
+				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
