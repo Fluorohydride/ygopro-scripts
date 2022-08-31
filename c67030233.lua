@@ -2,7 +2,7 @@
 function c67030233.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309,70902743)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,c67030233.mfilter1,c67030233.mfilter2,nil,aux.NonTuner(nil),1,1)
+	aux.AddSynchroMixProcedure(c,aux.FilterBoolFunction(Card.IsCode,21159309),aux.FilterBoolFunction(Card.IsCode,70902743),nil,aux.NonTuner(nil),1,1,c67030233.mat_goal)
 	c:EnableReviveLimit()
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -47,11 +47,8 @@ function c67030233.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c67030233.material_type=TYPE_SYNCHRO
-function c67030233.mfilter1(c)
-	return c:IsCode(21159309)
-end
-function c67030233.mfilter2(c,syncard,c1)
-	return c:IsCode(70902743) and (c:IsType(TYPE_TUNER) or c1:IsType(TYPE_TUNER))
+function c67030233.mat_goal(g)
+	return g:IsExists(Card.IsType,nil,TYPE_TUNER)
 end
 function c67030233.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker()
