@@ -25,9 +25,9 @@ function c73941492.initial_effect(c)
 	--synchro limit
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_TUNE_MAGICIAN_S)
+	e4:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e4:SetTarget(c73941492.matlimit)
+	e4:SetValue(c73941492.synlimit)
 	c:RegisterEffect(e4)
 	--fusion limit
 	local e5=Effect.CreateEffect(c)
@@ -54,6 +54,9 @@ function c73941492.initial_effect(c)
 	e7:SetTarget(c73941492.sptg)
 	e7:SetOperation(c73941492.spop)
 	c:RegisterEffect(e7)
+end
+function c73941492.synlimit(e,c)
+	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
 end
 function c73941492.matlimit(e,c)
 	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))

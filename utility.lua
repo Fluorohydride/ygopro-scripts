@@ -535,10 +535,7 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_S)
-				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,maxc,tp,c,goal,smat,ignoreHandSyncMatCheck)
-				Auxiliary.GCheckAdditional=nil
-				return res
+				return mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,maxc,tp,c,goal,smat,ignoreHandSyncMatCheck)
 			end
 end
 function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
@@ -565,9 +562,7 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				Duel.SetSelectedCard(fg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_S)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat,ignoreHandSyncMatCheck)
-				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
