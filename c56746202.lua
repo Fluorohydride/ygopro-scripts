@@ -23,7 +23,7 @@ function c56746202.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e3:SetValue(aux.TargetBoolFunction(Card.IsSetCard,0x24))
+	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x24))
 	c:RegisterEffect(e3)
 end
 function c56746202.filter(c,e,tp)

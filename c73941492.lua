@@ -27,7 +27,7 @@ function c73941492.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e4:SetValue(c73941492.synlimit)
+	e4:SetTarget(c73941492.synlimit)
 	c:RegisterEffect(e4)
 	--fusion limit
 	local e5=Effect.CreateEffect(c)
