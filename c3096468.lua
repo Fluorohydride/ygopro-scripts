@@ -1,14 +1,14 @@
 --タツネクロ
 function c3096468.initial_effect(c)
 	--splimit
-	--[[local e2=Effect.CreateEffect(c)
+	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 	e2:SetTargetRange(1,0)
 	e2:SetTarget(c3096468.splimit)
-	c:RegisterEffect(e2)]]
+	c:RegisterEffect(e2)
 	--hand synchro
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
