@@ -437,11 +437,14 @@ function Auxiliary.SynCheckAdditional(syncard)
 	local lv=syncard:GetLevel()
 	return function(g)
 		if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(g,syncard) then return false end
+		local chklv=false
 		if g:IsExists(Card.IsHasEffect,1,nil,56897896) then
-			return #g<=lv
+			chklv=#g<=lv
 		else
-			return g:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard)<=lv
-				or g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g*2<=lv
+			chklv=g:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard)<=lv
+		end
+		chklv=chklv or (g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g*2<=lv)
+		return chklv
 	end
 end
 function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatCheck)
