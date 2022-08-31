@@ -409,16 +409,39 @@ end
 function Auxiliary.SynMaterialFilter(c,syncard,filter)
 	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard) and (not filter or filter(c,syncard))
 end
-function Auxiliary.SynLimitFilter(c,f,e,syncard)
-	return f and not f(e,c,syncard)
+function Auxiliary.SExtraFilter(c,syncard,filter,tp)
+	if not Auxiliary.SynMaterialFilter(c,syncard,filter) then return false end
+	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
+	for _,te in pairs(le) do
+		local tf=te:GetValue()
+		local related,valid=tf(te,lc,nil,c,tp)
+		if related then return true end
+	end
+	return false
 end
+--[[function Auxiliary.SynLimitFilter(c,f,e,syncard)
+	return f and not f(e,c,syncard)
+end]]
 function Auxiliary.GetSynMaterials(tp,syncard,filter)
 	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard,filter)
-	if mg:IsExists(Card.GetHandSynchro,1,nil) then
-		local mg2=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_HAND,0,nil,syncard,filter)
-		if mg2:GetCount()>0 then mg:Merge(mg2) end
-	end
+	local mg2=Duel.GetMatchingGroup(Auxiliary.SExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,syncard,filter,tp)
+	if mg2:GetCount()>0 then mg:Merge(mg2) end
 	return mg
+end
+function Auxiliary.SCheckOtherMaterial(c,syncard,sg,tp)
+	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
+	local res1=false
+	local res2=true
+	for _,te in pairs(le) do
+		local f=te:GetValue()
+		local related,valid=f(te,syncard,sg,c,tp)
+		if related then res2=false end
+		if related and valid then res1=true end
+	end
+	return res1 or res2
+end
+function Auxiliary.SUncompatibilityFilter(c,syncard,sg,tp)
+	return not Auxiliary.SCheckOtherMaterial(c,syncard,sg:Filter(aux.TRUE,c),tp)
 end
 Auxiliary.SCheckAdditional=nil
 Auxiliary.SCheckAdditionalLimbo={}
@@ -447,14 +470,15 @@ function Auxiliary.SynCheckAdditional(syncard)
 				if mono then return true end
 			end
 		end
+		if sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2) then return true end
 		return (lv>=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard))
-			or sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2)
 	end
 end
 function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatCheck)
 	--misc
 	if smat and not sg:IsContains(smat) then return false end
 	if Duel.GetLocationCountFromEx(tp,tp,sg,syncard)<=0 then return false end
+	if sg:IsExists(Auxiliary.SUncompatibilityFilter,1,nil,syncard,sg,tp) then return false end
 	if Auxiliary.SCheckAdditional and not Auxiliary.SCheckAdditional(sg,syncard,tp) then return false end
 	if Auxiliary.SCheckAdditionalLimbo[syncard] and not Auxiliary.SCheckAdditionalLimbo[syncard](sg,syncard,tp) then return false end
 
@@ -483,41 +507,27 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatChec
 
 	--synchro material requirement
 	if goal then
-		local gfg=sg:Filter(Card.IsHasEffect,nil,42155488)
-		if #gfg>0 then
-			local genomix_fid=-1
-			local genomix_race=0
-			for c in aux.Next(gfg) do
-				local ges={c:IsHasEffect(42155488)}
-				for _, ge in pairs(ges) do
-					if ge:GetFieldID()>genomix_fid then
-						genomix_fid=ge:GetFieldID()
-						genomix_race=ge:GetLabel()
+		if c42155488 then
+			local gfg=sg:Filter(Card.IsHasEffect,nil,42155488)
+			if #gfg>0 then
+				local genomix_fid=-1
+				local genomix_race=0
+				for c in aux.Next(gfg) do
+					local ges={c:IsHasEffect(42155488)}
+					for _, ge in pairs(ges) do
+						if ge:GetFieldID()>genomix_fid then
+							genomix_fid=ge:GetFieldID()
+							genomix_race=ge:GetLabel()
+						end
 					end
-				end
-				Auxiliary.GenomixRace=genomix_race
-			end
-		end
-		local res=goal(sg,syncard)
-		Auxiliary.GenomixRace=0
-		if not res then return false end
-	end
-
-	--hand synchro
-	if not ignoreHandSyncMatCheck then
-		local hg=sg:Filter(Card.IsLocation,nil,LOCATION_HAND)
-		local hct=hg:GetCount()
-		if hct>0 then
-			local found=false
-			for c in aux.Next(sg) do
-				local he,hf,hmin,hmax=c:GetHandSynchro()
-				if he then
-					found=true
-					if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he,syncard) then return false end
-					if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
+					Auxiliary.GenomixRace=genomix_race
 				end
 			end
-			if not found then return false end
+			local res=goal(sg,syncard)
+			Auxiliary.GenomixRace=0
+			if not res then return false end
+		else
+			if not goal(sg,syncard) then return false end
 		end
 	end
 
@@ -614,29 +624,33 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				else return false end
 			end
 end
+function Auxiliary.SExtraMaterialCount(mg,syncard,tp)
+	local tte={}
+	for tc in aux.Next(mg) do
+		local le={tc:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
+		for _,te in pairs(le) do
+			local sg=mg:Filter(aux.TRUE,tc)
+			local f=te:GetValue()
+			local related,valid=f(te,syncard,sg,tc,tp)
+			if related and valid then
+				te:UseCountLimit(tp)
+				if te:GetOperation() then
+					table.insert(tte,te)
+				end
+			end
+		end
+	end
+	return tte
+end
 function Auxiliary.SynOperationUltimate(filter,goal,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,og,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
-				local skipToGrave=false
-				if g:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
-					for mc in aux.Next(g) do
-						local he,hf,hmin,hmax=mc:GetHandSynchro()
-						if he then
-							local op=he:GetOperation()
-							if op then
-								local res=op(he,tp,c,g)
-								if res==true then
-									skipToGrave=true
-									break
-								end
-							end
-						end
-					end
+				local tte=Auxiliary.SExtraMaterialCount(g,c,tp)
+				for _, te in pairs(tte) do
+					te:GetOperation()(te,tp,c,g)
 				end
-				if not skipToGrave then
-					Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
-				end
+				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
 				g:DeleteGroup()
 			end
 end
