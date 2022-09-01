@@ -407,7 +407,12 @@ function Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc,maxc)
 	return e1
 end
 function Auxiliary.SynMaterialFilter(c,syncard,filter)
-	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard) and (not filter or filter(c,syncard))
+	if not c:IsFaceupEx() then return false end
+	if syncard then
+		return c:IsCanBeSynchroMaterial(syncard) and (not filter or filter(c,syncard))
+	else
+		return c:IsCanBeSynchroMaterial()
+	end
 end
 function Auxiliary.SExtraFilter(c,syncard,filter,tp)
 	if not Auxiliary.SynMaterialFilter(c,syncard,filter) then return false end
