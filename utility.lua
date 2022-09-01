@@ -414,6 +414,9 @@ function Auxiliary.SynMaterialFilter(c,syncard,filter)
 		return c:IsCanBeSynchroMaterial()
 	end
 end
+function Auxiliary.SynLimitFilter(c,f,e,syncard)
+	return f and not f(e,c,syncard)
+end
 function Auxiliary.SExtraFilter(c,syncard,filter,tp)
 	if not Auxiliary.SynMaterialFilter(c,syncard,filter) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
@@ -508,32 +511,30 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat)
 	end
 
 	--synchro material requirement
-	if goal then
-		if c42155488 then
-			local gfg=sg:Filter(Card.IsHasEffect,nil,42155488)
-			if #gfg>0 then
-				local genomix_fid=-1
-				local genomix_race=0
-				for c in aux.Next(gfg) do
-					local ges={c:IsHasEffect(42155488)}
-					for _, ge in pairs(ges) do
-						if ge:GetFieldID()>genomix_fid then
-							genomix_fid=ge:GetFieldID()
-							genomix_race=ge:GetLabel()
-						end
+	if c42155488 then
+		local gfg=sg:Filter(Card.IsHasEffect,nil,42155488)
+		if #gfg>0 then
+			local genomix_fid=-1
+			local genomix_race=0
+			for c in aux.Next(gfg) do
+				local ges={c:IsHasEffect(42155488)}
+				for _, ge in pairs(ges) do
+					if ge:GetFieldID()>genomix_fid then
+						genomix_fid=ge:GetFieldID()
+						genomix_race=ge:GetLabel()
 					end
-					Auxiliary.GenomixRace=genomix_race
 				end
+				Auxiliary.GenomixRace=genomix_race
 			end
-			local res=goal(sg,syncard)
-			Auxiliary.GenomixRace=0
-			if not res then return false end
-		else
-			if not goal(sg,syncard) then return false end
 		end
+		local res=(not goal or goal(sg,syncard)) and Auxiliary.SynGoalTunerLimit(sg,syncard)
+		Auxiliary.GenomixRace=0
+		return res
+	else
+		return (not goal or goal(sg,syncard)) and Auxiliary.SynGoalTunerLimit(sg,syncard)
 	end
-
-	--tuner limit
+end
+function Auxiliary.SynGoalTunerLimit(sg,syncard)
 	for c in aux.Next(sg) do
 		local le,lf,lloc,lmin,lmax=c:GetTunerLimit()
 		if le then
@@ -546,8 +547,6 @@ function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat)
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
 		end
 	end
-
-	return true
 end
 Auxiliary.GenomixRace=0
 Auxiliary._CardIsRace=Card.IsRace
