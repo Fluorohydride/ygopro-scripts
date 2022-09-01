@@ -476,7 +476,7 @@ function Auxiliary.SynCheckAdditional(syncard)
 		return (lv>=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard))
 	end
 end
-function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat,ignoreHandSyncMatCheck)
+function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat)
 	--misc
 	if smat and not sg:IsContains(smat) then return false end
 	if Duel.GetLocationCountFromEx(tp,tp,sg,syncard)<=0 then return false end
