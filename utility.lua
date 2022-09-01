@@ -571,10 +571,8 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				end
 				local tp=c:GetControler()
 				local mg=nil
-				local ignoreHandSyncMatCheck=false
 				if og then
 					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter)
-					ignoreHandSyncMatCheck=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c,filter)
 				end
@@ -586,7 +584,7 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c)
-				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,goal,smat,ignoreHandSyncMatCheck)
+				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,goal,smat)
 				Auxiliary.GCheckAdditional=nil
 				return res
 			end
@@ -601,10 +599,8 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 					if minc>maxc then return false end
 				end
 				local mg=nil
-				local ignoreHandSyncMatCheck=false
 				if og then
 					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter)
-					ignoreHandSyncMatCheck=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c,filter)
 				end
@@ -616,7 +612,7 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat,ignoreHandSyncMatCheck)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat)
 				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
 					sg:KeepAlive()
