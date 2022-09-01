@@ -547,6 +547,7 @@ function Auxiliary.SynGoalTunerLimit(sg,syncard)
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
 		end
 	end
+	return true
 end
 Auxiliary.GenomixRace=0
 Auxiliary._CardIsRace=Card.IsRace
