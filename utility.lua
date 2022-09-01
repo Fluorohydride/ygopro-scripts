@@ -472,8 +472,8 @@ function Auxiliary.SynCheckAdditional(syncard)
 					mono=true
 					if lv<(Auxiliary.SynCheckAdditionalLevel(c,syncard)+#sg-1) then return false end
 				end
-				if mono then return true end
 			end
+			if mono then return true end
 		end
 		if sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2) then return true end
 		return (lv>=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard))
