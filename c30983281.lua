@@ -61,7 +61,7 @@ function c30983281.spcheck(c,tp,rc,mg,opchk)
 end
 function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk)
 	if not (c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)) then return false end
-	local mg=Auxiliary.GetSynMaterials(tp,nil,filter)
+	local mg=Auxiliary.GetSynMaterials(tp)
 	mg:AddCard(c)
 	if tgchk then
 		return c30983281.spcheck(c,tp,nil,mg,opchk)
