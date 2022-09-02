@@ -2697,6 +2697,16 @@ function Auxiliary.DifferentLinkAttribute(g)
 	return Auxiliary.DifferentBin(g,Card.GetLinkAttribute)
 end
 Auxiliary.dabcheck=Auxiliary.DifferentAttribute
+--check for cards with same attribute
+function Auxiliary.SameAttribute(g)
+	return Auxiliary.SameBin(g,Card.GetAttribute)
+end
+function Auxiliary.SameFusionAttribute(g)
+	return Auxiliary.SameBin(g,Card.GetFusionAttribute)
+end
+function Auxiliary.SameLinkAttribute(g)
+	return Auxiliary.SameBin(g,Card.GetLinkAttribute)
+end
 --check for cards with different races
 function Auxiliary.DifferentRace(g)
 	return Auxiliary.DifferentBin(g,Card.GetRace)
@@ -2708,6 +2718,16 @@ function Auxiliary.DifferentLinkRace(g)
 	return Auxiliary.DifferentBin(g,Card.GetLinkRace)
 end
 Auxiliary.drccheck=Auxiliary.DifferentRace
+--check for cards with same race
+function Auxiliary.SameRace(g)
+	return Auxiliary.SameBin(g,Card.GetRace)
+end
+function Auxiliary.SameFusionRace(g)
+	return Auxiliary.SameBin(g,Card.GetFusionRace)
+end
+function Auxiliary.SameLinkRace(g)
+	return Auxiliary.SameBin(g,Card.GetLinkRace)
+end
 --check for group with 2 cards, each card match f with a1/a2 as argument
 function Auxiliary.gfcheck(g,f,a1,a2)
 	if #g~=2 then return false end
