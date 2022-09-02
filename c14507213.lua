@@ -32,10 +32,20 @@ end
 function c14507213.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
+		tc:RegisterFlagEffect(14507213,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetCode(EFFECT_EXTRA_SYNCHRO_MATERIAL)
+		e1:SetTarget(c14507213.mattg)
+		e1:SetTargetRange(0,LOCATION_MZONE)
+		e1:SetValue(c14507213.matval)
+		e1:SetLabelObject(tc)
+		Duel.RegisterEffect(e1,tp)
 	end
+end
+function c14507213.mattg(e,c)
+	return c==e:GetLabelObject()
+end
+function c14507213.matval(e,sync,mg,c,tp)
+	return true,true
 end
