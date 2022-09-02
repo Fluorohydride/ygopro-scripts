@@ -428,7 +428,7 @@ function Auxiliary.SExtraFilter(c,syncard,filter,tp)
 	return false
 end
 function Auxiliary.GetSynMaterials(tp,syncard,filter)
-	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard,filter)
+	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,0,nil,syncard,filter)
 	local mg2=Duel.GetMatchingGroup(Auxiliary.SExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,syncard,filter,tp)
 	if mg2:GetCount()>0 then mg:Merge(mg2) end
 	return mg
