@@ -19,7 +19,6 @@ function c27769400.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c27769400.descon)
-	e2:SetTarget(c27769400.destg)
 	e2:SetOperation(c27769400.desop)
 	c:RegisterEffect(e2)
 	if not c27769400.global_check then
@@ -71,21 +70,14 @@ end
 function c27769400.desfilter(c,att)
 	return c:IsFaceup() and c:IsAttribute(att)
 end
-function c27769400.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local rc=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
-	Duel.SetTargetParam(rc)
-	e:GetHandler():SetHint(CHINT_ATTRIBUTE,rc)
-	local g=Duel.GetMatchingGroup(c27769400.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,rc)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
-end
 function c27769400.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
+	local rc=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	local g=Duel.GetMatchingGroup(c27769400.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,rc)
 	Duel.Destroy(g,REASON_EFFECT)
 	if c:IsRelateToEffect(e) then
+		c:SetHint(CHINT_ATTRIBUTE,rc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetRange(LOCATION_MZONE)

@@ -32,7 +32,7 @@ function c85119159.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c85119159.filter1(c)
-	return c:IsFaceup() and c:IsSetCard(0x8f,0x54,0x59,0x82)
+	return c:IsFaceup() and c:GetLevel()>0 and c:IsSetCard(0x8f,0x54,0x59,0x82)
 end
 function c85119159.filter2(c)
 	return c:IsFaceup() and c:GetLevel()>0

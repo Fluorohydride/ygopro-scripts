@@ -10,8 +10,9 @@ function c72648577.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c72648577.filter(c)
-	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return false end
 	return c:IsSetCard(0xaf) and c:IsAbleToDeck()
+		and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
+		and (c:IsType(TYPE_MONSTER) or c:IsLocation(LOCATION_PZONE))
 end
 function c72648577.thfilter(c)
 	return c:IsSetCard(0xaf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

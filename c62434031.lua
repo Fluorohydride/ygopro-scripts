@@ -33,7 +33,7 @@ function c62434031.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c62434031.tdcon(e,tp,eg,ep,ev,re,r,rp)
@@ -49,7 +49,7 @@ function c62434031.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc,0)
+		Duel.MoveSequence(tc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end

@@ -42,6 +42,7 @@ function c87116749.indtg(e,c)
 	return c:IsType(TYPE_NORMAL) and c:IsFaceup()
 end
 function c87116749.indct(e,re,r,rp)
+	local tp=e:GetHandlerPlayer()
 	local a,d=Duel.GetBattleMonster(tp)
 	return bit.band(r,REASON_BATTLE)~=0 and d and d:IsType(TYPE_EFFECT)
 end

@@ -22,7 +22,7 @@ function c5067884.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c5067884.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0xd8)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0xd8)
 		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)) and not c:IsReason(REASON_REPLACE)
 end
 function c5067884.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

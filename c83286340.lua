@@ -32,11 +32,12 @@ function c83286340.check(c,tp)
 end
 function c83286340.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (c83286340.check(Duel.GetAttacker(),tp) or c83286340.check(Duel.GetAttackTarget(),tp))
-		and Duel.IsExistingMatchingCard(c83286340.thfilter,tp,LOCATION_DECK,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c83286340.thfilter,tp,LOCATION_DECK,0,1,nil)
+		and Duel.IsExistingMatchingCard(c83286340.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c83286340.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x15f)
+	return c:IsFaceup() and c:IsSetCard(0x15f) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c83286340.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

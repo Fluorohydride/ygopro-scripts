@@ -14,7 +14,7 @@ function c7672244.filter(c)
 	return c:IsControlerCanBeChanged() and c:IsFaceup()
 end
 function c7672244.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and chkc:GetControler()==tp and c7672244.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c7672244.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c7672244.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 	local g=Duel.SelectTarget(tp,c7672244.filter,tp,LOCATION_MZONE,0,1,1,nil)

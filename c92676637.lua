@@ -21,8 +21,8 @@ function c92676637.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c92676637.slevel(e,c)
-	local lv=e:GetHandler():GetLevel()
-	return 2*65536+lv
+	local lv=aux.GetCappedLevel(e:GetHandler())
+	return (2<<16)+lv
 end
 function c92676637.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO

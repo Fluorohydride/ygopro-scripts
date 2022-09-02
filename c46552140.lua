@@ -38,7 +38,7 @@ function c46552140.sortop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		local tc=g:GetFirst()
 		while tc do
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 			tc=g:GetNext()
 		end
 		Duel.SortDecktop(tp,tp,g:GetCount())

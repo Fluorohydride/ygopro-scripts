@@ -14,6 +14,7 @@ function c13250922.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c13250922.spcon)
+	e2:SetTarget(c13250922.sptg)
 	e2:SetOperation(c13250922.spop)
 	c:RegisterEffect(e2)
 	--destroy
@@ -34,13 +35,24 @@ function c13250922.spfilter(c)
 end
 function c13250922.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c13250922.spfilter,c:GetControler(),LOCATION_ONFIELD,0,2,nil)
+	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(c13250922.spfilter,tp,LOCATION_ONFIELD,0,nil)
+	return g:CheckSubGroup(aux.mzctcheck,2,2,tp)
+end
+function c13250922.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c13250922.spfilter,tp,LOCATION_ONFIELD,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c13250922.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c13250922.spfilter,tp,LOCATION_ONFIELD,0,2,2,nil)
+	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c13250922.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

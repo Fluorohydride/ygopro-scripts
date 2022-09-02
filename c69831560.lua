@@ -8,6 +8,7 @@ function c69831560.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c69831560.spcon)
+	e1:SetTarget(c69831560.sptg)
 	e1:SetOperation(c69831560.spop)
 	c:RegisterEffect(e1)
 	--cannot special summon
@@ -30,36 +31,26 @@ c69831560.toss_coin=true
 function c69831560.spfilter(c)
 	return c:IsAbleToGraveAsCost()
 end
-function c69831560.mzfilter(c)
-	return c:GetSequence()<5
-end
 function c69831560.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c69831560.spfilter,tp,LOCATION_MZONE,0,nil)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	return ft>-3 and mg:GetCount()>2 and (ft>0 or mg:IsExists(c69831560.mzfilter,ct,nil))
+	return mg:CheckSubGroup(aux.mzctcheck,3,3,tp)
+end
+function c69831560.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local mg=Duel.GetMatchingGroup(c69831560.filter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=mg:SelectSubGroup(tp,aux.mzctcheck,true,3,3,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c69831560.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c69831560.spfilter,tp,LOCATION_MZONE,0,nil)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	local g=nil
-	if ft>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=mg:Select(tp,3,3,nil)
-	elseif ft>-2 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=mg:FilterSelect(tp,c69831560.mzfilter,ct,ct,nil)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g2=mg:Select(tp,3-ct,3-ct,g)
-		g:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=mg:FilterSelect(tp,c69831560.mzfilter,3,3,nil)
-	end
+	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c69831560.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

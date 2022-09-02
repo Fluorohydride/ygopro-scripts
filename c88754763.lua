@@ -35,7 +35,7 @@ function c88754763.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function c88754763.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c88754763.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.Draw(tp,1,REASON_EFFECT)
 	if ct==0 then return end
 	local dc=Duel.GetOperatedGroup():GetFirst()

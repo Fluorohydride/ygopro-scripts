@@ -24,6 +24,7 @@ function c30341772.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c30341772.filter,tp,0,LOCATION_MZONE,nil)
 	local tg=g:GetMinGroup(Card.GetAttack)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tg:GetFirst():GetAttack())
 end
 function c30341772.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c30341772.filter,tp,0,LOCATION_MZONE,nil)

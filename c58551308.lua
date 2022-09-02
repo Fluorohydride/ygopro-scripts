@@ -25,8 +25,7 @@ function c58551308.flipop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58551308.filter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c58551308.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -35,14 +34,8 @@ function c58551308.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g1=Duel.SelectTarget(tp,c58551308.filter,tp,LOCATION_GRAVE,0,1,1,e:GetHandler(),e,tp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectTarget(1-tp,c58551308.filter,1-tp,LOCATION_GRAVE,0,1,1,e:GetHandler(),e,1-tp)
-	if g1:GetCount()>0 and g2:GetCount()>0 then
-		g1:Merge(g2)
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,2,PLAYER_ALL,g1:GetFirst():GetOwner())
-	elseif g1:GetCount()>0 then
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,1,0,0)
-	elseif g2:GetCount()>0 then
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g2,1,0x10,0)
-	end
+	g1:Merge(g2)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,#g1,0,0)
 end
 function c58551308.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
@@ -51,18 +44,12 @@ function c58551308.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=sg:GetFirst()
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummonStep(tc,0,sp,sp,false,false,spos) end
+		Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 	end
 	tc=sg:GetNext()
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummonStep(tc,0,sp,sp,false,false,spos) end
+		Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 	end
 	Duel.SpecialSummonComplete()
 end

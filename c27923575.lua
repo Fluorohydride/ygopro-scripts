@@ -44,11 +44,18 @@ function c27923575.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c27923575.setfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c27923575.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectTarget(tp,c27923575.setfilter,tp,LOCATION_GRAVE,0,1,2,nil)
+	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),2)
+	local g=Duel.SelectTarget(tp,c27923575.setfilter,tp,LOCATION_GRAVE,0,1,ct,nil)
 end
 function c27923575.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	if #tg==0 or ft<=0 then return end
+	if #tg>ft then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
+		tg=tg:Select(tp,1,ft,nil)
+	end
 	Duel.SSet(tp,tg)
 	for tc in aux.Next(tg) do
 		local e1=Effect.CreateEffect(e:GetHandler())

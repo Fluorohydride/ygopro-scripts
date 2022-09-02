@@ -43,8 +43,8 @@ end
 function c73082255.eval(e,re,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and not rc:IsSummonLocation(LOCATION_GRAVE) and rc:IsSummonType(SUMMON_TYPE_SPECIAL)
-		and re:GetActivateLocation()==LOCATION_MZONE
+	return re:IsActiveType(TYPE_MONSTER) and re:GetActivateLocation()==LOCATION_MZONE and rc:IsSummonType(SUMMON_TYPE_SPECIAL)
+		and (not rc:IsSummonLocation(LOCATION_GRAVE) or (rc:GetOriginalType()&TYPE_TRAP~=0))
 end
 function c73082255.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -63,8 +63,8 @@ function c73082255.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardDeck(1-tp,4,REASON_EFFECT)
 	local g2=Duel.GetOperatedGroup()
 	g:Merge(g2)
-	local fg=g:Filter(c73082255.cfilter,nil,e,tp)
-	if fg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(73082255,1)) then
+	local fg=g:Filter(aux.NecroValleyFilter(c73082255.cfilter),nil,e,tp)
+	if fg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(73082255,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=fg:Select(tp,1,1,nil)

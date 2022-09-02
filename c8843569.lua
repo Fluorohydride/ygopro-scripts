@@ -15,11 +15,10 @@ function c8843569.initial_effect(c)
 end
 function c8843569.cfilter(c,g)
 	return c:IsFacedown() or not c:IsRace(RACE_WINDBEAST)
-		or g:IsExists(Card.IsOriginalCodeRule,1,c,c:GetOriginalCodeRule())
 end
 function c8843569.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	return g:GetCount()>=2 and not g:IsExists(c8843569.cfilter,1,nil,g)
+	return g:GetCount()>=2 and not g:IsExists(c8843569.cfilter,1,nil,g) and g:GetClassCount(Card.GetOriginalCodeRule)>=2
 end
 function c8843569.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,600) end

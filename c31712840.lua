@@ -22,8 +22,8 @@ function c31712840.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c31712840.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)
-	if chk==0 then return Duel.CheckLPCost(tp,lp-10,true) end
-	Duel.PayLPCost(tp,lp-10,true)
+	if chk==0 then return Duel.CheckLPCost(tp,lp-10) end
+	Duel.PayLPCost(tp,lp-10)
 end
 function c31712840.spfilter(c,e,tp)
 	return c:IsSetCard(0x107f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
@@ -40,18 +40,17 @@ function c31712840.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c31712840.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
+	local ss=false
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+		ss=true
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(tc:GetAttack()*2)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetRange(LOCATION_MZONE)
 		e2:SetValue(1)
 		tc:RegisterEffect(e2)
 		local e3=e2:Clone()
@@ -59,17 +58,19 @@ function c31712840.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(c31712840.indval)
 		tc:RegisterEffect(e3)
 		tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(31712840,1))
+	end
+	Duel.SpecialSummonComplete()
+	if ss then
 		--to deck top
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(31712840,2))
 		local g2=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_DECK,0,1,1,nil)
 		local tc2=g2:GetFirst()
 		if tc2 then
 			Duel.ShuffleDeck(tp)
-			Duel.MoveSequence(tc2,0)
+			Duel.MoveSequence(tc2,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 		end
 	end
-	Duel.SpecialSummonComplete()
 end
 function c31712840.indval(e,c)
 	return not c:IsSetCard(0x48)

@@ -43,4 +43,3 @@ function c22634473.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 end
-

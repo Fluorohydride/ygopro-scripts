@@ -20,7 +20,7 @@ function c92418590.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c92418590.cfilter(c)
-	return c:IsSetCard(0x83) and c:IsAbleToRemoveAsCost() and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x1083) and c:IsAbleToRemoveAsCost() and c:IsType(TYPE_MONSTER)
 end
 function c92418590.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92418590.cfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
@@ -41,5 +41,5 @@ function c92418590.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92418590.xyzlimit(e,c)
 	if not c then return false end
-	return not c:IsSetCard(0x83)
+	return not c:IsSetCard(0x1083)
 end

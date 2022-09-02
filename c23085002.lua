@@ -24,7 +24,7 @@ function c23085002.initial_effect(c)
 	e3:SetOperation(c23085002.operation)
 	c:RegisterEffect(e3)
 end
-c23085002.xyz_number=68
+aux.xyz_number[23085002]=68
 function c23085002.value(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsType,0,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_MONSTER)*100
 end

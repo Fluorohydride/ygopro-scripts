@@ -1,5 +1,6 @@
 --忘却の海底神殿
 function c43889633.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -57,7 +57,7 @@ end
 function c52601736.dacon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetEquipTarget()
 	return Duel.IsAbleToEnterBP()
-		and tc:IsAttackable() and tc:GetEffectCount(EFFECT_DIRECT_ATTACK)==0
+		and tc and tc:IsAttackable() and tc:GetEffectCount(EFFECT_DIRECT_ATTACK)==0
 end
 function c52601736.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()

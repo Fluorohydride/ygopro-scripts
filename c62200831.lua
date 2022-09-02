@@ -1,4 +1,4 @@
---軍貫処『海せん』
+--軍貫処 『海せん』
 function c62200831.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -50,7 +50,7 @@ function c62200831.dtop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc,0)
+		Duel.MoveSequence(tc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end
@@ -78,7 +78,7 @@ function c62200831.xyzfilter(c,e,tp,mc)
 end
 function c62200831.spop(e,tp,eg,ep,ev,re,r,rp)
 	local def=math.min(e:GetLabel(),Duel.GetLP(1-tp))
-	if def==0 then return end
+	if def==0 or def>Duel.GetLP(1-tp) then return end
 	Duel.PayLPCost(1-tp,def)
 	if Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

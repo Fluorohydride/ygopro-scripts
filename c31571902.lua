@@ -38,6 +38,7 @@ end
 function c31571902.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,e:GetHandler():GetBaseAttack())
 end
 function c31571902.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

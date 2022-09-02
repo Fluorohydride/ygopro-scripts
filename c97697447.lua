@@ -1,5 +1,6 @@
 --アビストローム
 function c97697447.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOGRAVE)

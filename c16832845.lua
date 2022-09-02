@@ -9,7 +9,7 @@ function c16832845.initial_effect(c)
 	e1:SetCondition(c16832845.condition)
 	e1:SetTarget(c16832845.target)
 	e1:SetOperation(c16832845.activate)
-	c:RegisterEffect(e1)	
+	c:RegisterEffect(e1)
 	if not c16832845.global_check then
 		c16832845.global_check=true
 		c16832845[0]=false

@@ -20,10 +20,10 @@ function c90307777.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c90307777.rlevel(e,c)
-	local lv=e:GetHandler():GetLevel()
+	local lv=aux.GetCappedLevel(e:GetHandler())
 	if c:IsSetCard(0xb4) then
 		local clv=c:GetLevel()
-		return lv*65536+clv
+		return (lv<<16)+clv
 	else return lv end
 end
 function c90307777.thcon(e,tp,eg,ep,ev,re,r,rp)

@@ -57,7 +57,7 @@ function c61529473.tgfilter(c)
 end
 function c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c61529473.tgfilter(chkc) and chkc~=c end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c61529473.tgfilter(chkc) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c61529473.tgfilter,tp,LOCATION_ONFIELD,0,1,c)
 		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

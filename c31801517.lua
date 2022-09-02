@@ -31,7 +31,7 @@ function c31801517.initial_effect(c)
 	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 end
-c31801517.xyz_number=62
+aux.xyz_number[31801517]=62
 function c31801517.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c==Duel.GetAttacker() or c==Duel.GetAttackTarget()
@@ -90,7 +90,6 @@ function c31801517.spop2(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_SET_ATTACK)
 		e1:SetValue(c:GetAttack()*2)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

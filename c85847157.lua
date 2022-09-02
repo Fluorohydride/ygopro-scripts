@@ -18,6 +18,7 @@ function c85847157.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetCondition(c85847157.sumcon)
 	e2:SetTarget(c85847157.sumtg)
 	e2:SetOperation(c85847157.sumop)
 	c:RegisterEffect(e2)
@@ -48,6 +49,10 @@ function c85847157.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	e1:SetTargetRange(1,0)
 	Duel.RegisterEffect(e1,tp)
+end
+function c85847157.sumcon(e,tp,eg,ep,ev,re,r,rp)
+	local ph=Duel.GetCurrentPhase()
+	return ph~=PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL
 end
 function c85847157.sumfilter(c)
 	return c:IsSummonable(true,nil,1) or c:IsMSetable(true,nil,1)

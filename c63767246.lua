@@ -38,7 +38,7 @@ function c63767246.initial_effect(c)
 	e3:SetOperation(c63767246.atkop)
 	c:RegisterEffect(e3)
 end
-c63767246.xyz_number=38
+aux.xyz_number[63767246]=38
 function c63767246.discon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return bit.band(loc,LOCATION_SZONE)~=0

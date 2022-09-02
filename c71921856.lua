@@ -32,7 +32,7 @@ function c71921856.initial_effect(c)
 	e3:SetOperation(c71921856.spop)
 	c:RegisterEffect(e3)
 end
-c71921856.xyz_number=79
+aux.xyz_number[71921856]=79
 function c71921856.filter(c)
 	return c:IsSetCard(0x84) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end

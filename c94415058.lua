@@ -24,7 +24,7 @@ function c94415058.initial_effect(c)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_CHANGE_RSCALE)
 	c:RegisterEffect(e5)
-	--
+	--spsummon
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(94415058,0))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -55,10 +55,13 @@ function c94415058.sccon(e)
 end
 function c94415058.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	e:SetLabel(tc:GetCode())
-	return eg:GetCount()==1 and rp==1-tp and tc:IsReason(REASON_EFFECT)
+	if eg:GetCount()==1 and rp==1-tp and tc:IsReason(REASON_EFFECT)
 		and tc:IsPreviousControler(tp) and tc:IsPreviousLocation(LOCATION_MZONE)
-		and tc:IsType(TYPE_PENDULUM) and tc:IsControler(tp)
+		and tc:IsType(TYPE_PENDULUM) and tc:IsControler(tp) then
+		e:SetLabel(tc:GetCode())
+		return true
+	end
+	return false
 end
 function c94415058.filter(c,e,tp,code)
 	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -28,7 +28,7 @@ function c66970002.initial_effect(c)
 	e2:SetOperation(c66970002.desop)
 	c:RegisterEffect(e2)
 end
-c66970002.xyz_number=39
+aux.xyz_number[66970002]=39
 function c66970002.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp
 end

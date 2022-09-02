@@ -50,7 +50,7 @@ function c71095768.initial_effect(c)
 end
 function c71095768.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetCurrentChain()
-	if cid>0 then
+	if cid>0 and (r&REASON_COST)>0 then
 		c71095768[0]=Duel.GetChainInfo(cid,CHAININFO_CHAIN_ID)
 		c71095768[1]=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)
 		local seq=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_SEQUENCE)
@@ -108,12 +108,13 @@ function c71095768.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e3=Effect.CreateEffect(e:GetHandler())
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetCode(EFFECT_DISABLE_EFFECT)
+		e3:SetValue(RESET_TURN_SET)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc1:RegisterEffect(e3)
 		local e4=e3:Clone()
 		tc2:RegisterEffect(e4)
 		Duel.SpecialSummonComplete()
-		Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+		Duel.AdjustAll()
 		if sg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 		local xyzg=Duel.GetMatchingGroup(Card.IsXyzSummonable,tp,LOCATION_EXTRA,0,nil,sg,2,2)
 		if xyzg:GetCount()>0 then

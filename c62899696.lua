@@ -32,7 +32,7 @@ function c62899696.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and bit.band(Duel.GetCurrentPhase(),PHASE_MAIN1+PHASE_MAIN2)>0
 end
 function c62899696.filter(tc,c,tp)
-	if not tc:IsFaceup() or not tc:IsCanBeSynchroMaterial() then return false end
+	if tc:IsFacedown() or not tc:IsCanBeSynchroMaterial() then return false end
 	c:RegisterFlagEffect(62899696,0,0,1)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

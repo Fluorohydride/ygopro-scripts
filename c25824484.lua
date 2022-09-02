@@ -32,7 +32,7 @@ function c25824484.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)
 		Duel.Draw(tp,1,REASON_EFFECT)
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c25824484.sdcon(e,tp,eg,ep,ev,re,r,rp)

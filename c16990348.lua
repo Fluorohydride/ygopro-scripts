@@ -8,7 +8,7 @@ function c16990348.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetTarget(c16990348.target)
 	e1:SetOperation(c16990348.activate)
-	c:RegisterEffect(e1)	
+	c:RegisterEffect(e1)
 end
 function c16990348.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x19)

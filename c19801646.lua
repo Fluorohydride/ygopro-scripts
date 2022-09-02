@@ -1,5 +1,6 @@
 --伝説のフィッシャーマン二世
 function c19801646.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--code
 	aux.EnableChangeCode(c,3643300,LOCATION_MZONE+LOCATION_GRAVE)
 	--immune

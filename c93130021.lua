@@ -1,5 +1,4 @@
---ビクトリー・バイパーXX03
---not fully implemented
+--ビクトリー・バイパー XX０３
 function c93130021.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93130021,0))
@@ -99,9 +98,11 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		e5:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		token:RegisterEffect(e5,true)
 		local e6=Effect.CreateEffect(c)
-		e6:SetType(EFFECT_TYPE_SINGLE)
-		e6:SetCode(EFFECT_SELF_DESTROY)
-		e6:SetCondition(c93130021.tokendes)
+		e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e6:SetCode(EVENT_ADJUST)
+		e6:SetRange(LOCATION_MZONE)
+		e6:SetCondition(c93130021.tokendescon)
+		e6:SetOperation(c93130021.tokendesop)
 		e6:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		token:RegisterEffect(e6,true)
 		Duel.SpecialSummonComplete()
@@ -131,6 +132,9 @@ end
 function c93130021.tokenatt(e,c)
 	return e:GetOwner():GetAttribute()
 end
-function c93130021.tokendes(e)
+function c93130021.tokendescon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetOwner():IsRelateToCard(e:GetHandler())
+end
+function c93130021.tokendesop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Destroy(e:GetHandler(),REASON_RULE)
 end

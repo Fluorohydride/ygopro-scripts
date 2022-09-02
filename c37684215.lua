@@ -28,7 +28,7 @@ function c37684215.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e4:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c37684215.indcon)
+	e4:SetCondition(c37684215.indcon)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end

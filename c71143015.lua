@@ -3,7 +3,7 @@ function c71143015.initial_effect(c)
 	aux.AddCodeList(c,89631139,23995346)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
@@ -54,7 +54,7 @@ function c71143015.desfilter(c)
 end
 function c71143015.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
-	local mg=Duel.GetMatchingGroup(c71143015.filter0,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c71143015.filter0),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c71143015.filter1,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg3=nil
 	local sg2=nil

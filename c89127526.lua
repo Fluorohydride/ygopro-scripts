@@ -25,7 +25,7 @@ function c89127526.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c89127526.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
-function c89127526.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c89127526.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then

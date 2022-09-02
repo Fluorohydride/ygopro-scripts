@@ -14,6 +14,7 @@ end
 function c74879881.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,63060238)
 		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end
 end
 function c74879881.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -42,7 +43,7 @@ function c74879881.spop(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c74879881.retcon(e,tp,eg,ep,ev,re,r,rp)

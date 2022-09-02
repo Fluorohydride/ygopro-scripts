@@ -2,6 +2,7 @@
 MIN_ID		=1000		--4 digits, by DataManager::GetDesc()
 MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
+MAX_PARAMETER	=0xffff
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -175,7 +176,7 @@ STATUS_EFFECT_REPLACED		=0x80000	--效果被替代(红莲霸权)
 STATUS_FUTURE_FUSION		=0x100000	--未来融合特殊召唤(不触发融合素材效果)
 STATUS_ATTACK_CANCELED		=0x200000	--若其為攻擊者，則攻擊中止
 STATUS_INITIALIZING			=0x400000	--初始化..
-STATUS_ACTIVATED			=0x800000	--N/A
+STATUS_TO_HAND_WITHOUT_CONFIRM	=0x800000	--非公开的卡被效果加入手卡但未给对方确认
 STATUS_JUST_POS				=0x1000000	--已改變表示形式(用於STATUS_CONTINUOUS_POS判定)
 STATUS_CONTINUOUS_POS		=0x2000000	--改變後再次設定成其他表示形式
 STATUS_FORBIDDEN			=0x4000000	--不能play
@@ -300,12 +301,12 @@ EFFECT_FLAG_BOTH_SIDE		=0x1000		--双方都能使用（部分场地，弹压）
 EFFECT_FLAG_COPY_INHERIT	=0x2000		--若由复制的效果產生則继承其Reset属性
 EFFECT_FLAG_DAMAGE_STEP		=0x4000		--可以在伤害步骤发动
 EFFECT_FLAG_DAMAGE_CAL		=0x8000		--可以在伤害计算时发动
-EFFECT_FLAG_DELAY			=0x10000	--場合型誘發效果、用於永續效果的EFFECT_TYPE_CONTINUOUS、神之化身/恐惧之源的攻击力变化最后计算
+EFFECT_FLAG_DELAY			=0x10000	--場合型誘發效果、用於永續效果的EFFECT_TYPE_CONTINUOUS
 EFFECT_FLAG_SINGLE_RANGE	=0x20000	--只对自己有效
 EFFECT_FLAG_UNCOPYABLE		=0x40000	--不能复制的原始效果（效果外文本）
 EFFECT_FLAG_OATH			=0x80000	--誓约效果
 EFFECT_FLAG_SPSUM_PARAM		=0x100000	--指定召喚/规则特殊召唤的位置和表示形式(熔岩魔神)
-EFFECT_FLAG_REPEAT			=0x200000	--神之化身的攻击力重复计算
+EFFECT_FLAG_REPEAT			=0x200000	--N/A
 EFFECT_FLAG_NO_TURN_RESET	=0x400000	--发条等“这张卡在场上只能发动一次”的效果
 EFFECT_FLAG_EVENT_PLAYER	=0x800000	--视为对方玩家的效果（动作？）
 EFFECT_FLAG_OWNER_RELATE	=0x1000000	--与效果owner关联的效果
@@ -317,8 +318,11 @@ EFFECT_FLAG_COF					=0x20000000 --N/A
 EFFECT_FLAG_CVAL_CHECK			=0x40000000	--N/A
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用
 
-EFFECT_FLAG2_MILLENNIUM_RESTRICT	=0x0001 --卡名為X的卡的效果無效（千年眼納祭神）
+EFFECT_FLAG2_MILLENNIUM_RESTRICT	=0x0001 --N/A
 EFFECT_FLAG2_COF					=0x0002 --通常魔法卡在MP1以外发动（邪恶的仪式的特殊处理）
+EFFECT_FLAG2_WICKED					=0x0004	--神之化身/恐惧之源的攻击力变化最后计算
+EFFECT_FLAG2_OPTION					=0x0008	--子機
+
 --========== Codes ==========	--对永续性效果表示效果类型(EFFECT开头)，对诱发型效果表示触发效果的事件/时点(EVENT开头)
 EFFECT_IMMUNE_EFFECT			=1		--效果免疫
 EFFECT_DISABLE					=2		--效果无效（技能抽取）
@@ -408,19 +412,19 @@ EFFECT_MSET_COST				=94		--怪兽放置代价
 EFFECT_SSET_COST				=95		--魔陷放置代价
 EFFECT_ATTACK_COST				=96		--攻击代价（霞之谷猎鹰）
 
-EFFECT_UPDATE_ATTACK			=100	--改变攻击力（攻击力增加/减少）
-EFFECT_SET_ATTACK				=101	--设置攻击力(永續型效果、攻擊力變成X特殊召喚)
-EFFECT_SET_ATTACK_FINAL			=102	--设置最终攻击力(所有入連鎖的改變攻擊力)
-EFFECT_SET_BASE_ATTACK			=103	--设置原本攻击力
-EFFECT_UPDATE_DEFENSE			=104	--改变防御力
-EFFECT_SET_DEFENSE				=105	--设置防御力
-EFFECT_SET_DEFENSE_FINAL		=106	--设置最终防御力
-EFFECT_SET_BASE_DEFENSE			=107	--设置原本防御力
-EFFECT_REVERSE_UPDATE			=108	--倒置改变攻击力、防御力（天邪鬼）
-EFFECT_SWAP_AD					=109	--交换攻防(超級漏洞人)
-EFFECT_SWAP_BASE_AD				=110	--交换原本攻防
-EFFECT_SWAP_ATTACK_FINAL		=111	--N/A
-EFFECT_SWAP_DEFENSE_FINAL		=112	--N/A
+EFFECT_UPDATE_ATTACK			=100	--增减攻击力
+EFFECT_SET_ATTACK				=101	--设置自身攻击力、攻击力变成X特殊召唤、持续改变攻击力
+EFFECT_SET_ATTACK_FINAL			=102	--暂时改变攻击力（所有置入连锁的效果）
+EFFECT_SET_BASE_ATTACK			=103	--设置自身原本攻击力、持续改变原本攻击力
+EFFECT_UPDATE_DEFENSE			=104	--增减守备力
+EFFECT_SET_DEFENSE				=105	--设置自身守备力、守备力变成X特殊召唤、持续改变守备力
+EFFECT_SET_DEFENSE_FINAL		=106	--暂时改变守备力（所有置入连锁的效果）
+EFFECT_SET_BASE_DEFENSE			=107	--设置自身原本守备力、持续改变原本守备力
+EFFECT_REVERSE_UPDATE			=108	--倒置增减攻击力、防御力（天邪鬼）
+EFFECT_SWAP_AD					=109	--交换攻守(超級漏洞人)
+EFFECT_SWAP_BASE_AD				=110	--交换原本攻守
+EFFECT_SET_BASE_ATTACK_FINAL	=111	--暂时改变原本攻击力
+EFFECT_SET_BASE_DEFENSE_FINAL	=112	--暂时改变原本防御力
 EFFECT_ADD_CODE					=113	--增加卡名
 EFFECT_CHANGE_CODE				=114	--改变卡名
 EFFECT_ADD_TYPE					=115	--增加卡片种类（types）
@@ -573,6 +577,7 @@ EFFECT_SET_BATTLE_DEFENSE		=363    --战斗的伤害计算用设置的守备力�
 EFFECT_OVERLAY_RITUAL_MATERIAL  =364    --此卡的超量素材也能用于仪式召唤
 EFFECT_CHANGE_GRAVE_ATTRIBUTE	=365	--墓地的卡将会改变属性（升级转变）
 EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变）
+EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A

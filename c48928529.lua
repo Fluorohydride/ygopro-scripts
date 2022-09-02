@@ -13,12 +13,12 @@ function c48928529.initial_effect(c)
 	e1:SetOperation(c48928529.operation)
 	c:RegisterEffect(e1)
 end
-c48928529.xyz_number=83
+aux.xyz_number[48928529]=83
 function c48928529.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c48928529.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c48928529.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	local tc=g:GetFirst()
 	while tc do

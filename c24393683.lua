@@ -57,8 +57,8 @@ function c24393683.activate(e,tp,eg,ep,ev,re,r,rp)
 		if e:GetLabel()==1 then p=tp end
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
 		local tg=sg:Select(p,1,1,nil)
+		tg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tg)
 	end
 end
 function c24393683.tdfilter(c)

@@ -1,5 +1,6 @@
 --魚雷魚
 function c90337190.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--immune spell
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

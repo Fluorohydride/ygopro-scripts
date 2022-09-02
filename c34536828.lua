@@ -29,10 +29,9 @@ end
 function c34536828.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if rp==1-tp and Duel.IsChainDisablable(ev) and c:GetFlagEffect(34536828)==0
-		and re:IsActiveType(TYPE_MONSTER) and (rc:IsAttack(0) or rc:IsDefense(0))
-		--and rc:IsRelateToEffect(re) and rc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED)
-		--and (rc:IsFaceup() or rc:IsLocation(LOCATION_GRAVE))
+	if rp==1-tp and Duel.IsChainDisablable(ev) and c:GetFlagEffect(34536828)==0 and re:IsActiveType(TYPE_MONSTER)
+		and (rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE) and (rc:IsAttack(0) or rc:IsDefense(0))
+			or not (rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE)) and (rc:GetTextAttack()==0 or not c:IsType(TYPE_LINK) and rc:GetTextDefense()==0))
 		and Duel.IsExistingMatchingCard(c34536828.disfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.SelectEffectYesNo(tp,c,aux.Stringid(34536828,0)) then
 		Duel.Hint(HINT_CARD,0,34536828)
@@ -42,11 +41,11 @@ function c34536828.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34536828.descon(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(tp)
-	return a and d and a:IsAttack(0) and d:IsAttack(0)
+	return a and d and a:IsAttack(0) and d:IsAttack(0) and d:IsRelateToBattle()
 end
 function c34536828.desop(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(tp)
-	if d then
+	if d and d:IsRelateToBattle() then
 		Duel.Destroy(d,REASON_EFFECT)
 	end
 end

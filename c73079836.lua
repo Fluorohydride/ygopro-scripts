@@ -51,7 +51,7 @@ function c73079836.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,ct)
 		for i=1,ct do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

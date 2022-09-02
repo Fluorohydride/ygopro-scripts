@@ -25,7 +25,7 @@ function c60681103.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c60681103.rmfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and (c:IsLevelAbove(1) or c:IsRankAbove(1))
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c60681103.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and chkc:IsControler(1-tp) and c60681103.rmfilter(chkc) end
@@ -45,7 +45,7 @@ function c60681103.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local atk=0
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
 		if tc:IsType(TYPE_XYZ) then atk=tc:GetRank() else atk=tc:GetLevel() end
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:IsFaceup() and c:IsRelateToEffect(e) and atk>0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)

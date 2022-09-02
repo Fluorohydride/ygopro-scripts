@@ -35,5 +35,6 @@ end
 function c35480699.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,0,LOCATION_MZONE,nil)
 	local ct=Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
+	Duel.BreakEffect()
 	Duel.Draw(1-tp,ct,REASON_EFFECT)
 end

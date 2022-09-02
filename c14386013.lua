@@ -69,7 +69,7 @@ function c14386013.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(p,p,ct)
 		for i=1,ct do
 			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 		Duel.BreakEffect()
 		Duel.Draw(p,ct,REASON_EFFECT)

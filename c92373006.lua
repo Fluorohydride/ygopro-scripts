@@ -42,7 +42,7 @@ function c92373006.spfilter(c,e,tp)
 	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
 end
 function c92373006.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and chkc:GetControler()==tp and c92373006.tgfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c92373006.tgfilter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
 		and Duel.IsExistingTarget(c92373006.tgfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c92373006.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
@@ -52,7 +52,7 @@ function c92373006.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c92373006.spop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.GetFirstTarget()
-	if not rc or not rc:IsFaceup() or not rc:IsRelateToEffect(e) then return end
+	if not rc or rc:IsFacedown() or not rc:IsRelateToEffect(e) then return end
 	local rt=Duel.SendtoDeck(rc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if rt==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

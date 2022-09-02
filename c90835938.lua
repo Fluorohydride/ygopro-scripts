@@ -59,7 +59,14 @@ function c90835938.indes(e,c)
 	return c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c90835938.efilter(e,re)
-	return re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(0,CHAININFO_TRIGGERING_ATTRIBUTE)&ATTRIBUTE_DARK~=0
+	if not re:IsActiveType(TYPE_MONSTER) then return false end
+	local rc=re:GetHandler()
+	if (re:IsActivated() and rc:IsRelateToEffect(re) or not re:IsHasProperty(EFFECT_FLAG_FIELD_ONLY))
+		and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
+		return rc:IsAttribute(ATTRIBUTE_DARK)
+	else
+		return rc:GetOriginalAttribute()&ATTRIBUTE_DARK~=0
+	end
 end
 function c90835938.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

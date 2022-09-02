@@ -18,7 +18,7 @@ function c56570271.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e2:SetValue(c56570271.splimit)
-	c:RegisterEffect(e2)	
+	c:RegisterEffect(e2)
 end
 function c56570271.splimit(e,se,sp,st)
 	local c=e:GetHandler()

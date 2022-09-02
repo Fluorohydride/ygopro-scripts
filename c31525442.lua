@@ -52,16 +52,18 @@ function c31525442.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		for p=tp,1-tp,1-tp-tp do
 			local g=Duel.GetFieldGroup(p,LOCATION_DECK,0)
-			local ct={}
-			for i=5,1,-1 do
-				if #g>=i then
-					table.insert(ct,i)
+			if #g>0 then
+				local ct={}
+				for i=5,1,-1 do
+					if #g>=i then
+						table.insert(ct,i)
+					end
 				end
+				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(31525442,(p==tp and 2 or 3)))
+				local ac=Duel.AnnounceNumber(tp,table.unpack(ct))
+				local sg=Duel.GetDecktopGroup(p,ac)
+				Duel.ConfirmCards(tp,sg)
 			end
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(31525442,(p==tp and 2 or 3)))
-			local ac=Duel.AnnounceNumber(tp,table.unpack(ct))
-			local sg=Duel.GetDecktopGroup(p,ac)
-			Duel.ConfirmCards(tp,sg)
 		end
 	end
 end

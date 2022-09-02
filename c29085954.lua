@@ -16,13 +16,13 @@ function c29085954.initial_effect(c)
 	e1:SetOperation(c29085954.spop)
 	c:RegisterEffect(e1)
 end
-c29085954.xyz_number=78
+aux.xyz_number[29085954]=78
 function c29085954.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c29085954.filter(c,e,tp,mc)
-	local no=c.xyz_number
+	local no=aux.GetXyzNumber(c)
 	return no and no>=1 and no<=99 and c:IsSetCard(0x48)
 		and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0

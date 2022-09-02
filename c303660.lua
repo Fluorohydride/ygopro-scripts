@@ -17,15 +17,11 @@ function c303660.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetValue(c303660.eqlimit)
 	c:RegisterEffect(e2)
-	--immune
+	--change effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_IMMUNE_EFFECT)
-	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
-	e3:SetTarget(c303660.etarget)
-	e3:SetValue(c303660.efilter)
+	e3:SetType(EFFECT_TYPE_EQUIP)
+	e3:SetCode(303660)
+	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	c:RegisterEffect(e3)
 	--leave
 	local e4=Effect.CreateEffect(c)
@@ -37,6 +33,7 @@ function c303660.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_CANNOT_DISABLE)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	c:RegisterEffect(e5)
 end
 function c303660.eqlimit(e,c)
@@ -57,13 +54,6 @@ function c303660.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
-end
-function c303660.etarget(e,c)
-	local ec=e:GetHandler():GetEquipTarget()
-	return c:IsType(TYPE_TRAP) and ec and c:GetControler()==ec:GetControler()
-end
-function c303660.efilter(e,re)
-	return re:GetHandler()==e:GetHandler():GetEquipTarget()
 end
 function c303660.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()

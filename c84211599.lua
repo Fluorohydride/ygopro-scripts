@@ -80,7 +80,7 @@ function c84211599.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,#g-1)
 		for i=1,#g-1 do
 			local dg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(dg:GetFirst(),1)
+			Duel.MoveSequence(dg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end

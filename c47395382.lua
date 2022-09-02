@@ -15,7 +15,7 @@ function c47395382.initial_effect(c)
 	e1:SetOperation(c47395382.op)
 	c:RegisterEffect(e1)
 end
-function c47395382.con(e,tp,eg,ep,ev,re,r,rp,chk)
+function c47395382.con(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c47395382.tg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -23,6 +23,7 @@ function c11321089.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetCountLimit(1,11321089)
 	e2:SetCondition(c11321089.drcon)
 	e2:SetTarget(c11321089.drtg)
 	e2:SetOperation(c11321089.drop)
@@ -45,12 +46,14 @@ function c11321089.initial_effect(c)
 end
 function c11321089.ffilter(c,fc,sub,mg,sg)
 	if not sg then return true end
+	local chkloc=LOCATION_HAND
+	if c:IsOnField() then chkloc=LOCATION_ONFIELD end
 	return not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode())
-		and (not c:IsLocation(LOCATION_HAND+LOCATION_MZONE) or #sg<2 or sg:IsExists(aux.NOT(Card.IsLocation),1,c,c:GetLocation()))
+		and (not c:IsLocation(LOCATION_HAND+LOCATION_ONFIELD) or #sg<2 or sg:IsExists(aux.NOT(Card.IsLocation),1,c,chkloc))
 end
 function c11321089.matlimit(e,c,fc,st)
 	if st~=SUMMON_TYPE_FUSION then return true end
-	return c:IsLocation(LOCATION_HAND) or c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE)
+	return c:IsLocation(LOCATION_HAND) or c:IsControler(fc:GetControler()) and c:IsOnField()
 end
 function c11321089.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)

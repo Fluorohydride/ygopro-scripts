@@ -30,14 +30,11 @@ function c58120309.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c58120309.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tc=re:GetHandler()
-	if not tc:IsDisabled() then
-		if Duel.NegateEffect(ev) and tc:IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
-			local sc=Duel.GetFirstMatchingCard(c58120309.sfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
-			if sc and Duel.SelectYesNo(tp,aux.Stringid(58120309,0)) then
-				Duel.BreakEffect()
-				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-			end
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
+		local sc=Duel.GetFirstMatchingCard(c58120309.sfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
+		if sc and Duel.SelectYesNo(tp,aux.Stringid(58120309,0)) then
+			Duel.BreakEffect()
+			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 end

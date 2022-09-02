@@ -75,5 +75,5 @@ function c55204071.spop3(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.RegisterEffect(e1,tp)
 end
 function c55204071.splimit(e,c)
-	return not c:IsSetCard(0x83)
+	return not c:IsSetCard(0x1083)
 end

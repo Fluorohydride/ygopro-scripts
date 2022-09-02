@@ -46,7 +46,7 @@ function c68215963.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68215963.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsControler(tp) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,0,0)
 	end
 end

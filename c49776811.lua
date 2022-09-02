@@ -35,7 +35,7 @@ function c49776811.ctop(e,tp,eg,ep,ev,re,r,rp)
 			local tc=g:GetFirst()
 			if tc then
 				Duel.ShuffleDeck(tp)
-				Duel.MoveSequence(tc,0)
+				Duel.MoveSequence(tc,SEQ_DECKTOP)
 				Duel.ConfirmDecktop(tp,1)
 			end
 		end
@@ -59,8 +59,8 @@ function c49776811.ctop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local g=cg:Select(tp,1,1,nil)
 			if g:GetCount()>0 then
+				g:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 				Duel.SendtoHand(g,nil,REASON_EFFECT)
-				Duel.ConfirmCards(1-tp,g)
 			end
 		end
 	end

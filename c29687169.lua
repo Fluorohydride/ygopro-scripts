@@ -16,7 +16,7 @@ function c29687169.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetAttacker():IsControler(1-tp)
 end
 function c29687169.filter(c,e,tp)
-	return c:IsAttackBelow(1500) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackBelow(1500) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c29687169.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

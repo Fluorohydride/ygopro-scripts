@@ -1,5 +1,6 @@
 --BF－南風のアウステル
 function c17465972.initial_effect(c)
+	aux.AddCodeList(c,9012916)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

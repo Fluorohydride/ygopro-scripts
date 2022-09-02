@@ -1,6 +1,6 @@
 --迷犬メリー
 function c71583486.initial_effect(c)
-	--effect 
+	--effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71583486,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -16,8 +16,8 @@ function c71583486.thfilter(c)
 end
 function c71583486.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	local b1=c:IsAbleToDeck() 
-	local b2=Duel.IsExistingMatchingCard(c71583486.thfilter,tp,LOCATION_DECK,0,1,nil) and c:IsAbleToDeck() 
+	local b1=c:IsAbleToDeck()
+	local b2=Duel.IsExistingMatchingCard(c71583486.thfilter,tp,LOCATION_DECK,0,1,nil) and c:IsAbleToDeck()
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(71583486,1),aux.Stringid(71583486,2))

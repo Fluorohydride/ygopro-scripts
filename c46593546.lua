@@ -70,7 +70,8 @@ function c46593546.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46593546.ovlcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return rc:IsControler(1-tp) and rc:GetOriginalType()&TYPE_MONSTER~=0 and re:GetActivateLocation()&LOCATION_ONFIELD~=0
+	return rc:IsControler(1-tp) and rc:GetOriginalType()&TYPE_MONSTER~=0
+		and (re:GetActivateLocation()&LOCATION_ONFIELD~=0 or re:IsHasType(EFFECT_TYPE_ACTIVATE))
 end
 function c46593546.ovltgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xae)
@@ -102,7 +103,8 @@ function c46593546.ovlop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(g)
 		result=Duel.Destroy(g,REASON_EFFECT)
 	end
-	if result>0 and c:IsRelateToEffect(e) and rc:IsRelateToEffect(re) and not rc:IsImmuneToEffect(e) then
+	if result>0 and c:IsRelateToEffect(e)
+		and rc:IsRelateToEffect(re) and rc:IsControler(1-tp) and not rc:IsImmuneToEffect(e) then
 		local og=rc:GetOverlayGroup()
 		if og:GetCount()>0 then
 			Duel.SendtoGrave(og,REASON_RULE)
@@ -117,7 +119,6 @@ function c46593546.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c46593546.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

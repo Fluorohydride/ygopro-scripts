@@ -21,6 +21,6 @@ function c26237713.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26237713,0))
 	local g=Duel.SelectMatchingCard(tp,c26237713.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
-		Duel.SendtoExtraP(g,tp,REASON_EFFECT)
+		Duel.SendtoExtraP(g,nil,REASON_EFFECT)
 	end
 end

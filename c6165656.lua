@@ -38,7 +38,7 @@ function c6165656.initial_effect(c)
 	e4:SetOperation(c6165656.winop)
 	c:RegisterEffect(e4)
 end
-c6165656.xyz_number=88
+aux.xyz_number[6165656]=88
 --target check is in RUM magic cards
 function c6165656.splimit(e,se,sp,st)
 	return se:GetHandler():IsSetCard(0x95) and se:GetHandler():IsType(TYPE_SPELL)

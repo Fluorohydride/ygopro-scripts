@@ -49,13 +49,8 @@ function c35952884.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c35952884.material_type=TYPE_SYNCHRO
-function c35952884.mfilter(c)
-	return not c:IsType(TYPE_TUNER)
-end
 function c35952884.valcheck(e,c)
-	local g=c:GetMaterial()
-	local ct=g:FilterCount(c35952884.mfilter,nil)
-	e:GetLabelObject():SetLabel(ct)
+	e:GetLabelObject():SetLabel(c:GetMaterialCount()-1)
 end
 function c35952884.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()>0

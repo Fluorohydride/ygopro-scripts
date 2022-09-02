@@ -34,7 +34,7 @@ function c11366199.initial_effect(c)
 	e6:SetCode(EFFECT_CANNOT_TURN_SET)
 	c:RegisterEffect(e6)
 	local e7=e4:Clone()
-	e7:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e7:SetCode(EFFECT_LIMIT_SPECIAL_SUMMON_POSITION)
 	e7:SetTarget(c11366199.sumlimit)
 	c:RegisterEffect(e7)
 end

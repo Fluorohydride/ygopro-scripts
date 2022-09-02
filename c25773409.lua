@@ -12,7 +12,8 @@ function c25773409.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25773409.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()==e:GetHandler() and bit.band(e:GetHandler():GetBattlePosition(),POS_DEFENSE)~=0
+	return aux.dsercon(e) and Duel.GetAttackTarget()==e:GetHandler()
+		and bit.band(e:GetHandler():GetBattlePosition(),POS_DEFENSE)~=0
 end
 function c25773409.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

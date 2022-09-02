@@ -26,7 +26,6 @@ function c93729065.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 	e3:SetRange(LOCATION_PZONE)
-	e3:SetCountLimit(1)
 	e3:SetCondition(c93729065.rdcon)
 	e3:SetOperation(c93729065.rdop)
 	c:RegisterEffect(e3)
@@ -69,12 +68,13 @@ function c93729065.atkval(e,c)
 	return Duel.GetCounter(0,1,1,0x104f)*-200
 end
 function c93729065.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp
+	return ep==tp and e:GetHandler():GetFlagEffect(93729066)==0
 end
 function c93729065.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(93729065,3)) then
 		Duel.Hint(HINT_CARD,0,93729065)
 		Duel.ChangeBattleDamage(tp,0)
+		e:GetHandler():RegisterFlagEffect(93729066,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c93729065.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -166,7 +166,6 @@ function c93729065.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c93729065.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

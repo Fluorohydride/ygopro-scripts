@@ -10,7 +10,10 @@ function c31000575.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c31000575.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)~=0 end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)~=0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,63060238)
+		and not Duel.IsPlayerAffectedByEffect(tp,97148796) end
 end
 function c31000575.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(1-tp,1)

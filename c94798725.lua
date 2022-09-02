@@ -1,9 +1,15 @@
 --超弩級軍貫－うに型二番艦
 function c94798725.initial_effect(c)
+	aux.AddCodeList(c,24639891,42377643)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)
 	c:EnableReviveLimit()
 	--apply the effect
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c94798725.valcheck)
+	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94798725,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -13,6 +19,7 @@ function c94798725.initial_effect(c)
 	e1:SetTarget(c94798725.efftg)
 	e1:SetOperation(c94798725.effop)
 	c:RegisterEffect(e1)
+	e0:SetLabelObject(e1)
 	--disable
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(94798725,1))
@@ -28,13 +35,19 @@ function c94798725.initial_effect(c)
 	e2:SetOperation(c94798725.disop)
 	c:RegisterEffect(e2)
 end
+function c94798725.valcheck(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local flag=0
+	if c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0 then flag=flag|1 end
+	if c:GetMaterial():FilterCount(Card.IsCode,nil,42377643)>0 then flag=flag|2 end
+	e:GetLabelObject():SetLabel(flag)
+end
 function c94798725.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c94798725.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	local chk1=c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0
-	local chk2=c:GetMaterial():FilterCount(Card.IsCode,nil,42377643)>0
+	local chk1=e:GetLabel()&1>0
+	local chk2=e:GetLabel()&2>0
 	if chk==0 then return (chk1 and Duel.IsPlayerCanDraw(tp,1) or chk2) end
 	if chk1 then
 		e:SetCategory(CATEGORY_DRAW)
@@ -45,8 +58,8 @@ function c94798725.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94798725.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local chk1=c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0
-	local chk2=c:GetMaterial():FilterCount(Card.IsCode,nil,42377643)>0
+	local chk1=e:GetLabel()&1>0
+	local chk2=e:GetLabel()&2>0
 	if chk1 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

@@ -24,8 +24,7 @@ function c51023024.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c51023024.filter(c,e,tp)
-	return c:IsSetCard(0x9d) and not c:IsCode(51023024)
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsSetCard(0x9d) and not c:IsCode(51023024) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE)
 end
 function c51023024.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -37,14 +36,8 @@ function c51023024.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,c51023024.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 	if not tc then return end
-	local spos=0
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) then spos=spos+POS_FACEUP_DEFENSE end
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-	if spos~=0 then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
-		if tc:IsFacedown() then
-			Duel.ConfirmCards(1-tp,tc)
-		end
+	if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_DEFENSE)~=0 and tc:IsFacedown() then
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end
 function c51023024.spcon(e,tp,eg,ep,ev,re,r,rp)

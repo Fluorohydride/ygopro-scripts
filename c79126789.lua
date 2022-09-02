@@ -19,12 +19,12 @@ end
 function c79126789.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
-	if tp==rp or tp~=e:GetLabel() then
-		Duel.SetTargetParam(1)
-		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
-	else
-		Duel.SetTargetParam(2)
+	if rp==1-tp and tp==e:GetLabel() then
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
+		Duel.SetTargetParam(2)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
+		Duel.SetTargetParam(1)
 	end
 end
 function c79126789.drop(e,tp,eg,ep,ev,re,r,rp)

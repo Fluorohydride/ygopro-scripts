@@ -20,6 +20,7 @@ function c365213.initial_effect(c)
 	c:RegisterEffect(e2)
 	--apply
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(365213,0))
 	e3:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -44,7 +45,7 @@ function c365213.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		if tc:IsLocation(LOCATION_DECK) then
 			Duel.ShuffleDeck(tp)
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 		else
 			Duel.ConfirmCards(1-tp,tc)

@@ -27,69 +27,51 @@ function c96142517.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c96142517.filter1(c,e,tp)
 	local rk=c:GetRank()
-	return c:IsType(TYPE_XYZ) and c:IsCanOverlay()
-		and Duel.IsExistingMatchingCard(c96142517.filter2,tp,0,LOCATION_GRAVE,1,nil,e,rk)
+	return c:IsType(TYPE_XYZ) and c:IsCanOverlay() and c:IsCanBeEffectTarget(e)
 		and Duel.IsExistingMatchingCard(c96142517.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,rk+1)
 end
-function c96142517.filter2(c,e,rk)
-	return c:IsType(TYPE_XYZ) and c:IsRank(rk) and c:IsCanBeEffectTarget(e) and c:IsCanOverlay()
-end
-function c96142517.filter3(c)
-	return c:IsType(TYPE_XYZ) and c:IsRank(8) and c:IsCode(48995978) and c:IsCanOverlay()
-end
 function c96142517.spfilter(c,e,tp,rk)
-	if c:GetOriginalCode()==6165656 then
-		local g1=Duel.GetMatchingGroup(c96142517.filter2,tp,LOCATION_GRAVE,0,nil,e,8)
-		local g2=Duel.GetMatchingGroup(c96142517.filter2,tp,0,LOCATION_GRAVE,nil,e,8)
-		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g1:GetCount()>0 and g2:GetCount()>0
-			and (g1:IsExists(Card.IsCode,1,nil,48995978) or g2:IsExists(Card.IsCode,1,nil,48995978))
-	else
-		return c:IsRank(rk) and c:IsSetCard(0x1048,0x1073) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-	end
+	return c:IsRank(rk) and c:IsSetCard(0x1048,0x1073) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
-function c96142517.spfilter2(c,e,tp,rk,g)
-	if c:GetOriginalCode()==6165656 then
-		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g:IsExists(Card.IsCode,1,nil,48995978)
-	else
-		return c:IsRank(rk) and c:IsSetCard(0x1048,0x1073) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-	end
+function c96142517.gcheck(g)
+	return g:GetClassCount(Card.GetRank)==1
+end
+function c96142517.fselect(g,e,tp)
+	if not g:IsExists(Card.IsControler,1,nil,tp) or not g:IsExists(Card.IsControler,1,nil,1-tp) then return false end
+	local mg=Duel.GetMatchingGroup(c96142517.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,9)
+	return not g:GetFirst():IsRank(8)
+		or mg:IsExists(aux.NOT(Card.IsOriginalCodeRule),1,nil,6165656) or g:IsExists(Card.IsCode,1,nil,48995978)
+end
+function c96142517.spfilter2(c,e,tp,rk,tg)
+	return c96142517.spfilter(c,e,tp,rk) and (not c:IsOriginalCodeRule(6165656) or tg:IsExists(Card.IsCode,1,nil,48995978))
 end
 function c96142517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local g=Duel.GetMatchingGroup(c96142517.filter1,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e,tp)
 	if chkc then return false end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c96142517.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then
+		aux.GCheckAdditional=c96142517.gcheck
+		local res=g:CheckSubGroup(c96142517.fselect,2,#g,e,tp)
+		aux.GCheckAdditional=nil
+		return res
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local g1=Duel.SelectTarget(tp,c96142517.filter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	aux.GCheckAdditional=c96142517.gcheck
+	local g1=g:SelectSubGroup(tp,c96142517.fselect,false,2,#g,e,tp)
+	aux.GCheckAdditional=nil
+	Duel.SetTargetCard(g1)
 	local rk=g1:GetFirst():GetRank()
 	e:SetLabel(rk)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local g2=Duel.SelectTarget(tp,c96142517.filter2,tp,0,LOCATION_GRAVE,1,1,nil,e,rk)
-	g1:Merge(g2)
-	local g=Duel.GetMatchingGroup(c96142517.filter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e,rk)
-	g:Sub(g1)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96142517,1)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local sg=g:Select(tp,1,99,nil)
-		Duel.SetTargetCard(sg)
-		g1:Merge(sg)
-	end
-	local xg=Duel.GetMatchingGroup(c96142517.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,9)
-	if rk==8 and xg:GetClassCount(Card.GetOriginalCode)==1 and xg:GetFirst():GetOriginalCode()==6165656
-		and not g1:IsExists(Card.IsCode,1,nil,48995978) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local ng=Duel.SelectTarget(tp,c96142517.filter3,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
-		g1:Merge(ng)
-	end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g1,g1:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c96142517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rk=e:GetLabel()
-	local mg0=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local mg=mg0:Filter(Card.IsRelateToEffect,nil,e)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or mg:GetCount()==0 then return end
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local mg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	if mg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c96142517.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,rk+1,mg0)
+	local g=Duel.SelectMatchingCard(tp,c96142517.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,rk+1,tg)
 	local sc=g:GetFirst()
 	if sc then
 		Duel.Overlay(sc,mg)

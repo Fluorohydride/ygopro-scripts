@@ -34,7 +34,7 @@ function c14057297.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SortDecktop(p,p,ct)
 			for j=1,ct do
 				local mg=Duel.GetDecktopGroup(p,1)
-				Duel.MoveSequence(mg:GetFirst(),1)
+				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 			end
 		end
 		p=1-p

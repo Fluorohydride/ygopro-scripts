@@ -15,14 +15,16 @@ function c33236860.initial_effect(c)
 	e1:SetTarget(c33236860.destg)
 	e1:SetOperation(c33236860.desop)
 	c:RegisterEffect(e1)
-	--destroy replace
+	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_DESTROY_REPLACE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c33236860.drpcon)
-	e2:SetTarget(c33236860.drptg)
-	e2:SetValue(aux.TRUE)
+	e2:SetTargetRange(LOCATION_MZONE,0)
+	e2:SetCountLimit(1)
+	e2:SetCondition(c33236860.indcon)
+	e2:SetTarget(c33236860.indtg)
+	e2:SetValue(c33236860.valcon)
 	c:RegisterEffect(e2)
 end
 function c33236860.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -59,11 +61,12 @@ function c33236860.desop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Filter(c33236860.desfilter,nil,e,c:GetAttack())
 	Duel.Destroy(sg,REASON_EFFECT)
 end
-function c33236860.drpcon(e,tp,eg,ep,ev,re,r,rp)
-	return r==REASON_BATTLE and tp~=Duel.GetTurnPlayer() and eg:GetFirst():IsSetCard(0x33)
+function c33236860.indcon(e)
+	return Duel.GetTurnPlayer()==1-e:GetHandlerPlayer()
 end
-function c33236860.drptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(33236860)==0 end
-	e:GetHandler():RegisterFlagEffect(33236860,RESET_EVENT+RESETS_STANDARD,0,1)
-	return true
+function c33236860.indtg(e,c)
+	return c:IsSetCard(0x33)
+end
+function c33236860.valcon(e,re,r,rp)
+	return bit.band(r,REASON_BATTLE)~=0
 end

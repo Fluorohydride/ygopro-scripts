@@ -5,8 +5,12 @@ function c23471572.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
+	e1:SetTarget(c23471572.target)
 	e1:SetOperation(c23471572.activate)
 	c:RegisterEffect(e1)
+end
+function c23471572.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_SKIP_SP) end
 end
 function c23471572.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

@@ -100,7 +100,7 @@ end
 function c73511233.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) or c:IsControler(1-tp) then return end
+	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) or c:IsControler(1-tp) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c73511233.spfilter1,nil,e)
 	mg1:AddCard(c)
 	local sg1=Duel.GetMatchingGroup(c73511233.spfilter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)

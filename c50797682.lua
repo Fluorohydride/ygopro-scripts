@@ -69,11 +69,12 @@ function c50797682.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 		tc=g1:GetNext()
 	end
 	Duel.SpecialSummonComplete()
-	Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	Duel.AdjustAll()
 	if g1:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 	local xyzg=Duel.GetMatchingGroup(c50797682.xyzfilter,tp,LOCATION_EXTRA,0,nil,e,tp,g1)
 	if #xyzg>0 then

@@ -1,5 +1,6 @@
---水陸両用バグロス MK－3
+--水陸両用バグロス Mk－3
 function c64342551.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_DIRECT_ATTACK)

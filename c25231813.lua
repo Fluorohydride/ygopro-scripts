@@ -63,7 +63,7 @@ function c25231813.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 		return true
 	else return false end
 end
-function c25231813.repop2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c25231813.repop2(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end

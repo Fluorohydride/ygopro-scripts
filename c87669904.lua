@@ -35,7 +35,7 @@ function c87669904.activate(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			for i=1,ft do
 				local token=Duel.CreateToken(tp,87669905)
-				if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)~=0 and count==0 then
+				if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP) and count==0 then
 					count=2
 				end
 			end
