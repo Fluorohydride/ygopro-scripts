@@ -407,12 +407,7 @@ function Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc,maxc)
 	return e1
 end
 function Auxiliary.SynMaterialFilter(c,syncard,filter)
-	if not c:IsFaceupEx() then return false end
-	if syncard then
-		return c:IsCanBeSynchroMaterial(syncard) and (not filter or filter(c,syncard))
-	else
-		return c:IsCanBeSynchroMaterial()
-	end
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard) and (not filter or not syncard or filter(c,syncard))
 end
 function Auxiliary.SynLimitFilter(c,f,e,syncard)
 	return f and not f(e,c,syncard)
