@@ -1,7 +1,7 @@
 --電脳堺龍－龍々
 function c61641818.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedureLevelFree(c,c61641818.mfilter,c61641818.xyzcheck,2,99)
+	aux.AddXyzProcedureLevelFree(c,c61641818.mfilter,aux.AND(aux.SameRace,aux.SameAttribute),2,99)
 	c:EnableReviveLimit()
 	--cannot be effect target
 	local e1=Effect.CreateEffect(c)
@@ -29,9 +29,6 @@ function c61641818.initial_effect(c)
 end
 function c61641818.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_MONSTER) and c:IsXyzLevel(xyzc,3)
-end
-function c61641818.xyzcheck(g)
-	return aux.SameRace(g) and aux.SameAttribute(g)
 end
 function c61641818.etcon(e)
 	return e:GetHandler():GetOverlayCount()~=0
