@@ -326,7 +326,7 @@ EFFECT_FLAG2_OPTION					=0x0008	--子機
 --========== Codes ==========	--对永续性效果表示效果类型(EFFECT开头)，对诱发型效果表示触发效果的事件/时点(EVENT开头)
 EFFECT_IMMUNE_EFFECT			=1		--效果免疫
 EFFECT_DISABLE					=2		--效果无效（技能抽取）
-EFFECT_CANNOT_DISABLE			=3		--效果不能被无效
+EFFECT_CANNOT_DISABLE			=3		--卡的效果不能被无效
 EFFECT_SET_CONTROL				=4		--设置控制权
 EFFECT_CANNOT_CHANGE_CONTROL	=5		--不能改变控制权
 EFFECT_CANNOT_ACTIVATE			=6		--玩家不能发动效果
@@ -335,7 +335,7 @@ EFFECT_DISABLE_EFFECT			=8		--效果无效（聖杯）
 EFFECT_DISABLE_CHAIN			=9		--在連鎖串中無效(processor.cpp)
 EFFECT_DISABLE_TRAPMONSTER		=10		--陷阱怪兽无效
 EFFECT_CANNOT_INACTIVATE		=12		--发动不能被无效
-EFFECT_CANNOT_DISEFFECT			=13		--效果處理時不能被无效
+EFFECT_CANNOT_DISEFFECT			=13		--发动的效果不能被无效
 EFFECT_CANNOT_CHANGE_POSITION	=14		--不能改变表示形式
 EFFECT_TRAP_ACT_IN_HAND			=15		--陷阱可以从手牌发动
 EFFECT_TRAP_ACT_IN_SET_TURN		=16		--陷阱可以在盖放的回合发动
