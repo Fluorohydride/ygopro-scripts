@@ -59,15 +59,17 @@ function c30983281.spcheck(c,tp,rc,mg,opchk)
 	return Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
 		and (opchk or Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,c,nil,mg))
 end
-function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk)
+function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk,mg)
 	if not (c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)) then return false end
-	local mg=Auxiliary.GetSynMaterials(tp)
 	mg:AddCard(c)
+	local res=false
 	if tgchk then
-		return c30983281.spcheck(c,tp,nil,mg,opchk)
+		res=c30983281.spcheck(c,tp,nil,mg,opchk)
 	else
-		return (chkrel and c30983281.spcheck(c,tp,rc,mg-rc)) or (chknotrel and c30983281.spcheck(c,tp,nil,mg))
+		res=(chkrel and c30983281.spcheck(c,tp,rc,mg-rc)) or (chknotrel and c30983281.spcheck(c,tp,nil,mg))
 	end
+	mg:RemoveCard(c)
+	return res
 end
 function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
@@ -78,8 +80,9 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c30983281.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
 	local chkrel=c:IsReleasable()
 	local chknotrel=g:GetCount()>0
-	local b1=chkrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,chkrel,nil)
-	local b2=chknotrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,chknotrel)
+	local mg=Auxiliary.GetSynMaterials(tp)
+	local b1=chkrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,chkrel,nil,nil,mg)
+	local b2=chknotrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,chknotrel,nil,mg)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and (not ect1 or ect1>1) and (not ect2 or ect2>1) and (b1 or b2)
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) end
@@ -113,7 +116,7 @@ function c30983281.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 			and (not ect1 or ect1>1) and (not ect2 or ect2>1)
 			and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
-			and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,nil,true)
+			and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,nil,true,Auxiliary.GetSynMaterials(tp))
 	end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -121,7 +124,7 @@ end
 function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c30983281.scfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c,nil,nil,true,true)
+	local g=Duel.SelectMatchingCard(tp,c30983281.scfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c,nil,nil,true,true,Auxiliary.GetSynMaterials(tp))
 	local tc=g:GetFirst()
 	local res=false
 	if tc then
