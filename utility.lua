@@ -406,48 +406,45 @@ function Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc,maxc)
 	c:RegisterEffect(e1)
 	return e1
 end
-function Auxiliary.SynMaterialFilter(c,syncard,filter)
-	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard) and (not filter or not syncard or filter(c,syncard))
+function Auxiliary.SynMaterialFilter(c,sync,filter,hassyncheck)
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(sync) and (hassyncheck or not filter or not sync or filter(c,sync))
 end
-function Auxiliary.SynLimitFilter(c,f,e,syncard)
-	return f and not f(e,c,syncard)
-end
-function Auxiliary.SExtraFilter(c,syncard,filter,tp)
-	if not Auxiliary.SynMaterialFilter(c,syncard,filter) then return false end
+function Auxiliary.SExtraFilter(c,sync,filter,hassyncheck,tp)
+	if not Auxiliary.SynMaterialFilter(c,sync,filter,hassyncheck) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
 	for _,te in pairs(le) do
 		local tf=te:GetValue()
-		local related,valid=tf(te,syncard,nil,c,tp)
+		local related,valid=tf(te,sync,nil,c,tp)
 		if related then return true end
 	end
 	return false
 end
-function Auxiliary.GetSynMaterials(tp,syncard,filter)
-	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,0,nil,syncard,filter)
-	local mg2=Duel.GetMatchingGroup(Auxiliary.SExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,syncard,filter,tp)
+function Auxiliary.GetSynMaterials(tp,sync,filter,hassyncheck)
+	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,0,nil,sync,filter,hassyncheck)
+	local mg2=Duel.GetMatchingGroup(Auxiliary.SExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,sync,filter,hassyncheck,tp)
 	if mg2:GetCount()>0 then mg:Merge(mg2) end
 	return mg
 end
-function Auxiliary.SCheckOtherMaterial(c,syncard,sg,tp)
+function Auxiliary.SCheckOtherMaterial(c,sync,sg,tp)
 	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
 	local res1=false
 	local res2=true
 	for _,te in pairs(le) do
 		local f=te:GetValue()
-		local related,valid=f(te,syncard,sg,c,tp)
+		local related,valid=f(te,sync,sg,c,tp)
 		if related then res2=false end
 		if related and valid then res1=true end
 	end
 	return res1 or res2
 end
-function Auxiliary.SUncompatibilityFilter(c,syncard,sg,tp)
-	return not Auxiliary.SCheckOtherMaterial(c,syncard,sg:Filter(aux.TRUE,c),tp)
+function Auxiliary.SUncompatibilityFilter(c,sync,sg,tp)
+	return not Auxiliary.SCheckOtherMaterial(c,sync,sg:Filter(aux.TRUE,c),tp)
 end
 Auxiliary.SCheckAdditional=nil
 Auxiliary.SCheckAdditionalLimbo={}
 Auxiliary.SGCheckAdditional=nil
-function Auxiliary.SynCheckAdditionalLevel(c,syncard)
-	local raw_level=c:GetSynchroLevel(syncard)
+function Auxiliary.SynCheckAdditionalLevel(c,sync)
+	local raw_level=c:GetSynchroLevel(sync)
 	local lv1=raw_level&0xffff
 	local lv2=raw_level>>16
 	if lv2>0 then
@@ -456,73 +453,100 @@ function Auxiliary.SynCheckAdditionalLevel(c,syncard)
 		return lv1
 	end
 end
-function Auxiliary.SynCheckAdditional(sg,mc,mg,ultgoal,minc,maxc,tp,syncard,goal,smat)
-	if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(sg,syncard) then return false end
-	local lv=syncard:GetLevel()
-	local mono=false
-	if c56897896 then
-		for c in aux.Next(sg) do
-			if c:IsHasEffect(56897896) then
-				mono=true
-				if lv<(Auxiliary.SynCheckAdditionalLevel(c,syncard)+#sg-1) then return false end
-			end
-		end
-		if mono then return true end
-	end
-	return lv>=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,syncard)
-		or (sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2))
-end
-function Auxiliary.SynUltimateGoal(sg,tp,syncard,goal,smat)
-	--misc
-	if smat and not sg:IsContains(smat) then return false end
-	if Duel.GetLocationCountFromEx(tp,tp,sg,syncard)<=0 then return false end
-	if sg:IsExists(Auxiliary.SUncompatibilityFilter,1,nil,syncard,sg,tp) then return false end
-	if Auxiliary.SCheckAdditional and not Auxiliary.SCheckAdditional(sg,syncard,tp) then return false end
-	if Auxiliary.SCheckAdditionalLimbo[syncard] and not Auxiliary.SCheckAdditionalLimbo[syncard](sg,syncard,tp) then return false end
+function Auxiliary.SynCheckAdditional(sg,mc,mg,ultgoal,minc,maxc,tp,sync,goal,smat,syncheck)
+	Auxiliary.ApplyAssume(sg,syncheck)
 
-	--synchro level
+	if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(sg,sync) then
+		Duel.AssumeReset()
+		return false
+	end
+
+	local lv=sync:GetLevel()
 	local mono=false
-	local lv=syncard:GetLevel()
 	if c56897896 then
 		for c in aux.Next(sg) do
 			if c:IsHasEffect(56897896) then
 				mono=true
-				local raw_level=c:GetSynchroLevel(syncard)
-				local lv1=raw_level&0xffff
-				local lv2=raw_level>>16
-				if not (lv==(lv1+#sg-1) or lv2>0 and lv==(lv2+#sg-1)) then
+				if lv<(Auxiliary.SynCheckAdditionalLevel(c,sync)+#sg-1) then
+					Duel.AssumeReset()
 					return false
 				end
 			end
 		end
 	end
 	if not mono then
-		if not (sg:CheckWithSumEqual(Card.GetSynchroLevel,lv,#sg,#sg,syncard)
+		if lv<sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)
+			and not (sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2)) then
+			Duel.AssumeReset()
+			return false
+		end
+	end
+
+	Duel.AssumeReset()
+	return true
+end
+function Auxiliary.SynUltimateGoal(sg,tp,sync,goal,smat,syncheck)
+	--misc
+	if smat and not sg:IsContains(smat) then return false end
+	if Duel.GetLocationCountFromEx(tp,tp,sg,sync)<=0 then return false end
+
+	Auxiliary.ApplyAssume(sg,syncheck)
+
+	if sg:IsExists(Auxiliary.SUncompatibilityFilter,1,nil,sync,sg,tp)
+		or (Auxiliary.SCheckAdditional and not Auxiliary.SCheckAdditional(sg,sync,tp))
+		or (Auxiliary.SCheckAdditionalLimbo[sync] and not Auxiliary.SCheckAdditionalLimbo[sync](sg,sync,tp)) then
+		Duel.AssumeReset()
+		return false
+	end
+
+	--synchro level
+	local mono=false
+	local lv=sync:GetLevel()
+	if c56897896 then
+		for c in aux.Next(sg) do
+			if c:IsHasEffect(56897896) then
+				mono=true
+				local raw_level=c:GetSynchroLevel(sync)
+				local lv1=raw_level&0xffff
+				local lv2=raw_level>>16
+				if not (lv==(lv1+#sg-1) or lv2>0 and lv==(lv2+#sg-1)) then
+					Duel.AssumeReset()
+					return false
+				end
+			end
+		end
+	end
+	if not mono then
+		if not (sg:CheckWithSumEqual(Card.GetSynchroLevel,lv,#sg,#sg,sync)
 			or sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv==#sg*2)) then
+			Duel.AssumeReset()
 			return false
 		end
 	end
 
 	--synchro material requirement
-	if c42155488 then
-		local genomix_fid=-1
-		for c in aux.Next(sg) do
-			local ges={c:IsHasEffect(42155488)}
-			for _, ge in pairs(ges) do
-				if ge:GetFieldID()>genomix_fid then
-					genomix_fid=ge:GetFieldID()
-					Auxiliary.GenomixRace=ge:GetLabel()
+	if (goal and not goal(sg,sync))
+		or not Auxiliary.SynGoalTunerLimit(sg,sync) then
+		Duel.AssumeReset()
+		return false
+	end
+
+	Duel.AssumeReset()
+	return true
+end
+function Auxiliary.ApplyAssume(sg,syncheck)
+	if #syncheck>0 then
+		for _, sce in pairs(syncheck) do
+			if sg:IsContains(sce:GetHandler()) then
+				local f=sce:GetValue()
+				for c in aux.Next(sg) do
+					f(sce,c)
 				end
 			end
 		end
-		local res=(not goal or goal(sg,syncard)) and Auxiliary.SynGoalTunerLimit(sg,syncard)
-		Auxiliary.GenomixRace=0
-		return res
-	else
-		return (not goal or goal(sg,syncard)) and Auxiliary.SynGoalTunerLimit(sg,syncard)
 	end
 end
-function Auxiliary.SynGoalTunerLimit(sg,syncard)
+function Auxiliary.SynGoalTunerLimit(sg,sync)
 	for c in aux.Next(sg) do
 		local le,lf,lloc,lmin,lmax=c:GetTunerLimit()
 		if le then
@@ -531,20 +555,14 @@ function Auxiliary.SynGoalTunerLimit(sg,syncard)
 				local llct=sg:FilterCount(Card.IsLocation,c,lloc)
 				if llct~=lct then return false end
 			end
-			if lf and sg:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le,syncard) then return false end
+			if lf and sg:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le,sync) then return false end
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
 		end
 	end
 	return true
 end
-Auxiliary.GenomixRace=0
-Auxiliary._CardIsRace=Card.IsRace
-function Card.IsRace(c,race)
-	if Auxiliary.GenomixRace>0 then
-		return Auxiliary.GenomixRace&race>0
-	else
-		return Auxiliary._CardIsRace(c,race)
-	end
+function Auxiliary.SynLimitFilter(c,f,e,sync)
+	return f and not f(e,c,sync)
 end
 function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 	return	function(e,c,smat,og,min,max)
@@ -558,11 +576,12 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 					if minc>maxc then return false end
 				end
 				local tp=c:GetControler()
+				local syncheck={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_CHECK)}
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter)
+					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter,#syncheck>0)
 				else
-					mg=Auxiliary.GetSynMaterials(tp,c,filter)
+					mg=Auxiliary.GetSynMaterials(tp,c,filter,#syncheck>0)
 				end
 				if smat~=nil then
 					if filter and not filter(smat,c) then return false end
@@ -572,7 +591,7 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional
-				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,goal,smat)
+				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,goal,smat,syncheck)
 				Auxiliary.GCheckAdditional=nil
 				return res
 			end
@@ -586,11 +605,12 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
+				local syncheck={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_CHECK)}
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter)
+					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter,#syncheck>0)
 				else
-					mg=Auxiliary.GetSynMaterials(tp,c,filter)
+					mg=Auxiliary.GetSynMaterials(tp,c,filter,#syncheck>0)
 				end
 				if smat~=nil then
 					mg:AddCard(smat)
@@ -600,7 +620,7 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional
-				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat,syncheck)
 				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
 					sg:KeepAlive()
@@ -610,14 +630,14 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				else return false end
 			end
 end
-function Auxiliary.SExtraMaterialCount(mg,syncard,tp)
+function Auxiliary.SExtraMaterialCount(mg,sync,tp)
 	local tte={}
 	for tc in aux.Next(mg) do
 		local le={tc:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
 		for _,te in pairs(le) do
 			local sg=mg:Filter(aux.TRUE,tc)
 			local f=te:GetValue()
-			local related,valid=f(te,syncard,sg,tc,tp)
+			local related,valid=f(te,sync,sg,tc,tp)
 			if related and valid then
 				te:UseCountLimit(tp)
 				if te:GetOperation() then
@@ -645,7 +665,7 @@ end
 --tunerAlterable: if true, disables the default behavior which requires f1 to be a tuner
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc,additionalGoal,tunerAlterable)
 	if not tunerAlterable then f1=aux.Tuner(f1) end
-	local filter=function(c,sync) return Duel.GetFlagEffect(0,42155488)>0 or not f1 or f1(c,sync) or not f2 or f2(c,sync) end
+	local filter=function(c,sync) return not f1 or f1(c,sync) or not f2 or f2(c,sync) end
 	local goal_filter=function(c,sync,g) return (not f1 or f1(c,sync)) and (not f2 or not g:IsExists(aux.NOT(f2),1,c,sync)) end
 	local goal=function(g,sync) return g:IsExists(goal_filter,1,nil,sync,g) and (not additionalGoal or additionalGoal(g,sync)) end
 	if maxc==nil then maxc=99 end
@@ -666,10 +686,10 @@ function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,additionalGoal
 	local goal=nil
 	if #checks>0 then
 		subfilter=aux.OR(table.unpack(checks))
-		filter=function(c,sync) return Duel.GetFlagEffect(0,42155488)>0 or not f4 or f4(c,sync) or subfilter(c,sync) end
+		filter=function(c,sync) return not f4 or f4(c,sync) or subfilter(c,sync) end
 		goal=Auxiliary.SynchroMixGoal(checks,f4,minc+#checks,maxc+#checks,additionalGoal)
 	elseif f4 then
-		filter=function(c,sync) return Duel.GetFlagEffect(0,42155488)>0 or f4(c,sync) end
+		filter=f4
 		goal=function(g,sync) return not g:IsExists(aux.NOT(f4),1,nil,sync) end
 	end
 	return Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc+#checks,maxc+#checks)
