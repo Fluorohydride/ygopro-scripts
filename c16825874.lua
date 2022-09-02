@@ -5,7 +5,9 @@ function c16825874.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
+	e1:SetTargetRange(1,1)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsLocation,nil,LOCATION_HAND))
+	e1:SetValue(LOCATION_HAND)
 	c:RegisterEffect(e1)
 	--be material
 	local e2=Effect.CreateEffect(c)
@@ -15,7 +17,7 @@ function c16825874.initial_effect(c)
 	e2:SetCondition(c16825874.ccon)
 	e2:SetOperation(c16825874.cop)
 	c:RegisterEffect(e2)
-	--extra hand link
+	--extra hand synchro
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_EXTRA_SYNCHRO_MATERIAL)
