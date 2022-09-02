@@ -2658,6 +2658,7 @@ function Auxiliary.dlkcheck(g)
 end
 --check for cards with different attribute or race
 function Auxiliary.DifferentBin(g,getter,...)
+	if #g<=1 then return true end
 	local value=getter(g:GetFirst(),...)
 	local tc=g:GetNext()
 	while tc do
@@ -2672,6 +2673,7 @@ function Auxiliary.DifferentBin(g,getter,...)
 end
 --check for cards with same attribute or race
 function Auxiliaty.SameBin(g,getter,...)
+	if #g<=1 then return true end
 	local value=getter(g:GetFirst(),...)
 	local tc=g:GetNext()
 	while tc do
