@@ -44,7 +44,7 @@ function c14507213.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c14507213.mattg(e,c)
-	return c==e:GetLabelObject()
+	return c==e:GetLabelObject() and c:GetFlagEffect(14507213)>0
 end
 function c14507213.matval(e,sync,mg,c,tp)
 	return true,true
