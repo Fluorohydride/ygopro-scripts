@@ -453,37 +453,39 @@ function Auxiliary.SynCheckAdditionalLevel(c,sync)
 		return lv1
 	end
 end
-function Auxiliary.SynCheckAdditional(sg,mc,mg,ultgoal,minc,maxc,tp,sync,goal,smat,syncheck)
-	Auxiliary.ApplyAssume(sg,syncheck)
-
-	if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(sg,sync) then
-		Duel.AssumeReset()
-		return false
-	end
-
+function Auxiliary.SynCheckAdditional(sync,syncheck)
 	local lv=sync:GetLevel()
-	local mono=false
-	if c56897896 then
-		for c in aux.Next(sg) do
-			if c:IsHasEffect(56897896) then
-				mono=true
-				if lv<(Auxiliary.SynCheckAdditionalLevel(c,sync)+#sg-1) then
-					Duel.AssumeReset()
-					return false
-				end
-			end
-		end
-	end
-	if not mono then
-		if lv<sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)
-			and not (sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2)) then
+	return function(sg)
+		Auxiliary.ApplyAssume(sg,syncheck)
+
+		if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(sg,sync) then
 			Duel.AssumeReset()
 			return false
 		end
-	end
 
-	Duel.AssumeReset()
-	return true
+		local mono=false
+		if c56897896 then
+			for c in aux.Next(sg) do
+				if c:IsHasEffect(56897896) then
+					mono=true
+					if lv<(Auxiliary.SynCheckAdditionalLevel(c,sync)+#sg-1) then
+						Duel.AssumeReset()
+						return false
+					end
+				end
+			end
+		end
+		if not mono then
+			if lv<sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)
+				and not (sg:IsExists(Card.IsHasEffect,1,nil,89818984) and (lv>=#sg*2)) then
+				Duel.AssumeReset()
+				return false
+			end
+		end
+
+		Duel.AssumeReset()
+		return true
+	end
 end
 function Auxiliary.SynUltimateGoal(sg,tp,sync,goal,smat,syncheck)
 	--misc
@@ -590,7 +592,7 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
-				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional
+				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c,syncheck)
 				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,goal,smat,syncheck)
 				Auxiliary.GCheckAdditional=nil
 				return res
@@ -619,7 +621,7 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				Duel.SetSelectedCard(fg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
-				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional
+				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c,syncheck)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,goal,smat,syncheck)
 				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
