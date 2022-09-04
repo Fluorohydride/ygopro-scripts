@@ -64,7 +64,9 @@ end
 function c42921475.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectMatchingCard(tp,c42921475.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local brk=false
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
+		brk=Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)>0
 	end
+	aux.ApplyAdditionalEffects(e,tp,eg,ep,ev,re,r,rp,brk)
 end

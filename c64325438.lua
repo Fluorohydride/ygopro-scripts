@@ -39,5 +39,6 @@ function c64325438.chop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c64325438.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(tp,1,REASON_EFFECT)
-	Duel.Draw(1-tp,1,REASON_EFFECT)
+	local brk=Duel.Draw(1-tp,1,REASON_EFFECT)>0
+	aux.ApplyAdditionalEffects(e,tp,eg,ep,ev,re,r,rp,brk)
 end

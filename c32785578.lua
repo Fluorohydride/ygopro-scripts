@@ -29,16 +29,16 @@ function c32785578.stfilter(c)
 end
 function c32785578.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local res=0
+	local brk=false
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e) then
-		res=Duel.Destroy(tc,REASON_EFFECT)
+		brk=Duel.Destroy(tc,REASON_EFFECT)>0
 		local g=Duel.GetMatchingGroup(c32785578.stfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
-		if res>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(32785578,0)) then
+		if brk and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(32785578,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.SSet(tp,sg)
 		end
 	end
-	aux.LabrynthDestroyOp(e,tp,res)
+	aux.ApplyAdditionalEffects(e,tp,eg,ep,ev,re,r,rp,brk)
 end

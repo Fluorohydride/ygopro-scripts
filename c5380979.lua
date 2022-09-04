@@ -34,15 +34,15 @@ function c5380979.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5380979.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local res=0
+	local brk=false
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c5380979.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		if g:GetCount()>0 then
-			res=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+			brk=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0
 		end
 	end
-	aux.LabrynthDestroyOp(e,tp,res)
+	aux.ApplyAdditionalEffects(e,tp,eg,ep,ev,re,r,rp,brk)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)

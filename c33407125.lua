@@ -8,11 +8,12 @@ function c33407125.initial_effect(c)
 	--add effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(33407125)
+	e1:SetCode(EFFECT_ADDITIONAL_EFFECT)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetRange(LOCATION_FZONE)
 	e1:SetTargetRange(1,0)
 	e1:SetCountLimit(1,33407125)
+	e1:SetOperation(c33407125.exop)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
@@ -27,6 +28,21 @@ function c33407125.initial_effect(c)
 	e2:SetTarget(c33407125.sptg)
 	e2:SetOperation(c33407125.spop)
 	c:RegisterEffect(e2)
+end
+function c33407125.exop(e,tp,eg,ep,ev,re,r,rp,te,brk,chk)
+	local c=e:GetHandler()
+	local exc=c:IsStatus(STATUS_LEAVE_CONFIRMED) and c or nil
+	if chk==0 then return not c:IsStatus(STATUS_ACT_FROM_HAND) and c:IsSetCard(0x117e) and c:GetType()==TYPE_TRAP and e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exc) end
+	if Duel.SelectEffectYesNo(tp,te:GetHandler(),aux.Stringid(33407125,0)) then
+		if brk then 
+			Duel.BreakEffect() 
+		end
+		Duel.Hint(HINT_CARD,0,33407125)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local dg=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exc)
+		Duel.HintSelection(dg)
+		Duel.Destroy(dg,REASON_EFFECT)
+	end
 end
 function c33407125.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()

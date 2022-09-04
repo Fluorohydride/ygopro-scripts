@@ -57,7 +57,9 @@ end
 function c84442536.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
+	local brk=false
 	if tc:IsRelateToEffect(e) then
-		Duel.Destroy(tc,REASON_EFFECT)
+		brk=Duel.Destroy(tc,REASON_EFFECT)>0
 	end
+	aux.ApplyAdditionalEffects(e,tp,eg,ep,ev,re,r,rp,brk)
 end

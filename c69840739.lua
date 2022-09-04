@@ -52,10 +52,12 @@ end
 function c69840739.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectMatchingCard(tp,c69840739.filter,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local brk=false
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
-		Duel.Destroy(g,REASON_EFFECT)
+		brk=Duel.Destroy(g,REASON_EFFECT)
 	end
+	aux.ApplyAdditionalEffects(e,tp,eg,ep,ev,re,r,rp,brk)
 end
 function c69840739.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local h1=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
