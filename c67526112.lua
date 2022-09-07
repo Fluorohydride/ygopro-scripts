@@ -11,25 +11,28 @@ function c67526112.initial_effect(c)
 	e1:SetOperation(c67526112.activate)
 	c:RegisterEffect(e1)
 end
-function c67526112.filter1(c,e)
-	return c:IsOnField() and not c:IsImmuneToEffect(e) and c:IsDestructable(e)
+function c67526112.matfilter1(c,e)
+	return c:IsOnField() and c:IsDestructable(e)
 end
-function c67526112.filter2(c,e,tp,m,f,chkf)
+function c67526112.matfilter2(c,e)
+	return c:IsOnField() and c:IsDestructable(e) and not c:IsImmuneToEffect(e)
+end
+function c67526112.fusfilter(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c67526112.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
-		local res=Duel.IsExistingMatchingCard(c67526112.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(c67526112.matfilter1,nil,e)
+		local res=Duel.IsExistingMatchingCard(c67526112.fusfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
 				local fgroup=ce:GetTarget()
 				local mg2=fgroup(ce,e,tp)
 				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c67526112.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
+				res=Duel.IsExistingMatchingCard(c67526112.fusfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
 		return res
@@ -40,8 +43,8 @@ end
 function c67526112.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(c67526112.filter1,nil,e)
-	local sg1=Duel.GetMatchingGroup(c67526112.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c67526112.matfilter2,nil,e)
+	local sg1=Duel.GetMatchingGroup(c67526112.fusfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -49,7 +52,7 @@ function c67526112.activate(e,tp,eg,ep,ev,re,r,rp)
 		local fgroup=ce:GetTarget()
 		mg2=fgroup(ce,e,tp)
 		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(c67526112.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
+		sg2=Duel.GetMatchingGroup(c67526112.fusfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
 	end
 	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 		local sg=sg1:Clone()
