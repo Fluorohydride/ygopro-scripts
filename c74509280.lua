@@ -11,6 +11,14 @@ function c74509280.initial_effect(c)
 	e1:SetTargetRange(1,1)
 	e1:SetValue(LOCATION_HAND)
 	c:RegisterEffect(e1)
+	--extra hand synchro
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_EXTRA_SYNCHRO_MATERIAL)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_HAND,0)
+	e3:SetValue(c74509280.matval)
+	c:RegisterEffect(e3)
 end
 function c74509280.sfilter(c)
 	return c:IsOriginalCodeRule(598988,1710476,9433350,36521459,37115575,55343236) and not c:IsDisabled()
@@ -25,4 +33,7 @@ function c74509280.uqfilter(c)
 end
 function c74509280.synlimit(e,c)
 	return c:IsSetCard(0x23)
+end
+function c74509280.matval(e,lc,mg,c,tp)
+	return true,not mg or #mg==1 and mg:IsContains(e:GetHandler())
 end
