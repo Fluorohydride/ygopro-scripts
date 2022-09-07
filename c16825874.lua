@@ -6,7 +6,6 @@ function c16825874.initial_effect(c)
 	e1:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e1:SetTargetRange(1,1)
-	e1:SetTarget(aux.TargetBoolFunction(Card.IsLocation,nil,LOCATION_HAND))
 	e1:SetValue(LOCATION_HAND)
 	c:RegisterEffect(e1)
 	--be material
@@ -53,5 +52,5 @@ function c16825874.cop(e,tp,eg,ep,ev,re,r,rp)
 	rc:RegisterEffect(e3,true)
 end
 function c16825874.matval(e,lc,mg,c,tp)
-	return true,not mg or #mg==2 and mg:IsContains(e:GetHandler()) and mg:IsExists(Card.IsLocation,1,e:GetHandler(),LOCATION_HAND)
+	return true,not mg or #mg==1 and mg:IsContains(e:GetHandler())
 end
