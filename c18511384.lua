@@ -9,12 +9,32 @@ function c18511384.initial_effect(c)
 	e1:SetTarget(c18511384.target)
 	e1:SetOperation(c18511384.activate)
 	c:RegisterEffect(e1)
+	--global check
+	if not c18511384.global_check then
+		c18511384.global_check=true
+		local ge1=Effect.GlobalEffect()
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_BE_MATERIAL)
+		ge1:SetCondition(c18511384.checkcon)
+		ge1:SetOperation(c18511384.checkop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c18511384.checkcon(e,tp,eg,ep,ev,re,r,rp)
+	return r==REASON_FUSION
+end
+function c18511384.checkop(e,tp,eg,ep,ev,re,r,rp)
+	for ec in aux.Next(eg) do
+		if ec:IsLocation(LOCATION_GRAVE) then
+			ec:RegisterFlagEffect(18511384,RESET_EVENT+RESETS_STANDARD,0,1)
+		end
+	end
 end
 function c18511384.filter1(c)
 	return c:IsCode(24094653) and c:IsAbleToHand()
 end
 function c18511384.filter2(c)
-	return c:GetReason()&(REASON_FUSION+REASON_MATERIAL)==(REASON_FUSION+REASON_MATERIAL) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:GetFlagEffect(18511384)>0 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c18511384.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
