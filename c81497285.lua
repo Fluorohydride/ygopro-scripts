@@ -43,8 +43,8 @@ function s.initial_effect(c)
 end
 function s.chainfilter(re,tp,cid)
 	local rc=re:GetHandler()
-	return rc:IsCode(id) or not ((rc:GetType()==TYPE_TRAP and re:IsHasType(EFFECT_TYPE_ACTIVATE))
-		or (rc:IsSetCard(0x17e)))
+	return re:IsActiveCode(id) or not ((rc:GetType()==TYPE_TRAP and re:IsHasType(EFFECT_TYPE_ACTIVATE))
+		or re:IsActiveSetCard(0x17e))
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCustomActivityCount(id,tp,ACTIVITY_CHAIN)>0
@@ -68,17 +68,15 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return rc:GetType()==TYPE_TRAP and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
-function s.setfilter(c,rc)
-	return not c:IsCode(rc:GetCode()) and c:GetType()==TYPE_TRAP and c:IsSSetable()
+function s.setfilter(c,code)
+	return not c:IsCode(code) and c:GetType()==TYPE_TRAP and c:IsSSetable()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rc=re:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil,rc) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil,re:GetActiveCode()) end
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,s.setfilter,tp,LOCATION_DECK,0,1,1,nil,rc)
+	local g=Duel.SelectMatchingCard(tp,s.setfilter,tp,LOCATION_DECK,0,1,1,nil,re:GetActiveCode())
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
 	end

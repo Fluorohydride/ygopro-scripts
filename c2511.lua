@@ -54,7 +54,7 @@ function c2511.tscon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
 	local rc=re:GetHandler()
 	return rp==tp and r&REASON_COST>0
-		and (rc:IsSetCard(0x17e) and not rc:IsCode(2511) or re:IsHasType(EFFECT_TYPE_ACTIVATE) and rc:GetType()==TYPE_TRAP)
+		and (re:IsActiveSetCard(0x17e) and not re:IsActiveCode(2511) or re:IsHasType(EFFECT_TYPE_ACTIVATE) and rc:GetType()==TYPE_TRAP)
 		and eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_HAND) and not eg:IsContains(e:GetHandler())
 end
 function c2511.tstg(e,tp,eg,ep,ev,re,r,rp,chk)
