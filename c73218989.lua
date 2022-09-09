@@ -1,4 +1,4 @@
---ブラックフェザー·アサルト·ドラゴン
+--ブラックフェザー・アサルト・ドラゴン
 function c73218989.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	c:EnableCounterPermit(0x10)
@@ -52,6 +52,7 @@ function c73218989.initial_effect(c)
 	e5:SetOperation(c73218989.desop)
 	c:RegisterEffect(e5)
 end
+c73218989.material_type=TYPE_SYNCHRO
 function c73218989.mfilter1(c)
 	return c:IsType(TYPE_TUNER) and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER)
 end
