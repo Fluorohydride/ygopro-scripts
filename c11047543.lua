@@ -41,8 +41,8 @@ function c11047543.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetNext()
 	if not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e) then return end
 	local sg=Duel.GetMatchingGroup(c11047543.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetLevel()+tc2:GetLevel())
-	if sg:GetCount()==0 then return end
-	Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)
+	if sg:GetCount()==0 or Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)==0 then return end
+	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local ssg=sg:Select(tp,1,1,nil)
 	Duel.SpecialSummon(ssg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
