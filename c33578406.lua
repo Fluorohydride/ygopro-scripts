@@ -68,21 +68,21 @@ function c33578406.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(c,REASON_COST)
 end
-function c33578406.filter(c)
+function c33578406.filter(c,tp)
 	return c:IsSetCard(0x60) and not c:IsCode(33578406) and c:IsType(TYPE_EQUIP)
 		and c:CheckUniqueOnField(tp) and not c:IsForbidden()
-		and Duel.IsExistingMatchingCard(c33578406.eqfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
+		and Duel.IsExistingMatchingCard(c33578406.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
 end
 function c33578406.eqfilter(c,tc)
 	return c:IsFaceup() and tc:CheckEquipTarget(c)
 end
 function c33578406.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>-1
-		and Duel.IsExistingMatchingCard(c33578406.filter,tp,LOCATION_DECK,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c33578406.filter,tp,LOCATION_DECK,0,1,nil,tp) end
 end
 function c33578406.eqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g1=Duel.SelectMatchingCard(tp,c33578406.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c33578406.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc=g1:GetFirst()
 	if not tc then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)

@@ -51,12 +51,12 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,1)
 		--atk up
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetType(EFFECT_TYPE_EQUIP)
 		e2:SetCode(EFFECT_UPDATE_ATTACK)
-		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e2:SetValue(500)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e2)
+		tc:RegisterEffect(e2)
 	end
 end
 function s.eqlimit(e,c)

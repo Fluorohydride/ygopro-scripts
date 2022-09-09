@@ -105,15 +105,12 @@ function c22125101.disop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.NegateEffect(ev)
 	end
 end
-function c22125101.cfilter1(c,g)
-	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_PENDULUM) and g:IsContains(c) and g:IsExists(c22125101.cfilter2,1,c,c)
-end
-function c22125101.cfilter2(c,lc)
-	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:GetLevel()~=lc:GetLevel()
+function c22125101.cfilter(c,eg)
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:GetOriginalLevel()>0 and eg:IsContains(c)
 end
 function c22125101.descon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return lg and eg:IsExists(c22125101.cfilter1,1,nil,lg) and not eg:IsContains(e:GetHandler())
+	local g=e:GetHandler():GetLinkedGroup():Filter(c22125101.cfilter,nil,eg)
+	return #g==2 and g:GetClassCount(Card.GetOriginalLevel)==2
 end
 function c22125101.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

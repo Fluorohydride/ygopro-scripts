@@ -78,7 +78,7 @@ function c15130912.coinop1(e,tp,eg,ep,ev,re,r,rp)
 	if not (tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
 	local coin=Duel.TossCoin(tp,1)
 	if coin==1 then
-		if not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
+		if tc:IsCanBeDisabledByEffect(e) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)

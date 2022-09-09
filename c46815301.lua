@@ -44,7 +44,7 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g2=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,1,nil)
 	g:Merge(g2)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,2,0,0)
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

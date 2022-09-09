@@ -65,6 +65,7 @@ function c32453837.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local sel=e:GetLabel()
 	if sel==0 then
+		if not c:IsRelateToEffect(e) then return end
 		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
 		local g1=Duel.SelectMatchingCard(tp,Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,1,nil,0x1063,1)

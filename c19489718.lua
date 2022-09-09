@@ -78,7 +78,7 @@ function c19489718.disop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 	end
 	if tc and tc:IsRelateToBattle() and tc:IsControler(1-tp)
-		and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
+		and tc:IsCanBeDisabledByEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
