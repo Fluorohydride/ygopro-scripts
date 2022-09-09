@@ -59,7 +59,7 @@ function c55990317.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c55990317.repfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsControler(tp) and c:IsOnField()
 		and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c55990317.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

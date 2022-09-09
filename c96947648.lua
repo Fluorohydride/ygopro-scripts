@@ -17,7 +17,7 @@ function c96947648.opfilter(c,e)
 	return c:IsRelateToEffect(e) and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c96947648.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c96947648.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c96947648.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c96947648.filter,tp,LOCATION_GRAVE,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c96947648.filter,tp,LOCATION_GRAVE,0,2,2,nil)

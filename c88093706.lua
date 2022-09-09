@@ -37,8 +37,8 @@ end
 function c88093706.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return a:GetControler()==tp and a:IsRace(RACE_CYBERSE)
-		or d and d:GetControler()==tp and d:IsRace(RACE_CYBERSE)
+	return a:IsControler(tp) and a:IsRace(RACE_CYBERSE)
+		or d and d:IsControler(tp) and d:IsRace(RACE_CYBERSE)
 end
 function c88093706.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

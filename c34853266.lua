@@ -27,7 +27,7 @@ function c34853266.filter(c)
 	return c:IsFaceup() and c:IsCanTurnSet()
 end
 function c34853266.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c34853266.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c34853266.filter(chkc) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c34853266.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)

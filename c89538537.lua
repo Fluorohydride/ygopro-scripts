@@ -40,7 +40,7 @@ function c89538537.rthtgfilter(c,tc)
 end
 function c89538537.rthtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsAbleToHand() end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsAbleToHand() end
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)

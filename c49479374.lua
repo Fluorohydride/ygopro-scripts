@@ -14,7 +14,7 @@ function c49479374.filter(c)
 	return c:IsSetCard(0x28) and c:IsLevelBelow(4) and c:IsAbleToHand()
 end
 function c49479374.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c49479374.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c49479374.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c49479374.filter,tp,LOCATION_GRAVE,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c49479374.filter,tp,LOCATION_GRAVE,0,2,2,nil)

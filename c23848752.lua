@@ -74,7 +74,7 @@ function c23848752.spop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-function c23848752.rccon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c23848752.rccon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetBattleMonster(1-tp)
 	return tc and tc:IsFaceup() and tc:IsRelateToBattle()
 end

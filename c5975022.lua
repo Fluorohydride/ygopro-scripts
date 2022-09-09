@@ -28,7 +28,7 @@ function c5975022.desfilter(c)
 	return c:IsFaceup()
 end
 function c5975022.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c5975022.desfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c5975022.desfilter(chkc) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c5975022.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)

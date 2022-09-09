@@ -37,9 +37,11 @@ function c67173574.initial_effect(c)
 end
 aux.xyz_number[67173574]=102
 function c67173574.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_EFFECT) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_EFFECT)
+	local c=e:GetHandler()
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		c:RemoveOverlayCard(tp,2,2,REASON_EFFECT)
 		return true
 	else return false end
 end

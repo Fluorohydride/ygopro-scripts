@@ -79,6 +79,6 @@ function c61962135.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61962135.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.DiscardDeck(tp,2,REASON_EFFECT)
 end

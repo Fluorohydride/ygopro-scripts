@@ -63,7 +63,7 @@ function c47699948.spfilter2(c,code,e,tp)
 	return not c:IsCode(code) and c:IsSetCard(0x1017) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c47699948.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and c47699948.desfilter(chkc,e,tp) end
+	if chkc then return chkc:IsOnField() and c47699948.desfilter(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c47699948.desfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c47699948.desfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),e,tp)

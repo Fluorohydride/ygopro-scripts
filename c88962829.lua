@@ -63,7 +63,7 @@ function c88962829.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
-function c88962829.check(c)
+function c88962829.check(c,tp)
 	return c:IsLocation(LOCATION_HAND) and c:IsControler(tp)
 end
 function c88962829.aclimit(e,re,tp)
@@ -71,7 +71,7 @@ function c88962829.aclimit(e,re,tp)
 end
 function c88962829.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp
+	return at:IsControler(1-tp)
 end
 function c88962829.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

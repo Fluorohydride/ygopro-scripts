@@ -34,12 +34,12 @@ function c65384188.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		if not tc1:IsDisabled() then
+		if tc1:IsCanBeDisabledByEffect(e) then
 			tc1:RegisterEffect(e1)
 			tc1:RegisterEffect(e2)
 			a=a+1
 		end
-		if not tc2:IsDisabled() then
+		if tc2:IsCanBeDisabledByEffect(e) then
 			local e3=e1:Clone()
 			local e4=e2:Clone()
 			tc2:RegisterEffect(e3)

@@ -22,7 +22,7 @@ function c17377751.initial_effect(c)
 	e2:SetOperation(c17377751.spop)
 	c:RegisterEffect(e2)
 end
-function c17377751.spcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c17377751.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c17377751.filter(c,e,tp)

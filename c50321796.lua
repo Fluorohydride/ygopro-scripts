@@ -50,7 +50,7 @@ function c50321796.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,ct,0,0)
 end
-function c50321796.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c50321796.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
 	if rg:GetCount()>0 then

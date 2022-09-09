@@ -12,7 +12,7 @@ function c70948327.initial_effect(c)
 end
 function c70948327.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler()
+	if chk==0 then return Duel.GetAttacker()==e:GetHandler()
 		and d~=nil and d:IsFaceup() and d:IsLevelBelow(3) and d:IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end

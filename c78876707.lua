@@ -42,7 +42,7 @@ function c78876707.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,ct,0,0)
 end
-function c78876707.thop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c78876707.thop(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if rg:GetCount()>0 then
 		Duel.SendtoHand(rg,nil,REASON_EFFECT)

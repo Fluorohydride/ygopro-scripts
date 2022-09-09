@@ -58,7 +58,7 @@ function c99011763.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c99011763.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsCanAddCounter(0x1049,1) end
+	if chkc then return chkc:IsOnField() and chkc:IsCanAddCounter(0x1049,1) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,0x1049,1)
@@ -84,6 +84,6 @@ function c99011763.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and c:IsCanRemoveCounter(tp,0x1049,1,REASON_EFFECT) end
 	return true
 end
-function c99011763.repop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99011763.repop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(tp,0x1049,1,REASON_EFFECT)
 end
