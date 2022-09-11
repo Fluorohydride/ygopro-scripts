@@ -37,7 +37,7 @@ function c11047543.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11047543.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
-	if g:GetCount()~=2 or Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)==0 then return end
+	if g:GetCount()~=2 or Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)~=2 then return end
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
 	local sg=Duel.GetMatchingGroup(c11047543.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetLevel()+tc2:GetLevel())
