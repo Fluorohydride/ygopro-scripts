@@ -32,7 +32,8 @@ function c92327802.initial_effect(c)
 end
 function c92327802.damval(e,re,val,r,rp,rc)
 	local c=e:GetHandler()
-	if bit.band(r,REASON_EFFECT)~=0 and c:IsCanAddCounter(0x43,1) and c:GetFlagEffect(92327802)==0 then
+	if bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetOwnerPlayer()
+		and c:IsCanAddCounter(0x43,1) and c:GetFlagEffect(92327802)==0 then
 		c:AddCounter(0x43,1)
 		c:RegisterFlagEffect(92327802,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		return 0
