@@ -26,7 +26,8 @@ function c78156759.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78156759.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
+	if chk==0 then return not e:GetHandler():IsReason(REASON_REPLACE)
+		and e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		e:GetHandler():RegisterFlagEffect(78156759,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)

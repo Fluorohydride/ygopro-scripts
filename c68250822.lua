@@ -91,7 +91,7 @@ end
 function c68250822.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local zone=c68250822.getzone(tp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and zone~=0 then
 		Duel.GetControl(tc,tp,0,0,zone)
 	end
 end
@@ -110,7 +110,7 @@ end
 function c68250822.operation3(e,tp,eg,ep,ev,re,r,rp)
 	local zone=c68250822.getzone(tp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and zone~=0 then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

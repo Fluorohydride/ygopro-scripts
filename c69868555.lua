@@ -39,7 +39,7 @@ function c69868555.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c69868555.cfilter(c)
-	return not c:IsSummonLocation(LOCATION_GRAVE)
+	return not c:IsSummonLocation(LOCATION_GRAVE) or (c:GetOriginalType()&TYPE_TRAP~=0)
 end
 function c69868555.dfilter(c,eg)
 	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and not eg:IsContains(c)
@@ -55,7 +55,7 @@ function c69868555.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
 function c69868555.filter(c,e)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsPreviousLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c69868555.cfilter(c) and c:IsRelateToEffect(e)
 end
 function c69868555.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c69868555.filter,nil,e)

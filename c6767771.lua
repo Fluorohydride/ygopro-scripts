@@ -13,7 +13,6 @@ function c6767771.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,6767771)
-	e2:SetCondition(c6767771.discon)
 	e2:SetTarget(c6767771.distg)
 	e2:SetOperation(c6767771.disop)
 	c:RegisterEffect(e2)
@@ -35,11 +34,9 @@ end
 function c6767771.disfilter(c)
 	return ((c:IsSetCard(0x181) and c:IsLocation(LOCATION_MZONE)) or c:IsCode(56099748)) and c:IsFaceup()
 end
-function c6767771.discon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c6767771.disfilter,tp,LOCATION_ONFIELD,0,1,nil)
-end
 function c6767771.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,3) end
+	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,3)
+		and Duel.IsExistingMatchingCard(c6767771.disfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(3)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,3)

@@ -18,6 +18,22 @@ function c66235877.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetOperation(c66235877.disop)
 	c:RegisterEffect(e2)
+	--disable
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_DISABLE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
+	e3:SetTarget(c66235877.distg2)
+	c:RegisterEffect(e3)
+	--self destroy
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetCode(EFFECT_SELF_DESTROY)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
+	e4:SetTarget(c66235877.distg2)
+	c:RegisterEffect(e4)
 end
 function c66235877.distg(e,c)
 	return c:IsType(TYPE_FLIP)
@@ -30,4 +46,8 @@ function c66235877.disop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.NegateEffect(ev)
 		end
 	end
+end
+function c66235877.distg2(e,c)
+	return c:GetCardTargetCount()>0 and c:IsType(TYPE_TRAP)
+		and c:GetCardTarget():IsContains(e:GetHandler())
 end

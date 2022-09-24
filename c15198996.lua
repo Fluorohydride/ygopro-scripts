@@ -27,7 +27,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.filter(c,e,tp)
-	return c:IsFaceup() and c:IsCanTurnSet() and c:IsControler(tp) and c:IsCanBeEffectTarget(e)
+	return c:IsFaceup() and c:IsCanTurnSet() and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsCanBeEffectTarget(e)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and s.filter(chkc,e,tp) end
