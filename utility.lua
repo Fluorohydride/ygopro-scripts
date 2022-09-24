@@ -258,6 +258,7 @@ end
 --set EFFECT_EQUIP_LIMIT after equipping
 function Auxiliary.SetUnionState(c)
 	local eset={c:IsHasEffect(EFFECT_UNION_LIMIT)}
+	if #eset==0 then return end
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetCode(EFFECT_EQUIP_LIMIT)
