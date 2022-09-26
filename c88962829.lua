@@ -1,4 +1,4 @@
---Beetrooper Light Flapper
+--騎甲虫ライト・フラッパー
 function c88962829.initial_effect(c)
 	--add
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Heritage of the Light
+--光の継承
 function c48784854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

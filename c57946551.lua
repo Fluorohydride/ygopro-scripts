@@ -1,4 +1,4 @@
---Rock Scales
+--ロック・スケイル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Union equip monster

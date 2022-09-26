@@ -1,4 +1,4 @@
---Backup Team
+--補強要員
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--draw

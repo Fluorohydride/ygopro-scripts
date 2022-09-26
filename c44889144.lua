@@ -1,4 +1,4 @@
---Libromancer Intervention
+--リブロマンサー・インターフェア
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--return from field to hand

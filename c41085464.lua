@@ -1,4 +1,4 @@
---Libromancer Bonded
+--リブロマンサー・リライジング
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,45001322,88106656)

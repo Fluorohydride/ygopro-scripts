@@ -1,4 +1,4 @@
---Abyss Keeper
+--アビス・オーパー
 function c82184400.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2,2)

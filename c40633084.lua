@@ -1,4 +1,4 @@
---Beetrooper Squad
+--騎甲虫歩兵分隊
 function c40633084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
