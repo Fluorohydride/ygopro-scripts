@@ -278,10 +278,12 @@ function Auxiliary.SetUnionState(c)
 		c:RegisterEffect(e2)
 	end
 end
-function Auxiliary.CheckUnionEquip(uc,tc)
-	ct1,ct2=tc:GetUnionCount()
-	if uc.old_union then return ct1==0
-	else return ct2==0 end
+--uc: the union monster to be equipped, tc: the target monster
+function Auxiliary.CheckUnionEquip(uc,tc,exclude_modern_count)
+	local modern_count,old_count=tc:GetUnionCount()
+	if exclude_modern_count then modern_count=modern_count-exclude_modern_count end
+	if uc.old_union then return modern_count==0
+	else return old_count==0 end
 end
 --EFFECT_DESTROY_SUBSTITUTE filter for modern union monsters
 function Auxiliary.UnionReplaceFilter(e,re,r,rp)
