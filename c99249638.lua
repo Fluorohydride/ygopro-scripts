@@ -80,9 +80,12 @@ function c99249638.refilter(c,tc,tp,exclude_modern_count)
 		and c:IsLevelBelow(4) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 end
 function c99249638.retg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:GetEquipTarget()
-		and Duel.IsExistingMatchingCard(c99249638.refilter,tp,LOCATION_DECK,0,1,nil,c:GetEquipTarget(),tp,1) end
+	if chk==0 then
+		local c=e:GetHandler()
+		local exct=aux.IsUnionState(e) and 1 or 0
+		return c:GetEquipTarget()
+			and Duel.IsExistingMatchingCard(c99249638.refilter,tp,LOCATION_DECK,0,1,nil,c:GetEquipTarget(),tp,exct)
+	end
 	local tc=e:GetLabelObject()
 	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,tc,1,0,0)
