@@ -7,6 +7,7 @@ function c45627618.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	--pendulum set
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(45627618,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1)
@@ -15,6 +16,7 @@ function c45627618.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(45627618,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -30,6 +32,7 @@ function c45627618.initial_effect(c)
 	c:RegisterEffect(e3)
 	--pendulum
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(45627618,2))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DESTROYED)
@@ -48,7 +51,6 @@ function c45627618.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c45627618.pcfilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c45627618.pcop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c45627618.pcfilter,tp,LOCATION_DECK,0,1,1,nil)
@@ -71,8 +73,11 @@ end
 function c45627618.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c45627618.desfilter,tp,0,LOCATION_MZONE,nil)
 	local ct=Duel.Destroy(g,REASON_EFFECT)
-	if Duel.Damage(1-tp,ct*1000,REASON_EFFECT)~=0 then
-		local c=e:GetHandler()
+	if ct>0 then
+		Duel.Damage(1-tp,ct*1000,REASON_EFFECT)
+	end
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)

@@ -1,4 +1,4 @@
---Piwraithe the Ghost Pirate
+--海霊賊
 function c83682209.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -15,7 +15,7 @@ function c83682209.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83682209.spfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsCode(83682209)
 		and (c:GetPreviousAttributeOnField()&ATTRIBUTE_WATER)>0
 end
@@ -30,7 +30,7 @@ function c83682209.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83682209.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 		local ct=Duel.GetMatchingGroupCount(Card.IsAttribute,tp,LOCATION_GRAVE,0,nil,ATTRIBUTE_WATER)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -46,4 +46,5 @@ function c83682209.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e2,true)
 	end
+	Duel.SpecialSummonComplete()
 end

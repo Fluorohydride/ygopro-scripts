@@ -27,21 +27,21 @@ function c15381421.cfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:GetOriginalLevel()>0 and c:IsAbleToGraveAsCost()
 		and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
 end
-function c15381421.filter(c,e,tp)
-	local rg=Duel.GetMatchingGroup(c15381421.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+function c15381421.filter(c,e,tp,rg)
 	local lv=c:GetLevel()
-	return lv>0 and c:IsRace(RACE_DRAGON) and c:IsAbleToHand() and rg:CheckWithSumEqual(Card.GetLevel,lv,1,99)
+	return lv>0 and c:IsRace(RACE_DRAGON) and c:IsAbleToHand() and rg:CheckWithSumEqual(Card.GetOriginalLevel,lv,1,99)
 end
 function c15381421.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	if chk==0 then return true end
 end
 function c15381421.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local rg=Duel.GetMatchingGroup(c15381421.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.IsExistingMatchingCard(c15381421.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
-	local g=Duel.GetMatchingGroup(c15381421.filter,tp,LOCATION_DECK,0,nil,e,tp)
+		return Duel.IsExistingMatchingCard(c15381421.filter,tp,LOCATION_DECK,0,1,nil,e,tp,rg) end
+	local g=Duel.GetMatchingGroup(c15381421.filter,tp,LOCATION_DECK,0,nil,e,tp,rg)
 	local lvt={}
 	local pc=1
 	for i=1,12 do
@@ -51,7 +51,7 @@ function c15381421.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	local rg=Duel.GetMatchingGroup(c15381421.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg=rg:SelectWithSumEqual(tp,Card.GetLevel,lv,1,99)
+	local sg=rg:SelectWithSumEqual(tp,Card.GetOriginalLevel,lv,1,99)
 	Duel.SendtoGrave(sg,REASON_COST)
 	e:SetLabel(lv)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)

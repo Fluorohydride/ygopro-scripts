@@ -26,7 +26,7 @@ function c54289683.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	local t1=Duel.IsExistingMatchingCard(c54289683.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,tc:GetAttack(),tc:GetDefense(),tc:GetLevel(),tc:GetRace(),tc:GetAttribute())
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,tc:GetAttack(),tc:GetDefense(),tc:GetLevel(),tc:GetRace(),tc:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
 	if t1 and t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))

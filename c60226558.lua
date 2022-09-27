@@ -38,7 +38,7 @@ function c60226558.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c60226558.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,0xff-g:GetFirst():GetAttribute())
+	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-g:GetFirst():GetAttribute())
 	e:SetLabel(att)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
@@ -86,7 +86,6 @@ function c60226558.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c60226558.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	if ec:IsControler(1-tp) or ec:IsImmuneToEffect(e) then return end
 	local chkf=tp

@@ -5,7 +5,7 @@ function c83414006.initial_effect(c)
 	e1:SetDescription(aux.Stringid(83414006,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_DAMAGE)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL+EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,83414006)
 	e1:SetCondition(c83414006.condition)
@@ -72,7 +72,7 @@ function c83414006.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c83414006.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,83414006,0x5008,0x21,900,1100,3,RACE_WARRIOR,ATTRIBUTE_DARK) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,83414006,0x5008,TYPE_MONSTER+TYPE_EFFECT,900,1100,3,RACE_WARRIOR,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c83414006.spop1(e,tp,eg,ep,ev,re,r,rp)

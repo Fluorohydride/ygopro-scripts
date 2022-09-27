@@ -67,7 +67,6 @@ function c18897163.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c18897163.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c18897163.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
@@ -122,7 +121,6 @@ function c18897163.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c18897163.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

@@ -35,6 +35,14 @@ function c64801562.initial_effect(c)
 	e5:SetCode(EFFECT_SELF_DESTROY)
 	e5:SetCondition(c64801562.descon)
 	c:RegisterEffect(e5)
+	--selfdes in damage step
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e6:SetRange(LOCATION_SZONE)
+	e6:SetCode(EVENT_ADJUST)
+	e6:SetOperation(c64801562.descheck)
+	c:RegisterEffect(e6)
 end
 function c64801562.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
@@ -58,4 +66,14 @@ end
 function c64801562.descon(e)
 	local tc=e:GetHandler():GetEquipTarget()
 	return tc and tc:GetAttack()>=1300
+end
+function c64801562.descheck(e,tp,eg,ep,ev,re,r,rp)
+	local ph=Duel.GetCurrentPhase()
+	if ph>=PHASE_DAMAGE and ph<=PHASE_DAMAGE_CAL then
+		local c=e:GetHandler()
+		local tc=c:GetEquipTarget()
+		if tc and tc:GetAttack()>=1300 then
+			Duel.Destroy(c,REASON_EFFECT)
+		end
+	end
 end

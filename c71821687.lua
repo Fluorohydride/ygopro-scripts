@@ -3,7 +3,7 @@ function c71821687.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71821687,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,71821687)
@@ -14,7 +14,7 @@ function c71821687.initial_effect(c)
 	Duel.AddCustomActivityCounter(71821687,ACTIVITY_SPSUMMON,c71821687.counterfilter)
 end
 function c71821687.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsType(TYPE_SYNCHRO)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_SYNCHRO)
 end
 function c71821687.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -39,7 +39,7 @@ end
 function c71821687.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,LOCATION_DECK+LOCATION_HAND)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,LOCATION_HAND)
 end
 function c71821687.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

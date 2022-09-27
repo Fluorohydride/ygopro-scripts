@@ -84,11 +84,10 @@ function c49306994.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
 end
 function c49306994.disfilter(c)
-	return aux.disfilter1(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return aux.NegateAnyFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c49306994.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c49306994.disfilter,tp,0,LOCATION_ONFIELD,c)
 	local tc=g:GetFirst()
 	while tc do
@@ -134,7 +133,7 @@ function c49306994.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49306994.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp
+	if e:GetLabelObject():GetLabel()==0 and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEUP) then
 		Duel.Damage(tp,3000,REASON_EFFECT)
 	end

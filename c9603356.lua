@@ -29,8 +29,11 @@ function c9603356.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c9603356.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,900) then
-		Duel.PayLPCost(tp,900)
+	if Duel.CheckLPCost(tp,900) or Duel.IsPlayerAffectedByEffect(tp,94585852) then
+		if not Duel.IsPlayerAffectedByEffect(tp,94585852)
+			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,1)) then
+			Duel.PayLPCost(tp,900)
+		end
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
@@ -43,7 +46,7 @@ function c9603356.disop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	local dc=Duel.TossDice(tp,1)
 	if dc~=3 then return end
-	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

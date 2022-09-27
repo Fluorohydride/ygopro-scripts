@@ -50,13 +50,13 @@ function c41578483.initial_effect(c)
 	e5:SetCode(EFFECT_CANNOT_ATTACK)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e5:SetTarget(c41578483.distg)
+	e5:SetTarget(c41578483.atktg)
 	c:RegisterEffect(e5)
 end
 function c41578483.can_equip_monster(c)
 	return true
 end
-function c41578483.eqcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41578483.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and re:IsActiveType(TYPE_MONSTER)
 end
 function c41578483.eqfilter(c)
@@ -69,6 +69,9 @@ function c41578483.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c41578483.eqfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
+	if g:GetFirst():IsLocation(LOCATION_GRAVE) then
+		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
+	end
 end
 function c41578483.eqlimit(e,c)
 	return e:GetOwner()==c
@@ -88,7 +91,7 @@ end
 function c41578483.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and tc:IsControler(1-tp) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_EFFECT) and tc:IsControler(1-tp) then
 		c41578483.equip_monster(c,tp,tc)
 	end
 end
@@ -120,22 +123,18 @@ function c41578483.disfilter(c)
 	return c:IsFaceup() and c:GetFlagEffect(41578483)~=0
 end
 function c41578483.distg(e,c)
-	if c:IsFacedown() then return false end
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	local code=c:GetCode()
-	local code2=c:GetFlagEffectLabel(41578484)
-	if code2 then code=code2 end
-	local res=g:IsExists(Card.IsCode,1,nil,code)
-	if res and code2==nil and code~=c:GetOriginalCode() then
-		c:RegisterFlagEffect(41578484,RESET_EVENT+RESETS_STANDARD,0,0,code)
-	end
-	return res
+	return (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0) and g:IsExists(Card.IsOriginalCodeRule,1,nil,c:GetOriginalCodeRule())
 end
 function c41578483.discon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	local code,type=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TYPE)
-	return type==TYPE_MONSTER and g:IsExists(Card.IsCode,1,nil,code)
+	local rc=re:GetHandler()
+	return re:IsActiveType(TYPE_MONSTER) and g:IsExists(Card.IsOriginalCodeRule,1,nil,rc:GetOriginalCodeRule())
 end
 function c41578483.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
+end
+function c41578483.atktg(e,c)
+	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
+	return g:IsExists(Card.IsCode,1,nil,c:GetCode())
 end

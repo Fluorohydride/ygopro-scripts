@@ -54,7 +54,7 @@ function c98169343.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
-function c98169343.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c98169343.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() and tc:IsFaceup() and tc:IsControler(tp) then
 		local atk=tc:GetBaseAttack()

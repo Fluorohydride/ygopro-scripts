@@ -35,7 +35,7 @@ function c10755153.sumcon(e)
 	return not Duel.IsExistingMatchingCard(c10755153.cfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)
 end
 function c10755153.sumlimit(e,se,sp,st,pos,tp)
-	return not Duel.IsExistingMatchingCard(c10755153.cfilter,sp,LOCATION_ONFIELD,0,1,nil)
+	return Duel.IsExistingMatchingCard(c10755153.cfilter,sp,LOCATION_ONFIELD,0,1,nil)
 end
 function c10755153.costfilter(c,ec)
 	return c:IsFaceup() and c:GetEquipTarget()==ec and c:IsAbleToGraveAsCost()

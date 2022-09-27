@@ -10,10 +10,8 @@ function c6616912.initial_effect(c)
 	--summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(6616912,0))
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
-	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c6616912.ntcon)
 	c:RegisterEffect(e2)
 	--indes
@@ -63,7 +61,7 @@ function c6616912.ntcon(e,c,minc)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c6616912.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattledGroupCount()>0 or e:GetHandler():GetAttackedCount()>0
+	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c6616912.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -76,7 +74,7 @@ function c6616912.cfilter(c,p)
 end
 function c6616912.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,nil)
-	if g:GetCount()>0 and Duel.SendtoDeck(g,nil,2,REASON_EFFECT)>0 then
+	if g:GetCount()>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 then
 		local ct=g:FilterCount(c6616912.cfilter,nil,1-tp)
 		if ct>0 then
 			Duel.ShuffleDeck(1-tp)
@@ -95,6 +93,6 @@ end
 function c6616912.rtdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

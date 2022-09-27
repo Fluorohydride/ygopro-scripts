@@ -1,4 +1,4 @@
---Plunder Patrollship Lys
+--海造賊－双翼のリュース号
 function c18832779.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
@@ -67,7 +67,6 @@ function c18832779.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c18832779.eqfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x13f)

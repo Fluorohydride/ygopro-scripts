@@ -16,7 +16,6 @@ function c8129306.initial_effect(c)
 	--level
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(8129306,1))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -26,7 +25,7 @@ function c8129306.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c8129306.spfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c8129306.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8129306.spfilter,1,nil,tp)

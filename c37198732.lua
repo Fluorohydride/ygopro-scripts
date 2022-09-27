@@ -14,7 +14,7 @@ function c37198732.cfilter(c)
 	return c:GetLevel()>0 and c:IsAbleToGraveAsCost()
 end
 function c37198732.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		if Duel.IsExistingMatchingCard(c37198732.cfilter,tp,LOCATION_HAND,0,1,nil) then
 			e:SetLabel(1)
 			return true

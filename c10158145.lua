@@ -73,6 +73,7 @@ function c10158145.spop(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 			local e3=Effect.CreateEffect(c)
@@ -89,7 +90,7 @@ function c10158145.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return not c:IsType(TYPE_LINK)
 end
 function c10158145.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():GetPreviousControler()==tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsPreviousControler(tp)
 end
 function c10158145.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -22,7 +22,7 @@ function c74117290.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleHand(tp)
 		Duel.DiscardHand(tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 	end
-	if h2>0 then 
+	if h2>0 then
 		Duel.ShuffleHand(1-tp)
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 	end

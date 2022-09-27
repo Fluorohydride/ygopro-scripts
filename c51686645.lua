@@ -56,7 +56,6 @@ function c51686645.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-	e:GetHandler():RegisterFlagEffect(51686645,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c51686645.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -81,6 +80,7 @@ function c51686645.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e3=e2:Clone()
 		e3:SetCode(EFFECT_UPDATE_DEFENSE)
 		c:RegisterEffect(e3)
+		c:RegisterFlagEffect(51686645,RESET_EVENT+RESETS_STANDARD-RESET_LEAVE-RESET_TOGRAVE+RESET_PHASE+PHASE_END,0,1)
 	else
 		c:CancelToGrave(false)
 	end

@@ -75,7 +75,8 @@ function c7480763.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end
 function c7480763.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==1-tp and e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
+	local c=e:GetHandler()
+	return Duel.GetTurnPlayer()==1-tp and c:IsSummonType(SUMMON_TYPE_LINK) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c7480763.spfilter(c,e,tp)
 	return c:IsSetCard(0x97) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

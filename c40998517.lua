@@ -28,6 +28,7 @@ function c40998517.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c40998517.costfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c40998517.fselect,false,1,rg:GetCount(),tp)
+	aux.UseExtraReleaseCount(sg,tp)
 	local ct=Duel.Release(sg,REASON_COST)
 	e:SetLabel(ct)
 end
@@ -42,7 +43,7 @@ end
 function c40998517.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.Destroy(tg,REASON_EFFECT)==0 then return end
-	local ct=Duel.GetOperatedGroup():FilterCount(aux.FilterEqualFunction(Card.GetPreviousControler,1-tp),nil)
+	local ct=Duel.GetOperatedGroup():FilterCount(Card.IsPreviousControler,nil,1-tp)
 	if ct>0 and Duel.IsPlayerCanDraw(1-tp,ct) and Duel.SelectYesNo(1-tp,aux.Stringid(40998517,1)) then
 		Duel.BreakEffect()
 		Duel.Draw(1-tp,ct,REASON_EFFECT)

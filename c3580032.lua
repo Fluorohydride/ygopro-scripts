@@ -53,7 +53,7 @@ function c3580032.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetTarget(c3580032.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-end 
+end
 function c3580032.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0x107a)
 end
@@ -64,7 +64,7 @@ function c3580032.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
 		and Duel.IsExistingMatchingCard(c3580032.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-end 
+end
 function c3580032.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

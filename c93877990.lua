@@ -1,4 +1,4 @@
---Brotherhood of the Fire Fist - Swan
+--富炎星－ハクテンオウ
 function c93877990.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

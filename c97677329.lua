@@ -70,7 +70,7 @@ end
 function c97677329.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_BATTLE)
-		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp)
+		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp))
 end
 function c97677329.spfilter(c,e,tp)
 	return c:IsCode(63528891) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

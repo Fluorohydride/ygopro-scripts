@@ -48,8 +48,11 @@ function c28534130.activate(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_DISABLE_EFFECT)
+	e2:SetValue(RESET_TURN_SET)
 	tc:RegisterEffect(e2)
 	Duel.SpecialSummonComplete()
+	Duel.AdjustAll()
+	if not tc:IsLocation(LOCATION_MZONE) then return end
 	local tg=Duel.GetMatchingGroup(c28534130.lkfilter,tp,LOCATION_EXTRA,0,nil,tc)
 	if tg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -71,10 +74,10 @@ function c28534130.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_CANNOT_ATTACK)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e1,true)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_CANNOT_TRIGGER)
-	c:RegisterEffect(e2)
+	c:RegisterEffect(e2,true)
 	e:Reset()
 end
 function c28534130.tdfilter(c)
@@ -90,6 +93,6 @@ end
 function c28534130.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

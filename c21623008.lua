@@ -38,6 +38,6 @@ function c21623008.operation(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(tp,aux.Stringid(21623008,0)) then
 		local g=Duel.GetMatchingGroup(c21623008.filter,tp,0,LOCATION_MZONE,nil,tp)
 		Duel.DisableShuffleCheck(false)
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

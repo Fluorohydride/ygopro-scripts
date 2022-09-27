@@ -70,7 +70,7 @@ end
 function c58811192.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToExtraAsCost() end
-	Duel.SendtoDeck(c,nil,0,REASON_COST)
+	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c58811192.spfilter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10b5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

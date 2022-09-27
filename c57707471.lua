@@ -13,6 +13,7 @@ function c57707471.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(57707471,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
@@ -22,7 +23,7 @@ function c57707471.initial_effect(c)
 	e3:SetOperation(c57707471.desop)
 	c:RegisterEffect(e3)
 end
-c57707471.xyz_number=21
+aux.xyz_number[57707471]=21
 function c57707471.ovfilter(c)
 	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsRank(5)
 end

@@ -1,4 +1,4 @@
---Chaos Space
+--混沌領域
 function c99266988.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -71,7 +71,7 @@ end
 function c99266988.op(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end

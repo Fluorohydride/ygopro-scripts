@@ -27,7 +27,7 @@ function c35129241.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c35129241.filter(c,e,tp,re)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsSetCard(0xa3) and c:IsType(TYPE_SYNCHRO) and c:IsReason(REASON_COST) and c==re:GetHandler()
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
@@ -50,7 +50,6 @@ function c35129241.chlimit(e,ep,tp)
 	return tp==ep
 end
 function c35129241.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		tc:RegisterFlagEffect(35129241,RESET_EVENT+RESETS_STANDARD,0,1,e:GetHandler():GetFieldID())

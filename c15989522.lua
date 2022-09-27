@@ -1,17 +1,10 @@
 --竜魔道騎士ガイア
 function c15989522.initial_effect(c)
-	aux.AddCodeList(c,66889139)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xbd),c15989522.ffilter2,true)
 	--change name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(66889139)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,66889139)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(15989522,0))
@@ -22,7 +15,7 @@ function c15989522.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
 	e2:SetCountLimit(1,15989522)
-	e2:SetCost(c15989522.descon)
+	e2:SetCondition(c15989522.descon)
 	e2:SetTarget(c15989522.destg)
 	e2:SetOperation(c15989522.desop)
 	c:RegisterEffect(e2)
@@ -62,7 +55,7 @@ function c15989522.desop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-2600)
 		c:RegisterEffect(e1)
-		if tc:IsRelateToEffect(e) then
+		if not c:IsHasEffect(EFFECT_REVERSE_UPDATE) and tc:IsRelateToEffect(e) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end

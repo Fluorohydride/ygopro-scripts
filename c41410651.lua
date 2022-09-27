@@ -84,7 +84,6 @@ function c41410651.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(g:GetFirst():GetAttack())
 end
 function c41410651.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ec=e:GetHandler():GetEquipTarget()
 	local atk=e:GetLabel()
 	if ec:IsFaceup() then

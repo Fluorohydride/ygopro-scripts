@@ -36,7 +36,6 @@ function c3875465.thfilter1(c)
 	return not c:IsType(TYPE_FIELD) and c:IsSetCard(0x14b) and c:IsAbleToHand()
 end
 function c3875465.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c3875465.thfilter1,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3875465,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -46,7 +45,7 @@ function c3875465.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c3875465.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x14b) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0x14b) and c:IsSummonType(SUMMON_TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c3875465.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c3875465.cfilter,1,nil,tp)

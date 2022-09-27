@@ -42,10 +42,14 @@ function c69164989.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 	end
 end
+function c69164989.costfilter(c,tp)
+	return (c:IsControler(tp) or c:IsFaceup())
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
+end
 function c69164989.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_PLANT) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c69164989.costfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_PLANT)
+	local g=Duel.SelectReleaseGroup(tp,c69164989.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c69164989.target2(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -13,7 +13,7 @@ function c20855340.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20855340.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():GetPreviousControler()==tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsPreviousControler(tp)
 		and e:GetHandler():IsReason(REASON_DESTROY)
 end
 function c20855340.filter(c,e,tp)
@@ -31,7 +31,5 @@ function c20855340.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,SUMMON_VALUE_EVOLTILE,tp,tp,false,false,POS_FACEUP)
-		local rf=tc.evolreg
-		if rf then rf(tc) end
 	end
 end

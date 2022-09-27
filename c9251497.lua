@@ -25,7 +25,6 @@ function c9251497.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,Card.IsType,tp,0,LOCATION_GRAVE,1,1,nil,TYPE_MONSTER)
 end
 function c9251497.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<=0 then return end
 	Duel.ConfirmDecktop(tp,1)
 	local tc=Duel.GetFirstTarget()
@@ -33,7 +32,7 @@ function c9251497.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		if g:GetFirst():GetAttribute()&tc:GetAttribute()~=0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
-			Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		else
 			Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)

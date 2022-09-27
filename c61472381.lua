@@ -1,4 +1,4 @@
---Brotherhood of the Fire Fist - Eland
+--巧炎星－エランセイ
 function c61472381.initial_effect(c)
 	c:EnableReviveLimit()
 	--set

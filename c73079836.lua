@@ -6,7 +6,7 @@ function c73079836.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(73079836,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,73079836)
@@ -30,7 +30,6 @@ function c73079836.initial_effect(c)
 end
 function c73079836.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4 end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c73079836.spfilter(c,e,tp)
 	return c:IsRace(RACE_ROCK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
@@ -52,7 +51,7 @@ function c73079836.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,ct)
 		for i=1,ct do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

@@ -31,7 +31,7 @@ function c76754619.operation(e,tp,eg,ep,ev,re,r,rp)
 			sc:RegisterEffect(e1)
 			sc=g:GetNext()
 		end
-	else 
+	else
 		local sc=g:GetFirst()
 		while sc do
 			local e1=Effect.CreateEffect(e:GetHandler())

@@ -56,7 +56,7 @@ function c29726552.spcon2(e,c)
 		and Duel.IsExistingMatchingCard(c29726552.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c29726552.filter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsFaceup()
+	return c:IsSummonPlayer(tp) and c:IsFaceup()
 end
 function c29726552.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,2,REASON_COST) end

@@ -86,7 +86,7 @@ end
 function c91668401.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c91668401.tdfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	if #g>0 and Duel.SendtoDeck(g,nil,2,REASON_EFFECT)~=0 then
+	if #g>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g2=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 		if #g2>0 then

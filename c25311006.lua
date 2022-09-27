@@ -83,7 +83,7 @@ function c25311006.todeck(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:FilterSelect(p,Card.IsAbleToDeck,1,1,nil)
 		if #sg<=0 then return end
-		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.ShuffleHand(1-p)
 	end
 end

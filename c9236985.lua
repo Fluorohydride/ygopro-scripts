@@ -10,7 +10,7 @@ function c9236985.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9236985.filter(c,e,tp,lp)
-	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsSetCard(0x3a) 
+	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsSetCard(0x3a)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,true,false) then return false end
 	return lp>c:GetLevel()*500
 end

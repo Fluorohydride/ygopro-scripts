@@ -23,7 +23,8 @@ function c92773018.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c92773018.cfilter(c)
-	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and (c:IsCode(70095154) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,70095154))
+		and c:IsAbleToGraveAsCost()
 end
 function c92773018.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92773018.cfilter,tp,LOCATION_MZONE,0,1,nil) end
@@ -41,7 +42,6 @@ function c92773018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end
 function c92773018.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 		Duel.Destroy(tc,REASON_EFFECT)

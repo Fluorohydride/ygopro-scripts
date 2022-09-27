@@ -14,8 +14,9 @@ function c4145852.initial_effect(c)
 	--get effect
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(4145852,1))
-	e2:SetCategory(CATEGORY_DISABLE)
+	e2:SetCategory(CATEGORY_NEGATE)
 	e2:SetType(EFFECT_TYPE_XMATERIAL+EFFECT_TYPE_QUICK_O)
+	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetCondition(c4145852.discon)
 	e2:SetCost(c4145852.discost)
@@ -45,11 +46,12 @@ function c4145852.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4145852.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return c:GetOriginalRace()==RACE_BEASTWARRIOR
 		and not c:IsStatus(STATUS_BATTLE_DESTROYED) and ep==1-tp
 		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainNegatable(ev)
 		and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-		and Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):IsContains(c)
+		and tg and tg:IsContains(c)
 end
 function c4145852.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -58,10 +60,8 @@ end
 function c4145852.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c4145852.disop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_EFFECT)
-	end
+	Duel.NegateActivation(ev)
 end

@@ -17,7 +17,7 @@ end
 function c95451366.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c95451366.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	local tc=g:GetFirst()
-	while tc do 
+	while tc do
 		local cc=tc:GetCounter(0x1)
 		tc:RemoveCounter(tp,0x1,cc,REASON_EFFECT)
 		tc=g:GetNext()

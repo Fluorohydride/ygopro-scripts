@@ -30,13 +30,14 @@ function c69452756.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69452756.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c69452756.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c69452756.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	local exc=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then exc=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(c69452756.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c69452756.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,c69452756.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c69452756.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)

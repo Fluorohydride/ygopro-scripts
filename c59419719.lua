@@ -34,7 +34,7 @@ function c59419719.initial_effect(c)
 end
 function c59419719.cfilter(c,tp)
 	return c:IsPreviousSetCard(0x149) and c:GetPreviousTypeOnField()&TYPE_FUSION~=0
-		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c59419719.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0

@@ -6,13 +6,7 @@ function c78765160.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--change code
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e2:SetCode(EFFECT_CHANGE_CODE)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetValue(40005099)
-	c:RegisterEffect(e2)
+	aux.EnableChangeCode(c,40005099)
 	--no damage
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(78765160,0))
@@ -46,7 +40,6 @@ function c78765160.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c78765160.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHANGE_DAMAGE)
@@ -75,7 +68,7 @@ end
 function c78765160.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if not e:GetHandler():IsRelateToEffect(e) or not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=2 then return end
-	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)

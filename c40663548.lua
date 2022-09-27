@@ -38,7 +38,7 @@ function c40663548.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c40663548.cfilter(c,tp)
-	return c:IsRace(RACE_PLANT) and c:GetPreviousControler()==tp
+	return c:IsRace(RACE_PLANT) and c:IsPreviousControler(tp)
 end
 function c40663548.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c40663548.cfilter,1,nil,tp)

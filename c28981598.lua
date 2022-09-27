@@ -1,4 +1,4 @@
---Nine-Lives Cat
+--九魂猫
 function c28981598.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2)
@@ -27,7 +27,7 @@ function c28981598.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c28981598.tgtg(e,c)
-	return c:GetSummonLocation()==LOCATION_GRAVE and c~=e:GetHandler()
+	return c:IsSummonLocation(LOCATION_GRAVE) and c~=e:GetHandler()
 end
 function c28981598.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

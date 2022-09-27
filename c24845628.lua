@@ -65,7 +65,7 @@ function c24845628.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24845628.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return re and rp==1-tp and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return re and rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c24845628.filter(c)
 	return c:IsSetCard(0x80) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

@@ -63,7 +63,7 @@ function c74115234.recon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=ec:GetBattleTarget()
 	e:SetLabelObject(bc)
 	return e:GetHandler():GetEquipTarget()==eg:GetFirst() and ec:IsControler(tp)
-		and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER) and bc:IsReason(REASON_BATTLE) 
+		and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER) and bc:IsReason(REASON_BATTLE)
 end
 function c74115234.retg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -74,14 +74,13 @@ function c74115234.retg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,v)
 end
 function c74115234.reop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
 function c74115234.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
-	return c:IsReason(REASON_LOST_TARGET) and ec and ec:IsLocation(LOCATION_HAND) and ec:GetPreviousControler()==tp
+	return c:IsReason(REASON_LOST_TARGET) and ec and ec:IsLocation(LOCATION_HAND) and ec:IsPreviousControler(tp)
 end
 function c74115234.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

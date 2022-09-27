@@ -35,7 +35,7 @@ function c29189613.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c29189613.cfilter(c,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()==tp and c:IsSetCard(0xc9)
+	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsSetCard(0xc9)
 end
 function c29189613.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c29189613.cfilter,1,nil,tp)
@@ -47,7 +47,6 @@ function c29189613.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,1000)
 end
 function c29189613.recop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end

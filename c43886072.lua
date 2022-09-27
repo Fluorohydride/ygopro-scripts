@@ -34,9 +34,38 @@ end
 function c43886072.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
 end
+function c43886072.excostfilter(c,tp)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(25725326,tp)
+end
+function c43886072.costfilter(c,tp,g)
+	local tg=g:Clone()
+	tg:RemoveCard(c)
+	return tg:GetClassCount(Card.GetCode)>=2
+end
 function c43886072.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	e:SetLabel(0)
+	local g=Duel.GetMatchingGroup(c43886072.excostfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	local tg=Duel.GetMatchingGroup(c43886072.thfilter,tp,LOCATION_GRAVE,0,nil,e)
+	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
+	if chk==0 then
+		e:SetLabel(100)
+		return g:IsExists(c43886072.costfilter,1,nil,tp,tg)
+	end
+	local cg=g:Filter(c43886072.costfilter,nil,tp,tg)
+	local tc
+	if #cg>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		tc=cg:Select(tp,1,1,nil):GetFirst()
+	else
+		tc=cg:GetFirst()
+	end
+	local te=tc:IsHasEffect(25725326,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
+	else
+		Duel.Release(tc,REASON_COST)
+	end
 end
 function c43886072.thfilter(c,e)
 	return c:IsSetCard(0x120) and not c:IsType(TYPE_LINK)
@@ -44,8 +73,9 @@ function c43886072.thfilter(c,e)
 end
 function c43886072.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	if chk==0 then return e:GetLabel()==100 end
+	e:SetLabel(0)
 	local g=Duel.GetMatchingGroup(c43886072.thfilter,tp,LOCATION_GRAVE,0,nil,e)
-	if chk==0 then return g:GetClassCount(Card.GetCode)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	Duel.SetTargetCard(sg)

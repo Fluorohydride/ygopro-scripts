@@ -16,12 +16,14 @@ function c38601126.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(0,1)
+	e2:SetCondition(c38601126.condition)
 	e2:SetValue(c38601126.aclimit)
 	c:RegisterEffect(e2)
 	--direct atk
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c38601126.condition)
 	e3:SetCost(c38601126.dacost)
 	e3:SetOperation(c38601126.daop)
 	c:RegisterEffect(e3)
@@ -41,7 +43,7 @@ function c38601126.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -57,6 +59,9 @@ function c38601126.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38601126.eqlimit(e,c)
 	return c==e:GetLabelObject()
+end
+function c38601126.condition(e)
+	return e:GetHandler():GetEquipTarget()
 end
 function c38601126.aclimit(e,re,tp)
 	local loc=re:GetActivateLocation()

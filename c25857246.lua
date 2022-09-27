@@ -49,6 +49,7 @@ function c25857246.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25857246.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
+		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end

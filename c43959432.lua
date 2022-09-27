@@ -37,7 +37,7 @@ function c43959432.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c43959432.filter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c43959432.filter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,43959432,0,0x21,1000,1000,4,RACE_ROCK,ATTRIBUTE_EARTH) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,43959432,0,TYPES_EFFECT_TRAP_MONSTER,1000,1000,4,RACE_ROCK,ATTRIBUTE_EARTH) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c43959432.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
@@ -45,9 +45,8 @@ function c43959432.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43959432.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,43959432,0,0x21,1000,1000,4,RACE_ROCK,ATTRIBUTE_EARTH) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,43959432,0,TYPES_EFFECT_TRAP_MONSTER,1000,1000,4,RACE_ROCK,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 	local tc=Duel.GetFirstTarget()

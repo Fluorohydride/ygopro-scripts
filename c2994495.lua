@@ -1,4 +1,4 @@
---Fuhma Wave
+--風魔の波動
 function c2994495.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

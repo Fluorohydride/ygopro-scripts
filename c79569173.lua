@@ -20,7 +20,7 @@ function c79569173.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c79569173.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_DESTROY) and c:IsRace(RACE_DINOSAUR)
 end
 function c79569173.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -46,13 +46,16 @@ function c79569173.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79569173.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)<3 then return end
+	local zone=e:GetLabel()
+	if tp==1 then
+		zone=((zone&0xffff)<<16)|((zone>>16)&0xffff)
+	end
 	--disable field
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetCode(EFFECT_DISABLE_FIELD)
-	e1:SetOperation(c79569173.disop)
-	e1:SetLabel(e:GetLabel())
+	e1:SetValue(zone)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e:GetHandler():RegisterEffect(e1)
 end

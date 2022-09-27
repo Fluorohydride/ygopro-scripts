@@ -21,9 +21,9 @@ function c2407234.initial_effect(c)
 	e2:SetOperation(c2407234.operation)
 	c:RegisterEffect(e2)
 end
-c2407234.xyz_number=69
+aux.xyz_number[2407234]=69
 function c2407234.negfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and not c:IsDisabled()
+	return aux.NegateMonsterFilter(c) and c:IsType(TYPE_XYZ)
 end
 function c2407234.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

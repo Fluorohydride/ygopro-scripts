@@ -31,7 +31,7 @@ function c3486020.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c3486020.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)
 end
 function c3486020.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_MZONE,nil)
@@ -47,7 +47,7 @@ function c3486020.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c3486020.spfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:GetPreviousTypeOnField()&TYPE_SYNCHRO~=0
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:GetPreviousTypeOnField()&TYPE_SYNCHRO~=0
 		and c:GetOriginalLevel()==11 and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c3486020.spcon(e,tp,eg,ep,ev,re,r,rp)

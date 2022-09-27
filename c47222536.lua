@@ -34,7 +34,6 @@ function c47222536.filter(c)
 	return (aux.IsCodeListed(c,46986414) and c:IsType(TYPE_SPELL+TYPE_TRAP) or c:IsCode(46986414)) and c:IsAbleToHand()
 end
 function c47222536.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<3 then return end
 	local g=Duel.GetDecktopGroup(tp,3)
 	Duel.ConfirmCards(tp,g)
@@ -62,7 +61,6 @@ function c47222536.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c47222536.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)

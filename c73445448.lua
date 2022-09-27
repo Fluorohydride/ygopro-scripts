@@ -25,7 +25,7 @@ function c73445448.initial_effect(c)
 	e2:SetOperation(c73445448.operation)
 	c:RegisterEffect(e2)
 end
-c73445448.xyz_number=22
+aux.xyz_number[73445448]=22
 function c73445448.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,1,nil) end
@@ -33,11 +33,11 @@ function c73445448.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsAbleToGraveAsCost,1,1,REASON_COST)
 end
 function c73445448.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.disfilter1(chkc) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.NegateAnyFilter(chkc) end
 	if chk==0 then return e:GetHandler():IsAttackPos()
-		and Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,1,nil)
+		and Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c73445448.operation(e,tp,eg,ep,ev,re,r,rp)

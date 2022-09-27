@@ -14,7 +14,7 @@ function c96099959.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96099959.filter(c,ec,tp)
-	return c~=ec and c:IsSetCard(0xd) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return c~=ec and c:IsSetCard(0xd) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_BATTLE)
 end
 function c96099959.condition(e,tp,eg,ep,ev,re,r,rp)

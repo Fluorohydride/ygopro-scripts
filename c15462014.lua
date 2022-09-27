@@ -1,4 +1,4 @@
---Hollow Giants
+--龍馬躓図
 function c15462014.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -26,21 +26,21 @@ function c15462014.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c15462014.cfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c15462014.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c15462014.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c15462014.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c15462014.distg(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c15462014.egfilter(c)
 	local d=c:GetBattleTarget()
-	return c:GetSummonLocation()==LOCATION_EXTRA and d:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA) and d:IsSummonLocation(LOCATION_EXTRA)
 end
 function c15462014.pcheck(c,tp)
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 end
 function c15462014.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15462014.egfilter,1,nil)

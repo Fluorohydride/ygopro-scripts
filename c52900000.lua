@@ -65,12 +65,13 @@ function c52900000.retreg(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
 	e1:SetReset(RESET_EVENT+0x1ee0000+RESET_PHASE+PHASE_END)
-	e1:SetCondition(aux.SpiritReturnCondition)
+	e1:SetCondition(aux.SpiritReturnConditionForced)
 	e1:SetTarget(c52900000.rettg)
 	e1:SetOperation(c52900000.retop)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetCondition(aux.SpiritReturnConditionOptional)
 	c:RegisterEffect(e2)
 end
 function c52900000.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -80,7 +81,7 @@ function c52900000.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 		else
 			return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 				and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-				and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,0x4011,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND)
+				and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,TYPES_TOKEN_MONSTER,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND)
 		end
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
@@ -92,7 +93,7 @@ function c52900000.retop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,0x4011,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,TYPES_TOKEN_MONSTER,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND) then
 		for i=1,2 do
 			local token=Duel.CreateToken(tp,52900001)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)

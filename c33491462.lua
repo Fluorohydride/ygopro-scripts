@@ -14,7 +14,6 @@ function c33491462.initial_effect(c)
 	--level
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(33491462,1))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -24,7 +23,8 @@ function c33491462.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c33491462.rfilter(c,tp)
-	return Duel.GetMZoneCount(tp,c)>1 and c:IsRace(RACE_PLANT)
+	return Duel.GetMZoneCount(tp,c)>1 and (c:IsControler(tp) or c:IsFaceup())
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c33491462.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c33491462.rfilter,1,nil,tp) end
@@ -44,7 +44,8 @@ function c33491462.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33491462.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133) and c:IsRelateToEffect(e) then 
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c33491462.spfilter,tp,LOCATION_HAND,0,1,1,c,e,tp)
 		if g:GetCount()>0 then

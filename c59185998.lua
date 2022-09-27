@@ -29,8 +29,9 @@ end
 function c59185998.exmfilter(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsCode(59185998)
 end
-function c59185998.matval(e,c,mg)
-	return c:IsSetCard(0x103) and mg:IsExists(c59185998.mfilter,1,nil) and not mg:IsExists(c59185998.exmfilter,1,nil)
+function c59185998.matval(e,lc,mg,c,tp)
+	if not lc:IsSetCard(0x103) then return false,nil end
+	return true,not mg or mg:IsExists(c59185998.mfilter,1,nil) and not mg:IsExists(c59185998.exmfilter,1,nil)
 end
 function c59185998.cfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x103) and c:IsType(TYPE_LINK) and c:IsSummonType(SUMMON_TYPE_LINK)

@@ -1,4 +1,4 @@
---Rose Girl
+--バラガール
 function c29177818.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -26,7 +26,7 @@ function c29177818.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c29177818.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_PLANT)>0
 end
 function c29177818.spcon(e,tp,eg,ep,ev,re,r,rp)

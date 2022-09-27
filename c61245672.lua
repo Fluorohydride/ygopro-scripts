@@ -44,7 +44,6 @@ function c61245672.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_EXTRA)
 end
 function c61245672.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

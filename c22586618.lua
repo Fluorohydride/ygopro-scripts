@@ -37,7 +37,7 @@ function c22586618.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c22586618.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_ADVANCE) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_WIND)
+	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_ADVANCE) and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_WIND)
 end
 function c22586618.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c22586618.cfilter,1,nil,tp)
@@ -56,12 +56,12 @@ end
 function c22586618.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and Duel.IsChainNegatable(ev)
 end
-function c22586618.costfilter(c)
+function c22586618.costfilter(c,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:IsAttribute(ATTRIBUTE_WIND) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c22586618.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c22586618.costfilter,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,c22586618.costfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c22586618.costfilter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c22586618.costfilter,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c22586618.negtg(e,tp,eg,ep,ev,re,r,rp,chk)

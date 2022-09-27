@@ -27,7 +27,7 @@ function c73192600.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c73192600.tdfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,nil)
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(c)

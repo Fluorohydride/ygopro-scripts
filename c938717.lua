@@ -1,4 +1,4 @@
---Boot-Up Corporal - Command Dynamo
+--起動兵長コマンドリボルバー
 function c938717.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -27,7 +27,7 @@ function c938717.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c938717.eqfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,e,tp)
 	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),2)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and ft>0
 		and g:GetCount()>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

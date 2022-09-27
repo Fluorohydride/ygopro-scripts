@@ -23,7 +23,7 @@ function c44161893.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44161893.cfilter(c,tp,rp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:GetPreviousTypeOnField()&TYPE_LINK~=0
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:GetPreviousTypeOnField()&TYPE_LINK~=0
 		and c:IsPreviousSetCard(0x119) and rp==1-tp and c:IsReason(REASON_EFFECT)
 end
 function c44161893.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -69,11 +69,14 @@ function c44161893.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e3=Effect.CreateEffect(e:GetHandler())
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetCode(EFFECT_DISABLE_EFFECT)
+		e3:SetValue(RESET_TURN_SET)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc1:RegisterEffect(e3)
 		local e4=e3:Clone()
 		tc2:RegisterEffect(e4)
 		Duel.SpecialSummonComplete()
+		Duel.AdjustAll()
+		if sg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 		local xyzg=Duel.GetMatchingGroup(c44161893.xyzfilter,tp,LOCATION_EXTRA,0,nil,sg)
 		if xyzg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

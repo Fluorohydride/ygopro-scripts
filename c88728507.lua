@@ -21,7 +21,7 @@ function c88728507.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88728507.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c88728507.filter(c)
 	return c:IsSetCard(0x8e) and (c:IsType(TYPE_SPELL+TYPE_TRAP) or c:IsAttribute(ATTRIBUTE_DARK)) and c:IsAbleToHand()

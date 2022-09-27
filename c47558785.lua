@@ -14,6 +14,7 @@ function c47558785.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c47558785.toss_dice=true
+c47558785.toss_dice_in_pendulum_only=true
 function c47558785.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetLeftScale()>1 end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)

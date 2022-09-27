@@ -72,7 +72,7 @@ function c58981727.tfop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveToField(sc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then
-			Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
 end

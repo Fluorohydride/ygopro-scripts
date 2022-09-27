@@ -39,7 +39,7 @@ function c6849042.otop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c6849042.cfilter(c,tp)
 	return c:IsRace(RACE_DINOSAUR) and c:IsPreviousLocation(LOCATION_GRAVE)
-		and c:GetPreviousControler()==tp
+		and c:IsPreviousControler(tp)
 end
 function c6849042.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c6849042.cfilter,1,nil,tp)

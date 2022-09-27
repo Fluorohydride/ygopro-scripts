@@ -60,9 +60,6 @@ function c94919024.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94919024.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) then
-		if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-			Duel.SendtoGrave(eg,REASON_EFFECT)
-		end
 		Duel.Recover(tp,1000,REASON_EFFECT)
 		Duel.Recover(1-tp,1000,REASON_EFFECT)
 	end

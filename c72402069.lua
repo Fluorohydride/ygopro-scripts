@@ -82,9 +82,6 @@ end
 function c72402069.disfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
 end
-function c72402069.disfilter1(c)
-	return c:IsFaceup() and not c:IsDisabled()
-end
 function c72402069.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not eg:IsContains(e:GetHandler())
 		and Duel.IsExistingMatchingCard(c72402069.disfilter,tp,0,LOCATION_MZONE,1,nil) end
@@ -93,7 +90,7 @@ function c72402069.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(72402069,2))
 	local pc=Duel.SelectMatchingCard(1-tp,c72402069.disfilter,tp,0,LOCATION_MZONE,1,1,nil):GetFirst()
 	if not pc then return end
-	local g=Duel.GetMatchingGroup(c72402069.disfilter1,tp,0,LOCATION_MZONE,pc)
+	local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,pc)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -117,7 +114,6 @@ function c72402069.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c72402069.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

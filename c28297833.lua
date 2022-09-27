@@ -26,7 +26,7 @@ end
 function c28297833.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_REMOVED,LOCATION_REMOVED)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)

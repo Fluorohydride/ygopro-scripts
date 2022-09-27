@@ -44,7 +44,7 @@ function c83293307.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c83293307.filter1(c,e,tp)
-	return c:IsSetCard(0x104) and not c:IsCode(83293307) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x104) and not c:IsCode(83293307) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c83293307.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

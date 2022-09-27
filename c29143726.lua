@@ -1,4 +1,4 @@
---転生竜 サンサーラ
+--転生竜サンサーラ
 function c29143726.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -21,7 +21,7 @@ function c29143726.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c29143726.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and e:GetHandler():IsPreviousControler(tp)
 		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c29143726.spcon2(e,tp,eg,ep,ev,re,r,rp)

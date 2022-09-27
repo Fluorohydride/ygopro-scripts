@@ -1,7 +1,7 @@
 --決闘竜 デュエル・リンク・ドラゴン
 function c60025883.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c60025883.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c60025883.lcheck)
 	c:EnableReviveLimit()
 	--duel dragon
 	local e1=Effect.CreateEffect(c)
@@ -41,7 +41,7 @@ end
 function c60025883.costfilter(c,e,tp)
 	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemoveAsCost()
 		and (c:IsSetCard(0xc2) or c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)))
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 end
 function c60025883.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c60025883.costfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
@@ -66,18 +66,18 @@ function c60025883.spop(e,tp,eg,ep,ev,re,r,rp)
 	local race=tc:GetOriginalRace()
 	local att=tc:GetOriginalAttribute()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,0x4011,atk,def,lv,race,att) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,TYPES_TOKEN_MONSTER,atk,def,lv,race,att) then return end
 	local token=Duel.CreateToken(tp,60025884)
 	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP,zone)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_BASE_ATTACK)
+	e1:SetCode(EFFECT_SET_ATTACK)
 	e1:SetValue(atk)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 	token:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_SET_BASE_DEFENSE)
+	e2:SetCode(EFFECT_SET_DEFENSE)
 	e2:SetValue(def)
 	e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 	token:RegisterEffect(e2)
@@ -102,5 +102,5 @@ function c60025883.tgfilter(c)
 	return c:GetOriginalCode()==60025884
 end
 function c60025883.tgcon(e)
-	return Duel.IsExistingMatchingCard(c60025883.tgfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c60025883.tgfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)
 end

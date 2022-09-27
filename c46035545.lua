@@ -81,7 +81,7 @@ function c46035545.pfilter(c)
 end
 function c46035545.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c46035545.thfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c46035545.thfilter,tp,LOCATION_MZONE,0,1,nil) 
+	if chk==0 then return Duel.IsExistingTarget(c46035545.thfilter,tp,LOCATION_MZONE,0,1,nil)
 		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
 		and Duel.IsExistingMatchingCard(c46035545.pfilter,tp,LOCATION_EXTRA,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -104,7 +104,7 @@ function c46035545.thop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_TRIGGER)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			pc:RegisterEffect(e1)
+			pc:RegisterEffect(e1,true)
 			pc=g:GetNext()
 		end
 	end

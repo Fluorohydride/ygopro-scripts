@@ -38,7 +38,7 @@ function c7291576.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7291576.repfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x3d)
-		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT)
+		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c7291576.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c7291576.repfilter,1,nil,tp)

@@ -54,7 +54,7 @@ function c29415459.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c29415459.filter(c,g)
-  return c:IsType(TYPE_SPELL+TYPE_TRAP) and g:IsContains(c)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and g:IsContains(c)
 end
 function c29415459.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local cg=e:GetHandler():GetColumnGroup()

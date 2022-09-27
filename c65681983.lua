@@ -53,7 +53,7 @@ function c65681983.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_DISABLE)
 		e1:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
-		e1:SetTarget(c65681983.distg)
+		e1:SetTarget(c65681983.distg1)
 		e1:SetLabelObject(tc)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
@@ -69,13 +69,21 @@ function c65681983.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
 		e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-		e3:SetTarget(c65681983.distg)
+		e3:SetTarget(c65681983.distg2)
 		e3:SetLabelObject(tc)
 		e3:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e3,tp)
 	end
 end
-function c65681983.distg(e,c)
+function c65681983.distg1(e,c)
+	local tc=e:GetLabelObject()
+	if c:IsType(TYPE_SPELL+TYPE_TRAP) then
+		return c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
+	else
+		return c:IsOriginalCodeRule(tc:GetOriginalCodeRule()) and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
+	end
+end
+function c65681983.distg2(e,c)
 	local tc=e:GetLabelObject()
 	return c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
 end

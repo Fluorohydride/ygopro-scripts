@@ -59,7 +59,7 @@ function c39752820.actfilter(c)
 	return c:IsSetCard(0xfe) and c:IsType(TYPE_MONSTER)
 end
 function c39752820.aclimit(e)
-	return not Duel.IsExistingMatchingCard(c39752820.actfilter,e:GetHandlerPlayer(),LOCATION_GRAVE,0,1,nil)
+	return not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) and not Duel.IsExistingMatchingCard(c39752820.actfilter,e:GetHandlerPlayer(),LOCATION_GRAVE,0,1,nil)
 end
 function c39752820.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -75,6 +75,6 @@ function c39752820.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

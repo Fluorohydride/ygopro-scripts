@@ -28,7 +28,7 @@ end
 function c856784.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>=3 then
+	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		Duel.ConfirmCards(1-tp,sg)
@@ -40,27 +40,23 @@ function c856784.activate(e,tp,eg,ep,ev,re,r,rp)
 				else
 					tc=sg:GetFirst()
 				end
-				Duel.MoveSequence(tc,0)
+				Duel.MoveSequence(tc,SEQ_DECKTOP)
 				sg:RemoveCard(tc)
 			end
 		end
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
+	--cannot set spell/trap card
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_OATH)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EFFECT_CANNOT_SSET)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	e1:SetTargetRange(1,0)
 	Duel.RegisterEffect(e1,tp)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_CHAINING)
-	e2:SetCondition(c856784.regcon)
-	e2:SetOperation(c856784.regop)
-	e2:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e2,tp)
+	Duel.AddCustomActivityCounter(856784,ACTIVITY_CHAIN,c856784.chainfilter)
+	--activate limit
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -71,13 +67,10 @@ function c856784.activate(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
 end
-function c856784.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp
-end
-function c856784.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,856784,RESET_PHASE+PHASE_END,0,1)
+function c856784.chainfilter(re,tp,cid)
+	return false
 end
 function c856784.actcon(e)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetFlagEffect(tp,856784)>0
+	return Duel.GetCustomActivityCount(856784,tp,ACTIVITY_CHAIN)~=0
 end

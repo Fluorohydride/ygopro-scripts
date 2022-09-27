@@ -1,4 +1,4 @@
---TG ブースタ・ラプトル
+--TG ブースター・ラプトル
 function c48633301.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

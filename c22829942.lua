@@ -41,7 +41,6 @@ function c22829942.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
 function c22829942.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c22829942.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -50,7 +49,7 @@ function c22829942.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22829942.thfilter2(c,id)
-	return bit.band(c:GetReason(),0x40008)==0x40008 and c:IsType(TYPE_MONSTER) and c:GetTurnID()==id and c:IsAbleToHand()
+	return c:GetReason()&(REASON_FUSION+REASON_MATERIAL)==(REASON_FUSION+REASON_MATERIAL) and c:IsType(TYPE_MONSTER) and c:GetTurnID()==id and c:IsAbleToHand()
 end
 function c22829942.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tid=Duel.GetTurnCount()
@@ -61,7 +60,6 @@ function c22829942.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c22829942.thop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

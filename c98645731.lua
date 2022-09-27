@@ -24,7 +24,7 @@ function c98645731.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c98645731.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<3 then return false end
 		local g=Duel.GetDecktopGroup(tp,3)
 		local result=g:FilterCount(Card.IsAbleToHand,nil)>0

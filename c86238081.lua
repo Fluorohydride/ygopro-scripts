@@ -1,4 +1,4 @@
---覇王烈竜オッドアイズ・レイジング・ドラゴン 
+--覇王烈竜オッドアイズ・レイジング・ドラゴン
 function c86238081.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),7,2)
@@ -67,7 +67,6 @@ function c86238081.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c86238081.pcfilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c86238081.pcop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c86238081.pcfilter,tp,LOCATION_DECK,0,1,1,nil)
@@ -124,7 +123,6 @@ function c86238081.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c86238081.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

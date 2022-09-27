@@ -42,7 +42,7 @@ function c78876707.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,ct,0,0)
 end
-function c78876707.thop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c78876707.thop(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if rg:GetCount()>0 then
 		Duel.SendtoHand(rg,nil,REASON_EFFECT)
@@ -59,8 +59,9 @@ end
 function c78876707.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c78876707.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
- 		and e:GetHandler():IsCanOverlay() end
+		and e:GetHandler():IsCanOverlay() end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,tp,0)
 end
 function c78876707.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -68,10 +69,13 @@ function c78876707.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c78876707.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc and Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
-		tc:CompleteProcedure()
-		if c:IsRelateToEffect(e) then
-			Duel.Overlay(tc,Group.FromCards(c))
+	if tc then
+		tc:SetMaterial(nil)
+		if Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)>0 then
+			tc:CompleteProcedure()
+			if c:IsRelateToEffect(e) then
+				Duel.Overlay(tc,Group.FromCards(c))
+			end
 		end
 	end
 end

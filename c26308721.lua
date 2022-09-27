@@ -1,4 +1,4 @@
---捕食植物プテロペンテス 
+--捕食植物プテロペンテス
 function c26308721.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

@@ -4,13 +4,7 @@ function c32775808.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,70781052,aux.FilterBoolFunction(Card.IsFusionAttribute,ATTRIBUTE_DARK),1,true,true)
 	--code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(70781052)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,70781052)
 	--atkup
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
@@ -35,7 +29,7 @@ end
 function c32775808.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_FUSION)
-		and rp==1-tp and c:GetPreviousControler()==tp
+		and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c32775808.spfilter(c,e,tp)
 	return c:IsCode(70781052) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

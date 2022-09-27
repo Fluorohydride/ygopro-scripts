@@ -19,9 +19,10 @@ function c86767655.initial_effect(c)
 end
 c86767655.toss_coin=true
 function c86767655.discon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and Duel.IsChainDisablable(ev) and e:GetHandler():GetFlagEffect(1)>0
+	return rp==1-tp and e:GetHandler():GetFlagEffect(1)>0
 end
 function c86767655.disop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,86767655)
 	local c1,c2=Duel.TossCoin(tp,2)
 	if c1+c2==2 then
 		Duel.NegateEffect(ev)

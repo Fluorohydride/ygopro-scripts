@@ -35,10 +35,10 @@ function c6924874.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c6924874.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x64) and c:GetCode()~=6924874
+	return c:IsFaceup() and c:IsSetCard(0x64) and not c:IsCode(6924874)
 end
 function c6924874.atlimit(e,c)
-	return c:IsFaceup() and c:IsSetCard(0x64) and c:GetCode()~=6924874
+	return c:IsFaceup() and c:IsSetCard(0x64) and not c:IsCode(6924874)
 end
 function c6924874.adcon(e)
 	return Duel.IsExistingMatchingCard(c6924874.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,2,nil)

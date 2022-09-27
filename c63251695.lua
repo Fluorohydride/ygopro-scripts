@@ -24,11 +24,11 @@ function c63251695.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c63251695.tfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsOnField()
 end
 function c63251695.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return e:GetHandler():GetFlagEffect(63251695)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) 
+	return e:GetHandler():GetFlagEffect(63251695)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
 		and g and g:IsExists(c63251695.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c63251695.negop(e,tp,eg,ep,ev,re,r,rp)
@@ -101,7 +101,7 @@ function c63251695.effop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			sg=g2:Select(tp,1,1,nil)
 		end
-		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		if sg:GetFirst():IsLocation(LOCATION_DECK) and c:IsRelateToEffect(e) and c:IsFaceup() then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)

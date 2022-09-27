@@ -12,9 +12,9 @@ function c91468551.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c91468551.atktg)
-	e2:SetValue(300) 
+	e2:SetValue(300)
 	c:RegisterEffect(e2)
 end
 function c91468551.atktg(e,c)
-	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:GetSummonLocation()==LOCATION_GRAVE
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsSummonLocation(LOCATION_GRAVE)
 end

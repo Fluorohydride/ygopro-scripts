@@ -25,6 +25,7 @@ function c24701066.initial_effect(c)
 	c:RegisterEffect(e2)
 	--SpecialSummon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(24701066,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
@@ -64,6 +65,7 @@ function c24701066.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToBattle() then return false end
 	e:SetLabelObject(tc)
 	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and tc:IsCanOverlay()
+		and (tc:IsLocation(LOCATION_GRAVE) or tc:IsFaceup() and tc:IsLocation(LOCATION_EXTRA+LOCATION_REMOVED))
 end
 function c24701066.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) end

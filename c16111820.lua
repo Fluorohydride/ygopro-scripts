@@ -12,8 +12,8 @@ function c16111820.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c16111820.filter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_DEFENSE) and c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) 
-		and c:IsSetCard(0x22) and c:GetCode()~=16111820
+	return c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_DEFENSE) and c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE)
+		and c:IsSetCard(0x22) and not c:IsCode(16111820)
 end
 function c16111820.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c16111820.filter,1,nil,tp)

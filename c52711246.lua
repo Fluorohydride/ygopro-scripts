@@ -27,12 +27,16 @@ function c52711246.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c52711246.filter),tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
-		local b1=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-		local b2=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
-		local b3=Duel.GetMatchingGroup(nil,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		if tc:IsRace(RACE_ZOMBIE) and #b1>0 and Duel.SelectYesNo(tp,aux.Stringid(52711246,1)) then
-			local t1=b1:GetFirst()
+	if not tc then return end
+	local b1=tc:IsRace(RACE_ZOMBIE)
+	local b2=tc:IsAttribute(ATTRIBUTE_FIRE)
+	local b3=tc:IsType(TYPE_SYNCHRO)
+	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
+		local g1=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
+		local g2=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
+		local g3=Duel.GetMatchingGroup(nil,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+		if b1 and #g1>0 and Duel.SelectYesNo(tp,aux.Stringid(52711246,1)) then
+			local t1=g1:GetFirst()
 			while t1 do
 				local e1=Effect.CreateEffect(e:GetHandler())
 				e1:SetType(EFFECT_TYPE_SINGLE)
@@ -41,20 +45,20 @@ function c52711246.operation(e,tp,eg,ep,ev,re,r,rp)
 				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 				e1:SetValue(300)
 				t1:RegisterEffect(e1)
-				t1=b1:GetNext()
+				t1=g1:GetNext()
 			end
 		end
-		if tc:IsAttribute(ATTRIBUTE_FIRE) and #b2>0 and Duel.SelectYesNo(tp,aux.Stringid(52711246,2)) then
+		if b2 and #g2>0 and Duel.SelectYesNo(tp,aux.Stringid(52711246,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-			local t2=b2:Select(tp,1,1,nil)
+			local t2=g2:Select(tp,1,1,nil)
 			Duel.HintSelection(t2)
 			Duel.Destroy(t2,REASON_EFFECT)
 		end
-		if tc:IsType(TYPE_SYNCHRO) and #b3>0  and Duel.SelectYesNo(tp,aux.Stringid(52711246,3)) then
+		if b3 and #g3>0 and Duel.SelectYesNo(tp,aux.Stringid(52711246,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-			local t3=b3:Select(tp,1,1,nil)
+			local t3=g3:Select(tp,1,1,nil)
 			Duel.HintSelection(t3)
 			Duel.Destroy(t3,REASON_EFFECT)
 		end

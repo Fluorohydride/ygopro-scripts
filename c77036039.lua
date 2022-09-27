@@ -21,7 +21,7 @@ function c77036039.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c77036039.cfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c77036039.cfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c77036039.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
@@ -33,7 +33,7 @@ function c77036039.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c77036039.filter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
-function c77036039.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c77036039.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)

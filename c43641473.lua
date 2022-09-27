@@ -32,7 +32,7 @@ function c43641473.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==ec then tc=g:GetNext() end
-	if ec:IsFaceup() and ec:IsRelateToEffect(e) then 
+	if ec:IsFaceup() and ec:IsRelateToEffect(e) then
 		Duel.Equip(tp,ec,tc)
 	end
 end

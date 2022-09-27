@@ -31,6 +31,7 @@ function c27979109.initial_effect(c)
 	e3:SetOperation(c27979109.drop)
 	c:RegisterEffect(e3)
 end
+c27979109.has_text_type=TYPE_DUAL
 function c27979109.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 and Duel.GetDrawCount(tp)>0
 end
@@ -77,7 +78,7 @@ function c27979109.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c27979109.costfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c27979109.costfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.SendtoDeck(g,nil,1,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_COST)
 end
 function c27979109.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

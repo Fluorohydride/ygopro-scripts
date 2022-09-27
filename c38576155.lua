@@ -22,13 +22,12 @@ function c38576155.thcfilter(c)
 end
 function c38576155.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
-		and not Duel.IsExistingMatchingCard(c38576155.thcfilter,tp,LOCATION_MZONE,0,1,nil)	
+		and not Duel.IsExistingMatchingCard(c38576155.thcfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c38576155.thfilter(c)
 	return c:IsCode(64961254) and c:IsAbleToHand()
 end
 function c38576155.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c38576155.thfilter,tp,LOCATION_DECK,0,nil)
 	if #g>0 and c38576155.thcon(e,tp,eg,ep,ev,re,r,rp) and
 		Duel.SelectYesNo(tp,aux.Stringid(38576155,0)) then
@@ -42,7 +41,6 @@ function c38576155.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>2 end
 end
 function c38576155.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.SortDecktop(tp,1-tp,3)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)

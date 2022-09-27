@@ -27,7 +27,7 @@ function c71442223.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c71442223.spfilter2(c,e,tp,tc)
-	return c:IsCode(tc:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(tc:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c71442223.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

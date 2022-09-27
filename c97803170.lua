@@ -59,7 +59,6 @@ function c97803170.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)
 end
 function c97803170.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if Duel.DiscardHand(tp,c97803170.cfilter,1,1,REASON_EFFECT+REASON_DISCARD,nil)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not tc:IsRelateToEffect(e) then return end

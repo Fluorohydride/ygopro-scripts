@@ -34,7 +34,7 @@ function c1948619.setcfilter(c,tp,ec)
 		return c:IsSetCard(0x8) and c:IsFaceup() and c:IsControler(tp) and ec:GetLinkedGroup():IsContains(c)
 	else
 		return c:IsPreviousSetCard(0x8) and c:IsPreviousPosition(POS_FACEUP)
-			and c:GetPreviousControler()==tp and bit.extract(ec:GetLinkedZone(tp),c:GetPreviousSequence())~=0
+			and c:IsPreviousControler(tp) and bit.extract(ec:GetLinkedZone(tp),c:GetPreviousSequence())~=0
 	end
 end
 function c1948619.setcon(e,tp,eg,ep,ev,re,r,rp)
@@ -59,7 +59,7 @@ end
 function c1948619.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_BATTLE)
-		or (rp==1-tp and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp)
+		or (rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousControler(tp))
 end
 function c1948619.spfilter(c,e,tp)
 	return c:IsSetCard(0x8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

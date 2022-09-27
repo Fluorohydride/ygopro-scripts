@@ -64,6 +64,6 @@ function c82896870.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c82896870.filter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

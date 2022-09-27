@@ -22,6 +22,7 @@ function c21044178.initial_effect(c)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c21044178.cost)
+	e2:SetTarget(c21044178.target)
 	e2:SetOperation(c21044178.operation)
 	c:RegisterEffect(e2)
 end
@@ -31,6 +32,9 @@ end
 function c21044178.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
+end
+function c21044178.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFlagEffect(tp,21044178)==0 end
 end
 function c21044178.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -42,6 +46,7 @@ function c21044178.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c21044178.aclimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,21044178,RESET_PHASE+PHASE_END,0,0)
 end
 function c21044178.aclimit(e,re,tp)
 	return re:GetActivateLocation()==LOCATION_GRAVE

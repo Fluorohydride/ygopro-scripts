@@ -2,6 +2,7 @@
 function c10000020.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(10000020,2))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_LIMIT_SUMMON_PROC)
@@ -56,7 +57,6 @@ function c10000020.initial_effect(c)
 	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e8:SetRange(LOCATION_MZONE)
 	e8:SetCode(EVENT_SUMMON_SUCCESS)
-	e8:SetCondition(c10000020.atkcon)
 	e8:SetTarget(c10000020.atktg)
 	e8:SetOperation(c10000020.atkop)
 	c:RegisterEffect(e8)
@@ -96,18 +96,16 @@ end
 function c10000020.adval(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_HAND,0)*1000
 end
-function c10000020.atkfilter(c,e,tp)
-	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK) and (not e or c:IsRelateToEffect(e))
-end
-function c10000020.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c10000020.atkfilter,1,nil,nil,1-tp)
+function c10000020.atkfilter(c,tp)
+	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetTargetCard(eg)
+	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,nil,1-tp) end
+	local g=eg:Filter(c10000020.atkfilter,nil,1-tp)
+	Duel.SetTargetCard(g)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c10000020.atkfilter,nil,e,1-tp)
+	local g=Duel.GetTargetsRelateToChain():Filter(Card.IsFaceup,nil)
 	local dg=Group.CreateGroup()
 	local c=e:GetHandler()
 	local tc=g:GetFirst()

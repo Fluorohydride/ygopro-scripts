@@ -59,8 +59,11 @@ function c65877963.spop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetLabelObject(e1)
 	Duel.RegisterEffect(e2,tp)
 end
+function c65877963.regfilter(c,tp)
+	return c:IsSummonPlayer(tp) and c:IsType(TYPE_RITUAL)
+end
 function c65877963.regop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(Card.IsType,1,nil,TYPE_RITUAL) then
+	if eg:IsExists(c65877963.regfilter,1,nil,tp) then
 		e:SetLabel(1)
 	end
 end

@@ -47,7 +47,7 @@ function c72355272.thcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c72355272.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(e:GetHandler(),tp,2,REASON_COST)
+	Duel.SendtoDeck(e:GetHandler(),tp,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c72355272.thfilter(c)
 	return c:IsSetCard(0x105) and not c:IsCode(72355272) and c:IsAbleToHand()

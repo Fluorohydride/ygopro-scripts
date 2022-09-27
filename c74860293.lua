@@ -1,5 +1,6 @@
 --ジャンク・デストロイヤー
 function c74860293.initial_effect(c)
+	aux.AddMaterialCodeList(c,63977008)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c74860293.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

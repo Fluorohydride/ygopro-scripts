@@ -10,4 +10,3 @@ function c47459126.initial_effect(c)
 	e1:SetValue(TYPE_TUNER)
 	c:RegisterEffect(e1)
 end
-

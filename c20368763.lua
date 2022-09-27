@@ -53,7 +53,7 @@ function c20368763.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c20368763.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and c:IsReason(REASON_COST)
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsReason(REASON_COST)
 end
 function c20368763.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:GetHandler()~=e:GetHandler() and re:IsHasType(0x7f0) and eg:IsExists(c20368763.cfilter,1,nil,tp)
@@ -65,7 +65,7 @@ function c20368763.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20368763.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,0x4011,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,TYPES_TOKEN_MONSTER,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
 		local token=Duel.CreateToken(tp,20368764)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end

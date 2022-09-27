@@ -1,5 +1,6 @@
 --憎悪の棘
 function c65079854.initial_effect(c)
+	aux.AddCodeList(c,73580471)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -73,7 +74,6 @@ function c65079854.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler():GetEquipTarget() and Duel.GetAttackTarget()~=nil
 end
 function c65079854.adop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=Duel.GetAttackTarget()
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,5 +1,6 @@
 --古生代化石竜 スカルギオス
 function c21225115.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsRace,RACE_ROCK),c21225115.matfilter,true)

@@ -11,7 +11,7 @@ function c58477767.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c58477767.check(c1,c2,tp)
-	return c1:IsLocation(LOCATION_GRAVE) and c1:IsReason(REASON_BATTLE) and c1:GetPreviousControler()~=tp and c2:IsSetCard(0x4)
+	return c1:IsLocation(LOCATION_GRAVE) and c1:IsReason(REASON_BATTLE) and c1:IsPreviousControler(1-tp) and c2:IsSetCard(0x4)
 end
 function c58477767.condition(e,tp,eg,ep,ev,re,r,rp)
 	local dc=eg:GetFirst()

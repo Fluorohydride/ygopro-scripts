@@ -1,4 +1,4 @@
---Annihilator Archfiend
+--ディザスター・デーモン
 function c29603180.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

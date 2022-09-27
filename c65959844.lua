@@ -37,6 +37,7 @@ function c65959844.initial_effect(c)
 	e4:SetOperation(c65959844.desop)
 	c:RegisterEffect(e4)
 end
+c65959844.has_text_type=TYPE_DUAL
 function c65959844.ntcon(e,c,minc)
 	if c==nil then return true end
 	return minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
@@ -58,7 +59,6 @@ function c65959844.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65959844.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c65959844.rmfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local rc=g:GetFirst()

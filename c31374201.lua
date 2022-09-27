@@ -1,4 +1,4 @@
---Whitebeard, the Plunder Patroll Helm
+--海造賊－白髭の機関士
 function c31374201.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

@@ -35,7 +35,7 @@ function c79861914.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,800)
 end
 function c79861914.cfilter(c,tp)
-	return c:IsSetCard(0xb3) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0xb3) and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c79861914.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -49,7 +49,6 @@ function c79861914.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c79861914.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

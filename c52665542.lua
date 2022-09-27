@@ -60,14 +60,13 @@ function c52665542.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,sg,1,0,0)
 end
 function c52665542.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
 function c52665542.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c52665542.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52665542.cfilter,1,nil,tp)
@@ -76,7 +75,7 @@ function c52665542.acop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x5,1)
 end
 function c52665542.dfilter(c,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsOnField()
 		and c:IsSetCard(0x38) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c52665542.destg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -88,7 +87,7 @@ function c52665542.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c52665542.value(e,c)
-	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsOnField()
 		and c:IsSetCard(0x38) and c:IsControler(e:GetHandlerPlayer()) and c:IsReason(REASON_EFFECT)
 end
 function c52665542.desop(e,tp,eg,ep,ev,re,r,rp)

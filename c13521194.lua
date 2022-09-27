@@ -37,8 +37,7 @@ function c13521194.damoperation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c13521194.filter(c,e,tp)
-	local atk=c:GetAttack()
-	return atk>=0 and atk<=2000 and c:IsRace(RACE_FIEND) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackBelow(2000) and c:IsRace(RACE_FIEND) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c13521194.sptarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

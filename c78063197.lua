@@ -29,7 +29,7 @@ function c78063197.filter1(c,e)
 	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c78063197.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c)) and c:IsSetCard(0x110)
+	return c:IsType(TYPE_FUSION) and (not f or f(c)) and c:IsSetCard(0x1110)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c78063197.filter3(c)
@@ -53,6 +53,7 @@ function c78063197.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 		return res
 	end
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c78063197.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -95,7 +96,8 @@ function c78063197.filter(c)
 end
 function c78063197.eqfilter(c)
 	local m=_G["c"..c:GetCode()]
-	return c:IsFaceup() and ((c:IsSetCard(0x110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466)) and m.can_equip_monster(c)
+	return m and c:IsFaceup() and ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
+		and not c:IsDisabled() and m.can_equip_monster and m.can_equip_monster(c)
 end
 function c78063197.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c78063197.filter(chkc) end

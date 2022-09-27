@@ -26,7 +26,7 @@ function c81426505.filter3(c)
 	return c:IsFacedown()
 end
 function c81426505.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return 
+	if chk==0 then return
 		Duel.IsExistingMatchingCard(c81426505.filter1,tp,0,LOCATION_MZONE,1,nil) or
 		Duel.IsExistingMatchingCard(c81426505.filter2,tp,0,LOCATION_ONFIELD,1,nil) or
 		Duel.IsExistingMatchingCard(c81426505.filter3,tp,0,LOCATION_SZONE,1,nil)

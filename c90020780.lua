@@ -25,7 +25,7 @@ function c90020780.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c90020780.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp and c:IsRace(RACE_ZOMBIE)
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp) and c:IsRace(RACE_ZOMBIE)
 end
 function c90020780.drcon(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsContains(e:GetHandler()) then return false end

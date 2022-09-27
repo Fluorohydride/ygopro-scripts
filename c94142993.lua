@@ -1,5 +1,7 @@
 --ティンダングル・イントルーダー
 function c94142993.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94142993,0))
@@ -28,6 +30,7 @@ function c94142993.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,94142995)
+	e3:SetLabelObject(e0)
 	e3:SetCondition(c94142993.spcon)
 	e3:SetTarget(c94142993.sptg)
 	e3:SetOperation(c94142993.spop)
@@ -37,7 +40,7 @@ function c94142993.thfilter(c)
 	return c:IsSetCard(0x10b) and c:IsAbleToHand()
 end
 function c94142993.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c94142993.tgfilter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c94142993.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c94142993.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -62,11 +65,12 @@ function c94142993.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
 end
-function c94142993.cfilter(c,tp)
-	return c:IsPosition(POS_FACEDOWN_DEFENSE) and c:IsControler(tp)
+function c94142993.cfilter(c,tp,se)
+	return c:IsPosition(POS_FACEDOWN_DEFENSE) and c:IsControler(tp) and (se==nil or c:GetReasonEffect()~=se)
 end
 function c94142993.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c94142993.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c94142993.cfilter,1,nil,tp,se)
 end
 function c94142993.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

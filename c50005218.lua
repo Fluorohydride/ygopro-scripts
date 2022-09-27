@@ -43,7 +43,6 @@ function c50005218.thfilter(c)
 	return c:IsSetCard(0x115) and c:IsAbleToHand()
 end
 function c50005218.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	Duel.ConfirmDecktop(tp,3)
 	local g=Duel.GetDecktopGroup(tp,3)

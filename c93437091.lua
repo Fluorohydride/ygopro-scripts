@@ -28,6 +28,7 @@ function c93437091.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local tg=sg:RandomSelect(1-tp,1)
 		Duel.ShuffleDeck(tp)
+		tg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 	end
 end

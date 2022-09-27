@@ -34,7 +34,8 @@ function c21744288.costfilter(c,tp)
 	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsHasEffect(83289866,tp)
 end
 function c21744288.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c21744288.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
+	if chk==0 then return e:GetHandler():IsReleasable()
+		and Duel.IsExistingMatchingCard(c21744288.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c21744288.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local tc=g:Select(tp,1,1,nil):GetFirst()

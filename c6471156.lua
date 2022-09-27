@@ -28,7 +28,7 @@ function c6471156.initial_effect(c)
 end
 function c6471156.cfilter(c,tp)
 	local lv=c:GetLevel()
-	return lv>0 and c:IsSetCard(0x83) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+	return lv>0 and c:IsSetCard(0x1083) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingMatchingCard(c6471156.lvfilter,tp,LOCATION_MZONE,0,1,nil,lv)
 end
 function c6471156.lvfilter(c,lv)
@@ -44,7 +44,6 @@ end
 function c6471156.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lv=e:GetLabel()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c6471156.lvfilter,tp,LOCATION_MZONE,0,nil,0)
 	local lc=g:GetFirst()
 	while lc do
@@ -58,15 +57,15 @@ function c6471156.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c6471156.cfilter2(c,tp)
-	return c:IsSetCard(0x83) and c:IsReason(REASON_DESTROY)
+	return c:IsSetCard(0x1083) and c:IsReason(REASON_DESTROY)
 		and (c:IsReason(REASON_BATTLE) or c:GetReasonPlayer()==1-tp and c:IsReason(REASON_DESTROY))
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c6471156.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c6471156.cfilter2,1,nil,tp)
 end
 function c6471156.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x83) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsSetCard(0x1083) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c6471156.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c6471156.spfilter(chkc,e,tp) end
@@ -77,7 +76,6 @@ function c6471156.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c6471156.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

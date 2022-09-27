@@ -50,7 +50,6 @@ function c52534264.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:GetHandler():RegisterFlagEffect(52534264,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c52534264.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -78,7 +77,7 @@ function c52534264.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52534264.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,1,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_DECK) then
+	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_DECK) then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

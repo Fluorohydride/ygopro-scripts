@@ -69,7 +69,6 @@ function c27918963.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27918963.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then
 		local g=Duel.GetMatchingGroup(c27918963.filter1,tp,LOCATION_MZONE,0,nil)
 		local tc=g:GetFirst()

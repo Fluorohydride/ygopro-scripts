@@ -1,4 +1,4 @@
---Brutal Beast Battle
+--獣烈な争い
 function c36809777.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

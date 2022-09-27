@@ -22,7 +22,7 @@ function c38538445.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c38538445.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp 
+	return ep~=tp
 end
 function c38538445.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

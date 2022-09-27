@@ -18,39 +18,14 @@ function c24857466.initial_effect(c)
 	e3:SetTarget(c24857466.hsptg)
 	e3:SetOperation(c24857466.hspop)
 	c:RegisterEffect(e3)
-	--spell:damage
+	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(24857466,1))
-	e4:SetCategory(CATEGORY_DAMAGE)
-	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_CUSTOM+24857466)
-	e4:SetCondition(c24857466.damcon)
-	e4:SetTarget(c24857466.damtg)
-	e4:SetOperation(c24857466.damop)
+	e4:SetTarget(c24857466.target)
+	e4:SetOperation(c24857466.operation)
 	c:RegisterEffect(e4)
-	--trap:Destroy
-	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(24857466,2))
-	e5:SetCategory(CATEGORY_DESTROY)
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e5:SetCode(EVENT_CUSTOM+24857466)
-	e5:SetCondition(c24857466.descon)
-	e5:SetTarget(c24857466.destg)
-	e5:SetOperation(c24857466.desop)
-	c:RegisterEffect(e5)
-	--monster:spsummon
-	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(24857466,3))
-	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e6:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e6:SetCode(EVENT_CUSTOM+24857466)
-	e6:SetCondition(c24857466.spcon)
-	e6:SetTarget(c24857466.sptg)
-	e6:SetOperation(c24857466.spop)
-	c:RegisterEffect(e6)
 end
 function c24857466.chop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -66,7 +41,7 @@ function c24857466.chop(e,tp,eg,ep,ev,re,r,rp)
 			e:SetLabelObject(de)
 			c:SetFlagEffectLabel(24857466,ty)
 		else
-			c:SetFlagEffectLabel(24857466,bit.bor(flag,ty))
+			c:SetFlagEffectLabel(24857466,flag|ty)
 		end
 	end
 end
@@ -93,51 +68,76 @@ function c24857466.hspop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+24857466,e,0,0,tp,tpe)
 	end
 end
-function c24857466.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(ev,TYPE_SPELL)~=0
-end
-function c24857466.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetTargetPlayer(1-tp)
-	Duel.SetTargetParam(1500)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1500)
-end
-function c24857466.damop(e,tp,eg,ep,ev,re,r,rp)
-	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	Duel.Damage(p,d,REASON_EFFECT)
-end
-function c24857466.descon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(ev,TYPE_TRAP)~=0
-end
-function c24857466.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end
-	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
-end
-function c24857466.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
-		Duel.Destroy(tc,REASON_EFFECT)
-	end
-end
-function c24857466.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(ev,TYPE_MONSTER)~=0
-end
 function c24857466.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c24857466.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c24857466.spfilter(chkc,e,tp) end
+function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then
+		if ev==TYPE_TRAP then
+			return chkc:IsControler(1-tp) and chkc:IsOnField()
+		elseif ev==TYPE_MONSTER then
+			return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c24857466.spfilter(chkc,e,tp)
+		else
+			return false
+		end
+	end
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c24857466.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
+	local cat=0
+	local prop=0
+	if ev&TYPE_SPELL~=0 then
+		cat=cat|CATEGORY_DAMAGE
+		prop=prop|EFFECT_FLAG_PLAYER_TARGET
+		Duel.SetTargetPlayer(1-tp)
+		Duel.SetTargetParam(1500)
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1500)
+	end
+	if ev&TYPE_TRAP~=0 then
+		cat=cat|CATEGORY_DESTROY
+		prop=prop|EFFECT_FLAG_CARD_TARGET
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local g1=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
+		if g1:GetCount()>0 then
+			Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,1,0,0)
+		end
+	end
+	if ev&TYPE_MONSTER~=0 then
+		cat=cat|CATEGORY_SPECIAL_SUMMON
+		prop=prop|EFFECT_FLAG_CARD_TARGET
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g2=Duel.SelectTarget(tp,c24857466.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		if g2:GetCount()>0 then
+			Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g2,1,0,0)
+		end
+	end
+	e:SetCategory(cat)
+	e:SetProperty(prop)
+	e:SetLabel(ev)
 end
-function c24857466.spop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+function c24857466.operation(e,tp,eg,ep,ev,re,r,rp)
+	local typ=e:GetLabel()
+	local res=0
+	if typ&TYPE_SPELL~=0 then
+		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
+		res=Duel.Damage(p,d,REASON_EFFECT)
+	end
+	if typ&TYPE_TRAP~=0 then
+		local ex1,g1=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
+		if g1 then
+			local tc1=g1:GetFirst()
+			if tc1:IsRelateToEffect(e) then
+				if res~=0 then Duel.BreakEffect() end
+				res=Duel.Destroy(tc1,REASON_EFFECT)
+			end
+		end
+	end
+	if typ&TYPE_MONSTER~=0 then
+		local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_SPECIAL_SUMMON)
+		if g2 then
+			local tc2=g2:GetFirst()
+			if tc2:IsRelateToEffect(e) then
+				if res~=0 then Duel.BreakEffect() end
+				Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)
+			end
+		end
 	end
 end

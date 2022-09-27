@@ -1,5 +1,6 @@
 --幽獄の時計塔
 function c75041269.initial_effect(c)
+	aux.AddSetNameMonsterList(c,0xc008)
 	c:EnableCounterPermit(0x1b)
 	--Activate
 	local e1=Effect.CreateEffect(c)

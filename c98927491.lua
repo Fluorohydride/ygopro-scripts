@@ -23,7 +23,7 @@ function c98927491.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c98927491.filter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetPreviousControler()==tp
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c98927491.target(e,tp,eg,ep,ev,re,r,rp,chk)

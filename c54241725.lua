@@ -46,10 +46,11 @@ function c54241725.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c54241725.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()<=0 then return end
-	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local og=Duel.GetOperatedGroup()
+	if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then return end
 	Duel.ShuffleDeck(tp)
 	Duel.BreakEffect()
 	Duel.Draw(tp,1,REASON_EFFECT)
@@ -67,13 +68,13 @@ function c54241725.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54241725.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,TYPES_NORMAL_TRAP_MONSTER,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c54241725.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) then
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,TYPES_NORMAL_TRAP_MONSTER,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 	end

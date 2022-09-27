@@ -37,7 +37,7 @@ function c1995985.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:GetHandler():IsType(TYPE_SPELL) or rp==tp then return end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	if g and g:IsContains(e:GetHandler()) then 
+	if g and g:IsContains(e:GetHandler()) then
 		Duel.NegateEffect(ev)
 	end
 end

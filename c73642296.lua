@@ -24,13 +24,13 @@ function c73642296.discon(e,tp,eg,ep,ev,re,r,rp)
 	local ex3,g3,gc3,dp3,dv3=Duel.GetOperationInfo(ev,CATEGORY_TOEXTRA)
 	local ex4,g4,gc4,dp4,dv4=Duel.GetOperationInfo(ev,CATEGORY_SPECIAL_SUMMON)
 	local ex5,g5,gc5,dp5,dv5=Duel.GetOperationInfo(ev,CATEGORY_REMOVE)
-	local ex6=re:IsHasCategory(CATEGORY_GRAVE_ACTION)
-	return ((ex1 and (bit.band(dv1,LOCATION_GRAVE)==LOCATION_GRAVE or g1 and g1:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
-		or (ex2 and (bit.band(dv2,LOCATION_GRAVE)==LOCATION_GRAVE or g2 and g2:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
-		or (ex3 and (bit.band(dv3,LOCATION_GRAVE)==LOCATION_GRAVE or g3 and g3:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
-		or (ex4 and (bit.band(dv4,LOCATION_GRAVE)==LOCATION_GRAVE or g4 and g4:IsExists(c73642296.cfilter,1,nil)))
-		or (ex5 and (bit.band(dv5,LOCATION_GRAVE)==LOCATION_GRAVE or g5 and g5:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
-		or ex6)
+	return ((ex1 and (dv1&LOCATION_GRAVE==LOCATION_GRAVE or g1 and g1:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
+		or (ex2 and (dv2&LOCATION_GRAVE==LOCATION_GRAVE or g2 and g2:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
+		or (ex3 and (dv3&LOCATION_GRAVE==LOCATION_GRAVE or g3 and g3:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
+		or (ex4 and (dv4&LOCATION_GRAVE==LOCATION_GRAVE or g4 and g4:IsExists(c73642296.cfilter,1,nil)))
+		or (ex5 and (dv5&LOCATION_GRAVE==LOCATION_GRAVE or g5 and g5:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
+		or re:IsHasCategory(CATEGORY_GRAVE_SPSUMMON)
+		or re:IsHasCategory(CATEGORY_GRAVE_ACTION))
 		and Duel.IsChainNegatable(ev)
 end
 function c73642296.discost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -43,9 +43,5 @@ function c73642296.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c73642296.disop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) then
-		if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-			Duel.SendtoGrave(eg,REASON_EFFECT)
-		end
-	end
+	Duel.NegateActivation(ev)
 end

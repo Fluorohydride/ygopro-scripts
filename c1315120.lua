@@ -24,7 +24,7 @@ function c1315120.spcon(e,c)
 end
 function c1315120.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0 and c:IsReason(REASON_DESTROY) then
+	if c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(1315120,0))
 		e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -39,7 +39,7 @@ function c1315120.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c1315120.filter(c)
-	return c:IsSetCard(0x27) and c:GetCode()~=1315120 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x27) and not c:IsCode(1315120) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c1315120.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c1315120.filter,tp,LOCATION_DECK,0,1,nil) end

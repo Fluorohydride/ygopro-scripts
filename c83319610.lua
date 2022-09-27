@@ -43,7 +43,6 @@ function c83319610.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c83319610.filter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 end
 function c83319610.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)

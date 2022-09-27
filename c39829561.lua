@@ -25,7 +25,7 @@ function c39829561.filter(c)
 	return c:IsFaceup() and c:IsCode(83986578)
 end
 function c39829561.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(c39829561.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) 
+	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(c39829561.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 end
 function c39829561.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

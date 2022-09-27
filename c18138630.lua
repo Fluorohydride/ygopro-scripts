@@ -6,13 +6,7 @@ function c18138630.initial_effect(c)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e0)
 	--change code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_SZONE+LOCATION_GRAVE)
-	e1:SetValue(70245411)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,70245411,LOCATION_SZONE+LOCATION_GRAVE)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(18138630,0))
@@ -68,9 +62,9 @@ function c18138630.desop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local sc=g:Select(tp,1,1,nil)
 			if Duel.SelectOption(tp,aux.Stringid(18138630,3),aux.Stringid(18138630,4))==0 then
-				Duel.SendtoDeck(sc,nil,0,REASON_EFFECT)
+				Duel.SendtoDeck(sc,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else
-				Duel.SendtoDeck(sc,nil,1,REASON_EFFECT)
+				Duel.SendtoDeck(sc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 			end
 		end
 	end

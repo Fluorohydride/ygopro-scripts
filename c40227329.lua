@@ -56,12 +56,12 @@ function c40227329.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function c40227329.damcon(e)
-	return Duel.GetFlagEffect(tp,40227329)==0
+	return Duel.GetFlagEffect(e:GetHandlerPlayer(),40227329)==0
 end
 function c40227329.damval(e,re,val,r,rp,rc)
 	local c=e:GetHandler()
 	if bit.band(r,REASON_EFFECT)~=0 and c:GetFlagEffect(40227329)==0 then
-		Duel.RegisterFlagEffect(tp,40227329,RESET_PHASE+PHASE_END,0,1)
+		Duel.RegisterFlagEffect(e:GetHandlerPlayer(),40227329,RESET_PHASE+PHASE_END,0,1)
 		return 0
 	end
 	return val

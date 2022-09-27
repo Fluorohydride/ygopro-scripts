@@ -25,7 +25,7 @@ function c10178757.synlimit(e,c)
 end
 function c10178757.condition(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT)>0 and re:GetHandler():IsSetCard(0x2)
-		and e:GetHandler():GetPreviousLocation()==LOCATION_DECK and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousLocation(LOCATION_DECK) and e:GetHandler():IsPreviousControler(tp)
 end
 function c10178757.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -17,7 +17,7 @@ function c3019642.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
-	e2:SetCondition(c3019642.damcon)
+	e2:SetCondition(aux.bdocon)
 	e2:SetTarget(c3019642.damtg)
 	e2:SetOperation(c3019642.damop)
 	c:RegisterEffect(e2)
@@ -26,17 +26,18 @@ function c3019642.filter(c)
 	return c:IsLevelBelow(3) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c3019642.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c3019642.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and (chkc:IsControler(tp) or Duel.IsPlayerAffectedByEffect(tp,64753988)) and c3019642.filter(chkc) end
 	if chk==0 then return true end
+	local loc=Duel.IsPlayerAffectedByEffect(tp,64753988) and LOCATION_GRAVE or 0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c3019642.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c3019642.filter,tp,LOCATION_GRAVE,loc,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c3019642.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end
@@ -67,10 +68,6 @@ function c3019642.eqlimit(e,c)
 end
 function c3019642.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
-end
-function c3019642.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsRelateToBattle() and c:GetBattleTarget():IsType(TYPE_MONSTER)
 end
 function c3019642.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

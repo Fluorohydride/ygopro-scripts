@@ -50,13 +50,12 @@ function c39712330.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39712330.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if e:GetLabel()~=1 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 	local g=Duel.SelectMatchingCard(tp,c39712330.filter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		if tc:IsSummonable(true,nil) and (not tc:IsMSetable(true,nil) 
+		if tc:IsSummonable(true,nil) and (not tc:IsMSetable(true,nil)
 			or Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)==POS_FACEUP_ATTACK) then
 			Duel.Summon(tp,tc,true,nil)
 		else Duel.MSet(tp,tc,true,nil) end
@@ -85,7 +84,6 @@ function c39712330.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c39712330.activate2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 	local g=Duel.SelectMatchingCard(tp,c39712330.filter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()

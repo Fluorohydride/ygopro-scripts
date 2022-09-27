@@ -71,13 +71,14 @@ function c31833038.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local zone=bit.band(c:GetLinkedZone(),0x1f)
 		return Duel.GetAttacker()==c and tc and tc:IsControlerCanBeChanged(false,zone)
 	end
+	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,tc,1,0,0)
 end
 function c31833038.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local tc=Duel.GetAttackTarget()
-	if tc then
+	local tc=Duel.GetFirstTarget()
+	if tc:IsRelateToEffect(e) then
 		local zone=bit.band(c:GetLinkedZone(),0x1f)
 		if Duel.GetControl(tc,tp,0,0,zone)~=0 then
 			tc:RegisterFlagEffect(31833038,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)

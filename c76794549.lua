@@ -4,7 +4,7 @@ function c76794549.initial_effect(c)
 	--pendulum set/spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(76794549,0))
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1,76794549)
@@ -23,7 +23,7 @@ function c76794549.initial_effect(c)
 	e2:SetTarget(c76794549.sptg)
 	e2:SetOperation(c76794549.spop)
 	c:RegisterEffect(e2)
-	--special summon
+	--fusion summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(76794549,5))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -62,7 +62,7 @@ function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76794549.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c76794549.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0
@@ -82,7 +82,6 @@ end
 function c76794549.rptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76794549.rpfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c76794549.rpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

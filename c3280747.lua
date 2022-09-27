@@ -20,7 +20,7 @@ function c3280747.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p=1
 	for i=1,6 do t[i]=i end
 	local a1=Duel.AnnounceNumber(tp,table.unpack(t))
-	for i=1,6 do 
+	for i=1,6 do
 		if a1~=i then t[p]=i p=p+1 end
 	end
 	t[p]=nil

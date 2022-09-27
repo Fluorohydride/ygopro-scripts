@@ -34,6 +34,8 @@ function c55704856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg=Duel.GetMatchingGroup(c55704856.filter0,tp,LOCATION_MZONE+LOCATION_REMOVED,0,nil)
+		local mg2=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsLocation),nil,LOCATION_HAND)
+		mg:Merge(mg2)
 		local res=Duel.IsExistingMatchingCard(c55704856.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -51,6 +53,8 @@ end
 function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg=Duel.GetMatchingGroup(c55704856.filter1,tp,LOCATION_MZONE+LOCATION_REMOVED,0,nil,e)
+	local mg2=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsLocation),nil,LOCATION_HAND)
+	mg:Merge(mg2)
 	local sg1=Duel.GetMatchingGroup(c55704856.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -75,7 +79,7 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 				local cg=mat:Filter(Card.IsFacedown,nil)
 				Duel.ConfirmCards(1-tp,cg)
 			end
-			Duel.SendtoDeck(mat,nil,2,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+			Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
@@ -84,18 +88,20 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
+		local fid=e:GetHandler():GetFieldID()
+		tc:RegisterFlagEffect(55704856,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_OATH)
 		e1:SetTargetRange(LOCATION_MZONE,0)
 		e1:SetTarget(c55704856.ftarget)
-		e1:SetLabel(tc:GetFieldID())
+		e1:SetLabel(fid)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 	aux.FCheckAdditional=nil
 end
 function c55704856.ftarget(e,c)
-	return e:GetLabel()~=c:GetFieldID()
+	return e:GetLabel()~=c:GetFlagEffectLabel(55704856)
 end

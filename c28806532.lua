@@ -32,13 +32,14 @@ function c28806532.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28806532.tfcfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0x109) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0x109) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c28806532.tfcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28806532.tfcfilter,1,e:GetHandler(),tp)
 end
 function c28806532.tffilter(c,tp)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSetCard(0x109) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and not c:IsType(TYPE_FIELD) and c:IsSetCard(0x109)
+		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
 function c28806532.tftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c28806532.tffilter(chkc,tp) end
@@ -46,6 +47,7 @@ function c28806532.tftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c28806532.tffilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),2)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectTarget(tp,c28806532.tffilter,tp,LOCATION_GRAVE,0,1,ct,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,g:GetCount(),0,0)
 end
@@ -66,7 +68,7 @@ function c28806532.spreg(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return end
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if c:IsReason(REASON_COST) and rc:IsSetCard(0x109) then
+	if c:IsReason(REASON_COST) and rc:IsSetCard(0x109) and c:IsPreviousLocation(LOCATION_ONFIELD) and re:IsActivated() then
 		e:SetLabel(Duel.GetTurnCount()+1)
 		c:RegisterFlagEffect(28806532,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 	end

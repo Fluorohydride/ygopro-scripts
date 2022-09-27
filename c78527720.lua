@@ -53,7 +53,7 @@ function c78527720.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,eqg:GetFirst(),c)
 	end
 end
-function c78527720.eqcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c78527720.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and Duel.GetAttackTarget()==nil
 end
 function c78527720.eqfilter(c,tc,tp)

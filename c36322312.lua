@@ -1,4 +1,4 @@
---Boot-Up Admiral - Destroyer Dynamo
+--起動提督デストロイリボルバー
 function c36322312.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

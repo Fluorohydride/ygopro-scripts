@@ -14,7 +14,7 @@ function c1527418.initial_effect(c)
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(1527418,1))
-	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_REMOVE)
+	e2:SetCategory(CATEGORY_NEGATE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCode(EVENT_CHAINING)
@@ -56,7 +56,5 @@ function c1527418.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c1527418.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_EFFECT)
-	end
+	Duel.NegateActivation(ev)
 end

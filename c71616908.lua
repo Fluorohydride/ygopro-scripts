@@ -25,7 +25,7 @@ function c71616908.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c71616908.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c71616908.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end

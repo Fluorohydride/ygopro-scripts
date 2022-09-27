@@ -15,7 +15,6 @@ end
 function c99927991.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c99927991.filter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4+g:GetCount() end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c99927991.thfilter(c,lv)
 	return c:IsRace(RACE_ROCK) and c:IsLevelBelow(lv) and c:IsAbleToHand()
@@ -40,7 +39,7 @@ function c99927991.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SortDecktop(tp,tp,ct)
 			for i=1,ct do
 				local mg=Duel.GetDecktopGroup(tp,1)
-				Duel.MoveSequence(mg:GetFirst(),1)
+				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 			end
 		end
 	end

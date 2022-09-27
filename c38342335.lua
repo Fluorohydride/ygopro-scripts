@@ -1,7 +1,7 @@
 --トロイメア・ユニコーン
 function c38342335.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c38342335.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c38342335.lcheck)
 	c:EnableReviveLimit()
 	--todeck
 	local e1=Effect.CreateEffect(c)
@@ -53,7 +53,7 @@ function c38342335.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38342335.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA)
 		and e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)
 		and Duel.SelectYesNo(tp,aux.Stringid(38342335,1)) then

@@ -20,7 +20,7 @@ function c32362575.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local spcard=nil
 	while tc do
-		if tc:GetSequence()>seq then 
+		if tc:GetSequence()>seq then
 			seq=tc:GetSequence()
 			spcard=tc
 		end

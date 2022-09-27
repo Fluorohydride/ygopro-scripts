@@ -1,5 +1,6 @@
 --海竜神－ネオダイダロス
 function c10485110.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

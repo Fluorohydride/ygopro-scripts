@@ -33,7 +33,6 @@ function c79922118.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79922118.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c79922118.filter,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do

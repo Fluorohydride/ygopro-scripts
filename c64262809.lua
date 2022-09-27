@@ -15,7 +15,7 @@ function c64262809.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c64262809.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c64262809.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c64262809.cfilter,1,nil,tp)

@@ -32,7 +32,7 @@ function c5851097.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5851097.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c5851097.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c5851097.desop(e,tp,eg,ep,ev,re,r,rp)

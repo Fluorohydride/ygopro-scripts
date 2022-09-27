@@ -79,7 +79,7 @@ function c53701259.filter(c)
 	return c:IsFaceup() and c:IsCode(6007213,32491822,69890967)
 end
 function c53701259.cfilter(c,sp)
-	return c:GetSummonPlayer()==sp and c:IsFaceup()
+	return c:IsSummonPlayer(sp) and c:IsFaceup()
 end
 function c53701259.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c53701259.filter,tp,LOCATION_ONFIELD,0,nil)

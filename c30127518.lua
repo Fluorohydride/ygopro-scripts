@@ -10,7 +10,7 @@ function c30127518.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30127518.cfilter(c,sp,e)
-	return c:IsFaceup() and c:GetSummonPlayer()==sp and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and c:IsSummonPlayer(sp) and (not e or c:IsRelateToEffect(e))
 end
 function c30127518.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c30127518.cfilter,2,nil,1-tp) end

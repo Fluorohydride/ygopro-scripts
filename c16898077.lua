@@ -83,7 +83,7 @@ function c16898077.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c16898077.dfilter(c,e,sp)
-	return c:GetSummonPlayer()==sp and (not e or c:IsRelateToEffect(e))
+	return c:IsSummonPlayer(sp) and (not e or c:IsRelateToEffect(e))
 end
 function c16898077.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.dfilter,1,nil,nil,1-tp) end

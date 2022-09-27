@@ -1,4 +1,4 @@
---Scrypton
+--スクリプトン
 function c56161953.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -61,6 +61,6 @@ end
 function c56161953.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

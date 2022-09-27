@@ -25,5 +25,5 @@ function c80108118.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0)
 	if g:GetCount()==0 then return end
 	local sg=g:RandomSelect(1-tp,1)
-	Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 end

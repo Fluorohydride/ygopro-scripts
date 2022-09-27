@@ -17,7 +17,7 @@ function c79707116.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c79707116.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c79707116.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and bit.band(r,REASON_EFFECT)~=0 and eg:IsExists(c79707116.cfilter,1,nil,1-tp)
@@ -29,7 +29,6 @@ function c79707116.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,300)
 end
 function c79707116.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

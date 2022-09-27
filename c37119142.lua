@@ -28,14 +28,22 @@ end
 function c37119142.exmfilter(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsCode(37119142)
 end
-function c37119142.matval(e,c,mg)
-	return c:IsSetCard(0x101) and mg:IsExists(c37119142.mfilter,1,nil) and not mg:IsExists(c37119142.exmfilter,1,nil)
+function c37119142.matval(e,lc,mg,c,tp)
+	if not lc:IsSetCard(0x101) then return false,nil end
+	return true,not mg or mg:IsExists(c37119142.mfilter,1,nil) and not mg:IsExists(c37119142.exmfilter,1,nil)
 end
 function c37119142.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	e:SetLabel(0)
-	if c:IsPreviousLocation(LOCATION_ONFIELD) then e:SetLabel(1) end
-	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101)
+	if c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101) then
+		if c:IsPreviousLocation(LOCATION_ONFIELD) then
+			e:SetLabel(1)
+			c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(37119142,1))
+		end
+		return true
+	else
+		return false
+	end
 end
 function c37119142.thfilter(c,e,tp,chk)
 	return c:IsRace(RACE_CYBERSE) and c:IsLevelBelow(4)
@@ -66,6 +74,7 @@ function c37119142.thop(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 		end

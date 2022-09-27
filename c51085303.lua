@@ -23,6 +23,12 @@ function c51085303.initial_effect(c)
 	e3:SetTargetRange(0,LOCATION_MZONE)
 	e3:SetValue(c51085303.atlimit)
 	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetTargetRange(0,LOCATION_MZONE)
+	c:RegisterEffect(e4)
 end
 function c51085303.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp

@@ -48,7 +48,7 @@ function c98506199.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c98506199.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c98506199.tdcon(e,tp,eg,ep,ev,re,r,rp)
@@ -64,6 +64,6 @@ end
 function c98506199.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

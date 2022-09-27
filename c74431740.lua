@@ -67,13 +67,15 @@ function c74431740.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c74431740.tdfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.GetMatchingGroup(c74431740.tdfilter,tp,LOCATION_GRAVE,0,e:GetHandler(),e)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,#g)
+	aux.GCheckAdditional=aux.dncheck
+	local sg=g:SelectSubGroup(tp,aux.TRUE,false,1,#g)
+	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,sg,#sg,0,0)
 end
 function c74431740.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

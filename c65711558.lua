@@ -69,10 +69,16 @@ end
 function c65711558.atktg(e,c)
 	return c:IsSetCard(0x137)
 end
+function c65711558.tgfilter(c,ec)
+	return c65711558.thfilter(c) and c:GetEquipTarget()~=ec
+end
+function c65711558.costfilter(c,tp)
+	return c:IsAbleToGraveAsCost() and Duel.IsExistingTarget(c65711558.tgfilter,tp,0,LOCATION_ONFIELD,1,nil,c)
+end
 function c65711558.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c65711558.costfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToGraveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c65711558.costfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c65711558.thfilter(c)

@@ -17,7 +17,7 @@ function c43114901.thcon(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.IsDualState(e) then return false end
 	local tc=eg:GetFirst()
 	return eg:GetCount()==1 and tc:GetReasonCard()==e:GetHandler()
-		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE) 
+		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)
 end
 function c43114901.filter(c)
 	return c:IsSetCard(0x1047) and c:IsAbleToHand()

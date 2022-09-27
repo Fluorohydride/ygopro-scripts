@@ -71,14 +71,13 @@ function c88851326.atkfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c88851326.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) and c88851326.atkfilter(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c88851326.atkfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c88851326.atkfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c88851326.atkfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c88851326.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
@@ -94,7 +93,7 @@ function c88851326.settg(e,c)
 	return c:IsLocation(LOCATION_HAND)
 end
 function c88851326.attg(e,c)
-	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c88851326.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0

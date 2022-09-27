@@ -43,7 +43,6 @@ function c93149655.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(tc)
 end
 function c93149655.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		local e1=Effect.CreateEffect(e:GetHandler())

@@ -44,7 +44,7 @@ end
 function c4688231.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local g1=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
-	if Duel.SendtoDeck(g1,nil,0,REASON_EFFECT)~=0 then
+	if Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 		local g2=g:Filter(Card.IsLocation,nil,LOCATION_ONFIELD)

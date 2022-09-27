@@ -1,6 +1,7 @@
 --ミラクル・コンタクト
 function c35255456.initial_effect(c)
 	aux.AddCodeList(c,89943723)
+	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -14,7 +15,7 @@ function c35255456.filter1(c,e)
 	return c:IsAbleToDeck() and not c:IsImmuneToEffect(e)
 end
 function c35255456.filter2(c,e,tp,m,chkf)
-	return c:IsSetCard(0x3008) and aux.IsMaterialListCode(c,89943723)
+	return c:IsSetCard(0x3008) and c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,89943723)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
 end
 function c35255456.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -41,7 +42,7 @@ function c35255456.activate(e,tp,eg,ep,ev,re,r,rp)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)
 		end
-		Duel.SendtoDeck(mat,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 	end
 end

@@ -65,7 +65,7 @@ function c94973028.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c94973028.spcon(e,tp,eg,ep,ev,re,r,rp) then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=1 then return end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,0x4011,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,TYPES_TOKEN_MONSTER,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
 		local token=Duel.CreateToken(tp,94973029)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		token=Duel.CreateToken(tp,94973029)

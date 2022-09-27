@@ -30,7 +30,7 @@ function c43575579.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local tg=Duel.SelectMatchingCard(tp,c43575579.tdfilter,tp,LOCATION_REMOVED,0,1,1,nil)
 		if tg:GetCount()>0 then
-			Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

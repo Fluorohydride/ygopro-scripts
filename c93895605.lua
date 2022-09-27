@@ -29,7 +29,7 @@ function c93895605.activate(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if a:IsRelateToEffect(e) and a:IsAttackable() and not a:IsStatus(STATUS_ATTACK_CANCELED) 
+	if a:IsRelateToEffect(e) and a:IsAttackable() and not a:IsStatus(STATUS_ATTACK_CANCELED)
 		and d:IsFaceup() and d:IsRelateToEffect(e) then
 		Duel.Destroy(g,REASON_EFFECT)
 		if not a:IsOnField() then

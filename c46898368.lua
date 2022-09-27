@@ -41,7 +41,7 @@ function c46898368.splimit(e,c)
 end
 function c46898368.filter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_LINK) and Duel.IsPlayerCanDraw(tp,c:GetLink())
-end	
+end
 function c46898368.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c46898368.filter(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c46898368.filter,tp,0,LOCATION_MZONE,1,nil,tp) end

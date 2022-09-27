@@ -11,6 +11,7 @@ function c81601517.initial_effect(c)
 	e1:SetOperation(c81601517.activate)
 	c:RegisterEffect(e1)
 end
+c81601517.has_text_type=TYPE_DUAL
 function c81601517.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end

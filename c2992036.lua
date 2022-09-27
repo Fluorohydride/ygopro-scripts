@@ -3,7 +3,7 @@ function c2992036.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(2992036,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_ACTION+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -19,7 +19,7 @@ function c2992036.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
-	e1:SetCountLimit(1,100424122)
+	e1:SetCountLimit(1,2992037)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e2:SetCondition(c2992036.descon)
 	e2:SetCost(aux.bfgcost)
@@ -44,17 +44,16 @@ function c2992036.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local tg=g:SelectSubGroup(tp,c2992036.fselect,false,3,3,e,tp)
 	Duel.SetTargetCard(tg)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,0,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,0,0,0)
 end
 function c2992036.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if aux.NecroValleyNegateCheck(tg) then return end
 	if tg:GetCount()>0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		local b1=tg:IsExists(Card.IsAbleToHand,1,nil)
+		local b1=tg:FilterCount(Card.IsAbleToHand,nil)==#tg
 		local ct=tg:FilterCount(Card.IsCanBeSpecialSummoned,nil,e,0,tp,true,false)
-		local b2=ct>0 and ft>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
-		local opt=0
+		local b2=ct==#tg and ft>=ct and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
+		local opt=-1
 		if b1 and not b2 then
 			opt=Duel.SelectOption(tp,1190)
 		elseif not b1 and b2 then
@@ -64,17 +63,8 @@ function c2992036.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if opt==0 then
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
-		else
-			local sg=tg:Filter(Card.IsCanBeSpecialSummoned,nil,e,0,tp,true,false)
-			if sg:GetCount()<=ft then
-				Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
-			else
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local pg=sg:Select(tp,ft,ft,nil)
-				Duel.SpecialSummon(pg,0,tp,tp,true,false,POS_FACEUP)
-				sg:Sub(pg)
-				Duel.SendtoGrave(sg,REASON_RULE)
-			end
+		elseif opt==1 then
+			Duel.SpecialSummon(tg,0,tp,tp,true,false,POS_FACEUP)
 		end
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then

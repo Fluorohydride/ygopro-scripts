@@ -30,7 +30,7 @@ function c28348537.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c28348537.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c28348537.actlimit(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

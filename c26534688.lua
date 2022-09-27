@@ -9,7 +9,6 @@ function c26534688.initial_effect(c)
 	--lv
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(26534688,0))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_FZONE)
@@ -37,7 +36,7 @@ function c26534688.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26534688,3))
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc,0)
+		Duel.MoveSequence(tc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end
@@ -64,7 +63,7 @@ function c26534688.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c26534688.rmfilter(c,tp)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsType(TYPE_SYNCHRO) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsType(TYPE_SYNCHRO) and c:IsSummonPlayer(tp)
 end
 function c26534688.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) and eg:IsExists(c26534688.rmfilter,1,nil,tp)

@@ -24,7 +24,7 @@ function c81020140.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c81020140.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(g:GetFirst(),0)
+		Duel.MoveSequence(g:GetFirst(),SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end

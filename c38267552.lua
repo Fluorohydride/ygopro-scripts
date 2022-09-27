@@ -1,5 +1,6 @@
---Morpheus, the Dream Mirror Black Knight
+--夢魔鏡の黒騎士－ルペウス
 function c38267552.initial_effect(c)
+	aux.AddCodeList(c,74665651)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(38267552,0))
@@ -56,7 +57,7 @@ function c38267552.spfilter(c,e,tp)
 	return c:IsCode(1872843) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c38267552.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetMZoneCount(tp,c)>0
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0
 		and Duel.IsExistingMatchingCard(c38267552.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end

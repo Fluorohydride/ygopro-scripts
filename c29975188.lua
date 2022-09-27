@@ -1,13 +1,7 @@
 --サイバー・ドラゴン・フィーア
 function c29975188.initial_effect(c)
 	--code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e1:SetValue(70095154)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,70095154,LOCATION_MZONE+LOCATION_GRAVE)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(29975188,0))
@@ -38,7 +32,7 @@ function c29975188.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c29975188.cfilter(c,tp)
-	return c:IsFaceup() and c:IsCode(70095154) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsCode(70095154) and c:IsSummonPlayer(tp)
 end
 function c29975188.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c29975188.cfilter,1,nil,tp)

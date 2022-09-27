@@ -18,7 +18,7 @@ function c40343749.condition(e,tp,eg,ep,ev,re,r,rp)
 		return c:GetReasonPlayer()==1-tp and bit.band(c:GetBattlePosition(),POS_FACEUP)~=0
 	end
 	return rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c40343749.filter(c,e,tp)
 	return c:IsSetCard(0x80) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

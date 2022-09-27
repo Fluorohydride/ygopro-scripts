@@ -25,7 +25,7 @@ function c11868731.initial_effect(c)
 end
 function c11868731.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
-		and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousControler(tp)
 end
 function c11868731.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -33,7 +33,7 @@ function c11868731.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11868731.retop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c11868731.filter(c)

@@ -1,4 +1,4 @@
---Feedran, the Winds of Mischief
+--いたずら風のフィードラン
 function c92597893.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

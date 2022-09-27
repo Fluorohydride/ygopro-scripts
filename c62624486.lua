@@ -23,7 +23,7 @@ end
 function c62624486.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	return eg:GetCount()==1 and tc:GetReasonCard()==e:GetHandler()
-		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE) 
+		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)
 end
 function c62624486.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

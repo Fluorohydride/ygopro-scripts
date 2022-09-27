@@ -36,7 +36,7 @@ function c52035300.filter(c)
 end
 function c52035300.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
-		and not Duel.IsExistingMatchingCard(c52035300.filter,tp,LOCATION_GRAVE,0,1,nil) 
+		and not Duel.IsExistingMatchingCard(c52035300.filter,tp,LOCATION_GRAVE,0,1,nil)
 end
 function c52035300.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

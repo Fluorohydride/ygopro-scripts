@@ -14,7 +14,7 @@ function c56343672.initial_effect(c)
 end
 function c56343672.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_COST)
+	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c56343672.spfilter(c,e,tp)
 	return c:GetLevel()>0 and not c:IsCode(56343672) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -54,6 +54,7 @@ function c56343672.spop(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 			tc:RegisterFlagEffect(56343672,RESET_EVENT+RESETS_STANDARD,0,1,fid)

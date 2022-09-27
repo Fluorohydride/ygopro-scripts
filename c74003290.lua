@@ -48,14 +48,15 @@ function c74003290.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 		Duel.AdjustInstantly(tc)
+		local batk=tc:GetBaseAttack()
 		local e3=e1:Clone()
-		e3:SetCode(EFFECT_SET_BASE_ATTACK)
-		e3:SetValue(math.ceil(tc:GetBaseAttack()/2))
+		e3:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
+		e3:SetValue(math.ceil(batk/2))
 		tc:RegisterEffect(e3)
 	end
 end
 function c74003290.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:GetPreviousControler()==1-tp
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsPreviousControler(1-tp)
 end
 function c74003290.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74003290.cfilter,1,nil,tp)

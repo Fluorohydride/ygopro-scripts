@@ -1,4 +1,4 @@
---水晶機巧－スモーガ－
+--水晶機巧－スモーガー
 function c83443619.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

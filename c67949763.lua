@@ -13,7 +13,7 @@ function c67949763.initial_effect(c)
 end
 function c67949763.filter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,67949764,0x87,0x4011,-2,0,1,RACE_FIEND,ATTRIBUTE_DARK)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,67949764,0x87,TYPES_TOKEN_MONSTER,-2,0,1,RACE_FIEND,ATTRIBUTE_DARK)
 end
 function c67949763.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c67949763.filter(chkc,tp) end
@@ -36,7 +36,7 @@ function c67949763.activate(e,tp,eg,ep,ev,re,r,rp)
 			atk=tc:GetAttack()
 			cr=true
 		end
-		if not Duel.IsPlayerCanSpecialSummonMonster(tp,67949764,0x87,0x4011,-2,0,1,RACE_FIEND,ATTRIBUTE_DARK) then return end
+		if not Duel.IsPlayerCanSpecialSummonMonster(tp,67949764,0x87,TYPES_TOKEN_MONSTER,-2,0,1,RACE_FIEND,ATTRIBUTE_DARK) then return end
 		if cr then
 			local de=Effect.CreateEffect(e:GetHandler())
 			de:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
@@ -48,25 +48,25 @@ function c67949763.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		for i=1,3 do
 			local token=Duel.CreateToken(tp,67949764)
-			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			token:RegisterEffect(e1,true)
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetCode(EFFECT_UNRELEASABLE_NONSUM)
-			e2:SetValue(1)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			token:RegisterEffect(e2,true)
-			local e3=Effect.CreateEffect(e:GetHandler())
-			e3:SetType(EFFECT_TYPE_SINGLE)
-			e3:SetCode(EFFECT_SET_ATTACK)
-			e3:SetValue(atk)
-			e3:SetLabelObject(tc)
-			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
-			token:RegisterEffect(e3,true)
+			if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP) then
+				local e1=Effect.CreateEffect(e:GetHandler())
+				e1:SetType(EFFECT_TYPE_SINGLE)
+				e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+				token:RegisterEffect(e1)
+				local e2=Effect.CreateEffect(e:GetHandler())
+				e2:SetType(EFFECT_TYPE_SINGLE)
+				e2:SetCode(EFFECT_UNRELEASABLE_NONSUM)
+				e2:SetValue(1)
+				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+				token:RegisterEffect(e2)
+				local e3=Effect.CreateEffect(e:GetHandler())
+				e3:SetType(EFFECT_TYPE_SINGLE)
+				e3:SetCode(EFFECT_SET_ATTACK)
+				e3:SetValue(atk)
+				e3:SetReset(RESET_EVENT+RESETS_STANDARD)
+				token:RegisterEffect(e3)
+			end
 			if cr then
 				token:RegisterFlagEffect(67949764,RESET_EVENT+RESETS_STANDARD,0,0,rfid)
 				tc:CreateRelation(token,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)

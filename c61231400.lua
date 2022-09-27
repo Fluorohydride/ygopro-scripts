@@ -23,7 +23,7 @@ end
 function c61231400.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,1,1)
 	c:SetMaterial(g)
-	Duel.Release(g, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 	--damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(61231400,1))

@@ -52,13 +52,13 @@ function c43228023.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterEffect(e1)
 end
 function c43228023.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	local ct=1
 	if e:GetHandler():GetFlagEffect(43228023)>0 then ct=3 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,ct,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,#g,0,0)
 end
 function c43228023.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)

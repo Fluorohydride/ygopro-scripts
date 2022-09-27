@@ -60,7 +60,6 @@ function c28151978.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c28151978.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
@@ -72,6 +71,6 @@ function c28151978.synlimit(e,c)
 end
 function c28151978.rmcon(e)
 	local c=e:GetHandler()
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 		and bit.band(c:GetReason(),REASON_MATERIAL+REASON_SYNCHRO)==REASON_MATERIAL+REASON_SYNCHRO
 end

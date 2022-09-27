@@ -38,7 +38,7 @@ function c63767246.initial_effect(c)
 	e3:SetOperation(c63767246.atkop)
 	c:RegisterEffect(e3)
 end
-c63767246.xyz_number=38
+aux.xyz_number[63767246]=38
 function c63767246.discon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return bit.band(loc,LOCATION_SZONE)~=0
@@ -74,10 +74,14 @@ function c63767246.cbop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63767246.atkfilter1(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_XYZ) and c:GetBaseAttack()>0
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c63767246.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c63767246.atkfilter1,1,nil,tp)
+	local g=eg:Filter(c63767246.atkfilter1,nil,tp)
+	if #g==0 then return false end
+	g:KeepAlive()
+	e:SetLabelObject(g)
+	return true
 end
 function c63767246.atkfilter2(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
@@ -85,9 +89,6 @@ end
 function c63767246.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c63767246.atkfilter2(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c63767246.atkfilter2,tp,LOCATION_MZONE,0,1,nil) end
-	local g=eg:Filter(c63767246.atkfilter1,nil,tp)
-	g:KeepAlive()
-	e:SetLabelObject(g)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c63767246.atkfilter2,tp,LOCATION_MZONE,0,1,1,nil)
 end
@@ -108,4 +109,5 @@ function c63767246.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 	end
+	e:GetLabelObject():DeleteGroup()
 end

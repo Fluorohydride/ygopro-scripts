@@ -59,12 +59,12 @@ function c14509651.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-		Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c14509651.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	if c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and rp==1-tp and bit.band(r,REASON_DESTROY)~=0 then
 		c:RegisterFlagEffect(14509651,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end

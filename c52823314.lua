@@ -12,7 +12,7 @@ function c52823314.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52823314.filter(c)
-	return c:GetCode()~=52823314 and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
+	return not c:IsCode(52823314) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 end
 function c52823314.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c52823314.filter(chkc) end
@@ -24,6 +24,6 @@ end
 function c52823314.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

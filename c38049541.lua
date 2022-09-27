@@ -23,7 +23,7 @@ function c38049541.costg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
 	if chk==0 then return Duel.IsExistingTarget(c38049541.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,0x7f)
+	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c38049541.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	e:SetLabel(att)

@@ -13,7 +13,7 @@ function c2881864.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c2881864.repfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsControler(tp) and c:IsOnField()
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c2881864.desfilter(c,e,tp)

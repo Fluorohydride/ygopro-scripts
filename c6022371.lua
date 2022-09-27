@@ -53,10 +53,8 @@ function c6022371.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_CANNOT_TRIGGER)
-		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-		e2:SetRange(LOCATION_MZONE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e2)
+		tc:RegisterEffect(e2,true)
 		tc=g:GetNext()
 	end
 end

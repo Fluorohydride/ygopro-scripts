@@ -28,7 +28,7 @@ function c82005435.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sg=Duel.GetMatchingGroup(c82005435.filter,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,sg,sg:GetCount(),0,0)
 end
-function c82005435.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c82005435.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c82005435.filter,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SendtoHand(sg,nil,REASON_EFFECT)
 end

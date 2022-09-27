@@ -58,7 +58,7 @@ function c4417407.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4417407.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,0x4011,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,TYPES_TOKEN_MONSTER,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
 		local token=Duel.CreateToken(tp,4417408)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end
@@ -69,7 +69,7 @@ function c4417407.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c4417407.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENSE) and c:IsCanChangePosition()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c4417407.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c4417407.filter(chkc) end

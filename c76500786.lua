@@ -1,4 +1,4 @@
---Star Power!!
+--一曲集中
 function c76500786.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -27,7 +27,7 @@ function c76500786.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	local lg=tc:GetLinkedGroup()
-	if tc:IsRelateToBattle() and not tc:IsImmuneToEffect(e) and lg then
+	if tc:IsControler(tp) and tc:IsRelateToBattle() and lg then
 		local atk=lg:GetSum(c76500786.lv_or_rk)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

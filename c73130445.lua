@@ -34,13 +34,12 @@ function c73130445.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c73130445.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
 function c73130445.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp or c:IsReason(REASON_BATTLE) and c==Duel.GetAttackTarget())
 end
 function c73130445.drcon(e,tp,eg,ep,ev,re,r,rp)

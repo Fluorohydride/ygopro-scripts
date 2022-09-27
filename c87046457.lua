@@ -66,7 +66,6 @@ function c87046457.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87046457.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local atkg=e:GetLabelObject()
 	if c:GetFlagEffect(87046457)==0 then
 		c:RegisterFlagEffect(87046457,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)

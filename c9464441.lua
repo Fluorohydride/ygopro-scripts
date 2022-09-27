@@ -29,7 +29,6 @@ function c9464441.initial_effect(c)
 end
 function c9464441.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4 end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,1-tp,LOCATION_ONFIELD)
 end
 function c9464441.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<=4 then return end
@@ -46,7 +45,7 @@ function c9464441.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,g:GetCount())
 		for i=1,g:GetCount() do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

@@ -8,9 +8,9 @@ function c34334692.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c34334692.rlevel(e,c)
-	local lv=e:GetHandler():GetLevel()
+	local lv=aux.GetCappedLevel(e:GetHandler())
 	if c:IsAttribute(ATTRIBUTE_DARK) then
 		local clv=c:GetLevel()
-		return lv*65536+clv
+		return (lv<<16)+clv
 	else return lv end
 end

@@ -28,17 +28,25 @@ end
 function c75130221.exmfilter(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsCode(75130221)
 end
-function c75130221.matval(e,c,mg)
-	return c:IsSetCard(0x101) and mg:IsExists(c75130221.mfilter,1,nil) and not mg:IsExists(c75130221.exmfilter,1,nil)
+function c75130221.matval(e,lc,mg,c,tp)
+	if not lc:IsSetCard(0x101) then return false,nil end
+	return true,not mg or mg:IsExists(c75130221.mfilter,1,nil) and not mg:IsExists(c75130221.exmfilter,1,nil)
 end
 function c75130221.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	e:SetLabel(0)
-	if c:IsPreviousLocation(LOCATION_ONFIELD) then e:SetLabel(1) end
-	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101)
+	if c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101) then
+		if c:IsPreviousLocation(LOCATION_ONFIELD) then
+			e:SetLabel(1)
+			c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(75130221,1))
+		end
+		return true
+	else
+		return false
+	end
 end
 function c75130221.disfilter(c)
-	return c:IsFaceup() and (c:IsAttackAbove(1) or aux.disfilter1(c))
+	return c:IsFaceup() and (c:GetAttack()>0 or aux.NegateMonsterFilter(c))
 end
 function c75130221.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c75130221.disfilter(chkc) end

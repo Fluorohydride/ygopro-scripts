@@ -47,7 +47,7 @@ function c20747792.spfilter(c,e,tp)
 	return c:IsSetCard(0x20a2) and not c:IsCode(20747792) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c20747792.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsContains(e:GetHandler()) and rp==1-tp 
+	return eg:IsContains(e:GetHandler()) and rp==1-tp
 end
 function c20747792.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler()) and Duel.GetAttacker():IsControler(1-tp)

@@ -38,7 +38,7 @@ function c52702748.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(1-tp,Card.IsAbleToRemove,tp,LOCATION_GRAVE,0,1,1,nil,1-tp)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,tp,LOCATION_GRAVE)
 end
-function c52702748.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c52702748.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)

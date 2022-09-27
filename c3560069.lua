@@ -15,7 +15,7 @@ function c3560069.initial_effect(c)
 end
 function c3560069.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return bit.band(r,REASON_EFFECT)~=0 and c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return bit.band(r,REASON_EFFECT)~=0 and c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 end
 function c3560069.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

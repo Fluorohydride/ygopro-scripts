@@ -28,19 +28,19 @@ function c32349062.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32349062.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.disfilter1(c)
+	return c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.NegateMonsterFilter(c)
 end
 function c32349062.distg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c32349062.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c32349062.filter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	Duel.SelectTarget(tp,c32349062.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c32349062.disop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not c:IsDisabled() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsCanBeDisabledByEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -60,7 +60,7 @@ function c32349062.disop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c32349062.cfilter(c,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()==1-tp and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.disfilter1(c)
+	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.NegateMonsterFilter(c)
 end
 function c32349062.discon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c32349062.cfilter,1,nil,tp)

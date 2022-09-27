@@ -26,7 +26,7 @@ end
 function c38815069.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
-		if Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			if tc:IsLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end

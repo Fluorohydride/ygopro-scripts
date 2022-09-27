@@ -27,11 +27,11 @@ function c66194206.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end
 function c66194206.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_DECK) and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x38) 
+	return e:GetHandler():IsPreviousLocation(LOCATION_DECK) and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x38)
 		and bit.band(r,REASON_EFFECT)~=0
 end
 function c66194206.thfilter(c)

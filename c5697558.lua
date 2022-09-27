@@ -34,7 +34,6 @@ function c5697558.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xed) and c:IsAbleToHand()
 end
 function c5697558.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c5697558.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -50,8 +49,7 @@ function c5697558.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c5697558.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 end
-function c5697558.posop(e,tp,eg,ep,ev,re,r,rp,chk)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+function c5697558.posop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 	local g=Duel.SelectMatchingCard(tp,c5697558.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
@@ -68,7 +66,6 @@ function c5697558.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 end
 function c5697558.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 	local g=Duel.SelectMatchingCard(tp,c5697558.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()

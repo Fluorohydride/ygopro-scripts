@@ -10,7 +10,7 @@ function c58577036.initial_effect(c)
 end
 function c58577036.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummon(tp) and not Duel.IsPlayerAffectedByEffect(tp,63060238)
+		and Duel.IsPlayerCanSpecialSummon(tp) and not Duel.IsPlayerAffectedByEffect(tp,63060238) and not Duel.IsPlayerAffectedByEffect(tp,97148796)
 		and Duel.IsExistingMatchingCard(Card.IsSummonableCard,tp,LOCATION_DECK,0,1,nil) and Duel.IsPlayerCanDiscardDeck(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_DECK)
 end
@@ -24,7 +24,7 @@ function c58577036.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local spcard=nil
 	while tc do
-		if tc:GetSequence()>seq then 
+		if tc:GetSequence()>seq then
 			seq=tc:GetSequence()
 			spcard=tc
 		end

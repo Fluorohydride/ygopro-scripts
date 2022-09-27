@@ -22,7 +22,7 @@ function c58996430.splimit(e,se,sp,st)
 	return se:IsHasType(EFFECT_TYPE_ACTIONS)
 end
 function c58996430.condtion(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_DECK
+	return e:GetHandler():IsPreviousLocation(LOCATION_DECK)
 end
 function c58996430.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

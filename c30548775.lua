@@ -22,7 +22,7 @@ function c30548775.filter(c)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) and c:IsType(TYPE_FUSION)
 		and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
-function c30548775.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c30548775.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c30548775.filter,1,nil)
 end
 function c30548775.spfilter(c,eg,e,tp)
@@ -37,7 +37,6 @@ function c30548775.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c30548775.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

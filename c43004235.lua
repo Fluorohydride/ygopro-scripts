@@ -1,4 +1,4 @@
---Plunder Patroll Parrrty
+--海造賊－祝宴
 function c43004235.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -51,14 +51,14 @@ function c43004235.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,i,i,nil)	
+		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,i,i,nil)
 		if g:GetCount()>0 then
-			Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
 end
 function c43004235.exfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:GetSummonPlayer()==tp and c:IsSetCard(0x13f) and c:IsFaceup()
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsSummonPlayer(tp) and c:IsSetCard(0x13f) and c:IsFaceup()
 end
 function c43004235.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c43004235.exfilter,1,nil,tp)

@@ -2,7 +2,7 @@
 function c79229522.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFunRep(c,70095154,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),1,63,true,true)
+	aux.AddFusionProcCodeFunRep(c,70095154,c79229522.mfilter,1,63,true,true)
 	aux.AddContactFusionProcedure(c,c79229522.cfilter,LOCATION_ONFIELD,LOCATION_ONFIELD,c79229522.sprop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -23,18 +23,22 @@ c79229522.material_setcode=0x1093
 function c79229522.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
+function c79229522.mfilter(c)
+	return c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER)
+end
 function c79229522.cfilter(c,fc)
-	return c:IsAbleToGraveAsCost() and (c:IsControler(fc:GetControler()) or c:IsFaceup()) and (c:IsCode(70095154) or c:IsLocation(LOCATION_MZONE))
+	return c:IsAbleToGraveAsCost() and (c:IsControler(fc:GetControler()) or c:IsFaceup())
 end
 function c79229522.sprop(c)
 	return	function(g)
 				Duel.SendtoGrave(g,REASON_COST)
 				--spsummon condition
+				local ct=g:GetCount()
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_SET_BASE_ATTACK)
 				e1:SetReset(RESET_EVENT+0xff0000)
-				e1:SetValue(g:GetCount()*1000)
+				e1:SetValue(ct*1000)
 				c:RegisterEffect(e1)
 			end
 end

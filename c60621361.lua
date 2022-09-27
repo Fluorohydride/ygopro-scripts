@@ -46,7 +46,7 @@ function c60621361.spcheckop(e,tp,eg,ep,ev,re,r,rp)
 	local p1=false
 	local p2=false
 	while tc do
-		if tc:GetSummonPlayer()==0 then p1=true else p2=true end
+		if tc:IsSummonPlayer(0) then p1=true else p2=true end
 		tc=eg:GetNext()
 	end
 	if p1 then Duel.RegisterFlagEffect(0,60621361,RESET_PHASE+PHASE_END,0,1) end

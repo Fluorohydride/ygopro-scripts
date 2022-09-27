@@ -40,7 +40,7 @@ function c51476410.spfilter2(c,e,tp,m,f,chkf)
 end
 function c51476410.spfilter3(c,e,tp,chkf,rc)
 	if not c:IsType(TYPE_FUSION) or not c:IsAbleToExtra() then return false end
-	if Duel.GetLocationCountFromEx(tp,tp,rc,c)<=0 then return false end
+	if Duel.GetLocationCountFromEx(tp,tp,rc,TYPE_FUSION)<=0 then return false end
 	local mg=Duel.GetMatchingGroup(c51476410.spfilter0,tp,LOCATION_GRAVE,0,c)
 	local res=c51476410.spfilter2(c,e,tp,mg,nil,chkf)
 	if not res then
@@ -67,7 +67,7 @@ function c51476410.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c51476410.spfilter3),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,chkf,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
+	if tc and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
 		local mg1=Duel.GetMatchingGroup(c51476410.spfilter1,tp,LOCATION_GRAVE,0,nil,e)
 		local mgchk1=c51476410.spfilter2(tc,e,tp,mg1,nil,chkf)
 		local mg2=nil

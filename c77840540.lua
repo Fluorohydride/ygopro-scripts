@@ -65,7 +65,7 @@ end
 function c77840540.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if tc:IsLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 	if tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 		Duel.BreakEffect()

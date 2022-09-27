@@ -84,7 +84,7 @@ function c74335036.tdfilter(c)
 end
 function c74335036.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c74335036.tdfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c74335036.tdfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) and Duel.IsExistingTarget(c74335036.tdfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c74335036.tdfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
@@ -92,7 +92,7 @@ function c74335036.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74335036.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0 then
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

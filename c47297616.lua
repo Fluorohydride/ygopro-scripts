@@ -53,13 +53,11 @@ function c47297616.tgdisable(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47297616.opdisable(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or c:GetDefense()<500 or c:GetAttack()< 500 or not c:IsRelateToEffect(e) or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then
+	if c:IsFacedown() or c:GetDefense()<500 or c:GetAttack()<500 or not c:IsRelateToEffect(e)
+		or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then
 		return
 	end
 	if Duel.NegateActivation(ev) then
-		if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-			Duel.SendtoGrave(eg,REASON_EFFECT)
-		end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)

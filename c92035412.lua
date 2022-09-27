@@ -18,7 +18,7 @@ function c92035412.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c92035412.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0x30)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0x30)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_EQUIP)~=0
 end
 function c92035412.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -36,7 +36,6 @@ function c92035412.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c92035412.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if ft>e:GetLabel() then ft=e:GetLabel() end

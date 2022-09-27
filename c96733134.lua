@@ -75,6 +75,7 @@ function c96733134.hspcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c96733134.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -99,7 +100,7 @@ function c96733134.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:IsReleasable() end
 	Duel.Release(c,REASON_COST)
 end
-function c96733134.spfilter(c,e,tp)
+function c96733134.spfilter(c,e,tp,rc)
 	return c:IsFaceup() and c:IsSetCard(0x10f8,0x20f8)
 		and c:IsType(TYPE_PENDULUM) and not c:IsCode(96733134)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

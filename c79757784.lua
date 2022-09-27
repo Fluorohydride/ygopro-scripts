@@ -45,11 +45,14 @@ end
 function c79757784.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return r==REASON_FUSION and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
+function c79757784.atkfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x9b) and c:IsAttackAbove(500)
+end
 function c79757784.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c79757784.cfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c79757784.cfilter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c79757784.atkfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c79757784.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c79757784.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c79757784.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
 function c79757784.damop(e,tp,eg,ep,ev,re,r,rp)
@@ -61,6 +64,8 @@ function c79757784.damop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(-500)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		Duel.Damage(1-tp,500,REASON_EFFECT)
+		if not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+			Duel.Damage(1-tp,500,REASON_EFFECT)
+		end
 	end
 end

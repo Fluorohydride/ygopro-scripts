@@ -35,7 +35,6 @@ function c49838105.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end
 end
 function c49838105.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
 	Duel.ConfirmDecktop(tp,1)
 	local g=Duel.GetDecktopGroup(tp,1)
@@ -44,7 +43,7 @@ function c49838105.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c49838105.cfcon(e,tp,eg,ep,ev,re,r,rp)
@@ -67,7 +66,6 @@ function c49838105.cftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c49838105.cfop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
 	aux.DrawReplaceCount=aux.DrawReplaceCount+1
 	if aux.DrawReplaceCount<=aux.DrawReplaceMax then

@@ -46,7 +46,7 @@ function c20579538.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local tg=dg:Select(tp,1,1,nil)
 		Duel.HintSelection(tg)
-		Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(tg,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end
 function c20579538.spcon(e,tp,eg,ep,ev,re,r,rp)

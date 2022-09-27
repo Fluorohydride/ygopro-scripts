@@ -29,7 +29,7 @@ function c85087012.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 			table.insert(ct,i)
 		end
 	end
-	if #ct==1 then 
+	if #ct==1 then
 		Duel.DiscardDeck(tp,ct[1],REASON_COST)
 		e:SetLabel(1)
 	else
@@ -52,7 +52,7 @@ function c85087012.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c85087012.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_DESTROY)~=0 and e:GetHandler():GetPreviousControler()==tp
+	return bit.band(r,REASON_DESTROY)~=0 and e:GetHandler():IsPreviousControler(tp)
 		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c85087012.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

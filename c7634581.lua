@@ -37,7 +37,7 @@ function c7634581.efilter(e,c)
 	return c:IsType(TYPE_NORMAL) and c:IsLevel(4)
 end
 function c7634581.cfilter(c,tp)
-	return bit.band(c:GetPreviousTypeOnField(),TYPE_NORMAL)~=0 and c:GetPreviousControler()==tp
+	return bit.band(c:GetPreviousTypeOnField(),TYPE_NORMAL)~=0 and c:IsPreviousControler(tp)
 end
 function c7634581.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c7634581.cfilter,1,nil,tp)

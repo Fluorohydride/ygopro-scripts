@@ -14,7 +14,7 @@ function c80208323.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80208323.spfilter(c,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetPreviousControler()==tp and c:IsType(TYPE_MONSTER)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsType(TYPE_MONSTER)
 end
 function c80208323.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c80208323.spfilter,1,nil,tp)

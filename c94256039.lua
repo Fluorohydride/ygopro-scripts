@@ -55,7 +55,6 @@ function c94256039.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c94256039.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
 		Duel.Damage(ep,3000,REASON_EFFECT)
 	end
@@ -68,6 +67,5 @@ function c94256039.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c94256039.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

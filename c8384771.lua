@@ -28,7 +28,6 @@ function c8384771.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(e:GetLabelObject())
 end
 function c8384771.operation1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())

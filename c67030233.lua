@@ -1,5 +1,6 @@
 --セイヴァー・デモン・ドラゴン
 function c67030233.initial_effect(c)
+	aux.AddMaterialCodeList(c,21159309,70902743)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,c67030233.mfilter1,c67030233.mfilter2,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
@@ -67,14 +68,11 @@ function c67030233.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c67030233.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	Duel.Destroy(g,REASON_EFFECT)
 end
-function c67030233.disfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c67030233.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c67030233.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c67030233.disfilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c67030233.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.NegateEffectMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	local g=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c67030233.disop(e,tp,eg,ep,ev,re,r,rp)
@@ -115,7 +113,7 @@ end
 function c67030233.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if bit.band(c:GetOriginalType(),0x802040)~=0 and Duel.SendtoDeck(c,nil,0,REASON_EFFECT)~=0
+	if c:IsRelateToEffect(e) and c:IsExtraDeckMonster() and Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)~=0
 		and c:IsLocation(LOCATION_EXTRA) and tc and tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end

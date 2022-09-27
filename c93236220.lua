@@ -13,21 +13,15 @@ function c93236220.initial_effect(c)
 	e1:SetOperation(c93236220.activate)
 	c:RegisterEffect(e1)
 end
-function c93236220.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	e:SetLabel(100)
-end
 function c93236220.cfilter(c)
-	return c:IsFaceup() and (c:GetBaseAttack()>0 or c:GetBaseDefense()>0) and c:IsAbleToRemoveAsCost()
+	return c:IsFaceup() and (c:GetTextAttack()>0 or c:GetTextDefense()>0) and c:IsAbleToRemoveAsCost()
 end
-function c93236220.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingMatchingCard(c93236220.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+function c93236220.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c93236220.cfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rc=Duel.SelectMatchingCard(tp,c93236220.cfilter,tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
-	if Duel.Remove(rc,POS_FACEUP,REASON_COST+REASON_TEMPORARY)~=0 then
-		e:SetLabelObject(rc)
+	e:SetLabel(rc:GetTextAttack(),rc:GetTextDefense())
+	if Duel.Remove(rc,0,REASON_COST+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
@@ -37,15 +31,19 @@ function c93236220.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e1:SetOperation(c93236220.retop)
 		Duel.RegisterEffect(e1,tp)
 	end
+end
+function c93236220.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c93236220.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local rc=e:GetLabelObject()
-	if rc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local atk=rc:GetBaseAttack()
-		local def=rc:GetBaseDefense()
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		local atk,def=e:GetLabel()
+		atk=math.max(atk,0)
+		def=math.max(def,0)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

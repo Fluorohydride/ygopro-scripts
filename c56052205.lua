@@ -18,7 +18,7 @@ function c56052205.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c56052205.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x12) and c:GetCode()~=56052205
+	return c:IsFaceup() and c:IsSetCard(0x12) and not c:IsCode(56052205)
 end
 function c56052205.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and Duel.GetAttackTarget()==nil

@@ -1,13 +1,7 @@
 --ワイト夫人
 function c40991587.initial_effect(c)
 	--change code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetRange(LOCATION_GRAVE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetValue(32274490)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)
 	--battle indestructable
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
@@ -28,7 +22,7 @@ function c40991587.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c40991587.etarget(e,c)
-	return c:GetCode()~=40991587 and c:IsRace(RACE_ZOMBIE) and c:IsLevelBelow(3)
+	return not c:IsCode(40991587) and c:IsRace(RACE_ZOMBIE) and c:IsLevelBelow(3)
 end
 function c40991587.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL+TYPE_TRAP) and not te:GetHandler():IsCode(4064256)

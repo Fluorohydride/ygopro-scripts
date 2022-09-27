@@ -1,5 +1,6 @@
 --忘却の海底神殿
 function c43889633.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -18,13 +19,7 @@ function c43889633.initial_effect(c)
 	e2:SetOperation(c43889633.operation)
 	c:RegisterEffect(e2)
 	--code
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_CHANGE_CODE)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetValue(22702055)
-	c:RegisterEffect(e3)
+	aux.EnableChangeCode(c,22702055)
 end
 function c43889633.filter(c)
 	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA) and c:IsAbleToRemove()
@@ -37,7 +32,6 @@ function c43889633.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c43889633.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 		tc:RegisterFlagEffect(43889634,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)

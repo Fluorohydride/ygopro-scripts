@@ -2,9 +2,9 @@
 function c23898021.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_SUMMON_COST)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetOperation(c23898021.regop)
 	c:RegisterEffect(e1)
 	--search
@@ -24,9 +24,7 @@ function c23898021.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_BASE_ATTACK)
 	e1:SetValue(1000)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetReset(RESET_EVENT+0x16e0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_DISABLE)
 	c:RegisterEffect(e1)
 end
 function c23898021.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

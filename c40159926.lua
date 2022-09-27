@@ -23,7 +23,7 @@ function c40159926.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c40159926.cfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c40159926.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c40159926.cfilter,tp,0,LOCATION_MZONE,1,nil)

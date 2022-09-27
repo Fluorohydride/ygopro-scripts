@@ -39,11 +39,13 @@ function c18743376.regop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_BATTLED)
 	e2:SetOperation(c18743376.caop1)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
 	e3:SetOperation(c18743376.caop2)
+	e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 end
@@ -67,7 +69,7 @@ function c18743376.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18743376.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(e:GetHandler(),tp,2,REASON_COST)
+	Duel.SendtoDeck(e:GetHandler(),tp,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c18743376.spfilter(c,e,tp)
 	return c:IsSetCard(0x105) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

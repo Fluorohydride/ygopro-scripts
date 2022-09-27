@@ -42,7 +42,6 @@ function c69217334.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69217334.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	local ec=tc
 	if not tc:IsRelateToEffect(e) then ec=nil end
@@ -52,8 +51,10 @@ function c69217334.lvop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,cg)
 		local pc=cg:GetFirst()
 		local e2=Effect.CreateEffect(c)
+		e2:SetDescription(66)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_PUBLIC)
+		e2:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		pc:RegisterEffect(e2)
 		if tc:IsRelateToEffect(e) then

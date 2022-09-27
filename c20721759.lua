@@ -13,7 +13,7 @@ function c20721759.initial_effect(c)
 end
 function c20721759.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
-	return rp==1-tp and eg:GetCount()==1 and ec:IsPreviousLocation(LOCATION_MZONE) and ec:GetPreviousControler()==tp
+	return rp==1-tp and eg:GetCount()==1 and ec:IsPreviousLocation(LOCATION_MZONE) and ec:IsPreviousControler(tp)
 		and ec:IsReason(REASON_DESTROY) and ec:IsReason(REASON_EFFECT)
 end
 function c20721759.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

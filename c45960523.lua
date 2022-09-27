@@ -47,7 +47,7 @@ function c45960523.rmcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45960523.rmcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(e:GetHandler(),tp,2,REASON_COST)
+	Duel.SendtoDeck(e:GetHandler(),tp,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c45960523.rmfilter2(c)
 	return c:IsSetCard(0x105) and not c:IsCode(45960523) and c:IsAbleToRemove()

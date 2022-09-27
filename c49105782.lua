@@ -1,4 +1,4 @@
---Hraesvelgr, the Desperate Doom Eagle
+--死翼のフレスヴェイス
 function c49105782.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WIND),2)
@@ -41,6 +41,6 @@ end
 function c49105782.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

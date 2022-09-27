@@ -1,5 +1,6 @@
 --海竜－ダイダロス
 function c37721209.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(37721209,0))

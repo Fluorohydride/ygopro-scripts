@@ -1,4 +1,4 @@
---くず鉄のかかし 
+--くず鉄のかかし
 function c98427577.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

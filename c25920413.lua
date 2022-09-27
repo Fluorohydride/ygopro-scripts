@@ -34,6 +34,7 @@ function c25920413.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 end
+c25920413.counter_add_list={0x100e}
 function c25920413.spfilter(c)
 	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsReleasable()
 end
@@ -64,7 +65,7 @@ end
 function c25920413.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() then
-		c:AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
+		c:AddCounter(0x100e,1)
 	end
 end
 function c25920413.adcon(e)

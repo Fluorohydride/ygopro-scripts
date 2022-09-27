@@ -25,12 +25,14 @@ function c176392.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_END
 end
 function c176392.rfilter(c)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x1d)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x1d) and not c:IsReason(REASON_REPLACE)
 end
 function c176392.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c176392.rfilter,1,e:GetHandler()) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
+	local c=e:GetHandler()
+	if chk==0 then return eg:IsExists(c176392.rfilter,1,c)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		Duel.Destroy(c,REASON_EFFECT+REASON_REPLACE)
 		return true
 	else return false end
 end
@@ -45,13 +47,13 @@ function c176392.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c176392.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,176393,0x1d,0x4011,1800,1800,4,RACE_ROCK,ATTRIBUTE_EARTH) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,176393,0x1d,TYPES_TOKEN_MONSTER,1800,1800,4,RACE_ROCK,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c176392.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,176393,0x1d,0x4011,1800,1800,4,RACE_ROCK,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,176393,0x1d,TYPES_TOKEN_MONSTER,1800,1800,4,RACE_ROCK,ATTRIBUTE_EARTH) then return end
 	local token=Duel.CreateToken(tp,176393)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

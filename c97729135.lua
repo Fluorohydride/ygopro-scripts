@@ -8,7 +8,6 @@ function c97729135.initial_effect(c)
 	--move
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(97729135,0))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)
@@ -20,7 +19,6 @@ function c97729135.initial_effect(c)
 	--move
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(97729135,1))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_SZONE)
@@ -31,7 +29,7 @@ function c97729135.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c97729135.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:GetSequence()>=5
+	return c:IsSummonPlayer(tp) and c:GetSequence()>=5
 end
 function c97729135.mvcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c97729135.cfilter,1,nil,tp)

@@ -36,6 +36,7 @@ function c16306932.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e4:SetRange(LOCATION_HAND)
 	e4:SetCondition(c16306932.hspcon)
+	e4:SetTarget(c16306932.hsptg)
 	e4:SetOperation(c16306932.hspop)
 	c:RegisterEffect(e4)
 	--tohand
@@ -70,6 +71,7 @@ function c16306932.initial_effect(c)
 	e8:SetOperation(c16306932.tdop)
 	c:RegisterEffect(e8)
 end
+c16306932.spchecks=aux.CreateChecks(Card.IsType,{TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ})
 function c16306932.psplimit(e,c,tp,sumtp,sumpos)
 	return not c:IsRace(RACE_DRAGON) and bit.band(sumtp,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
@@ -92,44 +94,26 @@ function c16306932.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c16306932.hspfilter1(c,g,ft)
-	local rg=Group.FromCards(c)
-	local ct=ft
-	if c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then ct=ct+1 end
-	return c:IsType(TYPE_FUSION) and g:IsExists(c16306932.hspfilter2,1,rg,g,rg,ft)
-end
-function c16306932.hspfilter2(c,g,rg,ft)
-	local rg2=rg:Clone()
-	rg2:AddCard(c)
-	local ct=ft
-	if c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then ct=ct+1 end
-	return c:IsType(TYPE_SYNCHRO) and g:IsExists(c16306932.hspfilter3,1,rg2,ft)
-end
-function c16306932.hspfilter3(c,ft)
-	local ct=ft
-	if c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then ct=ct+1 end
-	return c:IsType(TYPE_XYZ) and ct>0
-end
 function c16306932.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-2 then return false end
 	local g=Duel.GetReleaseGroup(tp):Filter(Card.IsRace,nil,RACE_DRAGON)
-	return g:IsExists(c16306932.hspfilter1,1,nil,g,ft)
+	return g:CheckSubGroupEach(c16306932.spchecks,aux.mzctcheckrel,tp)
+end
+function c16306932.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp):Filter(Card.IsRace,nil,RACE_DRAGON)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=g:SelectSubGroupEach(tp,c16306932.spchecks,true,aux.mzctcheckrel,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c16306932.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetReleaseGroup(tp):Filter(Card.IsRace,nil,RACE_DRAGON)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g1=g:FilterSelect(tp,c16306932.hspfilter1,1,1,nil,g,ft)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g2=g:FilterSelect(tp,c16306932.hspfilter2,1,1,g1,g,g1,ft)
-	g1:Merge(g2)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g3=g:FilterSelect(tp,c16306932.hspfilter3,1,1,g1,ft)
-	g1:Merge(g3)
-	Duel.Release(g1,REASON_COST+REASON_MATERIAL)
+	local g=e:GetLabelObject()
+	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c16306932.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() and Duel.CheckLPCost(tp,500) end
@@ -166,6 +150,6 @@ end
 function c16306932.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,aux.ExceptThisCard(e))
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

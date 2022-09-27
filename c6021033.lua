@@ -1,5 +1,6 @@
 --デスカイザー・ドラゴン
 function c6021033.initial_effect(c)
+	aux.AddMaterialCodeList(c,33420078)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,33420078),aux.NonTuner(Card.IsRace,RACE_ZOMBIE),1)
 	c:EnableReviveLimit()
@@ -22,7 +23,7 @@ function c6021033.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c6021033.filter(c,e,tp)
-	return c:IsRace(RACE_ZOMBIE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_ZOMBIE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c6021033.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c6021033.filter(chkc,e,tp) end

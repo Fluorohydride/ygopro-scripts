@@ -18,14 +18,14 @@ function c56570271.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e2:SetValue(c56570271.splimit)
-	c:RegisterEffect(e2)	
+	c:RegisterEffect(e2)
 end
 function c56570271.splimit(e,se,sp,st)
 	local c=e:GetHandler()
 	return not c:IsLocation(LOCATION_GRAVE) or Duel.GetTurnCount()~=c:GetTurnID() or c:IsReason(REASON_RETURN)
 end
 function c56570271.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c56570271.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end

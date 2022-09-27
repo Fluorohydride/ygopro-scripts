@@ -28,7 +28,7 @@ function c69228245.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c69228245.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c69228245.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetCount()==1 and eg:IsExists(c69228245.cfilter,1,nil,tp)
@@ -37,7 +37,7 @@ function c69228245.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	if chk==0 then return e:GetHandler():IsDestructable()
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and tc and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and tc and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
 end

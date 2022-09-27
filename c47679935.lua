@@ -34,7 +34,6 @@ function c47679935.thfilter(c)
 	return c:IsCode(86120751) and c:IsAbleToHand()
 end
 function c47679935.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c47679935.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(47679935,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -49,7 +48,7 @@ function c47679935.efilter(e,ct)
 	return p==tp and te:IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c47679935.limfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_FUSION)
+	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c47679935.limcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47679935.limfilter,1,nil,tp)
@@ -58,8 +57,21 @@ function c47679935.limop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentChain()==0 then
 		Duel.SetChainLimitTillChainEnd(c47679935.chainlm)
 	elseif Duel.GetCurrentChain()==1 then
-		e:GetHandler():RegisterFlagEffect(47679935,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(47679935,RESET_EVENT+RESETS_STANDARD,0,1)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAINING)
+		e1:SetOperation(c47679935.resetop)
+		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetReset(RESET_CHAIN)
+		Duel.RegisterEffect(e2,tp)
 	end
+end
+function c47679935.resetop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():ResetFlagEffect(47679935)
+	e:Reset()
 end
 function c47679935.limop2(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetFlagEffect(47679935)~=0 then

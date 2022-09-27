@@ -31,11 +31,11 @@ function c79402185.fgoal(g,tp)
 end
 function c79402185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	local sg=Group.CreateGroup()
 	local g=Duel.GetReleaseGroup(tp,true):Filter(c79402185.costfilter,nil,tp)
 	if chk==0 then return g:CheckSubGroupEach(c79402185.spchecks,c79402185.fgoal,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroupEach(tp,c79402185.spchecks,false,c79402185.fgoal,tp)
+	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c79402185.filter(c,e,tp)
@@ -59,7 +59,7 @@ function c79402185.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79402185.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c79402185.thfilter,1,nil)
+	return eg:IsExists(c79402185.thfilter,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c79402185.thfilter(c)
 	return (c:IsCode(85066822) or c:IsCode(6022371)) and c:IsPreviousLocation(LOCATION_ONFIELD)

@@ -10,7 +10,7 @@ function c5043010.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_NO_TURN_RESET)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCountLimit(1)
+	e1:SetCountLimit(1,5043010)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(c5043010.thtg)
@@ -36,6 +36,7 @@ function c5043010.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCode(EVENT_CUSTOM+5043010)
 	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1,5043011)
 	e4:SetTarget(c5043010.sptg)
 	e4:SetOperation(c5043010.spop)
 	c:RegisterEffect(e4)
@@ -59,7 +60,7 @@ function c5043010.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5043010.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	if c:GetPreviousControler()~=tp then seq=seq+16 end
+	if c:IsPreviousControler(1-tp) then seq=seq+16 end
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
 function c5043010.regcon(e,tp,eg,ep,ev,re,r,rp)
@@ -74,15 +75,18 @@ end
 function c5043010.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+5043010,e,0,tp,0,0)
 end
+function c5043010.spfilter(c,e,tp)
+	return c:IsRace(RACE_CYBERSE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+end
 function c5043010.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(Card.IsCanBeSpecialSummoned,tp,LOCATION_HAND,0,1,nil,e,0,tp,false,false) end
+		and Duel.IsExistingMatchingCard(c5043010.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c5043010.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,Card.IsCanBeSpecialSummoned,tp,LOCATION_HAND,0,1,1,nil,e,0,tp,false,false)
+	local g=Duel.SelectMatchingCard(tp,c5043010.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

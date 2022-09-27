@@ -51,6 +51,7 @@ function c14816688.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		local fid=c:GetFieldID()
@@ -89,7 +90,7 @@ function c14816688.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c14816688.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 		if tc:IsLocation(LOCATION_DECK) then Duel.ShuffleDeck(tc:GetControler()) end
 		Duel.BreakEffect()

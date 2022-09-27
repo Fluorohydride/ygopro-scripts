@@ -32,7 +32,6 @@ function c6430659.attg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c6430659.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)

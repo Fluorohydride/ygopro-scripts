@@ -53,8 +53,8 @@ function c25166510.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c25166510.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	local ct=Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
-	local tg=Duel.GetMatchingGroup(aux.disfilter1,tp,0,LOCATION_ONFIELD,nil)
+	local ct=Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local tg=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
 	if ct>0 and #tg>0 and Duel.SelectYesNo(tp,aux.Stringid(25166510,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)

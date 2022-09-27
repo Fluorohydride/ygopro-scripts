@@ -36,7 +36,9 @@ function c17946349.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetDescription(aux.Stringid(17946349,4))
 		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
@@ -77,6 +79,7 @@ function c17946349.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c17946349.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17946349,3))
 end

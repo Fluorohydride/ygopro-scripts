@@ -11,6 +11,7 @@ function c66547759.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(66547759,0))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -21,6 +22,7 @@ function c66547759.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(66547759,1))
 	e3:SetCategory(CATEGORY_NEGATE)
 	e3:SetType(EFFECT_TYPE_QUICK_F)
 	e3:SetCode(EVENT_CHAINING)
@@ -33,7 +35,7 @@ function c66547759.initial_effect(c)
 	e3:SetOperation(c66547759.disop)
 	c:RegisterEffect(e3)
 end
-c66547759.xyz_number=23
+aux.xyz_number[66547759]=23
 function c66547759.dacon(e)
 	return e:GetHandler():GetOverlayCount()>0
 end
@@ -69,8 +71,7 @@ function c66547759.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c66547759.disop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetCurrentChain()==ev+1 and Duel.NegateActivation(ev)
-		and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_EFFECT)
+	if Duel.GetCurrentChain()==ev+1 then
+		Duel.NegateActivation(ev)
 	end
 end

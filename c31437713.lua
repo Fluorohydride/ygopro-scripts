@@ -23,7 +23,7 @@ function c31437713.initial_effect(c)
 	e2:SetOperation(c31437713.operation)
 	c:RegisterEffect(e2)
 end
-c31437713.xyz_number=82
+aux.xyz_number[31437713]=82
 function c31437713.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL)
 end

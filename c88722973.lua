@@ -5,15 +5,16 @@ function c88722973.initial_effect(c)
 	c:EnableReviveLimit()
 	--search
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(88722973,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c88722973.regcon)
-	e1:SetTarget(c88722973.regtg)
 	e1:SetOperation(c88722973.regop)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(88722973,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -25,9 +26,6 @@ function c88722973.initial_effect(c)
 end
 function c88722973.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
-end
-function c88722973.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_DECK,0,1,nil,TYPE_PENDULUM) end
 end
 function c88722973.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

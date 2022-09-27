@@ -29,7 +29,7 @@ function c75116619.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c75116619.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetCode()~=75116619
+	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(75116619)
 end
 function c75116619.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c75116619.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -55,12 +55,13 @@ function c75116619.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75116619.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e)
+		and Duel.IsExistingMatchingCard(c75116619.cfilter,tp,LOCATION_MZONE,0,1,nil) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
 function c75116619.vfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetCode()~=75116619
+	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(75116619)
 end
 function c75116619.valcon(e)
 	local c=e:GetHandler()

@@ -12,7 +12,7 @@ function c98780137.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98780137.filter(c,e,tp)
-	return c:GetCode()~=98780137 and c:IsSetCard(0x8b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(98780137) and c:IsSetCard(0x8b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c98780137.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c98780137.filter(chkc,e,tp) end

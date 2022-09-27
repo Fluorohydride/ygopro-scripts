@@ -46,7 +46,7 @@ end
 function c24557335.descfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and bit.band(c:GetPreviousTypeOnField(),TYPE_EFFECT)==0
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
-		and c:GetPreviousControler()==tp
+		and c:IsPreviousControler(tp)
 end
 function c24557335.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c24557335.descfilter,1,nil,tp)

@@ -39,7 +39,7 @@ function c26640671.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c26640671.filter(c,ec)
-	return c:IsFaceup() and not ec:IsHasCardTarget(c) and c:IsRace(RACE_INSECT) 
+	return c:IsFaceup() and not ec:IsHasCardTarget(c) and c:IsRace(RACE_INSECT)
 end
 function c26640671.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c26640671.filter(chkc,e:GetHandler()) end

@@ -14,7 +14,6 @@ function c47840168.initial_effect(c)
 	--lv
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(47840168,1))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c47840168.lvcon)
@@ -54,7 +53,7 @@ function c47840168.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c47840168.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c47840168.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

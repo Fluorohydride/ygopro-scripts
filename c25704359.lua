@@ -48,43 +48,37 @@ function c25704359.atkcon(e)
 end
 function c25704359.cfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetOriginalAttribute()~=0
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c25704359.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c25704359.cfilter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c25704359.spfilter(c,e,tp,att)
-	return c:IsRace(RACE_SPELLCASTER) and c:IsDefense(1500) and c:IsAttribute(att)
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsRace(RACE_SPELLCASTER) and c:IsDefense(1500) and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c25704359.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 		local g=eg:Filter(c25704359.cfilter,nil,tp)
-		local att=0x7f
+		local att=ATTRIBUTE_ALL
 		local tc=g:GetFirst()
 		while tc do
 			att=bit.band(att,tc:GetOriginalAttribute())
 			tc=g:GetNext()
 		end
-		att=0x7f-att
+		att=ATTRIBUTE_ALL-att
 		e:SetLabel(att)
 		return Duel.IsExistingMatchingCard(c25704359.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,att)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c25704359.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c25704359.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetLabel())
 	local tc=g:GetFirst()
 	if tc then
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
-		if tc:IsFacedown() then
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)~=0 and tc:IsFacedown() then
 			Duel.ConfirmCards(1-tp,tc)
 		end
 	end

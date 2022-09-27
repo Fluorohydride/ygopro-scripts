@@ -41,7 +41,7 @@ function c29401950.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c29401950.filter2(c,tp)
-	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetAttack()>=1500 and c:GetSummonPlayer()~=tp
+	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetAttack()>=1500 and c:IsSummonPlayer(1-tp)
 		and c:IsAbleToRemove()
 end
 function c29401950.target2(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -52,7 +52,7 @@ function c29401950.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function c29401950.filter3(c,e,tp)
-	return c:IsFaceup() and c:GetAttack()>=1500 and c:GetSummonPlayer()~=tp
+	return c:IsFaceup() and c:GetAttack()>=1500 and c:IsSummonPlayer(1-tp)
 		and c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)
 end
 function c29401950.activate2(e,tp,eg,ep,ev,re,r,rp)

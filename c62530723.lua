@@ -6,6 +6,7 @@ function c62530723.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c62530723.target)
 	c:RegisterEffect(e1)
 	--disable
@@ -43,7 +44,6 @@ function c62530723.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c62530723.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())

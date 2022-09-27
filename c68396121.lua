@@ -23,17 +23,14 @@ function c68396121.initial_effect(c)
 	e2:SetOperation(c68396121.atkop)
 	c:RegisterEffect(e2)
 end
-c68396121.xyz_number=107
+aux.xyz_number[68396121]=107
 function c68396121.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c68396121.filter(c)
-	return c:IsFaceup() and (c:IsLocation(LOCATION_SZONE) or c:IsType(TYPE_EFFECT)) and not c:IsDisabled()
-end
 function c68396121.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c68396121.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
+	local g=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)

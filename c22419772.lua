@@ -17,7 +17,7 @@ function c22419772.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c22419772.filter(c,tp,tid)
-	return c:IsAbleToDeck() and c:IsType(TYPE_SPELL) and c:GetTurnID()==tid and c:GetReasonPlayer()==1-tp 
+	return c:IsAbleToDeck() and c:IsType(TYPE_SPELL) and c:GetTurnID()==tid and c:GetReasonPlayer()==1-tp
 end
 function c22419772.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tid=Duel.GetTurnCount()
@@ -30,6 +30,6 @@ end
 function c22419772.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end

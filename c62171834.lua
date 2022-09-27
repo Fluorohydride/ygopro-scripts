@@ -1,5 +1,6 @@
---Dream Mirror Phantasms
+--夢幻の夢魔鏡
 function c62171834.initial_effect(c)
+	aux.AddCodeList(c,74665651,1050355)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
@@ -34,7 +35,6 @@ function c62171834.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x131) and c:IsAbleToHand()
 end
 function c62171834.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c62171834.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(62171834,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

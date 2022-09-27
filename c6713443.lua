@@ -28,7 +28,7 @@ function c6713443.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function c6713443.sfilter(c)
-	return c:IsSetCard(0x7c) and c:GetCode()~=6713443 and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+	return c:IsSetCard(0x7c) and not c:IsCode(6713443) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
 end
 function c6713443.fselect(g,ft)
 	local fc=g:FilterCount(Card.IsType,nil,TYPE_FIELD)

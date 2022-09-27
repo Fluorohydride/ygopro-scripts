@@ -49,7 +49,7 @@ function c13247801.tgtg(e,c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsLevelBelow(6)
 end
 function c13247801.sfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE)
 end

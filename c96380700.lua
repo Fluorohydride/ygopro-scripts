@@ -32,7 +32,7 @@ function c96380700.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabelObject(g:GetFirst())
 end
 function c96380700.spfilter(c,e,tp,rc)
-	return c:IsSetCard(0x101) and c:IsType(TYPE_MONSTER) and not c:IsOriginalCodeRule(rc:GetOriginalCodeRule()) 
+	return c:IsSetCard(0x101) and c:IsType(TYPE_MONSTER) and not c:IsOriginalCodeRule(rc:GetOriginalCodeRule())
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c96380700.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

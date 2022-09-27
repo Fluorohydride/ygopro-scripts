@@ -34,6 +34,7 @@ function c63253763.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 end
+c63253763.counter_add_list={0x100e}
 function c63253763.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0

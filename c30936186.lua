@@ -73,7 +73,7 @@ function c30936186.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.ShuffleHand(tp)
 end
 function c30936186.spfilter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x1d) and c:GetCode()~=30936186 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x1d) and not c:IsCode(30936186) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c30936186.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

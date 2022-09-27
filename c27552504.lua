@@ -5,6 +5,7 @@ function c27552504.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(27552504,1))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)
@@ -17,6 +18,7 @@ function c27552504.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(27552504,2))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -55,7 +57,7 @@ function c27552504.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27552504.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
+	return c:IsPreviousControler(tp) and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c27552504.spfilter(c,e,tp)
 	return c:IsSetCard(0xb1) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0

@@ -42,7 +42,7 @@ function c88316955.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c88316955.filter1(c,e,tp)
-	return c:IsSetCard(0x104) and not c:IsCode(88316955) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x104) and not c:IsCode(88316955) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c88316955.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

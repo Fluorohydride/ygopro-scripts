@@ -16,7 +16,11 @@ function c70083723.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c70083723.indes(e,c)
-	return c:GetAttack()>=2000
+	if c:IsDefensePos() and Duel.GetAttacker()==c then
+		return c:IsDefenseAbove(2000)
+	else
+		return c:IsAttackAbove(2000)
+	end
 end
 function c70083723.filter(c)
 	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER)

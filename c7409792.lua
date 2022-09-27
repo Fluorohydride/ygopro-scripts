@@ -13,7 +13,7 @@ function c7409792.initial_effect(c)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(7409792,0))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetCondition(c7409792.condition)

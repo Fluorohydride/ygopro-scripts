@@ -17,7 +17,7 @@ function c72537897.spfilter(c,e,tp)
 	return c:IsRace(RACE_BEAST) and c:IsLevelBelow(2) and c:IsType(TYPE_EFFECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c72537897.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		local g=Duel.GetMatchingGroup(c72537897.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>2 and g:GetClassCount(Card.GetCode)>=3 end
@@ -44,6 +44,7 @@ function c72537897.activate(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 			tc=sg1:GetNext()

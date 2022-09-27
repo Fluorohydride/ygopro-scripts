@@ -66,7 +66,7 @@ function c39000945.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c39000945.spfilter(c,e,tp)
-	return c:IsCanAddCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanHaveCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c39000945.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -77,8 +77,8 @@ function c39000945.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39000945.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
+	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c39000945.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
@@ -106,14 +106,22 @@ end
 function c39000945.rthop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
-	local ct=0
+	local ctable={}
 	for tc in aux.Next(g) do
 		if tc:IsControler(tp) then
-			ct=ct+tc:GetCounter(0x1)
+			ctable[tc]=tc:GetCounter(0x1)
 		end
 	end
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
-	if Duel.GetOperatedGroup():GetCount()>0 and ct>0 then
+	local og=Duel.GetOperatedGroup()
+	local ct=0
+	for tc,num in pairs(ctable) do
+		if og:IsContains(tc) and tc:IsLocation(LOCATION_HAND) then
+			ct=ct+num
+		end
+	end
+	if ct>0 then
+		Duel.BreakEffect()
 		e:GetHandler():AddCounter(0x1,ct)
 	end
 end

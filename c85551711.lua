@@ -30,6 +30,7 @@ function c85551711.initial_effect(c)
 	c:RegisterEffect(e4)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(85551711,1))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
@@ -58,7 +59,7 @@ function c85551711.costop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85551711.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ((rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)) 
+	return ((rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE))
 		or c:IsReason(REASON_BATTLE)) and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c85551711.spfilter(c,e,tp)

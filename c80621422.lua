@@ -1,4 +1,4 @@
---Emblem of the Plunder Patroll
+--海造賊－象徴
 function c80621422.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -18,7 +18,7 @@ function c85775486.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c85775486.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c85775486.cfilter,tp,LOCATION_HAND,0,1,1,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c85775486.filter(c)
 	return c:IsSetCard(0x13) and c:IsAbleToHand()

@@ -17,7 +17,7 @@ function c38495396.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c38495396.ovfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x53) and c:GetCode()~=38495396 and c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x53) and not c:IsCode(38495396) and c:IsType(TYPE_XYZ)
 end
 function c38495396.xyzop(e,tp,chk)
 	if chk==0 then return true end

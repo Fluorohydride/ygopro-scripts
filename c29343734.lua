@@ -48,7 +48,7 @@ function c29343734.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29343734.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c29343734.atkfilter(c,att)
 	return c:IsFaceup() and c:IsAttribute(att)

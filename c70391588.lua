@@ -12,7 +12,7 @@ function c70391588.initial_effect(c)
 end
 function c70391588.filter(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsCanBeEffectTarget(e)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,70391589,0,0x4011,0,0,c:GetLevel(),RACE_SPELLCASTER,ATTRIBUTE_DARK)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,70391589,0,TYPES_TOKEN_MONSTER,0,0,c:GetLevel(),RACE_SPELLCASTER,ATTRIBUTE_DARK)
 end
 function c70391588.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c70391588.filter(chkc,e,tp) end
@@ -36,7 +36,7 @@ function c70391588.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 	end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,70391589,0,0x4011,0,0,lv,RACE_SPELLCASTER,ATTRIBUTE_DARK) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,70391589,0,TYPES_TOKEN_MONSTER,0,0,lv,RACE_SPELLCASTER,ATTRIBUTE_DARK) then return end
 	local token=Duel.CreateToken(tp,70391589)
 	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	local e2=Effect.CreateEffect(e:GetHandler())

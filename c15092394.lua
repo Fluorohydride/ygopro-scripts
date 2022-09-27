@@ -50,7 +50,7 @@ function c15092394.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c15092394.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
+	return c:IsPreviousControler(tp) and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c15092394.spfilter(c,e,tp)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0xba) and not c:IsCode(15092394) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

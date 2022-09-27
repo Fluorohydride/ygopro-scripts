@@ -1,4 +1,4 @@
---Necroquip Prism
+--優麗なる霊鏡
 function c18954366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

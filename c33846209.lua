@@ -12,6 +12,7 @@ function c33846209.initial_effect(c)
 	e1:SetOperation(c33846209.activate)
 	c:RegisterEffect(e1)
 end
+c33846209.has_text_type=TYPE_DUAL
 function c33846209.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true

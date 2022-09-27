@@ -64,7 +64,7 @@ function c87074380.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87074380.sfilter(c,tp)
-	return not c:IsCode(87074380) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return not c:IsCode(87074380) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_EARTH)~=0
 		and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE)

@@ -5,12 +5,9 @@ function c68170903.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_BATTLE_START)
-	e1:SetCondition(c68170903.condition)
+	e1:SetCondition(aux.bpcon)
 	e1:SetOperation(c68170903.activate)
 	c:RegisterEffect(e1)
-end
-function c68170903.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP()
 end
 function c68170903.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

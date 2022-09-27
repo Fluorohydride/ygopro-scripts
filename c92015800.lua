@@ -8,12 +8,14 @@ function c92015800.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_ADD_ATTRIBUTE)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetValue(c92015800.attval)
 	c:RegisterEffect(e1)
 	--indes battle
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e2:SetValue(c92015800.indval1)
 	c:RegisterEffect(e2)
@@ -21,11 +23,13 @@ function c92015800.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetValue(c92015800.indval2)
 	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(92015800,0))
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_MZONE)
@@ -36,7 +40,7 @@ function c92015800.initial_effect(c)
 	e4:SetOperation(c92015800.xyzop)
 	c:RegisterEffect(e4)
 end
-c92015800.xyz_number=76
+aux.xyz_number[92015800]=76
 function c92015800.effilter(c)
 	return c:IsType(TYPE_MONSTER)
 end
@@ -55,8 +59,14 @@ end
 function c92015800.indval1(e,c)
 	return c:GetBattleTarget():GetAttribute()&c:GetAttribute()~=0
 end
-function c92015800.indval2(e,te,rp)
-	return rp==1-e:GetHandlerPlayer() and te:IsActivated() and te:GetHandler():GetAttribute()&e:GetHandler():GetAttribute()~=0
+function c92015800.indval2(e,re,rp)
+	if not (rp==1-e:GetHandlerPlayer() and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)) then return false end
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsControler(rp) and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
+		return e:GetHandler():IsAttribute(rc:GetAttribute())
+	else
+		return e:GetHandler():IsAttribute(rc:GetOriginalAttribute())
+	end
 end
 function c92015800.xyzfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanOverlay()

@@ -1,5 +1,6 @@
 --宇宙砦ゴルガー
 function c68319538.initial_effect(c)
+	aux.AddMaterialCodeList(c,652362)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,652362),aux.NonTuner(Card.IsSetCard,0xc),1)
 	c:EnableReviveLimit()
@@ -27,6 +28,7 @@ function c68319538.initial_effect(c)
 	e2:SetOperation(c68319538.desop)
 	c:RegisterEffect(e2)
 end
+c68319538.counter_add_list={0x100e}
 function c68319538.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end

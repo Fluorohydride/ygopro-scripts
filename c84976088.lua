@@ -27,7 +27,7 @@ function c84976088.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84976088.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -42,6 +42,6 @@ function c84976088.spop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetReset(RESET_EVENT+RESETS_REDIRECT)
 			e2:SetValue(LOCATION_REMOVED)
 			c:RegisterEffect(e2,true)
-		end		
+		end
 	end
 end

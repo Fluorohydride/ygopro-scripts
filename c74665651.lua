@@ -1,5 +1,6 @@
---Dream Mirror of Joy
+--聖光の夢魔鏡
 function c74665651.initial_effect(c)
+	aux.AddCodeList(c,1050355)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

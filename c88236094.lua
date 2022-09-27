@@ -28,6 +28,6 @@ end
 function c88236094.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

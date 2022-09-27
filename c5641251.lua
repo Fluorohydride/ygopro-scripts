@@ -20,7 +20,7 @@ function c5641251.initial_effect(c)
 	--atk up
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(5641251,1))
-	e3:SetCategory(CATEGORY_LVCHANGE+CATEGORY_DESTROY)
+	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_CONFIRM)
 	e3:SetRange(LOCATION_SZONE)
@@ -41,7 +41,6 @@ function c5641251.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c5641251.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c5641251.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
@@ -58,7 +57,6 @@ function c5641251.lvlcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5641251.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetAttacker()
 	local bc=Duel.GetAttackTarget()
 	if not bc then return false end

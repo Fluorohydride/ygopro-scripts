@@ -33,11 +33,11 @@ function c67159705.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c67159705.eqlimit(e,c)
-	return c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154) or e:GetHandler():GetEquipTarget()==c
+	return c:IsCode(70095154) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,70095154) or e:GetHandler():GetEquipTarget()==c
 end
 function c67159705.filter(c)
 	local ct1,ct2=c:GetUnionCount()
-	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and ct2==0
+	return c:IsFaceup() and (c:IsCode(70095154) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,70095154)) and ct2==0
 end
 function c67159705.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c67159705.filter(chkc) end
@@ -60,10 +60,11 @@ function c67159705.eqop(e,tp,eg,ep,ev,re,r,rp)
 	aux.SetUnionState(c)
 end
 function c67159705.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(67159705)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	e:GetHandler():RegisterFlagEffect(67159705,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetFlagEffect(67159705)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,true,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
+	c:RegisterFlagEffect(67159705,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c67159705.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -75,7 +76,7 @@ function c67159705.desfilter(c)
 end
 function c67159705.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c67159705.desfilter(chkc) end
-	if chk==0 then return e:GetHandler():GetEquipTarget():GetAttack()>=1000
+	if chk==0 then return e:GetHandler():GetEquipTarget() and e:GetHandler():GetEquipTarget():GetAttack()>=1000
 		and Duel.IsExistingTarget(c67159705.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c67159705.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)

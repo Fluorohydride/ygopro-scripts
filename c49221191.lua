@@ -18,7 +18,7 @@ function c49221191.initial_effect(c)
 	e1:SetOperation(c49221191.operation)
 	c:RegisterEffect(e1)
 end
-c49221191.xyz_number=32
+aux.xyz_number[49221191]=32
 function c49221191.ovfilter(c)
 	return c:IsFaceup() and c:IsCode(65676461)
 end
@@ -53,11 +53,7 @@ function c49221191.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 		e1:SetValue(0)
-		if Duel.GetTurnPlayer()~=tp then
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
-		else
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,1)
-		end
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)

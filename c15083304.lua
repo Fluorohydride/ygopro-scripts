@@ -32,7 +32,7 @@ function c15083304.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(g1,REASON_DISCARD+REASON_EFFECT)
 		else
 			Duel.ConfirmCards(1-p,g)
-			Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
 end

@@ -34,7 +34,7 @@ function c71564252.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE_SUMMON,eg,eg:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,eg:GetCount(),0,0)
 end
-function c71564252.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c71564252.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateSummon(eg)
 	Duel.Destroy(eg,REASON_EFFECT)
 end

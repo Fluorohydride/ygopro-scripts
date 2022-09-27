@@ -70,7 +70,7 @@ function c82224646.tnop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82224646.rmcon(e)
 	local c=e:GetHandler()
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
 end
 function c82224646.spfilter(c,e,tp)
 	return c:IsLevelBelow(3) and c:IsSetCard(0x9f,0x99) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -95,6 +95,7 @@ function c82224646.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end
@@ -129,11 +130,14 @@ function c82224646.scop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 	end
 	if Duel.SpecialSummonComplete()==0 then return end
 	if not c:IsRelateToEffect(e) then return end
+	Duel.AdjustAll()
 	local mg=Group.FromCards(c,tc)
+	if mg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetMatchingGroup(c82224646.scfilter2,tp,LOCATION_EXTRA,0,nil,tp,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

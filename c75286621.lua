@@ -14,7 +14,7 @@ function c75286621.initial_effect(c)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c75286621.negcon)
 	e1:SetCost(c75286621.negcost)
-	e1:SetTarget(c75286621.negtg)
+	e1:SetTarget(aux.nbtg)
 	e1:SetOperation(c75286621.negop)
 	c:RegisterEffect(e1)
 end
@@ -29,13 +29,6 @@ function c75286621.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rtype=bit.band(re:GetActiveType(),0x7)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75286621.cfilter,tp,LOCATION_HAND,0,1,nil,rtype) end
 	Duel.DiscardHand(tp,c75286621.cfilter,1,1,REASON_COST,nil,rtype)
-end
-function c75286621.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c75286621.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then

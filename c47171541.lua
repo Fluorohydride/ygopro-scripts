@@ -22,6 +22,7 @@ function c47171541.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c47171541.spfilter(c,e,tp)
@@ -32,7 +33,7 @@ function c47171541.cfilter(c)
 end
 function c47171541.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-	if chk==0 then 
+	if chk==0 then
 		e:SetLabel(0)
 		return res and Duel.IsExistingTarget(c47171541.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	end

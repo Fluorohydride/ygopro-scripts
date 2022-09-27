@@ -22,7 +22,7 @@ function c95286165.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95286165.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
-		and bit.band(c:GetReason(),0x40008)==0x40008 and c:GetReasonCard()==fusc
+		and c:GetReason()&(REASON_FUSION+REASON_MATERIAL)==(REASON_FUSION+REASON_MATERIAL) and c:GetReasonCard()==fusc
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
 end
@@ -32,7 +32,7 @@ function c95286165.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg=tc:GetMaterial()
 	local ct=mg:GetCount()
 	local sumtype=tc:GetSummonType()
-	if Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		and mg:FilterCount(aux.NecroValleyFilter(c95286165.mgfilter),nil,e,tp,tc,mg)==ct
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)

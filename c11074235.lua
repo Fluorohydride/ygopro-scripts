@@ -18,7 +18,7 @@ function c11074235.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c11074235.cfilter(c,tp)
-	return bit.band(c:GetPreviousTypeOnField(),TYPE_SPELL+TYPE_TRAP)~=0 and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return bit.band(c:GetPreviousTypeOnField(),TYPE_SPELL+TYPE_TRAP)~=0 and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c11074235.spcon(e,tp,eg,ep,ev,re,r,rp)

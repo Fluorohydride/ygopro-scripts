@@ -12,6 +12,7 @@ function c58820923.initial_effect(c)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(58820923,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c58820923.rmcon)
@@ -21,6 +22,7 @@ function c58820923.initial_effect(c)
 	c:RegisterEffect(e2)
 	--multi attack
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(58820923,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c58820923.atkcon)
@@ -29,7 +31,7 @@ function c58820923.initial_effect(c)
 	e3:SetOperation(c58820923.atkop)
 	c:RegisterEffect(e3)
 end
-c58820923.xyz_number=95
+aux.xyz_number[58820923]=95
 function c58820923.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107b) and c:IsType(TYPE_XYZ)
 end

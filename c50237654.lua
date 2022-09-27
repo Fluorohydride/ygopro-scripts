@@ -5,6 +5,7 @@ function c50237654.initial_effect(c)
 	aux.AddFusionProcCodeFun(c,{46986414,38033121},aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,true,true)
 	--draw
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(50237654,1))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_CHAINING)

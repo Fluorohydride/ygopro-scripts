@@ -63,7 +63,7 @@ function c86395581.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsAttribute(ATTRIBUTE_WIND)
 end
 function c86395581.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
 end
 function c86395581.spcon(e,tp,eg,ep,ev,re,r,rp)

@@ -49,7 +49,6 @@ function c21768554.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if g:GetCount()>Duel.GetLocationCount(tp,LOCATION_MZONE) then return end
 	local tc=g:GetFirst()

@@ -70,7 +70,7 @@ function c83477829.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==0
 end
 function c83477829.thfilter(c)
-	return c:IsFaceup() and c:IsAbleToHand() and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsFaceup() and c:IsAbleToHand() and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c83477829.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToHand() end

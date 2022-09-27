@@ -43,10 +43,13 @@ function c59160188.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c59160188.relval(e,re,r,rp)
-	return re:IsActivated() and bit.band(r,REASON_COST)~=0
+	return (c59160188.re_activated or re:IsActivated()) and bit.band(r,REASON_COST)~=0
+end
+function c59160188.regfilter(c)
+	return c:GetPreviousTypeOnField()&TYPE_MONSTER>0
 end
 function c59160188.regop(e,tp,eg,ep,ev,re,r,rp)
-	local mct=eg:FilterCount(Card.IsType,nil,TYPE_MONSTER)
+	local mct=eg:FilterCount(c59160188.regfilter,nil)
 	if mct==0 then return end
 	local c=e:GetHandler()
 	local ct=c:GetFlagEffectLabel(59160188)
@@ -68,7 +71,7 @@ function c59160188.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetHandler():GetFlagEffectLabel(59160188)
 	if not ct then return end
 	local p=Duel.GetTurnPlayer()
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,59160189,0,0x4011,1000,1000,3,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,p) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,59160189,0,TYPES_TOKEN_MONSTER,1000,1000,3,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,p) then return end
 	local ft=Duel.GetLocationCount(p,LOCATION_MZONE)
 	ct=math.min(ct,ft)
 	if ct>1 and Duel.IsPlayerAffectedByEffect(p,59822133) then ct=1 end

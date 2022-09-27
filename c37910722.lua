@@ -42,7 +42,7 @@ end
 function c37910722.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:IsReason(REASON_DESTROY)
-		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c37910722.spfilter(c,e,tp,sync)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
@@ -78,6 +78,7 @@ function c37910722.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()

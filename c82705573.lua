@@ -18,8 +18,8 @@ function c82705573.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c82705573.filter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
-		and c:GetControler()==tp and c:IsReason(REASON_DESTROY) and c:IsAttribute(ATTRIBUTE_FIRE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
+		and c:IsControler(tp) and c:IsReason(REASON_DESTROY) and c:IsAttribute(ATTRIBUTE_FIRE)
 end
 function c82705573.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c82705573.filter,1,nil,tp)
@@ -31,7 +31,6 @@ function c82705573.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
 function c82705573.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

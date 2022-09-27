@@ -16,11 +16,11 @@ function c65676461.initial_effect(c)
 	e1:SetOperation(c65676461.atop)
 	c:RegisterEffect(e1)
 end
-c65676461.xyz_number=32
+aux.xyz_number[65676461]=32
 function c65676461.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return c==Duel.GetAttacker() and c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE) 
+	return c==Duel.GetAttacker() and c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE)
 		and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER)
 end
 function c65676461.atcost(e,tp,eg,ep,ev,re,r,rp,chk)

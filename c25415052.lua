@@ -11,7 +11,7 @@ function c25415052.initial_effect(c)
 	--to deck
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(25415052,0))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -39,7 +39,6 @@ end
 function c25415052.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c25415052.tdfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c25415052.cfilter(c,p)
 	return c:IsLocation(LOCATION_DECK) and c:IsControler(p)
@@ -49,7 +48,7 @@ function c25415052.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,1,3,nil)
-	if Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)~=0 then
+	if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		local sg2=Duel.GetOperatedGroup()
 		if sg2:IsExists(c25415052.cfilter,1,nil,tp) then Duel.ShuffleDeck(tp) end
 		if sg2:IsExists(c25415052.cfilter,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end
@@ -74,12 +73,13 @@ function c25415052.retreg(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
 	e1:SetReset(RESET_EVENT+0x1ee0000+RESET_PHASE+PHASE_END)
-	e1:SetCondition(aux.SpiritReturnCondition)
+	e1:SetCondition(aux.SpiritReturnConditionForced)
 	e1:SetTarget(c25415052.rettg)
 	e1:SetOperation(c25415052.retop)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetCondition(aux.SpiritReturnConditionOptional)
 	c:RegisterEffect(e2)
 end
 function c25415052.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -89,7 +89,7 @@ function c25415052.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 		else
 			return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 				and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-				and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,0x4011,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND)
+				and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,TYPES_TOKEN_MONSTER,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND)
 		end
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
@@ -101,7 +101,7 @@ function c25415052.retop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,0x4011,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,25415053,0,TYPES_TOKEN_MONSTER,1500,1500,4,RACE_WINDBEAST,ATTRIBUTE_WIND) then
 		for i=1,2 do
 			local token=Duel.CreateToken(tp,25415053)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)

@@ -82,7 +82,7 @@ function c12508268.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	local fid=tc:GetFlagEffectLabel(12508268)
 	local bc=tc:GetBattleTarget()
-	return fid and fid==tc:GetFieldID() and tc==eg:GetFirst() and tc:IsRelateToBattle() and bc and bc:GetPreviousControler()==1-tp
+	return fid and fid==tc:GetFieldID() and tc==eg:GetFirst() and tc:IsRelateToBattle() and bc and bc:IsPreviousControler(1-tp)
 end
 function c12508268.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

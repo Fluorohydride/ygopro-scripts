@@ -22,7 +22,7 @@ function c54360049.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c54360049.filter(c,tp)
-	return c:GetSummonPlayer()~=tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c54360049.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c54360049.filter,1,nil,tp) end
@@ -31,7 +31,7 @@ function c54360049.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c54360049.dfilter(c,e,tp)
-	return c:GetSummonPlayer()~=tp and c:IsRelateToEffect(e)
+	return c:IsSummonPlayer(1-tp) and c:IsRelateToEffect(e)
 end
 function c54360049.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c54360049.dfilter,nil,e,tp)

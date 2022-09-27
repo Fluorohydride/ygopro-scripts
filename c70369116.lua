@@ -46,7 +46,7 @@ function c70369116.attop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70369116.cpfilter(c)
 	return (c:GetType()==TYPE_SPELL or c:IsType(TYPE_QUICKPLAY)) and c:IsSetCard(0x46) and c:IsAbleToGraveAsCost()
-		and c:CheckActivateEffect(false,true,false)~=nil
+		and c:CheckActivateEffect(true,true,false)~=nil
 end
 function c70369116.cpcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

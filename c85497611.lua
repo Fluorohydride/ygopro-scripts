@@ -51,7 +51,7 @@ function c85497611.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85497611.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp==1-tp
+	return c:IsPreviousControler(tp) and c:IsReason(REASON_DESTROY) and rp==1-tp
 end
 function c85497611.spfilter(c,e,tp)
 	return c:IsSetCard(0x99) and not c:IsCode(85497611) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

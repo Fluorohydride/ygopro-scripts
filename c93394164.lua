@@ -65,7 +65,6 @@ function c93394164.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93394164.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	if not ec or ec:IsImmuneToEffect(e) then return end
 	local p=ec:GetControler()

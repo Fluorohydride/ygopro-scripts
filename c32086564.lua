@@ -27,21 +27,14 @@ end
 function c32086564.target(e,c)
 	return c:GetOverlayCount()>=2
 end
-function c32086564.check(c,tp)
-	return c:IsControler(tp) and c:GetOverlayCount()>=2
-end
 function c32086564.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget()~=nil
-		and (c32086564.check(Duel.GetAttacker(),tp) or c32086564.check(Duel.GetAttackTarget(),tp)) end
-	if c32086564.check(Duel.GetAttacker(),tp) then
-		Duel.SetTargetCard(Duel.GetAttackTarget())
-	else
-		Duel.SetTargetCard(Duel.GetAttacker())
-	end
+	local a,d=Duel.GetBattleMonster(tp)
+	if chk==0 then return a and d and a:GetOverlayCount()>=2 end
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end
 function c32086564.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.Destroy(tc,REASON_EFFECT)
+	local a,d=Duel.GetBattleMonster(tp)
+	if a and d and a:IsRelateToBattle() and d:IsRelateToBattle() and a:GetOverlayCount()>=2 then
+		Duel.Destroy(d,REASON_EFFECT)
 	end
 end

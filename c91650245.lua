@@ -55,11 +55,11 @@ function c91650245.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91650245.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
+	if c:IsExtraDeckMonster()
 		or Duel.SelectOption(tp,aux.Stringid(91650245,0),aux.Stringid(91650245,1))==0 then
-		Duel.SendtoDeck(c,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 	else
-		Duel.SendtoDeck(c,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end
 function c91650245.efilter(e,te)

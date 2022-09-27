@@ -1,5 +1,6 @@
---Phantasos, the Dream Mirror Friend
+--夢魔鏡の聖獣－パンタス
 function c62393472.initial_effect(c)
+	aux.AddCodeList(c,1050355)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(62393472,0))
@@ -61,7 +62,7 @@ function c62393472.spfilter2(c,e,tp)
 	return c:IsCode(99792080) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62393472.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetMZoneCount(tp,c)>0
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0
 		and Duel.IsExistingMatchingCard(c62393472.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end

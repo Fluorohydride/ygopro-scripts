@@ -48,7 +48,7 @@ function c34989413.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
 	if chk==0 then return Duel.IsExistingMatchingCard(c34989413.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,lg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,0xffff)
+	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	e:SetLabel(att)
 end
 function c34989413.attop(e,tp,eg,ep,ev,re,r,rp)

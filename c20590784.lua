@@ -13,7 +13,7 @@ function c20590784.initial_effect(c)
 end
 function c20590784.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c20590784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local at=Duel.GetAttacker()
@@ -23,7 +23,7 @@ function c20590784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20590784.filter(c,e,tp)
 	return c:IsSetCard(0xa3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and (c:IsLocation(LOCATION_DECK) and Duel.GetMZoneCount(tp)>0
+		and (c:IsLocation(LOCATION_GRAVE) and Duel.GetMZoneCount(tp)>0
 			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c20590784.activate(e,tp,eg,ep,ev,re,r,rp)

@@ -20,7 +20,7 @@ function c9553721.initial_effect(c)
 	--search
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(9553721,0))
-	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)	
+	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetCode(EVENT_TO_HAND)
@@ -32,7 +32,7 @@ function c9553721.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c9553721.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsControler(tp)
 end
@@ -47,7 +47,6 @@ function c9553721.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c9553721.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c9553721.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

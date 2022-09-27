@@ -42,9 +42,9 @@ function c79718768.desop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79718768.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler()==e:GetHandler()
+	return re and re:GetHandler()==e:GetHandler()
 end
 function c79718768.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

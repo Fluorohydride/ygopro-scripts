@@ -25,14 +25,13 @@ function c65240384.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
 		local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 		return tg:GetCount()==1 and tg:GetFirst()==e:GetHandler() and e:GetHandler():IsFacedown()
-	else 
-		return false 
+	else
+		return false
 	end
 end
 function c65240384.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE) then
-		if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-			Duel.SendtoGrave(eg,REASON_EFFECT)
-		end
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE) then
+		Duel.NegateActivation(ev)
 	end
 end

@@ -16,7 +16,7 @@ function c50584941.cfilter(c,tp)
 		and Duel.IsExistingTarget(c50584941.filter,tp,LOCATION_MZONE,0,1,nil,code)
 end
 function c50584941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		if Duel.IsExistingMatchingCard(c50584941.cfilter,tp,LOCATION_GRAVE,0,1,nil,tp) then
 			e:SetLabel(1)
 			return true

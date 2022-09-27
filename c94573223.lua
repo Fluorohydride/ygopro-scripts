@@ -62,10 +62,10 @@ function c94573223.eqlimit(e,c)
 end
 function c94573223.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousLocation()==LOCATION_SZONE and not c:IsReason(REASON_LOST_TARGET)
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousEquipTarget() and not c:IsReason(REASON_LOST_TARGET)
 end
 function c94573223.spfilter(c,e,tp)
-	return c:IsSetCard(0x56) and c:GetCode()~=94573223 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x56) and not c:IsCode(94573223) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94573223.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c94573223.spfilter(chkc,e,tp) end

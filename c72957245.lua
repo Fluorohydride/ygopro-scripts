@@ -30,7 +30,7 @@ function c72957245.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		local dc=Duel.SelectMatchingCard(tp,c72957245.cfilter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(dc,0)
+		Duel.MoveSequence(dc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end

@@ -1,8 +1,9 @@
 --影霊衣の降魔鏡
 function c14735698.initial_effect(c)
 	--Activate
-	local e1=aux.AddRitualProcEqual2(c,c14735698.filter,nil,c14735698.filter)
+	local e1=aux.AddRitualProcEqual2(c,c14735698.filter,nil,c14735698.filter,nil,true)
 	e1:SetCountLimit(1,14735698)
+	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)

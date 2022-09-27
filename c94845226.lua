@@ -10,7 +10,7 @@ function c94845226.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c94845226.cfilter(c)
-	return c:IsSetCard(0x35) and c:IsDiscardable()
+	return c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
 end
 function c94845226.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94845226.cfilter,tp,LOCATION_HAND,0,1,nil) end

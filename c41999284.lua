@@ -19,6 +19,7 @@ function c41999284.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,41999284)
+	e2:SetHintTiming(0,TIMING_BATTLE_START)
 	e2:SetCost(c41999284.spcost)
 	e2:SetTarget(c41999284.sptg)
 	e2:SetOperation(c41999284.spop)
@@ -56,7 +57,7 @@ function c41999284.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41999284.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then 
+	if c:IsRelateToEffect(e) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

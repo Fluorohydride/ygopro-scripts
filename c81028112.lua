@@ -25,7 +25,11 @@ end
 function c81028112.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		local opt=Duel.SelectOption(tp,aux.Stringid(81028112,1),aux.Stringid(81028112,2))
-		Duel.SendtoDeck(tc,nil,opt,REASON_EFFECT)
+		if tc:IsExtraDeckMonster()
+			or Duel.SelectOption(tp,aux.Stringid(81028112,1),aux.Stringid(81028112,2))==0 then
+			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
+		else
+			Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+		end
 	end
 end

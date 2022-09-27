@@ -36,7 +36,7 @@ function c30604579.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(30604579,2))
 	e4:SetCategory(CATEGORY_DAMAGE)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e4:SetCondition(c30604579.damcon)
@@ -45,7 +45,7 @@ function c30604579.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c30604579.tfilter(c)
-	return c:IsSetCard(0x6042) or c:IsCode(61777313)
+	return c:IsSetCard(0x6042) or c:IsHasEffect(61777313)
 end
 function c30604579.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
@@ -72,7 +72,7 @@ function c30604579.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local pos=c:GetPreviousPosition()
 	if c:IsReason(REASON_BATTLE) then pos=c:GetBattlePosition() end
-	if rp==1-tp and c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY)
+	if rp==1-tp and c:IsPreviousControler(tp) and c:IsReason(REASON_DESTROY)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and bit.band(pos,POS_FACEUP)~=0 then
 		c:RegisterFlagEffect(30604579,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end

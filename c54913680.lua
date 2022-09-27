@@ -19,6 +19,7 @@ function c54913680.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	aux.UseExtraReleaseCount(sg,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c54913680.spfilter(c,e,tp)
@@ -26,7 +27,7 @@ function c54913680.spfilter(c,e,tp)
 end
 function c54913680.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-	if chk==0 then 
+	if chk==0 then
 		e:SetLabel(0)
 		return res and Duel.IsExistingMatchingCard(c54913680.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	end

@@ -45,7 +45,7 @@ function c84243274.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84243274.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

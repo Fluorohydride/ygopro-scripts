@@ -57,7 +57,6 @@ function c44352516.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c44352516.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local g=Duel.GetMatchingGroup(c44352516.filter2,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
@@ -72,7 +71,7 @@ end
 function c44352516.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and bit.band(r,0x41)==0x41
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c44352516.thfilter(c)
 	return c:IsSetCard(0x46) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()

@@ -3,13 +3,7 @@ function c30822527.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)
 	--Change Name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(1861629)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,1861629)
 	--Atk Up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -47,7 +41,7 @@ function c30822527.atkval(e,c)
 end
 function c30822527.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	if c:GetPreviousControler()~=tp then seq=seq+16 end
+	if c:IsPreviousControler(1-tp) then seq=seq+16 end
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
 function c30822527.regcon(e,tp,eg,ep,ev,re,r,rp)

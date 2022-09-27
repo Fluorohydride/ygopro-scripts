@@ -32,9 +32,9 @@ function c29762407.cfilter(c,e,tp)
 end
 function c29762407.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c29762407.cfilter,tp,LOCATION_ONFIELD,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(c29762407.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c29762407.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c29762407.cfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	g:AddCard(e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end

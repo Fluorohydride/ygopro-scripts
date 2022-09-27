@@ -52,10 +52,10 @@ function c50907446.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c50907446.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	if chkc then return chkc:IsOnField() and aux.NegateAnyFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 end
 function c50907446.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -91,7 +91,7 @@ end
 function c50907446.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c50907446.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,1,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c50907446.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -108,8 +108,8 @@ end
 function c50907446.FShaddollFilter(c,fc)
 	return c:IsFusionSetCard(0x9d) and c:IsCanBeFusionMaterial(fc)
 end
-function c50907446.FShaddollExFilter(c,fc)
-	return c:IsFaceup() and c50907446.FShaddollFilter(c,fc)
+function c50907446.FShaddollExFilter(c,fc,fe)
+	return c:IsFaceup() and not c:IsImmuneToEffect(fe) and c50907446.FShaddollFilter(c,fc)
 end
 function c50907446.FShaddollFilter1(c,g)
 	return c:IsFusionSetCard(0x9d) and g:IsExists(c50907446.FShaddollFilter2,1,c) and not g:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute())
@@ -125,13 +125,14 @@ function c50907446.FShaddollSpFilter2(c,fc,tp,mc,chkf)
 	local sg=Group.FromCards(c,mc)
 	if sg:IsExists(aux.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not aux.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
-	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc) then return false end
+	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
+		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc) then return false end
 	return ((c50907446.FShaddollFilter1(c,sg) and c50907446.FShaddollFilter2(mc))
 		or (c50907446.FShaddollFilter1(mc,sg) and c50907446.FShaddollFilter2(c)))
 		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 end
 function c50907446.FShaddollCondition()
-	return  function(e,g,gc,chkf)
+	return	function(e,g,gc,chkf)
 			if g==nil then return aux.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
 			local c=e:GetHandler()
 			local mg=g:Filter(c50907446.FShaddollFilter,nil,c)
@@ -139,7 +140,8 @@ function c50907446.FShaddollCondition()
 			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 			local exg=nil
 			if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-				exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c)
+				local fe=fc:IsHasEffect(81788994)
+				exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
 			end
 			if gc then
 				if not mg:IsContains(gc) then return false end
@@ -149,13 +151,14 @@ function c50907446.FShaddollCondition()
 		end
 end
 function c50907446.FShaddollOperation()
-	return  function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			local c=e:GetHandler()
 			local mg=eg:Filter(c50907446.FShaddollFilter,nil,c)
 			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 			local exg=nil
 			if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-				exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c)
+				local fe=fc:IsHasEffect(81788994)
+				exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
 			end
 			local g=nil
 			if gc then

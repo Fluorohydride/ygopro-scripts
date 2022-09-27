@@ -38,7 +38,7 @@ function c36870345.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc then return end
 	Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsControler(1-tp) 
+	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsControler(1-tp)
 		or Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.BreakEffect()
 	if not Duel.Equip(tp,c,tc,false) then return end
@@ -56,7 +56,7 @@ function c36870345.eqlimit(e,c)
 end
 function c36870345.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousLocation()==LOCATION_SZONE and not c:IsReason(REASON_LOST_TARGET)
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousEquipTarget() and not c:IsReason(REASON_LOST_TARGET)
 end
 function c36870345.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

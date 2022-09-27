@@ -61,8 +61,8 @@ function c36894320.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and c36894320.sptg(e,tp,eg,ep,ev,re,r,rp,0)
 	local b2=c36894320.cost(e,tp,eg,ep,ev,re,r,rp,0)
 		and c36894320.tdtg(e,tp,eg,ep,ev,re,r,rp,0)
+	local op=-1
 	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
-		local op=0
 		if b1 and b2 then
 			op=Duel.SelectOption(tp,aux.Stringid(36894320,0),aux.Stringid(36894320,1))
 		elseif b1 then
@@ -70,19 +70,23 @@ function c36894320.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		else
 			op=Duel.SelectOption(tp,aux.Stringid(36894320,1))+1
 		end
-		if op==0 then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-			e:SetProperty(0)
-			e:SetOperation(c36894320.spop)
-			c36894320.cost(e,tp,eg,ep,ev,re,r,rp,1)
-			c36894320.sptg(e,tp,eg,ep,ev,re,r,rp,1)
-		else
-			e:SetCategory(CATEGORY_TODECK)
-			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-			e:SetOperation(c36894320.tdop)
-			c36894320.cost(e,tp,eg,ep,ev,re,r,rp,1)
-			c36894320.tdtg(e,tp,eg,ep,ev,re,r,rp,1)
-		end
+	end
+	if op==0 then
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		e:SetProperty(0)
+		e:SetOperation(c36894320.spop)
+		c36894320.cost(e,tp,eg,ep,ev,re,r,rp,1)
+		c36894320.sptg(e,tp,eg,ep,ev,re,r,rp,1)
+	elseif op==1 then
+		e:SetCategory(CATEGORY_TODECK)
+		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
+		e:SetOperation(c36894320.tdop)
+		c36894320.cost(e,tp,eg,ep,ev,re,r,rp,1)
+		c36894320.tdtg(e,tp,eg,ep,ev,re,r,rp,1)
+	else
+		e:SetCategory(0)
+		e:SetProperty(0)
+		e:SetOperation(nil)
 	end
 end
 function c36894320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -124,9 +128,8 @@ function c36894320.setfilter(c)
 	return c:IsCode(72883039) and c:IsSSetable()
 end
 function c36894320.tdop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_DECK) then
 		local g=Duel.GetMatchingGroup(c36894320.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(36894320,2)) then

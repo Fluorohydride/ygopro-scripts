@@ -24,12 +24,13 @@ function c31320433.initial_effect(c)
 	e2:SetOperation(c31320433.daop)
 	c:RegisterEffect(e2)
 end
-c31320433.xyz_number=47
+aux.xyz_number[31320433]=47
 function c31320433.matfilter(c,e)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsLevel(3) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
 end
 function c31320433.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c31320433.matfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingMatchingCard(c31320433.matfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
 end
 function c31320433.matop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

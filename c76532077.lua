@@ -39,7 +39,6 @@ function c76532077.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c76532077.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
 		local tg=g:GetMaxGroup(Card.GetAttack)

@@ -49,7 +49,6 @@ function c10833828.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c10833828.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp)
@@ -63,6 +62,7 @@ function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
 		tc:RegisterFlagEffect(10833828,RESET_EVENT+RESETS_STANDARD,0,1,c:GetFieldID())
@@ -110,7 +110,6 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
 	aux.FCheckAdditional=c10833828.fcheck1(c:GetFieldID())
@@ -155,7 +154,6 @@ function c10833828.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,2000)
 end
 function c10833828.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

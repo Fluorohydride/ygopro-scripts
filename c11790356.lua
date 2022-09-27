@@ -13,6 +13,7 @@ function c11790356.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(11790356,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -24,6 +25,7 @@ function c11790356.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Equip
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(11790356,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCategory(CATEGORY_EQUIP)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -77,7 +79,7 @@ end
 function c11790356.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-	if not tc:IsFaceup() or not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=Duel.SelectMatchingCard(tp,c11790356.filter2,tp,LOCATION_GRAVE,0,1,1,nil)
 	local sc=sg:GetFirst()

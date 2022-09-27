@@ -34,7 +34,7 @@ function c74591968.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_LIMIT_SUMMON_PROC)
 	e4:SetCondition(c74591968.sumcon)
-	c:RegisterEffect(e4) 
+	c:RegisterEffect(e4)
 end
 c74591968.lvup={60482781}
 c74591968.lvdn={47507260}

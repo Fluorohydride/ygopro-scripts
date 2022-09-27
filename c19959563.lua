@@ -1,6 +1,12 @@
 --戒めの龍
 function c19959563.initial_effect(c)
 	c:EnableReviveLimit()
+	--splimit
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e0:SetCode(EFFECT_SPSUMMON_CONDITION)
+	c:RegisterEffect(e0)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -55,11 +61,12 @@ end
 function c19959563.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19959563.filter,tp,LOCATION_GRAVE+LOCATION_REMOVED,LOCATION_GRAVE+LOCATION_REMOVED,1,e:GetHandler()) end
 	local g=Duel.GetMatchingGroup(c19959563.filter,tp,LOCATION_GRAVE+LOCATION_REMOVED,LOCATION_GRAVE+LOCATION_REMOVED,nil)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function c19959563.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c19959563.filter,tp,LOCATION_GRAVE+LOCATION_REMOVED,LOCATION_GRAVE+LOCATION_REMOVED,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	if aux.NecroValleyNegateCheck(g) then return end
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c19959563.ddcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

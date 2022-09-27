@@ -26,7 +26,7 @@ function c90726340.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c90726340.indtg(e,c)
-	return c:IsRace(RACE_DRAGON) and c:GetCode()~=90726340
+	return c:IsRace(RACE_DRAGON) and not c:IsCode(90726340)
 end
 function c90726340.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -54,6 +54,7 @@ function c90726340.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
 		local e3=Effect.CreateEffect(e:GetHandler())

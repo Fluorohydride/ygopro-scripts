@@ -34,7 +34,7 @@ function c49729312.splimit(e,se,sp,st)
 	return se:IsHasType(EFFECT_TYPE_ACTIONS)
 end
 function c49729312.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK+LOCATION_HAND) and c:IsType(TYPE_MONSTER) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK+LOCATION_HAND) and c:IsType(TYPE_MONSTER) and c:IsPreviousControler(tp)
 end
 function c49729312.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c49729312.cfilter,1,nil,1-tp)

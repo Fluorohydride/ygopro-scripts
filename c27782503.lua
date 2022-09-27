@@ -21,7 +21,7 @@ function c27782503.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c27782503.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetCode()~=27782503
+	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(27782503)
 end
 function c27782503.descon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()

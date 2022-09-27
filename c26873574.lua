@@ -1,4 +1,4 @@
---Chaos Daedalus
+--カオス・ダイダロス
 function c26873574.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

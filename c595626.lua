@@ -17,13 +17,12 @@ function c595626.initial_effect(c)
 	--To Hand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(595626,1))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_GRAVE_ACTION)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,595627)
 	e2:SetCondition(c595626.thcon)
-	e2:SetTarget(c595626.thtg)
 	e2:SetOperation(c595626.thop)
 	c:RegisterEffect(e2)
 end
@@ -79,9 +78,6 @@ function c595626.thcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c595626.thfilter(c)
 	return c:IsCode(83764718) and c:IsAbleToHand()
-end
-function c595626.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,83764718) end
 end
 function c595626.thop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

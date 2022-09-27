@@ -31,7 +31,7 @@ function c88667504.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c88667504.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0 and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_EARTH)~=0 and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c88667504.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -39,9 +39,11 @@ function c88667504.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88667504.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	local exg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then exg=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c88667504.desop(e,tp,eg,ep,ev,re,r,rp)

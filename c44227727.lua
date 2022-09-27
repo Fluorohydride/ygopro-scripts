@@ -1,4 +1,4 @@
---Plunder Patroll Shipshape Ships Shipping
+--海造賊－進水式
 function c44227727.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

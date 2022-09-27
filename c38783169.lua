@@ -71,7 +71,7 @@ function c38783169.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and aux.ExtraDeckSummonCountLimit[sump]<=0
 end
 function c38783169.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsPreviousLocation(LOCATION_EXTRA)
+	return c:IsSummonPlayer(tp) and c:IsPreviousLocation(LOCATION_EXTRA)
 end
 function c38783169.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c38783169.cfilter,1,nil,tp) then
@@ -109,7 +109,7 @@ end
 function c38783169.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:GetFlagEffect(38783169)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-	and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
+		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,true,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 	c:RegisterFlagEffect(38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end

@@ -1,4 +1,4 @@
---Brotherhood of the Fire Fist - Peacock
+--慧炎星－コサンジャク
 function c20265095.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -14,6 +14,7 @@ function c52085072.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e2:SetCondition(c52085072.spcon)
+	e2:SetTarget(c52085072.sptg)
 	e2:SetOperation(c52085072.spop)
 	c:RegisterEffect(e2)
 	--cannot attack
@@ -39,36 +40,26 @@ end
 function c52085072.spcfilter(c)
 	return c:IsFaceup() and c:IsLevel(1) and c:IsAbleToGraveAsCost()
 end
-function c52085072.mzfilter(c,tp)
-	return c:GetSequence()<5
-end
 function c52085072.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local sg=Duel.GetMatchingGroup(c52085072.spcfilter,tp,LOCATION_MZONE,0,nil)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	return ft>-4 and sg:GetCount()>3 and (ft>0 or sg:IsExists(c52085072.mzfilter,ct,nil,tp))
+	return sg:CheckSubGroup(aux.mzctcheck,4,4,tp)
+end
+function c52085072.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local sg=Duel.GetMatchingGroup(c52085072.spcfilter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g=sg:SelectSubGroup(tp,aux.mzctcheck,true,4,4,tp)
+	if g then
+		g:KeepAlive()
+		e:SetLabelObject(g)
+		return true
+	else return false end
 end
 function c52085072.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local sg=Duel.GetMatchingGroup(c52085072.spcfilter,tp,LOCATION_MZONE,0,nil)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=nil
-	if ft>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=sg:Select(tp,4,4,nil)
-	elseif ft>-3 then
-		local ct=-ft+1
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=sg:FilterSelect(tp,c52085072.mzfilter,ct,ct,nil,tp)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g2=sg:Select(tp,4-ct,4-ct,g)
-		g:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=sg:FilterSelect(tp,c52085072.mzfilter,4,4,nil,tp)
-	end
+	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c52085072.antarget(e,c)
 	return c~=e:GetHandler()

@@ -46,7 +46,7 @@ function c93020401.hspval(e,c)
 	return 0,zone
 end
 function c93020401.spcfilter(c,tp,mc)
-	if c:GetPreviousControler()==tp then return false end
+	if c:IsPreviousControler(tp) then return false end
 	local zone=mc:GetColumnZone(LOCATION_ONFIELD)
 	local seq=c:GetPreviousSequence()+16
 	if c:IsPreviousLocation(LOCATION_SZONE) then seq=seq+8 end

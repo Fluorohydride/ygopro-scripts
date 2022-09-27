@@ -10,14 +10,25 @@ function c73061465.initial_effect(c)
 	e1:SetOperation(c73061465.operation)
 	c:RegisterEffect(e1)
 end
-function c73061465.cfilter(c)
-	return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+function c73061465.cfilter(c,e,tp)
+	if c:IsLocation(LOCATION_HAND) then
+		return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+	else
+		return e:GetHandler():IsSetCard(0x2f) and c:IsAbleToRemove() and c:IsHasEffect(18319762,tp)
+	end
 end
 function c73061465.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c73061465.cfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c73061465.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c73061465.cfilter,tp,LOCATION_HAND,0,1,1,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	local g=Duel.SelectMatchingCard(tp,c73061465.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local tc=g:GetFirst()
+	local te=tc:IsHasEffect(18319762,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+	else
+		Duel.SendtoGrave(tc,REASON_COST)
+	end
 end
 function c73061465.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

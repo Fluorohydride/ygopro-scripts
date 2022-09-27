@@ -30,7 +30,7 @@ function c87997872.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c87997872.cfilter(c,tp,code)
-	return c:IsCode(code) and c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY)
+	return c:IsCode(code) and c:IsPreviousControler(tp) and c:IsReason(REASON_DESTROY)
 end
 function c87997872.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c87997872.cfilter,1,nil,tp,15013468)

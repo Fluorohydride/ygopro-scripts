@@ -20,6 +20,7 @@ function c61654098.initial_effect(c)
 	--special summon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(61654098,0))
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_LEAVE_FIELD)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
@@ -31,7 +32,7 @@ function c61654098.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c61654098.spcfilter(c,tp,rp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousSetCard(0xfd)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousSetCard(0xfd)
 		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 end
 function c61654098.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -49,7 +50,6 @@ function c61654098.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c61654098.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

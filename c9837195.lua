@@ -33,7 +33,7 @@ function c9837195.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_DISABLE)
 	if g1:GetFirst():IsRelateToEffect(e) then
-		Duel.SendtoDeck(g1,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 	local tc=g2:GetFirst()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then

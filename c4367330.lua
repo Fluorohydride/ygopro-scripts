@@ -14,8 +14,9 @@ function c4367330.initial_effect(c)
 	--get effect
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(4367330,1))
-	e2:SetCategory(CATEGORY_DISABLE)
+	e2:SetCategory(CATEGORY_NEGATE)
 	e2:SetType(EFFECT_TYPE_XMATERIAL+EFFECT_TYPE_QUICK_O)
+	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetCondition(c4367330.discon)
 	e2:SetCost(c4367330.discost)
@@ -57,10 +58,8 @@ end
 function c4367330.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c4367330.disop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_EFFECT)
-	end
+	Duel.NegateActivation(ev)
 end

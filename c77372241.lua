@@ -17,7 +17,7 @@ function c77372241.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	e:SetLabel(tc:GetLevel())
 	return eg:GetCount()==1 and tc:GetReasonCard()==e:GetHandler()
-		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE) 
+		and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)
 end
 function c77372241.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

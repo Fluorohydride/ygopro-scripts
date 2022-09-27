@@ -1,4 +1,4 @@
---Brotherhood of the Fire Fist - Panda
+--寿炎星－リシュンマオ
 function c35488287.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

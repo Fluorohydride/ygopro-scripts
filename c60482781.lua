@@ -15,7 +15,7 @@ function c60482781.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_LIMIT_SUMMON_PROC)
 	e2:SetCondition(c60482781.sumcon)
-	c:RegisterEffect(e2) 
+	c:RegisterEffect(e2)
 end
 c60482781.lvdn={47507260,74591968}
 function c60482781.descon(e,tp,eg,ep,ev,re,r,rp)

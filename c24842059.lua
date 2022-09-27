@@ -45,6 +45,11 @@ function c24842059.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
 	end
+	if re:GetActivateLocation()==LOCATION_GRAVE then
+		e:SetCategory(e:GetCategory()|CATEGORY_GRAVE_ACTION)
+	else
+		e:SetCategory(e:GetCategory()&~CATEGORY_GRAVE_ACTION)
+	end
 end
 function c24842059.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
@@ -52,7 +57,7 @@ function c24842059.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c24842059.cfilter(c,tp)
-	return c:IsSetCard(0x135) and c:GetSummonLocation()==LOCATION_EXTRA and Duel.GetMZoneCount(tp,c)>0
+	return c:IsSetCard(0x135) and c:IsSummonLocation(LOCATION_EXTRA) and Duel.GetMZoneCount(tp,c)>0
 end
 function c24842059.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c24842059.cfilter,1,nil,tp) end

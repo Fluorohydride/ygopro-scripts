@@ -65,7 +65,7 @@ function c68431965.lvop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68431965.aclimit(e,re,tp)
-	return re:GetHandler():IsCode(e:GetLabel())
+	return re:GetHandler():IsCode(e:GetLabel()) and re:IsActiveType(TYPE_MONSTER)
 end
 function c68431965.sccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

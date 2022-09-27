@@ -47,6 +47,7 @@ function c82257940.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	if g:FilterCount(c82257940.thfilter,nil,e:GetLabel())<2 then
 		g:DeleteGroup()
+		e:Reset()
 		return false
 	else return true end
 end

@@ -34,7 +34,7 @@ function c58383100.initial_effect(c)
 end
 function c58383100.cfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousSetCard(0xe5)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousSetCard(0xe5)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c58383100.spcon(e,tp,eg,ep,ev,re,r,rp)

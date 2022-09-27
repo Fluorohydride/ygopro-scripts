@@ -1,4 +1,4 @@
---Boot-Up Order - Gear Force
+--起動指令 ギア・フォース
 function c9715126.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

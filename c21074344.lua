@@ -23,7 +23,7 @@ function c21074344.costfilter(c)
 end
 function c21074344.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsAbleToGraveAsCost() and 
+	if chk==0 then return c:IsAbleToGraveAsCost() and
 		Duel.IsExistingMatchingCard(c21074344.costfilter,tp,LOCATION_HAND,0,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c21074344.costfilter,tp,LOCATION_HAND,0,1,1,c)

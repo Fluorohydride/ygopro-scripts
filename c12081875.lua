@@ -29,9 +29,7 @@ function c12081875.effcon(e)
 end
 function c12081875.efffilter(c,e,tp,eg,ep,ev,re,r,rp)
 	if not (c:IsSetCard(0x11c) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())) then return false end
-	local m=_G["c"..c:GetCode()]
-	if not m then return false end
-	local te=m.discard_effect
+	local te=c.discard_effect
 	if not te then return false end
 	local tg=te:GetTarget()
 	return not tg or tg and tg(e,tp,eg,ep,ev,re,r,rp,0)
@@ -46,24 +44,21 @@ function c12081875.efftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.ClearTargetCard()
 	tc:CreateEffectRelation(e)
 	e:SetLabelObject(tc)
-	local m=_G["c"..tc:GetCode()]
-	local te=m.discard_effect
+	local te=tc.discard_effect
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
 end
-function c12081875.effop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c12081875.effop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then
-		local m=_G["c"..tc:GetCode()]
-		local te=m.discard_effect
+		local te=tc.discard_effect
 		local op=te:GetOperation()
 		if op then op(e,tp,eg,ep,ev,re,r,rp) end
 		Duel.BreakEffect()
-		local opt=Duel.SelectOption(tp,aux.Stringid(12081875,1),aux.Stringid(12081875,2))
-		if opt==0 then
-			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		if tc:IsExtraDeckMonster() or Duel.SelectOption(tp,aux.Stringid(12081875,1),aux.Stringid(12081875,2))==0 then
+			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
-			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end

@@ -42,7 +42,7 @@ end
 function c64753157.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	if not d or a:GetControler()==d:GetControler() or not d:IsFaceup() or not a:IsFaceup() then return end
+	if not d or a:GetControler()==d:GetControler() or d:IsFacedown() or a:IsFacedown() then return end
 	if a:IsControler(tp) and a:IsCode(41091257) then e:SetLabelObject(d)
 	elseif d:IsControler(tp) and d:IsCode(41091257) then e:SetLabelObject(a)
 	else return false end
@@ -83,7 +83,7 @@ function c64753157.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64753157.cfilter(c,tp)
-	return c:IsCode(41091257) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsCode(41091257) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c64753157.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c64753157.cfilter,1,nil,tp)

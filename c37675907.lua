@@ -61,8 +61,14 @@ function c37675907.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabelObject(g:GetFirst())
 end
 function c37675907.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local opt=Duel.SelectOption(tp,aux.Stringid(37675907,2),aux.Stringid(37675907,3))
+	local lv=e:GetHandler():GetLevel()
+	if chk==0 then return lv>0 end
+	local opt
+	if e:GetLabelObject():GetLevel()<lv then
+		opt=Duel.SelectOption(tp,aux.Stringid(37675907,2),aux.Stringid(37675907,3))
+	else
+		opt=Duel.SelectOption(tp,aux.Stringid(37675907,2))
+	end
 	e:SetLabel(opt)
 end
 function c37675907.tgop(e,tp,eg,ep,ev,re,r,rp)
@@ -92,7 +98,7 @@ function c37675907.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c37675907.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) then return end
+	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,c)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

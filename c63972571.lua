@@ -42,6 +42,7 @@ function c63972571.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:CheckSubGroup(c63972571.fselect,1,g:GetCount(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroup(tp,c63972571.fselect,false,1,g:GetCount(),tp)
+	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c63972571.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

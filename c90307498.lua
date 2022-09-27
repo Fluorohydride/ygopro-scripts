@@ -33,7 +33,6 @@ function c90307498.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c90307498.material_setcode=0x8
-c90307498.neos_fusion=true
 function c90307498.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetHandler():GetBattleTarget()
 	return bc and bc:IsControler(1-tp)
@@ -55,7 +54,7 @@ end
 function c90307498.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousPosition(POS_FACEUP)
-		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp))
+		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)))
 end
 function c90307498.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c90307498.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end

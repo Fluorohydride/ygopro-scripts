@@ -2,7 +2,7 @@
 function c15721392.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCountLimit(1,15721392+EFFECT_COUNT_CODE_OATH)
@@ -12,7 +12,7 @@ function c15721392.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c15721392.cfilter(c,tp)
-	return c:IsSetCard(0xdc) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0xdc) and c:IsPreviousControler(tp)
 end
 function c15721392.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15721392.cfilter,1,nil,tp)
@@ -48,6 +48,7 @@ function c15721392.activate(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc2:RegisterEffect(e2)
 		end

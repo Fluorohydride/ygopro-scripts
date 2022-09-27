@@ -12,14 +12,30 @@ function c56704140.initial_effect(c)
 	e1:SetOperation(c56704140.operation)
 	c:RegisterEffect(e1)
 end
+function c56704140.costfilter(c,e,tp)
+	if c:IsLocation(LOCATION_HAND) then
+		return c:IsDiscardable()
+	else
+		return e:GetHandler():IsSetCard(0x2f) and c:IsAbleToRemove() and c:IsHasEffect(18319762,tp)
+	end
+end
 function c56704140.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
-	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
+	if chk==0 then return Duel.IsExistingMatchingCard(c56704140.costfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+	local g=Duel.SelectMatchingCard(tp,c56704140.costfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local tc=g:GetFirst()
+	local te=tc:IsHasEffect(18319762,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+	else
+		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
+	end
 end
 function c56704140.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local aat=Duel.AnnounceAttribute(tp,1,0x7f)
+	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	e:SetLabel(aat)
 end
 function c56704140.operation(e,tp,eg,ep,ev,re,r,rp)

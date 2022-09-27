@@ -54,10 +54,10 @@ function c263926.sprcon(e,c)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 end
 function c263926.descon(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler())
+	return eg:IsExists(Card.IsControler,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c263926.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c263926.desop(e,tp,eg,ep,ev,re,r,rp)

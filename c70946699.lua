@@ -31,7 +31,6 @@ function c70946699.filter(c)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsFaceup()
 end
 function c70946699.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local rec=Duel.GetMatchingGroupCount(c70946699.filter,tp,LOCATION_ONFIELD,0,nil)*500
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	Duel.Recover(p,rec,REASON_EFFECT)
@@ -39,7 +38,7 @@ end
 function c70946699.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:IsReason(REASON_EFFECT)
-		and	c:GetReasonPlayer()==1-tp and c:GetPreviousControler()==tp
+		and	c:GetReasonPlayer()==1-tp and c:IsPreviousControler(tp)
 end
 function c70946699.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

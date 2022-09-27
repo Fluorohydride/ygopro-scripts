@@ -1,5 +1,6 @@
---Phantasos, the Dream Mirror Foe
+--夢魔鏡の魔獣－パンタス
 function c99792080.initial_effect(c)
+	aux.AddCodeList(c,74665651)
 	--direct attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(99792080,0))
@@ -52,7 +53,7 @@ function c99792080.spfilter(c,e,tp)
 	return c:IsCode(62393472) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c99792080.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetMZoneCount(tp,c)>0
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0
 		and Duel.IsExistingMatchingCard(c99792080.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end

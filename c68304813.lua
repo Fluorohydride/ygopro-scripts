@@ -40,7 +40,7 @@ function c68304813.valcheck(e,c)
 end
 function c68304813.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsSummonType(SUMMON_TYPE_ADVANCE) and tc:GetSummonPlayer()==tp and e:GetLabel()==1
+	return tc:IsSummonType(SUMMON_TYPE_ADVANCE) and tc:IsSummonPlayer(tp) and e:GetLabel()==1
 end
 function c68304813.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -49,7 +49,6 @@ function c68304813.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c68304813.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end

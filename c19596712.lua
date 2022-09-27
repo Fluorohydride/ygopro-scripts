@@ -52,10 +52,10 @@ function c19596712.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19596712.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
-		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev) 
+		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev)
 end
 function c19596712.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) then
+	if Duel.NegateEffect(ev,true) then
 		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 	end
 end

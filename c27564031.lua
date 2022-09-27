@@ -51,6 +51,7 @@ function c27564031.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,sg)
 		Duel.ShuffleDeck(tp)
 		local tg=sg:RandomSelect(1-tp,1)
+		tg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 	end
 end

@@ -44,8 +44,8 @@ function c23558733.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23558733.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousControler()==tp and bit.band(r,REASON_DESTROY)~=0
-		and bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)>0
+	return e:GetHandler():IsPreviousControler(tp) and bit.band(r,REASON_DESTROY)~=0
+		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c23558733.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

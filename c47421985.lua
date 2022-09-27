@@ -1,5 +1,6 @@
 --ハイドロ・ジェネクス
 function c47421985.initial_effect(c)
+	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,68505803),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WATER),1)
 	c:EnableReviveLimit()
@@ -21,7 +22,7 @@ function c47421985.reccon(e,tp,eg,ep,ev,re,r,rp)
 	if ev==1 then t=Duel.GetAttacker() end
 	if not c:IsRelateToBattle() or c:IsFacedown() then return false end
 	e:SetLabel(t:GetAttack())
-	return t:GetLocation()==LOCATION_GRAVE and t:IsType(TYPE_MONSTER)
+	return t:IsLocation(LOCATION_GRAVE) and t:IsType(TYPE_MONSTER)
 end
 function c47421985.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

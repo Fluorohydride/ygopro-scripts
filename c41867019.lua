@@ -1,4 +1,4 @@
---Mayakashi Mayhem
+--魔妖遊行
 function c41867019.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +18,7 @@ function c41867019.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c41867019.cfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_ZOMBIE) and c:GetSummonLocation()~=LOCATION_EXTRA
+	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_ZOMBIE) and not c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c41867019.setfilter(c)
 	return c:IsSetCard(0x121) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable() and not c:IsCode(41867019)

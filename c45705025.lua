@@ -1,6 +1,6 @@
 --紋章獣ユニコーン
 function c45705025.initial_effect(c)
-	--revive 
+	--revive
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(45705025,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -36,6 +36,7 @@ function c45705025.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end

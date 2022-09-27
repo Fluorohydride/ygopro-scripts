@@ -45,7 +45,7 @@ function c16259549.initial_effect(c)
 	e4:SetOperation(c16259549.tdop)
 	c:RegisterEffect(e4)
 end
-c16259549.xyz_number=49
+aux.xyz_number[16259549]=49
 function c16259549.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
@@ -60,9 +60,11 @@ function c16259549.recop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
 function c16259549.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
+	local c=e:GetHandler()
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		return true
 	else return false end
 end
@@ -89,9 +91,9 @@ function c16259549.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if not g then return end
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()~=2 then return end
-	Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

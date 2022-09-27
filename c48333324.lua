@@ -21,9 +21,6 @@ function c48333324.filter2(c,e,tp,mc,rk,rc,code)
 	return c:IsRank(rk) and c:IsRace(rc) and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
-function c48333324.disfilter(c)
-	return (not c:IsDisabled() or c:IsType(TYPE_TRAPMONSTER)) and not (c:IsType(TYPE_NORMAL) and bit.band(c:GetOriginalType(),TYPE_NORMAL))
-end
 function c48333324.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c48333324.filter1(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c48333324.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
@@ -55,7 +52,7 @@ function c48333324.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g1:GetCount()>0 then
 			Duel.BreakEffect()
 		end
-		local ng=g1:Filter(c48333324.disfilter,nil)
+		local ng=g1:Filter(aux.NegateAnyFilter,nil)
 		local nc=ng:GetFirst()
 		while nc do
 			local e1=Effect.CreateEffect(c)

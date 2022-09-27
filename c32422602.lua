@@ -35,7 +35,7 @@ end
 function c32422602.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return bit.band(r,REASON_EFFECT)~=0 and re:GetHandler():IsSetCard(0x137)
-		and c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c32422602.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -72,7 +72,5 @@ function c32422602.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c32422602.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_EFFECT)
-	end
+	Duel.NegateActivation(ev)
 end

@@ -6,6 +6,7 @@ function c39980304.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c39980304.cost)
+	e1:SetTarget(c39980304.target)
 	e1:SetOperation(c39980304.activate)
 	c:RegisterEffect(e1)
 end
@@ -18,6 +19,9 @@ function c39980304.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+end
+function c39980304.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) end
 end
 function c39980304.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

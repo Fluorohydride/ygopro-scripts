@@ -22,7 +22,7 @@ function c21208154.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_SET_ATTACK_FINAL)
-	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_REPEAT+EFFECT_FLAG_DELAY)
+	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE,EFFECT_FLAG2_WICKED)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetValue(c21208154.adval)
 	c:RegisterEffect(e4)
@@ -42,7 +42,7 @@ function c21208154.initial_effect(c)
 	e7:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e7:SetRange(LOCATION_MZONE)
 	e7:SetValue(1)
-	c:RegisterEffect(e7)	
+	c:RegisterEffect(e7)
 end
 function c21208154.ttcon(e,c,minc)
 	if c==nil then return true end
@@ -54,11 +54,11 @@ function c21208154.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c21208154.filter(c)
-	return c:IsFaceup() and c:GetCode()~=21208154 and not c:IsHasEffect(21208154)
+	return c:IsFaceup() and not c:IsCode(21208154) and not c:IsHasEffect(21208154)
 end
 function c21208154.adval(e,c)
 	local g=Duel.GetMatchingGroup(c21208154.filter,0,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if g:GetCount()==0 then 
+	if g:GetCount()==0 then
 		return 100
 	else
 		local tg,val=g:GetMaxGroup(Card.GetAttack)
@@ -74,7 +74,7 @@ function c21208154.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c21208154.aclimit)
 	e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 	Duel.RegisterEffect(e1,tp)
-end 
+end
 function c21208154.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

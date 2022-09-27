@@ -20,7 +20,7 @@ function c15854426.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15854426.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
 		and c:IsPreviousPosition(POS_FACEUP)
 end
@@ -39,7 +39,6 @@ function c15854426.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15854426.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c15854426.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

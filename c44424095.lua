@@ -29,7 +29,7 @@ function c44424095.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c44424095.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()==0 then return end
 	Duel.ConfirmCards(1-tp,g)
-	Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	Duel.ShuffleDeck(tp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then

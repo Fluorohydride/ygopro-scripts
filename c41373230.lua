@@ -27,7 +27,7 @@ function c41373230.initial_effect(c)
 	--to hand/spsummon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(41373230,0))
-	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON)
+	e4:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
 	e4:SetRange(LOCATION_GRAVE)
@@ -36,6 +36,9 @@ function c41373230.initial_effect(c)
 	e4:SetTarget(c41373230.thtg)
 	e4:SetOperation(c41373230.thop)
 	c:RegisterEffect(e4)
+end
+function c41373230.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsAttackAbove,2500)
 end
 function c41373230.matfilter(c)
 	return c:IsFusionType(TYPE_MONSTER) and c:GetOriginalLevel()>0
@@ -63,8 +66,9 @@ function c41373230.imop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c41373230.efilter(e,te)
-	return e:GetHandler()~=te:GetHandler() and te:GetActivateLocation()==LOCATION_MZONE and te:IsActiveType(TYPE_MONSTER)
-		and te:IsActivated() and te:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+	local tc=te:GetOwner()
+	return tc~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
+		and te:GetActivateLocation()==LOCATION_MZONE and tc:IsSummonLocation(LOCATION_EXTRA)
 end
 function c41373230.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -80,8 +84,6 @@ function c41373230.thfilter(c,e,tp)
 end
 function c41373230.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41373230.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c41373230.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)

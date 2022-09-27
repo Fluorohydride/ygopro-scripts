@@ -33,7 +33,8 @@ function c95245544.costfilter(c,tp)
 	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsHasEffect(83289866,tp)
 end
 function c95245544.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c95245544.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
+	if chk==0 then return e:GetHandler():IsReleasable()
+		and Duel.IsExistingMatchingCard(c95245544.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c95245544.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local tc=g:Select(tp,1,1,nil):GetFirst()
@@ -64,7 +65,7 @@ function c95245544.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95245544.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.IsPlayerCanRemove(tp) and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
@@ -87,6 +88,9 @@ function c95245544.drop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		local sg=Duel.GetFieldGroup(p,LOCATION_HAND,0)
-		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
+		if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)==0 then
+			Duel.ConfirmCards(1-p,sg)
+			Duel.ShuffleHand(p)
+		end
 	end
 end

@@ -23,7 +23,7 @@ function c57093995.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57093995.tgfilter(c)
-	return c:IsSetCard(0x83) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
+	return c:IsSetCard(0x1083) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c57093995.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c57093995.tgfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -31,7 +31,7 @@ function c57093995.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57093995.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c57093995.tgfilter,tp,LOCATION_DECK,0,nil)
-	local ct=Duel.GetMatchingGroupCount(aux.FilterEqualFunction(Card.GetSummonLocation,LOCATION_EXTRA),tp,0,LOCATION_MZONE,nil)
+	local ct=Duel.GetMatchingGroupCount(Card.IsSummonLocation,tp,0,LOCATION_MZONE,nil,LOCATION_EXTRA)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct+1)
 	if sg and sg:GetCount()>0 then

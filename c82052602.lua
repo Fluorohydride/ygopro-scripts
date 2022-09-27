@@ -29,7 +29,6 @@ end
 function c82052602.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		local pos=tc:GetPosition()
 		if tc:IsSetCard(0x54) and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)
 			and tc:GetControler()==tc:GetPreviousControler() then
 			c82052602[tc:GetControler()]=true
@@ -48,9 +47,10 @@ function c82052602.condition(e,tp,eg,ep,ev,re,r,rp)
 	return c82052602[tp] and Duel.GetFlagEffect(tp,82052602)==0
 end
 function c82052602.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c82052602.filter,tp,LOCATION_GRAVE,0,1,nil,Duel.GetTurnCount(),e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,0)
 	Duel.RegisterFlagEffect(tp,82052602,RESET_PHASE+PHASE_END,0,1)
 end
 function c82052602.activate(e,tp,eg,ep,ev,re,r,rp)

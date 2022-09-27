@@ -62,7 +62,7 @@ function c17775525.filter(c)
 end
 function c17775525.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		return Duel.IsExistingMatchingCard(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) 
+		return Duel.IsExistingMatchingCard(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 			and not Duel.IsExistingMatchingCard(c17775525.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 	end
 	local g=Duel.GetMatchingGroup(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)

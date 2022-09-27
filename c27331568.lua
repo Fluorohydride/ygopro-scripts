@@ -62,8 +62,9 @@ function c27331568.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27331568.distg(e,c)
 	if c:GetFlagEffect(27331568)>0 then return true end
-	if c:GetSummonLocation()==LOCATION_EXTRA and c:GetBattleTarget()~=nil and c:GetBattleTarget():GetFieldID()==e:GetLabel() then
+	if c:IsSummonLocation(LOCATION_EXTRA) and c:GetBattleTarget()~=nil and c:GetBattleTarget():GetFieldID()==e:GetLabel() then
 		c:RegisterFlagEffect(27331568,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+		Duel.AdjustInstantly(e:GetHandler())
 		return true
 	end
 	return false

@@ -1,4 +1,4 @@
---Toon Black Luster Soldier
+--トゥーン・カオス・ソルジャー
 function c28711704.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()
@@ -38,7 +38,7 @@ end
 function c28711704.fselect(g,tp)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetLevel,8)
-		and Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,Auxiliary.IsInGroup,#g,nil,g)
+		and Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
 end
 function c28711704.hspcon(e,c)
 	if c==nil then return true end
@@ -85,7 +85,7 @@ function c28711704.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterEffect(e1,true)
 end
 function c28711704.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsAbleToRemove() end
+	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)

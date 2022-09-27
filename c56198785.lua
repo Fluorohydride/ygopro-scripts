@@ -1,4 +1,4 @@
---Guard Ghost
+--背護衛
 function c56198785.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
@@ -31,7 +31,7 @@ function c56198785.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c56198785.indcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c56198785.indtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end

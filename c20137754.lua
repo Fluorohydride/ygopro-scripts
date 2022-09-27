@@ -51,7 +51,7 @@ function c20137754.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c20137754.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(20137754)>0 
+	return e:GetHandler():GetFlagEffect(20137754)>0
 		and aux.dscon()
 end
 function c20137754.atktg(e,tp,eg,ep,ev,re,r,rp,chk)

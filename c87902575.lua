@@ -54,7 +54,6 @@ function c87902575.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
 end
 function c87902575.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=eg:GetFirst()
 	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_MZONE) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		tc:CreateRelation(e:GetHandler(),RESET_EVENT+RESETS_STANDARD)
@@ -62,14 +61,13 @@ function c87902575.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87902575.retfilter(c,ec,tp)
-	return c:IsRelateToCard(ec) and c:GetPreviousControler()==tp
+	return c:IsRelateToCard(ec) and c:IsPreviousControler(tp)
 end
 function c87902575.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject():GetLabelObject()
 	return g:FilterCount(c87902575.retfilter,nil,e:GetHandler(),Duel.GetTurnPlayer())>0
 end
 function c87902575.retop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p=Duel.GetTurnPlayer()
 	local lg=e:GetLabelObject():GetLabelObject()
 	local g=lg:Filter(c87902575.retfilter,nil,e:GetHandler(),p)
@@ -89,7 +87,7 @@ function c87902575.retop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87902575.clfilter(c,ec,tp)
-	return (not c:IsRelateToCard(ec)) or c:GetPreviousControler()==tp
+	return (not c:IsRelateToCard(ec)) or c:IsPreviousControler(tp)
 end
 function c87902575.clearop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():GetLabelObject():Remove(c87902575.clfilter,nil,e:GetHandler(),Duel.GetTurnPlayer())

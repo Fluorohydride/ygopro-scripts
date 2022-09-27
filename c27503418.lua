@@ -31,9 +31,10 @@ end
 function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e)
+		and tc:IsAbleToRemove() and not tc:IsImmuneToEffect(e)
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc)
-		and tc:IsAbleToRemove() and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=Duel.SelectMatchingCard(tp,c27503418.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
@@ -42,6 +43,7 @@ function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g2=Duel.SelectMatchingCard(tp,c27503418.filter2,tp,LOCATION_GRAVE,0,1,1,nil,tp,lv)
 		g2:AddCard(tc)
 		Duel.Remove(g2,POS_FACEUP,REASON_EFFECT)
+		g1:GetFirst():SetMaterial(nil)
 		Duel.SpecialSummon(g1,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)
 		g1:GetFirst():CompleteProcedure()
 	end

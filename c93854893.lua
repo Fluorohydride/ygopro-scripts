@@ -65,7 +65,7 @@ function c93854893.op(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(g,REASON_EFFECT)
 		end
 	else
-		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToEffect(e) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c93854893.ofilter,tp,LOCATION_REMOVED,0,1,1,nil)
 		if g:GetCount()>0 then
@@ -74,7 +74,7 @@ function c93854893.op(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c93854893.repfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsControler(tp) and c:IsOnField()
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c93854893.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

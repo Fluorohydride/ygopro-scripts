@@ -22,7 +22,7 @@ function c41044418.initial_effect(c)
 	e2:SetDescription(aux.Stringid(41044418,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCountLimit(1,100424106)
+	e2:SetCountLimit(1,41044419)
 	e2:SetCondition(c41044418.rbcon)
 	e2:SetCost(c41044418.rbcost)
 	e2:SetTarget(c41044418.rbtg)
@@ -95,11 +95,14 @@ function c41044418.rbop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 	Duel.RegisterFlagEffect(tp,41044418,RESET_PHASE+PHASE_END,0,1)
 end
+function c41044418.regfilter(c)
+	return c:IsCode(10000010) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MONSTER_REBORN
+end
 function c41044418.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsCode,1,nil,10000010) and re and re:GetHandler():IsCode(83764718)
+	return eg:IsExists(c41044418.regfilter,1,nil)
 end
 function c41044418.regop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(Card.IsCode,nil,10000010)
+	local g=eg:Filter(c41044418.regfilter,nil)
 	for tc in aux.Next(g) do
 		tc:RegisterFlagEffect(41044418,RESET_EVENT+0x1fe0000,0,0)
 	end

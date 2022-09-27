@@ -28,7 +28,7 @@ function c52228131.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c52228131.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()==0 then return end
 	Duel.ConfirmCards(1-tp,g)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end

@@ -12,7 +12,7 @@ function c24566654.cfilter(c)
 	return c:IsFaceup() and c:IsCode(70902743)
 end
 function c24566654.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c24566654.cfilter,tp,LOCATION_ONFIELD,0,1,nil) and ep~=tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) 
+	return Duel.IsExistingMatchingCard(c24566654.cfilter,tp,LOCATION_ONFIELD,0,1,nil) and ep~=tp and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 		and aux.damcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24566654.operation(e,tp,eg,ep,ev,re,r,rp)

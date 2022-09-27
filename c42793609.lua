@@ -26,7 +26,7 @@ function c42793609.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	local sc=g:GetNext()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) 
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e)
 		or sc:IsFacedown() or not sc:IsRelateToEffect(e) then return end
 	local ac=e:GetLabelObject()
 	if tc==ac then tc=sc end

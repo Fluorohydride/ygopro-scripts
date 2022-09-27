@@ -34,7 +34,7 @@ function c55415564.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c55415564.disfilter1(c,e,tp)
-	return c:GetSummonPlayer()==1-tp and c:IsSummonType(SUMMON_TYPE_PENDULUM) and (not e or c:IsRelateToEffect(e))
+	return c:IsSummonPlayer(1-tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and (not e or c:IsRelateToEffect(e))
 end
 function c55415564.discon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c55415564.disfilter1,1,nil,nil,tp)
@@ -71,12 +71,12 @@ function c55415564.discon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
 end
 function c55415564.disfilter2(c)
-	return aux.disfilter1(c) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return aux.NegateMonsterFilter(c) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c55415564.distg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c55415564.disfilter2(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c55415564.disfilter2,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,c55415564.disfilter2,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end

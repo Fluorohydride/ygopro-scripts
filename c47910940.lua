@@ -52,12 +52,12 @@ function c47910940.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function c47910940.drop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c47910940.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
 function c47910940.atkfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER)
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN)
 end
 function c47910940.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47910940.atkfilter,1,nil) and not eg:IsContains(e:GetHandler())

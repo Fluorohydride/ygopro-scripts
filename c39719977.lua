@@ -18,7 +18,8 @@ function c39719977.filter2(c,code)
 	return c:IsFaceup() and bit.band(tpe,TYPE_NORMAL)~=0 and bit.band(tpe,TYPE_TOKEN)==0 and c:IsCode(code)
 end
 function c39719977.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c39719977.filter,tp,LOCATION_MZONE,0,3,nil,tp) end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.IsExistingMatchingCard(c39719977.filter,tp,LOCATION_MZONE,0,3,nil,tp) end
 end
 function c39719977.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c39719977.filter,tp,LOCATION_MZONE,0,nil,tp)

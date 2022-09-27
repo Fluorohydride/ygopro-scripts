@@ -11,7 +11,7 @@ function c38730226.initial_effect(c)
 	e1:SetOperation(c38730226.op)
 	c:RegisterEffect(e1)
 end
-function c38730226.con(e,tp,eg,ep,ev,re,r,rp,chk)
+function c38730226.con(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
 end
 function c38730226.op(e,tp,eg,ep,ev,re,r,rp)

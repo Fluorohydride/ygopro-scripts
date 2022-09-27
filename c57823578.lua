@@ -72,6 +72,7 @@ function c57823578.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,0)
 end
 function c57823578.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)

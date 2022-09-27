@@ -50,7 +50,7 @@ function c1953925.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if g and g:IsContains(e:GetHandler()) then
-		if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
+		if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
 			Duel.Destroy(rc,REASON_EFFECT)
 		end
 	end
@@ -62,7 +62,7 @@ function c1953925.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()
 end
 function c1953925.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler()==Duel.GetAttacker()
+	return e:GetHandler()==Duel.GetAttacker() and aux.dsercon(e)
 end
 function c1953925.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

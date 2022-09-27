@@ -35,8 +35,11 @@ function c72192100.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c72192100.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,500) then
-		Duel.PayLPCost(tp,500)
+	if Duel.CheckLPCost(tp,500) or Duel.IsPlayerAffectedByEffect(tp,94585852) then
+		if not Duel.IsPlayerAffectedByEffect(tp,94585852)
+			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,1)) then
+			Duel.PayLPCost(tp,500)
+		end
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
@@ -49,7 +52,7 @@ function c72192100.disop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	local dc=Duel.TossDice(tp,1)
 	if dc~=3 then return end
-	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end
@@ -58,7 +61,7 @@ function c72192100.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c72192100.filter(c,e,tp)
-	return c:IsCode(35975813) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsCode(35975813) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c72192100.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

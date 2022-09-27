@@ -27,7 +27,7 @@ function c69243953.initial_effect(c)
 	e4:SetDescription(aux.Stringid(69243953,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCategory(CATEGORY_TOHAND)
-	e4:SetCode(EVENT_LEAVE_FIELD)
+	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCondition(c69243953.retcon)
 	e4:SetTarget(c69243953.rettg)
 	e4:SetOperation(c69243953.retop)
@@ -47,14 +47,9 @@ function c69243953.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 	end
 end
-function c69243953.checkeq(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetEquipTarget() then
-		e:SetLabel(1)
-	else e:SetLabel(0) end
-end
 function c69243953.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_DESTROY) and c:GetEquipTarget()~=nil
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsReason(REASON_DESTROY) and c:GetPreviousEquipTarget() and not c:IsReason(REASON_LOST_TARGET)
 end
 function c69243953.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

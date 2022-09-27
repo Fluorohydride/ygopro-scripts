@@ -86,7 +86,6 @@ function c49430782.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,c49430782.counter)
 end
 function c49430782.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Draw(tp,c49430782.counter,REASON_EFFECT)
 end
 function c49430782.sumfilter(c)
@@ -98,7 +97,6 @@ function c49430782.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c49430782.sumop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 	local g=Duel.SelectMatchingCard(tp,c49430782.sumfilter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()

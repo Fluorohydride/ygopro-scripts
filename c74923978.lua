@@ -19,7 +19,7 @@ function c74923978.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c74923978.cfilter(c,tp)
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 end
 function c74923978.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74923978.cfilter,1,nil,tp)
@@ -31,7 +31,6 @@ function c74923978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,ct)
 end
 function c74923978.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ct=e:GetLabel()
 	Duel.DiscardHand(1-tp,nil,ct,ct,REASON_EFFECT+REASON_DISCARD)
 end

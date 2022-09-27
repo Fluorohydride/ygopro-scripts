@@ -43,7 +43,7 @@ function c73136204.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,ac)
 		for i=1,ac do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end
@@ -65,14 +65,14 @@ function c73136204.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
 	if sg:GetCount()>0 then
-		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup()
 		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
 		if ct==0 then return end
 		Duel.SortDecktop(tp,tp,ct)
 		for i=1,ct do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

@@ -25,7 +25,8 @@ function c91345518.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c91345518.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLP(tp)>Duel.GetLP(1-tp) end
+	if chk==0 then return Duel.GetLP(tp)>Duel.GetLP(1-tp)
+		and Duel.IsEnvironment(56433456,tp) end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 end

@@ -47,5 +47,5 @@ function c68661341.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68661341.sumlimit(e,c)
-	return c:GetCode()~=e:GetLabel()
+	return not c:IsCode(e:GetLabel())
 end

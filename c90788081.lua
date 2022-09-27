@@ -3,7 +3,7 @@ function c90788081.initial_effect(c)
 	--lv/atk
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(90788081,0))
-	e1:SetCategory(CATEGORY_LVCHANGE+CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
@@ -43,7 +43,7 @@ function c90788081.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90788081.indfilter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c90788081.indtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c90788081.indfilter(chkc) end

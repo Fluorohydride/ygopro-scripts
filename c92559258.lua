@@ -75,7 +75,7 @@ function c92559258.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c92559258.spfilter(c,e,tp)
-	return c:IsAttackAbove(1000) and c:IsCanAddCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackAbove(1000) and c:IsCanHaveCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c92559258.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -86,8 +86,8 @@ function c92559258.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92559258.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
+	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c92559258.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
@@ -134,7 +134,6 @@ function c92559258.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c92559258.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	local ct=e:GetLabel()
 	if c:IsRelateToEffect(e) and Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

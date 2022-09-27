@@ -60,7 +60,6 @@ function c70043345.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,70043345,RESET_PHASE+PHASE_END,0,1)
 end
 function c70043345.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=e:GetLabelObject()
 	if bc:IsRelateToBattle() and bc:IsControler(1-tp) and Duel.Remove(bc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		bc:SetTurnCounter(0)

@@ -11,7 +11,7 @@ function c13409151.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c13409151.filter(c)
-	return c:IsFaceup() and c:GetCode()~=13409151 and c:IsCanTurnSet()
+	return c:IsFaceup() and not c:IsCode(13409151) and c:IsCanTurnSet()
 end
 function c13409151.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c13409151.filter(chkc) end

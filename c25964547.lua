@@ -1,5 +1,6 @@
---Dream Mirror Hypnagogia
+--夢現の夢魔鏡
 function c25964547.initial_effect(c)
+	aux.AddCodeList(c,74665651,1050355)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

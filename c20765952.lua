@@ -58,7 +58,6 @@ function c20765952.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,Duel.GetTurnPlayer(),500)
 end
 function c20765952.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
@@ -69,5 +68,5 @@ function c20765952.descon(e,tp,eg,ep,ev,re,r,rp)
 	return tc and eg:IsContains(tc)
 end
 function c20765952.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(), REASON_EFFECT)
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

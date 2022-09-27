@@ -53,10 +53,10 @@ end
 function c72932673.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return rp==1-tp and bit.band(loc,LOCATION_SZONE)~=0
-		and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev) 
+		and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev)
 end
 function c72932673.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) then
+	if Duel.NegateEffect(ev,true) then
 		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 	end
 end

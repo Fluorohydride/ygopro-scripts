@@ -53,7 +53,7 @@ function c7407724.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c7407724.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousRaceOnField()&RACE_PLANT~=0
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousRaceOnField()&RACE_PLANT~=0
 end
 function c7407724.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c7407724.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())

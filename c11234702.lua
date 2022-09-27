@@ -1,4 +1,4 @@
---TGスクリュー・サーペント
+--TG スクリュー・サーペント
 function c11234702.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -48,6 +48,7 @@ function c11234702.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end
@@ -65,8 +66,13 @@ end
 function c11234702.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		local sel=0
 		local lvl=1
-		local sel=Duel.SelectOption(tp,aux.Stringid(11234702,1),aux.Stringid(11234702,2))
+		if tc:IsLevel(1) then
+			sel=Duel.SelectOption(tp,aux.Stringid(11234702,1))
+		else
+			sel=Duel.SelectOption(tp,aux.Stringid(11234702,1),aux.Stringid(11234702,2))
+		end
 		if sel==1 then
 			lvl=-1
 		end

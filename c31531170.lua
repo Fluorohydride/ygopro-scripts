@@ -94,7 +94,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	if #g==0 then return end
 	if ce then
 		Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
-		ce:Reset()
+		ce:UseCountLimit(tp)
 	else
 		aux.PendulumChecklist=aux.PendulumChecklist|(0x1<<tp)
 	end

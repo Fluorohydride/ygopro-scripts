@@ -51,7 +51,7 @@ function c28139785.ddop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c28139785.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
+	return c:IsPreviousControler(tp) and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c28139785.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:GetLevel()>0 and c:IsAbleToHand()
@@ -62,13 +62,11 @@ function c28139785.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28139785.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c28139785.thfilter,tp,LOCATION_GRAVE,0,nil)
+	if #g==0 then return end
 	local sg=g:GetMinGroup(Card.GetLevel)
 	if sg:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		sg=sg:Select(tp,1,1,nil)
 	end
-	if sg:GetCount()>0 then
-		Duel.SendtoHand(sg,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,sg)
-	end
+	Duel.SendtoHand(sg,nil,REASON_EFFECT)
 end

@@ -3,7 +3,7 @@ function c33245030.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_POSITION)
-	e1:SetType(EFFECT_TYPE_QUICK_O)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c33245030.condition)

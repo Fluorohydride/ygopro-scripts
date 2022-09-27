@@ -80,7 +80,7 @@ function c20003527.addcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20003527.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(COUNTER_NEED_ENABLE+0x1019,e:GetLabelObject():GetLabel())
+		e:GetHandler():AddCounter(0x1019,e:GetLabelObject():GetLabel())
 	end
 end
 function c20003527.atkval(e,c)

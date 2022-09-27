@@ -45,7 +45,7 @@ function c31829185.spop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c31829185.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	if c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and rp==1-tp and bit.band(r,REASON_DESTROY)~=0 then
 		c:RegisterFlagEffect(31829185,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end

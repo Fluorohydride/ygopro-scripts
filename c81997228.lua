@@ -35,9 +35,27 @@ function c81997228.initial_effect(c)
 	e2:SetOperation(c81997228.spop)
 	c:RegisterEffect(e2)
 end
+function c81997228.excostfilter(c,tp)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(25725326,tp)
+end
 function c81997228.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	local g=Duel.GetMatchingGroup(c81997228.excostfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
+	if chk==0 then return #g>0 end
+	local tc
+	if #g>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		tc=g:Select(tp,1,1,nil):GetFirst()
+	else
+		tc=g:GetFirst()
+	end
+	local te=tc:IsHasEffect(25725326,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
+	else
+		Duel.Release(tc,REASON_COST)
+	end
 end
 function c81997228.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
@@ -50,7 +68,7 @@ function c81997228.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81997228.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsPreviousControler(tp)
 end
 function c81997228.spfilter(c,e,tp)
 	return not c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -63,7 +81,7 @@ function c81997228.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c81997228.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
-function c81997228.spop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c81997228.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

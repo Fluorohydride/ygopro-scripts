@@ -49,9 +49,8 @@ function c68001309.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,sg,1,0,0)
 end
 function c68001309.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

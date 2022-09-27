@@ -1,5 +1,6 @@
---Dream Mirror of Terror
+--闇黒の夢魔鏡
 function c1050355.initial_effect(c)
+	aux.AddCodeList(c,74665651)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -53,7 +54,7 @@ function c1050355.cfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x131) and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c1050355.cfilter2(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c1050355.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c1050355.cfilter1,tp,LOCATION_MZONE,0,1,nil)

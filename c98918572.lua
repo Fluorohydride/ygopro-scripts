@@ -26,7 +26,7 @@ function c98918572.initial_effect(c)
 	e3:SetOperation(c98918572.xyzop)
 	c:RegisterEffect(e3)
 end
-function c98918572.rfilter(c,oc)
+function c98918572.rfilter(c,oc,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 		and c:CheckRemoveOverlayCard(tp,oc,REASON_COST)
 end
@@ -34,13 +34,13 @@ function c98918572.rcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return bit.band(r,REASON_COST)~=0 and re:IsActivated()
 		and re:IsActiveType(TYPE_XYZ) and ep==e:GetOwnerPlayer() and rc:IsSetCard(0xf1)
-		and Duel.IsExistingMatchingCard(c98918572.rfilter,tp,LOCATION_MZONE,0,1,rc,ev)
+		and Duel.IsExistingMatchingCard(c98918572.rfilter,tp,LOCATION_MZONE,0,1,rc,ev,tp)
 end
 function c98918572.rop(e,tp,eg,ep,ev,re,r,rp)
 	local min=ev&0xffff
 	local max=(ev>>16)&0xffff
 	local rc=re:GetHandler()
-	local tg=Duel.SelectMatchingCard(tp,c98918572.rfilter,tp,LOCATION_MZONE,0,1,1,rc,min)
+	local tg=Duel.SelectMatchingCard(tp,c98918572.rfilter,tp,LOCATION_MZONE,0,1,1,rc,min,tp)
 	return tg:GetFirst():RemoveOverlayCard(tp,min,max,REASON_EFFECT)
 end
 function c98918572.xyzfilter(c)

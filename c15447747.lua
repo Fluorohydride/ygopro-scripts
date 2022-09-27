@@ -48,7 +48,6 @@ function c15447747.lktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15447747.lkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local mg=Duel.GetMatchingGroup(c15447747.matfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c15447747.lkfilter,tp,LOCATION_EXTRA,0,1,1,nil,mg)
@@ -69,13 +68,10 @@ function c15447747.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15447747.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	local g=Duel.GetMatchingGroup(c15447747.tdfilter,tp,LOCATION_GRAVE,0,nil)
-	if #g==0 then return end
-	local ct=math.min(#g,math.floor(tc:GetAttack()/100))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=g:Select(tp,1,ct,nil)
-	if Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)==0 then return end
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local g=Duel.SelectMatchingCard(tp,c15447747.tdfilter,tp,LOCATION_GRAVE,0,1,99,nil)
+	local ct=#g
+	if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)==0 then return end
 	if tc:IsFaceup() and tc:IsRelateToBattle() and ct>0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

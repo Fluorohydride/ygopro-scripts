@@ -48,7 +48,7 @@ function c75574498.spfilter1(c,e,tp)
 	return c:IsCode(81587028) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c75574498.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and  c75574498.spfilter1(chkc,e,tp) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c75574498.spfilter1(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c75574498.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -65,7 +65,7 @@ function c75574498.tgcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_MZONE,0)>=2
 end
 function c75574498.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_DESTROY)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_DESTROY)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_NORMAL)~=0
 end
 function c75574498.spcon2(e,tp,eg,ep,ev,re,r,rp)

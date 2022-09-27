@@ -3,7 +3,7 @@ function c43722862.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(43722862,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,43722862)
@@ -29,7 +29,7 @@ function c43722862.initial_effect(c)
 	Duel.AddCustomActivityCounter(43722862,ACTIVITY_SPSUMMON,c43722862.counterfilter)
 end
 function c43722862.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or (c:IsLevelAbove(5) and c:IsAttribute(ATTRIBUTE_WIND))
+	return not c:IsSummonLocation(LOCATION_EXTRA) or (c:IsLevelAbove(5) and c:IsAttribute(ATTRIBUTE_WIND))
 end
 function c43722862.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
@@ -52,7 +52,6 @@ function c43722862.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c43722862.spfilter(c,e,tp)
 	return c:IsSetCard(0xf0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

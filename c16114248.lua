@@ -1,4 +1,4 @@
---ペア・サイクロイド
+--ペアサイクロイド
 function c16114248.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c16114248.ffilter,2,true)

@@ -48,7 +48,7 @@ end
 function c41463181.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c41463181.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -72,7 +72,7 @@ function c41463181.atkfilter1(c,tp)
 	return c:IsFaceup() and Duel.IsExistingTarget(c41463181.atkfilter2,tp,LOCATION_GRAVE,0,1,nil,c)
 end
 function c41463181.atkfilter2(c,tc)
-	return c:IsType(TYPE_MONSTER) and c:GetAttack()~=tc:GetAttack()
+	return c:IsType(TYPE_MONSTER) and c:GetAttack()~=tc:GetAttack() and c:GetTextAttack()>=0
 end
 function c41463181.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

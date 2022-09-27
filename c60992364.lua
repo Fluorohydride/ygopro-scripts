@@ -46,7 +46,7 @@ function c60992364.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c60992364.thfilter(c)
-	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c60992364.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c60992364.thfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -74,11 +74,14 @@ function c60992364.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c60992364.zw_equip_monster(c,tp,tc)
+end
+function c60992364.zw_equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)

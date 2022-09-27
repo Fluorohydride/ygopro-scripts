@@ -40,7 +40,7 @@ function c2377034.thcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2377034.filter(c)
 	local def=c:GetDefense()
-	return def>=0 and def<=200 and c:IsAttribute(ATTRIBUTE_FIRE) and c:GetCode()~=2377034 and c:IsAbleToHand()
+	return def>=0 and def<=200 and c:IsAttribute(ATTRIBUTE_FIRE) and not c:IsCode(2377034) and c:IsAbleToHand()
 end
 function c2377034.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c2377034.filter(chkc) end

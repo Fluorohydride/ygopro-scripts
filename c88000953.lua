@@ -65,6 +65,7 @@ function c88000953.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c88000953.costfilter,nil,tp,lg)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c88000953.fselect,false,1,rg:GetCount(),tp)
+	aux.UseExtraReleaseCount(sg,tp)
 	local ct=Duel.Release(sg,REASON_COST)
 	e:SetLabel(ct)
 end

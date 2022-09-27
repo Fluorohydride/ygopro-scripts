@@ -25,8 +25,7 @@ function c65046521.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c65046521.filter(c,e,tp)
-	return c:IsRace(RACE_SPELLCASTER) and c:IsDefense(1500)
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsRace(RACE_SPELLCASTER) and c:IsDefense(1500) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c65046521.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -39,15 +38,11 @@ function c65046521.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c65046521.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummon(tc,0,tp,tp,false,false,spos) end
-		if tc:IsFacedown() then Duel.ConfirmCards(1-tp,tc) end
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)~=0 and tc:IsFacedown() then Duel.ConfirmCards(1-tp,tc) end
 	end
 	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	if mg:GetClassCount(Card.GetAttribute)>=2 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(65046521,1)) then
+	if aux.GetAttributeCount(mg)>=2 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(65046521,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)

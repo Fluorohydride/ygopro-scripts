@@ -16,6 +16,7 @@ function c20788863.initial_effect(c)
 	e2:SetCost(c20788863.cost)
 	e2:SetTarget(c20788863.drtg1)
 	e2:SetOperation(c20788863.drop1)
+	e2:SetHintTiming(0,TIMING_END_PHASE)
 	c:RegisterEffect(e2)
 	--draw (link)
 	local e3=Effect.CreateEffect(c)
@@ -30,6 +31,7 @@ function c20788863.initial_effect(c)
 	e3:SetCost(c20788863.cost)
 	e3:SetTarget(c20788863.drtg2)
 	e3:SetOperation(c20788863.drop2)
+	e3:SetHintTiming(0,TIMING_END_PHASE)
 	c:RegisterEffect(e3)
 	if not c20788863.global_check then
 		c20788863.global_check=true
@@ -64,7 +66,6 @@ function c20788863.drtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c20788863.drop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c20788863.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
@@ -86,7 +87,6 @@ function c20788863.drtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c20788863.drop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end

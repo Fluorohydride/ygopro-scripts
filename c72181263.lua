@@ -51,7 +51,6 @@ function c72181263.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,2,0,0)
 end
 function c72181263.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)

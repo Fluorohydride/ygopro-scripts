@@ -24,7 +24,7 @@ function c27340877.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
-		local rc=Duel.AnnounceAttribute(1-tp,2,0xffffff)
+		local rc=Duel.AnnounceAttribute(1-tp,2,ATTRIBUTE_ALL)
 		Duel.ConfirmCards(1-tp,tc)
 		if tc:IsAttribute(rc) then
 			Duel.Draw(1-tp,2,REASON_EFFECT)

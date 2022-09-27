@@ -1,4 +1,4 @@
---Plunder Patrollship Brann
+--海造賊－豪速のブレンネ号
 function c94253655.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -64,7 +64,6 @@ function c94253655.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c94253655.rmfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c94253655.thfilter(c)
 	return c:IsSetCard(0x13f) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

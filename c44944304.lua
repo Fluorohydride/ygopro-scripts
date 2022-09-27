@@ -49,7 +49,6 @@ function c44944304.rctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,1000)
 end
 function c44944304.rcop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
@@ -80,7 +79,7 @@ end
 function c44944304.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp)
 		and chkc:IsCanBeSpecialSummoned(e,0,tp,false,false) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c44944304.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c44944304.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)

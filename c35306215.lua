@@ -60,6 +60,7 @@ function c35306215.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c35306215.rmfilter,tp,LOCATION_GRAVE,0,2,2,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	c:SetMaterial(nil)
 end
 function c35306215.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

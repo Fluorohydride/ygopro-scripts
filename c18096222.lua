@@ -23,6 +23,7 @@ function c18096222.initial_effect(c)
 	e2:SetOperation(c18096222.daop)
 	c:RegisterEffect(e2)
 end
+c18096222.has_text_type=TYPE_DUAL
 function c18096222.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()

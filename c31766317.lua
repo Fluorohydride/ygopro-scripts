@@ -26,7 +26,7 @@ end
 function c31766317.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local dc=eg:GetFirst()
 	if chk==0 then return eg:GetCount()==1 and dc~=e:GetHandler() and dc:IsFaceup() and dc:IsLocation(LOCATION_MZONE)
-		and dc:IsRace(RACE_FIEND) and dc:IsAttribute(ATTRIBUTE_DARK)
+		and dc:IsRace(RACE_FIEND) and dc:IsAttribute(ATTRIBUTE_DARK) and not dc:IsReason(REASON_REPLACE)
 		and Duel.IsExistingMatchingCard(c31766317.rfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -36,11 +36,11 @@ function c31766317.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	else return false end
 end
 function c31766317.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DESTROY) and bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c31766317.filter(c,e,tp)
 	return c:IsRace(RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsLevelAbove(6)
-		and c:GetCode()~=31766317 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and not c:IsCode(31766317) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c31766317.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c31766317.filter(chkc,e,tp) end

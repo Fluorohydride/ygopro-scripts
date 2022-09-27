@@ -11,7 +11,7 @@ function c16067089.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c16067089.cfilter(c,tp)
-	return c:IsCode(72677437) and c:GetPreviousControler()==tp
+	return c:IsCode(72677437) and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c16067089.condition(e,tp,eg,ep,ev,re,r,rp)

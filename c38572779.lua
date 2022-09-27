@@ -42,11 +42,12 @@ function c38572779.immop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c38572779.efilter)
 	if Duel.GetCurrentPhase()==PHASE_MAIN1 then
 		e1:SetReset(RESET_PHASE+PHASE_MAIN1)
+		Duel.RegisterFlagEffect(tp,38572779,RESET_PHASE+PHASE_MAIN1,0,1)
 	else
 		e1:SetReset(RESET_PHASE+PHASE_MAIN2)
+		Duel.RegisterFlagEffect(tp,38572779,RESET_PHASE+PHASE_MAIN2,0,1)
 	end
 	Duel.RegisterEffect(e1,tp)
-	Duel.RegisterFlagEffect(tp,38572779,RESET_PHASE+PHASE_END,0,1)
 end
 function c38572779.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer() and re:IsActivated()

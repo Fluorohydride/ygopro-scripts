@@ -11,9 +11,6 @@ function c92327802.initial_effect(c)
 	e1:SetTargetRange(1,0)
 	e1:SetValue(c92327802.damval)
 	c:RegisterEffect(e1)
-	local e4=e1:Clone()
-	e4:SetCode(EFFECT_NO_EFFECT_DAMAGE)
-	c:RegisterEffect(e4)
 	--atkup
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
@@ -32,7 +29,8 @@ function c92327802.initial_effect(c)
 end
 function c92327802.damval(e,re,val,r,rp,rc)
 	local c=e:GetHandler()
-	if bit.band(r,REASON_EFFECT)~=0 and c:IsCanAddCounter(0x43,1) and c:GetFlagEffect(92327802)==0 then
+	if bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetOwnerPlayer()
+		and c:IsCanAddCounter(0x43,1) and c:GetFlagEffect(92327802)==0 then
 		c:AddCounter(0x43,1)
 		c:RegisterFlagEffect(92327802,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		return 0

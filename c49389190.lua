@@ -1,5 +1,6 @@
---Ikelos, the Dream Mirror Sprite
+--夢魔鏡の乙女－イケロス
 function c49389190.initial_effect(c)
+	aux.AddCodeList(c,1050355)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(49389190,0))
@@ -58,7 +59,7 @@ function c49389190.spfilter(c,e,tp)
 	return c:IsCode(75888208) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c49389190.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetMZoneCount(tp,c)>0
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0
 		and Duel.IsExistingMatchingCard(c49389190.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end

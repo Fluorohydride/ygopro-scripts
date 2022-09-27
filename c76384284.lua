@@ -17,7 +17,7 @@ function c76384284.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 		and Duel.IsExistingMatchingCard(c76384284.filter,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.IsPlayerCanDraw(tp,1) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_HAND)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c76384284.activate(e,tp,eg,ep,ev,re,r,rp)

@@ -3,7 +3,6 @@ function c11851647.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(11851647,0))
-	e1:SetCategory(CATEGORY_LVCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,11851647)
@@ -55,7 +54,7 @@ function c11851647.lvop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11851647.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp and bit.band(r,REASON_DESTROY)~=0 and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return rp==1-tp and c:IsPreviousControler(tp) and bit.band(r,REASON_DESTROY)~=0 and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c11851647.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

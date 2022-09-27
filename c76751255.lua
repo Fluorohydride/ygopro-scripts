@@ -15,7 +15,7 @@ function c76751255.filter(c)
 	return c:IsType(TYPE_PENDULUM) and c:IsAbleToDeck() and not c:IsPublic()
 end
 function c76751255.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp)
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsExistingMatchingCard(c76751255.filter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND)
@@ -26,7 +26,7 @@ function c76751255.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(p,c76751255.filter,p,LOCATION_HAND,0,1,63,nil)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(1-p,g)
-		local ct=Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		local ct=Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.ShuffleDeck(p)
 		Duel.BreakEffect()
 		Duel.Draw(p,ct+1,REASON_EFFECT)

@@ -42,11 +42,14 @@ function c2648201.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) or not c:CheckUniqueOnField(tp) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) or not c:CheckUniqueOnField(tp) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c2648201.zw_equip_monster(c,tp,tc)
+end
+function c2648201.zw_equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -69,7 +72,7 @@ end
 function c2648201.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
-	return c:IsReason(REASON_LOST_TARGET) and c:GetPreviousControler()==tp and ec:IsReason(REASON_DESTROY) and ec:GetReasonPlayer()==1-tp
+	return c:IsReason(REASON_LOST_TARGET) and c:IsPreviousControler(tp) and ec:IsReason(REASON_DESTROY) and ec:GetReasonPlayer()==1-tp
 end
 function c2648201.spfilter(c,e,tp)
 	return c:IsSetCard(0x107f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

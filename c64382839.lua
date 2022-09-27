@@ -22,7 +22,7 @@ function c64382839.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c64382839.cfilter(c,tp)
-	return c:GetPreviousControler()==1-tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsPreviousControler(1-tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN)
 end
 function c64382839.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -35,7 +35,7 @@ function c64382839.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64382839.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,64382840,0,0x4011,500,500,2,RACE_FIEND,ATTRIBUTE_DARK) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,64382840,0,TYPES_TOKEN_MONSTER,500,500,2,RACE_FIEND,ATTRIBUTE_DARK) then return end
 	local token=Duel.CreateToken(tp,64382840)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

@@ -8,7 +8,7 @@ function c60470713.initial_effect(c)
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(60470713,0))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,60470713)
@@ -22,7 +22,7 @@ function c60470713.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c60470713.cfilter(c,tp)
-	return c:IsControler(tp) and c:GetPreviousControler()==tp
+	return c:IsControler(tp) and c:IsPreviousControler(tp)
 		and (c:IsPreviousLocation(LOCATION_GRAVE) or (c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)))
 		and c:IsSetCard(0x71) and not c:IsLocation(LOCATION_EXTRA)
 end
@@ -31,8 +31,6 @@ function c60470713.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60470713.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c60470713.mfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x71) and c:IsRace(RACE_FAIRY)

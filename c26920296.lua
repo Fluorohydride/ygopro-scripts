@@ -48,7 +48,7 @@ function c26920296.cfilter(c,type)
 	return c:IsFaceup() and c:IsType(type)
 end
 function c26920296.drcfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_HAND+LOCATION_MZONE) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_HAND+LOCATION_MZONE) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c26920296.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26920296.drcfilter,1,nil,tp)
@@ -62,7 +62,6 @@ function c26920296.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c26920296.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
@@ -76,7 +75,6 @@ function c26920296.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c26920296.lvop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c26920296.lvfilter,nil):Filter(Card.IsRelateToEffect,nil,e)
 	local tc=g:GetFirst()
 	while tc do
@@ -102,7 +100,6 @@ function c26920296.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,mg,mg:GetCount(),0,0)
 end
 function c26920296.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()==0 then return end
 	local mg,lv=g:GetMaxGroup(Card.GetLevel)

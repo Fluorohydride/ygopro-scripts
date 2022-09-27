@@ -36,7 +36,7 @@ function c56209279.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
 end
 function c56209279.filter(c,e,tp)
-	return c:IsSetCard(0xb) and c:GetCode()~=56209279 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xb) and not c:IsCode(56209279) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c56209279.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c56209279.filter(chkc,e,tp) end

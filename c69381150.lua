@@ -32,7 +32,7 @@ function c69381150.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c69381150.regfilter(c,tp)
-	return c:IsSummonType(SUMMON_TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsSummonType(SUMMON_TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c69381150.regcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c69381150.regfilter,1,nil,tp)

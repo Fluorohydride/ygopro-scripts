@@ -1,7 +1,7 @@
 --グローアップ・ブルーム
 function c92964816.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetDescription(aux.Stringid(92964816,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_TO_GRAVE)
@@ -21,8 +21,6 @@ function c92964816.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local res=Duel.IsEnvironment(4064256,PLAYER_ALL,LOCATION_FZONE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		return Duel.IsExistingMatchingCard(c92964816.filter,tp,LOCATION_DECK,0,1,nil,e,tp,res)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c92964816.operation(e,tp,eg,ep,ev,re,r,rp)
 	local res=Duel.IsEnvironment(4064256,PLAYER_ALL,LOCATION_FZONE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

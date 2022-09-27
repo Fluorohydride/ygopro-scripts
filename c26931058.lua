@@ -17,7 +17,7 @@ function c26931058.filter2(c,ec)
 	return c:IsFaceup() and ec:CheckUnionTarget(c) and aux.CheckUnionEquip(ec,c)
 end
 function c26931058.filter3(c,e,tp)
-	return c:IsFaceup() and c:IsHasEffect(EFFECT_UNION_STATUS) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsHasEffect(EFFECT_UNION_STATUS) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c26931058.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then

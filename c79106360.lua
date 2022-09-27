@@ -2,7 +2,7 @@
 function c79106360.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK)
+	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP)
 	e1:SetTarget(c79106360.target)
 	e1:SetOperation(c79106360.operation)
@@ -10,21 +10,20 @@ function c79106360.initial_effect(c)
 end
 function c79106360.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c79106360.filter(c)
 	return not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsAbleToDeck()
 end
 function c79106360.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.GetMatchingGroup(c79106360.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.SendtoDeck(rg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local ct1=0
 	local ct2=0
 	rg=Duel.GetOperatedGroup()
 	local tc=rg:GetFirst()
 	while tc do
 		if tc:IsLocation(LOCATION_DECK) and tc:IsType(TYPE_MONSTER) then
-			if tc:GetControler()==tp then ct1=ct1+1
+			if tc:IsControler(tp) then ct1=ct1+1
 			else ct2=ct2+1 end
 		end
 		tc=rg:GetNext()

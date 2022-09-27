@@ -44,7 +44,8 @@ function c88413677.thop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c88413677.thcon2(e,tp,eg,ep,ev,re,r,rp)
-	return r==REASON_LINK and e:GetHandler():GetReasonCard():IsRace(RACE_CYBERSE)
+	local c=e:GetHandler()
+	return r==REASON_LINK and c:GetReasonCard():IsRace(RACE_CYBERSE) and c:IsLocation(LOCATION_GRAVE)
 end
 function c88413677.thfilter2(c)
 	return c:IsSetCard(0x136) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

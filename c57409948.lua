@@ -19,7 +19,7 @@ function c57409948.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
-		if tc:IsType(TYPE_EFFECT) then 
+		if tc:IsType(TYPE_EFFECT) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end

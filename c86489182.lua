@@ -19,7 +19,7 @@ function c86489182.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_HAND,0)
 	e3:SetTarget(aux.TargetBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND))
-	e3:SetValue(0x10001)
+	e3:SetValue(c86489182.decval)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_DECREASE_TRIBUTE_SET)
@@ -50,6 +50,9 @@ function c86489182.valcheck(e,c)
 	else
 		e:GetLabelObject():SetLabel(0)
 	end
+end
+function c86489182.decval(e,c)
+	return 0x10001,86489182
 end
 function c86489182.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and e:GetLabel()==1

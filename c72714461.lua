@@ -37,7 +37,6 @@ function c72714461.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c72714461.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local g=Duel.SelectMatchingCard(tp,c72714461.penfilter,tp,LOCATION_DECK,0,1,1,nil)

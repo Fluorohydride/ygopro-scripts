@@ -26,8 +26,11 @@ function c25793414.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c25793414.material_type=TYPE_SYNCHRO
+function c25793414.sfcfilter(c,fc)
+	return (c:IsFusionCode(14577226) or c:CheckFusionSubstitute(fc)) and c:IsFusionType(TYPE_SYNCHRO)
+end
 function c25793414.synchro_fusion_check(tp,sg,fc)
-	return aux.gffcheck(sg,Card.IsFusionCode,14577226,Card.IsFusionSetCard,0xf0)
+	return aux.gffcheck(sg,c25793414.sfcfilter,fc,Card.IsFusionSetCard,0xf0)
 end
 function c25793414.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsType(TYPE_MONSTER) end
@@ -68,7 +71,10 @@ end
 function c25793414.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cid=e:GetLabel()
-	if cid~=0 then c:ResetEffect(cid,RESET_COPY) end
+	if cid~=0 then
+		c:ResetEffect(cid,RESET_COPY)
+		c:ResetEffect(RESET_DISABLE,RESET_EVENT)
+	end
 	local e1=e:GetLabelObject()
 	e1:Reset()
 	Duel.HintSelection(Group.FromCards(c))
@@ -76,7 +82,7 @@ function c25793414.rstop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25793414.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and rp==1-tp
+	return c:IsReason(REASON_DESTROY) and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c25793414.spfilter1(c,e,tp)
 	return c:IsCode(14577226) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

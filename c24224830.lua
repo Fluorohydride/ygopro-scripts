@@ -44,7 +44,7 @@ function c24224830.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24224830.distg(e,c)
 	local tc=e:GetLabelObject()
-	return c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
+	return c:IsOriginalCodeRule(tc:GetOriginalCodeRule()) and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 function c24224830.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

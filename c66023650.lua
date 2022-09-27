@@ -12,6 +12,7 @@ function c66023650.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(66023650,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -29,6 +30,7 @@ function c66023650.initial_effect(c)
 	c:RegisterEffect(e3)
 	--draw
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(66023650,1))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DESTROYED)
@@ -71,7 +73,7 @@ function c66023650.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66023650.drcfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()~=tp and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(1-tp) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c66023650.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c66023650.drcfilter,1,nil,tp)

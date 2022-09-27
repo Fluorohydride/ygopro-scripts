@@ -26,8 +26,8 @@ function c15173384.initial_effect(c)
 end
 function c15173384.cfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and ((c:IsPreviousSetCard(0x110) and bit.band(c:GetPreviousTypeOnField(),TYPE_FUSION)~=0) or c:GetPreviousCodeOnField()==64631466)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+		and ((c:IsPreviousSetCard(0x1110) and bit.band(c:GetPreviousTypeOnField(),TYPE_FUSION)~=0) or c:GetPreviousCodeOnField()==64631466)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c15173384.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15173384.cfilter,1,nil,tp)
@@ -47,7 +47,7 @@ function c15173384.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c15173384.filter(c,e,tp)
-	return ((c:IsSetCard(0x110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
+	return ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c15173384.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

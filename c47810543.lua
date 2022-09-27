@@ -33,23 +33,19 @@ function c47810543.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47810543.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c47810543.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local seq=4-g:GetFirst():GetSequence()
 		if Duel.CheckLocation(1-tp,LOCATION_MZONE,seq) then
+			local val=aux.SequenceToGlobal(1-tp,LOCATION_MZONE,seq)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_DISABLE_FIELD)
+			e1:SetValue(val)
 			e1:SetReset(RESET_PHASE+PHASE_END)
-			e1:SetLabel(16+seq)
-			e1:SetOperation(c47810543.disop)
 			Duel.RegisterEffect(e1,tp)
 		end
 	end
-end
-function c47810543.disop(e,tp)
-	return 0x1<<e:GetLabel()
 end

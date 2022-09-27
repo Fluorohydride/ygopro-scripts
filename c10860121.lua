@@ -16,8 +16,8 @@ function c10860121.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c10860121.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsSetCard(0x88) and c:IsRace(RACE_BEASTWARRIOR) and c:IsReason(REASON_BATTLE) 
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:IsSetCard(0x88) and c:IsRace(RACE_BEASTWARRIOR) and c:IsReason(REASON_BATTLE)
 end
 function c10860121.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c10860121.cfilter,1,nil,tp)

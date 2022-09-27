@@ -28,6 +28,7 @@ function c4694209.initial_effect(c)
 	e4:SetCountLimit(1)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e4:SetCost(c4694209.addccost2)
 	e4:SetTarget(c4694209.addct2)
 	e4:SetOperation(c4694209.addc2)
 	c:RegisterEffect(e4)
@@ -38,23 +39,24 @@ function c4694209.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4694209.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x1021+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x1021,1)
 	end
 end
 function c4694209.attackup(e,c)
 	return c:GetCounter(0x1021)*300
 end
+function c4694209.addccost2(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1021,1,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1021,1,REASON_COST)
+end
 function c4694209.addct2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc:IsCanAddCounter(0x1021,1) end
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1021,1,REASON_EFFECT)
-		and Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),0x1021,1) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),0x1021,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(4694209,1))
 	Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),0x1021,1)
 end
 function c4694209.addc2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetCounter(0x1021)==0 then return end
-	c:RemoveCounter(tp,0x1021,1,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		tc:AddCounter(0x1021,1)
@@ -73,6 +75,6 @@ function c4694209.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE) and e:GetHandler():GetCounter(0x1021)>0 end
 	return true
 end
-function c4694209.repop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c4694209.repop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(tp,0x1021,1,REASON_EFFECT)
 end

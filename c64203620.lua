@@ -1,4 +1,4 @@
---極星邪竜ヨルムンガンド
+--極星邪龍ヨルムンガンド
 function c64203620.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

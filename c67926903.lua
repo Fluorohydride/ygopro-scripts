@@ -23,10 +23,7 @@ function c67926903.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c67926903.ovfilter(c)
-	local code=c:GetCode()
-	local class=_G["c"..code]
-	if class==nil then return false end
-	local no=class.xyz_number
+	local no=aux.GetXyzNumber(c)
 	return c:IsFaceup() and no and no>=101 and no<=107 and c:IsSetCard(0x1048)
 end
 function c67926903.atkval(e,c)
@@ -78,6 +75,7 @@ function c67926903.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cid=e:GetLabel()
 	c:ResetEffect(cid,RESET_COPY)
+	c:ResetEffect(RESET_DISABLE,RESET_EVENT)
 	local e1=e:GetLabelObject()
 	e1:Reset()
 	Duel.HintSelection(Group.FromCards(c))
