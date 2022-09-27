@@ -45,7 +45,7 @@ function c62941499.seqfilter(c,seq,tp)
 	local cloc=c:GetLocation()
 	if cloc==LOCATION_SZONE and cseq>=5 then return false end
 	if cloc==LOCATION_MZONE and cseq>=5 and loc==LOCATION_MZONE
-		and (seq==1 and cseq==5 or seq==3 and cseq==6) then return true end
+		and (seq==1 and cseq==5 or seq==3 and cseq==6 or seq==cseq) then return true end
 	if cloc==LOCATION_MZONE and seq>=5 and loc==LOCATION_MZONE
 		and Duel.IsExistingMatchingCard(c62941499.exmzfilter,tp,0,LOCATION_MZONE,1,nil,seq) then
 		return seq==5 and cseq==1 or seq==6 and cseq==3
