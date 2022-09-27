@@ -21,19 +21,15 @@ function c8802510.initial_effect(c)
 	e2:SetCode(EVENT_REMOVE)
 	e2:SetCountLimit(1,8802510)
 	e2:SetCondition(c8802510.regcon)
-	e2:SetTarget(c8802510.regtg)
 	e2:SetOperation(c8802510.regop)
 	c:RegisterEffect(e2)
 end
 function c8802510.cfilter(c,tp)
 	return c:IsFaceup() and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE)
-		and bit.band(c:GetPreviousRaceOnField(),RACE_PSYCHO)~=0 and c:GetPreviousControler()==tp
+		and bit.band(c:GetPreviousRaceOnField(),RACE_PSYCHO)~=0 and c:IsPreviousControler(tp)
 end
 function c8802510.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8802510.cfilter,1,nil,tp)
-end
-function c8802510.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0xc1) end
 end
 function c8802510.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

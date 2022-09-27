@@ -11,13 +11,7 @@ function c75064463.initial_effect(c)
 	e1:SetOperation(c75064463.operation)
 	c:RegisterEffect(e1)
 	--change name
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e2:SetCode(EFFECT_CHANGE_CODE)
-	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e2:SetValue(76812113)
-	c:RegisterEffect(e2)
+	aux.EnableChangeCode(c,76812113,LOCATION_MZONE+LOCATION_GRAVE)
 end
 function c75064463.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -31,7 +25,7 @@ function c75064463.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75064463.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function c75064463.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c75064463.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetFirstMatchingCard(c75064463.filter,tp,LOCATION_DECK,0,nil)
 	if tg then
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)

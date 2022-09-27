@@ -32,7 +32,7 @@ function c35014241.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g2=Duel.SelectMatchingCard(tp,c35014241.cfilter2,tp,LOCATION_MZONE,0,1,1,nil,e,tp,g1:GetFirst())
 	e:SetLabel(g1:GetFirst():GetLevel()+g2:GetFirst():GetLevel())
 	g1:Merge(g2)
-	Duel.SendtoDeck(g1,nil,0,REASON_COST)
+	Duel.SendtoDeck(g1,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c35014241.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

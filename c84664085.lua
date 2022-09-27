@@ -34,7 +34,7 @@ function c84664085.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84664085.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ct=Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SYNCHRO)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
 	if chk==0 then return ct>0 and Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,ct,nil)

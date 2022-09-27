@@ -30,7 +30,6 @@ function c47060347.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,3000)
 end
 function c47060347.recop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
@@ -42,7 +41,7 @@ function c47060347.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47060347.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp then
+	if e:GetLabelObject():GetLabel()==0 and c:IsPreviousControler(tp) then
 		Duel.Damage(tp,3000,REASON_EFFECT)
 	end
 end

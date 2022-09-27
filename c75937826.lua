@@ -62,7 +62,7 @@ function c75937826.rctop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c75937826.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x1f)==0
+	return e:GetHandler():GetCounter(0x1f)==0 and e:GetHandler():IsRelateToBattle()
 end
 function c75937826.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end

@@ -77,6 +77,7 @@ function c4059313.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:Select(tp,1,g:GetCount(),nil)
+	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 	local atk=rg:GetSum(Card.GetTextAttack)
 	e:SetLabel(100,atk)

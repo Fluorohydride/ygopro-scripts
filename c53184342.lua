@@ -53,10 +53,10 @@ function c53184342.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c53184342.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.disfilter1(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.NegateMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c53184342.eqfilter(c)
 	return (c:IsFaceup() or c:GetEquipTarget()) and c:IsType(TYPE_EQUIP)
@@ -90,7 +90,7 @@ function c53184342.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53184342.cfilter(c,tp)
-	return c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==1-tp and c:IsType(TYPE_MONSTER)
+	return c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp) and c:IsType(TYPE_MONSTER)
 end
 function c53184342.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c53184342.cfilter,1,nil,tp)
@@ -99,7 +99,7 @@ function c53184342.chkfilter(c,tp)
 	return not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
 end
 function c53184342.filter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(1-tp)
 		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c53184342.chkfilter(c,tp)
 end
 function c53184342.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)

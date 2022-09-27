@@ -18,7 +18,7 @@ function c24207889.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e4:SetCode(EFFECT_LIMIT_SPECIAL_SUMMON_POSITION)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetTargetRange(1,1)
 	e4:SetTarget(c24207889.sumlimit)
@@ -29,9 +29,22 @@ function c24207889.initial_effect(c)
 	local e6=e4:Clone()
 	e6:SetCode(EFFECT_CANNOT_FLIP_SUMMON)
 	c:RegisterEffect(e6)
+	if not c24207889.global_check then
+		c24207889.global_check=true
+		c24207889[0]={}
+		c24207889[1]={}
+		local race=1
+		while race<RACE_ALL do
+			c24207889[0][race]=Group.CreateGroup()
+			c24207889[0][race]:KeepAlive()
+			c24207889[1][race]=Group.CreateGroup()
+			c24207889[1][race]:KeepAlive()
+			race=race<<1
+		end
+	end
 end
 function c24207889.rmfilter(c,rc)
-	return c:IsFaceup() and c:IsRace(rc)
+	return c:IsFaceup() and c:IsRace(rc) and c:IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c24207889.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumtype==SUMMON_TYPE_DUAL then return false end
@@ -47,19 +60,29 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
 		local race=1
-		while bit.band(RACE_ALL,race)~=0 do
+		while race<RACE_ALL do
 			local rg=g:Filter(Card.IsRace,nil,race)
 			local rc=rg:GetCount()
 			if rc>1 then
+				rg:Sub(c24207889[p][race]:Filter(Card.IsRace,nil,race))
 				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOGRAVE)
 				local dg=rg:Select(p,rc-1,rc-1,nil)
 				sg:Merge(dg)
 			end
-			race=race*2
+			race=race<<1
 		end
 	end
 	if sg:GetCount()>0 then
 		Duel.SendtoGrave(sg,REASON_RULE)
 		Duel.Readjust()
+	end
+	for p=0,1 do
+		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
+		local race=1
+		while race<RACE_ALL do
+			c24207889[p][race]:Clear()
+			c24207889[p][race]:Merge(g:Filter(Card.IsRace,nil,race))
+			race=race<<1
+		end
 	end
 end

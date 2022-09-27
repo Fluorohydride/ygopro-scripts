@@ -25,7 +25,7 @@ function c33823832.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c33823832.cfilter(c,tp)
-	return c:IsType(TYPE_PENDULUM) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_PENDULUM) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c33823832.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c33823832.cfilter,1,nil,tp)

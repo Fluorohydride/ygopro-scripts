@@ -17,7 +17,7 @@ function c92039899.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_EFFECT) and c:IsReason(REASON_DESTROY)
 end
 function c92039899.spfilter(c,e,tp)
-	return c:IsSetCard(0x45) and c:GetCode()~=92039899 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x45) and not c:IsCode(92039899) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c92039899.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c92039899.spfilter(chkc,e,tp) end

@@ -2,7 +2,7 @@
 function c91140491.initial_effect(c)
 	c:EnableCounterPermit(0x53)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c91140491.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c91140491.lcheck)
 	c:EnableReviveLimit()
 	--counter
 	local e1=Effect.CreateEffect(c)

@@ -15,6 +15,7 @@ function c33114323.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(0x34,0x34)
+	e2:SetCondition(c33114323.effcon)
 	e2:SetTarget(c33114323.efftg)
 	e2:SetValue(aux.tgoval)
 	c:RegisterEffect(e2)
@@ -38,6 +39,11 @@ function c33114323.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
+end
+function c33114323.effcon(e)
+	local c=e:GetHandler()
+	local tc=c:GetEquipTarget()
+	return tc and c:GetControler()==tc:GetControler()
 end
 function c33114323.efftg(e,c)
 	return c~=e:GetHandler():GetEquipTarget() and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or not c:IsLocation(LOCATION_REMOVED))

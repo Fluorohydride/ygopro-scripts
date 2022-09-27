@@ -46,7 +46,6 @@ function c28265983.destg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c28265983.desop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
@@ -60,8 +59,8 @@ function c28265983.descon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c28265983.descost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)-Duel.GetLP(1-tp)
-	if chk==0 then return Duel.CheckLPCost(tp,lp) end
-	Duel.PayLPCost(tp,lp)
+	if chk==0 then return Duel.CheckLPCost(tp,lp,true) end
+	Duel.PayLPCost(tp,lp,true)
 	e:SetLabel(lp)
 end
 function c28265983.desfilter2(c,num)
@@ -77,7 +76,6 @@ function c28265983.gselect(g,num)
 	return g:GetSum(Card.GetAttack)<=num
 end
 function c28265983.desop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local num=e:GetLabel()
 	local g=Duel.GetMatchingGroup(c28265983.desfilter2,tp,0,LOCATION_MZONE,nil,num)
 	if g:GetCount()==0 then return end

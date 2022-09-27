@@ -43,8 +43,9 @@ function c18967507.eqfilter(c,tp)
 	return c:IsRace(RACE_DRAGON+RACE_MACHINE) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 end
 function c18967507.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local loc=Duel.IsPlayerAffectedByEffect(tp,64753988) and LOCATION_GRAVE or 0
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c18967507.eqfilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
+		and Duel.IsExistingMatchingCard(c18967507.eqfilter,tp,LOCATION_GRAVE,loc,1,nil,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,0)
 end
@@ -52,8 +53,9 @@ function c18967507.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	local loc=Duel.IsPlayerAffectedByEffect(tp,64753988) and LOCATION_GRAVE or 0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c18967507.eqfilter),tp,LOCATION_GRAVE,0,1,1,nil,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c18967507.eqfilter),tp,LOCATION_GRAVE,loc,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
 		if not Duel.Equip(tp,tc,c) then return end

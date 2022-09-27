@@ -112,7 +112,7 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 			sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,0,LOCATION_GRAVE,1,1,nil)
 			Duel.HintSelection(sg)
 		end
-		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c23064604.thcon(e,tp,eg,ep,ev,re,r,rp)

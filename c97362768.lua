@@ -1,5 +1,6 @@
 --スパークガン
 function c97362768.initial_effect(c)
+	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)

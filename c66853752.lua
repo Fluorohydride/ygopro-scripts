@@ -20,7 +20,7 @@ function c66853752.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66853752.cfilter(c)
-	return c:GetCode()~=66853752 and c:IsType(TYPE_MONSTER)
+	return not c:IsCode(66853752) and c:IsType(TYPE_MONSTER)
 end
 function c66853752.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c66853752.cfilter,tp,LOCATION_GRAVE,0,nil)

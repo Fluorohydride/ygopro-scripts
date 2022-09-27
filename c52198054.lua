@@ -20,13 +20,7 @@ function c52198054.initial_effect(c)
 	e2:SetHintTiming(0,TIMING_MAIN_END)
 	c:RegisterEffect(e2)
 	--change
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e3:SetCode(EFFECT_CHANGE_CODE)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetValue(21420702)
-	c:RegisterEffect(e3)
+	aux.EnableChangeCode(c,21420702)
 	--tograve
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(52198054,1))
@@ -51,7 +45,6 @@ function c52198054.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c52198054.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_HAND,0,1,1,nil,0x32)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then

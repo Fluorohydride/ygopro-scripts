@@ -25,6 +25,6 @@ function c82099401.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.BreakEffect()
 		local back=Duel.GetDecktopGroup(tp,1)
-		Duel.MoveSequence(back:GetFirst(),1)
+		Duel.MoveSequence(back:GetFirst(),SEQ_DECKBOTTOM)
 	end
 end

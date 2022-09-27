@@ -46,10 +46,13 @@ function c93665266.scop(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_DISABLE_EFFECT)
+	e2:SetValue(RESET_TURN_SET)
 	tc:RegisterEffect(e2)
 	Duel.SpecialSummonComplete()
 	if not c:IsRelateToEffect(e) then return end
+	Duel.AdjustAll()
 	local mg=Group.FromCards(c,tc)
+	if mg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetMatchingGroup(c93665266.scfilter2,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

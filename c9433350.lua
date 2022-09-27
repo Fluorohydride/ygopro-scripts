@@ -1,5 +1,6 @@
 --Sin 青眼の白龍
 function c9433350.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,c9433350.uqfilter,LOCATION_MZONE)
 	--special summon

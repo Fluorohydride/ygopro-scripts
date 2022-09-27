@@ -54,7 +54,7 @@ function c34479658.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c34479658.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c34479658.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -63,7 +63,7 @@ end
 function c34479658.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local matc=e:GetLabel()
 	if chk==0 then return matc>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,34479659,0,0x4011,2000,0,1,RACE_REPTILE,ATTRIBUTE_DARK) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,34479659,0,TYPES_TOKEN_MONSTER,2000,0,1,RACE_REPTILE,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
@@ -73,13 +73,13 @@ function c34479658.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then matc=1 end
 	if matc>ft then matc=ft end
 	if matc<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,34479659,0,0x4011,2000,0,1,RACE_REPTILE,ATTRIBUTE_DARK) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,34479659,0,TYPES_TOKEN_MONSTER,2000,0,1,RACE_REPTILE,ATTRIBUTE_DARK) then return end
 	local ctn=true
 	while matc>0 and ctn do
 		local token=Duel.CreateToken(tp,34479659)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		matc=matc-1
-		if matc<=0 or not Duel.SelectYesNo(tp,aux.Stringid(34479659,2)) then ctn=false end
+		if matc<=0 or not Duel.SelectYesNo(tp,aux.Stringid(34479658,2)) then ctn=false end
 	end
 	Duel.SpecialSummonComplete()
 end
@@ -89,7 +89,7 @@ function c34479658.valcheck(e,c)
 end
 function c34479658.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp)) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_ADVANCE)
+	return (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp))) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c34479658.thfilter(c)
 	return c:IsRace(RACE_REPTILE) and c:IsAbleToHand() and not c:IsCode(34479658)

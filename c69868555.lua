@@ -39,7 +39,7 @@ function c69868555.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c69868555.cfilter(c)
-	return c:GetSummonLocation()~=LOCATION_GRAVE
+	return not c:IsSummonLocation(LOCATION_GRAVE) or (c:GetOriginalType()&TYPE_TRAP~=0)
 end
 function c69868555.dfilter(c,eg)
 	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and not eg:IsContains(c)
@@ -48,16 +48,16 @@ function c69868555.discon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c69868555.cfilter,1,nil) and Duel.IsExistingMatchingCard(c69868555.dfilter,tp,LOCATION_MZONE,0,1,nil,eg)
 end
 function c69868555.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():GetFlagEffect(69868555)==0 end
+	e:GetHandler():RegisterFlagEffect(69868555,RESET_CHAIN,0,1)
 	local g=eg:Filter(c69868555.cfilter,nil)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
 function c69868555.filter(c,e)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsPreviousLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c69868555.cfilter(c) and c:IsRelateToEffect(e)
 end
 function c69868555.disop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c69868555.filter,nil,e)
 	local tc=g:GetFirst()
 	while tc do
@@ -87,13 +87,13 @@ function c69868555.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c69868555.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,69868556,0,0x4011,0,0,1,RACE_DRAGON,ATTRIBUTE_LIGHT) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,69868556,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_DRAGON,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c69868555.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not e:GetHandler():IsRelateToEffect(e) then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,69868556,0,0x4011,0,0,1,RACE_DRAGON,ATTRIBUTE_LIGHT) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,69868556,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_DRAGON,ATTRIBUTE_LIGHT) then return end
 	local token=Duel.CreateToken(tp,69868556)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

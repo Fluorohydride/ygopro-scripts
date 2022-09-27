@@ -23,6 +23,7 @@ function c25669282.initial_effect(c)
 	e2:SetOperation(c25669282.spop)
 	c:RegisterEffect(e2)
 end
+c25669282.has_text_type=TYPE_DUAL
 function c25669282.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xeb) and c:IsAbleToRemoveAsCost()
 end

@@ -23,13 +23,13 @@ function c36328300.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c36328300.confilter(c,tp)
-	return c:IsPreviousSetCard(0x1034) and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0x1034) and c:IsPreviousControler(tp)
 end
 function c36328300.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c36328300.confilter,1,nil,tp)
 end
 function c36328300.cfilter(c)
-	return c:IsSetCard(0x1034) and (c:IsFaceup() or not c:IsLocation(LOCATION_ONFIELD)) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x1034) and (c:IsFaceup() or not c:IsOnField()) and c:IsAbleToGraveAsCost()
 end
 function c36328300.exfilter(c,tp)
 	return Duel.GetLocationCountFromEx(tp,tp,c,TYPE_FUSION)>0
@@ -67,7 +67,7 @@ function c36328300.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c36328300.plcfilter(c,tp)
-	return c:IsPreviousSetCard(0x2034) and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0x2034) and c:IsPreviousControler(tp)
 		and c:IsPreviousPosition(POS_FACEUP) and c:GetReasonPlayer()==1-tp
 		and c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE)
 end

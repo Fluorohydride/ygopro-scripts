@@ -15,6 +15,7 @@ function c18631392.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c18631392.spcon)
+	e2:SetTarget(c18631392.sptg)
 	e2:SetOperation(c18631392.spop)
 	c:RegisterEffect(e2)
 	--announce 3 cards
@@ -27,23 +28,32 @@ function c18631392.initial_effect(c)
 	e3:SetTarget(c18631392.anctg)
 	c:RegisterEffect(e3)
 end
-function c18631392.spfilter(c,rac)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(rac) and c:IsAbleToGraveAsCost()
+function c18631392.spfilter(c)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToGraveAsCost()
+end
+function c18631392.fselect(g,tp)
+	return aux.mzctcheck(g,tp) and aux.gfcheck(g,Card.IsRace,RACE_FAIRY,RACE_DRAGON)
 end
 function c18631392.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c18631392.spfilter,tp,LOCATION_MZONE,0,1,nil,RACE_FAIRY)
-		and Duel.IsExistingMatchingCard(c18631392.spfilter,tp,LOCATION_MZONE,0,1,nil,RACE_DRAGON)
+	local g=Duel.GetMatchingGroup(c18631392.spfilter,tp,LOCATION_MZONE,0,nil)
+	return g:CheckSubGroup(c18631392.fselect,2,2,tp)
+end
+function c18631392.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c18631392.spfilter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,c18631392.fselect,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c18631392.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c18631392.spfilter,tp,LOCATION_MZONE,0,1,1,nil,RACE_FAIRY)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c18631392.spfilter,tp,LOCATION_MZONE,0,1,1,nil,RACE_DRAGON)
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c18631392.anctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

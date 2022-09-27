@@ -15,7 +15,7 @@ function c19420830.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19420830.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
@@ -40,6 +40,6 @@ function c19420830.spop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.BreakEffect()
 		Duel.HintSelection(sg)
-		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

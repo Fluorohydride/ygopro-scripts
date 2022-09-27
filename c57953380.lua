@@ -19,7 +19,7 @@ function c57953380.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57953380.gfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 end
 function c57953380.con(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57953380.gfilter,1,nil,tp)
@@ -31,7 +31,6 @@ function c57953380.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c57953380.op(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end

@@ -53,7 +53,7 @@ function c68140974.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c68140974.filter(c,tp)
-	return c:IsType(TYPE_MONSTER) and bit.band(c:GetReason(),0x41)==0x41 and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_MONSTER) and bit.band(c:GetReason(),0x41)==0x41 and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c68140974.spcon(e,tp,eg,ep,ev,re,r,rp)

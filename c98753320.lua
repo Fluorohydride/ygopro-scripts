@@ -33,7 +33,7 @@ function c98753320.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c98753320.cfilter(c,tp)
-	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c98753320.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c98753320.cfilter,1,nil,tp)
@@ -47,7 +47,6 @@ function c98753320.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c98753320.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c98753320.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
@@ -67,7 +66,7 @@ function c98753320.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c98753320.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

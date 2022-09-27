@@ -56,6 +56,6 @@ function c40441990.teop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if bc:IsRelateToBattle() then
-		Duel.SendtoDeck(bc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(bc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

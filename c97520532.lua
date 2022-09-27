@@ -19,7 +19,7 @@ function c97520532.thcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function c97520532.thfilter(c)
-	return c:IsSetCard(0x83) and c:IsType(TYPE_MONSTER) and (c:IsAbleToHand() or c:IsAbleToGrave())
+	return c:IsSetCard(0x1083) and c:IsType(TYPE_MONSTER) and (c:IsAbleToHand() or c:IsAbleToGrave())
 end
 function c97520532.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97520532.thfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -27,10 +27,10 @@ function c97520532.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c97520532.cfilter(c)
-	return c:IsFacedown() or not c:IsSetCard(0x83)
+	return c:IsFacedown() or not c:IsSetCard(0x1083)
 end
 function c97520532.spfilter(c,e,tp)
-	return c:IsSetCard(0x83) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1083) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c97520532.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)

@@ -39,5 +39,5 @@ end
 function c21672573.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 end

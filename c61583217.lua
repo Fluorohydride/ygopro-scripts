@@ -48,10 +48,9 @@ function c61583217.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61583217.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c61583217.tgcon(e,tp,eg,ep,ev,re,r,rp)

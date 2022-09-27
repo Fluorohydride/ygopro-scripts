@@ -12,7 +12,7 @@ function c72328962.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c72328962.costfilter(c)
-	return c:GetCode()~=72328962 and c:IsAbleToGraveAsCost()
+	return not c:IsCode(72328962) and c:IsAbleToGraveAsCost()
 end
 function c72328962.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c72328962.costfilter,tp,LOCATION_HAND,0,2,nil) end

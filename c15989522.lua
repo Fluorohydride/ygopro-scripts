@@ -1,17 +1,10 @@
 --竜魔道騎士ガイア
 function c15989522.initial_effect(c)
-	aux.AddCodeList(c,66889139)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xbd),c15989522.ffilter2,true)
 	--change name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(66889139)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,66889139)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(15989522,0))

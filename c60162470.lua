@@ -92,7 +92,7 @@ function c60162470.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c60162470.cfilter,1,nil,tp) end
 	Duel.SetTargetCard(eg)
 end
-function c60162470.atkop2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c60162470.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local atk=e:GetLabelObject():GetLabel()

@@ -26,7 +26,7 @@ function c42541548.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c42541548.cfilter,tp,LOCATION_HAND,0,1,1,nil)
 	Duel.ConfirmCards(1-tp,g)
-	Duel.SendtoDeck(g,nil,1,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_COST)
 end
 function c42541548.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

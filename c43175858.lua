@@ -1,6 +1,5 @@
 --トゥーン・キングダム
 function c43175858.initial_effect(c)
-	aux.AddCodeList(c,15259703)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)
@@ -10,13 +9,7 @@ function c43175858.initial_effect(c)
 	e1:SetOperation(c43175858.activate)
 	c:RegisterEffect(e1)
 	--change code
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_CHANGE_CODE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e2:SetRange(LOCATION_FZONE)
-	e2:SetValue(15259703)
-	c:RegisterEffect(e2)
+	aux.EnableChangeCode(c,15259703,LOCATION_FZONE)
 	--cannot be target
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -42,7 +35,6 @@ function c43175858.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,3,tp,LOCATION_DECK)
 end
 function c43175858.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 	if ct==0 then return end
 	if ct>3 then ct=3 end

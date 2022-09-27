@@ -50,7 +50,6 @@ function c76136345.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76136345.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c76136345.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
@@ -86,7 +85,6 @@ function c76136345.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c76136345.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c76136345.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

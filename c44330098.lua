@@ -5,7 +5,7 @@ function c44330098.initial_effect(c)
 	e1:SetDescription(aux.Stringid(44330098,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCode(EVENT_DAMAGE)
 	e1:SetCondition(c44330098.sumcon)
@@ -66,7 +66,7 @@ function c44330098.sumop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	local typ,val=e:GetLabelObject():GetLabel()
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,44330099,0,0x4011,-2,-2,7,RACE_FAIRY,ATTRIBUTE_LIGHT) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,44330099,0,TYPES_TOKEN_MONSTER,-2,-2,7,RACE_FAIRY,ATTRIBUTE_LIGHT) then return end
 	local token=Duel.CreateToken(tp,44330099)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

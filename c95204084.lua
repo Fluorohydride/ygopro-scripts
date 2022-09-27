@@ -19,7 +19,7 @@ function c95204084.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c95204084.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c95204084.cfilter,tp,LOCATION_HAND,0,1,1,nil)
-	Duel.SendtoDeck(g,nil,0,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c95204084.filter(c)
 	return c:IsSummonType(SUMMON_TYPE_SPECIAL)

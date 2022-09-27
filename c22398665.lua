@@ -40,7 +40,7 @@ function c22398665.thop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(-1000)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,Duel.GetTurnPlayer()==tp and 2 or 1)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		tc:RegisterEffect(e1)
 		if not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) and c:IsRelateToEffect(e) then
 			Duel.SendtoHand(c,nil,REASON_EFFECT)
@@ -49,15 +49,15 @@ function c22398665.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22398665.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsRace,nil,RACE_MACHINE)
-		return Duel.IsExistingMatchingCard(c22398665.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,nil,e,tp,mg,nil,Card.GetAttack,"Greater")
+		local mg=Duel.GetRitualMaterialEx(tp):Filter(Card.IsRace,nil,RACE_MACHINE)
+		return Duel.IsExistingMatchingCard(c22398665.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,nil,e,tp,mg,nil,aux.GetCappedAttack,"Greater")
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c22398665.operation(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsRace,nil,RACE_MACHINE)
+	local mg=Duel.GetRitualMaterialEx(tp):Filter(Card.IsRace,nil,RACE_MACHINE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c22398665.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,nil,e,tp,mg,nil,Card.GetAttack,"Greater")
+	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c22398665.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,nil,e,tp,mg,nil,aux.GetCappedAttack,"Greater")
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
@@ -84,28 +84,28 @@ end
 function c22398665.RitualCheckGreater(g,c,atk)
 	if atk==0 then return false end
 	Duel.SetSelectedCard(g)
-	return g:CheckWithSumGreater(Card.GetAttack,atk)
+	return g:CheckWithSumGreater(aux.GetCappedAttack,atk)
 end
 function c22398665.RitualCheckEqual(g,c,atk)
 	if atk==0 then return false end
-	return g:CheckWithSumEqual(Card.GetAttack,atk,#g,#g)
+	return g:CheckWithSumEqual(aux.GetCappedAttack,atk,#g,#g)
 end
 function c22398665.RitualCheck(g,tp,c,atk,greater_or_equal)
 	return c22398665["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
-		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
+		and (not aux.RCheckAdditional or aux.RCheckAdditional(tp,g,c))
 end
 function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 	if greater_or_equal=="Equal" then
 		return	function(g)
-					return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)) and g:GetSum(Card.GetAttack)<=atk
+					return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g)) and g:GetSum(aux.GetCappedAttack)<=atk
 				end
 	else
 		return	function(g,ec)
 					if atk==0 then return #g<=1 end
 					if ec then
-						return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g,ec)) and g:GetSum(Card.GetAttack)-Card.GetAttack(ec)<=atk
+						return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g,ec)) and g:GetSum(aux.GetCappedAttack)-aux.GetCappedAttack(ec)<=atk
 					else
-						return not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)
+						return not aux.RGCheckAdditional or aux.RGCheckAdditional(g)
 					end
 				end
 	end
@@ -122,8 +122,8 @@ function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,grea
 		mg:RemoveCard(c)
 	end
 	local atk=attack_function(c)
-	Auxiliary.GCheckAdditional=c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
+	aux.GCheckAdditional=c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 	local res=mg:CheckSubGroup(c22398665.RitualCheck,1,#mg,tp,c,atk,greater_or_equal)
-	Auxiliary.GCheckAdditional=nil
+	aux.GCheckAdditional=nil
 	return res
 end

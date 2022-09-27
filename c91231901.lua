@@ -21,6 +21,7 @@ function c91231901.initial_effect(c)
 	e2:SetOperation(c91231901.thop)
 	c:RegisterEffect(e2)
 end
+c91231901.counter_add_list={0x100e}
 function c91231901.filter(c)
 	return c:GetLevel()>0 and c:IsSetCard(0xc) and c:IsAbleToGrave()
 end

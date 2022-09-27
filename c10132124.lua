@@ -14,7 +14,7 @@ function c10132124.initial_effect(c)
 end
 function c10132124.spfilter(c,tp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:GetPreviousControler()==tp and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA)
+		and c:IsPreviousControler(tp) and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA)
 end
 function c10132124.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c10132124.spfilter,1,nil,tp)

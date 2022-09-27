@@ -32,7 +32,7 @@ function c47728740.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c47728740.sdfilter(c)
-	return not c:IsFaceup() or not c:IsSetCard(0xb1)
+	return c:IsFacedown() or not c:IsSetCard(0xb1)
 end
 function c47728740.sdcon(e)
 	return Duel.IsExistingMatchingCard(c47728740.sdfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
@@ -54,10 +54,10 @@ function c47728740.ssop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c47728740.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return aux.disfilter1(chkc) and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	if chkc then return aux.NegateMonsterFilter(chkc) and chkc:IsLocation(LOCATION_MZONE) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	Duel.SelectTarget(tp,aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c47728740.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

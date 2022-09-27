@@ -19,7 +19,7 @@ function c2948263.initial_effect(c)
 	--reduce
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e3:SetCode(EFFECT_CHANGE_INVOLVING_BATTLE_DAMAGE)
 	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 	--disable
@@ -51,7 +51,6 @@ function c2948263.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectReleaseGroup(tp,c2948263.spfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	local atk=g:GetFirst():GetBaseAttack()
-	if atk<0 then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)

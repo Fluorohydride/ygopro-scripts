@@ -32,7 +32,7 @@ function c71921856.initial_effect(c)
 	e3:SetOperation(c71921856.spop)
 	c:RegisterEffect(e3)
 end
-c71921856.xyz_number=79
+aux.xyz_number[71921856]=79
 function c71921856.filter(c)
 	return c:IsSetCard(0x84) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
@@ -57,7 +57,7 @@ function c71921856.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ct=c:GetOverlayCount()
 	e:SetLabel(ct)
 	return c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and ct>0
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and ct>0
 end
 function c71921856.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x84) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

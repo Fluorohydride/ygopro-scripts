@@ -12,13 +12,7 @@ function c90238142.initial_effect(c)
 	e1:SetOperation(c90238142.spop)
 	c:RegisterEffect(e1)
 	--change name
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e2:SetCode(EFFECT_CHANGE_CODE)
-	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e2:SetValue(76812113)
-	c:RegisterEffect(e2)
+	aux.EnableChangeCode(c,76812113,LOCATION_MZONE+LOCATION_GRAVE)
 	--change level
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -37,7 +31,7 @@ function c90238142.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c90238142.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c90238142.filter(c,e,tp)
-	return c:IsSetCard(0x64) and c:GetCode()~=90238142 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x64) and not c:IsCode(90238142) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c90238142.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

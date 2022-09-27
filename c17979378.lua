@@ -27,7 +27,7 @@ function c17979378.initial_effect(c)
 	c:RegisterEffect(e4)
 	--to hand
 	local e5=Effect.CreateEffect(c)
-	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e5:SetCategory(CATEGORY_TOHAND)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_SUMMON_SUCCESS)
 	e5:SetTarget(c17979378.thtg)
@@ -45,7 +45,6 @@ function c17979378.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c17979378.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())

@@ -19,14 +19,13 @@ function c80796456.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(80796456,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
-	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c80796456.atkcon)
 	e2:SetOperation(c80796456.atkop)
 	c:RegisterEffect(e2)
 end
-c80796456.xyz_number=70
+aux.xyz_number[80796456]=70
 function c80796456.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
@@ -60,7 +59,7 @@ function c80796456.retop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ReturnToField(e:GetLabelObject())
 end
 function c80796456.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker()==e:GetHandler()
+	return Duel.GetAttacker()==e:GetHandler() and e:GetHandler():IsRelateToBattle()
 end
 function c80796456.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

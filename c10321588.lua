@@ -24,6 +24,6 @@ function c10321588.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ShuffleHand(tp)
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end

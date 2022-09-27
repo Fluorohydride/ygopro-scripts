@@ -48,7 +48,7 @@ function c71344451.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 				local dg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToDeck),tp,LOCATION_GRAVE,0,ct2,ct2,nil)
 				if dg:GetCount()>0 then
-					Duel.SendtoDeck(dg,nil,2,REASON_EFFECT)
+					Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 				end
 			end
 		end

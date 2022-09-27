@@ -43,20 +43,20 @@ function c82255872.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c82255872.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c82255872.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c82255872.cfilter,1,nil,tp)
 end
 function c82255872.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,82255873,0x137,0x4011,500,500,1,RACE_BEASTWARRIOR,ATTRIBUTE_WIND) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,82255873,0x137,TYPES_TOKEN_MONSTER,500,500,1,RACE_BEASTWARRIOR,ATTRIBUTE_WIND) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c82255872.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,82255873,0x137,0x4011,500,500,1,RACE_BEASTWARRIOR,ATTRIBUTE_WIND) then
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,82255873,0x137,TYPES_TOKEN_MONSTER,500,500,1,RACE_BEASTWARRIOR,ATTRIBUTE_WIND) then
 		local token=Duel.CreateToken(tp,82255873)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end

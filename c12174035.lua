@@ -56,7 +56,6 @@ function c12174035.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_HAND)
 end
 function c12174035.hdop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 	if g:GetCount()==0 then return end
 	local sg=g:RandomSelect(tp,1)

@@ -48,6 +48,8 @@ function c61314842.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c61314842.filter2,nil,e,tp)
 	if g:GetCount()<2 then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	Duel.AdjustAll()
+	if g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 	local xyzg=Duel.GetMatchingGroup(c61314842.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

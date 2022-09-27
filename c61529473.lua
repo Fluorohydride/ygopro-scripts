@@ -57,7 +57,7 @@ function c61529473.tgfilter(c)
 end
 function c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c61529473.tgfilter(chkc) and chkc~=c end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c61529473.tgfilter(chkc) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c61529473.tgfilter,tp,LOCATION_ONFIELD,0,1,c)
 		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
@@ -66,7 +66,6 @@ function c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61529473.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
@@ -98,7 +97,6 @@ function c61529473.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c61529473.sumop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 	local g=Duel.SelectMatchingCard(tp,c61529473.sumfilter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()

@@ -24,7 +24,7 @@ function c91654806.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DRAW)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCountLimit(1,100424136)
+	e2:SetCountLimit(1,91654807)
 	e2:SetCondition(c91654806.drcon)
 	e2:SetTarget(c91654806.drtg)
 	e2:SetOperation(c91654806.drop)
@@ -86,7 +86,6 @@ function c91654806.drop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if res and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

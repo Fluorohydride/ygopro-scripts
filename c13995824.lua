@@ -15,7 +15,7 @@ function c13995824.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c13995824.ddcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c13995824.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

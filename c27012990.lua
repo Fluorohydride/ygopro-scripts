@@ -45,7 +45,7 @@ function c27012990.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY then tct=2 end
 	local tc=rg:GetFirst()
 	while tc do
-		if Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_TEMPORARY)~=0 then
+		if Duel.Remove(tc,0,REASON_COST+REASON_TEMPORARY)~=0 then
 			tc:RegisterFlagEffect(27012990,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,tct)
 		end
 		tc=rg:GetNext()

@@ -1,4 +1,4 @@
---ドラグニティ－ブラックスピア
+--ドラグニティ－ブランディストック
 function c54455664.initial_effect(c)
 	--Double Attack
 	local e1=Effect.CreateEffect(c)

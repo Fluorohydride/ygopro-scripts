@@ -35,7 +35,7 @@ function c53678698.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c53678698.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsSetCard(0x88) and c:IsRace(RACE_BEASTWARRIOR) and c:IsReason(REASON_DESTROY)
 end
 function c53678698.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -70,7 +70,7 @@ function c53678698.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53678698.rfilter(c,tp)
-	return c:IsControler(tp) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_HAND)
+	return c:IsControler(tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_HAND)
 		and c:IsSetCard(0x88) and c:IsType(TYPE_MONSTER)
 end
 function c53678698.regcon(e,tp,eg,ep,ev,re,r,rp)

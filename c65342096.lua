@@ -8,13 +8,7 @@ function c65342096.initial_effect(c)
 	e1:SetCountLimit(1,65342096+EFFECT_COUNT_CODE_OATH)
 	c:RegisterEffect(e1)
 	--Code Change
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_CHANGE_CODE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetValue(39910367)
-	c:RegisterEffect(e2)
+	aux.EnableChangeCode(c,39910367)
 	--Add Counter
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -69,7 +63,6 @@ function c65342096.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c65342096.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c65342096.spfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,e,tp)

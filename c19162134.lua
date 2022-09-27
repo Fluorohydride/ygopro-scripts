@@ -68,7 +68,7 @@ function c19162134.initial_effect(c)
 	c:RegisterEffect(eb)
 end
 function c19162134.spfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c19162134.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetCount()==5 and eg:IsExists(c19162134.spfilter,1,nil,tp) and eg:GetClassCount(Card.GetLevel)==5

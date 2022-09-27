@@ -11,8 +11,8 @@ function c25290459.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25290459.costfilter(c,e,tp)
-	if not c:IsSetCard(0x41) or not c:IsAbleToGraveAsCost() or not c:IsFaceup() then return false end
-	local code=c:GetOriginalCodeRule()
+	if not c:IsSetCard(0x41) or not c:IsAbleToGraveAsCost() or c:IsFacedown() then return false end
+	local code=c:GetOriginalCode()
 	local class=_G["c"..code]
 	if class==nil or class.lvup==nil then return false end
 	return Duel.IsExistingMatchingCard(c25290459.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,class,e,tp)
@@ -26,7 +26,7 @@ function c25290459.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c25290459.costfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SendtoGrave(g,REASON_COST)
-	e:SetLabel(g:GetFirst():GetOriginalCodeRule())
+	e:SetLabel(g:GetFirst():GetOriginalCode())
 end
 function c25290459.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 end
@@ -42,6 +42,6 @@ function c25290459.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
-		if tc:GetPreviousLocation()==LOCATION_DECK then Duel.ShuffleDeck(tp) end
+		if tc:IsPreviousLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 	end
 end

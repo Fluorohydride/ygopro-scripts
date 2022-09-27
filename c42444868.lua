@@ -46,9 +46,9 @@ function c42444868.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c42444868.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.ndcon(tp,re) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsAbleToDeck() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,eg,1,0,0)
 	end
 end
@@ -61,7 +61,7 @@ function c42444868.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
 	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
 		ec:CancelToGrave()
-		if Duel.SendtoDeck(ec,nil,2,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			local g=Duel.GetMatchingGroup(c42444868.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)
 			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,0)) then
 				Duel.BreakEffect()

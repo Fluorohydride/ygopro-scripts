@@ -32,7 +32,7 @@ function c12255007.actcon(e)
 	return tc and tc:IsControler(tp) and tc:IsSetCard(0x9f,0x99)
 end
 function c12255007.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c12255007.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x9f) end
@@ -40,7 +40,8 @@ function c12255007.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c12255007.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.NegateAttack() then
+	if Duel.NegateAttack() then
+		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end

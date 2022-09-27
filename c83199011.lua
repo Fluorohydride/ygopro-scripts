@@ -1,5 +1,6 @@
 --スプリガンズ・コール！
 function c83199011.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(83199011,0))
@@ -67,7 +68,7 @@ function c83199011.ovtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c83199011.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c83199011.ovfilter,tp,LOCATION_EXTRA,0,1,1,nil,e)
 		local oc=g:GetFirst()

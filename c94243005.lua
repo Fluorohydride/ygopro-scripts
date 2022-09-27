@@ -66,7 +66,6 @@ function c94243005.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c94243005.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
@@ -80,7 +79,7 @@ function c94243005.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=e:GetLabelObject():GetLabel()
 	e:SetLabel(ct)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 		and ct>0 and rp==1-tp and bit.band(r,REASON_EFFECT)~=0
 end
 function c94243005.thfilter(c,lv)

@@ -63,7 +63,7 @@ function c26443791.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26443791.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
+	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c26443791.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsLevelBelow(11) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -68,7 +68,6 @@ function c85638822.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85638822.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local tg=Duel.GetMatchingGroup(c85638822.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil,e,tp)
 	if tg:GetCount()==0 or ft<=0 then return end

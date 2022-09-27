@@ -1,5 +1,6 @@
 --クレイ・チャージ
 function c22479888.initial_effect(c)
+	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)

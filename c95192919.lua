@@ -45,12 +45,12 @@ end
 function c95192919.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
-function c95192919.costfilter(c)
+function c95192919.costfilter(c,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:IsAttribute(ATTRIBUTE_WIND) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c95192919.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c95192919.costfilter,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,c95192919.costfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c95192919.costfilter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c95192919.costfilter,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c95192919.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -63,11 +63,11 @@ end
 function c95192919.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c95192919.cfilter(c,tp)
-	return c:IsRace(RACE_WINDBEAST) and c:GetPreviousControler()==tp
+	return c:IsRace(RACE_WINDBEAST) and c:IsPreviousControler(tp)
 end
 function c95192919.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c95192919.cfilter,1,e:GetHandler(),tp)

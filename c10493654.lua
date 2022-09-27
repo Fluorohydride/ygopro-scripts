@@ -40,7 +40,7 @@ function c10493654.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10493654.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK) then
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK) then
 		Duel.Draw(tp,3,REASON_EFFECT)
 	end
 end

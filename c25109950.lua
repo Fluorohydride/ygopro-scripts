@@ -1,4 +1,4 @@
---陽アイルの小剣士
+--アイルの小剣士
 function c25109950.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

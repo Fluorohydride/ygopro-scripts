@@ -14,10 +14,24 @@ function c26273196.initial_effect(c)
 	e1:SetTarget(c26273196.destg)
 	e1:SetOperation(c26273196.desop)
 	c:RegisterEffect(e1)
+	--fusion check
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetCondition(c26273196.matcon)
+	e2:SetOperation(c26273196.matop)
+	c:RegisterEffect(e2)
 end
 c26273196.toss_coin=true
-function c26273196.descon(e,tp,eg,ep,ev,re,r,rp)
+function c26273196.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
+end
+function c26273196.matop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(26273196,RESET_EVENT+0xd6c0000,0,1)
+end
+function c26273196.descon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(26273196)>0
 end
 function c26273196.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)

@@ -37,7 +37,7 @@ function c67385964.initial_effect(c)
 end
 function c67385964.hspcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c67385964.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -81,7 +81,7 @@ end
 function c67385964.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(c,nil,2,REASON_COST)
+	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c67385964.filter(c,e,tp)
 	return not c:IsCode(67385964) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)

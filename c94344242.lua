@@ -69,6 +69,7 @@ function c94344242.efop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c94344242.defcon)
+	e1:SetTarget(c94344242.deftg)
 	e1:SetOperation(c94344242.defop)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	rc:RegisterEffect(e1,true)
@@ -83,6 +84,10 @@ function c94344242.efop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94344242.defcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
+end
+function c94344242.deftg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c94344242.defop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)

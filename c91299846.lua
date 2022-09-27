@@ -34,7 +34,7 @@ function c91299846.cfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c91299846.tffilter,tp,LOCATION_DECK,0,1,nil,c,tp)
 end
 function c91299846.tffilter(c,cc,tp)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSetCard(0x109)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and not c:IsType(TYPE_FIELD) and c:IsSetCard(0x109)
 		and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_ONFIELD,cc)
 end
 function c91299846.tfcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -59,7 +59,7 @@ function c91299846.spreg(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return end
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if c:IsReason(REASON_COST) and rc:IsSetCard(0x109) then
+	if c:IsReason(REASON_COST) and rc:IsSetCard(0x109) and c:IsPreviousLocation(LOCATION_ONFIELD) and re:IsActivated() then
 		e:SetLabel(Duel.GetTurnCount()+1)
 		c:RegisterFlagEffect(91299846,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 	end

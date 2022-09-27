@@ -1,5 +1,6 @@
 --ブルーアイズ・ソリッド・ドラゴン
 function c57043986.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--negate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(57043986,0))
@@ -28,12 +29,12 @@ function c57043986.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c57043986.negfilter(c)
-	return c:IsType(TYPE_MONSTER) and aux.disfilter1(c)
+	return c:IsType(TYPE_MONSTER) and aux.NegateMonsterFilter(c)
 end
 function c57043986.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c57043986.negfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c57043986.negfilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,c57043986.negfilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
@@ -68,7 +69,7 @@ function c57043986.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57043986.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,2,REASON_EFFECT)~=0 then
+	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c57043986.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)

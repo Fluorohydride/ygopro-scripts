@@ -1,8 +1,9 @@
 --影霊衣の反魂術
 function c97211663.initial_effect(c)
 	--Activate
-	local e1=aux.AddRitualProcEqual2(c,c97211663.filter,LOCATION_HAND+LOCATION_GRAVE)
+	local e1=aux.AddRitualProcEqual2(c,c97211663.filter,LOCATION_HAND+LOCATION_GRAVE,nil,nil,true)
 	e1:SetCountLimit(1,97211663)
+	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)

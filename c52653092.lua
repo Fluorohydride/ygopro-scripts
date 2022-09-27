@@ -41,7 +41,7 @@ function c52653092.initial_effect(c)
 	e6:SetOperation(c52653092.actop)
 	c:RegisterEffect(e6)
 end
-c52653092.xyz_number=0
+aux.xyz_number[52653092]=0
 function c52653092.mfilter(c,xyzc)
 	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48)
 end

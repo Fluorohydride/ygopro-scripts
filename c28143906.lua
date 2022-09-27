@@ -12,7 +12,7 @@ function c28143906.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c28143906.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c28143906.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -20,6 +20,6 @@ function c28143906.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28143906.retop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

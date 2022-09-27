@@ -67,6 +67,7 @@ end
 function c5206415.etcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_GRAVE,0,nil)
 	if chk==0 then return g:CheckSubGroup(c5206415.fselect,2,2) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=g:SelectSubGroup(tp,c5206415.fselect,false,2,2)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end

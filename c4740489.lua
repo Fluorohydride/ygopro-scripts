@@ -46,30 +46,20 @@ function c4740489.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c4740489.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c4740489.atcon(e,tp,eg,ep,ev,re,r,rp)
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	if not d then return end
-	if d:IsControler(tp) then
-		e:SetLabelObject(a)
-		return d:IsRace(RACE_ROCK) and d:IsAttribute(ATTRIBUTE_EARTH)
-			and a:IsRelateToBattle() and a:IsLocation(LOCATION_ONFIELD)
-	elseif a:IsControler(tp) then
-		e:SetLabelObject(d)
-		return a:IsRace(RACE_ROCK) and a:IsAttribute(ATTRIBUTE_EARTH)
-			and d:IsRelateToBattle() and d:IsLocation(LOCATION_ONFIELD)
-	end
-	return false
+	local a,d=Duel.GetBattleMonster(tp)
+	if not a or not d then return false end
+	e:SetLabelObject(d)
+	return a:IsRace(RACE_ROCK) and a:IsAttribute(ATTRIBUTE_EARTH)
+		and d:IsRelateToBattle() and d:IsOnField()
 end
 function c4740489.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

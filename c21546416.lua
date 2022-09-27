@@ -1,13 +1,7 @@
 --アームド・ドラゴン・サンダー LV5
 function c21546416.initial_effect(c)
 	--change name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e1:SetValue(46384672)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,46384672,LOCATION_MZONE+LOCATION_GRAVE)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(21546416,0))
@@ -34,17 +28,27 @@ function c21546416.initial_effect(c)
 end
 c21546416.lvup={46384672}
 c21546416.lvdn={57030525}
-function c21546416.costfilter(c)
+function c21546416.costfilter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp,e:GetLabel())
 end
 function c21546416.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c21546416.costfilter,tp,LOCATION_HAND,0,1,nil) end
+	local c=e:GetHandler()
+	if chk==0 then
+		if c:IsCode(46384672) then
+			e:SetLabel(1)
+		else
+			e:SetLabel(0)
+		end
+		return Duel.IsExistingMatchingCard(c21546416.costfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c21546416.costfilter,tp,LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c21546416.costfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c21546416.spfilter(c,e,tp,label)
-	return c:IsSetCard(0x111) and c:IsLevelBelow(7) and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or label==1 and c:IsCode(73879377) and c:IsCanBeSpecialSummoned(e,0,tp,true,false))
+	return c:IsSetCard(0x111) and c:IsLevelBelow(7)
+		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or label==1 and c:IsCode(73879377) and c:IsCanBeSpecialSummoned(e,0,tp,true,false))
 end
 function c21546416.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -54,7 +58,8 @@ function c21546416.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		else
 			e:SetLabel(0)
 		end
-		return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0 and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,e:GetLabel())
+		return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0
+			and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,e:GetLabel())
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,c,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)

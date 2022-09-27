@@ -19,7 +19,7 @@ function c90846359.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e4:SetCode(EFFECT_LIMIT_SPECIAL_SUMMON_POSITION)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetTargetRange(1,1)
 	e4:SetTarget(c90846359.sumlimit)
@@ -48,9 +48,12 @@ function c90846359.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	c90846359[0]=0
 	c90846359[1]=0
 end
+function c90846359.limfilter(c)
+	return c:IsFaceup() and c:IsStatus(STATUS_EFFECT_ENABLED)
+end
 function c90846359.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
-	local rc=c90846359.getrace(Duel.GetMatchingGroup(Card.IsFaceup,targetp or sump,LOCATION_MZONE,0,nil))
+	local rc=c90846359.getrace(Duel.GetMatchingGroup(c90846359.limfilter,targetp or sump,LOCATION_MZONE,0,nil))
 	if rc==0 then return false end
 	return c:GetRace()~=rc
 end

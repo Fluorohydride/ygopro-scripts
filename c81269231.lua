@@ -52,7 +52,7 @@ function c81269231.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c81269231.rmcon)
 		e1:SetTarget(c81269231.rmtg)
 		e1:SetOperation(c81269231.rmop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetReset(RESET_EVENT+RESET_TURN_SET+RESET_TOHAND+RESET_TODECK+RESET_TOFIELD)
 		c:RegisterEffect(e1)
 	end
 	if bit.band(flag,0x2)~=0 then
@@ -65,11 +65,9 @@ function c81269231.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81269231.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	local t=nil
-	if ev==0 then t=Duel.GetAttackTarget()
-	else t=Duel.GetAttacker() end
+	local t=Duel.GetBattleMonster(1-tp)
 	e:SetLabelObject(t)
-	return t and t:IsRelateToBattle() and e:GetHandler():IsStatus(STATUS_OPPO_BATTLE)
+	return aux.dsercon(e) and t and t:IsRelateToBattle()
 end
 function c81269231.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetLabelObject():IsAbleToRemove() end

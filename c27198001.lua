@@ -32,6 +32,7 @@ function c27198001.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c27198001.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -45,14 +46,14 @@ function c27198001.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27198001.pcon(e)
-	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c27198001.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c27198001.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,27198002,0,0x4011,500,500,2,RACE_ZOMBIE,ATTRIBUTE_FIRE)
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,27198002,0,TYPES_TOKEN_MONSTER,500,500,2,RACE_ZOMBIE,ATTRIBUTE_FIRE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
@@ -61,7 +62,7 @@ end
 function c27198001.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=1
 		or Duel.IsPlayerAffectedByEffect(tp,59822133)
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,27198002,0,0x4011,500,500,2,RACE_ZOMBIE,ATTRIBUTE_FIRE) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,27198002,0,TYPES_TOKEN_MONSTER,500,500,2,RACE_ZOMBIE,ATTRIBUTE_FIRE) then return end
 	for i=1,2 do
 		local token=Duel.CreateToken(tp,27198002)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)

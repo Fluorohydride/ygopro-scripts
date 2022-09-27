@@ -38,7 +38,8 @@ function c99469936.atkval(e,c)
 	return c:GetOverlayCount()*500
 end
 function c99469936.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
+	if chk==0 then return not e:GetHandler():IsReason(REASON_REPLACE)
+		and e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		return true
@@ -49,11 +50,11 @@ function c99469936.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c99469936.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(aux.disfilter1,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 end
 function c99469936.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)

@@ -13,7 +13,7 @@ function c19163116.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19163116.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c19163116.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsType(TYPE_NORMAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

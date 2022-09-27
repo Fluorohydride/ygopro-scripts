@@ -35,7 +35,7 @@ function c14731897.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_DEFENSE)
+		e1:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e1:SetValue(def)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)

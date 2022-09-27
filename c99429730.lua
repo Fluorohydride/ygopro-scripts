@@ -46,7 +46,7 @@ function c99429730.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,ac)
 		for i=1,ac do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end
@@ -67,6 +67,6 @@ end
 function c99429730.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

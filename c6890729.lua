@@ -31,7 +31,7 @@ function c6890729.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:SelectSubGroupEach(tp,c6890729.spchecks)
 	Duel.ConfirmCards(1-tp,sg)
-	Duel.SendtoDeck(sg,nil,2,REASON_COST)
+	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c6890729.filter(c,e,tp)
 	return c:IsCode(6022371) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)

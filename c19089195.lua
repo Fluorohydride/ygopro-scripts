@@ -1,5 +1,6 @@
 --潜海奇襲
 function c19089195.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -29,27 +30,34 @@ function c19089195.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c19089195.filter(c,tp)
-	return c:IsCode(22702055) and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
+	return c:IsCode(22702055) and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
+		and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c19089195.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,tp)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(19089195,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19089195.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
 		if tc then
-			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
-			if fc then
-				Duel.SendtoGrave(fc,REASON_RULE)
-				Duel.BreakEffect()
+			local field=tc:IsType(TYPE_FIELD)
+			if field then
+				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
+				if fc then
+					Duel.SendtoGrave(fc,REASON_RULE)
+					Duel.BreakEffect()
+				end
+				Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
+			else
+				Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 			end
-			Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 			local te=tc:GetActivateEffect()
 			te:UseCountLimit(tp,1,true)
 			local tep=tc:GetControler()
 			local cost=te:GetCost()
 			if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
-			Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
+			if field then
+				Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
+			end
 		end
 	end
 end
@@ -64,7 +72,7 @@ function c19089195.remcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19089195.costfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c19089195.costfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	if Duel.Remove(g,POS_FACEUP,REASON_COST+REASON_TEMPORARY)~=0 then
+	if Duel.Remove(g,0,REASON_COST+REASON_TEMPORARY)~=0 then
 		local rc=g:GetFirst()
 		if rc:IsType(TYPE_TOKEN) then return end
 		local e1=Effect.CreateEffect(c)
@@ -81,7 +89,6 @@ function c19089195.retop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ReturnToField(e:GetLabelObject())
 end
 function c19089195.remop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
@@ -108,7 +115,6 @@ function c19089195.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,bc,1,0,0)
 end
 function c19089195.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=e:GetLabelObject()
 	if bc:IsRelateToBattle() then
 		Duel.Destroy(bc,REASON_EFFECT)

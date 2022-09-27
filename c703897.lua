@@ -7,7 +7,7 @@ function c703897.initial_effect(c)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCountLimit(1,703897)
 	e1:SetCondition(c703897.condition)
-	e1:SetTarget(c703897.target)
+	e1:SetTarget(aux.nbtg)
 	e1:SetOperation(c703897.activate)
 	c:RegisterEffect(e1)
 	--to hand
@@ -32,13 +32,6 @@ end
 function c703897.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c703897.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsChainNegatable(ev) and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))
-end
-function c703897.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c703897.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then

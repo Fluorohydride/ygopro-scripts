@@ -33,14 +33,13 @@ function c44822037.initial_effect(c)
 end
 function c44822037.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,44822037,0,0x21,1800,1800,4,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,44822037,0,TYPES_EFFECT_TRAP_MONSTER,1800,1800,4,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c44822037.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,44822037,0,0x21,1800,1800,4,RACE_FAIRY,ATTRIBUTE_LIGHT) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,44822037,0,TYPES_EFFECT_TRAP_MONSTER,1800,1800,4,RACE_FAIRY,ATTRIBUTE_LIGHT) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
@@ -48,7 +47,7 @@ function c44822037.discon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0
 end
 function c44822037.discfilter(c)
-	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:GetSummonLocation()==LOCATION_SZONE and (c:GetType()&(TYPE_TRAP+TYPE_CONTINUOUS))==TYPE_TRAP+TYPE_CONTINUOUS
+	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsSummonLocation(LOCATION_SZONE) and (c:GetType()&(TYPE_TRAP+TYPE_CONTINUOUS))==TYPE_TRAP+TYPE_CONTINUOUS
 end
 function c44822037.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c44822037.discfilter,tp,LOCATION_MZONE,0,1,nil) end

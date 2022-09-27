@@ -37,21 +37,20 @@ function c20426176.atrtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,0xff-g:GetFirst():GetAttribute())
+	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-g:GetFirst():GetAttribute())
 	e:SetLabel(att)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,0,tp,LOCATION_GRAVE)
 end
 function c20426176.thfilter(c,e,tp,ft)
 	return c:IsSetCard(0x13f) and c:IsType(TYPE_MONSTER) and (c:IsAbleToDeck() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c20426176.atrop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
+	local att=e:GetLabel()
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and not tc:IsAttribute(att) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetValue(e:GetLabel())
+		e1:SetValue(att)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -65,7 +64,7 @@ function c20426176.atrop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 			else
 				Duel.HintSelection(g)
-				Duel.SendtoDeck(sc,nil,2,REASON_EFFECT)
+				Duel.SendtoDeck(sc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			end
 		end
 	end

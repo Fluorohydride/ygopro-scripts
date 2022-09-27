@@ -40,7 +40,6 @@ function c51670553.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c51670553.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
@@ -51,7 +50,6 @@ function c51670553.skipcon(e,tp,eg,ep,ev,re,r,rp)
 	return tc and ep~=tp and r==REASON_BATTLE and (Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc)
 end
 function c51670553.skipop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

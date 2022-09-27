@@ -25,7 +25,7 @@ function c43378076.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c43378076.cfilter(c)
-	return c:IsType(TYPE_SPIRIT) and c:GetCode()~=43378076 and not c:IsPublic()
+	return c:IsType(TYPE_SPIRIT) and not c:IsCode(43378076) and not c:IsPublic()
 end
 function c43378076.sretcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0

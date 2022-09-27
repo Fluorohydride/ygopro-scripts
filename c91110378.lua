@@ -28,7 +28,7 @@ function c91110378.xyz_level(e,c,rc)
 	return 0x3000+c:GetLevel()
 end
 function c91110378.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x86) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0x86) and c:IsSummonPlayer(tp)
 end
 function c91110378.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c91110378.cfilter,1,nil,tp)

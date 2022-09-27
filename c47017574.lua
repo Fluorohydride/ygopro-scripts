@@ -35,7 +35,7 @@ function c47017574.initial_effect(c)
 	e3:SetOperation(c47017574.disop)
 	c:RegisterEffect(e3)
 end
-c47017574.xyz_number=92
+aux.xyz_number[47017574]=92
 function c47017574.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and eg:GetFirst():IsControler(tp)
 end
@@ -46,7 +46,6 @@ function c47017574.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,ev)
 end
 function c47017574.recop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
@@ -58,11 +57,11 @@ function c47017574.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c47017574.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
 end
 function c47017574.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,0,LOCATION_ONFIELD,nil)
+	local g=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)

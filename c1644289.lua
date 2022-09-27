@@ -45,7 +45,7 @@ function c1644289.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x30)
 end
 function c1644289.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c1644289.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c1644289.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c1644289.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c1644289.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
@@ -59,8 +59,8 @@ function c1644289.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c1644289.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousPosition(),POS_FACEUP)~=0
-		and bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return e:GetHandler():IsPreviousPosition(POS_FACEUP)
+		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c1644289.thfilter(c)
 	return c:IsSetCard(0x30) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()

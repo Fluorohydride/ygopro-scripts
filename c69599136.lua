@@ -17,7 +17,7 @@ function c69599136.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c69599136.filter(c,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()~=tp and c:IsCanTurnSet()
+	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and c:IsCanTurnSet()
 end
 function c69599136.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c69599136.filter,1,nil,tp) end

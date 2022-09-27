@@ -42,8 +42,7 @@ end
 function c52900379.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		local pos=tc:GetPosition()
-		if tc:IsLocation(LOCATION_MZONE) and tc:IsSetCard(0x33) and bit.band(pos,POS_FACEUP)~=0 then
+		if tc:IsLocation(LOCATION_MZONE) and tc:IsSetCard(0x33) and tc:IsFaceup() then
 			c52900379[tc:GetControler()]=c52900379[tc:GetControler()]+1
 		end
 		tc=eg:GetNext()

@@ -52,7 +52,7 @@ function c10406322.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10406322.cfilter(c,tp)
-	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c10406322.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c10406322.cfilter,1,nil,tp)
@@ -71,11 +71,11 @@ end
 function c10406322.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if tc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
+		if tc:IsExtraDeckMonster()
 			or Duel.SelectOption(tp,aux.Stringid(10406322,2),aux.Stringid(10406322,3))==0 then
-			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
-			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end

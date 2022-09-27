@@ -31,9 +31,12 @@ function c12541409.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
 function c12541409.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) and re:GetHandler():IsLevelAbove(1) and Duel.SelectYesNo(tp,aux.Stringid(12541409,1)) then
+	local rc=re:GetHandler()
+	if Duel.NegateEffect(ev) and rc:IsLevelAbove(1) and Duel.SelectYesNo(tp,aux.Stringid(12541409,1)) then
 		Duel.BreakEffect()
-		Duel.Damage(1-tp,re:GetHandler():GetLevel()*100,REASON_EFFECT)
+		local lv=rc:GetLevel()
+		if not rc:IsRelateToEffect(re) then lv=rc:GetOriginalLevel() end
+		Duel.Damage(1-tp,lv*100,REASON_EFFECT)
 	end
 end
 function c12541409.actcon(e)

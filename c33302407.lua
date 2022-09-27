@@ -30,7 +30,6 @@ function c33302407.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,1-tp,ct)
 end
 function c33302407.disop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ct=Duel.GetMatchingGroupCount(c33302407.filter,tp,LOCATION_MZONE,0,nil)
 	if ct>0 then
 		Duel.DiscardDeck(1-tp,ct,REASON_EFFECT)

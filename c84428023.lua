@@ -59,7 +59,7 @@ function c84428023.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
-function c84428023.drcon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c84428023.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and r==REASON_BATTLE and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c84428023.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -45,7 +45,7 @@ function c91027843.efilter(e,te)
 	return te:GetOwnerPlayer()~=e:GetHandlerPlayer()
 end
 function c91027843.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:GetSequence()>4 and c:IsSetCard(0x12b) and c:IsType(TYPE_LINK) and c:IsSummonType(SUMMON_TYPE_LINK)
+	return c:IsSummonPlayer(tp) and c:GetSequence()>4 and c:IsSetCard(0x12b) and c:IsType(TYPE_LINK) and c:IsSummonType(SUMMON_TYPE_LINK)
 end
 function c91027843.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c91027843.cfilter,1,nil,tp)

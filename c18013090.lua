@@ -1,5 +1,6 @@
 --ニトロ・ウォリアー
 function c18013090.initial_effect(c)
+	aux.AddMaterialCodeList(c,96182448)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c18013090.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

@@ -19,6 +19,7 @@ function c45082499.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x107e))
+	e2:SetCondition(c45082499.indcon)
 	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--destroy sub
@@ -47,11 +48,14 @@ function c45082499.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) or not c:CheckUniqueOnField(tp) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) or not c:CheckUniqueOnField(tp) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c45082499.zw_equip_monster(c,tp,tc)
+end
+function c45082499.zw_equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -70,6 +74,9 @@ function c45082499.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45082499.eqlimit(e,c)
 	return c==e:GetLabelObject()
+end
+function c45082499.indcon(e)
+	return e:GetHandler():GetEquipTarget()
 end
 function c45082499.repval(e,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0

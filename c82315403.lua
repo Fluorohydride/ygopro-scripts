@@ -46,7 +46,7 @@ function c82315403.indcon(e)
 end
 function c82315403.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsSummonType(SUMMON_TYPE_FUSION) and rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsSummonType(SUMMON_TYPE_FUSION) and rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c82315403.spfilter(c,e,tp)
 	return c:IsCode(70095154) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

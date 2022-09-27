@@ -1,5 +1,6 @@
 --ワンショット・キャノン
 function c13574687.initial_effect(c)
+	aux.AddMaterialCodeList(c,6142213)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,6142213),aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()

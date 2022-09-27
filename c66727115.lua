@@ -16,7 +16,7 @@ function c66727115.rfilter(c,e,tp)
 		and Duel.IsExistingTarget(c66727115.spfilter,tp,LOCATION_GRAVE,0,1,nil,c:GetCode(),e,tp)
 end
 function c66727115.spfilter(c,code,e,tp)
-	return c:IsSetCard(0x88) and c:GetCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x88) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66727115.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

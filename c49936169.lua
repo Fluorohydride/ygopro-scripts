@@ -40,7 +40,7 @@ function c49936169.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c49936169.cfilter,tp,LOCATION_HAND,0,1,63,nil)
 		if g:GetCount()==0 then return end
 		Duel.ConfirmCards(1-tp,g)
-		local ct=Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		local ct=Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.ShuffleDeck(tp)
 		if ct>0 then
 			Duel.BreakEffect()

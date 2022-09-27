@@ -36,7 +36,7 @@ function c39730727.drfilter1(c)
 	return (not c:IsType(TYPE_EFFECT) and c:IsFaceup()) or c:IsFacedown()
 end
 function c39730727.drfilter2(c,tp)
-	return c:IsType(TYPE_EFFECT) and c:GetSummonPlayer()==1-tp and c:IsFaceup()
+	return c:IsType(TYPE_EFFECT) and c:IsSummonPlayer(1-tp) and c:IsFaceup()
 end
 function c39730727.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c39730727.drfilter1,tp,LOCATION_MZONE,0,1,nil)

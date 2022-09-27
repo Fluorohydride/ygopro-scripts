@@ -75,7 +75,6 @@ function c89320376.postg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c89320376.posop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
 		local pos1=0
@@ -93,7 +92,7 @@ function c89320376.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c89320376.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c89320376.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 	c89320376.cost(e,tp,eg,ep,ev,re,r,rp,1)
 end
 function c89320376.posfilter(c)
@@ -108,7 +107,6 @@ function c89320376.postg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c89320376.posop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)

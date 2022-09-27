@@ -108,7 +108,7 @@ function c94207108.eqlimit(e,c)
 	return e:GetLabelObject()==c
 end
 function c94207108.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c94207108.spfilter2(c,e,tp)
 	return c:IsSetCard(0x12b) and c:IsLinkBelow(3) and c:IsType(TYPE_LINK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

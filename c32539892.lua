@@ -13,7 +13,7 @@ function c32539892.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32539892.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND and bit.band(r,0x4040)==0x4040 and rp==1-tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and bit.band(r,0x4040)==0x4040 and rp==1-tp
 end
 function c32539892.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

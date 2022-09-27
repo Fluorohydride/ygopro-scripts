@@ -28,11 +28,11 @@ function c85216896.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c85216896.matfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c85216896.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	return c:GetPreviousControler()==tp and bit.extract(zone,seq)~=0 and c:GetSummonLocation()==LOCATION_EXTRA and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and bit.extract(zone,seq)~=0 and c:IsSummonLocation(LOCATION_EXTRA) and c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c85216896.thcon(e,tp,eg,ep,ev,re,r,rp)
@@ -56,7 +56,7 @@ function c85216896.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c85216896.rmfilter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and c:IsAbleToRemove()
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA) and c:IsAbleToRemove()
 end
 function c85216896.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

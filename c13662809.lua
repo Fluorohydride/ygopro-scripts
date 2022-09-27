@@ -29,13 +29,13 @@ function c13662809.lmfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x10ec) and c:IsLevelAbove(7)
 end
 function c13662809.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsFaceup() end
+	if chkc then return chkc:IsOnField() and chkc:IsFaceup() and chkc~=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingMatchingCard(c13662809.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
 	local g=Duel.GetMatchingGroup(c13662809.cfilter,tp,LOCATION_MZONE,0,nil)
 	local ct=g:GetClassCount(Card.GetCode)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local sg=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,nil)
+	local sg=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 	if Duel.IsExistingMatchingCard(c13662809.lmfilter,tp,LOCATION_MZONE,0,1,nil) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		Duel.SetChainLimit(c13662809.chainlm)
@@ -53,7 +53,7 @@ function c13662809.filter2(c)
 end
 function c13662809.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 		and Duel.IsExistingMatchingCard(c13662809.filter2,tp,LOCATION_EXTRA,0,1,nil)
 end

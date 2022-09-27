@@ -51,11 +51,12 @@ function c95685352.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		local batk=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_BASE_ATTACK)
+		e1:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
+		e1:SetValue(math.ceil(batk/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetValue(math.ceil(tc:GetBaseAttack()/2))
 		tc:RegisterEffect(e1)
 	end
 end
@@ -99,7 +100,6 @@ function c95685352.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c95685352.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

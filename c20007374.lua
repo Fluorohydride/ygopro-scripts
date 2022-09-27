@@ -1,5 +1,6 @@
 --集いし願い
 function c20007374.initial_effect(c)
+	aux.AddCodeList(c,44508094)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

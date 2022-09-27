@@ -81,6 +81,6 @@ function c9482987.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
-		Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end

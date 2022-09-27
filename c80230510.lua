@@ -59,4 +59,5 @@ function c80230510.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	g1:Merge(g2)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 	Duel.ResetFlagEffect(tp,80230510)
+	c:SetMaterial(nil)
 end

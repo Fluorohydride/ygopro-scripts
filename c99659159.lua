@@ -26,8 +26,11 @@ function c99659159.initial_effect(c)
 	e3:SetOperation(c99659159.operation)
 	c:RegisterEffect(e3)
 end
+function c99659159.atkcfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x29) and c:GetOriginalType()&TYPE_MONSTER~=0
+end
 function c99659159.atktg(e,c)
-	return c:GetEquipGroup():IsExists(Card.IsSetCard,1,nil,0x29)
+	return c:GetEquipGroup():IsExists(c99659159.atkcfilter,1,nil)
 end
 function c99659159.filter(c)
 	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
@@ -41,10 +44,9 @@ function c99659159.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c99659159.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or not tc:IsControler(tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=Duel.SelectMatchingCard(tp,c99659159.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if sg:GetCount()==0 then return end

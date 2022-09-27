@@ -34,6 +34,7 @@ function c63821877.efop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c63821877.atkcon)
+	e1:SetTarget(c63821877.atktg)
 	e1:SetOperation(c63821877.atkop)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	rc:RegisterEffect(e1,true)
@@ -48,6 +49,10 @@ function c63821877.efop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63821877.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
+end
+function c63821877.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c63821877.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

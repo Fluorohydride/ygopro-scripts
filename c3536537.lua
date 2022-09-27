@@ -14,7 +14,7 @@ function c3536537.initial_effect(c)
 end
 function c3536537.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp and bit.band(r,REASON_DESTROY)~=0
+	return rp==1-tp and c:IsPreviousControler(tp) and bit.band(r,REASON_DESTROY)~=0
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c3536537.filter(c)

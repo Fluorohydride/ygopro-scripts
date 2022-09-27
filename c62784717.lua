@@ -29,7 +29,6 @@ function c62784717.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62784717.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local res=Duel.TossCoin(tp,1)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)

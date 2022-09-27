@@ -22,7 +22,7 @@ function c37241623.initial_effect(c)
 end
 function c37241623.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetCurrentChain()
-	if cid>0 then
+	if cid>0 and (r&REASON_COST)>0 then
 		c37241623[0]=Duel.GetChainInfo(cid,CHAININFO_CHAIN_ID)
 	end
 end

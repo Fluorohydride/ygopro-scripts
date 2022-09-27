@@ -30,7 +30,7 @@ end
 function c14730606.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
-		and c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp==1-tp
+		and c:IsPreviousControler(tp) and c:IsReason(REASON_DESTROY) and rp==1-tp
 end
 function c14730606.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

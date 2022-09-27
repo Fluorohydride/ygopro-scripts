@@ -10,7 +10,6 @@ function c28929131.initial_effect(c)
 	--summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(28929131,0))
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
 	e2:SetCondition(c28929131.ntcon)
@@ -86,7 +85,7 @@ end
 function c28929131.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c28929131.tdfilter,tp,0,LOCATION_ONFIELD,nil)
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c28929131.drcon(e,tp,eg,ep,ev,re,r,rp)
@@ -112,6 +111,6 @@ end
 function c28929131.rtdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

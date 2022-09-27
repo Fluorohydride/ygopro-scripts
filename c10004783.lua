@@ -40,7 +40,7 @@ function c10004783.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1034)
 end
 function c10004783.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c10004783.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c10004783.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c10004783.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c10004783.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
@@ -53,7 +53,7 @@ function c10004783.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10004783.tfcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c10004783.tffilter(c)
 	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()

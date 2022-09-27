@@ -46,7 +46,7 @@ function c9061682.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c9061682.filter(c,e,tp,g)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsPreviousLocation(LOCATION_HAND) and c:GetPreviousControler()~=tp and g:IsContains(c)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsPreviousLocation(LOCATION_HAND) and c:IsPreviousControler(1-tp) and g:IsContains(c)
 end
 function c9061682.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c9061682.filter(chkc,e,tp,eg) end
@@ -67,6 +67,7 @@ function c9061682.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end

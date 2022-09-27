@@ -21,6 +21,7 @@ function c64160836.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
+c64160836.counter_add_list={0x100e}
 function c64160836.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do

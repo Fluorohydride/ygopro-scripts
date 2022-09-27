@@ -17,7 +17,7 @@ function c21830679.initial_effect(c)
 end
 function c21830679.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,21830680,0,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_WIND) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,21830680,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_WIND) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,tp,0)
 end
@@ -31,7 +31,7 @@ function c21830679.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
 		if not c:IsHasEffect(EFFECT_REVERSE_UPDATE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,21830680,0,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_WIND) then
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,21830680,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_WIND) then
 			local token=Duel.CreateToken(tp,21830680)
 			Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 		end

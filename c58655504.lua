@@ -14,7 +14,7 @@ function c58655504.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c58655504.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c58655504.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c58655504.cfilter,1,nil,tp)

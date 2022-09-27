@@ -12,7 +12,7 @@ function c83239739.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83239739.condition(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)>0
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 		and not (bit.band(r,REASON_BATTLE+REASON_DESTROY)==REASON_BATTLE+REASON_DESTROY)
 end
 function c83239739.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -22,7 +22,7 @@ function c83239739.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83239739.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,83239740,0,0x4011,0,0,1,RACE_FISH,ATTRIBUTE_WATER) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,83239740,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FISH,ATTRIBUTE_WATER) then return end
 	local token=Duel.CreateToken(tp,83239740)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

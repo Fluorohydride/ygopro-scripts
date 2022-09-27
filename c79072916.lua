@@ -1,4 +1,4 @@
---Myutant Blast
+--ミュートリア反射作用
 function c79072916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -33,7 +33,6 @@ function c79072916.initial_effect(c)
 	e4:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCountLimit(1,79072916)
 	e4:SetCost(aux.bfgcost)
 	e4:SetTarget(c79072916.sptg)
@@ -73,7 +72,6 @@ function c79072916.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tc,1,0,0)
 end
 function c79072916.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ec=e:GetHandler():GetEquipTarget()
 	local tc=ec:GetBattleTarget()
 	if tc:IsRelateToBattle() then

@@ -20,17 +20,14 @@ end
 function c79868386.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c79868386.actfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
-function c79868386.filter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
-end
 function c79868386.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c79868386.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,0,0)
 end
 function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectMatchingCard(tp,c79868386.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -69,6 +66,7 @@ function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
 			if #sg>0 and Duel.GetTurnPlayer()==tp
 				and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 				and Duel.SelectYesNo(tp,aux.Stringid(79868386,0)) then
+				Duel.BreakEffect()
 				Duel.Destroy(sg,REASON_EFFECT)
 			end
 		end

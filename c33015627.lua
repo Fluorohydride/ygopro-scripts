@@ -11,10 +11,8 @@ function c33015627.initial_effect(c)
 	--summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(33015627,0))
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
-	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c33015627.ntcon)
 	c:RegisterEffect(e2)
 	--indes
@@ -73,7 +71,7 @@ function c33015627.ntcon(e,c,minc)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c33015627.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattledGroupCount()>0 or e:GetHandler():GetAttackedCount()>0
+	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c33015627.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -95,6 +93,6 @@ end
 function c33015627.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

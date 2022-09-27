@@ -33,7 +33,6 @@ function c66768175.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	return bc:IsFaceup() and tc:IsFaceup() and tc:IsSetCard(0x9f)
 end
 function c66768175.atkop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=e:GetLabelObject()
 	if bc:IsRelateToBattle() and bc:IsFaceup() and bc:IsControler(1-tp) then
 		local e1=Effect.CreateEffect(e:GetHandler())

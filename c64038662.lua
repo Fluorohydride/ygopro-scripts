@@ -54,7 +54,6 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c64038662.efop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if e:GetLabel()==1 then
 		local tc1=e:GetLabelObject()
 		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

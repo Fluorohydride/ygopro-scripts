@@ -13,7 +13,7 @@ function c35618486.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35618486.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousControler()==tp
+	return e:GetHandler():IsPreviousControler(tp)
 		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c35618486.filter(c)

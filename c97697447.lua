@@ -1,5 +1,6 @@
 --アビストローム
 function c97697447.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOGRAVE)
@@ -20,7 +21,7 @@ function c97697447.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c97697447.filter(c,tp)
-	return (c:IsFacedown() or c:IsControler(1-tp) or c:GetCode()~=22702055) and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return (c:IsFacedown() or c:IsControler(1-tp) or not c:IsCode(22702055)) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c97697447.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

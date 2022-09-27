@@ -35,6 +35,7 @@ function c51192573.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 end
+c51192573.counter_add_list={0x100e}
 function c51192573.otfilter(c,tp)
 	return c:GetOwner()==tp
 end

@@ -1,5 +1,4 @@
---ビクトリー・バイパーXX03
---not fully implemented
+--ビクトリー・バイパー XX０３
 function c93130021.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93130021,0))
@@ -23,7 +22,7 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local t1=Duel.IsExistingTarget(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
 	if t1 and t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))
@@ -64,7 +63,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		local race=c:GetRace()
 		local att=c:GetAttribute()
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c:IsRelateToEffect(e) or c:IsFacedown()
-			or not Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,atk,def,lv,race,att) then return end
+			or not Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,atk,def,lv,race,att) then return end
 		local token=Duel.CreateToken(tp,93130022)
 		c:CreateRelation(token,RESET_EVENT+RESETS_STANDARD)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
@@ -99,9 +98,11 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		e5:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		token:RegisterEffect(e5,true)
 		local e6=Effect.CreateEffect(c)
-		e6:SetType(EFFECT_TYPE_SINGLE)
-		e6:SetCode(EFFECT_SELF_DESTROY)
-		e6:SetCondition(c93130021.tokendes)
+		e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e6:SetCode(EVENT_ADJUST)
+		e6:SetRange(LOCATION_MZONE)
+		e6:SetCondition(c93130021.tokendescon)
+		e6:SetOperation(c93130021.tokendesop)
 		e6:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		token:RegisterEffect(e6,true)
 		Duel.SpecialSummonComplete()
@@ -131,6 +132,9 @@ end
 function c93130021.tokenatt(e,c)
 	return e:GetOwner():GetAttribute()
 end
-function c93130021.tokendes(e)
+function c93130021.tokendescon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetOwner():IsRelateToCard(e:GetHandler())
+end
+function c93130021.tokendesop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Destroy(e:GetHandler(),REASON_RULE)
 end

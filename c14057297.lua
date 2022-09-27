@@ -26,7 +26,7 @@ function c14057297.activate(e,tp,eg,ep,ev,re,r,rp)
 	local st=0
 	for i=1,2 do
 		local sg=Duel.GetFieldGroup(p,LOCATION_HAND,0)
-		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup()
 		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
 		if ct>0 then
@@ -34,7 +34,7 @@ function c14057297.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SortDecktop(p,p,ct)
 			for j=1,ct do
 				local mg=Duel.GetDecktopGroup(p,1)
-				Duel.MoveSequence(mg:GetFirst(),1)
+				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 			end
 		end
 		p=1-p

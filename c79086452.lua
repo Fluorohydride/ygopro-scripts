@@ -20,7 +20,7 @@ function c79086452.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c79086452.spfilter(c)
-	return c:IsSetCard(0x83) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x1083) and c:IsType(TYPE_MONSTER)
 end
 function c79086452.spcon(e,c)
 	if c==nil then return true end
@@ -45,5 +45,5 @@ function c79086452.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c79086452.efftg(e,c)
-	return c:IsSetCard(0x83)
+	return c:IsSetCard(0x1083)
 end

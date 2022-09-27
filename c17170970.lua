@@ -51,7 +51,7 @@ end
 function c17170970.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_BATTLE)
-		or (rp==1-tp and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp)
+		or (rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousControler(tp))
 end
 function c17170970.spfilter(c,e,tp)
 	return c:IsRace(RACE_BEAST) and c:IsLevelBelow(4) and not c:IsCode(17170970) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

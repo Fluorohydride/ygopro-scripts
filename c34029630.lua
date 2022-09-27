@@ -1,6 +1,13 @@
 --漆黒のパワーストーン
 function c34029630.initial_effect(c)
 	c:EnableCounterPermit(0x1)
+	--special counter permit
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_COUNTER_PERMIT+0x1)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCondition(c34029630.ctpermit)
+	c:RegisterEffect(e1)
 	--Activate
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_COUNTER)
@@ -31,6 +38,10 @@ function c34029630.initial_effect(c)
 	e4:SetCondition(c34029630.descon)
 	c:RegisterEffect(e4)
 end
+function c34029630.ctpermit(e)
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_SZONE) and c:IsStatus(STATUS_CHAINING)
+end
 function c34029630.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c34029630.filter(chkc) end
 	local c=e:GetHandler()
@@ -49,7 +60,6 @@ function c34029630.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c34029630.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT) and tc:IsCanAddCounter(0x1,1) then
 		c:RemoveCounter(tp,0x1,1,REASON_EFFECT)

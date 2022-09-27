@@ -1,4 +1,4 @@
---The tripping Mercury
+--The tripping MERCURY
 function c3912064.initial_effect(c)
 	--change position
 	local e1=Effect.CreateEffect(c)

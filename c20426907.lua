@@ -49,7 +49,6 @@ function c20426907.distg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20426907.disop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
@@ -80,7 +79,6 @@ function c20426907.disfilter(c,e)
 	return c:IsFaceup() and c:IsRelateToEffect(e)
 end
 function c20426907.disop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c20426907.disfilter,nil,e)
 	local tc=g:GetFirst()
 	while tc do

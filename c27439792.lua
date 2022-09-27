@@ -1,4 +1,4 @@
---混沌の召唤神
+--混沌の召喚神
 function c27439792.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Special Summon

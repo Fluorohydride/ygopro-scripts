@@ -82,12 +82,12 @@ function c21250202.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c21250202.disfilter(c)
-	return aux.disfilter1(c) and c:GetSummonLocation()==LOCATION_EXTRA
+	return aux.NegateMonsterFilter(c) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c21250202.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c21250202.disfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c21250202.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,c21250202.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end

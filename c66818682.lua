@@ -1,5 +1,6 @@
 --月影龍クイラ
 function c66818682.initial_effect(c)
+	aux.AddMaterialCodeList(c,78552773)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,78552773),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

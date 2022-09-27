@@ -25,7 +25,7 @@ function c8129306.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c8129306.spfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c8129306.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8129306.spfilter,1,nil,tp)

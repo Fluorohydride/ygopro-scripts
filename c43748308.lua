@@ -58,7 +58,7 @@ function c43748308.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c43748308.spfilter(c,e,tp)
-	return c:IsSetCard(0x79) and c:GetCode()~=43748308 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x79) and not c:IsCode(43748308) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c43748308.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c43748308.spfilter(chkc,e,tp) end

@@ -39,7 +39,6 @@ function c19814508.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c19814508.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c19814508.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -55,7 +54,6 @@ function c19814508.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19814508.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
 	while tc do

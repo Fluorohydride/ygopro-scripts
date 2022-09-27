@@ -16,7 +16,7 @@ end
 function c2625939.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),3)
 	if Duel.NegateAttack() and ft>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,2625940,0,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_LIGHT,POS_FACEUP_DEFENSE)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,2625940,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_LIGHT,POS_FACEUP_DEFENSE)
 		and Duel.SelectYesNo(tp,aux.Stringid(2625939,0)) then
 		Duel.BreakEffect()
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
@@ -29,7 +29,7 @@ function c2625939.activate(e,tp,eg,ep,ev,re,r,rp)
 				i=i+1
 			end
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(2625939,1))
-			ct=Duel.AnnounceNumber(tp,table.unpack(num))	
+			ct=Duel.AnnounceNumber(tp,table.unpack(num))
 		end
 		repeat
 			local token=Duel.CreateToken(tp,2625940)

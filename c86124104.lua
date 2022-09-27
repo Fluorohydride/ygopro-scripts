@@ -2,13 +2,7 @@
 function c86124104.initial_effect(c)
 	c:EnableReviveLimit()
 	--code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE+LOCATION_HAND)
-	e1:SetValue(72426662)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,72426662,LOCATION_MZONE+LOCATION_HAND)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(86124104,0))

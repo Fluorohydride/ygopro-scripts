@@ -27,7 +27,7 @@ function c39024589.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c39024589.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c39024589.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c39024589.cfilter,1,nil,tp)
@@ -40,7 +40,6 @@ function c39024589.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_EXTRA)
 end
 function c39024589.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c39024589.thfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if g:GetCount()>0 then

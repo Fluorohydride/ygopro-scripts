@@ -12,7 +12,7 @@ function c63595262.initial_effect(c)
 end
 function c63595262.filter(c,e,tp)
 	return c:IsFaceup() and c:IsLevelBelow(5) and c:IsRace(RACE_BEAST+RACE_WINDBEAST)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c63595262.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and c63595262.filter(chkc,e,tp) end

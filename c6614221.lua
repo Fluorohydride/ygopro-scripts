@@ -50,7 +50,7 @@ function c6614221.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectTribute(tp,c,1,1)
 	c:SetMaterial(g)
-	Duel.Release(g, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c6614221.valcheck(e,c)
 	local g=c:GetMaterial()

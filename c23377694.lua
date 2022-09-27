@@ -49,7 +49,7 @@ function c23377694.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23377694.cfilter(c,tp)
-	return c:IsSetCard(0x9f) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0x9f) and c:IsPreviousControler(tp)
 end
 function c23377694.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23377694.cfilter,1,nil,tp)
@@ -65,7 +65,6 @@ function c23377694.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c23377694.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

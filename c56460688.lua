@@ -11,8 +11,9 @@ function c56460688.initial_effect(c)
 	c:RegisterEffect(e1)
 	--return
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_TO_GRAVE)
+	e2:SetCondition(c56460688.retcon)
 	e2:SetOperation(c56460688.retop)
 	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
@@ -34,7 +35,6 @@ function c56460688.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c56460688.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.Remove(tg,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local g=Duel.GetOperatedGroup()
@@ -48,18 +48,19 @@ function c56460688.operation(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabelObject(g)
 	end
 end
+function c56460688.retcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(56460688)~=0 and bit.band(r,REASON_DESTROY)~=0
+		and e:GetLabelObject():GetLabelObject()~=nil
+end
 function c56460688.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(56460688)==0 then return end
-	if bit.band(r,REASON_DESTROY)~=0 then
-		local g=e:GetLabelObject():GetLabelObject()
-		local tc=g:GetFirst()
-		while tc do
-			if tc:GetFlagEffect(56460688)>0 then
-				Duel.ReturnToField(tc)
-			end
-			tc=g:GetNext()
+	local g=e:GetLabelObject():GetLabelObject()
+	local tc=g:GetFirst()
+	while tc do
+		if tc:GetFlagEffect(56460688)>0 then
+			Duel.ReturnToField(tc)
 		end
-		g:DeleteGroup()
-		e:GetLabelObject():SetLabelObject(nil)
+		tc=g:GetNext()
 	end
+	g:DeleteGroup()
+	e:GetLabelObject():SetLabelObject(nil)
 end

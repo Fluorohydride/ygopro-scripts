@@ -59,7 +59,6 @@ function c19324993.thfilter(c,fc)
 end
 function c19324993.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19324993.ffilter,tp,LOCATION_EXTRA,0,1,nil,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c19324993.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)

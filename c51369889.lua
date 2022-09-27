@@ -63,14 +63,13 @@ function c51369889.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c51369889.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	Duel.Destroy(g,REASON_EFFECT)
 end
 function c51369889.cfilter(c,e,tp)
 	return (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp))
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsType(TYPE_XYZ) and c:IsRace(RACE_MACHINE)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c51369889.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c51369889.cfilter,1,nil,e,tp)

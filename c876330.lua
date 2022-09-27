@@ -40,7 +40,7 @@ function c876330.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c876330.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c876330.filter(c)
 	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
@@ -57,7 +57,7 @@ end
 function c876330.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

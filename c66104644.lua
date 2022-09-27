@@ -79,7 +79,7 @@ function c66104644.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c66104644.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsCanAddCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c)
+	return c:IsFaceup() and c:IsCanHaveCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c66104644.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -121,7 +121,7 @@ function c66104644.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x1,3,REASON_COST)
 end
 function c66104644.spfilter2(c,e,tp)
-	return c:IsCanAddCounter(0x1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanHaveCounter(0x1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66104644.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -143,7 +143,6 @@ function c66104644.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c66104644.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	local ct=e:GetLabel()
 	if c:IsRelateToEffect(e) and Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

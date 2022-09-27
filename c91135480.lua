@@ -4,7 +4,7 @@ function c91135480.initial_effect(c)
 	aux.AddXyzProcedure(c,nil,4,2)
 	--Apply
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(91135480,1))
+	e1:SetDescription(aux.Stringid(91135480,0))
 	e1:SetCategory(CATEGORY_DISABLE+CATEGORY_ATKCHANGE+CATEGORY_CONTROL)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
@@ -26,9 +26,9 @@ function c91135480.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if g:IsExists(Card.IsType,1,nil,TYPE_MONSTER)
 			then return true end
 		if g:IsExists(Card.IsType,1,nil,TYPE_SPELL)
-			and Duel.IsExistingMatchingCard(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil) then return true end
+			and Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then return true end
 		if g:IsExists(Card.IsType,1,nil,TYPE_TRAP)
-			and Duel.IsExistingMatchingCard(c91135480.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then return true end
+			and Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then return true end
 		return false
 	end
 end
@@ -37,18 +37,18 @@ function c91135480.check(g)
 		and g:FilterCount(Card.IsType,nil,TYPE_SPELL)<=1
 		and g:FilterCount(Card.IsType,nil,TYPE_TRAP)<=1
 end
-function c91135480.dfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
+function c91135480.ctfilter(c)
+	return c:IsFaceup() and c:IsControlerCanBeChanged()
 end
 function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
 	local g=c:GetOverlayGroup()
 	local tg=Group.CreateGroup()
-	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then
+	if c:IsFaceup() then
 		tg:Merge(g:Filter(Card.IsType,nil,TYPE_MONSTER))
 	end
-	if Duel.IsExistingMatchingCard(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil) then
+	if Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then
 		tg:Merge(g:Filter(Card.IsType,nil,TYPE_SPELL))
 	end
 	if Duel.IsExistingMatchingCard(c91135480.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
@@ -71,29 +71,41 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	if sg:IsExists(Card.IsType,1,nil,TYPE_SPELL) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-		local g=Duel.SelectMatchingCard(tp,Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,c91135480.ctfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.HintSelection(g)
-		Duel.GetControl(g:GetFirst(),tp,PHASE_END,1)
+		local tc=g:GetFirst()
+		if Duel.GetControl(tc,tp,PHASE_END,1)~=0 then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e1)
+			local e2=e1:Clone()
+			e2:SetCode(EFFECT_CANNOT_TRIGGER)
+			tc:RegisterEffect(e2)
+		end
 	end
 	if sg:IsExists(Card.IsType,1,nil,TYPE_TRAP) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-		local g=Duel.SelectMatchingCard(tp,c91135480.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 		if g:GetCount()>0 then
 			local tc=g:GetFirst()
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetCode(EFFECT_DISABLE)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e2:SetCode(EFFECT_DISABLE_EFFECT)
-			e2:SetValue(RESET_TURN_SET)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e2)
+			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
+			local e3=Effect.CreateEffect(c)
+			e3:SetType(EFFECT_TYPE_SINGLE)
+			e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e3:SetCode(EFFECT_DISABLE)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e3)
+			local e4=Effect.CreateEffect(c)
+			e4:SetType(EFFECT_TYPE_SINGLE)
+			e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e4:SetCode(EFFECT_DISABLE_EFFECT)
+			e4:SetValue(RESET_TURN_SET)
+			e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e4)
 		end
 	end
 end

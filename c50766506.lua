@@ -23,8 +23,7 @@ function c50766506.cfilter(c,e,tp,ft)
 		and Duel.IsExistingMatchingCard(c50766506.spfilter,tp,LOCATION_DECK,0,1,nil,lv,e,tp)
 end
 function c50766506.spfilter(c,lv,e,tp)
-	return c:IsLevelBelow(lv) and c:IsSetCard(0x2b) and
-		(c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsLevelBelow(lv) and c:IsSetCard(0x2b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c50766506.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -38,7 +37,6 @@ function c50766506.gselect(g,slv)
 	return g:GetSum(Card.GetLevel)<=slv
 end
 function c50766506.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
@@ -50,10 +48,7 @@ function c50766506.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=sg:SelectSubGroup(tp,c50766506.gselect,false,1,ft,slv)
 	local cg=Group.CreateGroup()
 	for tc in aux.Next(tg) do
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,spos)
+		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 		if tc:IsFacedown() then cg:AddCard(tc) end
 		c:SetCardTarget(tc)
 	end

@@ -1,4 +1,4 @@
---Myutant Ultimus
+--究極体ミュートリアス
 function c6182103.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
@@ -14,7 +14,7 @@ function c6182103.initial_effect(c)
 	e1:SetCountLimit(1,6182103)
 	e1:SetCondition(c6182103.negcon)
 	e1:SetCost(c6182103.negcost)
-	e1:SetTarget(c6182103.negtg)
+	e1:SetTarget(aux.nbtg)
 	e1:SetOperation(c6182103.negop)
 	c:RegisterEffect(e1)
 	--tohand
@@ -48,13 +48,6 @@ function c6182103.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,c6182103.cfilter,tp,LOCATION_GRAVE+LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil,rtype)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
-function c6182103.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
-end
 function c6182103.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
@@ -62,7 +55,7 @@ function c6182103.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6182103.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c6182103.thfilter(c,typ)

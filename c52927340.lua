@@ -27,7 +27,7 @@ function c52927340.cfilter(c)
 end
 function c52927340.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.IsExistingMatchingCard(c52927340.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
+	return at:IsControler(1-tp) and Duel.IsExistingMatchingCard(c52927340.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c52927340.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -43,10 +43,10 @@ function c52927340.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c52927340.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.disfilter1(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,1,nil)
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.NegateAnyFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
@@ -61,6 +61,11 @@ function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c52927340.rcon)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
+		if tc:IsType(TYPE_TRAPMONSTER) then
+			local e2=e1:Clone()
+			e2:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+			tc:RegisterEffect(e2)
+		end
 	end
 end
 function c52927340.rcon(e)

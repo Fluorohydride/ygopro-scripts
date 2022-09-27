@@ -12,7 +12,7 @@ function c11834972.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c11834972.cfilter(c)
-	return c:IsSetCard(0x39) and c:GetCode()~=11834972
+	return c:IsSetCard(0x39) and not c:IsCode(11834972)
 end
 function c11834972.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c11834972.cfilter,tp,LOCATION_GRAVE,0,1,nil)

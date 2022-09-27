@@ -1,5 +1,6 @@
 --伝説の白石
 function c79814787.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(79814787,0))

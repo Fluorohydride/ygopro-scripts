@@ -68,7 +68,7 @@ function c90448279.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90448279.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD) and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD) and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c90448279.ovcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c90448279.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())

@@ -30,7 +30,10 @@ function c74519184.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.SelectMatchingCard(1-turnp,aux.TRUE,1-turnp,LOCATION_HAND,0,2,2,nil)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_EFFECT)
-	Duel.BreakEffect()
-	Duel.Draw(turnp,2,REASON_EFFECT)
-	Duel.Draw(1-turnp,2,REASON_EFFECT)
+	local og=Duel.GetOperatedGroup()
+	if og:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
+		Duel.BreakEffect()
+		Duel.Draw(turnp,2,REASON_EFFECT)
+		Duel.Draw(1-turnp,2,REASON_EFFECT)
+	end
 end

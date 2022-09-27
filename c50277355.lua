@@ -47,12 +47,8 @@ end
 function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local lg=e:GetHandler():GetLinkedGroup()
-	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_RITUAL)
-	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_FUSION)
-	local b3=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_SYNCHRO)
-	local b4=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_XYZ)
 	local res=0
+	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_RITUAL)
 	if b1 then
 		res=Duel.Draw(tp,2,REASON_EFFECT)
 		if res==2 then
@@ -61,6 +57,9 @@ function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.DiscardHand(tp,aux.TRUE,2,2,REASON_EFFECT+REASON_DISCARD)
 		end
 	end
+	lg=e:GetHandler():GetLinkedGroup()
+	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_FUSION)
 	if b2 then
 		if res~=0 then Duel.BreakEffect() end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -69,6 +68,8 @@ function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
 			res=Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
+	lg=e:GetHandler():GetLinkedGroup()
+	local b3=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_SYNCHRO)
 	if b3 then
 		if res~=0 then Duel.BreakEffect() end
 		local g2=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
@@ -85,6 +86,8 @@ function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc1=g2:GetNext()
 		end
 	end
+	lg=e:GetHandler():GetLinkedGroup()
+	local b4=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_XYZ)
 	if b4 then
 		if res~=0 then Duel.BreakEffect() end
 		local g3=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)

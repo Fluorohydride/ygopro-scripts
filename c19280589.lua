@@ -30,13 +30,13 @@ function c19280589.tkcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19280589.tktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,0x4011,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c19280589.tkop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,0x4011,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) then
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) then
 		local token=Duel.CreateToken(tp,19280590)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end
@@ -56,19 +56,19 @@ function c19280589.ctkfilter(c)
 	return c:IsFaceup() and c:IsCode(19280590)
 end
 function c19280589.tkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c19280589.ctkfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c19280589.ctkfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c19280589.tktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,0x4011,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
 function c19280589.tkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,0x4011,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,19280590,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) then
 		for i=1,2 do
 			local token=Duel.CreateToken(tp,19280590)
 			Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)

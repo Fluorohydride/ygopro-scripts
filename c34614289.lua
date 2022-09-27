@@ -38,7 +38,7 @@ function c34614289.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.SendtoHand(g,nil,REASON_COST)
 end
 function c34614289.filter(c,sp)
-	return c:GetSummonPlayer()==sp and c:IsCanChangePosition()
+	return c:IsSummonPlayer(sp) and c:IsCanChangePosition()
 end
 function c34614289.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c34614289.filter,1,nil,1-tp) end

@@ -14,7 +14,7 @@ end
 function c85646474.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
-		and c:GetPreviousControler()==tp and c==Duel.GetAttackTarget() and Duel.GetAttacker():IsControler(1-tp)
+		and c:IsPreviousControler(tp) and c==Duel.GetAttackTarget() and Duel.GetAttacker():IsControler(1-tp)
 end
 function c85646474.filter(c,e,tp)
 	return c:IsSetCard(0x2e) and not c:IsCode(85646474) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)

@@ -77,7 +77,7 @@ function c98371278.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetAttacker():GetEquipGroup()
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,#g,0,0)
 end
-function c98371278.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c98371278.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	local g=at:GetEquipGroup()
 	if at:IsControler(tp) and Duel.Destroy(g,REASON_EFFECT)>0 then

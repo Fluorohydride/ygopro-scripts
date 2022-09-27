@@ -90,6 +90,6 @@ function c15521027.opd(e,tp,eg,ep,ev,re,r,rp)
 	if op==0 then return end
 	for i=1,ct do
 		local tg=Duel.GetDecktopGroup(tp,1)
-		Duel.MoveSequence(tg:GetFirst(),1)
+		Duel.MoveSequence(tg:GetFirst(),SEQ_DECKBOTTOM)
 	end
 end

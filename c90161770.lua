@@ -41,7 +41,7 @@ function c90161770.sumop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90161770.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c90161770.spfilter2(c,e,tp)
 	return c:IsSetCard(0x12f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

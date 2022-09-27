@@ -22,8 +22,8 @@ function c70473293.costfilter(c,tp)
 	return c:IsType(TYPE_LINK) and (c:IsControler(tp) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0
 end
 function c70473293.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c70473293.costfilter,1,false,nil,tp) end
-	local rg=Duel.SelectReleaseGroup(tp,c70473293.costfilter,1,1,false,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c70473293.costfilter,1,nil,tp) end
+	local rg=Duel.SelectReleaseGroup(tp,c70473293.costfilter,1,1,nil,tp)
 	Duel.Release(rg,REASON_COST)
 	e:SetLabelObject(rg:GetFirst())
 end
@@ -48,6 +48,7 @@ function c70473293.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 	end
 	Duel.SpecialSummonComplete()

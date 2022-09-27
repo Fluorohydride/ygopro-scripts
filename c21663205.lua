@@ -24,8 +24,7 @@ function c21663205.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c21663205.filter(c,e,tp)
-	return c:IsLevel(4) and c:IsSetCard(0x2e) and (c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsLevel(4) and c:IsSetCard(0x2e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c21663205.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c21663205.filter(chkc,e,tp) end
@@ -38,9 +37,6 @@ end
 function c21663205.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummon(tc,0,tp,tp,false,false,spos) end
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 	end
 end

@@ -16,11 +16,14 @@ function c59023523.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
+function c59023523.filter(c)
+	return c:IsFaceup() and not c:IsAttack(2000)
+end
 function c59023523.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsFaceup() and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return c59023523.filter(chkc) and chkc:IsLocation(LOCATION_MZONE) end
+	if chk==0 then return Duel.IsExistingTarget(c59023523.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c59023523.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c59023523.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

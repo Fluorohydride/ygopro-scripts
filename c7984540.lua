@@ -9,7 +9,7 @@ function c7984540.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(aux.imval1)
+	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	--todeck
 	local e2=Effect.CreateEffect(c)
@@ -43,6 +43,6 @@ function c7984540.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sg=tg:Filter(Card.IsRelateToEffect,nil,e)
 	if sg:GetCount()>0 then
-		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

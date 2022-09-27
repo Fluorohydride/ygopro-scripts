@@ -57,7 +57,7 @@ function c60643553.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60643553.cfilter(c,sp)
 	return c:IsType(TYPE_EFFECT)
-		and c:GetSummonPlayer()==sp and c:IsFaceup()
+		and c:IsSummonPlayer(sp) and c:IsFaceup()
 end
 function c60643553.lpcon1(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

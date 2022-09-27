@@ -1,4 +1,4 @@
---Myutant Mist
+--ミュートリアル・ミスト
 function c61089209.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -68,7 +68,7 @@ function c61089209.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61089209.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsPreviousControler(tp)
 end
 function c61089209.thtgfilter(c)
 	return c:IsSetCard(0x157) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand() and c:IsFaceup()

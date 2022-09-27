@@ -32,7 +32,7 @@ end
 function c65961085.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 	local g2=Duel.GetMatchingGroup(c65961085.filter2,tp,LOCATION_REMOVED,0,nil)
 	if g2:GetCount()>0 then

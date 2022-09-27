@@ -1,5 +1,6 @@
 --スターダスト・シャオロン
 function c68543408.initial_effect(c)
+	aux.AddCodeList(c,44508094)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(68543408,0))
@@ -27,7 +28,7 @@ function c68543408.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68543408.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c68543408.spop(e,tp,eg,ep,ev,re,r,rp)

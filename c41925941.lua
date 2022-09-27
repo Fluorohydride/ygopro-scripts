@@ -30,7 +30,7 @@ function c41925941.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
-	if chk==0 then return Duel.CheckLPCost(tp,100) and (bc:IsAttackAbove(100) or bc:IsDefenseAbove(100)) end
+	if chk==0 then return Duel.CheckLPCost(tp,100,true) and (bc:IsAttackAbove(100) or bc:IsDefenseAbove(100)) end
 	local maxc=Duel.GetLP(tp)
 	local maxpay=bc:GetAttack()
 	local def=bc:GetDefense()
@@ -43,7 +43,7 @@ function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[i]=i*100
 	end
 	local cost=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,cost)
+	Duel.PayLPCost(tp,cost,true)
 	e:SetLabel(cost)
 end
 function c41925941.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -51,7 +51,7 @@ function c41925941.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetCard(tc)
 end
-function c41925941.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41925941.operation(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
 	local val=e:GetLabel()
 	if not bc or not bc:IsRelateToEffect(e) or not bc:IsControler(1-tp) then return end

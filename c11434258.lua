@@ -33,11 +33,11 @@ function c11434258.drop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()==0 then return end
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(p,2,2,nil)
-		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 		Duel.SortDecktop(p,p,2)
 		for i=1,2 do
 			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

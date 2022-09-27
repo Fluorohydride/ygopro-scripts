@@ -24,7 +24,9 @@ function c83957459.initial_effect(c)
 	end
 end
 function c83957459.checkop(e,tp,eg,ep,ev,re,r,rp)
-	local cp=eg:GetFirst():GetControler()
+	local bc=eg:GetFirst()
+	local cp=bc:GetControler()
+	if not bc:IsRelateToBattle() then cp=bc:GetPreviousControler() end
 	c83957459[cp]=c83957459[cp]+1
 end
 function c83957459.clear(e,tp,eg,ep,ev,re,r,rp)

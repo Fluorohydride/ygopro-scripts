@@ -34,7 +34,7 @@ function c87091930.descfilter2(c)
 	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c87091930.descfilter(c,tp)
-	return c:IsSummonType(SUMMON_TYPE_XYZ) and c:GetSummonPlayer()==tp
+	return c:IsSummonType(SUMMON_TYPE_XYZ) and c:IsSummonPlayer(tp)
 		and c:GetMaterial():IsExists(c87091930.descfilter2,1,nil)
 end
 function c87091930.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -42,9 +42,11 @@ function c87091930.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87091930.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	local exg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then exg=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c87091930.desop(e,tp,eg,ep,ev,re,r,rp)

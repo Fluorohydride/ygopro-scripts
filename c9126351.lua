@@ -84,5 +84,5 @@ function c9126351.exop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,9126352,RESET_PHASE+PHASE_END,0,1)
 end
 function c9126351.estg(e,c)
-	return c:IsSetCard(0x12) and c:GetCode()~=9126351
+	return c:IsSetCard(0x12) and not c:IsCode(9126351)
 end

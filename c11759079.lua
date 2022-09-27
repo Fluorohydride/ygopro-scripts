@@ -30,7 +30,7 @@ function c11759079.initial_effect(c)
 end
 function c11759079.spfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousSetCard(0x14f) and c:GetPreviousCodeOnField()~=11759079
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c11759079.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c11759079.spfilter,1,nil,tp) and Duel.GetTurnPlayer()~=tp

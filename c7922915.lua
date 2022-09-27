@@ -6,6 +6,7 @@ function c7922915.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetHintTiming(0,TIMING_END_PHASE)
 	e1:SetTarget(c7922915.target)
 	e1:SetOperation(c7922915.activate)
 	c:RegisterEffect(e1)
@@ -58,12 +59,12 @@ function c7922915.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.IsExistingMatchingCard(c7922915.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c7922915.negfilter(c)
-	return aux.disfilter1(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return aux.NegateAnyFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c7922915.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c7922915.negfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c7922915.negfilter,tp,0,LOCATION_ONFIELD,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	Duel.SelectTarget(tp,c7922915.negfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 end
 function c7922915.negop(e,tp,eg,ep,ev,re,r,rp)

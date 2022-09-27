@@ -26,10 +26,12 @@ function c51697825.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,sg)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local oc=sg:Select(1-tp,1,1,nil):GetFirst()
+		oc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		if Duel.SendtoHand(oc,1-tp,REASON_EFFECT)~=0 and oc:IsLocation(LOCATION_HAND) then
 			sg:RemoveCard(oc)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sc=sg:Select(tp,1,1,nil):GetFirst()
+			sc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 			Duel.SendtoHand(sc,tp,REASON_EFFECT)
 		end
 	end

@@ -28,7 +28,6 @@ function c66399653.thfilter(c)
 		and c:IsType(TYPE_UNION) and c:IsAbleToHand()
 end
 function c66399653.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c66399653.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66399653,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -40,11 +39,11 @@ end
 function c66399653.tgfilter(c,e,tp,chk)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsType(TYPE_UNION)
 		and c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsControler(tp) and c:IsCanBeEffectTarget(e)
-		and (chk or Duel.IsExistingMatchingCard(c66399653.cfilter,tp,LOCATION_DECK,0,1,nil,c))
+		and (chk or Duel.IsExistingMatchingCard(c66399653.cfilter,tp,LOCATION_DECK,0,1,nil,c,tp))
 end
-function c66399653.cfilter(c,ec)
-	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
-		and c:IsType(TYPE_UNION) and c:CheckUnionTarget(ec) and aux.CheckUnionEquip(c,ec) and not c:IsCode(ec:GetCode())
+function c66399653.cfilter(c,ec,tp)
+	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsType(TYPE_UNION) and not c:IsCode(ec:GetCode())
+		and c:CheckUniqueOnField(tp) and not c:IsForbidden() and c:CheckUnionTarget(ec) and aux.CheckUnionEquip(c,ec)
 end
 function c66399653.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c66399653.tgfilter(chkc,e,tp,true) end
@@ -59,13 +58,12 @@ function c66399653.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c66399653.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local sg=Duel.SelectMatchingCard(tp,c66399653.cfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
+		local sg=Duel.SelectMatchingCard(tp,c66399653.cfilter,tp,LOCATION_DECK,0,1,1,nil,tc,tp)
 		local ec=sg:GetFirst()
-		if ec and aux.CheckUnionEquip(ec,tc) and Duel.Equip(tp,ec,tc) then
+		if ec and Duel.Equip(tp,ec,tc) then
 			aux.SetUnionState(ec)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)

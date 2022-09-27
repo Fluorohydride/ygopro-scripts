@@ -2,13 +2,14 @@
 function c99628747.initial_effect(c)
 	c:EnableReviveLimit()
 	--ritual summon
-	local e1=aux.AddRitualProcGreater2(c,c99628747.filter,nil,nil,c99628747.matfilter)
+	local e1=aux.AddRitualProcGreater2(c,c99628747.filter,nil,nil,c99628747.matfilter,true)
 	e1:SetDescription(aux.Stringid(99628747,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCode(0)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,99628747)
 	e1:SetCost(c99628747.rscost)
+	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(99628747,1))
@@ -39,7 +40,7 @@ function c99628747.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c99628747.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingMatchingCard(c99628747.cfilter,tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
 	local g=Duel.GetMatchingGroup(c99628747.cfilter,tp,LOCATION_GRAVE,0,nil)

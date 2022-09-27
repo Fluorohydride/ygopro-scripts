@@ -44,7 +44,7 @@ function c95493471.indcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function c95493471.cfilter(c,lg,tp)
-	return c:IsSetCard(0xdc) and c:IsType(TYPE_XYZ) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0 and lg:IsContains(c)
+	return c:IsSetCard(0xdc) and c:IsType(TYPE_XYZ) and c:IsSummonLocation(LOCATION_EXTRA) and lg:IsContains(c)
 		and not Duel.IsExistingMatchingCard(c95493471.drfilter,tp,LOCATION_MZONE,0,1,c,c:GetCode())
 end
 function c95493471.drfilter(c,code)
@@ -66,7 +66,7 @@ function c95493471.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c95493471.cfilter2(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	if c:GetPreviousControler()~=tp then seq=seq+16 end
+	if c:IsPreviousControler(1-tp) then seq=seq+16 end
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0 and c:IsType(TYPE_XYZ)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end

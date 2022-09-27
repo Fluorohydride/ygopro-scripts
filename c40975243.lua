@@ -6,6 +6,7 @@ function c40975243.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,40975243+EFFECT_COUNT_CODE_OATH)
+	e1:SetHintTiming(0,TIMING_END_PHASE)
 	e1:SetTarget(c40975243.target)
 	e1:SetOperation(c40975243.activate)
 	c:RegisterEffect(e1)
@@ -39,6 +40,7 @@ function c40975243.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function c40975243.activate(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanSpecialSummonCount(tp,2) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c40975243.spfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e,tp)
@@ -59,11 +61,14 @@ function c40975243.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			tc:RegisterEffect(e2)
 			tc=sg:GetNext()
 		end
 		Duel.SpecialSummonComplete()
 		local og=Duel.GetOperatedGroup()
+		Duel.AdjustAll()
+		if og:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<sg:GetCount() then return end
 		local tg=Duel.GetMatchingGroup(c40975243.lkfilter,tp,LOCATION_EXTRA,0,nil,og)
 		if og:GetCount()==sg:GetCount() and tg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

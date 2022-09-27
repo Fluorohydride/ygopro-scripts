@@ -12,13 +12,13 @@ function c23639291.initial_effect(c)
 end
 function c23639291.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return eg:GetCount()==1 and tc:IsControler(tp) and tc:GetPreviousControler()==tp and tc:IsReason(REASON_DESTROY)
+	return eg:GetCount()==1 and tc:IsControler(tp) and tc:IsPreviousControler(tp) and tc:IsReason(REASON_DESTROY)
 		and tc:GetReasonEffect() and tc:GetReasonEffect():GetOwner()==tc
 end
 function c23639291.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==eg:GetFirst() end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and eg:GetFirst():IsCanBeSpecialSummoned(e,0,tp,false,false) and eg:GetFirst():IsCanBeEffectTarget(e) end
+		and eg:GetFirst():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) and eg:GetFirst():IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(eg:GetFirst())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,eg:GetFirst(),1,0,0)
 end

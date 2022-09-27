@@ -23,7 +23,7 @@ function c76794549.initial_effect(c)
 	e2:SetTarget(c76794549.sptg)
 	e2:SetOperation(c76794549.spop)
 	c:RegisterEffect(e2)
-	--special summon
+	--fusion summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(76794549,5))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -62,7 +62,7 @@ function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76794549.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c76794549.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0

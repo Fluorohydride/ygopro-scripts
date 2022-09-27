@@ -13,7 +13,7 @@ function c7092142.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c7092142.cfilter(c,tp)
-	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsAttribute(ATTRIBUTE_WATER) and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WATER)~=0
 end
 function c7092142.condition(e,tp,eg,ep,ev,re,r,rp)

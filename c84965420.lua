@@ -18,7 +18,7 @@ function c84965420.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_RITUAL)
 end
 function c84965420.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp and c:IsAbleToDeck()
+	return c:IsSummonPlayer(1-tp) and c:IsAbleToDeck()
 end
 function c84965420.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c84965420.filter,tp,LOCATION_MZONE,0,1,nil)
@@ -31,5 +31,5 @@ function c84965420.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84965420.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateSummon(eg)
-	Duel.SendtoDeck(eg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(eg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

@@ -12,7 +12,7 @@ function c86555018.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c86555018.cfilter(c,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsSetCard(0x70) and c:IsType(TYPE_MONSTER)
 end
 function c86555018.condition(e,tp,eg,ep,ev,re,r,rp)

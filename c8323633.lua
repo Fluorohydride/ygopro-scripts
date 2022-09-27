@@ -9,7 +9,6 @@ function c8323633.initial_effect(c)
 end
 function c8323633.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	local ac=Duel.AnnounceCard(tp,TYPE_MONSTER,OPCODE_ISTYPE)
 	c:SetHint(CHINT_CARD,ac)
@@ -47,7 +46,6 @@ function c8323633.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8323633.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=eg:Filter(c8323633.filter,nil,e:GetLabel()):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		g:AddCard(c)

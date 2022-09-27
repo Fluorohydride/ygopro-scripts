@@ -39,7 +39,7 @@ function c41077745.datop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-function c41077745.descon(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41077745.descon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and Duel.GetAttackTarget()==nil
 end
 function c41077745.filter(c)

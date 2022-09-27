@@ -11,7 +11,7 @@ function c20032555.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20032555.cfilter(c)
-	return c:IsSetCard(0x83) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
+	return c:IsSetCard(0x1083) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
 end
 function c20032555.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c20032555.cfilter,tp,LOCATION_HAND,0,1,nil) end
@@ -26,6 +26,8 @@ function c20032555.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if opt==0 then
 		e:SetCategory(CATEGORY_DAMAGE)
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
+	else
+		e:SetCategory(0)
 	end
 end
 function c20032555.effop(e,tp,eg,ep,ev,re,r,rp)

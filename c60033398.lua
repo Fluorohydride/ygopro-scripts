@@ -66,7 +66,7 @@ function c60033398.indtg(e,c)
 	return c:IsSetCard(0x137) and c~=e:GetHandler()
 end
 function c60033398.cfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetPreviousControler()==1-tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(1-tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c60033398.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c60033398.cfilter,1,nil,tp)

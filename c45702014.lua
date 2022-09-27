@@ -28,24 +28,15 @@ function c45702014.costfilter(c)
 	return c:IsSetCard(0x400d) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c45702014.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fg=Group.CreateGroup()
-	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,61557074)}) do
-		fg:AddCard(pe:GetHandler())
-	end
+	local fe=Duel.IsPlayerAffectedByEffect(tp,61557074)
 	local loc=LOCATION_HAND
-	if fg:GetCount()>0 then loc=LOCATION_HAND+LOCATION_DECK end
+	if fe then loc=LOCATION_HAND+LOCATION_DECK end
 	if chk==0 then return Duel.IsExistingMatchingCard(c45702014.costfilter,tp,loc,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tc=Duel.SelectMatchingCard(tp,c45702014.costfilter,tp,loc,0,1,1,nil):GetFirst()
 	if tc:IsLocation(LOCATION_DECK) then
-		local fc=nil
-		if fg:GetCount()==1 then
-			fc=fg:GetFirst()
-		else
-			fc=fg:Select(tp,1,1,nil)
-		end
-		Duel.Hint(HINT_CARD,0,fc:GetCode())
-		fc:RegisterFlagEffect(61557074,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,61557074)
+		fe:UseCountLimit(tp)
 	end
 	Duel.SendtoGrave(tc,REASON_COST)
 end
@@ -68,7 +59,7 @@ end
 function c45702014.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,0xff-e:GetHandler():GetAttribute())
+	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-e:GetHandler():GetAttribute())
 	e:SetLabel(att)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,tp,LOCATION_GRAVE)
 end

@@ -27,7 +27,7 @@ function c36704180.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c36704180.filter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsSetCard(0x10db) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsSetCard(0x10db) and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c36704180.condition(e,tp,eg,ep,ev,re,r,rp)

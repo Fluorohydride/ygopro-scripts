@@ -1,5 +1,6 @@
 --A・ジェネクス・トライアーム
 function c17760003.initial_effect(c)
+	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,68505803),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

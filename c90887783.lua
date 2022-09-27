@@ -33,5 +33,5 @@ function c90887783.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoHand(g2,nil,REASON_EFFECT)==0 then return end
 	Duel.ConfirmCards(1-tp,g2)
 	Duel.BreakEffect()
-	Duel.SendtoDeck(g1,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

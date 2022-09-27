@@ -1,7 +1,7 @@
 --リンクメイル・デーモン
 function c68295149.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c68295149.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c68295149.lcheck)
 	c:EnableReviveLimit()
 	--atkdown
 	local e1=Effect.CreateEffect(c)
@@ -62,7 +62,7 @@ function c68295149.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68295149.tgtg(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c68295149.tgval(e,re,rp)
 	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)

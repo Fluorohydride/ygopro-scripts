@@ -23,16 +23,17 @@ function c38383368.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c38383368.cfilter(c)
-	if not (c:IsReason(REASON_BATTLE) and c:GetPreviousSequence()>5) then return false end
+	if not (c:IsReason(REASON_BATTLE) and c:GetPreviousSequence()>=5) then return false end
 	local d=c:GetBattleTarget()
-	return d:IsRelateToBattle() and d:GetSequence()<=5 or not d:IsRelateToBattle() and d:GetPreviousSequence()<=5
+	return d:IsRelateToBattle() and d:GetSequence()<5 or not d:IsRelateToBattle() and d:GetPreviousSequence()<5
 end
 function c38383368.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	local tc=eg:Filter(c38383368.cfilter,nil):GetFirst()
-	if chk==0 then return tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE,tp)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tc:GetControler()) end
+	if chk==0 then return not eg:IsContains(c) and tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE,tp)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tc:GetControler()) end
 	e:SetLabel(tc:GetControler())
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c38383368.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -42,7 +43,8 @@ function c38383368.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38383368.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c38383368.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

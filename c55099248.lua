@@ -17,7 +17,7 @@ function c55099248.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c55099248.filter(c,e,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:GetSummonPlayer()~=tp
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsSummonPlayer(1-tp)
 end
 function c55099248.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c55099248.filter(chkc,e,tp) end

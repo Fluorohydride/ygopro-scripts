@@ -22,7 +22,6 @@ function c18716735.initial_effect(c)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetCountLimit(1,18716735)
 	e2:SetCondition(c18716735.regcon)
-	e2:SetTarget(c18716735.regtg)
 	e2:SetOperation(c18716735.regop)
 	c:RegisterEffect(e2)
 end
@@ -59,12 +58,6 @@ end
 function c18716735.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
-function c18716735.thfilter(c)
-	return c:IsSetCard(0xe1) and c:IsType(TYPE_MONSTER)
-end
-function c18716735.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c18716735.thfilter,tp,LOCATION_DECK,0,1,nil) end
-end
 function c18716735.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -75,16 +68,16 @@ function c18716735.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
-function c18716735.thfilter2(c)
-	return c18716735.thfilter(c) and c:IsAbleToHand()
+function c18716735.thfilter(c)
+	return c:IsSetCard(0xe1) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c18716735.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c18716735.thfilter2,tp,LOCATION_DECK,0,1,nil)
+	return Duel.IsExistingMatchingCard(c18716735.thfilter,tp,LOCATION_DECK,0,1,nil)
 end
 function c18716735.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,18716735)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c18716735.thfilter2,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c18716735.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

@@ -1,4 +1,4 @@
---CX－CH レジェンド・アーサー
+--CX－CHレジェンド・アーサー
 function c13030280.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

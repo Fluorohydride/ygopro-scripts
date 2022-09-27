@@ -74,16 +74,13 @@ function c21438286.cfop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			e1:SetValue(-d)
 			sc:RegisterEffect(e1)
-			local e2=e1:Clone()
-			e2:SetCode(EFFECT_UPDATE_DEFENSE)
-			sc:RegisterEffect(e2)
 			sc=g:GetNext()
 		end
 	end
 end
 function c21438286.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousLocation()==LOCATION_SZONE and not c:IsReason(REASON_LOST_TARGET)
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousEquipTarget() and not c:IsReason(REASON_LOST_TARGET)
 end
 function c21438286.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
@@ -94,6 +91,7 @@ function c21438286.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c21438286.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
-	Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
+	if e:GetHandler():IsRelateToEffect(e) then
+		Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
+	end
 end

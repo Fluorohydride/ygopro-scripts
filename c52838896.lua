@@ -14,7 +14,7 @@ function c52838896.initial_effect(c)
 	Duel.AddCustomActivityCounter(52838896,ACTIVITY_SPSUMMON,c52838896.counterfilter)
 end
 function c52838896.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsRace(RACE_INSECT)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsRace(RACE_INSECT)
 end
 function c52838896.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(52838896,tp,ACTIVITY_SPSUMMON)==0 end

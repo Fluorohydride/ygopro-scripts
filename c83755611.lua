@@ -52,7 +52,7 @@ function c83755611.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c83755611.desfilter(c,ft)
@@ -79,7 +79,7 @@ function c83755611.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_SPECIAL_SUMMON)
 	local tc1=g1:GetFirst()
 	local tc2=g2:GetFirst()
-	if tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e) and Duel.Destroy(tc1,REASON_EFFECT)~=0 then
+	if tc1:IsRelateToEffect(e) and Duel.Destroy(tc1,REASON_EFFECT)~=0 and tc2:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

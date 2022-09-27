@@ -33,17 +33,18 @@ function c40418351.filter(c)
 	return c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c40418351.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c40418351.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and (chkc:IsControler(tp) or Duel.IsPlayerAffectedByEffect(tp,64753988)) and c40418351.filter(chkc) end
 	if chk==0 then return true end
+	local loc=Duel.IsPlayerAffectedByEffect(tp,64753988) and LOCATION_GRAVE or 0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c40418351.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c40418351.filter,tp,LOCATION_GRAVE,loc,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c40418351.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end

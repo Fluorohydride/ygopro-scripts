@@ -22,7 +22,7 @@ function c94203886.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c94203886.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x54) and c:GetCode()~=94203886
+	return c:IsFaceup() and c:IsSetCard(0x54) and not c:IsCode(94203886)
 end
 function c94203886.spcon(e,c)
 	if c==nil then return true end

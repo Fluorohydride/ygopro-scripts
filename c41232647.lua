@@ -58,7 +58,7 @@ function c41232647.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c41232647.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_DRAGON)~=0 and c:IsControler(tp)
 end
 function c41232647.descon(e,tp,eg,ep,ev,re,r,rp)

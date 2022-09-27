@@ -69,7 +69,6 @@ function c42880485.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c42880485.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c42880485.lvop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -103,5 +102,5 @@ function c42880485.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c42880485.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end

@@ -16,7 +16,7 @@ function c95956346.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c95956346.filter(c,e,tp)
 	return c:IsAttackBelow(1500) and c:IsAttribute(ATTRIBUTE_LIGHT)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c95956346.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

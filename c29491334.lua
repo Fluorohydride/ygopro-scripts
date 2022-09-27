@@ -26,13 +26,13 @@ function c29491334.initial_effect(c)
 end
 function c29491334.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,29491335,0,0x4011,2000,2400,6,RACE_MACHINE,ATTRIBUTE_DARK) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,29491335,0,TYPES_TOKEN_MONSTER,2000,2400,6,RACE_MACHINE,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c29491334.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,29491335,0,0x4011,2000,2400,6,RACE_MACHINE,ATTRIBUTE_DARK) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,29491335,0,TYPES_TOKEN_MONSTER,2000,2400,6,RACE_MACHINE,ATTRIBUTE_DARK) then return end
 	local token=Duel.CreateToken(tp,29491335)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

@@ -43,7 +43,6 @@ function c54109233.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c54109233.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c54109233.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	Duel.Destroy(g,REASON_EFFECT)
 end

@@ -73,6 +73,7 @@ function c4918855.spop1(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()
@@ -91,7 +92,7 @@ function c4918855.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 end
 function c4918855.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_GRAVE and c:GetPreviousControler()==1-tp
+	return c:IsSummonLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
 end
 function c4918855.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c4918855.cfilter,1,nil,tp)
@@ -101,6 +102,7 @@ function c4918855.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c4918855.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)

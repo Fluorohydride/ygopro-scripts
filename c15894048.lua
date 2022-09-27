@@ -19,7 +19,7 @@ function c15894048.catg(e,c)
 	return not c:IsCode(15894048)
 end
 function c15894048.cfilter(c)
-	if not c:IsFaceup() or not c:IsCode(15894048) or not c:IsAttackable() then return false end
+	if c:IsFacedown() or not c:IsCode(15894048) or not c:IsAttackable() then return false end
 	local ag,direct=c:GetAttackableTarget()
 	return ag:GetCount()>0 or direct
 end

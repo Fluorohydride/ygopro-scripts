@@ -15,7 +15,7 @@ function c60627999.initial_effect(c)
 	e2:SetCode(EFFECT_SELF_DESTROY)
 	e2:SetCondition(c60627999.sdescon)
 	c:RegisterEffect(e2)
-	--disable spsummon
+	--cannot activate
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetRange(LOCATION_SZONE)

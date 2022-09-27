@@ -25,7 +25,7 @@ function c17475251.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c17475251.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c17475251.filter(c)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL) and c:IsSSetable()

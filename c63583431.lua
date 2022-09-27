@@ -52,7 +52,6 @@ function c63583431.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(e:GetLabelObject())
 end
 function c63583431.indop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())

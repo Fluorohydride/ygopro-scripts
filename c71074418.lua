@@ -57,6 +57,7 @@ end
 function c71074418.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return c71074418.thfilter(chkc,tp) end
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c71074418.thfilter,tp,LOCATION_GRAVE,LOCATION_ONFIELD,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c71074418.thfilter,tp,LOCATION_GRAVE,LOCATION_ONFIELD,1,1,nil,tp)

@@ -42,7 +42,6 @@ function c86157908.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c86157908.atkfilter,tp,LOCATION_MZONE,0,1,1,at)
 end
 function c86157908.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	local at=Duel.GetAttacker()
 	if at:IsFaceup() and at:IsRelateToBattle() and at:IsAttackable() and not at:IsStatus(STATUS_ATTACK_CANCELED)

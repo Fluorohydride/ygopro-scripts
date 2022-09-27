@@ -37,8 +37,8 @@ function c79080761.spop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c79080761.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
-		and bit.band(c:GetPreviousPosition(),POS_FACEUP)~=0 and bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
+		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c79080761.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

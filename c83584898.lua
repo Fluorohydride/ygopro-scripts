@@ -68,7 +68,6 @@ function c83584898.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,p,500)
 end
 function c83584898.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p=e:GetHandler():GetEquipTarget():GetControler()
 	local d=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)

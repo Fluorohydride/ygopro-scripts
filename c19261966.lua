@@ -36,7 +36,7 @@ function c19261966.splimit(e,se,sp,st)
 end
 function c19261966.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return se:IsActiveType(TYPE_SPELL+TYPE_TRAP) and se:IsHasType(EFFECT_TYPE_ACTIONS)
-		and c:IsLocation(LOCATION_GRAVE+LOCATION_HAND)
+		and c:IsLocation(LOCATION_GRAVE+LOCATION_HAND) and c:IsType(TYPE_MONSTER)
 end
 function c19261966.thfilter(c)
 	return c:IsSetCard(0x9d) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

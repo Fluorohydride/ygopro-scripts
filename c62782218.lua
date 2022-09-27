@@ -36,39 +36,30 @@ function c62782218.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
-function c62782218.spfilter(c,e,tp,satk)
-	local atk=c:GetAttack()
-	return atk>=0 and (not satk or atk==satk) and c:IsRace(RACE_ZOMBIE)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c62782218.spfilter(c,e,tp)
+	return c:IsAttackBelow(2000) and c:IsRace(RACE_ZOMBIE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+end
+function c62782218.fselect(g)
+	return g:GetSum(Card.GetAttack)==2000
 end
 function c62782218.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),2)
 		if ft<=0 then return false end
-		if ft==1 or Duel.IsPlayerAffectedByEffect(tp,59822133) then
-			return Duel.IsExistingMatchingCard(c62782218.spfilter,tp,LOCATION_HAND,0,1,e:GetHandler(),e,tp,2000)
-		else
-			local g=Duel.GetMatchingGroup(c62782218.spfilter,tp,LOCATION_HAND,0,e:GetHandler(),e,tp)
-			return g:CheckWithSumEqual(Card.GetAttack,2000,1,2)
-		end
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+		local g=Duel.GetMatchingGroup(c62782218.spfilter,tp,LOCATION_HAND,0,e:GetHandler(),e,tp)
+		return g:CheckSubGroup(c62782218.fselect,1,ft)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c62782218.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),2)
 	if ft<=0 then return end
-	if ft==1 or Duel.IsPlayerAffectedByEffect(tp,59822133) then
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	local g=Duel.GetMatchingGroup(c62782218.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
+	if g:CheckSubGroup(c62782218.fselect,1,ft) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c62782218.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,2000)
-		if g:GetCount()>0 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-		end
-	else
-		local g=Duel.GetMatchingGroup(c62782218.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-		if g:CheckWithSumEqual(Card.GetAttack,2000,1,2) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=g:SelectWithSumEqual(tp,Card.GetAttack,2000,1,2)
-			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
-		end
+		local sg=g:SelectSubGroup(tp,c62782218.fselect,false,1,ft)
+		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

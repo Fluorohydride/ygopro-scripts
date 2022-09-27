@@ -20,6 +20,8 @@ function c90384300.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90384300.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c90384300.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,2,2,nil)
+	local hg=g:Filter(Card.IsLocation,nil,LOCATION_HAND)
+	if #hg>0 then Duel.ConfirmCards(1-tp,hg) end
 	Duel.Remove(g,POS_FACEDOWN,REASON_COST)
 end
 function c90384300.target(e,tp,eg,ep,ev,re,r,rp,chk)

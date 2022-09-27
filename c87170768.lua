@@ -34,7 +34,7 @@ function c87170768.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c87170768.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c87170768.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c87170768.cfilter,1,nil,1-tp)

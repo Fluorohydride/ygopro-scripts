@@ -23,12 +23,9 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,5)
 	local tc=g1:GetFirst()
 	while tc do
-		local pos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then pos=pos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then pos=pos+POS_FACEDOWN_DEFENSE end
-		if tc:IsLevelBelow(4) and pos~=0 then
+		if tc:IsLevelBelow(4) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE) then
 			Duel.DisableShuffleCheck()
-			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,pos)
+			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 		elseif tc:IsAbleToHand() then
 			hg:AddCard(tc)
 		else gg:AddCard(tc) end
@@ -37,18 +34,14 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(1-tp,5)
 	tc=g2:GetFirst()
 	while tc do
-		local pos=0
-		if tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEUP_ATTACK) then pos=pos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEDOWN_DEFENSE) then pos=pos+POS_FACEDOWN_DEFENSE end
-		if tc:IsLevelBelow(4) and pos~=0 then
+		if tc:IsLevelBelow(4) and tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE) then
 			Duel.DisableShuffleCheck()
-			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,pos)
+			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 		elseif tc:IsAbleToHand() then
 			hg:AddCard(tc)
 		else gg:AddCard(tc) end
 		tc=g2:GetNext()
 	end
-	Duel.SpecialSummonComplete()
 	if hg:GetCount()>0 then
 		Duel.DisableShuffleCheck()
 		Duel.SendtoHand(hg,nil,REASON_EFFECT)
@@ -59,4 +52,5 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(gg,REASON_EFFECT)
 	end
+	Duel.SpecialSummonComplete()
 end

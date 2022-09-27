@@ -43,11 +43,11 @@ function c74578720.bdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c74578720.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsReason(REASON_EFFECT)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsReason(REASON_EFFECT)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0 and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c74578720.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c74578720.cfilter,1,nil,tp)
+	return eg:IsExists(c74578720.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c74578720.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

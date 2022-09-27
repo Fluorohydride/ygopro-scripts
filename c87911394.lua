@@ -24,7 +24,7 @@ function c87911394.initial_effect(c)
 	e2:SetOperation(c87911394.atkop)
 	c:RegisterEffect(e2)
 end
-c87911394.xyz_number=39
+aux.xyz_number[87911394]=39
 function c87911394.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

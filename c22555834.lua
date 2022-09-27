@@ -2,7 +2,7 @@
 function c22555834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,22555834+EFFECT_COUNT_CODE_OATH)
@@ -34,7 +34,6 @@ function c22555834.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x35) and c:IsAbleToGrave()
 end
 function c22555834.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c22555834.tgfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22555834,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

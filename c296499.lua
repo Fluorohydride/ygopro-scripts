@@ -34,7 +34,7 @@ function c296499.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():SetHint(CHINT_RACE,rc)
 end
 function c296499.atktarget(e,c)
-	return c:GetRace()==e:GetLabelObject():GetLabel()
+	return c:IsRace(e:GetLabelObject():GetLabel())
 end
 function c296499.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

@@ -24,7 +24,7 @@ end
 function c31772684.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and rp==1-tp and c:GetPreviousControler()==tp
+		and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c31772684.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -52,7 +52,7 @@ function c31772684.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(Card.IsSetCard,nil,0x106)
 	local rc=g:GetFirst()
 	if not rc then return end
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(rc)
 	e1:SetDescription(aux.Stringid(31772684,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)

@@ -3,8 +3,7 @@ function c71971554.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71971554,0))
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e1:SetRange(LOCATION_MZONE)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_DAMAGE_STEP_END)
 	e1:SetCondition(c71971554.lvcon)
 	e1:SetOperation(c71971554.lvop)
@@ -17,10 +16,11 @@ function c71971554.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c71971554.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker()==e:GetHandler()
+	return Duel.GetAttacker()==e:GetHandler() and e:GetHandler():IsRelateToBattle()
 end
 function c71971554.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)

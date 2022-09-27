@@ -49,7 +49,7 @@ function c29088922.lvop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c29088922.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x31) and c:GetCode()~=29088922
+	return c:IsFaceup() and c:IsSetCard(0x31) and not c:IsCode(29088922)
 end
 function c29088922.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c29088922.cfilter,tp,LOCATION_MZONE,0,1,nil) end

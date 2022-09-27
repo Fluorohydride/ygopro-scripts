@@ -58,7 +58,7 @@ function c23672629.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23672629.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WATER)~=0 and bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
@@ -74,7 +74,7 @@ function c23672629.tpop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc,0)
+		Duel.MoveSequence(tc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end

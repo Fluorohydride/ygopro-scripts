@@ -32,7 +32,7 @@ function c96162588.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c96162588.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousSetCard(0x141)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousSetCard(0x141)
 end
 function c96162588.rlcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c96162588.cfilter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)

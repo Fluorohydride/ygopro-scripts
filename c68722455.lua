@@ -31,7 +31,7 @@ function c68722455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local eg=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,eg,ct,0,0)
 end
-function c68722455.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c68722455.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
 	if rg:GetCount()>0 then

@@ -1,4 +1,4 @@
---Myutant Evolution Lab
+--ミュートリア進化研究所
 function c34572613.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +32,6 @@ function c34572613.spfilter(c,e,tp)
 	return c:IsSetCard(0x157) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(4) and (c:IsFaceup() or c:IsLocation(LOCATION_HAND))
 end
 function c34572613.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetMZoneCount(tp)<=0 then return end
 	local g=Duel.GetMatchingGroup(c34572613.spfilter,tp,LOCATION_HAND+LOCATION_REMOVED,0,nil,e,tp)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(34572613,0)) then
@@ -61,7 +60,10 @@ function c34572613.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c34572613.drtgfilter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK) then
-		Duel.Draw(tp,1,REASON_EFFECT)
+	if tc then
+		Duel.ConfirmCards(1-tp,tc)
+		if Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK) then
+			Duel.Draw(tp,1,REASON_EFFECT)
+		end
 	end
 end

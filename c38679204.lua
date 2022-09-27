@@ -59,6 +59,7 @@ function c38679204.eqlimit(e,c)
 end
 function c38679204.descon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
+	if not ec then return false end
 	local dt=nil
 	if ec==Duel.GetAttacker() then dt=Duel.GetAttackTarget()
 	elseif ec==Duel.GetAttackTarget() then dt=Duel.GetAttacker() end

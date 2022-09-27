@@ -16,7 +16,7 @@ function c15609017.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function c15609017.costfilter(c)
-	return c:IsSetCard(0x2016) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x2016) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c15609017.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

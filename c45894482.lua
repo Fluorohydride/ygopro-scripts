@@ -11,7 +11,7 @@ function c45894482.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e3:SetDescription(aux.Stringid(45894482,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)

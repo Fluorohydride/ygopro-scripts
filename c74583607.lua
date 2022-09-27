@@ -52,7 +52,7 @@ end
 function c74583607.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_BATTLE)
-		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp)
+		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp))
 end
 function c74583607.thfilter(c)
 	return c:IsSetCard(0xae) and c:IsAbleToHand()

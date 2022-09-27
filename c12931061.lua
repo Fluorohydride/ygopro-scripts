@@ -2,7 +2,7 @@
 function c12931061.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCountLimit(1,12931061+EFFECT_COUNT_CODE_OATH)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -21,7 +21,6 @@ function c12931061.initial_effect(c)
 end
 function c12931061.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
 function c12931061.thfilter(c)
 	if not c:IsAbleToHand() then return false end
@@ -29,7 +28,6 @@ function c12931061.thfilter(c)
 		or c:IsLocation(LOCATION_GRAVE) and c:IsCode(19814508)
 end
 function c12931061.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c12931061.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 	local sel=1
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(12931061,0))

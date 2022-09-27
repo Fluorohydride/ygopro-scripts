@@ -23,7 +23,7 @@ function c26775203.initial_effect(c)
 end
 function c26775203.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c26775203.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -39,9 +39,16 @@ function c26775203.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26775203.adchange(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local batk=c:GetBaseAttack()
+	local bdef=c:GetBaseDefense()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SWAP_BASE_AD)
+	e1:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
+	e1:SetValue(bdef)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetCode(EFFECT_SET_BASE_DEFENSE_FINAL)
+	e2:SetValue(batk)
+	c:RegisterEffect(e2)
 end

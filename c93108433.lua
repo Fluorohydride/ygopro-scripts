@@ -35,7 +35,7 @@ function c93108433.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=g:GetCount()
 	if tc:IsRelateToEffect(e) and ct>0 then
 		g:AddCard(tc)
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.ShuffleDeck(tp)
 		if ct>0 then
 			Duel.BreakEffect()

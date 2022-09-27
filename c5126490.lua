@@ -15,6 +15,7 @@ function c5126490.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c5126490.spcon)
+	e2:SetTarget(c5126490.sptg)
 	e2:SetOperation(c5126490.spop)
 	c:RegisterEffect(e2)
 	--damage&recover
@@ -23,6 +24,7 @@ function c5126490.initial_effect(c)
 	e3:SetCategory(CATEGORY_DAMAGE+CATEGORY_RECOVER)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
+	e3:SetCondition(aux.dsercon)
 	e3:SetTarget(c5126490.damtg)
 	e3:SetOperation(c5126490.damop)
 	c:RegisterEffect(e3)
@@ -35,30 +37,37 @@ function c5126490.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
-function c5126490.spfilter1(c,tp)
-	return c:IsFaceup() and c:IsCode(89943723) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c5126490.spfilter2,tp,LOCATION_MZONE,0,1,c)
+function c5126490.spfilter(c,tp)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
-function c5126490.spfilter2(c)
-	return c:IsFaceup() and c:IsCode(78371393) and c:IsAbleToGraveAsCost()
+function c5126490.fselect(g,tp)
+	return aux.mzctcheck(g,tp) and aux.gfcheck(g,Card.IsCode,89943723,78371393)
 end
 function c5126490.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c5126490.spfilter1,tp,LOCATION_MZONE,0,1,nil,tp)
+	local g=Duel.GetMatchingGroup(c5126490.spfilter,tp,LOCATION_MZONE,0,nil)
+	return g:CheckSubGroup(c5126490.fselect,2,2,tp)
+end
+function c5126490.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c5126490.spfilter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,c5126490.fselect,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c5126490.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c5126490.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c5126490.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c5126490.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget()~=nil end
-	local bc=e:GetHandler():GetBattleTarget()
+	local c=e:GetHandler()
+	local bc=c:GetBattleTarget()
+	if chk==0 then return c:IsStatus(STATUS_OPPO_BATTLE) and bc~=nil end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,bc:GetAttack())
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,bc:GetDefense())
 end

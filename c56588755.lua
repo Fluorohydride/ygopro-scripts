@@ -18,7 +18,7 @@ function c56588755.filter(c,tp)
 		and Duel.IsExistingTarget(c56588755.filter2,tp,0,LOCATION_MZONE,1,nil,ctype)
 end
 function c56588755.filter2(c,ctype)
-	return c:IsFaceup() and c:IsType(ctype) and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
+	return c:IsType(ctype) and aux.NegateEffectMonsterFilter(c)
 end
 function c56588755.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -26,6 +26,7 @@ function c56588755.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c56588755.filter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,1,nil,tp)
 	local ctype=bit.band(g:GetFirst():GetType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local dg=Duel.SelectTarget(tp,c56588755.filter2,tp,0,LOCATION_MZONE,1,1,nil,ctype)
 	e:SetLabelObject(g:GetFirst())
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
@@ -38,7 +39,7 @@ function c56588755.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=e:GetLabelObject()
 	local tc2=g:GetFirst()
 	if tc1==tc2 then tc2=g:GetNext() end
-	if tc1:IsRelateToEffect(e) and Duel.SendtoDeck(tc1,nil,2,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_EXTRA) then
+	if tc1:IsRelateToEffect(e) and Duel.SendtoDeck(tc1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_EXTRA) then
 		if tc2:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsControler(1-tp) and not tc2:IsDisabled() then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

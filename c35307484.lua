@@ -18,7 +18,7 @@ function c35307484.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c35307484.cfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x8b) and c:GetCode()~=35307484
+	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x8b) and not c:IsCode(35307484)
 end
 function c35307484.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c35307484.cfilter,1,nil,tp)
@@ -46,6 +46,7 @@ function c35307484.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end

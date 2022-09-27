@@ -30,7 +30,6 @@ function c81306186.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)
 end
 function c81306186.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local tc=Duel.SelectMatchingCard(tp,c81306186.filter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
@@ -93,7 +92,7 @@ function c81306186.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		rc:SetMaterial(Group.FromCards(tc))
 		if tc:IsLocation(LOCATION_GRAVE) then
-			if Duel.SendtoDeck(tc,nil,2,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)==0 then return end
+			if Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)==0 then return end
 		else
 			if Duel.Release(tc,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)==0 then return end
 		end

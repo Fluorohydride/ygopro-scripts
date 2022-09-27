@@ -33,7 +33,7 @@ function c33296432.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c33296432.cfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c33296432.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c33296432.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
@@ -50,7 +50,7 @@ function c33296432.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c33296432.indes(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c33296432.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

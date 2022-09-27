@@ -42,20 +42,17 @@ end
 function c35334193.zonelimit(e)
 	return 0x7f007f & ~e:GetHandler():GetLinkedZone()
 end
-function c35334193.disfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c35334193.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c35334193.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c35334193.disfilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c35334193.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.NegateEffectMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	local g=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c35334193.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsDisabled() then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -68,7 +65,7 @@ function c35334193.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
-		if not c:IsRelateToEffect(e) or not c:IsFaceup() or tc:IsImmuneToEffect(e) then return end
+		if not c:IsRelateToEffect(e) or c:IsFacedown() or tc:IsImmuneToEffect(e) then return end
 		Duel.AdjustInstantly()
 		local zone=bit.band(c:GetLinkedZone(1-tp),0x1f)
 		if tc:IsDisabled() and tc:IsControler(1-tp) and Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 and Duel.SelectYesNo(tp,aux.Stringid(35334193,2)) then

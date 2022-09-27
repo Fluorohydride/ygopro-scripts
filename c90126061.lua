@@ -1,4 +1,4 @@
---No.5 亡霊竜デス・キマイラ・ドラゴン
+--No.5 亡朧竜 デス・キマイラ・ドラゴン
 function c90126061.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,nil,nil,99)
@@ -44,7 +44,7 @@ function c90126061.initial_effect(c)
 	e4:SetOperation(c90126061.retop)
 	c:RegisterEffect(e4)
 end
-c90126061.xyz_number=5
+aux.xyz_number[90126061]=5
 function c90126061.atkval(e,c)
 	return c:GetOverlayCount()*1000
 end
@@ -59,7 +59,8 @@ function c90126061.mtfilter(c)
 end
 function c90126061.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c90126061.mtfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c90126061.mtfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingTarget(c90126061.mtfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg=Duel.SelectTarget(tp,c90126061.mtfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,sg,1,0,0)
@@ -81,6 +82,6 @@ end
 function c90126061.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

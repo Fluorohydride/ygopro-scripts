@@ -46,14 +46,14 @@ end
 function c62481203.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,51208047,0xfb,0x4011,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,51208047,0xfb,TYPES_TOKEN_MONSTER,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
 function c62481203.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,51208047,0xfb,0x4011,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,51208047,0xfb,TYPES_TOKEN_MONSTER,0,0,1,RACE_FAIRY,ATTRIBUTE_LIGHT) then
 		for i=1,2 do
 			local token=Duel.CreateToken(tp,62481204)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
@@ -62,7 +62,7 @@ function c62481203.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62481203.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSummonLocation()==LOCATION_EXTRA and c:IsSetCard(0xfb)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsSummonLocation(LOCATION_EXTRA) and c:IsSetCard(0xfb)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c62481203.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

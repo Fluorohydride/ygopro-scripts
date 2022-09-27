@@ -16,14 +16,14 @@ function c79106360.filter(c)
 end
 function c79106360.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.GetMatchingGroup(c79106360.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.SendtoDeck(rg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local ct1=0
 	local ct2=0
 	rg=Duel.GetOperatedGroup()
 	local tc=rg:GetFirst()
 	while tc do
 		if tc:IsLocation(LOCATION_DECK) and tc:IsType(TYPE_MONSTER) then
-			if tc:GetControler()==tp then ct1=ct1+1
+			if tc:IsControler(tp) then ct1=ct1+1
 			else ct2=ct2+1 end
 		end
 		tc=rg:GetNext()

@@ -58,7 +58,7 @@ function c63487632.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c63487632.filter(c)
-	return c:GetCode()~=63487632 and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
+	return not c:IsCode(63487632) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c63487632.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c63487632.filter(chkc) end
@@ -72,7 +72,7 @@ end
 function c63487632.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -93,7 +93,7 @@ function c63487632.eqcheck(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63487632.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:GetPreviousLocation()==LOCATION_MZONE
+	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c63487632.spfilter2(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)

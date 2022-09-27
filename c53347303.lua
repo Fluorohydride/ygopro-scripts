@@ -1,5 +1,6 @@
 --青眼の光龍
 function c53347303.initial_effect(c)
+	aux.AddCodeList(c,23995346)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -60,6 +61,6 @@ function c53347303.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
-function c53347303.disop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c53347303.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end

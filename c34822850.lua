@@ -47,14 +47,14 @@ function c34822850.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34822850.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,34822851,0xbb,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_FIRE) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,34822851,0xbb,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_FIRE) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c34822850.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e)
 		or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,34822851,0xbb,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_FIRE) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,34822851,0xbb,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_FIRE) then return end
 	local token=Duel.CreateToken(tp,34822851)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

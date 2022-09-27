@@ -21,7 +21,7 @@ function c75363626.initial_effect(c)
 end
 function c75363626.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
-		and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousControler(tp)
 end
 function c75363626.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -29,9 +29,9 @@ function c75363626.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75363626.retop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c75363626.atktg(e,c)
-	return c:IsFaceup() and c:GetCode()~=75363626 and c:IsSetCard(0x71)
+	return c:IsFaceup() and not c:IsCode(75363626) and c:IsSetCard(0x71)
 end

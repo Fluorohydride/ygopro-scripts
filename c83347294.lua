@@ -35,7 +35,7 @@ function c83347294.initial_effect(c)
 end
 function c83347294.cfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and bit.band(c:GetPreviousTypeOnField(),TYPE_PENDULUM)~=0
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c83347294.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c83347294.cfilter,1,nil,tp)
@@ -67,7 +67,7 @@ function c83347294.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()
 end
 function c83347294.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0x99)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0x99)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT)) and not c:IsReason(REASON_REPLACE)
 end
 function c83347294.desfilter(c,e,tp)

@@ -29,7 +29,7 @@ function c39064822.lcheck(g,lc)
 	return g:GetClassCount(Card.GetLinkCode)==g:GetCount()
 end
 function c39064822.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and Duel.GetTurnPlayer()==tp
 end
 function c39064822.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

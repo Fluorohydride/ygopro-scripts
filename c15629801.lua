@@ -12,7 +12,7 @@ function c15629801.initial_effect(c)
 end
 function c15629801.filter(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,15629802,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,15629802,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 end
 function c15629801.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c15629801.filter(chkc,e,tp) end
@@ -27,17 +27,16 @@ function c15629801.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,15629802,0,0x4011,tc:GetAttack(),tc:GetDefense(),tc:GetLevel(),tc:GetRace(),tc:GetAttribute()) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,15629802,0,TYPES_TOKEN_MONSTER,tc:GetAttack(),tc:GetDefense(),tc:GetLevel(),tc:GetRace(),tc:GetAttribute()) then return end
 	local token=Duel.CreateToken(tp,15629802)
-	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_BASE_ATTACK)
+	e1:SetCode(EFFECT_SET_ATTACK)
 	e1:SetValue(tc:GetAttack())
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 	token:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_BASE_DEFENSE)
+	e2:SetCode(EFFECT_SET_DEFENSE)
 	e2:SetValue(tc:GetDefense())
 	token:RegisterEffect(e2)
 	local e3=e1:Clone()
@@ -52,6 +51,7 @@ function c15629801.activate(e,tp,eg,ep,ev,re,r,rp)
 	e5:SetCode(EFFECT_CHANGE_ATTRIBUTE)
 	e5:SetValue(tc:GetAttribute())
 	token:RegisterEffect(e5)
+	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	local e6=Effect.CreateEffect(e:GetHandler())
 	e6:SetType(EFFECT_TYPE_SINGLE)
 	e6:SetCode(EFFECT_NO_BATTLE_DAMAGE)

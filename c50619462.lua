@@ -13,9 +13,9 @@ function c50619462.initial_effect(c)
 end
 function c50619462.cfilter(c,e,tp)
 	local race=c:GetOriginalRace()
-	return c:IsFaceup() and (race==RACE_WINDBEAST or race==RACE_BEAST
-		or race==RACE_BEASTWARRIOR) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c50619462.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,race,e:GetHandler())
+	return c:IsFaceup() and c:IsAbleToGraveAsCost()
+		and (race==RACE_WINDBEAST or race==RACE_BEAST or race==RACE_BEASTWARRIOR)
+		and Duel.IsExistingMatchingCard(c50619462.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,race,c)
 end
 function c50619462.spfilter(c,e,tp,race,mc)
 	return c:GetOriginalRace()==race and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
@@ -53,6 +53,7 @@ function c50619462.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		local e3=Effect.CreateEffect(c)

@@ -12,7 +12,7 @@ function c37694547.initial_effect(c)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(LOCATION_HAND,LOCATION_HAND)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x7))
-	e2:SetValue(0x1)
+	e2:SetValue(c37694547.decval)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
@@ -25,6 +25,9 @@ function c37694547.initial_effect(c)
 	e3:SetTarget(c37694547.sptg)
 	e3:SetOperation(c37694547.spop)
 	c:RegisterEffect(e3)
+end
+function c37694547.decval(e,c)
+	return 0x1,37694547
 end
 function c37694547.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY)

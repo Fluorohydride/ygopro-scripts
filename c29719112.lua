@@ -105,7 +105,7 @@ function c29719112.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c29719112.cfilter(c,tp)
-	return c:IsType(TYPE_FUSION) and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_FUSION) and c:IsPreviousControler(tp)
 end
 function c29719112.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c29719112.cfilter,1,nil,tp)

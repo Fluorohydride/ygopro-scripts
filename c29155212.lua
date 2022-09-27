@@ -31,9 +31,10 @@ function c29155212.adval(e,c)
 	end
 end
 function c29155212.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetFlagEffect(29155212)<=4
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetFlagEffect(29155212)<4
+		and Duel.IsExistingMatchingCard(c29155212.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
 function c29155212.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToEffect(e) or not Duel.IsExistingMatchingCard(c29155212.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) then return end
 	e:GetHandler():RegisterFlagEffect(29155212,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 end

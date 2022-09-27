@@ -58,10 +58,11 @@ function c42940404.eqop(e,tp,eg,ep,ev,re,r,rp)
 	aux.SetUnionState(c)
 end
 function c42940404.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(42940404)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	e:GetHandler():RegisterFlagEffect(42940404,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetFlagEffect(42940404)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
+	c:RegisterFlagEffect(42940404,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c42940404.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -69,7 +70,7 @@ function c42940404.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
 function c42940404.sfilter(c)
-	return c:IsSetCard(0x36) and c:GetCode()~=42940404 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x36) and not c:IsCode(42940404) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c42940404.stg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c42940404.sfilter,tp,LOCATION_DECK,0,1,nil) end

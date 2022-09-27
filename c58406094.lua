@@ -31,7 +31,7 @@ function c58406094.extg(e,c)
 	return c:IsSetCard(0x159) or (c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_DRAGON) and c:IsLevel(7))
 end
 function c58406094.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(7) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(7) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c58406094.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c58406094.cfilter,1,nil,tp) and Duel.GetTurnPlayer()==tp

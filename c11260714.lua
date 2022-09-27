@@ -16,7 +16,7 @@ function c11260714.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)
 end
 function c11260714.filter(c,e,sp)
-	return c:IsRace(RACE_FAIRY) and c:GetCode()~=11260714 and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsRace(RACE_FAIRY) and not c:IsCode(11260714) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c11260714.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c11260714.filter(chkc,e,tp) end
@@ -28,7 +28,7 @@ function c11260714.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11260714.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_FAIRY) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

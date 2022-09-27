@@ -26,7 +26,7 @@ function c43383478.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local p2=false
 	while tc do
 		if tc:IsSetCard(0xba) and tc:IsType(TYPE_XYZ) and tc:IsReason(REASON_DESTROY) then
-			if tc:GetPreviousControler()==0 then p1=true else p2=true end
+			if tc:IsPreviousControler(0) then p1=true else p2=true end
 		end
 		tc=eg:GetNext()
 	end
@@ -43,7 +43,7 @@ function c43383478.filter1(c,e,tp)
 end
 function c43383478.filter2(c,e,tp,mc,rk)
 	return c:IsRank(rk) and c:IsSetCard(0xba) and mc:IsCanBeXyzMaterial(c)
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c43383478.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c43383478.filter1(chkc,e,tp) end

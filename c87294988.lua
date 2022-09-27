@@ -24,7 +24,7 @@ function c87294988.bttg(e,c)
 	return c~=e:GetHandler() and c:IsFaceup() and c:IsRace(RACE_PLANT)
 end
 function c87294988.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c87294988.filter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and not c:IsCode(87294988) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

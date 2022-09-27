@@ -1,4 +1,4 @@
---Myutant GB-88
+--被検体ミュートリアGB－８８
 function c43709490.initial_effect(c)
 	--self spsummon
 	local e1=Effect.CreateEffect(c)

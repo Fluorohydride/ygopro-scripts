@@ -37,7 +37,7 @@ function c82293134.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c82293134.filter(c)
-	return c:IsSetCard(0x76) and c:GetCode()~=82293134 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x76) and not c:IsCode(82293134) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c82293134.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

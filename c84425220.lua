@@ -52,21 +52,20 @@ function c84425220.gcheck(g)
 end
 function c84425220.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c84425220.rfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	Auxiliary.GCheckAdditional=c84425220.gcheck
+	aux.GCheckAdditional=c84425220.gcheck
 	if chk==0 then
 		local res=g:CheckSubGroup(c84425220.fselect,1,g:GetCount(),tp)
-		Auxiliary.GCheckAdditional=nil
+		aux.GCheckAdditional=nil
 		return res
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=g:SelectSubGroup(tp,c84425220.fselect,false,1,g:GetCount(),tp)
-	Auxiliary.GCheckAdditional=nil
+	aux.GCheckAdditional=nil
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c84425220.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c84425220.thfilter(c)
 	return c:IsCode(49306994) and c:IsAbleToHand()

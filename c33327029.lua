@@ -32,7 +32,7 @@ function c33327029.initial_effect(c)
 	end
 end
 function c33327029.cfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c33327029.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0

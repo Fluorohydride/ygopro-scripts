@@ -15,8 +15,7 @@ function c93078761.filter(c)
 	return c.toss_dice and c:IsAbleToHand()
 end
 function c93078761.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
+	if chk==0 then return Duel.IsExistingMatchingCard(c93078761.filter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c93078761.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -36,7 +35,7 @@ function c93078761.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoHand(c,nil,REASON_EFFECT)
 		elseif dice2>=2 and dice2<=5 then
 			c:CancelToGrave()
-			Duel.SendtoDeck(c,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 	end
 end

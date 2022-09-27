@@ -7,6 +7,7 @@ function c95676943.initial_effect(c)
 	e1:SetHintTiming(0,TIMING_MAIN_END)
 	e1:SetCondition(c95676943.condition)
 	e1:SetCost(c95676943.cost)
+	e1:SetTarget(c95676943.target)
 	e1:SetOperation(c95676943.activate)
 	c:RegisterEffect(e1)
 end
@@ -16,6 +17,9 @@ end
 function c95676943.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
 	Duel.PayLPCost(tp,2000)
+end
+function c95676943.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) end
 end
 function c95676943.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

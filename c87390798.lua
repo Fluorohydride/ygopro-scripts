@@ -1,4 +1,4 @@
---魔界台本 「ファンタジー・マジック」
+--魔界台本「ファンタジー・マジック」
 function c87390798.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -58,7 +58,7 @@ function c87390798.filter2(c)
 end
 function c87390798.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 		and Duel.IsExistingMatchingCard(c87390798.filter2,tp,LOCATION_EXTRA,0,1,nil)
 end
@@ -72,6 +72,6 @@ end
 function c87390798.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

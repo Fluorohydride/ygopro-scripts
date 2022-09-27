@@ -22,7 +22,8 @@ function c50820852.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50820852.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) and Duel.GetFlagEffect(tp,50820852)==0 end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,50820852)==0 and Duel.GetTurnPlayer()==tp end
 end
 function c50820852.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,50820852)~=0 then return end

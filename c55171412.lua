@@ -12,22 +12,7 @@ function c55171412.initial_effect(c)
 	e1:SetValue(c55171412.splimit)
 	c:RegisterEffect(e1)
 	--return
-	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(55171412,0))
-	e3:SetCategory(CATEGORY_TOEXTRA)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e3:SetCode(EVENT_PHASE+PHASE_END)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetCountLimit(1)
-	e3:SetCondition(c55171412.retcon1)
-	e3:SetTarget(c55171412.rettg)
-	e3:SetOperation(c55171412.retop)
-	c:RegisterEffect(e3)
-	local e4=e3:Clone()
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e4:SetProperty(0)
-	e4:SetCondition(c55171412.retcon2)
-	c:RegisterEffect(e4)
+	aux.EnableNeosReturn(c,c55171412.retop)
 	--destroy
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(55171412,1))
@@ -41,23 +26,12 @@ function c55171412.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c55171412.material_setcode=0x8
-c55171412.neos_fusion=true
 function c55171412.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c55171412.retcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsHasEffect(42015635)
-end
-function c55171412.retcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsHasEffect(42015635)
-end
-function c55171412.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToExtra() end
-	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
-end
 function c55171412.retop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c55171412.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

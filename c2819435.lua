@@ -62,7 +62,7 @@ function c2819435.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c2819435.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return eg:GetCount()==1 and tc:GetSummonPlayer()==tp and tc:IsFaceup() and tc:IsType(TYPE_NORMAL)
+	return eg:GetCount()==1 and tc:IsSummonPlayer(tp) and tc:IsFaceup() and tc:IsType(TYPE_NORMAL)
 end
 function c2819435.thfilter(c)
 	return c:IsSetCard(0xfa) and c:IsAbleToHand()
@@ -85,7 +85,7 @@ function c2819435.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2819435.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,2819436,0xfa,0x4011,2000,2000,6,RACE_WYRM,ATTRIBUTE_WATER)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,2819436,0xfa,TYPES_TOKEN_MONSTER,2000,2000,6,RACE_WYRM,ATTRIBUTE_WATER)
 		and e:GetHandler():GetFlagEffect(2819435)==0
 		and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_MZONE,0,1,nil,TYPE_TOKEN) end
 	e:GetHandler():RegisterFlagEffect(2819435,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
@@ -95,7 +95,7 @@ function c2819435.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2819435.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,2819436,0xfa,0x4011,2000,2000,6,RACE_WYRM,ATTRIBUTE_WATER) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,2819436,0xfa,TYPES_TOKEN_MONSTER,2000,2000,6,RACE_WYRM,ATTRIBUTE_WATER) then return end
 	local token=Duel.CreateToken(tp,2819436)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

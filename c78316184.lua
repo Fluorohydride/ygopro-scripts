@@ -31,7 +31,7 @@ function c78316184.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c78316184.desfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c78316184.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c78316184.desfilter,tp,0,LOCATION_MZONE,1,nil) end
@@ -42,8 +42,11 @@ end
 function c78316184.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c78316184.desfilter,tp,0,LOCATION_MZONE,nil)
 	local ct=Duel.Destroy(g,REASON_EFFECT)
-	if Duel.Damage(1-tp,ct*1000,REASON_EFFECT)~=0 then
-		local c=e:GetHandler()
+	if ct>0 then
+		Duel.Damage(1-tp,ct*1000,REASON_EFFECT)
+	end
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)
@@ -66,7 +69,7 @@ function c78316184.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c78316184.costfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c78316184.costfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c78316184.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

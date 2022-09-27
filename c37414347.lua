@@ -73,8 +73,9 @@ function c37414347.discon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c37414347.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x4a,1,REASON_COST) end
-	Duel.RemoveCounter(tp,1,1,0x4a,1,REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsCanRemoveCounter(tp,0x4a,1,REASON_COST) end
+	c:RemoveCounter(tp,0x4a,1,REASON_COST)
 end
 function c37414347.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -84,7 +85,6 @@ function c37414347.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c37414347.disop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end

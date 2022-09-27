@@ -71,14 +71,11 @@ function c58074177.atkop(e,tp,ep,ev,re,r,rp)
 		a:RegisterEffect(e1)
 	end
 end
-function c58074177.disfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c58074177.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c58074177.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c58074177.disfilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c58074177.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.NegateEffectMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c58074177.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -124,7 +121,6 @@ function c58074177.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c58074177.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

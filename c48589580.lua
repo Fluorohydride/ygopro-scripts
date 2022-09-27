@@ -53,7 +53,7 @@ function c48589580.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c48589580.cfilter(c,tp)
 	return bit.band(c:GetPreviousRaceOnField(),RACE_FAIRY)~=0 and c:IsRace(RACE_FAIRY)
-		and c:GetPreviousControler()==tp and c:GetPreviousLocation()==LOCATION_MZONE and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c48589580.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c48589580.cfilter,1,nil,tp)
@@ -73,7 +73,8 @@ function c48589580.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.IsExistingMatchingCard(c48589580.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.IsExistingMatchingCard(c48589580.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=Duel.SelectMatchingCard(tp,c48589580.costfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)

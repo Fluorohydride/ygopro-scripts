@@ -25,6 +25,7 @@ function c80758812.initial_effect(c)
 	e3:SetOperation(c80758812.spop2)
 	c:RegisterEffect(e3)
 end
+c80758812.has_text_type=TYPE_DUAL
 function c80758812.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
@@ -63,8 +64,8 @@ function c80758812.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c80758812.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local rg=Duel.SelectReleaseGroup(tp,c80758812.relfilter,1,1,nil,tp)
+	if rg:GetCount()==0 then return end
 	local relchk=rg:GetFirst():IsDualState()
 	if Duel.Release(rg,REASON_EFFECT)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

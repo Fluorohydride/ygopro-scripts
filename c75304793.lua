@@ -73,7 +73,6 @@ function c75304793.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75304793.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ct=Duel.GetMatchingGroupCount(c75304793.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if ct==0 then return end
 	if e:GetLabel()==0 then

@@ -33,7 +33,7 @@ function c66762372.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c66762372.spfilter(c,e,tp)
-	return c:IsSetCard(0x79) and c:IsLevel(4) and c:GetCode()~=66762372 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x79) and c:IsLevel(4) and not c:IsCode(66762372) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66762372.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -49,7 +49,7 @@ function c66762372.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66762372.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x79) and c:GetSummonLocation()==LOCATION_EXTRA and c:GetPreviousControler()==tp
+	return c:IsFaceup() and c:IsSetCard(0x79) and c:IsSummonLocation(LOCATION_EXTRA) and c:IsPreviousControler(tp)
 end
 function c66762372.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c66762372.cfilter,1,nil,tp)

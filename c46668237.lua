@@ -14,7 +14,7 @@ function c46668237.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c46668237.cfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_BEAST) and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_BEAST) and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetPreviousRaceOnField(),RACE_BEAST)~=0
 end
 function c46668237.condition(e,tp,eg,ep,ev,re,r,rp)

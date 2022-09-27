@@ -37,7 +37,7 @@ function c13935001.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c13935001.atkfilter(chkc,e,tp) end
 	if chk==0 then return eg:IsExists(c13935001.atkfilter,1,nil,e,tp)
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,13935002,0xdf,0x4011,0,0,1,RACE_BEASTWARRIOR,ATTRIBUTE_DARK,POS_FACEUP,1-tp) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,13935002,0xdf,TYPES_TOKEN_MONSTER,0,0,1,RACE_BEASTWARRIOR,ATTRIBUTE_DARK,POS_FACEUP,1-tp) end
 	if eg:GetCount()==1 then
 		Duel.SetTargetCard(eg)
 	else
@@ -49,9 +49,8 @@ function c13935001.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,tp,0)
 end
 function c13935001.tkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,13935002,0xdf,0x4011,0,0,1,RACE_BEASTWARRIOR,ATTRIBUTE_DARK,POS_FACEUP,1-tp) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,13935002,0xdf,TYPES_TOKEN_MONSTER,0,0,1,RACE_BEASTWARRIOR,ATTRIBUTE_DARK,POS_FACEUP,1-tp) then
 		local token=Duel.CreateToken(tp,13935002)
 		Duel.SpecialSummon(token,0,tp,1-tp,false,false,POS_FACEUP)
 	end

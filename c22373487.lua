@@ -13,7 +13,7 @@ function c22373487.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c22373487.filter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsAbleToDeck()
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsAbleToDeck()
 end
 function c22373487.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c22373487.filter(chkc) end
@@ -25,6 +25,6 @@ end
 function c22373487.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

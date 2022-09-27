@@ -31,6 +31,7 @@ function c18585765.desfilter2(g)
 	local tc=g:GetFirst()
 	while tc do
 		local fid=tc:GetFieldID()
+		tc:RegisterFlagEffect(18585766,RESET_CHAIN,0,1,fid)
 		local lg=tc:GetLinkedGroup()
 		local sc=lg:GetFirst()
 		while sc do
@@ -43,13 +44,13 @@ function c18585765.desfilter2(g)
 	return sg
 end
 function c18585765.desfilter3(c,g)
-	local res=false
 	local tc=g:GetFirst()
 	while tc do
-		if c:GetFlagEffectLabel(18585765)==tc:GetFieldID() then res=true end
+		local fid=tc:GetFlagEffectLabel(18585766)
+		if fid~=nil and c:GetFlagEffectLabel(18585765)==fid then return true end
 		tc=g:GetNext()
 	end
-	return res
+	return false
 end
 function c18585765.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c18585765.desfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e:GetHandler())
@@ -60,7 +61,7 @@ function c18585765.desop(e,tp,eg,ep,ev,re,r,rp)
 		while sg:GetCount()>0 do
 			Duel.BreakEffect()
 			lg=c18585765.desfilter2(sg)
-			if Duel.Destroy(g,REASON_EFFECT)==0 then return end
+			if Duel.Destroy(sg,REASON_EFFECT)==0 then return end
 			og=Duel.GetOperatedGroup()
 			sg=lg:Filter(c18585765.desfilter3,e:GetHandler(),og)
 		end

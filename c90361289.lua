@@ -42,7 +42,7 @@ function c90361289.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c90361289.filter(c)
-	return c:GetSummonLocation()==LOCATION_DECK
+	return c:IsSummonLocation(LOCATION_DECK)
 end
 function c90361289.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c90361289.filter,1,nil)
@@ -62,7 +62,7 @@ function c90361289.cfilter(c,e,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c90361289.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,c:GetAttribute())
 end
 function c90361289.spfilter(c,e,tp,attr)
-	return c:GetTextAttack()>=0 and c:GetTextAttack()==c:GetTextDefense() and c:IsAttribute(attr)
+	return aux.AtkEqualsDef(c) and c:IsAttribute(attr)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c90361289.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -86,7 +86,7 @@ function c90361289.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90361289.damfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c90361289.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c90361289.damfilter,1,nil,tp)

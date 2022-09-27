@@ -13,9 +13,9 @@ function c58332301.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e3:SetOperation(c58332301.atkop)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_MATERIAL_CHECK)
+	e3:SetValue(c58332301.matcheck)
 	c:RegisterEffect(e3)
 	--Pos Change
 	local e3=Effect.CreateEffect(c)
@@ -32,14 +32,12 @@ function c58332301.splimit(e,se,sp,st)
 	return se:GetHandler():IsCode(94820406)
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
-function c58332301.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+function c58332301.matcheck(e,c)
 	local g=c:GetMaterial()
 	local s=0
 	local tc=g:GetFirst()
 	while tc do
-		local a=tc:GetAttack()
-		if a<0 then a=0 end
+		local a=tc:GetBaseAttack()
 		s=s+a
 		tc=g:GetNext()
 	end
@@ -47,7 +45,7 @@ function c58332301.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_BASE_ATTACK)
 	e1:SetValue(s)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_DISABLE)
 	c:RegisterEffect(e1)
 end
 function c58332301.postg(e,tp,eg,ep,ev,re,r,rp,chk)

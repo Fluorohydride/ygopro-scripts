@@ -1,4 +1,4 @@
---CNo.5 亡朧龍カオス・キマイラ・ドラゴン
+--CNo.5 亡朧龍 カオス・キマイラ・ドラゴン
 function c69757518.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3,nil,nil,99)
@@ -33,7 +33,7 @@ function c69757518.initial_effect(c)
 	e3:SetOperation(c69757518.operation)
 	c:RegisterEffect(e3)
 end
-c69757518.xyz_number=5
+aux.xyz_number[69757518]=5
 function c69757518.atkval(e,c)
 	return c:GetOverlayCount()*1000
 end
@@ -79,7 +79,7 @@ function c69757518.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local sg1=sg:Select(tp,1,1,nil)
 		local c=e:GetHandler()
-		if Duel.SendtoDeck(sg1,nil,0,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+		if Duel.SendtoDeck(sg1,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
 			sg:Sub(sg1)
 			Duel.Overlay(c,sg)
 		end

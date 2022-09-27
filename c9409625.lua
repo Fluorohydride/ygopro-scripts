@@ -64,7 +64,6 @@ function c9409625.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c9409625.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
@@ -88,9 +87,8 @@ function c9409625.setfilter(c)
 	return c:IsCode(36894320) and c:IsSSetable()
 end
 function c9409625.tdop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_DECK) then
 		local g=Duel.GetMatchingGroup(c9409625.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9409625,2)) then

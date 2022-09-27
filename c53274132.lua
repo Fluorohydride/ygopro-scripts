@@ -50,7 +50,7 @@ function c53274132.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c53274132.spfilter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x25) and c:GetCode()~=53274132 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x25) and not c:IsCode(53274132) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c53274132.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c53274132.spfilter(chkc,e,tp) end

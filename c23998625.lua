@@ -31,7 +31,7 @@ function c23998625.initial_effect(c)
 	e3:SetOperation(c23998625.spop)
 	c:RegisterEffect(e3)
 end
-c23998625.xyz_number=53
+aux.xyz_number[23998625]=53
 function c23998625.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetCard(Duel.GetAttacker())
@@ -51,9 +51,11 @@ function c23998625.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23998625.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
+	local c=e:GetHandler()
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		return true
 	else return false end
 end

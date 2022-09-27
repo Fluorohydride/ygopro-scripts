@@ -11,5 +11,5 @@ function c23782705.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23782705.tg(e,c)
-	return c:IsSetCard(0x36) and c:GetCode()~=23782705
+	return c:IsSetCard(0x36) and not c:IsCode(23782705)
 end

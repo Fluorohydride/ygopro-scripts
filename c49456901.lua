@@ -28,7 +28,7 @@ function c49456901.initial_effect(c)
 	e2:SetOperation(c49456901.operation)
 	c:RegisterEffect(e2)
 end
-c49456901.xyz_number=104
+aux.xyz_number[49456901]=104
 function c49456901.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
@@ -45,7 +45,7 @@ function c49456901.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
-function c49456901.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c49456901.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp
 		and loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)

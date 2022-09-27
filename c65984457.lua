@@ -19,7 +19,7 @@ end
 function c65984457.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(c,nil,2,REASON_COST)
+	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c65984457.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

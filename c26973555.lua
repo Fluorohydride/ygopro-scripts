@@ -29,7 +29,7 @@ function c26973555.initial_effect(c)
 	e3:SetOperation(c26973555.disop)
 	c:RegisterEffect(e3)
 end
-c26973555.xyz_number=0
+aux.xyz_number[26973555]=0
 function c26973555.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48)
 end

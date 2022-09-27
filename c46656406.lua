@@ -10,7 +10,7 @@ function c46656406.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c46656406.filter(c,tp)
-	return c:GetSummonPlayer()~=tp and c:IsPreviousLocation(LOCATION_DECK)
+	return c:IsSummonPlayer(1-tp) and c:IsPreviousLocation(LOCATION_DECK)
 end
 function c46656406.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c46656406.filter,1,nil,tp) and Duel.IsPlayerCanDraw(tp,1) end
@@ -20,7 +20,7 @@ function c46656406.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c46656406.filter2(c,e,tp)
-	return c:IsRelateToEffect(e) and c:GetSummonPlayer()~=tp and c:IsPreviousLocation(LOCATION_DECK)
+	return c:IsRelateToEffect(e) and c:IsSummonPlayer(1-tp) and c:IsPreviousLocation(LOCATION_DECK)
 end
 function c46656406.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c46656406.filter2,nil,e,tp)

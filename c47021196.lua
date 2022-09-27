@@ -27,7 +27,7 @@ function c47021196.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c47021196.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xb2) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0xb2) and c:IsSummonPlayer(tp)
 end
 function c47021196.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47021196.cfilter,1,nil,tp)
@@ -44,7 +44,7 @@ function c47021196.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c47021196.negfilter(c)
-	return aux.disfilter1(c) and not c:IsSetCard(0xb2)
+	return aux.NegateMonsterFilter(c) and not c:IsSetCard(0xb2)
 end
 function c47021196.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

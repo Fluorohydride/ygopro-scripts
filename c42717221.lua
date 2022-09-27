@@ -93,7 +93,8 @@ function c42717221.tglimit(e,c)
 end
 function c42717221.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsSummonType(SUMMON_TYPE_FUSION) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c42717221.thfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToHand()

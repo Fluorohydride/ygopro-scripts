@@ -61,5 +61,5 @@ function c31038159.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31038159.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c31038159.tdfilter,tp,LOCATION_GRAVE,0,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

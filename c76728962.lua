@@ -39,7 +39,7 @@ end
 c76728962.toss_coin=true
 function c76728962.filter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
-		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0 and c:GetPreviousControler()==tp
+		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0 and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c76728962.condition(e,tp,eg,ep,ev,re,r,rp)

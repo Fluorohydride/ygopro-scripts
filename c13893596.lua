@@ -37,6 +37,7 @@ function c13893596.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetCondition(c13893596.recon)
 	e5:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e5)
@@ -53,7 +54,7 @@ function c13893596.spcon(e,c)
 end
 function c13893596.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c13893596.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

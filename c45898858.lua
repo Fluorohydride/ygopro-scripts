@@ -20,6 +20,7 @@ function c45898858.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:CheckSubGroupEach(c45898858.spchecks,aux.mzctcheckrel,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroupEach(tp,c45898858.spchecks,false,aux.mzctcheckrel,tp)
+	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c45898858.filter(c,e,tp)

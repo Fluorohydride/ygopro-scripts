@@ -72,10 +72,9 @@ function c3828844.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c3828844.spfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if not c:IsRelateToEffect(e) or not c:IsCanOverlay() then return end
+		if not c:IsRelateToEffect(e) or not c:IsCanOverlay() or not aux.NecroValleyFilter()(c) then return end
 		if c:IsLocation(LOCATION_HAND+LOCATION_DECK) or (not c:IsLocation(LOCATION_GRAVE) and c:IsFacedown()) then return end
-		if not (c:IsLocation(LOCATION_GRAVE) and c:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
-			and Duel.SelectYesNo(tp,aux.Stringid(3828844,2)) then
+		if Duel.SelectYesNo(tp,aux.Stringid(3828844,2)) then
 			Duel.BreakEffect()
 			if not tc:IsImmuneToEffect(e) then
 				Duel.Overlay(tc,Group.FromCards(c))

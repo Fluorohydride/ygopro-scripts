@@ -16,7 +16,7 @@ function c37349495.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c37349495.filter(c)
-	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER) and c:GetCode()~=37349495 and c:IsAbleToHand()
+	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER) and not c:IsCode(37349495) and c:IsAbleToHand()
 end
 function c37349495.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c37349495.filter(chkc) end

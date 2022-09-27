@@ -49,14 +49,11 @@ function c28388927.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,c,RACE_INSECT)
 	Duel.Release(rg,REASON_COST)
 end
-function c28388927.disfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c28388927.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c28388927.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c28388927.disfilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c28388927.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.NegateEffectMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c28388927.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

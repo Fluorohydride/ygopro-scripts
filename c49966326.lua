@@ -19,7 +19,7 @@ end
 function c49966326.tgfilter(c,type1)
 	return not c:IsType(type1) and c:IsSetCard(0x14e) and c:IsAbleToGrave()
 end
-function c49966326.thfilter(c,type1)
+function c49966326.tgfilter2(c,type1)
 	return not c:IsType(type1) and c:IsSetCard(0x14e) and not c:IsCode(49966326) and c:IsAbleToGrave()
 end
 function c49966326.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -35,14 +35,14 @@ end
 function c49966326.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c,tc=e:GetHandler(),Duel.GetFirstTarget()
 	local type1=tc:GetType()&0x7
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c49966326.tgfilter,tp,LOCATION_DECK,0,1,1,nil,type1)
 		local tgc=g:GetFirst()
 		if tgc and Duel.SendtoGrave(tgc,REASON_EFFECT)~=0 and tgc:IsLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
 			and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local type1=tgc:GetType()&0x7|type1
-			local sg=Duel.GetMatchingGroup(c49966326.tgfilter,tp,LOCATION_DECK,0,nil,type1)
+			local sg=Duel.GetMatchingGroup(c49966326.tgfilter2,tp,LOCATION_DECK,0,nil,type1)
 			if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(49966326,1)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

@@ -30,9 +30,9 @@ function c68941332.filter(c,check)
 		and (check or c:IsAbleToChangeControler())
 end
 function c68941332.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingTarget(c68941332.filter,1-tp,LOCATION_MZONE,0,1,nil,true) end
+	if chk==0 then return Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,nil,true) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c68941332.filter,1-tp,LOCATION_MZONE,0,1,1,nil,true)
+	Duel.SelectTarget(tp,c68941332.filter,tp,0,LOCATION_MZONE,1,1,nil,true)
 end
 function c68941332.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -41,11 +41,13 @@ function c68941332.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 	end
 end
 function c68941332.rfilter(c,tp)
-	return Duel.GetMZoneCount(tp,c)>0 and c:IsRace(RACE_PLANT)
+	return Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
+		and Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,c)
 end
 function c68941332.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c68941332.rfilter,1,nil,tp) end
@@ -54,9 +56,9 @@ function c68941332.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c68941332.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsExistingTarget(c68941332.filter,1-tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c68941332.filter,1-tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c68941332.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 end
 function c68941332.activate2(e,tp,eg,ep,ev,re,r,rp)
@@ -66,7 +68,7 @@ function c68941332.activate2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and tc:IsAbleToChangeControler() then
 			Duel.BreakEffect()
 			if Duel.GetControl(tc,tp,PHASE_END,1)~=0 then

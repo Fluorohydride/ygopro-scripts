@@ -62,6 +62,6 @@ function c35487920.operation2(e,tp,eg,ep,ev,re,r,rp)
 		and (not tc:IsAbleToDeck() or Duel.SelectOption(tp,1190,aux.Stringid(35487920,2))==0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	else
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

@@ -24,6 +24,5 @@ function c43509019.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.GetAttacker():IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK) end
 end
 function c43509019.cbop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.ChangeAttackTarget(nil)
 end

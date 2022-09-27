@@ -45,7 +45,7 @@ function c48964966.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c48964966.filter1(c,ft)
-	return c:IsFaceup() and c:IsRace(RACE_FAIRY) and c:GetCode()~=48964966 and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsRace(RACE_FAIRY) and not c:IsCode(48964966) and c:IsAbleToGraveAsCost()
 		and (ft>0 or c:GetSequence()<5)
 end
 function c48964966.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -56,7 +56,7 @@ function c48964966.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c48964966.filter2(c,e,sp)
-	return c:IsRace(RACE_FAIRY) and c:GetCode()~=48964966 and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsRace(RACE_FAIRY) and not c:IsCode(48964966) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c48964966.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c48964966.filter2(chkc,e,tp) end
@@ -67,7 +67,7 @@ function c48964966.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c48964966.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_FAIRY) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

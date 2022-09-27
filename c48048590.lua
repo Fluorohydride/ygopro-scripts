@@ -29,7 +29,7 @@ function c48048590.initial_effect(c)
 	Duel.AddCustomActivityCounter(48048590,ACTIVITY_SPSUMMON,c48048590.counterfilter)
 end
 function c48048590.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsType(TYPE_FUSION)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_FUSION)
 end
 function c48048590.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(48048590,tp,ACTIVITY_SPSUMMON)==0 end
@@ -67,7 +67,7 @@ function c48048590.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48048590.filter1(c,e,tp)
-	return Duel.IsExistingMatchingCard(c48048590.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp,c)
+	return c:IsType(TYPE_FUSION) and Duel.IsExistingMatchingCard(c48048590.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp,c)
 end
 function c48048590.filter2(c,e,tp,fc)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) and aux.IsMaterialListCode(fc,c:GetCode())

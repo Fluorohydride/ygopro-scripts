@@ -25,7 +25,7 @@ function c75775867.descon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsAttackPos()
 end
 function c75775867.cfilter(c)
-	return c:GetCode()~=75775867 and c:IsSetCard(0x26)
+	return not c:IsCode(75775867) and c:IsSetCard(0x26)
 end
 function c75775867.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c75775867.cfilter,1,nil) end

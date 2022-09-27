@@ -17,7 +17,7 @@ function c80727721.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c80727721.filter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x22) and c:GetCode()~=80727721 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x22) and not c:IsCode(80727721) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c80727721.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c80727721.filter(chkc,e,tp) end

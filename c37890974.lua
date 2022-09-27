@@ -22,7 +22,7 @@ function c37890974.spfilter1(c,e,tp,rp)
 	local lv=c:GetLevel()
 	return (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 		and c:IsPreviousSetCard(0x114) and c:IsType(TYPE_MONSTER)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsCanBeEffectTarget(e)
 		and lv>0 and Duel.IsExistingMatchingCard(c37890974.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,lv)
 end
@@ -39,7 +39,6 @@ function c37890974.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c37890974.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not tc:IsRelateToEffect(e) then return end

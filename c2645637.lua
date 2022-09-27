@@ -38,7 +38,7 @@ function c2645637.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE
 end
 function c2645637.spfilter(c)
-	return c:GetSummonLocation()==LOCATION_GRAVE
+	return c:IsSummonLocation(LOCATION_GRAVE)
 end
 function c2645637.atkcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c2645637.spfilter,1,nil) and not eg:IsContains(e:GetHandler())
@@ -51,7 +51,8 @@ end
 function c2645637.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c2645637.atkfilter(chkc) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c2645637.atkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c) end
+	if chk==0 then return e:GetHandler():GetFlagEffect(2645637)==0 and Duel.IsExistingTarget(c2645637.atkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c) end
+	e:GetHandler():RegisterFlagEffect(2645637,RESET_CHAIN,0,1)
 	local g=Duel.SelectTarget(tp,c2645637.atkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end

@@ -1,4 +1,4 @@
---幻姫フルドラ
+--幻妖フルドラ
 function c81263643.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

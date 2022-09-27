@@ -61,7 +61,7 @@ function c70916046.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local rg=tdg:Select(tp,1,tdnum,nil)
 			Duel.HintSelection(rg)
-			Duel.SendtoDeck(rg,nil,snum,REASON_EFFECT)
+			Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	else
 		--Lose LP

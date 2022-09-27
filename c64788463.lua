@@ -1,5 +1,6 @@
 --キングス・ナイト
 function c64788463.initial_effect(c)
+	aux.AddCodeList(c,25652259,90876561)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64788463,0))

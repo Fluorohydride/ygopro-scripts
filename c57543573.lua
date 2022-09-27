@@ -36,7 +36,7 @@ function c57543573.accon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetFirst():IsControler(tp)
 end
 function c57543573.filter2(c,tp)
-	return c:IsControler(tp) and bit.band(c:GetPreviousPosition(),POS_FACEUP)~=0 and bit.band(c:GetPosition(),POS_FACEDOWN)~=0
+	return c:IsControler(tp) and c:IsPreviousPosition(POS_FACEUP) and c:IsFacedown()
 end
 function c57543573.accon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57543573.filter2,1,nil,tp)

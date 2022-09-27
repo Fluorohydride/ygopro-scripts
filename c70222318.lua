@@ -40,13 +40,12 @@ function c70222318.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0x90) end
 end
 function c70222318.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(70222318,0))
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0x90)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc,0)
+		Duel.MoveSequence(tc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end
@@ -57,7 +56,6 @@ function c70222318.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end
 end
 function c70222318.tgop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
 	Duel.ConfirmDecktop(tp,1)
 	local g=Duel.GetDecktopGroup(tp,1)

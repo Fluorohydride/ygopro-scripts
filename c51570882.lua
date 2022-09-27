@@ -1,4 +1,4 @@
---グリーディー・ヴェノム ・フュージョン・ドラゴン
+--グリーディー・ヴェノム・フュージョン・ドラゴン
 function c51570882.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -39,12 +39,12 @@ function c51570882.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)
 end
 function c51570882.disfilter(c)
-	return c:IsFaceup() and (c:IsAttackAbove(1) or aux.disfilter1(c))
+	return c:IsFaceup() and (c:GetAttack()>0 or aux.NegateMonsterFilter(c))
 end
 function c51570882.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c51570882.disfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c51570882.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,c51570882.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end

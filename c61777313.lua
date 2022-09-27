@@ -16,6 +16,12 @@ function c61777313.initial_effect(c)
 	e2:SetCost(c61777313.cost)
 	e2:SetOperation(c61777313.operation)
 	c:RegisterEffect(e2)
+	--
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e3:SetCode(61777313)
+	c:RegisterEffect(e3)
 end
 function c61777313.synlimit(e,c)
 	return c:IsSetCard(0x42)

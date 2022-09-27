@@ -26,7 +26,7 @@ function c66413481.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66413481.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_EFFECT) and c:IsSetCard(0x81)
 end
 function c66413481.spcon(e,tp,eg,ep,ev,re,r,rp)

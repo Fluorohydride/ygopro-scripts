@@ -56,6 +56,7 @@ function c83152482.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c83152482.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tc:GetOriginalAttribute(),tc:GetOriginalRace(),tp)
 		local sc=g:GetFirst()
+		if not sc then return end
 		local res=sc:IsLocation(LOCATION_DECK)
 		if not Duel.Equip(tp,sc,tc) then return end
 		--equip limit

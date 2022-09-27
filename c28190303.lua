@@ -24,7 +24,7 @@ function c28190303.spcon(e,c)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
-	return g:GetCount()==1 and tc:IsSetCard(0x33) and tc:GetCode()~=28190303
+	return g:GetCount()==1 and tc:IsSetCard(0x33) and not tc:IsCode(28190303)
 end
 function c28190303.valcon(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0

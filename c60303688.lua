@@ -35,7 +35,7 @@ function c60303688.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c60303688.cfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c60303688.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c60303688.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
@@ -78,5 +78,5 @@ function c60303688.splimit(e,c)
 	return c:IsLocation(LOCATION_EXTRA)
 end
 function c60303688.indes(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end

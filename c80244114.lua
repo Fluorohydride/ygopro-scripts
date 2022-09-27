@@ -1,5 +1,6 @@
 --スターダスト・ファントム
 function c80244114.initial_effect(c)
+	aux.AddCodeList(c,44508094)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(80244114,0))

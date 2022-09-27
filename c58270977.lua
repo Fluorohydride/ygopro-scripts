@@ -47,11 +47,12 @@ function c58270977.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c58270977.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)~=0 and e:GetLabel()==1 then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP) and e:GetLabel()==1 then
+		local batk=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_BASE_ATTACK)
-		e1:SetValue(tc:GetBaseAttack()*2)
+		e1:SetValue(batk*2)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_ONFIELD,nil)
@@ -70,4 +71,5 @@ function c58270977.activate(e,tp,eg,ep,ev,re,r,rp)
 			gc=g:GetNext()
 		end
 	end
+	Duel.SpecialSummonComplete()
 end

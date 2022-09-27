@@ -12,7 +12,7 @@ function c73079365.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c73079365.filter(c,tp)
-	return c:IsType(TYPE_SPELL) and c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_SPELL) and c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousControler(tp)
 		and bit.band(c:GetReason(),0x41)==0x41
 end
 function c73079365.condition(e,tp,eg,ep,ev,re,r,rp)

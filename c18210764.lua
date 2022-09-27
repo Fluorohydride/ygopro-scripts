@@ -58,10 +58,9 @@ function c18210764.tetg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c18210764.teop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SendtoExtraP(tc,tp,REASON_EFFECT)
+		Duel.SendtoExtraP(tc,nil,REASON_EFFECT)
 	end
 end
 function c18210764.spfilter(c,e,tp)

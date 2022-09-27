@@ -54,7 +54,7 @@ function c42472002.effop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c42472002.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,42472002)==0
+	return Duel.GetFlagEffect(tp,42472002)==0 and Duel.GetTurnPlayer()==tp
 end
 function c42472002.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) end

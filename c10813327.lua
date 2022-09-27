@@ -17,7 +17,7 @@ function c10813327.initial_effect(c)
 end
 function c10813327.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c10813327.spfilter(c,e,tp)

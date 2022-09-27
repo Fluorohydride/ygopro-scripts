@@ -62,5 +62,5 @@ function c74875003.sumval(e,c)
 	return not c:IsCode(10000000,10000010,10000020)
 end
 function c74875003.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return not se:GetHandler():IsCode(74875003)
+	return se==nil or not se:GetHandler():IsCode(74875003)
 end

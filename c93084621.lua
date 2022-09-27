@@ -1,7 +1,7 @@
 --破械神アルバ
 function c93084621.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c93084621.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c93084621.lcheck)
 	c:EnableReviveLimit()
 	--link summon
 	local e1=Effect.CreateEffect(c)

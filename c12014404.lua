@@ -43,7 +43,7 @@ end
 function c12014404.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	if bc then
+	if c==Duel.GetAttacker() and bc then
 		if c:GetFlagEffect(12014404)~=0 then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

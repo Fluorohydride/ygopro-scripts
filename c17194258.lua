@@ -11,7 +11,7 @@ function c17194258.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17194258.filter1(c,tp)
-	return Duel.IsExistingMatchingCard(c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
+	return c:IsType(TYPE_FUSION) and Duel.IsExistingMatchingCard(c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
 function c17194258.filter2(c,fc)
 	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsAbleToHand()

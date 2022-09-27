@@ -57,7 +57,6 @@ function c33158448.lvop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e4)
 	end
 end
-
 function c33158448.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if ep==tp or c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end

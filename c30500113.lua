@@ -25,7 +25,7 @@ function c30500113.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c30500113.cfilter1(c,tp)
-	return c:IsSetCard(0xba) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0xba) and c:IsPreviousControler(tp)
 end
 function c30500113.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c30500113.cfilter1,1,nil,tp)
@@ -48,7 +48,7 @@ function c30500113.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30500113.cfilter2(c,tp)
 	return c:IsSetCard(0xba) and c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c30500113.thcon(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsContains(e:GetHandler()) then return false end

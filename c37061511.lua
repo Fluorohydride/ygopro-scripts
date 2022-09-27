@@ -67,7 +67,8 @@ end
 function c37061511.teop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(c37061511.tefilter,tp,LOCATION_GRAVE,0,nil)
-	if g:GetCount()>0 and Duel.SendtoDeck(g,nil,2,REASON_EFFECT)~=0
+	if aux.NecroValleyNegateCheck(g) then return end
+	if g:GetCount()>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

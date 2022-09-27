@@ -16,6 +16,7 @@ function c2602411.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(0,1)
+	e2:SetCondition(c2602411.condition)
 	e2:SetValue(c2602411.aclimit)
 	c:RegisterEffect(e2)
 	--tohand
@@ -24,6 +25,7 @@ function c2602411.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c2602411.condition)
 	e3:SetCost(c2602411.thcost)
 	e3:SetTarget(c2602411.thtg)
 	e3:SetOperation(c2602411.thop)
@@ -44,7 +46,7 @@ function c2602411.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -60,6 +62,9 @@ function c2602411.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2602411.eqlimit(e,c)
 	return c==e:GetLabelObject()
+end
+function c2602411.condition(e)
+	return e:GetHandler():GetEquipTarget()
 end
 function c2602411.aclimit(e,re,tp)
 	local loc=re:GetActivateLocation()

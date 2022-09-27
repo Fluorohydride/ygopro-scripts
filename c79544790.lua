@@ -12,7 +12,7 @@ function c79544790.initial_effect(c)
 end
 function c79544790.filter(c,e,tp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsCanBeEffectTarget(e)
-		and c:GetPreviousControler()==tp and c:IsReason(REASON_BATTLE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+		and c:IsPreviousControler(tp) and c:IsReason(REASON_BATTLE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c79544790.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c79544790.filter(chkc,e,tp) end
@@ -33,7 +33,7 @@ function c79544790.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetCondition(c79544790.descon)
 		e1:SetOperation(c79544790.desop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCountLimit(1)
 		tc:RegisterEffect(e1,true)
 	end

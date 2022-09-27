@@ -46,6 +46,7 @@ function c645087.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end
@@ -56,13 +57,13 @@ function c645087.tkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c645087.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,0x4011,0,0,2,RACE_CYBERSE,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,TYPES_TOKEN_MONSTER,0,0,2,RACE_CYBERSE,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 end
 function c645087.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,0x4011,0,0,2,RACE_CYBERSE,ATTRIBUTE_LIGHT) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,TYPES_TOKEN_MONSTER,0,0,2,RACE_CYBERSE,ATTRIBUTE_LIGHT) then return end
 	local token=Duel.CreateToken(tp,645088)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

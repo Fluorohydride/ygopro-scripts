@@ -15,7 +15,7 @@ function c13760677.initial_effect(c)
 	--tohand
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(13760677,1))
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
@@ -25,7 +25,7 @@ function c13760677.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c13760677.cfilter(c,e,tp)
-	return c:IsRace(RACE_ZOMBIE) and c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return c:IsRace(RACE_ZOMBIE) and c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 		and (not e or c:IsRelateToEffect(e))
 end
 function c13760677.indcon(e,tp,eg,ep,ev,re,r,rp)

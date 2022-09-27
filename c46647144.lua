@@ -47,7 +47,7 @@ function c46647144.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:IsDiscardable() end
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
-function c46647144.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c46647144.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsFaceup() and tc:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -62,7 +62,7 @@ function c46647144.atktg(e,c)
 	return c:IsFaceup() and c:IsSetCard(0xfe) and c~=e:GetHandler()
 end
 function c46647144.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c46647144.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c46647144.cfilter,1,nil,tp)
@@ -75,8 +75,8 @@ end
 function c46647144.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or Duel.GetLocationCount(1-tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,TYPES_TOKEN_MONSTER,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,TYPES_TOKEN_MONSTER,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp)
 		or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local token1=Duel.CreateToken(tp,46647145)
 	local token2=Duel.CreateToken(tp,46647145)

@@ -58,7 +58,7 @@ function c81866673.posop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81866673.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and Duel.GetCurrentPhase()==PHASE_DRAW
+	return ep==tp and Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_DRAW
 end
 function c81866673.spfilter(c,e,tp)
 	return c:IsLocation(LOCATION_HAND) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

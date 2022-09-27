@@ -132,7 +132,7 @@ end
 function c21140872.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=e:GetLabelObject():GetLabelObject()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and g:IsExists(c21140872.spfilter2,1,nil,e,tp) end
+		and g and g:IsExists(c21140872.spfilter2,1,nil,e,tp) end
 	local sg=g:Filter(c21140872.spfilter2,nil,e,tp)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)

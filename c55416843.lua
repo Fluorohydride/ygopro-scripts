@@ -18,10 +18,10 @@ function c55416843.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c55416843.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),2)
 	if ft<=0 then return end
 	local c=e:GetHandler()
-	if ft>2 then ft=2 end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c55416843.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ft,nil,e,tp)
 	if g:GetCount()>0 then
@@ -36,6 +36,7 @@ function c55416843.operation(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 			local e3=Effect.CreateEffect(c)

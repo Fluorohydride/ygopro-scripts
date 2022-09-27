@@ -23,6 +23,6 @@ function c80344569.operation(e,tp,eg,ep,ev,re,r,rp)
 	c=Duel.GetAttackTarget()
 	if c~=nil and c:IsRelateToBattle() then g:AddCard(c) end
 	if g:GetCount()>0 then
-		Duel.SendtoHand(g, nil, REASON_EFFECT)
+		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end
 end

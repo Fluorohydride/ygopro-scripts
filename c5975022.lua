@@ -28,7 +28,7 @@ function c5975022.desfilter(c)
 	return c:IsFaceup()
 end
 function c5975022.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c5975022.desfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c5975022.desfilter(chkc) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c5975022.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
@@ -46,7 +46,7 @@ end
 function c5975022.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(c,nil,2,REASON_COST)
+	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c5975022.filter(c,e,tp)
 	return not c:IsCode(5975022) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)

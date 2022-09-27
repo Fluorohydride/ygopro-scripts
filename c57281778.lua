@@ -12,13 +12,12 @@ function c57281778.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c57281778.descon(e,tp,eg,ep,ev,re,r,rp)
-	local t=Duel.GetAttackTarget()
-	if ev==1 then t=Duel.GetAttacker() end
+	local t=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(t)
-	return t and t:IsRace(RACE_SPELLCASTER+RACE_WARRIOR)
+	return aux.dsercon(e) and t and t:IsRace(RACE_SPELLCASTER+RACE_WARRIOR) and t:IsRelateToBattle()
 end
 function c57281778.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetLabelObject():IsRelateToBattle() end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetLabelObject(),1,0,0)
 end
 function c57281778.desop(e,tp,eg,ep,ev,re,r,rp)

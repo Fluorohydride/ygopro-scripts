@@ -17,7 +17,7 @@ function c69975751.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCountLimit(1,100200288)
+	e2:SetCountLimit(1,69975752)
 	e2:SetTarget(c69975751.sptg2)
 	e2:SetOperation(c69975751.spop2)
 	c:RegisterEffect(e2)
@@ -42,13 +42,16 @@ function c69975751.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 	end
 	Duel.SpecialSummonComplete()
 end
 function c69975751.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+	local c=e:GetHandler()
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c69975751.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -39,7 +39,8 @@ function c9205573.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c9205573.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c9205573.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
+		and Duel.IsExistingMatchingCard(c9205573.cfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

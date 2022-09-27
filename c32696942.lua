@@ -15,7 +15,7 @@ end
 function c32696942.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
-		and bit.band(c:GetPreviousLocation(),LOCATION_OVERLAY)~=0
+		and c:IsPreviousLocation(LOCATION_OVERLAY)
 end
 function c32696942.filter(c,e,tp)
 	return c:IsLevelBelow(3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

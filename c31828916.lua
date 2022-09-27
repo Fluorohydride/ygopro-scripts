@@ -38,7 +38,6 @@ function c31828916.cfilter2(c,e,tp)
 		and Duel.IsExistingMatchingCard(c31828916.filter,tp,LOCATION_DECK,0,1,nil,c:GetAttack(),c:GetAttribute(),e,tp)
 end
 function c31828916.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local sg=eg:Filter(c31828916.cfilter2,nil,e,tp)
 	if sg:GetCount()==1 then

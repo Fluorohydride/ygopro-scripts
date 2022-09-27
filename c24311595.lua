@@ -12,7 +12,7 @@ function c24311595.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c24311595.filter(c,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetPreviousControler()==tp
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp)
 		and c:IsSetCard(0x16) and c:IsAbleToHand()
 end
 function c24311595.target(e,tp,eg,ep,ev,re,r,rp,chk)

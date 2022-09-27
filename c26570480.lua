@@ -25,7 +25,7 @@ function c26570480.initial_effect(c)
 end
 function c26570480.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
-		and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousControler(tp)
 end
 function c26570480.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -33,7 +33,7 @@ function c26570480.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c26570480.retop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c26570480.cfilter(c,tp,ec)
@@ -46,7 +46,6 @@ function c26570480.cfilter(c,tp,ec)
 		return ((np==POS_FACEUP_DEFENSE and pp==POS_FACEUP_ATTACK) or (np==POS_FACEUP_ATTACK and pp&POS_DEFENSE~=0))
 			and c:IsControler(tp) and c:IsSetCard(0x71)
 	end
-	
 end
 function c26570480.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26570480.cfilter,1,nil,tp,e:GetHandler())

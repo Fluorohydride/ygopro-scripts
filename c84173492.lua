@@ -1,4 +1,4 @@
---不屈闘士 レイレイ
+--不屈闘士レイレイ
 function c84173492.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

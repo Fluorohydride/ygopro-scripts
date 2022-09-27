@@ -41,7 +41,7 @@ function c7799906.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c7799906.cfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousAttackOnField()>c:GetBaseAttack()
 end
 function c7799906.spcon(e,tp,eg,ep,ev,re,r,rp)

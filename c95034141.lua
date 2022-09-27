@@ -59,7 +59,6 @@ function c95034141.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95034141.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c95034141.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c95034141.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
@@ -96,7 +95,7 @@ function c95034141.alfilter(c)
 	return c:IsRace(RACE_ZOMBIE) and c:IsFaceup()
 end
 function c95034141.alcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c95034141.alfilter,1,nil) and re:IsHasType(EFFECT_TYPE_ACTIONS)
+	return eg:IsExists(c95034141.alfilter,1,nil) and aux.IsSpecialSummonedByEffect(re)
 end
 function c95034141.cfilter(c)
 	return c:IsFacedown() and c:GetSequence()<5
@@ -115,6 +114,6 @@ function c95034141.alop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 	end
 end

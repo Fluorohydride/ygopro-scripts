@@ -24,7 +24,7 @@ function c46871387.initial_effect(c)
 	e2:SetValue(800)
 	c:RegisterEffect(e2)
 end
-c46871387.xyz_number=55
+aux.xyz_number[46871387]=55
 function c46871387.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
@@ -41,7 +41,7 @@ function c46871387.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c46871387.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_ROCK) and tc:IsAttribute(ATTRIBUTE_EARTH) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end

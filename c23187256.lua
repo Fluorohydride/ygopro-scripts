@@ -26,7 +26,7 @@ function c23187256.initial_effect(c)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	c:RegisterEffect(e4)
 end
-c23187256.xyz_number=93
+aux.xyz_number[23187256]=93
 function c23187256.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48) and c:GetOverlayCount()>0
 end
@@ -69,6 +69,7 @@ function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
+			e2:SetValue(RESET_TURN_SET)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
 		end

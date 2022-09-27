@@ -51,14 +51,14 @@ function c75560629.initial_effect(c)
 end
 function c75560629.flcon(e)
 	local tc=e:GetHandler():GetEquipTarget()
-	return tc:GetCode()~=83812099 or tc:IsDisabled()
+	return not tc:IsCode(83812099) or tc:IsDisabled()
 end
 function c75560629.eqlimit(e,c)
-	return c:GetCode()~=83812099 or c:IsDisabled()
+	return not c:IsCode(83812099) or c:IsDisabled()
 		or not c:GetEquipGroup():IsExists(Card.IsCode,1,e:GetHandler(),75560629)
 end
 function c75560629.filter(c)
-	return c:IsFaceup() and (c:GetCode()~=83812099 or c:IsDisabled()
+	return c:IsFaceup() and (not c:IsCode(83812099) or c:IsDisabled()
 		or not c:GetEquipGroup():IsExists(Card.IsCode,1,nil,75560629))
 end
 function c75560629.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

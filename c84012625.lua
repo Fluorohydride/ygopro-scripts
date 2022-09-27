@@ -46,5 +46,5 @@ function c84012625.tdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84012625.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
-	Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

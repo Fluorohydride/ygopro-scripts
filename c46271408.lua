@@ -2,7 +2,7 @@
 function c46271408.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_ACTION+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -27,12 +27,11 @@ function c46271408.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c46271408.thfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,spchk) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c46271408.thfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,spchk)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,0,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,0,0,0)
 end
 function c46271408.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
+		if aux.NecroValleyNegateCheck(tc) then return end
 		if Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)

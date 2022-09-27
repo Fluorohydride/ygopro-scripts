@@ -47,7 +47,6 @@ function c54631665.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c54631665.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c54631665.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -74,7 +73,7 @@ function c54631665.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if sel==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local tg=g:Select(tp,1,1,nil)
-		Duel.SendtoDeck(tg,nil,2,REASON_COST)
+		Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_COST)
 	else
 		Duel.Destroy(c,REASON_COST)
 	end

@@ -1,5 +1,6 @@
 --青眼の混沌龍
 function c20654247.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

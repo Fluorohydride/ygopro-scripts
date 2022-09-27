@@ -35,7 +35,7 @@ function c97000273.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(c:GetReason(),0x41)==0x41 and re:GetOwner():IsSetCard(0x24)
 end
 function c97000273.filter(c)
-	return c:IsSetCard(0x24) and c:IsType(TYPE_MONSTER) and c:GetCode()~=97000273 and c:IsAbleToHand()
+	return c:IsSetCard(0x24) and c:IsType(TYPE_MONSTER) and not c:IsCode(97000273) and c:IsAbleToHand()
 end
 function c97000273.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c97000273.filter(chkc) end

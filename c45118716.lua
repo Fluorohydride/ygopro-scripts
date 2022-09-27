@@ -31,6 +31,6 @@ end
 function c45118716.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if Duel.DiscardDeck(tp,1,REASON_EFFECT)>0 and tc:IsRelateToEffect(e) then
-		Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end

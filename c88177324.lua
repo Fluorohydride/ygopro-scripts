@@ -24,16 +24,13 @@ function c88177324.initial_effect(c)
 	e2:SetOperation(c88177324.regop)
 	c:RegisterEffect(e2)
 end
-c88177324.xyz_number=107
+aux.xyz_number[88177324]=107
 function c88177324.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c88177324.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
-end
-function c88177324.filter1(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
 end
 function c88177324.filter2(c)
 	return c:IsFaceup() and (not c:IsAttack(c:GetBaseAttack()) or not c:IsDefense(c:GetBaseDefense()))
@@ -43,7 +40,7 @@ function c88177324.filter3(c)
 end
 function c88177324.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return
-		Duel.IsExistingMatchingCard(c88177324.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
+		Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
 		or Duel.IsExistingMatchingCard(c88177324.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
 	end
 end

@@ -26,13 +26,14 @@ function c41302052.initial_effect(c)
 end
 function c41302052.imcon(e)
 	local c=e:GetHandler()
-	return c:IsSummonType(SUMMON_TYPE_LINK) and c:GetLinkedGroupCount()==0
+	return c:IsSummonType(SUMMON_TYPE_LINK) and c:IsType(TYPE_LINK) and c:GetLinkedGroupCount()==0
 end
 function c41302052.immval(e,te)
 	return te:GetOwner()~=e:GetHandler() and te:IsActivated()
 end
 function c41302052.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetLinkedGroupCount()==0
+	local c=e:GetHandler()
+	return c:IsType(TYPE_LINK) and c:GetLinkedGroupCount()==0
 end
 function c41302052.damfilter(c)
 	return c:IsSetCard(0xfb) and c:IsType(TYPE_MONSTER)

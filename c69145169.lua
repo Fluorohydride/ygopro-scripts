@@ -33,8 +33,12 @@ function c69145169.checkop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+function c69145169.filter(c)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToGrave()
+end
 function c69145169.costfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsType(TYPE_EFFECT) and (c:IsFaceup() or c:IsControler(tp))
+		and Duel.IsExistingTarget(c69145169.filter,tp,0,LOCATION_MZONE,1,c)
 end
 function c69145169.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,69145170)==0
@@ -57,9 +61,6 @@ function c69145169.atkcon(e)
 end
 function c69145169.atktg(e,c)
 	return c:GetFlagEffect(69145169)==0
-end
-function c69145169.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToGrave()
 end
 function c69145169.spfilter(c,e,tp)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelAbove(7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -28,5 +28,5 @@ function c55271628.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(rg,REASON_COST)
 end
 function c55271628.sumlimit(e,c,sump,sumtype,sumpos,targetp)
-	return c:IsLocation(LOCATION_MZONE) or c:IsType(TYPE_EFFECT)
+	return c:GetOriginalType()&TYPE_EFFECT>0 and sumtype~=SUMMON_TYPE_DUAL
 end

@@ -14,6 +14,7 @@ function c77994337.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c77994337.toss_dice=true
+c77994337.toss_dice_in_pendulum_only=true
 function c77994337.lvfilter(c)
 	return c:IsFaceup() and c:GetLevel()>0
 end
@@ -24,7 +25,6 @@ function c77994337.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c77994337.lvfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c77994337.lvop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local dc=Duel.TossDice(tp,1)

@@ -11,7 +11,7 @@ function c36935434.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36935434.cfilter(c,tp)
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 end
 function c36935434.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c36935434.cfilter,1,nil,tp)

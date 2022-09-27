@@ -15,7 +15,7 @@ function c81210420.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c81210420.filter(c)
-	return c:GetSequence()<5 and not c:IsType(TYPE_TOKEN+TYPE_LINK)
+	return c:GetSequence()<5 and (c:IsPosition(POS_FACEDOWN_DEFENSE) or c:IsCanTurnSet())
 end
 function c81210420.spfilter(c,e,tp)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),nil,TYPE_MONSTER+TYPE_NORMAL,0,0,0,0,0,POS_FACEDOWN_DEFENSE)
@@ -27,7 +27,7 @@ function c81210420.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingMatchingCard(c81210420.spfilter,tp,LOCATION_DECK,0,2,nil,e,tp)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,0)
 end
 function c81210420.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
@@ -35,16 +35,14 @@ function c81210420.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c81210420.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local tc=Duel.SelectMatchingCard(tp,c81210420.filter,tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
+	local g2=Duel.SelectMatchingCard(tp,c81210420.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local tc=g2:GetFirst()
 	if not tc or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:Select(tp,2,2,nil)
 	if tc:IsFaceup() then
-		if tc:IsHasEffect(EFFECT_DEVINE_LIGHT) then Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
-		else
-			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
-			tc:ClearEffectRelation()
-		end
+		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
+		tc:ClearEffectRelation()
 	end
 	local tg=sg:GetFirst()
 	local fid=e:GetHandler():GetFieldID()

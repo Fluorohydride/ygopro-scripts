@@ -26,7 +26,7 @@ function c55285840.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c55285840.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>0 end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>0 end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c55285840.matop(e,tp,eg,ep,ev,re,r,rp)
@@ -99,7 +99,7 @@ function c55285840.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local dg=Duel.SelectMatchingCard(tp,c55285840.tgfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
-		Duel.SendtoDeck(dg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(dg,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end
 function c55285840.retop(e,tp,eg,ep,ev,re,r,rp)

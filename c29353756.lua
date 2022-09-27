@@ -53,11 +53,14 @@ function c29353756.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) or not c:CheckUniqueOnField(tp) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) or not c:CheckUniqueOnField(tp) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c29353756.zw_equip_monster(c,tp,tc)
+end
+function c29353756.zw_equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -78,7 +81,7 @@ function c29353756.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c29353756.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
+	return e:GetHandler():GetEquipTarget() and rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
 		and re:IsActiveType(TYPE_TRAP)
 end
 function c29353756.negop(e,tp,eg,ep,ev,re,r,rp)

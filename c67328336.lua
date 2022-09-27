@@ -32,7 +32,7 @@ function c67328336.effval(e,re,rp)
 end
 function c67328336.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c67328336.filter(c)
 	return c:IsSetCard(0x3013) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

@@ -16,7 +16,7 @@ function c8903700.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c8903700.condition(e,tp,eg,ep,ev,re,r,rp)
-	return r==REASON_RITUAL
+	return r==REASON_RITUAL and not e:GetHandler():IsPreviousLocation(LOCATION_OVERLAY)
 end
 function c8903700.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rc=eg:GetFirst()

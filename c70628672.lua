@@ -39,6 +39,7 @@ function c70628672.activate(e,tp,eg,ep,ev,re,r,rp)
 		local cd=re:GetHandler():GetCode()
 		local g=Duel.GetMatchingGroup(Card.IsCode,rp,LOCATION_DECK+LOCATION_EXTRA,0,nil,cd)
 		if g:GetCount()>0 then
+			Duel.BreakEffect()
 			Duel.SendtoGrave(g,REASON_EFFECT)
 		end
 	end

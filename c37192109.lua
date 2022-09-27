@@ -52,11 +52,7 @@ function c37192109.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		local oc=og:GetFirst()
 		while oc do
-			if oc:IsControler(tp) then
-				oc:RegisterFlagEffect(37192109,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,rct,fid)
-			else
-				oc:RegisterFlagEffect(37192109,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_OPPO_TURN,0,rct,fid)
-			end
+			oc:RegisterFlagEffect(37192109,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,rct,fid)
 			oc=og:GetNext()
 		end
 		og:KeepAlive()
@@ -116,7 +112,7 @@ end
 function c37192109.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,2,REASON_EFFECT)~=0
+	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and c:IsLocation(LOCATION_EXTRA) and tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end

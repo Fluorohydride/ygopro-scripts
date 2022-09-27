@@ -14,7 +14,7 @@ end
 function c86133013.tgfilter(c,e,tp,rp,g,ft)
 	local lv=c:GetLevel()
 	if not ((c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsCanBeEffectTarget(e)
 		and lv>0) then return false end
 	local sg=g:Filter(Card.IsLevelBelow,nil,lv)
@@ -73,6 +73,7 @@ function c86133013.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 		tc=sg:GetNext()
 	end

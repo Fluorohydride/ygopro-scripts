@@ -35,7 +35,7 @@ end
 function c86483512.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c,tc=e:GetHandler(),Duel.GetFirstTarget()
 	local type1=tc:GetType()&0x7
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c86483512.tgfilter,tp,LOCATION_DECK,0,1,1,nil,type1)
 		local tgc=g:GetFirst()
@@ -56,6 +56,7 @@ function c86483512.spop(e,tp,eg,ep,ev,re,r,rp)
 				local e2=Effect.CreateEffect(c)
 				e2:SetType(EFFECT_TYPE_SINGLE)
 				e2:SetCode(EFFECT_DISABLE_EFFECT)
+				e2:SetValue(RESET_TURN_SET)
 				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 				sc:RegisterEffect(e2)
 				Duel.SpecialSummonComplete()

@@ -42,6 +42,9 @@ function c34848821.initial_effect(c)
 	e4:SetOperation(c34848821.thop)
 	c:RegisterEffect(e4)
 end
+function c34848821.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsLevelAbove,8)
+end
 function c34848821.imcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end

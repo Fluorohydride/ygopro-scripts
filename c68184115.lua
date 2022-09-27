@@ -65,7 +65,7 @@ function c68184115.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c68184115.cfilter,1,nil,e:GetHandler(),tp)
 end
 function c68184115.spfilter(c,e,tp)
-	return c:IsSetCard(0x56) and c:GetCode()~=68184115 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x56) and not c:IsCode(68184115) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c68184115.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsFaceup()
@@ -73,6 +73,7 @@ function c68184115.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c68184115.spop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c68184115.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

@@ -35,7 +35,7 @@ function c1426714.initial_effect(c)
 	e3:SetValue(c1426714.atkval)
 	c:RegisterEffect(e3)
 end
-c1426714.xyz_number=48
+aux.xyz_number[1426714]=48
 function c1426714.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
@@ -45,13 +45,13 @@ function c1426714.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1426714.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,1426715,0,0x4011,500,500,1,RACE_FIEND,ATTRIBUTE_DARK) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,1426715,0,TYPES_TOKEN_MONSTER,500,500,1,RACE_FIEND,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c1426714.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,1426715,0,0x4011,500,500,1,RACE_FIEND,ATTRIBUTE_DARK) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,1426715,0,TYPES_TOKEN_MONSTER,500,500,1,RACE_FIEND,ATTRIBUTE_DARK) then return end
 	local token=Duel.CreateToken(tp,1426715)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

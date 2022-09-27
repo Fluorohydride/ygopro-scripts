@@ -37,7 +37,7 @@ function c16780318.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c16780318.exfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	local tg=g:GetFirst()
-	if tg and Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)~=0 and tg:IsLocation(LOCATION_EXTRA) then
+	if tg and Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tg:IsLocation(LOCATION_EXTRA) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<4 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16780318.spfilter),tp,LOCATION_GRAVE,0,4,4,nil,e,tp)

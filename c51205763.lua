@@ -24,7 +24,7 @@ function c51205763.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c51205763.filter(c,e,tp)
-	return c:IsSetCard(0x104) and not c:IsCode(51205763) and (c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsSetCard(0x104) and not c:IsCode(51205763) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c51205763.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -37,13 +37,8 @@ function c51205763.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c51205763.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if not tc then return end
-	local spos=0
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-	if spos~=0 and Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)~=0 then
-		if tc:IsFacedown() then
-			Duel.ConfirmCards(1-tp,tc)
-		end
+	if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)~=0 and tc:IsFacedown() then
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end
 function c51205763.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -52,7 +47,7 @@ function c51205763.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c51205763.filter1(c,e,tp)
-	return c:IsSetCard(0x104) and not c:IsCode(51205763) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x104) and not c:IsCode(51205763) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c51205763.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

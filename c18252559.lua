@@ -34,7 +34,7 @@ end
 function c18252559.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:IsReason(REASON_DESTROY)
-		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c18252559.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

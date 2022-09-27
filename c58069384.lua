@@ -83,7 +83,7 @@ function c58069384.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58069384.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and e:GetHandler():IsPreviousControler(tp)
 end
 function c58069384.spfilter(c,e,tp)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_MACHINE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -31,7 +31,7 @@ end
 function c20773176.filter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:IsSetCard(0xb4,0xc4) and not c:IsCode(20773176)
-		and c:GetPreviousControler()==tp
+		and c:IsPreviousControler(tp)
 		and ((c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP))
 		or c:IsPreviousLocation(LOCATION_PZONE))
 end

@@ -19,7 +19,7 @@ function c52430902.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52430902.filter1(c)
 	local tp=c:GetControler()
-	return c:IsFaceup() and c:IsRace(RACE_PSYCHO) and c:GetCode()~=52430902
+	return c:IsFaceup() and c:IsRace(RACE_PSYCHO) and not c:IsCode(52430902)
 		and c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c52430902.filter2(c)

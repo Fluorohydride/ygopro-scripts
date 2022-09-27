@@ -17,7 +17,7 @@ function c69025477.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c69025477.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetCode()~=69025477
+	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(69025477)
 end
 function c69025477.dircon(e)
 	return Duel.IsExistingMatchingCard(c69025477.cfilter,e:GetHandler():GetControler(),LOCATION_MZONE,0,1,nil)

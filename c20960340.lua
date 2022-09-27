@@ -27,20 +27,20 @@ end
 function c20960340.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local atk=Duel.GetLP(tp)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,20960340,0,0x21,atk,0,4,RACE_WARRIOR,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,20960340,0,TYPES_EFFECT_TRAP_MONSTER,atk,0,4,RACE_WARRIOR,ATTRIBUTE_LIGHT,POS_FACEUP_ATTACK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c20960340.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local atk=Duel.GetLP(tp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,20960340,0,0x21,atk,0,4,RACE_WARRIOR,ATTRIBUTE_LIGHT) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,20960340,0,TYPES_EFFECT_TRAP_MONSTER,atk,0,4,RACE_WARRIOR,ATTRIBUTE_LIGHT,POS_FACEUP_ATTACK) then return end
 	c:AddMonsterAttribute(TYPE_TRAP+TYPE_EFFECT)
 	Duel.SpecialSummonStep(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP_ATTACK)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetValue(atk)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)

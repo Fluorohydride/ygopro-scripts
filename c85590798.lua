@@ -52,7 +52,7 @@ function c85590798.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g2)
 		Duel.ShuffleDeck(tp)
 		Duel.BreakEffect()
-		Duel.SendtoDeck(g1,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(g1,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end
 function c85590798.spcon(e,tp,eg,ep,ev,re,r,rp)

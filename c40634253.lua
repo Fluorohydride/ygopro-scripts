@@ -1,4 +1,4 @@
---BM-4 ボムスパイダー
+--BM-4ボムスパイダー
 function c40634253.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)
@@ -53,11 +53,11 @@ end
 function c40634253.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local bc=tc:GetBattleTarget()
-	return tc:GetPreviousControler()~=tp and tc:IsLocation(LOCATION_GRAVE)
+	return tc:IsPreviousControler(1-tp) and tc:IsLocation(LOCATION_GRAVE)
 		and bc:IsControler(tp) and bc:GetOriginalAttribute()==ATTRIBUTE_DARK and bc:GetOriginalRace()==RACE_MACHINE and bc:IsType(TYPE_MONSTER)
 end
 function c40634253.damfilter1(c,tp)
-	return c:IsReason(REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()~=tp
+	return c:IsReason(REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
 end
 function c40634253.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
@@ -72,7 +72,7 @@ function c40634253.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 end
 function c40634253.damfilter2(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()~=tp
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
 end
 function c40634253.damop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c40634253.damfilter2,nil,tp)

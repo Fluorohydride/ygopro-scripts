@@ -47,10 +47,10 @@ function c90957527.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if c==a then
 		e:SetLabel(d:GetDefense())
-		return c:IsRelateToBattle() and d:GetLocation()==LOCATION_GRAVE and d:IsType(TYPE_MONSTER)
+		return c:IsRelateToBattle() and d:IsLocation(LOCATION_GRAVE) and d:IsType(TYPE_MONSTER)
 	else
 		e:SetLabel(a:GetDefense())
-		return c:IsRelateToBattle() and a:GetLocation()==LOCATION_GRAVE and a:IsType(TYPE_MONSTER)
+		return c:IsRelateToBattle() and a:IsLocation(LOCATION_GRAVE) and a:IsType(TYPE_MONSTER)
 	end
 end
 function c90957527.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -70,7 +70,7 @@ end
 function c90957527.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToExtraAsCost() end
-	Duel.SendtoDeck(c,nil,0,REASON_COST)
+	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c90957527.filter(c,e,tp)
 	return not c:IsCode(79580323) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)

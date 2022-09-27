@@ -31,12 +31,13 @@ function c30741334.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function c30741334.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c30741334.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.Draw(tp,1,REASON_EFFECT)
 	if ct==0 then return end
 	local dc=Duel.GetOperatedGroup():GetFirst()
 	Duel.ConfirmCards(1-tp,dc)
 	if dc:IsType(TYPE_MONSTER) then
+		Duel.BreakEffect()
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end
 	Duel.ShuffleHand(tp)

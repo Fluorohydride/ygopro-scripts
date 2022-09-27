@@ -40,7 +40,7 @@ function c74069667.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c74069667.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xaf) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsSummonPlayer(tp)
 end
 function c74069667.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74069667.cfilter,1,nil,tp)
@@ -58,7 +58,6 @@ function c74069667.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,1000)
 end
 function c74069667.spop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		Duel.Damage(tp,1000,REASON_EFFECT)

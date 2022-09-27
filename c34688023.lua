@@ -33,9 +33,9 @@ function c34688023.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
 		if Duel.SelectOption(tp,aux.Stringid(34688023,1),aux.Stringid(34688023,2))==0 then
-			Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
-			Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end

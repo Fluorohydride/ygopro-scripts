@@ -9,6 +9,7 @@ function c73567374.initial_effect(c)
 	e1:SetOperation(c73567374.operation)
 	c:RegisterEffect(e1)
 end
+c73567374.has_text_type=TYPE_DUAL
 function c73567374.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_DUAL) and not c:IsDualState()
 end

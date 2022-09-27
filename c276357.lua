@@ -31,7 +31,7 @@ function c276357.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c276357.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c276357.cfilter(c)
 	return c:IsType(TYPE_SPIRIT) and c:IsAbleToRemoveAsCost()
@@ -43,7 +43,8 @@ function c276357.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c276357.activate(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.NegateAttack() then
+	if Duel.NegateAttack() then
+		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
@@ -62,7 +63,6 @@ function c276357.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c276357.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
