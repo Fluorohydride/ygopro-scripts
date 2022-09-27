@@ -65,7 +65,7 @@ function c47355498.initial_effect(c)
 	e11:SetType(EFFECT_TYPE_FIELD)
 	e11:SetCode(EFFECT_NECRO_VALLEY_CHECK)
 	e11:SetRange(LOCATION_FZONE)
-	e11:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e11:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
 	c:RegisterEffect(e11)
 end
 function c47355498.contp(e)
