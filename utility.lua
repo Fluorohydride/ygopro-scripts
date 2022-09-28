@@ -417,8 +417,16 @@ function Auxiliary.SynHandMaterialFilter(c,sync,filter,hassyncheck,he,hetg)
 	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(sync) and (hassyncheck or not filter or not sync or filter(c,sync))
 		and (not hetg or hetg(he,c,sync))
 end
+Auxiliary.SynMaterialForceInclude=nil
+Auxiliary.SynMaterialForceExclude=nil
 function Auxiliary.GetSynMaterials(tp,sync,filter,hassyncheck)
 	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,sync,filter,hassyncheck)
+	if Auxiliary.SynMaterialForceInclude~=nil and Auxiliary.SynMaterialFilter(c,sync,filter,hassyncheck) then
+		mg:AddCard(Auxiliary.SynMaterialForceInclude)
+	end
+	if Auxiliary.SynMaterialForceExclude~=nil then
+		mg:RemoveCard(Auxiliary.SynMaterialForceExclude)
+	end
 	local mg2=nil
 	local hand_effects={}
 	local hand_max=0
@@ -589,7 +597,6 @@ end
 function Auxiliary.SynLimitFilter(c,f,e,sync)
 	return f and not f(e,c,sync)
 end
-Auxiliary.SynForceHandSynchroCheck=false
 function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 	return	function(e,c,smat,og,min,max)
 				if c==nil then return true end
@@ -609,7 +616,6 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 				local hand_max=0
 				if og then
 					mg=og:Filter(Auxiliary.SynMaterialFilter,nil,c,filter,#syncheck>0)
-					check_hand=Auxiliary.SynForceHandSynchroCheck
 				else
 					mg,hand_effects,hand_max=Auxiliary.GetSynMaterials(tp,c,filter,#syncheck>0)
 					check_hand=hand_max>0
