@@ -448,7 +448,7 @@ function Auxiliary.SynCheckAdditionalLevel(c,sync)
 	end
 end
 function Auxiliary.SynCheckAdditional(sync,lv,syncheck,check_mono,check_cardian,check_hand,hand_max)
-	return function (sg,nc)
+	return function (sg)
 		Auxiliary.ApplyAssume(sg,syncheck)
 
 		if Auxiliary.SGCheckAdditional and not Auxiliary.SGCheckAdditional(sg,sync) then
@@ -457,8 +457,8 @@ function Auxiliary.SynCheckAdditional(sync,lv,syncheck,check_mono,check_cardian,
 		end
 
 		--simple synchro level check
-		if not ((check_mono and #sg<=lv)
-			or (check_cardian and (#sg*2)<=lv)
+		if not ((check_mono and (#sg<lv or #sg==lv and sg:IsExists(Card.IsHasEffect,1,nil,56897896)))
+			or (check_cardian and ((#sg*2)<lv or (#sg*2)==lv and sg:IsExists(Card.IsHasEffect,1,nil,89818984)))
 			or (sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)<=lv)) then
 			Duel.AssumeReset()
 			return false
