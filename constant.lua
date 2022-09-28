@@ -578,7 +578,7 @@ EFFECT_OVERLAY_RITUAL_MATERIAL  =364    --此卡的超量素材也能用于仪�
 EFFECT_CHANGE_GRAVE_ATTRIBUTE	=365	--墓地的卡将会改变属性（升级转变）
 EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变）
 EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
-EFFECT_HAND_SYNCHRO_MATERIAL	=369	--这张卡作为同调素材的场合，手卡的1只符合条件的怪兽也能作为同调素材
+EFFECT_HAND_SYNCHRO_MATERIAL	=369	--这张卡作为同调素材的场合，手卡的符合条件的怪兽也能作为同调素材
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A
