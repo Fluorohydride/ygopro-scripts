@@ -14,7 +14,7 @@ function c55863245.initial_effect(c)
 	--extra hand link
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_HAND_SYNCHRO_MATERIAL)
+	e3:SetCode(EFFECT_HAND_SYNCHRO)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetValue(1)
 	e3:SetCondition(c55863245.syncon)
