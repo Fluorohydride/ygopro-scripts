@@ -668,7 +668,8 @@ function Auxiliary.SynHandSynchroAdditionalOperation(mg,sync,tp)
 				if #hg<=he:GetValue() then
 					local hetg=he:GetTarget()
 					if (not hetg or not hg:IsExists(Auxiliary.SynLimitFilter,1,nil,hetg,he,sync)) then
-						he:GetOperation()(te,tp,c,g)
+						local op=he:GetOperation()
+						if op then op(te,tp,c,g) end
 						break
 					end
 				end
