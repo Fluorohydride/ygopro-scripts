@@ -1,4 +1,4 @@
---Giant Beetrooper Invincible Atlas
+--大騎甲虫インヴィンシブル・アトラス
 function c38229962.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

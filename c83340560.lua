@@ -1,4 +1,4 @@
---The Great Double Casted Caster
+--偉大なるダブルキャスター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

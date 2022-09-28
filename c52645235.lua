@@ -45,6 +45,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToChain() and c:GetOverlayGroup():IsExists(Card.IsCode,1,nil,82105704)
 		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local tc=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil):GetFirst()
 		Duel.HintSelection(Group.FromCards(tc))
