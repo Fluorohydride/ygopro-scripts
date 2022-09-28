@@ -14,9 +14,11 @@ function c74509280.initial_effect(c)
 	--extra hand synchro
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_EXTRA_SYNCHRO_MATERIAL)
+	e3:SetCode(EFFECT_HAND_SYNCHRO_MATERIAL)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_HAND,0)
+	e3:SetTarget(c74509280.synlimit)
 	e3:SetValue(c74509280.matval)
 	c:RegisterEffect(e3)
 end
