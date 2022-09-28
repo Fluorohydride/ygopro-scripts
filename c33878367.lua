@@ -46,7 +46,7 @@ function c33878367.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c33878367.tgfilter(c,race,attr)
-	return (c:IsRace(race) or c:IsAttribute(attr)) and c:IsAbleToGrave()
+	return c:IsFaceup() and (c:IsRace(race) or c:IsAttribute(attr)) and c:IsAbleToGrave()
 end
 function c33878367.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_EFFECT)

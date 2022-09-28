@@ -1,4 +1,4 @@
---Apex Predation
+--絶対なる捕食
 function c25573115.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

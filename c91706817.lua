@@ -50,7 +50,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local dam=Duel.GetFieldGroupCount(p,0,LOCATION_HAND)*200
 		if dam==0 or Duel.Damage(1-p,dam,REASON_EFFECT)==0 then return end
 		Duel.BreakEffect()
-		if tc:IsFaceup() and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
+		if tc:IsFaceup() and tc:IsCanBeDisabledByEffect(e) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

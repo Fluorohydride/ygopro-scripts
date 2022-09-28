@@ -1,4 +1,4 @@
---Libromancer Prevented
+--リブロマンサー・プリベント
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

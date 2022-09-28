@@ -25,11 +25,15 @@ end
 function c49398568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ftg=re:GetTarget()
 	if chkc then return ftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
-	if chk==0 then return not ftg or ftg(e,tp,eg,ep,ev,re,r,rp,chk) end
+	if chk==0 then
+		e:SetCostCheck(false)
+		return not ftg or ftg(e,tp,eg,ep,ev,re,r,rp,chk)
+	end
 	if re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	end
 	if ftg then
+		e:SetCostCheck(false)
 		ftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end

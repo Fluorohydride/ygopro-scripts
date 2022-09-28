@@ -1,4 +1,4 @@
---Navy Dragon Mech
+--碧鋼の機竜
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

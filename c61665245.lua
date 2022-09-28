@@ -93,14 +93,14 @@ function c61665245.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c61665245.spfilter3,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetRace())
 	local sc=g:GetFirst()
 	if sc then
-		local ava_zone=0
+		local avail_zone=0
 		for p=0,1 do
 			if sc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,p,zone[p]) then
-				ava_zone=ava_zone|(flag[p]<<(p==tp and 0 or 16))
+				avail_zone=avail_zone|(flag[p]<<(p==tp and 0 or 16))
 			end
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-		local sel_zone=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0x00ff00ff&(~ava_zone))
+		local sel_zone=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0x00ff00ff&(~avail_zone))
 		local sump=0
 		if sel_zone&0xff>0 then
 			sump=tp
