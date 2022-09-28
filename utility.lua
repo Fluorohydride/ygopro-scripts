@@ -525,9 +525,9 @@ function Auxiliary.SynUltimateGoal(sg,tp,sync,lv,goal,smat,syncheck,check_mono,c
 		if #hg>0 then
 			local hand_synchro_valid=false
 			for _,he in pairs(hand_effects) do
-				if sg:IsContains(he:GetHandler()) and #hg<=te:GetValue() then
-					local hetg=te:GetTarget()
-					if (not hetg or not hg:IsExists(Auxiliary.SynLimitFilter,1,nil,hetg,le,sync)) then
+				if sg:IsContains(he:GetHandler()) and #hg<=he:GetValue() then
+					local hetg=he:GetTarget()
+					if (not hetg or not hg:IsExists(Auxiliary.SynLimitFilter,1,nil,hetg,he,sync)) then
 						hand_synchro_valid=true
 						break
 					end
@@ -663,12 +663,12 @@ function Auxiliary.SynHandSynchroAdditionalOperation(mg,sync,tp)
 	local hg=mg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	if #hg>0 then
 		for tc in aux.Next(mg-hg) do
-			local le=tc:IsHasEffect(EFFECT_HAND_SYNCHRO_MATERIAL)
-			if le then
-				if #hg<=le:GetValue() then
-					local hetg=te:GetTarget()
-					if (not hetg or not hg:IsExists(Auxiliary.SynLimitFilter,1,nil,hetg,le,sync)) then
-						te:GetOperation()(te,tp,c,g)
+			local he=tc:IsHasEffect(EFFECT_HAND_SYNCHRO_MATERIAL)
+			if he then
+				if #hg<=he:GetValue() then
+					local hetg=he:GetTarget()
+					if (not hetg or not hg:IsExists(Auxiliary.SynLimitFilter,1,nil,hetg,he,sync)) then
+						he:GetOperation()(te,tp,c,g)
 						break
 					end
 				end
