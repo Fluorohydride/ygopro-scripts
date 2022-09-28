@@ -625,9 +625,11 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 					check_mono=false
 					mg=mg:Filter(aux.NOT(Card.IsHasEffect),nil,56897896)
 				end
+				maxc=math.min(maxc,#mg)
+				if maxc<minc then return false end
 				local check_cardian=(lv%2)==0 and mg:IsExists(Card.IsHasEffect,1,nil,89818984)
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c,lv,minc,maxc,syncheck,check_mono,check_cardian,check_hand,hand_max)
-				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,math.min(maxc,#mg),tp,c,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,hand_effects)
+				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,maxc,tp,c,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,hand_effects)
 				Auxiliary.GCheckAdditional=nil
 				return res
 			end
@@ -665,9 +667,11 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 					check_mono=false
 					mg=mg:Filter(aux.NOT(Card.IsHasEffect),nil,56897896)
 				end
+				maxc=math.min(maxc,#mg)
+				if maxc<minc then return false end
 				local check_cardian=(lv%2)==0 and mg:IsExists(Card.IsHasEffect,1,nil,89818984)
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c,lv,minc,maxc,syncheck,check_mono,check_cardian,check_hand,hand_max)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,math.min(maxc,#mg),tp,c,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,hand_effects)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,maxc,tp,c,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,hand_effects)
 				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
 					sg:KeepAlive()
