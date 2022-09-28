@@ -392,7 +392,7 @@ function Auxiliary.MustMaterialCounterFilter(c,g)
 	return not g:IsContains(c)
 end
 --Synchro monster, using min to max monsters that fits a goal
---filter: function(c,sync) if returns false for a potential material, it will never be usable, disregarding effects such as Genomix Fighter
+--filter: function(c,sync) cards that do not pass this filter are never considered potential materials
 --goal: function(g,sync) a group restriction imposed on the whole synchro material group
 function Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc,maxc)
 	if maxc==nil then maxc=99 end
@@ -710,21 +710,30 @@ function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,additionalGoal
 	local filter=nil
 	local goal=nil
 	if #checks>0 then
-		subfilter=aux.OR(table.unpack(checks))
-		filter=function(c,sync) return not f4 or f4(c,sync) or subfilter(c,sync) end
-		goal=Auxiliary.SynchroMixGoal(checks,f4,minc+#checks,maxc+#checks,additionalGoal)
+		filter=Auxiliary.SynchroMixFilter(f4,aux.OR(table.unpack(checks)))
+		goal=Auxiliary.SynchroMixGoal(checks,f4,additionalGoal)
 	elseif f4 then
 		filter=f4
-		goal=function(g,sync) return not g:IsExists(aux.NOT(f4),1,nil,sync) end
+		goal=Auxiliary.SynchroMixGoalDowngraded(f4,additionalGoal)
 	end
 	return Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc+#checks,maxc+#checks)
 end
-function Auxiliary.SynchroMixGoal(checks,otherFilter,minc,maxc,additionalGoal)
+function Auxiliary.SynchroMixFilter(f4,subfilter)
+	return function(c,sync)
+		return not f4 or f4(c,sync) or subfilter(c,sync)
+	end
+end
+function Auxiliary.SynchroMixGoal(checks,otherFilter,additionalGoal)
 	return function(g,sync)
-		if #g<minc or #g>maxc then return false end
 		if additionalGoal and not additionalGoal(g,sync) then return false end
 		local sg=Group.CreateGroup()
 		return g:IsExists(Auxiliary.SynchroMixGoalRecursiveEach,1,sg,sg,g,sync,checks,otherFilter)
+	end
+end
+function Auxiliary.SynchroMixGoalDowngraded(otherFilter,additionalGoal)
+	return function(g,sync)
+		if additionalGoal and not additionalGoal(g,sync) then return false end
+		return not g:IsExists(aux.NOT(otherFilter),1,nil,sync)
 	end
 end
 function Auxiliary.SynchroMixGoalRecursiveEach(c,sg,g,sync,checks,otherFilter)
