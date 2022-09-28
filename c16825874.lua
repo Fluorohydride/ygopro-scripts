@@ -18,12 +18,10 @@ function c16825874.initial_effect(c)
 	c:RegisterEffect(e2)
 	--extra hand synchro
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_HAND_SYNCHRO_MATERIAL)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetTargetRange(LOCATION_HAND,0)
-	e3:SetValue(c16825874.matval)
+	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
 function c16825874.ccon(e,tp,eg,ep,ev,re,r,rp)
@@ -51,7 +49,4 @@ function c16825874.cop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetCode(EFFECT_DISABLE)
 	e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 	rc:RegisterEffect(e3,true)
-end
-function c16825874.matval(e,lc,mg,c,tp)
-	return true,not mg or #mg==1 and mg:IsContains(e:GetHandler())
 end
