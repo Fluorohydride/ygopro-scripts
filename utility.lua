@@ -413,7 +413,7 @@ function Auxiliary.SynMaterialFilter(c,sync,filter,hassyncheck)
 	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(sync) and (hassyncheck or not filter or not sync or filter(c,sync))
 		and ((c:IsLocation(LOCATION_MZONE) and c:GetControler()==sync:GetControler()) or c:IsHasEffect(EFFECT_SYNCHRO_MATERIAL))
 end
-function Auxiliary.SynHandMaterialFilter(c,sync,filter,he,hetg)
+function Auxiliary.SynHandMaterialFilter(c,sync,filter,hassyncheck,he,hetg)
 	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(sync) and (hassyncheck or not filter or not sync or filter(c,sync))
 		and (not hetg or hetg(he,c,sync))
 end
