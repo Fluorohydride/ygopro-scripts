@@ -533,10 +533,10 @@ function Auxiliary.SynUltimateGoal(sg,tp,sync,lv,goal,smat,syncheck,check_mono,c
 					end
 				end
 			end
-		end
-		if not hand_synchro_valid then
-			Duel.AssumeReset()
-			return false
+			if not hand_synchro_valid then
+				Duel.AssumeReset()
+				return false
+			end
 		end
 	end
 
