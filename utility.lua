@@ -2988,6 +2988,7 @@ end
 function Auxiliary.PlaceOnBottom(p,n)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
 	if g:GetCount()<n then return end
+	Duel.ShuffleHand(p)
 	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 	local sg=g:Select(p,n,n,nil)
