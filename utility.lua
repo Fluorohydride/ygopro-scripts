@@ -419,19 +419,21 @@ function Auxiliary.SynHandMaterialFilter(c,sync,filter,hassyncheck,he,hetg)
 end
 function Auxiliary.GetSynMaterials(tp,sync,filter,hassyncheck)
 	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,sync,filter,hassyncheck)
+	local mg2=nil
 	local hand_effects={}
 	local hand_max=0
 	for mc in aux.Next(mg) do
 		local he=mc:IsHasEffect(EFFECT_HAND_SYNCHRO)
 		if he then
-			local mg2=Duel.GetMatchingGroup(Auxiliary.SynHandMaterialFilter,tp,LOCATION_HAND,0,nil,sync,filter,hassyncheck,he,he:GetTarget())
-			if mg2:GetCount()>0 then
+			local mgx=Duel.GetMatchingGroup(Auxiliary.SynHandMaterialFilter,tp,LOCATION_HAND,0,nil,sync,filter,hassyncheck,he,he:GetTarget())
+			if mgx:GetCount()>0 then
 				table.insert(hand_effects,he)
-				hand_max=math.max(hand_max,math.min(he:GetValue(),#mg2))
-				mg:Merge(mg2)
+				hand_max=math.max(hand_max,math.min(he:GetValue(),#mgx))
+				if mg2 then mg2:Merge(mgx) else mg2=mgx end
 			end
 		end
 	end
+	if mg2 then mg:Merge(mg2) end
 	return mg,hand_effects,hand_max
 end
 Auxiliary.SCheckAdditional=nil
