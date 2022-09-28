@@ -715,6 +715,8 @@ function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,additionalGoal
 	elseif f4 then
 		filter=f4
 		goal=Auxiliary.SynchroMixGoalDowngraded(f4,additionalGoal)
+	else
+		goal=additionalGoal
 	end
 	return Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc+#checks,maxc+#checks)
 end
