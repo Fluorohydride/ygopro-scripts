@@ -422,7 +422,7 @@ function Auxiliary.GetSynMaterials(tp,sync,filter,hassyncheck)
 	local hand_effects={}
 	local hand_max=0
 	for mc in aux.Next(mg) do
-		local he=mc:IsHasEffect(EFFECT_HAND_SYNCHRO_MATERIAL)
+		local he=mc:IsHasEffect(EFFECT_HAND_SYNCHRO)
 		if he then
 			local mg2=Duel.GetMatchingGroup(Auxiliary.SynHandMaterialFilter,tp,LOCATION_HAND,0,nil,sync,filter,hassyncheck,he,he:GetTarget())
 			if mg2:GetCount()>0 then
@@ -663,7 +663,7 @@ function Auxiliary.SynHandSynchroAdditionalOperation(mg,sync,tp)
 	local hg=mg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	if #hg>0 then
 		for tc in aux.Next(mg-hg) do
-			local he=tc:IsHasEffect(EFFECT_HAND_SYNCHRO_MATERIAL)
+			local he=tc:IsHasEffect(EFFECT_HAND_SYNCHRO)
 			if he then
 				if #hg<=he:GetValue() then
 					local hetg=he:GetTarget()
