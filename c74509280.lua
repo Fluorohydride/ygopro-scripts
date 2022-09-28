@@ -13,13 +13,11 @@ function c74509280.initial_effect(c)
 	c:RegisterEffect(e1)
 	--extra hand synchro
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_HAND_SYNCHRO_MATERIAL)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetTargetRange(LOCATION_HAND,0)
+	e3:SetValue(1)
 	e3:SetTarget(c74509280.synlimit)
-	e3:SetValue(c74509280.matval)
 	c:RegisterEffect(e3)
 end
 function c74509280.sfilter(c)
@@ -35,7 +33,4 @@ function c74509280.uqfilter(c)
 end
 function c74509280.synlimit(e,c)
 	return c:IsSetCard(0x23)
-end
-function c74509280.matval(e,lc,mg,c,tp)
-	return true,not mg or #mg==1 and mg:IsContains(e:GetHandler())
 end
