@@ -5,14 +5,9 @@ function c97946536.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,97946536+EFFECT_COUNT_CODE_OATH)
-	e1:SetCost(c97946536.cost)
 	e1:SetTarget(c97946536.target)
 	e1:SetOperation(c97946536.activate)
 	c:RegisterEffect(e1)
-end
-function c97946536.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(100,0)
-	return true
 end
 function c97946536.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x56)
@@ -43,12 +38,10 @@ function c97946536.tgfilter(c,eqc)
 end
 function c97946536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local sel=e:GetLabel()
-	local iscost=sel==100
 	local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	local eqchk=Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c97946536.cfilter,tp,LOCATION_MZONE,0,1,nil)
-	if iscost then
+	if e:IsCostChecked() then
 		spchk=Duel.IsExistingMatchingCard(c97946536.tgcostfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,c,tp)
 		eqchk=Duel.IsExistingMatchingCard(c97946536.tgcostfilter3,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,c,tp)
 	end
@@ -62,8 +55,8 @@ function c97946536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(97946536,1))+1
 	end
-	e:SetLabel(0,op)
-	if iscost then
+	e:SetLabel(op)
+	if e:IsCostChecked() then
 		local g
 		if op==0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
@@ -87,7 +80,7 @@ function c97946536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c97946536.activate(e,tp,eg,ep,ev,re,r,rp)
-	local _,op=e:GetLabel()
+	local op=e:GetLabel()
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0

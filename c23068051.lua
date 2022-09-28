@@ -5,14 +5,9 @@ function c23068051.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
-	e1:SetCost(c23068051.cost)
 	e1:SetTarget(c23068051.target)
 	e1:SetOperation(c23068051.activate)
 	c:RegisterEffect(e1)
-end
-function c23068051.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(100,0)
-	return true
 end
 function c23068051.filter(c)
 	return c:IsRace(RACE_WYRM) and c:IsAbleToHand()
@@ -21,9 +16,8 @@ function c23068051.filter2(c)
 	return c:IsFaceupEx() and c:IsRace(RACE_WYRM) and c:IsAbleToGraveAsCost()
 end
 function c23068051.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local sel=e:GetLabel()
 	local b1=Duel.IsExistingMatchingCard(c23068051.filter,tp,LOCATION_DECK,0,1,nil)
-	local b2=sel==100
+	local b2=e:IsCostChecked()
 		and Duel.IsExistingMatchingCard(c23068051.filter2,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil)
 		and Duel.IsPlayerCanDraw(tp,2)
 	if chk==0 then return b1 or b2 end
@@ -35,7 +29,7 @@ function c23068051.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(23068051,1))+1
 	end
-	e:SetLabel(0,op)
+	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e:SetProperty(0)
@@ -54,7 +48,7 @@ function c23068051.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c23068051.activate(e,tp,eg,ep,ev,re,r,rp)
-	local _,op=e:GetLabel()
+	local op=e:GetLabel()
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c23068051.filter,tp,LOCATION_DECK,0,1,1,nil)
