@@ -616,17 +616,18 @@ function Auxiliary.SynConditionUltimate(filter,goal,minc,maxc)
 					if filter and not filter(smat,c) then return false end
 					mg:AddCard(smat)
 				end
-				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
-				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
-				Duel.SetSelectedCard(fg)
 				local lv=c:GetLevel()
 				local check_mono=mg:IsExists(Card.IsHasEffect,1,nil,56897896)
 				if check_mono and lv>#mg then
+					if smat~=nil and smat:IsHasEffect(56897896) then return false end
 					check_mono=false
 					mg=mg:Filter(aux.NOT(Card.IsHasEffect),nil,56897896)
 				end
 				maxc=math.min(maxc,#mg)
 				if maxc<minc then return false end
+				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
+				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
+				Duel.SetSelectedCard(fg)
 				local check_cardian=(lv%2)==0 and mg:IsExists(Card.IsHasEffect,1,nil,89818984)
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c,lv,minc,maxc,syncheck,check_mono,check_cardian,check_hand,hand_max)
 				local res=mg:CheckSubGroup(Auxiliary.SynUltimateGoal,minc,maxc,tp,c,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,hand_effects)
@@ -657,20 +658,21 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				if smat~=nil then
 					mg:AddCard(smat)
 				end
-				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
-				Duel.SetSelectedCard(fg)
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local cancel=Duel.IsSummonCancelable()
 				local lv=c:GetLevel()
 				local check_mono=mg:IsExists(Card.IsHasEffect,1,nil,56897896)
 				if check_mono and lv>#mg then
+					if smat~=nil and smat:IsHasEffect(56897896) then return false end
 					check_mono=false
 					mg=mg:Filter(aux.NOT(Card.IsHasEffect),nil,56897896)
 				end
 				maxc=math.min(maxc,#mg)
 				if maxc<minc then return false end
+				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_SMATERIAL)
+				Duel.SetSelectedCard(fg)
 				local check_cardian=(lv%2)==0 and mg:IsExists(Card.IsHasEffect,1,nil,89818984)
 				Auxiliary.GCheckAdditional=Auxiliary.SynCheckAdditional(c,lv,minc,maxc,syncheck,check_mono,check_cardian,check_hand,hand_max)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+				local cancel=Duel.IsSummonCancelable()
 				local sg=mg:SelectSubGroup(tp,Auxiliary.SynUltimateGoal,cancel,minc,maxc,tp,c,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,hand_effects)
 				Auxiliary.GCheckAdditional=nil
 				if sg and #sg>0 then
