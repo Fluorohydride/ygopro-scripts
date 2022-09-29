@@ -1,21 +1,13 @@
 --ベアルクティ－ポラリィ
 function c27693363.initial_effect(c)
 	c:EnableReviveLimit()
+	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c27693363.sprfilter,c27693363.sprgoal,2,2,LOCATION_MZONE,0,nil,HINTMSG_TOGRAVE,Duel.SendtoGrave,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c27693363.sprcon)
-	e2:SetOperation(c27693363.sprop)
-	c:RegisterEffect(e2)
 	--activate card
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(27693363,0))
@@ -38,32 +30,14 @@ function c27693363.initial_effect(c)
 	e4:SetOperation(c27693363.thop)
 	c:RegisterEffect(e4)
 end
-function c27693363.tgrfilter(c)
+function c27693363.sprfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(1) and c:IsAbleToGraveAsCost()
 end
-function c27693363.mnfilter(c,g)
-	return g:IsExists(c27693363.mnfilter2,1,c,c)
-end
-function c27693363.mnfilter2(c,mc)
-	return c:GetLevel()-mc:GetLevel()==1
-end
-function c27693363.fselect(g,tp,sc)
-	return g:GetCount()==2
-		and g:IsExists(Card.IsType,1,nil,TYPE_TUNER) and g:IsExists(aux.NOT(Card.IsType),1,nil,TYPE_TUNER)
-		and g:IsExists(c27693363.mnfilter,1,nil,g)
-		and Duel.GetLocationCountFromEx(tp,tp,g,sc)>0
-end
-function c27693363.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c27693363.tgrfilter,tp,LOCATION_MZONE,0,nil)
-	return g:CheckSubGroup(c27693363.fselect,2,2,tp,c)
-end
-function c27693363.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c27693363.tgrfilter,tp,LOCATION_MZONE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,c27693363.fselect,false,2,2,tp,c)
-	Duel.SendtoGrave(tg,REASON_COST)
+function c27693363.sprgoal(g,sync)
+	if g:FilterCount(Card.IsType,nil,TYPE_TUNER)~=1 then return false end
+	local c1=g:GetFirst()
+	local c2=g:GetNext()
+	return math.abs(c1:GetLevel()-c2:GetLevel())==1
 end
 function c27693363.actfilter(c,tp)
 	return c:IsCode(89264428) and c:GetActivateEffect():IsActivatable(tp,true,true)
