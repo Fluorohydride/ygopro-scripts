@@ -670,6 +670,63 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	end
 	return true
 end
+--generic special summon procedure used by synchro monsters that cannot be synchro summoned
+function Auxiliary.AddGenericSpSummonProcedure(c,range,filter,goal,minc,maxc,self_location,opponent_location,description,mat_op_hint,mat_operation,...)
+	local self_location=self_location or 0
+	local opponent_location=opponent_location or 0
+	local operation_params={...}
+	local e1=Effect.CreateEffect(c)
+	if description then e1:SetDescription(description) end
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_SPSUMMON_PROC)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetRange(range or 0)
+	e1:SetCondition(Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location))
+	e1:SetTarget(Auxiliary.GenericSpSummonTarget(filter,goal,minc,maxc,self_location,opponent_location,mat_op_hint))
+	e1:SetOperation(Auxiliary.GenericSpSummonOperation(mat_operation,operation_params))
+	c:RegisterEffect(e1)
+	return e1
+end
+function Auxiliary.GenericSpSummonMaterialFilter(c,sync,filter)
+	return not filter or filter(c,sync)
+end
+function Auxiliary.GenericSpSummonGoal(g,c,tp,goal)
+	if c:IsLocation(LOCATION_EXTRA) then
+		if Duel.GetLocationCountFromEx(tp,tp,g,c)<=0 then return false end
+	else
+		if Duel.GetMZoneCount(tp,g)<=0 then return false end
+	end
+	return not goal or goal(g)
+end
+function Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location)
+	return	function(e,c)
+				if c==nil then return true end
+				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+				local tp=c:GetControler()
+				local mg=Duel.GetMatchingGroup(Auxiliary.GenericSpSummonMaterialFilter,tp,self_location,opponent_location,c,c,filter)
+				return mg:CheckSubGroup(Auxiliary.GenericSpSummonGoal,minc,maxc,c,tp,goal)
+			end
+end
+function Auxiliary.GenericSpSummonTarget(filter,goal,minc,maxc,self_location,opponent_location,mat_op_hint)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
+				local mg=Duel.GetMatchingGroup(Auxiliary.GenericSpSummonMaterialFilter,tp,self_location,opponent_location,c,c,filter)
+				if mat_op_hint then Duel.Hint(HINT_SELECTMSG,tp,mat_op_hint) end
+				local cancel=Duel.IsSummonCancelable()
+				local sg=g:SelectSubGroup(tp,Auxiliary.GenericSpSummonGoal,cancel,minc,maxc,c,tp,goal)
+				if sg then
+					sg:KeepAlive()
+					e:SetLabelObject(sg)
+					return true
+				else return false end
+			end
+end
+function Auxiliary.GenericSpSummonOperation(mat_operation,operation_params)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+				local g=e:GetLabelObject()
+				mat_operation(g,table.unpack(operation_params))
+				g:DeleteGroup()
+			end
+end
 --Checking Tune Magician
 function Auxiliary.TuneMagicianFilter(c,e)
 	local f=e:GetValue()
