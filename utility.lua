@@ -2985,7 +2985,7 @@ function Auxiliary.ThisCardInGraveAlreadyReset2(e)
 	e:Reset()
 end
 --Player p place n cards from his hand on the bottom of his Deck in any order
-function Auxiliary.PlaceOnBottom(p,n)
+function Auxiliary.PlaceHandsOnDeckBottom(p,n)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
 	if g:GetCount()<n then return end
 	Duel.ShuffleHand(p)
