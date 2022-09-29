@@ -43,10 +43,9 @@ function c80086070.sprfilter2(c)
 	return c:IsLevelAbove(1) and c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_TUNER)
 end
 function c80086070.sprgoal(g,sync)
+	return aux.gffcheck(g,c80086070.sprfilter1,nil,c80086070.sprfilter2,nil)
+		and math.abs(g:GetFirst():GetLevel()-g:GetNext():GetLevel())==7
 	if not aux.gffcheck(g,c80086070.sprfilter1,nil,c80086070.sprfilter2,nil) then return false end
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	return math.abs(c1:GetLevel()-c2:GetLevel())==7
 end
 function c80086070.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() end
