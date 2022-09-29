@@ -4,7 +4,8 @@ function c73218989.initial_effect(c)
 	c:EnableCounterPermit(0x10)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.NonTuner(nil),1)
-	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c73218989.sprfilter,c73218989.sprgoal,2,2,LOCATION_MZONE+LOCATION_GRAVE,0,aux.Stringid(73218989,0),HINTMSG_REMOVE,Duel.Remove,POS_FACEUP,REASON_COST)
+	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c73218989.sprfilter,c73218989.sprgoal,2,2,LOCATION_MZONE+LOCATION_GRAVE,0,
+		nil,HINTMSG_REMOVE,Duel.Remove,POS_FACEUP,REASON_COST):SetDescription(aux.Stringid(73218989,0))
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
