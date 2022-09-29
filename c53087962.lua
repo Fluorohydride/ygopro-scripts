@@ -37,7 +37,7 @@ function c53087962.sprfilter1(c)
 	return c:IsLevelAbove(8) and c:IsType(TYPE_TUNER)
 end
 function c53087962.sprfilter2(c)
-	return c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_TUNER)
+	return c:IsLevelAbove(1) and c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_TUNER)
 end
 function c53087962.sprgoal(g,sync)
 	if not aux.gffcheck(g,c53087962.sprfilter1,nil,c53087962.sprfilter2,nil) then return false end
