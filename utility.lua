@@ -424,7 +424,7 @@ function Auxiliary.GetSynMaterials(tp,sync,lv,filter,hassyncheck,smat,og)
 	if og then
 		mg=og:Filter(Auxiliary.SynMaterialFilter,nil,sync,filter,hassyncheck)
 	else
-		mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,sync,filter,hassyncheck)
+		mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,sync,filter,hassyncheck)
 	end
 
 	if smat then
