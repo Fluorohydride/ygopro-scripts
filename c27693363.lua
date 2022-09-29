@@ -34,10 +34,8 @@ function c27693363.sprfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(1) and c:IsAbleToGraveAsCost()
 end
 function c27693363.sprgoal(g,sync)
-	if g:FilterCount(Card.IsType,nil,TYPE_TUNER)~=1 then return false end
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	return math.abs(c1:GetLevel()-c2:GetLevel())==1
+	return g:FilterCount(Card.IsType,nil,TYPE_TUNER)==1
+		and math.abs(g:GetFirst():GetLevel()-g:GetNext():GetLevel())==1
 end
 function c27693363.actfilter(c,tp)
 	return c:IsCode(89264428) and c:GetActivateEffect():IsActivatable(tp,true,true)
