@@ -1,7 +1,7 @@
 --究極幻神 アルティミトル・ビシバールキン
 function c90884403.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c90884403.sprfilter,c90884403.sprgoal,2,2,LOCATION_MZONE,0,nil,HINTMSG_TOGRAVE,Duel.SendtoGrave,HINTMSG_TOGRAVE)
+	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c90884403.sprfilter,c90884403.sprgoal,2,2,LOCATION_MZONE,0,nil,HINTMSG_TOGRAVE,Duel.SendtoGrave,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
