@@ -1,21 +1,13 @@
 --ベアルクティ－グラン＝シャリオ
 function c80086070.initial_effect(c)
 	c:EnableReviveLimit()
-	--special summon rule
+	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c80086070.sprfilter,c80086070.sprgoal,2,2,LOCATION_MZONE,0,nil,HINTMSG_TOGRAVE,Duel.SendtoGrave,REASON_COST)
+	--special condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	c:RegisterEffect(e1)
-	--spsummon condition
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c80086070.sprcon)
-	e2:SetOperation(c80086070.sprop)
-	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(80086070,0))
@@ -41,38 +33,20 @@ function c80086070.initial_effect(c)
 	e4:SetOperation(c80086070.negop)
 	c:RegisterEffect(e4)
 end
-function c80086070.tgrfilter(c)
-	return c:IsFaceup() and c:IsLevelAbove(1) and c:IsAbleToGraveAsCost()
+function c80086070.sprfilter(c)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost() and (c80086070.sprfilter1(c) or c80086070.sprfilter2(c))
 end
-function c80086070.tgrfilter1(c)
-	return c:IsType(TYPE_TUNER) and c:IsLevelAbove(8)
+function c80086070.sprfilter1(c)
+	return c:IsLevelAbove(8) and c:IsType(TYPE_TUNER)
 end
-function c80086070.tgrfilter2(c)
-	return not c:IsType(TYPE_TUNER) and c:IsType(TYPE_SYNCHRO)
+function c80086070.sprfilter2(c)
+	return c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_TUNER)
 end
-function c80086070.mnfilter(c,g)
-	return g:IsExists(c80086070.mnfilter2,1,c,c)
-end
-function c80086070.mnfilter2(c,mc)
-	return c:GetLevel()-mc:GetLevel()==7
-end
-function c80086070.fselect(g,tp,sc)
-	return g:GetCount()==2
-		and g:IsExists(c80086070.tgrfilter1,1,nil) and g:IsExists(c80086070.tgrfilter2,1,nil)
-		and g:IsExists(c80086070.mnfilter,1,nil,g)
-		and Duel.GetLocationCountFromEx(tp,tp,g,sc)>0
-end
-function c80086070.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c80086070.tgrfilter,tp,LOCATION_MZONE,0,nil)
-	return g:CheckSubGroup(c80086070.fselect,2,2,tp,c)
-end
-function c80086070.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c80086070.tgrfilter,tp,LOCATION_MZONE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,c80086070.fselect,false,2,2,tp,c)
-	Duel.SendtoGrave(tg,REASON_COST)
+function c80086070.sprgoal(g,sync)
+	if not aux.gffcheck(g,c80086070.sprfilter1,nil,c80086070.sprfilter2,nil) then return false end
+	local c1=g:GetFirst()
+	local c2=g:GetNext()
+	return math.abs(c1:GetLevel()-c2:GetLevel())==7
 end
 function c80086070.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() end
