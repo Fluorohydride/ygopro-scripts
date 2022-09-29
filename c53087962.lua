@@ -40,10 +40,8 @@ function c53087962.sprfilter2(c)
 	return c:IsLevelAbove(1) and c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_TUNER)
 end
 function c53087962.sprgoal(g,sync)
-	if not aux.gffcheck(g,c53087962.sprfilter1,nil,c53087962.sprfilter2,nil) then return false end
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	return math.abs(c1:GetLevel()-c2:GetLevel())==7
+	return aux.gffcheck(g,c53087962.sprfilter1,nil,c53087962.sprfilter2,nil)
+		and math.abs(g:GetFirst():GetLevel()-g:GetNext():GetLevel())==7
 end
 function c53087962.distg(e,c)
 	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsLevel(0)
