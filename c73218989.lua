@@ -4,6 +4,7 @@ function c73218989.initial_effect(c)
 	c:EnableCounterPermit(0x10)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.NonTuner(nil),1)
+	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c73218989.sprfilter,c73218989.sprgoal,2,2,LOCATION_MZONE+LOCATION_GRAVE,0,aux.Stringid(73218989,0),HINTMSG_REMOVE,Duel.Remove,POS_FACEUP,REASON_COST)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -12,17 +13,6 @@ function c73218989.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(aux.synlimit)
 	c:RegisterEffect(e1)
-	--spsummon
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(73218989,0))
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c73218989.spcon)
-	e2:SetTarget(c73218989.sptg)
-	e2:SetOperation(c73218989.spop)
-	c:RegisterEffect(e2)
 	--add counter and damage
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -53,35 +43,17 @@ function c73218989.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c73218989.material_type=TYPE_SYNCHRO
-function c73218989.mfilter1(c)
-	return c:IsType(TYPE_TUNER) and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER)
+function c73218989.sprfilter(c)
+	return c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
 end
-function c73218989.mfilter2(c)
+function c73218989.sprfilter1(c)
+	return c:IsType(TYPE_TUNER) and c:IsType(TYPE_SYNCHRO)
+end
+function c73218989.sprfilter2(c)
 	return c:IsCode(9012916)
 end
-function c73218989.fselect(g,c,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,g,c)>0 and aux.gffcheck(g,c73218989.mfilter1,nil,c73218989.mfilter2,nil)
-end
-function c73218989.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	return g:CheckSubGroup(c73218989.fselect,2,2,c,tp)
-end
-function c73218989.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroup(tp,c73218989.fselect,true,2,2,c,tp)
-	if sg then
-		sg:KeepAlive()
-		e:SetLabelObject(sg)
-		return true
-	else return false end
-end
-function c73218989.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
-	g:DeleteGroup()
+function c73218989.sprgoal(g,sync)
+	return aux.gffcheck(g,c73218989.sprfilter1,nil,c73218989.sprfilter2,nil)
 end
 function c73218989.regop(e,tp,eg,ep,ev,re,r,rp)
 	if rp==1-tp and re:IsActiveType(TYPE_MONSTER) then
