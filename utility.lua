@@ -2984,16 +2984,11 @@ function Auxiliary.ThisCardInGraveAlreadyReset2(e)
 	e1:Reset()
 	e:Reset()
 end
---Player p place n cards from his hand on the bottom of his Deck in any order
-function Auxiliary.PlaceHandsOnDeckBottom(p,n)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
-	if g:GetCount()<n then return end
-	Duel.ShuffleHand(p)
-	Duel.BreakEffect()
-	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
-	local sg=g:Select(p,n,n,nil)
+--Player p place sg on the bottom of Deck in any order
+function Auxiliary.PlaceGroupOnDeckBottom(p,sg)
 	Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-	local sg2=Duel.GetOperatedGroup()
+	local og=Duel.GetOperatedGroup()
+	local sg2=og:Filter(Card.IsLocation,nil,LOCATION_DECK)
 	local x1=sg2:FilterCount(Card.IsControler,nil,p)
 	local x2=sg2:FilterCount(Card.IsControler,nil,1-p)
 	if x1>0 then
@@ -3010,4 +3005,5 @@ function Auxiliary.PlaceHandsOnDeckBottom(p,n)
 			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
+	return #sg2
 end

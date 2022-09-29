@@ -116,6 +116,12 @@ end
 function c74997493.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)==4 then
-		aux.PlaceOnBottom(p,3)
+		local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
+		if g:GetCount()<3 then return end
+		Duel.ShuffleHand(p)
+		Duel.BreakEffect()
+		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
+		local sg=g:Select(p,3,3,nil)
+		aux.PlaceGroupOnDeckBottom(p,sg)
 	end
 end
