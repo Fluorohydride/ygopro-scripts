@@ -54,7 +54,7 @@ function c77783947.scop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,1,nil,nil)
 	Auxiliary.SCheckAdditional=nil
 	if g:GetCount()>0 then
-		Auxiliary.SCheckAdditionalLimbo[g:GetFirst()]=c77783947.mat_group
+		Auxiliary.SCheckAdditionalLimbo[g:GetFirst():GetFieldID()]=c77783947.mat_group
 		Duel.SynchroSummon(tp,g:GetFirst(),nil)
 	end
 end
