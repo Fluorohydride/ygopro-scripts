@@ -45,7 +45,6 @@ end
 function c80086070.sprgoal(g,sync)
 	return aux.gffcheck(g,c80086070.sprfilter1,nil,c80086070.sprfilter2,nil)
 		and math.abs(g:GetFirst():GetLevel()-g:GetNext():GetLevel())==7
-	if not aux.gffcheck(g,c80086070.sprfilter1,nil,c80086070.sprfilter2,nil) then return false end
 end
 function c80086070.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() end
