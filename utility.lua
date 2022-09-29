@@ -701,7 +701,6 @@ end
 function Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location)
 	return	function(e,c)
 				if c==nil then return true end
-				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.GenericSpSummonMaterialFilter,tp,self_location,opponent_location,c,c,filter)
 				return mg:CheckSubGroup(Auxiliary.GenericSpSummonGoal,minc,maxc,c,tp,goal)
