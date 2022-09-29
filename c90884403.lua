@@ -1,21 +1,13 @@
 --究極幻神 アルティミトル・ビシバールキン
 function c90884403.initial_effect(c)
 	c:EnableReviveLimit()
+	aux.AddGenericSpSummonProcedure(c,LOCATION_EXTRA,c90884403.sprfilter,c90884403.sprgoal,2,2,LOCATION_MZONE,0,nil,HINTMSG_TOGRAVE,Duel.SendtoGrave,HINTMSG_TOGRAVE)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c90884403.sprcon)
-	e2:SetOperation(c90884403.sprop)
-	c:RegisterEffect(e2)
 	--battle indestructable
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -49,30 +41,8 @@ end
 function c90884403.sprfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(8) and c:IsAbleToGraveAsCost()
 end
-function c90884403.sprfilter1(c,tp,g,sc)
-	local lv=c:GetLevel()
-	return c:IsType(TYPE_TUNER) and g:IsExists(c90884403.sprfilter2,1,c,tp,c,sc,lv)
-end
-function c90884403.sprfilter2(c,tp,mc,sc,lv)
-	local sg=Group.FromCards(c,mc)
-	return c:IsLevel(lv) and not c:IsType(TYPE_TUNER)
-		and Duel.GetLocationCountFromEx(tp,tp,sg,sc)>0
-end
-function c90884403.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c90884403.sprfilter,tp,LOCATION_MZONE,0,nil)
-	return g:IsExists(c90884403.sprfilter1,1,nil,tp,g,c)
-end
-function c90884403.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c90884403.sprfilter,tp,LOCATION_MZONE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=g:FilterSelect(tp,c90884403.sprfilter1,1,1,nil,tp,g,c)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=g:FilterSelect(tp,c90884403.sprfilter2,1,1,mc,tp,mc,c,mc:GetLevel())
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+function c90884403.sprgoal(g,sync)
+	return g:GetClassCount(Card.GetLevel)==1 and g:FilterCount(Card.IsType,nil,TYPE_TUNER)==1
 end
 function c90884403.atkval(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,LOCATION_MZONE)*1000
