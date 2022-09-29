@@ -670,18 +670,18 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	end
 	return true
 end
---generic special summon procedure used by synchro monsters that cannot be synchro summoned
-function Auxiliary.AddGenericSpSummonProcedure(c,range,filter,goal,minc,maxc,self_location,opponent_location,description,mat_op_hint,mat_operation,...)
+--generic special summon procedure by doing a certain operation to one or more cards
+--mainly used by synchro monsters that cannot be synchro summoned
+function Auxiliary.AddGenericSpSummonProcedure(c,range,filter,goal,minc,maxc,self_location,opponent_location,condition,mat_op_hint,mat_operation,...)
 	local self_location=self_location or 0
 	local opponent_location=opponent_location or 0
 	local operation_params={...}
 	local e1=Effect.CreateEffect(c)
-	if description then e1:SetDescription(description) end
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(range or 0)
-	e1:SetCondition(Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location))
+	e1:SetCondition(Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location,condition))
 	e1:SetTarget(Auxiliary.GenericSpSummonTarget(filter,goal,minc,maxc,self_location,opponent_location,mat_op_hint))
 	e1:SetOperation(Auxiliary.GenericSpSummonOperation(mat_operation,operation_params))
 	c:RegisterEffect(e1)
@@ -698,10 +698,11 @@ function Auxiliary.GenericSpSummonGoal(g,c,tp,goal)
 	end
 	return not goal or goal(g)
 end
-function Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location)
+function Auxiliary.GenericSpSummonCondition(filter,goal,minc,maxc,self_location,opponent_location,condition)
 	return	function(e,c)
 				if c==nil then return true end
 				local tp=c:GetControler()
+				if condition and not condition(c,tp) then return false end
 				local mg=Duel.GetMatchingGroup(Auxiliary.GenericSpSummonMaterialFilter,tp,self_location,opponent_location,c,c,filter)
 				return mg:CheckSubGroup(Auxiliary.GenericSpSummonGoal,minc,maxc,c,tp,goal)
 			end
