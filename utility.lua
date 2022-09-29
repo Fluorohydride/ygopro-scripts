@@ -555,8 +555,13 @@ function Auxiliary.SynUltimateGoal(sg,tp,sync,lv,goal,smat,syncheck,check_mono,c
 
 	Auxiliary.ApplyAssume(sg,syncheck)
 
-	if (Auxiliary.SCheckAdditional and not Auxiliary.SCheckAdditional(sg,sync,tp))
-		or (Auxiliary.SCheckAdditionalLimbo[sync] and not Auxiliary.SCheckAdditionalLimbo[sync](sg,sync,tp)) then
+	if (Auxiliary.SCheckAdditional and not Auxiliary.SCheckAdditional(sg,sync,tp)) then
+		Duel.AssumeReset()
+		return false
+	end
+
+	local limbo=Auxiliary.SCheckAdditionalLimbo[sync:GetFieldID()]
+	if limbo and not limbo(sg,sync,tp) then
 		Duel.AssumeReset()
 		return false
 	end
@@ -703,7 +708,7 @@ function Auxiliary.SynTargetUltimate(filter,goal,minc,maxc)
 				if sg and #sg>0 then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
-					Auxiliary.SCheckAdditionalLimbo[c]=nil
+					Auxiliary.SCheckAdditionalLimbo[c:GetFieldID()]=nil
 					return true
 				else return false end
 			end
