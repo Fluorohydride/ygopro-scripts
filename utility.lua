@@ -392,7 +392,7 @@ function Auxiliary.MustMaterialCounterFilter(c,g)
 	return not g:IsContains(c)
 end
 --Synchro monster, using min to max monsters that fits a goal
---filter: function(c,sync) cards that do not pass this filter are never considered potential materials
+--filter: function(c,sync) cards that do not pass this filter are never considered potential materials, unless any assumes are in effect (genomix fighter)
 --goal: function(g,sync) a group restriction imposed on the whole synchro material group
 function Auxiliary.AddSynchroProcedureUltimate(c,filter,goal,minc,maxc)
 	if maxc==nil then maxc=99 end
