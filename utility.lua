@@ -537,16 +537,16 @@ function Auxiliary.SynCheckAdditional(sync,lv,minc,maxc,syncheck,check_mono,chec
 	end
 end
 function Auxiliary.SynCheckAdditionalLevelCheck(sg,sync,lv,minc,maxc,check_mono,check_cardian)
+	local sgc=#sg
 	if check_mono then
-		local sum=#sg
-		if sum<lv or sum==lv and sum>=minc and sum<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,56897896) then return true end
+		if sgc<lv or sgc==lv and sgc>=minc and sgc<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,56897896) then return true end
 	end
 	if check_cardian then
-		local sum=(#sg*2)
-		if sum<lv or sum==lv and #sg>=minc and #sg<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,89818984) then return true end
+		local sum=(sgc*2)
+		if sum<lv or sum==lv and sgc>=minc and sgc<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,89818984) then return true end
 	end
 	local sum=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)
-	return sum<lv or sum==lv and #sg>=minc and #sg<=maxc
+	return sum<lv or sum==lv and sgc>=minc and sgc<=maxc
 end
 function Auxiliary.SynUltimateGoal(sg,tp,sync,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,check_tuner_limit)
 	--misc
