@@ -32,7 +32,7 @@ function c44364207.indesval(e,re)
 end
 function c44364207.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
 end
 function c44364207.filter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and c:IsAbleToHand()

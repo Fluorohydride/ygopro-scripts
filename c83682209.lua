@@ -16,8 +16,8 @@ function c83682209.initial_effect(c)
 end
 function c83682209.spfilter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsPreviousPosition(POS_FACEUP) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsCode(83682209)
-		and (c:GetPreviousAttributeOnField()&ATTRIBUTE_WATER)>0
+		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:IsPreviousPosition(POS_FACEUP))
+		and not c:IsCode(83682209) and (c:GetPreviousAttributeOnField()&ATTRIBUTE_WATER)>0
 end
 function c83682209.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c83682209.spfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())

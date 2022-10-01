@@ -36,7 +36,7 @@ function c33537328.sdcon(e)
 end
 function c33537328.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsReason(REASON_BATTLE) and c:GetBattlePosition()~=POS_FACEUP_DEFENSE
+	if chk==0 then return c:IsReason(REASON_BATTLE)
 		and Duel.CheckReleaseGroup(tp,Card.IsReleasableByEffect,1,c) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		local g=Duel.SelectReleaseGroup(tp,Card.IsReleasableByEffect,1,1,c)

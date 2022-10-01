@@ -44,7 +44,7 @@ function c3370104.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3370104.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
 end
 function c3370104.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

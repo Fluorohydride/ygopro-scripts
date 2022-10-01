@@ -39,7 +39,7 @@ function c55762976.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c55762976.cfilter(c)
-	return c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0 and c:IsReason(REASON_BATTLE)
+	return bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0 and c:IsReason(REASON_BATTLE)
 end
 function c55762976.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c55762976.cfilter,1,nil) and not eg:IsContains(e:GetHandler())
