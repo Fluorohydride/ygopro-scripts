@@ -527,26 +527,27 @@ function Auxiliary.SynCheckAdditional(sync,lv,minc,maxc,syncheck,check_mono,chec
 		end
 
 		--simple synchro level check
-		if not Auxiliary.SynCheckAdditionalLevelCheck(sg,sync,lv,minc,maxc,check_mono,check_cardian) then
-			Duel.AssumeReset()
-			return false
+		local sgc=#sg
+		if check_mono then
+			if sgc<lv or sgc==lv and sgc>=minc and sgc<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,56897896) then
+				Duel.AssumeReset()
+				return true
+			end
 		end
 
+		if check_cardian then
+			local sum=(sgc*2)
+			if sum<lv or sum==lv and sgc>=minc and sgc<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,89818984) then
+				Duel.AssumeReset()
+				return true
+			end
+		end
+
+		local sum=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)
+		local result=(sum<lv or sum==lv and sgc>=minc and sgc<=maxc)
 		Duel.AssumeReset()
-		return true
+		return result
 	end
-end
-function Auxiliary.SynCheckAdditionalLevelCheck(sg,sync,lv,minc,maxc,check_mono,check_cardian)
-	local sgc=#sg
-	if check_mono then
-		if sgc<lv or sgc==lv and sgc>=minc and sgc<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,56897896) then return true end
-	end
-	if check_cardian then
-		local sum=(sgc*2)
-		if sum<lv or sum==lv and sgc>=minc and sgc<=maxc and sg:IsExists(Card.IsHasEffect,1,nil,89818984) then return true end
-	end
-	local sum=sg:GetSum(Auxiliary.SynCheckAdditionalLevel,sync)
-	return sum<lv or sum==lv and sgc>=minc and sgc<=maxc
 end
 function Auxiliary.SynUltimateGoal(sg,tp,sync,lv,goal,smat,syncheck,check_mono,check_cardian,check_hand,check_tuner_limit)
 	--misc
