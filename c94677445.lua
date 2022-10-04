@@ -2,7 +2,7 @@
 function c94677445.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()
-	aux.AddSynchroMixProcedure(c,c94677445.matfilter1,nil,nil,aux.NonTuner(nil),1,99)
+	aux.AddSynchroProcedure(c,c94677445.matfilter1,aux.NonTuner(nil),1,99,nil,true)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94677445,0))

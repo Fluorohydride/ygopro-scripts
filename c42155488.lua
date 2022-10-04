@@ -62,16 +62,20 @@ function c42155488.decop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local rc=e:GetLabel()
 		c:SetHint(CHINT_RACE,rc)
+		--synchro check
 		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetCode(EFFECT_SYNCHRO_CHECK)
+		e1:SetRange(LOCATION_MZONE)
+		e1:SetTargetRange(1,1)
+		e1:SetLabel(rc)
 		e1:SetValue(c42155488.syncheck)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetLabel(rc)
 		c:RegisterEffect(e1)
 	end
 end
 function c42155488.syncheck(e,c)
 	c:AssumeProperty(ASSUME_RACE,e:GetLabel())
 end
+

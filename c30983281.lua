@@ -55,23 +55,21 @@ end
 function c30983281.excostfilter(c,tp)
 	return c:IsAbleToRemoveAsCost() and c:IsHasEffect(84012625,tp)
 end
-function c30983281.spcheck(c,tp,rc,mg,opchk)
+function c30983281.spcheck(c,tp,rc,opchk)
 	return Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
-		and (opchk or Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,c,nil,mg))
+		and (opchk or Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,c,nil))
 end
 function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk)
 	if not (c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)) then return false end
-	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if mg:IsExists(Card.GetHandSynchro,1,nil) then
-		local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
-		if mg2:GetCount()>0 then mg:Merge(mg2) end
-	end
-	mg:AddCard(c)
+	Auxiliary.SynMaterialForceInclude=c
+	local res=false
 	if tgchk then
-		return c30983281.spcheck(c,tp,nil,mg,opchk)
+		res=c30983281.spcheck(c,tp,nil,opchk)
 	else
-		return (chkrel and c30983281.spcheck(c,tp,rc,mg-rc)) or (chknotrel and c30983281.spcheck(c,tp,nil,mg))
+		res=(chkrel and c30983281.spcheck(c,tp,rc)) or (chknotrel and c30983281.spcheck(c,tp,nil))
 	end
+	Auxiliary.SynMaterialForceInclude=nil
+	return res
 end
 function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
@@ -82,8 +80,16 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c30983281.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
 	local chkrel=c:IsReleasable()
 	local chknotrel=g:GetCount()>0
-	local b1=chkrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,chkrel,nil)
-	local b2=chknotrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,chknotrel)
+	local b1=false
+	local b2=false
+	if chkrel then
+		Auxiliary.SynMaterialForceExclude=c
+		b1=Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,chkrel,nil,nil)
+		Auxiliary.SynMaterialForceExclude=nil
+	end
+	if chknotrel then
+		b2=Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,chknotrel,nil)
+	end
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and (not ect1 or ect1>1) and (not ect2 or ect2>1) and (b1 or b2)
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) end
@@ -114,10 +120,11 @@ function c30983281.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local ect1=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 		local ect2=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
 			and aux.ExtraDeckSummonCountLimit[tp]
-		return Duel.IsPlayerCanSpecialSummonCount(tp,2)
+		local val=Duel.IsPlayerCanSpecialSummonCount(tp,2)
 			and (not ect1 or ect1>1) and (not ect2 or ect2>1)
 			and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 			and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,nil,true)
+		return val
 	end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)

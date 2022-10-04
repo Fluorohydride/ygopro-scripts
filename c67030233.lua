@@ -47,11 +47,11 @@ function c67030233.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c67030233.material_type=TYPE_SYNCHRO
-function c67030233.mfilter1(c)
+function c67030233.mfilter1(c,syncard,sg)
 	return c:IsCode(21159309)
 end
-function c67030233.mfilter2(c,syncard,c1)
-	return c:IsCode(70902743) and (c:IsType(TYPE_TUNER) or c1:IsType(TYPE_TUNER))
+function c67030233.mfilter2(c,syncard,sg)
+	return c:IsCode(70902743) and (c:IsType(TYPE_TUNER) or sg:IsExists(aux.Tuner(c67030233.mfilter1),1,nil))
 end
 function c67030233.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker()

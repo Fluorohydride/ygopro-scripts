@@ -2,7 +2,7 @@
 function c63261835.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()
-	aux.AddSynchroMixProcedure(c,c63261835.matfilter1,nil,nil,aux.NonTuner(nil),1,99)
+	aux.AddSynchroProcedure(c,c63261835.matfilter1,aux.NonTuner(nil),1,99,nil,true)
 	--change name
 	aux.EnableChangeCode(c,76812113,LOCATION_MZONE+LOCATION_GRAVE)
 	--to hand

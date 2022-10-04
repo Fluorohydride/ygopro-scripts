@@ -34,14 +34,14 @@ function c73941492.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_TUNE_MAGICIAN_F)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e5:SetValue(c73941492.fuslimit)
+	e5:SetValue(c73941492.matlimit)
 	c:RegisterEffect(e5)
 	--xyz limit
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
 	e6:SetCode(EFFECT_TUNE_MAGICIAN_X)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e6:SetValue(c73941492.xyzlimit)
+	e6:SetValue(c73941492.matlimit)
 	c:RegisterEffect(e6)
 	--spsummon success
 	local e7=Effect.CreateEffect(c)
@@ -58,10 +58,7 @@ end
 function c73941492.synlimit(e,c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
 end
-function c73941492.fuslimit(e,c)
-	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
-end
-function c73941492.xyzlimit(e,c)
+function c73941492.matlimit(e,c)
 	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
 end
 function c73941492.atkfilter(c)
