@@ -32,15 +32,14 @@ function c70569684.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70569684.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
-	if cg:GetCount()>=2 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_MZONE,0,2,99,nil)
-		if #g==0 then return end
-		local num=Duel.Destroy(g,REASON_EFFECT)
-		num=math.floor(num/2)
-		if num<1 then return end
-		Duel.Draw(tp,num,REASON_EFFECT)
-	end
+	if #cg<2 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_MZONE,0,2,99,nil)
+	if #g==0 then return end
+	local num=Duel.Destroy(g,REASON_EFFECT)
+	num=math.floor(num/2)
+	if num<1 then return end
+	Duel.Draw(tp,num,REASON_EFFECT)
 end
 function c70569684.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
