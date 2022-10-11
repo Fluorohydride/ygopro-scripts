@@ -2690,7 +2690,7 @@ end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then return c else return nil end
+	if c:IsRelateToChain() then return c else return nil end
 end
 --used for multi-linked zone(zone linked by two or more link monsters)
 function Auxiliary.GetMultiLinkedZone(tp)
