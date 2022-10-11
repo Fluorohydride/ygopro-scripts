@@ -106,19 +106,7 @@ function c572850.activate(e,tp,eg,ep,ev,re,r,rp)
 				local cg=mat1:Filter(c572850.fdfilter,nil)
 				Duel.ConfirmCards(1-tp,cg)
 			end
-			Duel.SendtoDeck(mat1,nil,SEQ_DECKTOP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-			local p=tp
-			for i=1,2 do
-				local dg=mat1:Filter(c572850.seqfilter,nil,p)
-				if #dg>1 then
-					Duel.SortDecktop(tp,p,#dg)
-				end
-				for i=1,#dg do
-					local mg=Duel.GetDecktopGroup(p,1)
-					Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-				end
-				p=1-tp
-			end
+			aux.PlaceCardsOnDeckBottom(tp,mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
@@ -131,7 +119,4 @@ function c572850.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c572850.fdfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFacedown() or c:IsLocation(LOCATION_HAND)
-end
-function c572850.seqfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:IsControler(tp)
 end

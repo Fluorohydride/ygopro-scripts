@@ -65,7 +65,6 @@ function c77683371.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=tg:Select(p,ct,ct,nil)
-		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-		Duel.SortDecktop(p,p,ct)
+		aux.PlaceCardsOnDeckTop(p,sg)
 	end
 end
