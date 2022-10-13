@@ -70,7 +70,7 @@ function c90488465.tdop(e,tp,eg,ep,ev,re,r,rp)
 		if sg:GetCount()>0 then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			tg:Sub(sg)
+			aux.PlaceCardsOnDeckBottom(tp,tg)
 		end
-		aux.PlaceCardsOnDeckBottom(tp,tg)
 	end
 end
