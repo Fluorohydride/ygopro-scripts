@@ -16,7 +16,7 @@ function c11508758.ctlcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget()~=nil
 end
 function c11508758.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsControlerCanBeChanged()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsControlerCanBeChanged() and c:IsAttackable()
 end
 function c11508758.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc~=Duel.GetAttackTarget() and c11508758.filter(chkc) end
@@ -26,11 +26,18 @@ function c11508758.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 end
 function c11508758.ctlop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) and tc:IsControler(1-tp) then
 		if Duel.GetControl(tc,tp,PHASE_BATTLE,1)~=0 then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e1)
 			if tc:IsAttackable() and not tc:IsImmuneToEffect(e) then
 				local ats=tc:GetAttackableTarget()
+				if #ats==0 then return end
 				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11508758,1))
 				local g=ats:Select(tp,1,1,nil)
 				Duel.CalculateDamage(tc,g:GetFirst())

@@ -17,7 +17,7 @@ function c42752141.initial_effect(c)
 	e1:SetOperation(c42752141.operation)
 	c:RegisterEffect(e1)
 end
-function c42752141.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c42752141.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re~=e and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end

@@ -1,4 +1,4 @@
---Night's End Administrator
+--ナイトエンド・アドミニストレーター
 function c3779493.initial_effect(c)
 	aux.AddMaterialCodeList(c,36107810)
 	--synchro summon
@@ -9,7 +9,7 @@ function c3779493.initial_effect(c)
 	e1:SetDescription(aux.Stringid(3779493,0))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetTarget(c3779493.target)
 	e1:SetOperation(c3779493.operation)

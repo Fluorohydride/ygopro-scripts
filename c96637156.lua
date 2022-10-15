@@ -45,8 +45,8 @@ function c96637156.movop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if tc then
 		local og=tc:GetOverlayGroup()
-		og:AddCard(tc)
-		Duel.Overlay(c,og)
+		if og:GetCount()>0 then Duel.Overlay(c,og) end
+		Duel.Overlay(c,tc)
 	end
 	if p==tp then
 		Duel.MoveSequence(c,seq)

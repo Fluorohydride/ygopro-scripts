@@ -27,7 +27,7 @@ function c52927340.cfilter(c)
 end
 function c52927340.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.IsExistingMatchingCard(c52927340.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
+	return at:IsControler(1-tp) and Duel.IsExistingMatchingCard(c52927340.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c52927340.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -57,7 +57,6 @@ function c10000020.initial_effect(c)
 	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e8:SetRange(LOCATION_MZONE)
 	e8:SetCode(EVENT_SUMMON_SUCCESS)
-	e8:SetCondition(c10000020.atkcon)
 	e8:SetTarget(c10000020.atktg)
 	e8:SetOperation(c10000020.atkop)
 	c:RegisterEffect(e8)
@@ -100,15 +99,13 @@ end
 function c10000020.atkfilter(c,tp)
 	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK)
 end
-function c10000020.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c10000020.atkfilter,1,nil,1-tp)
-end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetTargetCard(eg)
+	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,nil,1-tp) end
+	local g=eg:Filter(c10000020.atkfilter,nil,1-tp)
+	Duel.SetTargetCard(g)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
+	local g=Duel.GetTargetsRelateToChain():Filter(Card.IsFaceup,nil)
 	local dg=Group.CreateGroup()
 	local c=e:GetHandler()
 	local tc=g:GetFirst()

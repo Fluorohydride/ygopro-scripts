@@ -82,7 +82,7 @@ function c22211622.spfilter(c,e,tp,dg)
 end
 function c22211622.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c22211622.desfilter(chkc,e,tp,c) and chkc~=c end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c22211622.desfilter(chkc,e,tp,c) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,c,e,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,e,tp,c)

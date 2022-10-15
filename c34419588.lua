@@ -40,7 +40,7 @@ function c34419588.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c34419588.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
-function c34419588.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c34419588.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())

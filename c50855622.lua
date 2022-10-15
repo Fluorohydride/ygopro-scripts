@@ -1,4 +1,4 @@
---Ultra Beetrooper Absolute Hercules
+--超騎甲虫アブソリュート・ヘラクレス
 function c50855622.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

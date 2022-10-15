@@ -58,10 +58,12 @@ function c76067258.repfilter(c,tp)
 	return c:IsControler(tp) and c:GetFlagEffect(76067258)~=0
 end
 function c76067258.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetCardTarget():IsExists(c76067258.repfilter,1,nil,tp) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
+	local c=e:GetHandler()
+	if chk==0 then return c:GetCardTarget():IsExists(c76067258.repfilter,1,nil,tp)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=e:GetHandler():GetCardTarget():FilterSelect(tp,c76067258.repfilter,1,1,nil,tp)
+		local g=c:GetCardTarget():FilterSelect(tp,c76067258.repfilter,1,1,nil,tp)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		return true
 	else return false end

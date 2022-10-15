@@ -79,7 +79,7 @@ function c6992184.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Group.CreateGroup()
 	local pop=aux.PendOperation()
 	pop(e,tp,eg,ep,ev,re,r,rp,lpz,sg,g)
-	Duel.SpecialSummon(sg,SUMMON_TYPE_PENDULUM,tp,tp,false,false,POS_FACEUP)
+	Duel.SpecialSummon(sg,SUMMON_TYPE_PENDULUM,tp,tp,true,true,POS_FACEUP)
 end
 function c6992184.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)

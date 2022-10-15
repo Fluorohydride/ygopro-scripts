@@ -1,4 +1,4 @@
---Beetrooper Scout Buggy
+--騎甲虫スカウト・バギー
 function c2656842.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

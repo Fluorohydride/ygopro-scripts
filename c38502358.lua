@@ -38,7 +38,7 @@ function c38502358.dircon(e)
 end
 function c38502358.indcon(e)
 	local c=e:GetHandler()
-	return c:GetSequence()>4 and c:GetLinkedGroupCount()==0
+	return c:GetSequence()>4 and c:IsType(TYPE_LINK) and c:GetLinkedGroupCount()==0
 end
 function c38502358.spcfilter(c,g,tp)
 	return g:IsContains(c) and c:IsAbleToGraveAsCost() and Duel.GetMZoneCount(tp,c)>0

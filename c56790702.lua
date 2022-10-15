@@ -1,4 +1,4 @@
---D.D. Assault Carrier
+--異次元の強襲艦
 function c56790702.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

@@ -24,7 +24,7 @@ function c57827484.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c57827484.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
-function c57827484.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c57827484.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())

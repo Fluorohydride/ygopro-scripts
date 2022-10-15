@@ -15,7 +15,7 @@ end
 function c33248692.filter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
 end
-function c33248692.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c33248692.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c33248692.filter,1,nil,tp)
 end
 function c33248692.target(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -53,7 +53,7 @@ function c69838592.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c69838592.filter(c,tc)
-	if not c:IsFaceup() then return false end
+	if c:IsFacedown() then return false end
 	return tc:GetBaseAttack()~=c:GetAttack() or tc:GetBaseAttack()~=c:GetDefense()
 end
 function c69838592.condition(e,tp,eg,ep,ev,re,r,rp)

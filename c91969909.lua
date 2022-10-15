@@ -38,7 +38,7 @@ function c91969909.rmfilter(c)
 	return c:IsFacedown() and c:IsAbleToRemove()
 end
 function c91969909.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()~=tp and chkc:IsLocation(LOCATION_ONFIELD) and c91969909.rmfilter(chkc) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c91969909.rmfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c91969909.rmfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWN)
 	local g=Duel.SelectTarget(tp,c91969909.rmfilter,tp,0,LOCATION_ONFIELD,1,1,nil)

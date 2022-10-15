@@ -42,7 +42,7 @@ function c65046521.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	if mg:GetClassCount(Card.GetAttribute)>=2 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(65046521,1)) then
+	if aux.GetAttributeCount(mg)>=2 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(65046521,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
