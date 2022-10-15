@@ -15,8 +15,8 @@ function c65961085.initial_effect(c)
 end
 function c65961085.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
-	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
-	if re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	local race=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_RACE)
+	if re:GetHandler():IsRelateToChain() then race=re:GetHandler():GetRace() end
 	return re:IsActiveType(TYPE_MONSTER) and race&RACE_SPELLCASTER~=0
 end
 function c65961085.filter(c)

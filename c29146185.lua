@@ -27,8 +27,8 @@ end
 function c29146185.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
 	local rc=re:GetHandler()
-	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
-	if rc:IsLocation(loc) then race=rc:GetRace() end
+	local race=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_RACE)
+	if rc:IsRelateToChain() then race=rc:GetRace() end
 	return (re:IsActiveType(TYPE_MONSTER) and race&RACE_SPELLCASTER~=0) or (rc:IsSetCard(0x106e) and rc:IsType(TYPE_SPELL))
 end
 function c29146185.retcost(e,tp,eg,ep,ev,re,r,rp,chk)

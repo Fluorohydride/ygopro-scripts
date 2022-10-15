@@ -29,8 +29,8 @@ function c40607210.cfilter(c,tp)
 end
 function c40607210.condition(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
-	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
-	if not re:IsActivated() or re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	local race=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_RACE)
+	if not re:IsActivated() or re:GetHandler():IsRelateToChain() then race=re:GetHandler():GetRace() end
 	return race&RACE_ZOMBIE~=0 and re:IsActiveType(TYPE_MONSTER) and aux.IsSpecialSummonedByEffect(re) and eg:IsExists(c40607210.cfilter,1,nil,tp)
 end
 function c40607210.cost(e,tp,eg,ep,ev,re,r,rp,chk)

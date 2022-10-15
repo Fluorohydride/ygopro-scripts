@@ -14,8 +14,8 @@ function c97317530.initial_effect(c)
 end
 function c97317530.descon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
-	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
-	if re:GetHandler():IsLocation(loc) then race=re:GetHandler():GetRace() end
+	local race=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_RACE)
+	if re:GetHandler():IsRelateToChain() then race=re:GetHandler():GetRace() end
 	return re:IsActiveType(TYPE_MONSTER) and race&RACE_BEAST~=0
 end
 function c97317530.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
