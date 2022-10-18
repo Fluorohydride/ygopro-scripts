@@ -2984,3 +2984,41 @@ function Auxiliary.ThisCardInGraveAlreadyReset2(e)
 	e1:Reset()
 	e:Reset()
 end
+--Player p place g on the top of Deck in any order
+function Auxiliary.PlaceCardsOnDeckTop(p,g,reason)
+	if reason==nil then reason=REASON_EFFECT end
+	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,reason)
+	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	local ct1=og:FilterCount(Card.IsControler,nil,p)
+	local ct2=og:FilterCount(Card.IsControler,nil,1-p)
+	if ct1>0 then
+		Duel.SortDecktop(p,p,ct1)
+	end
+	if ct2>0 then
+		Duel.SortDecktop(p,1-p,ct2)
+	end
+	return #og
+end
+--Player p place g on the bottom of Deck in any order
+function Auxiliary.PlaceCardsOnDeckBottom(p,g,reason)
+	if reason==nil then reason=REASON_EFFECT end
+	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,reason)
+	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	local ct1=og:FilterCount(Card.IsControler,nil,p)
+	local ct2=og:FilterCount(Card.IsControler,nil,1-p)
+	if ct1>0 then
+		Duel.SortDecktop(p,p,ct1)
+		for i=1,ct1 do
+			local tc=Duel.GetDecktopGroup(p,1):GetFirst()
+			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
+		end
+	end
+	if ct2>0 then
+		Duel.SortDecktop(p,1-p,ct2)
+		for i=1,ct2 do
+			local tc=Duel.GetDecktopGroup(1-p,1):GetFirst()
+			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
+		end
+	end
+	return #og
+end
