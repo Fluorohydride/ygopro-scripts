@@ -37,7 +37,7 @@ function c51335426.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 			local sg=g:Select(p,ct,ct,nil)
-			aux.PlaceGroupOnDeckBottom(p,sg)
+			aux.PlaceCardsOnDeckBottom(p,sg)
 		end
 	end
 end

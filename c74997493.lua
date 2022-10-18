@@ -122,6 +122,6 @@ function c74997493.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(p,3,3,nil)
-		aux.PlaceGroupOnDeckBottom(p,sg)
+		aux.PlaceCardsOnDeckBottom(p,sg)
 	end
 end
