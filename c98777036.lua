@@ -93,14 +93,15 @@ function c98777036.ctop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.GetControl(tc,tp)
 	end
 end
-function c98777036.lvfilter(c)
-	return c:GetLevel()>0
+function c98777036.lvfilter(c,lv)
+	return c:IsLevelAbove(0) and not c:IsLevel(lv)
 end
 function c98777036.lvtar(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsType(TYPE_MONSTER) end
-	if chk==0 then return Duel.IsExistingTarget(c98777036.lvfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	local lv=e:GetHandler():GetLevel()
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c98777036.lvfilter(chkc,lv) end
+	if chk==0 then return Duel.IsExistingTarget(c98777036.lvfilter,tp,LOCATION_GRAVE,0,1,nil,lv) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c98777036.lvfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.SelectTarget(tp,c98777036.lvfilter,tp,LOCATION_GRAVE,0,1,1,nil,lv)
 end
 function c98777036.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -110,7 +111,7 @@ function c98777036.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)
 		e1:SetValue(tc:GetLevel())
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end
