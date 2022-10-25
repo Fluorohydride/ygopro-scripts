@@ -117,15 +117,11 @@ function c74997493.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)==4 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
-		if g:GetCount()==0 then return end
+		if g:GetCount()<3 then return end
+		Duel.ShuffleHand(p)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(p,3,3,nil)
-		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-		Duel.SortDecktop(p,p,3)
-		for i=1,3 do
-			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-		end
+		aux.PlaceCardsOnDeckBottom(p,sg)
 	end
 end

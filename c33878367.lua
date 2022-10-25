@@ -1,5 +1,6 @@
 --壱世壊に渦巻く反響
 function c33878367.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOGRAVE)
@@ -46,7 +47,7 @@ function c33878367.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c33878367.tgfilter(c,race,attr)
-	return (c:IsRace(race) or c:IsAttribute(attr)) and c:IsAbleToGrave()
+	return c:IsFaceup() and (c:IsRace(race) or c:IsAttribute(attr)) and c:IsAbleToGrave()
 end
 function c33878367.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_EFFECT)

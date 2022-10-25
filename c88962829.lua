@@ -1,4 +1,4 @@
---Beetrooper Light Flapper
+--騎甲虫ライト・フラッパー
 function c88962829.initial_effect(c)
 	--add
 	local e1=Effect.CreateEffect(c)
@@ -63,7 +63,7 @@ function c88962829.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
-function c88962829.check(c)
+function c88962829.check(c,tp)
 	return c:IsLocation(LOCATION_HAND) and c:IsControler(tp)
 end
 function c88962829.aclimit(e,re,tp)

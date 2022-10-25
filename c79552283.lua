@@ -1,5 +1,6 @@
 --肆世壊の牙掌突
 function c79552283.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -31,7 +32,7 @@ function c79552283.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c79552283.filter(c,e,tp)
-	return (c:IsSetCard(0x17a) or c:IsCode(56099748)) and not c:IsType(TYPE_LINK)
+	return (c:IsSetCard(0x17a) or c:IsCode(56099748)) and c:IsFaceup() and not c:IsType(TYPE_LINK)
 end
 function c79552283.adatktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c79552283.filter(chkc,e,tp) end

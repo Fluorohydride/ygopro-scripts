@@ -56,6 +56,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
+		if not sc then return end
 		if Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then
 			c:SetCardTarget(sc)
 		end

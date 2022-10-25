@@ -11,15 +11,12 @@ function c17688543.initial_effect(c)
 	e1:SetOperation(c17688543.activate)
 	c:RegisterEffect(e1)
 end
-function c17688543.filter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
 function c17688543.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c17688543.filter(chkc,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsSpecialSummonableCard() end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c17688543.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp) end
+		and Duel.IsExistingTarget(Card.IsSpecialSummonableCard,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c17688543.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,e,tp)
+	local g=Duel.SelectTarget(tp,Card.IsSpecialSummonableCard,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c17688543.activate(e,tp,eg,ep,ev,re,r,rp)

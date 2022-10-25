@@ -86,9 +86,9 @@ function c94599451.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94599451.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsReason(REASON_EFFECT) and c:GetCounter(0x1)>0 end
+	if chk==0 then return c:IsReason(REASON_EFFECT) and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c94599451.repop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RemoveCounter(ep,0x1,1,REASON_EFFECT)
+	e:GetHandler():RemoveCounter(tp,0x1,1,REASON_EFFECT)
 end

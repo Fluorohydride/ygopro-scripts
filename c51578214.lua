@@ -1,4 +1,4 @@
---Beetrooper Assault Roller
+--騎甲虫アサルト・ローラー
 function c51578214.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --肆世壊からの天跨
 function c41619242.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(41619242,0))

@@ -32,6 +32,7 @@ function c66835946.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local tc=eg:GetFirst()
 		return eg:GetCount()==1 and tc:IsLocation(LOCATION_MZONE) and tc:IsControler(tp) and tc:IsFaceup() and tc:IsRace(RACE_ZOMBIE)
+			and not tc:IsReason(REASON_REPLACE)
 	end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end

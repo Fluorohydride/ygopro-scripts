@@ -45,12 +45,12 @@ end
 function c95192919.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
-function c95192919.costfilter(c)
+function c95192919.costfilter(c,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:IsAttribute(ATTRIBUTE_WIND) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c95192919.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c95192919.costfilter,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,c95192919.costfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c95192919.costfilter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c95192919.costfilter,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c95192919.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

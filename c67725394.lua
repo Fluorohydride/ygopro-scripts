@@ -94,8 +94,7 @@ function c67725394.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
-		Duel.Destroy(g,REASON_EFFECT)
-		if e:GetLabel()==1 and c:IsRelateToEffect(e) and c:IsFaceup() then
+		if Duel.Destroy(g,REASON_EFFECT)~=0 and e:GetLabel()==1 and c:IsRelateToEffect(e) and c:IsFaceup() then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

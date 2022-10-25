@@ -32,7 +32,7 @@ function c2525268.addc(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2525268.dfilter(c)
-	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsRace(RACE_SPELLCASTER)
+	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsRace(RACE_SPELLCASTER) and not c:IsReason(REASON_REPLACE)
 end
 function c2525268.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
