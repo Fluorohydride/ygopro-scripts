@@ -24,9 +24,9 @@ end
 function c92572371.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sg=Duel.GetMatchingGroup(c92572371.cfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
 	if chk==0 then return sg:IsExists(c92572371.cfilter1,1,nil,sg,tp)
-		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0) end
+		or (aux.ExtraCostCheck(e:GetHandler(),nil,46241344,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0) end
 	if sg:IsExists(c92572371.cfilter1,1,nil,sg,tp)
-		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		and (not aux.ExtraCostCheck(e:GetHandler(),nil,46241344,tp) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g1=sg:FilterSelect(tp,c92572371.cfilter1,1,1,nil,sg,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

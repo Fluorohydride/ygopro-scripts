@@ -39,8 +39,8 @@ function c19605133.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19605133.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local fe=Duel.IsPlayerAffectedByEffect(tp,29942771)
-	local b1=fe and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
+	local res,fe=aux.ExtraCostCheck(e:GetHandler(),nil,29942771,tp)
+	local b1=res and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
 	local b2=c:IsReleasable()
 	if chk==0 then return b1 or b2 end
 	if b1 and (not b2 or Duel.SelectYesNo(tp,fe:GetDescription())) then

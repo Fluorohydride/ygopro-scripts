@@ -17,7 +17,7 @@ function c50032342.cfilter(c,e,tp)
 	if c:IsLocation(LOCATION_HAND) then
 		return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 	else
-		return e:GetHandler():IsSetCard(0x2f) and c:IsAbleToRemove() and c:IsHasEffect(18319762,tp)
+		return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(e:GetHandler(),c,18319762,tp)
 	end
 end
 function c50032342.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -25,10 +25,10 @@ function c50032342.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c50032342.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	local te=tc:IsHasEffect(18319762,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,18319762,tp)
 	if te then
 		te:UseCountLimit(tp)
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 	else
 		Duel.SendtoGrave(tc,REASON_COST)
 	end

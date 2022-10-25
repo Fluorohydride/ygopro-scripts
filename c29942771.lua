@@ -23,6 +23,7 @@ function c29942771.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(1,0)
 	e3:SetCountLimit(1,29942772)
+	e3:SetValue(c29942771.costval)
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
@@ -55,6 +56,9 @@ function c29942771.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
+end
+function c29942771.costval(e,c)
+	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER)
 end
 function c29942771.cfilter(c,tp)
 	return c:IsSummonPlayer(tp)

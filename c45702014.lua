@@ -28,9 +28,9 @@ function c45702014.costfilter(c)
 	return c:IsSetCard(0x400d) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c45702014.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fe=Duel.IsPlayerAffectedByEffect(tp,61557074)
+	local res,fe=aux.ExtraCostCheck(e:GetHandler(),nil,61557074,tp)
 	local loc=LOCATION_HAND
-	if fe then loc=LOCATION_HAND+LOCATION_DECK end
+	if res then loc=LOCATION_HAND+LOCATION_DECK end
 	if chk==0 then return Duel.IsExistingMatchingCard(c45702014.costfilter,tp,loc,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tc=Duel.SelectMatchingCard(tp,c45702014.costfilter,tp,loc,0,1,1,nil):GetFirst()

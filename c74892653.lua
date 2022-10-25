@@ -42,11 +42,11 @@ c74892653.material_type=TYPE_SYNCHRO
 function c74892653.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0
 end
-function c74892653.excostfilter(c,tp)
-	return c:IsAbleToRemoveAsCost() and c:IsHasEffect(84012625,tp)
+function c74892653.excostfilter(c,ec,re,tp)
+	return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(ec,c,84012625,tp,re)
 end
 function c74892653.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c74892653.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
+	local g=Duel.GetMatchingGroup(c74892653.excostfilter,tp,LOCATION_GRAVE,0,nil,e:GetHandler(),re,tp)
 	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
 	if chk==0 then return #g>0 end
 	local tc
@@ -56,7 +56,7 @@ function c74892653.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		tc=g:GetFirst()
 	end
-	local te=tc:IsHasEffect(84012625,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,84012625,tp,re)
 	if te then
 		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 	else

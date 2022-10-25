@@ -49,8 +49,8 @@ function c18514525.atkop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
-function c18514525.excostfilter(c,tp)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(25725326,tp)
+function c18514525.excostfilter(c,ec,re,tp)
+	return c:IsFaceupEx() and c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(ec,c,25725326,tp,re)
 end
 function c18514525.costfilter(c,tp,g)
 	local tg=g:Clone()
@@ -59,7 +59,7 @@ function c18514525.costfilter(c,tp,g)
 end
 function c18514525.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(0)
-	local g=Duel.GetMatchingGroup(c18514525.excostfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	local g=Duel.GetMatchingGroup(c18514525.excostfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,e:GetHandler(),re,tp)
 	local tg=Duel.GetMatchingGroup(c18514525.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
 	if chk==0 then
@@ -74,7 +74,7 @@ function c18514525.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		tc=cg:GetFirst()
 	end
-	local te=tc:IsHasEffect(25725326,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,25725326,tp,re)
 	if te then
 		te:UseCountLimit(tp)
 		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)

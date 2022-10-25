@@ -20,7 +20,7 @@ function c50321796.costfilter(c,e,tp)
 	if c:IsLocation(LOCATION_HAND) then
 		return c:IsDiscardable() and c:IsAbleToGraveAsCost()
 	else
-		return e:GetHandler():IsSetCard(0x2f) and c:IsAbleToRemove() and c:IsHasEffect(18319762,tp)
+		return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(e:GetHandler(),c,18319762,tp)
 	end
 end
 function c50321796.fselect(g)
@@ -35,9 +35,9 @@ function c50321796.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(cg:GetCount())
 	local tc=cg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
 	if tc then
-		local te=tc:IsHasEffect(18319762,tp)
+		local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,18319762,tp)
 		te:UseCountLimit(tp)
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 		cg:RemoveCard(tc)
 	end
 	Duel.SendtoGrave(cg,REASON_COST+REASON_DISCARD)

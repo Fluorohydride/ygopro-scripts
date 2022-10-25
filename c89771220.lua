@@ -10,14 +10,17 @@ function c89771220.initial_effect(c)
 	c:RegisterEffect(e1)
 	--replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(89771220)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetTargetRange(1,0)
 	e2:SetCountLimit(1,89771220)
+	e2:SetValue(c89771220.costval1)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(16471775)
+	e3:SetValue(c89771220.costval2)
 	c:RegisterEffect(e3)
 end
 function c89771220.deckconfilter(c)
@@ -59,4 +62,10 @@ function c89771220.activate(e,tp,eg,ep,ev,re,r,rp)
 			sg:GetFirst():CompleteProcedure()
 		end
 	end
+end
+function c89771220.costval1(e,c)
+	return c:IsSetCard(0x163) and c:IsType(TYPE_MONSTER)
+end
+function c89771220.costval2(e,c)
+	return c:IsSetCard(0x163) and c:IsType(TYPE_MONSTER)
 end

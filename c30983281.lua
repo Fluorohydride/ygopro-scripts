@@ -52,8 +52,8 @@ function c30983281.sccon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 end
-function c30983281.excostfilter(c,tp)
-	return c:IsAbleToRemoveAsCost() and c:IsHasEffect(84012625,tp)
+function c30983281.excostfilter(c,ec,re,tp)
+	return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(ec,c,84012625,tp,re)
 end
 function c30983281.spcheck(c,tp,rc,mg,opchk)
 	return Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
@@ -79,7 +79,7 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ect1=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	local ect2=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
 		and aux.ExtraDeckSummonCountLimit[tp]
-	local g=Duel.GetMatchingGroup(c30983281.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
+	local g=Duel.GetMatchingGroup(c30983281.excostfilter,tp,LOCATION_GRAVE,0,nil,e:GetHandler(),re,tp)
 	local chkrel=c:IsReleasable()
 	local chknotrel=g:GetCount()>0
 	local b1=chkrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,chkrel,nil)
@@ -97,7 +97,7 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		rc=rg:GetFirst()
 	end
-	local te=rc:IsHasEffect(84012625,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),rc,84012625,tp,re)
 	if te then
 		Duel.Remove(rc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 	else

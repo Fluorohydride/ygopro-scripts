@@ -12,11 +12,13 @@ function c55049722.initial_effect(c)
 	c:RegisterEffect(e1)
 	--banish replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(55049722)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetTargetRange(1,0)
 	e2:SetCountLimit(1,55049723)
+	e2:SetValue(c55049722.costval)
 	c:RegisterEffect(e2)
 end
 function c55049722.cfilter(c)
@@ -38,4 +40,7 @@ end
 function c55049722.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
+end
+function c55049722.costval(e,c)
+	return c:IsSetCard(0x156) and c:IsLocation(LOCATION_MZONE)
 end

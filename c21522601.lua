@@ -56,16 +56,16 @@ function c21522601.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	tc:RegisterEffect(e2)
 end
-function c21522601.costfilter(c,tp)
+function c21522601.costfilter(c,ec,tp)
 	if c:IsLocation(LOCATION_HAND) then return c:IsType(TYPE_SPELL) and c:IsDiscardable() end
-	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsHasEffect(83289866,tp)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost() and aux.ExtraCostCheck(ec,c,83289866,tp)
 end
 function c21522601.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c21522601.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
-	local g=Duel.GetMatchingGroup(c21522601.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,tp)
+	if chk==0 then return Duel.IsExistingMatchingCard(c21522601.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,e:GetHandler(),tp) end
+	local g=Duel.GetMatchingGroup(c21522601.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,e:GetHandler(),tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local tc=g:Select(tp,1,1,nil):GetFirst()
-	local te=tc:IsHasEffect(83289866,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,83289866,tp)
 	if te then
 		te:UseCountLimit(tp)
 		Duel.RegisterFlagEffect(tp,tc:GetCode(),RESET_PHASE+PHASE_END,0,1)

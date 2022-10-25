@@ -26,9 +26,9 @@ function c19036557.costfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c19036557.thfilter,tp,LOCATION_DECK,0,1,c)
 end
 function c19036557.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fe=Duel.IsPlayerAffectedByEffect(tp,61557074)
+	local res,fe=aux.ExtraCostCheck(e:GetHandler(),nil,61557074,tp)
 	local loc=LOCATION_HAND
-	if fe then loc=LOCATION_HAND+LOCATION_DECK end
+	if res then loc=LOCATION_HAND+LOCATION_DECK end
 	if chk==0 then return Duel.IsExistingMatchingCard(c19036557.costfilter,tp,loc,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tc=Duel.SelectMatchingCard(tp,c19036557.costfilter,tp,loc,0,1,1,nil,tp):GetFirst()

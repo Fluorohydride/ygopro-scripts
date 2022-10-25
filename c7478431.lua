@@ -23,8 +23,8 @@ function c7478431.cfilter(c)
 end
 function c7478431.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local fe=Duel.IsPlayerAffectedByEffect(tp,29942771)
-	local b1=fe and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
+	local res,fe=aux.ExtraCostCheck(e:GetHandler(),nil,29942771,tp)
+	local b1=res and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
 	local b2=c:IsReleasable() and not c:IsStatus(STATUS_BATTLE_DESTROYED) and Duel.CheckReleaseGroup(tp,c7478431.cfilter,1,c)
 	if chk==0 then return b1 or b2 end
 	if b1 and (not b2 or Duel.SelectYesNo(tp,fe:GetDescription())) then

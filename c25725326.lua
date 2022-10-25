@@ -13,12 +13,14 @@ function c25725326.initial_effect(c)
 	c:RegisterEffect(e1)
 	--release replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(25725326)
 	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
+	e2:SetTargetRange(1,0)
 	e2:SetCountLimit(1,25725326)
 	e2:SetCondition(c25725326.repcon)
+	e2:SetValue(c25725326.repval)
 	c:RegisterEffect(e2)
 end
 function c25725326.mfilter(c)
@@ -42,4 +44,7 @@ function c25725326.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c25725326.repcon(e)
 	return Duel.GetTurnPlayer()==1-e:GetHandlerPlayer()
+end
+function c25725326.repval(e,c,re)
+	return c:IsSetCard(0x120) and c:IsLocation(LOCATION_MZONE) and c==re:GetHandler()
 end

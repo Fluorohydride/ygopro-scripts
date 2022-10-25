@@ -16,7 +16,7 @@ function c56704140.costfilter(c,e,tp)
 	if c:IsLocation(LOCATION_HAND) then
 		return c:IsDiscardable()
 	else
-		return e:GetHandler():IsSetCard(0x2f) and c:IsAbleToRemove() and c:IsHasEffect(18319762,tp)
+		return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(e:GetHandler(),c,18319762,tp)
 	end
 end
 function c56704140.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -24,10 +24,10 @@ function c56704140.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local g=Duel.SelectMatchingCard(tp,c56704140.costfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	local te=tc:IsHasEffect(18319762,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,18319762,tp)
 	if te then
 		te:UseCountLimit(tp)
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 	else
 		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
 	end

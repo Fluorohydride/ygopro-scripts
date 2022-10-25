@@ -12,12 +12,14 @@ function c16471775.initial_effect(c)
 	c:RegisterEffect(e1)
 	--substitute cost
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(16471775)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetTargetRange(1,0)
 	e2:SetCondition(aux.exccon)
 	e2:SetCountLimit(1,16471776)
+	e2:SetValue(c16471775.costval)
 	c:RegisterEffect(e2)
 end
 function c16471775.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -39,4 +41,7 @@ function c16471775.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
+end
+function c16471775.costval(e,c)
+	return c:IsSetCard(0x163) and c:IsType(TYPE_MONSTER)
 end

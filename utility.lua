@@ -2477,6 +2477,18 @@ function Auxiliary.NecroValleyNegateCheck(v)
 	end
 	return false
 end
+--extra cost check
+function Auxiliary.ExtraCostCheck(c,costc,code,tp,re)
+	if c==costc then return false,nil end
+	local ce={Duel.IsPlayerAffectedByEffect(tp,code)}
+	for _,te in ipairs(ce) do
+		if not costc or te:GetHandler()==costc then
+			local val=te:GetValue()
+			if val(te,c,re) then return true,te end
+		end
+	end
+	return false,nil
+end
 --Ursarctic common summon from hand effect
 function Auxiliary.AddUrsarcticSpSummonEffect(c)
 	local e1=Effect.CreateEffect(c)
@@ -2498,17 +2510,20 @@ end
 function Auxiliary.UrsarcticReleaseFilter(c)
 	return c:IsLevelAbove(7) and c:IsLocation(LOCATION_HAND)
 end
-function Auxiliary.UrsarcticExCostFilter(c,tp)
-	return c:IsAbleToRemoveAsCost() and (c:IsHasEffect(16471775,tp) or c:IsHasEffect(89264428,tp))
+function Auxiliary.UrsarcticExCostFilter(c,ec,tp)
+	return c:IsAbleToRemoveAsCost() and (aux.ExtraCostCheck(ec,c,16471775,tp) or aux.ExtraCostCheck(ec,nil,89264428,tp) and c:IsLevelAbove(7) and c:IsSetCard(0x163))
 end
 function Auxiliary.UrsarcticSpSummonCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=Duel.GetReleaseGroup(tp,true):Filter(Auxiliary.UrsarcticReleaseFilter,e:GetHandler())
-	local g2=Duel.GetMatchingGroup(Auxiliary.UrsarcticExCostFilter,tp,LOCATION_GRAVE,0,nil,tp)
+	local g2=Duel.GetMatchingGroup(Auxiliary.UrsarcticExCostFilter,tp,LOCATION_GRAVE,0,nil,e:GetHandler(),tp)
 	g1:Merge(g2)
 	if chk==0 then return g1:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local tc=g1:Select(tp,1,1,nil):GetFirst()
-	local te=tc:IsHasEffect(16471775,tp) or tc:IsHasEffect(89264428,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,16471775,tp)
+	if not te and tc:IsLocation(LOCATION_GRAVE) and tc:IsLevelAbove(7) and tc:IsSetCard(0x163) then
+		_,te=aux.ExtraCostCheck(e:GetHandler(),nil,89264428,tp)
+	end
 	if te then
 		te:UseCountLimit(tp)
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
@@ -2557,13 +2572,13 @@ function Auxiliary.DrytronCostFilter(c,tp)
 	return (c:IsSetCard(0x154) or c:IsType(TYPE_RITUAL)) and c:IsType(TYPE_MONSTER) and Duel.GetMZoneCount(tp,c)>0
 		and (c:IsControler(tp) or c:IsFaceup())
 end
-function Auxiliary.DrytronExtraCostFilter(c,tp)
-	return c:IsAbleToRemove() and c:IsHasEffect(89771220,tp)
+function Auxiliary.DrytronExtraCostFilter(c,ec,tp)
+	return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(ec,c,89771220,tp)
 end
 function Auxiliary.DrytronSpSummonCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	local g1=Duel.GetReleaseGroup(tp,true):Filter(Auxiliary.DrytronCostFilter,e:GetHandler(),tp)
-	local g2=Duel.GetMatchingGroup(Auxiliary.DrytronExtraCostFilter,tp,LOCATION_GRAVE,0,nil,tp)
+	local g2=Duel.GetMatchingGroup(Auxiliary.DrytronExtraCostFilter,tp,LOCATION_GRAVE,0,nil,e:GetHandler(),tp)
 	g1:Merge(g2)
 	if chk==0 then return #g1>0 and Duel.GetCustomActivityCount(97148796,tp,ACTIVITY_SPSUMMON)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -2585,10 +2600,10 @@ function Auxiliary.DrytronSpSummonCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g1:Select(tp,1,1,nil)
 	local tc=rg:GetFirst()
-	local te=tc:IsHasEffect(89771220,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,89771220,tp)
 	if te then
 		te:UseCountLimit(tp)
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 	else
 		Auxiliary.UseExtraReleaseCount(rg,tp)
 		Duel.Release(tc,REASON_COST)
