@@ -1,5 +1,6 @@
 --肆世壊の双牙
 function c95245571.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95245571,0))

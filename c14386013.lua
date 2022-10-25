@@ -62,15 +62,8 @@ function c14386013.drop(e,tp,eg,ep,ev,re,r,rp)
 	aux.GCheckAdditional=nil
 	if sg then
 		Duel.ConfirmCards(1-p,sg)
-		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-		local og=Duel.GetOperatedGroup()
-		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
+		local ct=aux.PlaceCardsOnDeckBottom(p,sg)
 		if ct==0 then return end
-		Duel.SortDecktop(p,p,ct)
-		for i=1,ct do
-			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-		end
 		Duel.BreakEffect()
 		Duel.Draw(p,ct,REASON_EFFECT)
 	end

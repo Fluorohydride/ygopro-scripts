@@ -11,7 +11,6 @@ function c36609518.initial_effect(c)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e1:SetCountLimit(1,36609518)
-	e1:SetCondition(c36609518.descon)
 	e1:SetTarget(c36609518.destg)
 	e1:SetOperation(c36609518.desop)
 	c:RegisterEffect(e1)
@@ -34,9 +33,6 @@ function c36609518.lcheck(g,lc)
 end
 function c36609518.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x152)
-end
-function c36609518.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c36609518.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c36609518.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

@@ -1,6 +1,7 @@
 --肆世壊からの天跨
 function c41619242.initial_effect(c)
-	--Activate
+	aux.AddCodeList(c,56099748)
+  --Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
