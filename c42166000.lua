@@ -124,19 +124,17 @@ end
 function c42166000.tgtg(e,c)
 	return not (c:IsCode(42166000) and c:IsFaceup())
 end
-function c42166000.gchk(g,tc)
-	local tg=g:Clone()
-	if not g:IsExists(c42166000.ttfilter,2,nil,tp) then tg:Remove(c42166000.ttfilter,nil,tp) end
-	return Duel.CheckTribute(tc,2,2,tg)
+function c42166000.gchk(g,tc,tp)
+	return g:IsExists(c42166000.ttfilter,1,nil,tp) and Duel.CheckTribute(tc,#g,#g,g)
 end
 function c42166000.t5con(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	return minc<=5 and g:IsExists(c42166000.ttfilter,1,nil,tp) and g:CheckSubGroup(c42166000.gchk,2,2,c,tp)
+	return minc<=5 and g:CheckSubGroup(c42166000.gchk,3,3,c,tp)
 end
 function c42166000.t5op(e,tp,eg,ep,ev,re,r,rp,c)
-    	local g=Duel.SelectTribute(tp,c,2,2)
+	local g=Duel.SelectTribute(tp,c,2,2)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=Duel.SelectMatchingCard(tp,c42166000.ttfilter,tp,LOCATION_MZONE,0,1,1,g,tp)
 	g:Merge(sg)
