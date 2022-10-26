@@ -129,7 +129,7 @@ function c42166000.gchk(g,tc)
 	if not g:IsExists(c42166000.ttfilter,2,nil,tp) then tg:Remove(c42166000.ttfilter,nil,tp) end
 	return Duel.CheckTribute(tc,2,2,tg)
 end
-function c42166000.t5con(e,c)
+function c42166000.t5con(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
