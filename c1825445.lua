@@ -55,7 +55,7 @@ function c1825445.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		local og=g:GetFirst():GetOverlayGroup()
 		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
+			Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 		end
 		Duel.Overlay(tc,g)
 	end

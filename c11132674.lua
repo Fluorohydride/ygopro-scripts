@@ -55,7 +55,7 @@ function c11132674.srop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11132674.descon(e,tp,eg,ep,ev,re,r,rp)
-	return r&REASON_RULE==0
+	return r&REASON_LOST_OVERLAY==0
 end
 function c11132674.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

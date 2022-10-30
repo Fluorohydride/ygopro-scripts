@@ -46,7 +46,7 @@ function c83108603.matop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			local mg=g:GetFirst():GetOverlayGroup()
 			if mg:GetCount()>0 then
-				Duel.SendtoGrave(mg,REASON_RULE)
+				Duel.SendtoGrave(mg,REASON_RULE+REASON_LOST_OVERLAY)
 			end
 			Duel.Overlay(tc,g)
 		end

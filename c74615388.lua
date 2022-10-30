@@ -66,7 +66,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 				tc1:CancelToGrave()
 				local og=tc1:GetOverlayGroup()
 				if #og>0 then
-					Duel.SendtoGrave(og,REASON_RULE)
+					Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 				end
 				tc1=xg:GetNext()
 			end

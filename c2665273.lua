@@ -75,7 +75,7 @@ function c2665273.drop(e,tp,eg,ep,ev,re,r,rp)
 			for tc in aux.Next(sg) do
 				local og=tc:GetOverlayGroup()
 				if og:GetCount()>0 then
-					Duel.SendtoGrave(og,REASON_RULE)
+					Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 				end
 			end
 			Duel.Overlay(c,sg)

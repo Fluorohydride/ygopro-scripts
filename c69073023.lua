@@ -58,7 +58,7 @@ function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 			local og=tc:GetOverlayGroup()
 			if og:GetCount()>0 then
-				Duel.SendtoGrave(og,REASON_RULE)
+				Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 			end
 			tc:CancelToGrave()
 			Duel.Overlay(hc,tc)

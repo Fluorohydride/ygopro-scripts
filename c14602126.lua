@@ -36,7 +36,7 @@ function c14602126.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and not tc:IsImmuneToEffect(e) and lc:IsRelateToEffect(e) and lc:IsControler(1-tp) and not lc:IsImmuneToEffect(e) then
 		local og=lc:GetOverlayGroup()
 		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
+			Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 		end
 		Duel.Overlay(tc,Group.FromCards(lc))
 	end

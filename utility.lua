@@ -757,7 +757,7 @@ function Auxiliary.XyzOperation(f,lv,minc,maxc)
 						sg:Merge(sg1)
 						tc=og:GetNext()
 					end
-					Duel.SendtoGrave(sg,REASON_RULE)
+					Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -769,7 +769,7 @@ function Auxiliary.XyzOperation(f,lv,minc,maxc)
 						sg:Merge(sg1)
 						tc=mg:GetNext()
 					end
-					Duel.SendtoGrave(sg,REASON_RULE)
+					Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
 					mg:DeleteGroup()
@@ -847,7 +847,7 @@ function Auxiliary.XyzOperationAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 						sg:Merge(sg1)
 						tc=og:GetNext()
 					end
-					Duel.SendtoGrave(sg,REASON_RULE)
+					Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -865,7 +865,7 @@ function Auxiliary.XyzOperationAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 							sg:Merge(sg1)
 							tc=mg:GetNext()
 						end
-						Duel.SendtoGrave(sg,REASON_RULE)
+						Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					end
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
@@ -967,7 +967,7 @@ function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
 						sg:Merge(sg1)
 						tc=og:GetNext()
 					end
-					Duel.SendtoGrave(sg,REASON_RULE)
+					Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -985,7 +985,7 @@ function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
 							sg:Merge(sg1)
 							tc=mg:GetNext()
 						end
-						Duel.SendtoGrave(sg,REASON_RULE)
+						Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					end
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
@@ -1080,7 +1080,7 @@ function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,
 						sg:Merge(sg1)
 						tc=og:GetNext()
 					end
-					Duel.SendtoGrave(sg,REASON_RULE)
+					Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -1098,7 +1098,7 @@ function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,
 							sg:Merge(sg1)
 							tc=mg:GetNext()
 						end
-						Duel.SendtoGrave(sg,REASON_RULE)
+						Duel.SendtoGrave(sg,REASON_RULE+REASON_LOST_OVERLAY)
 					end
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)

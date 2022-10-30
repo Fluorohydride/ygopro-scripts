@@ -64,7 +64,7 @@ function c720147.activate(e,tp,eg,ep,ev,re,r,rp)
 			for oc in aux.Next(g) do
 				local og=oc:GetOverlayGroup()
 				if og:GetCount()>0 then
-					Duel.SendtoGrave(og,REASON_RULE)
+					Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 				end
 			end
 			Duel.Overlay(tc,g)

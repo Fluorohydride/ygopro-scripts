@@ -62,7 +62,7 @@ function c56818977.ovop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) then
 		local og=c:GetOverlayGroup()
 		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
+			Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 		end
 		Duel.Overlay(tc,Group.FromCards(c))
 	end
