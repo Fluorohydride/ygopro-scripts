@@ -107,7 +107,7 @@ function c46593546.ovlop(e,tp,eg,ep,ev,re,r,rp)
 		and rc:IsRelateToEffect(re) and rc:IsControler(1-tp) and not rc:IsImmuneToEffect(e) then
 		local og=rc:GetOverlayGroup()
 		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
+			Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
 		end
 		Duel.Overlay(c,rc)
 	end
