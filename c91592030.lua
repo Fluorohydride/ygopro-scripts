@@ -26,9 +26,10 @@ function c91592030.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local sg=g:Select(tp,1,1,nil)
+	Duel.HintSelection(sg)
 	g:RemoveCard(sg:GetFirst())
 	local opt=Duel.SelectOption(1-tp,aux.Stringid(91592030,0),aux.Stringid(91592030,1))
-	if opt then
+	if opt==0 then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	else
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
