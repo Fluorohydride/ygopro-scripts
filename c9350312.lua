@@ -55,7 +55,8 @@ function c9350312.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 and g:GetFirst():IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,g)
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c9350312.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9350312,0)) then
+		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.SelectYesNo(tp,aux.Stringid(9350312,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=sg:Select(tp,1,1,nil)
