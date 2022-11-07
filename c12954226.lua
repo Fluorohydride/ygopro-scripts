@@ -39,7 +39,7 @@ function c12954226.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg
 	if #eg>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-		e=eg:FilterSelect(tp,c12954226.damfilter,1,1,nil,e)
+		g=eg:FilterSelect(tp,c12954226.damfilter,1,1,nil,e)
 	end
 	Duel.SetTargetCard(g)
 	local value=e:GetHandler():GetAttack()/2
