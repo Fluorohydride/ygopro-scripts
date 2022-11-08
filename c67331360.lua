@@ -120,15 +120,9 @@ function c67331360.matop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g2=Duel.SelectMatchingCard(tp,c67331360.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 		local tc=g2:GetFirst()
-		if tc and not tc:IsImmuneToEffect(e) then
-			local og=g1:GetFirst():GetOverlayGroup()
-			if og:GetCount()>0 then
-				Duel.SendtoGrave(og,REASON_RULE+REASON_LOST_OVERLAY)
-			end
-			if Duel.Overlay(tc,g1)~=0 then
-				Duel.BreakEffect()
-				Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
-			end
+		if tc and not tc:IsImmuneToEffect(e) and Duel.Overlay(tc,g1)~=0 then
+			Duel.BreakEffect()
+			Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 		end
 	end
 end
