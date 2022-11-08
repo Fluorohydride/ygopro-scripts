@@ -61,10 +61,6 @@ function c68250822.operation1(e,tp,eg,ep,ev,re,r,rp)
 	if #g==0 then return end
 	local tc2=g:GetFirst()
 	if not tc:IsImmuneToEffect(e) and not tc2:IsImmuneToEffect(e) then
-		local og=tc:GetOverlayGroup()
-		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
-		end
 		Duel.Overlay(tc2,Group.FromCards(tc))
 	end
 end
