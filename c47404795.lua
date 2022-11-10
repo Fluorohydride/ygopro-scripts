@@ -6,6 +6,7 @@ function s.initial_effect(c)
 	aux.AddLinkProcedure(c,nil,2,2,s.lchk)
 	--place from deck to field
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)

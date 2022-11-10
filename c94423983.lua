@@ -38,7 +38,7 @@ function c94423983.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94423983.matchfilter(c,sumc)
-	return sumc:IsType(c94423983.getTypes(c))
+	return sumc:GetOriginalType()&c94423983.getTypes(c)>0
 end
 function c94423983.sumlimit(e,c,sump)
 	local g=c94423983.getMonsters(sump)
