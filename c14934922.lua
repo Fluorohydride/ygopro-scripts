@@ -27,9 +27,12 @@ function c14934922.valcheck(e,c)
 		c:RegisterFlagEffect(14934922,RESET_EVENT+0x4fe0000,0,1)
 	end
 end
+function c14934922.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
 function c14934922.costfilter(c,mc,tp)
-	return c:IsSetCard(0x119) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,Group.FromCards(c,mc))
+	return c:IsSetCard(0x119) and c:IsType(TYPE_MONSTER) and c:IsFaceupEx() and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingTarget(c14934922.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,Group.FromCards(c,mc),c)
 end
 function c14934922.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(14934922)~=0

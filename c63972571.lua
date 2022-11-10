@@ -55,19 +55,24 @@ function c63972571.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c63972571.cfilter(c)
-	return c:IsSetCard(0x13e) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
+function c63972571.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
+function c63972571.cfilter(c,tp)
+	return c:IsSetCard(0x13e) and c:IsType(TYPE_MONSTER) and c:IsFaceupEx()
 		and c:IsAbleToRemoveAsCost()
+		and Duel.IsExistingTarget(c63972571.desfilter,tp,0,LOCATION_ONFIELD,2,nil,c)
 end
 function c63972571.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c63972571.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c63972571.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c63972571.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c63972571.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c63972571.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(aux.TURE,tp,0,LOCATION_ONFIELD,2,nil) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(aux.TURE,tp,0,LOCATION_ONFIELD,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TURE,tp,0,LOCATION_ONFIELD,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)

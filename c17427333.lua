@@ -17,9 +17,12 @@ function c17427333.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		return true
 	end
 end
+function c17427333.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
 function c17427333.costfilter(c,tp)
 	return c:IsRace(RACE_MACHINE) and (c:IsControler(tp) or c:IsFaceup()) and c:GetTextAttack()>=1000
-		and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingTarget(c17427333.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
 function c17427333.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

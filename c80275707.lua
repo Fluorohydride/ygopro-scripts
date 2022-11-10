@@ -58,9 +58,12 @@ function s.tohcon2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	return #g>0 and g:FilterCount(s.confilter,nil)==0
 end
+function s.cfilter2(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsFaceup() and c:IsAbleToHand()
+end
 function s.costfilter(c,tp)
 	return c:IsRace(RACE_WINDBEAST) and (c:IsControler(tp) or c:IsFaceup())
-		and Duel.IsExistingTarget(s.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingTarget(s.cfilter2,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
 function s.tohcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,s.costfilter,1,nil,tp) end
@@ -73,7 +76,8 @@ end
 function s.tohtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and s.cfilter(chkc) end
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingTarget(s.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(s.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,s.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)

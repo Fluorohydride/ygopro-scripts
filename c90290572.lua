@@ -62,9 +62,12 @@ function c90290572.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+function c90290572.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
 function c90290572.costfilter(c,tp)
 	return c:IsRace(RACE_FAIRY) and (c:IsFaceup() or c:IsControler(tp))
-		and Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingTarget(c90290572.desfilter,tp,0,LOCATION_ONFIELD,1,c,c)
 end
 function c90290572.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c90290572.costfilter,1,nil,tp) end
@@ -73,7 +76,8 @@ function c90290572.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90290572.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)

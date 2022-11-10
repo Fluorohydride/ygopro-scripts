@@ -27,9 +27,12 @@ function c55051920.initial_effect(c)
 	e3:SetOperation(c55051920.repop)
 	c:RegisterEffect(e3)
 end
+function c55051920.tgfilter2(c,tc)
+	return c:GetEquipTarget()~=tc and c55051920.tgfilter(c)
+end
 function c55051920.costfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingTarget(c55051920.tgfilter,tp,LOCATION_ONFIELD,0,1,c)
+		and Duel.IsExistingTarget(c55051920.tgfilter2,tp,LOCATION_ONFIELD,0,1,c,c)
 end
 function c55051920.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xfe,0x11b) and not c:IsCode(55051920)
@@ -42,7 +45,8 @@ function c55051920.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c55051920.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c55051920.tgfilter(chkc) end
-	if chk==0 then return true end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(c55051920.tgfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c55051920.tgfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 end

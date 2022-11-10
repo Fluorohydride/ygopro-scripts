@@ -45,8 +45,12 @@ end
 function c95192919.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
+function c95192919.tdfilter(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsAbleToDeck()
+end
 function c95192919.costfilter(c,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:IsAttribute(ATTRIBUTE_WIND) and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.IsExistingTarget(c95192919.tdfilter,tp,0,LOCATION_ONFIELD,1,c,c)
 end
 function c95192919.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c95192919.costfilter,1,nil,tp) end
@@ -55,7 +59,8 @@ function c95192919.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95192919.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToDeck() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)

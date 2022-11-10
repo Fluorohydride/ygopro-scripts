@@ -45,9 +45,12 @@ end
 function c33964637.ffilter(c,fc,sub,mg,sg)
 	return c:IsFusionSetCard(0x3d) and (not sg or not sg:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute()))
 end
+function c33964637.rmfilter(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsAbleToRemove()
+end
 function c33964637.costfilter(c,tp)
-	return c:IsSetCard(0x3d) and c:IsAbleToRemoveAsCost() and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
-		and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+	return c:IsSetCard(0x3d) and c:IsAbleToRemoveAsCost() and c:IsFaceupEx()
+		and Duel.IsExistingTarget(c33964637.rmfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
 function c33964637.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33964637.costfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,nil,tp) end
@@ -58,7 +61,8 @@ end
 function c33964637.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
-	if chk==0 then return true end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)

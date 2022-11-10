@@ -54,9 +54,13 @@ end
 function c98506199.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c98506199.cfilter,1,nil,tp)
 end
+function c98506199.tdfilter(c,e)
+	if not c:IsAbleToDeck() then return false end
+	return not e:IsCostChecked() or c:GetEquipTarget()~=e:GetHandler()
+end
 function c98506199.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToDeck() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c98506199.tdfilter,tp,0,LOCATION_ONFIELD,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)

@@ -12,14 +12,22 @@ function c79333300.initial_effect(c)
 	e1:SetOperation(c79333300.activate)
 	c:RegisterEffect(e1)
 end
+function c79333300.tdfilter(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsAbleToDeck()
+end
+function c79333300.costfilter(c,tp)
+	return c:IsAttribute(ATTRIBUTE_WIND) and (c:IsFaceup() or c:IsControler(tp))
+		and Duel.IsExistingTarget(c79333300.tdfilter,tp,0,LOCATION_ONFIELD,1,c,c)
+end
 function c79333300.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,nil,ATTRIBUTE_WIND) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_WIND)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c79333300.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c79333300.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c79333300.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsAbleToDeck() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)

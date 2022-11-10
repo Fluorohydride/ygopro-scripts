@@ -52,14 +52,22 @@ end
 function c60675348.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0xd8) and bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
+function c60675348.thfilter(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsAbleToHand()
+end
+function c60675348.costfilter(c,tp)
+	return c:IsSetCard(0xd8) and (c:IsFaceup() or c:IsControler(tp))
+		and Duel.IsExistingTarget(c60675348.thfilter,tp,0,LOCATION_ONFIELD,1,c,c)
+end
 function c60675348.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xd8) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xd8)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c60675348.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c60675348.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c60675348.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToHand() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)

@@ -48,19 +48,24 @@ end
 function c68045685.indtg(e,c)
 	return c:IsRace(RACE_BEASTWARRIOR) and c:IsSetCard(0x88)
 end
-function c68045685.costfilter(c)
+function c68045685.disfilter(c,tc)
+	return c:GetEquipTarget()~=tc and aux.NegateAnyFilter(c)
+end
+function c68045685.costfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x88) and c:IsAbleToGraveAsCost()
-		and (c:IsFaceup() or c:IsLocation(LOCATION_HAND))
+		and c:IsFaceupEx()
+		and Duel.IsExistingTarget(c68045685.disfilter,tp,0,LOCATION_ONFIELD,1,nil,c)
 end
 function c68045685.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c68045685.costfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c68045685.costfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c68045685.costfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c68045685.costfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c68045685.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.NegateAnyFilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)

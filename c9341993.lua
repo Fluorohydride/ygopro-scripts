@@ -15,10 +15,14 @@ end
 function c9341993.costfilter(c,tp)
 	return c:IsSetCard(0x140) and (c:IsControler(tp) or c:IsFaceup())
 end
+function c9341993.desfilter(c,g)
+	local tc=c:GetEquipTarget()
+	return not tc or not g:IsContains(tc)
+end
 function c9341993.fselect(g,tp,exc)
 	local dg=g:Clone()
 	if exc then dg:AddCard(exc) end
-	if Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,g:GetCount()+1,dg) then
+	if Duel.IsExistingTarget(c9341993.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,g:GetCount()+1,dg,dg) then
 		Duel.SetSelectedCard(g)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
 	else return false end

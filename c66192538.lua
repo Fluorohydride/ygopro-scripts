@@ -52,9 +52,13 @@ end
 function c66192538.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c66192538.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
+function c66192538.disfilter(c,e)
+	if not aux.NegateAnyFilter(c) then return false end
+	return not e:IsCostChecked() or c:GetEquipTarget()~=e:GetHandler()
+end
 function c66192538.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.NegateAnyFilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c66192538.disfilter,tp,0,LOCATION_ONFIELD,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)

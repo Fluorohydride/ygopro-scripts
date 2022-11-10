@@ -26,8 +26,12 @@ function c32912040.initial_effect(c)
 	e2:SetOperation(c32912040.operation)
 	c:RegisterEffect(e2)
 end
+function c32912040.desfilter2(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsFacedown()
+end
 function c32912040.costfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe2) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingTarget(c32912040.desfilter2,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,c)
 end
 function c32912040.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c32912040.costfilter,tp,LOCATION_ONFIELD,0,1,nil) end
@@ -40,7 +44,8 @@ function c32912040.desfilter(c)
 end
 function c32912040.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c32912040.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c32912040.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(c32912040.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c32912040.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)

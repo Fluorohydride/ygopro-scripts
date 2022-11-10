@@ -43,13 +43,17 @@ function c89662401.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
-function c89662401.costfilter(c)
-	return c:IsSetCard(0x119) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
+function c89662401.actfilter(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsFacedown()
+end
+function c89662401.costfilter(c,tp)
+	return c:IsSetCard(0x119) and c:IsFaceupEx() and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingTarget(c89662401.actfilter,tp,0,LOCATION_SZONE,1,nil,c)
 end
 function c89662401.actcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c89662401.costfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c89662401.costfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c89662401.costfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c89662401.costfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,1,nil,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c89662401.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

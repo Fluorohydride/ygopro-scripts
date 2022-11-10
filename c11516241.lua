@@ -46,8 +46,11 @@ end
 function c11516241.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
 end
+function c11516241.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
 function c11516241.rfilter(c,tp)
-	return c:IsSetCard(0xfc) and c:IsType(TYPE_LINK) and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+	return c:IsSetCard(0xfc) and c:IsType(TYPE_LINK) and Duel.IsExistingTarget(c11516241.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
 function c11516241.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c11516241.rfilter,1,nil,tp) end
@@ -58,7 +61,7 @@ function c11516241.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11516241.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	if chk==0 then return true end
+	if chk==0 then return e:IsCostChecked() end
 	local ct=e:GetLabel()
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)

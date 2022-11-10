@@ -64,10 +64,17 @@ function c22110647.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 	end
 end
+function c22110647.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
+function c22110647.costfilter(c,tp)
+	return c:IsSetCard(0x101b) and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.IsExistingTarget(c22110647.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
+end
 function c22110647.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0
-		and Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x101b) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x101b)
+		and Duel.CheckReleaseGroup(tp,c22110647.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c22110647.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -78,8 +85,8 @@ function c22110647.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c22110647.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)>1
-		and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)

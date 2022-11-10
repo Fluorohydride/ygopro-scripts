@@ -16,7 +16,7 @@ function c83102080.filter(c,ec)
 		and Duel.IsExistingTarget(c83102080.tgfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ec,c)
 end
 function c83102080.tgfilter(c,tc)
-	return c~=tc
+	return c~=tc and c:GetEquipTarget()~=tc
 end
 function c83102080.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

@@ -47,9 +47,16 @@ function c3300267.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_COST)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(3300267,2))
 end
+function c3300267.desfilter2(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsType(TYPE_SPELL+TYPE_TRAP)
+end
+function c3300267.costfilter(c,tp)
+	return c:IsSetCard(0x69) and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.IsExistingTarget(c3300267.desfilter2,tp,0,LOCATION_ONFIELD,1,c,c)
+end
 function c3300267.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(tp,Card.IsSetCard,1,e:GetHandler(),0x69) end
-	local g=Duel.SelectReleaseGroupEx(tp,Card.IsSetCard,1,1,e:GetHandler(),0x69)
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c3300267.costfilter,1,e:GetHandler(),tp) end
+	local g=Duel.SelectReleaseGroupEx(tp,c3300267.costfilter,1,1,e:GetHandler(),tp)
 	Duel.Release(g,REASON_COST)
 end
 function c3300267.desfilter(c)
@@ -57,7 +64,8 @@ function c3300267.desfilter(c)
 end
 function c3300267.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c3300267.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c3300267.desfilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(c3300267.desfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c3300267.desfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)

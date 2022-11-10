@@ -49,8 +49,11 @@ end
 function c99011763.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(99011763)~=0
 end
+function c99011763.ctfilter(c,tc)
+	return c:GetEquipTarget()~=tc and c:IsCanAddCounter(0x1049,1)
+end
 function c99011763.cfilter(c)
-	return Duel.IsExistingTarget(Card.IsCanAddCounter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,0x1049,1)
+	return Duel.IsExistingTarget(c99011763.ctfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
 function c99011763.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c99011763.cfilter,1,nil) end
@@ -59,7 +62,8 @@ function c99011763.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99011763.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsCanAddCounter(0x1049,1) end
-	if chk==0 then return true end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,0x1049,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,0x1049,1)
 end

@@ -32,12 +32,12 @@ function c36970611.initial_effect(c)
 	e3:SetOperation(c36970611.thop)
 	c:RegisterEffect(e3)
 end
-function c36970611.tgfilter(c,tp,xc)
-	return c:IsAbleToRemove(tp,POS_FACEDOWN) and c~=xc
+function c36970611.tgfilter(c,tp,xc,tc)
+	return c:IsAbleToRemove(tp,POS_FACEDOWN) and c~=xc and c:GetEquipTarget()~=tc
 end
 function c36970611.cfilter(c,tp,xc)
-	return c:IsSetCard(0xc1) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingTarget(c36970611.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,tp,xc)
+	return c:IsSetCard(0xc1) and c:IsType(TYPE_MONSTER) and c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
+		and Duel.IsExistingTarget(c36970611.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,tp,xc,c)
 end
 function c36970611.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local xc=nil
@@ -49,9 +49,10 @@ function c36970611.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36970611.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove(tp,POS_FACEDOWN) end
-	if chk==0 then return true end
 	local xg=nil
 	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg=e:GetHandler() end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,xg,tp,POS_FACEDOWN) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,xg,tp,POS_FACEDOWN)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)

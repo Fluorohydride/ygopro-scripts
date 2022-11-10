@@ -40,9 +40,12 @@ function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
 		and Duel.IsExistingMatchingCard(aux.AND(Card.IsFaceup,Card.IsSetCard),tp,LOCATION_MZONE,0,1,nil,0x188)
 end
+function s.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
+end
 function s.cfilter(c,tp)
 	return c:IsRace(RACE_DRAGON) and (c:IsControler(tp) or c:IsFaceup())
-		and Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingTarget(s.desfilter,tp,0,LOCATION_ONFIELD,1,c,c)
 end
 function s.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
