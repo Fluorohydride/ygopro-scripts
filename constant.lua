@@ -579,7 +579,6 @@ EFFECT_CHANGE_GRAVE_ATTRIBUTE	=365	--墓地的卡将会改变属性（升级转�
 EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变）
 EFFECT_ACTIVATION_COUNT_LIMIT	=367	--reserve
 EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
-EFFECT_RACE_ONLY_ONE			=369	--千查万别
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A

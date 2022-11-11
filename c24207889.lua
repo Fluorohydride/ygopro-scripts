@@ -9,7 +9,7 @@ function c24207889.initial_effect(c)
 	--only one
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_RACE_ONLY_ONE)
+	e2:SetCode(24207889)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(1,1)
@@ -62,7 +62,7 @@ function c24207889.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return Duel.IsExistingMatchingCard(c24207889.rmfilter,tp,LOCATION_MZONE,0,1,nil,c:GetRace())
 end
 function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.IsPlayerAffectedByEffect(0,EFFECT_RACE_ONLY_ONE) then
+	if not Duel.IsPlayerAffectedByEffect(0,24207889) then
 		if not c24207889.is_empty then
 			local race=1
 			while race<RACE_ALL do
