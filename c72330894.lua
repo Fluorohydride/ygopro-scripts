@@ -71,17 +71,11 @@ end
 function c72330894.spfilter(c,e,tp,lv)
 	return c:IsRace(RACE_WINDBEAST) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c72330894.seqfilter(c,seq)
-	return c:GetSequence()==seq
+function c72330894.seqfilter(c)
+	return c:GetSequence()<5
 end
 function c72330894.getct()
-	local ct=10
-	for p=0,1 do
-		for i=0,4 do
-			if Duel.IsExistingMatchingCard(c72330894.seqfilter,p,LOCATION_SZONE,0,1,nil,i) then ct=ct-1 end
-		end
-	end
-	return ct
+	return 5*2-Duel.GetMatchingGroupCount(c72330894.seqfilter,0,LOCATION_SZONE,LOCATION_SZONE,nil)
 end
 function c72330894.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
