@@ -42,25 +42,18 @@ function s.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.cfilter(c,tp)
 	return c:IsRace(RACE_DRAGON) and (c:IsControler(tp) or c:IsFaceup())
-		and Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,aux.GetLeaveFieldGroup(c))
 end
 function s.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
-	return true
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp)
+	Duel.Release(sg,REASON_COST)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
-	local l=e:GetLabel()==1
-	if chk==0 then
-		e:SetLabel(0)
-		return l and Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
-	end
-	if l then
-		e:SetLabel(0)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp)
-		Duel.Release(sg,REASON_COST)
-	end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)

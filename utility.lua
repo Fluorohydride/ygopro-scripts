@@ -3022,3 +3022,26 @@ function Auxiliary.PlaceCardsOnDeckBottom(p,g,reason)
 	end
 	return #og
 end
+--For cards like "Phantom Knights' Fog Blade", "Crackdown"
+function Auxiliary.RegisterLeaveFieldWhenTargetLeave(c,reset)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_LEAVE_FIELD_WHEN_TARGET_LEAVE)
+	if reset then e1:SetReset(reset) end
+	c:RegisterEffect(e1)
+	return e1
+end
+--Get the cards which will leave field together with c
+function Auxiliary.GetLeaveFieldGroup(c,exc)
+	local g=Group.FromCards(c)
+	if exc then g:AddCard(exc) end
+	local equipg=c:GetEquipGroup()
+	g:Merge(equipg)
+	local targetg=c:GetOwnerTarget()
+	for tc in Auxiliary.Next(targetg) do
+		if tc:IsHasEffect(EFFECT_LEAVE_FIELD_WHEN_TARGET_LEAVE) then
+			g:AddCard(tc)
+		end
+	end
+	return g
+end

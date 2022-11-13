@@ -1,5 +1,6 @@
 --幻影霧剣
 function c25542642.initial_effect(c)
+	aux.RegisterLeaveFieldWhenTargetLeave(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DISABLE)
