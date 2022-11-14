@@ -30,7 +30,7 @@ function s.initial_effect(c)
 	e4:SetTarget(s.rmtg)
 	e4:SetOperation(s.rmop)
 	c:RegisterEffect(e4)
-	Auxiliary.RegisterMergedDelayedEvent(c,id,EVENT_SPSUMMON_SUCCESS)
+	aux.RegisterMergedDelayedEvent(c,id,EVENT_SPSUMMON_SUCCESS)
 end
 function s.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)==0

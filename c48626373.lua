@@ -23,7 +23,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.mttg)
 	e2:SetOperation(s.mtop)
 	c:RegisterEffect(e2)
-	Auxiliary.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
+	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
 	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,2))

@@ -14,7 +14,7 @@ function c52038441.initial_effect(c)
 	e1:SetTarget(c52038441.distg)
 	e1:SetOperation(c52038441.disop)
 	c:RegisterEffect(e1)
-	Auxiliary.RegisterMergedDelayedEvent(c,52038441,EVENT_SPSUMMON_SUCCESS)
+	aux.RegisterMergedDelayedEvent(c,52038441,EVENT_SPSUMMON_SUCCESS)
 end
 function c52038441.cfilter(c,tp)
 	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and (aux.NegateMonsterFilter(c) or c:GetAttack()>0)

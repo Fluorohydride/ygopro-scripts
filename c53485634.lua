@@ -11,7 +11,7 @@ function c53485634.initial_effect(c)
 	e1:SetTarget(c53485634.sptg)
 	e1:SetOperation(c53485634.spop)
 	c:RegisterEffect(e1)
-	Auxiliary.RegisterMergedDelayedEvent(c,53485634,EVENT_TO_GRAVE)
+	aux.RegisterMergedDelayedEvent(c,53485634,EVENT_TO_GRAVE)
 	--extra summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(53485634,1))

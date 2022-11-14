@@ -37,7 +37,7 @@ function c63767246.initial_effect(c)
 	e3:SetTarget(c63767246.atktg)
 	e3:SetOperation(c63767246.atkop)
 	c:RegisterEffect(e3)
-	Auxiliary.RegisterMergedDelayedEvent(c,63767246,EVENT_DESTROYED)
+	aux.RegisterMergedDelayedEvent(c,63767246,EVENT_DESTROYED)
 end
 aux.xyz_number[63767246]=38
 function c63767246.discon(e,tp,eg,ep,ev,re,r,rp)
