@@ -1,7 +1,7 @@
 --ソーンヴァレル・ドラゴン
 function c29296344.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),2,2,c29296344.lcheck)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_DRAGON),2,2,c29296344.lcheck)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -20,7 +20,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.lchk(g)
-	return g:IsExists(Card.IsRace,1,nil,RACE_FIEND)
+	return g:IsExists(Card.IsLinkRace,1,nil,RACE_FIEND)
 end
 function s.dtfcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
