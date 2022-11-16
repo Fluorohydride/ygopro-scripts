@@ -1,7 +1,7 @@
 --ソーンヴァレル・ドラゴン
 function c29296344.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),2,2,c29296344.lcheck)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_DRAGON),2,2,c29296344.lcheck)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +16,7 @@ function c29296344.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c29296344.lcheck(g,lc)
-	return g:IsExists(Card.IsSetCard,1,nil,0x102)
+	return g:IsExists(Card.IsLinkSetCard,1,nil,0x102)
 end
 function c29296344.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
