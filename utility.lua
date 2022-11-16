@@ -3057,6 +3057,6 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 	if #g>0 then
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,EVENT_CUSTOM+e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
 	end
-	g:Clear()
 end
