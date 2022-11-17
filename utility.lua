@@ -3110,7 +3110,7 @@ function Auxiliary.RegisterTargetLeaveWhenThisCardLeaveField(c,reason,operation,
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
 	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetOperation(Auxiliary.TargetLeaveWhenThisCardLeaveField)
+	e2:SetOperation(Auxiliary.TargetLeaveWhenThisCardLeaveField(reason,operation))
 	e2:SetLabelObject(e1)
 	if reset then e2:SetReset(reset) end
 	c:RegisterEffect(e2)
