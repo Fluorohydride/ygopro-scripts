@@ -11,13 +11,7 @@ function c36975314.initial_effect(c)
 	e1:SetOperation(c36975314.operation)
 	c:RegisterEffect(e1)
 	--Destroy
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetCondition(c36975314.descon)
-	e2:SetOperation(c36975314.desop)
-	c:RegisterEffect(e2)
+	aux.RegisterThisCardLeaveFieldWhenTargetLeave(c)
 	--control
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_TARGET)
@@ -58,11 +52,4 @@ function c36975314.effcon(e)
 end
 function c36975314.ctval(e,c)
 	return e:GetHandlerPlayer()
-end
-function c36975314.descon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and eg:IsContains(tc)
-end
-function c36975314.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
