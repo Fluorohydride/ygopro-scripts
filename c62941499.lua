@@ -64,6 +64,7 @@ function c62941499.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local flag=Duel.SelectField(tp,1,0,LOCATION_ONFIELD,filter)
+	Duel.Hint(HINT_ZONE,tp,flag)
 	local seq=math.log(flag>>16,2)
 	e:SetLabel(seq)
 	local g=Duel.GetMatchingGroup(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,nil,seq,tp)
