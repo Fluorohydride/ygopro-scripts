@@ -58,10 +58,10 @@ function c23931679.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23931679.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
-	return not c:IsAttribute(ATTRIBUTE_WATER) and c23931679[targetp or sump]==1
+	return c:IsAttribute(ATTRIBUTE_ALL-ATTRIBUTE_WATER) and c23931679[targetp or sump]==1
 end
 function c23931679.wtfilter(c)
-	return not c:IsAttribute(ATTRIBUTE_WATER) and c:IsFaceup()
+	return c:IsAttribute(ATTRIBUTE_ALL-ATTRIBUTE_WATER) and c:IsFaceup()
 end
 function c23931679.rmfilter(c,at)
 	return c:GetAttribute()==at

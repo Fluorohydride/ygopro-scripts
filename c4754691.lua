@@ -36,7 +36,7 @@ function c4754691.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(22702055)
 end
 function c4754691.desfilter(c)
-	return c:IsFaceup() and not c:IsAttribute(ATTRIBUTE_WATER)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_ALL-ATTRIBUTE_WATER)
 end
 function c4754691.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c4754691.desfilter(chkc) end
