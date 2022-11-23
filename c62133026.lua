@@ -74,7 +74,7 @@ function c62133026.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c62133026.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsAttribute(ATTRIBUTE_EARTH)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsAttribute(ATTRIBUTE_ALL-ATTRIBUTE_EARTH)
 end
 function c62133026.tgtg(e,c)
 	return c:IsSetCard(0x182) and c:IsFaceup()
