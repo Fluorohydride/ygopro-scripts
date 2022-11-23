@@ -21,7 +21,7 @@ function c32281491.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32281491.spfilter(c,e,tp)
-	return not c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsSetCard(0x48) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttribute(ATTRIBUTE_ALL-ATTRIBUTE_LIGHT) and c:IsSetCard(0x48) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c32281491.eqfilter(c)
 	return c:IsSetCard(0x107f) and c:IsFaceup()
