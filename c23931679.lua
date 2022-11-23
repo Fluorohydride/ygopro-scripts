@@ -17,6 +17,7 @@ function c23931679.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(1,1)
+	e2:SetCondition(c23931679.condition)
 	c:RegisterEffect(e2)
 	--cannot summon,spsummon,flipsummon
 	local e3=Effect.CreateEffect(c)
