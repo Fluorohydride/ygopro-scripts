@@ -41,7 +41,7 @@ function c62023839.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62023839.desfilter(c)
-	return c:IsFacedown() or not c:IsAttribute(ATTRIBUTE_WATER)
+	return c:IsFacedown() or c:IsNonAttribute(ATTRIBUTE_WATER)
 end
 function c62023839.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c62023839.desfilter,tp,LOCATION_MZONE,0,nil)
