@@ -46,7 +46,7 @@ function c10045474.activate(e,tp,eg,ep,ev,re,r,rp)
 			e4:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
 			e4:SetTarget(c10045474.distg)
 			e4:SetReset(RESET_PHASE+PHASE_END)
-			e4:SetLabel(c:GetSequence())
+			e4:SetLabel(c:GetSequence(),c:GetFieldID())
 			Duel.RegisterEffect(e4,tp)
 			local e5=Effect.CreateEffect(c)
 			e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -68,9 +68,9 @@ function c10045474.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10045474.distg(e,c)
-	local seq=e:GetLabel()
+	local seq,fid=e:GetLabel()
 	local tp=e:GetHandlerPlayer()
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and aux.GetColumn(c,tp)==seq
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and aux.GetColumn(c,tp)==seq and c:GetFieldID()~=fid
 end
 function c10045474.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tseq=e:GetLabel()

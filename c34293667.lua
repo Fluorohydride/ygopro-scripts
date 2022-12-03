@@ -23,12 +23,12 @@ function c34293667.initial_effect(c)
 end
 function c34293667.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetBattleMonster(1-tp)
-	if chk==0 then return tc and tc:IsRelateToBattle() end
+	if chk==0 then return tc and tc:IsRelateToBattle() and tc:IsFaceup() end
 end
 function c34293667.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetBattleMonster(1-tp)
-	if tc and tc:IsRelateToBattle() then
+	if tc and tc:IsRelateToBattle() and tc:IsFaceup() then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

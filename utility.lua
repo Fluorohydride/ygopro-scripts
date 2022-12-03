@@ -2030,7 +2030,7 @@ function Auxiliary.LUncompatibilityFilter(c,sg,lc,tp)
 end
 function Auxiliary.LCheckGoal(sg,tp,lc,gf,lmat)
 	return sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),#sg,#sg)
-		and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
+		and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg,lc,tp))
 		and not sg:IsExists(Auxiliary.LUncompatibilityFilter,1,nil,sg,lc,tp)
 		and (not lmat or sg:IsContains(lmat))
 end
@@ -3021,4 +3021,42 @@ function Auxiliary.PlaceCardsOnDeckBottom(p,g,reason)
 		end
 	end
 	return #og
+end
+--The event is triggered multiple times in a chain
+--but only 1 event with EVENT_CUSTOM+code will be triggered at EVENT_CHAIN_END, or immediately if not in chain
+--NOTE: re,r,rp,ep,ev of that custom event ARE NOT releated to the real event that trigger this custom event
+function Auxiliary.RegisterMergedDelayedEvent(c,code,event,g)
+	local mt=getmetatable(c)
+	if mt[event]==true then return end
+	mt[event]=true
+	if not g then g=Group.CreateGroup() end
+	g:KeepAlive()
+	local ge1=Effect.CreateEffect(c)
+	ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	ge1:SetCode(event)
+	ge1:SetLabel(code)
+	ge1:SetLabelObject(g)
+	ge1:SetOperation(Auxiliary.MergedDelayEventCheck1)
+	Duel.RegisterEffect(ge1,0)
+	local ge2=ge1:Clone()
+	ge2:SetCode(EVENT_CHAIN_END)
+	ge2:SetOperation(Auxiliary.MergedDelayEventCheck2)
+	Duel.RegisterEffect(ge2,0)
+end
+function Auxiliary.MergedDelayEventCheck1(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	g:Merge(eg)
+	if Duel.GetCurrentChain()==0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,EVENT_CUSTOM+e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	if #g>0 then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,EVENT_CUSTOM+e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
 end

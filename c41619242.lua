@@ -14,7 +14,10 @@ function c41619242.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c41619242.atkfilter(c)
-	return c:IsSetCard(0x17a) or c:IsCode(56099748)
+	return c:IsFaceup() and (c:IsSetCard(0x17a) or c:IsCode(56099748))
+end
+function c41619242.atkfilter2(c)
+	return c:IsFaceup() and (c:GetAttack()>0 or c:GetDefense()>0)
 end
 function c41619242.disfilter(c,tp)
 	return (c:IsSetCard(0x17a) or c:IsCode(56099748))
@@ -24,7 +27,7 @@ function c41619242.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local ct=Duel.GetCurrentChain()
 	local b1=Duel.IsExistingTarget(c41619242.atkfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
+		and Duel.IsExistingTarget(c41619242.atkfilter2,tp,0,LOCATION_MZONE,1,nil)
 	if chk==0 then
 		if ct<1 and not b1 then return false end
 		local te,tg=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
@@ -52,7 +55,7 @@ function c41619242.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local g1=Duel.SelectTarget(tp,c41619242.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-		local g2=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
+		local g2=Duel.SelectTarget(tp,c41619242.atkfilter2,tp,0,LOCATION_MZONE,1,1,nil)
 		g1:Merge(g2)
 	else
 		e:SetCategory(CATEGORY_DISABLE)

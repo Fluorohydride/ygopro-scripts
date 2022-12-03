@@ -24,7 +24,7 @@ function c55557574.sumfilter(c)
 	return c:IsSummonable(true,nil) and c:IsLevel(10)
 end
 function c55557574.thfilter(c)
-	return c:GetTextAttack()==-2 and c:IsAbleToHand() and c:IsType(TYPE_MONSTER) and c:IsLevel(10) and not c:IsAttribute(ATTRIBUTE_DARK)
+	return c:GetTextAttack()==-2 and c:IsAbleToHand() and c:IsType(TYPE_MONSTER) and c:IsLevel(10) and c:IsNonAttribute(ATTRIBUTE_DARK)
 end
 function c55557574.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c55557574.checkfilter,tp,LOCATION_MZONE,0,nil)

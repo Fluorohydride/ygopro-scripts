@@ -18,11 +18,12 @@ function s.initial_effect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_REMOVE)
+	e2:SetCode(EVENT_CUSTOM+id)
 	e2:SetCondition(s.mtcon)
 	e2:SetTarget(s.mttg)
 	e2:SetOperation(s.mtop)
 	c:RegisterEffect(e2)
+	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
 	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,2))
@@ -61,14 +62,7 @@ function s.mtcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then
-		--workaround check of only 1 activation
-		local g=e:GetLabelObject()
-		local res=c:GetFlagEffect(id)==0 and (g==nil or g:Equal(eg))
-		if res then e:SetLabelObject(eg) end
-		return res
-	end
-	e:SetLabelObject(nil)
+	if chk==0 then return c:GetFlagEffect(id)==0 end
 	c:RegisterFlagEffect(id,RESET_CHAIN,0,1)
 end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)

@@ -63,5 +63,5 @@ function c46173679.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c46173679.recon(e,c)
-	return not c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsNonAttribute(ATTRIBUTE_DARK)
 end
