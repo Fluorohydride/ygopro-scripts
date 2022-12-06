@@ -11,7 +11,7 @@ function c31440542.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c31440542.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsAbleToChangeControler()
 end
 function c31440542.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c31440542.filter(chkc) end
