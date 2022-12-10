@@ -39,9 +39,7 @@ function c11270236.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)
 end
 function c11270236.rmfilter1(c,tp)
-	local att=c:GetAttribute()
-	return c:IsSetCard(0xf4) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsAbleToRemove()
-		and Duel.IsExistingMatchingCard(c11270236.rmfilter2,tp,0,LOCATION_MZONE,1,nil,att)
+	return c:IsSetCard(0xf4) and c:IsType(TYPE_MONSTER) and c:IsFaceupEx() and c:IsAbleToRemove()
 end
 function c11270236.rmfilter2(c,att)
 	return c:IsFaceup() and c:IsAttribute(att) and c:IsAbleToRemove()
