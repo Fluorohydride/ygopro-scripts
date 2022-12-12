@@ -42,7 +42,8 @@ function s.cfilter(c,e)
 end
 function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) end
-	if chk==0 then return eg:IsExists(s.cfilter,1,nil,e) end
+	if chk==0 then return eg:IsExists(s.cfilter,1,nil,e)
+		and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=eg:FilterSelect(tp,s.cfilter,1,1,nil,e)
 	Duel.SetTargetCard(g)
