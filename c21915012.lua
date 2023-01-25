@@ -44,6 +44,10 @@ function c21915012.valcheck(e,c)
 	local g=c:GetMaterial()
 	local mg=g:Filter(Card.IsType,nil,TYPE_TUNER)
 	local tc=mg:GetFirst()
+	if not tc then
+		e:GetLabelObject():SetLabel(0)
+		return
+	end
 	if #mg>1 then
 		local tg=g-(g:Filter(Card.IsNotTuner,nil,c))
 		if #tg>0 then
@@ -68,6 +72,7 @@ function c21915012.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local ct=e:GetLabel()
+	if ct==0 then return end
 	local sel=nil
 	if c:IsLevel(1) then
 		sel=Duel.SelectOption(tp,aux.Stringid(21915012,1))
