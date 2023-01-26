@@ -1,5 +1,7 @@
 --アサルト・シンクロン
 function c77202120.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--special summon self
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77202120,0))
@@ -20,6 +22,8 @@ function c77202120.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,77202121)
 	e2:SetCost(aux.bfgcost)
+	e2:SetLabelObject(e0)
+	e2:SetCondition(c77202120.condition)
 	e2:SetTarget(c77202120.target)
 	e2:SetOperation(c77202120.activate)
 	c:RegisterEffect(e2)
@@ -52,6 +56,17 @@ function c77202120.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c77202120.splimit(e,c)
 	return not c:IsType(TYPE_SYNCHRO) and c:IsLocation(LOCATION_EXTRA)
+end
+function c77202120.cfilter(c,e,tp,se,cre)
+	return c:IsControler(tp) and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
+		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
+		and (se==nil or c:GetReasonEffect()~=se)
+		and (c:GetReasonEffect()~=cre or cre and cre:IsActivated())
+end
+function c77202120.condition(e,tp,eg,ep,ev,re,r,rp)
+	local se=e:GetLabelObject():GetLabelObject()
+	local cre=e:GetHandler():GetReasonEffect()
+	return eg:IsExists(c77202120.cfilter,1,nil,e,tp,se,cre)
 end
 function c77202120.spfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
