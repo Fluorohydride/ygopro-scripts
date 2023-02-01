@@ -46,10 +46,14 @@ function c72971064.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
+function c72971064.thfilter(c,tp)
+	return c:IsSummonPlayer(1-tp) and c:IsAbleToHand()
+end
 function c72971064.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=eg:Filter(Card.IsAbleToHand,nil):Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	local g=eg:Filter(c72971064.thfilter,nil,tp)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.IsInGroup(chkc,g) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(72971064)==0 and Duel.IsExistingTarget(aux.IsInGroup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g) end
+	if chk==0 then return e:GetHandler():GetFlagEffect(72971064)==0
+		and Duel.IsExistingTarget(aux.IsInGroup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g) end
 	e:GetHandler():RegisterFlagEffect(72971064,RESET_CHAIN,0,1)
 	local sg
 	if g:GetCount()==1 then
