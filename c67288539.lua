@@ -85,14 +85,14 @@ function c67288539.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67288539.rmfilter(c,e,tp,check)
 	return c:IsFaceup() and c:IsAttackAbove(3000) and c:IsAttribute(ATTRIBUTE_DARK)
-		and (check or not c:IsImmuneToEffect(e) and Duel.IsExistingMatchingCard(c67288539.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c))
+		and (check or not c:IsImmuneToEffect(e) and Duel.IsExistingMatchingCard(c67288539.spfilter,tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,nil,e,tp,c))
 end
 function c67288539.spfilter(c,e,tp,tc)
 	if not (c:IsSetCard(0x16e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) then return false end
 	if c:IsLocation(LOCATION_EXTRA) then
 		return Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
 	else
-		return Duel.GetMZoneCount(tp)>0
+		return Duel.GetMZoneCount(tp,c)>0
 	end
 end
 function c67288539.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)

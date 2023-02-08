@@ -71,15 +71,23 @@ end
 function c72330894.spfilter(c,e,tp,lv)
 	return c:IsRace(RACE_WINDBEAST) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+function c72330894.seqfilter(c)
+	return c:GetSequence()<5
+end
+function c72330894.getct()
+	return 5*2-Duel.GetMatchingGroupCount(c72330894.seqfilter,0,LOCATION_SZONE,LOCATION_SZONE,nil)
+end
 function c72330894.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetLocationCount(tp,LOCATION_SZONE,PLAYER_NONE,0)+Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c72330894.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,ct) end
+	if chk==0 then
+		local ct=c72330894.getct()
+		return ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.IsExistingMatchingCard(c72330894.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,ct)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c72330894.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local ct=Duel.GetLocationCount(tp,LOCATION_SZONE,PLAYER_NONE,0)+Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)
+	local ct=c72330894.getct()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c72330894.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp,ct)
 	if g:GetCount()>0 then

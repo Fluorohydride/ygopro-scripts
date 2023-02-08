@@ -34,7 +34,8 @@ function c27383110.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c27383110.thfilter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsReason(REASON_RELEASE)
+		and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
 end
 function c27383110.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=eg:GetFirst()

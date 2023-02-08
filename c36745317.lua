@@ -56,7 +56,8 @@ function c36745317.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE) then
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c36745317.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,tc:GetCode())
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(36745317,0)) then
+		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.SelectYesNo(tp,aux.Stringid(36745317,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=sg:Select(tp,1,1,nil)
@@ -73,7 +74,7 @@ function c36745317.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c36745317.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsAttribute(ATTRIBUTE_EARTH)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsNonAttribute(ATTRIBUTE_EARTH)
 end
 function c36745317.atkfilter(c)
 	return c:IsSetCard(0x182) and c:IsFaceup()

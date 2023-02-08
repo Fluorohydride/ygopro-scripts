@@ -77,7 +77,7 @@ function s.distg(e,c)
 		if flag==fid then return true end
 	end
 	local bc=c:GetBattleTarget()
-	if bc and s.disfilter(bc,e:GetHandlerPlayer()) then
+	if c:IsRelateToBattle() and bc and s.disfilter(bc,e:GetHandlerPlayer()) then
 		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 		return true
 	end

@@ -6,13 +6,13 @@ function c24207889.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	c:RegisterEffect(e1)
-	--adjust
+	--only one
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e2:SetCode(EVENT_ADJUST)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(24207889)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetOperation(c24207889.adjustop)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetTargetRange(1,1)
 	c:RegisterEffect(e2)
 	--cannot summon,spsummon,flipsummon
 	local e4=Effect.CreateEffect(c)
@@ -31,6 +31,7 @@ function c24207889.initial_effect(c)
 	c:RegisterEffect(e6)
 	if not c24207889.global_check then
 		c24207889.global_check=true
+		c24207889.is_empty=true
 		c24207889[0]={}
 		c24207889[1]={}
 		local race=1
@@ -41,6 +42,13 @@ function c24207889.initial_effect(c)
 			c24207889[1][race]:KeepAlive()
 			race=race<<1
 		end
+		--adjust
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		ge1:SetCode(EVENT_ADJUST)
+		ge1:SetOperation(c24207889.adjustop)
+		Duel.RegisterEffect(ge1,0)
 	end
 end
 function c24207889.rmfilter(c,rc)
@@ -54,6 +62,19 @@ function c24207889.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return Duel.IsExistingMatchingCard(c24207889.rmfilter,tp,LOCATION_MZONE,0,1,nil,c:GetRace())
 end
 function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerAffectedByEffect(0,24207889) then
+		if not c24207889.is_empty then
+			local race=1
+			while race<RACE_ALL do
+				c24207889[0][race]:Clear()
+				c24207889[1][race]:Clear()
+				race=race<<1
+			end
+			c24207889.is_empty=true
+		end
+		return
+	end
+	c24207889.is_empty=false
 	local phase=Duel.GetCurrentPhase()
 	if (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()) or phase==PHASE_DAMAGE_CAL then return end
 	local sg=Group.CreateGroup()

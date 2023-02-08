@@ -34,7 +34,7 @@ function c1759808.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c1759808.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetCode())
 		local sc=g:GetFirst()
 		if sc and Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then
-			tc:RegisterFlagEffect(1759808,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+			sc:RegisterFlagEffect(1759808,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_PHASE+PHASE_END)

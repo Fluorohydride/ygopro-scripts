@@ -46,7 +46,8 @@ function c59160188.relval(e,re,r,rp)
 	return (c59160188.re_activated or re:IsActivated()) and bit.band(r,REASON_COST)~=0
 end
 function c59160188.regfilter(c)
-	return c:GetPreviousTypeOnField()&TYPE_MONSTER>0
+	local typ=c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousTypeOnField() or c:GetType()
+	return typ&TYPE_MONSTER>0
 end
 function c59160188.regop(e,tp,eg,ep,ev,re,r,rp)
 	local mct=eg:FilterCount(c59160188.regfilter,nil)
