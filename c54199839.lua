@@ -26,7 +26,7 @@ function c54199839.cfilter(c)
 	return c:IsSetCard(0x105) and c:IsDiscardable()
 end
 function c54199839.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c54199839.cfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c54199839.cfilter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.DiscardHand(tp,c54199839.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c54199839.target(e,tp,eg,ep,ev,re,r,rp,chk)

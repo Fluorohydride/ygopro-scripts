@@ -69,7 +69,7 @@ function c41209827.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterFlagEffect(41209827,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c41209827.copyfilter(c)
-	return c:IsFaceup() and c:IsLevelAbove(5)
+	return c:IsFaceup() and c:IsLevelAbove(5) and not c:IsType(TYPE_TOKEN)
 end
 function c41209827.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c41209827.copyfilter(chkc) end

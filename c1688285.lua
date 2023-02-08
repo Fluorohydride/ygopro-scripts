@@ -48,7 +48,7 @@ function s.efilter(e,re)
 	local g=e:GetHandler():GetOverlayGroup():Filter(Card.IsType,nil,TYPE_MONSTER)
 	local race=0
 	for tc in aux.Next(g) do
-		race=race+tc:GetOriginalRace()
+		race=race|tc:GetOriginalRace()
 	end
 	local rc=re:GetHandler()
 	return re:GetOwner()~=e:GetOwner() and race~=0

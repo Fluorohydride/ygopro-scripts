@@ -366,27 +366,13 @@ function Auxiliary.GetValueType(v)
 		else return "Card" end
 	else return t end
 end
-function Auxiliary.GetMustMaterialGroup(tp,code)
-	local g=Group.CreateGroup()
-	local ce={Duel.IsPlayerAffectedByEffect(tp,code)}
-	for _,te in ipairs(ce) do
-		local tc=te:GetHandler()
-		if tc then g:AddCard(tc) end
-	end
-	return g
-end
 function Auxiliary.MustMaterialCheck(v,tp,code)
-	local g=Auxiliary.GetMustMaterialGroup(tp,code)
+	local g=Duel.GetMustMaterial(tp,code)
 	if not v then
 		if code==EFFECT_MUST_BE_XMATERIAL and Duel.IsPlayerAffectedByEffect(tp,67120578) then return false end
 		return #g==0
 	end
-	local t=Auxiliary.GetValueType(v)
-	for tc in Auxiliary.Next(g) do
-		if (t=="Card" and v~=tc)
-			or (t=="Group" and not v:IsContains(tc)) then return false end
-	end
-	return true
+	return Duel.CheckMustMaterial(tp,v,code)
 end
 function Auxiliary.MustMaterialCounterFilter(c,g)
 	return not g:IsContains(c)
@@ -917,7 +903,7 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 				else
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
-				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
 				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
@@ -943,7 +929,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				else
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
-				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				Duel.SetSelectedCard(sg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
@@ -1017,7 +1003,7 @@ function Auxiliary.XyzLevelFreeConditionAlter(f,gf,minct,maxct,alterf,alterdesc,
 					if minc>maxc then return false end
 				end
 				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
-				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
 				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
@@ -1043,7 +1029,7 @@ function Auxiliary.XyzLevelFreeTargetAlter(f,gf,minct,maxct,alterf,alterdesc,alt
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				local mg2=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				Duel.SetSelectedCard(sg)
 				local b1=mg2:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
@@ -2069,7 +2055,7 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 					if not Auxiliary.LConditionFilter(lmat,f,c,e) then return false end
 					mg:AddCard(lmat)
 				end
-				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
+				local fg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_LMATERIAL)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
 				return mg:CheckSubGroup(Auxiliary.LCheckGoal,minc,maxc,tp,c,gf,lmat)
@@ -2094,7 +2080,7 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 					if not Auxiliary.LConditionFilter(lmat,f,c,e) then return false end
 					mg:AddCard(lmat)
 				end
-				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
+				local fg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_LMATERIAL)
 				Duel.SetSelectedCard(fg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
 				local cancel=Duel.IsSummonCancelable()
