@@ -28,8 +28,8 @@ function c94677445.initial_effect(c)
 	e2:SetOperation(c94677445.spop)
 	c:RegisterEffect(e2)
 end
-function c94677445.matfilter1(c)
-	return c:IsSynchroType(TYPE_TUNER) or (c:IsSynchroType(TYPE_NORMAL) and c:IsSetCard(0xfd))
+function c94677445.matfilter1(c,syncard)
+	return c:IsTuner(syncard) or (c:IsSynchroType(TYPE_NORMAL) and c:IsSetCard(0xfd))
 end
 function c94677445.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
