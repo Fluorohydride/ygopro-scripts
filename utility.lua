@@ -3046,3 +3046,110 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 		g:Clear()
 	end
 end
+--
+function Auxiliary.Destroy(v)
+	Duel.Destroy(v,REASON_EFFECT)
+end
+--For cards like "Phantom Knights' Fog Blade", "Crackdown"
+function Auxiliary.RegisterThisCardLeaveFieldWhenTargetLeave(c,reason,operation,reset)
+	if not operation then
+		operation=Auxiliary.Destroy
+	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e1:SetRange(LOCATION_ONFIELD)
+	e1:SetCode(EVENT_LEAVE_FIELD)
+	e1:SetOperation(Auxiliary.ThisCardLeaveFieldWhenTargetLeave(reason,operation))
+	if reset then e1:SetReset(reset) end
+	c:RegisterEffect(e1)
+	if not reason then
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_LEAVE_FIELD_WHEN_TARGET_LEAVE)
+		if reset then e2:SetReset(reset) end
+		e2:SetLabelObject(e1)
+		c:RegisterEffect(e2)
+	end
+	return e1
+end
+function Auxiliary.ThisCardLeaveFieldWhenTargetLeave(reason,operation)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
+		local tc=c:GetFirstCardTarget()
+		if tc and eg:IsContains(tc) and (not reason or tc:IsReason(reason)) then
+			operation(c)
+		end
+	end
+end
+--For cards like "Call of the Haunted", "D.D.R. - Different Dimension Reincarnation"
+function Auxiliary.RegisterTargetLeaveWhenThisCardLeaveField(c,reason,operation,reset)
+	if not operation then
+		operation=Auxiliary.Destroy
+	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetCode(EVENT_LEAVE_FIELD_P)
+	e1:SetOperation(Auxiliary.ThisCardLeaveFieldDisabledCheck)
+	if reset then e1:SetReset(reset) end
+	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e2:SetCode(EVENT_LEAVE_FIELD)
+	e2:SetOperation(Auxiliary.TargetLeaveWhenThisCardLeaveField(reason,operation))
+	e2:SetLabelObject(e1)
+	if reset then e2:SetReset(reset) end
+	c:RegisterEffect(e2)
+	if not reason then
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_SINGLE)
+		e3:SetCode(EFFECT_TARGET_LEAVE_WHEN_LEAVE_FIELD)
+		if reset then e3:SetReset(reset) end
+		e3:SetLabelObject(e2)
+		c:RegisterEffect(e3)
+	end
+	return e2
+end
+function Auxiliary.ThisCardLeaveFieldDisabledCheck(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsDisabled() then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
+end
+function Auxiliary.TargetLeaveWhenThisCardLeaveField(reason,operation)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+		if e:GetLabelObject():GetLabel()~=0 then return end
+		local c=e:GetHandler()
+		local tc=c:GetFirstCardTarget()
+		if tc and tc:IsLocation(LOCATION_MZONE) and (not reason or c:IsReason(reason)) then
+			operation(tc)
+		end
+	end
+end
+--Get the cards which will leave field together with c
+function Auxiliary.GetLeaveFieldGroup(c,exc)
+	local g=Group.FromCards(c)
+	if exc then g:AddCard(exc) end
+	local equipg=c:GetEquipGroup()
+	g:Merge(equipg)
+	local ownerg=c:GetOwnerTarget()
+	for tc in Auxiliary.Next(ownerg) do
+		local e=tc:IsHasEffect(EFFECT_LEAVE_FIELD_WHEN_TARGET_LEAVE)
+		if e then
+			local de=e:GetLabelObject()
+			if tc:IsDestructable(de) and not tc:IsDisabled() then
+				g:AddCard(tc)
+			end
+		end
+	end
+	local e=c:IsHasEffect(EFFECT_TARGET_LEAVE_WHEN_LEAVE_FIELD)
+	if e and not c:IsDisabled() then
+		local de=e:GetLabelObject()
+		local targetg=c:GetCardTarget()
+		for tc in Auxiliary.Next(targetg) do
+			if tc:IsDestructable(de) then
+				g:AddCard(tc)
+			end
+		end
+	end
+	return g
+end

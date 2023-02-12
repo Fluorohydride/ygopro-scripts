@@ -28,13 +28,7 @@ function c25542642.initial_effect(c)
 	e4:SetValue(c25542642.tgval)
 	c:RegisterEffect(e4)
 	--destroy
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e6:SetRange(LOCATION_SZONE)
-	e6:SetCode(EVENT_LEAVE_FIELD)
-	e6:SetCondition(c25542642.descon)
-	e6:SetOperation(c25542642.desop)
-	c:RegisterEffect(e6)
+	aux.RegisterThisCardLeaveFieldWhenTargetLeave(c)
 	--spsummon
 	local e7=Effect.CreateEffect(c)
 	e7:SetDescription(aux.Stringid(25542642,0))
@@ -68,14 +62,6 @@ function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25542642.tgval(e,c)
 	return e:GetHandler():IsHasCardTarget(c)
-end
-function c25542642.descon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=c:GetFirstCardTarget()
-	return tc and eg:IsContains(tc)
-end
-function c25542642.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
 function c25542642.spfilter(c,e,tp)
 	return c:IsSetCard(0x10db) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

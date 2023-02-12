@@ -11,18 +11,7 @@ function c35146019.initial_effect(c)
 	e1:SetOperation(c35146019.operation)
 	c:RegisterEffect(e1)
 	--Destroy
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_LEAVE_FIELD_P)
-	e0:SetOperation(c35146019.checkop)
-	c:RegisterEffect(e0)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetOperation(c35146019.desop)
-	e2:SetLabelObject(e0)
-	c:RegisterEffect(e2)
+	aux.RegisterTargetLeaveWhenThisCardLeaveField(c)
 	--to hand
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_TOHAND)
@@ -94,19 +83,6 @@ function c35146019.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
-	end
-end
-function c35146019.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsDisabled() then
-		e:SetLabel(1)
-	else e:SetLabel(0) end
-end
-function c35146019.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabelObject():GetLabel()~=0 then return end
-	local c=e:GetHandler()
-	local tc=c:GetFirstCardTarget()
-	if tc and tc:IsLocation(LOCATION_MZONE) then
-		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
 function c35146019.thfilter(c)
