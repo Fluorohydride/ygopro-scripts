@@ -71,9 +71,9 @@ function c84521924.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Select(tp,1,1,nil)
 	if #sg==0 or Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP,zone)==0 then return end
 	if Duel.NegateActivation(ev) and Duel.IsExistingMatchingCard(c84521924.tefilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(84521924,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(84521924,1)) then
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84521924,1))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84521924,2))
 		local exg=Duel.SelectMatchingCard(tp,c84521924.tefilter,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.SendtoExtraP(exg,nil,REASON_EFFECT)
 	end

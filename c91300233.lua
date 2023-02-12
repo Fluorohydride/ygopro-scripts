@@ -5,6 +5,7 @@ function c91300233.initial_effect(c)
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x170),aux.FilterBoolFunction(Card.IsRace,RACE_INSECT),true)
 	--to hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(91300233,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
