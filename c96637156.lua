@@ -31,9 +31,9 @@ function c96637156.movop(e,tp,eg,ep,ev,re,r,rp)
 	if dice<1 or dice>6 then return end
 	local p=tp
 	local seq=c:GetSequence()-dice
-	if seq<0 then
+	while seq<0 do
 		seq=seq+5
-		p=1-tp
+		p=1-p
 	end
 	local zone=1<<seq
 	local tc=Duel.GetFieldCard(p,LOCATION_MZONE,seq)
