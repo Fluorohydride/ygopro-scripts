@@ -504,7 +504,7 @@ EFFECT_SYNCHRO_LEVEL				=240--做同调素材时的等级
 EFFECT_RITUAL_LEVEL					=241--做仪式祭品时的等级
 EFFECT_XYZ_LEVEL					=242--做超量素材时的等级
 EFFECT_EXTRA_RITUAL_MATERIAL		=243--在墓地当做仪式祭品
-EFFECT_NONTUNER						=244--同时当作调整以外的怪兽（幻影王 幽骑）
+EFFECT_NONTUNER						=244--同调召唤时可以当作调整以外的怪兽（幻影王 幽骑）
 EFFECT_OVERLAY_REMOVE_REPLACE		=245--代替去除超量素材
 EFFECT_SCRAP_CHIMERA				=246--废铁奇美拉
 EFFECT_TUNE_MAGICIAN_X				=247--调弦之魔术师超量素材限制
@@ -579,7 +579,7 @@ EFFECT_CHANGE_GRAVE_ATTRIBUTE	=365	--墓地的卡将会改变属性（升级转�
 EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变）
 EFFECT_ACTIVATION_COUNT_LIMIT	=367	--reserve
 EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
-EFFECT_TUNER					=369	--
+EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A
