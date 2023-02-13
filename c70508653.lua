@@ -38,6 +38,8 @@ function c70508653.thop(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:RandomSelect(1-tp,1)
 		tg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
-		Duel.SendtoDeck(sg-tg,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+		for tc in aux.Next(sg-tg) do
+			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
+		end
 	end
 end
