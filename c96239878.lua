@@ -47,9 +47,9 @@ function c96239878.mtfilter2(c)
 end
 function c96239878.valcheck(e,c)
 	local g=c:GetMaterial()
-	if c:IsType(TYPE_RITUAL) and g:IsExists(c96239878.mtfilter1,1,nil) then
+	if c:IsSummonType(SUMMON_TYPE_RITUAL) and g:IsExists(c96239878.mtfilter1,1,nil) then
 		c:RegisterFlagEffect(96239878,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
-	elseif c:IsType(TYPE_FUSION) and g:IsExists(c96239878.mtfilter2,1,nil) then
+	elseif c:IsSummonType(SUMMON_TYPE_FUSION) and g:IsExists(c96239878.mtfilter2,1,nil) then
 		c:RegisterFlagEffect(96239878,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end
