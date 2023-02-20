@@ -50,6 +50,7 @@ function c67955331.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c67955331.splimcon)
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	else
+		e1:SetCondition(s.limcon)
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
 	end
 	Duel.RegisterEffect(e1,tp)
@@ -58,7 +59,10 @@ function c67955331.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c67955331.splimcon(e)
-	return Duel.GetTurnCount()~=e:GetLabel()
+	return Duel.GetTurnCount()~=e:GetLabel() and c67955331.limcon(e,e:GetHandlerPlayer())
+end
+function c67955331.limcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnPlayer()==tp
 end
 function c67955331.splimit(e,c)
 	return not c:IsRace(RACE_SPELLCASTER)
