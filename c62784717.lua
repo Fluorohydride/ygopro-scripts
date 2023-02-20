@@ -47,6 +47,6 @@ function c62784717.coinop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_CANNOT_FLIP_SUMMON)
 	Duel.RegisterEffect(e2,tp)
 end
-function c62784717.limcon(e,tp)
-	return Duel.GetTurnPlayer()==tp
+function c62784717.limcon(e)
+	return Duel.GetTurnPlayer()==e:GetHandlerPlayer()
 end
