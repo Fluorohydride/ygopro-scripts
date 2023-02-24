@@ -35,7 +35,7 @@ function c62784717.coinop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EFFECT_CANNOT_SUMMON)
 	if res==0 then
-		e1:SetReset(RESET_PHASE+PHASE_END,2)
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN)
 		e1:SetTargetRange(1,0)
 		e1:SetCondition(c62784717.limcon)
 	else
