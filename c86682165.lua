@@ -33,7 +33,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetCategory(0)
 	local ch=Duel.GetCurrentChain()
 	if ch>1 and Duel.GetChainInfo(ch-1,CHAININFO_TRIGGERING_PLAYER)==1-tp then
-		e:SetCategory(CATEGORY_REMOVE)
+		e:SetCategory(CATEGORY_REMOVE+CATEGORY_GRAVE_ACTION)
 	end
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
