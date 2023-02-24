@@ -10,7 +10,7 @@ function c62121.initial_effect(c)
 end
 function c62121.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(Card.IsRace,tp,LOCATION_MZONE,0,nil,RACE_ZOMBIE)
+	local g=Duel.GetMatchingGroup(Card.IsRace,tp,LOCATION_MZONE,LOCATION_MZONE,nil,RACE_ZOMBIE)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
@@ -43,7 +43,7 @@ function c62121.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c62121.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(Card.IsRace,tp,LOCATION_MZONE,0,nil,RACE_ZOMBIE)
+	local g=Duel.GetMatchingGroup(Card.IsRace,tp,LOCATION_MZONE,LOCATION_MZONE,nil,RACE_ZOMBIE)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
