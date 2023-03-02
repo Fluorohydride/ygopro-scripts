@@ -25,6 +25,7 @@ function c92079625.initial_effect(c)
 end
 function c92079625.cfilter(c,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c92079625.tgfilter,tp,LOCATION_EXTRA,0,1,nil,c:GetAttribute())
+		and c:IsAbleToRemove()
 end
 function c92079625.tgfilter(c,att)
 	return c:IsAbleToGrave() and c:IsAttribute(att) and c:IsSetCard(0x9d)
