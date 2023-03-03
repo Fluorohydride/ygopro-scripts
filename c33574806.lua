@@ -20,6 +20,9 @@ function c33574806.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c33574806.material_setcode=0x8
+function c33574806.atkfilter(c)
+	return c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER)
+end
 function c33574806.atkup(e,c)
-	return Duel.GetMatchingGroupCount(Card.IsSetCard,c:GetControler(),LOCATION_GRAVE,0,nil,0x3008)*100
+	return Duel.GetMatchingGroupCount(c33574806.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil)*100
 end
