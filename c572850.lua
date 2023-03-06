@@ -76,12 +76,15 @@ function c572850.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 		return res
 	end
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c572850.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToChain() or c:IsImmuneToEffect(e) then return end
+	local ph=Duel.GetCurrentPhase()
+	if ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL then return end
+	if not c:IsRelateToChain() or c:IsImmuneToEffect(e) or not aux.NecroValleyFilter()(c) then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c572850.filter0),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c572850.filter1,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg2=nil
