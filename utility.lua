@@ -2974,7 +2974,8 @@ end
 function Auxiliary.PlaceCardsOnDeckTop(p,g,reason)
 	if reason==nil then reason=REASON_EFFECT end
 	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,reason)
-	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	local rg=Duel.GetOperatedGroup()
+	local og=rg:Filter(Card.IsLocation,nil,LOCATION_DECK)
 	local ct1=og:FilterCount(Card.IsControler,nil,p)
 	local ct2=og:FilterCount(Card.IsControler,nil,1-p)
 	if ct1>1 then
@@ -2983,13 +2984,14 @@ function Auxiliary.PlaceCardsOnDeckTop(p,g,reason)
 	if ct2>1 then
 		Duel.SortDecktop(p,1-p,ct2)
 	end
-	return #og
+	return #rg
 end
 --Player p place g on the bottom of Deck in any order
 function Auxiliary.PlaceCardsOnDeckBottom(p,g,reason)
 	if reason==nil then reason=REASON_EFFECT end
 	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,reason)
-	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	local rg=Duel.GetOperatedGroup()
+	local og=rg:Filter(Card.IsLocation,nil,LOCATION_DECK)
 	local ct1=og:FilterCount(Card.IsControler,nil,p)
 	local ct2=og:FilterCount(Card.IsControler,nil,1-p)
 	if ct1>0 then
@@ -3010,7 +3012,7 @@ function Auxiliary.PlaceCardsOnDeckBottom(p,g,reason)
 			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 		end
 	end
-	return #og
+	return #rg
 end
 --The event is triggered multiple times in a chain
 --but only 1 event with EVENT_CUSTOM+code will be triggered at EVENT_CHAIN_END, or immediately if not in chain
