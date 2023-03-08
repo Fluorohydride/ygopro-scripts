@@ -51,8 +51,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local lc=tg:GetFirst()
 	if #tg~=2 then return end
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp)
-		and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and tc:IsCanBeDisabledByEffect(e) then
 		local upatk=tc:GetBaseAttack()
 		if tc:GetBaseAttack()<tc:GetBaseDefense() then
 			upatk=tc:GetBaseDefense()
