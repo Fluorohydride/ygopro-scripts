@@ -1,4 +1,4 @@
---The Great Double Casted Caster
+--偉大なるダブルキャスター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
@@ -36,13 +36,13 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.noeff(c)
-	return not c:IsType(TYPE_EFFECT)
+	return not c:IsFusionType(TYPE_EFFECT)
 end
 function s.atkcalc(e,c)
 	local g=c:GetMaterial()
 	local atk=0
 	for tc in aux.Next(g) do
-		if tc:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK) then
+		if tc:IsFusionType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK) then
 			atk=atk+tc:GetBaseAttack()
 		end
 	end

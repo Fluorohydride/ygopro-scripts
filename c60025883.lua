@@ -1,7 +1,7 @@
 --決闘竜 デュエル・リンク・ドラゴン
 function c60025883.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c60025883.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c60025883.lcheck)
 	c:EnableReviveLimit()
 	--duel dragon
 	local e1=Effect.CreateEffect(c)

@@ -48,7 +48,7 @@ function c56677752.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56677752,0))
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56677752.negfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoExtraP(tc,tp,REASON_EFFECT) and tc:IsLocation(LOCATION_EXTRA) and Duel.NegateAttack()
+	if tc and Duel.SendtoExtraP(tc,nil,REASON_EFFECT) and tc:IsLocation(LOCATION_EXTRA) and Duel.NegateAttack()
 		and tc:GetAttack()>0 and Duel.SelectYesNo(tp,aux.Stringid(56677752,1)) then
 		Duel.BreakEffect()
 		Duel.Recover(tp,tc:GetAttack(),REASON_EFFECT)
@@ -58,7 +58,7 @@ function c56677752.spfilter(c)
 	return c:IsSetCard(0x9f,0x99) and not c:IsCode(56677752) and c:IsFaceup() and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function c56677752.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c56677752.spfilter(c) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c56677752.spfilter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingTarget(c56677752.spfilter,tp,LOCATION_ONFIELD,0,1,nil) end

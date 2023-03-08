@@ -30,7 +30,7 @@ function c1005587.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		tc=g:Select(tp,1,1,nil):GetFirst()
 	end
-	if not tc:IsDisabled() then
+	if tc:IsCanBeDisabledByEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)

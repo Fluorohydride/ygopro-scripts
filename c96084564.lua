@@ -10,6 +10,7 @@ function s.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_HAND+LOCATION_MZONE)
 	e1:SetCountLimit(1,id)
+	e1:SetCondition(s.eqcon)
 	e1:SetTarget(s.eqtg)
 	e1:SetOperation(s.eqop)
 	c:RegisterEffect(e1)
@@ -32,6 +33,9 @@ function s.initial_effect(c)
 	e3:SetTarget(s.tgtg)
 	e3:SetOperation(s.tgop)
 	c:RegisterEffect(e3)
+end
+function s.eqcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
 function s.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1115)

@@ -32,7 +32,7 @@ function c47728740.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c47728740.sdfilter(c)
-	return not c:IsFaceup() or not c:IsSetCard(0xb1)
+	return c:IsFacedown() or not c:IsSetCard(0xb1)
 end
 function c47728740.sdcon(e)
 	return Duel.IsExistingMatchingCard(c47728740.sdfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
@@ -62,7 +62,7 @@ end
 function c47728740.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsDisabled() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsCanBeDisabledByEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

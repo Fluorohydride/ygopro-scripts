@@ -41,7 +41,7 @@ function c30502181.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x38)
 end
 function c30502181.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c30502181.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c30502181.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c30502181.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c30502181.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
@@ -57,7 +57,7 @@ function c30502181.eqcondtion(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_DECK)
 end
 function c30502181.eqtarget(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and chkc:GetControler()==tp and c30502181.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c30502181.filter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c30502181.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

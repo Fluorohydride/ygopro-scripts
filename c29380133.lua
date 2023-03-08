@@ -21,5 +21,11 @@ end
 function c29380133.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,99,nil)
-	Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+	local ct=Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
+	if ct==0 then return end
+	Duel.SortDecktop(tp,tp,ct)
+	for i=1,ct do
+		local mg=Duel.GetDecktopGroup(tp,1)
+		Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
+	end
 end

@@ -48,7 +48,7 @@ function c80476891.repfilter(c,tp)
 		and c:IsType(TYPE_DUAL) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE) and c:GetFlagEffect(80476891)==0
 end
 function c80476891.desfilter(c,e,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsControler(tp) and c:IsOnField()
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c80476891.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -71,12 +71,13 @@ function c76937326.spop(e,tp,eg,ep,ev,re,r,rp)
 					tc:RegisterEffect(e1)
 					local e2=e1:Clone()
 					e2:SetCode(EFFECT_DISABLE_EFFECT)
+					e2:SetValue(RESET_TURN_SET)
 					tc:RegisterEffect(e2)
 					tc=sg:GetNext()
 				end
 				Duel.SpecialSummonComplete()
 				local og=Duel.GetOperatedGroup()
-				Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+				Duel.AdjustAll()
 				if og:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
 				local tg=Duel.GetMatchingGroup(c76937326.synfilter,tp,LOCATION_EXTRA,0,nil,og)
 				if og:GetCount()==sg:GetCount() and tg:GetCount()>0 then

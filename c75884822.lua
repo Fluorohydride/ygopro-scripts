@@ -75,12 +75,12 @@ function c75884822.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c75884822.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField()
 		and ((c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_MACHINE) and c:IsType(TYPE_FUSION)) or c:IsSetCard(0x111))
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c75884822.desfilter(c,e,tp)
-	return c:IsControler(tp) and (c:IsFaceup() or not c:IsLocation(LOCATION_ONFIELD)) and c:IsSetCard(0xf)
+	return c:IsControler(tp) and (c:IsFaceup() or not c:IsOnField()) and c:IsSetCard(0xf)
 		and c:IsAbleToRemove() and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c75884822.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

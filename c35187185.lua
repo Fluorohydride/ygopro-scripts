@@ -47,7 +47,7 @@ function c35187185.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c35187185.cfilter,1,e:GetHandler(),tp)
 end
 function c35187185.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)

@@ -63,7 +63,7 @@ function c61496006.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE) 
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
 	e2:SetCondition(c61496006.damcon)
@@ -77,7 +77,7 @@ end
 function c61496006.damcon(e)
 	local tp=e:GetHandlerPlayer()
 	local a,d=Duel.GetBattleMonster(tp)
-	if a and d and a:GetControler()==tp and a:IsSetCard(0x48) and a:IsStatus(STATUS_OPPO_BATTLE)
+	if a and d and a:IsControler(tp) and a:IsSetCard(0x48) and a:IsStatus(STATUS_OPPO_BATTLE)
 		and Duel.GetFlagEffect(tp,61496006)==0 then
 		Duel.RegisterFlagEffect(tp,61496006,RESET_PHASE+PHASE_END,0,1)
 		return true

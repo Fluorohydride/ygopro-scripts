@@ -3,7 +3,7 @@ function c40939228.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309)
 	aux.AddCodeList(c,44508094)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,c40939228.mfilter,nil,nil,aux.NonTuner(nil),1,99,c40939228.gfilter)
+	aux.AddSynchroMixProcedure(c,aux.Tuner(Card.IsCode,21159309),nil,nil,aux.NonTuner(nil),1,99,c40939228.syncheck(c))
 	c:EnableReviveLimit()
 	--special summon condition
 	local e1=Effect.CreateEffect(c)
@@ -46,20 +46,19 @@ function c40939228.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c40939228.material_type=TYPE_SYNCHRO
-function c40939228.mfilter(c)
-	return c:IsCode(21159309) and c:IsSynchroType(TYPE_TUNER)
+function c40939228.cfilter(c,syncard)
+	return c:IsRace(RACE_DRAGON) and c:IsSynchroType(TYPE_SYNCHRO) and c:IsNotTuner(syncard)
 end
-function c40939228.cfilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsSynchroType(TYPE_SYNCHRO)
-end
-function c40939228.gfilter(g,syncard,c1)
-	return g:IsExists(c40939228.cfilter,1,c1)
+function c40939228.syncheck(syncard)
+	return	function(g)
+				return g:IsExists(c40939228.cfilter,1,nil,syncard)
+			end
 end
 function c40939228.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,nil,1,tp,LOCATION_MZONE)
 end
-function c40939228.disop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c40939228.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
@@ -100,22 +99,38 @@ function c40939228.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=eg:Clone()+c
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,#g,0,0)
 	end
+	if re:GetActivateLocation()==LOCATION_GRAVE then
+		e:SetCategory(e:GetCategory()|CATEGORY_GRAVE_ACTION)
+	else
+		e:SetCategory(e:GetCategory()&~CATEGORY_GRAVE_ACTION)
+	end
 end
 function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local fid=c:GetFieldID()
 	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:IsLocation(LOCATION_REMOVED) then
+		c:RegisterFlagEffect(40939228,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetReset(RESET_PHASE+PHASE_END)
+		e1:SetLabel(fid)
 		e1:SetLabelObject(c)
 		e1:SetCountLimit(1)
+		e1:SetCondition(c40939228.retcon)
 		e1:SetOperation(c40939228.retop)
 		Duel.RegisterEffect(e1,tp)
 		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 		end
 	end
+end
+function c40939228.retcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffectLabel(40939228)~=e:GetLabel() then
+		e:Reset()
+		return false
+	else return true end
 end
 function c40939228.retop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ReturnToField(e:GetLabelObject())

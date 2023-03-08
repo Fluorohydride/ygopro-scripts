@@ -17,12 +17,12 @@ function c91351370.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c91351370.filter(c,val)
-	local atk=c:GetAttack()
+	local atk=c:GetTextAttack()
 	return atk>=0 and atk<val and c:IsSetCard(0x33) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c91351370.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
-	if chk==0 then return tc:IsSetCard(0x33) and tc:GetControler()==tp
+	if chk==0 then return tc:IsSetCard(0x33) and tc:IsControler(tp)
 		and Duel.IsExistingMatchingCard(c91351370.filter,tp,LOCATION_DECK,0,1,nil,tc:GetAttack()) end
 	tc:CreateEffectRelation(e)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)

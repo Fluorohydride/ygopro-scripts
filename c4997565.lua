@@ -66,7 +66,7 @@ end
 function c4997565.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -82,6 +82,7 @@ function c4997565.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		if Duel.IsExistingMatchingCard(c4997565.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
+			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 			local g=Duel.SelectMatchingCard(tp,c4997565.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 			local opt=Duel.SelectOption(tp,aux.Stringid(4997565,2),aux.Stringid(4997565,3))

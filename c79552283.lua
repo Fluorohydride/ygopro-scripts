@@ -1,5 +1,6 @@
 --肆世壊の牙掌突
 function c79552283.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -22,7 +23,6 @@ function c79552283.initial_effect(c)
 	e4:SetCategory(CATEGORY_DISABLE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)
-	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1,79552283)
 	e4:SetCondition(c79552283.discon)
@@ -32,7 +32,7 @@ function c79552283.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c79552283.filter(c,e,tp)
-	return (c:IsSetCard(0x17a) or c:IsCode(56099748)) and not c:IsType(TYPE_LINK)
+	return (c:IsSetCard(0x17a) or c:IsCode(56099748)) and c:IsFaceup() and not c:IsType(TYPE_LINK)
 end
 function c79552283.adatktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c79552283.filter(chkc,e,tp) end
@@ -59,7 +59,7 @@ function c79552283.exfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x17a) and c:GetSequence()>=5
 end
 function c79552283.discon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsChainNegatable(ev) and Duel.IsExistingMatchingCard(c79552283.exfilter,tp,LOCATION_MZONE,0,1,nil) and rp==1-tp
+	return Duel.IsChainDisablable(ev) and Duel.IsExistingMatchingCard(c79552283.exfilter,tp,LOCATION_MZONE,0,1,nil) and rp==1-tp
 end
 function c79552283.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

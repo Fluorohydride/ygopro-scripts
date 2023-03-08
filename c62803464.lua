@@ -70,7 +70,7 @@ function c62803464.srop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c62803464.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsAttribute(ATTRIBUTE_EARTH)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsNonAttribute(ATTRIBUTE_EARTH)
 end
 function c62803464.cfilter(c,tp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)

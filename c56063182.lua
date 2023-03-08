@@ -1,6 +1,7 @@
 --肆世壊＝ライフォビア
 local s,id,o=GetID()
 function c56063182.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

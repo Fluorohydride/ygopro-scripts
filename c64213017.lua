@@ -1,4 +1,4 @@
---Beetrooper Formation
+--騎甲虫隊戦術機動
 function c64213017.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

@@ -38,7 +38,7 @@ end
 function c34800281.cfilter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:GetPreviousRaceOnField()&RACE_BEAST)>0
-		and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousPosition(POS_FACEUP) and not c:IsCode(34800281)
 end
 function c34800281.regop(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do

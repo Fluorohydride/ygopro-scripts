@@ -77,5 +77,5 @@ function c8522996.condition(e,c)
 	return c:IsAttribute(e:GetHandler():GetAttribute())
 end
 function c8522996.splimit(e,c,tp,sumtp,sumpos)
-	return c:IsAttribute(ATTRIBUTE_ALL-e:GetHandler():GetAttribute())
+	return not c:IsAttribute(e:GetHandler():GetAttribute())
 end

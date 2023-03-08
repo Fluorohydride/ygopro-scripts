@@ -42,7 +42,7 @@ end
 function c99456344.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsDisabled() then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -67,11 +67,10 @@ end
 function c99456344.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
-	e:GetHandler():RegisterFlagEffect(99456344,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c99456344.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:GetFlagEffect(99456344)==0 then return end
+	if not c:IsRelateToChain() then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

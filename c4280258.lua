@@ -47,7 +47,7 @@ function c4280258.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4280258.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or not c:IsRelateToEffect(e) or c:GetAttack()<800
+	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:GetAttack()<800
 		or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then
 		return
 	end

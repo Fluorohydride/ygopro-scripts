@@ -52,7 +52,6 @@ function c85808813.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c85808813.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,lv,e,tp,nil)
 	if sg:GetCount()>0 then
-		Duel.BreakEffect()
 		sg:GetFirst():SetMaterial(nil)
 		Duel.SpecialSummon(sg,SUMMON_TYPE_FUSION,tp,tp,true,false,POS_FACEUP)
 		sg:GetFirst():CompleteProcedure()

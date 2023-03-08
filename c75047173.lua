@@ -39,12 +39,6 @@ function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,0,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
-function s.dfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:IsControler(tp)
-end
-function s.exfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:IsCode(89943723)
-end
 function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp|0x200
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.fsfilter1),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
@@ -60,23 +54,11 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)
 		end
-		if #mat>0 and Duel.SendtoDeck(mat,nil,SEQ_DECKTOP,REASON_EFFECT)>0 then
-			local p=tp
-			for i=1,2 do
-				local dg=mat:Filter(s.dfilter,nil,p)
-				if #dg>1 then
-					Duel.SortDecktop(tp,p,#dg)
-				end
-				for i=1,#dg do
-					local mg=Duel.GetDecktopGroup(p,1)
-					Duel.MoveSequence(mg:GetFirst(),1)
-				end
-				p=1-tp
-			end
-		end
+		local ng=mat:Filter(Card.IsCode,nil,89943723)
+		aux.PlaceCardsOnDeckBottom(tp,mat)
 		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
-		if mat:IsExists(s.exfilter,1,nil) then
+		if ng:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetDescription(aux.Stringid(id,1))
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)

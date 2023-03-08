@@ -25,12 +25,14 @@ function c176392.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_END
 end
 function c176392.rfilter(c)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x1d)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x1d) and not c:IsReason(REASON_REPLACE)
 end
 function c176392.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c176392.rfilter,1,e:GetHandler()) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
+	local c=e:GetHandler()
+	if chk==0 then return eg:IsExists(c176392.rfilter,1,c)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		Duel.Destroy(c,REASON_EFFECT+REASON_REPLACE)
 		return true
 	else return false end
 end

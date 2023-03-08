@@ -19,7 +19,7 @@ function c91946859.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e3:SetCode(EVENT_DAMAGE)
 	e3:SetCountLimit(1,91946859)
 	e3:SetCondition(c91946859.spcondition)
@@ -57,7 +57,7 @@ function c91946859.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		tc:SetMaterial(nil)
-		if Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,false,POS_FACEUP)>0 then
+		if Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,true,false,POS_FACEUP)>0 then
 			tc:CompleteProcedure()
 		end
 	end

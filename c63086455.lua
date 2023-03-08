@@ -26,7 +26,6 @@ function c63086455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c63086455.tgfilter,tp,0,LOCATION_ONFIELD,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g1=Duel.SelectTarget(tp,c63086455.tgfilter,tp,0,LOCATION_ONFIELD,1,1,nil,e,tp)
-	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g2=Duel.SelectTarget(tp,c63086455.setfilter,tp,0,LOCATION_GRAVE,1,1,nil,g1:GetFirst(),e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g1,1,0,0)
@@ -40,11 +39,10 @@ function c63086455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc1=e:GetLabelObject()
-	local tc2=tg:GetFirst()
-	if tc2==tc1 then tc2=tg:GetNext() end
-	if tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
-		and tc2:IsRelateToEffect(e) then
+	local tc1=tg:Filter(Card.IsLocation,nil,LOCATION_ONFIELD):GetFirst()
+	local tc2=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
+	if tc1 and tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
+		and tc2 and tc2:IsRelateToEffect(e) then
 		if tc2:IsType(TYPE_MONSTER) then
 			Duel.SpecialSummon(tc2,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 		else

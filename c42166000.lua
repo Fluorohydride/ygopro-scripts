@@ -21,6 +21,10 @@ function c42166000.initial_effect(c)
 	e2:SetOperation(c42166000.hspop)
 	c:RegisterEffect(e2)
 	--triple tribute(require 3 tributes, summon)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(42166000)
+	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(42166000,0))
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -91,7 +95,7 @@ function c42166000.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_COST)
 end
 function c42166000.ttfilter(c,tp)
-	return c:IsCode(42166000) and c:IsReleasable() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsHasEffect(42166000) and c:IsReleasable() and Duel.GetMZoneCount(tp,c)>0
 end
 function c42166000.ttcon(e,c,minc)
 	if c==nil then return true end
@@ -109,7 +113,7 @@ function c42166000.tttg3(e,c)
 end
 function c42166000.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c42166000.ttfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c42166000.ttfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end

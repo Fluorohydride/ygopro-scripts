@@ -24,7 +24,8 @@ end
 function c11067666.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return e:GetHandler():GetFlagEffect(11067666)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-		and g and g:IsExists(c11067666.cfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
+		and g and g:IsExists(c11067666.cfilter,1,nil,tp)
+		and Duel.IsChainDisablable(ev) and not Duel.IsChainDisabled(ev)
 end
 function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then

@@ -32,7 +32,7 @@ function c22061412.initial_effect(c)
 end
 c22061412.material_setcode=0x8
 function c22061412.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3008)
+	return c:IsFaceup() and c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER)
 end
 function c22061412.atkup(e,c)
 	return Duel.GetMatchingGroupCount(c22061412.atkfilter,c:GetControler(),LOCATION_REMOVED,0,nil)*300
@@ -44,7 +44,7 @@ function c22061412.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c22061412.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:IsLocation(LOCATION_REMOVED) and c22061412.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c22061412.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c22061412.filter,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c22061412.filter,tp,LOCATION_REMOVED,0,1,2,nil)

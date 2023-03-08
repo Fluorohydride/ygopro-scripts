@@ -14,7 +14,7 @@ function c11801343.initial_effect(c)
 end
 function c11801343.thfilter(c,e,tp)
 	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:IsAbleToHand()
-		and Duel.GetMZoneCount(tp,c)>0
+		and Duel.GetMZoneCount(tp,c)>0 and c:GetOriginalType()&TYPE_MONSTER>0 and not c:IsType(TYPE_TOKEN)
 		and Duel.IsExistingMatchingCard(c11801343.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c)
 end
 function c11801343.spfilter(c,e,tp,tc)
@@ -32,7 +32,7 @@ function c11801343.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11801343.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND)
+	if tc:IsRelateToChain() and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c11801343.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc)

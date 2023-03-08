@@ -14,7 +14,7 @@ function c60312997.condition(e,tp,eg,ep,ev,re,r,rp)
 		and eg:GetFirst():IsLocation(LOCATION_MZONE)
 end
 function c60312997.filter(c,lv)
-	return c:IsLevelBelow(lv) and c:IsType(TYPE_SYNCHRO) and c:IsStatus(STATUS_PROC_COMPLETE)
+	return c:IsLevelBelow(lv) and c:IsType(TYPE_SYNCHRO) and c:IsSpecialSummonableCard()
 end
 function c60312997.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c60312997.filter(chkc,eg:GetFirst():GetLevel()) end

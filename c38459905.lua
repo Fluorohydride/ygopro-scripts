@@ -52,7 +52,7 @@ function c38459905.spfilter(c,e,tp)
 	return c:IsSetCard(0x107) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c38459905.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c38459905.desfilter(chkc,tp) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c38459905.desfilter(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c38459905.desfilter,tp,LOCATION_ONFIELD,0,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c38459905.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

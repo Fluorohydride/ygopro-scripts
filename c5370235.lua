@@ -23,24 +23,31 @@ function c5370235.initial_effect(c)
 	e2:SetTarget(c5370235.tgtg)
 	e2:SetOperation(c5370235.tgop)
 	c:RegisterEffect(e2)
-	--
+	--workaround
 	if not aux.fus_mat_hack_check then
 		aux.fus_mat_hack_check=true
 		function aux.fus_mat_hack_exmat_filter(c)
 			return c:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,c:GetControler())
+		end
+		_GetFusionMaterial=Duel.GetFusionMaterial
+		function Duel.GetFusionMaterial(tp,loc)
+			if loc==nil then loc=LOCATION_HAND+LOCATION_MZONE end
+			local g=_GetFusionMaterial(tp,loc)
+			local exg=Duel.GetMatchingGroup(aux.fus_mat_hack_exmat_filter,tp,LOCATION_EXTRA,0,nil)
+			return g+exg
 		end
 		_SendtoGrave=Duel.SendtoGrave
 		function Duel.SendtoGrave(tg,reason)
 			if reason~=REASON_EFFECT+REASON_MATERIAL+REASON_FUSION or aux.GetValueType(tg)~="Group" then
 				return _SendtoGrave(tg,reason)
 			end
-			local rg=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
-			tg:Sub(rg)
-			local tc=rg:Filter(aux.fus_mat_hack_exmat_filter,nil):GetFirst()
+			local tc=tg:Filter(Card.IsLocation,nil,LOCATION_EXTRA+LOCATION_GRAVE):Filter(aux.fus_mat_hack_exmat_filter,nil):GetFirst()
 			if tc then
 				local te=tc:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,tc:GetControler())
 				te:UseCountLimit(tc:GetControler())
 			end
+			local rg=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
+			tg:Sub(rg)
 			local ct1=_SendtoGrave(tg,reason)
 			local ct2=Duel.Remove(rg,POS_FACEUP,reason)
 			return ct1+ct2

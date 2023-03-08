@@ -63,6 +63,7 @@ end
 function c197042.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
+		Duel.AdjustAll()
 		local b1=Duel.IsExistingMatchingCard(c197042.xyzfilter,tp,LOCATION_EXTRA,0,1,nil)
 		local b2=Duel.GetFlagEffect(tp,197042)>0 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
 		local off=1

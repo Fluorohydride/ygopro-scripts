@@ -14,7 +14,7 @@ function c95281259.filter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAbleToHand()
 end
 function c95281259.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c95281259.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c95281259.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c95281259.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c95281259.filter,tp,LOCATION_GRAVE,0,1,1,nil)

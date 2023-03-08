@@ -69,7 +69,7 @@ function c50699850.stcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c50699850.cfilter1,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c50699850.cfilter2(c,tp)
-	return c:GetType()==TYPE_TRAP and c:GetControler()==tp and c:GetReason()&REASON_EFFECT>0 and c:GetReasonPlayer()==1-tp
+	return c:GetType()==TYPE_TRAP and c:IsControler(tp) and c:GetReason()&REASON_EFFECT>0 and c:GetReasonPlayer()==1-tp
 end
 function c50699850.stcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c50699850.cfilter2,1,nil,tp)

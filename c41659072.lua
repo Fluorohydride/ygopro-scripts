@@ -47,7 +47,7 @@ end
 function c41659072.sumlimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_SYNCHRO)~=SUMMON_TYPE_SYNCHRO or not se
 end
-function c41659072.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41659072.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_TUNER)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and g:GetClassCount(Card.GetCode)>3
 end

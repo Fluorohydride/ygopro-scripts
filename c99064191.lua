@@ -51,7 +51,7 @@ function c99064191.activate1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
-function c99064191.condition2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99064191.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c99064191.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and re:IsActiveType(TYPE_EFFECT) and re:GetHandler():IsLevelAbove(5) and Duel.IsChainDisablable(ev)
 end

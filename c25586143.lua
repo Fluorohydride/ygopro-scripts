@@ -84,6 +84,7 @@ function c25586143.atkop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsRelateToEffect(e) and c:IsFaceup() and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
+			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e2:SetCode(EFFECT_UPDATE_ATTACK)
 			e2:SetValue(1000)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)

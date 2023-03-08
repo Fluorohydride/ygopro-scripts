@@ -1,4 +1,4 @@
---Beetrooper Squad
+--騎甲虫歩兵分隊
 function c40633084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -44,7 +44,7 @@ function c40633084.activate(e,tp,eg,ep,ev,re,r,rp)
 		table.insert(range,i)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40633084,1))
-	local n=Duel.AnnounceNumber(tp,table.unpack(range)) 
+	local n=Duel.AnnounceNumber(tp,table.unpack(range))
 	local sg=Group.CreateGroup()
 	for i=1,n do
 		local token=Duel.CreateToken(tp,40633085)

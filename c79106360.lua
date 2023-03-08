@@ -23,7 +23,7 @@ function c79106360.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=rg:GetFirst()
 	while tc do
 		if tc:IsLocation(LOCATION_DECK) and tc:IsType(TYPE_MONSTER) then
-			if tc:GetControler()==tp then ct1=ct1+1
+			if tc:IsControler(tp) then ct1=ct1+1
 			else ct2=ct2+1 end
 		end
 		tc=rg:GetNext()

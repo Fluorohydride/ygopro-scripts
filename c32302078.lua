@@ -75,7 +75,7 @@ end
 function c32302078.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local sg=nil
-	local g=eg:Filter(c32302078.spfilter,nil,e,tp)
+	local g=eg:Filter(aux.NecroValleyFilter(c32302078.spfilter),nil,e,tp)
 	if g:GetCount()==0 then return end
 	if g:GetCount()==1 then
 		sg=g

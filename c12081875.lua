@@ -48,7 +48,7 @@ function c12081875.efftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
 end
-function c12081875.effop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c12081875.effop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then
 		local te=tc.discard_effect

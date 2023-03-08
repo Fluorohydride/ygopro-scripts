@@ -41,7 +41,7 @@ function c35595518.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,ct,ct,nil,TYPE_SPELL+TYPE_TRAP)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,ct,0,0)
 end
-function c35595518.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c35595518.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
 	if rg:GetCount()>0 then

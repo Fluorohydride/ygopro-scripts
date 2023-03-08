@@ -49,7 +49,7 @@ function c73659078.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73659078.atktg(e,c)
-	return not c:IsAttribute(ATTRIBUTE_WATER)
+	return c:IsNonAttribute(ATTRIBUTE_WATER)
 end
 function c73659078.atkval(e,c)
 	return Duel.GetCounter(0,1,1,0x1015)*-200

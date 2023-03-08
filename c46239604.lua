@@ -25,7 +25,7 @@ end
 function c46239604.atlimit(e,c)
 	return c~=e:GetHandler()
 end
-function c46239604.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c46239604.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c46239604.filter(c)

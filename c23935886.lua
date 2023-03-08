@@ -1,7 +1,7 @@
 --天威の龍拳聖
 function c23935886.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c23935886.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c23935886.lcheck)
 	c:EnableReviveLimit()
 	--indestructable
 	local e1=Effect.CreateEffect(c)

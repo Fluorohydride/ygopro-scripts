@@ -65,7 +65,7 @@ function c95245544.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95245544.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.IsPlayerCanRemove(tp) and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
@@ -88,6 +88,9 @@ function c95245544.drop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		local sg=Duel.GetFieldGroup(p,LOCATION_HAND,0)
-		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
+		if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)==0 then
+			Duel.ConfirmCards(1-p,sg)
+			Duel.ShuffleHand(p)
+		end
 	end
 end

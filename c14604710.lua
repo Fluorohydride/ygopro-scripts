@@ -39,7 +39,7 @@ function c14604710.activate1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c14604710.tgfilter2(c,e,tp)
-	if not c:IsFaceup() or not c:IsLevel(9) then return false end
+	if c:IsFacedown() or not c:IsLevel(9) then return false end
 	local g=Duel.GetMatchingGroup(c14604710.spfilter2,tp,LOCATION_DECK,0,nil,e,tp,c)
 	return g:GetClassCount(Card.GetCode)>1
 end

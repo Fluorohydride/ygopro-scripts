@@ -45,7 +45,7 @@ function c49456901.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
-function c49456901.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c49456901.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp
 		and loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)

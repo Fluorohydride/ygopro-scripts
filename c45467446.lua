@@ -42,7 +42,7 @@ function c45467446.rmfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemove()
 end
 function c45467446.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) and c45467446.rmfilter(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c45467446.rmfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c45467446.rmfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c45467446.rmfilter,tp,0,LOCATION_ONFIELD,1,1,nil)

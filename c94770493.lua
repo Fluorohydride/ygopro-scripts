@@ -40,7 +40,7 @@ end
 function c94770493.atkcon(e)
 	local ph=Duel.GetCurrentPhase()
 	if (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==e:GetHandler() then
-		e:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_BATTLE)
+		e:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE+PHASE_BATTLE)
 		return true
 	end
 	return false

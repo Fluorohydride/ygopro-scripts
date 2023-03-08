@@ -56,10 +56,12 @@ function c35815783.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND)
 end
-function c35815783.thop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c35815783.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetFirstMatchingCard(c35815783.thfilter,tp,LOCATION_DECK,0,nil)
 	if tg and Duel.SendtoHand(tg,nil,REASON_EFFECT)~=0 then
 		Duel.ConfirmCards(1-tp,tg)
+		Duel.ShuffleHand(tp)
+		Duel.ShuffleDeck(tp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)

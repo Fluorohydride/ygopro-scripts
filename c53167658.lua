@@ -25,7 +25,7 @@ function c53167658.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c53167658.repfilter1(c,tp)
-	return c:IsLocation(LOCATION_ONFIELD) and c:IsControler(tp)
+	return c:IsOnField() and c:IsControler(tp)
 		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)) and not c:IsReason(REASON_REPLACE)
 end
 function c53167658.reptg1(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -53,7 +53,7 @@ function c53167658.repop1(e,tp,eg,ep,ev,re,r,rp)
 	g:DeleteGroup()
 end
 function c53167658.repfilter2(c,tp)
-	return c:IsLocation(LOCATION_ONFIELD) and c:IsControler(1-tp)
+	return c:IsOnField() and c:IsControler(1-tp)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c53167658.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)

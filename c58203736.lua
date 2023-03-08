@@ -21,6 +21,7 @@ function c58203736.initial_effect(c)
 	--SpecialSummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(58203736,0))
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e2:SetRange(LOCATION_SZONE)
@@ -34,7 +35,7 @@ function c58203736.eftg(e,c)
 end
 function c58203736.efilter(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rc:IsControler(1-e:GetHandlerPlayer()) and not rc:IsAttribute(ATTRIBUTE_WATER)
+	return re:IsActiveType(TYPE_MONSTER) and rc:IsControler(1-e:GetHandlerPlayer()) and rc:IsNonAttribute(ATTRIBUTE_WATER)
 end
 function c58203736.spfilter(c,e,tp)
 	return (aux.IsCodeListed(c,22702055) or (c:IsType(TYPE_NORMAL) and c:IsAttribute(ATTRIBUTE_WATER)))

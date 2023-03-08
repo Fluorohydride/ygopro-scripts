@@ -1,5 +1,6 @@
 --肆世壊からの天跨
 function c41619242.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(41619242,0))
@@ -26,17 +27,20 @@ function c41619242.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c41619242.atkfilter(c)
-	return c:IsSetCard(0x17a) or c:IsCode(56099748)
+	return c:IsFaceup() and (c:IsSetCard(0x17a) or c:IsCode(56099748))
+end
+function c41619242.atkfilter2(c)
+	return c:IsFaceup() and (c:GetAttack()>0 or c:GetDefense()>0)
 end
 function c41619242.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c41619242.atkfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+		and Duel.IsExistingTarget(c41619242.atkfilter2,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g1=Duel.SelectTarget(tp,c41619242.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g2=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
+	local g2=Duel.SelectTarget(tp,c41619242.atkfilter2,tp,0,LOCATION_MZONE,1,1,nil)
 	g1:Merge(g2)
 end
 function c41619242.atkop(e,tp,eg,ep,ev,re,r,rp)

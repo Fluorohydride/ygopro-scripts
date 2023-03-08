@@ -24,7 +24,7 @@ function c54059040.cfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c54059040.pfilter(c,e)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsAttribute(ATTRIBUTE_WATER) and (not e or c:IsRelateToEffect(e))
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsNonAttribute(ATTRIBUTE_WATER) and (not e or c:IsRelateToEffect(e))
 end
 function c54059040.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c54059040.cfilter,tp,LOCATION_MZONE,0,1,nil)

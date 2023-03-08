@@ -49,7 +49,7 @@ function c32557233.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32557233.rfilter(c,tp)
 	return Duel.GetMZoneCount(tp,c)>1 and (c:IsControler(tp) or c:IsFaceup())
-		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711))
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c32557233.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

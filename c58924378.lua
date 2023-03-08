@@ -10,10 +10,10 @@ function c58924378.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_BATTLED)
 	e2:SetRange(LOCATION_FZONE)
-	e2:SetOperation(c58924378.atkdn)
+	e2:SetOperation(c58924378.atkop)
 	c:RegisterEffect(e2)
 end
-function c58924378.atkdn(e,tp,eg,ep,ev,re,r,rp,chk)
+function c58924378.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if d and d:IsSetCard(0xe) then
