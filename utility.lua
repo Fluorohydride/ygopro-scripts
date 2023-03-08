@@ -458,7 +458,7 @@ function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.SynMaterialFilter(c,syncard)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard)
 end
 function Auxiliary.SynLimitFilter(c,f,e,syncard)
 	return f and not f(e,c,syncard)
@@ -467,7 +467,7 @@ function Auxiliary.GetSynchroLevelFlowerCardian(c)
 	return 2
 end
 function Auxiliary.GetSynMaterials(tp,syncard)
-	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(Auxiliary.SynMaterialFilter,nil,syncard)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
 		local mg2=Duel.GetMatchingGroup(Card.IsCanBeSynchroMaterial,tp,LOCATION_HAND,0,nil,syncard)
 		if mg2:GetCount()>0 then mg:Merge(mg2) end
