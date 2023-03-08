@@ -1,7 +1,7 @@
 --肆世壊からの天跨
 function c41619242.initial_effect(c)
 	aux.AddCodeList(c,56099748)
-  --Activate
+	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -29,17 +29,22 @@ function c41619242.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.IsExistingTarget(c41619242.atkfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(c41619242.atkfilter2,tp,0,LOCATION_MZONE,1,nil)
 	if chk==0 then
-		if ct<1 and not b1 then return false end
-		local te,tg=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
-		local b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE
+		local te,tg
+		if ct>0 then
+			te,tg=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
+		end
+		return b1 or (Duel.GetCurrentPhase()~=PHASE_DAMAGE
 			and te and te:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-			and tg and tg:IsExists(c41619242.disfilter,1,nil,tp) and Duel.IsChainDisablable(ct)
-		return b1 or b2
+			and tg and tg:IsExists(c41619242.disfilter,1,nil,tp) and Duel.IsChainDisablable(ct))
 	end
-	local te,tg=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
-	local b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE
-		and te and te:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-		and tg and tg:IsExists(c41619242.disfilter,1,nil,tp) and Duel.IsChainDisablable(ct-1)
+	local te,tg
+	local b2=false
+	if ct>0 then
+		te,tg=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
+		b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE
+			and te and te:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
+			and tg and tg:IsExists(c41619242.disfilter,1,nil,tp) and Duel.IsChainDisablable(ct-1)
+	end
 	local op=0
 	if b1 and b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(41619242,0),aux.Stringid(41619242,1))

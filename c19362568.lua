@@ -22,17 +22,22 @@ function c19362568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.GetMZoneCount(tp)>0
 		and Duel.IsExistingTarget(c19362568.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	if chk==0 then
-		if ct<2 and not b1 then return false end
-		local te,p1=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-		local p2=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_PLAYER)
-		local b2=Duel.IsChainDisablable(ct)
-			and te and te:GetHandler():IsSetCard(0xf0) and te:IsActiveType(TYPE_MONSTER) and p1==tp and p2==1-tp
-		return b1 or b2
+		local te,p1,p2
+		if ct>1 then
+			te,p1=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
+			p2=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_PLAYER)
+		end
+		return b1 or (te and te:GetHandler():IsSetCard(0xf0) and te:IsActiveType(TYPE_MONSTER)
+			and p1 and p2 and p1==tp and p2==1-tp and Duel.IsChainDisablable(ct))
 	end
-	local te,p1=Duel.GetChainInfo(ct-2,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	local p2=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_PLAYER)
-	local b2=Duel.IsChainDisablable(ct-1)
-		and te and te:GetHandler():IsSetCard(0xf0) and te:IsActiveType(TYPE_MONSTER) and p1==tp and p2==1-tp
+	local te,p1,p2
+	local b2=false
+	if ct>1 then
+		te,p1=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
+		p2=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_PLAYER)
+		b2=te and te:GetHandler():IsSetCard(0xf0) and te:IsActiveType(TYPE_MONSTER)
+			and p1 and p2 and p1==tp and p2==1-tp and Duel.IsChainDisablable(ct-1)
+	end
 	local op=0
 	if b1 and b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(19362568,0),aux.Stringid(19362568,1))
