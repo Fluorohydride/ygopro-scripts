@@ -485,6 +485,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
+				if smat and not smat:IsCanBeSynchroMaterial(c) then return false end
 				local tp=c:GetControler()
 				local mg
 				local mgchk=false
