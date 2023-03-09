@@ -1,5 +1,4 @@
 --百檎龍－リンゴブルム
---not fully implemented
 function c30765615.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -75,19 +74,10 @@ function c30765615.tkop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_ADD_TYPE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetValue(TYPE_TUNER)
+		e1:SetCode(EFFECT_TUNER)
+		e1:SetValue(c30765615.tnval)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		token:RegisterEffect(e1,true)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_NONTUNER)
-		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetRange(LOCATION_MZONE)
-		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetValue(c30765615.tnval)
-		token:RegisterEffect(e2,true)
 		Duel.SpecialSummonComplete()
 	end
 end

@@ -347,8 +347,8 @@ function Auxiliary.FilterBoolFunction(f,...)
 end
 function Auxiliary.Tuner(f,...)
 	local ext_params={...}
-	return	function(target)
-				return target:IsType(TYPE_TUNER) and (not f or f(target,table.unpack(ext_params)))
+	return	function(target,syncard)
+				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
 function Auxiliary.NonTuner(f,...)
@@ -403,7 +403,7 @@ function Auxiliary.SynCondition(f1,f2,minc,maxc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
-				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
+				if smat and smat:IsTuner(c) and (not f1 or f1(smat)) then
 					return Duel.CheckTunerMaterial(c,smat,f1,f2,minc,maxc,mg) end
 				return Duel.CheckSynchroMaterial(c,f1,f2,minc,maxc,smat,mg)
 			end
@@ -418,7 +418,7 @@ function Auxiliary.SynTarget(f1,f2,minc,maxc)
 					if minc>maxc then return false end
 				end
 				local g=nil
-				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
+				if smat and smat:IsTuner(c) and (not f1 or f1(smat)) then
 					g=Duel.SelectTunerMaterial(c:GetControler(),c,smat,f1,f2,minc,maxc,mg)
 				else
 					g=Duel.SelectSynchroMaterial(c:GetControler(),c,f1,f2,minc,maxc,smat,mg)
