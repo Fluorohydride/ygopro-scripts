@@ -56,7 +56,6 @@ function c31002402.activate(e,tp,eg,ep,ev,re,r,rp)
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
 			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 			aux.GCheckAdditional=nil
-			if not mat then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 		else
