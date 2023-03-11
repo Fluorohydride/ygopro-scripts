@@ -35,8 +35,12 @@ function c31002402.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
+function c31002402.check(sg,tc)
+	return #sg>0 and sg:GetFirst():IsLevel(tc:GetLevel())
+end
 function c31002402.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	::cancel::
 	local mg1=Duel.GetRitualMaterial(tp)
 	local mg2=Duel.GetMatchingGroup(c31002402.mfilter,tp,LOCATION_EXTRA,0,nil)
 	local g1=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c31002402.filter,e,tp,mg1,nil,Card.GetLevel,"Equal")
@@ -56,11 +60,13 @@ function c31002402.activate(e,tp,eg,ep,ev,re,r,rp)
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
 			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 			aux.GCheckAdditional=nil
+			if not mat or #mat==0 then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 		else
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local mat=mg2:FilterSelect(tp,Card.IsLevel,1,1,nil,tc:GetLevel())
+			local mat=mg2:SelectSubGroup(tp,c31002402.check,true,1,1,tc)
+			if not mat or #mat==0 then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)
 		end

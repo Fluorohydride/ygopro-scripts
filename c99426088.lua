@@ -78,6 +78,7 @@ function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_EXTRA)
 end
 function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local chkf=tp
 	local fmg1=Duel.GetFusionMaterial(tp):Filter(c99426088.ffilter1,nil,e)
 	local exmat=false
@@ -165,12 +166,12 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
-		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
 		if not mat or mat:GetCount()==0 then
 			aux.RCheckAdditional=nil
 			aux.RGCheckAdditional=nil
-			return
+			goto cancel
 		end
 		tc:SetMaterial(mat)
 		local dmat=mat:Filter(Card.IsLocation,nil,LOCATION_DECK)
