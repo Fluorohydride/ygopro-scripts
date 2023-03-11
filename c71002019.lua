@@ -63,5 +63,8 @@ function c71002019.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71002019.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE)&RACE_PLANT~=0
+	if not (re and re:IsActiveType(TYPE_MONSTER)) then return false end
+	local race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE)
+	if race==nil then race=re:GetHandler():GetOriginalRace() end
+	return race&RACE_PLANT~=0
 end
