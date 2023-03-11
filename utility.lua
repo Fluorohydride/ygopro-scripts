@@ -1726,7 +1726,6 @@ function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,s
 end
 function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,extra_operation)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
-				::cancel::
 				local mg=Duel.GetRitualMaterial(tp)
 				if mat_filter then mg=mg:Filter(mat_filter,nil,e,tp) end
 				local exg=nil
@@ -1750,8 +1749,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
-					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
-					if not mat then goto cancel end
+					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
 					Auxiliary.GCheckAdditional=nil
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)

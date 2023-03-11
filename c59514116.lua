@@ -103,7 +103,6 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		aux.FCheckAdditional=nil
 	elseif e:GetLabel()==1 then
-		::rcancel::
 		local mg=Duel.GetRitualMaterial(tp)
 		aux.RCheckAdditional=c59514116.rcheck
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -118,11 +117,11 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 			aux.GCheckAdditional=nil
 			if not mat or mat:GetCount()==0 then
 				aux.RCheckAdditional=nil
-				goto rcancel
+				return
 			end
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
