@@ -92,7 +92,7 @@ function c63265554.pnop(e,tp,eg,ep,ev,re,r,rp)
 	if op==0 then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	elseif op==1 then
-		if not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
+		if tc:IsCanBeDisabledByEffect(e) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,4 +1,4 @@
---Libromancer Displaced
+--リブロマンサー・アフェクテッド
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--control
@@ -37,7 +37,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		local _,tg=Duel.GetOperationInfo(0,CATEGORY_CONTROL)
 		local tc=tg:GetFirst()
 		if tc:IsControler(1-tp) and tc:IsRelateToEffect(e)
-			and Duel.GetControl(tc,tp) and not chk then
+			and Duel.GetControl(tc,tp)>0 and not chk then
 			local fid=c:GetFieldID()
 			tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 			local e1=Effect.CreateEffect(c)

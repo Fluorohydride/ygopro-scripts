@@ -34,17 +34,27 @@ function c72204747.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cg=Duel.SelectMatchingCard(tp,c72204747.filter2,tp,LOCATION_DECK,0,1,1,nil,math.floor(tc:GetLevel()/2),e,tp)
 	if cg:GetCount()==0 then return end
 	local sc=cg:GetFirst()
-	Duel.SpecialSummon(cg,0,tp,tp,false,false,POS_FACEUP)
-	--destroy
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetCountLimit(1)
-	e1:SetReset(RESET_PHASE+PHASE_END+RESET_EVENT+RESETS_STANDARD)
-	e1:SetOperation(c72204747.des)
-	sc:RegisterEffect(e1)
+	if Duel.SpecialSummon(cg,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		--destroy
+		local fid=e:GetHandler():GetFieldID()
+		sc:RegisterFlagEffect(72204747,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_PHASE+PHASE_END)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetLabel(fid)
+		e1:SetLabelObject(sc)
+		e1:SetCountLimit(1)
+		e1:SetReset(RESET_PHASE+PHASE_END)
+		e1:SetCondition(c72204747.descon)
+		e1:SetOperation(c72204747.desop)
+		Duel.RegisterEffect(e1,tp)
+	end
 end
-function c72204747.des(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+function c72204747.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	return tc:GetFlagEffectLabel(72204747)==e:GetLabel()
+end
+function c72204747.desop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end

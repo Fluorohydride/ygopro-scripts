@@ -76,7 +76,7 @@ function c77693536.eqlimit(e,c)
 	return e:GetOwner()==c
 end
 function c77693536.mttg(e,c)
-	return c:GetEquipTarget()==e:GetHandler()
+	return c:GetEquipTarget()==e:GetHandler() and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function c77693536.mtval(e,c)
 	if not c then return false end

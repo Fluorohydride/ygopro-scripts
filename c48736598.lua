@@ -64,14 +64,15 @@ function c48736598.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		while tc do
-			local ava_zone=0
+			local avail_zone=0
 			for p=0,1 do
+				local _,flag_tmp=Duel.GetLocationCount(p,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone[p])
+				flag[p]=(~flag_tmp)&0x7f
 				if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,p,zone[p]) then
-					ava_zone=ava_zone|(flag[p]<<(p==tp and 0 or 16))
+					avail_zone=avail_zone|(flag[p]<<(p==tp and 0 or 16))
 				end
 			end
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-			local sel_zone=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0x00ff00ff&(~ava_zone))
+			local sel_zone=Duel.SelectField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0x00ff00ff&(~avail_zone),tc:GetCode())
 			local sump=0
 			if sel_zone&0xff>0 then
 				sump=tp

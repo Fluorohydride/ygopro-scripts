@@ -1,4 +1,4 @@
---Ra'ten, the Heavenly General
+--羅天神将
 function c30163008.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,nil,2,nil,c30163008.lcheck)

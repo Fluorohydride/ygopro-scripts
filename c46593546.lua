@@ -79,7 +79,7 @@ end
 function c46593546.ovltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if chk==0 then return c:GetFlagEffect(46593546)==0
+	if chk==0 then return c:GetFlagEffect(46593546)==0 and c:IsType(TYPE_XYZ)
 		and (c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
 			or Duel.IsExistingMatchingCard(c46593546.ovltgfilter,tp,LOCATION_ONFIELD,0,1,nil))
 		and rc:IsRelateToEffect(re) and rc:IsCanBeXyzMaterial(c) end

@@ -31,12 +31,13 @@ function c63767246.initial_effect(c)
 	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-	e3:SetCode(EVENT_DESTROYED)
+	e3:SetCode(EVENT_CUSTOM+63767246)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c63767246.atkcon)
 	e3:SetTarget(c63767246.atktg)
 	e3:SetOperation(c63767246.atkop)
 	c:RegisterEffect(e3)
+	aux.RegisterMergedDelayedEvent(c,63767246,EVENT_DESTROYED)
 end
 aux.xyz_number[63767246]=38
 function c63767246.discon(e,tp,eg,ep,ev,re,r,rp)
@@ -51,7 +52,7 @@ end
 function c63767246.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if Duel.NegateEffect(ev) and c:IsRelateToEffect(e) and rc:IsRelateToEffect(re) and c:IsType(TYPE_XYZ) then
+	if Duel.NegateEffect(ev) and c:IsRelateToEffect(e) and rc:IsRelateToEffect(re) and rc:IsCanOverlay() and c:IsType(TYPE_XYZ) then
 		rc:CancelToGrave()
 		Duel.Overlay(c,Group.FromCards(rc))
 	end

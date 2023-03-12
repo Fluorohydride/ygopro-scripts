@@ -24,7 +24,7 @@ function c85876417.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local c=e:GetHandler()
 		local a=Duel.GetAttacker()
 		if a==c then a=Duel.GetAttackTarget() end
-		return a and a:IsAttribute(0x6f)
+		return a and a:IsNonAttribute(ATTRIBUTE_LIGHT)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end

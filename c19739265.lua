@@ -1,4 +1,4 @@
---Sol and Luna
+--サン・アンド・ムーン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --壱世壊に澄み渡る残響
 function c1329620.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_TODECK+CATEGORY_TOGRAVE)

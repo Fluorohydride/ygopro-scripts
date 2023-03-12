@@ -32,15 +32,12 @@ function c51335426.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
 		if Duel.Draw(p,ct,REASON_EFFECT)==ct then
 			local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
-			if g:GetCount()==0 then return end
+			if g:GetCount()<ct then return end
+			Duel.ShuffleHand(p)
+			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 			local sg=g:Select(p,ct,ct,nil)
-			Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-			Duel.SortDecktop(p,p,ct)
-			for i=1,ct do
-				local mg=Duel.GetDecktopGroup(p,1)
-				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-			end
+			aux.PlaceCardsOnDeckBottom(p,sg)
 		end
 	end
 end

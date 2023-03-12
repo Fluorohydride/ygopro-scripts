@@ -53,7 +53,6 @@ function c91588074.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 		return true
 	else return false end
 end
-
 function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	local cg=g:Filter(Card.IsFacedown,nil)

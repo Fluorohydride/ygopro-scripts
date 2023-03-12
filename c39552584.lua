@@ -48,7 +48,7 @@ function c39552584.spfilter(c,e,tp)
 end
 function c39552584.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsSummonType(SUMMON_TYPE_FUSION) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousControler(tp) and c:GetReasonPlayer()==1-tp
 end
 function c39552584.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -11,9 +11,9 @@ function c29616929.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c29616929.condition(e,tp,eg,ep,ev,re,r,rp)
-	local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION)
+	local tgp,loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION)
 	local tc=re:GetHandler()
-	return tc:IsControler(1-tp) and loc==LOCATION_MZONE and tc:IsStatus(STATUS_SPSUMMON_TURN) and Duel.IsChainDisablable(ev)
+	return tgp==1-tp and loc==LOCATION_MZONE and tc:IsStatus(STATUS_SPSUMMON_TURN) and Duel.IsChainDisablable(ev)
 end
 function c29616929.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

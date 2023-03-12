@@ -69,8 +69,10 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	elseif tc:IsPosition(POS_FACEDOWN_DEFENSE) then
 		Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
-	else
+	elseif tc:IsCanTurnSet() then
 		local pos=Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 		Duel.ChangePosition(tc,pos)
+	else
+		Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
 	end
 end

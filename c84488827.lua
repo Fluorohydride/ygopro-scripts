@@ -41,7 +41,7 @@ function c84488827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if g1:GetCount()>0 and g2:GetCount()==0 then
 		op=Duel.SelectOption(tp,aux.Stringid(84488827,1))+1
 	elseif g1:GetCount()==0 and g2:GetCount()>0 then
-		op=Duel.SelectOption(tp,aux.Stringid(84488827,1))+2
+		op=Duel.SelectOption(tp,aux.Stringid(84488827,2))+2
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(84488827,1),aux.Stringid(84488827,2))+1
 	end

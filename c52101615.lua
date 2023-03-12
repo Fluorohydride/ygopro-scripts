@@ -19,7 +19,7 @@ function c52101615.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c52101615.subcon(e)
-	return e:GetHandler():IsLocation(0x1e)
+	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 end
 function c52101615.filter(c,e,tp,m,gc,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_DARK)

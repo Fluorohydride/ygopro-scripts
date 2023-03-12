@@ -1,4 +1,4 @@
---Beetrooper Scale Bomber
+--騎甲虫スケイル・ボム
 function c39041550.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サイバース・セイジ
---Script by 奥克斯
 function c65037172.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion summon
@@ -18,7 +17,7 @@ function c65037172.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e2:SetCountLimit(1,65037172+100)
+	e2:SetCountLimit(1,65037173)
 	e2:SetCondition(c65037172.thcon)
 	e2:SetTarget(c65037172.thtg)
 	e2:SetOperation(c65037172.thop)

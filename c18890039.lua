@@ -1,4 +1,4 @@
---Libromancer First Appearance
+--リブロマンサー・ライジング
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--add from deck to hand

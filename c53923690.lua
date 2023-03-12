@@ -1,4 +1,4 @@
---Omega Judgment
+--オメガの裁き
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--destroy

@@ -13,7 +13,7 @@ function c9201964.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer() and Duel.GetAttackTarget()==nil
 end
 function c9201964.cfilter(c)
-	return c:IsSetCard(0xc008) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0xc008) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c9201964.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c9201964.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

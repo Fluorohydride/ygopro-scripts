@@ -18,7 +18,7 @@ function c88279736.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88279736.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and eg:GetFirst():GetControler()==tp
+	return ep~=tp and eg:GetFirst():GetControler()==tp and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c88279736.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -44,7 +44,7 @@ function c58116537.actcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c58116537.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
-	if chk==0 then return aux.GetAttributeCount(g)>1 end
+	if chk==0 then return aux.GetAttributeCount(g)>0 end
 	local tc=g:GetFirst()
 	local att=0
 	while tc do

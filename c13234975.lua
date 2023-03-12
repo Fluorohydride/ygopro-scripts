@@ -1,4 +1,4 @@
---Beetrooper Landing
+--騎甲虫隊上陸態勢
 function c13234975.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

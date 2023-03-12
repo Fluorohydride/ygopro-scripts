@@ -1,4 +1,4 @@
---Backup Team
+--補強要員
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--draw
@@ -39,15 +39,7 @@ function s.act(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ShuffleHand(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.GetFieldGroup(p,LOCATION_HAND,0):Select(p,d,d,nil)
-	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
-	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
-	if ct>0 then
-		Duel.SortDecktop(p,p,ct)
-		for i=1,ct do
-			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-		end
-	end
+	aux.PlaceCardsOnDeckBottom(tp,g)
 end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_END

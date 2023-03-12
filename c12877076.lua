@@ -86,7 +86,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc and tc:IsAbleToHand() and (not tc:IsAbleToGrave() or Duel.SelectOption(tp,1190,1191)==0) then
 			res=Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
-		else
+		elseif tc then
 			res=Duel.SendtoGrave(tc,REASON_EFFECT)
 		end
 	end

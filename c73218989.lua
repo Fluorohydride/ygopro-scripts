@@ -1,4 +1,4 @@
---ブラックフェザー·アサルト·ドラゴン
+--ブラックフェザー・アサルト・ドラゴン
 function c73218989.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	c:EnableCounterPermit(0x10)
@@ -52,6 +52,10 @@ function c73218989.initial_effect(c)
 	e5:SetOperation(c73218989.desop)
 	c:RegisterEffect(e5)
 end
+c73218989.material_type=TYPE_SYNCHRO
+function c73218989.mfilter(c)
+	return c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
+end
 function c73218989.mfilter1(c)
 	return c:IsType(TYPE_TUNER) and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER)
 end
@@ -64,11 +68,11 @@ end
 function c73218989.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c73218989.mfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	return g:CheckSubGroup(c73218989.fselect,2,2,c,tp)
 end
 function c73218989.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c73218989.mfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=g:SelectSubGroup(tp,c73218989.fselect,true,2,2,c,tp)
 	if sg then
