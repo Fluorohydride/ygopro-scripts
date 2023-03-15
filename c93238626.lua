@@ -72,7 +72,8 @@ function c93238626.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local at=Duel.GetAttackTarget()
 		local no=aux.GetXyzNumber(at)
-		return no and Duel.IsExistingMatchingCard(c93238626.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,at,no)
+		return no and aux.MustMaterialCheck(at,tp,EFFECT_MUST_BE_XMATERIAL)
+			and Duel.IsExistingMatchingCard(c93238626.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,at,no)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
