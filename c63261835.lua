@@ -19,8 +19,8 @@ function c63261835.initial_effect(c)
 	e2:SetOperation(c63261835.thop)
 	c:RegisterEffect(e2)
 end
-function c63261835.matfilter1(c)
-	return c:IsSynchroType(TYPE_TUNER) or c:IsSetCard(0x64)
+function c63261835.matfilter1(c,syncard)
+	return c:IsTuner(syncard) or c:IsSetCard(0x64)
 end
 function c63261835.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)

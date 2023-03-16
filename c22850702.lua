@@ -28,8 +28,8 @@ function c22850702.initial_effect(c)
 	c:RegisterEffect(e3)
 	e3:SetLabelObject(e2)
 end
-function c22850702.matfilter1(c)
-	return c:IsSynchroType(TYPE_TUNER) or c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+function c22850702.matfilter1(c,syncard)
+	return c:IsTuner(syncard) or c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
 end
 function c22850702.matfilter2(c,syncard)
 	return c:IsNotTuner(syncard) and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
