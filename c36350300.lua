@@ -37,7 +37,7 @@ function c36350300.activate(e,tp,eg,ep,ev,re,r,rp)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
 		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then goto cancel end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()

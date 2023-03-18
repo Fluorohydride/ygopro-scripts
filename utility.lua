@@ -1725,7 +1725,7 @@ function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,s
 end
 function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,extra_operation)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
-				::cancel::
+				::RitualUltimateSelectStart::
 				local mg=Duel.GetRitualMaterial(tp)
 				if mat_filter then mg=mg:Filter(mat_filter,nil,e,tp) end
 				local exg=nil
@@ -1751,7 +1751,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
 					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
 					Auxiliary.GCheckAdditional=nil
-					if not mat or #mat==0 then goto cancel end
+					if not mat then goto RitualUltimateSelectStart end
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()

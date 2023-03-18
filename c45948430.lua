@@ -43,10 +43,10 @@ function c45948430.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45948430.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local rc=rg:GetFirst()
 	if rc then
-		local mg=Duel.GetMatchingGroup(s.mfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,rc)
+		local mg=Duel.GetMatchingGroup(c45948430.mfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,rc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local mat=mg:SelectSubGroup(tp,c45948430.check,true,2,2)
-		if not mat or #mat==0 then goto cancel end
+		if not mat then goto cancel end
 		rc:SetMaterial(mat)
 		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)
 		Duel.BreakEffect()

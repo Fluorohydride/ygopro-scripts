@@ -117,7 +117,7 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 			aux.GCheckAdditional=nil
-			if not mat or mat:GetCount()==0 then
+			if not mat then
 				aux.RCheckAdditional=nil
 				goto rcancel
 			end

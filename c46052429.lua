@@ -44,7 +44,7 @@ function c46052429.activate(e,tp,eg,ep,ev,re,r,rp)
 		aux.GCheckAdditional=function(sg) return sg:GetSum(Card.GetRitualLevel,tc)<=lv end
 		local mat=mg:SelectSubGroup(tp,aux.RitualCheckEqual,true,1,99,tc,lv)
 		aux.GCheckAdditional=nil
-		if not mat or #mat==0 then goto cancel end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)
 		Duel.BreakEffect()
