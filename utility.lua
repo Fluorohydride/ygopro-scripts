@@ -508,6 +508,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
+				::SynMixTargetSelectStart::
 				local g=Group.CreateGroup()
 				local mg
 				local mgchk=false
@@ -518,16 +519,25 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
+				local c1
+				local c2
+				local c3
+				local cancel=Duel.IsSummonCancelable()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):GetFirst()
+				c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+				if not c1 then return false end
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):GetFirst()
+					c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+					if not c2 then return false end
+					if g:IsContains(c2) then goto SynMixTargetSelectStart end
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):GetFirst()
+						c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+						if not c3 then return false end
+						if g:IsContains(c3) then goto SynMixTargetSelectStart end
 						g:AddCard(c3)
 					end
 				end
@@ -535,20 +545,21 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				for i=0,maxc-1 do
 					local mg2=mg:Clone()
 					if f4 then
-						mg2=mg2:Filter(f4,g,c)
+						mg2=mg2:Filter(f4,g,c,c1,c2,c3)
 					else
 						mg2:Sub(g)
 					end
 					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk)
 					if cg:GetCount()==0 then break end
-					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk) then
-						minct=0
-					end
+					local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local tg=cg:Select(tp,minct,1,nil)
-					if tg:GetCount()==0 then break end
-					g4:Merge(tg)
+					local c4=cg:SelectUnselect(g+g4,tp,finish,cancel,minc,maxc)
+					if not c4 then
+						if finish then break
+						else return false end
+					end
+					if g:IsContains(c4) or g4:IsContains(c4) then goto SynMixTargetSelectStart end
+					g4:AddCard(c4)
 				end
 				g:Merge(g4)
 				if g:GetCount()>0 then
@@ -595,11 +606,11 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgc
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
 	if f4 then
-		mg=mg:Filter(f4,sg,syncard)
+		mg=mg:Filter(f4,sg,syncard,c1,c2,c3)
 	else
 		mg:Sub(sg)
 	end
-	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
 end
 function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk)
 	local tp=syncard:GetControler()
@@ -675,7 +686,8 @@ function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
 			end
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
+		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
@@ -805,14 +817,19 @@ function Auxiliary.XyzTargetAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 				local b1=Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop)
+				local b2=(not min or min<=1) and #altg>0
 				local g=nil
+				local cancel=Duel.IsSummonCancelable()
 				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
 					e:SetLabel(1)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,alterop)
-					if alterop then alterop(e,tp,1,g:GetFirst()) end
+					local tc=altg:SelectUnselect(nil,tp,false,cancel,1,1)
+					if tc then
+						g=Group.FromCards(tc)
+						if alterop then alterop(e,tp,1,tc) end
+					end
 				else
 					e:SetLabel(0)
 					g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
@@ -992,7 +1009,7 @@ function Auxiliary.XyzLevelFreeConditionAlter(f,gf,minct,maxct,alterf,alterdesc,
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop):Filter(Auxiliary.MustMaterialCheck,nil,tp,EFFECT_MUST_BE_XMATERIAL)
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 				if (not min or min<=1) and altg:GetCount()>0 then
 					return true
 				end
@@ -1031,21 +1048,25 @@ function Auxiliary.XyzLevelFreeTargetAlter(f,gf,minct,maxct,alterf,alterdesc,alt
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 				local mg2=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				Duel.SetSelectedCard(sg)
 				local b1=mg2:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop)
+				local b2=(not min or min<=1) and #altg>0
 				local g=nil
+				local cancel=Duel.IsSummonCancelable()
 				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
 					e:SetLabel(1)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,alterop)
-					if alterop then alterop(e,tp,1,g:GetFirst()) end
+					local tc=altg:SelectUnselect(nil,tp,false,cancel,1,1)
+					if tc then
+						g=Group.FromCards(tc)
+						if alterop then alterop(e,tp,1,tc) end
+					end
 				else
 					e:SetLabel(0)
 					Duel.SetSelectedCard(sg)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					local cancel=Duel.IsSummonCancelable()
 					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
 					g=mg2:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil

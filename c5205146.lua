@@ -1,5 +1,6 @@
 --無限起動ロードローラー
 function c5205146.initial_effect(c)
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(5205146,0))
@@ -9,6 +10,7 @@ function c5205146.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,5205146)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c5205146.spcon)
 	e1:SetTarget(c5205146.sptg)
 	e1:SetOperation(c5205146.spop)
@@ -32,13 +34,20 @@ function c5205146.initial_effect(c)
 	e4:SetValue(-1000)
 	c:RegisterEffect(e4)
 end
-function c5205146.cfilter(c,tp)
-	return c:GetPreviousAttributeOnField()&ATTRIBUTE_EARTH>0 and c:GetPreviousRaceOnField()&RACE_MACHINE>0
-		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and (c:IsReason(REASON_RELEASE) or c:IsFaceup())
+function c5205146.cfilter(c,se)
+	if c:IsLocation(LOCATION_REMOVED)
+		and not (c:IsReason(REASON_RELEASE) or c:IsFaceup()) then return false end
+	if not (se==nil or c:GetReasonEffect()~=se) then return false end
+	if c:IsPreviousLocation(LOCATION_MZONE) then
+		return c:GetPreviousAttributeOnField()&ATTRIBUTE_EARTH>0 and c:GetPreviousRaceOnField()&RACE_MACHINE>0
+	else
+		return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_MACHINE)
+	end
 end
 function c5205146.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c5205146.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	local c=e:GetHandler()
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c5205146.cfilter,1,nil,se) and not eg:IsContains(c)
 end
 function c5205146.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
