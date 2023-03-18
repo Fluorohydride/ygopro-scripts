@@ -27,15 +27,20 @@ function c34834619.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
+function c34834619.RitualCheck(g,tc)
+	return g:CheckWithSumEqual(Card.GetRitualLevel,4,#g,#g,tc)
+end
 function c34834619.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	::cancel::
 	local mg=Duel.GetMatchingGroup(c34834619.mtfilter,tp,LOCATION_GRAVE,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c34834619.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local mat=mg:SelectWithSumEqual(tp,Card.GetRitualLevel,4,1,99,tc)
+		local mat=mg:SelectSubGroup(tp,c34834619.RitualCheck,true,1,99,tc)
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()

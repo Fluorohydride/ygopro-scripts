@@ -64,6 +64,7 @@ function c13386407.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c13386407.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp):GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)>0 then
 		Duel.ConfirmCards(1-tp,sc)
+		::cancel::
 		local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsLocation,nil,LOCATION_MZONE)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c13386407.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c13386407.filter,e,tp,mg,nil,Card.GetLevel,"Greater",true,sc)
@@ -80,8 +81,9 @@ function c13386407.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			local lv=Card.GetLevel(tc)
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,lv,"Greater")
-			mat=mg:SelectSubGroup(tp,c13386407.rcheck,false,1,lv,tp,tc,lv,"Greater",sc)
+			mat=mg:SelectSubGroup(tp,c13386407.rcheck,true,1,lv,tp,tc,lv,"Greater",sc)
 			aux.GCheckAdditional=nil
+			if not mat then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 			Duel.BreakEffect()

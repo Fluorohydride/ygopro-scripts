@@ -59,9 +59,13 @@ function c51124303.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
+function c51124303.RitualCheck(g,mc)
+	return g:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),#g,#g)
+end
 function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<0 then return end
+	::cancel::
 	local mg=Duel.GetRitualMaterial(tp)
 	if ft>0 then
 		local mg2=Duel.GetMatchingGroup(c51124303.mfilter,tp,LOCATION_EXTRA,0,nil)
@@ -80,7 +84,8 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local b2=sg:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),1,ft)
 	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:FilterSelect(tp,c51124303.rfilter,1,1,nil,mc)
+		local tg=sg:Filter(c51124303.rfilter,nil,mc):SelectSubGroup(tp,aux.TRUE,true,1,1)
+		if not tg then goto cancel end
 		local tc=tg:GetFirst()
 		tc:SetMaterial(mat)
 		if not mc:IsLocation(LOCATION_EXTRA) then
@@ -93,7 +98,8 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:SelectWithSumEqual(tp,Card.GetLevel,mc:GetLevel(),1,ft)
+		local tg=sg:SelectSubGroup(tp,c51124303.RitualCheck,true,1,ft,mc)
+		if not tg then goto cancel end
 		local tc=tg:GetFirst()
 		while tc do
 			tc:SetMaterial(mat)

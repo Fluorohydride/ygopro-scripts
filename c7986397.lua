@@ -36,6 +36,7 @@ function c7986397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local m=Duel.GetRitualMaterial(tp)
 	local dg=Duel.GetMatchingGroup(c7986397.dfilter,tp,LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -53,12 +54,12 @@ function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then
+		if not mat then
 			aux.RCheckAdditional=nil
 			aux.RGCheckAdditional=nil
-			return
+			goto cancel
 		end
 		tc:SetMaterial(mat)
 		local dmat=mat:Filter(Card.IsLocation,nil,LOCATION_DECK)
