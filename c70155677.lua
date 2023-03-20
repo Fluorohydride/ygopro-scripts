@@ -67,7 +67,7 @@ function c70155677.mvfilter(c,tp)
 	return not c:IsForbidden() and c:IsSetCard(0x191) and c:GetType()==TYPE_CONTINUOUS+TYPE_SPELL and c:CheckUniqueOnField(tp)
 end
 function c70155677.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c70155677.mvfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,tp) end
 end
 function c70155677.mvop(e,tp,eg,ep,ev,re,r,rp)
