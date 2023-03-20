@@ -67,7 +67,7 @@ function c64276752.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_FIELD)
-	e0:SetCode(EFFECT_CANNOT_ATTACK)
+	e0:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
 	e0:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e0:SetTargetRange(LOCATION_MZONE,0)
 	e0:SetTarget(c64276752.ftarget)
