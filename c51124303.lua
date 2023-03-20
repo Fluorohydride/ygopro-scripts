@@ -59,8 +59,13 @@ function c51124303.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
-function c51124303.RitualCheck(g,mc)
-	return g:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),#g,#g)
+function c51124303.RitualCheck(g,lv)
+	return g:GetSum(Card.GetLevel)==lv
+end
+function c51124303.RitualCheckAdditional(lv)
+	return	function(g)
+				return g:GetSum(Card.GetLevel)<=lv
+			end
 end
 function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -84,9 +89,8 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local b2=sg:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),1,ft)
 	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:Filter(c51124303.rfilter,nil,mc):SelectSubGroup(tp,aux.TRUE,true,1,1)
-		if not tg then goto cancel end
-		local tc=tg:GetFirst()
+		local tc=sg:Filter(c51124303.rfilter,nil,mc):SelectUnselect(nil,tp,false,true,1,1)
+		if not tc then goto cancel end
 		tc:SetMaterial(mat)
 		if not mc:IsLocation(LOCATION_EXTRA) then
 			Duel.ReleaseRitualMaterial(mat)
@@ -97,8 +101,11 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
 		tc:CompleteProcedure()
 	else
+		local lv=mc:GetLevel()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:SelectSubGroup(tp,c51124303.RitualCheck,true,1,ft,mc)
+		aux.GCheckAdditional=c51124303.RitualCheckAdditional(lv)
+		local tg=sg:SelectSubGroup(tp,c51124303.RitualCheck,true,1,ft,lv)
+		aux.GCheckAdditional=nil
 		if not tg then goto cancel end
 		local tc=tg:GetFirst()
 		while tc do

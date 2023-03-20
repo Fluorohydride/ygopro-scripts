@@ -68,8 +68,9 @@ function c36982581.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ReleaseRitualMaterial(mat)
 		else
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			local mat=mg2:SelectSubGroup(tp,aux.TRUE,true,1,1)
-			if not mat then goto cancel end
+			local matc=mg2:SelectUnselect(nil,tp,false,true,1,1)
+			if not matc then goto cancel end
+			local mat=Group.FromCards(matc)
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 		end
