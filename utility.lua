@@ -628,6 +628,21 @@ function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat
 	ct=ct-1
 	return res
 end
+-- the material is in hand and don't has extra synchro material effect itself
+-- that mean some other tuner added it as material
+function Auxiliary.SynMixHandFilter(c,tp,syncard)
+	if not c:IsLocation(LOCATION_HAND) then return false end
+	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
+	for _,te in pairs(le) do
+		local tf=te:GetValue()
+		if Auxiliary.GetValueType(tf)=="function" then
+			if tf(te,syncard) then return false end
+		else
+			if tf~=0 then return false end
+		end
+	end
+	return true
+end
 function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if ct<minc then return false end
 	local g=sg:Clone()
@@ -640,7 +655,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
 		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
 		then return false end
-	local hg=g:Filter(Card.IsLocation,nil,LOCATION_HAND)
+	local hg=g:Filter(Auxiliary.SynMixHandFilter,nil,tp,syncard)
 	local hct=hg:GetCount()
 	if hct>0 and not mgchk then
 		local found=false
