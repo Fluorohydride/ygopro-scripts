@@ -1,4 +1,4 @@
---魔界造車-GT19
+--魔界造車－GT19
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--flip
@@ -62,7 +62,8 @@ function s.filter(tc,c,tp)
 	if not tc:IsFaceup() or not tc:IsCanBeSynchroMaterial() then return false end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
+	e1:SetCode(EFFECT_EXTRA_SYNCHRO_MATERIAL)
+	e1:SetValue(1)
 	tc:RegisterEffect(e1,true)
 	local mg=Group.FromCards(c,tc)
 	local res=Duel.IsExistingMatchingCard(s.synfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
@@ -87,7 +88,8 @@ function s.synop(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
+		e1:SetCode(EFFECT_EXTRA_SYNCHRO_MATERIAL)
+		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local mg=Group.FromCards(c,tc)
