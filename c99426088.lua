@@ -112,6 +112,8 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 	aux.RCheckAdditional=c99426088.frcheck
 	aux.RGCheckAdditional=c99426088.rgcheck
 	local rsg=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c99426088.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
+	aux.RCheckAdditional=nil
+	aux.RGCheckAdditional=nil
 	local off=1
 	local ops={}
 	local opval={}
@@ -152,6 +154,7 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	else
+		::rcancel::
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=rsg:Select(tp,1,1,nil):GetFirst()
 		aux.RCheckAdditional=c99426088.frcheck
@@ -165,12 +168,12 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
-		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then
+		if not mat then
 			aux.RCheckAdditional=nil
 			aux.RGCheckAdditional=nil
-			return
+			goto rcancel
 		end
 		tc:SetMaterial(mat)
 		local dmat=mat:Filter(Card.IsLocation,nil,LOCATION_DECK)
