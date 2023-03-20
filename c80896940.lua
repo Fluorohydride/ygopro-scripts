@@ -60,8 +60,8 @@ function c80896940.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 c80896940.material_type=TYPE_SYNCHRO
-function c80896940.matfilter1(c)
-	return c:IsType(TYPE_TUNER) or (c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM))
+function c80896940.matfilter1(c,syncard)
+	return c:IsTuner(syncard) or (c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM))
 end
 function c80896940.indcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
