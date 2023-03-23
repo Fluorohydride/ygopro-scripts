@@ -57,7 +57,6 @@ function c22996376.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,ct,0,0)
 end
 function c22996376.thop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=Duel.GetTargetsRelateToChain():Filter(Card.IsRace,nil,RACE_BEAST)
 	Duel.SendtoHand(sg,nil,REASON_EFFECT)
 end
