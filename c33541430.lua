@@ -72,7 +72,7 @@ function c33541430.cardiansynlevel(c)
 	return 2
 end
 function c33541430.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
 end
 function c33541430.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
 	g:AddCard(c)
@@ -96,7 +96,7 @@ function c33541430.syntg(e,syncard,f,min,max)
 	local lv=syncard:GetLevel()
 	if lv<=c:GetLevel() and lv<=c33541430.cardiansynlevel(c) then return false end
 	local g=Group.FromCards(c)
-	local mg=Duel.GetMatchingGroup(c33541430.synfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(c33541430.synfilter,c,syncard,c,f)
 	return mg:IsExists(c33541430.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)
 end
 function c33541430.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
@@ -105,7 +105,7 @@ function c33541430.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
 	local c=e:GetHandler()
 	local lv=syncard:GetLevel()
 	local g=Group.FromCards(c)
-	local mg=Duel.GetMatchingGroup(c33541430.synfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(c33541430.synfilter,c,syncard,c,f)
 	for i=1,maxc do
 		local cg=mg:Filter(c33541430.syncheck,g,g,mg,tp,lv,syncard,minc,maxc)
 		if cg:GetCount()==0 then break end
