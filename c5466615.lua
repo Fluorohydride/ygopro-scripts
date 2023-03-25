@@ -10,7 +10,7 @@ function c5466615.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(5466615,2))
+	e3:SetDescription(aux.Stringid(5466615,1))
 	e3:SetCategory(CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
