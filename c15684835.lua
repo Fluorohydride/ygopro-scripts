@@ -41,7 +41,7 @@ function c15684835.filter(c,e,tp)
 end
 function c15684835.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c15684835.filter(chkc,e,tp) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and eg:IsExists(c15684835.filter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=eg:FilterSelect(tp,c15684835.filter,1,1,nil,e,tp)

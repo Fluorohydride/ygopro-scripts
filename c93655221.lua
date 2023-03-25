@@ -53,7 +53,8 @@ function c93655221.disfilter(c)
 end
 function c93655221.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c93655221.eqfilter,tp,LOCATION_MZONE,0,1,nil)
+	if chk==0 then return e:IsCostChecked()
+		and Duel.IsExistingTarget(c93655221.eqfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(c93655221.disfilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELF)
 	Duel.SelectTarget(tp,c93655221.eqfilter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -106,5 +107,6 @@ function c93655221.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c93655221.eqlimit(e,c)
-	return c:GetControler()==e:GetHandlerPlayer() and c:IsType(TYPE_LINK)
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsType(TYPE_LINK)
 end
