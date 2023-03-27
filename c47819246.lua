@@ -107,7 +107,7 @@ function c47819246.mtcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47819246.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=e:GetHandler():GetEquipTarget()
-	if chk==0 then return ec and not ec:IsHasEffect(EFFECT_EXTRA_ATTACK) end
+	if chk==0 then return ec and ec:IsControler(tp) and not ec:IsHasEffect(EFFECT_EXTRA_ATTACK) end
 end
 function c47819246.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=Duel.GetFirstTarget()
