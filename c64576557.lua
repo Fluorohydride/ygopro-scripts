@@ -68,7 +68,7 @@ function c64576557.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=eg:Filter(c64576557.desfilter,nil,tp)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsExistingMatchingCard(c64576557.filter,tp,LOCATION_DECK,0,1,nil,e,tp,g)
+			and Duel.IsExistingMatchingCard(c64576557.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,g)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
