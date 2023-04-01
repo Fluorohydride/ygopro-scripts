@@ -61,7 +61,7 @@ function c30983281.spcheck(c,tp,rc,mg,opchk)
 end
 function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk)
 	if not (c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)) then return false end
-	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local mg=Duel.GetSynchroMaterial(tp)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
 		local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
 		if mg2:GetCount()>0 then mg:Merge(mg2) end
