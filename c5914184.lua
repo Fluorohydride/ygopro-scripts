@@ -14,7 +14,7 @@ function c5914184.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and 1-tp==rp and ev>=1000 and bit.band(r,REASON_EFFECT)~=0
 end
 function c5914184.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanAddCounter(0x1a,math.floor(ev/1000)) end
+	if chk==0 then return Duel.IsCanAddCounter(tp,0x1a,math.floor(ev/1000),e:GetHandler()) end
 end
 function c5914184.actop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
