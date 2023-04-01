@@ -83,8 +83,8 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end end
 end
 function s.descon2(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and eg:IsContains(tc)
+	local g=e:GetHandler():GetCardTarget()
+	return eg:FilterCount(aux.TRUE,g)~=#eg
 end
 function s.desop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
