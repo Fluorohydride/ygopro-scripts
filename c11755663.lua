@@ -49,15 +49,14 @@ function c11755663.atkop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_BATTLED)
-		e2:SetRange(LOCATION_MZONE)
+		e2:SetCode(EVENT_DAMAGE_STEP_END)
 		e2:SetOperation(c11755663.skipop)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
-		tc:RegisterEffect(e2)
+		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c11755663.skipop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
+	Duel.SkipPhase(Duel.GetTurnPlayer(),PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 end
 function c11755663.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

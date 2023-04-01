@@ -30,7 +30,7 @@ function c49941059.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=g:GetFirst()
 	if c and Duel.ChangePosition(c,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE)>0 then
 		Duel.BreakEffect()
-		if Duel.GetControl(c,tp) then
+		if Duel.GetControl(c,tp)>0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)

@@ -347,8 +347,8 @@ function Auxiliary.FilterBoolFunction(f,...)
 end
 function Auxiliary.Tuner(f,...)
 	local ext_params={...}
-	return	function(target)
-				return target:IsType(TYPE_TUNER) and (not f or f(target,table.unpack(ext_params)))
+	return	function(target,syncard)
+				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
 function Auxiliary.NonTuner(f,...)
@@ -403,7 +403,7 @@ function Auxiliary.SynCondition(f1,f2,minc,maxc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
-				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
+				if smat and smat:IsTuner(c) and (not f1 or f1(smat)) then
 					return Duel.CheckTunerMaterial(c,smat,f1,f2,minc,maxc,mg) end
 				return Duel.CheckSynchroMaterial(c,f1,f2,minc,maxc,smat,mg)
 			end
@@ -418,7 +418,7 @@ function Auxiliary.SynTarget(f1,f2,minc,maxc)
 					if minc>maxc then return false end
 				end
 				local g=nil
-				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
+				if smat and smat:IsTuner(c) and (not f1 or f1(smat)) then
 					g=Duel.SelectTunerMaterial(c:GetControler(),c,smat,f1,f2,minc,maxc,mg)
 				else
 					g=Duel.SelectSynchroMaterial(c:GetControler(),c,f1,f2,minc,maxc,smat,mg)
@@ -458,7 +458,7 @@ function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.SynMaterialFilter(c,syncard)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard)
 end
 function Auxiliary.SynLimitFilter(c,f,e,syncard)
 	return f and not f(e,c,syncard)
@@ -467,7 +467,7 @@ function Auxiliary.GetSynchroLevelFlowerCardian(c)
 	return 2
 end
 function Auxiliary.GetSynMaterials(tp,syncard)
-	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(Auxiliary.SynMaterialFilter,nil,syncard)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
 		local mg2=Duel.GetMatchingGroup(Card.IsCanBeSynchroMaterial,tp,LOCATION_HAND,0,nil,syncard)
 		if mg2:GetCount()>0 then mg:Merge(mg2) end
@@ -485,6 +485,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
+				if smat and not smat:IsCanBeSynchroMaterial(c) then return false end
 				local tp=c:GetControler()
 				local mg
 				local mgchk=false
@@ -507,6 +508,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					if max<maxc then maxc=max end
 					if minc>maxc then return false end
 				end
+				::SynMixTargetSelectStart::
 				local g=Group.CreateGroup()
 				local mg
 				local mgchk=false
@@ -517,16 +519,25 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
+				local c1
+				local c2
+				local c3
+				local cancel=Duel.IsSummonCancelable()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):GetFirst()
+				c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+				if not c1 then return false end
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):GetFirst()
+					c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+					if not c2 then return false end
+					if g:IsContains(c2) then goto SynMixTargetSelectStart end
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):GetFirst()
+						c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+						if not c3 then return false end
+						if g:IsContains(c3) then goto SynMixTargetSelectStart end
 						g:AddCard(c3)
 					end
 				end
@@ -534,20 +545,21 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				for i=0,maxc-1 do
 					local mg2=mg:Clone()
 					if f4 then
-						mg2=mg2:Filter(f4,g,c)
+						mg2=mg2:Filter(f4,g,c,c1,c2,c3)
 					else
 						mg2:Sub(g)
 					end
 					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk)
 					if cg:GetCount()==0 then break end
-					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk) then
-						minct=0
-					end
+					local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local tg=cg:Select(tp,minct,1,nil)
-					if tg:GetCount()==0 then break end
-					g4:Merge(tg)
+					local c4=cg:SelectUnselect(g+g4,tp,finish,cancel,minc,maxc)
+					if not c4 then
+						if finish then break
+						else return false end
+					end
+					if g:IsContains(c4) or g4:IsContains(c4) then goto SynMixTargetSelectStart end
+					g4:AddCard(c4)
 				end
 				g:Merge(g4)
 				if g:GetCount()>0 then
@@ -594,11 +606,11 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgc
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
 	if f4 then
-		mg=mg:Filter(f4,sg,syncard)
+		mg=mg:Filter(f4,sg,syncard,c1,c2,c3)
 	else
 		mg:Sub(sg)
 	end
-	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
 end
 function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk)
 	local tp=syncard:GetControler()
@@ -616,6 +628,21 @@ function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat
 	ct=ct-1
 	return res
 end
+-- the material is in hand and don't has extra synchro material effect itself
+-- that mean some other tuner added it as material
+function Auxiliary.SynMixHandFilter(c,tp,syncard)
+	if not c:IsLocation(LOCATION_HAND) then return false end
+	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
+	for _,te in pairs(le) do
+		local tf=te:GetValue()
+		if Auxiliary.GetValueType(tf)=="function" then
+			if tf(te,syncard) then return false end
+		else
+			if tf~=0 then return false end
+		end
+	end
+	return true
+end
 function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if ct<minc then return false end
 	local g=sg:Clone()
@@ -628,7 +655,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
 		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
 		then return false end
-	local hg=g:Filter(Card.IsLocation,nil,LOCATION_HAND)
+	local hg=g:Filter(Auxiliary.SynMixHandFilter,nil,tp,syncard)
 	local hct=hg:GetCount()
 	if hct>0 and not mgchk then
 		local found=false
@@ -674,7 +701,8 @@ function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
 			end
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
+		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
@@ -804,14 +832,19 @@ function Auxiliary.XyzTargetAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 				local b1=Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop)
+				local b2=(not min or min<=1) and #altg>0
 				local g=nil
+				local cancel=Duel.IsSummonCancelable()
 				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
 					e:SetLabel(1)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,alterop)
-					if alterop then alterop(e,tp,1,g:GetFirst()) end
+					local tc=altg:SelectUnselect(nil,tp,false,cancel,1,1)
+					if tc then
+						g=Group.FromCards(tc)
+						if alterop then alterop(e,tp,1,tc) end
+					end
 				else
 					e:SetLabel(0)
 					g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
@@ -991,7 +1024,7 @@ function Auxiliary.XyzLevelFreeConditionAlter(f,gf,minct,maxct,alterf,alterdesc,
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop):Filter(Auxiliary.MustMaterialCheck,nil,tp,EFFECT_MUST_BE_XMATERIAL)
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 				if (not min or min<=1) and altg:GetCount()>0 then
 					return true
 				end
@@ -1030,21 +1063,25 @@ function Auxiliary.XyzLevelFreeTargetAlter(f,gf,minct,maxct,alterf,alterdesc,alt
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 				local mg2=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				Duel.SetSelectedCard(sg)
 				local b1=mg2:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop)
+				local b2=(not min or min<=1) and #altg>0
 				local g=nil
+				local cancel=Duel.IsSummonCancelable()
 				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
 					e:SetLabel(1)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,alterop)
-					if alterop then alterop(e,tp,1,g:GetFirst()) end
+					local tc=altg:SelectUnselect(nil,tp,false,cancel,1,1)
+					if tc then
+						g=Group.FromCards(tc)
+						if alterop then alterop(e,tp,1,tc) end
+					end
 				else
 					e:SetLabel(0)
 					Duel.SetSelectedCard(sg)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					local cancel=Duel.IsSummonCancelable()
 					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
 					g=mg2:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
@@ -1703,6 +1740,7 @@ function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,s
 end
 function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,extra_operation)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
+				::RitualUltimateSelectStart::
 				local mg=Duel.GetRitualMaterial(tp)
 				if mat_filter then mg=mg:Filter(mat_filter,nil,e,tp) end
 				local exg=nil
@@ -1726,8 +1764,9 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
-					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
+					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
 					Auxiliary.GCheckAdditional=nil
+					if not mat then goto RitualUltimateSelectStart end
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -2974,39 +3013,45 @@ end
 function Auxiliary.PlaceCardsOnDeckTop(p,g,reason)
 	if reason==nil then reason=REASON_EFFECT end
 	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,reason)
-	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	local rg=Duel.GetOperatedGroup()
+	local og=rg:Filter(Card.IsLocation,nil,LOCATION_DECK)
 	local ct1=og:FilterCount(Card.IsControler,nil,p)
 	local ct2=og:FilterCount(Card.IsControler,nil,1-p)
-	if ct1>0 then
+	if ct1>1 then
 		Duel.SortDecktop(p,p,ct1)
 	end
-	if ct2>0 then
+	if ct2>1 then
 		Duel.SortDecktop(p,1-p,ct2)
 	end
-	return #og
+	return #rg
 end
 --Player p place g on the bottom of Deck in any order
 function Auxiliary.PlaceCardsOnDeckBottom(p,g,reason)
 	if reason==nil then reason=REASON_EFFECT end
 	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,reason)
-	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	local rg=Duel.GetOperatedGroup()
+	local og=rg:Filter(Card.IsLocation,nil,LOCATION_DECK)
 	local ct1=og:FilterCount(Card.IsControler,nil,p)
 	local ct2=og:FilterCount(Card.IsControler,nil,1-p)
 	if ct1>0 then
-		Duel.SortDecktop(p,p,ct1)
+		if ct1>1 then
+			Duel.SortDecktop(p,p,ct1)
+		end
 		for i=1,ct1 do
 			local tc=Duel.GetDecktopGroup(p,1):GetFirst()
 			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 		end
 	end
 	if ct2>0 then
-		Duel.SortDecktop(p,1-p,ct2)
+		if ct2>1 then
+			Duel.SortDecktop(p,1-p,ct2)
+		end
 		for i=1,ct2 do
 			local tc=Duel.GetDecktopGroup(1-p,1):GetFirst()
 			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 		end
 	end
-	return #og
+	return #rg
 end
 --The event is triggered multiple times in a chain
 --but only 1 event with EVENT_CUSTOM+code will be triggered at EVENT_CHAIN_END, or immediately if not in chain

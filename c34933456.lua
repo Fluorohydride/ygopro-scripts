@@ -12,7 +12,7 @@ function c34933456.initial_effect(c)
 end
 function c34933456.mttg(e,c)
 	local tc=c:GetEquipTarget()
-	return tc and tc:IsSetCard(0x150)
+	return tc and tc:IsSetCard(0x150) and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function c34933456.mtval(e,c)
 	if not c then return false end

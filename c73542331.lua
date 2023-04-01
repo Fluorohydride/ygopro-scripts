@@ -50,7 +50,7 @@ function c73542331.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73542331.cfilter(c,tp)
-	return c:IsFacedown() and c:IsControler(1-tp)
+	return c:IsFacedown() and c:IsControler(1-tp) and c:IsPreviousControler(1-tp)
 end
 function c73542331.lzcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c73542331.cfilter,1,nil,tp)
