@@ -2997,7 +2997,7 @@ function Auxiliary.ThisCardInGraveAlreadyCheckReg(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_CHAIN)
 		e2:SetLabelObject(e1)
 		Duel.RegisterEffect(e2,tp)
-	elseif (r&REASON_MATERIAL)>0 then
+	elseif (r&REASON_MATERIAL)>0 or re and not re:IsActivated() and (r&REASON_COST)>0 then
 		e:SetLabelObject(re)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
