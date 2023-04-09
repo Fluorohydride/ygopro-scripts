@@ -7,8 +7,10 @@ function c67586735.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BE_MATERIAL)
 	e1:SetCondition(c67586735.atkcon)
+	e1:SetTarget(c67586735.atktg)
 	e1:SetOperation(c67586735.atkop)
 	c:RegisterEffect(e1)
+	aux.CreateMaterialReasonCardRelation(c,e1)
 	--todeck
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(67586735,1))
@@ -26,10 +28,15 @@ function c67586735.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_GRAVE) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0xfc)
 end
+function c67586735.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local rc=e:GetHandler():GetReasonCard()
+	if chk==0 then return rc:IsRelateToEffect(e) and rc:IsFaceup() end
+	Duel.SetTargetCard(rc)
+end
 function c67586735.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=c:GetReasonCard()
-	if rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE) then
+	local rc=Duel.GetFirstTarget()
+	if rc:IsFaceup() and rc:IsRelateToChain() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
