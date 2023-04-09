@@ -37,7 +37,7 @@ function c10035717.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c10035717.adop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsRace(RACE_MACHINE+RACE_WARRIOR) then
 		local atk=tc:GetAttack()
 		local def=tc:GetDefense()
 		local e1=Effect.CreateEffect(e:GetHandler())
