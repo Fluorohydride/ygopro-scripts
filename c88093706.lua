@@ -127,10 +127,8 @@ function c88093706.efcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88093706.eftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
-	if chk==0 then return rc:IsRelateToEffect(e) and rc:IsFaceup()
-		and Duel.IsAbleToEnterBP() and rc:GetFlagEffect(88093707)==0 end
+	if chk==0 then return rc:IsRelateToEffect(e) and Duel.IsAbleToEnterBP() end
 	Duel.SetTargetCard(rc)
-	rc:RegisterFlagEffect(88093707,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c88093706.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
