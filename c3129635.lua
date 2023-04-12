@@ -22,14 +22,14 @@ function c3129635.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c3129635.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
-		Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,TYPES_EFFECT_TRAP_MONSTER,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) end
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,TYPES_EFFECT_TRAP_MONSTER,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c3129635.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,TYPES_EFFECT_TRAP_MONSTER,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,TYPES_EFFECT_TRAP_MONSTER,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
