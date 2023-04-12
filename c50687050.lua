@@ -135,12 +135,12 @@ function s.chop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SwapSequence(tc1,tc2)
 	end
 end
-function s.cfilter(c,tp)
+function s.cfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsPreviousLocation(LOCATION_MZONE)
-		and (c:GetPreviousSequence()~=c:GetSequence() or c:GetPreviousControler()~=tp)
+		and (c:GetPreviousSequence()~=c:GetSequence() or c:GetPreviousControler()~=c:GetControler())
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,tp)
+	return eg:IsExists(s.cfilter,1,nil)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
