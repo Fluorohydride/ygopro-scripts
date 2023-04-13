@@ -2981,6 +2981,7 @@ function Auxiliary.AddThisCardInGraveAlreadyCheck(c)
 end
 function Auxiliary.ThisCardInGraveAlreadyCheckReg(e,tp,eg,ep,ev,re,r,rp)
 	--condition of continous effect will be checked before other effects
+	if re==nil then return false end
 	if e:GetLabelObject()~=nil then return false end
 	if (r&REASON_EFFECT)>0 then
 		e:SetLabelObject(re)
@@ -2997,20 +2998,17 @@ function Auxiliary.ThisCardInGraveAlreadyCheckReg(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_CHAIN)
 		e2:SetLabelObject(e1)
 		Duel.RegisterEffect(e2,tp)
-	elseif (r&REASON_MATERIAL)>0 or re and not re:IsActivated() and (r&REASON_COST)>0 then
+	elseif (r&REASON_MATERIAL)>0 or not re:IsActivated() and (r&REASON_COST)>0 then
 		e:SetLabelObject(re)
+		local reset_event=EVENT_SPSUMMON
+		if re:GetCode()~=EFFECT_SPSUMMON_PROC then reset_event=EVENT_SUMMON end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_SUMMON)
+		e1:SetCode(reset_event)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetOperation(Auxiliary.ThisCardInGraveAlreadyReset1)
 		e1:SetLabelObject(e)
 		Duel.RegisterEffect(e1,tp)
-		local e2=e1:Clone()
-		e2:SetCode(EVENT_SPSUMMON)
-		e2:SetOperation(Auxiliary.ThisCardInGraveAlreadyReset2)
-		e2:SetLabelObject(e1)
-		Duel.RegisterEffect(e2,tp)
 	end
 	return false
 end
