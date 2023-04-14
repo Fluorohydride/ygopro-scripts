@@ -62,7 +62,7 @@ function c32152870.thfilter(c)
 	return c:IsSetCard(0x17a) and c:IsAbleToHand()
 end
 function c32152870.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c32152870.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c32152870.thfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
 function c32152870.thop(e,tp,eg,ep,ev,re,r,rp)

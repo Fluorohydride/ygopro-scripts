@@ -29,7 +29,7 @@ function c20277376.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c20277376.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end
