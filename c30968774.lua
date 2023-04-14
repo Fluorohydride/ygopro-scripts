@@ -19,24 +19,21 @@ function c30968774.drcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30968774.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and rc:IsRelateToEffect(e) and rc:IsFaceup() and rc:IsAttackAbove(500) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) and rc:IsRelateToEffect(e) end
 	Duel.SetTargetCard(rc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c30968774.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=Duel.GetFirstTarget()
-	if not rc:IsRelateToChain() or rc:IsFacedown()
-		or not rc:IsAttackAbove(500) or rc:IsImmuneToEffect(e) then return end
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetValue(-500)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	rc:RegisterEffect(e1)
-	if not rc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+	if rc:IsRelateToChain() then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_UPDATE_ATTACK)
+		e1:SetValue(-500)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		rc:RegisterEffect(e1)
 		Duel.BreakEffect()
-		Duel.Draw(tp,1,REASON_EFFECT)
 	end
+	Duel.Draw(tp,1,REASON_EFFECT)
 end
