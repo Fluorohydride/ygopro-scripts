@@ -43,7 +43,7 @@ function c21915012.matfilter(c)
 end
 function c21915012.valcheck(e,c)
 	local g=c:GetMaterial()
-	local mg=g:Filter(Card.IsType,nil,TYPE_TUNER)
+	local mg=g:Filter(Card.IsTuner,nil,c)
 	local tc=mg:GetFirst()
 	if not tc then
 		e:GetLabelObject():SetLabel(0)

@@ -9,6 +9,9 @@ function c33396948.initial_effect(c)
 	e1:SetOperation(c33396948.operation)
 	c:RegisterEffect(e1)
 end
+function c33396948.filter(c)
+	return c:IsCode(8124921,44519536,70903634,7902349,33396948)
+end
 function c33396948.check(g)
 	local a1=false
 	local a2=false
@@ -30,8 +33,8 @@ function c33396948.check(g)
 end
 function c33396948.operation(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_EXODIA = 0x10
-	local g1=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	local g2=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
+	local g1=Duel.GetFieldGroup(tp,LOCATION_HAND,0):Filter(c33396948.filter,nil)
+	local g2=Duel.GetFieldGroup(tp,0,LOCATION_HAND):Filter(c33396948.filter,nil)
 	local wtp=c33396948.check(g1)
 	local wntp=c33396948.check(g2)
 	if wtp and not wntp then
