@@ -13,6 +13,7 @@ function c92773018.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c92773018.condition)
 	e2:SetCost(c92773018.cost)
 	e2:SetTarget(c92773018.target)
@@ -35,9 +36,7 @@ end
 function c92773018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
-	if chk==0 then return e:GetHandler():GetFlagEffect(92773018)==0
-		and tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
-	e:GetHandler():RegisterFlagEffect(92773018,RESET_CHAIN,0,1)
+	if chk==0 then return tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end

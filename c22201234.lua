@@ -12,6 +12,7 @@ function c22201234.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c22201234.qcon)
 	e2:SetCost(c22201234.qcost)
 	e2:SetTarget(c22201234.qtg)
@@ -23,8 +24,7 @@ function c22201234.qcon(e,tp,eg,ep,ev,re,r,rp)
 	return d:IsFaceup() and d:IsSetCard(0x38) and d:IsControler(tp)
 end
 function c22201234.qcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(22201234)==0 and Duel.IsPlayerCanDiscardDeckAsCost(tp,2) end
-	e:GetHandler():RegisterFlagEffect(22201234,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsPlayerCanDiscardDeckAsCost(tp,2) end
 	Duel.DiscardDeck(tp,2,REASON_COST)
 end
 function c22201234.qtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

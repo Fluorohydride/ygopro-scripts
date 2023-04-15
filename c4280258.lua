@@ -18,6 +18,7 @@ function c4280258.initial_effect(c)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c4280258.condition)
 	e2:SetTarget(c4280258.target)
 	e2:SetOperation(c4280258.operation)
@@ -41,8 +42,7 @@ function c4280258.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4280258.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsAttackAbove(800) and c:GetFlagEffect(4280258)==0 end
-	c:RegisterFlagEffect(4280258,RESET_CHAIN,0,1)
+	if chk==0 then return c:IsAttackAbove(800) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c4280258.operation(e,tp,eg,ep,ev,re,r,rp)
