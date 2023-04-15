@@ -11,14 +11,6 @@ function c8576764.initial_effect(c)
 	e1:SetTarget(c8576764.sptg)
 	e1:SetOperation(c8576764.spop)
 	c:RegisterEffect(e1)
-	--chk
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e0:SetCode(EVENT_BE_MATERIAL)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCondition(c8576764.atkcon)
-	e0:SetOperation(c8576764.chkop)
-	c:RegisterEffect(e0)
 	--atk/def
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(8576764,1))
@@ -30,7 +22,7 @@ function c8576764.initial_effect(c)
 	e2:SetTarget(c8576764.atktg)
 	e2:SetOperation(c8576764.atkop)
 	c:RegisterEffect(e2)
-	e0:SetLabelObject(e2)
+	aux.CreateMaterialReasonCardRelation(c,e2)
 end
 function c8576764.spfilter(c,e,tp,lv)
 	return c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -55,20 +47,18 @@ function c8576764.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	Duel.SpecialSummonComplete()
 end
-function c8576764.chkop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():GetReasonCard():CreateEffectRelation(e:GetLabelObject())
-end
 function c8576764.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
 end
 function c8576764.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
 	if chk==0 then return rc:IsRelateToEffect(e) and rc:IsFaceup() and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
+	Duel.SetTargetCard(rc)
 end
 function c8576764.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=e:GetHandler():GetReasonCard()
+	local rc=Duel.GetFirstTarget()
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
-	if rc:IsRelateToEffect(e) and rc:IsFaceup() and ct>0 then
+	if rc:IsRelateToChain() and rc:IsFaceup() and ct>0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

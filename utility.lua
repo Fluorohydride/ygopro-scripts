@@ -2421,6 +2421,21 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 		tc=eg:GetNext()
 	end
 end
+--for EVENT_BE_MATERIAL effect releated to the summoned monster
+function Auxiliary.CreateMaterialReasonCardRelation(c,te)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_BE_MATERIAL)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(Auxiliary.MaterialReasonCardReg)
+	e1:SetLabelObject(te)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.MaterialReasonCardReg(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local te=e:GetLabelObject()
+	c:GetReasonCard():CreateEffectRelation(te)
+end
 --sp_summon condition for fusion monster
 function Auxiliary.fuslimit(e,se,sp,st)
 	return st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
