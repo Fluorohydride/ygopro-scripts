@@ -125,6 +125,22 @@ end
 function Auxiliary.PuzzleOp(e,tp)
 	Duel.SetLP(0,0)
 end
+--Duel.SelectOption with option condition
+--Return value starts from 1, different from Duel.SelectOption
+function Auxiliary.SelectFromOptions(tp,...)
+	local options={...}
+	local ops={}
+	local opvals={}
+	for i=1,#options do
+		if options[i][1] then
+			table.insert(ops,options[i][2])
+			table.insert(opvals,options[i][3] or i)
+		end
+	end
+	if #ops==0 then return nil end
+	local select=Duel.SelectOption(tp,table.unpack(ops))
+	return opvals[select+1]
+end
 function Auxiliary.IsDualState(effect)
 	local c=effect:GetHandler()
 	return not c:IsDisabled() and c:IsDualState()
