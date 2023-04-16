@@ -25,7 +25,7 @@ function c29357956.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(0,1)
 	e4:SetValue(1)
-	e4:SetCondition(c29357956.actcon)
+	e4:SetCondition(aux.ThisCardBattlingCondition)
 	c:RegisterEffect(e4)
 	--special summon
 	local e6=Effect.CreateEffect(c)
@@ -42,9 +42,6 @@ function c29357956.initial_effect(c)
 end
 function c29357956.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
-end
-function c29357956.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
 end
 function c29357956.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattledGroupCount()>0

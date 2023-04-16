@@ -18,7 +18,7 @@ function c42878636.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
 	e2:SetValue(c42878636.aclimit)
-	e2:SetCondition(c42878636.actcon)
+	e2:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
@@ -43,9 +43,6 @@ function c42878636.damop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c42878636.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c42878636.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
 end
 function c42878636.spfilter1(c,e)
 	return not c:IsImmuneToEffect(e)

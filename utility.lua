@@ -3038,6 +3038,15 @@ function Auxiliary.ThisCardInGraveAlreadyReset2(e)
 	e1:Reset()
 	e:Reset()
 end
+function Auxiliary.ThisCardBattlingCondition(e)
+	return (Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()) and Auxiliary.IsMonsterAttacking()
+end
+function Auxiliary.ThisCardAttackingCondition(e)
+	return Duel.GetAttacker()==e:GetHandler() and Auxiliary.IsMonsterAttacking()
+end
+function Auxiliary.IsMonsterAttacking()
+	return Duel.GetAttacker() and not Duel.GetAttacker():IsStatus(STATUS_ATTACK_CANCELED)
+end
 --Player p place g on the top of Deck in any order
 function Auxiliary.PlaceCardsOnDeckTop(p,g,reason)
 	if reason==nil then reason=REASON_EFFECT end

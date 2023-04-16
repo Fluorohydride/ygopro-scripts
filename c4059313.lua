@@ -87,7 +87,7 @@ function c4059313.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		e:SetLabel(0,0)
 		if label~=100 then return false end
-		return true
+		return aux.IsMonsterAttacking()
 	end
 	e:SetLabel(0,0)
 	Duel.SetTargetParam(atk)

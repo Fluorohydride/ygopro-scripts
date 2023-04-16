@@ -22,6 +22,7 @@ function c86605184.initial_effect(c)
 	e2:SetCountLimit(1,86605185)
 	e2:SetCondition(c86605184.discon)
 	e2:SetCost(aux.bfgcost)
+	e2:SetTarget(c86605184.distg)
 	e2:SetOperation(c86605184.disop)
 	c:RegisterEffect(e2)
 end
@@ -51,6 +52,9 @@ function c86605184.discon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	return a~=nil and d~=nil and a:IsType(TYPE_LINK) and d:IsType(TYPE_LINK)
+end
+function c86605184.distg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c86605184.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

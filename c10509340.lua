@@ -20,7 +20,7 @@ function c10509340.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetValue(c10509340.aclimit)
-	e3:SetCondition(c10509340.actcon)
+	e3:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e3)
 end
 function c10509340.disop(e,tp,eg,ep,ev,re,r,rp)
@@ -41,7 +41,4 @@ function c10509340.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10509340.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c10509340.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
 end

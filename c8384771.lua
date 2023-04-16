@@ -24,7 +24,7 @@ function c8384771.condition(e,tp,eg,ep,ev,re,r,rp)
 	return true
 end
 function c8384771.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	Duel.SetTargetCard(e:GetLabelObject())
 end
 function c8384771.operation1(e,tp,eg,ep,ev,re,r,rp)

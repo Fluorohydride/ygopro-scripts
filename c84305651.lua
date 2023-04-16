@@ -10,6 +10,7 @@ function c84305651.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c84305651.atkcon)
+	e1:SetTarget(c84305651.atktg)
 	e1:SetOperation(c84305651.atkop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -24,6 +25,9 @@ end
 c84305651.material_type=TYPE_SYNCHRO
 function c84305651.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget()~=nil
+end
+function c84305651.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c84305651.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

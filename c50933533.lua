@@ -23,14 +23,11 @@ function c50933533.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetValue(c50933533.aclimit)
-	e3:SetCondition(c50933533.actcon)
+	e3:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e3)
 end
 function c50933533.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c50933533.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
 end
 function c50933533.valcheck(e,c)
 	local g=c:GetMaterial()

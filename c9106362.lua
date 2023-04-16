@@ -15,6 +15,7 @@ function c9106362.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c9106362.dmcon2)
+	e2:SetTarget(c9106362.dmtg)
 	e2:SetOperation(c9106362.dmop)
 	c:RegisterEffect(e2)
 end
@@ -25,6 +26,9 @@ function c9106362.dmcon2(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	return d and a:GetControler()~=d:GetControler()
+end
+function c9106362.dmtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c9106362.dmop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

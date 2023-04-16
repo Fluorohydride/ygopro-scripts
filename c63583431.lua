@@ -48,7 +48,7 @@ function c63583431.indcon(e,tp,eg,ep,ev,re,r,rp)
 	return tc and tc:IsFaceup() and tc:IsControler(tp) and tc:IsSetCard(0x59)
 end
 function c63583431.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	Duel.SetTargetCard(e:GetLabelObject())
 end
 function c63583431.indop(e,tp,eg,ep,ev,re,r,rp)

@@ -21,7 +21,7 @@ function c83347294.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
 	e2:SetValue(c83347294.aclimit)
-	e2:SetCondition(c83347294.actcon)
+	e2:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e2)
 	--destroy replace
 	local e3=Effect.CreateEffect(c)
@@ -62,9 +62,6 @@ function c83347294.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83347294.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c83347294.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
 end
 function c83347294.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0x99)

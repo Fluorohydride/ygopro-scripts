@@ -62,7 +62,7 @@ function c10497636.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10497636.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ac=e:GetLabelObject()
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,ac,1,0,0)
 end
 function c10497636.disop(e,tp,eg,ep,ev,re,r,rp)

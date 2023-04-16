@@ -16,5 +16,5 @@ function c39303359.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c39303359.actcon(e)
-	return aux.IsDualState(e) and Duel.GetAttacker()==e:GetHandler()
+	return aux.IsDualState(e) and aux.ThisCardAttackingCondition(e)
 end

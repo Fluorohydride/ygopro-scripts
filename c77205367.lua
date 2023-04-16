@@ -43,6 +43,7 @@ function c77205367.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local at=Duel.GetAttackTarget()
 		return ((a==c and at and at:IsFaceup() and at:GetAttack()>0) or (at==c and a:GetAttack()>0))
 			and not e:GetHandler():IsStatus(STATUS_CHAINING)
+			and aux.IsMonsterAttacking()
 	end
 	Duel.SetTargetCard(e:GetHandler():GetBattleTarget())
 end

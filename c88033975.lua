@@ -11,9 +11,6 @@ function c88033975.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(1)
-	e1:SetCondition(c88033975.actcon)
+	e1:SetCondition(aux.ThisCardBattlingCondition)
 	c:RegisterEffect(e1)
-end
-function c88033975.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
 end

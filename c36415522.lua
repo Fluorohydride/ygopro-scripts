@@ -67,7 +67,7 @@ end
 function c36415522.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	if chk==0 then return d and a:GetControler()~=d:GetControler() end
+	if chk==0 then return d and a:GetControler()~=d:GetControler() and aux.IsMonsterAttacking() end
 	if a:IsControler(1-tp) then a=d end
 	e:SetLabelObject(a)
 end

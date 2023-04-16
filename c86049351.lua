@@ -27,6 +27,7 @@ function c86049351.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local pos=POS_FACEUP
 		if bc==Duel.GetAttackTarget() then pos=POS_FACEUP_ATTACK end
 		return Duel.IsExistingMatchingCard(c86049351.filter,tp,LOCATION_MZONE,0,1,tc,pos)
+			and aux.IsMonsterAttacking()
 	end
 end
 function c86049351.activate(e,tp,eg,ep,ev,re,r,rp)

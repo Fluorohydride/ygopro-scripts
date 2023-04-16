@@ -20,7 +20,7 @@ function c73192600.tdfilter(c)
 end
 function c73192600.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c73192600.tdfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,nil)
-	if chk==0 then return g:GetCount()>0 end
+	if chk==0 then return g:GetCount()>0 and aux.IsMonsterAttacking() end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
 end
 function c73192600.activate(e,tp,eg,ep,ev,re,r,rp)

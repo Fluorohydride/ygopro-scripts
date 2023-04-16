@@ -66,7 +66,7 @@ function c55762976.damcon(e,tp,eg,ep,ev,re,r,rp)
 		and ec:IsStatus(STATUS_OPPO_BATTLE)
 end
 function c55762976.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	local bc=e:GetLabelObject()
 	Duel.SetTargetCard(bc)
 	local dam=bc:GetBaseAttack()

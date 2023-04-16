@@ -46,7 +46,8 @@ function c76589815.cfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76589815.cftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and aux.IsMonsterAttacking() end
 end
 function c76589815.cffilter(c,tp)
 	return c:IsType(TYPE_SPELL) and c:IsSSetable(true) and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)

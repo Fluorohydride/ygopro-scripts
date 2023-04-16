@@ -68,7 +68,7 @@ function c25586143.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return tc and tc:IsFaceup()
 end
 function c25586143.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	e:GetLabelObject():CreateEffectRelation(e)
 end
 function c25586143.atkop(e,tp,eg,ep,ev,re,r,rp)

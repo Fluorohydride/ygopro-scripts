@@ -21,6 +21,7 @@ function c97036149.initial_effect(c)
 	e2:SetCountLimit(1,97036150)
 	e2:SetCondition(c97036149.atkcon)
 	e2:SetCost(aux.bfgcost)
+	e2:SetTarget(c97036149.atktg)
 	e2:SetOperation(c97036149.atkop)
 	c:RegisterEffect(e2)
 end
@@ -49,6 +50,9 @@ function c97036149.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabelObject(d)
 	return not a:IsType(TYPE_EFFECT) and d:IsControler(1-tp)
 		and d:IsFaceup() and a:IsFaceup()
+end
+function c97036149.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c97036149.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

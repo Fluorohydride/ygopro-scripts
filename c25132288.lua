@@ -22,7 +22,7 @@ function c25132288.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tc and c:GetAttack()>=500 and c:GetDefense()>=500 and tc:IsFaceup()
 end
 function c25132288.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	e:GetLabelObject():CreateEffectRelation(e)
 end
 function c25132288.operation(e,tp,eg,ep,ev,re,r,rp)

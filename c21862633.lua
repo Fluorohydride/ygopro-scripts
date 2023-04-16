@@ -30,6 +30,7 @@ function c21862633.initial_effect(c)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1,21862634)
 	e4:SetCondition(c21862633.atkcon)
+	e4:SetTarget(c21862633.atktg)
 	e4:SetOperation(c21862633.atkop)
 	c:RegisterEffect(e4)
 	if not c21862633.global_check then
@@ -71,6 +72,9 @@ function c21862633.atkcon(e,tp,eg,ep,ev,re,r,rp)
 			or a:IsSummonType(SUMMON_TYPE_FUSION)
 			or a:IsSummonType(SUMMON_TYPE_SYNCHRO)
 			or a:IsSummonType(SUMMON_TYPE_XYZ)))
+end
+function c21862633.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c21862633.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a,at=Duel.GetBattleMonster(tp)

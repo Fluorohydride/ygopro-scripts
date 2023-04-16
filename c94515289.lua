@@ -11,7 +11,7 @@ function c94515289.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(c94515289.aclimit)
-	e1:SetCondition(c94515289.actcon)
+	e1:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
@@ -27,9 +27,6 @@ function c94515289.initial_effect(c)
 end
 function c94515289.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c94515289.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
 end
 function c94515289.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
