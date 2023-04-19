@@ -14,17 +14,22 @@ function c64599569.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetCondition(c64599569.sumcon)
 	e3:SetOperation(c64599569.sucop)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e4:SetCondition(c64599569.sumcon)
 	e4:SetOperation(c64599569.tgop)
 	c:RegisterEffect(e4)
 end
 c64599569.material_setcode=0x1093
 function c64599569.cyber_fusion_check(tp,sg,fc)
 	return sg:IsExists(Card.IsFusionCode,1,nil,70095154)
+end
+function c64599569.sumcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c64599569.sucop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
