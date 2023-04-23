@@ -31,6 +31,8 @@ function c95113856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		{b3,aux.Stringid(95113856,3)},
 		{b4,aux.Stringid(95113856,4)})
 	e:SetLabel(op)
+	local oploc=({LOCATION_ONFIELD,LOCATION_HAND,LOCATION_GRAVE,LOCATION_DECK})[op]
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,oploc)
 end
 function c95113856.operation(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()
