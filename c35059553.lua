@@ -23,6 +23,16 @@ function c35059553.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetValue(c35059553.sumlimit)
 	c:RegisterEffect(e3)
+	--workaround for nibiru
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetRange(LOCATION_SZONE)
+	e4:SetCode(EFFECT_CANNOT_ACTIVATE)
+	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e4:SetTargetRange(0,1)
+	e4:SetCondition(c35059553.nibirucon)
+	e4:SetValue(c35059553.nibirulimit)
+	c:RegisterEffect(e4)
 end
 function c35059553.value(e,fp,rp,r)
 	if rp==e:GetHandlerPlayer() or r~=LOCATION_REASON_TOFIELD then return 7 end
@@ -42,4 +52,17 @@ function c35059553.sumlimit(e,c)
 	else
 		return false
 	end
+end
+function c35059553.nibirufilter(c)
+	return not c:IsReleasableByEffect()
+end
+function c35059553.nibirucon(e)
+	local tp=e:GetHandlerPlayer()
+	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 then return false end
+	local c1=Duel.GetMatchingGroupCount(c35059553.nibirufilter,tp,LOCATION_MZONE,0,nil)
+	local c2=Duel.GetMatchingGroupCount(c35059553.nibirufilter,tp,0,LOCATION_MZONE,nil)
+	return c1 <= c2
+end
+function c35059553.nibirulimit(e,re,tp)
+	return re:GetHandler():IsOriginalCodeRule(27204311)
 end
