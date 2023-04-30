@@ -1,5 +1,4 @@
 --神・スライム
---not fully implemented
 function c42166000.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -32,19 +31,19 @@ function c42166000.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_HAND,0)
 	e3:SetCondition(c42166000.ttcon)
-	e3:SetTarget(c42166000.tttg1)
+	e3:SetTarget(c42166000.RequireSummon)
 	e3:SetOperation(c42166000.ttop)
 	e3:SetValue(SUMMON_TYPE_ADVANCE)
 	c:RegisterEffect(e3)
 	--triple tribute(require 3 tributes, set)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_LIMIT_SET_PROC)
-	e4:SetTarget(c42166000.tttg2)
+	e4:SetTarget(c42166000.RequireSet)
 	c:RegisterEffect(e4)
 	--triple tribute(can tribute 3 monsters, summon)
 	local e5=e3:Clone()
 	e5:SetCode(EFFECT_SUMMON_PROC)
-	e5:SetTarget(c42166000.tttg3)
+	e5:SetTarget(c42166000.CanSummon)
 	e5:SetValue(SUMMON_TYPE_ADVANCE+SUMMON_VALUE_SELF)
 	c:RegisterEffect(e5)
 	--triple tribute(can tribute 3 monsters, set)
@@ -110,13 +109,16 @@ function c42166000.ttcon(e,c,minc)
 	local tp=c:GetControler()
 	return minc<=3 and Duel.IsExistingMatchingCard(c42166000.ttfilter,tp,LOCATION_MZONE,0,1,nil,tp)
 end
-function c42166000.tttg1(e,c)
-	return c:IsCode(10000000,10000010,10000020,10000080,21208154,57793869,57761191,62180201)
+function c42166000.RequireSummon(e,c)
+	--Egyptian God, The Wicked
+	--Metaltron XII, the True Dracombatant
+	return c:IsCode(10000000,10000010,10000020,10000080,21208154,57793869,62180201,57761191)
 end
-function c42166000.tttg2(e,c)
+function c42166000.RequireSet(e,c)
+	--The Wicked
 	return c:IsCode(21208154,57793869,62180201)
 end
-function c42166000.tttg3(e,c)
+function c42166000.CanSummon(e,c)
 	return c:IsCode(3912064,25524823,36354007,75285069,78651105)
 end
 function c42166000.ttop(e,tp,eg,ep,ev,re,r,rp,c)
