@@ -49,6 +49,14 @@ function c42166000.initial_effect(c)
 	c:RegisterEffect(e5)
 	--triple tribute(can tribute 3 monsters, set)
 	--(reserved)
+	--triple tribute(can tribute 5 monsters, summon)
+	local ea=e3:Clone()
+	ea:SetCode(EFFECT_SUMMON_PROC)
+	ea:SetTarget(aux.TargetBoolFunction(Card.IsCode,5008836))
+	ea:SetCondition(c42166000.t5con)
+	ea:SetOperation(c42166000.t5op)
+	ea:SetValue(SUMMON_TYPE_ADVANCE+SUMMON_VALUE_SELF)
+	c:RegisterEffect(ea)
 	--battle indestructable
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_SINGLE)
@@ -119,4 +127,21 @@ function c42166000.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c42166000.tgtg(e,c)
 	return not (c:IsCode(42166000) and c:IsFaceup())
+end
+function c42166000.gchk(g,tc,tp)
+	return g:IsExists(c42166000.ttfilter,1,nil,tp) and Duel.CheckTribute(tc,#g,#g,g)
+end
+function c42166000.t5con(e,c,minc)
+	if c==nil then return true end
+	local tp=c:GetControler()
+	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	return minc<=5 and g:CheckSubGroup(c42166000.gchk,3,3,c,tp)
+end
+function c42166000.t5op(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=Duel.SelectTribute(tp,c,2,2)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=Duel.SelectMatchingCard(tp,c42166000.ttfilter,tp,LOCATION_MZONE,0,1,1,g,tp)
+	g:Merge(sg)
+	c:SetMaterial(g)
+	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
