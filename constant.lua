@@ -73,7 +73,7 @@ ATTRIBUTE_LIGHT		=0x10		--光
 ATTRIBUTE_DARK		=0x20		--暗
 ATTRIBUTE_DIVINE	=0x40		--神
 --Races 种族
-RACE_ALL			=0x1ffffff	--全种族
+RACE_ALL			=0x3ffffff	--全种族
 RACE_WARRIOR		=0x1		--战士
 RACE_SPELLCASTER	=0x2		--魔法师
 RACE_FAIRY			=0x4		--天使
@@ -99,6 +99,7 @@ RACE_DIVINE			=0x200000	--幻神兽
 RACE_CREATORGOD		=0x400000	--创造神
 RACE_WYRM			=0x800000	--幻龙
 RACE_CYBERSE		=0x1000000	--电子界
+RACE_ILLUSION		=0x2000000	--幻想魔
 --Reason 卡片到当前位置的原因
 REASON_DESTROY		=0x1		--破坏
 REASON_RELEASE		=0x2		--解放
