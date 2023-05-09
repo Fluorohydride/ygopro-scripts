@@ -27,9 +27,10 @@ function c84117021.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c84117021.activate(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local opt=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if opt==0 then
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_DISABLE_SUMMON)
 		e1:SetProperty(EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_SET_AVAILABLE)
@@ -42,7 +43,7 @@ function c84117021.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e3=e1:Clone()
 		e3:SetCode(EFFECT_CANNOT_DISABLE_FLIP_SUMMON)
 		Duel.RegisterEffect(e3,tp)
-		local e4=Effect.CreateEffect(e:GetHandler())
+		local e4=Effect.CreateEffect(c)
 		e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e4:SetCode(EVENT_SUMMON_SUCCESS)
 		e4:SetCondition(c84117021.sumcon)
@@ -55,10 +56,15 @@ function c84117021.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e6=e4:Clone()
 		e6:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
 		Duel.RegisterEffect(e6,tp)
+		local e7=Effect.CreateEffect(c)
+		e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e7:SetCode(EVENT_CHAIN_END)
+		e7:SetOperation(c84117021.limop2)
+		Duel.RegisterEffect(e7,tp)
 	else
 		local tc=Duel.GetFirstTarget()
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-			local e1=Effect.CreateEffect(e:GetHandler())
+			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 			e1:SetOperation(c84117021.atkop)
@@ -67,7 +73,7 @@ function c84117021.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CHANGE_DAMAGE)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -85,9 +91,32 @@ function c84117021.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c84117021.filter,1,nil)
 end
 function c84117021.sumsuc(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetChainLimitTillChainEnd(c84117021.efun)
+	if Duel.GetCurrentChain()==0 then
+		Duel.SetChainLimitTillChainEnd(c84117021.chainlm)
+	elseif Duel.GetCurrentChain()==1 then
+		Duel.RegisterFlagEffect(tp,84117021,RESET_PHASE+PHASE_END,0,1)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAINING)
+		e1:SetOperation(c84117021.resetop)
+		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetReset(RESET_CHAIN)
+		Duel.RegisterEffect(e2,tp)
+	end
 end
-function c84117021.efun(e,ep,tp)
+function c84117021.resetop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.ResetFlagEffect(tp,84117021)
+	e:Reset()
+end
+function c84117021.limop2(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,84117021)>0 then
+		Duel.SetChainLimitTillChainEnd(c84117021.chainlm)
+	end
+	Duel.ResetFlagEffect(tp,84117021)
+end
+function c84117021.chainlm(e,ep,tp)
 	return ep==tp
 end
 function c84117021.atkop(e,tp,eg,ep,ev,re,r,rp)
