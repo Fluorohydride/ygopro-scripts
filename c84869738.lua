@@ -1,5 +1,6 @@
 --覇王の逆鱗
 function c84869738.initial_effect(c)
+	aux.AddCodeList(c,13331639)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)

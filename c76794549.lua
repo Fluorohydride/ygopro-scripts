@@ -1,5 +1,6 @@
 --アストログラフ・マジシャン
 function c76794549.initial_effect(c)
+	aux.AddCodeList(c,13331639)
 	aux.EnablePendulumAttribute(c)
 	--pendulum set/spsummon
 	local e1=Effect.CreateEffect(c)
