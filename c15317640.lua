@@ -18,24 +18,14 @@ function c15317640.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove counter
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(15317640,1))
-	e3:SetCategory(CATEGORY_COIN)
+	e3:SetDescription(10)
+	e3:SetCategory(CATEGORY_COIN+CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
-	e3:SetCondition(c15317640.rctcon)
+	e3:SetCondition(Auxiliary.RemoveCondtion)
 	e3:SetTarget(c15317640.rcttg)
 	e3:SetOperation(c15317640.rctop)
 	c:RegisterEffect(e3)
-	--destroy
-	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(15317640,2))
-	e4:SetCategory(CATEGORY_DESTROY)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(EVENT_DAMAGE_STEP_END)
-	e4:SetCondition(c15317640.descon)
-	e4:SetTarget(c15317640.destg)
-	e4:SetOperation(c15317640.desop)
-	c:RegisterEffect(e4)
 end
 c15317640.toss_coin=true
 function c15317640.addct(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -47,31 +37,22 @@ function c15317640.addc(e,tp,eg,ep,ev,re,r,rp)
 		e:GetHandler():AddCounter(0x1f,2)
 	end
 end
-function c15317640.rctcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x1f)~=0
-end
 function c15317640.rcttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function c15317640.rctop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
 	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin==res then
-		e:GetHandler():RemoveCounter(tp,0x1f,1,REASON_EFFECT)
-	end
-end
-function c15317640.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x1f)==0 and e:GetHandler():IsRelateToBattle()
-end
-function c15317640.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
-end
-function c15317640.desop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		Duel.Destroy(c,REASON_EFFECT)
+		if c:IsRelateToEffect(e) then
+			if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
+				c:RemoveCounter(tp,0x1f,1,REASON_EFFECT)
+			else
+				Duel.Destroy(c,REASON_EFFECT)
+			end
+		end
 	end
 end
