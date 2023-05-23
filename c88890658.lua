@@ -36,6 +36,7 @@ end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
+	if #g==0 then return end
 	for tc in aux.Next(g) do
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
@@ -49,6 +50,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 	end
+	Duel.AdjustInstantly(c)
 	local rg=Duel.GetMatchingGroup(Card.IsReleasableByEffect,tp,0,LOCATION_MZONE,nil)
 	if e:GetLabel()>0 and #rg>0 then
 		Duel.BreakEffect()
