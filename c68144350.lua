@@ -14,7 +14,7 @@ function c68144350.initial_effect(c)
 	Duel.AddCustomActivityCounter(68144350,ACTIVITY_SPSUMMON,c68144350.counterfilter)
 end
 function c68144350.counterfilter(c)
-	return c:IsSetCard(0x84)
+	return c:IsSetCard(0x1084)
 end
 function c68144350.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(68144350,tp,ACTIVITY_SPSUMMON)==0 end
@@ -29,10 +29,10 @@ function c68144350.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c68144350.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return not c:IsSetCard(0x84)
+	return not c:IsSetCard(0x1084)
 end
 function c68144350.filter(c,e,tp)
-	return c:IsSetCard(0x84) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1084) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c68144350.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c68144350.filter(chkc,e,tp) end
