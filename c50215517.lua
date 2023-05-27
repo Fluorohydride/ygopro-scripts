@@ -1,5 +1,6 @@
 --クリムゾン・ヘル・セキュア
 function c50215517.initial_effect(c)
+	aux.AddCodeList(c,70902743)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY)
