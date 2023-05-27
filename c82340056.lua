@@ -14,7 +14,7 @@ function c82340056.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)<=3000 and Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()==nil
 end
 function c82340056.filter(c)
-	return c:IsSetCard(0x21) and c:IsAbleToHand()
+	return c:IsSetCard(0x1021) and c:IsAbleToHand()
 end
 function c82340056.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
@@ -60,5 +60,5 @@ function c82340056.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c82340056.sumlimit(e,c)
-	return not c:IsSetCard(0x21)
+	return not c:IsSetCard(0x1021)
 end

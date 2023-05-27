@@ -22,7 +22,7 @@ function c70109009.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c70109009.cfilter(c)
-	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_NORMAL) and c:IsSetCard(0x21)
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_NORMAL) and c:IsSetCard(0x1021)
 end
 function c70109009.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c70109009.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
