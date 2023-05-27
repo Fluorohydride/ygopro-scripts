@@ -1,6 +1,7 @@
 --Gold Pride - Nytro Blaster
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,59900655)
 	--link summon
 	aux.AddLinkProcedure(c,s.mfilter,2,2,s.lcheck)
 	c:EnableReviveLimit()
