@@ -43,29 +43,18 @@ function c22993208.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
-		tc:RegisterFlagEffect(22993208,RESET_EVENT+RESETS_STANDARD,0,1)
 		local e3=Effect.CreateEffect(e:GetHandler())
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e3:SetCode(EVENT_PHASE+PHASE_END)
-		e3:SetCountLimit(1)
 		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e3:SetLabelObject(tc)
-		e3:SetCondition(c22993208.descon)
+		e3:SetRange(LOCATION_MZONE)
+		e3:SetCode(EVENT_PHASE+PHASE_END)
 		e3:SetOperation(c22993208.desop)
-		Duel.RegisterEffect(e3,tp)
+		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e3:SetCountLimit(1)
+		tc:RegisterEffect(e3,true)
 	end
 	Duel.SpecialSummonComplete()
 end
-function c22993208.descon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	if tc:GetFlagEffect(22993208)~=0 then
-		return true
-	else
-		e:Reset()
-		return false
-	end
-end
 function c22993208.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	Duel.Destroy(tc,REASON_EFFECT)
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
