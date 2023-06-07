@@ -63,6 +63,7 @@ function c43889633.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,1,0,0)
 end
 function c43889633.spop(e,tp,eg,ep,ev,re,r,rp)
+	local fid=e:GetHandler():GetFieldID()
 	local tg=Duel.GetMatchingGroup(c43889633.spfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil,fid)
 	if #tg>0 then
 		Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
