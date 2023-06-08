@@ -3136,3 +3136,36 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 		g:Clear()
 	end
 end
+--B.E.S. remove counter
+function Auxiliary.EnableBESRemove(c)
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(10)
+	e1:SetCategory(CATEGORY_DESTROY)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetCode(EVENT_DAMAGE_STEP_END)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCondition(Auxiliary.RemoveCondtion)
+	e1:SetTarget(Auxiliary.RemoveTarget)
+	e1:SetOperation(Auxiliary.RemoveOperation)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.RemoveCondtion(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:IsRelateToBattle()
+end
+function Auxiliary.RemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
+	end
+end
+function Auxiliary.RemoveOperation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
+			c:RemoveCounter(tp,0x1f,1,REASON_EFFECT)
+		else
+			Duel.Destroy(c,REASON_EFFECT)
+		end
+	end
+end
