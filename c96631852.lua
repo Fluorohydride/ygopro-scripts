@@ -25,11 +25,14 @@ function c96631852.initial_effect(c)
 	e3:SetValue(700)
 	c:RegisterEffect(e3)
 end
+function c96631852.filter(c)
+	return c:IsDefenseAbove(0)
+end
 function c96631852.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c96631852.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,nil,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c96631852.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c96631852.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
