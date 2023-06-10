@@ -34,14 +34,16 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	local c=e:GetHandler()
+	c:CreateEffectRelation(e)
 	Duel.SetTargetCard(tc)
-	local g=Group.CreateGroup(e:GetHandler(),tc)
+	local g=Group.CreateGroup(c,tc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) then
+	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and tc:IsFaceupEx() then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	elseif c:IsRelateToEffect(e) and c:IsLocation(LOCATION_REMOVED) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
