@@ -44,6 +44,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and tc:IsFaceupEx() then
+		if aux.NecroValleyNegateCheck(tc) then return end
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	elseif c:IsRelateToEffect(e) and c:IsLocation(LOCATION_REMOVED) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
