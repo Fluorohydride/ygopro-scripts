@@ -58,29 +58,37 @@ function s.drepop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsCanRemoveCounter(tp,0x1,3,REASON_COST) end
-	c:RemoveCounter(tp,0x1,3,REASON_COST)
+	if chk==0 then return c:IsCanRemoveCounter(tp,0x1,1,REASON_COST) end
+	c:RemoveCounter(tp,0x1,1,REASON_COST)
 end
-function s.filter(c,e,tp,n)
-	local b={(c:IsType(TYPE_SPELL) or c:IsType(TYPE_EFFECT) and c:IsRace(RACE_SPELLCASTER)) and c:IsAbleToHand(),
-		Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRace(RACE_SPELLCASTER)
-			and c:IsCanBeSpecialSummoned(e,0,tp,false,false)}
-	if n then return b[n] else return b[1] or b[2] end
+function s.thfilter(c)
+	return (c:IsType(TYPE_SPELL) or c:IsType(TYPE_EFFECT) and c:IsRace(RACE_SPELLCASTER)) and c:IsAbleToHand()
+end
+function s.spfilter(c,e,tp)
+	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.stg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then
+		local b1=Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil)
+		local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,e,tp)
+		return b1 or b2
+	end
 end
 function s.sop(e,tp,eg,ep,ev,re,r,rp)
-	local b1=Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,e,tp,1)
-	local b2=Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,e,tp,2)
+	local b1=Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil)
+	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,e,tp)
 	if not (b1 or b2) then return end
 	local op=aux.SelectFromOptions(tp,{b1,aux.Stringid(id,1)},{b2,aux.Stringid(id,2)})
-	local str=HINTMSG_ATOHAND
-	if op==2 then str=HINTMSG_SPSUMMON end
-	Duel.Hint(HINT_SELECTMSG,tp,str)
-	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,e,tp,op)
 	if op==1 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+		local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-	else Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP) end
+	else if op==2 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,e,tp)
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP) end
+	end
 end
