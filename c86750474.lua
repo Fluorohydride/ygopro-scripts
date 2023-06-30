@@ -56,8 +56,10 @@ function c86750474.damop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c86750474.damfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		Duel.BreakEffect()
 		local d=Duel.GetFieldGroupCount(1-tp,LOCATION_ONFIELD,0)*200
-		Duel.Damage(1-tp,d,REASON_EFFECT)
+		if d>0 then
+			Duel.BreakEffect()
+			Duel.Damage(1-tp,d,REASON_EFFECT)
+		end
 	end
 end
