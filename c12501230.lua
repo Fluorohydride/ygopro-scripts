@@ -56,7 +56,7 @@ function s.ctcon(e,tp,eg,ep,ev,re,r,rp)
 		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function s.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return c:IsCanAddCounter(0x67,1)
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x67,1)
 		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
