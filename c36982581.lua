@@ -86,7 +86,7 @@ function c36982581.tdfilter(c)
 end
 function c36982581.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c36982581.tdfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c36982581.tdfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c36982581.tdfilter,tp,LOCATION_GRAVE,0,1,nil) and c:IsAbleToDeck() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c36982581.tdfilter,tp,LOCATION_GRAVE,0,1,1,nil)
