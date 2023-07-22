@@ -33,7 +33,7 @@ end
 function c63708033.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
-	local ct=g:GetCount()
+	local ct=tg:GetCount()
 	local g2=Duel.GetMatchingGroup(c63708033.sfilter,tp,LOCATION_MZONE,0,nil)
 	if g2:GetCount()<ct then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
