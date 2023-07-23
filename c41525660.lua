@@ -72,11 +72,12 @@ function c41525660.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local seq=tc:GetSequence()
 	if seq>4 then return end
 	local flag=0
-	if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=flag|(1<<(seq-1)) end
-	if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=flag|(1<<(seq+1)) end
+	local p=tc:GetControler()
+	if seq>0 and Duel.CheckLocation(p,LOCATION_MZONE,seq-1) then flag=flag|(1<<(seq-1)) end
+	if seq<4 and Duel.CheckLocation(p,LOCATION_MZONE,seq+1) then flag=flag|(1<<(seq+1)) end
 	if flag==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-	local s=Duel.SelectField(tp,1,LOCATION_MZONE,0,~flag)
+	local s=Duel.SelectField(tp,1,LOCATION_MZONE,LOCATION_MZONE,~flag)
 	local nseq=math.log(s,2)
 	Duel.MoveSequence(tc,nseq)
 end
