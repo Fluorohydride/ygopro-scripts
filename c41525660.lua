@@ -76,8 +76,10 @@ function c41525660.seqop(e,tp,eg,ep,ev,re,r,rp)
 	if seq>0 and Duel.CheckLocation(p,LOCATION_MZONE,seq-1) then flag=flag|(1<<(seq-1)) end
 	if seq<4 and Duel.CheckLocation(p,LOCATION_MZONE,seq+1) then flag=flag|(1<<(seq+1)) end
 	if flag==0 then return end
+	if p~=tp then flag=flag<<16 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local s=Duel.SelectField(tp,1,LOCATION_MZONE,LOCATION_MZONE,~flag)
+	if p~=tp then s=s>>16 end
 	local nseq=math.log(s,2)
 	Duel.MoveSequence(tc,nseq)
 end
