@@ -3169,3 +3169,8 @@ function Auxiliary.RemoveOperation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+--The operation function of "destroy during End Phase"
+function Auxiliary.EPDestroyOperation(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE,tc:GetControler())
+end
