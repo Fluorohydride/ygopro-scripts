@@ -50,7 +50,8 @@ function s.ctop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.dreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) and not c:IsReason(REASON_REPLACE) end
+	if chk==0 then return c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
+		and c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function s.drepop(e,tp,eg,ep,ev,re,r,rp)
