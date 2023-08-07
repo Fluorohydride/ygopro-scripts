@@ -14,7 +14,7 @@ function c87340664.initial_effect(c)
 end
 function c87340664.condition(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabel(e:GetHandler():GetReasonPlayer())
-	return e:GetHandler():IsReason(REASON_BATTLE) and e:GetHandler():IsPreviousPosition(POS_FACEUP)
+	return e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c87340664.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end

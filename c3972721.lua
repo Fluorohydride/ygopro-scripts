@@ -26,8 +26,7 @@ function c3972721.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local p2=false
 	while tc do
 		if tc:IsType(TYPE_SYNCHRO) and tc:IsPreviousLocation(LOCATION_MZONE)
-			and ((tc:IsReason(REASON_BATTLE) and bit.band(tc:GetBattlePosition(),POS_FACEUP)~=0)
-			or (not tc:IsReason(REASON_BATTLE) and tc:IsPreviousPosition(POS_FACEUP)))
+			and (tc:IsReason(REASON_BATTLE) or tc:IsReason(REASON_EFFECT) and tc:IsPreviousPosition(POS_FACEUP))
 			and tc:GetPreviousControler()~=tc:GetReasonPlayer() then
 			if tc:GetReasonPlayer()==0 then p1=true else p2=true end
 		end
