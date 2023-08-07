@@ -36,7 +36,7 @@ function c72497366.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	if chk==0 then return eg:GetCount()==1 and tc:IsFaceup() and tc:IsLocation(LOCATION_MZONE)
 		and tc:IsRace(RACE_FIEND) and tc:IsLevelAbove(5) and tc:IsSummonType(SUMMON_TYPE_NORMAL)
-		and not tc:IsReason(REASON_REPLACE) end
+		and tc:IsReason(REASON_EFFECT+REASON_BATTLE) and not tc:IsReason(REASON_REPLACE) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 		return true
