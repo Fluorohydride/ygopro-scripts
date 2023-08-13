@@ -6,8 +6,8 @@ MAX_PARAMETER	=0xffff
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
-LOCATION_MZONE		=0x04		--主要怪兽区(0~4)+额外怪兽区(5~6)
-LOCATION_SZONE		=0x08		--魔陷区(0~4)+场地区(5)
+LOCATION_MZONE		=0x04		--主要怪兽区(0-4)+额外怪兽区(5-6)
+LOCATION_SZONE		=0x08		--魔陷区(0-4)+场地区(5)
 LOCATION_GRAVE		=0x10		--墓地
 LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
