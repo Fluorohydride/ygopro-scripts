@@ -18,7 +18,7 @@ end
 function c5168381.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c5168381.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
-function c5168381.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c5168381.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
