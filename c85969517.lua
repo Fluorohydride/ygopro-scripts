@@ -77,8 +77,8 @@ function s.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)==0 or not c:IsLocation(LOCATION_EXTRA) then return end
 	local attr=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if not attr or attr==0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,id+o,0x13f,TYPES_TOKEN_MONSTER,0,0,4,RACE_FIEND,a,POS_FACEUP_DEFENSE,tp)
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,id+o,0x13f,TYPES_TOKEN_MONSTER,0,0,4,RACE_FIEND,a,POS_FACEUP_DEFENSE,1-tp)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,id+o,0x13f,TYPES_TOKEN_MONSTER,0,0,4,RACE_FIEND,attr,POS_FACEUP_DEFENSE,tp)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,id+o,0x13f,TYPES_TOKEN_MONSTER,0,0,4,RACE_FIEND,attr,POS_FACEUP_DEFENSE,1-tp)
 		or Duel.GetMZoneCount(tp,c)<=0 or Duel.GetMZoneCount(1-tp,c,tp)<=0
 		or Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		return

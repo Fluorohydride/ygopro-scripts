@@ -14,7 +14,7 @@ end
 function c46271408.cfilter(c)
 	return c:GetSequence()<5
 end
-function c46271408.thfilter(c,e,tp)
+function c46271408.thfilter(c,e,tp,spchk)
 	return c:IsSetCard(0x1115) and c:IsLevel(4) and (c:IsAbleToHand() or (spchk and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c46271408.condition(e,tp,eg,ep,ev,re,r,rp)

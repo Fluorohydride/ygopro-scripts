@@ -67,7 +67,7 @@ function s.mfilter(c)
 	return seq<=4 and c:IsType(TYPE_EFFECT) and c:IsFaceup()
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and cgkc:IsControler(1-tp) and s.mfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and s.mfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(s.mfilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))

@@ -44,7 +44,7 @@ function c57630503.op(e,tp,eg,ep,ev,re,r,rp)
 	if #g==1 and #hg==0 then
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
 	else
-		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_DISCARD)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 		local tg=hg:SelectSubGroup(tp,c57630503.gselect,false,1,2)
 		Duel.SendtoGrave(tg,REASON_DISCARD+REASON_EFFECT)
 	end
