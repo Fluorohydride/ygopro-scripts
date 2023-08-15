@@ -19,7 +19,7 @@ function c18407024.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,1-tp,1)
 end
 function c18407024.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0,nil)
+	local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0)
 	if g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_DISCARD)
 	local sg=g:Select(1-tp,1,1,nil)

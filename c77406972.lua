@@ -32,7 +32,7 @@ function c77406972.ntcon(e,c,minc)
 	if c==nil then return true end
 	local tp=e:GetHandlerPlayer()
 	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0,nil)==0
+		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
 function c77406972.rmfilter(c,atk)
 	return c:IsFaceup() and c:IsAttackAbove(atk) and c:IsAbleToRemove()

@@ -28,7 +28,7 @@ end
 function c39537362.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
 		or not Duel.GetAttacker():IsRelateToEffect(e) then return end
-	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0):RandomSelect(1-tp,1,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0):RandomSelect(1-tp,1)
 	local tc=g:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CARDTYPE)
 	local op=Duel.AnnounceType(1-tp)
