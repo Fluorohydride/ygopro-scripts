@@ -49,8 +49,8 @@ function c95664204.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(c95664204.lvfilter,tp,LOCATION_MZONE,0,nil)
 		local lv=0
-		if g:FilterCount(Card.IsLevel,1,nil,5)==#g then lv=4 end
-		if g:FilterCount(Card.IsLevel,1,nil,4)==#g then lv=5 end
+		if g:FilterCount(Card.IsLevel,nil,5)==#g then lv=4 end
+		if g:FilterCount(Card.IsLevel,nil,4)==#g then lv=5 end
 		if lv==0 then lv=Duel.AnnounceNumber(tp,4,5) end
 		local lc=g:GetFirst()
 		while lc do

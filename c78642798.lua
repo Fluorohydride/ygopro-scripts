@@ -74,7 +74,7 @@ function c78642798.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if sg:GetCount()>0 then
 			local tc2=sg:GetFirst()
 			if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2 then
-				Duel.Equip(tp,tc1,tc2,atk)
+				Duel.Equip(tp,tc1,tc2,false)
 				--Gains ATK
 				local e1=Effect.CreateEffect(tc1)
 				e1:SetType(EFFECT_TYPE_EQUIP)
