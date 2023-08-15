@@ -15,7 +15,7 @@ function c197042.initial_effect(c)
 	c:RegisterEffect(e1)
 	if not c197042.global_check then
 		c197042.global_check=true
-		local ge1=Effect.GlobalEffect(c)
+		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
 		ge1:SetCondition(c197042.checkcon)

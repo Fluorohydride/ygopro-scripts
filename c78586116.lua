@@ -78,7 +78,7 @@ function c78586116.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(c78586116.eqlimit)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
-		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+78586116,e,0,0,0,0,0)
+		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+78586116,e,0,0,0,0)
 	else
 		c:CancelToGrave(false)
 	end

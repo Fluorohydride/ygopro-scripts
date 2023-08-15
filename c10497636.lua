@@ -35,7 +35,7 @@ function c10497636.initial_effect(c)
 	--
 	if not c10497636.global_check then
 		c10497636.global_check=true
-		local ge1=Effect.GlobalEffect(c)
+		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_BATTLE_CONFIRM)
 		ge1:SetOperation(c10497636.checkop)

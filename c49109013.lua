@@ -37,7 +37,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	c:CreateEffectRelation(e)
 	Duel.SetTargetCard(tc)
-	local g=Group.CreateGroup(c,tc)
+	local g=Group.FromCards(c,tc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
