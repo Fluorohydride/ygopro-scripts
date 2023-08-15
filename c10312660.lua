@@ -26,7 +26,7 @@ function c10312660.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or g:GetClassCount(Card.GetCode)<3 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
-	if #sg>0 then
+	if sg then
 		Duel.ConfirmCards(1-tp,sg)
 		local tc=sg:RandomSelect(1-tp,1):GetFirst()
 		Duel.ConfirmCards(tp,tc)

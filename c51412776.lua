@@ -54,7 +54,7 @@ function c51412776.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c51412776.checkfilter,1,nil,1) then v=v+2 end
 	if v>0 then
 		local evp=({0,1,PLAYER_ALL})[v]
-		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+51412776,nil,0,rp,ep,evp)
+		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+51412776,e,0,rp,ep,evp)
 	end
 end
 function c51412776.thcon(e,tp,eg,ep,ev,re,r,rp)

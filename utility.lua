@@ -1209,7 +1209,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
-					Duel.SetSelectedCard(Group.FromCards(gc))
+					Duel.SetSelectedCard(gc)
 				end
 				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
 			end
@@ -1223,7 +1223,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local concat_fusion=chkfnf&0x200>0
 				local sub=(sub or notfusion) and not concat_fusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
-				if gc then Duel.SetSelectedCard(Group.FromCards(gc)) end
+				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
 				Duel.SetFusionMaterial(sg)

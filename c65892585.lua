@@ -51,7 +51,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoHand(g,nil,REASON_EFFECT)<1 then return end
 	Duel.ConfirmCards(1-tp,g)
 	Duel.ShuffleHand(tp)
-	local tg=Duel.GetMatchingGroup(s.gfilter,tp,LOCATION_DECK,0,1,nil)
+	local tg=Duel.GetMatchingGroup(s.gfilter,tp,LOCATION_DECK,0,nil)
 	if Duel.GetLP(tp)<Duel.GetLP(1-tp) and #g>0
 		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

@@ -75,6 +75,6 @@ function c60514625.tkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60514625.desop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsFacedown() then return end
-	local g=Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,0,nil,60514626)
+	local g=Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,60514626)
 	Duel.Destroy(g,REASON_EFFECT)
 end
