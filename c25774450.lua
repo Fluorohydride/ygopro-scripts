@@ -30,9 +30,9 @@ function c25774450.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dc=dg:GetFirst()
 	local cc=cg:GetFirst()
 	if dc:IsRelateToEffect(e) and Duel.Destroy(dc,REASON_EFFECT)~=0 then
-        if cc:IsRelateToEffect(e) then
-            Duel.BreakEffect()
+		if cc:IsRelateToEffect(e) then
+			Duel.BreakEffect()
 			Duel.GetControl(cc,1-tp)
-        end
+		end
 	end
 end
