@@ -29,6 +29,8 @@ function Auxiliary.EnableDualAttribute(c)
 	e3:SetValue(TYPE_EFFECT)
 	c:RegisterEffect(e3)
 end
+
+--Synchro Summon
 --Synchro monster, 1 tuner + min to max monsters
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	if maxc==nil then maxc=99 end
