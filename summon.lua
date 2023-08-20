@@ -797,6 +797,8 @@ function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,
 				end
 			end
 end
+
+--Fusion Summon
 --material: names in material list
 --Fusion monster, mixed materials
 function Auxiliary.AddFusionProcMix(c,sub,insf,...)
