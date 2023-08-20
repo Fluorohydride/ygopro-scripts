@@ -1,3 +1,4 @@
+--Gemini Summon
 function Auxiliary.IsDualState(effect)
 	local c=effect:GetHandler()
 	return not c:IsDisabled() and c:IsDualState()
