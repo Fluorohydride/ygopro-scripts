@@ -1283,6 +1283,8 @@ function Auxiliary.FShaddollOperation(attr)
 				Duel.SetFusionMaterial(g)
 			end
 end
+
+--Contact Fusion
 function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_location,mat_operation,...)
 	local self_location=self_location or 0
 	local opponent_location=opponent_location or 0
