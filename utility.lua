@@ -340,17 +340,6 @@ function Auxiliary.GetValueType(v)
 		else return "Card" end
 	else return t end
 end
-function Auxiliary.MustMaterialCheck(v,tp,code)
-	local g=Duel.GetMustMaterial(tp,code)
-	if not v then
-		if code==EFFECT_MUST_BE_XMATERIAL and Duel.IsPlayerAffectedByEffect(tp,67120578) then return false end
-		return #g==0
-	end
-	return Duel.CheckMustMaterial(tp,v,code)
-end
-function Auxiliary.MustMaterialCounterFilter(c,g)
-	return not g:IsContains(c)
-end
 function Auxiliary.EnableExtraDeckSummonCountLimit()
 	if Auxiliary.ExtraDeckSummonCountLimit~=nil then return end
 	Auxiliary.ExtraDeckSummonCountLimit={}
