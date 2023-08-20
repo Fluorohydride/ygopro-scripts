@@ -1329,6 +1329,8 @@ function Auxiliary.tdcfop(c)
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
 end
+
+--Ritual Summon
 function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,pause,extra_operation,extra_target)
 	summon_location=summon_location or LOCATION_HAND
 	local e1=Effect.CreateEffect(c)
