@@ -351,40 +351,6 @@ end
 function Auxiliary.MustMaterialCounterFilter(c,g)
 	return not g:IsContains(c)
 end
-function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_location,mat_operation,...)
-	local self_location=self_location or 0
-	local opponent_location=opponent_location or 0
-	local operation_params={...}
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(Auxiliary.ContactFusionCondition(filter,self_location,opponent_location))
-	e2:SetOperation(Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params))
-	c:RegisterEffect(e2)
-	return e2
-end
-function Auxiliary.ContactFusionMaterialFilter(c,fc,filter)
-	return c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and (not filter or filter(c,fc))
-end
-function Auxiliary.ContactFusionCondition(filter,self_location,opponent_location)
-	return	function(e,c)
-				if c==nil then return true end
-				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local tp=c:GetControler()
-				local mg=Duel.GetMatchingGroup(Auxiliary.ContactFusionMaterialFilter,tp,self_location,opponent_location,c,c,filter)
-				return c:CheckFusionMaterial(mg,nil,tp|0x200)
-			end
-end
-function Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c)
-				local mg=Duel.GetMatchingGroup(Auxiliary.ContactFusionMaterialFilter,tp,self_location,opponent_location,c,c,filter)
-				local g=Duel.SelectFusionMaterial(tp,c,mg,nil,tp|0x200)
-				c:SetMaterial(g)
-				mat_operation(g,table.unpack(operation_params))
-			end
-end
 function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,pause,extra_operation,extra_target)
 	summon_location=summon_location or LOCATION_HAND
 	local e1=Effect.CreateEffect(c)
@@ -1657,16 +1623,6 @@ end
 function Auxiliary.ndcon(tp,re)
 	local rc=re:GetHandler()
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or not rc:IsRelateToEffect(re) or rc:IsAbleToDeck()
-end
---send to deck of contact fusion
-function Auxiliary.tdcfop(c)
-	return	function(g)
-				local cg=g:Filter(Card.IsFacedown,nil)
-				if cg:GetCount()>0 then
-					Duel.ConfirmCards(1-c:GetControler(),cg)
-				end
-				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
-			end
 end
 --return the global index of the zone in (p,loc,seq)
 function Auxiliary.SequenceToGlobal(p,loc,seq)
