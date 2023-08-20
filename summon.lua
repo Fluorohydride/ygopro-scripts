@@ -1827,6 +1827,8 @@ function Auxiliary.LinkOperation(f,minc,maxc,gf)
 				g:DeleteGroup()
 			end
 end
+
+--Must use X as material
 function Auxiliary.MustMaterialCheck(v,tp,code)
 	local g=Duel.GetMustMaterial(tp,code)
 	if not v then
