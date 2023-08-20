@@ -1503,7 +1503,7 @@ function Auxiliary.AddRitualProcGreater2Code2(c,code1,code2,summon_location,grav
 	return Auxiliary.AddRitualProcGreater2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter,mat_filter,pause,extra_operation,extra_target)
 end
 
---Pendulum summon
+--Pendulum Summon
 --add procedure to Pendulum monster, also allows registeration of activation effect
 function Auxiliary.EnablePendulumAttribute(c,reg)
 	if not Auxiliary.PendulumChecklist then
