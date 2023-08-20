@@ -1857,3 +1857,27 @@ function Auxiliary.ExtraDeckSummonCountLimitReset()
 	Auxiliary.ExtraDeckSummonCountLimit[0]=1
 	Auxiliary.ExtraDeckSummonCountLimit[1]=1
 end
+--sp_summon condition for fusion monster
+function Auxiliary.fuslimit(e,se,sp,st)
+	return st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
+end
+--sp_summon condition for ritual monster
+function Auxiliary.ritlimit(e,se,sp,st)
+	return st&SUMMON_TYPE_RITUAL==SUMMON_TYPE_RITUAL
+end
+--sp_summon condition for synchro monster
+function Auxiliary.synlimit(e,se,sp,st)
+	return st&SUMMON_TYPE_SYNCHRO==SUMMON_TYPE_SYNCHRO
+end
+--sp_summon condition for xyz monster
+function Auxiliary.xyzlimit(e,se,sp,st)
+	return st&SUMMON_TYPE_XYZ==SUMMON_TYPE_XYZ
+end
+--sp_summon condition for pendulum monster
+function Auxiliary.penlimit(e,se,sp,st)
+	return st&SUMMON_TYPE_PENDULUM==SUMMON_TYPE_PENDULUM
+end
+--sp_summon condition for link monster
+function Auxiliary.linklimit(e,se,sp,st)
+	return st&SUMMON_TYPE_LINK==SUMMON_TYPE_LINK
+end
