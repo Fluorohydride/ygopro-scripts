@@ -1857,6 +1857,8 @@ function Auxiliary.ExtraDeckSummonCountLimitReset()
 	Auxiliary.ExtraDeckSummonCountLimit[0]=1
 	Auxiliary.ExtraDeckSummonCountLimit[1]=1
 end
+
+--Summon Condition
 --sp_summon condition for fusion monster
 function Auxiliary.fuslimit(e,se,sp,st)
 	return st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
