@@ -1840,6 +1840,8 @@ end
 function Auxiliary.MustMaterialCounterFilter(c,g)
 	return not g:IsContains(c)
 end
+
+--Extra Deck summon count
 function Auxiliary.EnableExtraDeckSummonCountLimit()
 	if Auxiliary.ExtraDeckSummonCountLimit~=nil then return end
 	Auxiliary.ExtraDeckSummonCountLimit={}
