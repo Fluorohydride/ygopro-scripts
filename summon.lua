@@ -31,6 +31,18 @@ function Auxiliary.EnableDualAttribute(c)
 end
 
 --Synchro Summon
+function Auxiliary.Tuner(f,...)
+	local ext_params={...}
+	return	function(target,syncard)
+				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
+			end
+end
+function Auxiliary.NonTuner(f,...)
+	local ext_params={...}
+	return	function(target,syncard)
+				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
+			end
+end
 --Synchro monster, 1 tuner + min to max monsters
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	if maxc==nil then maxc=99 end

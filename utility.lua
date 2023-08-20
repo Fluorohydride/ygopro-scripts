@@ -331,18 +331,6 @@ function Auxiliary.FilterBoolFunction(f,...)
 				return f(target,table.unpack(ext_params))
 			end
 end
-function Auxiliary.Tuner(f,...)
-	local ext_params={...}
-	return	function(target,syncard)
-				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
-			end
-end
-function Auxiliary.NonTuner(f,...)
-	local ext_params={...}
-	return	function(target,syncard)
-				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
-			end
-end
 function Auxiliary.GetValueType(v)
 	local t=type(v)
 	if t=="userdata" then
