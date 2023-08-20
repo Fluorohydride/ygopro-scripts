@@ -1681,6 +1681,7 @@ function Auxiliary.PSSCompleteProcedure(e,tp,eg,ep,ev,re,r,rp)
 		c:CompleteProcedure()
 	end
 end
+
 --Link Summon
 function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	local e1=Effect.CreateEffect(c)
