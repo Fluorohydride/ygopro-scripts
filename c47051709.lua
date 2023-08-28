@@ -47,6 +47,7 @@ end
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsCode(id)
 end
-function s.condition(e,tp,eg,ep,ev,re,r,rp)
+function s.condition(e)
+	local tp=e:GetHandlerPlayer()
 	return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
 end
