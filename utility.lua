@@ -340,6 +340,22 @@ function Auxiliary.GetValueType(v)
 		else return "Card" end
 	else return t end
 end
+--Extra Deck summon count
+function Auxiliary.EnableExtraDeckSummonCountLimit()
+	if Auxiliary.ExtraDeckSummonCountLimit~=nil then return end
+	Auxiliary.ExtraDeckSummonCountLimit={}
+	Auxiliary.ExtraDeckSummonCountLimit[0]=1
+	Auxiliary.ExtraDeckSummonCountLimit[1]=1
+	local ge1=Effect.GlobalEffect()
+	ge1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
+	ge1:SetOperation(Auxiliary.ExtraDeckSummonCountLimitReset)
+	Duel.RegisterEffect(ge1,0)
+end
+function Auxiliary.ExtraDeckSummonCountLimitReset()
+	Auxiliary.ExtraDeckSummonCountLimit[0]=1
+	Auxiliary.ExtraDeckSummonCountLimit[1]=1
+end
 --Fusion Monster is unnecessary to use this
 function Auxiliary.AddMaterialCodeList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
