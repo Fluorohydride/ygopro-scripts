@@ -59,8 +59,8 @@ function s.drepop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsCanRemoveCounter(tp,0x1,1,REASON_COST) end
-	c:RemoveCounter(tp,0x1,1,REASON_COST)
+	if chk==0 then return c:IsCanRemoveCounter(tp,0x1,3,REASON_COST) end
+	c:RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function s.thfilter(c)
 	return (c:IsType(TYPE_SPELL) or c:IsType(TYPE_EFFECT) and c:IsRace(RACE_SPELLCASTER)) and c:IsAbleToHand()
