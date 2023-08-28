@@ -40,7 +40,8 @@ function c46412900.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c46412900.sprfilter(c)
-	return c:IsFaceupEx() and c:IsAbleToRemoveAsCost() and (c:IsRace(RACE_PYRO) or c:IsSetCard(0xb9))
+	return c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
+		and (c:IsRace(RACE_PYRO) and c:IsType(TYPE_MONSTER) or c:IsSetCard(0xb9))
 end
 function c46412900.gcheck(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0
