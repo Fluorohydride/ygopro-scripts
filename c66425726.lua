@@ -111,7 +111,8 @@ function c66425726.discon(e,tp,eg,ep,ev,re,r,rp)
 		and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c66425726.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
+	if chk==0 then return e:GetHandler():GetOriginalType()&TYPE_PENDULUM~=0
+		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) end
 	if e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) then
 		e:SetCategory(CATEGORY_DISABLE+CATEGORY_SPECIAL_SUMMON)
 	else
