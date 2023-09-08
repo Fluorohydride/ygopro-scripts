@@ -13,9 +13,12 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.filter(c,tp,ft)
+	if c:IsFacedown() then return false end
+	local p=c:GetOwner()
+	if p~=tp then ft=0 end
 	local r=LOCATION_REASON_TOFIELD
-	if not c:IsControler(c:GetOwner()) then r=LOCATION_REASON_CONTROL end
-	return c:IsFaceup() and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>ft
+	if not c:IsControler(p) then r=LOCATION_REASON_CONTROL end
+	return Duel.GetLocationCount(p,LOCATION_SZONE,tp,r)>ft
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.filter(chkc,tp,0) end
