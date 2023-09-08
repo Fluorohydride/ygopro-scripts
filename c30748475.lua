@@ -12,7 +12,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if chk==0 then return #g>0 end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,#g,0,0)
 end
@@ -25,7 +25,10 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if #tg>0 then
 		Duel.BreakEffect()
-		--not fully implemented: https://github.com/Fluorohydride/ygopro/issues/2404
-		Duel.SendtoGrave(tg,REASON_RULE)
+		local turnp=Duel.GetTurnPlayer()
+		for p=turnp,1-turnp,1-turnp-turnp do
+			local sg=tg:Filter(Card.IsControler,nil,p)
+			Duel.SendtoGrave(sg,REASON_RULE,p)
+		end
 	end
 end
