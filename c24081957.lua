@@ -14,8 +14,10 @@ function s.initial_effect(c)
 end
 function s.filter(c,tp,ft)
 	local r=LOCATION_REASON_TOFIELD
+	if c:IsFacedown() then return false end
 	if not c:IsControler(c:GetOwner()) then r=LOCATION_REASON_CONTROL end
-	return c:IsFaceup() and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>ft
+	local ft=c:GetOwner()==tp and ft or 0
+	return Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.filter(chkc,tp,0) end
