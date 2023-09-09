@@ -46,7 +46,7 @@ function c87997872.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if e:GetHandler():IsLocation(LOCATION_DECK) then
 		Duel.ConfirmCards(1-tp,e:GetHandler())
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,e:GetHandler():GetLocation())
 end
 function c87997872.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
