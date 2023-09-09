@@ -70,7 +70,7 @@ function c33453260.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c33453260.eqlimit(e,c)
-	return e:GetHandlerPlayer()~=c:GetControler() or e:GetHandler():GetEquipTarget()==c
+	return Duel.IsExistingMatchingCard(c33453260.cfilter,tp,LOCATION_ONFIELD,0,1,nil) and e:GetHandlerPlayer()~=c:GetControler() or e:GetHandler():GetEquipTarget()==c
 end
 function c33453260.cval(e,c)
 	return e:GetHandlerPlayer()
