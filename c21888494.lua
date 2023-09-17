@@ -33,8 +33,8 @@ function c21888494.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rg=sg1:Select(1-tp,1,1,nil)
 	local tc=rg:GetFirst()
 	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		Duel.SendtoGrave(sg2,REASON_EFFECT)
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	else
 		Duel.SendtoGrave(sg1,REASON_EFFECT)
 	end
