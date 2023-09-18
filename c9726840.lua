@@ -35,7 +35,7 @@ end
 function c9726840.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tc=Duel.SelectMatchingCard(tp,c9726840.tgfilter,tp,LOCATION_ONFIELD,0,1,1,c,e,tp):GetFirst()
+	local tc=Duel.SelectMatchingCard(tp,c9726840.tgfilter2,tp,LOCATION_ONFIELD,0,1,1,c,tp):GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sc=Duel.SelectMatchingCard(tp,c9726840.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc):GetFirst()
