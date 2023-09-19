@@ -42,13 +42,15 @@ function c31437713.ftarget(e,c)
 end
 function c31437713.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local fid=0
+	if c:IsRelateToEffect(e) then fid=c:GetFieldID() end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_ATTACK)
 	e1:SetProperty(EFFECT_FLAG_OATH)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetTarget(c31437713.ftarget)
-	e1:SetLabel(c:GetFieldID())
+	e1:SetLabel(fid)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
