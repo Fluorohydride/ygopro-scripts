@@ -77,7 +77,7 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	c24207889.is_empty=false
 	local phase=Duel.GetCurrentPhase()
 	if (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()) or phase==PHASE_DAMAGE_CAL then return end
-	local sg=Group.CreateGroup()
+	local res=0
 	for p=0,1 do
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
 		local race=1
@@ -88,13 +88,12 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 				rg:Sub(c24207889[p][race]:Filter(Card.IsRace,nil,race))
 				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOGRAVE)
 				local dg=rg:Select(p,rc-1,rc-1,nil)
-				sg:Merge(dg)
+				res=res+Duel.SendtoGrave(dg,REASON_RULE,p)
 			end
 			race=race<<1
 		end
 	end
-	if sg:GetCount()>0 then
-		Duel.SendtoGrave(sg,REASON_RULE)
+	if res then
 		Duel.Readjust()
 	end
 	for p=0,1 do

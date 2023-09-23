@@ -112,9 +112,14 @@ function c23931679.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		c23931679[1-tp]=1
 	end
-	g1:Merge(g2)
+	local res=0
 	if g1:GetCount()>0 then
-		Duel.SendtoGrave(g1,REASON_RULE)
+		res=res+Duel.SendtoGrave(g1,REASON_RULE)
+	end
+	if g2:GetCount()>0 then
+		res=res+Duel.SendtoGrave(g2,REASON_RULE,1-tp)
+	end
+	if res>0 then
 		Duel.Readjust()
 	end
 end
