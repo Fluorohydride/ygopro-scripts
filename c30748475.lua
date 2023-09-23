@@ -25,8 +25,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if #tg>0 then
 		Duel.BreakEffect()
-		local turnp=Duel.GetTurnPlayer()
-		for p=turnp,1-turnp,1-turnp-turnp do
+		for p in aux.TurnPlayers() do
 			local sg=tg:Filter(Card.IsControler,nil,p)
 			Duel.SendtoGrave(sg,REASON_RULE,p)
 		end

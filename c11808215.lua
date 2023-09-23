@@ -37,8 +37,7 @@ function c11808215.dicetg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,PLAYER_ALL,1)
 end
 function c11808215.diceop(e,tp,eg,ep,ev,re,r,rp)
-	local turnp=Duel.GetTurnPlayer()
-	for p=turnp,1-turnp,1-turnp-turnp do
+	for p in aux.TurnPlayers() do
 		local dice=Duel.TossDice(p,1)
 		if dice>=1 and dice<=6 then
 			local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)

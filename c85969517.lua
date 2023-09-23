@@ -83,7 +83,7 @@ function s.tkop(e,tp,eg,ep,ev,re,r,rp)
 		or Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		return
 	end
-	for p=tp,1-tp,1-2*tp do
+	for p in aux.TurnPlayers() do
 		local token=Duel.CreateToken(tp,id+o)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
