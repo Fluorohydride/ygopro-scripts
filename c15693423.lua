@@ -35,7 +35,7 @@ function c15693423.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
 		local sg=g:FilterSelect(1-tp,Card.IsAbleToRemove,ct,ct,nil,1-tp,POS_FACEDOWN,REASON_RULE)
-		Duel.Remove(sg,POS_FACEDOWN,REASON_RULE)
+		Duel.Remove(sg,POS_FACEDOWN,REASON_RULE,1-tp)
 	end
 end
 function c15693423.handcon(e)

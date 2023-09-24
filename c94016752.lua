@@ -36,7 +36,7 @@ function c94016752.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
 		local code=sg:GetFirst():GetCode()
-		if Duel.SendtoGrave(sg,REASON_RULE)~=0 then
+		if Duel.SendtoGrave(sg,REASON_RULE,1-tp)~=0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
