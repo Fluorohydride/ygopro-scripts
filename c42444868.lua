@@ -24,22 +24,8 @@ function c42444868.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.CheckLPCost(tp,1000) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c42444868.cfilter,tp,LOCATION_HAND,0,1,1,nil)
-	local tc=cg:GetFirst()
 	Duel.ConfirmCards(1-tp,cg)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_PUBLIC)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_CHAIN)
-	tc:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(e:GetHandler())
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_CHAIN_SOLVED)
-	e2:SetRange(LOCATION_HAND)
-	e2:SetOperation(c42444868.clearop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_CHAIN)
-	e2:SetLabel(Duel.GetCurrentChain())
-	e2:SetLabelObject(e1)
-	tc:RegisterEffect(e2)
+	Duel.ShuffleHand(tp)
 	if not Duel.IsPlayerAffectedByEffect(tp,EFFECT_DISCARD_COST_CHANGE) then
 		Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 	end
@@ -71,9 +57,4 @@ function c42444868.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-end
-function c42444868.clearop(e,tp,eg,ep,ev,re,r,rp)
-	if ev~=e:GetLabel() then return end
-	e:GetLabelObject():Reset()
-	e:Reset()
 end
