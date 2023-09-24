@@ -83,7 +83,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 				zone=zone|s.get_zone(sc,seq)
 			end
 			local _,flag_tmp=Duel.GetLocationCount(p,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
-			flag=(~flag_tmp)&0x7f
+			local flag=(~flag_tmp)&0x7f
 			if sc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,p,flag) then
 				avail_zone=avail_zone|(flag<<(p==tp and 0 or 16))
 			end
