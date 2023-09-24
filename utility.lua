@@ -54,6 +54,16 @@ function Auxiliary.GetXyzNumber(v)
 	return Auxiliary.xyz_number[id]
 end
 
+--iterator for getting playerid of current turn player and the other player
+function Auxiliary.TurnPlayers()
+	local i=0
+	return	function()
+				i=i+1
+				if i==1 then return Duel.GetTurnPlayer() end
+				if i==2 then return 1-Duel.GetTurnPlayer() end
+			end
+end
+
 --the chain id of the results modified by EVENT_TOSS_DICE_NEGATE
 Auxiliary.idx_table=table.pack(1,2,3,4,5,6,7,8)
 
