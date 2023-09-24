@@ -92,6 +92,6 @@ function c22850702.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22850702.efilter(e,re)
-	return re:GetOwnerPlayer()~=e:GetOwnerPlayer() and re:IsActivated()
+	return re:GetHandlerPlayer()~=e:GetHandlerPlayer() and re:IsActivated()
 		and re:IsActiveType(TYPE_MONSTER)
 end
