@@ -1,4 +1,4 @@
---Gold Pride - Nytro Blaster
+--GP－Nブラスター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,59900655)

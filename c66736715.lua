@@ -1,4 +1,4 @@
---Moissa Knight, the Comet General
+--彗聖の将－ワンモア・ザ・ナイト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--pendulum summon

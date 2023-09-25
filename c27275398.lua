@@ -1,4 +1,4 @@
---Gold Pride - Pedal to the Metal!
+--GP－ペダル・トゥ・メタル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

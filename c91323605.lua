@@ -1,4 +1,4 @@
---How Did Dai Get Here?
+--奇異界開
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

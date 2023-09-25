@@ -1,4 +1,4 @@
---Gold Pride - It's Neck and Neck!
+--GP－ネック・アンド・ネック
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

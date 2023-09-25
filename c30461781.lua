@@ -10,6 +10,7 @@ function c30461781.initial_effect(c)
 	e1:SetOperation(c30461781.activate)
 	c:RegisterEffect(e1)
 end
+c30461781.has_text_type=TYPE_SPIRIT
 function c30461781.filter(c)
 	return c:IsType(TYPE_SPIRIT) and c:IsFaceup()
 end
