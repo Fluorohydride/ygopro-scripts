@@ -31,6 +31,7 @@ function c9553721.initial_effect(c)
 	e4:SetOperation(c9553721.thop)
 	c:RegisterEffect(e4)
 end
+c9553721.has_text_type=TYPE_SPIRIT
 function c9553721.cfilter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
