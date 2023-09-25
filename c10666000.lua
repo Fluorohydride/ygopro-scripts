@@ -53,9 +53,11 @@ function s.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE):Select(tp,1,1,nil)
-	if #g>0 then
-		Duel.Overlay(c,g)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE)
+	if aux.NecroValleyNegateCheck(g) then return end
+	local tg=g:Select(tp,1,1,nil)
+	if #tg>0 then
+		Duel.Overlay(c,tg)
 	end
 end
 function s.tgcon(e,tp,eg,ep,ev,re,r,rp)

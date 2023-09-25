@@ -63,7 +63,7 @@ function c10805153.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_SPELL+TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c10805153.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	return Duel.GetAttacker()==e:GetHandler()
 end
 function c10805153.rccfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x128)

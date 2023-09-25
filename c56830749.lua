@@ -19,5 +19,5 @@ function c56830749.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56830749.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectReleaseGroup(1-tp,nil,1,1,nil)
-	Duel.Release(g,REASON_RULE)
+	Duel.Release(g,REASON_RULE,1-tp)
 end

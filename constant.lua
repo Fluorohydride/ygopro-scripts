@@ -493,7 +493,7 @@ EFFECT_CHANGE_BATTLE_DAMAGE		=208    --改变此卡给予的战斗伤害、改�
 EFFECT_TOSS_COIN_REPLACE		=220	--重新抛硬币
 EFFECT_TOSS_DICE_REPLACE		=221	--重新掷骰子
 EFFECT_FUSION_MATERIAL			=230	--指定融合素材的條件
-EFFECT_CHAIN_MATERIAL			=231	--玩家受到連鎖物質的效果影響
+EFFECT_CHAIN_MATERIAL			=231	--改变融合素材选取方法（连锁素材、电子融合支援）
 EFFECT_EXTRA_SYNCHRO_MATERIAL	=232	--在手卡或对方场上也可以当作自己的同调素材
 EFFECT_XYZ_MATERIAL				=233	--在对方场上也可以当作自己的超量素材
 EFFECT_FUSION_SUBSTITUTE		=234	--代替融合素材
@@ -583,6 +583,7 @@ EFFECT_ACTIVATION_COUNT_LIMIT	=367	--reserve
 EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
 EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
 EFFECT_KAISER_COLOSSEUM         =370    --皇帝斗技场
+EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
