@@ -1,4 +1,4 @@
---Eanoc, Sentry of the Ghoti
+--ゴーティスの守人イーノック
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

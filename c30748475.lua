@@ -1,4 +1,4 @@
---Destructive Daruma Karma Cannon
+--魔砲戦機ダルマ・カルマ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

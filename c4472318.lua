@@ -1,4 +1,4 @@
---Bayerock Dragon
+--岩竜ベアロック
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

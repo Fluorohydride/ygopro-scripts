@@ -1,4 +1,4 @@
---Labyrinth Wall Shadow
+--ラビリンス・ウォール・シャドウ
 function c34771947.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	--Activate

@@ -1,4 +1,4 @@
---Snopios, Shade of the Ghoti
+--ゴーティスの陰影スノーピオス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon itself

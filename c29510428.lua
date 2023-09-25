@@ -1,4 +1,4 @@
---Imperial Princess Quinquery
+--召煌女クインクエリ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

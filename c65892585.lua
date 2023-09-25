@@ -1,4 +1,4 @@
---Gold Pride - Chariot Carrie
+--GP－チャリオット・キャリー号
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,96305350)

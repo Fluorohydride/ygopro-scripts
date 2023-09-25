@@ -1,4 +1,4 @@
---Gold Pride - Start Your Engines!
+--GP－スタート・エンジン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

@@ -1,4 +1,4 @@
---Gold Pride - That Came Out of Nowhere!
+--GP－アウト・オブ・ノーウェア
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
