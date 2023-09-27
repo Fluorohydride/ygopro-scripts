@@ -53,6 +53,7 @@ end
 function s.cfilter(c,e,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and not c:IsType(TYPE_TOKEN)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsCanBeEffectTarget(e) and c:IsFaceupEx()
+		and c:IsLevelAbove(1)
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil,e,tp,c:GetLevel())
 end
 function s.filter(c,e,tp,lv)
