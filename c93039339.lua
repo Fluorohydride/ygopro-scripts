@@ -49,7 +49,7 @@ function s.chk(e,tp,eg)
 	for p=0,1 do
 		local tc=eg:GetFirst()
 		while tc do
-			if(s.chkfilter(tc,p)) then
+			if s.chkfilter(tc,p) then
 				Duel.RegisterFlagEffect(p,id,RESET_PHASE+PHASE_END,0,1)
 			end
 			tc=eg:GetNext()	
