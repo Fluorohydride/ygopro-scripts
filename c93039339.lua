@@ -47,11 +47,15 @@ function s.chkfilter(c,tp)
 end
 function s.chk(e,tp,eg)
 	for p=0,1 do
-		if eg:IsExists(s.chkfilter,1,nil,p) then
-			Duel.RegisterFlagEffect(p,id,RESET_PHASE+PHASE_END,0,1)
-			if Duel.GetFlagEffect(p,id)>1 then
-				Duel.RegisterFlagEffect(p,id+o,RESET_PHASE+PHASE_END,0,2)
+		local tc=eg:GetFirst()
+		while tc do
+			if s.chkfilter(tc,p) then
+				Duel.RegisterFlagEffect(p,id,RESET_PHASE+PHASE_END,0,1)
 			end
+			tc=eg:GetNext()	
+		end
+		if Duel.GetFlagEffect(p,id)>1 then
+			Duel.RegisterFlagEffect(p,id+o,RESET_PHASE+PHASE_END,0,2)
 		end
 	end
 end
