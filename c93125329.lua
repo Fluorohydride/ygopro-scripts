@@ -1,4 +1,4 @@
---Golden Cloud Beast - Malong
+--金雲獣－馬龍
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

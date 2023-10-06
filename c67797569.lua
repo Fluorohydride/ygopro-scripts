@@ -45,7 +45,7 @@ function c67797569.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.BreakEffect()
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	tg=g:SelectSubGroup(tp,c67797569.tgcheck,false,2,2)
+	local tg=g:SelectSubGroup(tp,c67797569.tgcheck,false,2,2)
 	if tg then
 		if Duel.SendtoGrave(tg,REASON_EFFECT)==0 then
 			Duel.ShuffleHand(p)

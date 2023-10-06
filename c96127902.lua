@@ -1,4 +1,4 @@
---Made to Order Mermaid Outfit Outfitter
+--かなり魅湧な受注水産
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

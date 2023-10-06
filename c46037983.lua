@@ -1,4 +1,4 @@
---Paces, Light of the Ghoti
+--ゴーティスの灯ペイシス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

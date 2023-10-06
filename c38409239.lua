@@ -1,4 +1,4 @@
---Ghoti Cosmos
+--ゴーティス・コスモス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

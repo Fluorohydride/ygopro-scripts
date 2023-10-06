@@ -1,4 +1,4 @@
---Tilting Entrainment
+--振子特急エントレインメント
 function c77855162.initial_effect(c)
 	--Synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

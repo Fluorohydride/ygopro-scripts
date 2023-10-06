@@ -1,4 +1,4 @@
---Gold Pride - Star Leon
+--GP－スター・リオン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,23512906)

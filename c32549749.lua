@@ -71,13 +71,16 @@ function c32549749.activate(e,tp,eg,ep,ev,re,r,rp)
 		local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		local b1=tc:IsSSetable(true) and ft>0
 		local b2=Duel.IsExistingMatchingCard(c32549749.eqfilter,tp,LOCATION_MZONE,0,1,nil,tc,tp)
+		local op=0
 		if b1 and b2 then
 			op=Duel.SelectOption(tp,aux.Stringid(32549749,2),aux.Stringid(32549749,3))
 		elseif b1 then
 			op=Duel.SelectOption(tp,aux.Stringid(32549749,2))
 		elseif b2 then
 			op=Duel.SelectOption(tp,aux.Stringid(32549749,3))+1
-		else return end
+		else
+			return
+		end
 		if op==0 then
 			Duel.SSet(tp,tc)
 		else

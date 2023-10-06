@@ -1,4 +1,4 @@
---Shadow Ghoul of the Labyrinth
+--迷宮に潜むシャドウ・グール
 function c62411811.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

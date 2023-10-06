@@ -1,4 +1,4 @@
---Gold Pride - Leon
+--GP－リオン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon self

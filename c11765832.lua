@@ -1,4 +1,4 @@
---Garura, Wings of Resonant Life
+--共命の翼ガルーラ
 function c11765832.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c11765832.ffilter,2,true)
