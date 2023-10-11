@@ -43,9 +43,13 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmCards(tp,oc)
 	Duel.ConfirmCards(1-tp,oc)
 	local op=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
-	if sc:IsType(1<<op) then Duel.SendtoHand(sc,nil,REASON_EFFECT)
+	if sc:IsType(1<<op) then
+		Duel.DisableShuffleCheck()
+		Duel.SendtoHand(sc,nil,REASON_EFFECT)
 	else Duel.MoveSequence(sc,SEQ_DECKTOP) end
-	if oc:IsType(1<<op) then Duel.SendtoHand(oc,nil,REASON_EFFECT,1-tp)
+	if oc:IsType(1<<op) then
+		Duel.DisableShuffleCheck()
+		Duel.SendtoHand(oc,nil,REASON_EFFECT,1-tp)
 	else Duel.MoveSequence(oc,SEQ_DECKTOP) end
 end
 function s.tdcon(e,tp,eg,ep,ev,re,r,rp)
