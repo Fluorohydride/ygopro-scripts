@@ -78,7 +78,7 @@ end
 function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(s.ovfilter2,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(s.ovfilter2,tp,0,LOCATION_MZONE,c)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local tg=g:Select(tp,1,1,nil)
