@@ -39,7 +39,7 @@ function c63086455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc1=tg:Filter(Card.IsLocation,nil,LOCATION_ONFIELD):GetFirst()
+	local tc1=tg:Filter(c63086455.tgopfilter,nil,e):GetFirst()
 	local tc2=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
 	if tc1 and tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
 		and tc2 and tc2:IsRelateToEffect(e) then
@@ -49,4 +49,7 @@ function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SSet(tp,tc2,1-tp)
 		end
 	end
+end
+function c63086455.tgopfilter(c,e)
+	return  c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)
 end
