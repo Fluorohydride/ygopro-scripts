@@ -51,5 +51,5 @@ function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63086455.tgopfilter(c,e)
-	return  c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)
+	return  c:IsRelateToEffect(e) and c:IsLocation(LOCATION_ONFIELD)
 end
