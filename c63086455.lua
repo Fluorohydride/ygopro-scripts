@@ -38,11 +38,10 @@ function c63086455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local tg=Duel.GetTargetsRelateToChain()
 	local tc1=tg:Filter(Card.IsLocation,nil,LOCATION_ONFIELD):GetFirst()
 	local tc2=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
-	if tc1 and tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
-		and tc2 and tc2:IsRelateToEffect(e) then
+	if tc1 and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE) and tc2 then
 		if tc2:IsType(TYPE_MONSTER) then
 			Duel.SpecialSummon(tc2,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 		else
