@@ -24,14 +24,14 @@ function c63144961.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c63144961.filter(chkc) end
 	local b1=Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c63144961.eqfilter,tp,0,LOCATION_MZONE,1,nil)
-	local b2=aux.bpcon()
+	local b2=aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingTarget(c63144961.dafilter,tp,LOCATION_MZONE,0,1,nil)
-	local b3=aux.bpcon()
+	local b3=aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 	if chk==0 then return (b1 or b2 or b3)
 		and Duel.IsExistingTarget(c63144961.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c63144961.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	b2=aux.bpcon() and not g:GetFirst():IsHasEffect(EFFECT_DIRECT_ATTACK)
+	b2=aux.bpcon(e,tp,eg,ep,ev,re,r,rp) and not g:GetFirst():IsHasEffect(EFFECT_DIRECT_ATTACK)
 	local off=1
 	local ops={}
 	local opval={}
