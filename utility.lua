@@ -938,7 +938,7 @@ Auxiliary.SubGroupCaptured=nil
 Auxiliary.GCheckAdditional=nil
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c) then
 		sg:RemoveCard(c)
 		return false
 	end
@@ -949,7 +949,7 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 end
 function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c) then
 		sg:RemoveCard(c)
 		return false
 	end
@@ -970,8 +970,8 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local ext_params={...}
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min then return false end
-	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return false end
-	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return true end
+	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil)) then return false end
+	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil)) then return true end
 	local eg=g:Clone()
 	for c in aux.Next(g-sg) do
 		if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
@@ -1039,7 +1039,7 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 		return false
 	end
 	sg:AddCard(c)
-	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c) then
 		sg:RemoveCard(c)
 		return false
 	end
