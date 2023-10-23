@@ -109,7 +109,7 @@ function c10497636.disop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10497636.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,10497636)>0
-		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and aux.dscon()
+		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10497636.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x15f)
