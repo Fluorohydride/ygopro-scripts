@@ -1,3 +1,11 @@
+--Fusion check functions
+Auxiliary.FCheckAdditional=nil
+Auxiliary.FGoalCheckAdditional=nil
+
+--Ritual check functions
+Auxiliary.RCheckAdditional=nil
+Auxiliary.RGCheckAdditional=nil
+
 --Gemini Summon
 function Auxiliary.IsDualState(effect)
 	local c=effect:GetHandler()
@@ -907,8 +915,6 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 	end
 end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
-Auxiliary.FCheckAdditional=nil
-Auxiliary.FGoalCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 	local chkf=chkfnf&0xff
 	local concat_fusion=chkfnf&0x200>0
@@ -1351,7 +1357,6 @@ end
 function Auxiliary.RitualCheckEqual(g,c,lv)
 	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c)
 end
-Auxiliary.RCheckAdditional=nil
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
@@ -1366,7 +1371,6 @@ function Auxiliary.RitualCheckAdditionalLevel(c,rc)
 		return lv1
 	end
 end
-Auxiliary.RGCheckAdditional=nil
 function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 	if greater_or_equal=="Equal" then
 		return	function(g)

@@ -45,6 +45,9 @@ function bit.replace(r,v,field,width)
 	return (r&~(m<<f))|((v&m)<< f)
 end
 
+--Group check functions
+Auxiliary.GCheckAdditional=nil
+
 --the table of xyz number
 Auxiliary.xyz_number={}
 function Auxiliary.GetXyzNumber(v)
@@ -934,7 +937,6 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	return multi_linked_zone
 end
 Auxiliary.SubGroupCaptured=nil
-Auxiliary.GCheckAdditional=nil
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
 	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
