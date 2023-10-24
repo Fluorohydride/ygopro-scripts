@@ -963,8 +963,8 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 	return res
 end
 function Group.CheckSubGroup(g,f,min,max,...)
-	local min=min or 1
-	local max=max or #g
+	min=min or 1
+	max=max or #g
 	if min>max then return false end
 	local ext_params={...}
 	local sg=Duel.GrabSelectedCard()
@@ -980,8 +980,8 @@ function Group.CheckSubGroup(g,f,min,max,...)
 end
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
-	local min=min or 1
-	local max=max or #g
+	min=min or 1
+	max=max or #g
 	local ext_params={...}
 	local sg=Group.CreateGroup()
 	local fg=Duel.GrabSelectedCard()
