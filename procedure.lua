@@ -1058,10 +1058,10 @@ function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,min
 	for i,f in ipairs({...}) do
 		if f(c,fc,sub,mg,sg) then
 			g:AddCard(c)
-			local sub=sub and f(c,fc,false,mg,sg)
+			local subf=sub and f(c,fc,false,mg,sg)
 			local t={...}
 			table.remove(t,i)
-			local res=cond(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,table.unpack(t))
+			local res=cond(tp,mg,sg,g,fc,subf,chkfnf,fun1,minc,maxc,table.unpack(t))
 			g:RemoveCard(c)
 			if res then return true end
 		end
@@ -1069,8 +1069,8 @@ function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,min
 	if maxc>0 then
 		if fun1(c,fc,sub,mg,sg) then
 			g:AddCard(c)
-			local sub=sub and fun1(c,fc,false,mg,sg)
-			local res=cond(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc-1,maxc-1,...)
+			local subf1=sub and fun1(c,fc,false,mg,sg)
+			local res=cond(tp,mg,sg,g,fc,subf1,chkfnf,fun1,minc-1,maxc-1,...)
 			g:RemoveCard(c)
 			if res then return true end
 		end
@@ -1101,15 +1101,15 @@ function Auxiliary.FCheckSelectMixRepAll(c,tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc
 	if fun2 then
 		if fun2(c,fc,sub,mg,sg) then
 			g:AddCard(c)
-			local sub=sub and fun2(c,fc,false,mg,sg)
-			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,...)
+			local subf2=sub and fun2(c,fc,false,mg,sg)
+			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf2,chkf,fun1,minc,maxc,...)
 			g:RemoveCard(c)
 			return res
 		end
 	elseif maxc>0 and fun1(c,fc,sub,mg,sg) then
 		g:AddCard(c)
-		local sub=sub and fun1(c,fc,false,mg,sg)
-		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc-1,maxc-1)
+		local subf1=sub and fun1(c,fc,false,mg,sg)
+		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf1,chkf,fun1,minc-1,maxc-1)
 		g:RemoveCard(c)
 		return res
 	end
@@ -1292,8 +1292,8 @@ end
 
 --Contact Fusion
 function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_location,mat_operation,...)
-	local self_location=self_location or 0
-	local opponent_location=opponent_location or 0
+	self_location=self_location or 0
+	opponent_location=opponent_location or 0
 	local operation_params={...}
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
