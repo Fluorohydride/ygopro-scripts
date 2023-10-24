@@ -21,7 +21,7 @@ function Auxiliary.EnableDualAttribute(c)
 	e2:SetCode(EFFECT_ADD_TYPE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e2:SetCondition(aux.DualNormalCondition)
+	e2:SetCondition(Auxiliary.DualNormalCondition)
 	e2:SetValue(TYPE_NORMAL)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -325,7 +325,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	local hct=hg:GetCount()
 	if hct>0 and not mgchk then
 		local found=false
-		for c in aux.Next(g) do
+		for c in Auxiliary.Next(g) do
 			local he,hf,hmin,hmax=c:GetHandSynchro()
 			if he then
 				found=true
@@ -335,7 +335,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 		end
 		if not found then return false end
 	end
-	for c in aux.Next(g) do
+	for c in Auxiliary.Next(g) do
 		local le,lf,lloc,lmin,lmax=c:GetTunerLimit()
 		if le then
 			local lct=g:GetCount()-1
@@ -1270,7 +1270,7 @@ function Auxiliary.FShaddollOperation(attr)
 					mg:Sub(g)
 				end
 				if exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),attr,chkf)
-					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
+					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,Auxiliary.Stringid(81788994,0)))) then
 					fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 					local sg=exg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),attr,chkf)
@@ -1643,7 +1643,7 @@ function Auxiliary.PendOperation()
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
-				local g=tg:SelectSubGroup(tp,aux.TRUE,true,1,math.min(#tg,ft))
+				local g=tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
 				Auxiliary.GCheckAdditional=nil
 				if not g then return end
 				if ce then
@@ -1737,7 +1737,7 @@ function Auxiliary.LCheckOtherMaterial(c,mg,lc,tp)
 	return res1 or res2
 end
 function Auxiliary.LUncompatibilityFilter(c,sg,lc,tp)
-	local mg=sg:Filter(aux.TRUE,c)
+	local mg=sg:Filter(Auxiliary.TRUE,c)
 	return not Auxiliary.LCheckOtherMaterial(c,mg,lc,tp)
 end
 function Auxiliary.LCheckGoal(sg,tp,lc,gf,lmat)
@@ -1747,10 +1747,10 @@ function Auxiliary.LCheckGoal(sg,tp,lc,gf,lmat)
 		and (not lmat or sg:IsContains(lmat))
 end
 function Auxiliary.LExtraMaterialCount(mg,lc,tp)
-	for tc in aux.Next(mg) do
+	for tc in Auxiliary.Next(mg) do
 		local le={tc:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
 		for _,te in pairs(le) do
-			local sg=mg:Filter(aux.TRUE,tc)
+			local sg=mg:Filter(Auxiliary.TRUE,tc)
 			local f=te:GetValue()
 			local related,valid=f(te,lc,sg,tc,tp)
 			if related and valid then
