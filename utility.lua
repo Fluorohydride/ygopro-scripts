@@ -964,6 +964,13 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 	sg:RemoveCard(c)
 	return res
 end
+---
+---@param g Group
+---@param f function
+---@param min? integer
+---@param max? integer
+---@param ... unknown
+---@return boolean
 function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
 	max=max or #g
@@ -980,6 +987,15 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	end
 	return false
 end
+---
+---@param g Group
+---@param tp integer
+---@param f function
+---@param cancelable boolean
+---@param min? integer
+---@param max? integer
+---@param ... unknown
+---@return Group|nil
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
@@ -1053,6 +1069,12 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	sg:RemoveCard(c)
 	return res
 end
+---
+---@param g Group
+---@param checks table
+---@param f? function
+---@param ... unknown
+---@return boolean
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
 	if #g<#checks then return false end
@@ -1060,6 +1082,14 @@ function Group.CheckSubGroupEach(g,checks,f,...)
 	local sg=Group.CreateGroup()
 	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 end
+---
+---@param g Group
+---@param tp integer
+---@param checks table
+---@param cancelable? boolean
+---@param f? function
+---@param ... unknown
+---@return Group|nil
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
