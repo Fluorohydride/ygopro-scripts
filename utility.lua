@@ -1335,6 +1335,6 @@ end
 function Auxiliary.EPDestroyOperation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if Auxiliary.GetValueType(tc)=="Card" or Auxiliary.GetValueType(tc)=="Group" then
-		Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE,tc:GetControler())
+		Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE)
 	end
 end
