@@ -809,21 +809,21 @@ end
 --Fusion Summon
 --material: names in material list
 --Fusion monster, mixed materials
-function Auxiliary.AddFusionProcMix(c,sub,insf,...)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
+	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={...}
 	local fun={}
 	local mat={}
 	for i=1,#val do
 		if type(val[i])=='function' then
-			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
+			fun[i]=function(c,fc,subm,mg,sg) return val[i](c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) end
 		elseif type(val[i])=='table' then
-			fun[i]=function(c,fc,sub,mg,sg)
+			fun[i]=function(c,fc,subm,mg,sg)
 					for _,fcode in ipairs(val[i]) do
 						if type(fcode)=='function' then
-							if fcode(c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) then return true end
+							if fcode(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) then return true end
 						else
-							if c:IsFusionCode(fcode) or (sub and c:CheckFusionSubstitute(fc)) then return true end
+							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
 						end
 					end
 					return false
@@ -832,11 +832,11 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 				if type(fcode)~='function' then mat[fcode]=true end
 			end
 		else
-			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
+			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
 			mat[val[i]]=true
 		end
 	end
-	local mt=getmetatable(c)
+	local mt=getmetatable(fcard)
 	if mt.material==nil then
 		mt.material=mat
 	end
@@ -844,15 +844,15 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		mt.material_count={#fun,#fun}
 	end
 	for index,_ in pairs(mat) do
-		Auxiliary.AddCodeList(c,index)
+		Auxiliary.AddCodeList(fcard,index)
 	end
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(fcard)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_FUSION_MATERIAL)
 	e1:SetCondition(Auxiliary.FConditionMix(insf,sub,table.unpack(fun)))
 	e1:SetOperation(Auxiliary.FOperationMix(insf,sub,table.unpack(fun)))
-	c:RegisterEffect(e1)
+	fcard:RegisterEffect(e1)
 end
 function Auxiliary.FConditionMix(insf,sub,...)
 	--g:Material group(nil for Instant Fusion)
@@ -880,7 +880,6 @@ function Auxiliary.FOperationMix(insf,sub,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local c=e:GetHandler()
-				local tp=c:GetControler()
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub2=(sub or notfusion) and not concat_fusion
