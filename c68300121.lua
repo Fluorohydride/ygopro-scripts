@@ -70,6 +70,6 @@ end
 function c68300121.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() then
-		Duel.SendtoGrave(tc,REASON_RULE)
+		Duel.SendtoGrave(tc,REASON_RULE,1-tp)
 	end
 end

@@ -29,7 +29,7 @@ function c35960413.filter(c)
 	return c:IsFaceup() and c:IsDefense(600)
 end
 function c35960413.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroupCount(c35960413.filter,tp,LOCATION_MZONE,0,1,nil)
+	local ct=Duel.GetMatchingGroupCount(c35960413.filter,tp,LOCATION_MZONE,0,nil)
 	return ct>0 and ct==Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
 end
 function c35960413.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

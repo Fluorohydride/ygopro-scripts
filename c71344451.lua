@@ -39,9 +39,11 @@ function c71344451.activate(e,tp,eg,ep,ev,re,r,rp)
 					Duel.Destroy(sg,REASON_EFFECT)
 					local tg=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 					if tg:GetCount()>0 then
-						Duel.BreakEffect()
 						local dam=tg:GetCount()*2000
-						Duel.Damage(1-tp,dam,REASON_EFFECT)
+						if dam>0 then
+							Duel.BreakEffect()
+							Duel.Damage(1-tp,dam,REASON_EFFECT)
+						end
 					end
 				end
 			else

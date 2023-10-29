@@ -29,21 +29,13 @@ function c84257883.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 	--remove counter
-	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(84257883,1))
-	e5:SetCategory(CATEGORY_DESTROY)
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e5:SetCode(EVENT_DAMAGE_STEP_END)
-	e5:SetCondition(aux.dsercon)
-	e5:SetTarget(c84257883.rcttg)
-	e5:SetOperation(c84257883.rctop)
-	c:RegisterEffect(e5)
+	aux.EnableBESRemove(c)
 end
 function c84257883.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0,nil)<Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE,nil)
+		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)<Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
 end
 function c84257883.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -52,21 +44,5 @@ end
 function c84257883.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		e:GetHandler():AddCounter(0x1f,3)
-	end
-end
-function c84257883.rcttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
-		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
-	end
-end
-function c84257883.rctop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
-			c:RemoveCounter(tp,0x1f,1,REASON_EFFECT)
-		else
-			Duel.Destroy(c,REASON_EFFECT)
-		end
 	end
 end

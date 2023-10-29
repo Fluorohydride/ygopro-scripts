@@ -42,10 +42,10 @@ end
 function c69537999.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c69537999.disfilter,tp,LOCATION_HAND,0,1,1,nil)
-	if g:GetCount()>0 then
-		Duel.SendtoGrave(g,REASON_EFFECT)
+	local gc=g:GetFirst()
+	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and gc:IsLocation(LOCATION_GRAVE) then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end

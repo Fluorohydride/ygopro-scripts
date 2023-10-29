@@ -1,5 +1,6 @@
 --覇王龍の魂
 function c92428405.initial_effect(c)
+	aux.AddCodeList(c,13331639)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(92428405,0))

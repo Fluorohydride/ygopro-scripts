@@ -51,7 +51,7 @@ function c31600845.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c31600845.dhcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==1-tp and aux.dscon()
+	return Duel.GetTurnPlayer()==1-tp and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c31600845.xfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:GetAttack()>0

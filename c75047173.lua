@@ -9,6 +9,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
+	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(s.fstg)
 	e1:SetOperation(s.fsop)
 	c:RegisterEffect(e1)
@@ -61,11 +62,17 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		if ng:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetDescription(aux.Stringid(id,1))
-			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
-			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetType(EFFECT_TYPE_FIELD)
+			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EFFECT_CANNOT_TO_DECK)
+			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CLIENT_HINT)
+			e1:SetTargetRange(1,1)
+			e1:SetTarget(s.tdlimit)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e1)
+			tc:RegisterEffect(e1,true)
 		end
 	end
+end
+function s.tdlimit(e,c)
+	return c==e:GetHandler()
 end

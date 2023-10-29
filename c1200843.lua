@@ -30,6 +30,7 @@ function c1200843.initial_effect(c)
 	e4:SetValue(c1200843.desval)
 	c:RegisterEffect(e4)
 end
+c1200843.has_text_type=TYPE_SPIRIT
 function c1200843.eqlimit(e,c)
 	return c:IsType(TYPE_SPIRIT)
 end

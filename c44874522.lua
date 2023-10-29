@@ -76,7 +76,7 @@ function c44874522.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.condition(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and Duel.GetAttacker()==e:GetHandler()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

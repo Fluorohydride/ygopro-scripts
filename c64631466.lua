@@ -61,6 +61,10 @@ function c64631466.eqlimit(e,c)
 	return e:GetOwner()==c
 end
 function c64631466.equip_monster(c,tp,tc)
+	if c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and not c64631466.can_equip_monster(c) then
+		Duel.SendtoGrave(tc,REASON_RULE)
+		return
+	end
 	if not Duel.Equip(tp,tc,c,false) then return end
 	--Add Equip limit
 	tc:RegisterFlagEffect(64631466,RESET_EVENT+RESETS_STANDARD,0,0)

@@ -49,7 +49,8 @@ function c96239878.valcheck(e,c)
 	local g=c:GetMaterial()
 	if g:IsExists(c96239878.mtfilter1,1,nil) then
 		c:RegisterFlagEffect(96239878,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
-	elseif g:IsExists(c96239878.mtfilter2,1,nil) then
+	end
+	if g:IsExists(c96239878.mtfilter2,1,nil) then
 		c:RegisterFlagEffect(96239879,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end

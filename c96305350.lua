@@ -1,4 +1,4 @@
---Gold Pride - Captain Carrie
+--GP－キャプテン・キャリー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

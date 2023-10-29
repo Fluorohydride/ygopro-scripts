@@ -40,7 +40,7 @@ function c43316238.spop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local spg=Duel.GetMatchingGroup(c43316238.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 		if spg:GetCount()<=0 then return end
-		local sg=spg:GetFirst()
+		local sg=spg
 		if spg:GetCount()~=1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			sg=spg:Select(tp,1,1,nil)

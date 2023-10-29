@@ -41,15 +41,18 @@ function c55623480.posop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	end
 end
+function c55623480.mainfilter(c)
+	return c:IsLocation(LOCATION_MZONE) and c:GetSequence()<=4
+end
 function c55623480.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
 	local sg=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,e:GetHandler())
-	if chk==0 then return sg:GetCount()>=7 and (ft>0 or sg:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE)) end
+	if chk==0 then return sg:GetCount()>=7 and (ft>0 or sg:IsExists(c55623480.mainfilter,ct,nil)) end
 	local g=nil
 	if ft<=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		g=sg:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
+		g=sg:FilterSelect(tp,c55623480.mainfilter,ct,ct,nil)
 		if ct<7 then
 			sg:Sub(g)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

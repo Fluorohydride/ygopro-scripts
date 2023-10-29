@@ -60,7 +60,7 @@ function s.spfilter(c,e,tp,tc)
 	end
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and s.cfilter(chkc,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.cfilter(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(s.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,s.cfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
@@ -83,7 +83,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 				zone=zone|s.get_zone(sc,seq)
 			end
 			local _,flag_tmp=Duel.GetLocationCount(p,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
-			flag=(~flag_tmp)&0x7f
+			local flag=(~flag_tmp)&0x7f
 			if sc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,p,flag) then
 				avail_zone=avail_zone|(flag<<(p==tp and 0 or 16))
 			end

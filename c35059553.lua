@@ -23,6 +23,14 @@ function c35059553.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetValue(c35059553.sumlimit)
 	c:RegisterEffect(e3)
+	--kaiser colosseum
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetRange(LOCATION_SZONE)
+	e4:SetCode(EFFECT_KAISER_COLOSSEUM)
+	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e4:SetTargetRange(0,1)
+	c:RegisterEffect(e4)
 end
 function c35059553.value(e,fp,rp,r)
 	if rp==e:GetHandlerPlayer() or r~=LOCATION_REASON_TOFIELD then return 7 end

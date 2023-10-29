@@ -24,6 +24,7 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
+	local op=0
 	if t1 and t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))
 	elseif t1 then
@@ -31,7 +32,9 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	elseif t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,3))
 		if op==1 then op=2 end
-	else op=Duel.SelectOption(tp,aux.Stringid(93130021,1)) end
+	else
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1))
+	end
 	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(CATEGORY_DESTROY)

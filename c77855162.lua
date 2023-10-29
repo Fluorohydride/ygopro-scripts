@@ -1,4 +1,4 @@
---Tilting Entrainment
+--振子特急エントレインメント
 function c77855162.initial_effect(c)
 	--Synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -56,7 +56,7 @@ function c77855162.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	e:SetLabelObject(bc)
-	return aux.dsercon(e) and bc and bc:IsRelateToBattle() and bc:IsOnField()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and bc and bc:IsRelateToBattle() and bc:IsOnField()
 		and c:IsStatus(STATUS_OPPO_BATTLE)
 end
 function c77855162.descon2(e,tp,eg,ep,ev,re,r,rp)

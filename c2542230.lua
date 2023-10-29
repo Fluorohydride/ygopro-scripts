@@ -1,5 +1,6 @@
 --スカーレッド・コクーン
 function c2542230.initial_effect(c)
+	aux.AddCodeList(c,70902743)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)

@@ -89,7 +89,7 @@ function c57135971.eqlimit(e,c)
 	return c:IsSetCard(0x3b)
 end
 function c57135971.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget() and aux.dscon()
+	return e:GetHandler():GetEquipTarget() and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c57135971.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

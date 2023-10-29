@@ -58,7 +58,7 @@ function c77202120.splimit(e,c)
 	return not c:IsType(TYPE_SYNCHRO) and c:IsLocation(LOCATION_EXTRA)
 end
 function c77202120.cfilter(c,tp,se)
-	return c:IsControler(tp) and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
+	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 		and (se==nil or c:GetReasonEffect()~=se)
 end
@@ -67,7 +67,7 @@ function c77202120.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c77202120.cfilter,1,nil,tp,se)
 end
 function c77202120.spfilter(c,e,tp)
-	return c:IsControler(tp) and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
+	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

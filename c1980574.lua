@@ -23,7 +23,7 @@ function c1980574.synfilter(c,tp,mc)
 	local mg=Group.FromCards(c,mc)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,nil,mg)
 end
-function c1980574.syntg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c1980574.syntg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c1980574.synfilter(chkc,tp,c) end
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)

@@ -23,7 +23,7 @@ end
 function c51227866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c51227866.filter(c,e,tp,spchk) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c51227866.filter(chkc,e,tp,spchk) end
 	if chk==0 then return Duel.IsExistingTarget(c51227866.filter,tp,0,LOCATION_GRAVE,1,nil,e,tp,spchk) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c51227866.filter,tp,0,LOCATION_GRAVE,1,1,nil,e,tp,spchk)

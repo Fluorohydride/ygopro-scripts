@@ -31,6 +31,7 @@ function c33970665.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:Select(1-tp,1,1,nil):GetFirst()
 	local s1=ft1>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 	local s2=ft2>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
+	local op=0
 	if s1 and s2 then op=Duel.SelectOption(tp,aux.Stringid(33970665,0),aux.Stringid(33970665,1))
 	elseif s1 then op=Duel.SelectOption(tp,aux.Stringid(33970665,0))
 	elseif s2 then op=Duel.SelectOption(tp,aux.Stringid(33970665,1))+1

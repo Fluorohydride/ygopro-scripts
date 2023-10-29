@@ -1,4 +1,4 @@
---Prey of the Jirai Gumo
+--地雷蜘蛛の餌食
 function c33055499.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	--Activate

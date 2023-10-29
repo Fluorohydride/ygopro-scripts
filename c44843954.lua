@@ -38,7 +38,8 @@ function c44843954.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(aux.AND(Card.IsFaceup,Card.IsCode),tp,LOCATION_EXTRA,0,1,nil,70155677) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_CARD,0,70155677)
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local c=e:GetHandler()
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_SUMMON_SUCCESS)
 		e1:SetCondition(c44843954.sumcon)
@@ -48,6 +49,11 @@ function c44843954.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e2=e1:Clone()
 		e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 		Duel.RegisterEffect(e2,tp)
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e3:SetCode(EVENT_CHAIN_END)
+		e3:SetOperation(c44843954.limop2)
+		Duel.RegisterEffect(e3,tp)
 	end
 end
 function c44843954.sumfilter(c)
@@ -57,9 +63,32 @@ function c44843954.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c44843954.sumfilter,1,nil)
 end
 function c44843954.sumsuc(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetChainLimitTillChainEnd(c44843954.efun)
+	if Duel.GetCurrentChain()==0 then
+		Duel.SetChainLimitTillChainEnd(c44843954.chainlm)
+	elseif Duel.GetCurrentChain()==1 then
+		Duel.RegisterFlagEffect(tp,44843954,RESET_PHASE+PHASE_END,0,1)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAINING)
+		e1:SetOperation(c44843954.resetop)
+		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetReset(RESET_CHAIN)
+		Duel.RegisterEffect(e2,tp)
+	end
 end
-function c44843954.efun(e,ep,tp)
+function c44843954.resetop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.ResetFlagEffect(tp,44843954)
+	e:Reset()
+end
+function c44843954.limop2(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,44843954)>0 then
+		Duel.SetChainLimitTillChainEnd(c44843954.chainlm)
+	end
+	Duel.ResetFlagEffect(tp,44843954)
+end
+function c44843954.chainlm(e,ep,tp)
 	return ep==tp
 end
 function c44843954.mvcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -74,7 +103,7 @@ function c44843954.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c44843954.mvfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c44843954.mvfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c44843954.mvfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c44843954.mvfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
 end
 function c44843954.mvop(e,tp,eg,ep,ev,re,r,rp)

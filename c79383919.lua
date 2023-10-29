@@ -23,7 +23,8 @@ function c79383919.filter(c)
 end
 function c79383919.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if Duel.IsExistingMatchingCard(c79383919.filter,tp,LOCATION_SZONE,0,1,nil) then
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.IsExistingMatchingCard(c79383919.filter,tp,LOCATION_SZONE,0,1,nil) then
 		e:SetProperty(EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
 	else
 		e:SetProperty(0)

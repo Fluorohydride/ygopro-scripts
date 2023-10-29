@@ -1,4 +1,4 @@
---Orphebull the Harmonious Bullfighter Bard
+--渾然たる闘牛詩－オルフェブル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

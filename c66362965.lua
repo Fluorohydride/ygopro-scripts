@@ -12,5 +12,5 @@ end
 function c66362965.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-		and Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE,nil)-Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0,nil)>=2
+		and Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)-Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0)>=2
 end

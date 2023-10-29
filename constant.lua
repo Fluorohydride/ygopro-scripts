@@ -6,8 +6,8 @@ MAX_PARAMETER	=0xffff
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
-LOCATION_MZONE		=0x04		--怪兽区
-LOCATION_SZONE		=0x08		--魔陷区(0~4)+场地区(5)
+LOCATION_MZONE		=0x04		--主要怪兽区(0-4)+额外怪兽区(5-6)
+LOCATION_SZONE		=0x08		--魔陷区(0-4)+场地区(5)
 LOCATION_GRAVE		=0x10		--墓地
 LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
@@ -73,7 +73,7 @@ ATTRIBUTE_LIGHT		=0x10		--光
 ATTRIBUTE_DARK		=0x20		--暗
 ATTRIBUTE_DIVINE	=0x40		--神
 --Races 种族
-RACE_ALL			=0x1ffffff	--全种族
+RACE_ALL			=0x3ffffff	--全种族
 RACE_WARRIOR		=0x1		--战士
 RACE_SPELLCASTER	=0x2		--魔法师
 RACE_FAIRY			=0x4		--天使
@@ -99,6 +99,7 @@ RACE_DIVINE			=0x200000	--幻神兽
 RACE_CREATORGOD		=0x400000	--创造神
 RACE_WYRM			=0x800000	--幻龙
 RACE_CYBERSE		=0x1000000	--电子界
+RACE_ILLUSION		=0x2000000	--幻想魔
 --Reason 卡片到当前位置的原因
 REASON_DESTROY		=0x1		--破坏
 REASON_RELEASE		=0x2		--解放
@@ -166,7 +167,7 @@ STATUS_FORM_CHANGED			=0x0100		--改变过表示形式
 STATUS_SUMMONING			=0x0200		--召唤中
 STATUS_EFFECT_ENABLED		=0x0400		--卡片準備就緒(不在移動、召喚、魔法陷阱發動中)
 STATUS_SUMMON_TURN			=0x0800		--在本回合召喚/SET
-STATUS_DESTROY_CONFIRMED	=0x1000		--破坏确定
+STATUS_DESTROY_CONFIRMED	=0x1000		--预定被破坏
 STATUS_LEAVE_CONFIRMED		=0x2000		--連鎖處理完後送去墓地的魔法陷阱
 STATUS_BATTLE_DESTROYED		=0x4000		--战斗破坏确定後尚未移動
 STATUS_COPYING_EFFECT		=0x8000		--复制效果
@@ -492,7 +493,7 @@ EFFECT_CHANGE_BATTLE_DAMAGE		=208    --改变此卡给予的战斗伤害、改�
 EFFECT_TOSS_COIN_REPLACE		=220	--重新抛硬币
 EFFECT_TOSS_DICE_REPLACE		=221	--重新掷骰子
 EFFECT_FUSION_MATERIAL			=230	--指定融合素材的條件
-EFFECT_CHAIN_MATERIAL			=231	--玩家受到連鎖物質的效果影響
+EFFECT_CHAIN_MATERIAL			=231	--改变融合素材选取方法（连锁素材、电子融合支援）
 EFFECT_EXTRA_SYNCHRO_MATERIAL	=232	--在手卡或对方场上也可以当作自己的同调素材
 EFFECT_XYZ_MATERIAL				=233	--在对方场上也可以当作自己的超量素材
 EFFECT_FUSION_SUBSTITUTE		=234	--代替融合素材
@@ -581,6 +582,9 @@ EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变�
 EFFECT_ACTIVATION_COUNT_LIMIT	=367	--reserve
 EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
 EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
+EFFECT_KAISER_COLOSSEUM         =370    --皇帝斗技场
+EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
+EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A
@@ -658,6 +662,7 @@ EVENT_PHASE_START				=0x2000	--阶段开始时
 EVENT_ADD_COUNTER				=0x10000	--增加指示物时
 EVENT_REMOVE_COUNTER			=0x20000	--去除指示物时(A指示物)，Card.RemoveCounter()必須手動觸發此事件
 EVENT_CUSTOM					=0x10000000	--自訂事件
+
 --Category	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
 CATEGORY_DESTROY			=0x1		--破坏效果
 CATEGORY_RELEASE			=0x2    	--解放效果
@@ -833,6 +838,7 @@ GLOBALFLAG_TUNE_MAGICIAN		=0x400		--超量素材检查标记（调弦之魔术�
 --count_code
 EFFECT_COUNT_CODE_OATH			=0x10000000 --发动次数限制(誓约次数, 发动被无效不计数)
 EFFECT_COUNT_CODE_DUEL			=0x20000000 --决斗中使用次数
+EFFECT_COUNT_CODE_CHAIN			=0x40000000 --同一连锁中使用次数
 EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 --特殊选项
 DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)

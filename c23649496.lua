@@ -11,6 +11,7 @@ function c23649496.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCost(c23649496.cost)
 	e1:SetTarget(c23649496.target)
 	e1:SetOperation(c23649496.operation)
@@ -29,9 +30,8 @@ end
 aux.xyz_number[23649496]=18
 function c23649496.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) and c:GetFlagEffect(23649496)==0 end
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	c:RemoveOverlayCard(tp,1,1,REASON_COST)
-	c:RegisterFlagEffect(23649496,RESET_CHAIN,0,1)
 end
 function c23649496.cfilter(c)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c23649496.filter,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetCode())

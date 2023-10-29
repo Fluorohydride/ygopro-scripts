@@ -41,7 +41,7 @@ function c50482813.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,ct)
 	if #g>0 then
 		Duel.DisableShuffleCheck()
-		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
 		if sc:IsAbleToHand() then
 			Duel.SendtoHand(sc,nil,REASON_EFFECT)
