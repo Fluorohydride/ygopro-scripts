@@ -809,7 +809,7 @@ end
 --Fusion Summon
 --material: names in material list
 
---Fusion monster, mixed materials
+--Fusion monster, mixed materials (fixed count)
 function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={...}
@@ -925,6 +925,7 @@ function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
 		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
 end
+
 --Fusion monster, mixed material * minc to maxc + material + ...
 function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
@@ -933,12 +934,12 @@ function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
 	local mat={}
 	for i=1,#val do
 		if type(val[i])=='function' then
-			fun[i]=function(c,fc,subm,mg,sg) return val[i](c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) end
+			fun[i]=function(c,fc,subm) return val[i](c,fc,subm) and not c:IsHasEffect(6205579) end
 		elseif type(val[i])=='table' then
-			fun[i]=function(c,fc,subm,mg,sg)
+			fun[i]=function(c,fc,subm)
 					for _,fcode in ipairs(val[i]) do
 						if type(fcode)=='function' then
-							if fcode(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) then return true end
+							if fcode(c,fc,subm) and not c:IsHasEffect(6205579) then return true end
 						else
 							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
 						end
@@ -1056,9 +1057,9 @@ function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkfnf,fun1,minc,maxc,...)
 end
 function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
 	for i,f in ipairs({...}) do
-		if f(c,fc,sub,mg,sg) then
+		if f(c,fc,sub) then
 			g:AddCard(c)
-			local subf=sub and f(c,fc,false,mg,sg)
+			local subf=sub and f(c,fc,false)
 			local t={...}
 			table.remove(t,i)
 			local res=cond(tp,mg,sg,g,fc,subf,chkfnf,fun1,minc,maxc,table.unpack(t))
@@ -1067,9 +1068,9 @@ function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,min
 		end
 	end
 	if maxc>0 then
-		if fun1(c,fc,sub,mg,sg) then
+		if fun1(c,fc,sub) then
 			g:AddCard(c)
-			local subf1=sub and fun1(c,fc,false,mg,sg)
+			local subf1=sub and fun1(c,fc,false)
 			local res=cond(tp,mg,sg,g,fc,subf1,chkfnf,fun1,minc-1,maxc-1,...)
 			g:RemoveCard(c)
 			if res then return true end
@@ -1099,16 +1100,16 @@ function Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,..
 end
 function Auxiliary.FCheckSelectMixRepAll(c,tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
 	if fun2 then
-		if fun2(c,fc,sub,mg,sg) then
+		if fun2(c,fc,sub) then
 			g:AddCard(c)
-			local subf2=sub and fun2(c,fc,false,mg,sg)
+			local subf2=sub and fun2(c,fc,false)
 			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf2,chkf,fun1,minc,maxc,...)
 			g:RemoveCard(c)
 			return res
 		end
-	elseif maxc>0 and fun1(c,fc,sub,mg,sg) then
+	elseif maxc>0 and fun1(c,fc,sub) then
 		g:AddCard(c)
-		local subf1=sub and fun1(c,fc,false,mg,sg)
+		local subf1=sub and fun1(c,fc,false)
 		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf1,chkf,fun1,minc-1,maxc-1)
 		g:RemoveCard(c)
 		return res
