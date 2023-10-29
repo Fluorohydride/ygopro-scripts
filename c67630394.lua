@@ -85,10 +85,6 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(tg)
 		local tc=tg:GetFirst()
 		if not tc:IsImmuneToEffect(e) then
-			local og=tc:GetOverlayGroup()
-			if og:GetCount()>0 then
-				Duel.SendtoGrave(og,REASON_RULE)
-			end
 			Duel.Overlay(c,tg)
 		end
 	end
