@@ -36,26 +36,35 @@ function c21915012.initial_effect(c)
 	e3:SetTarget(c21915012.thtg)
 	e3:SetOperation(c21915012.thop)
 	c:RegisterEffect(e3)
+	aux.CreateMaterialReasonCardRelation(c,e3)
 end
 function c21915012.matfilter(c)
 	return c:IsType(TYPE_TUNER)
 end
 function c21915012.valcheck(e,c)
 	local g=c:GetMaterial()
-	local mg=g:Filter(Card.IsType,nil,TYPE_TUNER)
-	if #mg==1 then
-		local tc=mg:GetFirst()
-		local lv=tc:GetSynchroLevel(c)
-		local lv2=lv>>16
-		lv=lv&0xffff
-		if lv2>0 and not g:CheckWithSumEqual(Card.GetLevel,c:GetLevel(),#g,#g,c) then
-			lv=lv2
-		end
-		if tc:IsHasEffect(89818984) and not g:CheckWithSumEqual(Card.GetSynchroLevel,c:GetLevel(),#g,#g,c) then
-			lv=2
-		end
-		e:GetLabelObject():SetLabel(lv)
+	local mg=g:Filter(Card.IsTuner,nil,c)
+	local tc=mg:GetFirst()
+	if not tc then
+		e:GetLabelObject():SetLabel(0)
+		return
 	end
+	if #mg>1 then
+		local tg=g-(g:Filter(Card.IsNotTuner,nil,c))
+		if #tg>0 then
+			tc=tg:GetFirst()
+		end
+	end
+	local lv=tc:GetSynchroLevel(c)
+	local lv2=lv>>16
+	lv=lv&0xffff
+	if lv2>0 and not g:CheckWithSumEqual(Card.GetLevel,c:GetLevel(),#g,#g,c) then
+		lv=lv2
+	end
+	if tc:IsHasEffect(89818984) and not g:CheckWithSumEqual(Card.GetSynchroLevel,c:GetLevel(),#g,#g,c) then
+		lv=2
+	end
+	e:GetLabelObject():SetLabel(lv)
 end
 function c21915012.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
@@ -64,6 +73,7 @@ function c21915012.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local ct=e:GetLabel()
+	if ct==0 then return end
 	local sel=nil
 	if c:IsLevel(1) then
 		sel=Duel.SelectOption(tp,aux.Stringid(21915012,1))
@@ -94,10 +104,14 @@ function c21915012.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
 	local lv=rc:GetLevel()
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,lv*100)
+	if rc:IsRelateToEffect(e) and rc:IsFaceup() then
+		Duel.SetTargetCard(rc)
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,lv*100)
+	end
 end
 function c21915012.thop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=e:GetHandler():GetReasonCard()
+	local rc=Duel.GetFirstTarget()
+	if not rc or not rc:IsRelateToChain() or rc:IsFacedown() then return end
 	local lv=rc:GetLevel()
 	if Duel.Damage(1-tp,lv*100,REASON_EFFECT)~=0 and Duel.IsExistingMatchingCard(c21915012.thfilter,tp,LOCATION_DECK,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(21915012,3)) then

@@ -33,7 +33,7 @@ function c90050480.splimit(e,se,sp,st)
 end
 function c90050480.set_category(e,tp,eg,ep,ev,re,r,rp)
 	e:SetCategory(CATEGORY_TODECK+CATEGORY_DESTROY)
-	local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,1,1,e:GetHandler())
+	local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,#g,0,0)
 end
 function c90050480.retop(e,tp,eg,ep,ev,re,r,rp)
@@ -41,7 +41,7 @@ function c90050480.retop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if c:IsLocation(LOCATION_EXTRA) then
-		local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,1,1,nil)
+		local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,nil)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
 end

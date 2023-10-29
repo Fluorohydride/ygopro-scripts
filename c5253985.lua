@@ -91,7 +91,7 @@ function c5253985.limitop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5253985.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=e:GetLabelObject()
-	e1:Reset()
+	if e1 then e1:Reset() end
 	e:Reset()
 end
 function c5253985.chainfilter(re,tp,cid)

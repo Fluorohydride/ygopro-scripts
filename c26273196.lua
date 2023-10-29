@@ -53,6 +53,7 @@ function c26273196.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
 		local coin=Duel.AnnounceCoin(tp)
 		local res=Duel.TossCoin(tp,1)
+		local damp=0
 		if coin~=res then
 			damp=1-tp
 		else

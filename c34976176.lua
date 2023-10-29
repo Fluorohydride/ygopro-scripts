@@ -30,7 +30,7 @@ function c34976176.discon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34976176.discon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c34976176.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and aux.dscon()
+		and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34976176.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -11,15 +11,16 @@ function c50501121.initial_effect(c)
 	e1:SetOperation(c50501121.activate)
 	c:RegisterEffect(e1)
 end
-function c50501121.costfilter(c)
+function c50501121.costfilter(c,ec)
 	return c:IsSetCard(0xef)
-		and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(nil,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+		and c:IsType(TYPE_MONSTER) and c:IsFaceupEx() and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(nil,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,Group.FromCards(c,ec))
 end
 function c50501121.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c50501121.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
+	local c=e:GetHandler()
+	if chk==0 then return Duel.IsExistingMatchingCard(c50501121.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c50501121.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c50501121.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,c)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c50501121.target(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -1,5 +1,6 @@
 --スクリーン・オブ・レッド
 function c18634367.initial_effect(c)
+	aux.AddCodeList(c,70902743)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

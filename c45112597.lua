@@ -41,6 +41,7 @@ end
 function c45112597.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if #g>0 and Duel.Remove(g,POS_FACEUP,REASON_EFFECT)~=0 then
+		Duel.AdjustAll()
 		local og=Duel.GetOperatedGroup():Filter(c45112597.spfilter,nil,e,tp)
 		if #og<=0 then return end
 		local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)

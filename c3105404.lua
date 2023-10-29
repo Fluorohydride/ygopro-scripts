@@ -16,6 +16,7 @@ function c3105404.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCost(c3105404.thcost)
 	e2:SetTarget(c3105404.thtg)
 	e2:SetOperation(c3105404.thop)
@@ -44,9 +45,7 @@ function c3105404.cfilter(c)
 	return c:IsSetCard(0x1047) and c:IsAbleToGraveAsCost()
 end
 function c3105404.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(3105404)==0
-		and Duel.IsExistingMatchingCard(c3105404.cfilter,tp,LOCATION_HAND,0,1,nil) end
-	e:GetHandler():RegisterFlagEffect(3105404,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(c3105404.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,c3105404.cfilter,1,1,REASON_COST,nil)
 end
 function c3105404.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

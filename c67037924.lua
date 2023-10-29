@@ -60,7 +60,7 @@ function c67037924.cfilter(c,tp)
 	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsSummonPlayer(1-tp)
 end
 function c67037924.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c67037924.cfilter,1,nil,tp) and aux.exccon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c67037924.cfilter,1,nil,tp) and aux.exccon(e)
 end
 function c67037924.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsSSetable() end

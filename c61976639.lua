@@ -30,10 +30,10 @@ function c61976639.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c61976639.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c61976639.thfilter,tp,LOCATION_DECK,0,1,nil)
+	local g=Duel.GetMatchingGroup(c61976639.thfilter,tp,LOCATION_DECK,0,nil)
 	if Duel.IsExistingMatchingCard(c61976639.scchk,tp,LOCATION_MZONE,0,1,nil,0x152)
 		and Duel.IsExistingMatchingCard(c61976639.scchk,tp,LOCATION_MZONE,0,1,nil,0x153) then
-		local eg=Duel.GetMatchingGroup(c61976639.thfilter1,tp,LOCATION_DECK,0,1,nil)
+		local eg=Duel.GetMatchingGroup(c61976639.thfilter1,tp,LOCATION_DECK,0,nil)
 		g:Merge(eg)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

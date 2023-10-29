@@ -55,6 +55,7 @@ function c21123811.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 c21123811.material_type=TYPE_SYNCHRO
+c21123811.cosmic_quasar_dragon_summon=true
 function c21123811.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end

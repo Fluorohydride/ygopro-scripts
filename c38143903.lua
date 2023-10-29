@@ -33,7 +33,7 @@ end
 function c38143903.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGrave()
 		and (not re:GetHandler():IsRelateToEffect(re) or re:GetHandler():IsAbleToChangeControler()) end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,p,1)
+	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,ep,1)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
 	if re:GetHandler():IsRelateToEffect(re) then

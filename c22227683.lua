@@ -6,6 +6,7 @@ function c22227683.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCondition(c22227683.condition)
 	e1:SetTarget(c22227683.target)
 	e1:SetOperation(c22227683.operation)
@@ -27,9 +28,7 @@ function c22227683.tgfilter(c)
 	return c:IsSetCard(0xab) and c:IsType(TYPE_MONSTER) and not c:IsCode(22227683) and c:IsAbleToGrave()
 end
 function c22227683.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(22227683)==0
-		and Duel.IsExistingMatchingCard(c22227683.tgfilter,tp,LOCATION_DECK,0,1,nil) end
-	e:GetHandler():RegisterFlagEffect(22227683,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(c22227683.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c22227683.operation(e,tp,eg,ep,ev,re,r,rp)

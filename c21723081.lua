@@ -28,7 +28,7 @@ end
 function c21723081.tdfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_UNION) and c:IsAbleToDeck()
 end
-function c21723081.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c21723081.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.GetTurnPlayer()==tp then
 		if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c21723081.tdfilter(chkc) end
 		if chk==0 then return Duel.IsExistingTarget(c21723081.tdfilter,tp,LOCATION_REMOVED,0,1,nil,e,tp)

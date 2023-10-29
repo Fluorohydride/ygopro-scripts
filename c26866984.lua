@@ -58,7 +58,7 @@ function c26866984.spop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 				local dg=g:Select(tp,1,1,nil)
 				Duel.HintSelection(dg)
-				res=Duel.Destroy(dg,REASON_EFFECT)
+				Duel.Destroy(dg,REASON_EFFECT)
 			end
 			if ct==3 and Duel.IsPlayerCanDraw(tp,2) and Duel.SelectYesNo(tp,aux.Stringid(26866984,2)) then
 				Duel.BreakEffect()

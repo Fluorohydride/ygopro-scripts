@@ -27,8 +27,8 @@ function c47946130.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c47946130.negcon)
-	e3:SetCost(c47946130.ChainUniqueCost) -- 8/19 eratta: chain unique
 	e3:SetTarget(c47946130.negtg)
 	e3:SetOperation(c47946130.negop)
 	c:RegisterEffect(e3)
@@ -65,11 +65,6 @@ function c47946130.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
-function c47946130.ChainUniqueCost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(47946130)==0 end
-	c:RegisterFlagEffect(47946130,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
-end
 function c47946130.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or c:GetAttack()<500 or not c:IsRelateToEffect(e)
@@ -89,7 +84,7 @@ function c47946130.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47946130.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not c:IsAttack(c:GetBaseAttack()) and aux.dscon()
+	return not c:IsAttack(c:GetBaseAttack()) and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47946130.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

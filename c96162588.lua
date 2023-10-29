@@ -47,7 +47,7 @@ function c96162588.rlop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_RELEASE)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
-		Duel.Release(sg,REASON_RULE)
+		Duel.Release(sg,REASON_RULE,1-tp)
 	end
 end
 function c96162588.desfilter(c)

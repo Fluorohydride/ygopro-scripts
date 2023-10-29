@@ -11,7 +11,6 @@ function c12670770.initial_effect(c)
 	--remove
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(12670770,2))
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -64,7 +63,7 @@ function c12670770.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 		c:RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(12670770,1))
 	end
 end
-function c12670770.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c12670770.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(12670770)==0
 		and Duel.IsExistingMatchingCard(c12670770.filter2,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)

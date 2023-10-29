@@ -38,7 +38,7 @@ function c75290703.eqfilter(c,tp)
 	return c:IsSetCard(0x179) and c:IsType(TYPE_MONSTER) and c:CheckUniqueOnField(tp)
 end
 function c75290703.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c75290703.eqfilter(chkc,e,tp) and chkc:IsControler(tp) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c75290703.eqfilter(chkc,tp) and chkc:IsControler(tp) end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and ft>0
 		and Duel.IsExistingTarget(c75290703.eqfilter,tp,LOCATION_GRAVE,0,1,nil,tp)

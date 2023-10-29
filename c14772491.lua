@@ -18,18 +18,18 @@ function c14772491.initial_effect(c)
 	c:RegisterEffect(e2)
 	e1:SetLabelObject(e2)
 end
-function c14772491.spfilter(c,e,tp)
-	return c:IsSetCard(0x1f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c14772491.spfilter(c,e,tp,cp)
+	return c:IsSetCard(0x1f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,cp)
 end
-function c14772491.filter(c)
+function c14772491.filter(c,e,tp)
 	return c:IsFaceup() and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c14772491.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetControler())
 end
 function c14772491.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c14772491.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c14772491.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		and Duel.IsExistingMatchingCard(c14772491.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c14772491.filter(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c14772491.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c14772491.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c14772491.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c14772491.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -39,7 +39,7 @@ function c14772491.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if Duel.GetLocationCount(cp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c14772491.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
+		local g=Duel.SelectMatchingCard(tp,c14772491.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,cp)
 		if g:GetCount()==0 then return end
 		local sc=g:GetFirst()
 		Duel.SpecialSummon(sc,0,tp,cp,false,false,POS_FACEUP)
@@ -64,7 +64,8 @@ function c14772491.rcon(e)
 end
 function c14772491.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return tc and tc:IsOnField() and e:GetHandler():IsHasCardTarget(tc)
+	return tc and tc:IsOnField() and tc:IsFaceup() and tc:IsSetCard(0x1f)
+		and e:GetHandler():IsHasCardTarget(tc)
 end
 function c14772491.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoHand(e:GetLabelObject(),nil,REASON_EFFECT)

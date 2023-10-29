@@ -14,7 +14,7 @@ end
 function c57281778.descon(e,tp,eg,ep,ev,re,r,rp)
 	local t=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(t)
-	return aux.dsercon(e) and t and t:IsRace(RACE_SPELLCASTER+RACE_WARRIOR) and t:IsRelateToBattle()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and t and t:IsRace(RACE_SPELLCASTER+RACE_WARRIOR) and t:IsRelateToBattle()
 end
 function c57281778.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

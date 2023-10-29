@@ -1,6 +1,6 @@
 --レッド・デーモンズ・ドラゴン／バスター
 function c77336644.initial_effect(c)
-	aux.AddCodeList(c,80280737)
+	aux.AddCodeList(c,80280737,70902743)
 	c:EnableReviveLimit()
 	--Cannot special summon
 	local e1=Effect.CreateEffect(c)

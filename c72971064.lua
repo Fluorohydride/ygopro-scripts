@@ -15,14 +15,16 @@ function c72971064.initial_effect(c)
 	e2:SetDescription(aux.Stringid(72971064,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetCode(EVENT_CUSTOM+72971064)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c72971064.thcon)
 	e2:SetCost(c72971064.thcost)
 	e2:SetTarget(c72971064.thtg)
 	e2:SetOperation(c72971064.thop)
 	c:RegisterEffect(e2)
+	aux.RegisterMergedDelayedEvent(c,72971064,EVENT_SPSUMMON_SUCCESS)
 	--recover
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(72971064,1))
@@ -45,11 +47,13 @@ function c72971064.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
+function c72971064.thfilter(c,tp)
+	return c:IsSummonPlayer(1-tp) and c:IsAbleToHand()
+end
 function c72971064.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=eg:Filter(Card.IsAbleToHand,nil):Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	local g=eg:Filter(c72971064.thfilter,nil,tp)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.IsInGroup(chkc,g) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(72971064)==0 and Duel.IsExistingTarget(aux.IsInGroup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g) end
-	e:GetHandler():RegisterFlagEffect(72971064,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingTarget(aux.IsInGroup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g) end
 	local sg
 	if g:GetCount()==1 then
 		sg=g:Clone()

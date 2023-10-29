@@ -45,14 +45,17 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 	local b2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
-	local res=false
+	local res=0
+	local op=0
 	if b1 and b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(id,2),aux.Stringid(id,3))
 	elseif b1 then
 		op=Duel.SelectOption(tp,aux.Stringid(id,2))
 	elseif b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(id,3))+1
-	else return end
+	else
+		return
+	end
 	if op==0 then
 		res=Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	else

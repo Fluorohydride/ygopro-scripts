@@ -12,7 +12,7 @@ function c35537251.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35537251.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x84) and c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x1084) and c:IsType(TYPE_XYZ)
 end
 function c35537251.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

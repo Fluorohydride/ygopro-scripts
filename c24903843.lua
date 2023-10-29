@@ -14,6 +14,7 @@ function c24903843.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c24903843.spcon)
 	e2:SetTarget(c24903843.sptg)
 	e2:SetOperation(c24903843.spop)
@@ -38,9 +39,8 @@ function c24903843.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24903843.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(24903843)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,24903843,0xd4,TYPES_NORMAL_TRAP_MONSTER,1200,0,2,RACE_AQUA,ATTRIBUTE_WATER) end
-	c:RegisterFlagEffect(24903843,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c24903843.spop(e,tp,eg,ep,ev,re,r,rp)

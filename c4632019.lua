@@ -28,6 +28,7 @@ function c4632019.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local lv=rc:GetOriginalLevel()
+	local reg=nil
 	if lv>0 and lv<=8 then
 		--atkup
 		local e1=Effect.CreateEffect(rc)

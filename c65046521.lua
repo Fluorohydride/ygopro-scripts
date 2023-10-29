@@ -56,7 +56,7 @@ function c65046521.tffilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0xc0) and not c:IsForbidden()
 end
 function c65046521.tftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c65046521.tffilter(chkc) and c:IsControler(tp) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c65046521.tffilter(chkc) and chkc:IsControler(tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c65046521.tffilter,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)

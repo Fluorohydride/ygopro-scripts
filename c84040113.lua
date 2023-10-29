@@ -21,7 +21,7 @@ function c84040113.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c84040113.subcon(e)
-	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE)
+	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 end
 function c84040113.spcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)

@@ -57,7 +57,8 @@ function c84808313.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84808313.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return e:GetHandler():GetType()==TYPE_SPELL
+		and minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c84808313.nttg(e,c)
 	return c:IsLevelAbove(5) and c:IsRace(RACE_DINOSAUR)

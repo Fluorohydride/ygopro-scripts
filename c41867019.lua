@@ -12,6 +12,7 @@ function c41867019.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetCountLimit(1,41867019+EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c41867019.effcon)
 	e2:SetTarget(c41867019.efftg)
 	e2:SetOperation(c41867019.effop)
@@ -39,9 +40,8 @@ function c41867019.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local b2=Duel.IsExistingMatchingCard(c41867019.setfilter,tp,LOCATION_DECK,0,1,nil) and bit.band(flag,0x2)==0
 		local b3=Duel.IsExistingMatchingCard(c41867019.tgfilter,tp,0,LOCATION_MZONE,1,nil) and bit.band(flag,0x4)==0
 		local b4=bit.band(flag,0x8)==0
-		return Duel.GetFlagEffect(tp,41867020)==0 and (b1 or b2 or b3 or b4)
+		return b1 or b2 or b3 or b4
 	end
-	Duel.RegisterFlagEffect(tp,41867020,RESET_CHAIN,0,1)
 end
 function c41867019.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -23,13 +23,7 @@ function c88093706.initial_effect(c)
 	e2:SetTarget(c88093706.eftg)
 	e2:SetOperation(c88093706.efop)
 	c:RegisterEffect(e2)
-	--reg
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_BE_MATERIAL)
-	e3:SetCondition(c88093706.efcon)
-	e3:SetOperation(c88093706.regop)
-	c:RegisterEffect(e3)
+	aux.CreateMaterialReasonCardRelation(c,e2)
 end
 function c88093706.mfilter(c)
 	return c:IsLevelAbove(2) and c:IsLinkRace(RACE_CYBERSE)
@@ -133,14 +127,13 @@ function c88093706.efcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88093706.eftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
-	if chk==0 then return Duel.IsAbleToEnterBP()
-		and rc:GetFlagEffect(88093706)~=0 and rc:GetFlagEffect(88093707)==0 end
-	rc:RegisterFlagEffect(88093707,RESET_EVENT+RESETS_STANDARD,0,1)
+	if chk==0 then return rc:IsRelateToEffect(e) and Duel.IsAbleToEnterBP() end
+	Duel.SetTargetCard(rc)
 end
 function c88093706.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=c:GetReasonCard()
-	if rc:GetFlagEffect(88093706)==0 then return end
+	local rc=Duel.GetFirstTarget()
+	if not rc:IsRelateToChain() then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(88093706,2))
 	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
@@ -149,8 +142,4 @@ function c88093706.efop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	e1:SetValue(1)
 	rc:RegisterEffect(e1)
-end
-function c88093706.regop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=e:GetHandler():GetReasonCard()
-	rc:RegisterFlagEffect(88093706,RESET_EVENT+RESETS_STANDARD,0,1)
 end

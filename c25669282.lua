@@ -59,8 +59,7 @@ function c25669282.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25669282.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
-		and aux.exccon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil and aux.exccon(e)
 end
 function c25669282.spfilter3(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_DUAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

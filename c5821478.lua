@@ -10,6 +10,7 @@ function c5821478.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCondition(c5821478.descon)
 	e1:SetTarget(c5821478.destg)
 	e1:SetOperation(c5821478.desop)
@@ -43,8 +44,7 @@ function c5821478.desfilter(c)
 	return c:GetSequence()<5
 end
 function c5821478.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(5821478)==0 end
-	e:GetHandler():RegisterFlagEffect(5821478,RESET_CHAIN,0,1)
+	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(c5821478.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
