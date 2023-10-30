@@ -823,16 +823,16 @@ function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
 					for _,fcode in ipairs(val[i]) do
 						if type(fcode)=='function' then
 							if fcode(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) then return true end
-						else
+						elseif type(fcode)=='number' then
 							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
 						end
 					end
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then mat[fcode]=true end
+				if type(fcode)=='number' then mat[fcode]=true end
 			end
-		else
+		elseif type(val[i])=='number' then
 			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
 			mat[val[i]]=true
 		end
@@ -940,16 +940,16 @@ function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
 					for _,fcode in ipairs(val[i]) do
 						if type(fcode)=='function' then
 							if fcode(c,fc,subm) and not c:IsHasEffect(6205579) then return true end
-						else
+						elseif type(fcode)=='number' then
 							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
 						end
 					end
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then mat[fcode]=true end
+				if type(fcode)=='number' then mat[fcode]=true end
 			end
-		else
+		elseif type(val[i])=='number' then
 			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
 			mat[val[i]]=true
 		end
