@@ -66,12 +66,12 @@ function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.SynCondition(f1,f2,minc,maxc)
+function Auxiliary.SynCondition(f1,f2,minct,maxct)
 	return	function(e,c,smat,mg,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -82,10 +82,10 @@ function Auxiliary.SynCondition(f1,f2,minc,maxc)
 				return Duel.CheckSynchroMaterial(c,f1,f2,minc,maxc,smat,mg)
 			end
 end
-function Auxiliary.SynTarget(f1,f2,minc,maxc)
+function Auxiliary.SynTarget(f1,f2,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg,min,max)
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -148,12 +148,12 @@ function Auxiliary.GetSynMaterials(tp,syncard)
 	end
 	return mg
 end
-function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
+function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 	return	function(e,c,smat,mg1,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -173,10 +173,10 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
 				return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk)
 			end
 end
-function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
+function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg1,min,max)
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -243,7 +243,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				else return false end
 			end
 end
-function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxc,gc)
+function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxct,gc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
@@ -382,13 +382,13 @@ function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
+	if not maxct then maxct=ct end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1165)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	if not maxct then maxct=ct end
 	if alterf then
 		e1:SetCondition(Auxiliary.XyzConditionAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
 		e1:SetTarget(Auxiliary.XyzTargetAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
@@ -402,14 +402,14 @@ function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
 	c:RegisterEffect(e1)
 end
 --Xyz Summon(normal)
-function Auxiliary.XyzCondition(f,lv,minc,maxc)
+function Auxiliary.XyzCondition(f,lv,minct,maxct)
 	--og: use special material
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -418,13 +418,13 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
-function Auxiliary.XyzTarget(f,lv,minc,maxc)
+function Auxiliary.XyzTarget(f,lv,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
 				end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -437,7 +437,7 @@ function Auxiliary.XyzTarget(f,lv,minc,maxc)
 				else return false end
 			end
 end
-function Auxiliary.XyzOperation(f,lv,minc,maxc)
+function Auxiliary.XyzOperation(f,lv,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
@@ -467,7 +467,7 @@ function Auxiliary.XyzOperation(f,lv,minc,maxc)
 			end
 end
 --Xyz summon(alterf)
-function Auxiliary.XyzConditionAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
+function Auxiliary.XyzConditionAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
@@ -481,8 +481,8 @@ function Auxiliary.XyzConditionAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop) then
 					return true
 				end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -491,13 +491,13 @@ function Auxiliary.XyzConditionAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
-function Auxiliary.XyzTargetAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
+function Auxiliary.XyzTargetAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
 				end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -532,7 +532,7 @@ function Auxiliary.XyzTargetAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				else return false end
 			end
 end
-function Auxiliary.XyzOperationAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
+function Auxiliary.XyzOperationAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
@@ -1846,12 +1846,12 @@ function Auxiliary.LExtraMaterialCount(mg,lc,tp)
 		end
 	end
 end
-function Auxiliary.LinkCondition(f,minc,maxc,gf)
+function Auxiliary.LinkCondition(f,minct,maxct,gf)
 	return	function(e,c,og,lmat,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -1874,10 +1874,10 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				return mg:CheckSubGroup(Auxiliary.LCheckGoal,minc,maxc,tp,c,gf,lmat)
 			end
 end
-function Auxiliary.LinkTarget(f,minc,maxc,gf)
+function Auxiliary.LinkTarget(f,minct,maxct,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,lmat,min,max)
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -1905,7 +1905,7 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				else return false end
 			end
 end
-function Auxiliary.LinkOperation(f,minc,maxc,gf)
+function Auxiliary.LinkOperation(f,minct,maxct,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,lmat,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
