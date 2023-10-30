@@ -51,7 +51,12 @@ function Auxiliary.NonTuner(f,...)
 				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
---Synchro monster, 1 tuner + min to max monsters
+---Synchro monster, 1 tuner + min to max monsters
+---@param c Card
+---@param f1 function|nil
+---@param f2 function|nil
+---@param minc integer
+---@param maxc? integer
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	if maxc==nil then maxc=99 end
 	local e1=Effect.CreateEffect(c)
@@ -117,7 +122,15 @@ end
 function Auxiliary.AddSynchroProcedure2(c,f1,f2)
 	Auxiliary.AddSynchroProcedure(c,f1,f2,1,1)
 end
---Synchro monster, f1~f3 each 1 MONSTER + f4 min to max monsters
+---Synchro monster, f1~f3 each 1 MONSTER + f4 min to max monsters
+---@param c Card
+---@param f1 function|nil
+---@param f2 function|nil
+---@param f3 function|nil
+---@param f4 function|nil
+---@param minc integer
+---@param maxc integer
+---@param gc? function
 function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
@@ -380,7 +393,15 @@ function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
 	return alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
 		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
---Xyz monster, lv k*n
+---Xyz monster, lv k*n
+---@param c Card
+---@param f function|nil
+---@param lv integer
+---@param ct integer
+---@param alterf? function
+---@param alterdesc? string
+---@param maxct? integer
+---@param alterop? function
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
 	if not maxct then maxct=ct end
 	local e1=Effect.CreateEffect(c)
@@ -568,6 +589,15 @@ function Auxiliary.XyzOperationAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 				end
 			end
 end
+---Xyz monster, any condition
+---@param c Card
+---@param f function|nil
+---@param gf function|nil
+---@param minc integer
+---@param maxc integer
+---@param alterf? function
+---@param alterdesc? string
+---@param alterop? function
 function Auxiliary.AddXyzProcedureLevelFree(c,f,gf,minc,maxc,alterf,alterdesc,alterop)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1165)
