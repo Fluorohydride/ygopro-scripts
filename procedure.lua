@@ -1799,15 +1799,21 @@ function Auxiliary.PSSCompleteProcedure(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 
---Link Summon
+---Link Summon
+---@param c Card
+---@param f function|nil
+---@param min integer
+---@param max? integer
+---@param gf? function
+---@return Effect
 function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
+	if max==nil then max=c:GetLink() end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1166)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	if max==nil then max=c:GetLink() end
 	e1:SetCondition(Auxiliary.LinkCondition(f,min,max,gf))
 	e1:SetTarget(Auxiliary.LinkTarget(f,min,max,gf))
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max,gf))
