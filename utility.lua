@@ -47,7 +47,7 @@ end
 
 ---Subgroup check function
 ---@param sg Group
----@param c Card
+---@param c Card|nil
 ---@param g Group
 ---@return boolean
 Auxiliary.GCheckAdditional=function(sg,c,g) return true end

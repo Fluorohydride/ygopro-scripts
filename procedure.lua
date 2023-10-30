@@ -809,7 +809,11 @@ end
 --Fusion Summon
 --material: names in material list
 
---Fusion monster, mixed materials (fixed count)
+---Fusion monster, mixed materials (fixed count)
+---@param fcard Card
+---@param sub boolean
+---@param insf boolean
+---@param ... number|function|table
 function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={...}
@@ -926,7 +930,14 @@ function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
 end
 
---Fusion monster, mixed material * minc to maxc + material + ...
+---Fusion monster, mixed material * minc to maxc + material + ...
+---@param fcard Card
+---@param sub boolean
+---@param insf boolean
+---@param fun1 number|function|table
+---@param minc integer
+---@param maxc integer
+---@param ... number|function|table
 function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={fun1,...}
@@ -1134,19 +1145,43 @@ function Auxiliary.FSelectMixRep(c,tp,mg,sg,fc,sub,chkfnf,...)
 	sg:RemoveCard(c)
 	return res
 end
---Fusion monster, name + name
+
+---Fusion monster, name + name
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode2(c,code1,code2,sub,insf)
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,code2)
 end
---Fusion monster, name + name + name
+---Fusion monster, name + name + name
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param code3 integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode3(c,code1,code2,code3,sub,insf)
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,code2,code3)
 end
---Fusion monster, name + name + name + name
+---Fusion monster, name + name + name + name
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param code3 integer
+---@param code4 integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,code2,code3,code4)
 end
---Fusion monster, name * n
+---Fusion monster, name * n
+---@param c Card
+---@param code1 integer
+---@param cc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	local code={}
 	for i=1,cc do
@@ -1154,11 +1189,23 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
---Fusion monster, name * minc to maxc
+---Fusion monster, name * minc to maxc
+---@param c Card
+---@param code1 integer
+---@param minc integer
+---@param maxc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep2(c,code1,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,code1,minc,maxc)
 end
---Fusion monster, name + condition * n
+---Fusion monster, name + condition * n
+---@param c Card
+---@param code1 integer
+---@param f function|table
+---@param cc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 	local fun={}
 	for i=1,cc do
@@ -1166,11 +1213,19 @@ function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,table.unpack(fun))
 end
---Fusion monster, condition + condition
+---Fusion monster, condition + condition
+---@param c Card
+---@param f1 function|table
+---@param f2 function|table
+---@param insf boolean
 function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
 	Auxiliary.AddFusionProcMix(c,false,insf,f1,f2)
 end
---Fusion monster, condition * n
+---Fusion monster, condition * n
+---@param c Card
+---@param f function|table
+---@param cc integer
+---@param insf boolean
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	local fun={}
 	for i=1,cc do
@@ -1178,11 +1233,21 @@ function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,false,insf,table.unpack(fun))
 end
---Fusion monster, condition * minc to maxc
+---Fusion monster, condition * minc to maxc
+---@param c Card
+---@param f function|table
+---@param minc integer
+---@param maxc integer
+---@param insf boolean
 function Auxiliary.AddFusionProcFunRep2(c,f,minc,maxc,insf)
 	Auxiliary.AddFusionProcMixRep(c,false,insf,f,minc,maxc)
 end
---Fusion monster, condition1 + condition2 * n
+---Fusion monster, condition1 + condition2 * n
+---@param c Card
+---@param f1 function|table
+---@param f2 function|table
+---@param cc integer
+---@param insf boolean
 function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,insf)
 	local fun={}
 	for i=1,cc do
@@ -1194,15 +1259,32 @@ end
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
 	Auxiliary.AddFusionProcMixRep(c,false,insf,f2,minc,maxc,f1)
 end
---Fusion monster, name + condition * minc to maxc
+---Fusion monster, name + condition * minc to maxc
+---@param c Card
+---@param code1 integer
+---@param f function|table
+---@param minc integer
+---@param maxc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeFunRep(c,code1,f,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1)
 end
---Fusion monster, name + name + condition * minc to maxc
+---Fusion monster, name + name + condition * minc to maxc
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param f function|table
+---@param minc integer
+---@param maxc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode2FunRep(c,code1,code2,f,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1,code2)
 end
---Fusion monster, Shaddoll materials
+---Fusion monster, Shaddoll materials
+---@param c Card
+---@param attr integer
 function Auxiliary.AddFusionProcShaddoll(c,attr)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
