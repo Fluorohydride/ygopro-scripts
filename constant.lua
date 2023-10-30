@@ -863,3 +863,5 @@ ACTIVITY_CHAIN			=7		-- only available in custom counter
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚(double name)
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚(double name)
 CARD_QUESTION		    =38723936	--谜题
+--Special flag effect id
+FLAG_ID_CHAINING    =1

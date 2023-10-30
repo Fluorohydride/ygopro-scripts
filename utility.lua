@@ -595,7 +595,7 @@ function Auxiliary.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 --flag effect for spell counter
 function Auxiliary.chainreg(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(1)==0 then
+	if e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)==0 then
 		e:GetHandler():RegisterFlagEffect(1,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 	end
 end
