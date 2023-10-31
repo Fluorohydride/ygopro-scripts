@@ -10,21 +10,45 @@ function c83326048.initial_effect(c)
 	e1:SetTarget(c83326048.target)
 	e1:SetOperation(c83326048.operation)
 	c:RegisterEffect(e1)
+	if not c83326048.global_check then
+		c83326048.global_check=true
+		c83326048[1]=-1
+		c83326048[2]=-1
+		c83326048[3]=-1
+		c83326048[4]=-1
+		c83326048[5]=-1
+	end
 end
 function c83326048.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	Duel.SetTargetParam(Duel.SelectOption(tp,1057,1056,1063,1073,1074))
+	local types={1057,1056,1063,1073,1074}
+	local lastp,back=5,0
+	for k,v in ipairs(c83326048) do
+		if v==tp or v==2 then
+			if lastp<k then back=-1 end
+			table.remove(types,k+back)
+			lastp=k
+			back=0
+		end
+	end
+	Duel.SetTargetParam(types[Duel.SelectOption(tp,table.unpack(types))+1])
 end
 function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local opt=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	local ct=nil
-	if opt==0 then ct=TYPE_RITUAL end
-	if opt==1 then ct=TYPE_FUSION end
-	if opt==2 then ct=TYPE_SYNCHRO end
-	if opt==3 then ct=TYPE_XYZ end
-	if opt==4 then ct=TYPE_PENDULUM end
+	local p=nil
+	if opt==1057 then ct=TYPE_RITUAL   p=1 end
+	if opt==1056 then ct=TYPE_FUSION   p=2 end
+	if opt==1063 then ct=TYPE_SYNCHRO  p=3 end
+	if opt==1073 then ct=TYPE_XYZ      p=4 end
+	if opt==1074 then ct=TYPE_PENDULUM p=5 end
+	if c83326048[p]==tp or c83326048[p]==2 then return  end
+	if p~=nil then
+		if c83326048[p]==-1 then c83326048[p]=tp end
+		if c83326048[p]==1-tp then c83326048[p]=2 end
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
