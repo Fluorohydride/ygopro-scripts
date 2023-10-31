@@ -32,7 +32,8 @@ function s.initial_effect(c)
 	e3:SetOperation(s.hlpop)
 	c:RegisterEffect(e3)
 end
-function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and aux.NegateEffectMonsterFilter(chkc) end
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(id,2)) then

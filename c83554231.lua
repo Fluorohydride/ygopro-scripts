@@ -26,7 +26,8 @@ end
 function c83554231.thfilter(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x119) and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
 end
-function c83554231.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c83554231.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c83554231.thfilter(chkc,e) end
 	local g=Duel.GetMatchingGroup(c83554231.thfilter,tp,LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
