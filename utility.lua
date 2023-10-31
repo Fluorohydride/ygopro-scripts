@@ -45,8 +45,12 @@ function bit.replace(r,v,field,width)
 	return (r&~(m<<f))|((v&m)<< f)
 end
 
---Group check functions
-Auxiliary.GCheckAdditional=nil
+---Subgroup check function
+---@param sg Group
+---@param c Card|nil
+---@param g Group
+---@return boolean
+Auxiliary.GCheckAdditional=function(sg,c,g) return true end
 
 --the table of xyz number
 Auxiliary.xyz_number={}
@@ -591,8 +595,8 @@ function Auxiliary.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 --flag effect for spell counter
 function Auxiliary.chainreg(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(1)==0 then
-		e:GetHandler():RegisterFlagEffect(1,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+	if e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)==0 then
+		e:GetHandler():RegisterFlagEffect(FLAG_ID_CHAINING,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 	end
 end
 --default filter for EFFECT_CANNOT_BE_BATTLE_TARGET
@@ -939,7 +943,7 @@ end
 Auxiliary.SubGroupCaptured=nil
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g) then
 		sg:RemoveCard(c)
 		return false
 	end
@@ -950,7 +954,7 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 end
 function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g) then
 		sg:RemoveCard(c)
 		return false
 	end
@@ -971,8 +975,8 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local ext_params={...}
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min then return false end
-	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return false end
-	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return true end
+	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g)) then return false end
+	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil,g)) then return true end
 	local eg=g:Clone()
 	for c in Auxiliary.Next(g-sg) do
 		if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
@@ -1040,7 +1044,7 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 		return false
 	end
 	sg:AddCard(c)
-	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g) then
 		sg:RemoveCard(c)
 		return false
 	end
@@ -1335,6 +1339,6 @@ end
 function Auxiliary.EPDestroyOperation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if Auxiliary.GetValueType(tc)=="Card" or Auxiliary.GetValueType(tc)=="Group" then
-		Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE,tc:GetControler())
+		Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE)
 	end
 end
