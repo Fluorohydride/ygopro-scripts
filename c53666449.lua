@@ -19,7 +19,7 @@ function c53666449.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c53666449.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_COUNTER) and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_COUNTER) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c53666449.thfilter(c,code)
 	return c:IsType(TYPE_COUNTER) and not c:IsCode(code) and c:IsAbleToHand()

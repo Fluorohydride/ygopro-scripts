@@ -34,7 +34,7 @@ function c3322931.initial_effect(c)
 end
 function c3322931.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetAttack()<4000 and re:GetHandler()~=c and re:IsActiveType(TYPE_MONSTER) and c:GetFlagEffect(1)>0 then
+	if c:GetAttack()<4000 and re:GetHandler()~=c and re:IsActiveType(TYPE_MONSTER) and c:GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
