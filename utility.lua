@@ -339,7 +339,7 @@ function Auxiliary.UnionEquipFilter(filter)
 end
 function Auxiliary.UnionEquipLimit(filter)
 	return function(e,c)
-		return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c	
+		return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
 	end
 end
 function Auxiliary.UnionEquipTarget(equip_filter)
