@@ -969,7 +969,7 @@ end
 ---@param f function
 ---@param min? integer
 ---@param max? integer
----@param ... unknown
+---@param ...? unknown
 ---@return boolean
 function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
@@ -994,7 +994,7 @@ end
 ---@param cancelable boolean
 ---@param min? integer
 ---@param max? integer
----@param ... unknown
+---@param ...? unknown
 ---@return Group|nil
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
@@ -1044,6 +1044,10 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 		return nil
 	end
 end
+---Create a table of filter functions
+---@param f function
+---@param list table
+---@return table
 function Auxiliary.CreateChecks(f,list)
 	local checks={}
 	for i=1,#list do
@@ -1073,7 +1077,7 @@ end
 ---@param g Group
 ---@param checks table
 ---@param f? function
----@param ... unknown
+---@param ...? unknown
 ---@return boolean
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
@@ -1088,7 +1092,7 @@ end
 ---@param checks table
 ---@param cancelable? boolean
 ---@param f? function
----@param ... unknown
+---@param ...? unknown
 ---@return Group|nil
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
