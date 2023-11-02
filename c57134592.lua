@@ -71,13 +71,13 @@ function s.cfilter(c,tp)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function s.tgfilter(c,e,tp)
-	return c:IsCanBeEffectTarget(e)
+	return c:IsCanBeEffectTarget(e) and c:IsPreviousControler(tp)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return eg:IsContains(chkc) and s.filter(chkc,e,tp) end
+	if chkc then return eg:IsContains(chkc) and s.tgfilter(chkc,e,tp) end
 	local c=e:GetHandler()
 	if chk==0 then return eg:IsExists(s.tgfilter,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
