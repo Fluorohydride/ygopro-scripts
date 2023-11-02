@@ -87,27 +87,30 @@ function c80335817.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
-function c80335817.retfilter(c)
-	return c:GetFlagEffect(80335817)~=0
+function c80335817.retfilter(c,fid)
+	return c:GetFlagEffectLabel(80335817)==fid
 end
 function c80335817.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp
+	if Duel.GetTurnPlayer()~=tp or Duel.GetTurnCount()==e:GetValue() then return false end
+	local g=e:GetLabelObject()
+	if not g:IsExists(c80335817.retfilter,1,nil,e:GetLabel()) then
+		g:DeleteGroup()
+		e:Reset()
+		return false
+	else return true end
 end
 function c80335817.retop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local g=e:GetLabelObject()
-	local sg=g:Filter(c80335817.retfilter,nil)
-	if sg:GetCount()>1 and sg:GetClassCount(Card.GetPreviousControler)==1 then
-		local ft=Duel.GetLocationCount(sg:GetFirst():GetPreviousControler(),LOCATION_MZONE)
-		if ft==1 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80335817,0))
-			local tc=sg:Select(tp,1,1,nil):GetFirst()
-			Duel.ReturnToField(tc)
-			sg:RemoveCard(tc)
-		end
-	end
+	local sg=g:Filter(c80335817.retfilter,nil,e:GetLabel())
+	g:DeleteGroup()
 	local tc=sg:GetFirst()
 	while tc do
+		if tc==c and not c:IsCode(80335817) then 
+		Duel.Remove(tc,POS_FACEUP,nil)
+		else
 		Duel.ReturnToField(tc)
+		end
 		tc=sg:GetNext()
 	end
 end
