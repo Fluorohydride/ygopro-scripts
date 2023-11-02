@@ -103,5 +103,7 @@ function c55285840.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c55285840.retop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsCode(55285840) then
 	Duel.ReturnToField(e:GetLabelObject())
+	end
 end
