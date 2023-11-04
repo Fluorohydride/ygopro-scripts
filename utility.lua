@@ -291,8 +291,11 @@ end
 function Auxiliary.UnionReplaceFilter(e,re,r,rp)
 	return r&(REASON_BATTLE+REASON_EFFECT)~=0
 end
---add effect to modern union monsters
-function Auxiliary.EnableUnionAttribute(c,f)
+---add effect to modern union monsters
+---@param c Card
+---@param filter function
+function Auxiliary.EnableUnionAttribute(c,filter)
+	local equip_limit=Auxiliary.UnionEquipLimit(filter)
 	--destroy sub
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_EQUIP)
@@ -305,8 +308,76 @@ function Auxiliary.EnableUnionAttribute(c,f)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UNION_LIMIT)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetValue(f)
+	e2:SetValue(equip_limit)
 	c:RegisterEffect(e2)
+	--equip
+	local equip_filter=Auxiliary.UnionEquipFilter(filter)
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(1068)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e3:SetCategory(CATEGORY_EQUIP)
+	e3:SetType(EFFECT_TYPE_IGNITION)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTarget(Auxiliary.UnionEquipTarget(equip_filter))
+	e3:SetOperation(Auxiliary.UnionEquipOperation(equip_filter))
+	c:RegisterEffect(e3)
+	--unequip
+	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(1152)
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e4:SetType(EFFECT_TYPE_IGNITION)
+	e4:SetRange(LOCATION_SZONE)
+	e4:SetTarget(Auxiliary.UnionUnequipTarget)
+	e4:SetOperation(Auxiliary.UnionUnequipOperation)
+	c:RegisterEffect(e4)
+end
+function Auxiliary.UnionEquipFilter(filter)
+	return function(c,tp)
+		local ct1,ct2=c:GetUnionCount()
+		return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
+	end
+end
+function Auxiliary.UnionEquipLimit(filter)
+	return function(e,c)
+		return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
+	end
+end
+function Auxiliary.UnionEquipTarget(equip_filter)
+	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+		local c=e:GetHandler()
+		if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
+		if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+			and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+		local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
+		Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
+		c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+	end
+end
+function Auxiliary.UnionEquipOperation(equip_filter)
+	return function(e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
+		local tc=Duel.GetFirstTarget()
+		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+		if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
+			Duel.SendtoGrave(c,REASON_RULE)
+			return
+		end
+		if not Duel.Equip(tp,c,tc,false) then return end
+		Auxiliary.SetUnionState(c)
+	end
+end
+function Auxiliary.UnionUnequipTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,true,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
+	c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+end
+function Auxiliary.UnionUnequipOperation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
+	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
 function Auxiliary.EnableChangeCode(c,code,location,condition)
 	Auxiliary.AddCodeList(c,code)
