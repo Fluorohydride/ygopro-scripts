@@ -20,6 +20,8 @@ function c33543890.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x154) and c:IsType(TYPE_MONSTER)
 end
 function c33543890.extraop(e,tp)
+	local c=e:GetHandler()
+	c:SetStatus(STATUS_PROC_COMPLETE,true)
 	local g=Duel.GetMatchingGroup(c33543890.tgfilter,tp,LOCATION_REMOVED,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(33543890,1)) then
 		Duel.BreakEffect()
