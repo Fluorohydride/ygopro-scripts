@@ -20,6 +20,8 @@ function c22420202.drfilter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER+TYPE_SPELL) and not c:IsPublic()
 end
 function c22420202.extraop(e,tp)
+	local c=e:GetHandler()
+	c:SetStatus(STATUS_PROC_COMPLETE,true)
 	local g=Duel.GetMatchingGroup(c22420202.drfilter,tp,LOCATION_HAND,0,nil)
 	if g:GetCount()>0 and Duel.IsPlayerCanDraw(tp,1)
 		and Duel.SelectYesNo(tp,aux.Stringid(22420202,1)) then
