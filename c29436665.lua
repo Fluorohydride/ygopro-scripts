@@ -51,7 +51,7 @@ function c29436665.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_COST)
 end
 function c29436665.dmgcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetActiveType()==TYPE_SPELL and re:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():GetFlagEffect(1)>0
+	return re:GetActiveType()==TYPE_SPELL and re:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c29436665.dmgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,1000,REASON_EFFECT)
