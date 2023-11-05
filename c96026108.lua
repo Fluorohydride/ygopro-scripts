@@ -20,6 +20,8 @@ function c96026108.thfilter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()
 end
 function c96026108.extraop(e,tp)
+	local c=e:GetHandler()
+	c:SetStatus(STATUS_PROC_COMPLETE,true)
 	local g=Duel.GetMatchingGroup(c96026108.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96026108,1)) then
 		Duel.BreakEffect()
