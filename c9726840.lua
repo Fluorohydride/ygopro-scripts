@@ -56,7 +56,22 @@ function c9726840.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		tc=Duel.SelectMatchingCard(tp,c9726840.tgfilter2,tp,LOCATION_ONFIELD,0,1,1,c,tp):GetFirst()
 		if tc then
-			Duel.SendtoGrave(tc,REASON_EFFECT)
+			if Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) and Duel.IsExistingMatchingCard(c9726840.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c) then
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+				local sc=Duel.SelectMatchingCard(tp,c9726840.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc):GetFirst()
+				if sc then
+					Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP,0x60)
+					local fg=Duel.GetMatchingGroup(c9726840.atkfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
+					if fg:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK) then
+						local e1=Effect.CreateEffect(c)
+						e1:SetType(EFFECT_TYPE_SINGLE)
+						e1:SetCode(EFFECT_UPDATE_ATTACK)
+						e1:SetValue(1000)
+						e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+						sc:RegisterEffect(e1)
+					end
+				end
+			end
 		end
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
