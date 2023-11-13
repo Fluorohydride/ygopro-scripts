@@ -6,9 +6,8 @@ function s.initial_effect(c)
 	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_DAMAGE)
+	e1:SetCode(EVENT_BATTLE_DAMAGE)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e1:SetCondition(s.spcon)
 	e1:SetTarget(s.sptg)
 	e1:SetOperation(s.spop)
@@ -26,10 +25,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 
-	--special summon
+--special summon
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if ep~=tp then return false end
-	return r&REASON_BATTLE>0 and Duel.GetAttacker():IsControler(1-tp) and rp==1-tp
+	return ep==tp and Duel.GetAttacker():IsControler(1-tp)
 end
 function s.filter(c,v,e,tp)
 	return c:IsAttackBelow(v) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -43,19 +41,20 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ss=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.filter),tp,LOCATION_GRAVE,0,1,nil,ev,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_GRAVE,0,1,1,nil,ev,e,tp)
-	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_DAMAGE_STEP_END)
 		e1:SetOperation(s.skipop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
 		Duel.RegisterEffect(e1,tp)
+	end
 end
 function s.skipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SkipPhase(Duel.GetTurnPlayer(),PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 end
 
-	--damage
+--damage
 function s.dacon(e,tp,eg,ep,ev,re,r,rp)
 	if ep~=tp then return false end
 	return r&REASON_EFFECT>0 and rp==1-tp
