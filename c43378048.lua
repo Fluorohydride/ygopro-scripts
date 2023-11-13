@@ -31,8 +31,9 @@ function c43378048.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c43378048.atkval(e,c)
-	local c=e:GetHandler()
-	if Duel.GetTurnPlayer()==e:GetHandlerPlayer() and not c:IsHasEffect(EFFECT_SET_ATTACK_FINAL) then return 10000
-		else return c:GetAttack()
+	if Duel.GetTurnPlayer()==e:GetHandlerPlayer() then
+		return 10000
+	else
+		return 0
 	end
 end
