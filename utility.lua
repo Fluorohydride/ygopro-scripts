@@ -905,7 +905,7 @@ function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==100 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	if chk==0 then
 		e:SetLabel(0)
-		return res and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+		return res and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,true,POS_FACEUP_DEFENSE)
 	end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
@@ -914,8 +914,17 @@ function Auxiliary.DrytronSpSummonOperation(func)
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
 		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then func(e,tp) end
+		if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
+			c:CompleteProcedure()
+			func(e,tp)
+		end
 	end
+end
+---Return the type of `nolimit` in Duel.SpecialSummon()
+---@param c Card
+---@return boolean
+function Auxiliary.DrytronSpSummonType(c)
+	return c:IsType(TYPE_SPSUMMON)
 end
 --additional destroy effect for the Labrynth field
 function Auxiliary.LabrynthDestroyOp(e,tp,res)

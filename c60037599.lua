@@ -1,5 +1,6 @@
 --竜輝巧－エルγ
 function c60037599.initial_effect(c)
+	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
