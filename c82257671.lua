@@ -95,5 +95,5 @@ function c82257671.imop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c82257671.efilter(e,re)
-	return e:GetOwnerPlayer()~=re:GetOwnerPlayer()
+	return e:GetOwnerPlayer()~=re:GetOwnerPlayer() and e:GetHandler():GetControler()==e:GetOwnerPlayer()
 end
