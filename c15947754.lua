@@ -39,24 +39,26 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(tc,REASON_RULE)
 			return
 		end
-		if not Duel.Equip(tp,tc,c,false) then return end
-		--equip limit
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetCode(EFFECT_EQUIP_LIMIT)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetValue(s.eqlimit)
-		tc:RegisterEffect(e1)
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,1)
-		--atk up
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_EQUIP)
-		e2:SetCode(EFFECT_UPDATE_ATTACK)
-		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-		e2:SetValue(500)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e2)
+		if Duel.Equip(tp,tc,c,false) then
+			--equip limit
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetCode(EFFECT_EQUIP_LIMIT)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+			e1:SetValue(s.eqlimit)
+			tc:RegisterEffect(e1)
+			tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,1)
+			--atk up
+			local e2=Effect.CreateEffect(c)
+			e2:SetType(EFFECT_TYPE_EQUIP)
+			e2:SetCode(EFFECT_UPDATE_ATTACK)
+			e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+			e2:SetValue(500)
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+			tc:RegisterEffect(e2)
+			Duel.RaiseEvent(tc,EVENT_SSET,e,REASON_EFFECT,tp,tp,0)
+        	end
 	end
 end
 function s.eqlimit(e,c)

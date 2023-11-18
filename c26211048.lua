@@ -62,6 +62,8 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e3:SetValue(def)
 		tc:RegisterEffect(e3)
+	else
+		Duel.RaiseEvent(tc,EVENT_SSET,e,REASON_EFFECT,tp,tp,0)
 	end
 end
 function c26211048.eqlimit(e,c)
