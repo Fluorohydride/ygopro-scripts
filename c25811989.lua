@@ -91,7 +91,7 @@ function c25811989.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(sg,REASON_EFFECT)
 end
 function c25811989.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsReleasable,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsReleasable,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
