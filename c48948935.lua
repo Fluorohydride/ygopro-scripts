@@ -29,11 +29,11 @@ end
 function c48948935.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	return rg:CheckSubGroup(c48948935.fselect,2,2,tp)
 end
 function c48948935.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c48948935.fselect,true,2,2,tp)
 	if sg then
@@ -44,7 +44,7 @@ function c48948935.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c48948935.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c48948935.eqcon(e,tp,eg,ep,ev,re,r,rp)

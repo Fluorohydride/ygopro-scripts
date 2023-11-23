@@ -73,14 +73,14 @@ function s.gcheck(g,tp,ec,sc)
 end
 function s.sstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local g=Duel.GetReleaseGroup(tp,true):Filter(s.mfilter,c)
+	local g=Duel.GetReleaseGroup(tp,true,REASON_EFFECT):Filter(s.mfilter,c)
 	if chk==0 then return c:IsReleasableByEffect() and c:GetLevel()>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,g) end
 	Duel.SetOperationInfo(0,CATEGORY_RELEASE,g,2,0,0)
 end
 function s.ssop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetReleaseGroup(tp,true):Filter(s.mfilter,c)
+	local g=Duel.GetReleaseGroup(tp,true,REASON_EFFECT):Filter(s.mfilter,c)
 	if not (c:IsRelateToEffect(e) and c:IsReleasableByEffect()) or #g==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,g):GetFirst()
