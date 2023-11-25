@@ -24,7 +24,7 @@ end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and s.dgfilter(chkc,e,tp) end
 	local sg=Duel.GetMatchingGroup(s.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-	if chk==0 then return eg:IsExists(s.dgfilter,1,nil,e,tp) and #sg>=3 end
+	if chk==0 then return eg:IsExists(s.dgfilter,1,nil,e,tp) and #sg>=3 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
 	local dg=eg
 	if #eg>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
