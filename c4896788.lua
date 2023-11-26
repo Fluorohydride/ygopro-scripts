@@ -7,16 +7,12 @@ function c4896788.initial_effect(c)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c4896788.drcon)
-	e2:SetTarget(c4896788.drtg)
 	e2:SetOperation(c4896788.drop)
 	c:RegisterEffect(e2)
 end
 function c4896788.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsAttackPos()
 		and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsCode(55144522)
-end
-function c4896788.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
 end
 function c4896788.drop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsAttackPos() or not e:GetHandler():IsRelateToEffect(e) then return end
