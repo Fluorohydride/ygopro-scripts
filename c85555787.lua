@@ -24,7 +24,7 @@ function c85555787.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return matk>0 and Duel.CheckReleaseGroup(tp,c85555787.costfilter,1,nil,matk)
+		return matk>0 and Duel.CheckReleaseGroup(REASON_COST,tp,c85555787.costfilter,1,nil,matk)
 	end
 	local g=Duel.SelectReleaseGroup(tp,c85555787.costfilter,1,1,nil,matk)
 	local atk=g:GetFirst():GetAttack()

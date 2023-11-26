@@ -45,7 +45,7 @@ function c96733134.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c96733134.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x20f8) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x20f8) end
 	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x20f8)
 	Duel.Release(sg,REASON_COST)
 end

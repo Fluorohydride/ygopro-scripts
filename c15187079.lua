@@ -54,7 +54,7 @@ function c15187079.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c15187079.costfilter,1,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c15187079.costfilter,1,c,tp)
 		else
 			return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,nil,false)
 		end

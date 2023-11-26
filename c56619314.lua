@@ -27,8 +27,8 @@ end
 function c56619314.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ct=0
-		if Duel.CheckReleaseGroup(tp,c56619314.spfilter,1,nil,RACE_DRAGON,tp) then ct=ct-1 end
-		if Duel.CheckReleaseGroup(tp,c56619314.spfilter,1,nil,RACE_FIEND,tp) then ct=ct-1 end
+		if Duel.CheckReleaseGroup(REASON_COST,tp,c56619314.spfilter,1,nil,RACE_DRAGON,tp) then ct=ct-1 end
+		if Duel.CheckReleaseGroup(REASON_COST,tp,c56619314.spfilter,1,nil,RACE_FIEND,tp) then ct=ct-1 end
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>ct
 			and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,e:GetHandler(),RACE_DRAGON)
 			and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,e:GetHandler(),RACE_FIEND)

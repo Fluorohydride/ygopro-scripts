@@ -27,7 +27,7 @@ function c99004752.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c99004752.costfilter,1,c,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c99004752.costfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
 		end

@@ -37,7 +37,7 @@ function c47754278.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c47754278.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

@@ -51,7 +51,7 @@ function c15335853.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c15335853.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsType,1,nil,TYPE_TOKEN) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsType,1,nil,TYPE_TOKEN) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_TOKEN)
 	Duel.Release(g,REASON_COST)
 end

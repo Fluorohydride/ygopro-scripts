@@ -26,7 +26,7 @@ function c94395649.cfilter(c,tp)
 		and (c:IsFaceup() or c:IsControler(tp))
 end
 function c94395649.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c94395649.cfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c94395649.cfilter,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,c94395649.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end

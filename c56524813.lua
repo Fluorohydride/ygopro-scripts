@@ -12,7 +12,7 @@ function c56524813.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c56524813.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,e:GetHandler(),ATTRIBUTE_WATER) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,e:GetHandler(),ATTRIBUTE_WATER) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,e:GetHandler(),ATTRIBUTE_WATER)
 	Duel.Release(g,REASON_COST)
 end

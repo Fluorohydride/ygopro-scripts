@@ -11,7 +11,7 @@ function c66973070.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c66973070.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_INSECT) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_INSECT) end
 	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,e:GetHandler(),RACE_INSECT)
 	Duel.Release(sg,REASON_COST)
 end

@@ -42,7 +42,7 @@ function c5067884.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5067884.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,c,0xd8) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,c,0xd8) end
 	local rg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,c,0xd8)
 	Duel.Release(rg,REASON_COST)
 end

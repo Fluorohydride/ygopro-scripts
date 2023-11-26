@@ -25,7 +25,7 @@ function c39699564.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(39699564)>0
 end
 function c39699564.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x79) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x79) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x79)
 	Duel.Release(g,REASON_COST)
 end

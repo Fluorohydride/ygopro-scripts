@@ -30,7 +30,7 @@ function c58873391.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c58873391.costfilter,1,c,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c58873391.costfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end

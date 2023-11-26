@@ -45,7 +45,7 @@ function c70465810.rfilter(c,tp)
 	return Duel.GetMZoneCount(tp,c)>0
 end
 function c70465810.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c70465810.rfilter,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c70465810.rfilter,1,nil,tp)
 		and Duel.GetCustomActivityCount(70465810,tp,ACTIVITY_SPSUMMON)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c70465810.rfilter,1,1,nil,tp)

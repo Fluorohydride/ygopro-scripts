@@ -84,7 +84,7 @@ function c27993919.spfilter(c,e,tp,sc)
 		and math.abs(c:GetCurrentScale()-sc)==2 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27993919.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c27993919.cfilter,1,nil,e,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c27993919.cfilter,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c27993919.spop(e,tp,eg,ep,ev,re,r,rp)

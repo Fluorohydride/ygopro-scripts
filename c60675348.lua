@@ -53,7 +53,7 @@ function c60675348.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0xd8) and bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c60675348.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xd8) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0xd8) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xd8)
 	Duel.Release(g,REASON_COST)
 end

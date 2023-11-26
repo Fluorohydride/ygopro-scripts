@@ -45,7 +45,7 @@ function c70875955.rfilter(c)
 	return c:IsType(TYPE_TOKEN) or c:IsSetCard(0x101b)
 end
 function c70875955.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckReleaseGroup(tp,c70875955.rfilter,1,nil)
+	if Duel.CheckReleaseGroup(REASON_COST,tp,c70875955.rfilter,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(70875955,2)) then
 		local g=Duel.SelectReleaseGroup(tp,c70875955.rfilter,1,1,nil)
 		Duel.Release(g,REASON_RULE)

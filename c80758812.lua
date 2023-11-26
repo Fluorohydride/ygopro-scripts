@@ -59,7 +59,7 @@ function c80758812.spfilter2(c,e,tp)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c80758812.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c80758812.relfilter,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c80758812.relfilter,1,nil)
 		and Duel.IsExistingMatchingCard(c80758812.spfilter2,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end

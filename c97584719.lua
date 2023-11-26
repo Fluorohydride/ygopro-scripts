@@ -82,7 +82,7 @@ function c97584719.cfilter(c,tp)
 	return c:IsType(TYPE_LINK) and c:IsRace(RACE_MACHINE) and Duel.GetMZoneCount(tp,c)>0
 end
 function c97584719.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c97584719.cfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c97584719.cfilter,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,c97584719.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end

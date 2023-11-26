@@ -20,7 +20,7 @@ function c78792195.con(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c78792195.confilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c78792195.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x3d) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x3d) end
 	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x3d)
 	Duel.Release(sg,REASON_COST)
 end

@@ -26,7 +26,7 @@ function c17427333.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(tp,c17427333.costfilter,1,nil,tp)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,c17427333.costfilter,1,nil,tp)
 	end
 	local g=Duel.SelectReleaseGroup(tp,c17427333.costfilter,1,1,nil,tp)
 	local atk=g:GetFirst():GetTextAttack()

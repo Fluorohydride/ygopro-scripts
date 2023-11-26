@@ -59,7 +59,7 @@ end
 function c11443677.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,c11443677.sprfilter,1,nil,tp,c)
+	return Duel.CheckReleaseGroup(REASON_COST,tp,c11443677.sprfilter,1,nil,tp,c)
 end
 function c11443677.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

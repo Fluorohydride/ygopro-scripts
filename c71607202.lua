@@ -48,7 +48,7 @@ end
 function s.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return eg:IsExists(s.repfilter,1,nil,tp)
-		and Duel.CheckReleaseGroup(tp,s.rfilter,1,nil) end
+		and Duel.CheckReleaseGroup(REASON_COST,tp,s.rfilter,1,nil) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function s.desrepval(e,c)

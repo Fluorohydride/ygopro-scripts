@@ -69,7 +69,7 @@ end
 function c90176467.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
-		if Duel.CheckReleaseGroup(tp,c90176467.costfilter,1,c,e,tp) then
+		if Duel.CheckReleaseGroup(REASON_COST,tp,c90176467.costfilter,1,c,e,tp) then
 			e:SetLabel(1)
 			return true
 		else

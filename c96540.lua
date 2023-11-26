@@ -30,7 +30,7 @@ function c96540.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.CheckReleaseGroup(tp,c96540.costfilter,1,nil,e,tp)
+		return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.CheckReleaseGroup(REASON_COST,tp,c96540.costfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
 	local g=Duel.SelectReleaseGroup(tp,c96540.costfilter,1,1,nil,e,tp)

@@ -97,7 +97,7 @@ end
 function c77432167.reccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100,0)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c77432167.recfilter,1,nil) and c:GetFlagEffect(77432167)==0 end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c77432167.recfilter,1,nil) and c:GetFlagEffect(77432167)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c77432167.recfilter,1,1,nil)
 	e:SetLabel(100,g:GetFirst():GetAttack())

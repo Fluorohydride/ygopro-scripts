@@ -74,7 +74,7 @@ function c72860663.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c72860663.rfilter,1,nil,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c72860663.rfilter,1,nil,tp)
 		else
 			return Duel.IsExistingTarget(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil)
 		end

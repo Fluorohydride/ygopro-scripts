@@ -19,7 +19,7 @@ function c54326448.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2c)
 end
 function c54326448.attg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c54326448.cfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c54326448.cfilter,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,c54326448.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end

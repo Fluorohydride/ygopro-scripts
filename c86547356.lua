@@ -40,7 +40,7 @@ function c86547356.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if check~=100 then return false end
 		e:SetLabel(0,0,0)
-		return Duel.CheckReleaseGroup(tp,c86547356.costfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,c86547356.costfilter,1,nil,e,tp)
 	end
 	local tc=Duel.SelectReleaseGroup(tp,c86547356.costfilter,1,1,nil,e,tp):GetFirst()
 	e:SetLabel(0,tc:GetCode(),tc:GetLevel())

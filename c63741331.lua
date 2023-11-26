@@ -14,7 +14,7 @@ function c63741331.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x18)
 end
 function c63741331.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c63741331.cfilter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c63741331.cfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c63741331.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

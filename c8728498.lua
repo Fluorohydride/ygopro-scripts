@@ -67,7 +67,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(tp,s.costfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,s.costfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
 	local g=Duel.SelectReleaseGroup(tp,s.costfilter,1,1,nil,e,tp)

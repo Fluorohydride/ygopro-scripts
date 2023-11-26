@@ -60,7 +60,7 @@ function c24842059.cfilter(c,tp)
 	return c:IsSetCard(0x135) and c:IsSummonLocation(LOCATION_EXTRA) and Duel.GetMZoneCount(tp,c)>0
 end
 function c24842059.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c24842059.cfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c24842059.cfilter,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,c24842059.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end

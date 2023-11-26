@@ -44,7 +44,7 @@ function c82385847.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c82385847.costfilter,1,nil,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c82385847.costfilter,1,nil,c,tp)
 		else
 			return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
 		end

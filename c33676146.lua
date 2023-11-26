@@ -39,7 +39,7 @@ function s.cfilter(c,tp)
 	return Duel.GetMZoneCount(tp,c)>0
 end
 function s.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end

@@ -16,7 +16,7 @@ function c79444933.cfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_FIRE)
 end
 function c79444933.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c79444933.cfilter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c79444933.cfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c79444933.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

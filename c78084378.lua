@@ -30,7 +30,7 @@ function c78084378.con(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c78084378.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_CYBERSE) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,nil,RACE_CYBERSE) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_CYBERSE)
 	Duel.Release(g,REASON_COST)
 end

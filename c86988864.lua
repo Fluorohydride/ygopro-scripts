@@ -19,7 +19,7 @@ function c86988864.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c86988864.cfilter,tp,LOCATION_MZONE,0,3,nil)
 end
 function c86988864.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c86988864.cfilter,2,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c86988864.cfilter,2,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c86988864.cfilter,2,2,nil)
 	Duel.Release(g,REASON_COST)
 end

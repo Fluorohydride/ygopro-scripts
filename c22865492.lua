@@ -67,7 +67,7 @@ function c22865492.cfilter1(c,tp)
 	return c:IsSetCard(0x8) and Duel.GetMZoneCount(tp,c)>0 and (c:IsFaceup() or c:IsControler(tp))
 end
 function c22865492.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c22865492.cfilter1,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c22865492.cfilter1,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,c22865492.cfilter1,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end

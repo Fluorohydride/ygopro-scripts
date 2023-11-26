@@ -20,7 +20,7 @@ end
 function c14141448.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),c14141448.rfilter,1,nil)
+		and Duel.CheckReleaseGroup(REASON_COST,c:GetControler(),c14141448.rfilter,1,nil)
 end
 function c14141448.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectReleaseGroup(c:GetControler(),c14141448.rfilter,1,1,nil)

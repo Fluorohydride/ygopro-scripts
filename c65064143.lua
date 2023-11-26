@@ -13,7 +13,7 @@ function c65064143.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65064143.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_INSECT) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,nil,RACE_INSECT) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_INSECT)
 	Duel.Release(g,REASON_COST)
 end

@@ -97,7 +97,7 @@ function c14799437.cfilter(c)
 	return not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c14799437.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c14799437.cfilter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c14799437.cfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c14799437.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

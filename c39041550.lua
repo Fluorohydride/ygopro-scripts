@@ -55,7 +55,7 @@ function c39041550.cfilter(c,tp)
 	return c:IsRace(RACE_INSECT) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c39041550.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c39041550.cfilter,1,re:GetHandler(),tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c39041550.cfilter,1,re:GetHandler(),tp) end
 	local g=Duel.SelectReleaseGroup(tp,c39041550.cfilter,1,1,re:GetHandler(),tp)
 	Duel.Release(g,REASON_COST)
 end

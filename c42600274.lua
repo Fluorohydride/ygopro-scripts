@@ -27,7 +27,7 @@ function c42600274.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ct=0
-	if Duel.CheckReleaseGroup(tp,c42600274.hspfilter,1,nil,tp) then ct=ct-1 end
+	if Duel.CheckReleaseGroup(REASON_COST,tp,c42600274.hspfilter,1,nil,tp) then ct=ct-1 end
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>ct
 		and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,e:GetHandler(),RACE_WARRIOR+RACE_FAIRY)
 end

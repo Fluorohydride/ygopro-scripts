@@ -44,7 +44,7 @@ end
 function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
+	return Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

@@ -29,7 +29,7 @@ function c53567095.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c53567095.costfilter,1,c,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c53567095.costfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c)
 		end

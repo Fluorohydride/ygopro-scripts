@@ -37,7 +37,7 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.IsExistingTarget(c98045062.filter1,tp,0,LOCATION_MZONE,1,nil)
 	local b2=nil
 	if e:GetLabel()==9 then
-		b2=Duel.CheckReleaseGroup(tp,c98045062.cfilter,1,nil,tp)
+		b2=Duel.CheckReleaseGroup(REASON_COST,tp,c98045062.cfilter,1,nil,tp)
 	else
 		b2=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)>0
 			and Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,nil)

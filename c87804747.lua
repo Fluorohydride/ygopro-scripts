@@ -56,7 +56,7 @@ end
 function s.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,s.hspfilter,1,nil,tp,c)
+	return Duel.CheckReleaseGroup(REASON_COST,tp,s.hspfilter,1,nil,tp,c)
 end
 function s.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectReleaseGroup(tp,s.hspfilter,1,1,nil,tp,c)

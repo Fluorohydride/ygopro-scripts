@@ -62,7 +62,7 @@ function c38229962.spcostfilter(c,tp)
 	return c38229962.costfilter(c,tp) and Duel.GetMZoneCount(tp,c)>0
 end
 function c38229962.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c38229962.spcostfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c38229962.spcostfilter,1,nil,tp) end
 	local g=Duel.SelectReleaseGroup(tp,c38229962.spcostfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
@@ -84,7 +84,7 @@ function c38229962.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c38229962.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c38229962.costfilter,1,e:GetHandler(),tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c38229962.costfilter,1,e:GetHandler(),tp) end
 	local g=Duel.SelectReleaseGroup(tp,c38229962.costfilter,1,1,e:GetHandler(),tp)
 	Duel.Release(g,REASON_COST)
 end

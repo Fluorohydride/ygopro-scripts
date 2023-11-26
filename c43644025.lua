@@ -33,7 +33,7 @@ function c43644025.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local res=e:GetLabel()==1
 		e:SetLabel(0)
 		return res and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-			and Duel.CheckReleaseGroup(tp,c43644025.filter1,1,nil,e,tp) end
+			and Duel.CheckReleaseGroup(REASON_COST,tp,c43644025.filter1,1,nil,e,tp) end
 	e:SetLabel(0)
 	local rg=Duel.SelectReleaseGroup(tp,c43644025.filter1,1,1,nil,e,tp)
 	Duel.Release(rg,REASON_COST)

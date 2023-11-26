@@ -53,7 +53,7 @@ function c32557233.rfilter(c,tp)
 end
 function c32557233.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c32557233.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c32557233.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c32557233.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)

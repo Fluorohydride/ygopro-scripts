@@ -55,7 +55,7 @@ function s.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0 and ep==1-tp
 end
 function s.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsType,1,nil,TYPE_NORMAL) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsType,1,nil,TYPE_NORMAL) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_NORMAL)
 	Duel.Release(g,REASON_COST)
 end

@@ -106,7 +106,7 @@ function c29432356.spcfilter(c,ft,tp)
 end
 function c29432356.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c29432356.spcfilter,1,nil,ft,tp) end
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c29432356.spcfilter,1,nil,ft,tp) end
 	local sg=Duel.SelectReleaseGroup(tp,c29432356.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end

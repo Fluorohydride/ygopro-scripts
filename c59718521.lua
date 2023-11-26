@@ -31,7 +31,7 @@ function c59718521.filter(c)
 	return c:IsRace(RACE_PSYCHO) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c59718521.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c59718521.filter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c59718521.filter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c59718521.filter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

@@ -51,7 +51,7 @@ function c95245571.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c95245571.costfilter,1,c,c,tp,check)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c95245571.costfilter,1,c,c,tp,check)
 		else
 			return Duel.IsExistingTarget(c95245571.desfilter,tp,0,LOCATION_ONFIELD,2,c,check)
 		end

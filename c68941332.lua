@@ -51,7 +51,7 @@ function c68941332.rfilter(c,tp)
 		and Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,c)
 end
 function c68941332.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c68941332.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c68941332.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c68941332.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)

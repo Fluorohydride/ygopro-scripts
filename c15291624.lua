@@ -50,7 +50,7 @@ function c15291624.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return (Duel.GetCustomActivityCount(15291624,tp,ACTIVITY_CHAIN)~=0 or Duel.GetCustomActivityCount(15291624,1-tp,ACTIVITY_CHAIN)~=0)
-		and Duel.CheckReleaseGroup(tp,c15291624.spfilter,1,nil,c,tp)
+		and Duel.CheckReleaseGroup(REASON_COST,tp,c15291624.spfilter,1,nil,c,tp)
 end
 function c15291624.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectReleaseGroup(tp,c15291624.spfilter,1,1,nil,c,tp)

@@ -22,7 +22,7 @@ function c49275969.costfilter(c)
 	return c:IsSetCard(0x134) or c:IsRace(RACE_WYRM)
 end
 function c49275969.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c49275969.costfilter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c49275969.costfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c49275969.costfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

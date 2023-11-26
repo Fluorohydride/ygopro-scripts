@@ -56,7 +56,7 @@ function c132308.costfilter(c,tp)
 		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c132308.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() and Duel.CheckReleaseGroup(tp,c132308.costfilter,1,nil,tp) end
+	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() and Duel.CheckReleaseGroup(REASON_COST,tp,c132308.costfilter,1,nil,tp) end
 	Duel.ConfirmCards(1-tp,e:GetHandler())
 	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

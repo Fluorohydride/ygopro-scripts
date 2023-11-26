@@ -77,7 +77,7 @@ function c48447192.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48447192.retcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,aux.TRUE,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,aux.TRUE,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,aux.TRUE,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

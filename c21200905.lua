@@ -49,7 +49,7 @@ function c21200905.cfilter(c,g)
 end
 function c21200905.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c21200905.cfilter,1,nil,lg) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c21200905.cfilter,1,nil,lg) end
 	local g=Duel.SelectReleaseGroup(tp,c21200905.cfilter,1,1,nil,lg)
 	Duel.Release(g,REASON_COST)
 end

@@ -69,10 +69,10 @@ function c44097050.thfilter(c)
 end
 function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp)
-	local b1=Duel.CheckReleaseGroup(tp,c44097050.costfilter,1,nil,tp)
+	local b1=Duel.CheckReleaseGroup(REASON_COST,tp,c44097050.costfilter,1,nil,tp)
 	local b2=g:GetCount()>1 and g:CheckSubGroup(aux.mzctcheck,2,2,tp)
 		and Duel.IsExistingMatchingCard(c44097050.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
-	local b3=Duel.CheckReleaseGroup(tp,nil,3,nil) and Duel.IsExistingMatchingCard(c44097050.thfilter,tp,LOCATION_GRAVE,0,1,nil)
+	local b3=Duel.CheckReleaseGroup(REASON_COST,tp,nil,3,nil) and Duel.IsExistingMatchingCard(c44097050.thfilter,tp,LOCATION_GRAVE,0,1,nil)
 	if chk==0 then return b1 or b2 or b3 end
 	local off=0
 	local ops={}

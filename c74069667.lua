@@ -90,7 +90,7 @@ function c74069667.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74069667.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,e:GetHandler(),0xaf) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,e:GetHandler(),0xaf) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0xaf)
 	Duel.Release(g,REASON_COST)
 end

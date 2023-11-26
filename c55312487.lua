@@ -30,7 +30,7 @@ function c55312487.spfilter2(c,e,tp,rc)
 end
 function c55312487.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if Duel.CheckReleaseGroup(tp,c55312487.spfilter1,1,nil,e,tp)
+	if Duel.CheckReleaseGroup(REASON_COST,tp,c55312487.spfilter1,1,nil,e,tp)
 		and Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(55312487,0)) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetOperation(c55312487.activate)

@@ -33,7 +33,7 @@ function c74094021.costfilter(c,tp)
 	return c:IsSetCard(0x3d) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c74094021.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c74094021.costfilter,1,e:GetHandler(),tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c74094021.costfilter,1,e:GetHandler(),tp) end
 	local sg=Duel.SelectReleaseGroup(tp,c74094021.costfilter,1,1,e:GetHandler(),tp)
 	Duel.Release(sg,REASON_COST)
 end

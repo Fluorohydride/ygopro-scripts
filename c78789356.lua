@@ -30,7 +30,7 @@ function s.cfilter(c,tp)
 	return c:IsRace(RACE_REPTILE) and c:IsLevelAbove(2) and Duel.GetMZoneCount(tp,c)>0
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp) end
 	local tc=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp):GetFirst()
 	e:SetLabel(tc:GetLevel()//2)
 	Duel.Release(tc,REASON_COST)

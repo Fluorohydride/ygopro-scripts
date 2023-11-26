@@ -17,7 +17,7 @@ function c28565527.cfilter(c)
 	return Duel.IsExistingTarget(Card.IsAbleToHand,0,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c28565527.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c28565527.cfilter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c28565527.cfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c28565527.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

@@ -26,7 +26,7 @@ function c90814668.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(tp,c90814668.cfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,c90814668.cfilter,1,nil,e,tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c90814668.cfilter,1,1,nil,e,tp)

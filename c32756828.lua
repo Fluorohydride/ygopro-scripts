@@ -54,7 +54,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local l=e:GetLabel()==1
 	if chk==0 then
 		e:SetLabel(0)
-		return l and Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
+		return l and Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp)
 	end
 	if l then
 		e:SetLabel(0)

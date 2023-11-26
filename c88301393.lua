@@ -85,7 +85,7 @@ function c88301393.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChainAttack()
 end
 function c88301393.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsReleasable,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsReleasable,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end

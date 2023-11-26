@@ -17,7 +17,7 @@ end
 function c5338223.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c5338223.cfilter,1,nil,ft,tp) end
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c5338223.cfilter,1,nil,ft,tp) end
 	local rg=Duel.SelectReleaseGroup(tp,c5338223.cfilter,1,1,nil,ft,tp)
 	Duel.Release(rg,REASON_COST)
 end

@@ -61,7 +61,7 @@ function c91842653.spcon(e,c)
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	return Duel.IsExistingMatchingCard(c91842653.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		and ft>-1 and Duel.CheckReleaseGroup(tp,c91842653.spcfilter,1,nil,ft,tp)
+		and ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c91842653.spcfilter,1,nil,ft,tp)
 end
 function c91842653.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

@@ -17,7 +17,7 @@ function c43714890.cfilter(c)
 	return bit.band(tp,TYPE_NORMAL)~=0 and bit.band(tp,TYPE_TOKEN)==0
 end
 function c43714890.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c43714890.cfilter,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c43714890.cfilter,1,nil) end
 	local sg=Duel.SelectReleaseGroup(tp,c43714890.cfilter,1,1,nil)
 	Duel.Release(sg,REASON_COST)
 end

@@ -31,7 +31,7 @@ function c10485110.initial_effect(c)
 end
 function c10485110.spcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(c:GetControler(),Card.IsCode,1,nil,37721209)
+	return Duel.CheckReleaseGroup(REASON_COST,c:GetControler(),Card.IsCode,1,nil,37721209)
 end
 function c10485110.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,37721209)

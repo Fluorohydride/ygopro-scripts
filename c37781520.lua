@@ -75,7 +75,7 @@ function c37781520.costfilter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x74)
 end
 function c37781520.hdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c37781520.costfilter,1,e:GetHandler()) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c37781520.costfilter,1,e:GetHandler()) end
 	local sg=Duel.SelectReleaseGroup(tp,c37781520.costfilter,1,1,e:GetHandler())
 	Duel.Release(sg,REASON_COST)
 end

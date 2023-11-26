@@ -76,7 +76,7 @@ function c63014935.phcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c63014935.phop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckReleaseGroup(tp,aux.TRUE,1,e:GetHandler()) and Duel.SelectYesNo(tp,aux.Stringid(63014935,2)) then
+	if Duel.CheckReleaseGroup(REASON_COST,tp,aux.TRUE,1,e:GetHandler()) and Duel.SelectYesNo(tp,aux.Stringid(63014935,2)) then
 		Duel.Release(Duel.SelectReleaseGroup(tp,aux.TRUE,1,1,e:GetHandler()),REASON_EFFECT)
 	else Duel.Damage(tp,1000,REASON_EFFECT) end
 end

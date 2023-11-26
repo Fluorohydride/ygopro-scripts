@@ -50,7 +50,7 @@ function c90179822.rfilter(c,tp)
 	return c:IsType(TYPE_FUSION) and (c:IsControler(tp) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0
 end
 function c90179822.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c90179822.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c90179822.rfilter,1,nil,tp) end
 	local rg=Duel.SelectReleaseGroup(tp,c90179822.rfilter,1,1,nil,tp)
 	Duel.Release(rg,REASON_COST)
 end

@@ -25,7 +25,7 @@ function c40633084.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(tp,c40633084.cfilter,1,nil,tp)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,c40633084.cfilter,1,nil,tp)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,64213018,0x170,TYPES_TOKEN_MONSTER,1000,1000,3,RACE_INSECT,ATTRIBUTE_EARTH)
 	end
 	local g=Duel.SelectReleaseGroup(tp,c40633084.cfilter,1,1,nil,tp)

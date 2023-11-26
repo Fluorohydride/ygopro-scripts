@@ -67,7 +67,7 @@ function c90290572.costfilter(c,tp)
 		and Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,c)
 end
 function c90290572.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c90290572.costfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c90290572.costfilter,1,nil,tp) end
 	local rg=Duel.SelectReleaseGroup(tp,c90290572.costfilter,1,1,nil,tp)
 	Duel.Release(rg,REASON_COST)
 end
