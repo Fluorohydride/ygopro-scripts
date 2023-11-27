@@ -68,6 +68,7 @@ function c68406755.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	c:SetStatus(STATUS_PROC_COMPLETE,true)
 end
 function c68406755.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe2)
