@@ -91,7 +91,5 @@ function c36016907.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c36016907.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsCode(36016907) then
 	Duel.ReturnToField(e:GetHandler())
-	end
 end
