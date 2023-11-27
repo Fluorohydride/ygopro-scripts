@@ -107,13 +107,16 @@ function c74586817.retcon(e,tp,eg,ep,ev,re,r,rp)
 	else return true end
 end
 function c74586817.retop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local g=e:GetLabelObject()
 	local sg=g:Filter(c74586817.retfilter,nil,e:GetLabel())
 	g:DeleteGroup()
 	local tc=sg:GetFirst()
 	while tc do
-		if tc==e:GetHandler() then
+		if tc==c and c:IsCode(74586817) then
 			Duel.ReturnToField(tc)
+		elseif tc==c and not c:IsCode(74586817) then 
+			Duel.Remove(tc,POS_FACEUP,nil)
 		else
 			Duel.SendtoHand(tc,tc:GetPreviousControler(),REASON_EFFECT)
 		end
