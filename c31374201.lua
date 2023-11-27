@@ -35,7 +35,7 @@ end
 function c31374201.spfilter1(c,e,tp,attr)
 	return c:IsSetCard(0x13f) and c:IsAttribute(attr) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
-function c31374201.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c31374201.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c31374201.cfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -57,6 +57,7 @@ function c31374201.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.SelectMatchingCard(tp,c31374201.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,attr)
 	local sc=sg:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 and sc:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) then
+		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 		if not Duel.Equip(tp,c,sc,false) then return end
 		--equip limit
 		local e1=Effect.CreateEffect(c)
