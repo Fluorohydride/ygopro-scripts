@@ -70,7 +70,7 @@ function s.matchk(e,c)
 end
 function s.sfilter(c,e,tp)
 	return c:IsFaceup() and c:IsCanBeEffectTarget(e)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsType(TYPE_MONSTER) or c:IsStatus(STATUS_PROC_COMPLETE)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:IsType(TYPE_MONSTER)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(s.sfilter,nil,e,tp)
