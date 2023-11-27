@@ -88,12 +88,17 @@ function c37192109.retcon(e,tp,eg,ep,ev,re,r,rp)
 	else return true end
 end
 function c37192109.retop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local g=e:GetLabelObject()
 	local sg=g:Filter(c37192109.retfilter,nil,e:GetLabel())
 	g:DeleteGroup()
 	local tc=sg:GetFirst()
 	while tc do
+		if tc==c and not c:IsCode(37192109) then 
+		Duel.Remove(tc,POS_FACEUP,nil)
+		else
 		Duel.ReturnToField(tc)
+		end
 		tc=sg:GetNext()
 	end
 end
