@@ -15,18 +15,9 @@ end
 function c46710683.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
+	e1:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(1,0)
-	e1:SetValue(c46710683.damval)
-	e1:SetReset(RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-end
-function c46710683.damval(e,re,val,r,rp,rc)
-	local c=e:GetHandler()
-	if bit.band(r,REASON_BATTLE)~=0 and c:GetFlagEffect(46710683)==0 then
-		c:RegisterFlagEffect(46710683,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-		return 0
-	end
-	return val
 end
