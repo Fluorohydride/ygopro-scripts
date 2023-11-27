@@ -133,5 +133,7 @@ function c40939228.retcon(e,tp,eg,ep,ev,re,r,rp)
 	else return true end
 end
 function c40939228.retop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsCode(40939228) then
 	Duel.ReturnToField(e:GetLabelObject())
+	end
 end
