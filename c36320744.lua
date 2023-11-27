@@ -73,18 +73,20 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local c=e:GetHandler()
 		if c:IsRelateToEffect(e) then
 			local fid=c:GetFieldID()
-			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)>0 and c:GetOriginalCode()==id then
-				c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-				e1:SetCode(EVENT_PHASE+PHASE_END)
-				e1:SetLabel(fid)
-				e1:SetLabelObject(c)
-				e1:SetCountLimit(1)
-				e1:SetCondition(s.retcon)
-				e1:SetOperation(s.retop)
-				e1:SetReset(RESET_PHASE+PHASE_END)
-				Duel.RegisterEffect(e1,tp)
+			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)>0 then
+				if c:GetOriginalCode()==id then
+					c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
+					local e1=Effect.CreateEffect(c)
+					e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+					e1:SetCode(EVENT_PHASE+PHASE_END)
+					e1:SetLabel(fid)
+					e1:SetLabelObject(c)
+					e1:SetCountLimit(1)
+					e1:SetCondition(s.retcon)
+					e1:SetOperation(s.retop)
+					e1:SetReset(RESET_PHASE+PHASE_END)
+					Duel.RegisterEffect(e1,tp)
+				end
 				if Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil,e,tp)
 					and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
