@@ -107,7 +107,5 @@ function c21123811.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c21123811.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsCode(21123811) then
 	Duel.ReturnToField(e:GetLabelObject())
-	end
 end
