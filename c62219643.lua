@@ -29,7 +29,7 @@ end
 function c62219643.limcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c62219643.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c62219643.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c62219643.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c62219643.limop(e,tp,eg,ep,ev,re,r,rp)

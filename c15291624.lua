@@ -53,7 +53,7 @@ function c15291624.spcon(e,c)
 		and Duel.CheckReleaseGroup(REASON_COST,tp,c15291624.spfilter,1,nil,c,tp)
 end
 function c15291624.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c15291624.spfilter,1,1,nil,c,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c15291624.spfilter,1,1,nil,c,tp)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_COST)
 end

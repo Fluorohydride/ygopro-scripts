@@ -97,13 +97,13 @@ function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(opval[op])
 	local rg=nil
 	if opval[op]==1 then
-		rg=Duel.SelectReleaseGroup(tp,c44097050.costfilter,1,1,nil,tp)
+		rg=Duel.SelectReleaseGroup(REASON_COST,tp,c44097050.costfilter,1,1,nil,tp)
 	elseif opval[op]==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
 		aux.UseExtraReleaseCount(rg,tp)
 	else
-		rg=Duel.SelectReleaseGroup(tp,nil,3,3,nil)
+		rg=Duel.SelectReleaseGroup(REASON_COST,tp,nil,3,3,nil)
 	end
 	Duel.Release(rg,REASON_COST)
 end

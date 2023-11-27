@@ -23,9 +23,9 @@ function c98446407.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	if ft>0 then
-		rg=Duel.SelectReleaseGroup(tp,nil,1,1,c)
+		rg=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,c)
 	else
-		rg=Duel.SelectReleaseGroup(tp,c98446407.mzfilter,1,1,c,tp)
+		rg=Duel.SelectReleaseGroup(REASON_COST,tp,c98446407.mzfilter,1,1,c,tp)
 	end
 	rg:AddCard(c)
 	Duel.Release(rg,REASON_COST)

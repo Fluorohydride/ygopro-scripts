@@ -28,7 +28,7 @@ end
 function c70861343.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c70861343.cfilter,1,nil,e,tp,ft) end
-	local rg=Duel.SelectReleaseGroup(tp,c70861343.cfilter,1,1,nil,e,tp,ft)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c70861343.cfilter,1,1,nil,e,tp,ft)
 	e:SetLabel(rg:GetFirst():GetLevel()+3)
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)

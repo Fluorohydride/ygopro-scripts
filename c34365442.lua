@@ -44,7 +44,7 @@ function c34365442.cfilter1(c,tp)
 end
 function c34365442.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c34365442.cfilter1,1,nil,tp) end
-	local sg=Duel.SelectReleaseGroup(tp,c34365442.cfilter1,1,1,nil,tp)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c34365442.cfilter1,1,1,nil,tp)
 	e:SetLabel(sg:GetFirst():GetBaseAttack())
 	Duel.Release(sg,REASON_COST)
 end
@@ -79,7 +79,7 @@ function c34365442.cfilter2(c,tp)
 end
 function c34365442.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c34365442.cfilter2,1,nil,tp) end
-	local sg=Duel.SelectReleaseGroup(tp,c34365442.cfilter2,1,1,nil,tp)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c34365442.cfilter2,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c34365442.target2(e,tp,eg,ep,ev,re,r,rp,chk)

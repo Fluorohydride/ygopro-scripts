@@ -73,9 +73,9 @@ function c99666430.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99666430.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c99666430.rlfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c99666430.rlfilter,1,1,nil,tp)
 	if g:GetCount()==0 then
-		g=Duel.SelectReleaseGroup(tp,Card.IsReleasableByEffect,1,1,nil)
+		g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsReleasableByEffect,1,1,nil)
 	end
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)

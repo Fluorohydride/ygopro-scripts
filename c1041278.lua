@@ -49,7 +49,7 @@ function c1041278.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		rfilter=c1041278.rfilter2
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=Duel.SelectReleaseGroup(tp,rfilter,1,1,nil,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,rfilter,1,1,nil,tp)
 	local rc=rg:GetFirst()
 	e:SetLabelObject(rc)
 	Duel.Release(rg,REASON_COST)

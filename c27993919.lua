@@ -89,7 +89,7 @@ function c27993919.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27993919.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c27993919.cfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c27993919.cfilter,1,1,nil,e,tp)
 	if Duel.Release(g,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c27993919.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,g:GetFirst():GetCurrentScale())

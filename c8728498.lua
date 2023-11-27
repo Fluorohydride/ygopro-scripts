@@ -70,7 +70,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,s.costfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
-	local g=Duel.SelectReleaseGroup(tp,s.costfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.costfilter,1,1,nil,e,tp)
 	Duel.Release(g,REASON_COST)
 	e:SetLabelObject(g:GetFirst())
 	if g:GetFirst():IsType(TYPE_LINK) then

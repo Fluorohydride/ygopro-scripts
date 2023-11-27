@@ -27,15 +27,15 @@ function c63120904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local code=0
 	if b1 and b2 then
-		local rg=Duel.SelectReleaseGroup(tp,c63120904.rfilter,1,1,nil)
+		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c63120904.rfilter,1,1,nil)
 		code=rg:GetFirst():GetCode()
 		Duel.Release(rg,REASON_COST)
 	elseif b1 then
-		local rg=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,90337190)
+		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,90337190)
 		code=90337190
 		Duel.Release(rg,REASON_COST)
 	else
-		local rg=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,95614612)
+		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,95614612)
 		code=95614612
 		Duel.Release(rg,REASON_COST)
 	end

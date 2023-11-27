@@ -16,7 +16,7 @@ function c57728570.costfilter(c)
 end
 function c57728570.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c57728570.costfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c57728570.costfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c57728570.costfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c57728570.filter(c)

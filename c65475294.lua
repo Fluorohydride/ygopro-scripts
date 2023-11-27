@@ -17,7 +17,7 @@ end
 function c65475294.costop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,c) and Duel.SelectEffectYesNo(tp,c,aux.Stringid(65475294,0)) then
-		local g=Duel.SelectReleaseGroup(tp,nil,1,1,c)
+		local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,c)
 		Duel.Release(g,REASON_COST)
 	else
 		Duel.Destroy(c,REASON_COST)

@@ -95,7 +95,7 @@ function c10000000.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	e:GetHandler():RegisterEffect(e1)
-	local g=Duel.SelectReleaseGroup(tp,nil,2,2,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,2,2,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c10000000.destg(e,tp,eg,ep,ev,re,r,rp,chk)

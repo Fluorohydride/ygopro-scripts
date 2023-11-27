@@ -26,7 +26,7 @@ function c79613121.initial_effect(c)
 end
 function c79613121.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c79613121.sumsuc(e,tp,eg,ep,ev,re,r,rp)

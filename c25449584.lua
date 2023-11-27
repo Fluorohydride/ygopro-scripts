@@ -31,7 +31,7 @@ function c25449584.spcon(e,c)
 	return Duel.CheckReleaseGroup(REASON_COST,tp,c25449584.spfilter,1,nil,tp)
 end
 function c25449584.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c25449584.spfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c25449584.spfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(25449584,1))
 	local atk=g:GetFirst():GetBaseAttack()

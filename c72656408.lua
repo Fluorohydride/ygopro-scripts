@@ -73,7 +73,7 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return g:IsContains(chkc) end
 	if chk==0 then return e:IsCostChecked() and #g>0
 		and Duel.CheckReleaseGroup(REASON_COST,tp,s.costfilter,1,c,g,tp) end
-	local rg=Duel.SelectReleaseGroup(tp,s.costfilter,1,1,c,g,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,s.costfilter,1,1,c,g,tp)
 	Duel.Release(rg,REASON_COST)
 	local tg=g:Clone()
 	if #g>1 then

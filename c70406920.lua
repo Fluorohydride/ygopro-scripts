@@ -61,7 +61,7 @@ function c70406920.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70406920.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_MACHINE) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,e:GetHandler(),RACE_MACHINE)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,e:GetHandler(),RACE_MACHINE)
 	e:SetLabel(g:GetFirst():GetAttack())
 	Duel.Release(g,REASON_COST)
 end

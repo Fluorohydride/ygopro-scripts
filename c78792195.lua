@@ -21,7 +21,7 @@ function c78792195.con(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78792195.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x3d) end
-	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x3d)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x3d)
 	Duel.Release(sg,REASON_COST)
 end
 function c78792195.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

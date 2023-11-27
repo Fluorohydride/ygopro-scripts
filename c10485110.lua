@@ -34,7 +34,7 @@ function c10485110.spcon(e,c)
 	return Duel.CheckReleaseGroup(REASON_COST,c:GetControler(),Card.IsCode,1,nil,37721209)
 end
 function c10485110.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,37721209)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,37721209)
 	Duel.Release(g,REASON_COST)
 end
 function c10485110.cfilter(c)

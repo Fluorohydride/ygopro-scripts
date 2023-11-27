@@ -38,7 +38,7 @@ function c91512835.atcost(e,c,tp)
 	return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,e:GetHandler())
 end
 function c91512835.atop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,e:GetHandler())
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c91512835.filter(c)

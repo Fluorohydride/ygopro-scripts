@@ -28,7 +28,7 @@ function c17427333.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetLabel(0)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,c17427333.costfilter,1,nil,tp)
 	end
-	local g=Duel.SelectReleaseGroup(tp,c17427333.costfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c17427333.costfilter,1,1,nil,tp)
 	local atk=g:GetFirst():GetTextAttack()
 	Duel.Release(g,REASON_COST)
 	local ct=math.floor(atk/1000)

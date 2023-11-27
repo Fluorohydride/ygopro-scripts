@@ -13,7 +13,7 @@ function c29139104.initial_effect(c)
 end
 function c29139104.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,e:GetHandler(),ATTRIBUTE_EARTH) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,e:GetHandler(),ATTRIBUTE_EARTH)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,e:GetHandler(),ATTRIBUTE_EARTH)
 	Duel.Release(g,REASON_COST)
 end
 function c29139104.filter(c,e,tp)

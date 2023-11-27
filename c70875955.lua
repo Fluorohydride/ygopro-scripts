@@ -47,7 +47,7 @@ end
 function c70875955.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckReleaseGroup(REASON_COST,tp,c70875955.rfilter,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(70875955,2)) then
-		local g=Duel.SelectReleaseGroup(tp,c70875955.rfilter,1,1,nil)
+		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c70875955.rfilter,1,1,nil)
 		Duel.Release(g,REASON_RULE)
 	else
 		Duel.SendtoGrave(e:GetHandler(),REASON_RULE)

@@ -34,7 +34,7 @@ end
 function c79339613.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c79339613.filter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsFaceup,2,g) end
-	local rg=Duel.SelectReleaseGroup(tp,Card.IsFaceup,2,2,g)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsFaceup,2,2,g)
 	Duel.Release(rg,REASON_COST)
 end
 function c79339613.target(e,tp,eg,ep,ev,re,r,rp,chk)

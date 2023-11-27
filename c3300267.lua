@@ -43,7 +43,7 @@ function c3300267.hspcon(e,c)
 end
 function c3300267.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c3300267.hspfilter,1,1,nil,ft,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c3300267.hspfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(3300267,2))
 end

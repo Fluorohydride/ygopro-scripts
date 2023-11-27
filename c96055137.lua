@@ -86,7 +86,7 @@ function c96055137.rmop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c96055137.rmcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsReleasable,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c96055137.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

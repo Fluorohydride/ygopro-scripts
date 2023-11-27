@@ -63,7 +63,7 @@ function c11443677.sprcon(e,c)
 end
 function c11443677.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c11443677.sprfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c11443677.sprfilter,1,1,nil,tp,c)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_COST)
 end

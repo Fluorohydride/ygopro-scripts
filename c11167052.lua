@@ -66,7 +66,7 @@ function c11167052.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,c11167052.filter1,1,nil,e,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c11167052.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c11167052.filter1,1,1,nil,e,tp)
 	e:SetLabel(rg:GetFirst():GetOriginalAttribute())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

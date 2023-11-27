@@ -49,7 +49,7 @@ function c4709881.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
 	local zone=e:GetHandler():GetLinkedZone(tp)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c4709881.cfilter,1,nil,lg,tp,zone) end
-	local g=Duel.SelectReleaseGroup(tp,c4709881.cfilter,1,1,nil,lg,tp,zone)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c4709881.cfilter,1,1,nil,lg,tp,zone)
 	Duel.Release(g,REASON_COST)
 	e:SetLabelObject(g:GetFirst())
 end

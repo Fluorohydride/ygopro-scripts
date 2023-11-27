@@ -31,7 +31,7 @@ function c40160226.ntcon(e,c,minc)
 end
 function c40160226.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,nil,ATTRIBUTE_WATER) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_WATER)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_WATER)
 	Duel.Release(g,REASON_COST)
 end
 function c40160226.filter(c)

@@ -63,6 +63,6 @@ function c94568601.spcost(e,c,tp)
 	return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,nil,RACE_DRAGON)
 end
 function c94568601.spcop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_DRAGON)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,nil,RACE_DRAGON)
 	Duel.Release(g,REASON_EFFECT)
 end

@@ -22,7 +22,7 @@ function c98069388.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98069388.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,aux.TRUE,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,aux.TRUE,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,aux.TRUE,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c98069388.target(e,tp,eg,ep,ev,re,r,rp,chk)

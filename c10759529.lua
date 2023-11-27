@@ -16,7 +16,7 @@ function c10759529.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10759529.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,32679370) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,32679370)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,32679370)
 	Duel.Release(g,REASON_COST)
 end
 function c10759529.filter(c)

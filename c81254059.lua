@@ -49,7 +49,7 @@ end
 function c81254059.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c81254059.costfilter,1,nil,e,tp,ft) end
-	local sg=Duel.SelectReleaseGroup(tp,c81254059.costfilter,1,1,nil,e,tp,ft)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c81254059.costfilter,1,1,nil,e,tp,ft)
 	e:SetLabel(sg:GetFirst():GetLevel())
 	Duel.Release(sg,REASON_COST)
 end

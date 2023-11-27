@@ -56,7 +56,7 @@ function s.desrepval(e,c)
 end
 function s.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroup(tp,s.rfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.rfilter,1,1,nil)
 	Duel.Hint(HINT_CARD,0,id)
 	Duel.Release(g,REASON_EFFECT+REASON_REPLACE)
 end

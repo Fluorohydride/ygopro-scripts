@@ -29,7 +29,7 @@ function c51355346.initial_effect(c)
 end
 function c51355346.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_PYRO) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,2,e:GetHandler(),RACE_PYRO)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,2,e:GetHandler(),RACE_PYRO)
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(g:GetCount())
 end

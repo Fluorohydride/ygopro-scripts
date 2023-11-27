@@ -35,10 +35,10 @@ function c97173708.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
 			and Duel.CheckReleaseGroup(REASON_COST,tp,c97173708.rfilter1,1,nil,e,tp)
 	end
-	local rg1=Duel.SelectReleaseGroup(tp,c97173708.rfilter1,1,1,nil,e,tp)
+	local rg1=Duel.SelectReleaseGroup(REASON_COST,tp,c97173708.rfilter1,1,1,nil,e,tp)
 	local lv=rg1:GetFirst():GetLevel()
 	e:SetLabel(lv)
-	local rg2=Duel.SelectReleaseGroup(tp,c97173708.rfilter2,1,9,rg1:GetFirst(),lv)
+	local rg2=Duel.SelectReleaseGroup(REASON_COST,tp,c97173708.rfilter2,1,9,rg1:GetFirst(),lv)
 	rg1:Merge(rg2)
 	Duel.Release(rg1,REASON_COST)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

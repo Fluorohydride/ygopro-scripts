@@ -24,7 +24,7 @@ function c55271628.cfilter(c)
 end
 function c55271628.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c55271628.cfilter,2,nil) end
-	local rg=Duel.SelectReleaseGroup(tp,c55271628.cfilter,2,2,nil)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c55271628.cfilter,2,2,nil)
 	Duel.Release(rg,REASON_COST)
 end
 function c55271628.sumlimit(e,c,sump,sumtype,sumpos,targetp)

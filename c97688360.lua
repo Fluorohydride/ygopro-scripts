@@ -36,7 +36,7 @@ function c97688360.atkfilter2(c)
 end
 function c97688360.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c97688360.atkfilter1,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c97688360.atkfilter1,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c97688360.atkfilter1,1,1,nil,tp)
 	e:SetLabel(g:GetFirst():GetBaseAttack())
 	Duel.Release(g,REASON_COST)
 end

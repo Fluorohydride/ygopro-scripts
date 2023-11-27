@@ -33,7 +33,7 @@ function c8339504.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			and Duel.CheckReleaseGroup(REASON_COST,tp,c8339504.cfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
-	local g=Duel.SelectReleaseGroup(tp,c8339504.cfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c8339504.cfilter,1,1,nil,e,tp)
 	e:SetLabel(g:GetFirst():GetRank(),g:GetFirst():GetRace(),g:GetFirst():GetAttribute(),g:GetFirst():GetCode())
 	Duel.Release(g,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)

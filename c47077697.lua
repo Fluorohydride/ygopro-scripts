@@ -41,7 +41,7 @@ end
 function c47077697.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c47077697.cfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c47077697.cfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c47077697.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c47077697.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -61,7 +61,7 @@ end
 function c47077697.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c47077697.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c47077697.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c47077697.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	local tc=g:GetFirst()
 	local atk=tc:GetBaseAttack()

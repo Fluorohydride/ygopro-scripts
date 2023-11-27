@@ -28,7 +28,7 @@ end
 function c37745740.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x9f) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x9f)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x9f)
 	e:SetLabel(g:GetFirst():GetLevel()*100)
 	Duel.Release(g,REASON_COST)
 end
@@ -45,7 +45,7 @@ end
 function c37745740.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x9f) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x9f)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x9f)
 	e:SetLabelObject(g:GetFirst())
 	Duel.Release(g,REASON_COST)
 end

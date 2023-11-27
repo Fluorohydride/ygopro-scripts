@@ -49,7 +49,7 @@ function c30794966.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.CheckReleaseGroup(REASON_COST,tp,c30794966.repfilter,1,c) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local g=Duel.SelectReleaseGroup(tp,c30794966.repfilter,1,1,c)
+		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c30794966.repfilter,1,1,c)
 		e:SetLabelObject(g:GetFirst())
 		return true
 	else return false end

@@ -78,7 +78,7 @@ function c90176467.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rc=Duel.SelectReleaseGroup(tp,c90176467.costfilter,1,1,c,e,tp):GetFirst()
+	local rc=Duel.SelectReleaseGroup(REASON_COST,tp,c90176467.costfilter,1,1,c,e,tp):GetFirst()
 	e:SetLabel(rc:GetLevel())
 	Duel.Release(rc,REASON_COST)
 end

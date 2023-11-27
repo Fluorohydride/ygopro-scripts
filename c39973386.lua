@@ -38,7 +38,7 @@ end
 function c39973386.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:IsCostChecked()
 		and Duel.CheckReleaseGroup(REASON_COST,tp,c39973386.costfilter,1,nil,e,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c39973386.costfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c39973386.costfilter,1,1,nil,e,tp)
 	Duel.Release(g,REASON_COST)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_EXTRA)

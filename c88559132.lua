@@ -22,7 +22,7 @@ function c88559132.spcon(e,c)
 end
 function c88559132.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c88559132.spfilter,1,1,nil,ft,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c88559132.spfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	local atk=g:GetFirst():GetBaseAttack()
 	if atk<0 then return end

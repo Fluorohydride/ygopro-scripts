@@ -28,7 +28,7 @@ function c40633084.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,c40633084.cfilter,1,nil,tp)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,64213018,0x170,TYPES_TOKEN_MONSTER,1000,1000,3,RACE_INSECT,ATTRIBUTE_EARTH)
 	end
-	local g=Duel.SelectReleaseGroup(tp,c40633084.cfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c40633084.cfilter,1,1,nil,tp)
 	local atk=g:GetFirst():GetBaseAttack()
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(math.floor(atk/1000))

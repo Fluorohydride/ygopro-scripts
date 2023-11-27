@@ -65,7 +65,7 @@ function c31480215.splimit(e,c,tp,sumtp,sumpos)
 end
 function c31480215.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,e:GetHandler(),0x101b) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0x101b)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,e:GetHandler(),0x101b)
 	Duel.Release(g,REASON_COST)
 end
 function c31480215.lvop(e,tp,eg,ep,ev,re,r,rp)

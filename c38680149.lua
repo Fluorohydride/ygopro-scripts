@@ -30,7 +30,7 @@ function c38680149.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetLabel(0)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,c38680149.filter1,1,nil,e,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c38680149.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c38680149.filter1,1,1,nil,e,tp)
 	local lv=math.floor(rg:GetFirst():GetLevel()/2)
 	e:SetLabel(lv)
 	Duel.Release(rg,REASON_COST)

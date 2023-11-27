@@ -48,7 +48,7 @@ function c2948263.spcon(e,c)
 end
 function c2948263.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c2948263.spfilter,1,1,nil,ft,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c2948263.spfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	local atk=g:GetFirst():GetBaseAttack()
 	local e1=Effect.CreateEffect(c)

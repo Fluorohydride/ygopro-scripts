@@ -21,7 +21,7 @@ end
 function c51020079.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c51020079.spfilter(chkc,e,tp) end
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c51020079.rfilter,1,nil,e,tp) end
-	local rg=Duel.SelectReleaseGroup(tp,c51020079.rfilter,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c51020079.rfilter,1,1,nil,e,tp)
 	local r=rg:GetFirst()
 	local lv=r:GetLevel()
 	local att=r:GetAttribute()

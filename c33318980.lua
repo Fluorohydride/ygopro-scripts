@@ -42,7 +42,7 @@ end
 function c33318980.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c33318980.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c33318980.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c33318980.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c33318980.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

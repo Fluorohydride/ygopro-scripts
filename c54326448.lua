@@ -20,7 +20,7 @@ function c54326448.filter(c)
 end
 function c54326448.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c54326448.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c54326448.cfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c54326448.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c54326448.atop(e,tp,eg,ep,ev,re,r,rp)

@@ -60,7 +60,7 @@ function c132308.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.ConfirmCards(1-tp,e:GetHandler())
 	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c132308.costfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c132308.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c132308.distg(e,tp,eg,ep,ev,re,r,rp,chk)

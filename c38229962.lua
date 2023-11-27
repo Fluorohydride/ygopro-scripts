@@ -63,7 +63,7 @@ function c38229962.spcostfilter(c,tp)
 end
 function c38229962.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c38229962.spcostfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c38229962.spcostfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c38229962.spcostfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c38229962.spfilter(c,e,tp)
@@ -85,7 +85,7 @@ function c38229962.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38229962.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c38229962.costfilter,1,e:GetHandler(),tp) end
-	local g=Duel.SelectReleaseGroup(tp,c38229962.costfilter,1,1,e:GetHandler(),tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c38229962.costfilter,1,1,e:GetHandler(),tp)
 	Duel.Release(g,REASON_COST)
 end
 function c38229962.atktg(e,tp,eg,ep,ev,re,r,rp,chk)

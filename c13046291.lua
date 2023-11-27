@@ -29,7 +29,7 @@ end
 function c13046291.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c13046291.costfilter,1,nil,tp)
 		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c13046291.costfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c13046291.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end

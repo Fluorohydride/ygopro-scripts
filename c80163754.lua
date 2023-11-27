@@ -28,7 +28,7 @@ function c80163754.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local g=Duel.GetMatchingGroup(c80163754.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	local mg,mdef=g:GetMinGroup(Card.GetDefense)
-	local rg=Duel.SelectReleaseGroup(tp,c80163754.cfilter,1,1,nil,mdef)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c80163754.cfilter,1,1,nil,mdef)
 	e:SetLabel(rg:GetFirst():GetAttack())
 	Duel.Release(rg,REASON_COST)
 end

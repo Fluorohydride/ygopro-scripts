@@ -34,7 +34,7 @@ function c51777272.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51777272.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,e:GetHandler(),0xdf) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0xdf)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,e:GetHandler(),0xdf)
 	Duel.Release(g,REASON_COST)
 end
 function c51777272.operation(e,tp,eg,ep,ev,re,r,rp)

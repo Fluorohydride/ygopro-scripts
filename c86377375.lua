@@ -50,9 +50,9 @@ function c86377375.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		or (Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,c,ATTRIBUTE_DARK) and Duel.IsExistingMatchingCard(c86377375.thfilter2,tp,LOCATION_DECK,0,1,nil))) end
 	local sg=nil
 	if Duel.IsExistingMatchingCard(c86377375.thfilter2,tp,LOCATION_DECK,0,1,nil) and not Duel.IsPlayerCanDraw(tp,1) then
-		sg=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,c,ATTRIBUTE_DARK)
+		sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,c,ATTRIBUTE_DARK)
 	else
-		sg=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_DARK)
+		sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_DARK)
 	end
 	e:SetLabelObject(sg:GetFirst())
 	Duel.Release(sg,REASON_COST)

@@ -16,7 +16,7 @@ function c25643346.initial_effect(c)
 end
 function c25643346.stcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,aux.TRUE,2,nil) end
-	local g=Duel.SelectReleaseGroup(tp,aux.TRUE,2,2,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,aux.TRUE,2,2,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c25643346.stfilter(c)

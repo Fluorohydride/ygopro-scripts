@@ -62,7 +62,7 @@ function c15180041.spcon(e,c)
 end
 function c15180041.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c15180041.spfilter,1,1,nil,ft,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c15180041.spfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c15180041.atkop(e,tp,eg,ep,ev,re,r,rp)

@@ -65,7 +65,7 @@ function c4417407.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4417407.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsType,1,nil,TYPE_TOKEN) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_TOKEN)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsType,1,1,nil,TYPE_TOKEN)
 	Duel.Release(g,REASON_COST)
 end
 function c4417407.filter(c)

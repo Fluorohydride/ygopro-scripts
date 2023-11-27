@@ -24,7 +24,7 @@ function c84905691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		fe:UseCountLimit(tp)
 		Duel.DiscardDeck(tp,2,REASON_COST)
 	else
-		local g=Duel.SelectReleaseGroup(tp,c84905691.cfilter,1,1,e:GetHandler())
+		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c84905691.cfilter,1,1,e:GetHandler())
 		Duel.Release(g,REASON_COST)
 	end
 end

@@ -46,7 +46,7 @@ function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,c,c,tp)
+		local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c5795980.cfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)

@@ -84,7 +84,7 @@ function c92770064.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local g=Duel.SelectReleaseGroup(tp,c92770064.costfilter,1,1,c,c,tp,lg)
+		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c92770064.costfilter,1,1,c,c,tp,lg)
 		ct=g:GetFirst():GetLink()
 		Duel.Release(g,REASON_COST)
 	end

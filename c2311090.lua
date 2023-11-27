@@ -40,7 +40,7 @@ function c2311090.cfilter(c)
 end
 function c2311090.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c2311090.cfilter,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(tp,c2311090.cfilter,1,1,e:GetHandler())
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c2311090.cfilter,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 	local tc=Duel.GetOperatedGroup():GetFirst()
 	e:SetLabelObject(tc)

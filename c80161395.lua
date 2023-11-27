@@ -16,7 +16,7 @@ function c80161395.filter(c,tp)
 end
 function c80161395.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c80161395.filter,1,nil,tp) end
-	local sg=Duel.SelectReleaseGroup(tp,c80161395.filter,1,1,nil,tp)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c80161395.filter,1,1,nil,tp)
 	local tc=sg:GetFirst()
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()

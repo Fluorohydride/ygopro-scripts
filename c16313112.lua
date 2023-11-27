@@ -56,7 +56,7 @@ function c16313112.cfilter(c)
 end
 function c16313112.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c16313112.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c16313112.cfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c16313112.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c16313112.effop(e,tp,eg,ep,ev,re,r,rp)

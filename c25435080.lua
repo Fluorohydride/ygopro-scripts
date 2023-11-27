@@ -31,7 +31,7 @@ function c25435080.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetLabel(0)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,c25435080.cfilter,1,nil,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c25435080.cfilter,1,1,nil,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c25435080.cfilter,1,1,nil,tp)
 	e:SetLabel(rg:GetFirst():GetAttack())
 	Duel.Release(rg,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)

@@ -29,7 +29,7 @@ function c458748.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 		return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) and Duel.CheckReleaseGroup(REASON_COST,tp,c458748.filter1,1,nil,e,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c458748.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c458748.filter1,1,1,nil,e,tp)
 	e:SetLabel(rg:GetFirst():GetOriginalAttribute())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)

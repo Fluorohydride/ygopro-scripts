@@ -57,7 +57,7 @@ function c13224603.hspcon(e,c)
 	return Duel.CheckReleaseGroup(REASON_COST,tp,c13224603.hspfilter,1,nil,tp)
 end
 function c13224603.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c13224603.hspfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c13224603.hspfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c13224603.sumcon(e,tp,eg,ep,ev,re,r,rp)

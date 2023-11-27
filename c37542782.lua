@@ -56,7 +56,7 @@ function c37542782.hspcon(e,c)
 	return Duel.CheckReleaseGroup(REASON_COST,c:GetControler(),c37542782.hspfilter,1,nil,c:GetControler(),c)
 end
 function c37542782.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c37542782.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c37542782.hspfilter,1,1,nil,tp,c)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_COST)
 end

@@ -18,6 +18,6 @@ function c37869028.atcost(e,c,tp)
 	return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,nil,RACE_AQUA)
 end
 function c37869028.atop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_AQUA)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,nil,RACE_AQUA)
 	Duel.Release(g,REASON_COST)
 end

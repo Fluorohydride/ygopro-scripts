@@ -46,7 +46,7 @@ function c89818984.hspcon(e,c)
 end
 function c89818984.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c89818984.hspfilter,1,1,nil,ft,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c89818984.hspfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c89818984.target(e,tp,eg,ep,ev,re,r,rp,chk)

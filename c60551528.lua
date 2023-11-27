@@ -108,7 +108,7 @@ function c60551528.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60551528.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsReleasable,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c60551528.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

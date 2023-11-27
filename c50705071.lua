@@ -21,7 +21,7 @@ function c50705071.spcon(e,c)
 		and Duel.CheckReleaseGroup(REASON_COST,tp,c50705071.spfilter,1,nil)
 end
 function c50705071.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c50705071.spfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c50705071.spfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 	Duel.ShuffleDeck(tp)
 end

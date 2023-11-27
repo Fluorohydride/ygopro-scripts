@@ -61,7 +61,7 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 	else
 		if e:GetLabel()==9 then
-			local rg=Duel.SelectReleaseGroup(tp,c98045062.cfilter,1,1,nil,tp)
+			local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c98045062.cfilter,1,1,nil,tp)
 			Duel.Release(rg,REASON_COST)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)

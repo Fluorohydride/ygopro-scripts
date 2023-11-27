@@ -34,7 +34,7 @@ function c96399967.spfilter(c,e,tp,lv)
 end
 function c96399967.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c96399967.costfilter,1,nil,e,tp) end
-	local sg=Duel.SelectReleaseGroup(tp,c96399967.costfilter,1,1,nil,e,tp)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c96399967.costfilter,1,1,nil,e,tp)
 	e:SetLabel(sg:GetFirst():GetLevel())
 	Duel.Release(sg,REASON_COST)
 end

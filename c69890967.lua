@@ -85,7 +85,7 @@ function c69890967.tkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69890967.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,e:GetHandler())
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,e:GetHandler())
 	local atk=g:GetFirst():GetTextAttack()
 	if atk<0 then atk=0 end
 	e:SetLabel(atk)

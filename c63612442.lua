@@ -15,7 +15,7 @@ function c63612442.initial_effect(c)
 end
 function c63612442.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,e:GetHandler(),0x100d) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0x100d)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,e:GetHandler(),0x100d)
 	Duel.Release(g,REASON_COST)
 end
 function c63612442.target(e,tp,eg,ep,ev,re,r,rp,chk)

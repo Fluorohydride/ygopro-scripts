@@ -34,7 +34,7 @@ function c55312487.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(55312487,0)) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetOperation(c55312487.activate)
-		local rg=Duel.SelectReleaseGroup(tp,c55312487.spfilter1,1,1,nil,e,tp)
+		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c55312487.spfilter1,1,1,nil,e,tp)
 		e:SetLabelObject(rg:GetFirst())
 		Duel.Release(rg,REASON_COST)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)

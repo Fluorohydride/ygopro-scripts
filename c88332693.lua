@@ -41,7 +41,7 @@ function c88332693.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 		return Duel.CheckReleaseGroup(REASON_COST,tp,c88332693.filter1,1,nil,e,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c88332693.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c88332693.filter1,1,1,nil,e,tp)
 	Duel.SetTargetParam(rg:GetFirst():GetCode())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)

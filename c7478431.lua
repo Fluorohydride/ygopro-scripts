@@ -32,7 +32,7 @@ function c7478431.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 		fe:UseCountLimit(tp)
 		Duel.DiscardDeck(tp,2,REASON_COST)
 	else
-		local g=Duel.SelectReleaseGroup(tp,c7478431.cfilter,1,1,c)
+		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c7478431.cfilter,1,1,c)
 		g:AddCard(c)
 		Duel.Release(g,REASON_COST)
 	end

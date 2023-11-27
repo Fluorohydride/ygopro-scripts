@@ -18,7 +18,7 @@ function c37474917.initial_effect(c)
 end
 function c37474917.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x43) end
-	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x43)
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x43)
 	local atk=sg:GetFirst():GetTextAttack()
 	if atk<0 then atk=0 end
 	e:SetLabel(atk)

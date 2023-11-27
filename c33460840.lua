@@ -79,7 +79,7 @@ end
 function c33460840.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,c) end
-	local rg=Duel.SelectReleaseGroup(tp,nil,1,1,c)
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,c)
 	rg:AddCard(c)
 	Duel.Release(rg,REASON_COST)
 end

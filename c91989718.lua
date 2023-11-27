@@ -12,7 +12,7 @@ function c91989718.initial_effect(c)
 end
 function c91989718.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,70095154) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,70095154)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,70095154)
 	Duel.Release(g,REASON_COST)
 end
 function c91989718.spfilter(c,e,tp)
