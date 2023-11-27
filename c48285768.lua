@@ -1,4 +1,5 @@
 --スプリガンズ・メリーメイカー
+local s,id,o=GetID()
 function c48285768.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--xyz summon

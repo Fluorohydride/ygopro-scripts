@@ -1,4 +1,5 @@
 --クロノダイバー・リダン
+local s,id,o=GetID()
 function c55285840.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)
