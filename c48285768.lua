@@ -83,7 +83,5 @@ function c48285768.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48285768.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsCode(48285768) then
 	Duel.ReturnToField(e:GetLabelObject())
-	end
 end
