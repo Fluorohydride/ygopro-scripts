@@ -53,7 +53,5 @@ function c84747429.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c84747429.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsCode(84747429) then
 	Duel.ReturnToField(e:GetLabelObject())
-	end
 end
