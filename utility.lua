@@ -1411,6 +1411,10 @@ function Auxiliary.RegisterMergedDelayedEvent(c,code,event,g)
 	ge2:SetCode(EVENT_CHAIN_END)
 	ge2:SetOperation(Auxiliary.MergedDelayEventCheck2)
 	Duel.RegisterEffect(ge2,0)
+	local ge3=ge1:Clone()
+	ge3:SetCode(EVENT_CHAIN_SOLVING)
+	ge3:SetOperation(Auxiliary.MergedDelayEventCheck3)
+	Duel.RegisterEffect(ge3,0)
 end
 function Auxiliary.MergedDelayEventCheck1(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
@@ -1424,6 +1428,14 @@ end
 function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	if #g>0 then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,EVENT_CUSTOM+e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck3(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	if #g>0 and Duel.GetCurrentChain()==1 then
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,EVENT_CUSTOM+e:GetLabel(),re,r,rp,ep,ev)
 		g:Clear()
