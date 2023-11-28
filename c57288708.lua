@@ -52,8 +52,6 @@ end
 function c57288708.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=eg:Filter(c57288708.tgfilter,nil)
-	Debug.Message('#eg='..tostring(#eg))
-	Debug.Message('#g='..tostring(#g))
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end
