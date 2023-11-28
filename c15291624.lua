@@ -50,12 +50,12 @@ function c15291624.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return (Duel.GetCustomActivityCount(15291624,tp,ACTIVITY_CHAIN)~=0 or Duel.GetCustomActivityCount(15291624,1-tp,ACTIVITY_CHAIN)~=0)
-		and Duel.CheckReleaseGroup(REASON_COST,tp,c15291624.spfilter,1,nil,c,tp)
+		and Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c15291624.spfilter,1,nil,c,tp)
 end
 function c15291624.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c15291624.spfilter,1,1,nil,c,tp)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c15291624.spfilter,1,1,nil,c,tp)
 	c:SetMaterial(g)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c15291624.repfilter(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemove()

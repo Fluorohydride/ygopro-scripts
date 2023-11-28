@@ -53,12 +53,12 @@ function c37542782.hspfilter(c,tp,sc)
 end
 function c37542782.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(REASON_COST,c:GetControler(),c37542782.hspfilter,1,nil,c:GetControler(),c)
+	return Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),c37542782.hspfilter,1,nil,c:GetControler(),c)
 end
 function c37542782.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c37542782.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c37542782.hspfilter,1,1,nil,tp,c)
 	c:SetMaterial(g)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c37542782.efilter(e,re)
 	return e:GetHandlerPlayer()~=re:GetOwnerPlayer() and re:IsActivated()
