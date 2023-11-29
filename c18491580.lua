@@ -31,7 +31,7 @@ function c18491580.hspcon(e,c)
 	return Duel.CheckReleaseGroupEx(REASON_COST,tp,c18491580.hspfilter,1,c,tp)
 end
 function c18491580.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local sg=Duel.SelectReleaseGroupEx(tp,c18491580.hspfilter,1,1,c,tp)
+	local sg=Duel.SelectReleaseGroupEx(REASON_COST,tp,c18491580.hspfilter,1,1,c,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c18491580.spcon(e,tp,eg,ep,ev,re,r,rp)

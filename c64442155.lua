@@ -18,7 +18,7 @@ end
 function c64442155.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,c64442155.costfilter,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectReleaseGroupEx(tp,c64442155.costfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroupEx(REASON_COST,tp,c64442155.costfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c64442155.target(e,tp,eg,ep,ev,re,r,rp,chk)

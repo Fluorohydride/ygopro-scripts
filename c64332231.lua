@@ -27,7 +27,7 @@ function c64332231.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64332231.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ct1=Duel.GetMatchingGroupCount(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	local rg=Duel.SelectReleaseGroupEx(tp,Card.IsReleasableByEffect,1,ct1,nil)
+	local rg=Duel.SelectReleaseGroupEx(REASON_COST,tp,Card.IsReleasableByEffect,1,ct1,nil)
 	local ct2=Duel.Release(rg,REASON_EFFECT)
 	if ct2==0 then return end
 	Duel.BreakEffect()

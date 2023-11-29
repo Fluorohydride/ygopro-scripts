@@ -23,7 +23,7 @@ function c27331568.filter(c)
 end
 function c27331568.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,c27331568.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroupEx(tp,c27331568.cfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroupEx(REASON_COST,tp,c27331568.cfilter,1,1,nil,tp)
 	e:SetLabel(g:GetFirst():GetLevel())
 	Duel.Release(g,REASON_COST)
 end

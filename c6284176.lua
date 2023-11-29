@@ -89,7 +89,7 @@ function c6284176.repval(e,c)
 end
 function c6284176.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroupEx(tp,c6284176.rfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroupEx(REASON_COST,tp,c6284176.rfilter,1,1,nil)
 	Duel.Hint(HINT_CARD,0,6284176)
 	Duel.Release(g,REASON_EFFECT+REASON_REPLACE)
 end
