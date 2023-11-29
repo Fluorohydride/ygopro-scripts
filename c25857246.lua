@@ -58,7 +58,7 @@ function c25857246.filter(c)
 end
 function c25857246.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and Duel.CheckReleaseGroupEx(tp,c25857246.filter,1,nil) end
+		and Duel.CheckReleaseGroupEx(REASON_COST,tp,c25857246.filter,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c25857246.operation(e,tp,eg,ep,ev,re,r,rp)

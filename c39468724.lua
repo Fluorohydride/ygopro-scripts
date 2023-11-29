@@ -50,7 +50,7 @@ function c39468724.tgfilter(c)
 end
 function c39468724.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39468724.tgfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.CheckReleaseGroupEx(tp,c39468724.filter,1,e:GetHandler()) end
+		and Duel.CheckReleaseGroupEx(REASON_COST,tp,c39468724.filter,1,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c39468724.tgop(e,tp,eg,ep,ev,re,r,rp)
@@ -72,7 +72,7 @@ function c39468724.negfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsReleasable()
 end
 function c39468724.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c39468724.negfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,c39468724.negfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroupEx(tp,c39468724.negfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)

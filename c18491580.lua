@@ -28,7 +28,7 @@ end
 function c18491580.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroupEx(tp,c18491580.hspfilter,1,c,tp)
+	return Duel.CheckReleaseGroupEx(REASON_COST,tp,c18491580.hspfilter,1,c,tp)
 end
 function c18491580.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=Duel.SelectReleaseGroupEx(tp,c18491580.hspfilter,1,1,c,tp)

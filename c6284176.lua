@@ -81,7 +81,7 @@ function c6284176.rfilter(c)
 end
 function c6284176.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c6284176.repfilter,1,nil,tp)
-		and Duel.CheckReleaseGroupEx(tp,c6284176.rfilter,1,nil) end
+		and Duel.CheckReleaseGroupEx(REASON_COST,tp,c6284176.rfilter,1,nil) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c6284176.repval(e,c)

@@ -25,7 +25,7 @@ function c75347539.initial_effect(c)
 end
 c75347539.spchecks=aux.CreateChecks(Card.IsCode,{99785935,39256679,11549357})
 function c75347539.fselect(g,tp)
-	return aux.mzctcheck(g,tp) and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+	return aux.mzctcheck(g,tp) and Duel.CheckReleaseGroupEx(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
 end
 function c75347539.spcon(e,c)
 	if c==nil then return true end
