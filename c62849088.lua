@@ -47,7 +47,7 @@ function c62849088.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62849088.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsSummonPlayer,1,nil,1-tp)
+	return eg:IsExists(Card.IsSummonPlayer,1,e:GetHandler(),1-tp)
 end
 function c62849088.spfilter(c,loc,tp)
 	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:IsSummonLocation(loc) and c:IsSummonPlayer(1-tp)
