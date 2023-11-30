@@ -100,7 +100,9 @@ function c10000020.atkfilter(c,tp)
 	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,nil,1-tp) end
+	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,nil,1-tp)
+	and not eg:IsContains(e:GetHandler()) 
+	and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) end
 	local g=eg:Filter(c10000020.atkfilter,nil,1-tp)
 	Duel.SetTargetCard(g)
 end
