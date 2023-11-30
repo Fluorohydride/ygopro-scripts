@@ -1,4 +1,5 @@
 --天子の指輪
+--Fixed by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -55,7 +56,12 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then Duel.Equip(tp,c,tc) end
 end
 function s.eqlimit(e,c)
-	return c:IsControler(e:GetHandlerPlayer()) and #(c:GetEquipGroup()-e:GetHandler())>0
+	local g=c:GetEquipGroup()
+	if g:IsContains(e:GetHandler()) then 
+		return c:IsControler(e:GetHandlerPlayer())
+	else
+		return c:IsControler(e:GetHandlerPlayer()) and #(c:GetEquipGroup()-e:GetHandler())>0
+	end
 end
 function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_SPELL)
