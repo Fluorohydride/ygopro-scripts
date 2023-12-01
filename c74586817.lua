@@ -1,4 +1,5 @@
 --PSYフレームロード・Ω
+local s,id,o=GetID()
 function c74586817.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -60,7 +61,11 @@ function c74586817.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		local oc=og:GetFirst()
 		while oc do
-			oc:RegisterFlagEffect(74586817,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
+			if oc==c and oc:GetOriginalCode()~=id then
+				og:RemoveCard(oc)
+			else
+				oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
+			end
 			oc=og:GetNext()
 		end
 		og:KeepAlive()
