@@ -41,7 +41,7 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if Duel.NegateEffect(ev) and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+	if Duel.NegateEffect(ev)==true or (Duel.NegateEffect(ev)==false and re:GetHandler():IsDisabled() and Duel.IsChainDisablable(ev)==true) and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.BreakEffect()
