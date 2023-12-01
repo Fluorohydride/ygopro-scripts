@@ -29,15 +29,15 @@ function s.filter(c)
 	return c:IsSetCard(0x196,0x19f) and c:IsType(TYPE_PENDULUM)
 end
 function s.sfilter1(c,e,tp,g)
-	return (c:IsCanBeSpecialSummoned(e,0,tp,false,false) 
-		and (c:IsLocation(LOCATION_DECK+LOCATION_HAND) or (c:IsLocation(LOCATION_EXTRA) and c:IsFacedown())) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		or (c:IsLocation(LOCATION_EXTRA) and c:IsFaceup()) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)	
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and (not c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 		and g:IsExists(s.sfilter2,1,c,e,tp,c)
 end
 function s.sfilter2(c,e,tp,oc)
-	return (c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
-		and (c:IsLocation(LOCATION_DECK+LOCATION_HAND) or (c:IsLocation(LOCATION_EXTRA) and c:IsFacedown())) and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
-		or (c:IsLocation(LOCATION_EXTRA) and c:IsFaceup()) and Duel.GetLocationCountFromEx(1-tp,tp,nil,c)>0)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
+		and (not c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(1-tp,tp,nil,c)>0)
 		and aux.gfcheck(Group.FromCards(c,oc),Card.IsSetCard,0x196,0x19f)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -46,9 +46,6 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and g:IsExists(s.sfilter1,1,nil,e,tp,g) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,PLAYER_ALL,LOCATION_DECK+LOCATION_EXTRA+LOCATION_HAND)
 end
-function s.spfilter(c)
-	return c:GetSequence()>=5
-end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK+LOCATION_EXTRA+LOCATION_HAND,0,nil)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and g:IsExists(s.sfilter1,1,nil,e,tp,g) then
@@ -56,82 +53,9 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sc=g:FilterSelect(tp,s.sfilter1,1,1,nil,e,tp,g):GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 		local oc=g:FilterSelect(tp,s.sfilter2,1,1,sc,e,tp,sc):GetFirst()
-		local mex=Duel.GetLinkedZone(1-tp)
-		local lex1=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x40)
-		local rex1=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x20)
-		if mex>0 or oc:IsLocation(LOCATION_DECK+LOCATION_HAND) or (oc:IsLocation(LOCATION_EXTRA) and oc:IsFacedown()) then
 		Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
-			if oc:IsLocation(LOCATION_DECK+LOCATION_HAND) or
-			(oc:IsLocation(LOCATION_EXTRA) and (Duel.IsExistingMatchingCard(s.spfilter,tp,0,LOCATION_MZONE,1,nil) or Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil))) then
-			Duel.SpecialSummonStep(oc,0,tp,1-tp,false,false,POS_FACEUP,0x1f)
-			end
-			local lex2=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x40)
-			local rex2=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x20)
-			if oc:IsLocation(LOCATION_EXTRA) and lex2>0 and rex2>0 then
-				local exsp=aux.SelectFromOptions(tp,{true,aux.Stringid(id,4)},{true,aux.Stringid(id,5)}) 
-				if exsp==1 then Duel.SpecialSummonStep(oc,0,tp,1-tp,false,false,POS_FACEUP,0x1f)
-				else local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,6)},{true,aux.Stringid(id,7)},{true,aux.Stringid(id,8)},{true,aux.Stringid(id,9)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x40) end
-			   		if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x40) end
-			   		if op==3 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x20) end
-			  		if op==4 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x20) end
-				end
-			end
-			if oc:IsLocation(LOCATION_EXTRA) and lex2>0 and rex2==0 then
-				local exsp=aux.SelectFromOptions(tp,{true,aux.Stringid(id,4)},{true,aux.Stringid(id,5)}) 
-				if exsp==1 then Duel.SpecialSummonStep(oc,0,tp,1-tp,false,false,POS_FACEUP,0x1f)
-				else local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,6)},{true,aux.Stringid(id,7)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x40) end
-			 	  	if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x40) end
-				end
-			end
-			if oc:IsLocation(LOCATION_EXTRA) and lex2==0 and rex2>0 then
-				local exsp=aux.SelectFromOptions(tp,{true,aux.Stringid(id,4)},{true,aux.Stringid(id,5)}) 
-				if exsp==1 then Duel.SpecialSummonStep(oc,0,tp,1-tp,false,false,POS_FACEUP,0x1f)
-				else local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,8)},{true,aux.Stringid(id,9)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x20) end
-				   	if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x20) end
-				end
-			end
-		end
-		if mex==0 and oc:IsLocation(LOCATION_EXTRA) and oc:IsFaceup() then
-			if lex1>0 and rex1>0 then
-			Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
-			local lex2=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x40)
-			local rex2=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x20)
-				if lex2>0 and rex2>0 then
-					local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,6)},{true,aux.Stringid(id,7)},{true,aux.Stringid(id,8)},{true,aux.Stringid(id,9)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x40) end
-					if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x40) end
-					if op==3 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x20) end
-					if op==4 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x20) end
-				end
-				if lex2>0 and rex2==0 then
-					local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,6)},{true,aux.Stringid(id,7)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x40) end
-					if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x40) end
-				end
-				if lex2==0 and rex2>0 then
-					local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,8)},{true,aux.Stringid(id,9)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x20) end
-					if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x20) end
-				end
-			else Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP,0x1f)
-				local lex2=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x40)
-				local rex2=Duel.GetLocationCountFromEx(1-tp,tp,nil,oc,0x20)
-				if lex2>0 and rex2==0 then
-					local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,6)},{true,aux.Stringid(id,7)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x40) end
-					if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x40) end
-				end
-				if lex2==0 and rex2>0 then
-					local op=aux.SelectFromOptions(tp,{true,aux.Stringid(id,8)},{true,aux.Stringid(id,9)})
-					if op==1 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK,0x20) end
-					if op==2 then Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP_DEFENSE,0x20) end
-				end
-			end
-		end
-	Duel.SpecialSummonComplete()
+		Duel.SpecialSummonStep(oc,0,tp,1-tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonComplete()
 	end
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
@@ -141,19 +65,24 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(0xff,0xff)
 	e1:SetTarget(aux.TargetBoolFunction(aux.NOT(Card.IsSetCard),0x196,0x19f))
 	e1:SetReset(RESET_PHASE+PHASE_END)
-	e1:SetValue(s.lim)
+	e1:SetValue(s.fuslimit)
 	Duel.RegisterEffect(e1,tp)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	e2:SetValue(s.sumlimit)
 	Duel.RegisterEffect(e2,tp)
-	local e3=e1:Clone()
+	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 	Duel.RegisterEffect(e3,tp)
-	local e4=e1:Clone()
+	local e4=e2:Clone()
 	e4:SetCode(EFFECT_CANNOT_BE_LINK_MATERIAL)
 	Duel.RegisterEffect(e4,tp)
 end
-function s.lim(e,c)
+function s.fuslimit(e,c,sumtype)
+	if not c then return false end
+	return c:IsControler(e:GetHandlerPlayer()) and sumtype==SUMMON_TYPE_FUSION
+end
+function s.sumlimit(e,c)
 	if not c then return false end
 	return c:IsControler(e:GetHandlerPlayer())
 end
