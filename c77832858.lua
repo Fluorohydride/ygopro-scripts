@@ -43,11 +43,11 @@ end
 function s.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(Card.IsReleasable,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsReleasable,tp,LOCATION_MZONE,LOCATION_MZONE,nil,REASON_SUMMON)
 	return c:IsLevelAbove(7) and minc<=2 and g:CheckSubGroup(s.tcheck,2,2,tp)
 end
 function s.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(Card.IsReleasable,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsReleasable,tp,LOCATION_MZONE,LOCATION_MZONE,nil,REASON_SUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=g:SelectSubGroup(tp,s.tcheck,false,2,2,tp)
 	c:SetMaterial(sg)
