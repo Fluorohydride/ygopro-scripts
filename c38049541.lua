@@ -13,8 +13,9 @@ function c38049541.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38049541.coscost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsDiscardable() end
+	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
 function c38049541.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2)
