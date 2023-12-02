@@ -1,4 +1,5 @@
 --スピードリフト
+--Fixed by Lee
 function c36730805.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -31,29 +32,50 @@ function c36730805.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-		e1:SetLabelObject(tc)
-		e1:SetOperation(c36730805.sumop)
-		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_CHAIN_END)
-		e2:SetLabelObject(e1)
-		e2:SetOperation(c36730805.cedop)
-		Duel.RegisterEffect(e2,tp)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_SPSUMMON_SUCCESS)
+			e1:SetLabelObject(tc)
+			e1:SetCondition(c36730805.sumcon)
+			e1:SetOperation(c36730805.sumop)
+			Duel.RegisterEffect(e1,tp)
+			local e2=Effect.CreateEffect(e:GetHandler())
+			e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e2:SetCode(EVENT_CHAIN_END)
+			e2:SetLabelObject(e1)
+			e2:SetOperation(c36730805.cedop)
+			Duel.RegisterEffect(e2,tp)
 	end
 	Duel.SpecialSummonComplete()
 end
-function c36730805.sumop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsContains(e:GetLabelObject()) then
-		e:SetLabel(1)
-		e:Reset()
-	else e:SetLabel(0) end
+function c36730805.sumcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsContains(e:GetLabelObject()) 
 end
-function c36730805.cedop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckEvent(EVENT_SPSUMMON_SUCCESS) and e:GetLabelObject():GetLabel()==1 then
+function c36730805.sumop(e,tp,eg,ep,ev,re,r,rp)
+	e:SetLabel(1)
+	if Duel.GetCurrentChain()==0 then
 		Duel.SetChainLimitTillChainEnd(aux.FALSE)
+	elseif Duel.GetCurrentChain()==1 then
+		Duel.RegisterFlagEffect(tp,36730805,0,0,1)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAINING)
+		e1:SetOperation(c36730805.resetop)
+		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetReset(RESET_CHAIN)
+		Duel.RegisterEffect(e2,tp)
 	end
+end
+function c36730805.resetop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.ResetFlagEffect(tp,36730805)
 	e:Reset()
 end
+function c36730805.cedop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.CheckEvent(EVENT_SPSUMMON_SUCCESS) and e:GetLabelObject():GetLabel()==1 and Duel.GetFlagEffect(tp,36730805)~=0 then
+		Duel.SetChainLimitTillChainEnd(aux.FALSE)
+	end
+	Duel.ResetFlagEffect(tp,36730805)
+	e:Reset()
+end
+
