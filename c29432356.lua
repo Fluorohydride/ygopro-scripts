@@ -77,7 +77,7 @@ function c29432356.hspcon(e,c)
 	local tp=c:GetControler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
-	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil)==g:GetCount()
+	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil,REASON_SPSUMMON)==g:GetCount()
 		and g:FilterCount(Card.IsSetCard,nil,0xc4)>=3
 		and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 end
