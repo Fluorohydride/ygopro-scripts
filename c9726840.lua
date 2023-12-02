@@ -31,7 +31,8 @@ function c9726840.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 --send to grave filter after activation
 function c9726840.tgfilter2(c,e,tp)
-	return c:IsAbleToGrave() and Duel.IsExistingMatchingCard(c9726840.exfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
+	return c:IsAbleToGrave()
+		and (not Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_EXTRA,0,1,nil,0x1115) or Duel.IsExistingMatchingCard(c9726840.exfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c))
 end
 function c9726840.exfilter(c,e,tp,mc)
 	return c:IsSetCard(0x1115) and Duel.GetLocationCountFromEx(tp,tp,mc,c,0x60)>0
