@@ -44,12 +44,7 @@ function c98095162.attfilter(c,att)
 end
 function c98095162.lcheck(g)
 	local tc=g:GetFirst()
-	local baseatt=tc:GetLinkAttribute()
-	while tc do
-		if tc:GetLinkAttribute()<baseatt then baseatt=tc:GetLinkAttribute() end
-		tc=g:GetNext()
-	end
-	return not g:IsExists(c98095162.attfilter,1,nil,baseatt) and g:GetClassCount(Card.GetLinkRace)==#g
+	return not g:IsExists(c98095162.attfilter,1,tc,tc:GetLinkAttribute()) and g:GetClassCount(Card.GetLinkRace)==#g
 end
 function c98095162.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
