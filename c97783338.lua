@@ -1,5 +1,6 @@
 --水雷魔神－ゲート・ガーディアン
 function c97783338.initial_effect(c)
+	aux.AddCodeList(c,25955164,98434877)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,25955164,98434877,true,true)

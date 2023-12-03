@@ -1,8 +1,8 @@
 --雷風魔神－ゲート・ガーディアン
 function c34904525.initial_effect(c)
+	aux.AddCodeList(c,25955164,62340868)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddCodeList(c,98434877)
 	aux.AddFusionProcCode2(c,25955164,62340868,true,true)
 	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_ONFIELD,0,Duel.Remove,POS_FACEUP,REASON_COST)
 	--spsummon condition
