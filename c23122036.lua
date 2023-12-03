@@ -41,7 +41,7 @@ function c23122036.filter(c)
 end
 function c23122036.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c23122036.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c23122036.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c23122036.filter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -74,7 +74,7 @@ function c23122036.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetCode(EFFECT_EQUIP_LIMIT)
 		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e3:SetValue(1)
+		e3:SetValue(c23122036.eqlimit)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e3)
 	else
@@ -86,4 +86,7 @@ function c23122036.valcon(e,re,r,rp)
 end
 function c23122036.damcon(e)
 	return e:GetHandler():GetEquipTarget():GetControler()==e:GetHandlerPlayer()
+end
+function c23122036.eqlimit(e,c)
+	return e:GetHandler():GetEquipTarget()==c or c:IsControler(e:GetHandlerPlayer())
 end

@@ -40,7 +40,7 @@ function c75361204.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75361204.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
@@ -51,7 +51,7 @@ function c75361204.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsLocation(LOCATION_SZONE) then return end
 	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)
@@ -63,7 +63,7 @@ function c75361204.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_EQUIP_LIMIT)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetValue(1)
+		e2:SetValue(c75361204.eqlimit)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
 		local e3=Effect.CreateEffect(c)
@@ -81,6 +81,9 @@ function c75361204.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		c:CancelToGrave(false)
 	end
+end
+function c75361204.eqlimit(e,c)
+	return e:GetHandler():GetEquipTarget()==c or c:IsControler(e:GetHandlerPlayer())
 end
 function c75361204.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetEquipTarget() and Duel.GetTurnPlayer()==tp

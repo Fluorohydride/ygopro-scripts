@@ -41,7 +41,7 @@ function c53656677.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if chk==0 then return d and d:IsControler(tp) and d:IsFaceup() and d:IsCanBeEffectTarget(e)
-		and d:GetAttack()<a:GetAttack() end
+		and d:GetAttack()<a:GetAttack() and e:IsCostChecked() end
 	Duel.SetTargetCard(d)
 end
 function c53656677.operation(e,tp,eg,ep,ev,re,r,rp)

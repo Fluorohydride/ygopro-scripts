@@ -43,7 +43,7 @@ function c68054593.filter(c)
 end
 function c68054593.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c68054593.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c68054593.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c68054593.filter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -77,7 +77,7 @@ function c68054593.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68054593.eqlimit(e,c)
-	return c:GetControler()==e:GetOwnerPlayer()
+	return e:GetHandler():GetEquipTarget()==c or c:IsControler(e:GetHandlerPlayer())
 end
 function c68054593.atkfilter(c)
 	return c:IsFaceup() and c:GetAttack()>c:GetBaseAttack()
