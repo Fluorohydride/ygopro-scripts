@@ -2,7 +2,7 @@
 function c66023650.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,nil,3,3,c66023650.lcheck)
+	aux.AddLinkProcedure(c,nil,3,3,aux.DifferentLinkRace)
 	--cannot link material
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -41,9 +41,6 @@ function c66023650.initial_effect(c)
 	e4:SetTarget(c66023650.drtg)
 	e4:SetOperation(c66023650.drop)
 	c:RegisterEffect(e4)
-end
-function c66023650.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==g:GetCount()
 end
 function c66023650.valcheck(e,c)
 	local g=c:GetMaterial()

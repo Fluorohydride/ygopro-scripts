@@ -44,11 +44,11 @@ function c32965616.spcon(e,c)
 	local tp=c:GetControler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_MONSTER)
-	return g:GetClassCount(Card.GetAttribute)>=6
+	return g:GetBinClassCount(Card.GetAttribute)>=6
 end
 function c32965616.atkval(e,c)
 	local g=Duel.GetMatchingGroup(Card.IsType,e:GetHandlerPlayer(),LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_MONSTER)
-	return g:GetClassCount(Card.GetAttribute)*500
+	return g:GetBinClassCount(Card.GetAttribute)*500
 end
 function c32965616.discon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0

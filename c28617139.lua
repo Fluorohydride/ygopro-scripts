@@ -33,12 +33,11 @@ function c28617139.thfilter(c)
 end
 function c28617139.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c28617139.thfilter,tp,LOCATION_DECK,0,nil)
-	if chk==0 then return g:GetClassCount(Card.GetAttribute)>=2 end
+	if chk==0 then return g:CheckSubGroup(aux.dabcheck,2,2) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,tp,LOCATION_DECK)
 end
 function c28617139.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c28617139.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetClassCount(Card.GetAttribute)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,2,2)
 	Duel.SendtoHand(sg,nil,REASON_EFFECT)

@@ -1,7 +1,7 @@
 --サモン・ソーサレス
 function c61665245.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,99,c61665245.lcheck)
+	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,99,aux.SameLinkRace)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -25,9 +25,6 @@ function c61665245.initial_effect(c)
 	e2:SetTarget(c61665245.sptg2)
 	e2:SetOperation(c61665245.spop2)
 	c:RegisterEffect(e2)
-end
-function c61665245.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==1
 end
 function c61665245.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

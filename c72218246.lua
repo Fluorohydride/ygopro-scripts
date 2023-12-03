@@ -2,7 +2,7 @@
 function c72218246.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,nil,2,2,c72218246.lcheck)
+	aux.AddLinkProcedure(c,nil,2,2,aux.DifferentLinkRace)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(72218246,0))
@@ -31,9 +31,6 @@ function c72218246.initial_effect(c)
 	e2:SetTarget(c72218246.sptg2)
 	e2:SetOperation(c72218246.spop2)
 	c:RegisterEffect(e2)
-end
-function c72218246.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==g:GetCount()
 end
 function c72218246.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2

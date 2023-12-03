@@ -28,7 +28,7 @@ function c5611760.filter(c)
 end
 function c5611760.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c5611760.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	return Duel.GetFlagEffect(tp,5611760)==0 and g:GetClassCount(Card.GetRace)>=2
+	return Duel.GetFlagEffect(tp,5611760)==0 and g:CheckSubGroup(aux.DifferentRace,2,2)
 end
 function c5611760.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

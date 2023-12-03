@@ -66,7 +66,7 @@ function c57282724.imfilter(e,te)
 end
 function c57282724.valcheck(e,c)
 	local g=c:GetMaterial()
-	if #g==3 and g:GetClassCount(Card.GetRace)==3 and g:GetClassCount(Card.GetAttribute)==3 then
+	if #g==3 and aux.DifferentLinkRace(g) and aux.DifferentLinkAttribute(g) then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)

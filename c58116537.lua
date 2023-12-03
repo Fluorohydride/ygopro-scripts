@@ -40,7 +40,7 @@ end
 function c58116537.actcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	local sg=g:Filter(c58116537.cfilter,nil)
-	return sg and sg:GetClassCount(Card.GetAttribute)>=2
+	return sg and sg:GetBinClassCount(Card.GetAttribute)>=2
 end
 function c58116537.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)

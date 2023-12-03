@@ -742,7 +742,7 @@ function Auxiliary.qlifilter(e,te)
 	if te:IsActiveType(TYPE_MONSTER) and te:IsActivated() then
 		local lv=e:GetHandler():GetLevel()
 		local ec=te:GetOwner()
-		if ec:IsType(TYPE_LINK) then
+		if ec:IsStatus(STATUS_NO_LEVEL) or ec:IsType(TYPE_LINK) then
 			return false
 		elseif ec:IsType(TYPE_XYZ) then
 			return ec:GetOriginalRank()<lv
@@ -985,13 +985,77 @@ end
 function Auxiliary.dlkcheck(g)
 	return g:GetClassCount(Card.GetLink)==#g
 end
+--check for cards with different attribute or race
+function Auxiliary.DifferentBin(g,getter,...)
+	if #g<=1 then return true end
+	local value=getter(g:GetFirst(),...)
+	local tc=g:GetNext()
+	while tc do
+		local value2=getter(tc,...)
+		if value&value2>0 then
+			return false
+		end
+		value=value|value2
+		tc=g:GetNext()
+	end
+	return true
+end
+--check for cards with same attribute or race
+function Auxiliaty.SameBin(g,getter,...)
+	if #g<=1 then return true end
+	local value=getter(g:GetFirst(),...)
+	local tc=g:GetNext()
+	while tc do
+		local value2=getter(tc,...)
+		value=value&value2
+		if value==0 then
+			return false
+		end
+		tc=g:GetNext()
+	end
+	return true
+end
 --check for cards with different attributes
-function Auxiliary.dabcheck(g)
-	return g:GetClassCount(Card.GetAttribute)==#g
+function Auxiliary.DifferentAttribute(g)
+	return Auxiliary.DifferentBin(g,Card.GetAttribute)
+end
+function Auxiliary.DifferentFusionAttribute(g)
+	return Auxiliary.DifferentBin(g,Card.GetFusionAttribute)
+end
+function Auxiliary.DifferentLinkAttribute(g)
+	return Auxiliary.DifferentBin(g,Card.GetLinkAttribute)
+end
+Auxiliary.dabcheck=Auxiliary.DifferentAttribute
+--check for cards with same attribute
+function Auxiliary.SameAttribute(g)
+	return Auxiliary.SameBin(g,Card.GetAttribute)
+end
+function Auxiliary.SameFusionAttribute(g)
+	return Auxiliary.SameBin(g,Card.GetFusionAttribute)
+end
+function Auxiliary.SameLinkAttribute(g)
+	return Auxiliary.SameBin(g,Card.GetLinkAttribute)
 end
 --check for cards with different races
-function Auxiliary.drccheck(g)
-	return g:GetClassCount(Card.GetRace)==#g
+function Auxiliary.DifferentRace(g)
+	return Auxiliary.DifferentBin(g,Card.GetRace)
+end
+function Auxiliary.DifferentFusionRace(g)
+	return Auxiliary.DifferentBin(g,Card.GetFusionRace)
+end
+function Auxiliary.DifferentLinkRace(g)
+	return Auxiliary.DifferentBin(g,Card.GetLinkRace)
+end
+Auxiliary.drccheck=Auxiliary.DifferentRace
+--check for cards with same race
+function Auxiliary.SameRace(g)
+	return Auxiliary.SameBin(g,Card.GetRace)
+end
+function Auxiliary.SameFusionRace(g)
+	return Auxiliary.SameBin(g,Card.GetFusionRace)
+end
+function Auxiliary.SameLinkRace(g)
+	return Auxiliary.SameBin(g,Card.GetLinkRace)
 end
 --check for group with 2 cards, each card match f with a1/a2 as argument
 function Auxiliary.gfcheck(g,f,a1,a2)

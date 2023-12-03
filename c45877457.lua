@@ -51,7 +51,7 @@ function c45877457.initial_effect(c)
 end
 function c45877457.atkval(e,c)
 	local g=Duel.GetMatchingGroup(Card.IsType,c:GetControler(),LOCATION_GRAVE,0,nil,TYPE_MONSTER)
-	return g:GetClassCount(Card.GetAttribute)*300
+	return g:GetBinClassCount(Card.GetAttribute)*300
 end
 function c45877457.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) and e:GetLabel()==1
@@ -65,7 +65,7 @@ end
 function c45877457.valcheck(e,c)
 	local mg=c:GetMaterial()
 	local fg=mg:Filter(c45877457.attfilter,nil)
-	if fg:GetClassCount(Card.GetAttribute)>1 then
+	if fg:GetBinClassCount(Card.GetAttribute)>1 then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)

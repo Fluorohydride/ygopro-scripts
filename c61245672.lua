@@ -2,7 +2,7 @@
 function c61245672.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2,3,c61245672.lcheck)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2,3,aux.DifferentLinkAttribute)
 	--atk
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -24,9 +24,6 @@ function c61245672.initial_effect(c)
 	e2:SetTarget(c61245672.drtg)
 	e2:SetOperation(c61245672.drop)
 	c:RegisterEffect(e2)
-end
-function c61245672.lcheck(g)
-	return g:GetClassCount(Card.GetLinkAttribute)==g:GetCount()
 end
 function c61245672.atkval(e,c)
 	return c:GetLinkedGroupCount()*500

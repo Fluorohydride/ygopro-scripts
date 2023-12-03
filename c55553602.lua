@@ -29,7 +29,7 @@ function c55553602.atkfilter(c)
 end
 function c55553602.atkvalue(e,c)
 	local g=Duel.GetMatchingGroup(c55553602.atkfilter,c:GetControler(),LOCATION_MZONE,0,nil)
-	local ct=g:GetClassCount(Card.GetRace)
+	local ct=g:GetBinClassCount(Card.GetRace)
 	return ct*200
 end
 function c55553602.confilter(c)
@@ -37,7 +37,7 @@ function c55553602.confilter(c)
 end
 function c55553602.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c55553602.confilter,tp,LOCATION_MZONE,0,nil)
-	local ct=g:GetClassCount(Card.GetRace)
+	local ct=g:GetBinClassCount(Card.GetRace)
 	return ct==4
 end
 function c55553602.spfilter(c,e,sp)
