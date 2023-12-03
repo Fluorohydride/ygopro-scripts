@@ -19,7 +19,7 @@ function c75500286.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	local fid=c:GetFieldID()
 	if rc and Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)>0 and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		rc:RegisterFlagEffect(75500286,RESET_EVENT+RESETS_STANDARD,0,1,fid)
+		rc:RegisterFlagEffect(75500286,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -28,7 +28,7 @@ function c75500286.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabel(fid,0)
 		e1:SetLabelObject(rc)
 		e1:SetCondition(c75500286.thcon)
-		e1:SetOperation(c75500286.thop)		
+		e1:SetOperation(c75500286.thop)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
