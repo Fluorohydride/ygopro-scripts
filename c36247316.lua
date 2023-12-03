@@ -8,27 +8,19 @@ function c36247316.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetCondition(aux.dscon)
-	e1:SetCost(c36247316.cost)
 	e1:SetTarget(c36247316.target)
 	e1:SetOperation(c36247316.activate)
 	c:RegisterEffect(e1)
-end
-function c36247316.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
-	return true
 end
 function c36247316.filter(c)
 	return c:GetLevel()>0 and c:IsFaceup()
 end
 function c36247316.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c36247316.filter(chkc) end
-	if chk==0 then
-		if e:GetLabel()==0 then return false end
-		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,TYPES_NORMAL_TRAP_MONSTER,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK)
-			and Duel.IsExistingTarget(c36247316.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	e:SetLabel(0)
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,TYPES_NORMAL_TRAP_MONSTER,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK)
+		and Duel.IsExistingTarget(c36247316.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c36247316.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
@@ -57,7 +49,7 @@ function c36247316.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(1)
 		e3:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e3,tp)
-		if c:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		if c:IsRelateToEffect(e)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,TYPES_NORMAL_TRAP_MONSTER,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK) then
 			Duel.BreakEffect()
 			c:AddMonsterAttribute(TYPE_NORMAL)
