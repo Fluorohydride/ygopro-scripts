@@ -25,10 +25,14 @@ function c70583986.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c70583986.filter,tp,LOCATION_ONFIELD,0,1,12,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 end
+function c70583986.thfilter(c,tp)
+	return c:IsFaceup() and c:IsControler(tp)
+end
 function c70583986.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=Duel.GetTargetsRelateToChain()
+	local rg=tg:Filter(c70583986.thfilter,nil,tp)
 	Duel.SendtoHand(rg,nil,REASON_EFFECT)
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		Duel.BreakEffect()
