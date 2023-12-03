@@ -29,7 +29,7 @@ function c6556909.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c6556909.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsSummonPlayer,1,nil,1-tp)
+	return eg:IsExists(Card.IsSummonPlayer,1,e:GetHandler(),1-tp)
 end
 function c6556909.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
