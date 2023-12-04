@@ -48,7 +48,10 @@ function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	local alist=Duel.GetFlagEffectLabel(tp,83326048)
 	Duel.ResetFlagEffect(tp, 83326048)
 	if alist then
-		if alist&p~=0 then return end
+		if alist&p~=0 then
+			Duel.RegisterFlagEffect(tp,83326048,RESET_PHASE+PHASE_END,0,1,alist)
+			return
+		end
 		alist=alist+p
 	else
 		alist=p
