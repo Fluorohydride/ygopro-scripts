@@ -180,7 +180,7 @@ function Auxiliary.SpiritReturnReg(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
-	e1:SetReset(RESET_EVENT+0xd6e0000+RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_EVENT+0xd7e0000+RESET_PHASE+PHASE_END)
 	e1:SetCondition(Auxiliary.SpiritReturnConditionForced)
 	e1:SetTarget(Auxiliary.SpiritReturnTargetForced)
 	e1:SetOperation(Auxiliary.SpiritReturnOperation)
@@ -704,7 +704,7 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 	local code=e:GetLabel()
 	while tc do
 		if tc:GetOriginalCode()==code then
-			tc:RegisterFlagEffect(code,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
+			tc:RegisterFlagEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()
 	end
