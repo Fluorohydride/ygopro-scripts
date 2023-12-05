@@ -37,10 +37,12 @@ local function fieldargs(f,width)
 	return f,~(-1<<w)
 end
 function bit.extract(r,field,width)
+	width=width or 1
 	local f,m=fieldargs(field,width)
 	return (r>>f)&m
 end
 function bit.replace(r,v,field,width)
+	width=width or 1
 	local f,m=fieldargs(field,width)
 	return (r&~(m<<f))|((v&m)<< f)
 end
