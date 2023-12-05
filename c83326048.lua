@@ -14,17 +14,46 @@ end
 function c83326048.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	Duel.SetTargetParam(Duel.SelectOption(tp,1057,1056,1063,1073,1074))
+	local types={1057,1056,1063,1073,1074}
+	local alist=Duel.GetFlagEffectLabel(tp,83326048)
+	if not alist then
+		Duel.SetTargetParam(types[Duel.SelectOption(tp,table.unpack(types))+1])
+		return
+	else
+		local delp={}
+		local comp,p=16,5
+		while comp>0 do
+			if alist&comp~=0 then
+				table.insert(delp,p)
+			end
+			comp=comp>>1
+			p=p-1
+		end
+		for k,v in ipairs(delp) do
+			table.remove(types,v)
+		end
+	end
+	Duel.SetTargetParam(types[Duel.SelectOption(tp,table.unpack(types))+1])
 end
 function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local opt=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
-	local ct=nil
-	if opt==0 then ct=TYPE_RITUAL end
-	if opt==1 then ct=TYPE_FUSION end
-	if opt==2 then ct=TYPE_SYNCHRO end
-	if opt==3 then ct=TYPE_XYZ end
-	if opt==4 then ct=TYPE_PENDULUM end
+	local ct,p=0,0
+	if opt==1057 then ct=TYPE_RITUAL   p=0 end
+	if opt==1056 then ct=TYPE_FUSION   p=1 end
+	if opt==1063 then ct=TYPE_SYNCHRO  p=2 end
+	if opt==1073 then ct=TYPE_XYZ      p=3 end
+	if opt==1074 then ct=TYPE_PENDULUM p=4 end
+	p=1<<p
+	local alist=Duel.GetFlagEffectLabel(tp,83326048)
+	if alist then
+		if alist&p~=0 then return end
+		alist=alist+p
+	else
+		alist=p
+	end
+	Duel.ResetFlagEffect(tp,83326048)
+	Duel.RegisterFlagEffect(tp,83326048,RESET_PHASE+PHASE_END,0,1,alist)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
