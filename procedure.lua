@@ -1999,3 +1999,7 @@ end
 function Auxiliary.linklimit(e,se,sp,st)
 	return st&SUMMON_TYPE_LINK==SUMMON_TYPE_LINK
 end
+--sp_summon condition for /Assault Mode
+function Auxiliary.AssaultModeLimit(e,se,sp,st)
+	return se:GetHandler():IsCode(80280737)
+end
