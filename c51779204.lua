@@ -12,7 +12,7 @@ function c51779204.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51779204.filter(c)
-	return c:IsFaceup() and c:IsCode(70902743) and c:GetFlagEffect(51779204)==0
+	return c:IsFaceup() and c:IsCode(70902743)
 end
 function c51779204.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c51779204.filter(chkc) end
@@ -24,15 +24,15 @@ function c51779204.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_UPDATE_ATTACK)
+		e1:SetCondition(c51779204.atkcon)
+		e1:SetValue(1000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		tc:RegisterEffect(e1)
 		if tc:GetFlagEffect(51779204)==0 then
 			tc:RegisterFlagEffect(51779204,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetCondition(c51779204.atkcon)
-			e1:SetValue(1000)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_FIELD)
 			e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
