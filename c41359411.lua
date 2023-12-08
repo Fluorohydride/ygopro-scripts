@@ -1,4 +1,5 @@
 --聖剣クラレント
+--Fixed by Lee
 function c41359411.initial_effect(c)
 	c:SetUniqueOnField(1,0,41359411)
 	--Activate
@@ -37,7 +38,7 @@ function c41359411.initial_effect(c)
 	e4:SetCountLimit(1,41359411)
 	e4:SetCondition(c41359411.eqcon)
 	e4:SetTarget(c41359411.eqtg)
-	e4:SetOperation(c41359411.operation)
+	e4:SetOperation(c41359411.operation2)
 	c:RegisterEffect(e4)
 end
 function c41359411.eqlimit(e,c)
@@ -56,7 +57,7 @@ end
 function c41359411.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
+	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
 		Duel.Equip(tp,c,tc)
 	end
 end
@@ -90,4 +91,11 @@ function c41359411.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c41359411.eqfilter2,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
+end
+function c41359411.operation2(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=Duel.GetFirstTarget()
+	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsSetCard(0x107a) and tc:IsRace(RACE_WARRIOR) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
+		Duel.Equip(tp,c,tc)
+	end
 end
