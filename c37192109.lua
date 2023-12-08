@@ -51,13 +51,12 @@ function c37192109.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local rct=1
 		if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY then rct=2 end
 		local og=Duel.GetOperatedGroup()
+		if c:GetOriginalCode()~=id then
+			og:RemoveCard(c)
+		end
 		local oc=og:GetFirst()
 		while oc do
-			if oc==c and oc:GetOriginalCode()~=id then
-				og:RemoveCard(oc)
-			else
-				oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,rct,fid)
-			end
+			oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,rct,fid)
 			oc=og:GetNext()
 		end
 		og:KeepAlive()

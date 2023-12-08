@@ -59,13 +59,12 @@ function c74586817.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Remove(rg,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local fid=c:GetFieldID()
 		local og=Duel.GetOperatedGroup()
+		if c:GetOriginalCode()~=id then
+			og:RemoveCard(c)
+		end
 		local oc=og:GetFirst()
 		while oc do
-			if oc==c and oc:GetOriginalCode()~=id then
-				og:RemoveCard(oc)
-			else
-				oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
-			end
+			oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
 			oc=og:GetNext()
 		end
 		og:KeepAlive()

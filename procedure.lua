@@ -168,8 +168,11 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 				local minc=minct
 				local maxc=maxct
 				if min then
-					if min>minc then minc=min end
-					if max<maxc then maxc=max end
+					local exct=0
+					if f2 then exct=exct+1 end
+					if f3 then exct=exct+1 end
+					if min-exct>minc then minc=min-exct end
+					if max-exct<maxc then maxc=max-exct end
 					if minc>maxc then return false end
 				end
 				if smat and not smat:IsCanBeSynchroMaterial(c) then return false end
@@ -191,8 +194,11 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				local minc=minct
 				local maxc=maxct
 				if min then
-					if min>minc then minc=min end
-					if max<maxc then maxc=max end
+					local exct=0
+					if f2 then exct=exct+1 end
+					if f3 then exct=exct+1 end
+					if min-exct>minc then minc=min-exct end
+					if max-exct<maxc then maxc=max-exct end
 					if minc>maxc then return false end
 				end
 				::SynMixTargetSelectStart::
@@ -330,6 +336,23 @@ function Auxiliary.SynMixHandFilter(c,tp,syncard)
 	end
 	return true
 end
+function Auxiliary.SynMixHandCheck(g,tp,syncard)
+	local hg=g:Filter(Auxiliary.SynMixHandFilter,nil,tp,syncard)
+	local hct=hg:GetCount()
+	if hct>0 then
+		local found=false
+		for c in Auxiliary.Next(g) do
+			local he,hf,hmin,hmax=c:GetHandSynchro()
+			if he then
+				found=true
+				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he,syncard) then return false end
+				if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
+			end
+		end
+		if not found then return false end
+	end
+	return true
+end
 function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if ct<minc then return false end
 	local g=sg:Clone()
@@ -342,20 +365,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
 		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
 		then return false end
-	local hg=g:Filter(Auxiliary.SynMixHandFilter,nil,tp,syncard)
-	local hct=hg:GetCount()
-	if hct>0 and not mgchk then
-		local found=false
-		for c in Auxiliary.Next(g) do
-			local he,hf,hmin,hmax=c:GetHandSynchro()
-			if he then
-				found=true
-				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he,syncard) then return false end
-				if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
-			end
-		end
-		if not found then return false end
-	end
+	if not (mgchk or Auxiliary.SynMixHandCheck(g,tp,syncard)) then return false end
 	for c in Auxiliary.Next(g) do
 		local le,lf,lloc,lmin,lmax=c:GetTunerLimit()
 		if le then
@@ -1988,4 +1998,8 @@ end
 --sp_summon condition for link monster
 function Auxiliary.linklimit(e,se,sp,st)
 	return st&SUMMON_TYPE_LINK==SUMMON_TYPE_LINK
+end
+--sp_summon condition for /Assault Mode
+function Auxiliary.AssaultModeLimit(e,se,sp,st)
+	return se:GetHandler():IsCode(80280737)
 end

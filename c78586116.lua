@@ -51,7 +51,7 @@ function c78586116.filter(c)
 end
 function c78586116.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c78586116.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c78586116.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c78586116.filter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -84,7 +84,8 @@ function c78586116.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c78586116.eqlimit(e,c)
-	return c:IsSetCard(0x26)
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsSetCard(0x26)
 end
 function c78586116.attg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local eq=e:GetHandler():GetEquipTarget()

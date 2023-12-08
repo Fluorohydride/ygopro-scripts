@@ -56,11 +56,8 @@ function c29942771.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
 end
-function c29942771.cfilter(c,tp)
-	return c:IsSummonPlayer(tp)
-end
 function c29942771.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c29942771.cfilter,1,nil,1-tp)
+	return eg:IsExists(Card.IsSummonPlayer,1,e:GetHandler(),1-tp)
 end
 function c29942771.spfilter(c,e,tp)
 	return c:IsSetCard(0x2a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
