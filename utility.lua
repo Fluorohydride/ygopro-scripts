@@ -758,7 +758,7 @@ end
 --sp_summon condition for gladiator beast monsters
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local typ,race=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
 	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
 end
 --sp_summon condition for evolsaur monsters
