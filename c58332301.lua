@@ -9,7 +9,7 @@ function c58332301.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e2:SetValue(c58332301.splimit)
+	e2:SetValue(aux.DarkFusionLimit)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
@@ -26,11 +26,6 @@ function c58332301.initial_effect(c)
 	e3:SetTarget(c58332301.postg)
 	e3:SetOperation(c58332301.posop)
 	c:RegisterEffect(e3)
-end
-c58332301.dark_calling=true
-function c58332301.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(94820406)
-		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 function c58332301.matcheck(e,c)
 	local g=c:GetMaterial()
