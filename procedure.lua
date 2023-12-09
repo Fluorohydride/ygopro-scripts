@@ -2013,3 +2013,8 @@ function Auxiliary.DarkFusionLimit(e,se,sp,st)
 		or st==SUMMON_VALUE_DARK_FUSION
 		or (Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION)
 end
+--sp_summon condition for Fossil
+function Auxiliary.FossilFusionLimit(e,se,sp,st)
+	return st==SUMMON_VALUE_FOSSIL_FUSION or se:GetHandler():IsCode(59419719)
+		or not e:GetHandler():IsLocation(LOCATION_EXTRA)
+end

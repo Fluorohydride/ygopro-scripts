@@ -9,7 +9,7 @@ function c83656563.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c83656563.splimit)
+	e1:SetValue(aux.FossilFusionLimit)
 	c:RegisterEffect(e1)
 	--extra attack
 	local e2=Effect.CreateEffect(c)
@@ -48,9 +48,6 @@ function c83656563.matfilter1(c,fc)
 end
 function c83656563.matfilter2(c,fc)
 	return c:IsLevel(5,6)
-end
-function c83656563.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(59419719) or not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c83656563.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

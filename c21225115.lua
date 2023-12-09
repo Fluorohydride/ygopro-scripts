@@ -9,7 +9,7 @@ function c21225115.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c21225115.splimit)
+	e1:SetValue(aux.FossilFusionLimit)
 	c:RegisterEffect(e1)
 	--switch stats
 	local e2=Effect.CreateEffect(c)
@@ -35,9 +35,6 @@ function c21225115.initial_effect(c)
 end
 function c21225115.matfilter(c,fc)
 	return c:IsFusionType(TYPE_MONSTER) and c:IsLevelAbove(7) and c:IsLocation(LOCATION_GRAVE) and c:IsControler(1-fc:GetControler())
-end
-function c21225115.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(59419719) or not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c21225115.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -9,7 +9,7 @@ function c12015000.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c12015000.splimit)
+	e1:SetValue(aux.FossilFusionLimit)
 	c:RegisterEffect(e1)
 	--pierce
 	local e2=Effect.CreateEffect(c)
@@ -30,9 +30,6 @@ function c12015000.initial_effect(c)
 end
 function c12015000.matfilter(c,fc)
 	return c:IsFusionType(TYPE_MONSTER) and c:GetLevel()>0 and c:IsLevelBelow(4) and c:IsLocation(LOCATION_GRAVE) and c:IsControler(1-fc:GetControler())
-end
-function c12015000.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(59419719) or not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c12015000.thfilter(c)
 	return c:IsCode(59419719) and c:IsAbleToHand()
