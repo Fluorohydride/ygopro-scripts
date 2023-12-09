@@ -10,8 +10,8 @@ function c34026662.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c34026662.filter(c)
-	local st=c:GetSummonType()
-	return c:IsFaceup() and st&SUMMON_VALUE_EVOLTILE>0
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsFaceup() and c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 function c34026662.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c34026662.filter(chkc) end

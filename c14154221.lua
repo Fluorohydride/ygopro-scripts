@@ -20,8 +20,8 @@ function c14154221.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c14154221.cfilter(c)
-	local st=c:GetSummonType()
-	return st&SUMMON_VALUE_EVOLTILE>0
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 function c14154221.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c14154221.cfilter,1,nil)

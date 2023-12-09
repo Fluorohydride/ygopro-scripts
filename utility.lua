@@ -763,8 +763,9 @@ function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_EVOLTILE>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
