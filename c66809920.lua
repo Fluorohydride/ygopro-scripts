@@ -26,7 +26,8 @@ function c66809920.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66809920.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsType(TYPE_SPELL) and e:GetHandler():IsPreviousLocation(LOCATION_HAND)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_SPELL~=0 and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c66809920.thfilter(c)
 	return c:IsCode(92182447) and c:IsAbleToHand()

@@ -20,8 +20,10 @@ function c37675138.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37675138.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetOwner():IsRace(RACE_ZOMBIE) and e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
-		and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	local typ,race=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return c:IsPreviousLocation(LOCATION_GRAVE) and e:GetHandler():IsPreviousControler(tp)
+		and typ&TYPE_MONSTER~=0 and race&RACE_ZOMBIE~=0
 end
 function c37675138.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

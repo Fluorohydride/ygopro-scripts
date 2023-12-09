@@ -27,7 +27,8 @@ function c6552938.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c6552938.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0xba) and e:GetHandler():IsPreviousLocation(LOCATION_HAND)
+	local c=e:GetHandler()
+	return c:IsSpecialSummonSetCard(0xba) and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c6552938.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

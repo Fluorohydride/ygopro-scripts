@@ -92,10 +92,10 @@ function c95034141.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95034141.alfilter(c)
-	return c:IsRace(RACE_ZOMBIE) and c:IsFaceup()
+	return c:IsRace(RACE_ZOMBIE) and c:IsFaceup() and c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
 end
 function c95034141.alcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c95034141.alfilter,1,nil) and aux.IsSpecialSummonedByEffect(re)
+	return eg:IsExists(c95034141.alfilter,1,nil)
 end
 function c95034141.cfilter(c)
 	return c:IsFacedown() and c:GetSequence()<5

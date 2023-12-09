@@ -20,7 +20,8 @@ function c44451698.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44451698.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsRace(RACE_PLANT)
+	local typ,race=e:GetHandler():GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return typ&TYPE_MONSTER~=0 and race&RACE_PLANT~=0
 end
 function c44451698.filter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsLevelAbove(6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

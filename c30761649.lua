@@ -41,9 +41,10 @@ function s.immtg(e,c)
 end
 function s.cfilter(c,tp)
 	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsType(TYPE_XYZ)
+		and c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_SPELL~=0 and c:IsSpecialSummonSetCard(0x95)
 end
 function s.xyzcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0x95) and re:IsActiveType(TYPE_SPELL) and eg:IsExists(s.cfilter,1,nil,tp)
+	return eg:IsExists(s.cfilter,1,nil,tp)
 end
 function s.tgfilter1(c,g,tp)
 	return g:IsContains(c) and Duel.IsExistingTarget(s.tgfilter2,tp,0,LOCATION_MZONE,1,c)

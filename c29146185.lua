@@ -25,9 +25,9 @@ function c29146185.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c29146185.retcon(e,tp,eg,ep,ev,re,r,rp)
-	if not re then return false end
-	local rc=re:GetHandler()
-	return rc:IsRace(RACE_SPELLCASTER) or (rc:IsSetCard(0x106e) and rc:IsType(TYPE_SPELL))
+	local c=e:GetHandler()
+	local typ,race=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return (typ&TYPE_MONSTER~=0 and race&RACE_SPELLCASTER~=0) or (typ&TYPE_SPELL~=0 and c:IsSpecialSummonSetCard(0x106e))
 end
 function c29146185.retcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==1 end

@@ -29,7 +29,8 @@ function c62393472.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c62393472.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x131)
 end
 function c62393472.spfilter1(c,e,tp)
 	return c:IsSetCard(0x131) and c:IsLevelBelow(8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) and not c:IsCode(62393472)

@@ -14,7 +14,8 @@ function c65961085.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65961085.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsRace(RACE_SPELLCASTER)
+	local typ,race=e:GetHandler():GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return typ&TYPE_MONSTER~=0 and race&RACE_SPELLCASTER~=0
 end
 function c65961085.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL) and c:IsAbleToDeck()
