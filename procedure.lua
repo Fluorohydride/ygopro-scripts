@@ -2001,7 +2001,7 @@ function Auxiliary.linklimit(e,se,sp,st)
 end
 --sp_summon condition for /Assault Mode
 function Auxiliary.AssaultModeLimit(e,se,sp,st)
-	return se:GetHandler():IsCode(80280737)
+	return st==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_ASSAULT_MODE or se:GetHandler():IsCode(80280737)
 end
 --sp_summon condition for Masked HERO
 function Auxiliary.MaskChangeLimit(e,se,sp,st)
