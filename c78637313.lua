@@ -32,8 +32,8 @@ function c78637313.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c78637313.filter(c)
-	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:GetReasonEffect()
-		and c:GetReasonEffect():GetHandler():IsCode(83764718)
+	local code,code2=c:GetSpecialSummonInfo(SUMMON_INFO_CODE,SUMMON_INFO_CODE2)
+	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MONSTER_REBORN or code==83764718 or code2==83764718
 end
 function c78637313.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()

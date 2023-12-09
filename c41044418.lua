@@ -96,7 +96,8 @@ function c41044418.rbop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,41044418,RESET_PHASE+PHASE_END,0,1)
 end
 function c41044418.regfilter(c)
-	return c:IsCode(10000010) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MONSTER_REBORN
+	local code,code2=c:GetSpecialSummonInfo(SUMMON_INFO_CODE,SUMMON_INFO_CODE2)
+	return c:IsCode(10000010) and (c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MONSTER_REBORN or code==83764718 or code2==83764718)
 end
 function c41044418.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c41044418.regfilter,1,nil)
