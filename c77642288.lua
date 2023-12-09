@@ -18,7 +18,7 @@ function c77642288.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetBattledGroupCount()>0
 end
 function c77642288.filter(c,e,tp)
-	return not c:IsCode(77642288) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
+	return not c:IsCode(77642288) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c77642288.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -32,7 +32,7 @@ function c77642288.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c77642288.filter,tp,LOCATION_DECK,0,2,2,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
-		Duel.SpecialSummonStep(tc,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		tc=g:GetNext()
 	end

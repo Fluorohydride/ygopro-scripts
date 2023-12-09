@@ -48,7 +48,7 @@ function c30864377.splimit(e,se,sp,st)
 end
 function c30864377.espfilter(c,e,tp)
 	return c:IsSetCard(0x19) and c:IsType(TYPE_FUSION) and not c:IsCode(30864377)
-		and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c30864377.esptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c30864377.espfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
@@ -58,7 +58,7 @@ function c30864377.espop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c30864377.espfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,SUMMON_VALUE_GLADIATOR,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	end
 end
 function c30864377.spcfilter(c,ft)
@@ -74,7 +74,7 @@ function c30864377.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c30864377.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
+	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c30864377.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c30864377.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
@@ -86,7 +86,7 @@ function c30864377.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c30864377.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummonStep(tc,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		Duel.SpecialSummonComplete()
 	end

@@ -53,7 +53,7 @@ function c62000467.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c62000467.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
+	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62000467.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -73,10 +73,10 @@ function c62000467.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 		local tc=sg1:GetFirst()
-		Duel.SpecialSummonStep(tc,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		tc=sg1:GetNext()
-		Duel.SpecialSummonStep(tc,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		Duel.SpecialSummonComplete()
 	end

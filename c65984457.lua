@@ -14,7 +14,7 @@ function c65984457.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65984457.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(65984457)>0 and e:GetHandler():GetBattledGroupCount()>0
+	return aux.gbspcon(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler():GetBattledGroupCount()>0
 end
 function c65984457.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
