@@ -11,7 +11,7 @@ function c84536654.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c84536654.spfilter(c,code,lv,e,tp,mc)
-	return c:IsLevel(lv) and c:IsSetCard(0xa008) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsLevel(lv) and c:IsSetCard(0xa008) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_MASK_CHANGE,tp,false,true)
 		and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c84536654.filter(c,e,tp)
@@ -36,7 +36,7 @@ function c84536654.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c84536654.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,code,lv,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
-		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(g,SUMMON_VALUE_MASK_CHANGE,tp,tp,false,true,POS_FACEUP)
 		g:GetFirst():CompleteProcedure()
 	end
 end

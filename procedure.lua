@@ -2003,3 +2003,7 @@ end
 function Auxiliary.AssaultModeLimit(e,se,sp,st)
 	return se:GetHandler():IsCode(80280737)
 end
+--sp_summon condition for Masked HERO
+function Auxiliary.MaskChangeLimit(e,se,sp,st)
+	return st==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MASK_CHANGE or se:GetHandler():IsCode(21143940)
+end
