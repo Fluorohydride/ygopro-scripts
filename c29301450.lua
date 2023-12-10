@@ -131,11 +131,15 @@ function s.retop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		if turnp==tp then
-			Duel.ReturnToField(g1:GetFirst())
+			if #g1>0 then
+				Duel.ReturnToField(g1:GetFirst())
+			end
 			Duel.ReturnToField(g2:GetFirst())
 		else
 			Duel.ReturnToField(g2:GetFirst())
-			Duel.ReturnToField(g1:GetFirst())
+			if #g1>0 then
+				Duel.ReturnToField(g1:GetFirst())
+			end
 		end
 	end
 end
