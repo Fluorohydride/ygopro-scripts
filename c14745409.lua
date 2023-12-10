@@ -1,5 +1,4 @@
 --聖剣ガラティーン
---Fixed by Lee
 function c14745409.initial_effect(c)
 	c:SetUniqueOnField(1,0,14745409)
 	--Activate
@@ -107,7 +106,8 @@ end
 function c14745409.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsSetCard(0x107a) and tc:IsRace(RACE_WARRIOR) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
+	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup()
+		and tc:IsControler(tp) and tc:IsSetCard(0x107a) and c14745409.eqlimit(nil,c) and c:CheckUniqueOnField(tp) then
 		Duel.Equip(tp,c,tc)
 	end
 end

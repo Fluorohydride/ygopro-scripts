@@ -1,5 +1,4 @@
 --聖剣アロンダイト
---Fixed by Lee
 function c83438826.initial_effect(c)
 	c:SetUniqueOnField(1,0,83438826)
 	--Activate
@@ -108,16 +107,8 @@ end
 function c83438826.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and c:CheckUniqueOnField(tp) then
+	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup()
+		and tc:IsControler(tp) and c83438826.eqlimit(nil,c) and c:CheckUniqueOnField(tp) then
 		Duel.Equip(tp,c,tc)
-		local e1=Effect.CreateEffect(tc)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_EQUIP_LIMIT)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetValue(c83438826.eqlimit2)
-		c:RegisterEffect(e1)
 	end
-end
-function c83438826.eqlimit2(e,c)
-	return e:GetOwner()==c
 end
