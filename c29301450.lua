@@ -105,6 +105,9 @@ end
 function s.retfilter(c)
 	return c:GetFlagEffect(id)~=0
 end
+function s.retfilter1(c,tp)
+	return c:GetFlagEffect(id)~=0 and c:IsControler(tp)
+end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetLabelObject():IsExists(s.retfilter,1,nil) then
 		e:GetLabelObject():DeleteGroup()
@@ -114,8 +117,25 @@ function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return true
 end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetLabelObject():Filter(s.retfilter,nil)
-	for tc in aux.Next(g) do
-		Duel.ReturnToField(tc)
+	local g1=e:GetLabelObject():Filter(s.retfilter1,nil,tp)
+	local g2=e:GetLabelObject():Filter(s.retfilter1,nil,1-tp)
+	local turnp=Duel.GetTurnPlayer()
+	if #g2==0 then
+		if #g1==1 then
+			Duel.ReturnToField(g1:GetFirst())
+		else
+			local tc=g1:Select(tp,1,1,nil):GetFirst()
+			Duel.ReturnToField(tc)
+			g1=g1-tc
+			Duel.ReturnToField(g1:GetFirst())
+		end
+	else
+		if turnp==tp then
+			Duel.ReturnToField(g1:GetFirst())
+			Duel.ReturnToField(g2:GetFirst())
+		else
+			Duel.ReturnToField(g2:GetFirst())
+			Duel.ReturnToField(g1:GetFirst())
+		end
 	end
 end
