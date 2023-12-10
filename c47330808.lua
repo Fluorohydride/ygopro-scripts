@@ -60,7 +60,7 @@ function c47330808.desop(e,tp,eg,ep,ev,re,r,rp)
 	if tg:GetCount()==2 then
 		if tg:FilterCount(Card.IsAbleToHand,nil)==2 and (tg:FilterCount(Card.IsAbleToDeck,nil)<2 or Duel.SelectOption(tp,aux.Stringid(47330808,2),aux.Stringid(47330808,3))==0) then
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
-			else
+			elseif tg:FilterCount(Card.IsAbleToDeck,nil)==2 then
 				Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
