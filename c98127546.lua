@@ -47,7 +47,6 @@ function c98127546.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c98127546.matfilter1(c,tp)
-	return c:GetFlagEffect(100200249)>0 and c:IsControler(tp)
 function c98127546.exmatcheck(c,lc,tp)
 	 if not c:IsControler(1-tp) then return false end
 	 local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
