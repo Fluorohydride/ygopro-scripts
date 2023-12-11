@@ -49,7 +49,7 @@ end
 function c98127546.matfilter1(c,tp)
 	return c:GetFlagEffect(100200249)>0 and c:IsControler(tp)
 end
-function c98127546.matfilter2(c,tp)
+function c98127546.exmatcheck(c,lc,tp)
 	return c:GetFlagEffect(100200249)==0 and c:IsControler(tp)
 end
 function c98127546.matval(e,lc,mg,c,tp)
