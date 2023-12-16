@@ -102,7 +102,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		if Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)>0 then
 			local c=e:GetHandler()
-			local e1=Effect.CreateEffect(c)
+			local e1=Effect.CreateEffect(tc)
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 			e1:SetCode(EFFECT_CANNOT_ACTIVATE)
