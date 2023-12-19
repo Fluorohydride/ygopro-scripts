@@ -22,6 +22,7 @@ function c56824871.initial_effect(c)
 	e2:SetOperation(c56824871.thop)
 	c:RegisterEffect(e2)
 end
+c56824871.treat_itself_tuner=true
 function c56824871.sprfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE)
 end

@@ -68,7 +68,7 @@ function c44097050.thfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsAbleToHand()
 end
 function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetReleaseGroup(tp)
+	local g=Duel.GetReleaseGroup(tp):Filter(Card.IsReleasable,nil)
 	local b1=Duel.CheckReleaseGroup(tp,c44097050.costfilter,1,nil,tp)
 	local b2=g:GetCount()>1 and g:CheckSubGroup(aux.mzctcheck,2,2,tp)
 		and Duel.IsExistingMatchingCard(c44097050.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)

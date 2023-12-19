@@ -42,6 +42,7 @@ function c53389254.initial_effect(c)
 	e4:SetOperation(c53389254.spop2)
 	c:RegisterEffect(e4)
 end
+c53389254.treat_itself_tuner=true
 function c53389254.valcheck(e,c)
 	local g=c:GetMaterial()
 	if g:IsExists(Card.IsSetCard,1,nil,0x33) then

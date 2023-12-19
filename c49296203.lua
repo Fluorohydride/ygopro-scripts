@@ -25,6 +25,7 @@ function c49296203.initial_effect(c)
 	e3:SetOperation(c49296203.posop)
 	c:RegisterEffect(e3)
 end
+c49296203.treat_itself_tuner=true
 function c49296203.posfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x11) and c:IsCanChangePosition()
 end

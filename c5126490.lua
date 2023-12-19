@@ -1,6 +1,6 @@
 --ネオス・ワイズマン
 function c5126490.initial_effect(c)
-	aux.AddCodeList(c,89943723)
+	aux.AddCodeList(c,89943723,78371393)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

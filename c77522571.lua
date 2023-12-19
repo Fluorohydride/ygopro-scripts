@@ -93,7 +93,7 @@ function c77522571.splimit(e,c)
 	return not c:IsType(TYPE_FUSION) and c:IsLocation(LOCATION_EXTRA)
 end
 function c77522571.costfilter(c)
-	return c:IsLevelAbove(1) and c:IsRace(RACE_FIEND)
+	return c:IsReleasable() and c:IsLevelAbove(1) and c:IsRace(RACE_FIEND)
 end
 function c77522571.fgoal(sg,e,tp)
 	local lv=sg:GetSum(Card.GetLevel)

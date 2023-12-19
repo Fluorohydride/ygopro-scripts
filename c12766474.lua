@@ -34,8 +34,11 @@ end
 function c12766474.relfilter(c,g)
 	return g:IsContains(c)
 end
+function c12766474.rfilter(c)
+	return c:IsReleasable() and c:IsAttribute(ATTRIBUTE_DARK)
+end
 function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsAttribute,nil,ATTRIBUTE_DARK)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c12766474.rfilter,nil)
 	if chk==0 then return Duel.GetCustomActivityCount(12766474,tp,ACTIVITY_SPSUMMON)==0
 		and rg:CheckSubGroup(aux.mzctcheckrel,1,#rg,tp) end
 	local e1=Effect.CreateEffect(e:GetHandler())

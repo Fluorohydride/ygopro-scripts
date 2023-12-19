@@ -29,7 +29,7 @@ function c72621670.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			local rg=Duel.GetReleaseGroup(tp)
+			local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsReleasable,nil)
 			return rg:CheckSubGroup(c72621670.fselect,2,2,tp)
 		else
 			return Duel.IsExistingTarget(c72621670.filter,tp,0,LOCATION_MZONE,2,nil,false)
@@ -37,7 +37,7 @@ function c72621670.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local rg=Duel.GetReleaseGroup(tp)
+		local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsReleasable,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local sg=rg:SelectSubGroup(tp,c72621670.fselect,false,2,2,tp)
 		aux.UseExtraReleaseCount(sg,tp)

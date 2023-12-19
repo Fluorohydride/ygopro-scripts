@@ -21,6 +21,7 @@ function c52445243.initial_effect(c)
 	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 end
+c52445243.treat_itself_tuner=true
 function c52445243.valcheck(e,c)
 	e:GetLabelObject():SetLabel(0)
 	local g=c:GetMaterial()

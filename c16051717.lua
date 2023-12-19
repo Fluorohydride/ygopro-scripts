@@ -28,6 +28,7 @@ function c16051717.initial_effect(c)
 	e3:SetOperation(c16051717.desop)
 	c:RegisterEffect(e3)
 end
+c16051717.treat_itself_tuner=true
 function c16051717.valcheck(e,c)
 	local g=c:GetMaterial()
 	if g:IsExists(Card.IsSetCard,1,nil,0x33) then
