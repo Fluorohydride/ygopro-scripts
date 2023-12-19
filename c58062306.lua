@@ -21,6 +21,7 @@ function c58062306.initial_effect(c)
 	e2:SetOperation(c58062306.operation)
 	c:RegisterEffect(e2)
 end
+c58062306.treat_itself_tuner=true
 function c58062306.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0)==0

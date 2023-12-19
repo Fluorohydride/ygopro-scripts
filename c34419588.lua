@@ -52,7 +52,7 @@ function c34419588.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c34419588.rlfilter(c,tp)
-	return c:IsCode(44632120,71036835,7021574,40640057) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsReleasable() and (c:IsCode(44632120,71036835,7021574,40640057) and (c:IsControler(tp) or c:IsFaceup()))
 end
 function c34419588.rlcheck(sg,c,tp)
 	local g=sg:Clone()

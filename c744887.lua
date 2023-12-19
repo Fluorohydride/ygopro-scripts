@@ -17,7 +17,7 @@ function c744887.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c744887.costfilter(c)
-	return c:IsSetCard(0x134) or c:IsRace(RACE_ROCK)
+	return c:IsReleasable() and (c:IsSetCard(0x134) or c:IsRace(RACE_ROCK))
 end
 function c744887.fselect(g,tp)
 	return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g)

@@ -68,7 +68,7 @@ function c96733134.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c96733134.rfilter(c,tp)
-	return c:IsSetCard(0x20f8) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsReleasable() and c:IsSetCard(0x20f8) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c96733134.hspcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c96733134.rfilter,nil,tp)

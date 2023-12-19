@@ -26,7 +26,7 @@ function c17197110.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c17197110.rfilter(c,tp)
-	return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsReleasable() and c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c17197110.spfilter(c,e,tp)
 	return c:IsSetCard(0x2f) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

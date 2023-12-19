@@ -24,7 +24,7 @@ function c79402185.initial_effect(c)
 end
 c79402185.spchecks=aux.CreateChecks(Card.IsCode,{43017476,43017476,58071123})
 function c79402185.costfilter(c,tp)
-	return c:IsCode(43017476,58071123) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsReleasable() and c:IsCode(43017476,58071123) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c79402185.fgoal(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)

@@ -51,7 +51,7 @@ function c44632120.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c44632120.cfilter,1,nil,tp)
 end
 function c44632120.rlfilter(c,tp)
-	return c:IsCode(71036835,7021574,34419588,40640057) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsReleasable() and c:IsCode(71036835,7021574,34419588,40640057) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c44632120.rlcheck(sg,c,tp)
 	local g=sg:Clone()

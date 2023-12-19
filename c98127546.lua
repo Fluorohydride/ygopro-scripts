@@ -46,9 +46,15 @@ function c98127546.initial_effect(c)
 	e4:SetOperation(c98127546.negop)
 	c:RegisterEffect(e4)
 end
+function c98127546.matfilter1(c,tp)
+	return c:GetFlagEffect(100200249)>0 and c:IsControler(tp)
+end
+function c98127546.matfilter2(c,tp)
+	return c:GetFlagEffect(100200249)==0 and c:IsControler(tp)
+end
 function c98127546.matval(e,lc,mg,c,tp)
 	if e:GetHandler()~=lc then return false,nil end
-	return true,not mg or not mg:IsExists(Card.IsControler,1,nil,1-tp)
+	return true,not mg or (mg:IsExists(c98127546.matfilter1,1,nil,1-tp) and not mg:IsExists(c98127546.matfilter2,1,nil,1-tp)) or (not mg:IsExists(Card.IsControler,1,nil,1-tp))
 end
 function c98127546.discon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
