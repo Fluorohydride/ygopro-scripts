@@ -29,7 +29,7 @@ function c71525232.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71525232.damfilter(c)
 	if c:IsFaceup() then
-		return c:GetAttack()
+		return math.max(c:GetTextAttack‎(),0)
 	else return 0 end
 end
 function c71525232.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -37,19 +37,16 @@ function c71525232.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	local mg,atk=g:GetMaxGroup(c71525232.damfilter)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,atk)
-end
-function c71525232.filter(c)
-	if c:IsPreviousPosition(POS_FACEUP) then
-		return c:GetPreviousAttackOnField()
-	else return 0 end
+	if atk>0 then
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,atk)
+	end
 end
 function c71525232.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,aux.ExceptThisCard(e))
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
-		local mg,atk=og:GetMaxGroup(c71525232.filter)
+		local mg,atk=og:GetMaxGroup(math.max(Card.GetTextAttack‎,0))
 		local dam=Duel.Damage(1-tp,atk,REASON_EFFECT)
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
 			local e1=Effect.CreateEffect(c)
