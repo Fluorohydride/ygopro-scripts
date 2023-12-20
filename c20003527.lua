@@ -17,7 +17,6 @@ function c20003527.initial_effect(c)
 	--summon proc
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(20003527,0))
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_SUMMON_PROC)
 	e3:SetCondition(c20003527.sumcon)

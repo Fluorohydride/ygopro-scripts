@@ -1,5 +1,6 @@
 --ガーディアン・デスサイス
 function c18175965.initial_effect(c)
+	aux.AddCodeList(c,34022290,81954378)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -68,13 +69,13 @@ function c18175965.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18175965.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,true) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c18175965.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
+	if Duel.SpecialSummon(c,0,tp,tp,true,true,POS_FACEUP)~=0 then
 		c:CompleteProcedure()
 	end
 end

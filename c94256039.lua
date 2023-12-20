@@ -42,7 +42,7 @@ end
 function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_PLAYER)
 	local c=e:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c:GetFlagEffect(1)>0 then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c:GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		c:AddCounter(0x1,1)
 		if c:GetCounter(0x1)==4 then
 			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+94256039,re,0,0,p,0)

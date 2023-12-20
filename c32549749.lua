@@ -30,7 +30,7 @@ function c32549749.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ft=ft-1 end
-	local b1=aux.dscon()
+	local b1=aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil)
 	local b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE and ft>0
 		and Duel.IsExistingTarget(c32549749.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,tp)

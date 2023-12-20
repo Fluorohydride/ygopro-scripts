@@ -63,6 +63,6 @@ end
 function c79794767.relcon(e)
 	return Duel.IsExistingMatchingCard(c79794767.filter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
-function c79794767.rellimit(e,c,tp,sumtp)
+function c79794767.rellimit(e,c,tp)
 	return not c:IsSetCard(0xe0)
 end

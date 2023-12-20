@@ -43,7 +43,8 @@ function c62868900.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c62868900.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==eg:GetFirst() end
-	if chk==0 then return eg:GetFirst():IsCanBeEffectTarget(e) end
+	if chk==0 then return e:IsCostChecked()
+		and eg:GetFirst():IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(eg)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end

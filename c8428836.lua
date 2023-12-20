@@ -37,9 +37,9 @@ function s.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_eq
 		mg:RemoveCard(c)
 	end
 	local lv=level_function(c)
-	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
-	local res=mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
-	Auxiliary.GCheckAdditional=nil
+	aux.GCheckAdditional=aux.RitualCheckAdditional(c,lv,greater_or_equal)
+	local res=mg:CheckSubGroup(aux.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
+	aux.GCheckAdditional=nil
 	return res
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)

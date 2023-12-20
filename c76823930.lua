@@ -72,7 +72,7 @@ function s.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,500)
 end
 function s.filter(c)
-	return c:IsSummonable(true,nil) or c:IsMSetable(true,nil)
+	return c:IsSummonable(true,nil)
 end
 function s.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -88,12 +88,6 @@ function s.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		local s1=tc:IsSummonable(true,nil)
-		local s2=tc:IsMSetable(true,nil)
-		if (s1 and s2 and Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)==POS_FACEUP_ATTACK) or not s2 then
-			Duel.Summon(tp,tc,true,nil)
-		else
-			Duel.MSet(tp,tc,true,nil)
-		end
+		Duel.Summon(tp,tc,true,nil)
 	end
 end

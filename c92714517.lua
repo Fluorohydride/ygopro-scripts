@@ -54,8 +54,8 @@ function s.checkfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(8) and c:IsRace(RACE_FIEND)
 end
 function s.thfilter(c,tp,check)
-	return c:IsAbleToHand() and (c:IsControler(tp) and c:IsFaceup() and c:IsRace(RACE_FIEND))
-		or (check and c:IsControler(1-tp))
+	return c:IsAbleToHand() and (c:IsControler(tp) and c:IsFaceup() and c:IsRace(RACE_FIEND)
+		or check and c:IsControler(1-tp))
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local check=Duel.IsExistingMatchingCard(s.checkfilter,tp,LOCATION_MZONE,0,1,nil)

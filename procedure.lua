@@ -1,3 +1,11 @@
+--Fusion check functions
+Auxiliary.FCheckAdditional=nil
+Auxiliary.FGoalCheckAdditional=nil
+
+--Ritual check functions
+Auxiliary.RCheckAdditional=nil
+Auxiliary.RGCheckAdditional=nil
+
 --Gemini Summon
 function Auxiliary.IsDualState(effect)
 	local c=effect:GetHandler()
@@ -21,7 +29,7 @@ function Auxiliary.EnableDualAttribute(c)
 	e2:SetCode(EFFECT_ADD_TYPE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e2:SetCondition(aux.DualNormalCondition)
+	e2:SetCondition(Auxiliary.DualNormalCondition)
 	e2:SetValue(TYPE_NORMAL)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -43,7 +51,12 @@ function Auxiliary.NonTuner(f,...)
 				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
---Synchro monster, 1 tuner + min to max monsters
+---Synchro monster, 1 tuner + min to max monsters
+---@param c Card
+---@param f1 function|nil
+---@param f2 function|nil
+---@param minc integer
+---@param maxc? integer
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	if maxc==nil then maxc=99 end
 	local e1=Effect.CreateEffect(c)
@@ -58,12 +71,12 @@ function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.SynCondition(f1,f2,minc,maxc)
+function Auxiliary.SynCondition(f1,f2,minct,maxct)
 	return	function(e,c,smat,mg,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -74,10 +87,10 @@ function Auxiliary.SynCondition(f1,f2,minc,maxc)
 				return Duel.CheckSynchroMaterial(c,f1,f2,minc,maxc,smat,mg)
 			end
 end
-function Auxiliary.SynTarget(f1,f2,minc,maxc)
+function Auxiliary.SynTarget(f1,f2,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg,min,max)
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -109,7 +122,15 @@ end
 function Auxiliary.AddSynchroProcedure2(c,f1,f2)
 	Auxiliary.AddSynchroProcedure(c,f1,f2,1,1)
 end
---Synchro monster, f1~f3 each 1 MONSTER + f4 min to max monsters
+---Synchro monster, f1~f3 each 1 MONSTER + f4 min to max monsters
+---@param c Card
+---@param f1 function|nil
+---@param f2 function|nil
+---@param f3 function|nil
+---@param f4 function|nil
+---@param minc integer
+---@param maxc integer
+---@param gc? function
 function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
@@ -140,15 +161,18 @@ function Auxiliary.GetSynMaterials(tp,syncard)
 	end
 	return mg
 end
-function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
+function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 	return	function(e,c,smat,mg1,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
-					if min>minc then minc=min end
-					if max<maxc then maxc=max end
+					local exct=0
+					if f2 then exct=exct+1 end
+					if f3 then exct=exct+1 end
+					if min-exct>minc then minc=min-exct end
+					if max-exct<maxc then maxc=max-exct end
 					if minc>maxc then return false end
 				end
 				if smat and not smat:IsCanBeSynchroMaterial(c) then return false end
@@ -165,13 +189,16 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
 				return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk)
 			end
 end
-function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
+function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg1,min,max)
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
-					if min>minc then minc=min end
-					if max<maxc then maxc=max end
+					local exct=0
+					if f2 then exct=exct+1 end
+					if f3 then exct=exct+1 end
+					if min-exct>minc then minc=min-exct end
+					if max-exct<maxc then maxc=max-exct end
 					if minc>maxc then return false end
 				end
 				::SynMixTargetSelectStart::
@@ -235,7 +262,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				else return false end
 			end
 end
-function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxc,gc)
+function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxct,gc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
@@ -309,6 +336,23 @@ function Auxiliary.SynMixHandFilter(c,tp,syncard)
 	end
 	return true
 end
+function Auxiliary.SynMixHandCheck(g,tp,syncard)
+	local hg=g:Filter(Auxiliary.SynMixHandFilter,nil,tp,syncard)
+	local hct=hg:GetCount()
+	if hct>0 then
+		local found=false
+		for c in Auxiliary.Next(g) do
+			local he,hf,hmin,hmax=c:GetHandSynchro()
+			if he then
+				found=true
+				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he,syncard) then return false end
+				if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
+			end
+		end
+		if not found then return false end
+	end
+	return true
+end
 function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if ct<minc then return false end
 	local g=sg:Clone()
@@ -321,21 +365,8 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
 		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
 		then return false end
-	local hg=g:Filter(Auxiliary.SynMixHandFilter,nil,tp,syncard)
-	local hct=hg:GetCount()
-	if hct>0 and not mgchk then
-		local found=false
-		for c in aux.Next(g) do
-			local he,hf,hmin,hmax=c:GetHandSynchro()
-			if he then
-				found=true
-				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he,syncard) then return false end
-				if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
-			end
-		end
-		if not found then return false end
-	end
-	for c in aux.Next(g) do
+	if not (mgchk or Auxiliary.SynMixHandCheck(g,tp,syncard)) then return false end
+	for c in Auxiliary.Next(g) do
 		local le,lf,lloc,lmin,lmax=c:GetTunerLimit()
 		if le then
 			local lct=g:GetCount()-1
@@ -372,15 +403,23 @@ function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
 	return alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
 		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
---Xyz monster, lv k*n
+---Xyz monster, lv k*n
+---@param c Card
+---@param f function|nil
+---@param lv integer
+---@param ct integer
+---@param alterf? function
+---@param alterdesc? string
+---@param maxct? integer
+---@param alterop? function
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
+	if not maxct then maxct=ct end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1165)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	if not maxct then maxct=ct end
 	if alterf then
 		e1:SetCondition(Auxiliary.XyzConditionAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
 		e1:SetTarget(Auxiliary.XyzTargetAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
@@ -394,14 +433,14 @@ function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
 	c:RegisterEffect(e1)
 end
 --Xyz Summon(normal)
-function Auxiliary.XyzCondition(f,lv,minc,maxc)
+function Auxiliary.XyzCondition(f,lv,minct,maxct)
 	--og: use special material
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -410,13 +449,13 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
-function Auxiliary.XyzTarget(f,lv,minc,maxc)
+function Auxiliary.XyzTarget(f,lv,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
 				end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -429,7 +468,7 @@ function Auxiliary.XyzTarget(f,lv,minc,maxc)
 				else return false end
 			end
 end
-function Auxiliary.XyzOperation(f,lv,minc,maxc)
+function Auxiliary.XyzOperation(f,lv,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
@@ -459,7 +498,7 @@ function Auxiliary.XyzOperation(f,lv,minc,maxc)
 			end
 end
 --Xyz summon(alterf)
-function Auxiliary.XyzConditionAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
+function Auxiliary.XyzConditionAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
@@ -473,8 +512,8 @@ function Auxiliary.XyzConditionAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop) then
 					return true
 				end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -483,13 +522,13 @@ function Auxiliary.XyzConditionAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
-function Auxiliary.XyzTargetAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
+function Auxiliary.XyzTargetAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
 				end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -524,7 +563,7 @@ function Auxiliary.XyzTargetAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				else return false end
 			end
 end
-function Auxiliary.XyzOperationAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
+function Auxiliary.XyzOperationAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
@@ -560,6 +599,15 @@ function Auxiliary.XyzOperationAlter(f,lv,minc,maxc,alterf,alterdesc,alterop)
 				end
 			end
 end
+---Xyz monster, any condition
+---@param c Card
+---@param f function|nil
+---@param gf function|nil
+---@param minc integer
+---@param maxc integer
+---@param alterf? function
+---@param alterdesc? string
+---@param alterop? function
 function Auxiliary.AddXyzProcedureLevelFree(c,f,gf,minc,maxc,alterf,alterdesc,alterop)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1165)
@@ -800,35 +848,40 @@ end
 
 --Fusion Summon
 --material: names in material list
---Fusion monster, mixed materials
-function Auxiliary.AddFusionProcMix(c,sub,insf,...)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+
+---Fusion monster, mixed materials (fixed count)
+---@param fcard Card
+---@param sub boolean
+---@param insf boolean
+---@param ... number|function|table
+function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
+	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={...}
 	local fun={}
 	local mat={}
 	for i=1,#val do
 		if type(val[i])=='function' then
-			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
+			fun[i]=function(c,fc,subm,mg,sg) return val[i](c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) end
 		elseif type(val[i])=='table' then
-			fun[i]=function(c,fc,sub,mg,sg)
+			fun[i]=function(c,fc,subm,mg,sg)
 					for _,fcode in ipairs(val[i]) do
 						if type(fcode)=='function' then
-							if fcode(c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) then return true end
-						else
-							if c:IsFusionCode(fcode) or (sub and c:CheckFusionSubstitute(fc)) then return true end
+							if fcode(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) then return true end
+						elseif type(fcode)=='number' then
+							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
 						end
 					end
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then mat[fcode]=true end
+				if type(fcode)=='number' then mat[fcode]=true end
 			end
-		else
-			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
+		elseif type(val[i])=='number' then
+			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
 			mat[val[i]]=true
 		end
 	end
-	local mt=getmetatable(c)
+	local mt=getmetatable(fcard)
 	if mt.material==nil then
 		mt.material=mat
 	end
@@ -836,15 +889,15 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		mt.material_count={#fun,#fun}
 	end
 	for index,_ in pairs(mat) do
-		Auxiliary.AddCodeList(c,index)
+		Auxiliary.AddCodeList(fcard,index)
 	end
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(fcard)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_FUSION_MATERIAL)
 	e1:SetCondition(Auxiliary.FConditionMix(insf,sub,table.unpack(fun)))
 	e1:SetOperation(Auxiliary.FOperationMix(insf,sub,table.unpack(fun)))
-	c:RegisterEffect(e1)
+	fcard:RegisterEffect(e1)
 end
 function Auxiliary.FConditionMix(insf,sub,...)
 	--g:Material group(nil for Instant Fusion)
@@ -859,27 +912,26 @@ function Auxiliary.FConditionMix(insf,sub,...)
 				local tp=c:GetControler()
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
-				local sub=(sub or notfusion) and not concat_fusion
-				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
+				local sub2=(sub or notfusion) and not concat_fusion
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(gc)
 				end
-				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
+				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local c=e:GetHandler()
-				local tp=c:GetControler()
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
-				local sub=(sub or notfusion) and not concat_fusion
-				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
+				local sub2=(sub or notfusion) and not concat_fusion
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
+				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
 				Duel.SetFusionMaterial(sg)
 			end
 end
@@ -907,8 +959,6 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 	end
 end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
-Auxiliary.FCheckAdditional=nil
-Auxiliary.FGoalCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 	local chkf=chkfnf&0xff
 	local concat_fusion=chkfnf&0x200>0
@@ -919,35 +969,43 @@ function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
 		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
 end
---Fusion monster, mixed material * minc to maxc + material + ...
-function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+
+---Fusion monster, mixed material * minc to maxc + material + ...
+---@param fcard Card
+---@param sub boolean
+---@param insf boolean
+---@param fun1 number|function|table
+---@param minc integer
+---@param maxc integer
+---@param ... number|function|table
+function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
+	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={fun1,...}
 	local fun={}
 	local mat={}
 	for i=1,#val do
 		if type(val[i])=='function' then
-			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
+			fun[i]=function(c,fc,subm) return val[i](c,fc,subm) and not c:IsHasEffect(6205579) end
 		elseif type(val[i])=='table' then
-			fun[i]=function(c,fc,sub,mg,sg)
+			fun[i]=function(c,fc,subm)
 					for _,fcode in ipairs(val[i]) do
 						if type(fcode)=='function' then
-							if fcode(c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) then return true end
-						else
-							if c:IsFusionCode(fcode) or (sub and c:CheckFusionSubstitute(fc)) then return true end
+							if fcode(c,fc,subm) and not c:IsHasEffect(6205579) then return true end
+						elseif type(fcode)=='number' then
+							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
 						end
 					end
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then mat[fcode]=true end
+				if type(fcode)=='number' then mat[fcode]=true end
 			end
-		else
-			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
+		elseif type(val[i])=='number' then
+			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
 			mat[val[i]]=true
 		end
 	end
-	local mt=getmetatable(c)
+	local mt=getmetatable(fcard)
 	if mt.material==nil then
 		mt.material=mat
 	end
@@ -955,15 +1013,15 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		mt.material_count={#fun+minc-1,#fun+maxc-1}
 	end
 	for index,_ in pairs(mat) do
-		Auxiliary.AddCodeList(c,index)
+		Auxiliary.AddCodeList(fcard,index)
 	end
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(fcard)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_FUSION_MATERIAL)
 	e1:SetCondition(Auxiliary.FConditionMixRep(insf,sub,fun[1],minc,maxc,table.unpack(fun,2)))
 	e1:SetOperation(Auxiliary.FOperationMixRep(insf,sub,fun[1],minc,maxc,table.unpack(fun,2)))
-	c:RegisterEffect(e1)
+	fcard:RegisterEffect(e1)
 end
 function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 	local funs={...}
@@ -973,15 +1031,15 @@ function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 				local tp=c:GetControler()
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
-				local sub=(sub or notfusion) and not concat_fusion
-				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,fun1,table.unpack(funs))
+				local sub2=(sub or notfusion) and not concat_fusion
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,fun1,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
 					local sg=Group.CreateGroup()
-					return Auxiliary.FSelectMixRep(gc,tp,mg,sg,c,sub,chkfnf,fun1,minc,maxc,table.unpack(funs))
+					return Auxiliary.FSelectMixRep(gc,tp,mg,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
 				end
 				local sg=Group.CreateGroup()
-				return mg:IsExists(Auxiliary.FSelectMixRep,1,nil,tp,mg,sg,c,sub,chkfnf,fun1,minc,maxc,table.unpack(funs))
+				return mg:IsExists(Auxiliary.FSelectMixRep,1,nil,tp,mg,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
 			end
 end
 function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
@@ -991,14 +1049,14 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				local tp=c:GetControler()
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
-				local sub=(sub or notfusion) and not concat_fusion
-				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,fun1,table.unpack(funs))
+				local sub2=(sub or notfusion) and not concat_fusion
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
 				if gc then sg:AddCard(gc) end
 				while sg:GetCount()<maxc+#funs do
-					local cg=mg:Filter(Auxiliary.FSelectMixRep,sg,tp,mg,sg,c,sub,chkfnf,fun1,minc,maxc,table.unpack(funs))
+					local cg=mg:Filter(Auxiliary.FSelectMixRep,sg,tp,mg,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
 					if cg:GetCount()==0 then break end
-					local finish=Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkfnf,fun1,minc,maxc,table.unpack(funs))
+					local finish=Auxiliary.FCheckMixRepGoal(tp,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
 					local cancel_group=sg:Clone()
 					if gc then cancel_group:RemoveCard(gc) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -1017,15 +1075,15 @@ function Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
 	if fun2 then
 		return sg:IsExists(Auxiliary.FCheckMixRepFilter,1,g,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
 	else
-		local ct1=sg:FilterCount(fun1,g,fc,sub,mg,sg)
-		local ct2=sg:FilterCount(fun1,g,fc,false,mg,sg)
+		local ct1=sg:FilterCount(fun1,g,fc,sub)
+		local ct2=sg:FilterCount(fun1,g,fc,false)
 		return ct1==sg:GetCount()-g:GetCount() and ct1-ct2<=1
 	end
 end
 function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
-	if fun2(c,fc,sub,mg,sg) then
+	if fun2(c,fc,sub) then
 		g:AddCard(c)
-		local sub=sub and fun2(c,fc,false,mg,sg)
+		sub=sub and fun2(c,fc,false)
 		local res=Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...)
 		g:RemoveCard(c)
 		return res
@@ -1050,21 +1108,21 @@ function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkfnf,fun1,minc,maxc,...)
 end
 function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
 	for i,f in ipairs({...}) do
-		if f(c,fc,sub,mg,sg) then
+		if f(c,fc,sub) then
 			g:AddCard(c)
-			local sub=sub and f(c,fc,false,mg,sg)
+			local subf=sub and f(c,fc,false)
 			local t={...}
 			table.remove(t,i)
-			local res=cond(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,table.unpack(t))
+			local res=cond(tp,mg,sg,g,fc,subf,chkfnf,fun1,minc,maxc,table.unpack(t))
 			g:RemoveCard(c)
 			if res then return true end
 		end
 	end
 	if maxc>0 then
-		if fun1(c,fc,sub,mg,sg) then
+		if fun1(c,fc,sub) then
 			g:AddCard(c)
-			local sub=sub and fun1(c,fc,false,mg,sg)
-			local res=cond(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc-1,maxc-1,...)
+			local subf1=sub and fun1(c,fc,false)
+			local res=cond(tp,mg,sg,g,fc,subf1,chkfnf,fun1,minc-1,maxc-1,...)
 			g:RemoveCard(c)
 			if res then return true end
 		end
@@ -1093,17 +1151,17 @@ function Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,..
 end
 function Auxiliary.FCheckSelectMixRepAll(c,tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
 	if fun2 then
-		if fun2(c,fc,sub,mg,sg) then
+		if fun2(c,fc,sub) then
 			g:AddCard(c)
-			local sub=sub and fun2(c,fc,false,mg,sg)
-			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,...)
+			local subf2=sub and fun2(c,fc,false)
+			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf2,chkf,fun1,minc,maxc,...)
 			g:RemoveCard(c)
 			return res
 		end
-	elseif maxc>0 and fun1(c,fc,sub,mg,sg) then
+	elseif maxc>0 and fun1(c,fc,sub) then
 		g:AddCard(c)
-		local sub=sub and fun1(c,fc,false,mg,sg)
-		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc-1,maxc-1)
+		local subf1=sub and fun1(c,fc,false)
+		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf1,chkf,fun1,minc-1,maxc-1)
 		g:RemoveCard(c)
 		return res
 	end
@@ -1127,19 +1185,43 @@ function Auxiliary.FSelectMixRep(c,tp,mg,sg,fc,sub,chkfnf,...)
 	sg:RemoveCard(c)
 	return res
 end
---Fusion monster, name + name
+
+---Fusion monster, name + name
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode2(c,code1,code2,sub,insf)
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,code2)
 end
---Fusion monster, name + name + name
+---Fusion monster, name + name + name
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param code3 integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode3(c,code1,code2,code3,sub,insf)
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,code2,code3)
 end
---Fusion monster, name + name + name + name
+---Fusion monster, name + name + name + name
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param code3 integer
+---@param code4 integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,code2,code3,code4)
 end
---Fusion monster, name * n
+---Fusion monster, name * n
+---@param c Card
+---@param code1 integer
+---@param cc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	local code={}
 	for i=1,cc do
@@ -1147,11 +1229,23 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
---Fusion monster, name * minc to maxc
+---Fusion monster, name * minc to maxc
+---@param c Card
+---@param code1 integer
+---@param minc integer
+---@param maxc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep2(c,code1,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,code1,minc,maxc)
 end
---Fusion monster, name + condition * n
+---Fusion monster, name + condition * n
+---@param c Card
+---@param code1 integer
+---@param f function|table
+---@param cc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 	local fun={}
 	for i=1,cc do
@@ -1159,11 +1253,19 @@ function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,code1,table.unpack(fun))
 end
---Fusion monster, condition + condition
+---Fusion monster, condition + condition
+---@param c Card
+---@param f1 function|table
+---@param f2 function|table
+---@param insf boolean
 function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
 	Auxiliary.AddFusionProcMix(c,false,insf,f1,f2)
 end
---Fusion monster, condition * n
+---Fusion monster, condition * n
+---@param c Card
+---@param f function|table
+---@param cc integer
+---@param insf boolean
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	local fun={}
 	for i=1,cc do
@@ -1171,11 +1273,21 @@ function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,false,insf,table.unpack(fun))
 end
---Fusion monster, condition * minc to maxc
+---Fusion monster, condition * minc to maxc
+---@param c Card
+---@param f function|table
+---@param minc integer
+---@param maxc integer
+---@param insf boolean
 function Auxiliary.AddFusionProcFunRep2(c,f,minc,maxc,insf)
 	Auxiliary.AddFusionProcMixRep(c,false,insf,f,minc,maxc)
 end
---Fusion monster, condition1 + condition2 * n
+---Fusion monster, condition1 + condition2 * n
+---@param c Card
+---@param f1 function|table
+---@param f2 function|table
+---@param cc integer
+---@param insf boolean
 function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,insf)
 	local fun={}
 	for i=1,cc do
@@ -1187,15 +1299,32 @@ end
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
 	Auxiliary.AddFusionProcMixRep(c,false,insf,f2,minc,maxc,f1)
 end
---Fusion monster, name + condition * minc to maxc
+---Fusion monster, name + condition * minc to maxc
+---@param c Card
+---@param code1 integer
+---@param f function|table
+---@param minc integer
+---@param maxc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCodeFunRep(c,code1,f,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1)
 end
---Fusion monster, name + name + condition * minc to maxc
+---Fusion monster, name + name + condition * minc to maxc
+---@param c Card
+---@param code1 integer
+---@param code2 integer
+---@param f function|table
+---@param minc integer
+---@param maxc integer
+---@param sub boolean
+---@param insf boolean
 function Auxiliary.AddFusionProcCode2FunRep(c,code1,code2,f,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1,code2)
 end
---Fusion monster, Shaddoll materials
+---Fusion monster, Shaddoll materials
+---@param c Card
+---@param attr integer
 function Auxiliary.AddFusionProcShaddoll(c,attr)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1270,7 +1399,7 @@ function Auxiliary.FShaddollOperation(attr)
 					mg:Sub(g)
 				end
 				if exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),attr,chkf)
-					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
+					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,Auxiliary.Stringid(81788994,0)))) then
 					fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 					local sg=exg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),attr,chkf)
@@ -1286,8 +1415,8 @@ end
 
 --Contact Fusion
 function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_location,mat_operation,...)
-	local self_location=self_location or 0
-	local opponent_location=opponent_location or 0
+	self_location=self_location or 0
+	opponent_location=opponent_location or 0
 	local operation_params={...}
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
@@ -1351,7 +1480,6 @@ end
 function Auxiliary.RitualCheckEqual(g,c,lv)
 	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c)
 end
-Auxiliary.RCheckAdditional=nil
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
@@ -1366,7 +1494,6 @@ function Auxiliary.RitualCheckAdditionalLevel(c,rc)
 		return lv1
 	end
 end
-Auxiliary.RGCheckAdditional=nil
 function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 	if greater_or_equal=="Equal" then
 		return	function(g)
@@ -1643,7 +1770,7 @@ function Auxiliary.PendOperation()
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
-				local g=tg:SelectSubGroup(tp,aux.TRUE,true,1,math.min(#tg,ft))
+				local g=tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
 				Auxiliary.GCheckAdditional=nil
 				if not g then return end
 				if ce then
@@ -1682,15 +1809,21 @@ function Auxiliary.PSSCompleteProcedure(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 
---Link Summon
+---Link Summon
+---@param c Card
+---@param f function|nil
+---@param min integer
+---@param max? integer
+---@param gf? function
+---@return Effect
 function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
+	if max==nil then max=c:GetLink() end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1166)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	if max==nil then max=c:GetLink() end
 	e1:SetCondition(Auxiliary.LinkCondition(f,min,max,gf))
 	e1:SetTarget(Auxiliary.LinkTarget(f,min,max,gf))
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max,gf))
@@ -1737,7 +1870,7 @@ function Auxiliary.LCheckOtherMaterial(c,mg,lc,tp)
 	return res1 or res2
 end
 function Auxiliary.LUncompatibilityFilter(c,sg,lc,tp)
-	local mg=sg:Filter(aux.TRUE,c)
+	local mg=sg:Filter(Auxiliary.TRUE,c)
 	return not Auxiliary.LCheckOtherMaterial(c,mg,lc,tp)
 end
 function Auxiliary.LCheckGoal(sg,tp,lc,gf,lmat)
@@ -1747,10 +1880,10 @@ function Auxiliary.LCheckGoal(sg,tp,lc,gf,lmat)
 		and (not lmat or sg:IsContains(lmat))
 end
 function Auxiliary.LExtraMaterialCount(mg,lc,tp)
-	for tc in aux.Next(mg) do
+	for tc in Auxiliary.Next(mg) do
 		local le={tc:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
 		for _,te in pairs(le) do
-			local sg=mg:Filter(aux.TRUE,tc)
+			local sg=mg:Filter(Auxiliary.TRUE,tc)
 			local f=te:GetValue()
 			local related,valid=f(te,lc,sg,tc,tp)
 			if related and valid then
@@ -1759,12 +1892,12 @@ function Auxiliary.LExtraMaterialCount(mg,lc,tp)
 		end
 	end
 end
-function Auxiliary.LinkCondition(f,minc,maxc,gf)
+function Auxiliary.LinkCondition(f,minct,maxct,gf)
 	return	function(e,c,og,lmat,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -1787,10 +1920,10 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				return mg:CheckSubGroup(Auxiliary.LCheckGoal,minc,maxc,tp,c,gf,lmat)
 			end
 end
-function Auxiliary.LinkTarget(f,minc,maxc,gf)
+function Auxiliary.LinkTarget(f,minct,maxct,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,lmat,min,max)
-				local minc=minc
-				local maxc=maxc
+				local minc=minct
+				local maxc=maxct
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
@@ -1818,7 +1951,7 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				else return false end
 			end
 end
-function Auxiliary.LinkOperation(f,minc,maxc,gf)
+function Auxiliary.LinkOperation(f,minct,maxct,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,lmat,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
@@ -1865,4 +1998,8 @@ end
 --sp_summon condition for link monster
 function Auxiliary.linklimit(e,se,sp,st)
 	return st&SUMMON_TYPE_LINK==SUMMON_TYPE_LINK
+end
+--sp_summon condition for /Assault Mode
+function Auxiliary.AssaultModeLimit(e,se,sp,st)
+	return se:GetHandler():IsCode(80280737)
 end

@@ -48,7 +48,7 @@ function c67234805.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c67234805.ctop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsActiveType(TYPE_MONSTER) and e:GetHandler():GetFlagEffect(1)>0 then
+	if re:IsActiveType(TYPE_MONSTER) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x16,1)
 	end
 end

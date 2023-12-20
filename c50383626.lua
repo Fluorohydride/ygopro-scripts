@@ -41,7 +41,7 @@ function c50383626.initial_effect(c)
 	e5:SetOperation(c50383626.tdop)
 	c:RegisterEffect(e5)
 end
-function c50383626.rellimit(e,c,tp,sumtp)
+function c50383626.rellimit(e,c,tp)
 	return c==e:GetHandler()
 end
 function c50383626.spcfilter(c,tp)

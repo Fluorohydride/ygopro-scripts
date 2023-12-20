@@ -39,7 +39,7 @@ function c35756798.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35756798.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetFlagEffect(tp,35756798)
-	return Duel.GetTurnPlayer()==tp and aux.bpcon() and ct>0
+	return Duel.GetTurnPlayer()==tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp) and ct>0
 end
 function c35756798.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)

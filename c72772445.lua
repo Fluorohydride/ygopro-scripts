@@ -48,7 +48,7 @@ function c72772445.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_FZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c72772445.spfilter(c,e,tp)
-	return c:IsSetCard(0xe2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xe2) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.TriamidSpSummonType(c))
 end
 function c72772445.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -60,6 +60,9 @@ function c72772445.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c72772445.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+		local sc=g:GetFirst()
+		if Duel.SpecialSummon(g,0,tp,tp,false,aux.TriamidSpSummonType(sc),POS_FACEUP) and aux.TriamidSpSummonType(sc) then
+			sc:CompleteProcedure()
+		end
 	end
 end

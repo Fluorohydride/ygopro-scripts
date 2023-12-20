@@ -40,7 +40,6 @@ function s.destarget(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
-	Duel.Destroy(g,REASON_EFFECT)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -50,6 +49,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(s.val)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.Destroy(g,REASON_EFFECT)
 end
 function s.val(e,re,ev,r,rp,rc)
 	return bit.band(r,REASON_EFFECT)~=0

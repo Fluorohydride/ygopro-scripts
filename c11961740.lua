@@ -16,11 +16,11 @@ end
 function c11961740.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
+		local fid=c:GetFieldID()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,1,nil,tp,POS_FACEDOWN)
-		local tc=g:GetFirst()
-		if tc and Duel.Remove(tc,POS_FACEDOWN,REASON_EFFECT)~=0 and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-			tc:RegisterFlagEffect(11961740,RESET_EVENT+RESETS_STANDARD,0,1)
+		local rc=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,1,nil,tp,POS_FACEDOWN):GetFirst()
+		if rc and Duel.Remove(rc,POS_FACEDOWN,REASON_EFFECT)~=0 and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
+			rc:RegisterFlagEffect(11961740,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2,fid)
 			c:CancelToGrave()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -30,8 +30,8 @@ function c11961740.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,2)
 			e1:SetCondition(c11961740.thcon)
 			e1:SetOperation(c11961740.thop)
-			e1:SetLabel(0)
-			e1:SetLabelObject(tc)
+			e1:SetLabel(fid,0)
+			e1:SetLabelObject(rc)
 			c:RegisterEffect(e1)
 		end
 	end
@@ -40,13 +40,15 @@ function c11961740.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c11961740.thop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=e:GetLabel()
-	e:GetHandler():SetTurnCounter(ct+1)
-	if ct==1 then
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
-		local tc=e:GetLabelObject()
-		if tc:GetFlagEffect(11961740)~=0 then
-			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		end
-	else e:SetLabel(1) end
+	local c=e:GetHandler()
+	local fid,ct=e:GetLabel()
+	local tc=e:GetLabelObject()
+	ct=ct+1
+	c:SetTurnCounter(ct)
+	e:SetLabel(fid,ct)
+	if ct~=2 then return end
+	if Duel.Destroy(c,REASON_EFFECT)>0 and tc:GetFlagEffectLabel(11961740)==fid then
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,tc)
+	end
 end

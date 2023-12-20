@@ -56,12 +56,12 @@ function c47330808.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,2,0,0)
 end
 function c47330808.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if tg:GetCount()==2 and tg:FilterCount(Card.IsAbleToHand,nil)==2
-		and (not tg:FilterCount(Card.IsAbleToDeck,nil)==2
-			or Duel.SelectOption(tp,aux.Stringid(47330808,2),aux.Stringid(47330808,3))==0) then
-		Duel.SendtoHand(tg,nil,REASON_EFFECT)
-	else
-		Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local tg=Duel.GetTargetsRelateToChain()
+	if tg:GetCount()==2 then
+		if tg:FilterCount(Card.IsAbleToHand,nil)==2 and (tg:FilterCount(Card.IsAbleToDeck,nil)<2 or Duel.SelectOption(tp,aux.Stringid(47330808,2),aux.Stringid(47330808,3))==0) then
+			Duel.SendtoHand(tg,nil,REASON_EFFECT)
+			elseif tg:FilterCount(Card.IsAbleToDeck,nil)==2 then
+				Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		end
 	end
 end

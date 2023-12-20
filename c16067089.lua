@@ -18,7 +18,7 @@ function c16067089.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c16067089.cfilter,1,nil,tp)
 end
 function c16067089.filter(c,e,tp)
-	return c:IsCode(8062132) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsCode(8062132) and c:IsCanBeSpecialSummoned(e,0,tp,false,true)
 end
 function c16067089.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -30,8 +30,7 @@ function c16067089.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c16067089.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc then
-		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
+	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,true,POS_FACEUP)>0 then
 		tc:CompleteProcedure()
 	end
 end

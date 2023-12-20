@@ -69,8 +69,8 @@ function s.matchk(e,c)
 	ef:SetCountLimit(ct)
 end
 function s.sfilter(c,e,tp)
-	return c:IsFaceup() and c:IsCanBeEffectTarget(e)
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:IsType(TYPE_MONSTER)
+	return not c:IsType(TYPE_TOKEN) and c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsCanBeEffectTarget(e)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(s.sfilter,nil,e,tp)

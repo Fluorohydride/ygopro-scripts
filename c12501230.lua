@@ -52,7 +52,7 @@ function s.indct(e,re,r,rp)
 	else return 0 end
 end
 function s.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and aux.dscon()
+	return Duel.GetTurnPlayer()~=tp and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function s.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
