@@ -24,7 +24,7 @@ function c51481927.initial_effect(c)
 end
 function c51481927.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and re:GetHandler()~=e:GetHandler() and e:GetHandler():GetFlagEffect(1)>0
+		and re:GetHandler()~=e:GetHandler() and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c51481927.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(e:GetHandlerPlayer(),500,REASON_EFFECT)

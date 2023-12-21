@@ -33,7 +33,7 @@ function c37169670.initial_effect(c)
 end
 c37169670.assault_name=95526884
 function c37169670.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and Duel.GetAttackTarget()~=nil
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttackTarget()~=nil
 end
 function c37169670.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

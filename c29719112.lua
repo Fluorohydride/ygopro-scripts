@@ -40,11 +40,11 @@ end
 function c29719112.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,c29719112.spfilter,1,nil,tp)
+	return Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c29719112.spfilter,1,nil,tp)
 end
 function c29719112.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c29719112.spfilter,1,1,nil,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c29719112.spfilter,1,1,nil,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c29719112.spfilter1(c,e)
 	return not c:IsImmuneToEffect(e)

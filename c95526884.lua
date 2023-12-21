@@ -27,7 +27,7 @@ function c95526884.reccon(e,tp,eg,ep,ev,re,r,rp)
 	if not d then return false end
 	local m=a:GetAttack()-d:GetDefense()
 	e:SetLabel(m)
-	return aux.dsercon(e) and c==a and d:GetDefense()>=0 and m>0 and bit.band(d:GetBattlePosition(),POS_DEFENSE)~=0
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and c==a and d:GetDefense()>=0 and m>0 and bit.band(d:GetBattlePosition(),POS_DEFENSE)~=0
 end
 function c95526884.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

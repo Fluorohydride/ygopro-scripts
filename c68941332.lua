@@ -29,7 +29,8 @@ function c68941332.filter(c,check)
 	return c:IsFaceup() and (c:IsType(TYPE_EFFECT) or bit.band(c:GetOriginalType(),TYPE_EFFECT)==TYPE_EFFECT)
 		and (check or c:IsAbleToChangeControler())
 end
-function c68941332.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c68941332.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c68941332.filter(chkc,true) end
 	if chk==0 then return Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,nil,true) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c68941332.filter,tp,0,LOCATION_MZONE,1,1,nil,true)
@@ -50,15 +51,16 @@ function c68941332.rfilter(c,tp)
 		and Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,c)
 end
 function c68941332.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c68941332.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c68941332.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c68941332.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c68941332.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
-function c68941332.target2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c68941332.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c68941332.filter(chkc,false) end
 	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsExistingTarget(c68941332.filter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c68941332.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c68941332.filter,tp,0,LOCATION_MZONE,1,1,nil,false)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 end
 function c68941332.activate2(e,tp,eg,ep,ev,re,r,rp)

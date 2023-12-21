@@ -67,7 +67,7 @@ function c31525442.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c31525442.dmcon(e,tp,eg,ev,ep,re,r,rp)
+function c31525442.dmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local at=Duel.GetAttacker()
 	return at:GetFlagEffectLabel(31525442)==c:GetFieldID()

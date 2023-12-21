@@ -38,7 +38,7 @@ function c12863633.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e3)
 	end
 end
-function c12863633.rellimit(e,c,tp,sumtp)
+function c12863633.rellimit(e,c,tp)
 	return c==e:GetHandler()
 end
 function c12863633.synlimit(e,c)

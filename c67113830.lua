@@ -12,7 +12,7 @@ function c67113830.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c67113830.condition(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dscon()
+	return aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_GRAVE)>7
 end
 function c67113830.filter(c)
