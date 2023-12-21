@@ -71,9 +71,6 @@ function c79569173.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+79569173,e,0,tp,tp,0)
 	end
 end
-function c79569173.disop(e,tp)
-	return e:GetLabel()
-end
 function c79569173.thfilter(c)
 	return c:IsRace(RACE_DINOSAUR) and c:IsAbleToHand()
 end

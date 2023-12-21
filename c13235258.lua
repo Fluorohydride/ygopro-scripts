@@ -138,7 +138,7 @@ function c13235258.ctop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c13235258.ctcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget() and ep~=tp and e:GetHandler():GetFlagEffect(1)>0
+	return e:GetHandler():GetEquipTarget() and ep~=tp and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c13235258.atkcon2(e)
 	return e:GetHandler():GetEquipTarget()

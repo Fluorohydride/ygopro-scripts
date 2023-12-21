@@ -35,7 +35,7 @@ function c94568601.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_SPSUMMON_COST)
-	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SINGLE_RANGE)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetRange(LOCATION_GRAVE)
 	e5:SetCost(c94568601.spcost)
 	e5:SetOperation(c94568601.spcop)
@@ -60,9 +60,9 @@ function c94568601.atkcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>0
 end
 function c94568601.spcost(e,c,tp)
-	return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_DRAGON)
+	return Duel.CheckReleaseGroup(REASON_ACTION,tp,Card.IsRace,1,nil,RACE_DRAGON)
 end
 function c94568601.spcop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_DRAGON)
-	Duel.Release(g,REASON_EFFECT)
+	local g=Duel.SelectReleaseGroup(REASON_ACTION,tp,Card.IsRace,1,1,nil,RACE_DRAGON)
+	Duel.Release(g,REASON_ACTION)
 end

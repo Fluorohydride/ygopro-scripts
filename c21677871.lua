@@ -16,7 +16,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.dgfilter(c,e,tp)
-	return c:IsSummonPlayer(1-tp) and c:IsCanBeEffectTarget(e)
+	return c:IsSummonPlayer(1-tp) and c:IsLocation (LOCATION_MZONE) and c:IsCanBeEffectTarget(e)
 end
 function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x192) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

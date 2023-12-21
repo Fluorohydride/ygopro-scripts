@@ -45,7 +45,7 @@ end
 function s.chkfilter(c,tp)
 	return c:IsSummonPlayer(1-tp) and c:IsSummonLocation(LOCATION_EXTRA)
 end
-function s.chk(e,tp,eg)
+function s.chk(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
 		local tc=eg:GetFirst()
 		while tc do

@@ -41,7 +41,7 @@ function c18013090.atcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18013090.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetFlagEffect(1)==0 or c:GetFlagEffect(18013090)~=0 then return end
+	if c:GetFlagEffect(FLAG_ID_CHAINING)==0 or c:GetFlagEffect(18013090)~=0 then return end
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)

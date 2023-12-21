@@ -31,8 +31,8 @@ function c91078716.filter(c)
 	return c:IsRace(RACE_PLANT) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c91078716.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c91078716.filter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c91078716.filter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c91078716.filter,1,nil) end
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c91078716.filter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c91078716.target1(e,tp,eg,ep,ev,re,r,rp,chk)

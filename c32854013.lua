@@ -26,7 +26,7 @@ function c32854013.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g2,1,0,0)
 end
-function c32854013.activate(e)
+function c32854013.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=e:GetLabelObject()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc2=g:GetFirst()

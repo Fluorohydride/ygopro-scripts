@@ -16,7 +16,8 @@ function s.dfilter(c,tp)
 	if c:IsControler(tp) and c:GetBaseAttack()<2 then return false end
 	return c:IsFaceup() and c:GetBaseAttack()>0 and c:IsRace(RACE_PYRO)
 end
-function s.tg(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.dfilter(chkc,tp) end
 	local b1=Duel.GetFlagEffect(tp,id)==0
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	local b2=Duel.GetFlagEffect(tp,id+o)==0

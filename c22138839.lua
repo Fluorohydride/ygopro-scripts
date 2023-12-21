@@ -19,7 +19,7 @@ function c22138839.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c22138839.rfilter(c)
-	return c:GetCounter(0x1041)>0 and c:IsReleasable()
+	return c:GetCounter(0x1041)>0 and c:IsReleasable(REASON_SPSUMMON)
 end
 function c22138839.hspcon(e,c)
 	if c==nil then return true end
@@ -30,7 +30,7 @@ end
 function c22138839.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectMatchingCard(tp,c22138839.rfilter,tp,0,LOCATION_MZONE,1,1,nil)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c22138839.ccon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

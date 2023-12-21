@@ -129,6 +129,8 @@ REASON_REDIRECT		=0x4000000	--改变去向（大宇宙，带菌等）
 REASON_REVEAL		=0x8000000	--翻开卡组（森罗）
 REASON_LINK			=0x10000000	--用于连接召唤
 REASON_LOST_OVERLAY =0x20000000	--超量素材随着超量怪兽离场
+REASON_MAINTENANCE	=0x40000000	--维持代价
+REASON_ACTION		=0x80000000	--攻击宣言之际等
 --Location Reason
 LOCATION_REASON_TOFIELD		=0x1	--Duel.GetLocationCount()預設值,凱薩競技場
 LOCATION_REASON_CONTROL		=0x2	--Card.IsControlerCanBeChanged()使用
@@ -863,3 +865,6 @@ ACTIVITY_CHAIN			=7		-- only available in custom counter
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚(double name)
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚(double name)
 CARD_QUESTION		    =38723936	--谜题
+--Special flag effect id
+FLAG_ID_CHAINING	=1
+FLAG_ID_UNION		=2

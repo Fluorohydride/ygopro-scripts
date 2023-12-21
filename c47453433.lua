@@ -22,7 +22,7 @@ function c47453433.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToDeck,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 end
-function c47453433.activate(e)
+function c47453433.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
