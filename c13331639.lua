@@ -1,7 +1,7 @@
 --覇王龍ズァーク
 function c13331639.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddFusionProcMix(c,false,true,c13331639.fusfilter1,c13331639.fusfilter2,c13331639.fusfilter3,c13331639.fusfilter4)
+	aux.AddFusionProcMix(c,false,true,c13331639.fusfilter1,1,1,nil,c13331639.fusfilter2,c13331639.fusfilter3,c13331639.fusfilter4)
 	aux.EnablePendulumAttribute(c,false)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

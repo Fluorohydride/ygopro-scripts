@@ -2,7 +2,7 @@
 function c31111109.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcMixRep(c,true,true,c31111109.ffilter,2,2,c31111109.ffilter1,c31111109.ffilter2,c31111109.ffilter3)
+	aux.AddFusionProcMix(c,true,true,c31111109.ffilter,2,2,nil,c31111109.ffilter1,c31111109.ffilter2,c31111109.ffilter3)
 	--copy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(31111109,0))

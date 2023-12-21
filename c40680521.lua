@@ -2,7 +2,7 @@
 function c40680521.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c40680521.ffilter,3,true)
+	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x17d),3,true)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)
 	--pzone effect
@@ -34,9 +34,6 @@ function c40680521.initial_effect(c)
 	e3:SetTarget(c40680521.pentg)
 	e3:SetOperation(c40680521.penop)
 	c:RegisterEffect(e3)
-end
-function c40680521.ffilter(c,fc,sub,mg,sg)
-	return c:IsFusionSetCard(0x17d)
 end
 function c40680521.pfilter(c)
 	local seq=c:GetSequence()

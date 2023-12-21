@@ -40,7 +40,7 @@ function c18386170.initial_effect(c)
 	e4:SetOperation(c18386170.hdop)
 	c:RegisterEffect(e4)
 end
-function c18386170.ffilter(c,fc,sub,mg,sg)
+function c18386170.ffilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0xb1) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
 end
 function c18386170.cfilter(c)

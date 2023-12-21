@@ -5,7 +5,7 @@ function c56655675.initial_effect(c)
 	for i=0,2 do
 		table.insert(mat_list,aux.FilterBoolFunction(Card.IsFusionSetCard,0xb5|(0x1000<<i)))
 	end
-	aux.AddFusionProcMix(c,false,false,table.unpack(mat_list))
+	aux.AddFusionProcMix(c,false,false,mat_list[1],1,1,nil,table.unpack(mat_list,2))
 	aux.AddContactFusionProcedure(c,c56655675.cfilter,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST):SetValue(SUMMON_VALUE_SELF)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

@@ -43,7 +43,7 @@ function c49161188.initial_effect(c)
 	e4:SetOperation(c49161188.atkop)
 	c:RegisterEffect(e4)
 end
-function c49161188.ffilter(c,fc,sub,mg,sg)
+function c49161188.ffilter(c,fc,sub,sg)
 	return c:IsRace(RACE_WARRIOR) and (not sg or not sg:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute()))
 end
 function c49161188.discon(e,tp,eg,ep,ev,re,r,rp)

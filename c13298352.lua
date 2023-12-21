@@ -28,7 +28,7 @@ function s.initial_effect(c)
 	e3:SetCode(EVENT_FLIP)
 	c:RegisterEffect(e3)
 end
-function s.mfilter(c,fc,sub,mg,sg)
+function s.mfilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0x2b) and (not sg or not sg:IsExists(Card.IsRace,1,c,c:GetRace()))
 end
 function s.splimit(e,se,sp,st)

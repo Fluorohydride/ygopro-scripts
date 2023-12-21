@@ -30,7 +30,7 @@ function c6182103.initial_effect(c)
 	e2:SetOperation(c6182103.thop)
 	c:RegisterEffect(e2)
 end
-function c6182103.ffilter(c,fc,sub,mg,sg)
+function c6182103.ffilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0x157) and c:IsLevelAbove(8)
 end
 function c6182103.negcon(e,tp,eg,ep,ev,re,r,rp)
