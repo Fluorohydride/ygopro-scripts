@@ -42,13 +42,13 @@ function c92001300.addc(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0xb,1)
 end
 function c92001300.sumcon(e,c,minc)
-	if c==nil then return e:GetHandler():IsReleasable() end
+	if c==nil then return e:GetHandler():IsReleasable(REASON_SUMMON) end
 	local mi,ma=c:GetTributeRequirement()
 	if mi<minc then mi=minc end
 	if ma<mi then return false end
 	return ma>0 and e:GetHandler():GetCounter(0xb)>=mi and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c92001300.sumop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Release(e:GetHandler(),REASON_COST)
+	Duel.Release(e:GetHandler(),REASON_SUMMON)
 	c:SetMaterial(Group.FromCards(e:GetHandler()))
 end

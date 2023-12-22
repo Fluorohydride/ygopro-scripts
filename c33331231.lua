@@ -38,7 +38,7 @@ function c33331231.checkfilter(c)
 	return c:IsSetCard(0x1115) and c:IsFaceup()
 end
 function c33331231.sprfilter(c,tp,sp)
-	return c:IsReleasable() and Duel.GetMZoneCount(tp,c,sp)>0
+	return c:IsReleasable(REASON_SPSUMMON) and Duel.GetMZoneCount(tp,c,sp)>0
 end
 function c33331231.spcon(e,c)
 	if c==nil then return true end
@@ -49,7 +49,7 @@ end
 function c33331231.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectMatchingCard(tp,c33331231.sprfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,tp)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c33331231.spcon2(e,c)
 	if c==nil then return true end
@@ -60,7 +60,7 @@ end
 function c33331231.spop2(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectMatchingCard(tp,c33331231.sprfilter,tp,0,LOCATION_MZONE,1,1,nil,1-tp,tp)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c33331231.dstg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end

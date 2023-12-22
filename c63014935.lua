@@ -44,7 +44,7 @@ function c63014935.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c63014935.spfilter(c,tp)
-	return c:IsReleasable() and Duel.GetMZoneCount(1-tp,c,tp)>0
+	return c:IsReleasable(REASON_SPSUMMON) and Duel.GetMZoneCount(1-tp,c,tp)>0
 end
 function c63014935.spcon(e,c)
 	if c==nil then return true end

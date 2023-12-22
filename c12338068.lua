@@ -27,7 +27,7 @@ function c12338068.spcon(e,c)
 	local tp=c:GetControler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
-	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil)==g:GetCount()
+	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil,REASON_SPSUMMON)==g:GetCount()
 end
 function c12338068.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetReleaseGroup(tp)
