@@ -59,7 +59,6 @@ function c37119142.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	else
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 	end
 end
 function c37119142.thop(e,tp,eg,ep,ev,re,r,rp)
