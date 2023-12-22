@@ -36,7 +36,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,100211203,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_AQUA,ATTRIBUTE_WATER) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,9396663,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_AQUA,ATTRIBUTE_WATER) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
@@ -44,7 +44,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=3
-	if ft>0 and ct>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,100211203,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_AQUA,ATTRIBUTE_WATER) then
+	if ft>0 and ct>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,9396663,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_AQUA,ATTRIBUTE_WATER) then
 		local count=math.min(ft,ct)
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then count=1 end
 		if count>1 then
@@ -59,7 +59,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		local lv=count
 		repeat
-			local token=Duel.CreateToken(tp,100211203)
+			local token=Duel.CreateToken(tp,9396663)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 			count=count-1
 		until count==0
