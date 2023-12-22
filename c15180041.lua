@@ -58,12 +58,12 @@ function c15180041.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroup(tp,c15180041.spfilter,1,nil,ft,tp)
+	return ft>-1 and Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c15180041.spfilter,1,nil,ft,tp)
 end
 function c15180041.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c15180041.spfilter,1,1,nil,ft,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c15180041.spfilter,1,1,nil,ft,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c15180041.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

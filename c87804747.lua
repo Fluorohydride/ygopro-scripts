@@ -56,12 +56,12 @@ end
 function s.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,s.hspfilter,1,nil,tp,c)
+	return Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,s.hspfilter,1,nil,tp,c)
 end
 function s.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,s.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,s.hspfilter,1,1,nil,tp,c)
 	c:SetMaterial(g)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
