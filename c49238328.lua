@@ -34,6 +34,7 @@ function c49238328.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(49238328,0))
 	end
+	Duel.ShuffleExtra(tp)
 	local rg=g:RandomSelect(tp,3+op*3)
 	Duel.Remove(rg,POS_FACEDOWN,REASON_COST)
 	Duel.SetTargetPlayer(tp)

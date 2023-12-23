@@ -37,6 +37,7 @@ function c29085954.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
 	if g:GetCount()>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
+		Duel.ShuffleExtra(tp)
 		local tg=g:RandomSelect(1-tp,1)
 		Duel.ConfirmCards(1-tp,tg)
 		if tg:IsExists(c29085954.filter,1,nil,e,tp,c) then
