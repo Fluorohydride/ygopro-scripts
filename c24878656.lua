@@ -15,8 +15,8 @@ function s.initial_effect(c)
 	e2:SetTarget(s.sttg)
 	e2:SetOperation(s.stop)
 	c:RegisterEffect(e2)
-  --destroy facedown
-  local e3=e2:Clone()
+	--destroy facedown
+	local e3=e2:Clone()
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetTarget(s.destg)
 	e3:SetOperation(s.desop)
@@ -43,9 +43,9 @@ function s.sttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.stop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-  local ct=math.min(Duel.GetLocationCount(tp,LOCATION_SZONE),2)
+	local ct=math.min(Duel.GetLocationCount(tp,LOCATION_SZONE),2)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.stfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_MZONE+LOCATION_GRAVE,0,1,ct,nil)
-  Duel.SSet(tp,g)
+	Duel.SSet(tp,g)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

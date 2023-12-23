@@ -15,12 +15,12 @@ function c85698115.initial_effect(c)
 	--to hand
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TODECK)
-    e2:SetType(EFFECT_TYPE_QUICK_O)
+	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-    e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
-    e2:SetCondition(aux.exccon)
+	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
+	e2:SetCondition(aux.exccon)
 	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(s.tdtg)
 	e2:SetOperation(s.tdop)
@@ -40,21 +40,21 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP)~=0 then
-        local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,nil)
-        if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
-            Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-            local sg=g:Select(tp,1,1,nil)
-            Duel.HintSelection(sg)
-            if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=0 then
-            local rg=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_REMOVED,nil,TYPE_MONSTER)
-                if rg:GetCount()>0 then
-                    Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-                    local fg=rg:Select(tp,1,1,nil)
-                    Duel.HintSelection(fg)
-                    Duel.SendtoGrave(fg,REASON_EFFECT+REASON_RETURN)
-                end
-            end
-        end
+		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,nil)
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+			local sg=g:Select(tp,1,1,nil)
+			Duel.HintSelection(sg)
+			if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=0 then
+			local rg=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_REMOVED,nil,TYPE_MONSTER)
+				if rg:GetCount()>0 then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+					local fg=rg:Select(tp,1,1,nil)
+					Duel.HintSelection(fg)
+					Duel.SendtoGrave(fg,REASON_EFFECT+REASON_RETURN)
+				end
+			end
+		end
 	end
 end
 --todeck
@@ -76,9 +76,9 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if rc:IsRelateToEffect(e) and Duel.SendtoDeck(rc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1))then
-        Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-        local sg=g:Select(tp,1,1,nil)
-            Duel.SSet(tp,sg)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
+		local sg=g:Select(tp,1,1,nil)
+			Duel.SSet(tp,sg)
 		end
 	end
 end

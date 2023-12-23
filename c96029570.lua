@@ -51,9 +51,9 @@ function s.cfilter(c,tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function s.reccon(e,tp,eg,ep,ev,re,r,rp)
-  local dg=eg:Filter(s.cfilter,nil,tp)
-  local atk=dg:GetSum(Card.GetTextAttack)
-  e:SetLabel(atk)
+	local dg=eg:Filter(s.cfilter,nil,tp)
+	local atk=dg:GetSum(Card.GetTextAttack)
+	e:SetLabel(atk)
 	return atk>0
 end
 function s.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -98,7 +98,7 @@ function s.thfilter(c,tp)
 		and c:IsPreviousLocation(LOCATION_HAND) and c:IsReason(REASON_DISCARD)
 end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
-  return eg:FilterCount(s.thfilter,nil,tp)>0
+	return eg:FilterCount(s.thfilter,nil,tp)>0
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingTarget(s.thfilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
