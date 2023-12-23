@@ -1,8 +1,8 @@
 --聖霊獣騎 ノチウドラコ
 local s,id,o=GetID()
 function s.initial_effect(c)
-  --spsummon times limit
-  c:SetSPSummonOnce(id)
+	--spsummon times limit
+	c:SetSPSummonOnce(id)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x10b5),aux.FilterBoolFunction(Card.IsFusionSetCard,0x20b5),true)
@@ -47,7 +47,7 @@ function s.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0xb5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-  if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and s.filter(chkc,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and s.filter(chkc,e,tp) end
 	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0 and Duel.IsExistingTarget(s.filter,tp,LOCATION_REMOVED,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectTarget(tp,s.filter,tp,LOCATION_REMOVED,0,1,1,nil,e,tp)
@@ -57,11 +57,11 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetTargetsRelateToChain():GetFirst()
 	if not tc then return end
 	Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
-  local e1=Effect.CreateEffect(e:GetHandler())
-  e1:SetDescription(aux.Stringid(id,0))
-  e1:SetType(EFFECT_TYPE_SINGLE)
-  e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
-  e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-  e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-  tc:RegisterEffect(e1,true)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
+	e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	tc:RegisterEffect(e1,true)
 end

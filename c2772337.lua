@@ -66,7 +66,7 @@ end
 function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(s.descheck,tp,LOCATION_MZONE,0,1,nil)
-        and Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,nil) 
+		and Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,nil) 
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g1=Duel.SelectTarget(tp,s.descheck,tp,LOCATION_MZONE,0,1,1,nil)
