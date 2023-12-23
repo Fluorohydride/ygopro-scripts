@@ -27,7 +27,24 @@ function c40384720.rdcon(e)
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 end
 function c40384720.rdval(e,damp)
-	if damp==1-e:GetHandlerPlayer() then
-		return e:GetHandler():GetBaseAttack()
-	else return -1 end
+	if damp~=1-e:GetHandlerPlayer() then return -1 end
+	local c=e:GetHandler()
+	local ue,ec,ev=e,c,e:GetValue()
+	local dv,dv1=c:GetBaseAttack(),c:GetBaseAttack()
+	local efs,pefs={c:IsHasEffect(EFFECT_CHANGE_BATTLE_DAMAGE)},{Duel.IsPlayerAffectedByEffect(damp,EFFECT_CHANGE_BATTLE_DAMAGE)}
+	for k, ce in pairs(efs) do
+		ev,ec=ce:GetValue(),ce:GetHandler()
+		if ec~=c then
+			if tonumber(ev) then dv1=ev else dv1=ev(ce,damp) end
+		end
+		if dv1<dv then dv=dv1 ue=ce end
+	end
+	for k, pe in pairs(pefs) do
+		ev,ec=pe:GetValue(),pe:GetHandler()
+		if ec~=c then
+			if tonumber(ev) then dv1=ev else dv1=ev(pe,damp) end
+		end
+		if dv1<dv then dv=dv1 ue=pe end
+	end
+	return dv
 end
