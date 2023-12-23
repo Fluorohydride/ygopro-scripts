@@ -37,14 +37,14 @@ function c99861526.rval(e,damp)
 	for k, ce in pairs(efs) do
 		ev,ec=ce:GetValue(),ce:GetHandler()
 		if ec~=c then
-			if ev>-1 then dv1=ev else dv1=ev(ce,damp) end
+			if tonumber(ev) then dv1=ev else dv1=ev(ce,damp) end
 		end
 		if dv1<dv then dv=dv1 ue=ce end
 	end
 	for k, pe in pairs(pefs) do
 		ev,ec=pe:GetValue(),pe:GetHandler()
 		if ec~=c then
-			if ev>-1 then dv1=ev else dv1=ev(pe,damp) end
+			if tonumber(ev) then dv1=ev else dv1=ev(pe,damp) end
 		end
 		if dv1<dv then dv=dv1 ue=pe end
 	end
