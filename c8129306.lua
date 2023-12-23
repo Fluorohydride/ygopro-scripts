@@ -5,7 +5,7 @@ function c8129306.initial_effect(c)
 	e1:SetDescription(aux.Stringid(8129306,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetCode(EVENT_RELEASE)
+	e1:SetCode(EVENT_CUSTOM+8129306)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,8129306)
@@ -23,12 +23,32 @@ function c8129306.initial_effect(c)
 	e2:SetTarget(c8129306.lvtg)
 	e2:SetOperation(c8129306.lvop)
 	c:RegisterEffect(e2)
+	if not c8129306.global_check then
+		c8129306.global_check=true
+		local ge2=Effect.CreateEffect(c)
+		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge2:SetCode(EVENT_RELEASE)
+		ge2:SetCondition(c8129306.regcon)
+		ge2:SetOperation(c8129306.regop)
+		Duel.RegisterEffect(ge2,0)
+	end
 end
 function c8129306.spfilter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
+function c8129306.regcon(e,tp,eg,ep,ev,re,r,rp)
+	local v=0
+	if eg:IsExists(c8129306.spfilter,1,nil,0) then v=v+1 end
+	if eg:IsExists(c8129306.spfilter,1,nil,1) then v=v+2 end
+	if v==0 then return false end
+	e:SetLabel(({0,1,PLAYER_ALL})[v])
+	return true
+end
+function c8129306.regop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.RaiseEvent(eg,EVENT_CUSTOM+8129306,re,r,rp,ep,e:GetLabel())
+end
 function c8129306.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c8129306.spfilter,1,nil,tp)
+	return ev==tp or ev==PLAYER_ALL
 end
 function c8129306.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
