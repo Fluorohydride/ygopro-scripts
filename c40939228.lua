@@ -1,4 +1,5 @@
 --シューティング・セイヴァー・スター・ドラゴン
+local s,id,o=GetID()
 function c40939228.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309)
 	aux.AddCodeList(c,44508094)
@@ -108,7 +109,7 @@ end
 function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:IsLocation(LOCATION_REMOVED) then
+	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
 		c:RegisterFlagEffect(40939228,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

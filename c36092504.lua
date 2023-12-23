@@ -51,6 +51,7 @@ function c36092504.activate(e,tp,eg,ep,ev,re,r,rp)
 	g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_ONFIELD+LOCATION_EXTRA+LOCATION_GRAVE,nil)
 	if g1:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO) and g2:IsExists(c36092504.rmfilter1,3,nil) then
 		if res~=0 then Duel.BreakEffect() end
+		Duel.ShuffleExtra(1-tp)
 		local rg=g2:Filter(c36092504.rmfilter1,nil):RandomSelect(tp,3)
 		res=Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	end

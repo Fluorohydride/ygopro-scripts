@@ -40,10 +40,11 @@ function c84521924.atkval(e,c)
 	return ct*100
 end
 function c84521924.effectfilter(e,ct)
+	local p=e:GetHandlerPlayer()
 	local lg=e:GetHandler():GetLinkedGroup()
-	local te,loc,seq=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE,CHAININFO_TYPE)
+	local te,loc,seq,tp=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE,CHAININFO_TRIGGERING_PLAYER)
 	local tc=te:GetHandler()
-	return te:IsActiveType(TYPE_PENDULUM) and bit.band(loc,LOCATION_MZONE)~=0 and bit.extract(e:GetHandler():GetLinkedZone(),seq)~=0
+	return te:IsActiveType(TYPE_PENDULUM) and bit.band(loc,LOCATION_MZONE)~=0 and bit.extract(e:GetHandler():GetLinkedZone(),seq)~=0 and p==tp
 end
 function c84521924.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev) and rp==1-tp

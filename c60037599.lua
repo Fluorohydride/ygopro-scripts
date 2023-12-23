@@ -18,7 +18,7 @@ function c60037599.splimit(e,se,sp,st)
 	return se:GetHandler():IsSetCard(0x154)
 end
 function c60037599.rbfilter(c,e,tp)
-	return c:IsSetCard(0x154) and c:IsAttack(2000) and not c:IsCode(60037599) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x154) and c:IsAttack(2000) and not c:IsCode(60037599) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DrytronSpSummonType(c))
 end
 function c60037599.extraop(e,tp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c60037599.rbfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
@@ -27,6 +27,9 @@ function c60037599.extraop(e,tp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
-		Duel.SpecialSummon(sg,0,tp,tp,false,true,POS_FACEUP)
+		local sc=sg:GetFirst()
+		if Duel.SpecialSummon(sg,0,tp,tp,false,aux.DrytronSpSummonType(sc),POS_FACEUP)~=0 and aux.DrytronSpSummonType(sc) then
+			sc:CompleteProcedure()
+		end
 	end
 end

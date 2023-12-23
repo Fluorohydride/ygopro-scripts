@@ -45,7 +45,7 @@ function c17063599.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c17063599.filter(c)
-	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA)
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA) and c:GetType()&TYPE_EFFECT~=0
 end
 function c17063599.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c17063599.filter(chkc) end

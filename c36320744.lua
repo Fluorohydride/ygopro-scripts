@@ -74,7 +74,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsRelateToEffect(e) then
 			local fid=c:GetFieldID()
 			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)>0 then
-				if c:IsLocation(LOCATION_REMOVED) then
+				if c:GetOriginalCode()==id then
 					c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 					local e1=Effect.CreateEffect(c)
 					e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -65,19 +65,24 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(0xff,0xff)
 	e1:SetTarget(aux.TargetBoolFunction(aux.NOT(Card.IsSetCard),0x196,0x19f))
 	e1:SetReset(RESET_PHASE+PHASE_END)
-	e1:SetValue(s.lim)
+	e1:SetValue(s.fuslimit)
 	Duel.RegisterEffect(e1,tp)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	e2:SetValue(s.sumlimit)
 	Duel.RegisterEffect(e2,tp)
-	local e3=e1:Clone()
+	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 	Duel.RegisterEffect(e3,tp)
-	local e4=e1:Clone()
+	local e4=e2:Clone()
 	e4:SetCode(EFFECT_CANNOT_BE_LINK_MATERIAL)
 	Duel.RegisterEffect(e4,tp)
 end
-function s.lim(e,c)
+function s.fuslimit(e,c,sumtype)
+	if not c then return false end
+	return c:IsControler(e:GetHandlerPlayer()) and sumtype==SUMMON_TYPE_FUSION
+end
+function s.sumlimit(e,c)
 	if not c then return false end
 	return c:IsControler(e:GetHandlerPlayer())
 end

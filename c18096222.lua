@@ -54,7 +54,7 @@ function c18096222.filter(c)
 end
 function c18096222.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c18096222.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c18096222.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c18096222.filter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -65,7 +65,7 @@ function c18096222.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsLocation(LOCATION_SZONE) then return end
 	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Equip(tp,c,tc)
 		--Atkup
 		local e1=Effect.CreateEffect(c)
@@ -87,7 +87,8 @@ function c18096222.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c18096222.eqlimit(e,c)
-	return c:GetControler()==e:GetOwnerPlayer() and c:IsType(TYPE_DUAL)
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsType(TYPE_DUAL)
 end
 function c18096222.dacon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

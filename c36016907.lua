@@ -1,4 +1,5 @@
 --ジャック・ア・ボーラン
+local s,id,o=GetID()
 function c36016907.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)
@@ -77,7 +78,7 @@ function c36016907.spop2(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1,true)
 		if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsAbleToRemove() then
 			Duel.BreakEffect()
-			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
 				local e2=Effect.CreateEffect(c)
 				e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 				e2:SetCode(EVENT_PHASE+PHASE_END)

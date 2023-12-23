@@ -88,25 +88,31 @@ function s.drmop(e,tp,eg,ep,ev,re,r,rp)
 	if #g~=2 or Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)==0
 			or not g:IsExists(Card.IsLocation,1,nil,LOCATION_REMOVED) then return end
 	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+	local c=e:GetHandler()
+	local fid=c:GetFieldID()
 	for tc in aux.Next(og) do
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 	end
 	og:KeepAlive()
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetReset(RESET_PHASE+PHASE_END)
+	e1:SetLabel(fid)
 	e1:SetLabelObject(og)
 	e1:SetCountLimit(1)
 	e1:SetCondition(s.retcon)
 	e1:SetOperation(s.retop)
 	Duel.RegisterEffect(e1,tp)
 end
-function s.retfilter(c)
-	return c:GetFlagEffect(id)~=0
+function s.retfilter(c,fid)
+	return c:GetFlagEffectLabel(id)==fid
+end
+function s.retfilter1(c,tp,fid)
+	return c:GetFlagEffectLabel(id)==fid and c:IsControler(tp)
 end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetLabelObject():IsExists(s.retfilter,1,nil) then
+	if not e:GetLabelObject():IsExists(s.retfilter,1,nil,e:GetLabel()) then
 		e:GetLabelObject():DeleteGroup()
 		e:Reset()
 		return false
@@ -114,8 +120,31 @@ function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return true
 end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetLabelObject():Filter(s.retfilter,nil)
-	for tc in aux.Next(g) do
-		Duel.ReturnToField(tc)
+	local fid=e:GetLabel()
+	local g1=e:GetLabelObject():Filter(s.retfilter1,nil,tp,fid)
+	local g2=e:GetLabelObject():Filter(s.retfilter1,nil,1-tp,fid)
+	local turnp=Duel.GetTurnPlayer()
+	if #g2==0 then
+		if #g1==1 then
+			Duel.ReturnToField(g1:GetFirst())
+		else
+			local tc=g1:Select(tp,1,1,nil):GetFirst()
+			Duel.ReturnToField(tc)
+			g1:RemoveCard(tc)
+			Duel.ReturnToField(g1:GetFirst())
+		end
+	else
+		if turnp==tp then
+			if #g1>0 then
+				Duel.ReturnToField(g1:GetFirst())
+			end
+			Duel.ReturnToField(g2:GetFirst())
+		else
+			Duel.ReturnToField(g2:GetFirst())
+			if #g1>0 then
+				Duel.ReturnToField(g1:GetFirst())
+			end
+		end
 	end
+	e:GetLabelObject():DeleteGroup()
 end
