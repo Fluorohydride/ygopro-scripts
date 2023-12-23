@@ -59,24 +59,61 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.tdfilter(c,e,tp)
-	return c:IsAbleToDeck() and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsRace(RACE_FISH)
+	return c:IsCanBeEffectTarget(e) and c:IsRace(RACE_FISH) and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,c,c:GetCode())
 end
-function s.tdfilter2(c,g)
-	return g:IsExists(Card.IsCode,1,c,c:GetCode())
+function s.fselect(g,e,tp)
+	return g:GetClassCount(Card.GetCode)==1 and g:IsExists(s.fcheck,1,nil,g,e,tp)
+end
+function s.fcheck(c,g,e,tp)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and g:IsExists(s.fcheck2,1,c)
+end
+function s.fcheck2(c)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsAbleToDeck()
 end
 function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(s.tdfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.tdfilter2(chkc,g) end
-	if chk==0 then return g:IsExists(s.tdfilter2,1,nil,g) end
-	Duel.SelectTarget(tp,s.tdfilter2,tp,LOCATION_GRAVE,0,2,2,nil,g)
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.tdfilter(chkc,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:CheckSubGroup(s.fselect,2,2,e,tp) end
+	local sg=g:SelectSubGroup(tp,s.fselect,false,2,2,e,tp)
+	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
+end
+function s.cfilter(c,e,tp)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsLocation(LOCATION_GRAVE)
+end
+function s.cfilter2(c,e,tp)
+	return not c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsLocation(LOCATION_GRAVE) and c:IsAbleToDeck()
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if not g or g:FilterCount(Card.IsRelateToEffect,nil,e)~=2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tc1=g:Select(tp,1,1,nil)
-	Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP)
-	Duel.SendtoDeck((g-tc1):GetFirst(),nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+		local sc=nil
+		local dc=nil
+		if g and g:GetCount()==2 then
+			if g:FilterCount(s.cfilter,nil,e,tp)==2 then
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+				local dc=g:Select(tp,1,1,nil)
+				local sc=(g-dc):GetFirst()
+				Duel.SendtoDeck(dc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+				local sg=Duel.GetOperatedGroup()
+				if sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) or sg:IsExists(Card.IsLocation,1,nil,LOCATION_EXTRA) then
+					Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
+				end
+			else
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+				local dc=g:FilterSelect(tp,s.cfilter2,1,1,nil,e,tp)
+				local sc=(g-dc):GetFirst()
+				Duel.SendtoDeck(dc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+				local sg=Duel.GetOperatedGroup()
+					if sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) or sg:IsExists(Card.IsLocation,1,nil,LOCATION_EXTRA) then
+					Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
+				end
+			end
+		end
+	end
 end
