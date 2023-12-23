@@ -116,7 +116,7 @@ function c70335319.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
-	return g:GetCount()>=2 and g:FilterCount(Card.IsReleasable,nil)==g:GetCount()
+	return g:GetCount()>=2 and g:FilterCount(Card.IsReleasable,nil,REASON_SPSUMMON)==g:GetCount()
 		and g:IsExists(c70335319.hspfilter,1,nil)
 		and (c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 			or c:IsLocation(LOCATION_HAND) and Duel.GetMZoneCount(tp,g,tp)>0)
