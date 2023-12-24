@@ -29,8 +29,7 @@ function c99861526.rdcon(e)
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 end
 function c99861526.rval(e,damp)
-	local c=e:GetHandler()
-	if damp==1-e:GetHandlerPlayer() and not c:IsHasEffect(EFFECT_CHANGE_BATTLE_DAMAGE) then
+	if damp==1-e:GetHandlerPlayer() then
 		return e:GetHandler():GetBaseAttack()
 	else return -1 end
 end
