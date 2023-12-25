@@ -66,18 +66,18 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_FIRE)~=0 and not c:IsType(TYPE_TOKEN)
+	return not c:IsType(TYPE_TOKEN) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousAttributeOnField()&ATTRIBUTE_FIRE~=0
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function s.tgfilter(c,e,tp)
-	return c:IsCanBeEffectTarget(e)
+	return s.cfilter(c,tp) and c:IsCanBeEffectTarget(e)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return eg:IsContains(chkc) and s.filter(chkc,e,tp) end
+	if chkc then return eg:IsContains(chkc) and s.tgfilter(chkc,e,tp) end
 	local c=e:GetHandler()
 	if chk==0 then return eg:IsExists(s.tgfilter,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
