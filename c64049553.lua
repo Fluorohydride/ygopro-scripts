@@ -1,57 +1,76 @@
---RRUM-レイド・ラプターズ・フォース
+--RR-ルースト
 --lua by zengsxing
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
-	e1:SetCondition(s.condition)
-	e1:SetTarget(s.target)
-	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
+	--search
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,0))
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetCountLimit(1,id)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetTarget(s.thtg)
+	e2:SetOperation(s.thop)
+	c:RegisterEffect(e2)
+	--todeck and draw
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,1))
+	e3:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e3:SetType(EFFECT_TYPE_IGNITION)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetCountLimit(1,id+o)
+	e3:SetTarget(s.drtg)
+	e3:SetOperation(s.drop)
+	c:RegisterEffect(e3)
 end
-function s.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2 or Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
+function s.thfilter(c)
+	return c:IsSetCard(0xba) and c:IsType(TYPE_SPELL+TYPE_TRAP) and not c:IsCode(id) and c:IsAbleToHand()
 end
-function s.filter1(c,e)
-	return c:GetRank()>0 and c:IsFaceup() and c:IsSetCard(0xba) and c:IsCanBeEffectTarget(e)
+function s.cfilter(c,tp)
+	return c:IsSetCard(0xba) and c:IsControler(tp) and c:IsSummonLocation(LOCATION_EXTRA)
 end
-function s.filter2(c,e,tp,mg)   
-	local rk=mg:GetSum(Card.GetRank)
-	return c:IsRank(rk) and c:IsSetCard(0xba) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		return eg:IsExists(s.cfilter,1,nil,tp) and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil) 
+	end
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function s.fselect(g,tp,e)
-	return g:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE) and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,g)
+function s.thop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	if g:GetCount()>0 then
+		Duel.SendtoHand(g,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,g)
+	end
 end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
-	local rg=Duel.GetMatchingGroup(s.filter1,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
-	if chk==0 then return rg:CheckSubGroup(s.fselect,2,99,tp,e) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local sg=rg:SelectSubGroup(tp,s.fselect,false,2,99,tp,e)
-	Duel.SetTargetCard(sg)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,sg:Filter(Card.IsLocation,nil,LOCATION_GRAVE),1,0,0)
+function s.tdfilter(c)
+	return c:IsSetCard(0xba) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and c:IsFaceupEx()
 end
-function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tg=Duel.GetTargetsRelateToChain()
-	if tg:GetCount()<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=Duel.SelectMatchingCard(tp,s.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tg)
-	local sc=sg:GetFirst()
-	if sc and Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
-		sc:CompleteProcedure()
-		for tc in aux.Next(tg) do
-			local mg=tc:GetOverlayGroup()
-			if mg:GetCount()~=0 then
-				Duel.Overlay(sc,mg)
-			end
-			Duel.Overlay(sc,Group.FromCards(tc))
-		end
+function s.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and s.tdfilter(chkc) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
+		and Duel.IsExistingTarget(s.tdfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,3,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local g=Duel.SelectTarget(tp,s.tdfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,3,3,nil)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
+end
+function s.drop(e,tp,eg,ep,ev,re,r,rp)
+	local sg=Duel.GetTargetsRelateToChain()
+	if #sg==0 then return end
+	aux.PlaceCardsOnDeckBottom(tp,sg)
+	local g=Duel.GetOperatedGroup()
+	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
+	if ct>0 then
+		Duel.BreakEffect()
+		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
