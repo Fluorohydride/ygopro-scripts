@@ -52,7 +52,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	return tc:IsControler(tp) and tc:IsSetCard(0x2a7) and tc:IsRelateToBattle()
+	return tc:IsControler(tp) and tc:IsSetCard(0x1a7) and tc:IsRelateToBattle()
 		and tc:IsChainAttackable()
 end
 function s.atkop(e,tp,eg,ep,ev,re,r,rp)

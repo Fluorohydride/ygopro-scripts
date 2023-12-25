@@ -3,7 +3,7 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,78371393)
-	aux.AddSetNameMonsterList(c,0x2a4)
+	aux.AddSetNameMonsterList(c,0x1a5)
 	c:SetSPSummonOnce(id)
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--spsummon
@@ -42,7 +42,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.cfilter(c)
-	return c:IsSetCard(0x2a4) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
+	return c:IsSetCard(0x1a5) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
 end
 function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_HAND,0,1,nil) end
@@ -73,7 +73,7 @@ end
 function s.reccon(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc and bc:IsFaceup() and bc:IsSetCard(0x2a4)
+	return bc and bc:IsFaceup() and bc:IsSetCard(0x1a5)
 end
 function s.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

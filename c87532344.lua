@@ -4,7 +4,7 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,78371393)
-	aux.AddSetNameMonsterList(c,0x2a4)
+	aux.AddSetNameMonsterList(c,0x1a5)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -38,7 +38,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.spfilter(c,e,tp)
-	return c:IsSetCard(0x2a4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1a5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetFlagEffect(tp,id)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -128,7 +128,7 @@ function s.filter3(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function s.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsSetCard,1,nil,0x2a4)
+	return sg:IsExists(Card.IsSetCard,1,nil,0x1a5)
 end
 function s.futg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

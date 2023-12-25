@@ -3,7 +3,7 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,78371393)
-	aux.AddSetNameMonsterList(c,0x2a4)
+	aux.AddSetNameMonsterList(c,0x1a5)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -65,14 +65,14 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x2a4)
+	return c:IsFaceup() and c:IsSetCard(0x1a5)
 end
 function s.atkcon(e)
 	return Duel.IsExistingMatchingCard(s.atkfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function s.atklimit(e,c)
-	return c:IsFaceup() and c:IsSetCard(0x2a4)
+	return c:IsFaceup() and c:IsSetCard(0x1a5)
 end
 function s.reftg(e,c)
-	return c:IsFaceup() and c:IsSetCard(0x2a4)
+	return c:IsFaceup() and c:IsSetCard(0x1a5)
 end

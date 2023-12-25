@@ -35,7 +35,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.stfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2a8) and c:IsSSetable()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1a8) and c:IsSSetable()
 	and c.set_as_spell and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
 end
 function s.sttg(e,tp,eg,ep,ev,re,r,rp,chk)

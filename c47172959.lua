@@ -5,7 +5,7 @@ function s.initial_effect(c)
 	aux.AddCodeList(c,78371393)
 	c:EnableReviveLimit()
 	--material
-	aux.AddFusionProcFunFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x2a4),s.matfilter,1,63,true)
+	aux.AddFusionProcFunFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1a5),s.matfilter,1,63,true)
 	--damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DAMAGE)

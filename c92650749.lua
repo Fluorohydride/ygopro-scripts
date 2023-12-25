@@ -4,7 +4,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableCounterPermit(0x25)
 	aux.AddCodeList(c,78371393)
-	aux.AddSetNameMonsterList(c,0x2a4)
+	aux.AddSetNameMonsterList(c,0x1a5)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -74,7 +74,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function s.cfilter(c)
-	return c:IsSetCard(0x2a4) or aux.IsCodeListed(c,78371393)
+	return c:IsSetCard(0x1a5) or aux.IsCodeListed(c,78371393)
 end
 function s.counter(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(s.cfilter,1,nil) then

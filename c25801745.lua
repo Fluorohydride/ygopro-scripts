@@ -36,7 +36,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.pfilter(c,tp)
-	return c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0x2a6)
+	return c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0x1a6)
 		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
