@@ -5,7 +5,7 @@ function c59718521.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)
-	e1:SetCondition(c59718521.condition1)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetCost(c59718521.cost)
 	e1:SetTarget(c59718521.target1)
 	e1:SetOperation(c59718521.activate1)
@@ -23,9 +23,6 @@ function c59718521.initial_effect(c)
 	e3:SetTarget(c59718521.target2)
 	e3:SetOperation(c59718521.activate2)
 	c:RegisterEffect(e3)
-end
-function c59718521.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c59718521.filter(c)
 	return c:IsRace(RACE_PSYCHO) and not c:IsStatus(STATUS_BATTLE_DESTROYED)

@@ -5,7 +5,7 @@ function c57355219.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SPSUMMON)
-	e1:SetCondition(c57355219.condition1)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetCost(c57355219.cost)
 	e1:SetTarget(c57355219.target1)
 	e1:SetOperation(c57355219.activate1)
@@ -20,9 +20,6 @@ function c57355219.initial_effect(c)
 	e2:SetTarget(c57355219.target2)
 	e2:SetOperation(c57355219.activate2)
 	c:RegisterEffect(e2)
-end
-function c57355219.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c57355219.cfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_FUSION) and c:IsAbleToRemoveAsCost() and not c:IsStatus(STATUS_BATTLE_DESTROYED)
