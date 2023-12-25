@@ -30,7 +30,7 @@ end
 function c36982581.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg1=Duel.GetRitualMaterial(tp)
-		local mg2=Duel.GetReleaseGroup(1-tp):Filter(c36982581.cfilter,nil,e,1-tp)
+		local mg2=Duel.GetReleaseGroup(1-tp,false,REASON_EFFECT):Filter(c36982581.cfilter,nil,e,1-tp)
 		return Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c36982581.rfilter1,e,tp,mg1,nil,Card.GetLevel,"Equal")
 			or (mg2:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 				and Duel.IsExistingMatchingCard(c36982581.rfilter2,tp,LOCATION_HAND,0,1,nil,e,tp))
@@ -41,7 +41,7 @@ function c36982581.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	::cancel::
 	local mg1=Duel.GetRitualMaterial(tp)
-	local mg2=Duel.GetReleaseGroup(1-tp):Filter(c36982581.cfilter,nil,e,1-tp)
+	local mg2=Duel.GetReleaseGroup(1-tp,false,REASON_EFFECT):Filter(c36982581.cfilter,nil,e,1-tp)
 	local g1=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c36982581.rfilter1,e,tp,mg1,nil,Card.GetLevel,"Equal")
 	local g2=nil
 	local g=g1

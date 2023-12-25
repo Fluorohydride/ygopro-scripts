@@ -36,7 +36,7 @@ function c25920413.initial_effect(c)
 end
 c25920413.counter_add_list={0x100e}
 function c25920413.spfilter(c)
-	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsReleasable()
+	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsReleasable(REASON_SPSUMMON)
 end
 function c25920413.spcon(e,c)
 	if c==nil then return true end
@@ -47,7 +47,7 @@ end
 function c25920413.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectMatchingCard(c:GetControler(),c25920413.spfilter,c:GetControler(),0,LOCATION_MZONE,1,1,nil)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SUMMON)

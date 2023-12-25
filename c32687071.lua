@@ -38,9 +38,9 @@ end
 function c32687071.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.HintSelection(Group.FromCards(c))
-	if Duel.CheckReleaseGroup(tp,nil,1,c) and Duel.SelectYesNo(tp,aux.Stringid(32687071,0)) then
-		local g=Duel.SelectReleaseGroup(tp,nil,1,1,c)
-		Duel.Release(g,REASON_COST)
+	if Duel.CheckReleaseGroup(REASON_MAINTENANCE,tp,nil,1,c) and Duel.SelectYesNo(tp,aux.Stringid(32687071,0)) then
+		local g=Duel.SelectReleaseGroup(REASON_MAINTENANCE,tp,nil,1,1,c)
+		Duel.Release(g,REASON_MAINTENANCE)
 	else Duel.Destroy(c,REASON_COST) end
 end
 function c32687071.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)

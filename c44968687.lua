@@ -54,11 +54,11 @@ function c44968687.initial_effect(c)
 end
 function c44968687.spcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(c:GetControler(),Card.IsCode,1,nil,3643300)
+	return Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),Card.IsCode,1,nil,3643300)
 end
 function c44968687.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,3643300)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,Card.IsCode,1,1,nil,3643300)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c44968687.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,1,nil) end

@@ -44,8 +44,8 @@ function c77522571.spfilter1(c,e,tp,lv,code)
 	return c:IsRace(RACE_FIEND) and c:IsLevel(lv) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c77522571.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c77522571.costfilter1,1,nil,e,tp) end
-	local rg=Duel.SelectReleaseGroup(tp,c77522571.costfilter1,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c77522571.costfilter1,1,nil,e,tp) end
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c77522571.costfilter1,1,1,nil,e,tp)
 	e:SetLabel(rg:GetFirst():GetLevel())
 	e:SetValue(rg:GetFirst():GetCode())
 	Duel.Release(rg,REASON_COST)
@@ -97,7 +97,7 @@ function c77522571.costfilter(c)
 end
 function c77522571.fgoal(sg,e,tp)
 	local lv=sg:GetSum(Card.GetLevel)
-	return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#sg,nil,sg)
+	return Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#sg,nil,sg)
 		and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv,sg)
 end
 function c77522571.spfilter3(c,e,tp,lv,sg)
