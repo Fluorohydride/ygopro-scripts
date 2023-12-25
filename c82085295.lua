@@ -70,7 +70,7 @@ end
 function c82085295.thfilter(c)
 	return bit.band(c:GetType(),0x81)==0x81 and c:IsAbleToHand()
 end
-function c82085295.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c82085295.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c82085295.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c82085295.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

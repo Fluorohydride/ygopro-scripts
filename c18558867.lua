@@ -27,7 +27,7 @@ function c18558867.initial_effect(c)
 	c:RegisterEffect(e2)
 	if not c18558867.global_check then
 		c18558867.global_check=true
-		local ge1=Effect.GlobalEffect(c)
+		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_BATTLE_CONFIRM)
 		ge1:SetOperation(c18558867.checkop)
@@ -48,7 +48,7 @@ function c18558867.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18558867.dracon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,18558867)>0
-		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and aux.dscon()
+		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18558867.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x15f)

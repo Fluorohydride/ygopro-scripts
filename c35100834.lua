@@ -19,7 +19,8 @@ function c35100834.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c35100834.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,35100834,0,TYPES_EFFECT_TRAP_MONSTER,0,2000,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
@@ -28,8 +29,7 @@ function c35100834.eqfilter(c,tp)
 end
 function c35100834.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,35100834,0,TYPES_EFFECT_TRAP_MONSTER,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,35100834,0,TYPES_EFFECT_TRAP_MONSTER,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	if Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)==0 then return end
 	local g=Duel.GetMatchingGroup(c35100834.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil,tp)

@@ -49,8 +49,8 @@ function c45002991.cfilter(c,g)
 end
 function c45002991.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c45002991.cfilter,1,nil,lg) end
-	local g=Duel.SelectReleaseGroup(tp,c45002991.cfilter,1,1,nil,lg)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c45002991.cfilter,1,nil,lg) end
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c45002991.cfilter,1,1,nil,lg)
 	Duel.Release(g,REASON_COST)
 end
 function c45002991.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -63,7 +63,7 @@ end
 function c45002991.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if ((tc:IsFaceup() and not tc:IsDisabled()) or tc:IsType(TYPE_TRAPMONSTER)) and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e,false) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

@@ -2,26 +2,15 @@
 function c5466615.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(5466615,0))
-	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,5466615+EFFECT_COUNT_CODE_OATH)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetTarget(c5466615.target)
-	e1:SetOperation(c5466615.activate)
 	c:RegisterEffect(e1)
-	--Activate
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(5466615,1))
-	e2:SetType(EFFECT_TYPE_ACTIVATE)
-	e2:SetCode(EVENT_FREE_CHAIN)
-	e2:SetCountLimit(1,5466615+EFFECT_COUNT_CODE_OATH)
-	c:RegisterEffect(e2)
 	--draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(5466615,2))
+	e3:SetDescription(aux.Stringid(5466615,1))
 	e3:SetCategory(CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
@@ -38,12 +27,22 @@ function c5466615.tgfilter(c)
 end
 function c5466615.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return aux.NegateEffectMonsterFilter(chkc) and chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingMatchingCard(c5466615.tgfilter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	local g=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE)
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
+	if chk==0 then return true end
+	if Duel.IsExistingMatchingCard(c5466615.tgfilter,tp,LOCATION_GRAVE,0,1,nil)
+		and Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil)
+		and Duel.SelectYesNo(tp,aux.Stringid(5466615,0)) then
+		e:SetCategory(CATEGORY_REMOVE+CATEGORY_DISABLE)
+		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
+		e:SetOperation(c5466615.activate)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+		local g=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE)
+		Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
+	else
+		e:SetCategory(0)
+		e:SetProperty(0)
+		e:SetOperation(nil)
+	end
 end
 function c5466615.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

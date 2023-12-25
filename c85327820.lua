@@ -36,6 +36,7 @@ function c85327820.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c85327820.activate(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsSetCard,nil,0x135)
 	local mg2=nil
 	if e:GetLabel()==1 then
@@ -56,9 +57,9 @@ function c85327820.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()

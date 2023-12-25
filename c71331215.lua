@@ -1,6 +1,5 @@
 --ウォークライ・オーディール
 function c71331215.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	c:EnableCounterPermit(0x5a,LOCATION_SZONE)
 	c:SetUniqueOnField(1,0,71331215)
 	--Activate
@@ -8,6 +7,7 @@ function c71331215.initial_effect(c)
 	e1:SetCategory(CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetTarget(c71331215.target)
 	e1:SetOperation(c71331215.activate)
 	c:RegisterEffect(e1)
 	--draw
@@ -22,20 +22,11 @@ function c71331215.initial_effect(c)
 	e2:SetOperation(c71331215.drop)
 	c:RegisterEffect(e2)
 end
-function c71331215.activate(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	c:AddCounter(0x5a,3)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_SELF_TOGRAVE)
-	e1:SetRange(LOCATION_SZONE)
-	e1:SetCondition(c71331215.sdcon)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1)
+function c71331215.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsCanAddCounter(tp,0x5a,3,e:GetHandler()) end
 end
-function c71331215.sdcon(e)
-	return e:GetHandler():GetCounter(0x5a)==0
+function c71331215.activate(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():AddCounter(0x5a,3)
 end
 function c71331215.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
@@ -50,8 +41,11 @@ function c71331215.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c71331215.drop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():RemoveCounter(tp,0x5a,1,REASON_EFFECT) then
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) and c:RemoveCounter(tp,0x5a,1,REASON_EFFECT) then
 		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-		Duel.Draw(p,d,REASON_EFFECT)
+		if Duel.Draw(p,d,REASON_EFFECT)~=0 and c:GetCounter(0x5a)==0 then
+			Duel.SendtoGrave(c,REASON_EFFECT)
+		end
 	end
 end

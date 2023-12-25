@@ -70,7 +70,7 @@ end
 function c69540484.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_SPELL)
 end
-function c69540484.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c69540484.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsAbleToRemove(tp,POS_FACEDOWN) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,3,nil,tp,POS_FACEDOWN)
 		and Duel.IsExistingMatchingCard(c69540484.rmcfilter,tp,LOCATION_MZONE,0,1,nil) end

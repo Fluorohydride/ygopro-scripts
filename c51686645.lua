@@ -51,7 +51,7 @@ function c51686645.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51686645.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
@@ -86,7 +86,7 @@ function c51686645.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c51686645.eqlimit(e,c)
-	return c:IsControler(1-e:GetHandlerPlayer())
+	return e:GetHandler():GetEquipTarget()==c or c:IsControler(1-e:GetHandlerPlayer())
 end
 function c51686645.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_LOST_TARGET)

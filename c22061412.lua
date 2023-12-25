@@ -32,7 +32,7 @@ function c22061412.initial_effect(c)
 end
 c22061412.material_setcode=0x8
 function c22061412.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3008)
+	return c:IsFaceup() and c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER)
 end
 function c22061412.atkup(e,c)
 	return Duel.GetMatchingGroupCount(c22061412.atkfilter,c:GetControler(),LOCATION_REMOVED,0,nil)*300

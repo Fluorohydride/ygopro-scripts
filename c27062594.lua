@@ -27,14 +27,14 @@ function c27062594.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c27062594.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,27062594,0,TYPES_EFFECT_TRAP_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c27062594.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.NegateAttack() then return end
 	Duel.BreakEffect()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e)
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,27062594,0,TYPES_EFFECT_TRAP_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_LIGHT) then return end

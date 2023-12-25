@@ -30,6 +30,7 @@ function c20071842.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,0,tp,LOCATION_HAND+LOCATION_MZONE)
 end
 function c20071842.activate(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local mg1=Duel.GetRitualMaterial(tp)
 	local mg2=Duel.GetMatchingGroup(c20071842.mfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -45,9 +46,9 @@ function c20071842.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(20071842,1))
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,8,"Greater")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,8,tp,tc,8,"Greater")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,8,tp,tc,8,"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		local ct1=mat:FilterCount(aux.IsInGroup,nil,mg1)
 		local ct2=mat:FilterCount(aux.IsInGroup,nil,mg2)

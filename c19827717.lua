@@ -34,6 +34,7 @@ function c19827717.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c19827717.filter),tp,LOCATION_GRAVE,0,1,nil,tid)
 end
 function c19827717.retop(e,tp,eg,ep,ev,re,r,rp)
+	local tid=Duel.GetTurnCount()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19827717.filter),tp,LOCATION_GRAVE,0,1,1,nil,tid)
 	if g:GetCount()>0 then

@@ -1,4 +1,5 @@
 --エアジャチ
+local s,id,o=GetID()
 function c84747429.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -37,16 +38,17 @@ function c84747429.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
 		Duel.BreakEffect()
-		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)==0 then return end
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
-		e1:SetCountLimit(1)
-		e1:SetLabelObject(c)
-		e1:SetCondition(c84747429.retcon)
-		e1:SetOperation(c84747429.retop)
-		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
-		Duel.RegisterEffect(e1,tp)
+		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
+			e1:SetCountLimit(1)
+			e1:SetLabelObject(c)
+			e1:SetCondition(c84747429.retcon)
+			e1:SetOperation(c84747429.retop)
+			e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
+			Duel.RegisterEffect(e1,tp)
+		end
 	end
 end
 function c84747429.retcon(e,tp,eg,ep,ev,re,r,rp)

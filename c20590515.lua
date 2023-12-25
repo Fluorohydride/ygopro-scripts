@@ -26,8 +26,9 @@ function c20590515.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c20590515.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
-		Duel.IsPlayerCanSpecialSummonMonster(tp,20590515,0,TYPES_NORMAL_TRAP_MONSTER,500,1800,5,RACE_ZOMBIE,ATTRIBUTE_LIGHT) end
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,20590515,0,TYPES_NORMAL_TRAP_MONSTER,500,1800,5,RACE_ZOMBIE,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c20590515.filter(c)
@@ -35,8 +36,7 @@ function c20590515.filter(c)
 end
 function c20590515.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,20590515,0,TYPES_NORMAL_TRAP_MONSTER,500,1800,5,RACE_ZOMBIE,ATTRIBUTE_LIGHT) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,20590515,0,TYPES_NORMAL_TRAP_MONSTER,500,1800,5,RACE_ZOMBIE,ATTRIBUTE_LIGHT) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP)
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(c20590515.filter,tp,LOCATION_ONFIELD,0,1,nil)
@@ -44,7 +44,7 @@ function c20590515.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(tp,aux.Stringid(20590515,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 		Duel.HintSelection(g)
 		local tc=g:GetFirst()
 		if tc then

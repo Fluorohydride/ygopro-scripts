@@ -20,7 +20,7 @@ function c44710391.initial_effect(c)
 	--double tribute
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_SET_AVAILABLE)
+	e4:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e4:SetCode(EFFECT_DOUBLE_TRIBUTE)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
@@ -51,13 +51,13 @@ function c44710391.dttg(e,c)
 	return c:IsType(TYPE_SYNCHRO) and (c:IsFaceup() or c:IsControler(e:GetHandlerPlayer()))
 end
 function c44710391.dtval(e,c)
-	return c:IsSetCard(0x21) and c:IsControler(e:GetHandlerPlayer())
+	return c:IsSetCard(0x1021) and c:IsControler(e:GetHandlerPlayer())
 end
 function c44710391.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO)
 end
 function c44710391.thfilter(c)
-	return c:IsSetCard(0x21) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
+	return c:IsSetCard(0x1021) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c44710391.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c44710391.thfilter,tp,LOCATION_DECK,0,1,nil) end

@@ -27,7 +27,7 @@ function c92015800.initial_effect(c)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetValue(c92015800.indval2)
 	c:RegisterEffect(e3)
-	--
+	--3rd: get material
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(92015800,0))
 	e4:SetType(EFFECT_TYPE_QUICK_O)
@@ -71,7 +71,8 @@ end
 function c92015800.xyzfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
-function c92015800.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c92015800.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c92015800.xyzfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c92015800.xyzfilter,tp,0,LOCATION_GRAVE,1,nil)
 		and e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)

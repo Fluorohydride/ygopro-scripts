@@ -10,7 +10,7 @@ function s.initial_effect(c)
 	e1:SetOperation(s.op)
 	c:RegisterEffect(e1)
 	--Ritual sum
-	local e2=aux.AddRitualProcGreater2(c,s.ritfilter,LOCATION_HAND)
+	local e2=aux.AddRitualProcGreater2(c,s.ritfilter,LOCATION_HAND,nil,nil,true)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	c:RegisterEffect(e2)

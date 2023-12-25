@@ -1,4 +1,5 @@
 --波動竜騎士 ドラゴエクィテス
+local s,id,o=GetID()
 function c14017402.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -57,11 +58,9 @@ end
 function c14017402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
-		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then return end
-		local code=tc:GetCode()
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)==1 and c:IsRelateToEffect(e) and c:IsFaceup() then
+		local code=tc:GetOriginalCode()
 		local reset_flag=RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END
-		c:CopyEffect(code,reset_flag,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -69,5 +68,29 @@ function c14017402.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CHANGE_CODE)
 		e1:SetValue(code)
 		c:RegisterEffect(e1)
+		--copy effect
+		local cid=c:CopyEffect(code,reset_flag,1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetDescription(1162)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetCode(EVENT_PHASE+PHASE_END)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetCountLimit(1)
+		e2:SetRange(LOCATION_MZONE)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		e2:SetLabel(cid)
+		e2:SetLabelObject(e1)
+		e2:SetOperation(s.rstop)
+		c:RegisterEffect(e2)
 	end
+end
+function s.rstop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local cid=e:GetLabel()
+	c:ResetEffect(cid,RESET_COPY)
+	c:ResetEffect(RESET_DISABLE,RESET_EVENT)
+	local e1=e:GetLabelObject()
+	e1:Reset()
+	Duel.HintSelection(Group.FromCards(c))
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end

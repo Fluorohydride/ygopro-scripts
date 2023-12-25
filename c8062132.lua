@@ -7,6 +7,7 @@ function c8062132.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
+	e1:SetValue(c8062132.splimit)
 	c:RegisterEffect(e1)
 	--atkup
 	local e2=Effect.CreateEffect(c)
@@ -57,6 +58,10 @@ function c8062132.initial_effect(c)
 	e7:SetOperation(c8062132.winop)
 	c:RegisterEffect(e7)
 end
+function c8062132.splimit(e,se,sp,st)
+	local sc=se:GetHandler()
+	return sc:IsCode(16067089) or sc==e:GetHandler()
+end
 function c8062132.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
 end
@@ -77,12 +82,12 @@ function c8062132.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8062132.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c8062132.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c8062132.ctcon(e,tp,eg,ep,ev,re,r,rp)

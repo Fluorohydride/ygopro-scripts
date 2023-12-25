@@ -15,6 +15,7 @@ function c69452756.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMING_END_PHASE+TIMING_EQUIP)
+	e2:SetCountLimit(1,69452756+EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCost(c69452756.cost)
 	e2:SetTarget(c69452756.target)
 	e2:SetOperation(c69452756.operation)
@@ -24,9 +25,8 @@ function c69452756.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c69452756.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,1000) and Duel.GetFlagEffect(tp,69452756)==0 end
+	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)
-	Duel.RegisterFlagEffect(tp,69452756,RESET_CHAIN,0,1)
 end
 function c69452756.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c69452756.filter(chkc) end

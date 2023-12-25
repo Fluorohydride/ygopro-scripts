@@ -8,6 +8,7 @@ function c4388680.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCondition(c4388680.atkcon)
 	e1:SetCost(c4388680.atkcost)
 	e1:SetOperation(c4388680.atkop)
@@ -33,9 +34,7 @@ function c4388680.atkcfilter(c)
 end
 function c4388680.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(4388680)==0
-		and Duel.IsExistingMatchingCard(c4388680.atkcfilter,tp,LOCATION_GRAVE,0,1,nil) end
-	c:RegisterFlagEffect(4388680,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(c4388680.atkcfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c4388680.atkcfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)

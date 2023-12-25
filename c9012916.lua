@@ -7,7 +7,7 @@ function c9012916.initial_effect(c)
 	--damage reduce
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
+	e1:SetCode(EFFECT_REPLACE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(1,0)

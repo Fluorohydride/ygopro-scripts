@@ -3,7 +3,6 @@ function c31571902.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31571902,0))
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c31571902.ntcon)

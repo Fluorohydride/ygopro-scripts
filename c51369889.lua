@@ -8,10 +8,10 @@ function c51369889.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
-	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
 	e2:SetHintTiming(0,TIMING_END_PHASE)
 	e2:SetCost(c51369889.descost)
@@ -38,7 +38,7 @@ function c51369889.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	return true
 end
-function c51369889.destg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c51369889.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
 	if chk==0 then
 		if e:GetLabel()==100 then

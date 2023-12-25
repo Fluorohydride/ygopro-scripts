@@ -41,7 +41,7 @@ function c22198672.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
 	local p=tc:GetControler()
-	local zone=tc:GetLinkedZone()&0x1f
+	local zone=tc:GetLinkedZone(p)&0x1f
 	if Duel.GetLocationCount(p,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 then
 		local i=0
 		if p~=tp then i=16 end

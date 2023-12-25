@@ -38,7 +38,7 @@ function c79323590.initial_effect(c)
 	--accumulate
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_FIELD)
-	e7:SetCode(0x10000000+79323590)
+	e7:SetCode(EFFECT_FLAG_EFFECT+79323590)
 	e7:SetRange(LOCATION_SZONE)
 	e7:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e7:SetTargetRange(1,1)

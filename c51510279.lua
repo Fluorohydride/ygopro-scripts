@@ -85,6 +85,7 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	elseif opval[op]==2 then
+		::rcancel::
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=rsg:Select(tp,1,1,nil):GetFirst()
@@ -96,9 +97,9 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
-		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
+		if not mat then goto rcancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()

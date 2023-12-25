@@ -25,8 +25,10 @@ end
 function c98643358.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c98643358.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
-		Duel.BreakEffect()
 		local ct=Duel.GetOperatedGroup():FilterCount(c98643358.ctfilter,nil)
-		Duel.Damage(1-tp,ct*500,REASON_EFFECT)
+		if ct>0 then
+			Duel.BreakEffect()
+			Duel.Damage(1-tp,ct*500,REASON_EFFECT)
+		end
 	end
 end

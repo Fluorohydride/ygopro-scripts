@@ -29,7 +29,7 @@ function c80637190.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c80637190.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_INSECT) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

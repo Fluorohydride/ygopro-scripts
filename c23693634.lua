@@ -43,7 +43,7 @@ function c23693634.sumtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c23693634.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_WARRIOR) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

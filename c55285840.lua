@@ -1,4 +1,5 @@
 --クロノダイバー・リダン
+local s,id,o=GetID()
 function c55285840.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -81,15 +82,16 @@ function c55285840.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseSingleEvent(c,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 	if sg:IsExists(Card.IsType,1,nil,TYPE_MONSTER) then
 		Duel.BreakEffect()
-		Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetReset(RESET_PHASE+PHASE_END)
-		e1:SetLabelObject(c)
-		e1:SetCountLimit(1)
-		e1:SetOperation(c55285840.retop)
-		Duel.RegisterEffect(e1,tp)
+		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_END)
+			e1:SetReset(RESET_PHASE+PHASE_END)
+			e1:SetLabelObject(c)
+			e1:SetCountLimit(1)
+			e1:SetOperation(c55285840.retop)
+			Duel.RegisterEffect(e1,tp)
+		end
 	end
 	if sg:IsExists(Card.IsType,1,nil,TYPE_SPELL) then
 		Duel.BreakEffect()

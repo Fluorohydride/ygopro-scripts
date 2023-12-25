@@ -14,7 +14,7 @@ end
 function c2671330.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local t=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(t)
-	return aux.dsercon(e) and t and t:IsRelateToBattle()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and t and t:IsRelateToBattle()
 end
 function c2671330.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

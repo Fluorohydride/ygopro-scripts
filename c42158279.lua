@@ -38,6 +38,7 @@ function c42158279.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c42158279.activate(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local mg=Duel.GetRitualMaterial(tp):Filter(c42158279.matfilter,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,c42158279.filter,e,tp,mg,nil,Card.GetLevel,"Equal")
@@ -51,9 +52,9 @@ function c42158279.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()

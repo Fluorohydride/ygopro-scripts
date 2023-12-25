@@ -26,6 +26,7 @@ function c92394653.initial_effect(c)
 	e3:SetOperation(c92394653.mtop)
 	c:RegisterEffect(e3)
 end
+c92394653.has_text_type=TYPE_SPIRIT
 function c92394653.filter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsControler(tp) and c:IsType(TYPE_SPIRIT)

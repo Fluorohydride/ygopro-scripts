@@ -1,4 +1,4 @@
---Ixeep, Omen of the Ghoti
+--ゴーティスの兆イグジープ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon itself

@@ -48,7 +48,7 @@ function c64276752.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(atk)
 		c:RegisterEffect(e1)
 		local mg=c:GetOverlayGroup()
-		if mg:IsExists(c64276752.mgfilter,1,nil) then
+		if mg:IsExists(c64276752.mgfilter,1,nil) and atk>0 then
 			local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,c)
 			if #g>0 then Duel.BreakEffect() end
 			for tc in aux.Next(g) do
@@ -67,7 +67,7 @@ function c64276752.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_FIELD)
-	e0:SetCode(EFFECT_CANNOT_ATTACK)
+	e0:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
 	e0:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e0:SetTargetRange(LOCATION_MZONE,0)
 	e0:SetTarget(c64276752.ftarget)

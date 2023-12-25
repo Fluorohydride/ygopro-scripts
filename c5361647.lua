@@ -34,7 +34,7 @@ function c5361647.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_EFFECT)
 end
 function c5361647.filter(c)
-	return c:IsSetCard(0x84) and not c:IsCode(5361647) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1084) and not c:IsCode(5361647) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c5361647.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c5361647.filter(chkc) end

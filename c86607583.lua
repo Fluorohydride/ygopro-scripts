@@ -59,7 +59,8 @@ function c86607583.cfilter(c)
 	return c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_LINK)
 end
 function c86607583.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanAddCounter(tp,0x47,1,e:GetHandler())
+	if chk==0 then return e:IsCostChecked()
+		and Duel.IsCanAddCounter(tp,0x47,1,e:GetHandler())
 		and Duel.IsExistingMatchingCard(c86607583.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 		and Duel.IsExistingMatchingCard(c86607583.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	local ct=Duel.GetMatchingGroupCount(c86607583.cfilter,tp,LOCATION_GRAVE,0,nil)

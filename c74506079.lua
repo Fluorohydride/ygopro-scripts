@@ -76,7 +76,7 @@ function c74506079.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74506079.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_REPTILE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,tc)
 	end

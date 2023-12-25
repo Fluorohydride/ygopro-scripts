@@ -27,16 +27,18 @@ function c83723605.spfilter(c,e,tp,rc)
 end
 function c83723605.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c83723605.texfilter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c83723605.texfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL)
+		and Duel.IsExistingTarget(c83723605.texfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	Duel.SelectTarget(tp,c83723605.texfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
+	local g=Duel.SelectTarget(tp,c83723605.texfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c83723605.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA)
+		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c83723605.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
 		local sc=g:GetFirst()

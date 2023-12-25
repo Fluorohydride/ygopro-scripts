@@ -28,6 +28,7 @@ function c7925734.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c7925734.rmfilter,tp,LOCATION_EXTRA,0,nil)
 	if g:GetCount()==0 then return end
+	Duel.ShuffleExtra(tp)
 	local tc=g:RandomSelect(tp,1):GetFirst()
 	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED)
 		and c:IsRelateToEffect(e) then

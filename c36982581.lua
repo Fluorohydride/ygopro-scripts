@@ -30,7 +30,7 @@ end
 function c36982581.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg1=Duel.GetRitualMaterial(tp)
-		local mg2=Duel.GetReleaseGroup(1-tp):Filter(c36982581.cfilter,nil,e,1-tp)
+		local mg2=Duel.GetReleaseGroup(1-tp,false,REASON_EFFECT):Filter(c36982581.cfilter,nil,e,1-tp)
 		return Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c36982581.rfilter1,e,tp,mg1,nil,Card.GetLevel,"Equal")
 			or (mg2:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 				and Duel.IsExistingMatchingCard(c36982581.rfilter2,tp,LOCATION_HAND,0,1,nil,e,tp))
@@ -39,8 +39,9 @@ function c36982581.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36982581.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	::cancel::
 	local mg1=Duel.GetRitualMaterial(tp)
-	local mg2=Duel.GetReleaseGroup(1-tp):Filter(c36982581.cfilter,nil,e,1-tp)
+	local mg2=Duel.GetReleaseGroup(1-tp,false,REASON_EFFECT):Filter(c36982581.cfilter,nil,e,1-tp)
 	local g1=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c36982581.rfilter1,e,tp,mg1,nil,Card.GetLevel,"Equal")
 	local g2=nil
 	local g=g1
@@ -60,13 +61,16 @@ function c36982581.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g1:IsContains(tc) and (not g2 or (g2:IsContains(tc) and not Duel.SelectYesNo(tp,aux.Stringid(36982581,0)))) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
-			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
+			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 			aux.GCheckAdditional=nil
+			if not mat then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 		else
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			local mat=mg2:Select(tp,1,1,nil)
+			local matc=mg2:SelectUnselect(nil,tp,false,true,1,1)
+			if not matc then goto cancel end
+			local mat=Group.FromCards(matc)
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 		end
@@ -82,7 +86,7 @@ function c36982581.tdfilter(c)
 end
 function c36982581.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c36982581.tdfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c36982581.tdfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c36982581.tdfilter,tp,LOCATION_GRAVE,0,1,nil) and c:IsAbleToDeck() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c36982581.tdfilter,tp,LOCATION_GRAVE,0,1,1,nil)

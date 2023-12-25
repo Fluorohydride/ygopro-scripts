@@ -6,7 +6,6 @@ function c10805153.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,10805153)
-	e1:SetCondition(c10805153.condition)
 	e1:SetTarget(c10805153.target)
 	e1:SetOperation(c10805153.activate)
 	c:RegisterEffect(e1)
@@ -23,15 +22,13 @@ function c10805153.initial_effect(c)
 	e2:SetOperation(c10805153.thop)
 	c:RegisterEffect(e2)
 end
-function c10805153.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP()
-end
 function c10805153.filter(c)
 	return c:IsSetCard(0x128) and c:IsFaceup() and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
 end
 function c10805153.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc,exc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(c10805153.filter,tp,LOCATION_MZONE,0,1,exc) end
+	if chk==0 then return aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
+		and Duel.IsExistingTarget(c10805153.filter,tp,LOCATION_MZONE,0,1,exc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c10805153.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
@@ -63,7 +60,7 @@ function c10805153.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_SPELL+TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c10805153.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	return Duel.GetAttacker()==e:GetHandler()
 end
 function c10805153.rccfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x128)

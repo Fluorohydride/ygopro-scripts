@@ -41,7 +41,7 @@ function c24550676.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c24550676.condition(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()
 end
 function c24550676.filter(c)
 	return c:IsSummonType(SUMMON_TYPE_SPECIAL)

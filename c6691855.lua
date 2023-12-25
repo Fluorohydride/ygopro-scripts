@@ -43,7 +43,7 @@ function c6691855.filter(c)
 end
 function c6691855.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c6691855.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c6691855.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c6691855.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
@@ -67,6 +67,7 @@ function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
 		e2:SetCode(EFFECT_UPDATE_DEFENSE)
+		e2:SetProperty(0,EFFECT_FLAG2_REPEAT_UPDATE)
 		e2:SetCondition(c6691855.defcon)
 		e2:SetValue(c6691855.defval)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)

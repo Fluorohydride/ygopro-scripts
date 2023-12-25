@@ -23,7 +23,7 @@ function c97053215.spfilter(c,e,tp,ft)
 	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsSummonableCard()
 		and (c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
-function c97053215.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c97053215.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c97053215.spfilter(chkc,e,tp,ft) end
 	if chk==0 then return Duel.IsExistingTarget(c97053215.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,ft) end

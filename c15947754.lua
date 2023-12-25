@@ -33,7 +33,7 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetDecktopGroup(tp,1):GetFirst()
 	if c:IsFaceup() and c:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and tc and tc:IsFacedown() then
+		and tc and tc:IsFacedown() and Duel.IsPlayerCanSSet(tp,tc) then
 		Duel.DisableShuffleCheck()
 		if tc:IsForbidden() then
 			Duel.SendtoGrave(tc,REASON_RULE)

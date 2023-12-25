@@ -12,6 +12,7 @@ function c95504778.initial_effect(c)
 	e1:SetTarget(c95504778.sptg)
 	e1:SetOperation(c95504778.spop)
 	c:RegisterEffect(e1)
+	aux.CreateMaterialReasonCardRelation(c,e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(95504778,1))
@@ -33,14 +34,20 @@ function c95504778.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c95504778.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local zone=bit.band(c:GetReasonCard():GetLinkedZone(tp),0x1f)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK,tp,zone) end
+	local rc=c:GetReasonCard()
+	if chk==0 then
+		local zone=bit.band(rc:GetLinkedZone(tp),0x1f)
+		return rc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK,tp,zone)
+	end
+	Duel.SetTargetCard(rc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c95504778.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local zone=bit.band(c:GetReasonCard():GetLinkedZone(tp),0x1f)
+	local rc=Duel.GetFirstTarget()
+	if not rc:IsRelateToChain() then return end
+	local zone=bit.band(rc:GetLinkedZone(tp),0x1f)
 	if c:IsRelateToEffect(e) and zone~=0 and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP_ATTACK,zone) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

@@ -54,16 +54,16 @@ end
 function c15033525.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
 end
-function c15033525.ncostfilter(c)
-	return not c:IsAbleToGraveAsCost()
+function c15033525.stfilter(c)
+	return c:GetOriginalType()&(TYPE_MONSTER)~=0
 end
 function c15033525.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	g:RemoveCard(e:GetHandler())
-	if chk==0 then return g:GetCount()>0 and not g:IsExists(c15033525.ncostfilter,1,nil) end
+	local mg=g:Filter(c15033525.stfilter,nil)
+	if chk==0 then return #mg>0 and not g:IsExists(aux.NOT(Card.IsAbleToGraveAsCost),1,nil) end
 	Duel.SendtoGrave(g,REASON_COST)
-	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
-	e:SetLabel(ct)
+	e:SetLabel(mg:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE))
 end
 function c15033525.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

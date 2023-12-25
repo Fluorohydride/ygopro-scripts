@@ -15,14 +15,14 @@ function c65664792.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DESTROYED)
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,65664793)
 	e2:SetCondition(c65664792.thcon)
 	e2:SetTarget(c65664792.thtg)
 	e2:SetOperation(c65664792.thop)
 	c:RegisterEffect(e2)
 end
-function c65664792.tdfilter(c,e,tp)
+function c65664792.tdfilter(c)
 	return c:IsCode(12206212) and c:IsAbleToDeck()
 end
 function c65664792.spfilter(c,e,tp)
@@ -43,12 +43,12 @@ function c65664792.spfilter3(c,e,tp,c1,c2)
 		and not c:IsOriginalCodeRule(c2:GetOriginalCodeRule())
 end
 function c65664792.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c65664792.tdfilter,tp,LOCATION_ONFIELD,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c65664792.tdfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_MZONE)
 end
 function c65664792.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local dg=Duel.SelectMatchingCard(tp,c65664792.tdfilter,tp,LOCATION_ONFIELD,0,1,1,nil,e,tp,g)
+	local dg=Duel.SelectMatchingCard(tp,c65664792.tdfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 	if #dg>0 and Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=3 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.IsExistingMatchingCard(c65664792.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp)

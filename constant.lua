@@ -6,8 +6,8 @@ MAX_PARAMETER	=0xffff
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
-LOCATION_MZONE		=0x04		--怪兽区
-LOCATION_SZONE		=0x08		--魔陷区(0~4)+场地区(5)
+LOCATION_MZONE		=0x04		--主要怪兽区(0-4)+额外怪兽区(5-6)
+LOCATION_SZONE		=0x08		--魔陷区(0-4)+场地区(5)
 LOCATION_GRAVE		=0x10		--墓地
 LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
@@ -73,7 +73,7 @@ ATTRIBUTE_LIGHT		=0x10		--光
 ATTRIBUTE_DARK		=0x20		--暗
 ATTRIBUTE_DIVINE	=0x40		--神
 --Races 种族
-RACE_ALL			=0x1ffffff	--全种族
+RACE_ALL			=0x3ffffff	--全种族
 RACE_WARRIOR		=0x1		--战士
 RACE_SPELLCASTER	=0x2		--魔法师
 RACE_FAIRY			=0x4		--天使
@@ -99,6 +99,7 @@ RACE_DIVINE			=0x200000	--幻神兽
 RACE_CREATORGOD		=0x400000	--创造神
 RACE_WYRM			=0x800000	--幻龙
 RACE_CYBERSE		=0x1000000	--电子界
+RACE_ILLUSION		=0x2000000	--幻想魔
 --Reason 卡片到当前位置的原因
 REASON_DESTROY		=0x1		--破坏
 REASON_RELEASE		=0x2		--解放
@@ -128,6 +129,8 @@ REASON_REDIRECT		=0x4000000	--改变去向（大宇宙，带菌等）
 REASON_REVEAL		=0x8000000	--翻开卡组（森罗）
 REASON_LINK			=0x10000000	--用于连接召唤
 REASON_LOST_OVERLAY =0x20000000	--超量素材随着超量怪兽离场
+REASON_MAINTENANCE	=0x40000000	--维持代价
+REASON_ACTION		=0x80000000	--攻击宣言之际等
 --Location Reason
 LOCATION_REASON_TOFIELD		=0x1	--Duel.GetLocationCount()預設值,凱薩競技場
 LOCATION_REASON_CONTROL		=0x2	--Card.IsControlerCanBeChanged()使用
@@ -152,6 +155,7 @@ SUMMON_VALUE_MONSTER_REBORN			=0x13	--死者苏生（千年的启示）
 SUMMON_VALUE_LV						=0x1000	--对应LV怪兽的效果
 SUMMON_VALUE_GLADIATOR				=0x2000	--剑斗兽
 SUMMON_VALUE_EVOLTILE				=0x4000	--进化虫
+SUMMON_VALUE_NOUVELLEZ				=0x8000	--新式魔厨
 --Status	--卡片当前状态
 STATUS_DISABLED				=0x0001		--效果被无效
 STATUS_TO_ENABLE			=0x0002		--将变成有效
@@ -165,17 +169,17 @@ STATUS_FORM_CHANGED			=0x0100		--改变过表示形式
 STATUS_SUMMONING			=0x0200		--召唤中
 STATUS_EFFECT_ENABLED		=0x0400		--卡片準備就緒(不在移動、召喚、魔法陷阱發動中)
 STATUS_SUMMON_TURN			=0x0800		--在本回合召喚/SET
-STATUS_DESTROY_CONFIRMED	=0x1000		--破坏确定
+STATUS_DESTROY_CONFIRMED	=0x1000		--预定被破坏
 STATUS_LEAVE_CONFIRMED		=0x2000		--連鎖處理完後送去墓地的魔法陷阱
 STATUS_BATTLE_DESTROYED		=0x4000		--战斗破坏确定後尚未移動
-STATUS_COPYING_EFFECT		=0x8000		--复制效果
+STATUS_COPYING_EFFECT		=0x8000		--正在复制效果
 STATUS_CHAINING				=0x10000	--正在連鎖串中
 STATUS_SUMMON_DISABLED		=0x20000	--召唤无效後尚未移動
 STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效後尚未移動
 STATUS_EFFECT_REPLACED		=0x80000	--效果被替代(红莲霸权)
 STATUS_FUTURE_FUSION		=0x100000	--未来融合特殊召唤(不触发融合素材效果)
 STATUS_ATTACK_CANCELED		=0x200000	--若其為攻擊者，則攻擊中止
-STATUS_INITIALIZING			=0x400000	--初始化..
+STATUS_INITIALIZING			=0x400000	--正在初始化
 STATUS_TO_HAND_WITHOUT_CONFIRM	=0x800000	--非公开的卡被效果加入手卡但未给对方确认
 STATUS_JUST_POS				=0x1000000	--已改變表示形式(用於STATUS_CONTINUOUS_POS判定)
 STATUS_CONTINUOUS_POS		=0x2000000	--改變後再次設定成其他表示形式
@@ -318,7 +322,7 @@ EFFECT_FLAG_COF					=0x20000000 --N/A
 EFFECT_FLAG_CVAL_CHECK			=0x40000000	--N/A
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用
 
-EFFECT_FLAG2_MILLENNIUM_RESTRICT	=0x0001 --N/A
+EFFECT_FLAG2_REPEAT_UPDATE			=0x0001 --最后计算的攻击力上升
 EFFECT_FLAG2_COF					=0x0002 --通常魔法卡在MP1以外发动（邪恶的仪式的特殊处理）
 EFFECT_FLAG2_WICKED					=0x0004	--神之化身/恐惧之源的攻击力变化最后计算
 EFFECT_FLAG2_OPTION					=0x0008	--子機
@@ -349,7 +353,7 @@ EFFECT_CANNOT_SSET				=24		--不能覆盖魔陷
 EFFECT_CANNOT_DRAW				=25		--不能抽卡
 EFFECT_CANNOT_DISABLE_SUMMON	=26		--召唤不会无效
 EFFECT_CANNOT_DISABLE_SPSUMMON	=27		--特殊召唤不会无效
-EFFECT_SET_SUMMON_COUNT_LIMIT	=28		--限制每回合放置怪兽次数
+EFFECT_SET_SUMMON_COUNT_LIMIT	=28		--设置每回合召唤次数
 EFFECT_EXTRA_SUMMON_COUNT		=29		--增加召唤（通常召唤）次数
 EFFECT_SPSUMMON_CONDITION		=30		--特殊召唤条件
 EFFECT_REVIVE_LIMIT				=31		--有苏生限制的怪獸(Card.EnableReviveLimit())
@@ -491,9 +495,9 @@ EFFECT_CHANGE_BATTLE_DAMAGE		=208    --改变此卡给予的战斗伤害、改�
 EFFECT_TOSS_COIN_REPLACE		=220	--重新抛硬币
 EFFECT_TOSS_DICE_REPLACE		=221	--重新掷骰子
 EFFECT_FUSION_MATERIAL			=230	--指定融合素材的條件
-EFFECT_CHAIN_MATERIAL			=231	--玩家受到連鎖物質的效果影響
-EFFECT_SYNCHRO_MATERIAL			=232	--可以当作同调素材
-EFFECT_XYZ_MATERIAL				=233	--可以当作超量素材
+EFFECT_CHAIN_MATERIAL			=231	--改变融合素材选取方法（连锁素材、电子融合支援）
+EFFECT_EXTRA_SYNCHRO_MATERIAL	=232	--在手卡或对方场上也可以当作自己的同调素材
+EFFECT_XYZ_MATERIAL				=233	--在对方场上也可以当作自己的超量素材
 EFFECT_FUSION_SUBSTITUTE		=234	--代替融合素材
 EFFECT_CANNOT_BE_FUSION_MATERIAL	=235--不能做融合素材
 EFFECT_CANNOT_BE_SYNCHRO_MATERIAL	=236--不能做同调素材
@@ -504,7 +508,7 @@ EFFECT_SYNCHRO_LEVEL				=240--做同调素材时的等级
 EFFECT_RITUAL_LEVEL					=241--做仪式祭品时的等级
 EFFECT_XYZ_LEVEL					=242--做超量素材时的等级
 EFFECT_EXTRA_RITUAL_MATERIAL		=243--在墓地当做仪式祭品
-EFFECT_NONTUNER						=244--同时当作调整以外的怪兽（幻影王 幽骑）
+EFFECT_NONTUNER						=244--同调召唤时可以当作调整以外的怪兽（幻影王 幽骑）
 EFFECT_OVERLAY_REMOVE_REPLACE		=245--代替去除超量素材
 EFFECT_SCRAP_CHIMERA				=246--废铁奇美拉
 EFFECT_TUNE_MAGICIAN_X				=247--调弦之魔术师超量素材限制
@@ -579,6 +583,10 @@ EFFECT_CHANGE_GRAVE_ATTRIBUTE	=365	--墓地的卡将会改变属性（升级转�
 EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变）
 EFFECT_ACTIVATION_COUNT_LIMIT	=367	--reserve
 EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召唤
+EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
+EFFECT_KAISER_COLOSSEUM         =370    --皇帝斗技场
+EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
+EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A
@@ -656,6 +664,7 @@ EVENT_PHASE_START				=0x2000	--阶段开始时
 EVENT_ADD_COUNTER				=0x10000	--增加指示物时
 EVENT_REMOVE_COUNTER			=0x20000	--去除指示物时(A指示物)，Card.RemoveCounter()必須手動觸發此事件
 EVENT_CUSTOM					=0x10000000	--自訂事件
+
 --Category	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
 CATEGORY_DESTROY			=0x1		--破坏效果
 CATEGORY_RELEASE			=0x2    	--解放效果
@@ -723,8 +732,8 @@ OPCODE_ISTYPE			=0x40000102
 OPCODE_ISRACE			=0x40000103
 OPCODE_ISATTRIBUTE		=0x40000104
 --
-DOUBLE_DAMAGE			=0x80000000
-HALF_DAMAGE				=0x80000001
+DOUBLE_DAMAGE			=-2147483648
+HALF_DAMAGE				=-2147483647
 --Hint Message	--提示消息，显示在窗口的上面
 HINTMSG_RELEASE			=500	--请选择要解放的卡
 HINTMSG_DISCARD			=501	--请选择要丢弃的手牌
@@ -831,6 +840,7 @@ GLOBALFLAG_TUNE_MAGICIAN		=0x400		--超量素材检查标记（调弦之魔术�
 --count_code
 EFFECT_COUNT_CODE_OATH			=0x10000000 --发动次数限制(誓约次数, 发动被无效不计数)
 EFFECT_COUNT_CODE_DUEL			=0x20000000 --决斗中使用次数
+EFFECT_COUNT_CODE_CHAIN			=0x40000000 --同一连锁中使用次数
 EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 --特殊选项
 DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
@@ -855,3 +865,6 @@ ACTIVITY_CHAIN			=7		-- only available in custom counter
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚(double name)
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚(double name)
 CARD_QUESTION		    =38723936	--谜题
+--Special flag effect id
+FLAG_ID_CHAINING	=1
+FLAG_ID_UNION		=2

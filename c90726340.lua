@@ -33,7 +33,7 @@ function c90726340.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c90726340.spfilter(c,e,tp)
-	return c:IsLevelAbove(5) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelAbove(5) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DragonXyzSpSummonType(c))
 end
 function c90726340.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c90726340.spfilter(chkc,e,tp) end
@@ -45,7 +45,7 @@ function c90726340.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90726340.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) and Duel.SpecialSummonStep(tc,0,tp,tp,false,aux.DragonXyzSpSummonType(tc),POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -62,6 +62,9 @@ function c90726340.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCode(EFFECT_CANNOT_ATTACK)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e3,true)
+		if aux.DragonXyzSpSummonType(tc) then
+			tc:CompleteProcedure()
+		end
 	end
 	Duel.SpecialSummonComplete()
 end

@@ -20,7 +20,7 @@ end
 function c7582066.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() or Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)==0 then return end
-	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1,nil)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)
 	local tc=g:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
 	local op=Duel.AnnounceType(tp)

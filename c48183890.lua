@@ -91,6 +91,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=g:GetNext()
 	end
+	Duel.AdjustInstantly(c)
 	if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.rmfilter),tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 		Duel.BreakEffect()

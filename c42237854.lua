@@ -44,7 +44,8 @@ function c42237854.filter(c)
 end
 function c42237854.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42237854.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c42237854.filter,tp,LOCATION_MZONE,0,1,nil)
+	if chk==0 then return e:IsCostChecked()
+		and Duel.IsExistingTarget(c42237854.filter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,TYPES_EFFECT_TRAP_MONSTER,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
@@ -59,10 +60,9 @@ function c42237854.tgfilter(c,e)
 end
 function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,TYPES_EFFECT_TRAP_MONSTER,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,TYPES_EFFECT_TRAP_MONSTER,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
+	if Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)==0 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c42237854.tgfilter,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if g:GetCount()<=0 or ft<=0 then return end

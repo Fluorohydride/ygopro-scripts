@@ -10,6 +10,7 @@ function c3428069.initial_effect(c)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetTarget(c3428069.eqtg)
 	e2:SetOperation(c3428069.eqop)
 	c:RegisterEffect(e2)
@@ -31,10 +32,8 @@ function c3428069.filter(c,e,tp)
 end
 function c3428069.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c3428069.filter(chkc,e,tp) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(3428069)==0
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and eg:IsExists(c3428069.filter,1,nil,e,tp) end
-	e:GetHandler():RegisterFlagEffect(3428069,RESET_CHAIN,0,1)
 	local g=eg:Filter(c3428069.filter,nil,e,tp)
 	local tc=nil
 	if g:GetCount()>1 then

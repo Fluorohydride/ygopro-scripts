@@ -23,7 +23,7 @@ function c72554862.initial_effect(c)
 	c:RegisterEffect(e2)
 	if not c72554862.global_check then
 		c72554862.global_check=true
-		local ge1=Effect.GlobalEffect(c)
+		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_BATTLE_CONFIRM)
 		ge1:SetOperation(c72554862.checkop)
@@ -47,7 +47,7 @@ function c72554862.val(e,c)
 end
 function c72554862.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,72554862)>0
-		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and aux.dscon()
+		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c72554862.spfilter(c,e,tp)
 	return c:IsLevelBelow(5) and c:IsRace(RACE_WARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -27,13 +27,17 @@ function c33776843.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
+	local tc=g:GetFirst()
+	if tc:IsLocation(LOCATION_MZONE) and math.max(0,tc:GetTextAttack())>0 then
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0) end
 end
 function c33776843.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and tc:IsPreviousLocation(LOCATION_MZONE) then
-		local atk=tc:GetTextAttack()
-		if atk<0 then atk=0 end
-		Duel.BreakEffect()
-		Duel.Damage(1-tp,atk,REASON_EFFECT)
+		local atk=math.max(0,tc:GetTextAttack())
+		if atk>0 then
+			Duel.BreakEffect()
+			Duel.Damage(1-tp,atk,REASON_EFFECT)
+		end
 	end
 end

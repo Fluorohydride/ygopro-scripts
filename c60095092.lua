@@ -6,9 +6,11 @@ function s.initial_effect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_LIMIT_ZONE)
 	e1:SetCountLimit(1,id)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
+	e1:SetValue(s.zones)
 	c:RegisterEffect(e1)
 	--Move
 	local e2=Effect.CreateEffect(c)
@@ -22,6 +24,16 @@ function s.initial_effect(c)
 	e2:SetTarget(s.seqtg)
 	e2:SetOperation(s.seqop)
 	c:RegisterEffect(e2)
+end
+function s.zones(e,tp,eg,ep,ev,re,r,rp)
+	local zone=0xff
+	local p0=Duel.CheckLocation(tp,LOCATION_PZONE,0)
+	local p1=Duel.CheckLocation(tp,LOCATION_PZONE,1)
+	local b=e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE)
+	if not b or p0 and p1 then return zone end
+	if p0 then zone=zone-0x1 end
+	if p1 then zone=zone-0x10 end
+	return zone
 end
 function s.penfilter(c)
 	return c:IsSetCard(0x17d) and c:IsType(TYPE_PENDULUM)

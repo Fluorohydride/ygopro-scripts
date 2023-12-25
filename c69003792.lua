@@ -71,15 +71,13 @@ function c69003792.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c69003792.spop(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local mg=Duel.GetRitualMaterial(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c69003792.RitualUltimateFilter,tp,LOCATION_DECK,0,1,1,nil,c69003792.rfilter,e,tp,mg,nil,Card.GetLevel,"Equal")
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if sg then
-			mg:Merge(sg)
-		end
 		if tc.mat_filter then
 			mg=mg:Filter(tc.mat_filter,tc,tp)
 		else
@@ -87,9 +85,9 @@ function c69003792.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel()*2,"Equal")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel()*2,tp,tc,tc:GetLevel()*2,"Equal")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel()*2,tp,tc,tc:GetLevel()*2,"Equal")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()
