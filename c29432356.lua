@@ -76,14 +76,14 @@ function c29432356.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	local rg=Duel.GetReleaseGroup(tp)
-	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil)==g:GetCount()
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
+	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil,REASON_SPSUMMON)==g:GetCount()
 		and g:FilterCount(Card.IsSetCard,nil,0xc4)>=3
 		and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 end
 function c29432356.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetReleaseGroup(tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c29432356.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -106,8 +106,8 @@ function c29432356.spcfilter(c,ft,tp)
 end
 function c29432356.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c29432356.spcfilter,1,nil,ft,tp) end
-	local sg=Duel.SelectReleaseGroup(tp,c29432356.spcfilter,1,1,nil,ft,tp)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c29432356.spcfilter,1,nil,ft,tp) end
+	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c29432356.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c29432356.spfilter(c,e,tp)

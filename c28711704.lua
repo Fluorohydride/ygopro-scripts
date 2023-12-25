@@ -38,16 +38,16 @@ end
 function c28711704.fselect(g,tp)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetLevel,8)
-		and Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+		and Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(REASON_SPSUMMON,tp,aux.IsInGroup,#g,nil,g)
 end
 function c28711704.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp,true):Filter(c28711704.rfilter,c,tp)
+	local rg=Duel.GetReleaseGroup(tp,true,REASON_SPSUMMON):Filter(c28711704.rfilter,c,tp)
 	return rg:CheckSubGroup(c28711704.fselect,1,rg:GetCount(),tp)
 end
 function c28711704.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp,true):Filter(c28711704.rfilter,c,tp)
+	local rg=Duel.GetReleaseGroup(tp,true,REASON_SPSUMMON):Filter(c28711704.rfilter,c,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c28711704.fselect,true,1,rg:GetCount(),tp)
 	if sg then
@@ -58,7 +58,7 @@ function c28711704.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c28711704.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c28711704.cfilter1(c)
 	return c:IsFaceup() and c:IsCode(15259703)

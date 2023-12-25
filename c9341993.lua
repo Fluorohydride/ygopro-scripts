@@ -20,7 +20,7 @@ function c9341993.fselect(g,tp,exc)
 	if exc then dg:AddCard(exc) end
 	if Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,g:GetCount()+1,dg) then
 		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,nil,0,nil)
 	else return false end
 end
 function c9341993.cost(e,tp,eg,ep,ev,re,r,rp,chk)
