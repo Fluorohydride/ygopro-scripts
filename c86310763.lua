@@ -52,7 +52,7 @@ function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g1=Duel.SelectMatchingCard(tp,s.tdfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.tdfilter),tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
 	local tc1=g1:GetFirst()
 	if not tc1 then return end
 	if tc1:IsLocation(LOCATION_HAND) then
