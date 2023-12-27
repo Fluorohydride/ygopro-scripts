@@ -51,7 +51,7 @@ end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToHandAsCost() end
-	Duel.SendtoHand(c,tp,REASON_COST)
+	Duel.SendtoHand(c,nil,REASON_COST)
 end
 function s.filter(c,e,tp)
 	return c:IsRace(RACE_DRAGON+RACE_WARRIOR) and c:IsType(TYPE_RITUAL) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsCanBeSpecialSummoned(e,0,tp,false,true)
