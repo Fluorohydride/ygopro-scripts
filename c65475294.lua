@@ -20,6 +20,6 @@ function c65475294.costop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectReleaseGroup(REASON_MAINTENANCE,tp,nil,1,1,c)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else
-		Duel.Destroy(c,REASON_COST)
+		Duel.Destroy(c,REASON_MAINTENANCE)
 	end
 end
