@@ -96,7 +96,7 @@ function c23562407.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup()
-		and tc:IsControler(tp) and tc:IsSetCard(0x107a) and c23562407.eqlimit(nil,c) and c:CheckUniqueOnField(tp) then
+		and tc:IsControler(tp) and tc:IsSetCard(0x107a) and c23562407.eqlimit(nil,tc) and c:CheckUniqueOnField(tp) then
 		Duel.Equip(tp,c,tc)
 	end
 end
