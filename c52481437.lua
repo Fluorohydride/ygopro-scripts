@@ -63,7 +63,7 @@ end
 function c52481437.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=Duel.SelectMatchingCard(tp,Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,2,2,e:GetHandler())
-	Duel.SendtoGrave(sg,REASON_COST)
+	Duel.SendtoGrave(sg,REASON_ACTION)
 end
 function c52481437.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

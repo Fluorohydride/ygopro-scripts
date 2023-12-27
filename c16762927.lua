@@ -29,5 +29,5 @@ function c16762927.atcost(e,c,tp)
 	return Duel.IsPlayerCanDiscardDeckAsCost(tp,ct)
 end
 function c16762927.atop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.DiscardDeck(tp,1,REASON_COST)
+	Duel.DiscardDeck(tp,1,REASON_ACTION)
 end
