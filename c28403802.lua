@@ -16,6 +16,23 @@ function c28403802.initial_effect(c)
 	e1:SetOperation(c28403802.thop)
 	c:RegisterEffect(e1)
 	--spsummon
+	--[[
+	Auxiliary effect to ensure this card in GY before effect cost for Magician's Rod.
+	In case of issues where this effect could activate when sent to GY because of effect cost,
+	such as tributed by Enemy Controller
+	or destroyed when Call of the Haunted was sent to GY by Forbidden Droplet.
+	Be informed that do not use this if the effect is a quick effect(Paleozoic)
+	or the trigger location is Hand according to game ruling.
+	]]
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD)
+	e0:SetCode(EFFECT_ACTIVATE_COST)
+	e0:SetRange(LOCATION_GRAVE)
+	e0:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e0:SetTargetRange(0,1)
+	e0:SetTarget(c28403802.costtg)
+	e0:SetOperation(aux.chainreg)
+	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -54,11 +71,14 @@ function c28403802.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c28403802.spcon(e,tp,eg,ep,ev,re,r,rp)
+function c28403802.costtg(e,te,tp)
 	local ct=Duel.GetCurrentChain()
-	if ct<2 then return end
-	local te,p=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	return te and te:GetHandler():IsSetCard(0x171) and p==tp and rp==1-tp
+	if ct<2 then return false end
+	local pre,p=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
+	return pre and pre:GetHandler():IsSetCard(0x171) and p==1-tp
+end
+function c28403802.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c28403802.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
