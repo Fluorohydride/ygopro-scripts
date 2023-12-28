@@ -16,6 +16,23 @@ function c71696014.initial_effect(c)
 	e1:SetOperation(c71696014.operation1)
 	c:RegisterEffect(e1)
 	--spsummon (self)
+	--[[
+	Auxiliary effect to ensure this card in GY before effect cost for Magician's Rod.
+	In case of issues where this effect could activate when sent to GY because of effect cost,
+	such as tributed by Enemy Controller
+	or destroyed when Call of the Haunted was sent to GY by Forbidden Droplet.
+	Be informed that do not use this if the effect is a quick effect(Paleozoic)
+	or the trigger location is Hand according to game ruling.
+	]]
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_ACTIVATE_COST)
+	e2:SetRange(LOCATION_GRAVE)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetTargetRange(1,0)
+	e2:SetTarget(c7084129.costtg)
+	e2:SetOperation(aux.chainreg)
+	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(71696014,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -55,8 +72,11 @@ function c71696014.operation1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c71696014.costtg(e,te,tp)
+	return Duel.GetTurnPlayer()~=tp and te:IsActiveType(TYPE_SPELL+TYPE_TRAP)
+end
 function c71696014.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and rp==tp and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
+	return e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c71696014.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
