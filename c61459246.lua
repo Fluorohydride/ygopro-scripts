@@ -38,7 +38,7 @@ function c61459246.activate1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c61459246.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and rp==1-tp and Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE)
+	return aux.NegateSummonCondition() and rp==1-tp and Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE)
 end
 function c61459246.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

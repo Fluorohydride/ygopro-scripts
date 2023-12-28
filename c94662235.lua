@@ -28,7 +28,7 @@ function c94662235.check(tp)
 		and not g:IsExists(aux.NOT(c94662235.cfilter),1,nil)
 end
 function c94662235.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and c94662235.check(tp)
+	return aux.NegateSummonCondition() and c94662235.check(tp)
 end
 function c94662235.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:GetFirst():IsAbleToRemove() end

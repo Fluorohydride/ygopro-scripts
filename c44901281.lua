@@ -21,7 +21,7 @@ function c44901281.filter(c)
 end
 function c44901281.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c44901281.filter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.GetCurrentChain()==0
+		and aux.NegateSummonCondition()
 end
 function c44901281.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
