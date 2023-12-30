@@ -1,4 +1,4 @@
---E－HERO ヘル・スナイパー
+--E-HERO ヘル・スナイパー
 function c50282757.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

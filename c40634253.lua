@@ -1,4 +1,4 @@
---BM-4ボムスパイダー
+--BM－4ボムスパイダー
 function c40634253.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

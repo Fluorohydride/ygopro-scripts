@@ -1,4 +1,4 @@
---ZS-双頭龍賢者
+--ZS－双頭龍賢者
 function c32281491.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---R-ACEインパルス
+--R－ACEインパルス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--cannot activate

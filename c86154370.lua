@@ -1,4 +1,4 @@
---HSR/CWライダー
+--HSR／CWライダー
 function c86154370.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND),aux.NonTuner(c86154370.sfilter),1,1)

@@ -1,4 +1,4 @@
---E－HERO ダーク・ガイア
+--E-HERO ダーク・ガイア
 function c58332301.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

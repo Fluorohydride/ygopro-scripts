@@ -1,4 +1,4 @@
---Ai-Q
+--Ai－Q
 function c69381150.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

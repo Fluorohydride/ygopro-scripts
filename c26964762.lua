@@ -1,4 +1,4 @@
---D－HERO ダークエンジェル
+--D-HERO ダークエンジェル
 function c26964762.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

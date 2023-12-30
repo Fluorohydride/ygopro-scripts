@@ -1,4 +1,4 @@
---D－HERO ディバインガイ
+--D-HERO ディバインガイ
 function c63362460.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Ai-コンタクト
+--Ai－コンタクト
 function c10493654.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

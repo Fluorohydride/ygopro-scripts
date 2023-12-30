@@ -1,4 +1,4 @@
---R-ACEハイドラント
+--R－ACEハイドラント
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--cannot be battle and effect target

@@ -1,4 +1,4 @@
---D－HERO ダイヤモンドガイ
+--D-HERO ダイヤモンドガイ
 function c13093792.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

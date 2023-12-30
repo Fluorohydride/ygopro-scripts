@@ -1,4 +1,4 @@
---７カード
+--7カード
 function c86198326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

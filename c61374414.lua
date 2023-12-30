@@ -1,4 +1,4 @@
---CX-N·As·Ch Knight
+--CX－N・As・Ch Knight
 function c61374414.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3,c61374414.ovfilter,aux.Stringid(61374414,0))

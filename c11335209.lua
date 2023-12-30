@@ -1,4 +1,4 @@
---ホルスの祝福-ドゥアムテフ
+--ホルスの祝福－ドゥアムテフ
 function c11335209.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

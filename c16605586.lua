@@ -1,4 +1,4 @@
---D－HERO ディナイアルガイ
+--D-HERO ディナイアルガイ
 function c16605586.initial_effect(c)
 	--to deck top
 	local e1=Effect.CreateEffect(c)

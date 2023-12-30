@@ -1,4 +1,4 @@
---ギガンテック・ファイター/バスター
+--ギガンテック・ファイター／バスター
 function c38898779.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()

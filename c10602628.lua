@@ -1,4 +1,4 @@
---BF-魔風のボレアース
+--BF－魔風のボレアース
 function c10602628.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c10602628.mfilter,aux.NonTuner(nil),1)

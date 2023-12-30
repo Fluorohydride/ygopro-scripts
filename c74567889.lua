@@ -1,4 +1,4 @@
---ダークインファント@イグニスター
+--ダークインファント＠イグニスター
 function c74567889.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c74567889.mfilter,1,1)

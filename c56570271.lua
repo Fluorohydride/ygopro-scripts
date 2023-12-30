@@ -1,4 +1,4 @@
---D－HERO ディスクガイ
+--D-HERO ディスクガイ
 function c56570271.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

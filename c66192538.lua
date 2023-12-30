@@ -1,4 +1,4 @@
---ダンマリ@イグニスター
+--ダンマリ＠イグニスター
 function c66192538.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

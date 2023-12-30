@@ -1,4 +1,4 @@
---重騎兵エメトVI
+--重騎兵エメトⅥ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spcial from hand or grave

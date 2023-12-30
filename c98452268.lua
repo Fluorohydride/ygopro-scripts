@@ -1,4 +1,4 @@
---覇王黒竜オッドアイズ・リベリオン・ドラゴン−オーバーロード
+--覇王黒竜オッドアイズ・リベリオン・ドラゴン－オーバーロード
 function c98452268.initial_effect(c)
 	c:SetSPSummonOnce(98452268)
 	--xyz summon

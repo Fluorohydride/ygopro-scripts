@@ -1,4 +1,4 @@
---針淵のヴァリアンツ－アルクトスXII
+--針淵のヴァリアンツ－アルクトスⅩⅡ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)

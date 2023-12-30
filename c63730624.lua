@@ -1,4 +1,4 @@
---ダブルツールD&C
+--ダブルツールD＆C
 function c63730624.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

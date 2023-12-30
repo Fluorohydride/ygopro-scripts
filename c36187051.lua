@@ -1,4 +1,4 @@
---巌帯の美技-ゼノギタム
+--巌帯の美技－ゼノギタム
 function c36187051.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

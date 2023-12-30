@@ -1,4 +1,4 @@
---H-C ヤールングレイプ
+--H－C ヤールングレイプ
 local s,id,o=GetID()
 function c23848752.initial_effect(c)
 	--xyz summon

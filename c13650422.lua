@@ -1,4 +1,4 @@
---E－HERO アダスター・ゴールド
+--E-HERO アダスター・ゴールド
 function c13650422.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--search

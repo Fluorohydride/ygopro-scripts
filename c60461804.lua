@@ -1,4 +1,4 @@
---D－HERO デストロイフェニックスガイ
+--D-HERO デストロイフェニックスガイ
 function c60461804.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c60461804.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0xc008),true)

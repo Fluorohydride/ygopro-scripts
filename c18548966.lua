@@ -1,4 +1,4 @@
---H·C モーニング・スター
+--H・C モーニング・スター
 local s,id,o=GetID()
 function c18548966.initial_effect(c)
 	--spsummon

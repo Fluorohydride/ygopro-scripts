@@ -1,4 +1,4 @@
---水陸両用バグロス Mk－１１
+--水陸両用バグロス Mk－11
 function c4754691.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--atkup

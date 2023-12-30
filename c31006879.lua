@@ -1,4 +1,4 @@
---ライディング・デュエル!アクセラレーション!
+--ライディング・デュエル！アクセラレーション！
 function c31006879.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---バーバリアン０号
+--バーバリアン0号
 local s,id,o=GetID()
 function c5577149.initial_effect(c)
 	--to hand

@@ -1,4 +1,4 @@
---No-P.U.N.K.ディア・ノート
+--No－P.U.N.K.ディア・ノート
 local s,id,o=GetID()
 function c6609736.initial_effect(c)
 	--to grave and spsummon

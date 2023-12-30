@@ -1,4 +1,4 @@
---Evil★Twin's トラブル・サニー
+--Evil★Twin’s トラブル・サニー
 function c93672138.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,4 @@
---H·C ナックル・ナイフ
+--H・C ナックル・ナイフ
 local s,id,o=GetID()
 function c71549257.initial_effect(c)
 	--spsummon

@@ -1,4 +1,4 @@
---ホルスの栄光-イムセティ
+--ホルスの栄光－イムセティ
 function c84941194.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

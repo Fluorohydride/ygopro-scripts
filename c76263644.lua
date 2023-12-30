@@ -1,4 +1,4 @@
---Dragoon D－END
+--Dragoon D-END
 function c76263644.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,4 @@
---魔鍵憑霊-ウェパルトゥ
+--魔鍵憑霊－ウェパルトゥ
 function c68300121.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

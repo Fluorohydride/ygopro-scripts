@@ -1,4 +1,4 @@
---被検体ミュートリアGB－８８
+--被検体ミュートリアGB－88
 function c43709490.initial_effect(c)
 	--self spsummon
 	local e1=Effect.CreateEffect(c)

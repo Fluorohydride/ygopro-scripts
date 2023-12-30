@@ -1,4 +1,4 @@
---D－HERO デビルガイ
+--D-HERO デビルガイ
 function c41613948.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

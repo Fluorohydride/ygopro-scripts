@@ -1,4 +1,4 @@
---D－HERO ダッシュガイ
+--D-HERO ダッシュガイ
 function c81866673.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

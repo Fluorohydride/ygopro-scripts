@@ -1,4 +1,4 @@
---HERO'S ボンド
+--HERO’S ボンド
 function c76442616.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---超魔導戦士-マスター・オブ・カオス
+--超魔導戦士－マスター・オブ・カオス
 function c85059922.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

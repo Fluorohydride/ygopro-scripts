@@ -1,4 +1,4 @@
---E－HERO シニスター・ネクロム
+--E-HERO シニスター・ネクロム
 function c45659520.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---R-ACEファイア・アタッカー
+--R－ACEファイア・アタッカー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Special Summon (from hand : itself)
