@@ -1,5 +1,4 @@
 --百鬼羅刹大集会
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

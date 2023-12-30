@@ -1,5 +1,4 @@
 --幻蝋館の使者
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Special Summon (from hand : itself)

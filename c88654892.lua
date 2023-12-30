@@ -1,5 +1,4 @@
 --突然回帰
---Scripted by 零绪之风
 function c88654892.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

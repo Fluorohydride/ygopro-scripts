@@ -1,4 +1,4 @@
---EM:Pグレニャード
+--EM：Pグレニャード
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check

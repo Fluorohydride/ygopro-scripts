@@ -1,5 +1,4 @@
 --粛声なる守護者ローガーディアン
---scripted by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,52472775,25801745)

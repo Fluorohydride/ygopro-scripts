@@ -1,5 +1,4 @@
---百鬼罗刹 爆音反射骑手
---lua by Gim J.Blocks
+--百鬼羅刹 爆音クラッタ
 function c51473858.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

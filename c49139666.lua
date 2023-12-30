@@ -1,6 +1,4 @@
---异星战队 大爆炸
---ミストレンジャー ビッグ・バン
---script by REIKAI
+--異星戦隊 ビッグ・バン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

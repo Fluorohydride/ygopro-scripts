@@ -1,5 +1,4 @@
---百鬼罗刹 特攻光耀骑手
---lua by Gim J.Blocks
+--百鬼羅刹 特攻ダグ
 function c24079759.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

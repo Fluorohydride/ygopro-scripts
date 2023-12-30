@@ -1,6 +1,4 @@
---绣眼满当当
 --目白圧し
---script by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

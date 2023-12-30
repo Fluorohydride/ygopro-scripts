@@ -1,4 +1,4 @@
---アロマリリス-ローズマリー
+--アロマリリス－ローズマリー
 local s,id,o=GetID()
 function c30989084.initial_effect(c)
 	--link summon

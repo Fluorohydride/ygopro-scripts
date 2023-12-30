@@ -1,5 +1,4 @@
 --ゴブリン降下部隊
---Scripted by Gong'E
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--disable

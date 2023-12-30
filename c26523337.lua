@@ -1,4 +1,4 @@
---魊影之月夜 赛钶斯
+--ゴーティスの月夜サイクス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to hand

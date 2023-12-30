@@ -1,5 +1,4 @@
 --白の輪廻
---Script by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

@@ -1,4 +1,4 @@
---RR-ライジング・リベリオン・ファルコン
+--RR－ライジング・リベリオン・ファルコン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Xyz Summon

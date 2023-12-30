@@ -1,5 +1,4 @@
 --幾星霜
---Scripted by zengsxing
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

@@ -1,6 +1,4 @@
 --エターナル・フェイバリット
---Script by passingDio0
---Fixed by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,78371393)

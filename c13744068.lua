@@ -1,5 +1,4 @@
---狂暴恶魔
---lua by zengsxing
+--バーサーク・デーモン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

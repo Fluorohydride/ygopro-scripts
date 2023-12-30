@@ -1,5 +1,4 @@
---RR-ルースト
---lua by zengsxing
+--RR－ルースト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

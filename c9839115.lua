@@ -1,6 +1,4 @@
---月胧龙 伐古那瓦
 --月朧龍ヴァグナワ
---script by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--synchro summon

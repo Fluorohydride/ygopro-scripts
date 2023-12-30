@@ -1,5 +1,4 @@
 --粛声の竜賢姫サフィラ
---scripted by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to grave search

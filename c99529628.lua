@@ -1,4 +1,4 @@
---魊影之胧 基辐
+--ゴーティスの朧キーフ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

@@ -1,5 +1,4 @@
---犀子国王
---Lua by Gim J.Blocks
+--犀子の王様
 function c74289646.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)

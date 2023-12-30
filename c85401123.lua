@@ -1,5 +1,4 @@
---莫科莫可
---Lua by Gim J.Blocks
+--モコモッコ
 function c85401123.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

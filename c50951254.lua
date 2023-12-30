@@ -1,4 +1,4 @@
---岩浆雄骜龙
+--マグマッチョ・ドラゴン
 function c50951254.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(50951254,0))

@@ -1,5 +1,4 @@
---RR-ブルーム・ヴァルチャー
---lua by zengsxing
+--RR－ブルーム・ヴァルチャー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Special Summon
