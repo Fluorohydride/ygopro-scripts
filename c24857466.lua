@@ -71,6 +71,7 @@ end
 function c24857466.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+---dynamic target
 function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
 		if ev==TYPE_TRAP then

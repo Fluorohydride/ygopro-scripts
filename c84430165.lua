@@ -19,7 +19,7 @@ end
 function c84430165.afilter(c,tp)
 	return c:IsControler(tp) and c:IsSetCard(0x12b) and c:IsType(TYPE_LINK)
 end
-function c84430165.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c84430165.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c84430165.afilter,1,nil,tp) end
 end
 function c84430165.cfilter(c)

@@ -81,6 +81,7 @@ function c64756282.cpcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	g:AddCard(c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
+---dynamic target
 function c64756282.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local te=e:GetLabelObject()
