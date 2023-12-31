@@ -51,7 +51,7 @@ end
 function c41562624.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsRace(RACE_ZOMBIE)
 end
-function c41562624.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c41562624.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

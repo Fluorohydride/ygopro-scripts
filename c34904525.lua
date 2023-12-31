@@ -37,7 +37,7 @@ function c34904525.thfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 		and aux.IsCodeListed(c,25955164) and aux.IsCodeListed(c,62340868) and aux.IsCodeListed(c,98434877)
 end
-function c34904525.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c34904525.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c34904525.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

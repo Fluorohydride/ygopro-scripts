@@ -9,7 +9,7 @@ function c24317029.initial_effect(c)
 	e1:SetOperation(c24317029.operation)
 	c:RegisterEffect(e1)
 end
-function c24317029.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c24317029.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end

@@ -32,7 +32,7 @@ function c43739056.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local p=e:GetHandler():GetOwner()
 	return p==Duel.GetTurnPlayer() and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
-function c43739056.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c43739056.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsControlerCanBeChanged() end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,e:GetHandler(),1,0,0)
 end

@@ -25,7 +25,7 @@ end
 function c38723936.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
-function c38723936.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c38723936.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingTarget(c38723936.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,0)
 end

@@ -35,7 +35,7 @@ function c423585.initial_effect(c)
 	e5:SetCode(EFFECT_UNRELEASABLE_NONSUM)
 	c:RegisterEffect(e5)
 end
-function c423585.potg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c423585.potg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
 end

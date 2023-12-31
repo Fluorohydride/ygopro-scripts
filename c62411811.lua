@@ -32,7 +32,7 @@ end
 function c62411811.thfilter(c)
 	return c:IsSetCard(0x193) and c:IsAbleToHand()
 end
-function c62411811.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c62411811.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c62411811.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

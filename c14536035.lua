@@ -45,7 +45,7 @@ end
 function c14536035.filter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToGrave()
 end
-function c14536035.sgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c14536035.sgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(c14536035.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)

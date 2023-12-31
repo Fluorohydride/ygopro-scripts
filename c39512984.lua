@@ -40,7 +40,7 @@ end
 function c39512984.filter(c)
 	return c:IsLevelBelow(7) and c:IsSetCard(0x1047) and c:IsType(TYPE_FUSION) and c:IsAbleToRemoveAsCost()
 end
-function c39512984.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c39512984.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39512984.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c39512984.filter,tp,LOCATION_GRAVE,0,1,1,nil)

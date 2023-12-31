@@ -20,7 +20,7 @@ end
 function c67111213.filter(c)
 	return c:IsDefenseBelow(1000) and c:IsSetCard(0x3a) and c:IsType(TYPE_MONSTER) and not c:IsCode(67111213) and c:IsAbleToHand()
 end
-function c67111213.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c67111213.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c67111213.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

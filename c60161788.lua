@@ -15,7 +15,7 @@ end
 function c60161788.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
-function c60161788.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c60161788.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)

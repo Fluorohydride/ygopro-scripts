@@ -15,7 +15,7 @@ end
 function c45222299.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
-function c45222299.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c45222299.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,0,LOCATION_HAND)
 end

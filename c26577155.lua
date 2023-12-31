@@ -42,7 +42,7 @@ end
 function c26577155.thfilter(c)
 	return c:IsCode(62265044) and c:IsAbleToHand()
 end
-function c26577155.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c26577155.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c26577155.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

@@ -85,7 +85,7 @@ end
 function c66750703.thfilter(c)
 	return c:IsRace(RACE_BEASTWARRIOR) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c66750703.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c66750703.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66750703.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

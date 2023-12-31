@@ -12,8 +12,7 @@ end
 function c1005587.filter(c,tp)
 	return aux.NegateMonsterFilter(c) and c:IsAttackAbove(2000) and c:IsSummonPlayer(tp)
 end
-function c1005587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
+function c1005587.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c1005587.filter,1,nil,1-tp) end
 	Duel.SetTargetCard(eg)
 	local g=eg:Filter(c1005587.filter,nil,1-tp)
