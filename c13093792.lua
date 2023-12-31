@@ -43,6 +43,7 @@ end
 function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetTurnID()~=Duel.GetTurnCount()
 end
+---dynamic target
 function c13093792.spelltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ae=e:GetHandler():GetActivateEffect()
 	local ftg=ae:GetTarget()
