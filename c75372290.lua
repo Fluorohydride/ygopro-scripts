@@ -18,7 +18,7 @@ function c75372290.initial_effect(c)
 	e3:SetCode(EFFECT_DEFENSE_ATTACK)
 	c:RegisterEffect(e3)
 end
-function c75372290.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c75372290.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAttackPos() end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
 end
