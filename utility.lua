@@ -926,7 +926,7 @@ end
 ---@param c Card
 ---@return boolean
 function Auxiliary.DrytronSpSummonType(c)
-    return c:IsType(TYPE_SPSUMMON)
+	return c:IsType(TYPE_SPSUMMON)
 end
 ---The `nolimit` parameter for Special Summon effects of Dragon, Xyz monsters where Soul Drain Dragon is available
 ---(Soul Drain Dragon, Level 8/LIGHT/Dragon/4000/0)
@@ -939,7 +939,7 @@ end
 ---@param c Card
 ---@return boolean
 function Auxiliary.TriamidSpSummonType(c)
-    return c:IsType(TYPE_SPSUMMON)
+	return c:IsType(TYPE_SPSUMMON)
 end
 --additional destroy effect for the Labrynth field
 function Auxiliary.LabrynthDestroyOp(e,tp,res)
