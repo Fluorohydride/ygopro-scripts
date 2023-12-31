@@ -1,4 +1,4 @@
---鉄獣式強襲機動兵装改“BucephalusII”
+--鉄獣式強襲機動兵装改“BucephalusⅡ”
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

@@ -1,4 +1,4 @@
---逢華妖麗譚-魔妖不知火語
+--逢華妖麗譚－魔妖不知火語
 function c62219643.initial_effect(c)
 	--spsummon limit
 	local e1=Effect.CreateEffect(c)

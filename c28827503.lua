@@ -1,4 +1,4 @@
---Into the VRAINS!
+--Into the VRAINS！
 function c28827503.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

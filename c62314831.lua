@@ -44,7 +44,7 @@ end
 function s.thfilter(c)
 	return c:IsType(TYPE_FIELD) and c:IsAbleToHand()
 end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=eg:Filter(s.filter,nil,tp)
 	local b1=g:IsExists(s.filter1,1,nil,e,tp)

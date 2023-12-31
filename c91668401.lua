@@ -1,4 +1,4 @@
---サイバー・エンジェル-伊舎那-
+--サイバー・エンジェル－伊舎那－
 function c91668401.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave

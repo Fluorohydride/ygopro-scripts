@@ -15,6 +15,7 @@ function c68779682.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and not rc:IsStatus(STATUS_ACT_FROM_HAND) and rc:GetType()==TYPE_TRAP and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 		and code1~=68779682 and code2~=68779682
 end
+---dynamic target
 function c68779682.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
 		local te=e:GetLabelObject()

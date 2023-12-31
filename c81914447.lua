@@ -1,4 +1,4 @@
---No-P.U.N.K.オーガ・ナンバー
+--No－P.U.N.K.オーガ・ナンバー
 function c81914447.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

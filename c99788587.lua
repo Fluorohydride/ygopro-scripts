@@ -14,7 +14,7 @@ end
 function c99788587.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsAllColumn()
 end
-function c99788587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c99788587.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=e:GetHandler():GetColumnGroup()
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)

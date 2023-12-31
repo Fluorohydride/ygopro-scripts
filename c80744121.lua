@@ -1,4 +1,4 @@
---D－HERO ドゥームガイ
+--D-HERO ドゥームガイ
 function c80744121.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

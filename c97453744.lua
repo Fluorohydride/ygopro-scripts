@@ -1,4 +1,4 @@
---H-C クレイヴソリッシュ
+--H－C クレイヴソリッシュ
 local s,id,o=GetID()
 function c97453744.initial_effect(c)
 	--xyz summon

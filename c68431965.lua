@@ -32,7 +32,7 @@ end
 function c68431965.lvlcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c68431965.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c68431965.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.IsExistingMatchingCard(c68431965.tgfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler():GetLevel()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)

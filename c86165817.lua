@@ -1,4 +1,4 @@
---E－HERO マリシャス・ベイン
+--E-HERO マリシャス・ベイン
 function c86165817.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

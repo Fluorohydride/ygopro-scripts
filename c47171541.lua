@@ -31,8 +31,9 @@ end
 function c47171541.cfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK)
 end
-function c47171541.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c47171541.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c47171541.spfilter(chkc,e,tp) end
 	if chk==0 then
 		e:SetLabel(0)
 		return res and Duel.IsExistingTarget(c47171541.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)

@@ -12,7 +12,7 @@ end
 function c83994646.filter(c)
 	return c:IsFaceup() and c:IsLevel(4)
 end
-function c83994646.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c83994646.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(c83994646.filter,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
