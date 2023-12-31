@@ -78,8 +78,13 @@ function c9929398.spfilter(c,e,tp,ct)
 	return c:IsType(TYPE_SYNCHRO) and c:IsSetCard(0x33) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and rg:CheckWithSumEqual(Card.GetLevel,rlv,ct,63)
 end
-function c9929398.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c9929398.chkcfilter(c,e,tp,lv)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_SYNCHRO) and c:IsSetCard(0x33)
+		and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+end
+function c9929398.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ct=-Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chkc then return c9929398.chkcfilter(chkc,e,tp,e:GetLabel()) end
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost()
 		and Duel.IsExistingTarget(c9929398.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,ct) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -91,6 +96,7 @@ function c9929398.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	g2:AddCard(e:GetHandler())
 	Duel.Remove(g2,POS_FACEUP,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
+	e:SetLabel(g:GetFirst():GetLevel())
 end
 function c9929398.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
