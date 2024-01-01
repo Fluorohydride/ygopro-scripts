@@ -1,4 +1,4 @@
---未来の柱ーキアノス
+--未来の柱－キアノス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon(self)

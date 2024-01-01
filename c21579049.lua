@@ -1,5 +1,4 @@
 --白の循環礁
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate
