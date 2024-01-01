@@ -50,11 +50,12 @@ function s.bstg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and s.bfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(s.bfilter,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
-	local tc=Duel.SelectTarget(tp,s.bfilter,tp,LOCATION_REMOVED,0,1,1,nil):GetFirst()
+	local g=Duel.SelectTarget(tp,s.bfilter,tp,LOCATION_REMOVED,0,1,1,nil)
+	local tc=g:GetFirst()
 	if tc:IsAbleToExtra() then
-		Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,tp,LOCATION_REMOVED)
+		Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
 	else
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,tp,LOCATION_REMOVED)
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	end
 end
 function s.bsop(e,tp,eg,ep,ev,re,r,rp)
