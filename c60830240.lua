@@ -1,5 +1,4 @@
 --熾動する煉獄
---Script by lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--draw

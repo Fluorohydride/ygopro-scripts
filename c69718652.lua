@@ -1,4 +1,4 @@
---聖霊獣騎 ノチウドラコ
+--聖霊獣騎 ノチウドラゴ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon times limit

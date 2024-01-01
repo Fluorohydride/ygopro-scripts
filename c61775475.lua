@@ -1,4 +1,4 @@
---A·O·G リターンゼロ
+--A・O・G リターンゼロ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--synchro summon

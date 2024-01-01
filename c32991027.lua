@@ -1,5 +1,4 @@
 --氷結界の剣士 ゲオルギアス
---Script by beyond
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--self special summon

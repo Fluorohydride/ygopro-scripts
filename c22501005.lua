@@ -1,5 +1,4 @@
---灵兽的继圣
---Coded by Lee
+--霊獣の継聖
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate
