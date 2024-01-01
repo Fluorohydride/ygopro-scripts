@@ -11,6 +11,7 @@ function s.initial_effect(c)
 	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCost(s.descost)
 	e2:SetTarget(s.destg)
@@ -38,13 +39,18 @@ function s.initial_effect(c)
 end
 function s.cfilter(c)
 	return (c:IsSetCard(0xc2) or c:IsLevel(7,8) and c:IsRace(RACE_DRAGON))
-		and c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemoveAsCost()
+		and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function s.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_GRAVE,0,1,nil) and Duel.IsExistingMatchingCard(Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then
+		return Duel.IsExistingMatchingCard(Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,1,nil)
+			and Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_GRAVE,0,1,nil)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Group.__add(Duel.SelectMatchingCard(tp,s.cfilter,tp,LOCATION_GRAVE,0,1,1,nil),Duel.SelectMatchingCard(tp,Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,1,1,nil))
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local g1=Duel.SelectMatchingCard(tp,Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,1,1,nil)
+	local g2=Duel.SelectMatchingCard(tp,s.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	g1:Merge(g2)
+	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
@@ -60,13 +66,16 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsLevelAbove(7)
+	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER) and c:IsLevelAbove(7)
 end
 function s.val(e,c)
-	return Duel.GetMatchingGroupCount(s.filter,c:GetControler(),LOCATION_REMOVED,0,nil)*400
+	return Duel.GetMatchingGroupCount(s.filter,e:GetHandlerPlayer(),LOCATION_REMOVED,0,nil)*400
+end
+function s.negfilter(c)
+	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER)
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp) and Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_REMOVED,0,1,nil,TYPE_SYNCHRO)
+	return Duel.GetTurnPlayer()~=tp and Duel.IsExistingMatchingCard(s.negfilter,tp,LOCATION_REMOVED,0,1,nil)
 end
 function s.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
