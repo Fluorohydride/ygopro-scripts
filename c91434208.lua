@@ -58,7 +58,7 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChainAttack()
 end
 function s.cfilter(c,tp)
-	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_GRAVE)
+	return c:IsFaceup() and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_GRAVE)
 		and c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_FISH) and c:IsLevelAbove(8)
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
