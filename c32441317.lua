@@ -19,6 +19,7 @@ function c32441317.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c32441317.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,nil,tp,LOCATION_GRAVE)
 end
 function c32441317.mgfilter(c,e,tp,sync)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
@@ -32,8 +33,7 @@ function c32441317.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=mg:GetCount()
 	local sumtype=tc:GetSummonType()
 	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and sumtype==SUMMON_TYPE_SYNCHRO
-		and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		and tc:IsLocation(LOCATION_EXTRA) and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133) and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		and mg:FilterCount(aux.NecroValleyFilter(c32441317.mgfilter),nil,e,tp,tc)==ct
 		and Duel.SelectYesNo(tp,aux.Stringid(32441317,0)) then
 		Duel.BreakEffect()

@@ -22,6 +22,7 @@ end
 function c71628381.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeck() end
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,nil,tp,LOCATION_GRAVE)
 end
 function c71628381.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
@@ -35,7 +36,7 @@ function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=c:GetMaterial()
 	local ct=mg:GetCount()
 	local sumtype=c:GetSummonType()
-	if Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	if Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION and c:IsLocation(LOCATION_EXTRA)
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		and mg:FilterCount(aux.NecroValleyFilter(c71628381.mgfilter),nil,e,tp,c,mg)==ct
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
