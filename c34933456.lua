@@ -39,7 +39,7 @@ function c34933456.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.RegisterEffect(me,tp)
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp)
-		aux.FCheckAdditional=c34933456.fcheck
+		aux.FGoalCheckAdditional=c34933456.fcheck
 		local res=Duel.IsExistingMatchingCard(c34933456.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -50,7 +50,7 @@ function c34933456.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c34933456.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		me:Reset()
 		return res
 	end
@@ -66,7 +66,7 @@ function c34933456.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(me,tp)
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c34933456.filter2,nil,e)
-	aux.FCheckAdditional=c34933456.fcheck
+	aux.FGoalCheckAdditional=c34933456.fcheck
 	local sg1=Duel.GetMatchingGroup(c34933456.filter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -96,6 +96,6 @@ function c34933456.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 	me:Reset()
 end

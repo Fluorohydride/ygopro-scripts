@@ -29,9 +29,9 @@ end
 function c36484016.filter2(c,e,tp,m,f,chkf)
 	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListType(c,TYPE_SYNCHRO) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
-	aux.FCheckAdditional=c.synchro_fusion_check or c36484016.fcheck
+	aux.FGoalCheckAdditional=c.synchro_fusion_check or c36484016.fcheck
 	local res=c:CheckFusionMaterial(m,nil,chkf)
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 	return res
 end
 function c36484016.filter4(c)
@@ -82,7 +82,7 @@ function c36484016.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		aux.FCheckAdditional=tc.synchro_fusion_check or c36484016.fcheck
+		aux.FGoalCheckAdditional=tc.synchro_fusion_check or c36484016.fcheck
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
@@ -96,7 +96,7 @@ function c36484016.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 end
 function c36484016.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
