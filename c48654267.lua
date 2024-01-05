@@ -75,7 +75,7 @@ function c48654267.spcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c48654267.spfilter(c,e,tp)
 	return c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
-		and (c:IsLocation(LOCATION_DECK) and Duel.GetMZoneCount(tp)>0
+		and (c:IsLocation(LOCATION_DECK+LOCATION_GRAVE) and Duel.GetMZoneCount(tp)>0
 			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c48654267.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
