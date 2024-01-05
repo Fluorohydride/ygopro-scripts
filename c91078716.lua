@@ -5,7 +5,7 @@ function c91078716.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)
-	e1:SetCondition(aux.NegateSummonCondition)
+	e1:SetCondition(c91078716.condition1)
 	e1:SetCost(c91078716.cost)
 	e1:SetTarget(c91078716.target1)
 	e1:SetOperation(c91078716.activate1)
@@ -23,6 +23,9 @@ function c91078716.initial_effect(c)
 	e3:SetTarget(c91078716.target2)
 	e3:SetOperation(c91078716.activate2)
 	c:RegisterEffect(e3)
+end
+function c91078716.condition1(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentChain()==0
 end
 function c91078716.filter(c)
 	return c:IsRace(RACE_PLANT) and not c:IsStatus(STATUS_BATTLE_DESTROYED)

@@ -1471,7 +1471,3 @@ function Auxiliary.EPDestroyOperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE)
 	end
 end
---
-function Auxiliary.NegateSummonCondition()
-	return Duel.GetReadyChain()==0
-end
