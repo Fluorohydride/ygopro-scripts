@@ -47,7 +47,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if ct>1 then
 		Duel.BreakEffect()
-		if Duel.Damage(1-tp,600,REASON_EFFECT)>0 and Duel.GetLP(1-tp)>0 then
+		Duel.Damage(1-tp,600,REASON_EFFECT)
+		if Duel.GetLP(1-tp)>0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
