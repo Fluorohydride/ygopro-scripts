@@ -6,6 +6,9 @@ Auxiliary.FGoalCheckAdditional=nil
 Auxiliary.RCheckAdditional=nil
 Auxiliary.RGCheckAdditional=nil
 
+--Ritual material filter
+--function s.mat_filter(c,tp)
+
 --Gemini Summon
 function Auxiliary.IsDualState(effect)
 	local c=effect:GetHandler()
@@ -1457,6 +1460,33 @@ function Auxiliary.tdcfop(c)
 				end
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
+end
+
+--Fusion Material
+
+---
+---@param c Card
+---@param e Effect
+---@return boolean
+function Auxiliary.DefaultFusionMaterialFilter(c,e)
+	return not c:IsImmuneToEffect(e)
+end
+---Get fusion material material_all (location + EFFECT_EXTRA_FUSION_MATERIAL) affected by e
+---@param tp integer
+---@param loc integer
+---@param e Effect
+---@return Group
+function Auxiliary.GetDefaultFusionMaterial(tp,loc,e)
+	local mg1=Duel.GetFusionMaterial(tp,loc)
+	return mg1:Filter(Auxiliary.DefaultFusionMaterialFilter,nil,e)
+end
+
+---Use opponent's monster as Fusion Material (Super Polymerization)
+---@param c Card
+---@param e Effect
+---@return boolean
+function Auxiliary.OpponentFusionMaterialFilter(c,e)
+	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 
 --Ritual Summon
