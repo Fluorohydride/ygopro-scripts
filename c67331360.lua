@@ -77,7 +77,7 @@ function c67331360.spop(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local g=Duel.GetMatchingGroup(c67331360.spfilter,tp,LOCATION_DECK,0,nil,e,tp,code1,code2)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		sg=g:SelectSubGroup(tp,aux.gfcheck,2,2,false,Card.IsCode,code1,code2)
+		sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsCode,code1,code2)
 	end
 	if not sg then return end
 	local sc=sg:GetFirst()

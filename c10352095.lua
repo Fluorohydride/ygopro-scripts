@@ -13,6 +13,7 @@ function c10352095.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_CHANGE_ATTRIBUTE)
+	e2:SetCondition(c10352095.con)
 	e2:SetValue(c10352095.value)
 	c:RegisterEffect(e2)
 	e1:SetLabelObject(e2)
@@ -40,6 +41,9 @@ function c10352095.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
+end
+function c10352095.con(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetLabel()>0
 end
 function c10352095.value(e,c)
 	return e:GetLabel()

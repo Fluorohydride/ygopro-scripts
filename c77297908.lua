@@ -60,7 +60,7 @@ function c77297908.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c77297908.confilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x10ec) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return c:IsFaceup() and c:IsSetCard(0x10ec) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsType(TYPE_PENDULUM)
 end
 function c77297908.chcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and re:IsActiveType(TYPE_MONSTER)

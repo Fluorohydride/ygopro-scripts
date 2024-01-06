@@ -100,7 +100,7 @@ function c90809975.negop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(rc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 			Duel.ConfirmCards(1-tp,rc)
 		elseif (rc:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
-			and rc:IsSSetable() and Duel.SelectYesNo(tp,aux.Stringid(90809975,4)) then
+			and rc:IsSSetable(true) and Duel.SelectYesNo(tp,aux.Stringid(90809975,4)) then
 			Duel.BreakEffect()
 			Duel.SSet(tp,rc)
 		end

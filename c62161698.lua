@@ -2,6 +2,7 @@
 function c62161698.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(62161698,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -36,7 +37,8 @@ function c62161698.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,62161698)~=0
 end
 function c62161698.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4 end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp)
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4 end
 end
 function c62161698.filter(c,e,tp)
 	return c:IsSetCard(0x9f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -44,9 +46,10 @@ end
 function c62161698.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
 	Duel.ConfirmDecktop(tp,5)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local g=Duel.GetDecktopGroup(tp,5):Filter(c62161698.filter,nil,e,tp)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(62161698,0)) then
+	if g:GetCount()>0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.SelectYesNo(tp,aux.Stringid(62161698,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

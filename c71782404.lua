@@ -21,7 +21,7 @@ function c71782404.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=eg:FilterSelect(tp,c71782404.cfilter,1,1,nil,e,tp)
 	Duel.SetTargetCard(g)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,nil,PLAYER_ALL,0)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,g:GetFirst():GetBaseAttack())
 end
 function c71782404.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

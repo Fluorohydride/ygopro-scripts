@@ -36,14 +36,15 @@ function c10333641.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:IsReleasable() end
 	Duel.Release(c,REASON_COST)
 end
-function c10333641.setfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+function c10333641.setfilter(c,ft)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable(true) and (c:IsType(TYPE_FIELD) or ft>0)
 end
 function c10333641.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c10333641.setfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c10333641.setfilter,tp,0,LOCATION_GRAVE,1,nil) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c10333641.setfilter(chkc,ft) end
+	if chk==0 then return Duel.IsExistingTarget(c10333641.setfilter,tp,0,LOCATION_GRAVE,1,nil,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectTarget(tp,c10333641.setfilter,tp,0,LOCATION_GRAVE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c10333641.setfilter,tp,0,LOCATION_GRAVE,1,1,nil,ft)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 end
 function c10333641.setop(e,tp,eg,ep,ev,re,r,rp)

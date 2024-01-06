@@ -51,7 +51,7 @@ function c22993208.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e3:SetLabelObject(tc)
 		e3:SetCondition(c22993208.descon)
-		e3:SetOperation(c22993208.desop)
+		e3:SetOperation(aux.EPDestroyOperation)
 		Duel.RegisterEffect(e3,tp)
 	end
 	Duel.SpecialSummonComplete()
@@ -64,8 +64,4 @@ function c22993208.descon(e,tp,eg,ep,ev,re,r,rp)
 		e:Reset()
 		return false
 	end
-end
-function c22993208.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	Duel.Destroy(tc,REASON_EFFECT)
 end

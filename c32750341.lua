@@ -11,7 +11,7 @@ function c32750341.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32750341.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x84)
+	return c:IsFaceup() and c:IsSetCard(0x1084)
 end
 function c32750341.spcon(e,c)
 	if c==nil then return true end

@@ -21,7 +21,7 @@ function c72621670.filter(c,check)
 end
 function c72621670.fselect(g,tp)
 	return Duel.GetMZoneCount(tp,g,tp,LOCATION_REASON_CONTROL)>1
-		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,g:GetCount(),nil,g)
+		and Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,g:GetCount(),nil,g)
 		and Duel.IsExistingTarget(c72621670.filter,tp,0,LOCATION_MZONE,2,g,true)
 end
 function c72621670.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

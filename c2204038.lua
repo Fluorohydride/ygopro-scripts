@@ -37,7 +37,7 @@ function c2204038.ptcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	return at and at:IsControler(1-tp) and at:IsRelateToBattle()
 end
-function c2204038.pttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c2204038.pttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:GetDefense()>=1000 end
 end

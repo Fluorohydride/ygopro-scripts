@@ -47,7 +47,7 @@ function c6112401.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6112401.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and e:GetLabelObject():IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(e:GetLabelObject())
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
@@ -92,7 +92,10 @@ function c6112401.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c6112401.eqlimit(e,c)
-	return c:IsSetCard(0x100d)
+	if e:GetHandler():GetEquipTarget()==c then return true end
+	local g=Duel.GetFieldGroup(e:GetHandlerPlayer(),LOCATION_MZONE,0)
+	local tc=g:GetFirst()
+	return g:GetCount()==1 and tc==c and c:IsSetCard(0x100d)
 end
 function c6112401.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler():GetEquipTarget())

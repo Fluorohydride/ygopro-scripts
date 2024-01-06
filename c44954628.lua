@@ -17,23 +17,7 @@ function c44954628.initial_effect(c)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 	--remove counter
-	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(44954628,1))
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e3:SetCode(EVENT_DAMAGE_STEP_END)
-	e3:SetCondition(c44954628.rctcon)
-	e3:SetOperation(c44954628.rctop)
-	c:RegisterEffect(e3)
-	--destroy
-	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(44954628,2))
-	e4:SetCategory(CATEGORY_DESTROY)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(EVENT_DAMAGE_STEP_END)
-	e4:SetCondition(c44954628.descon)
-	e4:SetTarget(c44954628.destg)
-	e4:SetOperation(c44954628.desop)
-	c:RegisterEffect(e4)
+	aux.EnableBESRemove(c)
 	--destroy
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(44954628,3))
@@ -54,28 +38,6 @@ end
 function c44954628.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		e:GetHandler():AddCounter(0x1f,3)
-	end
-end
-function c44954628.rctcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x1f)~=0
-end
-function c44954628.rctop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		c:RemoveCounter(tp,0x1f,1,REASON_EFFECT)
-	end
-end
-function c44954628.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x1f)==0 and e:GetHandler():IsRelateToBattle()
-end
-function c44954628.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
-end
-function c44954628.desop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		Duel.Destroy(c,REASON_EFFECT)
 	end
 end
 function c44954628.descost2(e,tp,eg,ep,ev,re,r,rp,chk)

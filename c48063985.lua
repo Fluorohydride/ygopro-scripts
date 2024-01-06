@@ -77,7 +77,7 @@ end
 function c48063985.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.GetMZoneCount(tp,e:GetHandler())>1
 		and Duel.IsExistingTarget(c48063985.filter1,tp,LOCATION_REMOVED,0,1,nil,e,tp) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

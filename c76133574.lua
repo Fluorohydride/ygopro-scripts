@@ -1,4 +1,4 @@
---Zep, Ruby of the Ghoti
+--ゴーティスの紅玉ゼップ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--banish

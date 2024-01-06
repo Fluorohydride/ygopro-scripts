@@ -45,7 +45,7 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()
 	if op==0 then
-		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND,nil)
+		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 		if g:GetCount()>0 then
 			local sg=g:RandomSelect(1-tp,1)
 			if Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)~=0 then

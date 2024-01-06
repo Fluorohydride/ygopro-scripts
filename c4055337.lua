@@ -32,7 +32,7 @@ function c4055337.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
 end
 function c4055337.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dscon() and Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and Duel.IsPlayerAffectedByEffect(tp,90351981)
 end
 function c4055337.tgfilter(c)
 	return c:IsFaceup()

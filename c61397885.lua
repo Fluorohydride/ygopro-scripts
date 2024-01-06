@@ -37,7 +37,7 @@ end
 function c61397885.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
 		and not Duel.IsExistingMatchingCard(c61397885.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and aux.dscon()
+		and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61397885.mfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT)

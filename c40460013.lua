@@ -1,4 +1,4 @@
---Zalamander Catalyzer
+--炎魔の触媒
 local s,id,o=GetID()
 function c40460013.initial_effect(c)
 	--special summon

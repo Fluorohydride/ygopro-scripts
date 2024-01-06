@@ -13,6 +13,7 @@ function c60018643.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_SZONE)
+	e2:SetCountLimit(1,60018643+EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c60018643.thcon)
 	e2:SetTarget(c60018643.thtg)
 	e2:SetOperation(c60018643.thop)
@@ -32,9 +33,7 @@ function c60018643.thfilter(c,att)
 end
 function c60018643.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c60018643.tgfilter(chkc,tp,eg) end
-	if chk==0 then return Duel.IsExistingTarget(c60018643.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp,eg)
-		and Duel.GetFlagEffect(tp,60018643)==0 end
-	Duel.RegisterFlagEffect(tp,60018643,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingTarget(c60018643.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp,eg) end
 	if eg:GetCount()==1 then
 		Duel.SetTargetCard(eg)
 	else

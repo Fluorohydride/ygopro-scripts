@@ -34,7 +34,7 @@ function c20246864.cfilter(c)
 end
 function c20246864.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	return #g>0 and #g==Duel.GetMatchingGroupCount(c20246864.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return #g>0 and #g==Duel.GetMatchingGroupCount(c20246864.cfilter,tp,LOCATION_MZONE,0,nil)
 end
 function c20246864.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -72,7 +72,7 @@ function c72498838.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c72498838.rtfilter,tp,LOCATION_REMOVED,0,1,1,nil)
 		if #g>0 then
-			Duel.SendtoGrave(g,nil,REASON_EFFECT+REASON_RETURN)
+			Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)
 		end
 	end
 end

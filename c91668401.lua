@@ -1,4 +1,4 @@
---サイバー・エンジェル-伊舎那-
+--サイバー・エンジェル－伊舎那－
 function c91668401.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave
@@ -44,7 +44,7 @@ function c91668401.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
-		Duel.SendtoGrave(sg,REASON_RULE)
+		Duel.SendtoGrave(sg,REASON_RULE,1-tp)
 	end
 end
 function c91668401.atcon(e,tp,eg,ep,ev,re,r,rp)

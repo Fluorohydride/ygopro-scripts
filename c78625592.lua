@@ -38,7 +38,7 @@ function c78625592.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 end
 function c78625592.grcondition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and aux.bpcon()
+	return Duel.GetTurnPlayer()~=tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78625592.groperation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

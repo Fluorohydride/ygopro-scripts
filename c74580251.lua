@@ -36,7 +36,7 @@ function c74580251.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74580251.repfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xc4) and c:IsOnField()
-		and c:IsControler(tp) and not c:IsReason(REASON_REPLACE)
+		and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function c74580251.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and aux.exccon(e) and eg:IsExists(c74580251.repfilter,1,nil,tp) end

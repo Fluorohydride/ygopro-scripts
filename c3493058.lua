@@ -14,7 +14,7 @@ c3493058.toss_dice=true
 function c3493058.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
-function c3493058.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c3493058.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end

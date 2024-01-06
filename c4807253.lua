@@ -6,6 +6,7 @@ function c4807253.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_HAND)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCondition(aux.damcon1)
 	e1:SetTarget(c4807253.sptg)
 	e1:SetOperation(c4807253.spop)
@@ -26,9 +27,7 @@ end
 function c4807253.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c:GetFlagEffect(4807253)==0	end
-	c:RegisterFlagEffect(4807253,RESET_CHAIN,0,1)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c4807253.spop(e,tp,eg,ep,ev,re,r,rp)

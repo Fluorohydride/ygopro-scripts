@@ -20,7 +20,7 @@ function c22628574.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c22628574.filter(c)
-	return c:GetType()==0x4 and not c:IsCode(22628574) and c:CheckActivateEffect(false,true,false)~=nil
+	return c:GetType()==0x4 and not c:IsCode(22628574,79766336,6351147) and c:CheckActivateEffect(false,true,false)~=nil
 end
 function c22628574.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then

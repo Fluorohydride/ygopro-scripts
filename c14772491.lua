@@ -64,7 +64,8 @@ function c14772491.rcon(e)
 end
 function c14772491.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return tc and tc:IsOnField() and e:GetHandler():IsHasCardTarget(tc)
+	return tc and tc:IsOnField() and tc:IsFaceup() and tc:IsSetCard(0x1f)
+		and e:GetHandler():IsHasCardTarget(tc)
 end
 function c14772491.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoHand(e:GetLabelObject(),nil,REASON_EFFECT)

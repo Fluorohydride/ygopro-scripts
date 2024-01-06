@@ -26,7 +26,7 @@ end
 function c82385847.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-		and Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0,nil)<Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE,nil)
+		and Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0)<Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)
 end
 function c82385847.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -44,14 +44,14 @@ function c82385847.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c82385847.costfilter,1,nil,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c82385847.costfilter,1,nil,c,tp)
 		else
 			return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c82385847.costfilter,1,1,nil,c,tp)
+		local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c82385847.costfilter,1,1,nil,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

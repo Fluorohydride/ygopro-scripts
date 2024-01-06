@@ -18,7 +18,7 @@ function c16762927.initial_effect(c)
 	--accumulate
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(0x10000000+16762927)
+	e3:SetCode(EFFECT_FLAG_EFFECT+16762927)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetTargetRange(0,1)

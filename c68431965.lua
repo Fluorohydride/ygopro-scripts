@@ -23,6 +23,7 @@ function c68431965.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c68431965.sccon)
 	e2:SetTarget(c68431965.sctarg)
 	e2:SetOperation(c68431965.scop)
@@ -31,7 +32,7 @@ end
 function c68431965.lvlcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c68431965.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c68431965.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.IsExistingMatchingCard(c68431965.tgfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler():GetLevel()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
@@ -73,9 +74,7 @@ function c68431965.sccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68431965.sctarg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(68431965)==0
-		and Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,c) end
-	c:RegisterFlagEffect(68431965,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,c) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c68431965.scop(e,tp,eg,ep,ev,re,r,rp)

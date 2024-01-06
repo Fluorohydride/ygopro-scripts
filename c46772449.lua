@@ -11,6 +11,7 @@ function c46772449.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_SPSUMMON,TIMING_BATTLE_START)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCondition(c46772449.condition)
 	e1:SetCost(c46772449.cost)
 	e1:SetTarget(c46772449.target)
@@ -30,9 +31,8 @@ function c46772449.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46772449.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) and c:GetFlagEffect(46772449)==0 end
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	c:RemoveOverlayCard(tp,1,1,REASON_COST)
-	c:RegisterFlagEffect(46772449,RESET_CHAIN,0,1)
 end
 function c46772449.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end

@@ -15,7 +15,7 @@ function c197042.initial_effect(c)
 	c:RegisterEffect(e1)
 	if not c197042.global_check then
 		c197042.global_check=true
-		local ge1=Effect.GlobalEffect(c)
+		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
 		ge1:SetCondition(c197042.checkcon)
@@ -66,29 +66,16 @@ function c197042.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.AdjustAll()
 		local b1=Duel.IsExistingMatchingCard(c197042.xyzfilter,tp,LOCATION_EXTRA,0,1,nil)
 		local b2=Duel.GetFlagEffect(tp,197042)>0 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
-		local off=1
-		local ops={}
-		local opval={}
-		if b1 then
-			ops[off]=aux.Stringid(197042,0)
-			opval[off-1]=1
-			off=off+1
-		end
-		if b2 then
-			ops[off]=aux.Stringid(197042,1)
-			opval[off-1]=2
-			off=off+1
-		end
-		ops[off]=aux.Stringid(197042,2)
-		opval[off-1]=3
-		off=off+1
-		local op=Duel.SelectOption(tp,table.unpack(ops))
-		if opval[op]==1 then
+		local op=aux.SelectFromOptions(tp,
+			{b1,aux.Stringid(197042,0)},
+			{b2,aux.Stringid(197042,1)},
+			{true,aux.Stringid(197042,2)})
+		if op==1 then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=Duel.SelectMatchingCard(tp,c197042.xyzfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 			Duel.XyzSummon(tp,g:GetFirst(),nil)
-		elseif opval[op]==2 then
+		elseif op==2 then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,1,nil)

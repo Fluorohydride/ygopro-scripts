@@ -38,7 +38,7 @@ function c65342096.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c65342096.counterop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,1)
 	end
 end

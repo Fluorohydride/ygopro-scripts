@@ -24,9 +24,9 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 	local opt=Duel.SelectOption(1-tp,aux.Stringid(id,1),aux.Stringid(id,2))
 	if opt==0 then
-		Duel.SendtoGrave(g,REASON_RULE)
+		Duel.SendtoGrave(g,REASON_RULE,1-tp)
 	else
 		local g2=Duel.GetMatchingGroup(nil,tp,0,LOCATION_MZONE,g)
-		Duel.SendtoGrave(g2,REASON_RULE)
+		Duel.SendtoGrave(g2,REASON_RULE,1-tp)
 	end
 end

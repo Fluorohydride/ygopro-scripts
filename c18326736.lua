@@ -10,6 +10,7 @@ function c18326736.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCost(c18326736.spcost)
 	e1:SetTarget(c18326736.sptg)
 	e1:SetOperation(c18326736.spop)
@@ -37,9 +38,8 @@ function c18326736.initial_effect(c)
 end
 function c18326736.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:CheckRemoveOverlayCard(tp,3,REASON_COST) and c:GetFlagEffect(18326736)==0 end
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,3,REASON_COST) end
 	c:RemoveOverlayCard(tp,3,3,REASON_COST)
-	c:RegisterFlagEffect(18326736,RESET_CHAIN,0,1)
 end
 function c18326736.filter(c,e,tp,rk,mc)
 	return c:IsRank(rk) and not c:IsSetCard(0x48) and e:GetHandler():IsCanBeXyzMaterial(c)

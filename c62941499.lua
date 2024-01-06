@@ -1,4 +1,5 @@
 --スプリガンズ・シップ エクスブロウラー
+local s,id,o=GetID()
 function c62941499.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2,nil,nil,99)
@@ -94,7 +95,7 @@ function c62941499.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62941499.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

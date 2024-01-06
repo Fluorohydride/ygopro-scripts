@@ -29,8 +29,6 @@ function c59019082.filter(c)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsSetCard(0x38) and c:IsType(TYPE_MONSTER)
 end
 function c59019082.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.DiscardDeck(tp,2,REASON_EFFECT)
 	local dg=Duel.GetOperatedGroup()
 	local d=dg:FilterCount(c59019082.filter,nil)

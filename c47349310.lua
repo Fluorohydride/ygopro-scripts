@@ -1,4 +1,5 @@
 --スカイオニヒトクイエイ
+local s,id=GetID()
 function c47349310.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)
@@ -39,16 +40,17 @@ end
 function c47349310.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)==0 then return end
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
-		e1:SetCountLimit(1)
-		e1:SetLabelObject(c)
-		e1:SetCondition(c47349310.retcon)
-		e1:SetOperation(c47349310.retop)
-		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
-		Duel.RegisterEffect(e1,tp)
+		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
+			e1:SetCountLimit(1)
+			e1:SetLabelObject(c)
+			e1:SetCondition(c47349310.retcon)
+			e1:SetOperation(c47349310.retop)
+			e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
+			Duel.RegisterEffect(e1,tp)
+		end
 	end
 end
 function c47349310.retcon(e,tp,eg,ep,ev,re,r,rp)

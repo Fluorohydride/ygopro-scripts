@@ -33,7 +33,7 @@ function c78266168.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c78266168.descon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and Duel.GetAttackTarget()==e:GetHandler()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttackTarget()==e:GetHandler()
 		and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENSE
 		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefense()
 end

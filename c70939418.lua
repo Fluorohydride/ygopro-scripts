@@ -35,6 +35,7 @@ function c70939418.initial_effect(c)
 	e3:SetTarget(c70939418.ddtg)
 	e3:SetOperation(c70939418.ddop)
 	c:RegisterEffect(e3)
+	aux.CreateMaterialReasonCardRelation(c,e3)
 end
 function c70939418.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
@@ -79,15 +80,19 @@ function c70939418.ddcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
 end
 function c70939418.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end
+	local rc=e:GetHandler():GetReasonCard()
+	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1)
+		and rc:IsRelateToEffect(e) and rc:IsFaceup() end
+	Duel.SetTargetCard(rc)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,1)
 end
 function c70939418.ddop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.DiscardDeck(tp,1,REASON_EFFECT)==0 then return end
 	local tc=Duel.GetOperatedGroup():GetFirst()
-	local c=e:GetHandler()
-	local sync=c:GetReasonCard()
 	if tc and tc:IsSetCard(0x2016) and tc:IsType(TYPE_MONSTER) and tc:IsLocation(LOCATION_GRAVE) then
+		local sync=Duel.GetFirstTarget()
+		if not sync:IsRelateToChain() or sync:IsFacedown() then return end
+		local c=e:GetHandler()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

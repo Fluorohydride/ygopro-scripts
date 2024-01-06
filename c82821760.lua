@@ -29,15 +29,7 @@ function c82821760.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 	--remove counter
-	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(82821760,1))
-	e5:SetCategory(CATEGORY_DESTROY)
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e5:SetCode(EVENT_DAMAGE_STEP_END)
-	e5:SetCondition(aux.dsercon)
-	e5:SetTarget(c82821760.rcttg)
-	e5:SetOperation(c82821760.rctop)
-	c:RegisterEffect(e5)
+	aux.EnableBESRemove(c)
 	--to deck
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(82821760,2))
@@ -63,22 +55,6 @@ end
 function c82821760.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		e:GetHandler():AddCounter(0x1f,3)
-	end
-end
-function c82821760.rcttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
-		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
-	end
-end
-function c82821760.rctop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
-			c:RemoveCounter(tp,0x1f,1,REASON_EFFECT)
-		else
-			Duel.Destroy(c,REASON_EFFECT)
-		end
 	end
 end
 function c82821760.tdfilter(c)

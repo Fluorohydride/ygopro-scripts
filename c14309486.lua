@@ -39,7 +39,7 @@ end
 function c14309486.cfilter2(c)
 	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_ROCK) and not c:IsPublic()
 end
-function c14309486.mtop(e,tp)
+function c14309486.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.HintSelection(Group.FromCards(c))
 	local g1=Duel.GetMatchingGroup(c14309486.cfilter1,tp,LOCATION_HAND,0,nil)

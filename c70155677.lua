@@ -80,9 +80,6 @@ function c70155677.mvop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoExtraP(c,nil,REASON_EFFECT)
 	end
 end
-function c70155677.rmfilter(c)
-	return c:IsLocation(LOCATION_REMOVED) and not c:IsReason(REASON_REDIRECT)
-end
 function c70155677.drmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_REMOVED,0,nil)
 	local tg=g:Filter(Card.IsAbleToDeck,nil)
@@ -91,6 +88,12 @@ function c70155677.drmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ct>0 and #tg>0 and #rg>0 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,rg,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,tg,1,0,0)
+end
+function c70155677.rmdfilter(c)
+	return c:IsLocation(LOCATION_REMOVED) and not c:IsReason(REASON_REDIRECT)
+end
+function c70155677.tdfilter(c)
+	return c:IsFacedown() and c:IsAbleToDeck()
 end
 function c70155677.drmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -104,10 +107,10 @@ function c70155677.drmop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=rg:Select(tp,1,ct,nil)
 	Duel.HintSelection(mg)
 	Duel.Remove(mg,POS_FACEDOWN,REASON_EFFECT)
-	local og=Duel.GetOperatedGroup():Filter(c70155677.rmfilter,nil)
+	local og=Duel.GetOperatedGroup():Filter(c70155677.rmdfilter,nil)
 	if #og==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local tg1=tg:Select(tp,#og,#og,nil)
+	local tg1=Duel.SelectMatchingCard(tp,c70155677.tdfilter,tp,LOCATION_REMOVED,0,#og,#og,nil)
 	Duel.BreakEffect()
 	Duel.HintSelection(tg1)
 	Duel.SendtoDeck(tg1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)

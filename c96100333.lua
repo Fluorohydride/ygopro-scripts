@@ -82,7 +82,7 @@ function c96100333.spcfilter2(c,sg)
 	return sg:IsExists(aux.TRUE,1,c)
 end
 function c96100333.spfilter(c,e,tp)
-	return c:IsRace(RACE_ROCK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsRace(RACE_ROCK) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.TriamidSpSummonType(c),POS_FACEUP_DEFENSE)
 end
 function c96100333.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c96100333.spfilter(chkc,e,tp) end
@@ -106,7 +106,9 @@ end
 function c96100333.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
+		if Duel.SpecialSummon(tc,0,tp,tp,false,aux.TriamidSpSummonType(tc),POS_FACEUP_DEFENSE)~=0 and aux.TriamidSpSummonType(tc) then
+			tc:CompleteProcedure()
+		end
 	end
 end
 function c96100333.tdcfilter1(c,cg,sg)

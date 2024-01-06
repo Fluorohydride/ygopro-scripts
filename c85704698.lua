@@ -62,27 +62,36 @@ end
 function c85704698.mfilter(c)
 	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER)
 end
-function c85704698.cfilter(c,syn)
-	return syn:IsSynchroSummonable(c)
+function c85704698.syncheck(g,tp,syncard)
+	return g:IsExists(c85704698.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
 end
-function c85704698.spfilter(c,mg)
-	return c:IsAttribute(ATTRIBUTE_WIND) and mg:IsExists(c85704698.cfilter,1,nil,c)
+function c85704698.spfilter(c,tp,mg)
+	return c:IsAttribute(ATTRIBUTE_WIND) and mg:CheckSubGroup(c85704698.syncheck,2,#mg,tp,c)
 end
 function c85704698.syntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetMatchingGroup(c85704698.mfilter,tp,LOCATION_MZONE,0,nil)
-		return Duel.IsExistingMatchingCard(c85704698.spfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
+		local mg=Duel.GetSynchroMaterial(tp)
+		if mg:IsExists(Card.GetHandSynchro,1,nil) then
+			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+			if mg2:GetCount()>0 then mg:Merge(mg2) end
+		end
+		return Duel.IsExistingMatchingCard(c85704698.spfilter,tp,LOCATION_EXTRA,0,1,nil,tp,mg)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c85704698.synop(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetMatchingGroup(c85704698.mfilter,tp,LOCATION_MZONE,0,nil)
-	local g=Duel.GetMatchingGroup(c85704698.spfilter,tp,LOCATION_EXTRA,0,nil,mg)
+	local mg=Duel.GetSynchroMaterial(tp)
+	if mg:IsExists(Card.GetHandSynchro,1,nil) then
+		local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+		if mg2:GetCount()>0 then mg:Merge(mg2) end
+	end
+	local g=Duel.GetMatchingGroup(c85704698.spfilter,tp,LOCATION_EXTRA,0,nil,tp,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
+		local sc=sg:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local tg=mg:FilterSelect(tp,c85704698.cfilter,1,1,nil,sg:GetFirst())
-		Duel.SynchroSummon(tp,sg:GetFirst(),tg:GetFirst())
+		local tg=mg:SelectSubGroup(tp,c85704698.syncheck,false,2,#mg,tp,sc)
+		Duel.SynchroSummon(tp,sc,nil,tg,#tg-1,#tg-1)
 	end
 end

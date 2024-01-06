@@ -58,7 +58,7 @@ function s.atkval(e,c)
 	return ct*100
 end
 function s.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_TUNER)~=0 and not c:IsType(TYPE_TOKEN)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end

@@ -69,7 +69,7 @@ function c19441018.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	g1:Merge(g2)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,2,0,0)
 end
-function c19441018.desop(e)
+function c19441018.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local dg=g:Filter(Card.IsRelateToEffect,nil,e)
 	Duel.Destroy(dg,REASON_EFFECT)

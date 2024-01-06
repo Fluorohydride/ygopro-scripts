@@ -27,7 +27,7 @@ function c56856951.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(1-tp)>3000
 end
 function c56856951.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,2,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,2,e:GetHandler()) end
 	Duel.DiscardHand(tp,Card.IsAbleToGraveAsCost,2,2,REASON_COST)
 end
 function c56856951.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

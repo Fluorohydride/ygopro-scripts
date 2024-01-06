@@ -25,6 +25,7 @@ function c38105306.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetHintTiming(0,TIMING_MAIN_END+TIMING_BATTLE_END)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c38105306.hdcon)
 	e3:SetTarget(c38105306.hdtg)
 	e3:SetOperation(c38105306.hdop)
@@ -49,9 +50,8 @@ function c38105306.hdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38105306.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsAbleToGrave() and c:GetFlagEffect(38105306)==0 end
+	if chk==0 then return c:IsAbleToGrave() end
 	e:SetLabel(c:GetCounter(0x62))
-	c:RegisterFlagEffect(38105306,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
 end
 function c38105306.hdop(e,tp,eg,ep,ev,re,r,rp)

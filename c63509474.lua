@@ -31,7 +31,7 @@ function c63509474.thfilter(c)
 	return c:IsRace(RACE_FISH) and c:IsAbleToHand()
 end
 function c63509474.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c63509474.thfilter(c) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c63509474.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c63509474.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c63509474.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)

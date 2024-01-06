@@ -19,8 +19,8 @@ function s.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_CUSTOM+id)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(s.mtcon)
-	e2:SetTarget(s.mttg)
 	e2:SetOperation(s.mtop)
 	c:RegisterEffect(e2)
 	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
@@ -59,11 +59,6 @@ end
 function s.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return eg:IsExists(s.remfilter,1,nil)
-end
-function s.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(id)==0 end
-	c:RegisterFlagEffect(id,RESET_CHAIN,0,1)
 end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

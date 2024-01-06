@@ -14,11 +14,11 @@ end
 function c34813545.mfilter(c)
 	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER)
 end
-function c34813545.cfilter(c,syn)
-	return syn:IsSynchroSummonable(c)
+function c34813545.syncheck(g,tp,syncard)
+	return g:IsExists(c34813545.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
 end
-function c34813545.scfilter(c,mg)
-	return mg:IsExists(c34813545.cfilter,1,nil,c)
+function c34813545.scfilter(c,tp,mg)
+	return mg:CheckSubGroup(c34813545.syncheck,2,#mg,tp,c)
 end
 function c34813545.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
@@ -31,24 +31,28 @@ function c34813545.fcheck(tp,sg,fc)
 	return sg:IsExists(Card.IsSetCard,1,nil,0x2a)
 end
 function c34813545.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local mg=Duel.GetMatchingGroup(c34813545.mfilter,tp,LOCATION_MZONE,0,nil)
+	local synmg=Duel.GetSynchroMaterial(tp)
+	if synmg:IsExists(Card.GetHandSynchro,1,nil) then
+		local synmg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+		if synmg2:GetCount()>0 then synmg:Merge(synmg2) end
+	end
 	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsLocation,nil,LOCATION_ONFIELD)
+	local fusmg1=Duel.GetFusionMaterial(tp):Filter(Card.IsLocation,nil,LOCATION_ONFIELD)
 	aux.FCheckAdditional=c34813545.fcheck
-	local res=Duel.IsExistingMatchingCard(c34813545.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
+	local res=Duel.IsExistingMatchingCard(c34813545.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,fusmg1,nil,chkf)
 	aux.FCheckAdditional=nil
 	if not res then
 		local ce=Duel.GetChainMaterial(tp)
 		if ce~=nil then
 			local fgroup=ce:GetTarget()
-			local mg2=fgroup(ce,e,tp)
+			local fusmg2=fgroup(ce,e,tp)
 			local mf=ce:GetValue()
-			res=Duel.IsExistingMatchingCard(c34813545.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
+			res=Duel.IsExistingMatchingCard(c34813545.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,fusmg2,mf,chkf)
 		end
 	end
 	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c34813545.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp)
-	local b2=Duel.IsExistingMatchingCard(c34813545.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
+	local b2=Duel.IsExistingMatchingCard(c34813545.scfilter,tp,LOCATION_EXTRA,0,1,nil,synmg)
 	local b3=res
 	if chk==0 then return b1 or b2 or b3 end
 	local off=0
@@ -94,14 +98,19 @@ function c34813545.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	elseif op==2 then
-		local mg=Duel.GetMatchingGroup(c34813545.mfilter,tp,LOCATION_MZONE,0,nil)
+		local mg=Duel.GetSynchroMaterial(tp)
+		if mg:IsExists(Card.GetHandSynchro,1,nil) then
+			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+			if mg2:GetCount()>0 then mg:Merge(mg2) end
+		end
 		local g=Duel.GetMatchingGroup(c34813545.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
 		if g:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
+			local sc=sg:GetFirst()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-			local tg=mg:FilterSelect(tp,c34813545.cfilter,1,1,nil,sg:GetFirst())
-			Duel.SynchroSummon(tp,sg:GetFirst(),tg:GetFirst())
+			local tg=mg:SelectSubGroup(tp,c34813545.syncheck,false,2,#mg,tp,sc)
+			Duel.SynchroSummon(tp,sc,nil,tg,#tg-1,#tg-1)
 		end
 	elseif op==3 then
 		local chkf=tp

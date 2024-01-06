@@ -11,6 +11,7 @@ function c79205581.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c79205581.condition)
 	e2:SetTarget(c79205581.cost)
 	e2:SetOperation(c79205581.operation)
@@ -21,9 +22,7 @@ function c79205581.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c79205581.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(79205581)==0
-		and Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,1,c) end
-	c:RegisterFlagEffect(79205581,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,1,1,c)
 	Duel.SendtoGrave(g,REASON_COST)

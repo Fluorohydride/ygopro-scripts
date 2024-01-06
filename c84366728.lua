@@ -1,4 +1,4 @@
---Vanguard of the Underground Emperor
+--地底王の尖兵
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

@@ -15,10 +15,10 @@ function c86049351.condition(e,tp,eg,ep,ev,re,r,rp)
 	if not at or tc:IsFacedown() or at:IsFacedown() then return false end
 	if not tc:IsControler(tp) then tc=at end
 	e:SetLabelObject(tc)
-	return tc:IsControler(tp) and tc:IsLocation(LOCATION_MZONE) and tc:IsSetCard(0x84)
+	return tc:IsControler(tp) and tc:IsLocation(LOCATION_MZONE) and tc:IsSetCard(0x1084)
 end
 function c86049351.filter(c,pos)
-	return c:IsPosition(pos) and c:IsSetCard(0x84)
+	return c:IsPosition(pos) and c:IsSetCard(0x1084)
 end
 function c86049351.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

@@ -18,7 +18,7 @@ function c24184846.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c24184846.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x84) and c:IsAbleToRemove()
+	return c:IsFaceup() and c:IsSetCard(0x1084) and c:IsAbleToRemove()
 end
 function c24184846.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c24184846.filter(chkc) end

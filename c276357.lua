@@ -30,6 +30,7 @@ function c276357.initial_effect(c)
 	e3:SetOperation(c276357.desop)
 	c:RegisterEffect(e3)
 end
+c276357.has_text_type=TYPE_SPIRIT
 function c276357.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp)
 end

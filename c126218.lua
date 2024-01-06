@@ -15,6 +15,7 @@ end
 c126218.toss_dice=true
 function c126218.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c126218.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)

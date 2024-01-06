@@ -26,10 +26,10 @@ function c17655904.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(17655904,tp,ACTIVITY_ATTACK)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+	e1:SetCode(EFFECT_CANNOT_ATTACK)
 	e1:SetProperty(EFFECT_FLAG_OATH+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsCode,89631139))
-	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end

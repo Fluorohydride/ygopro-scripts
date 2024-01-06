@@ -48,7 +48,7 @@ function c37313338.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37313338.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and aux.exccon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnPlayer()~=tp and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and aux.exccon(e)
 end
 function c37313338.spfilter(c,e,tp)
 	return c:IsSetCard(0x182) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

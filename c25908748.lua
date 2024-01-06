@@ -73,7 +73,7 @@ end
 function c25908748.limcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_SZONE)
-		and Duel.GetTurnPlayer()==1-tp and aux.bpcon()
+		and Duel.GetTurnPlayer()==1-tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25908748.limop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

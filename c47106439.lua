@@ -32,7 +32,7 @@ end
 function c47106439.filter(c)
 	return c:IsSetCard(0x3a) and bit.band(c:GetType(),0x81)==0x81 and c:IsAbleToHand()
 end
-function c47106439.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c47106439.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c47106439.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

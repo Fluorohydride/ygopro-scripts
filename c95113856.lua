@@ -21,32 +21,18 @@ function c95113856.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95113856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD+LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,1,nil) end
-	local off=1
-	local ops={}
-	local opval={}
-	if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil) then
-		ops[off]=aux.Stringid(95113856,1)
-		opval[off-1]=1
-		off=off+1
-	end
-	if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil) then
-		ops[off]=aux.Stringid(95113856,2)
-		opval[off-1]=2
-		off=off+1
-	end
-	if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil) then
-		ops[off]=aux.Stringid(95113856,3)
-		opval[off-1]=3
-		off=off+1
-	end
-	if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_DECK,1,nil) then
-		ops[off]=aux.Stringid(95113856,4)
-		opval[off-1]=4
-		off=off+1
-	end
-	if off==1 then return end
-	local op=Duel.SelectOption(tp,table.unpack(ops))
-	e:SetLabel(opval[op])
+	local b1=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
+	local b2=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil)
+	local b3=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
+	local b4=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_DECK,1,nil)
+	local op=aux.SelectFromOptions(tp,
+		{b1,aux.Stringid(95113856,1)},
+		{b2,aux.Stringid(95113856,2)},
+		{b3,aux.Stringid(95113856,3)},
+		{b4,aux.Stringid(95113856,4)})
+	e:SetLabel(op)
+	local oploc=({LOCATION_ONFIELD,LOCATION_HAND,LOCATION_GRAVE,LOCATION_DECK})[op]
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,oploc)
 end
 function c95113856.operation(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()

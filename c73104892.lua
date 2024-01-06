@@ -77,5 +77,5 @@ function c73104892.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(1-tp,c73104892.tgfilter,tp,LOCATION_MZONE,LOCATION_ONFIELD,1,1,nil,tp,tc:GetSequence())
 	Duel.HintSelection(g)
-	Duel.SendtoGrave(g,REASON_RULE)
+	Duel.SendtoGrave(g,REASON_RULE,1-tp)
 end

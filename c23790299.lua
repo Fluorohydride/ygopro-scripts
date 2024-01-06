@@ -41,13 +41,13 @@ function c23790299.initial_effect(c)
 end
 function c23790299.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon()
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23790299.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttackAbove,1,c,1) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttackAbove,1,c,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttackAbove,1,1,c,1)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttackAbove,1,1,c,1)
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(g:GetFirst():GetPreviousAttackOnField())
 end
@@ -84,7 +84,7 @@ end
 function c23790299.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
-		return not c:IsReason(REASON_REPLACE) and Duel.IsExistingMatchingCard(c23790299.repfilter,tp,LOCATION_GRAVE,0,1,nil)
+		return c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE) and Duel.IsExistingMatchingCard(c23790299.repfilter,tp,LOCATION_GRAVE,0,1,nil)
 	end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)

@@ -53,9 +53,6 @@ function c75952542.sttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(75952542,0))
 	Duel.SelectTarget(tp,c75952542.stfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 end
-function c75952542.seqfilter(c,seq)
-	return c:GetSequence()==seq
-end
 function c75952542.stop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not (tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e)) then return end

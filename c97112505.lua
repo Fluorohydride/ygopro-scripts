@@ -48,6 +48,7 @@ function c97112505.thcfilter(c)
 	return c:IsSetCard(0x70) and c:IsAbleToRemoveAsCost() and not c:IsCode(97112505)
 end
 function c97112505.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(c97112505.thcfilter,tp,LOCATION_GRAVE,0,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c97112505.thcfilter,tp,LOCATION_GRAVE,0,1,1,c)

@@ -41,5 +41,6 @@ function c10275411.activate(e,tp,eg,ep,ev,re,r,rp)
 		local oc=mg:GetFirst():GetOverlayTarget()
 		Duel.Overlay(tc,mg)
 		Duel.RaiseSingleEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
+		Duel.RaiseEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 	end
 end

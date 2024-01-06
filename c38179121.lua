@@ -22,7 +22,7 @@ function c38179121.filter(c,e,tp)
 	return c:IsRace(RACE_DINOSAUR) and c:IsLevelAbove(7) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c38179121.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=Duel.GetMatchingGroup(c38179121.spcostfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,exc)
+	local rg=Duel.GetMatchingGroup(c38179121.spcostfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	if chk==0 then return rg:CheckSubGroup(c38179121.fgoal,2,2,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=rg:SelectSubGroup(tp,c38179121.fgoal,false,2,2,e,tp)

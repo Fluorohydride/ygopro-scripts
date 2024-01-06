@@ -18,12 +18,12 @@ function c72767833.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c72767833.costfilter,1,1,REASON_COST)
 end
 function c72767833.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE,nil)>0 end
-	local sg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 end
+	local sg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,sg,sg:GetCount(),0,0)
 end
 function c72767833.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE,nil)
+	local sg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	if sg:GetCount()>0 then
 		Duel.ChangePosition(sg,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	end

@@ -26,7 +26,7 @@ end
 function c95453143.filter(c)
 	return c:IsLevelBelow(6) and c:IsType(TYPE_EFFECT) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToRemoveAsCost()
 end
-function c95453143.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c95453143.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c95453143.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c95453143.filter,tp,LOCATION_GRAVE,0,1,1,nil)
@@ -77,7 +77,7 @@ function c95453143.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 end
 function c95453143.thfilter(c)
-	return c:IsSetCard(0x21) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1021) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c95453143.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

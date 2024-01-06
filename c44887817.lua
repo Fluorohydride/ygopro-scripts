@@ -53,7 +53,7 @@ function c44887817.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		e1:SetTargetRange(1,0)
 		Duel.RegisterEffect(e1,tp)
-		local e2=e1:Clone(e1)
+		local e2=e1:Clone()
 		e2:SetCode(EFFECT_CANNOT_MSET)
 		Duel.RegisterEffect(e2,tp)
 	end

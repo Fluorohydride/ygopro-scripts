@@ -74,9 +74,11 @@ function s.sptcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function s.sptfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	local res1=c:IsType(TYPE_MONSTER) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP+POS_FACEDOWN_DEFENSE)
-		or not c:IsType(TYPE_MONSTER) and c:IsSSetable()
+	local res2=not c:IsType(TYPE_MONSTER) and c:IsSSetable(true)
+		and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
+	return res1 or res2
 end
 function s.spttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and s.sptfilter(chkc,e,tp) end

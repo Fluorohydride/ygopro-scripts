@@ -74,9 +74,9 @@ function c10045474.distg(e,c)
 end
 function c10045474.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tseq=e:GetLabel()
-	local loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
+	local controller,loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
 	if loc&LOCATION_SZONE~=0 and seq<=4 and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
-		and ((rp==tp and seq==tseq) or (rp==1-tp and seq==4-tseq)) then
+		and ((controller==tp and seq==tseq) or (controller==1-tp and seq==4-tseq)) then
 		Duel.NegateEffect(ev)
 	end
 end

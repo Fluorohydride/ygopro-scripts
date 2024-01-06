@@ -46,7 +46,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local bk=true
-		for p=tp,1-tp,1-tp-tp do
+		for p in aux.TurnPlayers() do
 			local ct=Duel.GetFieldGroupCount(p,LOCATION_HAND,0)
 			if 6-ct>0 then
 				if bk then

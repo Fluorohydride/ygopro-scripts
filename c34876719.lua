@@ -1,4 +1,4 @@
---N·As·H Knight
+--N・As・H Knight
 function c34876719.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

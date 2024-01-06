@@ -27,9 +27,9 @@ function c13046291.costfilter(c,tp)
 	return c:IsRace(RACE_REPTILE) and (c:IsControler(tp) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0
 end
 function c13046291.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c13046291.costfilter,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c13046291.costfilter,1,nil,tp)
 		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c13046291.costfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c13046291.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
@@ -37,8 +37,7 @@ function c13046291.spfilter(c,e,tp)
 	return c:IsLevelBelow(6) and c:IsRace(RACE_DINOSAUR) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_EVOLTILE,tp,false,false)
 end
 function c13046291.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c13046291.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c13046291.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c13046291.spop(e,tp,eg,ep,ev,re,r,rp)

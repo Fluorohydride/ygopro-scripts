@@ -1,9 +1,9 @@
---針淵のヴァリアンツ－アルクトスXII
+--針淵のヴァリアンツ－アルクトスⅩⅡ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	aux.AddFusionProcFunRep(c,s.matfilter,2,true)
-	aux.AddContactFusionProcedure(c,Card.IsReleasable,LOCATION_MZONE,0,Duel.Release,REASON_COST+REASON_MATERIAL)
+	aux.AddContactFusionProcedure(c,aux.FilterBoolFunction(Card.IsReleasable,REASON_SPSUMMON),LOCATION_MZONE,0,Duel.Release,REASON_SPSUMMON+REASON_MATERIAL)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -135,12 +135,12 @@ function s.chop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SwapSequence(tc1,tc2)
 	end
 end
-function s.cfilter(c,tp)
+function s.cfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsPreviousLocation(LOCATION_MZONE)
-		and (c:GetPreviousSequence()~=c:GetSequence() or c:GetPreviousControler()~=tp)
+		and (c:GetPreviousSequence()~=c:GetSequence() or c:GetPreviousControler()~=c:GetControler())
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,tp)
+	return eg:IsExists(s.cfilter,1,nil)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)

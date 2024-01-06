@@ -27,7 +27,7 @@ end
 function c30284022.rmfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_FIEND) and c:IsDiscardable(REASON_EFFECT)
 end
-function c30284022.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c30284022.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsAbleToRemove() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 		and Duel.IsExistingMatchingCard(c30284022.rmfilter,tp,LOCATION_HAND,0,1,nil) end

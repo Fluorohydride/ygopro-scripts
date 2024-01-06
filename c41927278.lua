@@ -20,6 +20,7 @@ function c41927278.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_BOTH_BATTLE_DAMAGE)
+	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	c:RegisterEffect(e3)
 	--to grave
 	local e4=Effect.CreateEffect(c)

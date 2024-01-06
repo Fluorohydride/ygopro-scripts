@@ -1,4 +1,4 @@
---D－HERO ドグマガイ
+--D-HERO ドグマガイ
 function c17132130.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -37,11 +37,11 @@ end
 function c17132130.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	return rg:CheckSubGroup(c17132130.fselect,3,3,tp)
 end
 function c17132130.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c17132130.fselect,true,3,3,tp)
 	if sg then
@@ -52,7 +52,7 @@ function c17132130.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c17132130.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c17132130.lp(e,tp,eg,ep,ev,re,r,rp)

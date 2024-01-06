@@ -36,6 +36,7 @@ function c59242457.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e4:SetCondition(c59242457.spcon)
 	e4:SetTarget(c59242457.sptg)
 	e4:SetOperation(c59242457.spop)
@@ -71,8 +72,7 @@ end
 function c59242457.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=c:GetOverlayGroup()
-	if chk==0 then return c:GetFlagEffect(59242457)==0 and g:IsExists(c59242457.toexfilter,1,nil,tp) end
-	c:RegisterFlagEffect(59242457,RESET_CHAIN,0,1)
+	if chk==0 then return g:IsExists(c59242457.toexfilter,1,nil,tp) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c59242457.spop(e,tp,eg,ep,ev,re,r,rp)

@@ -49,7 +49,7 @@ function c12421694.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12421694.reccon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x115) and rp==tp and e:GetHandler():GetFlagEffect(1)>0
+	return re and re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x115) and rp==tp and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c12421694.recop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(tp,100,REASON_EFFECT)

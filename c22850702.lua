@@ -1,4 +1,4 @@
---カオス・アンヘル-混沌の双翼-
+--カオス・アンヘル－混沌の双翼－
 function c22850702.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()
@@ -23,6 +23,7 @@ function c22850702.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCondition(c22850702.regcon)
 	e3:SetOperation(c22850702.regop)
 	c:RegisterEffect(e3)
@@ -91,6 +92,6 @@ function c22850702.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22850702.efilter(e,re)
-	return re:GetOwnerPlayer()~=e:GetOwnerPlayer() and re:IsActivated()
+	return re:GetOwnerPlayer()~=e:GetHandlerPlayer() and re:IsActivated()
 		and re:IsActiveType(TYPE_MONSTER)
 end

@@ -25,7 +25,7 @@ end
 function c91559748.cpcon(e,tp,eg,ep,ev,re,r,rp)
 	local t=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(t)
-	return aux.dsercon(e) and t and t:IsRelateToBattle()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and t and t:IsRelateToBattle()
 end
 function c91559748.cptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

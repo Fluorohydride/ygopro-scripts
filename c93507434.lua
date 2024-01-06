@@ -20,8 +20,10 @@ function c93507434.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetCondition(c93507434.atkcon)
+	e2:SetTarget(c93507434.atktg)
 	e2:SetOperation(c93507434.atkop)
 	c:RegisterEffect(e2)
+	aux.CreateMaterialReasonCardRelation(c,e2)
 end
 function c93507434.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)<Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
@@ -43,10 +45,15 @@ function c93507434.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_GRAVE) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x11a)
 end
+function c93507434.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local rc=e:GetHandler():GetReasonCard()
+	if chk==0 then return rc:IsRelateToEffect(e) end
+	Duel.SetTargetCard(rc)
+end
 function c93507434.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=c:GetReasonCard()
-	if rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE) then
+	local rc=Duel.GetFirstTarget()
+	if rc:IsRelateToChain() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

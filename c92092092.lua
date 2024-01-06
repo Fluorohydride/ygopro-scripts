@@ -25,14 +25,14 @@ function c92092092.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c92092092.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,92092092,0,TYPES_EFFECT_TRAP_MONSTER+TYPE_TUNER,0,1800,1,RACE_MACHINE,ATTRIBUTE_FIRE) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c92092092.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,92092092,0,TYPES_EFFECT_TRAP_MONSTER+TYPE_TUNER,0,1800,1,RACE_MACHINE,ATTRIBUTE_FIRE) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,92092092,0,TYPES_EFFECT_TRAP_MONSTER+TYPE_TUNER,0,1800,1,RACE_MACHINE,ATTRIBUTE_FIRE) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TUNER+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end

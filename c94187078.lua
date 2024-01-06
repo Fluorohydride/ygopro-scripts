@@ -38,7 +38,7 @@ function c94187078.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsSummonableCard()
 end
 function c94187078.filter(c,e,tp)
-	return c:IsSetCard(0x154) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x154) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DrytronSpSummonType(c))
 end
 function c94187078.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -50,7 +50,7 @@ function c94187078.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c94187078.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,aux.DrytronSpSummonType(tc),POS_FACEUP) then
 		tc:RegisterFlagEffect(94187078,RESET_EVENT+RESETS_STANDARD,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -61,6 +61,9 @@ function c94187078.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c94187078.descon)
 		e1:SetOperation(c94187078.desop)
 		Duel.RegisterEffect(e1,tp)
+		if aux.DrytronSpSummonType(tc) then
+			tc:CompleteProcedure()
+		end
 	end
 	Duel.SpecialSummonComplete()
 end

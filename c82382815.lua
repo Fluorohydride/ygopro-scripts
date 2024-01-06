@@ -29,7 +29,7 @@ function c82382815.cfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(7) and c:IsType(TYPE_NORMAL)
 end
 function c82382815.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and Duel.IsExistingMatchingCard(c82382815.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return aux.NegateSummonCondition() and Duel.IsExistingMatchingCard(c82382815.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c82382815.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

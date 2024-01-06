@@ -1,4 +1,4 @@
---CONTAIN!
+--CONTAIN！
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -55,12 +55,12 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 				e4:SetCode(EFFECT_DISABLE_TRAPMONSTER)
 				tc:RegisterEffect(e4)
 			end
-		end
-		if check then
 			Duel.AdjustInstantly()
+		end
+		if check and not tc:IsImmuneToEffect(e) then
 			local e5=Effect.CreateEffect(c)
 			e5:SetType(EFFECT_TYPE_SINGLE)
-			e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+			e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 			e5:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
 			e5:SetRange(LOCATION_MZONE)
 			e5:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)

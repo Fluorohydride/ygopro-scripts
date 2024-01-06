@@ -1,4 +1,4 @@
---D－HERO ディアボリックガイ
+--D-HERO ディアボリックガイ
 function c9411399.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

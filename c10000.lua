@@ -31,11 +31,11 @@ end
 function c10000.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp):Filter(c10000.rfilter,nil,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c10000.rfilter,nil,tp)
 	return rg:CheckSubGroup(c10000.fselect,1,rg:GetCount(),tp)
 end
 function c10000.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c10000.rfilter,nil,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c10000.rfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c10000.fselect,true,1,rg:GetCount(),tp)
 	if sg then
@@ -46,7 +46,7 @@ function c10000.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c10000.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)

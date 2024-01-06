@@ -38,7 +38,7 @@ function c87043568.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87043568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
@@ -73,14 +73,13 @@ function c87043568.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetValue(c87043568.eqlimit)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e2:SetLabelObject(tc)
 		c:RegisterEffect(e2)
 	else
 		c:CancelToGrave(false)
 	end
 end
 function c87043568.eqlimit(e,c)
-	return c==e:GetLabelObject()
+	return e:GetHandler():GetEquipTarget()==c or c:IsControler(e:GetHandlerPlayer())
 end
 function c87043568.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

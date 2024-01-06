@@ -15,7 +15,7 @@ function c56993276.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c56993276.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and eg:IsExists(Card.IsControler,1,nil,1-tp)
+	return aux.NegateSummonCondition() and eg:IsExists(Card.IsControler,1,nil,1-tp)
 end
 function c56993276.cfilter(c)
 	return c:IsSetCard(0xe) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()

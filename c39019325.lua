@@ -14,7 +14,7 @@ end
 function c39019325.rfilter(c,e)
 	local tpe=c:GetType()
 	return bit.band(tpe,TYPE_NORMAL)~=0 and bit.band(tpe,TYPE_TOKEN)==0
-		and c:IsFaceup() and c:IsLevelBelow(2) and c:IsReleasable() and c:IsReleasableByEffect() and not c:IsImmuneToEffect(e)
+		and c:IsFaceup() and c:IsLevelBelow(2) and c:IsReleasableByEffect() and not c:IsImmuneToEffect(e)
 end
 function c39019325.dfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

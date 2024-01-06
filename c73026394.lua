@@ -24,6 +24,7 @@ function c73026394.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c73026394.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
+	Duel.ShuffleExtra(tp)
 	local g=Duel.GetMatchingGroup(c73026394.filter,tp,LOCATION_EXTRA,0,nil):RandomSelect(tp,1)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end

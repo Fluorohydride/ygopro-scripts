@@ -4,11 +4,6 @@ function c84962466.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
-	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(aux.dscon)
-	e1:SetTarget(c84962466.target1)
-	e1:SetOperation(c84962466.operation)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
@@ -18,8 +13,10 @@ function c84962466.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
+	e2:SetCountLimit(1)
 	e2:SetCondition(aux.dscon)
-	e2:SetTarget(c84962466.target2)
+	e2:SetCost(c84962466.cost)
+	e2:SetTarget(c84962466.target)
 	e2:SetOperation(c84962466.operation)
 	c:RegisterEffect(e2)
 end
@@ -30,34 +27,18 @@ end
 function c84962466.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR)
 end
-function c84962466.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c84962466.filter(chkc) end
-	if chk==0 then
-		return Duel.GetCurrentPhase()~=PHASE_DAMAGE or Duel.IsExistingMatchingCard(c84962466.cfilter,tp,LOCATION_MZONE,0,1,nil,tp)
-	end
-	if Duel.GetCurrentPhase()==PHASE_DAMAGE or
-		(Duel.IsExistingMatchingCard(c84962466.cfilter,tp,LOCATION_MZONE,0,1,nil,tp) and Duel.SelectYesNo(tp,aux.Stringid(84962466,0))) then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local rg=Duel.SelectMatchingCard(tp,c84962466.cfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
-		e:SetLabel(rg:GetFirst():GetBaseAttack())
-		Duel.Remove(rg,POS_FACEUP,REASON_COST)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		Duel.SelectTarget(tp,c84962466.filter,tp,LOCATION_MZONE,0,1,1,nil)
-		e:GetHandler():RegisterFlagEffect(84962466,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-	else e:SetProperty(EFFECT_FLAG_DAMAGE_STEP) end
-end
-function c84962466.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c84962466.filter(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(84962466)==0
-		and Duel.IsExistingMatchingCard(c84962466.cfilter,tp,LOCATION_MZONE,0,1,nil,tp) end
+function c84962466.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c84962466.cfilter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=Duel.SelectMatchingCard(tp,c84962466.cfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	e:SetLabel(rg:GetFirst():GetBaseAttack())
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
+end
+function c84962466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c84962466.filter(chkc) end
+	if chk==0 then return e:IsCostChecked() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c84962466.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	e:GetHandler():RegisterFlagEffect(84962466,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c84962466.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

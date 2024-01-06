@@ -33,6 +33,9 @@ end
 function c22842214.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FISH+RACE_AQUA+RACE_SEASERPENT) and not c:IsForbidden()
 end
+function c22842214.opfilter(c,e)
+	return c:IsRelateToEffect(e) and c22842214.filter(c)
+end
 function c22842214.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c22842214.filter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
@@ -47,7 +50,7 @@ function c22842214.eqlimit(e,c)
 end
 function c22842214.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c22842214.opfilter,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	local tg=Group.CreateGroup()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then

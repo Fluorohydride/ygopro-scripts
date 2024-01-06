@@ -26,6 +26,7 @@ function c58242947.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	g:AddCard(c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
+---dynamic target
 function c58242947.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local te=c58242947[Duel.GetCurrentChain()]
 	if chkc then

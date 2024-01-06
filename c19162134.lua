@@ -50,7 +50,6 @@ function c19162134.initial_effect(c)
 	e8:SetCode(EVENT_TOSS_COIN)
 	e8:SetProperty(EFFECT_FLAG_DELAY)
 	e8:SetRange(LOCATION_FZONE)
-	e8:SetCode(EVENT_TOSS_COIN)
 	e8:SetOperation(c19162134.tossop)
 	c:RegisterEffect(e8)
 	local e9=e8:Clone()
@@ -103,10 +102,10 @@ function c19162134.btcon2(e,tp,eg,ep,ev,re,r,rp)
 	else return false end
 end
 function c19162134.chcon1(e,tp,eg,ep,ev,re,r,rp)
-	return rp==tp and Duel.GetCurrentChain()>=5 and e:GetHandler():GetFlagEffect(1)>0
+	return rp==tp and Duel.GetCurrentChain()>=5 and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c19162134.chcon2(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and Duel.GetCurrentChain()>=5 and e:GetHandler():GetFlagEffect(1)>0
+	return rp==1-tp and Duel.GetCurrentChain()>=5 and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c19162134.tossop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
