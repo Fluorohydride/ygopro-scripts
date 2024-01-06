@@ -24,29 +24,37 @@ function c43857222.lvfilter3(c,tp,lv)
 	return c:IsFaceup() and c:IsLevelAbove(lv+1)
 		and Duel.IsExistingTarget(c43857222.lvfilter2,tp,LOCATION_MZONE,0,1,c)
 end
+function c43857222.fselect(g,lv)
+	local hc=g:GetFirst()
+	local tc=g:GetNext()
+	local res1=hc:IsFaceup() and tc:IsFaceup() and hc:IsLevelAbove(lv+1) and tc:IsLevelAbove(1)
+	local res2=hc:IsFaceup() and tc:IsFaceup() and tc:IsLevelAbove(lv+1) and hc:IsLevelAbove(1)
+	return res1 or res2
+end
 function c43857222.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c43857222.lvfilter1,tp,LOCATION_MZONE,0,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c43857222.lvfilter1,tp,LOCATION_MZONE,0,nil,tp)
+	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
 	local mg,lv=g:GetMaxGroup(Card.GetLevel)
 	local alv=0
 	if lv>2 then alv=Duel.AnnounceLevel(tp,1,math.min(lv-1,6))
 	else alv=Duel.AnnounceLevel(tp,1,1) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43857222,1))
-	local g1=Duel.SelectTarget(tp,c43857222.lvfilter3,tp,LOCATION_MZONE,0,1,1,nil,tp,alv)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43857222,2))
-	Duel.SelectTarget(tp,c43857222.lvfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
-	e:SetLabelObject(g1:GetFirst())
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	local tg=g:SelectSubGroup(tp,c43857222.fselect,false,2,2,alv)
+	Duel.SetTargetCard(tg)
 	e:SetLabel(alv)
 end
 function c43857222.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local hc=e:GetLabelObject()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local g=Duel.GetTargetsRelateToChain()
+	if #g<2 or g:IsExists(Card.IsFacedown,1,nil) or g:FilterCount(Card.IsLevelAbove,nil,1)<2 then return end
+	local lv=e:GetLabel()
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43857222,1))
+	local hc=g:Filter(Card.IsLevelAbove,nil,lv+1):Select(tp,1,1,nil):GetFirst()
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	local lv=e:GetLabel()
 	if hc:IsFaceup() and hc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

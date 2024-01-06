@@ -16,21 +16,23 @@ end
 function c26864586.filter2(c,rc,at,lv)
 	return not c:IsLevel(lv) and c:IsLevelAbove(1) and c:IsFaceup() and c:IsRace(rc) and c:IsAttribute(at)
 end
+function c26864586.fselect(g)
+	return g:GetClassCount(Card.GetAttribute)==1 and g:GetClassCount(Card.GetRace)==1
+end
 function c26864586.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c26864586.filter1,tp,LOCATION_MZONE,0,1,nil,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g1=Duel.SelectTarget(tp,c26864586.filter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	local tc1=g1:GetFirst()
-	e:SetLabelObject(tc1)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26864586,0))
-	local g2=Duel.SelectTarget(tp,c26864586.filter2,tp,LOCATION_MZONE,0,1,1,tc1,tc1:GetRace(),tc1:GetAttribute(),tc1:GetLevel())
+	local g=Duel.GetMatchingGroup(c26864586.filter1,tp,LOCATION_MZONE,0,nil,tp)
+	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.SetTargetCard(g:SelectSubGroup(tp,c26864586.fselect,false,2,2))
 end
 function c26864586.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc1=e:GetLabelObject()
-	local tc2=g:GetFirst()
-	if tc1==tc2 then tc2=g:GetNext() end
+	local g=Duel.GetTargetsRelateToChain()
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26864586,0))
+	local tc2=g:Select(tp,1,1,nil):GetFirst()
+	local tc1=g:GetFirst()
+	if tc1==tc2 then tc1=g:GetNext() end
 	local lv=tc1:GetLevel()
 	if tc2:IsLevel(lv) then return end
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then

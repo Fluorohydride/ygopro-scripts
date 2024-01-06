@@ -67,19 +67,22 @@ end
 function c32671443.atkfilter2(c,tc)
 	return c:IsFaceup() and c:IsSetCard(0xc008) and not c:IsAttack(tc:GetAttack())
 end
+function c32671443.fselect(g)
+	return g:GetClassCount(Card.GetAttack)==2
+end
 function c32671443.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c32671443.atkfilter1,tp,LOCATION_MZONE,0,1,nil,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(32671443,2))
-	local g1=Duel.SelectTarget(tp,c32671443.atkfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	local tc=g1:GetFirst()
-	e:SetLabelObject(tc)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c32671443.atkfilter2,tp,LOCATION_MZONE,0,1,1,tc,tc)
+	local g=Duel.GetMatchingGroup(c32671443.atkfilter1,tp,LOCATION_MZONE,0,nil,tp)
+	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.SetTargetCard(g:SelectSubGroup(tp,c32671443.fselect,false,2,2))
 end
 function c32671443.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local hc=e:GetLabelObject()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local g=Duel.GetTargetsRelateToChain()
+	if g:GetClassCount(Card.GetAttack,nil)<2 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(32671443,2))
+	local hc=g:Select(tp,1,1,nil):GetFirst()
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
 	if hc:IsFaceup() and hc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then

@@ -10,18 +10,21 @@ function c34016756.initial_effect(c)
 	e1:SetOperation(c34016756.activate)
 	c:RegisterEffect(e1)
 end
+function c34016756.fselect(g)
+	return g:IsExists(Card.IsAttackAbove,1,nil,1)
+end
 function c34016756.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34016756,0))
-	local g1=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	e:SetLabelObject(g1:GetFirst())
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34016756,1))
-	local g2=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,g1:GetFirst())
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
+	if chk==0 then return g:CheckSubGroup(c34016756.fselect,2,2) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.SetTargetCard(g:SelectSubGroup(tp,c34016756.fselect,false,2,2))
 end
 function c34016756.activate(e,tp,eg,ep,ev,re,r,rp)
-	local hc=e:GetLabelObject()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local g=Duel.GetTargetsRelateToChain()
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34016756,0))
+	local hc=g:Filter(Card.IsAttackAbove,nil,1):Select(tp,1,1,nil):GetFirst()
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
 	if hc:IsFaceup() and hc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then

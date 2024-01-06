@@ -16,22 +16,30 @@ function c99890852.filter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xfb)
 		and c:IsAbleToHand() and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
+function c99890852.fselect(g,tp)
+	return g:IsExists(c99890852.filter,1,nil,tp)
+end
 function c99890852.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c99890852.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c99890852.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	e:SetLabelObject(g:GetFirst())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,g)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
+	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.SetTargetCard(g:SelectSubGroup(tp,c99890852.fselect,false,2,2,tp))
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,0)
 end
 function c99890852.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if g:GetCount()~=2 then return end
-	local hc=g:GetFirst()
-	local tc=g:GetNext()
-	if hc~=e:GetLabelObject() then tc,hc=hc,tc end
+	local g=Duel.GetTargetsRelateToChain()
+	if g:GetCount()<2 then return end
+	local hc,tc
+	if g:FilterCount(c99890852.filter,nil,tp)>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
+		hc=g:Select(tp,1,1,nil):GetFirst()
+	else
+		hc=g:Filter(c99890852.filter,nil,tp):GetFirst()
+	end
+	g=g-hc
+	tc=g:GetFirst()
 	if hc:IsFaceup() and tc:IsFaceup() and Duel.SendtoHand(hc,nil,REASON_EFFECT)~=0 then
 		local atk=hc:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())

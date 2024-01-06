@@ -27,21 +27,29 @@ function c56535497.condition(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()==tp then return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 	else return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon(e,tp,eg,ep,ev,re,r,rp) end
 end
+function c56535497.fselect(g)
+	return g:GetSum(Card.GetAttack)>0
+end
 function c56535497.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56535497,2))
-	local rg=Duel.SelectTarget(tp,c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	e:SetLabelObject(rg:GetFirst())
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56535497,3))
-	Duel.SelectTarget(tp,c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,rg:GetFirst())
+	local g=Duel.GetMatchingGroup(c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
+	if chk==0 then return g:GetSum(Card.GetAttack)>0 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.SetTargetCard(g:SelectSubGroup(tp,c56535497.fselect,false,2,2))
 end
 function c56535497.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc1=e:GetLabelObject()
-	if not tc1 then return end
+	local g=Duel.GetTargetsRelateToChain()
+	if #g<2 or g:GetSum(Card.GetAttack)==0 then return end
+	local tc1
+	if g:FilterCount(Card.IsAttackAbove,nil,1)>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
+		tc1=g:Select(tp,1,1,nil):GetFirst()
+	else
+		tc1=g:Filter(Card.IsAttackAbove,nil,1):GetFirst()
+	end
 	local tc2=g:GetFirst()
-	if tc1==tc2 then tc2=g:GetNext() end
+	if tc2==tc1 then tc2=g:GetNext() end
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
 		local atk=math.ceil(tc1:GetAttack()/2)
 		local e1=Effect.CreateEffect(e:GetHandler())
