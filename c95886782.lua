@@ -80,8 +80,8 @@ function c95886782.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c95886782.cfilter(c,e,tp)
-	local se=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
-	return c:IsSummonPlayer(1-tp) and se:IsActivated() and e:GetOwnerPlayer()==1-se:GetOwnerPlayer()
+	local se,sp=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT,SUMMON_INFO_REASON_PLAYER)
+	return sp==1-tp and se:IsActivated() and e:GetOwnerPlayer()==1-se:GetOwnerPlayer()
 end
 function c95886782.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetEquipTarget()
