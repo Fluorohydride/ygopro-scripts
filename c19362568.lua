@@ -18,7 +18,7 @@ function c19362568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()~=0 then return false end
 		return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c19362568.spfilter(chkc,e,tp)
 	end
-	local ct=Duel.GetCurrentChain()
+	local ct=Duel.GetReadyChain()
 	local b1=Duel.GetMZoneCount(tp)>0
 		and Duel.IsExistingTarget(c19362568.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	if chk==0 then
@@ -36,7 +36,7 @@ function c19362568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		te,p1=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 		p2=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_PLAYER)
 		b2=te and te:GetHandler():IsSetCard(0xf0) and te:IsActiveType(TYPE_MONSTER)
-			and p1 and p2 and p1==tp and p2==1-tp and Duel.IsChainDisablable(ct-1)
+			and p1 and p2 and p1==tp and p2==1-tp and Duel.IsChainDisablable(ct)
 	end
 	local op=0
 	if b1 and b2 then

@@ -25,7 +25,7 @@ function c41619242.disfilter(c,tp)
 end
 function c41619242.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local ct=Duel.GetCurrentChain()
+	local ct=Duel.GetReadyChain()
 	local b1=Duel.IsExistingTarget(c41619242.atkfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(c41619242.atkfilter2,tp,0,LOCATION_MZONE,1,nil)
 	if chk==0 then
@@ -40,10 +40,10 @@ function c41619242.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local te,tg
 	local b2=false
 	if ct>0 then
-		te,tg=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
+		te,tg=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TARGET_CARDS)
 		b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE
 			and te and te:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-			and tg and tg:IsExists(c41619242.disfilter,1,nil,tp) and Duel.IsChainDisablable(ct-1)
+			and tg and tg:IsExists(c41619242.disfilter,1,nil,tp) and Duel.IsChainDisablable(ct)
 	end
 	local op=0
 	if b1 and b2 then
