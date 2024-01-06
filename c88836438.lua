@@ -56,32 +56,15 @@ function c88836438.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b3=Duel.IsExistingMatchingCard(c88836438.rmfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil,tp)
 	if chk==0 then return b1 or b2 or b3 end
-	local off=0
-	local ops={}
-	local opval={}
-	off=1
-	if b1 then
-		ops[off]=aux.Stringid(88836438,0)
-		opval[off-1]=1
-		off=off+1
-	end
-	if b2 then
-		ops[off]=aux.Stringid(88836438,1)
-		opval[off-1]=2
-		off=off+1
-	end
-	if b3 then
-		ops[off]=aux.Stringid(88836438,2)
-		opval[off-1]=3
-		off=off+1
-	end
-	local op=Duel.SelectOption(tp,table.unpack(ops))
-	local sel=opval[op]
-	e:SetLabel(sel)
-	if sel==1 then
+	local op=aux.SelectFromOptions(tp,
+		{b1,aux.Stringid(88836438,0)},
+		{b2,aux.Stringid(88836438,1)},
+		{b3,aux.Stringid(88836438,2)})
+	e:SetLabel(op)
+	if op==1 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-	elseif sel==2 then
+	elseif op==2 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 	else

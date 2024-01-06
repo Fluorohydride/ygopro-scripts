@@ -43,36 +43,19 @@ function c68250822.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=Duel.IsExistingTarget(c68250822.filter2,tp,0,LOCATION_MZONE,1,nil,zone)
 	local b3=Duel.IsExistingTarget(c68250822.filter3,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp,zone)
 	if chk==0 then return b1 or b2 or b3 end
-	local off=0
-	local ops={}
-	local opval={}
-	off=1
-	if b1 then
-		ops[off]=aux.Stringid(68250822,0)
-		opval[off-1]=1
-		off=off+1
-	end
-	if b2 then
-		ops[off]=aux.Stringid(68250822,1)
-		opval[off-1]=2
-		off=off+1
-	end
-	if b3 then
-		ops[off]=aux.Stringid(68250822,2)
-		opval[off-1]=3
-		off=off+1
-	end
-	local op=Duel.SelectOption(tp,table.unpack(ops))
-	local sel=opval[op]
-	e:SetLabel(sel)
-	if sel==1 then
+	local op=aux.SelectFromOptions(tp,
+		{b1,aux.Stringid(68250822,0)},
+		{b2,aux.Stringid(68250822,1)},
+		{b3,aux.Stringid(68250822,2)})
+	e:SetLabel(op)
+	if op==1 then
 		e:SetCategory(0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectTarget(tp,c68250822.cfilter1,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil,tp)
 		if g:GetFirst():IsLocation(LOCATION_GRAVE) then
 			Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 		end
-	elseif sel==2 then
+	elseif op==2 then
 		e:SetCategory(CATEGORY_CONTROL)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local g=Duel.SelectTarget(tp,c68250822.filter2,tp,0,LOCATION_MZONE,1,1,nil,zone)

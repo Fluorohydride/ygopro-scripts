@@ -29,29 +29,12 @@ function c18438874.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(c18438874.thfilter1,tp,LOCATION_DECK,0,1,nil) and ct>3
 	local b3=Duel.IsExistingMatchingCard(c18438874.thfilter2,tp,LOCATION_DECK,0,1,nil) and ct>9
 	if chk==0 then return b1 or b2 or b3 end
-	local off=0
-	local ops={}
-	local opval={}
-	off=1
-	if b1 then
-		ops[off]=aux.Stringid(18438874,0)
-		opval[off-1]=1
-		off=off+1
-	end
-	if b2 then
-		ops[off]=aux.Stringid(18438874,1)
-		opval[off-1]=2
-		off=off+1
-	end
-	if b3 then
-		ops[off]=aux.Stringid(18438874,2)
-		opval[off-1]=3
-		off=off+1
-	end
-	local op=Duel.SelectOption(tp,table.unpack(ops))
-	local sel=opval[op]
-	e:SetLabel(sel)
-	if sel==1 then
+	local op=aux.SelectFromOptions(tp,
+		{b1,aux.Stringid(18438874,0)},
+		{b2,aux.Stringid(18438874,1)},
+		{b3,aux.Stringid(18438874,2)})
+	e:SetLabel(op)
+	if op==1 then
 		e:SetCategory(CATEGORY_DRAW)
 		e:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		Duel.SetTargetPlayer(tp)
