@@ -1,5 +1,4 @@
 --氷結界に至る晶域
---Script by beyond
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

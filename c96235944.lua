@@ -1,5 +1,4 @@
 --煉獄の決界
---coded by 星影
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

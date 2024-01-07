@@ -1,5 +1,4 @@
 --インフェルノイド・イヴィル
---Script by lightup37 & mercury233
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

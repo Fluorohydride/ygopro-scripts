@@ -1,5 +1,4 @@
 --氷結界の鏡魔師
---Script by beyond
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--token

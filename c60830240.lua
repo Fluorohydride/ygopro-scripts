@@ -1,5 +1,4 @@
 --熾動する煉獄
---Script by lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--draw
@@ -16,6 +15,7 @@ function s.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,id+EFFECT_COUNT_CODE_DUEL)
 	e2:SetCondition(s.tgcon)
@@ -68,7 +68,9 @@ function s.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=tg:SelectSubGroup(tp,aux.TRUE,false,1,11)
 	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(g)
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
+	if g then
+		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
+	end
 end
 function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)

@@ -1,4 +1,4 @@
---真次世代水精灵
+--レアル・ジェネクス・ウンディーネ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--change
