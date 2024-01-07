@@ -1,4 +1,4 @@
---アロマリリスーロザリーナ
+--アロマリリス－ロザリーナ
 local s,id,o=GetID()
 function c24689197.initial_effect(c)
 	--recover 
@@ -6,6 +6,7 @@ function c24689197.initial_effect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,id)
 	e1:SetCost(s.cost)
@@ -33,19 +34,21 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
 function s.filter(c)
-	return c:IsSetCard(0xc9) and c:GetAttack()>0
+	return c:IsFaceup() and c:IsSetCard(0xc9) and c:GetAttack()>0
 end
 function s.retg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local tc=Duel.GetFirstTarget()
+	local rec=math.ceil(tc:GetAttack()/2)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,rec)
 end
 function s.recop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFirstTarget()
-	local rec=(math.ceil(g:GetAttack()/2))
-	if g:IsFaceup() and g:IsRelateToEffect(e) then
+	local tc=Duel.GetFirstTarget()
+	local rec=math.ceil(tc:GetAttack()/2)
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 	Duel.Recover(tp,rec,REASON_EFFECT) end
 end
 --spsummon

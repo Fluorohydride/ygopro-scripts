@@ -1,5 +1,4 @@
 --粛声の祈り手ロー
---Script by 卡手
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--set

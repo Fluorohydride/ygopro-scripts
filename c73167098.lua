@@ -1,4 +1,4 @@
---アロマリリス-マグノリア
+--アロマリリス－マグノリア
 local s,id,o=GetID()
 function c73167098.initial_effect(c)
 	--material

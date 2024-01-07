@@ -1,6 +1,4 @@
---月胧龙 伐古那瓦
 --月朧龍ヴァグナワ
---script by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--synchro summon
@@ -53,7 +51,7 @@ end
 function s.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function s.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.adtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local dam,atk=e:GetLabel()
 	if chk==0 then return atk>0 and dam>0 end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam*300)

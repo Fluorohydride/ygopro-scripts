@@ -1,5 +1,4 @@
 --マチュア・クロニクル
---Script by passingDio0
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableCounterPermit(0x25)
@@ -89,7 +88,7 @@ end
 function s.filter1(c,e,tp)
 	return c:IsCode(78371393) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function s.tg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.tg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
@@ -109,7 +108,7 @@ end
 function s.filter2(c,e,tp)
 	return c:IsAbleToHand()
 end
-function s.tg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.tg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true
 		and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_REMOVED,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_REMOVED)
@@ -127,7 +126,7 @@ function s.cost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.RemoveCounter(tp,1,0,0x25,3,REASON_COST)
 end
-function s.tg3(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.tg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)
 end
@@ -143,7 +142,7 @@ function s.cost4(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.RemoveCounter(tp,1,0,0x25,4,REASON_COST)
 end
-function s.tg4(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.tg4(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -164,7 +163,7 @@ end
 function s.filter5(c,e,tp)
 	return c:IsAbleToHand() and c:IsCode(48130397)
 end
-function s.tg5(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.tg5(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true
 		and Duel.IsExistingMatchingCard(s.filter5,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)

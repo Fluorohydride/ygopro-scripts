@@ -1,5 +1,4 @@
 --スピリット・オブ・ユベル
---Script by passingDio0
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,78371393)

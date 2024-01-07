@@ -1,5 +1,4 @@
---RR-ブルーム・ヴァルチャー
---lua by zengsxing
+--RR－ブルーム・ヴァルチャー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Special Summon
@@ -16,6 +15,7 @@ function s.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,id)
 	e2:SetCost(s.spcost)
@@ -75,7 +75,7 @@ end
 function s.spfilter2(c,e,tp)
 	return c:IsSetCard(0xba) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
-function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.spfilter2(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)

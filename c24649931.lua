@@ -1,6 +1,4 @@
---变幻
 --変幻
---script by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon from hand

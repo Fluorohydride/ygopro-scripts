@@ -1,5 +1,4 @@
 --王墓の石壁
---script by Ruby
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

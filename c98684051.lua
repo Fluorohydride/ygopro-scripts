@@ -1,6 +1,4 @@
 --白鰯
---White Sardine
---coded by Lyris
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

@@ -1,5 +1,4 @@
---百鬼罗刹 冷血蛇行骑手
---lua by Gim J.Blocks
+--百鬼羅刹 冷血ミアンダ
 function c64257161.initial_effect(c)
 	--spcial summon
 	local e1=Effect.CreateEffect(c)

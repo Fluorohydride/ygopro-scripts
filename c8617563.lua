@@ -1,5 +1,4 @@
---RR-ブレイブ・ストリクス
---lua by zengsxing
+--RR－ブレイブ・ストリクス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

@@ -1,5 +1,4 @@
---童妖茶壶
---Lua by Gim J.Blocks
+--童妖 茶壺
 function c12612470.initial_effect(c)
 	--cannot change pos or activate
 	local e1=Effect.CreateEffect(c)

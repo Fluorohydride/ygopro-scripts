@@ -1,5 +1,4 @@
 --粛声なる威光
---Script by kiritosoft
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

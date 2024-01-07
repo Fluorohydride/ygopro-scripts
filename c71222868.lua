@@ -1,4 +1,4 @@
---RR-ライジング・リベリオン・ファルコン
+--RR－ライジング・リベリオン・ファルコン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Xyz Summon
@@ -27,6 +27,7 @@ function s.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
 	e3:SetCost(s.copycost)
@@ -75,7 +76,7 @@ function s.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RemoveOverlayCard(tp,3,3,REASON_COST)
 	c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
-function s.copytg(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

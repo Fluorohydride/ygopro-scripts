@@ -1,5 +1,4 @@
 --粛声の竜賢聖サウラヴィス
---scripted by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

@@ -1,5 +1,4 @@
---RRUM-レイド・ラプターズ・フォース
---lua by zengsxing
+--ЯRUM－レイド・ラプターズ・フォース
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

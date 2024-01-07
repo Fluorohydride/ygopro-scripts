@@ -1,6 +1,4 @@
---至尊巴哥犬
 --プリンシパグ
---script by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--battle twice

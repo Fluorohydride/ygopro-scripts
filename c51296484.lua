@@ -1,5 +1,4 @@
 --粛声の竜賢姫サフィラ
---scripted by REIKAI
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to grave search
@@ -29,7 +28,7 @@ end
 function s.tsfilter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_SPELL) and c:IsAbleToGrave()
 end
-function s.tstg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.tstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.tsfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end

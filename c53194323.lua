@@ -1,4 +1,4 @@
---暗黑元素
+--ダーク・エレメント
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)

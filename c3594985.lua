@@ -1,5 +1,4 @@
 --マジェスペクター・ドラコ
---lua by Gim J.Blocks
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon
@@ -91,7 +90,7 @@ function s.spfilter(c,e,tp)
 	return c:IsLevelBelow(6) and c:IsRace(RACE_SPELLCASTER) and c:IsAttribute(ATTRIBUTE_WIND)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_DECK)

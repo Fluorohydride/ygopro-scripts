@@ -1,5 +1,4 @@
 --白闘気砂滑
---Script by 增熵星
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

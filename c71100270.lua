@@ -1,5 +1,4 @@
---百鬼罗刹的大饕兽
---lua by Gim J.Blocks
+--百鬼羅刹の大饕獣
 function c71100270.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2,nil,nil,7)

@@ -1,5 +1,4 @@
 --粛声なる祈り
---Script by kiritosoft
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,4810828,56350972,10774240)

@@ -1,4 +1,4 @@
---アロマリリス-ローズマリー
+--アロマリリス－ローズマリー
 local s,id,o=GetID()
 function c30989084.initial_effect(c)
 	--link summon
@@ -33,6 +33,7 @@ function c30989084.initial_effect(c)
 	e3:SetDescription(aux.Stringid(id,2))
 	e3:SetCategory(CATEGORY_RECOVER+CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,id+o*2)
 	e3:SetCost(s.rmcost)
