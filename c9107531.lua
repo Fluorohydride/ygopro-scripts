@@ -1,5 +1,4 @@
 --エレクトロ・ガンナー
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

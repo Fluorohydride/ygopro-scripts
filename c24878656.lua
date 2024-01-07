@@ -75,9 +75,8 @@ function s.dmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,s.cfilter,tp,LOCATION_ONFIELD,0,1,1,c,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
-function s.dmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.dmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ac=Duel.GetAttacker()
-	if chkc then return chkc==ac end
 	if chk==0 then return ac:IsOnField() end
 	Duel.SetTargetCard(ac)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,ac,1,0,0)

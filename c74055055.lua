@@ -1,5 +1,4 @@
 --石油採掘
---Amiya
 function c74055055.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

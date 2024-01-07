@@ -1,4 +1,4 @@
---閃刀姫ーアザレア・テンペランス
+--閃刀姫－アザレア・テンペランス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

@@ -1,5 +1,4 @@
 --ディーヴジャン
---Amiya
 function c42427230.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)
@@ -31,7 +30,7 @@ function c42427230.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local rg=Duel.GetMatchingGroup(c42427230.cfilter,tp,LOCATION_MZONE,0,nil,tp)
 	if chk==0 then return rg:GetCount()==Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,42427230):GetCount() and rg:GetCount()~=0 and Duel.GetMZoneCount(tp,rg)>0 end
-	ct=Duel.Release(rg,REASON_COST)*2
+	local ct=Duel.Release(rg,REASON_COST)*2
 	e:SetLabel(ct)
 end
 function c42427230.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
