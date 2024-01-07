@@ -1,5 +1,4 @@
 --Play of the Tistina
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spummon
