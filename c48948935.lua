@@ -24,7 +24,7 @@ function c48948935.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c48948935.fselect(g,tp)
-	return g:IsExists(Card.IsCode,1,nil,13676474,86569121) and aux.mzctcheckrel(g,tp)
+	return g:IsExists(Card.IsCode,1,nil,13676474,86569121) and aux.mzctcheckrel(g,tp,REASON_SPSUMMON)
 end
 function c48948935.spcon(e,c)
 	if c==nil then return true end

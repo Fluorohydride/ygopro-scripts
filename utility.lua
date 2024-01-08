@@ -1012,8 +1012,14 @@ end
 function Auxiliary.mzctcheck(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0
 end
-function Auxiliary.mzctcheckrel(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(REASON_COST,tp,Auxiliary.IsInGroup,#g,nil,g)
+---Check if there is space in mzone after tp releases g by reason
+---@param g Group
+---@param tp integer
+---@param reason? integer
+---@return boolean
+function Auxiliary.mzctcheckrel(g,tp,reason)
+	reason=reason or REASON_COST
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(reason,tp,Auxiliary.IsInGroup,#g,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)

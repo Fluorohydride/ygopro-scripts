@@ -37,12 +37,12 @@ function c10000040.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
-	return g:CheckSubGroupEach(c10000040.spchecks,aux.mzctcheckrel,tp)
+	return g:CheckSubGroupEach(c10000040.spchecks,aux.mzctcheckrel,tp,REASON_SPSUMMON)
 end
 function c10000040.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=g:SelectSubGroupEach(tp,c10000040.spchecks,true,aux.mzctcheckrel,tp)
+	local sg=g:SelectSubGroupEach(tp,c10000040.spchecks,true,aux.mzctcheckrel,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
