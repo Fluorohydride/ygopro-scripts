@@ -26,7 +26,7 @@ function c10000.sumfilter(c)
 end
 function c10000.fselect(g,tp)
 	Duel.SetSelectedCard(g)
-	return g:CheckWithSumGreater(c10000.sumfilter,10000) and aux.mzctcheckrel(g,tp)
+	return g:CheckWithSumGreater(c10000.sumfilter,10000) and aux.mzctcheckrel(g,tp,REASON_SPSUMMON)
 end
 function c10000.spcon(e,c)
 	if c==nil then return true end

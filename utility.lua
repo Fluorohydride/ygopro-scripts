@@ -1012,8 +1012,9 @@ end
 function Auxiliary.mzctcheck(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0
 end
-function Auxiliary.mzctcheckrel(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(REASON_COST,tp,Auxiliary.IsInGroup,#g,nil,g)
+function Auxiliary.mzctcheckrel(g,tp,reason)
+	local res=reason or REASON_COST
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(res,tp,Auxiliary.IsInGroup,#g,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)

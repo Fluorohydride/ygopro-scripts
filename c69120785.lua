@@ -42,12 +42,12 @@ function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(Card.IsSetCard,nil,0x188)
-	return g:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+	return g:CheckSubGroup(aux.mzctcheckrel,2,2,tp,REASON_SPSUMMON)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(Card.IsSetCard,nil,0x188)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=g:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp,REASON_SPSUMMON)
 	Duel.Release(sg,REASON_SPSUMMON)
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
