@@ -334,40 +334,40 @@ function Auxiliary.EnableUnionAttribute(c,filter)
 	c:RegisterEffect(e4)
 end
 function Auxiliary.UnionEquipFilter(filter)
-	return function(c,tp)
-		local ct1,ct2=c:GetUnionCount()
-		return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
-	end
+	return	function(c,tp)
+				local ct1,ct2=c:GetUnionCount()
+				return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
+			end
 end
 function Auxiliary.UnionEquipLimit(filter)
-	return function(e,c)
-		return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
-	end
+	return	function(e,c)
+				return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
+			end
 end
 function Auxiliary.UnionEquipTarget(equip_filter)
-	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-		local c=e:GetHandler()
-		if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
-		if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
-		Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
-		c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+				local c=e:GetHandler()
+				if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
+				if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+					and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+				local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
+				Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
+				c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+			end
 end
 function Auxiliary.UnionEquipOperation(equip_filter)
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local c=e:GetHandler()
-		local tc=Duel.GetFirstTarget()
-		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-		if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
-			Duel.SendtoGrave(c,REASON_RULE)
-			return
-		end
-		if not Duel.Equip(tp,c,tc,false) then return end
-		Auxiliary.SetUnionState(c)
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local c=e:GetHandler()
+				local tc=Duel.GetFirstTarget()
+				if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+				if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
+					Duel.SendtoGrave(c,REASON_RULE)
+					return
+				end
+				if not Duel.Equip(tp,c,tc,false) then return end
+				Auxiliary.SetUnionState(c)
+			end
 end
 function Auxiliary.UnionUnequipTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -913,14 +913,14 @@ function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function Auxiliary.DrytronSpSummonOperation(func)
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local c=e:GetHandler()
-		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
-			c:CompleteProcedure()
-			func(e,tp)
-		end
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local c=e:GetHandler()
+				if not c:IsRelateToEffect(e) then return end
+				if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
+					c:CompleteProcedure()
+					func(e,tp)
+				end
+			end
 end
 ---The `nolimit` parameter for Special Summon effects of Drytron cards
 ---@param c Card
@@ -1480,4 +1480,19 @@ end
 --
 function Auxiliary.NegateSummonCondition()
 	return Duel.GetReadyChain()==0
+end
+--
+function Auxiliary.SameValueFilter(f,value)
+	return	function(c)
+				return f(c)&value==0
+			end
+end
+---Check if all cards in g have the same Attribute/Race
+---@param g Group
+---@param f function
+---@return boolean
+function Auxiliary.SameValueCheck(g,f)
+	local tc=g:GetFirst()
+	local filter=Auxiliary.SameValueFilter(f,f(tc))
+	return not g:IsExists(filter,1,tc)
 end
