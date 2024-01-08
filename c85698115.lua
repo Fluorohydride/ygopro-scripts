@@ -37,6 +37,9 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,s.spfilter,tp,0,LOCATION_GRAVE,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
+function s.rtfilter(c)
+	return c:IsType(TYPE_MONSTER) and c:IsFaceup()
+end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP)~=0 then
@@ -46,7 +49,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.HintSelection(sg)
 			if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=0 then
-			local rg=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_REMOVED,nil,TYPE_MONSTER)
+			local rg=Duel.GetMatchingGroup(s.rtfilter,tp,0,LOCATION_REMOVED,nil)
 				if rg:GetCount()>0 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 					local fg=rg:Select(tp,1,1,nil)
