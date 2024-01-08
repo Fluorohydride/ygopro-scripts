@@ -12,7 +12,7 @@ function c93016201.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetProperty(EFFECT_FLAG_BOTH_SIDE)
 	e3:SetCode(EVENT_SPSUMMON)
-	e3:SetCondition(c93016201.condition2)
+	e3:SetCondition(aux.NegateSummonCondition)
 	e3:SetCost(c93016201.cost2)
 	e3:SetTarget(c93016201.target2)
 	e3:SetOperation(c93016201.activate2)
@@ -29,9 +29,6 @@ function c93016201.initial_effect(c)
 	e4:SetTarget(c93016201.target3)
 	e4:SetOperation(c93016201.activate3)
 	c:RegisterEffect(e4)
-end
-function c93016201.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c93016201.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,800) end
