@@ -70,7 +70,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and rp==tp
-		and re:IsActiveType(TYPE_QUICKPLAY) and re:GetHandler():IsSetCard(0x18c)
+		and re:IsActiveType(TYPE_QUICKPLAY) and re:IsActiveSetCard(0x18c)
 end
 function s.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return re:GetHandler():IsCanOverlay() end

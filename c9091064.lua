@@ -40,7 +40,7 @@ function s.initial_effect(c)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) and r&REASON_COST>0 and re:IsActivated()
-		and re:GetHandler():IsSetCard(0x195) and rp==tp
+		and re:IsActiveSetCard(0x195) and rp==tp
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -68,8 +68,7 @@ function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsChainDisablable(ev) or rp~=1-tp then return false end
 	local te,p=Duel.GetChainInfo(ev-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 	if not te or p~=tp then return false end
-	local tc=te:GetHandler()
-	return tc:IsSetCard(0x19b) and te:IsActiveType(TYPE_MONSTER) or tc:IsSetCard(0x19e)
+	return te:IsActiveSetCard(0x19b) and te:IsActiveType(TYPE_MONSTER) or te:IsActiveSetCard(0x19e)
 		and te:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
