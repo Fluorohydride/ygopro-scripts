@@ -19,6 +19,7 @@ function c66401502.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,66401503)
 	e2:SetCost(c66401502.indescost)
+	e2:SetCondition(c66401502.indesconditon)
 	e2:SetTarget(c66401502.indestg)
 	e2:SetOperation(c66401502.indesop)
 	c:RegisterEffect(e2)
@@ -66,6 +67,10 @@ function c66401502.indescost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.ConfirmCards(1-tp,g)
 	Duel.RaiseEvent(g,EVENT_CUSTOM+9091064,e,REASON_COST,tp,tp,0)
 	Duel.ShuffleHand(tp)
+end
+function c66401502.indesconditon(e,tp,eg,ep,ev,re,r,rp)
+	local ph=Duel.GetCurrentPhase()
+	return Duel.IsAbleToEnterBP() or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE)
 end
 function c66401502.indestg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,66401502)==0 end
