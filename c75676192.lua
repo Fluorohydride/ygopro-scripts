@@ -17,7 +17,7 @@ function c75676192.initial_effect(c)
 	e0:SetCode(EVENT_CHAINING)
 	e0:SetRange(LOCATION_MZONE)
 	e0:SetCondition(c75676192.spchk)
-	e0:SetOperation(aux.chainreg)
+	e0:SetOperation(c75676192.chainreg)
 	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(75676192,0))
@@ -26,6 +26,7 @@ function c75676192.initial_effect(c)
 	e3:SetCode(EVENT_CHAIN_SOLVED)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c75676192.lvcon)
+	e3:SetTarget(c75676192.lvtg)
 	e3:SetOperation(c75676192.lvop)
 	c:RegisterEffect(e3)
 	--indes
@@ -59,8 +60,17 @@ end
 function c75676192.spchk(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
 end
+function c75676192.chainreg(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(75676192,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+end
 function c75676192.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(1)>0
+	e:SetLabel(e:GetHandler():GetFlagEffect(75676192))
+	return e:GetHandler():GetFlagEffect(75676192)>0
+end
+function c75676192.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local count=e:GetLabel()
+    	if chk==0 then return true end
+    	e:SetCountLimit(count,EFFECT_COUNT_CODE_CHAIN)
 end
 function c75676192.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
