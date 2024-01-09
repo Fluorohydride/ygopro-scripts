@@ -1,4 +1,4 @@
---Patissciel Couverture
+--聖菓使クーベル
 function c26435595.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),2,true)

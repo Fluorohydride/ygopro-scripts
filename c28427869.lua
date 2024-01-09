@@ -43,15 +43,14 @@ function c28427869.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_BATTLED)
-		e2:SetRange(LOCATION_MZONE)
+		e2:SetCode(EVENT_DAMAGE_STEP_END)
 		e2:SetOperation(c28427869.skipop)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
 		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c28427869.skipop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
+	Duel.SkipPhase(Duel.GetTurnPlayer(),PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 end
 function c28427869.lvfilter(c,lv)
 	return c:GetLevel()>0 and c:IsFaceup() and not c:IsLevel(lv)

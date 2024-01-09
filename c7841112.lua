@@ -53,7 +53,7 @@ function c7841112.mfilter1(c)
 	return c:IsCode(21159309)
 end
 function c7841112.mfilter2(c,syncard,c1)
-	return c:IsCode(44508094) and (c:IsType(TYPE_TUNER) or c1:IsType(TYPE_TUNER))
+	return c:IsCode(44508094) and (c:IsTuner(syncard) or c1:IsTuner(syncard))
 end
 function c7841112.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp and Duel.IsChainNegatable(ev)

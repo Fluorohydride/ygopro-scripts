@@ -29,8 +29,8 @@ function c72924435.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c72924435.atkfilter,c:GetControler(),LOCATION_MZONE,0,c)*400
 end
 function c72924435.filter(c,e,tp)
-	return c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
-		and c:IsLevelAbove(5)
+	return c:IsRace(RACE_PLANT) and c:IsLevelAbove(5) and not c:IsCode(72924435)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c72924435.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

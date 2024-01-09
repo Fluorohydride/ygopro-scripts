@@ -34,7 +34,7 @@ end
 function c25397880.filter(c)
 	return c:IsSetCard(0x11f) and c:IsAbleToHand() and not c:IsCode(25397880)
 end
-function c25397880.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c25397880.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c25397880.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c25397880.filter,tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_HAND,0,1,nil) end

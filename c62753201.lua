@@ -15,8 +15,8 @@ function c62753201.cfilter(c)
 	return c:IsSetCard(0x102)
 end
 function c62753201.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c62753201.cfilter,1,nil) end
-	local rg=Duel.SelectReleaseGroup(tp,c62753201.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c62753201.cfilter,1,nil) end
+	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c62753201.cfilter,1,1,nil)
 	Duel.Release(rg,REASON_COST)
 	local c=e:GetHandler()
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
@@ -46,14 +46,15 @@ function c62753201.filter(c)
 end
 function c62753201.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c62753201.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c62753201.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c62753201.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
 function c62753201.eqlimit(e,c)
-	return c:GetControler()==e:GetHandlerPlayer() and c:IsType(TYPE_LINK) and c:IsSetCard(0x10f)
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsType(TYPE_LINK) and c:IsSetCard(0x10f)
 end
 function c62753201.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

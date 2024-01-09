@@ -1,4 +1,4 @@
---Beetrooper Squad
+--騎甲虫歩兵分隊
 function c40633084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -25,10 +25,10 @@ function c40633084.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(tp,c40633084.cfilter,1,nil,tp)
+		return Duel.CheckReleaseGroup(REASON_COST,tp,c40633084.cfilter,1,nil,tp)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,64213018,0x170,TYPES_TOKEN_MONSTER,1000,1000,3,RACE_INSECT,ATTRIBUTE_EARTH)
 	end
-	local g=Duel.SelectReleaseGroup(tp,c40633084.cfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c40633084.cfilter,1,1,nil,tp)
 	local atk=g:GetFirst():GetBaseAttack()
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(math.floor(atk/1000))
@@ -44,7 +44,7 @@ function c40633084.activate(e,tp,eg,ep,ev,re,r,rp)
 		table.insert(range,i)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40633084,1))
-	local n=Duel.AnnounceNumber(tp,table.unpack(range)) 
+	local n=Duel.AnnounceNumber(tp,table.unpack(range))
 	local sg=Group.CreateGroup()
 	for i=1,n do
 		local token=Duel.CreateToken(tp,40633085)

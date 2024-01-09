@@ -56,7 +56,7 @@ end
 function c44632120.rlcheck(sg,c,tp)
 	local g=sg:Clone()
 	g:AddCard(c)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
 end
 function c44632120.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

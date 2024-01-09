@@ -1,4 +1,4 @@
---Zektrike Kou-ou
+--ゼクトライク－紅黄
 function c97946536.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

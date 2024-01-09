@@ -1,4 +1,4 @@
---Heavy Beetrooper Mighty Neptune
+--重騎甲虫マイティ・ネプチューン
 function c14357527.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

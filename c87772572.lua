@@ -26,7 +26,8 @@ function c87772572.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			crac=crac*2
 		end
 		e:SetLabel(rac)
-		return rac~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		return e:IsCostChecked()
+			and rac~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local crac=Duel.AnnounceRace(tp,1,e:GetLabel())
@@ -48,8 +49,7 @@ function c87772572.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rac=e:GetLabel()
 	local att=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,87772572,0,TYPES_NORMAL_TRAP_MONSTER,0,2200,4,rac,att) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,87772572,0,TYPES_NORMAL_TRAP_MONSTER,0,2200,4,rac,att) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP,att,rac,0,0,0)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end

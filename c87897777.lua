@@ -84,7 +84,7 @@ function c87897777.spfilter(c,e,tp)
 	local zone=1<<c:GetSequence()
 	return c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end
-function c87897777.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c87897777.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c87897777.spfilter,tp,LOCATION_SZONE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_SZONE)

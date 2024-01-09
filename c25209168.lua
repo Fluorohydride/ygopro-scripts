@@ -27,37 +27,41 @@ function c25209168.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25209168.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	local g1=g:Filter(Card.IsControler,nil,tp)
-	local g2=g:Filter(Card.IsControler,nil,1-tp)
+	local p=Duel.GetTurnPlayer()
+	local g1=g:Filter(Card.IsControler,nil,p)
+	local g2=g:Filter(Card.IsControler,nil,1-p)
 	if Duel.SendtoGrave(g,REASON_EFFECT)==0 then return end
-	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft1>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft1=1 end
-	local ct1=g:FilterCount(c25209168.ctfilter,nil,1-tp)
+	local ft1=Duel.GetLocationCount(p,LOCATION_MZONE)
+	if ft1>1 and Duel.IsPlayerAffectedByEffect(p,59822133) then ft1=1 end
+	local ct1=g:FilterCount(c25209168.ctfilter,nil,1-p)
 	if ct1>ft1 then ct1=ft1 end
-	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
-	if ft2>1 and Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft2=1 end
-	local ct2=g1:FilterCount(c25209168.ctfilter,nil,tp)
+	local ft2=Duel.GetLocationCount(1-p,LOCATION_MZONE)
+	if ft2>1 and Duel.IsPlayerAffectedByEffect(1-p,59822133) then ft2=1 end
+	local ct2=g1:FilterCount(c25209168.ctfilter,nil,p)
 	if ct2>ft2 then ct2=ft2 end
-	local sg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),tp,0,LOCATION_GRAVE,nil,e,0,tp,false,false)
-	local sg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),1-tp,0,LOCATION_GRAVE,nil,e,0,1-tp,false,false)
-	local b1=ft1>0 and sg1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(25209168,1))
-	local b2=ft2>0 and sg2:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(25209168,1))
-	if b1 or b2 then
+	local sg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),p,0,LOCATION_GRAVE,nil,e,0,p,false,false)
+	local sg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),1-p,0,LOCATION_GRAVE,nil,e,0,1-p,false,false)
+	local tg1=Group.CreateGroup()
+	local tg2=Group.CreateGroup()
+	if ft1>0 and sg1:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(25209168,1)) then
+		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_SPSUMMON)
+		tg1=sg1:Select(p,1,ct1,nil)
+		Duel.HintSelection(tg1)
+	end
+	if ft2>0 and sg2:GetCount()>0 and Duel.SelectYesNo(1-p,aux.Stringid(25209168,1)) then
+		Duel.Hint(HINT_SELECTMSG,1-p,HINTMSG_SPSUMMON)
+		tg2=sg2:Select(1-p,1,ct2,nil)
+		Duel.HintSelection(tg2)
+	end
+	if tg1:GetCount()>0 or tg2:GetCount()>0 then
 		Duel.BreakEffect()
-		if b1 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local tg1=sg1:Select(tp,1,ct1,nil)
-			if tg1:GetCount()>0 then
-				Duel.SpecialSummon(tg1,0,tp,tp,false,false,POS_FACEUP)
-			end
+		for sc1 in aux.Next(tg1) do
+			Duel.SpecialSummonStep(sc1,0,p,p,false,false,POS_FACEUP)
 		end
-		if b2 then
-			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
-			local tg2=sg2:Select(1-tp,1,ct2,nil)
-			if tg2:GetCount()>0 then
-				Duel.SpecialSummon(tg2,0,1-tp,1-tp,false,false,POS_FACEUP)
-			end
+		for sc2 in aux.Next(tg2) do
+			Duel.SpecialSummonStep(sc2,0,1-p,1-p,false,false,POS_FACEUP)
 		end
+		Duel.SpecialSummonComplete()
 		local stg=Duel.GetMatchingGroup(c25209168.stfilter,tp,LOCATION_DECK,0,nil)
 		if Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,17484499) and stg:GetCount()>0
 			and Duel.SelectYesNo(tp,aux.Stringid(25209168,2)) then

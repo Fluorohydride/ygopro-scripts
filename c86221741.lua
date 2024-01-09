@@ -56,8 +56,11 @@ function c86221741.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
+function c86221741.cfilter(c)
+	return c:IsSetCard(0xba) and c:IsType(TYPE_MONSTER)
+end
 function c86221741.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsSetCard,1,nil,0xba)
+	return e:GetHandler():GetOverlayGroup():IsExists(c86221741.cfilter,1,nil)
 end
 function c86221741.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

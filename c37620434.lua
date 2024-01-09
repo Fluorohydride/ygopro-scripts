@@ -11,7 +11,7 @@ function c37620434.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37620434.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsAbleToChangeControler()
 end
 function c37620434.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c37620434.filter(chkc) end

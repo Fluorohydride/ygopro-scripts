@@ -32,7 +32,7 @@ function c28674152.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28674152.spfilter(c,tp)
-	return c:IsReleasable() and Duel.GetMZoneCount(1-tp,c,tp)>0
+	return c:IsReleasable(REASON_SPSUMMON) and Duel.GetMZoneCount(1-tp,c,tp)>0
 end
 function c28674152.spcon(e,c)
 	if c==nil then return true end
@@ -42,7 +42,7 @@ end
 function c28674152.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectMatchingCard(tp,c28674152.spfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c28674152.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xd3)

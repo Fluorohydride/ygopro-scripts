@@ -1,5 +1,6 @@
 --壱世壊に軋む爪音
 function c38436986.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_POSITION+CATEGORY_TOGRAVE)

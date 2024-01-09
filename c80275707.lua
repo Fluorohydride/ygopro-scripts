@@ -23,7 +23,7 @@ function s.initial_effect(c)
 	e2:SetCost(s.tohcost)
 	e2:SetTarget(s.tohtg)
 	e2:SetOperation(s.tohop)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -50,11 +50,11 @@ end
 function s.confilter(c)
 	return not (c:IsFaceup() and c:IsRace(RACE_WINDBEAST)) or c:IsFacedown()
 end
-function s.tohcon1(e,tp)
+function s.tohcon1(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	return g:FilterCount(s.confilter,nil)>0
 end
-function s.tohcon2(e,tp)
+function s.tohcon2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	return #g>0 and g:FilterCount(s.confilter,nil)==0
 end
@@ -63,8 +63,8 @@ function s.costfilter(c,tp)
 		and Duel.IsExistingTarget(s.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function s.tohcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,s.costfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(tp,s.costfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function s.cfilter(c)

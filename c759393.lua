@@ -11,7 +11,7 @@ function c759393.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c759393.filter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToChangeControler()
 end
 function c759393.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c759393.filter(chkc) end

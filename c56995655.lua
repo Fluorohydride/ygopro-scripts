@@ -23,7 +23,7 @@ function c56995655.con(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56995655.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1,nil)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)
 	local tc=g:GetFirst()
 	if not tc then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)

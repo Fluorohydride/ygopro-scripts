@@ -17,7 +17,7 @@ function c69572169.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c69572169.rfilter(c)
-	return c:IsSetCard(0x3008) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c69572169.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetMatchingGroup(c69572169.rfilter,tp,LOCATION_GRAVE,0,e:GetHandler())

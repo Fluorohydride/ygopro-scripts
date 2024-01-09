@@ -17,13 +17,14 @@ function c99668578.initial_effect(c)
 	local e3=e1:Clone()
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
+	c99668578.star_knight_summon_effect=e3
 end
 function c99668578.filter(c)
 	return c:IsSetCard(0x9c) and c:IsType(TYPE_MONSTER)
 end
-function c99668578.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c99668578.target(e,tp,eg,ep,ev,re,r,rp,chk,_,exc)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and Duel.IsExistingMatchingCard(c99668578.filter,tp,LOCATION_HAND,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c99668578.filter,tp,LOCATION_HAND,0,1,exc) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end

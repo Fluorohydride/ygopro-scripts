@@ -2,7 +2,7 @@
 function c84330567.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material
-	aux.AddFusionProcCodeFun(c,92731385,aux.FilterBoolFunction(Card.IsSetCard,0x181),1,true,true)
+	aux.AddFusionProcCodeFun(c,92731385,aux.FilterBoolFunction(Card.IsFusionSetCard,0x181),1,true,true)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -57,7 +57,6 @@ function c84330567.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND+LOCATION_ONFIELD)
 end
 function c84330567.disop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c84330567.tgfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)

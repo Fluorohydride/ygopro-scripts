@@ -17,6 +17,7 @@ function c64414267.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c64414267.spcon1)
 	e2:SetCost(c64414267.spcost)
 	e2:SetTarget(c64414267.sptg)
@@ -42,11 +43,9 @@ end
 function c64414267.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST)
-		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil)
-		and c:GetFlagEffect(64414267)==0 end
+		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	c:RemoveOverlayCard(tp,1,1,REASON_COST)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
-	c:RegisterFlagEffect(64414267,RESET_CHAIN,0,1)
 end
 function c64414267.spfilter(c,e,tp,mc)
 	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsSetCard(0x9c) and mc:IsCanBeXyzMaterial(c)

@@ -37,7 +37,7 @@ function c19771459.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c19771459.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then end
+	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c19771459.spcon2(e,tp,eg,ep,ev,re,r,rp)

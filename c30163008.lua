@@ -1,4 +1,4 @@
---Ra'ten, the Heavenly General
+--羅天神将
 function c30163008.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,nil,2,nil,c30163008.lcheck)
@@ -42,7 +42,7 @@ function c30163008.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local lg=c:GetLinkedGroup()
 	local zone=c:GetLinkedZone(tp)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c30163008.chkfilter(chkc,e,tp,lg,e:GetLabel(),zone) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c30163008.chkfilter(chkc,e,tp,lg,e:GetLabel()) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)>0
 		and Duel.IsExistingTarget(c30163008.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp,lg,zone) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

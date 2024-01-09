@@ -51,7 +51,7 @@ function c56321639.initial_effect(c)
 end
 function c56321639.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and re:IsActiveSetCard(0x106e) and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and re:IsActiveSetCard(0x106e) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c56321639.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x1,1)

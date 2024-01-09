@@ -1,4 +1,4 @@
---Libromancer Firestarter
+--リブロマンサー・ファイアスターター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

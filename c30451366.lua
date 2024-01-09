@@ -8,5 +8,5 @@ function c30451366.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30451366.subcon(e)
-	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE)
+	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 end

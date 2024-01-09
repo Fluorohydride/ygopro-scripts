@@ -53,7 +53,7 @@ end
 function c36368606.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject():Filter(c36368606.spfilter,nil,e,tp)
 	if g:GetCount()==0 then return end
-	for p=0,1 do
+	for p in aux.TurnPlayers() do
 		local tg=g:Filter(Card.IsControler,nil,p)
 		local ft=Duel.GetLocationCount(p,LOCATION_MZONE)
 		if ft>1 and Duel.IsPlayerAffectedByEffect(p,59822133) then ft=1 end

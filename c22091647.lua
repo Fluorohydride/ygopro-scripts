@@ -63,16 +63,19 @@ function c22091647.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject()
 	return Duel.GetAttacker()==e:GetHandler() and (ec==nil or ec:GetFlagEffect(22091647)==0)
 end
+function c22091647.eqfilter(c,tp)
+	return c:IsFaceup() and (c:IsControler(tp) or c:IsAbleToChangeControler())
+end
 function c22091647.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
+		and Duel.IsExistingMatchingCard(c22091647.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),tp) end
 end
 function c22091647.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,aux.ExceptThisCard(e))
+	local g=Duel.SelectMatchingCard(tp,c22091647.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,aux.ExceptThisCard(e),tp)
 	local tc=g:GetFirst()
 	if tc then
 		if not Duel.Equip(tp,tc,c) then return end

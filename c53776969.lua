@@ -1,5 +1,6 @@
 --スケアクロー・ライトハート
 function c53776969.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--link summon
 	aux.AddLinkProcedure(c,c53776969.mfilter,1,1)
 	c:EnableReviveLimit()
@@ -26,7 +27,7 @@ function c53776969.initial_effect(c)
 end
 function c53776969.mfilter(c)
 	return (c:IsLinkSetCard(0x17a) or c:IsLinkCode(56099748))
-		and (c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 or not c:IsLocation(LOCATION_MZONE))
+		and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
 end
 function c53776969.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

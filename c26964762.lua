@@ -1,4 +1,4 @@
---D－HERO ダークエンジェル
+--D-HERO ダークエンジェル
 function c26964762.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -32,8 +32,11 @@ function c26964762.initial_effect(c)
 	e3:SetOperation(c26964762.deckop)
 	c:RegisterEffect(e3)
 end
+function c26964762.spcfilter(c)
+	return c:IsSetCard(0xc008) and c:IsType(TYPE_MONSTER)
+end
 function c26964762.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_GRAVE,0,3,nil,0xc008)
+	return Duel.IsExistingMatchingCard(c26964762.spcfilter,tp,LOCATION_GRAVE,0,3,nil)
 end
 function c26964762.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
@@ -68,7 +71,7 @@ function c26964762.deckcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c26964762.cfilter(c)
-	return c:IsSetCard(0xc008) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0xc008) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c26964762.deckcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

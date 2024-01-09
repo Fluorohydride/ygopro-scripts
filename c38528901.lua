@@ -33,7 +33,7 @@ function c38528901.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38528901.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToEffect(e) and c38528901.desfilter(tc) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c38528901.sfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then

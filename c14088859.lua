@@ -31,7 +31,7 @@ function c14088859.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c14088859.filter1(c,e)
-	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c14088859.filter2(c,e,tp,m,chkf)
 	local min,max=aux.GetMaterialListCount(c)

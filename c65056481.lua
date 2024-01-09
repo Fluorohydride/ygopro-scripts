@@ -17,6 +17,7 @@ function c65056481.initial_effect(c)
 	local e3=e1:Clone()
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
+	c65056481.star_knight_summon_effect=e1
 end
 function c65056481.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

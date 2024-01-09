@@ -28,6 +28,7 @@ function c96223501.initial_effect(c)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e5:SetCondition(c96223501.condition)
 	c:RegisterEffect(e5)
+	c96223501.star_knight_summon_effect=e3
 end
 function c96223501.splimit(e,c,sump,sumtype,sumpos,targetp)
 	if c:IsSetCard(0x9c,0xc4) then return false end

@@ -40,16 +40,19 @@ function c86993168.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c86993168.ctfilter(c)
+	return c:IsFaceup() and c:IsControlerCanBeChanged()
+end
 function c86993168.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local c=e:GetHandler()
-		local g=Duel.GetMatchingGroup(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(c86993168.ctfilter,tp,0,LOCATION_MZONE,nil)
 		return g:GetCount()>0 and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 	end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,nil,1,1-tp,LOCATION_MZONE)
 end
 function c86993168.ctop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c86993168.ctfilter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()<=0 or Duel.GetMZoneCount(tp,nil,tp,LOCATION_REASON_CONTROL)<=0 then return end
 	local tg=g:GetMinGroup(Card.GetAttack)
 	local tc=tg:GetFirst()

@@ -24,7 +24,7 @@ function c95519486.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(95519486)
 end
 function c95519486.descon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget()
 		and Duel.IsExistingMatchingCard(c95519486.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c95519486.destg(e,tp,eg,ep,ev,re,r,rp,chk)

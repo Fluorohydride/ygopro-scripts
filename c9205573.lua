@@ -11,7 +11,6 @@ function c9205573.initial_effect(c)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCountLimit(1,9205573)
-	e1:SetCondition(c9205573.drcon)
 	e1:SetTarget(c9205573.drtg)
 	e1:SetOperation(c9205573.drop)
 	c:RegisterEffect(e1)
@@ -34,9 +33,6 @@ function c9205573.lcheck(g,lc)
 end
 function c9205573.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x153)
-end
-function c9205573.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c9205573.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c9205573.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)

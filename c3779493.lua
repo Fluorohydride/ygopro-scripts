@@ -1,4 +1,4 @@
---Night's End Administrator
+--ナイトエンド・アドミニストレーター
 function c3779493.initial_effect(c)
 	aux.AddMaterialCodeList(c,36107810)
 	--synchro summon

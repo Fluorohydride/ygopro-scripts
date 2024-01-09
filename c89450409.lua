@@ -29,7 +29,7 @@ function c89450409.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
 function c89450409.cfilter(c)
-	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsPreviousLocation(LOCATION_EXTRA)
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c89450409.matfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x29)

@@ -47,15 +47,18 @@ function c96239878.mtfilter2(c)
 end
 function c96239878.valcheck(e,c)
 	local g=c:GetMaterial()
-	if c:IsType(TYPE_RITUAL) and g:IsExists(c96239878.mtfilter1,1,nil) then
+	if g:IsExists(c96239878.mtfilter1,1,nil) then
 		c:RegisterFlagEffect(96239878,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
-	elseif c:IsType(TYPE_FUSION) and g:IsExists(c96239878.mtfilter2,1,nil) then
-		c:RegisterFlagEffect(96239878,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
+	end
+	if g:IsExists(c96239878.mtfilter2,1,nil) then
+		c:RegisterFlagEffect(96239879,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c96239878.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsSummonPlayer(tp) and tc:GetFlagEffect(96239878)~=0
+	return tc:IsSummonPlayer(tp)
+		and (tc:IsSummonType(SUMMON_TYPE_RITUAL) and tc:GetFlagEffect(96239878)~=0
+			or tc:IsSummonType(SUMMON_TYPE_FUSION) and tc:GetFlagEffect(96239879)~=0)
 end
 function c96239878.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return (chkc:IsOnField() or chkc:IsLocation(LOCATION_GRAVE)) and chkc:IsControler(1-tp) and chkc:IsAbleToRemove() end

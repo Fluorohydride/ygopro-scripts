@@ -19,7 +19,7 @@ function c88696724.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88696724.subcon(e)
-	return e:GetHandler():IsLocation(0x1e)
+	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 end
 function c88696724.filter(c,e,tp,m,gc,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_EARTH)
@@ -29,7 +29,7 @@ function c88696724.mfilter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c88696724.fcheck(tp,sg,fc)
-	return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#sg,nil,sg)
+	return Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#sg,nil,sg)
 end
 function c88696724.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

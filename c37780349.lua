@@ -1,4 +1,4 @@
---D－HERO ダイナマイトガイ
+--D-HERO ダイナマイトガイ
 function c37780349.initial_effect(c)
 	--Damage to 0
 	local e1=Effect.CreateEffect(c)

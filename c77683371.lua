@@ -62,10 +62,10 @@ function c77683371.drop(e,tp,eg,ep,ev,re,r,rp)
 	if ct>0 and Duel.Draw(p,ct,REASON_EFFECT)==ct then
 		local tg=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
 		if tg:GetCount()==0 then return end
+		Duel.ShuffleHand(p)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=tg:Select(p,ct,ct,nil)
-		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-		Duel.SortDecktop(p,p,ct)
+		aux.PlaceCardsOnDeckTop(p,sg)
 	end
 end

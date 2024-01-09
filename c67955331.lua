@@ -44,10 +44,10 @@ function c67955331.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 	e1:SetTargetRange(1,0)
+	e1:SetLabel(Duel.GetTurnCount())
+	e1:SetCondition(c67955331.splimcon)
 	e1:SetTarget(c67955331.splimit)
 	if Duel.GetTurnPlayer()==tp then
-		e1:SetLabel(Duel.GetTurnCount())
-		e1:SetCondition(c67955331.splimcon)
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	else
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
@@ -58,7 +58,7 @@ function c67955331.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c67955331.splimcon(e)
-	return Duel.GetTurnCount()~=e:GetLabel()
+	return Duel.GetTurnCount()~=e:GetLabel() and Duel.GetTurnPlayer()==e:GetHandlerPlayer()
 end
 function c67955331.splimit(e,c)
 	return not c:IsRace(RACE_SPELLCASTER)

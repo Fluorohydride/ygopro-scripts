@@ -1,6 +1,5 @@
 --波動竜フォノン・ドラゴン
 function c67556500.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_MUST_BE_SMATERIAL)
 	c:SetSPSummonOnce(67556500)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

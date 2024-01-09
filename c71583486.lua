@@ -14,7 +14,7 @@ end
 function c71583486.thfilter(c)
 	return c:IsCode(11548522) and c:IsAbleToHand()
 end
-function c71583486.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c71583486.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local b1=c:IsAbleToDeck()
 	local b2=Duel.IsExistingMatchingCard(c71583486.thfilter,tp,LOCATION_DECK,0,1,nil) and c:IsAbleToDeck()

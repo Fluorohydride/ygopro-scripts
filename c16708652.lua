@@ -14,18 +14,24 @@ function c16708652.initial_effect(c)
 end
 function c16708652.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon()
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
-function c16708652.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsSetCard(0x11)
+function c16708652.filter1(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x11) and c:IsCanChangePosition()
+end
+function c16708652.filter2(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x11)
+end
+function c16708652.chkfilter(c,tp)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x11) and c:IsCanChangePosition() and Duel.IsExistingTarget(c16708652.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c16708652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c16708652.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c16708652.chkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,0))
-	local g1=Duel.SelectTarget(tp,c16708652.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g1=Duel.SelectTarget(tp,c16708652.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,1))
-	local g2=Duel.SelectTarget(tp,c16708652.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,g1:GetFirst())
+	local g2=Duel.SelectTarget(tp,c16708652.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,g1:GetFirst())
 	e:SetLabelObject(g1:GetFirst())
 end
 function c16708652.activate(e,tp,eg,ep,ev,re,r,rp)

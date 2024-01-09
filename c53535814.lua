@@ -1,11 +1,17 @@
 --氷結界の浄玻璃
 function c53535814.initial_effect(c)
 	--It Loses 500 LP for each time they pay/activate a card effect
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_PAY_LPCOST)
+	e0:SetRange(LOCATION_MZONE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c53535814.regop)
+	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PAY_LPCOST)
+	e1:SetCode(EVENT_CHAIN_SOLVED)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(c53535814.llpcon)
 	e1:SetOperation(c53535814.llpop)
 	c:RegisterEffect(e1)
 	--Target up to 2 "Ice Barrier" and opponent's card to the Deck
@@ -36,13 +42,20 @@ end
 function c53535814.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2f)
 end
-function c53535814.llpcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c53535814.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
-		and ep==1-tp and re:IsActivated()
+function c53535814.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if ep==1-tp and re:IsActivated()
+		and Duel.IsExistingMatchingCard(c53535814.cfilter,tp,LOCATION_MZONE,0,1,c) then
+		c:RegisterFlagEffect(53535814,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+	end
 end
 function c53535814.llpop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,53535814)
-	Duel.SetLP(1-tp,Duel.GetLP(1-tp)-500)
+	local c=e:GetHandler()
+	if ep==1-tp and c:GetFlagEffect(53535814)>0
+		and Duel.IsExistingMatchingCard(c53535814.cfilter,tp,LOCATION_MZONE,0,1,c) then
+		Duel.Hint(HINT_CARD,0,53535814)
+		Duel.SetLP(1-tp,Duel.GetLP(1-tp)-500)
+	end
 end
 function c53535814.tdfilter(c)
 	return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()

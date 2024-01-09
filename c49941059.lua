@@ -19,7 +19,7 @@ end
 function c49941059.tgfilter(c)
 	return c:IsAttackPos() and c:IsCanChangePosition() and c:IsControlerCanBeChanged()
 end
-function c49941059.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c49941059.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49941059.tgfilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,1-tp,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,nil,1,1-tp,LOCATION_MZONE)
@@ -30,7 +30,7 @@ function c49941059.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=g:GetFirst()
 	if c and Duel.ChangePosition(c,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE)>0 then
 		Duel.BreakEffect()
-		if Duel.GetControl(c,tp) then
+		if Duel.GetControl(c,tp)>0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)

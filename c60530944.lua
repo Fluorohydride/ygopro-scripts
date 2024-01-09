@@ -44,5 +44,5 @@ function c60530944.operation(e,tp,eg,ep,ev,re,r,rp)
 	local r2=Duel.AnnounceAttribute(1-tp,1,c60530944.getattr(g2))
 	g2:Remove(c60530944.rmfilter,nil,r2)
 	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_EFFECT)
+	Duel.SendtoGrave(g1,REASON_RULE)
 end

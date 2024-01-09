@@ -27,7 +27,7 @@ function c83682725.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c83682725.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsRace(RACE_DINOSAUR) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local sg=Duel.SelectMatchingCard(tp,c83682725.dfilter,tp,0,LOCATION_MZONE,1,2,nil,tc:GetLevel())
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

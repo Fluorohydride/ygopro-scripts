@@ -1,4 +1,4 @@
---D－HERO ダイヤモンドガイ
+--D-HERO ダイヤモンドガイ
 function c13093792.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
@@ -43,16 +43,19 @@ end
 function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetTurnID()~=Duel.GetTurnCount()
 end
+---dynamic target
 function c13093792.spelltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ae=e:GetHandler():GetActivateEffect()
 	local ftg=ae:GetTarget()
 	if chk==0 then
+		e:SetCostCheck(false)
 		return not ftg or ftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	if ae:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	else e:SetProperty(0) end
 	if ftg then
+		e:SetCostCheck(false)
 		ftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end

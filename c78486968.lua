@@ -9,12 +9,13 @@ function c78486968.initial_effect(c)
 	e1:SetTarget(c78486968.tg)
 	e1:SetOperation(c78486968.op)
 	c:RegisterEffect(e1)
+	c78486968.star_knight_summon_effect=e1
 end
 function c78486968.filter(c)
 	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c78486968.tg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c78486968.filter,tp,LOCATION_DECK,0,1,nil) end
+function c78486968.tg(e,tp,eg,ep,ev,re,r,rp,chk,_,exc)
+	if chk==0 then return Duel.IsExistingMatchingCard(c78486968.filter,tp,LOCATION_DECK,0,1,exc) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c78486968.op(e,tp,eg,ep,ev,re,r,rp)

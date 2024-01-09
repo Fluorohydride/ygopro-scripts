@@ -1,5 +1,6 @@
 --覇王門無限
 function c22211622.initial_effect(c)
+	aux.AddCodeList(c,13331639)
 	aux.EnablePendulumAttribute(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

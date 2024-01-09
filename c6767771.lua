@@ -1,5 +1,6 @@
 --壱世壊を劈く弦声
 function c6767771.initial_effect(c)
+	aux.AddCodeList(c,56099748)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

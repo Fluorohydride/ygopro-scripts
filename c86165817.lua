@@ -1,4 +1,4 @@
---E－HERO マリシャス・ベイン
+--E-HERO マリシャス・ベイン
 function c86165817.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material
@@ -67,6 +67,7 @@ function c86165817.desop(e,tp,eg,ep,ev,re,r,rp)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c86165817.atktg)
 	e2:SetReset(RESET_PHASE+PHASE_END)

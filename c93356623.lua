@@ -18,7 +18,7 @@ function c93356623.cfilter(c)
 end
 function c93356623.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c93356623.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and aux.dscon()
+		and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c93356623.filter(c)
 	return c:IsFaceup() and (c:GetAttack()>0 or c:GetDefense()>0 or aux.NegateMonsterFilter(c))

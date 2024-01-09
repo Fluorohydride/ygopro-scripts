@@ -27,6 +27,7 @@ end
 function c70226289.filter(c,e,tp)
 	return c:IsSetCard(0x128) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+---dynamic target
 function c70226289.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc,exc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c70226289.filter,tp,LOCATION_HAND,0,1,exc,e,tp) end

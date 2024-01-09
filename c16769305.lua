@@ -1,4 +1,4 @@
---魔界造車-GT19
+--魔界造車－GT19
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--flip
@@ -60,14 +60,8 @@ function s.syncon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.filter(tc,c,tp)
 	if not tc:IsFaceup() or not tc:IsCanBeSynchroMaterial() then return false end
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
-	tc:RegisterEffect(e1,true)
 	local mg=Group.FromCards(c,tc)
-	local res=Duel.IsExistingMatchingCard(s.synfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
-	e1:Reset()
-	return res
+	return Duel.IsExistingMatchingCard(s.synfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 end
 function s.synfilter(c,mg)
 	return c:IsSynchroSummonable(nil,mg)
@@ -85,19 +79,12 @@ function s.synop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsFaceup() and c:IsRelateToEffect(e)
 		and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
 		local mg=Group.FromCards(c,tc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,s.synfilter,tp,LOCATION_EXTRA,0,1,1,nil,mg)
 		local sc=g:GetFirst()
 		if sc then
 			Duel.SynchroSummon(tp,sc,nil,mg)
-		else
-			e1:Reset()
 		end
 	end
 end

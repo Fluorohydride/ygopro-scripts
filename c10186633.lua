@@ -70,7 +70,7 @@ function c10186633.drop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:SelectSubGroup(tp,c10186633.gcheck,false,1,2)
 	if sg and Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup()
-		if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then return end
+		if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
 		Duel.ShuffleDeck(tp)
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)

@@ -38,7 +38,7 @@ function c30155789.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30155789.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
@@ -67,7 +67,6 @@ function c30155789.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCode(EFFECT_EQUIP_LIMIT)
 		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e3:SetValue(c30155789.eqlimit)
-		e3:SetLabelObject(tc)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e3)
 	else
@@ -75,7 +74,7 @@ function c30155789.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c30155789.eqlimit(e,c)
-	return c==e:GetLabelObject()
+	return e:GetHandler():GetEquipTarget()==c or c:IsControler(e:GetHandlerPlayer())
 end
 function c30155789.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0 and ep~=tp and rp==tp

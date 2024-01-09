@@ -21,7 +21,7 @@ function c1759808.spfilter(c,e,tp,code)
 			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c1759808.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c:IsControler(1-tp) and c1759808.cfilter(chkc,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c1759808.cfilter(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c1759808.cfilter,tp,0,LOCATION_MZONE,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c1759808.cfilter,tp,0,LOCATION_MZONE,1,1,nil,e,tp)
@@ -34,7 +34,7 @@ function c1759808.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c1759808.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetCode())
 		local sc=g:GetFirst()
 		if sc and Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then
-			tc:RegisterFlagEffect(1759808,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+			sc:RegisterFlagEffect(1759808,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_PHASE+PHASE_END)

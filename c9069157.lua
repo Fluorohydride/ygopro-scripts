@@ -23,7 +23,7 @@ function c9069157.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
 function c9069157.thfilter(c)
-	return not c:IsAttribute(ATTRIBUTE_WIND) and c:IsSetCard(0x16) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsNonAttribute(ATTRIBUTE_WIND) and c:IsSetCard(0x16) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c9069157.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c9069157.thfilter,tp,LOCATION_DECK,0,1,nil)

@@ -42,12 +42,12 @@ function c89818984.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroup(tp,c89818984.hspfilter,1,nil,ft,tp)
+	return ft>-1 and Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c89818984.hspfilter,1,nil,ft,tp)
 end
 function c89818984.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c89818984.hspfilter,1,1,nil,ft,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c89818984.hspfilter,1,1,nil,ft,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c89818984.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -77,7 +77,7 @@ function c89818984.cardiansynlevel(c)
 	return 2
 end
 function c89818984.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
 end
 function c89818984.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
 	g:AddCard(c)
@@ -91,6 +91,7 @@ function c89818984.syngoal(g,tp,lv,syncard,minc,ct)
 	return ct>=minc and Duel.GetLocationCountFromEx(tp,tp,g,syncard)>0
 		and (g:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,ct,syncard)
 			or g:CheckWithSumEqual(c89818984.cardiansynlevel,lv,ct,ct,syncard))
+		and aux.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL)
 end
 function c89818984.syntg(e,syncard,f,min,max)
 	local minc=min+1
@@ -100,7 +101,7 @@ function c89818984.syntg(e,syncard,f,min,max)
 	local lv=syncard:GetLevel()
 	if lv<=c:GetLevel() and lv<=c89818984.cardiansynlevel(c) then return false end
 	local g=Group.FromCards(c)
-	local mg=Duel.GetMatchingGroup(c89818984.synfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(c89818984.synfilter,c,syncard,c,f)
 	return mg:IsExists(c89818984.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)
 end
 function c89818984.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
@@ -109,7 +110,7 @@ function c89818984.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
 	local c=e:GetHandler()
 	local lv=syncard:GetLevel()
 	local g=Group.FromCards(c)
-	local mg=Duel.GetMatchingGroup(c89818984.synfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(c89818984.synfilter,c,syncard,c,f)
 	for i=1,maxc do
 		local cg=mg:Filter(c89818984.syncheck,g,g,mg,tp,lv,syncard,minc,maxc)
 		if cg:GetCount()==0 then break end

@@ -28,6 +28,7 @@ function c81003500.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,1-tp,LOCATION_GRAVE)
 end
 function c81003500.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
@@ -38,7 +39,7 @@ function c81003500.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c81003500.spfilter),tp,0,LOCATION_GRAVE,1,1,nil,e,tp)
+			local sg=Duel.SelectMatchingCard(tp,c81003500.spfilter,tp,0,LOCATION_GRAVE,1,1,nil,e,tp)
 			if sg:GetCount()>0 then
 				Duel.SpecialSummon(sg,0,tp,1-tp,false,false,POS_FACEUP)
 			end

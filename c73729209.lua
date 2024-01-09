@@ -46,5 +46,5 @@ function c73729209.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73729209.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.exccon(e) and Duel.GetTurnPlayer()==tp and aux.dscon()
+	return aux.exccon(e) and Duel.GetTurnPlayer()==tp and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end

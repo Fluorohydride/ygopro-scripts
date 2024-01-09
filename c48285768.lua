@@ -1,4 +1,5 @@
 --スプリガンズ・メリーメイカー
+local s,id,o=GetID()
 function c48285768.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--xyz summon
@@ -62,15 +63,16 @@ function c48285768.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local ct=c:GetOverlayCount()
-		Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetReset(RESET_PHASE+PHASE_END)
-		e1:SetLabelObject(c)
-		e1:SetCountLimit(1)
-		e1:SetOperation(c48285768.retop)
-		Duel.RegisterEffect(e1,tp)
+		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_END)
+			e1:SetReset(RESET_PHASE+PHASE_END)
+			e1:SetLabelObject(c)
+			e1:SetCountLimit(1)
+			e1:SetOperation(c48285768.retop)
+			Duel.RegisterEffect(e1,tp)
+		end
 		if ct>=2 and Duel.IsExistingMatchingCard(c48285768.exfilter,tp,LOCATION_EXTRA,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(48285768,2)) then
 			Duel.BreakEffect()

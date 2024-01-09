@@ -11,9 +11,13 @@ function c66226132.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,66226132)
+	e1:SetCondition(c66226132.condition)
 	e1:SetTarget(c66226132.target)
 	e1:SetOperation(c66226132.operation)
 	c:RegisterEffect(e1)
+end
+function c66226132.condition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsAbleToEnterBP()
 end
 function c66226132.tgfilter(c,lg)
 	return lg:IsContains(c)

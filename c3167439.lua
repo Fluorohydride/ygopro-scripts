@@ -7,7 +7,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)
 	e1:SetCountLimit(1,id)
-	e1:SetCondition(s.descon)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetTarget(s.destg)
 	e1:SetOperation(s.desop)
 	c:RegisterEffect(e1)
@@ -24,9 +24,6 @@ function s.initial_effect(c)
 	e3:SetValue(s.repval)
 	e3:SetOperation(s.repop)
 	c:RegisterEffect(e3)
-end
-function s.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function s.tgfilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsDiscardable(REASON_EFFECT)

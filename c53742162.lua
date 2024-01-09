@@ -51,7 +51,7 @@ function c53742162.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c53742162.disfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT) then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and not tc:IsDisabled() then
+		if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

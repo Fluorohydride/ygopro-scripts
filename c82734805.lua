@@ -29,7 +29,7 @@ function c82734805.con(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82734805.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetLabel()
-	local con3,con5,con8,con10=nil
+	local con3,con5,con8,con10=nil,nil,nil,nil
 	if ct>=3 then
 		con3=Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_EXTRA,0,3,nil)
 			and Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,0,LOCATION_EXTRA,3,nil)

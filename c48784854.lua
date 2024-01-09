@@ -1,4 +1,4 @@
---Heritage of the Light
+--光の継承
 function c48784854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -19,7 +19,7 @@ function c48784854.initial_effect(c)
 	e2:SetOperation(c48784854.drop)
 	c:RegisterEffect(e2)
 end
-function c48784854.typfilter(c,sumtype) 
+function c48784854.typfilter(c,sumtype)
 	return c:IsFaceup() and c:GetType()&sumtype>0
 end
 function c48784854.cfilter(c,tp)

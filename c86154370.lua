@@ -1,4 +1,4 @@
---HSR/CWライダー
+--HSR／CWライダー
 function c86154370.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND),aux.NonTuner(c86154370.sfilter),1,1)
@@ -79,15 +79,23 @@ function c86154370.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c86154370.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
+function c86154370.exfilter(c)
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
+end
+function c86154370.gcheck(g,ft1,ft2)
+	return aux.dncheck(g) and #g<=ft1
+		and g:FilterCount(c86154370.exfilter,nil)<=ft2
+end
 function c86154370.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_SYNCHRO)
 	local ect=(c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]) or ft
 	local ct=math.min(ft,ect,2)
 	if ct<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+	local ft2=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM)
 	local g=Duel.GetMatchingGroup(c86154370.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
+	local sg=g:SelectSubGroup(tp,c86154370.gcheck,false,1,2,ct,ft2)
 	if sg then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	end

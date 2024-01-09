@@ -1,4 +1,4 @@
---逢華妖麗譚-魔妖不知火語
+--逢華妖麗譚－魔妖不知火語
 function c62219643.initial_effect(c)
 	--spsummon limit
 	local e1=Effect.CreateEffect(c)
@@ -27,9 +27,9 @@ function c62219643.rfilter(c,tp)
 	return c:IsSetCard(0x121,0xd9) and c:IsType(TYPE_SYNCHRO+TYPE_LINK) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c62219643.limcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c62219643.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c62219643.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,c62219643.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c62219643.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c62219643.limop(e,tp,eg,ep,ev,re,r,rp)
@@ -57,7 +57,7 @@ function c62219643.tgfilter(c)
 	return c:IsRace(RACE_ZOMBIE) and c:IsFaceup() and c:IsAbleToGrave()
 end
 function c62219643.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c62219643.tgfilter(c) end
+	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c62219643.tgfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c62219643.tgfilter,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectTarget(tp,c62219643.tgfilter,tp,LOCATION_REMOVED,0,1,1,nil)

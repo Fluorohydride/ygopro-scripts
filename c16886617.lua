@@ -32,7 +32,7 @@ function c16886617.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c16886617.rfilter(c)
-	return c:IsFaceup() and c:IsAttack(0) and c:IsReleasable()
+	return c:IsFaceup() and c:IsAttack(0) and c:IsReleasable(REASON_SPSUMMON)
 end
 function c16886617.spcon(e,c)
 	if c==nil then return true end
@@ -52,7 +52,7 @@ function c16886617.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c16886617.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c16886617.desfilter(c)

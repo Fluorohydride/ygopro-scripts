@@ -54,8 +54,9 @@ function c40771118.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c40771118.plcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsAbleToGraveAsCost() and c:IsStatus(STATUS_EFFECT_ENABLED) end
+	Duel.SendtoGrave(c,REASON_COST)
 end
 function c40771118.plfilter(c,tp,mc)
 	if not c:IsSetCard(0x1c) then return false end

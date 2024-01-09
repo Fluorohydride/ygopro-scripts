@@ -36,13 +36,13 @@ c10000040.spchecks=aux.CreateChecks(Card.IsOriginalCodeRule,{10000020,10000000,1
 function c10000040.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetReleaseGroup(tp)
-	return g:CheckSubGroupEach(c10000040.spchecks,aux.mzctcheckrel,tp)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
+	return g:CheckSubGroupEach(c10000040.spchecks,aux.mzctcheckrel,tp,REASON_SPSUMMON)
 end
 function c10000040.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetReleaseGroup(tp)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=g:SelectSubGroupEach(tp,c10000040.spchecks,true,aux.mzctcheckrel,tp)
+	local sg=g:SelectSubGroupEach(tp,c10000040.spchecks,true,aux.mzctcheckrel,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -51,7 +51,7 @@ function c10000040.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c10000040.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c10000040.winop(e,tp,eg,ep,ev,re,r,rp)

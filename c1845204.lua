@@ -47,7 +47,7 @@ function c1845204.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e2:SetLabelObject(tc)
 		e2:SetCondition(c1845204.descon)
-		e2:SetOperation(c1845204.desop)
+		e2:SetOperation(aux.EPDestroyOperation)
 		Duel.RegisterEffect(e2,tp)
 	end
 end
@@ -59,8 +59,4 @@ function c1845204.descon(e,tp,eg,ep,ev,re,r,rp)
 		e:Reset()
 		return false
 	end
-end
-function c1845204.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	Duel.Destroy(tc,REASON_EFFECT)
 end

@@ -46,6 +46,7 @@ function c50901852.cfilter(c,atk)
 end
 function c50901852.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c50901852.atkfilter,tp,LOCATION_MZONE,0,nil)
+	local atk=0
 	if g:GetCount()>0 then atk=g:GetSum(Card.GetBaseAttack) end
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c50901852.cfilter(chkc,atk) end
 	if chk==0 then return g:GetCount()>0 and Duel.IsExistingTarget(c50901852.cfilter,tp,LOCATION_MZONE,0,1,nil,atk) end
@@ -72,6 +73,7 @@ function c50901852.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e3:SetTargetRange(LOCATION_MZONE,0)
 		e3:SetTarget(c50901852.ftarget)
 		e3:SetLabel(tc:GetFieldID())

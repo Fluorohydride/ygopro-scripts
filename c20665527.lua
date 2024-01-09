@@ -1,5 +1,7 @@
 --揚陸群艦アンブロエール
 function c20665527.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)
 	c:EnableReviveLimit()
@@ -30,6 +32,7 @@ function c20665527.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_DESTROYED)
 	e3:SetRange(LOCATION_GRAVE)
+	e3:SetLabelObject(e0)
 	e3:SetCountLimit(1,20665528)
 	e3:SetCondition(c20665527.descon)
 	e3:SetCost(aux.bfgcost)
@@ -57,12 +60,13 @@ function c20665527.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c20665527.cfilter(c)
+function c20665527.cfilter(c,se)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_LINK) and c:IsLinkBelow(3)
-		and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:IsPreviousLocation(LOCATION_MZONE) and (se==nil or c:GetReasonEffect()~=se)
 end
 function c20665527.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c20665527.cfilter,1,e:GetHandler())
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c20665527.cfilter,1,e:GetHandler(),se)
 end
 function c20665527.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end

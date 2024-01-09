@@ -15,8 +15,10 @@ function c75775867.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Destroy replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EFFECT_DESTROY_REPLACE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetRange(LOCATION_MZONE)
 	e2:SetTarget(c75775867.reptg)
 	e2:SetOperation(c75775867.repop)
 	c:RegisterEffect(e2)
@@ -28,8 +30,8 @@ function c75775867.cfilter(c)
 	return not c:IsCode(75775867) and c:IsSetCard(0x26)
 end
 function c75775867.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c75775867.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c75775867.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c75775867.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c75775867.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c75775867.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -51,7 +53,7 @@ function c75775867.repfilter(c,e)
 end
 function c75775867.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsOnField() and c:IsFaceup() and c:IsDefensePos()
+	if chk==0 then return c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE) and c:IsDefensePos()
 		and Duel.IsExistingMatchingCard(c75775867.repfilter,tp,LOCATION_MZONE,0,1,c,e) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)

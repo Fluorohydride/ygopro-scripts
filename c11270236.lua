@@ -38,19 +38,17 @@ end
 function c11270236.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)
 end
-function c11270236.rmfilter1(c,tp)
-	local att=c:GetAttribute()
-	return c:IsSetCard(0xf4) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsAbleToRemove()
-		and Duel.IsExistingMatchingCard(c11270236.rmfilter2,tp,0,LOCATION_MZONE,1,nil,att)
+function c11270236.rmfilter1(c)
+	return c:IsSetCard(0xf4) and c:IsType(TYPE_MONSTER) and c:IsFaceupEx() and c:IsAbleToRemove()
 end
 function c11270236.rmfilter2(c,att)
 	return c:IsFaceup() and c:IsAttribute(att) and c:IsAbleToRemove()
 end
 function c11270236.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and chkc:IsControler(tp) and c11270236.rmfilter1(chkc,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c11270236.rmfilter1,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and chkc:IsControler(tp) and c11270236.rmfilter1(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c11270236.rmfilter1,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectTarget(tp,c11270236.rmfilter1,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
+	local g1=Duel.SelectTarget(tp,c11270236.rmfilter1,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil)
 	local g2=Duel.GetMatchingGroup(c11270236.rmfilter2,tp,0,LOCATION_MZONE,nil,g1:GetFirst():GetAttribute())
 	local gr=false
 	if g1:GetFirst():IsLocation(LOCATION_GRAVE) then gr=true end

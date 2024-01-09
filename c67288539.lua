@@ -77,7 +77,7 @@ end
 function c67288539.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0,nil)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c67288539.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
@@ -85,14 +85,14 @@ function c67288539.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67288539.rmfilter(c,e,tp,check)
 	return c:IsFaceup() and c:IsAttackAbove(3000) and c:IsAttribute(ATTRIBUTE_DARK)
-		and (check or Duel.IsExistingMatchingCard(c67288539.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c))
+		and (check or not c:IsImmuneToEffect(e) and Duel.IsExistingMatchingCard(c67288539.spfilter,tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,nil,e,tp,c))
 end
 function c67288539.spfilter(c,e,tp,tc)
 	if not (c:IsSetCard(0x16e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) then return false end
 	if c:IsLocation(LOCATION_EXTRA) then
 		return Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
 	else
-		return Duel.GetMZoneCount(tp)>0
+		return Duel.GetMZoneCount(tp,c)>0
 	end
 end
 function c67288539.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -103,9 +103,16 @@ function c67288539.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67288539.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tg=Duel.SelectMatchingCard(tp,c67288539.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,true)
+	local tg=Duel.SelectMatchingCard(tp,c67288539.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,false)
 	local tc=tg:GetFirst()
-	if not tc then return end
+	if not tc then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local tg2=Duel.SelectMatchingCard(tp,c67288539.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,true)
+		if #tg2>0 then
+			Duel.Remove(tg2,POS_FACEUP,REASON_EFFECT)
+		end
+		return
+	end
 	Duel.HintSelection(tg)
 	if Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

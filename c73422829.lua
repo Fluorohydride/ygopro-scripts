@@ -38,7 +38,7 @@ function c73422829.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c73422829.cfilter(c,tp)
-	return not c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsType(TYPE_MONSTER) and c:IsSetCard(0xdc)
+	return c:IsNonAttribute(ATTRIBUTE_LIGHT) and c:IsType(TYPE_MONSTER) and c:IsSetCard(0xdc)
 		and c:IsAbleToGraveAsCost() and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0
 end
 function c73422829.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

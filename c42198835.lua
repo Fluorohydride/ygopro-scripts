@@ -50,7 +50,7 @@ function c42198835.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c42198835.rhcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c42198835.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c42198835.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c42198835.rhtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToHand() end
@@ -65,7 +65,7 @@ function c42198835.rhop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
-	if c:IsRelateToEffect(e) and Duel.GetControl(c,1-tp) and tg:GetCount()>0 then
+	if c:IsRelateToEffect(e) and Duel.GetControl(c,1-tp)>0 and tg:GetCount()>0 then
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 	end
 end

@@ -24,12 +24,16 @@ function c83544697.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,1,0,0)
 end
+function c83544697.filter2(c,tp)
+	return c:IsOnField() and c:IsControler(tp)
+end
 function c83544697.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
-	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
-	if g1:GetFirst():IsRelateToEffect(e) and g1:GetNext():IsRelateToEffect(e) then
-		Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
-		if g2:GetFirst():IsRelateToEffect(e) then
+	local g=Duel.GetTargetsRelateToChain()
+	local g1=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
+	local g2=g:Filter(c83544697.filter2,nil,1-tp)
+	if g1:GetCount()==2 and Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)==2 then
+		local ct=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
+		if ct==2 and g2:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.Destroy(g2,REASON_EFFECT)
 		end

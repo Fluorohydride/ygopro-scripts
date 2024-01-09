@@ -1,4 +1,4 @@
---Pazuzule
+--パズズル
 function c77384395.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale

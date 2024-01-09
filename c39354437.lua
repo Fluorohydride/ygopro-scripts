@@ -16,7 +16,7 @@ function c39354437.initial_effect(c)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_BE_BATTLE_TARGET)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,39354438+EFFECT_COUNT_CODE_SINGLE)
@@ -25,7 +25,6 @@ function c39354437.initial_effect(c)
 	e3:SetOperation(c39354437.spop)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
-	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_BECOME_TARGET)
 	e4:SetCondition(c39354437.spcon2)
 	c:RegisterEffect(e4)
@@ -46,7 +45,7 @@ function c39354437.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39354437.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp)
+	return eg:IsContains(e:GetHandler()) and Duel.GetAttacker():IsControler(1-tp)
 end
 function c39354437.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler()) and rp==1-tp

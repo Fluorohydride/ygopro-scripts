@@ -44,6 +44,7 @@ function c51028231.initial_effect(c)
 end
 function c51028231.filter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
+		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp))
 		and c:IsSetCard(0x10ec) and not c:IsReason(REASON_REPLACE)
 end
 function c51028231.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

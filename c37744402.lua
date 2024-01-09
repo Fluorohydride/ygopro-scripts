@@ -11,7 +11,7 @@ function c37744402.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37744402.filter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WIND) and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WIND) and c:IsAbleToChangeControler()
 end
 function c37744402.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c37744402.filter(chkc) end

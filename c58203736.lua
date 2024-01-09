@@ -35,7 +35,7 @@ function c58203736.eftg(e,c)
 end
 function c58203736.efilter(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rc:IsControler(1-e:GetHandlerPlayer()) and not rc:IsAttribute(ATTRIBUTE_WATER)
+	return re:IsActiveType(TYPE_MONSTER) and rc:IsControler(1-e:GetHandlerPlayer()) and rc:IsNonAttribute(ATTRIBUTE_WATER)
 end
 function c58203736.spfilter(c,e,tp)
 	return (aux.IsCodeListed(c,22702055) or (c:IsType(TYPE_NORMAL) and c:IsAttribute(ATTRIBUTE_WATER)))

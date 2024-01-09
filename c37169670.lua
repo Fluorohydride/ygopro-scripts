@@ -7,7 +7,7 @@ function c37169670.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(aux.FALSE)
+	e1:SetValue(aux.AssaultModeLimit)
 	c:RegisterEffect(e1)
 	--damage&recover
 	local e2=Effect.CreateEffect(c)
@@ -33,7 +33,7 @@ function c37169670.initial_effect(c)
 end
 c37169670.assault_name=95526884
 function c37169670.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and Duel.GetAttackTarget()~=nil
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttackTarget()~=nil
 end
 function c37169670.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

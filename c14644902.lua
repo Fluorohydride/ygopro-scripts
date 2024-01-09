@@ -25,30 +25,38 @@ function c14644902.rfilter2(c,tp)
 end
 function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rg=Duel.SelectReleaseGroup(tp,c14644902.rfilter,1,1,aux.ExceptThisCard(e),e,tp)
+	local rg=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c14644902.rfilter,1,1,aux.ExceptThisCard(e),e,tp)
 	if Duel.Release(rg,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c14644902.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 		if sg:GetCount()>0 then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+			local fid=c:GetFieldID()
+			sg:GetFirst():RegisterFlagEffect(14644902,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EVENT_PHASE+PHASE_END)
 			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+			e1:SetLabel(fid)
+			e1:SetLabelObject(sg:GetFirst())
+			e1:SetCondition(c14644902.descon)
 			e1:SetOperation(c14644902.desop)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			e1:SetReset(RESET_PHASE+PHASE_END)
 			e1:SetCountLimit(1)
-			sg:GetFirst():RegisterEffect(e1)
+			Duel.RegisterEffect(e1,tp)
 		end
 	end
 	if #rg==0 then
-		rg=Duel.SelectReleaseGroup(tp,c14644902.rfilter2,1,1,aux.ExceptThisCard(e),tp)
+		rg=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c14644902.rfilter2,1,1,aux.ExceptThisCard(e),tp)
 		if #rg>0 then
 			Duel.Release(rg,REASON_EFFECT)
 		end
 	end
 end
+function c14644902.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	return tc:GetFlagEffectLabel(14644902)==e:GetLabel()
+end
 function c14644902.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end

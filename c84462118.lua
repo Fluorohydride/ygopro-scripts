@@ -1,4 +1,4 @@
---Dragonbite
+--竜咬蟲
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--SP Summon

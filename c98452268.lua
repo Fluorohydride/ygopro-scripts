@@ -1,4 +1,4 @@
---覇王黒竜オッドアイズ・リベリオン・ドラゴン−オーバーロード
+--覇王黒竜オッドアイズ・リベリオン・ドラゴン－オーバーロード
 function c98452268.initial_effect(c)
 	c:SetSPSummonOnce(98452268)
 	--xyz summon
@@ -72,7 +72,8 @@ end
 function c98452268.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local mg=Group.FromCards(c)
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c98452268.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c)
 		local tc=g:GetFirst()

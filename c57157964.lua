@@ -36,6 +36,7 @@ function c57157964.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_ATTACK)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(0,LOCATION_MZONE)
+	e4:SetCondition(c57157964.atkcon)
 	e4:SetValue(c57157964.atkval)
 	c:RegisterEffect(e4)
 end
@@ -54,6 +55,9 @@ end
 function c57157964.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
+end
+function c57157964.atkcon(e)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c57157964.atkval(e,c)
 	local val=math.max(c:GetBaseDefense(),0)

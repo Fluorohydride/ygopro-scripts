@@ -22,6 +22,7 @@ function c76524506.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c76524506.sccon)
 	e2:SetTarget(c76524506.sctg)
 	e2:SetOperation(c76524506.scop)
@@ -68,9 +69,7 @@ function c76524506.sccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76524506.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(76524506)==0
-		and Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,c) end
-	c:RegisterFlagEffect(76524506,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,c) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c76524506.scop(e,tp,eg,ep,ev,re,r,rp)

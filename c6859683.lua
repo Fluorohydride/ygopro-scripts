@@ -1,4 +1,4 @@
---成功確率0%
+--成功確率0％
 function c6859683.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)

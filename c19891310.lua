@@ -10,6 +10,7 @@ function c19891310.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_BATTLE_PHASE)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCondition(c19891310.condition)
 	e1:SetCost(c19891310.cost)
 	e1:SetOperation(c19891310.operation)
@@ -34,9 +35,8 @@ function c19891310.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19891310.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) and c:GetFlagEffect(19891310)==0 end
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	c:RemoveOverlayCard(tp,1,1,REASON_COST)
-	c:RegisterFlagEffect(19891310,RESET_CHAIN,0,1)
 end
 function c19891310.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

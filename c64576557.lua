@@ -62,13 +62,13 @@ function c64576557.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c64576557.desfilter,1,nil,tp)
 end
 function c64576557.spfilter(c,e,tp,eg)
-	return c:IsSetCard(0xe2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not eg:IsExists(Card.IsCode,1,nil,c:GetCode())
+	return c:IsSetCard(0xe2) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.TriamidSpSummonType(c)) and not eg:IsExists(Card.IsCode,1,nil,c:GetCode())
 end
 function c64576557.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=eg:Filter(c64576557.desfilter,nil,tp)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsExistingMatchingCard(c64576557.filter,tp,LOCATION_DECK,0,1,nil,e,tp,g)
+			and Duel.IsExistingMatchingCard(c64576557.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,g)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
@@ -78,6 +78,9 @@ function c64576557.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c64576557.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,g)
 	if tg:GetCount()>0 then
-		Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
+		local sc=tg:GetFirst()
+		if Duel.SpecialSummon(tg,0,tp,tp,false,aux.TriamidSpSummonType(sc),POS_FACEUP) and aux.TriamidSpSummonType(sc) then
+			sc:CompleteProcedure()
+		end
 	end
 end

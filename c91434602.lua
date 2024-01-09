@@ -38,6 +38,7 @@ function c91434602.spcfilter(c,tp)
 end
 function c91434602.hspcon(e,c)
 	if c==nil then return true end
+	if c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
 	local tp=c:GetControler()
 	return Duel.IsExistingMatchingCard(c91434602.spcfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
 end

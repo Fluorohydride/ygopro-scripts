@@ -11,6 +11,7 @@ function c43513897.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
+	c43513897.star_knight_summon_effect=e1
 end
 function c43513897.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x53)

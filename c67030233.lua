@@ -51,7 +51,7 @@ function c67030233.mfilter1(c)
 	return c:IsCode(21159309)
 end
 function c67030233.mfilter2(c,syncard,c1)
-	return c:IsCode(70902743) and (c:IsType(TYPE_TUNER) or c1:IsType(TYPE_TUNER))
+	return c:IsCode(70902743) and (c:IsTuner(syncard) or c1:IsTuner(syncard))
 end
 function c67030233.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker()

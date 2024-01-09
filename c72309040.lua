@@ -1,4 +1,4 @@
---Ghoti of the Deep Beyond
+--最果てのゴーティス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
@@ -41,8 +41,8 @@ function s.initial_effect(c)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 end
-function s.mfilter(c,sc)
-	return c:IsRace(RACE_FISH) and c:IsType(TYPE_TUNER) or c:IsNotTuner(sc)
+function s.mfilter(c,syncard)
+	return (c:IsRace(RACE_FISH) and c:IsTuner(syncard)) or c:IsNotTuner(syncard)
 end
 function s.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_MONSTER)

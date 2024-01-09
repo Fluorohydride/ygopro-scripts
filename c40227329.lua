@@ -21,7 +21,7 @@ function c40227329.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCost(c40227329.effcost)
-	e3:SetCondition(c40227329.effcon)
+	e3:SetTarget(c40227329.efftg)
 	e3:SetOperation(c40227329.effop)
 	c:RegisterEffect(e3)
 	--attack
@@ -74,44 +74,36 @@ function c40227329.nttg(e,c)
 	return c:IsLevelAbove(5) and c:IsSetCard(0xaf)
 end
 function c40227329.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
-function c40227329.effcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return not (c:IsHasEffect(EFFECT_DIRECT_ATTACK) and Duel.GetFlagEffect(tp,40227330)>0 and Duel.GetFlagEffect(tp,40227331)>0)
+function c40227329.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		local c=e:GetHandler()
+		local b1=not c:IsHasEffect(EFFECT_DIRECT_ATTACK) and Duel.IsAbleToEnterBP()
+		local b2=Duel.GetFlagEffect(tp,40227330)==0
+		local b3=Duel.GetFlagEffect(tp,40227331)==0
+		return b1 or b2 or b3
+	end
 end
 function c40227329.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local off=1
-	local ops={}
-	local opval={}
-	if not c:IsHasEffect(EFFECT_DIRECT_ATTACK) and Duel.IsAbleToEnterBP() then
-		ops[off]=aux.Stringid(40227329,0)
-		opval[off-1]=1
-		off=off+1
-	end
-	if Duel.GetFlagEffect(tp,40227330)==0 then
-		ops[off]=aux.Stringid(40227329,1)
-		opval[off-1]=2
-		off=off+1
-	end
-	if Duel.GetFlagEffect(tp,40227331)==0 then
-		ops[off]=aux.Stringid(40227329,2)
-		opval[off-1]=3
-		off=off+1
-	end
-	if off==1 then return end
-	local op=Duel.SelectOption(tp,table.unpack(ops))
-	if opval[op]==1 then
+	local b1=not c:IsHasEffect(EFFECT_DIRECT_ATTACK) and Duel.IsAbleToEnterBP()
+	local b2=Duel.GetFlagEffect(tp,40227330)==0
+	local b3=Duel.GetFlagEffect(tp,40227331)==0
+	local op=aux.SelectFromOptions(tp,
+		{b1,aux.Stringid(40227329,0)},
+		{b2,aux.Stringid(40227329,1)},
+		{b3,aux.Stringid(40227329,2)})
+	if op==1 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
-	elseif opval[op]==2 then
+	elseif op==2 then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetCode(EFFECT_CANNOT_ACTIVATE)
@@ -121,7 +113,7 @@ function c40227329.effop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e2,tp)
 		Duel.RegisterFlagEffect(tp,40227330,RESET_PHASE+PHASE_END,0,1)
-	elseif opval[op]==3 then
+	elseif op==3 then
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

@@ -39,7 +39,7 @@ end
 function c48372950.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x11a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c48372950.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c48372950.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c48372950.spfilter(chkc,e,tp) end
 	if chk==0 then return e:GetHandler():IsAbleToHand() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c48372950.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end

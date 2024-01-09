@@ -1,4 +1,4 @@
---Libromancer Geek Boy
+--リブロマンサー・Gボーイ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--SP sum itself

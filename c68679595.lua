@@ -61,7 +61,7 @@ end
 function c68679595.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=c:GetEquipGroup()
-	return g:IsExists(c68679595.cfilter,1,nil) and aux.dscon()
+	return g:IsExists(c68679595.cfilter,1,nil) and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68679595.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and aux.NegateEffectMonsterFilter(chkc) end
@@ -73,7 +73,7 @@ end
 function c68679595.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and not tc:IsDisabled() then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local atk=tc:GetAttack()
 		local e1=Effect.CreateEffect(c)

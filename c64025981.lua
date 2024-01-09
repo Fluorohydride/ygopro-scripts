@@ -52,7 +52,7 @@ function c64025981.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64025981.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and aux.bpcon()
+	return Duel.GetTurnPlayer()==tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c64025981.filter(c)
 	return c:IsFaceup() and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)

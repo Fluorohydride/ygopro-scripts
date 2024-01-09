@@ -19,18 +19,19 @@ end
 function c43011492.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c43011492.filter,tp,LOCATION_MZONE,0,1,nil)
 end
-function c43011492.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP)
-end
-function c43011492.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c43011492.desfilter(chkc) and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(c43011492.desfilter,tp,0,LOCATION_ONFIELD,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c43011492.desfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
+function c43011492.desfilter(c,res)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and (not res or c:IsAbleToRemove())
 end
 function c43011492.filter1(c)
 	return c:IsCode(44133040) and c:IsFaceup()
+end
+function c43011492.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local res=Duel.IsExistingMatchingCard(c43011492.filter1,tp,LOCATION_SZONE,0,1,nil)
+	if chkc then return chkc:IsOnField() and c43011492.desfilter(chkc,res) and chkc:IsControler(1-tp) end
+	if chk==0 then return Duel.IsExistingTarget(c43011492.desfilter,tp,0,LOCATION_ONFIELD,1,nil,res) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+	local g=Duel.SelectTarget(tp,c43011492.desfilter,tp,0,LOCATION_ONFIELD,1,1,nil,res)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c43011492.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

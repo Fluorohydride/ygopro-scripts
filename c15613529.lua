@@ -31,7 +31,7 @@ function c15613529.cfilter(c)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelAbove(5) and c:IsFaceup()
 end
 function c15613529.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION)
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	local tc=re:GetHandler()
 	return tc:IsControler(1-tp) and loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
 		and Duel.IsExistingMatchingCard(c15613529.cfilter,tp,LOCATION_MZONE,0,1,nil)

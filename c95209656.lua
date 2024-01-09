@@ -87,7 +87,8 @@ function c95209656.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c95209656.spfilter(c,e,tp)
-	return c:IsSetCard(0x154) and c:IsAttackAbove(1) and not c:IsCode(95209656) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x154) and c:IsAttackAbove(1) and not c:IsCode(95209656)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DrytronSpSummonType(c))
 end
 function c95209656.fselect(g)
 	return g:GetSum(Card.GetAttack)==4000
@@ -120,6 +121,11 @@ function c95209656.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:SelectSubGroup(tp,c95209656.fselect,false,1,ct)
 	aux.GCheckAdditional=nil
 	if sg then
-		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+		for tc in aux.Next(sg) do
+			if Duel.SpecialSummonStep(tc,0,tp,tp,false,aux.DrytronSpSummonType(tc),POS_FACEUP) and aux.DrytronSpSummonType(tc) then
+				tc:CompleteProcedure()
+			end
+		end
+		Duel.SpecialSummonComplete()
 	end
 end

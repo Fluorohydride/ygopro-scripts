@@ -1,4 +1,4 @@
---Colonel on C-String
+--C戦場の指揮官 コロネル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

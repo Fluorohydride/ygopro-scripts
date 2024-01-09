@@ -1,4 +1,4 @@
---Beetrooper Sting Lancer
+--騎甲虫スティンギー・ランス
 function c65430555.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

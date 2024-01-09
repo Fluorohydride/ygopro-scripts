@@ -23,7 +23,7 @@ function c70117860.cfilter1(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WIND)
 end
 function c70117860.cfilter2(c)
-	return c:IsFacedown() or not c:IsAttribute(ATTRIBUTE_WIND)
+	return c:IsFacedown() or c:IsNonAttribute(ATTRIBUTE_WIND)
 end
 function c70117860.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c70117860.cfilter1,tp,LOCATION_MZONE,0,2,nil)

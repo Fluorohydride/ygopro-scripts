@@ -1,5 +1,6 @@
 --ゲート・ガーディアン
 function c25833572.initial_effect(c)
+	aux.AddCodeList(c,25955164,62340868,98434877)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -16,13 +17,13 @@ c25833572.spchecks=aux.CreateChecks(Card.IsCode,{25955164,62340868,98434877})
 function c25833572.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetReleaseGroup(tp)
-	return g:CheckSubGroupEach(c25833572.spchecks,aux.mzctcheckrel,tp)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
+	return g:CheckSubGroupEach(c25833572.spchecks,aux.mzctcheckrel,tp,REASON_SPSUMMON)
 end
 function c25833572.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetReleaseGroup(tp)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=g:SelectSubGroupEach(tp,c25833572.spchecks,true,aux.mzctcheckrel,tp)
+	local sg=g:SelectSubGroupEach(tp,c25833572.spchecks,true,aux.mzctcheckrel,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -31,6 +32,6 @@ function c25833572.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c25833572.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end

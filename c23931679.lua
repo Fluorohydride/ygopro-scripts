@@ -1,4 +1,4 @@
---海竜神-リバイアサン
+--海竜神－リバイアサン
 function c23931679.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--to hand
@@ -10,14 +10,14 @@ function c23931679.initial_effect(c)
 	e1:SetTarget(c23931679.thtg)
 	e1:SetOperation(c23931679.thop)
 	c:RegisterEffect(e1)
-	--adjust
+	--mark
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e2:SetCode(EVENT_ADJUST)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(23931679)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetTargetRange(1,1)
 	e2:SetCondition(c23931679.condition)
-	e2:SetOperation(c23931679.adjustop)
 	c:RegisterEffect(e2)
 	--cannot summon,spsummon,flipsummon
 	local e3=Effect.CreateEffect(c)
@@ -35,6 +35,16 @@ function c23931679.initial_effect(c)
 	local e5=e3:Clone()
 	e5:SetCode(EFFECT_CANNOT_FLIP_SUMMON)
 	c:RegisterEffect(e5)
+	if not c23931679.global_check then
+		c23931679.global_check=true
+		--adjust
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		ge1:SetCode(EVENT_ADJUST)
+		ge1:SetOperation(c23931679.adjustop)
+		Duel.RegisterEffect(ge1,0)
+	end
 end
 c23931679[0]=0
 c23931679[1]=0
@@ -58,10 +68,10 @@ function c23931679.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23931679.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
-	return not c:IsAttribute(ATTRIBUTE_WATER) and c23931679[targetp or sump]==1
+	return c:IsNonAttribute(ATTRIBUTE_WATER) and c23931679[targetp or sump]==1
 end
 function c23931679.wtfilter(c)
-	return not c:IsAttribute(ATTRIBUTE_WATER) and c:IsFaceup()
+	return c:IsNonAttribute(ATTRIBUTE_WATER) and c:IsFaceup()
 end
 function c23931679.rmfilter(c,at)
 	return c:GetAttribute()==at
@@ -70,6 +80,11 @@ function c23931679.tgselect(sg,g)
 	return #(g-sg)==1 and not sg:IsExists(c23931679.rmfilter,1,nil,ATTRIBUTE_WATER)
 end
 function c23931679.adjustop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerAffectedByEffect(0,23931679) then
+		c23931679[0]=0
+		c23931679[1]=0
+		return
+	end
 	local phase=Duel.GetCurrentPhase()
 	if (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()) or phase==PHASE_DAMAGE_CAL then return end
 	local g1=Duel.GetMatchingGroup(c23931679.wtfilter,tp,LOCATION_MZONE,0,nil)

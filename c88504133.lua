@@ -49,6 +49,7 @@ function c88504133.tgefilter(c,tc,e,tp,rank)
 end
 function c88504133.tgfilter(c,e,tp,rank)
 	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK)
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c88504133.tgefilter,tp,LOCATION_EXTRA,0,1,nil,c,e,tp,rank)
 end
 function c88504133.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

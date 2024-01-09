@@ -17,6 +17,9 @@ function c58147549.initial_effect(c)
 	e2:SetValue(c58147549.atkup)
 	c:RegisterEffect(e2)
 end
+function c58147549.atkfilter(c)
+	return c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER)
+end
 function c58147549.atkup(e,c)
-	return Duel.GetMatchingGroupCount(Card.IsSetCard,c:GetControler(),LOCATION_GRAVE,0,nil,0x8)*100
+	return Duel.GetMatchingGroupCount(c58147549.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil)*100
 end

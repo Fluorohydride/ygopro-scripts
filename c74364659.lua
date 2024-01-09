@@ -11,7 +11,7 @@ function c74364659.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c74364659.filter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToChangeControler()
 end
 function c74364659.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c74364659.filter(chkc) end

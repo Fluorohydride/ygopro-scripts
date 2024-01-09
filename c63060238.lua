@@ -41,7 +41,7 @@ function c63060238.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63060238.tgfilter(c)
-	return c:IsSetCard(0x3008) and not c:IsCode(63060238) and c:IsAbleToGrave()
+	return c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER) and not c:IsCode(63060238) and c:IsAbleToGrave()
 end
 function c63060238.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c63060238.tgfilter,tp,LOCATION_DECK,0,1,nil) end

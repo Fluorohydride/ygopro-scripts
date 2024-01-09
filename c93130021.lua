@@ -1,4 +1,4 @@
---ビクトリー・バイパー XX０３
+--ビクトリー・バイパー XX03
 function c93130021.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93130021,0))
@@ -24,6 +24,7 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
+	local op=0
 	if t1 and t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))
 	elseif t1 then
@@ -31,7 +32,9 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	elseif t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,3))
 		if op==1 then op=2 end
-	else op=Duel.SelectOption(tp,aux.Stringid(93130021,1)) end
+	else
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1))
+	end
 	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(CATEGORY_DESTROY)
@@ -70,7 +73,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE,EFFECT_FLAG2_OPTION)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetValue(c93130021.tokenatk)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)

@@ -56,7 +56,7 @@ function c58074177.atkcon(e,tp,eg,ep,ev,re,r,rp)
 		and d and d:IsFaceup() and d:IsRelateToBattle()
 		and d:GetAttack()>0 and a:GetControler()~=d:GetControler()
 end
-function c58074177.atkop(e,tp,ep,ev,re,r,rp)
+function c58074177.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=a:GetBattleTarget()
 	if a:IsControler(1-tp) then a,d=d,a end

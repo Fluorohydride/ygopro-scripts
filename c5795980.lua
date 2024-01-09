@@ -39,14 +39,14 @@ function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,c,c,tp)
+			return Duel.CheckReleaseGroup(REASON_COST,tp,c5795980.cfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,c,c,tp)
+		local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c5795980.cfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
@@ -57,7 +57,7 @@ end
 function c5795980.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and ((tc:IsFaceup() and tc:IsCanBeDisabledByEffect(e)) or tc:IsType(TYPE_TRAPMONSTER)) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e,false) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

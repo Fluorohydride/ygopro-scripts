@@ -62,9 +62,6 @@ end
 function c90488465.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c90488465.dfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:IsControler(tp)
-end
 function c90488465.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
@@ -73,19 +70,7 @@ function c90488465.tdop(e,tp,eg,ep,ev,re,r,rp)
 		if sg:GetCount()>0 then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			tg:Sub(sg)
-		end
-		Duel.SendtoDeck(tg,nil,SEQ_DECKTOP,REASON_EFFECT)
-		local p=tp
-		for i=1,2 do
-			local dg=tg:Filter(c90488465.dfilter,nil,p)
-			if #dg>1 then
-				Duel.SortDecktop(tp,p,#dg)
-			end
-			for i=1,#dg do
-				local mg=Duel.GetDecktopGroup(p,1)
-				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-			end
-			p=1-tp
+			aux.PlaceCardsOnDeckBottom(tp,tg)
 		end
 	end
 end

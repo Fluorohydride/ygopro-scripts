@@ -24,7 +24,7 @@ function c30983281.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCountLimit(1,100287122)
+	e2:SetCountLimit(1,30983282)
 	e2:SetCondition(c30983281.sccon)
 	e2:SetCost(c30983281.sccost)
 	e2:SetTarget(c30983281.sctg)
@@ -55,13 +55,19 @@ end
 function c30983281.excostfilter(c,tp)
 	return c:IsAbleToRemoveAsCost() and c:IsHasEffect(84012625,tp)
 end
+function c30983281.synfilter(c,tp,g)
+	return c:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,c)
+end
+function c30983281.syncheck(g,tp,exc)
+	return Duel.IsExistingMatchingCard(c30983281.synfilter,tp,LOCATION_EXTRA,0,1,exc,tp,g)
+end
 function c30983281.spcheck(c,tp,rc,mg,opchk)
 	return Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
-		and (opchk or Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,c,nil,mg))
+		and (opchk or mg:CheckSubGroup(c30983281.syncheck,2,#mg,tp,c))
 end
 function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk)
 	if not (c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)) then return false end
-	local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local mg=Duel.GetSynchroMaterial(tp)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
 		local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
 		if mg2:GetCount()>0 then mg:Merge(mg2) end
@@ -74,7 +80,6 @@ function c30983281.scfilter(c,e,tp,rc,chkrel,chknotrel,tgchk,opchk)
 	end
 end
 function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(100)
 	local c=e:GetHandler()
 	local ect1=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	local ect2=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
@@ -106,10 +111,7 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30983281.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		if e:GetLabel()==100 then
-			e:SetLabel(0)
-			return true
-		end
+		if e:IsCostChecked() then return true end
 		local c=e:GetHandler()
 		local ect1=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 		local ect2=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
@@ -119,7 +121,6 @@ function c30983281.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 			and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 			and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,nil,nil,true)
 	end
-	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
@@ -132,9 +133,10 @@ function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
 		tc:SetMaterial(nil)
 		if Duel.SpecialSummonStep(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(c)
+			e1:SetDescription(aux.Stringid(30983281,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_IMMUNE_EFFECT)
-			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetValue(c30983281.immval)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
@@ -152,9 +154,10 @@ function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=tg:Select(tp,1,1,nil)
 		local e1=Effect.CreateEffect(c)
+		e1:SetDescription(aux.Stringid(30983281,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_IMMUNE_EFFECT)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetValue(c30983281.immval)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_PHASE+PHASE_END)

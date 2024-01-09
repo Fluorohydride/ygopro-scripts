@@ -12,7 +12,7 @@ function c35329581.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35329581.filter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsCanBeEffectTarget(e)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e)
 		and c:IsPreviousControler(tp) and c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:IsType(TYPE_SYNCHRO) and Duel.IsExistingMatchingCard(c35329581.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end

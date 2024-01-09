@@ -1,4 +1,4 @@
---Beetrooper Fly & Sting
+--騎甲虫空殺舞隊
 function c1712616.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

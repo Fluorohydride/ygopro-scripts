@@ -53,7 +53,7 @@ function c22423493.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c22423493.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetTargetsRelateToChain():Filter(aux.NegateAnyFilter,nil)
 	if g:GetCount()~=2 then return end
 	for tc in aux.Next(g) do
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)

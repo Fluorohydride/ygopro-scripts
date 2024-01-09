@@ -38,16 +38,14 @@ function c96162588.rlcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c96162588.cfilter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c96162588.rltg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsReleasable,1-tp,LOCATION_MZONE,0,1,nil,REASON_RULE) end
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_RULE,1-tp,nil,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_RELEASE,nil,1,1-tp,LOCATION_MZONE)
 end
 function c96162588.rlop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsReleasable,1-tp,LOCATION_MZONE,0,nil,REASON_RULE)
+	local g=Duel.SelectReleaseGroup(REASON_RULE,1-tp,nil,1,1,nil)
 	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_RELEASE)
-		local sg=g:Select(1-tp,1,1,nil)
-		Duel.HintSelection(sg)
-		Duel.Release(sg,REASON_RULE)
+		Duel.HintSelection(g)
+		Duel.Release(g,REASON_RULE,1-tp)
 	end
 end
 function c96162588.desfilter(c)

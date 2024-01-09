@@ -56,8 +56,8 @@ function c50260683.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c50260683.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x70) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x70)
+	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x70) end
+	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x70)
 	Duel.Release(g,REASON_COST)
 end
 function c50260683.filter2(c)
@@ -72,7 +72,7 @@ function c50260683.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50260683.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsAttack(tc:GetBaseAttack()) then
+	if tc:IsRelateToEffect(e) and c50260683.filter2(tc) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

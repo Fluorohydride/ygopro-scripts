@@ -57,7 +57,7 @@ function c71187462.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local tg=g:SelectWithSumEqual(tp,Card.GetLevel,lv,1,99)
 		if #tg>0 then
 			tg:AddCard(c)
-			if Duel.SendtoGrave(tg,nil,REASON_EFFECT)>1 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
+			if Duel.SendtoGrave(tg,REASON_EFFECT)>1 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sg=Duel.SelectMatchingCard(tp,c71187462.sfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 				if sg:GetCount()>0 then

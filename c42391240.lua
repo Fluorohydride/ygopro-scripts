@@ -13,13 +13,14 @@ function c42391240.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
+	c42391240.star_knight_summon_effect=e1
 end
 function c42391240.tgfilter(c)
 	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c42391240.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c42391240.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc,exc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c42391240.tgfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c42391240.tgfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c42391240.tgfilter,tp,LOCATION_GRAVE,0,1,exc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c42391240.tgfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)

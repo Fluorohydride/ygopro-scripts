@@ -32,7 +32,7 @@ function c76922029.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76922029.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
-		local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0,nil)
+		local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0)
 		local sg=g:RandomSelect(ep,1)
 		Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)
 	else

@@ -8,16 +8,21 @@ function c14291024.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c14291024.spcon)
-	e1:SetOperation(c14291024.spop)
 	c:RegisterEffect(e1)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_SPSUMMON_COST)
+	e0:SetOperation(c14291024.spcost)
+	c:RegisterEffect(e0)
 	local g=Group.CreateGroup()
 	g:KeepAlive()
-	e1:SetLabelObject(g)
+	e0:SetLabelObject(g)
 	--spsummon con
 	local e2=Effect.CreateEffect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
+	e2:SetValue(c14291024.splimit)
 	c:RegisterEffect(e2)
 	--set target
 	local e3=Effect.CreateEffect(c)
@@ -25,7 +30,7 @@ function c14291024.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetOperation(c14291024.tgop)
-	e3:SetLabelObject(e1)
+	e3:SetLabelObject(e0)
 	c:RegisterEffect(e3)
 	--atk.def
 	local e4=Effect.CreateEffect(c)
@@ -57,18 +62,25 @@ function c14291024.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c14291024.filter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
-function c14291024.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c14291024.spcost(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():Clear()
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14291024,0))
 	local g=Duel.SelectMatchingCard(tp,c14291024.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.HintSelection(g)
-	e:GetLabelObject():Clear()
-	e:GetLabelObject():Merge(g)
+	if g:GetCount()>0 then
+		Duel.HintSelection(g)
+		e:GetLabelObject():Merge(g)
+	end
+end
+function c14291024.splimit(e,se,sp,st,pos,top)
+	return Duel.IsExistingMatchingCard(c14291024.filter,sp,LOCATION_MZONE,0,1,nil)
 end
 function c14291024.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=e:GetLabelObject():GetLabelObject()
-	c:SetCardTarget(g:GetFirst())
-	c:RegisterFlagEffect(14291024,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
+	if g:GetCount()>0 then
+		c:SetCardTarget(g:GetFirst())
+		c:RegisterFlagEffect(14291024,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
 end
 function c14291024.adcon(e)
 	return e:GetHandler():GetFirstCardTarget()~=nil

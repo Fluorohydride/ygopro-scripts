@@ -11,7 +11,6 @@ function c33971095.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
-	e2:SetCost(c33971095.lvcost)
 	e2:SetTarget(c33971095.lvtg)
 	e2:SetOperation(c33971095.lvop)
 	c:RegisterEffect(e2)
@@ -26,29 +25,19 @@ function c33971095.initial_effect(c)
 	e3:SetOperation(c33971095.atkop)
 	c:RegisterEffect(e3)
 end
-function c33971095.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
-	return true
-end
 function c33971095.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x106)
 end
 function c33971095.filter(c,tp)
-	return c:IsFaceup() and c:IsLevelAbove(1) and Duel.CheckReleaseGroupEx(tp,c33971095.cfilter,1,c,c)
+	return c:IsFaceup() and c:IsLevelAbove(1) and Duel.CheckReleaseGroupEx(REASON_COST,tp,c33971095.cfilter,1,c,c)
 end
 function c33971095.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c33971095.filter(chkc) end
-	if chk==0 then
-		if e:GetLabel()==1 then
-			e:SetLabel(0)
-			return Duel.IsExistingTarget(c33971095.filter,tp,LOCATION_MZONE,0,1,nil,tp)
-		else
-			return false
-		end
-	end
+	if chk==0 then return e:IsCostChecked()
+		and Duel.IsExistingTarget(c33971095.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local tc=Duel.SelectTarget(tp,c33971095.filter,tp,LOCATION_MZONE,0,1,1,nil,tp):GetFirst()
-	local sg=Duel.SelectReleaseGroupEx(tp,c33971095.cfilter,1,1,tc,tc)
+	local sg=Duel.SelectReleaseGroupEx(REASON_COST,tp,c33971095.cfilter,1,99,tc,tc)
 	Duel.Release(sg,REASON_COST)
 	e:SetLabel(sg:GetCount())
 end

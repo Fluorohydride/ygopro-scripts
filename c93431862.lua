@@ -1,4 +1,4 @@
---D－HERO ダンクガイ
+--D-HERO ダンクガイ
 function c93431862.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

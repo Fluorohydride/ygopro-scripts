@@ -26,16 +26,12 @@ function c16598965.activate(e,tp,eg,ep,ev,re,r,rp)
 	if f1 and (not f2 or Duel.SelectYesNo(tp,aux.Stringid(16598965,1))) and Duel.Draw(tp,3,REASON_EFFECT)==3 then
 		res=true
 		local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_HAND,0,nil)
-		if #g<2 then return end
+		if g:GetCount()<2 then return end
+		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local sg=g:Select(tp,2,2,nil)
-		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
-		Duel.SortDecktop(tp,tp,2)
-		for i=1,2 do
-			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-		end
+		aux.PlaceCardsOnDeckBottom(tp,sg)
 	end
 	if f2 and (not res or Duel.SelectYesNo(tp,aux.Stringid(16598965,2))) and Duel.Draw(1-tp,1,REASON_EFFECT)==1 then
 		Duel.ShuffleHand(1-tp)

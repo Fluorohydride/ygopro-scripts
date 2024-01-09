@@ -18,12 +18,12 @@ function c88559132.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroup(tp,c88559132.spfilter,1,nil,ft,tp)
+	return ft>-1 and Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c88559132.spfilter,1,nil,ft,tp)
 end
 function c88559132.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c88559132.spfilter,1,1,nil,ft,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c88559132.spfilter,1,1,nil,ft,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 	local atk=g:GetFirst():GetBaseAttack()
 	if atk<0 then return end
 	local e1=Effect.CreateEffect(c)

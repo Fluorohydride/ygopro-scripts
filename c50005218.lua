@@ -49,7 +49,7 @@ function c50005218.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		if g:IsExists(Card.IsSetCard,1,nil,0x115) then
 			if g:IsExists(c50005218.thfilter,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(50005218,2)) then
-				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local sg=g:FilterSelect(tp,c50005218.thfilter,1,1,nil)
 				Duel.SendtoHand(sg,nil,REASON_EFFECT)
 				Duel.ConfirmCards(1-tp,sg)

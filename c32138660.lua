@@ -25,6 +25,7 @@ function c32138660.initial_effect(c)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c32138660.atkcon)
 	e3:SetTarget(c32138660.atktg)
 	e3:SetOperation(c32138660.atkop)
@@ -71,9 +72,7 @@ function c32138660.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32138660.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.nzatk(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.nzatk,tp,0,LOCATION_MZONE,1,nil)
-		and e:GetHandler():GetFlagEffect(32138660)==0 end
-	e:GetHandler():RegisterFlagEffect(32138660,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingTarget(aux.nzatk,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,aux.nzatk,tp,0,LOCATION_MZONE,1,1,nil)
 end

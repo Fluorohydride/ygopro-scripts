@@ -114,10 +114,11 @@ function c4538826.gyop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 or Duel.SendtoGrave(g,REASON_EFFECT)==0 then return end
 	local oc=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
 	if oc==0 then return end
+	local dc=Duel.GetOperatedGroup():FilterCount(c4538826.sgfilter,nil,1-tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local og=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_ONFIELD,1,oc,nil)
 	if Duel.SendtoGrave(og,REASON_EFFECT)>0 then
-		local dc=Duel.GetOperatedGroup():FilterCount(c4538826.sgfilter,nil,1-tp)
+		dc=dc+Duel.GetOperatedGroup():FilterCount(c4538826.sgfilter,nil,1-tp)
 		if dc==0 then return end
 		Duel.BreakEffect()
 		Duel.Damage(1-tp,dc*300,REASON_EFFECT)

@@ -1,4 +1,4 @@
---Beetrooper Light Flapper
+--騎甲虫ライト・フラッパー
 function c88962829.initial_effect(c)
 	--add
 	local e1=Effect.CreateEffect(c)
@@ -31,7 +31,8 @@ function c88962829.thfilter(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x170) and c:IsAbleToHand()
 		and (not c:IsLocation(LOCATION_REMOVED) or c:IsFaceup()) and c:IsCanBeEffectTarget(e)
 end
-function c88962829.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c88962829.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c88962829.thfilter(chkc,e) end
 	local g=Duel.GetMatchingGroup(c88962829.thfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

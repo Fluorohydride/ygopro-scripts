@@ -94,7 +94,7 @@ function c94160895.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_EFFECT)
 end
 function c94160895.thfilter(c)
-	return c:GetAttribute()~=ATTRIBUTE_WIND and c:IsRace(RACE_WYRM) and c:IsAbleToHand()
+	return c:IsNonAttribute(ATTRIBUTE_WIND) and c:IsRace(RACE_WYRM) and c:IsAbleToHand()
 end
 function c94160895.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94160895.thfilter,tp,LOCATION_DECK,0,1,nil) end

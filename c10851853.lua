@@ -1,4 +1,4 @@
---Flowerdino
+--フラワーダイノ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
@@ -61,24 +61,9 @@ function s.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,#g,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function s.dfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:IsControler(tp)
-end
 function s.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if #tg>0 and Duel.SendtoDeck(tg,nil,SEQ_DECKTOP,REASON_EFFECT)>0 then
-		local p=tp
-		for i=1,2 do
-			local dg=tg:Filter(s.dfilter,nil,p)
-			if #dg>1 then
-				Duel.SortDecktop(tp,p,#dg)
-			end
-			for i=1,#dg do
-				local mg=Duel.GetDecktopGroup(p,1)
-				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
-			end
-			p=1-tp
-		end
+	if #tg>0 and aux.PlaceCardsOnDeckBottom(tp,tg)>0 then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

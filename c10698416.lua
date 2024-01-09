@@ -41,7 +41,7 @@ function c10698416.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10698416.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c10698416.filter1(c,e,tp)
