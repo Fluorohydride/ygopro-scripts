@@ -29,7 +29,7 @@ function c37414347.initial_effect(c)
 	e0:SetCode(EVENT_CHAINING)
 	e0:SetRange(LOCATION_MZONE)
 	e0:SetCondition(c37414347.spchk)
-	e0:SetOperation(aux.chainreg)
+	e0:SetOperation(c37414347.chainreg)
 	c:RegisterEffect(e0)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(37414347,0))
@@ -66,11 +66,17 @@ end
 function c37414347.spchk(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
 end
+function c37414347.chainreg(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(37414347,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+end
 function c37414347.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(1)>0
+	e:SetLabel(e:GetHandler():GetFlagEffect(37414347))
+	return e:GetHandler():GetFlagEffect(37414347)>0
 end
 function c37414347.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local count=e:GetLabel()
 	if chk==0 then return true end
+	e:SetCountLimit(count,EFFECT_COUNT_CODE_CHAIN)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x4a)
 end
 function c37414347.ctop(e,tp,eg,ep,ev,re,r,rp)
