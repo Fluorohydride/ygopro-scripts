@@ -40,8 +40,8 @@ function c296499.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c296499.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckReleaseGroup(REASON_MAINTENANCE,tp,Card.IsReleasable,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(296499,0)) then
-		local g=Duel.SelectReleaseGroup(REASON_MAINTENANCE,tp,Card.IsReleasable,1,1,nil)
+	if Duel.CheckReleaseGroup(REASON_MAINTENANCE,tp,nil,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(296499,0)) then
+		local g=Duel.SelectReleaseGroup(REASON_MAINTENANCE,tp,nil,1,1,nil)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

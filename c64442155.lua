@@ -13,7 +13,7 @@ function c64442155.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c64442155.costfilter(c)
-	return c:IsSetCard(0x2093) and c:GetType()&0x81==0x81 and c:IsReleasable()
+	return c:IsSetCard(0x2093) and c:GetType()&0x81==0x81
 end
 function c64442155.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,c64442155.costfilter,1,nil) end

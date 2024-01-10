@@ -32,7 +32,7 @@ function c24361622.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSequence()>4 and Duel.GetTurnPlayer()~=tp
 end
 function c24361622.thcfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsReleasable()
+	return c:IsType(TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(c24361622.thfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c24361622.thfilter(c)

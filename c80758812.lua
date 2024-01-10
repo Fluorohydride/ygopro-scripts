@@ -53,7 +53,7 @@ function c80758812.spop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c80758812.relfilter(c,tp)
-	return c:IsType(TYPE_DUAL) and c:IsReleasableByEffect() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsType(TYPE_DUAL) and Duel.GetMZoneCount(tp,c)>0
 end
 function c80758812.spfilter2(c,e,tp)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

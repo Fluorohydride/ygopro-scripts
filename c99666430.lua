@@ -64,7 +64,7 @@ function c99666430.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c99666430.confilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
 function c99666430.rlfilter(c,tp)
-	return c:IsReleasableByEffect() and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+	return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c99666430.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(REASON_EFFECT,tp,c99666430.rlfilter,1,nil,tp) end
@@ -75,7 +75,7 @@ function c99666430.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c99666430.rlfilter,1,1,nil,tp)
 	if g:GetCount()==0 then
-		g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,Card.IsReleasableByEffect,1,1,nil)
+		g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,nil,1,1,nil)
 	end
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
