@@ -22,7 +22,7 @@ function c28553439.filter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c28553439.rfilter(c,e,tp,ft)
-	return c:IsReleasableByEffect() and c:IsCanBeEffectTarget(e)
+	return c:IsCanBeEffectTarget(e)
 		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
 end
 function c28553439.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

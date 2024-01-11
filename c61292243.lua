@@ -31,7 +31,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function s.rfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsReleasableByEffect() and c:IsSetCard(0x18b)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x18b)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end

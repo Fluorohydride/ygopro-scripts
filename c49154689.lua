@@ -16,7 +16,7 @@ end
 function c49154689.cfilter(c,e,tp)
 	local race=c:GetOriginalRace()
 	local attr=c:GetOriginalAttribute()
-	return bit.band(c:GetOriginalType(),TYPE_MONSTER)~=0 and c:IsReleasable()
+	return bit.band(c:GetOriginalType(),TYPE_MONSTER)~=0
 		and Duel.GetMZoneCount(tp,c,tp)>0
 		and Duel.IsExistingMatchingCard(c49154689.spfilter,tp,0,LOCATION_GRAVE,1,nil,race,attr,e,tp)
 end
