@@ -109,7 +109,7 @@ function s.retfilter(c,fid)
 	return c:GetFlagEffectLabel(id)==fid
 end
 function s.retfilter1(c,tp,fid)
-	return c:GetFlagEffectLabel(id)==fid and c:IsControler(tp)
+	return c:GetFlagEffectLabel(id)==fid and c:IsPreviousControler(tp)
 end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetLabelObject():IsExists(s.retfilter,1,nil,e:GetLabel()) then
