@@ -96,6 +96,7 @@ function c78371393.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c78371393.filter),tp,0x13,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
+		g:GetFirst():CompleteProcedure()
 		Duel.ShuffleDeck(tp)
 	end
 end
