@@ -97,6 +97,5 @@ function c78371393.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
 		g:GetFirst():CompleteProcedure()
-		Duel.ShuffleDeck(tp)
 	end
 end
