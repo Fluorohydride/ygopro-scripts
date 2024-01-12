@@ -39,17 +39,17 @@ function c3300267.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c3300267.hspfilter,1,nil,ft,tp)
+	return ft>-1 and Duel.CheckReleaseGroupEx(tp,c3300267.hspfilter,1,REASON_SPSUMMON,false,nil,ft,tp)
 end
 function c3300267.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c3300267.hspfilter,1,1,nil,ft,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,c3300267.hspfilter,1,1,REASON_SPSUMMON,false,nil,ft,tp)
 	Duel.Release(g,REASON_SPSUMMON)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(3300267,2))
 end
 function c3300267.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,Card.IsSetCard,1,e:GetHandler(),0x69) end
-	local g=Duel.SelectReleaseGroupEx(REASON_COST,tp,Card.IsSetCard,1,1,e:GetHandler(),0x69)
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,Card.IsSetCard,1,REASON_COST,true,e:GetHandler(),0x69) end
+	local g=Duel.SelectReleaseGroupEx(tp,Card.IsSetCard,1,1,REASON_COST,true,e:GetHandler(),0x69)
 	Duel.Release(g,REASON_COST)
 end
 function c3300267.desfilter(c)

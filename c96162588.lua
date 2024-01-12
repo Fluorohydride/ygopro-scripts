@@ -38,11 +38,11 @@ function c96162588.rlcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c96162588.cfilter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c96162588.rltg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_RULE,1-tp,nil,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(1-tp,nil,1,REASON_RULE,false,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_RELEASE,nil,1,1-tp,LOCATION_MZONE)
 end
 function c96162588.rlop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(REASON_RULE,1-tp,nil,1,1,nil)
+	local g=Duel.SelectReleaseGroupEx(1-tp,nil,1,1,REASON_RULE,false,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		Duel.Release(g,REASON_RULE,1-tp)

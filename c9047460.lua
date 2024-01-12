@@ -43,8 +43,8 @@ function c9047460.cfilter(c,ft,tp)
 end
 function c9047460.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c9047460.cfilter,1,nil,ft,tp) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c9047460.cfilter,1,1,nil,ft,tp)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c9047460.cfilter,1,nil,ft,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c9047460.cfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c9047460.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

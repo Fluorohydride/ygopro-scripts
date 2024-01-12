@@ -40,7 +40,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local rg=Duel.SelectReleaseGroupEx(REASON_EFFECT,tp,s.rfilter,1,1,nil)
+		local rg=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,REASON_EFFECT,true,nil)
 		if rg:GetCount()>0 then
 			Duel.HintSelection(rg)
 			Duel.Release(rg,REASON_EFFECT)

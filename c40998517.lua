@@ -21,10 +21,10 @@ function c40998517.costfilter(c,tp)
 end
 function c40998517.fselect(g,tp)
 	return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,g:GetCount(),g)
-		and Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
+		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c40998517.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c40998517.costfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c40998517.costfilter,1,nil,tp) end
 	local rg=Duel.GetReleaseGroup(tp):Filter(c40998517.costfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c40998517.fselect,false,1,rg:GetCount(),tp)

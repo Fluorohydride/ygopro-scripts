@@ -30,11 +30,11 @@ function c93014827.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(REASON_COST,tp,c93014827.costfilter,1,c,c,tp)
+			return Duel.CheckReleaseGroup(tp,c93014827.costfilter,1,c,c,tp)
 		else return false end
 	end
 	e:SetLabel(0)
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c93014827.costfilter,1,1,c,c,tp)
+	local sg=Duel.SelectReleaseGroup(tp,c93014827.costfilter,1,1,c,c,tp)
 	local lk=sg:GetFirst():GetLink()
 	Duel.Release(sg,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

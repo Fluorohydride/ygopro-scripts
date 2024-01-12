@@ -46,8 +46,8 @@ function c42921475.cfilter(c)
 	return not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c42921475.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c42921475.cfilter,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c42921475.cfilter,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c42921475.cfilter,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,c42921475.cfilter,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c42921475.filter(c)

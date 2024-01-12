@@ -73,7 +73,7 @@ function s.rfilter(c)
 end
 function s.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(s.desrepfilter,1,nil,tp)
-		and Duel.CheckReleaseGroup(REASON_EFFECT,tp,s.rfilter,1,nil) end
+		and Duel.CheckReleaseGroupEx(tp,s.rfilter,1,REASON_EFFECT,false,nil) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function s.desrepval(e,c)
@@ -81,7 +81,7 @@ function s.desrepval(e,c)
 end
 function s.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,s.rfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,REASON_EFFECT,false,nil)
 	if #g>0 then
 		Duel.Hint(HINT_CARD,0,id)
 		Duel.HintSelection(g)

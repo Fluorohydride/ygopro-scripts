@@ -17,10 +17,10 @@ function c904185.rfilter(c,ft,tp)
 end
 function c904185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c904185.rfilter,1,nil,ft,tp) end
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c904185.rfilter,1,nil,ft,tp) end
 	local maxc=10
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then maxc=1 end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c904185.rfilter,1,maxc,nil,ft,tp)
+	local g=Duel.SelectReleaseGroup(tp,c904185.rfilter,1,maxc,nil,ft,tp)
 	e:SetLabel(g:GetCount())
 	Duel.Release(g,REASON_COST)
 end

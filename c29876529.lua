@@ -26,14 +26,14 @@ function c29876529.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=0 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(REASON_COST,tp,c29876529.costfilter,1,nil)
+			return Duel.CheckReleaseGroup(tp,c29876529.costfilter,1,nil)
 		else
 			return Duel.IsExistingMatchingCard(c29876529.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c29876529.costfilter,1,1,nil)
+		local rg=Duel.SelectReleaseGroup(tp,c29876529.costfilter,1,1,nil)
 		Duel.Release(rg,REASON_COST)
 	end
 	local g=Duel.GetMatchingGroup(c29876529.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)

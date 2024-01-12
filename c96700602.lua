@@ -14,8 +14,8 @@ function c96700602.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c96700602.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsType,1,nil,TYPE_SYNCHRO) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsType,1,1,nil,TYPE_SYNCHRO)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsType,1,nil,TYPE_SYNCHRO) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_SYNCHRO)
 	Duel.Release(g,REASON_COST)
 end
 function c96700602.filter(c)

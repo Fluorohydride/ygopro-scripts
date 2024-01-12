@@ -45,8 +45,8 @@ function c28388927.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c28388927.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,c,RACE_INSECT) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,c,RACE_INSECT)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,c,RACE_INSECT) end
+	local rg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,c,RACE_INSECT)
 	Duel.Release(rg,REASON_COST)
 end
 function c28388927.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

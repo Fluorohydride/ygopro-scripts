@@ -48,14 +48,14 @@ function c74889525.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(REASON_COST,tp,c74889525.rfilter,1,nil,tp)
+			return Duel.CheckReleaseGroup(tp,c74889525.rfilter,1,nil,tp)
 		else
 			return Duel.IsExistingTarget(c74889525.ctfilter,tp,0,LOCATION_MZONE,1,nil)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c74889525.rfilter,1,1,nil,tp)
+		local sg=Duel.SelectReleaseGroup(tp,c74889525.rfilter,1,1,nil,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)

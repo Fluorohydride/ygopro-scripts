@@ -55,7 +55,7 @@ function c25857246.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25857246.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and Duel.CheckReleaseGroupEx(REASON_EFFECT,tp,nil,1,nil) end
+		and Duel.CheckReleaseGroupEx(tp,nil,1,REASON_EFFECT,true,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c25857246.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -63,7 +63,7 @@ function c25857246.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 	if ct==0 then ct=1 end
 	if ct>2 then ct=2 end
-	local g=Duel.SelectReleaseGroupEx(REASON_EFFECT,tp,nil,1,ct,nil)
+	local g=Duel.SelectReleaseGroupEx(tp,nil,1,ct,REASON_EFFECT,true,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		local rct=Duel.Release(g,REASON_EFFECT)

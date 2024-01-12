@@ -18,9 +18,9 @@ end
 function c96782886.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then return Duel.CheckLPCost(tp,800)
-		and ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c96782886.costfilter,1,nil,ft,tp) end
+		and ft>-1 and Duel.CheckReleaseGroup(tp,c96782886.costfilter,1,nil,ft,tp) end
 	Duel.PayLPCost(tp,800)
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c96782886.costfilter,1,1,nil,ft,tp)
+	local sg=Duel.SelectReleaseGroup(tp,c96782886.costfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c96782886.filter(c,e,tp)
