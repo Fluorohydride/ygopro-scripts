@@ -757,13 +757,15 @@ function Auxiliary.qlifilter(e,te)
 end
 --sp_summon condition for gladiator beast monsters
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_GLADIATOR>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_EVOLTILE>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
@@ -1278,9 +1280,6 @@ function Auxiliary.UseExtraReleaseCount(g,tp)
 end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
-end
-function Auxiliary.IsSpecialSummonedByEffect(e)
-	return not ((e:GetCode()==EFFECT_SPSUMMON_PROC or e:GetCode()==EFFECT_SPSUMMON_PROC_G) and e:GetProperty()&(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)==(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE))
 end
 --
 function Auxiliary.GetCappedLevel(c)

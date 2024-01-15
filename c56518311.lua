@@ -85,7 +85,7 @@ function c56518311.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c56518311.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0xe1)
+	return e:GetHandler():IsSpecialSummonSetCard(0xe1)
 end
 function c56518311.rmfilter(c)
 	return c:IsAbleToRemove() and c:IsType(TYPE_MONSTER)
