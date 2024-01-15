@@ -34,6 +34,7 @@ function c50282757.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c50282757.material_setcode=0x8
+c50282757.dark_calling=true
 function c50282757.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE) and Duel.GetTurnPlayer()==tp
 end

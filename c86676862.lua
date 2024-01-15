@@ -34,6 +34,7 @@ function c86676862.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c86676862.material_setcode=0x8
+c86676862.dark_calling=true
 function c86676862.ffilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsLevelAbove(6)
 end

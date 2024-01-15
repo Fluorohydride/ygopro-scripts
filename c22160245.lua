@@ -29,6 +29,7 @@ function c22160245.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c22160245.material_setcode=0x8
+c22160245.dark_calling=true
 function c22160245.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()
