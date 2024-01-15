@@ -33,6 +33,7 @@ function c86165817.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c86165817.material_setcode=0x8
+c86165817.dark_calling=true
 function c86165817.matfilter(c)
 	return c:IsLevelAbove(5) and c:IsFusionType(TYPE_MONSTER)
 end

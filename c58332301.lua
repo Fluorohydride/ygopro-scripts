@@ -27,6 +27,7 @@ function c58332301.initial_effect(c)
 	e3:SetOperation(c58332301.posop)
 	c:RegisterEffect(e3)
 end
+c58332301.dark_calling=true
 function c58332301.matcheck(e,c)
 	local g=c:GetMaterial()
 	local s=0

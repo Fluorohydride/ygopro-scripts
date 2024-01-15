@@ -33,6 +33,7 @@ function c13293158.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c13293158.material_setcode=0x8
+c13293158.dark_calling=true
 function c13293158.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

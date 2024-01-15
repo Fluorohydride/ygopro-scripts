@@ -24,6 +24,7 @@ function c21947653.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c21947653.material_setcode=0x8
+c21947653.dark_calling=true
 function c21947653.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
