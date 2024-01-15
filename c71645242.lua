@@ -39,7 +39,6 @@ function c71645242.initial_effect(c)
 	end
 end
 function c71645242.cfilter(c,tp)
-	local c=e:GetHandler()
 	local code,code2=c:GetSpecialSummonInfo(SUMMON_INFO_CODE,SUMMON_INFO_CODE2)
 	return c:IsFaceup() and c:IsControler(tp) and code~=71645242 and code2~=71645242
 end
