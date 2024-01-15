@@ -1481,18 +1481,18 @@ end
 function Auxiliary.NegateSummonCondition()
 	return Duel.GetReadyChain()==0
 end
---
-function Auxiliary.SameValueFilter(f,value)
-	return	function(c)
-				return f(c)&value==0
-			end
-end
 ---Check if all cards in g have the same Attribute/Race
 ---@param g Group
 ---@param f function
 ---@return boolean
 function Auxiliary.SameValueCheck(g,f)
+	if #g==0 then return false end
 	local tc=g:GetFirst()
-	local filter=Auxiliary.SameValueFilter(f,f(tc))
-	return not g:IsExists(filter,1,tc)
+	local v=f(tc)
+	tc=g:GetNext()
+	while tc do
+		v=v&f(tc)
+		tc=g:GetNext()
+	end
+	return v~=0
 end
