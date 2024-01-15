@@ -1483,15 +1483,17 @@ function Auxiliary.NegateSummonCondition()
 end
 ---Check if all cards in g have the same Attribute/Race
 ---@param g Group
----@param f function
+---@param f function Like Card.GetAttribute, must return binary value
 ---@return boolean
 function Auxiliary.SameValueCheck(g,f)
-	if #g==0 then return false end
+	if #g<=1 then return true end
+	if #g==2 then return f(g:GetFirst())&f(g:GetNext())~=0 end
 	local tc=g:GetFirst()
 	local v=f(tc)
 	tc=g:GetNext()
 	while tc do
 		v=v&f(tc)
+		if v==0 then return false end
 		tc=g:GetNext()
 	end
 	return v~=0
