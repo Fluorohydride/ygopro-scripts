@@ -46,29 +46,19 @@ function c25750986.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetCode(EFFECT_ACTIVATE_COST)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 		e1:SetTargetRange(1,0)
-		e1:SetCondition(c25750986.actcon)
-		e1:SetValue(c25750986.actlimit)
+		e1:SetTarget(c25750986.limtg)
+		e1:SetCost(aux.TRUE)
+		e1:SetOperation(c25750986.limop)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-		e2:SetCode(EVENT_CHAINING)
-		e2:SetOperation(c25750986.aclimit1)
-		e2:SetReset(RESET_PHASE+PHASE_END)
-		Duel.RegisterEffect(e2,tp)
 	end
 end
-function c25750986.actcon(e)
-	return Duel.GetFlagEffect(e:GetHandlerPlayer(),25750986)~=0
+function c25750986.limtg(e,te,tp)
+	return te:GetHandler():IsLocation(LOCATION_GRAVE) and te:IsActiveType(TYPE_MONSTER)
 end
-function c25750986.actlimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetActivateLocation()==LOCATION_GRAVE
-end
-function c25750986.aclimit1(e,tp,eg,ep,ev,re,r,rp)
-	local tp=e:GetHandlerPlayer()
-	if ep~=tp or not re:IsActiveType(TYPE_MONSTER) or not re:GetActivateLocation()==LOCATION_GRAVE then return end
-	Duel.RegisterFlagEffect(tp,25750986,RESET_PHASE+PHASE_END,0,1)
+function c25750986.limop(e,tp,eg,ep,ev,re,r,rp)
+	e:SetCost(aux.FALSE)
 end
