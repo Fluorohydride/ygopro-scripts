@@ -30,7 +30,7 @@ function c16708652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c16708652.chkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c16708652.chkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SetTargetCard(g:SelectSubGroup(tp,aux.TRUE,false,2,2))
 end
 function c16708652.activate(e,tp,eg,ep,ev,re,r,rp)
