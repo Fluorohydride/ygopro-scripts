@@ -33,7 +33,7 @@ function c581014.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		end
 	end
 	local b1=Duel.IsPlayerCanDraw(tp,1) and Duel.IsExistingTarget(c581014.filter1,tp,LOCATION_GRAVE,0,3,nil)
-	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(c581014.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp) 
+	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(c581014.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
@@ -58,7 +58,7 @@ function c581014.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c581014.operation1(e,tp,eg,ep,ev,re,r,rp)
-	if  e:GetLabel()==0 then
+	if e:GetLabel()==0 then
 		local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 		if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=3 then return end
 		Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
