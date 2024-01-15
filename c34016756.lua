@@ -18,7 +18,7 @@ function c34016756.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
 	if chk==0 then return g:CheckSubGroup(c34016756.fselect,2,2) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SetTargetCard(g:SelectSubGroup(tp,c34016756.fselect,false,2,2))
 end
 function c34016756.activate(e,tp,eg,ep,ev,re,r,rp)

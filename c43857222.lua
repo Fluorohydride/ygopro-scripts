@@ -40,7 +40,7 @@ function c43857222.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local alv=0
 	if lv>2 then alv=Duel.AnnounceLevel(tp,1,math.min(lv-1,6))
 	else alv=Duel.AnnounceLevel(tp,1,1) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local tg=g:SelectSubGroup(tp,c43857222.fselect,false,2,2,alv)
 	Duel.SetTargetCard(tg)
 	e:SetLabel(alv)

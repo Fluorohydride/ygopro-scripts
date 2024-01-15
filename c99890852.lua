@@ -24,7 +24,7 @@ function c99890852.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c99890852.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SetTargetCard(g:SelectSubGroup(tp,c99890852.fselect,false,2,2,tp))
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,0)
 end

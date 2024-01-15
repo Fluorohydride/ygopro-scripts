@@ -35,7 +35,7 @@ function c56535497.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	g=g:Filter(Card.IsCanBeEffectTarget,nil,e)
 	if chk==0 then return g:GetSum(Card.GetAttack)>0 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SetTargetCard(g:SelectSubGroup(tp,c56535497.fselect,false,2,2))
 end
 function c56535497.operation(e,tp,eg,ep,ev,re,r,rp)

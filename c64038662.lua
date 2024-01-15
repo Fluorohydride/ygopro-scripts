@@ -41,7 +41,7 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(CATEGORY_EQUIP)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,2,2,nil)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
