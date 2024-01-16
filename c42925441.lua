@@ -61,7 +61,6 @@ function c42925441.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(42925441)==0 end
 	e:GetHandler():RegisterFlagEffect(42925441,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
---option 1
 function c42925441.costfilter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingMatchingCard(c42925441.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp,c)
@@ -70,14 +69,12 @@ function c42925441.spfilter1(c,e,tp,cc)
 	return c:IsSetCard(0x55) and c:IsType(TYPE_MONSTER) and not c:IsOriginalCodeRule(cc:GetOriginalCodeRule())
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
---option 2
 function c42925441.costfilter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and c:IsAbleToGraveAsCost()
 end
 function c42925441.thfilter(c)
 	return c:IsSetCard(0x55) and not c:IsCode(42925441) and c:IsAbleToHand()
 end
---option both
 function c42925441.costfilter3(c,e,tp)
 	return c:IsFaceup() and c:IsCode(93717133) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingMatchingCard(c42925441.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c)

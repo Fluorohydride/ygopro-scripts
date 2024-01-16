@@ -30,10 +30,10 @@ function c42592719.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42592719.splimit(e,se,sp,st)
-	return st==(SUMMON_TYPE_SPECIAL+SUMMON_VALUE_GLADIATOR+2) or bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
+	return se:GetHandler():IsCode(31247589) or bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c42592719.imcon(e)
-	return e:GetHandler():GetFlagEffect(42592719)>0
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c42592719.imfilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)
@@ -47,7 +47,7 @@ function c42592719.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c42592719.filter(c,e,tp)
-	return not c:IsCode(42592719) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
+	return not c:IsCode(42592719) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c42592719.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
@@ -60,7 +60,7 @@ function c42592719.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c42592719.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 	end
 end

@@ -51,7 +51,8 @@ function c62694833.setop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62694833.setcon2(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x79) and re:GetHandler():IsType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x79)
 end
 function c62694833.setfilter3(c,tp)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()

@@ -39,7 +39,8 @@ function c71645242.initial_effect(c)
 	end
 end
 function c71645242.cfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:GetSummonType()~=SUMMON_TYPE_SPECIAL+SUMMON_VALUE_BLACK_GARDEN
+	local code,code2=c:GetSpecialSummonInfo(SUMMON_INFO_CODE,SUMMON_INFO_CODE2)
+	return c:IsFaceup() and c:IsControler(tp) and code~=71645242 and code2~=71645242
 end
 function c71645242.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local sf=0
@@ -83,12 +84,12 @@ function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.extract(ev,tp)~=0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,1-tp) then
 		local token=Duel.CreateToken(tp,71645243)
-		Duel.SpecialSummonStep(token,SUMMON_VALUE_BLACK_GARDEN,tp,1-tp,false,false,POS_FACEUP_ATTACK)
+		Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_ATTACK)
 	end
 	if bit.extract(ev,1-tp)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE,1-tp)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(1-tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) then
 		local token=Duel.CreateToken(1-tp,71645243)
-		Duel.SpecialSummonStep(token,SUMMON_VALUE_BLACK_GARDEN,1-tp,tp,false,false,POS_FACEUP_ATTACK)
+		Duel.SpecialSummonStep(token,0,1-tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
 	Duel.SpecialSummonComplete()
 end
@@ -120,7 +121,7 @@ function c71645242.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(dg,REASON_EFFECT)==dg:GetCount() then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then
-			Duel.SpecialSummon(tc,SUMMON_VALUE_BLACK_GARDEN,tp,tp,false,false,POS_FACEUP)
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 end

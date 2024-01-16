@@ -46,7 +46,7 @@ function c12097275.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12097275.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0xfc)
+	return e:GetHandler():IsSpecialSummonSetCard(0xfc)
 end
 function c12097275.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

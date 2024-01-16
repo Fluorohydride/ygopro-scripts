@@ -2001,5 +2001,20 @@ function Auxiliary.linklimit(e,se,sp,st)
 end
 --sp_summon condition for /Assault Mode
 function Auxiliary.AssaultModeLimit(e,se,sp,st)
-	return se:GetHandler():IsCode(80280737)
+	return st==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_ASSAULT_MODE or se:GetHandler():IsCode(80280737)
+end
+--sp_summon condition for Masked HERO
+function Auxiliary.MaskChangeLimit(e,se,sp,st)
+	return st==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MASK_CHANGE or se:GetHandler():IsCode(21143940)
+end
+--sp_summon condition for Evil HERO
+function Auxiliary.DarkFusionLimit(e,se,sp,st)
+	return se:GetHandler():IsCode(94820406)
+		or st==SUMMON_VALUE_DARK_FUSION
+		or (Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION)
+end
+--sp_summon condition for Fossil
+function Auxiliary.FossilFusionLimit(e,se,sp,st)
+	return st==SUMMON_VALUE_FOSSIL_FUSION or se:GetHandler():IsCode(59419719)
+		or not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
