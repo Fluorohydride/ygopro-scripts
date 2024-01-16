@@ -22,8 +22,8 @@ function c19307353.thfilter(c,csum)
 	return c:IsAttackAbove(0) and c:IsDefenseAbove(0) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand() and csum==sum
 end
 function c19307353.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c19307353.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c19307353.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c19307353.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c19307353.cfilter,1,1,nil,tp)
 	local sum=math.max(g:GetFirst():GetTextAttack(),0)+math.max(g:GetFirst():GetTextDefense(),0)
 	e:SetLabel(sum)
 	Duel.Release(g,REASON_COST)

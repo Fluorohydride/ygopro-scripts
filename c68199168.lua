@@ -60,9 +60,9 @@ function c68199168.costfilter(c)
 	return c:IsSetCard(0x134) or c:IsRace(RACE_SPELLCASTER)
 end
 function c68199168.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c68199168.costfilter,2,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c68199168.costfilter,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c68199168.costfilter,2,2,nil)
+	local g=Duel.SelectReleaseGroup(tp,c68199168.costfilter,2,2,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c68199168.distg(e,tp,eg,ep,ev,re,r,rp,chk)

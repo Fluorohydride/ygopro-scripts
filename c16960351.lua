@@ -28,8 +28,8 @@ function c16960351.spfilter(c,e,tp,lv)
 end
 function c16960351.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c16960351.rfilter,1,nil,e,tp,ft) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c16960351.rfilter,1,1,nil,e,tp,ft)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c16960351.rfilter,1,nil,e,tp,ft) end
+	local g=Duel.SelectReleaseGroup(tp,c16960351.rfilter,1,1,nil,e,tp,ft)
 	local tc=g:GetFirst()
 	e:SetLabel(tc:GetOriginalLevel())
 	Duel.Release(g,REASON_COST)

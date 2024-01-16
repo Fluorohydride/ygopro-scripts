@@ -22,8 +22,8 @@ function c74711057.initial_effect(c)
 end
 c74711057.material_setcode=0x8
 function c74711057.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,e:GetHandler(),0x3008) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,e:GetHandler(),0x3008)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,e:GetHandler(),0x3008) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0x3008)
 	e:SetLabel(g:GetFirst():GetAttack())
 	Duel.Release(g,REASON_COST)
 end

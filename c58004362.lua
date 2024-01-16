@@ -84,10 +84,10 @@ function c58004362.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
 		return c58004362.cost(e,tp,eg,ep,ev,re,r,rp,0)
-			and Duel.CheckReleaseGroup(REASON_COST,tp,c58004362.cfilter,1,nil,tp)
+			and Duel.CheckReleaseGroup(tp,c58004362.cfilter,1,nil,tp)
 	end
 	c58004362.cost(e,tp,eg,ep,ev,re,r,rp,1)
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c58004362.cfilter,1,1,nil,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c58004362.cfilter,1,1,nil,tp)
 	e:SetValue(rg:GetFirst():GetCode())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)

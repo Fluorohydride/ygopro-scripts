@@ -16,8 +16,8 @@ function c37421075.cfilter(c)
 end
 function c37421075.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c37421075.cfilter,1,nil) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c37421075.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c37421075.cfilter,1,nil) end
+	local rg=Duel.SelectReleaseGroup(tp,c37421075.cfilter,1,1,nil)
 	Duel.Release(rg,REASON_COST)
 end
 function c37421075.spfilter(c,e,tp)

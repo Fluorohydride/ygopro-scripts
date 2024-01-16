@@ -60,8 +60,8 @@ function c70406920.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c70406920.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_MACHINE) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,e:GetHandler(),RACE_MACHINE)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_MACHINE) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,e:GetHandler(),RACE_MACHINE)
 	e:SetLabel(g:GetFirst():GetAttack())
 	Duel.Release(g,REASON_COST)
 end

@@ -74,8 +74,8 @@ function c40227329.nttg(e,c)
 	return c:IsLevelAbove(5) and c:IsSetCard(0xaf)
 end
 function c40227329.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c40227329.efftg(e,tp,eg,ep,ev,re,r,rp,chk)

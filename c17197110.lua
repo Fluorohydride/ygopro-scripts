@@ -32,7 +32,7 @@ function c17197110.spfilter(c,e,tp)
 	return c:IsSetCard(0x2f) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c17197110.fselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>=g:GetCount() and Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>=g:GetCount() and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c17197110.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)

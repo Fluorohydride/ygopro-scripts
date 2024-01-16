@@ -73,8 +73,8 @@ function c21954587.rfilter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c21954587.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c21954587.rfilter,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c21954587.rfilter,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c21954587.rfilter,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,c21954587.rfilter,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c21954587.atktg(e,tp,eg,ep,ev,re,r,rp,chk)

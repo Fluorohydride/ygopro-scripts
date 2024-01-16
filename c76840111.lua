@@ -17,9 +17,9 @@ function c76840111.rfilter(c,tp)
 	return c:GetBaseAttack()==2500 and c:IsRace(RACE_SPELLCASTER) and c:IsType(TYPE_PENDULUM)
 end
 function c76840111.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c76840111.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c76840111.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c76840111.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(tp,c76840111.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c76840111.filter0(c)

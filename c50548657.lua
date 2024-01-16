@@ -24,8 +24,8 @@ function c50548657.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c50548657.spfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c50548657.costfilter,1,nil,e,tp,g,ft) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c50548657.costfilter,1,1,nil,e,tp,g,ft)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c50548657.costfilter,1,nil,e,tp,g,ft) end
+	local sg=Duel.SelectReleaseGroup(tp,c50548657.costfilter,1,1,nil,e,tp,g,ft)
 	e:SetLabel(sg:GetFirst():GetLevel())
 	Duel.Release(sg,REASON_COST)
 end
