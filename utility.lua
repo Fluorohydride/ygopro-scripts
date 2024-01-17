@@ -143,8 +143,11 @@ end
 function Auxiliary.PuzzleOp(e,tp)
 	Duel.SetLP(0,0)
 end
---Duel.SelectOption with option condition
---Return value starts from 1, different from Duel.SelectOption
+---Duel.SelectOption with option condition
+---Return value starts from 1, different from Duel.SelectOption
+---@param tp integer
+---@param ... table {condition, option[, value]}
+---@return integer|nil
 function Auxiliary.SelectFromOptions(tp,...)
 	local options={...}
 	local ops={}
