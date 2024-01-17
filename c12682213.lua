@@ -40,7 +40,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler():GetColumnGroup()
+	local rc=re:GetHandler():GetColumnGroup():Filter(aux.TRUE,e:GetHandler())
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
 	and Duel.Destroy(eg,REASON_EFFECT)~=0 and rc:GetCount()>0 then
 		Duel.BreakEffect()
