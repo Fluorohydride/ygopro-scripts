@@ -53,7 +53,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.cfilter(c,tp)
 	local typ,se,sp=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_REASON_EFFECT,SUMMON_INFO_REASON_PLAYER)
-	return typ&TYPE_MONSTER~=0 and se:IsActivated() and sp==1-tp
+	return se and typ&TYPE_MONSTER~=0 and se:IsActivated() and sp==1-tp
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp)

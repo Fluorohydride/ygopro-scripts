@@ -37,6 +37,7 @@ function c13735899.atkval(e)
 end
 function c13735899.cfilter(c,e)
 	local typ,se=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_REASON_EFFECT)
+	if not se then return false end
 	local sc=se:GetHandler()
 	return typ&TYPE_MONSTER~=0 and se:IsActivated()
 		and c:IsFaceup() and (c:GetOriginalRace()==sc:GetOriginalRace() or c==sc)

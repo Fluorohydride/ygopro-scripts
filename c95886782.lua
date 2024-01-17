@@ -81,7 +81,7 @@ function c95886782.eqlimit(e,c)
 end
 function c95886782.cfilter(c,e,tp)
 	local se,sp=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT,SUMMON_INFO_REASON_PLAYER)
-	return sp==1-tp and se:IsActivated() and e:GetOwnerPlayer()==1-se:GetOwnerPlayer()
+	return se and sp==1-tp and se:IsActivated() and e:GetOwnerPlayer()==1-se:GetOwnerPlayer()
 end
 function c95886782.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetEquipTarget()
