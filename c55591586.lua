@@ -73,7 +73,7 @@ function c55591586.spop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c55591586.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_HAND
+	return re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_HAND and e:GetHandler():GetFlagEffect(1)>0
 end
 function c55591586.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(1)>0

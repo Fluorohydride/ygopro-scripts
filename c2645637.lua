@@ -43,7 +43,7 @@ function c2645637.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2645637.atkcon3(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE
+	return re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE and e:GetHandler():GetFlagEffect(1)>0
 end
 function c2645637.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(1)>0
