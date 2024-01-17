@@ -1500,3 +1500,27 @@ function Auxiliary.SameValueCheck(g,f)
 	end
 	return v~=0
 end
+--
+function Auxiliary.SelectDeckCard(hint,tp,filter,location,min,max,ex,...)
+	local from_other=Duel.IsExistingMatchingCard(filter,tp,location,0,min,ex,...)
+	local g1=nil
+	if from_other then
+		if Duel.SelectOption(tp,1194,1195)==0 then
+			Duel.Hint(HINT_SELECTMSG,tp,hint)
+			g1=Duel.SelectMatchingCard(tp,filter,tp,LOCATION_DECK,0,1,1,ex,...)
+			if max>1 then
+				local minct=math.max(min-1,0)
+				local maxct=max-1
+				local exg=ex and g1+ex or g1
+				Duel.Hint(HINT_SELECTMSG,tp,hint)
+				local g2=Duel.SelectMatchingCard(tp,filter,tp,LOCATION_DECK|location,0,minct,maxct,exg,...)
+				g1:Merge(g2)
+			end
+		else
+			g1=Duel.SelectMatchingCard(tp,filter,tp,location,0,min,max,ex,...)
+		end
+	else
+		g1=Duel.SelectMatchingCard(tp,filter,tp,LOCATION_DECK|location,0,min,max,ex,...)
+	end
+	return g1
+end
