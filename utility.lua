@@ -1502,25 +1502,49 @@ function Auxiliary.SameValueCheck(g,f)
 end
 --
 function Auxiliary.SelectDeckCard(hint,tp,filter,location,min,max,ex,...)
-	local from_other=Duel.IsExistingMatchingCard(filter,tp,location,0,min,ex,...)
-	local g1=nil
-	if from_other then
-		if Duel.SelectOption(tp,1194,1195)==0 then
-			Duel.Hint(HINT_SELECTMSG,tp,hint)
-			g1=Duel.SelectMatchingCard(tp,filter,tp,LOCATION_DECK,0,1,1,ex,...)
-			if max>1 then
-				local minct=math.max(min-1,0)
-				local maxct=max-1
-				local exg=ex and g1+ex or g1
-				Duel.Hint(HINT_SELECTMSG,tp,hint)
-				local g2=Duel.SelectMatchingCard(tp,filter,tp,LOCATION_DECK|location,0,minct,maxct,exg,...)
-				g1:Merge(g2)
-			end
-		else
-			g1=Duel.SelectMatchingCard(tp,filter,tp,location,0,min,max,ex,...)
+	local from_deck=Duel.GetMatchingGroup(filter,tp,LOCATION_DECK,0,ex,...)
+	local from_other=Duel.GetMatchingGroup(filter,tp,location,0,ex,...)
+	local selected=Group.CreateGroup()
+	local viewed_deck=false
+	if #from_other>0 and #from_deck>0 then
+		local cover_card=Duel.GetMatchingGroup(Card.IsFacedown,tp,0,LOCATION_DECK|LOCATION_EXTRA|LOCATION_REMOVED,nil):GetFirst()
+		if not cover_card then
+			cover_card=Duel.GetDecktopGroup(tp,1):GetFirst()
 		end
+		while #selected<max do
+			local finish=#selected>=min and #selected<=max
+			if viewed_deck then
+				Duel.Hint(HINT_SELECTMSG,tp,hint)
+				local tc=(from_deck+from_other-selected):SelectUnselect(selected,tp,finish,false,min,max)
+				if not tc then break end
+				if not selected:IsContains(tc) then
+					selected:AddCard(tc)
+				else
+					selected:RemoveCard(tc)
+				end
+			else
+				Duel.Hint(HINT_SELECTMSG,tp,hint)
+				local tc=(from_other-selected+cover_card):SelectUnselect(selected,tp,finish,false,min,max)
+				if not tc then break end
+				if tc==cover_card then
+					viewed_deck=true
+				else
+					if not selected:IsContains(tc) then
+						selected:AddCard(tc)
+					else
+						selected:RemoveCard(tc)
+					end
+				end
+			end
+		end
+	elseif #from_deck>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		selected=from_deck:Select(tp,min,max,nil,...)
+		viewed_deck=true
 	else
-		g1=Duel.SelectMatchingCard(tp,filter,tp,LOCATION_DECK|location,0,min,max,ex,...)
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		selected=from_other:Select(tp,min,max,nil,...)
+		viewed_deck=false
 	end
-	return g1
+	return selected, viewed_deck
 end
