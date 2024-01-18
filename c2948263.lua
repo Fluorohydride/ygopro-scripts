@@ -56,9 +56,9 @@ function c2948263.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	else return false end
 end
 function c2948263.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_SPSUMMON)
-	local atk=g:GetBaseAttack()
+	local tc=e:GetLabelObject()
+	Duel.Release(tc,REASON_SPSUMMON)
+	local atk=tc:GetBaseAttack()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)
