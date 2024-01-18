@@ -35,7 +35,7 @@ function c92919429.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92919429.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g,deck_viewed=aux.SelectDeckCard(HINTMSG_TOGRAVE,tp,c92919429.lvfilter,LOCATION_EXTRA,1,1,nil)
+	local g,shuffle=aux.SelectDeckCard(HINTMSG_TOGRAVE,tp,c92919429.lvfilter,LOCATION_EXTRA,1,1,nil)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) and tc:GetLevel()>0
 		and c:IsFaceup() and c:IsRelateToEffect(e) then
@@ -46,7 +46,9 @@ function c92919429.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
-	if deck_viewed and tc and not tc:IsLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
+	if shuffle then
+		Duel.ShuffleDeck(tp)
+	end
 end
 function c92919429.spfilter(c,e,tp)
 	return c:IsRace(RACE_FAIRY) and c:IsLevelBelow(2) and not c:IsCode(92919429) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

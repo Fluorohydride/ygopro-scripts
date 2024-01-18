@@ -1506,10 +1506,11 @@ function Auxiliary.SelectDeckCard(hint,tp,filter,location,min,max,ex,...)
 	local from_other=Duel.GetMatchingGroup(filter,tp,location,0,ex,...)
 	local selected=Group.CreateGroup()
 	local viewed_deck=false
+	local shuffle=false
 	if #from_other>0 and #from_deck>0 then
-		local cover_card=Duel.GetMatchingGroup(Card.IsFacedown,tp,0,LOCATION_DECK|LOCATION_EXTRA|LOCATION_REMOVED,nil):GetFirst()
+		local cover_card=Duel.GetDecktopGroup(1-tp,1):GetFirst()
 		if not cover_card then
-			cover_card=Duel.GetDecktopGroup(tp,1):GetFirst()
+			cover_card=from_deck:GetFirst()
 		end
 		while #selected<max do
 			local finish=#selected>=min and #selected<=max
@@ -1539,12 +1540,15 @@ function Auxiliary.SelectDeckCard(hint,tp,filter,location,min,max,ex,...)
 		end
 	elseif #from_deck>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,hint)
-		selected=from_deck:Select(tp,min,max,nil,...)
+		selected=from_deck:Select(tp,min,max,nil)
 		viewed_deck=true
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,hint)
-		selected=from_other:Select(tp,min,max,nil,...)
+		selected=from_other:Select(tp,min,max,nil)
 		viewed_deck=false
 	end
-	return selected, viewed_deck
+	if viewed_deck and not selected:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
+		shuffle=true
+	end
+	return selected, shuffle
 end
