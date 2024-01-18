@@ -51,7 +51,7 @@ end
 function c7025445.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_SPSUMMON)
-	e:SetLabel(g:GetFirst():GetLevel())
+	e:SetLabel(g:GetLevel())
 end
 function c7025445.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
