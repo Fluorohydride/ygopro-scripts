@@ -102,7 +102,7 @@ function c42166000.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c42166000.ttfilter(c,tp)
-	return c:IsHasEffect(42166000) and c:IsReleasable() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsHasEffect(42166000) and c:IsReleasable(REASON_SUMMON) and Duel.GetMZoneCount(tp,c)>0
 end
 function c42166000.ttcon(e,c,minc)
 	if c==nil then return true end
