@@ -63,9 +63,9 @@ function c15291624.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	else return false end
 end
 function c15291624.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=e:GetLabelObject()
-	c:SetMaterial(Group.FromCards(g))
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=e:GetLabelObject()
+	c:SetMaterial(Group.FromCards(tc))
+	Duel.Release(tc,REASON_SPSUMMON)
 end
 function c15291624.repfilter(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemove()

@@ -72,9 +72,9 @@ function c11443677.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	else return false end
 end
 function c11443677.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=e:GetLabelObject()
-	c:SetMaterial(Group.FromCards(g))
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=e:GetLabelObject()
+	c:SetMaterial(Group.FromCards(tc))
+	Duel.Release(tc,REASON_SPSUMMON)
 end
 function c11443677.efilter(e,te)
 	return te:IsActiveType(TYPE_TRAP)

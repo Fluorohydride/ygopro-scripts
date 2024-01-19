@@ -67,7 +67,7 @@ function s.spstg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function s.spsop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function s.acon(e)
