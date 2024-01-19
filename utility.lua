@@ -1516,6 +1516,10 @@ function Auxiliary.SelectDeckCard(hint,tp,filter,location,min,max,ex,...)
 			local finish=#selected>=min and #selected<=max
 			if viewed_deck then
 				Duel.Hint(HINT_SELECTMSG,tp,hint)
+				if #selected==0 then
+					selected=(from_deck+from_other):Select(tp,min,max,nil)
+					break
+				end
 				local tc=(from_deck+from_other-selected):SelectUnselect(selected,tp,finish,false,min,max)
 				if not tc then break end
 				if not selected:IsContains(tc) then
