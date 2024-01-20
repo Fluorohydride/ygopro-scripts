@@ -1,5 +1,4 @@
 --氷霊山の龍祖 ランセア
-
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

@@ -22,8 +22,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.thop)
 	c:RegisterEffect(e2)
 end
-
-	--change
 function s.cgfilter(c,mc)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2) and c:IsAbleToRemove() and not c:IsAttribute(mc:GetAttribute())
 end
@@ -46,7 +44,7 @@ function s.cgop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
-	if c:IsFaceup() and tc:IsType(TYPE_TUNER) and not c:IsType(TYPE_TUNER) 
+	if c:IsFaceup() and tc:IsType(TYPE_TUNER) and not c:IsType(TYPE_TUNER)
 	and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.BreakEffect()
 		local e2=Effect.CreateEffect(c)
@@ -58,8 +56,6 @@ function s.cgop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
-
-	--to hand
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2) and c:IsType(TYPE_SYNCHRO)
 end
