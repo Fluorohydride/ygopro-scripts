@@ -16,6 +16,7 @@ function c32825095.initial_effect(c)
 	e2:SetOperation(c32825095.tnop)
 	c:RegisterEffect(e2)
 end
+c32825095.treat_itself_tuner=true
 function c32825095.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
