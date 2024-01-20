@@ -58,7 +58,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.afilter(c)
-  return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsFaceup()
+	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsFaceup()
 end
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.afilter,tp,LOCATION_ONFIELD,0,1,nil)
