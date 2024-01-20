@@ -78,7 +78,7 @@ function s.daop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1) 
+		tc:RegisterEffect(e1)
 		--check
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -98,7 +98,7 @@ function s.daop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetTarget(s.atktg)
 		e2:SetLabelObject(e3)
 		Duel.RegisterEffect(e3,tp)
-	 end
+	end
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,id)~=0 then return end
