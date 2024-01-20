@@ -60,7 +60,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
---todeck
 function s.rfilter(c)
 	return c:IsLevel(1) and c:IsAbleToDeck()
 end

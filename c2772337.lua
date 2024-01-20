@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	e1:SetTargetRange(1,0)
 	e1:SetTarget(s.splimit)
 	c:RegisterEffect(e1)
-	--SpecialSummon 
+	--SpecialSummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -65,7 +65,7 @@ end
 function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(s.descheck,tp,LOCATION_MZONE,0,1,nil,tp)
-		and Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,nil) 
+		and Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,nil)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g1=Duel.SelectTarget(tp,s.descheck,tp,LOCATION_MZONE,0,1,1,nil,tp)

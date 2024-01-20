@@ -43,7 +43,7 @@ function s.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.damval1(c)
 	if c:GetLocation()~=LOCATION_MZONE then return end
-	return math.max(0,c:GetTextAttack()) 
+	return math.max(0,c:GetTextAttack())
 end
 function s.damval2(c)
 	if c:GetPreviousLocation()~=LOCATION_MZONE then return end

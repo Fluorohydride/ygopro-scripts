@@ -28,8 +28,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.thop)
 	c:RegisterEffect(e2)
 end
-
-	--disable
 function s.disfilter(c)
 	return c:IsType(TYPE_EFFECT) and not c:IsDisabled()
 end
@@ -70,7 +68,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EVENT_CHANGE_POS)
 	e2:SetCondition(s.recon)
 	e2:SetOperation(s.reop)
-	c:RegisterEffect(e2)	
+	c:RegisterEffect(e2)
 end
 function s.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler())

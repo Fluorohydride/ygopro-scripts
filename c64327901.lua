@@ -36,7 +36,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xac) 
+	return c:IsFaceup() and c:IsSetCard(0xac)
 end
 function s.atkval(e,c)
 	return Duel.GetMatchingGroupCount(s.filter,c:GetControler(),LOCATION_MZONE,0,nil)*300
@@ -65,12 +65,12 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetNext()
 	local lv1=tc1:GetLevel()
 	local lv2=tc2:GetLevel()
-	if e:GetLabel()==1 then 
-	   Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,4))
-	   local g1=g:Select(tp,1,1,nil)
-	   local lv=g1:GetFirst():GetLevel()
-	   local sc=(g-g1):GetFirst()
-	   local e1=Effect.CreateEffect(e:GetHandler())
+	if e:GetLabel()==1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,4))
+		local g1=g:Select(tp,1,1,nil)
+		local lv=g1:GetFirst():GetLevel()
+		local sc=(g-g1):GetFirst()
+		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

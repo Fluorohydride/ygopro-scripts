@@ -29,8 +29,6 @@ function s.initial_effect(c)
 	e3:SetOperation(s.ssop)
 	c:RegisterEffect(e3)
 end
-
-	--spsummon
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
@@ -52,8 +50,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 	end
 end
-
-	--special summon
 function s.ssfilter(c)
 	return c:IsType(TYPE_FLIP) and c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
 end

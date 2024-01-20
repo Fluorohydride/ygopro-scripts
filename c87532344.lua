@@ -69,7 +69,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsContains(e:GetLabelObject()) 
+	return eg:IsContains(e:GetLabelObject())
 end
 function s.sumop(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabel(1)

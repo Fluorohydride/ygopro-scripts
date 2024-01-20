@@ -45,12 +45,11 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	end
 end
---fusion
 function s.filter1(c,e)
 	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function s.exfilter0(c)
-	return  c:IsRace(RACE_PLANT) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsRace(RACE_PLANT) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
 function s.exfilter1(c,e)
 	return c:IsRace(RACE_PLANT) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
