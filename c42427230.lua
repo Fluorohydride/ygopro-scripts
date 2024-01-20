@@ -18,7 +18,7 @@ function c42427230.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_REMOVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e2:SetCountLimit(1,42427204)
+	e2:SetCountLimit(1,42427231)
 	e2:SetTarget(c42427230.destg)
 	e2:SetOperation(c42427230.desop)
 	c:RegisterEffect(e2)
@@ -30,11 +30,11 @@ function c42427230.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local rg=Duel.GetMatchingGroup(c42427230.cfilter,tp,LOCATION_MZONE,0,nil,tp)
 	if chk==0 then return rg:GetCount()==Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,42427230):GetCount() and rg:GetCount()~=0 and Duel.GetMZoneCount(tp,rg)>0 end
-	ct=Duel.Release(rg,REASON_COST)*2
+	local ct=Duel.Release(rg,REASON_COST)*2
 	e:SetLabel(ct)
 end
 function c42427230.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,42427204,0,TYPES_TOKEN_MONSTER,200,200,1,RACE_MACHINE,ATTRIBUTE_FIRE) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,42427231,0,TYPES_TOKEN_MONSTER,200,200,1,RACE_MACHINE,ATTRIBUTE_FIRE) end
 	local ct=e:GetLabel()
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
@@ -43,7 +43,7 @@ function c42427230.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=e:GetLabel()
-	if ft>0 and ct>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,42427204,0,TYPES_TOKEN_MONSTER,200,200,1,RACE_MACHINE,ATTRIBUTE_FIRE) then
+	if ft>0 and ct>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,42427231,0,TYPES_TOKEN_MONSTER,200,200,1,RACE_MACHINE,ATTRIBUTE_FIRE) then
 		local count=math.min(ft,ct)
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then count=1 end
 		if count>1 then
@@ -57,7 +57,7 @@ function c42427230.spop(e,tp,eg,ep,ev,re,r,rp)
 			count=Duel.AnnounceNumber(tp,table.unpack(num))
 		end
 		for i=1,count do
-			local token=Duel.CreateToken(tp,42427204)
+			local token=Duel.CreateToken(tp,42427231)
 			if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)~=0 then
 				local e1=Effect.CreateEffect(e:GetHandler())
 				e1:SetDescription(aux.Stringid(42427230,3))

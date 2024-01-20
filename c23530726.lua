@@ -62,6 +62,6 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.BreakEffect()
-		Duel.Destroy(sg,nil,REASON_EFFECT)
+		Duel.Destroy(sg,REASON_EFFECT)
 	end
 end

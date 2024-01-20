@@ -61,7 +61,8 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 		Duel.AdjustAll()
 		local g=Duel.GetMatchingGroup(s.spfilter,tp,LOCATION_EXTRA,0,nil,c)
-		if g:GetCount()>0 and c:IsLocation(LOCATION_MZONE) and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		if g:GetCount()>0 and c:IsRelateToEffect(e) and c:IsControler(tp) and c:IsFaceup()
+			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
