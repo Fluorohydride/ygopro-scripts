@@ -104,6 +104,8 @@ end
 function s.thosop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if aux.NecroValleyNegateCheck(c) then return end
+	if not aux.NecroValleyFilter()(c) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	if c:IsRelateToEffect(e) then
 		if ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
