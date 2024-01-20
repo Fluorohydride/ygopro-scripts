@@ -48,7 +48,7 @@ function s.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then 
+	if tc and tc:IsRelateToEffect(e) then
 	Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -56,7 +56,7 @@ function s.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.filter(c,tp)
-	return c:IsFacedown() and c:IsControler(1-tp) and c:IsControlerCanBeChanged() 
+	return c:IsFacedown() and c:IsControler(1-tp) and c:IsControlerCanBeChanged()
 end
 function s.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.filter(chkc,tp) end
