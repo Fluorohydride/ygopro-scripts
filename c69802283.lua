@@ -75,7 +75,7 @@ function s.negfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsType(TYPE_MONSTER)
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.IsExistingMatchingCard(s.negfilter,tp,LOCATION_REMOVED,0,1,nil)
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.IsExistingMatchingCard(s.negfilter,tp,LOCATION_REMOVED,0,1,nil)
 end
 function s.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
