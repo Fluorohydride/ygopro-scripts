@@ -68,9 +68,7 @@ function s.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=tg:SelectSubGroup(tp,aux.TRUE,false,1,11)
 	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(g)
-	if g then
-		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
-	end
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end
 function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
