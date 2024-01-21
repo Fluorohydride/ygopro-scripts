@@ -1,4 +1,5 @@
 --リペア・ジェネクス・コントローラー
+--not fully implemented
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

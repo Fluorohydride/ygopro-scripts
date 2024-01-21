@@ -67,7 +67,7 @@ function s.bsop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local sumc=Duel.SelectMatchingCard(tp,s.sfilter,tp,LOCATION_HAND,0,1,1,nil):GetFirst()
-			if sumc then	Duel.Summon(tp,sumc,true,nil) end
+			if sumc then Duel.Summon(tp,sumc,true,nil) end
 		end
 	end
 end
