@@ -9,9 +9,9 @@ function c42035044.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c42035044.atcost(e,c,tp)
-	return Duel.CheckReleaseGroupEx(tp,nil,1,REASON_ACTION,false,e:GetHandler())
+	return Duel.CheckReleaseGroup(REASON_ACTION,tp,nil,1,e:GetHandler())
 end
 function c42035044.atop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_ACTION,false,e:GetHandler())
+	local g=Duel.SelectReleaseGroup(REASON_ACTION,tp,nil,1,1,e:GetHandler())
 	Duel.Release(g,REASON_ACTION)
 end

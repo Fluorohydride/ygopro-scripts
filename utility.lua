@@ -1024,7 +1024,7 @@ end
 ---@return boolean
 function Auxiliary.mzctcheckrel(g,tp,reason)
 	reason=reason or REASON_COST
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,Auxiliary.IsInGroup,#g,reason,false,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(reason,tp,Auxiliary.IsInGroup,#g,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
