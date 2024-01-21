@@ -42,7 +42,7 @@ function s.filter(c)
 end
 function s.filter1(c,tp)
 	return c:IsAbleToRemove(tp,POS_FACEDOWN)
-end 
+end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_MZONE,0,1,nil)
 end
@@ -52,7 +52,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,s.filter1,tp,0,LOCATION_GRAVE,1,1,nil,tp)
-	if #g>0 then 
+	if #g>0 then
 	Duel.Remove(g,POS_FACEDOWN,REASON_EFFECT)
 	end
 end
