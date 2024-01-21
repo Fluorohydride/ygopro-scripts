@@ -59,12 +59,12 @@ function c80758812.spfilter2(c,e,tp)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c80758812.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_EFFECT,tp,c80758812.relfilter,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c80758812.relfilter,1,REASON_EFFECT,false,nil)
 		and Duel.IsExistingMatchingCard(c80758812.spfilter2,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c80758812.spop2(e,tp,eg,ep,ev,re,r,rp)
-	local rg=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c80758812.relfilter,1,1,nil,tp)
+	local rg=Duel.SelectReleaseGroupEx(tp,c80758812.relfilter,1,1,REASON_EFFECT,false,nil,tp)
 	if rg:GetCount()==0 then return end
 	local relchk=rg:GetFirst():IsDualState()
 	if Duel.Release(rg,REASON_EFFECT)==0 then return end

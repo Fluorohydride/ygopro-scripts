@@ -16,8 +16,8 @@ function c27869883.cfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c27869883.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c27869883.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c27869883.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c27869883.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c27869883.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c27869883.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

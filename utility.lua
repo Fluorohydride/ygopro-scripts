@@ -143,8 +143,11 @@ end
 function Auxiliary.PuzzleOp(e,tp)
 	Duel.SetLP(0,0)
 end
---Duel.SelectOption with option condition
---Return value starts from 1, different from Duel.SelectOption
+---Duel.SelectOption with option condition
+---Return value starts from 1, different from Duel.SelectOption
+---@param tp integer
+---@param ... table {condition, option[, value]}
+---@return integer|nil
 function Auxiliary.SelectFromOptions(tp,...)
 	local options={...}
 	local ops={}
@@ -1021,7 +1024,7 @@ end
 ---@return boolean
 function Auxiliary.mzctcheckrel(g,tp,reason)
 	reason=reason or REASON_COST
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(reason,tp,Auxiliary.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,Auxiliary.IsInGroup,#g,reason,false,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)

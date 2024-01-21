@@ -85,8 +85,8 @@ function c75180828.rfilter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x74)
 end
 function c75180828.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c75180828.rfilter,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c75180828.rfilter,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c75180828.rfilter,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,c75180828.rfilter,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c75180828.atktg(e,tp,eg,ep,ev,re,r,rp,chk)

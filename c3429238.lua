@@ -41,7 +41,7 @@ function c3429238.tfilter(c)
 	return c:IsCode(56286179) or c:IsHasEffect(20932152)
 end
 function c3429238.datcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_MAIN1
+	return Duel.GetCurrentPhase()==PHASE_MAIN1 and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3429238.dattg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

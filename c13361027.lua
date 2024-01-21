@@ -18,8 +18,8 @@ function c13361027.cfilter(c,tp)
 		and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())
 end
 function c13361027.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c13361027.cfilter,1,nil,tp) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c13361027.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c13361027.cfilter,1,nil,tp) end
+	local rg=Duel.SelectReleaseGroup(tp,c13361027.cfilter,1,1,nil,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c13361027.filter(c,e,sp)

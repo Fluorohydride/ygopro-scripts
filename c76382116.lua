@@ -33,11 +33,11 @@ function c76382116.fselect(g,e,tp)
 	end
 	local sg=Duel.GetMatchingGroup(c76382116.spfilter,tp,LOCATION_HAND,0,nil,e,tp,table.unpack(code))
 	if sg:GetClassCount(Card.GetCode)>=g:GetCount() and Duel.GetMZoneCount(tp,g)>=g:GetCount() then
-		return Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
+		return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 	else return false end
 end
 function c76382116.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c76382116.costfilter1,1,nil,e,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c76382116.costfilter1,1,nil,e,tp) end
 	local rg=Duel.GetReleaseGroup(tp):Filter(c76382116.costfilter2,nil,e,tp)
 	local ft=Duel.GetMZoneCount(tp,rg)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

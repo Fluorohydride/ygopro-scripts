@@ -28,10 +28,10 @@ end
 function c25449584.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c25449584.spfilter,1,nil,tp)
+	return Duel.CheckReleaseGroupEx(tp,c25449584.spfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
 function c25449584.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c25449584.spfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,c25449584.spfilter,1,1,REASON_SPSUMMON,false,nil,tp)
 	Duel.Release(g,REASON_SPSUMMON)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(25449584,1))
 	local atk=g:GetFirst():GetBaseAttack()

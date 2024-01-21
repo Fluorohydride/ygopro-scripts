@@ -33,10 +33,10 @@ function c18378582.rfilter(c,code)
 end
 function c18378582.spcon(e,c)
 	if c==nil then return Duel.IsEnvironment(56433456) end
-	return Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),c18378582.rfilter,1,nil,66073051)
+	return Duel.CheckReleaseGroupEx(c:GetControler(),c18378582.rfilter,1,REASON_SPSUMMON,false,nil,66073051)
 end
 function c18378582.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c18378582.rfilter,1,1,nil,66073051)
+	local g=Duel.SelectReleaseGroupEx(tp,c18378582.rfilter,1,1,REASON_SPSUMMON,false,nil,66073051)
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c18378582.cfilter(c)

@@ -16,9 +16,9 @@ function c51611041.costfilter(c,tp)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,51611042,0,TYPES_TOKEN_MONSTER,0,0,1,c:GetOriginalRace(),c:GetOriginalAttribute())
 end
 function c51611041.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c51611041.costfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c51611041.costfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rc=Duel.SelectReleaseGroup(REASON_COST,tp,c51611041.costfilter,1,1,nil,tp):GetFirst()
+	local rc=Duel.SelectReleaseGroup(tp,c51611041.costfilter,1,1,nil,tp):GetFirst()
 	e:SetLabel(rc:GetOriginalRace(),rc:GetOriginalAttribute())
 	Duel.Release(rc,REASON_COST)
 end

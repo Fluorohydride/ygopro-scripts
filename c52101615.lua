@@ -28,7 +28,7 @@ function c52101615.mfilter(c,tp)
 	return c:IsReleasable() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c52101615.fcheck(tp,sg,fc)
-	return Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#sg,nil,sg)
+	return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#sg,nil,sg)
 end
 function c52101615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

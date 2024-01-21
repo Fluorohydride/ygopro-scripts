@@ -34,8 +34,8 @@ function s.filter(c,e,tp,...)
 		and (#{...}==0 or not c:IsCode(...))
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.tfilter,1,nil,e,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.tfilter,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.tfilter,1,nil,e,tp) end
+	local g=Duel.SelectReleaseGroup(tp,s.tfilter,1,1,nil,e,tp)
 	e:SetLabel(g:GetFirst():GetOriginalCodeRule())
 	Duel.Release(g,REASON_COST)
 end

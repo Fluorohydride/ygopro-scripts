@@ -27,8 +27,8 @@ function c34318086.cfilter(c)
 	return c:IsSetCard(0x20a2) and not c:IsCode(34318086)
 end
 function c34318086.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c34318086.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c34318086.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c34318086.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c34318086.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c34318086.filter(c)

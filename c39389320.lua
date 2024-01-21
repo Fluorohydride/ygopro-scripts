@@ -15,8 +15,8 @@ function c39389320.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c39389320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_WARRIOR) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,10,e:GetHandler(),RACE_WARRIOR)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_WARRIOR) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,10,e:GetHandler(),RACE_WARRIOR)
 	local ct=Duel.Release(g,REASON_COST)
 	e:SetLabel(ct)
 end
