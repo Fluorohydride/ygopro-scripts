@@ -46,7 +46,6 @@ end
 function s.indtg(e,c)
 	return e:GetHandler()==c or c:IsRace(RACE_PLANT)
 end
---remove
 function s.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
 	Duel.PayLPCost(tp,2000)
@@ -69,7 +68,6 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 	end
 end
---atk up
 function s.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and e:GetHandler():IsFaceup()
 end

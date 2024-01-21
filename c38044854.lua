@@ -19,7 +19,7 @@ end
 function s.filter1(c,e)
 	return c:GetRank()>0 and c:IsFaceup() and c:IsSetCard(0xba) and c:IsCanBeEffectTarget(e)
 end
-function s.filter2(c,e,tp,mg)   
+function s.filter2(c,e,tp,mg)
 	local rk=mg:GetSum(Card.GetRank)
 	return c:IsRank(rk) and c:IsSetCard(0xba) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end

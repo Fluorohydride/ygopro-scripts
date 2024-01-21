@@ -34,7 +34,6 @@ function s.initial_effect(c)
 	e3:SetOperation(s.damop)
 	c:RegisterEffect(e3)
 end
---recover
 function s.recfilter(c,lg)
 	return lg:IsContains(c)
 end
@@ -55,7 +54,6 @@ function s.recop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
---damage
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp or 1-tp
 end

@@ -44,7 +44,6 @@ function s.initial_effect(c)
 	e4:SetLabelObject(e3)
 	c:RegisterEffect(e4)
 end
---sp
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FISH)
 end
@@ -62,7 +61,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
---remove
 function s.spfilter1(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(6) and c:IsRace(RACE_FISH) and e:GetHandler():IsAbleToRemove()
 end
@@ -101,7 +99,6 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
---spsummon
 function s.spreg(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetTurnCount()
 	e:SetLabel(ct)

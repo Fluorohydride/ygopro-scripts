@@ -27,13 +27,12 @@ function s.initial_effect(c)
 	e3:SetTarget(s.sptg)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
-
 end
 function s.filter(c)
 	return c:IsRace(RACE_FISH) and c:IsAbleToHand() and not c:IsCode(id)
 end
 function s.rgfilter(c,e,tp)
-	return c:IsRace(RACE_FISH) and c:IsAbleToRemove() and  c:IsFaceupEx()
+	return c:IsRace(RACE_FISH) and c:IsAbleToRemove() and c:IsFaceupEx()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil) end
@@ -52,7 +51,6 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
---spe
 function s.costfilter(c)
 	return c:IsRace(RACE_FISH) and c:IsAbleToRemoveAsCost() and c:IsFaceupEx() and not c:IsCode(id)
 end

@@ -36,7 +36,6 @@ function s.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,nil,TYPE_LINK)
 end
---to hand
 function s.cfilter(c,tp,se)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsLink(2) and (se==nil or c:GetReasonEffect()~=se)
 		and (c:IsLocation(LOCATION_GRAVE) or (c:IsLocation(LOCATION_REMOVED) and c:IsFaceup())) and c:IsPreviousControler(tp)

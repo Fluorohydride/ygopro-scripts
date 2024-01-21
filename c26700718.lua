@@ -25,9 +25,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.spstg)
 	e2:SetOperation(s.spsop)
 	c:RegisterEffect(e2)
-
 end
---spell
 function s.filter1(c)
 	return c:IsSetCard(0x19b) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
@@ -55,7 +53,6 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 	end
 end
---special
 function s.sfilter(c,e,tp)
 	return c:GetOriginalType()&TYPE_MONSTER>0 and c:GetType()&TYPE_CONTINUOUS+TYPE_SPELL==TYPE_CONTINUOUS+TYPE_SPELL
 		and c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

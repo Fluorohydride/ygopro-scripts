@@ -23,9 +23,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.sptg)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
-
 end
---to spsummon 0x21
 function s.condition1(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return Duel.GetTurnPlayer()==tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
@@ -44,7 +42,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp):GetFirst()
 		if tc then
-		   Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -59,11 +57,10 @@ end
 function s.splimit(e,c)
 	return not (c:IsType(TYPE_SYNCHRO) or c:IsType(TYPE_FUSION)) and c:IsLocation(LOCATION_EXTRA)
 end
---fusion
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return Duel.IsExistingMatchingCard(nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
-	 or ph==PHASE_MAIN1 or ph==PHASE_MAIN2
+		or ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 end
 function s.filter1(c,e)
 	return not c:IsImmuneToEffect(e)

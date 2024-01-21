@@ -41,7 +41,6 @@ function c30989084.initial_effect(c)
 	e3:SetOperation(s.rmop)
 	c:RegisterEffect(e3)
 end
---to hand
 function s.filter(c)
 	return c:IsSetCard(0xc9) and c:IsAbleToHand()
 end
@@ -58,7 +57,6 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
---special
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
@@ -85,7 +83,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end
---remove
 function s.cfilter(c,g)
 	return g:IsContains(c)
 end

@@ -40,10 +40,13 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler():GetColumnGroup()
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
-	and Duel.Destroy(eg,REASON_EFFECT)~=0 and rc:GetCount()>0 then
+	local rc=re:GetHandler()
+	local dg=rc:GetColumnGroup()
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then dg:RemoveCard(c) end
+	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re)
+		and Duel.Destroy(eg,REASON_EFFECT)~=0 and dg:GetCount()>0 then
 		Duel.BreakEffect()
-		Duel.Destroy(rc,REASON_EFFECT)
+		Duel.Destroy(dg,REASON_EFFECT)
 	end
 end
