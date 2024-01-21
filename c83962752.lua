@@ -102,5 +102,5 @@ function c83962752.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c83962752.splimit(e,c,tp,sumtp,sumpos)
-	return bit.band(sumtp,SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO 
+	return bit.band(sumtp,SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO
 end

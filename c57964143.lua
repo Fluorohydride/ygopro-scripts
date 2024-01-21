@@ -83,7 +83,7 @@ function s.dfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,s.dfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function s.posfilter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() 
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function s.dftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.posfilter,tp,0,LOCATION_MZONE,1,nil) end

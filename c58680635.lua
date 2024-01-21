@@ -38,7 +38,7 @@ function c58680635.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(4)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
-		if c:IsLevel(4) and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c58680635.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) 
+		if c:IsLevel(4) and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c58680635.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(58680635,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -66,7 +66,7 @@ function c58680635.drop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		local g=Group.FromCards(c,tc)
 		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
-			 Duel.Draw(tp,1,REASON_EFFECT)
+			Duel.Draw(tp,1,REASON_EFFECT)
 		end
 	end
 end
