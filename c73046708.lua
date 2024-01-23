@@ -86,6 +86,6 @@ function s.catg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.caop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToBattle() then return end
+	if not tc:IsRelateToBattle() or tc:IsImmuneToEffect(e) then return end
 	Duel.ChainAttack()
 end
