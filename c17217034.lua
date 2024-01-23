@@ -45,11 +45,9 @@ end
 function s.NegateTarget(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
     if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:GetAttack()>=2500 end
     if chk==0 then return Duel.IsExistingTarget(function(c) return c:IsFaceup() and c:GetAttack()>=2500 end,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-    if Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
-        Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-        local g=Duel.SelectTarget(tp,function(c) return c:IsFaceup() and c:GetAttack()>=2500 end,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-        Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
-    end
+    Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+    local g=Duel.SelectTarget(tp,function(c) return c:IsFaceup() and c:GetAttack()>=2500 end,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+    Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 --[e2] Negate that targeted monster's effects until the end of the turn
 function s.NegateOperation(e,tp,eg,ep,ev,re,r,rp)
@@ -77,8 +75,6 @@ end
 function s.ManeuverOperation(e,tp,eg,ep,ev,re,r,rp)
     local g=Duel.GetMatchingGroup(Card.IsCanBeEffectTarget,tp,0,LOCATION_MZONE,nil,e)
     if g:GetCount()>0 then
-        if Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
-            Duel.Destroy(g,REASON_EFFECT)
-        end
+        Duel.Destroy(g,REASON_EFFECT)
     end
 end
