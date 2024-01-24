@@ -55,7 +55,7 @@ end
 function c41782653.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c41782653.sprfilter,tp,LOCATION_REMOVED,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=g:SelectSubGroup(tp,aux.TRUE,true,5,5)
+	local sg=g:CancelableSelect(tp,5,5,nil)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
