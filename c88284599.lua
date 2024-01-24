@@ -42,6 +42,14 @@ function s.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(s.sprfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,2)
+	local hg=sg:Filter(Card.IsLocation,nil,LOCATION_HAND)
+	if #hg>0 then
+		Duel.ConfirmCards(1-tp,hg)
+	end
+	local gg=sg:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
+	if #gg>0 then
+		Duel.HintSelection(gg)
+	end
 	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function s.con(e,tp,eg,ep,ev,re,r,rp)
