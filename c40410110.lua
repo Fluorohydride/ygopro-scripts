@@ -14,7 +14,7 @@ function c40410110.attop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local catt=c:GetAttribute()
-		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-catt)
+		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~catt)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
