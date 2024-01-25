@@ -1615,7 +1615,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 						Auxiliary.GCheckAdditional=params.get_gcheck(e,tp,tc)
 					end
 					if params.get_fcheck then Auxiliary.FCheckAdditional=params.get_fcheck(tc,e,tp) end
-					if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+					if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
 						local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,gc,chkf)
 						tc:SetMaterial(mat1)
 						if params.mat_operation2 then params.mat_operation2(e,tp,mat1) end
@@ -1642,7 +1642,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 						params.mat_operation(mat1)
 						Duel.BreakEffect()
 						Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,params.spsummon_nocheck,false,POS_FACEUP)
-					else
+					elseif ce then
 						local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,gc,chkf)
 						local fop=ce:GetOperation()
 						fop(ce,e,tp,tc,mat2)
