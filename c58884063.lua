@@ -46,13 +46,13 @@ end
 function s.desfilter(c,tp,seq)
 	local sseq=c:GetSequence()
 	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
-		return sseq==5 and seq==3 or sseq==6 and seq==1
+		return sseq==5 and seq==3 or sseq==6 and seq==1 or sseq==3 and seq==5 or sseq==1 and seq==6
 	end
 	if c:IsLocation(LOCATION_SZONE) then
 		return sseq<5 and sseq==seq
 	end
 	if sseq<5 then
-		return math.abs(sseq-seq)==1
+		return math.abs(sseq-seq)==1 or sseq==1 and seq==5 or sseq==3 and seq==6
 	end
 	if sseq>=5 then
 		return sseq==5 and seq==1 or sseq==6 and seq==3
