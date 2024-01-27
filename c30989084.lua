@@ -88,8 +88,8 @@ function s.cfilter(c,g)
 end
 function s.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,lg) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.cfilter,1,1,nil,lg)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,lg) end
+	local g=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,lg)
 	Duel.Release(g,REASON_COST)
 end
 function s.rmfilter(c,e,tp)

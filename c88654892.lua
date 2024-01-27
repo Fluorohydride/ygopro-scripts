@@ -6,34 +6,27 @@ function c88654892.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,88654892+EFFECT_COUNT_CODE_OATH)
-	e1:SetLabel(0)
 	e1:SetCost(c88654892.cost)
 	e1:SetTarget(c88654892.target)
 	e1:SetOperation(c88654892.activate)
 	c:RegisterEffect(e1)
 end
 function c88654892.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(100)
-	return true
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c88654892.filter1,1,nil,e,tp) end
+	local rg=Duel.SelectReleaseGroup(tp,c88654892.filter1,1,1,nil,e,tp)
+	e:SetLabel(rg:GetFirst():GetLevel())
+	Duel.Release(rg,REASON_COST)
 end
-function c88654892.filter1(c,e,tp,ft)
+function c88654892.filter1(c,e,tp)
 	local lv=c:GetLevel()
-	return lv>0 and c:IsReleasable() and (c:IsType(TYPE_FUSION) or c:IsType(TYPE_SYNCHRO)) and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+	return lv>0 and (c:IsType(TYPE_FUSION) or c:IsType(TYPE_SYNCHRO)) and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c88654892.filter2,tp,LOCATION_DECK,0,1,nil,lv,e,tp)
 end
 function c88654892.filter2(c,lv,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c88654892.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then
-		if e:GetLabel()~=100 then return false end
-		e:SetLabel(0)
-		return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c88654892.filter1,1,nil,e,tp,ft)
-	end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c88654892.filter1,1,1,nil,e,tp,ft)
-	e:SetLabel(rg:GetFirst():GetLevel())
-	Duel.Release(rg,REASON_COST)
+	if chk==0 then return e:IsCostChecked() end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c88654892.activate(e,tp,eg,ep,ev,re,r,rp)
