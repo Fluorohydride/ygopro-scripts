@@ -45,7 +45,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.desfilter(c,tp,seq)
 	local sseq=c:GetSequence()
-	if c:IsControler(tp) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
 		return sseq==5 and seq==3 or sseq==6 and seq==1
 	end
 	if c:IsLocation(LOCATION_SZONE) then
