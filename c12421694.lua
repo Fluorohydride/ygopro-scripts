@@ -30,7 +30,7 @@ function c12421694.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c12421694.matfilter(c)
-	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL-ATTRIBUTE_EARTH)
+	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL&~ATTRIBUTE_EARTH)
 end
 function c12421694.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
