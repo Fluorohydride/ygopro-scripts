@@ -31,11 +31,11 @@ function c95286165.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
 	local mg=tc:GetMaterial()
 	local ct=mg:GetCount()
-	local sumtype=tc:GetSummonType()
-	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA)
+		and tc:IsSummonType(SUMMON_TYPE_FUSION)
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		and (not Duel.IsPlayerAffectedByEffect(tp,59822133) or ct==1)
 		and mg:FilterCount(aux.NecroValleyFilter(c95286165.mgfilter),nil,e,tp,tc,mg)==ct
-		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.SelectYesNo(tp,aux.Stringid(95286165,0)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
