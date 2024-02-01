@@ -43,7 +43,7 @@ function c42776960.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCode(EVENT_LEAVE_FIELD)
 		e3:SetLabel(1-tp)
 		e3:SetOperation(c42776960.leaveop)
-		e3:SetReset(RESET_EVENT+0xc020000)
+		e3:SetReset(RESET_EVENT+RESET_TURN_SET+RESET_TOFIELD+RESET_OVERLAY)
 		tc:RegisterEffect(e3,true)
 		Duel.SpecialSummonComplete()
 	end

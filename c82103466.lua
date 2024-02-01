@@ -50,6 +50,7 @@ function c82103466.initial_effect(c)
 	e6:SetType(EFFECT_TYPE_QUICK_O)
 	e6:SetRange(LOCATION_MZONE)
 	e6:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
+	e6:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e6:SetCondition(c82103466.atkcon)
 	e6:SetTarget(c82103466.atktg)
 	e6:SetOperation(c82103466.atkop)
@@ -100,9 +101,8 @@ function c82103466.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,c)
 		if g:GetCount()==0 then return false end
 		local g1,atk=g:GetMaxGroup(Card.GetBaseAttack)
-		return not c:IsAttack(atk) and c:GetFlagEffect(82103466)==0
+		return not c:IsAttack(atk)
 	end
-	c:RegisterFlagEffect(82103466,RESET_CHAIN,0,1)
 end
 function c82103466.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

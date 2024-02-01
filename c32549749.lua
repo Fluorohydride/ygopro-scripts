@@ -30,7 +30,7 @@ function c32549749.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ft=ft-1 end
-	local b1=aux.dscon()
+	local b1=aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil)
 	local b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE and ft>0
 		and Duel.IsExistingTarget(c32549749.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,tp)
@@ -71,13 +71,16 @@ function c32549749.activate(e,tp,eg,ep,ev,re,r,rp)
 		local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		local b1=tc:IsSSetable(true) and ft>0
 		local b2=Duel.IsExistingMatchingCard(c32549749.eqfilter,tp,LOCATION_MZONE,0,1,nil,tc,tp)
+		local op=0
 		if b1 and b2 then
 			op=Duel.SelectOption(tp,aux.Stringid(32549749,2),aux.Stringid(32549749,3))
 		elseif b1 then
 			op=Duel.SelectOption(tp,aux.Stringid(32549749,2))
 		elseif b2 then
 			op=Duel.SelectOption(tp,aux.Stringid(32549749,3))+1
-		else return end
+		else
+			return
+		end
 		if op==0 then
 			Duel.SSet(tp,tc)
 		else

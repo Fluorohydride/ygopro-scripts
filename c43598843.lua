@@ -16,6 +16,7 @@ function c43598843.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCost(aux.bfgcost)
+	e2:SetOperation(c43598843.target)
 	e2:SetOperation(c43598843.operation)
 	c:RegisterEffect(e2)
 end
@@ -36,6 +37,9 @@ function c43598843.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
+function c43598843.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFlagEffect(tp,43598843)==0 end
+end
 function c43598843.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -43,6 +47,7 @@ function c43598843.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOperation(c43598843.actop)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,43598843,RESET_PHASE+PHASE_END,0,1)
 end
 function c43598843.actop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()

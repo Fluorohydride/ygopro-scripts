@@ -22,7 +22,7 @@ function c9897998.filter(c,e,tp)
 	return c:IsDefenseBelow(1500) and c:IsRace(RACE_PSYCHO) and c:IsAttribute(ATTRIBUTE_WIND)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c9897998.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c9897998.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c9897998.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

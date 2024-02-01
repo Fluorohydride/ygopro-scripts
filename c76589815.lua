@@ -29,7 +29,7 @@ function c76589815.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c76589815.atfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x84)
+	return c:IsFaceup() and c:IsSetCard(0x1084)
 end
 function c76589815.atcon(e)
 	return Duel.IsExistingMatchingCard(c76589815.atfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,e:GetHandler())
@@ -37,8 +37,8 @@ end
 function c76589815.cfcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
-	return (a:IsControler(tp) and a~=e:GetHandler() and a:IsSetCard(0x84))
-		or (at and at:IsControler(tp) and at:IsFaceup() and at~=e:GetHandler() and at:IsSetCard(0x84))
+	return (a:IsControler(tp) and a~=e:GetHandler() and a:IsSetCard(0x1084))
+		or (at and at:IsControler(tp) and at:IsFaceup() and at~=e:GetHandler() and at:IsSetCard(0x1084))
 end
 function c76589815.cfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST) end

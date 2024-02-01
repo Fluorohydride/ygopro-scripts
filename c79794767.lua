@@ -48,9 +48,9 @@ end
 function c79794767.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.HintSelection(Group.FromCards(c))
-	if Duel.CheckReleaseGroup(tp,nil,1,c) and Duel.SelectYesNo(tp,aux.Stringid(79794767,0)) then
-		local g=Duel.SelectReleaseGroup(tp,nil,1,1,c)
-		Duel.Release(g,REASON_COST)
+	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_MAINTENANCE,false,c) and Duel.SelectYesNo(tp,aux.Stringid(79794767,0)) then
+		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_MAINTENANCE,false,c)
+		Duel.Release(g,REASON_MAINTENANCE)
 	else Duel.Destroy(c,REASON_COST) end
 end
 function c79794767.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
@@ -63,6 +63,6 @@ end
 function c79794767.relcon(e)
 	return Duel.IsExistingMatchingCard(c79794767.filter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
-function c79794767.rellimit(e,c,tp,sumtp)
+function c79794767.rellimit(e,c,tp)
 	return not c:IsSetCard(0xe0)
 end

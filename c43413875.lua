@@ -38,12 +38,12 @@ function c43413875.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroup(tp,c43413875.hspfilter,1,nil,ft,tp)
+	return ft>-1 and Duel.CheckReleaseGroupEx(tp,c43413875.hspfilter,1,REASON_SPSUMMON,false,nil,ft,tp)
 end
 function c43413875.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c43413875.hspfilter,1,1,nil,ft,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroupEx(tp,c43413875.hspfilter,1,1,REASON_SPSUMMON,false,nil,ft,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c43413875.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

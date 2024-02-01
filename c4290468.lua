@@ -44,13 +44,14 @@ function c4290468.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4290468.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-	e1:SetValue(math.ceil(tc:GetAttack()/2))
-	tc:RegisterEffect(e1)
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		e1:SetValue(math.ceil(tc:GetAttack()/2))
+		tc:RegisterEffect(e1)
+	end
 end
 function c4290468.dacon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_BATTLE_STEP and e:GetHandler():GetAttackedCount()~=0

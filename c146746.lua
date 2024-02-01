@@ -51,7 +51,7 @@ end
 function c146746.spfilter1(c,e,tp)
 	return c:IsRace(RACE_MACHINE) and c:IsLevel(10) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
-function c146746.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c146746.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c146746.spfilter1(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c146746.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

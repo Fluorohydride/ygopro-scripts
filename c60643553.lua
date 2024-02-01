@@ -94,6 +94,7 @@ end
 function c60643553.lpop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ResetFlagEffect(tp,60643554)
 	local lg=e:GetLabelObject():GetLabelObject()
+	lg=lg:Filter(Card.IsLocation,nil,LOCATION_MZONE)
 	local rnum=lg:GetSum(Card.GetAttack)
 	local g=Group.CreateGroup()
 	g:KeepAlive()

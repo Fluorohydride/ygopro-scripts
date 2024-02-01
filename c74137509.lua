@@ -7,18 +7,15 @@ function c74137509.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c74137509.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c74137509.target)
 	e1:SetOperation(c74137509.activate)
 	c:RegisterEffect(e1)
 end
 c74137509.toss_dice=true
-function c74137509.condition(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetCurrentPhase()==PHASE_DAMAGE and Duel.IsDamageCalculated() then return false end
-	return true
-end
 function c74137509.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) end
+	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c74137509.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)

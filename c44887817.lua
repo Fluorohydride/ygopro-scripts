@@ -41,6 +41,7 @@ function c44887817.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c44887817.operation(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetActivityCount(tp,ACTIVITY_NORMALSUMMON)~=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_PLANT) then
@@ -53,7 +54,7 @@ function c44887817.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		e1:SetTargetRange(1,0)
 		Duel.RegisterEffect(e1,tp)
-		local e2=e1:Clone(e1)
+		local e2=e1:Clone()
 		e2:SetCode(EFFECT_CANNOT_MSET)
 		Duel.RegisterEffect(e2,tp)
 	end

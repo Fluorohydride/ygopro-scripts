@@ -66,7 +66,7 @@ function c45115956.attop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local catt=tc:GetAttribute()
-		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-catt)
+		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~catt)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

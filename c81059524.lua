@@ -43,7 +43,7 @@ function c81059524.damop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81059524.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local tpe=re:GetActiveType()
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and (tpe==TYPE_SPELL or tpe==TYPE_QUICKPLAY+TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and (tpe==TYPE_SPELL or tpe==TYPE_QUICKPLAY+TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c81059524.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

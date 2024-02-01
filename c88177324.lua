@@ -62,6 +62,7 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()
 	end
+	Duel.AdjustInstantly(c)
 	g=Duel.GetMatchingGroup(c88177324.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	tc=g:GetFirst()
 	while tc do

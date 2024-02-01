@@ -25,7 +25,7 @@ function c64910482.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c64910482.synfilter1(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
+	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
 end
 function c64910482.synfilter2(c,syncard,tuner,f)
 	return c:IsSetCard(0x27) and c:IsNotTuner(syncard) and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
@@ -52,9 +52,9 @@ function c64910482.syntg(e,syncard,f,min,max)
 	local lv=syncard:GetLevel()
 	if lv<=c:GetLevel() then return false end
 	local g=Group.FromCards(c)
-	local mg=Duel.GetMatchingGroup(c64910482.synfilter1,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(c64910482.synfilter1,c,syncard,c,f)
 	if syncard:IsSetCard(0x27) then
-		local exg=Duel.GetMatchingGroup(c64910482.synfilter2,syncard:GetControler(),LOCATION_HAND,0,c,syncard,c,f)
+		local exg=Duel.GetMatchingGroup(c64910482.synfilter2,tp,LOCATION_HAND,0,c,syncard,c,f)
 		mg:Merge(exg)
 	end
 	return mg:IsExists(c64910482.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)
@@ -65,9 +65,9 @@ function c64910482.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
 	local c=e:GetHandler()
 	local lv=syncard:GetLevel()
 	local g=Group.FromCards(c)
-	local mg=Duel.GetMatchingGroup(c64910482.synfilter1,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(c64910482.synfilter1,c,syncard,c,f)
 	if syncard:IsSetCard(0x27) then
-		local exg=Duel.GetMatchingGroup(c64910482.synfilter2,syncard:GetControler(),LOCATION_HAND,0,c,syncard,c,f)
+		local exg=Duel.GetMatchingGroup(c64910482.synfilter2,tp,LOCATION_HAND,0,c,syncard,c,f)
 		mg:Merge(exg)
 	end
 	for i=1,maxc do

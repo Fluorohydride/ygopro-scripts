@@ -61,7 +61,7 @@ end
 function c68679595.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=c:GetEquipGroup()
-	return g:IsExists(c68679595.cfilter,1,nil) and aux.dscon()
+	return g:IsExists(c68679595.cfilter,1,nil) and aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68679595.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and aux.NegateEffectMonsterFilter(chkc) end

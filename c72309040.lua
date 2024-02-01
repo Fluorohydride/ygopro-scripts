@@ -1,4 +1,4 @@
---Ghoti of the Deep Beyond
+--最果てのゴーティス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

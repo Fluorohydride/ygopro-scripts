@@ -1,4 +1,4 @@
---被検体ミュートリアM－０５
+--被検体ミュートリアM－05
 function c62201847.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

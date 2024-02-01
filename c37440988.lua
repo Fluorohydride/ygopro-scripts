@@ -43,16 +43,17 @@ function c37440988.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c37440988.hspfilter(c,tp,sc)
-	return c:IsFusionSetCard(0x2034) and c:IsLevel(10) and c:IsControler(tp) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
+	return c:IsFusionSetCard(0x2034) and c:IsLevel(10) and c:IsControler(tp) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0
+		and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c37440988.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(c:GetControler(),c37440988.hspfilter,1,nil,c:GetControler(),c)
+	return Duel.CheckReleaseGroupEx(c:GetControler(),c37440988.hspfilter,1,REASON_SPSUMMON,false,nil,c:GetControler(),c)
 end
 function c37440988.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c37440988.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroupEx(tp,c37440988.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp,c)
 	c:SetMaterial(g)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c37440988.cfilter(c)
 	return c:IsSetCard(0x1034) and c:GetAttack()>0 and c:IsAbleToRemoveAsCost()

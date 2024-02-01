@@ -1,4 +1,4 @@
---Arionpos, Serpent of the Ghoti
+--ゴーティスの大蛇アリオンポス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

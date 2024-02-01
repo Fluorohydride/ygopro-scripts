@@ -32,7 +32,7 @@ end
 function c99910751.thfilter(c)
 	return not c:IsCode(99910751) and c:IsSetCard(0x183) and c:IsAbleToHand()
 end
-function c99910751.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c99910751.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c99910751.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

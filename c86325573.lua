@@ -24,10 +24,10 @@ function c86325573.valcon(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c86325573.filter(c)
-	return c:GetLevel()>0 and c:IsSetCard(0x84) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
+	return c:GetLevel()>0 and c:IsSetCard(0x1084) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 end
 function c86325573.lvfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x84) and c:GetLevel()>0
+	return c:IsFaceup() and c:IsSetCard(0x1084) and c:GetLevel()>0
 end
 function c86325573.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and c86325573.filter(chkc) end

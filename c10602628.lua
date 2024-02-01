@@ -1,4 +1,4 @@
---BF-魔風のボレアース
+--BF－魔風のボレアース
 function c10602628.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c10602628.mfilter,aux.NonTuner(nil),1)
@@ -37,7 +37,7 @@ end
 function c10602628.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c10602628.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c10602628.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.IsExistingMatchingCard(c10602628.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)

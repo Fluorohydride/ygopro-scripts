@@ -1,4 +1,4 @@
---D－HERO ドレッドサーヴァント
+--D-HERO ドレッドサーヴァント
 function c36625827.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

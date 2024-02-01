@@ -22,8 +22,8 @@ end
 function c44790889.ntcon(e,c,minc)
 	if c==nil then return true end
 	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-		and Duel.GetFieldGroupCount(c:GetControler(),LOCATION_ONFIELD,0,nil)==0
-		and Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_ONFIELD,nil)>0
+		and Duel.GetFieldGroupCount(c:GetControler(),LOCATION_ONFIELD,0)==0
+		and Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_ONFIELD)>0
 end
 function c44790889.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()~=nil

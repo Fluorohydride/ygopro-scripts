@@ -51,6 +51,9 @@ function c40522482.activate(e,tp,eg,ep,ev,re,r,rp)
 		else
 			g,dam=og:GetMaxGroup(Card.GetBaseAttack)
 		end
-		Duel.Damage(1-tp,dam,REASON_EFFECT)
+		if dam>0 then
+			Duel.BreakEffect()
+			Duel.Damage(1-tp,dam,REASON_EFFECT)
+		end
 	end
 end

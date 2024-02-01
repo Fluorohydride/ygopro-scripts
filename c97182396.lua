@@ -1,4 +1,4 @@
---Ａ・∀・ＶＶ
+--A・∀・VV
 function c97182396.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -65,7 +65,7 @@ function c97182396.filter(c,tp)
 end
 function c97182396.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c97182396.filter(chkc,tp) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c97182396.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c97182396.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp)
@@ -91,7 +91,9 @@ function c97182396.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c97182396.eqlimit(e,c)
-	return c:IsSetCard(0x15b) or c:IsControler(1-e:GetHandlerPlayer())
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsSetCard(0x15b)
+		or c:IsControler(1-e:GetHandlerPlayer())
 end
 function c97182396.nacon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()

@@ -55,8 +55,9 @@ function c24557335.tgfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c24557335.descfilter(c,tp)
 		and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
 end
-function c24557335.destg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c24557335.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(c24557335.tgfilter,nil,e,tp)
+	if chkc then return eg:IsContains(chkc) and c24557335.tgfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetCount()>0 end
 	local c=nil
 	if g:GetCount()>1 then

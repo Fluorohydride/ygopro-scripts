@@ -75,7 +75,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.cfilter(c,tp)
 	return not c:IsType(TYPE_TOKEN) and c:IsType(TYPE_MONSTER)
-		and c:GetOwner()==1-tp and c:IsReason(REASON_EFFECT)
+		and c:GetOwner()==1-tp and c:IsReason(REASON_EFFECT+REASON_REDIRECT)
 		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
 		and c:IsFaceupEx() and c:IsCanOverlay()
 end

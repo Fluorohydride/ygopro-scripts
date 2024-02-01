@@ -105,7 +105,7 @@ function c34995106.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,c,chkf)
+			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			if #mat1<2 then goto cancel end
 			tc:SetMaterial(mat1)
 			local mat2=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)

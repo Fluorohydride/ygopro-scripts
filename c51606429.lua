@@ -5,7 +5,6 @@ function c51606429.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCost(c51606429.cost)
 	e1:SetTarget(c51606429.target)
 	e1:SetOperation(c51606429.activate)
 	c:RegisterEffect(e1)
@@ -23,21 +22,13 @@ function c51606429.initial_effect(c)
 	e2:SetOperation(c51606429.negop)
 	c:RegisterEffect(e2)
 end
-function c51606429.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
-	return true
-end
 function c51606429.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		if e:GetLabel()==0 then return false end
-		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) end
-	e:SetLabel(0)
+	if chk==0 then return e:IsCostChecked()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c51606429.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
@@ -59,7 +50,7 @@ end
 function c51606429.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsDisabled() then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e,false) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,4 +1,4 @@
---Shif, Fairy of the Ghoti
+--ゴーティスの妖精シフ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--increase atk

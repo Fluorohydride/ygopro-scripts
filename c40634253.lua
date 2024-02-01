@@ -1,4 +1,4 @@
---BM-4ボムスパイダー
+--BM－4ボムスパイダー
 function c40634253.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)
@@ -22,11 +22,12 @@ function c40634253.initial_effect(c)
 	e2:SetCountLimit(1,40634253)
 	e2:SetCondition(c40634253.damcon1)
 	e2:SetTarget(c40634253.damtg)
-	e2:SetOperation(c40634253.damop)
+	e2:SetOperation(c40634253.damop1)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCondition(c40634253.damcon2)
+	e3:SetOperation(c40634253.damop2)
 	c:RegisterEffect(e3)
 end
 function c40634253.desfilter(c)
@@ -53,11 +54,12 @@ end
 function c40634253.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local bc=tc:GetBattleTarget()
-	return tc:IsPreviousControler(1-tp) and tc:IsLocation(LOCATION_GRAVE)
+	return tc:IsPreviousControler(1-tp) and tc:IsLocation(LOCATION_GRAVE) and tc:GetTextAttack()>0
 		and bc:IsControler(tp) and bc:GetOriginalAttribute()==ATTRIBUTE_DARK and bc:GetOriginalRace()==RACE_MACHINE and bc:IsType(TYPE_MONSTER)
 end
-function c40634253.damfilter1(c,tp)
-	return c:IsReason(REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
+function c40634253.damfilter2(c,tp)
+	return c:IsReason(REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE)
+		and c:IsPreviousControler(1-tp) and c:GetTextAttack()>0
 end
 function c40634253.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
@@ -65,22 +67,26 @@ function c40634253.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return tgp==tp and loc==LOCATION_MZONE
 		and rc:GetOriginalAttribute()==ATTRIBUTE_DARK and rc:GetOriginalRace()==RACE_MACHINE
-		and eg:IsExists(c40634253.damfilter1,1,nil,tp)
+		and eg:IsExists(c40634253.damfilter2,1,nil,tp)
 end
 function c40634253.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 end
-function c40634253.damfilter2(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
+function c40634253.damop1(e,tp,eg,ep,ev,re,r,rp)
+	local tc=eg:GetFirst()
+	Duel.Damage(1-tp,math.floor(tc:GetTextAttack()/2),REASON_EFFECT)
 end
-function c40634253.damop(e,tp,eg,ep,ev,re,r,rp)
+function c40634253.damop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c40634253.damfilter2,nil,tp)
-	if g:GetCount()>0 then
-		if g:GetCount()>1 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-			g=g:Select(tp,1,1,nil)
-		end
-		Duel.Damage(1-tp,math.floor(g:GetFirst():GetBaseAttack()/2),REASON_EFFECT)
+	local tc=nil
+	if #g>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+		tc=g:Select(tp,1,1,nil):GetFirst()
+	elseif #g==1 then
+		tc=g:GetFirst()
+	end
+	if tc then
+		Duel.Damage(1-tp,math.floor(tc:GetTextAttack()/2),REASON_EFFECT)
 	end
 end

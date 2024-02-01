@@ -12,6 +12,7 @@ function c69550259.initial_effect(c)
 	e1:SetTarget(c69550259.sptg)
 	e1:SetOperation(c69550259.spop)
 	c:RegisterEffect(e1)
+	aux.CreateMaterialReasonCardRelation(c,e1)
 end
 function c69550259.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
@@ -19,12 +20,16 @@ end
 function c69550259.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
 	local lv=rc:GetOriginalLevel()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,69550260,0x2016,TYPES_TOKEN_MONSTER,0,0,lv,RACE_MACHINE,ATTRIBUTE_WIND) end
+	if chk==0 then return rc:IsRelateToEffect(e) and rc:IsFaceup()
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,69550260,0x2016,TYPES_TOKEN_MONSTER,0,0,lv,RACE_MACHINE,ATTRIBUTE_WIND) end
+	Duel.SetTargetCard(rc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 end
 function c69550259.spop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=e:GetHandler():GetReasonCard()
+	local rc=Duel.GetFirstTarget()
+	if not rc:IsRelateToChain() or rc:IsFacedown() then return end
 	local lv=rc:GetOriginalLevel()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if Duel.IsPlayerCanSpecialSummonMonster(tp,69550260,0x2016,TYPES_TOKEN_MONSTER,0,0,lv,RACE_MACHINE,ATTRIBUTE_WIND) then

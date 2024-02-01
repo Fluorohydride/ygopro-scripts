@@ -31,7 +31,7 @@ function s.filter(c,tp)
 			and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)))
 		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
-function s.dtftg(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.dtftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc:IsFaceup() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

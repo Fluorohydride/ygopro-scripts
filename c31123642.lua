@@ -1,4 +1,4 @@
---ZS-希望賢者
+--ZS－希望賢者
 function c31123642.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -54,7 +54,7 @@ function c31123642.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	local e2=Effect.CreateEffect(e:GetHandler())
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+	e2:SetCode(EFFECT_CANNOT_ATTACK)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c31123642.atklimit)
 	e2:SetReset(RESET_PHASE+PHASE_END)

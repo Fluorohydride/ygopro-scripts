@@ -30,20 +30,20 @@ function c56619314.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		if Duel.CheckReleaseGroup(tp,c56619314.spfilter,1,nil,RACE_DRAGON,tp) then ct=ct-1 end
 		if Duel.CheckReleaseGroup(tp,c56619314.spfilter,1,nil,RACE_FIEND,tp) then ct=ct-1 end
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>ct
-			and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,e:GetHandler(),RACE_DRAGON)
-			and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,e:GetHandler(),RACE_FIEND)
+			and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,REASON_COST,true,e:GetHandler(),RACE_DRAGON)
+			and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,REASON_COST,true,e:GetHandler(),RACE_FIEND)
 	end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>0 then
-		local g1=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,e:GetHandler(),RACE_DRAGON)
-		local g2=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,e:GetHandler(),RACE_FIEND)
+		local g1=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,REASON_COST,true,e:GetHandler(),RACE_DRAGON)
+		local g2=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,REASON_COST,true,e:GetHandler(),RACE_FIEND)
 		g1:Merge(g2)
 		Duel.Release(g1,REASON_COST)
 	elseif ft==0 then
 		local g1=Duel.SelectReleaseGroup(tp,c56619314.spfilter,1,1,nil,RACE_DRAGON+RACE_FIEND,tp)
 		local rac=RACE_DRAGON
 		if g1:GetFirst():IsRace(RACE_DRAGON) then rac=RACE_FIEND end
-		local g2=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,e:GetHandler(),rac)
+		local g2=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,REASON_COST,true,e:GetHandler(),rac)
 		g1:Merge(g2)
 		Duel.Release(g1,REASON_COST)
 	else

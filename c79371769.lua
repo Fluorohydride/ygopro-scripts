@@ -12,8 +12,8 @@ function c79371769.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c79371769.discon)
-	e2:SetCost(c79371769.discost)
 	e2:SetTarget(c79371769.distg)
 	e2:SetOperation(c79371769.disop)
 	c:RegisterEffect(e2)
@@ -35,11 +35,6 @@ function c79371769.initial_effect(c)
 end
 function c79371769.discon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,tp)
-end
-function c79371769.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(79371769)==0 end
-	c:RegisterFlagEffect(79371769,RESET_CHAIN,0,1)
 end
 function c79371769.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end

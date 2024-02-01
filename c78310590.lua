@@ -102,7 +102,7 @@ function c78310590.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c78310590.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL)and re:GetHandler():IsSetCard(0x20ec)
+	return re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x20ec)
 end
 function c78310590.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x10ec) and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

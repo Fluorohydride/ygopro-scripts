@@ -14,7 +14,7 @@ end
 function c78986941.rfilter(c,e)
 	local tpe=c:GetType()
 	return bit.band(tpe,TYPE_NORMAL)~=0 and bit.band(tpe,TYPE_TOKEN)==0
-		and c:IsFaceup() and c:IsReleasable() and c:IsReleasableByEffect()
+		and c:IsFaceup() and c:IsReleasableByEffect()
 end
 function c78986941.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c78986941.rfilter(chkc,e) end

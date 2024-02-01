@@ -14,6 +14,9 @@ end
 function c28741524.filter(c,e,tp)
 	return c:IsLevelBelow(2) and c:IsRace(RACE_PSYCHO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+function c28741524.opfilter(c,e)
+	return c:IsRelateToEffect(e) and c:IsRace(RACE_PSYCHO)
+end
 function c28741524.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c28741524.filter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -27,7 +30,7 @@ function c28741524.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,lv*300)
 end
 function c28741524.spop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c28741524.opfilter,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<g:GetCount() or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	if g:GetCount()>0 then

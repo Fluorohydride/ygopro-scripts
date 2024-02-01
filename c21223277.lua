@@ -63,7 +63,7 @@ function c21223277.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c21223277.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x207a)
+	return c:IsFaceup() and c:IsSetCard(0x207a) and c:IsType(TYPE_EQUIP) and c:IsType(TYPE_SPELL)
 end
 function c21223277.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

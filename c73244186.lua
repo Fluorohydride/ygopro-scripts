@@ -1,4 +1,4 @@
---Moray of Avarice
+--貪欲なウツボ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

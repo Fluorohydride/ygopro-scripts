@@ -33,7 +33,8 @@ function c96700602.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(c96700602.filter,tp,0,LOCATION_MZONE,nil)
 	if Duel.ChangePosition(g,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,0,0)~=0 then
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetDefense()>0 then
+			Duel.BreakEffect()
 			Duel.Damage(1-tp,tc:GetDefense(),REASON_EFFECT)
 		end
 	end

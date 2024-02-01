@@ -58,7 +58,7 @@ function c85032782.tdfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 		and Duel.IsExistingMatchingCard(c85032782.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
 end
-function c85032782.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c85032782.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c85032782.tdfilter(chkc,tp) and chkc~=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingTarget(c85032782.tdfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

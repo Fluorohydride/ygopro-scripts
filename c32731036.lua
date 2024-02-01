@@ -44,12 +44,12 @@ end
 function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
+	return Duel.CheckReleaseGroupEx(tp,s.cfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroupEx(tp,s.cfilter,1,1,REASON_SPSUMMON,false,nil,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

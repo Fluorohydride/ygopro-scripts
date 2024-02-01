@@ -20,6 +20,17 @@ function c43889633.initial_effect(c)
 	c:RegisterEffect(e2)
 	--code
 	aux.EnableChangeCode(c,22702055)
+	--special summon
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(43889633,2))
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetCode(EVENT_PHASE+PHASE_END)
+	e3:SetCountLimit(1)
+	e3:SetCondition(c43889633.spcon)
+	e3:SetTarget(c43889633.sptg)
+	e3:SetOperation(c43889633.spop)
+	c:RegisterEffect(e3)
 end
 function c43889633.filter(c)
 	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA) and c:IsAbleToRemove()
@@ -33,36 +44,28 @@ function c43889633.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43889633.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
-		tc:RegisterFlagEffect(43889634,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(43889633,2))
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-		e1:SetRange(LOCATION_SZONE)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCountLimit(1)
-		e1:SetLabelObject(tc)
-		e1:SetCondition(c43889633.spcon)
-		e1:SetTarget(c43889633.sptg)
-		e1:SetOperation(c43889633.spop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN)
-		e:GetHandler():RegisterEffect(e1)
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
+		local fid=e:GetHandler():GetFieldID()
+		tc:RegisterFlagEffect(43889634,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 	end
 end
+function c43889633.spfilter(c,fid)
+	return c:GetFlagEffect(43889634)~=0 and c:GetFlagEffectLabel(43889634)==fid
+end
 function c43889633.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	return tc and tc:GetFlagEffect(43889634)~=0 and Duel.GetTurnPlayer()==tp
+	local fid=e:GetHandler():GetFieldID()
+	return Duel.GetTurnPlayer()==tp and Duel.IsExistingMatchingCard(c43889633.spfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil,fid)
 end
 function c43889633.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local tc=e:GetLabelObject()
-	Duel.SetTargetCard(tc)
-	e:SetLabelObject(nil)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
+	local fid=e:GetHandler():GetFieldID()
+	local tg=Duel.GetMatchingGroup(c43889633.spfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil,fid)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,1,0,0)
 end
 function c43889633.spop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+	local fid=e:GetHandler():GetFieldID()
+	local tg=Duel.GetMatchingGroup(c43889633.spfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil,fid)
+	if #tg>0 then
+		Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

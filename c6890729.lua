@@ -1,4 +1,4 @@
---ボンディング-DHO
+--ボンディング－DHO
 function c6890729.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -34,7 +34,7 @@ function c69031175.initial_effect(c)
 end
 function c69031175.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local atg=Duel.GetAttackTarget()
-	return aux.dsercon(e) and Duel.GetAttacker()==e:GetHandler()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttacker()==e:GetHandler()
 		and atg and atg:IsRelateToBattle() and atg:GetCounter(0x1002)==0 and atg:IsCanAddCounter(0x1002,1)
 end
 function c69031175.ctop(e,tp,eg,ep,ev,re,r,rp)

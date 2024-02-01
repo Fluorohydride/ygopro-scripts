@@ -12,7 +12,6 @@ function c73639099.initial_effect(c)
 	e1:SetCondition(c73639099.imcon)
 	e1:SetValue(c73639099.efilter)
 	c:RegisterEffect(e1)
-	--
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(73639099,0))

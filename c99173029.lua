@@ -29,6 +29,7 @@ function c99173029.initial_effect(c)
 	e4:SetOperation(c99173029.mtop)
 	c:RegisterEffect(e4)
 end
+c99173029.has_text_type=TYPE_SPIRIT
 function c99173029.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPIRIT)
 end

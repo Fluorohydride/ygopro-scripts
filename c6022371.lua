@@ -66,7 +66,7 @@ function c6022371.spfilter(c,e,tp)
 	return c:IsCode(85066822) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP_DEFENSE)
 end
 function c6022371.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>=2
 		and Duel.IsExistingMatchingCard(c6022371.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,2,nil,e,tp)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_HAND+LOCATION_DECK)

@@ -68,6 +68,7 @@ function c59332125.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c59332125.filter2,nil,e)
 	local mg2=Duel.GetMatchingGroup(c59332125.filter3,tp,0,LOCATION_MZONE,nil,e)
+	local exmat=false
 	if mg1:IsExists(c59332125.chkfilter,1,nil,tp) and mg2:GetCount()>0 then
 		mg1:Merge(mg2)
 		exmat=true

@@ -14,6 +14,7 @@ function c72302403.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(0,LOCATION_MZONE)
+	e2:SetCondition(c72302403.atkcon)
 	c:RegisterEffect(e2)
 	--remain field
 	local e3=Effect.CreateEffect(c)
@@ -59,4 +60,7 @@ function c72302403.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(c,REASON_RULE)
 		c:ResetFlagEffect(1082946)
 	end
+end
+function c72302403.atkcon(e)
+	return e:GetHandler():GetType()==TYPE_SPELL
 end

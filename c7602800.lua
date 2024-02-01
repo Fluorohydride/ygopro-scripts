@@ -45,7 +45,7 @@ end
 function c7602800.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local _,atk=eg:Filter(c7602800.cfilter,nil,tp):GetMaxGroup(Card.GetAttack)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
-		and c7602800.spfilter(c,e,tp,atk) end
+		and c7602800.spfilter(chkc,e,tp,atk) end
 	if chk==0 then return atk and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c7602800.spfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp,atk) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

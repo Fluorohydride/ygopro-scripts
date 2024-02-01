@@ -16,12 +16,6 @@ function c16825874.initial_effect(c)
 	e2:SetCondition(c16825874.ccon)
 	e2:SetOperation(c16825874.cop)
 	c:RegisterEffect(e2)
-	--hand synchro for double tuner
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e3:SetCode(EFFECT_HAND_SYNCHRO)
-	c:RegisterEffect(e3)
 end
 function c16825874.ccon(e,tp,eg,ep,ev,re,r,rp)
 	return r==REASON_SYNCHRO

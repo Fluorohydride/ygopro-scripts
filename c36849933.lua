@@ -67,6 +67,7 @@ function c36849933.rstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c36849933.rsop(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local c=e:GetHandler()
 	local mg=Duel.GetRitualMaterial(tp)
 	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) or not mg:IsContains(c) then return end
@@ -85,11 +86,11 @@ function c36849933.rsop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		Duel.SetSelectedCard(c)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then
+		if not mat then
 			aux.RCheckAdditional=nil
-			return
+			goto cancel
 		end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)

@@ -40,7 +40,8 @@ function c98095162.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c98095162.lcheck(g)
-	return g:GetClassCount(Card.GetLinkAttribute)==1 and g:GetClassCount(Card.GetLinkRace)==g:GetCount()
+	local tc=g:GetFirst()
+	return aux.SameValueCheck(g,Card.GetLinkAttribute) and g:GetClassCount(Card.GetLinkRace)==#g
 end
 function c98095162.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

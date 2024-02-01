@@ -6,7 +6,7 @@ function c67987302.initial_effect(c)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x21))
+	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x1021))
 	e1:SetValue(c67987302.efilter)
 	c:RegisterEffect(e1)
 end

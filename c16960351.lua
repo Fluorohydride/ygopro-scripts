@@ -19,7 +19,7 @@ function c16960351.initial_effect(c)
 end
 function c16960351.rfilter(c,e,tp,ft)
 	local lv=c:GetOriginalLevel()
-	return lv>0 and c:IsRace(RACE_DRAGON) and c:IsReleasable()
+	return lv>0 and c:IsRace(RACE_DRAGON)
 		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c16960351.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,lv)
 end

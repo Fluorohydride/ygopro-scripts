@@ -85,7 +85,7 @@ function c7373632.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
-		Duel.SendtoGrave(sg,REASON_RULE)
+		Duel.SendtoGrave(sg,REASON_RULE,1-tp)
 	end
 end
 function c7373632.effectfilter(e,ct)

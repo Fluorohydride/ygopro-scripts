@@ -73,10 +73,11 @@ function c32986898.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 and e:GetHandler():GetFlagEffect(32986898)~=0 then
-			Duel.BreakEffect()
 			local atk=tc:GetBaseAttack()
-			if atk<0 then atk=0 end
-			Duel.Damage(1-tp,math.ceil(atk/2),REASON_EFFECT)
+			if atk>0 then
+				Duel.BreakEffect()
+				Duel.Damage(1-tp,math.ceil(atk/2),REASON_EFFECT)
+			end
 		end
 	end
 end

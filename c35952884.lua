@@ -11,17 +11,10 @@ function c35952884.initial_effect(c)
 	e1:SetValue(aux.synlimit)
 	c:RegisterEffect(e1)
 	--multi attack
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e2:SetCondition(c35952884.mtcon)
-	e2:SetOperation(c35952884.mtop)
-	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_MATERIAL_CHECK)
 	e3:SetValue(c35952884.valcheck)
-	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 	--negate
 	local e3=Effect.CreateEffect(c)
@@ -49,21 +42,17 @@ function c35952884.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c35952884.material_type=TYPE_SYNCHRO
+c35952884.cosmic_quasar_dragon_summon=true
 function c35952884.valcheck(e,c)
-	e:GetLabelObject():SetLabel(c:GetMaterialCount()-1)
-end
-function c35952884.mtcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()>0
-end
-function c35952884.mtop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local ct=e:GetLabel()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_EXTRA_ATTACK)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
-	e1:SetValue(ct-1)
-	c:RegisterEffect(e1)
+	local ct=c:GetMaterialCount()-1
+	if ct>1 then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_EXTRA_ATTACK)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE-RESET_TOFIELD)
+		e1:SetValue(ct-1)
+		c:RegisterEffect(e1)
+	end
 end
 function c35952884.discon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)

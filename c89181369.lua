@@ -12,6 +12,7 @@ function c89181369.initial_effect(c)
 end
 function c89181369.spfilter(c,e,tp,rg)
 	if not c:IsType(TYPE_SYNCHRO) or not c:IsRace(RACE_DRAGON) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return false end
+	local result=false
 	if rg:IsContains(c) then
 		rg:RemoveCard(c)
 		result=rg:CheckWithSumEqual(Card.GetLevel,c:GetLevel(),1,99)

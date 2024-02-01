@@ -76,7 +76,7 @@ function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x1034) and c:GetOriginalType()&TYPE_MONSTER>0
-		and c:IsCanBeSpecialSummoned(e,0,sp,false,false) and c:GetSequence()<5
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:GetSequence()<5
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_SZONE,0,1,nil,e,tp)

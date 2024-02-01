@@ -31,7 +31,7 @@ end
 function c70856343.filter(c)
 	return c:IsCode(70856343) and c:IsAbleToGrave()
 end
-function c70856343.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c70856343.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c70856343.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end

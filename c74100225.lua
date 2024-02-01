@@ -14,7 +14,7 @@ function c74100225.filter(c,cat)
 	return c:IsSetCard(cat) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c74100225.spfilter(c,e,tp)
-	return c:IsSetCard(0x504e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+	return c:IsSetCard(0x504e) and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c74100225.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c74100225.filter,tp,LOCATION_GRAVE,0,1,nil,0x304e)
@@ -29,15 +29,13 @@ function c74100225.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c74100225.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c74100225.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
-	if g:GetCount()==0 then return end
-	local mg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if mg:GetCount()~=2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:Select(tp,1,1,nil)
+	local sg=Duel.SelectMatchingCard(tp,c74100225.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local sc=sg:GetFirst()
-	if sc then
-		Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-		Duel.Overlay(sc,mg)
+	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)>0 then
+		local mg=Duel.GetTargetsRelateToChain()
+		if #mg>0 then
+			Duel.Overlay(sc,mg)
+		end
 	end
 end

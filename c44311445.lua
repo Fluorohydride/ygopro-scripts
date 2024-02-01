@@ -21,6 +21,7 @@ function c44311445.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_TO_DECK)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(c44311445.spcon)
 	e2:SetCost(c44311445.spcost)
 	e2:SetTarget(c44311445.sptg)
@@ -55,9 +56,8 @@ function c44311445.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44311445.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) and c:GetFlagEffect(44311445)==0 end
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	c:RemoveOverlayCard(tp,1,1,REASON_COST)
-	c:RegisterFlagEffect(44311445,RESET_CHAIN,0,1)
 end
 function c44311445.spfilter(c,e,tp)
 	return c:IsSetCard(0x71) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)

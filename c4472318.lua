@@ -1,4 +1,4 @@
---Bayerock Dragon
+--岩竜ベアロック
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon
@@ -74,7 +74,7 @@ function s.spfilter(c,e,tp)
 		and c:IsCanBeEffectTarget(e)
 end
 function s.fselect(g,ft)
-	return g:GetCount()<ft and g:GetClassCount(Card.GetRace)==g:GetCount()
+	return g:GetCount()<=ft and g:GetClassCount(Card.GetRace)==g:GetCount()
 end
 function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

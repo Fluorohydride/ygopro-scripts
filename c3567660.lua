@@ -25,7 +25,7 @@ end
 function c3567660.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not (tc:IsRelateToEffect(e) and tc:IsControler(tp)) then return end
-	local zone=bit.band(tc:GetLinkedZone(),0x1f)
+	local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 then
 		local flag=bit.bxor(zone,0xff)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)

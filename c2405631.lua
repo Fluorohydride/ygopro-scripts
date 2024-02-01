@@ -1,4 +1,4 @@
---Guoglim, Spear of the Ghoti
+--ゴーティスの死棘グオグリム
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

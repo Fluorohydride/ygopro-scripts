@@ -25,7 +25,6 @@ function c55204071.initial_effect(c)
 	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetOperation(c55204071.spop3)
 	c:RegisterEffect(e3)
@@ -38,12 +37,12 @@ function c55204071.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroup(tp,c55204071.cfilter,1,nil,ft,tp)
+	return ft>-1 and Duel.CheckReleaseGroupEx(tp,c55204071.cfilter,1,REASON_SPSUMMON,false,nil,ft,tp)
 end
 function c55204071.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroup(tp,c55204071.cfilter,1,1,nil,ft,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroupEx(tp,c55204071.cfilter,1,1,REASON_SPSUMMON,false,nil,ft,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c55204071.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF

@@ -13,7 +13,7 @@ function c35756798.initial_effect(c)
 	c:RegisterEffect(e1)
 	if not c35756798.global_check then
 		c35756798.global_check=true
-		local ge1=Effect.GlobalEffect(c)
+		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_TO_GRAVE)
 		ge1:SetCondition(c35756798.checkcon)
@@ -39,15 +39,14 @@ function c35756798.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35756798.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetFlagEffect(tp,35756798)
-	return Duel.GetTurnPlayer()==tp and ct>0
+	return Duel.GetTurnPlayer()==tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp) and ct>0
 end
 function c35756798.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
 end
 function c35756798.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c35756798.filter(chkc) end
-	if chk==0 then return Duel.IsAbleToEnterBP()
-		and Duel.IsExistingTarget(c35756798.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c35756798.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c35756798.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()

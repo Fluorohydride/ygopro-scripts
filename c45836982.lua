@@ -48,7 +48,7 @@ function c45836982.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c45836982.thfilter(c)
-	return c:IsSetCard(0x21) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1021) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c45836982.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c45836982.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
@@ -63,7 +63,7 @@ function c45836982.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c45836982.lpfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x21)
+	return c:IsFaceup() and c:IsSetCard(0x1021)
 end
 function c45836982.lpcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(1-tp)~=3000 and not eg:IsContains(e:GetHandler()) and eg:IsExists(c45836982.lpfilter,1,nil)

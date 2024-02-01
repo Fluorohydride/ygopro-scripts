@@ -23,7 +23,6 @@ function c70916046.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local t={}
 	local i=1
 	for i=1,6 do t[i]=i end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_NUMBER)
 	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,0)

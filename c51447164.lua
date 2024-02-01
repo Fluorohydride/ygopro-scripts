@@ -65,7 +65,7 @@ function c51447164.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c51447164.rmfilter(c)
-	return c:IsSetCard(0x27) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x27) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c51447164.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c51447164.rmfilter,tp,LOCATION_GRAVE,0,1,nil) end

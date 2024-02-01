@@ -9,6 +9,7 @@ function c35199656.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e1:SetCost(c35199656.cost)
 	e1:SetTarget(c35199656.target)
 	e1:SetOperation(c35199656.operation)
@@ -52,8 +53,7 @@ function c35199656.initial_effect(c)
 end
 function c35199656.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return not c:IsPublic() and c:GetFlagEffect(35199656)==0 end
-	c:RegisterFlagEffect(35199656,RESET_CHAIN,0,1)
+	if chk==0 then return not c:IsPublic() end
 end
 function c35199656.filter(c)
 	return c:IsSetCard(0xfb) and c:IsFaceup() and c:IsAbleToHand() and not c:IsCode(35199656)
