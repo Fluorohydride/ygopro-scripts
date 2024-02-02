@@ -11,7 +11,7 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return (Duel.IsPlayerCanAdditionalPendulumSummon(tp) or Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON))
+	if chk==0 then return (not Duel.IsPlayerDefaultPendulumSummoned(tp) or Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON))
 		and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
@@ -38,7 +38,7 @@ function c31531170.pendcon(e,c,og)
 	if c==nil then return true end
 	local tp=e:GetOwnerPlayer()
 	local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-	local summonable=Duel.IsSummonInChain() or Duel.IsPlayerCanAdditionalPendulumSummon(tp)
+	local summonable=Duel.IsSummonInChain() or not Duel.IsPlayerDefaultPendulumSummoned(tp)
 	if not summonable and #eset==0 then return false end
 	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if rpz==nil or rpz:GetFieldID()~=c:GetFlagEffectLabel(31531170) then return false end
@@ -56,7 +56,7 @@ end
 function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	local tp=e:GetOwnerPlayer()
 	local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-	local summonable=Duel.IsSummonInChain() or Duel.IsPlayerCanAdditionalPendulumSummon(tp)
+	local summonable=Duel.IsSummonInChain() or not Duel.IsPlayerDefaultPendulumSummoned(tp)
 	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
@@ -73,7 +73,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	end
 	local ce=nil
 	if not Duel.IsSummonInChain() then
-		local b1=Duel.IsPlayerCanAdditionalPendulumSummon(tp)
+		local b1=not Duel.IsPlayerDefaultPendulumSummoned(tp)
 		local b2=#eset>0
 		if b1 and b2 then
 			local options={1163}
@@ -102,7 +102,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 			Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
 			ce:UseCountLimit(tp)
 		else
-			Duel.SetAdditionalPendulumSummon(tp)
+			Duel.DefaultPendulumSummoned(tp)
 		end
 	end
 	Duel.Hint(HINT_CARD,0,31531170)

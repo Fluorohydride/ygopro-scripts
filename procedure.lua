@@ -1935,7 +1935,7 @@ function Auxiliary.PendCondition()
 				if c==nil then return true end
 				local tp=c:GetControler()
 				local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-				local summonable=Duel.IsSummonInChain() or Duel.IsPlayerCanAdditionalPendulumSummon(tp)
+				local summonable=Duel.IsSummonInChain() or not Duel.IsPlayerDefaultPendulumSummoned(tp)
 				if not summonable and #eset==0 then return false end
 				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				if rpz==nil or c==rpz then return false end
@@ -1969,7 +1969,7 @@ function Auxiliary.PendOperation()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
 				local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-				local summonable=Duel.IsSummonInChain() or Duel.IsPlayerCanAdditionalPendulumSummon(tp)
+				local summonable=Duel.IsSummonInChain() or not Duel.IsPlayerDefaultPendulumSummoned(tp)
 				local tg=nil
 				local loc=0
 				local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -1991,7 +1991,7 @@ function Auxiliary.PendOperation()
 				end
 				local ce=nil
 				if not Duel.IsSummonInChain() then
-					local b1=Duel.IsPlayerCanAdditionalPendulumSummon(tp)
+					local b1=not Duel.IsPlayerDefaultPendulumSummoned(tp)
 					local b2=#eset>0
 					if b1 and b2 then
 						local options={1163}
@@ -2025,7 +2025,7 @@ function Auxiliary.PendOperation()
 						Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
 						ce:UseCountLimit(tp)
 					else
-						Duel.SetAdditionalPendulumSummon(tp)
+						Duel.DefaultPendulumSummoned(tp)
 					end
 				end
 				sg:Merge(g)
