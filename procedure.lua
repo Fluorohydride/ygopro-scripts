@@ -2025,7 +2025,7 @@ function Auxiliary.PendOperation()
 						Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
 						ce:UseCountLimit(tp)
 					else
-						Duel.DefaultPendulumSummoned(tp)
+						Duel.UseDefaultPendulumSummon(tp)
 					end
 				end
 				sg:Merge(g)

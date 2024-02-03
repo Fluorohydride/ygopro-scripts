@@ -102,7 +102,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 			Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
 			ce:UseCountLimit(tp)
 		else
-			Duel.DefaultPendulumSummoned(tp)
+			Duel.UseDefaultPendulumSummon(tp)
 		end
 	end
 	Duel.Hint(HINT_CARD,0,31531170)
