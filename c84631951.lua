@@ -48,8 +48,8 @@ function s.spfilter(c,e,tp,lv)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.costfilter,1,nil,e,tp) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,s.costfilter,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.costfilter,1,nil,e,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,s.costfilter,1,1,nil,e,tp)
 	e:SetLabel(sg:GetFirst():GetLevel())
 	Duel.Release(sg,REASON_COST)
 end
