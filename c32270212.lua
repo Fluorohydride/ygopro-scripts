@@ -1,7 +1,7 @@
 --仲間の絆
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204051)
+	aux.AddCodeList(c,79791878)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -14,17 +14,17 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.cfilter1(c)
-	return c:IsFaceup() and c:IsCode(101204051)
+	return c:IsFaceup() and c:IsCode(79791878)
 end
 function s.cfilter2(c)
-	return c:IsFaceup() and aux.IsCodeListed(c,101204051)
+	return c:IsFaceup() and aux.IsCodeListed(c,79791878)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.cfilter1,tp,LOCATION_ONFIELD,0,1,nil) 
 			and Duel.IsExistingMatchingCard(s.cfilter2,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.spfilter(c,e,tp)
-	return aux.IsCodeListed(c,101204051) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(4)
+	return aux.IsCodeListed(c,79791878) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(4)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

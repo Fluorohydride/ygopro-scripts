@@ -1,7 +1,7 @@
 --マシマシュマロン
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204051)
+	aux.AddCodeList(c,79791878)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -45,7 +45,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.indesfilter(c)
-	return c:IsFaceup() and c:IsCode(101204051)
+	return c:IsFaceup() and c:IsCode(79791878)
 end
 function s.indescon(e)
 	return Duel.IsExistingMatchingCard(s.indesfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)

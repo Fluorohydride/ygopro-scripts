@@ -1,6 +1,6 @@
 --天盃龍パイドラ
 local s,id,o=GetID()
-function c101204016.initial_effect(c)
+function c39931513.initial_effect(c)
 	--to hand or set
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))

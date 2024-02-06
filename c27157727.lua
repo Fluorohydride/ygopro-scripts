@@ -2,7 +2,7 @@
 --Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204051)
+	aux.AddCodeList(c,79791878)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -44,14 +44,14 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
 function s.atkfilter(c)
-	return (c:IsCode(101204051) or (aux.IsCodeListed(c,101204051) and c:IsLocation(LOCATION_MZONE))) and c:IsFaceup()
+	return (c:IsCode(79791878) or (aux.IsCodeListed(c,79791878) and c:IsLocation(LOCATION_MZONE))) and c:IsFaceup()
 end
 function s.atkval(e,c)
 	local tp=e:GetHandlerPlayer()
 	return Duel.GetMatchingGroupCount(s.atkfilter,tp,LOCATION_ONFIELD,0,nil)*1000
 end
 function s.filter(c)
-	return c:IsCode(101204051) and c:IsFaceup()
+	return c:IsCode(79791878) and c:IsFaceup()
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_ONFIELD,0,1,nil)

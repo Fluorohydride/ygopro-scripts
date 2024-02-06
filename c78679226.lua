@@ -1,7 +1,7 @@
 --未来への沈黙
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204051)
+	aux.AddCodeList(c,79791878)
 	--Activate without draw
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -21,10 +21,10 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.sfilter(c)
-	return c:IsFaceup() and c:IsCode(101204051)
+	return c:IsFaceup() and c:IsCode(79791878)
 end
 function s.mfilter(c)
-	return c:IsFaceup() and aux.IsCodeListed(c,101204051) and c:IsType(TYPE_MONSTER)
+	return c:IsFaceup() and aux.IsCodeListed(c,79791878) and c:IsType(TYPE_MONSTER)
 end
 function s.ndcon(e,tp,eg,ep,ev,re,r,rp)
 	return not s.dcon(e,tp,eg,ep,ev,re,r,rp)
@@ -34,7 +34,7 @@ function s.dcon(e,tp,eg,ep,ev,re,r,rp)
 	and Duel.IsExistingMatchingCard(s.sfilter,tp,LOCATION_ONFIELD,0,1,nil) and Duel.IsExistingMatchingCard(s.mfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.filter(c)
-	return aux.IsCodeListed(c,101204051) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return aux.IsCodeListed(c,79791878) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function s.ndtarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil) end

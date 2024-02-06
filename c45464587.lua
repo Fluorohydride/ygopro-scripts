@@ -1,7 +1,7 @@
 --ＧＰ－アニヒレーター
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204020)
+	aux.AddCodeList(c,60203670)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	local e1=Effect.CreateEffect(c)
@@ -64,7 +64,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_DECK)
 end
 function s.spfilter(c,e,tp)
-	return c:IsCode(101204020) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(60203670) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

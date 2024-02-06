@@ -1,7 +1,7 @@
 --時の沈黙-ターン・サイレンス
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204051)
+	aux.AddCodeList(c,79791878)
 	--level up
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DISABLE)
@@ -32,10 +32,10 @@ function s.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,s.lvfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function s.nfilter1(c)
-	return c:IsFaceup() and c:IsCode(101204051)
+	return c:IsFaceup() and c:IsCode(79791878)
 end
 function s.nfilter2(c)
-	return c:IsFaceup() and aux.IsCodeListed(c,101204051)
+	return c:IsFaceup() and aux.IsCodeListed(c,79791878)
 end
 function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -60,7 +60,7 @@ function s.bacon(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
 	if not tc then return false end
 	e:SetLabelObject(tc)
-	return tc:IsFaceup() and aux.IsCodeListed(tc,101204051)
+	return tc:IsFaceup() and aux.IsCodeListed(tc,79791878)
 end
 function s.baop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
