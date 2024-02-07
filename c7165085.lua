@@ -74,7 +74,6 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 	end
 end
