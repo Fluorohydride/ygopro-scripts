@@ -28,5 +28,8 @@ function c22610082.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		c:CancelToGrave()
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		if c:IsLocation(LOCATION_ONFIELD) then
+			c:CancelToGrave(false)
+		end
 	end
 end

@@ -26,6 +26,9 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 			c:CancelToGrave()
 			Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+			if c:IsLocation(LOCATION_ONFIELD) then
+				c:CancelToGrave(false)
+			end
 		end
 		return
 	end
@@ -76,5 +79,8 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		c:CancelToGrave()
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		if c:IsLocation(LOCATION_ONFIELD) then
+			c:CancelToGrave(false)
+		end
 	end
 end

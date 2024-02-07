@@ -23,6 +23,9 @@ function c81171949.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		c:CancelToGrave()
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		if c:IsLocation(LOCATION_ONFIELD) then
+			c:CancelToGrave(false)
+		end
 	end
 end
 function c81171949.rmcon(e,tp,eg,ep,ev,re,r,rp)
