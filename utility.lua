@@ -1524,3 +1524,23 @@ function Auxiliary.GiveUpNormalDraw(e,tp,property)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
 end
+---If this face-up card would leave the field, banish it instead.
+---@param c Card
+---@param condition? function
+function Auxiliary.AddBanishRedirect(c,condition)
+	if type(condition)~='function' then
+		condition=Auxiliary.BanishRedirectCondition
+	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
+	e1:SetCondition(condition)
+	e1:SetValue(LOCATION_REMOVED)
+	c:RegisterEffect(e1)
+end
+---
+---@param e Effect
+function Auxiliary.BanishRedirectCondition(e)
+	return e:GetHandler():IsFaceup()
+end
