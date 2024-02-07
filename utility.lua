@@ -1505,7 +1505,7 @@ end
 ---@return boolean
 function Auxiliary.IsPlayerCanNormalDraw(tp)
 	return Duel.GetDrawCount(tp)>0 and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
-		and not Duel.GetFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW)
+		and Duel.GetFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW)==0
 end
 ---
 ---@param e Effect
