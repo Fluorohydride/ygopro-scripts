@@ -468,7 +468,7 @@ function Auxiliary.IsMaterialListCode(c,code)
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
-	if type(c.material_setcode)=='table' then
+	if type(c.material_setcode)=="table" then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
 		end
@@ -1528,7 +1528,7 @@ end
 ---@param c Card
 ---@param condition? function
 function Auxiliary.AddBanishRedirect(c,condition)
-	if type(condition)~='function' then
+	if type(condition)~="function" then
 		condition=Auxiliary.BanishRedirectCondition
 	end
 	local e1=Effect.CreateEffect(c)
