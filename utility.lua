@@ -1500,10 +1500,21 @@ function Auxiliary.SameValueCheck(g,f)
 	end
 	return v~=0
 end
---
-function Auxiliary.SelectDeckCard(hint,tp,filter,location,min,max,ex,...)
+---Select cards from Deck and other location
+---@param hint integer
+---@param tp integer
+---@param filter function|nil
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+---@return boolean
+function Auxiliary.SelectDeckCard(hint,tp,filter,location_s,location_o,min,max,ex,...)
 	local from_deck=Duel.GetMatchingGroup(filter,tp,LOCATION_DECK,0,ex,...)
-	local from_other=Duel.GetMatchingGroup(filter,tp,location,0,ex,...)
+	local from_other=Duel.GetMatchingGroup(filter,tp,location_s,location_o,ex,...)
 	local selected=Group.CreateGroup()
 	local viewed_deck=false
 	local shuffle=false
