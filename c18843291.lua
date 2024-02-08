@@ -19,22 +19,28 @@ function s.initial_effect(c)
 	--cannot remove
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(EFFECT_CANNOT_REMOVE)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetTargetRange(1,1)
 	e2:SetTarget(s.efilter)
-	c:RegisterEffect(e2)
-	--remove and tograve
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_DECKDES)
-	e3:SetType(EFFECT_TYPE_IGNITION)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_GRANT)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCountLimit(1,id+o)
-	e3:SetCost(s.recost)
-	e3:SetTarget(s.retg)
-	e3:SetOperation(s.reop)
+	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetTarget(s.eftg)
+	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
+	--remove and tograve
+	local e4=Effect.CreateEffect(c)
+	e4:SetCategory(CATEGORY_DECKDES)
+	e4:SetType(EFFECT_TYPE_IGNITION)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1,id+o)
+	e4:SetCost(s.recost)
+	e4:SetTarget(s.retg)
+	e4:SetOperation(s.reop)
+	c:RegisterEffect(e4)
 end 
 function s.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
@@ -58,8 +64,10 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.efilter(e,c,rp,r,re)
-	local tp=e:GetHandlerPlayer()
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x38) and re and r&REASON_EFFECT>0
+	return c==e:GetHandler() and r&REASON_EFFECT>0
+end
+function s.eftg(e,c)
+	return c:IsSetCard(0x38) and c:IsFaceup()
 end
 function s.refilter(c)
 	return c:IsSetCard(0x38) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()

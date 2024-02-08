@@ -1502,3 +1502,27 @@ function Auxiliary.SameValueCheck(g,f)
 	end
 	return v~=0
 end
+---
+---@param tp integer
+---@return boolean
+function Auxiliary.IsPlayerCanNormalDraw(tp)
+	return Duel.GetDrawCount(tp)>0 and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
+		and not Duel.GetFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW)
+end
+---
+---@param e Effect
+---@param tp integer
+---@param property? integer
+function Auxiliary.GiveUpNormalDraw(e,tp,property)
+	property=property or 0
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET|property)
+	e1:SetCode(EFFECT_DRAW_COUNT)
+	e1:SetTargetRange(1,0)
+	e1:SetReset(RESET_PHASE+PHASE_DRAW)
+	e1:SetValue(0)
+	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
+end

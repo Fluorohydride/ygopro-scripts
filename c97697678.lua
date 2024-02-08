@@ -12,32 +12,19 @@ function c97697678.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97697678.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
-		and Duel.GetDrawCount(tp)>0
+	return tp==Duel.GetTurnPlayer()
 end
 function c97697678.filter(c)
 	return c:IsSetCard(0xc) and c:IsAbleToHand()
 end
 function c97697678.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c97697678.filter,tp,LOCATION_DECK,0,1,nil) end
-	local dt=Duel.GetDrawCount(tp)
-	if dt~=0 then
-		aux.DrawReplaceCount=0
-		aux.DrawReplaceMax=dt
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_DRAW_COUNT)
-		e1:SetTargetRange(1,0)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW)
-		e1:SetValue(0)
-		Duel.RegisterEffect(e1,tp)
-	end
+	if chk==0 then return aux.IsPlayerCanNormalDraw(tp) and Duel.IsExistingMatchingCard(c97697678.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c97697678.operation(e,tp,eg,ep,ev,re,r,rp)
-	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown()then return end
+	if not aux.IsPlayerCanNormalDraw(tp) then return end
+	aux.GiveUpNormalDraw(e,tp)
+	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown()then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c97697678.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

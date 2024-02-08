@@ -79,6 +79,7 @@ function c6992184.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Group.CreateGroup()
 	local pop=aux.PendOperation()
 	pop(e,tp,eg,ep,ev,re,r,rp,lpz,sg,g)
+	Duel.RaiseEvent(sg,EVENT_SPSUMMON_SUCCESS_G_P,e,REASON_EFFECT,tp,tp,0)
 	Duel.SpecialSummon(sg,SUMMON_TYPE_PENDULUM,tp,tp,true,true,POS_FACEUP)
 end
 function c6992184.retop(e,tp,eg,ep,ev,re,r,rp)

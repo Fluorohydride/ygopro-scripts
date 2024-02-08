@@ -1,5 +1,5 @@
 --古代の機械競闘
-function c101204072.initial_effect(c)
+function c53541822.initial_effect(c)
 	aux.AddCodeList(c,83104731)
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
@@ -10,8 +10,8 @@ function c101204072.initial_effect(c)
 	e1:SetCode(EFFECT_IMMUNE_EFFECT)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetTargetRange(LOCATION_MZONE,0)
-	e1:SetTarget(c101204072.indtg)
-	e1:SetValue(c101204072.efilter)
+	e1:SetTarget(c53541822.indtg)
+	e1:SetValue(c53541822.efilter)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_REMOVE)
@@ -19,55 +19,55 @@ function c101204072.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
-	e2:SetCountLimit(1,101204072)
-	e2:SetCondition(c101204072.condition)
-	e2:SetTarget(c101204072.target)
-	e2:SetOperation(c101204072.activate)
+	e2:SetCountLimit(1,53541822)
+	e2:SetCondition(c53541822.condition)
+	e2:SetTarget(c53541822.target)
+	e2:SetOperation(c53541822.activate)
 	c:RegisterEffect(e2)
 end
-function c101204072.indtg(e,c)
+function c53541822.indtg(e,c)
 	return c:IsCode(83104731) or aux.IsCodeListed(c,83104731)
 end
-function c101204072.efilter(e,re)
+function c53541822.efilter(e,re)
 	return e:GetHandlerPlayer()~=re:GetOwnerPlayer() and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
 end
-function c101204072.filter0(c)
+function c53541822.filter0(c)
 	return c:IsOnField() and c:IsAbleToRemove()
 end
-function c101204072.filter1(c,e)
+function c53541822.filter1(c,e)
 	return c:IsOnField() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
-function c101204072.filter2(c,e,tp,m,f,chkf)
+function c53541822.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and aux.IsCodeListed(c,83104731) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
-function c101204072.filter3(c)
+function c53541822.filter3(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
-function c101204072.condition(e,tp,eg,ep,ev,re,r,rp)
+function c53541822.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_MZONE,1,nil)
 end
-function c101204072.fcheck(tp,sg,fc)
-	return sg:IsExists(c101204072.filter,1,nil)
+function c53541822.fcheck(tp,sg,fc)
+	return sg:IsExists(c53541822.filter,1,nil)
 end
-function c101204072.filter(c)
+function c53541822.filter(c)
 	return c:IsLocation(LOCATION_ONFIELD) and c:IsCode(83104731)
 end
-function c101204072.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c53541822.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(c101204072.filter0,nil)
-		local mg2=Duel.GetMatchingGroup(c101204072.filter3,tp,LOCATION_GRAVE,0,nil)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(c53541822.filter0,nil)
+		local mg2=Duel.GetMatchingGroup(c53541822.filter3,tp,LOCATION_GRAVE,0,nil)
 		mg1:Merge(mg2)
-		aux.FCheckAdditional=c101204072.fcheck
-		local res=Duel.IsExistingMatchingCard(c101204072.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
+		aux.FCheckAdditional=c53541822.fcheck
+		local res=Duel.IsExistingMatchingCard(c53541822.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
 				local fgroup=ce:GetTarget()
 				local mg3=fgroup(ce,e,tp)
 				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c101204072.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
+				res=Duel.IsExistingMatchingCard(c53541822.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
 		aux.FCheckAdditional=nil
@@ -77,13 +77,13 @@ function c101204072.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_ONFIELD+LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,0,1-tp,LOCATION_MZONE)
 end
-function c101204072.activate(e,tp,eg,ep,ev,re,r,rp)
+function c53541822.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(c101204072.filter1,nil,e)
-	local mg2=Duel.GetMatchingGroup(c101204072.filter3,tp,LOCATION_GRAVE,0,nil)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c53541822.filter1,nil,e)
+	local mg2=Duel.GetMatchingGroup(c53541822.filter3,tp,LOCATION_GRAVE,0,nil)
 	mg1:Merge(mg2)
-	aux.FCheckAdditional=c101204072.fcheck
-	local sg1=Duel.GetMatchingGroup(c101204072.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
+	aux.FCheckAdditional=c53541822.fcheck
+	local sg1=Duel.GetMatchingGroup(c53541822.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg3=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -91,7 +91,7 @@ function c101204072.activate(e,tp,eg,ep,ev,re,r,rp)
 		local fgroup=ce:GetTarget()
 		mg3=fgroup(ce,e,tp)
 		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(c101204072.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg3,mf,chkf)
+		sg2=Duel.GetMatchingGroup(c53541822.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg3,mf,chkf)
 	end
 	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 		local sg=sg1:Clone()
@@ -112,7 +112,7 @@ function c101204072.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(101204072,2))
+		e1:SetDescription(aux.Stringid(53541822,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)

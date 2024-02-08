@@ -1,7 +1,7 @@
 --トリコロール・ガジェット
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,101204051)
+	aux.AddCodeList(c,79791878)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.srfilter(c)
-	return (c:IsCode(101204051) or aux.IsCodeListed(c,101204051) and c:IsType(TYPE_SPELL+TYPE_TRAP)) and c:IsAbleToHand()
+	return (c:IsCode(79791878) or aux.IsCodeListed(c,79791878) and c:IsType(TYPE_SPELL+TYPE_TRAP)) and c:IsAbleToHand()
 end
 function s.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.srfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -47,7 +47,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function s.setfilter(c)
-	return c:IsCode(101204071) and c:IsSSetable()
+	return c:IsCode(27157727) and c:IsSSetable()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil) end
