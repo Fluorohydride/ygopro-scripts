@@ -5,7 +5,7 @@ function c2572890.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SPSUMMON)
-	e1:SetCondition(c2572890.condition1)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetCost(c2572890.cost)
 	e1:SetTarget(c2572890.target1)
 	e1:SetOperation(c2572890.activate1)
@@ -27,12 +27,9 @@ function c2572890.cfilter(c)
 		and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c2572890.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c2572890.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c2572890.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c2572890.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c2572890.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
-end
-function c2572890.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c2572890.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

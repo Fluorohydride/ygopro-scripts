@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.costfilter(c,tp)
-	return c:IsReleasable() and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsControler(tp) or c:IsFaceup()
 end
 function s.gcheck(g,e,tp)
 	return g:IsExists(Card.IsRace,1,nil,RACE_DINOSAUR)

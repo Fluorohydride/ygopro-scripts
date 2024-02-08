@@ -11,7 +11,7 @@ function c72549351.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c72549351.rfilter(c,tp)
-	return c:IsReleasable() and c:IsRace(RACE_DRAGON) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsRace(RACE_DRAGON) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c72549351.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

@@ -1,4 +1,4 @@
---獸累々
+--獣累々
 function c19974890.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_POSITION)

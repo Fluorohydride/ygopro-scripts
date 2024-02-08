@@ -16,8 +16,8 @@ function c33323657.filter(c)
 end
 function c33323657.reccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c33323657.filter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c33323657.filter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c33323657.filter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c33323657.filter,1,1,nil)
 	e:SetLabel(g:GetFirst():GetLevel())
 	Duel.Release(g,REASON_COST)
 end

@@ -14,7 +14,7 @@ function c47171541.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c47171541.rfilter(c,tp)
-	return c:IsReleasable() and c:IsRace(RACE_MACHINE) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsRace(RACE_MACHINE) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c47171541.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

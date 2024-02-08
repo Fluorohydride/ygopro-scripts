@@ -35,7 +35,7 @@ function c46290741.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c46290741.rfilter(c,tp)
-	return c:IsReleasable() and c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c46290741.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c46290741.rfilter,nil,tp)

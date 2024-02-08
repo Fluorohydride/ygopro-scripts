@@ -40,8 +40,8 @@ function c24487411.cfilter(c,g)
 end
 function c24487411.descost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c24487411.cfilter,1,nil,lg) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c24487411.cfilter,1,1,nil,lg)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c24487411.cfilter,1,nil,lg) end
+	local g=Duel.SelectReleaseGroup(tp,c24487411.cfilter,1,1,nil,lg)
 	Duel.Release(g,REASON_COST)
 end
 function c24487411.destg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

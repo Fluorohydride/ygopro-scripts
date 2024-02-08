@@ -1,5 +1,4 @@
 --閉ザサレシ天ノ月
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
@@ -20,7 +19,7 @@ function s.filter(c,lg)
 end
 function s.lmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if chkc then return chkc:IsControler(1-tp) and c:IsLocation(LOCATION_MZONE) and s.filter(chkc,lg) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and s.filter(chkc,lg) end
 	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,0,LOCATION_MZONE,1,nil,lg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local g=Duel.SelectTarget(tp,s.filter,tp,0,LOCATION_MZONE,1,1,nil,lg)
@@ -28,7 +27,7 @@ end
 function s.lmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc and tc:IsRelateToEffect(e) then 
+	if tc and tc:IsRelateToEffect(e) then
 		if not tc:IsImmuneToEffect(e) then
 			tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
@@ -42,7 +41,7 @@ function s.lmop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetValue(s.matval)
 		tc:RegisterEffect(e1)
-	end 
+	end
 end
 function s.mcon(e)
 	local tp=e:GetOwner():GetControler()

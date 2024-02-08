@@ -12,7 +12,7 @@ function c45898858.initial_effect(c)
 end
 c45898858.spchecks=aux.CreateChecks(Card.IsCode,{22587018,22587018,58071123})
 function c45898858.costfilter(c,tp)
-	return c:IsReleasable() and c:IsCode(22587018,58071123) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsCode(22587018,58071123) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c45898858.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

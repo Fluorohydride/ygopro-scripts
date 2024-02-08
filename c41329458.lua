@@ -39,7 +39,7 @@ function c41329458.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c41329458.rfilter(c,tp)
-	return c:IsReleasable() and c:IsSetCard(0x101b) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsSetCard(0x101b) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c41329458.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c41329458.rfilter,nil,tp)

@@ -19,7 +19,7 @@ function c26866984.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
 function c26866984.cfilter(c,tp)
-	return c:IsReleasable() and c:IsRace(RACE_FAIRY) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsRace(RACE_FAIRY) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c26866984.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c26866984.cfilter,nil,tp)

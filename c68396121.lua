@@ -62,8 +62,8 @@ function c68396121.atkcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,88177324)
 end
 function c68396121.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,2,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,2,2,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,2,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,nil,2,2,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c68396121.atktg(e,tp,eg,ep,ev,re,r,rp,chk)

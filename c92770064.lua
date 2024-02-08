@@ -77,14 +77,14 @@ function c92770064.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(REASON_COST,tp,c92770064.costfilter,1,c,c,tp,lg)
+			return Duel.CheckReleaseGroup(tp,c92770064.costfilter,1,c,c,tp,lg)
 		else
 			return Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_ONFIELD,1,nil)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c92770064.costfilter,1,1,c,c,tp,lg)
+		local g=Duel.SelectReleaseGroup(tp,c92770064.costfilter,1,1,c,c,tp,lg)
 		ct=g:GetFirst():GetLink()
 		Duel.Release(g,REASON_COST)
 	end

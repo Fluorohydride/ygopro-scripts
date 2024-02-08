@@ -63,7 +63,7 @@ function c85059922.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c85059922.remcostfilter(c,tp)
-	return c:IsReleasable() and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT) and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,1,c)
 end
 function c85059922.remcost(e,tp,eg,ep,ev,re,r,rp,chk)

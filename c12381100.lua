@@ -84,7 +84,7 @@ function s.FShaddollSpgcheck(g,fc,ec,chkf)
 	sg:AddCard(ec)
 	local c=g:Filter(s.Blue_Eyes_Ultimate_Dragon,nil):GetFirst()
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
-		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc)  then return false end
+		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc) then return false end
 	return ((g:FilterCount(s.Blue_Eyes_Ultimate_Dragon,nil)==1
 		and g:FilterCount(Card.IsFusionSetCard,Group.FromCards(c,ec),0xdd)==0
 		or g:FilterCount(Card.IsFusionSetCard,ec,0xdd)==3)
@@ -99,7 +99,7 @@ function s.Necessarily_FShaddollSpgcheck(g,gc,fc,ec,chkf)
 	local sg=g:Clone()
 	sg:AddCard(ec)
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
-		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc)  then return false end
+		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc) then return false end
 	return (((g:FilterCount(s.Blue_Eyes_Ultimate_Dragon,nil)==1
 		and g:FilterCount(Card.IsFusionSetCard,c,0xdd)==0
 		or g:FilterCount(Card.IsFusionSetCard,nil,0xdd)==3) and g:FilterCount(s.Necessarily_FShaddollFilter,nil,gc)==1)
@@ -107,7 +107,7 @@ function s.Necessarily_FShaddollSpgcheck(g,gc,fc,ec,chkf)
 		and g:FilterCount(s.Unnecessary_Chaos_FShaddollFilter,nil)==0
 end
 function s.FShaddollCondition()
-	return  function(e,g,gc,chkf)
+	return function(e,g,gc,chkf)
 			if g==nil then return aux.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
 			local fc=e:GetHandler()
 			local tp=e:GetHandlerPlayer()
@@ -119,7 +119,7 @@ function s.FShaddollCondition()
 		end
 end
 function s.FShaddollOperation()
-	return  function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			local fc=e:GetHandler()
 			local tp=e:GetHandlerPlayer()
 			local mg=nil

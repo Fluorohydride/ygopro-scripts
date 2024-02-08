@@ -29,9 +29,9 @@ function s.rfilter(c,tp)
 end
 function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.rfilter,1,c,1,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.rfilter,1,c,1,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.rfilter,1,1,c,tp)
+	local g=Duel.SelectReleaseGroup(tp,s.rfilter,1,1,c,tp)
 	Duel.Release(g,REASON_COST)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

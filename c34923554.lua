@@ -27,8 +27,8 @@ function c34923554.cfilter(c,tp)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH) and Duel.GetMZoneCount(tp,c)>0
 end
 function c34923554.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c34923554.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c34923554.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c34923554.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c34923554.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c34923554.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

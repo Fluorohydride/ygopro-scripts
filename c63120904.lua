@@ -22,20 +22,20 @@ function c63120904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()==90337190 then return chkc:IsLocation(LOCATION_MZONE)
 		else return chkc:IsOnField() and c63120904.dfilter(chkc) end
 	end
-	local b1=Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,90337190) and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-	local b2=Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,95614612) and Duel.IsExistingTarget(c63120904.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
+	local b1=Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,90337190) and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+	local b2=Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,95614612) and Duel.IsExistingTarget(c63120904.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	if chk==0 then return b1 or b2 end
 	local code=0
 	if b1 and b2 then
-		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c63120904.rfilter,1,1,nil)
+		local rg=Duel.SelectReleaseGroup(tp,c63120904.rfilter,1,1,nil)
 		code=rg:GetFirst():GetCode()
 		Duel.Release(rg,REASON_COST)
 	elseif b1 then
-		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,90337190)
+		local rg=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,90337190)
 		code=90337190
 		Duel.Release(rg,REASON_COST)
 	else
-		local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,95614612)
+		local rg=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,95614612)
 		code=95614612
 		Duel.Release(rg,REASON_COST)
 	end

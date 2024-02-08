@@ -69,7 +69,7 @@ function c4059313.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c)
 end
 function c4059313.atkfilter(c,tp)
-	return c:IsReleasable() and c:GetAttackAnnouncedCount()==0 and c:GetTextAttack()>0 and (c:IsControler(tp) or c:IsFaceup())
+	return c:GetAttackAnnouncedCount()==0 and c:GetTextAttack()>0 and (c:IsControler(tp) or c:IsFaceup())
 end
 function c4059313.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100,0)

@@ -104,9 +104,9 @@ function c28651380.acon(e)
 	return e:GetHandlerPlayer()==e:GetOwnerPlayer()
 end
 function c28651380.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,aux.TRUE,1,nil) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,aux.TRUE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,aux.TRUE,1,1,nil)
+	local g=Duel.SelectReleaseGroup(tp,aux.TRUE,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c28651380.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

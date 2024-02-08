@@ -45,8 +45,8 @@ function c96733134.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c96733134.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x20f8) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x20f8)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x20f8) end
+	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x20f8)
 	Duel.Release(sg,REASON_COST)
 end
 function c96733134.thfilter(c)
@@ -68,7 +68,7 @@ function c96733134.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c96733134.rfilter(c,tp)
-	return c:IsReleasable() and c:IsSetCard(0x20f8) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsSetCard(0x20f8) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c96733134.hspcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c96733134.rfilter,nil,tp)

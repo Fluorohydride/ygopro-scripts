@@ -5,7 +5,7 @@ function c84749824.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)
-	e1:SetCondition(c84749824.condition1)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetCost(c84749824.cost1)
 	e1:SetTarget(c84749824.target1)
 	e1:SetOperation(c84749824.activate1)
@@ -27,9 +27,6 @@ function c84749824.initial_effect(c)
 	e4:SetTarget(c84749824.target2)
 	e4:SetOperation(c84749824.activate2)
 	c:RegisterEffect(e4)
-end
-function c84749824.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c84749824.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000)

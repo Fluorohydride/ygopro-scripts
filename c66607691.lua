@@ -11,7 +11,7 @@ function c66607691.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c66607691.rfilter(c,tp)
-	return c:IsReleasable() and c:IsCode(70095154) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsCode(70095154) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c66607691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

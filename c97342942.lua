@@ -31,7 +31,7 @@ function c97342942.rfilter(c,e)
 end
 function c97342942.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rg=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c97342942.rfilter,1,1,e:GetHandler(),e)
+	local rg=Duel.SelectReleaseGroupEx(tp,c97342942.rfilter,1,1,REASON_EFFECT,false,e:GetHandler(),e)
 	if Duel.Release(rg,REASON_EFFECT)>0 then
 		local atk=math.floor(rg:GetFirst():GetBaseAttack()/2)
 		Duel.Damage(1-tp,atk,REASON_EFFECT)

@@ -1,6 +1,5 @@
---coded by Lyris
---Pendulum Witch
-local s, id, o = GetID()
+--ペンデュラム・ウィッチ
+local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--to extra
@@ -75,7 +74,7 @@ end
 function s.txop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
-	local tg=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,1,1,nil,g)
+	local tg=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,g)
 	Duel.SendtoExtraP(tg,nil,REASON_EFFECT)
 end
 function s.sfilter(c)

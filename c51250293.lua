@@ -25,10 +25,10 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(0)
 	local res=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil,e,tp)
-	if Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp)
+	if Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
 		and (not res or Duel.SelectYesNo(tp,aux.Stringid(id,1))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.cfilter,1,1,nil,tp)
+		local g=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp)
 		Duel.Release(g,REASON_COST)
 		e:SetLabel(LOCATION_DECK)
 	end
@@ -36,7 +36,7 @@ end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil,e,tp)
-		or e:IsCostChecked() and e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp)
+		or e:IsCostChecked() and e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
 			and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)) end
 	if not e:IsCostChecked() then e:SetLabel(0) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_HAND+e:GetLabel())

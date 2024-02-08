@@ -13,14 +13,14 @@ function c9341993.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9341993.costfilter(c,tp)
-	return c:IsReleasable() and c:IsSetCard(0x140) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsSetCard(0x140) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c9341993.fselect(g,tp,exc)
 	local dg=g:Clone()
 	if exc then dg:AddCard(exc) end
 	if Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,g:GetCount()+1,dg) then
 		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,nil,0,nil)
+		return Duel.CheckReleaseGroup(tp,nil,0,nil)
 	else return false end
 end
 function c9341993.cost(e,tp,eg,ep,ev,re,r,rp,chk)

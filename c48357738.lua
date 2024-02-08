@@ -25,8 +25,8 @@ function c48357738.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c48357738.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,nil) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	local rg=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(rg,REASON_COST)
 end
 function c48357738.descon(e)

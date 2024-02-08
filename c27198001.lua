@@ -28,7 +28,7 @@ function c27198001.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c27198001.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsReleasable,nil)
+	local rg=Duel.GetReleaseGroup(tp)
 	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)

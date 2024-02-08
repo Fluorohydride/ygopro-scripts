@@ -1,5 +1,4 @@
 --A★スペキュレーション
---Lua by Gim J.Blocks
 function c10796448.initial_effect(c)
 	c:SetSPSummonOnce(10796448)
 	--fusion material

@@ -26,8 +26,8 @@ function c53577438.costfilter(c,tp)
 	return c:IsRace(RACE_CYBERSE) and Duel.GetMZoneCount(tp,c,tp)>0
 end
 function c53577438.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c53577438.costfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c53577438.costfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c53577438.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c53577438.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c53577438.filter(c,e,tp)

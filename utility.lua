@@ -1024,7 +1024,7 @@ end
 ---@return boolean
 function Auxiliary.mzctcheckrel(g,tp,reason)
 	reason=reason or REASON_COST
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(reason,tp,Auxiliary.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,Auxiliary.IsInGroup,#g,reason,false,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
@@ -1480,10 +1480,8 @@ function Auxiliary.EPDestroyOperation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 --
-function Auxiliary.SameValueFilter(f,value)
-	return	function(c)
-				return f(c)&value==0
-			end
+function Auxiliary.NegateSummonCondition()
+	return Duel.GetReadyChain()==0
 end
 ---Check if all cards in g have the same Attribute/Race
 ---@param g Group

@@ -16,7 +16,7 @@ function c61411502.rgoal(g,tp)
 	return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,g)
 end
 function c61411502.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetReleaseGroup(tp):Filter(Card.IsReleasable,nil)
+	local g=Duel.GetReleaseGroup(tp)
 	if chk==0 then return g:CheckSubGroupEach(c61411502.rchecks,c61411502.rgoal,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroupEach(tp,c61411502.rchecks,false,c61411502.rgoal,tp)

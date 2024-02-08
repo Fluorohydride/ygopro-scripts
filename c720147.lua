@@ -30,14 +30,14 @@ function c720147.matfilter2(c)
 end
 function c720147.fselect(g,tp)
 	return Duel.IsExistingTarget(c720147.matfilter1,tp,LOCATION_MZONE,0,1,g,tp,g)
-		and Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
+		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=e:GetLabelObject()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c720147.matfilter1(chkc,tp,g) end
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c720147.costfilter,1,nil,tp)
+		return Duel.CheckReleaseGroup(tp,c720147.costfilter,1,nil,tp)
 	end
 	local rg=Duel.GetReleaseGroup(tp):Filter(c720147.costfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

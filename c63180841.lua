@@ -78,7 +78,7 @@ function c63180841.atkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 end
 function c63180841.spfilter(c,tp)
-	return c:IsReleasable() and c:IsType(TYPE_SYNCHRO) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsType(TYPE_SYNCHRO) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c63180841.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp

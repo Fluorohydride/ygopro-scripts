@@ -91,7 +91,7 @@ function c27693363.actop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27693363.rfilter(c,tp)
-	return c:IsReleasable() and c:IsLevelAbove(7) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsLevelAbove(7) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c27693363.excostfilter(c,tp)
 	return c:IsAbleToRemove() and (c:IsHasEffect(16471775,tp) or c:IsHasEffect(89264428,tp))

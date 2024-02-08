@@ -1,4 +1,4 @@
---重铠装-霍普鳍条枪兵
+--FA－ホープ・レイ・ランサー
 function c1269512.initial_effect(c)
 	aux.AddXyzProcedure(c,nil,4,3,c1269512.ovfilter,aux.Stringid(1269512,0),3,c1269512.xyzop)
 	c:EnableReviveLimit()

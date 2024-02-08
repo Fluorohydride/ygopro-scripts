@@ -57,7 +57,7 @@ function s.checkrelrep(c,tp)
 	return c:IsHasEffect(16471775,tp) or c:IsHasEffect(89264428,tp)
 end
 function s.rfilter(c,tp)
-	return c:IsReleasable() and c:IsLevel(8) and c:IsSetCard(0x163) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsLevel(8) and c:IsSetCard(0x163) and (c:IsControler(tp) or c:IsFaceup())
 end
 function s.excostfilter(c,tp)
 	return c:IsAbleToRemove() and s.checkrelrep(c,tp)

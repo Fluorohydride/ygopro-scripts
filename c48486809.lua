@@ -1,4 +1,4 @@
---ハネクリボーLV6
+--ハネクリボー LV6
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
@@ -36,9 +36,8 @@ function s.initial_effect(c)
 	e4:SetTarget(s.destg2)
 	e4:SetOperation(s.desop2)
 	c:RegisterEffect(e4)
-	
 end
-s.lvup={57116033,id}
+s.lvup={id}
 function s.spfilter(c)
 	return (c:IsCode(57116033) or c:IsSetCard(0x3008) and c:IsType(TYPE_FUSION)) and c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
 end

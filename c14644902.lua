@@ -25,7 +25,7 @@ function c14644902.rfilter2(c,tp)
 end
 function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rg=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c14644902.rfilter,1,1,aux.ExceptThisCard(e),e,tp)
+	local rg=Duel.SelectReleaseGroupEx(tp,c14644902.rfilter,1,1,REASON_EFFECT,false,aux.ExceptThisCard(e),e,tp)
 	if Duel.Release(rg,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c14644902.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
@@ -47,7 +47,7 @@ function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if #rg==0 then
-		rg=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c14644902.rfilter2,1,1,aux.ExceptThisCard(e),tp)
+		rg=Duel.SelectReleaseGroupEx(tp,c14644902.rfilter2,1,1,REASON_EFFECT,false,aux.ExceptThisCard(e),tp)
 		if #rg>0 then
 			Duel.Release(rg,REASON_EFFECT)
 		end

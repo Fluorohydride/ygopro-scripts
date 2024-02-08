@@ -24,8 +24,8 @@ function c1802450.cfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_EARTH)
 end
 function c1802450.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c1802450.cfilter,1,nil) end
-	local cg=Duel.SelectReleaseGroup(REASON_COST,tp,c1802450.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c1802450.cfilter,1,nil) end
+	local cg=Duel.SelectReleaseGroup(tp,c1802450.cfilter,1,1,nil)
 	Duel.Release(cg,REASON_COST)
 end
 function c1802450.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

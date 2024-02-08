@@ -97,7 +97,7 @@ function c80086070.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return tg and tg:IsExists(c80086070.negfilter,1,nil,tp) and Duel.IsChainNegatable(ev)
 end
 function c80086070.costfilter(c,tp)
-	return c:IsReleasable() and c:IsType(TYPE_MONSTER) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsType(TYPE_MONSTER) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c80086070.excostfilter(c,tp)
 	return c:IsAbleToRemove() and (c:IsHasEffect(16471775,tp) or c:IsHasEffect(89264428,tp))

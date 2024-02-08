@@ -6,6 +6,7 @@ function c52101615.initial_effect(c)
 	e1:SetDescription(aux.Stringid(52101615,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetLabel(0)
 	e1:SetCost(c52101615.cost)
 	e1:SetTarget(c52101615.target)
 	e1:SetOperation(c52101615.operation)
@@ -25,16 +26,22 @@ function c52101615.filter(c,e,tp,m,gc,chkf)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:CheckFusionMaterial(m,gc,chkf)
 end
 function c52101615.mfilter(c,tp)
-	return c:IsReleasable() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsLocation(LOCATION_MZONE) and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c52101615.fcheck(tp,sg,fc)
-	return Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#sg,nil,sg)
+	return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#sg,nil,sg)
 end
 function c52101615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
+	return true
+end
+function c52101615.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local mg=Duel.GetReleaseGroup(tp):Filter(c52101615.mfilter,nil,tp)
 	local chkf=tp+0x100
 	if chk==0 then
+		if e:GetLabel()~=1 then return false end
+		e:SetLabel(0)
+		local mg=Duel.GetReleaseGroup(tp):Filter(c52101615.mfilter,nil,tp)
 		aux.FCheckAdditional=c52101615.fcheck
 		if c59160188 then c59160188.re_activated=true end
 		local res=Duel.IsExistingMatchingCard(c52101615.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,c,chkf)
@@ -42,6 +49,7 @@ function c52101615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		if c59160188 then c59160188.re_activated=false end
 		return res
 	end
+	local mg=Duel.GetReleaseGroup(tp):Filter(c52101615.mfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	aux.FCheckAdditional=c52101615.fcheck
 	if c59160188 then c59160188.re_activated=true end
@@ -52,9 +60,6 @@ function c52101615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	aux.UseExtraReleaseCount(mat,tp)
 	Duel.Release(mat,REASON_COST)
 	e:SetLabel(g:GetFirst():GetCode())
-end
-function c52101615.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:IsCostChecked() end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c52101615.filter2(c,e,tp,code)

@@ -31,7 +31,7 @@ function c63972571.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c63972571.rfilter(c,tp)
-	return c:IsReleasable() and c:IsLevelAbove(1) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsLevelAbove(1) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c63972571.fselect(g,tp)
 	Duel.SetSelectedCard(g)

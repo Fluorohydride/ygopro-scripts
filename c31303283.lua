@@ -20,8 +20,8 @@ function c31303283.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c31303283.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,e:GetHandler(),ATTRIBUTE_FIRE) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,e:GetHandler(),ATTRIBUTE_FIRE)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,e:GetHandler(),ATTRIBUTE_FIRE) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,e:GetHandler(),ATTRIBUTE_FIRE)
 	Duel.Release(g,REASON_COST)
 end
 function c31303283.atkop(e,tp,eg,ep,ev,re,r,rp)

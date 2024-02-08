@@ -17,7 +17,7 @@ function c54813225.relgoal(sg,tp)
 	return sg:CheckWithSumGreater(Card.GetLevel,3) and aux.mzctcheckrel(sg,tp)
 end
 function c54813225.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsReleasable,nil):Filter(Card.IsType,nil,TYPE_TOKEN)
+	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsType,nil,TYPE_TOKEN)
 	if chk==0 then return mg:CheckSubGroup(c54813225.relgoal,1,3,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=mg:SelectSubGroup(tp,c54813225.relgoal,false,1,3,tp)

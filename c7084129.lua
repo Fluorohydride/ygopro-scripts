@@ -45,8 +45,8 @@ function c7084129.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and rp==tp and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function c7084129.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,nil,RACE_SPELLCASTER) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,nil,RACE_SPELLCASTER)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_SPELLCASTER) end
+	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_SPELLCASTER)
 	Duel.Release(sg,REASON_COST)
 end
 function c7084129.target(e,tp,eg,ep,ev,re,r,rp,chk)
