@@ -78,12 +78,12 @@ function c6218704.hspfilter(c,tp,sc)
 end
 function c6218704.hspcon(e,c)
 	if c==nil then return true end
-	return c:IsFacedown() and Duel.CheckReleaseGroup(c:GetControler(),c6218704.hspfilter,1,nil,c:GetControler(),c)
+	return c:IsFacedown() and Duel.CheckReleaseGroupEx(c:GetControler(),c6218704.hspfilter,1,REASON_SPSUMMON,false,nil,c:GetControler(),c)
 end
 function c6218704.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c6218704.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroupEx(tp,c6218704.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp,c)
 	c:SetMaterial(g)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c6218704.pcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_PZONE,0)>=2

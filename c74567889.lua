@@ -1,4 +1,4 @@
---ダークインファント@イグニスター
+--ダークインファント＠イグニスター
 function c74567889.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c74567889.mfilter,1,1)
@@ -73,7 +73,7 @@ function c74567889.seqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.MoveSequence(c,nseq)
 	if c:GetSequence()==nseq and Duel.SelectEffectYesNo(tp,c,aux.Stringid(74567889,2)) then
 		Duel.BreakEffect()
-		local attr=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-c:GetAttribute())
+		local attr=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~c:GetAttribute())
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)

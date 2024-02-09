@@ -27,7 +27,7 @@ function c61665245.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c61665245.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==1
+	return aux.SameValueCheck(g,Card.GetLinkRace)
 end
 function c61665245.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

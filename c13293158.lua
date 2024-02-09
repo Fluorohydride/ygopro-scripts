@@ -1,4 +1,4 @@
---E－HERO ワイルド・サイクロン
+--E-HERO ワイルド・サイクロン
 function c13293158.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material
@@ -9,7 +9,7 @@ function c13293158.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c13293158.splimit)
+	e1:SetValue(aux.DarkFusionLimit)
 	c:RegisterEffect(e1)
 	--actlimit
 	local e2=Effect.CreateEffect(c)
@@ -34,10 +34,6 @@ function c13293158.initial_effect(c)
 end
 c13293158.material_setcode=0x8
 c13293158.dark_calling=true
-function c13293158.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(94820406)
-		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
-end
 function c13293158.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

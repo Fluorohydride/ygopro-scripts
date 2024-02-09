@@ -46,7 +46,7 @@ function c15327215.filter(c,mc)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x3d) and c:IsAbleToRemoveAsCost()
 		and not (c:IsLevel(mc:GetLevel()) and c:IsAttribute(mc:GetAttribute()) and c:IsAttack(mc:GetAttack()) and c:IsDefense(mc:GetDefense()))
 end
-function c15327215.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c15327215.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c15327215.filter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c15327215.filter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler())

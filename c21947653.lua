@@ -1,4 +1,4 @@
---E－HERO ライトニング・ゴーレム
+--E-HERO ライトニング・ゴーレム
 function c21947653.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material
@@ -9,7 +9,7 @@ function c21947653.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c21947653.splimit)
+	e1:SetValue(aux.DarkFusionLimit)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -25,10 +25,6 @@ function c21947653.initial_effect(c)
 end
 c21947653.material_setcode=0x8
 c21947653.dark_calling=true
-function c21947653.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(94820406)
-		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
-end
 function c21947653.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

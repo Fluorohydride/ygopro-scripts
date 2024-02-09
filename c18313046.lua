@@ -1,4 +1,4 @@
---Uk-P.U.N.K.カープ・ライジング
+--Uk－P.U.N.K.カープ・ライジング
 function c18313046.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

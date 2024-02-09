@@ -17,7 +17,10 @@ function s.filter(c,tp,ft)
 	local p=c:GetOwner()
 	if p~=tp then ft=0 end
 	local r=LOCATION_REASON_TOFIELD
-	if not c:IsControler(p) then r=LOCATION_REASON_CONTROL end
+	if not c:IsControler(p) then
+		if not c:IsAbleToChangeControler() then return false end
+		r=LOCATION_REASON_CONTROL
+	end
 	return Duel.GetLocationCount(p,LOCATION_SZONE,tp,r)>ft
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -20,7 +20,7 @@ function c44710391.initial_effect(c)
 	--double tribute
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_SET_AVAILABLE)
+	e4:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e4:SetCode(EFFECT_DOUBLE_TRIBUTE)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)

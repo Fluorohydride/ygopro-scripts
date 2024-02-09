@@ -46,9 +46,19 @@ function c98127546.initial_effect(c)
 	e4:SetOperation(c98127546.negop)
 	c:RegisterEffect(e4)
 end
+function c98127546.exmatcheck(c,lc,tp)
+	if not c:IsControler(1-tp) then return false end
+	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
+	for _,te in pairs(le) do	 
+		local f=te:GetValue()
+		local related,valid=f(te,lc,nil,c,tp)
+		if related and not te:GetHandler():IsCode(98127546) then return false end
+	end
+	return true	 
+end
 function c98127546.matval(e,lc,mg,c,tp)
 	if e:GetHandler()~=lc then return false,nil end
-	return true,not mg or not mg:IsExists(Card.IsControler,1,nil,1-tp)
+	return true,not mg or not mg:IsExists(c98127546.exmatcheck,1,nil,lc,tp)
 end
 function c98127546.discon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

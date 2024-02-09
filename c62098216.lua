@@ -44,13 +44,13 @@ end
 function c62098216.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsType,nil,TYPE_LINK)
-	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(Card.IsType,nil,TYPE_LINK)
+	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp,REASON_SPSUMMON)
 end
 function c62098216.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsType,nil,TYPE_LINK)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(Card.IsType,nil,TYPE_LINK)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -59,7 +59,7 @@ function c62098216.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c62098216.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c62098216.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)

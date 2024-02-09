@@ -1,4 +1,4 @@
---被検体ミュートリアST－４６
+--被検体ミュートリアST－46
 function c8200556.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

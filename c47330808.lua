@@ -1,4 +1,4 @@
---ホルスの先導-ハーピ
+--ホルスの先導－ハーピ
 function c47330808.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---沈黙狼-カルーポ
+--沈黙狼－カルーポ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Equip Fadown

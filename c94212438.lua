@@ -41,6 +41,7 @@ function c94212438.initial_effect(c)
 end
 function c94212438.plcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and e:GetHandler():GetFlagEffect(94212438)<4
+		and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c94212438.plfilter(c,id)
 	return c:IsCode(id) and not c:IsForbidden()

@@ -14,7 +14,8 @@ function c61677004.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c61677004.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x10f3)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x10f3)
 end
 function c61677004.thfilter(c)
 	return c:IsSetCard(0x46) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()

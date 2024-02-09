@@ -44,7 +44,7 @@ function c63014935.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c63014935.spfilter(c,tp)
-	return c:IsReleasable() and Duel.GetMZoneCount(1-tp,c,tp)>0
+	return c:IsReleasable(REASON_SPSUMMON) and Duel.GetMZoneCount(1-tp,c,tp)>0
 end
 function c63014935.spcon(e,c)
 	if c==nil then return true end
@@ -54,7 +54,7 @@ end
 function c63014935.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectMatchingCard(tp,c63014935.spfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c63014935.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
@@ -76,8 +76,8 @@ function c63014935.phcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c63014935.phop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckReleaseGroup(tp,aux.TRUE,1,e:GetHandler()) and Duel.SelectYesNo(tp,aux.Stringid(63014935,2)) then
-		Duel.Release(Duel.SelectReleaseGroup(tp,aux.TRUE,1,1,e:GetHandler()),REASON_EFFECT)
+	if Duel.CheckReleaseGroupEx(tp,aux.TRUE,1,REASON_EFFECT,false,e:GetHandler()) and Duel.SelectYesNo(tp,aux.Stringid(63014935,2)) then
+		Duel.Release(Duel.SelectReleaseGroupEx(tp,aux.TRUE,1,1,REASON_EFFECT,false,e:GetHandler()),REASON_EFFECT)
 	else Duel.Damage(tp,1000,REASON_EFFECT) end
 end
 function c63014935.spcost(e,c,tp)

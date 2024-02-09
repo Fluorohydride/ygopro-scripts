@@ -54,11 +54,11 @@ end
 function c13224603.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(tp,c13224603.hspfilter,1,nil,tp)
+	return Duel.CheckReleaseGroupEx(tp,c13224603.hspfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
 function c13224603.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c13224603.hspfilter,1,1,nil,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.SelectReleaseGroupEx(tp,c13224603.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c13224603.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(13224603)>0

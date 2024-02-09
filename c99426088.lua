@@ -34,6 +34,9 @@ end
 function c99426088.frcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
+function c99426088.gcheck(sg,ec)
+	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
+end
 function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp

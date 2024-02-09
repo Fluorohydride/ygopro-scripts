@@ -1,4 +1,4 @@
---海竜神-リバイアサン
+--海竜神－リバイアサン
 function c23931679.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--to hand

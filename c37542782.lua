@@ -49,16 +49,17 @@ function c37542782.eqspfilter(c)
 end
 function c37542782.hspfilter(c,tp,sc)
 	return c:IsLevelBelow(10) and c:IsSetCard(0x4093) and c:IsFusionType(TYPE_FUSION)
-		and c:IsControler(tp) and c:GetEquipGroup():IsExists(c37542782.eqspfilter,1,nil) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
+		and c:IsControler(tp) and c:GetEquipGroup():IsExists(c37542782.eqspfilter,1,nil) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0
+		and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c37542782.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(c:GetControler(),c37542782.hspfilter,1,nil,c:GetControler(),c)
+	return Duel.CheckReleaseGroupEx(c:GetControler(),c37542782.hspfilter,1,REASON_SPSUMMON,false,nil,c:GetControler(),c)
 end
 function c37542782.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,c37542782.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroupEx(tp,c37542782.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp,c)
 	c:SetMaterial(g)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 end
 function c37542782.efilter(e,re)
 	return e:GetHandlerPlayer()~=re:GetOwnerPlayer() and re:IsActivated()

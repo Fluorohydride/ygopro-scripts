@@ -42,7 +42,7 @@ c89907227.material_type=TYPE_SYNCHRO
 function c89907227.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c89907227.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c89907227.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	and Duel.IsPlayerCanSpecialSummonMonster(tp,89907228,0,TYPES_TOKEN_MONSTER,3300,3000,10,RACE_FISH,ATTRIBUTE_WATER,POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)

@@ -40,7 +40,7 @@ function c56655675.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCost(c56655675.discost)
 	e1:SetTarget(c56655675.distg)
 	e1:SetOperation(c56655675.disop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	e1:SetReset(RESET_EVENT+RESETS_WITHOUT_TEMP_REMOVE)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c56655675.discon(e,tp,eg,ep,ev,re,r,rp)

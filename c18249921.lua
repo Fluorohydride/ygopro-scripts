@@ -1,4 +1,4 @@
---電脳堺門-玄武
+--電脳堺門－玄武
 function c18249921.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

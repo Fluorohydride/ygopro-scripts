@@ -47,11 +47,11 @@ function c16719140.fselect(g,tp,lv,mc)
 	else return false end
 end
 function c16719140.relfilter(c)
-	return c:IsLevelAbove(1) and c:IsReleasableByEffect()
+	return c:IsLevelAbove(1)
 end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,c)
+	local mg=Duel.GetReleaseGroup(tp,false,REASON_EFFECT):Filter(c16719140.relfilter,c)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
@@ -69,7 +69,7 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
-	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,c)
+	local mg=Duel.GetReleaseGroup(tp,false,REASON_EFFECT):Filter(c16719140.relfilter,c)
 	if mg:GetCount()==0 then return end
 	if aux.NecroValleyFilter()(tc) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

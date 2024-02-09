@@ -62,7 +62,7 @@ function s.sscon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and Duel.GetAttackTarget()==nil
 end
 function s.mfilter(c)
-	return not c:IsType(TYPE_TUNER) and c:IsFaceupEx() and c:IsReleasableByEffect() and c:GetLevel()>0
+	return not c:IsType(TYPE_TUNER) and c:IsFaceupEx() and c:GetLevel()>0
 end
 function s.spfilter(c,e,tp,g)
 	return c:IsSetCard(0xe) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -73,14 +73,14 @@ function s.gcheck(g,tp,ec,sc)
 end
 function s.sstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local g=Duel.GetReleaseGroup(tp,true):Filter(s.mfilter,c)
+	local g=Duel.GetReleaseGroup(tp,true,REASON_EFFECT):Filter(s.mfilter,c)
 	if chk==0 then return c:IsReleasableByEffect() and c:GetLevel()>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,g) end
 	Duel.SetOperationInfo(0,CATEGORY_RELEASE,g,2,0,0)
 end
 function s.ssop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetReleaseGroup(tp,true):Filter(s.mfilter,c)
+	local g=Duel.GetReleaseGroup(tp,true,REASON_EFFECT):Filter(s.mfilter,c)
 	if not (c:IsRelateToEffect(e) and c:IsReleasableByEffect()) or #g==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,g):GetFirst()

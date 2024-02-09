@@ -33,7 +33,7 @@ function c25538345.filter(c)
 	return not c:IsCode(25538345) and ((c:IsSetCard(0x10db) and c:IsType(TYPE_MONSTER)) or (c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP)))
 		and c:IsAbleToGrave()
 end
-function c25538345.sgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c25538345.sgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(c25538345.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
