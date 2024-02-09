@@ -53,6 +53,9 @@ function c46898368.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,lk)
 end
 function c46898368.activate(e,tp,eg,ep,ev,re,r,rp)
-	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
+	local tc=Duel.GetFirstTarget()
+	if not tc:IsRelateToEffect(e) then return end
+	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
+	local d=tc:GetLink()
 	Duel.Draw(p,d,REASON_EFFECT)
 end

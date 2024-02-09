@@ -25,7 +25,7 @@ function c10286023.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c10286023.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0x140)
+	return e:GetHandler():IsSpecialSummonSetCard(0x140)
 end
 function c10286023.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

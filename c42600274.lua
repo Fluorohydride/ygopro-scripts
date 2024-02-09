@@ -27,17 +27,17 @@ function c42600274.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ct=0
-	if Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c42600274.hspfilter,1,nil,tp) then ct=ct-1 end
+	if Duel.CheckReleaseGroupEx(tp,c42600274.hspfilter,1,REASON_SPSUMMON,false,nil,tp) then ct=ct-1 end
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>ct
-		and Duel.CheckReleaseGroupEx(REASON_SPSUMMON,tp,Card.IsRace,1,e:GetHandler(),RACE_WARRIOR+RACE_FAIRY)
+		and Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,REASON_SPSUMMON,true,e:GetHandler(),RACE_WARRIOR+RACE_FAIRY)
 end
 function c42600274.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=nil
 	if ft>0 then
-		g=Duel.SelectReleaseGroupEx(REASON_SPSUMMON,tp,Card.IsRace,1,1,e:GetHandler(),RACE_WARRIOR+RACE_FAIRY)
+		g=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,REASON_SPSUMMON,true,e:GetHandler(),RACE_WARRIOR+RACE_FAIRY)
 	else
-		g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c42600274.hspfilter,1,1,nil,tp)
+		g=Duel.SelectReleaseGroupEx(tp,c42600274.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp)
 	end
 	Duel.Release(g,REASON_SPSUMMON)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(42600274,0))

@@ -52,7 +52,8 @@ function c18189187.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c18189187.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x131)
 end
 function c18189187.thfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

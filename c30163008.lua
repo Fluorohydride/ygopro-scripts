@@ -26,7 +26,7 @@ function c30163008.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c30163008.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==1
+	return aux.SameValueCheck(g,Card.GetLinkRace)
 end
 function c30163008.cfilter(c,e,tp,lg,zone)
 	return c:IsFaceup() and lg:IsContains(c)

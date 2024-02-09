@@ -32,8 +32,10 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.cfilter(c,tp,se)
-	return c:IsPreviousControler(tp) and not c:IsPreviousLocation(LOCATION_SZONE) and c:GetOriginalAttribute()==ATTRIBUTE_FIRE
-		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and (se==nil or c:GetReasonEffect()~=se)
+	return c:IsPreviousControler(tp) and not c:IsPreviousLocation(LOCATION_SZONE)
+		and (c:IsPreviousLocation(LOCATION_MZONE) or c:GetOriginalType()&TYPE_MONSTER~=0)
+		and c:GetOriginalAttribute()==ATTRIBUTE_FIRE and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

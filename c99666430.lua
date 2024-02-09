@@ -64,18 +64,18 @@ function c99666430.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c99666430.confilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
 function c99666430.rlfilter(c,tp)
-	return c:IsReleasableByEffect() and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+	return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c99666430.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_EFFECT,tp,c99666430.rlfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c99666430.rlfilter,1,REASON_EFFECT,false,nil,tp) end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c99666430.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c99666430.rlfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,c99666430.rlfilter,1,1,REASON_EFFECT,false,nil,tp)
 	if g:GetCount()==0 then
-		g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,Card.IsReleasableByEffect,1,1,nil)
+		g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_EFFECT,false,nil)
 	end
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)

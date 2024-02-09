@@ -47,9 +47,9 @@ function c72218246.spfilter1(c,e,tp,mg)
 end
 function c72218246.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(REASON_COST,tp,c72218246.rfilter,1,c,e,tp,c) end
+	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(tp,c72218246.rfilter,1,c,e,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c72218246.rfilter,1,1,c,e,tp,c)
+	local g=Duel.SelectReleaseGroup(tp,c72218246.rfilter,1,1,c,e,tp,c)
 	g:AddCard(c)
 	Duel.Release(g,REASON_COST)
 end

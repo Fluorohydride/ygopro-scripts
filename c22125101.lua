@@ -32,7 +32,7 @@ function c22125101.initial_effect(c)
 		c22125101.global_check=true
 		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
+		ge1:SetCode(EVENT_SPSUMMON_SUCCESS_G_P)
 		ge1:SetOperation(c22125101.checkop)
 		Duel.RegisterEffect(ge1,0)
 	end

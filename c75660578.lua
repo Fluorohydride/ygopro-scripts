@@ -23,8 +23,8 @@ function c75660578.spfilter(c,e,tp,code)
 	return (c:IsSetCard(0x134) or c:IsRace(RACE_ZOMBIE)) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c75660578.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c75660578.costfilter,1,nil,e,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c75660578.costfilter,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c75660578.costfilter,1,nil,e,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c75660578.costfilter,1,1,nil,e,tp)
 	e:SetLabel(g:GetFirst():GetCode())
 	Duel.Release(g,REASON_COST)
 end

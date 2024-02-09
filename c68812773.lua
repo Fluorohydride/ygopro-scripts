@@ -52,10 +52,10 @@ function c68812773.cfilter(c,ft,tp)
 end
 function c68812773.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c68812773.cfilter,1,nil,ft,tp) end
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c68812773.cfilter,1,nil,ft,tp) end
 	local ct=Duel.GetMatchingGroupCount(c68812773.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c68812773.cfilter,1,ct,nil,ft,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c68812773.cfilter,1,ct,nil,ft,tp)
 	ct=Duel.Release(rg,REASON_COST)
 	e:SetLabel(ct)
 end

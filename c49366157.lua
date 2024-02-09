@@ -16,8 +16,8 @@ function c49366157.cfilter(c)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsAttribute(ATTRIBUTE_WIND)
 end
 function c49366157.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c49366157.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c49366157.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c49366157.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c49366157.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c49366157.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

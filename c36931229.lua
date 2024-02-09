@@ -27,8 +27,8 @@ function c36931229.filter(c)
 	return c:IsLevelBelow(5) and c:GetTextAttack()>0
 end
 function c36931229.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c36931229.filter,1,nil) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c36931229.filter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c36931229.filter,1,nil) end
+	local sg=Duel.SelectReleaseGroup(tp,c36931229.filter,1,1,nil)
 	e:SetLabel(sg:GetFirst():GetTextAttack())
 	Duel.Release(sg,REASON_COST)
 end

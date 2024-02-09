@@ -39,12 +39,9 @@ function c98095162.initial_effect(c)
 	e3:SetOperation(c98095162.thop)
 	c:RegisterEffect(e3)
 end
-function c98095162.attfilter(c,att)
-	return c:GetLinkAttribute()&att==0
-end
 function c98095162.lcheck(g)
 	local tc=g:GetFirst()
-	return not g:IsExists(c98095162.attfilter,1,tc,tc:GetLinkAttribute()) and g:GetClassCount(Card.GetLinkRace)==#g
+	return aux.SameValueCheck(g,Card.GetLinkAttribute) and g:GetClassCount(Card.GetLinkRace)==#g
 end
 function c98095162.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
