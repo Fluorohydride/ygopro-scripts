@@ -17,9 +17,9 @@ function c89397517.costfilter(c,tp)
 end
 function c89397517.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckLPCost(tp,2000) and Duel.CheckReleaseGroup(REASON_COST,tp,c89397517.costfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckLPCost(tp,2000) and Duel.CheckReleaseGroup(tp,c89397517.costfilter,1,nil,tp) end
 	Duel.PayLPCost(tp,2000)
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c89397517.costfilter,1,1,nil,tp)
+	local sg=Duel.SelectReleaseGroup(tp,c89397517.costfilter,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c89397517.rmfilter(c)

@@ -32,8 +32,8 @@ function c85497611.filter1(c,tp,mc)
 	return (c:IsLocation(LOCATION_HAND+LOCATION_DECK) or c:IsFaceup()) and c:IsCode(53025096) and c:IsAbleToGrave() and Duel.GetMZoneCount(tp,g)>0
 end
 function c85497611.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c85497611.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c85497611.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c85497611.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c85497611.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c85497611.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

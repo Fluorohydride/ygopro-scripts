@@ -53,7 +53,7 @@ function c20447641.indtg(e,c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSetCard(0xaa)
 end
 function c20447641.ttfilter(c)
-	return c:GetOriginalCode()==20447641 and c:IsReleasable() and c:GetFlagEffect(20447641)~=0
+	return c:GetOriginalCode()==20447641 and c:IsReleasable(REASON_SUMMON) and c:GetFlagEffect(20447641)~=0
 end
 function c20447641.ttcon(e,c,minc)
 	if c==nil then return true end

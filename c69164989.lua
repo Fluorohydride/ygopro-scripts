@@ -24,10 +24,10 @@ function c69164989.thfilter2(c,code,lv)
 end
 function c69164989.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if Duel.CheckReleaseGroup(REASON_COST,tp,c69164989.costfilter,1,nil,tp)
+	if Duel.CheckReleaseGroup(tp,c69164989.costfilter,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c69164989.thfilter,tp,LOCATION_DECK,0,1,nil,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(69164989,0)) then
-		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c69164989.costfilter,1,1,nil,e,tp)
+		local g=Duel.SelectReleaseGroup(tp,c69164989.costfilter,1,1,nil,e,tp)
 		Duel.Release(g,REASON_COST)
 		e:SetLabel(1)
 	else

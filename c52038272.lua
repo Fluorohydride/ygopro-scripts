@@ -111,8 +111,8 @@ function c52038272.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c52038272.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c52038272.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

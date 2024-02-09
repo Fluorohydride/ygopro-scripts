@@ -33,8 +33,8 @@ function c66331855.cond(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 end
 function c66331855.costa(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,aux.TRUE,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,aux.TRUE,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,aux.TRUE,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,aux.TRUE,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c66331855.tga(e,tp,eg,ep,ev,re,r,rp,chk)

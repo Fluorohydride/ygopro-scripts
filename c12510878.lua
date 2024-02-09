@@ -40,10 +40,10 @@ function c12510878.initial_effect(c)
 end
 function c12510878.spcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),Card.IsCode,1,nil,18036057)
+	return Duel.CheckReleaseGroupEx(c:GetControler(),Card.IsCode,1,REASON_SPSUMMON,false,nil,18036057)
 end
 function c12510878.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,c:GetControler(),Card.IsCode,1,1,nil,18036057)
+	local g=Duel.SelectReleaseGroupEx(c:GetControler(),Card.IsCode,1,1,REASON_SPSUMMON,false,nil,18036057)
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c12510878.condition(e,tp,eg,ep,ev,re,r,rp)

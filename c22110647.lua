@@ -66,8 +66,8 @@ function c22110647.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22110647.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0
-		and Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x101b) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x101b)
+		and Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x101b) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x101b)
 	Duel.Release(g,REASON_COST)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

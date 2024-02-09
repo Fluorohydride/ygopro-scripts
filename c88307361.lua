@@ -75,8 +75,8 @@ function c88307361.discon(e,tp,eg,ep,ev,re,r,rp)
 	return tg and tg:IsContains(c) and Duel.IsChainDisablable(ev)
 end
 function c88307361.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_FISH) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,e:GetHandler(),RACE_FISH)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_FISH) end
+	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,e:GetHandler(),RACE_FISH)
 	Duel.Release(sg,REASON_COST)
 end
 function c88307361.distg(e,tp,eg,ep,ev,re,r,rp,chk)

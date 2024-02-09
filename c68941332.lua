@@ -23,8 +23,8 @@ function c68941332.rfilter(c,tp)
 end
 function c68941332.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if Duel.CheckReleaseGroup(REASON_COST,tp,c68941332.rfilter,1,nil,tp) and Duel.SelectYesNo(tp,aux.Stringid(68941332,0)) then
-		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c68941332.rfilter,1,1,nil,tp)
+	if Duel.CheckReleaseGroup(tp,c68941332.rfilter,1,nil,tp) and Duel.SelectYesNo(tp,aux.Stringid(68941332,0)) then
+		local g=Duel.SelectReleaseGroup(tp,c68941332.rfilter,1,1,nil,tp)
 		Duel.Release(g,REASON_COST)
 		e:SetLabel(1)
 	else

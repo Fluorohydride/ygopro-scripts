@@ -79,12 +79,13 @@ end
 function c95886782.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
-function c95886782.cfilter(c,tp)
-	return c:IsSummonPlayer(1-tp)
+function c95886782.cfilter(c,e,tp)
+	local se,sp=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT,SUMMON_INFO_REASON_PLAYER)
+	return se and sp==1-tp and se:IsActivated() and e:GetOwnerPlayer()==1-se:GetOwnerPlayer()
 end
 function c95886782.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget() and re and re:IsActivated() and e:GetOwnerPlayer()==1-re:GetOwnerPlayer()
-		and eg:IsExists(c95886782.cfilter,1,nil,tp)
+	return e:GetHandler():GetEquipTarget()
+		and eg:IsExists(c95886782.cfilter,1,nil,e,tp)
 end
 function c95886782.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

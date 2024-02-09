@@ -15,8 +15,8 @@ function c62753201.cfilter(c)
 	return c:IsSetCard(0x102)
 end
 function c62753201.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c62753201.cfilter,1,nil) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c62753201.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c62753201.cfilter,1,nil) end
+	local rg=Duel.SelectReleaseGroup(tp,c62753201.cfilter,1,1,nil)
 	Duel.Release(rg,REASON_COST)
 	local c=e:GetHandler()
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)

@@ -30,8 +30,8 @@ function c92377303.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c92377303.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,46986414) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,1,nil,46986414)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,46986414) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,46986414)
 	Duel.Release(g,REASON_COST)
 end
 function c92377303.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

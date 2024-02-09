@@ -20,7 +20,6 @@ function c67906797.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetMinGroup(Card.GetSequence):GetFirst()
 	Duel.DisableShuffleCheck()
 	if Duel.SendtoHand(tc,tp,REASON_EFFECT)>0 then
-		Duel.ConfirmCards(1-tp,tc)
 		Duel.ShuffleHand(tp)
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<=1 then return end
 		Duel.BreakEffect()

@@ -29,7 +29,7 @@ function c33971095.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x106)
 end
 function c33971095.filter(c,tp)
-	return c:IsFaceup() and c:IsLevelAbove(1) and Duel.CheckReleaseGroupEx(REASON_COST,tp,c33971095.cfilter,1,c,c)
+	return c:IsFaceup() and c:IsLevelAbove(1) and Duel.CheckReleaseGroupEx(tp,c33971095.cfilter,1,REASON_COST,true,c,c)
 end
 function c33971095.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c33971095.filter(chkc) end
@@ -37,7 +37,7 @@ function c33971095.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c33971095.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local tc=Duel.SelectTarget(tp,c33971095.filter,tp,LOCATION_MZONE,0,1,1,nil,tp):GetFirst()
-	local sg=Duel.SelectReleaseGroupEx(REASON_COST,tp,c33971095.cfilter,1,99,tc,tc)
+	local sg=Duel.SelectReleaseGroupEx(tp,c33971095.cfilter,1,99,REASON_COST,true,tc,tc)
 	Duel.Release(sg,REASON_COST)
 	e:SetLabel(sg:GetCount())
 end

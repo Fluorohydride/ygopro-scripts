@@ -13,9 +13,9 @@ function c28754338.initial_effect(c)
 end
 function c28754338.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,c,RACE_SEASERPENT) end
+	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(tp,Card.IsRace,1,c,RACE_SEASERPENT) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,c,RACE_SEASERPENT)
+	local rg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,c,RACE_SEASERPENT)
 	rg:AddCard(c)
 	Duel.Release(rg,REASON_COST)
 end

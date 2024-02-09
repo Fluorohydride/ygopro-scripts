@@ -84,8 +84,8 @@ function c24701066.cfilter(c,tp)
 	return c:IsType(TYPE_LINK) and c:IsRace(RACE_MACHINE) and Duel.GetMZoneCount(tp,c)>0
 end
 function c24701066.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c24701066.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c24701066.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c24701066.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c24701066.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c24701066.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

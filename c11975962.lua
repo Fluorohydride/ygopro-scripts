@@ -13,8 +13,8 @@ function c11975962.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c11975962.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x69) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x69)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x69) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x69)
 	Duel.Release(g,REASON_COST)
 end
 function c11975962.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

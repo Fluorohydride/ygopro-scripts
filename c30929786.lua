@@ -24,7 +24,8 @@ function c30929786.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c30929786.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x79) and re:GetHandler():IsType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x79)
 end
 function c30929786.thfilter(c)
 	return c:IsSetCard(0x79) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

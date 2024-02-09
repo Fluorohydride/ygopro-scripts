@@ -33,7 +33,7 @@ function c28776350.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28776350.lcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==1
+	return aux.SameValueCheck(g,Card.GetLinkRace)
 end
 function c28776350.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_LINK)==SUMMON_TYPE_LINK

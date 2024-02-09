@@ -47,8 +47,8 @@ function c95772051.thfilter(c)
 	return c:IsSetCard(0x207a) and c:IsAbleToHand()
 end
 function c95772051.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x107a) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x107a)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x107a) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x107a)
 	Duel.Release(g,REASON_COST)
 end
 function c95772051.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

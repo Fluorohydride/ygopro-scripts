@@ -94,15 +94,15 @@ function c42166000.hspfilter(c,tp,sc)
 end
 function c42166000.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),c42166000.hspfilter,1,nil,c:GetControler(),c)
+	return Duel.CheckReleaseGroupEx(c:GetControler(),c42166000.hspfilter,1,REASON_SPSUMMON,false,nil,c:GetControler(),c)
 end
 function c42166000.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c42166000.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroupEx(tp,c42166000.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp,c)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c42166000.ttfilter(c,tp)
-	return c:IsHasEffect(42166000) and c:IsReleasable() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsHasEffect(42166000) and c:IsReleasable(REASON_SUMMON) and Duel.GetMZoneCount(tp,c)>0
 end
 function c42166000.ttcon(e,c,minc)
 	if c==nil then return true end
