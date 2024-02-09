@@ -32,9 +32,7 @@ function c66150724.initial_effect(c)
 	end
 end
 function c66150724.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(Card.IsSummonType,1,nil,SUMMON_TYPE_PENDULUM) then
-		Duel.RegisterFlagEffect(rp,66150724,RESET_PHASE+PHASE_END,0,1)
-	end
+	Duel.RegisterFlagEffect(rp,66150724,RESET_PHASE+PHASE_END,0,1)
 end
 function c66150724.thfilter1(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xf2) and c:IsAbleToHand()
