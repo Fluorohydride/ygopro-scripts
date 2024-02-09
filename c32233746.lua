@@ -5,7 +5,7 @@ function c32233746.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)
-	e1:SetCondition(c32233746.condition)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetCost(c32233746.cost)
 	e1:SetTarget(c32233746.target)
 	e1:SetOperation(c32233746.activate)
@@ -17,12 +17,9 @@ function c32233746.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON)
 	c:RegisterEffect(e3)
 end
-function c32233746.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
-end
 function c32233746.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x38) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0x38)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x38) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x38)
 	Duel.Release(g,REASON_COST)
 end
 function c32233746.target(e,tp,eg,ep,ev,re,r,rp,chk)

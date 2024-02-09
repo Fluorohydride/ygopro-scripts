@@ -29,7 +29,9 @@ function s.initial_effect(c)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
-	e:SetLabel(e:GetHandler():GetSummonType()&SUMMON_VALUE_NOUVELLEZ)
+	local c=e:GetHandler()
+	local res=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x196) and 1 or 0
+	e:SetLabel(res)
 	local g=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
@@ -79,7 +81,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 		if tc then
-			Duel.SpecialSummon(tc,SUMMON_VALUE_NOUVELLEZ,tp,tp,true,false,POS_FACEUP)
+			Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 		end
 	end
 end

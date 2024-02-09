@@ -77,11 +77,11 @@ function c6284176.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_PLANT) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c6284176.rfilter(c)
-	return c:IsReleasableByEffect() and c:IsRace(RACE_PLANT) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+	return c:IsRace(RACE_PLANT) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c6284176.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c6284176.repfilter,1,nil,tp)
-		and Duel.CheckReleaseGroupEx(REASON_EFFECT,tp,c6284176.rfilter,1,nil) end
+		and Duel.CheckReleaseGroupEx(tp,c6284176.rfilter,1,REASON_EFFECT,true,nil) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c6284176.repval(e,c)
@@ -89,7 +89,7 @@ function c6284176.repval(e,c)
 end
 function c6284176.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroupEx(REASON_EFFECT,tp,c6284176.rfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroupEx(tp,c6284176.rfilter,1,1,REASON_EFFECT,true,nil)
 	Duel.Hint(HINT_CARD,0,6284176)
 	Duel.Release(g,REASON_EFFECT+REASON_REPLACE)
 end

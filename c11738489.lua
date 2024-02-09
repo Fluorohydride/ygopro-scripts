@@ -1,4 +1,4 @@
---ジ・アライバル・サイバース@イグニスター
+--ジ・アライバル・サイバース＠イグニスター
 function c11738489.initial_effect(c)
 	c:SetUniqueOnField(1,0,11738489)
 	--link summon

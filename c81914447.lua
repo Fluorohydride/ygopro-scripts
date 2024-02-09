@@ -1,4 +1,4 @@
---No-P.U.N.K.オーガ・ナンバー
+--No－P.U.N.K.オーガ・ナンバー
 function c81914447.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -38,9 +38,9 @@ function c81914447.spfilter(c,tp)
 	return Duel.GetMZoneCount(tp,c)>0 and c:IsSetCard(0x171) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c81914447.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c81914447.spfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c81914447.spfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c81914447.spfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(tp,c81914447.spfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c81914447.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

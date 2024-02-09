@@ -23,10 +23,10 @@ function c83054225.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetMatchingGroupCount(c83054225.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if chk==0 then
 		if Duel.GetFlagEffect(tp,83054225)~=0 or Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return false end
-		return ct>0 and Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,31533705)
+		return ct>0 and Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,31533705)
 	end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,ct,nil,31533705)
+	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,ct,nil,31533705)
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(g:GetCount())
 	Duel.RegisterFlagEffect(tp,83054225,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)

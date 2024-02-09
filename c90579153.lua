@@ -1,4 +1,4 @@
---D－HERO ディストピアガイ
+--D-HERO ディストピアガイ
 function c90579153.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

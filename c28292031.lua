@@ -1,5 +1,4 @@
 --ダイノルフィア・リヴァージョン
---not fully implemented
 function c28292031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -70,12 +69,9 @@ function c28292031.target(event)
 				return Duel.IsExistingMatchingCard(c28292031.filter,tp,LOCATION_GRAVE,0,1,nil,event)
 			end
 			e:SetLabel(0)
-			local _GetCurrentChain=Duel.GetCurrentChain
-			Duel.GetCurrentChain=function() return _GetCurrentChain()-1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local g=Duel.SelectMatchingCard(tp,c28292031.filter,tp,LOCATION_GRAVE,0,1,1,nil,event)
 			local te,ceg,cep,cev,cre,cr,crp=g:GetFirst():CheckActivateEffect(false,true,true)
-			Duel.GetCurrentChain=_GetCurrentChain
 			Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
 			Duel.Remove(g,POS_FACEUP,REASON_COST)
 			e:SetProperty(te:GetProperty())

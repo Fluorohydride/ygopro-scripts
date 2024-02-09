@@ -43,7 +43,7 @@ function c34079868.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c34079868.fselect(g,tp)
-	return aux.mzctcheckrel(g,tp) and aux.gfcheck(g,Card.IsSetCard,0xc7,0xda)
+	return aux.mzctcheckrel(g,tp,REASON_SPSUMMON) and aux.gfcheck(g,Card.IsSetCard,0xc7,0xda)
 end
 function c34079868.spcon(e,c)
 	if c==nil then return true end

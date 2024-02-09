@@ -27,7 +27,7 @@ end
 function c80908502.filter(c)
 	return c:IsCode(63035430) and c:IsAbleToHand()
 end
-function c80908502.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c80908502.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80908502.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

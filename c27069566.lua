@@ -59,8 +59,7 @@ function c27069566.spfilter(c,e,tp)
 	return c:IsSetCard(0x14e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27069566.fselect(g)
-	return g:GetClassCount(Card.GetRace)==1
-		and g:GetClassCount(Card.GetAttribute)==1
+	return aux.SameValueCheck(g,Card.GetRace) and aux.SameValueCheck(g,Card.GetAttribute)
 end
 function c27069566.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

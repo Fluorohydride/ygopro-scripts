@@ -49,15 +49,15 @@ function c76075139.splimit(e,se,sp,st)
 end
 function c76075139.hspfilter(c,tp,sc)
 	local seq=c:GetSequence()
-	return (seq==1 or seq==3) and not c:IsFusionType(TYPE_FUSION) and c:IsLevelAbove(5) and c:IsSetCard(0x17d)
+	return (seq==1 or seq==3 or seq>4) and not c:IsFusionType(TYPE_FUSION) and c:IsLevelAbove(5) and c:IsSetCard(0x17d)
 		and c:IsControler(tp) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c76075139.hspcon(e,c)
 	if c==nil then return true end
-	return c:IsFacedown() and Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),c76075139.hspfilter,1,nil,c:GetControler(),c)
+	return c:IsFacedown() and Duel.CheckReleaseGroupEx(c:GetControler(),c76075139.hspfilter,1,REASON_SPSUMMON,false,nil,c:GetControler(),c)
 end
 function c76075139.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c76075139.hspfilter,1,1,nil,tp,c)
+	local g=Duel.SelectReleaseGroupEx(tp,c76075139.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp,c)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SPSUMMON)
 end

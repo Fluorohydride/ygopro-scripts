@@ -17,8 +17,8 @@ function c16923472.costfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x58) and not c:IsCode(16923472)
 end
 function c16923472.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c16923472.costfilter,1,nil) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c16923472.costfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c16923472.costfilter,1,nil) end
+	local sg=Duel.SelectReleaseGroup(tp,c16923472.costfilter,1,1,nil)
 	Duel.Release(sg,REASON_COST)
 end
 function c16923472.target(e,tp,eg,ep,ev,re,r,rp,chk)

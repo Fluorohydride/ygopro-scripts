@@ -21,7 +21,7 @@ function c744887.costfilter(c)
 end
 function c744887.fselect(g,tp)
 	return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g)
-		and Duel.CheckReleaseGroup(REASON_COST,tp,aux.IsInGroup,#g,nil,g)
+		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c744887.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp):Filter(c744887.costfilter,nil)

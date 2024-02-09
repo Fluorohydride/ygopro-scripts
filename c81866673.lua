@@ -1,4 +1,4 @@
---D－HERO ダッシュガイ
+--D-HERO ダッシュガイ
 function c81866673.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
@@ -34,8 +34,8 @@ function c81866673.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c81866673.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 end
 function c81866673.atkop(e,tp,eg,ep,ev,re,r,rp)

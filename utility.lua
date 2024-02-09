@@ -143,8 +143,11 @@ end
 function Auxiliary.PuzzleOp(e,tp)
 	Duel.SetLP(0,0)
 end
---Duel.SelectOption with option condition
---Return value starts from 1, different from Duel.SelectOption
+---Duel.SelectOption with option condition
+---Return value starts from 1, different from Duel.SelectOption
+---@param tp integer
+---@param ... table {condition, option[, value]}
+---@return integer|nil
 function Auxiliary.SelectFromOptions(tp,...)
 	local options={...}
 	local ops={}
@@ -334,40 +337,40 @@ function Auxiliary.EnableUnionAttribute(c,filter)
 	c:RegisterEffect(e4)
 end
 function Auxiliary.UnionEquipFilter(filter)
-	return function(c,tp)
-		local ct1,ct2=c:GetUnionCount()
-		return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
-	end
+	return	function(c,tp)
+				local ct1,ct2=c:GetUnionCount()
+				return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
+			end
 end
 function Auxiliary.UnionEquipLimit(filter)
-	return function(e,c)
-		return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
-	end
+	return	function(e,c)
+				return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
+			end
 end
 function Auxiliary.UnionEquipTarget(equip_filter)
-	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-		local c=e:GetHandler()
-		if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
-		if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
-		Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
-		c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+				local c=e:GetHandler()
+				if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
+				if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+					and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+				local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
+				Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
+				c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+			end
 end
 function Auxiliary.UnionEquipOperation(equip_filter)
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local c=e:GetHandler()
-		local tc=Duel.GetFirstTarget()
-		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-		if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
-			Duel.SendtoGrave(c,REASON_RULE)
-			return
-		end
-		if not Duel.Equip(tp,c,tc,false) then return end
-		Auxiliary.SetUnionState(c)
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local c=e:GetHandler()
+				local tc=Duel.GetFirstTarget()
+				if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+				if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
+					Duel.SendtoGrave(c,REASON_RULE)
+					return
+				end
+				if not Duel.Equip(tp,c,tc,false) then return end
+				Auxiliary.SetUnionState(c)
+			end
 end
 function Auxiliary.UnionUnequipTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -465,7 +468,7 @@ function Auxiliary.IsMaterialListCode(c,code)
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
-	if type(c.material_setcode)=='table' then
+	if type(c.material_setcode)=="table" then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
 		end
@@ -757,13 +760,15 @@ function Auxiliary.qlifilter(e,te)
 end
 --sp_summon condition for gladiator beast monsters
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_GLADIATOR>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_EVOLTILE>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
@@ -928,20 +933,20 @@ function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function Auxiliary.DrytronSpSummonOperation(func)
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local c=e:GetHandler()
-		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
-			c:CompleteProcedure()
-			func(e,tp)
-		end
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local c=e:GetHandler()
+				if not c:IsRelateToEffect(e) then return end
+				if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
+					c:CompleteProcedure()
+					func(e,tp)
+				end
+			end
 end
 ---The `nolimit` parameter for Special Summon effects of Drytron cards
 ---@param c Card
 ---@return boolean
 function Auxiliary.DrytronSpSummonType(c)
-    return c:IsType(TYPE_SPSUMMON)
+	return c:IsType(TYPE_SPSUMMON)
 end
 ---The `nolimit` parameter for Special Summon effects of Dragon, Xyz monsters where Soul Drain Dragon is available
 ---(Soul Drain Dragon, Level 8/LIGHT/Dragon/4000/0)
@@ -954,7 +959,7 @@ end
 ---@param c Card
 ---@return boolean
 function Auxiliary.TriamidSpSummonType(c)
-    return c:IsType(TYPE_SPSUMMON)
+	return c:IsType(TYPE_SPSUMMON)
 end
 --additional destroy effect for the Labrynth field
 function Auxiliary.LabrynthDestroyOp(e,tp,res)
@@ -1027,8 +1032,14 @@ end
 function Auxiliary.mzctcheck(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0
 end
-function Auxiliary.mzctcheckrel(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(REASON_COST,tp,Auxiliary.IsInGroup,#g,nil,g)
+---Check if there is space in mzone after tp releases g by reason
+---@param g Group
+---@param tp integer
+---@param reason? integer
+---@return boolean
+function Auxiliary.mzctcheckrel(g,tp,reason)
+	reason=reason or REASON_COST
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,Auxiliary.IsInGroup,#g,reason,false,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
@@ -1083,7 +1094,7 @@ end
 ---@param f function
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
@@ -1108,7 +1119,7 @@ end
 ---@param cancelable boolean
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return Group|nil
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
@@ -1191,7 +1202,7 @@ end
 ---@param g Group
 ---@param checks table
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
@@ -1206,7 +1217,7 @@ end
 ---@param checks table
 ---@param cancelable? boolean
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return Group|nil
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
@@ -1287,9 +1298,6 @@ function Auxiliary.UseExtraReleaseCount(g,tp)
 end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
-end
-function Auxiliary.IsSpecialSummonedByEffect(e)
-	return not ((e:GetCode()==EFFECT_SPSUMMON_PROC or e:GetCode()==EFFECT_SPSUMMON_PROC_G) and e:GetProperty()&(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)==(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE))
 end
 --
 function Auxiliary.GetCappedLevel(c)
@@ -1485,4 +1493,69 @@ function Auxiliary.EPDestroyOperation(e,tp,eg,ep,ev,re,r,rp)
 	if Auxiliary.GetValueType(tc)=="Card" or Auxiliary.GetValueType(tc)=="Group" then
 		Duel.Destroy(tc,REASON_EFFECT,LOCATION_GRAVE)
 	end
+end
+--
+function Auxiliary.NegateSummonCondition()
+	return Duel.GetReadyChain()==0
+end
+---Check if all cards in g have the same Attribute/Race
+---@param g Group
+---@param f function Like Card.GetAttribute, must return binary value
+---@return boolean
+function Auxiliary.SameValueCheck(g,f)
+	if #g<=1 then return true end
+	if #g==2 then return f(g:GetFirst())&f(g:GetNext())~=0 end
+	local tc=g:GetFirst()
+	local v=f(tc)
+	tc=g:GetNext()
+	while tc do
+		v=v&f(tc)
+		if v==0 then return false end
+		tc=g:GetNext()
+	end
+	return v~=0
+end
+---
+---@param tp integer
+---@return boolean
+function Auxiliary.IsPlayerCanNormalDraw(tp)
+	return Duel.GetDrawCount(tp)>0 and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
+		and Duel.GetFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW)==0
+end
+---
+---@param e Effect
+---@param tp integer
+---@param property? integer
+function Auxiliary.GiveUpNormalDraw(e,tp,property)
+	property=property or 0
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET|property)
+	e1:SetCode(EFFECT_DRAW_COUNT)
+	e1:SetTargetRange(1,0)
+	e1:SetReset(RESET_PHASE+PHASE_DRAW)
+	e1:SetValue(0)
+	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
+end
+---If this face-up card would leave the field, banish it instead.
+---@param c Card
+---@param condition? function
+function Auxiliary.AddBanishRedirect(c,condition)
+	if type(condition)~="function" then
+		condition=Auxiliary.BanishRedirectCondition
+	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
+	e1:SetCondition(condition)
+	e1:SetValue(LOCATION_REMOVED)
+	c:RegisterEffect(e1)
+end
+---
+---@param e Effect
+function Auxiliary.BanishRedirectCondition(e)
+	return e:GetHandler():IsFaceup()
 end

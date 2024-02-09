@@ -29,31 +29,17 @@ function c36730805.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c36730805.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-		e1:SetLabelObject(tc)
-		e1:SetOperation(c36730805.sumop)
-		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_CHAIN_END)
-		e2:SetLabelObject(e1)
-		e2:SetOperation(c36730805.cedop)
-		Duel.RegisterEffect(e2,tp)
+	if tc then
+		if Duel.GetCurrentChain()==1 then
+			local e2=Effect.CreateEffect(e:GetHandler())
+			e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e2:SetCode(EVENT_CHAIN_END)
+			e2:SetOperation(c36730805.limitop)
+			Duel.RegisterEffect(e2,tp)
+		end
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
-	Duel.SpecialSummonComplete()
 end
-function c36730805.sumop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsContains(e:GetLabelObject()) then
-		e:SetLabel(1)
-		e:Reset()
-	else e:SetLabel(0) end
-end
-function c36730805.cedop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckEvent(EVENT_SPSUMMON_SUCCESS) and e:GetLabelObject():GetLabel()==1 then
-		Duel.SetChainLimitTillChainEnd(aux.FALSE)
-	end
-	e:Reset()
+function c36730805.limitop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.SetChainLimitTillChainEnd(aux.FALSE)
 end

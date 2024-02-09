@@ -24,8 +24,8 @@ function c88197162.filter(c)
 end
 function c88197162.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0
-		and Duel.CheckReleaseGroup(REASON_COST,tp,c88197162.filter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c88197162.filter,1,1,nil)
+		and Duel.CheckReleaseGroup(tp,c88197162.filter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c88197162.filter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)

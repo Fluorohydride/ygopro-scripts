@@ -1,4 +1,4 @@
---E－HERO マリシャス・デビル
+--E-HERO マリシャス・デビル
 function c86676862.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material
@@ -9,7 +9,7 @@ function c86676862.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e2:SetValue(c86676862.splimit)
+	e2:SetValue(aux.DarkFusionLimit)
 	c:RegisterEffect(e2)
 	--Pos Change
 	local e3=Effect.CreateEffect(c)
@@ -35,10 +35,6 @@ function c86676862.initial_effect(c)
 end
 c86676862.material_setcode=0x8
 c86676862.dark_calling=true
-function c86676862.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(94820406)
-		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
-end
 function c86676862.ffilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsLevelAbove(6)
 end

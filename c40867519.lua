@@ -36,7 +36,7 @@ function c40867519.initial_effect(c)
 	e5:SetTarget(c40867519.distarget)
 	c:RegisterEffect(e5)
 end
-function c40867519.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c40867519.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAttackPos() end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
 end

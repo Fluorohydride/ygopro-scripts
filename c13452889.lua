@@ -25,8 +25,8 @@ function c13452889.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local zone={}
 	zone[0]=c:GetLinkedZone(0)
 	zone[1]=c:GetLinkedZone(1)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c13452889.cfilter,1,nil,tp,lg,zone) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c13452889.cfilter,1,1,nil,tp,lg,zone)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c13452889.cfilter,1,nil,tp,lg,zone) end
+	local g=Duel.SelectReleaseGroup(tp,c13452889.cfilter,1,1,nil,tp,lg,zone)
 	Duel.Release(g,REASON_COST)
 end
 function c13452889.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

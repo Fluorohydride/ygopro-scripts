@@ -6,7 +6,7 @@ function c71628381.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71628381,0))
-	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
 	e1:SetRange(LOCATION_MZONE)
@@ -34,11 +34,11 @@ function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local mg=c:GetMaterial()
 	local ct=mg:GetCount()
-	local sumtype=c:GetSummonType()
-	if Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	if Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_EXTRA)
+		and c:IsSummonType(SUMMON_TYPE_FUSION)
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		and mg:FilterCount(aux.NecroValleyFilter(c71628381.mgfilter),nil,e,tp,c,mg)==ct
-		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and (not Duel.IsPlayerAffectedByEffect(tp,59822133) or ct==1)
 		and Duel.SelectYesNo(tp,aux.Stringid(71628381,1)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)

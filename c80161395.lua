@@ -15,8 +15,8 @@ function c80161395.filter(c,tp)
 	return (c:GetAttack()>0 or c:GetDefense()>0) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c80161395.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c80161395.filter,1,nil,tp) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c80161395.filter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c80161395.filter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c80161395.filter,1,1,nil,tp)
 	local tc=sg:GetFirst()
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()

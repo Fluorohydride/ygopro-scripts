@@ -1,33 +1,22 @@
 --ゼンマイマジシャン
 function c59297550.initial_effect(c)
 	--special summon
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_CHAINING)
-	e0:SetRange(LOCATION_MZONE)
-	e0:SetCondition(c59297550.spcon1)
-	e0:SetOperation(aux.chainreg)
-	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(59297550,0))
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_NO_TURN_RESET)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCode(EVENT_CHAIN_SOLVED)
+	e1:SetCode(EVENT_CHAINING)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c59297550.spcon)
 	e1:SetTarget(c59297550.sptg)
 	e1:SetOperation(c59297550.spop)
 	c:RegisterEffect(e1)
 end
-function c59297550.spcon1(e,tp,eg,ep,ev,re,r,rp)
+function c59297550.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER)
 		and re:GetHandler():IsSetCard(0x58) and not re:GetHandler():IsCode(59297550)
-end
-function c59297550.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(1)>0
 end
 function c59297550.filter(c,e,tp)
 	return c:IsSetCard(0x58) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

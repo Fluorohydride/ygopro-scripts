@@ -15,9 +15,9 @@ function c37869028.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37869028.atcost(e,c,tp)
-	return Duel.CheckReleaseGroup(REASON_ACTION,tp,Card.IsRace,1,nil,RACE_AQUA)
+	return Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,REASON_ACTION,false,nil,RACE_AQUA)
 end
 function c37869028.atop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(REASON_ACTION,tp,Card.IsRace,1,1,nil,RACE_AQUA)
+	local g=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,REASON_ACTION,false,nil,RACE_AQUA)
 	Duel.Release(g,REASON_ACTION)
 end

@@ -5,7 +5,7 @@ function c41420027.initial_effect(c)
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)
-	e1:SetCondition(c41420027.condition1)
+	e1:SetCondition(aux.NegateSummonCondition)
 	e1:SetCost(c41420027.cost1)
 	e1:SetTarget(c41420027.target1)
 	e1:SetOperation(c41420027.activate1)
@@ -26,9 +26,6 @@ function c41420027.initial_effect(c)
 	e4:SetTarget(c41420027.target2)
 	e4:SetOperation(c41420027.activate2)
 	c:RegisterEffect(e4)
-end
-function c41420027.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c41420027.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

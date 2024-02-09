@@ -42,13 +42,13 @@ function s.repfilter(c,tp)
 		and not c:IsReason(REASON_REPLACE)
 end
 function s.rfilter(c)
-	return c:IsReleasableByEffect() and c:IsRace(RACE_FIEND)
+	return c:IsRace(RACE_FIEND)
 		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function s.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return eg:IsExists(s.repfilter,1,nil,tp)
-		and Duel.CheckReleaseGroup(REASON_EFFECT,tp,s.rfilter,1,nil) end
+		and Duel.CheckReleaseGroupEx(tp,s.rfilter,1,REASON_EFFECT,false,nil) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function s.desrepval(e,c)
@@ -56,7 +56,7 @@ function s.desrepval(e,c)
 end
 function s.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,s.rfilter,1,1,nil)
+	local g=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,REASON_EFFECT,false,nil)
 	Duel.Hint(HINT_CARD,0,id)
 	Duel.Release(g,REASON_EFFECT+REASON_REPLACE)
 end

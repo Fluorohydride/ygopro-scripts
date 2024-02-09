@@ -1,4 +1,4 @@
---D－HERO Bloo－D
+--D-HERO Bloo-D
 function c83965310.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -43,12 +43,12 @@ function c83965310.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
-	return rg:CheckSubGroup(aux.mzctcheckrel,3,3,tp)
+	return rg:CheckSubGroup(aux.mzctcheckrel,3,3,tp,REASON_SPSUMMON)
 end
 function c83965310.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,3,3,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,3,3,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)

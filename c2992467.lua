@@ -1,4 +1,4 @@
---クリック&エコー
+--クリック＆エコー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--cannot be material

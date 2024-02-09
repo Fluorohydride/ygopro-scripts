@@ -32,9 +32,9 @@ function c71002019.rfilter(c,tp)
 		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c71002019.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c71002019.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c71002019.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c71002019.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(tp,c71002019.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c71002019.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -63,5 +63,6 @@ function c71002019.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71002019.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE)&RACE_PLANT~=0
+	local typ,race=e:GetHandler():GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return typ&TYPE_MONSTER~=0 and race&RACE_PLANT~=0
 end

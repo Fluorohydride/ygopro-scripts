@@ -38,7 +38,7 @@ end
 function c28711704.fselect(g,tp)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetLevel,8)
-		and Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(REASON_SPSUMMON,tp,aux.IsInGroup,#g,nil,g)
+		and Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,REASON_SPSUMMON,true,nil,g)
 end
 function c28711704.hspcon(e,c)
 	if c==nil then return true end

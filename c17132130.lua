@@ -1,4 +1,4 @@
---D－HERO ドグマガイ
+--D-HERO ドグマガイ
 function c17132130.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +32,7 @@ function c17132130.rfilter(c,tp)
 	return c:IsSetCard(0xc008) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c17132130.fselect(g,tp)
-	return g:IsExists(c17132130.rfilter,1,nil,tp) and aux.mzctcheckrel(g,tp)
+	return g:IsExists(c17132130.rfilter,1,nil,tp) and aux.mzctcheckrel(g,tp,REASON_SPSUMMON)
 end
 function c17132130.spcon(e,c)
 	if c==nil then return true end

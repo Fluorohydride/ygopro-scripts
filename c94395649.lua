@@ -26,8 +26,8 @@ function c94395649.cfilter(c,tp)
 		and (c:IsFaceup() or c:IsControler(tp))
 end
 function c94395649.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c94395649.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c94395649.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c94395649.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c94395649.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c94395649.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -50,7 +50,7 @@ end
 function c94395649.filter(c)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST) and c:IsAbleToRemoveAsCost()
 end
-function c94395649.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c94395649.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94395649.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c94395649.filter,tp,LOCATION_DECK,0,1,1,nil)

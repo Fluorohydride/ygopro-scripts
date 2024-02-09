@@ -1,4 +1,4 @@
---E－HERO ヘル・スナイパー
+--E-HERO ヘル・スナイパー
 function c50282757.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material
@@ -9,7 +9,7 @@ function c50282757.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c50282757.splimit)
+	e1:SetValue(aux.DarkFusionLimit)
 	c:RegisterEffect(e1)
 	--damage
 	local e2=Effect.CreateEffect(c)
@@ -35,10 +35,6 @@ function c50282757.initial_effect(c)
 end
 c50282757.material_setcode=0x8
 c50282757.dark_calling=true
-function c50282757.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(94820406)
-		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
-end
 function c50282757.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE) and Duel.GetTurnPlayer()==tp
 end

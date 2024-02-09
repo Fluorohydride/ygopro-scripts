@@ -30,10 +30,10 @@ function c32441317.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	local mg=tc:GetMaterial()
 	local ct=mg:GetCount()
-	local sumtype=tc:GetSummonType()
-	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and sumtype==SUMMON_TYPE_SYNCHRO
-		and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA)
+		and tc:IsSummonType(SUMMON_TYPE_SYNCHRO)
+		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		and (not Duel.IsPlayerAffectedByEffect(tp,59822133) or ct==1)
 		and mg:FilterCount(aux.NecroValleyFilter(c32441317.mgfilter),nil,e,tp,tc)==ct
 		and Duel.SelectYesNo(tp,aux.Stringid(32441317,0)) then
 		Duel.BreakEffect()

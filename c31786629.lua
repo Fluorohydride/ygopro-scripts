@@ -20,7 +20,7 @@ end
 function c31786629.filter(c)
 	return c:IsCode(31786629) and c:IsAbleToHand()
 end
-function c31786629.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c31786629.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c31786629.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

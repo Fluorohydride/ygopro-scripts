@@ -75,8 +75,8 @@ function c70771599.ddop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c70771599.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,2,nil,0x20f8) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,2,2,nil,0x20f8)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,2,nil,0x20f8) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,2,2,nil,0x20f8)
 	Duel.Release(g,REASON_COST)
 end
 function c70771599.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -29,7 +29,7 @@ function c72287557.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(REASON_COST,tp,c72287557.costfilter,1,tc,tp)
+			return Duel.CheckReleaseGroup(tp,c72287557.costfilter,1,tc,tp)
 				and tc:IsCanBeEffectTarget(e) and tc:IsControlerCanBeChanged(true)
 		else
 			return tc:IsCanBeEffectTarget(e) and tc:IsControlerCanBeChanged()
@@ -37,7 +37,7 @@ function c72287557.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c72287557.costfilter,1,1,tc,tp)
+		local sg=Duel.SelectReleaseGroup(tp,c72287557.costfilter,1,1,tc,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.SetTargetCard(eg)

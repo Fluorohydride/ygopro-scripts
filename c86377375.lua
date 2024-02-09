@@ -30,7 +30,7 @@ end
 function c86377375.thfilter1(c)
 	return c:IsCode(59160188) and c:IsAbleToHand()
 end
-function c86377375.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c86377375.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c86377375.thfilter1,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
@@ -46,13 +46,13 @@ function c86377375.thfilter2(c)
 end
 function c86377375.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return ((Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,nil,ATTRIBUTE_DARK) and Duel.IsPlayerCanDraw(tp,1))
-		or (Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,c,ATTRIBUTE_DARK) and Duel.IsExistingMatchingCard(c86377375.thfilter2,tp,LOCATION_DECK,0,1,nil))) end
+	if chk==0 then return ((Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,nil,ATTRIBUTE_DARK) and Duel.IsPlayerCanDraw(tp,1))
+		or (Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,c,ATTRIBUTE_DARK) and Duel.IsExistingMatchingCard(c86377375.thfilter2,tp,LOCATION_DECK,0,1,nil))) end
 	local sg=nil
 	if Duel.IsExistingMatchingCard(c86377375.thfilter2,tp,LOCATION_DECK,0,1,nil) and not Duel.IsPlayerCanDraw(tp,1) then
-		sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,c,ATTRIBUTE_DARK)
+		sg=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,c,ATTRIBUTE_DARK)
 	else
-		sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_DARK)
+		sg=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_DARK)
 	end
 	e:SetLabelObject(sg:GetFirst())
 	Duel.Release(sg,REASON_COST)

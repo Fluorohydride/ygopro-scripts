@@ -13,8 +13,8 @@ function c76075810.initial_effect(c)
 end
 function c76075810.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,c,RACE_WARRIOR) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,c,RACE_WARRIOR)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,c,RACE_WARRIOR) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,c,RACE_WARRIOR)
 	Duel.Release(g,REASON_COST)
 end
 function c76075810.filter(c,atk)

@@ -53,8 +53,8 @@ function c99011763.cfilter(c)
 	return Duel.IsExistingTarget(Card.IsCanAddCounter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,0x1049,1)
 end
 function c99011763.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c99011763.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c99011763.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c99011763.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c99011763.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c99011763.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

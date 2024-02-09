@@ -25,7 +25,7 @@ function c47897376.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c47897376.dtcon1(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0x140)
+	return e:GetHandler():IsSpecialSummonSetCard(0x140)
 end
 function c47897376.dtfilter(c)
 	return c:IsSetCard(0x140) and c:IsAbleToDeck()
