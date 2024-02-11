@@ -74,7 +74,7 @@ function s.rmfilter(c,code)
 	return c:IsFaceupEx() and c:IsCode(code) and c:IsAbleToRemove()
 end
 function s.cfilter(c,tp)
-	return c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT)
+	return c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT) and not c:IsType(TYPE_TOKEN)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
