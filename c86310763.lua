@@ -57,6 +57,9 @@ function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if tc1:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc1)
 	end
+	if tc1:IsLocation(LOCATION_GRAVE) then
+		Duel.HintSelection(g1)
+	end
 	if Duel.SendtoDeck(tc1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
