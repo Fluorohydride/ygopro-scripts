@@ -1531,7 +1531,9 @@ end
 ---@param filter function
 ---@param eqlimit function|nil
 ---@param condition? function
-function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,condition)
+---@param cost? function
+---@param target? function
+function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,condition,cost,target)
 	local value=(type(eqlimit)=="function") and eqlimit or 1
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -1542,7 +1544,14 @@ function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,cond
 	if type(condition)=="function" then
 		e1:SetCondition(condition)
 	end
-	e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
+	if type(cost)=="function" then
+		e1:SetCost(cost)
+	end
+	if type(target)=="function" then
+		e1:SetTarget(target)
+	else
+		e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
+	end
 	e1:SetOperation(Auxiliary.EquipSpellOperation(eqlimit))
 	c:RegisterEffect(e1)
 	--Equip limit
