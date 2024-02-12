@@ -36,8 +36,7 @@ function c93506862.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c93506862.chainop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and rc:IsSetCard(0x3a) and rc:IsType(TYPE_RITUAL) then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveSetCard(0x3a) and re:IsActiveType(TYPE_RITUAL) then
 		Duel.SetChainLimit(c93506862.chainlm)
 	end
 end
