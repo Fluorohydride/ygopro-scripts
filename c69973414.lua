@@ -48,6 +48,7 @@ function c69973414.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:SelectSubGroup(tp,c69973414.fselect,false,2,2,e,tp)
 	e:SetLabel(sg:GetSum(Card.GetLevel))
+	Duel.HintSelection(sg)
 	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c69973414.target(e,tp,eg,ep,ev,re,r,rp,chk)
