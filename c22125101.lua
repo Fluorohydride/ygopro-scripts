@@ -38,9 +38,7 @@ function c22125101.initial_effect(c)
 	end
 end
 function c22125101.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(Card.IsSummonType,1,nil,SUMMON_TYPE_PENDULUM) then
-		Duel.RegisterFlagEffect(rp,22125101,RESET_PHASE+PHASE_END,0,1)
-	end
+	Duel.RegisterFlagEffect(rp,22125101,RESET_PHASE+PHASE_END,0,1)
 end
 function c22125101.lcheck(g)
 	return g:IsExists(Card.IsLinkType,1,nil,TYPE_PENDULUM)
