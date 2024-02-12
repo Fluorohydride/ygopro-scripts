@@ -468,7 +468,7 @@ function Auxiliary.IsMaterialListCode(c,code)
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
-	if type(c.material_setcode)=='table' then
+	if type(c.material_setcode)=="table" then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
 		end
@@ -1079,7 +1079,7 @@ end
 ---@param f function
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
@@ -1104,7 +1104,7 @@ end
 ---@param cancelable boolean
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return Group|nil
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
@@ -1187,7 +1187,7 @@ end
 ---@param g Group
 ---@param checks table
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
@@ -1202,7 +1202,7 @@ end
 ---@param checks table
 ---@param cancelable? boolean
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return Group|nil
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
@@ -1528,7 +1528,7 @@ end
 ---@param c Card
 ---@param condition? function
 function Auxiliary.AddBanishRedirect(c,condition)
-	if type(condition)~='function' then
+	if type(condition)~="function" then
 		condition=Auxiliary.BanishRedirectCondition
 	end
 	local e1=Effect.CreateEffect(c)
