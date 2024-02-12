@@ -50,5 +50,5 @@ function c92001300.sumcon(e,c,minc)
 end
 function c92001300.sumop(e,tp,eg,ep,ev,re,r,rp,c)
 	c:SetMaterial(Group.FromCards(e:GetHandler()))
-	Duel.Release(e:GetHandler(),REASON_SUMMON)
+	Duel.Release(e:GetHandler(),REASON_SUMMON+REASON_MATERIAL)
 end

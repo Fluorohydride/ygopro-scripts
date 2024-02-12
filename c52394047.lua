@@ -49,10 +49,7 @@ function c52394047.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c52394047.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c52394047.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
-	local cf=g:Filter(Card.IsFacedown,nil)
-	if cf:GetCount()>0 then
-		Duel.ConfirmCards(1-tp,cf)
-	end
+	Duel.ConfirmCards(1-tp,g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c52394047.atkfilter(c)
