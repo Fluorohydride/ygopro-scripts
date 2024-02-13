@@ -45,9 +45,9 @@ function c72283691.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,10)
 	if g:FilterCount(Card.IsAbleToRemoveAsCost,nil,POS_FACEDOWN)==10 then
 		Duel.DisableShuffleCheck()
-		Duel.Remove(g,POS_FACEDOWN,REASON_COST)
+		Duel.Remove(g,POS_FACEDOWN,REASON_MAINTENANCE)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_MAINTENANCE)
 	end
 end
 function c72283691.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

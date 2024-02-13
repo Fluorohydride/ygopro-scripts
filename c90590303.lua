@@ -50,10 +50,10 @@ function c90590303.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c90590303.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) then
-		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
+	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_MAINTENANCE) then
+		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_MAINTENANCE)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_MAINTENANCE)
 	end
 end
 function c90590303.tgcon(e)

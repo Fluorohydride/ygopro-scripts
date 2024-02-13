@@ -58,7 +58,7 @@ function c53039326.mtop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,cg)
 		Duel.ShuffleHand(tp)
 	else
-		Duel.Destroy(c,REASON_COST)
+		Duel.Destroy(c,REASON_MAINTENANCE)
 	end
 end
 function c53039326.check(e,tp,eg,ep,ev,re,r,rp)

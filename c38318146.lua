@@ -41,6 +41,6 @@ function c38318146.acop(e,tp,eg,ep,ev,re,r,rp)
 	if c38318146[0] then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c38318146.acfilter,tp,LOCATION_DECK,0,1,1,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_ACTION)
 	c38318146[0]=true
 end

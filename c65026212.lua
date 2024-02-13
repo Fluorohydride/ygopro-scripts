@@ -62,13 +62,13 @@ function c65026212.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if select==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=g1:Select(tp,1,1,nil)
-		Duel.SendtoGrave(g,REASON_COST)
+		Duel.SendtoGrave(g,REASON_MAINTENANCE)
 	elseif select==1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=g2:Select(tp,1,1,nil)
-		Duel.SendtoGrave(g,REASON_COST)
+		Duel.SendtoGrave(g,REASON_MAINTENANCE)
 	else
-		Duel.Destroy(c,REASON_COST)
+		Duel.Destroy(c,REASON_MAINTENANCE)
 	end
 end
 function c65026212.spfilter(c)
