@@ -60,10 +60,6 @@ function c98918572.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	g:RemoveCard(xc)
 	local tc=g:GetFirst()
 	if not tc:IsImmuneToEffect(e) then
-		local og=xc:GetOverlayGroup()
-		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
-		end
 		Duel.Overlay(tc,Group.FromCards(xc))
 	end
 end

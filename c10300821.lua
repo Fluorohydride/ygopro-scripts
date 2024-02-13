@@ -82,10 +82,6 @@ function c10300821.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=Duel.GetFirstTarget()
 		if c:IsRelateToChain() and tc:IsRelateToChain()
 			and tc:IsControler(1-tp) and not tc:IsImmuneToEffect(e) then
-			local og=tc:GetOverlayGroup()
-			if og:GetCount()>0 then
-				Duel.SendtoGrave(og,REASON_RULE)
-			end
 			Duel.Overlay(c,tc)
 		end
 	end

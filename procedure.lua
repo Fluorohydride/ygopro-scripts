@@ -471,26 +471,10 @@ end
 function Auxiliary.XyzOperation(f,lv,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
-					local sg=Group.CreateGroup()
-					local tc=og:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=og:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
 					local mg=e:GetLabelObject()
-					local sg=Group.CreateGroup()
-					local tc=mg:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=mg:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
 					mg:DeleteGroup()
@@ -566,14 +550,6 @@ end
 function Auxiliary.XyzOperationAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
-					local sg=Group.CreateGroup()
-					local tc=og:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=og:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -583,15 +559,6 @@ function Auxiliary.XyzOperationAlter(f,lv,minct,maxct,alterf,alterdesc,alterop)
 						if mg2:GetCount()~=0 then
 							Duel.Overlay(c,mg2)
 						end
-					else
-						local sg=Group.CreateGroup()
-						local tc=mg:GetFirst()
-						while tc do
-							local sg1=tc:GetOverlayGroup()
-							sg:Merge(sg1)
-							tc=mg:GetNext()
-						end
-						Duel.SendtoGrave(sg,REASON_RULE)
 					end
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
@@ -695,14 +662,6 @@ end
 function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
-					local sg=Group.CreateGroup()
-					local tc=og:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=og:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -712,15 +671,6 @@ function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
 						if mg2:GetCount()~=0 then
 							Duel.Overlay(c,mg2)
 						end
-					else
-						local sg=Group.CreateGroup()
-						local tc=mg:GetFirst()
-						while tc do
-							local sg1=tc:GetOverlayGroup()
-							sg:Merge(sg1)
-							tc=mg:GetNext()
-						end
-						Duel.SendtoGrave(sg,REASON_RULE)
 					end
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
@@ -812,14 +762,6 @@ end
 function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
-					local sg=Group.CreateGroup()
-					local tc=og:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=og:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -829,15 +771,6 @@ function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,
 						if mg2:GetCount()~=0 then
 							Duel.Overlay(c,mg2)
 						end
-					else
-						local sg=Group.CreateGroup()
-						local tc=mg:GetFirst()
-						while tc do
-							local sg1=tc:GetOverlayGroup()
-							sg:Merge(sg1)
-							tc=mg:GetNext()
-						end
-						Duel.SendtoGrave(sg,REASON_RULE)
 					end
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)

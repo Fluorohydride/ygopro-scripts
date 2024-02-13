@@ -105,10 +105,6 @@ function c46593546.ovlop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if result>0 and c:IsRelateToEffect(e)
 		and rc:IsRelateToEffect(re) and rc:IsControler(1-tp) and not rc:IsImmuneToEffect(e) then
-		local og=rc:GetOverlayGroup()
-		if og:GetCount()>0 then
-			Duel.SendtoGrave(og,REASON_RULE)
-		end
 		Duel.Overlay(c,rc)
 	end
 end
