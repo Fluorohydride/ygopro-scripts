@@ -29,7 +29,7 @@ function c9236985.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.SelectMatchingCard(tp,c9236985.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp,lp)
 	local tc=tg:GetFirst()
 	if tc then
-		Duel.PayLPCost(tp,tc:GetLevel()*500)
+		Duel.PayLPEffect(tp,tc:GetLevel()*500)
 		tc:SetMaterial(nil)
 		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,true,false,POS_FACEUP)
 		tc:CompleteProcedure()

@@ -15,8 +15,8 @@ function c4259068.initial_effect(c)
 	e2:SetValue(c4259068.costchange)
 	c:RegisterEffect(e2)
 end
-function c4259068.costchange(e,re,rp,val)
-	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_SPELL) and not re:GetHandler():IsCode(9236985,57496978) then
+function c4259068.costchange(e,re,rp,val,r)
+	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_SPELL) and r==REASON_COST then
 		return 0
 	else
 		return val

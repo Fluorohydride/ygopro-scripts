@@ -44,7 +44,7 @@ function c53535814.cfilter(c)
 end
 function c53535814.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if ep==1-tp and re:IsActivated()
+	if ep==1-tp and re:IsActivated() and r==REASON_COST
 		and Duel.IsExistingMatchingCard(c53535814.cfilter,tp,LOCATION_MZONE,0,1,c) then
 		c:RegisterFlagEffect(53535814,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 	end

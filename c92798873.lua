@@ -61,7 +61,7 @@ function c92798873.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 			local con=te:GetCondition()
 			local val=te:GetValue()
 			if (not con or con(te)) then
-				cost=val(te,e,tp,cost)
+				cost=val(te,e,tp,cost,REASON_COST)
 			end
 		end
 		return Duel.IsExistingMatchingCard(c92798873.atkfilter,tp,0,LOCATION_MZONE,1,nil,Duel.GetLP(tp)-cost)

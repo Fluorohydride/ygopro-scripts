@@ -58,8 +58,8 @@ function c68392533.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 	end
 end
-function c68392533.costchange(e,re,rp,val)
-	if re and re:IsActivated() and re:GetHandler()==e:GetHandler():GetEquipTarget() then
+function c68392533.costchange(e,re,rp,val,r)
+	if re and re:IsActivated() and re:GetHandler()==e:GetHandler():GetEquipTarget() and r==REASON_COST then
 		return 0
 	else return val end
 end

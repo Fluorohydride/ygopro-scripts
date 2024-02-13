@@ -29,7 +29,7 @@ function c80036543.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			local con=te:GetCondition()
 			local val=te:GetValue()
 			if (not con or con(te)) then
-				cost=val(te,e,tp,1000)
+				cost=val(te,e,tp,1000,REASON_COST)
 			end
 		end
 		local lp=Duel.GetLP(tp)-cost
