@@ -64,6 +64,7 @@ function c41782653.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c41782653.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_SPSUMMON)
 	g:DeleteGroup()
 end

@@ -26,15 +26,13 @@ function c66150724.initial_effect(c)
 		c66150724.global_check=true
 		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
+		ge1:SetCode(EVENT_SPSUMMON_SUCCESS_G_P)
 		ge1:SetOperation(c66150724.checkop)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
 function c66150724.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(Card.IsSummonType,1,nil,SUMMON_TYPE_PENDULUM) then
-		Duel.RegisterFlagEffect(rp,66150724,RESET_PHASE+PHASE_END,0,1)
-	end
+	Duel.RegisterFlagEffect(rp,66150724,RESET_PHASE+PHASE_END,0,1)
 end
 function c66150724.thfilter1(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xf2) and c:IsAbleToHand()

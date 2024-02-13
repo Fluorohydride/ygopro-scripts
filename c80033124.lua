@@ -36,6 +36,9 @@ end
 function c80033124.cfilter(c)
 	return c:IsLocation(LOCATION_HAND) or (c:IsOnField() and c:IsFacedown())
 end
+function c80033124.cfilter2(c)
+	return c:IsLocation(LOCATION_GRAVE) or (c:IsOnField() and c:IsFaceup())
+end
 function c80033124.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c80033124.ffilter),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
@@ -46,6 +49,10 @@ function c80033124.activate(e,tp,eg,ep,ev,re,r,rp)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 		Duel.ShuffleHand(tp)
+	end
+	local cg2=sg:Filter(c80033124.cfilter2,nil)
+	if cg2:GetCount()>0 then
+		Duel.HintSelection(cg2)
 	end
 	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

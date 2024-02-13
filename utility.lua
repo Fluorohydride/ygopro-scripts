@@ -468,7 +468,7 @@ function Auxiliary.IsMaterialListCode(c,code)
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
-	if type(c.material_setcode)=='table' then
+	if type(c.material_setcode)=="table" then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
 		end
@@ -1079,7 +1079,7 @@ end
 ---@param f function
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
@@ -1104,7 +1104,7 @@ end
 ---@param cancelable boolean
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return Group|nil
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
@@ -1187,7 +1187,7 @@ end
 ---@param g Group
 ---@param checks table
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
@@ -1202,7 +1202,7 @@ end
 ---@param checks table
 ---@param cancelable? boolean
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return Group|nil
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
@@ -1499,4 +1499,48 @@ function Auxiliary.SameValueCheck(g,f)
 		tc=g:GetNext()
 	end
 	return v~=0
+end
+---
+---@param tp integer
+---@return boolean
+function Auxiliary.IsPlayerCanNormalDraw(tp)
+	return Duel.GetDrawCount(tp)>0 and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
+		and Duel.GetFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW)==0
+end
+---
+---@param e Effect
+---@param tp integer
+---@param property? integer
+function Auxiliary.GiveUpNormalDraw(e,tp,property)
+	property=property or 0
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET|property)
+	e1:SetCode(EFFECT_DRAW_COUNT)
+	e1:SetTargetRange(1,0)
+	e1:SetReset(RESET_PHASE+PHASE_DRAW)
+	e1:SetValue(0)
+	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
+end
+---If this face-up card would leave the field, banish it instead.
+---@param c Card
+---@param condition? function
+function Auxiliary.AddBanishRedirect(c,condition)
+	if type(condition)~="function" then
+		condition=Auxiliary.BanishRedirectCondition
+	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
+	e1:SetCondition(condition)
+	e1:SetValue(LOCATION_REMOVED)
+	c:RegisterEffect(e1)
+end
+---
+---@param e Effect
+function Auxiliary.BanishRedirectCondition(e)
+	return e:GetHandler():IsFaceup()
 end
