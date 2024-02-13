@@ -93,8 +93,8 @@ end
 function c27693363.rfilter(c,tp)
 	return c:IsLevelAbove(7) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c27693363.excostfilter(c,tp)
-	return c:IsAbleToRemove() and (c:IsHasEffect(16471775,tp) or c:IsHasEffect(89264428,tp))
+function c27693363.excostfilter(c,ec,tp)
+	return c:IsAbleToRemoveAsCost() and (aux.ExtraCostCheck(ec,c,16471775,tp) or aux.ExtraCostCheck(ec,nil,89264428,tp) and c:IsLevelAbove(7) and c:IsSetCard(0x163))
 end
 function c27693363.costfilter(c,e,tp)
 	local check=Duel.GetMZoneCount(tp,c)>0
@@ -106,13 +106,16 @@ function c27693363.tgfilter(c,e,tp,check)
 end
 function c27693363.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=Duel.GetReleaseGroup(tp):Filter(c27693363.rfilter,nil,tp)
-	local g2=Duel.GetMatchingGroup(c27693363.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
+	local g2=Duel.GetMatchingGroup(c27693363.excostfilter,tp,LOCATION_GRAVE,0,nil,e:GetHandler(),tp)
 	g1:Merge(g2)
 	if chk==0 then return g1:IsExists(c27693363.costfilter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g1:FilterSelect(tp,c27693363.costfilter,1,1,nil,e,tp)
 	local tc=rg:GetFirst()
-	local te=tc:IsHasEffect(16471775,tp) or tc:IsHasEffect(89264428,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,16471775,tp)
+	if not te and tc:IsLocation(LOCATION_GRAVE) and tc:IsLevelAbove(7) and tc:IsSetCard(0x163) then
+		_,te=aux.ExtraCostCheck(e:GetHandler(),nil,89264428,tp)
+	end
 	if te then
 		te:UseCountLimit(tp)
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)

@@ -26,11 +26,13 @@ function c18319762.initial_effect(c)
 	c:RegisterEffect(e3)
 	--change cost
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetCode(18319762)
 	e4:SetRange(LOCATION_GRAVE)
+	e4:SetTargetRange(1,0)
 	e4:SetCountLimit(1,18319763)
+	e4:SetValue(c19673561.costval)
 	c:RegisterEffect(e4)
 end
 function c18319762.sumfilter(c)
@@ -47,7 +49,7 @@ function c18319762.costfilter(c,e,tp)
 	if c:IsLocation(LOCATION_HAND) then
 		return c:IsDiscardable()
 	else
-		return e:GetHandler():IsSetCard(0x2f) and c:IsAbleToRemove() and c:IsHasEffect(18319762,tp)
+		return c:IsAbleToRemoveAsCost() and aux.ExtraCostCheck(e:GetHandler(),c,18319762,tp)
 	end
 end
 function c18319762.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -55,10 +57,10 @@ function c18319762.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local g=Duel.SelectMatchingCard(tp,c18319762.costfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	local te=tc:IsHasEffect(18319762,tp)
+	local _,te=aux.ExtraCostCheck(e:GetHandler(),tc,18319762,tp)
 	if te then
 		te:UseCountLimit(tp)
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
 	else
 		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
 	end
@@ -90,4 +92,7 @@ function c18319762.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18319762.splimit(e,c)
 	return not c:IsAttribute(ATTRIBUTE_WATER)
+end
+function c18319762.costval(e,c)
+	return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER)
 end
