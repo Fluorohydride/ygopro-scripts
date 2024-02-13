@@ -23,16 +23,12 @@ end
 function c58549532.fcheck(tp,sg,fc)
 	return sg:GetClassCount(Card.GetLocation)==#sg
 end
-function c58549532.gcheck(sg)
-	return sg:GetClassCount(Card.GetLocation)==#sg
-end
 function c58549532.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp)
 		mg1:Merge(Duel.GetMatchingGroup(c58549532.filter0,tp,LOCATION_EXTRA,0,nil,e))
 		aux.FCheckAdditional=c58549532.fcheck
-		aux.GCheckAdditional=c58549532.gcheck
 		local res=Duel.IsExistingMatchingCard(c58549532.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -44,7 +40,6 @@ function c58549532.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			end
 		end
 		aux.FCheckAdditional=nil
-		aux.GCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -54,7 +49,6 @@ function c58549532.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c58549532.filter1,nil,e)
 	mg1:Merge(Duel.GetMatchingGroup(c58549532.filter0,tp,LOCATION_EXTRA,0,nil,e))
 	aux.FCheckAdditional=c58549532.fcheck
-	aux.GCheckAdditional=c58549532.gcheck
 	local sg1=Duel.GetMatchingGroup(c58549532.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
@@ -85,5 +79,4 @@ function c58549532.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 	aux.FCheckAdditional=nil
-	aux.GCheckAdditional=nil
 end

@@ -34,9 +34,8 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
-function s.mfilter(c,fc,sub,mg,sg)
-	return c:IsRace(RACE_BEAST+RACE_FIEND+RACE_ILLUSION) and (not sg
-		or not sg:IsExists(Card.IsRace,1,c,c:GetRace()))
+function s.mfilter(c,fc,sub,sg)
+	return c:IsRace(RACE_BEAST+RACE_FIEND+RACE_ILLUSION) and (not sg or not sg:IsExists(Card.IsRace,1,c,c:GetRace()))
 end
 function s.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)

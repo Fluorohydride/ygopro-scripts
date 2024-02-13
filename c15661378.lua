@@ -37,7 +37,7 @@ function c15661378.initial_effect(c)
 	e4:SetLabelObject(e3)
 	c:RegisterEffect(e4)
 end
-function c15661378.ffilter(c,fc,sub,mg,sg)
+function c15661378.ffilter(c,fc,sub,sg)
 	return not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode())
 end
 function c15661378.matlimit(e,c,fc,st)

@@ -56,9 +56,6 @@ end
 function c31444249.fcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
 end
-function c31444249.gcheck(sg)
-	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
-end
 function c31444249.dmcon(tp)
 	return not Duel.IsExistingMatchingCard(Card.IsSummonLocation,tp,LOCATION_MZONE,0,1,nil,LOCATION_EXTRA)
 		and Duel.IsExistingMatchingCard(Card.IsSummonLocation,tp,0,LOCATION_MZONE,1,nil,LOCATION_EXTRA)
@@ -72,12 +69,10 @@ function c31444249.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 			if sg:GetCount()>0 then
 				mg1:Merge(sg)
 				aux.FCheckAdditional=c31444249.fcheck
-				aux.GCheckAdditional=c31444249.gcheck
 			end
 		end
 		local res=Duel.IsExistingMatchingCard(c31444249.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		aux.FCheckAdditional=nil
-		aux.GCheckAdditional=nil
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
@@ -104,11 +99,9 @@ function c31444249.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if exmat then
 		aux.FCheckAdditional=c31444249.fcheck
-		aux.GCheckAdditional=c31444249.gcheck
 	end
 	local sg1=Duel.GetMatchingGroup(c31444249.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	aux.FCheckAdditional=nil
-	aux.GCheckAdditional=nil
 	local mg2=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -127,11 +120,9 @@ function c31444249.spop(e,tp,eg,ep,ev,re,r,rp)
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if exmat then
 				aux.FCheckAdditional=c31444249.fcheck
-				aux.GCheckAdditional=c31444249.gcheck
 			end
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			aux.FCheckAdditional=nil
-			aux.GCheckAdditional=nil
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()

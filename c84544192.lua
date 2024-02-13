@@ -4,22 +4,13 @@ function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunFun(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x2034),aux.FilterBoolFunction(Card.IsFusionSetCard,0x1034),7,true)
+	aux.AddContactFusionProcedure(c,s.cfilter,LOCATION_ONFIELD+LOCATION_GRAVE,0,Duel.Remove,POS_FACEUP,REASON_COST)
 	--cannot special summon
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e0:SetCode(EFFECT_SPSUMMON_CONDITION)
 	c:RegisterEffect(e0)
-	--special summon rule
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(s.spcon)
-	e1:SetTarget(s.sptg)
-	e1:SetOperation(s.spop)
-	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -60,42 +51,6 @@ function s.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsFusionSetCard(0x2034,0x1034) and c:IsAbleToRemoveAsCost()
-end
-function s.cfilter1(c,g)
-	return c:IsFusionSetCard(0x2034) and g:FilterCount(s.cfilter2,c)>=7
-end
-function s.cfilter2(c)
-	return c:IsFusionSetCard(0x1034)
-end
-function s.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	if Duel.GetFlagEffect(tp,id)==0 then return false end
-	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	return g:IsExists(s.cfilter1,1,nil,g)
-end
-function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	local cg=g:Filter(s.cfilter1,nil,g)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tc1=cg:SelectUnselect(sg,tp,false,true,1,1)
-	if not tc1 then return false end
-	cg=g:Filter(s.cfilter2,tc1)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg2=cg:SelectSubGroup(tp,aux.TRUE,true,7,7)
-	if not sg2 then return false end
-	sg:AddCard(tc1)
-	sg:Merge(sg2)
-	sg:KeepAlive()
-	e:SetLabelObject(sg)
-	return true
-end
-function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=e:GetLabelObject()
-	c:SetMaterial(g)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
-	g:DeleteGroup()
 end
 function s.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1034)

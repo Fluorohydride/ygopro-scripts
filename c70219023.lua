@@ -2,7 +2,7 @@
 function c70219023.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcMix(c,false,true,c70219023.fusfilter1,c70219023.fusfilter2,c70219023.fusfilter3)
+	aux.AddFusionProcMix(c,false,true,c70219023.fusfilter1,1,1,nil,c70219023.fusfilter2,c70219023.fusfilter3)
 	--reg
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)

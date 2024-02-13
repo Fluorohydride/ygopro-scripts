@@ -3,7 +3,7 @@ function c6218704.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--fusion summon
 	c:EnableReviveLimit()
-	aux.AddFusionProcMix(c,false,true,c6218704.fusfilter1,c6218704.fusfilter2,c6218704.fusfilter3,c6218704.fusfilter4)
+	aux.AddFusionProcMix(c,false,true,c6218704.fusfilter1,1,1,nil,c6218704.fusfilter2,c6218704.fusfilter3,c6218704.fusfilter4)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)
 	--spsummon condition

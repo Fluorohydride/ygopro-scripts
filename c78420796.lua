@@ -36,18 +36,18 @@ function c78420796.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x173) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
-function c78420796.fcheck(tp,sg,fc)
+function c78420796.fgoalcheck(tp,sg,fc)
 	return aux.gfcheck(sg,Card.IsLocation,LOCATION_DECK,LOCATION_EXTRA)
 end
-function c78420796.gcheck(sg)
+function c78420796.fcheck(tp,sg,fc)
 	return #sg<=2
 end
 function c78420796.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetMatchingGroup(c78420796.filter1,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
-		aux.FGoalCheckAdditional=c78420796.fcheck
-		aux.GCheckAdditional=c78420796.gcheck
+		aux.FGoalCheckAdditional=c78420796.fgoalcheck
+		aux.FCheckAdditional=c78420796.fcheck
 		local res=Duel.IsExistingMatchingCard(c78420796.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -59,7 +59,7 @@ function c78420796.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			end
 		end
 		aux.FGoalCheckAdditional=nil
-		aux.GCheckAdditional=nil
+		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,2,tp,LOCATION_DECK+LOCATION_EXTRA)
@@ -68,8 +68,8 @@ end
 function c78420796.operation(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetMatchingGroup(c78420796.filter1,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
-	aux.FGoalCheckAdditional=c78420796.fcheck
-	aux.GCheckAdditional=c78420796.gcheck
+	aux.FGoalCheckAdditional=c78420796.fgoalcheck
+	aux.FCheckAdditional=c78420796.fcheck
 	local sg1=Duel.GetMatchingGroup(c78420796.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
@@ -100,7 +100,7 @@ function c78420796.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 	aux.FGoalCheckAdditional=nil
-	aux.GCheckAdditional=nil
+	aux.FCheckAdditional=nil
 end
 function c78420796.cdcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)<=2000 and rp==1-tp

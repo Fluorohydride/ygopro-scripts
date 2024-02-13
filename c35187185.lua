@@ -37,7 +37,7 @@ function c35187185.initial_effect(c)
 	e3:SetOperation(c35187185.spop)
 	c:RegisterEffect(e3)
 end
-function c35187185.ffilter(c,fc,sub,mg,sg)
+function c35187185.ffilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0x131) and (not sg or not sg:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute()))
 end
 function c35187185.cfilter(c,tp)

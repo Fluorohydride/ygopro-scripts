@@ -42,7 +42,7 @@ end
 function c33964637.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c33964637.ffilter(c,fc,sub,mg,sg)
+function c33964637.ffilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0x3d) and (not sg or not sg:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute()))
 end
 function c33964637.costfilter(c,tp)

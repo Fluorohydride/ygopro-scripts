@@ -33,13 +33,13 @@ function c69270537.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_EXTRA) then
-		aux.FCheckAdditional=c69270537.fcheck(tp)
+		aux.FGoalCheckAdditional=c69270537.fcheck(tp)
 		local sg=Duel.GetMatchingGroup(c69270537.spfilter,tp,LOCATION_DECK,0,nil,e,tp,tc)
 		if tc:CheckFusionMaterial(sg,nil,PLAYER_NONE,true) and Duel.SelectYesNo(tp,aux.Stringid(69270537,0)) then
 			Duel.BreakEffect()
 			local mats=Duel.SelectFusionMaterial(tp,tc,sg)
 			Duel.SpecialSummon(mats,0,tp,tp,false,false,POS_FACEUP)
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 	end
 end

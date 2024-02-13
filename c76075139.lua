@@ -2,7 +2,7 @@
 function c76075139.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c76075139.ffilter,2,true)
+	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x17d),2,true)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)
 	--spsummon condition
@@ -38,9 +38,6 @@ function c76075139.initial_effect(c)
 	e4:SetTarget(c76075139.thtg)
 	e4:SetOperation(c76075139.thop)
 	c:RegisterEffect(e4)
-end
-function c76075139.ffilter(c,fc,sub,mg,sg)
-	return c:IsFusionSetCard(0x17d)
 end
 function c76075139.splimit(e,se,sp,st)
 	local c=e:GetHandler()

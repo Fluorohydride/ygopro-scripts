@@ -34,7 +34,7 @@ function c74936480.initial_effect(c)
 	e3:SetOperation(c74936480.spop)
 	c:RegisterEffect(e3)
 end
-function c74936480.ffilter(c,fc,sub,mg,sg)
+function c74936480.ffilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0x173) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
 end
 function c74936480.costchange(e,re,rp,val)

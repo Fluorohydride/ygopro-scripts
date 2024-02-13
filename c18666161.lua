@@ -2,7 +2,7 @@
 function c18666161.initial_effect(c)
 	--fusion procedure
 	c:EnableReviveLimit()
-	aux.AddFusionProcMix(c,false,true,aux.FilterBoolFunction(Card.IsFusionSetCard,0x164),c18666161.matfilter1,c18666161.matfilter2,nil)
+	aux.AddFusionProcMix(c,false,true,aux.FilterBoolFunction(Card.IsFusionSetCard,0x164),1,1,nil,c18666161.matfilter1,c18666161.matfilter2)
 	--special summon or banish
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(18666161,0))

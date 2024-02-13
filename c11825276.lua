@@ -42,7 +42,7 @@ function s.initial_effect(c)
 	e4:SetOperation(s.spop)
 	c:RegisterEffect(e4)
 end
-function s.ffilter(c,fc,sub,mg,sg)
+function s.ffilter(c,fc,sub,sg)
 	return c:IsFusionSetCard(0x2b) and (not sg or not sg:IsExists(Card.IsRace,1,c,c:GetRace()))
 end
 function s.splimit(e,se,sp,st)

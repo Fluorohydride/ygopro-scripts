@@ -45,7 +45,7 @@ function c11321089.initial_effect(c)
 	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
 end
-function c11321089.ffilter(c,fc,sub,mg,sg)
+function c11321089.ffilter(c,fc,sub,sg)
 	if not sg then return true end
 	local chkloc=LOCATION_HAND
 	if c:IsOnField() then chkloc=LOCATION_ONFIELD end

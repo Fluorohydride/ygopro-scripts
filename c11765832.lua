@@ -23,7 +23,7 @@ end
 function c11765832.matchfilter(c,attr,race)
 	return c:IsFusionAttribute(attr) and c:IsRace(race)
 end
-function c11765832.ffilter(c,fc,sub,mg,sg)
+function c11765832.ffilter(c,fc,sub,sg)
 	return not sg or sg:FilterCount(aux.TRUE,c)==0
 		or (sg:IsExists(c11765832.matchfilter,#sg-1,c,c:GetFusionAttribute(),c:GetRace())
 			and not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))

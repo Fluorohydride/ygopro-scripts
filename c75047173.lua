@@ -21,9 +21,9 @@ end
 function s.fsfilter2(c,e,tp,m,chkf)
 	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x8)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false)) then return false end
-	aux.FCheckAdditional=c.hero_fusion_check or s.fscheck
+	aux.FGoalCheckAdditional=c.hero_fusion_check or s.fscheck
 	local res=c:CheckFusionMaterial(m,nil,chkf,true)
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 	return res
 end
 function s.fscheck(tp,sg,fc)
@@ -48,9 +48,9 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		aux.FCheckAdditional=tc.hero_fusion_check or s.fscheck
+		aux.FGoalCheckAdditional=tc.hero_fusion_check or s.fscheck
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf,true)
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		local cf=mat:Filter(s.fscfilter,nil)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)
