@@ -33,7 +33,7 @@ function c26509612.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_BATTLE)
 	Duel.RegisterEffect(e1,tp)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_MUST_ATTACK_MONSTER)
+	e2:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
 	e2:SetValue(c26509612.atklimit)
 	Duel.RegisterEffect(e2,tp)
 end
@@ -41,5 +41,5 @@ function c26509612.attg(e,c)
 	return c:IsLevelBelow(4)
 end
 function c26509612.atklimit(e,c)
-	return c:IsCode(74711057)
+	return not c:IsCode(74711057) or c:IsFacedown()
 end
