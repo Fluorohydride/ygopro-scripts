@@ -1502,8 +1502,8 @@ function Auxiliary.SameValueCheck(g,f)
 end
 ---Select cards from Deck and other location
 ---@param hint integer
----@param tp integer
 ---@param filter function|nil
+---@param tp integer
 ---@param location_s integer
 ---@param location_o integer
 ---@param min integer
@@ -1512,7 +1512,7 @@ end
 ---@param ... any
 ---@return Group
 ---@return boolean
-function Auxiliary.SelectDeckCard(hint,tp,filter,location_s,location_o,min,max,ex,...)
+function Auxiliary.SelectDeckCard(hint,filter,tp,location_s,location_o,min,max,ex,...)
 	local from_deck=Duel.GetMatchingGroup(filter,tp,LOCATION_DECK,0,ex,...)
 	local from_other=Duel.GetMatchingGroup(filter,tp,location_s,location_o,ex,...)
 	local selected=Group.CreateGroup()
@@ -1569,8 +1569,8 @@ function Auxiliary.SelectDeckCard(hint,tp,filter,location_s,location_o,min,max,e
 end
 ---Select cards from multiple locations including Field or Deck
 ---@param hint integer
----@param tp integer
 ---@param filter function|nil
+---@param tp integer
 ---@param location_s integer
 ---@param location_o integer
 ---@param min integer
@@ -1579,7 +1579,7 @@ end
 ---@param ... any
 ---@return Group
 ---@return boolean
-function Auxiliary.SelectFromMultipleLocation(hint,tp,filter,location_s,location_o,min,max,ex,...)
+function Auxiliary.SelectMultipleLocationCard(hint,filter,tp,location_s,location_o,min,max,ex,...)
 	local selected=Group.CreateGroup()
 	local shuffle=false
 	if location_o&LOCATION_DECK~=0 then
@@ -1608,10 +1608,9 @@ function Auxiliary.SelectFromMultipleLocation(hint,tp,filter,location_s,location
 	--not on field
 	local og_min=math.max(min-#selected,0)
 	local og_max=max-#selected
-	local select_deck=(other_s&LOCATION_DECK)~=0
-	if select_deck then
-		local dg=nil
-		dg,shuffle=Auxiliary.SelectDeckCard(hint,tp,filter,other_s&~LOCATION_DECK,other_o,og_min,og_max,ex,...)
+	if (other_s&LOCATION_DECK)~=0 then
+		local dg,sh=Auxiliary.SelectDeckCard(hint,filter,tp,other_s&~LOCATION_DECK,other_o,og_min,og_max,ex,...)
+		shuffle=sh
 		selected:Merge(dg)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,hint)
@@ -1619,6 +1618,49 @@ function Auxiliary.SelectFromMultipleLocation(hint,tp,filter,location_s,location
 		selected:Merge(og)
 	end
 	return selected, shuffle
+end
+---Select target from multiple locations including Field
+---@param hint integer
+---@param filter function|nil
+---@param tp integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+function Auxiliary.SelectMultipleLocationTarget(hint,filter,tp,location_s,location_o,min,max,ex,...)
+	local selected=Group.CreateGroup()
+	if location_s&LOCATION_DECK~=0 or location_o&LOCATION_DECK~=0 then
+		return selected
+	end
+	local field_s=location_s&LOCATION_ONFIELD
+	local field_o=location_o&LOCATION_ONFIELD
+	local field_count=Duel.GetTargetCount(filter,tp,field_s,field_o,ex,...)
+	local other_s=location_s&~LOCATION_ONFIELD
+	local other_o=location_o&~LOCATION_ONFIELD
+	local other_count=Duel.GetTargetCount(filter,tp,other_s,other_o,ex,...)
+	if field_count+other_count<min then
+		return selected
+	end
+	--field
+	if field_count>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		local fg_min=math.max(min-other_count,0)
+		local fg=Duel.SelectTarget(tp,filter,tp,field_s,field_o,fg_min,max,ex,...)
+		selected:Merge(fg)
+	end
+	if #selected>=max then
+		return selected
+	end
+	--not on field
+	local og_min=math.max(min-#selected,0)
+	local og_max=max-#selected
+	Duel.Hint(HINT_SELECTMSG,tp,hint)
+	local og=Duel.SelectTarget(tp,filter,tp,other_s,other_o,og_min,og_max,ex,...)
+	selected:Merge(og)
+	return selected
 end
 ---
 ---@param tp integer
