@@ -35,8 +35,7 @@ function c92919429.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92919429.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c92919429.lvfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil)
+	local g,shuffle=aux.SelectMultipleLocationCard(HINTMSG_TOGRAVE,c92919429.lvfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) and tc:GetLevel()>0
 		and c:IsFaceup() and c:IsRelateToEffect(e) then
@@ -46,6 +45,9 @@ function c92919429.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(tc:GetLevel())
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
+	end
+	if shuffle then
+		Duel.ShuffleDeck(tp)
 	end
 end
 function c92919429.spfilter(c,e,tp)

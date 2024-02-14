@@ -1500,6 +1500,168 @@ function Auxiliary.SameValueCheck(g,f)
 	end
 	return v~=0
 end
+---Select cards from Deck and other location
+---@param hint integer
+---@param filter function|nil
+---@param tp integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+---@return boolean
+function Auxiliary.SelectDeckCard(hint,filter,tp,location_s,location_o,min,max,ex,...)
+	local from_deck=Duel.GetMatchingGroup(filter,tp,LOCATION_DECK,0,ex,...)
+	local from_other=Duel.GetMatchingGroup(filter,tp,location_s,location_o,ex,...)
+	local selected=Group.CreateGroup()
+	local viewed_deck=false
+	local shuffle=false
+	if #from_other>0 and #from_deck>0 then
+		local cover_card=Duel.GetDecktopGroup(1-tp,1):GetFirst()
+		if not cover_card then
+			cover_card=from_deck:GetFirst()
+		end
+		while #selected<max do
+			local finish=#selected>=min and #selected<=max
+			if viewed_deck then
+				Duel.Hint(HINT_SELECTMSG,tp,hint)
+				if #selected==0 then
+					selected=(from_deck+from_other):Select(tp,min,max,nil)
+					break
+				end
+				local tc=(from_deck+from_other-selected):SelectUnselect(selected,tp,finish,false,min,max)
+				if not tc then break end
+				if not selected:IsContains(tc) then
+					selected:AddCard(tc)
+				else
+					selected:RemoveCard(tc)
+				end
+			else
+				Duel.Hint(HINT_SELECTMSG,tp,hint)
+				local tc=(from_other-selected+cover_card):SelectUnselect(selected,tp,finish,false,min,max)
+				if not tc then break end
+				if tc==cover_card then
+					viewed_deck=true
+				else
+					if not selected:IsContains(tc) then
+						selected:AddCard(tc)
+					else
+						selected:RemoveCard(tc)
+					end
+				end
+			end
+		end
+	elseif #from_deck>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		selected=from_deck:Select(tp,min,max,nil)
+		viewed_deck=true
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		selected=from_other:Select(tp,min,max,nil)
+		viewed_deck=false
+	end
+	if viewed_deck and not selected:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
+		shuffle=true
+	end
+	return selected, shuffle
+end
+---Select cards from multiple locations including Field or Deck
+---@param hint integer
+---@param filter function|nil
+---@param tp integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+---@return boolean
+function Auxiliary.SelectMultipleLocationCard(hint,filter,tp,location_s,location_o,min,max,ex,...)
+	local selected=Group.CreateGroup()
+	local shuffle=false
+	if location_o&LOCATION_DECK~=0 then
+		return selected, shuffle
+	end
+	local field_s=location_s&LOCATION_ONFIELD
+	local field_o=location_o&LOCATION_ONFIELD
+	local field_group=Duel.GetMatchingGroup(filter,tp,field_s,field_o,ex,...)
+	local other_s=location_s&~LOCATION_ONFIELD
+	local other_o=location_o&~LOCATION_ONFIELD
+	local other_group=Duel.GetMatchingGroup(filter,tp,other_s,other_o,ex,...)
+	if #field_group+#other_group<min then
+		return selected, shuffle
+	end
+	--on field
+	if #field_group>0  then
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		local fg_min=math.max(min-#other_group,0)
+		local fg=field_group:Select(tp,fg_min,max,nil)
+		selected:Merge(fg)
+		Duel.HintSelection(fg)
+	end
+	if #selected>=max then
+		return selected, shuffle
+	end
+	--not on field
+	local og_min=math.max(min-#selected,0)
+	local og_max=max-#selected
+	if (other_s&LOCATION_DECK)~=0 then
+		local dg,sh=Auxiliary.SelectDeckCard(hint,filter,tp,other_s&~LOCATION_DECK,other_o,og_min,og_max,ex,...)
+		shuffle=sh
+		selected:Merge(dg)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		local og=other_group:Select(tp,og_min,og_max,nil)
+		selected:Merge(og)
+	end
+	return selected, shuffle
+end
+---Select target from multiple locations including Field
+---@param hint integer
+---@param filter function|nil
+---@param tp integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+function Auxiliary.SelectMultipleLocationTarget(hint,filter,tp,location_s,location_o,min,max,ex,...)
+	local selected=Group.CreateGroup()
+	if location_s&LOCATION_DECK~=0 or location_o&LOCATION_DECK~=0 then
+		return selected
+	end
+	local field_s=location_s&LOCATION_ONFIELD
+	local field_o=location_o&LOCATION_ONFIELD
+	local field_count=Duel.GetTargetCount(filter,tp,field_s,field_o,ex,...)
+	local other_s=location_s&~LOCATION_ONFIELD
+	local other_o=location_o&~LOCATION_ONFIELD
+	local other_count=Duel.GetTargetCount(filter,tp,other_s,other_o,ex,...)
+	if field_count+other_count<min then
+		return selected
+	end
+	--field
+	if field_count>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,hint)
+		local fg_min=math.max(min-other_count,0)
+		local fg=Duel.SelectTarget(tp,filter,tp,field_s,field_o,fg_min,max,ex,...)
+		selected:Merge(fg)
+	end
+	if #selected>=max then
+		return selected
+	end
+	--not on field
+	local og_min=math.max(min-#selected,0)
+	local og_max=max-#selected
+	Duel.Hint(HINT_SELECTMSG,tp,hint)
+	local og=Duel.SelectTarget(tp,filter,tp,other_s,other_o,og_min,og_max,ex,...)
+	selected:Merge(og)
+	return selected
+end
 ---
 ---@param tp integer
 ---@return boolean

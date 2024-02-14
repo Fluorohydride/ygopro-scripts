@@ -34,23 +34,7 @@ function c38495396.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and c38495396.thfilter(chkc) end
 	if chk==0 then return e:GetHandler():GetFlagEffect(38495396)==0
 		and Duel.IsExistingTarget(c38495396.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,nil) end
-	local b1=Duel.IsExistingTarget(c38495396.thfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-	local b2=Duel.IsExistingTarget(c38495396.thfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
-	local op=0
-	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(38495396,2),aux.Stringid(38495396,3))
-	else
-		op=2
-	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=nil
-	if op==0 then
-		g=Duel.SelectTarget(tp,c38495396.thfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	elseif op==1 then
-		g=Duel.SelectTarget(tp,c38495396.thfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
-	else
-		g=Duel.SelectTarget(tp,c38495396.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
-	end
+	local g=aux.SelectMultipleLocationTarget(HINTMSG_RTOHAND,c38495396.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c38495396.thop(e,tp,eg,ep,ev,re,r,rp)
