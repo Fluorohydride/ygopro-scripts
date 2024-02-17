@@ -1,5 +1,4 @@
 --隠し砦 ストロング・ホールド
---Coded by Lee
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,79791878)
@@ -17,6 +16,7 @@ function s.initial_effect(c)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCondition(s.atkcon)
 	e2:SetValue(s.atkval)
 	c:RegisterEffect(e2)
 	--destroy
@@ -38,13 +38,15 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,TYPES_EFFECT_TRAP_MONSTER,0,2000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,TYPES_EFFECT_TRAP_MONSTER,0,2000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
 function s.atkfilter(c)
 	return (c:IsCode(79791878) or (aux.IsCodeListed(c,79791878) and c:IsLocation(LOCATION_MZONE))) and c:IsFaceup()
+end
+function s.atkcon(e)
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function s.atkval(e,c)
 	local tp=e:GetHandlerPlayer()
@@ -55,16 +57,17 @@ function s.filter(c)
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_ONFIELD,0,1,nil)
+		and e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	 local tg=Duel.GetAttacker()
-	 if chk==0 then return tg:IsOnField() end
-	 Duel.SetTargetCard(tg)
-	 Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
+	local tg=Duel.GetAttacker()
+	if chk==0 then return tg:IsOnField() end
+	Duel.SetTargetCard(tg)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
-	Duel.Destroy(tc,REASON_EFFECT)
+		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
