@@ -36,6 +36,7 @@ function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local def=bc:GetDefense()
 	if maxpay<def then maxpay=def end
 	if maxpay<maxc then maxc=maxpay end
+	if maxc>25500 then maxc=25500 end
 	maxc=math.floor(maxc/100)*100
 	local t={}
 	for i=1,maxc/100 do
