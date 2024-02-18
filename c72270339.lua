@@ -63,7 +63,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then Duel.SSet(tp,tc) end
 end
 function s.rvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_HAND+LOCATION_ONFIELD) and Duel.GetTurnPlayer()==1-tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND+LOCATION_ONFIELD) and c:IsPreviousControler(tp) and Duel.GetTurnPlayer()==1-tp
 end
 function s.rvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
