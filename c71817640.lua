@@ -43,9 +43,9 @@ function c71817640.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c71817640.descon(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rp==tp and rc:IsSetCard(0xc7) and rc:IsRace(RACE_DRAGON)
-		and rc:IsLocation(LOCATION_MZONE) and re:GetActivateLocation()==LOCATION_MZONE
+	local loc,race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_RACE)
+	return re:IsActiveType(TYPE_MONSTER) and rp==tp and re:IsActiveSetCard(0xc7) and race&RACE_DRAGON~=0
+		and loc==LOCATION_MZONE
 end
 function c71817640.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

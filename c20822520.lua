@@ -22,7 +22,7 @@ function c20822520.initial_effect(c)
 	end
 end
 function c20822520.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:GetHandler():IsSetCard(0x106e) then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:IsActiveSetCard(0x106e) then
 		Duel.RegisterFlagEffect(rp,20822521,RESET_PHASE+PHASE_END,0,1)
 	end
 end
@@ -45,7 +45,7 @@ function c20822520.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c20822520.aclimit(e,re,tp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:GetHandler():IsSetCard(0x106e)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:IsActiveSetCard(0x106e)
 end
 function c20822520.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

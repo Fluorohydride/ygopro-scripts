@@ -15,7 +15,7 @@ function c40230018.initial_effect(c)
 	Duel.AddCustomActivityCounter(40230018,ACTIVITY_CHAIN,c40230018.chainfilter)
 end
 function c40230018.chainfilter(re,tp,cid)
-	return not (re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:GetHandler():IsSetCard(0x106e))
+	return not (re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:IsActiveSetCard(0x106e))
 end
 function c40230018.cfilter(c)
 	return c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL)
@@ -35,7 +35,7 @@ function c40230018.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c40230018.aclimit(e,re,tp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:GetHandler():IsSetCard(0x106e)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:IsActiveSetCard(0x106e)
 end
 function c40230018.filter(c)
 	return c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()

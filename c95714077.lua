@@ -20,7 +20,7 @@ function c95714077.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c95714077.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x58)
+	return re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x58)
 end
 function c95714077.filter(c)
 	return c:IsSetCard(0x58) and c:IsLevelBelow(4) and c:IsAbleToHand()

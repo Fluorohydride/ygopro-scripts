@@ -79,7 +79,7 @@ function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	if ct<2 then return false end
 	local te,p=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 	if not te then return false end
-	local b1=te:GetHandler():IsSetCard(0x17e) and not te:GetHandler():IsCode(id)
+	local b1=te:IsActiveSetCard(0x17e) and not te:IsActiveCode(id)
 	local b2=te:GetActiveType()==TYPE_TRAP
 	return (b1 or b2) and p==tp and rp==1-tp
 end

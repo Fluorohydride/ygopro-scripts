@@ -14,10 +14,9 @@ function c53208660.initial_effect(c)
 	Duel.AddCustomActivityCounter(53208660,ACTIVITY_CHAIN,c53208660.chainfilter)
 end
 function c53208660.chainfilter(re,tp,cid)
-	local rc=re:GetHandler()
 	local loc=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)
 	return not (re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and bit.band(loc,LOCATION_PZONE)==LOCATION_PZONE and rc:IsSetCard(0x98))
+		and bit.band(loc,LOCATION_PZONE)==LOCATION_PZONE and re:IsActiveSetCard(0x98))
 end
 function c53208660.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCustomActivityCount(53208660,tp,ACTIVITY_CHAIN)==0

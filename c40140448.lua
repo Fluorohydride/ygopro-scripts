@@ -61,7 +61,7 @@ function c40140448.srop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c40140448.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler()
+	return re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler()
 end
 function c40140448.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToHand() end

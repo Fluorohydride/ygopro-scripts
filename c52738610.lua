@@ -30,8 +30,7 @@ function c52738610.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c52738610.chainop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and rc:IsSetCard(0xb4) and re:IsActiveType(TYPE_RITUAL) then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveSetCard(0xb4) and re:IsActiveType(TYPE_RITUAL) then
 		Duel.SetChainLimit(c52738610.chainlm)
 	end
 end

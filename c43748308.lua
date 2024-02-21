@@ -27,7 +27,7 @@ function c43748308.initial_effect(c)
 end
 function c43748308.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
-		and re:GetHandler():IsSetCard(0x7c)
+		and re:IsActiveSetCard(0x7c)
 end
 function c43748308.filter(c)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_TRAP) and c:IsSSetable()

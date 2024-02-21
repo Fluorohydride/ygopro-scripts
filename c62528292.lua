@@ -102,7 +102,7 @@ function c62528292.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62528292.chainop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsSetCard(0x137) and ep==tp then
+	if re:IsActiveSetCard(0x137) and ep==tp then
 		Duel.SetChainLimit(c62528292.chainlm)
 	end
 end

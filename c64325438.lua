@@ -26,7 +26,7 @@ function c64325438.chcon(e,tp,eg,ep,ev,re,r,rp)
 	if ct<2 then return end
 	if not Duel.IsPlayerCanDraw(tp,1) or not Duel.IsPlayerCanDraw(1-tp,1) then return false end
 	local te,p=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	return te and te:GetHandler():IsSetCard(0x134) and p==tp and rp==1-tp
+	return te and te:IsActiveSetCard(0x134) and p==tp and rp==1-tp
 end
 function c64325438.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end

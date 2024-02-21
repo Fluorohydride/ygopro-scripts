@@ -52,7 +52,7 @@ function c77539547.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c77539547.discon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler()
+	return re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler()
 end
 function c77539547.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.NegateEffectMonsterFilter(chkc) end

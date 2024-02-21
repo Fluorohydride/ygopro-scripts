@@ -56,7 +56,7 @@ function c70204022.posop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c70204022.pspcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x1066)
+	return re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x1066)
 end
 function c70204022.psptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

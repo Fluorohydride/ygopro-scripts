@@ -57,9 +57,8 @@ function c10071151.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10071151.ddcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rc~=c
-		and rc:IsSetCard(0x38) and rc:IsControler(tp)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler()~=c
+		and re:IsActiveSetCard(0x38) and rp==tp
 end
 function c10071151.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

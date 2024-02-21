@@ -27,8 +27,7 @@ function c28201945.efilter(e,te)
 	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
 end
 function c28201945.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=re:GetHandler()
-	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
+	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():GetType()==TYPE_TRAP and re:IsActiveSetCard(0x4c,0x89)
 end
 function c28201945.filter(c,e,tp,ft)
 	return c:IsSetCard(0x108a) and not c:IsCode(28201945) and c:IsType(TYPE_MONSTER) and (c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))

@@ -16,7 +16,7 @@ function c26732909.initial_effect(c)
 	Duel.AddCustomActivityCounter(26732909,ACTIVITY_CHAIN,c26732909.chainfilter)
 end
 function c26732909.chainfilter(re,tp,cid)
-	return not (re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x106e))
+	return not (re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and re:IsActiveSetCard(0x106e))
 end
 function c26732909.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

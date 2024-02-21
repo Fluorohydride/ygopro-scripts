@@ -77,7 +77,7 @@ function c44133040.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return rp==tp
 		and ((re:IsActiveType(TYPE_MONSTER) and c:GetEquipTarget()==rc)
-			or (re:IsHasType(EFFECT_TYPE_ACTIVATE) and rc:IsSetCard(0x129) and rc~=c))
+			or (re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveSetCard(0x129) and rc~=c))
 end
 function c44133040.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

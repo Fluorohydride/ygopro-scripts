@@ -11,7 +11,7 @@ function c47795344.initial_effect(c)
 	Duel.AddCustomActivityCounter(47795344,ACTIVITY_CHAIN,c47795344.chainfilter)
 end
 function c47795344.chainfilter(re,tp,cid)
-	return not (re:GetHandler():IsSetCard(0x2a) and re:IsActiveType(TYPE_MONSTER)
+	return not (re:IsActiveSetCard(0x2a) and re:IsActiveType(TYPE_MONSTER)
 		and Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE)
 end
 function c47795344.spcon(e,c)

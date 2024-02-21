@@ -43,7 +43,7 @@ function c82735249.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c82735249.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0x1066) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
+	return re and re:IsActiveSetCard(0x1066) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c82735249.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x35,1)

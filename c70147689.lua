@@ -47,7 +47,7 @@ function c70147689.target(e,c)
 	return c:IsSetCard(0x7) and c:IsStatus(STATUS_SUMMON_TURN+STATUS_SPSUMMON_TURN)
 end
 function c70147689.chainop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsSetCard(0x7) then
+	if re:IsActiveSetCard(0x7) then
 		Duel.SetChainLimit(c70147689.chainlm)
 	end
 end

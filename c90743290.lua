@@ -10,7 +10,7 @@ function c90743290.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c90743290.condition(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x106e)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and re:IsActiveSetCard(0x106e)
 end
 function c90743290.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

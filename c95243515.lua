@@ -42,8 +42,7 @@ function c95243515.efcon2(e)
 	return ct==4
 end
 function c95243515.immval(e,re)
-	local rc=re:GetHandler()
-	return re:IsActivated() and not rc:IsSetCard(0x14e)
+	return re:IsActivated() and not re:IsActiveSetCard(0x14e)
 end
 function c95243515.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

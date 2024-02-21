@@ -60,7 +60,7 @@ function c20720928.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 end
 function c20720928.chainop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsSetCard(0x105) and re:IsActiveType(TYPE_MONSTER) and ep==tp then
+	if re:IsActiveSetCard(0x105) and re:IsActiveType(TYPE_MONSTER) and ep==tp then
 		Duel.SetChainLimit(c20720928.chainlm)
 	end
 end

@@ -50,8 +50,7 @@ function c43598843.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,43598843,RESET_PHASE+PHASE_END,0,1)
 end
 function c43598843.actop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	if re:IsActiveType(TYPE_MONSTER) and rc:IsSetCard(0x1083) and ep==tp then
+	if re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x1083) and ep==tp then
 		Duel.SetChainLimit(c43598843.chainlm)
 	end
 end

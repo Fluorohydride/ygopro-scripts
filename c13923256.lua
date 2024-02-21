@@ -52,7 +52,7 @@ function c13923256.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c13923256.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler()
+	return re:IsActiveType(TYPE_MONSTER) and re:IsActiveSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler()
 end
 function c13923256.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsType(TYPE_SPELL+TYPE_TRAP) end
