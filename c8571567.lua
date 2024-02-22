@@ -34,8 +34,7 @@ function c8571567.tfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c8571567.tffilter(c,tp)
-	return c:IsCode(7602800)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(7602800) and c:IsCanBePlacedOnField(tp)
 end
 function c8571567.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
