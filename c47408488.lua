@@ -38,25 +38,6 @@ function c47408488.initial_effect(c)
 	e4:SetTarget(c47408488.pltg)
 	e4:SetOperation(c47408488.plop)
 	c:RegisterEffect(e4)
-	if not c47408488.global_check then
-		c47408488.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_CHAIN_SOLVING)
-		ge1:SetOperation(c47408488.checkop)
-		Duel.RegisterEffect(ge1,0)
-		local ge2=Effect.CreateEffect(c)
-		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge2:SetCode(EVENT_CHAIN_SOLVED)
-		ge2:SetOperation(c47408488.reset)
-		Duel.RegisterEffect(ge2,0)
-	end
-end
-function c47408488.checkop(e,tp,eg,ep,ev,re,r,rp)
-	c47408488.chain_solving=true
-end
-function c47408488.reset(e,tp,eg,ep,ev,re,r,rp)
-	c47408488.chain_solving=false
 end
 function c47408488.cfilter(c)
 	local type=c:GetOriginalType()
@@ -64,13 +45,13 @@ function c47408488.cfilter(c)
 	return c:IsLocation(LOCATION_SZONE) and c:GetSequence()<5 and c:IsSetCard(0x1034) and bit.band(type,TYPE_MONSTER)~=0
 end
 function c47408488.ctcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c47408488.cfilter,1,nil) and not c47408488.chain_solving
+	return eg:IsExists(c47408488.cfilter,1,nil) and not Duel.IsChainSolving()
 end
 function c47408488.ctop1(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x6,1)
 end
 function c47408488.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c47408488.cfilter,1,nil) and c47408488.chain_solving
+	return eg:IsExists(c47408488.cfilter,1,nil) and Duel.IsChainSolving()
 end
 function c47408488.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(47408488,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
