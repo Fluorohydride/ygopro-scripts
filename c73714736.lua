@@ -134,7 +134,7 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetTargetRange(LOCATION_MZONE,0)
-			e1:SetTarget(s.atkfilter)
+			e1:SetTarget(s.atkfilter2)
 			e1:SetLabel(tc:GetFieldID())
 			e1:SetValue(1000)
 			e1:SetReset(RESET_PHASE+PHASE_END)
@@ -142,6 +142,6 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function s.atkfilter(e,c)
+function s.atkfilter2(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
