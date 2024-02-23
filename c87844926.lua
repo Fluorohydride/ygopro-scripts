@@ -9,18 +9,47 @@ function c87844926.initial_effect(c)
 	--deckdes
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCondition(c87844926.ddcon)
 	e2:SetOperation(c87844926.ddop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c87844926.regcon)
+	e3:SetOperation(c87844926.regop)
+	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e4:SetCode(EVENT_CHAIN_SOLVED)
+	e4:SetRange(LOCATION_SZONE)
+	e4:SetCondition(c87844926.ddcon2)
+	e4:SetOperation(c87844926.ddop2)
+	c:RegisterEffect(e4)
 end
 function c87844926.cfilter(c,tp)
 	return c:IsSummonPlayer(tp)
 end
 function c87844926.ddcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c87844926.cfilter,1,nil,1-tp)
+	return eg:IsExists(c87844926.cfilter,1,nil,1-tp) and not Duel.IsChainSolving()
 end
 function c87844926.ddop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardDeck(1-tp,3,REASON_EFFECT)
+end
+function c87844926.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c87844926.cfilter,1,nil,1-tp) and Duel.IsChainSolving()
+end
+function c87844926.regop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(87844926,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+end
+function c87844926.ddcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(87844926)>0
+end
+function c87844926.ddop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(87844926)
+	e:GetHandler():ResetFlagEffect(87844926)
+	Duel.DiscardDeck(1-tp,ct*3,REASON_EFFECT)
 end
