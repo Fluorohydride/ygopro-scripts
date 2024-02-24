@@ -1544,3 +1544,57 @@ end
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
 end
+---
+---@param c Card
+---@param event integer
+---@param func function
+---@param location? integer|boolean
+---@param code? integer
+function Auxiliary.RegisterEachTimeEvent(c,event,func,location,code)
+	local tp=nil
+	if Auxiliary.GetValueType(location)=="boolean" and location==true then tp=c:GetControler() end
+	if tp==nil and not location then
+		if c:GetOriginalType()&TYPE_MONSTER>0 then location=LOCATION_MZONE
+		elseif c:GetOriginalType()&TYPE_FIELD>0 then location=LOCATION_FZONE
+		elseif c:GetOriginalType()&(TYPE_SPELL+TYPE_TRAP)>0 then location=LOCATION_SZONE end
+	end
+	code=code or c:GetOriginalCode()
+	local g=Group.CreateGroup()
+	g:KeepAlive()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetCode(event)
+	e1:SetCondition(Auxiliary.EachTimeEventCondition(func))
+	e1:SetOperation(Auxiliary.EachTimeEventOperation(func,code,tp))
+	e1:SetLabelObject(g)
+	if tp==nil then
+		e1:SetRange(location)
+		c:RegisterEffect(e1)
+	else
+		Duel.RegisterEffect(e1,tp)
+	end
+	return e1
+end
+function Auxiliary.EachTimeEventCondition(func)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				return eg:IsExists(func,1,nil,e,tp,eg,ep,ev,re,r,rp) and Duel.IsChainSolving()
+			end
+end
+function Auxiliary.EachTimeEventOperation(func,code,player)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				if player==nil then
+					if e:GetHandler():GetFlagEffect(code)==0 then
+						e:GetLabelObject():Clear()
+					end
+					e:GetHandler():RegisterFlagEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+				else
+					if Duel.GetFlagEffect(player,code)==0 then
+						e:GetLabelObject():Clear()
+					end
+					Duel.RegisterFlagEffect(player,code,RESET_CHAIN,0,1)
+				end
+				local g=eg:Filter(func,nil,e,tp,eg,ep,ev,re,r,rp)
+				e:GetLabelObject():Merge(g)
+			end
+end
