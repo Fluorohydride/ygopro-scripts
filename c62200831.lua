@@ -77,7 +77,7 @@ function c62200831.xyzfilter(c,e,tp,mc)
 		and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c62200831.spop(e,tp,eg,ep,ev,re,r,rp)
-	local def=math.min(e:GetLabel(),Duel.GetLP(1-tp))
+	local def=e:GetLabel()
 	if def==0 or def>Duel.GetLP(1-tp) then return end
 	Duel.PayLPCost(1-tp,def)
 	if Duel.IsPlayerCanSpecialSummonCount(tp,2)
