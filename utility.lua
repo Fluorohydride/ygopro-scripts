@@ -1574,6 +1574,18 @@ function Auxiliary.RegisterEachTimeEvent(c,event,func,location,code)
 	else
 		Duel.RegisterEffect(e1,tp)
 	end
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetCode(EVENT_BREAK_EFFECT)
+	e2:SetOperation(Auxiliary.EachTimeEventBreak)
+	e2:SetLabelObject(e1)
+	if tp==nil then
+		e2:SetRange(location)
+		c:RegisterEffect(e2)
+	else
+		Duel.RegisterEffect(e2,tp)
+	end
 	return e1
 end
 function Auxiliary.EachTimeEventCondition(func)
@@ -1585,16 +1597,27 @@ function Auxiliary.EachTimeEventOperation(func,code,player)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				if player==nil then
 					if e:GetHandler():GetFlagEffect(code)==0 then
+						e:SetLabel(0)
 						e:GetLabelObject():Clear()
 					end
-					e:GetHandler():RegisterFlagEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+					if e:GetLabel()==0 then
+						e:SetLabel(1)
+						e:GetHandler():RegisterFlagEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+					end
 				else
 					if Duel.GetFlagEffect(player,code)==0 then
+						e:SetLabel(0)
 						e:GetLabelObject():Clear()
 					end
-					Duel.RegisterFlagEffect(player,code,RESET_CHAIN,0,1)
+					if e:GetLabel()==0 then
+						e:SetLabel(1)
+						Duel.RegisterFlagEffect(player,code,RESET_CHAIN,0,1)
+					end
 				end
 				local g=eg:Filter(func,nil,e,tp,eg,ep,ev,re,r,rp)
 				e:GetLabelObject():Merge(g)
 			end
+end
+function Auxiliary.EachTimeEventBreak(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():SetLabel(0)
 end
