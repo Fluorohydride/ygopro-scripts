@@ -39,16 +39,17 @@ function c13735899.cfilter(c,e)
 	local typ,se=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_REASON_EFFECT)
 	if not se then return false end
 	local sc=se:GetHandler()
+	local tp=e:GetHandlerPlayer()
 	return typ&TYPE_MONSTER~=0 and se:IsActivated()
 		and c:IsFaceup() and (c:GetOriginalRace()==sc:GetOriginalRace() or c==sc)
-		and c:IsCanBeEffectTarget(e) and c:IsAbleToRemove()
+		and c:IsCanBeEffectTarget(e) and Duel.IsExistingMatchingCard(c13735899.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
 end
 function c13735899.remcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c13735899.cfilter,1,nil,e)
 		and not eg:IsContains(e:GetHandler())
 end
 function c13735899.rmfilter(c,tc)
-	return c:IsFaceup() and c:GetOriginalRace()==tc:GetOriginalRace()
+	return c:IsFaceup() and c:GetOriginalRace()==tc:GetOriginalRace() and c:IsAbleToRemove()
 end
 function c13735899.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c13735899.cfilter(chkc,e) end
