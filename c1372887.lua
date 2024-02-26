@@ -19,13 +19,7 @@ function c1372887.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOperation(c1372887.drop1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetCode(EVENT_TO_HAND)
-	e2:SetCondition(c1372887.regcon)
-	e2:SetOperation(c1372887.regop)
-	e2:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e2,tp)
+	aux.RegisterEachTimeEvent(c,EVENT_TO_HAND,c1372887.cfilter,nil,nil,1372887,RESET_PHASE+PHASE_END)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e3:SetCode(EVENT_CHAIN_SOLVED)
@@ -34,29 +28,23 @@ function c1372887.activate(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
 end
-function c1372887.cfilter(c,tp)
+function c1372887.cfilter(c,e,tp)
 	return c:IsControler(1-tp) and not c:IsReason(REASON_DRAW) and c:IsPreviousLocation(LOCATION_DECK+LOCATION_GRAVE)
 end
 function c1372887.drcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c1372887.cfilter,1,nil,tp)
-		and (not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
+	return eg:IsExists(c1372887.cfilter,1,nil,e,tp)
+		and not Duel.IsChainSolving()
 end
 function c1372887.drop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,1372887)
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
-function c1372887.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c1372887.cfilter,1,nil,tp) and Duel.GetFlagEffect(tp,1372887)==0
-		and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
-end
-function c1372887.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,1372887,RESET_CHAIN,0,1)
-end
 function c1372887.drcon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,1372887)>0
 end
 function c1372887.drop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=Duel.GetFlagEffect(tp,1372887)
 	Duel.ResetFlagEffect(tp,1372887)
 	Duel.Hint(HINT_CARD,0,1372887)
-	Duel.Draw(tp,1,REASON_EFFECT)
+	Duel.Draw(tp,ct,REASON_EFFECT)
 end

@@ -31,14 +31,7 @@ function c66425726.initial_effect(c)
 	e2:SetOperation(c66425726.damop1)
 	c:RegisterEffect(e2)
 	--sp_summon effect
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetCondition(c66425726.regcon)
-	e3:SetOperation(c66425726.regop)
-	c:RegisterEffect(e3)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c66425726.filter)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e4:SetCode(EVENT_CHAIN_SOLVED)
@@ -79,23 +72,16 @@ function c66425726.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c66425726.filter(c,sp)
-	return c:IsSummonPlayer(sp) and c:IsSummonLocation(LOCATION_EXTRA)
+function c66425726.filter(c,e,sp)
+	return c:IsSummonPlayer(1-sp) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c66425726.damcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c66425726.filter,1,nil,1-tp)
-		and (not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
+	return eg:IsExists(c66425726.filter,1,nil,e,tp)
+		and not Duel.IsChainSolving()
 end
 function c66425726.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,66425726)
 	Duel.Damage(1-tp,300,REASON_EFFECT)
-end
-function c66425726.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c66425726.filter,1,nil,1-tp)
-		and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
-end
-function c66425726.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(66425726,RESET_CHAIN,0,1)
 end
 function c66425726.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(66425726)>0
