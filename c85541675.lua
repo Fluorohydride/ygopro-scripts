@@ -10,11 +10,20 @@ function c85541675.initial_effect(c)
 	--add counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_CHANGE_POS)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCondition(c85541675.accon)
 	e2:SetOperation(c85541675.acop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_CHANGE_POS,c85541675.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_SZONE)
+	e0:SetCondition(c85541675.accon2)
+	e0:SetOperation(c85541675.acop2)
+	c:RegisterEffect(e0)
 	--draw
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_DRAW)
@@ -32,10 +41,18 @@ function c85541675.cfilter(c)
 	return c:IsSetCard(0x11) and ((pp==0x1 and np==0x4) or (pp==0x4 and np==0x1) or (pp==0x8 and np==0x1))
 end
 function c85541675.accon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c85541675.cfilter,1,nil)
+	return eg:IsExists(c85541675.cfilter,1,nil) and not Duel.IsChainSolving()
 end
 function c85541675.acop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x12,1)
+end
+function c85541675.accon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(85541675)>0
+end
+function c85541675.acop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(85541675)
+	e:GetHandler():ResetFlagEffect(85541675)
+	e:GetHandler():AddCounter(0x12,ct,true)
 end
 function c85541675.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -15,6 +15,14 @@ function c81788994.initial_effect(c)
 	e2:SetCondition(c81788994.ctcon)
 	e2:SetOperation(c81788994.ctop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_TO_GRAVE,c81788994.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c81788994.ctcon2)
+	e0:SetOperation(c81788994.ctop2)
+	c:RegisterEffect(e0)
 	--atkdown
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -37,11 +45,21 @@ function c81788994.cfilter(c)
 	return c:IsSetCard(0x9d) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT)
 end
 function c81788994.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c81788994.cfilter,1,nil)
+	return eg:IsExists(c81788994.cfilter,1,nil) and not Duel.IsChainSolving()
 end
 function c81788994.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c81788994.cfilter,nil)
 	e:GetHandler():AddCounter(0x16,ct)
+end
+function c81788994.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(81788994)>0
+end
+function c81788994.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffectLabel(81788994)
+	e:GetHandler():ResetFlagEffect(81788994)
+	if ct then
+		e:GetHandler():AddCounter(0x16,ct)
+	end
 end
 function c81788994.atkcon(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()

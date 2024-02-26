@@ -19,6 +19,7 @@ function c24793135.initial_effect(c)
 	--counter
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCondition(c24793135.countercon)
@@ -27,6 +28,15 @@ function c24793135.initial_effect(c)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_SUMMON_SUCCESS)
 	c:RegisterEffect(e4)
+	aux.RegisterEachTimeEvent(c,EVENT_SUMMON_SUCCESS,c24793135.cfilter)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c24793135.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c24793135.countercon2)
+	e0:SetOperation(c24793135.counterop2)
+	c:RegisterEffect(e0)
 	--act limit
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
@@ -66,10 +76,18 @@ function c24793135.cfilter(c)
 	return aux.AtkEqualsDef(c) and c:IsRace(RACE_MACHINE) and c:IsFaceup()
 end
 function c24793135.countercon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c24793135.cfilter,1,nil)
+	return eg:IsExists(c24793135.cfilter,1,nil) and not Duel.IsChainSolving()
 end
 function c24793135.counterop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x5d,1)
+end
+function c24793135.countercon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(24793135)>0
+end
+function c24793135.counterop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(24793135)
+	e:GetHandler():ResetFlagEffect(24793135)
+	e:GetHandler():AddCounter(0x5d,ct)
 end
 function c24793135.actlimitcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0x5d)>=10

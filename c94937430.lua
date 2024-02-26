@@ -51,9 +51,9 @@ function c94937430.accon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(94937430)>0
 end
 function c94937430.acop2(e,tp,eg,ep,ev,re,r,rp)
-	local ct=math.min(e:GetHandler():GetFlagEffect(94937430),3)
+	local ct=e:GetHandler():GetFlagEffect(94937430)
 	e:GetHandler():ResetFlagEffect(94937430)
-	e:GetHandler():AddCounter(0x1,ct)
+	e:GetHandler():AddCounter(0x1,ct,true)
 end
 function c94937430.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0x1)==3

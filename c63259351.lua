@@ -11,10 +11,20 @@ function c63259351.initial_effect(c)
 	--add counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_TO_GRAVE)
+	e2:SetCondition(c63259351.ctcon)
 	e2:SetOperation(c63259351.ctop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_TO_GRAVE,c63259351.ctfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_MZONE)
+	e0:SetCondition(c63259351.ctcon2)
+	e0:SetOperation(c63259351.ctop2)
+	c:RegisterEffect(e0)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -26,13 +36,22 @@ function c63259351.initial_effect(c)
 	e3:SetOperation(c63259351.spop)
 	c:RegisterEffect(e3)
 end
-function c63259351.ctfilter(c,tp)
+function c63259351.ctfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsRace(RACE_DINOSAUR)
 end
+function c63259351.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c63259351.ctfilter,1,nil,e,tp) and not Duel.IsChainSolving()
+end
 function c63259351.ctop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c63259351.ctfilter,1,nil,tp) then
-		e:GetHandler():AddCounter(0x14,2)
-	end
+	e:GetHandler():AddCounter(0x14,2)
+end
+function c63259351.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(63259351)>0
+end
+function c63259351.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(63259351)
+	e:GetHandler():ResetFlagEffect(63259351)
+	e:GetHandler():AddCounter(0x14,ct*2)
 end
 function c63259351.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

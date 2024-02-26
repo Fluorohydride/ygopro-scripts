@@ -10,10 +10,20 @@ function c11163040.initial_effect(c)
 	--counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_SZONE)
+	e2:SetCondition(c11163040.ctcon)
 	e2:SetOperation(c11163040.counter)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c11163040.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_SZONE)
+	e0:SetCondition(c11163040.ctcon2)
+	e0:SetOperation(c11163040.counter2)
+	c:RegisterEffect(e0)
 	--destroy
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(11163040,0))
@@ -40,10 +50,19 @@ end
 function c11163040.cfilter(c)
 	return c:IsSetCard(0xd3) and c:IsPreviousLocation(LOCATION_HAND+LOCATION_GRAVE)
 end
+function c11163040.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c11163040.cfilter,1,nil) and not Duel.IsChainSolving()
+end
 function c11163040.counter(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c11163040.cfilter,1,nil) then
-		e:GetHandler():AddCounter(0x37,1)
-	end
+	e:GetHandler():AddCounter(0x37,1)
+end
+function c11163040.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(11163040)>0
+end
+function c11163040.counter2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(11163040)
+	e:GetHandler():ResetFlagEffect(11163040)
+	e:GetHandler():AddCounter(0x37,ct,true)
 end
 function c11163040.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0xd3)
