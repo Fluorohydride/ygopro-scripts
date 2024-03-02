@@ -52,6 +52,7 @@ function c71100270.xmop(e,tp,eg,ep,ev,re,r,rp)
 		if og:GetCount()>0 then
 			Duel.SendtoGrave(og,REASON_RULE)
 		end
+		tc:CancelToGrave()
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end
