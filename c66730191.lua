@@ -14,7 +14,7 @@ function c66730191.filter(c)
 end
 function c66730191.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_FIRE)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetMZoneCount(tp,nil)>0
 end
 function c66730191.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66730191.filter,tp,LOCATION_DECK,0,1,nil) or Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
