@@ -10,7 +10,8 @@ function c46897277.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c46897277.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c46897277.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
