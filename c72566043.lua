@@ -49,8 +49,8 @@ function c72566043.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c72566043.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsSummonType(SUMMON_TYPE_RITUAL)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
+	and c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c72566043.setfilter(c,tp)
 	local chk=not c:IsControler(tp)
