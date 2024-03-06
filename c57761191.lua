@@ -117,8 +117,8 @@ function c57761191.efilter(e,te)
 end
 function c57761191.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsSummonType(SUMMON_TYPE_ADVANCE)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
+	and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c57761191.spfilter(c,e,tp)
 	return c:IsAttribute(0xf) and c:IsType(0x802040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
