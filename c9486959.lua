@@ -72,7 +72,7 @@ function c9486959.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c9486959.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c9486959.tdfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsAbleToDeck()
