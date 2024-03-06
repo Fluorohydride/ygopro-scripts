@@ -55,8 +55,8 @@ function c6182103.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6182103.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsSummonType(SUMMON_TYPE_FUSION)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
+	and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c6182103.thfilter(c,typ)
 	return c:IsAbleToHand() and c:IsSetCard(0x157) and c:IsFaceup()
