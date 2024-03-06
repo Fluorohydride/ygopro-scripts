@@ -77,7 +77,7 @@ function c88234821.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88234821.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c88234821.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,0,LOCATION_ONFIELD,1,nil,TYPE_SPELL+TYPE_TRAP) end
