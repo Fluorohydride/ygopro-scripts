@@ -68,7 +68,7 @@ function c61089209.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61089209.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c61089209.thtgfilter(c)
 	return c:IsSetCard(0x157) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand() and c:IsFaceup()
