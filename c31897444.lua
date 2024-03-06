@@ -31,7 +31,8 @@ function c31897444.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c31897444.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c31897444.spfilter(c,e,tp)
 	return not c:IsType(TYPE_EFFECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
