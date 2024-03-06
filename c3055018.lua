@@ -21,6 +21,7 @@ function s.initial_effect(c)
 	e3:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCountLimit(1,id)
 	e3:SetCondition(s.tdcon)
@@ -52,7 +53,7 @@ end
 function s.tdfilter(c)
 	return c:IsCode(id) and c:IsAbleToDeck()
 end
-function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.tdfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(s.tdfilter,tp,LOCATION_GRAVE,0,1,nil) and Duel.IsPlayerCanDraw(tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
