@@ -100,7 +100,8 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardDeck(tp,4,REASON_EFFECT)
 end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function s.thfilter1(c)
 	return c:IsFaceup() and c:IsCode(19959563) and c:IsAbleToHand()
