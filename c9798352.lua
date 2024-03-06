@@ -86,7 +86,8 @@ function c9798352.lvop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c9798352.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c9798352.setfilter(c)
 	return c:IsFaceup() and c:GetType()==TYPE_TRAP and c:IsSSetable()
