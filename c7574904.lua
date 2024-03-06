@@ -77,7 +77,7 @@ function c7574904.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7574904.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c7574904.thtgfilter(c)
 	return c:IsSetCard(0x157) and c:IsType(TYPE_SPELL) and c:IsAbleToHand() and c:IsFaceup()
