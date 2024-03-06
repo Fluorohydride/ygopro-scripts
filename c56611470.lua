@@ -72,7 +72,8 @@ function c56611470.attg(e,c)
 	return not c:IsSetCard(0x97)
 end
 function c56611470.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c56611470.cffilter(c)
 	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(5) and not c:IsPublic()
