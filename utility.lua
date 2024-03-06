@@ -1530,30 +1530,25 @@ end
 ---@param is_opponent boolean
 ---@param filter function
 ---@param eqlimit function|nil
----@param condition? function
----@param cost? function
----@param target? function
-function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,condition,cost,target)
+---@param pause? boolean
+---@param skip_target? boolean
+function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,pause,skip_target)
 	local value=(type(eqlimit)=="function") and eqlimit or 1
+	if pause==nil then pause=false end
+	if skip_target==nil then skip_target=false end
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
-	if type(condition)=="function" then
-		e1:SetCondition(condition)
-	end
-	if type(cost)=="function" then
-		e1:SetCost(cost)
-	end
-	if type(target)=="function" then
-		e1:SetTarget(target)
-	else
+	if not skip_target then
 		e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
 	end
 	e1:SetOperation(Auxiliary.EquipSpellOperation(eqlimit))
-	c:RegisterEffect(e1)
+	if not pause then
+		c:RegisterEffect(e1)
+	end
 	--Equip limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -1561,6 +1556,7 @@ function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,cond
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetValue(value)
 	c:RegisterEffect(e2)
+	return e1
 end
 function Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit)
 	local loc1=is_self and LOCATION_MZONE or 0
