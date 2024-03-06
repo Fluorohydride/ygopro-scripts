@@ -25,7 +25,8 @@ function c17475251.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c17475251.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
+	local c=e:GetHandler()
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function c17475251.filter(c)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL) and c:IsSSetable()
