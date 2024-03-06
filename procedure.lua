@@ -1708,6 +1708,10 @@ function Auxiliary.tdcfop(c)
 				if cg:GetCount()>0 then
 					Duel.ConfirmCards(1-c:GetControler(),cg)
 				end
+				local hg=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE+LOCATION_REMOVED)
+				if hg:GetCount()>0 then
+					Duel.HintSelection(hg)
+				end
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
 end
