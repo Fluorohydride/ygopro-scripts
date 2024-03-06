@@ -44,7 +44,7 @@ function c70980824.remop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70980824.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:IsPreviousLocation(LOCATION_MZONE) and rp==1-tp and c:IsPreviousControler(tp)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c70980824.spfilter(c,e,tp)
 	if not (c:IsCode(52687916) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) then return false end
