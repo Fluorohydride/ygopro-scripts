@@ -101,6 +101,7 @@ function s.Necessarily_FShaddollFilter(c,gc)
 	return c:IsCode(gc:GetCode())
 end
 function s.Necessarily_FShaddollSpgcheck(g,gc,fc,ec,chkf)
+	local tp=fc:GetControler()
 	local c=g:Filter(s.Blue_Eyes_Ultimate_Dragon,nil):GetFirst()
 	local sg=g:Clone()
 	sg:AddCard(ec)
