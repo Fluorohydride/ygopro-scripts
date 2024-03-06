@@ -79,8 +79,8 @@ function c79194594.efilter(e,te)
 end
 function c79194594.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsSummonType(SUMMON_TYPE_FUSION)
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
+	and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c79194594.thfilter(c)
 	return c:IsAbleToHand() and c:IsSetCard(0x157) and c:IsFaceup()
