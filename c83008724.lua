@@ -85,7 +85,7 @@ function s.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.plpcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousControler(tp) and c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousControler(tp)
 end
 function s.plpop(e,tp,eg,ep,ev,re,r,rp)
 	local val=e:GetLabel()*500
