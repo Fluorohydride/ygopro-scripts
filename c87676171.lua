@@ -79,7 +79,7 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetReasonPlayer()==1-tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and e:GetLabel()>0
+	return (c:IsStatus(STATUS_OPPO_BATTLE) or rp==1-tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and e:GetLabel()>0
 end
 function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x1a4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
