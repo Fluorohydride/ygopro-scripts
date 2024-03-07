@@ -62,12 +62,12 @@ end
 function c1050355.cfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x131) and c:IsAttribute(ATTRIBUTE_DARK)
 end
-function c1050355.cfilter2(c,e,tp)
+function c1050355.cfilter2(c,e,tp,eg)
 	return c:IsSummonPlayer(1-tp)
-		and Duel.IsExistingMatchingCard(c1050355.cfilter1,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(c1050355.cfilter1,tp,LOCATION_MZONE,0,1,eg)
 end
 function c1050355.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c1050355.cfilter2,1,nil,e,tp) and not Duel.IsChainSolving()
+	return eg:IsExists(c1050355.cfilter2,1,nil,e,tp,eg) and not Duel.IsChainSolving()
 end
 function c1050355.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,1050355)

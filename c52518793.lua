@@ -9,11 +9,20 @@ function c52518793.initial_effect(c)
 	--Add counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetCondition(c52518793.accon)
 	e2:SetOperation(c52518793.acop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c52518793.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c52518793.accon2)
+	e0:SetOperation(c52518793.acop2)
+	c:RegisterEffect(e0)
 	--atkup
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -39,14 +48,22 @@ end
 function c52518793.atkval(e,c)
 	return e:GetHandler():GetCounter(0x7)*100
 end
-function c52518793.cfilter(c,tp)
+function c52518793.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_DECK)
 end
 function c52518793.accon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c52518793.cfilter,1,nil,tp)
+	return eg:IsExists(c52518793.cfilter,1,nil) and not Duel.IsChainSolving()
 end
 function c52518793.acop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x7,1)
+end
+function c52518793.accon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(52518793)>0
+end
+function c52518793.acop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(52518793)
+	e:GetHandler():ResetFlagEffect(52518793)
+	e:GetHandler():AddCounter(0x7,ct)
 end
 function c52518793.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)

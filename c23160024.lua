@@ -55,7 +55,12 @@ function c23160024.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
 function c23160024.drcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(23160024)>0
+	if e:GetHandler():GetFlagEffect(23160024)>0 and Duel.IsPlayerCanDraw(tp) then
+		return true
+	else
+		e:GetHandler():ResetFlagEffect(23160024)
+		return false
+	end
 end
 function c23160024.drop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,e:GetHandler():GetCode())

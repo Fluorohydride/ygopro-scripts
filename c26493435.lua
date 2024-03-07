@@ -15,6 +15,14 @@ function c26493435.initial_effect(c)
 	e2:SetCondition(c26493435.ctcon)
 	e2:SetOperation(c26493435.ctop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c26493435.ctfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c26493435.ctcon2)
+	e0:SetOperation(c26493435.ctop2)
+	c:RegisterEffect(e0)
 	--atk/def
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -38,14 +46,22 @@ function c26493435.initial_effect(c)
 	e5:SetOperation(c26493435.spop)
 	c:RegisterEffect(e5)
 end
-function c26493435.ctfilter(c,tp)
+function c26493435.ctfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsControler(tp)
 end
 function c26493435.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c26493435.ctfilter,1,nil,tp)
+	return eg:IsExists(c26493435.ctfilter,1,nil,e,tp) and not Duel.IsChainSolving()
 end
 function c26493435.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x30,1)
+end
+function c26493435.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(26493435)>0
+end
+function c26493435.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(26493435)
+	e:GetHandler():ResetFlagEffect(26493435)
+	e:GetHandler():AddCounter(0x30,ct)
 end
 function c26493435.val(e,c)
 	return e:GetHandler():GetCounter(0x30)*200

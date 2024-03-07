@@ -10,10 +10,20 @@ function c48015771.initial_effect(c)
 	--counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_FZONE)
+	e2:SetCondition(c48015771.ctcon2)
 	e2:SetOperation(c48015771.ctop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,aux.TRUE)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c48015771.ctcon2)
+	e0:SetOperation(c48015771.ctop2)
+	c:RegisterEffect(e0)
 	--indes
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -35,8 +45,19 @@ function c48015771.initial_effect(c)
 	e4:SetOperation(c48015771.tgop)
 	c:RegisterEffect(e4)
 end
+function c48015771.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return not Duel.IsChainSolving()
+end
 function c48015771.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x4c,1)
+end
+function c48015771.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(48015771)>0
+end
+function c48015771.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(48015771)
+	e:GetHandler():ResetFlagEffect(48015771)
+	e:GetHandler():AddCounter(0x4c,ct,true)
 end
 function c48015771.indcon(e)
 	return e:GetHandler():GetCounter(0x4c)==6
