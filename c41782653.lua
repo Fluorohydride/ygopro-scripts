@@ -54,6 +54,7 @@ end
 function c41782653.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c41782653.sprfilter,tp,LOCATION_REMOVED,0,5,5,nil)
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c41782653.negcon(e,tp,eg,ep,ev,re,r,rp)
