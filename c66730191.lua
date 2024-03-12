@@ -17,15 +17,19 @@ function c66730191.spfilter(c,e,tp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66730191.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c66730191.filter,tp,LOCATION_DECK,0,1,nil) or Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	local b1=Duel.IsExistingMatchingCard(c66730191.filter,tp,LOCATION_DECK,0,1,nil)
+	local b2=Duel.GetMZoneCount(tp)>0 and Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+	if chk==0 then return b1 or b2 end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c66730191.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	local op=0
-	if Duel.IsExistingMatchingCard(c66730191.filter,tp,LOCATION_DECK,0,1,nil) then
-		if not Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) or Duel.GetLocationCount(tp,LOCATION_MZONE)>=1 and Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) and Duel.SelectYesNo(tp,aux.Stringid(66730191,1)) then
+	local b1=Duel.IsExistingMatchingCard(c66730191.filter,tp,LOCATION_DECK,0,1,nil)
+	local b2=Duel.GetMZoneCount(tp)>0 and Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+	if b1 then
+		if not b2 or Duel.SelectYesNo(tp,aux.Stringid(66730191,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local g=Duel.SelectMatchingCard(tp,c66730191.filter,tp,LOCATION_DECK,0,1,1,nil)
 			if g:GetCount()>0 then
@@ -36,7 +40,8 @@ function c66730191.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	Duel.AdjustAll()
-	if op==0 or Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>=1 and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and Duel.SelectYesNo(tp,aux.Stringid(66730191,2)) then
+	b2=Duel.GetMZoneCount(tp)>0 and Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+	if b2 and (op==0 or ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and Duel.SelectYesNo(tp,aux.Stringid(66730191,2))) then
 		if op~=0 then
 			Duel.BreakEffect()
 		end

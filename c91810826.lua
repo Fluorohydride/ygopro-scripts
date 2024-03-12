@@ -57,6 +57,7 @@ end
 function c91810826.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c91810826.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(91810826,1))
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c91810826.spop2(e,tp,eg,ep,ev,re,r,rp)
@@ -77,6 +78,7 @@ end
 function c91810826.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetMatchingGroup(c91810826.mfilter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler(),mg) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(91810826,2))
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c91810826.scop(e,tp,eg,ep,ev,re,r,rp)
