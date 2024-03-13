@@ -9,6 +9,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetValue(aux.synlimit)
 	c:RegisterEffect(e1)
 	--banish
 	local e2=Effect.CreateEffect(c)
@@ -69,7 +70,7 @@ function s.matchk(e,c)
 	ef:SetCountLimit(ct)
 end
 function s.sfilter(c,e,tp)
-	return not c:IsType(TYPE_TOKEN) and c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsCanBeEffectTarget(e)
+	return c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsCanBeEffectTarget(e)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
