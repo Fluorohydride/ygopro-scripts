@@ -73,7 +73,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.descon1(e)
 	local c=e:GetHandler()
-	return c:GetOverlayCount()>0
+	return c:GetOverlayCount()>0 and Duel.GetAttacker()==c
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
