@@ -43,13 +43,13 @@ function c1697104.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c1697104.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) or Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c1697104.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetCount()==0 then return end
 	local tc=g:GetFirst()
-	local c=e:GetHandler()
 	local fid=c:GetFieldID()
 	Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 	Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)

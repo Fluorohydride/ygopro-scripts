@@ -1555,6 +1555,9 @@ function Auxiliary.FusionEffectUltimateTarget(params)
 				end
 			end
 end
+---
+---@param params table
+---@return function
 function Auxiliary.FusionEffectUltimateOperation(params)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local chkf=tp
@@ -1592,7 +1595,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 				local mg2=nil
 				local sg2=nil
 				local ce=Duel.GetChainMaterial(tp)
-				if ce~=nil then
+				if ce then
 					local fgroup=ce:GetTarget()
 					mg2=fgroup(ce,e,tp):Filter(Auxiliary.FusionEffectUltimateMatFilter,nil,e,tp,params.mat_filter)
 					local mf=ce:GetValue()
@@ -1642,7 +1645,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 						params.mat_operation(mat1)
 						Duel.BreakEffect()
 						Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,params.spsummon_nocheck,false,POS_FACEUP)
-					elseif ce then
+					elseif ce and mg2 then
 						local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,gc,chkf)
 						local fop=ce:GetOperation()
 						fop(ce,e,tp,tc,mat2)
@@ -1707,6 +1710,10 @@ function Auxiliary.tdcfop(c)
 				local cg=g:Filter(Card.IsFacedown,nil)
 				if cg:GetCount()>0 then
 					Duel.ConfirmCards(1-c:GetControler(),cg)
+				end
+				local hg=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE+LOCATION_REMOVED)
+				if hg:GetCount()>0 then
+					Duel.HintSelection(hg)
 				end
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end

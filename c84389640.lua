@@ -36,7 +36,7 @@ function c84389640.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		and e:GetLabelObject():IsAttackAbove(100) end
 	local lp=Duel.GetLP(tp)
 	local atk=e:GetLabelObject():GetAttack()
-	local maxc=lp>atk and atk or lp
+	local maxc=math.min(atk,lp,25500)
 	maxc=math.floor(maxc/100)*100
 	local t={}
 	for i=1,maxc/100 do
