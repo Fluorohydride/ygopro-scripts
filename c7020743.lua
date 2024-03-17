@@ -54,13 +54,13 @@ function s.initial_effect(c)
 		ge1:SetCode(EVENT_CHAIN_NEGATED)
 		ge1:SetOperation(s.negcheck)
 		ge1:SetReset(RESET_CHAIN)
-		Duel.RegisterEffect(ge1,tp)
+		Duel.RegisterEffect(ge1,0)
 	end
 end
 function s.negcheck(e,tp,eg,ep,ev,re,r,rp)
 	local de=Duel.GetChainInfo(ev,CHAININFO_DISABLE_REASON)
 	if de then
-		Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+id,te,0,tp,tp,0)
+		Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+id,de,0,tp,tp,0)
 	end
 end
 function s.ofilter(c,e)
