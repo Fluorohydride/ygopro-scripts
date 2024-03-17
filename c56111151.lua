@@ -10,10 +10,20 @@ function c56111151.initial_effect(c)
 	--counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_FZONE)
+	e2:SetCondition(c56111151.countercon)
 	e2:SetOperation(c56111151.counter)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_TO_GRAVE,c56111151.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c56111151.countercon2)
+	e0:SetOperation(c56111151.counter2)
+	c:RegisterEffect(e0)
 	--to hand
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -37,9 +47,22 @@ end
 function c56111151.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_ONFIELD)
 end
+function c56111151.countercon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c56111151.cfilter,1,nil) and not Duel.IsChainSolving()
+end
 function c56111151.counter(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c56111151.cfilter,nil)
 	if ct>0 then
+		e:GetHandler():AddCounter(0x37,ct,true)
+	end
+end
+function c56111151.countercon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(56111151)>0
+end
+function c56111151.counter2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffectLabel(56111151)
+	e:GetHandler():ResetFlagEffect(56111151)
+	if ct then
 		e:GetHandler():AddCounter(0x37,ct,true)
 	end
 end

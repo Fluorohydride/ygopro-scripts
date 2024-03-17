@@ -11,11 +11,20 @@ function c11501629.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCountLimit(1)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e2:SetCode(EVENT_DESTROY)
 	e2:SetCondition(c11501629.ctcon)
 	e2:SetOperation(c11501629.ctop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_DESTROY,c11501629.ctfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_SZONE)
+	e0:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
+	e0:SetCondition(c11501629.ctcon2)
+	e0:SetOperation(c11501629.ctop2)
+	c:RegisterEffect(e0)
 	--damage
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(11501629,0))
@@ -31,12 +40,12 @@ function c11501629.initial_effect(c)
 	e3:SetOperation(c11501629.damop)
 	c:RegisterEffect(e3)
 end
-function c11501629.ctfilter(c,tp)
+function c11501629.ctfilter(c,e,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsReason(REASON_EFFECT)
 end
 function c11501629.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	local ct=eg:FilterCount(c11501629.ctfilter,nil,tp)
-	if ct>0 and e:GetHandler():IsCanAddCounter(0x2d,ct) then
+	local ct=eg:FilterCount(c11501629.ctfilter,nil,e,tp)
+	if ct>0 and e:GetHandler():IsCanAddCounter(0x2d,ct) and not Duel.IsChainSolving() then
 		e:SetLabel(ct)
 		return true
 	else
@@ -45,6 +54,19 @@ function c11501629.ctcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11501629.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x2d,e:GetLabel())
+end
+function c11501629.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetFlagEffect(23160024)>0 and e:GetHandler():IsCanAddCounter(0x2d,1) then
+		return true
+	else
+		e:GetHandler():ResetFlagEffect(23160024)
+		return false
+	end
+end
+function c11501629.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(23160024)
+	e:GetHandler():ResetFlagEffect(23160024)
+	e:GetHandler():AddCounter(0x2d,ct)
 end
 function c11501629.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_STANDBY

@@ -26,6 +26,14 @@ function c1050355.initial_effect(c)
 	e3:SetCondition(c1050355.damcon)
 	e3:SetOperation(c1050355.damop)
 	c:RegisterEffect(e3)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c1050355.cfilter2)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetCode(EVENT_CHAIN_SOLVED)
+	e4:SetRange(LOCATION_FZONE)
+	e4:SetCondition(c1050355.damcon2)
+	e4:SetOperation(c1050355.damop2)
+	c:RegisterEffect(e4)
 end
 function c1050355.actfilter(c,tp)
 	return c:IsCode(74665651) and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
@@ -54,14 +62,23 @@ end
 function c1050355.cfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x131) and c:IsAttribute(ATTRIBUTE_DARK)
 end
-function c1050355.cfilter2(c,tp)
-	return c:IsSummonPlayer(tp)
+function c1050355.cfilter2(c,e,tp,eg)
+	return c:IsSummonPlayer(1-tp)
+		and Duel.IsExistingMatchingCard(c1050355.cfilter1,tp,LOCATION_MZONE,0,1,eg)
 end
 function c1050355.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c1050355.cfilter1,tp,LOCATION_MZONE,0,1,nil)
-		and eg:IsExists(c1050355.cfilter2,1,nil,1-tp)
+	return eg:IsExists(c1050355.cfilter2,1,nil,e,tp,eg) and not Duel.IsChainSolving()
 end
 function c1050355.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,1050355)
 	Duel.Damage(1-tp,300,REASON_EFFECT)
+end
+function c1050355.damcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(1050355)>0
+end
+function c1050355.damop2(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,1050355)
+	local ct=e:GetHandler():GetFlagEffect(1050355)
+	e:GetHandler():ResetFlagEffect(1050355)
+	Duel.Damage(1-tp,ct*300,REASON_EFFECT)
 end

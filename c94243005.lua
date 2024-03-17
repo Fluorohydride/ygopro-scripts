@@ -9,10 +9,20 @@ function c94243005.initial_effect(c)
 	--add counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetCode(EVENT_REMOVE)
+	e2:SetCondition(c94243005.ctcon2)
 	e2:SetOperation(c94243005.ctop)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_REMOVE,c94243005.ctfilter)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_CHAIN_SOLVED)
+	e5:SetRange(LOCATION_FZONE)
+	e5:SetCondition(c94243005.ctcon2)
+	e5:SetOperation(c94243005.ctop2)
+	c:RegisterEffect(e5)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -44,11 +54,24 @@ function c94243005.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c94243005.ctfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsPreviousLocation(0x80+LOCATION_SZONE) and not c:IsType(TYPE_TOKEN)
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsPreviousLocation(0x80+LOCATION_SZONE)
+end
+function c94243005.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c94243005.ctfilter,1,nil) and not Duel.IsChainSolving()
 end
 function c94243005.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c94243005.ctfilter,nil)
 	if ct>0 then
+		e:GetHandler():AddCounter(0x13,ct)
+	end
+end
+function c94243005.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(94243005)>0
+end
+function c94243005.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffectLabel(94243005)
+	e:GetHandler():ResetFlagEffect(94243005)
+	if ct then
 		e:GetHandler():AddCounter(0x13,ct)
 	end
 end

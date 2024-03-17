@@ -4,16 +4,36 @@ function c91438994.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCondition(c91438994.addcon1)
 	e1:SetOperation(c91438994.addc1)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_REMOVE)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCondition(c91438994.addcon2)
 	e2:SetOperation(c91438994.addc2)
 	c:RegisterEffect(e2)
+	aux.RegisterEachTimeEvent(c,EVENT_TO_GRAVE,c91438994.filter1,nil,LOCATION_MZONE,91438994)
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e6:SetCode(EVENT_CHAIN_SOLVED)
+	e6:SetRange(LOCATION_MZONE)
+	e6:SetCondition(c91438994.addcon3)
+	e6:SetOperation(c91438994.addc3)
+	c:RegisterEffect(e6)
+	aux.RegisterEachTimeEvent(c,EVENT_REMOVE,c91438994.filter2,nil,LOCATION_MZONE,91438995)
+	local e7=Effect.CreateEffect(c)
+	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e7:SetCode(EVENT_CHAIN_SOLVED)
+	e7:SetRange(LOCATION_MZONE)
+	e7:SetCondition(c91438994.addcon4)
+	e7:SetOperation(c91438994.addc4)
+	c:RegisterEffect(e7)
 	--attackup
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -40,21 +60,39 @@ function c91438994.initial_effect(c)
 	e5:SetLabelObject(e4)
 	c:RegisterEffect(e5)
 end
-function c91438994.filter1(c,tp)
+function c91438994.filter1(c,e,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
-function c91438994.addc1(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c91438994.filter1,1,nil,tp) then
-		e:GetHandler():AddCounter(0xa,1)
-	end
+function c91438994.addcon1(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c91438994.filter1,1,nil,e,tp) and not Duel.IsChainSolving()
 end
-function c91438994.filter2(c,tp)
+function c91438994.addc1(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():AddCounter(0xa,1)
+end
+function c91438994.filter2(c,e,tp)
 	return c:IsPreviousControler(1-tp) and c:IsPreviousLocation(LOCATION_GRAVE)
 end
+function c91438994.addcon2(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c91438994.filter2,1,nil,e,tp) and not Duel.IsChainSolving()
+end
 function c91438994.addc2(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c91438994.filter2,1,nil,tp) then
-		e:GetHandler():AddCounter(0xa,2)
-	end
+	e:GetHandler():AddCounter(0xa,2)
+end
+function c91438994.addcon3(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(91438994)>0
+end
+function c91438994.addc3(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(91438994)
+	e:GetHandler():ResetFlagEffect(91438994)
+	e:GetHandler():AddCounter(0xa,ct)
+end
+function c91438994.addcon4(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(91438995)>0
+end
+function c91438994.addc4(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(91438995)
+	e:GetHandler():ResetFlagEffect(91438995)
+	e:GetHandler():AddCounter(0xa,ct*2)
 end
 function c91438994.attackup(e,c)
 	return c:GetCounter(0xa)*100

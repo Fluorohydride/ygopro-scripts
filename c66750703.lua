@@ -9,13 +9,24 @@ function c66750703.initial_effect(c)
 	--add counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetRange(LOCATION_FZONE)
+	e2:SetCondition(c66750703.ctcon)
 	e2:SetOperation(c66750703.ctop)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
+	aux.RegisterEachTimeEvent(c,EVENT_SUMMON_SUCCESS,c66750703.cfilter)
+	aux.RegisterEachTimeEvent(c,EVENT_SPSUMMON_SUCCESS,c66750703.cfilter)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAIN_SOLVED)
+	e0:SetRange(LOCATION_FZONE)
+	e0:SetCondition(c66750703.ctcon2)
+	e0:SetOperation(c66750703.ctop2)
+	c:RegisterEffect(e0)
 	--actlimit
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(66750703,0))
@@ -51,10 +62,19 @@ end
 function c66750703.ctfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x79)
 end
+function c66750703.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c66750703.ctfilter,1,nil) and not Duel.IsChainSolving()
+end
 function c66750703.ctop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c66750703.ctfilter,1,nil) then
-		e:GetHandler():AddCounter(0x56,1)
-	end
+	e:GetHandler():AddCounter(0x56,1)
+end
+function c66750703.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(66750703)>0
+end
+function c66750703.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetFlagEffect(66750703)
+	e:GetHandler():ResetFlagEffect(66750703)
+	e:GetHandler():AddCounter(0x56,ct)
 end
 function c66750703.actcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x56,2,REASON_COST) end

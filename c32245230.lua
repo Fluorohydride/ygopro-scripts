@@ -10,10 +10,20 @@ function c32245230.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_DESTROYED)
 	e1:SetRange(LOCATION_SZONE)
+	e1:SetCondition(c32245230.ctcon)
 	e1:SetOperation(c32245230.ctop)
 	c:RegisterEffect(e1)
+	aux.RegisterEachTimeEvent(c,EVENT_DESTROYED,c32245230.cfilter)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_CHAIN_SOLVED)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c32245230.ctcon2)
+	e3:SetOperation(c32245230.ctop2)
+	c:RegisterEffect(e3)
 	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(32245230,0))
@@ -29,13 +39,21 @@ function c32245230.initial_effect(c)
 	e2:SetOperation(c32245230.spop)
 	c:RegisterEffect(e2)
 end
-function c32245230.cfilter(c,tp)
+function c32245230.cfilter(c,e,tp)
 	return c:IsPreviousControler(tp) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
+function c32245230.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c32245230.cfilter,1,nil,e,tp) and not Duel.IsChainSolving()
+end
 function c32245230.ctop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c32245230.cfilter,1,nil,tp) then
-		e:GetHandler():AddCounter(0x5e,1)
-	end
+	e:GetHandler():AddCounter(0x5e,1)
+end
+function c32245230.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(32245230)>0
+end
+function c32245230.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():ResetFlagEffect(32245230)
+	e:GetHandler():AddCounter(0x5e,1)
 end
 function c32245230.cfilter2(c,tp)
 	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsSummonPlayer(1-tp)

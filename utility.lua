@@ -1544,3 +1544,104 @@ end
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
 end
+---
+---@param c Card
+---@param event integer
+---@param func function
+---@param groups? Group|nil
+---@param location? integer|nil
+---@param code? integer
+---@param reset_flag? integer
+function Auxiliary.RegisterEachTimeEvent(c,event,func,groups,location,code,reset_flag)
+	if reset_flag==nil and not location then
+		if c:GetOriginalType()&TYPE_MONSTER>0 then location=LOCATION_MZONE
+		elseif c:GetOriginalType()&TYPE_FIELD>0 then location=LOCATION_FZONE
+		elseif c:GetOriginalType()&(TYPE_SPELL+TYPE_TRAP)>0 then location=LOCATION_SZONE end
+	end
+	code=code or c:GetOriginalCode()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetCode(event)
+	e1:SetCondition(Auxiliary.EachTimeEventCondition(func))
+	e1:SetOperation(Auxiliary.EachTimeEventOperation(func,code,reset_flag))
+	e1:SetLabelObject(groups)
+	if reset_flag==nil then
+		e1:SetRange(location)
+		c:RegisterEffect(e1)
+	else
+		e1:SetReset(reset_flag)
+		Duel.RegisterEffect(e1,c:GetControler())
+	end
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetCode(EVENT_BREAK_EFFECT)
+	e2:SetOperation(Auxiliary.EachTimeEventBreak)
+	e2:SetLabelObject(e1)
+	if reset_flag==nil then
+		e2:SetRange(location)
+		c:RegisterEffect(e2)
+	else
+		e2:SetReset(reset_flag)
+		Duel.RegisterEffect(e2,c:GetControler())
+	end
+	return e1
+end
+function Auxiliary.EachTimeEventCondition(func)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				return eg:IsExists(func,1,nil,e,tp,eg,ep,ev,re,r,rp) and Duel.IsChainSolving()
+			end
+end
+function Auxiliary.EachTimeEventOperation(func,code,reset_flag)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local g=eg:Filter(func,nil,e,tp,eg,ep,ev,re,r,rp)
+				local groups=e:GetLabelObject()
+				if reset_flag==nil then
+					local c=e:GetHandler()
+					if c:GetFlagEffect(code)==0 then
+						e:SetLabel(0)
+						if groups~=nil then groups:Clear() end
+					end
+					if e:GetLabel()==0 then
+						e:SetLabel(1)
+						local flag=c:GetFlagEffectLabel(code)
+						if not flag then
+							c:RegisterFlagEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1,#g)
+						else
+							c:SetFlagEffectLabel(code,flag+#g)
+							c:RegisterFlagEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+						end
+					else
+						local flag=c:GetFlagEffectLabel(code)
+						if flag then
+							c:SetFlagEffectLabel(code,flag+#g)
+						end
+					end
+				else
+					if Duel.GetFlagEffect(tp,code)==0 then
+						e:SetLabel(0)
+						if groups~=nil then groups:Clear() end
+					end
+					if e:GetLabel()==0 then
+						e:SetLabel(1)
+						local flag=Duel.GetFlagEffectLabel(tp,code)
+						if not flag then
+							Duel.RegisterFlagEffect(tp,code,RESET_CHAIN,0,1,#g)
+						else
+							Duel.SetFlagEffectLabel(tp,code,flag+#g)
+							Duel.RegisterFlagEffect(tp,code,RESET_CHAIN,0,1)
+						end
+					else
+						local flag=Duel.GetFlagEffectLabel(tp,code)
+						if flag then
+							Duel.SetFlagEffectLabel(tp,code,flag+#g)
+						end
+					end
+				end
+				if groups~=nil then groups:Merge(g) end
+			end
+end
+function Auxiliary.EachTimeEventBreak(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():SetLabel(0)
+end
