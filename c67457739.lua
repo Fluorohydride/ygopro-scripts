@@ -40,7 +40,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local sg=Group.CreateGroup()
 	while true do
-		g=Duel.GetMatchingGroup(s.desfilter2,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,sg,e,tp,gc1,gc2)
+		local g=Duel.GetMatchingGroup(s.desfilter2,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,sg,e,tp,gc1,gc2)
 		if g:IsContains(e:GetHandler()) then
 			g:RemoveCard(e:GetHandler())
 		end
