@@ -35,7 +35,7 @@ function s.initial_effect(c)
 	end
 end
 function s.spcfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(tp)
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(tp) and c:IsType(TYPE_MONSTER)
 end
 function s.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0
