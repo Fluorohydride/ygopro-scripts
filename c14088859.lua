@@ -51,10 +51,12 @@ function c14088859.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(c14088859.filter1,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_DECK,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c14088859.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,chkf)
 	if sg:GetCount()>0 then
+		::cancel::
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf,true)
+		if #mat<2 then goto cancel end
 		Duel.SendtoGrave(mat,REASON_EFFECT)
 		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
