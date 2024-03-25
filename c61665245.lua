@@ -57,7 +57,7 @@ function c61665245.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.SpecialSummonStep(tc,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE,zone) then
 		makeDisable(tc)
 		local g=Duel.GetMatchingGroup(c61665245.spfilter2,tp,LOCATION_DECK,0,nil,e,tp,tc:GetRace())
-		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(61665245,1)) then
+		if #g>0 and Duel.GetMZoneCount(tp)>0 and Duel.SelectYesNo(tp,aux.Stringid(61665245,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=g:Select(tp,1,1,nil):GetFirst()
