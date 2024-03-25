@@ -36,7 +36,7 @@ function c61665245.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61665245.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local zone=e:GetHandler():GetLinkedZone(1-tp)
+	local zone=c:GetLinkedZone(1-tp)
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,c61665245.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone):GetFirst()
