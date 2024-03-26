@@ -1500,6 +1500,170 @@ function Auxiliary.SameValueCheck(g,f)
 	end
 	return v~=0
 end
+---Use `Auxiliary.SelectMultipleLocationCard` instead
+---@param tp integer
+---@param filter function|nil
+---@param player integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+---@return boolean
+function Auxiliary.SelectDeckCard(tp,filter,player,location_s,location_o,min,max,ex,...)
+	local from_deck=Duel.GetMatchingGroup(filter,tp,LOCATION_DECK,0,ex,...)
+	local from_other=Duel.GetMatchingGroup(filter,player,location_s,location_o,ex,...)
+	local selected=Group.CreateGroup()
+	local viewed_deck=false
+	local shuffle=false
+	if #from_other>0 and #from_deck>0 then
+		local cover_card=Duel.GetDecktopGroup(1-tp,1):GetFirst()
+		if not cover_card then
+			cover_card=from_deck:GetFirst()
+		end
+		while #selected<max do
+			local finish=#selected>=min and #selected<=max
+			if viewed_deck then
+				if #selected==0 then
+					selected=(from_deck+from_other):Select(tp,min,max,nil)
+					break
+				end
+				local tc=(from_deck+from_other-selected):SelectUnselect(selected,tp,finish,false,min,max)
+				if not tc then break end
+				if not selected:IsContains(tc) then
+					selected:AddCard(tc)
+				else
+					selected:RemoveCard(tc)
+				end
+			else
+				local tc=(from_other-selected+cover_card):SelectUnselect(selected,tp,finish,false,min,max)
+				if not tc then break end
+				if tc==cover_card then
+					viewed_deck=true
+				else
+					if not selected:IsContains(tc) then
+						selected:AddCard(tc)
+					else
+						selected:RemoveCard(tc)
+					end
+				end
+			end
+		end
+	elseif #from_deck>0 then
+		selected=from_deck:Select(tp,min,max,nil)
+		viewed_deck=true
+	else
+		selected=from_other:Select(tp,min,max,nil)
+		viewed_deck=false
+	end
+	if viewed_deck and not selected:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
+		shuffle=true
+	end
+	return selected, shuffle
+end
+---Select cards from multiple locations including Field or Deck
+---@param tp integer
+---@param filter function|nil
+---@param player integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+---@return boolean
+function Auxiliary.SelectMultipleLocationCard(tp,filter,player,location_s,location_o,min,max,ex,...)
+	local selected=Group.CreateGroup()
+	local shuffle=false
+	if tp~=0 and tp~=1 or player~=0 and player~=1 then
+		return selected, shuffle
+	end
+	if tp==player and location_o&LOCATION_DECK~=0 or tp~=player and location_s&LOCATION_DECK~=0 then
+		return selected, shuffle
+	end
+	local field_s=location_s&LOCATION_ONFIELD
+	local field_o=location_o&LOCATION_ONFIELD
+	local field_group=Duel.GetMatchingGroup(filter,player,field_s,field_o,ex,...)
+	local other_s=location_s&~LOCATION_ONFIELD
+	local other_o=location_o&~LOCATION_ONFIELD
+	local other_group=Duel.GetMatchingGroup(filter,player,other_s,other_o,ex,...)
+	if #field_group+#other_group<min then
+		return selected, shuffle
+	end
+	--on field
+	if #field_group>0  then
+		local fg_min=math.max(min-#other_group,0)
+		local fg=field_group:Select(tp,fg_min,max,nil)
+		selected:Merge(fg)
+	end
+	if #selected>=max then
+		return selected, shuffle
+	end
+	--not on field
+	local og_min=math.max(min-#selected,0)
+	local og_max=max-#selected
+	local select_deck=false
+	if tp==player and other_s&LOCATION_DECK~=0 then
+		other_s=other_s&~LOCATION_DECK
+		select_deck=true
+	elseif tp~=player and other_o&LOCATION_DECK~=0 then
+		other_o=other_o&~LOCATION_DECK
+		select_deck=true
+	end
+	if select_deck then
+		local dg,sh=Auxiliary.SelectDeckCard(tp,filter,player,other_s,other_o,og_min,og_max,ex,...)
+		shuffle=sh
+		selected:Merge(dg)
+	else
+		local og=other_group:Select(tp,og_min,og_max,nil)
+		selected:Merge(og)
+	end
+	return selected, shuffle
+end
+---Select target from multiple locations including Field
+---@param tp integer
+---@param filter function|nil
+---@param player integer
+---@param location_s integer
+---@param location_o integer
+---@param min integer
+---@param max integer
+---@param ex Card|Group|nil
+---@param ... any
+---@return Group
+function Auxiliary.SelectMultipleLocationTarget(tp,filter,player,location_s,location_o,min,max,ex,...)
+	local selected=Group.CreateGroup()
+	if location_s&LOCATION_DECK~=0 or location_o&LOCATION_DECK~=0 then
+		return selected
+	end
+	local field_s=location_s&LOCATION_ONFIELD
+	local field_o=location_o&LOCATION_ONFIELD
+	local field_count=Duel.GetTargetCount(filter,player,field_s,field_o,ex,...)
+	local other_s=location_s&~LOCATION_ONFIELD
+	local other_o=location_o&~LOCATION_ONFIELD
+	local other_count=Duel.GetTargetCount(filter,player,other_s,other_o,ex,...)
+	if field_count+other_count<min then
+		return selected
+	end
+	--field
+	if field_count>0 then
+		local fg_min=math.max(min-other_count,0)
+		local fg=Duel.SelectTarget(tp,filter,player,field_s,field_o,fg_min,max,ex,...)
+		selected:Merge(fg)
+	end
+	if #selected>=max then
+		return selected
+	end
+	--not on field
+	local og_min=math.max(min-#selected,0)
+	local og_max=max-#selected
+	local og=Duel.SelectTarget(tp,filter,player,other_s,other_o,og_min,og_max,ex,...)
+	selected:Merge(og)
+	return selected
+end
 ---
 ---@param tp integer
 ---@return boolean
@@ -1523,6 +1687,60 @@ function Auxiliary.GiveUpNormalDraw(e,tp,property)
 	e1:SetValue(0)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
+end
+---Add EFFECT_TYPE_ACTIVATE effect to Equip Spell Cards without operation
+---@param c Card
+---@param is_self boolean
+---@param is_opponent boolean
+---@param filter function
+---@param eqlimit function|nil
+---@param pause? boolean
+---@param skip_target? boolean
+function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,pause,skip_target)
+	local value=(type(eqlimit)=="function") and eqlimit or 1
+	if pause==nil then pause=false end
+	if skip_target==nil then skip_target=false end
+	--Activate
+	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_EQUIP)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
+	if not skip_target then
+		e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
+	end
+	e1:SetOperation(Auxiliary.EquipSpellOperation(eqlimit))
+	if not pause then
+		c:RegisterEffect(e1)
+	end
+	--Equip limit
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_EQUIP_LIMIT)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetValue(value)
+	c:RegisterEffect(e2)
+	return e1
+end
+function Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit)
+	local loc1=is_self and LOCATION_MZONE or 0
+	local loc2=is_opponent and LOCATION_MZONE or 0
+	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+		if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() and (not eqlimit or eqlimit(e,chkc)) end
+		if chk==0 then return Duel.IsExistingTarget(filter,tp,loc1,loc2,1,nil) end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+		Duel.SelectTarget(tp,filter,tp,loc1,loc2,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	end
+end
+function Auxiliary.EquipSpellOperation(eqlimit)
+	return function (e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
+		local tc=Duel.GetFirstTarget()
+		if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and (not eqlimit or eqlimit(e,tc)) then
+			Duel.Equip(tp,c,tc)
+		end
+	end
 end
 ---If this face-up card would leave the field, banish it instead.
 ---@param c Card
