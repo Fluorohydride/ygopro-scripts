@@ -1524,6 +1524,60 @@ function Auxiliary.GiveUpNormalDraw(e,tp,property)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
 end
+---Add EFFECT_TYPE_ACTIVATE effect to Equip Spell Cards
+---@param c Card
+---@param is_self boolean
+---@param is_opponent boolean
+---@param filter function
+---@param eqlimit function|nil
+---@param pause? boolean
+---@param skip_target? boolean
+function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,pause,skip_target)
+	local value=(type(eqlimit)=="function") and eqlimit or 1
+	if pause==nil then pause=false end
+	if skip_target==nil then skip_target=false end
+	--Activate
+	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_EQUIP)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
+	if not skip_target then
+		e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
+	end
+	e1:SetOperation(Auxiliary.EquipSpellOperation(eqlimit))
+	if not pause then
+		c:RegisterEffect(e1)
+	end
+	--Equip limit
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_EQUIP_LIMIT)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetValue(value)
+	c:RegisterEffect(e2)
+	return e1
+end
+function Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit)
+	local loc1=is_self and LOCATION_MZONE or 0
+	local loc2=is_opponent and LOCATION_MZONE or 0
+	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+		if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() and (not eqlimit or eqlimit(e,chkc)) end
+		if chk==0 then return Duel.IsExistingTarget(filter,tp,loc1,loc2,1,nil) end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+		Duel.SelectTarget(tp,filter,tp,loc1,loc2,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	end
+end
+function Auxiliary.EquipSpellOperation(eqlimit)
+	return function (e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
+		local tc=Duel.GetFirstTarget()
+		if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and (not eqlimit or eqlimit(e,tc)) then
+			Duel.Equip(tp,c,tc)
+		end
+	end
+end
 ---If this face-up card would leave the field, banish it instead.
 ---@param c Card
 ---@param condition? function
