@@ -93,7 +93,7 @@ function s.mfilter(c)
 	return c:IsSetCard(0x1a2) and c:IsType(TYPE_MONSTER) and c:IsFaceup()
 end
 function s.syncheck(g,tp,syncard)
-	return g:IsExists(s.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
+	return g:IsExists(s.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard) and not g:IsExists(Card.IsFacedown,1,nil)
 end
 function s.scfilter(c,tp,mg)
 	return mg:CheckSubGroup(s.syncheck,2,#mg,tp,c)
