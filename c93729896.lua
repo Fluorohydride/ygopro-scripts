@@ -52,14 +52,26 @@ function s.spfilter(c,e,tp,eg)
 	return c:IsSetCard(0x1a5) and c:IsFaceupEx() and c:IsAbleToHand()
 		and eg:IsExists(s.filter,1,nil,lv,tp)
 end
+--check in Operation
+function s.spfilter2(c,e,tp,g)
+	local lv=c:GetLevel()
+	return c:IsSetCard(0x1a5) and c:IsFaceupEx() and c:IsAbleToHand()
+		and g:IsExists(s.filter2,1,nil,lv,tp)
+end
+function s.filter2(c,lv,tp)
+	return (c:IsLevel(lv-1) or c:IsLevel(lv+1))
+end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp,eg) end
-	e:SetLabelObject(eg)
+	local g1=eg:Filter(s.cfilter,nil,tp)
+	g1:KeepAlive()
+	e:SetLabelObject(g1)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
+	local g1=e:GetLabelObject()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,e,tp,e:GetLabelObject())
+	local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter2),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,e,tp,g1)
 	local tc=sg:GetFirst()
 	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc)
