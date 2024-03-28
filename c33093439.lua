@@ -40,7 +40,7 @@ function c33093439.spcon(e,c)
 end
 function c33093439.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c33093439.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)

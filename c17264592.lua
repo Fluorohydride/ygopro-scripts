@@ -8,6 +8,7 @@ function c17264592.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCountLimit(1,17264592+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c17264592.sprcon)
+	e1:SetTarget(c17264592.sprtg)
 	e1:SetOperation(c17264592.sprop)
 	c:RegisterEffect(e1)
 	--spsummon
@@ -25,21 +26,27 @@ function c17264592.initial_effect(c)
 	e3:SetCondition(c17264592.spcon)
 	c:RegisterEffect(e3)
 end
-function c17264592.thfilter(c,ft)
+function c17264592.thfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xb2) and not c:IsCode(17264592) and c:IsAbleToHandAsCost()
-		 and (ft>0 or c:GetSequence()<5)
+		 and Duel.GetMZoneCount(tp,c)>0
 end
 function c17264592.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.IsExistingMatchingCard(c17264592.thfilter,tp,LOCATION_MZONE,0,1,nil,ft)
+	return Duel.IsExistingMatchingCard(c17264592.thfilter,tp,LOCATION_MZONE,0,1,nil,tp)
+end
+function c17264592.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c17264592.thfilter,tp,LOCATION_MZONE,0,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c17264592.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c17264592.thfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
-	Duel.SendtoHand(g,nil,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoHand(g,nil,REASON_SPSUMMON)
 end
 function c17264592.spfilter(c,e,tp)
 	return c:IsSetCard(0xb2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsCode(17264592)

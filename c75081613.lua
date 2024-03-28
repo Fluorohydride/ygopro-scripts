@@ -14,6 +14,7 @@ function c75081613.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c75081613.spcon)
+	e2:SetTarget(c75081613.sptg)
 	e2:SetOperation(c75081613.spop)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
@@ -35,10 +36,18 @@ function c75081613.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c75081613.spfilter,tp,LOCATION_GRAVE,0,1,nil)
 end
-function c75081613.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c75081613.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c75081613.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c75081613.spfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c75081613.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 end
 function c75081613.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp

@@ -14,6 +14,7 @@ function c55589254.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c55589254.spcon)
+	e2:SetTarget(c55589254.sptg)
 	e2:SetOperation(c55589254.spop)
 	c:RegisterEffect(e2)
 	--destroy
@@ -29,23 +30,31 @@ function c55589254.initial_effect(c)
 	e3:SetOperation(c55589254.desop)
 	c:RegisterEffect(e3)
 end
-function c55589254.spfilter(c,att)
-	return c:IsAttribute(att) and c:IsAbleToRemoveAsCost()
+c55589254.spchecks=aux.CreateChecks(Card.IsAttribute,{ATTRIBUTE_WATER,ATTRIBUTE_WATER,ATTRIBUTE_FIRE})
+function c55589254.spfilter(c)
+	return c:IsAttribute(ATTRIBUTE_WATER+ATTRIBUTE_FIRE) and c:IsAbleToRemoveAsCost()
 end
 function c55589254.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(c55589254.spfilter,tp,LOCATION_GRAVE,0,nil)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c55589254.spfilter,tp,LOCATION_GRAVE,0,2,nil,ATTRIBUTE_WATER)
-		and Duel.IsExistingMatchingCard(c55589254.spfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_FIRE)
+		and g:CheckSubGroupEach(c55589254.spchecks)
+end
+function c55589254.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c55589254.spfilter,tp,LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroupEach(tp,c55589254.spchecks,true)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c55589254.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c55589254.spfilter,tp,LOCATION_GRAVE,0,2,2,nil,ATTRIBUTE_WATER)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c55589254.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_FIRE)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c55589254.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

@@ -16,6 +16,7 @@ function s.initial_effect(c)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(s.spcon)
+	e1:SetTarget(s.sptg)
 	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
 	--search
@@ -46,9 +47,17 @@ function s.spcon(e,c)
 	local tp=c:GetControler()
 	return Duel.CheckReleaseGroupEx(tp,s.cfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
-function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(s.cfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroupEx(tp,s.cfilter,1,1,REASON_SPSUMMON,false,nil,tp)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

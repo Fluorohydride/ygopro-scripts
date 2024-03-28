@@ -8,6 +8,7 @@ function c38837163.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c38837163.spcon)
+	e1:SetTarget(c38837163.sptg)
 	e1:SetOperation(c38837163.spop)
 	c:RegisterEffect(e1)
 	--effect
@@ -30,10 +31,20 @@ function c38837163.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c38837163.spfilter,tp,LOCATION_GRAVE,0,2,nil)
 end
-function c38837163.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c38837163.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c38837163.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c38837163.spfilter,tp,LOCATION_GRAVE,0,2,2,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local sg=g:CancelableSelect(tp,2,2,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c38837163.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c38837163.cfilter(c)
 	return c:IsRace(RACE_BEASTWARRIOR) and c:IsDiscardable()

@@ -8,6 +8,7 @@ function c49930315.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,49930315+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c49930315.spcon)
+	e1:SetTarget(c49930315.sptg)
 	e1:SetOperation(c49930315.spop)
 	c:RegisterEffect(e1)
 	--tuner
@@ -30,10 +31,18 @@ function c49930315.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c49930315.cfilter,c:GetControler(),LOCATION_HAND,0,1,c)
 end
-function c49930315.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c49930315.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c49930315.cfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local g=Duel.SelectMatchingCard(tp,c49930315.cfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.SendtoGrave(g,REASON_DISCARD+REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c49930315.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_DISCARD+REASON_SPSUMMON)
 end
 function c49930315.tncon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)

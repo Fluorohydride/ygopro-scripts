@@ -14,6 +14,7 @@ function c41782653.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c41782653.sprcon)
+	e2:SetTarget(c41782653.sprtg)
 	e2:SetOperation(c41782653.sprop)
 	c:RegisterEffect(e2)
 	--negate
@@ -51,11 +52,21 @@ function c41782653.sprcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c41782653.sprfilter,tp,LOCATION_REMOVED,0,5,nil)
 end
-function c41782653.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c41782653.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c41782653.sprfilter,tp,LOCATION_REMOVED,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,c41782653.sprfilter,tp,LOCATION_REMOVED,0,5,5,nil)
+	local sg=g:CancelableSelect(tp,5,5,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c41782653.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	Duel.HintSelection(g)
-	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c41782653.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp
