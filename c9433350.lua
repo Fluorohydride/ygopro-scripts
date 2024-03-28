@@ -55,7 +55,7 @@ function c9433350.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Group.CreateGroup()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local g1=Duel.GetMatchingGroup(c9433350.spfilter,tp,LOCATION_DECK,0,nil)
-		g1:Merge(g)
+		g:Merge(g1)
 	end
 	local g2=Duel.GetMatchingGroup(c9433350.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
 	g:Merge(g2)
