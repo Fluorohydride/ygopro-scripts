@@ -45,10 +45,10 @@ function c83589191.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local e2=Effect.CreateEffect(e:GetHandler())
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e2:SetCode(EFFECT_CHANGE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(HALF_DAMAGE)
+	e2:SetValue(c83589191.damval)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
@@ -70,10 +70,13 @@ function c83589191.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local e2=Effect.CreateEffect(e:GetHandler())
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e2:SetCode(EFFECT_CHANGE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(HALF_DAMAGE)
+	e2:SetValue(c83589191.damval)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
+end
+function c83589191.damval(e,re,val,r,rp,rc)
+	return math.floor(val/2)
 end
