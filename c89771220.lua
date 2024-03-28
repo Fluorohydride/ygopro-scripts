@@ -34,7 +34,7 @@ function c89771220.fselect(g,e,tp)
 		and Duel.IsExistingMatchingCard(c89771220.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,g)
 end
 function c89771220.spfilter(c,e,tp,g)
-	return c:IsCode(33250142) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsCode(33250142) and c:IsCanBeSpecialSummoned(e,0,tp,false,true)
 		and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 end
 function c89771220.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -55,7 +55,7 @@ function c89771220.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c89771220.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 		if #sg>0 then
-			Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
+			Duel.SpecialSummon(sg,0,tp,tp,false,true,POS_FACEUP)
 			sg:GetFirst():CompleteProcedure()
 		end
 	end

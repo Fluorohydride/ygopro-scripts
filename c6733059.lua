@@ -42,7 +42,9 @@ function c6733059.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		tc=tg:GetNext()
 	end
 	local pc=1
-	for i=1,12 do
+	local _,lvmax=tg:GetMaxGroup(Card.GetLevel)
+	local max=math.min(lvmax,255)
+	for i=1,max do
 		if lvt[i] then lvt[i]=nil lvt[pc]=i pc=pc+1 end
 	end
 	lvt[pc]=nil

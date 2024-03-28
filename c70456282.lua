@@ -20,6 +20,7 @@ function c70456282.initial_effect(c)
 	e2:SetOperation(c70456282.lvop)
 	c:RegisterEffect(e2)
 end
+c70456282.treat_itself_tuner=true
 function c70456282.spfilter(c,tp)
 	return c:IsSetCard(0x33)
 		and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())

@@ -27,6 +27,7 @@ function c65398390.initial_effect(c)
 	e2:SetOperation(c65398390.spop)
 	c:RegisterEffect(e2)
 end
+c65398390.treat_itself_tuner=true
 function c65398390.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetEquipCount()>0
 end

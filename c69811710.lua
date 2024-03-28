@@ -26,6 +26,7 @@ function c69811710.initial_effect(c)
 	e3:SetOperation(c69811710.spop)
 	c:RegisterEffect(e3)
 end
+c69811710.treat_itself_tuner=true
 function c69811710.tgfilter(c)
 	return c:IsSetCard(0x11b,0xfe) and c:IsAbleToGrave()
 end
