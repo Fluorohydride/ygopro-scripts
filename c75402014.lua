@@ -17,7 +17,6 @@ function c75402014.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
-	e2:SetCondition(aux.TRUE)
 	c:RegisterEffect(e2)
 	--disable
 	local e3=Effect.CreateEffect(c)
