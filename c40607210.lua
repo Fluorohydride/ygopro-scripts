@@ -25,12 +25,12 @@ function c40607210.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c40607210.cfilter(c,tp)
+	local typ,race=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
 	return c:IsLevelAbove(5) and c:IsRace(RACE_ZOMBIE) and c:IsControler(tp)
+		and typ&TYPE_MONSTER~=0 and race&RACE_ZOMBIE~=0
 end
 function c40607210.condition(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	return rc and rc:IsRace(RACE_ZOMBIE) and eg:IsExists(c40607210.cfilter,1,nil,tp)
-		and (re:GetCode()~=EFFECT_SPSUMMON_PROC or not rc:IsHasEffect(EFFECT_REVIVE_LIMIT))
+	return eg:IsExists(c40607210.cfilter,1,nil,tp)
 end
 function c40607210.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end

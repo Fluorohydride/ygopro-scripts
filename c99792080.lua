@@ -27,7 +27,8 @@ function c99792080.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99792080.dircon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER) and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x131) and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c99792080.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -22,9 +22,9 @@ function c54591086.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c54591086.rfilter,1,nil)
+		return Duel.CheckReleaseGroup(tp,c54591086.rfilter,1,nil)
 	end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c54591086.rfilter,1,7,nil)
+	local rg=Duel.SelectReleaseGroup(tp,c54591086.rfilter,1,7,nil)
 	e:SetLabel(rg:GetCount())
 	Duel.Release(rg,REASON_COST)
 end

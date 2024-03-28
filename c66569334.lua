@@ -34,10 +34,10 @@ function c66569334.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c66569334.cfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,c66569334.cfilter,1,nil,e,tp)
 	end
 	local c=e:GetHandler()
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c66569334.cfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(tp,c66569334.cfilter,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	local loc=nil
 	if tc:IsSummonLocation(LOCATION_EXTRA) then

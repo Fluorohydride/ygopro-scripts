@@ -25,8 +25,8 @@ function s.cfilter(c)
 	return c:IsLevel(10) and c:IsSetCard(0x21)
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)

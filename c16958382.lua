@@ -14,6 +14,7 @@ function c16958382.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c16958382.spcon)
+	e1:SetTarget(c16958382.sptg)
 	e1:SetOperation(c16958382.spop)
 	c:RegisterEffect(e1)
 	--selfdes
@@ -53,21 +54,28 @@ function c16958382.spcon(e,c)
 	local b2=Duel.IsExistingMatchingCard(c16958382.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
 	return (b1 or b2) and not Duel.IsExistingMatchingCard(c16958382.codefilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
-function c16958382.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c16958382.spfilter,tp,LOCATION_EXTRA,0,1,nil)
-	local b2=Duel.IsExistingMatchingCard(c16958382.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
-	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(48829461,0))) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tg=Duel.SelectMatchingCard(tp,c16958382.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
-		local te=tg:GetFirst():IsHasEffect(48829461,tp)
-		te:UseCountLimit(tp)
-		Duel.Remove(tg,POS_FACEUP,REASON_COST)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tc=Duel.SelectMatchingCard(tp,c16958382.spfilter,tp,LOCATION_EXTRA,0,1,1,nil):GetFirst()
-		Duel.Remove(tc,POS_FACEUP,REASON_COST)
+function c16958382.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Group.CreateGroup()
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+		local g1=Duel.GetMatchingGroup(c16958382.spfilter,tp,LOCATION_EXTRA,0,nil)
+		g:Merge(g1)
 	end
+	local g2=Duel.GetMatchingGroup(c16958382.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	g:Merge(g2)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		if g2:IsContains(tc) then
+			local te=tc:IsHasEffect(48829461,tp)
+			te:UseCountLimit(tp)
+		end
+		return true
+	else return false end
+end
+function c16958382.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local tc=e:GetLabelObject()
+	Duel.Remove(tc,POS_FACEUP,REASON_SPSUMMON)
 end
 function c16958382.descon(e)
 	return not Duel.IsEnvironment(27564031)

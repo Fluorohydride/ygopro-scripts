@@ -8,6 +8,7 @@ function c85679527.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c85679527.sprcon)
+	e1:SetTarget(c85679527.sprtg)
 	e1:SetOperation(c85679527.sprop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -31,12 +32,19 @@ function c85679527.sprcon(e,c)
 	local tp=c:GetControler()
 	return Duel.IsExistingMatchingCard(c85679527.sprfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,tp)
 end
-function c85679527.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c85679527.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c85679527.sprfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c85679527.sprfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp)
-	local rc=g:GetFirst()
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c85679527.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local rc=e:GetLabelObject()
 	local lv=rc:GetLevel()
-	Duel.SendtoGrave(rc,REASON_COST)
+	Duel.SendtoGrave(rc,REASON_SPSUMMON)
 	if not rc:IsType(TYPE_MONSTER) or lv<=0 then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -49,8 +57,8 @@ function c85679527.costfilter(c,tp)
 	return c:IsType(TYPE_EFFECT) and Duel.GetMZoneCount(tp,c,tp)>0
 end
 function c85679527.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c85679527.costfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c85679527.costfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c85679527.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c85679527.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c85679527.spfilter(c,e,tp)

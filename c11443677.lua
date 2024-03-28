@@ -18,6 +18,7 @@ function c11443677.initial_effect(c)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c11443677.sprcon)
+	e2:SetTarget(c11443677.sprtg)
 	e2:SetOperation(c11443677.sprop)
 	c:RegisterEffect(e2)
 	--immune
@@ -59,13 +60,21 @@ end
 function c11443677.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroup(REASON_SPSUMMON,tp,c11443677.sprfilter,1,nil,tp,c)
+	return Duel.CheckReleaseGroupEx(tp,c11443677.sprfilter,1,REASON_SPSUMMON,false,nil,tp,c)
+end
+function c11443677.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c11443677.sprfilter,nil,tp,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c11443677.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c11443677.sprfilter,1,1,nil,tp,c)
-	c:SetMaterial(g)
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=e:GetLabelObject()
+	c:SetMaterial(Group.FromCards(tc))
+	Duel.Release(tc,REASON_SPSUMMON)
 end
 function c11443677.efilter(e,te)
 	return te:IsActiveType(TYPE_TRAP)

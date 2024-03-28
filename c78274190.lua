@@ -59,10 +59,10 @@ function c78274190.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
 function c78274190.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0x9a) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x9a) end
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 	if ct>2 then ct=2 end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,ct,nil,0x9a)
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,ct,nil,0x9a)
 	local rct=Duel.Release(g,REASON_COST)
 	e:SetLabel(rct)
 end

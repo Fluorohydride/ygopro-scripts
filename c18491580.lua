@@ -9,6 +9,7 @@ function c18491580.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,18491580+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c18491580.hspcon)
+	e1:SetTarget(c18491580.hsptg)
 	e1:SetOperation(c18491580.hspop)
 	c:RegisterEffect(e1)
 	--spsummon
@@ -28,10 +29,19 @@ end
 function c18491580.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.CheckReleaseGroupEx(REASON_SPSUMMON,tp,c18491580.hspfilter,1,c,tp)
+	return Duel.CheckReleaseGroupEx(tp,c18491580.hspfilter,1,REASON_SPSUMMON,true,c,tp)
+end
+function c18491580.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,true,REASON_SPSUMMON):Filter(c18491580.hspfilter,c,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c18491580.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local sg=Duel.SelectReleaseGroupEx(REASON_SPSUMMON,tp,c18491580.hspfilter,1,1,c,tp)
+	local sg=e:GetLabelObject()
 	Duel.Release(sg,REASON_SPSUMMON)
 end
 function c18491580.spcon(e,tp,eg,ep,ev,re,r,rp)

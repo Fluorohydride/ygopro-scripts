@@ -8,6 +8,7 @@ function c81146288.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c81146288.spcon)
+	e1:SetTarget(c81146288.sptg)
 	e1:SetOperation(c81146288.spop)
 	c:RegisterEffect(e1)
 	--negate
@@ -27,17 +28,24 @@ end
 function c81146288.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(c81146288.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c81146288.spfilter,tp,LOCATION_HAND,0,1,c)
-		and Duel.IsExistingMatchingCard(c81146288.spfilter,tp,LOCATION_GRAVE,0,1,nil)
+		and g:CheckSubGroup(aux.gfcheck,2,2,Card.IsLocation,LOCATION_HAND,LOCATION_GRAVE)
+end
+function c81146288.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c81146288.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,true,2,2,Card.IsLocation,LOCATION_HAND,LOCATION_GRAVE)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c81146288.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c81146288.spfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c81146288.spfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c81146288.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end

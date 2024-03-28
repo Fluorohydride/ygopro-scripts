@@ -3,7 +3,7 @@ function c464362.initial_effect(c)
 	c:SetUniqueOnField(1,0,464362)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFunRep(c,30068120,aux.FilterBoolFunction(Card.IsFusionSetCard,0xa9),1,63,true,true)
+	aux.AddFusionProcCodeFunRep(c,30068120,aux.FilterBoolFunction(Card.IsFusionSetCard,0xa9),1,127,true,true)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_DESTROY)

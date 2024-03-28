@@ -42,8 +42,8 @@ function c69145169.costfilter(c,tp)
 end
 function c69145169.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,69145170)==0
-		and Duel.CheckReleaseGroup(REASON_COST,tp,c69145169.costfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c69145169.costfilter,1,1,nil,tp)
+		and Duel.CheckReleaseGroup(tp,c69145169.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c69145169.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	--cannot attack
 	local e1=Effect.CreateEffect(e:GetHandler())

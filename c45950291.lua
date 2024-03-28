@@ -64,12 +64,12 @@ function c45950291.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c45950291.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
-		and Duel.GetDrawCount(tp)>0
+	return tp==Duel.GetTurnPlayer()
 end
 function c45950291.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 end
-	local e1=Effect.CreateEffect(e:GetHandler())
+	if chk==0 then return aux.IsPlayerCanNormalDraw(tp) and Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 end
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_OATH)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -78,38 +78,25 @@ function c45950291.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetTarget(c45950291.splimit)
 	Duel.RegisterEffect(e1,tp)
 	--cant spsummon from main deck check
-	local e2=Effect.CreateEffect(e:GetHandler())
+	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_OATH)
 	e2:SetCode(63060238)
 	e2:SetTargetRange(1,0)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
+	aux.GiveUpNormalDraw(e,tp,EFFECT_FLAG_OATH)
 end
 function c45950291.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not se:GetHandler():IsCode(45950291)
 end
 function c45950291.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
-	local dt=Duel.GetDrawCount(tp)
-	if dt~=0 then
-		aux.DrawReplaceCount=0
-		aux.DrawReplaceMax=dt
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_DRAW_COUNT)
-		e1:SetTargetRange(1,0)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW)
-		e1:SetValue(0)
-		Duel.RegisterEffect(e1,tp)
-	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c45950291.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount<=aux.DrawReplaceMax and c:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end

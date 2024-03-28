@@ -20,7 +20,8 @@ end
 c96015976.toss_dice=true
 function c96015976.filter(c)
 	local lv=c:GetLevel()
-	return c:IsFaceup() and lv~=0 and lv~=c:GetOriginalLevel()
+	local olv=c:GetOriginalLevel()
+	return c:IsFaceup() and lv~=0 and lv~=olv and olv~=0
 end
 function c96015976.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c96015976.filter(chkc) end

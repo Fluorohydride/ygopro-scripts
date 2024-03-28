@@ -47,8 +47,8 @@ function c41999284.cfilter(c,tp)
 	return c:IsLevel(1) and Duel.GetMZoneCount(tp,c)>0
 end
 function c41999284.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c41999284.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c41999284.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c41999284.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c41999284.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c41999284.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

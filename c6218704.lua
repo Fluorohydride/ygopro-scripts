@@ -20,6 +20,7 @@ function c6218704.initial_effect(c)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c6218704.hspcon)
+	e2:SetTarget(c6218704.hsptg)
 	e2:SetOperation(c6218704.hspop)
 	c:RegisterEffect(e2)
 	--pzone effect
@@ -78,12 +79,21 @@ function c6218704.hspfilter(c,tp,sc)
 end
 function c6218704.hspcon(e,c)
 	if c==nil then return true end
-	return c:IsFacedown() and Duel.CheckReleaseGroup(REASON_SPSUMMON,c:GetControler(),c6218704.hspfilter,1,nil,c:GetControler(),c)
+	return c:IsFacedown() and Duel.CheckReleaseGroupEx(c:GetControler(),c6218704.hspfilter,1,REASON_SPSUMMON,false,nil,c:GetControler(),c)
+end
+function c6218704.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c6218704.hspfilter,nil,tp,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c6218704.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(REASON_SPSUMMON,tp,c6218704.hspfilter,1,1,nil,tp,c)
-	c:SetMaterial(g)
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=e:GetLabelObject()
+	c:SetMaterial(Group.FromCards(tc))
+	Duel.Release(tc,REASON_SPSUMMON)
 end
 function c6218704.pcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_PZONE,0)>=2

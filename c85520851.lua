@@ -14,8 +14,8 @@ function c85520851.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c85520851.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0 and Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,nil) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,nil)
+	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0 and Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	local sg=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(sg,REASON_COST)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

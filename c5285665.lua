@@ -14,6 +14,7 @@ function c5285665.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c5285665.spcon)
+	e2:SetTarget(c5285665.sptg)
 	e2:SetOperation(c5285665.spop)
 	c:RegisterEffect(e2)
 	--change code
@@ -29,23 +30,35 @@ function c5285665.initial_effect(c)
 	e4:SetOperation(c5285665.desop)
 	c:RegisterEffect(e4)
 end
-function c5285665.spfilter(c,code)
-	return c:IsCode(code) and c:IsAbleToGraveAsCost()
+function c5285665.spfilter(c)
+	return c:IsCode(79979666,46411259) and c:IsAbleToGraveAsCost()
+end
+function c5285665.spfilter1(c,tp)
+	return c:IsCode(79979666) and c:IsLocation(LOCATION_MZONE) and Duel.GetMZoneCount(tp,c)>0
+end
+function c5285665.spfilter2(c)
+	return c:IsCode(46411259) and c:IsLocation(LOCATION_HAND)
 end
 function c5285665.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c5285665.spfilter,tp,LOCATION_MZONE,0,1,nil,79979666)
-		and Duel.IsExistingMatchingCard(c5285665.spfilter,tp,LOCATION_HAND,0,1,nil,46411259)
+	local g=Duel.GetMatchingGroup(c5285665.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+	return g:CheckSubGroup(aux.gffcheck,2,2,c5285665.spfilter1,tp,c5285665.spfilter2,nil)
+end
+function c5285665.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c5556499.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,aux.gffcheck,true,2,2,c5285665.spfilter1,tp,c5285665.spfilter2,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c5285665.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c5285665.spfilter,tp,LOCATION_MZONE,0,1,1,nil,79979666)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c5285665.spfilter,tp,LOCATION_HAND,0,1,1,nil,46411259)
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c5285665.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetHandler():GetBattleTarget()

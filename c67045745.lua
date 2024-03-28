@@ -15,20 +15,13 @@ function c67045745.initial_effect(c)
 	e2:SetValue(c67045745.indval)
 	c:RegisterEffect(e2)
 	--lv up
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_CHAINING)
-	e0:SetRange(LOCATION_MZONE)
-	e0:SetCondition(c67045745.spchk)
-	e0:SetOperation(aux.chainreg)
-	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(67045745,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
-	e3:SetCode(EVENT_CHAIN_SOLVED)
+	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c67045745.lvcon)
 	e3:SetOperation(c67045745.lvop)
 	c:RegisterEffect(e3)
@@ -53,11 +46,8 @@ function c67045745.indval(e,c)
 		return c:GetOriginalLevel()<lv
 	else return false end
 end
-function c67045745.spchk(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
-end
 function c67045745.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(1)>0
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
 end
 function c67045745.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

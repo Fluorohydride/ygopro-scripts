@@ -79,6 +79,10 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 				local cg=mat:Filter(Card.IsFacedown,nil)
 				Duel.ConfirmCards(1-tp,cg)
 			end
+			if mat:Filter(c55704856.cfilter,nil):GetCount()>0 then
+				local cg=mat:Filter(c55704856.cfilter,nil)
+				Duel.HintSelection(cg)
+			end
 			Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
@@ -101,6 +105,9 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 	end
 	aux.FCheckAdditional=nil
+end
+function c55704856.cfilter(c)
+	return c:IsLocation(LOCATION_REMOVED) or (c:IsLocation(LOCATION_MZONE) and c:IsFaceup())
 end
 function c55704856.ftarget(e,c)
 	return e:GetLabel()~=c:GetFlagEffectLabel(55704856)

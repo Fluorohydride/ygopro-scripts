@@ -59,11 +59,12 @@ function c67517351.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c67517351.cfilter(c,e)
+	local typ,rk=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RANK)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsCanBeEffectTarget(e)
+		and typ&TYPE_XYZ~=0 and rk>=10 and c:IsSpecialSummonSetCard(0x7f)
 end
 function c67517351.matcon(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	return rc and re:IsActivated() and rc:IsType(TYPE_XYZ) and rc:IsRankAbove(10) and rc:IsSetCard(0x7f) and eg:IsExists(c67517351.cfilter,1,nil,e)
+	return eg:IsExists(c67517351.cfilter,1,nil,e)
 end
 function c67517351.tgfilter(c,eg)
 	return eg:IsContains(c) and c:IsFaceup() and c:IsType(TYPE_XYZ)

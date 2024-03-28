@@ -51,11 +51,12 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
 end
-function s.cfilter(c,tp,re)
-	return re and re:IsActivated() and re:IsActiveType(TYPE_MONSTER) and c:IsSummonPlayer(1-tp)
+function s.cfilter(c,tp)
+	local typ,se,sp=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_REASON_EFFECT,SUMMON_INFO_REASON_PLAYER)
+	return se and typ&TYPE_MONSTER~=0 and se:IsActivated() and sp==1-tp
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,tp,re)
+	return eg:IsExists(s.cfilter,1,nil,tp)
 end
 function s.spfilter(c,e,tp,exc)
 	local b1=c:IsSetCard(0x145) and c:IsLocation(LOCATION_DECK)

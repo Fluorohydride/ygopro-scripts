@@ -56,9 +56,10 @@ function c37119142.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c37119142.thfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,check)
 	if e:GetLabel()==0 then
+		e:SetCategory(CATEGORY_TOHAND)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	else
-		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	end
 end
 function c37119142.thop(e,tp,eg,ep,ev,re,r,rp)

@@ -14,6 +14,7 @@ function c1686814.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c1686814.sprcon)
+	e2:SetTarget(c1686814.sprtg)
 	e2:SetOperation(c1686814.sprop)
 	c:RegisterEffect(e2)
 	--special summon
@@ -44,30 +45,33 @@ end
 function c1686814.sprfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(5) and c:IsAbleToGraveAsCost()
 end
-function c1686814.sprfilter1(c,tp,g,sc)
-	local lv=c:GetLevel()
-	return c:IsType(TYPE_TUNER) and g:IsExists(c1686814.sprfilter2,1,c,tp,c,sc,lv)
-end
-function c1686814.sprfilter2(c,tp,mc,sc,lv)
-	local sg=Group.FromCards(c,mc)
-	return c:IsLevel(lv) and not c:IsType(TYPE_TUNER)
-		and Duel.GetLocationCountFromEx(tp,tp,sg,sc)>0
+function c1686814.fselect(g,tp,sc)
+	if not aux.gffcheck(g,Card.IsType,TYPE_TUNER,aux.NOT(Card.IsType),TYPE_TUNER)
+		or Duel.GetLocationCountFromEx(tp,tp,g,sc)<=0 then return false end
+	local tc1=g:GetFirst()
+	local tc2=g:GetNext()
+	return tc1:IsLevel(tc2:GetLevel())
 end
 function c1686814.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetMatchingGroup(c1686814.sprfilter,tp,LOCATION_MZONE,0,nil)
-	return g:IsExists(c1686814.sprfilter1,1,nil,tp,g,c)
+	return g:CheckSubGroup(c1686814.fselect,2,2,tp,c)
 end
-function c1686814.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c1686814.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c1686814.sprfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=g:FilterSelect(tp,c1686814.sprfilter1,1,1,nil,tp,g,c)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=g:FilterSelect(tp,c1686814.sprfilter2,1,1,mc,tp,mc,c,mc:GetLevel())
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c1686814.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c1686814.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c1686814.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,tp)

@@ -18,7 +18,7 @@ function c45286019.counterfilter(c)
 	return c:IsSetCard(0x72)
 end
 function c45286019.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x72)
+	return e:GetHandler():IsSpecialSummonSetCard(0x72)
 end
 function c45286019.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(45286019,tp,ACTIVITY_SPSUMMON)==0 end

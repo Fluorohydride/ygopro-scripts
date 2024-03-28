@@ -14,6 +14,7 @@ function c95403418.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c95403418.spcon)
+	e2:SetTarget(c95403418.sptg)
 	e2:SetOperation(c95403418.spop)
 	c:RegisterEffect(e2)
 	--
@@ -62,11 +63,19 @@ function c95403418.spcon(e,c)
 	local ct=-ft+1
 	return mg:GetCount()>0 and (ft>0 or mg:IsExists(c95403418.mzfilter,ct,nil))
 end
-function c95403418.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c95403418.filter,tp,LOCATION_MZONE,0,nil)
+function c95403418.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c95403418.filter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=mg:SelectSubGroup(tp,aux.mzctcheck,false,1,#mg,tp)
-	local ct=Duel.SendtoGrave(g,REASON_COST)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,1,#g,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c95403418.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	local ct=Duel.SendtoGrave(g,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)
@@ -76,6 +85,7 @@ function c95403418.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e2)
+	g:DeleteGroup()
 end
 function c95403418.descon(e)
 	local tp=e:GetHandlerPlayer()

@@ -26,7 +26,7 @@ end
 function c64245689.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c64245689.spfilter(chkc,e,tp) end
 	local b1=Duel.IsExistingMatchingCard(c64245689.tgfilter,tp,LOCATION_DECK,0,1,nil)
-	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(c64245689.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) 
+	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(c64245689.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then

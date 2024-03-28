@@ -43,9 +43,9 @@ function c48214588.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c48214588.cfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,c48214588.cfilter,1,nil,e,tp)
 	end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c48214588.cfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(tp,c48214588.cfilter,1,1,nil,e,tp)
 	e:SetLabel(g:GetFirst():GetLevel())
 	Duel.Release(g,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
