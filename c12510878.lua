@@ -8,6 +8,7 @@ function c12510878.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c12510878.spcon)
+	e1:SetTarget(c12510878.sptg)
 	e1:SetOperation(c12510878.spop)
 	c:RegisterEffect(e1)
 	--draw
@@ -38,12 +39,24 @@ function c12510878.initial_effect(c)
 	e5:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e5)
 end
+function c12510878.spfilter(c,tp)
+	return c:IsFaceup() and c:IsCode(18036057) and Duel.GetMZoneCount(tp,c)>0
+end
 function c12510878.spcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroupEx(c:GetControler(),Card.IsCode,1,REASON_SPSUMMON,false,nil,18036057)
+	return Duel.CheckReleaseGroupEx(c:GetControler(),c12510878.spfilter,1,REASON_SPSUMMON,false,nil,c:GetControler())
+end
+function c12510878.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c12510878.spfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c12510878.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroupEx(c:GetControler(),Card.IsCode,1,1,REASON_SPSUMMON,false,nil,18036057)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c12510878.condition(e,tp,eg,ep,ev,re,r,rp)

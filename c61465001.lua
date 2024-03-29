@@ -64,7 +64,7 @@ function c61465001.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c61465001.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c61465001.descfilter1(c)

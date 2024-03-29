@@ -7,6 +7,7 @@ function c30794966.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetCondition(c30794966.hspcon)
+	e1:SetTarget(c30794966.hsptg)
 	e1:SetOperation(c30794966.hspop)
 	c:RegisterEffect(e1)
 	--destroy replace
@@ -19,26 +20,31 @@ function c30794966.initial_effect(c)
 	e2:SetOperation(c30794966.desrepop)
 	c:RegisterEffect(e2)
 end
-function c30794966.rfilter1(c,tp)
-	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingMatchingCard(c30794966.rfilter2,tp,LOCATION_GRAVE,0,1,c)
-end
-function c30794966.rfilter2(c)
-	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_NORMAL) and c:IsAbleToRemoveAsCost()
+function c30794966.rfilter(c)
+	return c:IsRace(RACE_DRAGON) and c:IsAbleToRemoveAsCost()
+		and (c:IsAttribute(ATTRIBUTE_LIGHT) or c:IsType(TYPE_NORMAL))
 end
 function c30794966.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(c30794966.rfilter,tp,LOCATION_GRAVE,0,nil)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c30794966.rfilter1,tp,LOCATION_GRAVE,0,1,nil,tp)
+		and g:CheckSubGroup(aux.gffcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,Card.IsType,TYPE_NORMAL)
+end
+function c30794966.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c30794966.rfilter,tp,LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gffcheck,true,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,Card.IsType,TYPE_NORMAL)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c30794966.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c30794966.rfilter1,tp,LOCATION_GRAVE,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c30794966.rfilter2,tp,LOCATION_GRAVE,0,1,1,g1:GetFirst())
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c30794966.repfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x69) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
