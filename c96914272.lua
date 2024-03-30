@@ -41,9 +41,9 @@ function c96914272.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	else return false end
 end
 function c96914272.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_SPSUMMON)
-	e:SetLabel(g:GetFirst():GetLevel())
+	local tc=e:GetLabelObject()
+	Duel.SendtoGrave(tc,REASON_SPSUMMON)
+	e:SetLabel(tc:GetLevel())
 end
 function c96914272.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
