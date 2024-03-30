@@ -29,13 +29,13 @@ function c48453776.initial_effect(c)
 	e3:SetOperation(c48453776.sgop)
 	c:RegisterEffect(e3)
 end
-c48453776.spchecks={c48453776.spfilter1,c48453776.spfilter2,c48453776.spfilter2,c48453776.spfilter2}
 function c48453776.spfilter1(c)
 	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_FAIRY)
 end
 function c48453776.spfilter2(c)
 	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FIEND)
 end
+c48453776.spchecks={c48453776.spfilter1,c48453776.spfilter2,c48453776.spfilter2,c48453776.spfilter2}
 function c48453776.spfilter(c)
 	return ((c:IsRace(RACE_FAIRY) and c:IsAttribute(ATTRIBUTE_LIGHT)) or (c:IsRace(RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK)))
 		and c:IsAbleToRemoveAsCost()
