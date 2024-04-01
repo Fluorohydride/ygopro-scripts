@@ -73,7 +73,9 @@ function s.damrop(e,tp,eg,ep,ev,re,r,rp)
 	local atk=bc:GetAttack()
 	local def=bc:GetDefense()
 	if atk<0 then atk=0 end
-	Duel.Damage(1-tp,atk,REASON_EFFECT,true)
-	Duel.Remove(bc,0,REASON_EFFECT)
+	if bc:IsControler(tp) or bc:IsFacedown() then return end
+	if Duel.Damage(1-tp,atk,REASON_EFFECT,true)~=0 then
+		Duel.Remove(bc,POS_FACEUP,REASON_EFFECT)
+	end
 	Duel.RDComplete()
 end
