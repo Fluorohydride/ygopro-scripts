@@ -17,6 +17,7 @@ function c15291624.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c15291624.spcon)
+	e2:SetTarget(c15291624.sptg)
 	e2:SetOperation(c15291624.spop)
 	c:RegisterEffect(e2)
 	--disable search
@@ -52,10 +53,19 @@ function c15291624.spcon(e,c)
 	return (Duel.GetCustomActivityCount(15291624,tp,ACTIVITY_CHAIN)~=0 or Duel.GetCustomActivityCount(15291624,1-tp,ACTIVITY_CHAIN)~=0)
 		and Duel.CheckReleaseGroupEx(tp,c15291624.spfilter,1,REASON_SPSUMMON,false,nil,c,tp)
 end
+function c15291624.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c15291624.spfilter,nil,c,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
 function c15291624.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroupEx(tp,c15291624.spfilter,1,1,REASON_SPSUMMON,false,nil,c,tp)
-	c:SetMaterial(g)
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=e:GetLabelObject()
+	c:SetMaterial(Group.FromCards(tc))
+	Duel.Release(tc,REASON_SPSUMMON)
 end
 function c15291624.repfilter(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemove()

@@ -1688,7 +1688,7 @@ function Auxiliary.GiveUpNormalDraw(e,tp,property)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
 end
----Add EFFECT_TYPE_ACTIVATE effect to Equip Spell Cards without operation
+---Add EFFECT_TYPE_ACTIVATE effect to Equip Spell Cards
 ---@param c Card
 ---@param is_self boolean
 ---@param is_opponent boolean

@@ -8,6 +8,7 @@ function c50426119.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c50426119.sprcon)
+	e1:SetTarget(c50426119.sprtg)
 	e1:SetOperation(c50426119.sprop)
 	c:RegisterEffect(e1)
 	--remove
@@ -33,10 +34,20 @@ function c50426119.sprcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c50426119.sprfilter,tp,LOCATION_GRAVE,0,2,nil)
 end
-function c50426119.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c50426119.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c50426119.sprfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c50426119.sprfilter,tp,LOCATION_GRAVE,0,2,2,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local sg=g:CancelableSelect(tp,2,2,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c50426119.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c50426119.rmfilter(c,atk)
 	return c:IsFaceup() and c:GetAttack()>atk and c:IsAbleToRemove()

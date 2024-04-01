@@ -180,7 +180,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 				local mg
 				local mgchk=false
 				if mg1 then
-					mg=mg1
+					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
 					mgchk=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
@@ -206,7 +206,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				local mg
 				local mgchk=false
 				if mg1 then
-					mg=mg1
+					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
 					mgchk=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
