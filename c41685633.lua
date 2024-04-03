@@ -45,17 +45,13 @@ function c41685633.sprfilter1(c,sc)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c41685633.fusioncodechk(c,codetab)
-	local chk=0
 	for i=1,#codetab do
 		if codetab[i]~=41685633 then
-			chk=1
+			return true
+			break
 		end
 	end
-	if chk==0 then
-		return false
-	else
-		return true
-	end
+	return false
 end
 function c41685633.sprfilter2(c)
 	local codetab={c:GetFusionCode()}
