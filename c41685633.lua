@@ -58,7 +58,7 @@ function c41685633.fusioncodechk(c,codetab)
 	end
 end
 function c41685633.sprfilter2(c)
-	local codetab={c:GetFusionCode()} 
+	local codetab={c:GetFusionCode()}
 	local codechk=c41685633.fusioncodechk(c,codetab)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFusionType(TYPE_FUSION) and codechk
 end
