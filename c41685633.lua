@@ -48,7 +48,6 @@ function c41685633.fusioncodechk(c,codetab)
 	for i=1,#codetab do
 		if codetab[i]~=41685633 then
 			return true
-			break
 		end
 	end
 	return false
