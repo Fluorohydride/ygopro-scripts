@@ -32,7 +32,6 @@ function c19508728.initial_effect(c)
 	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCondition(c19508728.tdcon)
 	e4:SetCost(c19508728.tdcost)
-	e4:SetTarget(c19508728.tdtg)
 	e4:SetOperation(c19508728.tdop)
 	c:RegisterEffect(e4)
 end
@@ -78,13 +77,11 @@ function c19508728.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,500) end
 	Duel.PayLPCost(tp,500)
 end
-function c19508728.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c19508728.tdop(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local opt=Duel.SelectOption(tp,aux.Stringid(19508728,0),aux.Stringid(19508728,1))
 	e:SetLabel(opt)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
-end
-function c19508728.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		Duel.SendtoDeck(e:GetHandler(),nil,e:GetLabel(),REASON_EFFECT)
 	end
