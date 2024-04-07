@@ -13,6 +13,7 @@ function c37649320.initial_effect(c)
 	c:RegisterEffect(e1)
 	--activate trap in hand
 	local e2=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(37649320,1))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetRange(LOCATION_MZONE)
