@@ -5,29 +5,17 @@ function c85551711.initial_effect(c)
 	c:EnableReviveLimit()
 	--act qp/trap in hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(85551711,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_HAND,0)
 	e1:SetCondition(c85551711.handcon)
+	e1:SetCost(c85551711.handcost)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	c:RegisterEffect(e2)
-	local e3=e1:Clone()
-	e3:SetCode(85551711)
-	c:RegisterEffect(e3)
-	--activate cost
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_ACTIVATE_COST)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e4:SetTargetRange(1,0)
-	e4:SetCost(c85551711.costchk)
-	e4:SetTarget(c85551711.costtg)
-	e4:SetOperation(c85551711.costop)
-	c:RegisterEffect(e4)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(85551711,1))
@@ -41,20 +29,10 @@ function c85551711.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c85551711.handcon(e)
-	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer() and e:GetHandler():GetOverlayCount()~=0
-end
-function c85551711.costtg(e,te,tp)
-	local tc=te:GetHandler()
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
-		and tc:IsLocation(LOCATION_HAND) and tc:GetEffectCount(85551711)>0
-		and ((tc:GetEffectCount(EFFECT_QP_ACT_IN_NTPHAND)<=tc:GetEffectCount(85551711) and tc:IsType(TYPE_QUICKPLAY))
-			or (tc:GetEffectCount(EFFECT_TRAP_ACT_IN_HAND)<=tc:GetEffectCount(85551711) and tc:IsType(TYPE_TRAP)))
 end
-function c85551711.costchk(e,te_or_c,tp)
-	return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
-end
-function c85551711.costop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,85551711)
+function c85551711.handcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 end
 function c85551711.spcon(e,tp,eg,ep,ev,re,r,rp)
