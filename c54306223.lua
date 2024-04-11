@@ -45,7 +45,7 @@ function c54306223.acop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsCanAddCounter(0x1009,1) and not tc:IsSetCard(0x50) then
 			local atk=tc:GetAttack()
 			tc:AddCounter(0x1009,1)
-			if atk>0 and tc:IsAttack(0) then
+			if atk>0 and not atk=0 and tc:IsAttack(0) then
 				g:AddCard(tc)
 			end
 		end
