@@ -1,6 +1,7 @@
 --Awakening of Veidos
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,3055018)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
