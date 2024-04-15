@@ -1,6 +1,6 @@
 --夢魔鏡の魔獣－パンタス
 function c99792080.initial_effect(c)
-	aux.AddCodeList(c,74665651)
+	aux.AddCodeList(c,74665651,62393472)
 	--direct attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(99792080,0))

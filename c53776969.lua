@@ -1,6 +1,6 @@
 --スケアクロー・ライトハート
 function c53776969.initial_effect(c)
-	aux.AddCodeList(c,56099748)
+	aux.AddCodeList(c,56099748,56063182)
 	--link summon
 	aux.AddLinkProcedure(c,c53776969.mfilter,1,1)
 	c:EnableReviveLimit()

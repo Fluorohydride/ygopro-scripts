@@ -1,5 +1,6 @@
 --Sin パラダイム・ドラゴン
 function c16958382.initial_effect(c)
+	aux.AddCodeList(c,27564031)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e0=Effect.CreateEffect(c)

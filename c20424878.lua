@@ -1,5 +1,6 @@
 --スプリガンズ・ロッキー
 function c20424878.initial_effect(c)
+	aux.AddCodeList(c,60884672)
 	--tohand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(20424878,0))

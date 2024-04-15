@@ -1,5 +1,6 @@
 --悪王アフリマ
 function c86377375.initial_effect(c)
+	aux.AddCodeList(c,59160188)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(86377375,0))

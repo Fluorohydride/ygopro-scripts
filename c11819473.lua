@@ -1,5 +1,6 @@
 --アルカナリーディング
 function c11819473.initial_effect(c)
+	aux.AddCodeList(c,73206827)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(11819473,0))
