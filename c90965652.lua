@@ -1,5 +1,6 @@
 --二量合成
 function c90965652.initial_effect(c)
+	aux.AddCodeList(c,65959844,25669282)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(90965652,0))
