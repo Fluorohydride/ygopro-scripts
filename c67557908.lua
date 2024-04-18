@@ -64,7 +64,9 @@ function c67557908.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67557908.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_XYZ) and c:GetPreviousOverlayCountOnField()>0
+	local ct=c:GetPreviousOverlayCountOnField()
+	e:SetLabel(ct)
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_XYZ) and ct>0
 end
 function c67557908.spfilter(c,e,tp)
 	return c:IsCode(94942656) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
