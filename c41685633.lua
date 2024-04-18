@@ -45,7 +45,12 @@ function c41685633.sprfilter1(c,sc)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c41685633.sprfilter2(c)
-	return c:IsLocation(LOCATION_MZONE) and c:IsFusionType(TYPE_FUSION) and not c:IsFusionCode(41685633)
+	if not (c:IsLocation(LOCATION_MZONE) and c:IsFusionType(TYPE_FUSION)) then return false end
+	if not c:IsFusionCode(41685633) then return true end
+	for i,code in ipairs({c:GetFusionCode()}) do
+		if code~=41685633 then return true end
+	end
+	return false
 end
 function c41685633.fselect(g,tp,sc)
 	return aux.gffcheck(g,Card.IsLocation,LOCATION_HAND,c41685633.sprfilter2,nil)
