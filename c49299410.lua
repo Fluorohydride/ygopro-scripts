@@ -62,6 +62,5 @@ function s.alop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function s.actlimit(e,re,tp)
-	local rc=re:GetHandler()
-	return rc:IsOriginalCodeRule(e:GetLabel()) and (rc:IsOnField() or re:IsHasType(EFFECT_TYPE_ACTIVATE))
+	return re:GetHandler():IsOriginalCodeRule(e:GetLabel()) and re:GetActivateLocation()==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
 end
