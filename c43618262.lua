@@ -35,6 +35,7 @@ function c43618262.cfop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.DisableShuffleCheck(true)
 			Duel.SendtoHand(tc,p,REASON_EFFECT)
 			Duel.ConfirmCards(1-p,tc)
+			Duel.ShuffleHand(p)
 		end
 	end
 end
