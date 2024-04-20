@@ -1,5 +1,6 @@
 --ヴァリアンツM－マーキス
 function c87897777.initial_effect(c)
+	aux.AddCodeList(c,75952542)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--spsummon

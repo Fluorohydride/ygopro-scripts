@@ -1,5 +1,6 @@
 --Sin Territory
 function c75223115.initial_effect(c)
+	aux.AddCodeList(c,27564031)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

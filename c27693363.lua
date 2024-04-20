@@ -1,5 +1,6 @@
 --ベアルクティ－ポラリィ
 function c27693363.initial_effect(c)
+	aux.AddCodeList(c,89264428)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

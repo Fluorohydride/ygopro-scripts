@@ -1,5 +1,6 @@
 --天斗輝巧極
 function c89771220.initial_effect(c)
+	aux.AddCodeList(c,89264428,58793369,97148796,27693363)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_REMOVE)

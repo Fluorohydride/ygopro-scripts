@@ -1,6 +1,7 @@
 --暗黒界の門番 ゼンタ
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,33017655)
 	c:SetSPSummonOnce(id)
 	--Search
 	local e1=Effect.CreateEffect(c)
