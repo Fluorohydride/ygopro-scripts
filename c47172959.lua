@@ -1,7 +1,6 @@
 --ユベル－Das Ewig Liebe Wächter
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,78371393)
 	c:EnableReviveLimit()
 	--material
 	aux.AddFusionProcFunFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1a5),s.matfilter,1,63,true)
