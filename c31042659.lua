@@ -1,5 +1,6 @@
 --覇蛇大公ゴルゴンダ
 function c31042659.initial_effect(c)
+	aux.AddCodeList(c,60884672)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31042659,0))

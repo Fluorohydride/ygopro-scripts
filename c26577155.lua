@@ -1,5 +1,6 @@
 --ドラグニティ－レムス
 function c26577155.initial_effect(c)
+	aux.AddCodeList(c,62265044)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
