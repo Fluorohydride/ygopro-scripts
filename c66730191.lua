@@ -39,7 +39,6 @@ function c66730191.activate(e,tp,eg,ep,ev,re,r,rp)
 			op=1
 		end
 	end
-	Duel.AdjustAll()
 	b2=Duel.GetMZoneCount(tp)>0 and Duel.IsExistingMatchingCard(c66730191.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
 	if b2 and (op==0 or ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and Duel.SelectYesNo(tp,aux.Stringid(66730191,2))) then
 		if op~=0 then
