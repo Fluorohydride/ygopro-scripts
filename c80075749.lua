@@ -17,6 +17,7 @@ function c80075749.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c80075749.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetDescription(aux.Stringid(80075749,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e1:SetTargetRange(LOCATION_HAND,0)

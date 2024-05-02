@@ -7,6 +7,7 @@ function c29762407.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Trap activate in set turn
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(29762407,1))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
