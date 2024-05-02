@@ -1,5 +1,6 @@
 --ローズ・プリンセス
 function c58062306.initial_effect(c)
+	aux.AddCodeList(c,84335863)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

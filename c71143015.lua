@@ -29,7 +29,8 @@ function c71143015.filter1(c,e,tp,m,f,chkf)
 	return res
 end
 function c71143015.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsFusionCode,1,nil,89631139,23995346)
+	return sg:IsExists(Card.IsFusionCode,1,nil,89631139) and aux.IsMaterialListCode(fc,89631139)
+		or sg:IsExists(Card.IsFusionCode,1,nil,23995346) and aux.IsMaterialListCode(fc,23995346)
 end
 function c71143015.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

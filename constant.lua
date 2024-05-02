@@ -1,5 +1,5 @@
 --min/max value
-MIN_ID		=1000		--4 digits, by DataManager::GetDesc()
+MIN_ID		=128		--0x80, by DataManager::GetDesc()
 MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 MAX_PARAMETER	=0xffff
