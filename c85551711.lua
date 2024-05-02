@@ -45,7 +45,6 @@ function c85551711.handcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
 	local g=Duel.GetMatchingGroup(c85551711.similarfilter,tp,LOCATION_MZONE,0,c,tp)
-	Duel.Damage(tp,#g+1,REASON_EFFECT)
 	if #g>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEATTACHFROM)
 		local tc=(g+c):Select(tp,1,1,nil):GetFirst()
