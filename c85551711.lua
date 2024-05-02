@@ -12,10 +12,17 @@ function c85551711.initial_effect(c)
 	e1:SetTargetRange(LOCATION_HAND,0)
 	e1:SetCondition(c85551711.handcon)
 	e1:SetCost(c85551711.handcost)
+	e1:SetValue(85551711)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(85551711)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e3:SetRange(LOCATION_MZONE)
+	c:RegisterEffect(e3)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(85551711,1))
@@ -31,9 +38,21 @@ end
 function c85551711.handcon(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 end
+function c85551711.similarfilter(c,tp)
+	return c:IsHasEffect(85551711) and c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
+end
 function c85551711.handcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
+	local c=e:GetHandler()
+	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
+	local g=Duel.GetMatchingGroup(c85551711.similarfilter,tp,LOCATION_MZONE,0,c,tp)
+	Duel.Damage(tp,#g+1,REASON_EFFECT)
+	if #g>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEATTACHFROM)
+		local tc=(g+c):Select(tp,1,1,nil):GetFirst()
+		tc:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
+	else
+		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
+	end
 end
 function c85551711.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
