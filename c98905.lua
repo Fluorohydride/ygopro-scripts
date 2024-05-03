@@ -9,26 +9,9 @@ function c98905.initial_effect(c)
 	e1:SetTarget(c98905.target)
 	e1:SetOperation(c98905.activate)
 	c:RegisterEffect(e1)
-	if not c98905.global_check then
-		c98905.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_TO_GRAVE)
-		ge1:SetOperation(c98905.checkop)
-		Duel.RegisterEffect(ge1,0)
-	end
-end
-function c98905.callback(c)
-	local tp=c:GetPreviousControler()
-	if c:IsSetCard(0xe5) and c:IsType(TYPE_XYZ) and c:IsControler(tp) and c:GetOverlayCount()>0 then
-		c:RegisterFlagEffect(98905,RESET_EVENT+RESETS_STANDARD,0,1)
-	end
-end
-function c98905.checkop(e,tp,eg,ep,ev,re,r,rp)
-	eg:ForEach(c98905.callback)
 end
 function c98905.filter(c,e,tp)
-	return c:GetFlagEffect(98905)~=0 and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp)
+	return c:GetPreviousOverlayCountOnField()~=0 and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 		and c:IsReason(REASON_DESTROY) and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c98905.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetCode())

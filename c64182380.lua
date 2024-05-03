@@ -39,13 +39,6 @@ function s.initial_effect(c)
 	e3:SetTarget(s.sptg)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetCode(EVENT_LEAVE_FIELD_P)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetLabelObject(e3)
-	e4:SetOperation(s.chk)
-	c:RegisterEffect(e4)
 end
 function s.dmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
@@ -87,8 +80,10 @@ function s.filter(c,e,tp)
 	return c:IsSetCard(0x81) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetLabel()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	local ct=e:GetHandler():GetPreviousOverlayCountOnField()
+	if chk==0 then return ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	e:SetLabel(ct)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -96,7 +91,4 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_GRAVE,0,1,e:GetLabel(),nil,e,tp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-end
-function s.chk(e,tp,eg,ep,ev,re,r,rp)
-	e:GetLabelObject():SetLabel(e:GetHandler():GetOverlayCount())
 end

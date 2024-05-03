@@ -55,7 +55,7 @@ function c20785975.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20785975.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetOverlayCount()>0
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousOverlayCountOnField()>0
 		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,94380860)
 end
 function c20785975.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
