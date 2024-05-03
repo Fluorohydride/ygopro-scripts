@@ -16,6 +16,7 @@ function c55428242.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(LOCATION_HAND,0)
 	e2:SetTarget(c55428242.etarget)
+	e2:SetValue(55428242)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)

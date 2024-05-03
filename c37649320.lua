@@ -19,6 +19,7 @@ function c37649320.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0xd4))
 	e2:SetTargetRange(LOCATION_HAND,0)
+	e2:SetValue(37649320)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
