@@ -1,5 +1,6 @@
 --海晶乙女の潜逅
 function c57329501.initial_effect(c)
+	aux.AddCodeList(c,91027843)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

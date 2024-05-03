@@ -1,5 +1,6 @@
 --ブラック・ガーデン
 function c71645242.initial_effect(c)
+	aux.AddCodeList(c,71645242)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
