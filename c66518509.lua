@@ -31,21 +31,19 @@ function s.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-function s.spcfilter1(c)
+function s.spcfilter(c)
 	return c:IsReason(REASON_EFFECT) and (c:IsType(TYPE_MONSTER) or c:IsPreviousLocation(LOCATION_MZONE))
-end
-function s.spcfilter2(c,tp)
-	return c:IsReason(REASON_EFFECT) and (c:IsType(TYPE_MONSTER) or c:IsPreviousLocation(LOCATION_MZONE))
-		and c:IsPreviousControler(tp)
+		and not c:IsPreviousLocation(LOCATION_SZONE)
 end
 function s.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.spcfilter1,1,nil)
+	return eg:IsExists(s.spcfilter,1,nil)
 end
 function s.regop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(s.spcfilter2,1,nil,0) then
+	local g=eg:Filter(s.spcfilter,nil)
+	if g:IsExists(Card.IsPreviousControler,1,nil,0) then
 		Duel.RegisterFlagEffect(0,id,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 	end
-	if eg:IsExists(s.spcfilter2,1,nil,1) then
+	if g:IsExists(Card.IsPreviousControler,1,nil,1) then
 		Duel.RegisterFlagEffect(1,id,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 	end
 end
