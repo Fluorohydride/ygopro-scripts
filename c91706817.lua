@@ -83,6 +83,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		if og:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_HAND) then
 			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetDescription(aux.Stringid(id,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
