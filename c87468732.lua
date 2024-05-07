@@ -115,7 +115,7 @@ function c87468732.tpop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToEffect(e) and aux.NecroValleyFilter()(c) then
 			Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		end
 	end

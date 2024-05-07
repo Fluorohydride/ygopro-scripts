@@ -82,6 +82,8 @@ function c56677752.pencon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56677752.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
+	local c=e:GetHandler()
+	if c:IsLocation(LOCATION_GRAVE) then Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,c,1,0,0) end
 end
 function c56677752.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

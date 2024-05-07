@@ -109,7 +109,7 @@ function c97417863.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)==0 then return end
 	c:CompleteProcedure()
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
-	if Duel.Destroy(g,REASON_EFFECT)>0 and Duel.SelectYesNo(tp,aux.Stringid(97417863,1)) then
+	if Duel.Destroy(g,REASON_EFFECT)>0 and aux.NecroValleyFilter()(c) and Duel.SelectYesNo(tp,aux.Stringid(97417863,1)) then
 		Duel.BreakEffect()
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end

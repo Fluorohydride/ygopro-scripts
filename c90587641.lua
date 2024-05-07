@@ -103,7 +103,7 @@ function c90587641.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:Select(tp,1,1,nil)
 	if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)>0
-		and c:IsRelateToEffect(e) and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
+		and c:IsRelateToEffect(e) and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) and aux.NecroValleyFilter()(c)
 		and Duel.SelectYesNo(tp,aux.Stringid(90587641,2)) then
 		Duel.BreakEffect()
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
