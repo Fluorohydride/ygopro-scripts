@@ -79,8 +79,14 @@ function s.Blue_Eyes_Ultimate_Dragon(c)
 	return c:IsFusionCode(23995346) and not c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE)
 		or c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE)
 end
+---@param g Group
+---@param fc Card
+---@param ec Card
+---@param chkf integer
+---@return boolean
 function s.FShaddollSpgcheck(g,fc,ec,chkf)
 	local sg=g:Clone()
+	local tp=fc:GetControler()
 	sg:AddCard(ec)
 	local c=g:Filter(s.Blue_Eyes_Ultimate_Dragon,nil):GetFirst()
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
@@ -95,6 +101,7 @@ function s.Necessarily_FShaddollFilter(c,gc)
 	return c:IsCode(gc:GetCode())
 end
 function s.Necessarily_FShaddollSpgcheck(g,gc,fc,ec,chkf)
+	local tp=fc:GetControler()
 	local c=g:Filter(s.Blue_Eyes_Ultimate_Dragon,nil):GetFirst()
 	local sg=g:Clone()
 	sg:AddCard(ec)
