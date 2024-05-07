@@ -55,9 +55,10 @@ function c30336082.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c30336082.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,g)
-		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()
-		Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD,nil)
+		local dg=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,1,1,nil)
+		Duel.ShuffleHand(tp)
+		Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
 	end
 end
 function c30336082.atkcon(e,tp,eg,ep,ev,re,r,rp)

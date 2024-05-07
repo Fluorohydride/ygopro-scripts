@@ -50,7 +50,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK+LOCATION_REMOVED,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tg1=g:SelectSubGroup(tp,aux.dncheck,false,1,2)
-	if Duel.SendtoHand(tg1,nil,REASON_EFFECT)~=0 then
+	if tg1 and Duel.SendtoHand(tg1,nil,REASON_EFFECT)~=0 then
 		Duel.ConfirmCards(1-tp,tg1)
 		Duel.ShuffleHand(tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
