@@ -26,8 +26,7 @@ end
 function c66194206.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT,tp,true)
 	end
 end
 function c66194206.thcon(e,tp,eg,ep,ev,re,r,rp)
