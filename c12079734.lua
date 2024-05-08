@@ -11,6 +11,7 @@ function c12079734.initial_effect(c)
 	e1:SetOperation(c12079734.operation)
 	c:RegisterEffect(e1)
 end
+c12079734.has_text_type=TYPE_UNION
 function c12079734.filter1(c,ec)
 	return c:IsType(TYPE_UNION) and c:CheckUnionTarget(ec) and aux.CheckUnionEquip(c,ec)
 end
