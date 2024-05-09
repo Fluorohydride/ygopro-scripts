@@ -14,7 +14,6 @@ function c29762407.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_SZONE,0)
 	e2:SetCountLimit(1,29762407)
-	e2:SetDescription(aux.Stringid(29762407,1))
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
