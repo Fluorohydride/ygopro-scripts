@@ -9,6 +9,7 @@ function c26931058.initial_effect(c)
 	e1:SetOperation(c26931058.efop)
 	c:RegisterEffect(e1)
 end
+c26931058.has_text_type=TYPE_UNION
 function c26931058.filter1(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_UNION)
 		and Duel.IsExistingMatchingCard(c26931058.filter2,tp,LOCATION_MZONE,0,1,c,c)

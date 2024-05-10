@@ -13,6 +13,7 @@ function c99249638.initial_effect(c)
 	e4:SetOperation(c99249638.reop)
 	c:RegisterEffect(e4)
 end
+c99249638.has_text_type=TYPE_UNION
 function c99249638.recost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetEquipTarget()
 	e:SetLabelObject(tc)
