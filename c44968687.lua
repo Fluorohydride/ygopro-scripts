@@ -58,7 +58,7 @@ function c44968687.spfilter(c,tp)
 end
 function c44968687.spcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroupEx(c:GetControler(),Card.IsCode,1,REASON_SPSUMMON,false,nil,c:GetControler())
+	return Duel.CheckReleaseGroupEx(c:GetControler(),c44968687.spfilter,1,REASON_SPSUMMON,false,nil,c:GetControler())
 end
 function c44968687.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c44968687.spfilter,nil,tp)

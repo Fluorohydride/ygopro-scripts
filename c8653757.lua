@@ -13,9 +13,8 @@ function c8653757.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DESTROYED)
-	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e2:SetCondition(c8653757.etcon)
-	e2:SetTarget(c8653757.ettg)
 	e2:SetOperation(c8653757.etop)
 	c:RegisterEffect(e2)
 end
@@ -38,16 +37,14 @@ function c8653757.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+function c8653757.cfilter(c)
+	return c:IsFaceup() and (c:IsCode(93717133) or (c:IsType(TYPE_XYZ) and c:GetOverlayGroup():IsExists(Card.IsCode,1,nil,93717133)))
+end
 function c8653757.etcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return Duel.GetTurnPlayer()~=tp and c:IsPreviousControler(tp) and c:IsReason(REASON_EFFECT)
 		and c:GetReasonPlayer()==1-tp and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
-end
-function c8653757.cfilter(c)
-	return c:IsFaceup() and (c:IsCode(93717133) or (c:IsType(TYPE_XYZ) and c:GetOverlayGroup():IsExists(Card.IsCode,1,nil,93717133)))
-end
-function c8653757.ettg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c8653757.cfilter,tp,LOCATION_ONFIELD,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c8653757.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c8653757.etop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SkipPhase(1-tp,PHASE_DRAW,RESET_PHASE+PHASE_END,1)

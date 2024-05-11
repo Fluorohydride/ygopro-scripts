@@ -43,7 +43,7 @@ function c77799846.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c77799846.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetOverlayCount()>0
+	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetPreviousOverlayCountOnField()>0
 end
 function c77799846.rfilter(c)
 	return c:IsSetCard(0x85) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
