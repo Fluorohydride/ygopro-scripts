@@ -46,7 +46,7 @@ function s.tgcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsSummonPlayer,1,nil,1-tp)
 end
 function s.tgfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave() and c:IsSetCard(0x2b0)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave() and c:IsSetCard(0x1b0)
 end
 function s.tgtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil) end

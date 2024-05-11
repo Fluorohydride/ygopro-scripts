@@ -56,7 +56,7 @@ function s.atktg(e,c)
 end
 function s.cfilter2(c,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsPreviousSetCard(0x2b0)
+		and c:IsPreviousSetCard(0x1b0)
 end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(s.cfilter2,1,e:GetHandler(),tp)

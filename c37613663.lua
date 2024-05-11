@@ -34,7 +34,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.dfilter(c)
 	return c:IsFaceup() and bit.band(c:GetOriginalType(),TYPE_MONSTER)~=0
-		and not (c:GetOriginalLevel()>=10 and c:IsSetCard(0xde) or c:IsSetCard(0x2ae))
+		and not (c:GetOriginalLevel()>=10 and c:IsSetCard(0xde) or c:IsSetCard(0x1ae))
 end
 function s.tdfilter(c)
 	return s.dfilter(c) and c:IsAbleToDeck()

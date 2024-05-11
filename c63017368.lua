@@ -32,7 +32,7 @@ function s.filter(c)
 	return c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function s.setfilter(c)
-	return c:IsSetCard(0x2ae) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1ae) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_HAND,0,1,nil) and Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil)
@@ -88,5 +88,5 @@ function s.repop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function s.eftg(e,c)
-	return c:IsSetCard(0x2ae)
+	return c:IsSetCard(0x1ae)
 end

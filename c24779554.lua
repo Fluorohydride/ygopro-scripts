@@ -34,7 +34,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.cfilter(c)
-	return c:IsSetCard(0x2b2) and c:IsFaceup()
+	return c:IsSetCard(0x1b1) and c:IsFaceup()
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -71,7 +71,7 @@ function s.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.spfilter2(c,tp)
 	return Duel.GetMZoneCount(tp,c)>0 and c:IsFaceup() and c:IsType(TYPE_SYNCHRO) 
-		and c:IsAbleToExtra() and c:IsSetCard(0x2b2)
+		and c:IsAbleToExtra() and c:IsSetCard(0x1b1)
 end
 function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
