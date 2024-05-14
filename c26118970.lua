@@ -29,6 +29,7 @@ function c26118970.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH+CATEGORY_TOHAND)
 		e:SetLabel(1)
 	else
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetLabel(0)
 	end
 end
