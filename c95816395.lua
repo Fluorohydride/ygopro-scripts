@@ -5,6 +5,7 @@ function c95816395.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_TO_GRAVE)
+	e1:SetCountLimit(1,95816395)
 	e1:SetOperation(c95816395.regop)
 	c:RegisterEffect(e1)
 end
