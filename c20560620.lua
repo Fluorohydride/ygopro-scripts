@@ -25,17 +25,17 @@ function s.initial_effect(c)
 	--workaround
 	if not aux.rit_mat_hack_check then
 		aux.rit_mat_hack_check=true
-		function aux.rit_mat_hack_exmat_filter(c)
-			return c:IsHasEffect(EFFECT_EXTRA_RITUAL_MATERIAL,c:GetControler()) and c:IsLocation(LOCATION_EXTRA)
+		function aux.rit_mat_hack_exmat_filter(tc)
+			return tc:IsHasEffect(EFFECT_EXTRA_RITUAL_MATERIAL,tc:GetControler()) and tc:IsLocation(LOCATION_EXTRA)
 		end
-		function aux.RitualCheckGreater(g,c,lv)
+		function aux.RitualCheckGreater(g,rc,lv)
 			if g:FilterCount(aux.rit_mat_hack_exmat_filter,nil)>1 then return false end
 			Duel.SetSelectedCard(g)
-			return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c)
+			return g:CheckWithSumGreater(Card.GetRitualLevel,lv,rc)
 		end
-		function aux.RitualCheckEqual(g,c,lv)
+		function aux.RitualCheckEqual(g,rc,lv)
 			if g:FilterCount(aux.rit_mat_hack_exmat_filter,nil)>1 then return false end
-			return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c)
+			return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,rc)
 		end
 		_ReleaseRitualMaterial=Duel.ReleaseRitualMaterial
 		function Duel.ReleaseRitualMaterial(mat)

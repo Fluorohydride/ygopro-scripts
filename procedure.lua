@@ -1733,13 +1733,29 @@ function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equa
 	end
 	return e1
 end
+---@param g Group
+---@param c Card
+---@param lv integer
+---@return boolean
 function Auxiliary.RitualCheckGreater(g,c,lv)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c)
 end
+---@param g Group
+---@param c Card
+---@param lv integer
+---@return boolean
 function Auxiliary.RitualCheckEqual(g,c,lv)
 	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c)
 end
+---@param g Group
+---@param tp integer
+---@param c Card
+---@param lv integer
+---@param greater_or_equal string
+---|"'Greater'"
+---|"'Equal'"
+---@return boolean
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
