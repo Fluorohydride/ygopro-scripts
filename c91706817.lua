@@ -70,11 +70,11 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT)~=0
-end
-function s.setfilter(c)
 	local se=e:GetLabelObject():GetLabelObject()
 	return bit.band(r,REASON_EFFECT)~=0 and (se==nil or e:GetHandler():GetReasonEffect()~=se)
+end
+function s.setfilter(c)
+	return c:GetType()==TYPE_TRAP and c:IsSSetable()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil) end
