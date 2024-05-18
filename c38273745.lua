@@ -26,25 +26,21 @@ function c38273745.tg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsAbleToRemove()
 		end
 	end
-	local alrsel=Card.GetFlagEffectLabel(e:GetHandler(),38273745)
-	local o1,o2,o3 = true,true,true
-	if alrsel then o1,o2,o3 = alrsel&2 == 0, alrsel&4 == 0, alrsel&8 == 0 end
-	local b1= o1 and Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil)
-	local b2= o2 and Duel.GetFieldGroupCount(1-tp,LOCATION_HAND,0)~=0
-	local b3= o3 and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
+	local c=e:GetHandler()
+	local flag=c:GetFlagEffectLabel(38273745) or 0
+	local b1=(flag&2==0) and Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil)
+	local b2=(flag&4==0) and Duel.GetFieldGroupCount(1-tp,LOCATION_HAND,0)~=0
+	local b3=(flag&8==0) and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
 	if chk==0 then return b1 or b2 or b3 end
 	local op=aux.SelectFromOptions(tp,
 		{b1,aux.Stringid(38273745,1)},
 		{b2,aux.Stringid(38273745,2)},
 		{b3,aux.Stringid(38273745,3)})
 	e:SetLabel(op)
-	if not alrsel then
-		alrsel=1<<op
-		Card.RegisterFlagEffect(e:GetHandler(),38273745,RESET_EVENT+RESETS_STANDARD,0,1,alrsel)
-	else
-		alrsel=alrsel|(1<<op)
-		Card.SetFlagEffectLabel(e:GetHandler(),38273745,alrsel)
+	if flag==0 then
+		c:RegisterFlagEffect(38273745,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
+	c:SetFlagEffectLabel(38273745,flag|(1<<op))
 	if op==1 then
 		e:SetCategory(CATEGORY_TOHAND)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
