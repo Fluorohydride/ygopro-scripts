@@ -44,7 +44,7 @@ function c9336190.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c9336190.spfilter(c,e,tp)
 	return c:IsSetCard(0x10db) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,9336190,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,c:GetLevel(),RACE_WARRIOR,ATTRIBUTE_DARK)
+		and aux.IsPlayerCanSpecialSummonMonster(tp,9336190,{type=TYPES_NORMAL_TRAP_MONSTER,level=c:GetLevel()})
 end
 function c9336190.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c9336190.spfilter(chkc,e,tp) end
@@ -62,7 +62,7 @@ function c9336190.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,9336190,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,tc:GetLevel(),RACE_WARRIOR,ATTRIBUTE_DARK) then
+		and aux.IsPlayerCanSpecialSummonMonster(tp,9336190,{type=TYPES_NORMAL_TRAP_MONSTER,level=tc:GetLevel()}) then
 		c:AddMonsterAttribute(TYPE_NORMAL,0,0,tc:GetLevel(),0,0)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(c)

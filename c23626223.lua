@@ -31,14 +31,15 @@ function c23626223.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c23626223.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	if chk==0 then return e:IsCostChecked()
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,23626223,0,TYPES_EFFECT_TRAP_MONSTER,0,2500,7,RACE_ROCK,ATTRIBUTE_EARTH) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+		and aux.IsPlayerCanSpecialSummonMonster(tp,c,TYPES_EFFECT_TRAP_MONSTER) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c23626223.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,23626223,0,TYPES_EFFECT_TRAP_MONSTER,0,2500,7,RACE_ROCK,ATTRIBUTE_EARTH) then return end
+	if not aux.IsPlayerCanSpecialSummonMonster(tp,c,TYPES_EFFECT_TRAP_MONSTER) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end

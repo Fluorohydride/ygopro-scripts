@@ -1598,3 +1598,39 @@ end
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
 end
+---Wrap of Duel.IsPlayerCanSpecialSummonMonster with more clear parameters
+---@param tp integer
+---@param v integer|Card
+---@param data? integer|{ setcode:integer, type:integer, atk:integer, def:integer, level:integer, race:integer, attribute:integer, position:integer, target_player:integer, sumtype:integer }
+function Auxiliary.IsPlayerCanSpecialSummonMonster(tp,v,data)
+	local id
+	if Auxiliary.GetValueType(v)=="Card" then id=v:GetCode() end
+	if Auxiliary.GetValueType(v)=="number" then id=v end
+	if data==nil then
+		return Duel.IsPlayerCanSpecialSummonMonster(tp,id)
+	end
+	if data==TYPES_NORMAL_TRAP_MONSTER or data==TYPES_EFFECT_TRAP_MONSTER then
+		return Duel.IsPlayerCanSpecialSummonMonster(tp,id,nil,data)
+	end
+	local setcode=nil
+	if data.setcode then setcode=data.setcode end
+	local type=nil
+	if data.type then type=data.type end
+	local atk=nil
+	if data.atk then atk=data.atk end
+	local def=nil
+	if data.def then def=data.def end
+	local level=nil
+	if data.level then level=data.level end
+	local race=nil
+	if data.race then race=data.race end
+	local attribute=nil
+	if data.attribute then attribute=data.attribute end
+	local position=POS_FACEUP
+	if data.position then pos=data.position end
+	local target_player=tp
+	if data.target_player then target_player=data.target_player end
+	local sumtype=0
+	if data.sumtype then sumtype=data.sumtype end
+	return Duel.IsPlayerCanSpecialSummonMonster(tp,id,setcode,type,atk,def,level,race,attribute,position,target_player,sumtype)
+end
