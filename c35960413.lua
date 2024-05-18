@@ -56,6 +56,7 @@ function c35960413.cfilter(c,lv)
 end
 function c35960413.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	
 	if chk==0 then return Duel.IsExistingTarget(c35960413.lvfilter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c35960413.lvfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)

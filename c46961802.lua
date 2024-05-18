@@ -17,6 +17,7 @@ function c46961802.filter2(c,atk)
 end
 function c46961802.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	
 	if chk==0 then return Duel.IsExistingTarget(c46961802.filter1,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g1=Duel.SelectTarget(tp,c46961802.filter1,tp,LOCATION_MZONE,0,1,1,nil,tp)

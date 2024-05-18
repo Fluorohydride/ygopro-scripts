@@ -46,6 +46,7 @@ function c48654323.atktgfilter2(c)
 end
 function c48654323.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	
 	if chk==0 then return Duel.IsExistingTarget(c48654323.atktgfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c48654323.atktgfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
