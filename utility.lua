@@ -729,6 +729,11 @@ function Auxiliary.MaterialReasonCardReg(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	c:GetReasonCard():CreateEffectRelation(te)
 end
+--the player tp has token on the field
+function Auxiliary.tkfcon(e,tp)
+	if tp==nil and e~=nil then tp=e:GetHandlerPlayer() end
+	return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_TOKEN)
+end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DAMAGE)

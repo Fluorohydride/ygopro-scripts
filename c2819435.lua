@@ -27,9 +27,10 @@ function c2819435.initial_effect(c)
 	e6:SetDescription(aux.Stringid(2819435,1))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e6:SetProperty(EFFECT_FLAG_DELAY)
+	e6:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e6:SetCode(EVENT_CHAINING)
 	e6:SetRange(LOCATION_FZONE)
+	e6:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e6:SetCondition(c2819435.spcon)
 	e6:SetCost(c2819435.cost)
 	e6:SetTarget(c2819435.sptg)
@@ -81,14 +82,11 @@ function c2819435.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2819435.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp
+	return rp==1-tp and not aux.tkfcon(e,tp)
 end
 function c2819435.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,2819436,0xfa,TYPES_TOKEN_MONSTER,2000,2000,6,RACE_WYRM,ATTRIBUTE_WATER)
-		and e:GetHandler():GetFlagEffect(2819435)==0
-		and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_TOKEN) end
-	e:GetHandler():RegisterFlagEffect(2819435,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,2819436,0xfa,TYPES_TOKEN_MONSTER,2000,2000,6,RACE_WYRM,ATTRIBUTE_WATER) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
