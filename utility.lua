@@ -147,7 +147,7 @@ end
 ---Return value starts from 1, different from Duel.SelectOption
 ---@param tp integer
 ---@param ... table {condition, option[, value]}
----@return integer|nil
+---@return integer
 function Auxiliary.SelectFromOptions(tp,...)
 	local options={...}
 	local ops={}
@@ -1105,7 +1105,7 @@ end
 ---@param min? integer
 ---@param max? integer
 ---@param ... any
----@return Group|nil
+---@return Group
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
@@ -1203,7 +1203,7 @@ end
 ---@param cancelable? boolean
 ---@param f? function
 ---@param ... any
----@return Group|nil
+---@return Group
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
