@@ -45,15 +45,7 @@ function c18897163.initial_effect(c)
 	e4:SetOperation(c18897163.desop)
 	c:RegisterEffect(e4)
 	--pendulum
-	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(18897163,3))
-	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e6:SetCode(EVENT_DESTROYED)
-	e6:SetProperty(EFFECT_FLAG_DELAY)
-	e6:SetCondition(c18897163.pencon)
-	e6:SetTarget(c18897163.pentg)
-	e6:SetOperation(c18897163.penop)
-	c:RegisterEffect(e6)
+	aux.AddPlaceToPZoneIfDestroyEffect(c)
 end
 function c18897163.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0xaf)
@@ -111,18 +103,5 @@ function c18897163.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
-	end
-end
-function c18897163.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
-end
-function c18897163.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
-end
-function c18897163.penop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

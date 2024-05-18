@@ -1598,3 +1598,37 @@ end
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
 end
+---If this card in the Monster Zone is destroyed by battle or card effect: You can place this card in your Pendulum Zone.
+function Auxiliary.AddPlaceToPZoneIfDestroyEffect(c)
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(1170)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e1:SetCode(EVENT_DESTROYED)
+	e1:SetProperty(EFFECT_FLAG_DELAY)
+	e1:SetCondition(Auxiliary.PlaceToPZoneCondition)
+	e1:SetTarget(Auxiliary.PlaceToPZoneTarget)
+	e1:SetOperation(Auxiliary.PlaceToPZoneOperation)
+	c:RegisterEffect(e1)
+	return e1
+end
+---Check whether the player has a Pendulum Zone available
+function Auxiliary.CheckPendulumLocation(tp)
+	return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
+end
+function Auxiliary.PlaceToPZoneCondition(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+end
+function Auxiliary.PlaceToPZoneTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Auxiliary.CheckPendulumLocation(tp) end
+	local c=e:GetHandler()
+	if c:IsLocation(LOCATION_GRAVE) then
+		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,c,1,0,0)
+	end
+end
+function Auxiliary.PlaceToPZoneOperation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
+	end
+end

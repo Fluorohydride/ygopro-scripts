@@ -29,15 +29,7 @@ function c37491810.initial_effect(c)
 	e2:SetOperation(c37491810.desmop)
 	c:RegisterEffect(e2)
 	--pendulum
-	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(98452268,2))
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e5:SetCode(EVENT_DESTROYED)
-	e5:SetProperty(EFFECT_FLAG_DELAY)
-	e5:SetCondition(c37491810.pencon)
-	e5:SetTarget(c37491810.pentg)
-	e5:SetOperation(c37491810.penop)
-	c:RegisterEffect(e5)
+	aux.AddPlaceToPZoneIfDestroyEffect(c)
 end
 function c37491810.filter(c,tp)
 	return c:IsReason(REASON_EFFECT) and c:IsPreviousSetCard(0xe1)
@@ -80,18 +72,5 @@ function c37491810.desmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.HintSelection(g)
 	if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
-	end
-end
-function c37491810.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
-end
-function c37491810.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
-end
-function c37491810.penop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end
