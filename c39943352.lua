@@ -60,6 +60,8 @@ function c39943352.pencost1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39943352.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
+	local c=e:GetHandler()
+	if c:IsLocation(LOCATION_GRAVE) then Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,c,1,0,0) end
 end
 function c39943352.pmfilter(c)
 	return c:IsType(TYPE_PENDULUM)

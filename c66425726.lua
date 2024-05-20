@@ -119,6 +119,8 @@ function c66425726.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_DISABLE)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	local c=e:GetHandler()
+	if c:IsLocation(LOCATION_GRAVE) then Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,c,1,0,0) end
 end
 function c66425726.spfilter(c,e,tp)
 	return c:IsSetCard(0x99) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
