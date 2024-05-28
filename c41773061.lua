@@ -28,7 +28,7 @@ function c41773061.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	Duel.ConfirmCards(1-tp,sg)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
-	local tc=sg:Select(1-tp,1,1,nil):GetFirst()
+	local tc=aux.SelectPDS(sg,1-tp,1,1,nil):GetFirst()
 	local code=0
 	if tc:IsRace(RACE_BEASTWARRIOR) then code=87778106 end
 	if tc:IsRace(RACE_WARRIOR) then code=14166715 end
