@@ -56,7 +56,7 @@ function c24393683.activate(e,tp,eg,ep,ev,re,r,rp)
 		local p=1-tp
 		if e:GetLabel()==1 then p=tp end
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
-		local tg=sg:Select(p,1,1,nil)
+		local tg=aux.SelectPDS(sg,p,1,1,nil)
 		tg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 	end

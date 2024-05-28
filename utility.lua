@@ -1603,3 +1603,26 @@ end
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
 end
+-- Group.Select with Duel.PreserveSelectDeckSequence enabled
+function Auxiliary.SelectPDS(g,...)
+	if #g==0 then return Group.CreateGroup() end
+	Duel.PreserveSelectDeckSequence(true)
+	local sg=g:Select(...)
+	Duel.PreserveSelectDeckSequence(false)
+	return sg
+end
+-- Group.FilterSelect with Duel.PreserveSelectDeckSequence enabled
+function Auxiliary.FilterSelectPDS(g,...)
+	if #g==0 then return Group.CreateGroup() end
+	Duel.PreserveSelectDeckSequence(true)
+	local sg=g:FilterSelect(...)
+	Duel.PreserveSelectDeckSequence(false)
+	return sg
+end
+-- Duel.SelectMatchingCard with Duel.PreserveSelectDeckSequence enabled
+function Auxiliary.SelectMatchingCardPDS(...)
+	Duel.PreserveSelectDeckSequence(true)
+	local sg=Duel.SelectMatchingCard(...)
+	Duel.PreserveSelectDeckSequence(false)
+	return sg
+end
