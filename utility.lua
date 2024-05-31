@@ -1232,16 +1232,16 @@ end
 --for effects that player usually select card from field, avoid showing panel
 function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 	local ext_params={...}
-	local newhint=nil
+	local last_hint=nil
 	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params):Filter(Card.IsOnField,nil)
 	if #g>=min then
+		last_hint=Duel.GetLastSelectHint(tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
 		local sg=g:CancelableSelect(tp,min,max,nil)
 		if sg then return sg end
-		newhint=HINTMSG_OPERATECARD
 	end
-	if newhint then
-		Duel.Hint(HINT_SELECTMSG,tp,newhint)
+	if last_hint then
+		Duel.Hint(HINT_SELECTMSG,tp,last_hint)
 	end
 	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,ext_params)
 end
