@@ -59,7 +59,7 @@ end
 function c8809344.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		local og=c:GetOverlayGroup()
 		if og:GetCount()==0 then return end
 		Duel.SendtoGrave(og,REASON_EFFECT)

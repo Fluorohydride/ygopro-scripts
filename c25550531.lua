@@ -89,5 +89,5 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Overlay(tc,Group.FromCards(c))
 	Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 	tc:CompleteProcedure()
-	if not sc:IsImmuneToEffect(e) then Duel.Overlay(tc,g) end
+	if not sc:IsImmuneToEffect(e) and sc:IsCanOverlay() then Duel.Overlay(tc,g) end
 end

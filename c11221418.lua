@@ -129,7 +129,7 @@ function c11221418.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	local mc=Duel.GetFirstTarget()
 	if tc:GetFlagEffect(11221418)~=0 and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if mc and mc:IsRelateToEffect(e) then
+		if mc and mc:IsRelateToEffect(e) and mc:IsCanOverlay() then
 			Duel.Overlay(tc,Group.FromCards(mc))
 		end
 	end
