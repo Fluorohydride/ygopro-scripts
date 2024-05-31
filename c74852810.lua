@@ -35,7 +35,7 @@ function c74852810.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not tc1:IsControler(1-tp) or not tc1:IsRelateToEffect(e) then return end
 	local og=tc1:GetOverlayGroup()
 	if og:GetCount()==0 then return end
-	if Duel.SendtoGrave(og,REASON_EFFECT)~=0 and tc2:IsControler(tp) and tc2:IsRelateToEffect(e) and c:IsRelateToEffect(e) then
+	if Duel.SendtoGrave(og,REASON_EFFECT)~=0 and tc2:IsControler(tp) and tc2:IsRelateToEffect(e) and c:IsRelateToEffect(e) and c:IsCanOverlay() then
 		c:CancelToGrave()
 		Duel.Overlay(tc2,Group.FromCards(c))
 	end
