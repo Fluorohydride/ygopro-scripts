@@ -46,7 +46,7 @@ end
 function c19272658.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsType),tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and g:GetCount()>0 then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.Overlay(tc,sg)
