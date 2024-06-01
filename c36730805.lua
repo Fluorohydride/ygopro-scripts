@@ -42,4 +42,5 @@ function c36730805.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36730805.limitop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetChainLimitTillChainEnd(aux.FALSE)
+	e:Reset()
 end
