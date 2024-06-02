@@ -78,6 +78,7 @@ function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_EXTRA)
 end
 function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
+	::cancel::
 	local chkf=tp
 	local fmg1=Duel.GetFusionMaterial(tp):Filter(c99426088.ffilter1,nil,e)
 	local exmat=false
@@ -143,12 +144,14 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mat1=Duel.SelectFusionMaterial(tp,tc,fmg1,nil,chkf)
 			aux.FCheckAdditional=nil
 			aux.GCheckAdditional=nil
+			if #mat1<2 then goto cancel end
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,fmg3,nil,chkf)
+			if #mat2<2 then goto cancel end
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
