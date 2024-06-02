@@ -26,7 +26,7 @@ function c9113513.filter2(c,e,tp,mc,f,chkf,sc)
 end
 function c9113513.ffilter(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9b) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf) and not c:IsCode(83793721)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf) and getmetatable(c).material_count[1]==2
 end
 function c9113513.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
