@@ -8,6 +8,7 @@ function c66789970.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetCondition(c66789970.hspcon)
+	e1:SetTarget(c66789970.hsptg)
 	e1:SetOperation(c66789970.hspop)
 	c:RegisterEffect(e1)
 	--destroy
@@ -32,10 +33,20 @@ function c66789970.hspcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c66789970.rfilter,tp,LOCATION_GRAVE,0,3,nil)
 end
-function c66789970.hspop(e,tp,eg,ep,ev,re,r,rp,c)
+function c66789970.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c66789970.rfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c66789970.rfilter,tp,LOCATION_GRAVE,0,3,3,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local sg=g:CancelableSelect(tp,3,3,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c66789970.hspop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c66789970.cfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAbleToRemoveAsCost()

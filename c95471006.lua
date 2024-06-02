@@ -30,6 +30,7 @@ function c95471006.initial_effect(c)
 	e2:SetOperation(c95471006.sprop)
 	c:RegisterEffect(e2)
 end
+c95471006.has_text_type=TYPE_UNION
 function c95471006.cfilter(c,tp)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
 		and c:IsType(TYPE_UNION) and c:IsPreviousControler(tp) and c:IsFaceup()

@@ -7,6 +7,7 @@ function c20932152.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c20932152.spcon)
+	e1:SetTarget(c20932152.sptg)
 	e1:SetOperation(c20932152.spop)
 	c:RegisterEffect(e1)
 	--
@@ -36,8 +37,16 @@ function c20932152.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c20932152.spfilter,tp,LOCATION_HAND,0,1,c)
 end
-function c20932152.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c20932152.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c20932152.spfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c20932152.spfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.SendtoGrave(g,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c20932152.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 end

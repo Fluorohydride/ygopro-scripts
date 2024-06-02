@@ -34,13 +34,6 @@ function c94942656.initial_effect(c)
 	e3:SetTarget(c94942656.sptg)
 	e3:SetOperation(c94942656.spop)
 	c:RegisterEffect(e3)
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetCode(EVENT_LEAVE_FIELD_P)
-	e4:SetOperation(c94942656.regop2)
-	e4:SetLabelObject(e3)
-	c:RegisterEffect(e4)
 end
 function c94942656.descon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
@@ -69,14 +62,11 @@ end
 function c94942656.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(94942656,RESET_EVENT+RESET_TURN_SET+RESET_TOHAND+RESET_TODECK+RESET_TOFIELD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(94942656,3))
 end
-function c94942656.regop2(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local ct=c:GetOverlayCount()
-	e:GetLabelObject():SetLabel(ct)
-end
 function c94942656.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetFlagEffect(94942656)>0 and e:GetLabel()>0
+	local ct=c:GetPreviousOverlayCountOnField()
+	e:SetLabel(ct)
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetFlagEffect(94942656)>0 and ct>0
 end
 function c94942656.spfilter(c,e,tp)
 	return c:IsSetCard(0x168) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -1,5 +1,5 @@
 --min/max value
-MIN_ID		=1000		--4 digits, by DataManager::GetDesc()
+MIN_ID		=128		--0x80, by DataManager::GetDesc()
 MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 MAX_PARAMETER	=0xffff
@@ -158,6 +158,7 @@ SUMMON_VALUE_GLADIATOR				=0x2000	--剑斗兽
 SUMMON_VALUE_EVOLTILE				=0x4000	--进化虫
 SUMMON_VALUE_DARK_FUSION			=SUMMON_TYPE_FUSION|0x16	--
 SUMMON_VALUE_FOSSIL_FUSION			=SUMMON_TYPE_FUSION|0x17	--
+SUMMON_VALUE_FUTURE_FUSION			=SUMMON_TYPE_FUSION|0x18	--
 --Status	--卡片当前状态
 STATUS_DISABLED				=0x0001		--效果被无效
 STATUS_TO_ENABLE			=0x0002		--将变成有效
@@ -235,7 +236,7 @@ CHAININFO_TRIGGERING_SEQUENCE	=0x20	--连锁的位置的编号（指怪兽和魔
 CHAININFO_TARGET_CARDS			=0x40	--连锁的效果的对象（以下3个需要在target函数里设置）
 CHAININFO_TARGET_PLAYER			=0x80	--连锁的效果的对象（玩家）
 CHAININFO_TARGET_PARAM			=0x100	--连锁的效果的参数值
-CHAININFO_DISABLE_REASON		=0x200	--无效的原因
+CHAININFO_DISABLE_REASON		=0x200	--无效的原因效果
 CHAININFO_DISABLE_PLAYER		=0x400	--无效的玩家
 CHAININFO_CHAIN_ID				=0x800	--连锁ID
 CHAININFO_TYPE					=0x1000	--连锁类型
@@ -312,7 +313,7 @@ EFFECT_FLAG_IGNORE_RANGE	=0x0020		--影响所有区域的卡（大宇宙）
 EFFECT_FLAG_ABSOLUTE_TARGET	=0x0040		--Target Range固定為某個玩家的視角所見的自己/對方(SetAbsoluteRange()專用)
 EFFECT_FLAG_IGNORE_IMMUNE	=0x0080		--无视效果免疫
 EFFECT_FLAG_SET_AVAILABLE	=0x0100		--裡側狀態可發動的效果、影响场上里侧的卡的永續型效果
-EFFECT_FLAG_CANNOT_NEGATE	=0x0200		--含有"此效果不會被無效"的敘述
+EFFECT_FLAG_CAN_FORBIDDEN	=0x0200		--可被禁止令停止適用的效果（與EFFECT_FLAG_CANNOT_DISABLE並用）
 EFFECT_FLAG_CANNOT_DISABLE	=0x0400		--效果不会被无效
 EFFECT_FLAG_PLAYER_TARGET	=0x0800		--含有"以玩家为对象"的特性（精靈之鏡）、影響玩家的永續型效果(SetTargetRange()改成指定玩家)
 EFFECT_FLAG_BOTH_SIDE		=0x1000		--双方都能使用（部分场地，弹压）
@@ -332,7 +333,7 @@ EFFECT_FLAG_CANNOT_INACTIVATE	=0x2000000	--發動不會被無效
 EFFECT_FLAG_CLIENT_HINT			=0x4000000	--客户端提示
 EFFECT_FLAG_CONTINUOUS_TARGET	=0x8000000	--建立持續對象的永續魔法/永續陷阱/早埋系以外的裝備魔法卡
 EFFECT_FLAG_LIMIT_ZONE			=0x10000000 --限制魔法·陷阱卡发动时可以放置的区域
-EFFECT_FLAG_COF					=0x20000000 --N/A
+EFFECT_FLAG_ACTIVATE_CONDITION	=0x20000000 --诱发效果即将发动时检查条件（手卡诱发之外的无此标记的诱发效果为触发事件时检查）
 EFFECT_FLAG_CVAL_CHECK			=0x40000000	--N/A
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用
 

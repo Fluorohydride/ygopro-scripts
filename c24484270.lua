@@ -102,6 +102,7 @@ function c24484270.spop(e,tp,eg,ep,ev,re,r,rp)
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			if #mat1<2 then goto cancel end
 			tc:SetMaterial(mat1)
+			Duel.HintSelection(mat1)
 			Duel.SendtoDeck(mat1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)

@@ -14,6 +14,7 @@ function c85991529.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c85991529.spcon)
+	e2:SetTarget(c85991529.sptg)
 	e2:SetOperation(c85991529.spop)
 	c:RegisterEffect(e2)
 	--cannot be targeted
@@ -60,11 +61,24 @@ function c85991529.spcon(e,c)
 	local g=Duel.GetMatchingGroup(c85991529.spfilter,tp,LOCATION_HAND,0,c)
 	return g:CheckWithSumGreater(Card.GetLevel,10)
 end
-function c85991529.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c85991529.fselect(g)
+	Duel.SetSelectedCard(g)
+	return g:CheckWithSumGreater(Card.GetLevel,10)
+end
+function c85991529.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c85991529.spfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local mg=g:SelectWithSumGreater(tp,Card.GetLevel,10)
-	Duel.Remove(mg,POS_FACEUP,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c85991529.fselect,true,1,g:GetCount())
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c85991529.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local mg=e:GetLabelObject()
+	Duel.Remove(mg,POS_FACEUP,REASON_SPSUMMON)
+	mg:DeleteGroup()
 end
 function c85991529.discon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)

@@ -1,5 +1,6 @@
 --D-HERO ドレッドサーヴァント
 function c36625827.initial_effect(c)
+	aux.AddCodeList(c,75041269)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(36625827,0))

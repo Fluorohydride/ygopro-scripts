@@ -180,7 +180,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 				local mg
 				local mgchk=false
 				if mg1 then
-					mg=mg1
+					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
 					mgchk=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
@@ -206,7 +206,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				local mg
 				local mgchk=false
 				if mg1 then
-					mg=mg1
+					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
 					mgchk=true
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
@@ -1233,7 +1233,7 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 end
 ---Fusion monster, name * minc to maxc
 ---@param c Card
----@param code1 integer
+---@param code1 integer|table
 ---@param minc integer
 ---@param maxc integer
 ---@param sub boolean
@@ -1243,7 +1243,7 @@ function Auxiliary.AddFusionProcCodeRep2(c,code1,minc,maxc,sub,insf)
 end
 ---Fusion monster, name + condition * n
 ---@param c Card
----@param code1 integer
+---@param code1 integer|table
 ---@param f function|table
 ---@param cc integer
 ---@param sub boolean
@@ -1303,7 +1303,7 @@ function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
 end
 ---Fusion monster, name + condition * minc to maxc
 ---@param c Card
----@param code1 integer
+---@param code1 integer|table
 ---@param f function|table
 ---@param minc integer
 ---@param maxc integer
@@ -1314,8 +1314,8 @@ function Auxiliary.AddFusionProcCodeFunRep(c,code1,f,minc,maxc,sub,insf)
 end
 ---Fusion monster, name + name + condition * minc to maxc
 ---@param c Card
----@param code1 integer
----@param code2 integer
+---@param code1 integer|table
+---@param code2 integer|table
 ---@param f function|table
 ---@param minc integer
 ---@param maxc integer
@@ -1557,6 +1557,9 @@ function Auxiliary.FusionEffectUltimateTarget(params)
 				end
 			end
 end
+---
+---@param params table
+---@return function
 function Auxiliary.FusionEffectUltimateOperation(params)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local chkf=tp
@@ -1594,7 +1597,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 				local mg2=nil
 				local sg2=nil
 				local ce=Duel.GetChainMaterial(tp)
-				if ce~=nil then
+				if ce then
 					local fgroup=ce:GetTarget()
 					mg2=fgroup(ce,e,tp):Filter(Auxiliary.FusionEffectUltimateMatFilter,nil,e,tp,params.mat_filter)
 					local mf=ce:GetValue()
@@ -1646,7 +1649,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 						params.mat_operation(mat1)
 						Duel.BreakEffect()
 						Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,params.spsummon_nocheck,false,POS_FACEUP)
-					elseif ce then
+					elseif ce and mg2 then
 						local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,gc,chkf)
 						if not mat2 or #mat2<2 then goto FusionUltimateSelectStart end
 						local fop=ce:GetOperation()
@@ -1724,6 +1727,10 @@ function Auxiliary.tdcfop(c)
 				if cg:GetCount()>0 then
 					Duel.ConfirmCards(1-c:GetControler(),cg)
 				end
+				local hg=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE+LOCATION_REMOVED)
+				if hg:GetCount()>0 then
+					Duel.HintSelection(hg)
+				end
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
 end
@@ -1742,13 +1749,29 @@ function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equa
 	end
 	return e1
 end
+---@param g Group
+---@param c Card
+---@param lv integer
+---@return boolean
 function Auxiliary.RitualCheckGreater(g,c,lv)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c)
 end
+---@param g Group
+---@param c Card
+---@param lv integer
+---@return boolean
 function Auxiliary.RitualCheckEqual(g,c,lv)
 	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c)
 end
+---@param g Group
+---@param tp integer
+---@param c Card
+---@param lv integer
+---@param greater_or_equal string
+---|"'Greater'"
+---|"'Equal'"
+---@return boolean
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))

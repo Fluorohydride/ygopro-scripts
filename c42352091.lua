@@ -1,5 +1,6 @@
 --ヌメロン・ウォール
 function c42352091.initial_effect(c)
+	aux.AddCodeList(c,42352091,41418852)
 	--activate card
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42352091,0))

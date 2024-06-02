@@ -31,7 +31,7 @@ function c89907227.initial_effect(c)
 	e3:SetDescription(aux.Stringid(89907227,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e3:SetProperty(EFFECT_FLAG_DELAY)
+	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCondition(c89907227.spcon)
 	e3:SetTarget(c89907227.sptg)
@@ -56,7 +56,7 @@ function c89907227.tkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c89907227.tkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
+	return Duel.IsTurnPlayer(1-tp) and not aux.tkfcon(e,tp)
 end
 function c89907227.tkop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
@@ -69,11 +69,11 @@ function c89907227.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and rp==1-tp and c:IsReason(REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
+		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_ONFIELD,0,1,nil,89907228)
 end
 function c89907227.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_ONFIELD,0,1,nil,89907228) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c89907227.spop(e,tp,eg,ep,ev,re,r,rp)

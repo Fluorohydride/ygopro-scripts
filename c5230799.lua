@@ -2,11 +2,13 @@
 function c5230799.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(5230799,1))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x108))
 	e1:SetTargetRange(LOCATION_HAND,0)
+	e1:SetValue(32841045)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)

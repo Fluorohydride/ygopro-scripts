@@ -20,7 +20,7 @@ function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_MZONE,0,nil):GetSum(Card.GetLevel)>1
 end
 function s.mfilter(c,tp,ft)
-	if not (c:IsFaceupEx() and c:GetOriginalType()&TYPE_MONSTER>0) then return false end
+	if not (c:IsFaceupEx() and c:IsType(TYPE_MONSTER)) then return false end
 	local p=c:GetOwner()
 	if p~=tp then ft=0 end
 	local r=LOCATION_REASON_TOFIELD

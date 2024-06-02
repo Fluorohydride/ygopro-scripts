@@ -49,7 +49,7 @@ function c20765952.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20765952.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and Duel.GetTurnPlayer()==tc:GetControler()
+	return tc and Duel.GetTurnPlayer()==e:GetHandlerPlayer()
 end
 function c20765952.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

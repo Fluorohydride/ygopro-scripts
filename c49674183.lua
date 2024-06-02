@@ -7,24 +7,31 @@ function c49674183.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c49674183.spcon)
+	e1:SetTarget(c49674183.sptg)
 	e1:SetOperation(c49674183.spop)
 	c:RegisterEffect(e1)
 end
-function c49674183.spfilter(c,ft)
+function c49674183.spfilter(c,tp)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT) and not c:IsCode(49674183) and c:IsAbleToHandAsCost()
-		and (ft>0 or c:GetSequence()<5)
+		and Duel.GetMZoneCount(tp,c)>0
 end
 function c49674183.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.IsExistingMatchingCard(c49674183.spfilter,tp,LOCATION_MZONE,0,1,nil,ft)
+	return Duel.IsExistingMatchingCard(c49674183.spfilter,tp,LOCATION_MZONE,0,1,nil,tp)
+end
+function c49674183.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c49674183.spfilter,tp,LOCATION_MZONE,0,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c49674183.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c49674183.spfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
-	Duel.SendtoHand(g,nil,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoHand(g,nil,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)

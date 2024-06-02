@@ -77,6 +77,7 @@ function c54283059.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
 			if #mat<2 then goto cancel end
 			tc:SetMaterial(mat)
+			Duel.HintSelection(mat)
 			Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)

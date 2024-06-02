@@ -18,7 +18,7 @@ function c12744567.initial_effect(c)
 	e2:SetDescription(aux.Stringid(12744567,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_RECOVER)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	e2:SetProperty(EFFECT_FLAG_ACTIVATE_CONDITION)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCondition(c12744567.spcon)
 	e2:SetTarget(c12744567.sptg)
@@ -48,12 +48,12 @@ function c12744567.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c12744567.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetOverlayCount()>0
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousOverlayCountOnField()>0
+		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,48739166)
 end
 function c12744567.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,48739166) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	local rec=e:GetHandler():GetBaseAttack()
 	Duel.SetTargetPlayer(tp)
