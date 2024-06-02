@@ -26,7 +26,7 @@ function c9113513.filter2(c,e,tp,mc,f,chkf,sc)
 end
 function c9113513.ffilter(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9b) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf) and not c:IsCode(83793721)
 end
 function c9113513.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -68,9 +68,11 @@ function c9113513.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sc=Duel.SelectMatchingCard(tp,c9113513.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg2,mf,chkf):GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg1=mg2:FilterSelect(tp,c9113513.filter1,1,1,nil,e,tp,mg2,mf,chkf,sc)
+		local sg1=mg2:Filter(c9113513.filter1,nil,e,tp,mg2,mf,chkf,sc):SelectSubGroup(tp,aux.TRUE,true,1,1)
+		if not sg1 then goto cancel end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg2=mg2:FilterSelect(tp,c9113513.filter2,1,1,nil,e,tp,sg1:GetFirst(),mf,chkf,sc)
+		local sg2=mg2:Filter(c9113513.filter2,nil,e,tp,sg1:GetFirst(),mf,chkf,sc):SelectSubGroup(tp,aux.TRUE,true,1,1)
+		if not sg2 then goto cancel end
 		sg1:Merge(sg2)
 		tc=sc
 		local fop=ce:GetOperation()
@@ -79,9 +81,11 @@ function c9113513.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sc=Duel.SelectMatchingCard(tp,c9113513.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg1,mf,chkf):GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg1=mg1:Filter(tp,c9113513.filter1,1,1,nil,e,tp,mg1,nil,chkf,sc)
+		local sg1=mg1:Filter(c9113513.filter1,nil,e,tp,mg1,nil,chkf,sc):SelectSubGroup(tp,aux.TRUE,true,1,1)
+		if not sg1 then goto cancel end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg2=mg1:Filter(tp,c9113513.filter2,1,1,nil,e,tp,sg1:GetFirst(),nil,chkf,sc)
+		local sg2=mg1:Filter(c9113513.filter2,nil,e,tp,sg1:GetFirst(),nil,chkf,sc):SelectSubGroup(tp,aux.TRUE,true,1,1)
+		if not sg2 then goto cancel end
 		sg1:Merge(sg2)
 		tc=sc
 		tc:SetMaterial(sg1)
