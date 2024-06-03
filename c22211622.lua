@@ -36,15 +36,7 @@ function c22211622.initial_effect(c)
 	e3:SetOperation(c22211622.spop)
 	c:RegisterEffect(e3)
 	--pendulum
-	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(22211622,2))
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e4:SetCode(EVENT_DESTROYED)
-	e4:SetProperty(EFFECT_FLAG_DELAY)
-	e4:SetCondition(c22211622.pencon)
-	e4:SetTarget(c22211622.pentg)
-	e4:SetOperation(c22211622.penop)
-	c:RegisterEffect(e4)
+	aux.AddPlaceToPZoneIfDestroyEffect(c)
 end
 function c22211622.splimcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_MZONE,0)>0
@@ -131,18 +123,5 @@ function c22211622.spop(e,tp,eg,ep,ev,re,r,rp)
 			sc:RegisterEffect(e6,true)
 		end
 		Duel.SpecialSummonComplete()
-	end
-end
-function c22211622.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
-end
-function c22211622.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
-end
-function c22211622.penop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

@@ -52,15 +52,7 @@ function c24070330.initial_effect(c)
 	e4:SetOperation(c24070330.desop)
 	c:RegisterEffect(e4)
 	--pendulum
-	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(24070330,4))
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e5:SetCode(EVENT_DESTROYED)
-	e5:SetProperty(EFFECT_FLAG_DELAY)
-	e5:SetCondition(c24070330.pencon)
-	e5:SetTarget(c24070330.pentg)
-	e5:SetOperation(c24070330.penop)
-	c:RegisterEffect(e5)
+	aux.AddPlaceToPZoneIfDestroyEffect(c)
 end
 function c24070330.thfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()
@@ -107,18 +99,5 @@ function c24070330.desop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)
-	end
-end
-function c24070330.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
-end
-function c24070330.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
-end
-function c24070330.penop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

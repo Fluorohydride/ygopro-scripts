@@ -43,15 +43,7 @@ function c22070401.initial_effect(c)
 	e5:SetOperation(c22070401.operation)
 	c:RegisterEffect(e5)
 	--pendulum
-	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(22070401,2))
-	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e6:SetCode(EVENT_DESTROYED)
-	e6:SetProperty(EFFECT_FLAG_DELAY)
-	e6:SetCondition(c22070401.pencon)
-	e6:SetTarget(c22070401.pentg)
-	e6:SetOperation(c22070401.penop)
-	c:RegisterEffect(e6)
+	aux.AddPlaceToPZoneIfDestroyEffect(c)
 end
 function c22070401.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsFusionType(TYPE_PENDULUM)
@@ -108,18 +100,5 @@ function c22070401.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()
-	end
-end
-function c22070401.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
-end
-function c22070401.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
-end
-function c22070401.penop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end
