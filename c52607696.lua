@@ -1,4 +1,4 @@
---幻惑のバリア－ミラージュフォース－
+--幻惑のバリア －ミラージュフォース－
 local s,id,o=GetID()
 function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
@@ -54,9 +54,6 @@ function s.spcfilter(c,tp)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.spcfilter,1,nil,tp)
-end
-function s.filter(c,e,tp)
-	return c:IsRace(RACE_ILLUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local at=Duel.GetAttacker()
