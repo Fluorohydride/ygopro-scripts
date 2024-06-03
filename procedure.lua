@@ -928,11 +928,16 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub2=(sub or notfusion) and not concat_fusion
+				local cancel=Duel.IsSummonCancelable()
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
-				Duel.SetFusionMaterial(sg)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,cancel,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				if sg then
+					Duel.SetFusionMaterial(sg)
+				else
+					Duel.SetFusionMaterial(Group.CreateGroup())
+				end
 			end
 end
 function Auxiliary.FConditionFilterMix(c,fc,sub,concat_fusion,...)
@@ -1050,6 +1055,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub2=(sub or notfusion) and not concat_fusion
+				local cancel=Duel.IsSummonCancelable()
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
 				if gc then sg:AddCard(gc) end
@@ -1060,8 +1066,11 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 					local cancel_group=sg:Clone()
 					if gc then cancel_group:RemoveCard(gc) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local tc=cg:SelectUnselect(cancel_group,tp,finish,false,minc+#funs,maxc+#funs)
-					if not tc then break end
+					local tc=cg:SelectUnselect(cancel_group,tp,finish,cancel,minc+#funs,maxc+#funs)
+					if not tc then
+						if not finish then sg:Clear() end
+						break
+					end
 					if sg:IsContains(tc) then
 						sg:RemoveCard(tc)
 					else
@@ -1680,7 +1689,8 @@ function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_loc
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(Auxiliary.ContactFusionCondition(filter,self_location,opponent_location))
-	e2:SetOperation(Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params))
+	e2:SetTarget(Auxiliary.ContactFusionTarget(filter,self_location,opponent_location))
+	e2:SetOperation(Auxiliary.ContactFusionOperation(mat_operation,operation_params))
 	c:RegisterEffect(e2)
 	return e2
 end
@@ -1696,12 +1706,23 @@ function Auxiliary.ContactFusionCondition(filter,self_location,opponent_location
 				return c:CheckFusionMaterial(mg,nil,tp|0x200)
 			end
 end
-function Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+function Auxiliary.ContactFusionTarget(filter,self_location,opponent_location)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.ContactFusionMaterialFilter,tp,self_location,opponent_location,c,c,filter)
 				local g=Duel.SelectFusionMaterial(tp,c,mg,nil,tp|0x200)
+				if #g>0 then
+					g:KeepAlive()
+					e:SetLabelObject(g)
+					return true
+				else return false end
+			end
+end
+function Auxiliary.ContactFusionOperation(mat_operation,operation_params)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+				local g=e:GetLabelObject()
 				c:SetMaterial(g)
 				mat_operation(g,table.unpack(operation_params))
+				g:DeleteGroup()
 			end
 end
 --send to deck of contact fusion
