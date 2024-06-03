@@ -52,7 +52,7 @@ function c39185163.disrmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterFlagEffect(tp,39185163,RESET_PHASE+PHASE_END,0,1)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=Duel.SelectMatchingCard(tp,c39185163.filter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
+		local g=aux.SelectCardFromFieldFirst(tp,c39185163.filter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		Duel.RegisterFlagEffect(tp,39185164,RESET_PHASE+PHASE_END,0,1)
 	end
