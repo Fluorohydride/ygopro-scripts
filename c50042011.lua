@@ -56,7 +56,7 @@ function s.cfilter(c,tp)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
-		if eg:IsExists(s.cfilter,1,c,p) then
+		if eg:IsExists(s.cfilter,1,nil,p) then
 			Duel.RegisterFlagEffect(p,id,RESET_PHASE+PHASE_END,0,1)
 		end
 	end
