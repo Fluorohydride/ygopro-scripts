@@ -928,7 +928,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub2=(sub or notfusion) and not concat_fusion
-				local cancel=Duel.IsSummonCancelable()
+				local cancel=concat_fusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -1055,7 +1055,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub2=(sub or notfusion) and not concat_fusion
-				local cancel=Duel.IsSummonCancelable()
+				local cancel=concat_fusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
 				if gc then sg:AddCard(gc) end

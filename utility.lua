@@ -1252,6 +1252,24 @@ function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 	end
 	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,ext_params)
 end
+function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params):Filter(Card.IsCanBeEffectTarget,nil)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			Duel.SetTargetCard(sg)
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,ext_params)
+end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()
