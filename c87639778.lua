@@ -5,6 +5,7 @@ function c87639778.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(c87639778.condition)
+	e1:SetTarget(c87639778.target)
 	e1:SetOperation(c87639778.activate)
 	c:RegisterEffect(e1)
 	--act in hand
@@ -32,6 +33,9 @@ end
 function c87639778.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c87639778.disfilter,tp,LOCATION_MZONE,0,1,nil)
 end
+function c87639778.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFlagEffect(tp,87639778)==0 end
+end
 function c87639778.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -40,6 +44,7 @@ function c87639778.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOperation(c87639778.disop)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,87639778,RESET_PHASE+PHASE_END,0,1)
 end
 function c87639778.discon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and rp==1-tp

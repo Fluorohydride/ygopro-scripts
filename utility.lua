@@ -729,6 +729,11 @@ function Auxiliary.MaterialReasonCardReg(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	c:GetReasonCard():CreateEffectRelation(te)
 end
+--the player tp has token on the field
+function Auxiliary.tkfcon(e,tp)
+	if tp==nil and e~=nil then tp=e:GetHandlerPlayer() end
+	return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_TOKEN)
+end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DAMAGE)
@@ -1228,6 +1233,42 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	else
 		return nil
 	end
+end
+--for effects that player usually select card from field, avoid showing panel
+function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,ext_params)
+end
+function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params):Filter(Card.IsCanBeEffectTarget,nil)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			Duel.SetTargetCard(sg)
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,ext_params)
 end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)

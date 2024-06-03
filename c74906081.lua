@@ -48,7 +48,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetCategory(0)
 		e:SetOperation(s.mvop)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-		Duel.SelectTarget(tp,s.mfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil,tp,0)
+		local g=aux.SelectTargetFromFieldFirst(tp,s.mfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil,tp,0)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetOperation(s.spop)
