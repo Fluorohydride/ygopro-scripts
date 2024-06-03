@@ -807,6 +807,7 @@ HINTMSG_TOZONE			=571	--请选择要移动到的位置
 HINTMSG_COUNTER			=572	--请选择要放置指示物的卡
 HINTMSG_DISABLE			=573	--请选择要无效的卡
 HINTMSG_OPERATECARD		=574	--请选择要操作的卡
+HINTMSG_FIELD_FIRST		=575	--请选择场上的卡（按取消可选择其他区域的卡）
 --Select	--请选择
 SELECT_HEADS				=60	--正面
 SELECT_TAILS				=61	--反面
