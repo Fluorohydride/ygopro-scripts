@@ -39,7 +39,7 @@ function s.destg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.AND(Card.IsAttackBelow,Card.IsFaceup),tp,0,LOCATION_MZONE,1,1,nil,1900)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	if math.max(0,sg:GetFirst():GetTextAttack())>0 then
+	if math.max(0,g:GetFirst():GetTextAttack())>0 then
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 	end
 end
