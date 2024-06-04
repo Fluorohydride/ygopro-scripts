@@ -45,14 +45,14 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.desfilter(c,tp,seq)
 	local sseq=c:GetSequence()
-	if c:IsControler(tp) then
-		return sseq==5 and seq==3 or sseq==6 and seq==1
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+		return sseq==5 and seq==3 or sseq==6 and seq==1 or sseq==3 and seq==5 or sseq==1 and seq==6
 	end
-	if c:IsLocation(LOCATION_SZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) then
 		return sseq<5 and sseq==seq
 	end
 	if sseq<5 then
-		return math.abs(sseq-seq)==1
+		return math.abs(sseq-seq)==1 or sseq==1 and seq==5 or sseq==3 and seq==6
 	end
 	if sseq>=5 then
 		return sseq==5 and seq==1 or sseq==6 and seq==3
@@ -60,8 +60,8 @@ function s.desfilter(c,tp,seq)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		local cg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,tp,tc:GetSequence())
+	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
+		local cg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,1-tc:GetControler(),tc:GetSequence())
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLP(tp)<Duel.GetLP(1-tp) and #cg>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
