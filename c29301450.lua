@@ -139,7 +139,7 @@ function s.retop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ReturnToField(tc)
 		end
 	end
-	if g2~=0 then
+	if #g2>0 then
 		Duel.SendtoGrave(g2,REASON_RETURN+REASON_RULE)
 	end
 	e:GetLabelObject():DeleteGroup()
