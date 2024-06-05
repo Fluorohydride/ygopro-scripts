@@ -124,7 +124,7 @@ function s.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject():Filter(s.retfilter,nil,fid)
 	if #g<=0 then return end
 	local g1=g:Filter(s.retchkfilter,nil)
-	local g2=Group.__sub(g,g1)
+	local g2=g-g1
 	Duel.Hint(HINT_CARD,0,id)
 	for p in aux.TurnPlayers() do
 		local tg=g1:Filter(Card.IsPreviousControler,nil,p)
