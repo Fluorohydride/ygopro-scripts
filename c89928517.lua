@@ -27,22 +27,17 @@ function c89928517.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Group.FromCards(tc1,tc2)
 	Duel.ConfirmCards(tp,tg)
 	if tc1:IsType(TYPE_MONSTER) and tc2:IsType(TYPE_MONSTER) then
-		local cpl={tp,1-tp}
-		local pl={}
-		for _,p in ipairs(cpl) do
-			local tc=tg:Filter(Card.IsControler,nil,p):GetFirst()
-			if Duel.GetLocationCount(p,LOCATION_MZONE,p)>0
-				and tc:IsCanBeSpecialSummoned(e,0,p,false,false) then
-				table.insert(pl,p)
-			end
-		end
-		for _,p in ipairs(pl) do
+		local i=0
+		local p=tp
+		while i<=1 do
 			local tc=tg:Filter(Card.IsControler,nil,p):GetFirst()
 			if Duel.GetLocationCount(p,LOCATION_MZONE,p)>0
 				and tc:IsCanBeSpecialSummoned(e,0,p,false,false)
 				and Duel.SelectYesNo(p,aux.Stringid(89928517,1)) then
 				Duel.SpecialSummonStep(tc,0,p,p,false,false,POS_FACEUP)
 			end
+			i=i+1
+			p=1-tp
 		end
 		Duel.SpecialSummonComplete()
 	elseif tc1:IsType(TYPE_SPELL) and tc2:IsType(TYPE_SPELL) then
