@@ -29,9 +29,9 @@ function c48130397.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c48130397.fcheck(tp,sg,fc)
-	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_KAISER_COLOSSEUM) then
-		local self_field_monsters=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-		local opp_field_monsters=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
+	local self_field_monsters=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	local opp_field_monsters=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
+	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_KAISER_COLOSSEUM) and #opp_field_monsters>0 then
 		return #(self_field_monsters-sg) < #(opp_field_monsters-sg)
 	end
 	return true
