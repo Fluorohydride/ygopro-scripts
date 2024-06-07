@@ -87,7 +87,7 @@ function c10424147.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c10424147.mtfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) and tc:IsCanOverlay()
+	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) and c:IsCanOverlay()
 end
 function c10424147.spop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
