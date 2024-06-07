@@ -28,12 +28,21 @@ function c48130397.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
+function c48130397.fcheck(tp,sg,fc)
+	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_KAISER_COLOSSEUM) then
+		local self_field_monsters=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+		local opp_field_monsters=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
+		return #(self_field_monsters-sg) < #(opp_field_monsters-sg)
+	end
+	return true
+end
 function c48130397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local mg2=Duel.GetMatchingGroup(c48130397.filter0,tp,0,LOCATION_MZONE,nil)
 		mg1:Merge(mg2)
+		aux.FCheckAdditional=c48130397.fcheck
 		local res=Duel.IsExistingMatchingCard(c48130397.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -44,6 +53,7 @@ function c48130397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c48130397.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
+		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
