@@ -34,7 +34,7 @@ end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsOnField() and chkc:IsLocation(LOCATION_FZONE) end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp) and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_FZONE,LOCATION_FZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
