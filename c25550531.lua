@@ -65,7 +65,7 @@ function s.sptgexfilter(c,e,tp,code)
 		and c:IsType(TYPE_XYZ) and sc:IsCanBeXyzMaterial(c) and Duel.GetLocationCountFromEx(tp,tp,sc,c)>0
 end
 function s.sptgfilter(c,e,tp)
-	return not c:IsPublic() and c:IsType(TYPE_QUICKPLAY) and c:IsSetCard(0x18c)
+	return not c:IsPublic() and c:IsType(TYPE_QUICKPLAY) and c:IsSetCard(0x18c) and c:IsCanOverlay()
 		and Duel.IsExistingMatchingCard(s.sptgexfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetCode())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -89,5 +89,5 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Overlay(tc,Group.FromCards(c))
 	Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 	tc:CompleteProcedure()
-	if not sc:IsImmuneToEffect(e) then Duel.Overlay(tc,g) end
+	if not sc:IsImmuneToEffect(e) and sc:IsCanOverlay() then Duel.Overlay(tc,g) end
 end
