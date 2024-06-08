@@ -58,7 +58,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
-	if Duel.Destroy(g,REASON_EFFECT)>0 and e:GetHandler():GetOverlayGroup():Filter(Card.IsType,nil,TYPE_XYZ):GetClassCount(Card.GetCode)>=3 then
+	if Duel.Destroy(g,REASON_EFFECT)>0 and e:GetHandler():GetOverlayGroup():Filter(Card.IsType,nil,TYPE_XYZ):Filter(Card.IsSetCard,nil,0xba):GetClassCount(Card.GetCode)>=3 then
 		local dg=Duel.GetOperatedGroup()
 		local atk=dg:GetSum(s.damval2)
 		if atk>0 then
@@ -68,7 +68,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.filter(c)
-	return c:IsSetCard(0xba) and c:IsType(TYPE_MONSTER) and c:IsType(TYPE_XYZ) and not c:IsForbidden()
+	return c:IsSetCard(0xba) and c:IsType(TYPE_MONSTER) and c:IsType(TYPE_XYZ)
 end
 function s.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
