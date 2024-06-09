@@ -56,9 +56,14 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local atk=g:GetSum(s.damval1)
 	if atk>0 then Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0) end
 end
+function s.xfilter(c)
+	return c:IsType(TYPE_XYZ) and c:IsSetCard(0xba)
+end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
-	if Duel.Destroy(g,REASON_EFFECT)>0 and e:GetHandler():GetOverlayGroup():Filter(Card.IsType,nil,TYPE_XYZ):Filter(Card.IsSetCard,nil,0xba):GetClassCount(Card.GetCode)>=3 then
+	if Duel.Destroy(g,REASON_EFFECT)>0 and c:IsRelateToEffect(e)
+		and c:GetOverlayGroup():Filter(s.xfilter,nil):GetClassCount(Card.GetCode)>=3 then
 		local dg=Duel.GetOperatedGroup()
 		local atk=dg:GetSum(s.damval2)
 		if atk>0 then
