@@ -17,7 +17,7 @@ function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2 or Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
 end
 function s.filter1(c,e)
-	return c:GetRank()>0 and c:IsFaceup() and c:IsSetCard(0xba) and c:IsCanBeEffectTarget(e)
+	return c:GetRank()>0 and c:IsFaceup() and c:IsSetCard(0xba) and c:IsCanBeEffectTarget(e) and not c:IsForbidden()
 end
 function s.filter2(c,e,tp,mg)
 	local rk=mg:GetSum(Card.GetRank)
@@ -45,7 +45,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=sg:GetFirst()
 	if sc and Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
 		sc:CompleteProcedure()
-		for tc in aux.Next(tg) do
+		local og=tg:Filter(Card.IsCanOverlay,nil)
+		for tc in aux.Next(og) do
 			local mg=tc:GetOverlayGroup()
 			if mg:GetCount()~=0 then
 				Duel.Overlay(sc,mg)
