@@ -49,13 +49,14 @@ function c20765952.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20765952.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and Duel.GetTurnPlayer()==e:GetHandlerPlayer()
+	return tc and Duel.IsTurnPlayer(e:GetHandlerPlayer())
 end
 function c20765952.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetTargetPlayer(Duel.GetTurnPlayer())
+	local tc=e:GetHandler():GetFirstCardTarget()
+	Duel.SetTargetPlayer(tc:GetControler())
 	Duel.SetTargetParam(500)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,Duel.GetTurnPlayer(),500)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tc:GetControler(),500)
 end
 function c20765952.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
