@@ -24,8 +24,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.daop)
 	c:RegisterEffect(e2)
 end
-
---special summon
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and Duel.GetAttacker():IsControler(1-tp)
 end
@@ -53,8 +51,6 @@ end
 function s.skipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SkipPhase(Duel.GetTurnPlayer(),PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 end
-
---damage
 function s.dacon(e,tp,eg,ep,ev,re,r,rp)
 	if ep~=tp then return false end
 	return r&REASON_EFFECT>0 and rp==1-tp

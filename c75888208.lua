@@ -1,6 +1,6 @@
 --夢魔鏡の夢魔－イケロス
 function c75888208.initial_effect(c)
-	aux.AddCodeList(c,74665651)
+	aux.AddCodeList(c,74665651,49389190)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75888208,0))
@@ -29,7 +29,8 @@ function c75888208.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c75888208.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:GetHandler():IsType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x131)
 end
 function c75888208.spfilter1(c,e,tp)
 	return c:IsSetCard(0x131) and not c:IsCode(75888208) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

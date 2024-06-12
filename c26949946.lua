@@ -41,10 +41,10 @@ function c26949946.hdcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c26949946.hdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsCode,1,nil,31533705)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,31533705)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsCode,1,ct,nil,31533705)
+	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,ct,nil,31533705)
 	e:SetLabel(g:GetCount())
 	Duel.Release(g,REASON_COST)
 end

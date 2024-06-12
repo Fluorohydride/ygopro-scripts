@@ -66,7 +66,7 @@ end
 function c60195675.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,tc)
 	end
 end
@@ -74,8 +74,8 @@ function c60195675.cfilter(c,tp)
 	return c:IsType(TYPE_LINK) and c:IsRace(RACE_MACHINE) and Duel.GetMZoneCount(tp,c)>0
 end
 function c60195675.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c60195675.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c60195675.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c60195675.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c60195675.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c60195675.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

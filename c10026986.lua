@@ -38,8 +38,8 @@ function c10026986.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c10026986.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c10026986.cfilter,1,nil,tp) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c10026986.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c10026986.cfilter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c10026986.cfilter,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c10026986.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

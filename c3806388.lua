@@ -30,13 +30,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop2)
 	c:RegisterEffect(e2)
 	--redirect
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetCondition(s.recon)
-	e3:SetValue(LOCATION_REMOVED)
-	c:RegisterEffect(e3)
+	aux.AddBanishRedirect(c)
 end
 function s.splimit(e,se,sp,st)
 	return se:IsHasType(EFFECT_TYPE_ACTIONS)
@@ -90,7 +84,4 @@ function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function s.recon(e)
-	return e:GetHandler():IsFaceup()
 end

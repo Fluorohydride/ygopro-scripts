@@ -143,8 +143,11 @@ end
 function Auxiliary.PuzzleOp(e,tp)
 	Duel.SetLP(0,0)
 end
---Duel.SelectOption with option condition
---Return value starts from 1, different from Duel.SelectOption
+---Duel.SelectOption with option condition
+---Return value starts from 1, different from Duel.SelectOption
+---@param tp integer
+---@param ... table {condition, option[, value]}
+---@return integer
 function Auxiliary.SelectFromOptions(tp,...)
 	local options={...}
 	local ops={}
@@ -334,40 +337,40 @@ function Auxiliary.EnableUnionAttribute(c,filter)
 	c:RegisterEffect(e4)
 end
 function Auxiliary.UnionEquipFilter(filter)
-	return function(c,tp)
-		local ct1,ct2=c:GetUnionCount()
-		return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
-	end
+	return	function(c,tp)
+				local ct1,ct2=c:GetUnionCount()
+				return c:IsFaceup() and ct2==0 and c:IsControler(tp) and filter(c)
+			end
 end
 function Auxiliary.UnionEquipLimit(filter)
-	return function(e,c)
-		return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
-	end
+	return	function(e,c)
+				return (c:IsControler(e:GetHandlerPlayer()) and filter(c)) or e:GetHandler():GetEquipTarget()==c
+			end
 end
 function Auxiliary.UnionEquipTarget(equip_filter)
-	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-		local c=e:GetHandler()
-		if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
-		if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
-		Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
-		c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+				local c=e:GetHandler()
+				if chkc then return chkc:IsLocation(LOCATION_MZONE) and equip_filter(chkc,tp) end
+				if chk==0 then return c:GetFlagEffect(FLAG_ID_UNION)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+					and Duel.IsExistingTarget(equip_filter,tp,LOCATION_MZONE,0,1,c,tp) end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+				local g=Duel.SelectTarget(tp,equip_filter,tp,LOCATION_MZONE,0,1,1,c,tp)
+				Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
+				c:RegisterFlagEffect(FLAG_ID_UNION,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+			end
 end
 function Auxiliary.UnionEquipOperation(equip_filter)
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local c=e:GetHandler()
-		local tc=Duel.GetFirstTarget()
-		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-		if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
-			Duel.SendtoGrave(c,REASON_RULE)
-			return
-		end
-		if not Duel.Equip(tp,c,tc,false) then return end
-		Auxiliary.SetUnionState(c)
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local c=e:GetHandler()
+				local tc=Duel.GetFirstTarget()
+				if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+				if not tc:IsRelateToEffect(e) or not equip_filter(tc,tp) then
+					Duel.SendtoGrave(c,REASON_RULE)
+					return
+				end
+				if not Duel.Equip(tp,c,tc,false) then return end
+				Auxiliary.SetUnionState(c)
+			end
 end
 function Auxiliary.UnionUnequipTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -465,7 +468,7 @@ function Auxiliary.IsMaterialListCode(c,code)
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
-	if type(c.material_setcode)=='table' then
+	if type(c.material_setcode)=="table" then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
 		end
@@ -726,6 +729,11 @@ function Auxiliary.MaterialReasonCardReg(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	c:GetReasonCard():CreateEffectRelation(te)
 end
+--the player tp has token on the field
+function Auxiliary.tkfcon(e,tp)
+	if tp==nil and e~=nil then tp=e:GetHandlerPlayer() end
+	return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_TOKEN)
+end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DAMAGE)
@@ -757,13 +765,15 @@ function Auxiliary.qlifilter(e,te)
 end
 --sp_summon condition for gladiator beast monsters
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_GLADIATOR>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st&SUMMON_VALUE_EVOLTILE>0
+	local c=e:GetHandler()
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
@@ -913,14 +923,14 @@ function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function Auxiliary.DrytronSpSummonOperation(func)
-	return function(e,tp,eg,ep,ev,re,r,rp)
-		local c=e:GetHandler()
-		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
-			c:CompleteProcedure()
-			func(e,tp)
-		end
-	end
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local c=e:GetHandler()
+				if not c:IsRelateToEffect(e) then return end
+				if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP_DEFENSE)~=0 then
+					c:CompleteProcedure()
+					func(e,tp)
+				end
+			end
 end
 ---The `nolimit` parameter for Special Summon effects of Drytron cards
 ---@param c Card
@@ -1012,8 +1022,14 @@ end
 function Auxiliary.mzctcheck(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0
 end
-function Auxiliary.mzctcheckrel(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(REASON_COST,tp,Auxiliary.IsInGroup,#g,nil,g)
+---Check if there is space in mzone after tp releases g by reason
+---@param g Group
+---@param tp integer
+---@param reason? integer
+---@return boolean
+function Auxiliary.mzctcheckrel(g,tp,reason)
+	reason=reason or REASON_COST
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,Auxiliary.IsInGroup,#g,reason,false,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
@@ -1068,7 +1084,7 @@ end
 ---@param f function
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
@@ -1093,8 +1109,8 @@ end
 ---@param cancelable boolean
 ---@param min? integer
 ---@param max? integer
----@param ...? unknown
----@return Group|nil
+---@param ... any
+---@return Group
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
@@ -1176,7 +1192,7 @@ end
 ---@param g Group
 ---@param checks table
 ---@param f? function
----@param ...? unknown
+---@param ... any
 ---@return boolean
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
@@ -1191,8 +1207,8 @@ end
 ---@param checks table
 ---@param cancelable? boolean
 ---@param f? function
----@param ...? unknown
----@return Group|nil
+---@param ... any
+---@return Group
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
@@ -1217,6 +1233,42 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	else
 		return nil
 	end
+end
+--for effects that player usually select card from field, avoid showing panel
+function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,ext_params)
+end
+function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params):Filter(Card.IsCanBeEffectTarget,nil)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			Duel.SetTargetCard(sg)
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,ext_params)
 end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
@@ -1272,9 +1324,6 @@ function Auxiliary.UseExtraReleaseCount(g,tp)
 end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
-end
-function Auxiliary.IsSpecialSummonedByEffect(e)
-	return not ((e:GetCode()==EFFECT_SPSUMMON_PROC or e:GetCode()==EFFECT_SPSUMMON_PROC_G) and e:GetProperty()&(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)==(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE))
 end
 --
 function Auxiliary.GetCappedLevel(c)
@@ -1474,4 +1523,119 @@ end
 --
 function Auxiliary.NegateSummonCondition()
 	return Duel.GetReadyChain()==0
+end
+---Check if all cards in g have the same Attribute/Race
+---@param g Group
+---@param f function Like Card.GetAttribute, must return binary value
+---@return boolean
+function Auxiliary.SameValueCheck(g,f)
+	if #g<=1 then return true end
+	if #g==2 then return f(g:GetFirst())&f(g:GetNext())~=0 end
+	local tc=g:GetFirst()
+	local v=f(tc)
+	tc=g:GetNext()
+	while tc do
+		v=v&f(tc)
+		if v==0 then return false end
+		tc=g:GetNext()
+	end
+	return v~=0
+end
+---
+---@param tp integer
+---@return boolean
+function Auxiliary.IsPlayerCanNormalDraw(tp)
+	return Duel.GetDrawCount(tp)>0 and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
+		and Duel.GetFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW)==0
+end
+---
+---@param e Effect
+---@param tp integer
+---@param property? integer
+function Auxiliary.GiveUpNormalDraw(e,tp,property)
+	property=property or 0
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET|property)
+	e1:SetCode(EFFECT_DRAW_COUNT)
+	e1:SetTargetRange(1,0)
+	e1:SetReset(RESET_PHASE+PHASE_DRAW)
+	e1:SetValue(0)
+	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
+end
+---Add EFFECT_TYPE_ACTIVATE effect to Equip Spell Cards
+---@param c Card
+---@param is_self boolean
+---@param is_opponent boolean
+---@param filter function
+---@param eqlimit function|nil
+---@param pause? boolean
+---@param skip_target? boolean
+function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,pause,skip_target)
+	local value=(type(eqlimit)=="function") and eqlimit or 1
+	if pause==nil then pause=false end
+	if skip_target==nil then skip_target=false end
+	--Activate
+	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_EQUIP)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
+	if not skip_target then
+		e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
+	end
+	e1:SetOperation(Auxiliary.EquipSpellOperation(eqlimit))
+	if not pause then
+		c:RegisterEffect(e1)
+	end
+	--Equip limit
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_EQUIP_LIMIT)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetValue(value)
+	c:RegisterEffect(e2)
+	return e1
+end
+function Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit)
+	local loc1=is_self and LOCATION_MZONE or 0
+	local loc2=is_opponent and LOCATION_MZONE or 0
+	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+		if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() and (not eqlimit or eqlimit(e,chkc)) end
+		if chk==0 then return Duel.IsExistingTarget(filter,tp,loc1,loc2,1,nil) end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+		Duel.SelectTarget(tp,filter,tp,loc1,loc2,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	end
+end
+function Auxiliary.EquipSpellOperation(eqlimit)
+	return function (e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
+		local tc=Duel.GetFirstTarget()
+		if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and (not eqlimit or eqlimit(e,tc)) then
+			Duel.Equip(tp,c,tc)
+		end
+	end
+end
+---If this face-up card would leave the field, banish it instead.
+---@param c Card
+---@param condition? function
+function Auxiliary.AddBanishRedirect(c,condition)
+	if type(condition)~="function" then
+		condition=Auxiliary.BanishRedirectCondition
+	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
+	e1:SetCondition(condition)
+	e1:SetValue(LOCATION_REMOVED)
+	c:RegisterEffect(e1)
+end
+---
+---@param e Effect
+function Auxiliary.BanishRedirectCondition(e)
+	return e:GetHandler():IsFaceup()
 end

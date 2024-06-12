@@ -47,7 +47,7 @@ function c16719140.fselect(g,tp,lv,mc)
 	else return false end
 end
 function c16719140.relfilter(c)
-	return c:IsLevelAbove(1) and c:IsReleasableByEffect()
+	return c:IsLevelAbove(1)
 end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

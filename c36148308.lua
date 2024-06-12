@@ -102,9 +102,9 @@ function s.spfilter(c,e,tp,sc)
 		and Duel.GetLocationCountFromEx(tp,tp,sc,c)>0
 end
 function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,e,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.cfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,e,tp)
 	Duel.Release(g,REASON_COST)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

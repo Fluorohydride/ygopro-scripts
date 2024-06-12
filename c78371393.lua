@@ -66,15 +66,15 @@ function c78371393.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78371393.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if not Duel.CheckReleaseGroup(REASON_EFFECT,tp,nil,1,nil) then
+	if not Duel.CheckReleaseGroupEx(tp,nil,1,REASON_EFFECT,false,nil) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	end
 end
 function c78371393.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	if Duel.CheckReleaseGroup(REASON_EFFECT,tp,Card.IsReleasableByEffect,1,c) and Duel.SelectYesNo(tp,aux.Stringid(78371393,2)) then
-		local g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,Card.IsReleasableByEffect,1,1,c)
+	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_EFFECT,false,c) and Duel.SelectYesNo(tp,aux.Stringid(78371393,2)) then
+		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_EFFECT,false,c)
 		Duel.Release(g,REASON_EFFECT)
 	else
 		Duel.Destroy(c,REASON_EFFECT)
@@ -96,6 +96,6 @@ function c78371393.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c78371393.filter),tp,0x13,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
-		Duel.ShuffleDeck(tp)
+		g:GetFirst():CompleteProcedure()
 	end
 end

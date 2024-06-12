@@ -1,5 +1,6 @@
 --ヌメロン・カオス・リチューアル
 function c41850466.initial_effect(c)
+	aux.AddCodeList(c,79747096,41418852,89477759)
 	--Activate/Special Summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

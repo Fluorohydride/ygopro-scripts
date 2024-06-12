@@ -1,5 +1,6 @@
 --不知火の隠者
 function c94801854.initial_effect(c)
+	aux.AddCodeList(c,40005099)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94801854,0))
@@ -29,8 +30,8 @@ function c94801854.spcfilter(c,ft,tp)
 end
 function c94801854.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(REASON_COST,tp,c94801854.spcfilter,1,nil,ft,tp) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c94801854.spcfilter,1,1,nil,ft,tp)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c94801854.spcfilter,1,nil,ft,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c94801854.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c94801854.spfilter1(c,e,tp)

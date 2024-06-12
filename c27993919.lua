@@ -84,12 +84,12 @@ function c27993919.spfilter(c,e,tp,sc)
 		and math.abs(c:GetCurrentScale()-sc)==2 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27993919.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_EFFECT,tp,c27993919.cfilter,1,nil,e,tp) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c27993919.cfilter,1,REASON_EFFECT,false,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c27993919.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_EFFECT,tp,c27993919.cfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,c27993919.cfilter,1,1,REASON_EFFECT,false,nil,e,tp)
 	if Duel.Release(g,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c27993919.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,g:GetFirst():GetCurrentScale())

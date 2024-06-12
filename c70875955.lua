@@ -45,9 +45,9 @@ function c70875955.rfilter(c)
 	return c:IsType(TYPE_TOKEN) or c:IsSetCard(0x101b)
 end
 function c70875955.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckReleaseGroup(REASON_MAINTENANCE,tp,c70875955.rfilter,1,nil)
+	if Duel.CheckReleaseGroupEx(tp,c70875955.rfilter,1,REASON_MAINTENANCE,false,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(70875955,2)) then
-		local g=Duel.SelectReleaseGroup(REASON_MAINTENANCE,tp,c70875955.rfilter,1,1,nil)
+		local g=Duel.SelectReleaseGroupEx(tp,c70875955.rfilter,1,1,REASON_MAINTENANCE,false,nil)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else
 		Duel.SendtoGrave(e:GetHandler(),REASON_RULE)

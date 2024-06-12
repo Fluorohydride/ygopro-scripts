@@ -6,8 +6,6 @@ function c48680970.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
-	e1:SetTarget(c48680970.target1)
-	e1:SetOperation(c48680970.operation)
 	c:RegisterEffect(e1)
 	--instant
 	local e2=Effect.CreateEffect(c)
@@ -15,8 +13,8 @@ function c48680970.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMING_END_PHASE)
-	e2:SetCost(c48680970.cost2)
-	e2:SetTarget(c48680970.target2)
+	e2:SetCountLimit(1,48680970)
+	e2:SetTarget(c48680970.target)
 	e2:SetOperation(c48680970.operation)
 	c:RegisterEffect(e2)
 	--immune effect
@@ -44,55 +42,7 @@ end
 function c48680970.filter2(c)
 	return c:IsCode(2314238,63391643) and c:IsAbleToHand()
 end
-function c48680970.target1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c48680970.filter1,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp)
-	local b2=Duel.IsExistingMatchingCard(c48680970.filter2,tp,LOCATION_DECK,0,1,nil)
-	local op=2
-	e:SetCategory(0)
-	if Duel.GetFlagEffect(tp,48680970)==0 and (b1 or b2) and Duel.SelectYesNo(tp,aux.Stringid(48680970,0)) then
-		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(48680970,1),aux.Stringid(48680970,2))
-		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(48680970,1))
-		else
-			op=Duel.SelectOption(tp,aux.Stringid(48680970,2))+1
-		end
-		if op==0 then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-			Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
-		else
-			e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-			Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-		end
-		Duel.RegisterFlagEffect(tp,48680970,RESET_PHASE+PHASE_END,0,1)
-	end
-	e:SetLabel(op)
-end
-function c48680970.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==2 or not e:GetHandler():IsRelateToEffect(e) then return end
-	if e:GetLabel()==0 then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c48680970.filter1),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
-		if g:GetCount()>0 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c48680970.filter2,tp,LOCATION_DECK,0,1,1,nil)
-		if g:GetCount()>0 then
-			Duel.SendtoHand(g,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,g)
-		end
-	end
-end
-function c48680970.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFlagEffect(tp,48680970)==0 end
-	Duel.RegisterFlagEffect(tp,48680970,RESET_PHASE+PHASE_END,0,1)
-end
-function c48680970.target2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c48680970.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c48680970.filter1,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp)
 	local b2=Duel.IsExistingMatchingCard(c48680970.filter2,tp,LOCATION_DECK,0,1,nil)
@@ -112,6 +62,23 @@ function c48680970.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
+	end
+end
+function c48680970.operation(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetLabel()==0 then
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c48680970.filter1),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+		if g:GetCount()>0 then
+			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+		end
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+		local g=Duel.SelectMatchingCard(tp,c48680970.filter2,tp,LOCATION_DECK,0,1,1,nil)
+		if g:GetCount()>0 then
+			Duel.SendtoHand(g,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,g)
+		end
 	end
 end
 function c48680970.etarget(e,c)

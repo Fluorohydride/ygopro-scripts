@@ -33,15 +33,15 @@ function c88332693.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c88332693.filter2,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetCode())
 end
 function c88332693.filter2(c,e,tp,tcode)
-	return c:IsSetCard(0x104f) and c.assault_name==tcode and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x104f) and c.assault_name==tcode and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_ASSAULT_MODE,tp,false,true)
 end
 function c88332693.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c88332693.filter1,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,c88332693.filter1,1,nil,e,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c88332693.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c88332693.filter1,1,1,nil,e,tp)
 	Duel.SetTargetParam(rg:GetFirst():GetCode())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
@@ -51,7 +51,7 @@ function c88332693.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,c88332693.filter2,tp,LOCATION_HAND,0,1,1,nil,e,tp,code):GetFirst()
-	if tc and Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)>0 then
+	if tc and Duel.SpecialSummon(tc,SUMMON_VALUE_ASSAULT_MODE,tp,tp,false,true,POS_FACEUP)>0 then
 		tc:CompleteProcedure()
 	end
 end
@@ -66,6 +66,7 @@ function c88332693.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.SelectMatchingCard(tp,c88332693.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil):GetFirst()
 	if tc and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetDescription(aux.Stringid(88332693,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

@@ -32,16 +32,16 @@ function c24361622.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSequence()>4 and Duel.GetTurnPlayer()~=tp
 end
 function c24361622.thcfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsReleasable()
+	return c:IsType(TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(c24361622.thfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c24361622.thfilter(c)
 	return c:IsFaceup() and c:IsAbleToHand()
 end
 function c24361622.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,c24361622.thcfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c24361622.thcfilter,1,REASON_COST,true,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroupEx(REASON_COST,tp,c24361622.thcfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,c24361622.thcfilter,1,1,REASON_COST,true,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c24361622.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

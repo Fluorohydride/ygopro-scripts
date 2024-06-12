@@ -1,5 +1,4 @@
 --ダイノルフィア・リヴァージョン
---not fully implemented
 function c28292031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

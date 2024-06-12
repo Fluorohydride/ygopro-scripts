@@ -25,9 +25,9 @@ function c56641453.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local res=e:GetLabel()==1
 		e:SetLabel(0)
 		return res and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-			and Duel.CheckReleaseGroup(REASON_COST,tp,c56641453.filter1,1,nil,e,tp) end
+			and Duel.CheckReleaseGroup(tp,c56641453.filter1,1,nil,e,tp) end
 	e:SetLabel(0)
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c56641453.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c56641453.filter1,1,1,nil,e,tp)
 	Duel.Release(rg,REASON_COST)
 	Duel.SetTargetCard(rg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,0x13)

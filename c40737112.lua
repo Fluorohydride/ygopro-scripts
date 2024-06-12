@@ -24,13 +24,7 @@ function c40737112.initial_effect(c)
 	e2:SetOperation(c40737112.rmop)
 	c:RegisterEffect(e2)
 	--redirect
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetCondition(c40737112.recon)
-	e3:SetValue(LOCATION_REMOVED)
-	c:RegisterEffect(e3)
+	aux.AddBanishRedirect(c)
 	if not c40737112.global_check then
 		c40737112.global_check=true
 		local ge1=Effect.CreateEffect(c)
@@ -81,7 +75,4 @@ function c40737112.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if bc:IsRelateToBattle() and bc:IsAbleToRemove() then
 		Duel.Remove(bc,POS_FACEUP,REASON_EFFECT)
 	end
-end
-function c40737112.recon(e)
-	return e:GetHandler():IsFaceup()
 end

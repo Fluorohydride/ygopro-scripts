@@ -47,7 +47,7 @@ function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>0
 end
 function s.relfilter1(c,tp)
-	return c:IsSetCard(0x196) and c:IsFaceup() and c:IsReleasableByEffect()
+	return c:IsSetCard(0x196) and c:IsReleasableByEffect()
 		and Duel.IsExistingMatchingCard(s.relfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,tp,c)
 end
 function s.relfilter2(c,tp,ec)
@@ -75,6 +75,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,SUMMON_VALUE_NOUVELLEZ,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 	end
 end

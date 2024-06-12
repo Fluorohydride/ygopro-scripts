@@ -50,7 +50,7 @@ end
 function c39943352.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsImmuneToEffect(e) and tc:IsRelateToEffect(e) and c:IsRelateToEffect(e) then
+	if not tc:IsImmuneToEffect(e) and tc:IsRelateToEffect(e) and c:IsRelateToEffect(e) and c:IsCanOverlay() then
 		Duel.Overlay(tc,Group.FromCards(c))
 	end
 end

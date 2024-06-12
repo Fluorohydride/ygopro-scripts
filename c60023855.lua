@@ -31,8 +31,8 @@ function c60023855.lvfilter(c)
 	return c:IsLevelAbove(1) and c:IsFaceup() and c:IsCode(60023855)
 end
 function c60023855.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c60023855.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c60023855.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c60023855.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c60023855.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(g:GetFirst():GetPreviousLevelOnField())
 end

@@ -38,10 +38,10 @@ function c1041278.spfilter3(c,e,tp)
 end
 function c1041278.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c1041278.spfilter0,tp,LOCATION_GRAVE+LOCATION_REMOVED,LOCATION_GRAVE+LOCATION_REMOVED,nil,e,tp)
-	local b1=Duel.CheckReleaseGroup(REASON_COST,tp,c1041278.rfilter1,1,nil,tp)
+	local b1=Duel.CheckReleaseGroup(tp,c1041278.rfilter1,1,nil,tp)
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 		and g:IsExists(c1041278.spfilter1,1,nil,e,tp,g)
-	local b2=Duel.CheckReleaseGroup(REASON_COST,tp,c1041278.rfilter2,1,nil,tp)
+	local b2=Duel.CheckReleaseGroup(tp,c1041278.rfilter2,1,nil,tp)
 		and g:IsExists(c1041278.spfilter3,2,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local rfilter=c1041278.rfilter1
@@ -49,7 +49,7 @@ function c1041278.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		rfilter=c1041278.rfilter2
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,rfilter,1,1,nil,tp)
+	local rg=Duel.SelectReleaseGroup(tp,rfilter,1,1,nil,tp)
 	local rc=rg:GetFirst()
 	e:SetLabelObject(rc)
 	Duel.Release(rg,REASON_COST)

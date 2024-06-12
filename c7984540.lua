@@ -25,8 +25,8 @@ function c7984540.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7984540.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c7984540.tdfilter(c)

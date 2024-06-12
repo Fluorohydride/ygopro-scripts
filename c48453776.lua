@@ -15,6 +15,7 @@ function c48453776.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c48453776.spcon)
+	e2:SetTarget(c48453776.sptg)
 	e2:SetOperation(c48453776.spop)
 	c:RegisterEffect(e2)
 	--to grave
@@ -29,25 +30,37 @@ function c48453776.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c48453776.spfilter1(c)
-	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_FAIRY) and c:IsAbleToRemoveAsCost()
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_FAIRY)
 end
 function c48453776.spfilter2(c)
-	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FIEND) and c:IsAbleToRemoveAsCost()
+	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FIEND)
+end
+c48453776.spchecks={c48453776.spfilter1,c48453776.spfilter2,c48453776.spfilter2,c48453776.spfilter2}
+function c48453776.spfilter(c)
+	return ((c:IsRace(RACE_FAIRY) and c:IsAttribute(ATTRIBUTE_LIGHT)) or (c:IsRace(RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK)))
+		and c:IsAbleToRemoveAsCost()
 end
 function c48453776.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(c48453776.spfilter,tp,LOCATION_GRAVE,0,nil)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c48453776.spfilter1,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.IsExistingMatchingCard(c48453776.spfilter2,tp,LOCATION_GRAVE,0,3,nil)
+		and g:CheckSubGroupEach(c48453776.spchecks)
+end
+function c48453776.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c48453776.spfilter,tp,LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroupEach(tp,c48453776.spchecks,true)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c48453776.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c48453776.spfilter1,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c48453776.spfilter2,tp,LOCATION_GRAVE,0,3,3,nil)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c48453776.sgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000)

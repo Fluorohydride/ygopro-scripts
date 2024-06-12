@@ -62,7 +62,7 @@ function c69809989.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69809989.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c69809989.mfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 		if g:GetCount()>0 then

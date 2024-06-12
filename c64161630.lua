@@ -22,8 +22,8 @@ function c64161630.filter(c,rk,rc,e,tp,mc)
 end
 function c64161630.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c64161630.cfilter,1,nil,e,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c64161630.cfilter,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c64161630.cfilter,1,nil,e,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c64161630.cfilter,1,1,nil,e,tp)
 	e:SetLabel(g:GetFirst():GetRank())
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetReset(RESET_PHASE+PHASE_END)

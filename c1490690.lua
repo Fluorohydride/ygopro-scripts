@@ -59,7 +59,8 @@ function c1490690.op(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c1490690.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return e:GetHandler()==se:GetHandler() and c:IsOriginalCodeRule(e:GetLabel())
+	local sc=se:GetHandler()
+	return sc and sc:IsCode(1490690) and c:IsOriginalCodeRule(e:GetLabel())
 end
 function c1490690.stcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND+LOCATION_ONFIELD)

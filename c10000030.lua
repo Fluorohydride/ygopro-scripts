@@ -62,7 +62,7 @@ function c10000030.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c10000030.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if  e:GetLabel()==0 then
+	if e:GetLabel()==0 then
 		if tc:IsRelateToEffect(e) then
 			Duel.GetControl(tc,tp,PHASE_END,1)
 		end

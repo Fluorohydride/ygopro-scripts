@@ -39,8 +39,8 @@ function c2311090.cfilter(c)
 	return c:IsLevel(2) or c:IsRank(2) or c:IsLink(2)
 end
 function c2311090.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c2311090.cfilter,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c2311090.cfilter,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c2311090.cfilter,1,e:GetHandler()) end
+	local g=Duel.SelectReleaseGroup(tp,c2311090.cfilter,1,1,e:GetHandler())
 	Duel.Release(g,REASON_COST)
 	local tc=Duel.GetOperatedGroup():GetFirst()
 	e:SetLabelObject(tc)

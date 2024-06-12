@@ -77,7 +77,7 @@ function c51316684.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c51316684.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c51316684.rmcon(e,tp,eg,ep,ev,re,r,rp)
@@ -96,8 +96,8 @@ function c51316684.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c51316684.rmcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsReleasable,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c51316684.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

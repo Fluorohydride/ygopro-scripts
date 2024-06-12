@@ -26,7 +26,6 @@ function c43378048.initial_effect(c)
 	e3:SetValue(c43378048.atkval)
 	c:RegisterEffect(e3)
 end
-
 function c43378048.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end

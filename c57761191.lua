@@ -42,7 +42,7 @@ function c57761191.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c57761191.otfilter(c)
-	return c:IsType(TYPE_CONTINUOUS) and c:IsReleasable()
+	return c:IsType(TYPE_CONTINUOUS) and c:IsReleasable(REASON_SUMMON)
 end
 function c57761191.ttcon(e,c,minc)
 	if c==nil then return true end

@@ -44,7 +44,7 @@ function s.srmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_ONFIELD) and chkc:IsAbleToRemove() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_GRAVE+LOCATION_ONFIELD,LOCATION_GRAVE+LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_GRAVE+LOCATION_ONFIELD,LOCATION_GRAVE+LOCATION_ONFIELD,1,1,nil)
+	local g=aux.SelectTargetFromFieldFirst(tp,Card.IsAbleToRemove,tp,LOCATION_GRAVE+LOCATION_ONFIELD,LOCATION_GRAVE+LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function s.srmop(e,tp,eg,ep,ev,re,r,rp)
@@ -53,7 +53,6 @@ function s.srmop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
@@ -108,9 +107,6 @@ end
 function s.retfilter(c,fid)
 	return c:GetFlagEffectLabel(id)==fid
 end
-function s.retfilter1(c,tp,fid)
-	return c:GetFlagEffectLabel(id)==fid and c:IsControler(tp)
-end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetLabelObject():IsExists(s.retfilter,1,nil,e:GetLabel()) then
 		e:GetLabelObject():DeleteGroup()
@@ -121,29 +117,20 @@ function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
 	local fid=e:GetLabel()
-	local g1=e:GetLabelObject():Filter(s.retfilter1,nil,tp,fid)
-	local g2=e:GetLabelObject():Filter(s.retfilter1,nil,1-tp,fid)
-	local turnp=Duel.GetTurnPlayer()
-	if #g2==0 then
-		if #g1==1 then
-			Duel.ReturnToField(g1:GetFirst())
-		else
-			local tc=g1:Select(tp,1,1,nil):GetFirst()
-			Duel.ReturnToField(tc)
-			g1:RemoveCard(tc)
-			Duel.ReturnToField(g1:GetFirst())
+	local g=e:GetLabelObject():Filter(s.retfilter,nil,fid)
+	if #g<=0 then return end
+	Duel.Hint(HINT_CARD,0,id)
+	for p in aux.TurnPlayers() do
+		local tg=g:Filter(Card.IsPreviousControler,nil,p)
+		local ft=Duel.GetLocationCount(p,LOCATION_MZONE)
+		if #tg>1 and ft==1 then
+			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOFIELD)
+			local sg=tg:Select(p,1,1,nil)
+			Duel.ReturnToField(sg:GetFirst())
+			tg:Sub(sg)
 		end
-	else
-		if turnp==tp then
-			if #g1>0 then
-				Duel.ReturnToField(g1:GetFirst())
-			end
-			Duel.ReturnToField(g2:GetFirst())
-		else
-			Duel.ReturnToField(g2:GetFirst())
-			if #g1>0 then
-				Duel.ReturnToField(g1:GetFirst())
-			end
+		for tc in aux.Next(tg) do
+			Duel.ReturnToField(tc)
 		end
 	end
 	e:GetLabelObject():DeleteGroup()

@@ -36,6 +36,7 @@ function c80773359.initial_effect(c)
 	e4:SetOperation(c80773359.lvop)
 	c:RegisterEffect(e4)
 end
+c80773359.treat_itself_tuner=true
 function c80773359.valcheck(e,c)
 	local flag=0
 	local g=c:GetMaterial()

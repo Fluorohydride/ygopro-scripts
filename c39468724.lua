@@ -43,21 +43,21 @@ function c39468724.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
 function c39468724.filter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xb4) and c:IsReleasableByEffect()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xb4)
 end
 function c39468724.tgfilter(c)
 	return c:IsSetCard(0xb4) and c:IsAbleToGrave()
 end
 function c39468724.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39468724.tgfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.CheckReleaseGroupEx(REASON_EFFECT,tp,c39468724.filter,1,e:GetHandler()) end
+		and Duel.CheckReleaseGroupEx(tp,c39468724.filter,1,REASON_EFFECT,true,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c39468724.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c39468724.tgfilter,tp,LOCATION_DECK,0,nil)
 	if ct==0 then ct=1 end
 	if ct>2 then ct=2 end
-	local g=Duel.SelectReleaseGroupEx(REASON_EFFECT,tp,c39468724.filter,1,ct,nil)
+	local g=Duel.SelectReleaseGroupEx(tp,c39468724.filter,1,ct,REASON_EFFECT,true,nil)
 	if g:GetCount()>0 then
 		local rct=Duel.Release(g,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
@@ -68,13 +68,10 @@ end
 function c39468724.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev) and re:IsActiveType(TYPE_MONSTER)
 end
-function c39468724.negfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsReleasable()
-end
 function c39468724.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_COST,tp,c39468724.negfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,nil,1,REASON_COST,true,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroupEx(REASON_COST,tp,c39468724.negfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_COST,true,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c39468724.negop(e,tp,eg,ep,ev,re,r,rp)
