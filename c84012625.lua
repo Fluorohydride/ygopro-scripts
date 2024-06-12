@@ -11,10 +11,12 @@ function c84012625.initial_effect(c)
 	c:RegisterEffect(e1)
 	--release replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(84012625)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetTargetRange(1,0)
+	e2:SetValue(c84012625.costval)
 	c:RegisterEffect(e2)
 end
 function c84012625.filter(c)
@@ -47,4 +49,7 @@ end
 function c84012625.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
 	Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+end
+function c84012625.costval(e,c,re)
+	return c:IsSetCard(0xa3) and c:IsType(TYPE_SYNCHRO) and c:IsLocation(LOCATION_MZONE) and c==re:GetHandler()
 end

@@ -29,9 +29,9 @@ function c71797713.regfilter(c,attr)
 	return c:IsSetCard(0x400d) and bit.band(c:GetOriginalAttribute(),attr)~=0
 end
 function c71797713.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fe=Duel.IsPlayerAffectedByEffect(tp,61557074)
+	local res,fe=aux.ExtraCostCheck(e:GetHandler(),nil,61557074,tp)
 	local loc=LOCATION_HAND
-	if fe then loc=LOCATION_HAND+LOCATION_DECK end
+	if res then loc=LOCATION_HAND+LOCATION_DECK end
 	if chk==0 then return Duel.IsExistingMatchingCard(c71797713.costfilter,tp,loc,0,2,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c71797713.costfilter,tp,loc,0,2,2,e:GetHandler())

@@ -15,8 +15,8 @@ function c84905691.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2a)
 end
 function c84905691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fe=Duel.IsPlayerAffectedByEffect(tp,29942771)
-	local b1=fe and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
+	local res,fe=aux.ExtraCostCheck(e:GetHandler(),nil,29942771,tp)
+	local b1=res and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
 	local b2=Duel.CheckReleaseGroup(tp,c84905691.cfilter,1,e:GetHandler())
 	if chk==0 then return b1 or b2 end
 	if b1 and (not b2 or Duel.SelectYesNo(tp,fe:GetDescription())) then

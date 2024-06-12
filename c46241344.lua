@@ -11,6 +11,7 @@ function c46241344.initial_effect(c)
 	e1:SetCode(46241344)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(1,0)
+	e1:SetValue(c46241344.costval)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
@@ -23,6 +24,9 @@ function c46241344.initial_effect(c)
 	e2:SetTarget(c46241344.thtg)
 	e2:SetOperation(c46241344.thop)
 	c:RegisterEffect(e2)
+end
+function c46241344.costval(e,c)
+	return c:IsSetCard(0x79) and c:IsType(TYPE_MONSTER)
 end
 function c46241344.thfilter(c)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

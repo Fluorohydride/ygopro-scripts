@@ -54,9 +54,9 @@ function c75132317.cfilter(c)
 end
 function c75132317.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75132317.cfilter,tp,LOCATION_ONFIELD,0,2,nil)
-		or Duel.IsPlayerAffectedByEffect(tp,46241344) end
+		or aux.ExtraCostCheck(e:GetHandler(),nil,46241344,tp) end
 	if Duel.IsExistingMatchingCard(c75132317.cfilter,tp,LOCATION_ONFIELD,0,2,nil)
-		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		and (not aux.ExtraCostCheck(e:GetHandler(),nil,46241344,tp) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c75132317.cfilter,tp,LOCATION_ONFIELD,0,2,2,nil)
 		Duel.SendtoGrave(g,REASON_COST)

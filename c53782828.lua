@@ -24,11 +24,13 @@ function c53782828.initial_effect(c)
 	c:RegisterEffect(e2)
 	--banish replace
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetCode(55049722)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetRange(LOCATION_GRAVE)
+	e3:SetTargetRange(1,0)
 	e3:SetCountLimit(1,53782830)
+	e3:SetValue(c53782828.costval)
 	c:RegisterEffect(e3)
 end
 function c53782828.mfilter(c)
@@ -65,4 +67,7 @@ function c53782828.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
+end
+function c53782828.costval(e,c)
+	return c:IsSetCard(0x156) and c:IsLocation(LOCATION_MZONE)
 end

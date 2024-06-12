@@ -27,11 +27,13 @@ function c83289866.initial_effect(c)
 	c:RegisterEffect(e2)
 	--change cost
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetCode(83289866)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetTargetRange(1,0)
 	e3:SetCountLimit(1,83289866)
+	e3:SetValue(c83289866.costval)
 	c:RegisterEffect(e3)
 end
 function c83289866.target(e,c)
@@ -59,4 +61,7 @@ function c83289866.setop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	end
+end
+function c83289866.costval(e,c)
+	return c:IsSetCard(0x128) and c:IsLocation(LOCATION_MZONE)
 end

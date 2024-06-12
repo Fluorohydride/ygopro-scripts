@@ -35,6 +35,7 @@ function c61557074.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e5:SetCountLimit(1)
 	e5:SetTargetRange(1,0)
+	e5:SetValue(c61557074.costval)
 	c:RegisterEffect(e5)
 end
 function c61557074.atkval(e,c)
@@ -70,4 +71,7 @@ function c61557074.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61557074.skipcon(e)
 	return Duel.GetTurnCount()~=e:GetLabel()
+end
+function c61557074.costval(e,c)
+	return c:IsSetCard(0x400d) and c:IsLocation(LOCATION_HAND+LOCATION_MZONE) and c:IsType(TYPE_MONSTER)
 end
