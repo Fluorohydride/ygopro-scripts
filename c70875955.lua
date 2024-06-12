@@ -50,6 +50,6 @@ function c70875955.mtop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectReleaseGroupEx(tp,c70875955.rfilter,1,1,REASON_MAINTENANCE,false,nil)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else
-		Duel.SendtoGrave(e:GetHandler(),REASON_RULE)
+		Duel.SendtoGrave(e:GetHandler(),REASON_MAINTENANCE)
 	end
 end

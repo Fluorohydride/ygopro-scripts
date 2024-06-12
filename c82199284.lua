@@ -14,5 +14,5 @@ end
 function c82199284.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHandAsCost,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
-	Duel.SendtoHand(g,nil,REASON_COST)
+	Duel.SendtoHand(g,nil,REASON_ACTION)
 end

@@ -33,7 +33,7 @@ function c88069597.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckLPCost(tp,800) and Duel.SelectYesNo(tp,aux.Stringid(88069597,1)) then
 		Duel.PayLPCost(tp,800)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_MAINTENANCE)
 	end
 end
 function c88069597.spfilter(c,e,tp)

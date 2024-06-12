@@ -29,7 +29,7 @@ function c35798491.mtop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.PayLPCost(tp,500)
 		end
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_MAINTENANCE)
 	end
 end
 function c35798491.filter(c,tp)
