@@ -38,13 +38,14 @@ function s.initial_effect(c)
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetCode(EVENT_DISCARD)
+	e4:SetCode(EVENT_CUSTOM+id+o)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e4:SetCountLimit(1,id+o*2)
 	e4:SetCondition(s.thcon)
 	e4:SetTarget(s.thtg)
 	e4:SetOperation(s.thop)
 	c:RegisterEffect(e4)
+	aux.RegisterMergedDelayedEvent(c,id+o,EVENT_DISCARD)
 end
 function s.cfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousControler(tp)
@@ -101,9 +102,16 @@ function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:FilterCount(s.thfilter,nil,tp)>0
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingTarget(s.thfilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
+	if chk==0 then return eg:FilterCount(s.thfilter,nil,tp)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectTarget(tp,s.thfilter,tp,LOCATION_GRAVE,0,1,1,nil,tp)
+	local tg
+	if #eg==1 then
+		tg=eg:Clone()
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+		tg=eg:FilterSelect(tp,s.thfilter,1,1,nil,tp)
+	end
+	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
