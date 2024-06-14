@@ -112,7 +112,7 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		tg=eg:FilterSelect(tp,s.thfilter,1,1,nil,tp)
 	end
 	Duel.SetTargetCard(tg)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,1,0,0)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
