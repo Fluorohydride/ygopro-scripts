@@ -1480,6 +1480,80 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 		g:Clear()
 	end
 end
+--Once the card has been moved to the public area, it should be listened to again
+function Auxiliary.RegisterMergedDelayedEvent_ToSingelCard(c,code,event,g,event_code_singel)
+	local mt=getmetatable(c)
+	if not event_code_singel then 
+		event_code_singel=code+event+EVENT_CUSTOM 
+		while(mt[event_code_singel]==true) do 
+			event_code_singel=event_code_singel+EVENT_CUSTOM 
+		end
+		mt[event_code_singel]=true 
+	end 
+	if not g then g=Group.CreateGroup() end
+	g:KeepAlive()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(event)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e1:SetRange(0xff)
+	e1:SetLabel(event_code_singel)
+	e1:SetLabelObject(g)
+	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingelCard)
+	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetCode(EVENT_CHAIN_END)
+	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingelCard)
+	c:RegisterEffect(e2)
+	--当卡片移动到公开区域时，重置监测卡片组
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e3:SetCode(EVENT_MOVE)
+	e3:SetLabelObject(g)
+	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingelCard)
+	c:RegisterEffect(e3)
+	return event_code_singel
+end
+function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetOwner()
+	local g=e:GetLabelObject()
+	if c:IsFaceup() or c:IsPublic() then 
+		g:Clear()
+	end 
+end 
+function Auxiliary.MergedDelayEventCheck1_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	local c=e:GetOwner()
+	g:Merge(eg)
+	if Duel.CheckEvent(EVENT_MOVE) then 
+		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
+		local c=e:GetOwner()
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
+			g:Clear()
+		end 
+	end 
+	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck2_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	if Duel.CheckEvent(EVENT_MOVE) then 
+		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
+		local c=e:GetOwner()
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
+			g:Clear()
+		end 
+	end 
+	if #g>0 then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
 --B.E.S. remove counter
 function Auxiliary.EnableBESRemove(c)
 	local e1=Effect.CreateEffect(c)
