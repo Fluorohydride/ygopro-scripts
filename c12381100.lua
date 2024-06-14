@@ -57,26 +57,26 @@ function s.f2filter3(c,sg)
 	return s.ffilter3(c) and sg:IsExists(s.ffilter2,3,c)
 end
 function s.fcheck(sg,fc,tp,gc,chkf)
+	local ct=#sg
+	if ct~=2 and ct~=4 then return false end
 	if gc and not sg:IsContains(gc) then return false end
 	if sg:IsExists(aux.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not aux.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	if not (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0) then return false end
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
 		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc) then return false end
-	if #sg==2 then
+	if ct==2 then
 		return aux.gffcheck(sg,s.ffilter1,nil,s.ffilter3,nil)
-	end
-	if #sg==4 then
+	else
 		return sg:IsExists(s.f2filter3,1,nil,sg)
 	end
-	return false
 end
 function s.fcondition(e,g,gc,chkf)
-	if g==nil then return aux.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
+	local tp=e:GetHandlerPlayer()
+	if g==nil then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) end
 	local c=e:GetHandler()
 	local mg=g:Filter(s.ffilter,nil,c)
 	if gc and not mg:IsContains(gc) then return false end
-	local tp=e:GetHandlerPlayer()
 	return mg:CheckSubGroup(s.fcheck,2,4,c,tp,gc,chkf)
 end
 function s.foperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
