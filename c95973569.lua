@@ -44,7 +44,6 @@ function s.initial_effect(c)
 	e4:SetTarget(s.sptg)
 	e4:SetOperation(s.spop)
 	c:RegisterEffect(e4)
-	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
 end
 function s.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
