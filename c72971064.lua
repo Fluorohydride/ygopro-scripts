@@ -25,7 +25,6 @@ function c72971064.initial_effect(c)
 	e2:SetTarget(c72971064.thtg)
 	e2:SetOperation(c72971064.thop)
 	c:RegisterEffect(e2)
-	aux.RegisterMergedDelayedEvent(c,72971064,EVENT_SPSUMMON_SUCCESS)
 	--recover
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(72971064,1))
