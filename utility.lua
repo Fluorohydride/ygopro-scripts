@@ -1237,7 +1237,7 @@ end
 --for effects that player usually select card from field, avoid showing panel
 function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 	local ext_params={...}
-	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params)
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,table.unpack(ext_params))
 	local fg=g:Filter(Card.IsOnField,nil)
 	g:Sub(fg)
 	if #fg>=min and #g>0 then
@@ -1250,11 +1250,11 @@ function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
 		end
 	end
-	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,ext_params)
+	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
 end
 function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 	local ext_params={...}
-	local g=Duel.GetMatchingGroup(f,player,s,o,ex,ext_params):Filter(Card.IsCanBeEffectTarget,nil)
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,table.unpack(ext_params)):Filter(Card.IsCanBeEffectTarget,nil)
 	local fg=g:Filter(Card.IsOnField,nil)
 	g:Sub(fg)
 	if #fg>=min and #g>0 then
@@ -1268,7 +1268,7 @@ function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
 		end
 	end
-	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,ext_params)
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
 end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
