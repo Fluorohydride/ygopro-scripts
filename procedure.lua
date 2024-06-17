@@ -175,8 +175,14 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 					if max-exct<maxc then maxc=max-exct end
 					if minc>maxc then return false end
 				end
-				if smat and not smat:IsCanBeSynchroMaterial(c) then return false end
 				local tp=c:GetControler()
+				if Duel.IsPlayerAffectedByEffect(tp,8173184) then
+					Duel.RegisterFlagEffect(tp,8173184+1,0,0,1)
+				end
+				if smat and not smat:IsCanBeSynchroMaterial(c) then
+					Duel.ResetFlagEffect(tp,8173184+1)
+					return false
+				end
 				local mg
 				local mgchk=false
 				if mg1 then
@@ -186,7 +192,9 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
-				return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk)
+				local res=mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk)
+				Duel.ResetFlagEffect(tp,8173184+1)
+				return res
 			end
 end
 function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
@@ -202,6 +210,9 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 					if minc>maxc then return false end
 				end
 				::SynMixTargetSelectStart::
+				if Duel.IsPlayerAffectedByEffect(tp,8173184) then
+					Duel.RegisterFlagEffect(tp,8173184+1,0,0,1)
+				end
 				local g=Group.CreateGroup()
 				local mg
 				local mgchk=false
@@ -215,26 +226,26 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				local c1
 				local c2
 				local c3
+				local g4=Group.CreateGroup()
 				local cancel=Duel.IsSummonCancelable()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
-				if not c1 then return false end
+				if not c1 then goto SynMixTargetSelectCancel end
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 					c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
-					if not c2 then return false end
+					if not c2 then goto SynMixTargetSelectCancel end
 					if g:IsContains(c2) then goto SynMixTargetSelectStart end
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 						c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
-						if not c3 then return false end
+						if not c3 then goto SynMixTargetSelectCancel end
 						if g:IsContains(c3) then goto SynMixTargetSelectStart end
 						g:AddCard(c3)
 					end
 				end
-				local g4=Group.CreateGroup()
 				for i=0,maxc-1 do
 					local mg2=mg:Clone()
 					if f4 then
@@ -249,7 +260,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 					local c4=cg:SelectUnselect(g+g4,tp,finish,cancel,minc,maxc)
 					if not c4 then
 						if finish then break
-						else return false end
+						else goto SynMixTargetSelectCancel end
 					end
 					if g:IsContains(c4) or g4:IsContains(c4) then goto SynMixTargetSelectStart end
 					g4:AddCard(c4)
@@ -258,8 +269,12 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				if g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
+					Duel.ResetFlagEffect(tp,8173184+1)
 					return true
-				else return false end
+				end
+				::SynMixTargetSelectCancel::
+				Duel.ResetFlagEffect(tp,8173184+1)
+				return false
 			end
 end
 function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxct,gc)
@@ -361,6 +376,8 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if gc and not gc(g) then return false end
 	if smat and not g:IsContains(smat) then return false end
 	if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL) then return false end
+	if Duel.IsPlayerAffectedByEffect(tp,8173184)
+		and not g:IsExists(Auxiliary.Tuner(Card.IsSetCard,0x2),1,nil,syncard) then return false end
 	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
 		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
@@ -2263,6 +2280,7 @@ function Auxiliary.MustMaterialCheck(v,tp,code)
 	local g=Duel.GetMustMaterial(tp,code)
 	if not v then
 		if code==EFFECT_MUST_BE_XMATERIAL and Duel.IsPlayerAffectedByEffect(tp,67120578) then return false end
+		if code==EFFECT_MUST_BE_SMATERIAL and Duel.IsPlayerAffectedByEffect(tp,8173184) then return false end
 		return #g==0
 	end
 	return Duel.CheckMustMaterial(tp,v,code)

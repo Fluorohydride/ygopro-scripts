@@ -77,89 +77,42 @@ function s.smop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Summon(tp,g:GetFirst(),true,nil)
 	end
 	--splimit
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_FIELD)
-	e0:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
-	e0:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e0:SetTargetRange(1,0)
-	e0:SetTarget(s.splimit)
-	e0:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e0,tp)
-	--splimit2
-	local e1=e0:Clone()
-	e1:SetTarget(s.splimit1)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetTargetRange(1,0)
+	e1:SetTarget(s.splimit)
+	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	--synchro level
+	--
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e2:SetTarget(s.tlmtg)
+	e2:SetValue(s.tlmval)
+	e2:SetReset(RESET_PHASE+PHASE_END)
+	Duel.RegisterEffect(e2,tp)
+	--
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetTarget(s.syntg)
-	e3:SetValue(1)
-	e3:SetOperation(s.synop)
-	local e31=Effect.CreateEffect(c)
-	e31:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_GRANT)
-	e31:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e31:SetReset(RESET_PHASE+PHASE_END)
-	e31:SetTargetRange(LOCATION_MZONE,0)
-	e31:SetLabelObject(e3)
-	Duel.RegisterEffect(e31,tp)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(id)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e3:SetTargetRange(1,0)
+	e3:SetReset(RESET_PHASE+PHASE_END)
+	Duel.RegisterEffect(e3,tp)
 end
 function s.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and bit.band(sumtype,SUMMON_TYPE_SYNCHRO)~=SUMMON_TYPE_SYNCHRO
 end
-function s.splimit1(e,c,sump,sumtype,sumpos,targetp,se)
-	return se:IsHasType(EFFECT_TYPE_ACTIONS) and c:IsLocation(LOCATION_EXTRA)
+function s.tlmtg(e,c)
+	return c:IsType(TYPE_TUNER) and not c:IsSetCard(0x2)
 end
-function s.smcfilter(c,sc)
-	return c:IsSetCard(0x2) and c:IsType(TYPE_TUNER)
-end
-function s.synfilter(c,syncard,tuner,f)
-	return c:IsFaceupEx() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
-end
-function s.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
-	g:AddCard(c)
-	local ct=g:GetCount()
-	local res=s.syngoal(g,tp,lv,syncard,minc,ct)
-		or (ct<maxc and mg:IsExists(s.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc))
-	g:RemoveCard(c)
-	return res
-end
-function s.syngoal(g,tp,lv,syncard,minc,ct)
-	return ct>=minc and Duel.GetLocationCountFromEx(tp,tp,g,syncard)>0
-		and g:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,ct,syncard)
-		and aux.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL)
-		and g:IsExists(s.smcfilter,1,nil,syncard)
-end
-function s.syntg(e,syncard,f,min,max)
-	local minc=min+1
-	local maxc=max+1
-	local c=e:GetHandler()
-	local tp=syncard:GetControler()
-	local lv=syncard:GetLevel()
-	if lv<=c:GetLevel() then return false end
-	local g=Group.FromCards(c)
-	local mg=Duel.GetSynchroMaterial(tp):Filter(s.synfilter,c,syncard,c,f)
-	return mg:IsExists(s.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)
-end
-function s.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
-	local minc=min+1
-	local maxc=max+1
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()
-	local g=Group.FromCards(c)
-	local mg=Duel.GetSynchroMaterial(tp):Filter(s.synfilter,c,syncard,c,f)
-	for i=1,maxc do
-		local cg=mg:Filter(s.syncheck,g,g,mg,tp,lv,syncard,minc,maxc)
-		if cg:GetCount()==0 then break end
-		local minct=1
-		if s.syngoal(g,tp,lv,syncard,minc,i) then
-			minct=0
-		end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local sg=cg:Select(tp,minct,1,nil)
-		if sg:GetCount()==0 then break end
-		g:Merge(sg)
+function s.tlmval(e,sync)
+	local tp=e:GetHandlerPlayer()
+	if sync:GetControler()==tp then
+		return Duel.GetFlagEffect(tp,id+1)==0
 	end
-	Duel.SetSynchroMaterial(g)
+	return false
 end
