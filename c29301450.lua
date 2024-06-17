@@ -109,7 +109,7 @@ function s.retfilter(c,fid)
 end
 function s.retchkfilter(c)
 	local tp=c:GetPreviousControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD)>0
+	return Duel.GetMZoneCount(tp,nil,tp,LOCATION_REASON_TOFIELD)>0
 end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetLabelObject():IsExists(s.retfilter,1,nil,e:GetLabel()) then
