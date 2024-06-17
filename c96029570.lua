@@ -41,7 +41,6 @@ function s.initial_effect(c)
 	e4:SetCode(EVENT_CUSTOM+id+o)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e4:SetCountLimit(1,id+o*2)
-	e4:SetCondition(s.thcon)
 	e4:SetTarget(s.thtg)
 	e4:SetOperation(s.thop)
 	c:RegisterEffect(e4)
@@ -94,22 +93,20 @@ function s.auop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 	end
 end
-function s.thfilter(c,tp)
+function s.thfilter(c,e,tp)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_HAND) and c:IsReason(REASON_DISCARD)
-end
-function s.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:FilterCount(s.thfilter,nil,tp)>0
+		and c:IsCanBeEffectTarget(e) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:FilterCount(s.thfilter,nil,tp)>0 end
+	if chk==0 then return eg:FilterCount(s.thfilter,nil,e,tp)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tg
 	if #eg==1 then
 		tg=eg:Clone()
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-		tg=eg:FilterSelect(tp,s.thfilter,1,1,nil,tp)
+		tg=eg:FilterSelect(tp,s.thfilter,1,1,nil,e,tp)
 	end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,1,0,0)
