@@ -34,8 +34,7 @@ function c93078761.activate(e,tp,eg,ep,ev,re,r,rp)
 			c:CancelToGrave()
 			Duel.SendtoHand(c,nil,REASON_EFFECT)
 		elseif dice2>=2 and dice2<=5 then
-			c:CancelToGrave()
-			Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
+			Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT,tp,true)
 		end
 	end
 end
