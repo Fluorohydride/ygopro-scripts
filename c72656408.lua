@@ -19,7 +19,7 @@ function s.initial_effect(c)
 	e2:SetCondition(s.spcon2)
 	c:RegisterEffect(e2)
 	--banish summoned monster
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingelCard(c,id,EVENT_SPSUMMON_SUCCESS)
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,EVENT_SPSUMMON_SUCCESS)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetCategory(CATEGORY_REMOVE)
