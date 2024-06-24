@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	e1:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e1)
 	--material
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingelCard(c,id,EVENT_REMOVE)
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,EVENT_REMOVE)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
