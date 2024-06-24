@@ -26,7 +26,7 @@ function c63767246.initial_effect(c)
 	e2:SetOperation(c63767246.cbop)
 	c:RegisterEffect(e2)
 	--atk up
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingelCard(c,63767246,EVENT_DESTROYED)
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,63767246,EVENT_DESTROYED)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(63767246,2))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
