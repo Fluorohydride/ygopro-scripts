@@ -14,7 +14,7 @@ function c62849088.initial_effect(c)
 	e1:SetOperation(c62849088.spop)
 	c:RegisterEffect(e1)
 	--destroy
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingelCard(c,62849088,EVENT_SPSUMMON_SUCCESS)
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,62849088,EVENT_SPSUMMON_SUCCESS)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(62849088,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
