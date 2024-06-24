@@ -7,7 +7,7 @@ function s.initial_effect(c)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e0)
 	--to deck
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingelCard(c,id,EVENT_REMOVE)
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,EVENT_REMOVE)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
