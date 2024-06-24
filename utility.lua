@@ -1481,14 +1481,15 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 --Once the card has been moved to the public area, it should be listened to again
-function Auxiliary.RegisterMergedDelayedEvent_ToSingelCard(c,code,event,g,event_code_singel)
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,event,g,event_code_single)
 	local mt=getmetatable(c)
-	if not event_code_singel then 
-		event_code_singel=code+event+EVENT_CUSTOM 
-		while(mt[event_code_singel]==true) do 
-			event_code_singel=event_code_singel+EVENT_CUSTOM 
+	if not event_code_single then 
+		event_code_single=code+event+EVENT_CUSTOM 
+		while(mt[event_code_single]==true)
+		do 
+			event_code_single=event_code_single+EVENT_CUSTOM 
 		end
-		mt[event_code_singel]=true 
+		mt[event_code_single]=true 
 	end 
 	if not g then g=Group.CreateGroup() end
 	g:KeepAlive()
@@ -1497,32 +1498,32 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingelCard(c,code,event,g,event_
 	e1:SetCode(event)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
 	e1:SetRange(0xff)
-	e1:SetLabel(event_code_singel)
+	e1:SetLabel(event_code_single)
 	e1:SetLabelObject(g)
-	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingelCard)
+	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingleCard)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_CHAIN_END)
-	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingelCard)
+	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingleCard)
 	c:RegisterEffect(e2)
-	--当卡片移动到公开区域时，重置监测卡片组
+	--Once the card has been moved to the public area, it will listen to again
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
 	e3:SetCode(EVENT_MOVE)
 	e3:SetLabelObject(g)
-	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingelCard)
+	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
 	c:RegisterEffect(e3)
-	return event_code_singel
+	return event_code_single
 end
-function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()
 	local g=e:GetLabelObject()
 	if c:IsFaceup() or c:IsPublic() then 
 		g:Clear()
 	end 
 end 
-function Auxiliary.MergedDelayEventCheck1_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	local c=e:GetOwner()
 	g:Merge(eg)
@@ -1539,7 +1540,7 @@ function Auxiliary.MergedDelayEventCheck1_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
 		g:Clear()
 	end
 end
-function Auxiliary.MergedDelayEventCheck2_ToSingelCard(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	if Duel.CheckEvent(EVENT_MOVE) then 
 		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
