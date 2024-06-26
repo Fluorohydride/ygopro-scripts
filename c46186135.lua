@@ -65,7 +65,7 @@ end
 function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local fg=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)	
+	local fg=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	return fg:CheckSubGroup(s.fselect,2,2)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)

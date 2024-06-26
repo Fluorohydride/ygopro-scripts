@@ -1,9 +1,11 @@
 --粛声なる祝福
 function c39114494.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(39114494,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -13,6 +15,7 @@ function c39114494.initial_effect(c)
 	e2:SetTarget(c39114494.thtg)
 	e2:SetOperation(c39114494.thop)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(39114494,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)

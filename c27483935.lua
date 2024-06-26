@@ -1,6 +1,7 @@
 --古代の機械司令
 function c27483935.initial_effect(c)
 	aux.AddCodeList(c,83104731)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(27483935,0))
 	e1:SetCategory(CATEGORY_SUMMON)
@@ -11,6 +12,7 @@ function c27483935.initial_effect(c)
 	e1:SetTarget(c27483935.stg)
 	e1:SetOperation(c27483935.sop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(27483935,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -26,6 +28,7 @@ function c27483935.initial_effect(c)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
+	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(27483935,2))
 	e4:SetType(EFFECT_TYPE_IGNITION)

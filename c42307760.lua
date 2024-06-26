@@ -27,7 +27,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
-
 function s.defilter(c,tp)
 	return c:IsSummonLocation(LOCATION_DECK+LOCATION_EXTRA) and c:IsSummonPlayer(1-tp)
 end

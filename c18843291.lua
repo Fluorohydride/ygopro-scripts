@@ -41,7 +41,7 @@ function s.initial_effect(c)
 	e4:SetTarget(s.retg)
 	e4:SetOperation(s.reop)
 	c:RegisterEffect(e4)
-end 
+end
 function s.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end

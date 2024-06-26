@@ -1,9 +1,11 @@
 --盃満ちる燦幻荘
 function c30336082.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_IMMUNE_EFFECT)
@@ -13,6 +15,7 @@ function c30336082.initial_effect(c)
 	e2:SetTarget(c30336082.indtg)
 	e2:SetValue(c30336082.efilter)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(30336082,1))
 	e3:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES)
@@ -22,6 +25,7 @@ function c30336082.initial_effect(c)
 	e3:SetTarget(c30336082.thtg)
 	e3:SetOperation(c30336082.thop)
 	c:RegisterEffect(e3)
+	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(30336082,2))
 	e4:SetCategory(CATEGORY_ATKCHANGE)

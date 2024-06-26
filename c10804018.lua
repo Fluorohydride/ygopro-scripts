@@ -1,6 +1,7 @@
 --粛声なる竜神サフィラ
 function c10804018.initial_effect(c)
 	c:EnableReviveLimit()
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(10804018,0))
 	e1:SetCategory(CATEGORY_DRAW)
@@ -12,6 +13,7 @@ function c10804018.initial_effect(c)
 	e1:SetTarget(c10804018.drtg)
 	e1:SetOperation(c10804018.drop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(10804018,1))
 	e2:SetCategory(CATEGORY_HANDES)
@@ -23,6 +25,7 @@ function c10804018.initial_effect(c)
 	e2:SetTarget(c10804018.hstg)
 	e2:SetOperation(c10804018.hsop)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(10804018,2))
 	e3:SetCategory(CATEGORY_TOHAND)

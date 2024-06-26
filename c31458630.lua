@@ -1,5 +1,6 @@
 --幻奏協奏曲
 function c31458630.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -8,6 +9,7 @@ function c31458630.initial_effect(c)
 	e1:SetTarget(c31458630.target)
 	e1:SetOperation(c31458630.activate)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(31458630,1))
 	e2:SetCategory(CATEGORY_DRAW)
