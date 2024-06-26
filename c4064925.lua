@@ -1,6 +1,7 @@
 --古代の進軍
 function c4064925.initial_effect(c)
 	aux.AddCodeList(c,83104731)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -10,6 +11,7 @@ function c4064925.initial_effect(c)
 	e1:SetTarget(c4064925.target)
 	e1:SetOperation(c4064925.activate)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(4064925,0))
 	e2:SetCategory(CATEGORY_DRAW)

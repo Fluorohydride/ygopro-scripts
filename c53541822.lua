@@ -1,10 +1,12 @@
 --古代の機械競闘
 function c53541822.initial_effect(c)
 	aux.AddCodeList(c,83104731)
+	--
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e0)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_IMMUNE_EFFECT)
@@ -13,6 +15,7 @@ function c53541822.initial_effect(c)
 	e1:SetTarget(c53541822.indtg)
 	e1:SetValue(c53541822.efilter)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_REMOVE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
