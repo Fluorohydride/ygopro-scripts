@@ -484,19 +484,22 @@ function Auxiliary.GetMaterialListCount(c)
 	if not c.material_count then return 0,0 end
 	return c.material_count[1],c.material_count[2]
 end
-function Auxiliary.AddCodeList(c,...)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
-	if c.card_code_list==nil then
-		local mt=getmetatable(c)
+function Auxiliary.AddCodeListToCardMetatable(mt,...)
+	if mt.card_code_list==nil then
 		mt.card_code_list={}
-		for _,code in ipairs{...} do
-			mt.card_code_list[code]=true
-		end
-	else
-		for _,code in ipairs{...} do
-			c.card_code_list[code]=true
-		end
 	end
+	for _,code in ipairs{...} do
+		mt.card_code_list[code]=true
+	end
+end
+function Auxiliary.AddCodeList(c,...)
+	local mt=getmetatable(c)
+	if mt==Card then
+		-- c is card metatable
+		return Auxiliary.AddCodeListToCardMetatable(c,...)
+	end
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+	return Auxiliary.AddCodeListToCardMetatable(mt,...)
 end
 function Auxiliary.IsCodeListed(c,code)
 	return c.card_code_list and c.card_code_list[code]
