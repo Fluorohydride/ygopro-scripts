@@ -59,16 +59,19 @@ end
 function c10796448.costfilter(c)
 	return c:IsReleasable() and ((c:IsFacedown() and c:IsDefensePos()) or (c:IsFaceup() and c:IsAttackPos()))
 end
+function c10796448.spcheck(g,tp)
+	return Duel.GetMZoneCount(tp,g)>0 and aux.gfcheck(g,Card.IsPosition,POS_FACEUP_ATTACK,POS_FACEDOWN_DEFENSE)
+end
 function c10796448.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c10796448.costfilter,tp,LOCATION_MZONE,0,nil)
-	if chk==0 then return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsPosition,POS_FACEUP_ATTACK,POS_FACEDOWN_DEFENSE) end
+	if chk==0 then return g:CheckSubGroup(c10796448.spcheck,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsPosition,POS_FACEUP_ATTACK,POS_FACEDOWN_DEFENSE)
+	local sg=g:SelectSubGroup(tp,c10796448.spcheck,false,2,2,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c10796448.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c10796448.spop(e,tp,eg,ep,ev,re,r,rp)

@@ -5,6 +5,7 @@ function c48654267.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c48654267.matfilter),1)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(48654267,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -15,6 +16,7 @@ function c48654267.initial_effect(c)
 	e1:SetTarget(c48654267.psptg)
 	e1:SetOperation(c48654267.pspop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(48654267,1))
 	e2:SetCategory(CATEGORY_POSITION)
@@ -30,6 +32,7 @@ function c48654267.initial_effect(c)
 	e3:SetCode(EVENT_BATTLE_DAMAGE)
 	e3:SetCondition(c48654267.spcon2)
 	c:RegisterEffect(e3)
+	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(48654267,2))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -49,6 +52,7 @@ function c48654267.cfilter(c,tp)
 end
 function c48654267.pspcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c48654267.cfilter,1,nil,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c48654267.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
