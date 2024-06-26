@@ -60,7 +60,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spfilter2(c,tp,se)
-    return c:IsControler(tp) and (se==nil or c:GetReasonEffect()~=se)
+	return c:IsControler(tp) and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local se=e:GetLabelObject():GetLabelObject()
