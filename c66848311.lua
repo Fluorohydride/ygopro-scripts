@@ -23,7 +23,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.thfilter(c)
-	return (c:IsCode(78783557) or c:IsSetCard(0x1ad) and c:IsType(TYPE_MONSTER))  and c:IsAbleToHand()
+	return (c:IsCode(78783557) or c:IsSetCard(0x1ad) and c:IsType(TYPE_MONSTER)) and c:IsAbleToHand()
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_GRAVE,0,nil)
