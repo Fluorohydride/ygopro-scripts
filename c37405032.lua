@@ -1,6 +1,7 @@
 --トリックスター・アクアエンジェル
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -11,6 +12,7 @@ function s.initial_effect(c)
 	e1:SetTarget(s.sptg)
 	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_MZONE)
@@ -19,6 +21,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.latktg)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

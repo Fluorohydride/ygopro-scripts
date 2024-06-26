@@ -46,7 +46,7 @@ function s.eqcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=re:GetHandler()
-	local c=e:GetHandler() 
+	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE) end
 	rc:CreateEffectRelation(e)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,c,1,0,0)
@@ -69,6 +69,7 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
 		e2:SetCode(EFFECT_DISABLE)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
 	end
 end

@@ -4,6 +4,7 @@ function s.initial_effect(c)
 	c:SetSPSummonOnce(id)
 	aux.AddLinkProcedure(c,s.mat,1,1)
 	c:EnableReviveLimit()
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DAMAGE)
