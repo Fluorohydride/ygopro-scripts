@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,60764609,s.ffilter,2,true,true)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DISABLE)
@@ -13,6 +14,7 @@ function s.initial_effect(c)
 	e1:SetTarget(s.distg)
 	e1:SetOperation(s.disop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
@@ -36,17 +38,17 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=c:GetEquipGroup():Filter(s.cfilter,nil)
 	local ct=g:GetSum(Card.GetLink)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) and ct>0 end
-	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
+	local tg=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
+	Duel.SetOperationInfo(0,CATEGORY_DISABLE,tg,1,0,0)
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=c:GetEquipGroup():Filter(s.cfilter,nil)
 	local ct=g:GetSum(Card.GetLink)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	local g=Duel.SelectMatchingCard(tp,aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,nil)
-	if not c:IsRelateToEffect(e) or g:GetCount()<1 then return end
-	for tc in aux.Next(g) do
+	local tg=Duel.SelectMatchingCard(tp,aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,nil)
+	if not c:IsRelateToEffect(e) or tg:GetCount()<1 then return end
+	for tc in aux.Next(tg) do
 		if tc:IsCanBeDisabledByEffect(e,false) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(c)

@@ -1,6 +1,7 @@
 --宵星の閃光
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_RECOVER+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
