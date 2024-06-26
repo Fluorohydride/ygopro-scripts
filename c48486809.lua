@@ -38,14 +38,14 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 s.lvup={id}
-function s.spfilter(c)
-	return (c:IsCode(57116033) or c:IsSetCard(0x3008) and c:IsType(TYPE_FUSION)) and c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
+function s.spfilter(c,tp)
+	return (c:IsCode(57116033) or c:IsSetCard(0x3008) and c:IsType(TYPE_FUSION))
+		and c:IsFaceupEx() and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
 end
 function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE+LOCATION_ONFIELD+LOCATION_HAND,0,1,c)
+	return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE+LOCATION_ONFIELD+LOCATION_HAND,0,1,c,tp)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -63,12 +63,14 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetAttacker()
 	if chk==0 then return tc:IsDestructable() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
-	if math.max(0,tc:GetTextAttack())>0 then Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0) end
+	if tc:GetTextAttack()>0 then
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tc:GetTextAttack())
+	end
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	if tc:IsRelateToBattle() and tc:IsLocation(LOCATION_MZONE) and Duel.Destroy(tc,REASON_EFFECT)>0 then
-		Duel.Damage(1-tp,math.max(0,tc:GetTextAttack()),REASON_EFFECT)
+	if tc:IsRelateToBattle() and Duel.Destroy(tc,REASON_EFFECT)>0 and tc:GetTextAttack()>0 then
+		Duel.Damage(1-tp,tc:GetTextAttack(),REASON_EFFECT)
 	end
 end
 function s.descon2(e,tp,eg,ep,ev,re,r,rp)
@@ -82,7 +84,8 @@ function s.destg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.desop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
-	if tc:IsRelateToEffect(re) and tc:IsLocation(LOCATION_MZONE) and Duel.Destroy(tc,REASON_EFFECT)>0 then
-		Duel.Damage(1-tp,math.max(0,tc:GetTextAttack()),REASON_EFFECT)
+	if tc:IsRelateToEffect(re) and tc:IsLocation(LOCATION_MZONE)
+		and Duel.Destroy(tc,REASON_EFFECT)>0 and tc:GetTextAttack()>0 then
+		Duel.Damage(1-tp,tc:GetTextAttack(),REASON_EFFECT)
 	end
 end

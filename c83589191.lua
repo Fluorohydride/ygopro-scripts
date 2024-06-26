@@ -1,5 +1,6 @@
 --ライフハック
 function c83589191.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(83589191,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
@@ -12,6 +13,7 @@ function c83589191.initial_effect(c)
 	e1:SetTarget(c83589191.target)
 	e1:SetOperation(c83589191.activate)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(83589191,1))
 	e2:SetCategory(CATEGORY_TOHAND)

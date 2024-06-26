@@ -41,8 +41,8 @@ function s.initial_effect(c)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
 end
-function s.ffilter1(c)
-	return c:IsFusionCode(23995346)
+function s.ffilter1(c,fc)
+	return c:IsFusionCode(23995346) or c:CheckFusionSubstitute(fc)
 end
 function s.ffilter2(c)
 	return c:IsFusionSetCard(0xdd) and c:IsType(TYPE_MONSTER)
@@ -51,7 +51,7 @@ function s.ffilter3(c)
 	return c:IsFusionSetCard(0xcf) and c:IsAllTypes(TYPE_MONSTER+TYPE_RITUAL)
 end
 function s.ffilter(c,fc)
-	return c:IsCanBeFusionMaterial(fc) and (s.ffilter1(c) or s.ffilter2(c) or s.ffilter3(c))
+	return c:IsCanBeFusionMaterial(fc) and (s.ffilter1(c,fc) or s.ffilter2(c) or s.ffilter3(c))
 end
 function s.f2filter3(c,sg)
 	return s.ffilter3(c) and sg:IsExists(s.ffilter2,3,c)
@@ -66,7 +66,7 @@ function s.fcheck(sg,fc,tp,gc,chkf)
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
 		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc) then return false end
 	if ct==2 then
-		return aux.gffcheck(sg,s.ffilter1,nil,s.ffilter3,nil)
+		return aux.gffcheck(sg,s.ffilter1,fc,s.ffilter3,nil)
 	else
 		return sg:IsExists(s.f2filter3,1,nil,sg)
 	end
@@ -87,7 +87,7 @@ function s.foperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	Duel.SetFusionMaterial(g)
 end
 function s.ultimate_fusion_check(tp,sg,fc)
-	return #sg==2 and aux.gffcheck(sg,s.ffilter1,nil,s.ffilter3,nil)
+	return #sg==2 and aux.gffcheck(sg,s.ffilter1,fc,s.ffilter3,nil)
 end
 function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
@@ -140,9 +140,8 @@ function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:GetReasonPlayer()==1-tp
 end
 function s.spfilter(c,e,tp)
-	return (c:IsFusionSetCard(0xdd) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		or c:IsFusionSetCard(0xcf) and c:IsFusionType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
-		and not (c:IsCode(70551291) or c:IsCode(55410871) or c:IsCode(20654247)))
+	return (c:IsSetCard(0xdd) or c:IsSetCard(0xcf) and c:IsAllTypes(TYPE_MONSTER+TYPE_RITUAL))
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and (c:IsLocation(LOCATION_GRAVE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
@@ -154,6 +153,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if #g>0 then
-		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
