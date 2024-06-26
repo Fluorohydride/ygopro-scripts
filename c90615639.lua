@@ -1,8 +1,9 @@
 --タイム・ディメンションホール
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
@@ -12,9 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummon(tp) and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=1
-		and Duel.IsExistingMatchingCard(Card.IsSummonableCard,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=1 end
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<1 then return false end
@@ -28,7 +27,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	else
-		if Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))==1 then
+		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>1
+			and Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))==1 then
 			Duel.MoveSequence(tc,1)
 		end
 	end
