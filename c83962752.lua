@@ -1,5 +1,6 @@
 --シンクロ・パニック
 function c83962752.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(83962752,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -10,6 +11,7 @@ function c83962752.initial_effect(c)
 	e1:SetTarget(c83962752.target)
 	e1:SetOperation(c83962752.activate)
 	c:RegisterEffect(e1)
+	--summon limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_SZONE)

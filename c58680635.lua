@@ -1,5 +1,6 @@
 --電極獣アニオン
 function c58680635.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(58680635,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
@@ -10,6 +11,7 @@ function c58680635.initial_effect(c)
 	e1:SetTarget(c58680635.lvtg)
 	e1:SetOperation(c58680635.lvop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(58680635,1))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_TOGRAVE)
@@ -36,7 +38,7 @@ function c58680635.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)
 		e1:SetValue(4)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 		if c:IsLevel(4) and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c58680635.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(58680635,2)) then
@@ -65,7 +67,7 @@ function c58680635.drop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		local g=Group.FromCards(c,tc)
-		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
+		if Duel.SendtoGrave(g,REASON_EFFECT)>0 and g:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)==2 then
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end
 	end

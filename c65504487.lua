@@ -49,7 +49,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.thfilter(c,check)
 	return c:IsAbleToHand()
-		and ( c:IsCode(24878656) or (check and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4)) )
+		and (c:IsCode(24878656) or (check and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4)))
 end
 function s.checkfilter(c)
 	return c:IsFaceup() and c:IsCode(24878656)

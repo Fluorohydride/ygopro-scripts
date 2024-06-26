@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -24,95 +24,75 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.filter(c,e,tp,check)
-	local id=c:GetCode()
-	return c:IsRace(RACE_FISH) and c:IsFaceup() and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp,check,id)
+	local check2=check and Duel.GetMZoneCount(tp,c)>0
+	return c:IsRace(RACE_FISH) and c:IsFaceup()
+		and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp,check2,c:GetCode())
 end
-function s.thfilter(c,e,tp,check,id)
-	return c:IsCode(id) and (c:IsAbleToHand() or check and c:IsCanBeSpecialSummoned(e,0,tp,false,false))
+function s.thfilter(c,e,tp,check,code)
+	return c:IsCode(code) and (c:IsAbleToHand() or check and c:IsCanBeSpecialSummoned(e,0,tp,false,false))
 end
-function s.spfilter(c)
+function s.spcfilter(c)
 	return c:IsRace(RACE_FISH) and c:IsType(TYPE_SYNCHRO) and c:IsFaceup()
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local check=Duel.GetLocationCount(tp,LOCATION_MZONE)>=0 and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_MZONE,0,1,nil)
-	if check then e:SetLabel(1) else e:SetLabel(0) end
+	local check=Duel.IsExistingMatchingCard(s.spcfilter,tp,LOCATION_MZONE,0,1,nil)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.filter(chkc,e,tp,check) end
 	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil,e,tp,check) end
 	local g=Duel.SelectTarget(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,check)
+	if check then e:SetLabel(1) else e:SetLabel(0) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local id=tc:GetCode()
-	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_FISH) then
-		if Duel.Destroy(tc,REASON_EFFECT)>0 then
-			local check=Duel.GetLocationCount(tp,LOCATION_MZONE)>=0 and e:GetLabel()==1
-			local sc=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,check,id):GetFirst()
-			if check and sc:IsCanBeSpecialSummoned(e,0,tp,false,false) and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
-				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-			else
-				Duel.SendtoHand(sc,nil,REASON_EFFECT)
-				Duel.ConfirmCards(1-tp,sc)
-			end
+	local code=tc:GetCode()
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRace(RACE_FISH)
+		and Duel.Destroy(tc,REASON_EFFECT)>0 then
+		local check=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetLabel()==1
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
+		local sc=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,check,code):GetFirst()
+		if not sc then return end
+		if check and sc:IsCanBeSpecialSummoned(e,0,tp,false,false) and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
+			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
+		else
+			Duel.SendtoHand(sc,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,sc)
 		end
 	end
 end
-function s.tdfilter(c,e,tp)
-	return c:IsCanBeEffectTarget(e) and c:IsRace(RACE_FISH) and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,c,c:GetCode())
+function s.tgfilter(c,e,tp)
+	return c:IsCanBeEffectTarget(e) and c:IsRace(RACE_FISH)
+		and c:IsAbleToDeck() or c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+end
+function s.tdfilter1(c,g,e,tp)
+	return c:IsAbleToDeck() and g:IsExists(Card.IsCanBeSpecialSummoned,1,c,e,0,tp,false,false)
 end
 function s.fselect(g,e,tp)
-	return g:GetClassCount(Card.GetCode)==1 and g:IsExists(s.fcheck,1,nil,g,e,tp)
-end
-function s.fcheck(c,g,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and g:IsExists(s.fcheck2,1,c)
-end
-function s.fcheck2(c)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsAbleToDeck()
+	return g:GetClassCount(Card.GetCode)==1 and g:IsExists(s.tdfilter1,1,nil,g,e,tp)
 end
 function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(s.tdfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.tdfilter(chkc,e,tp) end
+	local g=Duel.GetMatchingGroup(s.tgfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	if chkc then return false end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:CheckSubGroup(s.fselect,2,2,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local sg=g:SelectSubGroup(tp,s.fselect,false,2,2,e,tp)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
-function s.cfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c:IsLocation(LOCATION_GRAVE)
-end
-function s.cfilter2(c,e,tp)
-	return not c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c:IsLocation(LOCATION_GRAVE) and c:IsAbleToDeck()
-end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not g or g:FilterCount(Card.IsRelateToEffect,nil,e)~=2 then return end
+	local g=Duel.GetTargetsRelateToChain()
+	if #g~=2 then return end
+	local exg=nil
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
-		local sc=nil
-		local dc=nil
-		if g and g:GetCount()==2 then
-			if g:FilterCount(s.cfilter,nil,e,tp)==2 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-				local dc=g:Select(tp,1,1,nil)
-				local sc=(g-dc):GetFirst()
-				Duel.SendtoDeck(dc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
-				local sg=Duel.GetOperatedGroup()
-				if sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) or sg:IsExists(Card.IsLocation,1,nil,LOCATION_EXTRA) then
-					Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-				end
-			else
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-				local dc=g:FilterSelect(tp,s.cfilter2,1,1,nil,e,tp)
-				local sc=(g-dc):GetFirst()
-				Duel.SendtoDeck(dc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
-				local sg=Duel.GetOperatedGroup()
-					if sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) or sg:IsExists(Card.IsLocation,1,nil,LOCATION_EXTRA) then
-					Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-				end
-			end
-		end
+		exg=g:Filter(Card.IsCanBeSpecialSummoned,nil,e,0,tp,false,false)
+		if #exg==2 then exg=nil end
+	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local dc=g:FilterSelect(tp,Card.IsAbleToDeck,1,1,exg):GetFirst()
+	if not dc then return end
+	g:RemoveCard(dc)
+	Duel.SendtoDeck(dc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
+	if dc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

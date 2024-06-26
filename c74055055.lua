@@ -12,12 +12,13 @@ function c74055055.initial_effect(c)
 	e1:SetOperation(c74055055.activate)
 	c:RegisterEffect(e1)
 end
-function c74055055.filter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsLevelBelow(4) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToHand()
+function c74055055.filter(c,e)
+	return c:IsType(TYPE_MONSTER) and c:IsLevelBelow(4) and c:IsAttribute(ATTRIBUTE_FIRE)
+		and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
 end
 function c74055055.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c74055055.filter(chkc) end
-	local g=Duel.GetMatchingGroup(c74055055.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c74055055.filter(chkc,e) end
+	local g=Duel.GetMatchingGroup(c74055055.filter,tp,LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return g:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,2)

@@ -43,8 +43,8 @@ function s.ocfilter(c)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	if not (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) then return false end
-	return Duel.IsExistingMatchingCard(s.scfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		or Duel.IsExistingMatchingCard(s.ocfilter,1-tp,LOCATION_ONFIELD,0,1,nil)
+	return Duel.IsExistingMatchingCard(s.scfilter,tp,LOCATION_MZONE,0,1,nil)
+		or Duel.IsExistingMatchingCard(s.ocfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
