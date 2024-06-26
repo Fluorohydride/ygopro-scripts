@@ -1,5 +1,6 @@
 --天盃龍チュンドラ
 function c91810826.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(91810826,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -10,6 +11,7 @@ function c91810826.initial_effect(c)
 	e1:SetTarget(c91810826.sptg)
 	e1:SetOperation(c91810826.spop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(91810826,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -21,6 +23,7 @@ function c91810826.initial_effect(c)
 	e2:SetTarget(c91810826.sptg2)
 	e2:SetOperation(c91810826.spop2)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(91810826,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)

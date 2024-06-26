@@ -1,7 +1,7 @@
 --古代の機械暗黒巨人
 function c64603182.initial_effect(c)
-	aux.AddCodeList(c,83104731)
 	aux.EnableChangeCode(c,83104731,LOCATION_MZONE+LOCATION_GRAVE)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64603182,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES)
@@ -15,6 +15,7 @@ function c64603182.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
