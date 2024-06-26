@@ -46,8 +46,10 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	local ct=Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
-	Duel.BreakEffect()
-	Duel.Draw(tp,ct,REASON_EFFECT)
+	if ct>0 then
+		Duel.BreakEffect()
+		Duel.Draw(tp,ct,REASON_EFFECT)
+	end
 end
 function s.cfilter(c)
 	return c:IsFacedown() or not c:IsRace(RACE_FIEND)

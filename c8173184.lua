@@ -9,7 +9,7 @@ function s.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_LEAVE_GRAVE)
+	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -25,6 +25,7 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_TO_HAND)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e2:SetCondition(s.smcon)
 	e2:SetTarget(s.smtg)
 	e2:SetOperation(s.smop)
@@ -63,10 +64,7 @@ function s.smcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.trigfilter,1,nil,tp)
 end
 function s.smtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(s.smfilter,tp,LOCATION_HAND,0,1,nil)
-		and c:GetFlagEffect(id)==0 end
-	c:RegisterFlagEffect(id,RESET_CHAIN,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(s.smfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function s.smop(e,tp,eg,ep,ev,re,r,rp)
