@@ -23,18 +23,18 @@ function s.initial_effect(c)
 	e2:SetOperation(s.ovop)
 	c:RegisterEffect(e2)
 end
-function s.filter(c,id)
-	return c:IsFaceup() and c:IsSetCard(0x1a4) and c:IsHasLevel() and not c:IsCode(id)
+function s.filter(c,code)
+	return c:IsFaceup() and c:IsSetCard(0x1a4) and c:IsHasLevel() and not c:IsCode(code)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	local id=c:GetCode()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.filter(chkc,id) end
+	local code=c:GetCode()
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.filter(chkc,code) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil,id) end
+		and Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil,code) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil,id)
+	Duel.SelectTarget(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil,code)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
