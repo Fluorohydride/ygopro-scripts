@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,45231177,36319131,true,true)
+	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
@@ -17,8 +18,10 @@ function s.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e2:SetCondition(s.descon2)
 	c:RegisterEffect(e2)
+	--attack
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
@@ -29,8 +32,16 @@ function s.initial_effect(c)
 	e3:SetOperation(s.atkop)
 	c:RegisterEffect(e3)
 end
+function s.descon1(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetHandler():GetEquipGroup()
+	return g:GetCount()==0
+end
+function s.descon2(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetHandler():GetEquipGroup()
+	return g:GetCount()>0
+end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)
@@ -42,14 +53,6 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and Duel.Destroy(tc,REASON_EFFECT) then
 		Duel.Damage(1-tp,500,REASON_EFFECT)
 	end
-end
-function s.descon1(e,tp,eg,ep,ev,re,r,rp)
-	local eg=e:GetHandler():GetEquipGroup()
-	return eg:GetCount()==0
-end
-function s.descon2(e,tp,eg,ep,ev,re,r,rp)
-	local eg=e:GetHandler():GetEquipGroup()
-	return eg:GetCount()>0
 end
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsRelateToBattle()
