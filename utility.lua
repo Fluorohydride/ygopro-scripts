@@ -1481,18 +1481,42 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 --Once the card has been moved to the public area, it should be listened to again
-function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,event,g,event_code_single)
-	local mt=getmetatable(c)
-	if not event_code_single then 
-		event_code_single=code+event+EVENT_CUSTOM 
-		while(mt[event_code_single]==true)
-		do 
-			event_code_single=event_code_single+EVENT_CUSTOM 
-		end
-		mt[event_code_single]=true 
-	end 
-	if not g then g=Group.CreateGroup() end
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
+	local g=Group.CreateGroup()
 	g:KeepAlive()
+	local mt=getmetatable(c)
+	local seed=0
+	if type(events) == "table" then 
+		for _, event in ipairs(events) do
+			seed = seed + event 
+		end 
+	else 
+		seed = events
+	end 
+	while(mt[seed]==true)
+	do 
+		seed = seed + 1 
+	end
+	mt[seed]=true 
+	local event_code_single = (code ~ (seed << 16)) | EVENT_CUSTOM
+	if type(events) == "table" then 
+		for _, event in ipairs(events) do
+			Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
+		end 
+	else 
+		Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,events,event_code_single)
+	end 
+	--listened to again
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e3:SetCode(EVENT_MOVE)
+	e3:SetLabelObject(g)
+	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
+	c:RegisterEffect(e3)
+	return event_code_single
+end
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(event)
@@ -1506,15 +1530,6 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,event,g,event_
 	e2:SetCode(EVENT_CHAIN_END)
 	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingleCard)
 	c:RegisterEffect(e2)
-	--Once the card has been moved to the public area, it will listen to again
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
-	e3:SetCode(EVENT_MOVE)
-	e3:SetLabelObject(g)
-	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
-	c:RegisterEffect(e3)
-	return event_code_single
 end
 function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()
