@@ -1,5 +1,6 @@
 --マグマッチョ・ドラゴン
 function c50951254.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(50951254,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
@@ -9,6 +10,7 @@ function c50951254.initial_effect(c)
 	e1:SetCost(c50951254.atkcost)
 	e1:SetOperation(c50951254.atkop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(50951254,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DRAW)
