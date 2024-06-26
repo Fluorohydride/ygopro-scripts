@@ -1,6 +1,7 @@
 --幻禄の天盃龍
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -12,6 +13,7 @@ function s.initial_effect(c)
 	e1:SetTarget(s.sptg)
 	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -46,12 +48,13 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		Duel.SpecialSummonComplete()
 		if c:IsLevelAbove(1) and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_LEVEL)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(1)
-			c:RegisterEffect(e1)
+			Duel.BreakEffect()
+			local e2=Effect.CreateEffect(c)
+			e2:SetType(EFFECT_TYPE_SINGLE)
+			e2:SetCode(EFFECT_UPDATE_LEVEL)
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+			e2:SetValue(1)
+			c:RegisterEffect(e2)
 		end
 	end
 end

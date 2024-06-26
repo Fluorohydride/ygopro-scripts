@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	e1:SetTarget(s.sdtg)
 	e1:SetOperation(s.sdop)
 	c:RegisterEffect(e1)
-	--Sp Sm below level 
+	--Sp Sm below level
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_ACTION)

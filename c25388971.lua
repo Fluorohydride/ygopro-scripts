@@ -1,6 +1,7 @@
 --燦幻開花
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -9,6 +10,7 @@ function s.initial_effect(c)
 	e1:SetCondition(s.skipcon)
 	e1:SetOperation(s.skipop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON)

@@ -1,6 +1,7 @@
 --トラップ・ギャザー
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -9,11 +10,13 @@ function s.initial_effect(c)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetValue(s.value)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
@@ -30,6 +33,7 @@ function s.initial_effect(c)
 	e4:SetCode(EVENT_BATTLE_DAMAGE)
 	e4:SetCondition(s.setcon2)
 	c:RegisterEffect(e4)
+	--
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e5:SetCode(EFFECT_DESTROY_REPLACE)
@@ -39,6 +43,7 @@ function s.initial_effect(c)
 	e5:SetValue(s.desrepval)
 	e5:SetOperation(s.desrepop)
 	c:RegisterEffect(e5)
+	--
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
 	e6:SetCode(EFFECT_EQUIP_LIMIT)

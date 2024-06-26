@@ -23,9 +23,9 @@ function s.atkcheck(c,atk)
 	return c:IsFaceup() and c:GetAttack()~=atk
 end
 function s.cfilter(c)
- 	return c:IsAttackBelow(2000) and c:IsAbleToRemoveAsCost() and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
-	and (Duel.IsPlayerCanDraw(c:GetControler(),1) or c:GetOriginalRace()~=RACE_REPTILE)
-	and Duel.IsExistingTarget(s.atkcheck,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetBaseAttack())
+	return c:IsAttackBelow(2000) and c:IsAbleToRemoveAsCost() and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
+		and (Duel.IsPlayerCanDraw(c:GetControler(),1) or c:GetOriginalRace()~=RACE_REPTILE)
+		and Duel.IsExistingTarget(s.atkcheck,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetBaseAttack())
 end
 function s.accost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil) end

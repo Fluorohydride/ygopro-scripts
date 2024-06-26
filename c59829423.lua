@@ -1,6 +1,7 @@
 --至天の魔王ミッシング・バロウズ
 local s,id,o=GetID()
 function s.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -11,6 +12,7 @@ function s.initial_effect(c)
 	e1:SetTarget(s.sprtg)
 	e1:SetOperation(s.sprop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_REMOVE)

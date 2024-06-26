@@ -68,7 +68,7 @@ function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,id)==0 and e:GetHandler():IsAbleToGraveAsCost() end
-	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1) 
+	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function s.atkfilter(c)
