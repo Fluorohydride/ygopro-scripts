@@ -30,22 +30,23 @@ function s.cgcost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,s.cgfilter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler())
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
-	e:SetLabelObject(g:GetFirst())
+	local rc=g:GetFirst()
+	local tuner=rc:IsType(TYPE_TUNER) and 1 or 0
+	e:SetLabel(rc:GetAttribute(),tuner)
 end
 function s.cgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=e:GetLabelObject()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		local att=tc:GetAttribute()
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_ADD_ATTRIBUTE)
-		e1:SetValue(att)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
-		c:RegisterEffect(e1)
-	end
-	if c:IsFaceup() and tc:IsType(TYPE_TUNER) and not c:IsType(TYPE_TUNER)
-	and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+	if not (c:IsFaceup() and c:IsRelateToEffect(e)) then return end
+	local att,tuner=e:GetLabel()
+	if c:IsAttribute(att) then return end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_ADD_ATTRIBUTE)
+	e1:SetValue(att)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	c:RegisterEffect(e1)
+	if tuner==1 and not c:IsType(TYPE_TUNER)
+		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.BreakEffect()
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -68,27 +69,31 @@ end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.tgfilter(chkc) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(s.tgfilter,tp,LOCATION_GRAVE,0,1,c) and c:IsAbleToHand() end
+	if chk==0 then return Duel.IsExistingTarget(s.tgfilter,tp,LOCATION_GRAVE,0,1,c)
+		and c:IsAbleToHand() and c:IsCanBeEffectTarget(e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g1=Duel.SelectTarget(tp,s.tgfilter,tp,LOCATION_GRAVE,0,1,1,c)
-	local g2=Group.GetFirst(g1)
-	local g3=Duel.SetTargetCard(c)
-	local g=Group.FromCards(g2,g3)
+	local g=Duel.SelectTarget(tp,s.tgfilter,tp,LOCATION_GRAVE,0,1,1,c)
+	Duel.SetTargetCard(c)
+	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,2,0,0)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
-	if sg:GetCount()>=0 then
+	if sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
-		local e3=Effect.CreateEffect(e:GetHandler())
-		e3:SetType(EFFECT_TYPE_FIELD)
-		e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
-		e3:SetCode(EFFECT_TO_GRAVE_REDIRECT)
-		e3:SetTargetRange(0xff,0)
-		e3:SetValue(LOCATION_REMOVED)
-		e3:SetReset(RESET_PHASE+PHASE_END)
-		Duel.RegisterEffect(e3,tp)
 	end
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
+	e1:SetTargetRange(0xff,0xfe)
+	e1:SetTarget(s.rmtg)
+	e1:SetValue(LOCATION_REMOVED)
+	e1:SetReset(RESET_PHASE+PHASE_END)
+	Duel.RegisterEffect(e1,tp)
+end
+function s.rmtg(e,c)
+	local tp=e:GetHandlerPlayer()
+	return c:GetOwner()==tp
 end
