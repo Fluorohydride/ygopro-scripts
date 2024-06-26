@@ -118,6 +118,7 @@ function s.op2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,s.filter2,tp,LOCATION_REMOVED,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 then
+		Duel.HintSelection(g)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
