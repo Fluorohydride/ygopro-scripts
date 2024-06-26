@@ -2,6 +2,7 @@
 function c82570174.initial_effect(c)
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(Card.IsRace,RACE_DRAGON),1)
 	c:EnableReviveLimit()
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(82570174,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -13,6 +14,7 @@ function c82570174.initial_effect(c)
 	e1:SetTarget(c82570174.sptg)
 	e1:SetOperation(c82570174.spop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(82570174,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)

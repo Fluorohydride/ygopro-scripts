@@ -59,7 +59,7 @@ function s.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local bc=e:GetHandler():GetBattleTarget()
 	local dam=0
-	if  bc:IsLocation(LOCATION_MZONE) then
+	if bc:IsLocation(LOCATION_MZONE) then
 		dam=bc:GetBaseAttack()
 	else
 		dam=bc:GetTextAttack()

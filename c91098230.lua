@@ -1,6 +1,7 @@
 --古代の機械戦車兵
 function c91098230.initial_effect(c)
 	aux.AddCodeList(c,83104731)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(91098230,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -14,6 +15,7 @@ function c91098230.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(91098230,1))
 	e3:SetCategory(CATEGORY_DESTROY)

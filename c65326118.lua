@@ -1,5 +1,6 @@
 --天盃龍ファドラ
 function c65326118.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(65326118,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -18,6 +19,7 @@ function c65326118.initial_effect(c)
 	e3:SetCode(EVENT_BATTLE_START)
 	e3:SetRange(LOCATION_MZONE)
 	c:RegisterEffect(e3)
+	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
@@ -26,6 +28,7 @@ function c65326118.initial_effect(c)
 	e4:SetTarget(c65326118.indtg)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
+	--
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(65326118,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)

@@ -1,6 +1,7 @@
 --幻奏の歌姫ルフラン
 function c64881644.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
+	--
 	local e0=Effect.CreateEffect(c)
 	e0:SetDescription(aux.Stringid(64881644,0))
 	e0:SetCategory(CATEGORY_ATKCHANGE)
@@ -11,6 +12,7 @@ function c64881644.initial_effect(c)
 	e0:SetTarget(c64881644.atktg)
 	e0:SetOperation(c64881644.atkop)
 	c:RegisterEffect(e0)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64881644,1))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
@@ -24,6 +26,7 @@ function c64881644.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(64881644,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
