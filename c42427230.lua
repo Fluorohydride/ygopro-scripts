@@ -17,25 +17,24 @@ function c42427230.initial_effect(c)
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_REMOVE)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,42427231)
 	e2:SetTarget(c42427230.destg)
 	e2:SetOperation(c42427230.desop)
 	c:RegisterEffect(e2)
 end
 function c42427230.cfilter(c,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCode(42427230) and c:IsReleasable()
+	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCode(42427230)
 end
 function c42427230.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local rg=Duel.GetMatchingGroup(c42427230.cfilter,tp,LOCATION_MZONE,0,nil,tp)
-	if chk==0 then return rg:GetCount()==Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,42427230):GetCount() and rg:GetCount()~=0 and Duel.GetMZoneCount(tp,rg)>0 end
+	if chk==0 then return rg:GetCount()==rg:FilterCount(Card.IsReleasable,nil)
+		and rg:GetCount()~=0 and Duel.GetMZoneCount(tp,rg)>0 end
 	local ct=Duel.Release(rg,REASON_COST)*2
 	e:SetLabel(ct)
 end
 function c42427230.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,42427231,0,TYPES_TOKEN_MONSTER,200,200,1,RACE_MACHINE,ATTRIBUTE_FIRE) end
-	local ct=e:GetLabel()
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
@@ -74,9 +73,9 @@ function c42427230.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c42427230.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tp=e:GetLabel()
+	local p=e:GetLabel()
 	if c:IsReason(REASON_DESTROY) then
-		Duel.Damage(1-tp,500,REASON_EFFECT)
+		Duel.Damage(1-p,500,REASON_EFFECT)
 	end
 	e:Reset()
 end
@@ -88,7 +87,7 @@ function c42427230.desfilter2(c,e)
 end
 function c42427230.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c42427230.desfilter(chkc) end
-	local g=Duel.GetMatchingGroup(c42427230.desfilter2,tp,LOCATION_MZONE,0,nil,e)
+	local g=Duel.GetMatchingGroup(c42427230.desfilter2,tp,LOCATION_ONFIELD,0,nil,e)
 	if chk==0 then return g:GetCount()~=0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local sg=g:Select(tp,1,g:GetCount(),nil)

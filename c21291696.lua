@@ -1,5 +1,6 @@
 --電極獣カチオン
 function c21291696.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(21291696,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_SUMMON)
@@ -10,6 +11,7 @@ function c21291696.initial_effect(c)
 	e1:SetTarget(c21291696.thtg)
 	e1:SetOperation(c21291696.thop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(21291696,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -26,7 +28,6 @@ end
 function c21291696.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c21291696.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
-	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,0,0,0)
 end
 function c21291696.sumfilter(c)
 	return c:IsSummonable(true,nil) and c:IsRace(RACE_THUNDER) and c:IsLevelBelow(4)
@@ -38,10 +39,10 @@ function c21291696.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
+		Duel.ShuffleHand(tp)
 		if Duel.IsExistingMatchingCard(c21291696.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(21291696,2)) then
 			Duel.BreakEffect()
-			Duel.ShuffleHand(tp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local sg=Duel.SelectMatchingCard(tp,c21291696.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
 			if sg:GetCount()>0 then
@@ -65,10 +66,11 @@ function c21291696.lvfilter(c,lv)
 	return c:IsFaceup() and c:IsRace(RACE_THUNDER) and not c:IsLevel(lv) and c:IsLevelAbove(1)
 end
 function c21291696.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c21291696.lvfilter(chkc,e:GetHandler():GetLevel()) end
-	if chk==0 then return Duel.IsExistingTarget(c21291696.lvfilter,tp,LOCATION_MZONE,0,1,nil,e:GetHandler():GetLevel()) end
+	local lv=e:GetHandler():GetLevel()
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c21291696.lvfilter(chkc,lv) end
+	if chk==0 then return Duel.IsExistingTarget(c21291696.lvfilter,tp,LOCATION_MZONE,0,1,nil,lv) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c21291696.lvfilter,tp,LOCATION_MZONE,0,1,1,nil,e:GetHandler():GetLevel())
+	Duel.SelectTarget(tp,c21291696.lvfilter,tp,LOCATION_MZONE,0,1,1,nil,lv)
 end
 function c21291696.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

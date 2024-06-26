@@ -1,9 +1,11 @@
 --地縛共振
 function c95207988.initial_effect(c)
+	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(95207988,0))
 	e2:SetCategory(CATEGORY_DAMAGE)
@@ -16,6 +18,7 @@ function c95207988.initial_effect(c)
 	e2:SetTarget(c95207988.damtg)
 	e2:SetOperation(c95207988.damop)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(95207988,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -54,13 +57,15 @@ end
 function c95207988.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.Damage(tp,tc:GetAttack()/2,REASON_EFFECT)
-		Duel.Damage(1-tp,tc:GetAttack()/2,REASON_EFFECT)
+		Duel.Damage(tp,tc:GetAttack()/2,REASON_EFFECT,true)
+		Duel.Damage(1-tp,tc:GetAttack()/2,REASON_EFFECT,true)
+		Duel.RDComplete()
 	end
 end
 function c95207988.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsControler(tp) and tc:IsFaceup() and tc:IsAttribute(ATTRIBUTE_DARK) and tc:IsType(TYPE_SYNCHRO) and tc:IsSummonLocation(LOCATION_EXTRA)
+	return tc:IsControler(tp) and tc:IsFaceup() and tc:IsAttribute(ATTRIBUTE_DARK)
+		and tc:IsType(TYPE_SYNCHRO) and tc:IsSummonLocation(LOCATION_EXTRA)
 end
 function c95207988.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
