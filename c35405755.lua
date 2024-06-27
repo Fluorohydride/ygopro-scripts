@@ -54,6 +54,13 @@ function s.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetMatchingGroup(s.rfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,1-tp)
+	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_KAISER_COLOSSEUM) then
+		local t1=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
+		local t2=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
+		local r1=Duel.GetMatchingGroupCount(s.rfilter,tp,LOCATION_MZONE,0,nil,1-tp)
+		local r2=Duel.GetMatchingGroupCount(s.rfilter,tp,0,LOCATION_MZONE,nil,1-tp)
+		if t1-r1+1 > t2-r2 then return false end
+	end
 	return rg:GetCount()>0 and rg:FilterCount(Card.IsReleasable,nil,REASON_SPSUMMON)==rg:GetCount() and aux.mzctcheck(rg,tp)
 end
 function s.sprop(e,tp,eg,ep,ev,re,r,rp,c)
