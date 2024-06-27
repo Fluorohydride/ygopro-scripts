@@ -49,6 +49,7 @@ function c33776734.initial_effect(c)
 	end
 end
 c33776734.lvup={33776734}
+c33776734.lvdn={48486809}
 function c33776734.checkop1(e,tp,eg,ep,ev,re,r,rp)
 	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
 		re:GetHandler():RegisterFlagEffect(33776734,RESET_EVENT+RESETS_STANDARD,0,1)
