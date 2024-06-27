@@ -33,13 +33,6 @@ function c27204311.checkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27204311.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_KAISER_COLOSSEUM) then
-		local t1=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
-		local t2=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
-		local c1=Duel.GetMatchingGroupCount(c27204311.relfilter,tp,LOCATION_MZONE,0,nil)
-		local c2=Duel.GetMatchingGroupCount(c27204311.relfilter,tp,0,LOCATION_MZONE,nil)
-		if t1-c1 >= t2-c2 then return false end
-	end
 	return Duel.GetFlagEffect(1-tp,27204311)>=5 and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c27204311.relfilter(c)
