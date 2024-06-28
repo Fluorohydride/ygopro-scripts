@@ -1,5 +1,6 @@
 --魅惑の女王 LV5
 function c23756165.initial_effect(c)
+	aux.AddCodeList(c,87257460,50140163)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
@@ -24,25 +25,34 @@ c23756165.lvup={50140163,87257460}
 c23756165.lvdn={87257460}
 function c23756165.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV then
+	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV or (re and re:GetHandler():IsCode(87257460)) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(23756165,0))
 		e1:SetCategory(CATEGORY_EQUIP)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e1:SetRange(LOCATION_MZONE)
-		e1:SetCountLimit(1)
-		e1:SetCondition(c23756165.eqcon)
+		e1:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
+		e1:SetCondition(c23756165.eqcon1)
 		e1:SetTarget(c23756165.eqtg)
 		e1:SetOperation(c23756165.eqop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetLabelObject(e)
 		c:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetType(EFFECT_TYPE_QUICK_O)
+		e2:SetCode(EVENT_FREE_CHAIN)
+		e2:SetCondition(c23756165.eqcon2)
+		c:RegisterEffect(e2)
 	end
 end
-function c23756165.eqcon(e,tp,eg,ep,ev,re,r,rp)
+function c23756165.eqcon1(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject():GetLabelObject()
-	return ec==nil or ec:GetFlagEffect(23756165)==0
+	return (ec==nil or ec:GetFlagEffect(23756165)==0) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+end
+function c23756165.eqcon2(e,tp,eg,ep,ev,re,r,rp)
+	local ec=e:GetLabelObject():GetLabelObject()
+	return (ec==nil or ec:GetFlagEffect(23756165)==0) and Duel.IsPlayerAffectedByEffect(tp,95937545)
 end
 function c23756165.filter(c)
 	return c:IsLevelBelow(5) and c:IsFaceup() and c:IsAbleToChangeControler()
@@ -111,7 +121,7 @@ function c23756165.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c23756165.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,SUMMON_VALUE_LV,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 		tc:CompleteProcedure()
 	end
 end

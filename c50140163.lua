@@ -1,5 +1,6 @@
 --魅惑の女王 LV7
 function c50140163.initial_effect(c)
+	aux.AddCodeList(c,23756165)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
@@ -11,7 +12,7 @@ c50140163.lvup={23756165}
 c50140163.lvdn={23756165,87257460}
 function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV then
+	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV or (re and re:GetHandler():IsCode(23756165)) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(50140163,0))
 		e1:SetCategory(CATEGORY_EQUIP)
@@ -19,17 +20,26 @@ function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetCountLimit(1)
-		e1:SetCondition(c50140163.eqcon)
+		e1:SetCondition(c50140163.eqcon1)
 		e1:SetTarget(c50140163.eqtg)
 		e1:SetOperation(c50140163.eqop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetLabelObject(e)
 		c:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetType(EFFECT_TYPE_QUICK_O)
+		e2:SetCode(EVENT_FREE_CHAIN)
+		e2:SetCondition(c50140163.eqcon2)
+		c:RegisterEffect(e2)
 	end
 end
-function c50140163.eqcon(e,tp,eg,ep,ev,re,r,rp)
+function c50140163.eqcon1(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject():GetLabelObject()
-	return ec==nil or ec:GetFlagEffect(50140163)==0
+	return (ec==nil or ec:GetFlagEffect(50140163)==0) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+end
+function c50140163.eqcon2(e,tp,eg,ep,ev,re,r,rp)
+	local ec=e:GetLabelObject():GetLabelObject()
+	return (ec==nil or ec:GetFlagEffect(50140163)==0) and Duel.IsPlayerAffectedByEffect(tp,95937545)
 end
 function c50140163.filter(c)
 	return c:IsAbleToChangeControler()
