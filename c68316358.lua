@@ -31,7 +31,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.filter(c)
-	return (c:IsSetCard(0x2b6) and c:IsType(TYPE_MONSTER) or c:IsCode(31322640)) and c:IsAbleToHand()
+	return (c:IsSetCard(0x3) and c:IsType(TYPE_MONSTER) or c:IsCode(31322640)) and c:IsAbleToHand()
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,0,nil)
@@ -64,7 +64,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function s.sfilter(c,e,tp)
-	return c:IsSetCard(0x2b6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.sfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end

@@ -75,7 +75,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.eftg(e,c)
-	return c:IsType(TYPE_EFFECT) and c:IsSetCard(0x2b6)
+	return c:IsType(TYPE_EFFECT) and c:IsSetCard(0x3)
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,1,nil) end
@@ -84,7 +84,7 @@ function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function s.thfilter(c,e,tp)
-	if not (c:IsSetCard(0x2b6) and c:IsType(TYPE_MONSTER)) then return false end
+	if not (c:IsSetCard(0x3) and c:IsType(TYPE_MONSTER)) then return false end
 	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	return c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp))
 end

@@ -7,6 +7,7 @@ function c33900648.initial_effect(c)
 	c:RegisterEffect(e1)
 	--maintain
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(33900648,4))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
@@ -15,13 +16,6 @@ function c33900648.initial_effect(c)
 	e2:SetCondition(c33900648.mtcon)
 	e2:SetOperation(c33900648.mtop)
 	c:RegisterEffect(e2)
-	--adjust
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_ADJUST)
-	e3:SetRange(LOCATION_FZONE)
-	e3:SetOperation(c33900648.adjustop)
-	c:RegisterEffect(e3)
 	--light
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
@@ -48,7 +42,7 @@ function c33900648.initial_effect(c)
 	e7:SetDescription(aux.Stringid(33900648,1))
 	e7:SetCategory(CATEGORY_DESTROY)
 	e7:SetCode(EVENT_PHASE+PHASE_STANDBY)
-	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e7:SetRange(LOCATION_FZONE)
 	e7:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e7:SetCountLimit(1)
@@ -61,7 +55,7 @@ function c33900648.initial_effect(c)
 	e8:SetDescription(aux.Stringid(33900648,2))
 	e8:SetCategory(CATEGORY_HANDES)
 	e8:SetCode(EVENT_PHASE+PHASE_END)
-	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e8:SetRange(LOCATION_FZONE)
 	e8:SetCountLimit(1)
 	e8:SetCondition(c33900648.hdcon)
@@ -73,7 +67,7 @@ function c33900648.initial_effect(c)
 	e9:SetDescription(aux.Stringid(33900648,3))
 	e9:SetCategory(CATEGORY_DAMAGE)
 	e9:SetCode(EVENT_PHASE+PHASE_END)
-	e9:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e9:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e9:SetRange(LOCATION_FZONE)
 	e9:SetCountLimit(1)
 	e9:SetCondition(c33900648.damcon)
@@ -107,91 +101,99 @@ function c33900648.mtop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end
-c33900648[0]=0
-c33900648[1]=0
-function c33900648.adjustop(e,tp,eg,ep,ev,re,r,rp)
-	for p=0,1 do
+function c33900648.attributechk(tp)
+	local attchk=0
+	if Duel.IsPlayerAffectedByEffect(tp,6089145) then
+		attchk=ATTRIBUTE_LIGHT+ATTRIBUTE_DARK+ATTRIBUTE_EARTH+ATTRIBUTE_WATER+ATTRIBUTE_FIRE+ATTRIBUTE_WIND
+	else
 		local rac=0
-		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
+		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 		local tc=g:GetFirst()
 		while tc do
 			rac=bit.bor(rac,tc:GetAttribute())
 			tc=g:GetNext()
 		end
-		c33900648[p]=rac
+		attchk=rac
 	end
+	return attchk
 end
 function c33900648.lighttg(e,c)
-	return bit.band(c33900648[c:GetControler()],ATTRIBUTE_LIGHT)~=0
+	return bit.band(c33900648.attributechk(c:GetControler()),ATTRIBUTE_LIGHT)~=0
 		and not Duel.IsPlayerAffectedByEffect(c:GetControler(),97811903)
 end
 function c33900648.darkcon1(e)
-	return bit.band(c33900648[e:GetHandlerPlayer()],ATTRIBUTE_DARK)~=0
-		and Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_MZONE,0)>=2
-		and not Duel.IsPlayerAffectedByEffect(e:GetHandlerPlayer(),97811903)
+	local tp=e:GetHandlerPlayer()
+	return bit.band(c33900648.attributechk(tp),ATTRIBUTE_DARK)~=0
+		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>=2
+		and not Duel.IsPlayerAffectedByEffect(tp,97811903)
 end
 function c33900648.darkcon2(e)
-	return bit.band(c33900648[1-e:GetHandlerPlayer()],ATTRIBUTE_DARK)~=0
-		and Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>=2
-		and not Duel.IsPlayerAffectedByEffect(1-e:GetHandlerPlayer(),97811903)
+	local tp=e:GetHandlerPlayer()
+	return bit.band(c33900648.attributechk(1-tp),ATTRIBUTE_DARK)~=0
+		and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>=2
+		and not Duel.IsPlayerAffectedByEffect(1-tp,97811903)
 end
 function c33900648.descon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_EARTH)~=0
+	return bit.band(c33900648.attributechk(Duel.GetTurnPlayer()),ATTRIBUTE_EARTH)~=0
 end
 function c33900648.desfilter(c)
 	return c:IsPosition(POS_FACEUP_DEFENSE)
 end
-function c33900648.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c33900648.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local turnp=Duel.GetTurnPlayer()
-	if chkc then return chkc:IsControler(turnp) and chkc:IsLocation(LOCATION_MZONE) and c33900648.desfilter(chkc) end
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(turnp,c33900648.desfilter,turnp,LOCATION_MZONE,0,1,1,nil)
-	if g:GetCount()>0 then
-		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	end
+	Duel.Hint(HINT_OPSELECTED,1-turnp,aux.Stringid(33900648,1))
 end
 function c33900648.desop(e,tp,eg,ep,ev,re,r,rp)
-	if bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_EARTH)==0
-		or Duel.IsPlayerAffectedByEffect(Duel.GetTurnPlayer(),97811903) then return end
-	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_DEFENSE) then
-		Duel.Destroy(tc,REASON_EFFECT)
+	local turnp=Duel.GetTurnPlayer()
+	if bit.band(c33900648.attributechk(turnp),ATTRIBUTE_EARTH)==0
+		or Duel.IsPlayerAffectedByEffect(turnp,97811903) then return end
+	Duel.Hint(HINT_SELECTMSG,turnp,HINTMSG_DESTROY)
+	local tg=Duel.SelectMatchingCard(turnp,c33900648.desfilter,turnp,LOCATION_MZONE,0,1,1,nil)
+	if tg:GetCount()>0 then
+		Duel.HintSelection(tg)
+		Duel.Destroy(tg,REASON_EFFECT)
 	end
 end
 function c33900648.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_WATER)~=0
+	return bit.band(c33900648.attributechk(Duel.GetTurnPlayer()),ATTRIBUTE_WATER)~=0
 end
 function c33900648.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local turnp=Duel.GetTurnPlayer()
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,turnp,1)
+	Duel.Hint(HINT_OPSELECTED,1-turnp,aux.Stringid(33900648,2))
 end
 function c33900648.hdop(e,tp,eg,ep,ev,re,r,rp)
-	if bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_WATER)==0
-		or Duel.IsPlayerAffectedByEffect(Duel.GetTurnPlayer(),97811903) then return end
-	Duel.DiscardHand(Duel.GetTurnPlayer(),nil,1,1,REASON_EFFECT+REASON_DISCARD)
+	local turnp=Duel.GetTurnPlayer()
+	if bit.band(c33900648.attributechk(turnp),ATTRIBUTE_WATER)==0
+		or Duel.IsPlayerAffectedByEffect(turnp,97811903) then return end
+	Duel.DiscardHand(turnp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 end
 function c33900648.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_FIRE)~=0
+	return bit.band(c33900648.attributechk(Duel.GetTurnPlayer()),ATTRIBUTE_FIRE)~=0
 end
 function c33900648.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local turnp=Duel.GetTurnPlayer()
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,turnp,1000)
+	Duel.Hint(HINT_OPSELECTED,1-turnp,aux.Stringid(33900648,3))
 end
 function c33900648.damop(e,tp,eg,ep,ev,re,r,rp)
-	if bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_FIRE)==0
-		or Duel.IsPlayerAffectedByEffect(Duel.GetTurnPlayer(),97811903) then return end
-	Duel.Damage(Duel.GetTurnPlayer(),1000,REASON_EFFECT)
+	local turnp=Duel.GetTurnPlayer()
+	if bit.band(c33900648.attributechk(turnp),ATTRIBUTE_FIRE)==0
+		or Duel.IsPlayerAffectedByEffect(turnp,97811903) then return end
+	Duel.Damage(turnp,1000,REASON_EFFECT)
 end
 function c33900648.windcon1(e)
-	return bit.band(c33900648[e:GetHandlerPlayer()],ATTRIBUTE_WIND)~=0
-		and not Duel.IsPlayerAffectedByEffect(e:GetHandlerPlayer(),97811903)
+	local tp=e:GetHandlerPlayer()
+	return bit.band(c33900648.attributechk(tp),ATTRIBUTE_WIND)~=0
+		and not Duel.IsPlayerAffectedByEffect(tp,97811903)
 end
 function c33900648.windcon2(e)
-	return bit.band(c33900648[1-e:GetHandlerPlayer()],ATTRIBUTE_WIND)~=0
-		and not Duel.IsPlayerAffectedByEffect(1-e:GetHandlerPlayer(),97811903)
+	local tp=e:GetHandlerPlayer()
+	return bit.band(c33900648.attributechk(1-tp),ATTRIBUTE_WIND)~=0
+		and not Duel.IsPlayerAffectedByEffect(1-tp,97811903)
 end
 function c33900648.actarget(e,te,tp)
 	return te:IsHasType(EFFECT_TYPE_ACTIVATE) and te:IsActiveType(TYPE_SPELL)

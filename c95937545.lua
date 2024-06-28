@@ -42,7 +42,7 @@ function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function s.spfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -86,7 +86,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetTargetRange(LOCATION_MZONE,0)
-	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x2b6))
+	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x3))
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	e1:SetValue(1)
 	Duel.RegisterEffect(e1,tp)
