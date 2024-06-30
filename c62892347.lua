@@ -85,6 +85,7 @@ end
 function c62892347.disop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler()
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
+	if not ec:IsRelateToEffect(re) then return end
 	local val=ec:GetFlagEffectLabel(36690018)
 	if (val==1 and rp==1-ec:GetControler()) or (val==0 and rp==ec:GetControler()) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)

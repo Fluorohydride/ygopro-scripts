@@ -30,6 +30,7 @@ end
 function c42868711.disop(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp or not re:IsActiveType(TYPE_SPELL+TYPE_TRAP) then return end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
+	if not e:GetHandler():IsRelateToEffect(re) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or g:GetCount()==0 then return end
 	if g:IsContains(e:GetHandler()) then
