@@ -1,5 +1,7 @@
 --魅惑の女王 LV3
+local s,id,o=GetID()
 function c87257460.initial_effect(c)
+	aux.AddCodeList(c,87257460,23756165)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(87257460,0))
@@ -7,29 +9,35 @@ function c87257460.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCountLimit(1)
-	e1:SetCondition(c87257460.eqcon)
+	e1:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
+	e1:SetCondition(c87257460.eqcon1)
 	e1:SetTarget(c87257460.eqtg)
 	e1:SetOperation(c87257460.eqop)
 	c:RegisterEffect(e1)
-	--special summon
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(87257460,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)
-	e2:SetCondition(c87257460.spcon)
-	e2:SetCost(c87257460.spcost)
-	e2:SetTarget(c87257460.sptg)
-	e2:SetOperation(c87257460.spop)
-	e2:SetLabelObject(e1)
+	local e2=e1:Clone()
+	e2:SetType(EFFECT_TYPE_QUICK_O)
+	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetCondition(c87257460.eqcon2)
 	c:RegisterEffect(e2)
+	--special summon
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(87257460,1))
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
+	e3:SetCondition(c87257460.spcon)
+	e3:SetCost(c87257460.spcost)
+	e3:SetTarget(c87257460.sptg)
+	e3:SetOperation(c87257460.spop)
+	c:RegisterEffect(e3)
 end
 c87257460.lvup={23756165}
-function c87257460.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject()
-	return ec==nil or ec:GetFlagEffect(87257460)==0
+function c87257460.eqcon1(e,tp,eg,ep,ev,re,r,rp)
+	return not aux.IsSelfEquip(e:GetHandler(),id) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+end
+function c87257460.eqcon2(e,tp,eg,ep,ev,re,r,rp)
+	return not aux.IsSelfEquip(e:GetHandler(),id) and Duel.IsPlayerAffectedByEffect(tp,95937545)
 end
 function c87257460.filter(c)
 	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsAbleToChangeControler()
@@ -43,7 +51,7 @@ function c87257460.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c87257460.eqlimit(e,c)
-	return e:GetOwner()==c and not c:IsDisabled()
+	return e:GetOwner()==c
 end
 function c87257460.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -51,8 +59,7 @@ function c87257460.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
-		tc:RegisterFlagEffect(87257460,RESET_EVENT+RESETS_STANDARD,0,0)
-		e:SetLabelObject(tc)
+		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
@@ -73,8 +80,7 @@ function c87257460.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c87257460.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject():GetLabelObject()
-	return Duel.GetTurnPlayer()==tp and ec and ec:GetFlagEffect(87257460)~=0
+	return Duel.GetTurnPlayer()==tp and aux.IsSelfEquip(e:GetHandler(),id)
 end
 function c87257460.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -94,7 +100,6 @@ function c87257460.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c87257460.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,SUMMON_VALUE_LV,tp,tp,true,false,POS_FACEUP)
-		tc:CompleteProcedure()
+		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 	end
 end
