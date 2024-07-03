@@ -1639,3 +1639,10 @@ end
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
 end
+---Check if c has a equip card equipped by the effect of itself.
+---@param c Card
+---@param id integer
+---@return boolean
+function Auxiliary.IsSelfEquip(c,id)
+	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
+end

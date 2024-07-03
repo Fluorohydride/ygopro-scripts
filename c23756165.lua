@@ -1,58 +1,58 @@
 --魅惑の女王 LV5
+local s,id,o=GetID()
 function c23756165.initial_effect(c)
 	aux.AddCodeList(c,87257460,50140163)
-	--equip
+	--flag effect id+1
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetOperation(c23756165.regop)
 	c:RegisterEffect(e1)
-	--special summon
+	--equip
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(23756165,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetDescription(aux.Stringid(23756165,0))
+	e2:SetCategory(CATEGORY_EQUIP)
+	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)
-	e2:SetCondition(c23756165.spcon)
-	e2:SetCost(c23756165.spcost)
-	e2:SetTarget(c23756165.sptg)
-	e2:SetOperation(c23756165.spop)
-	e2:SetLabelObject(e1)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
+	e2:SetCondition(c23756165.eqcon1)
+	e2:SetTarget(c23756165.eqtg)
+	e2:SetOperation(c23756165.eqop)
 	c:RegisterEffect(e2)
+	local e3=e2:Clone()
+	e3:SetType(EFFECT_TYPE_QUICK_O)
+	e3:SetCode(EVENT_FREE_CHAIN)
+	e3:SetCondition(c23756165.eqcon2)
+	c:RegisterEffect(e3)
+	--special summon
+	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(23756165,1))
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCode(EVENT_PHASE+PHASE_STANDBY)
+	e4:SetCondition(c23756165.spcon)
+	e4:SetCost(c23756165.spcost)
+	e4:SetTarget(c23756165.sptg)
+	e4:SetOperation(c23756165.spop)
+	c:RegisterEffect(e4)
 end
 c23756165.lvup={50140163,87257460}
 c23756165.lvdn={87257460}
 function c23756165.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV or (re and re:GetHandler():IsCode(87257460)) then
-		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(23756165,0))
-		e1:SetCategory(CATEGORY_EQUIP)
-		e1:SetType(EFFECT_TYPE_IGNITION)
-		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
-		e1:SetCondition(c23756165.eqcon1)
-		e1:SetTarget(c23756165.eqtg)
-		e1:SetOperation(c23756165.eqop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
-		e1:SetLabelObject(e)
-		c:RegisterEffect(e1)
-		local e2=e1:Clone()
-		e2:SetType(EFFECT_TYPE_QUICK_O)
-		e2:SetCode(EVENT_FREE_CHAIN)
-		e2:SetCondition(c23756165.eqcon2)
-		c:RegisterEffect(e2)
+	if c:GetSpecialSummonInfo(SUMMON_INFO_CODE)==87257460 then
+		c:RegisterFlagEffect(id+1,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c23756165.eqcon1(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject():GetLabelObject()
-	return (ec==nil or ec:GetFlagEffect(23756165)==0) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+	local c=e:GetHandler()
+	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
 end
 function c23756165.eqcon2(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject():GetLabelObject()
-	return (ec==nil or ec:GetFlagEffect(23756165)==0) and Duel.IsPlayerAffectedByEffect(tp,95937545)
+	local c=e:GetHandler()
+	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and Duel.IsPlayerAffectedByEffect(tp,95937545)
 end
 function c23756165.filter(c)
 	return c:IsLevelBelow(5) and c:IsFaceup() and c:IsAbleToChangeControler()
@@ -66,7 +66,7 @@ function c23756165.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c23756165.eqlimit(e,c)
-	return e:GetOwner()==c and not c:IsDisabled()
+	return e:GetOwner()==c
 end
 function c23756165.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -78,8 +78,7 @@ function c23756165.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if def<0 then def=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
-		tc:RegisterFlagEffect(23756165,RESET_EVENT+RESETS_STANDARD,0,0)
-		e:GetLabelObject():SetLabelObject(tc)
+		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
@@ -100,8 +99,7 @@ function c23756165.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c23756165.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject():GetLabelObject()
-	return Duel.GetTurnPlayer()==tp and ec and ec:GetFlagEffect(23756165)~=0
+	return Duel.GetTurnPlayer()==tp and aux.IsSelfEquip(e:GetHandler(),id)
 end
 function c23756165.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -122,6 +120,5 @@ function c23756165.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
-		tc:CompleteProcedure()
 	end
 end
