@@ -34,14 +34,14 @@ function s.fscfilter(c)
 end
 function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=tp|0x200
+		local chkf=tp|0x100
 		local mg=Duel.GetMatchingGroup(s.fsfilter1,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
 		return Duel.IsExistingMatchingCard(s.fsfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,chkf) end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,0,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function s.fsop(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=tp|0x200
+	local chkf=tp|0x100
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.fsfilter1),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
 	local sg=Duel.GetMatchingGroup(s.fsfilter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,chkf)
 	if sg:GetCount()>0 then
