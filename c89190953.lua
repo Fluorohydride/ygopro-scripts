@@ -21,7 +21,7 @@ function c89190953.chfilter(c)
 end
 function c89190953.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=tp|0x200
+		local chkf=tp|0x100
 		local mg=Duel.GetMatchingGroup(c89190953.filter1,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 		return Duel.IsExistingMatchingCard(c89190953.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,chkf)
 	end
@@ -32,7 +32,7 @@ function c89190953.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c89190953.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=tp|0x200
+	local chkf=tp|0x100
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89190953.filter1),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c89190953.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,chkf)
 	if sg:GetCount()>0 then
