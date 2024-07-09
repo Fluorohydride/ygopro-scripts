@@ -46,7 +46,8 @@ function c18973184.efilter(e,ct)
 	return p==tp and te:IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c18973184.limfilter(c,tp)
-	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_FUSION) and c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT):IsHasCategory(CATEGORY_FUSION_SUMMON)
+	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_FUSION)
+		and c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT):IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c18973184.limcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c18973184.limfilter,1,nil,tp)
