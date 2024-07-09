@@ -52,7 +52,7 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc:IsRace(RACE_DRAGON) and tc:IsAttribute(ATTRIBUTE_FIRE) then
 		Duel.DisableShuffleCheck()
-		if Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)==0 and not tc:IsLocation(LOCATION_GRAVE) then return end
+		if Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)==0 or not tc:IsLocation(LOCATION_GRAVE) then return end
 		local atk=Duel.GetMatchingGroupCount(s.cfilter,c:GetControler(),LOCATION_ONFIELD,0,nil)*1000
 		if c:IsRelateToEffect(e) and c:IsFaceup() and atk>0 then
 			local e2=Effect.CreateEffect(c)
