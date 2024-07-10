@@ -61,8 +61,9 @@ end
 function c18486927.nametg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local code=e:GetHandler():GetCode()
-	--c:IsSetCard(0x51) and not c:IsCode(code)
-	getmetatable(e:GetHandler()).announce_filter={0x51,OPCODE_ISSETCARD,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND}
+	--c:IsSetCard(0x51) and c:IsType(TYPE_MONSTER) and not c:IsCode(code)
+	-- 0x51 IsSetCard TYPE_MONSTER IsType and code IsCode not and
+	getmetatable(e:GetHandler()).announce_filter={0x51,OPCODE_ISSETCARD,TYPE_MONSTER,OPCODE_ISTYPE,OPCODE_AND,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND}
 	local ac=Duel.AnnounceCard(tp,table.unpack(getmetatable(e:GetHandler()).announce_filter))
 	Duel.SetTargetParam(ac)
 	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
