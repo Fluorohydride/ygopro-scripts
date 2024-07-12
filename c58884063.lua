@@ -43,25 +43,30 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
+function s.linecheck(seq1,seq2,flag)
+	if flag then return (seq1 == 1 and seq2 == 5) or (seq1 == 3 and seq2 == 6) end
+	return (seq1 == 1 and seq2 == 6) or (seq1 == 3 and seq2 == 5)
+end
 function s.desfilter(c,tp,seq)
 	local sseq=c:GetSequence()
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
-		return sseq==5 and seq==3 or sseq==6 and seq==1 or sseq==3 and seq==5 or sseq==1 and seq==6
+	local flag = c:IsControler(tp)
+	local b1,b2,b3,b4=false,false,false,false
+	if seq>4 then
+		b1 = c:IsLocation(LOCATION_MZONE) and s.linecheck(sseq,seq,flag)
+	else
+		if c:IsLocation(LOCATION_SZONE) then
+			b2 = flag and sseq == seq
+		else
+			b3 = s.linecheck(seq,sseq,flag)
+		end
+		b4 = flag and sseq<5 and c:IsLocation(LOCATION_MZONE) and math.abs(sseq-seq)==1
 	end
-	if c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) then
-		return sseq<5 and sseq==seq
-	end
-	if sseq<5 then
-		return math.abs(sseq-seq)==1 or sseq==1 and seq==5 or sseq==3 and seq==6
-	end
-	if sseq>=5 then
-		return sseq==5 and seq==1 or sseq==6 and seq==3
-	end
+	return b1 or b2 or b3 or b4
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
-		local cg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,1-tc:GetControler(),tc:GetSequence())
+		local cg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,tc:GetControler(),tc:GetSequence())
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLP(tp)<Duel.GetLP(1-tp) and #cg>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
