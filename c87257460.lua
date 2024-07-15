@@ -34,10 +34,10 @@ function c87257460.initial_effect(c)
 end
 c87257460.lvup={23756165}
 function c87257460.eqcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsSelfEquip(e:GetHandler(),id) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+	return not aux.IsSelfEquip(e:GetHandler(),id) and not aux.GoldenAllureQueenCondition(e:GetHandler(),tp)
 end
 function c87257460.eqcon2(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsSelfEquip(e:GetHandler(),id) and Duel.IsPlayerAffectedByEffect(tp,95937545) and e:GetHandler():IsOriginalSetCard(0x3)
+	return not aux.IsSelfEquip(e:GetHandler(),id) and aux.GoldenAllureQueenCondition(e:GetHandler(),tp)
 end
 function c87257460.filter(c)
 	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsAbleToChangeControler()
