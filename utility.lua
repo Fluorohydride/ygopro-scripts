@@ -548,8 +548,12 @@ end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
 end
---return the column of card c (from the viewpoint of p)
+---Get the column index of card c (from the viewpoint of p)
+---@param c Card
+---@param p? integer default: 0
+---@return integer|nil
 function Auxiliary.GetColumn(c,p)
+	p=p or 0
 	local seq=c:GetSequence()
 	if c:IsLocation(LOCATION_MZONE) then
 		if seq==5 then
@@ -564,7 +568,7 @@ function Auxiliary.GetColumn(c,p)
 	else
 		return nil
 	end
-	if c:IsControler(p or 0) then
+	if c:IsControler(p) then
 		return seq
 	else
 		return 4-seq
