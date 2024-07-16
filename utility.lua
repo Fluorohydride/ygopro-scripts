@@ -615,6 +615,38 @@ function Auxiliary.GetGlobalColumn(p,location,sequence)
 		return 4-column
 	end
 end
+---Get the global row and column index of c
+---@param c Card
+---@return integer
+---@return integer
+function Auxiliary.GetFieldIndex(c)
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	return Auxiliary.GetGlobalRow(cp,loc,seq),Auxiliary.GetGlobalColumn(cp,loc,seq)
+end
+---Check if c is adjacent to (i,j)
+---@param c Card
+---@param i integer
+---@param j integer
+---@return boolean
+function Auxiliary.AdjacentFilter(c,i,j)
+	local row,column=Auxiliary.GetFieldIndex(c)
+	if row<0 or column<0 then
+		return false
+	end
+	return (row==i and math.abs(column-j)==1) or (math.abs(row-i)==1 and column==j)
+end
+---Get the card group adjacent to (i,j)
+---@param tp integer
+---@param location1 integer
+---@param location2 integer
+---@param i integer
+---@param j integer
+---@return Group
+function Auxiliary.GetAdjacentGroup(tp,location1,location2,i,j)
+	return Duel.GetMatchingGroup(Auxiliary.AdjacentFilter,tp,location1,location2,nil,i,j)
+end
 ---Get the column index of card c (from the viewpoint of p)
 ---@param c Card
 ---@param p? integer default: 0
