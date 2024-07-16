@@ -3,6 +3,7 @@ aux=Auxiliary
 POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
+NULL_VALUE=-10
 
 function GetID()
 	local offset=self_code<100000000 and 1 or 100
@@ -548,42 +549,98 @@ end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
 end
+--Get the row index (from the viewpoint of controller)
+function Auxiliary.GetLocalRow(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return 0
+		else
+			return NULL_VALUE
+		end
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return 1
+		elseif 5<=sequence and sequence<=6 then
+			return 2
+		else
+			return NULL_VALUE
+		end
+	else
+		return NULL_VALUE
+	end
+end
+--Get the global row index (from the viewpoint of 0)
+function Auxiliary.GetGlobalRow(p,location,sequence)
+	local row=Auxiliary.GetLocalRow(location,sequence)
+	if row<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return row
+	else
+		return 4-row
+	end
+end
+--Get the column index (from the viewpoint of controller)
+function Auxiliary.GetLocalColumn(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		else
+			return NULL_VALUE
+		end
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		elseif sequence==5 then
+			return 1
+		elseif sequence==6 then
+			return 3
+		else
+			return NULL_VALUE
+		end
+	else
+		return NULL_VALUE
+	end
+end
+--Get the global column index (from the viewpoint of 0)
+function Auxiliary.GetGlobalColumn(p,location,sequence)
+	local column=Auxiliary.GetLocalColumn(location,sequence)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
+	end
+end
 ---Get the column index of card c (from the viewpoint of p)
 ---@param c Card
 ---@param p? integer default: 0
----@return integer|nil
+---@return integer
 function Auxiliary.GetColumn(c,p)
 	p=p or 0
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
 	local seq=c:GetSequence()
-	if c:IsLocation(LOCATION_MZONE) then
-		if seq==5 then
-			seq=1
-		elseif seq==6 then
-			seq=3
-		end
-	elseif c:IsLocation(LOCATION_SZONE) then
-		if seq>4 then
-			return nil
-		end
-	else
-		return nil
+	local column=Auxiliary.GetGlobalColumn(cp,loc,seq)
+	if column<0 then
+		return NULL_VALUE
 	end
-	if c:IsControler(p) then
-		return seq
+	if p==0 then
+		return column
 	else
-		return 4-seq
+		return 4-column
 	end
 end
 --return the column of monster zone seq (from the viewpoint of controller)
 function Auxiliary.MZoneSequence(seq)
-	if seq==5 then return 1 end
-	if seq==6 then return 3 end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_MZONE,seq)
 end
 --return the column of spell/trap zone seq (from the viewpoint of controller)
 function Auxiliary.SZoneSequence(seq)
-	if seq>4 then return nil end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_SZONE,seq)
 end
 --generate the value function of EFFECT_CHANGE_BATTLE_DAMAGE on monsters
 function Auxiliary.ChangeBattleDamage(player,value)
