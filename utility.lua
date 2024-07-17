@@ -1646,10 +1646,12 @@ end
 function Auxiliary.IsSelfEquip(c,id)
 	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
 end
----Check if the equip effect of c becomes a Quick Effect.
+---Check if the effect of c becomes a Quick Effect.
 ---@param c Card
 ---@param tp integer
+---@param code integer
+---@param setname integer
 ---@return boolean
-function Auxiliary.GoldenAllureQueenCondition(c,tp)
-	return Duel.IsPlayerAffectedByEffect(tp,95937545) and c:IsOriginalSetCard(0x3)
+function Auxiliary.IsCanbeQuickEffect(c,tp,code,setname)
+	return Duel.IsPlayerAffectedByEffect(tp,code) and c:IsOriginalSetCard(setname)
 end
