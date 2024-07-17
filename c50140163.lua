@@ -36,11 +36,11 @@ function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50140163.eqcon1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and not aux.GoldenAllureQueenCondition(c,tp)
+	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and not aux.IsCanbeQuickEffect(c,tp,95937545,0x3)
 end
 function c50140163.eqcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and aux.GoldenAllureQueenCondition(c,tp)
+	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and aux.IsCanbeQuickEffect(c,tp,95937545,0x3)
 end
 function c50140163.filter(c)
 	return c:IsAbleToChangeControler()
