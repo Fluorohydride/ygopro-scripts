@@ -34,10 +34,12 @@ function c87257460.initial_effect(c)
 end
 c87257460.lvup={23756165}
 function c87257460.eqcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsSelfEquip(e:GetHandler(),FLAG_ID_ALLURE_QUEEN) and not aux.GoldenAllureQueenCondition(e:GetHandler(),tp)
+	local c=e:GetHandler()
+	return not aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) and not aux.IsCanbeQuickEffect(c,tp,95937545,0x3)
 end
 function c87257460.eqcon2(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsSelfEquip(e:GetHandler(),FLAG_ID_ALLURE_QUEEN) and aux.GoldenAllureQueenCondition(e:GetHandler(),tp)
+	local c=e:GetHandler()
+	return not aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) and aux.IsCanbeQuickEffect(c,tp,95937545,0x3)
 end
 function c87257460.filter(c)
 	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsAbleToChangeControler()

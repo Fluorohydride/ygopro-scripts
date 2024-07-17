@@ -1,5 +1,6 @@
 --サイバーダーク・インパクト！
 function c80033124.initial_effect(c)
+	aux.AddCodeList(c,41230939,77625948,3019642)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
