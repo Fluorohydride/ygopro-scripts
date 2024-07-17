@@ -1646,12 +1646,29 @@ end
 function Auxiliary.IsSelfEquip(c,id)
 	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
 end
+---Orcustrated Babel
+---@param c Card
+---@return boolean
+function Auxiliary.OrcustratedBabelFilter(c)
+	return c:IsOriginalSetCard(0x11b) and
+		(c:IsLocation(LOCATION_MZONE) and c:IsAllTypes(TYPE_LINK+TYPE_MONSTER) or c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER))
+end
+---Golden Allure Queen
+---@param c Card
+---@return boolean
+function Auxiliary.GoldenAllureQueenFilter(c)
+	return c:IsOriginalSetCard(0x3)
+end
+--The table of all "become quick effects"
+Auxiliary.quick_effect_filter={}
+Auxiliary.quick_effect_filter[90351981]=Auxiliary.OrcustratedBabelFilter
+Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
 ---Check if the effect of c becomes a Quick Effect.
 ---@param c Card
 ---@param tp integer
 ---@param code integer
----@param setname integer
 ---@return boolean
-function Auxiliary.IsCanbeQuickEffect(c,tp,code,setname)
-	return Duel.IsPlayerAffectedByEffect(tp,code) and c:IsOriginalSetCard(setname)
+function Auxiliary.IsCanBeQuickEffect(c,tp,code)
+	local filter=Auxiliary.quick_effect_filter[code]
+	return Duel.IsPlayerAffectedByEffect(tp,code)~=nil and filter~=nil and filter(c)
 end

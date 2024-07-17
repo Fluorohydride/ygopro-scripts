@@ -21,10 +21,10 @@ function c21441617.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c21441617.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsCanbeQuickEffect(e:GetHandler(),tp,90351981,0x11b)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c21441617.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return aux.IsCanbeQuickEffect(e:GetHandler(),tp,90351981,0x11b)
+	return aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c21441617.spfilter(c,e,tp)
 	return c:IsSetCard(0x11b) and not c:IsCode(21441617) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
