@@ -7,7 +7,7 @@ function c64373401.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c64373401.hspcon)
-	e2:SetOperation(c64373401.hspop)
+	e1:SetOperation(c64373401.hspop)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)

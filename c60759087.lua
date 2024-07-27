@@ -59,6 +59,7 @@ function c60759087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c60759087.activate(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
 	if op==0 then
 		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 		local a=g:GetFirst()
