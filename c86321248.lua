@@ -1,5 +1,6 @@
 --古代の機械合成獣
 function c86321248.initial_effect(c)
+	aux.AddCodeList(c,41172955,86445415,13839120)
 	--mat check
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

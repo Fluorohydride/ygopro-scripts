@@ -20,58 +20,61 @@ function c47778083.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			and Duel.IsExistingTarget(c47778083.filter,tp,0,LOCATION_GRAVE,1,nil,e,tp)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.IsExistingTarget(c47778083.filter,1-tp,0,LOCATION_GRAVE,1,nil,e,1-tp)
-			and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
+			and Duel.GetLocationCount(1-tp,LOCATION_MZONE,1-tp)>0
 	end
-	local turnp=Duel.GetTurnPlayer()
-	Duel.Hint(HINT_SELECTMSG,turnp,HINTMSG_SPSUMMON)
-	local sg=Duel.SelectTarget(turnp,c47778083.filter,turnp,0,LOCATION_GRAVE,1,1,nil,e,turnp)
-	Duel.Hint(HINT_SELECTMSG,1-turnp,HINTMSG_SPSUMMON)
-	local og=Duel.SelectTarget(1-turnp,c47778083.filter,1-turnp,0,LOCATION_GRAVE,1,1,nil,e,1-turnp)
-	local sc=sg:GetFirst()
-	local oc=og:GetFirst()
-	local g=Group.FromCards(sc,oc)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,2,0,0)
-	e:SetLabelObject(sc)
+	local tg=Group.CreateGroup()
+	for p in aux.TurnPlayers() do
+		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_SPSUMMON)
+		local g=Duel.SelectTarget(p,c47778083.filter,p,0,LOCATION_GRAVE,1,1,nil,e,p)
+		tg:Merge(g)
+	end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,2,0,0)
 end
 function c47778083.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_EFFECT+REASON_DISCARD)==0 then return end
-	local sc=e:GetLabelObject()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local oc=g:GetFirst()
-	if oc==sc then oc=g:GetNext() end
-	if sc:IsRelateToEffect(e) then
-		Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCondition(c47778083.descon)
-		e1:SetOperation(c47778083.desop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
-		e1:SetCountLimit(1)
-		e1:SetLabel(Duel.GetTurnCount())
-		sc:RegisterEffect(e1,true)
-	end
-	if oc:IsRelateToEffect(e) then
-		Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCondition(c47778083.descon)
-		e1:SetOperation(c47778083.desop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
-		e1:SetCountLimit(1)
-		e1:SetLabel(Duel.GetTurnCount())
-		oc:RegisterEffect(e1,true)
+	local tg=Duel.GetTargetsRelateToChain()
+	if #tg==0 then return end
+	local c=e:GetHandler()
+	local fid=c:GetFieldID()
+	local sg=Group.CreateGroup()
+	for p in aux.TurnPlayers() do
+		local tc=tg:Filter(Card.IsControler,nil,1-p):GetFirst()
+		if tc and Duel.SpecialSummonStep(tc,0,p,p,false,false,POS_FACEUP) then
+			tc:RegisterFlagEffect(47778083,RESET_EVENT+RESETS_STANDARD,0,1,fid)
+			tg:RemoveCard(tc)
+			sg:AddCard(tc)
+		end
 	end
 	Duel.SpecialSummonComplete()
+	if #sg==0 then return end
+	sg:KeepAlive()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetCondition(c47778083.descon)
+	e1:SetOperation(c47778083.desop)
+	e1:SetLabel(fid,Duel.GetTurnCount())
+	e1:SetLabelObject(sg)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
+	Duel.RegisterEffect(e1,tp)
+end
+function c47778083.desfilter(c,fid)
+	return c:GetFlagEffectLabel(47778083)==fid
 end
 function c47778083.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnCount()~=e:GetLabel()
+	local fid,turnc=e:GetLabel()
+	if Duel.GetTurnCount()==turnc then return false end
+	local g=e:GetLabelObject()
+	if not g:IsExists(c47778083.desfilter,1,nil,fid) then
+		g:DeleteGroup()
+		e:Reset()
+		return false
+	else return true end
 end
 function c47778083.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	local fid,turnc=e:GetLabel()
+	local g=e:GetLabelObject()
+	local tg=g:Filter(c47778083.desfilter,nil,fid)
+	Duel.Destroy(tg,REASON_EFFECT)
 end

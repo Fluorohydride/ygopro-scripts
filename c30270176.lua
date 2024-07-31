@@ -14,6 +14,7 @@ function c30270176.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c30270176.spcon)
+	e2:SetTarget(c30270176.sptg)
 	e2:SetOperation(c30270176.spop)
 	c:RegisterEffect(e2)
 	--immune
@@ -55,12 +56,23 @@ function c30270176.spcon(e,c)
 	local hg=Duel.GetMatchingGroup(c30270176.spcfilter,tp,LOCATION_HAND,0,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and hg:GetClassCount(Card.GetCode)>=3
 end
-function c30270176.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local hg=Duel.GetMatchingGroup(c30270176.spcfilter,tp,LOCATION_HAND,0,c)
+function c30270176.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c30270176.spcfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local rg=hg:SelectSubGroup(tp,aux.dncheck,false,3,3)
+	aux.GCheckAdditional=aux.dncheck
+	local sg=g:SelectSubGroup(tp,aux.TRUE,true,3,3)
+	aux.GCheckAdditional=nil
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c30270176.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local rg=e:GetLabelObject()
 	Duel.ConfirmCards(1-tp,rg)
 	Duel.ShuffleHand(tp)
+	rg:DeleteGroup()
 end
 function c30270176.immval(e,te)
 	return te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()

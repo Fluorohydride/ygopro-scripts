@@ -1,5 +1,6 @@
 --エクゾディアとの契約
 function c33244944.initial_effect(c)
+	aux.AddCodeList(c,8124921,44519536,70903634,7902349,33396948)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

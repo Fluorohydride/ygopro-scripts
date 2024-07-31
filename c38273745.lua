@@ -26,15 +26,21 @@ function c38273745.tg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsAbleToRemove()
 		end
 	end
-	local b1=Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil)
-	local b2=Duel.GetFieldGroupCount(1-tp,LOCATION_HAND,0)~=0
-	local b3=Duel.IsExistingTarget(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
+	local c=e:GetHandler()
+	local flag=c:GetFlagEffectLabel(38273745) or 0
+	local b1=(flag&2==0) and Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil)
+	local b2=(flag&4==0) and Duel.GetFieldGroupCount(1-tp,LOCATION_HAND,0)~=0
+	local b3=(flag&8==0) and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
 	if chk==0 then return b1 or b2 or b3 end
 	local op=aux.SelectFromOptions(tp,
 		{b1,aux.Stringid(38273745,1)},
 		{b2,aux.Stringid(38273745,2)},
 		{b3,aux.Stringid(38273745,3)})
 	e:SetLabel(op)
+	if flag==0 then
+		c:RegisterFlagEffect(38273745,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
+	c:SetFlagEffectLabel(38273745,flag|(1<<op))
 	if op==1 then
 		e:SetCategory(CATEGORY_TOHAND)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)

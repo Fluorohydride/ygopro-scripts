@@ -20,7 +20,6 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_CUSTOM+id)
 	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
-	e2:SetCondition(s.mtcon)
 	e2:SetOperation(s.mtop)
 	c:RegisterEffect(e2)
 	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
@@ -52,13 +51,6 @@ function s.xyzop(e,tp,chk)
 		and (Duel.GetCustomActivityCount(id,tp,ACTIVITY_CHAIN)>0
 			or Duel.GetCustomActivityCount(id,1-tp,ACTIVITY_CHAIN)>0) end
 	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
-end
-function s.remfilter(c)
-	return not c:IsType(TYPE_TOKEN)
-end
-function s.mtcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return eg:IsExists(s.remfilter,1,nil)
 end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

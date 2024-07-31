@@ -7,6 +7,7 @@ function c9126351.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c9126351.spcon)
+	e1:SetTarget(c9126351.sptg)
 	e1:SetOperation(c9126351.spop)
 	c:RegisterEffect(e1)
 	--send to grave
@@ -43,10 +44,18 @@ function c9126351.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c9126351.spfilter,tp,LOCATION_HAND,0,1,c)
 end
-function c9126351.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c9126351.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c9126351.spfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local g=Duel.SelectMatchingCard(tp,c9126351.spfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.SendtoGrave(g,REASON_COST+REASON_DISCARD)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c9126351.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON+REASON_DISCARD)
 end
 function c9126351.tgfilter(c)
 	return c:IsLevelBelow(2) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsRace(RACE_AQUA)

@@ -1,5 +1,6 @@
 --ヴァンパイア・シフト
 function c22900598.initial_effect(c)
+	aux.AddCodeList(c,62188962)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

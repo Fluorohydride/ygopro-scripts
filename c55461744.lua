@@ -61,8 +61,7 @@ function s.limit(e,c)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=c:GetReasonCard()
-	return c:IsLocation(LOCATION_GRAVE) and rc:IsSummonType(SUMMON_TYPE_FUSION)
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
 end
 function s.sfilter(c,e,tp)
 	return c:IsRace(RACE_ILLUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

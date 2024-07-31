@@ -1,6 +1,6 @@
 --ティンクル・ファイブスター
 function c6309986.initial_effect(c)
-	aux.AddCodeList(c,40640057)
+	aux.AddCodeList(c,44632120,71036835,7021574,34419588,40640057)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

@@ -75,7 +75,7 @@ function s.spsop(e,tp,eg,ep,ev,re,r,rp,c)
 	if #gg>0 then
 		Duel.HintSelection(gg)
 	end
-	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function s.acon(e)

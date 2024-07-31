@@ -54,7 +54,7 @@ function c33212663.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c33212663.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c33212663.desfilter(c,race)

@@ -21,6 +21,7 @@ function c20799347.initial_effect(c)
 	e2:SetOperation(c20799347.spop)
 	c:RegisterEffect(e2)
 end
+c20799347.treat_itself_tuner=true
 function c20799347.cfilter(c)
 	return c:IsFacedown() or not c:IsRace(RACE_PSYCHO+RACE_WYRM)
 end

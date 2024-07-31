@@ -1,5 +1,6 @@
 --必殺！黒蠍コンビネーション
 function c20858318.initial_effect(c)
+	aux.AddCodeList(c,76922029,6967870,61587183,48768179,74153887)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

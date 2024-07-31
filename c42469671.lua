@@ -20,12 +20,9 @@ end
 function c42469671.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c42469671.actfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
-function c42469671.desfilter(c)
-	return c:IsFaceup()
-end
 function c42469671.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(c42469671.desfilter,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	if g:GetCount()~=0 then
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,g:GetCount())
@@ -35,34 +32,32 @@ function c42469671.sgfilter(c,p)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(p)
 end
 function c42469671.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c42469671.desfilter,tp,0,LOCATION_MZONE,nil)
-	if Duel.Destroy(g,REASON_EFFECT)~=0 then
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	Duel.Destroy(g,REASON_EFFECT)
 	local dc=Duel.GetOperatedGroup():FilterCount(c42469671.sgfilter,nil,1-tp)
-		if dc~=0 and Duel.GetTurnPlayer()==tp
-			and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
-			and Duel.SelectYesNo(tp,aux.Stringid(42469671,0)) then
-			Duel.BreakEffect()
-			Duel.Draw(tp,dc,REASON_EFFECT)
-			--cannot attack
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_FIELD)
-			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-			e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
-			e1:SetTargetRange(LOCATION_MZONE,0)
-			e1:SetCondition(c42469671.atkcon)
-			e1:SetTarget(c42469671.atktg)
-			e1:SetReset(RESET_PHASE+PHASE_END)
-			Duel.RegisterEffect(e1,tp)
-			--check
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e2:SetCode(EVENT_ATTACK_ANNOUNCE)
-			e2:SetReset(RESET_PHASE+PHASE_END)
-			e2:SetOperation(c42469671.checkop)
-			e2:SetLabelObject(e1)
-			Duel.RegisterEffect(e2,tp)
-		end
+	if dc~=0 and Duel.IsTurnPlayer(tp) and Duel.IsMainPhase() and Duel.IsPlayerCanDraw(tp,dc)
+		and Duel.SelectYesNo(tp,aux.Stringid(42469671,0)) then
+		Duel.BreakEffect()
+		Duel.Draw(tp,dc,REASON_EFFECT)
+		--cannot attack
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+		e1:SetTargetRange(LOCATION_MZONE,0)
+		e1:SetCondition(c42469671.atkcon)
+		e1:SetTarget(c42469671.atktg)
+		e1:SetReset(RESET_PHASE+PHASE_END)
+		Duel.RegisterEffect(e1,tp)
+		--check
+		local e2=Effect.CreateEffect(e:GetHandler())
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetCode(EVENT_ATTACK_ANNOUNCE)
+		e2:SetReset(RESET_PHASE+PHASE_END)
+		e2:SetOperation(c42469671.checkop)
+		e2:SetLabelObject(e1)
+		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c42469671.checkop(e,tp,eg,ep,ev,re,r,rp)
