@@ -68,7 +68,7 @@ function c33331231.spcon2(e,c)
 		and Duel.IsExistingMatchingCard(c33331231.sprfilter,tp,0,LOCATION_MZONE,1,nil,1-tp,tp)
 end
 function c33331231.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(c33331231.sprfilter,tp,LOCATION_MZONE,0,nil,1-tp,tp)
+	local g=Duel.GetMatchingGroup(c33331231.sprfilter,tp,0,LOCATION_MZONE,nil,1-tp,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
 	if tc then

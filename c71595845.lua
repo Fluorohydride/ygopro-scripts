@@ -1,5 +1,6 @@
 --人形の幸福
 function c71595845.initial_effect(c)
+	aux.AddCodeList(c,44190146,81587028,75574498)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

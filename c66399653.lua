@@ -23,6 +23,7 @@ function c66399653.initial_effect(c)
 	aux.RegisterMergedDelayedEvent(c,66399653,EVENT_SUMMON_SUCCESS,g)
 	aux.RegisterMergedDelayedEvent(c,66399653,EVENT_SPSUMMON_SUCCESS,g)
 end
+c66399653.has_text_type=TYPE_UNION
 function c66399653.thfilter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
 		and c:IsType(TYPE_UNION) and c:IsAbleToHand()

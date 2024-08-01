@@ -56,7 +56,7 @@ function c94821366.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94821366.eqfilter1(c,e,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsSummonPlayer(1-tp)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsControler(1-tp) and c:IsSummonPlayer(1-tp)
 		and Duel.IsExistingMatchingCard(c94821366.eqfilter2,tp,LOCATION_DECK,0,1,nil)
 end
 function c94821366.eqfilter2(c)

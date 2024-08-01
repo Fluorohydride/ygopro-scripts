@@ -30,13 +30,13 @@ function c11458071.initial_effect(c)
 	e3:SetOperation(c11458071.rmop)
 	c:RegisterEffect(e3)
 end
-c11458071.spchecks={c11458071.spfilter1,c11458071.spfilter1,c11458071.spfilter1,c11458071.spfilter2}
 function c11458071.spfilter1(c)
 	return c:IsRace(RACE_FAIRY) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c11458071.spfilter2(c)
 	return c:IsRace(RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK)
 end
+c11458071.spchecks={c11458071.spfilter1,c11458071.spfilter1,c11458071.spfilter1,c11458071.spfilter2}
 function c11458071.spfilter(c)
 	return ((c:IsRace(RACE_FAIRY) and c:IsAttribute(ATTRIBUTE_LIGHT)) or (c:IsRace(RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK)))
 		and c:IsAbleToRemoveAsCost()

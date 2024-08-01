@@ -35,6 +35,9 @@ end
 function c19272658.ovfilter(c)
 	return c:IsType(TYPE_XYZ) and c:IsFaceup()
 end
+function c19272658.ovfilter2(c)
+	return c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
+end
 function c19272658.ovtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c19272658.ovfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c19272658.ovfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -45,8 +48,8 @@ function c19272658.ovtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c19272658.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsType),tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and g:GetCount()>0 then
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c19272658.ovfilter2),tp,0,LOCATION_GRAVE,nil)
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.Overlay(tc,sg)

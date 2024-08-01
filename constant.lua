@@ -1,5 +1,5 @@
 --min/max value
-MIN_ID		=1000		--4 digits, by DataManager::GetDesc()
+MIN_ID		=128		--0x80, by DataManager::GetDesc()
 MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 MAX_PARAMETER	=0xffff
@@ -333,7 +333,7 @@ EFFECT_FLAG_CANNOT_INACTIVATE	=0x2000000	--發動不會被無效
 EFFECT_FLAG_CLIENT_HINT			=0x4000000	--客户端提示
 EFFECT_FLAG_CONTINUOUS_TARGET	=0x8000000	--建立持續對象的永續魔法/永續陷阱/早埋系以外的裝備魔法卡
 EFFECT_FLAG_LIMIT_ZONE			=0x10000000 --限制魔法·陷阱卡发动时可以放置的区域
-EFFECT_FLAG_COF					=0x20000000 --N/A
+EFFECT_FLAG_ACTIVATE_CONDITION	=0x20000000 --诱发效果即将发动时检查条件（手卡诱发之外的无此标记的诱发效果为触发事件时检查）
 EFFECT_FLAG_CVAL_CHECK			=0x40000000	--N/A
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用
 
@@ -807,6 +807,7 @@ HINTMSG_TOZONE			=571	--请选择要移动到的位置
 HINTMSG_COUNTER			=572	--请选择要放置指示物的卡
 HINTMSG_DISABLE			=573	--请选择要无效的卡
 HINTMSG_OPERATECARD		=574	--请选择要操作的卡
+HINTMSG_FIELD_FIRST		=575	--请选择场上的卡（按取消可选择其他区域的卡）
 --Select	--请选择
 SELECT_HEADS				=60	--正面
 SELECT_TAILS				=61	--反面
@@ -885,3 +886,4 @@ CARD_QUESTION			=38723936	--谜题
 FLAG_ID_CHAINING		=1
 FLAG_ID_UNION			=2
 FLAG_ID_NO_NORMAL_DRAW	=3
+FLAG_ID_ALLURE_QUEEN	=4

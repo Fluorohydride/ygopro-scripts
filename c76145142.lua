@@ -39,10 +39,10 @@ function c76145142.indcon(e)
 	return e:GetHandler():IsLinkState()
 end
 function c76145142.tdcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c76145142.tdcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c76145142.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0 end

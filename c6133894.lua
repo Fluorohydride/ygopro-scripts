@@ -1,5 +1,6 @@
 --デビルマゼラ
 function c6133894.initial_effect(c)
+	aux.AddCodeList(c,66073051,94585852)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

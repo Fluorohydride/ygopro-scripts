@@ -1,5 +1,6 @@
 --伝説の黒帯
 function c96458440.initial_effect(c)
+	aux.AddCodeList(c,8508055,3810071,49814180)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)

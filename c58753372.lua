@@ -61,9 +61,6 @@ end
 function c58753372.spfilter1(c,e,tp)
 	return c:IsSetCard(0xdc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c58753372.spfilter2(c)
-	return c:IsSetCard(0xdc) and c:IsType(TYPE_MONSTER)
-end
 function c58753372.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Duel.GetMatchingGroup(c58753372.spfilter1,tp,LOCATION_DECK,0,nil,e,tp)
@@ -72,7 +69,7 @@ function c58753372.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_DECK)
 end
 function c58753372.spop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c58753372.spfilter2,tp,LOCATION_DECK,0,nil)
+	local g=Duel.GetMatchingGroup(c58753372.spfilter1,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local cg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)

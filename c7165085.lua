@@ -34,7 +34,9 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tep=tc:GetControler()
 		if not te then
 			Duel.ChangePosition(tc,POS_FACEUP)
-			Duel.Destroy(tc,REASON_EFFECT)
+			if Duel.Destroy(tc,REASON_EFFECT)==0 then
+				Duel.SendtoGrave(tc,REASON_RULE)
+			end
 		else
 			local condition=te:GetCondition()
 			local cost=te:GetCost()
@@ -68,7 +70,9 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 					tg=g:GetNext()
 				end
 			else
-				Duel.Destroy(tc,REASON_EFFECT)
+				if Duel.Destroy(tc,REASON_EFFECT)==0 then
+					Duel.SendtoGrave(tc,REASON_RULE)
+				end
 			end
 		end
 	end

@@ -1,6 +1,7 @@
 --トライアングル－O
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,7903368,58996839,84384943)
 	--destroy and damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
