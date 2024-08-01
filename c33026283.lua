@@ -2,7 +2,7 @@
 function c33026283.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,85360035,aux.FilterBoolFunction(Card.IsFusionSetCard,0x14f),2,true,false)
+	aux.AddFusionProcCodeFun(c,85360035,aux.FilterBoolFunction(Card.IsFusionSetCard,0x14f),2,true,true)
 	--effect monster material check
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)

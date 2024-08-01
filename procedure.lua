@@ -864,12 +864,11 @@ function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,
 end
 
 --Fusion Summon
---material: names in material list
 
 ---Fusion monster, mixed materials (fixed count)
 ---@param fcard Card
----@param sub boolean
----@param insf boolean
+---@param sub boolean Can be fusion summoned with substitute material
+---@param insf boolean Can be fusion summoned with no material (Instant Fusion)
 ---@param ... number|function|table
 function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
@@ -920,17 +919,17 @@ function Auxiliary.FConditionMix(insf,sub,...)
 	--g:Material group(nil for Instant Fusion)
 	--gc:Material already used
 	--chkf: check field, default:PLAYER_NONE
-	--chkf&0x100: Not fusion summon
-	--chkf&0x200: Concat fusion
+	--chkf&0x100: Not fusion summon, can use substitute (Hex-Sealed Fusion)
+	--chkf&0x200: Not fusion summon, can't use substitute ("Contact Fusion", Neos Fusion)
 	local funs={...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf and Auxiliary.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf&0x100>0
-				local concat_fusion=chkfnf&0x200>0
-				local sub2=(sub or notfusion) and not concat_fusion
-				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,table.unpack(funs))
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(gc)
@@ -942,11 +941,11 @@ function Auxiliary.FOperationMix(insf,sub,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local c=e:GetHandler()
-				local notfusion=chkfnf&0x100>0
-				local concat_fusion=chkfnf&0x200>0
-				local sub2=(sub or notfusion) and not concat_fusion
-				local cancel=concat_fusion and Duel.GetCurrentChain()==0
-				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,table.unpack(funs))
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local cancel=notfusion and Duel.GetCurrentChain()==0
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,cancel,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
@@ -957,9 +956,9 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				end
 			end
 end
-function Auxiliary.FConditionFilterMix(c,fc,sub,concat_fusion,...)
-	local fusion_type=concat_fusion and SUMMON_TYPE_SPECIAL or SUMMON_TYPE_FUSION
-	if not c:IsCanBeFusionMaterial(fc,fusion_type) then return false end
+function Auxiliary.FConditionFilterMix(c,fc,sub,notfusion,...)
+	local check_type=notfusion and SUMMON_TYPE_SPECIAL or SUMMON_TYPE_FUSION
+	if not c:IsCanBeFusionMaterial(fc,check_type) then return false end
 	for i,f in ipairs({...}) do
 		if f(c,fc,sub) then return true end
 	end
@@ -983,8 +982,8 @@ end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 	local chkf=chkfnf&0xff
-	local concat_fusion=chkfnf&0x200>0
-	if not concat_fusion and sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
+	local not_fusion=chkfnf&(0x100|0x200)>0
+	if not not_fusion and sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
@@ -994,8 +993,8 @@ end
 
 ---Fusion monster, mixed material * minc to maxc + material + ...
 ---@param fcard Card
----@param sub boolean
----@param insf boolean
+---@param sub boolean Can be fusion summoned with substitute material
+---@param insf boolean Can be fusion summoned with no material (Instant Fusion)
 ---@param fun1 number|function|table
 ---@param minc integer
 ---@param maxc integer
@@ -1051,10 +1050,10 @@ function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 				if g==nil then return insf and Auxiliary.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf&0x100>0
-				local concat_fusion=chkfnf&0x200>0
-				local sub2=(sub or notfusion) and not concat_fusion
-				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,fun1,table.unpack(funs))
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,fun1,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
 					local sg=Group.CreateGroup()
@@ -1069,11 +1068,11 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf&0x100>0
-				local concat_fusion=chkfnf&0x200>0
-				local sub2=(sub or notfusion) and not concat_fusion
-				local cancel=concat_fusion and Duel.GetCurrentChain()==0
-				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,concat_fusion,fun1,table.unpack(funs))
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local cancel=notfusion and Duel.GetCurrentChain()==0
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
 				if gc then sg:AddCard(gc) end
 				while sg:GetCount()<maxc+#funs do
@@ -1117,8 +1116,8 @@ function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...
 	return false
 end
 function Auxiliary.FCheckMixRepGoalCheck(tp,sg,fc,chkfnf)
-	local concat_fusion=chkfnf&0x200>0
-	if not concat_fusion and sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
+	local not_fusion=chkfnf&(0x100|0x200)>0
+	if not not_fusion and sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	if Auxiliary.FGoalCheckAdditional and not Auxiliary.FGoalCheckAdditional(tp,sg,fc) then return false end
 	return true

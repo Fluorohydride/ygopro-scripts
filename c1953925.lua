@@ -48,6 +48,7 @@ function c1953925.disop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	if not rc:IsType(TYPE_TRAP) then return end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
+	if not e:GetHandler():IsRelateToEffect(re) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if g and g:IsContains(e:GetHandler()) then
 		if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then

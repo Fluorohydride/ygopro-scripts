@@ -15,7 +15,7 @@ function c50140163.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCountLimit(1)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e2:SetCondition(c50140163.eqcon1)
 	e2:SetTarget(c50140163.eqtg)
 	e2:SetOperation(c50140163.eqop)
@@ -36,11 +36,11 @@ function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50140163.eqcon1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) and not aux.IsCanBeQuickEffect(c,tp,95937545)
 end
 function c50140163.eqcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,id) and Duel.IsPlayerAffectedByEffect(tp,95937545)
+	return c:GetFlagEffect(id+1)>0 and not aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) and aux.IsCanBeQuickEffect(c,tp,95937545)
 end
 function c50140163.filter(c)
 	return c:IsAbleToChangeControler()
@@ -66,7 +66,7 @@ function c50140163.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if def<0 then def=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,0)
+		tc:RegisterFlagEffect(FLAG_ID_ALLURE_QUEEN,RESET_EVENT+RESETS_STANDARD,0,0,id)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)

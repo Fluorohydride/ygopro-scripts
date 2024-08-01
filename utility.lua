@@ -3,6 +3,7 @@ aux=Auxiliary
 POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
+NULL_VALUE=-10
 
 function GetID()
 	local offset=self_code<100000000 and 1 or 100
@@ -548,38 +549,130 @@ end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
 end
---return the column of card c (from the viewpoint of p)
-function Auxiliary.GetColumn(c,p)
-	local seq=c:GetSequence()
-	if c:IsLocation(LOCATION_MZONE) then
-		if seq==5 then
-			seq=1
-		elseif seq==6 then
-			seq=3
+--Get the row index (from the viewpoint of controller)
+function Auxiliary.GetLocalRow(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return 0
+		else
+			return NULL_VALUE
 		end
-	elseif c:IsLocation(LOCATION_SZONE) then
-		if seq>4 then
-			return nil
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return 1
+		elseif 5<=sequence and sequence<=6 then
+			return 2
+		else
+			return NULL_VALUE
 		end
 	else
-		return nil
+		return NULL_VALUE
 	end
-	if c:IsControler(p or 0) then
-		return seq
+end
+--Get the global row index (from the viewpoint of 0)
+function Auxiliary.GetGlobalRow(p,location,sequence)
+	local row=Auxiliary.GetLocalRow(location,sequence)
+	if row<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return row
 	else
-		return 4-seq
+		return 4-row
+	end
+end
+--Get the column index (from the viewpoint of controller)
+function Auxiliary.GetLocalColumn(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		else
+			return NULL_VALUE
+		end
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		elseif sequence==5 then
+			return 1
+		elseif sequence==6 then
+			return 3
+		else
+			return NULL_VALUE
+		end
+	else
+		return NULL_VALUE
+	end
+end
+--Get the global column index (from the viewpoint of 0)
+function Auxiliary.GetGlobalColumn(p,location,sequence)
+	local column=Auxiliary.GetLocalColumn(location,sequence)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
+	end
+end
+---Get the global row and column index of c
+---@param c Card
+---@return integer
+---@return integer
+function Auxiliary.GetFieldIndex(c)
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	return Auxiliary.GetGlobalRow(cp,loc,seq),Auxiliary.GetGlobalColumn(cp,loc,seq)
+end
+---Check if c is adjacent to (i,j)
+---@param c Card
+---@param i integer
+---@param j integer
+---@return boolean
+function Auxiliary.AdjacentFilter(c,i,j)
+	local row,column=Auxiliary.GetFieldIndex(c)
+	if row<0 or column<0 then
+		return false
+	end
+	return (row==i and math.abs(column-j)==1) or (math.abs(row-i)==1 and column==j)
+end
+---Get the card group adjacent to (i,j)
+---@param tp integer
+---@param location1 integer
+---@param location2 integer
+---@param i integer
+---@param j integer
+---@return Group
+function Auxiliary.GetAdjacentGroup(tp,location1,location2,i,j)
+	return Duel.GetMatchingGroup(Auxiliary.AdjacentFilter,tp,location1,location2,nil,i,j)
+end
+---Get the column index of card c (from the viewpoint of p)
+---@param c Card
+---@param p? integer default: 0
+---@return integer
+function Auxiliary.GetColumn(c,p)
+	p=p or 0
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	local column=Auxiliary.GetGlobalColumn(cp,loc,seq)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
 	end
 end
 --return the column of monster zone seq (from the viewpoint of controller)
 function Auxiliary.MZoneSequence(seq)
-	if seq==5 then return 1 end
-	if seq==6 then return 3 end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_MZONE,seq)
 end
 --return the column of spell/trap zone seq (from the viewpoint of controller)
 function Auxiliary.SZoneSequence(seq)
-	if seq>4 then return nil end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_SZONE,seq)
 end
 --generate the value function of EFFECT_CHANGE_BATTLE_DAMAGE on monsters
 function Auxiliary.ChangeBattleDamage(player,value)
@@ -1645,4 +1738,30 @@ end
 ---@return boolean
 function Auxiliary.IsSelfEquip(c,id)
 	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
+end
+---Orcustrated Babel
+---@param c Card
+---@return boolean
+function Auxiliary.OrcustratedBabelFilter(c)
+	return c:IsOriginalSetCard(0x11b) and
+		(c:IsLocation(LOCATION_MZONE) and c:IsAllTypes(TYPE_LINK+TYPE_MONSTER) or c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER))
+end
+---Golden Allure Queen
+---@param c Card
+---@return boolean
+function Auxiliary.GoldenAllureQueenFilter(c)
+	return c:IsOriginalSetCard(0x3)
+end
+--The table of all "become quick effects"
+Auxiliary.quick_effect_filter={}
+Auxiliary.quick_effect_filter[90351981]=Auxiliary.OrcustratedBabelFilter
+Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
+---Check if the effect of c becomes a Quick Effect.
+---@param c Card
+---@param tp integer
+---@param code integer
+---@return boolean
+function Auxiliary.IsCanBeQuickEffect(c,tp,code)
+	local filter=Auxiliary.quick_effect_filter[code]
+	return Duel.IsPlayerAffectedByEffect(tp,code)~=nil and filter~=nil and filter(c)
 end

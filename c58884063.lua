@@ -61,9 +61,12 @@ end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
-		local cg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,1-tc:GetControler(),tc:GetSequence())
-		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLP(tp)<Duel.GetLP(1-tp) and #cg>0
-			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+		local row,column=aux.GetFieldIndex(tc)
+		if Duel.Destroy(tc,REASON_EFFECT)==0 or row<0 or column<0 then
+			return
+		end
+		local cg=aux.GetAdjacentGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD,row,column)
+		if Duel.GetLP(tp)<Duel.GetLP(1-tp) and #cg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
 			Duel.Destroy(cg,REASON_EFFECT)
 		end

@@ -34,10 +34,12 @@ function c87257460.initial_effect(c)
 end
 c87257460.lvup={23756165}
 function c87257460.eqcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsSelfEquip(e:GetHandler(),id) and not Duel.IsPlayerAffectedByEffect(tp,95937545)
+	local c=e:GetHandler()
+	return not aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) and not aux.IsCanBeQuickEffect(c,tp,95937545)
 end
 function c87257460.eqcon2(e,tp,eg,ep,ev,re,r,rp)
-	return not aux.IsSelfEquip(e:GetHandler(),id) and Duel.IsPlayerAffectedByEffect(tp,95937545)
+	local c=e:GetHandler()
+	return not aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) and aux.IsCanBeQuickEffect(c,tp,95937545)
 end
 function c87257460.filter(c)
 	return c:IsLevelBelow(3) and c:IsFaceup() and c:IsAbleToChangeControler()
@@ -59,7 +61,7 @@ function c87257460.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,0)
+		tc:RegisterFlagEffect(FLAG_ID_ALLURE_QUEEN,RESET_EVENT+RESETS_STANDARD,0,0,id)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
@@ -80,7 +82,7 @@ function c87257460.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c87257460.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and aux.IsSelfEquip(e:GetHandler(),id)
+	return Duel.GetTurnPlayer()==tp and aux.IsSelfEquip(e:GetHandler(),FLAG_ID_ALLURE_QUEEN)
 end
 function c87257460.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
