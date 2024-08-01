@@ -1,7 +1,7 @@
 --魔を刻むデモンスミス
 local s,id,o=GetID()
 function s.initial_effect(c)
-	--
+	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -12,7 +12,7 @@ function s.initial_effect(c)
 	e1:SetTarget(s.thtg)
 	e1:SetOperation(s.thop)
 	c:RegisterEffect(e1)
-	--
+	--to grave
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
@@ -24,7 +24,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.tgtg)
 	e2:SetOperation(s.tgop)
 	c:RegisterEffect(e2)
-	--
+	--spsummon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -63,9 +63,9 @@ function s.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(s.tgfilter,tp,LOCATION_SZONE,0,1,nil)
 		and Duel.IsExistingTarget(Card.IsAbleToGrave,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g1=Duel.SelectTarget(tp,s.tgfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g2=Duel.SelectTarget(tp,Card.IsAbleToGrave,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	g1:Merge(g2)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g1,g1:GetCount(),0,0)
