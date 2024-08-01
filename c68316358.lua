@@ -16,6 +16,7 @@ function s.initial_effect(c)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
+	e2:SetTarget(s.atktg)
 	e2:SetValue(s.val)
 	c:RegisterEffect(e2)
 	--spsummon
@@ -46,11 +47,16 @@ function s.atkfilter(c,code)
 	return c:IsFaceup() and bit.band(c:GetOriginalType(),TYPE_MONSTER)==TYPE_MONSTER
 		and c:GetFlagEffect(code)~=0
 end
+function s.atktg(e,c)
+	return c:IsSetCard(0x3)
+end
 function s.val(e,c)
-	local g=c:GetEquipGroup():Filter(s.atkfilter,nil,c:GetCode())
+	local g=c:GetEquipGroup():Filter(s.atkfilter,nil,FLAG_ID_ALLURE_QUEEN)
 	if g:GetCount()>0 then
 		return g:GetSum(Card.GetBaseAttack)
-	else return 0 end
+	else
+		return 0
+	end
 end
 function s.spcfilter(c,tp)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

@@ -51,9 +51,9 @@ function s.costfilter(c,code)
 	return c:GetFlagEffect(code)~=0
 end
 function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local qg=e:GetHandler():GetEquipGroup()
-	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() and qg:IsExists(s.costfilter,1,nil,e:GetHandler():GetCode())  end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsAbleToGraveAsCost() and aux.IsSelfEquip(c,FLAG_ID_ALLURE_QUEEN) end
+	Duel.SendtoGrave(c,REASON_COST)
 end
 function s.spfilter(c,e,tp)
 	return c:IsAttackBelow(1500) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
