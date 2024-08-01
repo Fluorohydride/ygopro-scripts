@@ -22,6 +22,7 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
 	e2:SetCondition(s.aucon)
+	e2:SetTarget(s.autarget)
 	e2:SetOperation(s.auop)
 	c:RegisterEffect(e2)
 	--to deck
@@ -50,6 +51,9 @@ function s.spcon(e,c)
 end
 function s.aucon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
+end
+function s.autarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return rp==1-tp end
 end
 function s.auop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
