@@ -62,7 +62,7 @@ function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c19089195.econ(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055) and not Duel.IsPlayerAffectedByEffect(tp,19089195)
 end
 function c19089195.costfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToRemoveAsCost()
@@ -89,6 +89,13 @@ function c19089195.retop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ReturnToField(e:GetLabelObject())
 end
 function c19089195.remop(e,tp,eg,ep,ev,re,r,rp)
+	local e0=Effect.CreateEffect(e:GetHandler())
+	e0:SetType(EFFECT_TYPE_FIELD)
+	e0:SetCode(19089195)
+	e0:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e0:SetTargetRange(1,0)
+	e0:SetReset(RESET_PHASE+PHASE_END)
+	Duel.RegisterEffect(e0,tp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
