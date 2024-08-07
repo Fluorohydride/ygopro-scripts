@@ -10,6 +10,7 @@ function c9113513.initial_effect(c)
 	e1:SetOperation(c9113513.activate)
 	c:RegisterEffect(e1)
 end
+c9113513.fusion_effect=true
 function c9113513.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end

@@ -46,6 +46,7 @@ function s.initial_effect(c)
 	e5:SetOperation(s.atkop)
 	c:RegisterEffect(e5)
 end
+s.fusion_effect=true
 function s.cfilter(c,e,tp)
 	return c:IsFaceupEx() and c:IsAbleToGraveAsCost() and c:IsType(TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)

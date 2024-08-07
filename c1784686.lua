@@ -18,6 +18,7 @@ function c1784686.initial_effect(c)
 	e2:SetValue(10000050)
 	c:RegisterEffect(e2)
 end
+c1784686.fusion_effect=true
 function c1784686.tgfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10a2) and c:IsCanBeFusionMaterial()
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_FMATERIAL)

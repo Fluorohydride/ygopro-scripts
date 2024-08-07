@@ -23,6 +23,7 @@ function c65037172.initial_effect(c)
 	e2:SetOperation(c65037172.thop)
 	c:RegisterEffect(e2)
 end
+c65037172.fusion_effect=true
 function c65037172.filter1(c,e)
 	return c:IsOnField() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end

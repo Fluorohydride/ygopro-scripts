@@ -27,6 +27,7 @@ function c65331686.initial_effect(c)
 	e3:SetOperation(c65331686.operation)
 	c:RegisterEffect(e3)
 end
+c65331686.fusion_effect=true
 function c65331686.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end

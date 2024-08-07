@@ -35,6 +35,7 @@ function c77522571.initial_effect(c)
 	e3:SetOperation(c77522571.spop3)
 	c:RegisterEffect(e3)
 end
+c77522571.fusion_effect=true
 function c77522571.costfilter1(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0xa9,0xad,0xc3)
 		and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())

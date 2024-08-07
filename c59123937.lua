@@ -30,6 +30,7 @@ function c59123937.initial_effect(c)
 	e1:SetOperation(c59123937.operation)
 	c:RegisterEffect(e1)
 end
+c59123937.fusion_effect=true
 function c59123937.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xaf) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xaf)
