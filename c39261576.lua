@@ -23,6 +23,7 @@ function c39261576.initial_effect(c)
 	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 end
+c39261576.fusion_effect=true
 function c39261576.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end

@@ -11,6 +11,7 @@ function c79059098.initial_effect(c)
 	e1:SetOperation(c79059098.activate)
 	c:RegisterEffect(e1)
 end
+c79059098.fusion_effect=true
 function c79059098.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end

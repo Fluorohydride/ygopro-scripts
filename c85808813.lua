@@ -24,6 +24,7 @@ function c85808813.initial_effect(c)
 	e2:SetOperation(c85808813.spop)
 	c:RegisterEffect(e2)
 end
+c85808813.fusion_effect=true
 function c85808813.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x149) and c:IsType(TYPE_FUSION) and c:IsReleasableByEffect()
 		and Duel.IsExistingMatchingCard(c85808813.ffilter,tp,LOCATION_EXTRA,0,1,nil,c:GetOriginalLevel(),e,tp,c)

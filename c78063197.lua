@@ -22,6 +22,7 @@ function c78063197.initial_effect(c)
 	e2:SetOperation(c78063197.eqop)
 	c:RegisterEffect(e2)
 end
+c78063197.fusion_effect=true
 function c78063197.filter0(c)
 	return c:IsAbleToRemove()
 end

@@ -29,6 +29,7 @@ function c47705572.initial_effect(c)
 	e3:SetTarget(c47705572.ptg)
 	c:RegisterEffect(e3)
 end
+c47705572.fusion_effect=true
 function c47705572.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return not (c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER)) and bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end

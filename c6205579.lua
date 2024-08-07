@@ -23,6 +23,7 @@ function c6205579.initial_effect(c)
 	e3:SetOperation(c6205579.spop)
 	c:RegisterEffect(e3)
 end
+c6205579.fusion_effect=true
 function c6205579.subcon(e)
 	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 end

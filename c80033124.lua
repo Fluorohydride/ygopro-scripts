@@ -1,6 +1,5 @@
 --サイバーダーク・インパクト！
 function c80033124.initial_effect(c)
-	aux.AddCodeList(c,41230939,77625948,3019642)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -10,6 +9,7 @@ function c80033124.initial_effect(c)
 	e1:SetOperation(c80033124.activate)
 	c:RegisterEffect(e1)
 end
+c80033124.fusion_effect=true
 c80033124.fchecks=aux.CreateChecks(Card.IsFusionCode,{41230939,77625948,3019642})
 function c80033124.ffilter0(c)
 	return c:IsFusionCode(41230939,77625948,3019642) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()
