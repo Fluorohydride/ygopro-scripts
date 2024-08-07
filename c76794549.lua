@@ -49,6 +49,7 @@ function c76794549.initial_effect(c)
 		Duel.RegisterEffect(ge2,0)
 	end
 end
+c76794549.fusion_effect=true
 c76794549.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
 function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()

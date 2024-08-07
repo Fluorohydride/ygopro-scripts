@@ -9,6 +9,7 @@ function c65801012.initial_effect(c)
 	e1:SetOperation(c65801012.activate)
 	c:RegisterEffect(e1)
 end
+c65801012.fusion_effect=true
 function c65801012.cfilter(c)
 	return c:GetSequence()>=5
 end

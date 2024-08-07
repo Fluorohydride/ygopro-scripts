@@ -11,6 +11,7 @@ function c58657303.initial_effect(c)
 	e1:SetOperation(c58657303.operation)
 	c:RegisterEffect(e1)
 end
+c58657303.fusion_effect=true
 function c58657303.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(47355498)
 end

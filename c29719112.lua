@@ -34,6 +34,7 @@ function c29719112.initial_effect(c)
 	e3:SetOperation(c29719112.thop)
 	c:RegisterEffect(e3)
 end
+c29719112.fusion_effect=true
 function c29719112.spfilter(c,tp)
 	return c:IsRace(RACE_MACHINE)
 		and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())

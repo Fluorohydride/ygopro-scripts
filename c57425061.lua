@@ -10,6 +10,7 @@ function c57425061.initial_effect(c)
 	e1:SetOperation(c57425061.activate)
 	c:RegisterEffect(e1)
 end
+c57425061.fusion_effect=true
 function c57425061.cfilter(c)
 	return c:IsFaceup() and c:GetSequence()<5
 		and c:IsType(TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:GetOriginalType()&TYPE_MONSTER==TYPE_MONSTER

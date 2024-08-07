@@ -20,6 +20,7 @@ function c45206713.initial_effect(c)
 	e2:SetOperation(c45206713.spop)
 	c:RegisterEffect(e2)
 end
+c45206713.fusion_effect=true
 function c45206713.filter1(c,e)
 	return c:IsLocation(LOCATION_HAND) and not c:IsImmuneToEffect(e)
 end

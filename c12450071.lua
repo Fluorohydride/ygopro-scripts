@@ -27,6 +27,7 @@ function c12450071.initial_effect(c)
 	e2:SetOperation(c12450071.spop)
 	c:RegisterEffect(e2)
 end
+c12450071.fusion_effect=true
 function c12450071.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
