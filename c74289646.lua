@@ -11,6 +11,7 @@ function c74289646.initial_effect(c)
 	e1:SetOperation(c74289646.operation)
 	c:RegisterEffect(e1)
 end
+c74289646.toss_dice=true
 function c74289646.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local cl=Duel.GetCurrentChain()
 	if chk==0 then return true end

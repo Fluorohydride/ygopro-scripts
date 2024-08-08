@@ -39,13 +39,13 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-		Duel.BreakEffect()
-		if Duel.CheckRemoveOverlayCard(tp,1,1,1,REASON_EFFECT) and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) then
-			if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(id,2)) then
-				Duel.RemoveOverlayCard(tp,1,1,1,1,REASON_EFFECT)
-				local sg=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-				Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
-			end
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+			and Duel.CheckRemoveOverlayCard(tp,1,1,1,REASON_EFFECT)
+			and Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(id,2)) then
+			Duel.BreakEffect()
+			Duel.RemoveOverlayCard(tp,1,1,1,1,REASON_EFFECT)
+			local sg=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
+			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 end
