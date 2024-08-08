@@ -36,6 +36,10 @@ function c4064925.initial_effect(c)
 		ge3:SetCode(EVENT_SPSUMMON_SUCCESS)
 		ge3:SetCondition(c4064925.ssetcon)
 		Duel.RegisterEffect(ge3,0)
+		local ge4=ge1:Clone()
+		ge4:SetCode(EVENT_CHANGE_POS)
+		ge4:SetCondition(c4064925.cpcon)
+		Duel.RegisterEffect(ge4,0)	
 	end
 end
 function c4064925.checkop(e,tp,eg,ep,ev,re,r,rp)
@@ -46,6 +50,12 @@ function c4064925.cfilter(c)
 end
 function c4064925.ssetcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c4064925.cfilter,1,nil)
+end
+function c4064925.cfilter2(c)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsFacedown()
+end
+function c4064925.cpcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c4064925.cfilter2,1,nil)
 end
 function c4064925.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,4064925)==0 end
