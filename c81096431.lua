@@ -177,7 +177,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsSetCard(0x12b7) and c:IsType(TYPE_XYZ)
+	return c:IsSetCard(0x11b8) and c:IsType(TYPE_XYZ)
 end
 function s.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsCanOverlay()
