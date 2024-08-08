@@ -38,7 +38,7 @@ function c69831560.spcon(e,c)
 	return mg:CheckSubGroup(aux.mzctcheck,3,3,tp)
 end
 function c69831560.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local mg=Duel.GetMatchingGroup(c69831560.filter,tp,LOCATION_MZONE,0,nil)
+	local mg=Duel.GetMatchingGroup(c69831560.spfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=mg:SelectSubGroup(tp,aux.mzctcheck,true,3,3,tp)
 	if sg then
@@ -49,7 +49,7 @@ function c69831560.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c69831560.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c69831560.cointg(e,tp,eg,ep,ev,re,r,rp,chk)

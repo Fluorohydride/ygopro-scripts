@@ -1,6 +1,6 @@
 --夢魔鏡の聖獣－パンタス
 function c62393472.initial_effect(c)
-	aux.AddCodeList(c,1050355)
+	aux.AddCodeList(c,1050355,99792080)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(62393472,0))

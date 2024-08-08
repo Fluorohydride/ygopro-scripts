@@ -14,6 +14,7 @@ function c35699.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c35699.sprcon)
+	e1:SetTarget(c35699.sprtg)
 	e1:SetOperation(c35699.sprop)
 	c:RegisterEffect(e1)
 	--Destroy
@@ -49,10 +50,20 @@ function c35699.sprcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c35699.sprfilter,tp,LOCATION_GRAVE,0,3,nil)
 end
-function c35699.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c35699.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c35699.sprfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c35699.sprfilter,tp,LOCATION_GRAVE,0,3,3,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local sg=g:CancelableSelect(tp,3,3,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c35699.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c35699.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xee)

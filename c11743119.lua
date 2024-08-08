@@ -13,6 +13,7 @@ function c11743119.initial_effect(c)
 	e1:SetOperation(c11743119.eqop)
 	c:RegisterEffect(e1)
 end
+c11743119.has_text_type=TYPE_UNION
 function c11743119.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=e:GetLabelObject()

@@ -1,6 +1,7 @@
 --地縛囚人 ライン・ウォーカー
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,71089030,7473735)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))

@@ -14,6 +14,7 @@ function c79407975.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c79407975.spcon)
+	e2:SetTarget(c79407975.sptg)
 	e2:SetOperation(c79407975.spop)
 	c:RegisterEffect(e2)
 	--atkup
@@ -36,13 +37,22 @@ function c79407975.spcon(e,c)
 	local ct=g:GetClassCount(Card.GetCode)
 	return ct>=7
 end
-function c79407975.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c79407975.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c79407975.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	aux.GCheckAdditional=aux.dncheck
-	local rg=g:SelectSubGroup(tp,aux.TRUE,false,7,7)
+	local sg=g:SelectSubGroup(tp,aux.TRUE,true,7,7)
 	aux.GCheckAdditional=nil
-	Duel.Remove(rg,POS_FACEUP,REASON_COST)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c79407975.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local rg=e:GetLabelObject()
+	Duel.Remove(rg,POS_FACEUP,REASON_SPSUMMON)
+	rg:DeleteGroup()
 end
 function c79407975.cfilter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())

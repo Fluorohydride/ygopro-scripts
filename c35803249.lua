@@ -16,6 +16,7 @@ function c35803249.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c35803249.spcon)
+	e2:SetTarget(c35803249.sptg)
 	e2:SetOperation(c35803249.spop)
 	c:RegisterEffect(e2)
 	--cannot trigger
@@ -77,10 +78,18 @@ function c35803249.spcon(e,c)
 	if c==nil then return true end
 	return Duel.IsExistingMatchingCard(c35803249.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetControler())
 end
-function c35803249.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c35803249.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c35803249.spfilter,tp,LOCATION_MZONE,0,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c35803249.spfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	Duel.SendtoGrave(g,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c35803249.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 end
 function c35803249.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_TRAP)

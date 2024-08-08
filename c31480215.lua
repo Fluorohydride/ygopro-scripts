@@ -6,7 +6,7 @@ function c31480215.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e1:SetCondition(c31480215.indcon)
+	e1:SetCondition(aux.tkfcon)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
@@ -32,9 +32,6 @@ function c31480215.initial_effect(c)
 	e4:SetCost(c31480215.lvcost)
 	e4:SetOperation(c31480215.lvop)
 	c:RegisterEffect(e4)
-end
-function c31480215.indcon(e)
-	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c31480215.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO

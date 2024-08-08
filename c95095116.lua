@@ -30,6 +30,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
+c95095116.material_type=TYPE_SYNCHRO
 function s.mfilter(c)
 	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE)
 end

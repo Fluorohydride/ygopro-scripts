@@ -51,7 +51,7 @@ function c276357.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c276357.filter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsControler(tp) and c:IsType(TYPE_SPIRIT)
+		and c:IsControler(tp) and c:GetPreviousTypeOnField()&TYPE_SPIRIT>0
 end
 function c276357.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c276357.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)

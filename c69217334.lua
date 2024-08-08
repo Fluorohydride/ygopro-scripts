@@ -32,7 +32,7 @@ function c69217334.lvfilter(c,tp)
 end
 function c69217334.lvcfilter(c,mc)
 	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
-		and (not mc or not c:IsLevel(mc:GetLevel()))
+		and not c:IsLevel(mc:GetLevel())
 end
 function c69217334.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c69217334.lvfilter(chkc,tp) end
@@ -43,10 +43,9 @@ end
 function c69217334.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	local ec=tc
-	if not tc:IsRelateToEffect(e) then ec=nil end
+	if not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local cg=Duel.SelectMatchingCard(tp,c69217334.lvcfilter,tp,LOCATION_HAND,0,1,1,nil,ec)
+	local cg=Duel.SelectMatchingCard(tp,c69217334.lvcfilter,tp,LOCATION_HAND,0,1,1,nil,tc)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 		local pc=cg:GetFirst()

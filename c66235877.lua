@@ -40,7 +40,8 @@ function c66235877.distg(e,c)
 end
 function c66235877.disop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsActiveType(TYPE_FLIP) then Duel.NegateEffect(ev) end
-	if re:IsActiveType(TYPE_TRAP) and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
+	if e:GetHandler():IsRelateToEffect(re)
+		and re:IsActiveType(TYPE_TRAP) and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
 		local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 		if g and g:IsContains(e:GetHandler()) then
 			Duel.NegateEffect(ev)

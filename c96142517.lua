@@ -74,7 +74,8 @@ function c96142517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c96142517.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,rk+1,tg)
 	local sc=g:GetFirst()
 	if sc then
-		Duel.Overlay(sc,mg)
+		local og=mg:Filter(Card.IsCanOverlay,nil)
+		Duel.Overlay(sc,og)
 		Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

@@ -88,7 +88,7 @@ function c14457896.atlimit(e,c)
 	return c:IsRace(RACE_INSECT) and c:IsFaceup()
 end
 function c14457896.disfilter(c,re)
-	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsRelateToEffect(re)
+	return c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsRelateToEffect(re)
 end
 function c14457896.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

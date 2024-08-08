@@ -85,10 +85,14 @@ function c57450198.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57450198.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c57450198.mtfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,e)
 	if g:GetCount()>0 then
+		local mg=g:GetFirst():GetOverlayGroup()
+		if mg:GetCount()>0 then
+			Duel.SendtoGrave(mg,REASON_RULE)
+		end
 		Duel.Overlay(c,g)
 	end
 end

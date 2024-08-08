@@ -3,6 +3,7 @@ aux=Auxiliary
 POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
+NULL_VALUE=-10
 
 function GetID()
 	local offset=self_code<100000000 and 1 or 100
@@ -147,7 +148,7 @@ end
 ---Return value starts from 1, different from Duel.SelectOption
 ---@param tp integer
 ---@param ... table {condition, option[, value]}
----@return integer|nil
+---@return integer
 function Auxiliary.SelectFromOptions(tp,...)
 	local options={...}
 	local ops={}
@@ -548,38 +549,130 @@ end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
 end
---return the column of card c (from the viewpoint of p)
-function Auxiliary.GetColumn(c,p)
-	local seq=c:GetSequence()
-	if c:IsLocation(LOCATION_MZONE) then
-		if seq==5 then
-			seq=1
-		elseif seq==6 then
-			seq=3
+--Get the row index (from the viewpoint of controller)
+function Auxiliary.GetLocalRow(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return 0
+		else
+			return NULL_VALUE
 		end
-	elseif c:IsLocation(LOCATION_SZONE) then
-		if seq>4 then
-			return nil
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return 1
+		elseif 5<=sequence and sequence<=6 then
+			return 2
+		else
+			return NULL_VALUE
 		end
 	else
-		return nil
+		return NULL_VALUE
 	end
-	if c:IsControler(p or 0) then
-		return seq
+end
+--Get the global row index (from the viewpoint of 0)
+function Auxiliary.GetGlobalRow(p,location,sequence)
+	local row=Auxiliary.GetLocalRow(location,sequence)
+	if row<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return row
 	else
-		return 4-seq
+		return 4-row
+	end
+end
+--Get the column index (from the viewpoint of controller)
+function Auxiliary.GetLocalColumn(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		else
+			return NULL_VALUE
+		end
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		elseif sequence==5 then
+			return 1
+		elseif sequence==6 then
+			return 3
+		else
+			return NULL_VALUE
+		end
+	else
+		return NULL_VALUE
+	end
+end
+--Get the global column index (from the viewpoint of 0)
+function Auxiliary.GetGlobalColumn(p,location,sequence)
+	local column=Auxiliary.GetLocalColumn(location,sequence)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
+	end
+end
+---Get the global row and column index of c
+---@param c Card
+---@return integer
+---@return integer
+function Auxiliary.GetFieldIndex(c)
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	return Auxiliary.GetGlobalRow(cp,loc,seq),Auxiliary.GetGlobalColumn(cp,loc,seq)
+end
+---Check if c is adjacent to (i,j)
+---@param c Card
+---@param i integer
+---@param j integer
+---@return boolean
+function Auxiliary.AdjacentFilter(c,i,j)
+	local row,column=Auxiliary.GetFieldIndex(c)
+	if row<0 or column<0 then
+		return false
+	end
+	return (row==i and math.abs(column-j)==1) or (math.abs(row-i)==1 and column==j)
+end
+---Get the card group adjacent to (i,j)
+---@param tp integer
+---@param location1 integer
+---@param location2 integer
+---@param i integer
+---@param j integer
+---@return Group
+function Auxiliary.GetAdjacentGroup(tp,location1,location2,i,j)
+	return Duel.GetMatchingGroup(Auxiliary.AdjacentFilter,tp,location1,location2,nil,i,j)
+end
+---Get the column index of card c (from the viewpoint of p)
+---@param c Card
+---@param p? integer default: 0
+---@return integer
+function Auxiliary.GetColumn(c,p)
+	p=p or 0
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	local column=Auxiliary.GetGlobalColumn(cp,loc,seq)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
 	end
 end
 --return the column of monster zone seq (from the viewpoint of controller)
 function Auxiliary.MZoneSequence(seq)
-	if seq==5 then return 1 end
-	if seq==6 then return 3 end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_MZONE,seq)
 end
 --return the column of spell/trap zone seq (from the viewpoint of controller)
 function Auxiliary.SZoneSequence(seq)
-	if seq>4 then return nil end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_SZONE,seq)
 end
 --generate the value function of EFFECT_CHANGE_BATTLE_DAMAGE on monsters
 function Auxiliary.ChangeBattleDamage(player,value)
@@ -728,6 +821,11 @@ function Auxiliary.MaterialReasonCardReg(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local te=e:GetLabelObject()
 	c:GetReasonCard():CreateEffectRelation(te)
+end
+--the player tp has token on the field
+function Auxiliary.tkfcon(e,tp)
+	if tp==nil and e~=nil then tp=e:GetHandlerPlayer() end
+	return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_TOKEN)
 end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
@@ -1105,7 +1203,7 @@ end
 ---@param min? integer
 ---@param max? integer
 ---@param ... any
----@return Group|nil
+---@return Group
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
@@ -1203,7 +1301,7 @@ end
 ---@param cancelable? boolean
 ---@param f? function
 ---@param ... any
----@return Group|nil
+---@return Group
 function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
@@ -1228,6 +1326,42 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	else
 		return nil
 	end
+end
+--for effects that player usually select card from field, avoid showing panel
+function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,table.unpack(ext_params))
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
+end
+function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local ext_params={...}
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,table.unpack(ext_params)):Filter(Card.IsCanBeEffectTarget,nil)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			Duel.SetTargetCard(sg)
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
 end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
@@ -1524,6 +1658,60 @@ function Auxiliary.GiveUpNormalDraw(e,tp,property)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,FLAG_ID_NO_NORMAL_DRAW,RESET_PHASE+PHASE_DRAW,property,1)
 end
+---Add EFFECT_TYPE_ACTIVATE effect to Equip Spell Cards
+---@param c Card
+---@param is_self boolean
+---@param is_opponent boolean
+---@param filter function
+---@param eqlimit function|nil
+---@param pause? boolean
+---@param skip_target? boolean
+function Auxiliary.AddEquipSpellEffect(c,is_self,is_opponent,filter,eqlimit,pause,skip_target)
+	local value=(type(eqlimit)=="function") and eqlimit or 1
+	if pause==nil then pause=false end
+	if skip_target==nil then skip_target=false end
+	--Activate
+	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_EQUIP)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
+	if not skip_target then
+		e1:SetTarget(Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit))
+	end
+	e1:SetOperation(Auxiliary.EquipSpellOperation(eqlimit))
+	if not pause then
+		c:RegisterEffect(e1)
+	end
+	--Equip limit
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_EQUIP_LIMIT)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetValue(value)
+	c:RegisterEffect(e2)
+	return e1
+end
+function Auxiliary.EquipSpellTarget(is_self,is_opponent,filter,eqlimit)
+	local loc1=is_self and LOCATION_MZONE or 0
+	local loc2=is_opponent and LOCATION_MZONE or 0
+	return function(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+		if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() and (not eqlimit or eqlimit(e,chkc)) end
+		if chk==0 then return Duel.IsExistingTarget(filter,tp,loc1,loc2,1,nil) end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+		Duel.SelectTarget(tp,filter,tp,loc1,loc2,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	end
+end
+function Auxiliary.EquipSpellOperation(eqlimit)
+	return function (e,tp,eg,ep,ev,re,r,rp)
+		local c=e:GetHandler()
+		local tc=Duel.GetFirstTarget()
+		if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() and (not eqlimit or eqlimit(e,tc)) then
+			Duel.Equip(tp,c,tc)
+		end
+	end
+end
 ---If this face-up card would leave the field, banish it instead.
 ---@param c Card
 ---@param condition? function
@@ -1543,4 +1731,37 @@ end
 ---@param e Effect
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
+end
+---Check if c has a equip card equipped by the effect of itself.
+---@param c Card
+---@param id integer
+---@return boolean
+function Auxiliary.IsSelfEquip(c,id)
+	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
+end
+---Orcustrated Babel
+---@param c Card
+---@return boolean
+function Auxiliary.OrcustratedBabelFilter(c)
+	return c:IsOriginalSetCard(0x11b) and
+		(c:IsLocation(LOCATION_MZONE) and c:IsAllTypes(TYPE_LINK+TYPE_MONSTER) or c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER))
+end
+---Golden Allure Queen
+---@param c Card
+---@return boolean
+function Auxiliary.GoldenAllureQueenFilter(c)
+	return c:IsOriginalSetCard(0x3)
+end
+--The table of all "become quick effects"
+Auxiliary.quick_effect_filter={}
+Auxiliary.quick_effect_filter[90351981]=Auxiliary.OrcustratedBabelFilter
+Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
+---Check if the effect of c becomes a Quick Effect.
+---@param c Card
+---@param tp integer
+---@param code integer
+---@return boolean
+function Auxiliary.IsCanBeQuickEffect(c,tp,code)
+	local filter=Auxiliary.quick_effect_filter[code]
+	return Duel.IsPlayerAffectedByEffect(tp,code)~=nil and filter~=nil and filter(c)
 end

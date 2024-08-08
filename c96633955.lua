@@ -42,7 +42,6 @@ function c96633955.initial_effect(c)
 	e6:SetRange(LOCATION_MZONE)
 	e6:SetCode(EVENT_REMOVE)
 	e6:SetCountLimit(1,96633955)
-	e6:SetCondition(c96633955.remcon)
 	e6:SetTarget(c96633955.remtg)
 	e6:SetOperation(c96633955.remop)
 	c:RegisterEffect(e6)
@@ -63,12 +62,6 @@ function c96633955.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
 		return true
 	else return false end
-end
-function c96633955.remfilter(c)
-	return not c:IsType(TYPE_TOKEN)
-end
-function c96633955.remcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c96633955.remfilter,1,nil)
 end
 function c96633955.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)

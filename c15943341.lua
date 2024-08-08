@@ -37,6 +37,7 @@ function c15943341.activate(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		if og:IsExists(c15943341.checkfilter,1,nil,tp) then
 			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetDescription(aux.Stringid(15943341,1))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
