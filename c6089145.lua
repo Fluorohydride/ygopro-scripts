@@ -71,6 +71,6 @@ end
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(7) and aux.IsCodeListed(c,33900648)
 end
-function s.ieecon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)
+function s.ieecon(e)
+	return Duel.IsExistingMatchingCard(s.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
