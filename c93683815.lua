@@ -1,4 +1,4 @@
---Yulmina, Statue of the Sacred Dragon
+--Vulmina, Statue of the Sacred Dragon
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
