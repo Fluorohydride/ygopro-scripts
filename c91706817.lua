@@ -71,7 +71,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local se=e:GetLabelObject():GetLabelObject()
-	return bit.band(r,REASON_EFFECT)~=0 and (se==nil or e:GetHandler():GetReasonEffect()~=se)
+	return bit.band(r,REASON_EFFECT)~=0 and (se==nil or re~=se)
 end
 function s.setfilter(c)
 	return c:GetType()==TYPE_TRAP and c:IsSSetable()
