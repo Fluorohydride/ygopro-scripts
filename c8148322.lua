@@ -12,6 +12,7 @@ function c8148322.initial_effect(c)
 	e1:SetOperation(c8148322.activate)
 	c:RegisterEffect(e1)
 end
+c8148322.fusion_effect=true
 function c8148322.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x10f3)
 end

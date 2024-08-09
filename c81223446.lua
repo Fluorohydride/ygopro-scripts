@@ -10,6 +10,7 @@ function c81223446.initial_effect(c)
 	e1:SetOperation(c81223446.activate)
 	c:RegisterEffect(e1)
 end
+c81223446.fusion_effect=true
 function c81223446.filter1(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove(tp,POS_FACEDOWN)
 end

@@ -10,6 +10,7 @@ function c34933456.initial_effect(c)
 	e1:SetOperation(c34933456.activate)
 	c:RegisterEffect(e1)
 end
+c34933456.fusion_effect=true
 function c34933456.mttg(e,c)
 	local tc=c:GetEquipTarget()
 	return tc and tc:IsSetCard(0x150) and c:GetOriginalType()&TYPE_MONSTER~=0

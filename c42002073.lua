@@ -22,6 +22,7 @@ function c42002073.initial_effect(c)
 	e6:SetOperation(c42002073.spop)
 	c:RegisterEffect(e6)
 end
+c42002073.fusion_effect=true
 function c42002073.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end

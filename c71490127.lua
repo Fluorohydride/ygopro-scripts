@@ -9,6 +9,7 @@ function c71490127.initial_effect(c)
 	e1:SetOperation(c71490127.activate)
 	c:RegisterEffect(e1)
 end
+c71490127.fusion_effect=true
 function c71490127.filter0(c)
 	return c:IsOnField() and c:IsAbleToRemove()
 end

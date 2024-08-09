@@ -23,6 +23,7 @@ function c3078380.initial_effect(c)
 	e2:SetOperation(c3078380.fspop)
 	c:RegisterEffect(e2)
 end
+c3078380.fusion_effect=true
 function c3078380.cfilter(c,tp)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
 		and (c:IsRace(RACE_SPELLCASTER) and c:IsType(TYPE_MONSTER) or aux.IsCodeListed(c,46986414) and c:IsType(TYPE_SPELL+TYPE_TRAP))

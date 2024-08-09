@@ -16,6 +16,7 @@ function c33550694.initial_effect(c)
 	e2:SetOperation(c33550694.operation)
 	c:RegisterEffect(e2)
 end
+c33550694.fusion_effect=true
 function c33550694.filter1(c,e)
 	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end

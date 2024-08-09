@@ -28,6 +28,7 @@ function c34813545.initial_effect(c)
 	e3:SetOperation(c34813545.fsop)
 	c:RegisterEffect(e3)
 end
+c34813545.fusion_effect=true
 function c34813545.spfilter(c,e,tp)
 	return c:IsSetCard(0x2a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

@@ -9,6 +9,7 @@ function c23299957.initial_effect(c)
 	e1:SetOperation(c23299957.activate)
 	c:RegisterEffect(e1)
 end
+c23299957.fusion_effect=true
 function c23299957.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end

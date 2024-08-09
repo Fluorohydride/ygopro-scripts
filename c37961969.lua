@@ -25,6 +25,7 @@ function c37961969.initial_effect(c)
 	e2:SetOperation(c37961969.activate)
 	c:RegisterEffect(e2)
 end
+c37961969.fusion_effect=true
 function c37961969.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and re:GetActivateLocation()==LOCATION_MZONE
 end
