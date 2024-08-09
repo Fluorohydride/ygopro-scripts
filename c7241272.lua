@@ -24,6 +24,7 @@ function c7241272.initial_effect(c)
 	e3:SetOperation(c7241272.spop)
 	c:RegisterEffect(e3)
 end
+c7241272.fusion_effect=true
 function c7241272.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_FZONE) end
 	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) end

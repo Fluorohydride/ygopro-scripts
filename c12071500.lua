@@ -10,6 +10,7 @@ function c12071500.initial_effect(c)
 	e1:SetOperation(c12071500.activate)
 	c:RegisterEffect(e1)
 end
+c12071500.fusion_effect=true
 function c12071500.filter0(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsAbleToRemove()
 end

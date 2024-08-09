@@ -10,6 +10,7 @@ function c55704856.initial_effect(c)
 	e1:SetOperation(c55704856.activate)
 	c:RegisterEffect(e1)
 end
+c55704856.fusion_effect=true
 function c55704856.filter0(c)
 	return (c:IsLocation(LOCATION_MZONE) or c:IsFaceup()) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()
 end

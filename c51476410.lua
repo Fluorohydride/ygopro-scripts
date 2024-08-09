@@ -25,6 +25,7 @@ function c51476410.initial_effect(c)
 	e2:SetOperation(c51476410.atkop)
 	c:RegisterEffect(e2)
 end
+c51476410.fusion_effect=true
 function c51476410.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
