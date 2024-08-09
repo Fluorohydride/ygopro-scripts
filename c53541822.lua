@@ -28,6 +28,7 @@ function c53541822.initial_effect(c)
 	e2:SetOperation(c53541822.activate)
 	c:RegisterEffect(e2)
 end
+c53541822.fusion_effect=true
 function c53541822.indtg(e,c)
 	return c:IsCode(83104731) or aux.IsCodeListed(c,83104731)
 end

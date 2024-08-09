@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.fsop)
 	c:RegisterEffect(e2)
 end
+s.fusion_effect=true
 function s.tgfilter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_PYRO) and c:IsAbleToGrave()
 end

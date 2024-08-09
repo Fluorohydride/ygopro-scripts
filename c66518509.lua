@@ -33,6 +33,7 @@ function s.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
+s.fusion_effect=true
 function s.spcfilter(c)
 	return c:IsReason(REASON_EFFECT) and (c:IsType(TYPE_MONSTER) or c:IsPreviousLocation(LOCATION_MZONE))
 		and not c:IsPreviousLocation(LOCATION_SZONE)

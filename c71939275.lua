@@ -50,6 +50,7 @@ function s.initial_effect(c)
 	e5:SetOperation(s.atkop)
 	c:RegisterEffect(e5)
 end
+s.fusion_effect=true
 function s.eqlimit(e,c)
 	return c:IsLevelAbove(5) and c:IsRace(RACE_FIEND+RACE_ZOMBIE)
 end
