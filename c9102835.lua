@@ -42,6 +42,7 @@ function s.initial_effect(c)
 	e5:SetValue(700)
 	c:RegisterEffect(e5)
 end
+s.fusion_effect=true
 function s.eqlimit(e,c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE)
 end

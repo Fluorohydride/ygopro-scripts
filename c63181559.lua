@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.csbop)
 	c:RegisterEffect(e2)
 end
+s.fusion_effect=true
 function s.filter1(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
