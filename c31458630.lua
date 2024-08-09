@@ -23,6 +23,7 @@ function c31458630.initial_effect(c)
 	e2:SetOperation(c31458630.drop)
 	c:RegisterEffect(e2)
 end
+c31458630.fusion_effect=true
 function c31458630.filter0(c,e)
 	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end

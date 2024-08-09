@@ -25,6 +25,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.eqop)
 	c:RegisterEffect(e2)
 end
+s.fusion_effect=true
 function s.lcheck(g)
 	return g:IsExists(s.mfilter,1,nil)
 end

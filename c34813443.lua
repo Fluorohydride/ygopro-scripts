@@ -32,6 +32,7 @@ function s.initial_effect(c)
 	e3:SetOperation(s.attop)
 	c:RegisterEffect(e3)
 end
+s.fusion_effect=true
 function s.fscon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end

@@ -49,6 +49,7 @@ function s.initial_effect(c)
 	e4:SetOperation(s.tgop)
 	c:RegisterEffect(e4)
 end
+s.fusion_effect=true
 function s.cfilter(c,tp)
 	return c:IsPreviousControler(tp) and not c:IsPreviousLocation(LOCATION_SZONE)
 	and (c:IsPreviousLocation(LOCATION_MZONE) or c:GetOriginalType()&TYPE_MONSTER~=0)
