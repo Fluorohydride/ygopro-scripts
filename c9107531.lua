@@ -55,7 +55,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsType(TYPE_SPELL)
+	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function s.atkfilter(c)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsFaceup()
