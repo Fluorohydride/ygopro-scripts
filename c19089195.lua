@@ -106,11 +106,9 @@ function c19089195.remop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c19089195.descon(e,tp,eg,ep,ev,re,r,rp)
-	if not c19089195.econ(e,tp,eg,ep,ev,re,r,rp) then return false end
-	local tc=Duel.GetAttacker()
-	local bc=Duel.GetAttackTarget()
-	if not bc then return false end
-	if tc:IsControler(1-tp) then tc,bc=bc,tc end
+	if not Duel.IsEnvironment(22702055) then return false end
+	local tc,bc=Duel.GetBattleMonster(tp)
+	if not tc or not bc then return false end
 	if tc:IsFaceup() and tc:GetOriginalLevel()>=5 and tc:IsAttribute(ATTRIBUTE_WATER) then
 		e:SetLabelObject(bc)
 		return true
