@@ -1,7 +1,7 @@
 --リヴァーチュ・ドラゴン
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,29157294)
+	aux.AddCodeList(c,80534031)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)
 	c:EnableReviveLimit()
@@ -38,7 +38,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.thfilter(c)
-	return c:IsCode(29157294) and c:IsAbleToHand()
+	return c:IsCode(80534031) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil) end

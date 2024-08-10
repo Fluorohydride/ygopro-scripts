@@ -34,7 +34,7 @@ function s.cfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsDiscardable()
 end
 function s.ovfilter(c)
-	return c:IsFaceup() and c:IsRank(4) and c:IsSetCard(0x12b7)
+	return c:IsFaceup() and c:IsRank(4) and c:IsSetCard(0x11b8)
 end
 function s.xyzop(e,tp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_HAND,0,1,nil) end

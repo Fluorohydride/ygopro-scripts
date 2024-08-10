@@ -46,7 +46,7 @@ function c5285665.spcon(e,c)
 	return g:CheckSubGroup(aux.gffcheck,2,2,c5285665.spfilter1,tp,c5285665.spfilter2,nil)
 end
 function c5285665.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(c5556499.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c5285665.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(tp,aux.gffcheck,true,2,2,c5285665.spfilter1,tp,c5285665.spfilter2,nil)
 	if sg then
