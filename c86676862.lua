@@ -26,7 +26,7 @@ function c86676862.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_MUST_ATTACK)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetCondition(c86676862.bpcon)
+	e4:SetCondition(c86676862.poscon)
 	e4:SetTargetRange(0,LOCATION_MZONE)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
@@ -38,9 +38,6 @@ c86676862.material_setcode=0x8
 c86676862.dark_calling=true
 function c86676862.ffilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsLevelAbove(6)
-end
-function c86676862.bpcon(e,tp,eg,ep,ev,re,r,rp)
-	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c86676862.poscon(e)
 	local ph=Duel.GetCurrentPhase()
