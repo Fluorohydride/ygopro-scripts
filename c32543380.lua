@@ -35,7 +35,9 @@ function c32543380.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c32543380.bpcon(e,tp,eg,ep,ev,re,r,rp)
-	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
+	local ph=Duel.GetCurrentPhase()
+	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
+		and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function c32543380.spfilter(c)
 	return c:IsFaceup() and c:IsCode(21420702) and c:IsAbleToGraveAsCost()
