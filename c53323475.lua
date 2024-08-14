@@ -28,9 +28,9 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		if #g>0 then
 			Duel.DisableShuffleCheck()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-			Duel.PreserveSelectDeckSequence(true)
+			Duel.RevealSelectDeckSequence(true)
 			local sc=g:Select(tp,1,1,nil):GetFirst()
-			Duel.PreserveSelectDeckSequence(false)
+			Duel.RevealSelectDeckSequence(false)
 			if sc:IsType(TYPE_TRAP) then
 				if Duel.SSet(tp,sc)>0 then
 					local e1=Effect.CreateEffect(c)
