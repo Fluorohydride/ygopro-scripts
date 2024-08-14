@@ -29,7 +29,7 @@ s.fusion_effect=true
 function s.filter(c,e,tp,mg)
 	if c:GetLevel()<4 then return false end
 	local ct=math.floor(c:GetLevel()/4)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1bd) and c:CheckFusionMaterial()
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1bc) and c:CheckFusionMaterial()
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
 		and mg:CheckSubGroup(s.gcheck,ct,ct,tp,c)
 end

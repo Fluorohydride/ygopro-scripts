@@ -48,7 +48,7 @@ function s.ccon2(e,tp,eg,ep,ev,re,r,rp)
 		and eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_DECK)
 end
 function s.setfilter(c)
-	return c:IsSetCard(0x1be) and c:IsType(TYPE_TRAP) and c:IsSSetable()
+	return c:IsSetCard(0x1bd) and c:IsType(TYPE_TRAP) and c:IsSSetable()
 end
 function s.cop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -44,7 +44,7 @@ function s.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsPublic() end
 end
 function s.setfilter(c)
-	return c:IsSetCard(0x1bb) and c:IsType(TYPE_TRAP) and c:IsSSetable()
+	return c:IsSetCard(0x1ba) and c:IsType(TYPE_TRAP) and c:IsSSetable()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -33,7 +33,7 @@ end
 function s.filter(c,e,tp,mg)
 	if c:GetLevel()<4 then return false end
 	local ct=math.floor(c:GetLevel()/4)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1bd) and c:CheckFusionMaterial()
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1bc) and c:CheckFusionMaterial()
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
 		and mg:CheckSubGroup(s.gcheck,ct,ct,tp,c)
 end
@@ -70,7 +70,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spfilter(c,e,tp)
-	return c:IsSetCard(0x1bd) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1bc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.spfilter(chkc,e,tp) end

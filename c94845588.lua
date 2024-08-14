@@ -26,7 +26,7 @@ s.fusion_effect=true
 function s.filter(c,e,tp,mg)
 	if c:GetLevel()<4 then return false end
 	local ct=math.floor(c:GetLevel()/4)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1bd) and c:CheckFusionMaterial()
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1bc) and c:CheckFusionMaterial()
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
 		and mg:CheckSubGroup(s.gcheck,ct,ct,tp,c)
 end
@@ -64,7 +64,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.tdfilter(c)
 	return c:IsFaceupEx() and c:IsType(TYPE_MONSTER)
-		and c:IsAbleToDeck() and c:IsSetCard(0x1bd)
+		and c:IsAbleToDeck() and c:IsSetCard(0x1bc)
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
