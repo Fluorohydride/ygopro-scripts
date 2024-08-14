@@ -40,9 +40,7 @@ function c86676862.ffilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsLevelAbove(6)
 end
 function c86676862.poscon(e)
-	local ph=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
-		and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
+	return Duel.IsTurnPlayer(1-e:GetHandlerPlayer()) and Duel.IsBattlePhase()
 end
 function c86676862.atklimit(e,c)
 	return c==e:GetHandler()

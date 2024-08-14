@@ -34,11 +34,6 @@ function c32543380.initial_effect(c)
 	e5:SetOperation(c32543380.desop)
 	c:RegisterEffect(e5)
 end
-function c32543380.bpcon(e,tp,eg,ep,ev,re,r,rp)
-	local ph=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
-		and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
-end
 function c32543380.spfilter(c)
 	return c:IsFaceup() and c:IsCode(21420702) and c:IsAbleToGraveAsCost()
 end
@@ -60,6 +55,9 @@ end
 function c32543380.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_SPSUMMON)
+end
+function c32543380.bpcon(e)
+	return Duel.IsTurnPlayer(1-e:GetHandlerPlayer()) and Duel.IsBattlePhase()
 end
 function c32543380.atklimit(e,c)
 	return c==e:GetHandler()
