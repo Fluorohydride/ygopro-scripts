@@ -43,6 +43,7 @@ function c84274024.initial_effect(c)
 end
 function c84274024.valcheck(e,c)
 	local g=c:GetMaterial()
+	if not c:IsSummonPlayer(e:GetHandlerPlayer()) then return end
 	if c:IsType(TYPE_FUSION) and g:IsExists(Card.IsFusionType,1,nil,TYPE_PENDULUM) then
 		c:RegisterFlagEffect(84274024,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
 	elseif c:IsType(TYPE_SYNCHRO) and g:IsExists(Card.IsSynchroType,1,nil,TYPE_PENDULUM) then
