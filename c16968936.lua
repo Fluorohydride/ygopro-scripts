@@ -33,7 +33,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.spfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(id)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(id)
 end
 function s.spcon(e,c)
 	if c==nil then return true end
@@ -44,7 +44,7 @@ function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function s.thfilter(c)
-	return c:IsSetCard(0x1ba) and c:IsAbleToHand()
+	return c:IsSetCard(0x203d) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
@@ -59,7 +59,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_SYNCHRO)~=0 and e:GetHandler():GetReasonCard():IsSetCard(0x3d)
+	return bit.band(r,REASON_SYNCHRO)~=0 and e:GetHandler():GetReasonCard():IsSetCard(0x103d)
 end
 function s.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
