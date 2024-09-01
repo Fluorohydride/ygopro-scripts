@@ -38,7 +38,6 @@ function s.initial_effect(c)
 	e3:SetCondition(s.spcon2)
 	e3:SetTarget(s.sptg2)
 	e3:SetOperation(s.spop2)
-	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 end
 function s.cfilter(c,tp,se)
@@ -68,6 +67,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetAttacker()
 	if tc==c then tc=Duel.GetAttackTarget() end
 	if chk==0 then return tc end
+	c:RegisterFlagEffect(id,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,Group.FromCards(c,tc),1,0,0)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
@@ -78,8 +78,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
-		and not re~=e:GetLabelObject()
+	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():GetFlagEffect(id)==0
 end
 function s.spfilter(c,e,tp)
 	return (c:IsCode(45231177) or aux.IsCodeListed(c,45231177)) and c:IsLevelBelow(7)
