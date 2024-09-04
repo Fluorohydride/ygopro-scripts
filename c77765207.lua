@@ -69,7 +69,7 @@ end
 function s.splimit(e,c)
 	return not c:IsSetCard(0x1a2) and c:IsLocation(LOCATION_EXTRA)
 end
-function s.setfilter(c)
+function s.setfilter(c,ct)
 	return c:IsSetCard(0x1a2) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable() and (ct>0 or c:IsType(TYPE_FIELD))
 end
 function s.target2(e,tp,eg,ep,ev,re,r,rp,chk)
