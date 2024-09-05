@@ -69,15 +69,18 @@ end
 function s.splimit(e,c)
 	return not c:IsSetCard(0x1a2) and c:IsLocation(LOCATION_EXTRA)
 end
-function s.setfilter(c)
-	return c:IsSetCard(0x1a2) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+function s.setfilter(c,ct)
+	return c:IsSetCard(0x1a2) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable() and (ct>0 or c:IsType(TYPE_FIELD))
 end
 function s.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil) end
+	local ct=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ct=ct-1 end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil,ct) end
 end
 function s.activate2(e,tp,eg,ep,ev,re,r,rp)
+	ct=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,s.setfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,s.setfilter,tp,LOCATION_DECK,0,1,1,nil,ct)
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
 	end
