@@ -28,7 +28,7 @@ function c80839052.initial_effect(c)
 end
 function c80839052.spfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
-		and (c:GetPreviousRaceOnField()&RACE_ROCK)>0
+		and (c:GetPreviousRaceOnField()&RACE_ROCK)>0 and c:IsRace(RACE_ROCK)
 end
 function c80839052.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c80839052.spfilter,1,nil,tp)
