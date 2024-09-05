@@ -53,7 +53,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.hgrfilter,tp,LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,3,3,tp)
-	if sg:GetCount()>2 then
+	if sg and sg:GetCount()>2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g1=sg:FilterSelect(tp,s.thfiter,1,1,nil,sg)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
