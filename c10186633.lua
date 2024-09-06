@@ -76,6 +76,6 @@ function c10186633.drop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ShuffleDeck(tp)
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)
-		ebd
+		end
 	end
 end
