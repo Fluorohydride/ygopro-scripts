@@ -62,11 +62,11 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.desfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x1a1)
-		and Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_ONFIELD,1,nil)
+		and Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingMatchingCard(s.desfilter,tp,LOCATION_MZONE,0,1,nil,tp) and Duel.GetFlagEffect(tp,id)==0 end
+	if chk==0 then return Duel.IsExistingTarget(s.desfilter,tp,LOCATION_MZONE,0,1,nil,tp) and Duel.GetFlagEffect(tp,id)==0 end
 	local ct=Duel.GetMatchingGroupCount(Card.IsCanBeEffectTarget,tp,0,LOCATION_ONFIELD,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g1=Duel.SelectTarget(tp,s.desfilter,tp,LOCATION_MZONE,0,1,ct,nil,tp)
