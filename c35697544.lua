@@ -55,7 +55,7 @@ end
 function s.conditio2(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
-	return at and ((a:IsControler(tp) and a:IsRace(RACE_WARRIOR) and a:IsAttribute(ATTRIBUTE_FIRE))
+	return ((a:IsControler(tp) and a:IsRace(RACE_WARRIOR) and a:IsAttribute(ATTRIBUTE_FIRE))
 		or (at:IsControler(tp) and at:IsFaceup() and at:IsRace(RACE_WARRIOR) and at:IsAttribute(ATTRIBUTE_FIRE)))
 end
 function s.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
