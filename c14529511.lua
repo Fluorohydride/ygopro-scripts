@@ -60,16 +60,17 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK+LOCATION_EXTRA,0,3,3,nil)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end
-function s.desfilter(c,tp)
+function s.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1a1)
-		and Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_ONFIELD,1,nil)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingMatchingCard(s.desfilter,tp,LOCATION_MZONE,0,1,nil,tp) and Duel.GetFlagEffect(tp,id)==0 end
+	if chk==0 then return Duel.GetFlagEffect(tp,id)==0
+		and Duel.IsExistingTarget(s.desfilter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	local ct=Duel.GetMatchingGroupCount(Card.IsCanBeEffectTarget,tp,0,LOCATION_ONFIELD,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g1=Duel.SelectTarget(tp,s.desfilter,tp,LOCATION_MZONE,0,1,ct,nil,tp)
+	local g1=Duel.SelectTarget(tp,s.desfilter,tp,LOCATION_MZONE,0,1,ct,nil)
 	local ect=g1:GetCount()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g2=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,ect,ect,nil)
