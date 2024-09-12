@@ -20,7 +20,7 @@ function s.initial_effect(c)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
-	e2:SetCondition(s.conditio2)
+	e2:SetCondition(s.condition2)
 	e2:SetTarget(s.target2)
 	e2:SetOperation(s.activate2)
 	c:RegisterEffect(e2)
@@ -31,7 +31,7 @@ function s.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_ACTIVATE)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
-	e3:SetCondition(s.conditio3)
+	e3:SetCondition(s.condition3)
 	e3:SetTarget(s.target3)
 	e3:SetOperation(s.activate3)
 	c:RegisterEffect(e3)
@@ -52,18 +52,17 @@ function s.activate1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function s.conditio2(e,tp,eg,ep,ev,re,r,rp)
-	local a=Duel.GetAttacker()
-	local at=Duel.GetAttackTarget()
-	return at and ((a:IsControler(tp) and a:IsRace(RACE_WARRIOR) and a:IsAttribute(ATTRIBUTE_FIRE))
-		or (at:IsControler(tp) and at:IsFaceup() and at:IsRace(RACE_WARRIOR) and at:IsAttribute(ATTRIBUTE_FIRE)))
+function s.condition2(e,tp,eg,ep,ev,re,r,rp)
+	local a=Duel.GetBattleMonster(tp)
+	return a and a:IsFaceup() and a:IsRace(RACE_WARRIOR) and a:IsAttribute(ATTRIBUTE_FIRE)
 end
 function s.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	local c=e:GetHandler()
+	if chkc then return chkc:IsOnField() and chkc~=c end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function s.activate2(e,tp,eg,ep,ev,re,r,rp)
@@ -73,7 +72,7 @@ end
 function s.dfilter(c,tp)
 	return c:IsOnField() and c:IsFaceup() and c:IsControler(tp) and (c:IsCode(45231177) or aux.IsCodeListed(c,45231177)) and c:IsType(TYPE_MONSTER)
 end
-function s.conditio3(e,tp,eg,ep,ev,re,r,rp)
+function s.condition3(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return g and g:IsExists(s.dfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
