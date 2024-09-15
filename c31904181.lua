@@ -18,13 +18,13 @@ function c31904181.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c31904181.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(31904181)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(31904181)
 end
 function c31904181.dircon(e)
 	return Duel.IsExistingMatchingCard(c31904181.cfilter,e:GetHandler():GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c31904181.repfilter(c,e)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c31904181.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

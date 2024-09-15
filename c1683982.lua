@@ -57,14 +57,14 @@ function c1683982.atktg(e,c)
 	return not c:IsRace(RACE_REPTILE)
 end
 function c1683982.cfilter(c,tp)
-	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:GetPreviousRaceOnField()&RACE_REPTILE~=0 and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousRaceOnField()&RACE_REPTILE~=0
 end
 function c1683982.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c1683982.cfilter,1,nil,tp)
 end
 function c1683982.cfilter2(c,tp)
-	return not c:IsReason(REASON_BATTLE) and c1683982.cfilter(c,tp)
+	return not c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:GetPreviousRaceOnField()&RACE_REPTILE~=0 and c:IsRace(RACE_REPTILE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c1683982.regcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c1683982.cfilter2,1,nil,tp)

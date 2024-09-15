@@ -10,7 +10,7 @@ function c6357341.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c6357341.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c6357341.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c6357341.filter,tp,LOCATION_MZONE,0,nil)

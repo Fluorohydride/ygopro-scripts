@@ -25,7 +25,7 @@ function c71207871.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c71207871.spfilter(c,e,tp)
-	return c:IsSetCard(0x3d) and not c:IsCode(71207871) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x103d) and not c:IsCode(71207871) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c71207871.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -40,7 +40,7 @@ function c71207871.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71207871.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c71207871.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
