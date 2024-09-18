@@ -61,18 +61,14 @@ function s.thfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1b7) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.thfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(s.thfilter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and s.thfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(s.thfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local ct=Duel.GetMatchingGroupCount(s.thfilter,tp,LOCATION_MZONE,0,nil)
-	local g=Duel.SelectTarget(tp,s.thfilter,tp,LOCATION_MZONE,0,1,ct,nil)
+	local g=Duel.SelectTarget(tp,s.thfilter,tp,LOCATION_ONFIELD,0,1,99,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,#g,0,0)
 end
-function s.hfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsType(TYPE_MONSTER)
-end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(s.hfilter,nil,e)
+	local g=Duel.GetTargetsRelateToChain()
 	if #g>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end
