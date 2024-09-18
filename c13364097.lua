@@ -52,6 +52,7 @@ function c13364097.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	if sg then
+		Duel.HintSelection(sg)
 		if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA)
 			and tc:IsRelateToEffect(e) then
 			Duel.Destroy(tc,REASON_EFFECT)
