@@ -59,7 +59,7 @@ function c74431740.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74431740.tdfilter(c,e)
-	return not c:IsCode(74431740) and (aux.IsCodeListed(c,80280737) or c:IsCode(80280737)) and c:IsAbleToDeck()
+	return not c:IsCode(74431740) and aux.IsCodeOrListed(c,80280737) and c:IsAbleToDeck()
 		and (not e or c:IsCanBeEffectTarget(e))
 end
 function c74431740.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -502,6 +502,9 @@ end
 function Auxiliary.IsCodeListed(c,code)
 	return c.card_code_list and c.card_code_list[code]
 end
+function Auxiliary.IsCodeOrListed(c,code)
+	return c:IsCode(code) or Auxiliary.IsCodeListed(c,code)
+end
 function Auxiliary.AddSetNameMonsterList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.setcode_monster_list==nil then
