@@ -71,7 +71,7 @@ function s.thdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.indcon(e)
-	return not e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
+	return e:GetHandler():GetSummonLocation()~=0 and not e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function s.cfilter(c,tp,rp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousSetCard(0x1a2)
