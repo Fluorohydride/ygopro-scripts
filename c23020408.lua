@@ -23,7 +23,7 @@ function c23020408.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c23020408.filter(c)
-	return (aux.IsCodeListed(c,46986414) or aux.IsCodeListed(c,38033121) or c:IsCode(46986414)) and not c:IsCode(23020408)
+	return (aux.IsCodeOrListed(c,46986414) or aux.IsCodeOrListed(c,38033121)) and not c:IsCode(23020408)
 		and (c:IsAbleToDeck() or c:IsLocation(LOCATION_DECK))
 end
 function c23020408.target(e,tp,eg,ep,ev,re,r,rp,chk)

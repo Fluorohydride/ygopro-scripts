@@ -28,7 +28,7 @@ function c64927055.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c64927055.filter(c)
-	return c:IsFaceup() and (c:IsCode(56433456) or aux.IsCodeListed(c,56433456)) and c:IsAbleToHand()
+	return c:IsFaceup() and aux.IsCodeOrListed(c,56433456) and c:IsAbleToHand()
 end
 function c64927055.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

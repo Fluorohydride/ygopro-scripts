@@ -21,7 +21,7 @@ function c91500017.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c91500017.filter(c)
-	return (aux.IsCodeListed(c,15259703) or c:IsCode(15259703)) and not c:IsCode(91500017) and c:IsAbleToHand()
+	return aux.IsCodeOrListed(c,15259703) and not c:IsCode(91500017) and c:IsAbleToHand()
 end
 function c91500017.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c91500017.filter,tp,LOCATION_DECK,0,1,nil) end
