@@ -45,7 +45,7 @@ function c80839052.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80839052.thfilter(c)
-	return c:IsAbleToHand() and (not c:IsCode(80839052)) and (aux.IsCodeListed(c,36623431) or c:IsCode(36623431))
+	return c:IsAbleToHand() and not c:IsCode(80839052) and aux.IsCodeOrListed(c,36623431)
 end
 function c80839052.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80839052.thfilter,tp,LOCATION_DECK,0,1,nil) end
