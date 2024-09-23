@@ -136,8 +136,7 @@ function c53701259.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c53701259.rmtg(e,c)
-	return c:GetOwner()~=e:GetHandlerPlayer() and not c:IsLocation(LOCATION_OVERLAY)
-		and not c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:GetOwner()~=e:GetHandlerPlayer() and aux.DimensionalFissureTarget(e,c)
 end
 function c53701259.rmcon(e)
 	local tp=e:GetHandlerPlayer()
