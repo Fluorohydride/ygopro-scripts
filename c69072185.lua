@@ -29,7 +29,7 @@ function c69072185.initial_effect(c)
 	e3:SetRange(LOCATION_PZONE)
 	e3:SetCondition(c69072185.rmcon)
 	e3:SetTarget(c69072185.rmtarget)
-	e3:SetTargetRange(0xff,0xff)
+	e3:SetTargetRange(LOCATION_DECK,LOCATION_DECK)
 	e3:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e3)
 end
