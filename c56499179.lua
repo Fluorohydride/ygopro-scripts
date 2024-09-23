@@ -65,7 +65,7 @@ function s.cfilter2(c)
 	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsCode(id)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter1,1,e:GetHandler())
+	return eg:IsExists(s.cfilter1,1,e:GetHandler()) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.cfilter2,tp,LOCATION_REMOVED,LOCATION_REMOVED,2,nil)
