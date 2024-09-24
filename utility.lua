@@ -1768,3 +1768,7 @@ function Auxiliary.IsCanBeQuickEffect(c,tp,code)
 	local filter=Auxiliary.quick_effect_filter[code]
 	return Duel.IsPlayerAffectedByEffect(tp,code)~=nil and filter~=nil and filter(c)
 end
+--
+function Auxiliary.DimensionalFissureTarget(e,c)
+	return c:GetOriginalType()&TYPE_MONSTER>0 and not c:IsLocation(LOCATION_OVERLAY) and not c:IsType(TYPE_SPELL+TYPE_TRAP)
+end
