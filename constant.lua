@@ -304,7 +304,7 @@ EFFECT_TYPE_XMATERIAL		=0x1000		--作为超量素材时超量怪兽获得的效�
 EFFECT_TYPE_GRANT			=0x2000		--使其他卡片获得效果（天气模样）
 EFFECT_TYPE_TARGET			=0x4000		--影响持续取的对象的效果（基本只用于魔陷）
 --========== Flags ==========	--效果的特殊性质
-EFFECT_FLAG_INITIAL			=0x0001		--可以发动的
+EFFECT_FLAG_INITIAL			=0x0001		--在initial_effect建立的效果
 EFFECT_FLAG_FUNC_VALUE		=0x0002		--此效果的Value属性是函数
 EFFECT_FLAG_COUNT_LIMIT		=0x0004		--发动次数限制
 EFFECT_FLAG_FIELD_ONLY		=0x0008		--此效果是注册给全局环境的
@@ -869,10 +869,6 @@ DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
 DUEL_RETURN_DECK_TOP	=0x80		--回卡组洗切的卡放到卡组最上方（不洗牌模式下曾经的默认行为）
 DUEL_REVEAL_DECK_SEQ	=0x100		--从卡组选卡显示实际顺序（曾经的默认行为）
---Duel rule (Debug.ReloadFieldBegin)
-MASTER_RULE3		=3	--Master Rule 3 (2014)
-NEW_MASTER_RULE		=4	--New Master Rule (2017)
-MASTER_RULE_2020	=5	--Master Rule 2020
 --Activity counter
 --global: 1-6 (binary: 5,6)
 --custom: 1-5,7 (binary: 1-5)
