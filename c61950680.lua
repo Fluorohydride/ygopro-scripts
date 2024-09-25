@@ -60,7 +60,8 @@ end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=2
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>1 end
+		and Duel.GetLocationCount(tp,LOCATION_SZONE)>1 and e:GetHandler():GetFlagEffect(id)==0 end
+	e:GetHandler():RegisterFlagEffect(id,RESET_CHAIN,0,1)
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetLocationCount(tp,LOCATION_SZONE)
