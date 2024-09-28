@@ -46,6 +46,7 @@ function s.initial_effect(c)
 	e5:SetOperation(s.atkop)
 	c:RegisterEffect(e5)
 end
+s.fusion_effect=true
 function s.cfilter(c,e,tp)
 	return c:IsFaceupEx() and c:IsAbleToGraveAsCost() and c:IsType(TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
@@ -132,18 +133,18 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		if not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_FIELD)
-			e2:SetCode(EFFECT_UPDATE_ATTACK)
-			e2:SetTargetRange(LOCATION_MZONE,0)
-			e2:SetTarget(s.atkfilter)
-			e2:SetLabel(tc:GetFieldID())
-			e2:SetValue(1000)
-			e2:SetReset(RESET_PHASE+PHASE_END)
-			Duel.RegisterEffect(e2,tp)
+			local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,tc)
+			local oc=g:GetFirst()
+			while oc do
+				local e2=Effect.CreateEffect(e:GetHandler())
+				e2:SetType(EFFECT_TYPE_SINGLE)
+				e2:SetCode(EFFECT_UPDATE_ATTACK)
+				e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+				e2:SetValue(1000)
+				e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+				oc:RegisterEffect(e2)
+				oc=g:GetNext()
+			end
 		end
 	end
-end
-function s.atkfilter(e,c)
-	return e:GetLabel()~=c:GetFieldID()
 end
