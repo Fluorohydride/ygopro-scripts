@@ -24,7 +24,7 @@ function s.initial_effect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
-	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
+	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCondition(s.dacon)
 	e3:SetTarget(s.datg)
 	e3:SetOperation(s.daop)
@@ -66,7 +66,7 @@ function s.filter(c)
 end
 function s.datg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return s.filter(chkc) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end
-	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return aux.bpcon(e,tp,eg,ep,ev,re,r,rp) and Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.SelectTarget(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function s.daop(e,tp,eg,ep,ev,re,r,rp)
@@ -101,13 +101,11 @@ function s.daop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(tp,id)~=0 then return end
 	local fid=eg:GetFirst():GetFieldID()
-	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 	e:GetLabelObject():SetLabel(fid)
 end
 function s.atkcon(e)
-	return Duel.GetFlagEffect(e:GetHandlerPlayer(),id)>0
+	return e:GetLabel()~=0
 end
 function s.atktg(e,c)
 	return c:GetFieldID()~=e:GetLabel()
