@@ -3,12 +3,13 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
+	e1:SetCountLimit(1,id)
 	e1:SetCondition(s.spcon)
+	e1:SetTarget(s.sptg)
+	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
 	--pos change
 	local e2=Effect.CreateEffect(c)
@@ -34,20 +35,26 @@ end
 function s.spfilter(c)
 	return c:IsFaceup() and c:IsLevelBelow(6)
 end
-function s.spcon(e,c)
-	if c==nil then return true end
-	return Duel.IsExistingMatchingCard(s.spfilter,c:GetControler(),0,LOCATION_MZONE,1,nil)
+function s.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsExistingMatchingCard(s.spfilter,tp,0,LOCATION_MZONE,1,nil)
 end
-function s.filter(c)
-	return c:IsFaceup() and c:IsCanChangePosition()
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+end
+function s.spop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	end
 end
 function s.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
 end
 function s.postg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		and Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
-	local sg=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsCanChangePosition,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	local sg=Duel.GetMatchingGroup(Card.IsCanChangePosition,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,sg,sg:GetCount(),0,0)
 end
 function s.cfilter(c)
@@ -55,23 +62,25 @@ function s.cfilter(c)
 end
 function s.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local sg=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.ChangePosition(sg,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
+	local sg=Duel.GetMatchingGroup(Card.IsCanChangePosition,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	Duel.ChangePosition(sg,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c)
-	for tc in aux.Next(g) do
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
-		e1:SetValue(c:GetAttribute())
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
-		if tc:GetLevel()>0 then
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetCode(EFFECT_CHANGE_LEVEL)
-			e2:SetValue(c:GetLevel())
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e2)
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
+		for tc in aux.Next(g) do
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
+			e1:SetValue(c:GetAttribute())
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+			tc:RegisterEffect(e1)
+			if tc:GetLevel()>0 then
+				local e2=Effect.CreateEffect(c)
+				e2:SetType(EFFECT_TYPE_SINGLE)
+				e2:SetCode(EFFECT_CHANGE_LEVEL)
+				e2:SetValue(c:GetLevel())
+				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+				tc:RegisterEffect(e2)
+			end
 		end
 	end
 	local e3=Effect.CreateEffect(c)
