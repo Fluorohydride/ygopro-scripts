@@ -17,21 +17,39 @@ function s.initial_effect(c)
 	e1:SetTarget(s.tdtg)
 	e1:SetOperation(s.tdop)
 	c:RegisterEffect(e1)
-	--special summon
+	--adjust(disablecheck)
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_REMOVE)
-	e2:SetProperty(EFFECT_FLAG_DELAY)
-	e2:SetCountLimit(1,id+o)
-	e2:SetCost(s.spcost)
-	e2:SetTarget(s.sptg)
-	e2:SetOperation(s.spop)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
+	e2:SetCode(EVENT_ADJUST)
+	e2:SetRange(0xff)
+	e2:SetLabelObject(e1)
+	e2:SetOperation(s.adjustop)
 	c:RegisterEffect(e2)
+	--special summon
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,1))
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e3:SetCode(EVENT_REMOVE)
+	e3:SetProperty(EFFECT_FLAG_DELAY)
+	e3:SetCountLimit(1,id+o)
+	e3:SetCost(s.spcost)
+	e3:SetTarget(s.sptg)
+	e3:SetOperation(s.spop)
+	c:RegisterEffect(e3)
 end
 function s.lcheck(g)
 	return g:IsExists(Card.IsLinkSetCard,1,nil,0x1bf)
+end
+function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	local lg=e1:GetHandler():GetLinkedGroup()
+	if lg and lg:FilterCount(Card.IsType,nil,TYPE_MONSTER)>0 then
+		e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CAN_FORBIDDEN)
+	else
+		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	end
 end
 function s.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1bf) and c:IsAbleToDeck()
@@ -46,11 +64,6 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local dg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,dg,1,0,0)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if lg and lg:FilterCount(Card.IsType,nil,TYPE_MONSTER)>0 then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CAN_FORBIDDEN)
-	else
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	end
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
