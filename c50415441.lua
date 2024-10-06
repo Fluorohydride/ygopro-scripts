@@ -8,6 +8,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_F)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,id)
+	e1:SetCondition(aux.MimighoulFlipCondition)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
@@ -43,21 +44,19 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,1-tp,1)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
-	if (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) then
-		Duel.Draw(1-tp,1,REASON_EFFECT)
-		local tg1=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-		if tg1:GetCount()>0 then
-			Duel.ShuffleHand(tp)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local tc1=tg1:Select(tp,1,1,nil):GetFirst()
-			Duel.BreakEffect()
-			Duel.SendtoGrave(tc1,REASON_EFFECT)
-		end
-		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) then
-			Duel.BreakEffect()
-			Duel.GetControl(c,1-tp)
-		end
+	Duel.Draw(1-tp,1,REASON_EFFECT)
+	local tg1=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+	if tg1:GetCount()>0 then
+		Duel.ShuffleHand(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local tc1=tg1:Select(tp,1,1,nil):GetFirst()
+		Duel.BreakEffect()
+		Duel.SendtoGrave(tc1,REASON_EFFECT)
+	end
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		Duel.BreakEffect()
+		Duel.GetControl(c,1-tp)
 	end
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

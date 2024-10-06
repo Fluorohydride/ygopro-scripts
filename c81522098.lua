@@ -8,6 +8,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_F)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,id)
+	e1:SetCondition(aux.MimighoulFlipCondition)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
@@ -46,14 +47,12 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,e:GetHandler(),1,0,0)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
-	if (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) then
-		local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil)
-		Duel.Destroy(g,REASON_EFFECT)
-		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) then
-			Duel.BreakEffect()
-			Duel.GetControl(c,1-tp)
-		end
+	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil)
+	Duel.Destroy(g,REASON_EFFECT)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		Duel.BreakEffect()
+		Duel.GetControl(c,1-tp)
 	end
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
