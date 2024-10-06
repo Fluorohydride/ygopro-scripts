@@ -40,10 +40,13 @@ function c75433814.ctop(e,tp,eg,ep,ev,re,r,rp)
 		tc:AddCounter(0x1024,1)
 		tc=g:GetNext()
 	end
-	Duel.RegisterFlagEffect(tp,75433814,RESET_PHASE+PHASE_END,0,2)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		c:RegisterFlagEffect(75433814,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,1)
+	end
 end
 function c75433814.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,75433814)~=0 and Duel.GetTurnPlayer()~=tp
+	return e:GetHandler():GetFlagEffect(75433814)~=0 and Duel.GetTurnPlayer()~=tp
 end
 function c75433814.desfilter(c)
 	return c:GetCounter(0x1024)~=0

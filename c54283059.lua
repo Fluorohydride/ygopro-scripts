@@ -10,6 +10,7 @@ function c54283059.initial_effect(c)
 	e1:SetOperation(c54283059.activate)
 	c:RegisterEffect(e1)
 end
+c54283059.fusion_effect=true
 function c54283059.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())

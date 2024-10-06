@@ -9,6 +9,7 @@ function c7614732.initial_effect(c)
 	e1:SetOperation(c7614732.activate)
 	c:RegisterEffect(e1)
 end
+c7614732.fusion_effect=true
 function c7614732.filter(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)

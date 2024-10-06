@@ -502,6 +502,9 @@ end
 function Auxiliary.IsCodeListed(c,code)
 	return c.card_code_list and c.card_code_list[code]
 end
+function Auxiliary.IsCodeOrListed(c,code)
+	return c:IsCode(code) or Auxiliary.IsCodeListed(c,code)
+end
 function Auxiliary.AddSetNameMonsterList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.setcode_monster_list==nil then
@@ -1764,4 +1767,12 @@ Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
 function Auxiliary.IsCanBeQuickEffect(c,tp,code)
 	local filter=Auxiliary.quick_effect_filter[code]
 	return Duel.IsPlayerAffectedByEffect(tp,code)~=nil and filter~=nil and filter(c)
+end
+--
+function Auxiliary.DimensionalFissureTarget(e,c)
+	return c:GetOriginalType()&TYPE_MONSTER>0 and not c:IsLocation(LOCATION_OVERLAY) and not c:IsType(TYPE_SPELL+TYPE_TRAP)
+end
+--
+function Auxiliary.MimighoulFlipCondition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsMainPhase()
 end

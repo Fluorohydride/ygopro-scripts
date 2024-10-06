@@ -11,10 +11,10 @@ function c27821104.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c27821104.tfilter(c,atk,code,e,tp)
-	return c:IsSetCard(0x3d) and not c:IsCode(code) and c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x103d) and not c:IsCode(code) and c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27821104.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and Duel.IsExistingMatchingCard(c27821104.tfilter,tp,LOCATION_DECK,0,1,nil,c:GetAttack(),c:GetCode(),e,tp)
 end
 function c27821104.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

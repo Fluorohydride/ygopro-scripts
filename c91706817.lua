@@ -1,8 +1,6 @@
 --青い涙の天使
 local s,id,o=GetID()
 function s.initial_effect(c)
-	--same effect send this card to grave and summon another card check
-	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -22,7 +20,6 @@ function s.initial_effect(c)
 	e2:SetCode(EVENT_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,id)
-	e2:SetLabelObject(e0)
 	e2:SetCondition(s.setcon)
 	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(s.settg)
@@ -70,8 +67,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
-	local se=e:GetLabelObject():GetLabelObject()
-	return bit.band(r,REASON_EFFECT)~=0 and (se==nil or e:GetHandler():GetReasonEffect()~=se)
+	return bit.band(r,REASON_EFFECT)~=0
 end
 function s.setfilter(c)
 	return c:GetType()==TYPE_TRAP and c:IsSSetable()

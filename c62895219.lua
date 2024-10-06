@@ -20,6 +20,7 @@ function c62895219.initial_effect(c)
 	e2:SetOperation(c62895219.operation)
 	c:RegisterEffect(e2)
 end
+c62895219.fusion_effect=true
 function c62895219.filter(c)
 	return c:IsSetCard(0x9b) and c:IsType(TYPE_MONSTER) and not c:IsCode(62895219) and c:IsAbleToHand()
 end

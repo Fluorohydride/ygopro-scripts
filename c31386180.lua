@@ -9,7 +9,7 @@ function c31386180.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e1:SetCondition(c31386180.incon)
+	e1:SetCondition(c31386180.condition)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	--destroy
@@ -21,7 +21,6 @@ function c31386180.initial_effect(c)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c31386180.descon)
 	e2:SetTarget(c31386180.destg)
 	e2:SetOperation(c31386180.desop)
 	c:RegisterEffect(e2)
@@ -36,21 +35,18 @@ function c31386180.initial_effect(c)
 	e3:SetOperation(c31386180.rmop)
 	c:RegisterEffect(e3)
 end
-function c31386180.incon(e)
+function c31386180.condition(e)
 	return e:GetHandler():GetOverlayCount()>0
-end
-function c31386180.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c31386180.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c31386180.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetOverlayCount()==0 then return end
+	if not c31386180.condition(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
@@ -60,8 +56,7 @@ function c31386180.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c31386180.rmop(e,tp,eg,ep,ev,re,r,rp)
+	if not c31386180.condition(e) then return end
 	local c=e:GetHandler()
-	if c:GetOverlayCount()>0 then
-		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-	end
+	c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 end

@@ -22,6 +22,7 @@ function c13234975.initial_effect(c)
 	e2:SetOperation(c13234975.thop)
 	c:RegisterEffect(e2)
 end
+c13234975.fusion_effect=true
 function c13234975.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
