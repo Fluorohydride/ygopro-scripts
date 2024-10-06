@@ -1772,3 +1772,7 @@ end
 function Auxiliary.DimensionalFissureTarget(e,c)
 	return c:GetOriginalType()&TYPE_MONSTER>0 and not c:IsLocation(LOCATION_OVERLAY) and not c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
+--
+function Auxiliary.MimighoulFlipCondition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsMainPhase()
+end
