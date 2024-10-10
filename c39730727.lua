@@ -39,11 +39,10 @@ function c39730727.drfilter2(c,tp)
 	return c:IsType(TYPE_EFFECT) and c:IsSummonPlayer(1-tp) and c:IsFaceup()
 end
 function c39730727.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c39730727.drfilter1,tp,LOCATION_MZONE,0,1,nil)
-		and eg:IsExists(c39730727.drfilter2,1,nil,tp)
+	return eg:IsExists(c39730727.drfilter2,1,nil,tp)
 end
 function c39730727.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) and Duel.IsExistingMatchingCard(c39730727.drfilter1,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(2)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
