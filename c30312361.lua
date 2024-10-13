@@ -38,7 +38,7 @@ function c30312361.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)==1 and c:IsRelateToEffect(e) and c:IsFaceup() then
 		--copy name, base atk
-		local code=tc:GetOriginalCode()
+		local code=tc:GetOriginalCodeRule()
 		local ba=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
