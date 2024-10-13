@@ -49,7 +49,7 @@ function s.filter(c,tp)
 	return c:IsControler(tp)
 end
 function s.costfilter(c)
-	return c:IsSetCard(0xb5) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
+	return c:IsSetCard(0xb5) and c:IsType(TYPE_MONSTER) and not c:IsPublic() and Duel.IsExistingMatchingCard(aux.NOT(Card.IsRace),c:GetControler(),LOCATION_DECK,0,1,nil,c:GetRace())
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_HAND,0,1,nil) end
