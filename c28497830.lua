@@ -19,7 +19,7 @@ function s.initial_effect(c)
 	--adjust(disablecheck)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetCode(EVENT_ADJUST)
 	e2:SetRange(0xff)
 	e2:SetLabelObject(e1)
@@ -41,8 +41,10 @@ end
 function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=e:GetLabelObject()
 	if Duel.GetLP(tp)<Duel.GetLP(1-tp) then
-		e:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CAN_FORBIDDEN)
-	else e:SetProperty(EFFECT_FLAG_DELAY) end
+		e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CAN_FORBIDDEN)
+	else
+		e1:SetProperty(EFFECT_FLAG_DELAY)
+	end
 end
 function s.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
