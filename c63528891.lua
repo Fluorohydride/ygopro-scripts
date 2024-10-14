@@ -1,4 +1,5 @@
 --バックアップ・セクレタリー
+---@param c Card
 function c63528891.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴォルカニック・デビル
+---@param c Card
 function c32543380.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

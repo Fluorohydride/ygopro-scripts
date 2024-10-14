@@ -1,4 +1,5 @@
 --影六武衆－フウマ
+---@param c Card
 function c71207871.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

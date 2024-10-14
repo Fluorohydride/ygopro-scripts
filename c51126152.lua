@@ -1,4 +1,5 @@
 --深夜急行騎士ナイト・エクスプレス・ナイト
+---@param c Card
 function c51126152.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

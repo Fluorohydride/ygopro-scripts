@@ -1,4 +1,5 @@
 --雛神鳥シムルグ
+---@param c Card
 function c50820852.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ライトドラゴン＠イグニスター
+---@param c Card
 function c61399402.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

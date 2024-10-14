@@ -1,4 +1,5 @@
 --幻蝶の護り
+---@param c Card
 function c63630268.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エレキリン
+---@param c Card
 function c402568.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

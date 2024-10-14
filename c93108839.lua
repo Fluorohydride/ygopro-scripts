@@ -1,4 +1,5 @@
 --No.58 炎圧鬼バーナー・バイサー
+---@param c Card
 function c93108839.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

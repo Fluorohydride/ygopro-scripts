@@ -1,4 +1,5 @@
 --No.41 泥睡魔獣バグースカ
+---@param c Card
 function c90590303.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

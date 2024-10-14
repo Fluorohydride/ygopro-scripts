@@ -1,4 +1,5 @@
 --ラスト・リゾート
+---@param c Card
 function c97970833.initial_effect(c)
 	aux.AddCodeList(c,34487429)
 	--Activate

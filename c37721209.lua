@@ -1,4 +1,5 @@
 --海竜－ダイダロス
+---@param c Card
 function c37721209.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--destroy

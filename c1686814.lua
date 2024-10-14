@@ -1,4 +1,5 @@
 --アルティマヤ・ツィオルキン
+---@param c Card
 function c1686814.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

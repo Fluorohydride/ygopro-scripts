@@ -1,4 +1,5 @@
 --超能力増幅器
+---@param c Card
 function c84653834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

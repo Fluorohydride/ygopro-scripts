@@ -1,4 +1,5 @@
 --昼夜の大火事
+---@param c Card
 function c19523799.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

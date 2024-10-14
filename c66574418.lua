@@ -1,4 +1,5 @@
 --伝説の黒石
+---@param c Card
 function c66574418.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

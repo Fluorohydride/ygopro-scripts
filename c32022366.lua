@@ -1,4 +1,5 @@
 --重力の斧－グラール
+---@param c Card
 function c32022366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

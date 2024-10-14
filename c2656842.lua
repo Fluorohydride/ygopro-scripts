@@ -1,4 +1,5 @@
 --騎甲虫スカウト・バギー
+---@param c Card
 function c2656842.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ディフェンスゾーン
+---@param c Card
 function c59687381.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

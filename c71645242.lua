@@ -1,4 +1,5 @@
 --ブラック・ガーデン
+---@param c Card
 function c71645242.initial_effect(c)
 	aux.AddCodeList(c,71645242)
 	--Activate

@@ -1,4 +1,5 @@
 --ギミック・パペット－ハンプティ・ダンプティ
+---@param c Card
 function c8226374.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

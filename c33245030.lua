@@ -1,4 +1,5 @@
 --クリボール
+---@param c Card
 function c33245030.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --7つの武器を持つハンター
+---@param c Card
 function c1525329.initial_effect(c)
 	--arm
 	local e1=Effect.CreateEffect(c)

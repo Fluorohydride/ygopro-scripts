@@ -1,4 +1,5 @@
 --LL－インディペンデント・ナイチンゲール
+---@param c Card
 function c76815942.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,48608796,aux.FilterBoolFunction(Card.IsFusionSetCard,0xf7),1,true,true)

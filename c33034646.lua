@@ -1,4 +1,5 @@
 --機甲忍者フレイム
+---@param c Card
 function c33034646.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

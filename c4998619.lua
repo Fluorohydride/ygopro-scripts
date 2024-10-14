@@ -1,4 +1,5 @@
 --方界超獣バスター・ガンダイル
+---@param c Card
 function c4998619.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

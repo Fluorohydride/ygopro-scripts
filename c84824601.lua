@@ -1,4 +1,5 @@
 --ボタニティ・ガール
+---@param c Card
 function c84824601.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

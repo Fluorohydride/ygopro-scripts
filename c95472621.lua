@@ -1,4 +1,5 @@
 --大火葬
+---@param c Card
 function c95472621.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

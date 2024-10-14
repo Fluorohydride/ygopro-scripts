@@ -1,4 +1,5 @@
 --仮面魔道士
+---@param c Card
 function c10189126.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

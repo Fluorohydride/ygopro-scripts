@@ -1,4 +1,5 @@
 --ダーク・バグ
+---@param c Card
 function c44341034.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

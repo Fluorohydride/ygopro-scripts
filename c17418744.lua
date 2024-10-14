@@ -1,4 +1,5 @@
 --フォトン・サンクチュアリ
+---@param c Card
 function c17418744.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

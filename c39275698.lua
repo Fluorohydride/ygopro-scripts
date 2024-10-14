@@ -1,4 +1,5 @@
 --ハーピィの羽根休め
+---@param c Card
 function c39275698.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

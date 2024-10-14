@@ -1,4 +1,5 @@
 --凶導の白聖骸
+---@param c Card
 function c48654323.initial_effect(c)
 	c:EnableReviveLimit()
 	--atkup

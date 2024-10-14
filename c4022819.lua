@@ -1,4 +1,5 @@
 --聖刻龍－アセトドラゴン
+---@param c Card
 function c4022819.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

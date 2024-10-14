@@ -1,4 +1,5 @@
 --ディスクライダー
+---@param c Card
 function c41113025.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

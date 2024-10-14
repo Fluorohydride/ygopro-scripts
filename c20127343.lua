@@ -1,4 +1,5 @@
 --A・ジェネクス・チェンジャー
+---@param c Card
 function c20127343.initial_effect(c)
 	--att change
 	local e1=Effect.CreateEffect(c)

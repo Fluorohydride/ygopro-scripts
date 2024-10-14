@@ -1,4 +1,5 @@
 --ギガンテック・ファイター／バスター
+---@param c Card
 function c38898779.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()

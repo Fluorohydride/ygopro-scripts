@@ -1,4 +1,5 @@
 --魔導法皇 ハイロン
+---@param c Card
 function c92918648.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),7,2)

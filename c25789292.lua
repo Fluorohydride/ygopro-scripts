@@ -1,4 +1,5 @@
 --禁じられた聖杯
+---@param c Card
 function c25789292.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

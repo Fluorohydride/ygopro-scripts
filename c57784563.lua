@@ -1,4 +1,5 @@
 --闇魔界の戦士長 ダークソード
+---@param c Card
 function c57784563.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --黒魔術の秘儀
+---@param c Card
 function c59514116.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate

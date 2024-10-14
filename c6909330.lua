@@ -1,4 +1,5 @@
 --魂縛門
+---@param c Card
 function c6909330.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

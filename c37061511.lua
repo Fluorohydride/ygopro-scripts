@@ -1,4 +1,5 @@
 --ウォーターリヴァイアサン＠イグニスター
+---@param c Card
 function c37061511.initial_effect(c)
 	c:EnableReviveLimit()
 	--to hand

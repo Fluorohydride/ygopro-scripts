@@ -1,4 +1,5 @@
 --Dragoon D-END
+---@param c Card
 function c76263644.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

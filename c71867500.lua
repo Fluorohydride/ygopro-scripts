@@ -1,4 +1,5 @@
 --ドラゴン・復活の狂奏
+---@param c Card
 function c71867500.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --デザートストーム
+---@param c Card
 function c45778932.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

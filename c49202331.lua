@@ -1,4 +1,5 @@
 --CX 超巨大空中要塞バビロン
+---@param c Card
 function c49202331.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,11,3)

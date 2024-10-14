@@ -1,4 +1,5 @@
 --リンクアップル
+---@param c Card
 function c7925734.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

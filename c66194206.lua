@@ -1,4 +1,5 @@
 --ライトロードの裁き
+---@param c Card
 function c66194206.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

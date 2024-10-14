@@ -1,4 +1,5 @@
 --バスター・テレポート
+---@param c Card
 function c29863101.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

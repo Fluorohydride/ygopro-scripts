@@ -1,4 +1,5 @@
 --ジェムナイト・ファントムルーツ
+---@param c Card
 function c24484270.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x47),2,2)

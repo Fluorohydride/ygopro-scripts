@@ -1,4 +1,5 @@
 --不屈闘士レイレイ
+---@param c Card
 function c84173492.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --黒曜岩竜
+---@param c Card
 function c90464188.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

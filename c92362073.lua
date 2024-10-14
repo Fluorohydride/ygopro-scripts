@@ -1,4 +1,5 @@
 --銀河衛竜
+---@param c Card
 function c92362073.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

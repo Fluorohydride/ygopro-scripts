@@ -1,4 +1,5 @@
 --竜角の狩猟者
+---@param c Card
 function c21970285.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

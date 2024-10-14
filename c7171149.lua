@@ -1,4 +1,5 @@
 --トゥーン・アンティーク・ギアゴーレム
+---@param c Card
 function c7171149.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

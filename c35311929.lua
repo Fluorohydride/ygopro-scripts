@@ -1,4 +1,5 @@
 --陽竜果フォンリー
+---@param c Card
 function c35311929.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

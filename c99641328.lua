@@ -1,4 +1,5 @@
 --森羅の影胞子 ストール
+---@param c Card
 function c99641328.initial_effect(c)
 	--deck
 	local e1=Effect.CreateEffect(c)

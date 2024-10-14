@@ -1,4 +1,5 @@
 --ふわんだりぃず×とっかん
+---@param c Card
 function c17827173.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --妖仙獣 侍郎風
+---@param c Card
 function c58981727.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サンダーエンド・ドラゴン
+---@param c Card
 function c698785.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsXyzType,TYPE_NORMAL),8,2)

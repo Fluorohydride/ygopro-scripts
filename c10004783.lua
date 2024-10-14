@@ -1,4 +1,5 @@
 --宝玉の解放
+---@param c Card
 function c10004783.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

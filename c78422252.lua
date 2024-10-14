@@ -1,4 +1,5 @@
 --XX－セイバー フラムナイト
+---@param c Card
 function c78422252.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

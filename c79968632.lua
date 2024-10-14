@@ -1,4 +1,5 @@
 --六武衆の影忍術
+---@param c Card
 function c79968632.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

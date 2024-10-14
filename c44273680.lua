@@ -1,4 +1,5 @@
 --光天使ブックス
+---@param c Card
 function c44273680.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

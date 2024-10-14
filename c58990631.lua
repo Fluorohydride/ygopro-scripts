@@ -1,4 +1,5 @@
 --オートマチック・レーザー
+---@param c Card
 function c58990631.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate(summon)

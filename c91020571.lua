@@ -1,4 +1,5 @@
 --地征竜－リアクタン
+---@param c Card
 function c91020571.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

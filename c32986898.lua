@@ -1,4 +1,5 @@
 --粛星の鋼機
+---@param c Card
 function c32986898.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_LINK)),3,3)

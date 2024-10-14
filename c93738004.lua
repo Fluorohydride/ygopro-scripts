@@ -1,4 +1,5 @@
 --空牙団の孤高 サジータ
+---@param c Card
 function c93738004.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

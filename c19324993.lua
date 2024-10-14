@@ -1,4 +1,5 @@
 --X・HERO ヘル・デバイサー
+---@param c Card
 function c19324993.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x8),2,2)

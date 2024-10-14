@@ -1,4 +1,5 @@
 --ブローニング・パワー
+---@param c Card
 function c59718521.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

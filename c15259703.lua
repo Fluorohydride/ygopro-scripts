@@ -1,4 +1,5 @@
 --トゥーン・ワールド
+---@param c Card
 function c15259703.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

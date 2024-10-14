@@ -1,4 +1,5 @@
 --Uk－P.U.N.K.アメイジング・ドラゴン
+---@param c Card
 function c44708154.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

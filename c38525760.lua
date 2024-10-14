@@ -1,4 +1,5 @@
 --陽炎獣 サーベラス
+---@param c Card
 function c38525760.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

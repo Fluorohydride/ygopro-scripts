@@ -1,4 +1,5 @@
 --鍵戦士キーマン
+---@param c Card
 function c23168060.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

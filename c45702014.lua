@@ -1,4 +1,5 @@
 --エレメントセイバー・モーレフ
+---@param c Card
 function c45702014.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ブンボーグ・ジェット
+---@param c Card
 function c89544521.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

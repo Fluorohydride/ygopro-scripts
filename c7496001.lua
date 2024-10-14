@@ -1,4 +1,5 @@
 --スプリガンズ・ブーティー
+---@param c Card
 function c7496001.initial_effect(c)
 	aux.AddCodeList(c,60884672)
 	--Activate

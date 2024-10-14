@@ -1,5 +1,6 @@
 --ヒロイック・エンヴォイ
 local s,id,o=GetID()
+---@param c Card
 function c45337544.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔法の歯車
+---@param c Card
 function c313513.initial_effect(c)
 	aux.AddCodeList(c,83104731)
 	--Activate

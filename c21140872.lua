@@ -1,4 +1,5 @@
 --真紅眼の黒刃竜
+---@param c Card
 function c21140872.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

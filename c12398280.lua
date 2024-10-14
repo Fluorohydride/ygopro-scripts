@@ -1,4 +1,5 @@
 --勝利の導き手フレイヤ
+---@param c Card
 function c12398280.initial_effect(c)
 	--atk def
 	local e1=Effect.CreateEffect(c)

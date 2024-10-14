@@ -1,4 +1,5 @@
 --デストラクト・ポーション
+---@param c Card
 function c18739764.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

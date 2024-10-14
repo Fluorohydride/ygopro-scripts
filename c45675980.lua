@@ -1,4 +1,5 @@
 --烙印の即凶劇
+---@param c Card
 function c45675980.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

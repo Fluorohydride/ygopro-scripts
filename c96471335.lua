@@ -1,4 +1,5 @@
 --幻想の黒魔導師
+---@param c Card
 function c96471335.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2,c96471335.ovfilter,aux.Stringid(96471335,0))

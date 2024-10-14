@@ -1,4 +1,5 @@
 --ワーニングポイント
+---@param c Card
 function c11429811.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

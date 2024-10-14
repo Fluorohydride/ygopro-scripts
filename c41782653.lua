@@ -1,4 +1,5 @@
 --オーバーテクス・ゴアトルス
+---@param c Card
 function c41782653.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

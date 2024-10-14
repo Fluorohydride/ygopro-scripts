@@ -1,4 +1,5 @@
 --竜輝巧－バンα
+---@param c Card
 function c97148796.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

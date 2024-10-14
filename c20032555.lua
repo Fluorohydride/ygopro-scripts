@@ -1,4 +1,5 @@
 --ギミック・パペット－ボム・エッグ
+---@param c Card
 function c20032555.initial_effect(c)
 	--effects
 	local e1=Effect.CreateEffect(c)

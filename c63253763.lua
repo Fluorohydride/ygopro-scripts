@@ -1,4 +1,5 @@
 --エーリアン・リベンジャー
+---@param c Card
 function c63253763.initial_effect(c)
 	c:SetUniqueOnField(1,0,63253763)
 	--special summon

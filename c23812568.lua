@@ -1,4 +1,5 @@
 --アディショナル・ミラー・レベル7
+---@param c Card
 function c23812568.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
 	--Activate

@@ -1,4 +1,5 @@
 --ヴァイロン・ヴァンガード
+---@param c Card
 function c87836938.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

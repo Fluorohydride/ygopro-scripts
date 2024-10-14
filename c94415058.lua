@@ -1,4 +1,5 @@
 --星読みの魔術師
+---@param c Card
 function c94415058.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

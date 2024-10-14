@@ -1,4 +1,5 @@
 --氷結界の龍 トリシューラ
+---@param c Card
 function c52687916.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2)

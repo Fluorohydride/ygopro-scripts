@@ -1,4 +1,5 @@
 --聖霊獣騎 ガイアペライオ
+---@param c Card
 function c56655675.initial_effect(c)
 	c:EnableReviveLimit()
 	local mat_list={}

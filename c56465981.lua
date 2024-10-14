@@ -1,4 +1,5 @@
 --龍相剣現
+---@param c Card
 function c56465981.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

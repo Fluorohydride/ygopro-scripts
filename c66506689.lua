@@ -1,4 +1,5 @@
 --ブリキの大公
+---@param c Card
 function c66506689.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

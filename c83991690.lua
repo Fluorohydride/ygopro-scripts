@@ -1,4 +1,5 @@
 --ブーテン
+---@param c Card
 function c83991690.initial_effect(c)
 	--tuner
 	local e1=Effect.CreateEffect(c)

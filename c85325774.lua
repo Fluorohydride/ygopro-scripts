@@ -1,4 +1,5 @@
 --暗黒界の援軍
+---@param c Card
 function c85325774.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

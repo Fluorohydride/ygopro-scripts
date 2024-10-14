@@ -1,4 +1,5 @@
 --迷宮に潜むシャドウ・グール
+---@param c Card
 function c62411811.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

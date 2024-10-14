@@ -1,4 +1,5 @@
 --疾風のドラグニティ
+---@param c Card
 function c89450409.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --古代の機械蘇生
+---@param c Card
 function c47482043.initial_effect(c)
 	c:SetUniqueOnField(1,0,47482043)
 	--activate

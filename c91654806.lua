@@ -1,4 +1,5 @@
 --宇宙との交信
+---@param c Card
 function c91654806.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--activate

@@ -1,4 +1,5 @@
 --転生炎獣ヴァイオレットキマイラ
+---@param c Card
 function c37261776.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

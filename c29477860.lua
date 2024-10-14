@@ -1,4 +1,5 @@
 --螺旋砲撃
+---@param c Card
 function c29477860.initial_effect(c)
 	aux.AddCodeList(c,66889139)
 	--activate

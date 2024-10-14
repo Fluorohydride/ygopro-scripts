@@ -1,4 +1,5 @@
 --フェイバリット・ヒーロー
+---@param c Card
 function c11881272.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

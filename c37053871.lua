@@ -1,4 +1,5 @@
 --アストラルバリア
+---@param c Card
 function c37053871.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

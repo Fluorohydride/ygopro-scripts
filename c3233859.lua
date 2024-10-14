@@ -1,4 +1,5 @@
 --サイコウィールダー
+---@param c Card
 function c3233859.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

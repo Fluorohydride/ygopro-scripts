@@ -1,4 +1,5 @@
 --チェーン・リゾネーター
+---@param c Card
 function c13764881.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --SPYGAL－ミスティ
+---@param c Card
 function c94096018.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

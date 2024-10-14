@@ -1,4 +1,5 @@
 --ゴラ・タートル
+---@param c Card
 function c80233946.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

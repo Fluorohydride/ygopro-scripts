@@ -1,4 +1,5 @@
 --B・F－決戦のビッグ・バリスタ
+---@param c Card
 function c26443791.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

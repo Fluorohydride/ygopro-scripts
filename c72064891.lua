@@ -1,5 +1,6 @@
 --魔道騎竜カース・オブ・ドラゴン
 --not fully implemented
+---@param c Card
 function c72064891.initial_effect(c)
 	aux.AddCodeList(c,66889139)
 	--fusion material

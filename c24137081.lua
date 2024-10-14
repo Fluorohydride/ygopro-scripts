@@ -1,4 +1,5 @@
 --ドリル・バーニカル
+---@param c Card
 function c24137081.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

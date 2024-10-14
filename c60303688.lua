@@ -1,4 +1,5 @@
 --教導の聖女エクレシア
+---@param c Card
 function c60303688.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

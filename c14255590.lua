@@ -1,4 +1,5 @@
 --増幅する悪意
+---@param c Card
 function c14255590.initial_effect(c)
 	--discard deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --外神アザトート
+---@param c Card
 function c34945480.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3,c34945480.ovfilter,aux.Stringid(34945480,1))

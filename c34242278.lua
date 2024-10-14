@@ -1,4 +1,5 @@
 --聖騎士の盾持ち
+---@param c Card
 function c34242278.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

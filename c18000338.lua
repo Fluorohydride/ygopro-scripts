@@ -1,4 +1,5 @@
 --Re：EX
+---@param c Card
 function c18000338.initial_effect(c)
 	--increase atk/def
 	local e1=Effect.CreateEffect(c)

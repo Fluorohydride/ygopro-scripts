@@ -1,4 +1,5 @@
 --堕天使テスカトリポカ
+---@param c Card
 function c88234365.initial_effect(c)
 	c:SetSPSummonOnce(88234365)
 	--destroy replace

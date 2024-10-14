@@ -1,4 +1,5 @@
 --A・ジェネクス・クラッシャー
+---@param c Card
 function c27827903.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

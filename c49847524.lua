@@ -1,4 +1,5 @@
 --フレイム・アドミニスター
+---@param c Card
 function c49847524.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,0,49847524)

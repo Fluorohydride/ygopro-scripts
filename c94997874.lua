@@ -1,4 +1,5 @@
 --聖占術姫タロットレイ
+---@param c Card
 function c94997874.initial_effect(c)
 	c:EnableReviveLimit()
 	--position change

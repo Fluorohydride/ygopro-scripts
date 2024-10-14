@@ -1,4 +1,5 @@
 --悪魔の嘆き
+---@param c Card
 function c60743819.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --覇王門零
+---@param c Card
 function c96227613.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	aux.EnablePendulumAttribute(c)

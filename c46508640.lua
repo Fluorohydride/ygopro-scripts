@@ -1,4 +1,5 @@
 --龍脈に棲む者
+---@param c Card
 function c46508640.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

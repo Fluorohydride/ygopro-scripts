@@ -1,4 +1,5 @@
 --ドシン＠イグニスター
+---@param c Card
 function c78751195.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

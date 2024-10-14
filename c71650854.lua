@@ -1,4 +1,5 @@
 --半魔導帯域
+---@param c Card
 function c71650854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

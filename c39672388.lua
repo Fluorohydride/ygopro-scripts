@@ -1,4 +1,5 @@
 --エヴォルダー・ダルウィノス
+---@param c Card
 function c39672388.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --転生炎獣ゼブロイドX
+---@param c Card
 function c44161893.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ペンデュラムーチョ
+---@param c Card
 function c18210764.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

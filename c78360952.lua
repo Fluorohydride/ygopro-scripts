@@ -1,4 +1,5 @@
 --白昼のスナイパー
+---@param c Card
 function c78360952.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

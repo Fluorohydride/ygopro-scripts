@@ -1,4 +1,5 @@
 --墓守の長槍兵
+---@param c Card
 function c63695531.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

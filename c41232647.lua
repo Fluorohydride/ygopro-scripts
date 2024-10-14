@@ -1,4 +1,5 @@
 --ドラゴンメイド・ハスキー
+---@param c Card
 function c41232647.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x133),aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),true)

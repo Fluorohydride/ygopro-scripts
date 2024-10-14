@@ -1,4 +1,5 @@
 --ダーク・ヴァージャー
+---@param c Card
 function c50164989.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

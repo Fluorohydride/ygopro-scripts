@@ -1,4 +1,5 @@
 --リカバリー・ソーサラー
+---@param c Card
 function c76232522.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --キックファイア
+---@param c Card
 function c11501629.initial_effect(c)
 	c:EnableCounterPermit(0x2d)
 	--Activate

@@ -1,5 +1,6 @@
 --スプリガンズ・シップ エクスブロウラー
 local s,id,o=GetID()
+---@param c Card
 function c62941499.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2,nil,nil,99)

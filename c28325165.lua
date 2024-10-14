@@ -1,4 +1,5 @@
 --水物語－ウラシマ
+---@param c Card
 function c28325165.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

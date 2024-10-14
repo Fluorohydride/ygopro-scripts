@@ -1,4 +1,5 @@
 --混沌空間
+---@param c Card
 function c94243005.initial_effect(c)
 	c:EnableCounterPermit(0x13)
 	--Activate

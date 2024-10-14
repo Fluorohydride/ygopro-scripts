@@ -1,4 +1,5 @@
 --暗黒界の刺客 カーキ
+---@param c Card
 function c25847467.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

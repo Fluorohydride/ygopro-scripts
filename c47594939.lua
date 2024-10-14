@@ -1,4 +1,5 @@
 --召喚制限－ディスコードセクター
+---@param c Card
 function c47594939.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

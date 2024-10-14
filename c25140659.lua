@@ -1,4 +1,5 @@
 --未界域調査報告
+---@param c Card
 function c25140659.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

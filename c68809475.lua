@@ -1,4 +1,5 @@
 --コアキメイル・スピード
+---@param c Card
 function c68809475.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

@@ -1,4 +1,5 @@
 --呪術抹消
+---@param c Card
 function c29735721.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

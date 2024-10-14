@@ -1,4 +1,5 @@
 --影光の聖選士
+---@param c Card
 function c23912837.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

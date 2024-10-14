@@ -1,4 +1,5 @@
 --紅蓮魔竜の壺
+---@param c Card
 function c87614611.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--Activate

@@ -1,4 +1,5 @@
 --ゴゴゴアリステラ＆デクシア
+---@param c Card
 function c91718579.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

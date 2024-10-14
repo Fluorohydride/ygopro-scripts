@@ -1,4 +1,5 @@
 --アンプリファイヤー
+---@param c Card
 function c75304793.initial_effect(c)
 	c:EnableCounterPermit(0x35)
 	--Activate

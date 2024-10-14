@@ -1,4 +1,5 @@
 --白銀の城の召使い アリアーヌ
+---@param c Card
 function c75730490.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

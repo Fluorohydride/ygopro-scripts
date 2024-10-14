@@ -1,4 +1,5 @@
 --ハイ・スピード・リレベル
+---@param c Card
 function c15555120.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

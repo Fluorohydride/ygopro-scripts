@@ -1,4 +1,5 @@
 --女神の聖弓－アルテミス
+---@param c Card
 function c83743222.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

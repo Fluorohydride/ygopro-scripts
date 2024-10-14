@@ -1,4 +1,5 @@
 --ミミミック
+---@param c Card
 function c45651298.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

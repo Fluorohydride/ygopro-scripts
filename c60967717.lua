@@ -1,4 +1,5 @@
 --ミュートリア超個体系
+---@param c Card
 function c60967717.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

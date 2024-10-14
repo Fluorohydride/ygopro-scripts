@@ -1,4 +1,5 @@
 --ドレミコード・フォーマル
+---@param c Card
 function c92043888.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

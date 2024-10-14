@@ -1,4 +1,5 @@
 --ベクター・スケア・デーモン
+---@param c Card
 function c13452889.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --セフィラの神撃
+---@param c Card
 function c35561352.initial_effect(c)
 	--Activate(effect)
 	local e1=Effect.CreateEffect(c)

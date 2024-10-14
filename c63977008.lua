@@ -1,4 +1,5 @@
 --ジャンク・シンクロン
+---@param c Card
 function c63977008.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

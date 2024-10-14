@@ -1,4 +1,5 @@
 --水晶機巧－プラシレータ
+---@param c Card
 function c56049970.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --フルハウス
+---@param c Card
 function c45178472.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

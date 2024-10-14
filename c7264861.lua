@@ -1,4 +1,5 @@
 --インフェルニティ・ビースト
+---@param c Card
 function c7264861.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

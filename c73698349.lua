@@ -1,4 +1,5 @@
 --ジャイアント・オーク
+---@param c Card
 function c73698349.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

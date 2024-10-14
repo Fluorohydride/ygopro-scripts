@@ -1,4 +1,5 @@
 --ガラスの鎧
+---@param c Card
 function c36868108.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

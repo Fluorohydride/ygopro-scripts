@@ -1,4 +1,5 @@
 --メガリス・プロモーション
+---@param c Card
 function c40204620.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

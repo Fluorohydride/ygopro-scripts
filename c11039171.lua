@@ -1,4 +1,5 @@
 --デストーイ・シザー・ウルフ
+---@param c Card
 function c11039171.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --熱血指導王ジャイアントレーナー
+---@param c Card
 function c30741334.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3)

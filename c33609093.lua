@@ -1,4 +1,5 @@
 --戦華史略－十万之矢
+---@param c Card
 function c33609093.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

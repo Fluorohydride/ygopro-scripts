@@ -1,4 +1,5 @@
 --ホルスの加護－ケベンセヌフ
+---@param c Card
 function c74725513.initial_effect(c)
 	aux.AddCodeList(c,16528181)
 	--special summon

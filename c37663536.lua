@@ -1,4 +1,5 @@
 --古代の機械超巨人
+---@param c Card
 function c37663536.initial_effect(c)
 	aux.AddCodeList(c,83104731)
 	c:EnableReviveLimit()

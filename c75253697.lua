@@ -1,4 +1,5 @@
 --No.72 ラインモンスター チャリオッツ・飛車
+---@param c Card
 function c75253697.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

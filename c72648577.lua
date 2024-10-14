@@ -1,4 +1,5 @@
 --DDDの人事権
+---@param c Card
 function c72648577.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

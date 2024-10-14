@@ -1,4 +1,5 @@
 --EMオッドアイズ・ユニコーン
+---@param c Card
 function c86157908.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

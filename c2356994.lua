@@ -1,4 +1,5 @@
 --偉大天狗
+---@param c Card
 function c2356994.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

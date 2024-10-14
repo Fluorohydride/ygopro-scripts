@@ -1,4 +1,5 @@
 --メタル・シューター
+---@param c Card
 function c7200041.initial_effect(c)
 	c:EnableCounterPermit(0x26)
 	--summon success

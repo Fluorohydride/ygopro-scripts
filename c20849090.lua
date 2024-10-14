@@ -1,4 +1,5 @@
 --Kozmo－フォアランナー
+---@param c Card
 function c20849090.initial_effect(c)
 	--cannot be targeted
 	local e1=Effect.CreateEffect(c)

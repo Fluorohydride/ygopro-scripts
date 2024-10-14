@@ -1,4 +1,5 @@
 --終焉龍 カオス・エンペラー
+---@param c Card
 function c4538826.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c)

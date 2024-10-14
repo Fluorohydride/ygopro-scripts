@@ -1,4 +1,5 @@
 --ヴォルカニック・バレット
+---@param c Card
 function c33365932.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

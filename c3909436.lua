@@ -1,4 +1,5 @@
 --ヴェンデット・バスタード
+---@param c Card
 function c3909436.initial_effect(c)
 	c:EnableReviveLimit()
 	--act limit

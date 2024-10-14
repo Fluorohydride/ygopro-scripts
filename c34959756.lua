@@ -1,4 +1,5 @@
 --リビング・フォッシル
+---@param c Card
 function c34959756.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

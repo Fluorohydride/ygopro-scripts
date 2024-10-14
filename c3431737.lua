@@ -1,4 +1,5 @@
 --バスター・ビースト
+---@param c Card
 function c3431737.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--search

@@ -1,4 +1,5 @@
 --プロミネンス・ハンド
+---@param c Card
 function c21414674.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サモン・ダイス
+---@param c Card
 function c41139112.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

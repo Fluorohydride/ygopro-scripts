@@ -1,4 +1,5 @@
 --ニードル・ボール
+---@param c Card
 function c94230224.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

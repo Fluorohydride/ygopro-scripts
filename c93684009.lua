@@ -1,4 +1,5 @@
 --剣闘排斥波
+---@param c Card
 function c93684009.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

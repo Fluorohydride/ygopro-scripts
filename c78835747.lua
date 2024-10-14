@@ -1,4 +1,5 @@
 --EMカレイドスコーピオン
+---@param c Card
 function c78835747.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

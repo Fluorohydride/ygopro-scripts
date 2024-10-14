@@ -1,4 +1,5 @@
 --海晶乙女シーエンジェル
+---@param c Card
 function c30691817.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c30691817.mfilter,1,1)

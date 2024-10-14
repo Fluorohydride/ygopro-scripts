@@ -1,4 +1,5 @@
 --甲虫装機 ギガウィービル
+---@param c Card
 function c21977828.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

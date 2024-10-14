@@ -1,4 +1,5 @@
 --ダイガスタ・ラプラムピリカ
+---@param c Card
 function c76937326.initial_effect(c)
 	c:SetSPSummonOnce(76937326)
 	--synchro summon

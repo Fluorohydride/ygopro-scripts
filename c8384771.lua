@@ -1,4 +1,5 @@
 --EMゴムゴムートン
+---@param c Card
 function c8384771.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--indes

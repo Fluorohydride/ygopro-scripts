@@ -1,4 +1,5 @@
 --ストーム・サモナー
+---@param c Card
 function c15935204.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

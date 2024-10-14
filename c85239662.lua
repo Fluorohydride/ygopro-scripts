@@ -1,4 +1,5 @@
 --神秘の妖精 エルフィリア
+---@param c Card
 function c85239662.initial_effect(c)
 	--xyz limit
 	local e2=Effect.CreateEffect(c)

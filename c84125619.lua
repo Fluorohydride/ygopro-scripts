@@ -1,4 +1,5 @@
 --刺し違GUY
+---@param c Card
 function c84125619.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

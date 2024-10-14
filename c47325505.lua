@@ -1,4 +1,5 @@
 --化石調査
+---@param c Card
 function c47325505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

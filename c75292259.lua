@@ -1,4 +1,5 @@
 --ポセイドン・オオカブト
+---@param c Card
 function c75292259.initial_effect(c)
 	--chain attack
 	local e1=Effect.CreateEffect(c)

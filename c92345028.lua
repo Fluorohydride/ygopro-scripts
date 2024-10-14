@@ -1,4 +1,5 @@
 --フューリー・オブ・ファイア
+---@param c Card
 function c92345028.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
 	--Activate

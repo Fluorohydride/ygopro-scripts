@@ -1,4 +1,5 @@
 --森の聖獣 ヴァレリフォーン
+---@param c Card
 function c24096499.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

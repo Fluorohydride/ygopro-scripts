@@ -1,4 +1,5 @@
 --ビークロイド・コネクション・ゾーン
+---@param c Card
 function c23299957.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

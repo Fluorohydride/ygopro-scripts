@@ -1,4 +1,5 @@
 --破滅の天使ルイン
+---@param c Card
 function c50139096.initial_effect(c)
 	c:EnableReviveLimit()
 	--multi attack

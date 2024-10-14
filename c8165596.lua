@@ -1,4 +1,5 @@
 --No.90 銀河眼の光子卿
+---@param c Card
 function c8165596.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

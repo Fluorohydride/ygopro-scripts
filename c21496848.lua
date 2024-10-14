@@ -1,4 +1,5 @@
 --イビリチュア・テトラオーグル
+---@param c Card
 function c21496848.initial_effect(c)
 	c:EnableReviveLimit()
 	--send to grave

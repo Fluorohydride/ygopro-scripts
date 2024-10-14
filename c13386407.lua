@@ -1,4 +1,5 @@
 --ラヴェナス・ヴェンデット
+---@param c Card
 function c13386407.initial_effect(c)
 	aux.AddCodeList(c,29348048)
 	--activate

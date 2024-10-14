@@ -1,4 +1,5 @@
 --Evil★Twin’s トラブル・サニー
+---@param c Card
 function c93672138.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

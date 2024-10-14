@@ -1,4 +1,5 @@
 --クロノダイバー・パーペチュア
+---@param c Card
 function c59208943.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

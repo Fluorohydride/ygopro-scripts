@@ -1,4 +1,5 @@
 --円盤闘技場セリオンズ・リング
+---@param c Card
 function c84792926.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

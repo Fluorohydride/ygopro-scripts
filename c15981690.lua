@@ -1,4 +1,5 @@
 --カーボネドン
+---@param c Card
 function c15981690.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コアキメイル・サプライヤー
+---@param c Card
 function c80839052.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--special summon

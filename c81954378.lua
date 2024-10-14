@@ -1,4 +1,5 @@
 --死神の大鎌－デスサイス
+---@param c Card
 function c81954378.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

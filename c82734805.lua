@@ -1,4 +1,5 @@
 --インフェルノイド・ティエラ
+---@param c Card
 function c82734805.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

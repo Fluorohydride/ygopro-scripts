@@ -1,4 +1,5 @@
 --ダメージ・トランスレーション
+---@param c Card
 function c35268887.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

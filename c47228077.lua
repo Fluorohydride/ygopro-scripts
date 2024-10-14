@@ -1,4 +1,5 @@
 --ヴァイロン・ペンタクロ
+---@param c Card
 function c47228077.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ナイトエンド・アドミニストレーター
+---@param c Card
 function c3779493.initial_effect(c)
 	aux.AddMaterialCodeList(c,36107810)
 	--synchro summon

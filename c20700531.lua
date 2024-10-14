@@ -1,4 +1,5 @@
 --氷結界の修験者
+---@param c Card
 function c20700531.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

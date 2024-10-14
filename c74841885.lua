@@ -1,4 +1,5 @@
 --天魔神 インヴィシル
+---@param c Card
 function c74841885.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

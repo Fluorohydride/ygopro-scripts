@@ -1,4 +1,5 @@
 --破壊剣士の伴竜
+---@param c Card
 function c49823708.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

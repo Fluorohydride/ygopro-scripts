@@ -1,4 +1,5 @@
 --BF－暁のシロッコ
+---@param c Card
 function c75498415.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --TG ハイパー・ライブラリアン
+---@param c Card
 function c90953320.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

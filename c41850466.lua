@@ -1,4 +1,5 @@
 --ヌメロン・カオス・リチューアル
+---@param c Card
 function c41850466.initial_effect(c)
 	aux.AddCodeList(c,79747096,41418852,89477759)
 	--Activate/Special Summon

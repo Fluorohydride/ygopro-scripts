@@ -1,4 +1,5 @@
 --増殖するG
+---@param c Card
 function c23434538.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

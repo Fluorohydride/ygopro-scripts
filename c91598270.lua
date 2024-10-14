@@ -1,4 +1,5 @@
 --ソドレミコード・グレーシア
+---@param c Card
 function c91598270.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

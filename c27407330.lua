@@ -1,4 +1,5 @@
 --ライトレイ グレファー
+---@param c Card
 function c27407330.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

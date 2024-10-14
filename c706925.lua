@@ -1,4 +1,5 @@
 --海皇の狙撃兵
+---@param c Card
 function c706925.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

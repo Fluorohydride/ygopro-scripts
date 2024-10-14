@@ -1,4 +1,5 @@
 --閃刀機－シャークキャノン
+---@param c Card
 function c51227866.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

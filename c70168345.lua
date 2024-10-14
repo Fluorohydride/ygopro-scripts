@@ -1,4 +1,5 @@
 --黒・魔・導・連・弾
+---@param c Card
 function c70168345.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate

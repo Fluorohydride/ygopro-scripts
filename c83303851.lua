@@ -1,4 +1,5 @@
 --DDD極智王カオス・アポカリプス
+---@param c Card
 function c83303851.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --スプリガンズ・ブラスト！
+---@param c Card
 function c10584050.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

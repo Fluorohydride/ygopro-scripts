@@ -1,4 +1,5 @@
 --ROMクラウディア
+---@param c Card
 function c44956694.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

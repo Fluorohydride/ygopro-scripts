@@ -1,4 +1,5 @@
 --しらうおの軍貫
+---@param c Card
 function c78362751.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

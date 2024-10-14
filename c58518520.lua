@@ -1,4 +1,5 @@
 --クリア・エフェクター
+---@param c Card
 function c58518520.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

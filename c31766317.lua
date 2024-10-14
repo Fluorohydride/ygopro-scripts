@@ -1,4 +1,5 @@
 --ヘル・エンプレス・デーモン
+---@param c Card
 function c31766317.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

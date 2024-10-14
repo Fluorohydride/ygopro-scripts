@@ -1,4 +1,5 @@
 --闇からの呼び声
+---@param c Card
 function c78637313.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

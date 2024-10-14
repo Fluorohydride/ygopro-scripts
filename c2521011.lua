@@ -1,4 +1,5 @@
 --威炎星－ヒエンシャク
+---@param c Card
 function c2521011.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

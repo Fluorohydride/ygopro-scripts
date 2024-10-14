@@ -1,4 +1,5 @@
 --教導の天啓アディン
+---@param c Card
 function c33296432.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

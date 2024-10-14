@@ -1,4 +1,5 @@
 --フェザー・ウィンド・アタック
+---@param c Card
 function c94681654.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

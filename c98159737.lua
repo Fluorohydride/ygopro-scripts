@@ -1,4 +1,5 @@
 --天威龍－アーダラ
+---@param c Card
 function c98159737.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

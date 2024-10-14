@@ -1,4 +1,5 @@
 --ヒーロー・ヘイロー
+---@param c Card
 function c26647858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

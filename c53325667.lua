@@ -1,4 +1,5 @@
 --ガーデン・ローズ・メイデン
+---@param c Card
 function c53325667.initial_effect(c)
 	aux.AddCodeList(c,71645242)
 	--synchro summon

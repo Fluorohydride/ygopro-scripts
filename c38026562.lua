@@ -1,4 +1,5 @@
 --超化合獣メタン・ハイド
+---@param c Card
 function c38026562.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsXyzType,TYPE_DUAL),8,2)

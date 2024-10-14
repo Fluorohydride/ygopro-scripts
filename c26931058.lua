@@ -1,4 +1,5 @@
 --フォーメーション・ユニオン
+---@param c Card
 function c26931058.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

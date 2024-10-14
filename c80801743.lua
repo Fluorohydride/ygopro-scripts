@@ -1,4 +1,5 @@
 --破械雙極
+---@param c Card
 function c80801743.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

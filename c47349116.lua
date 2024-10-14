@@ -1,4 +1,5 @@
 --星刻の魔術師
+---@param c Card
 function c47349116.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,c47349116.matfilter,4,2)

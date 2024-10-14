@@ -1,4 +1,5 @@
 --巨大戦艦 カバード・コア
+---@param c Card
 function c15317640.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--summon success

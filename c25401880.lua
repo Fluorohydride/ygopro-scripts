@@ -1,4 +1,5 @@
 --サイコパス
+---@param c Card
 function c25401880.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

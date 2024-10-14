@@ -1,4 +1,5 @@
 --パーペチュアルキングデーモン
+---@param c Card
 function c35606858.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

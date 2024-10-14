@@ -1,4 +1,5 @@
 --驚楽園の大使 ＜Bufo＞
+---@param c Card
 function c30829071.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

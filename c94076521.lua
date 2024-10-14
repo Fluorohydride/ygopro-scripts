@@ -1,4 +1,5 @@
 --水界の秘石－カトリン
+---@param c Card
 function c94076521.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

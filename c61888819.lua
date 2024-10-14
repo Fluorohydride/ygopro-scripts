@@ -1,5 +1,6 @@
 --インヴェルズ・オリジン
 --not fully implemented
+---@param c Card
 function c61888819.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xa),2,2)

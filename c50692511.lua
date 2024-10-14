@@ -1,4 +1,5 @@
 --RR－コール
+---@param c Card
 function c50692511.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

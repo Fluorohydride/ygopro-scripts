@@ -1,4 +1,5 @@
 --U.A.リベロスパイカー
+---@param c Card
 function c11637481.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

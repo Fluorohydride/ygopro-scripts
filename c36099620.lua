@@ -1,4 +1,5 @@
 --ジャスティス・ワールド
+---@param c Card
 function c36099620.initial_effect(c)
 	c:EnableCounterPermit(0x5)
 	--Activate

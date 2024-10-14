@@ -1,4 +1,5 @@
 --海皇の竜騎隊
+---@param c Card
 function c74311226.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

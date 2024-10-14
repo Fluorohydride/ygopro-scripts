@@ -1,4 +1,5 @@
 --FNo.0 未来皇ホープ－フューチャー・スラッシュ
+---@param c Card
 function c43490025.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

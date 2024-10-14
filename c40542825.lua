@@ -1,4 +1,5 @@
 --憑依装着－ライナ
+---@param c Card
 function c40542825.initial_effect(c)
 	--special summon proc
 	local e1=Effect.CreateEffect(c)

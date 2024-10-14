@@ -1,4 +1,5 @@
 --HSR快刀乱破ズール
+---@param c Card
 function c86943389.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --六武衆の理
+---@param c Card
 function c27178262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

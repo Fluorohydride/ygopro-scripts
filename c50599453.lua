@@ -1,4 +1,5 @@
 --枯鰈葉リプレース
+---@param c Card
 function c50599453.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

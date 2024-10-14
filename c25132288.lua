@@ -1,4 +1,5 @@
 --ライトエンド・ドラゴン
+---@param c Card
 function c25132288.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_LIGHT),1)

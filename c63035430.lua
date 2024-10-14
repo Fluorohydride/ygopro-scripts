@@ -1,4 +1,5 @@
 --摩天楼 －スカイスクレイパー－
+---@param c Card
 function c63035430.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

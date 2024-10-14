@@ -1,4 +1,5 @@
 --リターン・オブ・アンデット
+---@param c Card
 function c91742238.initial_effect(c)
 	--banish and summon
 	local e1=Effect.CreateEffect(c)

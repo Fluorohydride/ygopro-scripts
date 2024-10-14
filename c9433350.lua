@@ -1,4 +1,5 @@
 --Sin 青眼の白龍
+---@param c Card
 function c9433350.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	c:EnableReviveLimit()

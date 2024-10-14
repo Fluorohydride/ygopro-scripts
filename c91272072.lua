@@ -1,4 +1,5 @@
 --トリックスターバンド・ギタースイート
+---@param c Card
 function c91272072.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

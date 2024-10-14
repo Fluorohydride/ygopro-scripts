@@ -1,4 +1,5 @@
 --緊急儀式術
+---@param c Card
 function c38844957.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

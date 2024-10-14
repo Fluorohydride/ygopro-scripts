@@ -1,4 +1,5 @@
 --SNo.39 希望皇ホープ・ザ・ライトニング
+---@param c Card
 function c56832966.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),5,3,c56832966.ovfilter,aux.Stringid(56832966,0))

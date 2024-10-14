@@ -1,4 +1,5 @@
 --スターヴ・ヴェネミー・リーサルドーズ・ドラゴン
+---@param c Card
 function c22070401.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c22070401.ffilter,3,true)

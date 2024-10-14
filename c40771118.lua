@@ -1,4 +1,5 @@
 --死の宣告
+---@param c Card
 function c40771118.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

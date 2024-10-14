@@ -1,4 +1,5 @@
 --アドバンス・フォース
+---@param c Card
 function c38589847.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

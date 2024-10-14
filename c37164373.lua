@@ -1,4 +1,5 @@
 --クイーンマドルチェ・ティアラミス
+---@param c Card
 function c37164373.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x71),4,2)

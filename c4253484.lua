@@ -1,4 +1,5 @@
 --剣闘獣ホプロムス
+---@param c Card
 function c4253484.initial_effect(c)
 	--def
 	local e1=Effect.CreateEffect(c)

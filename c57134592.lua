@@ -1,5 +1,6 @@
 --転生炎獣レイジング・フェニックス
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

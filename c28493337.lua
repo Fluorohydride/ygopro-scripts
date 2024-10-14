@@ -1,4 +1,5 @@
 --終焉の指名者
+---@param c Card
 function c28493337.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

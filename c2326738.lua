@@ -1,4 +1,5 @@
 --デス・ラクーダ
+---@param c Card
 function c2326738.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

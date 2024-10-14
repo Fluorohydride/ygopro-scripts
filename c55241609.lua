@@ -1,4 +1,5 @@
 --魔境のパラディオン
+---@param c Card
 function c55241609.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --涅槃の超魔導剣士
+---@param c Card
 function c80896940.initial_effect(c)
 	c:EnableReviveLimit()
 	--pendulum summon

@@ -1,4 +1,5 @@
 --ブンボーグ004
+---@param c Card
 function c22227683.initial_effect(c)
 	--atk/def up
 	local e1=Effect.CreateEffect(c)

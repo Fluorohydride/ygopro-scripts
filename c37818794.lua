@@ -1,4 +1,5 @@
 --超魔導竜騎士－ドラグーン・オブ・レッドアイズ
+---@param c Card
 function c37818794.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcCodeFun(c,46986414,{74677422,c37818794.mfilter},1,true,true)

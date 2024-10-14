@@ -1,4 +1,5 @@
 --深淵の青眼龍
+---@param c Card
 function c64202399.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--to hand

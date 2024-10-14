@@ -1,4 +1,5 @@
 --ギャラクシー・ドラグーン
+---@param c Card
 function c9024367.initial_effect(c)
 	--atklimit
 	local e1=Effect.CreateEffect(c)

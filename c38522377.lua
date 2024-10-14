@@ -1,4 +1,5 @@
 --機皇神龍アステリスク
+---@param c Card
 function c38522377.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

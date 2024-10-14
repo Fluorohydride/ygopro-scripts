@@ -1,4 +1,5 @@
 --ゼンマイナイト
+---@param c Card
 function c80538728.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

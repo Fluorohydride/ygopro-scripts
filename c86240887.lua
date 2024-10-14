@@ -1,4 +1,5 @@
 --竜破壊の剣士－バスター・ブレイダー
+---@param c Card
 function c86240887.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

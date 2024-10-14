@@ -1,4 +1,5 @@
 --照耀の光霊使いライナ
+---@param c Card
 function c9839945.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c9839945.lcheck)

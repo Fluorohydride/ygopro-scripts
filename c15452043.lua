@@ -1,4 +1,5 @@
 --EMソード・フィッシュ
+---@param c Card
 function c15452043.initial_effect(c)
 	--addown
 	local e1=Effect.CreateEffect(c)

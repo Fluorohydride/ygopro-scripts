@@ -1,4 +1,5 @@
 --銀河眼の極光波竜
+---@param c Card
 function c28346136.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,2,c28346136.ovfilter,aux.Stringid(28346136,0),2,c28346136.xyzop)

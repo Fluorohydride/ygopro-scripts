@@ -1,4 +1,5 @@
 --CNo.104 仮面魔踏士アンブラル
+---@param c Card
 function c49456901.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,4)

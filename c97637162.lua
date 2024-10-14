@@ -1,4 +1,5 @@
 --ハンディ・ギャロップ
+---@param c Card
 function c97637162.initial_effect(c)
 	--cannot direct attack
 	local e1=Effect.CreateEffect(c)

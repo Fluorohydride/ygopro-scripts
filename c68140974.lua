@@ -1,4 +1,5 @@
 --機皇帝ワイゼル∞
+---@param c Card
 function c68140974.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

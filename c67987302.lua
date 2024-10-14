@@ -1,4 +1,5 @@
 --地縛大神官
+---@param c Card
 function c67987302.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

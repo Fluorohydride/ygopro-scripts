@@ -1,4 +1,5 @@
 --戦華の徳－劉玄
+---@param c Card
 function c40428851.initial_effect(c)
 	--can not be attack target
 	local e1=Effect.CreateEffect(c)

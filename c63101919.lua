@@ -1,4 +1,5 @@
 --マジックテンペスター
+---@param c Card
 function c63101919.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--synchro summon

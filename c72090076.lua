@@ -1,4 +1,5 @@
 --ネメシス・コリドー
+---@param c Card
 function c72090076.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

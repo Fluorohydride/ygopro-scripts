@@ -1,5 +1,6 @@
 --ブラック・ホール・ドラゴン
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--effect indes
 	local e1=Effect.CreateEffect(c)

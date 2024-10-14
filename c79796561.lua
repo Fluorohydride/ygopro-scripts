@@ -1,4 +1,5 @@
 --シンクロ・ガンナー
+---@param c Card
 function c79796561.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

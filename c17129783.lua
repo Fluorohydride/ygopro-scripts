@@ -1,4 +1,5 @@
 --セイクリッド・レオニス
+---@param c Card
 function c17129783.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --妨げられた壊獣の眠り
+---@param c Card
 function c99330325.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

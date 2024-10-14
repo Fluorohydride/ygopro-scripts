@@ -1,4 +1,5 @@
 --堕天使ゼラート
+---@param c Card
 function c40921744.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --オルフェゴール・オーケストリオン
+---@param c Card
 function c3134857.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,99,c3134857.lcheck)

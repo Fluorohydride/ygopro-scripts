@@ -1,4 +1,5 @@
 --サイバース・ディセーブルム
+---@param c Card
 function c92422871.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

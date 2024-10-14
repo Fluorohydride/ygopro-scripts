@@ -1,4 +1,5 @@
 --トワイライトロード・ファイター ライコウ
+---@param c Card
 function c83550869.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

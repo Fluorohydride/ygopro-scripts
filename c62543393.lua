@@ -1,4 +1,5 @@
 --レクンガ
+---@param c Card
 function c62543393.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

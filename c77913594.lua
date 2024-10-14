@@ -1,4 +1,5 @@
 --エクソシスター・パークス
+---@param c Card
 function c77913594.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

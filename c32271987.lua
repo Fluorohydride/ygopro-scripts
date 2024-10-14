@@ -1,4 +1,5 @@
 --フェデライザー
+---@param c Card
 function c32271987.initial_effect(c)
 	--tograve & draw
 	local e1=Effect.CreateEffect(c)

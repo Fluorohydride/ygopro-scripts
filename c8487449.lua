@@ -1,4 +1,5 @@
 --ジェスター・コンフィ
+---@param c Card
 function c8487449.initial_effect(c)
 	c:SetUniqueOnField(1,0,8487449)
 	--special summon

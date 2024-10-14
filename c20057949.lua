@@ -1,4 +1,5 @@
 --フォーチュン・インハーリット
+---@param c Card
 function c20057949.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ギャラクリボー
+---@param c Card
 function c46261704.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

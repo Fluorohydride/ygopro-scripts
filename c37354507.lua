@@ -1,4 +1,5 @@
 --忍者マスター SAIZO
+---@param c Card
 function c37354507.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x2b),2,2)

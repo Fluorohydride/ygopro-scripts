@@ -1,4 +1,5 @@
 --EMスマイル・マジシャン
+---@param c Card
 function c7799906.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

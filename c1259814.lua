@@ -1,4 +1,5 @@
 --千六百七十七万工房
+---@param c Card
 function c1259814.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

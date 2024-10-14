@@ -1,5 +1,6 @@
 --魔界造車－GT19
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

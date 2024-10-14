@@ -1,4 +1,5 @@
 --デス・モスキート
+---@param c Card
 function c33695750.initial_effect(c)
 	c:EnableCounterPermit(0x27)
 	--summon success

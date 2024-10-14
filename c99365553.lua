@@ -1,4 +1,5 @@
 --ライトパルサー・ドラゴン
+---@param c Card
 function c99365553.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E-HERO インフェルノ・ウィング
+---@param c Card
 function c22160245.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

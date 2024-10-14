@@ -1,4 +1,5 @@
 --オルターガイスト・プークエリ
+---@param c Card
 function c59185998.initial_effect(c)
 	--hand link
 	local e1=Effect.CreateEffect(c)

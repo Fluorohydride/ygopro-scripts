@@ -1,4 +1,5 @@
 --絶対王 バック・ジャック
+---@param c Card
 function c60990740.initial_effect(c)
 	--sset
 	local e1=Effect.CreateEffect(c)

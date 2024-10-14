@@ -1,4 +1,5 @@
 --V・HERO インクリース
+---@param c Card
 function c22865492.initial_effect(c)
 	--to field
 	local e1=Effect.CreateEffect(c)

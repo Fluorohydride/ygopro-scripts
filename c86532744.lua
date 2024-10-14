@@ -1,4 +1,5 @@
 --SNo.39 希望皇ホープONE
+---@param c Card
 function c86532744.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

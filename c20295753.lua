@@ -1,4 +1,5 @@
 --夜刀蛇巳
+---@param c Card
 function c20295753.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --M・HERO ブラスト
+---@param c Card
 function c89870349.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

@@ -1,4 +1,5 @@
 --ドカンポリン
+---@param c Card
 function c14839621.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

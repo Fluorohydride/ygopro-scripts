@@ -1,4 +1,5 @@
 --ブロックマン
+---@param c Card
 function c48115277.initial_effect(c)
 	--check
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --EMラフメイカー
+---@param c Card
 function c44944304.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--recover

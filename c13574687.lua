@@ -1,4 +1,5 @@
 --ワンショット・キャノン
+---@param c Card
 function c13574687.initial_effect(c)
 	aux.AddMaterialCodeList(c,6142213)
 	--synchro summon

@@ -1,4 +1,5 @@
 --セイクリッド・ポルクス
+---@param c Card
 function c78364470.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

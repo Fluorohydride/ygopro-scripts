@@ -1,4 +1,5 @@
 --LL－アンサンブルー・ロビン
+---@param c Card
 function c72971064.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)

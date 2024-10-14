@@ -1,4 +1,5 @@
 --アルティメット・バースト
+---@param c Card
 function c43845801.initial_effect(c)
 	aux.AddCodeList(c,23995346)
 	--Activate

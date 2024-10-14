@@ -1,4 +1,5 @@
 --マドルチェ・チケット
+---@param c Card
 function c60470713.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

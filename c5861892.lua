@@ -1,4 +1,5 @@
 --アルカナフォースEX－THE LIGHT RULER
+---@param c Card
 function c5861892.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

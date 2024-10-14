@@ -1,4 +1,5 @@
 --沈黙のサイコウィザード
+---@param c Card
 function c62950604.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

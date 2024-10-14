@@ -1,5 +1,6 @@
 --閃刀姫－カメリア
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	c:EnableReviveLimit()

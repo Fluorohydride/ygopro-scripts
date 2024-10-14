@@ -1,5 +1,6 @@
 --セリオンズ“キング”レギュラス
 local s,id,o=GetID()
+---@param c Card
 function c10604644.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

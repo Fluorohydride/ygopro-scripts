@@ -1,4 +1,5 @@
 --双天の転身
+---@param c Card
 function c44644529.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

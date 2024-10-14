@@ -1,4 +1,5 @@
 --星遺物を巡る戦い
+---@param c Card
 function c93236220.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

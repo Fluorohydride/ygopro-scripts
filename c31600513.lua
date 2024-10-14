@@ -1,4 +1,5 @@
 --プレイング・マンティス
+---@param c Card
 function c31600513.initial_effect(c)
 	--token 1
 	local e1=Effect.CreateEffect(c)

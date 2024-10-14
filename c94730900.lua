@@ -1,4 +1,5 @@
 --焔聖騎士－モージ
+---@param c Card
 function c94730900.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --共命の翼ガルーラ
+---@param c Card
 function c11765832.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c11765832.ffilter,2,true)

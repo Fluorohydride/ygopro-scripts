@@ -1,4 +1,5 @@
 --スナイプストーカー
+---@param c Card
 function c84290642.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

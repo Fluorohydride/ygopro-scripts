@@ -1,4 +1,5 @@
 --メリアスの木霊
+---@param c Card
 function c64245689.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),3,2)

@@ -1,4 +1,5 @@
 --星守る結界
+---@param c Card
 function c70422863.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --炎王神 ガルドニクス・エタニティ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material

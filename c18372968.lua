@@ -1,4 +1,5 @@
 --カミソーリトカゲ
+---@param c Card
 function c18372968.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

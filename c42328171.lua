@@ -1,4 +1,5 @@
 --ゼンマイバット
+---@param c Card
 function c42328171.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

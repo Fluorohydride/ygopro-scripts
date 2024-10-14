@@ -1,4 +1,5 @@
 --剣闘獣ドミティアノス
+---@param c Card
 function c33652635.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion

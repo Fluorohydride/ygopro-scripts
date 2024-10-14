@@ -1,4 +1,5 @@
 --燃料電池メン
+---@param c Card
 function c74730899.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

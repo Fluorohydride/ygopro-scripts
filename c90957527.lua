@@ -1,4 +1,5 @@
 --剣闘獣ゲオルディアス
+---@param c Card
 function c90957527.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

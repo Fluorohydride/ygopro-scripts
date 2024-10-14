@@ -1,4 +1,5 @@
 --記憶破壊者
+---@param c Card
 function c48700891.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

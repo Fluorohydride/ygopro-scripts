@@ -1,4 +1,5 @@
 --インフェルニティ・ブレイク
+---@param c Card
 function c51717541.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

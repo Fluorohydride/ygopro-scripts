@@ -1,4 +1,5 @@
 --ディメンション・スライド
+---@param c Card
 function c73632127.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

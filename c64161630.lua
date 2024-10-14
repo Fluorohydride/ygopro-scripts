@@ -1,4 +1,5 @@
 --パージ・レイ
+---@param c Card
 function c64161630.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

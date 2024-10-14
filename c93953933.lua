@@ -1,4 +1,5 @@
 --ハイドランダー・オービット
+---@param c Card
 function c93953933.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

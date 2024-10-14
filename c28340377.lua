@@ -1,4 +1,5 @@
 --絵札の絆
+---@param c Card
 function c28340377.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--Activate

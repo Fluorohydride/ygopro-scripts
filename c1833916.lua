@@ -1,4 +1,5 @@
 --H・C サウザンド・ブレード
+---@param c Card
 function c1833916.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

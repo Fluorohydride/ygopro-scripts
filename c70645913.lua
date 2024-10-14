@@ -1,4 +1,5 @@
 --ヴァンパイアの眷属
+---@param c Card
 function c70645913.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

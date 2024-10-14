@@ -1,4 +1,5 @@
 --デルタフライ
+---@param c Card
 function c57568840.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

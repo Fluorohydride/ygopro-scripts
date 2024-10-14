@@ -1,4 +1,5 @@
 --パワー・インジェクター
+---@param c Card
 function c89547299.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

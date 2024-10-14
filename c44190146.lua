@@ -1,4 +1,5 @@
 --デメット爺さん
+---@param c Card
 function c44190146.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--special summon

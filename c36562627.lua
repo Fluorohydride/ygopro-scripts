@@ -1,4 +1,5 @@
 --セカンド・チャンス
+---@param c Card
 function c36562627.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

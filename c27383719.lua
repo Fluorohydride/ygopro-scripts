@@ -1,4 +1,5 @@
 --S－Force ラプスウェル
+---@param c Card
 function c27383719.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

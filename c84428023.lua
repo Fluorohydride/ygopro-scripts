@@ -1,4 +1,5 @@
 --エレキャッシュ
+---@param c Card
 function c84428023.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

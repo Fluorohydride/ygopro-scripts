@@ -1,4 +1,5 @@
 --星遺物－『星鎧』
+---@param c Card
 function c83477829.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

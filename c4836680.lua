@@ -1,4 +1,5 @@
 --EMオッドアイズ・プリースト
+---@param c Card
 function c4836680.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--to hand

@@ -1,4 +1,5 @@
 --琰魔竜 レッド・デーモン・アビス
+---@param c Card
 function c9753964.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c9753964.sfilter),1,1)

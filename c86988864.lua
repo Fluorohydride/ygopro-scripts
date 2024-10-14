@@ -1,4 +1,5 @@
 --みつこぶラクーダ
+---@param c Card
 function c86988864.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(86988864,0))

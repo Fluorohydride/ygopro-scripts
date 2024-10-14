@@ -1,4 +1,5 @@
 --星遺物に響く残叫
+---@param c Card
 function c85763457.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

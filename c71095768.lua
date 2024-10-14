@@ -1,4 +1,5 @@
 --武神姫－アハシマ
+---@param c Card
 function c71095768.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--link summon

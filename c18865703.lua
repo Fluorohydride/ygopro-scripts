@@ -1,4 +1,5 @@
 --ZW－玄武絶対聖盾
+---@param c Card
 function c18865703.initial_effect(c)
 	c:SetUniqueOnField(1,0,18865703)
 	--equip

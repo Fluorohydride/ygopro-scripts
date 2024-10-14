@@ -1,4 +1,5 @@
 --強制脱出装置
+---@param c Card
 function c94192409.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

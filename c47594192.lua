@@ -1,4 +1,5 @@
 --スリーカード
+---@param c Card
 function c47594192.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

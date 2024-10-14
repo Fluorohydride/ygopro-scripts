@@ -1,4 +1,5 @@
 --輝光竜セイファート
+---@param c Card
 function c15381421.initial_effect(c)
 	--Search
 	local e1=Effect.CreateEffect(c)

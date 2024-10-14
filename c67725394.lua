@@ -1,4 +1,5 @@
 --らくがきじゅう－てらの
+---@param c Card
 function c67725394.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

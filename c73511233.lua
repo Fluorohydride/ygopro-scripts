@@ -1,4 +1,5 @@
 --EMユーゴーレム
+---@param c Card
 function c73511233.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--salvage

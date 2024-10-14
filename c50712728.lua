@@ -1,4 +1,5 @@
 --墓守の呪術師
+---@param c Card
 function c50712728.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

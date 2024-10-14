@@ -1,4 +1,5 @@
 --炎王獣 バロン
+---@param c Card
 function c69000994.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --屋敷わらし
+---@param c Card
 function c73642296.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

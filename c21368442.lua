@@ -1,4 +1,5 @@
 --S－Force グラビティーノ
+---@param c Card
 function c21368442.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

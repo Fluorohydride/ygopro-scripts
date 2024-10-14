@@ -1,4 +1,5 @@
 --水神の護符
+---@param c Card
 function c61258740.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

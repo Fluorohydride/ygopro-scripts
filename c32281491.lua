@@ -1,4 +1,5 @@
 --ZS－双頭龍賢者
+---@param c Card
 function c32281491.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

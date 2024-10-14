@@ -1,4 +1,5 @@
 --バブル・シャッフル
+---@param c Card
 function c61968753.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--pos

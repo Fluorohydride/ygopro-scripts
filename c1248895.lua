@@ -1,4 +1,5 @@
 --連鎖破壊
+---@param c Card
 function c1248895.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

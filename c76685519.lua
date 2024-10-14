@@ -1,4 +1,5 @@
 --オルターガイスト・キードゥルガー
+---@param c Card
 function c76685519.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

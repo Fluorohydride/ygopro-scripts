@@ -1,4 +1,5 @@
 --ガガガガマジシャン
+---@param c Card
 function c86331741.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

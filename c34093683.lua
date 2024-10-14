@@ -1,4 +1,5 @@
 --リヴェンデット・エグゼクター
+---@param c Card
 function c34093683.initial_effect(c)
 	c:EnableReviveLimit()
 	--change name

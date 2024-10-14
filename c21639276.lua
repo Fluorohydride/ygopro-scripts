@@ -1,4 +1,5 @@
 --クシャトリラ・プリペア
+---@param c Card
 function c21639276.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

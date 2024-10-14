@@ -1,4 +1,5 @@
 --宝玉獣 エメラルド・タートル
+---@param c Card
 function c68215963.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

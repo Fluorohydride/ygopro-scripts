@@ -1,4 +1,5 @@
 --金科玉条
+---@param c Card
 function c3574681.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

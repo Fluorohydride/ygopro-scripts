@@ -1,4 +1,5 @@
 --幻獣機グリーフィン
+---@param c Card
 function c41329458.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

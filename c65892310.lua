@@ -1,5 +1,6 @@
 --氷魔龍 ブリューナク
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material

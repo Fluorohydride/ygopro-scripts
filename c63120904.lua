@@ -1,4 +1,5 @@
 --暗黒大要塞鯱
+---@param c Card
 function c63120904.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --重装機甲 パンツァードラゴン
+---@param c Card
 function c72959823.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

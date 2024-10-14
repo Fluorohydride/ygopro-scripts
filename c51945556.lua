@@ -1,4 +1,5 @@
 --雷帝ザボルグ
+---@param c Card
 function c51945556.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

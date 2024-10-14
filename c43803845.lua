@@ -1,4 +1,5 @@
 --ダックドロッパー
+---@param c Card
 function c43803845.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--cannot be target/effect indestructable

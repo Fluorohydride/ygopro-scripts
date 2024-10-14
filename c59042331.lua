@@ -1,4 +1,5 @@
 --ガード・ヘッジ
+---@param c Card
 function c59042331.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

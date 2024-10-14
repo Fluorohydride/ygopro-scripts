@@ -1,4 +1,5 @@
 --A・O・J アンノウン・クラッシャー
+---@param c Card
 function c22371016.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

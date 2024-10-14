@@ -1,4 +1,5 @@
 --マジカル・スター・イリュージョン
+---@param c Card
 function c18752707.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

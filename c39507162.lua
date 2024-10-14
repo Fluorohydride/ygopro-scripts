@@ -1,4 +1,5 @@
 --ブレイドナイト
+---@param c Card
 function c39507162.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

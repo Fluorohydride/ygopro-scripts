@@ -1,4 +1,5 @@
 --スターゲート
+---@param c Card
 function c97151365.initial_effect(c)
 	c:EnableCounterPermit(0x1e)
 	--Activate

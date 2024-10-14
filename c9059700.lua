@@ -1,4 +1,5 @@
 --インフェルニティ・バリア
+---@param c Card
 function c9059700.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

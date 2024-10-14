@@ -1,4 +1,5 @@
 --フレグランス・ストーム
+---@param c Card
 function c69584564.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

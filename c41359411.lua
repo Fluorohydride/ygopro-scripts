@@ -1,4 +1,5 @@
 --聖剣クラレント
+---@param c Card
 function c41359411.initial_effect(c)
 	c:SetUniqueOnField(1,0,41359411)
 	--Activate

@@ -1,4 +1,5 @@
 --聖霊獣騎 キムンファルコス
+---@param c Card
 function c58811192.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xb5),2,2)

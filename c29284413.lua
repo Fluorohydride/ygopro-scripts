@@ -1,4 +1,5 @@
 --ジョーカーズ・ナイト
+---@param c Card
 function c29284413.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--special summon

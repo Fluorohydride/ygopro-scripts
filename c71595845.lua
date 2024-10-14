@@ -1,4 +1,5 @@
 --人形の幸福
+---@param c Card
 function c71595845.initial_effect(c)
 	aux.AddCodeList(c,44190146,81587028,75574498)
 	--Activate

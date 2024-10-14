@@ -1,4 +1,5 @@
 --魔弾－デビルズ・ディール
+---@param c Card
 function c92534075.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

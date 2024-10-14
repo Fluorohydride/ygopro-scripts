@@ -1,4 +1,5 @@
 --超量機獣マグナライガー
+---@param c Card
 function c57031794.initial_effect(c)
 	aux.AddCodeList(c,59975920)
 	--xyz summon

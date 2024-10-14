@@ -1,4 +1,5 @@
 --電送擬人エレキネシス
+---@param c Card
 function c88392300.initial_effect(c)
 	--move
 	local e2=Effect.CreateEffect(c)

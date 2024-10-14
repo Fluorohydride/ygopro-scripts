@@ -1,4 +1,5 @@
 --風の精霊 ガルーダ
+---@param c Card
 function c12800777.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

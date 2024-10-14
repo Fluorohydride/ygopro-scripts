@@ -1,4 +1,5 @@
 --EMレディアンジュ
+---@param c Card
 function c58938528.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--atk down

@@ -1,4 +1,5 @@
 --鉄の騎士 ギア・フリード
+---@param c Card
 function c423705.initial_effect(c)
 	--destroy equip
 	local e1=Effect.CreateEffect(c)

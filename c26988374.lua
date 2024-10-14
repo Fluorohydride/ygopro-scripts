@@ -1,5 +1,6 @@
 --魔鍵憑神－アシュタルトゥ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

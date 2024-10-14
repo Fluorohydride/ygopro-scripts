@@ -1,4 +1,5 @@
 --グラヴィティ・ウォリアー
+---@param c Card
 function c44035031.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

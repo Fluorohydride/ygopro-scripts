@@ -1,4 +1,5 @@
 --異次元の邂逅
+---@param c Card
 function c39900763.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

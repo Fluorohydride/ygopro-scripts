@@ -1,4 +1,5 @@
 --崇光なる宣告者
+---@param c Card
 function c48546368.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

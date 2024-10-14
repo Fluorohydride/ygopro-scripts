@@ -1,4 +1,5 @@
 --ダーク・コーリング
+---@param c Card
 function c12071500.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--Activate

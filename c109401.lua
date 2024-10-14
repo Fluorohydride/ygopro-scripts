@@ -1,4 +1,5 @@
 --闇次元の戦士
+---@param c Card
 function c109401.initial_effect(c)
 	--Synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

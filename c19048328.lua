@@ -1,4 +1,5 @@
 --幻竜星－チョウホウ
+---@param c Card
 function c19048328.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

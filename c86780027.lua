@@ -1,4 +1,5 @@
 --一族の結束
+---@param c Card
 function c86780027.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --牙竜咆哮
+---@param c Card
 function c34898052.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

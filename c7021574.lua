@@ -1,4 +1,5 @@
 --クリブー
+---@param c Card
 function c7021574.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

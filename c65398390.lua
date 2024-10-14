@@ -1,4 +1,5 @@
 --焔聖騎士将－オリヴィエ
+---@param c Card
 function c65398390.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

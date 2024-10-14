@@ -1,4 +1,5 @@
 --D－スピリッツ
+---@param c Card
 function c89899996.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

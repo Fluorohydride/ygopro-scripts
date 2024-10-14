@@ -1,4 +1,5 @@
 --礫岩の霊長－コングレード
+---@param c Card
 function c49729312.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

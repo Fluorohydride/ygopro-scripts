@@ -1,4 +1,5 @@
 --エルフの光
+---@param c Card
 function c39897277.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

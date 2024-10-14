@@ -1,4 +1,5 @@
 --海皇龍 ポセイドラ
+---@param c Card
 function c47826112.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

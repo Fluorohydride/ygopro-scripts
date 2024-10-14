@@ -1,4 +1,5 @@
 --セグメンタル・ドラゴン
+---@param c Card
 function c15066114.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --龍骨鬼
+---@param c Card
 function c57281778.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

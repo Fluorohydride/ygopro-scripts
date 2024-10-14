@@ -1,4 +1,5 @@
 --妖仙獣 鎌弐太刀
+---@param c Card
 function c92246806.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

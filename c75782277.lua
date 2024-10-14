@@ -1,4 +1,5 @@
 --ハーピィの狩場
+---@param c Card
 function c75782277.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

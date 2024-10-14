@@ -1,4 +1,5 @@
 --墓守の審神者
+---@param c Card
 function c25524823.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

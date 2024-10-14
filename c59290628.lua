@@ -1,4 +1,5 @@
 --ナイトメア・ホース
+---@param c Card
 function c59290628.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

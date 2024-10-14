@@ -1,4 +1,5 @@
 --共振虫
+---@param c Card
 function c96938986.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

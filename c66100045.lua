@@ -1,4 +1,5 @@
 --転生断絶
+---@param c Card
 function c66100045.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

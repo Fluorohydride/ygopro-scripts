@@ -1,4 +1,5 @@
 --聖なる解呪師
+---@param c Card
 function c76137614.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

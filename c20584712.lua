@@ -1,4 +1,5 @@
 --SPYRAL－タフネス
+---@param c Card
 function c20584712.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,41091257,LOCATION_MZONE+LOCATION_GRAVE)

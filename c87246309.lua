@@ -1,4 +1,5 @@
 --ファーニマル・オクト
+---@param c Card
 function c87246309.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

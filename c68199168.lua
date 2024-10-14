@@ -1,4 +1,5 @@
 --轟の王 ハール
+---@param c Card
 function c68199168.initial_effect(c)
 	c:SetUniqueOnField(1,0,68199168)
 	--to grave

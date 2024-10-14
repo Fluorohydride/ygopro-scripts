@@ -1,4 +1,5 @@
 --クリボーを呼ぶ笛
+---@param c Card
 function c20065322.initial_effect(c)
 	aux.AddCodeList(c,40640057)
 	--Activate

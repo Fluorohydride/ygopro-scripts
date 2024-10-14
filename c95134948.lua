@@ -1,4 +1,5 @@
 --No.99 希望皇ホープドラグナー
+---@param c Card
 function c95134948.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,12,3,nil,nil,99)

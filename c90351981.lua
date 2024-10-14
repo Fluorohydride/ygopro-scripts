@@ -1,4 +1,5 @@
 --オルフェゴール・バベル
+---@param c Card
 function c90351981.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

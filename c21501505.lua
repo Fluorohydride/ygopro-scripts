@@ -1,4 +1,5 @@
 --暗遷士 カンゴルゴーム
+---@param c Card
 function c21501505.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

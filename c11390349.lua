@@ -1,4 +1,5 @@
 --ナチュル・フライトフライ
+---@param c Card
 function c11390349.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

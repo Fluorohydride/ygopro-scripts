@@ -1,4 +1,5 @@
 --紋章の記録
+---@param c Card
 function c37241623.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--Activate

@@ -1,4 +1,5 @@
 --異形の従者
+---@param c Card
 function c2792265.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

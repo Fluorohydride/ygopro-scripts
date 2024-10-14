@@ -1,4 +1,5 @@
 --戦華史略－孫劉同盟
+---@param c Card
 function c58116537.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --大霊術－「一輪」
+---@param c Card
 function c38057522.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

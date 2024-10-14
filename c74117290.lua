@@ -1,4 +1,5 @@
 --暗黒界の取引
+---@param c Card
 function c74117290.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

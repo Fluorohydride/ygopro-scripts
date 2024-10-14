@@ -1,4 +1,5 @@
 --墓守の霊術師
+---@param c Card
 function c58657303.initial_effect(c)
 	--fusion summon
 	local e1=Effect.CreateEffect(c)

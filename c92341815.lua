@@ -1,4 +1,5 @@
 --星空蝶
+---@param c Card
 function c92341815.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	c:SetUniqueOnField(1,0,92341815)

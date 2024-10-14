@@ -1,4 +1,5 @@
 --悪夢の拷問部屋
+---@param c Card
 function c85562745.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

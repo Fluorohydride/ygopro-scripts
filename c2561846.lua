@@ -1,4 +1,5 @@
 --侵食細胞「A」
+---@param c Card
 function c2561846.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

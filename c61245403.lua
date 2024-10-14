@@ -1,4 +1,5 @@
 --ネコーン
+---@param c Card
 function c61245403.initial_effect(c)
 	--Search
 	local e1=Effect.CreateEffect(c)

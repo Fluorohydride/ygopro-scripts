@@ -1,5 +1,6 @@
 --森羅の舞踏娘 ピオネ
 local s,id,o=GetID()
+---@param c Card
 function c21903613.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

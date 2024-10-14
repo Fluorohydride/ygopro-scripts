@@ -1,4 +1,5 @@
 --極限への衝動
+---@param c Card
 function c82324105.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

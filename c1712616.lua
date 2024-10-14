@@ -1,4 +1,5 @@
 --騎甲虫空殺舞隊
+---@param c Card
 function c1712616.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

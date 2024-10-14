@@ -1,4 +1,5 @@
 --A宝玉獣 サファイア・ペガサス
+---@param c Card
 function c71620241.initial_effect(c)
 	aux.AddCodeList(c,12644061)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)

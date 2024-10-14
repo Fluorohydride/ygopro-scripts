@@ -1,4 +1,5 @@
 --深淵に潜む者
+---@param c Card
 function c21044178.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

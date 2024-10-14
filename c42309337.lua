@@ -1,4 +1,5 @@
 --カウンター・カウンター
+---@param c Card
 function c42309337.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

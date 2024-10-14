@@ -1,4 +1,5 @@
 --ジュラック・ティラヌス
+---@param c Card
 function c62701967.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

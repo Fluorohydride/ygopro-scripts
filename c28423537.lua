@@ -1,4 +1,5 @@
 --戦慄の凶皇－ジェネシス・デーモン
+---@param c Card
 function c28423537.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

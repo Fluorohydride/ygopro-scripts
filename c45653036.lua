@@ -1,4 +1,5 @@
 --暴風雨
+---@param c Card
 function c45653036.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

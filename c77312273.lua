@@ -1,5 +1,6 @@
 --混沌殻
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--splimit
 	local e0=Effect.CreateEffect(c)

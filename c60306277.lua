@@ -1,4 +1,5 @@
 --シンクロ・ゾーン
+---@param c Card
 function c60306277.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

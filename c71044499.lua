@@ -1,4 +1,5 @@
 --抹殺の使徒
+---@param c Card
 function c71044499.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --A・O・J サウザンド・アームズ
+---@param c Card
 function c85876417.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

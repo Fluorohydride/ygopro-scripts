@@ -1,4 +1,5 @@
 --破滅の美神ルイン
+---@param c Card
 function c13518809.initial_effect(c)
 	c:EnableReviveLimit()
 	--code

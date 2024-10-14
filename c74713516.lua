@@ -1,4 +1,5 @@
 --暗黒のミミック LV1
+---@param c Card
 function c74713516.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

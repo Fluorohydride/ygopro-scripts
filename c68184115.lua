@@ -1,4 +1,5 @@
 --甲虫装機 ダンセル
+---@param c Card
 function c68184115.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

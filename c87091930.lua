@@ -1,4 +1,5 @@
 --レイダーズ・アンブレイカブル・マインド
+---@param c Card
 function c87091930.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

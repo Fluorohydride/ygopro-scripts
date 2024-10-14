@@ -1,4 +1,5 @@
 --大革命返し
+---@param c Card
 function c99188141.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --守護霊アイリン
+---@param c Card
 function c11678191.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

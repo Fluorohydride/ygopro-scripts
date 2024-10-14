@@ -1,4 +1,5 @@
 --地獄からの使い
+---@param c Card
 function c42685062.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

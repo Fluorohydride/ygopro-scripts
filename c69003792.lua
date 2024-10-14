@@ -1,4 +1,5 @@
 --メガリス・アンフォームド
+---@param c Card
 function c69003792.initial_effect(c)
 	--attack down
 	local e1=Effect.CreateEffect(c)

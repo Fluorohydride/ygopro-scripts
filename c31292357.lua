@@ -1,4 +1,5 @@
 --Emハットトリッカー
+---@param c Card
 function c31292357.initial_effect(c)
 	c:EnableCounterPermit(0x36)
 	c:SetCounterLimit(0x36,3)

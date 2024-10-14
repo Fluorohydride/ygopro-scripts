@@ -1,4 +1,5 @@
 --幻獣機ドラゴサック
+---@param c Card
 function c22110647.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

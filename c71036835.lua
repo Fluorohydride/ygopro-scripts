@@ -1,4 +1,5 @@
 --クリビー
+---@param c Card
 function c71036835.initial_effect(c)
 	aux.AddCodeList(c,40640057)
 	--to_hand

@@ -1,4 +1,5 @@
 --不死武士
+---@param c Card
 function c52035300.initial_effect(c)
 	--release limit
 	local e1=Effect.CreateEffect(c)

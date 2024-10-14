@@ -1,4 +1,5 @@
 --フーコーの魔砲石
+---@param c Card
 function c43785278.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

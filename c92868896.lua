@@ -1,4 +1,5 @@
 --ドラグニティ－セナート
+---@param c Card
 function c92868896.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

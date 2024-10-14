@@ -1,4 +1,5 @@
 --ヴァンパイア・グレイス
+---@param c Card
 function c40607210.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

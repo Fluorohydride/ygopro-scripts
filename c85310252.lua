@@ -1,4 +1,5 @@
 --ドドドドライバー
+---@param c Card
 function c85310252.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --メタモルF
+---@param c Card
 function c46500985.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

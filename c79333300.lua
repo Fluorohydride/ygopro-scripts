@@ -1,4 +1,5 @@
 --風霊術－「雅」
+---@param c Card
 function c79333300.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

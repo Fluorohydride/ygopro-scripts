@@ -1,4 +1,5 @@
 --新鋭の女戦士
+---@param c Card
 function c86028783.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

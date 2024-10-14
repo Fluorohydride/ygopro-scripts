@@ -1,4 +1,5 @@
 --風来王 ワイルド・ワインド
+---@param c Card
 function c52589809.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

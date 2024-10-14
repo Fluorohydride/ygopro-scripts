@@ -1,4 +1,5 @@
 --暗黒界の軍神 シルバ
+---@param c Card
 function c32619583.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

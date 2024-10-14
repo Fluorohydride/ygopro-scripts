@@ -1,4 +1,5 @@
 --破壊剣の使い手－バスター・ブレイダー
+---@param c Card
 function c3428069.initial_effect(c)
 	--Code
 	aux.EnableChangeCode(c,78193831,LOCATION_MZONE+LOCATION_GRAVE)

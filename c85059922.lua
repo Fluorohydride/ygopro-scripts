@@ -1,4 +1,5 @@
 --超魔導戦士－マスター・オブ・カオス
+---@param c Card
 function c85059922.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

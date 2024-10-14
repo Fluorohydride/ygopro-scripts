@@ -1,4 +1,5 @@
 --EMキングベアー
+---@param c Card
 function c67808837.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	--Activate

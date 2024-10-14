@@ -1,4 +1,5 @@
 --ヘルモスの爪
+---@param c Card
 function c46232525.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

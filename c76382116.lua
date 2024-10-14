@@ -1,4 +1,5 @@
 --鉄の王 ドヴェルグス
+---@param c Card
 function c76382116.initial_effect(c)
 	c:SetUniqueOnField(1,0,76382116)
 	--special summon

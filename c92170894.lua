@@ -1,4 +1,5 @@
 --EMロングフォーン・ブル
+---@param c Card
 function c92170894.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

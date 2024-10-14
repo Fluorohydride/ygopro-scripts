@@ -1,4 +1,5 @@
 --インターセプト
+---@param c Card
 function c59695933.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

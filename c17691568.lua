@@ -1,4 +1,5 @@
 --Ga－P.U.N.K.クラッシュ・ビート
+---@param c Card
 function c17691568.initial_effect(c)
 	--ACT
 	local e1=Effect.CreateEffect(c)

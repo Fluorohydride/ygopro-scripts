@@ -1,4 +1,5 @@
 --シャドール・ハウンド
+---@param c Card
 function c52551211.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

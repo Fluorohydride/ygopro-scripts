@@ -1,4 +1,5 @@
 --罠封印の呪符
+---@param c Card
 function c19312169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

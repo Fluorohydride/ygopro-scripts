@@ -1,4 +1,5 @@
 --総剣司令 ガトムズ
+---@param c Card
 function c53388413.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

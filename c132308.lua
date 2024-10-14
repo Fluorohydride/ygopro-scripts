@@ -1,4 +1,5 @@
 --六花のしらひめ
+---@param c Card
 function c132308.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --彼岸の悪鬼 ドラゴネル
+---@param c Card
 function c45593826.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エクソシスター・エリス
+---@param c Card
 function c16474916.initial_effect(c)
 	aux.AddCodeList(c,43863925)
 	--summon

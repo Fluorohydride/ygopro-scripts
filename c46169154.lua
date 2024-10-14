@@ -1,4 +1,5 @@
 --ウォークライ・オーピス
+---@param c Card
 function c46169154.initial_effect(c)
 	--normal summon
 	local e1=Effect.CreateEffect(c)

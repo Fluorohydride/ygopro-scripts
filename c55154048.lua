@@ -1,4 +1,5 @@
 --極星宝ドラウプニル
+---@param c Card
 function c55154048.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

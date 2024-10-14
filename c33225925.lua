@@ -1,4 +1,5 @@
 --久遠の魔術師ミラ
+---@param c Card
 function c33225925.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

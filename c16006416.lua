@@ -1,4 +1,5 @@
 --DDD烈火大王エグゼクティブ・テムジン
+---@param c Card
 function c16006416.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c16006416.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0xaf),true)

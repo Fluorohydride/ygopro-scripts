@@ -1,4 +1,5 @@
 --魂粉砕
+---@param c Card
 function c76297408.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

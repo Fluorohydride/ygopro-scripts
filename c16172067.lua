@@ -1,4 +1,5 @@
 --レッド・デーモンズ・ドラゴン・タイラント
+---@param c Card
 function c16172067.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(nil),1,99)

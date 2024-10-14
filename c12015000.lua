@@ -1,4 +1,5 @@
 --新生代化石竜 スカルガー
+---@param c Card
 function c12015000.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

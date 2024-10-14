@@ -1,4 +1,5 @@
 --光竜星－リフン
+---@param c Card
 function c61488417.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

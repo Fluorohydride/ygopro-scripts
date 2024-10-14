@@ -1,4 +1,5 @@
 --鉄獣戦線 徒花のフェリジット
+---@param c Card
 function c26847978.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST),2,2)

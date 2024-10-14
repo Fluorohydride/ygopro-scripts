@@ -1,4 +1,5 @@
 --魔救の奇石－ラプタイト
+---@param c Card
 function c74891384.initial_effect(c)
 	--to decktop1
 	local e1=Effect.CreateEffect(c)

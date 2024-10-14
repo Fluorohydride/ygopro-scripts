@@ -1,4 +1,5 @@
 --VS ラゼン
+---@param c Card
 function c29302858.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

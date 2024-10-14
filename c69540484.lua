@@ -1,4 +1,5 @@
 --クシャトリラ・バース
+---@param c Card
 function c69540484.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

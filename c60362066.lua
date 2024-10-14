@@ -1,4 +1,5 @@
 --壱世壊を揺るがす鼓動
+---@param c Card
 function c60362066.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--to deck

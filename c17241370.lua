@@ -1,4 +1,5 @@
 --リチュア・ナタリア
+---@param c Card
 function c17241370.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

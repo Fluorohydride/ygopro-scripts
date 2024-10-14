@@ -1,4 +1,5 @@
 --森羅の姫芽宮
+---@param c Card
 function c33909817.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

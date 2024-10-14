@@ -1,4 +1,5 @@
 --オッドアイズ・アークペンデュラム・ドラゴン
+---@param c Card
 function c14105623.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

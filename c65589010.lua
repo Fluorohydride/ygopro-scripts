@@ -1,4 +1,5 @@
 --教導国家ドラグマ
+---@param c Card
 function c65589010.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

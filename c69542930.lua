@@ -1,4 +1,5 @@
 --光と闇の洗礼
+---@param c Card
 function c69542930.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

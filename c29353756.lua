@@ -1,4 +1,5 @@
 --ZW－荒鷲激神爪
+---@param c Card
 function c29353756.initial_effect(c)
 	c:SetUniqueOnField(1,0,29353756)
 	--special summon

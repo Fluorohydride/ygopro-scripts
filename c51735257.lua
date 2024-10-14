@@ -1,4 +1,5 @@
 --No.50 ブラック・コーン号
+---@param c Card
 function c51735257.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

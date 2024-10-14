@@ -1,4 +1,5 @@
 --大邪神 レシェフ
+---@param c Card
 function c62420419.initial_effect(c)
 	c:EnableReviveLimit()
 	--control

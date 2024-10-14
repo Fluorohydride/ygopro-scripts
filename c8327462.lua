@@ -1,4 +1,5 @@
 --デス・バード
+---@param c Card
 function c8327462.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

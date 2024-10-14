@@ -1,4 +1,5 @@
 --対壊獣用決戦兵器スーパーメカドゴラン
+---@param c Card
 function c84769941.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,0,aux.FilterBoolFunction(Card.IsSetCard,0xd3),LOCATION_MZONE)

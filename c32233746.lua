@@ -1,4 +1,5 @@
 --ライト・バニッシュ
+---@param c Card
 function c32233746.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

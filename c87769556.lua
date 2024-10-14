@@ -1,4 +1,5 @@
 --魔術師の右手
+---@param c Card
 function c87769556.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --銀河の修道師
+---@param c Card
 function c28770951.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)

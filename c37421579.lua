@@ -1,4 +1,5 @@
 --炎の騎士 キラー
+---@param c Card
 function c37421579.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --機皇兵グランエル・アイン
+---@param c Card
 function c2137678.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

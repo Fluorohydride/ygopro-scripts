@@ -1,4 +1,5 @@
 --剣闘獣エクイテ
+---@param c Card
 function c57731460.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

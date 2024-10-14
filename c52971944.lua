@@ -1,4 +1,5 @@
 --火遁封印式
+---@param c Card
 function c52971944.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

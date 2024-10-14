@@ -1,4 +1,5 @@
 --インヴェルズ万能態
+---@param c Card
 function c62729173.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

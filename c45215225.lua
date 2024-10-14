@@ -1,4 +1,5 @@
 --ファーニマル・エンジェル
+---@param c Card
 function c45215225.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

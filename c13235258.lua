@@ -1,4 +1,5 @@
 --蝕みの鱗粉
+---@param c Card
 function c13235258.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

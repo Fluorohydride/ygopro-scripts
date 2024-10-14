@@ -1,4 +1,5 @@
 --剛鬼ジャドウ・オーガ
+---@param c Card
 function c10552026.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

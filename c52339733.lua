@@ -1,4 +1,5 @@
 --竜胆ブルーム
+---@param c Card
 function c52339733.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

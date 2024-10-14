@@ -1,4 +1,5 @@
 --黒蠍－逃げ足のチック
+---@param c Card
 function c61587183.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(61587183,0))

@@ -1,4 +1,5 @@
 --デストーイ・サンクチュアリ
+---@param c Card
 function c74839123.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

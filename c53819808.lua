@@ -1,4 +1,5 @@
 --六武院
+---@param c Card
 function c53819808.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	--Activate

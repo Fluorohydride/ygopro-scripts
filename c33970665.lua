@@ -1,4 +1,5 @@
 --ポンコツの意地
+---@param c Card
 function c33970665.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

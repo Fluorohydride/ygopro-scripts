@@ -1,4 +1,5 @@
 --H・C 強襲のハルベルト
+---@param c Card
 function c65848811.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

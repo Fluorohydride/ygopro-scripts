@@ -1,4 +1,5 @@
 --邪神官チラム・サバク
+---@param c Card
 function c27103517.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

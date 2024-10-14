@@ -1,4 +1,5 @@
 --闇晦ましの城
+---@param c Card
 function c62121.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

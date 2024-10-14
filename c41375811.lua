@@ -1,4 +1,5 @@
 --十二獣ライカ
+---@param c Card
 function c41375811.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2,c41375811.ovfilter,aux.Stringid(41375811,0),99,c41375811.xyzop)

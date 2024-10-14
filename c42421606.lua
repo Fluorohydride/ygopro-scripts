@@ -1,4 +1,5 @@
 --No.85 クレイジー・ボックス
+---@param c Card
 function c42421606.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

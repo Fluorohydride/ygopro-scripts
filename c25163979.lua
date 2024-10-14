@@ -1,4 +1,5 @@
 --星遺物へ誘う悪夢
+---@param c Card
 function c25163979.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --BK プロモーター
+---@param c Card
 function c83315222.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

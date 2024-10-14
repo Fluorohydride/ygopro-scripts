@@ -1,4 +1,5 @@
 --飛鯉
+---@param c Card
 function c33314479.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

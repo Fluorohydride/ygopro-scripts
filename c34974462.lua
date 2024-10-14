@@ -1,4 +1,5 @@
 --幻奏の華楽聖ブルーム・ハーモニスト
+---@param c Card
 function c34974462.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

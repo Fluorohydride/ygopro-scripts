@@ -1,4 +1,5 @@
 --白の水鏡
+---@param c Card
 function c19885332.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

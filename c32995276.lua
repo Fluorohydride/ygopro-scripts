@@ -1,4 +1,5 @@
 --リンク・ディサイプル
+---@param c Card
 function c32995276.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

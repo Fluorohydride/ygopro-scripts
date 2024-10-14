@@ -1,4 +1,5 @@
 --銃砲撃
+---@param c Card
 function c49511705.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

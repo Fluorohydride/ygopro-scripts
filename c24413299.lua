@@ -1,4 +1,5 @@
 --The suppression PLUTO
+---@param c Card
 function c24413299.initial_effect(c)
 	--announce
 	local e1=Effect.CreateEffect(c)

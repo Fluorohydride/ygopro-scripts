@@ -1,4 +1,5 @@
 --音響戦士ベーシス
+---@param c Card
 function c68933343.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

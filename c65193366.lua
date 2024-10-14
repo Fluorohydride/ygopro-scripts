@@ -1,4 +1,5 @@
 --精霊獣使い ウィンダ
+---@param c Card
 function c65193366.initial_effect(c)
 	c:SetSPSummonOnce(65193366)
 	--special summon

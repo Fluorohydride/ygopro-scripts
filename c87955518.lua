@@ -1,5 +1,6 @@
 --Recette de Spécialité～料理長自慢のレシピ～
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

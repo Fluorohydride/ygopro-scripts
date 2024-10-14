@@ -1,4 +1,5 @@
 --RUM－レヴォリューション・フォース
+---@param c Card
 function c43476205.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

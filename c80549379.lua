@@ -1,4 +1,5 @@
 --ドラグニティ－ジャベリン
+---@param c Card
 function c80549379.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

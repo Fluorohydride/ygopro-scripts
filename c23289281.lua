@@ -1,4 +1,5 @@
 --カラテマン
+---@param c Card
 function c23289281.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

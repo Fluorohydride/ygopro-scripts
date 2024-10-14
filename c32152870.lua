@@ -1,4 +1,5 @@
 --械貶する肆世壊
+---@param c Card
 function c32152870.initial_effect(c)
 	aux.AddCodeList(c,56099748,56063182)
 	--Activate

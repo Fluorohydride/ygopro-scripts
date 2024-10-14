@@ -1,4 +1,5 @@
 --游覧艇サブマリード
+---@param c Card
 function c87116749.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

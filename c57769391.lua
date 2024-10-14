@@ -1,4 +1,5 @@
 --オルターガイスト・ピクシール
+---@param c Card
 function c57769391.initial_effect(c)
 	--mill
 	local e1=Effect.CreateEffect(c)

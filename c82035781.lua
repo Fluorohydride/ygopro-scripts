@@ -1,4 +1,5 @@
 --ツインヘデッド・ビースト
+---@param c Card
 function c82035781.initial_effect(c)
 	--multi attack
 	local e1=Effect.CreateEffect(c)

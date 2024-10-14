@@ -1,4 +1,5 @@
 --レベル・レジストウォール
+---@param c Card
 function c86133013.initial_effect(c)
 	--Activate/Special Summon
 	local e1=Effect.CreateEffect(c)

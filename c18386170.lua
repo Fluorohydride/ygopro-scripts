@@ -1,4 +1,5 @@
 --彼岸の巡礼者 ダンテ
+---@param c Card
 function c18386170.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c18386170.ffilter,3,true)

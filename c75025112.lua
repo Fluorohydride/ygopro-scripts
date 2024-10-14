@@ -1,4 +1,5 @@
 --魍魎跋扈
+---@param c Card
 function c75025112.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

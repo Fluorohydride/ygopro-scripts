@@ -1,4 +1,5 @@
 --ダメージ・ゲート
+---@param c Card
 function c87106146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

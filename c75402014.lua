@@ -1,4 +1,5 @@
 --竜装合体 ドラゴニック・ホープレイ
+---@param c Card
 function c75402014.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

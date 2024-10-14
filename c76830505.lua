@@ -1,4 +1,5 @@
 --無限起動ブルータルドーザー
+---@param c Card
 function c76830505.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

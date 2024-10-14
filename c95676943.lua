@@ -1,4 +1,5 @@
 --絶滅の定め
+---@param c Card
 function c95676943.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

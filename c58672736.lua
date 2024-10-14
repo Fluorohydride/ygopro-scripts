@@ -1,4 +1,5 @@
 --ダイナレスラー・ギガ・スピノサバット
+---@param c Card
 function c58672736.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DINOSAUR),aux.NonTuner(nil),1)

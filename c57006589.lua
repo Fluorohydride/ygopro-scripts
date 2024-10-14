@@ -1,4 +1,5 @@
 --エネルギー吸収板
+---@param c Card
 function c57006589.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

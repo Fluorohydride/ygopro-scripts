@@ -1,4 +1,5 @@
 --星風狼ウォルフライエ
+---@param c Card
 function c3322931.initial_effect(c)
 	c:SetUniqueOnField(1,0,3322931)
 	--synchro summon

@@ -1,4 +1,5 @@
 --水精鱗－オーケアビス
+---@param c Card
 function c28577986.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

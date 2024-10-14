@@ -1,4 +1,5 @@
 --クリバビロン
+---@param c Card
 function c70914287.initial_effect(c)
 	aux.AddCodeList(c,44632120,71036835,7021574,34419588,40640057)
 	--special summon itself

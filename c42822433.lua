@@ -1,4 +1,5 @@
 --星騎士 アルテア
+---@param c Card
 function c42822433.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

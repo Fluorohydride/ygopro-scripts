@@ -1,4 +1,5 @@
 --慈悲深き修道女
+---@param c Card
 function c84080938.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

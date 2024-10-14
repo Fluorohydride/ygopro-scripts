@@ -1,4 +1,5 @@
 --時械神カミオン
+---@param c Card
 function c91712985.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

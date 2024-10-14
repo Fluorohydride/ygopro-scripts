@@ -1,4 +1,5 @@
 --戦場の惨劇
+---@param c Card
 function c42228966.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

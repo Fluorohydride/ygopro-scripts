@@ -1,4 +1,5 @@
 --手札断殺
+---@param c Card
 function c74519184.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

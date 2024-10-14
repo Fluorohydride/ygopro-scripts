@@ -1,4 +1,5 @@
 --ADチェンジャー
+---@param c Card
 function c96146814.initial_effect(c)
 	--adchange
 	local e1=Effect.CreateEffect(c)

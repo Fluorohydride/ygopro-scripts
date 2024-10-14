@@ -1,4 +1,5 @@
 --超雷龍－サンダー・ドラゴン
+---@param c Card
 function c15291624.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

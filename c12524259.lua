@@ -1,4 +1,5 @@
 --無許可の再奇動
+---@param c Card
 function c12524259.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

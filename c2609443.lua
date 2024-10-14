@@ -1,4 +1,5 @@
 --先史遺産ヴィマナ
+---@param c Card
 function c2609443.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

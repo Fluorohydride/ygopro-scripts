@@ -1,4 +1,5 @@
 --鎧竜の聖騎士
+---@param c Card
 function c75901113.initial_effect(c)
 	c:EnableReviveLimit()
 	--todeck

@@ -1,4 +1,5 @@
 --ジェムナイト・クォーツ
+---@param c Card
 function c35622739.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

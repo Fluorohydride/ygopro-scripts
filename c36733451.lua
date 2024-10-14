@@ -1,4 +1,5 @@
 --次元合成師
+---@param c Card
 function c36733451.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

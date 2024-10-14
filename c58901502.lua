@@ -1,4 +1,5 @@
 --ゴヨウ・ディフェンダー
+---@param c Card
 function c58901502.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

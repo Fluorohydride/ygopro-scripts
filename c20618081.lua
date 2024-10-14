@@ -1,4 +1,5 @@
 --転生炎獣ファルコ
+---@param c Card
 function c20618081.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

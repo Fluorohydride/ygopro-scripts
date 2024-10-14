@@ -1,4 +1,5 @@
 --創造の聖刻印
+---@param c Card
 function c39680372.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

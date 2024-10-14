@@ -1,5 +1,6 @@
 --No－P.U.N.K.ディア・ノート
 local s,id,o=GetID()
+---@param c Card
 function c6609736.initial_effect(c)
 	--to grave and spsummon
 	local e1=Effect.CreateEffect(c)

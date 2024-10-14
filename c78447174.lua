@@ -1,4 +1,5 @@
 --電幻機塊コンセントロール
+---@param c Card
 function c78447174.initial_effect(c)
 	--Special Summon self
 	local e1=Effect.CreateEffect(c)

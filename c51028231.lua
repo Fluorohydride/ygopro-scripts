@@ -1,4 +1,5 @@
 --魔界劇団－サッシー・ルーキー
+---@param c Card
 function c51028231.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--destroy replace

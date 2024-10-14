@@ -1,4 +1,5 @@
 --ダイナレスラー・マーシャルアンガ
+---@param c Card
 function c11755663.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

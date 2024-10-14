@@ -1,4 +1,5 @@
 --イグニスターAiランド
+---@param c Card
 function c59054773.initial_effect(c)
 	aux.AddCodeList(c,59054773)
 	--Activate

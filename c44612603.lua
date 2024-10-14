@@ -1,4 +1,5 @@
 --生存境界
+---@param c Card
 function c44612603.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

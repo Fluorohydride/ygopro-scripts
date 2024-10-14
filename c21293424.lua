@@ -1,4 +1,5 @@
 --空母軍貫－しらうお型特務艦
+---@param c Card
 function c21293424.initial_effect(c)
 	aux.AddCodeList(c,24639891,78362751)
 	--xyz summon
