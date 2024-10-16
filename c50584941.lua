@@ -48,9 +48,15 @@ function c50584941.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local code=e:GetLabel()
-	local source=e:GetLabelObject()
+	local name=e:GetLabelObject():GetOriginalCodeRule()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		aux.BecomeOriginalCode(c,source,RESET_EVENT+RESETS_STANDARD)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_CHANGE_CODE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetValue(name)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterEffect(e1)
 		tc:ReplaceEffect(code,RESET_EVENT+RESETS_STANDARD)
 	end
 end
