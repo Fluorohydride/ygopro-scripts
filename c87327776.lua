@@ -1,4 +1,5 @@
 --転生炎獣ミラージュスタリオ
+---@param c Card
 function c87327776.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

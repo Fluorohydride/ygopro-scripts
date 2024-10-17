@@ -1,4 +1,5 @@
 --アストラグールズ
+---@param c Card
 function c69170403.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --落魂
+---@param c Card
 function c14957440.initial_effect(c)
 	c:EnableCounterPermit(0x59,LOCATION_MZONE)
 	--cannot be target

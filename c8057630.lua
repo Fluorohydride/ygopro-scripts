@@ -1,4 +1,5 @@
 --コアの再練成
+---@param c Card
 function c8057630.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

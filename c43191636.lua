@@ -1,4 +1,5 @@
 --竜影魚レイ・ブロント
+---@param c Card
 function c43191636.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--change base attack

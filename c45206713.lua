@@ -1,4 +1,5 @@
 --DDスワラル・スライム
+---@param c Card
 function c45206713.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

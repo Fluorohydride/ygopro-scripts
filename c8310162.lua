@@ -1,4 +1,5 @@
 --Sin パラドクス・ドラゴン
+---@param c Card
 function c8310162.initial_effect(c)
 	aux.AddCodeList(c,27564031)
 	aux.AddMaterialCodeList(c,74509280)

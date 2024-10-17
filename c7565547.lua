@@ -1,4 +1,5 @@
 --力の集約
+---@param c Card
 function c7565547.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

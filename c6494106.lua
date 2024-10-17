@@ -1,4 +1,5 @@
 --妬絶の呪眼
+---@param c Card
 function c6494106.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

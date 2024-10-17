@@ -1,4 +1,5 @@
 --エンコード・トーカー
+---@param c Card
 function c6622715.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --ふわんだりぃずと旅じたく
+---@param c Card
 function c69087397.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

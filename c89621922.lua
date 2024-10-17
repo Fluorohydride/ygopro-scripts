@@ -1,4 +1,5 @@
 --N・フレア・スカラベ
+---@param c Card
 function c89621922.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

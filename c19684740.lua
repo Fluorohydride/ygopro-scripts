@@ -1,4 +1,5 @@
 --妖精騎士イングナル
+---@param c Card
 function c19684740.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3)

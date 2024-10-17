@@ -1,4 +1,5 @@
 --ベアルクティ－ミクポーラ
+---@param c Card
 function c29537493.initial_effect(c)
 	--special summon
 	local e1=aux.AddUrsarcticSpSummonEffect(c)

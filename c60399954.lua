@@ -1,4 +1,5 @@
 --ユニオン・アタック
+---@param c Card
 function c60399954.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

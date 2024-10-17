@@ -1,4 +1,5 @@
 --彼岸の悪鬼 ガトルホッグ
+---@param c Card
 function c57143342.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

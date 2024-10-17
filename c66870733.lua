@@ -1,4 +1,5 @@
 --氷の魔妖－雪女
+---@param c Card
 function c66870733.initial_effect(c)
 	c:SetUniqueOnField(1,0,66870733)
 	--link summon

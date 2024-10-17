@@ -1,4 +1,5 @@
 --城壁壊しの大槍
+---@param c Card
 function c242146.initial_effect(c)
 	aux.AddEquipSpellEffect(c,true,true,Card.IsFaceup,nil)
 	--atk up

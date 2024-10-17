@@ -1,4 +1,5 @@
 --星鍵士リイヴ
+---@param c Card
 function c39752820.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

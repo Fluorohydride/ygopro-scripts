@@ -1,4 +1,5 @@
 --魔鏡導士サイコ・バウンダー
+---@param c Card
 function c65471349.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--to hand

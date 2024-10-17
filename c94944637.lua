@@ -1,4 +1,5 @@
 --魔族召喚師
+---@param c Card
 function c94944637.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

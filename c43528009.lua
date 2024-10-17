@@ -1,4 +1,5 @@
 --星の金貨
+---@param c Card
 function c43528009.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --水陸両用バグロス Mk－3
+---@param c Card
 function c64342551.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	local e1=Effect.CreateEffect(c)

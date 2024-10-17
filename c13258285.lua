@@ -1,4 +1,5 @@
 --Uk－P.U.N.K.娑楽斎
+---@param c Card
 function c13258285.initial_effect(c)
 	--fusion summon
 	local e1=Effect.CreateEffect(c)

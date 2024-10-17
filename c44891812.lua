@@ -1,4 +1,5 @@
 --超重武者オタス－K
+---@param c Card
 function c44891812.initial_effect(c)
 	--def up
 	local e1=Effect.CreateEffect(c)

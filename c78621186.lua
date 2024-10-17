@@ -1,4 +1,5 @@
 --バーバリアン・ハウリング
+---@param c Card
 function c78621186.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

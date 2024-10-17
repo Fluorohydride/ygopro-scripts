@@ -1,4 +1,5 @@
 --壱時砲固定式
+---@param c Card
 function c70916046.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

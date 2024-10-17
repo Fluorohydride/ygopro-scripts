@@ -1,4 +1,5 @@
 --漏電
+---@param c Card
 function c75967082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --紺碧の機界騎士
+---@param c Card
 function c92204263.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

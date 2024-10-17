@@ -1,4 +1,5 @@
 --瓔珞帝華－ペリアリス
+---@param c Card
 function c72924435.initial_effect(c)
 	--link summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

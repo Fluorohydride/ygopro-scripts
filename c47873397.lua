@@ -1,5 +1,6 @@
 --トーテムポール
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	c:EnableCounterPermit(0x68)

@@ -1,4 +1,5 @@
 --歯車街
+---@param c Card
 function c37694547.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サイバー・プチ・エンジェル
+---@param c Card
 function c76103404.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

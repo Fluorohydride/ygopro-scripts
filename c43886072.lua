@@ -1,4 +1,5 @@
 --プランキッズ・バウワウ
+---@param c Card
 function c43886072.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

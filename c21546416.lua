@@ -1,4 +1,5 @@
 --アームド・ドラゴン・サンダー LV5
+---@param c Card
 function c21546416.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,46384672,LOCATION_MZONE+LOCATION_GRAVE)

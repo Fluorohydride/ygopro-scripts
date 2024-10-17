@@ -1,4 +1,5 @@
 --獣烈な争い
+---@param c Card
 function c36809777.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

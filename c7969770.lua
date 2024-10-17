@@ -1,4 +1,5 @@
 --トランスファミリア
+---@param c Card
 function c7969770.initial_effect(c)
 	--move
 	local e1=Effect.CreateEffect(c)

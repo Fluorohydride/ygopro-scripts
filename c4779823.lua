@@ -1,4 +1,5 @@
 --ライトロード・アーク ミカエル
+---@param c Card
 function c4779823.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_LIGHT),1)

@@ -1,4 +1,5 @@
 --竜騎士ブラック・マジシャン
+---@param c Card
 function c41721210.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

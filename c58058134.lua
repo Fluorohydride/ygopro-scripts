@@ -1,4 +1,5 @@
 --シャイニート・マジシャン
+---@param c Card
 function c58058134.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

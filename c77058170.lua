@@ -1,4 +1,5 @@
 --アンダークロックテイカー
+---@param c Card
 function c77058170.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,2)

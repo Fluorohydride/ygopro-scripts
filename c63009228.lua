@@ -1,4 +1,5 @@
 --レスキュー・インターレーサー
+---@param c Card
 function c63009228.initial_effect(c)
 	--Damage to 0
 	local e1=Effect.CreateEffect(c)

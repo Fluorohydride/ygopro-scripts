@@ -1,4 +1,5 @@
 --黄昏の忍者将軍－ゲツガ
+---@param c Card
 function c76930964.initial_effect(c)
 	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

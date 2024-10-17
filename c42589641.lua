@@ -1,4 +1,5 @@
 --星輝士 トライヴェール
+---@param c Card
 function c42589641.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c42589641.xyzfilter,4,3)

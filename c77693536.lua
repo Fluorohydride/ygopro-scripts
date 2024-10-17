@@ -1,4 +1,5 @@
 --フルメタルフォーゼ・アルカエスト
+---@param c Card
 function c77693536.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

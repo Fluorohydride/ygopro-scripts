@@ -1,4 +1,5 @@
 --No.53 偽骸神 Heart－eartH
+---@param c Card
 function c23998625.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

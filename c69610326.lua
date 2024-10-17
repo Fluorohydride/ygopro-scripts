@@ -1,4 +1,5 @@
 --覇王眷竜ダークヴルム
+---@param c Card
 function c69610326.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--pendulum set

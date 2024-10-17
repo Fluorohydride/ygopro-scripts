@@ -1,4 +1,5 @@
 --運命の囚人
+---@param c Card
 function c27104921.initial_effect(c)
 	c:EnableCounterPermit(0x61)
 	c:SetCounterLimit(0x61,3)

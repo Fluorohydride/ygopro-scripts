@@ -1,4 +1,5 @@
 --聖女ジャンヌ
+---@param c Card
 function c21175632.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

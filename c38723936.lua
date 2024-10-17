@@ -1,4 +1,5 @@
 --クイズ
+---@param c Card
 function c38723936.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

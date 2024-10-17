@@ -1,4 +1,5 @@
 --光波防輪
+---@param c Card
 function c99397762.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

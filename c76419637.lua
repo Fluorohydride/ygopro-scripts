@@ -1,4 +1,5 @@
 --CX 激烈華戦艦タオヤメ
+---@param c Card
 function c76419637.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,4)

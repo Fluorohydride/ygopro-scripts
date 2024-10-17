@@ -1,4 +1,5 @@
 --自爆スイッチ
+---@param c Card
 function c57585212.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

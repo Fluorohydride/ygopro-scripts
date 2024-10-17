@@ -1,4 +1,5 @@
 --破滅の魔王ガーランドルフ
+---@param c Card
 function c30646525.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

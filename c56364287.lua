@@ -1,4 +1,5 @@
 --サイバー・ドラゴン・ヘルツ
+---@param c Card
 function c56364287.initial_effect(c)
 	--name change
 	aux.EnableChangeCode(c,70095154,LOCATION_MZONE+LOCATION_GRAVE)

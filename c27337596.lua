@@ -1,4 +1,5 @@
 --聖刻龍王－アトゥムス
+---@param c Card
 function c27337596.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),6,2)

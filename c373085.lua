@@ -1,4 +1,5 @@
 --讃美火
+---@param c Card
 function c373085.initial_effect(c)
 	--discard oppo deck
 	local e1=Effect.CreateEffect(c)

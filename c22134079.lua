@@ -1,4 +1,5 @@
 --墓守の伏兵
+---@param c Card
 function c22134079.initial_effect(c)
 	--return to deck
 	local e1=Effect.CreateEffect(c)

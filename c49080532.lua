@@ -1,4 +1,5 @@
 --インフェルニティ・ビートル
+---@param c Card
 function c49080532.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

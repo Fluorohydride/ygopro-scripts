@@ -1,4 +1,5 @@
 --一点着地
+---@param c Card
 function c17322533.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--activate

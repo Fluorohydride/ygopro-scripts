@@ -1,4 +1,5 @@
 --H－C クサナギ
+---@param c Card
 function c74593218.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),4,3)

@@ -1,4 +1,5 @@
 --リチュア・ヴァニティ
+---@param c Card
 function c93506862.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

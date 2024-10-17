@@ -1,4 +1,5 @@
 --混沌幻魔アーミタイル－虚無幻影羅生悶
+---@param c Card
 function c60110982.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

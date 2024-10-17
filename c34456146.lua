@@ -1,4 +1,5 @@
 --慈愛の賢者－シエラ
+---@param c Card
 function c34456146.initial_effect(c)
 	--specialSummon
 	local e1=Effect.CreateEffect(c)

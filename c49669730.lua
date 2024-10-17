@@ -1,4 +1,5 @@
 --ウォーターハザード
+---@param c Card
 function c49669730.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --熟練の栗魔導士
+---@param c Card
 function c88232397.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,3)

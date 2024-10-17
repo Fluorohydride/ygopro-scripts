@@ -1,4 +1,5 @@
 --一時休戦
+---@param c Card
 function c33782437.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

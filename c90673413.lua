@@ -1,4 +1,5 @@
 --ガガガリベンジ
+---@param c Card
 function c90673413.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

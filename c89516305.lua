@@ -1,4 +1,5 @@
 --No.87 雪月花美神クイーン・オブ・ナイツ
+---@param c Card
 function c89516305.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3)

@@ -1,4 +1,5 @@
 --壱世壊に澄み渡る残響
+---@param c Card
 function c1329620.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

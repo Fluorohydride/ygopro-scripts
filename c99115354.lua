@@ -1,4 +1,5 @@
 --ハイパーサイコライザー
+---@param c Card
 function c99115354.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

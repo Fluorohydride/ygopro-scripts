@@ -1,4 +1,5 @@
 --シューティング・ライザー・ドラゴン
+---@param c Card
 function c68431965.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

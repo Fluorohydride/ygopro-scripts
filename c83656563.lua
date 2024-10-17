@@ -1,4 +1,5 @@
 --中生代化石マシン スカルワゴン
+---@param c Card
 function c83656563.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

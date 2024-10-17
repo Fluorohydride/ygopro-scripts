@@ -1,4 +1,5 @@
 --ウォークライ・ミーディアム
+---@param c Card
 function c81613061.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

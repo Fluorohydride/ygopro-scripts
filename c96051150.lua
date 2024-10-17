@@ -1,4 +1,5 @@
 --陽炎獣 メコレオス
+---@param c Card
 function c96051150.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

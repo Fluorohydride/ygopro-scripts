@@ -1,4 +1,5 @@
 --炎虎梁山爆
+---@param c Card
 function c70946699.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リンクリボー
+---@param c Card
 function c41999284.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLevel,1),1)

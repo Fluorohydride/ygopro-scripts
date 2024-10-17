@@ -1,4 +1,5 @@
 --ネオス・フュージョン
+---@param c Card
 function c14088859.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)

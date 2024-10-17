@@ -1,4 +1,5 @@
 --エレキャノン
+---@param c Card
 function c95084054.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

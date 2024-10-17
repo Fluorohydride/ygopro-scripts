@@ -1,4 +1,5 @@
 --マジック・ホール・ゴーレム
+---@param c Card
 function c82458280.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

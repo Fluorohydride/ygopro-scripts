@@ -1,4 +1,5 @@
 --EMシルバー・クロウ
+---@param c Card
 function c26270847.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

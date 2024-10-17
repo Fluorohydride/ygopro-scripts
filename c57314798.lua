@@ -1,4 +1,5 @@
 --No.100 ヌメロン・ドラゴン
+---@param c Card
 function c57314798.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon

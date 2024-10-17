@@ -1,4 +1,5 @@
 --エクシーズ・チェンジ・タクティクス
+---@param c Card
 function c11705261.initial_effect(c)
 	c:SetUniqueOnField(1,0,11705261)
 	--Activate

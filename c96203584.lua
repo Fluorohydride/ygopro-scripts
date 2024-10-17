@@ -1,4 +1,5 @@
 --溟界の大蛟
+---@param c Card
 function c96203584.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

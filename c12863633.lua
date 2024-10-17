@@ -1,4 +1,5 @@
 --五稜星の呪縛
+---@param c Card
 function c12863633.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

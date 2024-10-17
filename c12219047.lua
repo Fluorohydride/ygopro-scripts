@@ -1,4 +1,5 @@
 --幻影騎士団カースド・ジャベリン
+---@param c Card
 function c12219047.initial_effect(c)
 	aux.AddXyzProcedure(c,nil,2,2)
 	c:EnableReviveLimit()

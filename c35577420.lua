@@ -1,4 +1,5 @@
 --ライト・リサイレンス
+---@param c Card
 function c35577420.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

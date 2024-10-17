@@ -1,6 +1,7 @@
 --お代狸様の代算様
 --not fully implemented
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--cannot release
 	local e1=Effect.CreateEffect(c)

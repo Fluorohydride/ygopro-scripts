@@ -1,4 +1,5 @@
 --裁きの天秤
+---@param c Card
 function c67443336.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

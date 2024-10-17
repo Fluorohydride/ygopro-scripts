@@ -1,4 +1,5 @@
 --ライカン・スロープ
+---@param c Card
 function c84385264.initial_effect(c)
 	c:EnableReviveLimit()
 	--damage

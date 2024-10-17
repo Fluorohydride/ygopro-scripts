@@ -1,4 +1,5 @@
 --神聖騎士パーシアス
+---@param c Card
 function c69514125.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_LIGHT),1)

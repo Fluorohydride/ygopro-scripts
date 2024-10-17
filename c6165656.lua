@@ -1,4 +1,5 @@
 --CNo.88 ギミック・パペット－ディザスター・レオ
+---@param c Card
 function c6165656.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

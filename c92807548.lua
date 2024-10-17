@@ -1,4 +1,5 @@
 --堕天使ユコバック
+---@param c Card
 function c92807548.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ザ・キックマン
+---@param c Card
 function c90407382.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

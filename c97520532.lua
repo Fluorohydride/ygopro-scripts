@@ -1,4 +1,5 @@
 --ギミック・パペット－キメラ・ドール
+---@param c Card
 function c97520532.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

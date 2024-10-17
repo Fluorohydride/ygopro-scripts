@@ -1,4 +1,5 @@
 --実力伯仲
+---@param c Card
 function c65384188.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

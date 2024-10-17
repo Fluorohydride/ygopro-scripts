@@ -1,4 +1,5 @@
 --塊斬機ラプラシアン
+---@param c Card
 function c88021907.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

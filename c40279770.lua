@@ -1,4 +1,5 @@
 --黒羽の導き
+---@param c Card
 function c40279770.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

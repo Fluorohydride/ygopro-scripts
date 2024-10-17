@@ -1,4 +1,5 @@
 --剣闘獣ノクシウス
+---@param c Card
 function c67385964.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --進化の代償
+---@param c Card
 function c14154221.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

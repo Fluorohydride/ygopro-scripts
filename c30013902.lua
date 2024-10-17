@@ -1,4 +1,5 @@
 --聖種の影芽
+---@param c Card
 function c30013902.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

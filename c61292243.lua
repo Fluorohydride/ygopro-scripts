@@ -1,5 +1,6 @@
 --EMERGENCY！
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--summon and release
 	local e1=Effect.CreateEffect(c)

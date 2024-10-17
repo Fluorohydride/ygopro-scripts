@@ -1,4 +1,5 @@
 --妖仙獣の居太刀風
+---@param c Card
 function c10612222.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

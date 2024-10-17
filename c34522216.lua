@@ -1,4 +1,5 @@
 --アモルファージ・ガストル
+---@param c Card
 function c34522216.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

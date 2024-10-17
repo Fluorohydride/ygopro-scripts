@@ -1,4 +1,5 @@
 --インフェルノイド・リリス
+---@param c Card
 function c23440231.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

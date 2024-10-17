@@ -1,5 +1,6 @@
 --エアジャチ
 local s,id,o=GetID()
+---@param c Card
 function c84747429.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

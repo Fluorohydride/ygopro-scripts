@@ -1,4 +1,5 @@
 --戦華史略－東南之風
+---@param c Card
 function c62528292.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

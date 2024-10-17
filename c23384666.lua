@@ -1,4 +1,5 @@
 --機巧蛙－磐盾多邇具久
+---@param c Card
 function c23384666.initial_effect(c)
 	--to deck top
 	local e1=Effect.CreateEffect(c)

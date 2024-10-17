@@ -1,4 +1,5 @@
 --カボチャの馬車
+---@param c Card
 function c14512825.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--direct attack

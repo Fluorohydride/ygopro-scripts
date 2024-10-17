@@ -1,4 +1,5 @@
 --ワルキューレ・ヴリュンヒルデ
+---@param c Card
 function c2204038.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

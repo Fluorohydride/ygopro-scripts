@@ -1,4 +1,5 @@
 --超重武者ヒキャ－Q
+---@param c Card
 function c41141943.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

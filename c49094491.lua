@@ -1,4 +1,5 @@
 --転生炎獣フェネック
+---@param c Card
 function c49094491.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

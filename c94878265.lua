@@ -1,4 +1,5 @@
 --モジャ
+---@param c Card
 function c94878265.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

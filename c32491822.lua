@@ -1,4 +1,5 @@
 --降雷皇ハモン
+---@param c Card
 function c32491822.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

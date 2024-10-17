@@ -1,4 +1,5 @@
 --サーチ・ストライカー
+---@param c Card
 function c80885324.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

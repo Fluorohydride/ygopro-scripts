@@ -1,4 +1,5 @@
 --F.A.ライトニングマスター
+---@param c Card
 function c33158448.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

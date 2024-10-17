@@ -1,4 +1,5 @@
 --ヴァイロン・チャージャー
+---@param c Card
 function c13220032.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

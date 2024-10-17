@@ -1,4 +1,5 @@
 --魔界劇団－コミック・リリーフ
+---@param c Card
 function c15308295.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

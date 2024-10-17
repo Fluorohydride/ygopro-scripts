@@ -1,4 +1,5 @@
 --XX－セイバー ガルセム
+---@param c Card
 function c77330185.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

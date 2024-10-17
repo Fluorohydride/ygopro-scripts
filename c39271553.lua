@@ -1,4 +1,5 @@
 --F.A.カーナビゲーター
+---@param c Card
 function c39271553.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

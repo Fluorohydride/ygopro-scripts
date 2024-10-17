@@ -1,4 +1,5 @@
 --サラマングレイト・ギフト
+---@param c Card
 function c20788863.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

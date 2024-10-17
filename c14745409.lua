@@ -1,4 +1,5 @@
 --聖剣ガラティーン
+---@param c Card
 function c14745409.initial_effect(c)
 	c:SetUniqueOnField(1,0,14745409)
 	--Activate

@@ -1,4 +1,5 @@
 --EMレビュー・ダンサー
+---@param c Card
 function c36527535.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

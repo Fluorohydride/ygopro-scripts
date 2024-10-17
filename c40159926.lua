@@ -1,4 +1,5 @@
 --ミラー・リゾネーター
+---@param c Card
 function c40159926.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

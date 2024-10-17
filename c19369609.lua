@@ -1,4 +1,5 @@
 --LL－プロム・スラッシュ
+---@param c Card
 function c19369609.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)

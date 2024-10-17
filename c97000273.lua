@@ -1,4 +1,5 @@
 --スクラップ・コング
+---@param c Card
 function c97000273.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

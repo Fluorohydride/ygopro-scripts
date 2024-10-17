@@ -1,4 +1,5 @@
 --リミッター解除
+---@param c Card
 function c23171610.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

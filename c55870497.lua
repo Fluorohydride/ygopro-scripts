@@ -1,4 +1,5 @@
 --燃え竹光
+---@param c Card
 function c55870497.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

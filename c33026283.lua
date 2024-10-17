@@ -1,4 +1,5 @@
 --双天将 金剛
+---@param c Card
 function c33026283.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

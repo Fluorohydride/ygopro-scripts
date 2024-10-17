@@ -1,4 +1,5 @@
 --マジックアーム・シールド
+---@param c Card
 function c96008713.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

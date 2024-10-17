@@ -1,4 +1,5 @@
 --バーニングナックル・スピリッツ
+---@param c Card
 function c36916401.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

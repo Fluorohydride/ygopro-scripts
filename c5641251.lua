@@ -1,4 +1,5 @@
 --F.A.デッド・ヒート
+---@param c Card
 function c5641251.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

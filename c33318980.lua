@@ -1,4 +1,5 @@
 --暗黒騎士ガイアソルジャー
+---@param c Card
 function c33318980.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

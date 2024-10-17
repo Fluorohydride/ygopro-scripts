@@ -1,4 +1,5 @@
 --サイバー・エンジェル－荼吉尼－
+---@param c Card
 function c39618799.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave

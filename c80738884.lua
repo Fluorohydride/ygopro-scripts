@@ -1,4 +1,5 @@
 --VS 龍帝ノ槍
+---@param c Card
 function c80738884.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

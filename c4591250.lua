@@ -1,4 +1,5 @@
 --アマゾネス女帝
+---@param c Card
 function c4591250.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,15951532,aux.FilterBoolFunction(Card.IsFusionSetCard,0x4),1,true,true)

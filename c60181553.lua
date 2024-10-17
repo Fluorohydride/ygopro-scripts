@@ -1,4 +1,5 @@
 --巨星のミラ
+---@param c Card
 function c60181553.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,3)

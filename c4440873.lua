@@ -1,4 +1,5 @@
 --強烈なはたき落とし
+---@param c Card
 function c4440873.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --音響戦士ディージェス
 local s,id,o=GetID()
+---@param c Card
 function c70204022.initial_effect(c)
 	aux.AddCodeList(c,75304793)
 	--pendulum summon

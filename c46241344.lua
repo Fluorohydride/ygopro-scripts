@@ -1,4 +1,5 @@
 --炎星仙－ワシンジン
+---@param c Card
 function c46241344.initial_effect(c)
 	c:SetSPSummonOnce(46241344)
 	--link summon

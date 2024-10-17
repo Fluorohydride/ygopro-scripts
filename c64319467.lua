@@ -1,4 +1,5 @@
 --ダブルフィン・シャーク
+---@param c Card
 function c64319467.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

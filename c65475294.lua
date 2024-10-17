@@ -1,4 +1,5 @@
 --味方殺しの女騎士
+---@param c Card
 function c65475294.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

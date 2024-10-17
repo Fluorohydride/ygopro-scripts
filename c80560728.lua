@@ -1,4 +1,5 @@
 --ディメンション・ミラージュ
+---@param c Card
 function c80560728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

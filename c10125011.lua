@@ -1,4 +1,5 @@
 --星守の騎士団
+---@param c Card
 function c10125011.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --竜嵐還帰
+---@param c Card
 function c83195035.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

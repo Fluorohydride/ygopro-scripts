@@ -1,4 +1,5 @@
 --エクスコード・トーカー
+---@param c Card
 function c40669071.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2)

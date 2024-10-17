@@ -1,4 +1,5 @@
 --クロニクル・マジシャン
+---@param c Card
 function c60948488.initial_effect(c)
 	aux.AddCodeList(c,46986414,89631139)
 	--spsummon

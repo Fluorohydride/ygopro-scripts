@@ -1,4 +1,5 @@
 --黄金郷のガーディアン
+---@param c Card
 function c67007102.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

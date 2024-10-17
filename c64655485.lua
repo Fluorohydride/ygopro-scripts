@@ -1,4 +1,5 @@
 --E・HERO ブレイヴ・ネオス
+---@param c Card
 function c64655485.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --グレンザウルス
+---@param c Card
 function c47506081.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

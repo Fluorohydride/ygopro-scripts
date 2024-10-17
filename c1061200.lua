@@ -1,4 +1,5 @@
 --F.A.シティGP
+---@param c Card
 function c1061200.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

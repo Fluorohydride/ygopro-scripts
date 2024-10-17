@@ -1,4 +1,5 @@
 --巨大戦艦 クリスタル・コア
+---@param c Card
 function c22790789.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--summon success

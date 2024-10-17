@@ -1,4 +1,5 @@
 --メタル・ドラゴン
+---@param c Card
 function c9293977.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

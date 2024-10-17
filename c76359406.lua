@@ -1,4 +1,5 @@
 --水晶機巧－アメトリクス
+---@param c Card
 function c76359406.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

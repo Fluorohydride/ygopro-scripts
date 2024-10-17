@@ -1,4 +1,5 @@
 --召喚獣カリギュラ
+---@param c Card
 function c13529466.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

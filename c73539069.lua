@@ -1,4 +1,5 @@
 --ストライカー・ドラゴン
+---@param c Card
 function c73539069.initial_effect(c)
 	aux.AddCodeList(c,36668118)
 	--link summon

@@ -1,4 +1,5 @@
 --エンプレス・オブ・エンディミオン
+---@param c Card
 function c39000945.initial_effect(c)
 	--Pendulum Summon
 	c:EnableCounterPermit(0x1,LOCATION_PZONE+LOCATION_MZONE)

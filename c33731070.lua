@@ -1,4 +1,5 @@
 --暗黒界の尖兵 ベージ
+---@param c Card
 function c33731070.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

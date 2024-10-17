@@ -1,4 +1,5 @@
 --デュアル・ランサー
+---@param c Card
 function c26254876.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--pierce

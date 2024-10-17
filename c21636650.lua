@@ -1,4 +1,5 @@
 --奇跡の残照
+---@param c Card
 function c21636650.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

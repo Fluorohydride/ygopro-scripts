@@ -1,4 +1,5 @@
 --レッド・ワイバーン
+---@param c Card
 function c76547525.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

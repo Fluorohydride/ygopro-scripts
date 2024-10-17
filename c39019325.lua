@@ -1,4 +1,5 @@
 --玉砕指令
+---@param c Card
 function c39019325.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --セイバー・ビートル
+---@param c Card
 function c49645921.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

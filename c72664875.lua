@@ -1,4 +1,5 @@
 --暗黒方界邪神クリムゾン・ノヴァ・トリニティ
+---@param c Card
 function c72664875.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --幻影翼
+---@param c Card
 function c98431356.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

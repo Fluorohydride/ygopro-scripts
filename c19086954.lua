@@ -1,4 +1,5 @@
 --セコンド・ゴブリン
+---@param c Card
 function c19086954.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

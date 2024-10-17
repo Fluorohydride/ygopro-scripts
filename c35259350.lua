@@ -1,4 +1,5 @@
 --スマイル・ユニバース
+---@param c Card
 function c35259350.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

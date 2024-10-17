@@ -1,4 +1,5 @@
 --No.71 リバリアン・シャーク
+---@param c Card
 function c59479050.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,3,2)

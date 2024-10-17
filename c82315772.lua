@@ -1,4 +1,5 @@
 --紋章獣エアレー
+---@param c Card
 function c82315772.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

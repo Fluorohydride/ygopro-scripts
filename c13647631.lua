@@ -1,4 +1,5 @@
 --重機貨列車デリックレーン
+---@param c Card
 function c13647631.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

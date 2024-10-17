@@ -1,4 +1,5 @@
 --進化の分岐点
+---@param c Card
 function c64815084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

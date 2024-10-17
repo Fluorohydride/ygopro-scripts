@@ -1,4 +1,5 @@
 --ペンギン魚雷
+---@param c Card
 function c17679043.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

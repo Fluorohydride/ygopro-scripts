@@ -1,4 +1,5 @@
 --No.2 蚊学忍者シャドー・モスキート
+---@param c Card
 function c32453837.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2,nil,nil,99)

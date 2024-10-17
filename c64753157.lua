@@ -1,4 +1,5 @@
 --「RESORT」 STAFF－チャーミング
+---@param c Card
 function c64753157.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

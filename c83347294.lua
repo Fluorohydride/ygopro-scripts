@@ -1,4 +1,5 @@
 --オッドアイズ・ランサー・ドラゴン
+---@param c Card
 function c83347294.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

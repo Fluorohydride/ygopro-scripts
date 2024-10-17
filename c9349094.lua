@@ -1,4 +1,5 @@
 --神樹獣ハイペリュトン
+---@param c Card
 function c9349094.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2)

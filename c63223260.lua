@@ -1,4 +1,5 @@
 --フォトン・サテライト
+---@param c Card
 function c63223260.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

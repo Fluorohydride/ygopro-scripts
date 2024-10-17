@@ -1,4 +1,5 @@
 --ファルシオンβ
+---@param c Card
 function c86170989.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(86170989,0))

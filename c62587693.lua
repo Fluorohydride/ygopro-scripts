@@ -1,4 +1,5 @@
 --機怪神エクスクローラー
+---@param c Card
 function c62587693.initial_effect(c)
 	--be target
 	local e1=Effect.CreateEffect(c)

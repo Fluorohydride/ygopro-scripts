@@ -1,4 +1,5 @@
 --魔界台本「魔王の降臨」
+---@param c Card
 function c13662809.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

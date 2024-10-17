@@ -1,4 +1,5 @@
 --クリストロン・エントリー
+---@param c Card
 function c52176579.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

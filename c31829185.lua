@@ -1,4 +1,5 @@
 --ダーク・ネクロフィア
+---@param c Card
 function c31829185.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

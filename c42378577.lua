@@ -1,4 +1,5 @@
 --ペンデュラム・スイッチ
+---@param c Card
 function c42378577.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

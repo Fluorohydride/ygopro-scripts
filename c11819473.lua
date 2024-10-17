@@ -1,4 +1,5 @@
 --アルカナリーディング
+---@param c Card
 function c11819473.initial_effect(c)
 	aux.AddCodeList(c,73206827)
 	--Activate

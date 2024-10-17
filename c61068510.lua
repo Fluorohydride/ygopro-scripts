@@ -1,4 +1,5 @@
 --トルネード
+---@param c Card
 function c61068510.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

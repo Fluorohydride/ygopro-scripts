@@ -1,4 +1,5 @@
 --レプティレス・メルジーヌ
+---@param c Card
 function c32138660.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_REPTILE),aux.NonTuner(nil),1)

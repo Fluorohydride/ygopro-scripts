@@ -1,4 +1,5 @@
 --リヴェンデット・スレイヤー
+---@param c Card
 function c4388680.initial_effect(c)
 	c:EnableReviveLimit()
 	--atk & def

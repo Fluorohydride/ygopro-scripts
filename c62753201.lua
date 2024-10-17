@@ -1,4 +1,5 @@
 --ヴァレル・レフリジェレーション
+---@param c Card
 function c62753201.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

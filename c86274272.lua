@@ -1,4 +1,5 @@
 --聖霊獣騎 アペライオ
+---@param c Card
 function c86274272.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

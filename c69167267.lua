@@ -1,4 +1,5 @@
 --薫り貴き薔薇の芽吹き
+---@param c Card
 function c69167267.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--Activate

@@ -1,4 +1,5 @@
 --トライアングル・エリア
+---@param c Card
 function c53291093.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

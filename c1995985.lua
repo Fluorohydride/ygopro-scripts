@@ -1,4 +1,5 @@
 --サイレント・ソードマン LV3
+---@param c Card
 function c1995985.initial_effect(c)
 	--disable effect
 	local e1=Effect.CreateEffect(c)

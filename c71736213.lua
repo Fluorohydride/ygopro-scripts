@@ -1,4 +1,5 @@
 --花騎士団の駿馬
+---@param c Card
 function c71736213.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --深淵の暗殺者
+---@param c Card
 function c16226786.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --No.27 弩級戦艦－ドレッドノイド
+---@param c Card
 function c8387138.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

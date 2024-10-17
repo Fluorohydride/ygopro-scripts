@@ -1,4 +1,5 @@
 --魔導変換
+---@param c Card
 function c24429467.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate

@@ -1,4 +1,5 @@
 --雲魔物－ストーム・ドラゴン
+---@param c Card
 function c13474291.initial_effect(c)
 	c:EnableReviveLimit()
 	--battle indestructable

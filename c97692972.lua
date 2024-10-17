@@ -1,4 +1,5 @@
 --アマゾネスの金鞭使い
+---@param c Card
 function c97692972.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

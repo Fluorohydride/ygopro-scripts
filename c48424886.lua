@@ -1,4 +1,5 @@
 --エルシャドール・エグリスタ
+---@param c Card
 function c48424886.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --鎧竜降臨
+---@param c Card
 function c58827995.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,75901113)
 	local e1=Effect.CreateEffect(c)

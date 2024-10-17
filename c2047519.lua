@@ -1,4 +1,5 @@
 --隠れ兵
+---@param c Card
 function c2047519.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

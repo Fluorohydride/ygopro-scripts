@@ -1,4 +1,5 @@
 --ディサイシブの影霊衣
+---@param c Card
 function c88240999.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

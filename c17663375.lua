@@ -1,4 +1,5 @@
 --古代の機械飛竜
+---@param c Card
 function c17663375.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

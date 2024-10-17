@@ -1,4 +1,5 @@
 --溟界の漠－フロギ
+---@param c Card
 function c9400127.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

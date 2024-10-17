@@ -1,4 +1,5 @@
 --星杯神楽イヴ
+---@param c Card
 function c77610772.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c77610772.lcheck)

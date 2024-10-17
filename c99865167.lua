@@ -1,4 +1,5 @@
 --ウィンドフレーム
+---@param c Card
 function c99865167.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

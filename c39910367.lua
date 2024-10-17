@@ -1,4 +1,5 @@
 --魔法都市エンディミオン
+---@param c Card
 function c39910367.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate

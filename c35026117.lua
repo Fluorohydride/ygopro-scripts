@@ -1,4 +1,5 @@
 --迷宮の重魔戦車
+---@param c Card
 function c35026117.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	--summon with no tribute

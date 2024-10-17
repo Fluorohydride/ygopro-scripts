@@ -1,4 +1,5 @@
 --剣の御巫ハレ
+---@param c Card
 function c18377261.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

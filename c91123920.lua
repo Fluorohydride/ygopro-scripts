@@ -1,4 +1,5 @@
 --力の代行者 マーズ
+---@param c Card
 function c91123920.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--immune spell

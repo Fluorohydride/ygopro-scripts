@@ -1,4 +1,5 @@
 --発条機雷ゼンマイン
+---@param c Card
 function c78156759.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

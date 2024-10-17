@@ -1,4 +1,5 @@
 --ペンドラザクション
+---@param c Card
 function c58720904.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

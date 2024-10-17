@@ -1,4 +1,5 @@
 --十二獣の会局
+---@param c Card
 function c46060017.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

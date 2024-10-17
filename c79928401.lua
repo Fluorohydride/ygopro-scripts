@@ -1,4 +1,5 @@
 --勇気の天使ヴィクトリカ
+---@param c Card
 function c79928401.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

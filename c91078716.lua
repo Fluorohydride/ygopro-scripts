@@ -1,4 +1,5 @@
 --ポリノシス
+---@param c Card
 function c91078716.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

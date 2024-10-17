@@ -1,4 +1,5 @@
 --クロノダイバー・スタートアップ
+---@param c Card
 function c10877309.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

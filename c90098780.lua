@@ -1,4 +1,5 @@
 --鍵魔人ハミハミハミング
+---@param c Card
 function c90098780.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

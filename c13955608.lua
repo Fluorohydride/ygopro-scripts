@@ -1,4 +1,5 @@
 --機動砦 ストロング・ホールド
+---@param c Card
 function c13955608.initial_effect(c)
 	aux.AddCodeList(c,41172955,86445415,13839120)
 	--Activate

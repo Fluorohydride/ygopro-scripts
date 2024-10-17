@@ -1,4 +1,5 @@
 --暴れ牛鬼
+---@param c Card
 function c89718302.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

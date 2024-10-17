@@ -1,4 +1,5 @@
 --転生の超戦士
+---@param c Card
 function c73694478.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

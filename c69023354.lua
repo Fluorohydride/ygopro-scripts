@@ -1,4 +1,5 @@
 --機甲忍者エアー
+---@param c Card
 function c69023354.initial_effect(c)
 	--lv down
 	local e1=Effect.CreateEffect(c)

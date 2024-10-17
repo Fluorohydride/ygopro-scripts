@@ -1,4 +1,5 @@
 --No.59 背反の料理人
+---@param c Card
 function c82697249.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

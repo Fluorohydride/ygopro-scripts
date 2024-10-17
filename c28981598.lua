@@ -1,4 +1,5 @@
 --九魂猫
+---@param c Card
 function c28981598.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2)

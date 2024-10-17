@@ -1,4 +1,5 @@
 --白魔導士ピケル
+---@param c Card
 function c81383947.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

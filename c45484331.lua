@@ -1,4 +1,5 @@
 --スプリガンズ・キット
+---@param c Card
 function c45484331.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--spsummon

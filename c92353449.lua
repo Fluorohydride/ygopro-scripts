@@ -1,4 +1,5 @@
 --レッドアイズ・インサイト
+---@param c Card
 function c92353449.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

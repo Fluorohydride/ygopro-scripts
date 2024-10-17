@@ -1,4 +1,5 @@
 --憑依装着－ヒータ
+---@param c Card
 function c4376658.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

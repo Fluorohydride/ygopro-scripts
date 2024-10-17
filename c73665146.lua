@@ -1,4 +1,5 @@
 --サイレント・マジシャン LV4
+---@param c Card
 function c73665146.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,5)

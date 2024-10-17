@@ -1,4 +1,5 @@
 --トラミッド・ダンサー
+---@param c Card
 function c69529337.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

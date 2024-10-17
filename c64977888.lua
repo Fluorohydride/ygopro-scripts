@@ -1,4 +1,5 @@
 --見習い魔笛使い
+---@param c Card
 function c64977888.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣ダリウス
+---@param c Card
 function c25924653.initial_effect(c)
 	--grave special summon
 	local e1=Effect.CreateEffect(c)

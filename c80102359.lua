@@ -1,4 +1,5 @@
 --強化人類サイコ
+---@param c Card
 function c80102359.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

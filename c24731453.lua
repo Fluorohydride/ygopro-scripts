@@ -1,4 +1,5 @@
 --除雪機関車ハッスル・ラッセル
+---@param c Card
 function c24731453.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

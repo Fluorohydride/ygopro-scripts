@@ -1,4 +1,5 @@
 --破械童子サラマ
+---@param c Card
 function c31588572.initial_effect(c)
 	--set card
 	local e1=Effect.CreateEffect(c)

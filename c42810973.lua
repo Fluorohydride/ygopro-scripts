@@ -1,4 +1,5 @@
 --ジャンク・アーチャー
+---@param c Card
 function c42810973.initial_effect(c)
 	aux.AddMaterialCodeList(c,63977008)
 	--synchro summon

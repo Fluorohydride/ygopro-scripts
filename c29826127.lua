@@ -1,4 +1,5 @@
 --暗黒よりの軍勢
+---@param c Card
 function c29826127.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

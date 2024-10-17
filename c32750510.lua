@@ -1,4 +1,5 @@
 --アイス・ブリザード・マスター
+---@param c Card
 function c32750510.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

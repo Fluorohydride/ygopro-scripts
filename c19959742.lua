@@ -1,4 +1,5 @@
 --リチュア・シェルフィッシュ
+---@param c Card
 function c19959742.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

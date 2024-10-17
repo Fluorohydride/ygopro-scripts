@@ -1,4 +1,5 @@
 --クリスタル・シャーク
+---@param c Card
 function c98881700.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

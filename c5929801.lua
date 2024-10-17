@@ -1,4 +1,5 @@
 --RR－ファジー・レイニアス
+---@param c Card
 function c5929801.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

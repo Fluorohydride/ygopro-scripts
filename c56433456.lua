@@ -1,4 +1,5 @@
 --天空の聖域
+---@param c Card
 function c56433456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

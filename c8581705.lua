@@ -1,4 +1,5 @@
 --インフェルノクインデーモン
+---@param c Card
 function c8581705.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

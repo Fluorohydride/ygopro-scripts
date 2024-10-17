@@ -1,4 +1,5 @@
 --永久に輝けし黄金郷
+---@param c Card
 function c56984514.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --焔征竜－ブラスター
+---@param c Card
 function c53804307.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

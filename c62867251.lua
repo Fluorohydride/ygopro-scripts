@@ -1,4 +1,5 @@
 --聖なる輝き
+---@param c Card
 function c62867251.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

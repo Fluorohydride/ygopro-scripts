@@ -1,4 +1,5 @@
 --C－クラッシュ・ワイバーン
+---@param c Card
 function c3405259.initial_effect(c)
 	aux.EnableUnionAttribute(c,c3405259.filter)
 	--immune

@@ -1,4 +1,5 @@
 --ギミック・パペット－シザー・アーム
+---@param c Card
 function c29216967.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

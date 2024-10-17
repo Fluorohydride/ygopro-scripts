@@ -1,4 +1,5 @@
 --陽炎獣 ペリュトン
+---@param c Card
 function c37803172.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

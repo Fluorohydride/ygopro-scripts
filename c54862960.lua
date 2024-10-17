@@ -1,4 +1,5 @@
 --鏡の御巫ニニ
+---@param c Card
 function c54862960.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

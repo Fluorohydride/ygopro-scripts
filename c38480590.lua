@@ -1,4 +1,5 @@
 --女豹の傭兵
+---@param c Card
 function c38480590.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

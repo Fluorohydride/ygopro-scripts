@@ -1,4 +1,5 @@
 --方界波動
+---@param c Card
 function c35058588.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

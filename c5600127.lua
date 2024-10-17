@@ -1,4 +1,5 @@
 --ヒューマノイド・ドレイク
+---@param c Card
 function c5600127.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --カオスエンドマスター
+---@param c Card
 function c46609443.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

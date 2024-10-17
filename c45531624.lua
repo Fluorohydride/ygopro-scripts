@@ -1,4 +1,5 @@
 --エルフの聖剣士
+---@param c Card
 function c45531624.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

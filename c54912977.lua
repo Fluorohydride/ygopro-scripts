@@ -1,4 +1,5 @@
 --マジック・ランプ
+---@param c Card
 function c54912977.initial_effect(c)
 	--change target
 	local e1=Effect.CreateEffect(c)

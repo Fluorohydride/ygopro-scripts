@@ -1,4 +1,5 @@
 --魔力枯渇
+---@param c Card
 function c95451366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

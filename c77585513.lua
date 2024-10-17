@@ -1,4 +1,5 @@
 --人造人間－サイコ・ショッカー
+---@param c Card
 function c77585513.initial_effect(c)
 	--cannot trigger, normal version
 	local e1=Effect.CreateEffect(c)

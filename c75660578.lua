@@ -1,4 +1,5 @@
 --死の王 ヘル
+---@param c Card
 function c75660578.initial_effect(c)
 	c:SetUniqueOnField(1,0,75660578)
 	--special summon

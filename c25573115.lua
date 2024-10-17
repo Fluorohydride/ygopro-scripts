@@ -1,4 +1,5 @@
 --絶対なる捕食
+---@param c Card
 function c25573115.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

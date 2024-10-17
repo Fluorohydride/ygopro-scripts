@@ -1,4 +1,5 @@
 --剣闘獣ドラガシス
+---@param c Card
 function c62000467.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

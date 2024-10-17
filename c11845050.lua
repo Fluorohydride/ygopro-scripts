@@ -1,4 +1,5 @@
 --ライトハンド・シャーク
+---@param c Card
 function c11845050.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

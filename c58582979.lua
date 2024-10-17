@@ -1,4 +1,5 @@
 --デフラドラグーン
+---@param c Card
 function c58582979.initial_effect(c)
 	--special summon (hand)
 	local e1=Effect.CreateEffect(c)

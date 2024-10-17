@@ -1,4 +1,5 @@
 --氷結界のロイヤル・ナイト
+---@param c Card
 function c66661678.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

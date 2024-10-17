@@ -1,4 +1,5 @@
 --形勢反転
+---@param c Card
 function c5779502.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

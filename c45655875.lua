@@ -1,4 +1,5 @@
 --魔鍵召獣－アンシャラボラス
+---@param c Card
 function c45655875.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

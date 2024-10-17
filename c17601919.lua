@@ -1,4 +1,5 @@
 --ゴースト姫－パンプリンセス－
+---@param c Card
 function c17601919.initial_effect(c)
 	c:EnableCounterPermit(0x2f,LOCATION_SZONE)
 	--send replace

@@ -1,4 +1,5 @@
 --ヴァイロン・ハプト
+---@param c Card
 function c168917.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

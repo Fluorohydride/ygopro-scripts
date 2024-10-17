@@ -1,4 +1,5 @@
 --コウ・キューピット
+---@param c Card
 function c35960413.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --No.XX インフィニティ・ダークホープ
+---@param c Card
 function c21858819.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,2,nil,nil,99)

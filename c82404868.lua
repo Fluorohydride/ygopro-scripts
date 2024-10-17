@@ -1,4 +1,5 @@
 --黒魔術のヴェール
+---@param c Card
 function c82404868.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

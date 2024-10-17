@@ -1,4 +1,5 @@
 --超音速波
+---@param c Card
 function c93211810.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

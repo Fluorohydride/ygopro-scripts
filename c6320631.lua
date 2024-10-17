@@ -1,4 +1,5 @@
 --コアキメイル・ロック
+---@param c Card
 function c6320631.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--search

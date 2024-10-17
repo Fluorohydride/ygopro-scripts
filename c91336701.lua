@@ -1,4 +1,5 @@
 --魔導耀士 デイブレイカー
+---@param c Card
 function c91336701.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:EnableReviveLimit()

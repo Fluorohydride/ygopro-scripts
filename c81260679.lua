@@ -1,4 +1,5 @@
 --オオヒメの御巫
+---@param c Card
 function c81260679.initial_effect(c)
 	c:EnableReviveLimit()
 	--to hand

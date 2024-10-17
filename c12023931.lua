@@ -1,4 +1,5 @@
 --ブースター・ドラゴン
+---@param c Card
 function c12023931.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x102),2,2)

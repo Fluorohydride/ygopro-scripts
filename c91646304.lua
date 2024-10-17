@@ -1,4 +1,5 @@
 --神樹のパラディオン
+---@param c Card
 function c91646304.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

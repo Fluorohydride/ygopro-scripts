@@ -1,4 +1,5 @@
 --疫病
+---@param c Card
 function c62472614.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

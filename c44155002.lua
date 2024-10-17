@@ -1,4 +1,5 @@
 --魔轟神獣ユニコール
+---@param c Card
 function c44155002.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)

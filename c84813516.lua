@@ -1,4 +1,5 @@
 --鉄球魔神ゴロゴーン
+---@param c Card
 function c84813516.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

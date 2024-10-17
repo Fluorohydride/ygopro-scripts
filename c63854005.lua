@@ -1,4 +1,5 @@
 --簡素融合
+---@param c Card
 function c63854005.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

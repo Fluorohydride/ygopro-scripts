@@ -1,4 +1,5 @@
 --甲虫装機の魔剣 ゼクトキャリバー
+---@param c Card
 function c16550875.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

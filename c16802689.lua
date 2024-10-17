@@ -1,4 +1,5 @@
 --花札衛－桐に鳳凰－
+---@param c Card
 function c16802689.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon from hand

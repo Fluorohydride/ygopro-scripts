@@ -1,4 +1,5 @@
 --覇王眷竜オッドアイズ
+---@param c Card
 function c96733134.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--search

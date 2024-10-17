@@ -1,4 +1,5 @@
 --真竜皇バハルストスF
+---@param c Card
 function c82321037.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

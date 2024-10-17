@@ -1,4 +1,5 @@
 --おかしの家
+---@param c Card
 function c79922118.initial_effect(c)
 	 --Activate
 	local e1=Effect.CreateEffect(c)

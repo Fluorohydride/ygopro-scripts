@@ -1,4 +1,5 @@
 --Ga－P.U.N.K.ワイルド・ピッキング
+---@param c Card
 function c81192859.initial_effect(c)
 	--ACT
 	local e1=Effect.CreateEffect(c)

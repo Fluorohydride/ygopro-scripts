@@ -1,5 +1,6 @@
 --シトリスの蟲惑魔
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

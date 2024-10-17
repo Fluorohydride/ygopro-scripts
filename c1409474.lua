@@ -1,4 +1,5 @@
 --陽炎獣 スピンクス
+---@param c Card
 function c1409474.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --紫炎の寄子
+---@param c Card
 function c33883834.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

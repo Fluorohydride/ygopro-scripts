@@ -1,4 +1,5 @@
 --ライジング・オブ・ファイア
+---@param c Card
 function c66947913.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

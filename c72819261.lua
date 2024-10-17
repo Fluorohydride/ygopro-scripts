@@ -1,4 +1,5 @@
 --エレメントセイバー・マロー
+---@param c Card
 function c72819261.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

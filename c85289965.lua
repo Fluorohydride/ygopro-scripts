@@ -1,4 +1,5 @@
 --ヴァレルソード・ドラゴン
+---@param c Card
 function c85289965.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),3)

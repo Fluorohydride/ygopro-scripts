@@ -1,4 +1,5 @@
 --虚無械アイン
+---@param c Card
 function c9409625.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

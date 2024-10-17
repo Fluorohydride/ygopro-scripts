@@ -1,4 +1,5 @@
 --The supremacy SUN
+---@param c Card
 function c51402908.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

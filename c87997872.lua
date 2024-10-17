@@ -1,4 +1,5 @@
 --スフィンクス・アンドロジュネス
+---@param c Card
 function c87997872.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

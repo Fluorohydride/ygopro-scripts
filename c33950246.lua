@@ -1,4 +1,5 @@
 --王宮の号令
+---@param c Card
 function c33950246.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

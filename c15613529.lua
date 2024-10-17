@@ -1,4 +1,5 @@
 --ホーリー・エルフ－ホーリー・バースト・ストリーム
+---@param c Card
 function c15613529.initial_effect(c)
 	--special summon itself
 	local e1=Effect.CreateEffect(c)

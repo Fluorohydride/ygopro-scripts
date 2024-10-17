@@ -1,4 +1,5 @@
 --毒蛇神ヴェノミナーガ
+---@param c Card
 function c8062132.initial_effect(c)
 	c:EnableCounterPermit(0x11)
 	c:EnableReviveLimit()

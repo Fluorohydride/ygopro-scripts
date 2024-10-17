@@ -1,4 +1,5 @@
 --水月のアデュラリア
+---@param c Card
 function c15464375.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

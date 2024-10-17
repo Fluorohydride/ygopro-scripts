@@ -1,4 +1,5 @@
 --澱神アポピス
+---@param c Card
 function c85888377.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

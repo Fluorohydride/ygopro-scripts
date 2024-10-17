@@ -1,4 +1,5 @@
 --暗黒のミミック LV3
+---@param c Card
 function c1102515.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

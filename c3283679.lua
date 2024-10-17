@@ -1,4 +1,5 @@
 --エヴォルド・ラゴスクス
+---@param c Card
 function c3283679.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

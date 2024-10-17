@@ -1,4 +1,5 @@
 --エクソシスター・マルファ
+---@param c Card
 function c37343995.initial_effect(c)
 	aux.AddCodeList(c,16474916)
 	--summon

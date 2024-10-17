@@ -1,5 +1,6 @@
 --トランザクション・ロールバック
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--copy oppo trap
 	local e1=Effect.CreateEffect(c)

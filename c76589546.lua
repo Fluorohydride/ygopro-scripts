@@ -1,4 +1,5 @@
 --オーバーフロー・ドラゴン
+---@param c Card
 function c76589546.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

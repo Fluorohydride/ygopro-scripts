@@ -1,4 +1,5 @@
 --蒼翠の風霊使いウィン
+---@param c Card
 function c30674956.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c30674956.lcheck)

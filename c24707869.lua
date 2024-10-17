@@ -1,4 +1,5 @@
 --ブライト・フューチャー
+---@param c Card
 function c24707869.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

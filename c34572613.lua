@@ -1,4 +1,5 @@
 --ミュートリア進化研究所
+---@param c Card
 function c34572613.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

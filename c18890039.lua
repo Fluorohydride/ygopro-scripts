@@ -1,5 +1,6 @@
 --リブロマンサー・ライジング
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--add from deck to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ユニゾン・チューン
+---@param c Card
 function c12743620.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

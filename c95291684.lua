@@ -1,4 +1,5 @@
 --異次元の一角戦士
+---@param c Card
 function c95291684.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

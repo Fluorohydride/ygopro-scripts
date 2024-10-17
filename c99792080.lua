@@ -1,4 +1,5 @@
 --夢魔鏡の魔獣－パンタス
+---@param c Card
 function c99792080.initial_effect(c)
 	aux.AddCodeList(c,74665651,62393472)
 	--direct attack

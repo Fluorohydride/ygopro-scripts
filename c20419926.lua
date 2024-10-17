@@ -1,4 +1,5 @@
 --ガンスリンガー・エクスキューション
+---@param c Card
 function c20419926.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

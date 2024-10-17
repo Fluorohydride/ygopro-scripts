@@ -1,4 +1,5 @@
 --星雲龍ネビュラ
+---@param c Card
 function c51786039.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァイロン・テセラクト
+---@param c Card
 function c84313685.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

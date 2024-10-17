@@ -1,4 +1,5 @@
 --F.A.ダウンフォース
+---@param c Card
 function c66322203.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

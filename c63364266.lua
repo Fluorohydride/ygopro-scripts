@@ -1,4 +1,5 @@
 --ゴヨウ・チェイサー
+---@param c Card
 function c63364266.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

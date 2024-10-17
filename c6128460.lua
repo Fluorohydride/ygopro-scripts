@@ -1,4 +1,5 @@
 --ワイトベイキング
+---@param c Card
 function c6128460.initial_effect(c)
 	--change code
 	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)

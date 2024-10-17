@@ -1,4 +1,5 @@
 --超重武者装留ダブル・ホーン
+---@param c Card
 function c14624296.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

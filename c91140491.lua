@@ -1,4 +1,5 @@
 --熾天蝶
+---@param c Card
 function c91140491.initial_effect(c)
 	c:EnableCounterPermit(0x53)
 	--link summon

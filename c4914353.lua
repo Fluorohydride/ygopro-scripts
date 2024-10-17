@@ -1,4 +1,5 @@
 --スペース・インシュレイター
+---@param c Card
 function c4914353.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

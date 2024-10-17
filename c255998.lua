@@ -1,4 +1,5 @@
 --ラピッド・ウォリアー
+---@param c Card
 function c255998.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --戦線復活の代償
+---@param c Card
 function c78794994.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

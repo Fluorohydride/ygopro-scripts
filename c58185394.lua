@@ -1,4 +1,5 @@
 --G・コザッキー
+---@param c Card
 function c58185394.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --真竜剣皇マスターP
+---@param c Card
 function c21377582.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)

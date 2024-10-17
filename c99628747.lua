@@ -1,4 +1,5 @@
 --メガリス・ベトール
+---@param c Card
 function c99628747.initial_effect(c)
 	c:EnableReviveLimit()
 	--ritual summon

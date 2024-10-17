@@ -1,4 +1,5 @@
 --光天使ウィングス
+---@param c Card
 function c8875971.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

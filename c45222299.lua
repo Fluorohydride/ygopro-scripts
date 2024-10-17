@@ -1,4 +1,5 @@
 --イビリチュア・ガストクラーケ
+---@param c Card
 function c45222299.initial_effect(c)
 	c:EnableReviveLimit()
 	--confirm

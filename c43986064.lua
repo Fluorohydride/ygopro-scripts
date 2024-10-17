@@ -1,4 +1,5 @@
 --巨星墜とし
+---@param c Card
 function c43986064.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

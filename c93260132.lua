@@ -1,4 +1,5 @@
 --魔法効果の矢
+---@param c Card
 function c93260132.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

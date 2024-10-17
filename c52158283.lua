@@ -1,4 +1,5 @@
 --先史遺産コロッサル・ヘッド
+---@param c Card
 function c52158283.initial_effect(c)
 	--adchange
 	local e1=Effect.CreateEffect(c)

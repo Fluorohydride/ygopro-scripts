@@ -1,4 +1,5 @@
 --ボルテック・コング
+---@param c Card
 function c93151201.initial_effect(c)
 	--discard deck
 	local e2=Effect.CreateEffect(c)

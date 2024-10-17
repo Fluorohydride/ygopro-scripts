@@ -1,4 +1,5 @@
 --暗黒界の狩人 ブラウ
+---@param c Card
 function c79126789.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

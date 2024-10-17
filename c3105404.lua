@@ -1,4 +1,5 @@
 --ブリリアント・スパーク
+---@param c Card
 function c3105404.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

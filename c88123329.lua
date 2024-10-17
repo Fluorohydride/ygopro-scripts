@@ -1,4 +1,5 @@
 --精霊獣 ラムペンタ
+---@param c Card
 function c88123329.initial_effect(c)
 	c:SetSPSummonOnce(88123329)
 	--tohand

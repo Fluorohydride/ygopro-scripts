@@ -1,4 +1,5 @@
 --妖仙獣 飯綱鞭
+---@param c Card
 function c85970321.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

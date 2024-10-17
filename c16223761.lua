@@ -1,4 +1,5 @@
 --サンダー・ハンド
+---@param c Card
 function c16223761.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

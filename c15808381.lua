@@ -1,4 +1,5 @@
 --アチチ＠イグニスター
+---@param c Card
 function c15808381.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

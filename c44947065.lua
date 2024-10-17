@@ -1,4 +1,5 @@
 --強者の苦痛
+---@param c Card
 function c44947065.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --トラップトリック
+---@param c Card
 function c80101899.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マジック・プランター
+---@param c Card
 function c1073952.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

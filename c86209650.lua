@@ -1,4 +1,5 @@
 --迷走悪魔
+---@param c Card
 function c86209650.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

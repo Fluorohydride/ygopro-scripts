@@ -1,4 +1,5 @@
 --狂戦士の魂
+---@param c Card
 function c15381252.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --星遺物が刻む傷痕
+---@param c Card
 function c35546670.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

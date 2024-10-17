@@ -1,4 +1,5 @@
 --天狗のうちわ
+---@param c Card
 function c4149689.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

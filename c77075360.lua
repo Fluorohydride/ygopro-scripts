@@ -1,4 +1,5 @@
 --ジャンク・スピーダー
+---@param c Card
 function c77075360.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c77075360.tfilter,aux.NonTuner(nil),1)

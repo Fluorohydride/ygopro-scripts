@@ -1,4 +1,5 @@
 --スーパーバグマン
+---@param c Card
 function c86804246.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,86804246)

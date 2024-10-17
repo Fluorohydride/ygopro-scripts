@@ -1,4 +1,5 @@
 --ワイト夫人
+---@param c Card
 function c40991587.initial_effect(c)
 	--change code
 	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)

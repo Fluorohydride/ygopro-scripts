@@ -1,4 +1,5 @@
 --ブルートエンフォーサー
+---@param c Card
 function c63503850.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

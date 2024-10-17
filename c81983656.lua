@@ -1,4 +1,5 @@
 --BF T－漆黒のホーク・ジョー
+---@param c Card
 function c81983656.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x33),aux.NonTuner(Card.IsSetCard,0x33),1)

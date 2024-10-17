@@ -1,4 +1,5 @@
 --CNo.106 溶岩掌ジャイアント・ハンド・レッド
+---@param c Card
 function c55888045.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

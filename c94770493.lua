@@ -1,4 +1,5 @@
 --ダブル・アップ・チャンス
+---@param c Card
 function c94770493.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

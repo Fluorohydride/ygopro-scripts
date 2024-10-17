@@ -1,4 +1,5 @@
 --化合獣ハイドロン・ホーク
+---@param c Card
 function c55100740.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

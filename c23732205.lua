@@ -1,4 +1,5 @@
 --デリンジャラス・ドラゴン
+---@param c Card
 function c23732205.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c23732205.mfilter,2)

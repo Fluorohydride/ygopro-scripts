@@ -1,4 +1,5 @@
 --ヴァリアンツの巫女－東雲
+---@param c Card
 function c49131917.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

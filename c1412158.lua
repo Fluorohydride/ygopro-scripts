@@ -1,4 +1,5 @@
 --レアメタル・ナイト
+---@param c Card
 function c1412158.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --リボーン・ゾンビ
+---@param c Card
 function c23421244.initial_effect(c)
 	--cannot destroy
 	local e1=Effect.CreateEffect(c)

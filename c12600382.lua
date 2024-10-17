@@ -1,4 +1,5 @@
 --エクゾディア・ネクロス
+---@param c Card
 function c12600382.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot destroy

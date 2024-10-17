@@ -1,4 +1,5 @@
 --星遺物の加護
+---@param c Card
 function c97648103.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

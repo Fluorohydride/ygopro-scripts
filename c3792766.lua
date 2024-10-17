@@ -1,4 +1,5 @@
 --トリックスター・デビルフィニウム
+---@param c Card
 function c3792766.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfb),2)

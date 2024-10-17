@@ -1,4 +1,5 @@
 --異次元の探求者
+---@param c Card
 function c89015998.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

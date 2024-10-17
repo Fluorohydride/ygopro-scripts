@@ -1,5 +1,6 @@
 --深淵の獣アルバ・ロス
 local s,id=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

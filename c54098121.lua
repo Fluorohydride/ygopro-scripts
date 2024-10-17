@@ -1,4 +1,5 @@
 --謎の傀儡師
+---@param c Card
 function c54098121.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --神の息吹
+---@param c Card
 function c20101223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

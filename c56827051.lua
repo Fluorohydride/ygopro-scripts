@@ -1,4 +1,5 @@
 --影霊衣の巫女 エリアル
+---@param c Card
 function c56827051.initial_effect(c)
 	--level change
 	local e1=Effect.CreateEffect(c)

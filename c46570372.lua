@@ -1,4 +1,5 @@
 --鎮魂の決闘
+---@param c Card
 function c46570372.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)

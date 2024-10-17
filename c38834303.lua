@@ -1,4 +1,5 @@
 --カウンタークリーナー
+---@param c Card
 function c38834303.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --No.95 ギャラクシーアイズ・ダークマター・ドラゴン
+---@param c Card
 function c58820923.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,3,c58820923.ovfilter,aux.Stringid(58820923,0))

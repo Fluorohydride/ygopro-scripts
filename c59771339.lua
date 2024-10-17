@@ -1,4 +1,5 @@
 --ジャンク・バーサーカー
+---@param c Card
 function c59771339.initial_effect(c)
 	aux.AddMaterialCodeList(c,63977008)
 	--synchro summon

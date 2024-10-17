@@ -1,4 +1,5 @@
 --精霊の祝福
+---@param c Card
 function c37626500.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c37626500.ritual_filter)
 end

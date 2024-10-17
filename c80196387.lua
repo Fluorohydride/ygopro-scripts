@@ -1,4 +1,5 @@
 --天啓の薔薇の鐘
+---@param c Card
 function c80196387.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

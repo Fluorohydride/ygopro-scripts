@@ -1,4 +1,5 @@
 --革命
+---@param c Card
 function c99518961.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

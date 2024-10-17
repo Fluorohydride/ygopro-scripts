@@ -1,4 +1,5 @@
 --灰燼竜バスタード
+---@param c Card
 function c41373230.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

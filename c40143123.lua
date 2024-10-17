@@ -1,4 +1,5 @@
 --セイクリッド・スピカ
+---@param c Card
 function c40143123.initial_effect(c)
 	--summon success
 	local e2=Effect.CreateEffect(c)

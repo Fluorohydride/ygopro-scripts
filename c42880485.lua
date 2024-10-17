@@ -1,4 +1,5 @@
 --超重輝将ヒス－E
+---@param c Card
 function c42880485.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

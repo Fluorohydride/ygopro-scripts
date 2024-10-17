@@ -1,4 +1,5 @@
 --雷源龍－サンダー・ドラゴン
+---@param c Card
 function c20318029.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

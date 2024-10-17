@@ -1,4 +1,5 @@
 --アドヴェンデット・セイヴァー
+---@param c Card
 function c91420202.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_ZOMBIE),2,2)

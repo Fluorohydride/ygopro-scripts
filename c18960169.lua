@@ -1,4 +1,5 @@
 --ゴブリン陽動部隊
+---@param c Card
 function c18960169.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

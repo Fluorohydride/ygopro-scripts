@@ -1,4 +1,5 @@
 --アマゾネスペット虎獅子
+---@param c Card
 function c68507541.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,10979723,aux.FilterBoolFunction(Card.IsFusionSetCard,0x4),1,true,true)

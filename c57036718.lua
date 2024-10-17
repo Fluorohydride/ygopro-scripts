@@ -1,4 +1,5 @@
 --ズバババスター
+---@param c Card
 function c57036718.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

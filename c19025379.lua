@@ -1,4 +1,5 @@
 --ロード・オブ・ザ・レッド
+---@param c Card
 function c19025379.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy monster

@@ -1,4 +1,5 @@
 --H・C ウォー・ハンマー
+---@param c Card
 function c26885836.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

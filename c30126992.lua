@@ -1,4 +1,5 @@
 --ライトレイ ディアボロス
+---@param c Card
 function c30126992.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

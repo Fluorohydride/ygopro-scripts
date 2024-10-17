@@ -1,4 +1,5 @@
 --トゥーン・バスター・ブレイダー
+---@param c Card
 function c61190918.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

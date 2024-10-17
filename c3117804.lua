@@ -1,4 +1,5 @@
 --超重武者ビッグベン－K
+---@param c Card
 function c3117804.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --王の支配
+---@param c Card
 function c64325438.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

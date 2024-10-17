@@ -1,4 +1,5 @@
 --Ms.JUDGE
+---@param c Card
 function c86767655.initial_effect(c)
 	--disable
 	local e0=Effect.CreateEffect(c)

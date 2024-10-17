@@ -1,4 +1,5 @@
 --アロマセラフィ－アンゼリカ
+---@param c Card
 function c16759958.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

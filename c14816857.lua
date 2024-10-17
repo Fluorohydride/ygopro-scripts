@@ -1,4 +1,5 @@
 --鉄獣戦線 ナーベル
+---@param c Card
 function c14816857.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --影霊衣の反魂術
+---@param c Card
 function c97211663.initial_effect(c)
 	--Activate
 	local e1=aux.AddRitualProcEqual2(c,c97211663.filter,LOCATION_HAND+LOCATION_GRAVE,nil,nil,true)

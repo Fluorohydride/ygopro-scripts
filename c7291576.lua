@@ -1,4 +1,5 @@
 --影六武衆－ゲンバ
+---@param c Card
 function c7291576.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --レプティレス・ラミフィケーション
+---@param c Card
 function c81615450.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジャンク・コンバーター
+---@param c Card
 function c11069680.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

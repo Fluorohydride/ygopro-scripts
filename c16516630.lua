@@ -1,4 +1,5 @@
 --BF－尖鋭のボーラ
+---@param c Card
 function c16516630.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

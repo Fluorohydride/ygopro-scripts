@@ -1,4 +1,5 @@
 --アース・グラビティ
+---@param c Card
 function c26509612.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

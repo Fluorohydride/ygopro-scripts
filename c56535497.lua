@@ -1,4 +1,5 @@
 --バーサーキング
+---@param c Card
 function c56535497.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

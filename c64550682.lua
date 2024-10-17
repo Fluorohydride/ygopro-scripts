@@ -1,4 +1,5 @@
 --スクラップ・オルトロス
+---@param c Card
 function c64550682.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

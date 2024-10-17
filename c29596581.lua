@@ -1,4 +1,5 @@
 --雷獣龍－サンダー・ドラゴン
+---@param c Card
 function c29596581.initial_effect(c)
 	--recycle
 	local e1=Effect.CreateEffect(c)

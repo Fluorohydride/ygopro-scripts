@@ -1,4 +1,5 @@
 --真超量機神王ブラスター・マグナ
+---@param c Card
 function c95493471.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,99,c95493471.lcheck)

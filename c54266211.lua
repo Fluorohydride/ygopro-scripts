@@ -1,4 +1,5 @@
 --エヴォルダー・ウルカノドン
+---@param c Card
 function c54266211.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

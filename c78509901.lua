@@ -1,4 +1,5 @@
 --方界獣ブレード・ガルーディア
+---@param c Card
 function c78509901.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

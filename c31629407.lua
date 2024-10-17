@@ -1,4 +1,5 @@
 --魔弾の射手 スター
+---@param c Card
 function c31629407.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)

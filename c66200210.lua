@@ -1,4 +1,5 @@
 --幻獣機ハムストラット
+---@param c Card
 function c66200210.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

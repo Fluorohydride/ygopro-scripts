@@ -1,4 +1,5 @@
 --プランキッズ・ハウス
+---@param c Card
 function c16269385.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --V・HERO グラビート
+---@param c Card
 function c54185227.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

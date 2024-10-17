@@ -1,4 +1,5 @@
 --No.11 ビッグ・アイ
+---@param c Card
 function c80117527.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

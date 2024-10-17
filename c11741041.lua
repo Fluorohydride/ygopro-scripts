@@ -1,4 +1,5 @@
 --サンダー・ボトル
+---@param c Card
 function c11741041.initial_effect(c)
 	c:EnableCounterPermit(0xc)
 	--Activate

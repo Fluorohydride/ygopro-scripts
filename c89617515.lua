@@ -1,4 +1,5 @@
 --揺海魚デッドリーフ
+---@param c Card
 function c89617515.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

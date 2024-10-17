@@ -1,4 +1,5 @@
 --BK ラビット・パンチャー
+---@param c Card
 function c61679541.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --BF－朧影のゴウフウ
+---@param c Card
 function c9929398.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --悪醒師ナイトメルト
+---@param c Card
 function c66569334.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ホープ剣スラッシュ
+---@param c Card
 function c94807487.initial_effect(c)
 	c:EnableCounterPermit(0x31)
 	--Activate

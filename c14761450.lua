@@ -1,4 +1,5 @@
 --ペンギン勇士
+---@param c Card
 function c14761450.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

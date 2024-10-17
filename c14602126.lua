@@ -1,4 +1,5 @@
 --エクシーズ・インポート
+---@param c Card
 function c14602126.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

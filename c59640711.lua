@@ -1,4 +1,5 @@
 --SR電々大公
+---@param c Card
 function c59640711.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

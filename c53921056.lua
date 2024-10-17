@@ -1,4 +1,5 @@
 --氷結界の虎将 ガンターラ
+---@param c Card
 function c53921056.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

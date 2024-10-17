@@ -1,4 +1,5 @@
 --避雷神
+---@param c Card
 function c40672993.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

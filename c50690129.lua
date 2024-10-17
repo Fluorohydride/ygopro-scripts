@@ -1,4 +1,5 @@
 --キャシー・イヴL2
+---@param c Card
 function c50690129.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

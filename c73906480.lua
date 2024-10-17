@@ -1,4 +1,5 @@
 --武神降臨
+---@param c Card
 function c73906480.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

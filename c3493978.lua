@@ -1,4 +1,5 @@
 --首領亀
+---@param c Card
 function c3493978.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

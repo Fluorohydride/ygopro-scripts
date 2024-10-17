@@ -1,4 +1,5 @@
 --ブリキンギョ
+---@param c Card
 function c18063928.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

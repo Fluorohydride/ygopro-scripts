@@ -1,4 +1,5 @@
 --コマンド・リゾネーター
+---@param c Card
 function c8559524.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

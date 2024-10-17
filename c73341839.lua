@@ -1,4 +1,5 @@
 --ショートヴァレル・ドラゴン
+---@param c Card
 function c73341839.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

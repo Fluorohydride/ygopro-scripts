@@ -1,4 +1,5 @@
 --ライトニング・チューン
+---@param c Card
 function c78845026.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --エクシーズ・アーマー・フォートレス
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,s.ovfilter,aux.Stringid(id,0),2,s.xyzop)

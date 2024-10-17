@@ -1,4 +1,5 @@
 --星騎士 リュラ
+---@param c Card
 function c79210531.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

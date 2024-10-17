@@ -1,4 +1,5 @@
 --機雷化
+---@param c Card
 function c89086566.initial_effect(c)
 	aux.AddCodeList(c,40640057)
 	--Activate

@@ -1,4 +1,5 @@
 --古代の機械騎士
+---@param c Card
 function c39303359.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--actlimit

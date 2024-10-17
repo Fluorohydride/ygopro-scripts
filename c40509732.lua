@@ -1,5 +1,6 @@
 --鬼動武者
 local s,id,o=GetID()
+---@param c Card
 function c40509732.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

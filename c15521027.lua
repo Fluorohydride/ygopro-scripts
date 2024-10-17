@@ -1,4 +1,5 @@
 --D・スマホン
+---@param c Card
 function c15521027.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

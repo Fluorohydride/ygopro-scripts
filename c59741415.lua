@@ -1,4 +1,5 @@
 --機甲部隊の超臨界
+---@param c Card
 function c59741415.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

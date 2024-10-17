@@ -1,4 +1,5 @@
 --極星獣タングニョースト
+---@param c Card
 function c14677495.initial_effect(c)
 	--special summon(hand)
 	local e1=Effect.CreateEffect(c)

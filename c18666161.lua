@@ -1,4 +1,5 @@
 --デスピアン・プロスケニオン
+---@param c Card
 function c18666161.initial_effect(c)
 	--fusion procedure
 	c:EnableReviveLimit()

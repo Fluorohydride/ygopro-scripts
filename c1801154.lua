@@ -1,4 +1,5 @@
 --遠心分離フィールド
+---@param c Card
 function c1801154.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

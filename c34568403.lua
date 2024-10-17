@@ -1,4 +1,5 @@
 --アルカナフォースⅦ－THE CHARIOT
+---@param c Card
 function c34568403.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

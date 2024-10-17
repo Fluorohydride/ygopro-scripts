@@ -1,4 +1,5 @@
 --爆風トカゲ
+---@param c Card
 function c77491079.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

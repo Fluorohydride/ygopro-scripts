@@ -1,4 +1,5 @@
 --栄誉の贄
+---@param c Card
 function c82340056.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

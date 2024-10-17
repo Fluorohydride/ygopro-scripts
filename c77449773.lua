@@ -1,4 +1,5 @@
 --サイバネット・クロスワイプ
+---@param c Card
 function c77449773.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

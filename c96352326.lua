@@ -1,4 +1,5 @@
 --太陽の魔術師エダ
+---@param c Card
 function c96352326.initial_effect(c)
 	--SpecialSummon
 	local e1=Effect.CreateEffect(c)

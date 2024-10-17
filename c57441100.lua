@@ -1,4 +1,5 @@
 --金剛真力
+---@param c Card
 function c57441100.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

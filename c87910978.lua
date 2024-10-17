@@ -1,4 +1,5 @@
 --洗脳－ブレインコントロール
+---@param c Card
 function c87910978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェネレーション・チェンジ
+---@param c Card
 function c34460239.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --漆黒の豹戦士パンサーウォリアー
+---@param c Card
 function c42035044.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

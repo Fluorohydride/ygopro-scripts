@@ -1,4 +1,5 @@
 --幻奏の音姫プロディジー・モーツァルト
+---@param c Card
 function c3395226.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

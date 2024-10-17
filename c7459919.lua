@@ -1,4 +1,5 @@
 --BF－刻夜のゾンダ
+---@param c Card
 function c7459919.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

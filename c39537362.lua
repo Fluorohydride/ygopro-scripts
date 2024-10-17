@@ -1,4 +1,5 @@
 --旅人の試練
+---@param c Card
 function c39537362.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

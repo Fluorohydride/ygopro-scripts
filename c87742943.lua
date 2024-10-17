@@ -1,4 +1,5 @@
 --パワードクロウラー
+---@param c Card
 function c87742943.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

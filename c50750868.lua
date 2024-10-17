@@ -1,4 +1,5 @@
 --TG トライデント・ランチャー
+---@param c Card
 function c50750868.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,99,c50750868.lcheck)

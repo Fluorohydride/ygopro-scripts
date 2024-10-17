@@ -1,4 +1,5 @@
 --リアクター・スライム
+---@param c Card
 function c79387392.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

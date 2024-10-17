@@ -1,4 +1,5 @@
 --アークネメシス・エスカトス
+---@param c Card
 function c33212663.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

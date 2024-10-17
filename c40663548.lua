@@ -1,4 +1,5 @@
 --アロマージ－マジョラム
+---@param c Card
 function c40663548.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

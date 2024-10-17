@@ -1,4 +1,5 @@
 --荒ぶるアウス
+---@param c Card
 function c29139104.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

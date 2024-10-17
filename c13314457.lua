@@ -1,4 +1,5 @@
 --深海の大ウナギ
+---@param c Card
 function c13314457.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

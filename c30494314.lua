@@ -1,4 +1,5 @@
 --紅血鬼
+---@param c Card
 function c30494314.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

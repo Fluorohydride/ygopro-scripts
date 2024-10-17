@@ -1,4 +1,5 @@
 --竜星因士－セフィラツバーン
+---@param c Card
 function c96223501.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

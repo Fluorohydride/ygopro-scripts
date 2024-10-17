@@ -1,4 +1,5 @@
 --炎帝近衛兵
+---@param c Card
 function c54040221.initial_effect(c)
 	--to deck and draw
 	local e1=Effect.CreateEffect(c)

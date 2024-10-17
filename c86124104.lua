@@ -1,4 +1,5 @@
 --終焉の悪魔デミス
+---@param c Card
 function c86124104.initial_effect(c)
 	c:EnableReviveLimit()
 	--code

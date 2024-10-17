@@ -1,4 +1,5 @@
 --エレキングコブラ
+---@param c Card
 function c88205593.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

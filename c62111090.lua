@@ -1,4 +1,5 @@
 --アースゴーレム＠イグニスター
+---@param c Card
 function c62111090.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

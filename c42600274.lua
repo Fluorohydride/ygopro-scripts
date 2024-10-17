@@ -1,4 +1,5 @@
 --サイバー・チュチュボン
+---@param c Card
 function c42600274.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

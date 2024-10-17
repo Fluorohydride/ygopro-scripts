@@ -1,4 +1,5 @@
 --RR－レディネス
+---@param c Card
 function c21648584.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

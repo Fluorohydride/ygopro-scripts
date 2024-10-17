@@ -1,4 +1,5 @@
 --天よりの宝札
+---@param c Card
 function c42664989.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

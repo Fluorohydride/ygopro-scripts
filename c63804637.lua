@@ -1,4 +1,5 @@
 --幻奏のイリュージョン
+---@param c Card
 function c63804637.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

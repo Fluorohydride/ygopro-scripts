@@ -1,4 +1,5 @@
 --スモウ魂 YOKO－ZUNA
+---@param c Card
 function c40516623.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

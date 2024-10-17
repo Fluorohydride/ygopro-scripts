@@ -1,4 +1,5 @@
 --闇薔薇の妖精
+---@param c Card
 function c90724272.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

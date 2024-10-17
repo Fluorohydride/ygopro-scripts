@@ -1,4 +1,5 @@
 --ギアギアタッカー
+---@param c Card
 function c72370114.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

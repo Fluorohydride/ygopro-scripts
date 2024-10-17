@@ -1,4 +1,5 @@
 --超越竜メテオロス
+---@param c Card
 function c31241087.initial_effect(c)
 	--splimit
 	local e0=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --オーバード・パラディオン
+---@param c Card
 function c96434581.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

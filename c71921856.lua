@@ -1,4 +1,5 @@
 --No.79 BK 新星のカイザー
+---@param c Card
 function c71921856.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

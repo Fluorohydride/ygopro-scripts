@@ -1,4 +1,5 @@
 --スプリガンズ・ロッキー
+---@param c Card
 function c20424878.initial_effect(c)
 	aux.AddCodeList(c,60884672)
 	--tohand

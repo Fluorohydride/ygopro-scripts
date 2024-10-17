@@ -1,4 +1,5 @@
 --異次元ジェット・アイアン号
+---@param c Card
 function c15574615.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

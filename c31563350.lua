@@ -1,4 +1,5 @@
 --ズババジェネラル
+---@param c Card
 function c31563350.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

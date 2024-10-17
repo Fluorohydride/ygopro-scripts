@@ -1,4 +1,5 @@
 --ドラグニティ－アングス
+---@param c Card
 function c88361177.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

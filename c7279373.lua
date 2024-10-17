@@ -1,4 +1,5 @@
 --魔界劇団－ティンクル・リトルスター
+---@param c Card
 function c7279373.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

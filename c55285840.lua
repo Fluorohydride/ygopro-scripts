@@ -1,5 +1,6 @@
 --クロノダイバー・リダン
 local s,id,o=GetID()
+---@param c Card
 function c55285840.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,4 +1,5 @@
 --コンドーレンス・パペット
+---@param c Card
 function c57093995.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

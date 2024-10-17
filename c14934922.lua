@@ -1,4 +1,5 @@
 --サラマングレイト・レイジ
+---@param c Card
 function c14934922.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

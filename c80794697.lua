@@ -1,4 +1,5 @@
 --フレイム・バッファロー
+---@param c Card
 function c80794697.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

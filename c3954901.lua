@@ -1,4 +1,5 @@
 --フェルグラントドラゴン
+---@param c Card
 function c3954901.initial_effect(c)
 	--special summon condition
 	local e1=Effect.CreateEffect(c)

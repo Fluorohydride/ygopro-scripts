@@ -1,4 +1,5 @@
 --クリッチー
+---@param c Card
 function c53539634.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

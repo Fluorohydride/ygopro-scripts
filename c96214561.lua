@@ -1,4 +1,5 @@
 --招神鳥シムルグ
+---@param c Card
 function c96214561.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

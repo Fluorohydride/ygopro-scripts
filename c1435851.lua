@@ -1,4 +1,5 @@
 --ドラゴンの秘宝
+---@param c Card
 function c1435851.initial_effect(c)
 	aux.AddEquipSpellEffect(c,true,true,c1435851.filter,c1435851.eqlimit)
 	--atk up

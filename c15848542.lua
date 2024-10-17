@@ -1,4 +1,5 @@
 --ドラゴンメイド・ルフト
+---@param c Card
 function c15848542.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

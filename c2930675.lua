@@ -1,4 +1,5 @@
 --星遺物へ至る鍵
+---@param c Card
 function c2930675.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

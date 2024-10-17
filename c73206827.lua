@@ -1,4 +1,5 @@
 --光の結界
+---@param c Card
 function c73206827.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

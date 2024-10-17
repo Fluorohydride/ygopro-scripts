@@ -1,4 +1,5 @@
 --水晶機巧－ハリファイバー
+---@param c Card
 function c50588353.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c50588353.lcheck)

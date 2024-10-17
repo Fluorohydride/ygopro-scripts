@@ -1,4 +1,5 @@
 --ヴァリュアブル・フォーム
+---@param c Card
 function c64038662.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

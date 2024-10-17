@@ -1,4 +1,5 @@
 --星向鳥
+---@param c Card
 function c34244455.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

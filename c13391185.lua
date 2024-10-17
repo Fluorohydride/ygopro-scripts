@@ -1,4 +1,5 @@
 --聖騎士ガラハド
+---@param c Card
 function c13391185.initial_effect(c)
 	--Normal monster
 	local e1=Effect.CreateEffect(c)

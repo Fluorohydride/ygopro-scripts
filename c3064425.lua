@@ -1,4 +1,5 @@
 --超重武者装留ビッグバン
+---@param c Card
 function c3064425.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

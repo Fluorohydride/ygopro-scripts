@@ -1,4 +1,5 @@
 --アルカナフォースⅩⅣ－TEMPERANCE
+---@param c Card
 function c60953118.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --始祖神鳥シムルグ
+---@param c Card
 function c86489182.initial_effect(c)
 	--normal monster
 	local e1=Effect.CreateEffect(c)

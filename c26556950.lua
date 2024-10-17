@@ -1,4 +1,5 @@
 --No.84 ペイン・ゲイナー
+---@param c Card
 function c26556950.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,11,2,c26556950.ovfilter,aux.Stringid(26556950,0),2)

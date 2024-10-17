@@ -1,4 +1,5 @@
 --渾身の一撃
+---@param c Card
 function c81000306.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

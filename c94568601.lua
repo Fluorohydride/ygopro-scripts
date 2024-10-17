@@ -1,5 +1,6 @@
 --タイラント・ドラゴン
 --not fully implemented
+---@param c Card
 function c94568601.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

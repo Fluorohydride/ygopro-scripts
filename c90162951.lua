@@ -1,4 +1,5 @@
 --No.35 ラベノス・タランチュラ
+---@param c Card
 function c90162951.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,2)

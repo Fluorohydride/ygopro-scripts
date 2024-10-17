@@ -1,4 +1,5 @@
 --ライトロード・ドミニオン キュリオス
+---@param c Card
 function c98095162.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,3,3,c98095162.lcheck)

@@ -1,4 +1,5 @@
 --森の狩人イエロー・バブーン
+---@param c Card
 function c65303664.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

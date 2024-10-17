@@ -1,4 +1,5 @@
 --幻奏の華歌聖ブルーム・ディーヴァ
+---@param c Card
 function c84988419.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

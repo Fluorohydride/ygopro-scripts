@@ -1,4 +1,5 @@
 --憑依覚醒－ガギゴバイト
+---@param c Card
 function c74426895.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ガガガウィンド
+---@param c Card
 function c57782164.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

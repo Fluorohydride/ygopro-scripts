@@ -1,4 +1,5 @@
 --ワーム・グルス
+---@param c Card
 function c85754829.initial_effect(c)
 	c:EnableCounterPermit(0xf)
 	--add counter

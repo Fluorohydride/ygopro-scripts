@@ -1,4 +1,5 @@
 --六武衆の軍大将
+---@param c Card
 function c74752631.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	--link summon

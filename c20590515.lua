@@ -1,4 +1,5 @@
 --黄金郷のコンキスタドール
+---@param c Card
 function c20590515.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

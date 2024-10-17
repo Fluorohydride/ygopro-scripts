@@ -1,4 +1,5 @@
 --サモンリミッター
+---@param c Card
 function c23516703.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

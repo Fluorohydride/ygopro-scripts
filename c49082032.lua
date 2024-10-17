@@ -1,4 +1,5 @@
 --リサーガム・エクシーズ
+---@param c Card
 function c49082032.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

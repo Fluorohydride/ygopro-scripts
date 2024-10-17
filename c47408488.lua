@@ -1,4 +1,5 @@
 --宝玉の樹
+---@param c Card
 function c47408488.initial_effect(c)
 	c:EnableCounterPermit(0x6)
 	--Activate

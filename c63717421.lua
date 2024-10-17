@@ -1,4 +1,5 @@
 --起動指令 ギア・チャージ
+---@param c Card
 function c63717421.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

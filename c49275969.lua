@@ -1,4 +1,5 @@
 --氷の王 ニードヘッグ
+---@param c Card
 function c49275969.initial_effect(c)
 	c:SetUniqueOnField(1,0,49275969)
 	--disable special summon

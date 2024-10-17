@@ -1,5 +1,6 @@
 --エピュアリィ・ノアール
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,21347668)
 	--xyz

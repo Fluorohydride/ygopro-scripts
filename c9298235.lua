@@ -1,4 +1,5 @@
 --ファーニマル・クレーン
+---@param c Card
 function c9298235.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

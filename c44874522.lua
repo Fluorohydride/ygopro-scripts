@@ -1,4 +1,5 @@
 --古代の機械熱核竜
+---@param c Card
 function c44874522.initial_effect(c)
 	--mat check
 	local e1=Effect.CreateEffect(c)

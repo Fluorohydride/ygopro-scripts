@@ -1,4 +1,5 @@
 --EMターントルーパー
+---@param c Card
 function c220414.initial_effect(c)
 	c:EnableCounterPermit(0x50)
 	c:SetCounterLimit(0x50,2)

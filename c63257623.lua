@@ -1,4 +1,5 @@
 --森羅の実張り ピース
+---@param c Card
 function c63257623.initial_effect(c)
 	--deck check
 	local e1=Effect.CreateEffect(c)

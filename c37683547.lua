@@ -1,4 +1,5 @@
 --灰燼のアルバス
+---@param c Card
 function c37683547.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)

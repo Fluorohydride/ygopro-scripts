@@ -1,4 +1,5 @@
 --灼銀の機竜
+---@param c Card
 function c66698383.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --泣き神の石像
+---@param c Card
 function c5763020.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

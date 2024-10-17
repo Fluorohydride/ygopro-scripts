@@ -1,4 +1,5 @@
 --アネスヴァレット・ドラゴン
+---@param c Card
 function c53266486.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

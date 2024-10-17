@@ -1,4 +1,5 @@
 --プランキッズ・ロック
+---@param c Card
 function c31440046.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

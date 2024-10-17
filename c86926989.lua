@@ -1,4 +1,5 @@
 --麗神－不知火
+---@param c Card
 function c86926989.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

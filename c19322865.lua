@@ -1,5 +1,6 @@
 --地縛囚人 ライン・ウォーカー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,71089030,7473735)
 	--search

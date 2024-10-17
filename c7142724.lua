@@ -1,4 +1,5 @@
 --氷水底イニオン・クレイドル
+---@param c Card
 function c7142724.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

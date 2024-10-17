@@ -1,4 +1,5 @@
 --アモルファージ・ルクス
+---@param c Card
 function c70917315.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

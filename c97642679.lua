@@ -1,4 +1,5 @@
 --闇の支配者－ゾーク
+---@param c Card
 function c97642679.initial_effect(c)
 	c:EnableReviveLimit()
 	--dice

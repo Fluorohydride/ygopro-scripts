@@ -1,4 +1,5 @@
 --魔装戦士 ヴァンドラ
+---@param c Card
 function c93298460.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

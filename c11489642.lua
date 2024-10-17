@@ -1,5 +1,6 @@
 --トライアングル－O
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,7903368,58996839,84384943)
 	--destroy and damage

@@ -1,4 +1,5 @@
 --ペンデュラム・ディメンション
+---@param c Card
 function c84274024.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --遮断機塊ブレイカーバンクル
+---@param c Card
 function c5846183.initial_effect(c)
 	--Cannot be destroyed and no battle damage
 	local e1=Effect.CreateEffect(c)

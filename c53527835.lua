@@ -1,4 +1,5 @@
 --ダーク・シティ
+---@param c Card
 function c53527835.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣総監エーディトル
+---@param c Card
 function c30864377.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c30864377.matfilter,2,true)

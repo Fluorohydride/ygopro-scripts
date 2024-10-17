@@ -1,4 +1,5 @@
 --魔法名－「大いなる獣」
+---@param c Card
 function c47457347.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --廃車復活
+---@param c Card
 function c63413494.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

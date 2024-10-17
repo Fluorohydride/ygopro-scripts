@@ -1,4 +1,5 @@
 --火竜の火炎弾
+---@param c Card
 function c55991637.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

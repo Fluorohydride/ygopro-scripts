@@ -1,4 +1,5 @@
 --壱世壊＝ペルレイノ
+---@param c Card
 function c77103950.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

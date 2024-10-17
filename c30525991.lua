@@ -1,4 +1,5 @@
 --スパルタクァの呪術師
+---@param c Card
 function c30525991.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

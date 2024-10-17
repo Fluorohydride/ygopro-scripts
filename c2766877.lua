@@ -1,4 +1,5 @@
 --ダイガスタ・フェニクス
+---@param c Card
 function c2766877.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

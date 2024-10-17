@@ -1,4 +1,5 @@
 --烈風の空牙団
+---@param c Card
 function c91405870.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --竜姫神サフィラ
+---@param c Card
 function c56350972.initial_effect(c)
 	c:EnableReviveLimit()
 	--effect

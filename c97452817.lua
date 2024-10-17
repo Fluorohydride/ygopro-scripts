@@ -1,4 +1,5 @@
 --アルカナフォースⅩⅧ－THE MOON
+---@param c Card
 function c97452817.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

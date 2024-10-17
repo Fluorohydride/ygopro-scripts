@@ -1,4 +1,5 @@
 --RUM－七皇の剣
+---@param c Card
 function c57734012.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

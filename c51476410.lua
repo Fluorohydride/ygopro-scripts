@@ -1,4 +1,5 @@
 --クロック・リザード
+---@param c Card
 function c51476410.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

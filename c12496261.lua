@@ -1,4 +1,5 @@
 --ドラグニティナイト－ハールーン
+---@param c Card
 function c12496261.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x29),aux.NonTuner(nil),1)

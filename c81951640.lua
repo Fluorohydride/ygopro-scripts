@@ -1,4 +1,5 @@
 --奇動装置メイルファクター
+---@param c Card
 function c81951640.initial_effect(c)
 	aux.EnableUnionAttribute(c,aux.TRUE)
 	--spsummon

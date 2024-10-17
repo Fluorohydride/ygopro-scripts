@@ -1,5 +1,6 @@
 --覇王門の魔術師
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--pendulum summon

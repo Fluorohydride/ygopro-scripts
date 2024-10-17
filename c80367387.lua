@@ -1,4 +1,5 @@
 --コアキメイル・ベルグザーク
+---@param c Card
 function c80367387.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

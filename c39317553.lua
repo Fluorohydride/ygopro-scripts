@@ -1,4 +1,5 @@
 --旋壊のヴェスペネイト
+---@param c Card
 function c39317553.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,c39317553.ovfilter,aux.Stringid(39317553,0),2,c39317553.xyzop)

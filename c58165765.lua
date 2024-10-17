@@ -1,4 +1,5 @@
 --赤竜の忍者
+---@param c Card
 function c58165765.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

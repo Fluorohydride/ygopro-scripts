@@ -1,4 +1,5 @@
 --フォトン・エンペラー
+---@param c Card
 function c73478096.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

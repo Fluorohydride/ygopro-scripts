@@ -1,4 +1,5 @@
 --予見者ゾルガ
+---@param c Card
 function c31525442.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --彼岸の悪鬼 アリキーノ
+---@param c Card
 function c47728740.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

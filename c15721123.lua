@@ -1,4 +1,5 @@
 --対峙するG
+---@param c Card
 function c15721123.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

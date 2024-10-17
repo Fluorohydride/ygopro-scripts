@@ -1,4 +1,5 @@
 --魔筒覗ベイオネーター
+---@param c Card
 function c47474172.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ダークネス・シムルグ
+---@param c Card
 function c22586618.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

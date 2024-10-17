@@ -1,4 +1,5 @@
 --リターン・ゾンビ
+---@param c Card
 function c3072077.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

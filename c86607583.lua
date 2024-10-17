@@ -1,4 +1,5 @@
 --リミット・コード
+---@param c Card
 function c86607583.initial_effect(c)
 	c:EnableCounterPermit(0x47)
 	--Activate

@@ -1,4 +1,5 @@
 --電子光虫－ウェブソルダー
+---@param c Card
 function c94344242.initial_effect(c)
 	--xyzlimit
 	local e0=Effect.CreateEffect(c)

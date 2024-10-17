@@ -1,4 +1,5 @@
 --鉄獣戦線 塊撃のベアブルム
+---@param c Card
 function c47163170.initial_effect(c)
 	c:EnableReviveLimit()
 	--link summon

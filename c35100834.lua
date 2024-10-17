@@ -1,4 +1,5 @@
 --機動砲塁 パワー・ホールド
+---@param c Card
 function c35100834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

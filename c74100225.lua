@@ -1,4 +1,5 @@
 --進化の特異点
+---@param c Card
 function c74100225.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

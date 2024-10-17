@@ -1,4 +1,5 @@
 --デスカイザー・ドラゴン
+---@param c Card
 function c6021033.initial_effect(c)
 	aux.AddMaterialCodeList(c,33420078)
 	--synchro summon

@@ -1,4 +1,5 @@
 --ソードブレイカー
+---@param c Card
 function c64689404.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

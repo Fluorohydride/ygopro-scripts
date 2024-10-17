@@ -1,4 +1,5 @@
 --パラメタルフォーゼ・メルキャスター
+---@param c Card
 function c10024317.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

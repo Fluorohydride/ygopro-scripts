@@ -1,4 +1,5 @@
 --対壊獣用決戦兵器メカサンダー・キング
+---@param c Card
 function c29913783.initial_effect(c)
 	c:SetUniqueOnField(1,0,aux.FilterBoolFunction(Card.IsSetCard,0xd3),LOCATION_MZONE)
 	--special summon

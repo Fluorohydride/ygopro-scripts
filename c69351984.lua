@@ -1,4 +1,5 @@
 --メタルフォーゼ・ヴォルフレイム
+---@param c Card
 function c69351984.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

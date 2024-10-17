@@ -1,4 +1,5 @@
 --砂塵のバリア －ダスト・フォース－
+---@param c Card
 function c40838625.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

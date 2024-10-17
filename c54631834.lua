@@ -1,4 +1,5 @@
 --端末世界
+---@param c Card
 function c54631834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

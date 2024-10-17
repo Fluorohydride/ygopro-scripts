@@ -1,4 +1,5 @@
 --魂食神龍ドレイン・ドラゴン
+---@param c Card
 function c55735315.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

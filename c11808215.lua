@@ -1,4 +1,5 @@
 --ダイス・ダンジョン
+---@param c Card
 function c11808215.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

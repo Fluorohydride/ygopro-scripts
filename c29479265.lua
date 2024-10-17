@@ -1,4 +1,5 @@
 --破械雙王神ライゴウ
+---@param c Card
 function c29479265.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c29479265.lcheck)

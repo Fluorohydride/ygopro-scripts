@@ -1,4 +1,5 @@
 --幻獣機ウォーブラン
+---@param c Card
 function c31480215.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

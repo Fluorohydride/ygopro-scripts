@@ -1,4 +1,5 @@
 --リブロマンサー・オリジン
+---@param c Card
 function c84121302.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

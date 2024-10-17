@@ -1,4 +1,5 @@
 --妖仙獣の秘技
+---@param c Card
 function c54903668.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

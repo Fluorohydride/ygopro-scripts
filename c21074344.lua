@@ -1,4 +1,5 @@
 --緑光の宣告者
+---@param c Card
 function c21074344.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

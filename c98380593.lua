@@ -1,4 +1,5 @@
 --至高の木の実
+---@param c Card
 function c98380593.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

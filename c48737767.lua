@@ -1,4 +1,5 @@
 --切り盛り隊長
+---@param c Card
 function c48737767.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

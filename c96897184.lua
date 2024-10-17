@@ -1,4 +1,5 @@
 --古生代化石騎士 スカルキング
+---@param c Card
 function c96897184.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion material

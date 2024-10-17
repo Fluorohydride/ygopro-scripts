@@ -1,4 +1,5 @@
 --古代の機械工兵
+---@param c Card
 function c1953925.initial_effect(c)
 	--disable&destroy
 	local e1=Effect.CreateEffect(c)

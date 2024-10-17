@@ -1,4 +1,5 @@
 --剣闘獣ウェスパシアス
+---@param c Card
 function c88996322.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --烙印喪失
+---@param c Card
 function c10065487.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

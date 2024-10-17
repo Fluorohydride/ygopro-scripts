@@ -1,4 +1,5 @@
 --霧の王
+---@param c Card
 function c6614221.initial_effect(c)
 	--summon with 1 tribute
 	local e0=Effect.CreateEffect(c)

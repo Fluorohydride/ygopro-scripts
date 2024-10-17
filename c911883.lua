@@ -1,4 +1,5 @@
 --予想GUY
+---@param c Card
 function c911883.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

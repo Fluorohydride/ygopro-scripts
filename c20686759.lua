@@ -1,4 +1,5 @@
 --D・レトロエンジン
+---@param c Card
 function c20686759.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

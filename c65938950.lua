@@ -1,5 +1,6 @@
 --綱引犬会
 --not fully implemented
+---@param c Card
 function c65938950.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

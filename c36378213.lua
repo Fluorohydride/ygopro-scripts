@@ -1,4 +1,5 @@
 --キューキューロイド
+---@param c Card
 function c36378213.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

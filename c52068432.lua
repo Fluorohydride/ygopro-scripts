@@ -1,4 +1,5 @@
 --トリシューラの影霊衣
+---@param c Card
 function c52068432.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,5 +1,6 @@
 --クリック＆エコー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--cannot be material
 	local e1=Effect.CreateEffect(c)

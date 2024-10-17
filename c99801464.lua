@@ -1,4 +1,5 @@
 --銀翼のAXE－サリー
+---@param c Card
 function c99801464.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

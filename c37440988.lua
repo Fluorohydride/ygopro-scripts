@@ -1,4 +1,5 @@
 --究極宝玉神 レインボー・オーバー・ドラゴン
+---@param c Card
 function c37440988.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

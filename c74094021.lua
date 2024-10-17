@@ -1,4 +1,5 @@
 --真六武衆－ミズホ
+---@param c Card
 function c74094021.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

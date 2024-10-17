@@ -1,4 +1,5 @@
 --暗黒ドリケラトプス
+---@param c Card
 function c65287621.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

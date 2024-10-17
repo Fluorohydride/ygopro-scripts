@@ -1,4 +1,5 @@
 --ローズ・バード
+---@param c Card
 function c75252099.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

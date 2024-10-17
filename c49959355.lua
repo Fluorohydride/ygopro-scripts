@@ -1,4 +1,5 @@
 --ユニゾンビ
+---@param c Card
 function c49959355.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

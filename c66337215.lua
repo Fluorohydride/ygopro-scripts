@@ -1,4 +1,5 @@
 --創世の預言者
+---@param c Card
 function c66337215.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

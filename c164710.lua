@@ -1,4 +1,5 @@
 --小人のいたずら
+---@param c Card
 function c164710.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

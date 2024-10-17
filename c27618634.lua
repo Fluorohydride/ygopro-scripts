@@ -1,4 +1,5 @@
 --薄幸の乙女
+---@param c Card
 function c27618634.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

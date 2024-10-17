@@ -1,4 +1,5 @@
 --ヤマタコオロチ
+---@param c Card
 function c4632019.initial_effect(c)
 	--synclv
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --亜空間ジャンプ装置
+---@param c Card
 function c57384901.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
