@@ -1,6 +1,5 @@
 --スウィートルームメイド
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

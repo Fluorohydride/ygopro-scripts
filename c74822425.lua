@@ -1,5 +1,4 @@
 --エルシャドール・シェキナーガ
----@param c Card
 function c74822425.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

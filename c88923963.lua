@@ -1,5 +1,4 @@
 --聖騎士イヴァン
----@param c Card
 function c88923963.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

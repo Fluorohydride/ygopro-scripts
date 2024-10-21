@@ -1,5 +1,4 @@
 --エヴォルド・オドケリス
----@param c Card
 function c28877602.initial_effect(c)
 	--summon success
 	local e2=Effect.CreateEffect(c)

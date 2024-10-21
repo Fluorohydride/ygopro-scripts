@@ -1,5 +1,4 @@
 --炎獣使いエーカ
----@param c Card
 function c35283277.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

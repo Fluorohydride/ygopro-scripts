@@ -1,5 +1,4 @@
 --異界の棘紫獣
----@param c Card
 function c80208323.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

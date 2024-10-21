@@ -1,5 +1,4 @@
 --妖怪のいたずら
----@param c Card
 function c29795530.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

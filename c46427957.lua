@@ -1,5 +1,4 @@
 --破滅の女神ルイン
----@param c Card
 function c46427957.initial_effect(c)
 	c:EnableReviveLimit()
 	--chain attack

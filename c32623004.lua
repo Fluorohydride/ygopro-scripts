@@ -1,5 +1,4 @@
 --否定ペンギン
----@param c Card
 function c32623004.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

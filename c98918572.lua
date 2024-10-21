@@ -1,5 +1,4 @@
 --十二獣の相剋
----@param c Card
 function c98918572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --剣闘獣ベストロウリィ
----@param c Card
 function c41470137.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

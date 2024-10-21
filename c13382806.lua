@@ -1,5 +1,4 @@
 --マタタビ仙狸
----@param c Card
 function c13382806.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --捕食植物セラセニアント
----@param c Card
 function c53819028.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

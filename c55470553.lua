@@ -1,5 +1,4 @@
 --No.98 絶望皇ホープレス
----@param c Card
 function c55470553.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

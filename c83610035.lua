@@ -1,6 +1,5 @@
 --セリオンズ“リリー”ボレア
 local s,id,o=GetID()
----@param c Card
 function c83610035.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

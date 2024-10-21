@@ -1,5 +1,4 @@
 --霊塞術師 チョウサイ
----@param c Card
 function c38412161.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

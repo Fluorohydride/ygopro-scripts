@@ -1,5 +1,4 @@
 --ユベル
----@param c Card
 function c78371393.initial_effect(c)
 	--battle
 	local e1=Effect.CreateEffect(c)

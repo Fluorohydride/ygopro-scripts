@@ -1,5 +1,4 @@
 --フレムベル・デビル
----@param c Card
 function c91711547.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

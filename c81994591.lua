@@ -1,5 +1,4 @@
 --コアキメイルの金剛核
----@param c Card
 function c81994591.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --マーシャリング・フィールド
----@param c Card
 function c63881033.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

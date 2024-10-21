@@ -1,5 +1,4 @@
 --極星霊リョースアールヴ
----@param c Card
 function c40666140.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

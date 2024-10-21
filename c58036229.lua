@@ -1,5 +1,4 @@
 --プロテクトコード・トーカー
----@param c Card
 function c58036229.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)

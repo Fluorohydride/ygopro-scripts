@@ -1,5 +1,4 @@
 --武神－トリフネ
----@param c Card
 function c29981935.initial_effect(c)
 	--sp summon
 	local e1=Effect.CreateEffect(c)

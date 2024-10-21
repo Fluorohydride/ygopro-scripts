@@ -1,5 +1,4 @@
 --DDオルトロス
----@param c Card
 function c72181263.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

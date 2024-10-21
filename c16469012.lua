@@ -1,5 +1,4 @@
 --テーヴァ
----@param c Card
 function c16469012.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ツインヘッド・ケルベロス
----@param c Card
 function c88132637.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

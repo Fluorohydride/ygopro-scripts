@@ -1,5 +1,4 @@
 --ギミック・パペット－ギガンテス・ドール
----@param c Card
 function c7593748.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x1083),4,2)

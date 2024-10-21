@@ -1,5 +1,4 @@
 --宿神像ケルドウ
----@param c Card
 function c63542003.initial_effect(c)
 	aux.AddCodeList(c,17484499)
 	--spsummon

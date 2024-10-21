@@ -1,5 +1,4 @@
 --EMダグ・ダガーマン
----@param c Card
 function c17540705.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

@@ -1,5 +1,4 @@
 --トラックロイド
----@param c Card
 function c61538782.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

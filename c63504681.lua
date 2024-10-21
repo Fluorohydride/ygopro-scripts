@@ -1,5 +1,4 @@
 --No.86 H－C ロンゴミアント
----@param c Card
 function c63504681.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),4,2,nil,nil,5)

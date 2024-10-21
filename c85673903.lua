@@ -1,5 +1,4 @@
 --オルターガイスト・フィジアラート
----@param c Card
 function c85673903.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

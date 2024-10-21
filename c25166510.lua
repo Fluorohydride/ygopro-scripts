@@ -1,5 +1,4 @@
 --転生炎獣Bバイソン
----@param c Card
 function c25166510.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

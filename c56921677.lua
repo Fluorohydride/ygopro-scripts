@@ -1,5 +1,4 @@
 --紋章獣バシリスク
----@param c Card
 function c56921677.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

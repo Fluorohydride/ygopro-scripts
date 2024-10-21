@@ -1,5 +1,4 @@
 --U.A.プレイングマネージャー
----@param c Card
 function c47021196.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

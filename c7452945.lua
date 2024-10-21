@@ -1,5 +1,4 @@
 --天命の聖剣
----@param c Card
 function c7452945.initial_effect(c)
 	c:SetUniqueOnField(1,0,7452945)
 	--Activate

@@ -1,5 +1,4 @@
 --D・D・D
----@param c Card
 function c76552147.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

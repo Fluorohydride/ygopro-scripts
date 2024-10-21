@@ -1,5 +1,4 @@
 --電池メン－業務用
----@param c Card
 function c19441018.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

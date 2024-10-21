@@ -1,5 +1,4 @@
 --進化の奇跡
----@param c Card
 function c34026662.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

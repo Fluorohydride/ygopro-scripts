@@ -1,5 +1,4 @@
 --大儺主水
----@param c Card
 function c73898890.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c73898890.lcheck)

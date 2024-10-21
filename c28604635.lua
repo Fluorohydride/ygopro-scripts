@@ -1,5 +1,4 @@
 --ふるい落とし
----@param c Card
 function c28604635.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

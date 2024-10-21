@@ -1,5 +1,4 @@
 --ティアラメンツ・ハゥフニス
----@param c Card
 function c37961969.initial_effect(c)
 	--sp summon
 	local e1=Effect.CreateEffect(c)

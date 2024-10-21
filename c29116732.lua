@@ -1,5 +1,4 @@
 --デイブレーカー
----@param c Card
 function c29116732.initial_effect(c)
 	--spsummon success
 	local e2=Effect.CreateEffect(c)

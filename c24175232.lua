@@ -1,5 +1,4 @@
 --ネフティスの蒼凰神
----@param c Card
 function c24175232.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

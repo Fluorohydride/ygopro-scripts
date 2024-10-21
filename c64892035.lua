@@ -1,5 +1,4 @@
 --遅すぎたオーク
----@param c Card
 function c64892035.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

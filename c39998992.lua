@@ -1,5 +1,4 @@
 --エクスクローラー・シナプシス
----@param c Card
 function c39998992.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --戦士抹殺
----@param c Card
 function c90873992.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

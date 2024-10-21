@@ -1,5 +1,4 @@
 --ラミア
----@param c Card
 function c84900597.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

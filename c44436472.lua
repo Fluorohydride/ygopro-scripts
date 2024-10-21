@@ -1,5 +1,4 @@
 --ダブルコストン
----@param c Card
 function c44436472.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

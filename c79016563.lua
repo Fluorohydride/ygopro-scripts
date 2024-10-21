@@ -1,5 +1,4 @@
 --バイナル・ソーサレス
----@param c Card
 function c79016563.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c79016563.matfilter,2,2)

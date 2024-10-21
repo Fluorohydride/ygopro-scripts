@@ -1,5 +1,4 @@
 --原始生命態ニビル
----@param c Card
 function c27204311.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ホーリーナイツ・アステル
----@param c Card
 function c59228631.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

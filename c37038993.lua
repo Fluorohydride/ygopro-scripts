@@ -1,5 +1,4 @@
 --焔紫竜ピュラリス
----@param c Card
 function c37038993.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)

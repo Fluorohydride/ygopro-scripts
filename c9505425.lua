@@ -1,5 +1,4 @@
 --法典の大賢者クロウリー
----@param c Card
 function c9505425.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

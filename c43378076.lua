@@ -1,5 +1,4 @@
 --羅刹
----@param c Card
 function c43378076.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

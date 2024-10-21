@@ -1,5 +1,4 @@
 --ドラコネット
----@param c Card
 function c62706865.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

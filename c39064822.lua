@@ -1,5 +1,4 @@
 --トロイメア・ゴブリン
----@param c Card
 function c39064822.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c39064822.lcheck)

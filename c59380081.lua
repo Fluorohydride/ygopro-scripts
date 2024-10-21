@@ -1,5 +1,4 @@
 --ビッグホーン・マンモス
----@param c Card
 function c59380081.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --マグネット・フォース
----@param c Card
 function c17841166.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

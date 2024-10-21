@@ -1,5 +1,4 @@
 --超騎甲虫アブソリュート・ヘラクレス
----@param c Card
 function c50855622.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

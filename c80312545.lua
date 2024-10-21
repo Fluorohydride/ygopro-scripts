@@ -1,5 +1,4 @@
 --七精の解門
----@param c Card
 function c80312545.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Activate

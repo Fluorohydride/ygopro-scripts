@@ -1,5 +1,4 @@
 --A・ジェネクス・ドゥルダーク
----@param c Card
 function c68450517.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

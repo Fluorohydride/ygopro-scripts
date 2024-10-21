@@ -1,5 +1,4 @@
 --怪鳥グライフ
----@param c Card
 function c899287.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--search

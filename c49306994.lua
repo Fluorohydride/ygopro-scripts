@@ -1,5 +1,4 @@
 --白のヴェール
----@param c Card
 function c49306994.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

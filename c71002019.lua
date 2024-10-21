@@ -1,5 +1,4 @@
 --六花精ボタン
----@param c Card
 function c71002019.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

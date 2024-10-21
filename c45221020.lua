@@ -1,5 +1,4 @@
 --トレジャー・パンダー
----@param c Card
 function c45221020.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

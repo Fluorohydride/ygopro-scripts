@@ -1,5 +1,4 @@
 --EMハンサムライガー
----@param c Card
 function c55997110.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

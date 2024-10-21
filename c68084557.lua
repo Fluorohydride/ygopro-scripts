@@ -1,5 +1,4 @@
 --機械竜 パワー・ツール
----@param c Card
 function c68084557.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

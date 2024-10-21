@@ -1,5 +1,4 @@
 --TG レシプロ・ドラゴン・フライ
----@param c Card
 function c62560742.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)

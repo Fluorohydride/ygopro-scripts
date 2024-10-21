@@ -1,5 +1,4 @@
 --ダーク・アイズ・イリュージョニスト
----@param c Card
 function c38247752.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --霊魂鳥神－姫孔雀
----@param c Card
 function c25415052.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

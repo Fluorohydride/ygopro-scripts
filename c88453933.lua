@@ -1,5 +1,4 @@
 --ドラゴンメイド・パルラ
----@param c Card
 function c88453933.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --機皇廠
----@param c Card
 function c77864539.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

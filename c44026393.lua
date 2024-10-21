@@ -1,5 +1,4 @@
 --幻獣機ライテン
----@param c Card
 function c44026393.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

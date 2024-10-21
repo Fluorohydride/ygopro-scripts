@@ -1,5 +1,4 @@
 --転身テンシーン
----@param c Card
 function c59563768.initial_effect(c)
 	--atk
 	local e2=Effect.CreateEffect(c)

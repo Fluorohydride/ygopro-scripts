@@ -1,5 +1,4 @@
 --血の代償
----@param c Card
 function c80604091.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

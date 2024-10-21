@@ -1,5 +1,4 @@
 --BF－そよ風のブリーズ
----@param c Card
 function c89258906.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

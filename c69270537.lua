@@ -1,5 +1,4 @@
 --コンタクト・アウト
----@param c Card
 function c69270537.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --マジカルフィシアリスト
----@param c Card
 function c62154416.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,1)

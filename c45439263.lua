@@ -1,5 +1,4 @@
 --ラヴァル・コアトル
----@param c Card
 function c45439263.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

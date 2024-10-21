@@ -1,5 +1,4 @@
 --アンデット・ネクロナイズ
----@param c Card
 function c38363525.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

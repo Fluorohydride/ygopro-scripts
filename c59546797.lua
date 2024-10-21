@@ -1,5 +1,4 @@
 --ジュラゲド
----@param c Card
 function c59546797.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --トゥーン・キングダム
----@param c Card
 function c43175858.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

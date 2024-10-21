@@ -1,5 +1,4 @@
 --妖刀竹光
----@param c Card
 function c42199039.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

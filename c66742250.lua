@@ -1,5 +1,4 @@
 --アヌビスの呪い
----@param c Card
 function c66742250.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

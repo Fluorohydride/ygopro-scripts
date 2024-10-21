@@ -1,5 +1,4 @@
 --竜脈の魔術師
----@param c Card
 function c15146890.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

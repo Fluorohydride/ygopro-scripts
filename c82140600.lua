@@ -1,5 +1,4 @@
 --約束の地 －アヴァロン－
----@param c Card
 function c82140600.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヴァリアンツの弓引－西園
----@param c Card
 function c15130912.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

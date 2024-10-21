@@ -1,5 +1,4 @@
 --青き眼の祭司
----@param c Card
 function c45644898.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

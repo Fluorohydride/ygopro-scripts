@@ -1,5 +1,4 @@
 --バージェストマ・カンブロラスター
----@param c Card
 function c36346532.initial_effect(c)
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xd4),2,2)
 	c:EnableReviveLimit()

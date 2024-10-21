@@ -1,5 +1,4 @@
 --G・ボールパーク
----@param c Card
 function c58012707.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

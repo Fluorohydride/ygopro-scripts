@@ -1,5 +1,4 @@
 --F.A.ダークネスマスター
----@param c Card
 function c6764709.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

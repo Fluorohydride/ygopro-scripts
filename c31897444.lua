@@ -1,5 +1,4 @@
 --冥宮の番人
----@param c Card
 function c31897444.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_NORMAL),2,2)

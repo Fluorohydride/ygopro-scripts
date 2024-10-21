@@ -1,5 +1,4 @@
 --E・HERO レディ・オブ・ファイア
----@param c Card
 function c95362816.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

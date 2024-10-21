@@ -1,5 +1,4 @@
 --Aiラブ融合
----@param c Card
 function c59332125.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

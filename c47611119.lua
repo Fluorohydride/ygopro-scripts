@@ -1,5 +1,4 @@
 --ジェムナイトレディ・ラピスラズリ
----@param c Card
 function c47611119.initial_effect(c)
 	c:SetSPSummonOnce(47611119)
 	--fusion material

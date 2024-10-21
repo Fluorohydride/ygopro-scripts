@@ -1,5 +1,4 @@
 --サイバー・エンジェル－韋駄天－
----@param c Card
 function c3629090.initial_effect(c)
 	c:EnableReviveLimit()
 	--to hand

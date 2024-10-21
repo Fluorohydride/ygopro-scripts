@@ -1,5 +1,4 @@
 --斬機刀ナユタ
----@param c Card
 function c41410651.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

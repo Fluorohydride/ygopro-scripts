@@ -1,5 +1,4 @@
 --副話術士クララ＆ルーシカ
----@param c Card
 function c1482001.initial_effect(c)
 	c:EnableReviveLimit()
 	--link summon

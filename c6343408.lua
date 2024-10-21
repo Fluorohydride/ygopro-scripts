@@ -1,5 +1,4 @@
 --奇跡の発掘
----@param c Card
 function c6343408.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

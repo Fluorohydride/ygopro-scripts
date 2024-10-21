@@ -1,5 +1,4 @@
 --ヴァンプ・オブ・ヴァンパイア
----@param c Card
 function c82962242.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

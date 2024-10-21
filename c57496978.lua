@@ -1,5 +1,4 @@
 --ぶつかり合う魂
----@param c Card
 function c57496978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

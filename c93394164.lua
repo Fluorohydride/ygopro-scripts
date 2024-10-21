@@ -1,5 +1,4 @@
 --パラレル・パンツァー
----@param c Card
 function c93394164.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --起動提督デストロイリボルバー
----@param c Card
 function c36322312.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

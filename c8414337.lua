@@ -1,5 +1,4 @@
 --ガスタの風塵
----@param c Card
 function c8414337.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

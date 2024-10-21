@@ -1,5 +1,4 @@
 --ホルスの黒炎竜 LV6
----@param c Card
 function c11224103.initial_effect(c)
 	--battle destroy
 	local e1=Effect.CreateEffect(c)

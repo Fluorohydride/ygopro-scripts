@@ -1,5 +1,4 @@
 --氷水のアクティ
----@param c Card
 function c82777208.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

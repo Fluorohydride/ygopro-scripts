@@ -1,5 +1,4 @@
 --ブローバック・ドラゴン
----@param c Card
 function c25551951.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

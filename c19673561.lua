@@ -1,5 +1,4 @@
 --ウィッチクラフト・スクロール
----@param c Card
 function c19673561.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

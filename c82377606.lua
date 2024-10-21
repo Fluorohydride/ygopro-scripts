@@ -1,5 +1,4 @@
 --A・O・J アンリミッター
----@param c Card
 function c82377606.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

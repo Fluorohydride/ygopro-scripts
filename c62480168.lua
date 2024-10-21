@@ -1,5 +1,4 @@
 --アマゾネスの秘湯
----@param c Card
 function c62480168.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

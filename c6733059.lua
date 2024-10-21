@@ -1,5 +1,4 @@
 --死霊の巣
----@param c Card
 function c6733059.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

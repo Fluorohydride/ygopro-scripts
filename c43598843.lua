@@ -1,5 +1,4 @@
 --ギミック・パペット－テラー・ベビー
----@param c Card
 function c43598843.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

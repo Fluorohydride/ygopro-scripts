@@ -1,5 +1,4 @@
 --竜巻竜
----@param c Card
 function c6983839.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)

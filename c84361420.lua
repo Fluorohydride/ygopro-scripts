@@ -1,5 +1,4 @@
 --エッジ・ハンマー
----@param c Card
 function c84361420.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

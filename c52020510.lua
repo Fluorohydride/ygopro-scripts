@@ -1,5 +1,4 @@
 --ダイノルフィア・アラート
----@param c Card
 function c52020510.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --獣神王バルバロス
----@param c Card
 function c63972571.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

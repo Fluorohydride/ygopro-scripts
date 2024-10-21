@@ -1,6 +1,5 @@
 --戎の忍者－冥禪
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion summon

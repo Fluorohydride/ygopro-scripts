@@ -1,5 +1,4 @@
 --羅天神将
----@param c Card
 function c30163008.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,nil,2,nil,c30163008.lcheck)

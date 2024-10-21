@@ -1,5 +1,4 @@
 --鉄のハンス
----@param c Card
 function c41916534.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--spsummon

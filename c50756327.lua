@@ -1,5 +1,4 @@
 --魔導原典 クロウリー
----@param c Card
 function c50756327.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_SPELLCASTER),2,2)

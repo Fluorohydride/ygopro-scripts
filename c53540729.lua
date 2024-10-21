@@ -1,5 +1,4 @@
 --ゼンマイウォリアー
----@param c Card
 function c53540729.initial_effect(c)
 	--atk/lv up
 	local e1=Effect.CreateEffect(c)

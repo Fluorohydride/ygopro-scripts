@@ -1,5 +1,4 @@
 --ラーの使徒
----@param c Card
 function c74875003.initial_effect(c)
 	aux.AddCodeList(c,10000010,10000000,10000020)
 	--special summon

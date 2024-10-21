@@ -1,5 +1,4 @@
 --ダイナレスラー・イグアノドラッカ
----@param c Card
 function c61269611.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

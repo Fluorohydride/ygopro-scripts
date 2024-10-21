@@ -1,5 +1,4 @@
 --クリボン
----@param c Card
 function c47432275.initial_effect(c)
 	--be target
 	local e1=Effect.CreateEffect(c)

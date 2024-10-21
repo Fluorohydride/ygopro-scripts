@@ -1,5 +1,4 @@
 --先史遺産ゴールデン・シャトル
----@param c Card
 function c88552992.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

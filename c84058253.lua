@@ -1,5 +1,4 @@
 --キメラテック・ランページ・ドラゴン
----@param c Card
 function c84058253.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

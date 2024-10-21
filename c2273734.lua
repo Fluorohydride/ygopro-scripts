@@ -1,5 +1,4 @@
 --星因士 アルタイル
----@param c Card
 function c2273734.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

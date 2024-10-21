@@ -1,5 +1,4 @@
 --レストレーション・ポイントガード
----@param c Card
 function c74163487.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

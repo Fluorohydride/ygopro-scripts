@@ -1,5 +1,4 @@
 --契約の履行
----@param c Card
 function c48206762.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

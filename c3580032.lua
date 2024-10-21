@@ -1,5 +1,4 @@
 --伝説の預言者マーリン
----@param c Card
 function c3580032.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

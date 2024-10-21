@@ -1,5 +1,4 @@
 --竜魔道騎士ガイア
----@param c Card
 function c15989522.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

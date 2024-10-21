@@ -1,5 +1,4 @@
 --アメイズメント・プレシャスパーク
----@param c Card
 function c33773528.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

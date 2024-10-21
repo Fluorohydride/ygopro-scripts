@@ -1,5 +1,4 @@
 --サイレント・ソードマン LV7
----@param c Card
 function c37267041.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

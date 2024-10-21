@@ -1,5 +1,4 @@
 --剣闘獣ラクエル
----@param c Card
 function c78868776.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

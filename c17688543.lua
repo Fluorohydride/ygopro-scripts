@@ -1,5 +1,4 @@
 --深すぎた墓穴
----@param c Card
 function c17688543.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

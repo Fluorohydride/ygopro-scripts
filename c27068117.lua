@@ -1,5 +1,4 @@
 --オーバーレイ・リジェネレート
----@param c Card
 function c27068117.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

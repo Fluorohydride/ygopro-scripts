@@ -1,5 +1,4 @@
 --宝玉の恵み
----@param c Card
 function c35486099.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

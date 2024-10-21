@@ -1,5 +1,4 @@
 --BK チーフセコンド
----@param c Card
 function c47921178.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

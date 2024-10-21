@@ -1,5 +1,4 @@
 --ブービーゲーム
----@param c Card
 function c27923575.initial_effect(c)
 	--If a monster(s) battles, you take no damage from that battle
 	local e1=Effect.CreateEffect(c)

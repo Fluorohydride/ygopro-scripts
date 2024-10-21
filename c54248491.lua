@@ -1,5 +1,4 @@
 --サクリファイス・スパイダー
----@param c Card
 function c54248491.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

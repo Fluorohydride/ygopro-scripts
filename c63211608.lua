@@ -1,5 +1,4 @@
 --A・ジェネクス・リバイバー
----@param c Card
 function c63211608.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

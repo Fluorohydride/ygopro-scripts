@@ -1,5 +1,4 @@
 --禁呪アラマティア
----@param c Card
 function c34690953.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--activate

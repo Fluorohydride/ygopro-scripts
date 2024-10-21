@@ -1,5 +1,4 @@
 --レッド・ガードナー
----@param c Card
 function c72318602.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

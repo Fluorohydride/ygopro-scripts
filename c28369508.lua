@@ -1,5 +1,4 @@
 --サブテラーマリスの潜伏
----@param c Card
 function c28369508.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

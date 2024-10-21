@@ -1,5 +1,4 @@
 --原子ホタル
----@param c Card
 function c87340664.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

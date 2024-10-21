@@ -1,6 +1,5 @@
 --宙の忍者－鳥帷
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

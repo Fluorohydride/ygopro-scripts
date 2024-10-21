@@ -1,6 +1,5 @@
 --R－ACEヘッドクオーター
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

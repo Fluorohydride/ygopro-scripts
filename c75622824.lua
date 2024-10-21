@@ -1,5 +1,4 @@
 --トリッキーズ・マジック4
----@param c Card
 function c75622824.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

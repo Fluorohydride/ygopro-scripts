@@ -1,5 +1,4 @@
 --ヴァレル・サプライヤー
----@param c Card
 function c30131474.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

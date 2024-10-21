@@ -1,5 +1,4 @@
 --ランチャー・コマンダー
----@param c Card
 function c35911108.initial_effect(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)

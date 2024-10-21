@@ -1,5 +1,4 @@
 --ガジェット・ボックス
----@param c Card
 function c8025950.initial_effect(c)
 	c:EnableCounterPermit(0x8)
 	--activate

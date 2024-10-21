@@ -1,5 +1,4 @@
 --セイヴァー・ミラージュ
----@param c Card
 function c98020526.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate

@@ -1,5 +1,4 @@
 --賢者の聖杯
----@param c Card
 function c35262428.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

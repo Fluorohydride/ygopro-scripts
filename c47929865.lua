@@ -1,5 +1,4 @@
 --マジドッグ
----@param c Card
 function c47929865.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

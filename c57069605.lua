@@ -1,5 +1,4 @@
 --魂の氷結
----@param c Card
 function c57069605.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

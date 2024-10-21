@@ -1,5 +1,4 @@
 --風帝家臣ガルーム
----@param c Card
 function c22382087.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

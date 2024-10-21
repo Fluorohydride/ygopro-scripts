@@ -1,5 +1,4 @@
 --電磁石の戦士マグネット・ベルセリオン
----@param c Card
 function c42901635.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

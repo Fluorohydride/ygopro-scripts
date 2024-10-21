@@ -1,5 +1,4 @@
 --パワー・ピカクス
----@param c Card
 function c90246973.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

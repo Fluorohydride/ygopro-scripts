@@ -1,5 +1,4 @@
 --フォロー・ウィンド
----@param c Card
 function c98252586.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --コアキメイル・トルネード
----@param c Card
 function c95204084.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--destroy

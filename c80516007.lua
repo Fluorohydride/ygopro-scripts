@@ -1,5 +1,4 @@
 --レア・フィッシュ
----@param c Card
 function c80516007.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

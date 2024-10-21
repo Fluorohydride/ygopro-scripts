@@ -1,5 +1,4 @@
 --王の試練
----@param c Card
 function c75448086.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

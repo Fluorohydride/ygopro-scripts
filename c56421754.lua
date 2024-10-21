@@ -1,5 +1,4 @@
 --U.A.マイティスラッガー
----@param c Card
 function c56421754.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

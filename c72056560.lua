@@ -1,5 +1,4 @@
 --ジェムナイト・アンバー
----@param c Card
 function c72056560.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--salvage

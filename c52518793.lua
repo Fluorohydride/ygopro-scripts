@@ -1,5 +1,4 @@
 --剣闘獣の檻－コロッセウム
----@param c Card
 function c52518793.initial_effect(c)
 	c:EnableCounterPermit(0x7)
 	--Activate

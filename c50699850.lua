@@ -1,5 +1,4 @@
 --悪魔嬢ロリス
----@param c Card
 function c50699850.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

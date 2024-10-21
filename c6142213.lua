@@ -1,5 +1,4 @@
 --ワンショット・ロケット
----@param c Card
 function c6142213.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

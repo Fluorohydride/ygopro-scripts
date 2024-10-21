@@ -1,5 +1,4 @@
 --魔神儀－カリスライム
----@param c Card
 function c65877963.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

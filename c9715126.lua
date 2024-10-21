@@ -1,5 +1,4 @@
 --起動指令 ギア・フォース
----@param c Card
 function c9715126.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

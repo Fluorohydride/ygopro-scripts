@@ -1,5 +1,4 @@
 --メタル・リフレクト・スライム
----@param c Card
 function c26905245.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

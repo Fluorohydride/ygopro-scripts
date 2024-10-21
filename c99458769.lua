@@ -1,5 +1,4 @@
 --暗黒界の魔神 レイン
----@param c Card
 function c99458769.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

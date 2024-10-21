@@ -1,5 +1,4 @@
 --ガーディアン・キマイラ
----@param c Card
 function c11321089.initial_effect(c)
 	aux.AddCodeList(c,24094653)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --Evil★Twins キスキル・リィラ
----@param c Card
 function c62098216.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

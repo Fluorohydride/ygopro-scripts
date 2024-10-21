@@ -1,6 +1,5 @@
 --命の奇跡
 local s,id=GetID()
----@param c Card
 function s.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --森羅の施し
----@param c Card
 function c82016179.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

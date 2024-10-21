@@ -1,5 +1,4 @@
 --U.A.ターンオーバー・タクティクス
----@param c Card
 function c61613388.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

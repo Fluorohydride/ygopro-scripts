@@ -1,5 +1,4 @@
 --エレキーパー
----@param c Card
 function c32061744.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

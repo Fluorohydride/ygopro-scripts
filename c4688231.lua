@@ -1,5 +1,4 @@
 --メタルフォーゼ・ミスリエル
----@param c Card
 function c4688231.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

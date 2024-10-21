@@ -1,5 +1,4 @@
 --グレイヴ・キーパー
----@param c Card
 function c11448373.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

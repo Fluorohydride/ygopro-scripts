@@ -1,5 +1,4 @@
 --雄炎星－スネイリン
----@param c Card
 function c75132317.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

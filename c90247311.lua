@@ -1,5 +1,4 @@
 --黄竜の忍者
----@param c Card
 function c90247311.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

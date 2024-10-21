@@ -1,5 +1,4 @@
 --トリックスター・ブルム
----@param c Card
 function c77307161.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --妖精伝姫－シラユキ
----@param c Card
 function c55623480.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

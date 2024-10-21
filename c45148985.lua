@@ -1,5 +1,4 @@
 --メタファイズ・エグゼキューター
----@param c Card
 function c45148985.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon limit

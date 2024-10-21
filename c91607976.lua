@@ -1,5 +1,4 @@
 --D・クロックン
----@param c Card
 function c91607976.initial_effect(c)
 	c:EnableCounterPermit(0x8)
 	--atk

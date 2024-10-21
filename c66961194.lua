@@ -1,5 +1,4 @@
 --ロード・オブ・ドラゴン－ドラゴンの独裁者－
----@param c Card
 function c66961194.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--special summon

@@ -1,5 +1,4 @@
 --墓地墓地の恨み
----@param c Card
 function c67113830.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

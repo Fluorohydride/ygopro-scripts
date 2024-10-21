@@ -1,5 +1,4 @@
 --イリュージョン・バルーン
----@param c Card
 function c62161698.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

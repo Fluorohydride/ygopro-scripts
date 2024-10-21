@@ -1,5 +1,4 @@
 --ヒーローズルール2
----@param c Card
 function c85854214.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

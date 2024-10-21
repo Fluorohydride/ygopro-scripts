@@ -1,5 +1,4 @@
 --メタファイズ・ネフティス
----@param c Card
 function c72355272.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --烙印の使徒
----@param c Card
 function c34536828.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

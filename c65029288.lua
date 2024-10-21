@@ -1,5 +1,4 @@
 --EMオッドアイズ・メタル・クロウ
----@param c Card
 function c65029288.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

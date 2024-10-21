@@ -1,5 +1,4 @@
 --おジャマ・キング
----@param c Card
 function c90140980.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

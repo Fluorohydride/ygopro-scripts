@@ -1,5 +1,4 @@
 --魔力隔壁
----@param c Card
 function c84117021.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

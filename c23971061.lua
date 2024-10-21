@@ -1,5 +1,4 @@
 --ダブルバイト・ドラゴン
----@param c Card
 function c23971061.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

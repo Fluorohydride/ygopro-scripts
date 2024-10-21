@@ -1,5 +1,4 @@
 --ワーム・キング
----@param c Card
 function c10026986.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

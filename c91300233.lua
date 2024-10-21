@@ -1,5 +1,4 @@
 --騎甲虫クルーエル・サターン
----@param c Card
 function c91300233.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

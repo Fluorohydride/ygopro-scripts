@@ -1,5 +1,4 @@
 --極星天ヴァルキュリア
----@param c Card
 function c40844552.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

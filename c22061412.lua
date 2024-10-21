@@ -1,5 +1,4 @@
 --E・HERO The シャイニング
----@param c Card
 function c22061412.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

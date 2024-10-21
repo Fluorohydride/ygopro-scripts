@@ -1,5 +1,4 @@
 --闇の量産工場
----@param c Card
 function c90928333.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --人造人間－サイコ・レイヤー
----@param c Card
 function c99666430.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

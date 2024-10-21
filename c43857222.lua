@@ -1,5 +1,4 @@
 --ライブラの魔法秤
----@param c Card
 function c43857222.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

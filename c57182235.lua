@@ -1,5 +1,4 @@
 --トークン収穫祭
----@param c Card
 function c57182235.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

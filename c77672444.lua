@@ -1,5 +1,4 @@
 --モーターバイオレンス
----@param c Card
 function c77672444.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

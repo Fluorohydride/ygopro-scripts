@@ -1,5 +1,4 @@
 --シューティング・スター
----@param c Card
 function c47264717.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

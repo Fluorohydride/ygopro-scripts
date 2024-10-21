@@ -1,5 +1,4 @@
 --超量機獣ラスターレックス
----@param c Card
 function c57450198.initial_effect(c)
 	aux.AddCodeList(c,73422829)
 	--xyz summon

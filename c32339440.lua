@@ -1,5 +1,4 @@
 --武神－ヤマト
----@param c Card
 function c32339440.initial_effect(c)
 	c:SetUniqueOnField(1,0,32339440)
 	--to hand

@@ -1,5 +1,4 @@
 --超古深海王シーラカンス
----@param c Card
 function c88307361.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --剛鬼フィニッシュホールド
----@param c Card
 function c35870016.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

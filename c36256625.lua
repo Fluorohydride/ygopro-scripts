@@ -1,5 +1,4 @@
 --スーパービークロイド－ジャンボドリル
----@param c Card
 function c36256625.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

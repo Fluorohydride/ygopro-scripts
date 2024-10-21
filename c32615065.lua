@@ -1,5 +1,4 @@
 --覇道星シュラ
----@param c Card
 function c32615065.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

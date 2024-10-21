@@ -1,5 +1,4 @@
 --魔鍵－マフテア
----@param c Card
 function c99426088.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

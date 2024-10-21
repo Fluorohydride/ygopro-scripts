@@ -1,5 +1,4 @@
 --剣闘獣の闘器グラディウス
----@param c Card
 function c25407406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

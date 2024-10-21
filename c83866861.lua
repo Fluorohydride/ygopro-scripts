@@ -1,5 +1,4 @@
 --デストーイ・マッド・キマイラ
----@param c Card
 function c83866861.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

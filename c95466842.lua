@@ -1,5 +1,4 @@
 --水精鱗－アビスラング
----@param c Card
 function c95466842.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

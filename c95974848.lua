@@ -1,5 +1,4 @@
 --S－Force オリフィス
----@param c Card
 function c95974848.initial_effect(c)
 	--can not be effect target
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サイバーダーク・インパクト！
----@param c Card
 function c80033124.initial_effect(c)
 	aux.AddCodeList(c,41230939,77625948,3019642)
 	--Activate

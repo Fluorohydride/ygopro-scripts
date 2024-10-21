@@ -1,5 +1,4 @@
 --神炎竜ルベリオン
----@param c Card
 function c70534340.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

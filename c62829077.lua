@@ -1,5 +1,4 @@
 --輝望道
----@param c Card
 function c62829077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

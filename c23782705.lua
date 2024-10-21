@@ -1,5 +1,4 @@
 --マシンナーズ・スナイパー
----@param c Card
 function c23782705.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

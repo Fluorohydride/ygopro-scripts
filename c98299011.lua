@@ -1,5 +1,4 @@
 --ホーリー・エルフの祝福
----@param c Card
 function c98299011.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ウィンドファーム・ジェネクス
----@param c Card
 function c43925870.initial_effect(c)
 	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon

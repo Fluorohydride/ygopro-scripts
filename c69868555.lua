@@ -1,5 +1,4 @@
 --巨神竜の遺跡
----@param c Card
 function c69868555.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

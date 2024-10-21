@@ -1,5 +1,4 @@
 --重機王ドボク・ザーク
----@param c Card
 function c29515122.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

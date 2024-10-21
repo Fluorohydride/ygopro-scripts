@@ -1,5 +1,4 @@
 --No.31 アベルズ・デビル
----@param c Card
 function c95442074.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

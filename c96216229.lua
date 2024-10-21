@@ -1,5 +1,4 @@
 --剣闘獣の戦車
----@param c Card
 function c96216229.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

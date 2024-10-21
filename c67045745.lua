@@ -1,5 +1,4 @@
 --F.A.ソニックマイスター
----@param c Card
 function c67045745.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔導冥士 ラモール
----@param c Card
 function c9560338.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --S－Force プロフェッサー・Ϝ
----@param c Card
 function c58589739.initial_effect(c)
 	--position change
 	local e1=Effect.CreateEffect(c)

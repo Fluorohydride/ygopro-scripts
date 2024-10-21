@@ -1,6 +1,5 @@
 --竜王キング・レックス
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--extra attack
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --混沌の戦士 カオス・ソルジャー
----@param c Card
 function c49202162.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,3,3,c49202162.lcheck)

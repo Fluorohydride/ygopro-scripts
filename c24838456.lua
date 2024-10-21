@@ -1,5 +1,4 @@
 --虚無を呼ぶ呪文
----@param c Card
 function c24838456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

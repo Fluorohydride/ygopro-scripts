@@ -1,5 +1,4 @@
 --スペシャル・デュアル・サモン
----@param c Card
 function c26120084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --メトロンノーム
----@param c Card
 function c26638543.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

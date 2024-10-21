@@ -1,5 +1,4 @@
 --ゴゴゴギガース
----@param c Card
 function c19667590.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

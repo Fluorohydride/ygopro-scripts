@@ -1,5 +1,4 @@
 --星遺物の傀儡
----@param c Card
 function c89320376.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヴァンパイア帝国
----@param c Card
 function c62188962.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

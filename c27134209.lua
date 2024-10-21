@@ -1,5 +1,4 @@
 --樹冠の甲帝ベアグラム
----@param c Card
 function c27134209.initial_effect(c)
 	c:SetSPSummonOnce(27134209)
 	c:EnableReviveLimit()

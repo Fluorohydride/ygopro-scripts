@@ -1,5 +1,4 @@
 --スターライト・ジャンクション
----@param c Card
 function c1003840.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

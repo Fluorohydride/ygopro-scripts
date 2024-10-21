@@ -1,5 +1,4 @@
 --バルーン・リザード
----@param c Card
 function c39892082.initial_effect(c)
 	c:EnableCounterPermit(0x29)
 	--counter

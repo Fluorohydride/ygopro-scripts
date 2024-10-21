@@ -1,5 +1,4 @@
 --ミステリーサークル
----@param c Card
 function c24082387.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

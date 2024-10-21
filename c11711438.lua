@@ -1,5 +1,4 @@
 --戦華史略－三顧礼迎
----@param c Card
 function c11711438.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

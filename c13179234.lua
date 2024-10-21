@@ -1,5 +1,4 @@
 --VV～始まりの地～
----@param c Card
 function c13179234.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

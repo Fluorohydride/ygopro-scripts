@@ -1,5 +1,4 @@
 --ベアルクティ－ポラリィ
----@param c Card
 function c27693363.initial_effect(c)
 	aux.AddCodeList(c,89264428)
 	c:EnableReviveLimit()

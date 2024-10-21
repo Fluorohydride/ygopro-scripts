@@ -1,5 +1,4 @@
 --真青眼の究極竜
----@param c Card
 function c56532353.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

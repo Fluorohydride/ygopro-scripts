@@ -1,5 +1,4 @@
 --影六武衆－ハツメ
----@param c Card
 function c44686185.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

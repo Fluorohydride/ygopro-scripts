@@ -1,5 +1,4 @@
 --溟界の漠－ゾーハ
----@param c Card
 function c35998832.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

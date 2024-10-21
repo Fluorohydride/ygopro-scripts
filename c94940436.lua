@@ -1,5 +1,4 @@
 --磁力の召喚円 LV2
----@param c Card
 function c94940436.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --牙鮫帝シャーク・カイゼル
----@param c Card
 function c14306092.initial_effect(c)
 	c:EnableCounterPermit(0x2e)
 	--xyz summon

@@ -1,5 +1,4 @@
 --混沌の召喚神
----@param c Card
 function c27439792.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967,13301895)
 	--Special Summon

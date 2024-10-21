@@ -1,5 +1,4 @@
 --The despair URANUS
----@param c Card
 function c32588805.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

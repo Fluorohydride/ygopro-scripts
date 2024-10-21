@@ -1,5 +1,4 @@
 --破面竜
----@param c Card
 function c24218047.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

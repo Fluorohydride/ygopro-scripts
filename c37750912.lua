@@ -1,5 +1,4 @@
 --スターダスト・イルミネイト
----@param c Card
 function c37750912.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate

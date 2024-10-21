@@ -1,5 +1,4 @@
 --甲虫装機 エクサビートル
----@param c Card
 function c44505297.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

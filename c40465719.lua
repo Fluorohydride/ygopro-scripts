@@ -1,5 +1,4 @@
 --凡人の施し
----@param c Card
 function c40465719.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

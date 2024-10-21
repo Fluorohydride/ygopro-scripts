@@ -1,5 +1,4 @@
 --スターダスト・シンクロン
----@param c Card
 function c37799519.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--spsummon

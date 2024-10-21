@@ -1,5 +1,4 @@
 --カオス・ネフティス
----@param c Card
 function c24226942.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

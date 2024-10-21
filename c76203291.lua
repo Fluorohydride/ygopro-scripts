@@ -1,5 +1,4 @@
 --光鱗のトビウオ
----@param c Card
 function c76203291.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

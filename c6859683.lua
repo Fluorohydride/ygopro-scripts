@@ -1,5 +1,4 @@
 --成功確率0％
----@param c Card
 function c6859683.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)

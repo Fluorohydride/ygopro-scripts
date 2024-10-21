@@ -1,5 +1,4 @@
 --ジャンク・ブレーダー
----@param c Card
 function c51855378.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

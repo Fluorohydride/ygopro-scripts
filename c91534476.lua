@@ -1,5 +1,4 @@
 --ワン・バイ・ワン
----@param c Card
 function c91534476.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

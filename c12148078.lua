@@ -1,5 +1,4 @@
 --SRルーレット
----@param c Card
 function c12148078.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

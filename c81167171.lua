@@ -1,5 +1,4 @@
 --ヒーロースピリッツ
----@param c Card
 function c81167171.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

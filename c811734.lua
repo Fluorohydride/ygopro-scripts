@@ -1,5 +1,4 @@
 --DDDの契約変更
----@param c Card
 function c811734.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --Wake Up Your E・HERO
----@param c Card
 function c32828466.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

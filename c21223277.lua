@@ -1,5 +1,4 @@
 --聖騎士王アルトリウス
----@param c Card
 function c21223277.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x107a),4,2)

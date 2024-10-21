@@ -1,5 +1,4 @@
 --妖仙獣 辻斬風
----@param c Card
 function c25244515.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

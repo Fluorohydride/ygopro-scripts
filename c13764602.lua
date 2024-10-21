@@ -1,5 +1,4 @@
 --阿吽の呼吸
----@param c Card
 function c13764602.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

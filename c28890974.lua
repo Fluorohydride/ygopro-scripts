@@ -1,5 +1,4 @@
 --光神化
----@param c Card
 function c28890974.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

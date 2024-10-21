@@ -1,5 +1,4 @@
 --ローグ・オブ・エンディミオン
----@param c Card
 function c44640691.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--summon success

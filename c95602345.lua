@@ -1,5 +1,4 @@
 --暗岩の海竜神
----@param c Card
 function c95602345.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

@@ -1,5 +1,4 @@
 --突風の扇
----@param c Card
 function c55321970.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --インヴェルズ・ギラファ
----@param c Card
 function c58494728.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

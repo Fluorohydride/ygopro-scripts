@@ -1,5 +1,4 @@
 --ダークエンド・ドラゴン
----@param c Card
 function c88643579.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)

@@ -1,5 +1,4 @@
 --氷獄龍 トリシューラ
----@param c Card
 function c15661378.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

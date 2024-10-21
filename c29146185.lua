@@ -1,5 +1,4 @@
 --魔導天士 トールモンド
----@param c Card
 function c29146185.initial_effect(c)
 	--ss success
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --コア濃度圧縮
----@param c Card
 function c13997673.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

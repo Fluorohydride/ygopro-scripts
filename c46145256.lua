@@ -1,5 +1,4 @@
 --閃光の結界像
----@param c Card
 function c46145256.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

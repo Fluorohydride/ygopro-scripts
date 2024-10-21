@@ -1,6 +1,5 @@
 --ヒロイック・コール
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

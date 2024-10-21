@@ -1,5 +1,4 @@
 --プロキシー・ホース
----@param c Card
 function c16684346.initial_effect(c)
 	--extra hand link
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --世壊賛歌
----@param c Card
 function c54851325.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--activate

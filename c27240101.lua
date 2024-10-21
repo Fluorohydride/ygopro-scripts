@@ -1,5 +1,4 @@
 --キキナガシ風鳥
----@param c Card
 function c27240101.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

@@ -1,5 +1,4 @@
 --終末の騎士
----@param c Card
 function c28985331.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

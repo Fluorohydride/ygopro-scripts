@@ -1,5 +1,4 @@
 --爆炎集合体 ガイヤ・ソウル
----@param c Card
 function c51355346.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

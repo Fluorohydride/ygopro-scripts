@@ -1,5 +1,4 @@
 --甲纏竜ガイアーム
----@param c Card
 function c49816630.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

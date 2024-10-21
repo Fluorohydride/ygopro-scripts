@@ -1,5 +1,4 @@
 --孤毒の剣
----@param c Card
 function c93377803.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	c:SetUniqueOnField(1,0,93377803)

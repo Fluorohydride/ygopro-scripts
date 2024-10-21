@@ -1,5 +1,4 @@
 --トロイホース
----@param c Card
 function c38479725.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

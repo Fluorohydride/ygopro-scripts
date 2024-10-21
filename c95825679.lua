@@ -1,5 +1,4 @@
 --デーモンの降臨
----@param c Card
 function c95825679.initial_effect(c)
 	c:EnableReviveLimit()
 	--code

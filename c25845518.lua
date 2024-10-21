@@ -1,5 +1,4 @@
 --ドラグニティ・グロー
----@param c Card
 function c25845518.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

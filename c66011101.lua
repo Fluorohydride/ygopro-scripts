@@ -1,5 +1,4 @@
 --No.60 刻不知のデュガレス
----@param c Card
 function c66011101.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

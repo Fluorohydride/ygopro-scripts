@@ -1,5 +1,4 @@
 --玄武の召喚士
----@param c Card
 function c54747648.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

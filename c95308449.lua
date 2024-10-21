@@ -1,5 +1,4 @@
 --終焉のカウントダウン
----@param c Card
 function c95308449.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

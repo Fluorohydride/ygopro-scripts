@@ -1,5 +1,4 @@
 --剣の采配
----@param c Card
 function c12197543.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

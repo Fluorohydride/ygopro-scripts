@@ -1,5 +1,4 @@
 --闇・道化師のペーテン
----@param c Card
 function c52624755.initial_effect(c)
 	--sp summon
 	local e1=Effect.CreateEffect(c)

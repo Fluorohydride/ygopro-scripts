@@ -1,5 +1,4 @@
 --白銀の城の召使い アリアンナ
----@param c Card
 function c1225009.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

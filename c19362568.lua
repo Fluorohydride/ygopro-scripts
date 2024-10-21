@@ -1,5 +1,4 @@
 --氷風のリフレイン
----@param c Card
 function c19362568.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

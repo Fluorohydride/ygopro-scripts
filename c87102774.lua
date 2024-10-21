@@ -1,5 +1,4 @@
 --黄金の天道虫
----@param c Card
 function c87102774.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

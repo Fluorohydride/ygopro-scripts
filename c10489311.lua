@@ -1,5 +1,4 @@
 --ヒーロー・メダル
----@param c Card
 function c10489311.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

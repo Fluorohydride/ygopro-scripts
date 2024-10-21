@@ -1,5 +1,4 @@
 --漆黒の魔王 LV4
----@param c Card
 function c85313220.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ジェム・エンハンス
----@param c Card
 function c41777.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

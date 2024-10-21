@@ -1,5 +1,4 @@
 --トラミッド・スフィンクス
----@param c Card
 function c68406755.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

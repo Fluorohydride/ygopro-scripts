@@ -1,5 +1,4 @@
 --強引な安全協定
----@param c Card
 function c97806240.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

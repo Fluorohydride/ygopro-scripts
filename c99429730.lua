@@ -1,5 +1,4 @@
 --森羅の番人 オーク
----@param c Card
 function c99429730.initial_effect(c)
 	--deck
 	local e1=Effect.CreateEffect(c)

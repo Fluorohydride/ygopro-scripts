@@ -1,5 +1,4 @@
 --スフィンクス・テーレイア
----@param c Card
 function c51402177.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

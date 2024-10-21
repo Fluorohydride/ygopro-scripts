@@ -1,5 +1,4 @@
 --斬機ナブラ
----@param c Card
 function c53577438.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

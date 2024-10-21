@@ -1,5 +1,4 @@
 --メタファイズ・ファクター
----@param c Card
 function c20720928.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

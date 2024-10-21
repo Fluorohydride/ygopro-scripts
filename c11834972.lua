@@ -1,5 +1,4 @@
 --ラヴァル・ガンナー
----@param c Card
 function c11834972.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

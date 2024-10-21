@@ -1,5 +1,4 @@
 --ダストンのモップ
----@param c Card
 function c24845628.initial_effect(c)
 	c:SetUniqueOnField(1,0,24845628)
 	--Activate

@@ -1,5 +1,4 @@
 --激昂のミノタウルス
----@param c Card
 function c76909279.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

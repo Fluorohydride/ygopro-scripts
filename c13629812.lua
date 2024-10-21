@@ -1,5 +1,4 @@
 --忍法 影縫いの術
----@param c Card
 function c13629812.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

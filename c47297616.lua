@@ -1,5 +1,4 @@
 --光と闇の竜
----@param c Card
 function c47297616.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

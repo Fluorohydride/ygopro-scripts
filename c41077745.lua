@@ -1,5 +1,4 @@
 --E・HERO アイスエッジ
----@param c Card
 function c41077745.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

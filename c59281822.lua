@@ -1,5 +1,4 @@
 --闇霊神オブルミラージュ
----@param c Card
 function c59281822.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

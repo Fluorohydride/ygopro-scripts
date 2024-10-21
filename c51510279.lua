@@ -1,5 +1,4 @@
 --繋がれし魔鍵
----@param c Card
 function c51510279.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --集団催眠
----@param c Card
 function c21768554.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

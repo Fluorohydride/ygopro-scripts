@@ -1,6 +1,5 @@
 --炎王の聖域
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,57554544)
 	local e1=Effect.CreateEffect(c)

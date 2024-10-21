@@ -1,5 +1,4 @@
 --星因士 カペラ
----@param c Card
 function c86466163.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_XMAT_COUNT_LIMIT)
 	--xyzlv

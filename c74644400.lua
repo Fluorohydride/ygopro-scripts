@@ -1,5 +1,4 @@
 --サイキック・リフレクター
----@param c Card
 function c74644400.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--search

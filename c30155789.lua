@@ -1,5 +1,4 @@
 --サディスティック・ポーション
----@param c Card
 function c30155789.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

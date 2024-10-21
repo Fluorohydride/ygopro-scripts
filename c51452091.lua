@@ -1,5 +1,4 @@
 --王宮のお触れ
----@param c Card
 function c51452091.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

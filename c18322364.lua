@@ -1,5 +1,4 @@
 --ビッグ・ホエール
----@param c Card
 function c18322364.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --野性解放
----@param c Card
 function c61166988.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

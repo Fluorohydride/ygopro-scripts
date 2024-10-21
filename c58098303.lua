@@ -1,5 +1,4 @@
 --フレイム・オーガ
----@param c Card
 function c58098303.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

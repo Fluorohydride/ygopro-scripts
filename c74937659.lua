@@ -1,5 +1,4 @@
 --サブテラーマリスの妖魔
----@param c Card
 function c74937659.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

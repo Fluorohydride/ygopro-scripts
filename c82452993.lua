@@ -1,5 +1,4 @@
 --孤高の格闘家
----@param c Card
 function c82452993.initial_effect(c)
 	aux.AddCodeList(c,8508055,3810071,49814180)
 	--Activate

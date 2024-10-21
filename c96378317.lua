@@ -1,5 +1,4 @@
 --鉄獣の邂逅
----@param c Card
 function c96378317.initial_effect(c)
 	--(1) Gains ATK
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --地葬星カイザ
----@param c Card
 function c25449584.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

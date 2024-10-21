@@ -1,6 +1,5 @@
 --魔界特派員デスキャスター
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --魔鍵銃－バトスバスター
----@param c Card
 function c19489718.initial_effect(c)
 	c:EnableReviveLimit()
 	--search

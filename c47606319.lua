@@ -1,5 +1,4 @@
 --ギガンテス
----@param c Card
 function c47606319.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

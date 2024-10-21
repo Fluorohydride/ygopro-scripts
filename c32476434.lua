@@ -1,5 +1,4 @@
 --ラインモンスター スピア・ホイール
----@param c Card
 function c32476434.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

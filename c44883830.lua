@@ -1,5 +1,4 @@
 --死の合唱
----@param c Card
 function c44883830.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

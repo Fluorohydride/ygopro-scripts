@@ -1,5 +1,4 @@
 --インフェルノイド・ルキフグス
----@param c Card
 function c52038272.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

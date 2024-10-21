@@ -1,5 +1,4 @@
 --ロケット・パイルダー
----@param c Card
 function c27863269.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

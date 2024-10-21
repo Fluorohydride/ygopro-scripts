@@ -1,5 +1,4 @@
 --真竜皇アグニマズドV
----@param c Card
 function c96746083.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

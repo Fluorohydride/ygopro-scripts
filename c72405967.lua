@@ -1,5 +1,4 @@
 --王家の生け贄
----@param c Card
 function c72405967.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

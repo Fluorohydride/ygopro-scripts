@@ -1,5 +1,4 @@
 --白の聖女エクレシア
----@param c Card
 function c55273560.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--special summon self

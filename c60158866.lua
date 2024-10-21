@@ -1,5 +1,4 @@
 --不朽の七皇
----@param c Card
 function c60158866.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

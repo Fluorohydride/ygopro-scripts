@@ -1,5 +1,4 @@
 --ドラグニティ－ピルム
----@param c Card
 function c52977572.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --聖炎王 ガルドニクス
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--special summon

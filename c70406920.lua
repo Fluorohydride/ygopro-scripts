@@ -1,5 +1,4 @@
 --機械王－B.C.3000
----@param c Card
 function c70406920.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

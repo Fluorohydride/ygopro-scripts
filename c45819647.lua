@@ -1,5 +1,4 @@
 --神聖魔皇后セレーネ
----@param c Card
 function c45819647.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--link summon

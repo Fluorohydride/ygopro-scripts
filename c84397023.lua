@@ -1,5 +1,4 @@
 --レベル変換実験室
----@param c Card
 function c84397023.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

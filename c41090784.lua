@@ -1,5 +1,4 @@
 --氷結界の大僧正
----@param c Card
 function c41090784.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

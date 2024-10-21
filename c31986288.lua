@@ -1,5 +1,4 @@
 --スプリット・D・ローズ
----@param c Card
 function c31986288.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ウィッチクラフト・バイストリート
----@param c Card
 function c83289866.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

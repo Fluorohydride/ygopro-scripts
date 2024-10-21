@@ -1,5 +1,4 @@
 --聖騎士ジャンヌ
----@param c Card
 function c18426196.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

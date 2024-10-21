@@ -1,5 +1,4 @@
 --古代の機械融合
----@param c Card
 function c64061284.initial_effect(c)
 	aux.AddCodeList(c,83104731)
 	--Activate

@@ -1,5 +1,4 @@
 --化合電界
----@param c Card
 function c65959844.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

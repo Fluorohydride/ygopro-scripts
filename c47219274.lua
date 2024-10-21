@@ -1,5 +1,4 @@
 --神碑の牙フレーキ
----@param c Card
 function c47219274.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

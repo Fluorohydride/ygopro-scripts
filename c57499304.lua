@@ -1,5 +1,4 @@
 --七皇転生
----@param c Card
 function c57499304.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

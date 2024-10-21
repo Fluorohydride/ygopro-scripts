@@ -1,5 +1,4 @@
 --宣告者の神巫
----@param c Card
 function c92919429.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

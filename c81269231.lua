@@ -1,5 +1,4 @@
 --古代の機械合成竜
----@param c Card
 function c81269231.initial_effect(c)
 	--mat check
 	local e1=Effect.CreateEffect(c)

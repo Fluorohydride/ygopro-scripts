@@ -1,5 +1,4 @@
 --妖精伝姫－シンデレラ
----@param c Card
 function c52022648.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

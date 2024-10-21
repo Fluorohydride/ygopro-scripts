@@ -1,5 +1,4 @@
 --コードブレイカー・ウイルスソードマン
----@param c Card
 function c84121193.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)

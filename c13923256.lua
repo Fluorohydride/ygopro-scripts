@@ -1,5 +1,4 @@
 --戦華の妙－魯敬
----@param c Card
 function c13923256.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --X・HERO ワンダー・ドライバー
----@param c Card
 function c1948619.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

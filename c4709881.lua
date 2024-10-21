@@ -1,5 +1,4 @@
 --星杯剣士アウラム
----@param c Card
 function c4709881.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfd),2,2)

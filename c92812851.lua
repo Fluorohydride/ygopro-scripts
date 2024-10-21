@@ -1,6 +1,5 @@
 --奇跡の魔導剣士
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material

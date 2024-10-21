@@ -1,5 +1,4 @@
 --突然変異
----@param c Card
 function c46411259.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

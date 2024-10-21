@@ -1,5 +1,4 @@
 --幻影融合
----@param c Card
 function c57425061.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

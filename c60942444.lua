@@ -1,5 +1,4 @@
 --天威龍－マニラ
----@param c Card
 function c60942444.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

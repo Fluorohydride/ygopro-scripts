@@ -1,5 +1,4 @@
 --究極融合
----@param c Card
 function c71143015.initial_effect(c)
 	aux.AddCodeList(c,89631139,23995346)
 	--Activate

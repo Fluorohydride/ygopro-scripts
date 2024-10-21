@@ -1,5 +1,4 @@
 --眠れる巨人ズシン
----@param c Card
 function c67547370.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,5 +1,4 @@
 --覚星輝士－セフィラビュート
----@param c Card
 function c22617205.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

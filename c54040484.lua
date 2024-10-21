@@ -1,5 +1,4 @@
 --カオス・コア
----@param c Card
 function c54040484.initial_effect(c)
 	c:EnableCounterPermit(0x57)
 	aux.AddCodeList(c,6007213,32491822,69890967)

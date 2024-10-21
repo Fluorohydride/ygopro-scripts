@@ -1,5 +1,4 @@
 --極星邪狼フェンリル
----@param c Card
 function c91697229.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

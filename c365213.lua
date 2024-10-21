@@ -1,5 +1,4 @@
 --光来する奇跡
----@param c Card
 function c365213.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--to deck

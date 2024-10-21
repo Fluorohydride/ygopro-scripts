@@ -1,5 +1,4 @@
 --CNo.105 BK 彗星のカエストス
----@param c Card
 function c85121942.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,4)

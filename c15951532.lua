@@ -1,5 +1,4 @@
 --アマゾネス女王
----@param c Card
 function c15951532.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

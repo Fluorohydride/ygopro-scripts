@@ -1,5 +1,4 @@
 --魔導法士 ジュノン
----@param c Card
 function c86585274.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --BF－銀盾のミストラル
----@param c Card
 function c46710683.initial_effect(c)
 	--change damage
 	local e1=Effect.CreateEffect(c)

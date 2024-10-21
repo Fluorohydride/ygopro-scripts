@@ -1,5 +1,4 @@
 --地翔星ハヤテ
----@param c Card
 function c7443908.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

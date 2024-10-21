@@ -1,5 +1,4 @@
 --ペア・ルック
----@param c Card
 function c94446564.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

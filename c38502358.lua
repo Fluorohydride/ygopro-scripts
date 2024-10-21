@@ -1,5 +1,4 @@
 --星痕の機界騎士
----@param c Card
 function c38502358.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x10c),2)

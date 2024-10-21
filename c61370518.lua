@@ -1,5 +1,4 @@
 --迅雷の魔王－スカル・デーモン
----@param c Card
 function c61370518.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

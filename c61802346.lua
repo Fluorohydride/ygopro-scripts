@@ -1,5 +1,4 @@
 --ブリザード・ドラゴン
----@param c Card
 function c61802346.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

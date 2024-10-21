@@ -1,5 +1,4 @@
 --ガオドレイクのタテガミ
----@param c Card
 function c57201737.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

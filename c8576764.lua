@@ -1,5 +1,4 @@
 --貪食魚グリーディス
----@param c Card
 function c8576764.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

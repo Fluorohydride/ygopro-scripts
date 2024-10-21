@@ -1,5 +1,4 @@
 --狡猾な落とし穴
----@param c Card
 function c99590524.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

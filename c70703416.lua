@@ -1,5 +1,4 @@
 --氷結界の霜精
----@param c Card
 function c70703416.initial_effect(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)

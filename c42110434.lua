@@ -1,5 +1,4 @@
 --ナチュル・バタフライ
----@param c Card
 function c42110434.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

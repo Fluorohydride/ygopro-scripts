@@ -1,5 +1,4 @@
 --ゴゴゴゴーレム
----@param c Card
 function c62476815.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

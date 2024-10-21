@@ -1,5 +1,4 @@
 --力天使ヴァルキリア
----@param c Card
 function c89055154.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --二角獣レーム
----@param c Card
 function c58685438.initial_effect(c)
 	--deckdes
 	local e1=Effect.CreateEffect(c)

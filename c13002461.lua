@@ -1,5 +1,4 @@
 --魔導戦士 フォルス
----@param c Card
 function c13002461.initial_effect(c)
 	--atk/lv up
 	local e1=Effect.CreateEffect(c)

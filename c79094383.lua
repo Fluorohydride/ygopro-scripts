@@ -1,5 +1,4 @@
 --光波異邦臣
----@param c Card
 function c79094383.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)

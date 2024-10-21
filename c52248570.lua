@@ -1,5 +1,4 @@
 --プリズンクインデーモン
----@param c Card
 function c52248570.initial_effect(c)
 	aux.AddCodeList(c,94585852)
 	--maintain

@@ -1,5 +1,4 @@
 --鉄獣の血盟
----@param c Card
 function c86379342.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

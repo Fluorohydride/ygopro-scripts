@@ -1,5 +1,4 @@
 --穿孔虫
----@param c Card
 function c88733579.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

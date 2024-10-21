@@ -1,5 +1,4 @@
 --先史遺産モアイキャリア
----@param c Card
 function c38007744.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

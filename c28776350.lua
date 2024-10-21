@@ -1,5 +1,4 @@
 --アカシック・マジシャン
----@param c Card
 function c28776350.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,2,c28776350.lcheck)

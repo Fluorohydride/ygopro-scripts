@@ -1,5 +1,4 @@
 --エクソシスター・ステラ
----@param c Card
 function c43863925.initial_effect(c)
 	aux.AddCodeList(c,16474916)
 	--special summon

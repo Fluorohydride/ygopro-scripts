@@ -1,5 +1,4 @@
 --マジェスペクター・クロウ
----@param c Card
 function c68395509.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

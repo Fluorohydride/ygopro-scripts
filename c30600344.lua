@@ -1,5 +1,4 @@
 --エクシーズ・バースト
----@param c Card
 function c30600344.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

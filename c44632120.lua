@@ -1,5 +1,4 @@
 --クリバー
----@param c Card
 function c44632120.initial_effect(c)
 	aux.AddCodeList(c,71036835,7021574,34419588,40640057)
 	--Destroyed

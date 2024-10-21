@@ -1,5 +1,4 @@
 --オルフェゴール・リリース
----@param c Card
 function c47171541.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

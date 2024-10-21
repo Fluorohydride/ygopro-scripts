@@ -1,5 +1,4 @@
 --極星宝メギンギョルズ
----@param c Card
 function c86827882.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

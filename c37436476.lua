@@ -1,5 +1,4 @@
 --炎熱旋風壁
----@param c Card
 function c37436476.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --守護神官マハード
----@param c Card
 function c71703785.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--special summon

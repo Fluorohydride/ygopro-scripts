@@ -1,5 +1,4 @@
 --終焉の覇王デミス
----@param c Card
 function c59913418.initial_effect(c)
 	c:EnableReviveLimit()
 	--code

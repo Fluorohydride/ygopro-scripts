@@ -1,5 +1,4 @@
 --報復の隠し歯
----@param c Card
 function c47128571.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

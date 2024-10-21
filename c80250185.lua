@@ -1,5 +1,4 @@
 --オートヴァレット・ドラゴン
----@param c Card
 function c80250185.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

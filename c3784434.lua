@@ -1,5 +1,4 @@
 --突撃ライノス
----@param c Card
 function c3784434.initial_effect(c)
 	--move
 	local e1=Effect.CreateEffect(c)

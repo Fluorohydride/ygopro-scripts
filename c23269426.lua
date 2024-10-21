@@ -1,5 +1,4 @@
 --最期の同調
----@param c Card
 function c23269426.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

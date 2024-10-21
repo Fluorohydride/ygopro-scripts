@@ -1,5 +1,4 @@
 --白き霊龍
----@param c Card
 function c45467446.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--Normal monster

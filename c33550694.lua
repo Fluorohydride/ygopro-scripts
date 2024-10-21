@@ -1,5 +1,4 @@
 --フュージョン・ゲート
----@param c Card
 function c33550694.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --風帝ライザー
----@param c Card
 function c73125233.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

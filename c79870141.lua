@@ -1,5 +1,4 @@
 --猛進する剣角獣
----@param c Card
 function c79870141.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

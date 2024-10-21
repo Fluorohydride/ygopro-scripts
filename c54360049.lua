@@ -1,5 +1,4 @@
 --カトブレパスと運命の魔女
----@param c Card
 function c54360049.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ディメンション・ゲート
----@param c Card
 function c44046281.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

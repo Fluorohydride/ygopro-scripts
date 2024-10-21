@@ -1,5 +1,4 @@
 --双天脚の鴻鵠
----@param c Card
 function c11759079.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

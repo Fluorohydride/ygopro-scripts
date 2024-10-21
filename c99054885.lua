@@ -1,5 +1,4 @@
 --破壊の代行者 ヴィーナス
----@param c Card
 function c99054885.initial_effect(c)
 	--self spsummon
 	local e1=Effect.CreateEffect(c)

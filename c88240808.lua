@@ -1,5 +1,4 @@
 --霊滅術師 カイクウ
----@param c Card
 function c88240808.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

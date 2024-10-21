@@ -1,5 +1,4 @@
 --V－LAN ヒドラ
----@param c Card
 function c13536606.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

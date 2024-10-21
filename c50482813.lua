@@ -1,5 +1,4 @@
 --SR吹持童子
----@param c Card
 function c50482813.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

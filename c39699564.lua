@@ -1,5 +1,4 @@
 --速炎星－タイヒョウ
----@param c Card
 function c39699564.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

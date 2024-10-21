@@ -1,5 +1,4 @@
 --星見鳥ラリス
----@param c Card
 function c41382147.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

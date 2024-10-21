@@ -1,5 +1,4 @@
 --黒羽の旋風
----@param c Card
 function c7602800.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--Activate

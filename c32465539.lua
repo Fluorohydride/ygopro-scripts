@@ -1,5 +1,4 @@
 --電子光虫－コクーンデンサ
----@param c Card
 function c32465539.initial_effect(c)
 	--xyzlimit
 	local e0=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --一撃必殺！居合いドロー
----@param c Card
 function c71344451.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

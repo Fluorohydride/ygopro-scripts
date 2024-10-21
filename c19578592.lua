@@ -1,5 +1,4 @@
 --愚鈍の斧
----@param c Card
 function c19578592.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

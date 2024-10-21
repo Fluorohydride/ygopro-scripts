@@ -1,5 +1,4 @@
 --DDD反骨王レオニダス
----@param c Card
 function c92536468.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

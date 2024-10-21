@@ -1,5 +1,4 @@
 --忘却の都 レミューリア
----@param c Card
 function c34103656.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

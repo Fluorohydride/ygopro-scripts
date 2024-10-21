@@ -1,5 +1,4 @@
 --ナチュル・パイナポー
----@param c Card
 function c7304544.initial_effect(c)
 	--Change race
 	local e1=Effect.CreateEffect(c)

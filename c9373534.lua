@@ -1,5 +1,4 @@
 --風魔手裏剣
----@param c Card
 function c9373534.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

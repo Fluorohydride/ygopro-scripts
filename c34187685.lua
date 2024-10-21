@@ -1,5 +1,4 @@
 --ダブルアタック
----@param c Card
 function c34187685.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

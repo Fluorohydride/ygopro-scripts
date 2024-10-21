@@ -1,5 +1,4 @@
 --炎帝テスタロス
----@param c Card
 function c26205777.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

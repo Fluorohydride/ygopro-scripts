@@ -1,5 +1,4 @@
 --悪魔の調理師
----@param c Card
 function c71107816.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --海造賊－豪速のブレンネ号
----@param c Card
 function c94253655.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

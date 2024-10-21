@@ -1,5 +1,4 @@
 --ヴァイロン・スティグマ
----@param c Card
 function c10712320.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

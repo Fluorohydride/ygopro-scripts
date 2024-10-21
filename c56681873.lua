@@ -1,5 +1,4 @@
 --魔装戦士 テライガー
----@param c Card
 function c56681873.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

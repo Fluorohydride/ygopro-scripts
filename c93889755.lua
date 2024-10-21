@@ -1,5 +1,4 @@
 --マーダーサーカス
----@param c Card
 function c93889755.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

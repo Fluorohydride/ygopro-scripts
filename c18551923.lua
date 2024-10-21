@@ -1,5 +1,4 @@
 --呪眼の死徒 メドゥサ
----@param c Card
 function c18551923.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サイバー・ボンテージ
----@param c Card
 function c63224564.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

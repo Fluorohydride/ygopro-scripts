@@ -1,5 +1,4 @@
 --黒牙の魔術師
----@param c Card
 function c75672051.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Halve ATK

@@ -1,5 +1,4 @@
 --星遺物の齎す崩界
----@param c Card
 function c36197902.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

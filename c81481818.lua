@@ -1,5 +1,4 @@
 --パッチワーク・ファーニマル
----@param c Card
 function c81481818.initial_effect(c)
 	--setcode
 	local e1=Effect.CreateEffect(c)

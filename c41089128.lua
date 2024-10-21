@@ -1,5 +1,4 @@
 --炎を支配する者
----@param c Card
 function c41089128.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

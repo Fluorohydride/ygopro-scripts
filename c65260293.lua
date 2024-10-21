@@ -1,5 +1,4 @@
 --エレメント・マジシャン
----@param c Card
 function c65260293.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

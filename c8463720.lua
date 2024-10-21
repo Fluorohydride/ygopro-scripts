@@ -1,5 +1,4 @@
 --DDD剋竜王ベオウルフ
----@param c Card
 function c8463720.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

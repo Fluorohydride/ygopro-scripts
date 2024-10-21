@@ -1,5 +1,4 @@
 --封狼雷坊
----@param c Card
 function c66722103.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

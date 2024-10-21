@@ -1,5 +1,4 @@
 --フォトン・チェンジ
----@param c Card
 function c42925441.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

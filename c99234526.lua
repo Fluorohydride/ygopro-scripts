@@ -1,5 +1,4 @@
 --輝白竜 ワイバースター
----@param c Card
 function c99234526.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

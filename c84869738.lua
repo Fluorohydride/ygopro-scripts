@@ -1,5 +1,4 @@
 --覇王の逆鱗
----@param c Card
 function c84869738.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--activate

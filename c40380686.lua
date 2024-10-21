@@ -1,5 +1,4 @@
 --ドロゴン・ベビー
----@param c Card
 function c40380686.initial_effect(c)
 	--non tuner
 	local e1=Effect.CreateEffect(c)

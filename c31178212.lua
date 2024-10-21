@@ -1,5 +1,4 @@
 --マジェスペクター・ユニコーン
----@param c Card
 function c31178212.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

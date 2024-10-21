@@ -1,5 +1,4 @@
 --転晶のコーディネラル
----@param c Card
 function c52119435.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

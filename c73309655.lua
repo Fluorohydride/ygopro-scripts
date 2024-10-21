@@ -1,5 +1,4 @@
 --清冽の水霊使いエリア
----@param c Card
 function c73309655.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c73309655.lcheck)

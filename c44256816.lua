@@ -1,5 +1,4 @@
 --独奏の第1楽章
----@param c Card
 function c44256816.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

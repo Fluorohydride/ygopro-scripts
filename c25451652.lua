@@ -1,5 +1,4 @@
 --堕天使ルシフェル
----@param c Card
 function c25451652.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

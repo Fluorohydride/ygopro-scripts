@@ -1,5 +1,4 @@
 --ロケット戦士
----@param c Card
 function c30860696.initial_effect(c)
 	--invincible
 	local e1=Effect.CreateEffect(c)

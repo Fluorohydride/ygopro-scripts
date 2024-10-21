@@ -1,5 +1,4 @@
 --妖仙獣 大幽谷響
----@param c Card
 function c69838592.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

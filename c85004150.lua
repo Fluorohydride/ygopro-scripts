@@ -1,5 +1,4 @@
 --電子光虫－ライノセバス
----@param c Card
 function c85004150.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon

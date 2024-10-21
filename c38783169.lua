@@ -1,5 +1,4 @@
 --チューン・ナイト
----@param c Card
 function c38783169.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
 	aux.EnableUnionAttribute(c,aux.TRUE)

@@ -1,5 +1,4 @@
 --ティオの蟲惑魔
----@param c Card
 function c45803070.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

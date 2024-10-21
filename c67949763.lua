@@ -1,5 +1,4 @@
 --罪鍵の法－シン・キー・ロウ
----@param c Card
 function c67949763.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

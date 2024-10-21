@@ -1,5 +1,4 @@
 --エクソシスター・ソフィア
----@param c Card
 function c5352328.initial_effect(c)
 	aux.AddCodeList(c,79858629)
 	--draw

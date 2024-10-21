@@ -1,5 +1,4 @@
 --バスター・カウンター
----@param c Card
 function c76407432.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

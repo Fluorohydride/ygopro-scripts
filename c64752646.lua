@@ -1,5 +1,4 @@
 --ビッグバンガール
----@param c Card
 function c64752646.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

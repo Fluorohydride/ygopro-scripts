@@ -1,5 +1,4 @@
 --ディーラーズ・チョイス
----@param c Card
 function c89462956.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

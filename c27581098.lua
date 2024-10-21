@@ -1,5 +1,4 @@
 --融合禁止エリア
----@param c Card
 function c27581098.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

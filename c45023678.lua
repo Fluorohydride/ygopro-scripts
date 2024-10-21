@@ -1,5 +1,4 @@
 --ライトニングパニッシャー
----@param c Card
 function c45023678.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

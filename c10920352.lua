@@ -1,5 +1,4 @@
 --M・HERO ヴェイパー
----@param c Card
 function c10920352.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

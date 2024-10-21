@@ -1,5 +1,4 @@
 --KA－2 デス・シザース
----@param c Card
 function c52768103.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

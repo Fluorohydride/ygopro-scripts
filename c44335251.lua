@@ -1,5 +1,4 @@
 --魂喰いオヴィラプター
----@param c Card
 function c44335251.initial_effect(c)
 	--to hand or grave
 	local e1=Effect.CreateEffect(c)

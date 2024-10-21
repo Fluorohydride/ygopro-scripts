@@ -1,5 +1,4 @@
 --輪廻独断
----@param c Card
 function c45064756.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エレキリギリス
----@param c Card
 function c61380658.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

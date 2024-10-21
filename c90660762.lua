@@ -1,5 +1,4 @@
 --メテオ・ブラック・ドラゴン
----@param c Card
 function c90660762.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

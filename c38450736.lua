@@ -1,5 +1,4 @@
 --甲虫装機 ウィーグ
----@param c Card
 function c38450736.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

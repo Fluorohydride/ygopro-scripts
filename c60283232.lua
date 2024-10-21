@@ -1,6 +1,5 @@
 --ホイール・シンクロン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--nontuner
 	local e1=Effect.CreateEffect(c)

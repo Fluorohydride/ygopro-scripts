@@ -1,5 +1,4 @@
 --王家の財宝
----@param c Card
 function c63571750.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DECK_REVERSE_CHECK)
 	--Activate

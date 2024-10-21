@@ -1,5 +1,4 @@
 --恵みの像
----@param c Card
 function c85166216.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --スロワースワロー
----@param c Card
 function c10505300.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

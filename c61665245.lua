@@ -1,5 +1,4 @@
 --サモン・ソーサレス
----@param c Card
 function c61665245.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,99,c61665245.lcheck)

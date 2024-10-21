@@ -1,5 +1,4 @@
 --バスター・スラッシュ
----@param c Card
 function c40012727.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

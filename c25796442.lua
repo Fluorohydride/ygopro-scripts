@@ -1,5 +1,4 @@
 --儀式の檻
----@param c Card
 function c25796442.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

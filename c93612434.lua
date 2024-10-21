@@ -1,5 +1,4 @@
 --デュアルウィール・ドラゴン
----@param c Card
 function c93612434.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

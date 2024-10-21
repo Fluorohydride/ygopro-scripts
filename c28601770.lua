@@ -1,5 +1,4 @@
 --ミストデーモン
----@param c Card
 function c28601770.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

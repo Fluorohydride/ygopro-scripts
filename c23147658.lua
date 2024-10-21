@@ -1,5 +1,4 @@
 --風化戦士
----@param c Card
 function c23147658.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--search

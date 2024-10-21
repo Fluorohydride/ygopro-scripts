@@ -1,5 +1,4 @@
 --星遺物の胎導
----@param c Card
 function c14604710.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

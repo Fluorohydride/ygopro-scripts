@@ -1,5 +1,4 @@
 --ナンバーズ・プロテクト
----@param c Card
 function c68630939.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

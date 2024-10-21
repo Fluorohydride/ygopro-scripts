@@ -1,5 +1,4 @@
 --サウザンド・アイズ・サクリファイス
----@param c Card
 function c63519819.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

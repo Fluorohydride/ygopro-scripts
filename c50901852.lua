@@ -1,5 +1,4 @@
 --機巧菟－稻羽之淤岐素
----@param c Card
 function c50901852.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

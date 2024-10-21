@@ -1,5 +1,4 @@
 --サイファー・スカウター
----@param c Card
 function c79853073.initial_effect(c)
 	--atkdef up
 	local e1=Effect.CreateEffect(c)

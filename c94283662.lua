@@ -1,5 +1,4 @@
 --トランス・デーモン
----@param c Card
 function c94283662.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

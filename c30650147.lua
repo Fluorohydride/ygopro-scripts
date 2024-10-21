@@ -1,5 +1,4 @@
 --ヴェンデット・リボーン
----@param c Card
 function c30650147.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

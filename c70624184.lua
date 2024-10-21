@@ -1,5 +1,4 @@
 --セイクリッド・ハワー
----@param c Card
 function c70624184.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --幽麗なる幻滝
----@param c Card
 function c23068051.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

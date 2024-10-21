@@ -1,5 +1,4 @@
 --黄金色の竹光
----@param c Card
 function c74029853.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

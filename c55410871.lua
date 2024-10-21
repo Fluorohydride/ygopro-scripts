@@ -1,5 +1,4 @@
 --ブルーアイズ・カオス・MAX・ドラゴン
----@param c Card
 function c55410871.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

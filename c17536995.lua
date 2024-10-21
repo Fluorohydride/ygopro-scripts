@@ -1,5 +1,4 @@
 --紋章変換
----@param c Card
 function c17536995.initial_effect(c)
 	--end battle phase
 	local e1=Effect.CreateEffect(c)

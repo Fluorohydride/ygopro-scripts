@@ -1,5 +1,4 @@
 --アルカナフォースⅣ－THE EMPEROR
----@param c Card
 function c61175706.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

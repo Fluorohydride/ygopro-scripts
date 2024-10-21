@@ -1,5 +1,4 @@
 --悪夢の蜃気楼
----@param c Card
 function c41482598.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

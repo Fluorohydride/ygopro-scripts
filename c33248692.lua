@@ -1,5 +1,4 @@
 --オプションハンター
----@param c Card
 function c33248692.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

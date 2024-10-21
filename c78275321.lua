@@ -1,5 +1,4 @@
 --赤蟻アスカトル
----@param c Card
 function c78275321.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

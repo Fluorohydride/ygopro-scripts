@@ -1,5 +1,4 @@
 --ヘイト・クレバス
----@param c Card
 function c20721759.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

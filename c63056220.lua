@@ -1,5 +1,4 @@
 --メガリス・オフィエル
----@param c Card
 function c63056220.initial_effect(c)
 	c:EnableReviveLimit()
 	--search

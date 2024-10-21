@@ -1,5 +1,4 @@
 --金華猫
----@param c Card
 function c45452224.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

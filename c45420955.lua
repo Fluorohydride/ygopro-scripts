@@ -1,5 +1,4 @@
 --迅雷の暴君 グローザー
----@param c Card
 function c45420955.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_FIEND),1)

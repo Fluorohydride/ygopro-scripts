@@ -1,5 +1,4 @@
 --妖仙獣 閻魔巳裂
----@param c Card
 function c39853199.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --暗黒界の登極
----@param c Card
 function c65956182.initial_effect(c)
 	--fusion summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --占術姫アローシルフ
----@param c Card
 function c31118030.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --獣王無塵
----@param c Card
 function c50675040.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

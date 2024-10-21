@@ -1,5 +1,4 @@
 --忍び寄る闇
----@param c Card
 function c78811937.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

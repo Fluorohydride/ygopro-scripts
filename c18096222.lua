@@ -1,5 +1,4 @@
 --デュアル・ブースター
----@param c Card
 function c18096222.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

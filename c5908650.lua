@@ -1,5 +1,4 @@
 --幻奏の音姫ローリイット・フランソワ
----@param c Card
 function c5908650.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

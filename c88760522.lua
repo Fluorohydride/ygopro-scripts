@@ -1,5 +1,4 @@
 --多様進化
----@param c Card
 function c88760522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --忍者マスター SASUKE
----@param c Card
 function c4041838.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

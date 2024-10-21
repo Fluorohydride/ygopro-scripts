@@ -1,5 +1,4 @@
 --アブソリュート・パワーフォース
----@param c Card
 function c51779204.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--activate

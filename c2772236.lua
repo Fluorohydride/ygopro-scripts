@@ -1,5 +1,4 @@
 --エレキマイラ
----@param c Card
 function c2772236.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xe),aux.NonTuner(Card.IsRace,RACE_THUNDER),1)

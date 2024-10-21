@@ -1,5 +1,4 @@
 --マッシブ・ウォリアー
----@param c Card
 function c66288028.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

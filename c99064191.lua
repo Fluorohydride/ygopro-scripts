@@ -1,5 +1,4 @@
 --エクシーズ・パニッシュ
----@param c Card
 function c99064191.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

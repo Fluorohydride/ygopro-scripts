@@ -1,5 +1,4 @@
 --アルティメット・インセクト LV3
----@param c Card
 function c34088136.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

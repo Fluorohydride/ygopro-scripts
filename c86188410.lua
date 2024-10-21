@@ -1,5 +1,4 @@
 --E・HERO ワイルドマン
----@param c Card
 function c86188410.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

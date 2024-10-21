@@ -1,5 +1,4 @@
 --変異体ミュートリア
----@param c Card
 function c26561172.initial_effect(c)
 	--self spsummon
 	local e1=Effect.CreateEffect(c)

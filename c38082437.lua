@@ -1,5 +1,4 @@
 --D・テレホン
----@param c Card
 function c38082437.initial_effect(c)
 	--speical summon
 	local e1=Effect.CreateEffect(c)

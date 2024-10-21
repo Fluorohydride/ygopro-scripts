@@ -1,5 +1,4 @@
 --H・C スパルタス
----@param c Card
 function c50491121.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

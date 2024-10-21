@@ -1,5 +1,4 @@
 --士気高揚
----@param c Card
 function c93671934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --獣人アレス
----@param c Card
 function c71395725.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

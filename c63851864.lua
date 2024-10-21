@@ -1,5 +1,4 @@
 --ブレイク・ドロー
----@param c Card
 function c63851864.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

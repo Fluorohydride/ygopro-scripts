@@ -1,5 +1,4 @@
 --鉄獣の死線
----@param c Card
 function c7889323.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

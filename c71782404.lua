@@ -1,5 +1,4 @@
 --レッドアイズ・バーン
----@param c Card
 function c71782404.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

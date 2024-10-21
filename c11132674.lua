@@ -1,5 +1,4 @@
 --ギガンティック“チャンピオン”サルガス
----@param c Card
 function c11132674.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--xyz summon

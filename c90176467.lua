@@ -1,5 +1,4 @@
 --夢魔鏡の逆徒－ネイロイ
----@param c Card
 function c90176467.initial_effect(c)
 	aux.AddCodeList(c,74665651,1050355,18189187)
 	--search

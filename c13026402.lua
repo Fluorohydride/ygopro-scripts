@@ -1,5 +1,4 @@
 --トラップ処理班 Aチーム
----@param c Card
 function c13026402.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

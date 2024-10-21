@@ -1,5 +1,4 @@
 --ZS－幻影賢者
----@param c Card
 function c51865604.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

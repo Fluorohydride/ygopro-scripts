@@ -1,5 +1,4 @@
 --ミニマム・ガッツ
----@param c Card
 function c99004752.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

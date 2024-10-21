@@ -1,5 +1,4 @@
 --闇黒世界－シャドウ・ディストピア－
----@param c Card
 function c59160188.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

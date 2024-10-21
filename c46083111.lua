@@ -1,5 +1,4 @@
 --クローラー・デンドライト
----@param c Card
 function c46083111.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

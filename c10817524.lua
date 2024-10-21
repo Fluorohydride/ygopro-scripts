@@ -1,5 +1,4 @@
 --始祖竜ワイアーム
----@param c Card
 function c10817524.initial_effect(c)
 	c:SetUniqueOnField(1,0,10817524)
 	--fusion material

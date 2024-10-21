@@ -1,5 +1,4 @@
 --ダイノルフィア・ケントレギナ
----@param c Card
 function c48832775.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c48832775.ffilter,2,true)

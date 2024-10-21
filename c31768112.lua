@@ -1,5 +1,4 @@
 --オイルメン
----@param c Card
 function c31768112.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

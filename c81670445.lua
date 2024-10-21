@@ -1,5 +1,4 @@
 --クロノダイバー・ハック
----@param c Card
 function c81670445.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

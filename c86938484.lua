@@ -1,5 +1,4 @@
 --シャドール・ネフィリム
----@param c Card
 function c86938484.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_FLIP),2,2)

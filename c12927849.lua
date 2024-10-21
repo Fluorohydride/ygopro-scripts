@@ -1,5 +1,4 @@
 --SZW－天聖輝狼剣
----@param c Card
 function c12927849.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

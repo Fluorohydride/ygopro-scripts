@@ -1,5 +1,4 @@
 --BF－空風のジン
----@param c Card
 function c38562933.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

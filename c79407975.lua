@@ -1,5 +1,4 @@
 --究極宝玉神 レインボー・ダーク・ドラゴン
----@param c Card
 function c79407975.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

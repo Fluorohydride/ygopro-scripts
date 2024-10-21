@@ -1,5 +1,4 @@
 --絶火の大賢者ゾロア
----@param c Card
 function c36099130.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

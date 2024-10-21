@@ -1,5 +1,4 @@
 --先史遺産マッドゴーレム・シャコウキ
----@param c Card
 function c67559101.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --炎渦の胎動
----@param c Card
 function c86690572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --烙印竜アルビオン
----@param c Card
 function c87746184.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

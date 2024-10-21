@@ -1,5 +1,4 @@
 --棺桶売り
----@param c Card
 function c65830223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

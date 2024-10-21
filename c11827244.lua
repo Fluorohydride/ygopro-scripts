@@ -1,5 +1,4 @@
 --円融魔術
----@param c Card
 function c11827244.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

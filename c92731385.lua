@@ -1,5 +1,4 @@
 --ティアラメンツ・キトカロス
----@param c Card
 function c92731385.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x181),aux.FilterBoolFunction(Card.IsRace,RACE_AQUA),true)

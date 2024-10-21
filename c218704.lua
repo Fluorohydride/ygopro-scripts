@@ -1,5 +1,4 @@
 --フェンリル
----@param c Card
 function c218704.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

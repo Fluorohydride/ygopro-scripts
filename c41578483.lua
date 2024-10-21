@@ -1,5 +1,4 @@
 --ミレニアム・アイズ・サクリファイス
----@param c Card
 function c41578483.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --ハーピィ・パフューマー
----@param c Card
 function c39392286.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--search

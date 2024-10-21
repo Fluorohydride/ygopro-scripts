@@ -1,5 +1,4 @@
 --スレイブパンサー
----@param c Card
 function c66863374.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c66863374.lcheck)

@@ -1,5 +1,4 @@
 --海造賊－金髪の訓練生
----@param c Card
 function c81344070.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

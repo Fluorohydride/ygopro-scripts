@@ -1,5 +1,4 @@
 --烙印の裁き
----@param c Card
 function c93595154.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

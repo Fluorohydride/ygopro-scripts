@@ -1,5 +1,4 @@
 --EMバラード
----@param c Card
 function c66768175.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

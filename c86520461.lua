@@ -1,5 +1,4 @@
 --新生代化石騎士 スカルポーン
----@param c Card
 function c86520461.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

@@ -1,5 +1,4 @@
 --白闘気白鯨
----@param c Card
 function c5614808.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WATER),1)

@@ -1,5 +1,4 @@
 --アームド・ドラゴン LV7
----@param c Card
 function c73879377.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

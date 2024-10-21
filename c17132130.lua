@@ -1,5 +1,4 @@
 --D-HERO ドグマガイ
----@param c Card
 function c17132130.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

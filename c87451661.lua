@@ -1,6 +1,5 @@
 --スカーレッド・デーモン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)

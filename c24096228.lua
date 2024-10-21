@@ -1,5 +1,4 @@
 --二重魔法
----@param c Card
 function c24096228.initial_effect(c)
 	--copy spell
 	local e1=Effect.CreateEffect(c)

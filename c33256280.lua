@@ -1,5 +1,4 @@
 --メタルフォーゼ・ゴルドライバー
----@param c Card
 function c33256280.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

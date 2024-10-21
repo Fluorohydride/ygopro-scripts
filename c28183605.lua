@@ -1,5 +1,4 @@
 --ドラグニティ－ドゥクス
----@param c Card
 function c28183605.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

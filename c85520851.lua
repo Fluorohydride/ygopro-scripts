@@ -1,5 +1,4 @@
 --超伝導恐獣
----@param c Card
 function c85520851.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

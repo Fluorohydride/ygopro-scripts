@@ -1,5 +1,4 @@
 --グリーディー・ヴェノム・フュージョン・ドラゴン
----@param c Card
 function c51570882.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

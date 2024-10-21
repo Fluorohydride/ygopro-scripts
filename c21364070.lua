@@ -1,5 +1,4 @@
 --魔妖仙獣 独眼群主
----@param c Card
 function c21364070.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

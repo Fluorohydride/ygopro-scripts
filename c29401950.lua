@@ -1,5 +1,4 @@
 --奈落の落とし穴
----@param c Card
 function c29401950.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

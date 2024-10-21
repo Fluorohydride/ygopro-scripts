@@ -1,5 +1,4 @@
 --堕天使アムドゥシアス
----@param c Card
 function c51728779.initial_effect(c)
 	c:SetSPSummonOnce(51728779)
 	--to hand

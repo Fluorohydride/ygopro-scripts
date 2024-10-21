@@ -1,5 +1,4 @@
 --地雷蜘蛛
----@param c Card
 function c94773007.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヴェノム・スネーク
----@param c Card
 function c73899015.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --アストラル・クリボー
----@param c Card
 function c64591429.initial_effect(c)
 	--sp summon
 	local e1=Effect.CreateEffect(c)

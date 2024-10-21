@@ -1,5 +1,4 @@
 --海竜神の激昂
----@param c Card
 function c98804359.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

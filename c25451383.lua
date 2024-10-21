@@ -1,5 +1,4 @@
 --黒衣竜アルビオン
----@param c Card
 function c25451383.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)

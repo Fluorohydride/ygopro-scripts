@@ -1,5 +1,4 @@
 --イビリチュア・メロウガイスト
----@param c Card
 function c76372778.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

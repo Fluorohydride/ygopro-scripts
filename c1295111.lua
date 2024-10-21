@@ -1,5 +1,4 @@
 --転生炎獣の聖域
----@param c Card
 function c1295111.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

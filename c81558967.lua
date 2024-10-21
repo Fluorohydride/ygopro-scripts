@@ -1,5 +1,4 @@
 --ワルキューレ・フィアット
----@param c Card
 function c81558967.initial_effect(c)
 	--deck search
 	local e1=Effect.CreateEffect(c)

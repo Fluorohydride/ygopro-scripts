@@ -1,5 +1,4 @@
 --マジキャット
----@param c Card
 function c25531465.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

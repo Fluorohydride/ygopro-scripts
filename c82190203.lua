@@ -1,5 +1,4 @@
 --光翼の竜
----@param c Card
 function c82190203.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--activate

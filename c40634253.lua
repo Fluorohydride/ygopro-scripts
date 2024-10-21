@@ -1,5 +1,4 @@
 --BM－4ボムスパイダー
----@param c Card
 function c40634253.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

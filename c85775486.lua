@@ -1,5 +1,4 @@
 --再機動
----@param c Card
 function c85775486.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

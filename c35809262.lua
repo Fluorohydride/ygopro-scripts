@@ -1,5 +1,4 @@
 --E・HERO フレイム・ウィングマン
----@param c Card
 function c35809262.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

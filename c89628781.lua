@@ -1,5 +1,4 @@
 --忍法 空蝉の術
----@param c Card
 function c89628781.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヴァリアンツM－マーキス
----@param c Card
 function c87897777.initial_effect(c)
 	aux.AddCodeList(c,75952542)
 	--pendulum summon

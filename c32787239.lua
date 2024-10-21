@@ -1,5 +1,4 @@
 --EMラ・パンダ
----@param c Card
 function c32787239.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

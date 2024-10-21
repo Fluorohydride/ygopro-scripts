@@ -1,5 +1,4 @@
 --妖仙獣の神颪
----@param c Card
 function c61884774.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --デストーイ・チェーン・シープ
----@param c Card
 function c57477163.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

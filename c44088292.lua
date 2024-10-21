@@ -1,5 +1,4 @@
 --進化合獣ダイオーキシン
----@param c Card
 function c44088292.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--cannot disable summon

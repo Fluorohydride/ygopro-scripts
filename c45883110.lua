@@ -1,5 +1,4 @@
 --導きの聖女クエム
----@param c Card
 function c45883110.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--to grave
