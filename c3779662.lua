@@ -2,7 +2,7 @@
 ---@param c Card
 function c3779662.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,7573135,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),2,true,true)
+	aux.AddFusionProcCodeFun(c,7573135,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1019),2,true,true)
 	aux.AddContactFusionProcedure(c,c3779662.cfilter,LOCATION_ONFIELD,0,aux.tdcfop(c)):SetValue(SUMMON_VALUE_SELF)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -39,7 +39,7 @@ function c3779662.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c3779662.cfilter(c)
-	return (c:IsFusionCode(7573135) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
+	return (c:IsFusionCode(7573135) or c:IsFusionSetCard(0x1019) and c:IsType(TYPE_MONSTER))
 		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c3779662.espcon(e,tp,eg,ep,ev,re,r,rp)

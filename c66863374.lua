@@ -29,7 +29,7 @@ function c66863374.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66863374.lcheck(g,lc)
-	return g:IsExists(Card.IsLinkSetCard,1,nil,0x19)
+	return g:IsExists(Card.IsLinkSetCard,1,nil,0x1019)
 end
 function c66863374.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

@@ -42,7 +42,7 @@ function c30864377.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c30864377.matfilter(c)
-	return c:IsLevelAbove(5) and c:IsFusionSetCard(0x19)
+	return c:IsLevelAbove(5) and c:IsFusionSetCard(0x1019)
 end
 function c30864377.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
