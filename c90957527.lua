@@ -74,7 +74,7 @@ function c90957527.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c90957527.filter(c,e,tp)
-	return not c:IsCode(79580323) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(79580323) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c90957527.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
