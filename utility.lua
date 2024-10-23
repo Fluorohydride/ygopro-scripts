@@ -863,7 +863,7 @@ end
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
-	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
+	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x1019))
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
