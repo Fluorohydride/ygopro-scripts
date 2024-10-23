@@ -1,5 +1,4 @@
 --霊廟の守護者
----@param c Card
 function c66752837.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

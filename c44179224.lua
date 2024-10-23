@@ -1,5 +1,4 @@
 --魔界劇団カーテン・ライザー
----@param c Card
 function c44179224.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

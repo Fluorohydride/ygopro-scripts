@@ -1,5 +1,4 @@
 --スピリットの誘い
----@param c Card
 function c92394653.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

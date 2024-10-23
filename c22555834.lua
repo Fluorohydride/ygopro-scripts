@@ -1,5 +1,4 @@
 --魔轟神界の階
----@param c Card
 function c22555834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --カブキ・ドラゴン
----@param c Card
 function c7541475.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --墓穴の指名者
----@param c Card
 function c24224830.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

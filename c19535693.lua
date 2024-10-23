@@ -1,5 +1,4 @@
 --No－P.U.N.K.セアミン
----@param c Card
 function c19535693.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

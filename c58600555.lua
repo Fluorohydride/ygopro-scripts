@@ -1,5 +1,4 @@
 --電子光虫－コアベージ
----@param c Card
 function c58600555.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon

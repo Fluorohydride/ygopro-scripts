@@ -1,5 +1,4 @@
 --D-HERO ディストピアガイ
----@param c Card
 function c90579153.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

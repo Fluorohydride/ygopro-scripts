@@ -1,5 +1,4 @@
 --執念深き老魔術師
----@param c Card
 function c45141844.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

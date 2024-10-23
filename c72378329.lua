@@ -1,5 +1,4 @@
 --ビーストアイズ・ペンデュラム・ドラゴン
----@param c Card
 function c72378329.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

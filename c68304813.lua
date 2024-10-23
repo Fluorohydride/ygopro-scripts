@@ -1,5 +1,4 @@
 --冥界の宝札
----@param c Card
 function c68304813.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

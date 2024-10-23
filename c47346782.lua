@@ -1,5 +1,4 @@
 --寝ガエル
----@param c Card
 function c47346782.initial_effect(c)
 	--cannot material
 	local e1=Effect.CreateEffect(c)

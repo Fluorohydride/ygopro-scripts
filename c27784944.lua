@@ -1,5 +1,4 @@
 --極天気ランブラ
----@param c Card
 function c27784944.initial_effect(c)
 	--place
 	local e1=Effect.CreateEffect(c)

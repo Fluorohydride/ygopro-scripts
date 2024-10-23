@@ -1,5 +1,4 @@
 --オールド・マインド
----@param c Card
 function c54239282.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

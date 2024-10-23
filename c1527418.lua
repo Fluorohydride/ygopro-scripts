@@ -1,5 +1,4 @@
 --空牙団の叡智 ウィズ
----@param c Card
 function c1527418.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

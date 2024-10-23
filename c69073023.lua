@@ -1,5 +1,4 @@
 --無限起動要塞メガトンゲイル
----@param c Card
 function c69073023.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_XYZ),3,3)

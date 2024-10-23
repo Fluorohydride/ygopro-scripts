@@ -1,5 +1,4 @@
 --ファイアウォール・ドラゴン・ダークフルード
----@param c Card
 function c68934651.initial_effect(c)
 	c:EnableCounterPermit(0x52)
 	--link summon

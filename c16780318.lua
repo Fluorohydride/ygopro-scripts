@@ -1,5 +1,4 @@
 --超勝負！
----@param c Card
 function c16780318.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

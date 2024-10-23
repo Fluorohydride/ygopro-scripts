@@ -1,5 +1,4 @@
 --呪われた棺
----@param c Card
 function c1804528.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

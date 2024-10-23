@@ -1,5 +1,4 @@
 --DDバフォメット
----@param c Card
 function c19808608.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

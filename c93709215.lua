@@ -1,5 +1,4 @@
 --ダークネス・デストロイヤー
----@param c Card
 function c93709215.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

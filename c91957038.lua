@@ -1,5 +1,4 @@
 --妖精の伝姫
----@param c Card
 function c91957038.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

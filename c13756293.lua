@@ -1,5 +1,4 @@
 --竜魔人 キングドラグーン
----@param c Card
 function c13756293.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

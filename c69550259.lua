@@ -1,5 +1,4 @@
 --SRブロックンロール
----@param c Card
 function c69550259.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

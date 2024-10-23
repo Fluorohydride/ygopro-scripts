@@ -1,5 +1,4 @@
 --苦渋の決断
----@param c Card
 function c1033312.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

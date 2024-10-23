@@ -1,5 +1,4 @@
 --ダーク・ジェノサイド・カッター
----@param c Card
 function c41722932.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ネフティスの祀り手
----@param c Card
 function c88176533.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon (deck)

@@ -1,5 +1,4 @@
 --No.57 奮迅竜トレスラグーン
----@param c Card
 function c53244294.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

@@ -1,5 +1,4 @@
 --カラクリ大将軍 無零怒
----@param c Card
 function c66976526.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_MACHINE),1)

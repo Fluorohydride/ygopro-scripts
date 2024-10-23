@@ -1,5 +1,4 @@
 --凶導の白騎士
----@param c Card
 function c40352445.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

@@ -1,5 +1,4 @@
 --捕食植物ヴェルテ・アナコンダ
----@param c Card
 function c70369116.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

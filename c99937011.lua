@@ -1,5 +1,4 @@
 --剣神官ムドラ
----@param c Card
 function c99937011.initial_effect(c)
 	aux.AddCodeList(c,17484499)
 	--spsummon

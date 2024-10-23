@@ -1,5 +1,4 @@
 --Ai－コンタクト
----@param c Card
 function c10493654.initial_effect(c)
 	aux.AddCodeList(c,59054773)
 	--activate

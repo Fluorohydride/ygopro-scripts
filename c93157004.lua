@@ -1,5 +1,4 @@
 --ヴァイロン・オメガ
----@param c Card
 function c93157004.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(Card.IsSetCard,0x30),1,1)

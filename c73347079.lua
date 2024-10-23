@@ -1,5 +1,4 @@
 --RR－フォース・ストリクス
----@param c Card
 function c73347079.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

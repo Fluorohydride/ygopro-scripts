@@ -1,5 +1,4 @@
 --剛鬼ヘルトレーナー
----@param c Card
 function c93581434.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

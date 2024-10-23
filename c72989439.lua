@@ -1,5 +1,4 @@
 --カオス・ソルジャー －開闢の使者－
----@param c Card
 function c72989439.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

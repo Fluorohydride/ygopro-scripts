@@ -1,5 +1,4 @@
 --ガスタの神裔 ピリカ
----@param c Card
 function c71175527.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --絶火の竜神ヴァフラム
----@param c Card
 function c61272280.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

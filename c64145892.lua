@@ -1,5 +1,4 @@
 --フォトン・サークラー
----@param c Card
 function c64145892.initial_effect(c)
 	--damage reduce
 	local e1=Effect.CreateEffect(c)

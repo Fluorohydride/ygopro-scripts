@@ -1,5 +1,4 @@
 --ウィッチクラフト・クリエイション
----@param c Card
 function c57916305.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

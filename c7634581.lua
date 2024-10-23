@@ -1,5 +1,4 @@
 --オレイカルコス・シュノロス
----@param c Card
 function c7634581.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,5 +1,4 @@
 --HEROの遺産
----@param c Card
 function c25614410.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

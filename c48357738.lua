@@ -1,5 +1,4 @@
 --暴君の暴飲暴食
----@param c Card
 function c48357738.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

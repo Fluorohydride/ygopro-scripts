@@ -1,5 +1,4 @@
 --ジャックポット7
----@param c Card
 function c81171949.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

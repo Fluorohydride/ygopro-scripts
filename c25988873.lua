@@ -1,5 +1,4 @@
 --ドラグニティ－パルチザン
----@param c Card
 function c25988873.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

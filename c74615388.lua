@@ -1,6 +1,5 @@
 --影の王 レイヴァーテイン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:SetUniqueOnField(1,0,id)
 	--xyz summon

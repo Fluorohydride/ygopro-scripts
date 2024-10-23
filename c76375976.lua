@@ -1,5 +1,4 @@
 --魔鍾洞
----@param c Card
 function c76375976.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

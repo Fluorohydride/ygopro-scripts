@@ -1,5 +1,4 @@
 --エヴォルダー・エリアス
----@param c Card
 function c23234094.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ファイヤークラッカー
----@param c Card
 function c81109178.initial_effect(c)
 	c:EnableCounterPermit(0x42)
 	--damage

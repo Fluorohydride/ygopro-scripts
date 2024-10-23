@@ -1,5 +1,4 @@
 --魂の一撃
----@param c Card
 function c36376145.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

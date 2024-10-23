@@ -1,5 +1,4 @@
 --賢者の宝石
----@param c Card
 function c13604200.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--Activate

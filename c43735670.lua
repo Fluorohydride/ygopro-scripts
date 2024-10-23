@@ -1,5 +1,4 @@
 --海晶乙女ブルースラッグ
----@param c Card
 function c43735670.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c43735670.mfilter,1,1)

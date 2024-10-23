@@ -1,5 +1,4 @@
 --機関連結
----@param c Card
 function c60879050.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

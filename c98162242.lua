@@ -1,5 +1,4 @@
 --ニードルバンカー
----@param c Card
 function c98162242.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

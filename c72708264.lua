@@ -1,5 +1,4 @@
 --EMボットアイズ・リザード
----@param c Card
 function c72708264.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)

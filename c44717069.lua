@@ -1,5 +1,4 @@
 --スターフィッシュ
----@param c Card
 function c44717069.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

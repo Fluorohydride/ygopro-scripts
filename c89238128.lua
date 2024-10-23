@@ -1,5 +1,4 @@
 --サイバース・アクセラレーター
----@param c Card
 function c89238128.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2)

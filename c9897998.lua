@@ -1,5 +1,4 @@
 --ガスタ・コドル
----@param c Card
 function c9897998.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

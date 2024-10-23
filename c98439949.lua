@@ -1,5 +1,4 @@
 --無限起動キャンサークレーン
----@param c Card
 function c98439949.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

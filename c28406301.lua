@@ -1,5 +1,4 @@
 --DDグリフォン
----@param c Card
 function c28406301.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

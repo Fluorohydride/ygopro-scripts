@@ -1,5 +1,4 @@
 --破邪の大剣－バオウ
----@param c Card
 function c68427465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

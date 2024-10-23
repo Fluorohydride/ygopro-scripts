@@ -1,5 +1,4 @@
 --ハイ・キューピット
----@param c Card
 function c11851647.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

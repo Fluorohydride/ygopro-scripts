@@ -1,5 +1,4 @@
 --巨神封じの矢
----@param c Card
 function c67037924.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

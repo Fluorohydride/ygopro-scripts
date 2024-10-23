@@ -1,5 +1,4 @@
 --衛生兵マッスラー
----@param c Card
 function c4848423.initial_effect(c)
 	--damage conversion
 	local e1=Effect.CreateEffect(c)

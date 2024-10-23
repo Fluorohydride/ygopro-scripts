@@ -1,5 +1,4 @@
 --聖騎士の槍持ち
----@param c Card
 function c7721912.initial_effect(c)
 	--tuner
 	local e1=Effect.CreateEffect(c)

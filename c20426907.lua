@@ -1,5 +1,4 @@
 --機殻の再星
----@param c Card
 function c20426907.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--Activate

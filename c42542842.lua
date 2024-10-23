@@ -1,5 +1,4 @@
 --麗の魔妖－妲姫
----@param c Card
 function c42542842.initial_effect(c)
 	c:SetUniqueOnField(1,0,42542842)
 	--special summon

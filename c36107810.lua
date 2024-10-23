@@ -1,5 +1,4 @@
 --ナイトエンド・ソーサラー
----@param c Card
 function c36107810.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

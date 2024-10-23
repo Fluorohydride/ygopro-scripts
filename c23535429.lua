@@ -1,5 +1,4 @@
 --牙城のガーディアン
----@param c Card
 function c23535429.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)

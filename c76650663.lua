@@ -1,5 +1,4 @@
 --A・O・J ブラインド・サッカー
----@param c Card
 function c76650663.initial_effect(c)
 	--Disable
 	local e1=Effect.CreateEffect(c)

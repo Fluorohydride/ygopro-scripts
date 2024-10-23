@@ -1,5 +1,4 @@
 --V・HERO アドレイション
----@param c Card
 function c45170821.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

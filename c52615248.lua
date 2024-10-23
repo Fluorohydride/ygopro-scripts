@@ -1,5 +1,4 @@
 --プログレオ
----@param c Card
 function c52615248.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

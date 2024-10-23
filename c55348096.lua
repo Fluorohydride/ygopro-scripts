@@ -1,5 +1,4 @@
 --武器庫荒らし
----@param c Card
 function c55348096.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ムーンダンスの儀式
----@param c Card
 function c14005031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

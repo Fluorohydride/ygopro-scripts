@@ -1,5 +1,4 @@
 --ナチュル・スティンクバグ
----@param c Card
 function c25866285.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

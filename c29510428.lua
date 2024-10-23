@@ -1,6 +1,5 @@
 --召煌女クインクエリ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

@@ -1,5 +1,4 @@
 --真竜拳士ダイナマイトK
----@param c Card
 function c58984738.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)

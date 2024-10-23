@@ -1,5 +1,4 @@
 --リバース・バスター
----@param c Card
 function c90640901.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

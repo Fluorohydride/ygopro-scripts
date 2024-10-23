@@ -1,5 +1,4 @@
 --ジェムナイト・アレキサンド
----@param c Card
 function c90019393.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

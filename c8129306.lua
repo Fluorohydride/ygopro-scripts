@@ -1,5 +1,4 @@
 --六花精プリム
----@param c Card
 function c8129306.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

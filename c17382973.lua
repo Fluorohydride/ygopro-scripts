@@ -1,5 +1,4 @@
 --プランキッズ・ドゥードゥル
----@param c Card
 function c17382973.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x120),2)

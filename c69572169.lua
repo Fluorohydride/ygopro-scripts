@@ -1,5 +1,4 @@
 --E・HERO フラッシュ
----@param c Card
 function c69572169.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

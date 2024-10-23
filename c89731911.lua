@@ -1,5 +1,4 @@
 --ファミリア・ナイト
----@param c Card
 function c89731911.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

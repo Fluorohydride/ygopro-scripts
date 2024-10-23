@@ -1,5 +1,4 @@
 --ガスタの賢者 ウィンダール
----@param c Card
 function c27944249.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

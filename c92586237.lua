@@ -1,5 +1,4 @@
 --武神－マヒトツ
----@param c Card
 function c92586237.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

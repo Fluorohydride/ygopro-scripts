@@ -1,5 +1,4 @@
 --テイ・キューピット
----@param c Card
 function c1566817.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

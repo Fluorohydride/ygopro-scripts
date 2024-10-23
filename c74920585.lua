@@ -1,5 +1,4 @@
 --壱世壊に奏でる哀唱
----@param c Card
 function c74920585.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

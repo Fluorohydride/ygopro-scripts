@@ -1,5 +1,4 @@
 --ドラゴンメイド・フルス
----@param c Card
 function c49575521.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

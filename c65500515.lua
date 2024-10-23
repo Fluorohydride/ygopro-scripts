@@ -1,5 +1,4 @@
 --隅烏賊
----@param c Card
 function c65500515.initial_effect(c)
 	--move
 	local e1=Effect.CreateEffect(c)

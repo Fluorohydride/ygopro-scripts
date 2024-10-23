@@ -1,5 +1,4 @@
 --マジック・キャプチャー
----@param c Card
 function c76137276.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

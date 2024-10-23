@@ -1,5 +1,4 @@
 --黒竜降臨
----@param c Card
 function c18803791.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,71408082)
 	--to hand

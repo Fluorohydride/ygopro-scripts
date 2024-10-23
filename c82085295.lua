@@ -1,5 +1,4 @@
 --魔神儀－ペンシルベル
----@param c Card
 function c82085295.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

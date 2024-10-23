@@ -1,5 +1,4 @@
 --セフィラの星戦
----@param c Card
 function c96073342.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

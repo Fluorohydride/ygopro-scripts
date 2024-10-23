@@ -1,5 +1,4 @@
 --ヒロイック・ギフト
----@param c Card
 function c95920682.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

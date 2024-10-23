@@ -1,5 +1,4 @@
 --幻創のミセラサウルス
----@param c Card
 function c38572779.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

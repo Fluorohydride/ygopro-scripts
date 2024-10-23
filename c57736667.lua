@@ -1,5 +1,4 @@
 --御巫舞踊－迷わし鳥
----@param c Card
 function c57736667.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

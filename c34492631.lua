@@ -1,5 +1,4 @@
 --ジャンク・ジャイアント
----@param c Card
 function c34492631.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ドリル・ウォリアー
----@param c Card
 function c3429238.initial_effect(c)
 	aux.AddMaterialCodeList(c,56286179)
 	--synchro summon

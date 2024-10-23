@@ -1,5 +1,4 @@
 --アップル・マジシャン・ガール
----@param c Card
 function c56132807.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

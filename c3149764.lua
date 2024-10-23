@@ -1,5 +1,4 @@
 --ツタン仮面
----@param c Card
 function c3149764.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

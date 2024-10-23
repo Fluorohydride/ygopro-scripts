@@ -1,5 +1,4 @@
 --アクションマジック－ダブル・バンキング
----@param c Card
 function c35498188.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

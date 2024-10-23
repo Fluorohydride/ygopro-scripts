@@ -1,5 +1,4 @@
 --アーマー・カッパー
----@param c Card
 function c50789693.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

@@ -1,5 +1,4 @@
 --極星宝ブリージンガ・メン
----@param c Card
 function c42793609.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

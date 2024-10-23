@@ -1,5 +1,4 @@
 --RR－トリビュート・レイニアス
----@param c Card
 function c83236601.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

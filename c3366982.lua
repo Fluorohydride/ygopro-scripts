@@ -1,5 +1,4 @@
 --ドラゴンに乗るワイバーン
----@param c Card
 function c3366982.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --魔界劇団－ワイルド・ホープ
----@param c Card
 function c51391183.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

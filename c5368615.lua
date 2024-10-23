@@ -1,5 +1,4 @@
 --スチームジャイロイド
----@param c Card
 function c5368615.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

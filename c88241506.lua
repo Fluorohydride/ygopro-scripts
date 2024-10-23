@@ -1,5 +1,4 @@
 --青き眼の乙女
----@param c Card
 function c88241506.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--negate attack

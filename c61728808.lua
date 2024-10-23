@@ -1,5 +1,4 @@
 --ヘビーメタルフォーゼ・アマルガム
----@param c Card
 function c61728808.initial_effect(c)
 	--(0) Link Summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xe1),2,2)

@@ -1,5 +1,4 @@
 --幻想召喚師
----@param c Card
 function c14644902.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

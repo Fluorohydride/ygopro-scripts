@@ -1,5 +1,4 @@
 --ペインペインター
----@param c Card
 function c21620076.initial_effect(c)
 	--alias
 	aux.EnableChangeCode(c,33420078)

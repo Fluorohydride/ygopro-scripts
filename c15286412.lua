@@ -1,5 +1,4 @@
 --極星宝グングニル
----@param c Card
 function c15286412.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

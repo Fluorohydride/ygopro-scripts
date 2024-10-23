@@ -1,5 +1,4 @@
 --メルフィー・ワラビィ
----@param c Card
 function c98416533.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --マジシャンズ・エイプ
----@param c Card
 function c31975743.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

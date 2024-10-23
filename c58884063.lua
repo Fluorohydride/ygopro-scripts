@@ -1,6 +1,5 @@
 --GP－Nブラスター
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,59900655)
 	--link summon

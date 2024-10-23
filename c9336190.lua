@@ -1,5 +1,4 @@
 --幻影騎士団ミストクロウズ
----@param c Card
 function c9336190.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

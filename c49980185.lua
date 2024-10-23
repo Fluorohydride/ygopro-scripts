@@ -1,5 +1,4 @@
 --超能力治療
----@param c Card
 function c49980185.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

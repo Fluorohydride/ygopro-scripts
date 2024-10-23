@@ -1,5 +1,4 @@
 --真紅眼の黒竜剣
----@param c Card
 function c19747827.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

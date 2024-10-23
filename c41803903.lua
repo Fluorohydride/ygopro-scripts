@@ -1,5 +1,4 @@
 --魔界台本「ロマンティック・テラー」
----@param c Card
 function c41803903.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

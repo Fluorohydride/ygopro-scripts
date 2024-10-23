@@ -1,5 +1,4 @@
 --ダイノルフィア・インタクト
----@param c Card
 function c7336745.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

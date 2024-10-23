@@ -1,5 +1,4 @@
 --VS 龍帝ヴァリウス
----@param c Card
 function c91073013.initial_effect(c)
 	--return and spsummon
 	local e1=Effect.CreateEffect(c)

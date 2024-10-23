@@ -1,5 +1,4 @@
 --H・C クラスプ・ナイフ
----@param c Card
 function c28194325.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

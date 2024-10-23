@@ -1,5 +1,4 @@
 --花札衛－桜に幕－
----@param c Card
 function c5489987.initial_effect(c)
 	c:EnableReviveLimit()
 	--draw

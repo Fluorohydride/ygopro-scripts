@@ -1,5 +1,4 @@
 --進化する人類
----@param c Card
 function c62991886.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

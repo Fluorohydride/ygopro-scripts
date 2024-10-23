@@ -1,5 +1,4 @@
 --サイバース・クロック・ドラゴン
----@param c Card
 function c42717221.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

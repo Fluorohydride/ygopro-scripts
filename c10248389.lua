@@ -1,5 +1,4 @@
 --サイバー・ブレイダー
----@param c Card
 function c10248389.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

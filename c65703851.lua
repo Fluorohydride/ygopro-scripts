@@ -1,5 +1,4 @@
 --透破抜き
----@param c Card
 function c65703851.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

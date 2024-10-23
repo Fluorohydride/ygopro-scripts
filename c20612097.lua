@@ -1,5 +1,4 @@
 --紅き血染めのエルドリクシル
----@param c Card
 function c20612097.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --PSYフレームギア・γ
----@param c Card
 function c38814750.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

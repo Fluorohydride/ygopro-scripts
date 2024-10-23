@@ -1,5 +1,4 @@
 --早すぎた埋葬
----@param c Card
 function c70828912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

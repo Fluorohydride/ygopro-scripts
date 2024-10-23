@@ -1,5 +1,4 @@
 --アイアンコール
----@param c Card
 function c64662453.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

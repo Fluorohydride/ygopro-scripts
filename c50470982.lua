@@ -1,5 +1,4 @@
 --運命の分かれ道
----@param c Card
 function c50470982.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

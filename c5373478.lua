@@ -1,5 +1,4 @@
 --サイバー・ドラゴン・ツヴァイ
----@param c Card
 function c5373478.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

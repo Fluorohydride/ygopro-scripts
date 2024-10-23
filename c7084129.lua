@@ -1,5 +1,4 @@
 --マジシャンズ・ロッド
----@param c Card
 function c7084129.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--search

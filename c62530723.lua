@@ -1,5 +1,4 @@
 --星遺物の囁き
----@param c Card
 function c62530723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

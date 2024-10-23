@@ -1,5 +1,4 @@
 --RR－レヴォリューション・ファルコン－エアレイド
----@param c Card
 function c79985120.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WINDBEAST),6,3,c79985120.ovfilter,aux.Stringid(79985120,0),3,c79985120.xyzop)

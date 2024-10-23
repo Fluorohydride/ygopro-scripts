@@ -1,5 +1,4 @@
 --レッドポータン
----@param c Card
 function c16001119.initial_effect(c)
 	--tuner
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --フリント・クラッガー
----@param c Card
 function c84778110.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--tograve

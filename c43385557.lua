@@ -1,5 +1,4 @@
 --マジカル・アンドロイド
----@param c Card
 function c43385557.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

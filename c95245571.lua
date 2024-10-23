@@ -1,5 +1,4 @@
 --肆世壊の双牙
----@param c Card
 function c95245571.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

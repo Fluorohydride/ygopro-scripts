@@ -1,5 +1,4 @@
 --超重武者ワカ－O2
----@param c Card
 function c41628550.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

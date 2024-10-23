@@ -1,5 +1,4 @@
 --リバース・オブ・ザ・ワールド
----@param c Card
 function c95612049.initial_effect(c)
 	--Activate
 	local e1=aux.AddRitualProcGreater2Code2(c,46427957,72426662,LOCATION_HAND+LOCATION_DECK,nil,c95612049.mfilter,true)

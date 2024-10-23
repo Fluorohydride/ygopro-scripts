@@ -1,5 +1,4 @@
 --アーティファクト－ダグザ
----@param c Card
 function c7480763.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c7480763.lcheck)

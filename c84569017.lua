@@ -1,5 +1,4 @@
 --スピアフィッシュソルジャー
----@param c Card
 function c84569017.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --フレムベル・グルニカ
----@param c Card
 function c77372241.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

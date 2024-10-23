@@ -1,5 +1,4 @@
 --ラーバモス
----@param c Card
 function c87756343.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,5 +1,4 @@
 --炎雄爆誕
----@param c Card
 function c5439384.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

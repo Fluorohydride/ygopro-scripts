@@ -1,5 +1,4 @@
 --はがねの甲羅
----@param c Card
 function c2370081.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --超重武者装留ブレイク・アーマー
----@param c Card
 function c77679716.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

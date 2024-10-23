@@ -1,5 +1,4 @@
 --コピー・プラント
----@param c Card
 function c66457407.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

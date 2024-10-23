@@ -1,5 +1,4 @@
 --ZS－武装賢者
----@param c Card
 function c68258355.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

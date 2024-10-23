@@ -1,5 +1,4 @@
 --L・G・D
----@param c Card
 function c10669138.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

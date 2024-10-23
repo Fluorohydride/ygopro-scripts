@@ -1,5 +1,4 @@
 --完全防音壁
----@param c Card
 function c42314669.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

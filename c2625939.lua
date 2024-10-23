@@ -1,5 +1,4 @@
 --スプール・コード
----@param c Card
 function c2625939.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

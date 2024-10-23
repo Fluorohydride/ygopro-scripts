@@ -1,5 +1,4 @@
 --A・O・J ルドラ
----@param c Card
 function c52265835.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

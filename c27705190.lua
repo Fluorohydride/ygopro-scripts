@@ -1,5 +1,4 @@
 --星遺物の交心
----@param c Card
 function c27705190.initial_effect(c)
 	--change effect
 	local e1=Effect.CreateEffect(c)

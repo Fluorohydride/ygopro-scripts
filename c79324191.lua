@@ -1,5 +1,4 @@
 --隠密忍法帖
----@param c Card
 function c79324191.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --混錬装融合
----@param c Card
 function c58549532.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

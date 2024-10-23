@@ -1,5 +1,4 @@
 --サイバー・ドラゴン・コア
----@param c Card
 function c23893227.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --煌々たる逆転の女神
----@param c Card
 function c72589042.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

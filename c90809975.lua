@@ -1,5 +1,4 @@
 --餅カエル
----@param c Card
 function c90809975.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_AQUA),2,2)

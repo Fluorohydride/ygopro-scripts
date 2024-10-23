@@ -1,5 +1,4 @@
 --ファイバーポッド
----@param c Card
 function c78706415.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

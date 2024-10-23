@@ -1,5 +1,4 @@
 --ホップ・イヤー飛行隊
----@param c Card
 function c1980574.initial_effect(c)
 	--synchro summon
 	local e1=Effect.CreateEffect(c)

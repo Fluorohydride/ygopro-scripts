@@ -1,5 +1,4 @@
 --超接地展開
----@param c Card
 function c96462121.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

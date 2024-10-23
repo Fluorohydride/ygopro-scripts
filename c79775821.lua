@@ -1,5 +1,4 @@
 --セリオンズ・スタンダップ
----@param c Card
 function c79775821.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

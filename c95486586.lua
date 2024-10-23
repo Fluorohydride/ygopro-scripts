@@ -1,5 +1,4 @@
 --E・HERO Core
----@param c Card
 function c95486586.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

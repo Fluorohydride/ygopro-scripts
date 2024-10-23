@@ -1,5 +1,4 @@
 --セイクリッド・ソンブレス
----@param c Card
 function c78358521.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

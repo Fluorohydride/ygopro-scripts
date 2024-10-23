@@ -1,6 +1,5 @@
 --重騎士プリメラ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

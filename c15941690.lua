@@ -1,5 +1,4 @@
 --先史遺産クリスタル・ボーン
----@param c Card
 function c15941690.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ドラグニティナイト－アラドヴァル
----@param c Card
 function c88234821.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x29),aux.NonTuner(nil),1)

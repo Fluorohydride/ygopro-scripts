@@ -1,5 +1,4 @@
 --イビリチュア・リヴァイアニマ
----@param c Card
 function c71203602.initial_effect(c)
 	c:EnableReviveLimit()
 	--confirm

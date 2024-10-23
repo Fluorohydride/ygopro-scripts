@@ -1,5 +1,4 @@
 --シグナル・ウォリアー
----@param c Card
 function c9634146.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

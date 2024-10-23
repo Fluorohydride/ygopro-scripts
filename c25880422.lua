@@ -1,5 +1,4 @@
 --『攻撃』封じ
----@param c Card
 function c25880422.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --マスター・ボーイ
----@param c Card
 function c65170459.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2,2)

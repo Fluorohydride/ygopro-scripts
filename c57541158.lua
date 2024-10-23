@@ -1,5 +1,4 @@
 --海晶乙女スリーピーメイデン
----@param c Card
 function c57541158.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

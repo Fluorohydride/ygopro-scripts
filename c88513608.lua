@@ -1,5 +1,4 @@
 --捨て身の宝札
----@param c Card
 function c88513608.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

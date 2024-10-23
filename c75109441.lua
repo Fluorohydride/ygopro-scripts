@@ -1,5 +1,4 @@
 --半蛇人サクズィー
----@param c Card
 function c75109441.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

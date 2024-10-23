@@ -1,5 +1,4 @@
 --スプライト・ダブルクロス
----@param c Card
 function c68250822.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)

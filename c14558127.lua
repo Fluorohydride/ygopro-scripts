@@ -1,5 +1,4 @@
 --灰流うらら
----@param c Card
 function c14558127.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

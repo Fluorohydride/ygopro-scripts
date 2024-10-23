@@ -1,5 +1,4 @@
 --雷鳴
----@param c Card
 function c56260110.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

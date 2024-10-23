@@ -1,5 +1,4 @@
 --サブテラーの導師
----@param c Card
 function c16428514.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

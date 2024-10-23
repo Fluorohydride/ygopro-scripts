@@ -1,6 +1,5 @@
 --H－C クレイヴソリッシュ
 local s,id,o=GetID()
----@param c Card
 function c97453744.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),4,2)

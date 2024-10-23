@@ -1,5 +1,4 @@
 --甲虫装機 ギガグリオル
----@param c Card
 function c65844845.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

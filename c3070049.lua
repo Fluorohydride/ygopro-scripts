@@ -1,5 +1,4 @@
 --スノー・ドラゴン
----@param c Card
 function c3070049.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

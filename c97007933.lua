@@ -1,5 +1,4 @@
 --HSR魔剣ダーマ
----@param c Card
 function c97007933.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

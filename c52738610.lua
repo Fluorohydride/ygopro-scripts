@@ -1,5 +1,4 @@
 --影霊衣の舞姫
----@param c Card
 function c52738610.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

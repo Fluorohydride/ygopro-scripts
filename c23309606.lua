@@ -1,5 +1,4 @@
 --炎獄魔人ヘル・バーナー
----@param c Card
 function c23309606.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

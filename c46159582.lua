@@ -1,5 +1,4 @@
 --リチュアの儀水鏡
----@param c Card
 function c46159582.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c46159582.ritual_filter)
 	--salvage

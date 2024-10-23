@@ -1,5 +1,4 @@
 --霞の谷の戦士
----@param c Card
 function c22837504.initial_effect(c)
 	--return hand
 	local e1=Effect.CreateEffect(c)

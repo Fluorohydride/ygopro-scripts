@@ -1,5 +1,4 @@
 --彼岸の悪鬼 スカラマリオン
----@param c Card
 function c84764038.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

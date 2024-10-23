@@ -1,5 +1,4 @@
 --No.93 希望皇ホープ・カイザー
----@param c Card
 function c23187256.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --暴走闘君
----@param c Card
 function c14342283.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

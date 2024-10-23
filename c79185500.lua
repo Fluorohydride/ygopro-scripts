@@ -1,5 +1,4 @@
 --鉄巨人アイアンハンマー
----@param c Card
 function c79185500.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

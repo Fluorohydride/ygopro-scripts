@@ -1,5 +1,4 @@
 --ディープアイズ・ホワイト・ドラゴン
----@param c Card
 function c22804410.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

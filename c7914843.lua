@@ -1,5 +1,4 @@
 --電磁ミノ虫
----@param c Card
 function c7914843.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

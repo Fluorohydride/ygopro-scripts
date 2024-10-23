@@ -1,5 +1,4 @@
 --電脳堺媛－瑞々
----@param c Card
 function c49088914.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

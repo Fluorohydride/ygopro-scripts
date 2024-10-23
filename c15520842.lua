@@ -1,5 +1,4 @@
 --フォトン・ハンド
----@param c Card
 function c15520842.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

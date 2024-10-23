@@ -1,5 +1,4 @@
 --CNo.62 超銀河眼の光子龍皇
----@param c Card
 function c48348921.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --SNo.0 ホープ・ゼアル
----@param c Card
 function c52653092.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --幻奏の音女タムタム
----@param c Card
 function c79757784.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

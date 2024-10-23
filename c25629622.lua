@@ -1,5 +1,4 @@
 --魔界劇団－ビッグ・スター
----@param c Card
 function c25629622.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

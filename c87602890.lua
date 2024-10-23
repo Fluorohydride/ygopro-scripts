@@ -1,5 +1,4 @@
 --轟雷帝ザボルグ
----@param c Card
 function c87602890.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

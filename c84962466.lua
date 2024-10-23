@@ -1,5 +1,4 @@
 --ビーストライザー
----@param c Card
 function c84962466.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

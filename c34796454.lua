@@ -1,5 +1,4 @@
 --三連星のトリオン
----@param c Card
 function c34796454.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

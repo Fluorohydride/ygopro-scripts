@@ -1,5 +1,4 @@
 --氷結界に住む魔酔虫
----@param c Card
 function c92065772.initial_effect(c)
 	--dis field
 	local e1=Effect.CreateEffect(c)

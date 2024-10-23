@@ -1,5 +1,4 @@
 --鎧皇竜－サイバー・ダーク・エンド・ドラゴン
----@param c Card
 function c37542782.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

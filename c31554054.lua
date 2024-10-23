@@ -1,5 +1,4 @@
 --エクシーズ・リベンジ・シャッフル
----@param c Card
 function c31554054.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

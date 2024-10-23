@@ -1,5 +1,4 @@
 --レッド・デーモンズ・ドラゴン・スカーライト
----@param c Card
 function c80666118.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

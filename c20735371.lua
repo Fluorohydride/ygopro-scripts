@@ -1,5 +1,4 @@
 --バイバイダメージ
----@param c Card
 function c20735371.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

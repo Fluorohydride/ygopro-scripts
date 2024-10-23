@@ -1,5 +1,4 @@
 --大番狂わせ
----@param c Card
 function c32207100.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

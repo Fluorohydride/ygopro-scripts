@@ -1,5 +1,4 @@
 --霊獣使い ウェン
----@param c Card
 function c40907115.initial_effect(c)
 	c:SetSPSummonOnce(40907115)
 	--spsummon

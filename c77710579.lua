@@ -1,5 +1,4 @@
 --機皇枢インフィニティ・コア
----@param c Card
 function c77710579.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

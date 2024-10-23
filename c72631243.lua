@@ -1,5 +1,4 @@
 --エナジー・ブレイブ
----@param c Card
 function c72631243.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

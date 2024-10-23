@@ -1,5 +1,4 @@
 --教導の神徒
----@param c Card
 function c13694209.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

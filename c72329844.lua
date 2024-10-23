@@ -1,5 +1,4 @@
 --スプライト・スプリンド
----@param c Card
 function c72329844.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

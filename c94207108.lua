@@ -1,5 +1,4 @@
 --海晶乙女ワンダーハート
----@param c Card
 function c94207108.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2)

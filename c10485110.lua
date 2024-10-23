@@ -1,5 +1,4 @@
 --海竜神－ネオダイダロス
----@param c Card
 function c10485110.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --BF－極夜のダマスカス
----@param c Card
 function c58131925.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --氷水帝コスモクロア
----@param c Card
 function c3355732.initial_effect(c)
 	aux.AddCodeList(c,7142724)
 	--spsummon

@@ -1,5 +1,4 @@
 --氷騎士
----@param c Card
 function c99328137.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

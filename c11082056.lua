@@ -1,5 +1,4 @@
 --クリティウスの牙
----@param c Card
 function c11082056.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

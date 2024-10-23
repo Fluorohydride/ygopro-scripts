@@ -1,5 +1,4 @@
 --守護天使 ジャンヌ
----@param c Card
 function c68007326.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エーリアン・サイコ
----@param c Card
 function c58012107.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

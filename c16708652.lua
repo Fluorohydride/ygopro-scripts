@@ -1,5 +1,4 @@
 --カラクリ粉
----@param c Card
 function c16708652.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

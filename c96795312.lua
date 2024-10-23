@@ -1,5 +1,4 @@
 --武の賢者－アーカス
----@param c Card
 function c96795312.initial_effect(c)
 	--SpecialSummon Hand
 	local e1=Effect.CreateEffect(c)

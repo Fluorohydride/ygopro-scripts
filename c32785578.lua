@@ -1,5 +1,4 @@
 --フェアーウェルカム・ラビュリンス
----@param c Card
 function c32785578.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

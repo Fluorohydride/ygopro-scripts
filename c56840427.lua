@@ -1,5 +1,4 @@
 --CNo.39 希望皇ホープレイ
----@param c Card
 function c56840427.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

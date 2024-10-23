@@ -1,5 +1,4 @@
 --ダーク・レクイエム・エクシーズ・ドラゴン
----@param c Card
 function c1621413.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

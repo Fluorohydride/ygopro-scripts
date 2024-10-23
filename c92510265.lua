@@ -1,5 +1,4 @@
 --聖戦士カオス・ソルジャー
----@param c Card
 function c92510265.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --コアキメイル・ウォール
----@param c Card
 function c66816282.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

@@ -1,5 +1,4 @@
 --深海の怒り
----@param c Card
 function c73778008.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

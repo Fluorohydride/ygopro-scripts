@@ -1,5 +1,4 @@
 --クリフォート・ディスク
----@param c Card
 function c64496451.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --樹海の射手
----@param c Card
 function c9848939.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,5 +1,4 @@
 --根絶の機皇神
----@param c Card
 function c2992036.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

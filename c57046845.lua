@@ -1,5 +1,4 @@
 --剣聖－ネイキッド・ギア・フリード
----@param c Card
 function c57046845.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

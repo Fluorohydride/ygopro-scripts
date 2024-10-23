@@ -1,5 +1,4 @@
 --カードカー・D
----@param c Card
 function c45812361.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

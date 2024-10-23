@@ -1,5 +1,4 @@
 --サイコ・ブレイド
----@param c Card
 function c75539614.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

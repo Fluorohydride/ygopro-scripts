@@ -1,5 +1,4 @@
 --戦華盟将－双龍
----@param c Card
 function c65711558.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_BEASTWARRIOR),2,2,c65711558.lcheck)

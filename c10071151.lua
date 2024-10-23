@@ -1,5 +1,4 @@
 --トワイライトロード・ソーサラー ライラ
----@param c Card
 function c10071151.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

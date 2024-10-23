@@ -1,5 +1,4 @@
 --真竜皇リトスアジムD
----@param c Card
 function c30539496.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --移り気な仕立屋
----@param c Card
 function c43641473.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --アルカナフォースⅩⅩⅠ－THE WORLD
----@param c Card
 function c23846921.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

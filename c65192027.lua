@@ -1,5 +1,4 @@
 --ダーク・アームド・ドラゴン
----@param c Card
 function c65192027.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

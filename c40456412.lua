@@ -1,5 +1,4 @@
 --覇王龍の奇跡
----@param c Card
 function c40456412.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--select effect

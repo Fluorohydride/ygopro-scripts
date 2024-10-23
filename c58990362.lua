@@ -1,5 +1,4 @@
 --秘竜星－セフィラシウゴ
----@param c Card
 function c58990362.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --プロキシー・ドラゴン
----@param c Card
 function c22862454.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2)

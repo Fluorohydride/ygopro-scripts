@@ -1,5 +1,4 @@
 --星因士 プロキオン
----@param c Card
 function c99668578.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

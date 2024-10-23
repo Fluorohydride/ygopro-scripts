@@ -1,5 +1,4 @@
 --復活の墓穴
----@param c Card
 function c84136000.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

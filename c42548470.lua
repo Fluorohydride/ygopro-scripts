@@ -1,5 +1,4 @@
 --揺れる発条秤
----@param c Card
 function c42548470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

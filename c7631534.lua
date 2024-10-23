@@ -1,5 +1,4 @@
 --双天脚 鎧吽
----@param c Card
 function c7631534.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

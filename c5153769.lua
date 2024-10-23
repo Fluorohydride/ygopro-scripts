@@ -1,5 +1,4 @@
 --マジェスペクター・ガスト
----@param c Card
 function c5153769.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

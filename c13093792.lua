@@ -1,5 +1,4 @@
 --D-HERO ダイヤモンドガイ
----@param c Card
 function c13093792.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

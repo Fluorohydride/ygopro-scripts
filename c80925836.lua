@@ -1,5 +1,4 @@
 --コアキメイル・デビル
----@param c Card
 function c80925836.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

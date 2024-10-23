@@ -1,5 +1,4 @@
 --飢鰐竜アーケティス
----@param c Card
 function c87188910.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

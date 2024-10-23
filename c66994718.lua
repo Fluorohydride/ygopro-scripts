@@ -1,5 +1,4 @@
 --ラプターズ・ガスト
----@param c Card
 function c66994718.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

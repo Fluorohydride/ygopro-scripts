@@ -1,5 +1,4 @@
 --紫炎の足軽
----@param c Card
 function c99675356.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

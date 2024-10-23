@@ -1,5 +1,4 @@
 --ドラゴン・シールド
----@param c Card
 function c63300440.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --デンジャラスマシン TYPE－6
----@param c Card
 function c76895648.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

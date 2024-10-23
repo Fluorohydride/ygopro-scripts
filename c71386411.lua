@@ -1,5 +1,4 @@
 --超重武者コブ－C
----@param c Card
 function c71386411.initial_effect(c)
 	--Synchro Summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --E・HERO サンダー・ジャイアント
----@param c Card
 function c61204971.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

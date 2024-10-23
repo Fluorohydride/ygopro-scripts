@@ -1,5 +1,4 @@
 --マスク・チェンジ・セカンド
----@param c Card
 function c93600443.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

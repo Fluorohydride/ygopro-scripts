@@ -1,5 +1,4 @@
 --幸運の前借り
----@param c Card
 function c67955331.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

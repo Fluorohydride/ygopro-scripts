@@ -1,5 +1,4 @@
 --ながれ者傭兵部隊
----@param c Card
 function c92887027.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

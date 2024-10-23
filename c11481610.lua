@@ -1,5 +1,4 @@
 --EMポップアップ
----@param c Card
 function c11481610.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

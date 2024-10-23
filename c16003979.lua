@@ -1,5 +1,4 @@
 --剣闘獣サジタリィ
----@param c Card
 function c16003979.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

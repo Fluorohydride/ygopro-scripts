@@ -1,5 +1,4 @@
 --アームド・ドラゴン LV10－ホワイト
----@param c Card
 function c84425220.initial_effect(c)
 	c:EnableReviveLimit()
 	--connot special summon

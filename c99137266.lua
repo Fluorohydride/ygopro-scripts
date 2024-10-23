@@ -1,5 +1,4 @@
 --憶念の相剣
----@param c Card
 function c99137266.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

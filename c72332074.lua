@@ -1,5 +1,4 @@
 --超量必殺アルファンボール
----@param c Card
 function c72332074.initial_effect(c)
 	aux.AddCodeList(c,58753372,10424147)
 	--Activate

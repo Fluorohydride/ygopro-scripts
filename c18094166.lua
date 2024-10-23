@@ -1,5 +1,4 @@
 --V・HERO ファリス
----@param c Card
 function c18094166.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

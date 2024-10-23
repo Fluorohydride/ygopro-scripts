@@ -1,5 +1,4 @@
 --インフェルニティ・フォース
----@param c Card
 function c18712704.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

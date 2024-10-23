@@ -1,5 +1,4 @@
 --マジェスティ・ヒュペリオン
----@param c Card
 function c91434602.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--spsummon proc

@@ -1,5 +1,4 @@
 --底なし流砂
----@param c Card
 function c76532077.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --地縛波
----@param c Card
 function c29934351.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

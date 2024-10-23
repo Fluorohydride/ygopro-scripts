@@ -1,5 +1,4 @@
 --エクストラ・ヴェーラー
----@param c Card
 function c32391566.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

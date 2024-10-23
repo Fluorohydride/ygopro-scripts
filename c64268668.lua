@@ -1,5 +1,4 @@
 --サイバー・オーガ
----@param c Card
 function c64268668.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

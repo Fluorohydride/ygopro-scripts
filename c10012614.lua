@@ -1,5 +1,4 @@
 --勇気の旗印
----@param c Card
 function c10012614.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

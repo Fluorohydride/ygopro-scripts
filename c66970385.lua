@@ -1,5 +1,4 @@
 --聖騎士伝説の終幕
----@param c Card
 function c66970385.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

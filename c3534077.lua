@@ -1,5 +1,4 @@
 --熱血獣士ウルフバーク
----@param c Card
 function c3534077.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

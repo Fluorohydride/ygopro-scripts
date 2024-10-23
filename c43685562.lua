@@ -1,5 +1,4 @@
 --Jo－P.U.N.K.デンジャラス・ガブ
----@param c Card
 function c43685562.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

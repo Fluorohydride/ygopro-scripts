@@ -1,5 +1,4 @@
 --破壊剣士融合
----@param c Card
 function c41940225.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

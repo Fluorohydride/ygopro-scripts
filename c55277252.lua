@@ -1,5 +1,4 @@
 --魔轟神獣ノズチ
----@param c Card
 function c55277252.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

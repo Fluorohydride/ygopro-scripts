@@ -1,5 +1,4 @@
 --万華鏡－華麗なる分身－
----@param c Card
 function c90219263.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

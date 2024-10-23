@@ -1,5 +1,4 @@
 --バックグランド・ドラゴン
----@param c Card
 function c84976088.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

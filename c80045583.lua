@@ -1,5 +1,4 @@
 --古代の機械砲台
----@param c Card
 function c80045583.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

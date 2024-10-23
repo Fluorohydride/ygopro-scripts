@@ -1,5 +1,4 @@
 --ダイナレスラー・キメラ・Tレッスル
----@param c Card
 function c22900219.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c22900219.matfilter1,aux.FilterBoolFunction(Card.IsFusionSetCard,0x11a),true)

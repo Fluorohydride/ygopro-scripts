@@ -1,5 +1,4 @@
 --鬼ゴブリン
----@param c Card
 function c42541548.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

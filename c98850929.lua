@@ -1,5 +1,4 @@
 --聖蛇の息吹
----@param c Card
 function c98850929.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(98850929,4))

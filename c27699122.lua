@@ -1,5 +1,4 @@
 --トゥーン・フリップ
----@param c Card
 function c27699122.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--activate

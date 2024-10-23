@@ -1,5 +1,4 @@
 --キラー・ラブカ
----@param c Card
 function c93830681.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

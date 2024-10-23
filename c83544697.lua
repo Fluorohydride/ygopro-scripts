@@ -1,5 +1,4 @@
 --ガスタの交信
----@param c Card
 function c83544697.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

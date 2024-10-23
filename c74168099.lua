@@ -1,5 +1,4 @@
 --炎星侯－ホウシン
----@param c Card
 function c74168099.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_FIRE),aux.NonTuner(nil),1)

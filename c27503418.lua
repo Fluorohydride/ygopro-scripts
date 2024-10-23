@@ -1,5 +1,4 @@
 --王者の調和
----@param c Card
 function c27503418.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --ダイノルフィア・レクスターム
 local s,id,o=GetID()
----@param c Card
 function c92798873.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c92798873.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0x173),true)

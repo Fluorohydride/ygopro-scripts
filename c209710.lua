@@ -1,5 +1,4 @@
 --フリック・クラウン
----@param c Card
 function c209710.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

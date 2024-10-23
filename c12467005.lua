@@ -1,5 +1,4 @@
 --タックルセイダー
----@param c Card
 function c12467005.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

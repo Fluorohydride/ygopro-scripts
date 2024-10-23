@@ -1,5 +1,4 @@
 --剛鬼フェイスターン
----@param c Card
 function c26285557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

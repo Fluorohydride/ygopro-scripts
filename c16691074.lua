@@ -1,5 +1,4 @@
 --オッドアイズ・アブソリュート・ドラゴン
----@param c Card
 function c16691074.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

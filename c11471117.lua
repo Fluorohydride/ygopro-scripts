@@ -1,5 +1,4 @@
 --ライトイレイザー
----@param c Card
 function c11471117.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

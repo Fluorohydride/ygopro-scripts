@@ -1,5 +1,4 @@
 --暗黒ヴェロキ
----@param c Card
 function c52319752.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,5 +1,4 @@
 --洗脳解除
----@param c Card
 function c94739788.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--Activate

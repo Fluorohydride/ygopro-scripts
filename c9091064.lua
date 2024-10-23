@@ -1,6 +1,5 @@
 --VS 蛟龍
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--spsummon
 	--! needs an event to be raised for Duel.ConfirmCards, plus maybe a reason parameter

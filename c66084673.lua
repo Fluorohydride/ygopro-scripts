@@ -1,5 +1,4 @@
 --空炎星－サイチョウ
----@param c Card
 function c66084673.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

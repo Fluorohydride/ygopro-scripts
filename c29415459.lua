@@ -1,5 +1,4 @@
 --黄華の機界騎士
----@param c Card
 function c29415459.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

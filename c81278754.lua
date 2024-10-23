@@ -1,5 +1,4 @@
 --裏ガエル
----@param c Card
 function c81278754.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

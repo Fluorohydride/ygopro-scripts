@@ -1,5 +1,4 @@
 --発条の巻き上げ
----@param c Card
 function c83319610.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

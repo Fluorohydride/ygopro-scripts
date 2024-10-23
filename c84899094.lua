@@ -1,5 +1,4 @@
 --星杯の守護竜
----@param c Card
 function c84899094.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

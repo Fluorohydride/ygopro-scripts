@@ -1,5 +1,4 @@
 --氷帝メビウス
----@param c Card
 function c4929256.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --墓守の番兵
----@param c Card
 function c37101832.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

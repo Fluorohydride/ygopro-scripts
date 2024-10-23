@@ -1,5 +1,4 @@
 --No.34 電算機獣テラ・バイト
----@param c Card
 function c32003338.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3)

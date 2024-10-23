@@ -1,5 +1,4 @@
 --自律行動ユニット
----@param c Card
 function c71453557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --棘の壁
----@param c Card
 function c2779999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

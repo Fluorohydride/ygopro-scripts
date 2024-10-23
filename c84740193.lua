@@ -1,5 +1,4 @@
 --バスターランチャー
----@param c Card
 function c84740193.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

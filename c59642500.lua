@@ -1,5 +1,4 @@
 --M・HERO 闇鬼
----@param c Card
 function c59642500.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

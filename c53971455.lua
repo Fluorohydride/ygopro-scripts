@@ -1,5 +1,4 @@
 --赫聖の妖騎士
----@param c Card
 function c53971455.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsLevel,4),aux.NonTuner(nil),1)

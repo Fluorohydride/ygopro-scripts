@@ -1,5 +1,4 @@
 --氷水艇エーギロカシス
----@param c Card
 function c1295442.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

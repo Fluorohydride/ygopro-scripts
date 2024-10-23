@@ -1,5 +1,4 @@
 --デモンズ・ゴーレム
----@param c Card
 function c24662957.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--activate

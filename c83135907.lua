@@ -1,5 +1,4 @@
 --スクラップ・ゴブリン
----@param c Card
 function c83135907.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

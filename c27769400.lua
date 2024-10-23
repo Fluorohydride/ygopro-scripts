@@ -1,5 +1,4 @@
 --テュアラティン
----@param c Card
 function c27769400.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

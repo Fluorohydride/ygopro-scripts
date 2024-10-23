@@ -1,5 +1,4 @@
 --シャインナイト
----@param c Card
 function c86952477.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

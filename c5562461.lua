@@ -1,5 +1,4 @@
 --闇の幻影
----@param c Card
 function c5562461.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

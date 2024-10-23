@@ -1,5 +1,4 @@
 --ジェム・マーチャント
----@param c Card
 function c53408006.initial_effect(c)
 	--atk,def up
 	local e1=Effect.CreateEffect(c)

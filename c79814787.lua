@@ -1,5 +1,4 @@
 --伝説の白石
----@param c Card
 function c79814787.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--to hand

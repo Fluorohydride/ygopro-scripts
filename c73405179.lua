@@ -1,5 +1,4 @@
 --鉄の騎士
----@param c Card
 function c73405179.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--atk down

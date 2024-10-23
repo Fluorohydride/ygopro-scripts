@@ -1,5 +1,4 @@
 --霞の谷のファルコン
----@param c Card
 function c82199284.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

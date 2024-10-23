@@ -1,5 +1,4 @@
 --武神器－サグサ
----@param c Card
 function c59251766.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

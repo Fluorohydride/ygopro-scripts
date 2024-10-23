@@ -1,5 +1,4 @@
 --妖仙獣 木魅
----@param c Card
 function c23740893.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

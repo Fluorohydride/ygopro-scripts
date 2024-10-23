@@ -1,5 +1,4 @@
 --幻層の守護者アルマデス
----@param c Card
 function c88033975.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

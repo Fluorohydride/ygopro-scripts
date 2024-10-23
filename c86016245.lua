@@ -1,5 +1,4 @@
 --弱者の意地
----@param c Card
 function c86016245.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

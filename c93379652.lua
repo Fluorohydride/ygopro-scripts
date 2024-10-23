@@ -1,5 +1,4 @@
 --ジェムナイト・プリズムオーラ
----@param c Card
 function c93379652.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

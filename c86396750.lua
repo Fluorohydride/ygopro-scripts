@@ -1,5 +1,4 @@
 --精霊獣 アペライオ
----@param c Card
 function c86396750.initial_effect(c)
 	c:SetSPSummonOnce(86396750)
 	--atk

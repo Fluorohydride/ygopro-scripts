@@ -1,6 +1,5 @@
 --エルロン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

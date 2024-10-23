@@ -1,5 +1,4 @@
 --ブラキオレイドス
----@param c Card
 function c16507828.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

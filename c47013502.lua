@@ -1,5 +1,4 @@
 --アボイド・ドラゴン
----@param c Card
 function c47013502.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

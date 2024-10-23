@@ -1,5 +1,4 @@
 --ウォーム・ワーム
----@param c Card
 function c16751086.initial_effect(c)
 	--deckdes
 	local e1=Effect.CreateEffect(c)

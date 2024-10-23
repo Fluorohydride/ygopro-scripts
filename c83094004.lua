@@ -1,5 +1,4 @@
 --エアロピΞ
----@param c Card
 function c83094004.initial_effect(c)
 	--sequence & move
 	local e1=Effect.CreateEffect(c)

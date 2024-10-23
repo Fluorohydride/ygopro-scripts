@@ -1,5 +1,4 @@
 --トポロジック・ゼロヴォロス
----@param c Card
 function c66403530.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)

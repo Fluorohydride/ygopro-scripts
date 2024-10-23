@@ -1,5 +1,4 @@
 --神碑の翼ムニン
----@param c Card
 function c92385016.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

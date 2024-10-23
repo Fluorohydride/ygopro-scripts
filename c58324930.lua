@@ -1,5 +1,4 @@
 --破戒僧 ランシン
----@param c Card
 function c58324930.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

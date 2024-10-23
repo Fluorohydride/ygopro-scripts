@@ -1,5 +1,4 @@
 --独法師
----@param c Card
 function c263926.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

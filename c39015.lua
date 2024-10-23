@@ -1,5 +1,4 @@
 --バスター・スナイパー
----@param c Card
 function c39015.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--spsummon

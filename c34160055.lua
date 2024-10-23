@@ -1,5 +1,4 @@
 --龍炎剣の使い手
----@param c Card
 function c34160055.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

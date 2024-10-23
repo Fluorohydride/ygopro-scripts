@@ -1,5 +1,4 @@
 --Sin パラダイム・ドラゴン
----@param c Card
 function c16958382.initial_effect(c)
 	aux.AddCodeList(c,27564031)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --ホープ・オブ・フィフス
----@param c Card
 function c55428811.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

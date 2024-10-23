@@ -1,5 +1,4 @@
 --ジュラック・スタウリコ
----@param c Card
 function c48411996.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

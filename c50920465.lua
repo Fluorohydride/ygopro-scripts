@@ -1,5 +1,4 @@
 --ブリザード・サンダーバード
----@param c Card
 function c50920465.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

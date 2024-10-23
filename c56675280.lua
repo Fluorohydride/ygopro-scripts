@@ -1,5 +1,4 @@
 --EMインコーラス
----@param c Card
 function c56675280.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale change

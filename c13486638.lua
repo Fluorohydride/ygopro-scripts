@@ -1,5 +1,4 @@
 --RR－ファントム・クロー
----@param c Card
 function c13486638.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

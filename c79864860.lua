@@ -1,5 +1,4 @@
 --捕食植物トリフィオヴェルトゥム
----@param c Card
 function c79864860.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

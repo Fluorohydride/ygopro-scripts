@@ -1,5 +1,4 @@
 --黄昏の双龍
----@param c Card
 function c60431417.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

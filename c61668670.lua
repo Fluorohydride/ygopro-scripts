@@ -1,5 +1,4 @@
 --Gゴーレム・クリスタルハート
----@param c Card
 function c61668670.initial_effect(c)
 	c:EnableCounterPermit(0x64)
 	--link summon

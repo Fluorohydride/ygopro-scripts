@@ -1,5 +1,4 @@
 --機巧鳥－常世宇受賣長鳴
----@param c Card
 function c96399967.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --勇気の砂時計
----@param c Card
 function c43530283.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

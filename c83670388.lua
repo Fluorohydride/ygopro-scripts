@@ -1,5 +1,4 @@
 --氷水呪縛
----@param c Card
 function c83670388.initial_effect(c)
 	aux.AddCodeList(c,7142724)
 	--Activate

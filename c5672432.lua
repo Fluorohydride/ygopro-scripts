@@ -1,5 +1,4 @@
 --EMリバイバル
----@param c Card
 function c5672432.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

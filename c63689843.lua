@@ -1,5 +1,4 @@
 --白兵戦
----@param c Card
 function c63689843.initial_effect(c)
 	--Damage
 	local e1=Effect.CreateEffect(c)

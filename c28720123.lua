@@ -1,5 +1,4 @@
 --竜剣士ダイナマイトP
----@param c Card
 function c28720123.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

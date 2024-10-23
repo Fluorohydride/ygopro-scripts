@@ -1,5 +1,4 @@
 --サクリファイス・ソード
----@param c Card
 function c17589298.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --火器付機甲鎧
----@param c Card
 function c3492538.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

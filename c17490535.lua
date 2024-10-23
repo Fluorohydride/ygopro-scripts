@@ -1,5 +1,4 @@
 --エーリアン・ブレイン
----@param c Card
 function c17490535.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エクシーズ・トライバル
----@param c Card
 function c32086564.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

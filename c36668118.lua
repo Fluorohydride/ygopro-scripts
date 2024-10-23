@@ -1,5 +1,4 @@
 --リボルブート・セクター
----@param c Card
 function c36668118.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --メンタルプロテクター
----@param c Card
 function c85060248.initial_effect(c)
 	--cannot attack
 	local e2=Effect.CreateEffect(c)

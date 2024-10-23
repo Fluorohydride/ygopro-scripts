@@ -1,5 +1,4 @@
 --先史遺産アステカ・マスク・ゴーレム
----@param c Card
 function c94766498.initial_effect(c)
 	c:SetUniqueOnField(1,0,94766498)
 	--special summon

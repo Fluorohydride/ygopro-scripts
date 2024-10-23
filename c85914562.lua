@@ -1,5 +1,4 @@
 --魔救の探索者
----@param c Card
 function c85914562.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

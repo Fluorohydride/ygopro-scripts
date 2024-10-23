@@ -1,5 +1,4 @@
 --メガリス・オク
----@param c Card
 function c36849933.initial_effect(c)
 	c:EnableReviveLimit()
 	--draw

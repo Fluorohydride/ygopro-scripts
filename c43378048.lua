@@ -1,5 +1,4 @@
 --混沌幻魔アーミタイル
----@param c Card
 function c43378048.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

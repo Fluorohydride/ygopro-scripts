@@ -1,5 +1,4 @@
 --氷結界の武士
----@param c Card
 function c64926005.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

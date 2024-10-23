@@ -1,5 +1,4 @@
 --ファイアフェニックス＠イグニスター
----@param c Card
 function c24882256.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

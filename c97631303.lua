@@ -1,5 +1,4 @@
 --マジシャンズ・ソウルズ
----@param c Card
 function c97631303.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--spsummon

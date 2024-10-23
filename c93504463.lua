@@ -1,5 +1,4 @@
 --進化への懸け橋
----@param c Card
 function c93504463.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --プロンプトホーン
----@param c Card
 function c50548657.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --影王デュークシェード
----@param c Card
 function c12766474.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

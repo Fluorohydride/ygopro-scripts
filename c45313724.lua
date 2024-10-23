@@ -1,5 +1,4 @@
 --煉獄の釜
----@param c Card
 function c45313724.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--activate

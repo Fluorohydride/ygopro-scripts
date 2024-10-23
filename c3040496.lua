@@ -1,5 +1,4 @@
 --混沌魔龍 カオス・ルーラー
----@param c Card
 function c3040496.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

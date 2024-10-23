@@ -1,5 +1,4 @@
 --宝玉の先導者
----@param c Card
 function c87475570.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

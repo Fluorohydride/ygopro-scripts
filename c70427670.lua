@@ -1,6 +1,5 @@
 --捕食植物ブフォリキュラ
 local s,id,o=GetID()
----@param c Card
 function c70427670.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Pendulum Effect : Fusion Summon

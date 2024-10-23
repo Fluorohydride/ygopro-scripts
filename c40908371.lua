@@ -1,5 +1,4 @@
 --蒼眼の銀龍
----@param c Card
 function c40908371.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSynchroType,TYPE_NORMAL),1)

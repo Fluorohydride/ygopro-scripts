@@ -1,5 +1,4 @@
 --王の棺
----@param c Card
 function c16528181.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

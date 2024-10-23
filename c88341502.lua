@@ -1,5 +1,4 @@
 --ブラック・アロー
----@param c Card
 function c88341502.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

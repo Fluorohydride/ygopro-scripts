@@ -1,6 +1,5 @@
 --肆世壊の継承
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔法吸収
----@param c Card
 function c51481927.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

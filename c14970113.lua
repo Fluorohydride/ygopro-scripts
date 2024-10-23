@@ -1,5 +1,4 @@
 --十二獣ハマーコング
----@param c Card
 function c14970113.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3,c14970113.ovfilter,aux.Stringid(14970113,0),99,c14970113.xyzop)

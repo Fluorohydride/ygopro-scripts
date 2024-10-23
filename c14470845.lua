@@ -1,5 +1,4 @@
 --おジャマデュオ
----@param c Card
 function c14470845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

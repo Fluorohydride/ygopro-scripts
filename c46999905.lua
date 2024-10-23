@@ -1,5 +1,4 @@
 --絆醒師セームベル
----@param c Card
 function c46999905.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

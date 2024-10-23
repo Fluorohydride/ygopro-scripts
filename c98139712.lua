@@ -1,5 +1,4 @@
 --死霊の誘い
----@param c Card
 function c98139712.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

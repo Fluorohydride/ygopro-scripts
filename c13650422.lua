@@ -1,5 +1,4 @@
 --E-HERO アダスター・ゴールド
----@param c Card
 function c13650422.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--search

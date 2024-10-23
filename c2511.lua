@@ -1,5 +1,4 @@
 --白銀の城の狂時計
----@param c Card
 function c2511.initial_effect(c)
 	--Trap activate in set turn
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --真魔獣 ガーゼット
----@param c Card
 function c12338068.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

@@ -1,5 +1,4 @@
 --霞の谷の神風
----@param c Card
 function c15854426.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --スフィア・ボム 球体時限爆弾
----@param c Card
 function c26302522.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

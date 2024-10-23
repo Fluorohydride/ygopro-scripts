@@ -1,5 +1,4 @@
 --ツイン・フォトン・リザード
----@param c Card
 function c29455728.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

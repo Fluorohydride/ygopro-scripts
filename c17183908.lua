@@ -1,5 +1,4 @@
 --竜星の輝跡
----@param c Card
 function c17183908.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --絶望と希望の逆転
----@param c Card
 function c25209168.initial_effect(c)
 	aux.AddCodeList(c,17484499)
 	--activate

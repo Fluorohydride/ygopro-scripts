@@ -1,5 +1,4 @@
 --業炎のバリア －ファイヤー・フォース－
----@param c Card
 function c75249652.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --影六武衆－ドウジ
----@param c Card
 function c70180284.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

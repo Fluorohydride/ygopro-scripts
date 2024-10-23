@@ -1,5 +1,4 @@
 --EMレインゴート
----@param c Card
 function c16617334.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

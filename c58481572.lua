@@ -1,5 +1,4 @@
 --M・HERO ダーク・ロウ
----@param c Card
 function c58481572.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

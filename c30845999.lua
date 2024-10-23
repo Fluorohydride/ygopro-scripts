@@ -1,5 +1,4 @@
 --起動する機殻
----@param c Card
 function c30845999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

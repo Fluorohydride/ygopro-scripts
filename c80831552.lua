@@ -1,5 +1,4 @@
 --ダイナレスラー・バーリオニクス
----@param c Card
 function c80831552.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

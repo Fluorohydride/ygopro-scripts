@@ -1,5 +1,4 @@
 --閃刀姫－カガリ
----@param c Card
 function c63288573.initial_effect(c)
 	c:SetSPSummonOnce(63288573)
 	--link summon

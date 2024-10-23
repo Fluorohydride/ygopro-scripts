@@ -1,5 +1,4 @@
 --究極封印神エクゾディオス
----@param c Card
 function c13893596.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

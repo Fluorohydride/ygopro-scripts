@@ -1,5 +1,4 @@
 --ドラゴンダウザー
----@param c Card
 function c76066541.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

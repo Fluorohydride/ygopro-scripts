@@ -1,5 +1,4 @@
 --U.A.ロッカールーム
----@param c Card
 function c49936169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

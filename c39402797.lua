@@ -1,5 +1,4 @@
 --トライデント・ドラギオン
----@param c Card
 function c39402797.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(Card.IsRace,RACE_DRAGON),1)

@@ -1,5 +1,4 @@
 --墓守の司令官
----@param c Card
 function c17393207.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

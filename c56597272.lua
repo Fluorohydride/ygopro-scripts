@@ -1,5 +1,4 @@
 --雲魔物－羊雲
----@param c Card
 function c56597272.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --聖騎士パーシヴァル
----@param c Card
 function c73359475.initial_effect(c)
 	--Attribute Dark
 	local e2=Effect.CreateEffect(c)

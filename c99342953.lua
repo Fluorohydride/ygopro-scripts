@@ -1,5 +1,4 @@
 --古代遺跡コードA
----@param c Card
 function c99342953.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

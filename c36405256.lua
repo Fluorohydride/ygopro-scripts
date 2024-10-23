@@ -1,5 +1,4 @@
 --時花の魔女－フルール・ド・ソルシエール
----@param c Card
 function c36405256.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --臨時ダイヤ
----@param c Card
 function c97520701.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --竜の渓谷
----@param c Card
 function c62265044.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

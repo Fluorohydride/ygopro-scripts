@@ -1,5 +1,4 @@
 --アルカナフォースⅠ－THE MAGICIAN
----@param c Card
 function c8396952.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

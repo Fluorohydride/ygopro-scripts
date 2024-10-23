@@ -1,5 +1,4 @@
 --剛鬼再戦
----@param c Card
 function c62376646.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

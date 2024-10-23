@@ -1,5 +1,4 @@
 --マジカル・アブダクター
----@param c Card
 function c10239627.initial_effect(c)
 	c:EnableCounterPermit(0x1,LOCATION_PZONE+LOCATION_MZONE)
 	--pendulum summon

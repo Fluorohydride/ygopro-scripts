@@ -1,5 +1,4 @@
 --コクーン・ヴェール
----@param c Card
 function c56641453.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --グラビティ・ボール
----@param c Card
 function c29216198.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

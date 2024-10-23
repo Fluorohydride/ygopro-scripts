@@ -1,5 +1,4 @@
 --深淵のスタングレイ
----@param c Card
 function c97232518.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

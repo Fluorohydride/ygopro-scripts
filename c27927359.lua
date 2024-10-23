@@ -1,5 +1,4 @@
 --ハーピィ・レディ2
----@param c Card
 function c27927359.initial_effect(c)
 	--Disable
 	local e1=Effect.CreateEffect(c)

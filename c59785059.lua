@@ -1,5 +1,4 @@
 --イグナイト・スティンガー
----@param c Card
 function c59785059.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

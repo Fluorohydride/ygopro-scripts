@@ -1,5 +1,4 @@
 --転生炎獣ウルヴィー
----@param c Card
 function c13173832.initial_effect(c)
 	--Used as material
 	local e1=Effect.CreateEffect(c)

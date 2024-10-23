@@ -1,5 +1,4 @@
 --アマゾネス女帝王
----@param c Card
 function c23965033.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

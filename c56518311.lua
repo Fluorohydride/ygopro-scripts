@@ -1,5 +1,4 @@
 --メタルフォーゼ・バニッシャー
----@param c Card
 function c56518311.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --捕食生成
----@param c Card
 function c72129804.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

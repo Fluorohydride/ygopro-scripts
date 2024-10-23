@@ -1,5 +1,4 @@
 --風の天翼ミラドーラ
----@param c Card
 function c17063599.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

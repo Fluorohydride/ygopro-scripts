@@ -1,5 +1,4 @@
 --分裂するマザー・スパイダー
----@param c Card
 function c34034150.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

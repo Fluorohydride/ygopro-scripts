@@ -1,5 +1,4 @@
 --闇鋼龍 ダークネスメタル
----@param c Card
 function c79266769.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

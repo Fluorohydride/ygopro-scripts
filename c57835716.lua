@@ -1,5 +1,4 @@
 --オルフェゴール・ディヴェル
----@param c Card
 function c57835716.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

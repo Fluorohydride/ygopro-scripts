@@ -1,5 +1,4 @@
 --ピンポイント奪取
----@param c Card
 function c94431029.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

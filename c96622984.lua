@@ -1,5 +1,4 @@
 --捕食植物フライ・ヘル
----@param c Card
 function c96622984.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

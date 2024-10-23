@@ -1,5 +1,4 @@
 --ピラミッド・タートル
----@param c Card
 function c77044671.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

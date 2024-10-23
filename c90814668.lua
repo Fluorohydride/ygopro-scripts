@@ -1,5 +1,4 @@
 --タイラント・プランテーション
----@param c Card
 function c90814668.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

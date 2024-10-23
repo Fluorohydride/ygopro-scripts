@@ -1,5 +1,4 @@
 --覇王黒竜オッドアイズ・リベリオン・エクシーズ・ドラゴン
----@param c Card
 function c30095833.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsXyzType,TYPE_PENDULUM),7,2)

@@ -1,5 +1,4 @@
 --エーリアン・ソルジャー M／フレーム
----@param c Card
 function c74974229.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

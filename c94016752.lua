@@ -1,5 +1,4 @@
 --深淵の宣告者
----@param c Card
 function c94016752.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

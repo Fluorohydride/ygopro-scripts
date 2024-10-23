@@ -1,5 +1,4 @@
 --BF－弔風のデス
----@param c Card
 function c19462747.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

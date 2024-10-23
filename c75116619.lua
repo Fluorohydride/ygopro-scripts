@@ -1,5 +1,4 @@
 --真六武衆－エニシ
----@param c Card
 function c75116619.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

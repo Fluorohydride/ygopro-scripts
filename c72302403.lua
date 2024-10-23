@@ -1,5 +1,4 @@
 --光の護封剣
----@param c Card
 function c72302403.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

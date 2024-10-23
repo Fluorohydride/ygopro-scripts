@@ -1,5 +1,4 @@
 --六武の門
----@param c Card
 function c27970830.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	--Activate

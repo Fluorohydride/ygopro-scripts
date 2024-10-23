@@ -1,5 +1,4 @@
 --席取－六双丸
----@param c Card
 function c96637156.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

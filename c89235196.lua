@@ -1,5 +1,4 @@
 --ビッグ・ワン・ウォリアー
----@param c Card
 function c89235196.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --捷炎星－セイヴン
----@param c Card
 function c44860890.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

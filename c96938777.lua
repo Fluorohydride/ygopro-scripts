@@ -1,5 +1,4 @@
 --神機王ウル
----@param c Card
 function c96938777.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

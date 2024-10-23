@@ -1,5 +1,4 @@
 --パイナップル爆弾
----@param c Card
 function c90669991.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

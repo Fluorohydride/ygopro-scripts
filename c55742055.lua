@@ -1,5 +1,4 @@
 --円卓の聖騎士
----@param c Card
 function c55742055.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

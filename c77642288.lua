@@ -1,5 +1,4 @@
 --剣闘獣セクトル
----@param c Card
 function c77642288.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

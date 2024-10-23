@@ -1,5 +1,4 @@
 --V・HERO マルティプリ・ガイ
----@param c Card
 function c96693371.initial_effect(c)
 	--to field
 	local e1=Effect.CreateEffect(c)

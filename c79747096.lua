@@ -1,5 +1,4 @@
 --CNo.1 ゲート・オブ・カオス・ヌメロン－シニューニャ
----@param c Card
 function c79747096.initial_effect(c)
 	aux.AddCodeList(c,15232745,41418852)
 	--xyz summon

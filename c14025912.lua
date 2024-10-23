@@ -1,5 +1,4 @@
 --斬機方程式
----@param c Card
 function c14025912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

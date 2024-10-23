@@ -1,5 +1,4 @@
 --太陽の祭壇
----@param c Card
 function c91468551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

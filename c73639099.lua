@@ -1,5 +1,4 @@
 --セラの蟲惑魔
----@param c Card
 function c73639099.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c73639099.matfilter,1,1)

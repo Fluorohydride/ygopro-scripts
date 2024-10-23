@@ -1,5 +1,4 @@
 --海造賊－拠点
----@param c Card
 function c93031067.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

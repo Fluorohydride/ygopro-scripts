@@ -1,5 +1,4 @@
 --レベル・スティーラー
----@param c Card
 function c57421866.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --流星連打－シロクロイド
----@param c Card
 function c99748883.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --コザッキーの研究成果
----@param c Card
 function c49998907.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

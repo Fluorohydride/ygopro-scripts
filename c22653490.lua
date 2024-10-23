@@ -1,5 +1,4 @@
 --電光千鳥
----@param c Card
 function c22653490.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND),4,2)

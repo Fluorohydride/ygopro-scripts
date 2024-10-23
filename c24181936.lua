@@ -1,5 +1,4 @@
 --闇味鍋パーティー
----@param c Card
 function c24181936.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

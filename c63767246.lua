@@ -1,5 +1,4 @@
 --No.38 希望魁竜タイタニック・ギャラクシー
----@param c Card
 function c63767246.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

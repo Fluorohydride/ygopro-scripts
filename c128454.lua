@@ -1,5 +1,4 @@
 --EMスプリングース
----@param c Card
 function c128454.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

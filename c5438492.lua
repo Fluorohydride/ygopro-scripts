@@ -1,5 +1,4 @@
 --荒野の女戦士
----@param c Card
 function c5438492.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

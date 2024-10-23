@@ -1,5 +1,4 @@
 --ストライク・ショット
----@param c Card
 function c30643162.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

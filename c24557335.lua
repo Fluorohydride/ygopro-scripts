@@ -1,5 +1,4 @@
 --天威龍－シュターナ
----@param c Card
 function c24557335.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

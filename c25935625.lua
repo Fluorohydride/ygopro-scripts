@@ -1,5 +1,4 @@
 --闇竜星－ジョクト
----@param c Card
 function c25935625.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

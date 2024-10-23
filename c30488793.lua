@@ -1,5 +1,4 @@
 --反発力
----@param c Card
 function c30488793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

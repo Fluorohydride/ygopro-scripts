@@ -1,5 +1,4 @@
 --DD魔導賢者ニコラ
----@param c Card
 function c46035545.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--splimit

@@ -1,5 +1,4 @@
 --魔導闇商人
----@param c Card
 function c72171665.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

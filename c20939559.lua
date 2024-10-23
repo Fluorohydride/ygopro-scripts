@@ -1,5 +1,4 @@
 --闇の住人 シャドウキラー
----@param c Card
 function c20939559.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

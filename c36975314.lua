@@ -1,5 +1,4 @@
 --大捕り物
----@param c Card
 function c36975314.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

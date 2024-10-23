@@ -1,5 +1,4 @@
 --サブテラーの射手
----@param c Card
 function c39581190.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

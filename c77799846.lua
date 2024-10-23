@@ -1,5 +1,4 @@
 --廃品眼の太鼓竜
----@param c Card
 function c77799846.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),8,2)

@@ -1,5 +1,4 @@
 --晴れの天気模様
----@param c Card
 function c89355716.initial_effect(c)
 	c:SetUniqueOnField(1,0,89355716)
 	--Activate

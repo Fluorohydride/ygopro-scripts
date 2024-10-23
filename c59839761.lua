@@ -1,5 +1,4 @@
 --デルタ・クロウ－アンチ・リバース
----@param c Card
 function c59839761.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

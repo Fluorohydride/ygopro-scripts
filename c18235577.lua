@@ -1,5 +1,4 @@
 --寂々虫
----@param c Card
 function c18235577.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --TG－SX1
----@param c Card
 function c40253382.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

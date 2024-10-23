@@ -1,5 +1,4 @@
 --旧神ノーデン
----@param c Card
 function c17412721.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

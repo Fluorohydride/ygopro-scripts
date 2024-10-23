@@ -1,5 +1,4 @@
 --エヴォリューション・レザルト・バースト
----@param c Card
 function c78217065.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

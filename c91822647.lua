@@ -1,5 +1,4 @@
 --ガスタのつむじ風
----@param c Card
 function c91822647.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

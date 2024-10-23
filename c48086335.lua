@@ -1,5 +1,4 @@
 --アーティファクト－フェイルノート
----@param c Card
 function c48086335.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

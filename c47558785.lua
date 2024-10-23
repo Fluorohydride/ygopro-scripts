@@ -1,5 +1,4 @@
 --マイルド・ターキー
----@param c Card
 function c47558785.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

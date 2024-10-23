@@ -1,5 +1,4 @@
 --神碑の誑かし
----@param c Card
 function c29595202.initial_effect(c)
 	c:SetUniqueOnField(1,0,29595202)
 	--activate

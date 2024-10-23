@@ -1,5 +1,4 @@
 --液状巨人ダイダラタント
----@param c Card
 function c39943352.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

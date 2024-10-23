@@ -1,5 +1,4 @@
 --カースド・フィグ
----@param c Card
 function c18489208.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --EMパートナーガ
----@param c Card
 function c69211541.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

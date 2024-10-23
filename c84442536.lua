@@ -1,5 +1,4 @@
 --グレイドル・コンバット
----@param c Card
 function c84442536.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

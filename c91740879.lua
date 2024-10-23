@@ -1,5 +1,4 @@
 --ご隠居の大釜
----@param c Card
 function c91740879.initial_effect(c)
 	c:EnableCounterPermit(0x55)
 	--Activate

@@ -1,5 +1,4 @@
 --EMリターンタンタン
----@param c Card
 function c81055000.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

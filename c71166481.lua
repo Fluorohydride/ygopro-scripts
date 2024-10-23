@@ -1,5 +1,4 @@
 --No.75 惑乱のゴシップ・シャドー
----@param c Card
 function c71166481.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

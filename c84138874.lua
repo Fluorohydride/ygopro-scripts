@@ -1,5 +1,4 @@
 --ヴォルカニック・インフェルノ
----@param c Card
 function c84138874.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

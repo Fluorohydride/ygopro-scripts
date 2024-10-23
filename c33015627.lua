@@ -1,5 +1,4 @@
 --時械神サンダイオン
----@param c Card
 function c33015627.initial_effect(c)
 	c:SetUniqueOnField(1,0,33015627)
 	--cannot special summon

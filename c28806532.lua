@@ -1,5 +1,4 @@
 --曇天気スレット
----@param c Card
 function c28806532.initial_effect(c)
 	--place
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --極星宝レーヴァテイン
----@param c Card
 function c89792713.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --D-HERO ディナイアルガイ
----@param c Card
 function c16605586.initial_effect(c)
 	--to deck top
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ナチュル・バンブーシュート
----@param c Card
 function c20174189.initial_effect(c)
 	--mat check
 	local e1=Effect.CreateEffect(c)

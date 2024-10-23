@@ -1,5 +1,4 @@
 --双穹の騎士アストラム
----@param c Card
 function c21887175.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

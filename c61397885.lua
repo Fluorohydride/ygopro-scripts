@@ -1,5 +1,4 @@
 --幻煌龍の浸渦
----@param c Card
 function c61397885.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

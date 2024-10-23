@@ -1,5 +1,4 @@
 --融合武器ムラサメブレード
----@param c Card
 function c37684215.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

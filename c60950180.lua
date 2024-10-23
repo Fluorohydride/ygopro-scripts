@@ -1,5 +1,4 @@
 --RR－インペイル・レイニアス
----@param c Card
 function c60950180.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

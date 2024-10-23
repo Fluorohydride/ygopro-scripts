@@ -1,5 +1,4 @@
 --グラディアル・チェンジ
----@param c Card
 function c97234686.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

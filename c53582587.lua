@@ -1,5 +1,4 @@
 --激流葬
----@param c Card
 function c53582587.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

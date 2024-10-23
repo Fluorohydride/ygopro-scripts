@@ -1,6 +1,5 @@
 --侵略的外来種－I.A.S
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

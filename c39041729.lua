@@ -1,5 +1,4 @@
 --時空超越
----@param c Card
 function c39041729.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

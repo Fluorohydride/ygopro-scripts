@@ -1,5 +1,4 @@
 --無抵抗の真相
----@param c Card
 function c83546647.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

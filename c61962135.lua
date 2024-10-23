@@ -1,5 +1,4 @@
 --閃光のイリュージョン
----@param c Card
 function c61962135.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --柴戦士タロ
----@param c Card
 function c27416701.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

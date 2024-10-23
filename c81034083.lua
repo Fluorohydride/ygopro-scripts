@@ -1,5 +1,4 @@
 --暗黒の招来神
----@param c Card
 function c81034083.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--to hand

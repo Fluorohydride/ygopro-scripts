@@ -1,5 +1,4 @@
 --壊獣捕獲大作戦
----@param c Card
 function c81057455.initial_effect(c)
 	c:EnableCounterPermit(0x37)
 	c:SetCounterLimit(0x37,3)

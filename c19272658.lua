@@ -1,5 +1,4 @@
 --エクシーズ弁当
----@param c Card
 function c19272658.initial_effect(c)
 	--overlay
 	local e1=Effect.CreateEffect(c)

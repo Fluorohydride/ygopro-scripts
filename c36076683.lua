@@ -1,5 +1,4 @@
 --No.73 激瀧神アビス・スプラッシュ
----@param c Card
 function c36076683.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),5,2)

@@ -1,5 +1,4 @@
 --脳開発研究所
----@param c Card
 function c85668449.initial_effect(c)
 	c:EnableCounterPermit(0x4)
 	--Activate

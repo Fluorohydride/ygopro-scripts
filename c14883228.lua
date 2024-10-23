@@ -1,5 +1,4 @@
 --タイフーン
----@param c Card
 function c14883228.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

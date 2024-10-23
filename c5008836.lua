@@ -1,5 +1,4 @@
 --守護神エクゾディア
----@param c Card
 function c5008836.initial_effect(c)
 	--cannot special summon
 	local e0=Effect.CreateEffect(c)

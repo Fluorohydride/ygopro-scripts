@@ -1,5 +1,4 @@
 --天魔大帝
----@param c Card
 function c90122655.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

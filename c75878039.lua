@@ -1,5 +1,4 @@
 --星因士 デネブ
----@param c Card
 function c75878039.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

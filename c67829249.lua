@@ -1,5 +1,4 @@
 --古代の採掘機
----@param c Card
 function c67829249.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

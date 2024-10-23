@@ -1,5 +1,4 @@
 --霊魂の拠所
----@param c Card
 function c9553721.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

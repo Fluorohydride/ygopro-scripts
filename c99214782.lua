@@ -1,5 +1,4 @@
 --インヴェルズの歩哨
----@param c Card
 function c99214782.initial_effect(c)
 	--cannot trigger
 	local e1=Effect.CreateEffect(c)

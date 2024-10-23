@@ -1,5 +1,4 @@
 --月読命
----@param c Card
 function c34853266.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

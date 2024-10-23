@@ -1,5 +1,4 @@
 --アーク・リベリオン・エクシーズ・ドラゴン
----@param c Card
 function c64276752.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

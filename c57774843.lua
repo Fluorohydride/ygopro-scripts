@@ -1,5 +1,4 @@
 --裁きの龍
----@param c Card
 function c57774843.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

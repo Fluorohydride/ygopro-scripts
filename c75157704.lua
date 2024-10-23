@@ -1,5 +1,4 @@
 --双天の使命
----@param c Card
 function c75157704.initial_effect(c)
 	--copy spell
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エレキャンセル
----@param c Card
 function c56993276.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

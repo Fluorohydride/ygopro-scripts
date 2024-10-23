@@ -1,5 +1,4 @@
 --DDD神託王ダルク
----@param c Card
 function c82956492.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xaf),2,true)

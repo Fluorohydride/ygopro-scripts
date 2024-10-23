@@ -1,5 +1,4 @@
 --伏魔殿－悪魔の迷宮－
----@param c Card
 function c63883999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

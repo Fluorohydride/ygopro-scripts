@@ -1,5 +1,4 @@
 --幻影騎士団クラックヘルム
----@param c Card
 function c99315585.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

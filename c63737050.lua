@@ -1,5 +1,4 @@
 --龍大神
----@param c Card
 function c63737050.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --神秘の代行者 アース
----@param c Card
 function c91188343.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--search

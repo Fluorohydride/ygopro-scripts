@@ -1,5 +1,4 @@
 --巨神竜フェルグラント
----@param c Card
 function c60681103.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

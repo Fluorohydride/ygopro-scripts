@@ -1,5 +1,4 @@
 --サイレント・ウォビー
----@param c Card
 function c71015787.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

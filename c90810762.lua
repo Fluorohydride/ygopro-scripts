@@ -1,5 +1,4 @@
 --逆巻く炎の精霊
----@param c Card
 function c90810762.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

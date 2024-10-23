@@ -1,5 +1,4 @@
 --サイバース・リマインダー
----@param c Card
 function c56337500.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

@@ -1,5 +1,4 @@
 --鎖付き真紅眼牙
----@param c Card
 function c57135971.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

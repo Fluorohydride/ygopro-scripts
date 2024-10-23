@@ -1,5 +1,4 @@
 --アダマシア・ラピュタイト
----@param c Card
 function c46552140.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

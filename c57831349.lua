@@ -1,5 +1,4 @@
 --竜星の九支
----@param c Card
 function c57831349.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

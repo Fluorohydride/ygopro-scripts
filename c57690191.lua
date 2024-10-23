@@ -1,5 +1,4 @@
 --聖騎士の三兄弟
----@param c Card
 function c57690191.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

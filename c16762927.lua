@@ -1,5 +1,4 @@
 --墓守の使い魔
----@param c Card
 function c16762927.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

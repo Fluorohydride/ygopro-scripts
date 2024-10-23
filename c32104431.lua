@@ -1,5 +1,4 @@
 --破壊剣の追憶
----@param c Card
 function c32104431.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

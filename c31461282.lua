@@ -1,5 +1,4 @@
 --開運ミラクルストーン
----@param c Card
 function c31461282.initial_effect(c)
 	c:SetUniqueOnField(1,0,31461282)
 	--Activate

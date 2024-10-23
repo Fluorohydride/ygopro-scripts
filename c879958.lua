@@ -1,5 +1,4 @@
 --パラレルポート・アーマー
----@param c Card
 function c879958.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

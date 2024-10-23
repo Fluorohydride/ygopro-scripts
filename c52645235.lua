@@ -1,6 +1,5 @@
 --エピュアリィ・ハピネス
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,82105704)
 	--xyz summon

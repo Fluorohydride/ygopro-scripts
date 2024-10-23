@@ -1,5 +1,4 @@
 --D・ゲイザー
----@param c Card
 function c28284902.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --アモルファージ・イリテュム
----@param c Card
 function c69072185.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --死配の呪眼
----@param c Card
 function c42899204.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

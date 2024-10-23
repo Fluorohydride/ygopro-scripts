@@ -1,5 +1,4 @@
 --合成魔獣 ガーゼット
----@param c Card
 function c8794435.initial_effect(c)
 	--tribute check
 	local e1=Effect.CreateEffect(c)

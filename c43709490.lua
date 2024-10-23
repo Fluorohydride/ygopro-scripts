@@ -1,5 +1,4 @@
 --被検体ミュートリアGB－88
----@param c Card
 function c43709490.initial_effect(c)
 	aux.AddCodeList(c,34572613)
 	--self spsummon

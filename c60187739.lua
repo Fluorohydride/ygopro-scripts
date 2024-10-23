@@ -1,5 +1,4 @@
 --ワンショット・ブースター
----@param c Card
 function c60187739.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

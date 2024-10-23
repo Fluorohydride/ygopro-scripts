@@ -1,5 +1,4 @@
 --異次元からの埋葬
----@param c Card
 function c48976825.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

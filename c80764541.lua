@@ -1,5 +1,4 @@
 --No.44 白天馬スカイ・ペガサス
----@param c Card
 function c80764541.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

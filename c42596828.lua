@@ -1,5 +1,4 @@
 --龍狸燈
----@param c Card
 function c42596828.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

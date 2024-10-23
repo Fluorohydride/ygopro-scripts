@@ -1,5 +1,4 @@
 --グラディアル・リターン
----@param c Card
 function c24285858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

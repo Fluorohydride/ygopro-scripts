@@ -1,5 +1,4 @@
 --双天拳 鎧阿
----@param c Card
 function c60237530.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

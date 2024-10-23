@@ -1,5 +1,4 @@
 --ホールディング・レッグス
----@param c Card
 function c70124586.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

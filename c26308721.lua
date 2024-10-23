@@ -1,5 +1,4 @@
 --捕食植物プテロペンテス
----@param c Card
 function c26308721.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

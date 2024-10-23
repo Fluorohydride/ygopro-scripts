@@ -1,5 +1,4 @@
 --クリバンデット
----@param c Card
 function c16404809.initial_effect(c)
 	--mill
 	local e1=Effect.CreateEffect(c)

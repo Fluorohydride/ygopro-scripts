@@ -1,5 +1,4 @@
 --キメラテック・オーバー・ドラゴン
----@param c Card
 function c64599569.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

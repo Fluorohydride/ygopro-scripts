@@ -1,5 +1,4 @@
 --超重武者装留ファイヤー・アーマー
----@param c Card
 function c4786063.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

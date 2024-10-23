@@ -1,5 +1,4 @@
 --夢魔鏡の乙女－イケロス
----@param c Card
 function c49389190.initial_effect(c)
 	aux.AddCodeList(c,1050355,75888208)
 	--to hand

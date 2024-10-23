@@ -1,5 +1,4 @@
 --堕ち影の蠢き
----@param c Card
 function c77505534.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

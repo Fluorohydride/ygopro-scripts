@@ -1,5 +1,4 @@
 --CNo.101 S・H・Dark Knight
----@param c Card
 function c12744567.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

@@ -1,5 +1,4 @@
 --アーティファクト－デスサイズ
----@param c Card
 function c20292186.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

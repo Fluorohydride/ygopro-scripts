@@ -1,5 +1,4 @@
 --プランキッズ・ロケット
----@param c Card
 function c18514525.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

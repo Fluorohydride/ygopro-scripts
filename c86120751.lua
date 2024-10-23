@@ -1,5 +1,4 @@
 --召喚師アレイスター
----@param c Card
 function c86120751.initial_effect(c)
 	--boost
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ウィジェット・キッド
----@param c Card
 function c10705656.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

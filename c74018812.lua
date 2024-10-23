@@ -1,5 +1,4 @@
 --白銀の城の火吹炉
----@param c Card
 function c74018812.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

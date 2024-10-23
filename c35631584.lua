@@ -1,5 +1,4 @@
 --セイクリッドの星痕
----@param c Card
 function c35631584.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヒエラコスフィンクス
----@param c Card
 function c82260502.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ダイナミスト・スピノス
----@param c Card
 function c5067884.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

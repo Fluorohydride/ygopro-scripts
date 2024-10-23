@@ -1,5 +1,4 @@
 --天威無双の拳
----@param c Card
 function c21834870.initial_effect(c)
 	--Activate(effect)
 	local e1=Effect.CreateEffect(c)

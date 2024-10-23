@@ -1,5 +1,4 @@
 --戦華の義－関雲
----@param c Card
 function c76416959.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

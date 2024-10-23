@@ -1,5 +1,4 @@
 --トゥーン・カオス・ソルジャー
----@param c Card
 function c28711704.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()

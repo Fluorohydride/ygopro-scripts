@@ -1,5 +1,4 @@
 --黒蠍－棘のミーネ
----@param c Card
 function c74153887.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(74153887,0))

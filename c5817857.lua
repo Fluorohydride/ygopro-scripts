@@ -1,5 +1,4 @@
 --コアキメイル・グールズスレイブ
----@param c Card
 function c5817857.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

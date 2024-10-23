@@ -1,5 +1,4 @@
 --彼岸の鬼神 ヘルレイカー
----@param c Card
 function c35330871.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

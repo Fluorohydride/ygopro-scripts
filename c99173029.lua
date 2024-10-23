@@ -1,5 +1,4 @@
 --霊子エネルギー固定装置
----@param c Card
 function c99173029.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

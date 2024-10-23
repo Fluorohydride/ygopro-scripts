@@ -1,6 +1,5 @@
 --古尖兵ケルベク
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,17484499)
 	--spsummon

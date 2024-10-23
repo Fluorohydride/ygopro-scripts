@@ -1,5 +1,4 @@
 --剣闘海戦
----@param c Card
 function c52394047.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

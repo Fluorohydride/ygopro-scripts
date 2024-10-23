@@ -1,5 +1,4 @@
 --ハイバネーション・ドラゴン
----@param c Card
 function c69109764.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

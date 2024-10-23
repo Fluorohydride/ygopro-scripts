@@ -1,5 +1,4 @@
 --ブロック・ゴーレム
----@param c Card
 function c72580321.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

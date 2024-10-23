@@ -1,5 +1,4 @@
 --真紅眼の黒炎竜
----@param c Card
 function c30079770.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--damage

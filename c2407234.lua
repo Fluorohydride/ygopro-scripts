@@ -1,5 +1,4 @@
 --No.69 紋章神コート・オブ・アームズ
----@param c Card
 function c2407234.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

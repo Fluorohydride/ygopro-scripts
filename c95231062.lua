@@ -1,5 +1,4 @@
 --ロスト・ブルー・ブレイカー
----@param c Card
 function c95231062.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

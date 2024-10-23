@@ -1,5 +1,4 @@
 --イピリア
----@param c Card
 function c70744296.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

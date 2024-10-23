@@ -1,5 +1,4 @@
 --X・E・N・O
----@param c Card
 function c5257687.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

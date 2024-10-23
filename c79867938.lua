@@ -1,5 +1,4 @@
 --BK ヘッドギア
----@param c Card
 function c79867938.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

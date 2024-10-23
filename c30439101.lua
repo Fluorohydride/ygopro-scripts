@@ -1,5 +1,4 @@
 --森のメルフィーズ
----@param c Card
 function c30439101.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

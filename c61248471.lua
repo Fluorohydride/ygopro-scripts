@@ -1,5 +1,4 @@
 --デーモンの超越
----@param c Card
 function c61248471.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

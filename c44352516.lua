@@ -1,5 +1,4 @@
 --サイバーダーク・インフェルノ
----@param c Card
 function c44352516.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

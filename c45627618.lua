@@ -1,5 +1,4 @@
 --覇王黒竜オッドアイズ・リベリオン・ドラゴン
----@param c Card
 function c45627618.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),7,2)

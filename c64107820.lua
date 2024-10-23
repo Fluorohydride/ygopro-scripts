@@ -1,5 +1,4 @@
 --フューチャー・グロウ
----@param c Card
 function c64107820.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

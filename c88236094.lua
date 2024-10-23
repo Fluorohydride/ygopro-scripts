@@ -1,5 +1,4 @@
 --アスワンの亡霊
----@param c Card
 function c88236094.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

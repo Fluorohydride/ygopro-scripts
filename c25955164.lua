@@ -1,5 +1,4 @@
 --雷魔神－サンガ
----@param c Card
 function c25955164.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

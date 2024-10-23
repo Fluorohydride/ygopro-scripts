@@ -1,5 +1,4 @@
 --妖眼の相剣師
----@param c Card
 function c62849088.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

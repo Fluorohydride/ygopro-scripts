@@ -1,5 +1,4 @@
 --スーパービークロイド－モビルベース
----@param c Card
 function c17745969.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c17745969.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0x16),true)

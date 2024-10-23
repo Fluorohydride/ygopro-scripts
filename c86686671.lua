@@ -1,5 +1,4 @@
 --サイバー・リペア・プラント
----@param c Card
 function c86686671.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

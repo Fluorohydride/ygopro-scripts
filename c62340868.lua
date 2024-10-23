@@ -1,5 +1,4 @@
 --風魔神－ヒューガ
----@param c Card
 function c62340868.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --烈風の覇者シムルグ
----@param c Card
 function c95192919.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

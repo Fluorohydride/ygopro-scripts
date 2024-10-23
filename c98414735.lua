@@ -1,5 +1,4 @@
 --バージェストマ・カナディア
----@param c Card
 function c98414735.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

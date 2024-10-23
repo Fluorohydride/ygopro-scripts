@@ -1,5 +1,4 @@
 --トラップ・リアクター・RR
----@param c Card
 function c52286175.initial_effect(c)
 	--destroy&damage
 	local e1=Effect.CreateEffect(c)

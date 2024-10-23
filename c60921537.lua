@@ -1,5 +1,4 @@
 --凶導の葬列
----@param c Card
 function c60921537.initial_effect(c)
 	aux.AddCodeList(c,40352445,48654323)
 	local e1=aux.AddRitualProcGreater2(c,c60921537.filter,LOCATION_HAND+LOCATION_GRAVE,c60921537.grfilter,nil,true,c60921537.extraop)

@@ -1,5 +1,4 @@
 --アルカナフォースⅢ－THE EMPRESS
----@param c Card
 function c35781051.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

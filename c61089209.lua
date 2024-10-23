@@ -1,5 +1,4 @@
 --ミュートリアル・ミスト
----@param c Card
 function c61089209.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

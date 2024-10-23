@@ -1,5 +1,4 @@
 --超重武者ソード－999
----@param c Card
 function c77013169.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔鍵錠－解－
----@param c Card
 function c98904974.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

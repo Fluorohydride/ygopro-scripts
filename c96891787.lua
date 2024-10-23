@@ -1,5 +1,4 @@
 --教導の鉄槌テオ
----@param c Card
 function c96891787.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --イグナイト・ライオット
----@param c Card
 function c50407691.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

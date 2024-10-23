@@ -1,5 +1,4 @@
 --オルターガイスト・シルキタス
----@param c Card
 function c89538537.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

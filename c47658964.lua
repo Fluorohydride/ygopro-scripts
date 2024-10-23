@@ -1,5 +1,4 @@
 --紅蓮の炎壁
----@param c Card
 function c47658964.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

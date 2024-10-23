@@ -1,5 +1,4 @@
 --ダブルヒーローアタック
----@param c Card
 function c73239437.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)

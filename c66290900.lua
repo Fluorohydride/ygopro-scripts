@@ -1,5 +1,4 @@
 --団結する剣闘獣
----@param c Card
 function c66290900.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

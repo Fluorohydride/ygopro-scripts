@@ -1,5 +1,4 @@
 --警衛バリケイドベルグ
----@param c Card
 function c13117073.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c13117073.lcheck)

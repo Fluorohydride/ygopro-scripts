@@ -1,5 +1,4 @@
 --油断大敵
----@param c Card
 function c99657399.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

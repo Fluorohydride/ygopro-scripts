@@ -1,5 +1,4 @@
 --伝説の爆炎使い
----@param c Card
 function c60258960.initial_effect(c)
 	c:EnableReviveLimit()
 	c:EnableCounterPermit(0x1)

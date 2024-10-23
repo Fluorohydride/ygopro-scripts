@@ -1,5 +1,4 @@
 --第六感
----@param c Card
 function c3280747.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

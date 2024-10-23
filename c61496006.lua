@@ -1,5 +1,4 @@
 --アビス・シャーク
----@param c Card
 function c61496006.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

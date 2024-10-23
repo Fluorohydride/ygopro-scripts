@@ -1,5 +1,4 @@
 --銀河眼の雲篭
----@param c Card
 function c9260791.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

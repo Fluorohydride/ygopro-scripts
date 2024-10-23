@@ -1,5 +1,4 @@
 --復讐の女戦士ローズ
----@param c Card
 function c1557341.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

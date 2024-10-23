@@ -1,5 +1,4 @@
 --BOXサー
----@param c Card
 function c61156777.initial_effect(c)
 	c:EnableCounterPermit(0x34)
 	--Add counter

@@ -1,5 +1,4 @@
 --サルベージェント・ドライバー
----@param c Card
 function c62306203.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

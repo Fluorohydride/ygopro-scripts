@@ -1,5 +1,4 @@
 --No.63 おしゃもじソルジャー
----@param c Card
 function c89642993.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

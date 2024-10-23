@@ -1,5 +1,4 @@
 --デュアル・アブレーション
----@param c Card
 function c80758812.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

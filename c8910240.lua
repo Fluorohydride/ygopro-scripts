@@ -1,5 +1,4 @@
 --ローズ・パピヨン
----@param c Card
 function c8910240.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

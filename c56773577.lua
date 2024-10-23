@@ -1,5 +1,4 @@
 --ネクロバレーの神殿
----@param c Card
 function c56773577.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

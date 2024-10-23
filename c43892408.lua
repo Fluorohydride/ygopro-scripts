@@ -1,5 +1,4 @@
 --竜騎士ブラック・マジシャン・ガール
----@param c Card
 function c43892408.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

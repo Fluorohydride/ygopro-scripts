@@ -1,5 +1,4 @@
 --使神官－アスカトル
----@param c Card
 function c71821687.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

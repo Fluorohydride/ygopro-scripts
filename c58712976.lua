@@ -1,5 +1,4 @@
 --ヘルフレイムゴースト
----@param c Card
 function c58712976.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_PYRO),4,2)

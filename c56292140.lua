@@ -1,5 +1,4 @@
 --No.51 怪腕のフィニッシュ・ホールド
----@param c Card
 function c56292140.initial_effect(c)
 	c:EnableCounterPermit(0x40)
 	c:SetCounterLimit(0x40,3)

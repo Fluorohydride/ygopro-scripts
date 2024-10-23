@@ -1,5 +1,4 @@
 --死の代行者 ウラヌス
----@param c Card
 function c97750534.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--spsummon

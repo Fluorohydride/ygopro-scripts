@@ -1,5 +1,4 @@
 --アーマード・ホワイトベア
----@param c Card
 function c17170970.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

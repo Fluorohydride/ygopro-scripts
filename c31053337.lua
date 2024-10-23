@@ -1,5 +1,4 @@
 --BF－激震のアブロオロス
----@param c Card
 function c31053337.initial_effect(c)
 	--special summon limit
 	local e1=Effect.CreateEffect(c)

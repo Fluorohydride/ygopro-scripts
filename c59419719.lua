@@ -1,5 +1,4 @@
 --化石融合－フォッシル・フュージョン
----@param c Card
 function c59419719.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

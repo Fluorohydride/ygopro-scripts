@@ -1,5 +1,4 @@
 --混沌のヴァルキリア
----@param c Card
 function c53871273.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

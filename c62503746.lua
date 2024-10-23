@@ -1,5 +1,4 @@
 --天雷星センコウ
----@param c Card
 function c62503746.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

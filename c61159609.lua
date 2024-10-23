@@ -1,5 +1,4 @@
 --三賢者の書
----@param c Card
 function c61159609.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

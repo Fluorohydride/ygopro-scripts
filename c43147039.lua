@@ -1,5 +1,4 @@
 --フォトン・バニッシャー
----@param c Card
 function c43147039.initial_effect(c)
 	c:SetSPSummonOnce(43147039)
 	c:EnableReviveLimit()

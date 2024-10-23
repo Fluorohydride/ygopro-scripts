@@ -1,5 +1,4 @@
 --らくがきちょう－とおせんぼ
----@param c Card
 function c94113093.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

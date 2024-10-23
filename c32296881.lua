@@ -1,5 +1,4 @@
 --豊穣のアルテミス
----@param c Card
 function c32296881.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

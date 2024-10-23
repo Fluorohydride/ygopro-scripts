@@ -1,5 +1,4 @@
 --見習い魔術師
----@param c Card
 function c9156135.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

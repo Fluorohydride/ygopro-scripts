@@ -1,5 +1,4 @@
 --ワーム・コール
----@param c Card
 function c28506708.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

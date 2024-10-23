@@ -1,5 +1,4 @@
 --魔知ガエル
----@param c Card
 function c46239604.initial_effect(c)
 	--change code
 	aux.EnableChangeCode(c,84451804)

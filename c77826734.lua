@@ -1,5 +1,4 @@
 --ペンデュラム・リボーン
----@param c Card
 function c77826734.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

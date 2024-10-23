@@ -1,6 +1,5 @@
 --冥骸合竜－メメントラル・テクトリカ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsum condition

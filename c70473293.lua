@@ -1,5 +1,4 @@
 --聖蔓の交配
----@param c Card
 function c70473293.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

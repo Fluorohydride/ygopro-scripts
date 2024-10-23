@@ -1,5 +1,4 @@
 --炎王獣 ヤクシャ
----@param c Card
 function c66413481.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

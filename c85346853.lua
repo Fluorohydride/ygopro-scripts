@@ -1,5 +1,4 @@
 --光子竜の聖騎士
----@param c Card
 function c85346853.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

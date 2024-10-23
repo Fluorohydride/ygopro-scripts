@@ -1,5 +1,4 @@
 --パペット・ルーク
----@param c Card
 function c77590412.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

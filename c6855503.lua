@@ -1,5 +1,4 @@
 --赫灼竜マスカレイド
----@param c Card
 function c6855503.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

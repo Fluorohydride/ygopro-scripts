@@ -1,5 +1,4 @@
 --人攻智能ME－PSY－YA
----@param c Card
 function c58844135.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--remove

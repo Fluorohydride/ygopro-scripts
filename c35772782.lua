@@ -1,5 +1,4 @@
 --No.67 パラダイスマッシャー
----@param c Card
 function c35772782.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,nil,nil,99)

@@ -1,5 +1,4 @@
 --Sin レインボー・ドラゴン
----@param c Card
 function c598988.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,c598988.uqfilter,LOCATION_MZONE)

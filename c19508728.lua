@@ -1,5 +1,4 @@
 --月鏡の盾
----@param c Card
 function c19508728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

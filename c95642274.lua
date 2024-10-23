@@ -1,5 +1,4 @@
 --謙虚な番兵
----@param c Card
 function c95642274.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

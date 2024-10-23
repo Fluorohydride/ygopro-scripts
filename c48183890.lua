@@ -1,6 +1,5 @@
 --アティプスの蟲惑魔
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,3,s.lcheck)

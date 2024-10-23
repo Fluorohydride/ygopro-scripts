@@ -1,5 +1,4 @@
 --Evil★Twin イージーゲーム
----@param c Card
 function c34365442.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

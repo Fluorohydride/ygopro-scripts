@@ -1,5 +1,4 @@
 --エア・サーキュレーター
----@param c Card
 function c7736719.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

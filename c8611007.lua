@@ -1,5 +1,4 @@
 --ラヴァルバル・ドラグーン
----@param c Card
 function c8611007.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)

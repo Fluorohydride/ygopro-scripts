@@ -1,5 +1,4 @@
 --リトマスの死の剣士
----@param c Card
 function c72566043.initial_effect(c)
 	c:EnableReviveLimit()
 	--trap immunity

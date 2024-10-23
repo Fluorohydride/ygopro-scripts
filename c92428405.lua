@@ -1,5 +1,4 @@
 --覇王龍の魂
----@param c Card
 function c92428405.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--activate

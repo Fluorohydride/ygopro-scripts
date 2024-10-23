@@ -1,5 +1,4 @@
 --BK チート・コミッショナー
----@param c Card
 function c76589815.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

@@ -1,5 +1,4 @@
 --ソウル・ハンター
----@param c Card
 function c72869010.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

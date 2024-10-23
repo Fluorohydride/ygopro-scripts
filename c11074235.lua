@@ -1,5 +1,4 @@
 --魔晶龍ジルドラス
----@param c Card
 function c11074235.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

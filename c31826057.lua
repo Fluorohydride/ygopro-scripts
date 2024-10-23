@@ -1,5 +1,4 @@
 --音響戦士ピアーノ
----@param c Card
 function c31826057.initial_effect(c)
 	--race change
 	local e1=Effect.CreateEffect(c)

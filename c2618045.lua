@@ -1,5 +1,4 @@
 --フォトン・チャージマン
----@param c Card
 function c2618045.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

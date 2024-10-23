@@ -1,5 +1,4 @@
 --クロノダイバー・タイムレコーダー
----@param c Card
 function c74578720.initial_effect(c)
 	--battle damage
 	local e1=Effect.CreateEffect(c)

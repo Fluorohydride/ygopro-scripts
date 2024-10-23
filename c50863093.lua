@@ -1,5 +1,4 @@
 --マシンナーズ・ラディエーター
----@param c Card
 function c50863093.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ドレミコード・スケール
----@param c Card
 function c53265336.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

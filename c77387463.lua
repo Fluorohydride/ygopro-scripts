@@ -1,5 +1,4 @@
 --方界帝ヴァルカン・ドラグニー
----@param c Card
 function c77387463.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon rule

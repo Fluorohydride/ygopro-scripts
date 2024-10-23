@@ -1,5 +1,4 @@
 --バード・フェイス
----@param c Card
 function c45547649.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

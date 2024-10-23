@@ -1,5 +1,4 @@
 --WW－アイス・ベル
----@param c Card
 function c43722862.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

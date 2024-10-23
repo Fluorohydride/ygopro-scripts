@@ -1,5 +1,4 @@
 --犬賞金
----@param c Card
 function c55351724.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

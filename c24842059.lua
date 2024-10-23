@@ -1,5 +1,4 @@
 --リングリボー
----@param c Card
 function c24842059.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c24842059.mfilter,1,1)

@@ -1,5 +1,4 @@
 --はぐれ者傭兵部隊
----@param c Card
 function c12836042.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

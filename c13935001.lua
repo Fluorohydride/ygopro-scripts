@@ -1,5 +1,4 @@
 --月光小夜曲舞踊
----@param c Card
 function c13935001.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

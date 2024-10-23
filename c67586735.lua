@@ -1,5 +1,4 @@
 --剛鬼ツープラトン
----@param c Card
 function c67586735.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

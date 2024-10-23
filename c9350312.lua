@@ -1,5 +1,4 @@
 --丘と芽吹の春化精
----@param c Card
 function c9350312.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

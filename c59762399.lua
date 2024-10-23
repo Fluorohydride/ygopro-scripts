@@ -1,5 +1,4 @@
 --EMオッドアイズ・ライトフェニックス
----@param c Card
 function c59762399.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

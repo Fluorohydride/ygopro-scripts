@@ -1,5 +1,4 @@
 --剣闘調教
----@param c Card
 function c9780364.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --憑依覚醒
----@param c Card
 function c62256492.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

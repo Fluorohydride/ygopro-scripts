@@ -1,5 +1,4 @@
 --火の粉
----@param c Card
 function c76103675.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --月光紅狐
----@param c Card
 function c94919024.initial_effect(c)
 	--ATK to 0
 	local e1=Effect.CreateEffect(c)

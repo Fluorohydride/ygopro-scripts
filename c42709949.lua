@@ -1,5 +1,4 @@
 --守護神の矛
----@param c Card
 function c42709949.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

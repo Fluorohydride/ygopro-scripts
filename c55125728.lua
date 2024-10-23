@@ -1,5 +1,4 @@
 --春化精の女神 ヴェーラ
----@param c Card
 function c55125728.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

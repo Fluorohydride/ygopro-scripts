@@ -1,5 +1,4 @@
 --マスターフレア・ヒュペリオン
----@param c Card
 function c63101468.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--synchro summon

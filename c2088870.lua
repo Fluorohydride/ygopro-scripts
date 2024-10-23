@@ -1,5 +1,4 @@
 --ワーム・ヴィクトリー
----@param c Card
 function c2088870.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

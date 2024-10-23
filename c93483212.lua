@@ -1,5 +1,4 @@
 --極神聖帝オーディン
----@param c Card
 function c93483212.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c93483212.tfilter,aux.NonTuner(nil),2)

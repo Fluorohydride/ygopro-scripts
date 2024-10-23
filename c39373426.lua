@@ -1,5 +1,4 @@
 --SPYRAL MISSION－奪還
----@param c Card
 function c39373426.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

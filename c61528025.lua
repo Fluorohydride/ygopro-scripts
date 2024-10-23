@@ -1,5 +1,4 @@
 --光の追放者
----@param c Card
 function c61528025.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

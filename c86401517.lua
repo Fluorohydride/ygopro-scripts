@@ -1,5 +1,4 @@
 --嵐竜の聖騎士
----@param c Card
 function c86401517.initial_effect(c)
 	c:EnableReviveLimit()
 	--return to hand

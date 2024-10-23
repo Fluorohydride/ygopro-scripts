@@ -1,6 +1,5 @@
 --アルグールマゼラ
 local s,id,o=GetID()
----@param c Card
 function c45154513.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

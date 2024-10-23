@@ -1,5 +1,4 @@
 --戦乙女の契約書
----@param c Card
 function c9765723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

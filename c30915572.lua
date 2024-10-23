@@ -1,5 +1,4 @@
 --星見獣ガリス
----@param c Card
 function c30915572.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --侵略の一手
----@param c Card
 function c19932396.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --閃刀姫－レイ
----@param c Card
 function c26077387.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --プラチナ・ガジェット
----@param c Card
 function c40216089.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

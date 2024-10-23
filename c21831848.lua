@@ -1,5 +1,4 @@
 --ガガガドロー
----@param c Card
 function c21831848.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

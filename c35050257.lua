@@ -1,5 +1,4 @@
 --サイバー・ラーバァ
----@param c Card
 function c35050257.initial_effect(c)
 	--avoid battle damage
 	local e1=Effect.CreateEffect(c)

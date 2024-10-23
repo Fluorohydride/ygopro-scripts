@@ -1,5 +1,4 @@
 --アルカナフォースEX－THE DARK RULER
----@param c Card
 function c69831560.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

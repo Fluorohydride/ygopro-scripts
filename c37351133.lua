@@ -1,5 +1,4 @@
 --閃刀姫－ロゼ
----@param c Card
 function c37351133.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

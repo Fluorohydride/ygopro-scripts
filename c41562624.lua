@@ -1,5 +1,4 @@
 --不知火の武部
----@param c Card
 function c41562624.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --滅びの呪文－デス・アルテマ
----@param c Card
 function c15256925.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

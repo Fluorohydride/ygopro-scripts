@@ -1,5 +1,4 @@
 --新生代化石マシン スカルバギー
----@param c Card
 function c10040267.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

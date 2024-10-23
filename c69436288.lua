@@ -1,5 +1,4 @@
 --デス・クラーケン
----@param c Card
 function c69436288.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--SpecialSummon

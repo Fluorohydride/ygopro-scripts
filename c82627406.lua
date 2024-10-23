@@ -1,5 +1,4 @@
 --キウイ・マジシャン・ガール
----@param c Card
 function c82627406.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

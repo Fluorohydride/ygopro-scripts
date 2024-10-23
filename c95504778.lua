@@ -1,5 +1,4 @@
 --トリガー・ヴルム
----@param c Card
 function c95504778.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --レプティレス・エキドゥーナ
----@param c Card
 function c8602351.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

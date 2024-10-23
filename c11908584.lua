@@ -1,5 +1,4 @@
 --守護竜の核醒
----@param c Card
 function c11908584.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

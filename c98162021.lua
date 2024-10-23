@@ -1,5 +1,4 @@
 --紫炎の荒武者
----@param c Card
 function c98162021.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	c:SetCounterLimit(0x3,1)

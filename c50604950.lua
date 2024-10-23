@@ -1,5 +1,4 @@
 --X－セイバー ガラハド
----@param c Card
 function c50604950.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

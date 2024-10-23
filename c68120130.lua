@@ -1,5 +1,4 @@
 --ジャンク・ディフェンダー
----@param c Card
 function c68120130.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

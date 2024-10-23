@@ -1,5 +1,4 @@
 --トロイメア・グリフォン
----@param c Card
 function c65330383.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c65330383.lcheck)

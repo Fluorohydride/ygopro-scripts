@@ -1,5 +1,4 @@
 --女王親衛隊
----@param c Card
 function c71411377.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

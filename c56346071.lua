@@ -1,5 +1,4 @@
 --トーテム・ファイブ
----@param c Card
 function c56346071.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ナチュル・ドラゴンフライ
----@param c Card
 function c70083723.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

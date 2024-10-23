@@ -1,5 +1,4 @@
 --大凛魔天使ローザリアン
----@param c Card
 function c81146288.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,5 +1,4 @@
 --Aiシャドー
----@param c Card
 function c77421977.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

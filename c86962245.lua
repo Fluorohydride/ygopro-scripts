@@ -1,5 +1,4 @@
 --転生炎獣フォクサー
----@param c Card
 function c86962245.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

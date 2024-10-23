@@ -1,5 +1,4 @@
 --治療の神 ディアン・ケト
----@param c Card
 function c84257639.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

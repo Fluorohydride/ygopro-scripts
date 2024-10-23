@@ -1,5 +1,4 @@
 --悪魔のサイコロ
----@param c Card
 function c126218.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

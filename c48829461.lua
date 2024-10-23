@@ -1,5 +1,4 @@
 --Sin パラドクスギア
----@param c Card
 function c48829461.initial_effect(c)
 	--sin territory
 	c:SetUniqueOnField(1,1,c48829461.uqfilter,LOCATION_MZONE)

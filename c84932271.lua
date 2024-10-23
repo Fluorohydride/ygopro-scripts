@@ -1,5 +1,4 @@
 --ワーム・ジェートリクプス
----@param c Card
 function c84932271.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ベアルクティ・ラディエーション
----@param c Card
 function c32692693.initial_effect(c)
 	c:SetUniqueOnField(1,0,32692693)
 	c:EnableCounterPermit(0x60)

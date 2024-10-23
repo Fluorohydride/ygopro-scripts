@@ -1,5 +1,4 @@
 --鎖龍蛇－スカルデット
----@param c Card
 function c74997493.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c74997493.lcheck)

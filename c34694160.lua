@@ -1,5 +1,4 @@
 --真実の眼
----@param c Card
 function c34694160.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

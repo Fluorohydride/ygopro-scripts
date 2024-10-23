@@ -1,5 +1,4 @@
 --雨天気ラズラ
----@param c Card
 function c92411493.initial_effect(c)
 	--place
 	local e1=Effect.CreateEffect(c)

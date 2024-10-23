@@ -1,5 +1,4 @@
 --思い出のブランコ
----@param c Card
 function c96765646.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

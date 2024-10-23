@@ -1,5 +1,4 @@
 --RUM－千死蛮巧
----@param c Card
 function c96142517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

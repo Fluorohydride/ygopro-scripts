@@ -1,5 +1,4 @@
 --DD魔導賢者ケプラー
----@param c Card
 function c11609969.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --No.10 白輝士イルミネーター
----@param c Card
 function c11411223.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

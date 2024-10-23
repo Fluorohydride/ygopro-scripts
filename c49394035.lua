@@ -1,5 +1,4 @@
 --ヴェンデット・コア
----@param c Card
 function c49394035.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

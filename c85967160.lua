@@ -1,5 +1,4 @@
 --アロマージ－ベルガモット
----@param c Card
 function c85967160.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

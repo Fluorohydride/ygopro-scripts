@@ -1,5 +1,4 @@
 --ガーディアン・スライム
----@param c Card
 function c15771991.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--spsummon

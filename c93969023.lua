@@ -1,5 +1,4 @@
 --黒鋼竜
----@param c Card
 function c93969023.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

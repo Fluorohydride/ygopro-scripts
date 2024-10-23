@@ -1,5 +1,4 @@
 --デス・メテオ
----@param c Card
 function c33767325.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

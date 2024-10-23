@@ -1,5 +1,4 @@
 --ブラックフェザー・アサルト・ドラゴン
----@param c Card
 function c73218989.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	c:EnableCounterPermit(0x10)

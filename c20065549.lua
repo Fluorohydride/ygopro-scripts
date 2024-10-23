@@ -1,5 +1,4 @@
 --絶対魔法禁止区域
----@param c Card
 function c20065549.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

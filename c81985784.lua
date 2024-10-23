@@ -1,5 +1,4 @@
 --デスグレムリン
----@param c Card
 function c81985784.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

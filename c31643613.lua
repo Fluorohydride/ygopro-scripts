@@ -1,5 +1,4 @@
 --捕食活動
----@param c Card
 function c31643613.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

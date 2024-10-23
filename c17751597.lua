@@ -1,5 +1,4 @@
 --烙印断罪
----@param c Card
 function c17751597.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--negate

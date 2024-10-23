@@ -1,5 +1,4 @@
 --暗黒界の書物
----@param c Card
 function c61623148.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

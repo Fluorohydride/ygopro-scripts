@@ -1,5 +1,4 @@
 --No.96 ブラック・ミスト
----@param c Card
 function c55727845.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,3)

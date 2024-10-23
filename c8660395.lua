@@ -1,5 +1,4 @@
 --結晶の女神ニンアルル
----@param c Card
 function c8660395.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4,2)

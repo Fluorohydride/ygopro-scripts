@@ -1,5 +1,4 @@
 --星因士 リゲル
----@param c Card
 function c13851202.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

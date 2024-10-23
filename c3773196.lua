@@ -1,5 +1,4 @@
 --異次元の偵察機
----@param c Card
 function c3773196.initial_effect(c)
 	--removed
 	local e1=Effect.CreateEffect(c)

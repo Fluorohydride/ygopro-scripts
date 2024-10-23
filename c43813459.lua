@@ -1,5 +1,4 @@
 --反射光子流
----@param c Card
 function c43813459.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

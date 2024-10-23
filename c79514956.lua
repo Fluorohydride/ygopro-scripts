@@ -1,5 +1,4 @@
 --幻奏の音女エレジー
----@param c Card
 function c79514956.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

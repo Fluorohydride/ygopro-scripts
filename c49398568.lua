@@ -1,5 +1,4 @@
 --連続魔法
----@param c Card
 function c49398568.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

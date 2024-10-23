@@ -1,5 +1,4 @@
 --破壊指輪
----@param c Card
 function c21219755.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

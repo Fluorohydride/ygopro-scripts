@@ -1,5 +1,4 @@
 --プランキッズの大暴走
----@param c Card
 function c79059098.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

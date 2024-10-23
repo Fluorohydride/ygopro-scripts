@@ -1,5 +1,4 @@
 --No.92 偽骸神龍 Heart－eartH Dragon
----@param c Card
 function c97403510.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,3)

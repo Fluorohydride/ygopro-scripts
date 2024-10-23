@@ -1,5 +1,4 @@
 --強化支援メカ・ヘビーウェポン
----@param c Card
 function c23265594.initial_effect(c)
 	aux.EnableUnionAttribute(c,c23265594.filter)
 	--Atk up

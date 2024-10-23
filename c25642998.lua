@@ -1,5 +1,4 @@
 --ポセイドン・ウェーブ
----@param c Card
 function c25642998.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

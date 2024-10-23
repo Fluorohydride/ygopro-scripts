@@ -1,5 +1,4 @@
 --守護神官マナ
----@param c Card
 function c42006475.initial_effect(c)
 	aux.AddCodeList(c,38033121)
 	--special summon

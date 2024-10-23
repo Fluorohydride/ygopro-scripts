@@ -1,5 +1,4 @@
 --大寒気
----@param c Card
 function c40383551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

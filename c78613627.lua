@@ -1,5 +1,4 @@
 --デス・カンガルー
----@param c Card
 function c78613627.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

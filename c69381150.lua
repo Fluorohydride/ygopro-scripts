@@ -1,5 +1,4 @@
 --Ai－Q
----@param c Card
 function c69381150.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

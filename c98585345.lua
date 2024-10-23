@@ -1,5 +1,4 @@
 --ハネクリボー LV10
----@param c Card
 function c98585345.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

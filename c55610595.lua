@@ -1,5 +1,4 @@
 --BF－上弦のピナーカ
----@param c Card
 function c55610595.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

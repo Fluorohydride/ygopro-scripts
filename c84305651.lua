@@ -1,5 +1,4 @@
 --ゴヨウ・キング
----@param c Card
 function c84305651.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),1)

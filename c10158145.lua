@@ -1,5 +1,4 @@
 --夢幻崩界イヴリース
----@param c Card
 function c10158145.initial_effect(c)
 	--spsummon link
 	local e1=Effect.CreateEffect(c)

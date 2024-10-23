@@ -1,5 +1,4 @@
 --超量機神王グレート・マグナス
----@param c Card
 function c84025439.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,12,3)

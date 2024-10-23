@@ -1,5 +1,4 @@
 --八尺勾玉
----@param c Card
 function c74115234.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

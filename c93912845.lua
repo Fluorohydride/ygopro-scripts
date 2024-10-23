@@ -1,5 +1,4 @@
 --リバイバル・ギフト
----@param c Card
 function c93912845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

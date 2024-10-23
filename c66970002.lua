@@ -1,5 +1,4 @@
 --CNo.39 希望皇ホープレイV
----@param c Card
 function c66970002.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

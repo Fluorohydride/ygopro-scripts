@@ -1,5 +1,4 @@
 --エッジインプ・チェーン
----@param c Card
 function c61173621.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

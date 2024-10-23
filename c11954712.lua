@@ -1,6 +1,5 @@
 --フライファング
 local s,id,o=GetID()
----@param c Card
 function c11954712.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

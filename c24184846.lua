@@ -1,5 +1,4 @@
 --BK リベージ・ガードナー
----@param c Card
 function c24184846.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

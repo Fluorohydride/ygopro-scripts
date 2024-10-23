@@ -1,5 +1,4 @@
 --B・F－霊弓のアズサ
----@param c Card
 function c27565379.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

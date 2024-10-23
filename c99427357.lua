@@ -1,5 +1,4 @@
 --サイバー・エンジェル－那沙帝弥－
----@param c Card
 function c99427357.initial_effect(c)
 	c:EnableReviveLimit()
 	--recover

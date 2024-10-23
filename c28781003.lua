@@ -1,5 +1,4 @@
 --レイダーズ・ナイト
----@param c Card
 function c28781003.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),4,2)

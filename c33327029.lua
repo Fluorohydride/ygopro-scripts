@@ -1,5 +1,4 @@
 --メタルフォーゼ・カウンター
----@param c Card
 function c33327029.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

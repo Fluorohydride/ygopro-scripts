@@ -1,5 +1,4 @@
 --氷水艇キングフィッシャー
----@param c Card
 function c66749546.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

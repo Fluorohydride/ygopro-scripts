@@ -1,5 +1,4 @@
 --幻獣サンダーペガス
----@param c Card
 function c34961968.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

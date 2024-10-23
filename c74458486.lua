@@ -1,5 +1,4 @@
 --援護射撃
----@param c Card
 function c74458486.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

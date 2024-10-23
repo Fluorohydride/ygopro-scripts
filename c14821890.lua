@@ -1,5 +1,4 @@
 --相剣暗転
----@param c Card
 function c14821890.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

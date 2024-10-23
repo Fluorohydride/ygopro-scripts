@@ -1,5 +1,4 @@
 --神星なる波動
----@param c Card
 function c5026221.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

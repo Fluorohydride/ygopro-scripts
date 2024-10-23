@@ -1,5 +1,4 @@
 --碑像の天使－アズルーン
----@param c Card
 function c44822037.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

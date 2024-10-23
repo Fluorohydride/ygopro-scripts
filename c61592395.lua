@@ -1,5 +1,4 @@
 --アルマの魔導書
----@param c Card
 function c61592395.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

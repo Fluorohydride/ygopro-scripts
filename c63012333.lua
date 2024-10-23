@@ -1,5 +1,4 @@
 --精気を吸う骨の塔
----@param c Card
 function c63012333.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

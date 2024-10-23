@@ -1,5 +1,4 @@
 --パラレルエクシード
----@param c Card
 function c71278040.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

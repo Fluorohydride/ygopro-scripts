@@ -1,5 +1,4 @@
 --The big SATURN
----@param c Card
 function c34004470.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

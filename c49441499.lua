@@ -1,5 +1,4 @@
 --アルティメット・インセクト LV1
----@param c Card
 function c49441499.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

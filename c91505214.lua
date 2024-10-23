@@ -1,5 +1,4 @@
 --トリックスター・ナルキッス
----@param c Card
 function c91505214.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

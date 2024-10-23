@@ -1,5 +1,4 @@
 --寡黙なるサイコプリースト
----@param c Card
 function c25343017.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

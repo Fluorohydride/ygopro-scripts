@@ -1,5 +1,4 @@
 --黒魔術の継承
----@param c Card
 function c41735184.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--Activate

@@ -1,5 +1,4 @@
 --パズズル
----@param c Card
 function c77384395.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale

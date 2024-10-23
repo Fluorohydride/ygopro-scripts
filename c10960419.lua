@@ -1,5 +1,4 @@
 --タイムマジック・ハンマー
----@param c Card
 function c10960419.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

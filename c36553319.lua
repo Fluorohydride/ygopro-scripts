@@ -1,5 +1,4 @@
 --彼岸の悪鬼 ファーファレル
----@param c Card
 function c36553319.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

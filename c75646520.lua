@@ -1,5 +1,4 @@
 --金属探知器
----@param c Card
 function c75646520.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

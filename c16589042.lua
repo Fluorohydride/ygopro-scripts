@@ -1,5 +1,4 @@
 --疾風の暗黒騎士ガイア
----@param c Card
 function c16589042.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

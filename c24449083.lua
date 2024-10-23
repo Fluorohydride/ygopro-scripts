@@ -1,5 +1,4 @@
 --コート・オブ・ジャスティス
----@param c Card
 function c24449083.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

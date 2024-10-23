@@ -1,5 +1,4 @@
 --多次元壊獣ラディアン
----@param c Card
 function c28674152.initial_effect(c)
 	c:SetUniqueOnField(1,0,aux.FilterBoolFunction(Card.IsSetCard,0xd3),LOCATION_MZONE)
 	--special summon rule

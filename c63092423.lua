@@ -1,5 +1,4 @@
 --弾帯城壁龍
----@param c Card
 function c63092423.initial_effect(c)
 	c:EnableCounterPermit(0x44)
 	c:EnableReviveLimit()

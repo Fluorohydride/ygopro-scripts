@@ -1,5 +1,4 @@
 --クルーエル
----@param c Card
 function c82642348.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

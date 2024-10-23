@@ -1,5 +1,4 @@
 --烙印劇城デスピア
----@param c Card
 function c99543666.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

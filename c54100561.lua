@@ -1,5 +1,4 @@
 --ファドレミコード・ファンシア
----@param c Card
 function c54100561.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

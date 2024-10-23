@@ -1,5 +1,4 @@
 --ガスタの希望 カムイ
----@param c Card
 function c72439556.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --天威の龍仙女
----@param c Card
 function c78917791.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WYRM),2,2)

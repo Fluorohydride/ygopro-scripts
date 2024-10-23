@@ -1,5 +1,4 @@
 --召喚獣アウゴエイデス
----@param c Card
 function c97300502.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

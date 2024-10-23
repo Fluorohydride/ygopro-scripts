@@ -1,5 +1,4 @@
 --クリムゾン・リゾネーター
----@param c Card
 function c34761841.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

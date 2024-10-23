@@ -1,5 +1,4 @@
 --怨念のキラードール
----@param c Card
 function c72657739.initial_effect(c)
 	--register
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --レッド・ダストン
----@param c Card
 function c61019812.initial_effect(c)
 	c:SetUniqueOnField(1,0,61019812)
 	--cannot release

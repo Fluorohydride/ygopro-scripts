@@ -1,5 +1,4 @@
 --魔界発現世行きデスガイド
----@param c Card
 function c10802915.initial_effect(c)
 	--spsummon
 	local e2=Effect.CreateEffect(c)

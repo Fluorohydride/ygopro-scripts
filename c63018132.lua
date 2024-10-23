@@ -1,5 +1,4 @@
 --ドラゴン・ライダー
----@param c Card
 function c63018132.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

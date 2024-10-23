@@ -1,5 +1,4 @@
 --コアキメイル・ガーディアン
----@param c Card
 function c45041488.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

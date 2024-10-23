@@ -1,5 +1,4 @@
 --華麗なる密偵－C
----@param c Card
 function c21088856.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

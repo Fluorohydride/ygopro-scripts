@@ -1,5 +1,4 @@
 --フィッシュボーグ－ドクター
----@param c Card
 function c10560119.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --キラー・スネーク
----@param c Card
 function c8131171.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --コザッキーの自爆装置
----@param c Card
 function c21908319.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

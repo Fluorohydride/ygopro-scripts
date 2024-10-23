@@ -1,5 +1,4 @@
 --ハーピィ・オラクル
----@param c Card
 function c66386380.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--to hand

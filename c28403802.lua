@@ -1,5 +1,4 @@
 --P.U.N.K.JAMドラゴン・ドライブ
----@param c Card
 function c28403802.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_PSYCHO),aux.NonTuner(nil),1)

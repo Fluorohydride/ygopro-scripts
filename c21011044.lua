@@ -1,5 +1,4 @@
 --影依の偽典
----@param c Card
 function c21011044.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --剣闘獣の闘器デーモンズシールド
----@param c Card
 function c8730435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --No.91 サンダー・スパーク・ドラゴン
----@param c Card
 function c84417082.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

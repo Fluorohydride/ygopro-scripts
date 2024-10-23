@@ -1,5 +1,4 @@
 --黒魔導戦士 ブレイカー
----@param c Card
 function c22923081.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--summon success

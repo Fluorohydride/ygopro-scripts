@@ -1,5 +1,4 @@
 --E・HERO テンペスター
----@param c Card
 function c83121692.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

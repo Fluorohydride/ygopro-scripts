@@ -1,5 +1,4 @@
 --星遺物の守護竜
----@param c Card
 function c87571563.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

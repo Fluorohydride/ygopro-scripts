@@ -1,6 +1,5 @@
 --E・HERO シャイニング・ネオス・ウィングマン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Fusion Material
 	c:EnableReviveLimit()

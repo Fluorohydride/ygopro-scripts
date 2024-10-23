@@ -1,5 +1,4 @@
 --氷結界の水影
----@param c Card
 function c90311614.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

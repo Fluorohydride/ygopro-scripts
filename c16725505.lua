@@ -1,5 +1,4 @@
 --SR赤目のダイス
----@param c Card
 function c16725505.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

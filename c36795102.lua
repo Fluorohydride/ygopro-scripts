@@ -1,5 +1,4 @@
 --究極宝玉獣 レインボー・ドラゴン
----@param c Card
 function c36795102.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

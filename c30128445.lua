@@ -1,5 +1,4 @@
 --超越竜ドリルグナトゥス
----@param c Card
 function c30128445.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

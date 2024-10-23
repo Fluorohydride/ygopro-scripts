@@ -1,5 +1,4 @@
 --時読みの魔術師
----@param c Card
 function c20409757.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

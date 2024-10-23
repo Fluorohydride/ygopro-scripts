@@ -1,5 +1,4 @@
 --究極時械神セフィロン
----@param c Card
 function c8967776.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

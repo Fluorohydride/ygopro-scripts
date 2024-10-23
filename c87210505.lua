@@ -1,5 +1,4 @@
 --騎士の称号
----@param c Card
 function c87210505.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

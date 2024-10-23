@@ -1,5 +1,4 @@
 --彼岸の悪鬼 バルバリッチャ
----@param c Card
 function c81992475.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --地竜星－ヘイカン
----@param c Card
 function c66500065.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --大革命
----@param c Card
 function c65396880.initial_effect(c)
 	aux.AddCodeList(c,58538870,12143771,85936485)
 	--Activate

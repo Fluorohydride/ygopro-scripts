@@ -1,5 +1,4 @@
 --バトル・テレポーテーション
----@param c Card
 function c71652522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

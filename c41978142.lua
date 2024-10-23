@@ -1,5 +1,4 @@
 --霞の谷の執行者
----@param c Card
 function c41978142.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

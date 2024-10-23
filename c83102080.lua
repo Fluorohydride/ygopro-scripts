@@ -1,5 +1,4 @@
 --パラレル・ツイスター
----@param c Card
 function c83102080.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

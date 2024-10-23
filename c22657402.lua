@@ -1,5 +1,4 @@
 --冥界の麗人イゾルデ
----@param c Card
 function c22657402.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

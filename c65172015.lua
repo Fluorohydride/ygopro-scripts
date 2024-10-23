@@ -1,5 +1,4 @@
 --AtoZ－ドラゴン・バスターキャノン
----@param c Card
 function c65172015.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,1561110,91998119,true,true)

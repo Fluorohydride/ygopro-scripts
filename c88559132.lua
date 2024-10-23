@@ -1,5 +1,4 @@
 --ターレット・ウォリアー
----@param c Card
 function c88559132.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

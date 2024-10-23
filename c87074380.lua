@@ -1,5 +1,4 @@
 --マシンナーズ・カーネル
----@param c Card
 function c87074380.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

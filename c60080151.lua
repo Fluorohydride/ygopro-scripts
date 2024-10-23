@@ -1,5 +1,4 @@
 --好敵手の記憶
----@param c Card
 function c60080151.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

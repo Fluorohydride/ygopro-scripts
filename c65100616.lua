@@ -1,5 +1,4 @@
 --リンク・インフライヤー
----@param c Card
 function c65100616.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

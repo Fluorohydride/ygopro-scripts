@@ -1,5 +1,4 @@
 --ジュラック・タイタン
----@param c Card
 function c85028288.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

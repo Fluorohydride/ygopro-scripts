@@ -1,5 +1,4 @@
 --真竜の目覚め
----@param c Card
 function c87765315.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

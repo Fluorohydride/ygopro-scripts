@@ -1,5 +1,4 @@
 --異次元の強襲艦
----@param c Card
 function c56790702.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

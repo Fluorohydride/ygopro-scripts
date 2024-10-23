@@ -1,5 +1,4 @@
 --マジック・ストライダー
----@param c Card
 function c93966624.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

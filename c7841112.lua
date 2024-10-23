@@ -1,5 +1,4 @@
 --セイヴァー・スター・ドラゴン
----@param c Card
 function c7841112.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309,44508094)
 	--synchro summon

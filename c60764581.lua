@@ -1,5 +1,4 @@
 --迷える仔羊
----@param c Card
 function c60764581.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --炎の王 ナグルファー
----@param c Card
 function c2881864.initial_effect(c)
 	c:SetUniqueOnField(1,0,2881864)
 	--destroy replace

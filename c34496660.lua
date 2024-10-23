@@ -1,5 +1,4 @@
 --超重武者ダイ－8
----@param c Card
 function c34496660.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --グリード
----@param c Card
 function c89405199.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

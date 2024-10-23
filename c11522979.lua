@@ -1,5 +1,4 @@
 --CNo.69 紋章死神カオス・オブ・アームズ
----@param c Card
 function c11522979.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,4)

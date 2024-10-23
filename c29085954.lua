@@ -1,5 +1,4 @@
 --No.78 ナンバーズ・アーカイブ
----@param c Card
 function c29085954.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

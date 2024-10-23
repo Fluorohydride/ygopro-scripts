@@ -1,5 +1,4 @@
 --鏡鳴する武神
----@param c Card
 function c35183853.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

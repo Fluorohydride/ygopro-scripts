@@ -1,5 +1,4 @@
 --スターダスト・チャージ・ウォリアー
----@param c Card
 function c64880894.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

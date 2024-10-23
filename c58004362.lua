@@ -1,5 +1,4 @@
 --X・HERO クロスガイ
----@param c Card
 function c58004362.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WARRIOR),2,2)

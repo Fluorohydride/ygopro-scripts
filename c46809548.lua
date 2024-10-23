@@ -1,5 +1,4 @@
 --機巧牙－御神尊真神
----@param c Card
 function c46809548.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

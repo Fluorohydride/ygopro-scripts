@@ -1,5 +1,4 @@
 --ハイパーハンマーヘッド
----@param c Card
 function c2671330.initial_effect(c)
 	--return hand
 	local e1=Effect.CreateEffect(c)

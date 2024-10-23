@@ -1,5 +1,4 @@
 --暗黒プテラ
----@param c Card
 function c90654356.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --禰須三破鳴比
----@param c Card
 function c71459017.initial_effect(c)
 	c:EnableCounterPermit(0x58)
 	--cannot be material

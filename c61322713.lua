@@ -1,5 +1,4 @@
 --陰の光
----@param c Card
 function c61322713.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

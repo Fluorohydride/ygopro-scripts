@@ -1,5 +1,4 @@
 --発禁令
----@param c Card
 function c64964750.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

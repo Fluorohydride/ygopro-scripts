@@ -1,5 +1,4 @@
 --潤いの風
----@param c Card
 function c92266279.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

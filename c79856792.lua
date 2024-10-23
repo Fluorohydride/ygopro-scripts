@@ -1,5 +1,4 @@
 --究極宝玉神 レインボー・ドラゴン
----@param c Card
 function c79856792.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

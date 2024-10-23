@@ -1,5 +1,4 @@
 --アロマガーデニング
----@param c Card
 function c29189613.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

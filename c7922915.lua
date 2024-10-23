@@ -1,5 +1,4 @@
 --マジシャンズ・ナビゲート
----@param c Card
 function c7922915.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

@@ -1,5 +1,4 @@
 --剣闘獣ラニスタ
----@param c Card
 function c2067935.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

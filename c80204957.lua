@@ -1,5 +1,4 @@
 --借カラクリ蔵
----@param c Card
 function c80204957.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

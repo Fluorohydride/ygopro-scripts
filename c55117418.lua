@@ -1,5 +1,4 @@
 --能力吸収コア
----@param c Card
 function c55117418.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

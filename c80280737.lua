@@ -1,5 +1,4 @@
 --バスター・モード
----@param c Card
 function c80280737.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --聖天樹の幼精
----@param c Card
 function c93896655.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c93896655.mfilter,1,1)

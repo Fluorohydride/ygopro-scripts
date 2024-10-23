@@ -1,5 +1,4 @@
 --魅幽鳥
----@param c Card
 function c15419596.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --双星神 a－vida
----@param c Card
 function c17469113.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

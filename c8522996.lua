@@ -1,5 +1,4 @@
 --始源の帝王
----@param c Card
 function c8522996.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

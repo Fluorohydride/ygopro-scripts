@@ -1,5 +1,4 @@
 --虚栄の大猿
----@param c Card
 function c96914272.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

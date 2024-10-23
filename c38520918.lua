@@ -1,5 +1,4 @@
 --エンシェント・ドラゴン
----@param c Card
 function c38520918.initial_effect(c)
 	-- atk/lv up
 	local e1=Effect.CreateEffect(c)

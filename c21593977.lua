@@ -1,5 +1,4 @@
 --処刑人－マキュラ
----@param c Card
 function c21593977.initial_effect(c)
 	--activate trap in hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --幻影騎士団ダーク・ガントレット
----@param c Card
 function c24212820.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --空牙団の舵手 ヘルマー
----@param c Card
 function c67466547.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

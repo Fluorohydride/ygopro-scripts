@@ -1,5 +1,4 @@
 --魔導化士 マット
----@param c Card
 function c63175639.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

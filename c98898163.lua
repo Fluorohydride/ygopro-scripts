@@ -1,5 +1,4 @@
 --グランドタスク・ドラゴン
----@param c Card
 function c98898163.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

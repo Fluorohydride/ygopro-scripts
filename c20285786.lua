@@ -1,5 +1,4 @@
 --マスター・ピース
----@param c Card
 function c20285786.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

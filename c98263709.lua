@@ -1,5 +1,4 @@
 --銀河魔鏡士
----@param c Card
 function c98263709.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

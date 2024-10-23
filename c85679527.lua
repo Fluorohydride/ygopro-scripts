@@ -1,5 +1,4 @@
 --コスモブレイン
----@param c Card
 function c85679527.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,5 +1,4 @@
 --真紅眼の凶星竜－メテオ・ドラゴン
----@param c Card
 function c17871506.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--indes

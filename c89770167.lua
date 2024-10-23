@@ -1,5 +1,4 @@
 --炎熱刀プロミネンス
----@param c Card
 function c89770167.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

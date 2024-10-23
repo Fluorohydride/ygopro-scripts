@@ -1,5 +1,4 @@
 --同族感電ウィルス
----@param c Card
 function c86361354.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

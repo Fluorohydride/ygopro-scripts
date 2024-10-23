@@ -1,5 +1,4 @@
 --白夜の女王
----@param c Card
 function c20193924.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

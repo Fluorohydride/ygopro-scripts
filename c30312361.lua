@@ -1,6 +1,5 @@
 --ファントム・オブ・カオス
 local s,id,o=GetID()
----@param c Card
 function c30312361.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)

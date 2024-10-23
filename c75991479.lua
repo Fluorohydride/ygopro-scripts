@@ -1,5 +1,4 @@
 --異次元の哨戒機
----@param c Card
 function c75991479.initial_effect(c)
 	--reg
 	local e0=Effect.CreateEffect(c)

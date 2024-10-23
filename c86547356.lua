@@ -1,5 +1,4 @@
 --インフェルニティ・パラノイア
----@param c Card
 function c86547356.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

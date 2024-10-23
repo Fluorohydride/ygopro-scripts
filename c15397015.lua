@@ -1,5 +1,4 @@
 --インスペクト・ボーダー
----@param c Card
 function c15397015.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --No.5 亡朧竜 デス・キマイラ・ドラゴン
----@param c Card
 function c90126061.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,nil,nil,99)

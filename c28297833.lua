@@ -1,5 +1,4 @@
 --ネクロフェイス
----@param c Card
 function c28297833.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

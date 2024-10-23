@@ -1,5 +1,4 @@
 --DDD疾風大王エグゼクティブ・アレクサンダー
----@param c Card
 function c6766208.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

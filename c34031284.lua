@@ -1,5 +1,4 @@
 --おジャマ・エンペラー
----@param c Card
 function c34031284.initial_effect(c)
 	aux.AddCodeList(c,90011152)
 	--link summon

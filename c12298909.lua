@@ -1,5 +1,4 @@
 --マテリアルドラゴン
----@param c Card
 function c12298909.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

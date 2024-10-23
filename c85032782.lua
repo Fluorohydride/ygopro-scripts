@@ -1,5 +1,4 @@
 --時花の賢者－フルール・ド・サージュ
----@param c Card
 function c85032782.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

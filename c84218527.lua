@@ -1,5 +1,4 @@
 --フォーチュンレディ・リワインド
----@param c Card
 function c84218527.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

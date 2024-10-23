@@ -1,5 +1,4 @@
 --ニトロ・ウォリアー
----@param c Card
 function c18013090.initial_effect(c)
 	aux.AddMaterialCodeList(c,96182448)
 	--synchro summon

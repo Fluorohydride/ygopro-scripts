@@ -1,5 +1,4 @@
 --巨大戦艦 テトラン
----@param c Card
 function c44954628.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--summon success

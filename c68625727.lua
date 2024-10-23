@@ -1,5 +1,4 @@
 --占術姫ペタルエルフ
----@param c Card
 function c68625727.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --スターダスト・ファントム
----@param c Card
 function c80244114.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--special summon

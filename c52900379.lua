@@ -1,5 +1,4 @@
 --BF－追い風のアリゼ
----@param c Card
 function c52900379.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

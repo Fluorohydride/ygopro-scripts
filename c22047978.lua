@@ -1,5 +1,4 @@
 --バトル・ブレイク
----@param c Card
 function c22047978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

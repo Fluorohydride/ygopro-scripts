@@ -1,5 +1,4 @@
 --スクラップ・キマイラ
----@param c Card
 function c56746202.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SCRAP_CHIMERA)
 	--summon success

@@ -1,5 +1,4 @@
 --No.4 猛毒刺胞ステルス・クラーゲン
----@param c Card
 function c67557908.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),4,2)

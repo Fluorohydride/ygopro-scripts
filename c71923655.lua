@@ -1,5 +1,4 @@
 --シャークラーケン
----@param c Card
 function c71923655.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

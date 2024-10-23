@@ -1,5 +1,4 @@
 --DDプラウド・シュバリエ
----@param c Card
 function c17979378.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --王女の試練
----@param c Card
 function c72709014.initial_effect(c)
 	aux.AddCodeList(c,81383947,46128076,75917088,2316186)
 	--Activate

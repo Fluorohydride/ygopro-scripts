@@ -1,5 +1,4 @@
 --直通断線
----@param c Card
 function c88086137.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

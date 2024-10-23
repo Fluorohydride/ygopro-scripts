@@ -1,5 +1,4 @@
 --サイバーダーク・ワールド
----@param c Card
 function c64753988.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

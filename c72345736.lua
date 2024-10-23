@@ -1,5 +1,4 @@
 --六武衆の結束
----@param c Card
 function c72345736.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	c:SetCounterLimit(0x3,2)

@@ -1,5 +1,4 @@
 --竜巻海流壁
----@param c Card
 function c18605135.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

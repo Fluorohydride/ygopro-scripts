@@ -1,5 +1,4 @@
 --7カード
----@param c Card
 function c86198326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

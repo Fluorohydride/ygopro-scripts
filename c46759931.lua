@@ -1,5 +1,4 @@
 --V・HERO トリニティー
----@param c Card
 function c46759931.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

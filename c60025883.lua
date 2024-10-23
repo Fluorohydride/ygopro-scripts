@@ -1,5 +1,4 @@
 --決闘竜 デュエル・リンク・ドラゴン
----@param c Card
 function c60025883.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c60025883.lcheck)

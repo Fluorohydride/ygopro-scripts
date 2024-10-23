@@ -1,5 +1,4 @@
 --黄金狂エルドリッチ
----@param c Card
 function c74889525.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

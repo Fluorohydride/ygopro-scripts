@@ -1,5 +1,4 @@
 --早すぎた復活
----@param c Card
 function c39967326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

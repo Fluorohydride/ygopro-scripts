@@ -1,5 +1,4 @@
 --カラクリ屋敷
----@param c Card
 function c33184236.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

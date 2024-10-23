@@ -1,5 +1,4 @@
 --デストーイ・ハーケン・クラーケン
----@param c Card
 function c40636712.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

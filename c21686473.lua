@@ -1,5 +1,4 @@
 --DDD運命王ゼロ・ラプラス
----@param c Card
 function c21686473.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

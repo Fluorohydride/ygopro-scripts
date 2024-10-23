@@ -1,5 +1,4 @@
 --E・HERO リキッドマン
----@param c Card
 function c59392529.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

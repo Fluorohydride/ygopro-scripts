@@ -1,5 +1,4 @@
 --雲魔物－タービュランス
----@param c Card
 function c16197610.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

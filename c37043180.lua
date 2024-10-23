@@ -1,5 +1,4 @@
 --異次元の戦士
----@param c Card
 function c37043180.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

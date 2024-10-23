@@ -1,5 +1,4 @@
 --弩級軍貫－いくら型一番艦
----@param c Card
 function c75215744.initial_effect(c)
 	aux.AddCodeList(c,24639891,61027400)
 	--xyz procedure

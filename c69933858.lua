@@ -1,5 +1,4 @@
 --ギルフォード・ザ・レジェンド
----@param c Card
 function c69933858.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

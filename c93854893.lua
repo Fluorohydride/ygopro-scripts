@@ -1,5 +1,4 @@
 --宵星の機神ディンギルス
----@param c Card
 function c93854893.initial_effect(c)
 	c:SetSPSummonOnce(93854893)
 	--xyz summon

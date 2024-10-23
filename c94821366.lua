@@ -1,5 +1,4 @@
 --驚楽園の支配人 ＜∀rlechino＞
----@param c Card
 function c94821366.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

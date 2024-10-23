@@ -1,5 +1,4 @@
 --黒蠍盗掘団
----@param c Card
 function c40933924.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40933924,0))

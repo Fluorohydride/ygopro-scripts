@@ -1,5 +1,4 @@
 --アラドヴァルの影霊衣
----@param c Card
 function c39468724.initial_effect(c)
 	c:EnableReviveLimit()
 	--Cannot Special Summon

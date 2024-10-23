@@ -1,5 +1,4 @@
 --天空聖者メルティウス
----@param c Card
 function c49905576.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--recover&destroy

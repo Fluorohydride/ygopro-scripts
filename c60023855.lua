@@ -1,5 +1,4 @@
 --ベビー・スパイダー
----@param c Card
 function c60023855.initial_effect(c)
 	--level up
 	local e1=Effect.CreateEffect(c)

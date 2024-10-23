@@ -1,5 +1,4 @@
 --憑依覚醒－大稲荷火
----@param c Card
 function c92652813.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

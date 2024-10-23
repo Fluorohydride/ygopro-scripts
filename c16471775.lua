@@ -1,5 +1,4 @@
 --ベアルクティ・ディパーチャー
----@param c Card
 function c16471775.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

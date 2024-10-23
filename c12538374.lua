@@ -1,5 +1,4 @@
 --黄泉ガエル
----@param c Card
 function c12538374.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

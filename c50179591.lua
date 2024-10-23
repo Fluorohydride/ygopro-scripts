@@ -1,5 +1,4 @@
 --魔界台本「火竜の住処」
----@param c Card
 function c50179591.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

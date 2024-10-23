@@ -1,5 +1,4 @@
 --グラヴィティ・ベヒモス
----@param c Card
 function c56931015.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

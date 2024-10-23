@@ -1,5 +1,4 @@
 --スノーマン・エフェクト
----@param c Card
 function c62370023.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

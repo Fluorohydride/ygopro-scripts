@@ -1,5 +1,4 @@
 --海晶乙女クリスタルハート
----@param c Card
 function c67712104.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2,2)

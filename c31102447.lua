@@ -1,5 +1,4 @@
 --アマゾネスの斥候
----@param c Card
 function c31102447.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

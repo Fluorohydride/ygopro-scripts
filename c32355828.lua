@@ -1,5 +1,4 @@
 --スケルゴン
----@param c Card
 function c32355828.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

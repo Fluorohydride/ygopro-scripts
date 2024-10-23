@@ -1,5 +1,4 @@
 --宝玉の守護者
----@param c Card
 function c14469229.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

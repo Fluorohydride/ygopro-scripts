@@ -1,5 +1,4 @@
 --ライトロードの神域
----@param c Card
 function c52665542.initial_effect(c)
 	c:EnableCounterPermit(0x5)
 	--activate

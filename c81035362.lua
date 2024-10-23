@@ -1,5 +1,4 @@
 --魔サイの戦士
----@param c Card
 function c81035362.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

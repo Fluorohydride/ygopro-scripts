@@ -1,5 +1,4 @@
 --アーカナイト・マジシャン
----@param c Card
 function c31924889.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--synchro summon

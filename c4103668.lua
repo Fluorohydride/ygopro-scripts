@@ -1,5 +1,4 @@
 --翼の魔妖－天狗
----@param c Card
 function c4103668.initial_effect(c)
 	c:SetUniqueOnField(1,0,4103668)
 	--synchro summon

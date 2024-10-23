@@ -1,5 +1,4 @@
 --異次元への隙間
----@param c Card
 function c49600724.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

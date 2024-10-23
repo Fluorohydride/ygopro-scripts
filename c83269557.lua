@@ -1,5 +1,4 @@
 --ダーク・ヴァルキリア
----@param c Card
 function c83269557.initial_effect(c)
 	c:EnableCounterPermit(0x1,LOCATION_MZONE,aux.IsDualState)
 	aux.EnableDualAttribute(c)

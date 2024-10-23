@@ -1,5 +1,4 @@
 --融合徴兵
----@param c Card
 function c17194258.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

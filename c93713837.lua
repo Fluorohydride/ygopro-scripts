@@ -1,5 +1,4 @@
 --No.24 竜血鬼ドラギュラス
----@param c Card
 function c93713837.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

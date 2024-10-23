@@ -1,5 +1,4 @@
 --ダイナレスラー・パンクラトプス
----@param c Card
 function c82385847.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

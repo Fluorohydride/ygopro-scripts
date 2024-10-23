@@ -1,5 +1,4 @@
 --先史遺産ソル・モノリス
----@param c Card
 function c93543806.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --暗黒界の策士 グリン
----@param c Card
 function c51232472.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

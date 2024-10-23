@@ -1,5 +1,4 @@
 --BF－孤高のシルバー・ウィンド
----@param c Card
 function c33236860.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x33),aux.NonTuner(nil),2)

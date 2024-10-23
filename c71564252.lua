@@ -1,5 +1,4 @@
 --ライオウ
----@param c Card
 function c71564252.initial_effect(c)
 	--disable search
 	local e1=Effect.CreateEffect(c)

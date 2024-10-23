@@ -1,5 +1,4 @@
 --陽炎獣 ヒッポグリフォ
----@param c Card
 function c31303283.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

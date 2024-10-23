@@ -1,5 +1,4 @@
 --E・HERO エアーマン
----@param c Card
 function c40044918.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --インフェルニティ・セイジ
----@param c Card
 function c46435376.initial_effect(c)
 	--Discard
 	local e1=Effect.CreateEffect(c)

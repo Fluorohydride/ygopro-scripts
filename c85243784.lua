@@ -1,5 +1,4 @@
 --リンクロス
----@param c Card
 function c85243784.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

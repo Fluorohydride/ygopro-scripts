@@ -1,5 +1,4 @@
 --無限起動コロッサルマウンテン
----@param c Card
 function c60195675.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --神竜－エクセリオン
----@param c Card
 function c10032958.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --水照明
----@param c Card
 function c91831066.initial_effect(c)
 	c:SetUniqueOnField(1,0,91831066)
 	--Activate

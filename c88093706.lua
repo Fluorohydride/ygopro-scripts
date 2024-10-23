@@ -1,5 +1,4 @@
 --アップデートジャマー
----@param c Card
 function c88093706.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c88093706.mfilter,2)

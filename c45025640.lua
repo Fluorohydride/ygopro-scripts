@@ -1,5 +1,4 @@
 --ボイコットン
----@param c Card
 function c45025640.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

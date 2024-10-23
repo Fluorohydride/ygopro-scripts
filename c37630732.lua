@@ -1,5 +1,4 @@
 --パワー・ボンド
----@param c Card
 function c37630732.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

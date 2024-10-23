@@ -1,5 +1,4 @@
 --電子光虫－レジストライダー
----@param c Card
 function c19301729.initial_effect(c)
 	--Xyz limit
 	local e0=Effect.CreateEffect(c)

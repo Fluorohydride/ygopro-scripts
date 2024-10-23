@@ -1,5 +1,4 @@
 --十二獣ラビーナ
----@param c Card
 function c4367330.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --CNo.5 亡朧龍 カオス・キマイラ・ドラゴン
----@param c Card
 function c69757518.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3,nil,nil,99)

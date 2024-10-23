@@ -1,5 +1,4 @@
 --墓守の刻印
----@param c Card
 function c59494222.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

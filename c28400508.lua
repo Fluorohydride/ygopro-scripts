@@ -1,5 +1,4 @@
 --No.97 龍影神ドラッグラビオン
----@param c Card
 function c28400508.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

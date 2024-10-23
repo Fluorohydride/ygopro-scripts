@@ -1,5 +1,4 @@
 --白銀の城の竜飾灯
----@param c Card
 function c37629703.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

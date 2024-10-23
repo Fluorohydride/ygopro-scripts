@@ -1,5 +1,4 @@
 --六武衆の影－紫炎
----@param c Card
 function c1828513.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x103d),4,2)

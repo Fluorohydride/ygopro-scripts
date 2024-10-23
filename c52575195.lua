@@ -1,5 +1,4 @@
 --ビビット騎士
----@param c Card
 function c52575195.initial_effect(c)
 	--change target
 	local e1=Effect.CreateEffect(c)
