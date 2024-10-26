@@ -55,9 +55,9 @@ function c73206827.coinop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c73206827.effectcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return c:GetFlagEffect(73206828)==0 or c:IsHasEffect(EFFECT_CANNOT_DISABLE)
-		and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE and re:GetHandler():IsSetCard(0x5)
+	local loc,p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_PLAYER)
+	return (c:GetFlagEffect(73206828)==0 or c:IsHasEffect(EFFECT_CANNOT_DISABLE))
+		and p==tp and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE and re:GetHandler():IsSetCard(0x5)
 end
 function c73206827.effectop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
