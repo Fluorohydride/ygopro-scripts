@@ -20,12 +20,11 @@ function c73206827.initial_effect(c)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(73206827)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_CHAIN_SOLVING)
 	e3:SetRange(LOCATION_FZONE)
-	e3:SetTargetRange(LOCATION_MZONE,0)
-	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x5))
 	e3:SetCondition(c73206827.effectcon)
+	e3:SetOperation(c73206827.effectop)
 	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
@@ -54,9 +53,23 @@ function c73206827.coinop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterFlagEffect(73206828,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2)
 	end
 end
-function c73206827.effectcon(e)
+function c73206827.effectcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return c:GetFlagEffect(73206828)==0 or c:IsHasEffect(EFFECT_CANNOT_DISABLE)
+		and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE and re:GetHandler():IsSetCard(0x5)
+end
+function c73206827.effectop(e,tp,eg,ep,ev,re,r,rp)
+	local tc=re:GetHandler()
+	local c=e:GetHandler()
+	if tc:IsSetCard(0x5) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetCode(73206827)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_CHAIN)
+		tc:RegisterEffect(e1)
+	end
 end
 function c73206827.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
