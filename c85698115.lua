@@ -64,7 +64,7 @@ function s.rfilter(c)
 	return c:IsLevel(1) and c:IsAbleToDeck()
 end
 function s.stfilter(c)
-	return c:IsCode(63086455,11110218,id) and not c:IsForbidden()
+	return c:IsCode(63086455,11110218,id) and not c:IsForbidden() and c:IsSSetable()
 end
 function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.rfilter(chkc) end
@@ -75,7 +75,8 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.GetFirstTarget()
-	if rc:IsRelateToEffect(e) and Duel.SendtoDeck(rc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 then
+	if rc:IsRelateToEffect(e) and Duel.SendtoDeck(rc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and rc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1))then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
