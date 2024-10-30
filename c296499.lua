@@ -45,6 +45,6 @@ function c296499.mtop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_MAINTENANCE,false,nil)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_MAINTENANCE)
 	end
 end

@@ -62,7 +62,7 @@ function c70917315.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_MAINTENANCE,false,c) and Duel.SelectYesNo(tp,aux.Stringid(70917315,0)) then
 		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_MAINTENANCE,false,c)
 		Duel.Release(g,REASON_MAINTENANCE)
-	else Duel.Destroy(c,REASON_COST) end
+	else Duel.Destroy(c,REASON_MAINTENANCE) end
 end
 function c70917315.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and not c:IsSetCard(0xe0)

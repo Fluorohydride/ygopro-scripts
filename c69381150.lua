@@ -83,5 +83,5 @@ function c69381150.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckReleaseGroupEx(tp,Card.IsType,1,REASON_MAINTENANCE,false,nil,TYPE_LINK) and Duel.SelectYesNo(tp,aux.Stringid(69381150,0)) then
 		local g=Duel.SelectReleaseGroupEx(tp,Card.IsType,1,1,REASON_MAINTENANCE,false,nil,TYPE_LINK)
 		Duel.Release(g,REASON_MAINTENANCE)
-	else Duel.Destroy(c,REASON_COST) end
+	else Duel.Destroy(c,REASON_MAINTENANCE) end
 end
