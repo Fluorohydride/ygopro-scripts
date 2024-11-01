@@ -1,4 +1,5 @@
 --星輝士の因子
+---@param c Card
 function c81810441.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

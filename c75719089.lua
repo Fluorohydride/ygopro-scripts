@@ -1,4 +1,5 @@
 --栄光の聖騎士団
+---@param c Card
 function c75719089.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

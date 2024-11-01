@@ -1,4 +1,5 @@
 --八雷天神
+---@param c Card
 function c90583279.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

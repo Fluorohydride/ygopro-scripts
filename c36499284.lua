@@ -1,4 +1,5 @@
 --炎舞－「揺光」
+---@param c Card
 function c36499284.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY)

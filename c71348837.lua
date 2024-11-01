@@ -1,4 +1,5 @@
 --マドルチェ・サロン
+---@param c Card
 function c71348837.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

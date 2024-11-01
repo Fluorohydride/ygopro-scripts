@@ -1,5 +1,6 @@
 --ゲネラールプローベ
 local s,id,o=GetID()
+---@param c Card
 function c82735249.initial_effect(c)
 	aux.AddCodeList(c,75304793)
 	c:EnableCounterPermit(0x35)

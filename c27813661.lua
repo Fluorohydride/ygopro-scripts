@@ -1,4 +1,5 @@
 --天空の虹彩
+---@param c Card
 function c27813661.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

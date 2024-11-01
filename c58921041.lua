@@ -1,4 +1,5 @@
 --魔封じの芳香
+---@param c Card
 function c58921041.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

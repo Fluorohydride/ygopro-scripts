@@ -1,5 +1,6 @@
 --神竜 ティタノマキア
 local s,id,o=GetID()
+---@param c Card
 function c32975247.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

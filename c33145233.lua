@@ -1,4 +1,5 @@
 --儀式魔人デモリッシャー
+---@param c Card
 function c33145233.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

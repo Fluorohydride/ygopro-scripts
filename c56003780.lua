@@ -1,4 +1,5 @@
 --転生炎獣Jジャガー
+---@param c Card
 function c56003780.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

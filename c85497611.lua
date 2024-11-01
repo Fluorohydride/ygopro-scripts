@@ -1,4 +1,5 @@
 --オッドアイズ・ウィザード・ドラゴン
+---@param c Card
 function c85497611.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

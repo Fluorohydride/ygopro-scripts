@@ -1,4 +1,5 @@
 --カース・ネクロフィア
+---@param c Card
 function c14509651.initial_effect(c)
 	--special summon by effect
 	local e0=Effect.CreateEffect(c)

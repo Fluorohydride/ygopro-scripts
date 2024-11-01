@@ -1,4 +1,5 @@
 --猛突進
+---@param c Card
 function c32854013.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

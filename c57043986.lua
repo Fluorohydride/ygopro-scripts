@@ -1,4 +1,5 @@
 --ブルーアイズ・ソリッド・ドラゴン
+---@param c Card
 function c57043986.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--negate

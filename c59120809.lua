@@ -1,4 +1,5 @@
 --スケアクロー・トライヒハート
+---@param c Card
 function c59120809.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

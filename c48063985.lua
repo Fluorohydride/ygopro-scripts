@@ -1,4 +1,5 @@
 --聖霊獣騎 カンナホーク
+---@param c Card
 function c48063985.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

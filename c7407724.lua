@@ -1,4 +1,5 @@
 --六花精エリカ
+---@param c Card
 function c7407724.initial_effect(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)

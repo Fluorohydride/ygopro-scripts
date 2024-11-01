@@ -1,4 +1,5 @@
 --ヴァリアンツB－バロン
+---@param c Card
 function c14418464.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

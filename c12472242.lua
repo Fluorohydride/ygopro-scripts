@@ -1,4 +1,5 @@
 --レッグル
+---@param c Card
 function c12472242.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

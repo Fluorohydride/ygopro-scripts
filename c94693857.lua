@@ -1,4 +1,5 @@
 --ブンボーグ001
+---@param c Card
 function c94693857.initial_effect(c)
 	--same effect send this card to grave and summon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
@@ -18,6 +19,7 @@ function c94693857.initial_effect(c)
 	e3:SetDescription(aux.Stringid(94693857,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)

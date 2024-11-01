@@ -1,4 +1,5 @@
 --マシンナーズ・ギアフレーム
+---@param c Card
 function c42940404.initial_effect(c)
 	aux.EnableUnionAttribute(c,c42940404.filter)
 	--search

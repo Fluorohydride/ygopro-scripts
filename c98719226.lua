@@ -1,4 +1,5 @@
 --エーリアン・ウォリアー
+---@param c Card
 function c98719226.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

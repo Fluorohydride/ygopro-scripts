@@ -1,4 +1,5 @@
 --ハネクリボー LV9
+---@param c Card
 function c33776734.initial_effect(c)
 	c:SetUniqueOnField(1,0,33776734)
 	--special summon

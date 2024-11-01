@@ -1,4 +1,5 @@
 --ドラゴン・アイス
+---@param c Card
 function c64262809.initial_effect(c)
 	c:SetUniqueOnField(1,1,64262809)
 	--spsummon

@@ -1,4 +1,5 @@
 --サイバー・エンジェル－美朱濡－
+---@param c Card
 function c78316184.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

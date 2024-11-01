@@ -1,4 +1,5 @@
 --混沌領域
+---@param c Card
 function c99266988.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

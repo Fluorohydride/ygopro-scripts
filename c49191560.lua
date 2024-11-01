@@ -1,4 +1,5 @@
 --魔導剣士 シャリオ
+---@param c Card
 function c49191560.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --蒼炎の剣士
+---@param c Card
 function c50903514.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ライバル登場！
+---@param c Card
 function c5728014.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

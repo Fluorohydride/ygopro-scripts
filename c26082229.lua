@@ -1,4 +1,5 @@
 --侵略の炎
+---@param c Card
 function c26082229.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

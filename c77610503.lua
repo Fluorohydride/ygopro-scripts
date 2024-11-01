@@ -1,4 +1,5 @@
 --ふわんだりぃずと怖い海
+---@param c Card
 function c77610503.initial_effect(c)
 	--Activate(Special Summon)
 	local e1=Effect.CreateEffect(c)

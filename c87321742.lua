@@ -1,4 +1,5 @@
 --RR－ストラングル・レイニアス
+---@param c Card
 function c87321742.initial_effect(c)
 	--self ss
 	local e1=Effect.CreateEffect(c)

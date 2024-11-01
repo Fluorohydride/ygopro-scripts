@@ -1,4 +1,5 @@
 --砲撃のカタパルト・タートル
+---@param c Card
 function c7913375.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

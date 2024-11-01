@@ -1,4 +1,5 @@
 --ドングリス
+---@param c Card
 function c13478040.initial_effect(c)
 	c:EnableCounterPermit(0x17)
 	--spsummon

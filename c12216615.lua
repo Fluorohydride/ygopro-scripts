@@ -1,4 +1,5 @@
 --コアキメイルの障壁
+---@param c Card
 function c12216615.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

@@ -1,4 +1,5 @@
 --抹殺の指名者
+---@param c Card
 function c65681983.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

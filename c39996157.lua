@@ -1,4 +1,5 @@
 --機械天使の儀式
+---@param c Card
 function c39996157.initial_effect(c)
 	aux.AddRitualProcGreater2(c,c39996157.ritual_filter)
 	--destroy replace

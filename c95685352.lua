@@ -1,4 +1,5 @@
 --ダーク・アンセリオン・ドラゴン
+---@param c Card
 function c95685352.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

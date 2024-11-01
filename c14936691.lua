@@ -1,4 +1,5 @@
 --ワーム・イーロキン
+---@param c Card
 function c14936691.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

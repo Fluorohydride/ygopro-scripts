@@ -1,4 +1,5 @@
 --光虫基盤
+---@param c Card
 function c86643777.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

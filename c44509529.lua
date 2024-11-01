@@ -1,4 +1,5 @@
 --プランキッズ・ウェザー
+---@param c Card
 function c44509529.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

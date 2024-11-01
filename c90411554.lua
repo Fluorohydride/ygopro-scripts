@@ -1,4 +1,5 @@
 --巌征竜－レドックス
+---@param c Card
 function c90411554.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

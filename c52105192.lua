@@ -1,4 +1,5 @@
 --アームズ・ホール
+---@param c Card
 function c52105192.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

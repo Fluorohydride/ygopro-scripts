@@ -1,4 +1,5 @@
 --ライトレイ ギア・フリード
+---@param c Card
 function c4722253.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

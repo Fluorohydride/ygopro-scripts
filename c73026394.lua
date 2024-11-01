@@ -1,4 +1,5 @@
 --フュージョン・ガード
+---@param c Card
 function c73026394.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

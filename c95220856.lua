@@ -1,4 +1,5 @@
 --怨霊の湿地帯
+---@param c Card
 function c95220856.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

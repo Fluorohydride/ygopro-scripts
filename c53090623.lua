@@ -1,4 +1,5 @@
 --黄血鬼
+---@param c Card
 function c53090623.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

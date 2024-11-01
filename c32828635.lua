@@ -1,4 +1,5 @@
 --エンドレス・オブ・ザ・ワールド
+---@param c Card
 function c32828635.initial_effect(c)
 	aux.AddRitualProcGreater2Code2(c,46427957,72426662,nil,nil,c32828635.mfilter)
 	--salvage

@@ -1,4 +1,5 @@
 --占い魔女 ヒカリちゃん
+---@param c Card
 function c6311717.initial_effect(c)
 	--special summon from hand
 	local e1=Effect.CreateEffect(c)

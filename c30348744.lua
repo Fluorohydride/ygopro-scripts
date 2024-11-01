@@ -1,4 +1,5 @@
 --TG ドリル・フィッシュ
+---@param c Card
 function c30348744.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

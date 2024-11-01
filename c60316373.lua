@@ -1,4 +1,5 @@
 --紋章獣アバコーンウェイ
+---@param c Card
 function c60316373.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

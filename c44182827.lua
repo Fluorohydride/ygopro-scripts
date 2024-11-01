@@ -1,4 +1,5 @@
 --輪廻転生
+---@param c Card
 function c44182827.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

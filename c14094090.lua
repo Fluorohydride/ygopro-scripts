@@ -1,4 +1,5 @@
 --超戦士の儀式
+---@param c Card
 function c14094090.initial_effect(c)
 	aux.AddRitualProcEqual(c,c14094090.ritual_filter)
 	--spsummon

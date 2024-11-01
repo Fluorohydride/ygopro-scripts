@@ -1,4 +1,5 @@
 --禁忌の壺
+---@param c Card
 function c91501248.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

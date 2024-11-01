@@ -1,4 +1,5 @@
 --摩天楼2－ヒーローシティ
+---@param c Card
 function c47596607.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

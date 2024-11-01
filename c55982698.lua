@@ -1,4 +1,5 @@
 --A・O・J リバース・ブレイク
+---@param c Card
 function c55982698.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

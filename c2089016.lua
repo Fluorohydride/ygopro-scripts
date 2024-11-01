@@ -1,4 +1,5 @@
 --先史遺産トゥスパ・ロケット
+---@param c Card
 function c2089016.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

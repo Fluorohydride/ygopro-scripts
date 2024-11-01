@@ -1,4 +1,5 @@
 --神・スライム
+---@param c Card
 function c42166000.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

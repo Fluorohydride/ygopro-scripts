@@ -1,4 +1,5 @@
 --No.76 諧調光師グラディエール
+---@param c Card
 function c92015800.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

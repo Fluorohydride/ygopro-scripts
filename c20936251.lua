@@ -1,4 +1,5 @@
 --ヌメロン・ストーム
+---@param c Card
 function c20936251.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ナチュルの神星樹
+---@param c Card
 function c3734202.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

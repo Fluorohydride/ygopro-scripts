@@ -1,4 +1,5 @@
 --超重武者グロウ－V
+---@param c Card
 function c62017867.initial_effect(c)
 	--sort decktop
 	local e1=Effect.CreateEffect(c)

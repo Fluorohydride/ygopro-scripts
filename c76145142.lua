@@ -1,4 +1,5 @@
 --オルフェゴール・ロンギルス
+---@param c Card
 function c76145142.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,99,c76145142.lcheck)

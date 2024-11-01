@@ -1,4 +1,5 @@
 --星遺物－『星槍』
+---@param c Card
 function c46647144.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

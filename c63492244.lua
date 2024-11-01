@@ -1,4 +1,5 @@
 --トリックスター・ライトアリーナ
+---@param c Card
 function c63492244.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --月光蒼猫
+---@param c Card
 function c11439455.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

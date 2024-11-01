@@ -1,4 +1,5 @@
 --XYZ－ドラゴン・キャノン
+---@param c Card
 function c91998119.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

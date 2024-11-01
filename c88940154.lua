@@ -1,4 +1,5 @@
 --武神器－ハチ
+---@param c Card
 function c88940154.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

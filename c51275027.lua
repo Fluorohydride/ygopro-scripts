@@ -1,4 +1,5 @@
 --薄幸の美少女
+---@param c Card
 function c51275027.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

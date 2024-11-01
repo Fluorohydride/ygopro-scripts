@@ -1,4 +1,5 @@
 --カオス・フォーム
+---@param c Card
 function c21082832.initial_effect(c)
 	aux.AddCodeList(c,46986414,89631139)
 	aux.AddRitualProcEqual2(c,c21082832.filter,nil,c21082832.mfilter)

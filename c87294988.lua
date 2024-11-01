@@ -1,4 +1,5 @@
 --紅姫チルビメ
+---@param c Card
 function c87294988.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

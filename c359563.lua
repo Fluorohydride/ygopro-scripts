@@ -1,4 +1,5 @@
 --ヴェルズ・ナイトメア
+---@param c Card
 function c359563.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),4,2)

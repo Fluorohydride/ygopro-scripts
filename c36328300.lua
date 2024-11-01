@@ -1,4 +1,5 @@
 --究極宝玉陣
+---@param c Card
 function c36328300.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

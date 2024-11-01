@@ -1,4 +1,5 @@
 --時械巫女
+---@param c Card
 function c27107590.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

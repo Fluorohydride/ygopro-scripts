@@ -1,4 +1,5 @@
 --鉄獣鳥 メルクーリエ
+---@param c Card
 function c19096726.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--disable

@@ -1,4 +1,5 @@
 --ドラグニティナイト－ゲイボルグ
+---@param c Card
 function c900787.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(Card.IsRace,RACE_WINDBEAST),1)

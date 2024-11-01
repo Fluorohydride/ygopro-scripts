@@ -1,5 +1,6 @@
 --霊魂鳥影－彦孔雀
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--change name

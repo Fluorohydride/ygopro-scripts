@@ -1,4 +1,5 @@
 --解放のアリアドネ
+---@param c Card
 function c98301564.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

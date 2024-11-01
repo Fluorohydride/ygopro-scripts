@@ -1,4 +1,5 @@
 --深海のコレペティ
+---@param c Card
 function c33467872.initial_effect(c)
 	aux.AddMaterialCodeList(c,78868119)
 	--synchro summon

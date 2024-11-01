@@ -1,4 +1,5 @@
 --地天の騎士ガイアドレイク
+---@param c Card
 function c58601383.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

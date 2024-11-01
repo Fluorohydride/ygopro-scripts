@@ -1,4 +1,5 @@
 --曙光の騎士
+---@param c Card
 function c6351548.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

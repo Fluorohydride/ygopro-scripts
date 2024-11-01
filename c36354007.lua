@@ -1,4 +1,5 @@
 --ギルフォード・ザ・ライトニング
+---@param c Card
 function c36354007.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

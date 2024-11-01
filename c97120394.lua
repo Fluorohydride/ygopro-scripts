@@ -1,4 +1,5 @@
 --封魔の矢
+---@param c Card
 function c97120394.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

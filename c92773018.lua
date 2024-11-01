@@ -1,4 +1,5 @@
 --サイバネティック・ヒドゥン・テクノロジー
+---@param c Card
 function c92773018.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

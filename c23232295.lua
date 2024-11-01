@@ -1,4 +1,5 @@
 --BK 拘束蛮兵リードブロー
+---@param c Card
 function c23232295.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--xyz summon

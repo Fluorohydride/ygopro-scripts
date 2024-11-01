@@ -1,5 +1,6 @@
 --夢現の寝姫－ネムレリア・レアリゼ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--gain atk
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --地久神－カルボン
+---@param c Card
 function c15079028.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エクスクローラー・ニューロゴス
+---@param c Card
 function c66393507.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

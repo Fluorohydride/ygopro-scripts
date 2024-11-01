@@ -1,4 +1,5 @@
 --白翼の魔術師
+---@param c Card
 function c11067666.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Negate

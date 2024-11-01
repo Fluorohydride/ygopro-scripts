@@ -1,4 +1,5 @@
 --転生炎獣の烈爪
+---@param c Card
 function c88540324.initial_effect(c)
 	c:SetUniqueOnField(1,0,88540324)
 	--activate

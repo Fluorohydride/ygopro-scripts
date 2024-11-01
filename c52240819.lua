@@ -1,4 +1,5 @@
 --魔界劇団－デビル・ヒール
+---@param c Card
 function c52240819.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

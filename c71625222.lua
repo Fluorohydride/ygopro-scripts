@@ -1,4 +1,5 @@
 --時の魔術師
+---@param c Card
 function c71625222.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

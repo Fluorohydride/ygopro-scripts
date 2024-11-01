@@ -1,4 +1,5 @@
 --おジャマ改造
+---@param c Card
 function c2390019.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

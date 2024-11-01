@@ -1,4 +1,5 @@
 --アギド
+---@param c Card
 function c16135253.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)

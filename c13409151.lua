@@ -1,4 +1,5 @@
 --砂バク
+---@param c Card
 function c13409151.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

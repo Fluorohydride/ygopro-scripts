@@ -1,4 +1,5 @@
 --竜の転生
+---@param c Card
 function c20638610.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

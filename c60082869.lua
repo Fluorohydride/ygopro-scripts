@@ -1,4 +1,5 @@
 --砂塵の大竜巻
+---@param c Card
 function c60082869.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

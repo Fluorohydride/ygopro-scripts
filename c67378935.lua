@@ -1,4 +1,5 @@
 --オーバーレイ・ネットワーク
+---@param c Card
 function c67378935.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

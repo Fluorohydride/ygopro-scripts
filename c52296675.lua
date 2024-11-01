@@ -1,4 +1,5 @@
 --アンカモフライト
+---@param c Card
 function c52296675.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --No.18 紋章祖プレイン・コート
+---@param c Card
 function c23649496.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

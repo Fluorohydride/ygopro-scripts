@@ -1,4 +1,5 @@
 --ガガガヘッド
+---@param c Card
 function c67120578.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

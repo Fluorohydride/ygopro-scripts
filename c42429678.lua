@@ -1,4 +1,5 @@
 --ブルル＠イグニスター
+---@param c Card
 function c42429678.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

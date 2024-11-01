@@ -1,4 +1,5 @@
 --ヴァンパイア・デューク
+---@param c Card
 function c58947797.initial_effect(c)
 	--spsuccess
 	local e1=Effect.CreateEffect(c)

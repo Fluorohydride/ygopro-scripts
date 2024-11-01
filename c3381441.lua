@@ -1,4 +1,5 @@
 --墓守の巫女
+---@param c Card
 function c3381441.initial_effect(c)
 	--field
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇魔界の竜騎士 ダークソード
+---@param c Card
 function c86805855.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

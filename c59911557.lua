@@ -1,4 +1,5 @@
 --ゴゴゴゴラム
+---@param c Card
 function c59911557.initial_effect(c)
 	--pos change
 	local e1=Effect.CreateEffect(c)

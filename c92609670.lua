@@ -1,4 +1,5 @@
 --H・C アンブッシュ・ソルジャー
+---@param c Card
 function c92609670.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

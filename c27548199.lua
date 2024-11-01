@@ -1,4 +1,5 @@
 --ヴァレルロード・S・ドラゴン
+---@param c Card
 function c27548199.initial_effect(c)
 	c:EnableCounterPermit(0x4b)
 	--synchro summon

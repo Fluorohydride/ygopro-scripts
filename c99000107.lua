@@ -1,4 +1,5 @@
 --修禅僧 ゲンドウ
+---@param c Card
 function c99000107.initial_effect(c)
 	--Cannot activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --転生の予言
+---@param c Card
 function c46652477.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

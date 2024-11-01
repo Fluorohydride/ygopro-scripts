@@ -1,4 +1,5 @@
 --琰魔竜 レッド・デーモン
+---@param c Card
 function c39765958.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

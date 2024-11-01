@@ -1,4 +1,5 @@
 --交響魔人マエストローク
+---@param c Card
 function c25341652.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

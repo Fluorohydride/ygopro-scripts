@@ -1,4 +1,5 @@
 --孵化
+---@param c Card
 function c96965364.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

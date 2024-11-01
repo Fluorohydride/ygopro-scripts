@@ -1,4 +1,5 @@
 --雷天気ターメル
+---@param c Card
 function c91299846.initial_effect(c)
 	--place
 	local e1=Effect.CreateEffect(c)

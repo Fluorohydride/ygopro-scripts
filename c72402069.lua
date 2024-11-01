@@ -1,4 +1,5 @@
 --DDD超死偉王ホワイテスト・ヘル・アーマゲドン
+---@param c Card
 function c72402069.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c,false)

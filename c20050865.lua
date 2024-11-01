@@ -1,4 +1,5 @@
 --水晶機巧－シトリィ
+---@param c Card
 function c20050865.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --伝説の賭博師
+---@param c Card
 function c2196767.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

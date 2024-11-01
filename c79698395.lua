@@ -1,4 +1,5 @@
 --未界域－ユーマリア大陸
+---@param c Card
 function c79698395.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --運命の抱く爆弾
+---@param c Card
 function c51208877.initial_effect(c)
 	aux.AddCodeList(c,17484499)
 	--activate

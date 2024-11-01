@@ -1,4 +1,5 @@
 --素早いビッグハムスター
+---@param c Card
 function c5220687.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

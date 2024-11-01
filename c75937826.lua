@@ -1,4 +1,5 @@
 --巨大戦艦 ビッグ・コアMk－Ⅱ
+---@param c Card
 function c75937826.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--spsummon success

@@ -1,4 +1,5 @@
 --デュエル・アカデミア
+---@param c Card
 function c5833312.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --焔聖騎士－アストルフォ
+---@param c Card
 function c95953557.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

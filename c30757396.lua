@@ -1,4 +1,5 @@
 --ブラッド・メフィスト
+---@param c Card
 function c30757396.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

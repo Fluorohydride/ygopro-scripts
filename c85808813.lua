@@ -1,4 +1,5 @@
 --タイム・ストリーム
+---@param c Card
 function c85808813.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--Activate

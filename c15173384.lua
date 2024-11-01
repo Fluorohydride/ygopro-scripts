@@ -1,4 +1,5 @@
 --幻想魔術師・ノー・フェイス
+---@param c Card
 function c15173384.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

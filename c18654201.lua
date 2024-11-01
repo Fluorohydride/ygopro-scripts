@@ -1,4 +1,5 @@
 --クリオスフィンクス
+---@param c Card
 function c18654201.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

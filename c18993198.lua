@@ -1,4 +1,5 @@
 --化合獣オキシン・オックス
+---@param c Card
 function c18993198.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

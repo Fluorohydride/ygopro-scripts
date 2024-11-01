@@ -1,4 +1,5 @@
 --先史遺産驚神殿－トリリトン
+---@param c Card
 function c98204536.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

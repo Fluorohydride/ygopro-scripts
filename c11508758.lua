@@ -1,4 +1,5 @@
 --ミュータント・ハイブレイン
+---@param c Card
 function c11508758.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

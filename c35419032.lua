@@ -1,4 +1,5 @@
 --侵略の侵喰感染
+---@param c Card
 function c35419032.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

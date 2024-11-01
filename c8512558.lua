@@ -1,4 +1,5 @@
 --希望皇オノマトピア
+---@param c Card
 function c8512558.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

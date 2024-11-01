@@ -1,4 +1,5 @@
 --バージェストマ・マーレラ
+---@param c Card
 function c64765016.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

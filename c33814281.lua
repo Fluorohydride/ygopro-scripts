@@ -1,4 +1,5 @@
 --特許権の契約書類
+---@param c Card
 function c33814281.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

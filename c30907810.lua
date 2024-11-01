@@ -1,4 +1,5 @@
 --魔弾の悪魔 ザミエル
+---@param c Card
 function c30907810.initial_effect(c)
 	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

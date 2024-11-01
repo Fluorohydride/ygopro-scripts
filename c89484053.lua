@@ -1,4 +1,5 @@
 --転生炎獣モル
+---@param c Card
 function c89484053.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

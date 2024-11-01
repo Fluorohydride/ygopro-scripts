@@ -1,4 +1,5 @@
 --アマゾネスの秘宝
+---@param c Card
 function c79965360.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

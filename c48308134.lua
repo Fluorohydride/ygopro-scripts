@@ -1,4 +1,5 @@
 --幻煌龍の螺旋突
+---@param c Card
 function c48308134.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

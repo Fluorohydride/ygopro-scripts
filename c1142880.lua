@@ -1,4 +1,5 @@
 --サイバー・ドラゴン・ネクステア
+---@param c Card
 function c1142880.initial_effect(c)
 	--code
 	aux.EnableChangeCode(c,70095154,LOCATION_MZONE+LOCATION_GRAVE)

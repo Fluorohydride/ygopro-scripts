@@ -1,4 +1,5 @@
 --ファイヤー・エジェクション
+---@param c Card
 function c11654067.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

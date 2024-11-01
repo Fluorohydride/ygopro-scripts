@@ -1,4 +1,5 @@
 --メタル・デビルゾア
+---@param c Card
 function c50705071.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

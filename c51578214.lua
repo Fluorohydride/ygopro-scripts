@@ -1,4 +1,5 @@
 --騎甲虫アサルト・ローラー
+---@param c Card
 function c51578214.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

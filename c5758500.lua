@@ -1,4 +1,5 @@
 --魂の解放
+---@param c Card
 function c5758500.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

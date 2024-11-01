@@ -1,4 +1,5 @@
 --フルール・ド・フルーレ
+---@param c Card
 function c10204849.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

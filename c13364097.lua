@@ -1,4 +1,5 @@
 --電脳堺門－朱雀
+---@param c Card
 function c13364097.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

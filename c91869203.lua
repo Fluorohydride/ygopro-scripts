@@ -1,4 +1,5 @@
 --アマゾネスの射手
+---@param c Card
 function c91869203.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

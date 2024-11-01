@@ -1,4 +1,5 @@
 --ネメシス・フラッグ
+---@param c Card
 function c19211362.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

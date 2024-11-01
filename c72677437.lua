@@ -1,4 +1,5 @@
 --毒蛇王ヴェノミノン
+---@param c Card
 function c72677437.initial_effect(c)
 	aux.AddCodeList(c,54306223)
 	--spsummon condition

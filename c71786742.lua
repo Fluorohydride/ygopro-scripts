@@ -1,4 +1,5 @@
 --ギアギアーノ
+---@param c Card
 function c71786742.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

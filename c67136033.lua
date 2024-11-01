@@ -1,4 +1,5 @@
 --熱血獣王ベアーマン
+---@param c Card
 function c67136033.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

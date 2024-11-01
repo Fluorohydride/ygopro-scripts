@@ -1,4 +1,5 @@
 --沈黙の魔導剣士－サイレント・パラディン
+---@param c Card
 function c19502505.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

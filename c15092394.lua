@@ -1,4 +1,5 @@
 --RR－エトランゼ・ファルコン
+---@param c Card
 function c15092394.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,5,2)

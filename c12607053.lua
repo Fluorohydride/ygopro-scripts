@@ -1,4 +1,5 @@
 --和睦の使者
+---@param c Card
 function c12607053.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --うにの軍貫
+---@param c Card
 function c42377643.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

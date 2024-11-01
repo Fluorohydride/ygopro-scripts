@@ -1,4 +1,5 @@
 --ドン・サウザンドの玉座
+---@param c Card
 function c93238626.initial_effect(c)
 	c:SetUniqueOnField(1,0,93238626)
 	--activate

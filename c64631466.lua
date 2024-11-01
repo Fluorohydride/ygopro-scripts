@@ -1,4 +1,5 @@
 --サクリファイス
+---@param c Card
 function c64631466.initial_effect(c)
 	c:EnableReviveLimit()
 	--equip

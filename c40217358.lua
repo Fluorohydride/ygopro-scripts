@@ -1,4 +1,5 @@
 --ブルー・ダストン
+---@param c Card
 function c40217358.initial_effect(c)
 	c:SetUniqueOnField(1,0,40217358)
 	--cannot release

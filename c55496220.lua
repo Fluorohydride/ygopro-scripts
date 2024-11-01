@@ -1,4 +1,5 @@
 --光波干渉
+---@param c Card
 function c55496220.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

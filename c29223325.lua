@@ -1,4 +1,5 @@
 --アーティファクト・ムーブメント
+---@param c Card
 function c29223325.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

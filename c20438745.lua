@@ -1,4 +1,5 @@
 --灼熱王パイロン
+---@param c Card
 function c20438745.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--damage

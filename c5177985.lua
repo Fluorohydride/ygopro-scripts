@@ -1,4 +1,5 @@
 --不知火の師範
+---@param c Card
 function c5177985.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

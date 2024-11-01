@@ -1,4 +1,5 @@
 --兵隊竜
+---@param c Card
 function c7805147.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

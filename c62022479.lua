@@ -1,4 +1,5 @@
 --烙印の絆
+---@param c Card
 function c62022479.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

@@ -1,4 +1,5 @@
 --星遺物に眠る深層
+---@param c Card
 function c98935722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

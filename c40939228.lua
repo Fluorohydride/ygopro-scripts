@@ -1,5 +1,6 @@
 --シューティング・セイヴァー・スター・ドラゴン
 local s,id,o=GetID()
+---@param c Card
 function c40939228.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309)
 	aux.AddCodeList(c,44508094)

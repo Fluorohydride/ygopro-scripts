@@ -1,4 +1,5 @@
 --法典の守護者アイワス
+---@param c Card
 function c35877582.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

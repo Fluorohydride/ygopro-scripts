@@ -1,4 +1,5 @@
 --汎神の帝王
+---@param c Card
 function c22842126.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

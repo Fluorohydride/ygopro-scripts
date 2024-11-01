@@ -1,4 +1,5 @@
 --アマゾネスの剣士
+---@param c Card
 function c94004268.initial_effect(c)
 	--reflect battle dam
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リンク・パーティー
+---@param c Card
 function c68957925.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

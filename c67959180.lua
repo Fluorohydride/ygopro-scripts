@@ -1,4 +1,5 @@
 --きまぐれの女神
+---@param c Card
 function c67959180.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)

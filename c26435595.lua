@@ -1,4 +1,5 @@
 --聖菓使クーベル
+---@param c Card
 function c26435595.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),2,true)

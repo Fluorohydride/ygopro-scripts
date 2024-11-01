@@ -1,4 +1,5 @@
 --冥王結界波
+---@param c Card
 function c54693926.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

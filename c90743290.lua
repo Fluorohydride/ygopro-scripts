@@ -1,4 +1,5 @@
 --魔導老士 エアミット
+---@param c Card
 function c90743290.initial_effect(c)
 	--atk/lvup
 	local e1=Effect.CreateEffect(c)

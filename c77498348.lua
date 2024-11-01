@@ -1,4 +1,5 @@
 --カオス・ソルジャー －宵闇の使者－
+---@param c Card
 function c77498348.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

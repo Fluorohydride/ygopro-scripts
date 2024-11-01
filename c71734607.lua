@@ -1,4 +1,5 @@
 --六花のひとひら
+---@param c Card
 function c71734607.initial_effect(c)
 	--to hand or grave
 	local e1=Effect.CreateEffect(c)

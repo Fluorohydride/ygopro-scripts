@@ -1,4 +1,5 @@
 --EMライフ・ソードマン
+---@param c Card
 function c7268133.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

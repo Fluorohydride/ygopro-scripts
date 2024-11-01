@@ -1,4 +1,5 @@
 --古代の機械魔神
+---@param c Card
 function c87182127.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

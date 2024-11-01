@@ -1,4 +1,5 @@
 --暗黒恐獣
+---@param c Card
 function c38670435.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --擾乱騒蛇ラウドクラウド
+---@param c Card
 function c61465001.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

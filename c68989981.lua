@@ -1,4 +1,5 @@
 --堕ち武者
+---@param c Card
 function c68989981.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

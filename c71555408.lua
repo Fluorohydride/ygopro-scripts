@@ -1,4 +1,5 @@
 --剛鬼アイアン・クロー
+---@param c Card
 function c71555408.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

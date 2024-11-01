@@ -1,4 +1,5 @@
 --古代の歯車機械
+---@param c Card
 function c18486927.initial_effect(c)
 	--declare card
 	local e1=Effect.CreateEffect(c)

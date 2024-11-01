@@ -1,4 +1,5 @@
 --王族親衛隊
+---@param c Card
 function c16509093.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

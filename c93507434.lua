@@ -1,4 +1,5 @@
 --ダイナレスラー・カパプテラ
+---@param c Card
 function c93507434.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

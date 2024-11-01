@@ -1,4 +1,5 @@
 --半月竜ラディウス
+---@param c Card
 function c6483224.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

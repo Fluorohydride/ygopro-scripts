@@ -1,4 +1,5 @@
 --ウォークライ・マムード
+---@param c Card
 function c84903021.initial_effect(c)
 	--Tribute Summon
 	local e1=Effect.CreateEffect(c)

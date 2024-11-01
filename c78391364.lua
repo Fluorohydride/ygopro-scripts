@@ -1,4 +1,5 @@
 --超重武者テンB－N
+---@param c Card
 function c78391364.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

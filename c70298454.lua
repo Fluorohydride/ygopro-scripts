@@ -1,4 +1,5 @@
 --比翼レンリン
+---@param c Card
 function c70298454.initial_effect(c)
 	aux.EnableUnionAttribute(c,aux.TRUE)
 	--change atk

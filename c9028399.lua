@@ -1,4 +1,5 @@
 --楽天禍カルクラグラ
+---@param c Card
 function c9028399.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

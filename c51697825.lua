@@ -1,4 +1,5 @@
 --ジャック・イン・ザ・ハンド
+---@param c Card
 function c51697825.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

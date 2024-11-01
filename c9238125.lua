@@ -1,4 +1,5 @@
 --山と雪解の春化精
+---@param c Card
 function c9238125.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

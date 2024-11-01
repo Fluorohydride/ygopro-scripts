@@ -1,4 +1,5 @@
 --氷結界の照魔師
+---@param c Card
 function c18319762.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

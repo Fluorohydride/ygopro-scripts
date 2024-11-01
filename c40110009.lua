@@ -1,4 +1,5 @@
 --ドラゴンメイドのお召し替え
+---@param c Card
 function c40110009.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

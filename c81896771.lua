@@ -1,4 +1,5 @@
 --エレキジ
+---@param c Card
 function c81896771.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

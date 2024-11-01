@@ -1,4 +1,5 @@
 --覇王白竜オッドアイズ・ウィング・ドラゴン
+---@param c Card
 function c58074177.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c,false)

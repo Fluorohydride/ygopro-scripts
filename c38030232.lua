@@ -1,4 +1,5 @@
 --天威龍－サハスラーラ
+---@param c Card
 function c38030232.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

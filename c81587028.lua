@@ -1,4 +1,5 @@
 --おもちゃ箱
+---@param c Card
 function c81587028.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

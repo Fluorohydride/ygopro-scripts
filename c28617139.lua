@@ -1,4 +1,5 @@
 --神鳥の来寇
+---@param c Card
 function c28617139.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

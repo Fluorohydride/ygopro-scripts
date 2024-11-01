@@ -1,4 +1,5 @@
 --銀河剣聖
+---@param c Card
 function c55168550.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

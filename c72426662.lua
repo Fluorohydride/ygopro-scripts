@@ -1,4 +1,5 @@
 --終焉の王デミス
+---@param c Card
 function c72426662.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

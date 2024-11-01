@@ -1,4 +1,5 @@
 --A・ジェネクス・ベルフレイム
+---@param c Card
 function c91438994.initial_effect(c)
 	c:EnableCounterPermit(0xa)
 	--add counter

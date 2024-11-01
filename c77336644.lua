@@ -1,4 +1,5 @@
 --レッド・デーモンズ・ドラゴン／バスター
+---@param c Card
 function c77336644.initial_effect(c)
 	aux.AddCodeList(c,80280737,70902743)
 	c:EnableReviveLimit()

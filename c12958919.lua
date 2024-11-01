@@ -1,4 +1,5 @@
 --幻銃士
+---@param c Card
 function c12958919.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

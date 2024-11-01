@@ -1,4 +1,5 @@
 --無尽機関アルギロ・システム
+---@param c Card
 function c21887075.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

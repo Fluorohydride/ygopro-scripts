@@ -1,4 +1,5 @@
 --剛鬼ザ・パワーロード・オーガ
+---@param c Card
 function c11516241.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WARRIOR),2)

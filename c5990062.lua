@@ -1,4 +1,5 @@
 --大逆転クイズ
+---@param c Card
 function c5990062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

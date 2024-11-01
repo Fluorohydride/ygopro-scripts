@@ -1,4 +1,5 @@
 --シャドール・ドラゴン
+---@param c Card
 function c77723643.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

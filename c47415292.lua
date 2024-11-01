@@ -1,4 +1,5 @@
 --漆黒の闘龍
+---@param c Card
 function c47415292.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣エセダリ
+---@param c Card
 function c73285669.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

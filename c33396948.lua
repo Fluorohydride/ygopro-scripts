@@ -1,4 +1,5 @@
 --封印されしエクゾディア
+---@param c Card
 function c33396948.initial_effect(c)
 	--win
 	local e1=Effect.CreateEffect(c)

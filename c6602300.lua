@@ -1,4 +1,5 @@
 --重爆撃禽 ボム・フェネクス
+---@param c Card
 function c6602300.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

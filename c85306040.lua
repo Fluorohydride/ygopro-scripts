@@ -1,4 +1,5 @@
 --ゴブリンエリート部隊
+---@param c Card
 function c85306040.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

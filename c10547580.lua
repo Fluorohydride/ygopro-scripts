@@ -1,4 +1,5 @@
 --古代の機械弩士
+---@param c Card
 function c10547580.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c10547580.mfilter,2,2)

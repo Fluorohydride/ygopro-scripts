@@ -1,4 +1,5 @@
 --剛鬼死闘
+---@param c Card
 function c85638822.initial_effect(c)
 	c:EnableCounterPermit(0x46)
 	--Activate

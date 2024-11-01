@@ -1,4 +1,5 @@
 --デグレネード・バスター
+---@param c Card
 function c50426119.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

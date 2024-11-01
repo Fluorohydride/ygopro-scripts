@@ -1,4 +1,5 @@
 --マッド・ハッカー
+---@param c Card
 function c86993168.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

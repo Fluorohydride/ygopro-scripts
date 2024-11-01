@@ -1,4 +1,5 @@
 --デーモンの顕現
+---@param c Card
 function c32775808.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

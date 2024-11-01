@@ -1,4 +1,5 @@
 --教導の騎士フルルドリス
+---@param c Card
 function c69680031.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

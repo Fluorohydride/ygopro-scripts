@@ -1,4 +1,5 @@
 --ボーガニアン
+---@param c Card
 function c52090844.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

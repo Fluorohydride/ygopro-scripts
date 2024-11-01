@@ -1,4 +1,5 @@
 --ダイナレスラー・エスクリマメンチ
+---@param c Card
 function c48372950.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

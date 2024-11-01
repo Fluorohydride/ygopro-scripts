@@ -1,4 +1,5 @@
 --ゴブリンの秘薬
+---@param c Card
 function c11868825.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ダイノルフィア・シェル
+---@param c Card
 function c25419323.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

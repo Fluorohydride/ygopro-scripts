@@ -1,4 +1,5 @@
 --燃えさかる大地
+---@param c Card
 function c24294108.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

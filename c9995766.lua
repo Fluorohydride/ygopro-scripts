@@ -1,4 +1,5 @@
 --宮廷のしきたり
+---@param c Card
 function c9995766.initial_effect(c)
 	c:SetUniqueOnField(1,0,9995766)
 	--activate

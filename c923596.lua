@@ -1,4 +1,5 @@
 --ギアギアーマー
+---@param c Card
 function c923596.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

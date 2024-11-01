@@ -1,4 +1,5 @@
 --はぐれ・もけもけ
+---@param c Card
 function c99910751.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,27288416,LOCATION_MZONE+LOCATION_GRAVE)

@@ -1,4 +1,5 @@
 --リフレクト・ネイチャー
+---@param c Card
 function c83467607.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

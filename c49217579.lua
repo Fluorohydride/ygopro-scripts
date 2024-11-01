@@ -1,4 +1,5 @@
 --幻影の騎士－ミラージュ・ナイト－
+---@param c Card
 function c49217579.initial_effect(c)
 	c:EnableReviveLimit()
 	--atkup

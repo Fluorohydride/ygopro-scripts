@@ -1,4 +1,5 @@
 --魔轟神獣ケルベラル
+---@param c Card
 function c82888408.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァンパイア・シフト
+---@param c Card
 function c22900598.initial_effect(c)
 	aux.AddCodeList(c,62188962)
 	--Activate

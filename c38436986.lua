@@ -1,4 +1,5 @@
 --壱世壊に軋む爪音
+---@param c Card
 function c38436986.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

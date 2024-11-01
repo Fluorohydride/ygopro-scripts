@@ -1,4 +1,5 @@
 --上昇気流
+---@param c Card
 function c90557975.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --DDドッグ
+---@param c Card
 function c32349062.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --真剣勝負
+---@param c Card
 function c39276790.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

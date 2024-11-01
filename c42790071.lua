@@ -1,4 +1,5 @@
 --オルターガイスト・マルチフェイカー
+---@param c Card
 function c42790071.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)

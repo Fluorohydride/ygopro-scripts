@@ -1,4 +1,5 @@
 --ペンギン・ソード
+---@param c Card
 function c69792699.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --フォトン・ストリーク・バウンサー
+---@param c Card
 function c92661479.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

@@ -1,4 +1,5 @@
 --閻魔の裁き
+---@param c Card
 function c32120116.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

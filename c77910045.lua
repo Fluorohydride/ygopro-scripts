@@ -1,4 +1,5 @@
 --死の演算盤
+---@param c Card
 function c77910045.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

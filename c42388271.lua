@@ -1,4 +1,5 @@
 --星遺物－『星櫃』
+---@param c Card
 function c42388271.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

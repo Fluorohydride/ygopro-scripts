@@ -1,4 +1,5 @@
 --古代の機械箱
+---@param c Card
 function c60953949.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

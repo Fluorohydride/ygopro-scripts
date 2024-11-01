@@ -1,4 +1,5 @@
 --アシンメタファイズ
+---@param c Card
 function c66719533.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

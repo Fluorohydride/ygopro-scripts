@@ -1,4 +1,5 @@
 --ブレイク・ザ・デステニー
+---@param c Card
 function c4008212.initial_effect(c)
 	aux.AddCodeList(c,76263644)
 	--Activate

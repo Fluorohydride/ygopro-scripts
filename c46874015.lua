@@ -1,4 +1,5 @@
 --六武衆推参！
+---@param c Card
 function c46874015.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

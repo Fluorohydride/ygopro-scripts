@@ -1,4 +1,5 @@
 --霊神統一
+---@param c Card
 function c11167052.initial_effect(c)
 	aux.AddCodeList(c,61557074)
 	--Activate

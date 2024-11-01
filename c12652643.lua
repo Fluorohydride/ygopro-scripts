@@ -1,4 +1,5 @@
 --古代の機械究極巨人
+---@param c Card
 function c12652643.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

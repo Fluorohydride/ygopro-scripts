@@ -1,4 +1,5 @@
 --武神器－ハバキリ
+---@param c Card
 function c68601507.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

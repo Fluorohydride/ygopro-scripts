@@ -1,4 +1,5 @@
 --シューティングコード・トーカー
+---@param c Card
 function c33897356.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

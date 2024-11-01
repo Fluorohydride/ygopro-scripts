@@ -1,4 +1,5 @@
 --トラミッド・フォートレス
+---@param c Card
 function c9989792.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

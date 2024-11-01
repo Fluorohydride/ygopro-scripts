@@ -1,4 +1,5 @@
 --ホワイト・ホーンズ・ドラゴン
+---@param c Card
 function c73891874.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

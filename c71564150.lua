@@ -1,4 +1,5 @@
 --地獄の傀儡魔人
+---@param c Card
 function c71564150.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

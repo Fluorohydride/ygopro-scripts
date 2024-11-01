@@ -1,4 +1,5 @@
 --インフィニティ・ダーク
+---@param c Card
 function c76520646.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--pos

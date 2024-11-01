@@ -1,4 +1,5 @@
 --闇竜族の爪
+---@param c Card
 function c76076738.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

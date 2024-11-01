@@ -1,4 +1,5 @@
 --D・モバホン
+---@param c Card
 function c93542102.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ミラーフォース・ドラゴン
+---@param c Card
 function c84687358.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

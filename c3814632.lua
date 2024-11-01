@@ -1,4 +1,5 @@
 --超巨大空中宮殿ガンガリディア
+---@param c Card
 function c3814632.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,2)

@@ -1,4 +1,5 @@
 --妖神－不知火
+---@param c Card
 function c52711246.initial_effect(c)
 	--limit SSummon
 	c:SetSPSummonOnce(52711246)

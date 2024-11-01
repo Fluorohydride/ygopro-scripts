@@ -1,4 +1,5 @@
 --ディメンション・コンジュラー
+---@param c Card
 function c77683371.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

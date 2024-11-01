@@ -1,4 +1,5 @@
 --天威無崩の地
+---@param c Card
 function c39730727.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +19,7 @@ function c39730727.initial_effect(c)
 	e3:SetCategory(CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_PLAYER_TARGET)
+	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCountLimit(1)
 	e3:SetCondition(c39730727.drcon)

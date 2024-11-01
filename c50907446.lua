@@ -1,4 +1,5 @@
 --エルシャドール・アプカローネ
+---@param c Card
 function c50907446.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

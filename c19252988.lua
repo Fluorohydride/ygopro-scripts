@@ -1,4 +1,5 @@
 --トラップ・ジャマー
+---@param c Card
 function c19252988.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

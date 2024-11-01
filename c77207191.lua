@@ -1,4 +1,5 @@
 --バフォメット
+---@param c Card
 function c77207191.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

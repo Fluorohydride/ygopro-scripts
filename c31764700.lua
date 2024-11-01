@@ -1,4 +1,5 @@
 --ユベル－Das Extremer Traurig Drachen
+---@param c Card
 function c31764700.initial_effect(c)
 	c:EnableReviveLimit()
 	--battle

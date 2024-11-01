@@ -1,4 +1,5 @@
 --宇宙砦ゴルガー
+---@param c Card
 function c68319538.initial_effect(c)
 	aux.AddMaterialCodeList(c,652362)
 	--synchro summon

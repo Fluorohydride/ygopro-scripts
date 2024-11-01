@@ -1,4 +1,5 @@
 --無限起動ロードローラー
+---@param c Card
 function c5205146.initial_effect(c)
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--special summon

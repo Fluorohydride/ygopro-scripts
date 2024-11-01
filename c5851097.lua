@@ -1,4 +1,5 @@
 --虚無空間
+---@param c Card
 function c5851097.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

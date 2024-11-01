@@ -1,4 +1,5 @@
 --トロイメア・フェニックス
+---@param c Card
 function c2857636.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c2857636.lcheck)

@@ -1,4 +1,5 @@
 --ジュラック・モノロフ
+---@param c Card
 function c36717258.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

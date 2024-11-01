@@ -1,4 +1,5 @@
 --ダイナミスト・エラプション
+---@param c Card
 function c74582050.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

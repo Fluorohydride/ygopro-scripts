@@ -1,4 +1,5 @@
 --E・HERO シャイニング・フレア・ウィングマン
+---@param c Card
 function c25366484.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

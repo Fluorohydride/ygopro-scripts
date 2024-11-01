@@ -1,4 +1,5 @@
 --守護竜ガルミデス
+---@param c Card
 function c43411769.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

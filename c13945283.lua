@@ -1,4 +1,5 @@
 --幻影の壁
+---@param c Card
 function c13945283.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

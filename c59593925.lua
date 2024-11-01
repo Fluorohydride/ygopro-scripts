@@ -1,4 +1,5 @@
 --共鳴破
+---@param c Card
 function c59593925.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

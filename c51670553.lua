@@ -1,4 +1,5 @@
 --魂を吸う竹光
+---@param c Card
 function c51670553.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

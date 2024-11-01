@@ -1,4 +1,5 @@
 --破邪の魔法壁
+---@param c Card
 function c81231742.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

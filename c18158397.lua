@@ -1,4 +1,5 @@
 --ナチュラル・ディザスター
+---@param c Card
 function c18158397.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

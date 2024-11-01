@@ -1,4 +1,5 @@
 --バージェストマ・レアンコイリア
+---@param c Card
 function c1154611.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

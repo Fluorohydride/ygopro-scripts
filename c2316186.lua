@@ -1,4 +1,5 @@
 --魔法の国の王女－クラン
+---@param c Card
 function c2316186.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

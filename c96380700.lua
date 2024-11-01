@@ -1,4 +1,5 @@
 --トークバック・ランサー
+---@param c Card
 function c96380700.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c96380700.matfilter,1,1)

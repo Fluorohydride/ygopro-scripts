@@ -1,4 +1,5 @@
 --六武衆のご隠居
+---@param c Card
 function c61737116.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

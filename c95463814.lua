@@ -1,4 +1,5 @@
 --幻魔帝トリロジーグ
+---@param c Card
 function c95463814.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

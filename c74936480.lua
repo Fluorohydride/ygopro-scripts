@@ -1,4 +1,5 @@
 --ダイノルフィア・ステルスベギア
+---@param c Card
 function c74936480.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c74936480.ffilter,2,true)

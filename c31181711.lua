@@ -1,4 +1,5 @@
 --超重武者装留グレート・ウォール
+---@param c Card
 function c31181711.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

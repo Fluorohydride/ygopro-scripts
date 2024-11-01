@@ -1,4 +1,5 @@
 --E・HERO シャイニング・フェニックスガイ
+---@param c Card
 function c88820235.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

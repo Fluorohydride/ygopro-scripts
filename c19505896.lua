@@ -1,4 +1,5 @@
 --ウィード
+---@param c Card
 function c19505896.initial_effect(c)
 	--Destroy replace
 	local e1=Effect.CreateEffect(c)

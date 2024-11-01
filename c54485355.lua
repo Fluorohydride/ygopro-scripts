@@ -1,4 +1,5 @@
 --昇華騎士－エクスパラディン
+---@param c Card
 function c54485355.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

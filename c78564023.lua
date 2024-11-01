@@ -1,4 +1,5 @@
 --BF－二の太刀のエテジア
+---@param c Card
 function c78564023.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --生け贄人形
+---@param c Card
 function c2903036.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

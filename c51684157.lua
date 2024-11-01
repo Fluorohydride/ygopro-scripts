@@ -1,4 +1,5 @@
 --天幻の龍輪
+---@param c Card
 function c51684157.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

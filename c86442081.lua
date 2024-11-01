@@ -1,4 +1,5 @@
 --サイレントアビス
+---@param c Card
 function c86442081.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

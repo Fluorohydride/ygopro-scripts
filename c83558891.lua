@@ -1,4 +1,5 @@
 --肆世壊の新星
+---@param c Card
 function c83558891.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

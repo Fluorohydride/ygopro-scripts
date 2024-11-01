@@ -1,4 +1,5 @@
 --呪われしエルドランド
+---@param c Card
 function c31434645.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スネーク・チョーク
+---@param c Card
 function c19451302.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --万能地雷グレイモヤ
+---@param c Card
 function c77754944.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

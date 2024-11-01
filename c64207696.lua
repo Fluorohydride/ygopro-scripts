@@ -1,4 +1,5 @@
 --EMゴールド・ファング
+---@param c Card
 function c64207696.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

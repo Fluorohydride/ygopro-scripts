@@ -1,4 +1,5 @@
 --神の桎梏グレイプニル
+---@param c Card
 function c14464864.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

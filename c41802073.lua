@@ -1,4 +1,5 @@
 --ヴァリアンツV－ヴァイカント
+---@param c Card
 function c41802073.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

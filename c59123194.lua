@@ -1,4 +1,5 @@
 --覚醒の魔導剣士
+---@param c Card
 function c59123194.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

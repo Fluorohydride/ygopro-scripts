@@ -1,4 +1,5 @@
 --召喚獣エリュシオン
+---@param c Card
 function c11270236.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

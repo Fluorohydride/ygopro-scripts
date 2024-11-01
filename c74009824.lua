@@ -1,4 +1,5 @@
 --エルシャドール・ウェンディゴ
+---@param c Card
 function c74009824.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

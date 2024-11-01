@@ -1,4 +1,5 @@
 --バッド・エンド・クイーン・ドラゴン
+---@param c Card
 function c80513550.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

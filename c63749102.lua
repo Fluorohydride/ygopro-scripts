@@ -1,4 +1,5 @@
 --イグザリオン・ユニバース
+---@param c Card
 function c63749102.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

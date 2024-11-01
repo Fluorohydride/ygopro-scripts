@@ -1,4 +1,5 @@
 --魔轟神獣アバンク
+---@param c Card
 function c83039608.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

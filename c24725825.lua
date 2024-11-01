@@ -1,4 +1,5 @@
 --エレクトリック・ワーム
+---@param c Card
 function c24725825.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

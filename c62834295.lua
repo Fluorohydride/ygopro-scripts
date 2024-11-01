@@ -1,4 +1,5 @@
 --オルフェゴール・アインザッツ
+---@param c Card
 function c62834295.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

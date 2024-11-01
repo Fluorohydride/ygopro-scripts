@@ -1,4 +1,5 @@
 --魔聖騎士ランスロット
+---@param c Card
 function c95772051.initial_effect(c)
 	c:SetUniqueOnField(1,0,95772051)
 	--special summon

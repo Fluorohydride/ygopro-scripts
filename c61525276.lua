@@ -1,4 +1,5 @@
 --呪われし竜－カース・オブ・ドラゴン
+---@param c Card
 function c61525276.initial_effect(c)
 	aux.AddCodeList(c,66889139)
 	--to hand

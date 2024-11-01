@@ -1,4 +1,5 @@
 --セキュリティ・ドラゴン
+---@param c Card
 function c99111753.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

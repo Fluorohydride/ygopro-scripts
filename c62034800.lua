@@ -1,4 +1,5 @@
 --無限起動ロックアンカー
+---@param c Card
 function c62034800.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

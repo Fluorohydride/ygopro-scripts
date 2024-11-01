@@ -1,4 +1,5 @@
 --デスカイザー・ドラゴン／バスター
+---@param c Card
 function c1764972.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()

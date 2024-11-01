@@ -1,4 +1,5 @@
 --帝王の凍気
+---@param c Card
 function c99940363.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

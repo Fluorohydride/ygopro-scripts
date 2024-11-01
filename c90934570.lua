@@ -1,4 +1,5 @@
 --侵略の侵喰崩壊
+---@param c Card
 function c90934570.initial_effect(c)
 	--remove & tohand
 	local e1=Effect.CreateEffect(c)

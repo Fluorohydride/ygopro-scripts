@@ -1,4 +1,5 @@
 --ダークシー・レスキュー
+---@param c Card
 function c34659866.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

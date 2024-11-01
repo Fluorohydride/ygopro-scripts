@@ -1,4 +1,5 @@
 --ワーム・ルクイエ
+---@param c Card
 function c17649753.initial_effect(c)
 	--attack limit
 	local e1=Effect.CreateEffect(c)

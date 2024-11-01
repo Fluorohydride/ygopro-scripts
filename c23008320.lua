@@ -1,4 +1,5 @@
 --コール・リゾネーター
+---@param c Card
 function c23008320.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

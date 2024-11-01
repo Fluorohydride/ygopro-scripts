@@ -1,4 +1,5 @@
 --クラッキング・ドラゴン
+---@param c Card
 function c60349525.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

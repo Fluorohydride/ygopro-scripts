@@ -1,4 +1,5 @@
 --削りゆく命
+---@param c Card
 function c38105306.initial_effect(c)
 	c:SetUniqueOnField(1,0,38105306)
 	c:EnableCounterPermit(0x62)

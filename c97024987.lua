@@ -1,4 +1,5 @@
 --イグナイト・ドラグノフ
+---@param c Card
 function c97024987.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

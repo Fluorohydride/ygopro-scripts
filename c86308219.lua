@@ -1,4 +1,5 @@
 --ハーピィ・レディ －鳳凰の陣－
+---@param c Card
 function c86308219.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

@@ -1,4 +1,5 @@
 --戦乙女の戦車
+---@param c Card
 function c19190082.initial_effect(c)
 	aux.EnableUnionAttribute(c,c19190082.filter)
 	--atk up

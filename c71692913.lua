@@ -1,4 +1,5 @@
 --相克の魔術師
+---@param c Card
 function c71692913.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

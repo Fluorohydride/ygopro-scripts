@@ -1,4 +1,5 @@
 --戒めの龍
+---@param c Card
 function c19959563.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

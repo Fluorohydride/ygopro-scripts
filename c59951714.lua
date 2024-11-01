@@ -1,4 +1,5 @@
 --アドバンス・ディボーター
+---@param c Card
 function c59951714.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

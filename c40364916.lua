@@ -1,4 +1,5 @@
 --不知火流 伝承の陣
+---@param c Card
 function c40364916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

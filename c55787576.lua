@@ -1,4 +1,5 @@
 --星遺物－『星盾』
+---@param c Card
 function c55787576.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --オービタル 7
+---@param c Card
 function c71071546.initial_effect(c)
 	c:EnableCounterPermit(0x2c)
 	--counter

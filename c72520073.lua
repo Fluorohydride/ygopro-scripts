@@ -1,4 +1,5 @@
 --闇の芸術家
+---@param c Card
 function c72520073.initial_effect(c)
 	--defdown
 	local e1=Effect.CreateEffect(c)

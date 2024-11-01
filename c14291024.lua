@@ -1,4 +1,5 @@
 --オプション
+---@param c Card
 function c14291024.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

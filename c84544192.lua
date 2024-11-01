@@ -1,5 +1,6 @@
 --究極宝玉神 レインボー・ドラゴン オーバー・ドライブ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

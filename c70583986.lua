@@ -1,4 +1,5 @@
 --氷結界の虎王 ドゥローレン
+---@param c Card
 function c70583986.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WATER),1)

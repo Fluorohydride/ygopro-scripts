@@ -1,4 +1,5 @@
 --騎士デイ・グレファー
+---@param c Card
 function c15767889.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

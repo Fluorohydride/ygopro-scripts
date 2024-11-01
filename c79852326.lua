@@ -1,4 +1,5 @@
 --死霊ゾーマ
+---@param c Card
 function c79852326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

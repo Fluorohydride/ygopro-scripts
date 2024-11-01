@@ -1,4 +1,5 @@
 --天融星カイキ
+---@param c Card
 function c60822251.initial_effect(c)
 	--Fusion Summon
 	local e1=Effect.CreateEffect(c)

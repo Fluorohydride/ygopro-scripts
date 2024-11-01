@@ -1,4 +1,5 @@
 --星彩の竜輝巧
+---@param c Card
 function c57970721.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

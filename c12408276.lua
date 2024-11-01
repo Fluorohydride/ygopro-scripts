@@ -1,4 +1,5 @@
 --Kozmo－ダーク・エルファイバー
+---@param c Card
 function c12408276.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

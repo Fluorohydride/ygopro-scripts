@@ -1,4 +1,5 @@
 --ダイナレスラー・テラ・パルクリオ
+---@param c Card
 function c69121954.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

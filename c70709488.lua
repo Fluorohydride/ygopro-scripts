@@ -1,4 +1,5 @@
 --虫忍 ハガクレミノ
+---@param c Card
 function c70709488.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c70709488.lcheck)

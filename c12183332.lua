@@ -1,4 +1,5 @@
 --ショット・ガン・シャッフル
+---@param c Card
 function c12183332.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

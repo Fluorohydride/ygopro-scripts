@@ -1,4 +1,5 @@
 --SPYRAL MISSION－救出
+---@param c Card
 function c9212051.initial_effect(c)
 	c:SetUniqueOnField(1,0,9212051)
 	--activate

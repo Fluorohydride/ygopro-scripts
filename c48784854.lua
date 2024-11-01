@@ -1,4 +1,5 @@
 --光の継承
+---@param c Card
 function c48784854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

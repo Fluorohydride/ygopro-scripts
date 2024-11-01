@@ -1,4 +1,5 @@
 --毒の魔妖－束脛
+---@param c Card
 function c5325155.initial_effect(c)
 	c:SetUniqueOnField(1,0,5325155)
 	--special summon

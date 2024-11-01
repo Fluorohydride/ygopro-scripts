@@ -1,4 +1,5 @@
 --トーテムバード
+---@param c Card
 function c71068247.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND),3,2)

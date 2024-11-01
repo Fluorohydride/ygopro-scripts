@@ -1,4 +1,5 @@
 --サイキック・ビースト
+---@param c Card
 function c46291010.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

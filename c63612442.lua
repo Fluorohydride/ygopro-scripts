@@ -1,4 +1,5 @@
 --X－セイバー ソウザ
+---@param c Card
 function c63612442.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x100d),1)

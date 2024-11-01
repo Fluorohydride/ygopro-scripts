@@ -1,4 +1,5 @@
 --天馬の翼
+---@param c Card
 function c72083436.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

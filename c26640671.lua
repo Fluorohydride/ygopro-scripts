@@ -1,4 +1,5 @@
 --蜘蛛の領域
+---@param c Card
 function c26640671.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

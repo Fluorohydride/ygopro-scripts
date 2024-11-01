@@ -1,4 +1,5 @@
 --聖占術の儀式
+---@param c Card
 function c30392583.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,94997874)
 	--to hand

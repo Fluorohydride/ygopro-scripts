@@ -1,4 +1,5 @@
 --イビリチュア・ジールギガス
+---@param c Card
 function c66729231.initial_effect(c)
 	c:EnableReviveLimit()
 	--draw

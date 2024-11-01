@@ -1,5 +1,6 @@
 --スカーレッド・ゾーン
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--Activate

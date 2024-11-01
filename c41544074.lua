@@ -1,4 +1,5 @@
 --カオス・ウィザード
+---@param c Card
 function c41544074.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

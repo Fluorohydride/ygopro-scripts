@@ -1,5 +1,6 @@
 --セリオンズ“リーパー”ファム
 local s,id,o=GetID()
+---@param c Card
 function c21727231.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

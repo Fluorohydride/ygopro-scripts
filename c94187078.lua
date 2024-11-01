@@ -1,4 +1,5 @@
 --極超の竜輝巧
+---@param c Card
 function c94187078.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

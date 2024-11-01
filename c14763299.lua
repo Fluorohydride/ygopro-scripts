@@ -1,4 +1,5 @@
 --幻奏の歌姫ソロ
+---@param c Card
 function c14763299.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

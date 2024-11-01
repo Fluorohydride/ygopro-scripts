@@ -1,4 +1,5 @@
 --デスピアン・クエリティス
+---@param c Card
 function c72272462.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--fusion summon

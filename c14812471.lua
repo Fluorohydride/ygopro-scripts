@@ -1,4 +1,5 @@
 --転生炎獣ベイルリンクス
+---@param c Card
 function c14812471.initial_effect(c)
 	aux.AddCodeList(c,1295111)
 	--link summon

@@ -1,4 +1,5 @@
 --ワーム・クィーン
+---@param c Card
 function c81254059.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

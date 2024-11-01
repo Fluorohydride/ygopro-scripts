@@ -1,4 +1,5 @@
 --暗躍のドルイド・ドリュース
+---@param c Card
 function c24062258.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

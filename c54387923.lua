@@ -1,4 +1,5 @@
 --シドレミコード・ビューティア
+---@param c Card
 function c54387923.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

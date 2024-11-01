@@ -1,4 +1,5 @@
 --剣闘獣ガイザレス
+---@param c Card
 function c48156348.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

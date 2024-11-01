@@ -1,4 +1,5 @@
 --サイバー・ダーク・ホーン
+---@param c Card
 function c41230939.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

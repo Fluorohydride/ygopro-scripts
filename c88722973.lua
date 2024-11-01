@@ -1,4 +1,5 @@
 --昇竜剣士マジェスターP
+---@param c Card
 function c88722973.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsXyzType,TYPE_PENDULUM),4,2)

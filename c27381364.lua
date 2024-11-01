@@ -1,4 +1,5 @@
 --スプライト・エルフ
+---@param c Card
 function c27381364.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

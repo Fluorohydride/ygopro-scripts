@@ -1,4 +1,5 @@
 --ギャラクシー・クィーンズ・ライト
+---@param c Card
 function c52340274.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

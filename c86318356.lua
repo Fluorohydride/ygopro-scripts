@@ -1,4 +1,5 @@
 --草原
+---@param c Card
 function c86318356.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

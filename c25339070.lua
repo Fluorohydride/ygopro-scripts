@@ -1,4 +1,5 @@
 --堕天使マスティマ
+---@param c Card
 function c25339070.initial_effect(c)
 	c:SetSPSummonOnce(25339070)
 	--spsummon

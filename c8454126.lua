@@ -1,4 +1,5 @@
 --ネフティスの繋ぎ手
+---@param c Card
 function c8454126.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

@@ -1,4 +1,5 @@
 --XXクルージョン
+---@param c Card
 function c31213049.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

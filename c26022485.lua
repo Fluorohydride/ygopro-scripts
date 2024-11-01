@@ -1,4 +1,5 @@
 --衰弱の霧
+---@param c Card
 function c26022485.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

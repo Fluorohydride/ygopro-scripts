@@ -1,4 +1,5 @@
 --閃光の双剣－トライス
+---@param c Card
 function c21900719.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

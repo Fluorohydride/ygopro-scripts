@@ -1,6 +1,7 @@
 --レボリューション・シンクロン
 --not fully implemented
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--hand synchro
 	local e1=Effect.CreateEffect(c)

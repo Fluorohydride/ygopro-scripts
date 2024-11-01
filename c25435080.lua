@@ -1,4 +1,5 @@
 --BF－アンカー
+---@param c Card
 function c25435080.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

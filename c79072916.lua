@@ -1,4 +1,5 @@
 --ミュートリア反射作用
+---@param c Card
 function c79072916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

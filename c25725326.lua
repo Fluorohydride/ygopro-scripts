@@ -1,4 +1,5 @@
 --プランキッズ・ミュー
+---@param c Card
 function c25725326.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c25725326.mfilter,1,1)

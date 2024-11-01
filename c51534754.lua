@@ -1,4 +1,5 @@
 --黄泉へ渡る船
+---@param c Card
 function c51534754.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

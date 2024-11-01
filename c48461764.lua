@@ -1,4 +1,5 @@
 --紫毒の魔術師
+---@param c Card
 function c48461764.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Increase ATK

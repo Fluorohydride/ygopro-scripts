@@ -1,4 +1,5 @@
 --王者の看破
+---@param c Card
 function c82382815.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

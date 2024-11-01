@@ -1,4 +1,5 @@
 --カードを狩る死神
+---@param c Card
 function c33066139.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

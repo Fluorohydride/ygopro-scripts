@@ -1,4 +1,5 @@
 --F.A.ハングオンマッハ
+---@param c Card
 function c93449450.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

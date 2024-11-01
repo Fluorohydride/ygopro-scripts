@@ -1,4 +1,5 @@
 --ワルキューレ・ツヴァイト
+---@param c Card
 function c30411385.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(30411385,0))

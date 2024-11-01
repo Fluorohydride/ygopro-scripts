@@ -1,4 +1,5 @@
 --覇王眷竜クリアウィング
+---@param c Card
 function c70771599.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c70771599.matfilter),1)

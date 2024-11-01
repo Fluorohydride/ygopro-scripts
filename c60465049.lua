@@ -1,4 +1,5 @@
 --サイコ・エンド・パニッシャー
+---@param c Card
 function c60465049.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

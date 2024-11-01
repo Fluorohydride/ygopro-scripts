@@ -1,4 +1,5 @@
 --ブラック・バード・クローズ
+---@param c Card
 function c80254726.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--Activate

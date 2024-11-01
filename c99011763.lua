@@ -1,4 +1,5 @@
 --魔界の警邏課デスポリス
+---@param c Card
 function c99011763.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

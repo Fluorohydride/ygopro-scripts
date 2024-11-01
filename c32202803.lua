@@ -1,4 +1,5 @@
 --武神器－タルタ
+---@param c Card
 function c32202803.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

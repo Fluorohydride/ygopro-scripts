@@ -1,4 +1,5 @@
 --スカルビショップ
+---@param c Card
 function c2504891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

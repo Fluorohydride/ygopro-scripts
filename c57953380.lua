@@ -1,4 +1,5 @@
 --生還の宝札
+---@param c Card
 function c57953380.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

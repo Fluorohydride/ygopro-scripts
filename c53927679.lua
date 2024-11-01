@@ -1,4 +1,5 @@
 --ファイヤー・トルーパー
+---@param c Card
 function c53927679.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

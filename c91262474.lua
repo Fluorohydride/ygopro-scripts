@@ -1,4 +1,5 @@
 --スターダスト・ヴルム
+---@param c Card
 function c91262474.initial_effect(c)
 	--spsummon(self)
 	local e1=Effect.CreateEffect(c)

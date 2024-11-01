@@ -1,4 +1,5 @@
 --ロードランナー
+---@param c Card
 function c36472900.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

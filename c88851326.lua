@@ -1,4 +1,5 @@
 --熱き決闘者たち
+---@param c Card
 function c88851326.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

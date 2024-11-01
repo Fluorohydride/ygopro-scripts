@@ -1,4 +1,5 @@
 --蛇神ゲー
+---@param c Card
 function c82103466.initial_effect(c)
 	c:EnableReviveLimit()
 	--connot special summon

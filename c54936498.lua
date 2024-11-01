@@ -1,4 +1,5 @@
 --インフルーエンス・ドラゴン
+---@param c Card
 function c54936498.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

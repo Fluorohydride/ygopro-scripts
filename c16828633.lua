@@ -1,4 +1,5 @@
 --スペア・ジェネクス
+---@param c Card
 function c16828633.initial_effect(c)
 	--cos
 	local e1=Effect.CreateEffect(c)

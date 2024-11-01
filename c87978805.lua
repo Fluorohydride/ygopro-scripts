@@ -1,4 +1,5 @@
 --寄生体ダニー
+---@param c Card
 function c87978805.initial_effect(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)

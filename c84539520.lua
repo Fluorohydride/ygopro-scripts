@@ -1,4 +1,5 @@
 --アマゾネス王女
+---@param c Card
 function c84539520.initial_effect(c)
 	--code
 	aux.EnableChangeCode(c,15951532,LOCATION_MZONE+LOCATION_GRAVE)

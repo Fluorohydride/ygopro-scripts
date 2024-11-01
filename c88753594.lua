@@ -1,4 +1,5 @@
 --月光舞剣虎姫
+---@param c Card
 function c88753594.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

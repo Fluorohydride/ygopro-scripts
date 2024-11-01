@@ -1,4 +1,5 @@
 --星遺物－『星鍵』
+---@param c Card
 function c40441990.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

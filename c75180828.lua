@@ -1,4 +1,5 @@
 --水精鱗－サルフアビス
+---@param c Card
 function c75180828.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

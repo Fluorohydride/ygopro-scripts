@@ -1,4 +1,5 @@
 --魔玩具補綴
+---@param c Card
 function c34773082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

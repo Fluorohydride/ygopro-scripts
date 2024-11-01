@@ -1,4 +1,5 @@
 --テセア聖霊器
+---@param c Card
 function c54092240.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--Special Summon

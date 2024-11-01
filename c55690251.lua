@@ -1,4 +1,5 @@
 --堕天使ディザイア
+---@param c Card
 function c55690251.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サイコ・チューン
+---@param c Card
 function c3891471.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

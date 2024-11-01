@@ -1,4 +1,5 @@
 --トリックスター・スイートデビル
+---@param c Card
 function c94626871.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

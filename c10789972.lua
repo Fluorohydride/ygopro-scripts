@@ -1,4 +1,5 @@
 --覚醒戦士 クーフーリン
+---@param c Card
 function c10789972.initial_effect(c)
 	c:EnableReviveLimit()
 	--atkup

@@ -1,4 +1,5 @@
 --フロッグ・バリア
+---@param c Card
 function c34351849.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

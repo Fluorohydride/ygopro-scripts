@@ -1,4 +1,5 @@
 --戦華の詭－賈文
+---@param c Card
 function c6438003.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

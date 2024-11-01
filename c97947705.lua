@@ -1,4 +1,5 @@
 --バックアップ・オペレーター
+---@param c Card
 function c97947705.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

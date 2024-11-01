@@ -1,4 +1,5 @@
 --空牙団の参謀 シール
+---@param c Card
 function c20345391.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

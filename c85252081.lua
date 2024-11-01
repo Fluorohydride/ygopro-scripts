@@ -1,4 +1,5 @@
 --超量機獣グランパルス
+---@param c Card
 function c85252081.initial_effect(c)
 	aux.AddCodeList(c,12369277)
 	--xyz summon

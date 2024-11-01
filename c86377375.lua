@@ -1,4 +1,5 @@
 --悪王アフリマ
+---@param c Card
 function c86377375.initial_effect(c)
 	aux.AddCodeList(c,59160188)
 	--search

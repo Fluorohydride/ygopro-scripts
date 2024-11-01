@@ -1,4 +1,5 @@
 --セイクリッド・グレディ
+---@param c Card
 function c41269771.initial_effect(c)
 	--summon success
 	local e2=Effect.CreateEffect(c)

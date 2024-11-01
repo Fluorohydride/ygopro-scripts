@@ -1,4 +1,5 @@
 --ホープ・バスター
+---@param c Card
 function c30341772.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --昇華する魂
+---@param c Card
 function c88301833.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

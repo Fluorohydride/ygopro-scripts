@@ -1,4 +1,5 @@
 --門前払い
+---@param c Card
 function c20374520.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

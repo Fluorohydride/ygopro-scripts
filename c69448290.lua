@@ -1,4 +1,5 @@
 --霞の谷の雷鳥
+---@param c Card
 function c69448290.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

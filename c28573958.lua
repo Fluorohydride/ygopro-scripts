@@ -1,4 +1,5 @@
 --奇跡の代行者 ジュピター
+---@param c Card
 function c28573958.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--atkup

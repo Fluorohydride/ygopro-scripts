@@ -1,4 +1,5 @@
 --RR－ファイナル・フォートレス・ファルコン
+---@param c Card
 function c43047672.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,12,3)

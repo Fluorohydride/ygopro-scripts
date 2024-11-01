@@ -1,4 +1,5 @@
 --A BF－驟雨のライキリ
+---@param c Card
 function c16051717.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

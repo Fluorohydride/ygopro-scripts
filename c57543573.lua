@@ -1,4 +1,5 @@
 --ワーム・イリダン
+---@param c Card
 function c57543573.initial_effect(c)
 	c:EnableCounterPermit(0xf)
 	--add counter

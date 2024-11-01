@@ -1,4 +1,5 @@
 --トランソニックバード
+---@param c Card
 function c34072799.initial_effect(c)
 	c:EnableReviveLimit()
 	--search

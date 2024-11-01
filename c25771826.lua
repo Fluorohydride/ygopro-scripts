@@ -1,4 +1,5 @@
 --A・O・J ガラドホルグ
+---@param c Card
 function c25771826.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

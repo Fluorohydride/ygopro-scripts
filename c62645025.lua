@@ -1,4 +1,5 @@
 --幻影騎士団ウロング・マグネリング
+---@param c Card
 function c62645025.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

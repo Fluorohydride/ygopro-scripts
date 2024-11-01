@@ -1,4 +1,5 @@
 --爆弾ウニ－ボム・アーチン－
+---@param c Card
 function c52140003.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

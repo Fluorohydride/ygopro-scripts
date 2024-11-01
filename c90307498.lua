@@ -1,4 +1,5 @@
 --E・HERO ネオス・クルーガー
+---@param c Card
 function c90307498.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,89943723,78371393,true,true)

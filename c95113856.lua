@@ -1,4 +1,5 @@
 --幻子力空母エンタープラズニル
+---@param c Card
 function c95113856.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2)

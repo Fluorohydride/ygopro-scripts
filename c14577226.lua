@@ -1,4 +1,5 @@
 --WW－ウィンター・ベル
+---@param c Card
 function c14577226.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WIND),1)

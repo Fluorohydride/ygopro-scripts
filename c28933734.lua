@@ -1,4 +1,5 @@
 --闇の仮面
+---@param c Card
 function c28933734.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

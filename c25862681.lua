@@ -1,4 +1,5 @@
 --エンシェント・フェアリー・ドラゴン
+---@param c Card
 function c25862681.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

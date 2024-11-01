@@ -1,4 +1,5 @@
 --No.105 BK 流星のセスタス
+---@param c Card
 function c59627393.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

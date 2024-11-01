@@ -1,4 +1,5 @@
 --青眼の光龍
+---@param c Card
 function c53347303.initial_effect(c)
 	aux.AddCodeList(c,23995346)
 	c:EnableReviveLimit()

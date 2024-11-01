@@ -1,4 +1,5 @@
 --体温の上昇
+---@param c Card
 function c51267887.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

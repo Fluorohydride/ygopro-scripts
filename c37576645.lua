@@ -1,4 +1,5 @@
 --無謀な欲張り
+---@param c Card
 function c37576645.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

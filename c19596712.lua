@@ -1,4 +1,5 @@
 --アビスケイル－ケートス
+---@param c Card
 function c19596712.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --クリフォート・ゲニウス
+---@param c Card
 function c22423493.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

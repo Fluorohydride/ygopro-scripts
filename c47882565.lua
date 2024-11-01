@@ -1,4 +1,5 @@
 --RUM－光波昇華
+---@param c Card
 function c47882565.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

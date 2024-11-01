@@ -1,4 +1,5 @@
 --超重武者装留バスター・ガントレット
+---@param c Card
 function c35800511.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

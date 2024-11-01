@@ -1,4 +1,5 @@
 --パトロール・ロボ
+---@param c Card
 function c76775123.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

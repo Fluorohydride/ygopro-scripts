@@ -1,4 +1,5 @@
 --コーリング・ノヴァ
+---@param c Card
 function c48783998.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--special summon

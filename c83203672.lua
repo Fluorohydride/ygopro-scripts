@@ -1,4 +1,5 @@
 --スプリガンズ・バンガー
+---@param c Card
 function c83203672.initial_effect(c)
 	--overlay
 	local e1=Effect.CreateEffect(c)

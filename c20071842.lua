@@ -1,4 +1,5 @@
 --ヘヴィ・トリガー
+---@param c Card
 function c20071842.initial_effect(c)
 	aux.AddCodeList(c,7987191)
 	--Activate

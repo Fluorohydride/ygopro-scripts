@@ -1,4 +1,5 @@
 --真紅眼の黒星竜
+---@param c Card
 function c27657173.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

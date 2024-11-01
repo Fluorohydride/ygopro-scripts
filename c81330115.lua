@@ -1,4 +1,5 @@
 --No.30 破滅のアシッド・ゴーレム
+---@param c Card
 function c81330115.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

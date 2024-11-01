@@ -1,4 +1,5 @@
 --奇跡のマジック・ゲート
+---@param c Card
 function c49941059.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

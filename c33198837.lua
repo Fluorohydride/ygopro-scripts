@@ -1,4 +1,5 @@
 --ナチュル・ビースト
+---@param c Card
 function c33198837.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c33198837.synfilter,aux.NonTuner(c33198837.synfilter),1)

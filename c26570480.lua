@@ -1,4 +1,5 @@
 --マドルチェ・ピョコレート
+---@param c Card
 function c26570480.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

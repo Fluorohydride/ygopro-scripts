@@ -1,4 +1,5 @@
 --魔界劇団－リバティ・ドラマチスト
+---@param c Card
 function c65477143.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

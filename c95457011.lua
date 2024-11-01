@@ -1,4 +1,5 @@
 --天帝従騎イデア
+---@param c Card
 function c95457011.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

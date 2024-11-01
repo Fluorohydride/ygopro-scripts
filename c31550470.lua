@@ -1,4 +1,5 @@
 --闇次元の解放
+---@param c Card
 function c31550470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

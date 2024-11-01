@@ -1,4 +1,5 @@
 --忍の六武
+---@param c Card
 function c6357341.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

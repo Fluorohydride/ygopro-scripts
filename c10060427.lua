@@ -1,4 +1,5 @@
 --コアキメイル・ルークロード
+---@param c Card
 function c10060427.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

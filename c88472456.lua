@@ -1,4 +1,5 @@
 --ダーク・ヒーロー ゾンバイア
+---@param c Card
 function c88472456.initial_effect(c)
 	--cannot direct attack
 	local e1=Effect.CreateEffect(c)

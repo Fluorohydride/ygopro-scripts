@@ -1,4 +1,5 @@
 --スプリガンズ・キャプテン サルガス
+---@param c Card
 function c29601381.initial_effect(c)
 	--overlay
 	local e1=Effect.CreateEffect(c)

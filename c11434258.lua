@@ -1,4 +1,5 @@
 --蛇龍の枷鎖
+---@param c Card
 function c11434258.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

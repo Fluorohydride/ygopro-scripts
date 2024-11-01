@@ -1,4 +1,5 @@
 --エクシーズ・レセプション
+---@param c Card
 function c74728028.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

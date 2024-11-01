@@ -1,4 +1,5 @@
 --スカイスクレイパー・シュート
+---@param c Card
 function c40522482.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

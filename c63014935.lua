@@ -1,4 +1,5 @@
 --ヴォルカニック・クイーン
+---@param c Card
 function c63014935.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

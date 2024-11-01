@@ -1,4 +1,5 @@
 --十二獣タイグリス
+---@param c Card
 function c11510448.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3,c11510448.ovfilter,aux.Stringid(11510448,0),3,c11510448.xyzop)

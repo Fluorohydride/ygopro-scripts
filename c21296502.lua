@@ -1,4 +1,5 @@
 --トゥーン・ブラック・マジシャン
+---@param c Card
 function c21296502.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

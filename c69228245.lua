@@ -1,4 +1,5 @@
 --EMチェーンジラフ
+---@param c Card
 function c69228245.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

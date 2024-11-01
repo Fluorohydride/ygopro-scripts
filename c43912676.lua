@@ -1,4 +1,5 @@
 --異層空間
+---@param c Card
 function c43912676.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

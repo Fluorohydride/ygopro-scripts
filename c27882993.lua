@@ -1,4 +1,5 @@
 --インフェルノクインサーモン
+---@param c Card
 function c27882993.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

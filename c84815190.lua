@@ -1,4 +1,5 @@
 --フルール・ド・バロネス
+---@param c Card
 function c84815190.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

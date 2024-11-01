@@ -1,4 +1,5 @@
 --堕天使降臨
+---@param c Card
 function c58787301.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

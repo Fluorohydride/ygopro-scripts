@@ -1,4 +1,5 @@
 --機巧伝－神使記紀図
+---@param c Card
 function c24793135.initial_effect(c)
 	c:EnableCounterPermit(0x5d,LOCATION_FZONE)
 	--Activate

@@ -1,4 +1,5 @@
 --雷仙人
+---@param c Card
 function c84926738.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

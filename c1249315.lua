@@ -1,4 +1,5 @@
 --聖光の宣告者
+---@param c Card
 function c1249315.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

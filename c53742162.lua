@@ -1,4 +1,5 @@
 --氷水浸蝕
+---@param c Card
 function c53742162.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

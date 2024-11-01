@@ -1,4 +1,5 @@
 --花札衛－紅葉に鹿－
+---@param c Card
 function c21772453.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

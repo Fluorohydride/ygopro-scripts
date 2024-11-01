@@ -1,4 +1,5 @@
 --通販売員
+---@param c Card
 function c89928517.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

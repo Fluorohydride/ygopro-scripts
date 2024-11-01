@@ -1,4 +1,5 @@
 --TG ブースター・ラプトル
+---@param c Card
 function c48633301.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

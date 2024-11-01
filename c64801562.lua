@@ -1,4 +1,5 @@
 --明鏡止水の心
+---@param c Card
 function c64801562.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

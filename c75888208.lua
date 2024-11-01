@@ -1,4 +1,5 @@
 --夢魔鏡の夢魔－イケロス
+---@param c Card
 function c75888208.initial_effect(c)
 	aux.AddCodeList(c,74665651,49389190)
 	--special summon

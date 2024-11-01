@@ -1,4 +1,5 @@
 --棘の妖精
+---@param c Card
 function c91559748.initial_effect(c)
 	--change position
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エヴォルダー・ケラト
+---@param c Card
 function c80651316.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

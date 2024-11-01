@@ -1,4 +1,5 @@
 --ビック・バイパー T301
+---@param c Card
 function c10642488.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --シー・ランサー
+---@param c Card
 function c22842214.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

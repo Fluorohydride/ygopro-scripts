@@ -1,4 +1,5 @@
 --暴君の自暴自棄
+---@param c Card
 function c55271628.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

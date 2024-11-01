@@ -1,4 +1,5 @@
 --ゴッド・ハンド・クラッシャー
+---@param c Card
 function c79868386.initial_effect(c)
 	aux.AddCodeList(c,10000030)
 	--Activate

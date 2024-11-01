@@ -1,4 +1,5 @@
 --天威の龍鬼神
+---@param c Card
 function c5041348.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

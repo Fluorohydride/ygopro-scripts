@@ -1,4 +1,5 @@
 --溟界の虚
+---@param c Card
 function c96433300.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

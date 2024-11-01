@@ -1,4 +1,5 @@
 --E-HERO マリシャス・ベイン
+---@param c Card
 function c86165817.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

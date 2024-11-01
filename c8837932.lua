@@ -1,4 +1,5 @@
 --方界曼荼羅
+---@param c Card
 function c8837932.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

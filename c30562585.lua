@@ -1,4 +1,5 @@
 --ZERO－MAX
+---@param c Card
 function c30562585.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

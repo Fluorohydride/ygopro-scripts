@@ -1,4 +1,5 @@
 --ホーリーナイツ・シエル
+---@param c Card
 function c27036706.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

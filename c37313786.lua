@@ -1,4 +1,5 @@
 --ギャンブル
+---@param c Card
 function c37313786.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

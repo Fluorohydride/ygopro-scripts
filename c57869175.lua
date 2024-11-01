@@ -1,4 +1,5 @@
 --フォーチュンレディ・パスティー
+---@param c Card
 function c57869175.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

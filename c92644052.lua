@@ -1,5 +1,6 @@
 --EM稀代の決闘者
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

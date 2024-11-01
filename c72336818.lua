@@ -1,4 +1,5 @@
 --ペンテスタッグ
+---@param c Card
 function c72336818.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

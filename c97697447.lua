@@ -1,4 +1,5 @@
 --アビストローム
+---@param c Card
 function c97697447.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

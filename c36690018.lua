@@ -1,4 +1,5 @@
 --逆転する運命
+---@param c Card
 function c36690018.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

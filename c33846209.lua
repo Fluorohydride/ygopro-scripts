@@ -1,4 +1,5 @@
 --デュアルスパーク
+---@param c Card
 function c33846209.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

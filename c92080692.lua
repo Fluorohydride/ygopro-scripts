@@ -1,4 +1,5 @@
 --見切りの極意
+---@param c Card
 function c92080692.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マテリアクトル・ギガドラ
+---@param c Card
 function c33008376.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

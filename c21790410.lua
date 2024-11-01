@@ -1,4 +1,5 @@
 --甲虫装機 センチピード
+---@param c Card
 function c21790410.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

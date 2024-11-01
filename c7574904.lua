@@ -1,4 +1,5 @@
 --ミュートリアル・アームズ
+---@param c Card
 function c7574904.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

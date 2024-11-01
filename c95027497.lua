@@ -1,4 +1,5 @@
 --忍者マスター HANZO
+---@param c Card
 function c95027497.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

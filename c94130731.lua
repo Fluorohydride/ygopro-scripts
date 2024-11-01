@@ -1,4 +1,5 @@
 --超越竜グレイスザウルス
+---@param c Card
 function c94130731.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

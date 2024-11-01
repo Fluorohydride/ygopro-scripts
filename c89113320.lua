@@ -1,4 +1,5 @@
 --EMビッグバイトタートル
+---@param c Card
 function c89113320.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

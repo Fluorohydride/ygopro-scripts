@@ -1,4 +1,5 @@
 --七皇再生
+---@param c Card
 function c83888009.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

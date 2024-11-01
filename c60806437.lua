@@ -1,4 +1,5 @@
 --UFOタートル
+---@param c Card
 function c60806437.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

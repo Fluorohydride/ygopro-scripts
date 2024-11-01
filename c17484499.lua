@@ -1,4 +1,5 @@
 --現世と冥界の逆転
+---@param c Card
 function c17484499.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

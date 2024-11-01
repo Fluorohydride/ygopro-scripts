@@ -1,4 +1,5 @@
 --竜星の具象化
+---@param c Card
 function c30398342.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

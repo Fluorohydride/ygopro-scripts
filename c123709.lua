@@ -1,4 +1,5 @@
 --ラヴァル・ランスロッド
+---@param c Card
 function c123709.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

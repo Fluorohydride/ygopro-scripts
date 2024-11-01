@@ -1,5 +1,6 @@
 --リブロマンサー・インターフェア
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--return from field to hand
 	local e1=Effect.CreateEffect(c)

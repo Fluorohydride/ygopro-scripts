@@ -1,4 +1,5 @@
 --覇王城
+---@param c Card
 function c72043279.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--Activate

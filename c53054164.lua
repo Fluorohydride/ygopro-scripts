@@ -1,4 +1,5 @@
 --わくわくメルフィーズ
+---@param c Card
 function c53054164.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

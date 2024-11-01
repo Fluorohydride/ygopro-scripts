@@ -1,4 +1,5 @@
 --青天の霹靂
+---@param c Card
 function c23587624.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

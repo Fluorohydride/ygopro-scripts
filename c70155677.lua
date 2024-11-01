@@ -1,4 +1,5 @@
 --夢見るネムレリア
+---@param c Card
 function c70155677.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetSPSummonOnce(70155677)

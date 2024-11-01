@@ -1,4 +1,5 @@
 --機皇帝スキエル∞
+---@param c Card
 function c31930787.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

@@ -1,4 +1,5 @@
 --ファイヤー・ソウル
+---@param c Card
 function c95026693.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

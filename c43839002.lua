@@ -1,4 +1,5 @@
 --サイバネット・バックドア
+---@param c Card
 function c43839002.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

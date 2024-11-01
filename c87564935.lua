@@ -1,4 +1,5 @@
 --メタル化寄生生物－ソルタイト
+---@param c Card
 function c87564935.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

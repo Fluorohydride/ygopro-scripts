@@ -1,4 +1,5 @@
 --いくらの軍貫
+---@param c Card
 function c61027400.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

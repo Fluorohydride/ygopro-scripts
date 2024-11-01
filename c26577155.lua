@@ -1,4 +1,5 @@
 --ドラグニティ－レムス
+---@param c Card
 function c26577155.initial_effect(c)
 	aux.AddCodeList(c,62265044)
 	--synchro limit

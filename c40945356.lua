@@ -1,4 +1,5 @@
 --黄昏の中忍－ニチリン
+---@param c Card
 function c40945356.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

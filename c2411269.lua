@@ -1,4 +1,5 @@
 --竜絶蘭
+---@param c Card
 function c2411269.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

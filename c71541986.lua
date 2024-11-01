@@ -1,4 +1,5 @@
 --エクシーズ・ディメンション・スプラッシュ
+---@param c Card
 function c71541986.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

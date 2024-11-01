@@ -1,4 +1,5 @@
 --逆巻く炎の宝札
+---@param c Card
 function c46898368.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

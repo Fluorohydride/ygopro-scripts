@@ -1,4 +1,5 @@
 --ミイラの呼び声
+---@param c Card
 function c4861205.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

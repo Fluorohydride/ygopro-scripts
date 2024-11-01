@@ -1,4 +1,5 @@
 --ハーピィ・ダンサー
+---@param c Card
 function c68815132.initial_effect(c)
 	--return
 	local e1=Effect.CreateEffect(c)

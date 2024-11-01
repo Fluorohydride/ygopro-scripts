@@ -1,4 +1,5 @@
 --サイコ・ヘルストランサー
+---@param c Card
 function c45379225.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

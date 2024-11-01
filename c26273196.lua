@@ -1,4 +1,5 @@
 --時の魔導士
+---@param c Card
 function c26273196.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

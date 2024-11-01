@@ -1,4 +1,5 @@
 --霊神の聖殿
+---@param c Card
 function c61557074.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

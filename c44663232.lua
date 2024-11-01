@@ -1,4 +1,5 @@
 --異怪の妖精 エルフォビア
+---@param c Card
 function c44663232.initial_effect(c)
 	--activate limit
 	local e2=Effect.CreateEffect(c)

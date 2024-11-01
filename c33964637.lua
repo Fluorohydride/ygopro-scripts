@@ -1,4 +1,5 @@
 --影六武衆－リハン
+---@param c Card
 function c33964637.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c33964637.ffilter,3,true)

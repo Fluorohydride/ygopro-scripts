@@ -1,4 +1,5 @@
 --十二獣サラブレード
+---@param c Card
 function c77150143.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

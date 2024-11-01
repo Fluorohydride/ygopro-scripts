@@ -1,4 +1,5 @@
 --機皇神龍トリスケリア
+---@param c Card
 function c4837861.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

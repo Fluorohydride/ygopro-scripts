@@ -1,4 +1,5 @@
 --地霊媒師アウス
+---@param c Card
 function c62803464.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

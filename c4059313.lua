@@ -1,4 +1,5 @@
 --ゴッド・ブレイズ・キャノン
+---@param c Card
 function c4059313.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--Activate

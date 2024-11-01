@@ -1,4 +1,5 @@
 --星墜つる地に立つ閃珖
+---@param c Card
 function c20590784.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

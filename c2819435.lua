@@ -1,4 +1,5 @@
 --幻煌の都 パシフィス
+---@param c Card
 function c2819435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

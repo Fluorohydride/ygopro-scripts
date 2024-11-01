@@ -1,4 +1,5 @@
 --メカ・ザウルス
+---@param c Card
 function c89112729.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

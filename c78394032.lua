@@ -1,4 +1,5 @@
 --モーターシェル
+---@param c Card
 function c78394032.initial_effect(c)
 	--"Motor Token" Summon
 	local e1=Effect.CreateEffect(c)

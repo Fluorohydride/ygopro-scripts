@@ -1,4 +1,5 @@
 --ウォークライ・ビッグブロウ
+---@param c Card
 function c46660187.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

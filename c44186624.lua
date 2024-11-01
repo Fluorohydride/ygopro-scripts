@@ -1,4 +1,5 @@
 --DDD制覇王カイゼル
+---@param c Card
 function c44186624.initial_effect(c)
 	--spsummon success
 	local e1=Effect.CreateEffect(c)

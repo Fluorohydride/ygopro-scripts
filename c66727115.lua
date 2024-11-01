@@ -1,4 +1,5 @@
 --武神逐
+---@param c Card
 function c66727115.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

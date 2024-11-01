@@ -1,4 +1,5 @@
 --無効
+---@param c Card
 function c80863132.initial_effect(c)
 	--change effect
 	local e1=Effect.CreateEffect(c)

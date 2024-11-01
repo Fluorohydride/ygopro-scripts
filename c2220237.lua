@@ -1,4 +1,5 @@
 --セキュア・ガードナー
+---@param c Card
 function c2220237.initial_effect(c)
 	c:SetUniqueOnField(1,0,2220237)
 	--link summon

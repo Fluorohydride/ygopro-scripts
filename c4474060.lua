@@ -1,4 +1,5 @@
 --SPYRAL GEAR－ドローン
+---@param c Card
 function c4474060.initial_effect(c)
 	--sort
 	local e1=Effect.CreateEffect(c)

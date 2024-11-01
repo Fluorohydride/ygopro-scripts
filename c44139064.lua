@@ -1,4 +1,5 @@
 --メガロイド都市
+---@param c Card
 function c44139064.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

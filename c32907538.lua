@@ -1,4 +1,5 @@
 --ウォールクリエイター
+---@param c Card
 function c32907538.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

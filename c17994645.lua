@@ -1,4 +1,5 @@
 --A BF－雨隠れのサヨ
+---@param c Card
 function c17994645.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)

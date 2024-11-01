@@ -1,4 +1,5 @@
 --ヤジロベーダー
+---@param c Card
 function c10852583.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --番犬－ウォッチドッグ
+---@param c Card
 function c86889202.initial_effect(c)
 	--sset
 	local e1=Effect.CreateEffect(c)

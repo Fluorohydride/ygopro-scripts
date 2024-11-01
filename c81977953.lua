@@ -1,4 +1,5 @@
 --デザート・ツイスター
+---@param c Card
 function c81977953.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

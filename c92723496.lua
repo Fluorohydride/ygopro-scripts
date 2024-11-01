@@ -1,4 +1,5 @@
 --竜宮のツガイ
+---@param c Card
 function c92723496.initial_effect(c)
 	--spsummon
 	local e3=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --斬機マルチプライヤー
+---@param c Card
 function c52354896.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

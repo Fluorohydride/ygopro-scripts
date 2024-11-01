@@ -1,4 +1,5 @@
 --烙印の命数
+---@param c Card
 function c14220547.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

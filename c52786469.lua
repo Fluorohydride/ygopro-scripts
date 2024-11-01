@@ -1,4 +1,5 @@
 --ラヴァル・ウォリアー
+---@param c Card
 function c52786469.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

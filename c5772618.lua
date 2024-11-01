@@ -1,4 +1,5 @@
 --HSRカイドレイク
+---@param c Card
 function c5772618.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c5772618.sfilter,aux.NonTuner(nil),1)

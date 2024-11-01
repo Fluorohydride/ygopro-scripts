@@ -1,4 +1,5 @@
 --幻奏の音女セレナ
+---@param c Card
 function c42029847.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

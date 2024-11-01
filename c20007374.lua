@@ -1,4 +1,5 @@
 --集いし願い
+---@param c Card
 function c20007374.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate

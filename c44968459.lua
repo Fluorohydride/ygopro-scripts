@@ -1,4 +1,5 @@
 --サイレント・バーニング
+---@param c Card
 function c44968459.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

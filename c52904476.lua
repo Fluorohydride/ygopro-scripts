@@ -1,4 +1,5 @@
 --ネフティスの悟り手
+---@param c Card
 function c52904476.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --肥大化
+---@param c Card
 function c67820935.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

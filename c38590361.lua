@@ -1,4 +1,5 @@
 --螺旋融合
+---@param c Card
 function c38590361.initial_effect(c)
 	aux.AddCodeList(c,66889139)
 	--Activate

@@ -1,4 +1,5 @@
 --空牙団の大義 フォルゴ
+---@param c Card
 function c66023650.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

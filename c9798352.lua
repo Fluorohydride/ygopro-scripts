@@ -1,4 +1,5 @@
 --奇采のプルフィネス
+---@param c Card
 function c9798352.initial_effect(c)
 	--level change(summon/special summon success)
 	local e1=Effect.CreateEffect(c)

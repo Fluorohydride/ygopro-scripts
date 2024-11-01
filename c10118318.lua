@@ -1,4 +1,5 @@
 --トゥルース・リインフォース
+---@param c Card
 function c10118318.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

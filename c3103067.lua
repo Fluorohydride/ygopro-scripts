@@ -1,4 +1,5 @@
 --攻撃誘導アーマー
+---@param c Card
 function c3103067.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

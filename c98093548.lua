@@ -1,4 +1,5 @@
 --俊炎星－ゾウセイ
+---@param c Card
 function c98093548.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

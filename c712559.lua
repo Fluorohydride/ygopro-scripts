@@ -1,4 +1,5 @@
 --アマゾネスの里
+---@param c Card
 function c712559.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

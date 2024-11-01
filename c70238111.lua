@@ -1,4 +1,5 @@
 --リコーデッド・アライブ
+---@param c Card
 function c70238111.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

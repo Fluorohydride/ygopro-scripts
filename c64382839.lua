@@ -1,4 +1,5 @@
 --ゼータ・レティキュラント
+---@param c Card
 function c64382839.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

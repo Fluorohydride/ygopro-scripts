@@ -1,4 +1,5 @@
 --氷剣竜ミラジェイド
+---@param c Card
 function c44146295.initial_effect(c)
 	c:SetUniqueOnField(1,0,44146295)
 	--fusion material

@@ -1,4 +1,5 @@
 --冥王の咆哮
+---@param c Card
 function c41925941.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

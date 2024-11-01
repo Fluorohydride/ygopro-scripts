@@ -1,4 +1,5 @@
 --双天の獅使－阿吽
+---@param c Card
 function c28798938.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --DDDD超次元統皇ゼロ・パラドックス
+---@param c Card
 function c97417863.initial_effect(c)
 	c:EnableReviveLimit()
 	--pendulum summon

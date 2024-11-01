@@ -1,4 +1,5 @@
 --A・ジェネクス・ソリッド
+---@param c Card
 function c83500096.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

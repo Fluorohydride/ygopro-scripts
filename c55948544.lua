@@ -1,4 +1,5 @@
 --ファラオの審判
+---@param c Card
 function c55948544.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

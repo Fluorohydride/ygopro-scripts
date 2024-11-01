@@ -1,4 +1,5 @@
 --赤酢の踏切
+---@param c Card
 function c65107325.initial_effect(c)
 	c:SetUniqueOnField(1,0,65107325)
 	--Activate

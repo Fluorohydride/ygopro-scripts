@@ -1,4 +1,5 @@
 --ジェット・ロイド
+---@param c Card
 function c43697559.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(43697559,0))

@@ -1,4 +1,5 @@
 --ギャラクシーアイズ FA・フォトン・ドラゴン
+---@param c Card
 function c39030163.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3,c39030163.ovfilter,aux.Stringid(39030163,0))

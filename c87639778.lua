@@ -1,4 +1,5 @@
 --ハーピィの羽根吹雪
+---@param c Card
 function c87639778.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

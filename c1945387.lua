@@ -1,4 +1,5 @@
 --E・HERO ノヴァマスター
+---@param c Card
 function c1945387.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

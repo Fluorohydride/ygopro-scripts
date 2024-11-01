@@ -1,4 +1,5 @@
 --魔装騎士ドラゴネス
+---@param c Card
 function c70681994.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --落消しのパズロミノ
+---@param c Card
 function c84271823.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c84271823.mfilter,2,2,c84271823.lcheck)

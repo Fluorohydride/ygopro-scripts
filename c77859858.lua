@@ -1,4 +1,5 @@
 --破滅へのクイック・ドロー
+---@param c Card
 function c77859858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

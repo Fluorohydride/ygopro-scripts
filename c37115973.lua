@@ -1,4 +1,5 @@
 --ナンバーズハンター
+---@param c Card
 function c37115973.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

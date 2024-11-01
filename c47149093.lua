@@ -1,5 +1,6 @@
 --宝玉の玲瓏
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:SetUniqueOnField(1,0,id)
 	--activate

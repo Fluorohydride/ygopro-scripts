@@ -1,4 +1,5 @@
 --流離のグリフォンライダー
+---@param c Card
 function c2563463.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--special summon

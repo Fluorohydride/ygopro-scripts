@@ -1,4 +1,5 @@
 --グリザイユの牢獄
+---@param c Card
 function c22888900.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

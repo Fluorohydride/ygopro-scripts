@@ -1,4 +1,5 @@
 --オボミ
+---@param c Card
 function c68812773.initial_effect(c)
 	--summon,flip
 	local e1=Effect.CreateEffect(c)

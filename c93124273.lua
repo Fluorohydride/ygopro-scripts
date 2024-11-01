@@ -1,4 +1,5 @@
 --レプティアの武者騎兵
+---@param c Card
 function c93124273.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

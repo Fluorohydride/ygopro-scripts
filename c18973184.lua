@@ -1,4 +1,5 @@
 --失烙印
+---@param c Card
 function c18973184.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--activate

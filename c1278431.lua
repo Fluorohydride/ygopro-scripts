@@ -1,4 +1,5 @@
 --古代の機械素体
+---@param c Card
 function c1278431.initial_effect(c)
 	aux.AddCodeList(c,83104731)
 	--search

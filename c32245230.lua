@@ -1,4 +1,5 @@
 --運命の契約
+---@param c Card
 function c32245230.initial_effect(c)
 	c:EnableCounterPermit(0x5e,LOCATION_SZONE)
 	c:SetCounterLimit(0x5e,1)
