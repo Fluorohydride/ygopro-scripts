@@ -19,9 +19,11 @@ function s.initial_effect(c)
 	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetCode(EFFECT_CANNOT_BE_BATTLE_TARGET)
+	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(s.atcon)
-	e3:SetValue(1)
+	e3:SetValue(aux.imval1)
 	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
