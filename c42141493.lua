@@ -76,6 +76,7 @@ function s.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.filter(c,sp)
 	return c:IsSummonPlayer(sp) and c:IsSummonLocation(LOCATION_DECK+LOCATION_EXTRA)
+		and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function s.drcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.filter,1,nil,1-tp)
