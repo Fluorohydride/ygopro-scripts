@@ -13,7 +13,6 @@ function c84290642.initial_effect(c)
 	e1:SetOperation(c84290642.activate)
 	c:RegisterEffect(e1)
 end
-c84290642.toss_dice=true
 function c84290642.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)

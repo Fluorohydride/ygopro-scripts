@@ -25,7 +25,6 @@ function c9603356.initial_effect(c)
 	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 end
-c9603356.toss_dice=true
 function c9603356.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

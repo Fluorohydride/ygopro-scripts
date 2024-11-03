@@ -16,7 +16,6 @@ function c82308875.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 aux.xyz_number[82308875]=7
-c82308875.toss_dice=true
 function c82308875.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

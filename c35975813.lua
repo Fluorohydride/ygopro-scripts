@@ -35,7 +35,6 @@ function c35975813.initial_effect(c)
 	e5:SetOperation(c35975813.disop2)
 	c:RegisterEffect(e5)
 end
-c35975813.toss_dice=true
 function c35975813.exfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x45)
 end

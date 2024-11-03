@@ -12,7 +12,6 @@ function c16135253.initial_effect(c)
 	e1:SetOperation(c16135253.operation)
 	c:RegisterEffect(e1)
 end
-c16135253.toss_dice=true
 function c16135253.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end

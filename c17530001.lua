@@ -12,7 +12,6 @@ function c17530001.initial_effect(c)
 	e1:SetOperation(c17530001.operation)
 	c:RegisterEffect(e1)
 end
-c17530001.toss_dice=true
 function c17530001.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)

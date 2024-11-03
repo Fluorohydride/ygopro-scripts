@@ -19,7 +19,6 @@ function c10960419.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c10960419.material_race=RACE_SPELLCASTER
-c10960419.toss_dice=true
 function c10960419.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() and chkc~=e:GetHandler() end
 	if chk==0 then return true end

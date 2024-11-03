@@ -29,7 +29,6 @@ function c5641251.initial_effect(c)
 	e3:SetOperation(c5641251.lvlop)
 	c:RegisterEffect(e3)
 end
-c5641251.toss_dice=true
 function c5641251.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end

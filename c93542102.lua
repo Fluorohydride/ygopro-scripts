@@ -23,7 +23,6 @@ function c93542102.initial_effect(c)
 	e2:SetOperation(c93542102.opd)
 	c:RegisterEffect(e2)
 end
-c93542102.toss_dice=true
 function c93542102.cona(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsAttackPos()
 end
