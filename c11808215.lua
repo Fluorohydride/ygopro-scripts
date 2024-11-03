@@ -20,7 +20,6 @@ function c11808215.initial_effect(c)
 	e2:SetOperation(c11808215.diceop)
 	c:RegisterEffect(e2)
 end
-c11808215.toss_dice=true
 function c11808215.thfilter(c)
 	return c:IsCode(47292920) and c:IsAbleToHand()
 end
