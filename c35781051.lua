@@ -62,10 +62,10 @@ function c35781051.arcanareg(c,coin)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_MSET)
 	c:RegisterEffect(e4)
-	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c35781051.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetFlagEffectLabel(36690018)==1
+	return ep~=tp and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c35781051.spfilter(c,e,tp)
 	return c:IsSetCard(0x5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -84,7 +84,7 @@ function c35781051.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c35781051.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetFlagEffectLabel(36690018)==0
+	return ep~=tp and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
 end
 function c35781051.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

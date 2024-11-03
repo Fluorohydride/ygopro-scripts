@@ -99,14 +99,14 @@ function c69831560.arcanareg(c,coin)
 	e4:SetReset(RESET_EVENT+RESET_OVERLAY+RESET_TOFIELD)
 	e4:SetLabelObject(e3)
 	c:RegisterEffect(e4)
-	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c69831560.macon(e)
-	return e:GetHandler():GetFlagEffectLabel(36690018)==1
+	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c69831560.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffectLabel(36690018)==1 and c:GetAttackAnnouncedCount()>=2
+	return c:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1 and c:GetAttackAnnouncedCount()>=2
 end
 function c69831560.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -121,7 +121,7 @@ function c69831560.posop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c69831560.desop1(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(36690018)==0 then
+	if e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0 then
 		e:SetLabel(1)
 	else e:SetLabel(0) end
 end

@@ -73,11 +73,11 @@ function c60953118.arcanareg(c,coin)
 	e2:SetTargetRange(0,1)
 	e2:SetCondition(c60953118.rdcon2)
 	c:RegisterEffect(e2)
-	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c60953118.rdcon1(e)
-	return e:GetHandler():GetFlagEffectLabel(36690018)==1
+	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c60953118.rdcon2(e)
-	return e:GetHandler():GetFlagEffectLabel(36690018)==0
+	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
 end
