@@ -47,7 +47,6 @@ function c72427512.desop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_CHANGE_RACE)
-			e2:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 			e2:SetValue(race)
 			c:RegisterEffect(e2)
 		end
