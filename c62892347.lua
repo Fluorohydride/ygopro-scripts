@@ -14,37 +14,11 @@ function c62892347.initial_effect(c)
 	e2:SetCondition(c62892347.poscon)
 	c:RegisterEffect(e2)
 	--coin
-	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(62892347,0))
-	e3:SetCategory(CATEGORY_COIN)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e3:SetCode(EVENT_SUMMON_SUCCESS)
-	e3:SetTarget(c62892347.cointg)
-	e3:SetOperation(c62892347.coinop)
-	c:RegisterEffect(e3)
-	local e4=e3:Clone()
-	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
-	c:RegisterEffect(e4)
-	local e5=e3:Clone()
-	e5:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
-	c:RegisterEffect(e5)
+	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 end
 c62892347.toss_coin=true
 function c62892347.poscon(e)
 	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK)
-end
-function c62892347.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
-end
-function c62892347.coinop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local res=0
-	if c:IsHasEffect(73206827) then
-		res=1-Duel.SelectOption(tp,60,61)
-	else res=Duel.TossCoin(tp,1) end
-	c62892347.arcanareg(c,res)
 end
 function c62892347.arcanareg(c,coin)
 	--disable

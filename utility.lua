@@ -265,7 +265,7 @@ end
 ---@param ... integer
 function Auxiliary.EnableArcanaCoin(c,event1,...)
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(1)
+	e1:SetDescription(1623)
 	e1:SetCategory(CATEGORY_COIN)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(event1)
