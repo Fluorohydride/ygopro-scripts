@@ -24,7 +24,6 @@ function c11819473.initial_effect(c)
 	e2:SetOperation(c11819473.sumop)
 	c:RegisterEffect(e2)
 end
-c11819473.toss_coin=true
 function c11819473.thfilter1(c)
 	return not c:IsCode(11819473) and c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN)) and c:IsAbleToHand()
 end

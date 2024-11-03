@@ -37,7 +37,6 @@ function c76728962.initial_effect(c)
 	e3:SetOperation(c76728962.thop)
 	c:RegisterEffect(e3)
 end
-c76728962.toss_coin=true
 function c76728962.filter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0 and c:IsPreviousControler(tp)

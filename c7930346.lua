@@ -40,7 +40,6 @@ function s.initial_effect(c)
 	e4:SetOperation(s.countop)
 	c:RegisterEffect(e4)
 end
-s.toss_coin=true
 function s.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp) end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,0)
