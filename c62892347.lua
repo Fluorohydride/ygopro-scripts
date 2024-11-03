@@ -29,7 +29,6 @@ function c62892347.initial_effect(c)
 	e5:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
 	c:RegisterEffect(e5)
 end
-c62892347.toss_coin=true
 function c62892347.poscon(e)
 	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK)
 end

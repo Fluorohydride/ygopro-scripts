@@ -28,7 +28,6 @@ function c69831560.initial_effect(c)
 	e3:SetOperation(c69831560.coinop)
 	c:RegisterEffect(e3)
 end
-c69831560.toss_coin=true
 function c69831560.spfilter(c)
 	return c:IsAbleToGraveAsCost()
 end

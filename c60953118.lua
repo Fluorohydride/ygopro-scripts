@@ -27,7 +27,6 @@ function c60953118.initial_effect(c)
 	e4:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
 	c:RegisterEffect(e4)
 end
-c60953118.toss_coin=true
 function c60953118.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetBattleDamage(tp)>0
 end

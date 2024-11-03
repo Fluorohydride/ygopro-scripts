@@ -13,7 +13,6 @@ function c25551951.initial_effect(c)
 	e1:SetOperation(c25551951.desop)
 	c:RegisterEffect(e1)
 end
-c25551951.toss_coin=true
 function c25551951.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end

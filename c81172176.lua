@@ -10,7 +10,6 @@ function c81172176.initial_effect(c)
 	e1:SetOperation(c81172176.activate)
 	c:RegisterEffect(e1)
 end
-c81172176.toss_coin=true
 function c81172176.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
 		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=Duel.GetFieldGroupCount(tp,0,LOCATION_GRAVE) end

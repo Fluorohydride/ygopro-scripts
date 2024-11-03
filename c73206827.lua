@@ -39,7 +39,6 @@ function c73206827.initial_effect(c)
 	e4:SetOperation(c73206827.recop)
 	c:RegisterEffect(e4)
 end
-c73206827.toss_coin=true
 function c73206827.coincon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end
