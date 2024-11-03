@@ -26,7 +26,7 @@ function c11819473.initial_effect(c)
 end
 c11819473.toss_coin=true
 function c11819473.thfilter1(c)
-	return not c:IsCode(11819473) and c.toss_coin and c:IsAbleToHand()
+	return not c:IsCode(11819473) and c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN)) and c:IsAbleToHand()
 end
 function c11819473.thfilter2(c,p)
 	return c:IsAbleToHand(p)
