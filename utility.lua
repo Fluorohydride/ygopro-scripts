@@ -259,7 +259,7 @@ function Auxiliary.NeosReturnTargetOptional(set_category)
 				if set_category then set_category(e,tp,eg,ep,ev,re,r,rp) end
 			end
 end
----
+---add "Toss a coin and get the following effects" effect to Arcana Force monsters
 ---@param c Card
 ---@param event1 integer
 ---@param ... integer
@@ -284,12 +284,16 @@ function Auxiliary.ArcanaCoinTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function Auxiliary.ArcanaCoinOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local res=0
+	local toss=false
 	if Duel.IsPlayerAffectedByEffect(tp,73206827) then
 		res=1-Duel.SelectOption(tp,60,61)
 	else
 		res=Duel.TossCoin(tp,1)
+		toss=true
+	end
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if toss then
 		c:RegisterFlagEffect(FLAG_ID_REVERSAL_OF_FATE,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 	c.arcanareg(c,res)
