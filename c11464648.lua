@@ -66,7 +66,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.eqfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x1b0) and bit.band(c:GetType(),TYPE_SPELL+TYPE_EQUIP)==TYPE_SPELL+TYPE_EQUIP
+	return c:IsFaceup() and c:IsSetCard(0x1b0) and c:IsAllTypes(TYPE_SPELL+TYPE_EQUIP)
 end
 function s.imcon(e)
 	local sg=e:GetHandler():GetEquipGroup()

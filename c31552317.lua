@@ -48,7 +48,7 @@ function s.indtg(e,c)
 	return c:IsSetCard(0xea)
 end
 function s.indct(e,re,r,rp)
-	if bit.band(r,REASON_BATTLE)~=0 then
+	if r&REASON_BATTLE~=0 then
 		return 1
 	else return 0 end
 end

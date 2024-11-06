@@ -39,7 +39,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.mfilter(ft,lv,race,att)
-	return ft==1 and lv>=5 and bit.band(race,RACE_WARRIOR)==RACE_WARRIOR
+	return ft==1 and lv>=5 and race&RACE_WARRIOR~=0
 end
 s.Metallization_material=s.mfilter
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

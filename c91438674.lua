@@ -34,8 +34,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.cfilter(c)
-	return bit.band(c:GetType(),TYPE_TRAP+TYPE_CONTINUOUS)==TYPE_TRAP+TYPE_CONTINUOUS
-		and c:IsFaceup()
+	return c:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS) and c:IsFaceup()
 end
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
@@ -69,7 +68,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.actop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if bit.band(rc:GetType(),TYPE_TRAP+TYPE_CONTINUOUS)==TYPE_TRAP+TYPE_CONTINUOUS and ep==tp then
+	if rc:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS) and ep==tp then
 		Duel.SetChainLimit(s.chainlm)
 	end
 end
@@ -78,7 +77,7 @@ function s.chainlm(e,rp,tp)
 end
 function s.setfilter(c,tp)
 	return c:IsSetCard(0x1c1) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
-		and bit.band(c:GetType(),TYPE_TRAP+TYPE_CONTINUOUS)==TYPE_TRAP+TYPE_CONTINUOUS
+		and c:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.setfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,tp)

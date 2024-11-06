@@ -32,7 +32,7 @@ function s.initial_effect(c)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND+LOCATION_ONFIELD) and e:GetHandler():IsPreviousControler(tp)
-		and re and re:IsActivated() and bit.band(r,REASON_EFFECT)==REASON_EFFECT
+		and re and re:IsActivated() and r&REASON_EFFECT~=0
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

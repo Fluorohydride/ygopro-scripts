@@ -28,7 +28,7 @@ end
 function s.cfilter(c,re)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 		and c:IsReason(REASON_COST) and re:IsActivated()
-		and (not c:IsPreviousLocation(LOCATION_ONFIELD) or bit.band(c:GetPreviousTypeOnField(),TYPE_SPELL+TYPE_TRAP)~=0)
+		and (not c:IsPreviousLocation(LOCATION_ONFIELD) or c:GetPreviousTypeOnField()&(TYPE_SPELL+TYPE_TRAP)~=0)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,re)

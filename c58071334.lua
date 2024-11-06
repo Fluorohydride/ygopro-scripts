@@ -39,8 +39,7 @@ function s.mfilter2(c)
 	return c:IsRace(RACE_ILLUSION)
 end
 function s.sprfilter(c)
-	return bit.band(c:GetOriginalType(),TYPE_MONSTER)==TYPE_MONSTER
-		and c:IsFaceup() and c:IsAbleToGraveAsCost()
+	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
 function s.sgchk(g,tp,sc)
 	return Duel.GetLocationCountFromEx(tp,tp,g,sc)>0

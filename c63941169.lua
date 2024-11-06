@@ -66,7 +66,7 @@ end
 function s.cfilter2(c,tp,se)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
-		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WATER)~=0
+		and c:GetPreviousAttributeOnField()&ATTRIBUTE_WATER~=0
 		and c:IsPreviousLocation(LOCATION_MZONE) and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)

@@ -60,8 +60,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.cfilter(c,tp)
-	return bit.band(c:GetType(),TYPE_TRAP+TYPE_CONTINUOUS)==TYPE_TRAP+TYPE_CONTINUOUS
-		and c:IsPreviousLocation(LOCATION_SZONE) and c:IsControler(tp)
+	return c:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS) and c:IsPreviousLocation(LOCATION_SZONE) and c:IsControler(tp)
 end
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp)
@@ -75,8 +74,7 @@ function s.cfilter2(c)
 end
 function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return bit.band(rc:GetType(),TYPE_TRAP+TYPE_CONTINUOUS)==TYPE_TRAP+TYPE_CONTINUOUS
-		and re:GetActivateLocation()==LOCATION_MZONE
+	return rc:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS)	and re:GetActivateLocation()==LOCATION_MZONE
 		and Duel.IsExistingMatchingCard(s.cfilter2,tp,LOCATION_REMOVED,0,1,nil)
 end
 function s.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

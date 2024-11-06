@@ -90,5 +90,5 @@ function s.condition(e)
 end
 function s.aclimit(e,re,tp)
 	local loc=re:GetActivateLocation()
-	return bit.band(loc,LOCATION_ONFIELD)~=0 and re:IsActiveType(TYPE_MONSTER)
+	return loc&LOCATION_ONFIELD~=0 and re:IsActiveType(TYPE_MONSTER)
 end

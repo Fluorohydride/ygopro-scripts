@@ -30,9 +30,9 @@ function s.checkzone(tp)
 	local zone=0
 	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	for tc in aux.Next(g) do
-		zone=bit.bor(zone,tc:GetLinkedZone(tp))
+		zone=zone|tc:GetLinkedZone(tp)
 	end
-	return bit.band(zone,0x1f)
+	return zone&0x1f
 end
 function s.spcon(e,c)
 	if c==nil then return true end
