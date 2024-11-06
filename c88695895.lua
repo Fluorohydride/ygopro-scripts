@@ -33,7 +33,7 @@ function s.cfilter(c,e,tp)
 	return c:IsSummonPlayer(1-tp) and c:IsSummonLocation(LOCATION_DECK+LOCATION_EXTRA)
 end
 function s.confilter(c)
-	return c:IsSetCard(0x19b) and c:IsFaceup() and c:GetOriginalType()&TYPE_MONSTER>0
+	return c:IsSetCard(0x119b) and c:IsFaceup() and c:GetOriginalType()&TYPE_MONSTER>0
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.confilter,tp,LOCATION_ONFIELD,0,1,nil)
@@ -63,7 +63,7 @@ function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	if not d then return false end
 	if not a:IsControler(tp) then a,d=d,a end
 	e:SetLabelObject(d)
-	return a:IsControler(tp) and a:IsFaceup() and a:IsSetCard(0x19b) and d:IsControler(1-tp) and d:IsFaceup() and d:IsRelateToBattle()
+	return a:IsControler(tp) and a:IsFaceup() and a:IsSetCard(0x119b) and d:IsControler(1-tp) and d:IsFaceup() and d:IsRelateToBattle()
 end
 function s.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=e:GetLabelObject()
