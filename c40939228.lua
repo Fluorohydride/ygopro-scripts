@@ -110,18 +110,20 @@ end
 function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
-		c:RegisterFlagEffect(40939228,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetReset(RESET_PHASE+PHASE_END)
-		e1:SetLabel(fid)
-		e1:SetLabelObject(c)
-		e1:SetCountLimit(1)
-		e1:SetCondition(c40939228.retcon)
-		e1:SetOperation(c40939228.retop)
-		Duel.RegisterEffect(e1,tp)
+	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+		if c:GetOriginalCode()==id then
+			c:RegisterFlagEffect(40939228,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_END)
+			e1:SetReset(RESET_PHASE+PHASE_END)
+			e1:SetLabel(fid)
+			e1:SetLabelObject(c)
+			e1:SetCountLimit(1)
+			e1:SetCondition(c40939228.retcon)
+			e1:SetOperation(c40939228.retop)
+			Duel.RegisterEffect(e1,tp)
+		end
 		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 		end
