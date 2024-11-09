@@ -17,7 +17,6 @@ function c34568403.initial_effect(c)
 	e3:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 end
-c34568403.toss_coin=true
 function c34568403.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local res=0

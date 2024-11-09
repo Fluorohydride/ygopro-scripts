@@ -4,7 +4,6 @@ function c8396952.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 end
-c8396952.toss_coin=true
 function c8396952.arcanareg(c,coin)
 	--disable effect
 	local e1=Effect.CreateEffect(c)

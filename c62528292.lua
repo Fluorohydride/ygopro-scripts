@@ -45,7 +45,6 @@ function c62528292.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:SetTurnCounter(0)
 	c:RegisterEffect(e1)
 end
-c62528292.toss_coin=true
 function c62528292.stgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

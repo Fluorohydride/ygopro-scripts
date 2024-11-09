@@ -15,7 +15,6 @@ function c87751584.initial_effect(c)
 	e1:SetOperation(c87751584.desop)
 	c:RegisterEffect(e1)
 end
-c87751584.toss_coin=true
 function c87751584.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)

@@ -31,7 +31,6 @@ function c28112535.initial_effect(c)
 	e5:SetOperation(c28112535.desop)
 	c:RegisterEffect(e5)
 end
-c28112535.toss_coin=true
 function c28112535.atklimit(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -14,7 +14,6 @@ function c60953118.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 end
-c60953118.toss_coin=true
 function c60953118.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetBattleDamage(tp)>0
 end

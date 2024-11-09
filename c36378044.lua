@@ -26,7 +26,6 @@ function c36378044.initial_effect(c)
 	e3:SetOperation(c36378044.desop)
 	c:RegisterEffect(e3)
 end
-c36378044.toss_coin=true
 function c36378044.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end

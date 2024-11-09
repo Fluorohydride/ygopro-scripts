@@ -12,7 +12,6 @@ function c64538655.initial_effect(c)
 	e1:SetOperation(c64538655.desop)
 	c:RegisterEffect(e1)
 end
-c64538655.toss_coin=true
 function c64538655.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget()~=nil
 end

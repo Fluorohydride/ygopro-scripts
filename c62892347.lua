@@ -16,7 +16,6 @@ function c62892347.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 end
-c62892347.toss_coin=true
 function c62892347.poscon(e)
 	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK)
 end

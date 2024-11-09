@@ -27,7 +27,6 @@ function c17032740.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c17032740.material_setcode=0x8
-c17032740.toss_coin=true
 function c17032740.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end

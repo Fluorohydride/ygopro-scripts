@@ -10,7 +10,6 @@ function c37812118.initial_effect(c)
 	e1:SetOperation(c37812118.activate)
 	c:RegisterEffect(e1)
 end
-c37812118.toss_coin=true
 function c37812118.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) and Duel.IsPlayerCanDraw(1-tp,2) end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)

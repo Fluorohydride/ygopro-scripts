@@ -21,7 +21,6 @@ function c5861892.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SPSUMMON_SUCCESS)
 end
-c5861892.toss_coin=true
 function c5861892.spfilter(c)
 	return c:IsAbleToGraveAsCost()
 end
