@@ -259,6 +259,45 @@ function Auxiliary.NeosReturnTargetOptional(set_category)
 				if set_category then set_category(e,tp,eg,ep,ev,re,r,rp) end
 			end
 end
+---add "Toss a coin and get the following effects" effect to Arcana Force monsters
+---@param c Card
+---@param event1 integer
+---@param ... integer
+function Auxiliary.EnableArcanaCoin(c,event1,...)
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(1623)
+	e1:SetCategory(CATEGORY_COIN)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetCode(event1)
+	e1:SetTarget(Auxiliary.ArcanaCoinTarget)
+	e1:SetOperation(Auxiliary.ArcanaCoinOperation)
+	c:RegisterEffect(e1)
+	for _,event in ipairs{...} do
+		local e2=e1:Clone()
+		e2:SetCode(event)
+		c:RegisterEffect(e2)
+	end
+end
+function Auxiliary.ArcanaCoinTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
+end
+function Auxiliary.ArcanaCoinOperation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local res=0
+	local toss=false
+	if Duel.IsPlayerAffectedByEffect(tp,73206827) then
+		res=1-Duel.SelectOption(tp,60,61)
+	else
+		res=Duel.TossCoin(tp,1)
+		toss=true
+	end
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if toss then
+		c:RegisterFlagEffect(FLAG_ID_REVERSAL_OF_FATE,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
+	c.arcanareg(c,res)
+end
 function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
 	return c:IsHasEffect(EFFECT_UNION_STATUS) and c:GetEquipTarget()
