@@ -20,7 +20,6 @@ function c32015116.initial_effect(c)
 	e2:SetOperation(c32015116.rdop)
 	c:RegisterEffect(e2)
 end
-c32015116.toss_dice=true
 function c32015116.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end

@@ -36,7 +36,6 @@ function c84813516.initial_effect(c)
 	e3:SetOperation(c84813516.thop)
 	c:RegisterEffect(e3)
 end
-c84813516.toss_dice=true
 function c84813516.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end

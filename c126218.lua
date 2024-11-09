@@ -13,7 +13,6 @@ function c126218.initial_effect(c)
 	e1:SetOperation(c126218.activate)
 	c:RegisterEffect(e1)
 end
-c126218.toss_dice=true
 function c126218.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)

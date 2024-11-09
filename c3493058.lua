@@ -11,7 +11,6 @@ function c3493058.initial_effect(c)
 	e1:SetOperation(c3493058.activate)
 	c:RegisterEffect(e1)
 end
-c3493058.toss_dice=true
 function c3493058.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end

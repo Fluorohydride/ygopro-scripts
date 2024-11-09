@@ -13,7 +13,7 @@ function c47292920.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c47292920.cfilter(c)
-	return c:IsFaceup() and c.toss_dice
+	return c:IsFaceup() and c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_DICE))
 end
 function c47292920.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c47292920.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
@@ -28,8 +28,8 @@ function c47292920.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c47292920.spfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c.toss_dice and not c.toss_dice_in_pendulum_only
+	return c:IsType(TYPE_MONSTER) and c:IsEffectProperty(aux.MonsterEffectCategoryFilter(CATEGORY_DICE))
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c47292920.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

@@ -9,7 +9,6 @@ function c84397023.initial_effect(c)
 	e1:SetOperation(c84397023.op)
 	c:RegisterEffect(e1)
 end
-c84397023.toss_dice=true
 function c84397023.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_HAND,0,1,nil,TYPE_MONSTER) end
 end

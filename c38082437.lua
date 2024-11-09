@@ -24,7 +24,6 @@ function c38082437.initial_effect(c)
 	e2:SetOperation(c38082437.opd)
 	c:RegisterEffect(e2)
 end
-c38082437.toss_dice=true
 function c38082437.cona(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsAttackPos()
 end

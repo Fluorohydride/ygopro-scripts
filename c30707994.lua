@@ -12,7 +12,6 @@ function c30707994.initial_effect(c)
 	e1:SetOperation(c30707994.operation)
 	c:RegisterEffect(e1)
 end
-c30707994.toss_dice=true
 function c30707994.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end

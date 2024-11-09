@@ -1832,3 +1832,16 @@ function Auxiliary.BecomeOriginalCode(c,tc,reset)
 	c:RegisterEffect(e1)
 	return e1
 end
+---@param category integer
+---@return function
+function Auxiliary.EffectCategoryFilter(category)
+	return aux.FilterBoolFunction(Effect.IsHasCategory,category)
+end
+---@param category integer
+---@return function
+function Auxiliary.MonsterEffectCategoryFilter(category)
+	---@param e Effect
+	return function (e)
+		return e:IsHasCategory(category) and not e:IsHasRange(LOCATION_PZONE)
+	end
+end
