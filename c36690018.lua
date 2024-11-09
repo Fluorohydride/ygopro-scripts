@@ -11,7 +11,7 @@ function c36690018.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36690018.filter(c)
-	return c:GetFlagEffect(36690018)~=0
+	return c:IsFaceup() and c:IsSetCard(0x5) and c:GetFlagEffect(FLAG_ID_REVERSAL_OF_FATE)~=0
 end
 function c36690018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c36690018.filter(chkc) end
@@ -21,8 +21,8 @@ function c36690018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c36690018.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and c36690018.filter(tc) then
-		local val=tc:GetFlagEffectLabel(36690018)
-		tc:SetFlagEffectLabel(36690018,1-val)
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetFlagEffect(FLAG_ID_REVERSAL_OF_FATE)~=0 and tc:GetFlagEffect(FLAG_ID_ARCANA_COIN)~=0 then
+		local val=tc:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)
+		tc:SetFlagEffectLabel(FLAG_ID_ARCANA_COIN,1-val)
 	end
 end
