@@ -10,7 +10,7 @@ function c38299233.initial_effect(c)
 	--roll and destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(38299233,0))
-	e2:SetCategory(CATEGORY_DESTROY)
+	e2:SetCategory(CATEGORY_DICE+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)

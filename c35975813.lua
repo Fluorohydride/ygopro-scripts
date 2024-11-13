@@ -23,6 +23,7 @@ function c35975813.initial_effect(c)
 	--disable and destroy
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetCategory(CATEGORY_DICE)
 	e4:SetCode(EVENT_CHAIN_SOLVING)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetOperation(c35975813.disop)
