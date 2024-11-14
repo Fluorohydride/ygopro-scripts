@@ -21,7 +21,7 @@ function c5641251.initial_effect(c)
 	--atk up
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(5641251,1))
-	e3:SetCategory(CATEGORY_DESTROY)
+	e3:SetCategory(CATEGORY_DICE+CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_CONFIRM)
 	e3:SetRange(LOCATION_SZONE)
