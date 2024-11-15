@@ -24,7 +24,7 @@ function c59071624.initial_effect(c)
 	e2:SetOperation(c59071624.spop1)
 	c:RegisterEffect(e2)
 	--spsummon2
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,{EVENT_TO_GRAVE,EVENT_REMOVE})
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,59071624,{EVENT_TO_GRAVE,EVENT_REMOVE})
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(59071624,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
