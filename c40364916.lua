@@ -20,7 +20,7 @@ function c40364916.initial_effect(c)
 	--remove
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(40364916,1))
-	e4:SetCategory(CATEGORY_REMOVE+CATEGORY_TOGRAVE)
+	e4:SetCategory(CATEGORY_REMOVE+CATEGORY_TOGRAVE+CATEGORY_DECKDES)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetRange(LOCATION_SZONE)
@@ -69,6 +69,7 @@ function c40364916.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c40364916.tgfilter,tp,LOCATION_DECK,0,nil)
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0
 		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(40364916,2)) then
+		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
