@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(s.ccon1)
+	e3:SetCost(s.ccost)
 	e3:SetOperation(s.cop)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
@@ -39,13 +40,23 @@ function s.ctpermit(e)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_SZONE) and c:IsStatus(STATUS_CHAINING)
 end
+function s.cfilter1(c,loc)
+	return c:IsPreviousLocation(loc) and c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
+end
+function s.cfilter2(c,loc)
+	return c:IsPreviousLocation(loc) and c:IsReason(REASON_EFFECT)
+end
 function s.ccon1(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:IsActiveType(TYPE_TRAP+TYPE_SPELL)
-		and eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_EXTRA)
+		and eg:IsExists(s.cfilter1,1,nil,LOCATION_EXTRA)
 end
 function s.ccon2(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:IsActiveType(TYPE_TRAP+TYPE_SPELL)
-		and eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_DECK)
+		and eg:IsExists(s.cfilter2,1,nil,LOCATION_DECK)
+end
+function s.ccost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFlagEffect(tp,id)==0 end
+	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1)
 end
 function s.setfilter(c)
 	return c:IsSetCard(0x1bd) and c:IsType(TYPE_TRAP) and c:IsSSetable()
