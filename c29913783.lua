@@ -83,7 +83,7 @@ function c29913783.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end
 function c29913783.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c29913783.spop2(e,tp,eg,ep,ev,re,r,rp)
