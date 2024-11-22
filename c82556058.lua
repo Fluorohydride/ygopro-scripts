@@ -1,6 +1,7 @@
 --デモニック・モーター・Ω
 ---@param c Card
 function c82556058.initial_effect(c)
+	aux.AddCodeList(c,82556059)
 	--token
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(82556058,0))
