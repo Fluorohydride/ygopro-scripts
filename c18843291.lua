@@ -25,6 +25,13 @@ function s.initial_effect(c)
 	e2:SetTargetRange(1,1)
 	e2:SetTarget(s.efilter)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(id)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetTarget(s.eftg)
+	c:RegisterEffect(e3)
 	--remove and tograve
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_DECKDES)
@@ -58,7 +65,10 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.efilter(e,c,rp,r,re)
-	return r&REASON_EFFECT~=0 and c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x38) and c:IsFaceup()
+	return c:IsHasEffect(id) and r&REASON_EFFECT>0
+end
+function s.eftg(e,c)
+	return c:IsSetCard(0x38) and c:IsFaceup()
 end
 function s.refilter(c)
 	return c:IsSetCard(0x38) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
