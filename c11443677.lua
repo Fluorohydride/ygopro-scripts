@@ -42,8 +42,7 @@ function c11443677.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DAMAGE_STEP_END)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e5:SetCountLimit(1)
-	e5:SetCondition(aux.dsercon)
+	e5:SetCondition(c11443677.setcon)
 	e5:SetTarget(c11443677.settg)
 	e5:SetOperation(c11443677.setop)
 	c:RegisterEffect(e5)
@@ -80,6 +79,9 @@ end
 function c11443677.efilter(e,te)
 	return te:IsActiveType(TYPE_TRAP)
 end
+function c11443677.setcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(11443677)==0 and aux.dsercon(e,tp,eg,ep,ev,re,r,rp)
+end
 function c11443677.setfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsSSetable()
 end
@@ -89,6 +91,9 @@ function c11443677.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectTarget(tp,c11443677.setfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
+	if e:IsCostChecked() then
+		e:GetHandler():RegisterFlagEffect(11443677,RESET_EVENT|RESET_TOFIELD|RESET_TURN_SET|RESET_PHASE|PHASE_END,0,0,1)
+	end
 end
 function c11443677.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
