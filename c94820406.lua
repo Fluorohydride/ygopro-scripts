@@ -10,7 +10,6 @@ function c94820406.initial_effect(c)
 	e1:SetOperation(c94820406.activate)
 	c:RegisterEffect(e1)
 end
-c94820406.fusion_effect=true
 function c94820406.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end

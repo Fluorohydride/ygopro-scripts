@@ -28,7 +28,6 @@ function c73360025.initial_effect(c)
 	e3:SetOperation(c73360025.damop)
 	c:RegisterEffect(e3)
 end
-c73360025.fusion_effect=true
 function c73360025.mfilter0(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end

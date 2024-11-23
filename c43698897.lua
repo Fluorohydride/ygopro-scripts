@@ -27,7 +27,6 @@ function c43698897.initial_effect(c)
 	e3:SetOperation(c43698897.thop)
 	c:RegisterEffect(e3)
 end
-c43698897.fusion_effect=true
 function c43698897.spfilter(c)
 	return c:IsSetCard(0x46) and c:IsType(TYPE_SPELL) and c:IsAbleToRemoveAsCost()
 end

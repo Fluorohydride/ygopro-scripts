@@ -13,7 +13,6 @@ function c71422989.initial_effect(c)
 	c:RegisterEffect(e1)
 	Duel.AddCustomActivityCounter(71422989,ACTIVITY_SPSUMMON,c71422989.counterfilter)
 end
-c71422989.fusion_effect=true
 function c71422989.counterfilter(c)
 	return c:IsSetCard(0x1047)
 end

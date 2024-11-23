@@ -22,7 +22,6 @@ function c74335036.initial_effect(c)
 	e2:SetOperation(c74335036.tdop)
 	c:RegisterEffect(e2)
 end
-c74335036.fusion_effect=true
 function c74335036.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end

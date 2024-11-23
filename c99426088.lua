@@ -10,7 +10,6 @@ function c99426088.initial_effect(c)
 	e1:SetOperation(c99426088.activate)
 	c:RegisterEffect(e1)
 end
-c99426088.fusion_effect=true
 function c99426088.exconfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL)
 end

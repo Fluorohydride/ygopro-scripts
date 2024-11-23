@@ -11,7 +11,6 @@ function c58549532.initial_effect(c)
 	e1:SetOperation(c58549532.activate)
 	c:RegisterEffect(e1)
 end
-c58549532.fusion_effect=true
 function c58549532.filter0(c,e)
 	return c:IsCanBeFusionMaterial() and c:IsFaceup() and c:IsType(TYPE_PENDULUM) and not c:IsImmuneToEffect(e)
 end

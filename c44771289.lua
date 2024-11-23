@@ -23,7 +23,6 @@ function c44771289.initial_effect(c)
 	e2:SetOperation(c44771289.atkop)
 	c:RegisterEffect(e2)
 end
-c44771289.fusion_effect=true
 function c44771289.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end

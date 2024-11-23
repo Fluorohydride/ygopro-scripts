@@ -22,7 +22,6 @@ function c32104431.initial_effect(c)
 	e2:SetOperation(c32104431.fusionop)
 	c:RegisterEffect(e2)
 end
-c32104431.fusion_effect=true
 function c32104431.costfilter(c)
 	return c:IsSetCard(0xd6) and c:IsDiscardable()
 end

@@ -28,7 +28,6 @@ function c74078255.initial_effect(c)
 	e3:SetOperation(c74078255.activate)
 	c:RegisterEffect(e3)
 end
-c74078255.fusion_effect=true
 function c74078255.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,3) end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,3)

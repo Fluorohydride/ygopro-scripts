@@ -33,7 +33,6 @@ function c73511233.initial_effect(c)
 	e3:SetOperation(c73511233.spop)
 	c:RegisterEffect(e3)
 end
-c73511233.fusion_effect=true
 function c73511233.thcfilter(c,tp)
 	return c:IsControler(tp) and c:IsSummonType(SUMMON_TYPE_FUSION)
 end

@@ -28,7 +28,6 @@ function c24484270.initial_effect(c)
 	e2:SetOperation(c24484270.spop)
 	c:RegisterEffect(e2)
 end
-c24484270.fusion_effect=true
 function c24484270.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end

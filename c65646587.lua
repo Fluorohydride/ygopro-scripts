@@ -11,7 +11,6 @@ function c65646587.initial_effect(c)
 	e1:SetOperation(c65646587.activate)
 	c:RegisterEffect(e1)
 end
-c65646587.fusion_effect=true
 function c65646587.filter0(c,e)
 	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end

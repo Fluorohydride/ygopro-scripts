@@ -22,7 +22,6 @@ function c95238394.initial_effect(c)
 	e2:SetOperation(c95238394.thop)
 	c:RegisterEffect(e2)
 end
-c95238394.fusion_effect=true
 function c95238394.filter0(c)
 	return (c:IsLocation(LOCATION_ONFIELD+LOCATION_GRAVE) or c:IsFaceup()) and c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()
 end

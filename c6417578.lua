@@ -12,7 +12,6 @@ function c6417578.initial_effect(c)
 	e1:SetOperation(c6417578.activate)
 	c:RegisterEffect(e1)
 end
-c6417578.fusion_effect=true
 function c6417578.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
