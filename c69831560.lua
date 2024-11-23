@@ -1,4 +1,5 @@
 --アルカナフォースEX－THE DARK RULER
+local s,id,o=GetID()
 ---@param c Card
 function c69831560.initial_effect(c)
 	c:EnableReviveLimit()
@@ -39,14 +40,15 @@ function c69831560.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e5:SetCode(EVENT_LEAVE_FIELD_P)
+	e5:SetCondition(c69831560.descon1)
 	e5:SetOperation(c69831560.desop1)
 	c:RegisterEffect(e5)
 	--
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e6:SetCode(EVENT_LEAVE_FIELD)
+	e6:SetCondition(c69831560.descon2)
 	e6:SetOperation(c69831560.desop2)
-	e6:SetLabelObject(e5)
 	c:RegisterEffect(e6)
 end
 function c69831560.spfilter(c)
@@ -92,16 +94,20 @@ function c69831560.posop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	c:RegisterEffect(e1)
 end
+function c69831560.descon1(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
+end
 function c69831560.desop1(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0 then
-		e:SetLabel(1)
-	else e:SetLabel(0) end
+	local c=e:GetHandler()
+	c:RegisterFlagEffect(id,RESET_EVENT+RESET_TOFIELD+RESET_PHASE+PHASE_END,0,1)
+end
+function c69831560.descon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(id)>0
 end
 function c69831560.desop2(e,tp,eg,ep,ev,re,r,rp)
-	local e3=e:GetLabelObject()
-	if e3 and e3:GetLabel()~=0 then
-		local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-		Duel.Destroy(g,REASON_EFFECT)
-	end
-	e:Reset()
+	local c=e:GetHandler()
+	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
+	Duel.Hint(HINT_CARD,0,id)
+	Duel.Destroy(g,REASON_EFFECT)
+	c:ResetFlagEffect(id)
 end
