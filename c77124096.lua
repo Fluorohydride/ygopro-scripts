@@ -22,8 +22,9 @@ end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local chkf=tp
 	local mg=Duel.GetMatchingGroup(s.filter1,tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
-	local b1=Duel.GetFlagEffect(tp,id)==0 and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,nil,chkf)
-	if Duel.GetFlagEffect(tp,id)==0 and not b1 then
+	local b0=Duel.GetFlagEffect(tp,id)==0 or not e:IsCostChecked()
+	local b1=b0 and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,nil,chkf)
+	if b0 and not b1 then
 		local ce=Duel.GetChainMaterial(tp)
 		if ce~=nil then
 			local fgroup=ce:GetTarget()
@@ -32,7 +33,8 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			b1=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 		end
 	end
-	local b2=Duel.GetFlagEffect(tp,id+o)==0 and Duel.IsExistingMatchingCard(s.thfilter2,tp,LOCATION_DECK,0,1,nil)
+	local b2=Duel.IsExistingMatchingCard(s.thfilter2,tp,LOCATION_DECK,0,1,nil)
+		and (Duel.GetFlagEffect(tp,id+o)==0 or not e:IsCostChecked())
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and not b2 then
@@ -48,15 +50,20 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			{b1,aux.Stringid(id,1)},
 			{b2,aux.Stringid(id,2)})
 	end
-	Duel.RegisterFlagEffect(tp,id+(op-1)*o,RESET_PHASE+PHASE_END,0,1)
 	if op==1 then
+		if e:IsCostChecked() then
+			Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
+			e:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+		end
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_REMOVED)
-		e:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 		e:SetOperation(s.fsop)
 	elseif op==2 then
+		if e:IsCostChecked() then
+			Duel.RegisterFlagEffect(tp,id+o,RESET_PHASE+PHASE_END,0,1)
+			e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+		end
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e:SetOperation(s.thop)
 	end
 end
