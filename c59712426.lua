@@ -61,7 +61,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.odescon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(id)==1
+	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function s.odestg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
@@ -77,7 +77,7 @@ function s.odesop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.fdescon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(id)==0
+	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
 end
 function s.fdestg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
