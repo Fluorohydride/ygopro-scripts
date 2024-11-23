@@ -296,7 +296,13 @@ function Auxiliary.ArcanaCoinOperation(e,tp,eg,ep,ev,re,r,rp)
 	if toss then
 		c:RegisterFlagEffect(FLAG_ID_REVERSAL_OF_FATE,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
-	c.arcanareg(c,res)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,res,63-res)
+end
+---condition of Arcana Force monster effect from coin toss
+---@param e Effect
+---@return boolean
+function Auxiliary.ArcanaCondition(e)
+	return e:GetHandler():GetFlagEffect(FLAG_ID_ARCANA_COIN)>0
 end
 function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
