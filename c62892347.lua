@@ -15,38 +15,35 @@ function c62892347.initial_effect(c)
 	c:RegisterEffect(e2)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
+	--disable
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_DISABLE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
+	e3:SetCondition(aux.ArcanaCondition)
+	e3:SetTarget(c62892347.distg)
+	c:RegisterEffect(e3)
+	--disable effect
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetCode(EVENT_CHAIN_SOLVING)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCondition(aux.ArcanaCondition)
+	e4:SetOperation(c62892347.disop)
+	c:RegisterEffect(e4)
+	--self destroy
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(EFFECT_SELF_DESTROY)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
+	e5:SetCondition(aux.ArcanaCondition)
+	e5:SetTarget(c62892347.distg)
+	c:RegisterEffect(e5)
 end
 function c62892347.poscon(e)
 	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK)
-end
-function c62892347.arcanareg(c,coin)
-	--disable
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_DISABLE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
-	e1:SetTarget(c62892347.distg)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1)
-	--disable effect
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_CHAIN_SOLVING)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetOperation(c62892347.disop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e2)
-	--self destroy
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_SELF_DESTROY)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
-	e3:SetTarget(c62892347.distg)
-	e3:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e3)
-	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c62892347.distg(e,c)
 	local ec=e:GetHandler()
@@ -54,7 +51,9 @@ function c62892347.distg(e,c)
 	local val=ec:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)
 	if val==1 then
 		return c:GetControler()==ec:GetControler() and c:GetCardTarget():IsContains(ec)
-	else return c:GetControler()~=ec:GetControler() and c:GetCardTarget():IsContains(ec) end
+	else
+		return c:GetControler()~=ec:GetControler() and c:GetCardTarget():IsContains(ec)
+	end
 end
 function c62892347.disop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler()

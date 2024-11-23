@@ -3,8 +3,6 @@
 function c23846921.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
-end
-function c23846921.arcanareg(c,coin)
 	--coin effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(23846921,1))
@@ -16,7 +14,6 @@ function c23846921.arcanareg(c,coin)
 	e1:SetCost(c23846921.skipcost)
 	e1:SetTarget(c23846921.skiptg)
 	e1:SetOperation(c23846921.skipop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
@@ -29,9 +26,7 @@ function c23846921.arcanareg(c,coin)
 	e2:SetCondition(c23846921.thcon)
 	e2:SetTarget(c23846921.thtg)
 	e2:SetOperation(c23846921.thop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e2)
-	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c23846921.skipcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
