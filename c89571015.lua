@@ -1,4 +1,5 @@
 --ストームサイファー
+---@param c Card
 function c89571015.initial_effect(c)
 	--cannot attack directly
 	local e1=Effect.CreateEffect(c)

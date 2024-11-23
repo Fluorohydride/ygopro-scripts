@@ -1,4 +1,5 @@
 --静寂の聖者
+---@param c Card
 function c26669055.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

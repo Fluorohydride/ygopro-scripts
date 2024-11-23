@@ -1,4 +1,5 @@
 --アーティファクト－アイギス
+---@param c Card
 function c85080444.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

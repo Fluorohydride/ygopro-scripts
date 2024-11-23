@@ -1,4 +1,5 @@
 --アロマセラフィ－ローズマリー
+---@param c Card
 function c38148100.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

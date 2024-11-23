@@ -1,4 +1,5 @@
 --怒れる類人猿
+---@param c Card
 function c39168895.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

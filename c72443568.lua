@@ -1,4 +1,5 @@
 --サイレント・マジシャン LV8
+---@param c Card
 function c72443568.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

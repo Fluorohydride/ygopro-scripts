@@ -1,4 +1,5 @@
 --暴風小僧
+---@param c Card
 function c15090429.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

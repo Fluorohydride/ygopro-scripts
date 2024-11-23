@@ -1,4 +1,5 @@
 --鉄駆竜スプリンド
+---@param c Card
 function c1906812.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --暗黒界の洗脳
+---@param c Card
 function c10131855.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

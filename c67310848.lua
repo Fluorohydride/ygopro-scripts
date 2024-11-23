@@ -1,4 +1,5 @@
 --矮星竜 プラネター
+---@param c Card
 function c67310848.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

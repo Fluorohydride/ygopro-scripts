@@ -1,4 +1,5 @@
 --U.A.スタジアム
+---@param c Card
 function c19814508.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E-HERO ヘル・スナイパー
+---@param c Card
 function c50282757.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

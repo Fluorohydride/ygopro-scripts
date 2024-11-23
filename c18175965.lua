@@ -1,4 +1,5 @@
 --ガーディアン・デスサイス
+---@param c Card
 function c18175965.initial_effect(c)
 	aux.AddCodeList(c,34022290,81954378)
 	c:EnableReviveLimit()

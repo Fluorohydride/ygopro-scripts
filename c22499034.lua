@@ -1,4 +1,5 @@
 --真竜戦士イグニスH
+---@param c Card
 function c22499034.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --死天使ハーヴェスト
+---@param c Card
 function c31987203.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

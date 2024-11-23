@@ -1,4 +1,5 @@
 --Sin スターダスト・ドラゴン
+---@param c Card
 function c36521459.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	c:EnableReviveLimit()

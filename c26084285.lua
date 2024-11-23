@@ -1,4 +1,5 @@
 --墓守の監視者
+---@param c Card
 function c26084285.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

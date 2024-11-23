@@ -1,4 +1,5 @@
 --リバースダイス
+---@param c Card
 function c83241722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -7,7 +8,6 @@ function c83241722.initial_effect(c)
 	e1:SetOperation(c83241722.regop)
 	c:RegisterEffect(e1)
 end
-c83241722.toss_dice=true
 function c83241722.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

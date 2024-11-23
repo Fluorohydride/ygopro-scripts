@@ -1,4 +1,5 @@
 --ゲート・ガーディアン
+---@param c Card
 function c25833572.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	c:EnableReviveLimit()

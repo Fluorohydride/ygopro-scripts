@@ -1,4 +1,5 @@
 --E・HERO ブルーメ
+---@param c Card
 function c51085303.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -39,7 +40,6 @@ function c51085303.adop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetValue(200)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)

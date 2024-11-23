@@ -1,4 +1,5 @@
 --因幡之白兎
+---@param c Card
 function c77084837.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

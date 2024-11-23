@@ -1,4 +1,5 @@
 --方界帝ゲイラ・ガイル
+---@param c Card
 function c40392714.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon rule

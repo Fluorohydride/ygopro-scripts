@@ -1,4 +1,5 @@
 --捕食植物バンクシアオーガ
+---@param c Card
 function c22138839.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

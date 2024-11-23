@@ -1,4 +1,5 @@
 --ガスタ・サンボルト
+---@param c Card
 function c28066831.initial_effect(c)
 	--destroyed
 	local e1=Effect.CreateEffect(c)

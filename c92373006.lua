@@ -1,4 +1,5 @@
 --スレイブタイガー
+---@param c Card
 function c92373006.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)
@@ -22,7 +23,7 @@ function c92373006.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c92373006.sprfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c92373006.sprcon(e,c)
 	if c==nil then return true end
@@ -36,10 +37,10 @@ function c92373006.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(c,REASON_COST)
 end
 function c92373006.tgfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19) and c:IsAbleToDeck()
+	return c:IsFaceup() and c:IsSetCard(0x1019) and c:IsAbleToDeck()
 end
 function c92373006.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
 end
 function c92373006.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c92373006.tgfilter(chkc) end

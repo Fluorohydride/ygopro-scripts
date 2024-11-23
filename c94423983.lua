@@ -1,4 +1,5 @@
 --同契魔術
+---@param c Card
 function c94423983.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94423983,0))

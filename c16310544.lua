@@ -1,4 +1,5 @@
 --御巫神楽
+---@param c Card
 function c16310544.initial_effect(c)
 	local e1=aux.AddRitualProcGreater2(c,c16310544.filter,LOCATION_HAND,nil,nil,true,c16310544.extraop)
 	e1:SetCountLimit(1,16310544+EFFECT_COUNT_CODE_OATH)

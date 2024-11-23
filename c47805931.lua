@@ -1,4 +1,5 @@
 --No.20 蟻岩土ブリリアント
+---@param c Card
 function c47805931.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

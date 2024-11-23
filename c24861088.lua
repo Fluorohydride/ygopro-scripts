@@ -1,4 +1,5 @@
 --先史遺産ネブラ・ディスク
+---@param c Card
 function c24861088.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

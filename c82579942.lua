@@ -1,4 +1,5 @@
 --ライトレイ マドール
+---@param c Card
 function c82579942.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

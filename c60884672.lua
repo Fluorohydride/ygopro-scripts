@@ -1,4 +1,5 @@
 --大砂海ゴールド・ゴルゴンダ
+---@param c Card
 function c60884672.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

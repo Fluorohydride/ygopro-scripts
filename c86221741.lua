@@ -1,4 +1,5 @@
 --RR－アルティメット・ファルコン
+---@param c Card
 function c86221741.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WINDBEAST),10,3)

@@ -1,4 +1,5 @@
 --ミラクル・フリッパー
+---@param c Card
 function c131182.initial_effect(c)
 	--sumlimit
 	local e1=Effect.CreateEffect(c)

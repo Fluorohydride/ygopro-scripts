@@ -1,5 +1,6 @@
 --ポワソニエル・ド・ヌーベルズ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--spsummon

@@ -1,4 +1,5 @@
 --紋章獣レオ
+---@param c Card
 function c82293134.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(82293134,0))

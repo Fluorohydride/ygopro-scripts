@@ -1,4 +1,5 @@
 --魔弾の射手 ドクトル
+---@param c Card
 function c68246154.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)

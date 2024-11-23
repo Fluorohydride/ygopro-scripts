@@ -1,4 +1,5 @@
 --常夏のカミナリサマー
+---@param c Card
 function c38406364.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_THUNDER),2,2)

@@ -1,4 +1,5 @@
 --テクスチェンジャー
+---@param c Card
 function c74210057.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

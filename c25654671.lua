@@ -1,4 +1,5 @@
 --ナチュル・スパイダーファング
+---@param c Card
 function c25654671.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

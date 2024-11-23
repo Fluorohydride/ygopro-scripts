@@ -1,4 +1,5 @@
 --侵略の波動
+---@param c Card
 function c18816758.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コトダマ
+---@param c Card
 function c19406822.initial_effect(c)
 	--adjust
 	local e1=Effect.CreateEffect(c)

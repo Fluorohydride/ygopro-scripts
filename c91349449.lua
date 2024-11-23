@@ -1,4 +1,5 @@
 --ライトレイ ソーサラー
+---@param c Card
 function c91349449.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

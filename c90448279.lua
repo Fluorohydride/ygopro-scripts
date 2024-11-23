@@ -1,4 +1,5 @@
 --天霆號アーゼウス
+---@param c Card
 function c90448279.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,12,2,c90448279.ovfilter,aux.Stringid(90448279,0),2,c90448279.xyzop)

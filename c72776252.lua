@@ -1,5 +1,6 @@
 --氷水大剣現
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--to grave or spsummon
 	local e1=Effect.CreateEffect(c)

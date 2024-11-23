@@ -1,4 +1,5 @@
 --捕食植物ドロソフィルム・ヒドラ
+---@param c Card
 function c99913726.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

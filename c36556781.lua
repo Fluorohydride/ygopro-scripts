@@ -1,4 +1,5 @@
 --ドラグニティナイト－ゴルムファバル
+---@param c Card
 function c36556781.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x29),aux.NonTuner(nil),1)

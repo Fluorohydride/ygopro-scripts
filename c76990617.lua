@@ -1,4 +1,5 @@
 --幻奏の音女ソナタ
+---@param c Card
 function c76990617.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

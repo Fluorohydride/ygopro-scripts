@@ -1,5 +1,6 @@
 --裏切りの罪宝－シルウィア
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -29,7 +30,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.filter(c,e,tp)
-	return c:IsFaceupEx() and c:IsSetCard(0x19b) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+	return c:IsFaceupEx() and c:IsSetCard(0x119b) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingTarget(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,Group.FromCards(c,e:GetHandler()))
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -76,7 +77,7 @@ function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	local te,p=Duel.GetChainInfo(ev-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 	if not te or p~=tp then return false end
 	local tc=te:GetHandler()
-	return tc:IsSetCard(0x19b) and te:IsActiveType(TYPE_MONSTER) or tc:IsSetCard(0x19e)
+	return tc:IsSetCard(0x119b) and te:IsActiveType(TYPE_MONSTER) or tc:IsSetCard(0x19e)
 		and te:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)

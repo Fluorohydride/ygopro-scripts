@@ -1,4 +1,5 @@
 --憎悪の棘
+---@param c Card
 function c65079854.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--Activate

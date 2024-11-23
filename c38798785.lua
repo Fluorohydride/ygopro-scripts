@@ -1,5 +1,6 @@
 --炎王の結襲
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

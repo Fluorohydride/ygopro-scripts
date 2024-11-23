@@ -1,4 +1,5 @@
 --ヒーロー・キッズ
+---@param c Card
 function c32679370.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

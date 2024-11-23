@@ -1,4 +1,5 @@
 --夢現の夢魔鏡
+---@param c Card
 function c25964547.initial_effect(c)
 	aux.AddCodeList(c,74665651,1050355)
 	--activate

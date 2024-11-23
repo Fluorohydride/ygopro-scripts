@@ -1,4 +1,5 @@
 --A宝玉獣 アメジスト・キャット
+---@param c Card
 function c19963185.initial_effect(c)
 	aux.AddCodeList(c,12644061)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)

@@ -1,4 +1,5 @@
 --アクアアクトレス・テトラ
+---@param c Card
 function c39260991.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

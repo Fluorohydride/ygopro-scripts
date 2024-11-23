@@ -1,4 +1,5 @@
 --サモン・ストーム
+---@param c Card
 function c71459861.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ディメンション・マジック
+---@param c Card
 function c28553439.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

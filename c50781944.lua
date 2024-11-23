@@ -1,4 +1,5 @@
 --エンシェント・クリムゾン・エイプ
+---@param c Card
 function c50781944.initial_effect(c)
 	--lp rec
 	local e1=Effect.CreateEffect(c)

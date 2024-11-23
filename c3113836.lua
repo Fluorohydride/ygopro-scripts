@@ -1,4 +1,5 @@
 --ジェムナイト・セラフィ
+---@param c Card
 function c3113836.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

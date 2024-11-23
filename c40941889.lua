@@ -1,4 +1,5 @@
 --ZW－阿修羅副腕
+---@param c Card
 function c40941889.initial_effect(c)
 	c:SetUniqueOnField(1,0,40941889)
 	--equip

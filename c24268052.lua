@@ -1,4 +1,5 @@
 --ガード・ブロック
+---@param c Card
 function c24268052.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

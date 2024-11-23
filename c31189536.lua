@@ -1,4 +1,5 @@
 --ヴァンパイア・アウェイク
+---@param c Card
 function c31189536.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

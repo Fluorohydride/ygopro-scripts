@@ -1,4 +1,5 @@
 --No.2 ゲート・オブ・ヌメロン－ドゥヴェー
+---@param c Card
 function c42230449.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,3)

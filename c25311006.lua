@@ -1,4 +1,5 @@
 --三戦の才
+---@param c Card
 function c25311006.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

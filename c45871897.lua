@@ -1,4 +1,5 @@
 --ロストガーディアン
+---@param c Card
 function c45871897.initial_effect(c)
 	--base defense
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔界劇団－プリティ・ヒロイン
+---@param c Card
 function c24907044.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

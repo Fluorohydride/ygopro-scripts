@@ -1,4 +1,5 @@
 --デスペラード・リボルバー・ドラゴン
+---@param c Card
 function c76728962.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -36,7 +37,6 @@ function c76728962.initial_effect(c)
 	e3:SetOperation(c76728962.thop)
 	c:RegisterEffect(e3)
 end
-c76728962.toss_coin=true
 function c76728962.filter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0 and c:IsPreviousControler(tp)
@@ -88,7 +88,7 @@ function c76728962.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c76728962.thfilter(c)
-	return c.toss_coin and c:IsType(TYPE_MONSTER) and c:IsLevelBelow(7) and c:IsAbleToHand()
+	return c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN)) and c:IsType(TYPE_MONSTER) and c:IsLevelBelow(7) and c:IsAbleToHand()
 end
 function c76728962.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76728962.thfilter,tp,LOCATION_DECK,0,1,nil) end

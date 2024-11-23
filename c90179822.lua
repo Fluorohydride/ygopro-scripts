@@ -1,4 +1,5 @@
 --喜劇のデスピアン
+---@param c Card
 function c90179822.initial_effect(c)
 	--disable effect
 	local e1=Effect.CreateEffect(c)

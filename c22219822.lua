@@ -1,4 +1,5 @@
 --トリックスター・マンドレイク
+---@param c Card
 function c22219822.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

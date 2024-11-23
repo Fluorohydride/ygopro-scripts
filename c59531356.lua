@@ -1,4 +1,5 @@
 --中生代化石騎士 スカルナイト
+---@param c Card
 function c59531356.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

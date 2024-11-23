@@ -1,5 +1,6 @@
 --リブロマンサー・マジガール
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--SP sum itself
 	local e1=Effect.CreateEffect(c)

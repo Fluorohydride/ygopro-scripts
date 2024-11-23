@@ -1,4 +1,5 @@
 --マジシャン・オブ・ブラックカオス・MAX
+---@param c Card
 function c79613121.initial_effect(c)
 	c:EnableReviveLimit()
 	--act limit

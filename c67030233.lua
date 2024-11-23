@@ -1,4 +1,5 @@
 --セイヴァー・デモン・ドラゴン
+---@param c Card
 function c67030233.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309,70902743)
 	--synchro summon

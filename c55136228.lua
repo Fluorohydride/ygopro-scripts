@@ -1,4 +1,5 @@
 --剣闘獣の底力
+---@param c Card
 function c55136228.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -26,7 +27,7 @@ function c55136228.condition(e,tp,eg,ep,ev,re,r,rp)
 	return true
 end
 function c55136228.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c55136228.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c55136228.filter(chkc) end
@@ -46,7 +47,7 @@ function c55136228.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c55136228.cfilter(c)
-	return c:IsSetCard(0x19) and c:IsAbleToDeckAsCost()
+	return c:IsSetCard(0x1019) and c:IsAbleToDeckAsCost()
 end
 function c55136228.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c55136228.cfilter,tp,LOCATION_GRAVE,0,2,e:GetHandler()) end

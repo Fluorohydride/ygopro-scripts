@@ -1,4 +1,5 @@
 --ヴァレット・リチャージャー
+---@param c Card
 function c5969957.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

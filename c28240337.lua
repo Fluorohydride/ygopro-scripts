@@ -1,4 +1,5 @@
 --真紅眼の不屍竜
+---@param c Card
 function c28240337.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

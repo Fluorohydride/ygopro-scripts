@@ -1,4 +1,5 @@
 --剣闘獣の檻－コロッセウム
+---@param c Card
 function c52518793.initial_effect(c)
 	c:EnableCounterPermit(0x7)
 	--Activate
@@ -20,7 +21,7 @@ function c52518793.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x19))
+	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x1019))
 	e3:SetValue(c52518793.atkval)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()

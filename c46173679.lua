@@ -1,4 +1,5 @@
 --終焉の焔
+---@param c Card
 function c46173679.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

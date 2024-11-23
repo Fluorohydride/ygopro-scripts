@@ -1,4 +1,5 @@
 --彼岸の黒天使 ケルビーニ
+---@param c Card
 function c58699500.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

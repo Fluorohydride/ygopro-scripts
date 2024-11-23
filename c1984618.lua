@@ -1,4 +1,5 @@
 --天底の使徒
+---@param c Card
 function c1984618.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--activate

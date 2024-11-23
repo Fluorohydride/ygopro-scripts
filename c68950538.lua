@@ -1,4 +1,5 @@
 --電子光虫－センチビット
+---@param c Card
 function c68950538.initial_effect(c)
 	--xyzlimit
 	local e0=Effect.CreateEffect(c)

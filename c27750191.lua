@@ -1,4 +1,5 @@
 --横綱犬
+---@param c Card
 function c27750191.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

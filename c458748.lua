@@ -1,4 +1,5 @@
 --法の聖典
+---@param c Card
 function c458748.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

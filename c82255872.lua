@@ -1,4 +1,5 @@
 --戦華史略－大丈夫之義
+---@param c Card
 function c82255872.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

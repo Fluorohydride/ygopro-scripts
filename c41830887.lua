@@ -1,4 +1,5 @@
 --複写機塊コピーボックル
+---@param c Card
 function c41830887.initial_effect(c)
 	--Special Summon self
 	local e1=Effect.CreateEffect(c)

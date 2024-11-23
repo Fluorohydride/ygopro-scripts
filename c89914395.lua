@@ -1,4 +1,5 @@
 --ミョルニルの魔槌
+---@param c Card
 function c89914395.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

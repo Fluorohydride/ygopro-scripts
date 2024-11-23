@@ -1,4 +1,5 @@
 --威圧する魔眼
+---@param c Card
 function c60577362.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

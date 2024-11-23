@@ -1,4 +1,5 @@
 --ヘル・ポリマー
+---@param c Card
 function c72287557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

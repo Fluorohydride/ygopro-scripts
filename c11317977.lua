@@ -1,4 +1,5 @@
 --月光黒羊
+---@param c Card
 function c11317977.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

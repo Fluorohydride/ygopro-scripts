@@ -1,4 +1,5 @@
 --ハイドロプレッシャーカノン
+---@param c Card
 function c12174035.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

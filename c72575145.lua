@@ -1,4 +1,5 @@
 --降格処分
+---@param c Card
 function c72575145.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

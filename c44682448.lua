@@ -1,4 +1,5 @@
 --ガーベージ・ロード
+---@param c Card
 function c44682448.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

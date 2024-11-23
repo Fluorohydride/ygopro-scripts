@@ -1,4 +1,5 @@
 --常闇の契約書
+---@param c Card
 function c9030160.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

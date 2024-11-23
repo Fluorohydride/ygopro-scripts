@@ -1,4 +1,5 @@
 --王の報酬
+---@param c Card
 function c1942635.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

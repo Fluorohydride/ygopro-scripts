@@ -1,4 +1,5 @@
 --相剣大師－赤霄
+---@param c Card
 function c69248256.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_WYRM),1)

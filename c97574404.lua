@@ -1,34 +1,8 @@
 --アルカナフォースⅥ－THE LOVERS
+---@param c Card
 function c97574404.initial_effect(c)
 	--coin
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(97574404,0))
-	e1:SetCategory(CATEGORY_COIN)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetTarget(c97574404.cointg)
-	e1:SetOperation(c97574404.coinop)
-	c:RegisterEffect(e1)
-	local e2=e1:Clone()
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	c:RegisterEffect(e2)
-	local e3=e1:Clone()
-	e3:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
-	c:RegisterEffect(e3)
-end
-c97574404.toss_coin=true
-function c97574404.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
-end
-function c97574404.coinop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local res=0
-	if c:IsHasEffect(73206827) then
-		res=1-Duel.SelectOption(tp,60,61)
-	else res=Duel.TossCoin(tp,1) end
-	c97574404.arcanareg(c,res)
+	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 end
 function c97574404.arcanareg(c,coin)
 	--coin effect
@@ -53,16 +27,16 @@ function c97574404.arcanareg(c,coin)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_MSET)
 	c:RegisterEffect(e3)
-	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c97574404.dtcon(e)
-	return e:GetHandler():GetFlagEffectLabel(36690018)==1
+	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c97574404.dtval(e,c)
 	return c:IsSetCard(0x5)
 end
 function c97574404.sumcon(e)
-	return e:GetHandler():GetFlagEffectLabel(36690018)==0
+	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
 end
 function c97574404.sumtg(e,c,tp,sumtp)
 	return bit.band(sumtp,SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and c:IsSetCard(0x5)

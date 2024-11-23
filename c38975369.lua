@@ -1,4 +1,5 @@
 --軍荼利
+---@param c Card
 function c38975369.initial_effect(c)
 	--spirit
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

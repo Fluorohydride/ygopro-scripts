@@ -1,4 +1,5 @@
 --サンド・ギャンブラー
+---@param c Card
 function c50593156.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c50593156.initial_effect(c)
 	e1:SetOperation(c50593156.desop)
 	c:RegisterEffect(e1)
 end
-c50593156.toss_coin=true
 function c50593156.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)

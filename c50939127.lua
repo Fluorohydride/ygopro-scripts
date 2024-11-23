@@ -1,4 +1,5 @@
 --異次元竜 トワイライトゾーンドラゴン
+---@param c Card
 function c50939127.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --VS Dr.マッドラヴ
+---@param c Card
 function c29280200.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

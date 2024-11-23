@@ -1,4 +1,5 @@
 --モルティング・エスケープ
+---@param c Card
 function c95784434.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

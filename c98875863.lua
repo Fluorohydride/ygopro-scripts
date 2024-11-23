@@ -1,4 +1,5 @@
 --Gゴーレム・ロックハンマー
+---@param c Card
 function c98875863.initial_effect(c)
 	--level down
 	local e1=Effect.CreateEffect(c)

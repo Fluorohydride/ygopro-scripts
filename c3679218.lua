@@ -1,4 +1,5 @@
 --トロイメア・マーメイド
+---@param c Card
 function c3679218.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c3679218.matfilter,1,1)

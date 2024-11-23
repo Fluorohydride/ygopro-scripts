@@ -1,4 +1,5 @@
 --珠玉獣－アルゴザウルス
+---@param c Card
 function c98022050.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

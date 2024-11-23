@@ -1,4 +1,5 @@
 --闇黒の魔王ディアボロス
+---@param c Card
 function c50383626.initial_effect(c)
 	--cannot release
 	local e1=Effect.CreateEffect(c)

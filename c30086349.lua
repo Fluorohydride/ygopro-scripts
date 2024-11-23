@@ -1,4 +1,5 @@
 --流星竜メテオ・ブラック・ドラゴン
+---@param c Card
 function c30086349.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFun2(c,c30086349.mfilter1,c30086349.mfilter2,true)

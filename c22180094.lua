@@ -1,4 +1,5 @@
 --S－Force 乱破小夜丸
+---@param c Card
 function c22180094.initial_effect(c)
 	--attack limit
 	local e1=Effect.CreateEffect(c)

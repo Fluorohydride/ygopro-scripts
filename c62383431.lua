@@ -1,4 +1,5 @@
 --溟界の黄昏－カース
+---@param c Card
 function c62383431.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

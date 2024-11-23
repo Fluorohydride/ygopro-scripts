@@ -1,4 +1,5 @@
 --鉄騎龍ティアマトン
+---@param c Card
 function c46247282.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

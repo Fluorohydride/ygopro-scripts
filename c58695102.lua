@@ -1,4 +1,5 @@
 --リ・バイブル
+---@param c Card
 function c58695102.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

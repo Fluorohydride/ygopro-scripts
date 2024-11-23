@@ -1,4 +1,5 @@
 --ダブル・リゾネーター
+---@param c Card
 function c60832978.initial_effect(c)
 	--tuner (summon)
 	local e1=Effect.CreateEffect(c)

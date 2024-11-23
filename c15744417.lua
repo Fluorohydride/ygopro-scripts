@@ -1,4 +1,5 @@
 --ゴッドオーガス
+---@param c Card
 function c15744417.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c15744417.initial_effect(c)
 	e1:SetOperation(c15744417.operation)
 	c:RegisterEffect(e1)
 end
-c15744417.toss_dice=true
 function c15744417.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,3)

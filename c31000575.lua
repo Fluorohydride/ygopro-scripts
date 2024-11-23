@@ -1,4 +1,5 @@
 --徴兵令
+---@param c Card
 function c31000575.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スクープ・シューター
+---@param c Card
 function c5244497.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

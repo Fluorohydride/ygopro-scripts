@@ -1,4 +1,5 @@
 --銀河騎士
+---@param c Card
 function c35950025.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

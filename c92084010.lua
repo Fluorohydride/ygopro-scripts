@@ -1,4 +1,5 @@
 --ヒゲアンコウ
+---@param c Card
 function c92084010.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

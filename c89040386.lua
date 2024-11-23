@@ -1,4 +1,5 @@
 --BF－バックフラッシュ
+---@param c Card
 function c89040386.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --地雷蜘蛛
+---@param c Card
 function c94773007.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,6 @@ function c94773007.initial_effect(c)
 	e1:SetOperation(c94773007.atop)
 	c:RegisterEffect(e1)
 end
-c94773007.toss_coin=true
 function c94773007.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)

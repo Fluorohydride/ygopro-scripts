@@ -1,4 +1,5 @@
 --ネジマキシキガミ
+---@param c Card
 function c45458027.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

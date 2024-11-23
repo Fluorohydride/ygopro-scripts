@@ -1,4 +1,5 @@
 --ネフティスの語り手
+---@param c Card
 function c25397880.initial_effect(c)
 	--to hand (on field eff)
 	local e1=Effect.CreateEffect(c)

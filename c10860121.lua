@@ -1,4 +1,5 @@
 --武神器－イオツミ
+---@param c Card
 function c10860121.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

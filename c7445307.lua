@@ -1,4 +1,5 @@
 --デュアル・アセンブルム
+---@param c Card
 function c7445307.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

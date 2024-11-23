@@ -1,4 +1,5 @@
 --ローズ・ウィッチ
+---@param c Card
 function c23087070.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

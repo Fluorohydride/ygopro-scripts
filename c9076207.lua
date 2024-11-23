@@ -1,4 +1,5 @@
 --青い忍者
+---@param c Card
 function c9076207.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

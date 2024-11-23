@@ -1,4 +1,5 @@
 --イエロー・ガジェット
+---@param c Card
 function c13839120.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

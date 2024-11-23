@@ -1,4 +1,5 @@
 --ドラグニティ－レガトゥス
+---@param c Card
 function c89172051.initial_effect(c)
 	aux.AddCodeList(c,62265044)
 	--special summon

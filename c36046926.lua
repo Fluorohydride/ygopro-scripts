@@ -1,4 +1,5 @@
 --森羅の水先 リーフ
+---@param c Card
 function c36046926.initial_effect(c)
 	--deck
 	local e1=Effect.CreateEffect(c)

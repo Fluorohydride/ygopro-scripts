@@ -1,4 +1,5 @@
 --森と目覚の春化精
+---@param c Card
 function c36745317.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

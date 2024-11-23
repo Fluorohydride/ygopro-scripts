@@ -1,4 +1,5 @@
 --現世離レ
+---@param c Card
 function c63086455.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

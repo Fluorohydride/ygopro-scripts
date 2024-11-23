@@ -1,4 +1,5 @@
 --強化支援メカ・ヘビーアーマー
+---@param c Card
 function c39890958.initial_effect(c)
 	aux.EnableUnionAttribute(c,c39890958.filter)
 	--untargetable

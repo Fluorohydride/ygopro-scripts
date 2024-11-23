@@ -1,4 +1,5 @@
 --鋼核合成獣研究所
+---@param c Card
 function c53039326.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--activate

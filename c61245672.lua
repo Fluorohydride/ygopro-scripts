@@ -1,4 +1,5 @@
 --デコード・トーカー・ヒートソウル
+---@param c Card
 function c61245672.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

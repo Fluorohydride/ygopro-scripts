@@ -1,4 +1,5 @@
 --アストラグールズ
+---@param c Card
 function c69170403.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -21,7 +22,6 @@ function c69170403.initial_effect(c)
 	e2:SetOperation(c69170403.dcop)
 	c:RegisterEffect(e2)
 end
-c69170403.toss_dice=true
 function c69170403.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end

@@ -1,4 +1,5 @@
 --古聖戴サウラヴィス
+---@param c Card
 function c4810828.initial_effect(c)
 	c:EnableReviveLimit()
 	--negate

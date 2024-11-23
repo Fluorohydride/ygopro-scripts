@@ -1,4 +1,5 @@
 --一角獣の使い魔
+---@param c Card
 function c22318971.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --CNo.65 裁断魔王ジャッジ・デビル
+---@param c Card
 function c49195710.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),3,3)

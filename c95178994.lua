@@ -1,4 +1,5 @@
 --ジャイアントウィルス
+---@param c Card
 function c95178994.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

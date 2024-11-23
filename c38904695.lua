@@ -1,4 +1,5 @@
 --インフェルニティ・ヘル・デーモン
+---@param c Card
 function c38904695.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

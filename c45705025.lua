@@ -1,4 +1,5 @@
 --紋章獣ユニコーン
+---@param c Card
 function c45705025.initial_effect(c)
 	--revive
 	local e1=Effect.CreateEffect(c)

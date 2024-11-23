@@ -1,4 +1,5 @@
 --捕食植物スパイダー・オーキッド
+---@param c Card
 function c30537973.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

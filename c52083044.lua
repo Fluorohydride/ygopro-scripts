@@ -1,4 +1,5 @@
 --クロノダイバー・テンプホエーラー
+---@param c Card
 function c52083044.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

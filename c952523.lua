@@ -1,4 +1,5 @@
 --クラリアの蟲惑魔
+---@param c Card
 function c952523.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_INSECT+RACE_PLANT),2,2)

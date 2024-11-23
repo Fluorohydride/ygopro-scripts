@@ -1,4 +1,5 @@
 --ヘリオス・トリス・メギストス
+---@param c Card
 function c17286057.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

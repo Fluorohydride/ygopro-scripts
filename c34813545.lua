@@ -1,4 +1,5 @@
 --ナチュルの春風
+---@param c Card
 function c34813545.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ギミック・パペット－ナイトメア
+---@param c Card
 function c55204071.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

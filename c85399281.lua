@@ -1,4 +1,5 @@
 --智天使ハーヴェスト
+---@param c Card
 function c85399281.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --星遺物への抵抗
+---@param c Card
 function c58374719.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

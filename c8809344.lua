@@ -1,4 +1,5 @@
 --外神ナイアルラ
+---@param c Card
 function c8809344.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -67,7 +68,6 @@ function c8809344.operation(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsFacedown() then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
 		e1:SetValue(tc:GetOriginalAttribute())
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

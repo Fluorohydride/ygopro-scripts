@@ -1,4 +1,5 @@
 --ネオスペース・コンダクター
+---@param c Card
 function c19594506.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

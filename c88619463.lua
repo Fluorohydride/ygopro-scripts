@@ -1,4 +1,5 @@
 --黒の魔法神官
+---@param c Card
 function c88619463.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

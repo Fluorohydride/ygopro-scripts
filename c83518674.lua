@@ -1,4 +1,5 @@
 --未界域のオゴポゴ
+---@param c Card
 function c83518674.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

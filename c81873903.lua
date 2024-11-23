@@ -1,4 +1,5 @@
 --エヴォルド・ウェストロ
+---@param c Card
 function c81873903.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

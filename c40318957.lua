@@ -1,4 +1,5 @@
 --EMドクロバット・ジョーカー
+---@param c Card
 function c40318957.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

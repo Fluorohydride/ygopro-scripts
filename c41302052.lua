@@ -1,4 +1,5 @@
 --トリックスター・ベラマドンナ
+---@param c Card
 function c41302052.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfb),2)

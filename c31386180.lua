@@ -1,4 +1,5 @@
 --始祖の守護者ティラス
+---@param c Card
 function c31386180.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

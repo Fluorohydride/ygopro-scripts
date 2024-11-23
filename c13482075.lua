@@ -1,4 +1,5 @@
 --ヴェンデット・キマイラ
+---@param c Card
 function c13482075.initial_effect(c)
 	c:EnableReviveLimit()
 	--Negate

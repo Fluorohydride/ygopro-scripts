@@ -1,4 +1,5 @@
 --身分転換
+---@param c Card
 function c63875853.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

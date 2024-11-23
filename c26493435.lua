@@ -1,4 +1,5 @@
 --希望郷－オノマトピア－
+---@param c Card
 function c26493435.initial_effect(c)
 	c:EnableCounterPermit(0x30)
 	--Activate

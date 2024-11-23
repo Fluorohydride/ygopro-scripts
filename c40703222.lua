@@ -1,4 +1,5 @@
 --増殖
+---@param c Card
 function c40703222.initial_effect(c)
 	aux.AddCodeList(c,40640057)
 	--Activate

@@ -1,4 +1,5 @@
 --No.106 巨岩掌ジャイアント・ハンド
+---@param c Card
 function c63746411.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,4 +1,5 @@
 --ボスラッシュ
+---@param c Card
 function c66947414.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -23,7 +24,7 @@ function c66947414.initial_effect(c)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetOperation(c66947414.checkop)
-	c:RegisterEffect(e4,0)
+	c:RegisterEffect(e4)
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(66947414,0))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)

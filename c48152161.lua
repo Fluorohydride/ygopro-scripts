@@ -1,4 +1,5 @@
 --神属の堕天使
+---@param c Card
 function c48152161.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

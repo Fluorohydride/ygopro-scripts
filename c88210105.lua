@@ -1,4 +1,5 @@
 --雲魔物の雲核
+---@param c Card
 function c88210105.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

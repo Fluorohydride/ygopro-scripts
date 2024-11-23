@@ -1,4 +1,5 @@
 --幻奏の音女オペラ
+---@param c Card
 function c43268675.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

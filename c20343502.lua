@@ -1,4 +1,5 @@
 --ティーチャーマドルチェ・グラスフレ
+---@param c Card
 function c20343502.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x71),4,2)

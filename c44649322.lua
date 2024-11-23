@@ -1,4 +1,5 @@
 --伝承の大御巫
+---@param c Card
 function c44649322.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

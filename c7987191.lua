@@ -1,4 +1,5 @@
 --ヴァレルロード・R・ドラゴン
+---@param c Card
 function c7987191.initial_effect(c)
 	c:EnableReviveLimit()
 	--disable spsummon

@@ -1,4 +1,5 @@
 --第六感
+---@param c Card
 function c3280747.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -9,7 +10,6 @@ function c3280747.initial_effect(c)
 	e1:SetOperation(c3280747.activate)
 	c:RegisterEffect(e1)
 end
-c3280747.toss_dice=true
 function c3280747.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=6 end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,2)

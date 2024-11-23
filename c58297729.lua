@@ -1,4 +1,5 @@
 --変則ギア
+---@param c Card
 function c58297729.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

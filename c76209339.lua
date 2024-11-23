@@ -1,4 +1,5 @@
 --メガリス・エマージョン
+---@param c Card
 function c76209339.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

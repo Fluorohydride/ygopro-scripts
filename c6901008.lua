@@ -1,4 +1,5 @@
 --幻影王 ハイド・ライド
+---@param c Card
 function c6901008.initial_effect(c)
 	--nontuner
 	local e1=Effect.CreateEffect(c)

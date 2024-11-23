@@ -1,4 +1,5 @@
 --エクシーズ・エージェント
+---@param c Card
 function c72502414.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)

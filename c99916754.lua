@@ -1,4 +1,5 @@
 --ナチュル・エクストリオ
+---@param c Card
 function c99916754.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

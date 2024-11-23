@@ -1,4 +1,5 @@
 --焔凰神－ネフティス
+---@param c Card
 function c87054946.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c87054946.lcheck)

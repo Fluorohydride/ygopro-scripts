@@ -1,5 +1,6 @@
 --メメント・ダークソード
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

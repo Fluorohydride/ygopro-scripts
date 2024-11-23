@@ -1,4 +1,5 @@
 --コアキメイル・オーバードーズ
+---@param c Card
 function c14309486.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

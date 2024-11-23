@@ -1,4 +1,5 @@
 --幻魔の肖像
+---@param c Card
 function c1759808.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

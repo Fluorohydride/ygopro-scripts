@@ -1,4 +1,5 @@
 --束ねられし力
+---@param c Card
 function c96239878.initial_effect(c)
 	aux.AddCodeList(c,89631139,46986414)
 	--Activate

@@ -1,4 +1,5 @@
 --万物創世龍
+---@param c Card
 function c10000.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

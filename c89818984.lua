@@ -1,4 +1,5 @@
 --花札衛－柳に小野道風－
+---@param c Card
 function c89818984.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon from hand

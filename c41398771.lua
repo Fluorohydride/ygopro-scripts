@@ -1,4 +1,5 @@
 --老化の呪い
+---@param c Card
 function c41398771.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

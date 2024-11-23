@@ -1,4 +1,5 @@
 --伝説の騎士 ティマイオス
+---@param c Card
 function c80019195.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

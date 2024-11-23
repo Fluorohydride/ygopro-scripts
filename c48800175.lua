@@ -1,4 +1,5 @@
 --ドラゴン・目覚めの旋律
+---@param c Card
 function c48800175.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

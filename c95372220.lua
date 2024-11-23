@@ -1,5 +1,6 @@
 --マズルフラッシュ・ドラゴン
 --not fully implemented
+---@param c Card
 function c95372220.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

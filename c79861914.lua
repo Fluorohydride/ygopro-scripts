@@ -1,4 +1,5 @@
 --妖仙大旋風
+---@param c Card
 function c79861914.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

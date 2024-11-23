@@ -1,4 +1,5 @@
 --暗黒界の闘神 ラチナ
+---@param c Card
 function c15667446.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

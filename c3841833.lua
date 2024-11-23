@@ -1,4 +1,5 @@
 --ファーニマル・ベア
+---@param c Card
 function c3841833.initial_effect(c)
 	--sset
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --機甲忍法ラスト・ミスト
+---@param c Card
 function c2148918.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

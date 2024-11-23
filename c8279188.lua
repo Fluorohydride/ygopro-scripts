@@ -1,4 +1,5 @@
 --デプス・アミュレット
+---@param c Card
 function c8279188.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

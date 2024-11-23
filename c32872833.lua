@@ -1,4 +1,5 @@
 --星間竜パーセク
+---@param c Card
 function c32872833.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

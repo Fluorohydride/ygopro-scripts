@@ -1,4 +1,5 @@
 --ティンクル・セイクリッド
+---@param c Card
 function c35544402.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

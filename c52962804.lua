@@ -1,4 +1,5 @@
 --ドラグニティ・ドラフト
+---@param c Card
 function c52962804.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アマゾネス・スカウト
+---@param c Card
 function c71209500.initial_effect(c)
 	--effects
 	local e1=Effect.CreateEffect(c)

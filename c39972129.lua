@@ -1,4 +1,5 @@
 --No.64 古狸三太夫
+---@param c Card
 function c39972129.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_BEAST),2,2)

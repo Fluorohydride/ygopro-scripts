@@ -1,4 +1,5 @@
 --花合わせ
+---@param c Card
 function c78785392.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

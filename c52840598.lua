@@ -1,4 +1,5 @@
 --ブライ・シンクロン
+---@param c Card
 function c52840598.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マジシャンズ・プロテクション
+---@param c Card
 function c89448140.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ハーピィ・クィーン
+---@param c Card
 function c75064463.initial_effect(c)
 	aux.AddCodeList(c,75782277)
 	--search

@@ -1,4 +1,5 @@
 --名匠 ガミル
+---@param c Card
 function c25727454.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

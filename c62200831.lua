@@ -1,4 +1,5 @@
 --軍貫処 『海せん』
+---@param c Card
 function c62200831.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

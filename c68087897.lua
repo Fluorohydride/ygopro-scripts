@@ -1,4 +1,5 @@
 --スケイルモース
+---@param c Card
 function c68087897.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SPSUMMON_COUNT)
 	--spsummon count limit

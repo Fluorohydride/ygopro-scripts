@@ -1,4 +1,5 @@
 --魔導弓士 ラムール
+---@param c Card
 function c40213117.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

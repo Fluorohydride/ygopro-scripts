@@ -1,4 +1,5 @@
 --始源の帝王
+---@param c Card
 function c8522996.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -60,7 +61,6 @@ function c8522996.chop(e,tp,eg,ep,ev,re,r,rp)
 	local att=e:GetLabel()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 	e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
 	e1:SetValue(att)
 	e1:SetReset(RESET_EVENT+RESET_DISABLE+RESETS_STANDARD)

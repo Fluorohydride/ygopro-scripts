@@ -1,4 +1,5 @@
 --アーマー・カッパー
+---@param c Card
 function c50789693.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)
@@ -36,7 +37,6 @@ function c50789693.adop(e,tp,eg,ep,ev,re,r,rp)
 		local opt=Duel.SelectOption(tp,aux.Stringid(50789693,2),aux.Stringid(50789693,3))
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		if opt==0 then
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 		else

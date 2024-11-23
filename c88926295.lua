@@ -1,4 +1,5 @@
 --イビリチュア・ネーレイマナス
+---@param c Card
 function c88926295.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

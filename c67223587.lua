@@ -1,4 +1,5 @@
 --ハンディキャップマッチ！
+---@param c Card
 function c67223587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,13 +12,13 @@ function c67223587.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c67223587.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsSetCard(0x1019)
 end
 function c67223587.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c67223587.cfilter,1,nil,tp)
 end
 function c67223587.filter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c67223587.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

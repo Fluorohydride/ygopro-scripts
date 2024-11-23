@@ -1,4 +1,5 @@
 --閃刀機関－マルチロール
+---@param c Card
 function c24010609.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ツイン・トライアングル・ドラゴン
+---@param c Card
 function c66015185.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c66015185.mfilter,2)

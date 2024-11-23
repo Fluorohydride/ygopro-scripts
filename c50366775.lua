@@ -1,4 +1,5 @@
 --フォーマッド・スキッパー
+---@param c Card
 function c50366775.initial_effect(c)
 	--link
 	local e1=Effect.CreateEffect(c)

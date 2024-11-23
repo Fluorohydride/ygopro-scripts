@@ -1,4 +1,5 @@
 --弦魔人ムズムズリズム
+---@param c Card
 function c26563200.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

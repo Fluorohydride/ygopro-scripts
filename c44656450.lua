@@ -1,4 +1,5 @@
 --失楽の魔女
+---@param c Card
 function c44656450.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

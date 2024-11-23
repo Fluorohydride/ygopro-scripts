@@ -1,4 +1,5 @@
 --ヴァレルロード・S・ドラゴン
+---@param c Card
 function c27548199.initial_effect(c)
 	c:EnableCounterPermit(0x4b)
 	--synchro summon
@@ -56,7 +57,7 @@ function c27548199.eqop(e,tp,eg,ep,ev,re,r,rp)
 			c:AddCounter(0x4b,lk)
 		end
 		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

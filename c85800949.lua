@@ -1,4 +1,5 @@
 --伝説の騎士 クリティウス
+---@param c Card
 function c85800949.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

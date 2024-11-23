@@ -1,4 +1,5 @@
 --剣闘獣レティアリィ
+---@param c Card
 function c612115.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)
@@ -46,7 +47,7 @@ function c612115.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c612115.filter(c,e,tp)
-	return not c:IsCode(612115) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(612115) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c612115.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

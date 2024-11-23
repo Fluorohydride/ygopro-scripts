@@ -1,4 +1,5 @@
 --竜星の凶暴化
+---@param c Card
 function c67249508.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

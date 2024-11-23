@@ -1,4 +1,5 @@
 --マテリアルファルコ
+---@param c Card
 function c1287123.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

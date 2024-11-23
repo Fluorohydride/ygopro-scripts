@@ -1,4 +1,5 @@
 --EMモモンカーペット
+---@param c Card
 function c20281581.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

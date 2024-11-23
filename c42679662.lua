@@ -1,4 +1,5 @@
 --ヴェルズ・アザトホース
+---@param c Card
 function c42679662.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

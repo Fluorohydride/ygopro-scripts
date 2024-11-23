@@ -1,4 +1,5 @@
 --天威龍－ヴィシュダ
+---@param c Card
 function c23431858.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

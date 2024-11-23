@@ -1,4 +1,5 @@
 --メタルフォーゼ・オリハルク
+---@param c Card
 function c28016193.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

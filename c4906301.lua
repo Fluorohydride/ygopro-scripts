@@ -1,4 +1,5 @@
 --ネクロ・ガードナー
+---@param c Card
 function c4906301.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

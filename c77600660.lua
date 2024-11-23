@@ -1,4 +1,5 @@
 --サイコ・エンペラー
+---@param c Card
 function c77600660.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

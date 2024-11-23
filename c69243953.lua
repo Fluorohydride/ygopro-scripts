@@ -1,4 +1,5 @@
 --蝶の短剣－エルマ
+---@param c Card
 function c69243953.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

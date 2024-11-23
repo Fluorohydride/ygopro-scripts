@@ -1,4 +1,5 @@
 --運命の旅路
+---@param c Card
 function c39568067.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--Activate

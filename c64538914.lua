@@ -1,4 +1,5 @@
 --震天のマンティコア
+---@param c Card
 function c64538914.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

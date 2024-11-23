@@ -1,4 +1,5 @@
 --星蝕－レベル・クライム－
+---@param c Card
 function c70391588.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マジェスペクター・サイクロン
+---@param c Card
 function c49366157.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

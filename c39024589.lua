@@ -1,4 +1,5 @@
 --魔界劇団－ダンディ・バイプレイヤー
+---@param c Card
 function c39024589.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

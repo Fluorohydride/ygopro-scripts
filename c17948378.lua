@@ -1,4 +1,5 @@
 --ジュラック・デイノ
+---@param c Card
 function c17948378.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

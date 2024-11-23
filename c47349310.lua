@@ -1,5 +1,6 @@
 --スカイオニヒトクイエイ
 local s,id=GetID()
+---@param c Card
 function c47349310.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

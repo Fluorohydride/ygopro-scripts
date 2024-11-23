@@ -1,4 +1,5 @@
 --ルーレット・スパイダー
+---@param c Card
 function c36708764.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,6 @@ function c36708764.initial_effect(c)
 	e1:SetOperation(c36708764.activate)
 	c:RegisterEffect(e1)
 end
-c36708764.toss_dice=true
 function c36708764.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end

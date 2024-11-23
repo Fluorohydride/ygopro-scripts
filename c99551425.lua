@@ -1,4 +1,5 @@
 --迷宮の魔戦車
+---@param c Card
 function c99551425.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

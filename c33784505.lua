@@ -1,4 +1,5 @@
 --壺盗み
+---@param c Card
 function c33784505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

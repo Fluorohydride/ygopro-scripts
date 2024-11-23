@@ -1,5 +1,6 @@
 --聖騎士と聖剣の巨城
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,55742055)
 	--Activate

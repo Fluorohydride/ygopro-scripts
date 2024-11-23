@@ -1,4 +1,5 @@
 --究極体ミュートリアス
+---@param c Card
 function c6182103.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

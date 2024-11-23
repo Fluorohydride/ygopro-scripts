@@ -1,4 +1,5 @@
 --バースト・リバース
+---@param c Card
 function c50243722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

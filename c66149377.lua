@@ -1,4 +1,5 @@
 --魔弾－ダンシング・ニードル
+---@param c Card
 function c66149377.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

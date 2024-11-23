@@ -1,4 +1,5 @@
 --ジェムナイト・ラズリー
+---@param c Card
 function c81846636.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

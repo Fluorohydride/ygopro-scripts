@@ -1,4 +1,5 @@
 --魔導アーマー エグゼ
+---@param c Card
 function c7180418.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

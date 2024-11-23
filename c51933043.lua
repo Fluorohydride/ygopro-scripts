@@ -1,4 +1,5 @@
 --RR－ヒール・イーグル
+---@param c Card
 function c51933043.initial_effect(c)
 	--self ss
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エネミーコントローラー
+---@param c Card
 function c98045062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

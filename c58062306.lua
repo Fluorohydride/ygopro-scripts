@@ -1,4 +1,5 @@
 --ローズ・プリンセス
+---@param c Card
 function c58062306.initial_effect(c)
 	aux.AddCodeList(c,84335863)
 	--special summon

@@ -1,4 +1,5 @@
 --堕天使ディザイア
+---@param c Card
 function c55690251.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -61,7 +62,6 @@ function c55690251.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and c:GetAttack()>=1000 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-1000)

@@ -1,4 +1,5 @@
 --剛鬼ライジングスコーピオ
+---@param c Card
 function c60461077.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --御巫の誘い輪舞
+---@param c Card
 function c79912449.initial_effect(c)
 	c:SetUniqueOnField(1,0,79912449)
 	--activate

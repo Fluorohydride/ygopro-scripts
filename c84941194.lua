@@ -1,4 +1,5 @@
 --ホルスの栄光－イムセティ
+---@param c Card
 function c84941194.initial_effect(c)
 	aux.AddCodeList(c,16528181)
 	--special summon

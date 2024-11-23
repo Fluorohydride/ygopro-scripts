@@ -1,4 +1,5 @@
 --バトルマニア
+---@param c Card
 function c31245780.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔救の奇石－ドラガイト
+---@param c Card
 function c10286023.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

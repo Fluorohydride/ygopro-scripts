@@ -1,4 +1,5 @@
 --メタルシルバー・アーマー
+---@param c Card
 function c33114323.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -13,6 +14,7 @@ function c33114323.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(0x34,0x34)
 	e2:SetCondition(c33114323.effcon)

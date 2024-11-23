@@ -1,4 +1,5 @@
 --斬機帰納法
+---@param c Card
 function c14393464.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

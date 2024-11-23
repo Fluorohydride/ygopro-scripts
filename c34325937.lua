@@ -1,4 +1,5 @@
 --方界合神
+---@param c Card
 function c34325937.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

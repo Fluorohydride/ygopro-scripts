@@ -1,5 +1,6 @@
 --最後の希望
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
 	--Activate

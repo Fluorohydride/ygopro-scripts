@@ -1,4 +1,5 @@
 --インフェルノイド・アスタロス
+---@param c Card
 function c89423971.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

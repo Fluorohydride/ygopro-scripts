@@ -1,4 +1,5 @@
 --下降潮流
+---@param c Card
 function c26099457.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

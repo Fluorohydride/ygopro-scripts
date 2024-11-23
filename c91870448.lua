@@ -1,4 +1,5 @@
 --サイコ・ギガサイバー
+---@param c Card
 function c91870448.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--special summon

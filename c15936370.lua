@@ -1,4 +1,5 @@
 --パンドラの宝具箱
+---@param c Card
 function c15936370.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

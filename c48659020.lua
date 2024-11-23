@@ -1,4 +1,5 @@
 --魂を呼ぶ者
+---@param c Card
 function c48659020.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

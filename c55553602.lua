@@ -1,4 +1,5 @@
 --EMドラマチックシアター
+---@param c Card
 function c55553602.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

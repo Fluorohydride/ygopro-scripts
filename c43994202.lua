@@ -1,4 +1,5 @@
 --素早きは三文の徳
+---@param c Card
 function c43994202.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魚雷魚
+---@param c Card
 function c90337190.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--immune spell

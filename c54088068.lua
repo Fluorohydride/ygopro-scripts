@@ -1,4 +1,5 @@
 --剛鬼ヘッドバット
+---@param c Card
 function c54088068.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

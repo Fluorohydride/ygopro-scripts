@@ -1,4 +1,5 @@
 --メタファイズ・アセンション
+---@param c Card
 function c54199839.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

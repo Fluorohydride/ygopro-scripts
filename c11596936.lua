@@ -1,4 +1,5 @@
 --レクリスパワー
+---@param c Card
 function c11596936.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

@@ -1,34 +1,8 @@
 --アルカナフォースⅢ－THE EMPRESS
+---@param c Card
 function c35781051.initial_effect(c)
 	--coin
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(35781051,0))
-	e1:SetCategory(CATEGORY_COIN)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetTarget(c35781051.cointg)
-	e1:SetOperation(c35781051.coinop)
-	c:RegisterEffect(e1)
-	local e2=e1:Clone()
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	c:RegisterEffect(e2)
-	local e3=e1:Clone()
-	e3:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
-	c:RegisterEffect(e3)
-end
-c35781051.toss_coin=true
-function c35781051.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
-end
-function c35781051.coinop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local res=0
-	if c:IsHasEffect(73206827) then
-		res=1-Duel.SelectOption(tp,60,61)
-	else res=Duel.TossCoin(tp,1) end
-	c35781051.arcanareg(c,res)
+	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 end
 function c35781051.arcanareg(c,coin)
 	--coin effect
@@ -61,10 +35,10 @@ function c35781051.arcanareg(c,coin)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_MSET)
 	c:RegisterEffect(e4)
-	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c35781051.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetFlagEffectLabel(36690018)==1
+	return ep~=tp and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c35781051.spfilter(c,e,tp)
 	return c:IsSetCard(0x5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -83,7 +57,7 @@ function c35781051.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c35781051.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetFlagEffectLabel(36690018)==0
+	return ep~=tp and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
 end
 function c35781051.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

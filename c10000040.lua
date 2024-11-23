@@ -1,4 +1,5 @@
 --光の創造神 ホルアクティ
+---@param c Card
 function c10000040.initial_effect(c)
 	aux.AddCodeList(c,10000010,10000000,10000020)
 	c:EnableReviveLimit()

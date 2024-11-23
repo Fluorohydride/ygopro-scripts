@@ -1,4 +1,5 @@
 --聖刻天龍－エネアード
+---@param c Card
 function c3292267.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,8,2)

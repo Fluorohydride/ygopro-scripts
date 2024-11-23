@@ -1,4 +1,5 @@
 --コダロス
+---@param c Card
 function c65496056.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--send to grave

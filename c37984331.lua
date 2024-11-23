@@ -1,4 +1,5 @@
 --真エクゾディア
+---@param c Card
 function c37984331.initial_effect(c)
 	--win
 	local e1=Effect.CreateEffect(c)

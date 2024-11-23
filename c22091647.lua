@@ -1,4 +1,5 @@
 --ゴッドフェニックス・ギア・フリード
+---@param c Card
 function c22091647.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -83,7 +84,7 @@ function c22091647.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetValue(c22091647.eqlimit)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

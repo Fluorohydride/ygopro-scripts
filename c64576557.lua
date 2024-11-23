@@ -1,4 +1,5 @@
 --古代遺跡の静粛
+---@param c Card
 function c64576557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

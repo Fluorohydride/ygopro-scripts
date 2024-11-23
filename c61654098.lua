@@ -1,4 +1,5 @@
 --星遺物との邂逅
+---@param c Card
 function c61654098.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

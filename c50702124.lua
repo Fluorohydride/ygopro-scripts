@@ -1,4 +1,5 @@
 --シンクロ・マグネーター
+---@param c Card
 function c50702124.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

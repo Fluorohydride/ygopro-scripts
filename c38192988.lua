@@ -1,5 +1,6 @@
 --真紅眼の不死竜皇
 local s,id,o=GetID()
+---@param c Card
 function c38192988.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c38192988.synfilter,aux.NonTuner(nil),1)

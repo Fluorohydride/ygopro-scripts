@@ -1,4 +1,5 @@
 --武神－ミカヅチ
+---@param c Card
 function c53678698.initial_effect(c)
 	c:SetUniqueOnField(1,0,53678698)
 	--spsummon

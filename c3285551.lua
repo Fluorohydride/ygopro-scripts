@@ -1,4 +1,5 @@
 --アラメシアの儀
+---@param c Card
 function c3285551.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--activate

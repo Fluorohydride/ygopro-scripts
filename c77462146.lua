@@ -1,4 +1,5 @@
 --幻影騎士団シャドーベイル
+---@param c Card
 function c77462146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

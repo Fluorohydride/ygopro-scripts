@@ -1,4 +1,5 @@
 --ラヴァルのマグマ砲兵
+---@param c Card
 function c46404281.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --武神－ヒルメ
+---@param c Card
 function c9418365.initial_effect(c)
 	c:SetUniqueOnField(1,0,9418365)
 	c:EnableReviveLimit()

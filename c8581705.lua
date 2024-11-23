@@ -1,4 +1,5 @@
 --インフェルノクインデーモン
+---@param c Card
 function c8581705.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)
@@ -13,6 +14,7 @@ function c8581705.initial_effect(c)
 	--disable and destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCategory(CATEGORY_DICE)
 	e2:SetCode(EVENT_CHAIN_SOLVING)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetOperation(c8581705.disop)
@@ -29,7 +31,6 @@ function c8581705.initial_effect(c)
 	e3:SetOperation(c8581705.atkop)
 	c:RegisterEffect(e3)
 end
-c8581705.toss_dice=true
 function c8581705.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

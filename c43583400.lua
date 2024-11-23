@@ -1,4 +1,5 @@
 --アンチエイリアン
+---@param c Card
 function c43583400.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

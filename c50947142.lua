@@ -1,4 +1,5 @@
 --くず鉄のシグナル
+---@param c Card
 function c50947142.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

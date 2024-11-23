@@ -1,4 +1,5 @@
 --超量要請アルファンコール
+---@param c Card
 function c15721392.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

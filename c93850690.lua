@@ -1,4 +1,5 @@
 --大霊峰相剣門
+---@param c Card
 function c93850690.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

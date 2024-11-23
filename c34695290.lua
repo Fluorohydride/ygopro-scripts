@@ -1,4 +1,5 @@
 --ミュートリアル・ビースト
+---@param c Card
 function c34695290.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

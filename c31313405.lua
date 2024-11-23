@@ -1,4 +1,5 @@
 --転生炎獣パイロ・フェニックス
+---@param c Card
 function c31313405.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

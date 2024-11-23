@@ -1,4 +1,5 @@
 --HRUM－ユートピア・フォース
+---@param c Card
 function c67517351.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

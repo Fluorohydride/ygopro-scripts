@@ -1,4 +1,5 @@
 --百雷のサンダー・ドラゴン
+---@param c Card
 function c82045034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

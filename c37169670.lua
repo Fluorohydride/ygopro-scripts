@@ -1,4 +1,5 @@
 --ハイパーサイコガンナー／バスター
+---@param c Card
 function c37169670.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()

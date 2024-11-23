@@ -1,4 +1,5 @@
 --プランキッズ・ランプ
+---@param c Card
 function c18236002.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

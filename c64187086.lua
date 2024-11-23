@@ -1,4 +1,5 @@
 --地縛神の復活
+---@param c Card
 function c64187086.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

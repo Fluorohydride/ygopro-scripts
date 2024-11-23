@@ -1,4 +1,5 @@
 --漆黒の薔薇の開華
+---@param c Card
 function c99092624.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--activate

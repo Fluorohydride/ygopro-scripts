@@ -1,4 +1,5 @@
 --エレキツネ
+---@param c Card
 function c46897277.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

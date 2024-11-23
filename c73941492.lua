@@ -1,4 +1,5 @@
 --調弦の魔術師
+---@param c Card
 function c73941492.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_TUNE_MAGICIAN)
 	--pendulum summon

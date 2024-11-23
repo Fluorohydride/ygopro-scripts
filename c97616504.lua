@@ -1,4 +1,5 @@
 --閃刀機構－ハーキュリーベース
+---@param c Card
 function c97616504.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

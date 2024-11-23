@@ -1,4 +1,5 @@
 --サイバー・エッグ・エンジェル
+---@param c Card
 function c28053106.initial_effect(c)
 	aux.AddCodeList(c,95658967)
 	--to hand

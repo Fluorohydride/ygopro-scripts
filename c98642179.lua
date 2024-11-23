@@ -1,4 +1,5 @@
 --剛炎の剣士
+---@param c Card
 function c98642179.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c98642179.lcheck)

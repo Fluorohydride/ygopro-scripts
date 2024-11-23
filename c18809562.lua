@@ -1,4 +1,5 @@
 --魔導契約の扉
+---@param c Card
 function c18809562.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --やぶ蛇
+---@param c Card
 function c10813327.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

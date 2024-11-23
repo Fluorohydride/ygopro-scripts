@@ -1,4 +1,5 @@
 --灰塵王 アッシュ・ガッシュ
+---@param c Card
 function c19012345.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

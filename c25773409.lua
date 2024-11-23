@@ -1,4 +1,5 @@
 --伝説の柔術家
+---@param c Card
 function c25773409.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

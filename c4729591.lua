@@ -1,4 +1,5 @@
 --計量機塊カッパスケール
+---@param c Card
 function c4729591.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

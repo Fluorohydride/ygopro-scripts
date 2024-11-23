@@ -1,4 +1,5 @@
 --フォトン・アレキサンドラ・クィーン
+---@param c Card
 function c75797046.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x6a),4,2)

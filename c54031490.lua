@@ -1,4 +1,5 @@
 --紫炎の狼煙
+---@param c Card
 function c54031490.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

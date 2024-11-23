@@ -1,4 +1,5 @@
 --野獣戦士ピューマン
+---@param c Card
 function c16796157.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

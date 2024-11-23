@@ -1,4 +1,5 @@
 --アルカナフォースEX－THE DARK RULER
+---@param c Card
 function c69831560.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc
@@ -18,16 +19,8 @@ function c69831560.initial_effect(c)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
 	c:RegisterEffect(e2)
 	--coin
-	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(69831560,0))
-	e3:SetCategory(CATEGORY_COIN)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e3:SetTarget(c69831560.cointg)
-	e3:SetOperation(c69831560.coinop)
-	c:RegisterEffect(e3)
+	aux.EnableArcanaCoin(c,EVENT_SPSUMMON_SUCCESS)
 end
-c69831560.toss_coin=true
 function c69831560.spfilter(c)
 	return c:IsAbleToGraveAsCost()
 end
@@ -51,19 +44,6 @@ function c69831560.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
-end
-function c69831560.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
-end
-function c69831560.coinop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local res=0
-	if c:IsHasEffect(73206827) then
-		res=1-Duel.SelectOption(tp,60,61)
-	else res=Duel.TossCoin(tp,1) end
-	c69831560.arcanareg(c,res)
 end
 function c69831560.arcanareg(c,coin)
 	--coin effect
@@ -98,14 +78,14 @@ function c69831560.arcanareg(c,coin)
 	e4:SetReset(RESET_EVENT+RESET_OVERLAY+RESET_TOFIELD)
 	e4:SetLabelObject(e3)
 	c:RegisterEffect(e4)
-	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c69831560.macon(e)
-	return e:GetHandler():GetFlagEffectLabel(36690018)==1
+	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c69831560.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffectLabel(36690018)==1 and c:GetAttackAnnouncedCount()>=2
+	return c:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1 and c:GetAttackAnnouncedCount()>=2
 end
 function c69831560.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -115,12 +95,12 @@ function c69831560.posop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_COPY_INHERIT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	c:RegisterEffect(e1)
 end
 function c69831560.desop1(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(36690018)==0 then
+	if e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0 then
 		e:SetLabel(1)
 	else e:SetLabel(0) end
 end

@@ -1,4 +1,5 @@
 --サイバー・エンジェル－伊舎那－
+---@param c Card
 function c91668401.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave

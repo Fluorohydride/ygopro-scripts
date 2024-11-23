@@ -1,4 +1,5 @@
 --破壊神 ヴァサーゴ
+---@param c Card
 function c50259460.initial_effect(c)
 	--fusion substitute
 	local e1=Effect.CreateEffect(c)

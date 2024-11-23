@@ -1,4 +1,5 @@
 --デスガエル
+---@param c Card
 function c84451804.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --トリックスター・ディーヴァリディス
+---@param c Card
 function c14365823.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,0,14365823)

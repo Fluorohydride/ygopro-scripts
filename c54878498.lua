@@ -1,4 +1,5 @@
 --ケルベク
+---@param c Card
 function c54878498.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

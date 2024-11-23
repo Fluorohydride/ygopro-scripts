@@ -1,4 +1,5 @@
 --電磁石の戦士γ
+---@param c Card
 function c15502037.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

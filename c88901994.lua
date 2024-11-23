@@ -1,5 +1,6 @@
 --シンクロ・ランブル
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,63436931)
 	--Activate

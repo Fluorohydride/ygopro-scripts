@@ -1,4 +1,5 @@
 --水晶機巧－スモーガー
+---@param c Card
 function c83443619.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

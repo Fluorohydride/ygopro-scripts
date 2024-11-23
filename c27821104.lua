@@ -1,4 +1,5 @@
 --六武衆の荒行
+---@param c Card
 function c27821104.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

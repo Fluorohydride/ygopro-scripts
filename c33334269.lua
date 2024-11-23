@@ -1,4 +1,5 @@
 --DDゴースト
+---@param c Card
 function c33334269.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

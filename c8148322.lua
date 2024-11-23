@@ -1,4 +1,5 @@
 --プレデター・プライム・フュージョン
+---@param c Card
 function c8148322.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

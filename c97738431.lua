@@ -1,4 +1,5 @@
 --ナンバーズ・オーバーレイ・ブースト
+---@param c Card
 function c97738431.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

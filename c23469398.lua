@@ -1,4 +1,5 @@
 --マシンナーズ・エアレイダー
+---@param c Card
 function c23469398.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

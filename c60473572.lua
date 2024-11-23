@@ -1,4 +1,5 @@
 --メタルフォーゼ・スティエレン
+---@param c Card
 function c60473572.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --黄紡鮄デュオニギス
+---@param c Card
 function c79724755.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

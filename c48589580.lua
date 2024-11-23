@@ -1,4 +1,5 @@
 --天空神騎士ロードパーシアス
+---@param c Card
 function c48589580.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--link summon

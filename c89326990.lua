@@ -1,4 +1,5 @@
 --SRオハジキッド
+---@param c Card
 function c89326990.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

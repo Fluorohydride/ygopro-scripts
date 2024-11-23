@@ -1,4 +1,5 @@
 --念導力
+---@param c Card
 function c23323812.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

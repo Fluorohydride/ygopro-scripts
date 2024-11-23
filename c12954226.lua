@@ -1,4 +1,5 @@
 --サークル・オブ・フェアリー
+---@param c Card
 function c12954226.initial_effect(c)
 	--Synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

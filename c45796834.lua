@@ -1,4 +1,5 @@
 --光天のマハー・ヴァイロ
+---@param c Card
 function c45796834.initial_effect(c)
 	--atk boost
 	local e1=Effect.CreateEffect(c)

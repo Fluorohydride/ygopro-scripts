@@ -1,4 +1,5 @@
 --イービル・ブラスト
+---@param c Card
 function c15684835.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

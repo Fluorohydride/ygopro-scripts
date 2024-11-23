@@ -1,4 +1,5 @@
 --騎甲虫隊降下作戦
+---@param c Card
 function c87240371.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

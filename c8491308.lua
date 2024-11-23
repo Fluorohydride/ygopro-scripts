@@ -1,4 +1,5 @@
 --閃刀姫－ハヤテ
+---@param c Card
 function c8491308.initial_effect(c)
 	c:SetSPSummonOnce(8491308)
 	c:EnableReviveLimit()

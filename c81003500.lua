@@ -1,4 +1,5 @@
 --E・HERO ネクロイド・シャーマン
+---@param c Card
 function c81003500.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

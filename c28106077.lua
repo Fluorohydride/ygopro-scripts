@@ -1,4 +1,5 @@
 --ダグラの剣
+---@param c Card
 function c28106077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

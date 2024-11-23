@@ -1,4 +1,5 @@
 --姫葵マリーナ
+---@param c Card
 function c78540593.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

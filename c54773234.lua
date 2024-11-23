@@ -1,4 +1,5 @@
 --禁じられた聖典
+---@param c Card
 function c54773234.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

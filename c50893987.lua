@@ -1,4 +1,5 @@
 --剣闘獣ティゲル
+---@param c Card
 function c50893987.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
@@ -20,14 +21,14 @@ function c50893987.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50893987.costfilter(c)
-	return c:IsSetCard(0x19) and c:IsDiscardable()
+	return c:IsSetCard(0x1019) and c:IsDiscardable()
 end
 function c50893987.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c50893987.costfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,c50893987.costfilter,1,1,REASON_DISCARD+REASON_COST,nil)
 end
 function c50893987.scfilter(c)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1019) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c50893987.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c50893987.scfilter,tp,LOCATION_DECK,0,1,nil) end

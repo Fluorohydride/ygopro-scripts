@@ -1,4 +1,5 @@
 --エターナル・ボンド
+---@param c Card
 function c45283341.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

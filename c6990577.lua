@@ -1,4 +1,5 @@
 --守護竜アンドレイク
+---@param c Card
 function c6990577.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

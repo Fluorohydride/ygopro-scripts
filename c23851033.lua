@@ -1,4 +1,5 @@
 --オッドアイズ・グラビティ・ドラゴン
+---@param c Card
 function c23851033.initial_effect(c)
 	c:EnableReviveLimit()
 	--tohand

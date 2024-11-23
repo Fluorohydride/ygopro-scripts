@@ -1,4 +1,5 @@
 --海晶乙女コーラルアネモネ
+---@param c Card
 function c79130389.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2,2)

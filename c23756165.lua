@@ -1,5 +1,6 @@
 --魅惑の女王 LV5
 local s,id,o=GetID()
+---@param c Card
 function c23756165.initial_effect(c)
 	aux.AddCodeList(c,87257460,50140163)
 	--flag effect id+1
@@ -81,7 +82,7 @@ function c23756165.eqop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterFlagEffect(FLAG_ID_ALLURE_QUEEN,RESET_EVENT+RESETS_STANDARD,0,0,id)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c23756165.eqlimit)

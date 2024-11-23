@@ -1,4 +1,5 @@
 --裁きを下す者－ボルテニス
+---@param c Card
 function c20951752.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

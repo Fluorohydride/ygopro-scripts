@@ -1,4 +1,5 @@
 --The アトモスフィア
+---@param c Card
 function c14466224.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon
@@ -87,7 +88,7 @@ function c14466224.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c14466224.eqlimit)

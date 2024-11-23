@@ -1,4 +1,5 @@
 --冥王竜ヴァンダルギオン
+---@param c Card
 function c24857466.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -1,4 +1,5 @@
 --ネフティスの希望
+---@param c Card
 function c50847759.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

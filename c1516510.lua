@@ -1,4 +1,5 @@
 --ルーンアイズ・ペンデュラム・ドラゴン
+---@param c Card
 function c1516510.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

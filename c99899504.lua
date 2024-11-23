@@ -1,4 +1,5 @@
 --スカル・フレイム
+---@param c Card
 function c99899504.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

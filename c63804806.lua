@@ -1,4 +1,5 @@
 --スピード・キング☆スカル・フレイム
+---@param c Card
 function c63804806.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

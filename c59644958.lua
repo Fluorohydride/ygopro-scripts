@@ -1,4 +1,5 @@
 --オーバーレイ・オウル
+---@param c Card
 function c59644958.initial_effect(c)
 	--detach
 	local e1=Effect.CreateEffect(c)

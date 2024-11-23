@@ -1,4 +1,5 @@
 --HSR／CWライダー
+---@param c Card
 function c86154370.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND),aux.NonTuner(c86154370.sfilter),1,1)
@@ -26,7 +27,6 @@ function c86154370.initial_effect(c)
 	e2:SetOperation(c86154370.spop)
 	c:RegisterEffect(e2)
 end
-c86154370.toss_dice=true
 c86154370.material_type=TYPE_SYNCHRO
 function c86154370.sfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsType(TYPE_SYNCHRO)

@@ -1,4 +1,5 @@
 --天球の聖刻印
+---@param c Card
 function c24361622.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

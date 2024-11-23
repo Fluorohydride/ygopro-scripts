@@ -1,4 +1,5 @@
 --未熟な密偵
+---@param c Card
 function c81820689.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

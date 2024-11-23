@@ -1,4 +1,5 @@
 --桜姫タレイア
+---@param c Card
 function c80190753.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超電導戦機インペリオン・マグナム
+---@param c Card
 function c4628897.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

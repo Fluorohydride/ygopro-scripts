@@ -1,4 +1,5 @@
 --悦楽の堕天使
+---@param c Card
 function c82773292.initial_effect(c)
 	--spsummon/to hand
 	local e1=Effect.CreateEffect(c)

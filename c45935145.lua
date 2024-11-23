@@ -1,5 +1,6 @@
 --死祖の隷竜ウォロー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

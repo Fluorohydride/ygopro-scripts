@@ -1,4 +1,5 @@
 --オルフェゴール・カノーネ
+---@param c Card
 function c94046012.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

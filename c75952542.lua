@@ -1,4 +1,5 @@
 --VV－百識公国
+---@param c Card
 function c75952542.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --氷結界に至る晴嵐
+---@param c Card
 function c17197110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

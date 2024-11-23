@@ -1,4 +1,5 @@
 --灼熱工の巨匠カエン
+---@param c Card
 function c51554871.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

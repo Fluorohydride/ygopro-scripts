@@ -1,4 +1,5 @@
 --揺れる眼差し
+---@param c Card
 function c31222701.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

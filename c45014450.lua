@@ -1,4 +1,5 @@
 --覇王紫竜オッドアイズ・ヴェノム・ドラゴン
+---@param c Card
 function c45014450.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c,false)

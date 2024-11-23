@@ -1,4 +1,5 @@
 --D-HERO ディスクガイ
+---@param c Card
 function c56570271.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

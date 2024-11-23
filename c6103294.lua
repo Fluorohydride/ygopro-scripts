@@ -1,4 +1,5 @@
 --オアシスの使者
+---@param c Card
 function c6103294.initial_effect(c)
 	--atk target
 	local e1=Effect.CreateEffect(c)

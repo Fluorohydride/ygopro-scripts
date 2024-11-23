@@ -1,4 +1,5 @@
 --子狸ぽんぽこ
+---@param c Card
 function c92729410.initial_effect(c)
 	--spsummon
 	local e2=Effect.CreateEffect(c)

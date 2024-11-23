@@ -1,4 +1,5 @@
 --炎塵爆発
+---@param c Card
 function c38049934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

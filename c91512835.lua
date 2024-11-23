@@ -1,4 +1,5 @@
 --インセクト女王
+---@param c Card
 function c91512835.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

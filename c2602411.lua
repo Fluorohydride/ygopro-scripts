@@ -1,4 +1,5 @@
 --破壊剣－ウィザードバスターブレード
+---@param c Card
 function c2602411.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

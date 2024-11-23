@@ -1,4 +1,5 @@
 --天空の使者 ゼラディアス
+---@param c Card
 function c12171659.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--search

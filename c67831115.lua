@@ -1,4 +1,5 @@
 --星遺物に差す影
+---@param c Card
 function c67831115.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

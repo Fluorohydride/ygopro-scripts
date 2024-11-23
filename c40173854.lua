@@ -1,4 +1,5 @@
 --水陸両用バグロス
+---@param c Card
 function c40173854.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

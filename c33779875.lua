@@ -1,4 +1,5 @@
 --六花聖ティアドロップ
+---@param c Card
 function c33779875.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

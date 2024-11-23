@@ -1,4 +1,5 @@
 --P.U.N.K.JAMエクストリーム・セッション
+---@param c Card
 function c49370016.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

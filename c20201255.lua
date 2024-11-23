@@ -1,4 +1,5 @@
 --再起する剣闘獣
+---@param c Card
 function c20201255.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,7 @@ function c20201255.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20201255.filter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and not Duel.IsExistingMatchingCard(c20201255.filter1,tp,LOCATION_MZONE,0,1,c,c:GetRace())
 end
 function c20201255.filter1(c,race)

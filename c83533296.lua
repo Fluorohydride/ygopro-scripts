@@ -1,5 +1,6 @@
 --転生炎獣の炎軍
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

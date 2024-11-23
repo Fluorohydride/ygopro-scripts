@@ -1,4 +1,5 @@
 --閃刀姫－カイナ
+---@param c Card
 function c12421694.initial_effect(c)
 	c:SetSPSummonOnce(12421694)
 	--link summon

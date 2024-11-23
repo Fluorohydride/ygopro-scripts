@@ -1,4 +1,5 @@
 --エルフェーズ
+---@param c Card
 function c60292055.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c60292055.mfilter,2)

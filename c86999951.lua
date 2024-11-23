@@ -1,5 +1,6 @@
 --Crystal God Tistina
 local s,id=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--effect 1
 	local e1=Effect.CreateEffect(c)

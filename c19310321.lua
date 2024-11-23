@@ -1,4 +1,5 @@
 --紋章獣ツインヘッド・イーグル
+---@param c Card
 function c19310321.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

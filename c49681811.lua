@@ -1,4 +1,5 @@
 --無敗将軍 フリード
+---@param c Card
 function c49681811.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

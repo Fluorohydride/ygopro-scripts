@@ -1,4 +1,5 @@
 --光の結界
+---@param c Card
 function c73206827.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -21,9 +22,9 @@ function c73206827.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(73206827)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetRange(LOCATION_FZONE)
-	e3:SetTargetRange(LOCATION_MZONE,0)
-	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x5))
+	e3:SetTargetRange(1,0)
 	e3:SetCondition(c73206827.effectcon)
 	c:RegisterEffect(e3)
 	--
@@ -38,7 +39,6 @@ function c73206827.initial_effect(c)
 	e4:SetOperation(c73206827.recop)
 	c:RegisterEffect(e4)
 end
-c73206827.toss_coin=true
 function c73206827.coincon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end
@@ -60,8 +60,7 @@ end
 function c73206827.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=eg:GetFirst()
-	return rc:IsRelateToBattle() and rc:IsSetCard(0x5) and rc:IsFaceup() and rc:IsControler(tp)
-		and (c:GetFlagEffect(73206828)==0 or c:IsHasEffect(EFFECT_CANNOT_DISABLE))
+	return c73206827.effectcon(e) and rc:IsRelateToBattle() and rc:IsSetCard(0x5) and rc:IsFaceup() and rc:IsControler(tp)
 end
 function c73206827.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -74,5 +73,7 @@ function c73206827.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c73206827.recop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	Duel.Recover(p,d,REASON_EFFECT)
+	if d>0 then
+		Duel.Recover(p,d,REASON_EFFECT)
+	end
 end

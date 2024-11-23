@@ -1,4 +1,5 @@
 --CNo.96 ブラック・ストーム
+---@param c Card
 function c77205367.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),3,4)

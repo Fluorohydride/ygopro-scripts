@@ -1,4 +1,5 @@
 --武装竜の霹靂
+---@param c Card
 function c34611551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --右手に盾を左手に剣を
+---@param c Card
 function c52097679.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

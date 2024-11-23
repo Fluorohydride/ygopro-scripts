@@ -1,4 +1,5 @@
 --花騎士団の白馬
+---@param c Card
 function c11426487.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

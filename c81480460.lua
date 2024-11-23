@@ -1,4 +1,5 @@
 --リボルバー・ドラゴン
+---@param c Card
 function c81480460.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +13,6 @@ function c81480460.initial_effect(c)
 	e1:SetOperation(c81480460.desop)
 	c:RegisterEffect(e1)
 end
-c81480460.toss_coin=true
 function c81480460.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end

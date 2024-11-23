@@ -1,4 +1,5 @@
 --剣の女王
+---@param c Card
 function c51371017.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

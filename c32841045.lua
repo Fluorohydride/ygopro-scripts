@@ -1,4 +1,5 @@
 --魔弾の射手 カスパール
+---@param c Card
 function c32841045.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)

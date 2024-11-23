@@ -1,5 +1,6 @@
 --捕食植物アンブロメリドゥス
 local s,id,o=GetID()
+---@param c Card
 function c66309175.initial_effect(c)
 	--Fusion Material
 	c:EnableReviveLimit()

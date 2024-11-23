@@ -1,4 +1,5 @@
 --魔竜星－トウテツ
+---@param c Card
 function c99946920.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

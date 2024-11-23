@@ -1,4 +1,5 @@
 --影依の巫女 エリアル
+---@param c Card
 function c97518132.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

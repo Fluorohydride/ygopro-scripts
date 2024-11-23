@@ -1,4 +1,5 @@
 --極炎舞－「星斗」
+---@param c Card
 function c6713443.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

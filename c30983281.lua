@@ -1,4 +1,5 @@
 --アクセルシンクロ・スターダスト・ドラゴン
+---@param c Card
 function c30983281.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--synchro summon

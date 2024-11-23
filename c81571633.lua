@@ -1,4 +1,5 @@
 --DDプラウド・オーガ
+---@param c Card
 function c81571633.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

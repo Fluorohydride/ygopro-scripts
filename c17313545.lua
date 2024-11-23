@@ -1,4 +1,5 @@
 --ゴーレム
+---@param c Card
 function c17313545.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

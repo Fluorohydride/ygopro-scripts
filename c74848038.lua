@@ -1,4 +1,5 @@
 --死者転生
+---@param c Card
 function c74848038.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

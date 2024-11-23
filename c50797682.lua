@@ -1,4 +1,5 @@
 --先史遺産石紋
+---@param c Card
 function c50797682.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

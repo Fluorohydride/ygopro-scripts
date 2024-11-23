@@ -1,4 +1,5 @@
 --返り咲く薔薇の大輪
+---@param c Card
 function c12469386.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

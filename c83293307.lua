@@ -1,4 +1,5 @@
 --クローラー・レセプター
+---@param c Card
 function c83293307.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

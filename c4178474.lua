@@ -1,4 +1,5 @@
 --サンダー・ブレイク
+---@param c Card
 function c4178474.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スターヴ・ヴェネミー・ドラゴン
+---@param c Card
 function c93729065.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --空牙団の剣士 ビート
+---@param c Card
 function c93850652.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

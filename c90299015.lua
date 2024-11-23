@@ -1,4 +1,5 @@
 --ヴァンパイアの幽鬼
+---@param c Card
 function c90299015.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

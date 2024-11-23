@@ -1,4 +1,5 @@
 --海晶乙女環流
+---@param c Card
 function c83723605.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

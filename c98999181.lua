@@ -1,4 +1,5 @@
 --ネフティスの祈り手
+---@param c Card
 function c98999181.initial_effect(c)
 	--search monster
 	local e1=Effect.CreateEffect(c)

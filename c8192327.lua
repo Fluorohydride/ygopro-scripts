@@ -1,4 +1,5 @@
 --光霊神フォスオラージュ
+---@param c Card
 function c8192327.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

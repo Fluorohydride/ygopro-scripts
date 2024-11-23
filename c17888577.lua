@@ -1,4 +1,5 @@
 --音速を追う者
+---@param c Card
 function c17888577.initial_effect(c)
 	aux.AddCodeList(c,34072799)
 	--Activate

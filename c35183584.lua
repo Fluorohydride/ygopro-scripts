@@ -1,4 +1,5 @@
 --星遺物の守護竜メロダーク
+---@param c Card
 function c35183584.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

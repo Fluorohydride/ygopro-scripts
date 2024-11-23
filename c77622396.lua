@@ -1,4 +1,5 @@
 --あまのじゃくの呪い
+---@param c Card
 function c77622396.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

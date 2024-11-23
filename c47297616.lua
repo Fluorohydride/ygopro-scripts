@@ -1,4 +1,5 @@
 --光と闇の竜
+---@param c Card
 function c47297616.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -60,14 +61,12 @@ function c47297616.opdisable(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-500)
 		c:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		e2:SetValue(-500)

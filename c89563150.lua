@@ -1,4 +1,5 @@
 --白銀のバリア－シルバーフォース－
+---@param c Card
 function c89563150.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

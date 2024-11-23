@@ -1,4 +1,5 @@
 --魔法都市の実験施設
+---@param c Card
 function c65342096.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate

@@ -1,4 +1,5 @@
 --土地ころがし
+---@param c Card
 function c61264008.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

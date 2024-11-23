@@ -1,4 +1,5 @@
 --運命の戦車
+---@param c Card
 function c39299733.initial_effect(c)
 	aux.EnableUnionAttribute(c,c39299733.filter)
 	--direct attack

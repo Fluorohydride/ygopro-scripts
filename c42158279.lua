@@ -1,4 +1,5 @@
 --ドラグマトゥルギー
+---@param c Card
 function c42158279.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

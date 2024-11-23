@@ -1,4 +1,5 @@
 --ランサー・デーモン
+---@param c Card
 function c79418153.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

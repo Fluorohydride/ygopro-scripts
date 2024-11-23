@@ -1,4 +1,5 @@
 --エターナル・カオス
+---@param c Card
 function c25750986.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

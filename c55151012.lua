@@ -1,4 +1,5 @@
 --氷水のトレモラ
+---@param c Card
 function c55151012.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

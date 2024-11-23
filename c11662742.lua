@@ -1,4 +1,5 @@
 --ジェルエンデュオ
+---@param c Card
 function c11662742.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --カウンターマシンガンパンチ
+---@param c Card
 function c68057622.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

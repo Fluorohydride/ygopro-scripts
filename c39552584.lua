@@ -1,4 +1,5 @@
 --暗黒界の龍神王 グラファ
+---@param c Card
 function c39552584.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

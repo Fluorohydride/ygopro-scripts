@@ -1,4 +1,5 @@
 --超量機神剣－マグナスレイヤー
+---@param c Card
 function c47819246.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

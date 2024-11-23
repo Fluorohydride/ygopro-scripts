@@ -1,4 +1,5 @@
 --マスター・ヒュペリオン
+---@param c Card
 function c55794644.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--spsummon proc

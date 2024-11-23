@@ -1,4 +1,5 @@
 --チョコ・マジシャン・ガール
+---@param c Card
 function c7198399.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --氷結界の軍師
+---@param c Card
 function c50032342.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --CNo.80 葬装覇王レクイエム・イン・バーサーク
+---@param c Card
 function c20563387.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

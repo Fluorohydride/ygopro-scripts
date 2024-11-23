@@ -1,4 +1,5 @@
 --超再生能力
+---@param c Card
 function c27770341.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

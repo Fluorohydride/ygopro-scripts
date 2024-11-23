@@ -1,4 +1,5 @@
 --甲虫装機の魔弓 ゼクトアロー
+---@param c Card
 function c87047074.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

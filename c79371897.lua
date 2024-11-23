@@ -1,4 +1,5 @@
 --増援部隊
+---@param c Card
 function c79371897.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖なる煌炎
+---@param c Card
 function c58374502.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ピラミッドパワー
+---@param c Card
 function c76754619.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

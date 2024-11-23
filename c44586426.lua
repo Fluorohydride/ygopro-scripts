@@ -1,4 +1,5 @@
 --太陽電池メン
+---@param c Card
 function c44586426.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

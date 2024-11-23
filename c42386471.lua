@@ -1,4 +1,5 @@
 --トゥーン・ヂェミナイ・エルフ
+---@param c Card
 function c42386471.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

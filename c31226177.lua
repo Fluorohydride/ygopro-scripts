@@ -1,4 +1,5 @@
 --星杯竜イムドゥーク
+---@param c Card
 function c31226177.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --BF－雪撃のチヌーク
+---@param c Card
 function c34976176.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--atk

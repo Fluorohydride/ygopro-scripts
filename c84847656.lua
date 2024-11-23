@@ -1,4 +1,5 @@
 --テレキアタッカー
+---@param c Card
 function c84847656.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

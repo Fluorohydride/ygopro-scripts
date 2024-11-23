@@ -1,4 +1,5 @@
 --ゼクト・コンバージョン
+---@param c Card
 function c74854609.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

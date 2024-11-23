@@ -1,4 +1,5 @@
 --幻蝶の刺客モルフォ
+---@param c Card
 function c43573231.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

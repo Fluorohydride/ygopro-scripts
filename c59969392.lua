@@ -1,4 +1,5 @@
 --アンデット・スカル・デーモン
+---@param c Card
 function c59969392.initial_effect(c)
 	aux.AddMaterialCodeList(c,33420078)
 	--synchro summon

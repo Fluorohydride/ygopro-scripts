@@ -1,4 +1,5 @@
 --氷結界の鏡
+---@param c Card
 function c10691144.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

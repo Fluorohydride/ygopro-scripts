@@ -1,4 +1,5 @@
 --極星天グルヴェイグ
+---@param c Card
 function c90207654.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,c90207654.matfilter,1,1)

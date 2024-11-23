@@ -1,4 +1,5 @@
 --捲怒重来
+---@param c Card
 function c51686645.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

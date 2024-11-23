@@ -1,4 +1,5 @@
 --DDD双暁王カリ・ユガ
+---@param c Card
 function c15939229.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xaf),8,2)

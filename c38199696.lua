@@ -1,4 +1,5 @@
 --レッド・ポーション
+---@param c Card
 function c38199696.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

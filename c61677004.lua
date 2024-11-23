@@ -1,4 +1,5 @@
 --捕食植物ダーリング・コブラ
+---@param c Card
 function c61677004.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

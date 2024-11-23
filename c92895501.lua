@@ -1,4 +1,5 @@
 --VS ヘヴィ・ボーガー
+---@param c Card
 function c92895501.initial_effect(c)
 	--return and spsummon
 	local e1=Effect.CreateEffect(c)

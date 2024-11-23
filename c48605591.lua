@@ -1,4 +1,5 @@
 --端末世界NEXT
+---@param c Card
 function c48605591.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ナチュル・アントジョー
+---@param c Card
 function c99150062.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

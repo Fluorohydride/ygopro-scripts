@@ -1,4 +1,5 @@
 --天威の龍鬼神
+---@param c Card
 function c5041348.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -57,7 +58,6 @@ function c5041348.atkop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsRelateToEffect(e) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(tc:GetBaseAttack())
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

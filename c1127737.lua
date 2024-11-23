@@ -1,4 +1,5 @@
 --異次元の古戦場－サルガッソ
+---@param c Card
 function c1127737.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

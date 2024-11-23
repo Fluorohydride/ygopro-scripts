@@ -1,4 +1,5 @@
 --エアークラック・ストーム
+---@param c Card
 function c98864751.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ガイアパワー
+---@param c Card
 function c56594520.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

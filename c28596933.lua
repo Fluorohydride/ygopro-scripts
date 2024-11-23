@@ -1,4 +1,5 @@
 --巨竜の羽ばたき
+---@param c Card
 function c28596933.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

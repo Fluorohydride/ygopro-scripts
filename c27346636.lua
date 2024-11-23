@@ -1,8 +1,9 @@
 --剣闘獣ヘラクレイノス
+---@param c Card
 function c27346636.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,78868776,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),2,true,true)
+	aux.AddFusionProcCodeFun(c,78868776,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1019),2,true,true)
 	aux.AddContactFusionProcedure(c,c27346636.cfilter,LOCATION_ONFIELD,0,aux.tdcfop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -29,7 +30,7 @@ function c27346636.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c27346636.cfilter(c)
-	return (c:IsFusionCode(78868776) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
+	return (c:IsFusionCode(78868776) or c:IsFusionSetCard(0x1019) and c:IsType(TYPE_MONSTER))
 		 and c:IsAbleToDeckOrExtraAsCost()
 end
 function c27346636.discon(e,tp,eg,ep,ev,re,r,rp)

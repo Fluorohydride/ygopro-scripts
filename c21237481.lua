@@ -1,4 +1,5 @@
 --零式魔導粉砕機
+---@param c Card
 function c21237481.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

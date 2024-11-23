@@ -1,4 +1,5 @@
 --超重神鬼シュテンドウ－G
+---@param c Card
 function c36953371.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),aux.NonTuner(Card.IsSetCard,0x9a),1)

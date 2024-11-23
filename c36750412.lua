@@ -1,4 +1,5 @@
 --炎龍
+---@param c Card
 function c36750412.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +19,6 @@ function c36750412.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetValue(200)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)

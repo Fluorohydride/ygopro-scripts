@@ -1,4 +1,5 @@
 --ピューマン
+---@param c Card
 function c38837163.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

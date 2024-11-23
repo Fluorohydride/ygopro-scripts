@@ -1,4 +1,5 @@
 --未界域捕縛作戦
+---@param c Card
 function c83928661.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

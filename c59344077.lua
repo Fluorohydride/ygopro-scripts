@@ -1,4 +1,5 @@
 --マジック・ドレイン
+---@param c Card
 function c59344077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

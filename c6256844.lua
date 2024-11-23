@@ -1,4 +1,5 @@
 --レアル・ジェネクス・ターボ
+---@param c Card
 function c6256844.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マドルチェ・プロムナード
+---@param c Card
 function c68159562.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

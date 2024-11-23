@@ -1,4 +1,5 @@
 --E・HERO アブソルートZero
+---@param c Card
 function c40854197.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,6 @@
 --伝説の剣闘士 カオス・ソルジャー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--Special Summon Condition

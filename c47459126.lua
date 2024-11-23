@@ -1,4 +1,5 @@
 --チューンド・マジシャン
+---@param c Card
 function c47459126.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	local e1=Effect.CreateEffect(c)

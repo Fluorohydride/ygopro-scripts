@@ -1,4 +1,5 @@
 --旅人の結彼岸
+---@param c Card
 function c44771289.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

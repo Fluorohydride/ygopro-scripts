@@ -1,4 +1,5 @@
 --地中界シャンバラ
+---@param c Card
 function c5697558.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

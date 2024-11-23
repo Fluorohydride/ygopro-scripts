@@ -1,4 +1,5 @@
 --サテライト・キャノン
+---@param c Card
 function c50400231.initial_effect(c)
 	--ind
 	local e1=Effect.CreateEffect(c)

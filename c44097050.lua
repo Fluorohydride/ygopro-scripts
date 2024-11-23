@@ -1,4 +1,5 @@
 --幻獣機アウローラドン
+---@param c Card
 function c44097050.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

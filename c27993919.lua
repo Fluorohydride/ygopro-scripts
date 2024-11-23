@@ -1,4 +1,5 @@
 --ラドレミコード・エンジェリア
+---@param c Card
 function c27993919.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

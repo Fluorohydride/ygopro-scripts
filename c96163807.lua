@@ -1,4 +1,5 @@
 --冥界騎士トリスタン
+---@param c Card
 function c96163807.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

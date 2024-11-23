@@ -1,5 +1,6 @@
 --百戦王 ベヒーモス
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

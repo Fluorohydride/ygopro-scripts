@@ -1,4 +1,5 @@
 --イグナイト・バースト
+---@param c Card
 function c65872270.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

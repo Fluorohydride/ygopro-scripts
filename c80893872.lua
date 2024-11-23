@@ -1,4 +1,5 @@
 --ロイヤル・ペンギンズ・ガーデン
+---@param c Card
 function c80893872.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

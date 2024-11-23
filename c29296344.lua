@@ -1,4 +1,5 @@
 --ソーンヴァレル・ドラゴン
+---@param c Card
 function c29296344.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c29296344.mfilter,2,2,c29296344.lcheck)

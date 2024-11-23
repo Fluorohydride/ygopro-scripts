@@ -1,4 +1,5 @@
 --ジェムナイト・オブシディア
+---@param c Card
 function c19163116.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

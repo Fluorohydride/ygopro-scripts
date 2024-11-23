@@ -1,4 +1,5 @@
 --相剣大邪－七星龍淵
+---@param c Card
 function c47710198.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_WYRM),1)

@@ -1,4 +1,5 @@
 --F.A.ホームトランスポーター
+---@param c Card
 function c75676192.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

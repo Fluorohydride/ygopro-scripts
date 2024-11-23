@@ -1,4 +1,5 @@
 --旋風機ストリボーグ
+---@param c Card
 function c79176962.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

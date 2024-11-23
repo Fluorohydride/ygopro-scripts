@@ -1,4 +1,5 @@
 --真竜機兵ダースメタトロン
+---@param c Card
 function c57761191.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

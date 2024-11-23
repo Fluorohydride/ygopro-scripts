@@ -1,4 +1,5 @@
 --ハイレート・ドロー
+---@param c Card
 function c70569684.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

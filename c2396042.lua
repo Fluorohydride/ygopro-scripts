@@ -1,4 +1,5 @@
 --ディノンの鋼鉄騎兵
+---@param c Card
 function c2396042.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--atk/def

@@ -1,4 +1,5 @@
 --サイバース・ウィザード
+---@param c Card
 function c36033786.initial_effect(c)
 	--change pos
 	local e1=Effect.CreateEffect(c)

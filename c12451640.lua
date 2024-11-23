@@ -1,4 +1,5 @@
 --フロント・オブザーバー
+---@param c Card
 function c12451640.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

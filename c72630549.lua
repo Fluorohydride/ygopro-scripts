@@ -1,4 +1,5 @@
 --カオス・マジシャン
+---@param c Card
 function c72630549.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

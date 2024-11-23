@@ -1,4 +1,5 @@
 --昇天の角笛
+---@param c Card
 function c98069388.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

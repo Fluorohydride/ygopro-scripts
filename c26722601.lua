@@ -1,4 +1,5 @@
 --インヴェルズの門番
+---@param c Card
 function c26722601.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

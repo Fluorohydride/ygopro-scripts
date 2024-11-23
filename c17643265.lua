@@ -1,4 +1,5 @@
 --ツーヘッド・シャーク
+---@param c Card
 function c17643265.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

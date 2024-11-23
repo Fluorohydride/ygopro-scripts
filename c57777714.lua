@@ -1,4 +1,5 @@
 --英霊獣使い－セフィラムピリカ
+---@param c Card
 function c57777714.initial_effect(c)
 	c:SetSPSummonOnce(57777714)
 	--pendulum summon

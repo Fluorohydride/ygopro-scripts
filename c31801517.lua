@@ -1,4 +1,5 @@
 --No.62 銀河眼の光子竜皇
+---@param c Card
 function c31801517.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

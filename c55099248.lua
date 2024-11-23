@@ -1,4 +1,5 @@
 --ナチュル・ストロベリー
+---@param c Card
 function c55099248.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

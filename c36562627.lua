@@ -1,4 +1,5 @@
 --セカンド・チャンス
+---@param c Card
 function c36562627.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +15,6 @@ function c36562627.initial_effect(c)
 	e2:SetOperation(c36562627.coinop)
 	c:RegisterEffect(e2)
 end
-c36562627.toss_coin=true
 function c36562627.coincon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and Duel.GetFlagEffect(tp,36562627)==0
 end

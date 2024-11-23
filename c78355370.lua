@@ -1,4 +1,5 @@
 --クリボーン
+---@param c Card
 function c78355370.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

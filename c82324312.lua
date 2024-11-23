@@ -1,4 +1,5 @@
 --ゴブリン偵察部隊
+---@param c Card
 function c82324312.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)
@@ -43,7 +44,7 @@ function c82324312.posop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_COPY_INHERIT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,3)
 	c:RegisterEffect(e1)
 end

@@ -1,4 +1,5 @@
 --急き兎馬
+---@param c Card
 function c19636995.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

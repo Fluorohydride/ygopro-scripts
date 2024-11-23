@@ -1,4 +1,5 @@
 --竜星の極み
+---@param c Card
 function c77783947.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

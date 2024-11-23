@@ -1,4 +1,5 @@
 --聖刻龍－ドラゴンヌート
+---@param c Card
 function c41639001.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

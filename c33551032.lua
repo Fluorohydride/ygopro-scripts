@@ -1,4 +1,5 @@
 --アンブラル・アンフォーム
+---@param c Card
 function c33551032.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

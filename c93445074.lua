@@ -1,4 +1,5 @@
 --グレイドル・コブラ
+---@param c Card
 function c93445074.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

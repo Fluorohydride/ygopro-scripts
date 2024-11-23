@@ -1,4 +1,5 @@
 --ゴロゴル
+---@param c Card
 function c59797187.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

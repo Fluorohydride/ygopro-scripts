@@ -1,4 +1,5 @@
 --千本ナイフ
+---@param c Card
 function c63391643.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

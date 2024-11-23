@@ -1,4 +1,5 @@
 --幻獣機ブルーインパラス
+---@param c Card
 function c67489919.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

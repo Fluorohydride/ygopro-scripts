@@ -1,4 +1,5 @@
 --魔導皇聖 トリス
+---@param c Card
 function c770365.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),5,2)

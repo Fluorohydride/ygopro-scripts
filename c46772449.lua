@@ -1,4 +1,5 @@
 --励輝士 ヴェルズビュート
+---@param c Card
 function c46772449.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

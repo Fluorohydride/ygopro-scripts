@@ -1,4 +1,5 @@
 --超重武者装留チュウサイ
+---@param c Card
 function c95500396.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

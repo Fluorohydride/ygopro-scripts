@@ -1,4 +1,5 @@
 --イグナイト・イーグル
+---@param c Card
 function c61639289.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

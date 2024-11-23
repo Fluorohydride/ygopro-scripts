@@ -1,8 +1,9 @@
 --剣闘獣ガイザレス
+---@param c Card
 function c48156348.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,41470137,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),1,true,true)
+	aux.AddFusionProcCodeFun(c,41470137,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1019),1,true,true)
 	aux.AddContactFusionProcedure(c,c48156348.cfilter,LOCATION_ONFIELD,0,aux.tdcfop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -38,7 +39,7 @@ function c48156348.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c48156348.cfilter(c)
-	return (c:IsFusionCode(41470137) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
+	return (c:IsFusionCode(41470137) or c:IsFusionSetCard(0x1019) and c:IsType(TYPE_MONSTER))
 		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c48156348.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -64,7 +65,7 @@ function c48156348.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c48156348.filter(c,e,tp)
-	return not c:IsCode(41470137) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(41470137) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c48156348.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

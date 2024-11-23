@@ -1,4 +1,5 @@
 --ダイナミスト・レックス
+---@param c Card
 function c63251695.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -106,7 +107,6 @@ function c63251695.effop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(100)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

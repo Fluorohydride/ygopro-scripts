@@ -1,4 +1,5 @@
 --単一化
+---@param c Card
 function c53077251.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

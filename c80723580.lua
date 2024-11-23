@@ -1,4 +1,5 @@
 --大落とし穴
+---@param c Card
 function c80723580.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --重力砲
+---@param c Card
 function c35220244.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

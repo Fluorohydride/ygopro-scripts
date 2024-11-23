@@ -1,8 +1,9 @@
 --剣闘獣ドミティアノス
+---@param c Card
 function c33652635.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion
-	aux.AddFusionProcCodeFun(c,88996322,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),2,true,true)
+	aux.AddFusionProcCodeFun(c,88996322,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1019),2,true,true)
 	aux.AddContactFusionProcedure(c,c33652635.cfilter,LOCATION_ONFIELD,0,aux.tdcfop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -49,7 +50,7 @@ function c33652635.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c33652635.cfilter(c)
-	return (c:IsFusionCode(88996322) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER)) and c:IsAbleToDeckOrExtraAsCost()
+	return (c:IsFusionCode(88996322) or c:IsFusionSetCard(0x1019) and c:IsType(TYPE_MONSTER)) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c33652635.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
@@ -75,7 +76,7 @@ function c33652635.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c33652635.filter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c33652635.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0

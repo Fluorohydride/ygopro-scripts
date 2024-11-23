@@ -1,4 +1,5 @@
 --熾天龍 ジャッジメント
+---@param c Card
 function c41659072.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),nil,nil,aux.NonTuner(nil),1,99,c41659072.syncheck)

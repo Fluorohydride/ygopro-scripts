@@ -1,4 +1,5 @@
 --宝札雲
+---@param c Card
 function c82760689.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

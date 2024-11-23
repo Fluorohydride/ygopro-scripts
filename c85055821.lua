@@ -1,4 +1,5 @@
 --森の聖獣 カルピポニカ
+---@param c Card
 function c85055821.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

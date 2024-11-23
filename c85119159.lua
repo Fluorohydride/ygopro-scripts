@@ -1,4 +1,5 @@
 --オノマト選択
+---@param c Card
 function c85119159.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

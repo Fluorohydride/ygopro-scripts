@@ -1,4 +1,5 @@
 --磁力の指輪
+---@param c Card
 function c20436034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

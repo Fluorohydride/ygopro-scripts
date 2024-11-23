@@ -1,4 +1,5 @@
 --ティンクル・ファイブスター
+---@param c Card
 function c6309986.initial_effect(c)
 	aux.AddCodeList(c,44632120,71036835,7021574,34419588,40640057)
 	--Activate

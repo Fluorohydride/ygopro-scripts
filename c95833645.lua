@@ -1,4 +1,5 @@
 --マグマ・ドラゴン
+---@param c Card
 function c95833645.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

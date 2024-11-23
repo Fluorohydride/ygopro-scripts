@@ -1,4 +1,5 @@
 --崔嵬の地霊使いアウス
+---@param c Card
 function c97661969.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c97661969.lcheck)

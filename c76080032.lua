@@ -1,4 +1,5 @@
 --ZW－一角獣皇槍
+---@param c Card
 function c76080032.initial_effect(c)
 	c:SetUniqueOnField(1,0,76080032)
 	--equip

@@ -1,4 +1,5 @@
 --連弾の魔術師
+---@param c Card
 function c6337436.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --パクバグ
+---@param c Card
 function c92142169.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

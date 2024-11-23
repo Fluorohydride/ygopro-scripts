@@ -1,4 +1,5 @@
 --ヘッド・ジャッジング
+---@param c Card
 function c38143903.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)
@@ -25,7 +26,6 @@ function c38143903.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e2)
 end
-c38143903.toss_coin=true
 function c38143903.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
 		and Duel.IsChainNegatable(ev)

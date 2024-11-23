@@ -1,4 +1,5 @@
 --No.7 ラッキー・ストライプ
+---@param c Card
 function c82308875.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,3)
@@ -6,7 +7,7 @@ function c82308875.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(82308875,0))
-	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON+CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_DICE|CATEGORY_ATKCHANGE|CATEGORY_DRAW|CATEGORY_SPECIAL_SUMMON|CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCost(c82308875.cost)
@@ -15,7 +16,6 @@ function c82308875.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 aux.xyz_number[82308875]=7
-c82308875.toss_dice=true
 function c82308875.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

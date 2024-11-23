@@ -1,4 +1,5 @@
 --幻惑のラフレシア
+---@param c Card
 function c31440542.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

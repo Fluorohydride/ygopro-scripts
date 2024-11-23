@@ -1,4 +1,5 @@
 --究極変異態・インセクト女王
+---@param c Card
 function c41456841.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

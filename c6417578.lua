@@ -1,4 +1,5 @@
 --神の写し身との接触
+---@param c Card
 function c6417578.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

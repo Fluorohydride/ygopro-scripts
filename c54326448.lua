@@ -1,4 +1,5 @@
 --フレムベル・アーチャー
+---@param c Card
 function c54326448.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァンパイア・キラー
+---@param c Card
 function c80485722.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

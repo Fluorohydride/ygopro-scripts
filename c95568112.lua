@@ -1,4 +1,5 @@
 --レイン・ボーズ
+---@param c Card
 function c95568112.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --波動竜フォノン・ドラゴン
+---@param c Card
 function c67556500.initial_effect(c)
 	c:SetSPSummonOnce(67556500)
 	--synchro summon

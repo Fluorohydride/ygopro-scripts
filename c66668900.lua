@@ -1,4 +1,5 @@
 --アクアアクトレス・グッピー
+---@param c Card
 function c66668900.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ドラゴニックD
+---@param c Card
 function c13035077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

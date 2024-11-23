@@ -1,4 +1,5 @@
 --ムーンバリア
+---@param c Card
 function c83880087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

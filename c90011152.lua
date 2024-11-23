@@ -1,4 +1,5 @@
 --おジャマ・カントリー
+---@param c Card
 function c90011152.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

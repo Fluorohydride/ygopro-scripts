@@ -1,4 +1,5 @@
 --EMハンマーマンモ
+---@param c Card
 function c340002.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

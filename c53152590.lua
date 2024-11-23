@@ -1,4 +1,5 @@
 --C・コイル
+---@param c Card
 function c53152590.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --VWXYZ－ドラゴン・カタパルトキャノン
+---@param c Card
 function c84243274.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --ティンダングル・アキュート・ケルベロス
+---@param c Card
 function c75119040.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x10b),3,3)

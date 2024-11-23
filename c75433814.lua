@@ -1,4 +1,5 @@
 --No.40 ギミック・パペット－ヘブンズ・ストリングス
+---@param c Card
 function c75433814.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

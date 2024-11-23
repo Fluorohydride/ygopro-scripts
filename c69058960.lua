@@ -1,4 +1,5 @@
 --No.13 ケインズ・デビル
+---@param c Card
 function c69058960.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

@@ -1,4 +1,5 @@
 --バウンドリンク
+---@param c Card
 function c51335426.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --黄昏の交衣
+---@param c Card
 function c83747250.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

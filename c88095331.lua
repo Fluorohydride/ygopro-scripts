@@ -1,4 +1,5 @@
 --エヴォルド・ナハシュ
+---@param c Card
 function c88095331.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

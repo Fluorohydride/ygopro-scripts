@@ -1,4 +1,5 @@
 --大天使クリスティア
+---@param c Card
 function c59509952.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超重武者ドウC－N
+---@param c Card
 function c5182107.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

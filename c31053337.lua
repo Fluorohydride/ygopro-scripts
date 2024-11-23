@@ -1,4 +1,5 @@
 --BF－激震のアブロオロス
+---@param c Card
 function c31053337.initial_effect(c)
 	--special summon limit
 	local e1=Effect.CreateEffect(c)
@@ -54,7 +55,6 @@ function c31053337.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-1000)

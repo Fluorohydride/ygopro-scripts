@@ -1,4 +1,5 @@
 --アームド・ネオス
+---@param c Card
 function c31817415.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

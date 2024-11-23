@@ -1,4 +1,5 @@
 --トライゲート・ウィザード
+---@param c Card
 function c32617464.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c32617464.matfilter,2)

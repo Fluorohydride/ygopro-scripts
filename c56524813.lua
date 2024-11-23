@@ -1,4 +1,5 @@
 --逆巻くエリア
+---@param c Card
 function c56524813.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

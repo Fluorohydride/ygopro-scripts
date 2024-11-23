@@ -1,4 +1,5 @@
 --森羅の仙樹 レギア
+---@param c Card
 function c25824484.initial_effect(c)
 	--deck check
 	local e1=Effect.CreateEffect(c)

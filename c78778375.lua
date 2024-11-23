@@ -1,4 +1,5 @@
 --デストーイ・クルーエル・ホエール
+---@param c Card
 function c78778375.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

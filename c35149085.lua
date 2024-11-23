@@ -1,4 +1,5 @@
 --キャトルミューティレーション
+---@param c Card
 function c35149085.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

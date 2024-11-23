@@ -1,4 +1,5 @@
 --水の精霊 アクエリア
+---@param c Card
 function c40916023.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --ウィッチクラフトゴーレム・アルル
+---@param c Card
 function c71074418.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

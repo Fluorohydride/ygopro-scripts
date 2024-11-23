@@ -1,4 +1,5 @@
 --リミッター・ブレイク
+---@param c Card
 function c92450185.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

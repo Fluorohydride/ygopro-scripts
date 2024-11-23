@@ -1,4 +1,5 @@
 --古代の整備場
+---@param c Card
 function c59811955.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

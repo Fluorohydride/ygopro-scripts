@@ -1,4 +1,5 @@
 --ドラゴンメイド・ナサリー
+---@param c Card
 function c40398073.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

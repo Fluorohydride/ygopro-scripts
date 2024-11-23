@@ -1,4 +1,5 @@
 --アメイズメント・スペシャルショー
+---@param c Card
 function c6374519.initial_effect(c)
 	--tohand and spsummon
 	local e1=Effect.CreateEffect(c)

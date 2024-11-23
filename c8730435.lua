@@ -1,4 +1,5 @@
 --剣闘獣の闘器デーモンズシールド
+---@param c Card
 function c8730435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -35,10 +36,10 @@ function c8730435.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c8730435.eqlimit(e,c)
-	return c:IsSetCard(0x19)
+	return c:IsSetCard(0x1019)
 end
 function c8730435.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c8730435.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c8730435.filter(chkc) end

@@ -1,4 +1,5 @@
 --剣闘獣スパルティクス
+---@param c Card
 function c79580323.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
@@ -33,7 +34,7 @@ function c79580323.splimit(e,se,sp,st)
 	return se:GetHandler():IsCode(4253484) or bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c79580323.sfilter(c)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_EQUIP) and c:IsAbleToHand()
+	return c:IsSetCard(0x1019) and c:IsType(TYPE_EQUIP) and c:IsAbleToHand()
 end
 function c79580323.stg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -56,7 +57,7 @@ function c79580323.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c79580323.filter(c,e,tp)
-	return not c:IsCode(79580323) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(79580323) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c79580323.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

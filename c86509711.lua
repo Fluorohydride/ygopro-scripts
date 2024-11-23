@@ -1,4 +1,5 @@
 --マジシャンズ・コンビネーション
+---@param c Card
 function c86509711.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate

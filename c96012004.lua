@@ -1,4 +1,5 @@
 --ラッキー・チャンス！
+---@param c Card
 function c96012004.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

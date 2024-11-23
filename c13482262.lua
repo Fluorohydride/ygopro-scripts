@@ -1,4 +1,5 @@
 --魔神儀の隠れ房
+---@param c Card
 function c13482262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

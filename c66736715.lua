@@ -1,5 +1,6 @@
 --彗聖の将－ワンモア・ザ・ナイト
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

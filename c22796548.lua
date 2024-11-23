@@ -1,4 +1,5 @@
 --デーモンの宣告
+---@param c Card
 function c22796548.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

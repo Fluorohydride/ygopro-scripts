@@ -1,4 +1,5 @@
 --暴走召喚師アレイスター
+---@param c Card
 function c97973962.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

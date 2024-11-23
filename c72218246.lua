@@ -1,4 +1,5 @@
 --クロスローズ・ドラゴン
+---@param c Card
 function c72218246.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --メルフィー・マミィ
+---@param c Card
 function c76833149.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

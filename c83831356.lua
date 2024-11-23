@@ -1,4 +1,5 @@
 --カラクリ大暴走
+---@param c Card
 function c83831356.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

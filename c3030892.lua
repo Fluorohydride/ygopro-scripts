@@ -1,4 +1,5 @@
 --スレイブ・エイプ
+---@param c Card
 function c3030892.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -15,7 +16,7 @@ function c3030892.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c3030892.filter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c3030892.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

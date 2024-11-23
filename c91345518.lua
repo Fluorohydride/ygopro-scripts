@@ -1,4 +1,5 @@
 --裁きの代行者 サターン
+---@param c Card
 function c91345518.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--damage

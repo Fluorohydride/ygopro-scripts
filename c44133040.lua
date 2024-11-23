@@ -1,4 +1,5 @@
 --セレンの呪眼
+---@param c Card
 function c44133040.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

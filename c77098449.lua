@@ -1,4 +1,5 @@
 --ギャラクシー・ウェーブ
+---@param c Card
 function c77098449.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

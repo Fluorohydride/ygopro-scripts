@@ -1,4 +1,5 @@
 --強欲ゴブリン
+---@param c Card
 function c425934.initial_effect(c)
 	--discard limit
 	local e1=Effect.CreateEffect(c)

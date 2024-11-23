@@ -1,4 +1,5 @@
 --魔導騎士ギルティア－ソウル・スピア
+---@param c Card
 function c77406972.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

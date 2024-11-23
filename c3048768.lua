@@ -1,5 +1,6 @@
 --天使の聲
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x6a,LOCATION_PZONE)

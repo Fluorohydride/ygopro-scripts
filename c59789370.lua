@@ -1,4 +1,5 @@
 --機巧猪－伊服岐雹荒神
+---@param c Card
 function c59789370.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

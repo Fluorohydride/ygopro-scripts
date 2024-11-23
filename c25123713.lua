@@ -1,4 +1,5 @@
 --空牙団の豪傑 ダイナ
+---@param c Card
 function c25123713.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

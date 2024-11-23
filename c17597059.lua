@@ -1,4 +1,5 @@
 --バイサー・ショック
+---@param c Card
 function c17597059.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

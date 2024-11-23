@@ -1,4 +1,5 @@
 --炎星師－チョウテン
+---@param c Card
 function c1662004.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

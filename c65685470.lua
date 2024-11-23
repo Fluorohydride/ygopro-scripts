@@ -1,4 +1,5 @@
 --六武衆の御霊代
+---@param c Card
 function c65685470.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

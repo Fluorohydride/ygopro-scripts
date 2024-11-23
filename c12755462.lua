@@ -1,4 +1,5 @@
 --ゴブリン穴埋め部隊
+---@param c Card
 function c12755462.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

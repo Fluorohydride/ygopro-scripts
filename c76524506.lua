@@ -1,4 +1,5 @@
 --ガーデン・ローズ・フローラ
+---@param c Card
 function c76524506.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

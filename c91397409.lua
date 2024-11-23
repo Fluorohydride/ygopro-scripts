@@ -1,4 +1,5 @@
 --ペンギン勇者
+---@param c Card
 function c91397409.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

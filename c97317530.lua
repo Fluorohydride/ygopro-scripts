@@ -1,4 +1,5 @@
 --森の聖獣 カラントーサ
+---@param c Card
 function c97317530.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --BF－鉄鎖のフェーン
+---@param c Card
 function c9109991.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

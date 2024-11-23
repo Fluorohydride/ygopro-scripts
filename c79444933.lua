@@ -1,4 +1,5 @@
 --炎の魔精イグニス
+---@param c Card
 function c79444933.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

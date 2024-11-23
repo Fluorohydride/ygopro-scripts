@@ -1,4 +1,5 @@
 --霊獣の相絆
+---@param c Card
 function c75457624.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

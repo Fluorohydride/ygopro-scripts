@@ -1,4 +1,5 @@
 --悪魔の偵察者
+---@param c Card
 function c81863068.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

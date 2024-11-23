@@ -1,4 +1,5 @@
 --グレイドル・アリゲーター
+---@param c Card
 function c66451379.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

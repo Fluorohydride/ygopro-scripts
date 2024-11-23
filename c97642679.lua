@@ -1,4 +1,5 @@
 --闇の支配者－ゾーク
+---@param c Card
 function c97642679.initial_effect(c)
 	c:EnableReviveLimit()
 	--dice
@@ -12,7 +13,6 @@ function c97642679.initial_effect(c)
 	e1:SetOperation(c97642679.operation)
 	c:RegisterEffect(e1)
 end
-c97642679.toss_dice=true
 function c97642679.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)

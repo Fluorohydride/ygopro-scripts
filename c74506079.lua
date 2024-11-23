@@ -1,4 +1,5 @@
 --ワーム・ゼロ
+---@param c Card
 function c74506079.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

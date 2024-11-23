@@ -1,4 +1,5 @@
 --サブテラーの刀匠
+---@param c Card
 function c68823957.initial_effect(c)
 	--replace
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --暴れ牛鬼
+---@param c Card
 function c89718302.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c89718302.initial_effect(c)
 	e1:SetOperation(c89718302.damop)
 	c:RegisterEffect(e1)
 end
-c89718302.toss_coin=true
 function c89718302.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)

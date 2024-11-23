@@ -1,4 +1,5 @@
 --紅玉の宝札
+---@param c Card
 function c32566831.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

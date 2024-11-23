@@ -1,4 +1,5 @@
 --銀河眼の煌星竜
+---@param c Card
 function c3356494.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_LIGHT),2,2,c3356494.lcheck)

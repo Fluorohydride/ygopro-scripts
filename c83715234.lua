@@ -1,4 +1,5 @@
 --ムーン・スクレイパー
+---@param c Card
 function c83715234.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

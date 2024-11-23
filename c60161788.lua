@@ -1,4 +1,5 @@
 --氷結界の番人 ブリズド
+---@param c Card
 function c60161788.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

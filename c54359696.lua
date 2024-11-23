@@ -1,4 +1,5 @@
 --魔導術士 ラパンデ
+---@param c Card
 function c54359696.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

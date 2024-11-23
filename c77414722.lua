@@ -1,4 +1,5 @@
 --マジック・ジャマー
+---@param c Card
 function c77414722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

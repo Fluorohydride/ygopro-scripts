@@ -1,4 +1,5 @@
 --蘇生の蜂玉
+---@param c Card
 function c89226534.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

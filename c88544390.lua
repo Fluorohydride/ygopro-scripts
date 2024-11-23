@@ -1,4 +1,5 @@
 --幻影騎士団ステンドグリーブ
+---@param c Card
 function c88544390.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

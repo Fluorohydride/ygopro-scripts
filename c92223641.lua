@@ -1,4 +1,5 @@
 --天空の泉
+---@param c Card
 function c92223641.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
