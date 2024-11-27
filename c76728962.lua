@@ -88,7 +88,7 @@ function c76728962.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c76728962.thfilter(c)
-	return c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN)) and c:IsType(TYPE_MONSTER) and c:IsLevelBelow(7) and c:IsAbleToHand()
+	return c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_COIN)) and c:IsType(TYPE_MONSTER) and c:IsLevelBelow(7) and c:IsAbleToHand()
 end
 function c76728962.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76728962.thfilter,tp,LOCATION_DECK,0,1,nil) end
