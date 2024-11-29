@@ -4,7 +4,7 @@ function c59514116.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
@@ -58,15 +58,11 @@ function c59514116.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(s)
 	if s==0 then
-		if e:IsCostChecked() then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
-		end
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	end
 	if s==1 then
-		if e:IsCostChecked() then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-		end
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 	end
 end
