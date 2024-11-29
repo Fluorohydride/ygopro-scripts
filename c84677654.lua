@@ -2,6 +2,7 @@
 ---@param c Card
 function c84677654.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_COIN)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c84677654.target)
