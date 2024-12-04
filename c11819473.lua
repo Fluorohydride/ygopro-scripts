@@ -25,7 +25,7 @@ function c11819473.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c11819473.thfilter1(c)
-	return not c:IsCode(11819473) and c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN)) and c:IsAbleToHand()
+	return not c:IsCode(11819473) and c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_COIN)) and c:IsAbleToHand()
 end
 function c11819473.thfilter2(c,p)
 	return c:IsAbleToHand(p)

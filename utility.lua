@@ -1835,13 +1835,24 @@ end
 ---@param category integer
 ---@return function
 function Auxiliary.EffectCategoryFilter(category)
-	return aux.FilterBoolFunction(Effect.IsHasCategory,category)
-end
----@param category integer
----@return function
-function Auxiliary.MonsterEffectCategoryFilter(category)
 	---@param e Effect
 	return function (e)
-		return e:IsHasCategory(category) and not e:IsHasRange(LOCATION_PZONE)
+		return e:IsHasCategory(category)
+	end
+end
+---@param flag integer
+---@return function
+function Auxiliary.EffectPropertyFilter(flag)
+	---@param e Effect
+	return function (e)
+		return e:IsHasProperty(flag)
+	end
+end
+---@param flag integer
+---@return function
+function Auxiliary.MonsterEffectPropertyFilter(flag)
+	---@param e Effect
+	return function (e)
+		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
