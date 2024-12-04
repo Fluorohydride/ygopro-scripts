@@ -54,7 +54,6 @@ function s.initial_effect(c)
 		end
 	end
 end
-s.fusion_effect=true
 function s.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end

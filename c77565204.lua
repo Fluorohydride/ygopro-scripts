@@ -43,7 +43,6 @@ function c77565204.initial_effect(c)
 	e5:SetOperation(c77565204.desop2)
 	c:RegisterEffect(e5)
 end
-c77565204.fusion_effect=true
 function c77565204.reg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()

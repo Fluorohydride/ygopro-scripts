@@ -12,7 +12,6 @@ function c51510279.initial_effect(c)
 	e1:SetOperation(c51510279.activate)
 	c:RegisterEffect(e1)
 end
-c51510279.fusion_effect=true
 function c51510279.thfilter(c)
 	return (c:IsType(TYPE_NORMAL) or c:IsSetCard(0x165) and c:IsType(TYPE_MONSTER)) and c:IsAbleToHand()
 end

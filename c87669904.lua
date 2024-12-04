@@ -11,7 +11,6 @@ function c87669904.initial_effect(c)
 	e1:SetOperation(c87669904.activate)
 	c:RegisterEffect(e1)
 end
-c87669904.fusion_effect=true
 function c87669904.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end

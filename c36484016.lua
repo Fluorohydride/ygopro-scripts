@@ -21,7 +21,6 @@ function c36484016.initial_effect(c)
 	e2:SetOperation(c36484016.drop)
 	c:RegisterEffect(e2)
 end
-c36484016.fusion_effect=true
 function c36484016.filter0(c)
 	return c:IsOnField() and c:IsAbleToRemove()
 end

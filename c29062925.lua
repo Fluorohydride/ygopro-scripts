@@ -12,7 +12,6 @@ function c29062925.initial_effect(c)
 	e1:SetOperation(c29062925.activate)
 	c:RegisterEffect(e1)
 end
-c29062925.fusion_effect=true
 function c29062925.exconfilter(c)
 	return c:IsCode(25652259,64788463,90876561) and c:IsFaceup()
 end

@@ -13,7 +13,6 @@ function c82738008.initial_effect(c)
 	e1:SetOperation(c82738008.activate)
 	c:RegisterEffect(e1)
 end
-c82738008.fusion_effect=true
 function c82738008.filter(c)
 	return (c:IsSetCard(0x164) and c:IsType(TYPE_MONSTER) or c:IsCode(68468459)) and c:IsAbleToHand()
 end

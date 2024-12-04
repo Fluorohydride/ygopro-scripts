@@ -11,7 +11,6 @@ function c15543940.initial_effect(c)
 	e1:SetOperation(c15543940.activate)
 	c:RegisterEffect(e1)
 end
-c15543940.fusion_effect=true
 function c15543940.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end

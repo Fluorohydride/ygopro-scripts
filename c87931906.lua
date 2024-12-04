@@ -11,7 +11,6 @@ function c87931906.initial_effect(c)
 	e1:SetOperation(c87931906.activate)
 	c:RegisterEffect(e1)
 end
-c87931906.fusion_effect=true
 function c87931906.filter0(c)
 	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
 end

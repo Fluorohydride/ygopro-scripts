@@ -11,7 +11,6 @@ function c44394295.initial_effect(c)
 	e1:SetOperation(c44394295.activate)
 	c:RegisterEffect(e1)
 end
-c44394295.fusion_effect=true
 function c44394295.filter0(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
 end

@@ -29,7 +29,6 @@ function c11493868.initial_effect(c)
 	e3:SetOperation(c11493868.activate)
 	c:RegisterEffect(e3)
 end
-c11493868.fusion_effect=true
 function c11493868.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x9b)
 end

@@ -21,7 +21,6 @@ function c84040113.initial_effect(c)
 	e2:SetCondition(c84040113.subcon)
 	c:RegisterEffect(e2)
 end
-c84040113.fusion_effect=true
 function c84040113.subcon(e)
 	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 end

@@ -23,7 +23,6 @@ function c78420796.initial_effect(c)
 	e2:SetOperation(c78420796.cdop)
 	c:RegisterEffect(e2)
 end
-c78420796.fusion_effect=true
 function c78420796.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end

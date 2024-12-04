@@ -11,7 +11,6 @@ function c25800447.initial_effect(c)
 	e1:SetOperation(c25800447.activate)
 	c:RegisterEffect(e1)
 end
-c25800447.fusion_effect=true
 function c25800447.filter0(c)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial()
 end

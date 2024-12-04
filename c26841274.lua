@@ -10,7 +10,6 @@ function c26841274.initial_effect(c)
 	e1:SetOperation(c26841274.activate)
 	c:RegisterEffect(e1)
 end
-c26841274.fusion_effect=true
 function c26841274.filter1(c,e)
 	return c:IsOnField() and c:IsSetCard(0xc008) and (not e or not c:IsImmuneToEffect(e))
 end

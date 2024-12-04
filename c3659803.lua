@@ -10,7 +10,6 @@ function c3659803.initial_effect(c)
 	e1:SetOperation(c3659803.activate)
 	c:RegisterEffect(e1)
 end
-c3659803.fusion_effect=true
 function c3659803.filter0(c)
 	return c:IsOnField() and c:IsAbleToRemove()
 end

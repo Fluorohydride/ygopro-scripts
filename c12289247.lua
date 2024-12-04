@@ -45,7 +45,6 @@ function c12289247.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-c12289247.fusion_effect=true
 c12289247.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
 function c12289247.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)

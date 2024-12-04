@@ -12,7 +12,6 @@ function c1845204.initial_effect(c)
 	e1:SetOperation(c1845204.activate)
 	c:RegisterEffect(e1)
 end
-c1845204.fusion_effect=true
 function c1845204.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)

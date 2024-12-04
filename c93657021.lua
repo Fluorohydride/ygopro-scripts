@@ -26,7 +26,6 @@ function c93657021.initial_effect(c)
 	e2:SetOperation(c93657021.indop)
 	c:RegisterEffect(e2)
 end
-c93657021.fusion_effect=true
 c93657021.material_setcode=0xc008
 function c93657021.matfilter(c)
 	return c:IsFusionType(TYPE_FUSION) and c:IsFusionSetCard(0xc008)

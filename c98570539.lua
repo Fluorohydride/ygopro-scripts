@@ -13,7 +13,6 @@ function c98570539.initial_effect(c)
 	e1:SetOperation(c98570539.activate)
 	c:RegisterEffect(e1)
 end
-c98570539.fusion_effect=true
 function c98570539.filter0(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
