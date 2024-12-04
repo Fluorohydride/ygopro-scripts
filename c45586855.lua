@@ -1,5 +1,4 @@
 --A・O・J サイクロン・クリエイター
----@param c Card
 function c45586855.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

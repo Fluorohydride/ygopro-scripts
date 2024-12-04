@@ -1,5 +1,4 @@
 --守護天霊ロガエス
----@param c Card
 function c84339249.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

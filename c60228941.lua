@@ -1,5 +1,4 @@
 --暗黒界の術師 スノウ
----@param c Card
 function c60228941.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

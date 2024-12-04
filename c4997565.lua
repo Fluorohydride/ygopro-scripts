@@ -1,5 +1,4 @@
 --No.3 地獄蝉王ローカスト・キング
----@param c Card
 function c4997565.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

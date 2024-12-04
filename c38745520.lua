@@ -1,5 +1,4 @@
 --騎竜ドラコバック
----@param c Card
 function c38745520.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	c:SetUniqueOnField(1,0,38745520)

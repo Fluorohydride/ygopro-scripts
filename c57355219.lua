@@ -1,5 +1,4 @@
 --パラドックス・フュージョン
----@param c Card
 function c57355219.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

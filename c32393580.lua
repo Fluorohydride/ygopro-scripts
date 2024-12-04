@@ -1,5 +1,4 @@
 --サイバー・シャーク
----@param c Card
 function c32393580.initial_effect(c)
 	--summon without tribute
 	local e1=Effect.CreateEffect(c)

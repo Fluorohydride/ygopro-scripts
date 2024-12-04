@@ -1,5 +1,4 @@
 --ザ・ロック・オブ・ウォークライ
----@param c Card
 function c45943516.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

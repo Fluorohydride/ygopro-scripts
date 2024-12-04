@@ -1,6 +1,5 @@
 --ホールティアの蟲惑魔
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

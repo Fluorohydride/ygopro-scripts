@@ -1,5 +1,4 @@
 --新世壊
----@param c Card
 function c21570001.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

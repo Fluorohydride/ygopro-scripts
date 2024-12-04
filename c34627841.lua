@@ -1,5 +1,4 @@
 --正義の味方 カイバーマン
----@param c Card
 function c34627841.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--special summon

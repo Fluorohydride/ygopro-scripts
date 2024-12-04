@@ -1,6 +1,5 @@
 --ペンデュラム・アンコール
 --not fully implemented
----@param c Card
 function c6992184.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

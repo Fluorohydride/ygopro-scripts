@@ -1,5 +1,4 @@
 --魔王ディアボロス
----@param c Card
 function c29424328.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

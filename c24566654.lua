@@ -1,5 +1,4 @@
 --クリムゾン・ヘルフレア
----@param c Card
 function c24566654.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--reflect

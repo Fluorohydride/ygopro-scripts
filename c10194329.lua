@@ -1,5 +1,4 @@
 --RR－アベンジ・ヴァルチャー
----@param c Card
 function c10194329.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

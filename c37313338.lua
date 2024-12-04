@@ -1,5 +1,4 @@
 --春化精の暦替
----@param c Card
 function c37313338.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

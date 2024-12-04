@@ -1,5 +1,4 @@
 --サイバネット・ストーム
----@param c Card
 function c42461852.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

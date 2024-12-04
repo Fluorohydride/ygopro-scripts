@@ -1,5 +1,4 @@
 --スターダスト・ドラゴン
----@param c Card
 function c44508094.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

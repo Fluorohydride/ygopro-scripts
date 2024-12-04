@@ -1,5 +1,4 @@
 --ブルーアイズ・タイラント・ドラゴン
----@param c Card
 function c11443677.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

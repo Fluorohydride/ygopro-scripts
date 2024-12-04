@@ -1,5 +1,4 @@
 --ジャイアント・ボマー・エアレイド
----@param c Card
 function c16898077.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

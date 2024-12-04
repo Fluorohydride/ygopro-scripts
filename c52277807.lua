@@ -1,5 +1,4 @@
 --転生炎獣スピニー
----@param c Card
 function c52277807.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --一撃必殺侍
----@param c Card
 function c64538655.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

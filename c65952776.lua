@@ -1,5 +1,4 @@
 --光の聖剣ダンネル
----@param c Card
 function c65952776.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	c:SetUniqueOnField(1,0,65952776)

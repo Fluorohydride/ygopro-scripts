@@ -1,5 +1,4 @@
 --カオス・ネクロマンサー
----@param c Card
 function c1434352.initial_effect(c)
 	--attack
 	local e1=Effect.CreateEffect(c)

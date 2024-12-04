@@ -1,5 +1,4 @@
 --カース・オブ・ヴァンパイア
----@param c Card
 function c34294855.initial_effect(c)
 	--reborn preparation
 	local e1=Effect.CreateEffect(c)

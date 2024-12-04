@@ -1,5 +1,4 @@
 --屍界のバンシー
----@param c Card
 function c66570171.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

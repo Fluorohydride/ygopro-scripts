@@ -1,5 +1,4 @@
 --デスルークデーモン
----@param c Card
 function c72192100.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

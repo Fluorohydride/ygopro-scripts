@@ -1,5 +1,4 @@
 --フルエルフ
----@param c Card
 function c61807040.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

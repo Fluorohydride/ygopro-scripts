@@ -1,5 +1,4 @@
 --激昂のムカムカ
----@param c Card
 function c91862578.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

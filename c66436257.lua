@@ -1,5 +1,4 @@
 --ヴォルカニック・カウンター
----@param c Card
 function c66436257.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

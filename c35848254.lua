@@ -1,5 +1,4 @@
 --フォトン・リード
----@param c Card
 function c35848254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

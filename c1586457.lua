@@ -1,5 +1,4 @@
 --ディープ・スペース・クルーザー・ナイン
----@param c Card
 function c1586457.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

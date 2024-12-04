@@ -1,5 +1,4 @@
 --エンシェント・シャーク ハイパー・メガロドン
----@param c Card
 function c10532969.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

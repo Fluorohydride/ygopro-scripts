@@ -1,5 +1,4 @@
 --メタファイズ・デコイドラゴン
----@param c Card
 function c12196873.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

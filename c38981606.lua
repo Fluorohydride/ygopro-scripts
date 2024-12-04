@@ -1,5 +1,4 @@
 --砂漠の守護者
----@param c Card
 function c38981606.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)

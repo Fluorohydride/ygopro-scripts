@@ -1,5 +1,4 @@
 --極星獣タングリスニ
----@param c Card
 function c15394083.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --XX－セイバー ガトムズ
----@param c Card
 function c52352005.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),nil,nil,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),1,99)

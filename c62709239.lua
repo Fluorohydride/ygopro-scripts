@@ -1,5 +1,4 @@
 --幻影騎士団ブレイクソード
----@param c Card
 function c62709239.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

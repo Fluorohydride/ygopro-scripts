@@ -1,5 +1,4 @@
 --リターナブル瓶
----@param c Card
 function c84404797.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

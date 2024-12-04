@@ -1,5 +1,4 @@
 --セイクリッド・カウスト
----@param c Card
 function c70908596.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

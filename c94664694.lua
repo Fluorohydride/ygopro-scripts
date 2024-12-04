@@ -1,5 +1,4 @@
 --マッド・デーモン
----@param c Card
 function c94664694.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

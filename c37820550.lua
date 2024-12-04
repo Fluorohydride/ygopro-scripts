@@ -1,5 +1,4 @@
 --電撃鞭
----@param c Card
 function c37820550.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

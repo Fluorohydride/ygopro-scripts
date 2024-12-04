@@ -1,5 +1,4 @@
 --ナチュル・モルクリケット
----@param c Card
 function c93454062.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

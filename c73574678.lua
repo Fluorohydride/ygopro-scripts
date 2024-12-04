@@ -1,5 +1,4 @@
 --アマゾネスの吹き矢兵
----@param c Card
 function c73574678.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

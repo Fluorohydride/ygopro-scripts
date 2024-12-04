@@ -1,5 +1,4 @@
 --潜海奇襲Ⅱ
----@param c Card
 function c58203736.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--code

@@ -1,5 +1,4 @@
 --悪魔の手鏡
----@param c Card
 function c58607704.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

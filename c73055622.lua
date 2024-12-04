@@ -1,5 +1,4 @@
 --霊魂の降神
----@param c Card
 function c73055622.initial_effect(c)
 	aux.AddRitualProcGreater2Code2(c,25415052,52900000,nil,c73055622.mfilter)
 end

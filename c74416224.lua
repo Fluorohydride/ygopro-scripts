@@ -1,5 +1,4 @@
 --ブラック・レイ・ランサー
----@param c Card
 function c74416224.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),3,2)

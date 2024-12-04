@@ -1,5 +1,4 @@
 --グランド・ドラゴン
----@param c Card
 function c93220472.initial_effect(c)
 	--sumlimit
 	local e1=Effect.CreateEffect(c)

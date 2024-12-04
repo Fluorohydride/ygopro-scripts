@@ -1,5 +1,4 @@
 --サイバー・エンジェル－弁天－
----@param c Card
 function c77235086.initial_effect(c)
 	c:EnableReviveLimit()
 	--damage

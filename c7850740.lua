@@ -1,5 +1,4 @@
 --エクシーズ・スライドルフィン
----@param c Card
 function c7850740.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

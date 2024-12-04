@@ -1,5 +1,4 @@
 --突撃指令
----@param c Card
 function c78986941.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

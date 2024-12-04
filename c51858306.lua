@@ -1,5 +1,4 @@
 --エクリプス・ワイバーン
----@param c Card
 function c51858306.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

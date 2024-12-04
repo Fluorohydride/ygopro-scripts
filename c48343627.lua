@@ -1,5 +1,4 @@
 --グレイブ・スクワーマー
----@param c Card
 function c48343627.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

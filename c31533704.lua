@@ -1,5 +1,4 @@
 --幻獣機メガラプター
----@param c Card
 function c31533704.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

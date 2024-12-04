@@ -1,5 +1,4 @@
 --有翼賢者ファルコス
----@param c Card
 function c87523462.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

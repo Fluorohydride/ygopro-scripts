@@ -1,5 +1,4 @@
 --The grand JUPITER
----@param c Card
 function c16255173.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

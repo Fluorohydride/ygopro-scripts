@@ -1,5 +1,4 @@
 --森の聖霊 エーコ
----@param c Card
 function c4192696.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

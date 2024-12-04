@@ -1,5 +1,4 @@
 --薔薇の刻印
----@param c Card
 function c45247637.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

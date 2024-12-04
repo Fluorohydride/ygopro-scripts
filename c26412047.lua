@@ -1,5 +1,4 @@
 --ハンマーシュート
----@param c Card
 function c26412047.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

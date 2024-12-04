@@ -1,5 +1,4 @@
 --儀式の準備
----@param c Card
 function c96729612.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

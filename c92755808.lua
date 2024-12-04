@@ -1,5 +1,4 @@
 --エレメント・ザウルス
----@param c Card
 function c92755808.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

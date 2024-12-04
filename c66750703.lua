@@ -1,5 +1,4 @@
 --炎傑の梁山閣
----@param c Card
 function c66750703.initial_effect(c)
 	c:EnableCounterPermit(0x56)
 	--Activate

@@ -1,5 +1,4 @@
 --王宮の陥落
----@param c Card
 function c56058888.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

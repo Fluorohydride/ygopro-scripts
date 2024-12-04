@@ -1,5 +1,4 @@
 --氷結界の随身
----@param c Card
 function c43256007.initial_effect(c)
 	--Special Summon 1
 	local e1=Effect.CreateEffect(c)

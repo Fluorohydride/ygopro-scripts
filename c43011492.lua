@@ -1,5 +1,4 @@
 --惨禍の呪眼
----@param c Card
 function c43011492.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

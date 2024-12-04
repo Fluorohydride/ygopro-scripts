@@ -1,5 +1,4 @@
 --方界獣ダーク・ガネックス
----@param c Card
 function c41114306.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

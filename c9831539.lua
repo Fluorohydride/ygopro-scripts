@@ -1,5 +1,4 @@
 --タンホイザーゲート
----@param c Card
 function c9831539.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

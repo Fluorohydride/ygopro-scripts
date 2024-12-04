@@ -1,5 +1,4 @@
 --ヒール・ウェーバー
----@param c Card
 function c31281980.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

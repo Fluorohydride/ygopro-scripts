@@ -1,5 +1,4 @@
 --剛鬼ハッグベア
----@param c Card
 function c12097275.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

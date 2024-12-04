@@ -1,5 +1,4 @@
 --リンクスレイヤー
----@param c Card
 function c35595518.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

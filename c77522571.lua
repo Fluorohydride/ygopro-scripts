@@ -1,5 +1,4 @@
 --デストーイ・マイスター
----@param c Card
 function c77522571.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

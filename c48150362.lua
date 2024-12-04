@@ -1,5 +1,4 @@
 --D-HERO ドローガイ
----@param c Card
 function c48150362.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

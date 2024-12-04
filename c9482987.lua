@@ -1,5 +1,4 @@
 --聖魔の大賢者エンディミオン
----@param c Card
 function c9482987.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

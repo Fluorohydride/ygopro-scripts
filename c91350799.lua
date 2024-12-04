@@ -1,5 +1,4 @@
 --マドルチェ・ホーットケーキ
----@param c Card
 function c91350799.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

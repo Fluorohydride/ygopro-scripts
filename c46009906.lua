@@ -1,5 +1,4 @@
 --猛獣の歯
----@param c Card
 function c46009906.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

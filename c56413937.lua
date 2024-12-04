@@ -1,5 +1,4 @@
 --戦場の死装束
----@param c Card
 function c56413937.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

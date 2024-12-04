@@ -1,5 +1,4 @@
 --ユベル－Das Abscheulich Ritter
----@param c Card
 function c4779091.initial_effect(c)
 	aux.AddCodeList(c,78371393)
 	c:EnableReviveLimit()

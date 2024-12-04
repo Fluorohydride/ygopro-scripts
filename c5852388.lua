@@ -1,5 +1,4 @@
 --ゼノ・メテオロス
----@param c Card
 function c5852388.initial_effect(c)
 	--special summon of hand
 	local e1=Effect.CreateEffect(c)

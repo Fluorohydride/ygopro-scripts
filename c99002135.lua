@@ -1,5 +1,4 @@
 --緊急合成
----@param c Card
 function c99002135.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

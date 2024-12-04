@@ -1,5 +1,4 @@
 --代行者の近衛 ムーン
----@param c Card
 function c90290572.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_FAIRY),2,2)

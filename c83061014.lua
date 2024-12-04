@@ -1,5 +1,4 @@
 --後に亀と呼ばれる神
----@param c Card
 function c83061014.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

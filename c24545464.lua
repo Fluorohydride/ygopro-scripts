@@ -1,5 +1,4 @@
 --シンクロン・リフレクト
----@param c Card
 function c24545464.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

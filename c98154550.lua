@@ -1,5 +1,4 @@
 --プリミティブ・バタフライ
----@param c Card
 function c98154550.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

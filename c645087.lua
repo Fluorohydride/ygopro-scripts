@@ -1,5 +1,4 @@
 --サイバース・ガジェット
----@param c Card
 function c645087.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

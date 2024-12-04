@@ -1,5 +1,4 @@
 --借カラクリ旅籠蔵
----@param c Card
 function c3693034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

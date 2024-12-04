@@ -1,5 +1,4 @@
 --虚無魔人
----@param c Card
 function c47084486.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

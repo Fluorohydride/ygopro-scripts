@@ -1,5 +1,4 @@
 --X－セイバー ウルベルム
----@param c Card
 function c80108118.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

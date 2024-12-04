@@ -1,5 +1,4 @@
 --名工 虎鉄
----@param c Card
 function c73431236.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

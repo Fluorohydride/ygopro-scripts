@@ -1,5 +1,4 @@
 --フォトン・オービタル
----@param c Card
 function c89132148.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

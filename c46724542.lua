@@ -1,5 +1,4 @@
 --サイバー・ドラゴン・ズィーガー
----@param c Card
 function c46724542.initial_effect(c)
 	aux.AddMaterialCodeList(c,70095154)
 	--link summon

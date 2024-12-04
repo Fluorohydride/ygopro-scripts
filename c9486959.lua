@@ -1,5 +1,4 @@
 --神隠し鬼火丸
----@param c Card
 function c9486959.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2,nil,nil,99)

@@ -1,5 +1,4 @@
 --リローデッド・シリンダー
----@param c Card
 function c15943341.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

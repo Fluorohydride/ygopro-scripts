@@ -1,5 +1,4 @@
 --海晶乙女スプリンガール
----@param c Card
 function c21057444.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

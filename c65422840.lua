@@ -1,5 +1,4 @@
 --酒呑童子
----@param c Card
 function c65422840.initial_effect(c)
 	--Draw
 	local e1=Effect.CreateEffect(c)

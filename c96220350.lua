@@ -1,5 +1,4 @@
 --覇勝星イダテン
----@param c Card
 function c96220350.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

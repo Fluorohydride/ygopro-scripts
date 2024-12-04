@@ -1,5 +1,4 @@
 --EMヒックリカエル
----@param c Card
 function c4239451.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

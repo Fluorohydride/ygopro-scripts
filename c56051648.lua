@@ -1,5 +1,4 @@
 --スパイダー・エッグ
----@param c Card
 function c56051648.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

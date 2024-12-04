@@ -1,5 +1,4 @@
 --戦華の来－張遠
----@param c Card
 function c60033398.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

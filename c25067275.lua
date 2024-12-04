@@ -1,5 +1,4 @@
 --旗鼓堂々
----@param c Card
 function c25067275.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

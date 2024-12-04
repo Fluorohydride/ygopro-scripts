@@ -1,5 +1,4 @@
 --クリベー
----@param c Card
 function c34419588.initial_effect(c)
 	aux.AddCodeList(c,44632120,71036835,7021574,40640057)
 	--atkup

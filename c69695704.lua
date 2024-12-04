@@ -1,5 +1,4 @@
 --ブラッドストーム
----@param c Card
 function c69695704.initial_effect(c)
 	--attackup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --カース・オブ・スタチュー
----@param c Card
 function c3129635.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

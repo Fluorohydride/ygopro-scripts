@@ -1,5 +1,4 @@
 --ヴァンパイアジェネシス
----@param c Card
 function c22056710.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

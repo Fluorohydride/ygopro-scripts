@@ -1,5 +1,4 @@
 --呪言の鏡
----@param c Card
 function c46656406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

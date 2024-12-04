@@ -1,5 +1,4 @@
 --ガトリング・ドラゴン
----@param c Card
 function c87751584.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

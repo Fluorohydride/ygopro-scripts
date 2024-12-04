@@ -1,5 +1,4 @@
 --深海のミンストレル
----@param c Card
 function c71978434.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エレキュア
----@param c Card
 function c1834107.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

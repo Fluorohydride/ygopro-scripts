@@ -1,5 +1,4 @@
 --ダメージ・ワクチンΩMAX
----@param c Card
 function c98535702.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

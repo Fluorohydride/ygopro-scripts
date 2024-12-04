@@ -1,5 +1,4 @@
 --EMスライハンド・マジシャン
----@param c Card
 function c20403123.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --御巫の水舞踏
----@param c Card
 function c43527730.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

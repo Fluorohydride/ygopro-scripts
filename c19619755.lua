@@ -1,5 +1,4 @@
 --EM五虹の魔術師
----@param c Card
 function c19619755.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale

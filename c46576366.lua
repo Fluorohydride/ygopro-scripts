@@ -1,5 +1,4 @@
 --LL－セレスト・ワグテイル
----@param c Card
 function c46576366.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

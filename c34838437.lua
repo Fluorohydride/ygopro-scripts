@@ -1,5 +1,4 @@
 --アクセル・ライト
----@param c Card
 function c34838437.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

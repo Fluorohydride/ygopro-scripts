@@ -1,5 +1,4 @@
 --強制接収
----@param c Card
 function c74923978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --鎧獄竜－サイバー・ダークネス・ドラゴン
----@param c Card
 function c18967507.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c18967507.matfilter,5,true)

@@ -1,5 +1,4 @@
 --ミスティック・パイパー
----@param c Card
 function c14198496.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

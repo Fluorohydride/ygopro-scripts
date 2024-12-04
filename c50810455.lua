@@ -1,5 +1,4 @@
 --鉄獣戦線 ケラス
----@param c Card
 function c50810455.initial_effect(c)
 	--special summon from hand
 	local e1=Effect.CreateEffect(c)

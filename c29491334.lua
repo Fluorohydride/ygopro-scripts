@@ -1,5 +1,4 @@
 --Kozmo－ドッグファイター
----@param c Card
 function c29491334.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

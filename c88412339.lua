@@ -1,5 +1,4 @@
 --魔界劇団－エキストラ
----@param c Card
 function c88412339.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --墓守の長
----@param c Card
 function c62473983.initial_effect(c)
 	c:SetUniqueOnField(1,0,62473983)
 	--immune to necro valley

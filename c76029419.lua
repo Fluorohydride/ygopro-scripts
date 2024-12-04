@@ -1,5 +1,4 @@
 --DDD超視王ゼロ・マクスウェル
----@param c Card
 function c76029419.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

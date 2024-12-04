@@ -1,5 +1,4 @@
 --魔装戦士 ドラゴディウス
----@param c Card
 function c65472618.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

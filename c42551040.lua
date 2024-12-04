@@ -1,5 +1,4 @@
 --武神器－イクタ
----@param c Card
 function c42551040.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

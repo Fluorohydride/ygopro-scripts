@@ -1,5 +1,4 @@
 --ジェネティック・ウーマン
----@param c Card
 function c98147766.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

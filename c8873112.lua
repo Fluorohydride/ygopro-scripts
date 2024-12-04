@@ -1,5 +1,4 @@
 --アーティファクト－チャクラム
----@param c Card
 function c8873112.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

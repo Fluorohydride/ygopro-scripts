@@ -1,5 +1,4 @@
 --光の精霊 ディアーナ
----@param c Card
 function c17257342.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

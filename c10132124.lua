@@ -1,5 +1,4 @@
 --ウイングトータス
----@param c Card
 function c10132124.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

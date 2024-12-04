@@ -1,5 +1,4 @@
 --迷宮変化
----@param c Card
 function c64389297.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

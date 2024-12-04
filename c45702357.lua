@@ -1,5 +1,4 @@
 --リバーシブル・ビートル
----@param c Card
 function c45702357.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

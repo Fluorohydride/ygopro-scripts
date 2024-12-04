@@ -1,5 +1,4 @@
 --身剣一体
----@param c Card
 function c6112401.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

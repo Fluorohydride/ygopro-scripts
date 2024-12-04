@@ -1,5 +1,4 @@
 --RUM－デス・ダブル・フォース
----@param c Card
 function c86196216.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --融合呪印生物－闇
----@param c Card
 function c52101615.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

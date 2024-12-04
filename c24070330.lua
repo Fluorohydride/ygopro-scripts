@@ -1,6 +1,5 @@
 --音響戦士ロックス
 local s,id,o=GetID()
----@param c Card
 function c24070330.initial_effect(c)
 	aux.AddCodeList(c,75304793)
 	--synchro summon

@@ -1,5 +1,4 @@
 --真紅眼の亜黒竜
----@param c Card
 function c18491580.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

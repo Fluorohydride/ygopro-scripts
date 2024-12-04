@@ -1,5 +1,4 @@
 --セリオンズ“デューク”ユール
----@param c Card
 function c57111330.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

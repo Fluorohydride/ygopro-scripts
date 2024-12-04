@@ -1,5 +1,4 @@
 --ヴォルカニック・ブレイズ・キャノン
----@param c Card
 function c85250352.initial_effect(c)
 	c:SetUniqueOnField(1,0,85250352)
 	--Activate

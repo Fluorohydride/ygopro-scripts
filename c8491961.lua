@@ -1,5 +1,4 @@
 --LL－リサイト・スターリング
----@param c Card
 function c8491961.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)

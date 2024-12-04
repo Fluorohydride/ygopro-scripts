@@ -1,5 +1,4 @@
 --占術姫クリスタルウンディーネ
----@param c Card
 function c67503139.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ドラグマ・エンカウンター
----@param c Card
 function c29354228.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--spsummon

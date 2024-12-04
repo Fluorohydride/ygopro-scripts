@@ -1,5 +1,4 @@
 --告天子竜パイレン
----@param c Card
 function c75083197.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

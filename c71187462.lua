@@ -1,5 +1,4 @@
 --BF－無頼のヴァータ
----@param c Card
 function c71187462.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--special summon

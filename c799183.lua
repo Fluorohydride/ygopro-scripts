@@ -1,5 +1,4 @@
 --超戦士の盾
----@param c Card
 function c799183.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サイコ・イレイザー
----@param c Card
 function c9322133.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

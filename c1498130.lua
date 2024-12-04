@@ -1,5 +1,4 @@
 --六武衆の影武者
----@param c Card
 function c1498130.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

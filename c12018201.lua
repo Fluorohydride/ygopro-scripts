@@ -1,5 +1,4 @@
 --ラヴァルバル・エクスロード
----@param c Card
 function c12018201.initial_effect(c)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --EMホタルクス
----@param c Card
 function c12255007.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

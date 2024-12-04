@@ -1,5 +1,4 @@
 --氷結界の御庭番
----@param c Card
 function c27527047.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

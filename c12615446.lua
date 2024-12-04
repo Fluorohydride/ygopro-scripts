@@ -1,5 +1,4 @@
 --電子光虫－スカラジエータ
----@param c Card
 function c12615446.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c12615446.matfilter,3,2,nil,nil,99)

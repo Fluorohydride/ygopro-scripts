@@ -1,5 +1,4 @@
 --ガトムズの非常召集
----@param c Card
 function c61948106.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --超重武者バイ－Q
----@param c Card
 function c83334932.initial_effect(c)
 	--search S/T
 	local e1=Effect.CreateEffect(c)

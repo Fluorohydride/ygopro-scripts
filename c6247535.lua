@@ -1,5 +1,4 @@
 --ヴァレルロード・X・ドラゴン
----@param c Card
 function c6247535.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c6247535.mfilter,4,2)

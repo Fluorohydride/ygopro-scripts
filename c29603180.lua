@@ -1,5 +1,4 @@
 --ディザスター・デーモン
----@param c Card
 function c29603180.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

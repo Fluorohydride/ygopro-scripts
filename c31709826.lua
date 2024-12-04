@@ -1,5 +1,4 @@
 --リバイバルスライム
----@param c Card
 function c31709826.initial_effect(c)
 	--reborn preparation
 	local e1=Effect.CreateEffect(c)

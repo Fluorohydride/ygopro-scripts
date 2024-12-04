@@ -1,5 +1,4 @@
 --進化合獣ヒュードラゴン
----@param c Card
 function c80476891.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--atkup

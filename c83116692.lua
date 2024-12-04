@@ -1,5 +1,4 @@
 --死眼の伝霊－プシュコポンポス
----@param c Card
 function c83116692.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

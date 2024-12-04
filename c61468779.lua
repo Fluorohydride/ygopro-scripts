@@ -1,5 +1,4 @@
 --地霊神グランソイル
----@param c Card
 function c61468779.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

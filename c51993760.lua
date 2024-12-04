@@ -1,5 +1,4 @@
 --抹殺の邪悪霊
----@param c Card
 function c51993760.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --星逢の天河
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

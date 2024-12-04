@@ -1,5 +1,4 @@
 --黄昏の忍者－カゲン
----@param c Card
 function c6830480.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

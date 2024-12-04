@@ -1,5 +1,4 @@
 --E-HERO ライトニング・ゴーレム
----@param c Card
 function c21947653.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

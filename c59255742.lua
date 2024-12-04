@@ -1,5 +1,4 @@
 --ゴヨウ・エンペラー
----@param c Card
 function c59255742.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--fusion material

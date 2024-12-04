@@ -1,5 +1,4 @@
 --ブラック・イリュージョン
----@param c Card
 function c32754886.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

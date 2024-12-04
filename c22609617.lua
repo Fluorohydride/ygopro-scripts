@@ -1,5 +1,4 @@
 --不意打ち又佐
----@param c Card
 function c22609617.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

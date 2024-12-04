@@ -1,5 +1,4 @@
 --海皇の突撃兵
----@param c Card
 function c8078366.initial_effect(c)
 	--ayk
 	local e1=Effect.CreateEffect(c)

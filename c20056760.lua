@@ -1,5 +1,4 @@
 --グレイドル・スライム
----@param c Card
 function c20056760.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

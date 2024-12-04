@@ -1,5 +1,4 @@
 --幻影の魔術士
----@param c Card
 function c24103628.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

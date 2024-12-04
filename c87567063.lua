@@ -1,5 +1,4 @@
 --造反劇
----@param c Card
 function c87567063.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --シェル・ナイト
----@param c Card
 function c10163855.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--burn

@@ -1,5 +1,4 @@
 --デビル・コメディアン
----@param c Card
 function c81172176.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

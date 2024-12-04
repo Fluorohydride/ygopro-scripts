@@ -1,5 +1,4 @@
 --傷炎星－ウルブショウ
----@param c Card
 function c93294869.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

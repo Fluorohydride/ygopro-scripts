@@ -1,5 +1,4 @@
 --幻奏の歌姫ソプラノ
----@param c Card
 function c62895219.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

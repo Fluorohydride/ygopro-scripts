@@ -1,5 +1,4 @@
 --くず鉄の像
----@param c Card
 function c48497555.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --BK グラスジョー
----@param c Card
 function c5361647.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

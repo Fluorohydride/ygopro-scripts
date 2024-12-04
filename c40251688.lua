@@ -1,5 +1,4 @@
 --焔聖騎士導－ローラン
----@param c Card
 function c40251688.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

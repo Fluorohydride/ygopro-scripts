@@ -1,5 +1,4 @@
 --SRベイゴマックス
----@param c Card
 function c81275020.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --パワー・ウォール
----@param c Card
 function c76403456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

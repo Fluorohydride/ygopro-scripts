@@ -1,5 +1,4 @@
 --深海王デビルシャーク
----@param c Card
 function c44223284.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

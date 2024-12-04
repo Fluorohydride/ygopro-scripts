@@ -1,5 +1,4 @@
 --聖蔓の乙女
----@param c Card
 function c53618293.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

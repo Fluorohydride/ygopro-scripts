@@ -1,5 +1,4 @@
 --Sin トゥルース・ドラゴン
----@param c Card
 function c37115575.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,c37115575.uqfilter,LOCATION_MZONE)

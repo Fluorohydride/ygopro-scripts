@@ -1,5 +1,4 @@
 --ゲイザー・シャーク
----@param c Card
 function c23536866.initial_effect(c)
 	--xyz
 	local e1=Effect.CreateEffect(c)

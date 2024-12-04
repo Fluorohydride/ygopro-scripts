@@ -1,5 +1,4 @@
 --魔王超龍 ベエルゼウス
----@param c Card
 function c8763963.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),aux.NonTuner(nil),2)

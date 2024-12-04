@@ -1,5 +1,4 @@
 --絶火の祆現
----@param c Card
 function c327051.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

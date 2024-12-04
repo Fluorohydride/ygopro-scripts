@@ -1,5 +1,4 @@
 --未界域のチュパカブラ
----@param c Card
 function c16209941.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

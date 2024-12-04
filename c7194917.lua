@@ -1,5 +1,4 @@
 --No.52 ダイヤモンド・クラブ・キング
----@param c Card
 function c7194917.initial_effect(c)
 	c:SetUniqueOnField(1,0,7194917)
 	--xyz summon

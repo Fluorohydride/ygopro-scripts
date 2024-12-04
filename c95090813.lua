@@ -1,5 +1,4 @@
 --コアキメイル・ウォーアームズ
----@param c Card
 function c95090813.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

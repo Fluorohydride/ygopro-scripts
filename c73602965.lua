@@ -1,6 +1,5 @@
 --白銀の城の執事 アリアス
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--special summon/set
 	local e1=Effect.CreateEffect(c)

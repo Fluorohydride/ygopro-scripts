@@ -1,5 +1,4 @@
 --チューニング・サポーター
----@param c Card
 function c92676637.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

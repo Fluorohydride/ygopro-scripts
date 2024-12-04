@@ -1,5 +1,4 @@
 --ジュラック・ギガノト
----@param c Card
 function c80032567.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_DINOSAUR),1)

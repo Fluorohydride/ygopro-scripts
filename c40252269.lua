@@ -1,5 +1,4 @@
 --魔術師の再演
----@param c Card
 function c40252269.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

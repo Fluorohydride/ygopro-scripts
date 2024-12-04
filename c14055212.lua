@@ -1,5 +1,4 @@
 --のどかな埋葬
----@param c Card
 function c14055212.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

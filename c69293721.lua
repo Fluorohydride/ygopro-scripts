@@ -1,5 +1,4 @@
 --水精鱗－アビスグンデ
----@param c Card
 function c69293721.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

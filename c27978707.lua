@@ -1,5 +1,4 @@
 --超重武者カゲボウ－C
----@param c Card
 function c27978707.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

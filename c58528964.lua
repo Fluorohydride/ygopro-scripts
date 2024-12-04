@@ -1,5 +1,4 @@
 --フレイム・ゴースト
----@param c Card
 function c58528964.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

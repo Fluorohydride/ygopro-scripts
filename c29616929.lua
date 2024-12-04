@@ -1,5 +1,4 @@
 --蟲惑の落とし穴
----@param c Card
 function c29616929.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

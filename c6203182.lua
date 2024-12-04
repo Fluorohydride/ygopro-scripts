@@ -1,5 +1,4 @@
 --一惜二跳
----@param c Card
 function c6203182.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

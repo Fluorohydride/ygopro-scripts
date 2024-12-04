@@ -1,5 +1,4 @@
 --魔鏡導士リフレクト・バウンダー
----@param c Card
 function c2851070.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

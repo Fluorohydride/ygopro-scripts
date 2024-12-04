@@ -1,5 +1,4 @@
 --角笛砕き
----@param c Card
 function c93396832.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

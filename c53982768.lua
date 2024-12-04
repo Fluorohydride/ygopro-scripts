@@ -1,5 +1,4 @@
 --冥界の魔王 ハ・デス
----@param c Card
 function c53982768.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

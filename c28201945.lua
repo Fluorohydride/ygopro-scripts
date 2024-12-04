@@ -1,5 +1,4 @@
 --カズーラの蟲惑魔
----@param c Card
 function c28201945.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

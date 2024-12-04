@@ -1,5 +1,4 @@
 --お家おとりつぶし
----@param c Card
 function c73872164.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --砂漠の光
----@param c Card
 function c93747864.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

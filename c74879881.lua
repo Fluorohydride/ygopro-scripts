@@ -1,5 +1,4 @@
 --ミミックリル
----@param c Card
 function c74879881.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

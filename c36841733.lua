@@ -1,5 +1,4 @@
 --E・HERO グランドマン
----@param c Card
 function c36841733.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

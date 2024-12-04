@@ -1,5 +1,4 @@
 --騎甲虫スティンギー・ランス
----@param c Card
 function c65430555.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

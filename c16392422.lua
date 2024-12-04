@@ -1,5 +1,4 @@
 --トゥーン・仮面魔道士
----@param c Card
 function c16392422.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

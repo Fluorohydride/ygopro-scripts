@@ -1,5 +1,4 @@
 --スピリチューアル・ウィスパー
----@param c Card
 function c50155385.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

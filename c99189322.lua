@@ -1,5 +1,4 @@
 --アルカナコール
----@param c Card
 function c99189322.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

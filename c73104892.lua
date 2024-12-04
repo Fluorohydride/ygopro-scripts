@@ -1,5 +1,4 @@
 --いろはもみじ
----@param c Card
 function c73104892.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

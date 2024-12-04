@@ -1,5 +1,4 @@
 --ダイナレスラー・コエロフィシラット
----@param c Card
 function c75366958.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

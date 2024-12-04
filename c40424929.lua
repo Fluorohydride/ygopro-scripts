@@ -1,5 +1,4 @@
 --烈華砲艦ナデシコ
----@param c Card
 function c40424929.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3)

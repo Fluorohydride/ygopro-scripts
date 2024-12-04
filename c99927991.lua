@@ -1,5 +1,4 @@
 --魔救の奇縁
----@param c Card
 function c99927991.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

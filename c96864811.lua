@@ -1,5 +1,4 @@
 --禁じられた聖衣
----@param c Card
 function c96864811.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

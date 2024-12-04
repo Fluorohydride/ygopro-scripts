@@ -1,5 +1,4 @@
 --魔神儀－タリスマンドラ
----@param c Card
 function c80701178.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

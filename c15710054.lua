@@ -1,5 +1,4 @@
 --クローラー・アクソン
----@param c Card
 function c15710054.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

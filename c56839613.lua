@@ -1,5 +1,4 @@
 --電池メン－ボタン型
----@param c Card
 function c56839613.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

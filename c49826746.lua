@@ -1,5 +1,4 @@
 --黒翼の魔術師
----@param c Card
 function c49826746.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--Trap activate in set turn

@@ -1,5 +1,4 @@
 --セイクリッド・アンタレス
----@param c Card
 function c42391240.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

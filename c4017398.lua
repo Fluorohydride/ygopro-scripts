@@ -1,5 +1,4 @@
 --ゼアル・エントラスト
----@param c Card
 function c4017398.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

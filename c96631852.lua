@@ -1,5 +1,4 @@
 --鉄壁の布陣
----@param c Card
 function c96631852.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

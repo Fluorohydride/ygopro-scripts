@@ -1,5 +1,4 @@
 --魂のしもべ
----@param c Card
 function c23020408.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--set top

@@ -1,5 +1,4 @@
 --剣聖の影霊衣－セフィラセイバー
----@param c Card
 function c84388461.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

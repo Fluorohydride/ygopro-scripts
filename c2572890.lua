@@ -1,5 +1,4 @@
 --マジェスペクター・テンペスト
----@param c Card
 function c2572890.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

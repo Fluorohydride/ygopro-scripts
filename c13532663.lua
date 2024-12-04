@@ -1,5 +1,4 @@
 --ダミー・ゴーレム
----@param c Card
 function c13532663.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

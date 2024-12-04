@@ -1,5 +1,4 @@
 --剣闘獣トラケス
----@param c Card
 function c65984457.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --極星宝フリドスキャルヴ
----@param c Card
 function c7320132.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

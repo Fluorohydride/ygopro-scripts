@@ -1,5 +1,4 @@
 --フェザー・ショット
----@param c Card
 function c19394153.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--multi atk

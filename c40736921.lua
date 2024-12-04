@@ -1,5 +1,4 @@
 --心鎮壷のレプリカ
----@param c Card
 function c40736921.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

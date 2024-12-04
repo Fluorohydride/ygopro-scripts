@@ -1,5 +1,4 @@
 --エレキンモグラ
----@param c Card
 function c32548609.initial_effect(c)
 	--extra attack
 	local e1=Effect.CreateEffect(c)

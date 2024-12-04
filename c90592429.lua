@@ -1,5 +1,4 @@
 --ヴァイロン・フィラメント
----@param c Card
 function c90592429.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

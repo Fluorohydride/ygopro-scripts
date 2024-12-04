@@ -1,6 +1,5 @@
 --アラヒメの御巫
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,16310544)
 	c:EnableReviveLimit()

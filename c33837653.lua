@@ -1,5 +1,4 @@
 --天昇星テンマ
----@param c Card
 function c33837653.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

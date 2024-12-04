@@ -1,5 +1,4 @@
 --でんきトカゲ
----@param c Card
 function c55875323.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(55875323,0))

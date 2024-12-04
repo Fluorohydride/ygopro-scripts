@@ -1,5 +1,4 @@
 --幻獣機タートレーサー
----@param c Card
 function c76902476.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

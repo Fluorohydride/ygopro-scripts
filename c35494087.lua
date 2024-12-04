@@ -1,5 +1,4 @@
 --SRビードロ・ドクロ
----@param c Card
 function c35494087.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

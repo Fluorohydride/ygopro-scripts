@@ -1,5 +1,4 @@
 --生者の書－禁断の呪術－
----@param c Card
 function c2204140.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

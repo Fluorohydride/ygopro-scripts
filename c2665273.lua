@@ -1,5 +1,4 @@
 --永の王 オルムガンド
----@param c Card
 function c2665273.initial_effect(c)
 	c:SetUniqueOnField(1,0,2665273)
 	--xyz summon

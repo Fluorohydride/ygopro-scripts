@@ -1,5 +1,4 @@
 --紅陽鳥
----@param c Card
 function c46696593.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

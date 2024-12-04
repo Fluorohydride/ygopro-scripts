@@ -1,5 +1,4 @@
 --折れ竹光
----@param c Card
 function c41587307.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

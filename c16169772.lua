@@ -1,6 +1,5 @@
 --インスタント・コンタクト
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)

@@ -1,5 +1,4 @@
 --超重武者タイマ－2
----@param c Card
 function c7864030.initial_effect(c)
 	--change battle target
 	local e1=Effect.CreateEffect(c)

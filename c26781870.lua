@@ -1,5 +1,4 @@
 --イカサマ御法度
----@param c Card
 function c26781870.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--Activate

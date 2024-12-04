@@ -1,5 +1,4 @@
 --幻魔皇ラビエル－天界蹂躙拳
----@param c Card
 function c28651380.initial_effect(c)
 	aux.AddCodeList(c,69890967)
 	c:EnableReviveLimit()

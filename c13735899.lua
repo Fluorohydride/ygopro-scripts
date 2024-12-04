@@ -1,5 +1,4 @@
 --ミュステリオンの竜冠
----@param c Card
 function c13735899.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

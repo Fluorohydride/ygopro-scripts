@@ -1,5 +1,4 @@
 --六花精スノードロップ
----@param c Card
 function c33491462.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

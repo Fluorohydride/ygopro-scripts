@@ -1,5 +1,4 @@
 --岩の精霊 タイタン
----@param c Card
 function c76305638.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

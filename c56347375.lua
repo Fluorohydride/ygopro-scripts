@@ -1,5 +1,4 @@
 --竜剣士イグニスP
----@param c Card
 function c56347375.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

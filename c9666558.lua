@@ -1,5 +1,4 @@
 --ゴーレム・ドラゴン
----@param c Card
 function c9666558.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

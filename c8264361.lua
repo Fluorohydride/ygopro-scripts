@@ -1,5 +1,4 @@
 --暗影の闇霊使いダルク
----@param c Card
 function c8264361.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c8264361.lcheck)

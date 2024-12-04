@@ -1,5 +1,4 @@
 --ガントレット・シューター
----@param c Card
 function c15561463.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

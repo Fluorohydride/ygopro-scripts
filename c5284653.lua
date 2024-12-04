@@ -1,5 +1,4 @@
 --ヴェルズ・オ・ウィスプ
----@param c Card
 function c5284653.initial_effect(c)
 	--Disable
 	local e1=Effect.CreateEffect(c)

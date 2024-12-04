@@ -1,5 +1,4 @@
 --機動要塞フォルテシモ
----@param c Card
 function c86997073.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

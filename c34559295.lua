@@ -1,5 +1,4 @@
 --アイアンドロー
----@param c Card
 function c34559295.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SPSUMMON_COUNT)
 	--Activate

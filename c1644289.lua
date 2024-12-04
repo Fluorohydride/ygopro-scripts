@@ -1,5 +1,4 @@
 --ヴァイロン・セグメント
----@param c Card
 function c1644289.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --急速充電器
----@param c Card
 function c49479374.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

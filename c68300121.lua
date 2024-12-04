@@ -1,5 +1,4 @@
 --魔鍵憑霊－ウェパルトゥ
----@param c Card
 function c68300121.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

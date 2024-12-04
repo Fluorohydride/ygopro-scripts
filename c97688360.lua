@@ -1,5 +1,4 @@
 --剛鬼ツイストコブラ
----@param c Card
 function c97688360.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

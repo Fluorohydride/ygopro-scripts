@@ -1,5 +1,4 @@
 --ビンゴマシーンGO！GO！
----@param c Card
 function c93437091.initial_effect(c)
 	aux.AddCodeList(c,89631139,23995346)
 	--Activate

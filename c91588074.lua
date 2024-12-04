@@ -1,5 +1,4 @@
 --創星神 tierra
----@param c Card
 function c91588074.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

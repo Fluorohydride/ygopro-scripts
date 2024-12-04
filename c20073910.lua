@@ -1,5 +1,4 @@
 --天照大神
----@param c Card
 function c20073910.initial_effect(c)
 	--spirit
 	aux.EnableSpiritReturn(c,EVENT_FLIP)

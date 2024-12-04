@@ -1,5 +1,4 @@
 --揚陸群艦アンブロエール
----@param c Card
 function c20665527.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

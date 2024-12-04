@@ -1,5 +1,4 @@
 --富炎星－ハクテンオウ
----@param c Card
 function c93877990.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

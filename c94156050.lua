@@ -1,5 +1,4 @@
 --逆さ眼鏡
----@param c Card
 function c94156050.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

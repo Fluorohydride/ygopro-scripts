@@ -1,5 +1,4 @@
 --聖剣を抱く王妃ギネヴィア
----@param c Card
 function c19748583.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --銀河眼の残光竜
----@param c Card
 function c62968263.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

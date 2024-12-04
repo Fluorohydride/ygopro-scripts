@@ -1,5 +1,4 @@
 --細菌感染
----@param c Card
 function c24668830.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

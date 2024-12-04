@@ -1,5 +1,4 @@
 --次元同異体ヴァリス
----@param c Card
 function c52254878.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

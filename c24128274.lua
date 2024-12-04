@@ -1,5 +1,4 @@
 --深海の戦士
----@param c Card
 function c24128274.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--immune spell

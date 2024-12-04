@@ -1,5 +1,4 @@
 --D-HERO ドリームガイ
----@param c Card
 function c66262416.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

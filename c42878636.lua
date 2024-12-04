@@ -1,5 +1,4 @@
 --古代の機械猟犬
----@param c Card
 function c42878636.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

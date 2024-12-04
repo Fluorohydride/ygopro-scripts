@@ -1,5 +1,4 @@
 --マシンナーズ・カノン
----@param c Card
 function c39284521.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

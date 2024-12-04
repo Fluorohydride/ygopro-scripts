@@ -1,5 +1,4 @@
 --A BF－霧雨のクナイ
----@param c Card
 function c70456282.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

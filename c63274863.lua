@@ -1,5 +1,4 @@
 --星因士 シリウス
----@param c Card
 function c63274863.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

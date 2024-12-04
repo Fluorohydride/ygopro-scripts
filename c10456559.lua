@@ -1,5 +1,4 @@
 --悪魂邪苦止
----@param c Card
 function c10456559.initial_effect(c)
 	--add
 	local e1=Effect.CreateEffect(c)

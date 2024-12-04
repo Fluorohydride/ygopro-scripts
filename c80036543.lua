@@ -1,5 +1,4 @@
 --活路への希望
----@param c Card
 function c80036543.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

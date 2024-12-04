@@ -1,5 +1,4 @@
 --伝説のフィッシャーマン三世
----@param c Card
 function c44968687.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

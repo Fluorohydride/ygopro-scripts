@@ -1,5 +1,4 @@
 --ダイノルフィア・ドメイン
----@param c Card
 function c26631975.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

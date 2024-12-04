@@ -1,5 +1,4 @@
 --自由解放
----@param c Card
 function c72022087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

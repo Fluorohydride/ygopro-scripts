@@ -1,5 +1,4 @@
 --異星の最終戦士
----@param c Card
 function c86099788.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

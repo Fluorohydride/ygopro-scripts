@@ -1,5 +1,4 @@
 --伝説のフィッシャーマン二世
----@param c Card
 function c19801646.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--code

@@ -1,6 +1,5 @@
 --海造賊－荘重のヨルズ号
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

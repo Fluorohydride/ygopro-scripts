@@ -1,5 +1,4 @@
 --ブラック・マジシャンズ・ナイト
----@param c Card
 function c50725996.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon limit

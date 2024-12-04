@@ -1,5 +1,4 @@
 --E・HERO ダーク・ブライトマン
----@param c Card
 function c41517968.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

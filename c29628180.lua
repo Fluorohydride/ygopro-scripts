@@ -1,5 +1,4 @@
 --魔弾－デッドマンズ・バースト
----@param c Card
 function c29628180.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

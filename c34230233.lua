@@ -1,5 +1,4 @@
 --暗黒界の龍神 グラファ
----@param c Card
 function c34230233.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

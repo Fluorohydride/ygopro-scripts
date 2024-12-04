@@ -1,5 +1,4 @@
 --未来王の予言
----@param c Card
 function c57274196.initial_effect(c)
 	--chain attack
 	local e1=Effect.CreateEffect(c)

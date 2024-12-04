@@ -1,5 +1,4 @@
 --リンクメイル・デーモン
----@param c Card
 function c68295149.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c68295149.lcheck)

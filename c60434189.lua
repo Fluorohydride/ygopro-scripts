@@ -1,5 +1,4 @@
 --ペンデュラム・モラトリアム
----@param c Card
 function c60434189.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

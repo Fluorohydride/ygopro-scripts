@@ -1,5 +1,4 @@
 --ウィッチクラフト・ドレーピング
----@param c Card
 function c56894757.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

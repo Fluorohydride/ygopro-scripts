@@ -1,5 +1,4 @@
 --H・C ソード・シールド
----@param c Card
 function c52370835.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

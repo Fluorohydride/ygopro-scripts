@@ -1,5 +1,4 @@
 --デスペラード・リボルバー・ドラゴン
----@param c Card
 function c76728962.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

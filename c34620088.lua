@@ -1,5 +1,4 @@
 --ギミック・パペット－シャドーフィーラー
----@param c Card
 function c34620088.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

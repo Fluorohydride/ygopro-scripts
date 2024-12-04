@@ -1,5 +1,4 @@
 --幻煌龍の螺旋波
----@param c Card
 function c1197847.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

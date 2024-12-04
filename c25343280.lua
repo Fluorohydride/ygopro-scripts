@@ -1,5 +1,4 @@
 --スピリッツ・オブ・ファラオ
----@param c Card
 function c25343280.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

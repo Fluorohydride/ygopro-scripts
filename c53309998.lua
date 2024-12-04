@@ -1,5 +1,4 @@
 --シーアーカイバー
----@param c Card
 function c53309998.initial_effect(c)
 	--same effect send this card to grave and summon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

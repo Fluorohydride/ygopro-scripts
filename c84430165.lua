@@ -1,5 +1,4 @@
 --海晶乙女潮流
----@param c Card
 function c84430165.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ファイターズ・エイプ
----@param c Card
 function c41098335.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

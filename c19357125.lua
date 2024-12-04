@@ -1,5 +1,4 @@
 --ダーク・アサシン
----@param c Card
 function c19357125.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サイコロプス
----@param c Card
 function c62893810.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ロー・キューピット
----@param c Card
 function c69526976.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

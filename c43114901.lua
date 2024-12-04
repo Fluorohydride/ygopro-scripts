@@ -1,5 +1,4 @@
 --ジェムナイト・サニクス
----@param c Card
 function c43114901.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--search

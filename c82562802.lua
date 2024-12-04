@@ -1,5 +1,4 @@
 --サイバー・ダーク・クロー
----@param c Card
 function c82562802.initial_effect(c)
 	--search S/T
 	local e1=Effect.CreateEffect(c)

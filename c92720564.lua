@@ -1,5 +1,4 @@
 --D・ラジカッセン
----@param c Card
 function c92720564.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

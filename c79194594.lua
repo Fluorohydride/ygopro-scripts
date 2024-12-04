@@ -1,5 +1,4 @@
 --シンセシス・ミュートリアス
----@param c Card
 function c79194594.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

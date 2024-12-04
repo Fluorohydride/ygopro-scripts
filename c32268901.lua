@@ -1,5 +1,4 @@
 --サラマンドラ
----@param c Card
 function c32268901.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

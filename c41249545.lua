@@ -1,5 +1,4 @@
 --グラスファントム
----@param c Card
 function c41249545.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

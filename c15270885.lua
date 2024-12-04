@@ -1,5 +1,4 @@
 --トゥーン・ゴブリン突撃部隊
----@param c Card
 function c15270885.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

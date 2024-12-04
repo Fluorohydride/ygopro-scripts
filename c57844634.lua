@@ -1,5 +1,4 @@
 --素早いムササビ
----@param c Card
 function c57844634.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

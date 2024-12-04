@@ -1,5 +1,4 @@
 --ガンバラナイト
----@param c Card
 function c24291651.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

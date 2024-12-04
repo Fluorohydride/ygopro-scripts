@@ -1,5 +1,4 @@
 --ワーム・ホール
----@param c Card
 function c22959079.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

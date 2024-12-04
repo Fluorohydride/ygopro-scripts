@@ -1,5 +1,4 @@
 --ゴルゴニック・ケルベロス
----@param c Card
 function c37168514.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

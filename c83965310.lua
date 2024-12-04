@@ -1,5 +1,4 @@
 --D-HERO Bloo-D
----@param c Card
 function c83965310.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,5 +1,4 @@
 --ヴァンパイア・グリムゾン
----@param c Card
 function c33438666.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

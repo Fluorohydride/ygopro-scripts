@@ -1,5 +1,4 @@
 --魔界発現世行きバス
----@param c Card
 function c52823314.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

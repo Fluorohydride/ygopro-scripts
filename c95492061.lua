@@ -1,5 +1,4 @@
 --マンジュ・ゴッド
----@param c Card
 function c95492061.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

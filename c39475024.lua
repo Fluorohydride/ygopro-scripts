@@ -1,5 +1,4 @@
 --骸の魔妖－餓者髑髏
----@param c Card
 function c39475024.initial_effect(c)
 	c:SetUniqueOnField(1,0,39475024)
 	--synchro summon

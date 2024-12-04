@@ -1,5 +1,4 @@
 --アロメルスの蟲惑魔
----@param c Card
 function c59071624.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2,nil,nil,99)

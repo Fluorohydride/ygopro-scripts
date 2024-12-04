@@ -1,5 +1,4 @@
 --聖天樹の月桂精
----@param c Card
 function c7984540.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_PLANT),2,2)

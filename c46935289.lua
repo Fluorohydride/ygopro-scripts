@@ -1,5 +1,4 @@
 --虚光の宣告者
----@param c Card
 function c46935289.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

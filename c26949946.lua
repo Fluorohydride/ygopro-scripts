@@ -1,5 +1,4 @@
 --幻獣機ヤクルスラーン
----@param c Card
 function c26949946.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x101b),aux.NonTuner(Card.IsSetCard,0x101b),1)

@@ -1,5 +1,4 @@
 --影六武衆－キザル
----@param c Card
 function c6579928.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

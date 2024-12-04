@@ -1,5 +1,4 @@
 --閃刀空域－エリアゼロ
----@param c Card
 function c50005218.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

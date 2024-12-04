@@ -1,5 +1,4 @@
 --魔の取引
----@param c Card
 function c69724380.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

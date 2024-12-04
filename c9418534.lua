@@ -1,5 +1,4 @@
 --人造人間－サイコ・リターナー
----@param c Card
 function c9418534.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--spsummon

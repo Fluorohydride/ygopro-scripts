@@ -1,5 +1,4 @@
 --アルカナフォースⅠ－THE MAGICIAN
----@param c Card
 function c8396952.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)

@@ -1,5 +1,4 @@
 --希望の光
----@param c Card
 function c82529174.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

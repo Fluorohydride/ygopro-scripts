@@ -1,5 +1,4 @@
 --覇王眷竜ライトヴルム
----@param c Card
 function c41908872.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--pendulum summon

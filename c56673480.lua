@@ -1,5 +1,4 @@
 --ドン・サウザンドの契約
----@param c Card
 function c56673480.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

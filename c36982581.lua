@@ -1,5 +1,4 @@
 --リチュアの氷魔鏡
----@param c Card
 function c36982581.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

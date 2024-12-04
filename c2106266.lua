@@ -1,5 +1,4 @@
 --走破するガイア
----@param c Card
 function c2106266.initial_effect(c)
 	aux.AddCodeList(c,66889139)
 	--activate

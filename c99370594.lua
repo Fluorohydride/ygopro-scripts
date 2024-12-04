@@ -1,5 +1,4 @@
 --劫火の眠り姫 ゴースト・スリーパー
----@param c Card
 function c99370594.initial_effect(c)
 	aux.AddCodeList(c,35705817)
 	--search

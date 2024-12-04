@@ -1,5 +1,4 @@
 --魔鍵召竜－アンドラビムス
----@param c Card
 function c71159974.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

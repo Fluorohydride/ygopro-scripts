@@ -1,5 +1,4 @@
 --憑依装着－エリア
----@param c Card
 function c68881649.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

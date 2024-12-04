@@ -1,5 +1,4 @@
 --剣闘獣アンダバタエ
----@param c Card
 function c3779662.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,7573135,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1019),2,true,true)

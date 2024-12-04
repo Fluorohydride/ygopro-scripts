@@ -1,5 +1,4 @@
 --剛竜剣士ダイナスターP
----@param c Card
 function c22638495.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

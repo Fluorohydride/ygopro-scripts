@@ -1,5 +1,4 @@
 --海晶乙女グレート・バブル・リーフ
----@param c Card
 function c47910940.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2)

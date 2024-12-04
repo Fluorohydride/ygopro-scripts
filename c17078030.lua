@@ -1,5 +1,4 @@
 --光の護封壁
----@param c Card
 function c17078030.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

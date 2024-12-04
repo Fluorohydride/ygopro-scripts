@@ -1,5 +1,4 @@
 --神の警告
----@param c Card
 function c84749824.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

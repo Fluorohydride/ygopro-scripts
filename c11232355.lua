@@ -1,5 +1,4 @@
 --ディストラクター
----@param c Card
 function c11232355.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

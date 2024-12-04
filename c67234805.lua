@@ -1,5 +1,4 @@
 --能力吸収石
----@param c Card
 function c67234805.initial_effect(c)
 	c:EnableCounterPermit(0x16)
 	c:SetCounterLimit(0x16,2)

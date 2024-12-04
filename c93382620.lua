@@ -1,5 +1,4 @@
 --命の綱
----@param c Card
 function c93382620.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

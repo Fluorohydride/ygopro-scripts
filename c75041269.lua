@@ -1,5 +1,4 @@
 --幽獄の時計塔
----@param c Card
 function c75041269.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0xc008)
 	c:EnableCounterPermit(0x1b)

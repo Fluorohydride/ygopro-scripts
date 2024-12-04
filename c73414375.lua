@@ -1,5 +1,4 @@
 --ディメンション・ポッド
----@param c Card
 function c73414375.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

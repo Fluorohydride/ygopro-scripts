@@ -1,5 +1,4 @@
 --No.104 仮面魔踏士シャイニング
----@param c Card
 function c2061963.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

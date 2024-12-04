@@ -1,5 +1,4 @@
 --ゴーストリック・パレード
----@param c Card
 function c29400787.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

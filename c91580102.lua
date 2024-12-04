@@ -1,5 +1,4 @@
 --レプティレス・アンガー
----@param c Card
 function c91580102.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

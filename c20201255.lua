@@ -1,5 +1,4 @@
 --再起する剣闘獣
----@param c Card
 function c20201255.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

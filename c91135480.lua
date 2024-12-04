@@ -1,5 +1,4 @@
 --クロノダイバー・ダブルバレル
----@param c Card
 function c91135480.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)

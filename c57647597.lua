@@ -1,5 +1,4 @@
 --レプティレス・ヒュドラ
----@param c Card
 function c57647597.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

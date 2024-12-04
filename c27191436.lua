@@ -1,5 +1,4 @@
 --バースト・リターン
----@param c Card
 function c27191436.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

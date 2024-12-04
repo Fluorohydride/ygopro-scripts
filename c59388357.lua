@@ -1,5 +1,4 @@
 --炎王炎環
----@param c Card
 function c59388357.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

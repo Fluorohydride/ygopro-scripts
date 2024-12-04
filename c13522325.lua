@@ -1,5 +1,4 @@
 --炎の精霊 イフリート
----@param c Card
 function c13522325.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

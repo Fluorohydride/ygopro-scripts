@@ -1,5 +1,4 @@
 --アーマード・ビットロン
----@param c Card
 function c29374928.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

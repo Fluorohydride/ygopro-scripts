@@ -1,5 +1,4 @@
 --サイバー・ダーク・カノン
----@param c Card
 function c45078193.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

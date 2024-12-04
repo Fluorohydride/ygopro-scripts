@@ -1,5 +1,4 @@
 --魔導獣 メデューサ
----@param c Card
 function c54965929.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)

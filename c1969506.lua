@@ -1,5 +1,4 @@
 --傀儡儀式－パペット・リチューアル
----@param c Card
 function c1969506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

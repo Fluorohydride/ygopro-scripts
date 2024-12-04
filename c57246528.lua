@@ -1,5 +1,4 @@
 --シンクロ・トランセンド
----@param c Card
 function c57246528.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

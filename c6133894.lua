@@ -1,5 +1,4 @@
 --デビルマゼラ
----@param c Card
 function c6133894.initial_effect(c)
 	aux.AddCodeList(c,66073051,94585852)
 	c:EnableReviveLimit()

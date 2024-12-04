@@ -1,5 +1,4 @@
 --ゴーストリック・ロールシフト
----@param c Card
 function c37055344.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

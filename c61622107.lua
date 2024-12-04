@@ -1,5 +1,4 @@
 --バブル・クラッシュ
----@param c Card
 function c61622107.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

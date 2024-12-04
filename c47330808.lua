@@ -1,5 +1,4 @@
 --ホルスの先導－ハーピ
----@param c Card
 function c47330808.initial_effect(c)
 	aux.AddCodeList(c,16528181)
 	--special summon

@@ -1,5 +1,4 @@
 --呪眼の眷属 バジリウス
----@param c Card
 function c81344637.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

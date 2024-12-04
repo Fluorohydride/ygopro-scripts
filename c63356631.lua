@@ -1,5 +1,4 @@
 --鳳翼の爆風
----@param c Card
 function c63356631.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

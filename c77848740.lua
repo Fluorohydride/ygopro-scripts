@@ -1,5 +1,4 @@
 --マドルチェ・プティンセスール
----@param c Card
 function c77848740.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --フルール・ド・シュヴァリエ
----@param c Card
 function c45037489.initial_effect(c)
 	aux.AddMaterialCodeList(c,19642774)
 	--synchro summon

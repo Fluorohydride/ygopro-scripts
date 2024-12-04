@@ -1,5 +1,4 @@
 --絶火の魔神ゾロア
----@param c Card
 function c95911373.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),aux.NonTuner(nil),1)

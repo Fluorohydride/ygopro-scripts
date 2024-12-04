@@ -1,5 +1,4 @@
 --燎星のプロメテオロン
----@param c Card
 function c75713017.initial_effect(c)
 	--extra attack
 	local e1=Effect.CreateEffect(c)

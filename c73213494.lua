@@ -1,5 +1,4 @@
 --彼岸の悪鬼 ハックルスパー
----@param c Card
 function c73213494.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

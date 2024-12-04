@@ -1,5 +1,4 @@
 --超熱血球児
----@param c Card
 function c67934141.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

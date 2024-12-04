@@ -1,5 +1,4 @@
 --霊魂鳥－忍鴉
----@param c Card
 function c39817919.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

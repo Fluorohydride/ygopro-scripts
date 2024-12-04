@@ -1,5 +1,4 @@
 --マシン・デベロッパー
----@param c Card
 function c25518020.initial_effect(c)
 	c:EnableCounterPermit(0x1d)
 	--Activate

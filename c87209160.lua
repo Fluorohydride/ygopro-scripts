@@ -1,5 +1,4 @@
 --鉄獣戦線 フラクトール
----@param c Card
 function c87209160.initial_effect(c)
 	--to gy
 	local e1=Effect.CreateEffect(c)

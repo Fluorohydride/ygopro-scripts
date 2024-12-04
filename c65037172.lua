@@ -1,5 +1,4 @@
 --サイバース・セイジ
----@param c Card
 function c65037172.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion summon

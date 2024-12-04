@@ -1,5 +1,4 @@
 --螺旋のストライクバースト
----@param c Card
 function c82768499.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

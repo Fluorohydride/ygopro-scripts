@@ -1,5 +1,4 @@
 --スライム増殖炉
----@param c Card
 function c21770260.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

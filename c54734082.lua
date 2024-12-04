@@ -1,5 +1,4 @@
 --マグネット・インダクション
----@param c Card
 function c54734082.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

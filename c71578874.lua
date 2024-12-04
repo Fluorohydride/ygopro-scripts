@@ -1,5 +1,4 @@
 --Emミラー・コンダクター
----@param c Card
 function c71578874.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

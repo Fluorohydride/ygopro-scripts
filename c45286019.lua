@@ -1,5 +1,4 @@
 --ギアギアーノ Mk－Ⅲ
----@param c Card
 function c45286019.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

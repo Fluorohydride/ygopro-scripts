@@ -1,5 +1,4 @@
 --イービル・マインド
----@param c Card
 function c18438874.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--draw

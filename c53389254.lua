@@ -1,5 +1,4 @@
 --A BF－五月雨のソハヤ
----@param c Card
 function c53389254.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

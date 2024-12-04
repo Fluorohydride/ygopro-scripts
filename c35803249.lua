@@ -1,5 +1,4 @@
 --人造人間－サイコ・ロード
----@param c Card
 function c35803249.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	c:EnableReviveLimit()

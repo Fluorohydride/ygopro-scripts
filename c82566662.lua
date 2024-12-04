@@ -1,5 +1,4 @@
 --トウテツドラゴン
----@param c Card
 function c82566662.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --海晶乙女波動
----@param c Card
 function c52945066.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

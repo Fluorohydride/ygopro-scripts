@@ -1,5 +1,4 @@
 --世海龍ジーランティス
----@param c Card
 function c45112597.initial_effect(c)
 	c:SetUniqueOnField(1,0,45112597)
 	--link summon

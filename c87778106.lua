@@ -1,6 +1,5 @@
 --Recette de Poisson～魚料理のレシピ～
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,26223582)
 	local e1=aux.AddRitualProcGreater2(c,s.filter,LOCATION_HAND,nil,nil,true,s.extraop)

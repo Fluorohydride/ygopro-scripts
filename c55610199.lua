@@ -1,5 +1,4 @@
 --ジェムナイトレディ・ローズ・ダイヤ
----@param c Card
 function c55610199.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

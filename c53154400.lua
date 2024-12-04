@@ -1,6 +1,5 @@
 --サイコ・ローヴァー
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

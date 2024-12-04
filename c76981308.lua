@@ -1,5 +1,4 @@
 --メルフィーとにらめっこ
----@param c Card
 function c76981308.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

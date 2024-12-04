@@ -1,5 +1,4 @@
 --E－エマージェンシーコール
----@param c Card
 function c213326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

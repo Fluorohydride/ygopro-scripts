@@ -1,5 +1,4 @@
 --レッド・ミラー
----@param c Card
 function c8706701.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

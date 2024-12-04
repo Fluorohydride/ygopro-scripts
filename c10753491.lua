@@ -1,5 +1,4 @@
 --森羅の神芽 スプラウト
----@param c Card
 function c10753491.initial_effect(c)
 	--deck check
 	local e1=Effect.CreateEffect(c)

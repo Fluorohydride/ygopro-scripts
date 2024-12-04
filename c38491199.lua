@@ -1,5 +1,4 @@
 --ジャンクリボー
----@param c Card
 function c38491199.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

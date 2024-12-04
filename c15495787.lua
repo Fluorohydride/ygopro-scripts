@@ -1,5 +1,4 @@
 --超重武者ココロガマ－A
----@param c Card
 function c15495787.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --深緑の魔弓使い
----@param c Card
 function c55001420.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

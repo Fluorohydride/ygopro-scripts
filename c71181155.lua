@@ -1,5 +1,4 @@
 --幻獣クロスウィング
----@param c Card
 function c71181155.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

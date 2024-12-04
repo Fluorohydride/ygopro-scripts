@@ -1,5 +1,4 @@
 --星輝士 セイクリッド・ダイヤ
----@param c Card
 function c9272381.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),5,3,c9272381.ovfilter,aux.Stringid(9272381,0),99)

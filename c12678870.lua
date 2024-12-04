@@ -1,5 +1,4 @@
 --聖霊獣騎 ペトルフィン
----@param c Card
 function c12678870.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

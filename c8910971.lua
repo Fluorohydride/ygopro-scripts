@@ -1,5 +1,4 @@
 --暗黒騎士ガイアロード
----@param c Card
 function c8910971.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

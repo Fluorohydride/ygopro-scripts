@@ -1,5 +1,4 @@
 --ダークインファント＠イグニスター
----@param c Card
 function c74567889.initial_effect(c)
 	aux.AddCodeList(c,59054773)
 	--link summon

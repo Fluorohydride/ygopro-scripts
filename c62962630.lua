@@ -1,5 +1,4 @@
 --デスピアの導化アルベル
----@param c Card
 function c62962630.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

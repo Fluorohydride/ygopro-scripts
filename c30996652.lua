@@ -1,5 +1,4 @@
 --機塊リユース
----@param c Card
 function c30996652.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

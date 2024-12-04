@@ -1,5 +1,4 @@
 --闇黒の夢魔鏡
----@param c Card
 function c1050355.initial_effect(c)
 	aux.AddCodeList(c,74665651)
 	--Activate

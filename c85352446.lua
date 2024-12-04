@@ -1,5 +1,4 @@
 --統制訓練
----@param c Card
 function c85352446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ゴーストリック・スケルトン
----@param c Card
 function c51196805.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

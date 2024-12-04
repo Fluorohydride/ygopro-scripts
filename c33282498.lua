@@ -1,5 +1,4 @@
 --アークブレイブドラゴン
----@param c Card
 function c33282498.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

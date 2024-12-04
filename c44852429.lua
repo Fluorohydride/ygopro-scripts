@@ -1,5 +1,4 @@
 --DDD呪血王サイフリート
----@param c Card
 function c44852429.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0xaf),1)

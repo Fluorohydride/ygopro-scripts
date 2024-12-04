@@ -1,5 +1,4 @@
 --海晶乙女マーブルド・ロック
----@param c Card
 function c5524387.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WATER),2)

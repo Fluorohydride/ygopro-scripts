@@ -1,5 +1,4 @@
 --バスター・リブート
----@param c Card
 function c74431740.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--Activate

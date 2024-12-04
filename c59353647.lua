@@ -1,5 +1,4 @@
 --アマゾネスペット虎獅王
----@param c Card
 function c59353647.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

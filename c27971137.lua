@@ -1,5 +1,4 @@
 --腐乱犬
----@param c Card
 function c27971137.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

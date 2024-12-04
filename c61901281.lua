@@ -1,5 +1,4 @@
 --暗黒竜 コラプサーペント
----@param c Card
 function c61901281.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

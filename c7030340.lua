@@ -1,5 +1,4 @@
 --百機夜工
----@param c Card
 function c7030340.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

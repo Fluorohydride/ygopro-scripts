@@ -1,5 +1,4 @@
 --オルターガイスト・エミュレルフ
----@param c Card
 function c86885905.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

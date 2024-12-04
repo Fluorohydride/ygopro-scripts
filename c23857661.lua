@@ -1,5 +1,4 @@
 --武神器－オキツ
----@param c Card
 function c23857661.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

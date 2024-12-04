@@ -1,5 +1,4 @@
 --召喚雲
----@param c Card
 function c55375684.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --スピア・ドラゴン
----@param c Card
 function c31553716.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

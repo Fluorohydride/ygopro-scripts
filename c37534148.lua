@@ -1,5 +1,4 @@
 --リボーンリボン
----@param c Card
 function c37534148.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

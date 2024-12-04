@@ -1,5 +1,4 @@
 --リチュアに伝わりし禁断の秘術
----@param c Card
 function c28429121.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

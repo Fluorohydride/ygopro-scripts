@@ -1,5 +1,4 @@
 --見習い魔嬢
----@param c Card
 function c71384012.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_DARK),2,2)

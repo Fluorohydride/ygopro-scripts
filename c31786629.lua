@@ -1,5 +1,4 @@
 --サンダー・ドラゴン
----@param c Card
 function c31786629.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

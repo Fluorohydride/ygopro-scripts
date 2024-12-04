@@ -1,5 +1,4 @@
 --インフェルニティ・ガーディアン
----@param c Card
 function c51566770.initial_effect(c)
 	--cannot destroy
 	local e1=Effect.CreateEffect(c)

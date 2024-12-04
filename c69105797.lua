@@ -1,5 +1,4 @@
 --捕食植物スキッド・ドロセーラ
----@param c Card
 function c69105797.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

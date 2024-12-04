@@ -1,5 +1,4 @@
 --雲魔物－アシッド・クラウド
----@param c Card
 function c17810268.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

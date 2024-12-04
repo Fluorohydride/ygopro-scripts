@@ -1,5 +1,4 @@
 --魔神儀の創造主－クリオルター
----@param c Card
 function c96915510.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

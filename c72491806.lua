@@ -1,5 +1,4 @@
 --U.A.ファンタジスタ
----@param c Card
 function c72491806.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

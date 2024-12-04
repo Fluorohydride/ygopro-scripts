@@ -1,5 +1,4 @@
 --闇霊使いダルク
----@param c Card
 function c19327348.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --救済のレイヤード
----@param c Card
 function c67468948.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

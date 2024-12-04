@@ -1,5 +1,4 @@
 --仮面魔獣デス・ガーディウス
----@param c Card
 function c48948935.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

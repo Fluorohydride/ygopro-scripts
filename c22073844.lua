@@ -1,5 +1,4 @@
 --教導枢機テトラドラグマ
----@param c Card
 function c22073844.initial_effect(c)
 	c:EnableReviveLimit()
 	--connot special summon

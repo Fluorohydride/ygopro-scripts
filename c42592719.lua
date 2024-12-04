@@ -1,5 +1,4 @@
 --剣闘獣アレクサンデル
----@param c Card
 function c42592719.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ウォークライ・オーディール
----@param c Card
 function c71331215.initial_effect(c)
 	c:EnableCounterPermit(0x5a,LOCATION_SZONE)
 	c:SetUniqueOnField(1,0,71331215)

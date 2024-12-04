@@ -1,5 +1,4 @@
 --無念の手札
----@param c Card
 function c48310593.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

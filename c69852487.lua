@@ -1,5 +1,4 @@
 --希望皇アストラル・ホープ
----@param c Card
 function c69852487.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --明星の機械騎士
----@param c Card
 function c72006609.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c72006609.lcheck)

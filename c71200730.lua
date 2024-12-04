@@ -1,5 +1,4 @@
 --闇より出でし絶望
----@param c Card
 function c71200730.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

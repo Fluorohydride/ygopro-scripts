@@ -1,5 +1,4 @@
 --ベアルクティ・スライダー
----@param c Card
 function c53865474.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

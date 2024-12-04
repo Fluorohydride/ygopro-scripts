@@ -1,5 +1,4 @@
 --十二獣モルモラット
----@param c Card
 function c78872731.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

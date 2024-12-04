@@ -1,5 +1,4 @@
 --輝光子パラディオス
----@param c Card
 function c61344030.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),4,2)

@@ -1,5 +1,4 @@
 --ダークジェロイド
----@param c Card
 function c90980792.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

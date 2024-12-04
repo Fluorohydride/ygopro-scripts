@@ -1,5 +1,4 @@
 --妖海のアウトロール
----@param c Card
 function c43464884.initial_effect(c)
 	--change
 	local e1=Effect.CreateEffect(c)

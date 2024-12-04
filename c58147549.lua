@@ -1,5 +1,4 @@
 --M・HERO 剛火
----@param c Card
 function c58147549.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

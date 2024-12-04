@@ -1,5 +1,4 @@
 --沈黙の魔術師－サイレント・マジシャン
----@param c Card
 function c41175645.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

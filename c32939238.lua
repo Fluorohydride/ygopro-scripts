@@ -1,6 +1,5 @@
 --忍法装具 鉄土竜
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--equip
 	local e0=Effect.CreateEffect(c)

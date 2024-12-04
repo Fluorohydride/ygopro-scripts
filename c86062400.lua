@@ -1,5 +1,4 @@
 --エクシーズ・アヴェンジャー
----@param c Card
 function c86062400.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

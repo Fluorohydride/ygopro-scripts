@@ -1,5 +1,4 @@
 --宵星の騎士ギルス
----@param c Card
 function c69811710.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

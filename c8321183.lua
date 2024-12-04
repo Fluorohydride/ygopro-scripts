@@ -1,5 +1,4 @@
 --霊獣の誓還
----@param c Card
 function c8321183.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

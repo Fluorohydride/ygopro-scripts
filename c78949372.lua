@@ -1,5 +1,4 @@
 --マジェスペクター・スーパーセル
----@param c Card
 function c78949372.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

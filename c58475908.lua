@@ -1,5 +1,4 @@
 --ゼンマイマイ
----@param c Card
 function c58475908.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

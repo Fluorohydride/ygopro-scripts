@@ -1,5 +1,4 @@
 --マグネット・リバース
----@param c Card
 function c80352158.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

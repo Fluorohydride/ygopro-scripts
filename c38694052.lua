@@ -1,5 +1,4 @@
 --黒熔龍騎ヴォルニゲシュ
----@param c Card
 function c38694052.initial_effect(c)
 	--xyz procedure
 	aux.AddXyzProcedure(c,nil,7,2)

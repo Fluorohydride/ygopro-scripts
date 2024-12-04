@@ -1,5 +1,4 @@
 --太陽神合一
----@param c Card
 function c77432167.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--activate

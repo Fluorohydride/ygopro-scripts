@@ -1,5 +1,4 @@
 --U.A.マン・オブ・ザ・マッチ
----@param c Card
 function c48636108.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

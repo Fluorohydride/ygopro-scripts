@@ -1,5 +1,4 @@
 --ヴェルズ・ケルキオン
----@param c Card
 function c4756629.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

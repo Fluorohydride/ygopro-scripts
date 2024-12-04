@@ -1,5 +1,4 @@
 --雲魔物－アイ・オブ・ザ・タイフーン
----@param c Card
 function c57610714.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

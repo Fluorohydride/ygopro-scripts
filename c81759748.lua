@@ -1,5 +1,4 @@
 --ダーク・スパイダー
----@param c Card
 function c81759748.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --キリビ・レディ
----@param c Card
 function c42052439.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

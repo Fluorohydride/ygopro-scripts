@@ -1,5 +1,4 @@
 --イビリチュア・ソウルオーガ
----@param c Card
 function c57272170.initial_effect(c)
 	c:EnableReviveLimit()
 	--return to deck

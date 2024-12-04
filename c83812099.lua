@@ -1,5 +1,4 @@
 --フリントロック
----@param c Card
 function c83812099.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

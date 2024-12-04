@@ -1,5 +1,4 @@
 --深淵竜アルバ・レナトゥス
----@param c Card
 function c3410461.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

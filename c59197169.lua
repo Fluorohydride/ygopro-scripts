@@ -1,5 +1,4 @@
 --闇
----@param c Card
 function c59197169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

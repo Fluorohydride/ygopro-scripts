@@ -1,5 +1,4 @@
 --真竜皇V.F.D.
----@param c Card
 function c88581108.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2,nil,nil,99)

@@ -1,5 +1,4 @@
 --魔力掌握
----@param c Card
 function c75014062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

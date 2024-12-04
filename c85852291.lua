@@ -1,5 +1,4 @@
 --打ち出の小槌
----@param c Card
 function c85852291.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

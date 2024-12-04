@@ -1,5 +1,4 @@
 --魔妖壊劫
----@param c Card
 function c51225407.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ガーディアン・ケースト
----@param c Card
 function c9633505.initial_effect(c)
 	--sum limit
 	local e1=Effect.CreateEffect(c)

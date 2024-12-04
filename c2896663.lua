@@ -1,5 +1,4 @@
 --ZW－弩級兵装竜王戟
----@param c Card
 function c2896663.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

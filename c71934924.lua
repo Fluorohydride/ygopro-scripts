@@ -1,5 +1,4 @@
 --疾風！凶殺陣
----@param c Card
 function c71934924.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

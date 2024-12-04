@@ -1,5 +1,4 @@
 --ワンダー・バルーン
----@param c Card
 function c78574395.initial_effect(c)
 	c:EnableCounterPermit(0x32)
 	--Activate

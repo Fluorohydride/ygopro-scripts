@@ -1,5 +1,4 @@
 --グレイドル・スライムJr.
----@param c Card
 function c80250319.initial_effect(c)
 	--special summon from grave
 	local e1=Effect.CreateEffect(c)

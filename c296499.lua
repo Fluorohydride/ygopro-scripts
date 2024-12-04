@@ -1,5 +1,4 @@
 --一族の掟
----@param c Card
 function c296499.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

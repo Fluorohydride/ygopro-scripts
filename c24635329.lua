@@ -1,5 +1,4 @@
 --聖なる影 ケイウス
----@param c Card
 function c24635329.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --Emトラピーズ・マジシャン
----@param c Card
 function c17016362.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4,2)

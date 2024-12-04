@@ -1,5 +1,4 @@
 --未界域のモスマン
----@param c Card
 function c52350806.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

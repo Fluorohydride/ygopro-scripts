@@ -1,5 +1,4 @@
 --マジシャンズ・サークル
----@param c Card
 function c50755.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

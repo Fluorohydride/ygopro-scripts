@@ -1,5 +1,4 @@
 --地縛神 Chacu Challhua
----@param c Card
 function c69931927.initial_effect(c)
 	c:SetUniqueOnField(1,1,aux.FilterBoolFunction(Card.IsSetCard,0x1021),LOCATION_MZONE)
 	--

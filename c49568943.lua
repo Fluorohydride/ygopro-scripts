@@ -1,5 +1,4 @@
 --VV－真羅万象
----@param c Card
 function c49568943.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

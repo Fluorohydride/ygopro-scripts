@@ -1,5 +1,4 @@
 --B・F－突撃のヴォウジェ
----@param c Card
 function c53950487.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_INSECT),aux.NonTuner(nil),1)

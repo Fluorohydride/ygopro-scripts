@@ -1,5 +1,4 @@
 --女忍者ヤエ
----@param c Card
 function c82005435.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

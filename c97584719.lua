@@ -1,5 +1,4 @@
 --無限起動アースシェイカー
----@param c Card
 function c97584719.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

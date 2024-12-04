@@ -1,5 +1,4 @@
 --魔轟神ガルバス
----@param c Card
 function c60434101.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

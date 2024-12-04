@@ -1,5 +1,4 @@
 --マスドライバー
----@param c Card
 function c34906152.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

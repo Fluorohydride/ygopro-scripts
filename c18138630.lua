@@ -1,5 +1,4 @@
 --魔玩具厄瓶
----@param c Card
 function c18138630.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

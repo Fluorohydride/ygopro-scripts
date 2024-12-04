@@ -1,5 +1,4 @@
 --DDD赦俿王デス・マキナ
----@param c Card
 function c46593546.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),10,2,c46593546.ovfilter,aux.Stringid(46593546,0))

@@ -1,5 +1,4 @@
 --リビルディア
----@param c Card
 function c4550066.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

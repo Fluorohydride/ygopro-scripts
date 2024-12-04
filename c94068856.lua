@@ -1,5 +1,4 @@
 --タイムパッセージ
----@param c Card
 function c94068856.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

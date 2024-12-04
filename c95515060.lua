@@ -1,5 +1,4 @@
 --静寂のロッド－ケースト
----@param c Card
 function c95515060.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

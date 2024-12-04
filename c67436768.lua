@@ -1,5 +1,4 @@
 --スプリガンズ・ブラザーズ
----@param c Card
 function c67436768.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

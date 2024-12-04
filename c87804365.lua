@@ -1,5 +1,4 @@
 --斬機超階乗
----@param c Card
 function c87804365.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

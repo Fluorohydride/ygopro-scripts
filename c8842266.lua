@@ -1,5 +1,4 @@
 --ご隠居の猛毒薬
----@param c Card
 function c8842266.initial_effect(c)
 	--rec or dam
 	local e1=Effect.CreateEffect(c)

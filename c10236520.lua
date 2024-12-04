@@ -1,5 +1,4 @@
 --忍者義賊ゴエゴエ
----@param c Card
 function c10236520.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

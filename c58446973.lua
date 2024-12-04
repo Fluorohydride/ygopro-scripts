@@ -1,5 +1,4 @@
 --インフェルノイド・デカトロン
----@param c Card
 function c58446973.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

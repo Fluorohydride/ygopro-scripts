@@ -1,5 +1,4 @@
 --幻奏の音姫マイスタリン・シューベルト
----@param c Card
 function c57594700.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

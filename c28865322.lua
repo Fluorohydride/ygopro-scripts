@@ -1,5 +1,4 @@
 --魔装邪龍 イーサルウェポン
----@param c Card
 function c28865322.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

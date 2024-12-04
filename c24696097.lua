@@ -1,5 +1,4 @@
 --シューティング・スター・ドラゴン
----@param c Card
 function c24696097.initial_effect(c)
 	aux.AddMaterialCodeList(c,44508094)
 	--synchro summon

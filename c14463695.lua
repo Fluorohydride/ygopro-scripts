@@ -1,5 +1,4 @@
 --捕食接ぎ木
----@param c Card
 function c14463695.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

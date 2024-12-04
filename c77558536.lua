@@ -1,5 +1,4 @@
 --ライトロード・アサシン ライデン
----@param c Card
 function c77558536.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

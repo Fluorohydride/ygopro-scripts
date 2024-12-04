@@ -1,5 +1,4 @@
 --未界域の危険地帯
----@param c Card
 function c15083304.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

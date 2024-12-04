@@ -1,5 +1,4 @@
 --竜儀巧－メテオニス＝DRA
----@param c Card
 function c69815951.initial_effect(c)
 	c:EnableReviveLimit()
 	--

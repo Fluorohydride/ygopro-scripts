@@ -1,5 +1,4 @@
 --スノーダスト・ドラゴン
----@param c Card
 function c67675300.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

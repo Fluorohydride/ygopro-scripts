@@ -1,5 +1,4 @@
 --アークロード・パラディオン
----@param c Card
 function c45002991.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,99,c45002991.lcheck)

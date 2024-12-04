@@ -1,5 +1,4 @@
 --古代の機械兵士
----@param c Card
 function c56094445.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ブンボーグ008
----@param c Card
 function c24573625.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

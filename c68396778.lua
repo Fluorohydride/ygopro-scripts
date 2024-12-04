@@ -1,5 +1,4 @@
 --悪魔への貢物
----@param c Card
 function c68396778.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --EMラクダウン
----@param c Card
 function c44481227.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

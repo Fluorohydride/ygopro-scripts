@@ -1,5 +1,4 @@
 --異次元グランド
----@param c Card
 function c31849106.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

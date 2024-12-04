@@ -1,5 +1,4 @@
 --世壊輪廻
----@param c Card
 function c2116237.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--activate

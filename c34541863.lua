@@ -1,5 +1,4 @@
 --「A」細胞増殖装置
----@param c Card
 function c34541863.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

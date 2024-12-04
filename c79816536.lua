@@ -1,5 +1,4 @@
 --召喚師のスキル
----@param c Card
 function c79816536.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

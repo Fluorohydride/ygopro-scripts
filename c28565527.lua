@@ -1,5 +1,4 @@
 --黄龍の召喚士
----@param c Card
 function c28565527.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

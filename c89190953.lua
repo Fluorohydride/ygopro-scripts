@@ -1,5 +1,4 @@
 --次元融合殺
----@param c Card
 function c89190953.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--activate

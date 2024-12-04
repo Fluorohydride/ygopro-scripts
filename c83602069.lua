@@ -1,5 +1,4 @@
 --共闘するランドスターの剣士
----@param c Card
 function c83602069.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

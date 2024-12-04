@@ -1,5 +1,4 @@
 --リチュア・マーカー
----@param c Card
 function c39905966.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --カラクリ大権現 無零武
----@param c Card
 function c25904894.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_MACHINE),1)

@@ -1,5 +1,4 @@
 --ヘクサ・トルーデ
----@param c Card
 function c46294982.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--summon

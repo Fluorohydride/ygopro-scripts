@@ -1,5 +1,4 @@
 --魔轟神アシェンヴェイル
----@param c Card
 function c12235475.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

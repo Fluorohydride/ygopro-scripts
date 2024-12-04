@@ -1,5 +1,4 @@
 --ノクトビジョン・ドラゴン
----@param c Card
 function c70333910.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

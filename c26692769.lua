@@ -1,5 +1,4 @@
 --幻影騎士団ラスティ・バルディッシュ
----@param c Card
 function c26692769.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_DARK),2)

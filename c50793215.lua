@@ -1,5 +1,4 @@
 --深海姫プリマドーナ
----@param c Card
 function c50793215.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,5 +1,4 @@
 --銀河の施し
----@param c Card
 function c20349913.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ドラグニティ－レギオン
----@param c Card
 function c54578613.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

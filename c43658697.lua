@@ -1,5 +1,4 @@
 --U.A.フラッグシップ・ディール
----@param c Card
 function c43658697.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --不運なリポート
----@param c Card
 function c19763315.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

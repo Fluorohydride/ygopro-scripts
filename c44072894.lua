@@ -1,5 +1,4 @@
 --物資調達員
----@param c Card
 function c44072894.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔界劇場「ファンタスティックシアター」
----@param c Card
 function c77297908.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

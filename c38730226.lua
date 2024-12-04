@@ -1,5 +1,4 @@
 --英知の代行者 マーキュリー
----@param c Card
 function c38730226.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

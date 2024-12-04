@@ -1,5 +1,4 @@
 --怨念の魂 業火
----@param c Card
 function c23116808.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

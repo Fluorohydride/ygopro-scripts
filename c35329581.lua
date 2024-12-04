@@ -1,5 +1,4 @@
 --シャドー・インパルス
----@param c Card
 function c35329581.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

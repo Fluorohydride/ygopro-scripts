@@ -1,5 +1,4 @@
 --六花深々
----@param c Card
 function c32557233.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

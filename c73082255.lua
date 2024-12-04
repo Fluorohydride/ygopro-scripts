@@ -1,5 +1,4 @@
 --真血公ヴァンパイア
----@param c Card
 function c73082255.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,8,2,nil,nil,99)

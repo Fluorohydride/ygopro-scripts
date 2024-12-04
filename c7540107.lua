@@ -1,5 +1,4 @@
 --剛鬼ガッツ
----@param c Card
 function c7540107.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔獣の懐柔
----@param c Card
 function c72537897.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

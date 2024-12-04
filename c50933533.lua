@@ -1,5 +1,4 @@
 --古代の機械巨竜
----@param c Card
 function c50933533.initial_effect(c)
 	aux.AddCodeList(c,41172955,86445415,13839120)
 	--mat check

@@ -1,5 +1,4 @@
 --死者への供物
----@param c Card
 function c19230407.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

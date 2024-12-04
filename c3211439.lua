@@ -1,5 +1,4 @@
 --禁断の異本
----@param c Card
 function c3211439.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

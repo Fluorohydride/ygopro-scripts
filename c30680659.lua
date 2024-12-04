@@ -1,5 +1,4 @@
 --聖殿の水遣い
----@param c Card
 function c30680659.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--spsummon

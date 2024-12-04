@@ -1,5 +1,4 @@
 --花札衛－五光－
----@param c Card
 function c87460579.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),4,4)

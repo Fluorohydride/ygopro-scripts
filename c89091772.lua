@@ -1,5 +1,4 @@
 --超重武者ジシャ－Q
----@param c Card
 function c89091772.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

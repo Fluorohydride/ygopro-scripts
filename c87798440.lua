@@ -1,5 +1,4 @@
 --アーマー・ブレイカー
----@param c Card
 function c87798440.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

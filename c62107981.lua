@@ -1,5 +1,4 @@
 --E・HERO クノスペ
----@param c Card
 function c62107981.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

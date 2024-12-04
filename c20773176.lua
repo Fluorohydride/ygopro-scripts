@@ -1,5 +1,4 @@
 --炎獣の影霊衣－セフィラエグザ
----@param c Card
 function c20773176.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

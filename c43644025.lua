@@ -1,5 +1,4 @@
 --コクーン・リボーン
----@param c Card
 function c43644025.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

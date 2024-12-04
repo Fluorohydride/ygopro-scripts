@@ -1,5 +1,4 @@
 --幻奏の音女アリア
----@param c Card
 function c40502912.initial_effect(c)
 	--cannot be target/battle indestructable
 	local e1=Effect.CreateEffect(c)

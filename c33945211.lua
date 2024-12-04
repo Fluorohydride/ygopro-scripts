@@ -1,5 +1,4 @@
 --海晶乙女バシランリマ
----@param c Card
 function c33945211.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

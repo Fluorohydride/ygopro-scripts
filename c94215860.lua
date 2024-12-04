@@ -1,5 +1,4 @@
 --夜叉
----@param c Card
 function c94215860.initial_effect(c)
 	--spirit
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

@@ -1,5 +1,4 @@
 --スパークガン
----@param c Card
 function c97362768.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

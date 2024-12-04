@@ -1,5 +1,4 @@
 --シュトロームベルクの金の城
----@param c Card
 function c72283691.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

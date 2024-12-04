@@ -1,5 +1,4 @@
 --ヘル・ブランブル
----@param c Card
 function c45500495.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_PLANT),1)

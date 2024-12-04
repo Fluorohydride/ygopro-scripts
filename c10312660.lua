@@ -1,5 +1,4 @@
 --未界域の歓待
----@param c Card
 function c10312660.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

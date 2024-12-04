@@ -1,5 +1,4 @@
 --エターナル・ドレッド
----@param c Card
 function c35787450.initial_effect(c)
 	aux.AddCodeList(c,75041269)
 	--Activate

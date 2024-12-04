@@ -1,5 +1,4 @@
 --破戒蛮竜－バスター・ドラゴン
----@param c Card
 function c11790356.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

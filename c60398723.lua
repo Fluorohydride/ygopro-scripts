@@ -1,5 +1,4 @@
 --森のざわめき
----@param c Card
 function c60398723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

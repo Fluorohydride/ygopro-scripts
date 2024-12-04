@@ -1,5 +1,4 @@
 --転生炎獣の炎虞
----@param c Card
 function c28534130.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

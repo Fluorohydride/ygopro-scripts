@@ -1,5 +1,4 @@
 --RUM－幻影騎士団ラウンチ
----@param c Card
 function c3298689.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

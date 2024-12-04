@@ -1,5 +1,4 @@
 --超重武者オン－32
----@param c Card
 function c10333641.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

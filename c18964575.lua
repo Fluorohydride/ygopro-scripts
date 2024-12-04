@@ -1,5 +1,4 @@
 --速攻のかかし
----@param c Card
 function c18964575.initial_effect(c)
 	--end battle phase
 	local e1=Effect.CreateEffect(c)

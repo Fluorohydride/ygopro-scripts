@@ -1,5 +1,4 @@
 --ダイノルフィア・ディプロス
----@param c Card
 function c38628859.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

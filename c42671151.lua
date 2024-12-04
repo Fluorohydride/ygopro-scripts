@@ -1,5 +1,4 @@
 --フリッグのリンゴ
----@param c Card
 function c42671151.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

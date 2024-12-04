@@ -1,5 +1,4 @@
 --真竜凰マリアムネ
----@param c Card
 function c94160895.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

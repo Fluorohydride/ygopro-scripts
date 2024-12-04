@@ -1,6 +1,5 @@
 --カオス・ビースト－混沌の魔獣－
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)

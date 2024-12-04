@@ -1,5 +1,4 @@
 --ロード・オブ・ドラゴン－ドラゴンの支配者－
----@param c Card
 function c17985575.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

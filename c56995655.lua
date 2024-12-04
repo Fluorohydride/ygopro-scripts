@@ -1,5 +1,4 @@
 --不吉な占い
----@param c Card
 function c56995655.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

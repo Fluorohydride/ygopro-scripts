@@ -1,5 +1,4 @@
 --D－フュージョン
----@param c Card
 function c26841274.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

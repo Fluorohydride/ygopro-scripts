@@ -1,5 +1,4 @@
 --完全燃焼
----@param c Card
 function c25669282.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

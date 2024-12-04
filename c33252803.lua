@@ -1,5 +1,4 @@
 --RUM－クイック・カオス
----@param c Card
 function c33252803.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

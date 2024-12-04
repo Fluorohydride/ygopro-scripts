@@ -1,5 +1,4 @@
 --捕食惑星
----@param c Card
 function c51858200.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

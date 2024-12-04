@@ -1,5 +1,4 @@
 --弱体化の仮面
----@param c Card
 function c57882509.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

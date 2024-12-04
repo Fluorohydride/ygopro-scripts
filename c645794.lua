@@ -1,5 +1,4 @@
 --マジェスペクター・フロッグ
----@param c Card
 function c645794.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --パスト・イメージ
----@param c Card
 function c50292967.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

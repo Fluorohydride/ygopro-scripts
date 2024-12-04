@@ -1,5 +1,4 @@
 --瑚之龍
----@param c Card
 function c42566602.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

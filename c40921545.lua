@@ -1,5 +1,4 @@
 --ヴェルズ・カイトス
----@param c Card
 function c40921545.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

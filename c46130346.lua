@@ -1,5 +1,4 @@
 --ファイヤー・ボール
----@param c Card
 function c46130346.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

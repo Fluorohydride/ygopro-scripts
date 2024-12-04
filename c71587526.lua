@@ -1,5 +1,4 @@
 --因果切断
----@param c Card
 function c71587526.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

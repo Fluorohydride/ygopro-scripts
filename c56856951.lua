@@ -1,5 +1,4 @@
 --メテオ・プロミネンス
----@param c Card
 function c56856951.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

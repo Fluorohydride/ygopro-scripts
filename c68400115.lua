@@ -1,5 +1,4 @@
 --裸の王様
----@param c Card
 function c68400115.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

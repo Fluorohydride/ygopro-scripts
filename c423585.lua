@@ -1,5 +1,4 @@
 --召喚僧サモンプリースト
----@param c Card
 function c423585.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --DMZドラゴン
----@param c Card
 function c98371278.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔石術師 クルード
----@param c Card
 function c20630765.initial_effect(c)
 	c:EnableCounterPermit(0x16)
 	c:SetCounterLimit(0x16,1)

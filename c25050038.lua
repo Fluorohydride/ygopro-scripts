@@ -1,5 +1,4 @@
 --チェーン・ヒーリング
----@param c Card
 function c25050038.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

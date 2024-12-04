@@ -1,6 +1,5 @@
 --コズミック・クェーサー・ドラゴン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSynchroType,TYPE_SYNCHRO),aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),2)

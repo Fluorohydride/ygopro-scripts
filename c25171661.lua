@@ -1,5 +1,4 @@
 --インフェルニティ・ドワーフ
----@param c Card
 function c25171661.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

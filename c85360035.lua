@@ -1,5 +1,4 @@
 --双天拳の熊羆
----@param c Card
 function c85360035.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

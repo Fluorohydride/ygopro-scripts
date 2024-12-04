@@ -1,5 +1,4 @@
 --トリック・ボックス
----@param c Card
 function c93983867.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--activate

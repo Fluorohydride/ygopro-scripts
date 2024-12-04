@@ -1,5 +1,4 @@
 --ロード・ウォリアー
----@param c Card
 function c2322421.initial_effect(c)
 	aux.AddMaterialCodeList(c,71971554)
 	--synchro summon

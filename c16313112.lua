@@ -1,5 +1,4 @@
 --転生炎獣エメラルド・イーグル
----@param c Card
 function c16313112.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

@@ -1,5 +1,4 @@
 --烙印の剣
----@param c Card
 function c81767888.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--spsummon

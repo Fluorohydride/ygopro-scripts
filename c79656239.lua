@@ -1,5 +1,4 @@
 --アロマセラフィ－スイート・マジョラム
----@param c Card
 function c79656239.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,5 +1,4 @@
 --墓守の神職
----@param c Card
 function c21663205.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

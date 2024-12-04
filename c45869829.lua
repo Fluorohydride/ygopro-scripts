@@ -1,5 +1,4 @@
 --速攻魔力増幅器
----@param c Card
 function c45869829.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

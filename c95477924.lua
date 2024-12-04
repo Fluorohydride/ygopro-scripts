@@ -1,5 +1,4 @@
 --マジシャンズ・サルベーション
----@param c Card
 function c95477924.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--Activate

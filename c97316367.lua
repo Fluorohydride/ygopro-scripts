@@ -1,5 +1,4 @@
 --無限起動スクレイパー
----@param c Card
 function c97316367.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

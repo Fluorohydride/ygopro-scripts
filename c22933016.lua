@@ -1,5 +1,4 @@
 --Aiドリング・ボーン
----@param c Card
 function c22933016.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --灼熱の槍
----@param c Card
 function c18937875.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --宝玉の契約
----@param c Card
 function c8275702.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

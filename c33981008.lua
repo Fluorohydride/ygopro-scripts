@@ -1,5 +1,4 @@
 --魔導書院ラメイソン
----@param c Card
 function c33981008.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

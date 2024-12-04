@@ -1,5 +1,4 @@
 --ジュラック・インパクト
----@param c Card
 function c5479217.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

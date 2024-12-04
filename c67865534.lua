@@ -1,5 +1,4 @@
 --希望の魔術師
----@param c Card
 function c67865534.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

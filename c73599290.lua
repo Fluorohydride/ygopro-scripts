@@ -1,5 +1,4 @@
 --ソウルドレイン
----@param c Card
 function c73599290.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

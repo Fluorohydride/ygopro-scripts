@@ -1,5 +1,4 @@
 --ティアラメンツ・ルルカロス
----@param c Card
 function c84330567.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

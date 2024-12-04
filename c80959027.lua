@@ -1,5 +1,4 @@
 --魔導獣 バジリスク
----@param c Card
 function c80959027.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)

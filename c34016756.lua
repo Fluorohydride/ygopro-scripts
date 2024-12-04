@@ -1,5 +1,4 @@
 --フォース
----@param c Card
 function c34016756.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

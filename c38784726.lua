@@ -1,5 +1,4 @@
 --転生炎獣の降臨
----@param c Card
 function c38784726.initial_effect(c)
 	aux.AddCodeList(c,16313112)
 	--Activate

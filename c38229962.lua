@@ -1,5 +1,4 @@
 --大騎甲虫インヴィンシブル・アトラス
----@param c Card
 function c38229962.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

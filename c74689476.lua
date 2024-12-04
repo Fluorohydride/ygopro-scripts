@@ -1,5 +1,4 @@
 --結晶の魔女サンドリヨン
----@param c Card
 function c74689476.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

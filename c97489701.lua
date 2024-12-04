@@ -1,5 +1,4 @@
 --スカーレッド・ノヴァ・ドラゴン
----@param c Card
 function c97489701.initial_effect(c)
 	aux.AddMaterialCodeList(c,70902743)
 	--synchro summon

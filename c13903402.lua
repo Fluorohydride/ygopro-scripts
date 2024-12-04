@@ -1,5 +1,4 @@
 --光の王 マルデル
----@param c Card
 function c13903402.initial_effect(c)
 	c:SetUniqueOnField(1,0,13903402)
 	--to hand

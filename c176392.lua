@@ -1,5 +1,4 @@
 --コアキメイル・テストベッド
----@param c Card
 function c176392.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

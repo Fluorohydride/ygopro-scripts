@@ -1,5 +1,4 @@
 --アマゾネスペット虎
----@param c Card
 function c10979723.initial_effect(c)
 	c:SetUniqueOnField(1,0,10979723)
 	--atkup

@@ -1,5 +1,4 @@
 --No.8 紋章王ゲノム・ヘリター
----@param c Card
 function c47387961.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x76),4,2)

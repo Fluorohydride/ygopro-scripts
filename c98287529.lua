@@ -1,5 +1,4 @@
 --虚竜魔王アモルファクターP
----@param c Card
 function c98287529.initial_effect(c)
 	c:EnableReviveLimit()
 	--skip

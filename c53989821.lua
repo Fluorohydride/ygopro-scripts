@@ -1,5 +1,4 @@
 --SPYRAL GEAR－マルチワイヤー
----@param c Card
 function c53989821.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

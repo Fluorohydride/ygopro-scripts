@@ -1,5 +1,4 @@
 --ヘル・ブラスト
----@param c Card
 function c18271561.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

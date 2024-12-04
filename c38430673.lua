@@ -1,5 +1,4 @@
 --グランドクロス
----@param c Card
 function c38430673.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

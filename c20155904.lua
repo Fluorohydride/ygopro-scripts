@@ -1,5 +1,4 @@
 --十二獣クックル
----@param c Card
 function c20155904.initial_effect(c)
 	--shuffle
 	local e1=Effect.CreateEffect(c)

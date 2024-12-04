@@ -1,5 +1,4 @@
 --ナイトメアを駆る死霊
----@param c Card
 function c85684223.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

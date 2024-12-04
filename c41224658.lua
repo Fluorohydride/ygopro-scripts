@@ -1,5 +1,4 @@
 --野望のゴーファー
----@param c Card
 function c41224658.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

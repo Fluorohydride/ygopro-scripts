@@ -1,5 +1,4 @@
 --プランキッズ・ハウスバトラー
----@param c Card
 function c81997228.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

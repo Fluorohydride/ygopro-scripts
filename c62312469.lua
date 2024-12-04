@@ -1,5 +1,4 @@
 --ダーク・ドリアード
----@param c Card
 function c62312469.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

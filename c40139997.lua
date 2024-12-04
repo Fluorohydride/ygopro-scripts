@@ -1,5 +1,4 @@
 --ブラッド・ローズ・ドラゴン
----@param c Card
 function c40139997.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--synchro summon

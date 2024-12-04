@@ -1,5 +1,4 @@
 --No.77 ザ・セブン・シンズ
----@param c Card
 function c62541668.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,12,2,c62541668.ovfilter,aux.Stringid(62541668,0),2,c62541668.xyzop)

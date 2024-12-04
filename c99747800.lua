@@ -1,5 +1,4 @@
 --レジェンド・デビル
----@param c Card
 function c99747800.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

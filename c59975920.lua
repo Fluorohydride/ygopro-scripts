@@ -1,5 +1,4 @@
 --超量士レッドレイヤー
----@param c Card
 function c59975920.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

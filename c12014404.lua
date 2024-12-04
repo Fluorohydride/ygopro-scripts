@@ -1,5 +1,4 @@
 --ガガガガンマン
----@param c Card
 function c12014404.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,5 +1,4 @@
 --No.70 デッドリー・シン
----@param c Card
 function c80796456.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

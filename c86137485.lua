@@ -1,5 +1,4 @@
 --ヘル・ツイン・コップ
----@param c Card
 function c86137485.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(nil),1)

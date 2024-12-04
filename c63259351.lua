@@ -1,5 +1,4 @@
 --奇跡のジュラシック・エッグ
----@param c Card
 function c63259351.initial_effect(c)
 	c:EnableCounterPermit(0x14)
 	--cannot remove

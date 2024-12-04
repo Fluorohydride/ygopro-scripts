@@ -1,6 +1,5 @@
 --偉大なるダブルキャスター
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion eff

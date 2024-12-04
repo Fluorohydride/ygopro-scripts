@@ -1,5 +1,4 @@
 --青眼の双爆裂龍
----@param c Card
 function c2129638.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

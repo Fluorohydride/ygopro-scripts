@@ -1,5 +1,4 @@
 --重量オーバー
----@param c Card
 function c63193536.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)

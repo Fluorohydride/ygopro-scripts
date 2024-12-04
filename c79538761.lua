@@ -1,5 +1,4 @@
 --トルクチューン・ギア
----@param c Card
 function c79538761.initial_effect(c)
 	aux.EnableUnionAttribute(c,aux.TRUE)
 	--add type

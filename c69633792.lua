@@ -1,5 +1,4 @@
 --エヴォルダー・テリアス
----@param c Card
 function c69633792.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

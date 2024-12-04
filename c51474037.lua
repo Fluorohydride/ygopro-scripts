@@ -1,5 +1,4 @@
 --ヤモイモリ
----@param c Card
 function c51474037.initial_effect(c)
 	--change / destroy
 	local e1=Effect.CreateEffect(c)

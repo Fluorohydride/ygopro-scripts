@@ -1,5 +1,4 @@
 --ヘッド・ジャッジング
----@param c Card
 function c38143903.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --人形の家
----@param c Card
 function c67331360.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

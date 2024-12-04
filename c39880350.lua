@@ -1,5 +1,4 @@
 --聖天樹の精霊
----@param c Card
 function c39880350.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c39880350.mfilter,2,2,c39880350.lcheck)

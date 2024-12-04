@@ -1,5 +1,4 @@
 --RR－ラスト・ストリクス
----@param c Card
 function c97219708.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

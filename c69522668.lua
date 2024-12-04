@@ -1,5 +1,4 @@
 --魔鍵変鬼－トランスフルミネ
----@param c Card
 function c69522668.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x165),aux.NonTuner(aux.FilterBoolFunction(Card.IsType,TYPE_NORMAL)),1)

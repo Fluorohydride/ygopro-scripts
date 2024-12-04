@@ -1,5 +1,4 @@
 --No.74 マジカル・クラウン－ミッシング・ソード
----@param c Card
 function c16037007.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

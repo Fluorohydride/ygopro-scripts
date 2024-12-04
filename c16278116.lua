@@ -1,5 +1,4 @@
 --竜の束縛
----@param c Card
 function c16278116.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

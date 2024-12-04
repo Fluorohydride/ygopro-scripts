@@ -1,5 +1,4 @@
 --風魔の波動
----@param c Card
 function c2994495.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

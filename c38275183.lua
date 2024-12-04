@@ -1,5 +1,4 @@
 --八式対魔法多重結界
----@param c Card
 function c38275183.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

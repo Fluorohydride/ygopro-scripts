@@ -1,5 +1,4 @@
 --ガスタの巫女 ウィンダ
----@param c Card
 function c54455435.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

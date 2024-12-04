@@ -1,5 +1,4 @@
 --十二獣ヴァイパー
----@param c Card
 function c31755044.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)

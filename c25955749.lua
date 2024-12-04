@@ -1,5 +1,4 @@
 --閃刀術式－ジャミングウェーブ
----@param c Card
 function c25955749.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

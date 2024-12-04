@@ -1,5 +1,4 @@
 --ホーリー・ジェラル
----@param c Card
 function c84177693.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--recover

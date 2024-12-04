@@ -1,5 +1,4 @@
 --E-HERO ダーク・ガイア
----@param c Card
 function c58332301.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

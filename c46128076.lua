@@ -1,5 +1,4 @@
 --黒魔導師クラン
----@param c Card
 function c46128076.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

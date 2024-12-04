@@ -1,5 +1,4 @@
 --ヴォルカニック・エンペラー
----@param c Card
 function c46412900.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetSPSummonOnce(46412900)

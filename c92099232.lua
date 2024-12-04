@@ -1,5 +1,4 @@
 --シェイプシスター
----@param c Card
 function c92099232.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

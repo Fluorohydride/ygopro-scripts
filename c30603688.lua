@@ -1,5 +1,4 @@
 --幻想の見習い魔導師
----@param c Card
 function c30603688.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--special summon

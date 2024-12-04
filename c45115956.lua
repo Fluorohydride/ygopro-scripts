@@ -1,6 +1,5 @@
 --戦華史略－矯詔之叛
 local s,id,o=GetID()
----@param c Card
 function c45115956.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

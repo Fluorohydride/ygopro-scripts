@@ -1,5 +1,4 @@
 --マシンナーズ・ピースキーパー
----@param c Card
 function c78349103.initial_effect(c)
 	aux.EnableUnionAttribute(c,c78349103.filter)
 	--search

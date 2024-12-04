@@ -1,5 +1,4 @@
 --開闢の騎士
----@param c Card
 function c6628343.initial_effect(c)
 	--gain
 	local e1=Effect.CreateEffect(c)

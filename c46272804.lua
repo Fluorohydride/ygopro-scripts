@@ -1,5 +1,4 @@
 --ランス・リンドブルム
----@param c Card
 function c46272804.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

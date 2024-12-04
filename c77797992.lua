@@ -1,5 +1,4 @@
 --森の聖獣 アルパカリブ
----@param c Card
 function c77797992.initial_effect(c)
 	--indes1
 	local e1=Effect.CreateEffect(c)

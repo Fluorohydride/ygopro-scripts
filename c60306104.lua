@@ -1,5 +1,4 @@
 --進入禁止！No Entry！！
----@param c Card
 function c60306104.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

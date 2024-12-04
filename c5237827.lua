@@ -1,5 +1,4 @@
 --ヴァイロン・オーム
----@param c Card
 function c5237827.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

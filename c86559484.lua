@@ -1,5 +1,4 @@
 --X－レイ・ピアース
----@param c Card
 function c86559484.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --海晶乙女雪花
----@param c Card
 function c80627281.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

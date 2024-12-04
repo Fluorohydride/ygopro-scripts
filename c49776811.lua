@@ -1,5 +1,4 @@
 --ピースリア
----@param c Card
 function c49776811.initial_effect(c)
 	c:EnableCounterPermit(0x5f)
 	c:SetCounterLimit(0x5f,4)

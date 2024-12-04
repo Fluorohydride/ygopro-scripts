@@ -1,5 +1,4 @@
 --黄金の邪神像
----@param c Card
 function c65810489.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

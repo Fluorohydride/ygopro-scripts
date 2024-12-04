@@ -1,5 +1,4 @@
 --アルティメットサイキッカー
----@param c Card
 function c40101111.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

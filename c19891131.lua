@@ -1,5 +1,4 @@
 --クロノダイバー・レギュレーター
----@param c Card
 function c19891131.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヌメロン・ダイレクト
----@param c Card
 function c77402960.initial_effect(c)
 	aux.AddCodeList(c,41418852)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SPSUMMON_COUNT)

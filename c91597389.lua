@@ -1,5 +1,4 @@
 --ゲットライド！
----@param c Card
 function c91597389.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

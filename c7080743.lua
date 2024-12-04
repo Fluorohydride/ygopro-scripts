@@ -1,5 +1,4 @@
 --豪腕特急トロッコロッコ
----@param c Card
 function c7080743.initial_effect(c)
 	--effect gain
 	local e1=Effect.CreateEffect(c)

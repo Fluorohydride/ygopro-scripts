@@ -1,5 +1,4 @@
 --ジェネクス・サーチャー
----@param c Card
 function c67483216.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

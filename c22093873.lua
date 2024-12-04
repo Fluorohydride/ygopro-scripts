@@ -1,5 +1,4 @@
 --M・HERO カミカゼ
----@param c Card
 function c22093873.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

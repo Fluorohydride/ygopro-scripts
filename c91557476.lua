@@ -1,5 +1,4 @@
 --聖蔓の剣士
----@param c Card
 function c91557476.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c91557476.mfilter,1,1)

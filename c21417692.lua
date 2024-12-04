@@ -1,5 +1,4 @@
 --ダーク・エルフ
----@param c Card
 function c21417692.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

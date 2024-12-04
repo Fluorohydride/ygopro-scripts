@@ -1,5 +1,4 @@
 --氷結界の伝道師
----@param c Card
 function c50088247.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --煉獄の消華
----@param c Card
 function c78748366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

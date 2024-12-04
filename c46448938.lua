@@ -1,5 +1,4 @@
 --魔導書の神判
----@param c Card
 function c46448938.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

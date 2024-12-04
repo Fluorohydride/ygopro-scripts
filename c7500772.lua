@@ -1,5 +1,4 @@
 --イーグル・シャーク
----@param c Card
 function c7500772.initial_effect(c)
 	c:SetUniqueOnField(1,0,7500772)
 	--summon with no tribute

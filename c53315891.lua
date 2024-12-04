@@ -1,5 +1,4 @@
 --合神竜ティマイオス
----@param c Card
 function c53315891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

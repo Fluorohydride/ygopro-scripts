@@ -1,5 +1,4 @@
 --オッドアイズ・ペンデュラムグラフ・ドラゴン
----@param c Card
 function c66425726.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--revive limit

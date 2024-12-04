@@ -1,5 +1,4 @@
 --不屈の獣僕
----@param c Card
 function c8700633.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

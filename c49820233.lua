@@ -1,5 +1,4 @@
 --EMガトリングール
----@param c Card
 function c49820233.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

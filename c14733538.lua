@@ -1,5 +1,4 @@
 --竜呼相打つ
----@param c Card
 function c14733538.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

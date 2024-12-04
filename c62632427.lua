@@ -1,5 +1,4 @@
 --信用取引
----@param c Card
 function c62632427.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

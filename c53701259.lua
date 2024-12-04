@@ -1,5 +1,4 @@
 --覚醒の三幻魔
----@param c Card
 function c53701259.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Activate

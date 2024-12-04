@@ -1,5 +1,4 @@
 --コード・ラジエーター
----@param c Card
 function c75130221.initial_effect(c)
 	--hand link
 	local e1=Effect.CreateEffect(c)

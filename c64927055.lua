@@ -1,5 +1,4 @@
 --天空の歌声
----@param c Card
 function c64927055.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--to hand

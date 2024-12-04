@@ -1,5 +1,4 @@
 --ギガンティック・スプライト
----@param c Card
 function c54498517.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

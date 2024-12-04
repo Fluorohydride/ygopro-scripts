@@ -1,5 +1,4 @@
 --量子猫
----@param c Card
 function c87772572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

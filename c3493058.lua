@@ -1,5 +1,4 @@
 --サイコロン
----@param c Card
 function c3493058.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

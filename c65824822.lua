@@ -1,5 +1,4 @@
 --闇の取引
----@param c Card
 function c65824822.initial_effect(c)
 	--change effect
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --トゥーン・キャノン・ソルジャー
----@param c Card
 function c79875176.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--cannot attack

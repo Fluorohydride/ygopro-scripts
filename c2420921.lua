@@ -1,5 +1,4 @@
 --ライトロード・スピリット シャイア
----@param c Card
 function c2420921.initial_effect(c)
 	--atk def
 	local e1=Effect.CreateEffect(c)

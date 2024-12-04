@@ -1,5 +1,4 @@
 --マドルチェ・ティーブレイク
----@param c Card
 function c75833426.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

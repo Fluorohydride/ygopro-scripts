@@ -1,5 +1,4 @@
 --妖仙獣 凶旋嵐
----@param c Card
 function c49249907.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --地獄戦士
----@param c Card
 function c50916353.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

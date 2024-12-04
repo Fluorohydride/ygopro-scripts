@@ -1,5 +1,4 @@
 --フォトン・ジェネレーター・ユニット
----@param c Card
 function c66607691.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

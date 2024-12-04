@@ -1,5 +1,4 @@
 --ムドラ
----@param c Card
 function c82108372.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

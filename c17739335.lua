@@ -1,5 +1,4 @@
 --呪眼の王 ザラキエル
----@param c Card
 function c17739335.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x129),2)

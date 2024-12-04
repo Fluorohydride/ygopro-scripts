@@ -1,5 +1,4 @@
 --異次元の狂獣
----@param c Card
 function c48148828.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

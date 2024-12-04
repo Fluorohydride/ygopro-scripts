@@ -1,5 +1,4 @@
 --神聖魔導王 エンディミオン
----@param c Card
 function c40732515.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

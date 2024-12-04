@@ -1,5 +1,4 @@
 --星遺物を継ぐもの
----@param c Card
 function c99674361.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

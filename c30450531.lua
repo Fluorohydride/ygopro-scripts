@@ -1,5 +1,4 @@
 --降霊の儀式
----@param c Card
 function c30450531.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

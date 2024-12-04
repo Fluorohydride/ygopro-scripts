@@ -1,5 +1,4 @@
 --剣闘獣ヘラクレイノス
----@param c Card
 function c27346636.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

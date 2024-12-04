@@ -1,5 +1,4 @@
 --アンデット・ウォーリアー
----@param c Card
 function c31339260.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

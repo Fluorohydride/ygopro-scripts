@@ -1,5 +1,4 @@
 --ミス・リバイブ
----@param c Card
 function c83778600.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

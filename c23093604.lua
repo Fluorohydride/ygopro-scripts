@@ -1,5 +1,4 @@
 --X－セイバー パシウル
----@param c Card
 function c23093604.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

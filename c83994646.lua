@@ -1,5 +1,4 @@
 --死の4つ星てんとう虫
----@param c Card
 function c83994646.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

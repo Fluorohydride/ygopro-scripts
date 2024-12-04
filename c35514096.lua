@@ -1,5 +1,4 @@
 --ロードブリティッシュ
----@param c Card
 function c35514096.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(35514096,0))

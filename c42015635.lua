@@ -1,5 +1,4 @@
 --ネオスペース
----@param c Card
 function c42015635.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)

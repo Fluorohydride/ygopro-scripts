@@ -1,5 +1,4 @@
 --六武衆－ニサシ
----@param c Card
 function c31904181.initial_effect(c)
 	--atk twice
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --武神器－ヤサカニ
----@param c Card
 function c50474354.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

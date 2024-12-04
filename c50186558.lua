@@ -1,5 +1,4 @@
 --守護竜の結界
----@param c Card
 function c50186558.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

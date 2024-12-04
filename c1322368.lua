@@ -1,5 +1,4 @@
 --SPYRAL－ザ・ダブルヘリックス
----@param c Card
 function c1322368.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --BF－嵐砂のシャマール
----@param c Card
 function c8571567.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--same effect send this card to grave and spsummon another card check

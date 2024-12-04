@@ -1,5 +1,4 @@
 --黒衣の大賢者
----@param c Card
 function c92377303.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	c:EnableReviveLimit()

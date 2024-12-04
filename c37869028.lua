@@ -1,5 +1,4 @@
 --トリプル・ヴァイパー
----@param c Card
 function c37869028.initial_effect(c)
 	--multiattack
 	local e1=Effect.CreateEffect(c)

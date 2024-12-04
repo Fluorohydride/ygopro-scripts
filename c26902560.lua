@@ -1,5 +1,4 @@
 --融合賢者
----@param c Card
 function c26902560.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

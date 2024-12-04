@@ -1,5 +1,4 @@
 --パルキオンのうろこ
----@param c Card
 function c11813722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

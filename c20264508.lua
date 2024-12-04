@@ -1,5 +1,4 @@
 --サンダー・ショート
----@param c Card
 function c20264508.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

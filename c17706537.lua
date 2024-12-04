@@ -1,5 +1,4 @@
 --マンモ・フォッシル
----@param c Card
 function c17706537.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

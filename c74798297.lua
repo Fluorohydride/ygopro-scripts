@@ -1,5 +1,4 @@
 --不知火流 才華の陣
----@param c Card
 function c74798297.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

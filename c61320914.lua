@@ -1,5 +1,4 @@
 --V・HERO ミニマム・レイ
----@param c Card
 function c61320914.initial_effect(c)
 	--to field
 	local e1=Effect.CreateEffect(c)

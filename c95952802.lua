@@ -1,5 +1,4 @@
 --フラワー・ウルフ
----@param c Card
 function c95952802.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

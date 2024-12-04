@@ -1,5 +1,4 @@
 --椿姫ティタニアル
----@param c Card
 function c11819616.initial_effect(c)
 	--negate
 	local e2=Effect.CreateEffect(c)

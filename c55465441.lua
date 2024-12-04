@@ -1,5 +1,4 @@
 --ギブ＆テイク
----@param c Card
 function c55465441.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --破邪の刻印
----@param c Card
 function c17874674.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

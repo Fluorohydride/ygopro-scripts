@@ -1,5 +1,4 @@
 --トライポッド・フィッシュ
----@param c Card
 function c61254509.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

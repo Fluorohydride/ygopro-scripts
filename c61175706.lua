@@ -1,5 +1,4 @@
 --アルカナフォースⅣ－THE EMPEROR
----@param c Card
 function c61175706.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)

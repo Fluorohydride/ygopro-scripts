@@ -1,5 +1,4 @@
 --魂吸収
----@param c Card
 function c68073522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ガード・ドッグ
----@param c Card
 function c57346400.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

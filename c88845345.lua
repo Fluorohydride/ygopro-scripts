@@ -1,5 +1,4 @@
 --エレファン
----@param c Card
 function c88845345.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

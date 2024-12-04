@@ -1,5 +1,4 @@
 --スクラップ・ツイン・ドラゴン
----@param c Card
 function c50278554.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x24),aux.NonTuner(nil),1)

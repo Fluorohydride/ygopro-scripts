@@ -1,5 +1,4 @@
 --サイバー・ドラゴン・ドライ
----@param c Card
 function c59281922.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

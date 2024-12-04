@@ -1,5 +1,4 @@
 --窮鼠の進撃
----@param c Card
 function c84389640.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

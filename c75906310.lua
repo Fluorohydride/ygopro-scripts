@@ -1,5 +1,4 @@
 --アームド・ドラゴン・カタパルトキャノン
----@param c Card
 function c75906310.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

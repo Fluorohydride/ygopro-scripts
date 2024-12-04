@@ -1,5 +1,4 @@
 --驚楽園の助手 ＜Delia＞
----@param c Card
 function c22662014.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

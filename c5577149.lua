@@ -1,6 +1,5 @@
 --バーバリアン0号
 local s,id,o=GetID()
----@param c Card
 function c5577149.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

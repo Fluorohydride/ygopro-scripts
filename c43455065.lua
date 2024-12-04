@@ -1,5 +1,4 @@
 --魔力の泉
----@param c Card
 function c43455065.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

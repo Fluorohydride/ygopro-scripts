@@ -1,5 +1,4 @@
 --魔神儀－キャンドール
----@param c Card
 function c53303460.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

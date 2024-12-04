@@ -1,5 +1,4 @@
 --闇霊術－「欲」
----@param c Card
 function c38167722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

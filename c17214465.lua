@@ -1,5 +1,4 @@
 --海神の巫女
----@param c Card
 function c17214465.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--field

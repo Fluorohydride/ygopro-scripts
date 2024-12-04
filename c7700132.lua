@@ -1,5 +1,4 @@
 --ワーム・ノーブル
----@param c Card
 function c7700132.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

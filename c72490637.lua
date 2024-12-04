@@ -1,5 +1,4 @@
 --ダウジング・フュージョン
----@param c Card
 function c72490637.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

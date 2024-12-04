@@ -1,5 +1,4 @@
 --メガリス・ファレグ
----@param c Card
 function c63233638.initial_effect(c)
 	c:EnableReviveLimit()
 	--ritual summon

@@ -1,5 +1,4 @@
 --ウォークライ・フォティア
----@param c Card
 function c83286340.initial_effect(c)
 	--tohand & atkchange
 	local e1=Effect.CreateEffect(c)

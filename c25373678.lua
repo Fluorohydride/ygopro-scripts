@@ -1,5 +1,4 @@
 --旋風のボルテクス
----@param c Card
 function c25373678.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_WINDBEAST),1)

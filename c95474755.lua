@@ -1,5 +1,4 @@
 --No.89 電脳獣ディアブロシス
----@param c Card
 function c95474755.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

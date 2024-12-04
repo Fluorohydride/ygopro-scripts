@@ -1,5 +1,4 @@
 --遡洸する煉獄
----@param c Card
 function c61965407.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--Activate

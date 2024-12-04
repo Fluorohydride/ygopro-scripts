@@ -1,5 +1,4 @@
 --罅割れゆく斧
----@param c Card
 function c12117532.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --氷の魔妖－雪娘
----@param c Card
 function c72700231.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --工作列車シグナル・レッド
----@param c Card
 function c34475451.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

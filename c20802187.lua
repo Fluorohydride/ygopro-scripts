@@ -1,5 +1,4 @@
 --スピリット変換装置
----@param c Card
 function c20802187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --レディ・デバッガー
----@param c Card
 function c16188701.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

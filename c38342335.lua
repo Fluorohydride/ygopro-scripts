@@ -1,5 +1,4 @@
 --トロイメア・ユニコーン
----@param c Card
 function c38342335.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c38342335.lcheck)

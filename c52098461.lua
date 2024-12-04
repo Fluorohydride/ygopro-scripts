@@ -1,5 +1,4 @@
 --ラス・オブ・ネオス
----@param c Card
 function c52098461.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)

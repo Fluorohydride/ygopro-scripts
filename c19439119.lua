@@ -1,5 +1,4 @@
 --魔轟神クルス
----@param c Card
 function c19439119.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

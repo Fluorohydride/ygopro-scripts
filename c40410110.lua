@@ -1,5 +1,4 @@
 --錬金生物 ホムンクルス
----@param c Card
 function c40410110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

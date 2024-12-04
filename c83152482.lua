@@ -1,5 +1,4 @@
 --ユニオン・キャリアー
----@param c Card
 function c83152482.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

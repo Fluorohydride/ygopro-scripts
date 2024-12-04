@@ -1,5 +1,4 @@
 --トラファスフィア
----@param c Card
 function c72144675.initial_effect(c)
 	--tribute limit
 	local e1=Effect.CreateEffect(c)

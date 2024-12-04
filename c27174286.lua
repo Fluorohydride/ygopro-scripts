@@ -1,5 +1,4 @@
 --異次元からの帰還
----@param c Card
 function c27174286.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

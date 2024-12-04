@@ -1,5 +1,4 @@
 --スター・チェンジャー
----@param c Card
 function c63485233.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

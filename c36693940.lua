@@ -1,5 +1,4 @@
 --デストーイ・カスタム
----@param c Card
 function c36693940.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

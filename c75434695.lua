@@ -1,5 +1,4 @@
 --E・HERO フォレストマン
----@param c Card
 function c75434695.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

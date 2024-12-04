@@ -1,5 +1,4 @@
 --ジャンク・フォアード
----@param c Card
 function c56410040.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

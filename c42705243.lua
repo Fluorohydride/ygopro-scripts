@@ -1,5 +1,4 @@
 --御巫の契り
----@param c Card
 function c42705243.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --スノーマン・クリエイター
----@param c Card
 function c15893860.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

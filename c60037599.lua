@@ -1,5 +1,4 @@
 --竜輝巧－エルγ
----@param c Card
 function c60037599.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

@@ -1,5 +1,4 @@
 --暗黒界の傀儡
----@param c Card
 function c30284022.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

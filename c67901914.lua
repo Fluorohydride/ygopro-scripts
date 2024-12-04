@@ -1,5 +1,4 @@
 --魔弾－ネバー・エンドルフィン
----@param c Card
 function c67901914.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

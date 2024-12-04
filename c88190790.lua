@@ -1,5 +1,4 @@
 --アサルト・アーマー
----@param c Card
 function c88190790.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

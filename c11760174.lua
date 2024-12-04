@@ -1,5 +1,4 @@
 --言語道断侍
----@param c Card
 function c11760174.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

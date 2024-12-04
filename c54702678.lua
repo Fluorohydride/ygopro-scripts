@@ -1,5 +1,4 @@
 --極戦機王ヴァルバロイド
----@param c Card
 function c54702678.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

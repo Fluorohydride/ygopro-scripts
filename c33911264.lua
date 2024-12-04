@@ -1,5 +1,4 @@
 --太陽風帆船
----@param c Card
 function c33911264.initial_effect(c)
 	c:SetUniqueOnField(1,1,33911264)
 	--special summon

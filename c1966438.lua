@@ -1,5 +1,4 @@
 --雙極の破械神
----@param c Card
 function c1966438.initial_effect(c)
 	c:SetSPSummonOnce(1966438)
 	--spsummon

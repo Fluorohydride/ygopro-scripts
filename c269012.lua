@@ -1,5 +1,4 @@
 --神縛りの塚
----@param c Card
 function c269012.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --花札衛－牡丹に蝶－
----@param c Card
 function c57261568.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

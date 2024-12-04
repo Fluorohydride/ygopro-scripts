@@ -1,6 +1,5 @@
 --捕食植物トリアンティス
 --not fully implemented
----@param c Card
 function c17825378.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --ヴァリュアブル・アーマー
----@param c Card
 function c95166228.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--attack all

@@ -1,5 +1,4 @@
 --TG ハルバード・キャノン／バスター
----@param c Card
 function c47027714.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --武装竜の万雷
----@param c Card
 function c57605303.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

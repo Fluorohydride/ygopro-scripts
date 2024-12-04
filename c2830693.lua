@@ -1,5 +1,4 @@
 --虹クリボー
----@param c Card
 function c2830693.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

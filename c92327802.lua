@@ -1,5 +1,4 @@
 --ディフェクト・コンパイラー
----@param c Card
 function c92327802.initial_effect(c)
 	c:EnableCounterPermit(0x43)
 	c:SetCounterLimit(0x43,1)

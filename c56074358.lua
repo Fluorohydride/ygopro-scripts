@@ -1,5 +1,4 @@
 --D・フィールド
----@param c Card
 function c56074358.initial_effect(c)
 	c:EnableCounterPermit(0x8)
 	--activate

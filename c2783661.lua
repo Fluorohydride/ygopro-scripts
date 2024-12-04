@@ -1,5 +1,4 @@
 --青き眼の威光
----@param c Card
 function c2783661.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

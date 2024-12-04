@@ -1,5 +1,4 @@
 --魔神王の禁断契約書
----@param c Card
 function c10833828.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ダークゼブラ
----@param c Card
 function c59784896.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

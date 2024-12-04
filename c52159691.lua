@@ -1,5 +1,4 @@
 --レイダーズ・ウィング
----@param c Card
 function c52159691.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

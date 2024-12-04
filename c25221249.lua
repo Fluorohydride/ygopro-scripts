@@ -1,5 +1,4 @@
 --B・F・N
----@param c Card
 function c25221249.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	c:EnableCounterPermit(0x51)

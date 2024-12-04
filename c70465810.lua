@@ -1,5 +1,4 @@
 --BF－幻耀のスズリ
----@param c Card
 function c70465810.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--search

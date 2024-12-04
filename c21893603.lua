@@ -1,5 +1,4 @@
 --星杯の妖精リース
----@param c Card
 function c21893603.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

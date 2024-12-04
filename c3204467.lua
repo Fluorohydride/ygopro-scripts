@@ -1,5 +1,4 @@
 --ワーム・ソリッド
----@param c Card
 function c3204467.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)

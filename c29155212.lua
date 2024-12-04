@@ -1,5 +1,4 @@
 --ゴースト王－パンプキング－
----@param c Card
 function c29155212.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

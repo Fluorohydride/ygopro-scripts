@@ -1,5 +1,4 @@
 --ベビー・トラゴン
----@param c Card
 function c12533811.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,3)

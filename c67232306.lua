@@ -1,5 +1,4 @@
 --聖なる鎧 －ミラーメール－
----@param c Card
 function c67232306.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

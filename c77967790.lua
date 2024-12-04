@@ -1,5 +1,4 @@
 --ダイナレスラー・キング・Tレッスル
----@param c Card
 function c77967790.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x11a),2)

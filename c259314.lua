@@ -1,5 +1,4 @@
 --甲虫装機の手甲
----@param c Card
 function c259314.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

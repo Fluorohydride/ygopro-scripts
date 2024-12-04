@@ -1,5 +1,4 @@
 --エルシャドール・ネフィリム
----@param c Card
 function c20366274.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

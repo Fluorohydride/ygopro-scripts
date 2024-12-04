@@ -1,5 +1,4 @@
 --渋い忍者
----@param c Card
 function c87483942.initial_effect(c)
 	c:SetUniqueOnField(1,1,87483942)
 	--spsummon

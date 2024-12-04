@@ -1,5 +1,4 @@
 --ダイナミスト・ラッシュ
----@param c Card
 function c41554273.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

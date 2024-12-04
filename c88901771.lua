@@ -1,5 +1,4 @@
 --熟練の青魔道士
----@param c Card
 function c88901771.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,3)

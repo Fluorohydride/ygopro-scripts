@@ -1,5 +1,4 @@
 --連爆魔人
----@param c Card
 function c11685347.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

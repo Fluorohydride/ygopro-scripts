@@ -1,5 +1,4 @@
 --聖獣セルケト
----@param c Card
 function c89194033.initial_effect(c)
 	--selfdestroy
 	local e1=Effect.CreateEffect(c)

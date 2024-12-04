@@ -1,5 +1,4 @@
 --魂のペンデュラム
----@param c Card
 function c34884015.initial_effect(c)
 	c:EnableCounterPermit(0x4e)
 	--Activate

@@ -1,5 +1,4 @@
 --炎王獣 ガルドニクス
----@param c Card
 function c54149433.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --スリーバーストショット・ドラゴン
----@param c Card
 function c49725936.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2)

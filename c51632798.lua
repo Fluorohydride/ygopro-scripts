@@ -1,5 +1,4 @@
 --可変機獣 ガンナードラゴン
----@param c Card
 function c51632798.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

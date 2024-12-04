@@ -1,5 +1,4 @@
 --ゼンマイラビット
----@param c Card
 function c42874792.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

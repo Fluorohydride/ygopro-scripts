@@ -1,5 +1,4 @@
 --天威の龍拳聖
----@param c Card
 function c23935886.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c23935886.lcheck)

@@ -1,5 +1,4 @@
 --氷結界の依巫
----@param c Card
 function c44308317.initial_effect(c)
 	--Cannot Change a Battle Position
 	local e1=Effect.CreateEffect(c)

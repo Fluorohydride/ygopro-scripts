@@ -1,5 +1,4 @@
 --融合体駆除装置
----@param c Card
 function c72150572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

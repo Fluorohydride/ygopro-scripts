@@ -1,5 +1,4 @@
 --幻妖フルドラ
----@param c Card
 function c81263643.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ブリザード・プリンセス
----@param c Card
 function c28348537.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

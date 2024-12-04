@@ -1,5 +1,4 @@
 --聖騎士の追想 イゾルデ
----@param c Card
 function c59934749.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WARRIOR),2,2)

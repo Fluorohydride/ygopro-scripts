@@ -1,5 +1,4 @@
 --昇霊術師 ジョウゲン
----@param c Card
 function c41855169.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

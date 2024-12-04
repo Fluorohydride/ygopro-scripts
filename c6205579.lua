@@ -1,5 +1,4 @@
 --パラサイト・フュージョナー
----@param c Card
 function c6205579.initial_effect(c)
 	--fusion substitute
 	local e1=Effect.CreateEffect(c)

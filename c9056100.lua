@@ -1,5 +1,4 @@
 --氷結界の虎将 グルナード
----@param c Card
 function c9056100.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

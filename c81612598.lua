@@ -1,5 +1,4 @@
 --メタルフォーゼ・アダマンテ
----@param c Card
 function c81612598.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

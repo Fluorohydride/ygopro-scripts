@@ -1,5 +1,4 @@
 --召命の神弓－アポロウーサ
----@param c Card
 function c4280258.initial_effect(c)
 	c:SetUniqueOnField(1,0,4280258)
 	--link summon

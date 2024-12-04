@@ -1,5 +1,4 @@
 --祝福の教会－リチューアル・チャーチ
----@param c Card
 function c95658967.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

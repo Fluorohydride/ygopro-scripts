@@ -1,5 +1,4 @@
 --トゥーン・ブラック・マジシャン・ガール
----@param c Card
 function c90960358.initial_effect(c)
 	aux.AddCodeList(c,46986414,15259703)
 	c:EnableReviveLimit()

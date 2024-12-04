@@ -1,5 +1,4 @@
 --暗黒の眠りを誘うルシファー
----@param c Card
 function c52675689.initial_effect(c)
 	--atklimit
 	local e1=Effect.CreateEffect(c)

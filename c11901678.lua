@@ -1,5 +1,4 @@
 --ブラック・デーモンズ・ドラゴン
----@param c Card
 function c11901678.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

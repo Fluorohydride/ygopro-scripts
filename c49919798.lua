@@ -1,5 +1,4 @@
 --音響戦士サイザス
----@param c Card
 function c49919798.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

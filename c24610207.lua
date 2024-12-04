@@ -1,5 +1,4 @@
 --アステル・ドローン
----@param c Card
 function c24610207.initial_effect(c)
 	--xyzlv
 	local e1=Effect.CreateEffect(c)

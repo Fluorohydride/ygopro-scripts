@@ -1,5 +1,4 @@
 --恐楽園の死配人 ＜Arlechino＞
----@param c Card
 function c31600845.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

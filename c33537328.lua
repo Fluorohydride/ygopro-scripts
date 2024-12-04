@@ -1,5 +1,4 @@
 --地縛神 Cusillu
----@param c Card
 function c33537328.initial_effect(c)
 	c:SetUniqueOnField(1,1,aux.FilterBoolFunction(Card.IsSetCard,0x1021),LOCATION_MZONE)
 	--

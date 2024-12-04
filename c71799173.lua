@@ -1,5 +1,4 @@
 --ガーディアン・オブ・オーダー
----@param c Card
 function c71799173.initial_effect(c)
 	c:SetUniqueOnField(1,0,71799173)
 	--special summon

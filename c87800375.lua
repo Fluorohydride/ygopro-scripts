@@ -1,5 +1,4 @@
 --聖剣の導く未来
----@param c Card
 function c87800375.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

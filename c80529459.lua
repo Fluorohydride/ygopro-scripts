@@ -1,5 +1,4 @@
 --スクラップ・ラプター
----@param c Card
 function c80529459.initial_effect(c)
 	aux.AddCodeList(c,28388296)
 	--destroy

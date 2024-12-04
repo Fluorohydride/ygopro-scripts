@@ -1,5 +1,4 @@
 --海造賊－黒翼の水先人
----@param c Card
 function c91642007.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

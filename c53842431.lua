@@ -1,5 +1,4 @@
 --魔導獣 マスターケルベロス
----@param c Card
 function c53842431.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)

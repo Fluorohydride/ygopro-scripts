@@ -1,5 +1,4 @@
 --騎甲虫隊上陸態勢
----@param c Card
 function c13234975.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

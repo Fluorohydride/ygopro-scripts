@@ -1,5 +1,4 @@
 --超重魔獣キュウ－B
----@param c Card
 function c85528209.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x9a),1)

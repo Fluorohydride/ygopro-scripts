@@ -1,5 +1,4 @@
 --霞の谷の祈祷師
----@param c Card
 function c95443805.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

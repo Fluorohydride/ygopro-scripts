@@ -1,5 +1,4 @@
 --融合再生機構
----@param c Card
 function c22829942.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

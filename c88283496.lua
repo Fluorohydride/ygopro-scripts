@@ -1,5 +1,4 @@
 --極星獣ガルム
----@param c Card
 function c88283496.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --水精鱗－リードアビス
----@param c Card
 function c37781520.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

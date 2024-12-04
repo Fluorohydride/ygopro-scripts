@@ -1,5 +1,4 @@
 --遺言の仮面
----@param c Card
 function c22610082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

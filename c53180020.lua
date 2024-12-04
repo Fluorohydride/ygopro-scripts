@@ -1,5 +1,4 @@
 --影霊衣の戦士 エグザ
----@param c Card
 function c53180020.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

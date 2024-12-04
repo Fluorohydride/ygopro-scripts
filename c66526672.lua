@@ -1,5 +1,4 @@
 --悪夢の迷宮
----@param c Card
 function c66526672.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

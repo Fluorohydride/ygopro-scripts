@@ -1,5 +1,4 @@
 --蒼穹の機界騎士
----@param c Card
 function c20537097.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

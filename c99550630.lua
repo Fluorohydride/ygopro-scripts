@@ -1,5 +1,4 @@
 --閃刀術式－アフターバーナー
----@param c Card
 function c99550630.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

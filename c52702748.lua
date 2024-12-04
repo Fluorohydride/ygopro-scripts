@@ -1,5 +1,4 @@
 --異次元への案内人
----@param c Card
 function c52702748.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

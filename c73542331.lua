@@ -1,5 +1,4 @@
 --クシャトリラ・シャングリラ
----@param c Card
 function c73542331.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,7,2,nil,nil,99)

@@ -1,5 +1,4 @@
 --フェイク・エクスプロージョン・ペンタ
----@param c Card
 function c41234315.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

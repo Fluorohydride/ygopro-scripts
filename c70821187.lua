@@ -1,5 +1,4 @@
 --再生ミイラ
----@param c Card
 function c70821187.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

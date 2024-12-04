@@ -1,5 +1,4 @@
 --イビリチュア・マインドオーガス
----@param c Card
 function c11877465.initial_effect(c)
 	c:EnableReviveLimit()
 	--return to deck

@@ -1,5 +1,4 @@
 --魔導加速
----@param c Card
 function c38325384.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

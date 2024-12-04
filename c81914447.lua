@@ -1,5 +1,4 @@
 --No－P.U.N.K.オーガ・ナンバー
----@param c Card
 function c81914447.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

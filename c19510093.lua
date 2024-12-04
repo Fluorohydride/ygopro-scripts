@@ -1,5 +1,4 @@
 --超重僧兵ビッグベン－K
----@param c Card
 function c19510093.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

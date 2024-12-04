@@ -1,5 +1,4 @@
 --フュージョニスト
----@param c Card
 function c1641882.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

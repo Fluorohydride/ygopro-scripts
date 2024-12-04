@@ -1,5 +1,4 @@
 --ティアラメンツ・メイルゥ
----@param c Card
 function c74078255.initial_effect(c)
 	--deckdes
 	local e1=Effect.CreateEffect(c)

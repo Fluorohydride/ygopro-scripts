@@ -1,5 +1,4 @@
 --極星宝スヴァリン
----@param c Card
 function c64797746.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

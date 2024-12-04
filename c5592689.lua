@@ -1,5 +1,4 @@
 --サクリファイス・ロータス
----@param c Card
 function c5592689.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

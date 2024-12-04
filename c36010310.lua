@@ -1,5 +1,4 @@
 --溟界の滓－ヌル
----@param c Card
 function c36010310.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

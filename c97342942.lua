@@ -1,5 +1,4 @@
 --エクトプラズマー
----@param c Card
 function c97342942.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

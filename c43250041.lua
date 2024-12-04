@@ -1,5 +1,4 @@
 --ドレインシールド
----@param c Card
 function c43250041.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

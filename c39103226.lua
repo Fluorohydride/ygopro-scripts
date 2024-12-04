@@ -1,5 +1,4 @@
 --台貫計量
----@param c Card
 function c39103226.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

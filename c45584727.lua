@@ -1,5 +1,4 @@
 --ワルキューレの抱擁
----@param c Card
 function c45584727.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)

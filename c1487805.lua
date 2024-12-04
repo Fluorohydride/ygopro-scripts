@@ -1,5 +1,4 @@
 --宇宙鋏ゼロオル
----@param c Card
 function c1487805.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_REPTILE),2)

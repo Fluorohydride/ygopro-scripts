@@ -1,5 +1,4 @@
 --竜の血族
----@param c Card
 function c2833249.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

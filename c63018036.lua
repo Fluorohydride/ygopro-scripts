@@ -1,5 +1,4 @@
 --緊急鋼核処分
----@param c Card
 function c63018036.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

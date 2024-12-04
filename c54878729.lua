@@ -1,5 +1,4 @@
 --クロニクル・ソーサレス
----@param c Card
 function c54878729.initial_effect(c)
 	aux.AddCodeList(c,89631139,46986414)
 	--to graveyard

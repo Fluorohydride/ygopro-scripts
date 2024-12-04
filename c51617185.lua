@@ -1,5 +1,4 @@
 --マシンナーズ・メガフォーム
----@param c Card
 function c51617185.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --アルカナフォースⅥ－THE LOVERS
----@param c Card
 function c97574404.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)

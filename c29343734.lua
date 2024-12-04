@@ -1,5 +1,4 @@
 --E・HERO エリクシーラー
----@param c Card
 function c29343734.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

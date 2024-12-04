@@ -1,5 +1,4 @@
 --弾丸特急バレット・ライナー
----@param c Card
 function c52481437.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

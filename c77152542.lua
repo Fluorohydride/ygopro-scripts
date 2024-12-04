@@ -1,5 +1,4 @@
 --BF－砂塵のハルマッタン
----@param c Card
 function c77152542.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

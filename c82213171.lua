@@ -1,5 +1,4 @@
 --闇王プロメティス
----@param c Card
 function c82213171.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

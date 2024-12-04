@@ -1,5 +1,4 @@
 --イグナイト・ユナイト
----@param c Card
 function c38848158.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

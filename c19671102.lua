@@ -1,5 +1,4 @@
 --メールの階段
----@param c Card
 function c19671102.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

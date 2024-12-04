@@ -1,5 +1,4 @@
 --永遠なる銀河
----@param c Card
 function c82162616.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --天穹覇龍ドラゴアセンション
----@param c Card
 function c37910722.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

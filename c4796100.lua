@@ -1,5 +1,4 @@
 --有翼幻獣キマイラ
----@param c Card
 function c4796100.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

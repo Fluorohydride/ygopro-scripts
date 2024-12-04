@@ -1,5 +1,4 @@
 --星遺物の選託
----@param c Card
 function c59778096.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

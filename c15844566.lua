@@ -1,5 +1,4 @@
 --パワーコード・トーカー
----@param c Card
 function c15844566.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

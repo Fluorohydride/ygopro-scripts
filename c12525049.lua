@@ -1,5 +1,4 @@
 --音響戦士ギータス
----@param c Card
 function c12525049.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

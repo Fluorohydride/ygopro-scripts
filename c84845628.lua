@@ -1,5 +1,4 @@
 --獄落鳥
----@param c Card
 function c84845628.initial_effect(c)
 	--atk & def
 	local e1=Effect.CreateEffect(c)

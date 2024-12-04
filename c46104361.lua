@@ -1,5 +1,4 @@
 --サイバース・ホワイトハット
----@param c Card
 function c46104361.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

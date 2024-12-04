@@ -1,5 +1,4 @@
 --CNo.73 激瀧瀑神アビス・スープラ
----@param c Card
 function c96864105.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3)

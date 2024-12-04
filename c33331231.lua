@@ -1,5 +1,4 @@
 --閃術兵器－H.A.M.P.
----@param c Card
 function c33331231.initial_effect(c)
 	--special summon rule(on self field)
 	local e1=Effect.CreateEffect(c)

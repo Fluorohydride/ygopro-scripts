@@ -1,5 +1,4 @@
 --デスマニア・デビル
----@param c Card
 function c42908201.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

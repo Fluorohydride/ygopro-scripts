@@ -1,5 +1,4 @@
 --輝竜星－ショウフク
----@param c Card
 function c83755611.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_WYRM),1)

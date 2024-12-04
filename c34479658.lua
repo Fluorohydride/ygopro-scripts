@@ -1,5 +1,4 @@
 --ダーク・アリゲーター
----@param c Card
 function c34479658.initial_effect(c)
 	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

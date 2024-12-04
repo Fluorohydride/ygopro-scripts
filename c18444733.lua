@@ -1,5 +1,4 @@
 --雷龍放電
----@param c Card
 function c18444733.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

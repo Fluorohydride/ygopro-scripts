@@ -1,5 +1,4 @@
 --女王の選択
----@param c Card
 function c58477767.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

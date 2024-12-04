@@ -1,5 +1,4 @@
 --黒薔薇の魔女
----@param c Card
 function c17720747.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

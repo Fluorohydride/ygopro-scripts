@@ -1,6 +1,5 @@
 --結束と絆の魔導師
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

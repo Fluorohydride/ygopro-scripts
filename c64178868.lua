@@ -1,5 +1,4 @@
 --バトル・サバイバー
----@param c Card
 function c64178868.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

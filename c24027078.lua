@@ -1,5 +1,4 @@
 --アヴァロンの魔女モルガン
----@param c Card
 function c24027078.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(24027078,0))

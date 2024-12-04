@@ -1,5 +1,4 @@
 --マクロコスモス
----@param c Card
 function c30241314.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

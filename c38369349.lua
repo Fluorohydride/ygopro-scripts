@@ -1,5 +1,4 @@
 --トゥーン・ドラゴン・エッガー
----@param c Card
 function c38369349.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --雷風魔神－ゲート・ガーディアン
----@param c Card
 function c34904525.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

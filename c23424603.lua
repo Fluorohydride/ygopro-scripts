@@ -1,5 +1,4 @@
 --荒野
----@param c Card
 function c23424603.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

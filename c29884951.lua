@@ -1,5 +1,4 @@
 --相剣瑞獣－純鈞
----@param c Card
 function c29884951.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サブテラーマリス・エルガウスト
----@param c Card
 function c47556396.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

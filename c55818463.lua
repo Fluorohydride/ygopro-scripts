@@ -1,5 +1,4 @@
 --死王リッチーロード
----@param c Card
 function c55818463.initial_effect(c)
 	--tribute limit
 	local e1=Effect.CreateEffect(c)

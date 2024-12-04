@@ -1,5 +1,4 @@
 --A・ジェネクス・トライフォース
----@param c Card
 function c52709508.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(nil),1)

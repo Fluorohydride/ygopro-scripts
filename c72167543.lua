@@ -1,5 +1,4 @@
 --ダウナード・マジシャン
----@param c Card
 function c72167543.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4,2,c72167543.ovfilter,aux.Stringid(72167543,0))

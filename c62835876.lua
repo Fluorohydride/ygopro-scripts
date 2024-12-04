@@ -1,5 +1,4 @@
 --善悪の彼岸
----@param c Card
 function c62835876.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,35330871)
 	--search

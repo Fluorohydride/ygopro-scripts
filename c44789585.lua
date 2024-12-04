@@ -1,5 +1,4 @@
 --ナチュル・ビーンズ
----@param c Card
 function c44789585.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

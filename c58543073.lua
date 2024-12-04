@@ -1,5 +1,4 @@
 --SRデュプリゲート
----@param c Card
 function c58543073.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

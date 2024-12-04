@@ -1,5 +1,4 @@
 --機巧狐－宇迦之御魂稲荷
----@param c Card
 function c90361289.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

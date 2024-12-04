@@ -1,5 +1,4 @@
 --疫病ウィルス ブラックダスト
----@param c Card
 function c69954399.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

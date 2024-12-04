@@ -1,5 +1,4 @@
 --辺境の大賢者
----@param c Card
 function c38742075.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --大将軍 紫炎
----@param c Card
 function c63176202.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --武神器－オロチ
----@param c Card
 function c94096616.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

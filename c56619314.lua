@@ -1,5 +1,4 @@
 --DDD覇龍王ペンドラゴン
----@param c Card
 function c56619314.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

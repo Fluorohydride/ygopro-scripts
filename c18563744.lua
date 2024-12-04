@@ -1,5 +1,4 @@
 --沈黙の剣
----@param c Card
 function c18563744.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

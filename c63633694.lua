@@ -1,5 +1,4 @@
 --機巧蹄－天迦久御雷
----@param c Card
 function c63633694.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

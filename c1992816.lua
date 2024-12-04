@@ -1,5 +1,4 @@
 --No.9 天蓋星ダイソン・スフィア
----@param c Card
 function c1992816.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2)

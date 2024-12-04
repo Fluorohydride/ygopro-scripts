@@ -1,5 +1,4 @@
 --極星霊デックアールヴ
----@param c Card
 function c77060848.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

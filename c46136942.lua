@@ -1,5 +1,4 @@
 --EMオッドアイズ・ディゾルヴァー
----@param c Card
 function c46136942.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--fusion (p)

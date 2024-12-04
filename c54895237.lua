@@ -1,5 +1,4 @@
 --晴天気ベンガーラ
----@param c Card
 function c54895237.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

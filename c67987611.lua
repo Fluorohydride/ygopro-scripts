@@ -1,5 +1,4 @@
 --アマゾネスの弩弓隊
----@param c Card
 function c67987611.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

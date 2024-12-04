@@ -1,5 +1,4 @@
 --リターン・オブ・ザ・ワールド
----@param c Card
 function c81306186.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

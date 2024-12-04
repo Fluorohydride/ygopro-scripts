@@ -1,5 +1,4 @@
 --コアキメイル・シーパンサー
----@param c Card
 function c74576482.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost
