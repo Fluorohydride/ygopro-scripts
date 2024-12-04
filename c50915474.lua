@@ -26,7 +26,6 @@ function s.initial_effect(c)
 	e3:SetOperation(s.atkop)
 	c:RegisterEffect(e3)
 end
-s.toss_coin=true
 function s.thfilter(c)
 	return not c:IsCode(id) and c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_COIN)) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
