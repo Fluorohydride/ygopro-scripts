@@ -3,15 +3,12 @@
 function c97574404.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
-end
-function c97574404.arcanareg(c,coin)
 	--coin effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_DOUBLE_TRIBUTE)
 	e1:SetCondition(c97574404.dtcon)
 	e1:SetValue(c97574404.dtval)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
@@ -22,12 +19,10 @@ function c97574404.arcanareg(c,coin)
 	e2:SetTargetRange(1,1)
 	e2:SetCondition(c97574404.sumcon)
 	e2:SetTarget(c97574404.sumtg)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_MSET)
 	c:RegisterEffect(e3)
-	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c97574404.dtcon(e)
 	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
