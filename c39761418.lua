@@ -31,7 +31,7 @@ function s.initial_effect(c)
 end
 s.toss_coin=true
 function s.cfilter(c)
-	return c:IsFaceup() and c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN))
+	return c:IsFaceup() and c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_COIN))
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
@@ -52,7 +52,7 @@ function s.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function s.setfilter(c)
-	return c:IsType(TYPE_SPELL) and c:IsSSetable() and c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN))
+	return c:IsType(TYPE_SPELL) and c:IsSSetable() and c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_COIN))
 end
 function s.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:GetSequence()<5

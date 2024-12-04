@@ -47,7 +47,7 @@ function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x5) and c:IsLevel(10) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function s.thfilter(c)
-	return c:IsEffectProperty(aux.EffectCategoryFilter(CATEGORY_COIN)) and c:IsAbleToHand()
+	return c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_COIN)) and c:IsAbleToHand()
 end
 function s.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
