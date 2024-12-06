@@ -1,6 +1,13 @@
 --ドレイク・シャーク
 local s,id,o=GetID()
 function s.initial_effect(c)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e0:SetCode(EVENT_ADJUST)
+	e0:SetRange(0xff)
+	e0:SetOperation(s.adjustop)
+	c:RegisterEffect(e0)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -33,8 +40,23 @@ function s.initial_effect(c)
 	e3:SetTarget(s.xyztg)
 	e3:SetOperation(s.xyzop)
 	c:RegisterEffect(e3)
-	if not s.global_check then
-		s.global_check=true
+end
+function s.Drake_shark_f(function_f,int_lv,card_c)
+	return function (c)
+			   return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
+	end
+end
+function s.Drake_shark_gf(int_ct,int_tp)
+	return function (g)
+			   return g:GetCount()==int_ct or g:GetCount()==int_ct-1 and g:IsExists(s.xfilter,1,nil,int_tp)
+	end
+end
+function s.xfilter(c,tp)
+	return c:IsHasEffect(id,tp)
+end
+function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
+	if not s.globle_check then
+		s.globle_check=true
 		Drake_shark_AddXyzProcedure=aux.AddXyzProcedure
 		function aux.AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
 			if card_c:IsAttribute(ATTRIBUTE_WATER) and int_ct>=3 then
@@ -63,7 +85,9 @@ function s.initial_effect(c)
 										if mg:GetCount()==minc and mg:IsExists(s.xfilter,1,nil) then
 											local ttc=mg:Filter(s.xfilter,nil):GetFirst()
 											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
+											if tte then
+												tte:UseCountLimit(tp)
+											end
 										end
 										if e:GetLabel()==1 then
 											local mg2=mg:GetFirst():GetOverlayGroup()
@@ -86,7 +110,7 @@ function s.initial_effect(c)
 									end
 								end
 					end
-					aux.AddXyzProcedureLevelFree(card_c,s.f(function_f,int_lv,card_c),s.gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct,function_alterf,int_dese,function_op)
+					aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct,function_alterf,int_dese,function_op)
 					Auxiliary.XyzLevelFreeOperationAlter=Drake_shark_XyzLevelFreeOperationAlter
 				else
 					Drake_shark_XyzLevelFreeOperation=Auxiliary.XyzLevelFreeOperation
@@ -113,7 +137,9 @@ function s.initial_effect(c)
 										if mg:GetCount()==minct and mg:IsExists(s.xfilter,1,nil) then
 											local ttc=mg:Filter(s.xfilter,nil):GetFirst()
 											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
+											if tte then
+												tte:UseCountLimit(tp)
+											end
 										end
 										if e:GetLabel()==1 then
 											local mg2=mg:GetFirst():GetOverlayGroup()
@@ -136,7 +162,7 @@ function s.initial_effect(c)
 									end
 								end
 					end
-					aux.AddXyzProcedureLevelFree(card_c,s.f(function_f,int_lv,card_c),s.gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct)
+					aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct)
 					Auxiliary.XyzLevelFreeOperation=Drake_shark_XyzLevelFreeOperation
 				end
 			else
@@ -147,20 +173,17 @@ function s.initial_effect(c)
 				end
 			end
 		end
+		local rg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_EXTRA,LOCATION_EXTRA,nil,TYPE_MONSTER)
+		for tc in aux.Next(rg) do
+			if tc.initial_effect then
+				local Traitor_initial_effect=s.initial_effect
+				s.initial_effect=function() end
+				tc:ReplaceEffect(id,0)
+				s.initial_effect=Traitor_initial_effect
+				tc.initial_effect(tc)
+			end
+		end
 	end
-end
-function s.f(function_f,int_lv,card_c)
-	return function (c)
-			   return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
-	end
-end
-function s.gf(int_ct,int_tp)
-	return function (g)
-			   return g:GetCount()==int_ct or g:GetCount()==int_ct-1 and g:IsExists(s.xfilter,1,nil,int_tp)
-	end
-end
-function s.xfilter(c,tp)
-	return c:IsHasEffect(id,tp)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsReason(REASON_DRAW)
