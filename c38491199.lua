@@ -7,7 +7,7 @@ function c38491199.initial_effect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_NEGATE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
-	e1:SetRange(LOCATION_HAND)
+	e1:SetRange(LOCATION_HAND+LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e1:SetCondition(c38491199.negcon)
 	e1:SetCost(c38491199.negcost)
@@ -20,7 +20,7 @@ function c38491199.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c38491199.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsChainNegatable(ev) and aux.damcon1(e,tp,eg,ep,ev,re,r,rp)
+	return ep==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev) and aux.damcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38491199.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
