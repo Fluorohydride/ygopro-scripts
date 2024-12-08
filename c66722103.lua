@@ -27,7 +27,7 @@ function c66722103.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66722103.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
+	return ep==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev) and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c66722103.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
