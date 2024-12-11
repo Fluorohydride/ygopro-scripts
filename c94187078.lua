@@ -35,9 +35,6 @@ function c94187078.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
-function c94187078.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsSummonableCard()
-end
 function c94187078.filter(c,e,tp)
 	return c:IsSetCard(0x154) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DrytronSpSummonType(c))
 end
