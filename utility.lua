@@ -1052,7 +1052,7 @@ function Auxiliary.DrytronSpSummonCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function Auxiliary.DrytronSpSummonLimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsSummonableCard()
+	return c:IsSummonableCard() and c:GetOriginalType()&(TYPE_SPELL|TYPE_TRAP|TYPE_TRAPMONSTER)==0
 end
 function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==100 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
