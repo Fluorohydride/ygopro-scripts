@@ -1,6 +1,13 @@
 --ドレイク・シャーク
 local s,id,o=GetID()
 function s.initial_effect(c)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e0:SetCode(EVENT_ADJUST)
+	e0:SetRange(0xff)
+	e0:SetOperation(s.adjustop)
+	c:RegisterEffect(e0)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -18,7 +25,9 @@ function s.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetCode(id)
+	e2:SetValue(id)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetTarget(s.sxyzfilter)
 	e2:SetCountLimit(1,id+o)
 	c:RegisterEffect(e2)
 	--material effect
@@ -33,20 +42,73 @@ function s.initial_effect(c)
 	e3:SetTarget(s.xyztg)
 	e3:SetOperation(s.xyzop)
 	c:RegisterEffect(e3)
-	if not s.global_check then
-		s.global_check=true
+end
+function s.sxyzfilter(e,c)
+	return c:IsAttribute(ATTRIBUTE_WATER)
+end
+function s.Drake_shark_f(function_f,int_lv,card_c)
+	return function (c)
+			   return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
+	end
+end
+function s.sxfilter(c,tp,xc,eid)
+	local te=c:IsHasEffect(id,tp)
+	if te and te:GetValue()==eid then
+		local etg=te:GetTarget()
+		return etg(te,xc)
+	end
+end
+function s.Drake_shark_gf(int_ct,int_tp,xc)
+	return function (g)
+			   local ct=g:GetCount()
+			   if g:IsExists(s.sxfilter,1,nil,int_tp,xc,id) then
+				   ct=ct+1
+			   end
+			   if g:IsExists(s.sxfilter,1,nil,int_tp,xc,101208009) then
+				   ct=ct+1
+			   end
+			   return ct>=int_ct
+	end
+end
+function s.xfilter(c,tp)
+	return c:IsHasEffect(id,tp)
+end
+function s.eftfilter(c,tp)
+	local te=c:IsHasEffect(id,tp)
+	return te:GetValue()
+end
+function s.gcheck(g,tp)
+	return g:GetClassCount(s.eftfilter,tp)==g:GetCount()
+end
+function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(0,81096431)==0 then
+		Duel.RegisterFlagEffect(0,81096431,0,0,1)
 		Drake_shark_AddXyzProcedure=aux.AddXyzProcedure
 		function aux.AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
-			if card_c:IsAttribute(ATTRIBUTE_WATER) and int_ct>=3 then
+			if int_ct>=3 then
 				if function_alterf then
 					Drake_shark_XyzLevelFreeOperationAlter=Auxiliary.XyzLevelFreeOperationAlter
 					function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minc,maxc,alterf,alterdesc,alterop)
 						return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 									if og and not min then
-										if og:GetCount()==minc and og:IsExists(s.xfilter,1,nil) then
-											local ttc=og:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
+										if og:GetCount()<=maxc and mg:GetCount()>=minc and maxc==minc+2 then
+											local et=maxc-og:GetCount()
+											local exg=og:Filter(Card.IsHasEffect,nil,id,tp)
+											local ext=exg:GetClassCount(s.eftfilter,tp)
+											if et==0 or 2-et==ext then
+												for ttc in aux.Next(og) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											else
+												local st=2-et
+												Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+												local reg=exg:SelectSubGroup(tp,s.gcheck,false,st,st,tp)
+												for ttc in aux.Next(reg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											end
 										end
 										local sg=Group.CreateGroup()
 										local tc=og:GetFirst()
@@ -60,10 +122,24 @@ function s.initial_effect(c)
 										Duel.Overlay(c,og)
 									else
 										local mg=e:GetLabelObject()
-										if mg:GetCount()==minc and mg:IsExists(s.xfilter,1,nil) then
-											local ttc=mg:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
+										if mg:GetCount()<=maxc and mg:GetCount()>=minc and maxc==minc+2 then
+											local et=maxc-mg:GetCount()
+											local exg=mg:Filter(Card.IsHasEffect,nil,id,tp)
+											local ext=exg:GetClassCount(s.eftfilter,tp)
+											if et==0 or 2-et==ext then
+												for ttc in aux.Next(mg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											else
+												local st=2-et
+												Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+												local reg=exg:SelectSubGroup(tp,s.gcheck,false,st,st,tp)
+												for ttc in aux.Next(reg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											end
 										end
 										if e:GetLabel()==1 then
 											local mg2=mg:GetFirst():GetOverlayGroup()
@@ -86,17 +162,31 @@ function s.initial_effect(c)
 									end
 								end
 					end
-					aux.AddXyzProcedureLevelFree(card_c,s.f(function_f,int_lv,card_c),s.gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct,function_alterf,int_dese,function_op)
+					aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner(),card_c),int_ct-2,int_ct,function_alterf,int_dese,function_op)
 					Auxiliary.XyzLevelFreeOperationAlter=Drake_shark_XyzLevelFreeOperationAlter
 				else
 					Drake_shark_XyzLevelFreeOperation=Auxiliary.XyzLevelFreeOperation
 					function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
 						return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 									if og and not min then
-										if og:GetCount()==minct and og:IsExists(s.xfilter,1,nil) then
-											local ttc=og:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
+										if mg:GetCount()<=maxc and mg:GetCount()>=minct and maxc==minc+2 then
+											local et=maxct-mg:GetCount()
+											local exg=mg:Filter(Card.IsHasEffect,nil,id,tp)
+											local ext=exg:GetClassCount(s.eftfilter,tp)
+											if et==0 or 2-et==ext then
+												for ttc in aux.Next(mg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											else
+												local st=2-et
+												Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+												local reg=exg:SelectSubGroup(tp,s.gcheck,false,st,st,tp)
+												for ttc in aux.Next(reg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											end
 										end
 										local sg=Group.CreateGroup()
 										local tc=og:GetFirst()
@@ -110,10 +200,24 @@ function s.initial_effect(c)
 										Duel.Overlay(c,og)
 									else
 										local mg=e:GetLabelObject()
-										if mg:GetCount()==minct and mg:IsExists(s.xfilter,1,nil) then
-											local ttc=mg:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
+										if mg:GetCount()<=maxct and mg:GetCount()>=minct and maxct==minct+2 then
+											local et=maxct-mg:GetCount()
+											local exg=mg:Filter(Card.IsHasEffect,nil,id,tp)
+											local ext=exg:GetClassCount(s.eftfilter,tp)
+											if et==0 or 2-et==ext then
+												for ttc in aux.Next(mg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											else
+												local st=2-et
+												Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+												local reg=exg:SelectSubGroup(tp,s.gcheck,false,st,st,tp)
+												for ttc in aux.Next(reg) do
+													local tte=ttc:IsHasEffect(id,tp)
+													tte:UseCountLimit(tp)
+												end
+											end
 										end
 										if e:GetLabel()==1 then
 											local mg2=mg:GetFirst():GetOverlayGroup()
@@ -136,7 +240,7 @@ function s.initial_effect(c)
 									end
 								end
 					end
-					aux.AddXyzProcedureLevelFree(card_c,s.f(function_f,int_lv,card_c),s.gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct)
+					aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner(),card_c),int_ct-2,int_ct)
 					Auxiliary.XyzLevelFreeOperation=Drake_shark_XyzLevelFreeOperation
 				end
 			else
@@ -147,20 +251,18 @@ function s.initial_effect(c)
 				end
 			end
 		end
+		local rg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_EXTRA,LOCATION_EXTRA,nil,TYPE_MONSTER)
+		for tc in aux.Next(rg) do
+			if tc.initial_effect then
+				local Traitor_initial_effect=s.initial_effect
+				s.initial_effect=function() end
+				tc:ReplaceEffect(id,0)
+				s.initial_effect=Traitor_initial_effect
+				tc.initial_effect(tc)
+			end
+		end
 	end
-end
-function s.f(function_f,int_lv,card_c)
-	return function (c)
-			   return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
-	end
-end
-function s.gf(int_ct,int_tp)
-	return function (g)
-			   return g:GetCount()==int_ct or g:GetCount()==int_ct-1 and g:IsExists(s.xfilter,1,nil,int_tp)
-	end
-end
-function s.xfilter(c,tp)
-	return c:IsHasEffect(id,tp)
+	e:Reset()
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsReason(REASON_DRAW)
