@@ -28,12 +28,7 @@ function c18716735.initial_effect(c)
 end
 function c18716735.desfilter(c,tp)
 	if c:IsFacedown() then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if ft==0 and c:IsLocation(LOCATION_SZONE) and c:GetSequence()<5 then
-		return Duel.IsExistingMatchingCard(c18716735.filter,tp,LOCATION_DECK,0,1,nil,true)
-	else
-		return Duel.IsExistingMatchingCard(c18716735.filter,tp,LOCATION_DECK,0,1,nil,false)
-	end
+	return Duel.GetSZoneCount(tp,c)>0 and Duel.IsExistingMatchingCard(c18716735.filter,tp,LOCATION_DECK,0,1,nil,true)
 end
 function c18716735.filter(c,ignore)
 	return c:IsSetCard(0xe1) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable(ignore)
