@@ -71,8 +71,9 @@ function c47408488.plcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47408488.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local ct=e:GetHandler():GetCounter(0x6)
-		return ct>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=-1+ct
+		local c=e:GetHandler()
+		local ct=c:GetCounter(0x6)
+		return ct>0 and Duel.GetSZoneCount(tp,c)>=ct
 			and Duel.IsExistingMatchingCard(c47408488.plfilter,tp,LOCATION_DECK,0,ct,nil)
 	end
 end
