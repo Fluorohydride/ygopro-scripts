@@ -23,7 +23,7 @@ function c94187078.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_OATH)
 	e1:SetTargetRange(1,0)
-	e1:SetTarget(c94187078.splimit)
+	e1:SetTarget(Auxiliary.DrytronSpSummonLimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	--cant special summon summonable card check
@@ -34,9 +34,6 @@ function c94187078.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e2:SetTargetRange(1,0)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
-end
-function c94187078.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsSummonableCard()
 end
 function c94187078.filter(c,e,tp)
 	return c:IsSetCard(0x154) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DrytronSpSummonType(c))
