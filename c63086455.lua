@@ -17,8 +17,7 @@ function c63086455.tgfilter(c,e,tp)
 end
 function c63086455.setfilter(c,cc,e,tp)
 	local b1=Duel.GetMZoneCount(1-tp,cc,tp)>0
-	local st=Duel.GetLocationCount(1-tp,LOCATION_SZONE,tp)
-	local b2=st>0 or cc:IsLocation(LOCATION_SZONE) and cc:GetSequence()<5 and st>-1
+	local b2=Duel.GetSZoneCount(1-tp,cc,tp)>0
 	return b1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE,1-tp)
 		or (b2 or c:IsType(TYPE_FIELD)) and c:IsSSetable(true)
 end

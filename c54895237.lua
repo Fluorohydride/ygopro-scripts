@@ -31,9 +31,9 @@ function c54895237.initial_effect(c)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 end
-function c54895237.costfilter(c,tp,sft)
+function c54895237.costfilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_CONTINUOUS) and c:IsAbleToGraveAsCost()
-		and Duel.GetMZoneCount(tp,c)>0 and (sft>0 or c:IsLocation(LOCATION_SZONE) and sft>-1)
+		and Duel.GetMZoneCount(tp,c)>0 and Duel.GetSZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c54895237.setfilter,tp,LOCATION_HAND,0,1,nil,c,tp)
 end
 function c54895237.setfilter(c,cc,tp)
@@ -41,10 +41,9 @@ function c54895237.setfilter(c,cc,tp)
 		and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_ONFIELD,cc)
 end
 function c54895237.gspcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local sft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if chk==0 then return Duel.IsExistingMatchingCard(c54895237.costfilter,tp,LOCATION_ONFIELD,0,1,nil,tp,sft) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c54895237.costfilter,tp,LOCATION_ONFIELD,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c54895237.costfilter,tp,LOCATION_ONFIELD,0,1,1,nil,tp,sft)
+	local g=Duel.SelectMatchingCard(tp,c54895237.costfilter,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c54895237.gsptg(e,tp,eg,ep,ev,re,r,rp,chk)

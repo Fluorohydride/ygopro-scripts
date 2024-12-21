@@ -37,7 +37,8 @@ function c36346532.efilter(e,re)
 	return re:IsActiveType(TYPE_MONSTER) and re:GetOwner()~=e:GetOwner()
 end
 function c36346532.cfilter(c,tp)
-	return c:GetSequence()<5 and c:IsFacedown() and c:IsAbleToGrave() and Duel.IsExistingMatchingCard(c36346532.setfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
+	return c:GetSequence()<5 and c:IsFacedown() and c:IsAbleToGrave() and Duel.GetSZoneCount(tp,c)>0
+		and Duel.IsExistingMatchingCard(c36346532.setfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
 end
 function c36346532.setfilter(c,mc,tp)
 	if not (c:IsSetCard(0xd4) and c:IsType(TYPE_TRAP)) then return false end

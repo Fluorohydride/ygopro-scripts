@@ -36,7 +36,7 @@ function c33773528.actcon(e)
 	return Duel.GetTurnPlayer()==e:GetHandlerPlayer() and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
 end
 function c33773528.filter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x15c) and c:IsType(TYPE_TRAP) and c:GetEquipTarget() and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsSetCard(0x15c) and c:IsType(TYPE_TRAP) and c:GetEquipTarget() and c:IsAbleToGraveAsCost() and Duel.GetSZoneCount(tp,c)>0
 		and Duel.IsExistingTarget(c33773528.setfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,c:GetCode())
 end
 function c33773528.setfilter(c,code)
