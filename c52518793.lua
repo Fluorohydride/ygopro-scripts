@@ -41,7 +41,7 @@ function c52518793.atkval(e,c)
 	return e:GetHandler():GetCounter(0x7)*100
 end
 function c52518793.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK)
+	return c:IsSummonLocation(LOCATION_DECK) and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function c52518793.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52518793.cfilter,1,nil,tp)
