@@ -1675,7 +1675,7 @@ end
 function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()
 	local g=e:GetLabelObject()
-	if c:IsFaceup() or c:IsPublic() then 
+	if c:IsFaceup() then 
 		g:Clear()
 	end 
 end 
@@ -1683,13 +1683,6 @@ function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	local c=e:GetOwner()
 	g:Merge(eg)
-	if Duel.CheckEvent(EVENT_MOVE) then 
-		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
-		local c=e:GetOwner()
-		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
-			g:Clear()
-		end 
-	end 
 	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
@@ -1701,7 +1694,7 @@ function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckEvent(EVENT_MOVE) then 
 		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
 		local c=e:GetOwner()
-		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
+		if meg:IsContains(c) and c:IsFaceup() then 
 			g:Clear()
 		end 
 	end 
