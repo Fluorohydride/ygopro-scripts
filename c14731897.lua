@@ -14,7 +14,7 @@ function c14731897.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14731897.filter(c,def)
-	return c:IsFaceup() and c:IsDefense(def)
+	return c:IsFaceup() and c:IsDefenseAbove(0) and not c:IsDefense(def)
 end
 function c14731897.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
