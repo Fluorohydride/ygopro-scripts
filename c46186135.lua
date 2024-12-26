@@ -18,6 +18,7 @@ function s.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(s.spcon)
+	e2:SetTarget(s.sptg)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 	--remove
@@ -68,10 +69,19 @@ function s.spcon(e,c)
 	local fg=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	return fg:CheckSubGroup(s.fselect,2,2)
 end
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local cp=c:GetControler()
+	local g=Duel.GetMatchingGroup(s.fusfilter,cp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,cp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(cp,s.fselect,true,2,2)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local fg=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=fg:SelectSubGroup(tp,s.fselect,false,2,2)
+	local sg=e:GetLabelObject()
 	c:SetMaterial(sg)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
