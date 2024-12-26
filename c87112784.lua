@@ -1,4 +1,5 @@
 --堕天使の追放
+---@param c Card
 function c87112784.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

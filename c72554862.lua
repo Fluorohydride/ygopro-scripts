@@ -1,4 +1,5 @@
 --ウォークライ・スキーラ
+---@param c Card
 function c72554862.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

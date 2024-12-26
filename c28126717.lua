@@ -1,4 +1,5 @@
 --ふわんだりぃずと謎の地図
+---@param c Card
 function c28126717.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

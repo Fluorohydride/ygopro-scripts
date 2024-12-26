@@ -1,4 +1,5 @@
 --呪詛返しのヒトガタ
+---@param c Card
 function c33391067.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

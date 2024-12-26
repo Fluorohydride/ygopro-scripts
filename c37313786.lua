@@ -1,4 +1,5 @@
 --ギャンブル
+---@param c Card
 function c37313786.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,6 @@ function c37313786.initial_effect(c)
 	e1:SetOperation(c37313786.activate)
 	c:RegisterEffect(e1)
 end
-c37313786.toss_coin=true
 function c37313786.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<=2 and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>=6
 end

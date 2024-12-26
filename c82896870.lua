@@ -1,4 +1,5 @@
 --ファーニマル・ドルフィン
+---@param c Card
 function c82896870.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サイコロプス
+---@param c Card
 function c62893810.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,6 @@ function c62893810.initial_effect(c)
 	e1:SetOperation(c62893810.operation)
 	c:RegisterEffect(e1)
 end
-c62893810.toss_dice=true
 function c62893810.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=Duel.GetFieldGroup(tp,LOCATION_HAND,LOCATION_HAND)
 	if chk==0 then return g1:GetCount()~=0 end

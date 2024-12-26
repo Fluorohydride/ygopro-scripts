@@ -1,4 +1,5 @@
 --メタル化寄生生物－ルナタイト
+---@param c Card
 function c7369217.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

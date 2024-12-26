@@ -1,4 +1,5 @@
 --小天使テルス
+---@param c Card
 function c19280589.initial_effect(c)
 	--Special Summon 1 Token
 	local e1=Effect.CreateEffect(c)

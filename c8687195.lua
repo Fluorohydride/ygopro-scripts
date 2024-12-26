@@ -1,4 +1,5 @@
 --幻影の妖精
+---@param c Card
 function c8687195.initial_effect(c)
 	--change target
 	local e1=Effect.CreateEffect(c)

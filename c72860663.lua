@@ -1,4 +1,5 @@
 --ヴァンパイア・ファシネイター
+---@param c Card
 function c72860663.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,3,c72860663.lcheck)

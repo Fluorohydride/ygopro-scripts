@@ -1,4 +1,5 @@
 --追走の翼
+---@param c Card
 function c42776855.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

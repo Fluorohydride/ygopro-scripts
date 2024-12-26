@@ -1,4 +1,5 @@
 --ONeサンダー
+---@param c Card
 function c57019473.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

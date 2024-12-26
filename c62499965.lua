@@ -1,4 +1,5 @@
 --Z－ONE
+---@param c Card
 function c62499965.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

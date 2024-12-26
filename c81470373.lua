@@ -1,4 +1,5 @@
 --BF－毒風のシムーン
+---@param c Card
 function c81470373.initial_effect(c)
 	--search and normal summon / gy
 	local e1=Effect.CreateEffect(c)

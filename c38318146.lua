@@ -1,4 +1,5 @@
 --暴君の暴力
+---@param c Card
 function c38318146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

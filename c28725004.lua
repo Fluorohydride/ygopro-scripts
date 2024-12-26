@@ -1,4 +1,5 @@
 --悪魔の知恵
+---@param c Card
 function c28725004.initial_effect(c)
 	--shuffle
 	local e1=Effect.CreateEffect(c)

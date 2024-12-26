@@ -1,4 +1,5 @@
 --招来の対価
+---@param c Card
 function c26285788.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

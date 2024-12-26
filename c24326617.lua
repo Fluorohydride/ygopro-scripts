@@ -1,4 +1,5 @@
 --氷帝家臣エッシャー
+---@param c Card
 function c24326617.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

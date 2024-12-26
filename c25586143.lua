@@ -1,4 +1,5 @@
 --捕食植物キメラフレシア
+---@param c Card
 function c25586143.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

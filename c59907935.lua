@@ -1,4 +1,5 @@
 --サイバーデーモン
+---@param c Card
 function c59907935.initial_effect(c)
 	--chk
 	local ge1=Effect.CreateEffect(c)

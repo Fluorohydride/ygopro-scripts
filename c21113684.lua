@@ -1,4 +1,5 @@
 --覇魔導士アーカナイト・マジシャン
+---@param c Card
 function c21113684.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--fusion material

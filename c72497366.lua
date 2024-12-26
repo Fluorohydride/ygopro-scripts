@@ -1,4 +1,5 @@
 --悪魔の憑代
+---@param c Card
 function c72497366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

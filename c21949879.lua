@@ -1,5 +1,6 @@
 --EMジェントルード
 local s,id,o=GetID()
+---@param c Card
 function c21949879.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--search

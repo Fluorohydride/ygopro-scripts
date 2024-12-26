@@ -1,4 +1,5 @@
 --ディザーム
+---@param c Card
 function c26834022.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c26834022.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c26834022.filter(c)
-	return c:IsSetCard(0x19) and c:IsAbleToDeck()
+	return c:IsSetCard(0x1019) and c:IsAbleToDeck()
 end
 function c26834022.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and Duel.IsChainNegatable(ev)

@@ -1,4 +1,5 @@
 --ハンニバル・ネクロマンサー
+---@param c Card
 function c5640330.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,1)

@@ -1,4 +1,5 @@
 --アリの増殖
+---@param c Card
 function c22493811.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

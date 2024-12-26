@@ -1,4 +1,5 @@
 --Jo－P.U.N.K.Mme.スパイダー
+---@param c Card
 function c82041999.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

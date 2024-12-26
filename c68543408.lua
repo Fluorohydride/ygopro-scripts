@@ -1,4 +1,5 @@
 --スターダスト・シャオロン
+---@param c Card
 function c68543408.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--spsummon

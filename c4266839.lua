@@ -1,4 +1,5 @@
 --精神寄生体
+---@param c Card
 function c4266839.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

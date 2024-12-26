@@ -1,4 +1,5 @@
 --ローンファイア・ブロッサム
+---@param c Card
 function c48686504.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

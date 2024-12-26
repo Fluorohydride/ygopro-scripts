@@ -1,4 +1,5 @@
 --ヴァイロン・ディシグマ
+---@param c Card
 function c39987164.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)
@@ -53,7 +54,7 @@ function c39987164.eqop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterFlagEffect(39987164,RESET_EVENT+RESETS_STANDARD,0,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c39987164.eqlimit)

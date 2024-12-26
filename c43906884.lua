@@ -1,4 +1,5 @@
 --BF－マイン
+---@param c Card
 function c43906884.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ドットスケーパー
+---@param c Card
 function c18789533.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

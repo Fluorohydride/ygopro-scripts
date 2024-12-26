@@ -1,4 +1,5 @@
 --ゴーストリック・フェスティバル
+---@param c Card
 function c35871958.initial_effect(c)
 	--link summon
 	local e0=aux.AddLinkProcedure(c,c35871958.matfilter,1,1)

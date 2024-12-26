@@ -1,4 +1,5 @@
 --水精鱗－ネレイアビス
+---@param c Card
 function c71133680.initial_effect(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔草 マンドラゴラ
+---@param c Card
 function c7802006.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

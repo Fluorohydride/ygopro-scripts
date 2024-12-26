@@ -1,4 +1,5 @@
 --地縛神 Ccarayhua
+---@param c Card
 function c79798060.initial_effect(c)
 	c:SetUniqueOnField(1,1,aux.FilterBoolFunction(Card.IsSetCard,0x1021),LOCATION_MZONE)
 	--

@@ -1,4 +1,5 @@
 --深淵の獣アルベル
+---@param c Card
 function c45005708.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)

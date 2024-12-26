@@ -1,4 +1,5 @@
 --暗黒のマンティコア
+---@param c Card
 function c77121851.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

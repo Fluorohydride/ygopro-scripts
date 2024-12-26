@@ -1,4 +1,5 @@
 --ジャンク・アタック
+---@param c Card
 function c79068663.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

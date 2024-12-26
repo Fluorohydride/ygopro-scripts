@@ -1,4 +1,5 @@
 --パンサー・シャーク
+---@param c Card
 function c70101178.initial_effect(c)
 	c:SetUniqueOnField(1,0,70101178)
 	--summon with no tribute

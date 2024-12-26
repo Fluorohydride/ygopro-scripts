@@ -1,4 +1,5 @@
 --堕天使スペルビア
+---@param c Card
 function c11260714.initial_effect(c)
 	--spsum success
 	local e1=Effect.CreateEffect(c)

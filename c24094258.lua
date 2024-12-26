@@ -1,4 +1,5 @@
 --ヘビーメタルフォーゼ・エレクトラム
+---@param c Card
 function c24094258.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

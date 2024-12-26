@@ -1,4 +1,5 @@
 --雷龍融合
+---@param c Card
 function c95238394.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

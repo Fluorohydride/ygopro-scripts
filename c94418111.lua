@@ -1,4 +1,5 @@
 --魔弾の射手 ワイルド
+---@param c Card
 function c94418111.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)

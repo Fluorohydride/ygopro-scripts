@@ -1,4 +1,5 @@
 --武神帝－カグツチ
+---@param c Card
 function c1855932.initial_effect(c)
 	c:SetUniqueOnField(1,0,1855932)
 	--xyz summon

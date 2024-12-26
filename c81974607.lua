@@ -1,4 +1,5 @@
 --光波翼機
+---@param c Card
 function c81974607.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

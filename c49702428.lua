@@ -1,4 +1,5 @@
 --黒・魔・導・爆・裂・破
+---@param c Card
 function c49702428.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

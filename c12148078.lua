@@ -1,4 +1,5 @@
 --SRルーレット
+---@param c Card
 function c12148078.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c12148078.initial_effect(c)
 	e1:SetOperation(c12148078.activate)
 	c:RegisterEffect(e1)
 end
-c12148078.toss_dice=true
 function c12148078.cfilter(c,e,tp)
 	return c:IsDiscardable()
 		and Duel.IsExistingMatchingCard(c12148078.spfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,c,e,tp,6)

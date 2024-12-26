@@ -1,5 +1,7 @@
 --X・Y・Zコンバイン
+---@param c Card
 function c95471006.initial_effect(c)
+	aux.AddCodeList(c,62651957,65622692,64500000)
 	--Activate
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_ACTIVATE)

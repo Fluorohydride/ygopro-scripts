@@ -1,4 +1,5 @@
 --EMドラネコ
+---@param c Card
 function c9106362.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Negate damage (direct)

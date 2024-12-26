@@ -1,4 +1,5 @@
 --EMブランコブラ
+---@param c Card
 function c93892436.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--deckdes

@@ -1,4 +1,5 @@
 --ダークアイ・ナイトメア
+---@param c Card
 function c88685329.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

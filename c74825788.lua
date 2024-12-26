@@ -1,4 +1,5 @@
 --H－ヒートハート
+---@param c Card
 function c74825788.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇の閃光
+---@param c Card
 function c29876529.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

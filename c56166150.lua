@@ -1,4 +1,5 @@
 --トワイライトロード・シャーマン ルミナス
+---@param c Card
 function c56166150.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

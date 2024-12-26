@@ -1,4 +1,5 @@
 --ガジェット・ドライバー
+---@param c Card
 function c54497620.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(54497620,0))

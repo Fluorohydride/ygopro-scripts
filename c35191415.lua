@@ -1,4 +1,5 @@
 --マジシャン・オブ・ブラック・イリュージョン
+---@param c Card
 function c35191415.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,46986414)

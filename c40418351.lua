@@ -1,4 +1,5 @@
 --鎧黒竜－サイバー・ダーク・ドラゴン
+---@param c Card
 function c40418351.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

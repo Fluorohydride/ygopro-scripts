@@ -1,4 +1,5 @@
 --CX 冀望皇バリアン
+---@param c Card
 function c67926903.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,3,c67926903.ovfilter,aux.Stringid(67926903,0),99)

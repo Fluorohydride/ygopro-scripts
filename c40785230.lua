@@ -1,4 +1,5 @@
 --ヴェーダ＝ウパニシャッド
+---@param c Card
 function c40785230.initial_effect(c)
 	c:SetSPSummonOnce(40785230)
 	c:EnableCounterPermit(0x69,LOCATION_PZONE)

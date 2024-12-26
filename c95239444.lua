@@ -1,4 +1,5 @@
 --森羅の鎮神 オレイア
+---@param c Card
 function c95239444.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

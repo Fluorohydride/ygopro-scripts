@@ -1,4 +1,5 @@
 --クリフォート・アクセス
+---@param c Card
 function c87588741.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

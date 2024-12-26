@@ -1,4 +1,5 @@
 --ヴォルカニック・リムファイア
+---@param c Card
 function c59805313.initial_effect(c)
 	--to grave/set canon
 	local e1=Effect.CreateEffect(c)

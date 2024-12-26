@@ -1,4 +1,5 @@
 --軍隊ピラニア
+---@param c Card
 function c50823978.initial_effect(c)
 	--deepen damage
 	local e1=Effect.CreateEffect(c)

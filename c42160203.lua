@@ -1,4 +1,5 @@
 --覇王眷竜ダーク・リベリオン
+---@param c Card
 function c42160203.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,c42160203.matfilter,4,2)

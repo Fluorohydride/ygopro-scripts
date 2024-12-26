@@ -1,4 +1,5 @@
 --EMウィム・ウィッチ
+---@param c Card
 function c64450427.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

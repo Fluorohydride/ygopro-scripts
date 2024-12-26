@@ -1,4 +1,5 @@
 --召喚獣プルガトリオ
+---@param c Card
 function c12307878.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

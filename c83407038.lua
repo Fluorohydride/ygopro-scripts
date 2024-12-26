@@ -1,4 +1,5 @@
 --アマゾネスの急襲
+---@param c Card
 function c83407038.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

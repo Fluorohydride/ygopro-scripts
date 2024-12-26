@@ -1,4 +1,5 @@
 --SRビーダマシーン
+---@param c Card
 function c96708940.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

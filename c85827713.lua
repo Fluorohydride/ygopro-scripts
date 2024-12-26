@@ -1,4 +1,5 @@
 --ゴーストリック・ナイト
+---@param c Card
 function c85827713.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣総監エーディトル
+---@param c Card
 function c30864377.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c30864377.matfilter,2,true)
@@ -41,13 +42,13 @@ function c30864377.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c30864377.matfilter(c)
-	return c:IsLevelAbove(5) and c:IsFusionSetCard(0x19)
+	return c:IsLevelAbove(5) and c:IsFusionSetCard(0x1019)
 end
 function c30864377.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c30864377.espfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_FUSION) and not c:IsCode(30864377)
+	return c:IsSetCard(0x1019) and c:IsType(TYPE_FUSION) and not c:IsCode(30864377)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c30864377.esptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -62,7 +63,7 @@ function c30864377.espop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c30864377.spcfilter(c,ft)
-	return c:IsFaceup() and c:IsSetCard(0x19) and c:GetBattledGroupCount()>0
+	return c:IsFaceup() and c:IsSetCard(0x1019) and c:GetBattledGroupCount()>0
 		and c:IsAbleToDeckOrExtraAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c30864377.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -74,7 +75,7 @@ function c30864377.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c30864377.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c30864377.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c30864377.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end

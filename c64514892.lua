@@ -1,4 +1,5 @@
 --小法師ヒダルマー
+---@param c Card
 function c64514892.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST),2,2)

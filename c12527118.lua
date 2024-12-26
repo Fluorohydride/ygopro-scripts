@@ -1,4 +1,5 @@
 --カシモラル
+---@param c Card
 function c12527118.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

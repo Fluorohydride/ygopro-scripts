@@ -1,4 +1,5 @@
 --ヴェルズ・コッペリアル
+---@param c Card
 function c77841719.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

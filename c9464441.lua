@@ -1,4 +1,5 @@
 --魔救の奇跡－ドラガイト
+---@param c Card
 function c9464441.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

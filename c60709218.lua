@@ -1,4 +1,5 @@
 --師弟の絆
+---@param c Card
 function c60709218.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate

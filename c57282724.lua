@@ -1,4 +1,5 @@
 --星神器デミウルギア
+---@param c Card
 function c57282724.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

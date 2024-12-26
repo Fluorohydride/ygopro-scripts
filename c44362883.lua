@@ -1,4 +1,5 @@
 --烙印融合
+---@param c Card
 function c44362883.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

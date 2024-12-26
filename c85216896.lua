@@ -1,4 +1,5 @@
 --セフィラ・メタトロン
+---@param c Card
 function c85216896.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,c85216896.matfilter,2)

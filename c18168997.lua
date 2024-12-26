@@ -1,4 +1,5 @@
 --堕天使ネルガル
+---@param c Card
 function c18168997.initial_effect(c)
 	c:SetSPSummonOnce(18168997)
 	--pierce

@@ -1,4 +1,5 @@
 --扇風機塊プロペライオン
+---@param c Card
 function c81769387.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x14b),1,1)

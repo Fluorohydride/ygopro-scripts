@@ -1,4 +1,5 @@
 --百年竜
+---@param c Card
 function c90788081.initial_effect(c)
 	--lv/atk
 	local e1=Effect.CreateEffect(c)

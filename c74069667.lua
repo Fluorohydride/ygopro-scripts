@@ -1,4 +1,5 @@
 --DDD壊薙王アビス・ラグナロク
+---@param c Card
 function c74069667.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

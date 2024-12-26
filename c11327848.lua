@@ -1,4 +1,5 @@
 --修士号ディプロマン
+---@param c Card
 function c11327848.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

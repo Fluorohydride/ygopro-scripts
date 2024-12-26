@@ -1,4 +1,5 @@
 --化石岩の解放
+---@param c Card
 function c26956670.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

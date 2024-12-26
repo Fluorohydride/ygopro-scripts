@@ -1,4 +1,5 @@
 --サイバー・エンド・ドラゴン
+---@param c Card
 function c1546123.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

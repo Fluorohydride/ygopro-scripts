@@ -1,4 +1,5 @@
 --魔界劇団のカーテンコール
+---@param c Card
 function c4682617.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

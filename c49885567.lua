@@ -1,4 +1,5 @@
 --精霊獣 カンナホーク
+---@param c Card
 function c49885567.initial_effect(c)
 	c:SetSPSummonOnce(49885567)
 	--tohand

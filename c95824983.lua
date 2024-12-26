@@ -1,4 +1,5 @@
 --電気海月－フィサリア－
+---@param c Card
 function c95824983.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--SpecialSummon

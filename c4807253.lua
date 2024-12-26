@@ -1,4 +1,5 @@
 --Emフレイム・イーター
+---@param c Card
 function c4807253.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

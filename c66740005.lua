@@ -1,4 +1,5 @@
 --空牙団の闘士 ブラーヴォ
+---@param c Card
 function c66740005.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

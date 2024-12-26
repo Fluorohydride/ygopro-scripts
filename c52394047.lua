@@ -1,4 +1,5 @@
 --剣闘海戦
+---@param c Card
 function c52394047.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -37,13 +38,13 @@ function c52394047.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c52394047.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c52394047.macon(e)
 	return Duel.IsExistingMatchingCard(c52394047.filter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c52394047.cfilter(c)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeckAsCost()
+	return c:IsSetCard(0x1019) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeckAsCost()
 end
 function c52394047.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c52394047.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil) end
@@ -53,7 +54,7 @@ function c52394047.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c52394047.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19) and c:GetBaseDefense()>0
+	return c:IsFaceup() and c:IsSetCard(0x1019) and c:GetBaseDefense()>0
 end
 function c52394047.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c52394047.atkfilter(chkc) end
@@ -88,5 +89,5 @@ function c52394047.indop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c52394047.target(e,c)
-	return c:IsSetCard(0x19)
+	return c:IsSetCard(0x1019)
 end

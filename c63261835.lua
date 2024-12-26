@@ -1,4 +1,5 @@
 --ハーピィ・レディ・SC
+---@param c Card
 function c63261835.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

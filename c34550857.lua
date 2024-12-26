@@ -1,4 +1,5 @@
 --LL－コバルト・スパロー
+---@param c Card
 function c34550857.initial_effect(c)
 	--Search
 	local e1=Effect.CreateEffect(c)

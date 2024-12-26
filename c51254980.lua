@@ -1,4 +1,5 @@
 --ナチュル・マンティス
+---@param c Card
 function c51254980.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(51254980,0))

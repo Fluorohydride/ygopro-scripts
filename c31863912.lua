@@ -1,7 +1,9 @@
 --出目出し
+---@param c Card
 function c31863912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_DICE+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_SPSUMMON)
@@ -11,6 +13,7 @@ function c31863912.initial_effect(c)
 	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(31863912,0))
+	e1:SetCategory(CATEGORY_DICE+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_SZONE)
@@ -19,7 +22,6 @@ function c31863912.initial_effect(c)
 	e2:SetLabel(1)
 	c:RegisterEffect(e2)
 end
-c31863912.toss_dice=true
 function c31863912.cfilter(c,sp)
 	return c:IsFaceup() and c:IsSummonPlayer(sp)
 end

@@ -1,4 +1,5 @@
 --焔聖騎士帝－シャルル
+---@param c Card
 function c77656797.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

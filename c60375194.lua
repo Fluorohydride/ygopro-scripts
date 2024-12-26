@@ -1,4 +1,5 @@
 --ヴェンデット・デイブレイク
+---@param c Card
 function c60375194.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

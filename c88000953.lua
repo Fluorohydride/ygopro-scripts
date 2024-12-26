@@ -1,4 +1,5 @@
 --ラスタライガー
+---@param c Card
 function c88000953.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

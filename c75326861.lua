@@ -1,4 +1,5 @@
 --天刑王 ブラック・ハイランダー
+---@param c Card
 function c75326861.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(Card.IsRace,RACE_FIEND),1)

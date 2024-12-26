@@ -1,4 +1,5 @@
 --トラミッド・ハンター
+---@param c Card
 function c95923441.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

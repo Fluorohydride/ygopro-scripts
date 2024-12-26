@@ -1,4 +1,5 @@
 --月光黄鼬
+---@param c Card
 function c50546208.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --グッサリ＠イグニスター
+---@param c Card
 function c55762976.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

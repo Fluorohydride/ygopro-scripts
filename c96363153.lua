@@ -1,4 +1,5 @@
 --調律
+---@param c Card
 function c96363153.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

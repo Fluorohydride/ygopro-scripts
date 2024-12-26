@@ -1,4 +1,5 @@
 --A・ジェネクス・リモート
+---@param c Card
 function c57238939.initial_effect(c)
 	--cos
 	local e1=Effect.CreateEffect(c)

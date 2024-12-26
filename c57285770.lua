@@ -1,4 +1,5 @@
 --セリオンズ・チャージ
+---@param c Card
 function c57285770.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

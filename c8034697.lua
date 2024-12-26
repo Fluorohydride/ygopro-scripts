@@ -1,4 +1,5 @@
 --魔法の操り人形
+---@param c Card
 function c8034697.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

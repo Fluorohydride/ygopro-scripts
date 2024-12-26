@@ -1,4 +1,5 @@
 --リバース・リユース
+---@param c Card
 function c93775296.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

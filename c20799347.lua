@@ -1,4 +1,5 @@
 --電脳堺嫦－兎々
+---@param c Card
 function c20799347.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

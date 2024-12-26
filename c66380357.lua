@@ -1,4 +1,5 @@
 --機塊テスト
+---@param c Card
 function c66380357.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

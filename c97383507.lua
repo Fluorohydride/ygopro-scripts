@@ -1,4 +1,5 @@
 --ダークナイト＠イグニスター
+---@param c Card
 function c97383507.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,3,3,c97383507.lcheck)

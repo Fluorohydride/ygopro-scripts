@@ -1,4 +1,5 @@
 --脆刃の剣
+---@param c Card
 function c41927278.initial_effect(c)
 	c:SetUniqueOnField(1,0,41927278)
 	--activate

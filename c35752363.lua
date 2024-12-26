@@ -1,4 +1,5 @@
 --朱雀
+---@param c Card
 function c35752363.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

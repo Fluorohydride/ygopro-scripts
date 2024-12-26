@@ -1,4 +1,5 @@
 --魔導雑貨商人
+---@param c Card
 function c32362575.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

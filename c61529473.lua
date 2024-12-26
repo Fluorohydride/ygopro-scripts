@@ -1,4 +1,5 @@
 --真竜の黙示録
+---@param c Card
 function c61529473.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ダイナミスト・ブラキオン
+---@param c Card
 function c368382.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

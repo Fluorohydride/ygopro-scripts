@@ -1,4 +1,5 @@
 --Sin Tune
+---@param c Card
 function c44763696.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

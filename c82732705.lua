@@ -1,4 +1,5 @@
 --スキルドレイン
+---@param c Card
 function c82732705.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --霊魂消滅
 --not fully implemented
+---@param c Card
 function c69832741.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

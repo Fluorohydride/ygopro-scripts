@@ -1,4 +1,5 @@
 --天極輝艦－熊斗竜巧
+---@param c Card
 function c33250142.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon restriction

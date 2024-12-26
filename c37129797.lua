@@ -1,4 +1,5 @@
 --ヴァンパイア・サッカー
+---@param c Card
 function c37129797.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

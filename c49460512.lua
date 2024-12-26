@@ -1,4 +1,5 @@
 --BF－流離いのコガラシ
+---@param c Card
 function c49460512.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

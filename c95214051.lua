@@ -1,4 +1,5 @@
 --翡翠の蟲笛
+---@param c Card
 function c95214051.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

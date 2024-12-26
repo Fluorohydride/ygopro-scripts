@@ -1,4 +1,5 @@
 --アーマード・サイバーン
+---@param c Card
 function c67159705.initial_effect(c)
 	aux.EnableUnionAttribute(c,c67159705.filter)
 	--destroy

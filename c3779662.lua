@@ -1,7 +1,8 @@
 --剣闘獣アンダバタエ
+---@param c Card
 function c3779662.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,7573135,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),2,true,true)
+	aux.AddFusionProcCodeFun(c,7573135,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1019),2,true,true)
 	aux.AddContactFusionProcedure(c,c3779662.cfilter,LOCATION_ONFIELD,0,aux.tdcfop(c)):SetValue(SUMMON_VALUE_SELF)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -38,14 +39,14 @@ function c3779662.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c3779662.cfilter(c)
-	return (c:IsFusionCode(7573135) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
+	return (c:IsFusionCode(7573135) or c:IsFusionSetCard(0x1019) and c:IsType(TYPE_MONSTER))
 		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c3779662.espcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c3779662.espfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_FUSION) and c:IsLevelBelow(7)
+	return c:IsSetCard(0x1019) and c:IsType(TYPE_FUSION) and c:IsLevelBelow(7)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c3779662.esptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -68,7 +69,7 @@ function c3779662.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c3779662.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c3779662.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

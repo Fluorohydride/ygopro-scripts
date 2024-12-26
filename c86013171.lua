@@ -1,4 +1,5 @@
 --Kozmo－パーヴィッド
+---@param c Card
 function c86013171.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

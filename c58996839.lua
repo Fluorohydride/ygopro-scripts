@@ -1,5 +1,6 @@
 --アショカ・ピラー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--equip search
 	local e1=Effect.CreateEffect(c)

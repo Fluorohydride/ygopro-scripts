@@ -1,4 +1,5 @@
 --究極幻神 アルティミトル・ビシバールキン
+---@param c Card
 function c90884403.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

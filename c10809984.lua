@@ -1,4 +1,5 @@
 --世紀の大泥棒
+---@param c Card
 function c10809984.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

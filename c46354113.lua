@@ -1,4 +1,5 @@
 --ロケット・ヘルモス・キャノン
+---@param c Card
 function c46354113.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

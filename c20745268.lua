@@ -1,4 +1,5 @@
 --魔弾－デスペラード
+---@param c Card
 function c20745268.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

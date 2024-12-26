@@ -1,4 +1,5 @@
 --創星改帰
+---@param c Card
 function c42172465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --霊子もつれ
+---@param c Card
 function c28234578.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

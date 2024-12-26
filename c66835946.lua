@@ -1,4 +1,5 @@
 --奇跡のピラミッド
+---@param c Card
 function c66835946.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

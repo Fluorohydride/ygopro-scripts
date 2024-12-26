@@ -1,4 +1,5 @@
 --太陽龍インティ
+---@param c Card
 function c39823987.initial_effect(c)
 	aux.AddMaterialCodeList(c,78275321)
 	--synchro summon

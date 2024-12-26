@@ -1,4 +1,5 @@
 --もの忘れ
+---@param c Card
 function c71098407.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

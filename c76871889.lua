@@ -1,4 +1,5 @@
 --ヴェンデット・ナイト
+---@param c Card
 function c76871889.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

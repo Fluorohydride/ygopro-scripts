@@ -1,4 +1,5 @@
 --智天の神星龍
+---@param c Card
 function c29432356.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c)

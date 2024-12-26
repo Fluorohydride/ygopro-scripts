@@ -1,4 +1,5 @@
 --Gゴーレム・スタバン・メンヒル
+---@param c Card
 function c97053215.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_EARTH),2,2)

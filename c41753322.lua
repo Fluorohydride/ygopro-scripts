@@ -1,4 +1,5 @@
 --竜脚獣ブラキオン
+---@param c Card
 function c41753322.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

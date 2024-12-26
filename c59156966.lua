@@ -1,4 +1,5 @@
 --黄金の歯車装置箱
+---@param c Card
 function c59156966.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

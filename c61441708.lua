@@ -1,4 +1,5 @@
 --ネフティスの鳳凰神
+---@param c Card
 function c61441708.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

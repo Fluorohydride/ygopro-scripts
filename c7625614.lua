@@ -1,4 +1,5 @@
 --レアゴールド・アーマー
+---@param c Card
 function c7625614.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --戦華の智－諸葛孔
+---@param c Card
 function c32422602.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

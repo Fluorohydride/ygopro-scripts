@@ -1,5 +1,6 @@
 --魔法妖精 バーガンディ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--dmg
 	local e1=Effect.CreateEffect(c)

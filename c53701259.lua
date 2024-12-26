@@ -1,4 +1,5 @@
 --覚醒の三幻魔
+---@param c Card
 function c53701259.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Activate
@@ -54,11 +55,11 @@ function c53701259.initial_effect(c)
 	--remove
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_FIELD)
-	e7:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e7:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e7:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 	e7:SetRange(LOCATION_SZONE)
 	e7:SetValue(LOCATION_REMOVED)
-	e7:SetTargetRange(0xfe,0xff)
+	e7:SetTargetRange(0,LOCATION_DECK)
 	e7:SetTarget(c53701259.rmtg)
 	e7:SetCondition(c53701259.rmcon)
 	c:RegisterEffect(e7)
@@ -136,8 +137,7 @@ function c53701259.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c53701259.rmtg(e,c)
-	return c:GetOwner()~=e:GetHandlerPlayer() and not c:IsLocation(LOCATION_OVERLAY)
-		and not c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:GetOwner()~=e:GetHandlerPlayer() and aux.DimensionalFissureTarget(e,c)
 end
 function c53701259.rmcon(e)
 	local tp=e:GetHandlerPlayer()

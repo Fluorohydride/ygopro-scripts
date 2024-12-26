@@ -1,4 +1,5 @@
 --天岩戸
+---@param c Card
 function c32181268.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

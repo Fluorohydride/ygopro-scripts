@@ -1,4 +1,5 @@
 --砂塵の大ハリケーン
+---@param c Card
 function c35479109.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

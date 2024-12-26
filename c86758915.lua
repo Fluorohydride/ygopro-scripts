@@ -1,4 +1,5 @@
 --魔神儀の祝誕
+---@param c Card
 function c86758915.initial_effect(c)
 	--Activate
 	local e1=aux.AddRitualProcGreater2(c,nil,nil,nil,c86758915.mfilter,true)

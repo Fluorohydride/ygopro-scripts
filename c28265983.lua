@@ -1,4 +1,5 @@
 --渇きの風
+---@param c Card
 function c28265983.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

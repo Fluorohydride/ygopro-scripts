@@ -1,4 +1,5 @@
 --マスター・オブ・OZ
+---@param c Card
 function c27134689.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

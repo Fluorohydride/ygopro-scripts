@@ -1,4 +1,5 @@
 --大欲な壺
+---@param c Card
 function c64014615.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

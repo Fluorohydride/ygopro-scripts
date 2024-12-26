@@ -1,4 +1,5 @@
 --砂漠の飛蝗賊
+---@param c Card
 function c63410069.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

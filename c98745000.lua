@@ -1,4 +1,5 @@
 --ジャッカルの聖戦士
+---@param c Card
 function c98745000.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

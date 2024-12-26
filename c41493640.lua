@@ -1,4 +1,5 @@
 --ラインモンスター Kホース
+---@param c Card
 function c41493640.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

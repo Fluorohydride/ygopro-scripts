@@ -1,4 +1,5 @@
 --クワガー・ヘラクレス
+---@param c Card
 function c95144193.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

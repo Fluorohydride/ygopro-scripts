@@ -1,4 +1,5 @@
 --ヘイト・バスター
+---@param c Card
 function c93895605.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

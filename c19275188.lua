@@ -1,4 +1,5 @@
 --ウォークライ・ジェネレート
+---@param c Card
 function c19275188.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

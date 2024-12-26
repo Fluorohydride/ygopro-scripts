@@ -1,4 +1,5 @@
 --強欲な贈り物
+---@param c Card
 function c5915629.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

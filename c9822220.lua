@@ -1,4 +1,5 @@
 --天獄の王
+---@param c Card
 function c9822220.initial_effect(c)
 	--public
 	local e1=Effect.CreateEffect(c)

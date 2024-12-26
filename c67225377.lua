@@ -1,4 +1,5 @@
 --転生炎獣ミーア
+---@param c Card
 function c67225377.initial_effect(c)
 	--special summon (to hand)
 	local e1=Effect.CreateEffect(c)

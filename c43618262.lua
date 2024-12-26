@@ -1,4 +1,5 @@
 --初買い
+---@param c Card
 function c43618262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -20,9 +21,9 @@ function c43618262.cfop(e,tp,eg,ep,ev,re,r,rp)
 	if g:FilterCount(Card.IsAbleToHand,nil,tp)==0 then return end
 	Duel.ConfirmDecktop(1-p,5)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	Duel.PreserveSelectDeckSequence(true)
+	Duel.RevealSelectDeckSequence(true)
 	local tc=g:FilterSelect(tp,Card.IsAbleToHand,1,1,nil,tp):GetFirst()
-	Duel.PreserveSelectDeckSequence(false)
+	Duel.RevealSelectDeckSequence(false)
 	local num=math.floor(3000/100)
 	local t={}
 	for i=1,num do

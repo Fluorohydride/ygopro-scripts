@@ -1,4 +1,5 @@
 --剣闘獣ウェスパシアス
+---@param c Card
 function c88996322.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -38,7 +39,7 @@ function c88996322.hspcon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if not d then return false end
 	if d:IsControler(tp) then a,d=d,a end
-	return a:IsSetCard(0x19) and a:IsFaceup()
+	return a:IsSetCard(0x1019) and a:IsFaceup()
 end
 function c88996322.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -60,7 +61,7 @@ function c88996322.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c88996322.filter(c,e,tp)
-	return not c:IsCode(88996322) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(88996322) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c88996322.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0

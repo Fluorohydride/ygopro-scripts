@@ -1,4 +1,5 @@
 --廻生のベンガランゼス
+---@param c Card
 function c73345237.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_PLANT),2)

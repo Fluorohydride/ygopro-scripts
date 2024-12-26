@@ -1,4 +1,5 @@
 --原始太陽ヘリオス
+---@param c Card
 function c54493213.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

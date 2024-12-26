@@ -1,4 +1,5 @@
 --黒い旋風
+---@param c Card
 function c91351370.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

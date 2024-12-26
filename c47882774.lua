@@ -1,4 +1,5 @@
 --ウォークライ・ディグニティ
+---@param c Card
 function c47882774.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

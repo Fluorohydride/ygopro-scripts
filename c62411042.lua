@@ -1,4 +1,5 @@
 --イビルセラ・ルテア
+---@param c Card
 function c62411042.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

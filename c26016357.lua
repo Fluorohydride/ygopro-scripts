@@ -1,4 +1,5 @@
 --マドルチェ・マーマメイド
+---@param c Card
 function c26016357.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

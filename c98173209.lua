@@ -1,5 +1,6 @@
 --クリムゾン・ヘルガイア
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--Activate
@@ -44,7 +45,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.filter(c)
-	return (c:IsCode(70902743) or aux.IsCodeListed(c,70902743)) and c:IsAbleToHand() and not c:IsCode(id)
+	return aux.IsCodeOrListed(c,70902743) and c:IsAbleToHand() and not c:IsCode(id)
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end

@@ -1,4 +1,5 @@
 --猛炎星－テンレイ
+---@param c Card
 function c93751476.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

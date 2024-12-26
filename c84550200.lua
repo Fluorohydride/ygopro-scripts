@@ -1,4 +1,5 @@
 --ソニックジャマー
+---@param c Card
 function c84550200.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

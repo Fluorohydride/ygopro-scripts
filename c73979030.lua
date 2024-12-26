@@ -1,4 +1,5 @@
 --相愛のアンブレカム
+---@param c Card
 function c73979030.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

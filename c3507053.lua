@@ -1,4 +1,5 @@
 --乾燥機塊ドライドレイク
+---@param c Card
 function c3507053.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

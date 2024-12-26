@@ -1,4 +1,5 @@
 --XX－セイバー エマーズブレイド
+---@param c Card
 function c42737833.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

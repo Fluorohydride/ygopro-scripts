@@ -1,4 +1,5 @@
 --おとぼけオポッサム
+---@param c Card
 function c69529567.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇紅の魔導師
+---@param c Card
 function c45462639.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--summon success

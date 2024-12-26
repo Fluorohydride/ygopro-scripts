@@ -1,4 +1,5 @@
 --ハリマンボウ
+---@param c Card
 function c56223084.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

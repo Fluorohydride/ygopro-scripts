@@ -1,4 +1,5 @@
 --白棘鱏
+---@param c Card
 function c49930315.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

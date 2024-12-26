@@ -1,4 +1,5 @@
 --聖刻龍－ウシルドラゴン
+---@param c Card
 function c30794966.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

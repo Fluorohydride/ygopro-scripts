@@ -1,4 +1,5 @@
 --天使の生き血
+---@param c Card
 function c47852924.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

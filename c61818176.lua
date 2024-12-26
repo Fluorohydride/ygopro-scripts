@@ -1,4 +1,5 @@
 --ゴーストリック・リフォーム
+---@param c Card
 function c61818176.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

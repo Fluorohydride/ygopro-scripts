@@ -1,4 +1,5 @@
 --混源龍レヴィオニア
+---@param c Card
 function c55878038.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

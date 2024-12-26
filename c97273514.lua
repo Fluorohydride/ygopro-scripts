@@ -1,4 +1,5 @@
 --甲虫装機 ピコファレーナ
+---@param c Card
 function c97273514.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

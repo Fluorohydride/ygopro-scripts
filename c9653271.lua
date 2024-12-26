@@ -1,4 +1,5 @@
 --雷神の怒り
+---@param c Card
 function c9653271.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --武力の軍奏
+---@param c Card
 function c81846453.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

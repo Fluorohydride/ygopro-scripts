@@ -1,4 +1,5 @@
 --斬機シグマ
+---@param c Card
 function c27182739.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

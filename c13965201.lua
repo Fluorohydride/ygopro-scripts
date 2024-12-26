@@ -1,4 +1,5 @@
 --逢華妖麗譚－不知火語
+---@param c Card
 function c13965201.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

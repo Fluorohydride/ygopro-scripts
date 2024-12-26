@@ -1,5 +1,6 @@
 --天極輝士－熊斗竜巧α
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --人攻智能ME－PSY－YA
+---@param c Card
 function c58844135.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--remove
@@ -7,7 +8,7 @@ function c58844135.initial_effect(c)
 	e1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_PZONE)
-	e1:SetTargetRange(0xff,0xff)
+	e1:SetTargetRange(LOCATION_DECK,LOCATION_DECK)
 	e1:SetTarget(c58844135.rmtarget)
 	e1:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e1)

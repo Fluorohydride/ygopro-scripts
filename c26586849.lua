@@ -1,4 +1,5 @@
 --王宮の牢獄
+---@param c Card
 function c26586849.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

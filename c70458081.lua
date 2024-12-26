@@ -1,4 +1,5 @@
 --EMジンライノ
+---@param c Card
 function c70458081.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

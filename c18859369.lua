@@ -1,4 +1,5 @@
 --カオス・グレファー
+---@param c Card
 function c18859369.initial_effect(c)
 	--attribute
 	local e1=Effect.CreateEffect(c)

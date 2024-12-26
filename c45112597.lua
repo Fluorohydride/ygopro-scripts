@@ -1,4 +1,5 @@
 --世海龍ジーランティス
+---@param c Card
 function c45112597.initial_effect(c)
 	c:SetUniqueOnField(1,0,45112597)
 	--link summon
@@ -86,7 +87,7 @@ function c45112597.rmop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummonComplete()
 			local cg=spg:Filter(Card.IsFacedown,nil)
 			if #cg>0 then
-				Duel.ConfirmCards(1-tp,g)
+				Duel.ConfirmCards(1-tp,cg)
 			end
 		end
 	end

@@ -1,4 +1,5 @@
 --水陸両用バグロス Mk－11
+---@param c Card
 function c4754691.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--atkup

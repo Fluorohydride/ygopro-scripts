@@ -1,5 +1,6 @@
 --焔聖騎士－リッチャルデット
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--special summon as tuner
 	local e1=Effect.CreateEffect(c)

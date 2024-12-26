@@ -1,4 +1,5 @@
 --ブルーアイズ・トゥーン・ドラゴン
+---@param c Card
 function c53183600.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()

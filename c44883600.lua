@@ -1,4 +1,5 @@
 --ダブル・ディフェンダー
+---@param c Card
 function c44883600.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

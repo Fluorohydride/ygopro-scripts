@@ -1,4 +1,5 @@
 --妖精伝姫－ラチカ
+---@param c Card
 function c65953423.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

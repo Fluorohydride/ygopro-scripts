@@ -1,4 +1,5 @@
 --ホワイトポータン
+---@param c Card
 function c98024118.initial_effect(c)
 	--lp damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --異次元隔離マシーン
+---@param c Card
 function c56460688.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

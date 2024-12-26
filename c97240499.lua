@@ -1,5 +1,6 @@
 --渾然たる闘牛詩－オルフェブル
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

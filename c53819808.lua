@@ -1,4 +1,5 @@
 --六武院
+---@param c Card
 function c53819808.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	--Activate
@@ -27,7 +28,7 @@ function c53819808.initial_effect(c)
 end
 c53819808.counter_add_list={0x3}
 function c53819808.ctfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c53819808.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c53819808.ctfilter,1,nil) then

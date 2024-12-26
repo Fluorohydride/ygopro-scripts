@@ -1,4 +1,5 @@
 --水精鱗－アビスパイク
+---@param c Card
 function c58471134.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

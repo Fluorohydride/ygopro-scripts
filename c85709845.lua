@@ -1,4 +1,5 @@
 --ガムシャラ
+---@param c Card
 function c85709845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

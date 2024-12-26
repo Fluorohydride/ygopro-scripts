@@ -1,4 +1,5 @@
 --烙印追放
+---@param c Card
 function c6763530.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

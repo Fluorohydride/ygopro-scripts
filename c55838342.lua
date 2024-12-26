@@ -1,4 +1,5 @@
 --クローラー・パラディオン
+---@param c Card
 function c55838342.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

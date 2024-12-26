@@ -1,4 +1,5 @@
 --紅蓮の女守護兵
+---@param c Card
 function c28358902.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

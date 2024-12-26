@@ -1,4 +1,5 @@
 --破滅の儀式
+---@param c Card
 function c52913738.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,30646525)
 	--To Deck

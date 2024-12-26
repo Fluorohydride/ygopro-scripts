@@ -1,4 +1,5 @@
 --ティンダングル・トリニティ
+---@param c Card
 function c11375683.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --No.67 パラダイスマッシャー
+---@param c Card
 function c35772782.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,nil,nil,99)
@@ -25,7 +26,6 @@ function c35772782.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 aux.xyz_number[35772782]=67
-c35772782.toss_dice=true
 function c35772782.dccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
 end

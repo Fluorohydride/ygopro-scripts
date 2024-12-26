@@ -1,4 +1,5 @@
 --No.33 先史遺産－超兵器マシュ＝マック
+---@param c Card
 function c39139935.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

@@ -1,4 +1,5 @@
 --インフェルノイド・アシュメダイ
+---@param c Card
 function c25811989.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

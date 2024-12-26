@@ -1,4 +1,5 @@
 --光天使スケール
+---@param c Card
 function c64726269.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

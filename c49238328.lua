@@ -1,4 +1,5 @@
 --強欲で金満な壺
+---@param c Card
 function c49238328.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

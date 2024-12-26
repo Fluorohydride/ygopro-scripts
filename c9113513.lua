@@ -1,4 +1,5 @@
 --オスティナート
+---@param c Card
 function c9113513.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

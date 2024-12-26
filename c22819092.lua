@@ -1,4 +1,5 @@
 --魚群探知機
+---@param c Card
 function c22819092.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

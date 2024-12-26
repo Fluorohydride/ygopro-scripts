@@ -1,4 +1,5 @@
 --ロー・キューピット
+---@param c Card
 function c69526976.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,6 @@ function c69526976.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)
-	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)

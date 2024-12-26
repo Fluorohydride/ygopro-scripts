@@ -1,4 +1,5 @@
 --ウォークライ・スピリッツ
+---@param c Card
 function c83880473.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

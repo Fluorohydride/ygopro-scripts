@@ -1,4 +1,5 @@
 --閃刀姫－アザレア
+---@param c Card
 function c98462037.initial_effect(c)
 	c:SetSPSummonOnce(98462037)
 	--link summon

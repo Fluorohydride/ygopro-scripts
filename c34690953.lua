@@ -1,4 +1,5 @@
 --禁呪アラマティア
+---@param c Card
 function c34690953.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--activate
@@ -33,7 +34,7 @@ function c34690953.initial_effect(c)
 	Duel.AddCustomActivityCounter(34690953,ACTIVITY_SPSUMMON,c34690953.counterfilter)
 end
 function c34690953.counterfilter(c)
-	return aux.IsCodeListed(c,3285552) or c:IsCode(3285552)
+	return aux.IsCodeOrListed(c,3285552)
 end
 function c34690953.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(34690953,tp,ACTIVITY_SPSUMMON)==0 end

@@ -1,4 +1,5 @@
 --無限械アイン・ソフ
+---@param c Card
 function c36894320.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

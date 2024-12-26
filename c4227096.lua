@@ -1,4 +1,5 @@
 --捕違い
+---@param c Card
 function c4227096.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

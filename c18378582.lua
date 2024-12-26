@@ -1,4 +1,5 @@
 --大天使ゼラート
+---@param c Card
 function c18378582.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	c:EnableReviveLimit()

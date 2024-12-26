@@ -1,4 +1,5 @@
 --グレイヴ・オージャ
+---@param c Card
 function c40937767.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

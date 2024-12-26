@@ -1,4 +1,5 @@
 --トポロジック・トゥリスバエナ
+---@param c Card
 function c72529749.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

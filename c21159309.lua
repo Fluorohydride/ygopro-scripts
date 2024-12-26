@@ -1,4 +1,5 @@
 --救世竜 セイヴァー・ドラゴン
+---@param c Card
 function c21159309.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)

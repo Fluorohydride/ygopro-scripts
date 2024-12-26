@@ -1,4 +1,5 @@
 --勇気機関車ブレイブポッポ
+---@param c Card
 function c61692648.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

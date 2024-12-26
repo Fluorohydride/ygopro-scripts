@@ -1,4 +1,5 @@
 --No.80 狂装覇王ラプソディ・イン・バーサーク
+---@param c Card
 function c93568288.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,4 +1,5 @@
 --災いの像
+---@param c Card
 function c12160911.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

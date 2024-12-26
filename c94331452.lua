@@ -1,4 +1,5 @@
 --音響戦士ドラムス
+---@param c Card
 function c94331452.initial_effect(c)
 	--attribute change
 	local e1=Effect.CreateEffect(c)

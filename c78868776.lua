@@ -1,4 +1,5 @@
 --剣闘獣ラクエル
+---@param c Card
 function c78868776.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ function c78868776.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c78868776.filter(c,e,tp)
-	return not c:IsCode(78868776) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(78868776) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c78868776.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

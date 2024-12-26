@@ -1,4 +1,5 @@
 --Ga－P.U.N.K.ワゴン
+---@param c Card
 function c50642380.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --エピュアリィ・ハピネス
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,82105704)
 	--xyz summon
@@ -74,7 +75,7 @@ end
 function s.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=re:GetHandler()
-	if c:IsRelateToChain() and tc:IsRelateToChain() and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToChain() and tc:IsRelateToChain() and not tc:IsImmuneToEffect(e) and tc:IsCanOverlay() then
 		tc:CancelToGrave()
 		Duel.Overlay(c,tc)
 		if Duel.IsExistingMatchingCard(s.rthfilter,tp,0,LOCATION_ONFIELD,1,nil)

@@ -1,4 +1,5 @@
 --覇王眷竜スターヴ・ヴェノム
+---@param c Card
 function c43387895.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

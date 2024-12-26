@@ -1,4 +1,5 @@
 --方界胤ヴィジャム
+---@param c Card
 function c15610297.initial_effect(c)
 	--cannot destroy
 	local e1=Effect.CreateEffect(c)

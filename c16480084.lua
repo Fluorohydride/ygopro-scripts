@@ -1,4 +1,5 @@
 --エヴォルダー・ペルタ
+---@param c Card
 function c16480084.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)

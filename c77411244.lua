@@ -1,4 +1,5 @@
 --B－バスター・ドレイク
+---@param c Card
 function c77411244.initial_effect(c)
 	aux.EnableUnionAttribute(c,c77411244.filter)
 	--immune

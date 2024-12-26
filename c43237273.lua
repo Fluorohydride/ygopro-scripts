@@ -1,4 +1,5 @@
 --N・ブラック・パンサー
+---@param c Card
 function c43237273.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)

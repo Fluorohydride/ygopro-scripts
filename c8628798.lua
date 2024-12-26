@@ -1,4 +1,5 @@
 --D.D.ダイナマイト
+---@param c Card
 function c8628798.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

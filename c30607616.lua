@@ -1,4 +1,5 @@
 --轍の魔妖－朧車
+---@param c Card
 function c30607616.initial_effect(c)
 	c:SetUniqueOnField(1,0,30607616)
 	--synchro summon

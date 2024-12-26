@@ -1,4 +1,5 @@
 --ズババジェネラル
+---@param c Card
 function c31563350.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -37,7 +38,7 @@ function c31563350.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		if not Duel.Equip(tp,tc,c) then return end
 		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

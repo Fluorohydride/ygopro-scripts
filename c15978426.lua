@@ -1,4 +1,5 @@
 --EMセカンドンキー
+---@param c Card
 function c15978426.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ブルーメンブラット
+---@param c Card
 function c25090294.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

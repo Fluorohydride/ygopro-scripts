@@ -1,4 +1,5 @@
 --炎星皇－チョウライオ
+---@param c Card
 function c37057743.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_FIRE),3,2)

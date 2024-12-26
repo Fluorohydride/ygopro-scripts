@@ -1,4 +1,5 @@
 --疫病狼
+---@param c Card
 function c55696885.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
@@ -17,7 +18,7 @@ function c55696885.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 	e1:SetValue(c:GetBaseAttack()*2)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(55696885,1))

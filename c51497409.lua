@@ -1,4 +1,5 @@
 --DDD磐石王ダリウス
+---@param c Card
 function c51497409.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),3,2)

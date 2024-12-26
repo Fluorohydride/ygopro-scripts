@@ -1,4 +1,5 @@
 --機械仕掛けの夜－クロック・ワーク・ナイト－
+---@param c Card
 function c84797028.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

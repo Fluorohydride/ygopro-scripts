@@ -1,4 +1,5 @@
 --リトル・ウィンガード
+---@param c Card
 function c90790253.initial_effect(c)
 	--pos change
 	local e1=Effect.CreateEffect(c)

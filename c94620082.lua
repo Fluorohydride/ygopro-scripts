@@ -1,4 +1,5 @@
 --転生炎獣フォクシー
+---@param c Card
 function c94620082.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

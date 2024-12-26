@@ -1,4 +1,5 @@
 --幻奏の華歌聖ブルーム・プリマ
+---@param c Card
 function c24672164.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

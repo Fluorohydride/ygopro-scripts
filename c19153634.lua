@@ -1,4 +1,5 @@
 --ノーブル・ド・ノワール
+---@param c Card
 function c19153634.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

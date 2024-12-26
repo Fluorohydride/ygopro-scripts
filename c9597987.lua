@@ -1,5 +1,6 @@
 --天地晦冥
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

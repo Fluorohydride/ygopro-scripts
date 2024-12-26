@@ -1,4 +1,5 @@
 --WW－クリスタル・ベル
+---@param c Card
 function c25793414.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,14577226,aux.FilterBoolFunction(Card.IsFusionSetCard,0xf0),1,true,true)

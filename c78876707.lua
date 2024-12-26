@@ -1,4 +1,5 @@
 --神聖騎士王コルネウス
+---@param c Card
 function c78876707.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x107a),4,2,nil,nil,99)
@@ -73,7 +74,7 @@ function c78876707.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:SetMaterial(nil)
 		if Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)>0 then
 			tc:CompleteProcedure()
-			if c:IsRelateToEffect(e) then
+			if c:IsRelateToEffect(e) and c:IsCanOverlay() then
 				Duel.Overlay(tc,Group.FromCards(c))
 			end
 		end

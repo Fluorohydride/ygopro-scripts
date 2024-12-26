@@ -1,4 +1,5 @@
 --珠の御巫フゥリ
+---@param c Card
 function c6327734.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

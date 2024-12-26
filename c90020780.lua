@@ -1,4 +1,5 @@
 --シノビネクロ
+---@param c Card
 function c90020780.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

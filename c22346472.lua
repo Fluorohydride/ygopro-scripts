@@ -1,4 +1,5 @@
 --破天荒な風
+---@param c Card
 function c22346472.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

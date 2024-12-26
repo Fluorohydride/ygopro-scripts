@@ -1,4 +1,5 @@
 --ライトロード・プリースト ジェニス
+---@param c Card
 function c83725008.initial_effect(c)
 	--recover&damage
 	local e1=Effect.CreateEffect(c)

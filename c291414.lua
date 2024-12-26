@@ -1,4 +1,5 @@
 --想い集いし竜
+---@param c Card
 function c291414.initial_effect(c)
 	c:SetSPSummonOnce(291414)
 	--synchro limit

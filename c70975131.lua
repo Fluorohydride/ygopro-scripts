@@ -1,4 +1,5 @@
 --番猫－ウォッチキャット
+---@param c Card
 function c70975131.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

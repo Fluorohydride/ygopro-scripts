@@ -1,4 +1,5 @@
 --運命の発掘
+---@param c Card
 function c81782376.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

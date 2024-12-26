@@ -1,4 +1,5 @@
 --夜薔薇の騎士
+---@param c Card
 function c2986553.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

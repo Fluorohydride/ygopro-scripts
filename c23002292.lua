@@ -1,4 +1,5 @@
 --レッド・リブート
+---@param c Card
 function c23002292.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

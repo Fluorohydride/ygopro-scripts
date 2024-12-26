@@ -1,4 +1,5 @@
 --マキシマム・シックス
+---@param c Card
 function c30707994.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c30707994.initial_effect(c)
 	e1:SetOperation(c30707994.operation)
 	c:RegisterEffect(e1)
 end
-c30707994.toss_dice=true
 function c30707994.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
@@ -26,7 +26,6 @@ function c30707994.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetValue(dice*200)
 		c:RegisterEffect(e1)

@@ -1,4 +1,5 @@
 --スクラップ・スコール
+---@param c Card
 function c48445393.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

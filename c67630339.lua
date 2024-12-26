@@ -1,4 +1,5 @@
 --コンフュージョン・チャフ
+---@param c Card
 function c67630339.initial_effect(c)
 	--damage cal
 	local e1=Effect.CreateEffect(c)

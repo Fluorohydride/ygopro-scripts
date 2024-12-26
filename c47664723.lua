@@ -1,4 +1,5 @@
 --堕天使エデ・アーラエ
+---@param c Card
 function c47664723.initial_effect(c)
 	--spsum success
 	local e1=Effect.CreateEffect(c)

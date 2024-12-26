@@ -1,4 +1,5 @@
 --転生炎獣ラクーン
+---@param c Card
 function c53490455.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

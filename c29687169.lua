@@ -1,4 +1,5 @@
 --魔装戦士 アルニス
+---@param c Card
 function c29687169.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

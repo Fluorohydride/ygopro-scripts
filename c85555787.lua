@@ -1,4 +1,5 @@
 --悪のデッキ破壊ウイルス
+---@param c Card
 function c85555787.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

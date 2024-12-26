@@ -1,4 +1,5 @@
 --グラディアル・チェンジ
+---@param c Card
 function c97234686.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c97234686.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97234686.filter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x1019)
 end
 function c97234686.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c97234686.filter,1,nil,tp)

@@ -1,4 +1,5 @@
 --剣闘獣アレクサンデル
+---@param c Card
 function c42592719.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)
@@ -47,7 +48,7 @@ function c42592719.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c42592719.filter(c,e,tp)
-	return not c:IsCode(42592719) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(42592719) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c42592719.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

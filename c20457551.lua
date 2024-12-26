@@ -1,4 +1,5 @@
 --鋼核収納
+---@param c Card
 function c20457551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

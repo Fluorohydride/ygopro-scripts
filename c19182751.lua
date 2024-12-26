@@ -1,4 +1,5 @@
 --ジェネクス・ニュートロン
+---@param c Card
 function c19182751.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

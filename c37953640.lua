@@ -1,4 +1,5 @@
 --竜宮の白タウナギ
+---@param c Card
 function c37953640.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

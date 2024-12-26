@@ -1,4 +1,5 @@
 --マシンナーズ・ルインフォース
+---@param c Card
 function c46033517.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

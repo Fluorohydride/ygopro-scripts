@@ -1,4 +1,5 @@
 --天魔神 シドヘルズ
+---@param c Card
 function c15792576.initial_effect(c)
 	--cannot special summon
 	local e0=Effect.CreateEffect(c)

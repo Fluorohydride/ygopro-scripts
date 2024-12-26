@@ -1,4 +1,5 @@
 --雲魔物－ニンバスマン
+---@param c Card
 function c20003527.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

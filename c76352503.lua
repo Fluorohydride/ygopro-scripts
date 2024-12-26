@@ -1,5 +1,6 @@
 --霊道士チャンシー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

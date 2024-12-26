@@ -1,4 +1,5 @@
 --バラに棲む悪霊
+---@param c Card
 function c32485271.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

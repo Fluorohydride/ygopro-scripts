@@ -1,4 +1,5 @@
 --六武衆の影武者
+---@param c Card
 function c1498130.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +17,7 @@ function c1498130.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	if not g or g:GetCount()~=1 then return false end
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
-	if tc==c or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsLocation(LOCATION_MZONE) or not tc:IsSetCard(0x3d) then return false end
+	if tc==c or tc:IsControler(1-tp) or tc:IsFacedown() or not tc:IsLocation(LOCATION_MZONE) or not tc:IsSetCard(0x103d) then return false end
 	return Duel.CheckChainTarget(ev,c)
 end
 function c1498130.tgop(e,tp,eg,ep,ev,re,r,rp)

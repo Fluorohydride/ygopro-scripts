@@ -1,4 +1,5 @@
 --サイキック・ウェーブ
+---@param c Card
 function c80681226.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--Activate

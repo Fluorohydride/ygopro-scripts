@@ -1,4 +1,5 @@
 --不幸を告げる黒猫
+---@param c Card
 function c24140059.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

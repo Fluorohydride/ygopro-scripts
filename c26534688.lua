@@ -1,4 +1,5 @@
 --深海の都 マガラニカ
+---@param c Card
 function c26534688.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

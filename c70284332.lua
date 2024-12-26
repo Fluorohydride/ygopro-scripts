@@ -1,4 +1,5 @@
 --調律師の陰謀
+---@param c Card
 function c70284332.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

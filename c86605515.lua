@@ -1,4 +1,5 @@
 --賢瑞官カルダーン
+---@param c Card
 function c86605515.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

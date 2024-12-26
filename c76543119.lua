@@ -1,4 +1,5 @@
 --ギミック・パペット－死の木馬
+---@param c Card
 function c76543119.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

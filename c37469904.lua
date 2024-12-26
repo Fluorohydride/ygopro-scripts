@@ -1,4 +1,5 @@
 --デュエリスト・アドベント
+---@param c Card
 function c37469904.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --トラフィックゴースト
+---@param c Card
 function c41248270.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

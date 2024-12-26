@@ -1,4 +1,5 @@
 --グングニールの影霊衣
+---@param c Card
 function c74122412.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

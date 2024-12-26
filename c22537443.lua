@@ -1,4 +1,5 @@
 --セベクの祝福
+---@param c Card
 function c22537443.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

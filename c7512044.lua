@@ -1,4 +1,5 @@
 --精神統一
+---@param c Card
 function c7512044.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

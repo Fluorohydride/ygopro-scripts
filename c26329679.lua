@@ -1,4 +1,5 @@
 --セイクリッド・オメガ
+---@param c Card
 function c26329679.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),4,2)

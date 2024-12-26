@@ -1,4 +1,5 @@
 --ヘルカイトプテラ
+---@param c Card
 function c50834074.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

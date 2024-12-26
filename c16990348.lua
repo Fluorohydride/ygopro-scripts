@@ -1,4 +1,5 @@
 --猛進する剣闘獣
+---@param c Card
 function c16990348.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c16990348.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c16990348.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c16990348.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsFaceup() end

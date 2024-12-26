@@ -1,4 +1,5 @@
 --罰則金
+---@param c Card
 function c92595643.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

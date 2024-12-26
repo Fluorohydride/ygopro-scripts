@@ -1,4 +1,5 @@
 --サイバー・オーガ・2
+---@param c Card
 function c37057012.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --ウィッチクラフト・マスターピース
+---@param c Card
 function c55072170.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --隻眼のスキル・ゲイナー
+---@param c Card
 function c75620895.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

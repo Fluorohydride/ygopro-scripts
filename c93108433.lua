@@ -1,4 +1,5 @@
 --モンスター回収
+---@param c Card
 function c93108433.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

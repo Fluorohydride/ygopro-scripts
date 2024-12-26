@@ -1,4 +1,5 @@
 --防御輪
+---@param c Card
 function c58641905.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

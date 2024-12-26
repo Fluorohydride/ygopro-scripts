@@ -1,4 +1,5 @@
 --六武式風雷斬
+---@param c Card
 function c23212990.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

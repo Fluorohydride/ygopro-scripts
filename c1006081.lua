@@ -1,4 +1,5 @@
 --ジャンク・チェンジャー
+---@param c Card
 function c1006081.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

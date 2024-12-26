@@ -1,4 +1,5 @@
 --OKaサンダー
+---@param c Card
 function c21524779.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

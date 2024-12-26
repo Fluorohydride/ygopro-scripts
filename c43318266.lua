@@ -1,4 +1,5 @@
 --雲魔物－キロスタス
+---@param c Card
 function c43318266.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

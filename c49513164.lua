@@ -1,4 +1,5 @@
 --召喚獣ライディーン
+---@param c Card
 function c49513164.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --デストーイ・シザー・ベアー
+---@param c Card
 function c85545073.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -34,7 +35,7 @@ function c85545073.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if not Duel.Equip(tp,tc,c,false) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c85545073.eqlimit)

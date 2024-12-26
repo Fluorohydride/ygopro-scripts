@@ -1,4 +1,5 @@
 --フォトン・バタフライ・アサシン
+---@param c Card
 function c28150174.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,4 +1,5 @@
 --戦華の仲－孫謀
+---@param c Card
 function c40140448.initial_effect(c)
 	--can not be attack target
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ブラックフェザー・ドラゴン
+---@param c Card
 function c9012916.initial_effect(c)
 	c:EnableCounterPermit(0x10)
 	--synchro summon

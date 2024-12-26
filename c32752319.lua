@@ -1,4 +1,5 @@
 --ユーフォロイド・ファイター
+---@param c Card
 function c32752319.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --ヴェルズ・ゴーレム
+---@param c Card
 function c31456110.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

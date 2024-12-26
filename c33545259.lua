@@ -1,4 +1,5 @@
 --戦華の孟－曹徳
+---@param c Card
 function c33545259.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

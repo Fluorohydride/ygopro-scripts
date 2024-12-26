@@ -1,4 +1,5 @@
 --機皇帝ワイゼル∞－S・アブソープション
+---@param c Card
 function c30221870.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

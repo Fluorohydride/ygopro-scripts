@@ -1,4 +1,5 @@
 --最強の盾
+---@param c Card
 function c84877802.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

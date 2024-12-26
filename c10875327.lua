@@ -1,4 +1,5 @@
 --地縛神 Aslla piscu
+---@param c Card
 function c10875327.initial_effect(c)
 	c:SetUniqueOnField(1,1,aux.FilterBoolFunction(Card.IsSetCard,0x1021),LOCATION_MZONE)
 	--

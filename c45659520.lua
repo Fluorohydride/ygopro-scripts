@@ -1,4 +1,5 @@
 --E-HERO シニスター・ネクロム
+---@param c Card
 function c45659520.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

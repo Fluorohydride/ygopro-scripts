@@ -1,4 +1,5 @@
 --大胆無敵
+---@param c Card
 function c12021072.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

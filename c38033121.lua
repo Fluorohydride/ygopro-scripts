@@ -1,4 +1,5 @@
 --ブラック・マジシャン・ガール
+---@param c Card
 function c38033121.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--atkup

@@ -1,4 +1,5 @@
 --甲虫装機 リュシオル
+---@param c Card
 function c66066482.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

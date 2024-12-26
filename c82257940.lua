@@ -1,4 +1,5 @@
 --プレゼント交換
+---@param c Card
 function c82257940.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

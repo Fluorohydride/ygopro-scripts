@@ -1,4 +1,5 @@
 --月光舞猫姫
+---@param c Card
 function c51777272.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xdf),2,true)

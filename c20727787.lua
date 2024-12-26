@@ -1,4 +1,5 @@
 --武装解除
+---@param c Card
 function c20727787.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

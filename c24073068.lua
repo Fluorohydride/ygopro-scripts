@@ -1,4 +1,5 @@
 --剛鬼スープレックス
+---@param c Card
 function c24073068.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

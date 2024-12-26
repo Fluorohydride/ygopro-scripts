@@ -1,4 +1,5 @@
 --暗黒騎士ガイアソルジャー
+---@param c Card
 function c33318980.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -75,7 +76,7 @@ function c33318980.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c33318980.thfilter(c)
-	return c:IsLevelAbove(7) and c:IsRace(RACE_WARRIOR) and not c:IsCode(61525276) and c:IsAbleToHand()
+	return c:IsLevelAbove(7) and c:IsRace(RACE_WARRIOR) and not c:IsCode(33318980) and c:IsAbleToHand()
 end
 function c33318980.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33318980.thfilter,tp,LOCATION_DECK,0,1,nil) end

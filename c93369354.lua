@@ -1,4 +1,5 @@
 --フィッシュボーグ－ガンナー
+---@param c Card
 function c93369354.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

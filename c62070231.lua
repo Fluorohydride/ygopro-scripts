@@ -1,4 +1,5 @@
 --No.94 極氷姫クリスタル・ゼロ
+---@param c Card
 function c62070231.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),5,2)

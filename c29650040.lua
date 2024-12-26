@@ -1,4 +1,5 @@
 --ドレミコード・ハルモニア
+---@param c Card
 function c29650040.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --EMトランプ・ガール
+---@param c Card
 function c42002073.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

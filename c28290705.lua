@@ -1,4 +1,5 @@
 --妖精王 アルヴェルド
+---@param c Card
 function c28290705.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),4,2)

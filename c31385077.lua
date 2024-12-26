@@ -1,4 +1,5 @@
 --カオス・ゴッデス－混沌の女神－
+---@param c Card
 function c31385077.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),2)

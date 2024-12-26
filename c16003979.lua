@@ -1,4 +1,5 @@
 --剣闘獣サジタリィ
+---@param c Card
 function c16003979.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -26,7 +27,7 @@ function c16003979.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c16003979.drcfilter(c)
-	return c:IsSetCard(0x19) and c:IsDiscardable()
+	return c:IsSetCard(0x1019) and c:IsDiscardable()
 end
 function c16003979.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c16003979.drcfilter,tp,LOCATION_HAND,0,1,nil) end
@@ -51,7 +52,7 @@ function c16003979.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c16003979.filter(c,e,tp)
-	return not c:IsCode(16003979) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(16003979) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c16003979.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0

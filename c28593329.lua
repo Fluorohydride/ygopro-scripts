@@ -1,4 +1,5 @@
 --ダーク・エンジェル
+---@param c Card
 function c28593329.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

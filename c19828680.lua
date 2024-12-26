@@ -1,4 +1,5 @@
 --煉獄の契約
+---@param c Card
 function c19828680.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

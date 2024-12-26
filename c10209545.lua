@@ -1,4 +1,5 @@
 --朽ち果てた武将
+---@param c Card
 function c10209545.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

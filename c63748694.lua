@@ -1,4 +1,5 @@
 --赤しゃりの軍貫
+---@param c Card
 function c63748694.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,24639891,LOCATION_HAND+LOCATION_DECK+LOCATION_MZONE+LOCATION_GRAVE)

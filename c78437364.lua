@@ -1,4 +1,5 @@
 --剛鬼ザ・グレート・オーガ
+---@param c Card
 function c78437364.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfc),2)

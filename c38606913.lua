@@ -1,4 +1,5 @@
 --方界縁起
+---@param c Card
 function c38606913.initial_effect(c)
 	 --Activate
 	local e1=Effect.CreateEffect(c)

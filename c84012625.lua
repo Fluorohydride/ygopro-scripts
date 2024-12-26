@@ -1,4 +1,5 @@
 --シューティング・ソニック
+---@param c Card
 function c84012625.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

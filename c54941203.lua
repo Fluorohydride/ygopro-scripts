@@ -1,4 +1,5 @@
 --調律の魔術師
+---@param c Card
 function c54941203.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

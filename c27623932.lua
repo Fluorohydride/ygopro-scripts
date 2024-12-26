@@ -1,5 +1,6 @@
 --サンダー・ディスチャージ
 local s,id,o=GetID()
+---@param c Card
 function c27623932.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--activate

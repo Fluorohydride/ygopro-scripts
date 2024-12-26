@@ -1,4 +1,5 @@
 --氷水のエジル
+---@param c Card
 function c39354437.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --B・F－早撃ちのアルバレスト
+---@param c Card
 function c90161770.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

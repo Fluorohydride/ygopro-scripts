@@ -1,5 +1,6 @@
 --真なる太陽神
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--Activate
@@ -30,7 +31,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.filter(c)
-	return (c:IsCode(10000010) or aux.IsCodeListed(c,10000010)) and not c:IsCode(id) and c:IsAbleToHand()
+	return aux.IsCodeOrListed(c,10000010) and not c:IsCode(id) and c:IsAbleToHand()
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil) end

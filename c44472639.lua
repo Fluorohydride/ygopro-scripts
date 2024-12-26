@@ -1,4 +1,5 @@
 --ソーラーレイ
+---@param c Card
 function c44472639.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

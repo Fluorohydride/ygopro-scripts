@@ -1,4 +1,5 @@
 --アックス・ドラゴニュート
+---@param c Card
 function c84914462.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

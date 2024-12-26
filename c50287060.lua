@@ -1,4 +1,5 @@
 --暗黒魔族ギルファー・デーモン
+---@param c Card
 function c50287060.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

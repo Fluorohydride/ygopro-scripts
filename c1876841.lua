@@ -1,4 +1,5 @@
 --D・スキャナン
+---@param c Card
 function c1876841.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

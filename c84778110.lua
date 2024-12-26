@@ -1,4 +1,5 @@
 --フリント・クラッガー
+---@param c Card
 function c84778110.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--tograve
@@ -51,7 +52,7 @@ function c84778110.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
 function c84778110.rfilter(c)
-	return (aux.IsCodeListed(c,59419719) or c:IsCode(59419719)) and c:IsFaceup()
+	return aux.IsCodeOrListed(c,59419719) and c:IsFaceup()
 end
 function c84778110.cfilter(c)
 	return c:IsCode(59419719)

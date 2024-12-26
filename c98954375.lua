@@ -1,4 +1,5 @@
 --インフェルニティ・デストロイヤー
+---@param c Card
 function c98954375.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

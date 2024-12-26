@@ -1,4 +1,5 @@
 --アモルファージ・ライシス
+---@param c Card
 function c47598941.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

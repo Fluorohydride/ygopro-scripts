@@ -1,4 +1,5 @@
 --サイバー・ドラゴン・フィーア
+---@param c Card
 function c29975188.initial_effect(c)
 	--code
 	aux.EnableChangeCode(c,70095154,LOCATION_MZONE+LOCATION_GRAVE)

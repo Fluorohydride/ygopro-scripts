@@ -1,4 +1,5 @@
 --巻きすぎた発条
+---@param c Card
 function c61011311.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

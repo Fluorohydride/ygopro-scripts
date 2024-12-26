@@ -1,4 +1,5 @@
 --シャイニング・ドロー
+---@param c Card
 function c35906693.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

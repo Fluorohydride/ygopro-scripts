@@ -1,4 +1,5 @@
 --EM小判竜
+---@param c Card
 function c9000988.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --幻影騎士団フラジャイルアーマー
+---@param c Card
 function c36704180.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

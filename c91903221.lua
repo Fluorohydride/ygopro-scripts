@@ -1,4 +1,5 @@
 --エヴォルド・エルギネル
+---@param c Card
 function c91903221.initial_effect(c)
 	--draw & search
 	local e1=Effect.CreateEffect(c)

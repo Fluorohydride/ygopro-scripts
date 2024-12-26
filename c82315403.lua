@@ -1,4 +1,5 @@
 --サイバー・エタニティ・ドラゴン
+---@param c Card
 function c82315403.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

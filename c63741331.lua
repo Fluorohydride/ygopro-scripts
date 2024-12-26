@@ -1,4 +1,5 @@
 --フォッグ・コントロール
+---@param c Card
 function c63741331.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

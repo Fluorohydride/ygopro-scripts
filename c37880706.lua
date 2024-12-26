@@ -1,4 +1,5 @@
 --ドリトル・キメラ
+---@param c Card
 function c37880706.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_FIRE),2,2)

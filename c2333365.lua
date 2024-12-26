@@ -1,4 +1,5 @@
 --極星將テュール
+---@param c Card
 function c2333365.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

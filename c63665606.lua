@@ -1,4 +1,5 @@
 --虚無の波動
+---@param c Card
 function c63665606.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

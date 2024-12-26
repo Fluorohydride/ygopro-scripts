@@ -1,4 +1,5 @@
 --ライライダー
+---@param c Card
 function c31173519.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

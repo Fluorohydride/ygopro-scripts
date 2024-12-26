@@ -1,4 +1,5 @@
 --森羅の渡し守 ロータス
+---@param c Card
 function c73136204.initial_effect(c)
 	--deck
 	local e1=Effect.CreateEffect(c)

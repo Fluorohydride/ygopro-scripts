@@ -1,4 +1,5 @@
 --救魔の奇石
+---@param c Card
 function c46984349.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

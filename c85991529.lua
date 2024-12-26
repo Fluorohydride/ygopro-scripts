@@ -1,4 +1,5 @@
 --Kozmo－ダークプラネット
+---@param c Card
 function c85991529.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

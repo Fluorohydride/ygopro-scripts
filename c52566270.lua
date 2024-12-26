@@ -1,4 +1,5 @@
 --磁石の戦士ε
+---@param c Card
 function c52566270.initial_effect(c)
 	--cos
 	local e1=Effect.CreateEffect(c)

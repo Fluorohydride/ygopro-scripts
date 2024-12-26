@@ -1,4 +1,5 @@
 --蘇生紋章
+---@param c Card
 function c84220251.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --デコード・エンド
+---@param c Card
 function c33062423.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

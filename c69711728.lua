@@ -1,4 +1,5 @@
 --メタルフォーゼ・コンビネーション
+---@param c Card
 function c69711728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

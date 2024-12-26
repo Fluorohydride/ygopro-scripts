@@ -1,4 +1,5 @@
 --朔夜しぐれ
+---@param c Card
 function c52038441.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

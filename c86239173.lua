@@ -1,4 +1,5 @@
 --ヘルホーンドザウルス
+---@param c Card
 function c86239173.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

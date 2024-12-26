@@ -1,4 +1,5 @@
 --冥府の執行者 プルート
+---@param c Card
 function c37706769.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

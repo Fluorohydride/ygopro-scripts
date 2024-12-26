@@ -1,4 +1,5 @@
 --水晶機巧－ローズニクス
+---@param c Card
 function c55326322.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

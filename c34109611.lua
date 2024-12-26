@@ -1,4 +1,5 @@
 --ダイガスタ・ファルコス
+---@param c Card
 function c34109611.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x10),1)

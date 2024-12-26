@@ -1,4 +1,5 @@
 --救世の儀式
+---@param c Card
 function c60234913.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,61757117)
 	--untargetable

@@ -1,4 +1,5 @@
 --リンク・バック
+---@param c Card
 function c3567660.initial_effect(c)
 	--move
 	local e1=Effect.CreateEffect(c)

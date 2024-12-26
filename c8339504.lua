@@ -1,4 +1,5 @@
 --エクシーズ・シフト
+---@param c Card
 function c8339504.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

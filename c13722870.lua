@@ -1,4 +1,5 @@
 --黒炎の騎士－ブラック・フレア・ナイト－
+---@param c Card
 function c13722870.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

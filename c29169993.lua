@@ -1,4 +1,5 @@
 --EMギッタンバッタ
+---@param c Card
 function c29169993.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

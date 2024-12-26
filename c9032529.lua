@@ -1,4 +1,5 @@
 --天使の涙
+---@param c Card
 function c9032529.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

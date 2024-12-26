@@ -1,4 +1,5 @@
 --煉獄の死徒
+---@param c Card
 function c8437145.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

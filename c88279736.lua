@@ -1,4 +1,5 @@
 --追い剥ぎゴブリン
+---@param c Card
 function c88279736.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

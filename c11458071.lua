@@ -1,4 +1,5 @@
 --天魔神 エンライズ
+---@param c Card
 function c11458071.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

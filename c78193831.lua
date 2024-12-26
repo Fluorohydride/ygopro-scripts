@@ -1,4 +1,5 @@
 --バスター・ブレイダー
+---@param c Card
 function c78193831.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

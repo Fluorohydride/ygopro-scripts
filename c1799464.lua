@@ -1,4 +1,5 @@
 --トランシケーダ
+---@param c Card
 function c1799464.initial_effect(c)
 	--spsummon token
 	local e1=Effect.CreateEffect(c)

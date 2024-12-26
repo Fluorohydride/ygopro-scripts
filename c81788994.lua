@@ -1,4 +1,5 @@
 --影牢の呪縛
+---@param c Card
 function c81788994.initial_effect(c)
 	c:EnableCounterPermit(0x16)
 	--Activate

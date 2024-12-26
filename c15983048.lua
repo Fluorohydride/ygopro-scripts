@@ -1,4 +1,5 @@
 --大魔鍵－マフテアル
+---@param c Card
 function c15983048.initial_effect(c)
 	--synchro and xyz limit
 	local e0=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ワルキューレ・エルダ
+---@param c Card
 function c83705073.initial_effect(c)
 	c:SetUniqueOnField(1,0,83705073)
 	--atk up
@@ -15,7 +16,6 @@ function c83705073.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetTargetRange(0xfe,0xfe)
 	e2:SetValue(LOCATION_REMOVED)
 	e2:SetTarget(c83705073.rmtg)
 	c:RegisterEffect(e2)

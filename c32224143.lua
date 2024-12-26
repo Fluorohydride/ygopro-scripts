@@ -1,4 +1,5 @@
 --ゴーストリック・サキュバス
+---@param c Card
 function c32224143.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

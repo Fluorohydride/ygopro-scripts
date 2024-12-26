@@ -1,4 +1,5 @@
 --十二獣ラム
+---@param c Card
 function c4145852.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

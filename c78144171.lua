@@ -1,4 +1,5 @@
 --撃滅龍 ダーク・アームド
+---@param c Card
 function c78144171.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

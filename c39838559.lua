@@ -1,4 +1,5 @@
 --F.A.サーキットGP
+---@param c Card
 function c39838559.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

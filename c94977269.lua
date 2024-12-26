@@ -1,4 +1,5 @@
 --エルシャドール・ミドラーシュ
+---@param c Card
 function c94977269.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SPSUMMON_COUNT)
 	--fusion material

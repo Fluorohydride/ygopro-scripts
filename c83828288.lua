@@ -1,4 +1,5 @@
 --豆まき
+---@param c Card
 function c83828288.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

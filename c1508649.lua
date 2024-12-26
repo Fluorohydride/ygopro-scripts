@@ -1,4 +1,5 @@
 --オルターガイスト・ヘクスティア
+---@param c Card
 function c1508649.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x103),2,2)

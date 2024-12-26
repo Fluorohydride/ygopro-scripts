@@ -1,4 +1,5 @@
 --ゲイシャドウ
+---@param c Card
 function c84055227.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

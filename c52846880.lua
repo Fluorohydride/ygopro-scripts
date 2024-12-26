@@ -1,4 +1,5 @@
 --カタストルの影霊衣
+---@param c Card
 function c52846880.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

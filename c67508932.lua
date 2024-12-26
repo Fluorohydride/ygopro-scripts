@@ -1,4 +1,5 @@
 --時械神祖ヴルガータ
+---@param c Card
 function c67508932.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

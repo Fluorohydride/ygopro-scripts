@@ -1,5 +1,7 @@
 --大革命
+---@param c Card
 function c65396880.initial_effect(c)
+	aux.AddCodeList(c,58538870,12143771,85936485)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_TOGRAVE)

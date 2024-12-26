@@ -1,4 +1,5 @@
 --ファーニマル・キャット
+---@param c Card
 function c2729285.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

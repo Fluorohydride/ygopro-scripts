@@ -1,4 +1,5 @@
 --カラテ魂 KURO－OBI
+---@param c Card
 function c77511331.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --倍返し
+---@param c Card
 function c5914184.initial_effect(c)
 	c:EnableCounterPermit(0x1a)
 	--counter

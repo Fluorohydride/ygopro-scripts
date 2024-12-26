@@ -1,4 +1,5 @@
 --黒竜の雛
+---@param c Card
 function c36262024.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --神剣－フェニックスブレード
+---@param c Card
 function c31423101.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

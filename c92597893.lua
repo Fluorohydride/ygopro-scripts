@@ -1,4 +1,5 @@
 --いたずら風のフィードラン
+---@param c Card
 function c92597893.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

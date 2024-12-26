@@ -1,4 +1,5 @@
 --天狼王 ブルー・セイリオス
+---@param c Card
 function c32995007.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

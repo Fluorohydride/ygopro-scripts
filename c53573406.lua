@@ -1,4 +1,5 @@
 --カメンレオン
+---@param c Card
 function c53573406.initial_effect(c)
 	--cannot summon
 	local e1=Effect.CreateEffect(c)

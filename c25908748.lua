@@ -1,4 +1,5 @@
 --鉄獣の戦線
+---@param c Card
 function c25908748.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

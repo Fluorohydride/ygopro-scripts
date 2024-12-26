@@ -1,4 +1,5 @@
 --古衛兵アギド
+---@param c Card
 function c62320425.initial_effect(c)
 	aux.AddCodeList(c,17484499)
 	--spsummon

@@ -1,4 +1,5 @@
 --炎獣使いエーカ
+---@param c Card
 function c35283277.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -62,7 +63,7 @@ function c35283277.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if not Duel.Equip(tp,tc,c,false) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetLabelObject(c)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

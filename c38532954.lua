@@ -1,4 +1,5 @@
 --F.A.ピットストップ
+---@param c Card
 function c38532954.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

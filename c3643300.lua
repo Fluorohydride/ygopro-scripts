@@ -1,4 +1,5 @@
 --伝説のフィッシャーマン
+---@param c Card
 function c3643300.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--immune spell

@@ -1,4 +1,5 @@
 --騎甲虫アームド・ホーン
+---@param c Card
 function c2834264.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_INSECT),2,2)

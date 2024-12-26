@@ -1,4 +1,5 @@
 --Sin 真紅眼の黒竜
+---@param c Card
 function c55343236.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,c55343236.uqfilter,LOCATION_MZONE)

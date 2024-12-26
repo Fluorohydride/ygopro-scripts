@@ -1,4 +1,5 @@
 --電脳堺豸－豸々
+---@param c Card
 function c12571621.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

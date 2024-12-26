@@ -1,4 +1,5 @@
 --赫の烙印
+---@param c Card
 function c82738008.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

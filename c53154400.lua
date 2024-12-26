@@ -1,5 +1,6 @@
 --サイコ・ローヴァー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)
@@ -20,7 +21,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
-s.toss_dice=true
 function s.dictg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)

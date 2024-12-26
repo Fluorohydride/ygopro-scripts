@@ -1,4 +1,5 @@
 --極星邪龍ヨルムンガンド
+---@param c Card
 function c64203620.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

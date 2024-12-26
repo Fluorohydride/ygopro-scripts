@@ -1,4 +1,5 @@
 --邪帝家臣ルキウス
+---@param c Card
 function c58786132.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

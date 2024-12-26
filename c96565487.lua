@@ -1,4 +1,5 @@
 --ブリザード・ウォリアー
+---@param c Card
 function c96565487.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(96565487,0))

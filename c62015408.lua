@@ -1,4 +1,5 @@
 --浮幽さくら
+---@param c Card
 function c62015408.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --修験の妖社
+---@param c Card
 function c27918963.initial_effect(c)
 	c:EnableCounterPermit(0x33)
 	--Activate

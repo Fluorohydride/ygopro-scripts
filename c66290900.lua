@@ -1,4 +1,5 @@
 --団結する剣闘獣
+---@param c Card
 function c66290900.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +15,7 @@ function c66290900.initial_effect(c)
 	Duel.AddCustomActivityCounter(66290900,ACTIVITY_ATTACK,c66290900.counterfilter)
 end
 function c66290900.counterfilter(c)
-	return c:IsSetCard(0x19)
+	return c:IsSetCard(0x1019)
 end
 function c66290900.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(66290900,tp,ACTIVITY_ATTACK)==0 end
@@ -28,7 +29,7 @@ function c66290900.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c66290900.atktg(e,c)
-	return not c:IsSetCard(0x19)
+	return not c:IsSetCard(0x1019)
 end
 function c66290900.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
@@ -38,7 +39,7 @@ function c66290900.filter1(c,e)
 	return c:IsAbleToDeck() and c:IsType(TYPE_MONSTER) and not c:IsImmuneToEffect(e)
 end
 function c66290900.filter2(c,e,tp,m,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
 end
 function c66290900.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

@@ -1,4 +1,5 @@
 --執念の剣
+---@param c Card
 function c98495314.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

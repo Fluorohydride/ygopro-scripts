@@ -1,4 +1,5 @@
 --一撃離脱
+---@param c Card
 function c29185231.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

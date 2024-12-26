@@ -1,4 +1,5 @@
 --Live☆Twin リィラ・トリート
+---@param c Card
 function c81078880.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

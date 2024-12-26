@@ -1,4 +1,5 @@
 --U.A.パワードギプス
+---@param c Card
 function c35884610.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

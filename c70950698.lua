@@ -1,4 +1,5 @@
 --ブート・スタッガード
+---@param c Card
 function c70950698.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --セイバー・スラッシュ
+---@param c Card
 function c11052544.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E・HERO スチーム・ヒーラー
+---@param c Card
 function c81197327.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

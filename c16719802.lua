@@ -1,4 +1,5 @@
 --スター・ブライト・ドラゴン
+---@param c Card
 function c16719802.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

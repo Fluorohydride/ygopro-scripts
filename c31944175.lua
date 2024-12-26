@@ -1,4 +1,5 @@
 --スレッショルド・ボーグ
+---@param c Card
 function c31944175.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

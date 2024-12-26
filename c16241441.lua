@@ -1,4 +1,5 @@
 --C・ラーバ
+---@param c Card
 function c16241441.initial_effect(c)
 	aux.AddCodeList(c,89621922)
 	--spsummon

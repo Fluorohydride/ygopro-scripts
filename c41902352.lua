@@ -1,4 +1,5 @@
 --BF－東雲のコチ
+---@param c Card
 function c41902352.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

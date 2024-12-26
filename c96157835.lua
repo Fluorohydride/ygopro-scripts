@@ -1,4 +1,5 @@
 --RR－アーセナル・ファルコン
+---@param c Card
 function c96157835.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

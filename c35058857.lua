@@ -1,4 +1,5 @@
 --奇術王 ムーン・スター
+---@param c Card
 function c35058857.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

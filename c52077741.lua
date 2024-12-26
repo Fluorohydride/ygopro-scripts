@@ -1,4 +1,5 @@
 --翻弄するエルフの剣士
+---@param c Card
 function c52077741.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

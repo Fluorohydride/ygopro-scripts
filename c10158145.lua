@@ -1,4 +1,5 @@
 --夢幻崩界イヴリース
+---@param c Card
 function c10158145.initial_effect(c)
 	--spsummon link
 	local e1=Effect.CreateEffect(c)
@@ -87,7 +88,7 @@ function c10158145.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10158145.splimit(e,c,sump,sumtype,sumpos,targetp)
-	return not c:IsType(TYPE_LINK)
+	return c:GetOriginalType()&TYPE_LINK~=TYPE_LINK
 end
 function c10158145.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsPreviousControler(tp)

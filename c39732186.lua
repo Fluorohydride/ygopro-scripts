@@ -1,4 +1,5 @@
 --プロフィビット・スネーク
+---@param c Card
 function c39732186.initial_effect(c)
 	--opp to hand
 	local e1=Effect.CreateEffect(c)

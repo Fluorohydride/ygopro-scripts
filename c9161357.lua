@@ -1,4 +1,5 @@
 --No.6 先史遺産アトランタル
+---@param c Card
 function c9161357.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

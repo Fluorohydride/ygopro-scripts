@@ -1,4 +1,5 @@
 --聖刻神龍－エネアード
+---@param c Card
 function c64332231.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

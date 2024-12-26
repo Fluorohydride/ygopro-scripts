@@ -1,4 +1,5 @@
 --火之迦具土
+---@param c Card
 function c75745607.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

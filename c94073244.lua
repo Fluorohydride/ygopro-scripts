@@ -1,4 +1,5 @@
 --空牙団の撃手 ドンパ
+---@param c Card
 function c94073244.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

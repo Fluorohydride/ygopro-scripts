@@ -1,5 +1,6 @@
 --Recette de Viande～肉料理のレシピ～
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,53618197)
 	aux.AddRitualProcGreater2(c,s.filter,LOCATION_HAND,nil,nil,false,s.extraop)

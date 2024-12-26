@@ -1,4 +1,5 @@
 --幻蝶の刺客アゲハ
+---@param c Card
 function c79972330.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

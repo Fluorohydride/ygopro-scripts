@@ -1,4 +1,5 @@
 --覚醒戦士 クーフーリン
+---@param c Card
 function c10789972.initial_effect(c)
 	c:EnableReviveLimit()
 	--atkup
@@ -30,7 +31,6 @@ function c10789972.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetValue(tc:GetBaseAttack())
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_STANDBY,2)
 		c:RegisterEffect(e1)

@@ -1,4 +1,5 @@
 --グリード・クエーサー
+---@param c Card
 function c50263751.initial_effect(c)
 	--base attack
 	local e1=Effect.CreateEffect(c)

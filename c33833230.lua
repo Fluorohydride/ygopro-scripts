@@ -1,4 +1,5 @@
 --EMシール・イール
+---@param c Card
 function c33833230.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Disable effect

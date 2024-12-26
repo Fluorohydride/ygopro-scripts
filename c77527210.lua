@@ -1,4 +1,5 @@
 --神聖なる魂
+---@param c Card
 function c77527210.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

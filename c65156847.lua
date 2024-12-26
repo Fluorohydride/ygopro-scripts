@@ -1,4 +1,5 @@
 --ネオフレムベル・ガルーダ
+---@param c Card
 function c65156847.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

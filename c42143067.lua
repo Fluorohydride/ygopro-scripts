@@ -1,4 +1,5 @@
 --怒気土器
+---@param c Card
 function c42143067.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

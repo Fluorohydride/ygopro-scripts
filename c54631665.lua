@@ -1,4 +1,5 @@
 --SPYRAL RESORT
+---@param c Card
 function c54631665.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

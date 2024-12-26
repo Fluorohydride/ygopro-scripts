@@ -1,4 +1,5 @@
 --爆走軌道フライング・ペガサス
+---@param c Card
 function c88875132.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

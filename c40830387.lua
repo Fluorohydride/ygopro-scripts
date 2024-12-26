@@ -1,4 +1,5 @@
 --古代の機械掌
+---@param c Card
 function c40830387.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

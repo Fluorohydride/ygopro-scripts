@@ -1,4 +1,5 @@
 --マジック・ディフレクター
+---@param c Card
 function c96474800.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

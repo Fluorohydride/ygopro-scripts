@@ -1,4 +1,5 @@
 --ガルドスの羽根ペン
+---@param c Card
 function c27980138.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

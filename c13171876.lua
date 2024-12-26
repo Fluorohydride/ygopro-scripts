@@ -1,4 +1,5 @@
 --ドラゴンメイド・ラドリー
+---@param c Card
 function c13171876.initial_effect(c)
 	--deckdes
 	local e1=Effect.CreateEffect(c)

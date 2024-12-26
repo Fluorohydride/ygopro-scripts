@@ -1,4 +1,5 @@
 --紫炎の老中 エニシ
+---@param c Card
 function c38280762.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon limit
@@ -32,7 +33,7 @@ function c38280762.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c38280762.spfilter(c)
-	return c:IsSetCard(0x3d) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x103d) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c38280762.spcon(e,c)
 	if c==nil then return true end

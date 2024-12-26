@@ -1,4 +1,5 @@
 --トランスフォーム・スフィア
+---@param c Card
 function c66094973.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -66,7 +67,7 @@ function c66094973.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c66094973.eqlimit)

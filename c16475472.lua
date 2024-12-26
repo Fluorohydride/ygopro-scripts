@@ -1,4 +1,5 @@
 --レッサー・デーモン
+---@param c Card
 function c16475472.initial_effect(c)
 	--redirect
 	local e1=Effect.CreateEffect(c)

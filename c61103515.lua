@@ -1,4 +1,5 @@
 --劫火の翼竜 ゴースト・ワイバーン
+---@param c Card
 function c61103515.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

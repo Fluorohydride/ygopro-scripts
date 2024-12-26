@@ -1,4 +1,5 @@
 --オイスターマイスター
+---@param c Card
 function c83239739.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

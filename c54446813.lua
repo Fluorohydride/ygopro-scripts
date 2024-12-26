@@ -1,4 +1,5 @@
 --ダイナレスラー・マーシャルアンペロ
+---@param c Card
 function c54446813.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

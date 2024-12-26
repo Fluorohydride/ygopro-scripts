@@ -1,4 +1,5 @@
 --デュアル・ソルジャー
+---@param c Card
 function c68366996.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--battle indes

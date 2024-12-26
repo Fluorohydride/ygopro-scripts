@@ -1,4 +1,5 @@
 --EMオッドアイズ・バトラー
+---@param c Card
 function c56677752.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

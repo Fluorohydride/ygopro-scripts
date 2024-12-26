@@ -1,9 +1,10 @@
 --D・モバホン
+---@param c Card
 function c93542102.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93542102,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_DICE+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)
@@ -14,6 +15,7 @@ function c93542102.initial_effect(c)
 	--confirm
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(93542102,1))
+	e2:SetCategory(CATEGORY_DICE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)
@@ -22,7 +24,6 @@ function c93542102.initial_effect(c)
 	e2:SetOperation(c93542102.opd)
 	c:RegisterEffect(e2)
 end
-c93542102.toss_dice=true
 function c93542102.cona(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsAttackPos()
 end

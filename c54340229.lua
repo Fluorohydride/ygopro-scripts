@@ -1,4 +1,5 @@
 --聖天樹の開花
+---@param c Card
 function c54340229.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --黒魔術の秘儀
+---@param c Card
 function c59514116.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate
@@ -6,6 +7,7 @@ function c59514116.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_FUSION_SUMMON)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(c59514116.target)
 	e1:SetOperation(c59514116.activate)
@@ -56,11 +58,15 @@ function c59514116.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(s)
 	if s==0 then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+		if e:IsCostChecked() then
+			e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+		end
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	end
 	if s==1 then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		if e:IsCostChecked() then
+			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		end
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 	end
 end

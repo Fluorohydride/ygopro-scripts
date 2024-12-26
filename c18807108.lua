@@ -1,4 +1,5 @@
 --六芒星の呪縛
+---@param c Card
 function c18807108.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

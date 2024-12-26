@@ -1,4 +1,5 @@
 --星騎士 セイクリッド・カドケウス
+---@param c Card
 function c58858807.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2,nil,nil,99)

@@ -1,5 +1,6 @@
 --暗黒界の門番 ゼンタ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,33017655)
 	c:SetSPSummonOnce(id)

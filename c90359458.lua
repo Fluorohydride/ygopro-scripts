@@ -1,4 +1,5 @@
 --トップ・シェア
+---@param c Card
 function c90359458.initial_effect(c)
 	--set top
 	local e1=Effect.CreateEffect(c)

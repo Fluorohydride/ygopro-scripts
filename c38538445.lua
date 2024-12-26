@@ -1,4 +1,5 @@
 --不死之炎鳥
+---@param c Card
 function c38538445.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

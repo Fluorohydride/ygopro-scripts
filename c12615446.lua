@@ -1,4 +1,5 @@
 --電子光虫－スカラジエータ
+---@param c Card
 function c12615446.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c12615446.matfilter,3,2,nil,nil,99)
@@ -75,7 +76,7 @@ end
 function c12615446.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,tc)
 	end
 end

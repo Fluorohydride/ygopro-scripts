@@ -1,4 +1,5 @@
 --帝王の開岩
+---@param c Card
 function c61466310.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

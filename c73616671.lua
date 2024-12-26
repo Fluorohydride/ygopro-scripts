@@ -1,4 +1,5 @@
 --イリュージョン・マジック
+---@param c Card
 function c73616671.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

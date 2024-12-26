@@ -1,4 +1,5 @@
 --アルギロスの落胤
+---@param c Card
 function c82090807.initial_effect(c)
 	--spsummon rule or self
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --墓守の使徒
+---@param c Card
 function c85646474.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

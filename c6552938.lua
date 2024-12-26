@@ -1,4 +1,5 @@
 --RR－ラダー・ストリクス
+---@param c Card
 function c6552938.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

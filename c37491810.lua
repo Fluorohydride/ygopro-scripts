@@ -1,4 +1,5 @@
 --パラメタルフォーゼ・アゾートレス
+---@param c Card
 function c37491810.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

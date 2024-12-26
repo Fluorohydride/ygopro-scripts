@@ -1,4 +1,5 @@
 --セリオンズ“エンプレス”アラシア
+---@param c Card
 function c48806195.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

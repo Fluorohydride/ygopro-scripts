@@ -1,4 +1,5 @@
 --古代の機械巨人
+---@param c Card
 function c83104731.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

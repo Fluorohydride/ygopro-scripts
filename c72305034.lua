@@ -1,4 +1,5 @@
 --重起士道－ゴルドナイト
+---@param c Card
 function c72305034.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--to hand

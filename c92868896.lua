@@ -1,4 +1,5 @@
 --ドラグニティ－セナート
+---@param c Card
 function c92868896.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -46,7 +47,7 @@ function c92868896.eqop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Equip(tp,g:GetFirst(),c)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(c92868896.eqlimit)

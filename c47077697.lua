@@ -1,4 +1,5 @@
 --呪念の化身ウルボヌス
+---@param c Card
 function c47077697.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

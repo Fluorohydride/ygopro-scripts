@@ -1,4 +1,5 @@
 --サーマル・ジェネクス
+---@param c Card
 function c6588580.initial_effect(c)
 	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon

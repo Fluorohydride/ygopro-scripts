@@ -1,4 +1,5 @@
 --夜の逃飛行
+---@param c Card
 function c42560034.initial_effect(c)
 	--return
 	local e1=Effect.CreateEffect(c)

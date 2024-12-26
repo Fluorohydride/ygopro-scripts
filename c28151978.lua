@@ -1,4 +1,5 @@
 --SRドミノバタフライ
+---@param c Card
 function c28151978.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

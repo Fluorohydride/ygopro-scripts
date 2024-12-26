@@ -1,4 +1,5 @@
 --DDDD超次元統皇ゼロ・パラドックス
+---@param c Card
 function c97417863.initial_effect(c)
 	c:EnableReviveLimit()
 	--pendulum summon
@@ -129,7 +130,6 @@ function c97417863.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if c:GetAttack()~=6000 and c:IsRelateToEffect(e) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 		e1:SetValue(6000)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

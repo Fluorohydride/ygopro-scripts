@@ -1,4 +1,5 @@
 --閃刀姫－シズク
+---@param c Card
 function c90673288.initial_effect(c)
 	c:SetSPSummonOnce(90673288)
 	--link summon

@@ -1,4 +1,5 @@
 --超重神童ワカ－U4
+---@param c Card
 function c82112494.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

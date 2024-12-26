@@ -1,4 +1,5 @@
 --紫炎の寄子
+---@param c Card
 function c33883834.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
@@ -15,7 +16,7 @@ end
 function c33883834.con(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return d and ((a:IsControler(tp) and a:IsSetCard(0x3d)) or (d:IsControler(tp) and d:IsSetCard(0x3d)))
+	return d and ((a:IsControler(tp) and a:IsSetCard(0x103d)) or (d:IsControler(tp) and d:IsSetCard(0x103d)))
 		and Duel.GetFlagEffect(tp,33883834)==0
 end
 function c33883834.cost(e,tp,eg,ep,ev,re,r,rp,chk)

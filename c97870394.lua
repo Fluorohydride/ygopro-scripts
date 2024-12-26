@@ -1,4 +1,5 @@
 --アマゾネス霊術師
+---@param c Card
 function c97870394.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

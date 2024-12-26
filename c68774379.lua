@@ -1,4 +1,5 @@
 --サイバー・バリア・ドラゴン
+---@param c Card
 function c68774379.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

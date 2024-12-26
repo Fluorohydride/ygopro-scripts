@@ -1,4 +1,5 @@
 --転生炎獣コヨーテ
+---@param c Card
 function c71861848.initial_effect(c)
 	--register effect
 	local e1=Effect.CreateEffect(c)

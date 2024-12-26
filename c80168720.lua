@@ -1,4 +1,5 @@
 --闇の訪れ
+---@param c Card
 function c80168720.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

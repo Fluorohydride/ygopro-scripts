@@ -1,4 +1,5 @@
 --団結の力
+---@param c Card
 function c56747793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

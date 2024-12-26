@@ -1,4 +1,5 @@
 --第三の棺
+---@param c Card
 function c78697395.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

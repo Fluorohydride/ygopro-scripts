@@ -1,4 +1,5 @@
 --トリックスター・キャロベイン
+---@param c Card
 function c98169343.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

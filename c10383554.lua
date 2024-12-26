@@ -1,4 +1,5 @@
 --デストーイ・ホイールソウ・ライオ
+---@param c Card
 function c10383554.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

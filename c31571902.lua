@@ -1,4 +1,5 @@
 --邪神機－獄炎
+---@param c Card
 function c31571902.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

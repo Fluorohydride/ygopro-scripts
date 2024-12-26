@@ -1,4 +1,5 @@
 --失楽園
+---@param c Card
 function c13301895.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Activate

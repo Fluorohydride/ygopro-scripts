@@ -1,4 +1,5 @@
 --ZW－極星神馬聖鎧
+---@param c Card
 function c2648201.initial_effect(c)
 	c:SetUniqueOnField(1,0,2648201)
 	--equip

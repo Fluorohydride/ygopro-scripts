@@ -1,4 +1,5 @@
 --No－P.U.N.K.フォクシー・チューン
+---@param c Card
 function c55920742.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

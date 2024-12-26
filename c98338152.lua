@@ -1,4 +1,5 @@
 --閃刀機－ウィドウアンカー
+---@param c Card
 function c98338152.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

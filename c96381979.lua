@@ -1,4 +1,5 @@
 --魁炎星王－ソウコ
+---@param c Card
 function c96381979.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_BEASTWARRIOR),4,2)

@@ -1,4 +1,5 @@
 --宣告者の預言
+---@param c Card
 function c27383110.initial_effect(c)
 	--Activate
 	aux.AddRitualProcEqualCode(c,44665365,nil,nil,nil,false,c27383110.extraop)

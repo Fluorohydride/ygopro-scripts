@@ -1,4 +1,5 @@
 --伝説の都 アトランティス
+---@param c Card
 function c295517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

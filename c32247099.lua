@@ -1,4 +1,5 @@
 --絶対なる幻神獣
+---@param c Card
 function c32247099.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --Evil★Twin チャレンジ
+---@param c Card
 function c98360333.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

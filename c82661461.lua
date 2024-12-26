@@ -1,4 +1,5 @@
 --EMオッドアイズ・バレット
+---@param c Card
 function c82661461.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

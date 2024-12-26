@@ -1,4 +1,5 @@
 --森羅の隠蜜 スナッフ
+---@param c Card
 function c47741109.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

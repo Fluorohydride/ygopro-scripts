@@ -1,4 +1,5 @@
 --百景戦都ゴルディロックス
+---@param c Card
 function c24521754.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

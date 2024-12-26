@@ -1,4 +1,5 @@
 --ゼアル・フィールド
+---@param c Card
 function c95856586.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

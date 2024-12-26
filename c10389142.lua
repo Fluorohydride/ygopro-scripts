@@ -1,4 +1,5 @@
 --No.42 スターシップ・ギャラクシー・トマホーク
+---@param c Card
 function c10389142.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

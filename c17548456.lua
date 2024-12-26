@@ -1,4 +1,5 @@
 --ジュラック・メテオ
+---@param c Card
 function c17548456.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x22),aux.NonTuner(Card.IsRace,RACE_DINOSAUR),2)
@@ -28,13 +29,12 @@ end
 function c17548456.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if g:GetCount()>0 then
-		Duel.Destroy(g,REASON_EFFECT)
-	end
-	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17548456.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
-	if sg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(17548456,1)) then
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sp=sg:Select(tp,1,1,nil)
-		Duel.SpecialSummon(sp,0,tp,tp,false,false,POS_FACEUP)
+		if Duel.Destroy(g,REASON_EFFECT)~=0 and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c17548456.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and Duel.SelectYesNo(tp,aux.Stringid(17548456,1)) then
+			Duel.BreakEffect()
+			local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17548456.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local sp=sg:Select(tp,1,1,nil)
+			Duel.SpecialSummon(sp,0,tp,tp,false,false,POS_FACEUP)
+		end
 	end
 end

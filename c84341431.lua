@@ -1,4 +1,5 @@
 --デーモンの巨神
+---@param c Card
 function c84341431.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

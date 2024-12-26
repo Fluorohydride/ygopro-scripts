@@ -1,4 +1,5 @@
 --ネコマネキング
+---@param c Card
 function c11021521.initial_effect(c)
 	--end turn
 	local e1=Effect.CreateEffect(c)

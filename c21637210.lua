@@ -1,4 +1,5 @@
 --ファイアウォール・ドラゴン・シンギュラリティ
+---@param c Card
 function c21637210.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),3)

@@ -1,4 +1,5 @@
 --神海竜ギシルノドン
+---@param c Card
 function c76891401.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsLevel,3),1,1)

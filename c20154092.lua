@@ -1,4 +1,5 @@
 --先史遺産カブレラの投石機
+---@param c Card
 function c20154092.initial_effect(c)
 	--atk
 	local e2=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --烙印凶鳴
+---@param c Card
 function c67100549.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

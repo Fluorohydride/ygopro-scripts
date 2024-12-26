@@ -1,4 +1,5 @@
 --マスター・ジーグ
+---@param c Card
 function c16191953.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

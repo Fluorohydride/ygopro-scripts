@@ -1,4 +1,5 @@
 --ドラゴンメイド・シュトラール
+---@param c Card
 function c24799107.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x133),c24799107.ffilter,true)

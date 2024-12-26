@@ -1,4 +1,5 @@
 --CX 熱血指導神アルティメットレーナー
+---@param c Card
 function c88754763.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,4)

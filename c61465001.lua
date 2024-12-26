@@ -1,4 +1,5 @@
 --擾乱騒蛇ラウドクラウド
+---@param c Card
 function c61465001.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon
@@ -92,7 +93,6 @@ function c61465001.desop1(e,tp,eg,ep,ev,re,r,rp)
 			and c:IsFaceup() and c:IsRelateToEffect(e) and atk>0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(atk)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

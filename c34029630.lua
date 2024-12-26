@@ -1,4 +1,5 @@
 --漆黒のパワーストーン
+---@param c Card
 function c34029630.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--special counter permit

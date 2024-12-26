@@ -1,4 +1,5 @@
 --ゼロ・ガードナー
+---@param c Card
 function c93816465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

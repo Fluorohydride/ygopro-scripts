@@ -1,4 +1,5 @@
 --D-HERO ディシジョンガイ
+---@param c Card
 function c64184058.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

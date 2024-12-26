@@ -1,4 +1,5 @@
 --マシンナーズ・フォース
+---@param c Card
 function c58054262.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

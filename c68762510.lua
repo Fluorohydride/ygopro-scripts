@@ -1,4 +1,5 @@
 --幸運の笛吹き
+---@param c Card
 function c68762510.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--draw

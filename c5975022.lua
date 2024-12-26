@@ -1,4 +1,5 @@
 --剣闘獣ムルミロ
+---@param c Card
 function c5975022.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -49,7 +50,7 @@ function c5975022.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c5975022.filter(c,e,tp)
-	return not c:IsCode(5975022) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(5975022) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5975022.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

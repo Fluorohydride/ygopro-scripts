@@ -1,4 +1,5 @@
 --アモルファージ・インフェクション
+---@param c Card
 function c50554729.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

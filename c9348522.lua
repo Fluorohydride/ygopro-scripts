@@ -1,4 +1,5 @@
 --浮鵺城
+---@param c Card
 function c9348522.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

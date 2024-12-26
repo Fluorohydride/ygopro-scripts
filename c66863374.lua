@@ -1,4 +1,5 @@
 --スレイブパンサー
+---@param c Card
 function c66863374.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c66863374.lcheck)
@@ -28,13 +29,13 @@ function c66863374.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66863374.lcheck(g,lc)
-	return g:IsExists(Card.IsLinkSetCard,1,nil,0x19)
+	return g:IsExists(Card.IsLinkSetCard,1,nil,0x1019)
 end
 function c66863374.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function c66863374.thfilter(c)
-	return c:IsSetCard(0x19) and c:IsAbleToHand()
+	return c:IsSetCard(0x1019) and c:IsAbleToHand()
 end
 function c66863374.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66863374.thfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -49,11 +50,11 @@ function c66863374.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66863374.tdfilter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x19) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsFaceup() and c:IsSetCard(0x1019) and Duel.GetMZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c66863374.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c)
 end
 function c66863374.spfilter(c,e,tp,tc)
-	return c:IsSetCard(0x19) and not c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
+	return c:IsSetCard(0x1019) and not c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
 		and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
 end
 function c66863374.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

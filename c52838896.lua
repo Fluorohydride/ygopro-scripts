@@ -1,4 +1,5 @@
 --一斉蜂起
+---@param c Card
 function c52838896.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

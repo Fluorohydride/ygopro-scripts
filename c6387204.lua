@@ -1,4 +1,5 @@
 --CNo.6 先史遺産カオス・アトランタル
+---@param c Card
 function c6387204.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,3)

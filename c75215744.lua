@@ -1,4 +1,5 @@
 --弩級軍貫－いくら型一番艦
+---@param c Card
 function c75215744.initial_effect(c)
 	aux.AddCodeList(c,24639891,61027400)
 	--xyz procedure
@@ -67,6 +68,7 @@ function c75215744.effop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)

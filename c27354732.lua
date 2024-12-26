@@ -1,4 +1,5 @@
 --魔導獣 キングジャッカル
+---@param c Card
 function c27354732.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)

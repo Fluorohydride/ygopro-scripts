@@ -1,4 +1,5 @@
 --緊急テレポート
+---@param c Card
 function c67723438.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

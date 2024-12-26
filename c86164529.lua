@@ -1,4 +1,5 @@
 --アクア・ドラゴン
+---@param c Card
 function c86164529.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

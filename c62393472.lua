@@ -1,4 +1,5 @@
 --夢魔鏡の聖獣－パンタス
+---@param c Card
 function c62393472.initial_effect(c)
 	aux.AddCodeList(c,1050355,99792080)
 	--spsummon1

@@ -1,4 +1,5 @@
 --EMオールカバー・ヒッポ
+---@param c Card
 function c91449532.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

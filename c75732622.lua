@@ -1,4 +1,5 @@
 --トーチ・ゴーレム
+---@param c Card
 function c75732622.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

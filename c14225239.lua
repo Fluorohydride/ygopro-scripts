@@ -1,4 +1,5 @@
 --E・HERO セイラーマン
+---@param c Card
 function c14225239.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

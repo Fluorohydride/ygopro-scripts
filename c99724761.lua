@@ -1,4 +1,5 @@
 --XZ－キャタピラー・キャノン
+---@param c Card
 function c99724761.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

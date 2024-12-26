@@ -1,4 +1,5 @@
 --リトマスの死儀式
+---@param c Card
 function c8955148.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,72566043)
 	--to deck

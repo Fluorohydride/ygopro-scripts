@@ -1,4 +1,5 @@
 --ハーピィ・コンダクター
+---@param c Card
 function c85696777.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WIND),2,2)

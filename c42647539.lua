@@ -1,4 +1,5 @@
 --ガーゴイルの道化師
+---@param c Card
 function c42647539.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

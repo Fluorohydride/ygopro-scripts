@@ -1,4 +1,5 @@
 --剣闘訓練所
+---@param c Card
 function c35224440.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,7 @@ function c35224440.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35224440.filter(c)
-	return c:IsSetCard(0x19) and c:IsLevelBelow(4) and c:IsAbleToHand()
+	return c:IsSetCard(0x1019) and c:IsLevelBelow(4) and c:IsAbleToHand()
 end
 function c35224440.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c35224440.filter,tp,LOCATION_DECK,0,1,nil) end

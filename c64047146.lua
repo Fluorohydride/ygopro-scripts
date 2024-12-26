@@ -1,4 +1,5 @@
 --一角獣のホーン
+---@param c Card
 function c64047146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

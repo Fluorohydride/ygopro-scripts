@@ -1,4 +1,5 @@
 --超魔導師－ブラック・マジシャンズ
+---@param c Card
 function c50237654.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

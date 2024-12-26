@@ -1,4 +1,5 @@
 --コアラッコ
+---@param c Card
 function c87685879.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

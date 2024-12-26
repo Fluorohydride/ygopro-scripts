@@ -1,4 +1,5 @@
 --バブルイリュージョン
+---@param c Card
 function c80075749.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

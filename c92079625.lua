@@ -1,4 +1,5 @@
 --影依の炎核 ヴォイド
+---@param c Card
 function c92079625.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

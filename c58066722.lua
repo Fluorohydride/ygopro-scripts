@@ -1,4 +1,5 @@
 --エーリアン・バスター
+---@param c Card
 function c58066722.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

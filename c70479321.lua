@@ -1,4 +1,5 @@
 --EMドラミング・コング
+---@param c Card
 function c70479321.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

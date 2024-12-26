@@ -1,4 +1,5 @@
 --剣闘獣ベストロウリィ
+---@param c Card
 function c41470137.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -49,7 +50,7 @@ function c41470137.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c41470137.filter(c,e,tp)
-	return not c:IsCode(41470137) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(41470137) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c41470137.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

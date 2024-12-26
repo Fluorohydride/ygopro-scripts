@@ -1,4 +1,5 @@
 --巨大戦艦 ビッグ・コアMk－Ⅲ
+---@param c Card
 function c82821760.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--special summon

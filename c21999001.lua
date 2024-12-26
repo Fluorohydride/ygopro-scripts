@@ -1,4 +1,5 @@
 --光波双顎機
+---@param c Card
 function c21999001.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

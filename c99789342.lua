@@ -1,4 +1,5 @@
 --黒魔術のカーテン
+---@param c Card
 function c99789342.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

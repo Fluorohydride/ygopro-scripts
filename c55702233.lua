@@ -1,4 +1,5 @@
 --生きる偲びのシルキィ
+---@param c Card
 function c55702233.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

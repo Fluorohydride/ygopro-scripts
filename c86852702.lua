@@ -1,4 +1,5 @@
 --機甲部隊の再編制
+---@param c Card
 function c86852702.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

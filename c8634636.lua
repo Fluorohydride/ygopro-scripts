@@ -1,4 +1,5 @@
 --尾も白い黒猫
+---@param c Card
 function c8634636.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

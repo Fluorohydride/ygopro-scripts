@@ -1,4 +1,5 @@
 --聖なる魔術師
+---@param c Card
 function c31560081.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

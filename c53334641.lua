@@ -1,4 +1,5 @@
 --ゴーストリックの駄天使
+---@param c Card
 function c53334641.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2,c53334641.ovfilter,aux.Stringid(53334641,0))
@@ -72,7 +73,7 @@ function c53334641.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53334641.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c53334641.mtfilter,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then

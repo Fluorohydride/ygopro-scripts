@@ -1,4 +1,5 @@
 --デスピアの凶劇
+---@param c Card
 function c81555617.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --M・HERO 光牙
+---@param c Card
 function c50608164.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

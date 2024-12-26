@@ -1,4 +1,5 @@
 --リサイコロ
+---@param c Card
 function c85704698.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
@@ -21,7 +22,6 @@ function c85704698.initial_effect(c)
 	e2:SetOperation(c85704698.synop)
 	c:RegisterEffect(e2)
 end
-c85704698.toss_dice=true
 function c85704698.filter(c,e,tp)
 	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

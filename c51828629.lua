@@ -1,4 +1,5 @@
 --魔導騎士ギルティア
+---@param c Card
 function c51828629.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

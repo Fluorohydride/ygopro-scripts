@@ -1,4 +1,5 @@
 --CX－CHレジェンド・アーサー
+---@param c Card
 function c13030280.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

@@ -1,4 +1,5 @@
 --CX ダーク・フェアリー・チア・ガール
+---@param c Card
 function c23454876.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

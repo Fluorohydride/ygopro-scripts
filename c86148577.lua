@@ -1,4 +1,5 @@
 --守護竜エルピィ
+---@param c Card
 function c86148577.initial_effect(c)
 	c:SetSPSummonOnce(86148577)
 	--link summon

@@ -1,4 +1,5 @@
 --迷犬メリー
+---@param c Card
 function c71583486.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

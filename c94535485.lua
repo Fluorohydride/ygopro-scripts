@@ -1,4 +1,5 @@
 --手をつなぐ魔人
+---@param c Card
 function c94535485.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

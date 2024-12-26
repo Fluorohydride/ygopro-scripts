@@ -1,4 +1,5 @@
 --EM天空の魔術師
+---@param c Card
 function c58092907.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

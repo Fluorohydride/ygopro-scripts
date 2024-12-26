@@ -1,4 +1,5 @@
 --闇魔界の契約書
+---@param c Card
 function c45974017.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

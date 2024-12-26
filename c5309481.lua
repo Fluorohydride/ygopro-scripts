@@ -1,4 +1,5 @@
 --蘇りし魔王 ハ・デス
+---@param c Card
 function c5309481.initial_effect(c)
 	aux.AddMaterialCodeList(c,33420078)
 	--synchro summon

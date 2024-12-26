@@ -1,4 +1,5 @@
 --バウンサー・ガード
+---@param c Card
 function c48582558.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

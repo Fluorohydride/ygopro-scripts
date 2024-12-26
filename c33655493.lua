@@ -1,4 +1,5 @@
 --闇の侯爵ベリアル
+---@param c Card
 function c33655493.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

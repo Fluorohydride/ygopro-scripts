@@ -1,4 +1,5 @@
 --相剣軍師－龍淵
+---@param c Card
 function c93490856.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --帝王の轟毅
+---@param c Card
 function c5795980.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

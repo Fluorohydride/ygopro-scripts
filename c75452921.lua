@@ -1,4 +1,5 @@
 --トロイメア・ケルベロス
+---@param c Card
 function c75452921.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c75452921.lcheck)

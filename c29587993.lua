@@ -1,4 +1,5 @@
 --霞の谷の巨神鳥
+---@param c Card
 function c29587993.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

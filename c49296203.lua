@@ -1,4 +1,5 @@
 --カラクリ法師 九七六参
+---@param c Card
 function c49296203.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サクリファイス・アニマ
+---@param c Card
 function c94259633.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

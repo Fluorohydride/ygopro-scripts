@@ -1,4 +1,5 @@
 --ゴルゴネイオの呪眼
+---@param c Card
 function c28957126.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

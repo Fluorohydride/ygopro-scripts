@@ -1,4 +1,5 @@
 --スターダスト・トレイル
+---@param c Card
 function c63184227.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

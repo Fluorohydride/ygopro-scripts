@@ -1,4 +1,5 @@
 --CiNo.1000 夢幻虚光神ヌメロニアス・ヌメロニア
+---@param c Card
 function c15862758.initial_effect(c)
 	--Xyz Summon
 	aux.AddXyzProcedure(c,nil,13,5)

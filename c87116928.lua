@@ -1,4 +1,5 @@
 --キメラテック・メガフリート・ドラゴン
+---@param c Card
 function c87116928.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

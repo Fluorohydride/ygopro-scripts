@@ -1,4 +1,5 @@
 --亡龍の戦慄－デストルドー
+---@param c Card
 function c5560911.initial_effect(c)
 	--special Summon
 	local e1=Effect.CreateEffect(c)

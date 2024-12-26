@@ -1,4 +1,5 @@
 --RR－ワイズ・ストリクス
+---@param c Card
 function c36429703.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c36429703.matfilter,2,2)

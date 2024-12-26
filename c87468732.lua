@@ -1,4 +1,5 @@
 --変導機咎 クロックアーク
+---@param c Card
 function c87468732.initial_effect(c)
 	--pendulum proc
 	aux.EnablePendulumAttribute(c)

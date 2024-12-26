@@ -1,5 +1,6 @@
 --メレオロジック・アグリゲーター
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2,nil,nil,99)

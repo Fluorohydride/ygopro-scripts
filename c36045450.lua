@@ -1,4 +1,5 @@
 --マジシャンズ・クロス
+---@param c Card
 function c36045450.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --螺旋式発条
+---@param c Card
 function c91422370.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

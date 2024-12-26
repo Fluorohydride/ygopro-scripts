@@ -1,4 +1,5 @@
 --VS プルトンHG
+---@param c Card
 function c55688914.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

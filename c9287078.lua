@@ -1,4 +1,5 @@
 --黒魔族復活の棺
+---@param c Card
 function c9287078.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

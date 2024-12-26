@@ -1,4 +1,5 @@
 --シンクロン・キャリアー
+---@param c Card
 function c62125438.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

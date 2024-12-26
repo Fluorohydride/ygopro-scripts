@@ -1,4 +1,5 @@
 --真六武衆－シナイ
+---@param c Card
 function c48505422.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ function c48505422.rlcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c48505422.filter(c)
-	return c:IsSetCard(0x3d) and not c:IsCode(48505422) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x103d) and not c:IsCode(48505422) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c48505422.rltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c48505422.filter(chkc) end

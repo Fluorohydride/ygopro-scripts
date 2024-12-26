@@ -1,4 +1,5 @@
 --先史遺産－ピラミッド・アイ・タブレット
+---@param c Card
 function c26345570.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --無限起動コロッサルマウンテン
+---@param c Card
 function c60195675.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
@@ -66,7 +67,7 @@ end
 function c60195675.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,tc)
 	end
 end

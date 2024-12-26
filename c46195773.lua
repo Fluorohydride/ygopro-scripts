@@ -1,4 +1,5 @@
 --ターボ・ウォリアー
+---@param c Card
 function c46195773.initial_effect(c)
 	aux.AddMaterialCodeList(c,67270095)
 	--synchro summon

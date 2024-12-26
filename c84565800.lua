@@ -1,4 +1,5 @@
 --伝説の騎士 ヘルモス
+---@param c Card
 function c84565800.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

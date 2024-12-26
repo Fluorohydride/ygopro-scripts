@@ -1,5 +1,6 @@
 --アルカナフォースⅩⅤ－THE DEVIL
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,73206827)
 	--to hand
@@ -13,22 +14,31 @@ function s.initial_effect(c)
 	e1:SetOperation(s.thop)
 	c:RegisterEffect(e1)
 	--coin
+	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
+	--heads: optional destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_COIN)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_SUMMON_SUCCESS)
-	e2:SetTarget(s.cointg)
-	e2:SetOperation(s.coinop)
+	e2:SetDescription(aux.Stringid(id,2))
+	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetCondition(s.odescon)
+	e2:SetTarget(s.odestg)
+	e2:SetOperation(s.odesop)
 	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	--tails: forced destroy
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,3))
+	e3:SetCategory(CATEGORY_DESTROY)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCondition(s.fdescon)
+	e3:SetTarget(s.fdestg)
+	e3:SetOperation(s.fdesop)
 	c:RegisterEffect(e3)
-	local e4=e2:Clone()
-	e4:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
-	c:RegisterEffect(e4)
 end
-s.toss_coin=true
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsDiscardable() end
@@ -49,50 +59,9 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function s.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
-end
-function s.coinop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local res=0
-	if c:IsHasEffect(73206827) then
-		res=1-Duel.SelectOption(tp,60,61)
-	else res=Duel.TossCoin(tp,1) end
-	s.arcanareg(c,res)
-end
-function s.arcanareg(c,coin)
-	--heads: optional destroy
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,2))
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetCondition(s.odescon)
-	e1:SetTarget(s.odestg)
-	e1:SetOperation(s.odesop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1)
-	--tails: forced destroy
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,3))
-	e2:SetCategory(CATEGORY_DESTROY)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(s.fdescon)
-	e2:SetTarget(s.fdestg)
-	e2:SetOperation(s.fdesop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e2)
-	c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
-end
 function s.odescon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(id)==1
+	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function s.odestg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
@@ -108,7 +77,7 @@ function s.odesop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.fdescon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(id)==0
+	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0
 end
 function s.fdestg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

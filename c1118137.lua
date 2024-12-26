@@ -1,4 +1,5 @@
 --ガーディアンの力
+---@param c Card
 function c1118137.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate

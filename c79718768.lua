@@ -1,4 +1,5 @@
 --急転直下
+---@param c Card
 function c79718768.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

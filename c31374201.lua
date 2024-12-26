@@ -1,4 +1,5 @@
 --海造賊－白髭の機関士
+---@param c Card
 function c31374201.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

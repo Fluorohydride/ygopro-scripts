@@ -1,4 +1,5 @@
 --ダーク・キュア
+---@param c Card
 function c3701074.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

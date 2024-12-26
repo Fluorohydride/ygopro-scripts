@@ -1,4 +1,5 @@
 --インペリアル・バウアー
+---@param c Card
 function c56673112.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--spsummon

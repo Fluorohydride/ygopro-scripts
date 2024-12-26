@@ -1,5 +1,6 @@
 --R－ACEファイア・エンジン
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Special Summon (from hand : itself)
 	local e1=Effect.CreateEffect(c)

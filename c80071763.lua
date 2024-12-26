@@ -1,4 +1,5 @@
 --魔人 ダーク・バルター
+---@param c Card
 function c80071763.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

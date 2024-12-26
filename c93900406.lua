@@ -1,4 +1,5 @@
 --マタンゴ
+---@param c Card
 function c93900406.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

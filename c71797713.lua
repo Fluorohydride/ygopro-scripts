@@ -1,4 +1,5 @@
 --エレメントセイバー・ウィラード
+---@param c Card
 function c71797713.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
