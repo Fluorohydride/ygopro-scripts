@@ -1,4 +1,5 @@
 --神碑の翼フギン
+---@param c Card
 function c55990317.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

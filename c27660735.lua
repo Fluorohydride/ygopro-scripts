@@ -1,4 +1,5 @@
 --SR三つ目のダイス
+---@param c Card
 function c27660735.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --竜の逆鱗
+---@param c Card
 function c54178050.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

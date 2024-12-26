@@ -1,4 +1,5 @@
 --マジシャンズ・ローブ
+---@param c Card
 function c71696014.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--spsummon (DM)

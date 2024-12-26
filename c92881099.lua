@@ -1,4 +1,5 @@
 --魅惑の合わせ鏡
+---@param c Card
 function c92881099.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

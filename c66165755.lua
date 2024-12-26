@@ -1,4 +1,5 @@
 --A・ジェネクス・アクセル
+---@param c Card
 function c66165755.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(nil),1)

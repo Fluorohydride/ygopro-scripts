@@ -1,4 +1,5 @@
 --忍法 変化の術
+---@param c Card
 function c70861343.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

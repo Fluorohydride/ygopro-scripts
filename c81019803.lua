@@ -1,4 +1,5 @@
 --うきうきメルフィーズ
+---@param c Card
 function c81019803.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

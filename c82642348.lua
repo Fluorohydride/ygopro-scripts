@@ -1,4 +1,5 @@
 --クルーエル
+---@param c Card
 function c82642348.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +13,6 @@ function c82642348.initial_effect(c)
 	e1:SetOperation(c82642348.desop)
 	c:RegisterEffect(e1)
 end
-c82642348.toss_coin=true
 function c82642348.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end

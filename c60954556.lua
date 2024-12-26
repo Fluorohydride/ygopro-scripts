@@ -1,4 +1,5 @@
 --LL－サファイア・スワロー
+---@param c Card
 function c60954556.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
@@ -90,7 +91,7 @@ end
 function c60954556.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

@@ -1,4 +1,5 @@
 --フルメタルフォーゼ・アルカエスト
+---@param c Card
 function c77693536.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -66,7 +67,7 @@ function c77693536.eqop(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+	e2:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 	e2:SetCode(EFFECT_EQUIP_LIMIT)
 	e2:SetValue(c77693536.eqlimit)
 	e2:SetReset(RESET_EVENT+RESETS_STANDARD)

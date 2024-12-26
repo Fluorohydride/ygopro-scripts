@@ -1,4 +1,5 @@
 --Sin サイバー・エンド・ドラゴン
+---@param c Card
 function c1710476.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,c1710476.uqfilter,LOCATION_MZONE)

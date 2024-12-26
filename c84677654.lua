@@ -1,13 +1,14 @@
 --大金星！？
+---@param c Card
 function c84677654.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_COIN)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c84677654.target)
 	e1:SetOperation(c84677654.operation)
 	c:RegisterEffect(e1)
 end
-c84677654.toss_coin=true
 function c84677654.cfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(0)
 end

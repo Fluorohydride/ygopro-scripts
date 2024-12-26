@@ -1,4 +1,5 @@
 --強制退化
+---@param c Card
 function c37421075.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --黄色い忍者
+---@param c Card
 function c64749612.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

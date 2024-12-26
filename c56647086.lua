@@ -1,4 +1,5 @@
 --暗黒の侵略者
+---@param c Card
 function c56647086.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

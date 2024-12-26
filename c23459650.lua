@@ -1,4 +1,5 @@
 --ネフティスの輪廻
+---@param c Card
 function c23459650.initial_effect(c)
 	aux.AddCodeList(c,88176533,24175232)
 	aux.AddRitualProcGreater2(c,c23459650.filter,LOCATION_HAND,nil,nil,false,c23459650.extraop)

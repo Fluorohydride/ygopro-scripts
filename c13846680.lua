@@ -1,4 +1,5 @@
 --ヘルプロミネンス
+---@param c Card
 function c13846680.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

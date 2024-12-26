@@ -1,4 +1,5 @@
 --神の居城－ヴァルハラ
+---@param c Card
 function c1353770.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

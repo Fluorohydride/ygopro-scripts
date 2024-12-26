@@ -1,4 +1,5 @@
 --弓神レライエ
+---@param c Card
 function c49922726.initial_effect(c)
 	--ATK UP
 	local e1=Effect.CreateEffect(c)

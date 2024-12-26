@@ -1,4 +1,5 @@
 --魔霧雨
+---@param c Card
 function c27827272.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

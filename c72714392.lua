@@ -1,4 +1,5 @@
 --BF－大旆のヴァーユ
+---@param c Card
 function c72714392.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

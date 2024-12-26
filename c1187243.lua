@@ -1,4 +1,5 @@
 --ガスタへの追風
+---@param c Card
 function c1187243.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

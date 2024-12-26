@@ -1,4 +1,5 @@
 --エクシーズ・ダブル・バック
+---@param c Card
 function c57836546.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

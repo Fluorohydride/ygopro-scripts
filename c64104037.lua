@@ -1,4 +1,5 @@
 --劫火の槍術士 ゴースト・ランサー
+---@param c Card
 function c64104037.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

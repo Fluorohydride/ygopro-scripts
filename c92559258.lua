@@ -1,4 +1,5 @@
 --サーヴァント・オブ・エンディミオン
+---@param c Card
 function c92559258.initial_effect(c)
 	--Pendulum Summon
 	c:EnableCounterPermit(0x1,LOCATION_PZONE+LOCATION_MZONE)
@@ -110,8 +111,7 @@ function c92559258.countercost2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92559258.countertg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsCanAddCounter(0x1,1)
-		and Duel.IsExistingMatchingCard(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,c,0x1,1) end
+	if chk==0 then return c:IsCanAddCounter(0x1,1) end
 	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,c,0x1,1)
 	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,g,#g,0,0)

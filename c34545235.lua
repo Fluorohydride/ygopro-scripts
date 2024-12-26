@@ -1,4 +1,5 @@
 --鋼核の輝き
+---@param c Card
 function c34545235.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--negate

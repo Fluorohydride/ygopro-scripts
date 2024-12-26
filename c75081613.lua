@@ -1,4 +1,5 @@
 --ジャイアントワーム
+---@param c Card
 function c75081613.initial_effect(c)
 	c:EnableReviveLimit()
 	--

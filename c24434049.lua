@@ -1,5 +1,6 @@
 --エピュアリィ・プランプ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,55584558)
 	--xyz summon
@@ -53,9 +54,12 @@ function s.gmattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,s.gmattgfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,2,nil,c)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,#g,0,0)
 end
+function s.gmafilter(c,e)
+	return not c:IsImmuneToEffect(e) and c:IsCanOverlay()
+end
 function s.gmatop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetTargetsRelateToChain():Filter(aux.NOT(Card.IsImmuneToEffect),nil,e)
+	local g=Duel.GetTargetsRelateToChain():Filter(s.gmafilter,nil,e)
 	if c:IsRelateToChain() and #g>0 then
 		Duel.Overlay(c,g)
 	end
@@ -72,7 +76,7 @@ end
 function s.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=re:GetHandler()
-	if c:IsRelateToChain() and tc:IsRelateToChain() and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToChain() and tc:IsRelateToChain() and tc:IsCanOverlay() and not tc:IsImmuneToEffect(e) then
 		tc:CancelToGrave()
 		Duel.Overlay(c,tc)
 		if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp)

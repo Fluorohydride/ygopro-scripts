@@ -1,4 +1,5 @@
 --超重機回送
+---@param c Card
 function c34721681.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -70,7 +71,7 @@ function c34721681.posop(e,tp,eg,ep,ev,re,r,rp)
 	if opt==0 then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	else
-		if c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if c:IsRelateToEffect(e) and c:IsCanOverlay() and not tc:IsImmuneToEffect(e) then
 			Duel.Overlay(tc,c)
 		end
 	end

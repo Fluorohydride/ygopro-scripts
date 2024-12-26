@@ -1,4 +1,5 @@
 --No.49 秘鳥フォーチュンチュン
+---@param c Card
 function c16259549.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

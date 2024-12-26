@@ -1,4 +1,5 @@
 --執愛のウヴァループ
+---@param c Card
 function c98806751.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

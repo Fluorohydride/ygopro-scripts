@@ -1,4 +1,5 @@
 --シンクロコール
+---@param c Card
 function c89974904.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

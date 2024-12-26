@@ -1,4 +1,5 @@
 --EMエクストラ・シューター
+---@param c Card
 function c45591967.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Damage

@@ -1,4 +1,5 @@
 --機殻の生贄
+---@param c Card
 function c17639150.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

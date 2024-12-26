@@ -1,4 +1,5 @@
 --No.75 惑乱のゴシップ・シャドー
+---@param c Card
 function c71166481.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
@@ -61,7 +62,7 @@ end
 function c71166481.xop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and c:IsCanOverlay() then
 		local mg=c:GetOverlayGroup()
 		if mg:GetCount()>0 then Duel.Overlay(tc,mg,false) end
 		Duel.Overlay(tc,Group.FromCards(c))

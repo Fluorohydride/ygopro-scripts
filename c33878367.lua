@@ -1,4 +1,5 @@
 --壱世壊に渦巻く反響
+---@param c Card
 function c33878367.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--spsummon

@@ -1,4 +1,5 @@
 --ガスタへの祈り
+---@param c Card
 function c82422049.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --ソウル・シザー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

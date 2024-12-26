@@ -1,4 +1,5 @@
 --電脳増幅器
+---@param c Card
 function c303660.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--Activate

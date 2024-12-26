@@ -1,4 +1,5 @@
 --コミックハンド
+---@param c Card
 function c33453260.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--Equip

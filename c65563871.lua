@@ -1,4 +1,5 @@
 --聖蔓の癒し手
+---@param c Card
 function c65563871.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c65563871.mfilter,1,1)

@@ -1,4 +1,5 @@
 --聖剣 EX－カリバーン
+---@param c Card
 function c46008667.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

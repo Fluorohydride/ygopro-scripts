@@ -1,4 +1,5 @@
 --エヴォルテクター エヴェック
+---@param c Card
 function c16146511.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

@@ -1,4 +1,5 @@
 --ジャック・ワイバーン
+---@param c Card
 function c23850421.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

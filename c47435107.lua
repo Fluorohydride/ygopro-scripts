@@ -1,4 +1,5 @@
 --原初の叫喚
+---@param c Card
 function c47435107.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,10441498)
 	--special summon

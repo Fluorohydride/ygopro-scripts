@@ -1,4 +1,5 @@
 --ゴヨウ・ガーディアン
+---@param c Card
 function c7391448.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),aux.NonTuner(nil),1)

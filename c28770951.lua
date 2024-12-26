@@ -1,4 +1,5 @@
 --銀河の修道師
+---@param c Card
 function c28770951.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)
@@ -38,7 +39,7 @@ end
 function c28770951.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToEffect(e) and c:IsCanOverlay() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Overlay(tc,Group.FromCards(c))
 	end
 end

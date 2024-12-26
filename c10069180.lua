@@ -1,4 +1,5 @@
 --魔力終了宣告
+---@param c Card
 function c10069180.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

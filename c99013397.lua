@@ -1,4 +1,5 @@
 --剣闘獣の闘器ハルバード
+---@param c Card
 function c99013397.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -40,10 +41,10 @@ function c99013397.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c99013397.eqlimit(e,c)
-	return c:IsSetCard(0x19)
+	return c:IsSetCard(0x1019)
 end
 function c99013397.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c99013397.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c99013397.filter(chkc) end

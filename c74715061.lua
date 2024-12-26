@@ -1,4 +1,5 @@
 --ストライピング・パートナー
+---@param c Card
 function c74715061.initial_effect(c)
 	c:EnableReviveLimit()
 	--connot special summon

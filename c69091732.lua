@@ -1,4 +1,5 @@
 --義賊の入門書
+---@param c Card
 function c69091732.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

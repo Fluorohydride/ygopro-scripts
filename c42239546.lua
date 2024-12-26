@@ -1,4 +1,5 @@
 --C・モーグ
+---@param c Card
 function c42239546.initial_effect(c)
 	aux.AddCodeList(c,80344569)
 	--spsummon

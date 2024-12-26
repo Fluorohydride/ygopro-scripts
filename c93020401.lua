@@ -1,4 +1,5 @@
 --燈影の機界騎士
+---@param c Card
 function c93020401.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

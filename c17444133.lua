@@ -1,4 +1,5 @@
 --カイザー・シーホース
+---@param c Card
 function c17444133.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

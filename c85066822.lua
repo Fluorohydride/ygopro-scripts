@@ -1,4 +1,5 @@
 --ウォーター・ドラゴン
+---@param c Card
 function c85066822.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

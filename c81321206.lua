@@ -1,4 +1,5 @@
 --ベアルクティ－ミクビリス
+---@param c Card
 function c81321206.initial_effect(c)
 	--spsummon
 	local e1=aux.AddUrsarcticSpSummonEffect(c)

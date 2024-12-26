@@ -1,4 +1,5 @@
 --海晶乙女クラウンテイル
+---@param c Card
 function c54569495.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

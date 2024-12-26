@@ -1,4 +1,5 @@
 --巨大戦艦 カバード・コア
+---@param c Card
 function c15317640.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--summon success
@@ -37,7 +38,6 @@ function c15317640.initial_effect(c)
 	e4:SetOperation(c15317640.desop)
 	c:RegisterEffect(e4)
 end
-c15317640.toss_coin=true
 function c15317640.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1f)

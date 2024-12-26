@@ -1,5 +1,6 @@
 --愉怪な燐のきつねびゆらら
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--attribute
 	local e1=Effect.CreateEffect(c)

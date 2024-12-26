@@ -1,4 +1,5 @@
 --ダイカミナリ・ジャイクロプス
+---@param c Card
 function c17241941.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Banish

@@ -1,4 +1,5 @@
 --超弩級軍貫－うに型二番艦
+---@param c Card
 function c94798725.initial_effect(c)
 	aux.AddCodeList(c,24639891,42377643)
 	--xyz summon

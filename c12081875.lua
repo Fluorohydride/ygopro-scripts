@@ -1,4 +1,5 @@
 --轟雷機龍－サンダー・ドラゴン
+---@param c Card
 function c12081875.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --伝説の賭博師
+---@param c Card
 function c2196767.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c2196767.initial_effect(c)
 	e1:SetOperation(c2196767.desop)
 	c:RegisterEffect(e1)
 end
-c2196767.toss_coin=true
 function c2196767.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)

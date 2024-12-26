@@ -1,4 +1,5 @@
 --七皇再生
+---@param c Card
 function c83888009.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -65,7 +66,7 @@ function c83888009.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83888009.ovfilter(c)
 	local no=aux.GetXyzNumber(c)
-	return no and no>=101 and no<=107 and c:IsType(TYPE_XYZ) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
+	return no and no>=101 and no<=107 and c:IsType(TYPE_XYZ) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanOverlay()
 end
 function c83888009.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,83888009)

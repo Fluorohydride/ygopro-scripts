@@ -1,4 +1,5 @@
 --強欲なカケラ
+---@param c Card
 function c33904024.initial_effect(c)
 	c:EnableCounterPermit(0xd)
 	--Activate

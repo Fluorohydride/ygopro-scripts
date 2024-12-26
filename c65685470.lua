@@ -1,4 +1,5 @@
 --六武衆の御霊代
+---@param c Card
 function c65685470.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -64,10 +65,10 @@ function c65685470.initial_effect(c)
 end
 c65685470.old_union=true
 function c65685470.eqlimit(e,c)
-	return c:IsSetCard(0x3d)
+	return c:IsSetCard(0x103d)
 end
 function c65685470.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsSetCard(0x103d) and c:GetUnionCount()==0
 end
 function c65685470.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c65685470.filter(chkc) end

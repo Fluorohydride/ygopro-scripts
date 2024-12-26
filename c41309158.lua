@@ -1,4 +1,5 @@
 --CX 機装魔人エンジェネラル
+---@param c Card
 function c41309158.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

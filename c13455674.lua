@@ -1,4 +1,5 @@
 --水晶機巧－グリオンガンド
+---@param c Card
 function c13455674.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.NonTuner(nil),nil,nil,aux.Tuner(nil),2,99)

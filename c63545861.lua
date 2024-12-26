@@ -1,4 +1,5 @@
 --セイクリッドの流星
+---@param c Card
 function c63545861.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

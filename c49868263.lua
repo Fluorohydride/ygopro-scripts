@@ -1,4 +1,5 @@
 --ドラゴン・ウォリアー
+---@param c Card
 function c49868263.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -56,7 +57,8 @@ function c49868263.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c49868263.disop2(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsActiveType(TYPE_SPELL) and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
+	if e:GetHandler():IsRelateToEffect(re)
+		and re:IsActiveType(TYPE_SPELL) and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
 		local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 		if g and g:IsContains(e:GetHandler()) then
 			if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToEffect(re) then

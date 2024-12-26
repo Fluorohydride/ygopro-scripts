@@ -1,4 +1,5 @@
 --精霊の鏡
+---@param c Card
 function c35563539.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

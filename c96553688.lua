@@ -1,4 +1,5 @@
 --フェニキシアン・シード
+---@param c Card
 function c96553688.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

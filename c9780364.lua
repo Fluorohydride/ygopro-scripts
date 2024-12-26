@@ -1,4 +1,5 @@
 --剣闘調教
+---@param c Card
 function c9780364.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +13,7 @@ function c9780364.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9780364.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c9780364.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c9780364.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
@@ -21,7 +22,7 @@ function c9780364.filter(c,e)
 	return c:IsFaceup() and c:IsCanBeEffectTarget(e) and c:IsCanChangePosition()
 end
 function c9780364.filter2(c)
-	return c:IsFaceup() and c:IsSetCard(0x19) and c:IsAbleToChangeControler()
+	return c:IsFaceup() and c:IsSetCard(0x1019) and c:IsAbleToChangeControler()
 end
 function c9780364.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end

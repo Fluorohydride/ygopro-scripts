@@ -1,4 +1,5 @@
 --魔導騎士 ディフェンダー
+---@param c Card
 function c2525268.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,1)

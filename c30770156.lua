@@ -1,4 +1,5 @@
 --コア転送ユニット
+---@param c Card
 function c30770156.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

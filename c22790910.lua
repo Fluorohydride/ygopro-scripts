@@ -1,4 +1,5 @@
 --智の賢者－ヒンメル
+---@param c Card
 function c22790910.initial_effect(c)
 	--SpecialSummon Hand
 	local e1=Effect.CreateEffect(c)

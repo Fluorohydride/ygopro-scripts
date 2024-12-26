@@ -1,4 +1,5 @@
 --ドラコニアの獣竜騎兵
+---@param c Card
 function c73779005.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

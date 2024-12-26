@@ -1,4 +1,5 @@
 --リヴェンデット・ボーン
+---@param c Card
 function c94666032.initial_effect(c)
 	aux.AddCodeList(c,4388680)
 	aux.AddRitualProcGreater2(c,c94666032.filter,LOCATION_HAND+LOCATION_GRAVE,c94666032.mfilter)

@@ -1,4 +1,5 @@
 --ダイスエット
+---@param c Card
 function c8868767.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,6 @@ function c8868767.initial_effect(c)
 	e1:SetOperation(c8868767.activate)
 	c:RegisterEffect(e1)
 end
-c8868767.toss_dice=true
 function c8868767.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.GetTurnPlayer()==tp then
 		if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_GRAVE,0,1,nil) end

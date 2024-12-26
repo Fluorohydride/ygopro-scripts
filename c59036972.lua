@@ -1,4 +1,5 @@
 --マブラス
+---@param c Card
 function c59036972.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

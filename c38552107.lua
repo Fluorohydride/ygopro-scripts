@@ -1,4 +1,5 @@
 --光の角
+---@param c Card
 function c38552107.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

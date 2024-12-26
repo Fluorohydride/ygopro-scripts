@@ -1,4 +1,5 @@
 --暗黒神殿ザララーム
+---@param c Card
 function c64230128.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--Activate

@@ -1,4 +1,5 @@
 --壊獣の出現記録
+---@param c Card
 function c11163040.initial_effect(c)
 	c:EnableCounterPermit(0x37)
 	c:SetCounterLimit(0x37,5)

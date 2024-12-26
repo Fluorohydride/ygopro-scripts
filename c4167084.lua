@@ -1,4 +1,5 @@
 --黎明の堕天使ルシフェル
+---@param c Card
 function c4167084.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

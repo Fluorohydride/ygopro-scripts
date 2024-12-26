@@ -1,4 +1,5 @@
 --怪蹴一色
+---@param c Card
 function c56001930.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --霞の谷の雷神鬼
+---@param c Card
 function c89310929.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x37),1)

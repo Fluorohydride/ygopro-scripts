@@ -1,4 +1,5 @@
 --RR－ワイルド・ヴァルチャー
+---@param c Card
 function c8785161.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ブラッド・マジシャン－煉獄の魔術師－
+---@param c Card
 function c21051146.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

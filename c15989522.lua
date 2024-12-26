@@ -1,4 +1,5 @@
 --竜魔道騎士ガイア
+---@param c Card
 function c15989522.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -50,7 +51,6 @@ function c15989522.desop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsAttackAbove(2600) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-2600)

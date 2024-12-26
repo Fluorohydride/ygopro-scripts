@@ -1,4 +1,5 @@
 --VW－タイガー・カタパルト
+---@param c Card
 function c58859575.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

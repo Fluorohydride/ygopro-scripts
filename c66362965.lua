@@ -1,4 +1,5 @@
 --魔導ギガサイバー
+---@param c Card
 function c66362965.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

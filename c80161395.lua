@@ -1,4 +1,5 @@
 --神秘の中華なべ
+---@param c Card
 function c80161395.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔導教士 システィ
+---@param c Card
 function c26732909.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

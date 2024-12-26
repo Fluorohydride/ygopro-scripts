@@ -1,4 +1,5 @@
 --三眼の死霊
+---@param c Card
 function c31464658.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

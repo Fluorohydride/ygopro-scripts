@@ -1,4 +1,5 @@
 --オッドアイズ・ボルテックス・ドラゴン
+---@param c Card
 function c53262004.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

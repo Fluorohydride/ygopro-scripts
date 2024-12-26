@@ -1,4 +1,5 @@
 --極神皇ロキ
+---@param c Card
 function c67098114.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c67098114.tfilter,aux.NonTuner(nil),2)

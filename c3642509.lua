@@ -1,4 +1,5 @@
 --E・HERO Great TORNADO
+---@param c Card
 function c3642509.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

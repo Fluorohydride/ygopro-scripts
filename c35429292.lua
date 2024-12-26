@@ -1,4 +1,5 @@
 --ピクシーナイト
+---@param c Card
 function c35429292.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --威嚇する咆哮
+---@param c Card
 function c36361633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

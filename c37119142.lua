@@ -1,4 +1,5 @@
 --コード・エクスポーター
+---@param c Card
 function c37119142.initial_effect(c)
 	--hand link
 	local e1=Effect.CreateEffect(c)

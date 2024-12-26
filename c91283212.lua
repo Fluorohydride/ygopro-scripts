@@ -1,4 +1,5 @@
 --B・F－追撃のダート
+---@param c Card
 function c91283212.initial_effect(c)
 	--damge
 	local e1=Effect.CreateEffect(c)

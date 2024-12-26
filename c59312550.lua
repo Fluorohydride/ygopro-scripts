@@ -1,4 +1,5 @@
 --ジュラック・ヴェロー
+---@param c Card
 function c59312550.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

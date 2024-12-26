@@ -1,4 +1,5 @@
 --スター・ブラスト
+---@param c Card
 function c67196946.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

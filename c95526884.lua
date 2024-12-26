@@ -1,4 +1,5 @@
 --ハイパーサイコガンナー
+---@param c Card
 function c95526884.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_PSYCHO),1)

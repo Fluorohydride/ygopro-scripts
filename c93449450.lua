@@ -1,4 +1,5 @@
 --F.A.ハングオンマッハ
+---@param c Card
 function c93449450.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
@@ -35,7 +36,7 @@ function c93449450.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCondition(c93449450.excon)
 	e4:SetTarget(c93449450.extg)
-	e4:SetTargetRange(0xfe,0xff)
+	e4:SetTargetRange(0,LOCATION_DECK)
 	e4:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e4)
 end

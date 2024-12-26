@@ -1,4 +1,5 @@
 --串刺しの落とし穴
+---@param c Card
 function c75902998.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

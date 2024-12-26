@@ -1,4 +1,5 @@
 --光の天穿バハルティヤ
+---@param c Card
 function c53318263.initial_effect(c)
 	--tribute summon with 1 effect
 	local e1=Effect.CreateEffect(c)

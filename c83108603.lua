@@ -1,4 +1,5 @@
 --陽炎柱
+---@param c Card
 function c83108603.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

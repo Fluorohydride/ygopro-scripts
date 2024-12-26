@@ -1,4 +1,5 @@
 --邪気退散
+---@param c Card
 function c13626450.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

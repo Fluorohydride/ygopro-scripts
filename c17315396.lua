@@ -1,4 +1,5 @@
 --死神官－スーパイ
+---@param c Card
 function c17315396.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

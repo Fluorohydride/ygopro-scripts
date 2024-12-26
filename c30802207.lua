@@ -1,4 +1,5 @@
 --エクソシスター・カルペディベル
+---@param c Card
 function c30802207.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

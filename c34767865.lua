@@ -1,4 +1,5 @@
 --サイバネット・リチューアル
+---@param c Card
 function c34767865.initial_effect(c)
 	aux.AddRitualProcGreater2(c,c34767865.ritual_filter)
 	--token

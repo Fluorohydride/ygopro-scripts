@@ -1,4 +1,5 @@
 --ヴァリアンツM－マーキス
+---@param c Card
 function c87897777.initial_effect(c)
 	aux.AddCodeList(c,75952542)
 	--pendulum summon
@@ -35,7 +36,6 @@ function c87897777.initial_effect(c)
 	e3:SetOperation(c87897777.mvop)
 	c:RegisterEffect(e3)
 end
-c87897777.toss_dice=true
 function c87897777.cfilter(c)
 	return c:IsSetCard(0x17d) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsFaceup()
 end

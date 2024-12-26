@@ -1,4 +1,5 @@
 --ベルキャットファイター
+---@param c Card
 function c22953211.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,3,3,c22953211.lcheck)

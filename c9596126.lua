@@ -1,4 +1,5 @@
 --カオス・ソーサラー
+---@param c Card
 function c9596126.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

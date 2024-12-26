@@ -1,4 +1,5 @@
 --雷劫龍－サンダー・ドラゴン
+---@param c Card
 function c55591586.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

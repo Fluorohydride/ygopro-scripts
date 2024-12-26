@@ -1,4 +1,5 @@
 --爆炎集合体 ガイヤ・ソウル
+---@param c Card
 function c51355346.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)
@@ -38,7 +39,6 @@ function c51355346.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetValue(e:GetLabel()*1000)

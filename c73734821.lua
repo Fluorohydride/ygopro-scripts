@@ -1,4 +1,5 @@
 --EMスカイ・マジシャン
+---@param c Card
 function c73734821.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

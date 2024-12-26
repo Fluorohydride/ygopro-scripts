@@ -1,4 +1,5 @@
 --DDD死謳王バイス・レクイエム
+---@param c Card
 function c25857977.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

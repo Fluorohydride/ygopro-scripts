@@ -1,4 +1,5 @@
 --霊獣使い レラ
+---@param c Card
 function c87118301.initial_effect(c)
 	c:SetSPSummonOnce(87118301)
 	--spsuccess

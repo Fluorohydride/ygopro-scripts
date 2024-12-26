@@ -1,4 +1,5 @@
 --堕天使ルシフェル
+---@param c Card
 function c25451652.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -74,7 +75,7 @@ function c25451652.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetMatchingGroupCount(c25451652.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,ct) end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,ct)
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,ct*1000)
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,ct*500)
 end
 function c25451652.ctfilter2(c)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsSetCard(0xef)

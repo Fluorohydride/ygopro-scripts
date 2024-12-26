@@ -1,4 +1,5 @@
 --ブロックドラゴン
+---@param c Card
 function c94689206.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

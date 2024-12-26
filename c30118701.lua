@@ -1,4 +1,5 @@
 --地雷星トドロキ
+---@param c Card
 function c30118701.initial_effect(c)
 	--special summon (hand)
 	local e1=Effect.CreateEffect(c)

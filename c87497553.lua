@@ -1,4 +1,5 @@
 --テスタメント・パラディオン
+---@param c Card
 function c87497553.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

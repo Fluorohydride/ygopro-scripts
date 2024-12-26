@@ -1,4 +1,5 @@
 --滅びの爆裂疾風弾
+---@param c Card
 function c17655904.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--Activate

@@ -1,4 +1,5 @@
 --海皇子 ネプトアビス
+---@param c Card
 function c21565445.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

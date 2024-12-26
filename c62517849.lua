@@ -1,4 +1,5 @@
 --No.39 希望皇ホープ・ダブル
+---@param c Card
 function c62517849.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

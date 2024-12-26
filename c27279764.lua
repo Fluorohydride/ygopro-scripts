@@ -1,4 +1,5 @@
 --アポクリフォート・キラー
+---@param c Card
 function c27279764.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

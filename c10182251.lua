@@ -1,4 +1,5 @@
 --LL－ベリル・カナリー
+---@param c Card
 function c10182251.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

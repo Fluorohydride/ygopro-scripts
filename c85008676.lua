@@ -1,4 +1,5 @@
 --剛鬼マンジロック
+---@param c Card
 function c85008676.initial_effect(c)
 	--half damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超次元ロボ ギャラクシー・デストロイヤー
+---@param c Card
 function c66523544.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,3)

@@ -1,4 +1,5 @@
 --スターヴ・ヴェノム・プレデター・フュージョン・ドラゴン
+---@param c Card
 function c39915560.initial_effect(c)
 	--Fusion Material
 	c:EnableReviveLimit()

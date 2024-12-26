@@ -1,4 +1,5 @@
 --E-HERO ワイルド・サイクロン
+---@param c Card
 function c13293158.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

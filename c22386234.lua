@@ -1,4 +1,5 @@
 --オーロラ・アンギラス
+---@param c Card
 function c22386234.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

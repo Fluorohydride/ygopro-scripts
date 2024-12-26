@@ -1,4 +1,5 @@
 --黄金の邪教神
+---@param c Card
 function c78642798.initial_effect(c)
 	--Change the Name
 	local e1=Effect.CreateEffect(c)

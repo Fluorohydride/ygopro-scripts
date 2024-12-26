@@ -1,4 +1,5 @@
 --キラー・トマト
+---@param c Card
 function c83011277.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

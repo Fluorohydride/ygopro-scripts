@@ -1,4 +1,5 @@
 --獣装合体 ライオ・ホープレイ
+---@param c Card
 function c68679595.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

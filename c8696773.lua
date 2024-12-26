@@ -1,4 +1,5 @@
 --陽炎獣 ヒュドラー
+---@param c Card
 function c8696773.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)
@@ -70,7 +71,7 @@ end
 function c8696773.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

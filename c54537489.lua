@@ -1,4 +1,5 @@
 --タツノオトシオヤ
+---@param c Card
 function c54537489.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

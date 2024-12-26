@@ -1,4 +1,5 @@
 --魔導書廊エトワール
+---@param c Card
 function c56321639.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate

@@ -1,4 +1,5 @@
 --ダーク・ジェネラル フリード
+---@param c Card
 function c70676581.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

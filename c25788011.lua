@@ -1,4 +1,5 @@
 --調星師ライズベルト
+---@param c Card
 function c25788011.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

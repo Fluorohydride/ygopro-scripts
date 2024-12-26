@@ -1,4 +1,5 @@
 --ディープ・ダイバー
+---@param c Card
 function c17559367.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

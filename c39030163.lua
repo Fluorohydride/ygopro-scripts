@@ -1,4 +1,5 @@
 --ギャラクシーアイズ FA・フォトン・ドラゴン
+---@param c Card
 function c39030163.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3,c39030163.ovfilter,aux.Stringid(39030163,0))
@@ -46,7 +47,7 @@ function c39030163.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetTargetCard(tg)
 end
 function c39030163.matfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) and c:IsCanOverlay()
 end
 function c39030163.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

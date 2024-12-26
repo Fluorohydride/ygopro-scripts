@@ -1,5 +1,6 @@
 --ファントム・オブ・カオス
 local s,id,o=GetID()
+---@param c Card
 function c30312361.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)
@@ -40,13 +41,7 @@ function c30312361.operation(e,tp,eg,ep,ev,re,r,rp)
 		--copy name, base atk
 		local code=tc:GetOriginalCode()
 		local ba=tc:GetBaseAttack()
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetCode(EFFECT_CHANGE_CODE)
-		e1:SetValue(code)
-		c:RegisterEffect(e1)
+		local e1=aux.BecomeOriginalCode(c,tc)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

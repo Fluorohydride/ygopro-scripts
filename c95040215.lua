@@ -1,4 +1,5 @@
 --BF－星影のノートゥング
+---@param c Card
 function c95040215.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

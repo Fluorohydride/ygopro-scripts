@@ -1,4 +1,5 @@
 --黄金卿エルドリッチ
+---@param c Card
 function c95440946.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

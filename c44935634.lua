@@ -1,4 +1,5 @@
 --レフティ・ドライバー
+---@param c Card
 function c44935634.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

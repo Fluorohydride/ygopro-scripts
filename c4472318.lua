@@ -1,5 +1,6 @@
 --岩竜ベアロック
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -52,6 +53,8 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and not c:IsPreviousLocation(LOCATION_SZONE)
+		and (c:IsPreviousLocation(LOCATION_MZONE) or c:GetOriginalType()&TYPE_MONSTER~=0)
 		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_HAND+LOCATION_ONFIELD)
 end
 function s.regcon(e,tp,eg,ep,ev,re,r,rp)

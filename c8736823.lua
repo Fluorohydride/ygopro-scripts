@@ -1,4 +1,5 @@
 --電脳堺姫－娘々
+---@param c Card
 function c8736823.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

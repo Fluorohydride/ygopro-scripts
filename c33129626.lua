@@ -1,4 +1,5 @@
 --ケンタウルミナ
+---@param c Card
 function c33129626.initial_effect(c)
 	--fusion procedure
 	c:EnableReviveLimit()

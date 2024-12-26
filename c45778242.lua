@@ -1,4 +1,5 @@
 --クラインアント
+---@param c Card
 function c45778242.initial_effect(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)

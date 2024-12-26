@@ -1,4 +1,5 @@
 --チェンジ・デステニー
+---@param c Card
 function c24673894.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

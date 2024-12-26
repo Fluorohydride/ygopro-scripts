@@ -1,4 +1,5 @@
 --携帯型バッテリー
+---@param c Card
 function c61840587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

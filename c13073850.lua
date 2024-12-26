@@ -1,4 +1,5 @@
 --クリフォート・エイリアス
+---@param c Card
 function c13073850.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

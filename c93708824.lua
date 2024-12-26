@@ -1,4 +1,5 @@
 --ロクスローズ・ドラゴン
+---@param c Card
 function c93708824.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--search

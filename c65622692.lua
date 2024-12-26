@@ -1,4 +1,5 @@
 --Y－ドラゴン・ヘッド
+---@param c Card
 function c65622692.initial_effect(c)
 	aux.EnableUnionAttribute(c,c65622692.filter)
 	--Atk up

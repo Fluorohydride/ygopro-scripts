@@ -1,4 +1,5 @@
 --墓守の従者
+---@param c Card
 function c99690140.initial_effect(c)
 	--battle damage to effect damage
 	local e1=Effect.CreateEffect(c)

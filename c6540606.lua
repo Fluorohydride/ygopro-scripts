@@ -1,4 +1,5 @@
 --水霊術－「葵」
+---@param c Card
 function c6540606.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

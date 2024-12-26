@@ -1,4 +1,5 @@
 --ペンデュラム・エボリューション
+---@param c Card
 function c55795155.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--activate

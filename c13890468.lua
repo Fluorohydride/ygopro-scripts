@@ -1,4 +1,5 @@
 --精霊獣 ペトルフィン
+---@param c Card
 function c13890468.initial_effect(c)
 	c:SetSPSummonOnce(13890468)
 	--tohand

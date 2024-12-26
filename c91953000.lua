@@ -1,4 +1,5 @@
 --海晶乙女ブルータン
+---@param c Card
 function c91953000.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リンクルベル
+---@param c Card
 function c54635100.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

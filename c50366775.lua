@@ -1,4 +1,5 @@
 --フォーマッド・スキッパー
+---@param c Card
 function c50366775.initial_effect(c)
 	--link
 	local e1=Effect.CreateEffect(c)
@@ -25,7 +26,7 @@ function c50366775.cfilter(c,tc)
 	return c:IsType(TYPE_LINK) and not c:IsCode(tc:GetLinkCode())
 end
 function c50366775.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c50366775.filter,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c50366775.cfilter,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler()) end
 end
 function c50366775.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

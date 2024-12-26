@@ -1,4 +1,5 @@
 --木花咲弥
+---@param c Card
 function c57722593.initial_effect(c)
 	c:EnableReviveLimit()
 	--spirit return

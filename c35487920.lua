@@ -1,4 +1,5 @@
 --Live☆Twin チャンネル
+---@param c Card
 function c35487920.initial_effect(c)
 	--Activate(no effect)
 	local e1=Effect.CreateEffect(c)

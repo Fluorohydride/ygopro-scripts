@@ -1,4 +1,5 @@
 --真竜剣士マスターP
+---@param c Card
 function c34079868.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

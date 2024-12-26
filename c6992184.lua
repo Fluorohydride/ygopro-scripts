@@ -1,5 +1,6 @@
 --ペンデュラム・アンコール
 --not fully implemented
+---@param c Card
 function c6992184.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -24,8 +25,7 @@ function c6992184.check(e,tp,exc)
 	if lpz==nil then return false end
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_EXTRA,0,exc,TYPE_PENDULUM)
 	if #g==0 then return false end
-	local pcon=aux.PendCondition()
-	return pcon(e,lpz,g)
+	return aux.PendCondition(e,lpz,g)
 end
 function c6992184.cfilter(c,e,tp)
 	return c:IsDiscardable() and c6992184.check(e,tp,c)
@@ -77,8 +77,7 @@ function c6992184.activate(e,tp,eg,ep,ev,re,r,rp)
 	if #g==0 then return end
 	--the summon should be done after the chain end
 	local sg=Group.CreateGroup()
-	local pop=aux.PendOperation()
-	pop(e,tp,eg,ep,ev,re,r,rp,lpz,sg,g)
+	aux.PendOperation(e,tp,eg,ep,ev,re,r,rp,lpz,sg,g)
 	Duel.RaiseEvent(sg,EVENT_SPSUMMON_SUCCESS_G_P,e,REASON_EFFECT,tp,tp,0)
 	Duel.SpecialSummon(sg,SUMMON_TYPE_PENDULUM,tp,tp,true,true,POS_FACEUP)
 end

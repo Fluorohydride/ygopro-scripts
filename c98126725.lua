@@ -1,4 +1,5 @@
 --紫炎の参謀
+---@param c Card
 function c98126725.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c98126725.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98126725.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c98126725.atcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c98126725.cfilter,tp,LOCATION_MZONE,0,1,nil)

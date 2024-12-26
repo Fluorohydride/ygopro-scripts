@@ -1,4 +1,5 @@
 --悲劇の引き金
+---@param c Card
 function c61656650.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

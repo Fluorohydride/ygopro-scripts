@@ -1,4 +1,5 @@
 --極東秘泉郷
+---@param c Card
 function c94317736.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

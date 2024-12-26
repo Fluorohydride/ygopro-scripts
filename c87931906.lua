@@ -1,4 +1,5 @@
 --月光融合
+---@param c Card
 function c87931906.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

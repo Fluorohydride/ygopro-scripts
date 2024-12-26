@@ -1,4 +1,5 @@
 --錬金生物 ホムンクルス
+---@param c Card
 function c40410110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -17,7 +18,6 @@ function c40410110.attop(e,tp,eg,ep,ev,re,r,rp)
 		local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~catt)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
 		e1:SetValue(att)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

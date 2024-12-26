@@ -1,4 +1,5 @@
 --ベリー・マジシャン・ガール
+---@param c Card
 function c20747792.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

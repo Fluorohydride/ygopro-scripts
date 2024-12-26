@@ -1,4 +1,5 @@
 --光虫信号
+---@param c Card
 function c47185546.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スモール・ワールド
+---@param c Card
 function c89558743.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --天孔邪鬼
+---@param c Card
 function c43739056.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

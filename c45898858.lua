@@ -1,4 +1,5 @@
 --ボンディング－H2O
+---@param c Card
 function c45898858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

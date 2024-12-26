@@ -1,4 +1,5 @@
 --TG タンク・ラーヴァ
+---@param c Card
 function c74627016.initial_effect(c)
 	--nontuner
 	local e1=Effect.CreateEffect(c)

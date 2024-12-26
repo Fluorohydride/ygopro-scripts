@@ -1,4 +1,5 @@
 --地母神アイリス
+---@param c Card
 function c9628664.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エンド・オブ・アヌビス
+---@param c Card
 function c65403020.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --宝玉の双璧
+---@param c Card
 function c47121070.initial_effect(c)
 	--to field
 	local e1=Effect.CreateEffect(c)

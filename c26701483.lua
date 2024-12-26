@@ -1,4 +1,5 @@
 --カードエクスクルーダー
+---@param c Card
 function c26701483.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

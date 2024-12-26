@@ -1,4 +1,5 @@
 --ライフ・ストリーム・ドラゴン
+---@param c Card
 function c25165047.initial_effect(c)
 	aux.AddMaterialCodeList(c,2403771)
 	--synchro summon

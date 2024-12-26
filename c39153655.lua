@@ -1,4 +1,5 @@
 --DDケルベロス
+---@param c Card
 function c39153655.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

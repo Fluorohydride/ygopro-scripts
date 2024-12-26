@@ -1,4 +1,5 @@
 --ザ・キャリブレーター
+---@param c Card
 function c54706054.initial_effect(c)
 	--attack
 	local e1=Effect.CreateEffect(c)

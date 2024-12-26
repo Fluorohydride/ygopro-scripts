@@ -1,4 +1,5 @@
 --ティアラメンツ・シェイレーン
+---@param c Card
 function c572850.initial_effect(c)
 	--sp summon
 	local e1=Effect.CreateEffect(c)

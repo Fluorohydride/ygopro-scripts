@@ -1,4 +1,5 @@
 --TG ジェット・ファルコン
+---@param c Card
 function c37300735.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

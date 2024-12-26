@@ -1,4 +1,5 @@
 --驚楽園の大使 ＜Bufo＞
+---@param c Card
 function c30829071.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -47,7 +48,7 @@ function c30829071.eqop1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,ec,tc)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c30829071.eqlimit)

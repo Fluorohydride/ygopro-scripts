@@ -1,4 +1,5 @@
 --幻蝶の刺客オオルリ
+---@param c Card
 function c54582424.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

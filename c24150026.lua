@@ -1,4 +1,5 @@
 --カラクリ無双 八壱八
+---@param c Card
 function c24150026.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

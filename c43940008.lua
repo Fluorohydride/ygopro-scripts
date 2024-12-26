@@ -1,4 +1,5 @@
 --決闘塔アルカトラズ
+---@param c Card
 function c43940008.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

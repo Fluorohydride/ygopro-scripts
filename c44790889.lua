@@ -1,4 +1,5 @@
 --ハンマーラッシュ・バウンサー
+---@param c Card
 function c44790889.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --D－タクティクス
+---@param c Card
 function c48032131.initial_effect(c)
 	aux.AddCodeList(c,76263644)
 	--Activate

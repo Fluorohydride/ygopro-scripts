@@ -1,4 +1,5 @@
 --転生炎獣の意志
+---@param c Card
 function c64178424.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --古の呪文
+---@param c Card
 function c78665705.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--Activate

@@ -1,4 +1,5 @@
 --識無辺世壊
+---@param c Card
 function c44553392.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

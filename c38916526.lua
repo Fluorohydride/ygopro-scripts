@@ -1,4 +1,5 @@
 --空牙団の英雄 ラファール
+---@param c Card
 function c38916526.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

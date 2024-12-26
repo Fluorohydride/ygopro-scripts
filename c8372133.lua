@@ -1,4 +1,5 @@
 --スカーレッド・ファミリア
+---@param c Card
 function c8372133.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

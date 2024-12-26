@@ -1,5 +1,6 @@
 --精霊冥騎－急還馬
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--self to grave

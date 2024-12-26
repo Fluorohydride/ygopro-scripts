@@ -1,4 +1,5 @@
 --ダメージ・ダイエット
+---@param c Card
 function c95448692.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

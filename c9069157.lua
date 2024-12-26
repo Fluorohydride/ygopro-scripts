@@ -1,4 +1,5 @@
 --ドラゴンロイド
+---@param c Card
 function c9069157.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
@@ -88,6 +89,7 @@ function c9069157.efilter(e,ct)
 end
 function c9069157.limfilter(c,tp)
 	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_FUSION)
+		and c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT):IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c9069157.limcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c9069157.limfilter,1,nil,tp)

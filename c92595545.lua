@@ -1,4 +1,5 @@
 --プラズマ・ボール
+---@param c Card
 function c92595545.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --炎斬機ファイナルシグマ
+---@param c Card
 function c42632209.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

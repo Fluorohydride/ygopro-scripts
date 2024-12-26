@@ -1,4 +1,5 @@
 --剣闘獣ダリウス
+---@param c Card
 function c25924653.initial_effect(c)
 	--grave special summon
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ function c25924653.initial_effect(c)
 	e1:SetLabelObject(e3)
 end
 function c25924653.spgfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c25924653.spgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c25924653.spgfilter(chkc,e,tp) end
@@ -82,7 +83,7 @@ function c25924653.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c25924653.filter(c,e,tp)
-	return not c:IsCode(25924653) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(25924653) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c25924653.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

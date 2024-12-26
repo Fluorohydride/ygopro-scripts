@@ -1,4 +1,5 @@
 --コアキメイル・クルセイダー
+---@param c Card
 function c32314730.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

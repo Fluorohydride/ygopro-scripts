@@ -1,4 +1,5 @@
 --ティアラメンツ・カレイドハート
+---@param c Card
 function c28226490.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

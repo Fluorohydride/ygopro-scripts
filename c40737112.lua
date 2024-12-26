@@ -1,4 +1,5 @@
 --混沌の黒魔術師
+---@param c Card
 function c40737112.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

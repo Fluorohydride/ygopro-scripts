@@ -1,4 +1,5 @@
 --未来サムライ
+---@param c Card
 function c90642597.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

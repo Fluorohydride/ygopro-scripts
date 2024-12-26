@@ -1,4 +1,5 @@
 --武神－アラスダ
+---@param c Card
 function c23979249.initial_effect(c)
 	c:SetUniqueOnField(1,0,23979249)
 	--spsummon

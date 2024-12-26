@@ -1,4 +1,5 @@
 --サイバース・シンクロン
+---@param c Card
 function c86784733.initial_effect(c)
 	--Increase level
 	local e1=Effect.CreateEffect(c)

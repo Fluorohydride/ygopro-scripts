@@ -1,4 +1,5 @@
 --剣闘獣オクタビウス
+---@param c Card
 function c29590752.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

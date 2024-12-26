@@ -1,4 +1,5 @@
 --竜輝巧－ファフμβ’
+---@param c Card
 function c1174075.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)

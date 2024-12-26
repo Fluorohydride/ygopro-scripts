@@ -1,4 +1,5 @@
 --X・HERO ドレッドバスター
+---@param c Card
 function c63813056.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x8),2)

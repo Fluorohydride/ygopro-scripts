@@ -1,4 +1,5 @@
 --トリックスター・キャンディナ
+---@param c Card
 function c61283655.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コアキメイル・ウルナイト
+---@param c Card
 function c30936186.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

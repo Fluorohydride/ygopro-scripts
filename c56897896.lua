@@ -1,4 +1,5 @@
 --モノ・シンクロン
+---@param c Card
 function c56897896.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

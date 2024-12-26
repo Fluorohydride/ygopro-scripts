@@ -1,4 +1,5 @@
 --カンガルー・チャンプ
+---@param c Card
 function c95789089.initial_effect(c)
 	--change position
 	local e1=Effect.CreateEffect(c)

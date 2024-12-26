@@ -1,4 +1,5 @@
 --テセア聖霊器
+---@param c Card
 function c54092240.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--Special Summon
@@ -26,7 +27,7 @@ function c54092240.initial_effect(c)
 	Duel.AddCustomActivityCounter(54092240,ACTIVITY_SPSUMMON,c54092240.counterfilter)
 end
 function c54092240.counterfilter(c)
-	return aux.IsCodeListed(c,3285552) or c:IsCode(3285552)
+	return aux.IsCodeOrListed(c,3285552)
 end
 function c54092240.cfilter(c)
 	return c:IsFaceup() and c:IsCode(3285552)

@@ -1,4 +1,5 @@
 --剣闘獣エクイテ
+---@param c Card
 function c57731460.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)
@@ -25,7 +26,7 @@ function c57731460.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57731460.retfilter(c)
-	return c:IsSetCard(0x19) and c:IsAbleToHand()
+	return c:IsSetCard(0x1019) and c:IsAbleToHand()
 end
 function c57731460.rettg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c57731460.retfilter(chkc) end
@@ -49,7 +50,7 @@ function c57731460.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c57731460.filter(c,e,tp)
-	return not c:IsCode(57731460) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(57731460) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c57731460.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

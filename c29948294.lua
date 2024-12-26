@@ -1,4 +1,5 @@
 --烙印の気炎
+---@param c Card
 function c29948294.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

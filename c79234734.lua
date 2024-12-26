@@ -1,4 +1,5 @@
 --超戦士の魂
+---@param c Card
 function c79234734.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

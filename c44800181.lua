@@ -1,4 +1,5 @@
 --コンボマスター
+---@param c Card
 function c44800181.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

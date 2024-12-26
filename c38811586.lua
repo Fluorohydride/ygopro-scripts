@@ -1,4 +1,5 @@
 --真炎竜アルビオン
+---@param c Card
 function c38811586.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

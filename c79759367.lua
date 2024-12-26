@@ -1,4 +1,5 @@
 --魔導人形の夜
+---@param c Card
 function c79759367.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

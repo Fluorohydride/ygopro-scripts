@@ -1,4 +1,5 @@
 --トゲトゲ神の殺虫剤
+---@param c Card
 function c94716515.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

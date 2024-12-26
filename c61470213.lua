@@ -1,5 +1,6 @@
 --オルターガイスト・アドミニア
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x103),2)

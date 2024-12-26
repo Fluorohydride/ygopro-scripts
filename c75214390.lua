@@ -1,4 +1,5 @@
 --オーバーレイ・ブースター
+---@param c Card
 function c75214390.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

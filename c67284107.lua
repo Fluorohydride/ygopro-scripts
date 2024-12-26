@@ -1,4 +1,5 @@
 --スケープ・ゴースト
+---@param c Card
 function c67284107.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

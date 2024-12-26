@@ -1,4 +1,5 @@
 --魔宮の賄賂
+---@param c Card
 function c77538567.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

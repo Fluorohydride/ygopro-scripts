@@ -1,4 +1,5 @@
 --ブリリアント・ローズ
+---@param c Card
 function c61011438.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

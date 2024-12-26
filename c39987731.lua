@@ -1,4 +1,5 @@
 --脅威の人造人間－サイコ・ショッカー
+---@param c Card
 function c39987731.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--spsummon1

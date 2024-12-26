@@ -1,4 +1,5 @@
 --No.82 ハートランドラコ
+---@param c Card
 function c31437713.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

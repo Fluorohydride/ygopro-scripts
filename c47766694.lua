@@ -1,4 +1,5 @@
 --荒野の大竜巻
+---@param c Card
 function c47766694.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

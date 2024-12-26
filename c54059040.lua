@@ -1,4 +1,5 @@
 --アイスバーン
+---@param c Card
 function c54059040.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

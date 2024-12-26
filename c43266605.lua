@@ -1,4 +1,5 @@
 --PSYフレーム・マルチスレッダー
+---@param c Card
 function c43266605.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,49036338,LOCATION_HAND+LOCATION_GRAVE)

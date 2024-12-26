@@ -1,4 +1,5 @@
 --燃え盛るヒータ
+---@param c Card
 function c92518817.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

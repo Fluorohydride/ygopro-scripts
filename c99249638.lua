@@ -1,4 +1,5 @@
 --ユニオン・ドライバー
+---@param c Card
 function c99249638.initial_effect(c)
 	aux.EnableUnionAttribute(c,aux.TRUE)
 	--reequip

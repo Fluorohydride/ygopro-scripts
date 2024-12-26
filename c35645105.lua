@@ -1,4 +1,5 @@
 --無限起動ハーヴェスター
+---@param c Card
 function c35645105.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

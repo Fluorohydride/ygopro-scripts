@@ -1,4 +1,5 @@
 --機炎星－ゴヨウテ
+---@param c Card
 function c49785720.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

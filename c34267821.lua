@@ -1,4 +1,5 @@
 --アーティファクト－ロンギヌス
+---@param c Card
 function c34267821.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

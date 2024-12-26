@@ -1,4 +1,5 @@
 --銀河の召喚師
+---@param c Card
 function c863795.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

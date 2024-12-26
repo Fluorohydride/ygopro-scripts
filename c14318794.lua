@@ -1,4 +1,5 @@
 --生命吸収装置
+---@param c Card
 function c14318794.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

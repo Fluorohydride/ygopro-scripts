@@ -1,4 +1,5 @@
 --異形神の契約書
+---@param c Card
 function c60168186.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

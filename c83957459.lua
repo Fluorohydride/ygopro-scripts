@@ -1,4 +1,5 @@
 --ライノタウルス
+---@param c Card
 function c83957459.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

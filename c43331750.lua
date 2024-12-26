@@ -1,5 +1,6 @@
 --融合複製
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)

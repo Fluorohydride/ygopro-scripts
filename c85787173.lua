@@ -1,4 +1,5 @@
 --ジェネレーション・ネクスト
+---@param c Card
 function c85787173.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

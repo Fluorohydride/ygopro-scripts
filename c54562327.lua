@@ -1,4 +1,5 @@
 --Stake Your Soul！
+---@param c Card
 function c54562327.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

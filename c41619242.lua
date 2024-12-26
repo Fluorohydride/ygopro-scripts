@@ -1,4 +1,5 @@
 --肆世壊からの天跨
+---@param c Card
 function c41619242.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--atk up

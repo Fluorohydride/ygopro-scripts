@@ -1,4 +1,5 @@
 --超重武者カブ－10
+---@param c Card
 function c41307269.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(41307269,0))

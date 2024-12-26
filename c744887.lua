@@ -1,4 +1,5 @@
 --虚の王 ウートガルザ
+---@param c Card
 function c744887.initial_effect(c)
 	c:SetUniqueOnField(1,0,744887)
 	--remove

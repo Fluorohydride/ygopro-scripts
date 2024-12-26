@@ -1,4 +1,5 @@
 --デストラクション・ジャマー
+---@param c Card
 function c98956134.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

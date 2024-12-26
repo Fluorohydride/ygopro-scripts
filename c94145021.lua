@@ -1,4 +1,5 @@
 --ドロール＆ロックバード
+---@param c Card
 function c94145021.initial_effect(c)
 	--search limit
 	local e1=Effect.CreateEffect(c)

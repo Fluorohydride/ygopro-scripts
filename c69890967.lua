@@ -1,4 +1,5 @@
 --幻魔皇ラビエル
+---@param c Card
 function c69890967.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

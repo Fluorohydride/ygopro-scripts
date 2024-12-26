@@ -1,4 +1,5 @@
 --あまびえさん
+---@param c Card
 function c2139640.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

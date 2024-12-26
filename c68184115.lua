@@ -1,4 +1,5 @@
 --甲虫装機 ダンセル
+---@param c Card
 function c68184115.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -47,7 +48,7 @@ function c68184115.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		if not Duel.Equip(tp,tc,c) then return end
 		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

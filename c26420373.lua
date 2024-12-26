@@ -1,4 +1,5 @@
 --SRパッシングライダー
+---@param c Card
 function c26420373.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --メガリス・アラトロン
+---@param c Card
 function c25726386.initial_effect(c)
 	c:EnableReviveLimit()
 	--ritual summon

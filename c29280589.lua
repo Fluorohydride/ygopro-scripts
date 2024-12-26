@@ -1,4 +1,5 @@
 --エッジインプ・サイズ
+---@param c Card
 function c29280589.initial_effect(c)
 	--fusion summon
 	local e1=Effect.CreateEffect(c)

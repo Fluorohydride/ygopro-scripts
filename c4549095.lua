@@ -1,4 +1,5 @@
 --BK カウンターブロー
+---@param c Card
 function c4549095.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

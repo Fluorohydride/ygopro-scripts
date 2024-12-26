@@ -1,4 +1,5 @@
 --ウォーター・ドラゴン－クラスター
+---@param c Card
 function c6022371.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

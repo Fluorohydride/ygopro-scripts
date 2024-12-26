@@ -1,4 +1,5 @@
 --グランドレミコード・クーリア
+---@param c Card
 function c84521924.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

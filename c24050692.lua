@@ -1,4 +1,5 @@
 --溟界の蛇睡蓮
+---@param c Card
 function c24050692.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アタッチメント・サイバーン
+---@param c Card
 function c79875526.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

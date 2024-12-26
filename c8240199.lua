@@ -1,4 +1,5 @@
 --青き眼の賢士
+---@param c Card
 function c8240199.initial_effect(c)
 	--To hand
 	local e1=Effect.CreateEffect(c)

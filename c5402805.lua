@@ -1,4 +1,5 @@
 --天威の鬼神
+---@param c Card
 function c5402805.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,3,c5402805.lcheck)

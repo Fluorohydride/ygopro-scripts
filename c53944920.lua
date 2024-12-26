@@ -1,4 +1,5 @@
 --ジェネクス・ヒート
+---@param c Card
 function c53944920.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

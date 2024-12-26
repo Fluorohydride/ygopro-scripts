@@ -1,4 +1,5 @@
 --水晶の占い師
+---@param c Card
 function c82099401.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

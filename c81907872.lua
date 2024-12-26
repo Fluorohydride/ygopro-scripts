@@ -1,4 +1,5 @@
 --ゴーストリック・スペクター
+---@param c Card
 function c81907872.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --創星神 sophia
+---@param c Card
 function c4335427.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --聖夜に煌めく竜
+---@param c Card
 function c90835938.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --銀河眼の光子竜
+---@param c Card
 function c93717133.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -56,7 +57,8 @@ function c93717133.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	if chk==0 then return bc and bc:IsOnField() and bc:IsCanBeEffectTarget(e) and c:IsAbleToRemove() and bc:IsAbleToRemove() end
+	if chk==0 then return bc and bc:IsRelateToBattle() and bc:IsCanBeEffectTarget(e)
+		and c:IsAbleToRemove() and bc:IsAbleToRemove() end
 	Duel.SetTargetCard(bc)
 	local g=Group.FromCards(c,bc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,2,0,0)

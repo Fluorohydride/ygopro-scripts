@@ -1,4 +1,5 @@
 --暗黒方界神クリムゾン・ノヴァ
+---@param c Card
 function c30270176.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

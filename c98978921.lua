@@ -1,4 +1,5 @@
 --リンク・スパイダー
+---@param c Card
 function c98978921.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_NORMAL),1,1)

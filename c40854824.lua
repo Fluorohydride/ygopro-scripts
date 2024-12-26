@@ -1,4 +1,5 @@
 --オーバー・ザ・レインボー
+---@param c Card
 function c40854824.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

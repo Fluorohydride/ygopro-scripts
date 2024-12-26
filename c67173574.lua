@@ -1,4 +1,5 @@
 --CNo.102 光堕天使ノーブル・デーモン
+---@param c Card
 function c67173574.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--xyz summon

@@ -1,4 +1,5 @@
 --フュージョン・デステニー
+---@param c Card
 function c52947044.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

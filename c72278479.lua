@@ -1,4 +1,5 @@
 --ブラック・リターン
+---@param c Card
 function c72278479.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --死魂融合
+---@param c Card
 function c81223446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

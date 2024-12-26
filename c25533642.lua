@@ -1,4 +1,5 @@
 --オルターガイスト・メリュシーク
+---@param c Card
 function c25533642.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

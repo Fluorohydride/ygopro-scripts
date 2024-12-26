@@ -1,4 +1,5 @@
 --SPYRAL GEAR－ラスト・リゾート
+---@param c Card
 function c37433748.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --黒魔導強化
+---@param c Card
 function c111280.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--Activate

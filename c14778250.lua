@@ -1,4 +1,5 @@
 --THE トリッキー
+---@param c Card
 function c14778250.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -15,10 +16,10 @@ function c14778250.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_HAND,0,1,c)
+		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,c)
 end
 function c14778250.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_HAND,0,c)
+	local g=Duel.GetMatchingGroup(Card.IsDiscardable,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
 	if tc then

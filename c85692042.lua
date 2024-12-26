@@ -1,4 +1,5 @@
 --塊斬機ダランベルシアン
+---@param c Card
 function c85692042.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

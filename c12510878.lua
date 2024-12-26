@@ -1,4 +1,5 @@
 --天空勇士ネオパーシアス
+---@param c Card
 function c12510878.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--special summon

@@ -1,4 +1,5 @@
 --No.19 フリーザードン
+---@param c Card
 function c55067058.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

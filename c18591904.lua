@@ -1,4 +1,5 @@
 --最終戦争
+---@param c Card
 function c18591904.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

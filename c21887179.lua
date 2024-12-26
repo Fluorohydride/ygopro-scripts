@@ -1,4 +1,5 @@
 --月風魔
+---@param c Card
 function c21887179.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

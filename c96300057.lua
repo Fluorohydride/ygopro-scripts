@@ -1,4 +1,5 @@
 --W－ウィング・カタパルト
+---@param c Card
 function c96300057.initial_effect(c)
 	aux.EnableUnionAttribute(c,c96300057.filter)
 	--Atk up

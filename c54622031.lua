@@ -1,4 +1,5 @@
 --金色の魔象
+---@param c Card
 function c54622031.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

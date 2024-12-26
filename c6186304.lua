@@ -1,4 +1,5 @@
 --D－フォース
+---@param c Card
 function c6186304.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0xc008)
 	--Activate

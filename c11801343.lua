@@ -1,4 +1,5 @@
 --ガベージコレクター
+---@param c Card
 function c11801343.initial_effect(c)
 	--bounce and summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --レアメタル・ドラゴン
+---@param c Card
 function c25236056.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

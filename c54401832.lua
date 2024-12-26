@@ -1,4 +1,5 @@
 --メタルフォーゼ・カーディナル
+---@param c Card
 function c54401832.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --ペンデュラム・トレジャー
+---@param c Card
 function c26237713.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --天空神騎士ロードパーシアス
+---@param c Card
 function c48589580.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--link summon
@@ -35,7 +36,7 @@ function c48589580.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c48589580.thfilter(c,thchk)
-	return (c:IsCode(56433456) or aux.IsCodeListed(c,56433456) or (thchk and c:IsRace(RACE_FAIRY))) and c:IsAbleToHand()
+	return (aux.IsCodeOrListed(c,56433456) or thchk and c:IsRace(RACE_FAIRY)) and c:IsAbleToHand()
 end
 function c48589580.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local thchk=Duel.IsEnvironment(56433456)

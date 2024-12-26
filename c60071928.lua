@@ -1,4 +1,5 @@
 --ライティ・ドライバー
+---@param c Card
 function c60071928.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

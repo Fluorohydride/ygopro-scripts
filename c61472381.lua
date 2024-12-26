@@ -1,4 +1,5 @@
 --巧炎星－エランセイ
+---@param c Card
 function c61472381.initial_effect(c)
 	c:EnableReviveLimit()
 	--set

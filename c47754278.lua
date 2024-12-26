@@ -1,4 +1,5 @@
 --ヘル・ドラゴン
+---@param c Card
 function c47754278.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(47754278,0))

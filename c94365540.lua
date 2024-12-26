@@ -1,4 +1,5 @@
 --ティンダングル・ベース・ガードナー
+---@param c Card
 function c94365540.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

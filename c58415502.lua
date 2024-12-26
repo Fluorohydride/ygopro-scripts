@@ -1,5 +1,6 @@
 --ロイヤル・ストレート
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--Activate

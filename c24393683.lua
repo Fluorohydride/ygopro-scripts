@@ -1,4 +1,5 @@
 --きまぐれ軍貫握り
+---@param c Card
 function c24393683.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

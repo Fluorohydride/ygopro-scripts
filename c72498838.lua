@@ -1,4 +1,5 @@
 --結晶の大賢者サンドリヨン
+---@param c Card
 function c72498838.initial_effect(c)
 	--to hand/to grave
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アタック・フェロモン
+---@param c Card
 function c68786330.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

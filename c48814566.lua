@@ -1,4 +1,5 @@
 --魔獣の大餌
+---@param c Card
 function c48814566.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

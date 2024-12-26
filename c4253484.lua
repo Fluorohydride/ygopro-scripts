@@ -1,4 +1,5 @@
 --剣闘獣ホプロムス
+---@param c Card
 function c4253484.initial_effect(c)
 	--def
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ function c4253484.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c4253484.filter(c,e,tp)
-	return not c:IsCode(4253484) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(4253484) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c4253484.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

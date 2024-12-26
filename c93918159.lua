@@ -1,4 +1,5 @@
 --超越天翔
+---@param c Card
 function c93918159.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

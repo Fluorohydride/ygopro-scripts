@@ -1,5 +1,6 @@
 --外法の騎士
 local s,id,o=GetID()
+---@param c Card
 function c42198835.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--Special Summon

@@ -1,4 +1,5 @@
 --神碑の牙ゲーリ
+---@param c Card
 function c28373620.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

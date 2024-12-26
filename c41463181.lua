@@ -1,4 +1,5 @@
 --転生炎獣ヒートライオ
+---@param c Card
 function c41463181.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --リボーン・パズル
+---@param c Card
 function c30585393.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

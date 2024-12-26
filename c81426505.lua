@@ -1,4 +1,5 @@
 --六武式三段衝
+---@param c Card
 function c81426505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c81426505.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c81426505.confilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c81426505.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c81426505.confilter,tp,LOCATION_MZONE,0,3,nil)

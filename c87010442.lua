@@ -1,4 +1,5 @@
 --レガシーハンター
+---@param c Card
 function c87010442.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

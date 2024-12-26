@@ -1,4 +1,5 @@
 --「A」細胞散布爆弾
+---@param c Card
 function c73262676.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

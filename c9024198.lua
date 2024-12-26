@@ -1,4 +1,5 @@
 --DDD深淵王ビルガメス
+---@param c Card
 function c9024198.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
@@ -27,16 +28,13 @@ function c9024198.initial_effect(c)
 	e2:SetOperation(c9024198.spop)
 	c:RegisterEffect(e2)
 end
-function c9024198.setfilter1(c,tp)
+function c9024198.setfilter(c)
 	return c:IsSetCard(0xaf) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
-		and Duel.IsExistingMatchingCard(c9024198.setfilter2,tp,LOCATION_DECK,0,1,nil,c:GetCode())
-end
-function c9024198.setfilter2(c,code)
-	return c:IsSetCard(0xaf) and not c:IsCode(code) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
 end
 function c9024198.settg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local g=Duel.GetMatchingGroup(c9024198.setfilter,tp,LOCATION_DECK,0,nil)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) and Duel.CheckLocation(tp,LOCATION_PZONE,1)
-		and Duel.IsExistingMatchingCard(c9024198.setfilter1,tp,LOCATION_DECK,0,1,nil,tp) end
+		and g:GetClassCount(Card.GetCode)>=2 end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,1000)
 end
 function c9024198.setop(e,tp,eg,ep,ev,re,r,rp)
@@ -50,12 +48,12 @@ function c9024198.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) or not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g1=Duel.SelectMatchingCard(tp,c9024198.setfilter1,tp,LOCATION_DECK,0,1,1,nil,tp)
-	local tc1=g1:GetFirst()
-	if not tc1 then return end
+	local g=Duel.GetMatchingGroup(c9024198.setfilter,tp,LOCATION_DECK,0,nil)
+	if g:GetClassCount(Card.GetCode)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g2=Duel.SelectMatchingCard(tp,c9024198.setfilter2,tp,LOCATION_DECK,0,1,1,nil,tc1:GetCode())
-	local tc2=g2:GetFirst()
+	local g1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
+	local tc1=g1:GetFirst()
+	local tc2=g1:GetNext()
 	if Duel.MoveToField(tc1,tp,tp,LOCATION_PZONE,POS_FACEUP,false) then
 		if Duel.MoveToField(tc2,tp,tp,LOCATION_PZONE,POS_FACEUP,false) then
 			Duel.Damage(tp,1000,REASON_EFFECT)

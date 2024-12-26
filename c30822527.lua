@@ -1,4 +1,5 @@
 --デコード・トーカー・エクステンド
+---@param c Card
 function c30822527.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)

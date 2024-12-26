@@ -1,4 +1,5 @@
 --アウトバースト・ドラゴン
+---@param c Card
 function c87263576.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

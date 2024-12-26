@@ -1,4 +1,5 @@
 --A BF－涙雨のチドリ
+---@param c Card
 function c23338098.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

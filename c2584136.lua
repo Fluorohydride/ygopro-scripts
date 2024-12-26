@@ -1,4 +1,5 @@
 --シャクトパス
+---@param c Card
 function c2584136.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

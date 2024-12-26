@@ -1,4 +1,5 @@
 --甲虫装機 エクサスタッグ
+---@param c Card
 function c26211048.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_INSECT),5,2)
@@ -39,7 +40,7 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) or not tc:IsType(TYPE_MONSTER) then return end
 	if not Duel.Equip(tp,tc,c,false) then return end
 	local e1=Effect.CreateEffect(c)
-	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+	e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)

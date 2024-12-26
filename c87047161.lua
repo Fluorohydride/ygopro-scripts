@@ -1,4 +1,5 @@
 --マーメイド・シャーク
+---@param c Card
 function c87047161.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

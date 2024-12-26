@@ -1,4 +1,5 @@
 --スーパイ
+---@param c Card
 function c78552773.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --双天将 密迹
+---@param c Card
 function c284224.initial_effect(c)
 	--fusion
 	c:EnableReviveLimit()

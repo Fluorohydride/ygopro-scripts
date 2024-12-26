@@ -1,4 +1,5 @@
 --神樹獣ハイペリュトン
+---@param c Card
 function c9349094.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2)
@@ -48,7 +49,7 @@ function c9349094.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

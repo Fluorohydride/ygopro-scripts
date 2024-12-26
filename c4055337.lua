@@ -1,4 +1,5 @@
 --オルフェゴール・トロイメア
+---@param c Card
 function c4055337.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -29,10 +30,10 @@ function c4055337.indval(e,c)
 	return c:IsType(TYPE_LINK)
 end
 function c4055337.atkcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c4055337.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c4055337.tgfilter(c)
 	return c:IsFaceup()

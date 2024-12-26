@@ -1,4 +1,5 @@
 --鉄の檻
+---@param c Card
 function c45072394.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--Activate

@@ -1,4 +1,5 @@
 --サイバーロード・フュージョン
+---@param c Card
 function c55704856.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

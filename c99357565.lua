@@ -1,4 +1,5 @@
 --D3
+---@param c Card
 function c99357565.initial_effect(c)
 	--setcode
 	local e1=Effect.CreateEffect(c)

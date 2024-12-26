@@ -1,4 +1,5 @@
 --魔妖廻天
+---@param c Card
 function c2364438.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

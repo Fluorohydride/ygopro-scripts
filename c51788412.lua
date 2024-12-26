@@ -1,4 +1,5 @@
 --古代の機械混沌巨人
+---@param c Card
 function c51788412.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

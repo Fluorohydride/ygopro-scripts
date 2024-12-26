@@ -1,4 +1,5 @@
 --デトネイト・デリーター
+---@param c Card
 function c24487411.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

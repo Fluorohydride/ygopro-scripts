@@ -1,4 +1,5 @@
 --変容王 ヘル・ゲル
+---@param c Card
 function c85457355.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

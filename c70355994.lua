@@ -1,4 +1,5 @@
 --勇炎星－エンショウ
+---@param c Card
 function c70355994.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

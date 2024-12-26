@@ -1,4 +1,5 @@
 --C・ドルフィーナ
+---@param c Card
 function c42682609.initial_effect(c)
 	aux.AddCodeList(c,17955766)
 	--spsummon

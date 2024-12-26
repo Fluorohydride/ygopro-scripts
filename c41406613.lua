@@ -1,4 +1,5 @@
 --暗黒界の魔神王 レイン
+---@param c Card
 function c41406613.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

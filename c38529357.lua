@@ -1,4 +1,5 @@
 --命の代行者 ネプチューン
+---@param c Card
 function c38529357.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--spsummon

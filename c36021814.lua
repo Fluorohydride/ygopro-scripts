@@ -1,4 +1,5 @@
 --ワイトキング
+---@param c Card
 function c36021814.initial_effect(c)
 	aux.AddCodeList(c,32274490)
 	--base attack

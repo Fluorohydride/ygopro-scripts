@@ -1,4 +1,5 @@
 --機械改造工場
+---@param c Card
 function c25769732.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --原罪宝－スネークアイ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -50,7 +51,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function s.rfilter(c)
-	return c:IsSetCard(0x19c,0x19b) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
+	return c:IsSetCard(0x19c,0x119b) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 end
 function s.sfilter(c)
 	return c:IsLevel(1) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToHand()

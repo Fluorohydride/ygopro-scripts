@@ -1,4 +1,5 @@
 --王虎ワンフー
+---@param c Card
 function c83986578.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

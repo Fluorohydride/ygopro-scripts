@@ -1,4 +1,5 @@
 --サイバー・エルタニン
+---@param c Card
 function c33093439.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,4 +1,5 @@
 --鋼鉄の魔導騎士－ギルティギア・フリード
+---@param c Card
 function c49161188.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

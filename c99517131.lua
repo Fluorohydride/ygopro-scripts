@@ -1,4 +1,5 @@
 --生命力吸収魔術
+---@param c Card
 function c99517131.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

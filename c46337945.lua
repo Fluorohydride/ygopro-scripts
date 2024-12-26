@@ -1,4 +1,5 @@
 --儀水鏡の瞑想術
+---@param c Card
 function c46337945.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

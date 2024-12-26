@@ -1,4 +1,5 @@
 --次元の歪み
+---@param c Card
 function c95194279.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

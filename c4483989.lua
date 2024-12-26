@@ -1,4 +1,5 @@
 --反撃準備
+---@param c Card
 function c4483989.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -20,7 +21,6 @@ function c4483989.initial_effect(c)
 	e2:SetOperation(c4483989.atkop)
 	c:RegisterEffect(e2)
 end
-c4483989.toss_coin=true
 function c4483989.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
 	return tp~=Duel.GetTurnPlayer() and at and at:IsPosition(POS_FACEUP_DEFENSE)

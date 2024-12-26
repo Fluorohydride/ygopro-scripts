@@ -1,4 +1,5 @@
 --CNo.32 海咬龍シャーク・ドレイク・バイス
+---@param c Card
 function c49221191.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

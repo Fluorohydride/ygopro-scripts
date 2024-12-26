@@ -1,4 +1,5 @@
 --ダウンビート
+---@param c Card
 function c96540.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

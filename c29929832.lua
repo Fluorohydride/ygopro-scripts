@@ -1,4 +1,5 @@
 --マリン・ビースト
+---@param c Card
 function c29929832.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

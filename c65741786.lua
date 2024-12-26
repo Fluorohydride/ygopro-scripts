@@ -1,4 +1,5 @@
 --I：Pマスカレーナ
+---@param c Card
 function c65741786.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_LINK)),2,2)

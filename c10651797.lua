@@ -1,4 +1,5 @@
 --ツバメ返し
+---@param c Card
 function c10651797.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

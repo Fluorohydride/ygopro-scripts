@@ -1,4 +1,5 @@
 --カオス・アンヘル－混沌の双翼－
+---@param c Card
 function c22850702.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

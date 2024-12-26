@@ -1,5 +1,6 @@
 --リザレクション・ブレス
 local s,id,o=GetID()
+---@param c Card
 function c64018647.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--spsummon & equip

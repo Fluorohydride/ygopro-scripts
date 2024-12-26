@@ -1,4 +1,5 @@
 --超天新龍オッドアイズ・レボリューション・ドラゴン
+---@param c Card
 function c16306932.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--revive limit

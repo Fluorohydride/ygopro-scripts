@@ -1,4 +1,5 @@
 --ジュラック・アウロ
+---@param c Card
 function c80727721.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

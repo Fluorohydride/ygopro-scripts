@@ -1,4 +1,5 @@
 --家電機塊世界エレクトリリカル・ワールド
+---@param c Card
 function c3875465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

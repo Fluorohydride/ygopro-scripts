@@ -1,4 +1,5 @@
 --覇王天龍オッドアイズ・アークレイ・ドラゴン
+---@param c Card
 function c6218704.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--fusion summon
@@ -74,7 +75,7 @@ function c6218704.splimit(e,se,sp,st)
 	return true
 end
 function c6218704.hspfilter(c,tp,sc)
-	return c:IsCode(13331639) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsLevel(12) and c:IsFaceup()
+	return c:IsCode(13331639) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsLevel(12)
 		and c:IsControler(tp) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c6218704.hspcon(e,c)

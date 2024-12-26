@@ -1,4 +1,5 @@
 --サイコ・フィール・ゾーン
+---@param c Card
 function c11047543.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

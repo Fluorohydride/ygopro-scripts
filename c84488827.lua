@@ -1,4 +1,5 @@
 --インヴェルズ・ガザス
+---@param c Card
 function c84488827.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

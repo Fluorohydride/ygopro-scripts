@@ -1,4 +1,5 @@
 --デコイドラゴン
+---@param c Card
 function c2732323.initial_effect(c)
 	--change battle target
 	local e1=Effect.CreateEffect(c)

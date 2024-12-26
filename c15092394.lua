@@ -1,4 +1,5 @@
 --RR－エトランゼ・ファルコン
+---@param c Card
 function c15092394.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,5,2)
@@ -70,7 +71,7 @@ function c15092394.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
-		if c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and c:IsCanOverlay() then
 			Duel.Overlay(tc,Group.FromCards(c))
 		end
 	end

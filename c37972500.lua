@@ -1,4 +1,5 @@
 --グランドレミコード・ミューゼシア
+---@param c Card
 function c37972500.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

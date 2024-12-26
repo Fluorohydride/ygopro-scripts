@@ -1,4 +1,5 @@
 --天空騎士パーシアス
+---@param c Card
 function c18036057.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

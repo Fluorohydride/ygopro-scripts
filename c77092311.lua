@@ -1,4 +1,5 @@
 --毒の魔妖－土蜘蛛
+---@param c Card
 function c77092311.initial_effect(c)
 	c:SetUniqueOnField(1,0,77092311)
 	--synchro summon

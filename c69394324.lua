@@ -1,4 +1,5 @@
 --D-HERO ドミネイトガイ
+---@param c Card
 function c69394324.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xc008),3,true)

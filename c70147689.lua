@@ -1,4 +1,5 @@
 --古代の機械要塞
+---@param c Card
 function c70147689.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

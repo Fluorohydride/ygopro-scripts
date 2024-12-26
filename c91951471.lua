@@ -1,4 +1,5 @@
 --VS 螺旋流辻風
+---@param c Card
 function c91951471.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

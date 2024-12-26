@@ -1,4 +1,5 @@
 --花札衛－芒に月－
+---@param c Card
 function c43413875.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon from hand

@@ -1,4 +1,5 @@
 --サブテラーの継承
+---@param c Card
 function c73575650.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

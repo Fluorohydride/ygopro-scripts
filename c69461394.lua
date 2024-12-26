@@ -1,4 +1,5 @@
 --A・O・J フィールド・マーシャル
+---@param c Card
 function c69461394.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2)

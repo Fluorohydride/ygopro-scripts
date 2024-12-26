@@ -1,4 +1,5 @@
 --魔轟神ミーズトージ
+---@param c Card
 function c8316661.initial_effect(c)
 	--change type
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --コーンフィールド コアトル
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,63136489)
 	--indes

@@ -1,4 +1,5 @@
 --ダーク・カタパルター
+---@param c Card
 function c33875961.initial_effect(c)
 	c:EnableCounterPermit(0x28)
 	--counter

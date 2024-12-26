@@ -1,4 +1,5 @@
 --ジェムタートル
+---@param c Card
 function c64734090.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

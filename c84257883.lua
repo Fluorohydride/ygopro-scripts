@@ -1,4 +1,5 @@
 --巨大戦艦 ブラスターキャノン・コア
+---@param c Card
 function c84257883.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--special summon

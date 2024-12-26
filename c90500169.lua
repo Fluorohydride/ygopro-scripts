@@ -1,4 +1,5 @@
 --レベルダウン！？
+---@param c Card
 function c90500169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

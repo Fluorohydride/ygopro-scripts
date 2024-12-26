@@ -1,4 +1,5 @@
 --「A」細胞組み換え装置
+---@param c Card
 function c91231901.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

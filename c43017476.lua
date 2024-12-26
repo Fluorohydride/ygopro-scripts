@@ -1,5 +1,7 @@
 --デューテリオン
+---@param c Card
 function c43017476.initial_effect(c)
+	aux.AddCodeList(c,43017476,22587018,58071123)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(43017476,0))

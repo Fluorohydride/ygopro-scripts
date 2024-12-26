@@ -1,4 +1,5 @@
 --エレメンタル・チャージ
+---@param c Card
 function c36586443.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

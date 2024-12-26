@@ -1,4 +1,5 @@
 --セイヴァー・アブソープション
+---@param c Card
 function c63144961.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate

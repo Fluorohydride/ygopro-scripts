@@ -1,4 +1,5 @@
 --貫ガエル
+---@param c Card
 function c56052205.initial_effect(c)
 	--direct
 	local e1=Effect.CreateEffect(c)

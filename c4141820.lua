@@ -1,4 +1,5 @@
 --儀式魔人プレコグスター
+---@param c Card
 function c4141820.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

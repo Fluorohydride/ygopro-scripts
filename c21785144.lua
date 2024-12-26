@@ -1,4 +1,5 @@
 --ライトロード・ドラゴン グラゴニス
+---@param c Card
 function c21785144.initial_effect(c)
 	--atk def
 	local e1=Effect.CreateEffect(c)

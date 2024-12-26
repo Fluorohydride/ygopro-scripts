@@ -1,4 +1,5 @@
 --ネムレリアの夢守り－オレイエ
+---@param c Card
 function c17550376.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

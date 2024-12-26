@@ -1,4 +1,5 @@
 --青氷の白夜龍
+---@param c Card
 function c79473793.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

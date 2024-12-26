@@ -1,4 +1,5 @@
 --No.5 亡朧竜 デス・キマイラ・ドラゴン
+---@param c Card
 function c90126061.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,nil,nil,99)
@@ -68,7 +69,7 @@ end
 function c90126061.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

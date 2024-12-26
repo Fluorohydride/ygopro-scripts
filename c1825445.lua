@@ -1,4 +1,5 @@
 --超量合神－マグナフォーメーション
+---@param c Card
 function c1825445.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

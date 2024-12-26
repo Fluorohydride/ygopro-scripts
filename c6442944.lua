@@ -1,4 +1,5 @@
 --カイザー・シースネーク
+---@param c Card
 function c6442944.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

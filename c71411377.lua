@@ -1,4 +1,5 @@
 --女王親衛隊
+---@param c Card
 function c71411377.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)
@@ -11,5 +12,5 @@ function c71411377.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c71411377.atlimit(e,c)
-	return c:IsCode(87257460,23756165,50140163)
+	return c:IsSetCard(0x3)
 end

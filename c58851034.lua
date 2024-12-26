@@ -1,4 +1,5 @@
 --封魔の呪印
+---@param c Card
 function c58851034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

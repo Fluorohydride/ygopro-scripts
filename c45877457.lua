@@ -1,4 +1,5 @@
 --魔鍵砲－ガレスヴェート
+---@param c Card
 function c45877457.initial_effect(c)
 	c:EnableReviveLimit()
 	--different attr check

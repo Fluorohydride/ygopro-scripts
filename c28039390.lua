@@ -1,4 +1,5 @@
 --デストーイ・リニッチ
+---@param c Card
 function c28039390.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

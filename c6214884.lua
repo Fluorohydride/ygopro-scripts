@@ -1,4 +1,5 @@
 --暗黒界の狂王 ブロン
+---@param c Card
 function c6214884.initial_effect(c)
 	--discard
 	local e1=Effect.CreateEffect(c)

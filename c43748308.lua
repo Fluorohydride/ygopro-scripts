@@ -1,4 +1,5 @@
 --微炎星－リュウシシン
+---@param c Card
 function c43748308.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)

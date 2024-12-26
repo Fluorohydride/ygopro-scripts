@@ -1,4 +1,5 @@
 --ラーの翼神竜
+---@param c Card
 function c10000010.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

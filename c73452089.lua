@@ -1,4 +1,5 @@
 --超魔導騎士－ブラック・キャバルリー
+---@param c Card
 function c73452089.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

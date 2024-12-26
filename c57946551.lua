@@ -1,5 +1,6 @@
 --ロック・スケイル
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Union equip monster
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --月影龍クイラ
+---@param c Card
 function c66818682.initial_effect(c)
 	aux.AddMaterialCodeList(c,78552773)
 	--synchro summon

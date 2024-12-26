@@ -1,4 +1,5 @@
 --サイバネット・オプティマイズ
+---@param c Card
 function c34010534.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

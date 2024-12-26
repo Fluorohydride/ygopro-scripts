@@ -1,4 +1,5 @@
 --魔界発冥界行きバス
+---@param c Card
 function c89732524.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

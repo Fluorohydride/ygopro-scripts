@@ -1,4 +1,5 @@
 --グラヴィティ・バインド－超重力の網－
+---@param c Card
 function c85742772.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

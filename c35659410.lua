@@ -1,4 +1,5 @@
 --青き眼の幻出
+---@param c Card
 function c35659410.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--activate

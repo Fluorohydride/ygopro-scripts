@@ -1,4 +1,5 @@
 --イビリチュア・プシュケローネ
+---@param c Card
 function c30334522.initial_effect(c)
 	c:EnableReviveLimit()
 	--confirm

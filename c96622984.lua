@@ -1,4 +1,5 @@
 --捕食植物フライ・ヘル
+---@param c Card
 function c96622984.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)
@@ -55,7 +56,6 @@ function c96622984.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)
 		e1:SetValue(tc:GetOriginalLevel())
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

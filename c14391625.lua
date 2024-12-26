@@ -1,4 +1,5 @@
 --ヴィサス＝サンサーラ
+---@param c Card
 function c14391625.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,56099748,LOCATION_MZONE+LOCATION_GRAVE)

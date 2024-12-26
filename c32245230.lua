@@ -1,4 +1,5 @@
 --運命の契約
+---@param c Card
 function c32245230.initial_effect(c)
 	c:EnableCounterPermit(0x5e,LOCATION_SZONE)
 	c:SetCounterLimit(0x5e,1)
@@ -75,7 +76,7 @@ function c32245230.spop(e,tp,eg,ep,ev,re,r,rp)
 			sc:SetMaterial(nil)
 			if Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
 				sc:CompleteProcedure()
-				if c:IsRelateToEffect(e) then
+				if c:IsRelateToEffect(e) and c:IsCanOverlay() then
 					Duel.Overlay(sc,Group.FromCards(c))
 				end
 			end

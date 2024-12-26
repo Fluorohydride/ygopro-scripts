@@ -1,4 +1,5 @@
 --フォトン・スラッシャー
+---@param c Card
 function c65367484.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

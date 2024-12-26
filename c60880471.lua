@@ -1,4 +1,5 @@
 --六花精ヘレボラス
+---@param c Card
 function c60880471.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣アウグストル
+---@param c Card
 function c7573135.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -24,7 +25,7 @@ function c7573135.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7573135.hspfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c7573135.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -73,7 +74,7 @@ function c7573135.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c7573135.filter(c,e,tp)
-	return c:IsSetCard(0x19) and not c:IsCode(7573135) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and not c:IsCode(7573135) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c7573135.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

@@ -1,4 +1,5 @@
 --火霊術－「紅」
+---@param c Card
 function c42945701.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

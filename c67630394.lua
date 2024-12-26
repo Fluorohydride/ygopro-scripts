@@ -1,5 +1,6 @@
 --FA－ダーク・ナイト・ランサー
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,3,s.ovfilter,aux.Stringid(id,0),7,s.xyzop)

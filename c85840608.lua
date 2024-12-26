@@ -1,4 +1,5 @@
 --ネオスペース・コネクター
+---@param c Card
 function c85840608.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	--special summon

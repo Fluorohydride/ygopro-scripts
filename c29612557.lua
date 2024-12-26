@@ -1,4 +1,5 @@
 --サイクロン・ブーメラン
+---@param c Card
 function c29612557.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

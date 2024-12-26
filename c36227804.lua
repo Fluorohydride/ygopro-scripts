@@ -1,4 +1,5 @@
 --リチュア・ビースト
+---@param c Card
 function c36227804.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

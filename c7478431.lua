@@ -1,4 +1,5 @@
 --ナチュル・サンフラワー
+---@param c Card
 function c7478431.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

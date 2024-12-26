@@ -1,4 +1,5 @@
 --ダイノルフィア・ブルート
+---@param c Card
 function c99414629.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

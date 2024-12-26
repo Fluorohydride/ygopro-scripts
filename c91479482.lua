@@ -1,5 +1,6 @@
 --紅恋の麗傑－ブラダマンテ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

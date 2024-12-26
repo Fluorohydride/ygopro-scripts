@@ -1,4 +1,5 @@
 --剣闘排斥波
+---@param c Card
 function c93684009.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -34,16 +35,16 @@ function c93684009.tgcon(e)
 	return not (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE)
 end
 function c93684009.tglimit(e,c)
-	return c:IsSetCard(0x19)
+	return c:IsSetCard(0x1019)
 end
 function c93684009.cfilter(c,tp)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
+	return c:IsSetCard(0x1019) and c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c93684009.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c93684009.cfilter,1,nil,tp)
 end
 function c93684009.filter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and not Duel.IsExistingMatchingCard(c93684009.filter1,tp,LOCATION_MZONE,0,1,c,c:GetRace())
 end
 function c93684009.filter1(c,race)

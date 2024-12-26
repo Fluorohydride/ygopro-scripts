@@ -1,4 +1,5 @@
 --ドンヨリボー＠イグニスター
+---@param c Card
 function c14146794.initial_effect(c)
 	--battle damage
 	local e1=Effect.CreateEffect(c)

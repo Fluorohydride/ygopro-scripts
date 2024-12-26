@@ -1,4 +1,5 @@
 --刀皇－都牟羽沓薙
+---@param c Card
 function c78098950.initial_effect(c)
 	--cannot special summon
 	local e0=Effect.CreateEffect(c)

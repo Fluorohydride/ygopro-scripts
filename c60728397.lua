@@ -1,4 +1,5 @@
 --ヴェノム・ショット
+---@param c Card
 function c60728397.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

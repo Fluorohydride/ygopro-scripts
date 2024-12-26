@@ -1,4 +1,5 @@
 --青き眼の激臨
+---@param c Card
 function c29432790.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--Activate

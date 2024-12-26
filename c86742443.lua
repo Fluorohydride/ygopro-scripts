@@ -1,4 +1,5 @@
 --王宮の重税
+---@param c Card
 function c86742443.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ライフ・コーディネイター
+---@param c Card
 function c76214441.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

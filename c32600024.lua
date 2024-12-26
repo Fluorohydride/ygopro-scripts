@@ -1,4 +1,5 @@
 --ドラゴンメイド・チェイム
+---@param c Card
 function c32600024.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

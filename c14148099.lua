@@ -1,4 +1,5 @@
 --巨大戦艦 ビッグ・コア
+---@param c Card
 function c14148099.initial_effect(c)
 	c:EnableCounterPermit(0x1f)
 	--summon success

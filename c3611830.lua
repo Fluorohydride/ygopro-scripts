@@ -1,4 +1,5 @@
 --創聖魔導王 エンディミオン
+---@param c Card
 function c3611830.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)

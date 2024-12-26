@@ -1,5 +1,6 @@
 --スケアクロー・ベロネア
 local s,id,o=GetID()
+---@param c Card
 function c19882096.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

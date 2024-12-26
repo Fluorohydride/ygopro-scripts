@@ -1,4 +1,5 @@
 --E・HERO コスモ・ネオス
+---@param c Card
 function c90050480.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

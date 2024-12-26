@@ -1,4 +1,5 @@
 --黒き覚醒のエルドリクシル
+---@param c Card
 function c68829754.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

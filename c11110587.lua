@@ -1,4 +1,5 @@
 --隣の芝刈り
+---@param c Card
 function c11110587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --時空混沌渦
+---@param c Card
 function c59650656.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --虹彩の魔術師
+---@param c Card
 function c49684352.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--Double damage

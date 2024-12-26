@@ -1,4 +1,5 @@
 --ヴァリアンツの弓引－西園
+---@param c Card
 function c15130912.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -35,7 +36,6 @@ function c15130912.initial_effect(c)
 	e3:SetOperation(c15130912.coinop2)
 	c:RegisterEffect(e3)
 end
-c15130912.toss_coin=true
 function c15130912.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local zone=1<<c:GetSequence()

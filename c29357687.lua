@@ -1,4 +1,5 @@
 --呪眼の女王 ゴルゴーネ
+---@param c Card
 function c29357687.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c29357687.lcheck)

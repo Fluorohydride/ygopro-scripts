@@ -1,4 +1,5 @@
 --飛行エレファント
+---@param c Card
 function c66765023.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

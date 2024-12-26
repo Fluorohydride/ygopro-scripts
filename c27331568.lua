@@ -1,4 +1,5 @@
 --荘厳なる機械天使
+---@param c Card
 function c27331568.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

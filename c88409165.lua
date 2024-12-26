@@ -1,4 +1,5 @@
 --アビス・ウォリアー
+---@param c Card
 function c88409165.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

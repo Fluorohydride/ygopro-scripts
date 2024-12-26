@@ -1,4 +1,5 @@
 --オーバーレイ・リジェネレート
+---@param c Card
 function c27068117.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ end
 function c27068117.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and c:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and c:IsRelateToEffect(e) then
 		c:CancelToGrave()
 		Duel.Overlay(tc,Group.FromCards(c))
 	end

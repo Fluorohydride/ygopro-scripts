@@ -1,4 +1,5 @@
 --ガガガシールド
+---@param c Card
 function c18446701.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

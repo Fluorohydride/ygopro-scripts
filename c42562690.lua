@@ -1,4 +1,5 @@
 --EMアメンボート
+---@param c Card
 function c42562690.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --閃刀起動－エンゲージ
+---@param c Card
 function c63166095.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

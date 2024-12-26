@@ -1,4 +1,5 @@
 --煌めく聖夜
+---@param c Card
 function c58406094.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

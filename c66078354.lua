@@ -1,4 +1,5 @@
 --遺跡の魔鉱戦士
+---@param c Card
 function c66078354.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--spsummon

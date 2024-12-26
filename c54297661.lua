@@ -1,4 +1,5 @@
 --ディメンション・リフレクター
+---@param c Card
 function c54297661.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

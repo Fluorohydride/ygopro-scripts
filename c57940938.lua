@@ -1,4 +1,5 @@
 --ファイアウォール・ファントム
+---@param c Card
 function c57940938.initial_effect(c)
 	--Search
 	local e1=Effect.CreateEffect(c)

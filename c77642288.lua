@@ -1,4 +1,5 @@
 --剣闘獣セクトル
+---@param c Card
 function c77642288.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +19,7 @@ function c77642288.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetBattledGroupCount()>0
 end
 function c77642288.filter(c,e,tp)
-	return not c:IsCode(77642288) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(77642288) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c77642288.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

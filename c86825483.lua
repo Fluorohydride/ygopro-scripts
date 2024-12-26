@@ -1,4 +1,5 @@
 --神星なる領域
+---@param c Card
 function c86825483.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -1,4 +1,5 @@
 --休息する剣闘獣
+---@param c Card
 function c98891840.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c98891840.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98891840.filter(c)
-	return c:IsSetCard(0x19) and c:IsAbleToDeck()
+	return c:IsSetCard(0x1019) and c:IsAbleToDeck()
 end
 function c98891840.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,3)

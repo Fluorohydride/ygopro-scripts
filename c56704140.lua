@@ -1,4 +1,5 @@
 --氷結界の風水師
+---@param c Card
 function c56704140.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

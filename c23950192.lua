@@ -1,4 +1,5 @@
 --氷結界の術者
+---@param c Card
 function c23950192.initial_effect(c)
 	--cannot attack
 	local e2=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --璽律する武神
+---@param c Card
 function c63049052.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

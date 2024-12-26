@@ -1,4 +1,5 @@
 --リンク・リスタート
+---@param c Card
 function c27664101.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

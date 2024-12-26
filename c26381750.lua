@@ -1,4 +1,5 @@
 --紅蓮地帯を飛ぶ鷹
+---@param c Card
 function c26381750.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

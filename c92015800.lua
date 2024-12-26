@@ -1,4 +1,5 @@
 --No.76 諧調光師グラディエール
+---@param c Card
 function c92015800.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)
@@ -82,7 +83,7 @@ end
 function c92015800.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) and tc:IsRelateToEffect(e) and tc:IsCanOverlay() then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

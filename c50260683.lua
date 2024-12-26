@@ -1,4 +1,5 @@
 --No.36 先史遺産－超機関フォーク＝ヒューク
+---@param c Card
 function c50260683.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x70),4,2)

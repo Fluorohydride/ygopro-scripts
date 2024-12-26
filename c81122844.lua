@@ -1,4 +1,5 @@
 --発条空母ゼンマイティ
+---@param c Card
 function c81122844.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

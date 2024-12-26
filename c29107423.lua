@@ -1,4 +1,5 @@
 --紅蓮薔薇の魔女
+---@param c Card
 function c29107423.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--to hand

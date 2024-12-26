@@ -1,4 +1,5 @@
 --フォーチュン・ヴィジョン
+---@param c Card
 function c91407982.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

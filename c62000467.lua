@@ -1,8 +1,9 @@
 --剣闘獣ドラガシス
+---@param c Card
 function c62000467.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x19),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x1019),2,2)
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -37,12 +38,12 @@ function c62000467.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c62000467.indtg(e,c)
-	return c:IsSetCard(0x19) and Duel.GetAttacker()==c
+	return c:IsSetCard(0x1019) and Duel.GetAttacker()==c
 end
 function c62000467.actcon(e)
 	local tc=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return tc and tc:IsControler(tp) and tc:IsSetCard(0x19)
+	return tc and tc:IsControler(tp) and tc:IsSetCard(0x1019)
 end
 function c62000467.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattledGroupCount()>0
@@ -53,7 +54,7 @@ function c62000467.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_COST)
 end
 function c62000467.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62000467.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

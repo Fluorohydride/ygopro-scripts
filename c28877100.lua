@@ -1,4 +1,5 @@
 --ディフェンシブ・タクティクス
+---@param c Card
 function c28877100.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,7 @@ function c28877100.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c28877100.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c28877100.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c28877100.filter,tp,LOCATION_MZONE,0,1,nil)

@@ -1,4 +1,5 @@
 --ギガプラント
+---@param c Card
 function c53257892.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

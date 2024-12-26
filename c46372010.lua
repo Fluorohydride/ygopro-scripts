@@ -1,4 +1,5 @@
 --地獄門の契約書
+---@param c Card
 function c46372010.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

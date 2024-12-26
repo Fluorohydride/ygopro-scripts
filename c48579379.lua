@@ -1,4 +1,5 @@
 --究極完全態・グレート・モス
+---@param c Card
 function c48579379.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --ジャイアント・レックス
+---@param c Card
 function c80280944.initial_effect(c)
 	--cannot direct attack
 	local e1=Effect.CreateEffect(c)

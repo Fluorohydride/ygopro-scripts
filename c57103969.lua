@@ -1,4 +1,5 @@
 --炎舞－「天璣」
+---@param c Card
 function c57103969.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

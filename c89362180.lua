@@ -1,4 +1,5 @@
 --ナチュラル・ボーン・サウルス
+---@param c Card
 function c89362180.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--prop change

@@ -1,4 +1,5 @@
 --転生炎獣ガゼル
+---@param c Card
 function c26889158.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

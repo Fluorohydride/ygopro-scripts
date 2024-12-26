@@ -1,4 +1,5 @@
 --レアル・ジェネクス・アクセラレーター
+---@param c Card
 function c73783043.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

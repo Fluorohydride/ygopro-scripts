@@ -1,4 +1,5 @@
 --幻獣機コルトウィング
+---@param c Card
 function c94973028.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

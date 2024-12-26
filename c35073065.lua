@@ -1,4 +1,5 @@
 --イリュージョン・スナッチ
+---@param c Card
 function c35073065.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

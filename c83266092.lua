@@ -1,4 +1,5 @@
 --超古代生物の墓場
+---@param c Card
 function c83266092.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

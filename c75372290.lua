@@ -1,4 +1,5 @@
 --絶対防御将軍
+---@param c Card
 function c75372290.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

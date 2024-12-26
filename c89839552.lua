@@ -1,4 +1,5 @@
 --パペット・ポーン
+---@param c Card
 function c89839552.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

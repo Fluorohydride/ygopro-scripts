@@ -1,4 +1,5 @@
 --方舟の選別
+---@param c Card
 function c30888983.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

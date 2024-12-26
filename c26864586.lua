@@ -1,4 +1,5 @@
 --共振装置
+---@param c Card
 function c26864586.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

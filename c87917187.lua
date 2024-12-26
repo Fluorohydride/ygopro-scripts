@@ -1,4 +1,5 @@
 --暗黒の召喚神
+---@param c Card
 function c87917187.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Special Summon

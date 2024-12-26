@@ -1,4 +1,5 @@
 --四次元の墓
+---@param c Card
 function c88089103.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

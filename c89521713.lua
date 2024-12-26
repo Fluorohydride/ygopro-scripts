@@ -1,4 +1,5 @@
 --マドルチェ・クロワンサン
+---@param c Card
 function c89521713.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)
@@ -52,7 +53,6 @@ function c89521713.thop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsRelateToEffect(e) and c:IsFaceup() then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 			e1:SetCode(EFFECT_UPDATE_LEVEL)
 			e1:SetValue(1)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)

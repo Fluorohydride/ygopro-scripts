@@ -1,4 +1,5 @@
 --DDD怒涛大王エグゼクティブ・シーザー
+---@param c Card
 function c79559912.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),6,2)

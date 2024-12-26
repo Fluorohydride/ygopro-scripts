@@ -1,4 +1,5 @@
 --リンク・デス・ターレット
+---@param c Card
 function c55034079.initial_effect(c)
 	c:EnableCounterPermit(0x48)
 	--activate

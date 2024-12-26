@@ -1,4 +1,5 @@
 --聖蔓の播種
+---@param c Card
 function c53286626.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔轟神獣コカトル
+---@param c Card
 function c26704411.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

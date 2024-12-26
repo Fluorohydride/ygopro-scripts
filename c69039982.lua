@@ -1,4 +1,5 @@
 --リユナイト・パラディオン
+---@param c Card
 function c69039982.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

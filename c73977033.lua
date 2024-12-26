@@ -1,4 +1,5 @@
 --RR－ブースター・ストリクス
+---@param c Card
 function c73977033.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

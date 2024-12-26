@@ -1,5 +1,6 @@
 --エヴォルダー・リオス
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --タイラント・ウィング
+---@param c Card
 function c57470761.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --焔聖騎士－オジエ
+---@param c Card
 function c21351206.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

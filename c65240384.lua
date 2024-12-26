@@ -1,4 +1,5 @@
 --ビッグ・シールド・ガードナー
+---@param c Card
 function c65240384.initial_effect(c)
 	--to attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ナイトメアテーベ
+---@param c Card
 function c51838385.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

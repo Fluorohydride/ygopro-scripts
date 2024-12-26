@@ -1,4 +1,5 @@
 --恵みの風
+---@param c Card
 function c15177750.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

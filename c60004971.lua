@@ -1,4 +1,5 @@
 --ドラグニティの神槍
+---@param c Card
 function c60004971.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

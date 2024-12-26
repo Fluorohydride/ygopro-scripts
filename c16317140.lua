@@ -1,4 +1,5 @@
 --ハイパーブレイズ
+---@param c Card
 function c16317140.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Activate

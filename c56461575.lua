@@ -1,4 +1,5 @@
 --螺旋蘇生
+---@param c Card
 function c56461575.initial_effect(c)
 	aux.AddCodeList(c,66889139)
 	--activate

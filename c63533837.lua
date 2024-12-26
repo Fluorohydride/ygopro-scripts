@@ -1,4 +1,5 @@
 --サイバース・クアンタム・ドラゴン
+---@param c Card
 function c63533837.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --天威龍－ナハタ
+---@param c Card
 function c97036149.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --竜魔導の守護者
+---@param c Card
 function c48048590.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

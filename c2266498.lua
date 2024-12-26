@@ -1,4 +1,5 @@
 --ヴェンデット・リユニオン
+---@param c Card
 function c2266498.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

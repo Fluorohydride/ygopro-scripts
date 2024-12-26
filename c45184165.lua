@@ -1,4 +1,5 @@
 --RR－スカル・イーグル
+---@param c Card
 function c45184165.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

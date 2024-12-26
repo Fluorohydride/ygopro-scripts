@@ -1,4 +1,5 @@
 --千年の啓示
+---@param c Card
 function c41044418.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--activate

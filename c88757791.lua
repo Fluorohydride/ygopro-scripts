@@ -1,4 +1,5 @@
 --法眼の魔術師
+---@param c Card
 function c88757791.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

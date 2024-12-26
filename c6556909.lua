@@ -1,4 +1,5 @@
 --真紅き魂
+---@param c Card
 function c6556909.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,74677422,LOCATION_MZONE+LOCATION_GRAVE)

@@ -1,4 +1,5 @@
 --剣闘獣サムニテ
+---@param c Card
 function c2619149.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
@@ -28,7 +29,7 @@ function c2619149.scon(e,tp,eg,ep,ev,re,r,rp)
 	return c:GetFlagEffect(2619149)>0 and aux.bdogcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2619149.sfilter(c)
-	return c:IsSetCard(0x19) and c:IsAbleToHand()
+	return c:IsSetCard(0x1019) and c:IsAbleToHand()
 end
 function c2619149.stg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c2619149.sfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -51,7 +52,7 @@ function c2619149.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c2619149.filter(c,e,tp)
-	return not c:IsCode(2619149) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(2619149) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c2619149.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

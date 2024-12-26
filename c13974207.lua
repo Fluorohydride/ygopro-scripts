@@ -1,4 +1,5 @@
 --電光－雪花－
+---@param c Card
 function c13974207.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

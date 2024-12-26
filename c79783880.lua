@@ -1,4 +1,5 @@
 --逢魔ノ妖刀－不知火
+---@param c Card
 function c79783880.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

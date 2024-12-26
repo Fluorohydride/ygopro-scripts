@@ -1,4 +1,5 @@
 --模拘撮星人 エピゴネン
+---@param c Card
 function c51611041.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

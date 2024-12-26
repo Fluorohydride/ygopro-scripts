@@ -1,4 +1,5 @@
 --幻想の見習い魔導師
+---@param c Card
 function c30603688.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--special summon
@@ -43,7 +44,7 @@ function c30603688.spcon(e,c)
 		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,1,c)
 end
 function c30603688.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,c)
+	local g=Duel.GetMatchingGroup(Card.IsDiscardable,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
 	if tc then

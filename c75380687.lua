@@ -1,4 +1,5 @@
 --呪符竜
+---@param c Card
 function c75380687.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

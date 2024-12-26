@@ -1,4 +1,5 @@
 --新世廻
+---@param c Card
 function c75728539.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--activate

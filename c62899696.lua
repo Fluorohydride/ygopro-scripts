@@ -1,4 +1,5 @@
 --SRアクマグネ
+---@param c Card
 function c62899696.initial_effect(c)
 	--cannot be synchro
 	local e1=Effect.CreateEffect(c)

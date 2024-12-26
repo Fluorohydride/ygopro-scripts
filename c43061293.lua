@@ -1,4 +1,5 @@
 --ファイアーダーツ
+---@param c Card
 function c43061293.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c43061293.initial_effect(c)
 	e1:SetOperation(c43061293.damop)
 	c:RegisterEffect(e1)
 end
-c43061293.toss_dice=true
 function c43061293.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
 end

@@ -1,4 +1,5 @@
 --アームズ・エイド
+---@param c Card
 function c29071332.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

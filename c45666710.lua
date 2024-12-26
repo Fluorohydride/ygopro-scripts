@@ -1,4 +1,5 @@
 --星義の執行者
+---@param c Card
 function c45666710.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

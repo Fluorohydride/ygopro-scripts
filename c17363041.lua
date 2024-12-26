@@ -1,4 +1,5 @@
 --C・チッキー
+---@param c Card
 function c17363041.initial_effect(c)
 	aux.AddCodeList(c,54959865)
 	--spsummon

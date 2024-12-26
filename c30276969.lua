@@ -1,4 +1,5 @@
 --氷弾使いレイス
+---@param c Card
 function c30276969.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

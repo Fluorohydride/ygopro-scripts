@@ -1,4 +1,5 @@
 --N・As・H Knight
+---@param c Card
 function c34876719.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)
@@ -39,7 +40,7 @@ function c34876719.ovcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34876719.ovfilter(c,sc)
 	local no=aux.GetXyzNumber(c)
-	return no and no>=101 and no<=107 and c:IsSetCard(0x48) and c:IsType(TYPE_XYZ) and c:IsCanBeXyzMaterial(sc)
+	return no and no>=101 and no<=107 and c:IsSetCard(0x48) and c:IsType(TYPE_XYZ) and c:IsCanBeXyzMaterial(sc) and c:IsCanOverlay()
 end
 function c34876719.ovtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c34876719.ovfilter,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler()) end

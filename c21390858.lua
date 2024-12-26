@@ -1,4 +1,5 @@
 --憑依装着－ダルク
+---@param c Card
 function c21390858.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

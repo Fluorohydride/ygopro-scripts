@@ -1,4 +1,5 @@
 --RR－ナパーム・ドラゴニアス
+---@param c Card
 function c60508057.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

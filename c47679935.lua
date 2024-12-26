@@ -1,4 +1,5 @@
 --暴走魔法陣
+---@param c Card
 function c47679935.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -49,6 +50,7 @@ function c47679935.efilter(e,ct)
 end
 function c47679935.limfilter(c,tp)
 	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_FUSION)
+		and c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT):IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c47679935.limcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47679935.limfilter,1,nil,tp)

@@ -1,5 +1,6 @@
 --巨骸竜フェルグラント
 local s,id,o=GetID()
+---@param c Card
 function c65187687.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c65187687.synfilter,aux.NonTuner(nil),1)

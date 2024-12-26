@@ -1,4 +1,5 @@
 --エレキツネザル
+---@param c Card
 function c45801022.initial_effect(c)
 	--bp limit
 	local e1=Effect.CreateEffect(c)

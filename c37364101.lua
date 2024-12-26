@@ -1,4 +1,5 @@
 --ストイック・チャレンジ
+---@param c Card
 function c37364101.initial_effect(c)
 	c:SetUniqueOnField(1,0,37364101)
 	--Activate

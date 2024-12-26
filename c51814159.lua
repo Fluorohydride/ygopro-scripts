@@ -1,4 +1,5 @@
 --RR－ネクロ・ヴァルチャー
+---@param c Card
 function c51814159.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

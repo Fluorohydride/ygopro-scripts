@@ -1,4 +1,5 @@
 --セリオンズ・イレギュラー
+---@param c Card
 function c75290703.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

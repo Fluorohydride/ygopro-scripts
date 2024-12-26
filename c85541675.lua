@@ -1,4 +1,5 @@
 --カラクリ解体新書
+---@param c Card
 function c85541675.initial_effect(c)
 	c:EnableCounterPermit(0x12)
 	c:SetCounterLimit(0x12,2)

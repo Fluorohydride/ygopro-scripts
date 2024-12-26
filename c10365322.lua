@@ -1,4 +1,5 @@
 --起爆獣ヴァルカノン
+---@param c Card
 function c10365322.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --天変地異
+---@param c Card
 function c62966332.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DECK_REVERSE_CHECK)
 	--Activate

@@ -1,4 +1,5 @@
 --憑依覚醒－デーモン・リーパー
+---@param c Card
 function c65268179.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

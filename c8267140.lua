@@ -1,4 +1,5 @@
 --コズミック・サイクロン
+---@param c Card
 function c8267140.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

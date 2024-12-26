@@ -1,4 +1,5 @@
 --弩弓部隊
+---@param c Card
 function c80584548.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

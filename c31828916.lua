@@ -1,4 +1,5 @@
 --機甲部隊の最前線
+---@param c Card
 function c31828916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --超越竜エグザラプトル
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
@@ -70,7 +71,7 @@ end
 function s.cfilter(c,tp,lc)
 	local seq=c:GetPreviousSequence()
 	if c:IsPreviousControler(1-tp) then seq=seq+16 end
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousRaceOnField()&RACE_DINOSAUR>0
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousRaceOnField()&RACE_DINOSAUR>0 and c:IsRace(RACE_DINOSAUR)
 		and c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(lc:GetLinkedZone(),seq)>0
 end
 function s.drcon(e,tp,eg,ep,ev,re,r,rp)

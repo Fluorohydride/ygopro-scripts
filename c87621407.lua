@@ -1,4 +1,5 @@
 --魔装機関車 デコイチ
+---@param c Card
 function c87621407.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

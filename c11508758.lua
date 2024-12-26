@@ -1,4 +1,5 @@
 --ミュータント・ハイブレイン
+---@param c Card
 function c11508758.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)
@@ -13,7 +14,7 @@ function c11508758.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c11508758.ctlcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()~=nil
+	return Duel.GetAttackTarget()~=nil and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>=2
 end
 function c11508758.filter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsControlerCanBeChanged() and c:IsAttackable()

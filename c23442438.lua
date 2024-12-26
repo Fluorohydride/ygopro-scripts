@@ -1,4 +1,5 @@
 --シンクロ・チェイス
+---@param c Card
 function c23442438.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

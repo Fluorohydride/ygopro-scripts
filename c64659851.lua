@@ -1,4 +1,5 @@
 --宇宙の法則
+---@param c Card
 function c64659851.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--Activate

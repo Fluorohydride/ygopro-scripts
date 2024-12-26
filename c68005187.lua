@@ -1,4 +1,5 @@
 --クロス・ソウル
+---@param c Card
 function c68005187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

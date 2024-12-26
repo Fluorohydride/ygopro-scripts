@@ -1,4 +1,5 @@
 --ワールド・ダイナ・レスリング
+---@param c Card
 function c90173539.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

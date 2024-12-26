@@ -1,4 +1,5 @@
 --ミノケンタウロス
+---@param c Card
 function c94905343.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

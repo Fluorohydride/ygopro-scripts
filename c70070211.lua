@@ -1,4 +1,5 @@
 --Jo－P.U.N.K.ナシワリ・サプライズ
+---@param c Card
 function c70070211.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

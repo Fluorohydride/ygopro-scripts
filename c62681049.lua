@@ -1,4 +1,5 @@
 --妖仙郷の眩暈風
+---@param c Card
 function c62681049.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

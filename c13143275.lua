@@ -1,4 +1,5 @@
 --守護竜ピスティ
+---@param c Card
 function c13143275.initial_effect(c)
 	c:SetSPSummonOnce(13143275)
 	--link summon

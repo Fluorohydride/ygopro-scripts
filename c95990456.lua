@@ -1,4 +1,5 @@
 --陰魔羅鬼
+---@param c Card
 function c95990456.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

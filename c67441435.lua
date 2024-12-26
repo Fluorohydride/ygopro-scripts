@@ -1,4 +1,5 @@
 --グローアップ・バルブ
+---@param c Card
 function c67441435.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

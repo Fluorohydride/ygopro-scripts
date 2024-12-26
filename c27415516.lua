@@ -1,4 +1,5 @@
 --水征竜－ストリーム
+---@param c Card
 function c27415516.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

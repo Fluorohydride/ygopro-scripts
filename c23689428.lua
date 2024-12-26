@@ -1,4 +1,5 @@
 --無限起動ゴライアス
+---@param c Card
 function c23689428.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c23689428.matfilter,1,1)
@@ -44,7 +45,7 @@ end
 function c23689428.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and c:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and c:IsRelateToEffect(e) and c:IsCanOverlay() then
 		Duel.Overlay(tc,Group.FromCards(c))
 	end
 end

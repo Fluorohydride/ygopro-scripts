@@ -1,5 +1,6 @@
 --シャルルの叙事詩
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,77656797)
 	--special summon

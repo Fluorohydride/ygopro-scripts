@@ -1,4 +1,5 @@
 --大和神
+---@param c Card
 function c82841979.initial_effect(c)
 	c:EnableReviveLimit()
 	--spirit return

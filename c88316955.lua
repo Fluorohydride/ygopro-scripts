@@ -1,4 +1,5 @@
 --クローラー・スパイン
+---@param c Card
 function c88316955.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

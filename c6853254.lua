@@ -1,4 +1,5 @@
 --復活の福音
+---@param c Card
 function c6853254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

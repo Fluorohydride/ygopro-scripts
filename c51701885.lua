@@ -1,4 +1,5 @@
 --テレポンD.D.
+---@param c Card
 function c51701885.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

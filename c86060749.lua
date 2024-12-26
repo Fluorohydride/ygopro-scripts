@@ -1,4 +1,5 @@
 --ストールターン
+---@param c Card
 function c86060749.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

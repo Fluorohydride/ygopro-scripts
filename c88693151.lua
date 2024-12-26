@@ -1,4 +1,5 @@
 --トリックスター・フュージョン
+---@param c Card
 function c88693151.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

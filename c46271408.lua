@@ -1,4 +1,5 @@
 --閃刀術式－シザーズクロス
+---@param c Card
 function c46271408.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

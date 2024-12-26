@@ -1,4 +1,5 @@
 --魔海城アイガイオン
+---@param c Card
 function c10678778.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

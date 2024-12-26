@@ -1,4 +1,5 @@
 --龍の鏡
+---@param c Card
 function c71490127.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

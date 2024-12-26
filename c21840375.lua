@@ -1,4 +1,5 @@
 --隠された魔導書
+---@param c Card
 function c21840375.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

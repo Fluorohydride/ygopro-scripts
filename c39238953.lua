@@ -1,4 +1,5 @@
 --天声の服従
+---@param c Card
 function c39238953.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

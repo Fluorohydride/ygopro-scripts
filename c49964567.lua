@@ -1,4 +1,5 @@
 --ステイセイラ・ロマリン
+---@param c Card
 function c49964567.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

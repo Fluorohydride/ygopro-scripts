@@ -1,4 +1,5 @@
 --死神の巡遊
+---@param c Card
 function c62784717.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -19,7 +20,6 @@ function c62784717.initial_effect(c)
 	e2:SetOperation(c62784717.coinop)
 	c:RegisterEffect(e2)
 end
-c62784717.toss_coin=true
 function c62784717.coincon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end

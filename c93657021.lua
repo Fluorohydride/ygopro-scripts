@@ -1,4 +1,5 @@
 --D-HERO ダスクユートピアガイ
+---@param c Card
 function c93657021.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c93657021.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0xc008),true)

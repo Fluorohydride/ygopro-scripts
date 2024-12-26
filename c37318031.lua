@@ -1,4 +1,5 @@
 --R－ライトジャスティス
+---@param c Card
 function c37318031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

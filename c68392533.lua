@@ -1,4 +1,5 @@
 --念動増幅装置
+---@param c Card
 function c68392533.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

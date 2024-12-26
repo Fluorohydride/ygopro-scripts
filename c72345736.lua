@@ -1,4 +1,5 @@
 --六武衆の結束
+---@param c Card
 function c72345736.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	c:SetCounterLimit(0x3,2)
@@ -30,7 +31,7 @@ function c72345736.initial_effect(c)
 end
 c72345736.counter_add_list={0x3}
 function c72345736.ctfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c72345736.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c72345736.ctfilter,1,nil) then

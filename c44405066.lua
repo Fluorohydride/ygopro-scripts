@@ -1,4 +1,5 @@
 --真紅眼の鋼炎竜
+---@param c Card
 function c44405066.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

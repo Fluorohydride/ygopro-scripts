@@ -1,4 +1,5 @@
 --儀式魔人プレサイダー
+---@param c Card
 function c34358408.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

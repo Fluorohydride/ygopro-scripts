@@ -1,4 +1,5 @@
 --マテリアクトル・ギガヴォロス
+---@param c Card
 function c70597485.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
@@ -79,6 +80,7 @@ function c70597485.thop(e,tp,eg,ep,ev,re,r,rp)
 		local tg=g:FilterSelect(tp,Card.IsAbleToHand,1,1,nil)
 		if tg:GetCount()>0 then
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,tg)
 		end
 	end
 end

@@ -1,4 +1,5 @@
 --月光紫蝶
+---@param c Card
 function c48427163.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

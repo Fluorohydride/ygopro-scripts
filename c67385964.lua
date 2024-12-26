@@ -1,4 +1,5 @@
 --剣闘獣ノクシウス
+---@param c Card
 function c67385964.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -62,7 +63,7 @@ function c67385964.hspop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c67385964.tgfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x19) and c:IsAbleToGrave()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1019) and c:IsAbleToGrave()
 end
 function c67385964.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c67385964.tgfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -84,7 +85,7 @@ function c67385964.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c67385964.filter(c,e,tp)
-	return not c:IsCode(67385964) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(67385964) and c:IsSetCard(0x1019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c67385964.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

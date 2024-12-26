@@ -1,4 +1,5 @@
 --氷結界の龍 ブリューナク
+---@param c Card
 function c50321796.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

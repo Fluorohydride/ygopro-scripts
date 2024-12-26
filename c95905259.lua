@@ -1,4 +1,5 @@
 --予言僧 チョウレン
+---@param c Card
 function c95905259.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

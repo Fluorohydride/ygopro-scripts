@@ -1,4 +1,5 @@
 --無限起動トレンチャー
+---@param c Card
 function c61912252.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

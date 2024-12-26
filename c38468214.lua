@@ -1,4 +1,5 @@
 --エーリアン・ヒュプノ
+---@param c Card
 function c38468214.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--add counter

@@ -1,4 +1,5 @@
 --ハイパースター
+---@param c Card
 function c7778726.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_LIGHT),2,2)

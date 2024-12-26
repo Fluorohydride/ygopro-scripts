@@ -1,4 +1,5 @@
 --パーフェクト機械王
+---@param c Card
 function c18891691.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

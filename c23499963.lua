@@ -1,4 +1,5 @@
 --スプリガンズ・ウォッチ
+---@param c Card
 function c23499963.initial_effect(c)
 	aux.AddCodeList(c,60884672)
 	--Activate

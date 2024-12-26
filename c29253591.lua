@@ -1,4 +1,5 @@
 --ドラグニティ－クーゼ
+---@param c Card
 function c29253591.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

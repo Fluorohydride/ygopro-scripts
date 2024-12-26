@@ -1,4 +1,5 @@
 --サモン・ダイス
+---@param c Card
 function c41139112.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c41139112.initial_effect(c)
 	e1:SetOperation(c41139112.activate)
 	c:RegisterEffect(e1)
 end
-c41139112.toss_dice=true
 function c41139112.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)

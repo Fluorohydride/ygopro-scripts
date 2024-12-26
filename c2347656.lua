@@ -1,4 +1,5 @@
 --白銀の城のラビュリンス
+---@param c Card
 function c2347656.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

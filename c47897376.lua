@@ -1,4 +1,5 @@
 --魔救の奇石－レオナイト
+---@param c Card
 function c47897376.initial_effect(c)
 	--to decktop1
 	local e1=Effect.CreateEffect(c)

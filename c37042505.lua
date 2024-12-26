@@ -1,4 +1,5 @@
 --不朽の特殊合金
+---@param c Card
 function c37042505.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--activate

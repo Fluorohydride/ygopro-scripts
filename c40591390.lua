@@ -1,4 +1,5 @@
 --D-HERO ドレッドガイ
+---@param c Card
 function c40591390.initial_effect(c)
 	aux.AddCodeList(c,75041269)
 	local e1=Effect.CreateEffect(c)

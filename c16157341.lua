@@ -1,4 +1,5 @@
 --武神器－オハバリ
+---@param c Card
 function c16157341.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

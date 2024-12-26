@@ -1,4 +1,5 @@
 --宇宙の収縮
+---@param c Card
 function c20644748.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

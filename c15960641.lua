@@ -1,4 +1,5 @@
 --ミラージュ・ドラゴン
+---@param c Card
 function c15960641.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

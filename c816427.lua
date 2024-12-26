@@ -1,4 +1,5 @@
 --ネオフレムベル・レディ
+---@param c Card
 function c816427.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

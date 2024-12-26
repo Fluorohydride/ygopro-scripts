@@ -1,4 +1,5 @@
 --サイバネティック・ゾーン
+---@param c Card
 function c47295267.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェット・ウォリアー
+---@param c Card
 function c286392.initial_effect(c)
 	aux.AddMaterialCodeList(c,9742784)
 	--synchro summon

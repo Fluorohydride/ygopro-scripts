@@ -1,4 +1,5 @@
 --風征竜－ライトニング
+---@param c Card
 function c89185742.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

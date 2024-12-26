@@ -1,4 +1,5 @@
 --A・O・J サイクルリーダー
+---@param c Card
 function c8233522.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

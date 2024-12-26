@@ -1,4 +1,5 @@
 --剣闘獣の戦車
+---@param c Card
 function c96216229.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +13,7 @@ function c96216229.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96216229.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
+	return c:IsFaceup() and c:IsSetCard(0x1019)
 end
 function c96216229.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c96216229.filter,tp,LOCATION_MZONE,0,1,nil)

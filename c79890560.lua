@@ -1,4 +1,5 @@
 --占い魔女 フウちゃん
+---@param c Card
 function c79890560.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

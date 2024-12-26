@@ -1,4 +1,5 @@
 --天斗輝巧極
+---@param c Card
 function c89771220.initial_effect(c)
 	aux.AddCodeList(c,89264428,58793369,97148796,27693363)
 	--Activate

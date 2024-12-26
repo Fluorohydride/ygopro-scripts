@@ -1,4 +1,5 @@
 --虹天気アルシエル
+---@param c Card
 function c54178659.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
