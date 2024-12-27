@@ -23,11 +23,16 @@ function c58981727.initial_effect(c)
 	c:RegisterEffect(e2)
 	--return
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_SUMMON_SUCCESS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetOperation(c58981727.regop)
+	e3:SetCategory(CATEGORY_TOHAND)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1)
+	e3:SetCode(EVENT_PHASE+PHASE_END)
+	e3:SetCondition(c58981727.retcon)
+	e3:SetTarget(c58981727.rettg)
+	e3:SetOperation(c58981727.retop)
 	c:RegisterEffect(e3)
+	aux.RegisterSummonFlag(c,EVENT_SUMMON_SUCCESS,58981727)
 end
 function c58981727.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xb3)
@@ -77,18 +82,8 @@ function c58981727.tfop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c58981727.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCountLimit(1)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetTarget(c58981727.rettg)
-	e1:SetOperation(c58981727.retop)
-	e1:SetReset(RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+function c58981727.retcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(58981727)~=0
 end
 function c58981727.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
