@@ -97,5 +97,5 @@ function c49655592.excon(e)
 	return e:GetHandler():IsLevelAbove(7)
 end
 function c49655592.extarget(e,dc,re,r)
-	return r==REASON_COST
+	return r&REASON_COST==REASON_COST
 end

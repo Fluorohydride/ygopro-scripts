@@ -13,5 +13,5 @@ function c425934.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c425934.target(e,dc,re,r)
-	return r==REASON_COST
+	return r&REASON_COST==REASON_COST
 end
