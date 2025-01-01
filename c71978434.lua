@@ -42,11 +42,13 @@ function c71978434.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_HAND)
 end
 function c71978434.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_HAND,nil)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_HAND,nil)
 	if g:GetCount()==0 then return end
 	Duel.ConfirmCards(tp,g)
+	local g1=g:Filter(Card.IsAbleToRemove,nil)
+	if g1:GetCount()==0 then Duel.ShuffleHand(1-tp) return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tc=g:Select(tp,1,1,nil):GetFirst()
+	local tc=g1:Select(tp,1,1,nil):GetFirst()
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	Duel.ShuffleHand(1-tp)
 	local c=e:GetHandler()
