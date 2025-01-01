@@ -47,6 +47,7 @@ function c49655592.initial_effect(c)
 	e5:SetTargetRange(0,1)
 	e5:SetCode(EFFECT_CANNOT_DISCARD_HAND)
 	e5:SetCondition(c49655592.excon)
+	e5:SetTarget(c49655592.extarget)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
 	local e6=Effect.CreateEffect(c)
@@ -94,4 +95,7 @@ function c49655592.costop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49655592.excon(e)
 	return e:GetHandler():IsLevelAbove(7)
+end
+function c49655592.extarget(e,dc,re,r)
+	return r&REASON_COST==REASON_COST
 end
