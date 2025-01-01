@@ -102,7 +102,10 @@ function c62528292.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62528292.chainop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsSetCard(0x137) and ep==tp then
+	local rc=re:GetHandler()
+	local b1=rc:IsSetCard(0x137)
+	local b2=re:GetActivateLocation()==LOCATION_MZONE and not rc:IsLocation(LOCATION_MZONE) and rc:IsPreviousSetCard(0x137)
+	if ep==tp and (b1 or b2) then
 		Duel.SetChainLimit(c62528292.chainlm)
 	end
 end
