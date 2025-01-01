@@ -54,7 +54,7 @@ function c80627281.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c80627281.immcon)
 		e1:SetValue(c80627281.efilter)
 		e1:SetOwnerPlayer(tp)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_CONTROL)
 		tc:RegisterEffect(e1,true)
 		tc:CompleteProcedure()
 	end
