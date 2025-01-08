@@ -1952,3 +1952,38 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+--Experimental quick algorithm for checking if there are two cards from two groups, one for each group
+--param uniqf is a function for extra unique restrictions like different card names(currently unimplemented)
+---@param g1 Group
+---@param g2 Group
+---@param uniqf? function
+---@param ... any
+---@return boolean
+function yume.QuickDualSelectCheck(g1,g2,uniqf,...)
+	local g3=g1&g2
+	return #g1>0 and #g2>0 and not (#g1==#g3 and #g2==#g3 and #g1==1)
+end
+--Experimental quick algorithm for selecting two cards from two groups, one for each group
+--param opf is a function for operations after selecting the first card, receiving the selected card as the first param and returning a bool standing for whether you do it("[opf], and if you do, select sg2")
+---@param tp integer
+---@param g1 Group
+---@param g2 Group
+---@param msg1 integer
+---@param msg2 integer
+---@param opf? function
+---@param ... any
+---@return Group
+function yume.QuickDualSelect(tp,g1,g2,msg1,msg2,opf,...)
+	local g3=g1&g2
+	local excard=nil
+	if #g2==#g3 and #g3==1 then excard=g3:GetFirst() end
+	Duel.Hint(HINT_SELECTMSG,tp,msg1)
+	local sg1=g1:Select(tp,1,1,excard)
+	local sc=sg1:GetFirst()
+	if not msg2 then return sg1 end
+	local ext_params={...}
+	if opf and not opf(sc,table.unpack(ext_params)) then return sg1,Group.CreateGroup() end
+	Duel.Hint(HINT_SELECTMSG,tp,msg2)
+	local sg2=g2:Select(tp,1,1,sc)
+	return sg1,sg2
+end
