@@ -83,7 +83,7 @@ function s.autg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.auop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetTargetsRelateToChain():GetFirst()
-	if tc:IsFaceup() then
+	if tc and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
