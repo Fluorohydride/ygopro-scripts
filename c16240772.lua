@@ -53,6 +53,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		chk=true
 	end
 	local g=Duel.GetMatchingGroup(s.dfilter,tp,0,LOCATION_MZONE,nil)
+	local atkd=tc:GetAttack()
 	if tc:IsFaceup() and #g>0 then
 		if chk then Duel.BreakEffect() end
 		local dg=Group.CreateGroup()
@@ -61,7 +62,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetValue(-tc:GetAttack())
+			e1:SetValue(-atkd)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			sc:RegisterEffect(e1)
 			if patk~=0 and sc:IsAttack(0) then dg:AddCard(sc) end
