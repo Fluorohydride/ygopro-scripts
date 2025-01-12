@@ -17,8 +17,10 @@ function s.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e2:SetCode(id)
-	e2:SetRange(LOCATION_MZONE)
+	e2:SetCode(EFFECT_TREAT_AS_2_XMATERIAL)
+	e2:SetValue(id)
+	e2:SetRange(0xff)
+	e2:SetTarget(s.sxyzfilter)
 	e2:SetCountLimit(1,id+o)
 	c:RegisterEffect(e2)
 	--material effect
@@ -33,134 +35,9 @@ function s.initial_effect(c)
 	e3:SetTarget(s.xyztg)
 	e3:SetOperation(s.xyzop)
 	c:RegisterEffect(e3)
-	if not s.global_check then
-		s.global_check=true
-		Drake_shark_AddXyzProcedure=aux.AddXyzProcedure
-		function aux.AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
-			if card_c:IsAttribute(ATTRIBUTE_WATER) and int_ct>=3 then
-				if function_alterf then
-					Drake_shark_XyzLevelFreeOperationAlter=Auxiliary.XyzLevelFreeOperationAlter
-					function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minc,maxc,alterf,alterdesc,alterop)
-						return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-									if og and not min then
-										if og:GetCount()==minc and og:IsExists(s.xfilter,1,nil) then
-											local ttc=og:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
-										end
-										local sg=Group.CreateGroup()
-										local tc=og:GetFirst()
-										while tc do
-											local sg1=tc:GetOverlayGroup()
-											sg:Merge(sg1)
-											tc=og:GetNext()
-										end
-										Duel.SendtoGrave(sg,REASON_RULE)
-										c:SetMaterial(og)
-										Duel.Overlay(c,og)
-									else
-										local mg=e:GetLabelObject()
-										if mg:GetCount()==minc and mg:IsExists(s.xfilter,1,nil) then
-											local ttc=mg:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
-										end
-										if e:GetLabel()==1 then
-											local mg2=mg:GetFirst():GetOverlayGroup()
-											if mg2:GetCount()~=0 then
-												Duel.Overlay(c,mg2)
-											end
-										else
-											local sg=Group.CreateGroup()
-											local tc=mg:GetFirst()
-											while tc do
-												local sg1=tc:GetOverlayGroup()
-												sg:Merge(sg1)
-												tc=mg:GetNext()
-											end
-											Duel.SendtoGrave(sg,REASON_RULE)
-										end
-										c:SetMaterial(mg)
-										Duel.Overlay(c,mg)
-										mg:DeleteGroup()
-									end
-								end
-					end
-					aux.AddXyzProcedureLevelFree(card_c,s.f(function_f,int_lv,card_c),s.gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct,function_alterf,int_dese,function_op)
-					Auxiliary.XyzLevelFreeOperationAlter=Drake_shark_XyzLevelFreeOperationAlter
-				else
-					Drake_shark_XyzLevelFreeOperation=Auxiliary.XyzLevelFreeOperation
-					function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
-						return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-									if og and not min then
-										if og:GetCount()==minct and og:IsExists(s.xfilter,1,nil) then
-											local ttc=og:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
-										end
-										local sg=Group.CreateGroup()
-										local tc=og:GetFirst()
-										while tc do
-											local sg1=tc:GetOverlayGroup()
-											sg:Merge(sg1)
-											tc=og:GetNext()
-										end
-										Duel.SendtoGrave(sg,REASON_RULE)
-										c:SetMaterial(og)
-										Duel.Overlay(c,og)
-									else
-										local mg=e:GetLabelObject()
-										if mg:GetCount()==minct and mg:IsExists(s.xfilter,1,nil) then
-											local ttc=mg:Filter(s.xfilter,nil):GetFirst()
-											local tte=ttc:IsHasEffect(id,tp)
-											tte:UseCountLimit(tp)
-										end
-										if e:GetLabel()==1 then
-											local mg2=mg:GetFirst():GetOverlayGroup()
-											if mg2:GetCount()~=0 then
-												Duel.Overlay(c,mg2)
-											end
-										else
-											local sg=Group.CreateGroup()
-											local tc=mg:GetFirst()
-											while tc do
-												local sg1=tc:GetOverlayGroup()
-												sg:Merge(sg1)
-												tc=mg:GetNext()
-											end
-											Duel.SendtoGrave(sg,REASON_RULE)
-										end
-										c:SetMaterial(mg)
-										Duel.Overlay(c,mg)
-										mg:DeleteGroup()
-									end
-								end
-					end
-					aux.AddXyzProcedureLevelFree(card_c,s.f(function_f,int_lv,card_c),s.gf(int_ct,card_c:GetOwner()),int_ct-1,int_ct)
-					Auxiliary.XyzLevelFreeOperation=Drake_shark_XyzLevelFreeOperation
-				end
-			else
-				if function_alterf then
-					Drake_shark_AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
-				else
-					Drake_shark_AddXyzProcedure(card_c,function_f,int_lv,int_ct,nil,nil,int_maxc,nil)
-				end
-			end
-		end
-	end
 end
-function s.f(function_f,int_lv,card_c)
-	return function (c)
-			   return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
-	end
-end
-function s.gf(int_ct,int_tp)
-	return function (g)
-			   return g:GetCount()==int_ct or g:GetCount()==int_ct-1 and g:IsExists(s.xfilter,1,nil,int_tp)
-	end
-end
-function s.xfilter(c,tp)
-	return c:IsHasEffect(id,tp)
+function s.sxyzfilter(e,c)
+	return c:IsAttribute(ATTRIBUTE_WATER)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsReason(REASON_DRAW)
