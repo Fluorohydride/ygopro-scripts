@@ -44,11 +44,14 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local s1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		local s2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE,1-tp)
 		local op=aux.SelectFromOptions(tp,
-		{s1,aux.Stringid(id,2),tp},
-		{s2,aux.Stringid(id,3),1-tp})
-		if Duel.SpecialSummon(tc,0,tp,op,false,false,op==tp and POS_FACEUP or POS_FACEDOWN_DEFENCE)~=0
-			and Duel.IsExistingMatchingCard(s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-			and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
+		{s1,aux.Stringid(id,2)},
+		{s2,aux.Stringid(id,3)})
+		if op==1 and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then
+			return
+		elseif op==2 and Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)==0 or Duel.ConfirmCards(tp,tc) then
+			return
+		end
+		if Duel.IsExistingMatchingCard(s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			local sg=Duel.SelectMatchingCard(tp,s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
