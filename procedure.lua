@@ -430,6 +430,13 @@ end
 ---@param maxct? integer
 ---@param alterop? function
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
+	if ct>=3 then
+		Auxiliary.AddXyzProcedureWith3MoreMaterial(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
+	else
+		Auxiliary.AddXyzProcedureNormal(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
+	end
+end
+function Auxiliary.AddXyzProcedureNormal(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
 	if not maxct then maxct=ct end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1165)
@@ -445,6 +452,53 @@ function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
 		e1:SetCondition(Auxiliary.XyzCondition(f,lv,ct,maxct))
 		e1:SetTarget(Auxiliary.XyzTarget(f,lv,ct,maxct))
 		e1:SetOperation(Auxiliary.XyzOperation(f,lv,ct,maxct))
+	end
+	e1:SetValue(SUMMON_TYPE_XYZ)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.AddXyzProcedureWith3MoreMaterial(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
+	local ff=function (fc)
+					return fc:IsXyzLevel(c,lv) and (not f or f(fc))
+			end
+	local gf=function (g)
+					local gct=g:GetCount()
+					local eg=g:Filter(Auxiliary.AddXyzProcedureWith3MoreMaterialGfFilter,nil,c:GetOwner(),c)
+					if #eg>0 then
+						gct=gct+eg:GetClassCount(Auxiliary.AddXyzProcedureWith3MoreMaterialGfValue,c:GetOwner(),c)
+					end
+					local tc=g:GetFirst()
+					while tc do
+						local te=tc:IsHasEffect(EFFECT_XYZ_LEVEL,c:GetOwner())
+						if te then
+							local evf=te:GetValue()
+							if evf then
+								local ev=evf(te,tc,c)
+								local lmct=(ev>>12)&0xf
+								if lmct>0 and lmct>g:GetCount() then
+									return false
+								end
+							end
+						end
+						tc=g:GetNext()
+					end
+					return gct>=ct
+			end
+	local minc=ct-2
+	local maxc=ct
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(1165)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_SPSUMMON_PROC)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetRange(LOCATION_EXTRA)
+	if alterf then
+		e1:SetCondition(Auxiliary.XyzLevelFreeConditionAlter(ff,gf,minc,maxc,alterf,alterdesc,alterop))
+		e1:SetTarget(Auxiliary.XyzLevelFreeTargetAlter(ff,gf,minc,maxc,alterf,alterdesc,alterop))
+		e1:SetOperation(Auxiliary.XyzLevelFreeOperationAlterWith3MoreMaterial(ff,gf,minc,maxc,alterf,alterdesc,alterop))
+	else
+		e1:SetCondition(Auxiliary.XyzLevelFreeCondition(ff,gf,minc,maxc))
+		e1:SetTarget(Auxiliary.XyzLevelFreeTarget(ff,gf,minc,maxc))
+		e1:SetOperation(Auxiliary.XyzLevelFreeOperationWith3MoreMaterial(f,gf,minc,maxc))
 	end
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
@@ -861,6 +915,134 @@ function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minct,maxct,alterf,alterdesc,
 					mg:DeleteGroup()
 				end
 			end
+end
+--Xyz summon(with EFFECT_TREAT_AS_2_XMATERIAL)
+function Auxiliary.AddXyzProcedureWith3MoreMaterialGfFilter(c,tp,xc)
+	local te=c:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+	if te then
+		local etg=te:GetTarget()
+		return not etg or etg(te,xc)
+	end
+	return false
+end
+function Auxiliary.AddXyzProcedureWith3MoreMaterialGfValue(c,tp,xc)
+	local te=c:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+	if te then
+		local etg=te:GetTarget()
+		if not etg or etg(te,xc) then
+			return te:GetValue()
+		end
+	end
+end
+function Auxiliary.XyzLevelFreeOperationAlterWith3MoreMaterial(f,gf,minc,maxc,alterf,alterdesc,alterop)
+	return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+				if og and not min then
+					Auxiliary.Solve2XMaterial(tp,og,maxc,minc)
+					local sg=Group.CreateGroup()
+					local tc=og:GetFirst()
+					while tc do
+						local sg1=tc:GetOverlayGroup()
+						sg:Merge(sg1)
+						tc=og:GetNext()
+					end
+					Duel.SendtoGrave(sg,REASON_RULE)
+					c:SetMaterial(og)
+					Duel.Overlay(c,og)
+				else
+					local mg=e:GetLabelObject()
+					Auxiliary.Solve2XMaterial(tp,mg,maxc,minc)
+					if e:GetLabel()==1 then
+						local mg2=mg:GetFirst():GetOverlayGroup()
+						if mg2:GetCount()~=0 then
+							Duel.Overlay(c,mg2)
+						end
+					else
+						local sg=Group.CreateGroup()
+						local tc=mg:GetFirst()
+						while tc do
+							local sg1=tc:GetOverlayGroup()
+							sg:Merge(sg1)
+							tc=mg:GetNext()
+						end
+						Duel.SendtoGrave(sg,REASON_RULE)
+					end
+					c:SetMaterial(mg)
+					Duel.Overlay(c,mg)
+					mg:DeleteGroup()
+				end
+			end
+end
+function Auxiliary.XyzLevelFreeOperationWith3MoreMaterial(f,gf,minct,maxct)
+	return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+				if og and not min then
+					Auxiliary.Solve2XMaterial(tp,og,maxct,minct)
+					local sg=Group.CreateGroup()
+					local tc=og:GetFirst()
+					while tc do
+						local sg1=tc:GetOverlayGroup()
+						sg:Merge(sg1)
+						tc=og:GetNext()
+					end
+					Duel.SendtoGrave(sg,REASON_RULE)
+					c:SetMaterial(og)
+					Duel.Overlay(c,og)
+				else
+					local mg=e:GetLabelObject()
+					Auxiliary.Solve2XMaterial(tp,mg,maxct,minct)
+					if e:GetLabel()==1 then
+						local mg2=mg:GetFirst():GetOverlayGroup()
+						if mg2:GetCount()~=0 then
+							Duel.Overlay(c,mg2)
+						end
+					else
+						local sg=Group.CreateGroup()
+						local tc=mg:GetFirst()
+						while tc do
+							local sg1=tc:GetOverlayGroup()
+							sg:Merge(sg1)
+							tc=mg:GetNext()
+						end
+						Duel.SendtoGrave(sg,REASON_RULE)
+					end
+					c:SetMaterial(mg)
+					Duel.Overlay(c,mg)
+					mg:DeleteGroup()
+				end
+			end
+end
+function Auxiliary.Solve2XMaterialEffectFilter(c,tp)
+	local te=c:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+	return te:GetValue()
+end
+function Auxiliary.Solve2XMaterialGroupCheck(g,tp)
+	return g:GetClassCount(Auxiliary.Solve2XMaterialEffectFilter,tp)==g:GetCount()
+end
+function Auxiliary.Solve2XMaterial(tp,g,maxct,minct)
+	if g:GetCount()<maxct and g:GetCount()>=minct and maxct==minct+2 then
+		local et=maxct-g:GetCount()
+		local exg=g:Filter(Card.IsHasEffect,nil,EFFECT_TREAT_AS_2_XMATERIAL,tp)
+		local ext=exg:GetClassCount(Auxiliary.Solve2XMaterialEffectFilter,tp)
+		if (et==0 or et==ext) and #exg>0 then
+			for ttc in Auxiliary.Next(exg) do
+				local tte=ttc:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+				if tte then
+					Duel.Hint(HINT_CARD,0,ttc:GetCode())
+					tte:UseCountLimit(tp)
+				end
+			end
+		elseif #exg>0 then
+			local st=et
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RESOLVECARD)
+			local reg=exg:SelectSubGroup(tp,Auxiliary.Solve2XMaterialGroupCheck,false,st,st,tp)
+			for ttc in Auxiliary.Next(reg) do
+				local tte=ttc:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+				if tte then
+					Duel.Hint(HINT_CARD,0,ttc:GetCode())
+					tte:UseCountLimit(tp)
+				end
+			end
+		end
+	end
 end
 
 --Fusion Summon
