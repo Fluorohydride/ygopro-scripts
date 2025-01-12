@@ -466,6 +466,21 @@ function Auxiliary.AddXyzProcedureWith3MoreMaterial(c,f,lv,ct,alterf,alterdesc,m
 					if #eg>0 then
 						gct=gct+eg:GetClassCount(Auxiliary.AddXyzProcedureWith3MoreMaterialGfValue,c:GetOwner(),c)
 					end
+					local tc=g:GetFirst()
+					while tc do
+						local te=tc:IsHasEffect(EFFECT_XYZ_LEVEL,c:GetOwner())
+						if te then
+							local evf=te:GetValue()
+							if evf then
+								local ev=evf(te,tc,c)
+								local lmct=(ev>>12)&0xf
+								if lmct>0 and lmct>g:GetCount() then
+									return false
+								end
+							end
+						end
+						tc=g:GetNext()
+					end
 					return gct>=ct
 			end
 	local minc=ct-2
