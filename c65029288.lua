@@ -13,11 +13,13 @@ function c65029288.initial_effect(c)
 	c:RegisterEffect(e1)
 	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e2:SetCondition(c65029288.immcon)
-	e2:SetOperation(c65029288.immop)
+	e2:SetDescription(aux.Stringid(65029288,0))
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetCode(EFFECT_IMMUNE_EFFECT)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetCondition(c65029288.econ)
+	e2:SetValue(c65029288.efilter)
 	c:RegisterEffect(e2)
 	--atkup
 	local e3=Effect.CreateEffect(c)
@@ -27,21 +29,30 @@ function c65029288.initial_effect(c)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetOperation(c65029288.atkop)
 	c:RegisterEffect(e3)
+	if not c65029288.global_check then
+		c65029288.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
+		ge1:SetCondition(c65029288.immcon)
+		ge1:SetOperation(c65029288.immop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c65029288.immfilter(c)
+	return c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c65029288.immcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsCode(24094653) and e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
+	return re and re:GetHandler():IsCode(24094653)
 end
 function c65029288.immop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(65029288,0))
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
-	e1:SetCode(EFFECT_IMMUNE_EFFECT)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(c65029288.efilter)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1)
+	local g=eg:Filter(c65029288.immfilter,nil)
+	for tc in aux.Next(g) do
+		tc:RegisterFlagEffect(65029288,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
+end
+function c65029288.econ(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(65029288)>0
 end
 function c65029288.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
