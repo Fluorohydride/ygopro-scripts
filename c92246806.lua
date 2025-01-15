@@ -25,11 +25,16 @@ function c92246806.initial_effect(c)
 	c:RegisterEffect(e3)
 	--return
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetCode(EVENT_SUMMON_SUCCESS)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetOperation(c92246806.regop)
+	e4:SetCategory(CATEGORY_TOHAND)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1)
+	e4:SetCode(EVENT_PHASE+PHASE_END)
+	e4:SetCondition(c92246806.retcon)
+	e4:SetTarget(c92246806.rettg)
+	e4:SetOperation(c92246806.retop)
 	c:RegisterEffect(e4)
+	aux.RegisterSummonFlag(c,EVENT_SUMMON_SUCCESS,92246806)
 end
 function c92246806.filter(c)
 	return c:IsSetCard(0xb3) and not c:IsCode(92246806) and c:IsSummonable(true,nil)
@@ -51,19 +56,8 @@ function c92246806.rdcon(e)
 	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 end
-function c92246806.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(92246806,1))
-	e1:SetCategory(CATEGORY_TOHAND)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCountLimit(1)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetTarget(c92246806.rettg)
-	e1:SetOperation(c92246806.retop)
-	e1:SetReset(RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+function c92246806.retcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(92246806)~=0
 end
 function c92246806.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

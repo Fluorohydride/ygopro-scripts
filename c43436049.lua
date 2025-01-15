@@ -1,29 +1,21 @@
 --ジャンク・ブレイカー
 ---@param c Card
 function c43436049.initial_effect(c)
+	aux.RegisterSummonFlag(c,EVENT_SUMMON_SUCCESS,43436049)
 	--disable
 	local e1=Effect.CreateEffect(c)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetOperation(c43436049.sumsuc)
+	e1:SetDescription(aux.Stringid(43436049,0))
+	e1:SetCategory(CATEGORY_DISABLE)
+	e1:SetType(EFFECT_TYPE_IGNITION)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCondition(c43436049.condition)
+	e1:SetCost(c43436049.cost)
+	e1:SetTarget(c43436049.target)
+	e1:SetOperation(c43436049.operation)
 	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(43436049,0))
-	e2:SetCategory(CATEGORY_DISABLE)
-	e2:SetType(EFFECT_TYPE_IGNITION)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c43436049.condition)
-	e2:SetCost(c43436049.cost)
-	e2:SetTarget(c43436049.target)
-	e2:SetOperation(c43436049.operation)
-	c:RegisterEffect(e2)
-end
-function c43436049.sumsuc(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(43436049,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c43436049.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(43436049)>0
+	return e:GetHandler():GetFlagEffect(43436049)~=0
 end
 function c43436049.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
