@@ -43,6 +43,8 @@ function s.actg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,s.atkcheck,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,atk)
 	if race==RACE_REPTILE then
 		e:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DRAW)
+	else
+		e:SetCategory(CATEGORY_ATKCHANGE)
 	end
 end
 function s.acop(e,tp,eg,ep,ev,re,r,rp)
