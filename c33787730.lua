@@ -65,28 +65,16 @@ end
 function s.filter(c)
 	return c:IsCanOverlay() and c:IsFaceup()
 end
-function s.fselect(sg,tp)
-	local mg=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil)
-	return mg:CheckSubGroup(s.matfilter,1,#mg,tp,sg)
-end
-function s.matfilter(sg,tp,g)
-	if sg:Filter(Card.IsSetCard,nil,0x1be):GetCount()==0 then return false end
-	return Duel.IsExistingMatchingCard(s.xyzfilter1,tp,LOCATION_EXTRA,0,1,nil,sg)
-end
-function s.xyzfilter1(c,mg)
-	return c:IsXyzSummonable(mg,#mg,#mg)
-end
 function s.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil)
-	if chk==0 then return mg:CheckSubGroup(s.fselect,1,mg:GetCount(),tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.xyzfilter2,tp,LOCATION_EXTRA,0,1,nil,mg) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function s.xyzfilter2(c,mg)
-	return mg:CheckSubGroup(s.gselect,1,#mg,c)
+	return c:IsType(TYPE_XYZ) and mg:CheckSubGroup(s.gselect,1,#mg,c)
 end
 function s.gselect(sg,c)
-	if sg:Filter(Card.IsSetCard,nil,0x1be):GetCount()==0 then return false end
-	return c:IsXyzSummonable(sg,#sg,#sg)
+	return sg:IsExists(Card.IsSetCard,1,nil,0x1be) and c:IsXyzSummonable(sg,#sg,#sg)
 end
 function s.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil)
