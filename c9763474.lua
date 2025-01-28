@@ -43,10 +43,8 @@ function s.actg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,s.atkcheck,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,atk)
 	if race==RACE_REPTILE then
 		e:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DRAW)
-		e:SetLabel(1)
 	else
 		e:SetCategory(CATEGORY_ATKCHANGE)
-		e:SetLabel(0)
 	end
 end
 function s.acop(e,tp,eg,ep,ev,re,r,rp)
@@ -60,7 +58,7 @@ function s.acop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetValue(atk)
 		tc:RegisterEffect(e1)
-		if race==RACE_REPTILE and e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)then
+		if race==RACE_REPTILE then
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end
