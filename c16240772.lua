@@ -53,9 +53,9 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		chk=true
 	end
 	local g=Duel.GetMatchingGroup(s.dfilter,tp,0,LOCATION_MZONE,nil)
-	local atkd=tc:GetAttack()
 	if tc:IsFaceup() and #g>0 then
 		if chk then Duel.BreakEffect() end
+		local atkd=tc:GetAttack()
 		local dg=Group.CreateGroup()
 		for sc in aux.Next(g) do
 			local patk=sc:GetAttack()
