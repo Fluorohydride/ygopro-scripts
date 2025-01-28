@@ -57,7 +57,7 @@ end
 function c94415058.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	if eg:GetCount()==1 and rp==1-tp and tc:IsReason(REASON_EFFECT)
-		and tc:IsPreviousControler(tp) and tc:IsPreviousLocation(LOCATION_MZONE)
+		and tc:IsPreviousControler(tp) and tc:IsPreviousLocation(LOCATION_MZONE) and tc:IsPreviousPosition(POS_FACEUP)
 		and tc:IsType(TYPE_PENDULUM) and tc:IsControler(tp) then
 		e:SetLabel(tc:GetCode())
 		return true
