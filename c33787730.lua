@@ -71,12 +71,10 @@ function s.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function s.xyzfilter2(c,mg)
-	if not c:IsXyzSummonable(nil) then return end
-	return mg:CheckSubGroup(s.gselect,1,#mg,c)
+	return c:IsType(TYPE_XYZ) and mg:CheckSubGroup(s.gselect,1,#mg,c)
 end
 function s.gselect(sg,c)
-	if sg:Filter(Card.IsSetCard,nil,0x1be):GetCount()==0 then return false end
-	return c:IsXyzSummonable(sg,#sg,#sg)
+	return sg:IsExists(Card.IsSetCard,1,nil,0x1be) and c:IsXyzSummonable(sg,#sg,#sg)
 end
 function s.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil)
