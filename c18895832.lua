@@ -18,13 +18,10 @@ end
 function c18895832.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
 end
-function c18895832.tfilter(c)
-	return not c:IsAbleToRemove()
-end
 function c18895832.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Duel.GetMatchingGroup(c18895832.filter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil)
-		return g:GetCount()>0 and not g:IsExists(c18895832.tfilter,1,nil)
+		return g:GetCount()>0
 	end
 	local g=Duel.GetMatchingGroup(c18895832.filter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
