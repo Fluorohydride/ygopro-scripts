@@ -7,7 +7,7 @@ function c15310033.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCountLimit(1,15310033+EFFECT_COUNT_CODE_DUEL)
+	e1:SetCountLimit(1,15310033+EFFECT_COUNT_CODE_OATH+EFFECT_COUNT_CODE_DUEL)
 	e1:SetCondition(c15310033.spcon)
 	c:RegisterEffect(e1)
 end
