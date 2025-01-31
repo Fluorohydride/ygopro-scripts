@@ -36,6 +36,7 @@ function s.initial_effect(c)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
 end
+s.material_type=TYPE_SYNCHRO
 function s.mfilter1(c)
 	return c:IsLevelAbove(6) and c:IsFusionType(TYPE_FUSION)
 end
