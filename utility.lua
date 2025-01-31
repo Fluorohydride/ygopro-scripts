@@ -1627,26 +1627,25 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
 	g:KeepAlive()
 	local mt=getmetatable(c)
 	local seed=0
-	if type(events) == "table" then 
+	if type(events) == "table" then
 		for _, event in ipairs(events) do
-			seed = seed + event 
-		end 
-	else 
+			seed = seed + event
+		end
+	else
 		seed = events
-	end 
-	while(mt[seed]==true)
-	do 
-		seed = seed + 1 
 	end
-	mt[seed]=true 
+	while(mt[seed]==true) do
+		seed = seed + 1
+	end
+	mt[seed]=true
 	local event_code_single = (code ~ (seed << 16)) | EVENT_CUSTOM
-	if type(events) == "table" then 
+	if type(events) == "table" then
 		for _, event in ipairs(events) do
 			Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
-		end 
-	else 
+		end
+	else
 		Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,events,event_code_single)
-	end 
+	end
 	--listened to again
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
@@ -1675,21 +1674,21 @@ end
 function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()
 	local g=e:GetLabelObject()
-	if c:IsFaceup() or c:IsPublic() then 
+	if c:IsFaceup() or c:IsPublic() then
 		g:Clear()
-	end 
-end 
+	end
+end
 function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	local c=e:GetOwner()
 	g:Merge(eg)
-	if Duel.CheckEvent(EVENT_MOVE) then 
+	if Duel.CheckEvent(EVENT_MOVE) then
 		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
 		local c=e:GetOwner()
-		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
 			g:Clear()
-		end 
-	end 
+		end
+	end
 	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
@@ -1698,13 +1697,13 @@ function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 end
 function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
-	if Duel.CheckEvent(EVENT_MOVE) then 
+	if Duel.CheckEvent(EVENT_MOVE) then
 		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
 		local c=e:GetOwner()
 		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
 			g:Clear()
-		end 
-	end 
+		end
+	end
 	if #g>0 then
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
