@@ -16,7 +16,7 @@ function c18895832.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c18895832.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAbleToRemove()
 end
 function c18895832.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
