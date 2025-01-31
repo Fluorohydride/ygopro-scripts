@@ -1683,8 +1683,7 @@ function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()
 	g:Merge(eg)
 	if Duel.CheckEvent(EVENT_MOVE) then
-		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
-		local c=e:GetOwner()
+		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
 		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
 			g:Clear()
 		end
@@ -1698,7 +1697,7 @@ end
 function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	if Duel.CheckEvent(EVENT_MOVE) then
-		_,meg=Duel.CheckEvent(EVENT_MOVE,true)
+		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
 		local c=e:GetOwner()
 		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
 			g:Clear()
