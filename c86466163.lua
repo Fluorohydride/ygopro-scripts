@@ -34,5 +34,5 @@ function c86466163.xyztg(e,c)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x9c)
 end
 function c86466163.xyzlv(e,c,rc)
-	return 0x30050000+c:GetLevel()
+	return 0x30050000|aux.GetCappedXyzLevel(c)
 end
