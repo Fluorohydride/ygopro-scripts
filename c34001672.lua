@@ -61,7 +61,7 @@ function c34001672.xmfilter(c)
 	return c:IsFaceup() and c:IsCanOverlay()
 end
 function c34001672.xmcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE)
+	return eg:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE) and not ((r&REASON_RULE)>0)
 end
 function c34001672.xmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
