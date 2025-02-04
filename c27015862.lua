@@ -58,7 +58,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tag=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(tag,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tag)
-		Duel.ShuffleDeck(tp)
 	end
 end
 function s.desfilter2(c,tp)
