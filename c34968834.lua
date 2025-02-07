@@ -1,5 +1,4 @@
 --暗黒界の鬼神 ケルト
----@param c Card
 function c34968834.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

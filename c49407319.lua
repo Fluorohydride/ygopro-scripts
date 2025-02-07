@@ -1,5 +1,4 @@
 --スター・マイン
----@param c Card
 function c49407319.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

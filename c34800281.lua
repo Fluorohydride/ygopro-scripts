@@ -1,5 +1,4 @@
 --メルフィー・ラッシィ
----@param c Card
 function c34800281.initial_effect(c)
 	--synchro summon
 	local e1=Effect.CreateEffect(c)

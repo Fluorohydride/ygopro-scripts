@@ -1,5 +1,4 @@
 --奈落との契約
----@param c Card
 function c69035382.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c69035382.ritual_filter)
 end

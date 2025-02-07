@@ -1,5 +1,4 @@
 --サモンチェーン
----@param c Card
 function c9952083.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

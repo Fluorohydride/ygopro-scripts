@@ -1,5 +1,4 @@
 --VS コンティニュー
----@param c Card
 function c27345070.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

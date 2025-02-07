@@ -1,6 +1,5 @@
 --リブロマンサー・リライジング
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,45001322,88106656)
 	--ritual summon

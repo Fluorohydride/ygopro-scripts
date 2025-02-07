@@ -1,5 +1,4 @@
 --暗黒界の斥候 スカー
----@param c Card
 function c5498296.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

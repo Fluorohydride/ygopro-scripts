@@ -1,5 +1,4 @@
 --神獣王バルバロス
----@param c Card
 function c78651105.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

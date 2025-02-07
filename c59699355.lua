@@ -1,5 +1,4 @@
 --スクラップ・カウンター
----@param c Card
 function c59699355.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --聖域の歌声
----@param c Card
 function c81380218.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

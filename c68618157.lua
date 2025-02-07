@@ -1,5 +1,4 @@
 --武神姫－アマテラス
----@param c Card
 function c68618157.initial_effect(c)
 	c:SetUniqueOnField(1,0,68618157)
 	--xyz summon

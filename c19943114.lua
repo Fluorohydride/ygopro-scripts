@@ -1,5 +1,4 @@
 --サイバネット・リグレッション
----@param c Card
 function c19943114.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

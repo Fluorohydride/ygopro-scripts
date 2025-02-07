@@ -1,5 +1,4 @@
 --黒魔力の精製者
----@param c Card
 function c78121572.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

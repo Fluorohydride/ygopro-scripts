@@ -1,5 +1,4 @@
 --タービン・ジェネクス
----@param c Card
 function c52222372.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

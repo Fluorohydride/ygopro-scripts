@@ -1,5 +1,4 @@
 --真竜騎将ドライアスⅢ世
----@param c Card
 function c94982447.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --蛮族の狂宴LV5
----@param c Card
 function c55416843.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --CNo.79 BK 将星のカエサル
----@param c Card
 function c10300821.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

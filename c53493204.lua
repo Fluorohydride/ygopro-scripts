@@ -1,5 +1,4 @@
 --心眼の女神
----@param c Card
 function c53493204.initial_effect(c)
 	--fusion substitute
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ハリケーン
----@param c Card
 function c42703248.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --始原竜プライマル・ドラゴン
----@param c Card
 function c64025981.initial_effect(c)
 	--no battle damage
 	local e1=Effect.CreateEffect(c)

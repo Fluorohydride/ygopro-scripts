@@ -1,5 +1,4 @@
 --雷神龍－サンダー・ドラゴン
----@param c Card
 function c41685633.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

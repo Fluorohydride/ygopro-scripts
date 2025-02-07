@@ -1,5 +1,4 @@
 --アームド・ドラゴン・サンダー LV10
----@param c Card
 function c58153103.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

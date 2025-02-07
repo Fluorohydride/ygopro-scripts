@@ -1,5 +1,4 @@
 --我が身を盾に
----@param c Card
 function c69279219.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

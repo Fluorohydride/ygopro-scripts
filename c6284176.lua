@@ -1,5 +1,4 @@
 --六花聖カンザシ
----@param c Card
 function c6284176.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

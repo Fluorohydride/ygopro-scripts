@@ -1,5 +1,4 @@
 --混沌の使者
----@param c Card
 function c38695361.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --D-HERO ダイハードガイ
----@param c Card
 function c77608643.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

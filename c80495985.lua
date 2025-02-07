@@ -1,5 +1,4 @@
 --フォトン・サーベルタイガー
----@param c Card
 function c80495985.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

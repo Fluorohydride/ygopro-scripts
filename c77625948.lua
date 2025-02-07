@@ -1,5 +1,4 @@
 --サイバー・ダーク・エッジ
----@param c Card
 function c77625948.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

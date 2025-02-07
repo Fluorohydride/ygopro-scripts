@@ -1,5 +1,4 @@
 --ストロング・ウィンド・ドラゴン
----@param c Card
 function c23770284.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

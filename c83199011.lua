@@ -1,5 +1,4 @@
 --スプリガンズ・コール！
----@param c Card
 function c83199011.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--spsummon

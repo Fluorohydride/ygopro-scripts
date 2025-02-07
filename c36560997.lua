@@ -1,5 +1,4 @@
 --オーバー・コアリミット
----@param c Card
 function c36560997.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--Activate

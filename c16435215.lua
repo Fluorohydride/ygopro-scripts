@@ -1,5 +1,4 @@
 --墓穴の道連れ
----@param c Card
 function c16435215.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

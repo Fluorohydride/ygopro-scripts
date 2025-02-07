@@ -1,5 +1,4 @@
 --機巧嘴－八咫御先
----@param c Card
 function c13224603.initial_effect(c)
 	--special summon from hand
 	local e1=Effect.CreateEffect(c)

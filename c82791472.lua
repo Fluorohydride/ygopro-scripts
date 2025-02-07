@@ -1,5 +1,4 @@
 --戦華の叛－呂奉
----@param c Card
 function c82791472.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

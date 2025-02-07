@@ -1,5 +1,4 @@
 --D－フォーチュン
----@param c Card
 function c9201964.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

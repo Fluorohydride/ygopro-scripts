@@ -1,5 +1,4 @@
 --トゥーン・テラー
----@param c Card
 function c53094821.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--activate

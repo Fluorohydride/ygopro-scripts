@@ -1,5 +1,4 @@
 --マジカル・コンダクター
----@param c Card
 function c6061630.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

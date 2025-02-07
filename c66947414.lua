@@ -1,5 +1,4 @@
 --ボスラッシュ
----@param c Card
 function c66947414.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

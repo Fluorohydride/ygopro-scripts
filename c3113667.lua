@@ -1,5 +1,4 @@
 --鋼鉄の襲撃者
----@param c Card
 function c3113667.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

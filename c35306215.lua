@@ -1,5 +1,4 @@
 --失楽の堕天使
----@param c Card
 function c35306215.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

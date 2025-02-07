@@ -1,5 +1,4 @@
 --パイル・アームド・ドラゴン
----@param c Card
 function c19153590.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --戦友の誓い
----@param c Card
 function c99311109.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

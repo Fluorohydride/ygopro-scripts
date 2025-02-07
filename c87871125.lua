@@ -1,5 +1,4 @@
 --転生炎獣サンライトウルフ
----@param c Card
 function c87871125.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,c87871125.matfilter,2,2)

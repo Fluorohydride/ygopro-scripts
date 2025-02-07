@@ -1,5 +1,4 @@
 --猛吹雪
----@param c Card
 function c473469.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

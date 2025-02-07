@@ -1,5 +1,4 @@
 --フォトン・ジャンパー
----@param c Card
 function c97639441.initial_effect(c)
 	--attack announce specialsummon
 	local e1=Effect.CreateEffect(c)

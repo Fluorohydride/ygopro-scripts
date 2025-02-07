@@ -1,5 +1,4 @@
 --カイザー・グライダー－ゴールデン・バースト
----@param c Card
 function c41002238.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

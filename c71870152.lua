@@ -1,5 +1,4 @@
 --フォーチュンレディ・ファイリー
----@param c Card
 function c71870152.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

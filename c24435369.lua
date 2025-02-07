@@ -1,5 +1,4 @@
 --マーメイド・ナイト
----@param c Card
 function c24435369.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	local e1=Effect.CreateEffect(c)

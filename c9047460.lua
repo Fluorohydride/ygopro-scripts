@@ -1,5 +1,4 @@
 --BF－隠れ蓑のスチーム
----@param c Card
 function c9047460.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

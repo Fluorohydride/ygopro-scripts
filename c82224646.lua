@@ -1,5 +1,4 @@
 --EMオッドアイズ・シンクロン
----@param c Card
 function c82224646.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--tuner

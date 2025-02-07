@@ -1,6 +1,5 @@
 --レインボー・ヴェール
 local s,id,o=GetID()
----@param c Card
 function c12735388.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

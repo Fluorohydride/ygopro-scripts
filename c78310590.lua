@@ -1,5 +1,4 @@
 --魔界劇団－メロー・マドンナ
----@param c Card
 function c78310590.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

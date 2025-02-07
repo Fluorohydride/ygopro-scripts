@@ -1,5 +1,4 @@
 --BK ビッグバンテージ
----@param c Card
 function c86325573.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

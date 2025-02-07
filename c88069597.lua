@@ -1,5 +1,4 @@
 --プレデター・プランター
----@param c Card
 function c88069597.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

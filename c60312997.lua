@@ -1,5 +1,4 @@
 --波動再生
----@param c Card
 function c60312997.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

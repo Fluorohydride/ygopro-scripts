@@ -1,5 +1,4 @@
 --財宝への隠し通路
----@param c Card
 function c77876207.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

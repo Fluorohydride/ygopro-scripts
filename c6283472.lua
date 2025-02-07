@@ -1,5 +1,4 @@
 --アモルファージ・ヒュペル
----@param c Card
 function c6283472.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

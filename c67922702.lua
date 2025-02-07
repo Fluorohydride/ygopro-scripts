@@ -1,5 +1,4 @@
 --幻獣機テザーウルフ
----@param c Card
 function c67922702.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

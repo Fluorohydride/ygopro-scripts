@@ -1,5 +1,4 @@
 --融合失敗
----@param c Card
 function c58392024.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

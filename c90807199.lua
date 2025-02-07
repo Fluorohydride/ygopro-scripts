@@ -1,5 +1,4 @@
 --未界域のサンダーバード
----@param c Card
 function c90807199.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

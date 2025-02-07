@@ -1,5 +1,4 @@
 --光波複葉機
----@param c Card
 function c29092121.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

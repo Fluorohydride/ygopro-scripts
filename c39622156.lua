@@ -1,5 +1,4 @@
 --No.26 次元孔路オクトバイパス
----@param c Card
 function c39622156.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

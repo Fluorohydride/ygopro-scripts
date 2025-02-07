@@ -1,5 +1,4 @@
 --ガガガラッシュ
----@param c Card
 function c13166204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

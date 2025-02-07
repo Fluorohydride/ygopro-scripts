@@ -1,5 +1,4 @@
 --必殺！黒蠍コンビネーション
----@param c Card
 function c20858318.initial_effect(c)
 	aux.AddCodeList(c,76922029,6967870,61587183,48768179,74153887)
 	--activate

@@ -1,5 +1,4 @@
 --標本の閲覧
----@param c Card
 function c12292422.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--Activate

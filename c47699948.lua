@@ -1,5 +1,4 @@
 --シンクロ・ディレンマ
----@param c Card
 function c47699948.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

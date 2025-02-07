@@ -1,5 +1,4 @@
 --剣闘獣ディカエリィ
----@param c Card
 function c31247589.initial_effect(c)
 	--double attack
 	local e1=Effect.CreateEffect(c)

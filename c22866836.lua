@@ -1,5 +1,4 @@
 --超信地旋回
----@param c Card
 function c22866836.initial_effect(c)
 	--destroy monster
 	local e1=Effect.CreateEffect(c)

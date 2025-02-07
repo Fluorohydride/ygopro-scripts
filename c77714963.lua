@@ -1,5 +1,4 @@
 --骸の魔妖－夜叉
----@param c Card
 function c77714963.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

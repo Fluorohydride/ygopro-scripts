@@ -1,5 +1,4 @@
 --深淵の結界像
----@param c Card
 function c84478195.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

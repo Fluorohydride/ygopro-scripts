@@ -1,5 +1,4 @@
 --デビルドーザー
----@param c Card
 function c76039636.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

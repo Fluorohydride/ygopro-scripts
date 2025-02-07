@@ -1,6 +1,5 @@
 --ゴーティスの兆イグジープ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--spsummon itself
 	local e1=Effect.CreateEffect(c)

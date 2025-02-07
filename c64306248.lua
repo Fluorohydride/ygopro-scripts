@@ -1,5 +1,4 @@
 --髑髏顔 天道虫
----@param c Card
 function c64306248.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --氷結界の虎将 ライホウ
----@param c Card
 function c81275309.initial_effect(c)
 	--summon,flip
 	local e1=Effect.CreateEffect(c)

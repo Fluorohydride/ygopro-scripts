@@ -1,5 +1,4 @@
 --ジャンク・アンカー
----@param c Card
 function c25148255.initial_effect(c)
 	--synchro
 	local e1=Effect.CreateEffect(c)

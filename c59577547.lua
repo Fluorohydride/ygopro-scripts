@@ -1,5 +1,4 @@
 --転生炎獣パロー
----@param c Card
 function c59577547.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

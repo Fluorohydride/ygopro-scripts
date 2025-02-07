@@ -1,5 +1,4 @@
 --Kozmo－ダークエクリプサー
----@param c Card
 function c64063868.initial_effect(c)
 	--cannot be targeted
 	local e1=Effect.CreateEffect(c)

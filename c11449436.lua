@@ -1,5 +1,4 @@
 --氷河のアクア・マドール
----@param c Card
 function c11449436.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

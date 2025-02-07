@@ -1,5 +1,4 @@
 --プロパ・ガンダケ
----@param c Card
 function c61681816.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

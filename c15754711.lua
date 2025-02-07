@@ -1,5 +1,4 @@
 --ドラゴンメイドのお見送り
----@param c Card
 function c15754711.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

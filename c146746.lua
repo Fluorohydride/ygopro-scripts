@@ -1,5 +1,4 @@
 --機関重連アンガー・ナックル
----@param c Card
 function c146746.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

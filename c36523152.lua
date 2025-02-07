@@ -1,5 +1,4 @@
 --超重武者ビッグワラ－G
----@param c Card
 function c36523152.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

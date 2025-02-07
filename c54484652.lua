@@ -1,5 +1,4 @@
 --超戦士カオス・ソルジャー
----@param c Card
 function c54484652.initial_effect(c)
 	c:SetSPSummonOnce(54484652)
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --燃える藻
----@param c Card
 function c41859700.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

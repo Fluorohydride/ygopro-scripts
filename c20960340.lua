@@ -1,5 +1,4 @@
 --クリスタル・アバター
----@param c Card
 function c20960340.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

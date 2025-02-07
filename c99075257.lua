@@ -1,5 +1,4 @@
 --D－タイム
----@param c Card
 function c99075257.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --武闘円舞
----@param c Card
 function c15629801.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

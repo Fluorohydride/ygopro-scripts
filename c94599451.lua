@@ -1,5 +1,4 @@
 --魔導研究所
----@param c Card
 function c94599451.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate

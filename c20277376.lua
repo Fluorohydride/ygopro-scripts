@@ -1,5 +1,4 @@
 --神竜 アポカリプス
----@param c Card
 function c20277376.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

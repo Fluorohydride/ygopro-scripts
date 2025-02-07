@@ -1,5 +1,4 @@
 --F.A.ターボチャージャー
----@param c Card
 function c75059201.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

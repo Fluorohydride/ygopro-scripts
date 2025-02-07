@@ -1,5 +1,4 @@
 --ラーの翼神竜－球体形
----@param c Card
 function c10000080.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)

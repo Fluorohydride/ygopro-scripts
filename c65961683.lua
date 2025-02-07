@@ -1,5 +1,4 @@
 --ジュラック・ヴェルヒプト
----@param c Card
 function c65961683.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_DINOSAUR),1)

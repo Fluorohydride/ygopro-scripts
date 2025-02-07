@@ -1,5 +1,4 @@
 --邪悪なるバリア －ダーク・フォース－
----@param c Card
 function c20522190.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

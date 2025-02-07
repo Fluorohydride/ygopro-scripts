@@ -1,5 +1,4 @@
 --Sin Territory
----@param c Card
 function c75223115.initial_effect(c)
 	aux.AddCodeList(c,27564031)
 	--Activate

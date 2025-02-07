@@ -1,5 +1,4 @@
 --漆黒の戦士 ワーウルフ
----@param c Card
 function c88975532.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

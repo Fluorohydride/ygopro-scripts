@@ -1,5 +1,4 @@
 --紫水晶
----@param c Card
 function c15052462.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

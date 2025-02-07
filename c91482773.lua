@@ -1,5 +1,4 @@
 --ゲートウェイ・ドラゴン
----@param c Card
 function c91482773.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

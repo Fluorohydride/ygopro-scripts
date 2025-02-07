@@ -1,5 +1,4 @@
 --レプティレス・ラミア
----@param c Card
 function c60634565.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x3c),aux.NonTuner(nil),1)

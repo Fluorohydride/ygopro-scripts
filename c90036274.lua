@@ -1,5 +1,4 @@
 --クリアウィング・ファスト・ドラゴン
----@param c Card
 function c90036274.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WIND),1)

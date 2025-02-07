@@ -1,5 +1,4 @@
 --ウィッチクラフト・ピットレ
----@param c Card
 function c95245544.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

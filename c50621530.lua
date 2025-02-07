@@ -1,5 +1,4 @@
 --パワード・チューナー
----@param c Card
 function c50621530.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

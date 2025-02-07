@@ -1,5 +1,4 @@
 --魔力倹約術
----@param c Card
 function c4259068.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

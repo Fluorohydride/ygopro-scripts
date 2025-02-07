@@ -1,5 +1,4 @@
 --マジック・スライム
----@param c Card
 function c3918345.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--reflect battle dam

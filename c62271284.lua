@@ -1,5 +1,4 @@
 --ジャスティブレイク
----@param c Card
 function c62271284.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

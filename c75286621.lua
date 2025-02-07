@@ -1,5 +1,4 @@
 --召喚獣メルカバー
----@param c Card
 function c75286621.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

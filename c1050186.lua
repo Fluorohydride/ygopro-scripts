@@ -1,5 +1,4 @@
 --星因士 ウヌク
----@param c Card
 function c1050186.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

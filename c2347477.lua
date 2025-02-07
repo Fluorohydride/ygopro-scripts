@@ -1,5 +1,4 @@
 --マイクロ・コーダー
----@param c Card
 function c2347477.initial_effect(c)
 	--hand link
 	local e1=Effect.CreateEffect(c)

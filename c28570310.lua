@@ -1,5 +1,4 @@
 --魔導獣 ガルーダ
----@param c Card
 function c28570310.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)

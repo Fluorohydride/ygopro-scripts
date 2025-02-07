@@ -1,5 +1,4 @@
 --凶悪犯－チョップマン
----@param c Card
 function c40884383.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --機皇兵スキエル・アイン
----@param c Card
 function c75733063.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

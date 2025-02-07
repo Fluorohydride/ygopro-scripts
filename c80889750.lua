@@ -1,5 +1,4 @@
 --デストーイ・サーベル・タイガー
----@param c Card
 function c80889750.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

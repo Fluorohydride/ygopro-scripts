@@ -1,5 +1,4 @@
 --オルターガイスト・フェイルオーバー
----@param c Card
 function c98753320.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

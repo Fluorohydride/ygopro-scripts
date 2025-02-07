@@ -1,5 +1,4 @@
 --天帝アイテール
----@param c Card
 function c96570609.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

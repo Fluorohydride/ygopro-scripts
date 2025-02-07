@@ -1,5 +1,4 @@
 --魔法族の聖域
----@param c Card
 function c25407643.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

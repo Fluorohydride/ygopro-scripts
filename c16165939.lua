@@ -1,5 +1,4 @@
 --超自然警戒区域
----@param c Card
 function c16165939.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

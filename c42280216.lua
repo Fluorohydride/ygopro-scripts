@@ -1,5 +1,4 @@
 --太陽の神官
----@param c Card
 function c42280216.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

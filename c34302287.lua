@@ -1,5 +1,4 @@
 --幻煌龍の戦渦
----@param c Card
 function c34302287.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

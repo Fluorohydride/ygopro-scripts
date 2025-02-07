@@ -1,5 +1,4 @@
 --フォース・リリース
----@param c Card
 function c73567374.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

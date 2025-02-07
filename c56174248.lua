@@ -1,5 +1,4 @@
 --魔導鬼士 ディアール
----@param c Card
 function c56174248.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

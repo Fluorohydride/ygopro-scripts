@@ -1,5 +1,4 @@
 --太鼓魔人テンテンテンポ
----@param c Card
 function c52558805.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

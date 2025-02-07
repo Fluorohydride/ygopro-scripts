@@ -1,5 +1,4 @@
 --軍隊竜
----@param c Card
 function c55013285.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

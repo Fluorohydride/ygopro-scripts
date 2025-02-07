@@ -1,5 +1,4 @@
 --星に願いを
----@param c Card
 function c43661068.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

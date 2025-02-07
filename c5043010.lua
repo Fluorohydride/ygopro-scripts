@@ -1,5 +1,4 @@
 --ファイアウォール・ドラゴン
----@param c Card
 function c5043010.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2)

@@ -1,5 +1,4 @@
 --レプティレス・バイパー
----@param c Card
 function c42303365.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42303365,0))

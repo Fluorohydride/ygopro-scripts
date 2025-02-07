@@ -1,6 +1,5 @@
 --アルカナフォースⅩⅤ－THE DEVIL
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,73206827)
 	--to hand

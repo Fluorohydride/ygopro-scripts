@@ -1,5 +1,4 @@
 --真の光
----@param c Card
 function c62089826.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--Activate

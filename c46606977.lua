@@ -1,5 +1,4 @@
 --ネメシス・アンブレラ
----@param c Card
 function c46606977.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

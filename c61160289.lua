@@ -1,5 +1,4 @@
 --溟界妃－アミュネシア
----@param c Card
 function c61160289.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

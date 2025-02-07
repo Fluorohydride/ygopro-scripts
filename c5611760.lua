@@ -1,5 +1,4 @@
 --救いの架け橋
----@param c Card
 function c5611760.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

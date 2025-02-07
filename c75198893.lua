@@ -1,5 +1,4 @@
 --スキヤナー
----@param c Card
 function c75198893.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)

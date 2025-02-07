@@ -1,5 +1,4 @@
 --サイバネティック・マジシャン
----@param c Card
 function c59023523.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ディアバウンド・カーネル
----@param c Card
 function c51644030.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

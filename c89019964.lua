@@ -1,5 +1,4 @@
 --破械神の禍霊
----@param c Card
 function c89019964.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

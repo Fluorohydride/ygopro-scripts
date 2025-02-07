@@ -1,5 +1,4 @@
 --V・HERO ポイズナー
----@param c Card
 function c83414006.initial_effect(c)
 	--to field
 	local e1=Effect.CreateEffect(c)

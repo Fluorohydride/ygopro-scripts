@@ -1,5 +1,4 @@
 --ゴーストリック・マリー
----@param c Card
 function c98707192.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

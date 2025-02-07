@@ -1,5 +1,4 @@
 --ジェムナイト・アクアマリナ
----@param c Card
 function c13108445.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --破械神アルバ
----@param c Card
 function c93084621.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,nil,c93084621.lcheck)

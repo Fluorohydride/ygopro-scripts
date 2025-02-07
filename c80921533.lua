@@ -1,5 +1,4 @@
 --死皇帝の陵墓
----@param c Card
 function c80921533.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

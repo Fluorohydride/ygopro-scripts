@@ -1,5 +1,4 @@
 --エレメントセイバー・マカニ
----@param c Card
 function c19036557.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

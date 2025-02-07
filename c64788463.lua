@@ -1,5 +1,4 @@
 --キングス・ナイト
----@param c Card
 function c64788463.initial_effect(c)
 	aux.AddCodeList(c,25652259,90876561)
 	--spsummon

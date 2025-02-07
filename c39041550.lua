@@ -1,5 +1,4 @@
 --騎甲虫スケイル・ボム
----@param c Card
 function c39041550.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

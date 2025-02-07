@@ -1,5 +1,4 @@
 --神鳥の霊峰エルブルズ
----@param c Card
 function c92223430.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

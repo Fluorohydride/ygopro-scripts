@@ -1,5 +1,4 @@
 --XX－セイバー ガルドストライク
----@param c Card
 function c42024143.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

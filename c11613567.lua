@@ -1,5 +1,4 @@
 --BF－漆黒のエルフェン
----@param c Card
 function c11613567.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

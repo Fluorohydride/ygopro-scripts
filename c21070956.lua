@@ -1,5 +1,4 @@
 --生贄の祭壇
----@param c Card
 function c21070956.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

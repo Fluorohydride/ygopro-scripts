@@ -1,5 +1,4 @@
 --王宮の鉄壁
----@param c Card
 function c30459350.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

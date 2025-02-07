@@ -1,5 +1,4 @@
 --炎の剣士
----@param c Card
 function c45231177.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

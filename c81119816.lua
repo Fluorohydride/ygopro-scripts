@@ -1,5 +1,4 @@
 --プランキッズ・パルス
----@param c Card
 function c81119816.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

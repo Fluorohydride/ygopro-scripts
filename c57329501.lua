@@ -1,5 +1,4 @@
 --海晶乙女の潜逅
----@param c Card
 function c57329501.initial_effect(c)
 	aux.AddCodeList(c,91027843)
 	--Activate

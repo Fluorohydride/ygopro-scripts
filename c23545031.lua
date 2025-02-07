@@ -1,5 +1,4 @@
 --水精鱗－サラキアビス
----@param c Card
 function c23545031.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_AQUA+RACE_FISH+RACE_SEASERPENT),2,2)

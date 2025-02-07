@@ -1,5 +1,4 @@
 --ネオス・ワイズマン
----@param c Card
 function c5126490.initial_effect(c)
 	aux.AddCodeList(c,89943723,78371393)
 	c:EnableReviveLimit()

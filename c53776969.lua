@@ -1,5 +1,4 @@
 --スケアクロー・ライトハート
----@param c Card
 function c53776969.initial_effect(c)
 	aux.AddCodeList(c,56099748,56063182)
 	--link summon

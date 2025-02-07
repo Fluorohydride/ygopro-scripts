@@ -1,5 +1,4 @@
 --アルケミック・マジシャン
----@param c Card
 function c65301952.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4,3)

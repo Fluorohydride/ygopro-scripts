@@ -1,5 +1,4 @@
 --炎天禍サンバーン
----@param c Card
 function c39505816.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

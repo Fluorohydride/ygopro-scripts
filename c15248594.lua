@@ -1,5 +1,4 @@
 --炎斬機マグマ
----@param c Card
 function c15248594.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

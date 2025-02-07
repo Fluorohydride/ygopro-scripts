@@ -1,6 +1,5 @@
 --聖剣を巡る王姫アンジェリカ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,77656797)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

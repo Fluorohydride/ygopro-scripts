@@ -1,5 +1,4 @@
 --魔弾－ブラッディ・クラウン
----@param c Card
 function c47810543.initial_effect(c)
 	c:SetUniqueOnField(1,0,47810543)
 	--Activate

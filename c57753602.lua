@@ -1,5 +1,4 @@
 --ジェムフラッシュエナジー
----@param c Card
 function c57753602.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --呪魂の仮面
----@param c Card
 function c56948373.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

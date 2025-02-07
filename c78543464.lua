@@ -1,5 +1,4 @@
 --九字切りの呪符
----@param c Card
 function c78543464.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

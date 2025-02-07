@@ -1,5 +1,4 @@
 --超重武者カカ－C
----@param c Card
 function c33918636.initial_effect(c)
 	c:EnableReviveLimit()
 	--link summon

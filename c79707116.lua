@@ -1,5 +1,4 @@
 --パラライズ・チェーン
----@param c Card
 function c79707116.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -1,5 +1,4 @@
 --先史遺産メガラ・グローヴ
----@param c Card
 function c97112505.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

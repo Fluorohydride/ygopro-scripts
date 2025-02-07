@@ -1,5 +1,4 @@
 --サンダー・クラッシュ
----@param c Card
 function c69196160.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

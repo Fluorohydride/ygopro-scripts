@@ -1,5 +1,4 @@
 --A・O・J D.D.チェッカー
----@param c Card
 function c72845813.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

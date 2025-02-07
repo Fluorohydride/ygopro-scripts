@@ -1,5 +1,4 @@
 --DDリリス
----@param c Card
 function c12822541.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

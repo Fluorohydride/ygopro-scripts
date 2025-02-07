@@ -1,5 +1,4 @@
 --D・ラジオン
----@param c Card
 function c55119278.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --聖天樹の大母神
----@param c Card
 function c92770064.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c92770064.mfilter,2,99)

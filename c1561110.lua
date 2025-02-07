@@ -1,5 +1,4 @@
 --ABC－ドラゴン・バスター
----@param c Card
 function c1561110.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

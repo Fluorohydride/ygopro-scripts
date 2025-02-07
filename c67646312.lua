@@ -1,5 +1,4 @@
 --サーチライトメン
----@param c Card
 function c67646312.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

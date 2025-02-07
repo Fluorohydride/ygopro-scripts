@@ -1,5 +1,4 @@
 --ハチビー
----@param c Card
 function c1474910.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(1474910,0))

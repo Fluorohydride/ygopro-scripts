@@ -1,5 +1,4 @@
 --ゴッドアイズ・ファントム・ドラゴン
----@param c Card
 function c70335319.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --『守備』封じ
----@param c Card
 function c63102017.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

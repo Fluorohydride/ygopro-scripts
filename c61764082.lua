@@ -1,5 +1,4 @@
 --ダイナレスラー・ラアムブラキオ
----@param c Card
 function c61764082.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

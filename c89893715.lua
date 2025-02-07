@@ -1,5 +1,4 @@
 --ラヴァルの炎車回し
----@param c Card
 function c89893715.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

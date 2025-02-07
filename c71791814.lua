@@ -1,5 +1,4 @@
 --魔弾の射手 マックス
----@param c Card
 function c71791814.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

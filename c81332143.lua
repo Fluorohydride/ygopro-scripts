@@ -1,5 +1,4 @@
 --友情 YU－JYO
----@param c Card
 function c81332143.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

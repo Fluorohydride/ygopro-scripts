@@ -1,5 +1,4 @@
 --炎王獣 ガネーシャ
----@param c Card
 function c18621798.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

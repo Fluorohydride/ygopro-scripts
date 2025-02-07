@@ -1,5 +1,4 @@
 --屈強の釣り師
----@param c Card
 function c16632144.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

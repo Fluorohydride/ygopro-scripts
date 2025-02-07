@@ -1,6 +1,5 @@
 --次元障壁
 local s,id,o=GetID()
----@param c Card
 function c83326048.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

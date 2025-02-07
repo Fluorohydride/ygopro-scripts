@@ -1,5 +1,4 @@
 --サイバー・サモン・ブラスター
----@param c Card
 function c63477921.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --GO－DDD神零王ゼロゴッド・レイジ
----@param c Card
 function c40227329.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

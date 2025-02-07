@@ -1,5 +1,4 @@
 --星杯の神子イヴ
----@param c Card
 function c94677445.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

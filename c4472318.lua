@@ -1,6 +1,5 @@
 --岩竜ベアロック
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

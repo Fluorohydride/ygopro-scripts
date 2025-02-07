@@ -1,5 +1,4 @@
 --アンデット・ストラグル
----@param c Card
 function c65357623.initial_effect(c)
 	--modify ATK
 	local e1=Effect.CreateEffect(c)

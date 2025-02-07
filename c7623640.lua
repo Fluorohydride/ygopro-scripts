@@ -1,5 +1,4 @@
 --暗黒界の導師 セルリ
----@param c Card
 function c7623640.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

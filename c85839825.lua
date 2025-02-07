@@ -1,5 +1,4 @@
 --エクシーズエナジー
----@param c Card
 function c85839825.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

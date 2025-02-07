@@ -1,5 +1,4 @@
 --コドモドラゴン
----@param c Card
 function c35629124.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

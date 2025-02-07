@@ -1,5 +1,4 @@
 --スカーレッド・スーパーノヴァ・ドラゴン
----@param c Card
 function c99585850.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),aux.Tuner(nil),aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),1,99)

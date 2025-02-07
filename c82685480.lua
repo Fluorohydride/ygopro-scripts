@@ -1,5 +1,4 @@
 --海竜神の怒り
----@param c Card
 function c82685480.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--activate

@@ -1,5 +1,4 @@
 --プロトコル・ガードナー
----@param c Card
 function c5329790.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

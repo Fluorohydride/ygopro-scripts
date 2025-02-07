@@ -1,5 +1,4 @@
 --エレメントの加護
----@param c Card
 function c66367984.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

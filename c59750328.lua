@@ -1,5 +1,4 @@
 --命削りの宝札
----@param c Card
 function c59750328.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --星遺物－『星杖』
----@param c Card
 function c93920420.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

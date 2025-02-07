@@ -1,5 +1,4 @@
 --チョバムアーマー・ドラゴン
----@param c Card
 function c27352108.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

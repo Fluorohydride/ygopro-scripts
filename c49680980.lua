@@ -1,5 +1,4 @@
 --コアキメイル・サンドマン
----@param c Card
 function c49680980.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

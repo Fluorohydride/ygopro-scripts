@@ -1,5 +1,4 @@
 --ヒステリック天使
----@param c Card
 function c21297224.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

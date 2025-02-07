@@ -1,5 +1,4 @@
 --天界王 シナト
----@param c Card
 function c86327225.initial_effect(c)
 	c:EnableReviveLimit()
 	--damage

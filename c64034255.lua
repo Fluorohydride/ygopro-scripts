@@ -1,5 +1,4 @@
 --A・ジェネクス・バードマン
----@param c Card
 function c64034255.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

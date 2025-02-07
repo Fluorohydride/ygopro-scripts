@@ -1,5 +1,4 @@
 --水霊使いエリア
----@param c Card
 function c74364659.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

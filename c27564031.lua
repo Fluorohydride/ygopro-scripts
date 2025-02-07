@@ -1,5 +1,4 @@
 --Sin World
----@param c Card
 function c27564031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

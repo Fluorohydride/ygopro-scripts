@@ -1,5 +1,4 @@
 --ゴーストリック・ブレイク
----@param c Card
 function c80802524.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

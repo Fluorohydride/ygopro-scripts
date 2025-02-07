@@ -1,5 +1,4 @@
 --春化精の花盛
----@param c Card
 function c7206349.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

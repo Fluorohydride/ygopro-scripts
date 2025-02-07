@@ -1,5 +1,4 @@
 --魔の試着部屋
----@param c Card
 function c30531525.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

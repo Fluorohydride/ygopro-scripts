@@ -1,5 +1,4 @@
 --ナチュル・ガイアストライオ
----@param c Card
 function c90555947.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

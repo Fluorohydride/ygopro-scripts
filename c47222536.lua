@@ -1,5 +1,4 @@
 --黒の魔導陣
----@param c Card
 function c47222536.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

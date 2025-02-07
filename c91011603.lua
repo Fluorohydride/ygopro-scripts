@@ -1,5 +1,4 @@
 --極星工イーヴァルディ
----@param c Card
 function c91011603.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --アルバスの落胤
----@param c Card
 function c68468459.initial_effect(c)
 	--fusion summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --先史遺産クリスタル・スカル
----@param c Card
 function c51435705.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

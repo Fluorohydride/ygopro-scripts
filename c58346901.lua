@@ -1,5 +1,4 @@
 --焔聖騎士－オリヴィエ
----@param c Card
 function c58346901.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

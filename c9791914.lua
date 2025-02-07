@@ -1,5 +1,4 @@
 --白銀のスナイパー
----@param c Card
 function c9791914.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

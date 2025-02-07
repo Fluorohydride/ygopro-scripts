@@ -1,5 +1,4 @@
 --水晶機巧－クオン
----@param c Card
 function c93665266.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

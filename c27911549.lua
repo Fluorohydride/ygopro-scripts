@@ -1,5 +1,4 @@
 --寄生虫パラサイド
----@param c Card
 function c27911549.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DECK_REVERSE_CHECK)
 	--to deck

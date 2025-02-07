@@ -1,5 +1,4 @@
 --ドラグニティ・ヴォイド
----@param c Card
 function c51849216.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

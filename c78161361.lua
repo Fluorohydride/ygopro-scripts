@@ -1,5 +1,4 @@
 --ドライブレイブ
----@param c Card
 function c78161361.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

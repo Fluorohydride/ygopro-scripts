@@ -1,5 +1,4 @@
 --デモニック・モーター・Ω
----@param c Card
 function c82556058.initial_effect(c)
 	aux.AddCodeList(c,82556059)
 	--token

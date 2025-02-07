@@ -1,5 +1,4 @@
 --琰魔竜王 レッド・デーモン・カラミティ
----@param c Card
 function c62242678.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(c62242678.sfilter),1,1)

@@ -1,5 +1,4 @@
 --ラーの翼神竜－不死鳥
----@param c Card
 function c10000090.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	c:EnableReviveLimit()

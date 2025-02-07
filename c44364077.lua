@@ -1,5 +1,4 @@
 --EMヘイタイガー
----@param c Card
 function c44364077.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

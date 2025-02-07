@@ -1,5 +1,4 @@
 --黒竜の聖騎士
----@param c Card
 function c71408082.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

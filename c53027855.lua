@@ -1,5 +1,4 @@
 --風霊神ウィンドローズ
----@param c Card
 function c53027855.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

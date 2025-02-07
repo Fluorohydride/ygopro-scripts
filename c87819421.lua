@@ -1,5 +1,4 @@
 --マスク・チャージ
----@param c Card
 function c87819421.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

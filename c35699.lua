@@ -1,5 +1,4 @@
 --SPYRAL－ボルテックス
----@param c Card
 function c35699.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

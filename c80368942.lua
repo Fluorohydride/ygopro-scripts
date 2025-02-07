@@ -1,5 +1,4 @@
 --コクーン・パーティ
----@param c Card
 function c80368942.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

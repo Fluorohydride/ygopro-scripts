@@ -1,5 +1,4 @@
 --パーソナル・スプーフィング
----@param c Card
 function c53936268.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

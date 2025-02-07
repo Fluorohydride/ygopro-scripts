@@ -1,5 +1,4 @@
 --ウォークライ・ウェント
----@param c Card
 function c47504322.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

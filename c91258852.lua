@@ -1,5 +1,4 @@
 --SPYRAL－グレース
----@param c Card
 function c91258852.initial_effect(c)
 	aux.AddCodeList(c,54631665)
 	--search

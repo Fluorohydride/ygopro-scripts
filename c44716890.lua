@@ -1,5 +1,4 @@
 --通行増税
----@param c Card
 function c44716890.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

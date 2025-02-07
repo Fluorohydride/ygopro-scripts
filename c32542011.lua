@@ -1,5 +1,4 @@
 --燃え上がる大海
----@param c Card
 function c32542011.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

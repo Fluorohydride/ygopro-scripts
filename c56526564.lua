@@ -1,5 +1,4 @@
 --絶縁の落とし穴
----@param c Card
 function c56526564.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

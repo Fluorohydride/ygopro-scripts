@@ -1,5 +1,4 @@
 --六武衆－ザンジ
----@param c Card
 function c95519486.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

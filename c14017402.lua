@@ -1,6 +1,5 @@
 --波動竜騎士 ドラゴエクィテス
 local s,id,o=GetID()
----@param c Card
 function c14017402.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

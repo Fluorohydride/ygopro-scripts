@@ -1,5 +1,4 @@
 --洗濯機塊ランドリードラゴン
----@param c Card
 function c77102944.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --魔轟神マルコシア
----@param c Card
 function c57630503.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

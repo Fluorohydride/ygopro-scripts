@@ -1,5 +1,4 @@
 --おろかな転生
----@param c Card
 function c88369727.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サンライズ・ガードナー
----@param c Card
 function c57549932.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--change base defense

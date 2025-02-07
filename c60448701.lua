@@ -1,5 +1,4 @@
 --溟界の淵源
----@param c Card
 function c60448701.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

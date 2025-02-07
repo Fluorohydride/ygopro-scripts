@@ -1,5 +1,4 @@
 --百万喰らいのグラットン
----@param c Card
 function c63845230.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

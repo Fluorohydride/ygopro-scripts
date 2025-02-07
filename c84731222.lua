@@ -1,5 +1,4 @@
 --希望の記憶
----@param c Card
 function c84731222.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --機塊コンバート
----@param c Card
 function c27157996.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

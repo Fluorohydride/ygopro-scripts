@@ -1,5 +1,4 @@
 --生存競争
----@param c Card
 function c58272005.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

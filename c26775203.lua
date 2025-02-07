@@ -1,5 +1,4 @@
 --BF－熱風のギブリ
----@param c Card
 function c26775203.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

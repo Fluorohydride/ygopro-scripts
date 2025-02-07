@@ -1,5 +1,4 @@
 --ジオ・ジェネクス
----@param c Card
 function c33972299.initial_effect(c)
 	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon

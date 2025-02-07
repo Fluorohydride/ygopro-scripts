@@ -1,5 +1,4 @@
 --ウォーターワールド
----@param c Card
 function c82999629.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

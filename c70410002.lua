@@ -1,5 +1,4 @@
 --ザ・アキュムレーター
----@param c Card
 function c70410002.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

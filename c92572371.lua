@@ -1,5 +1,4 @@
 --殺炎星－ブルキ
----@param c Card
 function c92572371.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

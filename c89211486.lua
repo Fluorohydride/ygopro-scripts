@@ -1,5 +1,4 @@
 --ジェネクス・ドクター
----@param c Card
 function c89211486.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

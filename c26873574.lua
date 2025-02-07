@@ -1,5 +1,4 @@
 --カオス・ダイダロス
----@param c Card
 function c26873574.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,5 +1,4 @@
 --サイコ・ショックウェーブ
----@param c Card
 function c72563071.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

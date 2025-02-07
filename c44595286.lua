@@ -1,5 +1,4 @@
 --裁きの光
----@param c Card
 function c44595286.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--Activate

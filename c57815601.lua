@@ -1,5 +1,4 @@
 --霊獣の騎襲
----@param c Card
 function c57815601.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

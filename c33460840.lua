@@ -1,5 +1,4 @@
 --巨竜の守護騎士
----@param c Card
 function c33460840.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

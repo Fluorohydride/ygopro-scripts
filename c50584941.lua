@@ -1,5 +1,4 @@
 --レッド・スプレマシー
----@param c Card
 function c50584941.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

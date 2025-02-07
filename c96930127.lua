@@ -1,5 +1,4 @@
 --チェーンドッグ
----@param c Card
 function c96930127.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

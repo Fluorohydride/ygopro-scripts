@@ -1,5 +1,4 @@
 --トワイライト・イレイザー
----@param c Card
 function c57348141.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

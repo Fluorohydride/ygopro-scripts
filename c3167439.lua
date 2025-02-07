@@ -1,6 +1,5 @@
 --暗黒界の懲罰
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Negate Normal Summon or Special Summon
 	local e1=Effect.CreateEffect(c)

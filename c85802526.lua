@@ -1,5 +1,4 @@
 --プリンセス人魚
----@param c Card
 function c85802526.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --細胞爆破ウイルス
----@param c Card
 function c84491298.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

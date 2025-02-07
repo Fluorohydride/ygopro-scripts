@@ -1,5 +1,4 @@
 --ロード・オブ・ドラゴン－ドラゴンの統制者－
----@param c Card
 function c8978197.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,17985575)

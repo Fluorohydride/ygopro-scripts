@@ -1,5 +1,4 @@
 --聖騎士モルドレッド
----@param c Card
 function c59057152.initial_effect(c)
 	--normal monster
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --天下統一
----@param c Card
 function c95352218.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --寄生虫パラノイド
----@param c Card
 function c14457896.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

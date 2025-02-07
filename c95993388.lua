@@ -1,5 +1,4 @@
 --地帝家臣ランドローブ
----@param c Card
 function c95993388.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

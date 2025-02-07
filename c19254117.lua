@@ -1,5 +1,4 @@
 --仁王立ち
----@param c Card
 function c19254117.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

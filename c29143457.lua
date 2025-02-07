@@ -1,5 +1,4 @@
 --炎舞－「隠元」
----@param c Card
 function c29143457.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

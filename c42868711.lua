@@ -1,5 +1,4 @@
 --幻影のゴラ亀
----@param c Card
 function c42868711.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

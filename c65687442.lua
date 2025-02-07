@@ -1,5 +1,4 @@
 --Walkuren Ritt
----@param c Card
 function c65687442.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

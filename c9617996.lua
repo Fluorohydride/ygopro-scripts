@@ -1,5 +1,4 @@
 --レグレクス・パラディオン
----@param c Card
 function c9617996.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,2,c9617996.lcheck)

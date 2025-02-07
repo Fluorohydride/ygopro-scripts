@@ -1,5 +1,4 @@
 --剣闘獣の闘器マニカ
----@param c Card
 function c52496105.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

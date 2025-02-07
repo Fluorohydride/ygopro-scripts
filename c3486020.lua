@@ -1,5 +1,4 @@
 --麗の魔妖－妖狐
----@param c Card
 function c3486020.initial_effect(c)
 	c:SetUniqueOnField(1,0,3486020)
 	--synchro summon

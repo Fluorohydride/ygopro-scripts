@@ -1,5 +1,4 @@
 --水面のアレサ
----@param c Card
 function c22377815.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--handes

@@ -1,5 +1,4 @@
 --スーパービークロイド－ステルス・ユニオン
----@param c Card
 function c3897065.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

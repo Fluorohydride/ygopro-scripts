@@ -1,5 +1,4 @@
 --融合破棄
----@param c Card
 function c49469105.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

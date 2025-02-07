@@ -1,5 +1,4 @@
 --ジゴバイト
----@param c Card
 function c40894584.initial_effect(c)
 	c:SetUniqueOnField(1,0,40894584)
 	--spsummon

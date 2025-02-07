@@ -1,5 +1,4 @@
 --ZW－天風精霊翼
----@param c Card
 function c95886782.initial_effect(c)
 	c:SetUniqueOnField(1,0,95886782)
 	--equip

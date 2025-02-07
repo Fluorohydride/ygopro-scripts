@@ -1,5 +1,4 @@
 --F.A.シェイクダウン
----@param c Card
 function c38459905.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

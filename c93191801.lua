@@ -1,5 +1,4 @@
 --黄金郷のワッケーロ
----@param c Card
 function c93191801.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

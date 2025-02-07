@@ -1,5 +1,4 @@
 --超電導波サンダーフォース
----@param c Card
 function c42469671.initial_effect(c)
 	aux.AddCodeList(c,10000020)
 	--Activate

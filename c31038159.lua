@@ -1,5 +1,4 @@
 --創世竜
----@param c Card
 function c31038159.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

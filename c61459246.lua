@@ -1,5 +1,4 @@
 --夢魔鏡の夢占い
----@param c Card
 function c61459246.initial_effect(c)
 	aux.AddCodeList(c,74665651,1050355)
 	--activate(effect)

@@ -1,5 +1,4 @@
 --転生炎獣の超転生
----@param c Card
 function c54529134.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

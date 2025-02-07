@@ -1,5 +1,4 @@
 --ハンター・アウル
----@param c Card
 function c51962254.initial_effect(c)
 	--cannot be attacked
 	local e1=Effect.CreateEffect(c)

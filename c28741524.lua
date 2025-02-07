@@ -1,5 +1,4 @@
 --念動収集機
----@param c Card
 function c28741524.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

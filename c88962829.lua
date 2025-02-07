@@ -1,5 +1,4 @@
 --騎甲虫ライト・フラッパー
----@param c Card
 function c88962829.initial_effect(c)
 	--add
 	local e1=Effect.CreateEffect(c)

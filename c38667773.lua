@@ -1,5 +1,4 @@
 --星因士 ベガ
----@param c Card
 function c38667773.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

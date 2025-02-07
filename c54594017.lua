@@ -1,5 +1,4 @@
 --BF－下弦のサルンガ
----@param c Card
 function c54594017.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

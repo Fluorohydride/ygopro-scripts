@@ -1,5 +1,4 @@
 --DDD怒濤壊薙王カエサル・ラグナロク
----@param c Card
 function c27873305.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

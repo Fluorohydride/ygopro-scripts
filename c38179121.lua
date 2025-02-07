@@ -1,5 +1,4 @@
 --究極進化薬
----@param c Card
 function c38179121.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

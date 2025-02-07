@@ -1,5 +1,4 @@
 --紅蓮魔獣 ダ・イーザ
----@param c Card
 function c36584821.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,5 +1,4 @@
 --タキオン・ギャラクシースパイラル
----@param c Card
 function c89789152.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

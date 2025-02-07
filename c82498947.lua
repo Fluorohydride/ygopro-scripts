@@ -1,5 +1,4 @@
 --氷結界の守護陣
----@param c Card
 function c82498947.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

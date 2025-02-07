@@ -1,5 +1,4 @@
 --ソニックバード
----@param c Card
 function c57617178.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

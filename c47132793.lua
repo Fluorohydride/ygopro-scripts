@@ -1,6 +1,5 @@
 --征覇竜－ブレイズ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

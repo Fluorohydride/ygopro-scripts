@@ -1,5 +1,4 @@
 --マジシャン・オブ・カオス
----@param c Card
 function c47963370.initial_effect(c)
 	c:EnableReviveLimit()
 	--change name

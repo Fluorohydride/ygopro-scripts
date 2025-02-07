@@ -1,5 +1,4 @@
 --甲虫装機 グルフ
----@param c Card
 function c2461031.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

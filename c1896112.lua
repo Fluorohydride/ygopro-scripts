@@ -1,5 +1,4 @@
 --次元誘爆
----@param c Card
 function c1896112.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

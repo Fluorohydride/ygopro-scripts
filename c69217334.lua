@@ -1,5 +1,4 @@
 --ブレイク・オブ・ザ・ワールド
----@param c Card
 function c69217334.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

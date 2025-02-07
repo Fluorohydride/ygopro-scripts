@@ -1,5 +1,4 @@
 --玄翼竜 ブラック・フェザー
----@param c Card
 function c60992105.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

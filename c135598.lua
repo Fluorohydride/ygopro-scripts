@@ -1,5 +1,4 @@
 --キーマウス
----@param c Card
 function c135598.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

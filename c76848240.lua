@@ -1,5 +1,4 @@
 --絶対不可侵領域
----@param c Card
 function c76848240.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

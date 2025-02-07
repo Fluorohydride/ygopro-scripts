@@ -1,5 +1,4 @@
 --アマゾネスペット仔虎
----@param c Card
 function c10928224.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
 	local e0=aux.AddThisCardInGraveAlreadyCheck(c)

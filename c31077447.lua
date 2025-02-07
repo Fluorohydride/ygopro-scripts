@@ -1,5 +1,4 @@
 --びっくり箱
----@param c Card
 function c31077447.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --華麗なるハーピィ・レディ
----@param c Card
 function c65664792.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--activate

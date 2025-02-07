@@ -1,5 +1,4 @@
 --モンタージュ・ドラゴン
----@param c Card
 function c23303072.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

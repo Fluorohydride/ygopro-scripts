@@ -1,5 +1,4 @@
 --永遠の魂
----@param c Card
 function c48680970.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

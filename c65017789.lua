@@ -1,5 +1,4 @@
 --雪天気シエル
----@param c Card
 function c65017789.initial_effect(c)
 	--place
 	local e1=Effect.CreateEffect(c)

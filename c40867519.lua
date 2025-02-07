@@ -1,5 +1,4 @@
 --静寂虫
----@param c Card
 function c40867519.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

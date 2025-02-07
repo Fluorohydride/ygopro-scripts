@@ -1,5 +1,4 @@
 --S－Force プラ＝ティナ
----@param c Card
 function c58363151.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

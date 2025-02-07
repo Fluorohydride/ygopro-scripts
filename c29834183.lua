@@ -1,5 +1,4 @@
 --グレイドル・イーグル
----@param c Card
 function c29834183.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --才呼粉身
----@param c Card
 function c26773909.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

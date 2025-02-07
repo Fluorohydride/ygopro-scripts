@@ -1,5 +1,4 @@
 --ネクロ・シンクロン
----@param c Card
 function c48421595.initial_effect(c)
 	--code
 	aux.EnableChangeCode(c,19642774,LOCATION_MZONE+LOCATION_GRAVE)

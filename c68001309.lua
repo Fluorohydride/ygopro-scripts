@@ -1,5 +1,4 @@
 --サブテラーの激闘
----@param c Card
 function c68001309.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --H・C モーニング・スター
 local s,id,o=GetID()
----@param c Card
 function c18548966.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

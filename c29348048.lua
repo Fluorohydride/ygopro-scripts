@@ -1,5 +1,4 @@
 --ヴェンデット・スカヴェンジャー
----@param c Card
 function c29348048.initial_effect(c)
 	c:EnableReviveLimit()
 	--atk up

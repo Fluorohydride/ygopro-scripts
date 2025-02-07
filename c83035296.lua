@@ -1,5 +1,4 @@
 --メギストリーの儀術師
----@param c Card
 function c83035296.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

@@ -1,5 +1,4 @@
 --一刀両断侍
----@param c Card
 function c16222645.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

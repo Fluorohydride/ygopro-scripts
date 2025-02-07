@@ -1,5 +1,4 @@
 --星遺物の導く先
----@param c Card
 function c92562411.initial_effect(c)
 	c:SetUniqueOnField(1,0,92562411)
 	c:EnableCounterPermit(0x54)

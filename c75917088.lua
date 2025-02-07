@@ -1,5 +1,4 @@
 --魔法の国の王女－ピケル
----@param c Card
 function c75917088.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

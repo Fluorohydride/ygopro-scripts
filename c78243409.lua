@@ -1,5 +1,4 @@
 --火口に潜む者
----@param c Card
 function c78243409.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --いたずら好きな双子悪魔
----@param c Card
 function c44763025.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

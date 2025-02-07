@@ -1,5 +1,4 @@
 --呪眼の死徒 サリエル
----@param c Card
 function c82466274.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --絶神鳥シムルグ
----@param c Card
 function c52843699.initial_effect(c)
 	--Attribute WIND
 	local e0=Effect.CreateEffect(c)

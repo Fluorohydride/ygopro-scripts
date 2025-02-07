@@ -1,5 +1,4 @@
 --超栄養太陽
----@param c Card
 function c28529976.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --カラクリ蝦蟇油
----@param c Card
 function c11699941.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

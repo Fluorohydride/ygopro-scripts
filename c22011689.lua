@@ -1,5 +1,4 @@
 --捕食植物モーレイ・ネペンテス
----@param c Card
 function c22011689.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

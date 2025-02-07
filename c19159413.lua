@@ -1,5 +1,4 @@
 --魔法除去
----@param c Card
 function c19159413.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

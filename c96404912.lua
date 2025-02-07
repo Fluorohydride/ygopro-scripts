@@ -1,5 +1,4 @@
 --無償交換
----@param c Card
 function c96404912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

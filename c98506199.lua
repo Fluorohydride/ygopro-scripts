@@ -1,5 +1,4 @@
 --ウィンドペガサス＠イグニスター
----@param c Card
 function c98506199.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

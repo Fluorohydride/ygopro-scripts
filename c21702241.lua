@@ -1,5 +1,4 @@
 --反目の従者
----@param c Card
 function c21702241.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

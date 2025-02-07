@@ -1,5 +1,4 @@
 --E・HERO サンライザー
----@param c Card
 function c22908820.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

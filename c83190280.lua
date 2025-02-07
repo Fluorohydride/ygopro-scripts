@@ -1,5 +1,4 @@
 --月光虎
----@param c Card
 function c83190280.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

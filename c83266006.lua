@@ -1,5 +1,4 @@
 --逢華妖麗譚－魔妖語
----@param c Card
 function c83266006.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

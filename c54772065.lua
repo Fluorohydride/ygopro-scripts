@@ -1,5 +1,4 @@
 --B・F－連撃のツインボウ
----@param c Card
 function c54772065.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

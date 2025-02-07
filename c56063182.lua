@@ -1,6 +1,5 @@
 --肆世壊＝ライフォビア
 local s,id,o=GetID()
----@param c Card
 function c56063182.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

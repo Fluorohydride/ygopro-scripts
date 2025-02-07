@@ -1,5 +1,4 @@
 --ドリーム・ピエロ
----@param c Card
 function c13215230.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

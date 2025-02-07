@@ -1,5 +1,4 @@
 --ラヴァル・アーチャー
----@param c Card
 function c30303854.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

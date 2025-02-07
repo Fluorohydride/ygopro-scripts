@@ -1,5 +1,4 @@
 --聖なる守り手
----@param c Card
 function c1347977.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

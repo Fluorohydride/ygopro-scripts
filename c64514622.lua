@@ -1,5 +1,4 @@
 --龍王の聖刻印
----@param c Card
 function c64514622.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

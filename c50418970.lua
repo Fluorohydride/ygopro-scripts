@@ -1,5 +1,4 @@
 --スピリット・バーナー
----@param c Card
 function c50418970.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

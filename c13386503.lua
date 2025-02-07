@@ -1,5 +1,4 @@
 --ジャッカルの霊騎士
----@param c Card
 function c13386503.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

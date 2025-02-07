@@ -1,5 +1,4 @@
 --スピードリフト
----@param c Card
 function c36730805.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

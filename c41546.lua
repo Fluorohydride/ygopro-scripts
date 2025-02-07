@@ -1,5 +1,4 @@
 --DD魔導賢者トーマス
----@param c Card
 function c41546.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

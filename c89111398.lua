@@ -1,5 +1,4 @@
 --砂塵の悪霊
----@param c Card
 function c89111398.initial_effect(c)
 	--spirit
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

@@ -1,5 +1,4 @@
 --万力魔神バイサー・デス
----@param c Card
 function c56043446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

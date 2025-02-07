@@ -1,5 +1,4 @@
 --スカル・マイスター
----@param c Card
 function c67750322.initial_effect(c)
 	--Inactivate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --死翼のフレスヴェイス
----@param c Card
 function c49105782.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_WIND),2)

@@ -1,5 +1,4 @@
 --ドライトロン流星群
----@param c Card
 function c84965420.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

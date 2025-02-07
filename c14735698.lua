@@ -1,5 +1,4 @@
 --影霊衣の降魔鏡
----@param c Card
 function c14735698.initial_effect(c)
 	--Activate
 	local e1=aux.AddRitualProcEqual2(c,c14735698.filter,nil,c14735698.filter,nil,true)

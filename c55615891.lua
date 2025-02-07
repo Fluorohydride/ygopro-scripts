@@ -1,5 +1,4 @@
 --E・HERO ワイルド・ウィングマン
----@param c Card
 function c55615891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

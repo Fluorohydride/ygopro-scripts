@@ -1,5 +1,4 @@
 --グラビティ・コントローラー
----@param c Card
 function c23656668.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

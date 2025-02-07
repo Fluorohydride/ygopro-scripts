@@ -1,6 +1,5 @@
 --魅惑の女王 LV3
 local s,id,o=GetID()
----@param c Card
 function c87257460.initial_effect(c)
 	aux.AddCodeList(c,87257460,23756165)
 	--equip

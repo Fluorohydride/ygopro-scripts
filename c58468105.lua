@@ -1,5 +1,4 @@
 --デンジャラス・デストーイ・ナイトメアリー
----@param c Card
 function c58468105.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

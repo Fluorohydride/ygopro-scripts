@@ -1,5 +1,4 @@
 --幻獣機エアロスバード
----@param c Card
 function c16943770.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

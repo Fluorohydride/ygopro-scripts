@@ -1,5 +1,4 @@
 --ウォークライ・メテオラゴン
----@param c Card
 function c10497636.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

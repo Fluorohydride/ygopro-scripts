@@ -1,5 +1,4 @@
 --オノマト連携
----@param c Card
 function c6595475.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

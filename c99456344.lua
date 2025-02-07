@@ -1,5 +1,4 @@
 --デスピアの大導劇神
----@param c Card
 function c99456344.initial_effect(c)
 	--disable effect
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ウィングド・ライノ
----@param c Card
 function c18430390.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

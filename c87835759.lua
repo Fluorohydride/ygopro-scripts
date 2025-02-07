@@ -1,5 +1,4 @@
 --創世の竜騎士
----@param c Card
 function c87835759.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

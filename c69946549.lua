@@ -1,5 +1,4 @@
 --捕食植物ドラゴスタペリア
----@param c Card
 function c69946549.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

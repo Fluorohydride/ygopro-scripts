@@ -1,5 +1,4 @@
 --女神スクルドの託宣
----@param c Card
 function c38576155.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

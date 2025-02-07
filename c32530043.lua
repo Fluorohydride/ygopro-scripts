@@ -1,5 +1,4 @@
 --御影志士
----@param c Card
 function c32530043.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

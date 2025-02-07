@@ -1,5 +1,4 @@
 --剣闘獣アウグストル
----@param c Card
 function c7573135.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --翼の恩返し
----@param c Card
 function c8843569.initial_effect(c)
 	--Draw
 	local e1=Effect.CreateEffect(c)

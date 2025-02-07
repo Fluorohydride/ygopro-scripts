@@ -1,6 +1,5 @@
 --スケアクロー・アストラ
 local s,id,o=GetID()
----@param c Card
 function c83488497.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

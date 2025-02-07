@@ -1,5 +1,4 @@
 --ドレミコード・ムジカ
----@param c Card
 function c56058749.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

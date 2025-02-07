@@ -1,5 +1,4 @@
 --王立魔法図書館
----@param c Card
 function c70791313.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,3)

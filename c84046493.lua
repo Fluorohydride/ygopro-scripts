@@ -1,5 +1,4 @@
 --ゴースト・ビーフ
----@param c Card
 function c84046493.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

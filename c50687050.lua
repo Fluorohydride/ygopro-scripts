@@ -1,6 +1,5 @@
 --針淵のヴァリアンツ－アルクトスⅩⅡ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	aux.AddFusionProcFunRep(c,s.matfilter,2,true)

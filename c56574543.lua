@@ -1,5 +1,4 @@
 --武神器－ツムガリ
----@param c Card
 function c56574543.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

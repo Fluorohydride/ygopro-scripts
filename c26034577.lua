@@ -1,5 +1,4 @@
 --インフェルノイド・ベルゼブル
----@param c Card
 function c26034577.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

@@ -1,5 +1,4 @@
 --エフェクト・ヴェーラー
----@param c Card
 function c97268402.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --運命湾曲
----@param c Card
 function c94662235.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

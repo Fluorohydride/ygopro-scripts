@@ -1,5 +1,4 @@
 --ミンゲイドラゴン
----@param c Card
 function c564541.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

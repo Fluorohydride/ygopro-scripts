@@ -1,6 +1,5 @@
 --メンタル・チューナー
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--level up/down
 	local e1=Effect.CreateEffect(c)

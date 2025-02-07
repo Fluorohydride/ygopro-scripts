@@ -1,5 +1,4 @@
 --リトル・フェアリー
----@param c Card
 function c45939611.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

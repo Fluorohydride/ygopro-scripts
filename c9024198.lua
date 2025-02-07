@@ -1,5 +1,4 @@
 --DDD深淵王ビルガメス
----@param c Card
 function c9024198.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --ジェムナイト・パーズ
----@param c Card
 function c49597193.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

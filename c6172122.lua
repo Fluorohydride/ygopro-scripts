@@ -1,5 +1,4 @@
 --真紅眼融合
----@param c Card
 function c6172122.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

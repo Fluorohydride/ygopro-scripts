@@ -1,5 +1,4 @@
 --幻影騎士団シェード・ブリガンダイン
----@param c Card
 function c98827725.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

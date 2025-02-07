@@ -1,5 +1,4 @@
 --墓守の祈祷師
----@param c Card
 function c58139128.initial_effect(c)
 	--def up
 	local e1=Effect.CreateEffect(c)

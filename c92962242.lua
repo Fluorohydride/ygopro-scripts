@@ -1,6 +1,5 @@
 --重の忍者－磁翁
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--change position
 	local e1=Effect.CreateEffect(c)

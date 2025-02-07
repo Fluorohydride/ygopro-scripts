@@ -1,5 +1,4 @@
 --裁きを下す女帝
----@param c Card
 function c15237615.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

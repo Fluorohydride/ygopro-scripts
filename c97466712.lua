@@ -1,5 +1,4 @@
 --ハック・ワーム
----@param c Card
 function c97466712.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

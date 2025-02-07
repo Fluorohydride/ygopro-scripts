@@ -1,5 +1,4 @@
 --極星天ヴァナディース
----@param c Card
 function c61777313.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

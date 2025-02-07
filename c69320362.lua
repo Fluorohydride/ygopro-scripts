@@ -1,5 +1,4 @@
 --伝説のゼンマイ
----@param c Card
 function c69320362.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

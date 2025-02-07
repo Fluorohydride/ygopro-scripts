@@ -1,5 +1,4 @@
 --アタック・リフレクター・ユニット
----@param c Card
 function c91989718.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

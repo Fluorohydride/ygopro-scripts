@@ -1,5 +1,4 @@
 --魔導獣士 ルード
----@param c Card
 function c65961085.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

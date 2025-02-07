@@ -1,5 +1,4 @@
 --六花精シクラン
----@param c Card
 function c34614910.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

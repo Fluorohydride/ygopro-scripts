@@ -1,5 +1,4 @@
 --ダークストーム・ドラゴン
----@param c Card
 function c57662975.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

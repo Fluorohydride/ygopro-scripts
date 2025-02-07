@@ -1,5 +1,4 @@
 --サイバネット・リカバー
----@param c Card
 function c73558460.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

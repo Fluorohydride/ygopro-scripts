@@ -1,5 +1,4 @@
 --海底に潜む深海竜
----@param c Card
 function c4404099.initial_effect(c)
 	c:EnableCounterPermit(0x23)
 	--add counter

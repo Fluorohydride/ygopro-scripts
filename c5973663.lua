@@ -1,5 +1,4 @@
 --世界樹
----@param c Card
 function c5973663.initial_effect(c)
 	c:EnableCounterPermit(0x18)
 	--Activate

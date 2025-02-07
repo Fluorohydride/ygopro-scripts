@@ -1,5 +1,4 @@
 --コード・ジェネレーター
----@param c Card
 function c30114823.initial_effect(c)
 	--hand link
 	local e1=Effect.CreateEffect(c)

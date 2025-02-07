@@ -1,5 +1,4 @@
 --手錠龍
----@param c Card
 function c97904474.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

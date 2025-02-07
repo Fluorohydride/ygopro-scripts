@@ -1,5 +1,4 @@
 --垂直着陸
----@param c Card
 function c904185.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

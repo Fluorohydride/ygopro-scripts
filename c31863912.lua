@@ -1,5 +1,4 @@
 --出目出し
----@param c Card
 function c31863912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

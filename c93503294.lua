@@ -1,5 +1,4 @@
 --オルターガイスト・プライムバンシー
----@param c Card
 function c93503294.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

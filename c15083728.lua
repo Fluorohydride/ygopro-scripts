@@ -1,5 +1,4 @@
 --粘着テープの家
----@param c Card
 function c15083728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

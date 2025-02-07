@@ -1,5 +1,4 @@
 --守護竜プロミネシス
----@param c Card
 function c79905468.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

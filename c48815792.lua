@@ -1,5 +1,4 @@
 --灼熱の火霊使いヒータ
----@param c Card
 function c48815792.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c48815792.lcheck)

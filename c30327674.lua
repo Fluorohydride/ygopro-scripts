@@ -1,6 +1,5 @@
 --カオス・ウィッチ－混沌の魔女－
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--token(dark beast)
 	local e1=Effect.CreateEffect(c)

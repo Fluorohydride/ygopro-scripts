@@ -1,5 +1,4 @@
 --蚊学忍法・軍蚊マーチ
----@param c Card
 function c68441986.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

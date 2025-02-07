@@ -1,5 +1,4 @@
 --賢者の石－サバティエル
----@param c Card
 function c80831721.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

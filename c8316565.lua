@@ -1,5 +1,4 @@
 --ジョルト・カウンター
----@param c Card
 function c8316565.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

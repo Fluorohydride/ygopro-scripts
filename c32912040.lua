@@ -1,5 +1,4 @@
 --トラミッド・マスター
----@param c Card
 function c32912040.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

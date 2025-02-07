@@ -1,5 +1,4 @@
 --光の援軍
----@param c Card
 function c94886282.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

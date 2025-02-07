@@ -1,5 +1,4 @@
 --魔導召喚士 テンペル
----@param c Card
 function c87608852.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

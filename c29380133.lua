@@ -1,5 +1,4 @@
 --ヤドカリュー
----@param c Card
 function c29380133.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

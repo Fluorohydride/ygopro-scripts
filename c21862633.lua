@@ -1,5 +1,4 @@
 --切り裂かれし闇
----@param c Card
 function c21862633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

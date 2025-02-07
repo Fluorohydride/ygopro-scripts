@@ -1,5 +1,4 @@
 --クリッター
----@param c Card
 function c26202165.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --六武衆の露払い
----@param c Card
 function c78792195.initial_effect(c)
 	--destroy
 	local e2=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --戦華の暴－董穎
 local s,id,o=GetID()
----@param c Card
 function c79582540.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

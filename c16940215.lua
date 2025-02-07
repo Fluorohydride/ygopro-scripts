@@ -1,5 +1,4 @@
 --ナチュル・ナーブ
----@param c Card
 function c16940215.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

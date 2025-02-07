@@ -1,5 +1,4 @@
 --剣闘獣レティアリィ
----@param c Card
 function c612115.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

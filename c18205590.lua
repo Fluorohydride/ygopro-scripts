@@ -1,5 +1,4 @@
 --天架ける星因士
----@param c Card
 function c18205590.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

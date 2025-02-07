@@ -1,5 +1,4 @@
 --亜空間物質転送装置
----@param c Card
 function c36261276.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

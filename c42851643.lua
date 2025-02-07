@@ -1,5 +1,4 @@
 --穿孔重機ドリルジャンボ
----@param c Card
 function c42851643.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

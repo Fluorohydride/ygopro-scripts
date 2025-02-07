@@ -1,5 +1,4 @@
 --ジャイロイド
----@param c Card
 function c18325492.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

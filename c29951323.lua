@@ -1,5 +1,4 @@
 --放電ムスタンガン
----@param c Card
 function c29951323.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

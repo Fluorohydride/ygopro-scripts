@@ -1,5 +1,4 @@
 --極夜の騎士ガイア
----@param c Card
 function c14882493.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

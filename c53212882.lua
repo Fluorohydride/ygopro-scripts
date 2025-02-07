@@ -1,5 +1,4 @@
 --ふわんだりぃず×すのーる
----@param c Card
 function c53212882.initial_effect(c)
 	--normal summon/set
 	local e1=Effect.CreateEffect(c)

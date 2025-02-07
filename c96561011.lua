@@ -1,5 +1,4 @@
 --真紅眼の闇竜
----@param c Card
 function c96561011.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

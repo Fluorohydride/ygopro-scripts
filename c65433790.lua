@@ -1,5 +1,4 @@
 --Battle Royal Mode－Joining
----@param c Card
 function c65433790.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

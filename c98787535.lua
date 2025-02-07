@@ -1,5 +1,4 @@
 --溟界の昏闇－アレート
----@param c Card
 function c98787535.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

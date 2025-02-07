@@ -1,6 +1,5 @@
 --ゴーティスの紅玉ゼップ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

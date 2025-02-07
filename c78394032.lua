@@ -1,5 +1,4 @@
 --モーターシェル
----@param c Card
 function c78394032.initial_effect(c)
 	aux.AddCodeList(c,82556059)
 	--"Motor Token" Summon

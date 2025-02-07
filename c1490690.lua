@@ -1,5 +1,4 @@
 --カノプスの守護者
----@param c Card
 function c1490690.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

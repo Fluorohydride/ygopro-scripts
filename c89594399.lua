@@ -1,5 +1,4 @@
 --レプティレス・コアトル
----@param c Card
 function c89594399.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --砲弾ヤリ貝
----@param c Card
 function c95614612.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--immune spell

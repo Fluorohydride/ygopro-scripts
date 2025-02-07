@@ -1,5 +1,4 @@
 --デーモンの招来
----@param c Card
 function c64635042.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

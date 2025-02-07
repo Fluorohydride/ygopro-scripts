@@ -1,5 +1,4 @@
 --シャーク・サッカー
----@param c Card
 function c20838380.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

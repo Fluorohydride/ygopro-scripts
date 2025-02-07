@@ -1,5 +1,4 @@
 --オーバーレイ・スナイパー
----@param c Card
 function c39229392.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

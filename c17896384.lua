@@ -1,5 +1,4 @@
 --魔法族の結界
----@param c Card
 function c17896384.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,4)

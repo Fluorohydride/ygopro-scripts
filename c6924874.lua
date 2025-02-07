@@ -1,5 +1,4 @@
 --ハーピィズペット仔竜
----@param c Card
 function c6924874.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

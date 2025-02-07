@@ -1,5 +1,4 @@
 --覇雷星ライジン
----@param c Card
 function c99991455.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

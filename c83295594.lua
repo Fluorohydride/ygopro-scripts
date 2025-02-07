@@ -1,5 +1,4 @@
 --スチーム・シンクロン
----@param c Card
 function c83295594.initial_effect(c)
 	--synchro effect
 	local e1=Effect.CreateEffect(c)

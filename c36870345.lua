@@ -1,5 +1,4 @@
 --ドラグニティ－アキュリス
----@param c Card
 function c36870345.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --種子弾丸
----@param c Card
 function c81524977.initial_effect(c)
 	c:EnableCounterPermit(0x20)
 	c:SetCounterLimit(0x20,5)

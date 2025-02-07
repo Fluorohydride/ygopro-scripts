@@ -1,5 +1,4 @@
 --軒轅の相剣師
----@param c Card
 function c82489470.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--negate attack

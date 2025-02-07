@@ -1,5 +1,4 @@
 --ゼロ・エクストラリンク
----@param c Card
 function c60162470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

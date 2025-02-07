@@ -1,5 +1,4 @@
 --ユニコールの影霊衣
----@param c Card
 function c89463537.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

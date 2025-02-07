@@ -1,5 +1,4 @@
 --混沌帝龍 －終焉の使者－
----@param c Card
 function c82301904.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,5 +1,4 @@
 --BF－ツインシャドウ
----@param c Card
 function c69973414.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--Activate

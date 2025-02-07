@@ -1,6 +1,5 @@
 --エクシーズ・アーマー・トルピード
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

@@ -1,5 +1,4 @@
 --ヴァレット・キャリバー
----@param c Card
 function c67127799.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

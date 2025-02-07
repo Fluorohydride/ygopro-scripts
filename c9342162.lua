@@ -1,5 +1,4 @@
 --彼岸の悪鬼 ハロウハウンド
----@param c Card
 function c9342162.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

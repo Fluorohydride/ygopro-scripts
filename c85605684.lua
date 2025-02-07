@@ -1,5 +1,4 @@
 --バーサーク・デッド・ドラゴン
----@param c Card
 function c85605684.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon limit

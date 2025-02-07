@@ -1,5 +1,4 @@
 --精霊神后 ドリアード
----@param c Card
 function c32965616.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

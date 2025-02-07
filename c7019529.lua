@@ -1,5 +1,4 @@
 --空の昆虫兵
----@param c Card
 function c7019529.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

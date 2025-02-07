@@ -1,5 +1,4 @@
 --翼の魔妖－波旬
----@param c Card
 function c41729254.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

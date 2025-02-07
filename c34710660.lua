@@ -1,5 +1,4 @@
 --超電磁タートル
----@param c Card
 function c34710660.initial_effect(c)
 	--end battle phase
 	local e1=Effect.CreateEffect(c)

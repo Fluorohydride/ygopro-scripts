@@ -1,5 +1,4 @@
 --マイン・モール
----@param c Card
 function c94079037.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

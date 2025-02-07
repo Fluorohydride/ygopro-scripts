@@ -1,5 +1,4 @@
 --連成する振動
----@param c Card
 function c15582767.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

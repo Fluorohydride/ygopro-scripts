@@ -1,5 +1,4 @@
 --月光白兎
----@param c Card
 function c84812868.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

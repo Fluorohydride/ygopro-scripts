@@ -1,5 +1,4 @@
 --幻獣機レイステイルス
----@param c Card
 function c30811116.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

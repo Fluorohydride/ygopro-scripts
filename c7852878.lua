@@ -1,5 +1,4 @@
 --針三千本
----@param c Card
 function c7852878.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

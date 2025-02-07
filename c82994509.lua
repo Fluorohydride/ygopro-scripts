@@ -1,5 +1,4 @@
 --ツクシー
----@param c Card
 function c82994509.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --D－フォーメーション
----@param c Card
 function c74329404.initial_effect(c)
 	c:EnableCounterPermit(0x1c)
 	--Activate

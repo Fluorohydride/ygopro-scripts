@@ -1,5 +1,4 @@
 --極星獣グリンブルスティ
----@param c Card
 function c65626958.initial_effect(c)
 	--substitute
 	local e1=Effect.CreateEffect(c)

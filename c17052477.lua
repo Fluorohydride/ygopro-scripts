@@ -1,5 +1,4 @@
 --守護神の宝札
----@param c Card
 function c17052477.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

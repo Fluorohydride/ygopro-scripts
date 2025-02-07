@@ -1,5 +1,4 @@
 --魔轟神アンドレイス
----@param c Card
 function c9061682.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)

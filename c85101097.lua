@@ -1,5 +1,4 @@
 --プリン隊
----@param c Card
 function c85101097.initial_effect(c)
 	--cannot release
 	local e1=Effect.CreateEffect(c)

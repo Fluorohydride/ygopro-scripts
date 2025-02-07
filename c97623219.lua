@@ -1,5 +1,4 @@
 --エレメント・ヴァルキリー
----@param c Card
 function c97623219.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

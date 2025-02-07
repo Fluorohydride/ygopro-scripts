@@ -1,5 +1,4 @@
 --Z－メタル・キャタピラー
----@param c Card
 function c64500000.initial_effect(c)
 	aux.EnableUnionAttribute(c,c64500000.filter)
 	--Atk up

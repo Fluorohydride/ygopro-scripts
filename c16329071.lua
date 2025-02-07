@@ -1,5 +1,4 @@
 --星遺物に蠢く罠
----@param c Card
 function c16329071.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

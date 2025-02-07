@@ -1,5 +1,4 @@
 --No.48 シャドー・リッチ
----@param c Card
 function c1426714.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

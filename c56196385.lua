@@ -1,5 +1,4 @@
 --鉄獣戦線 キット
----@param c Card
 function c56196385.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

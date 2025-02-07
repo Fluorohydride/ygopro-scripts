@@ -1,5 +1,4 @@
 --サブテラーの妖魔
----@param c Card
 function c74762582.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

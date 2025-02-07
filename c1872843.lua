@@ -1,5 +1,4 @@
 --夢魔鏡の白騎士－ルペウス
----@param c Card
 function c1872843.initial_effect(c)
 	aux.AddCodeList(c,1050355,38267552)
 	--indestructable

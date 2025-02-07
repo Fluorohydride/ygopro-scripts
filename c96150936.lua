@@ -1,5 +1,4 @@
 --フレッシュマドルチェ・シスタルト
----@param c Card
 function c96150936.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x71),2,2)

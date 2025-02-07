@@ -1,5 +1,4 @@
 --覇王龍ズァーク
----@param c Card
 function c13331639.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcMix(c,false,true,c13331639.fusfilter1,c13331639.fusfilter2,c13331639.fusfilter3,c13331639.fusfilter4)

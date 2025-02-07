@@ -1,5 +1,4 @@
 --エレメント・デビル
----@param c Card
 function c23118924.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

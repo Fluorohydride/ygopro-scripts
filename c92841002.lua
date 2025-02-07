@@ -1,5 +1,4 @@
 --幻水龍
----@param c Card
 function c92841002.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

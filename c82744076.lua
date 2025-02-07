@@ -1,5 +1,4 @@
 --チューニングガム
----@param c Card
 function c82744076.initial_effect(c)
 	--tuner
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --デスサイズ・キラー
----@param c Card
 function c66973070.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

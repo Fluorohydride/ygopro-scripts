@@ -1,5 +1,4 @@
 --レプティレス・ニャミニ
----@param c Card
 function c42090294.initial_effect(c)
 	--change atk
 	local e1=Effect.CreateEffect(c)

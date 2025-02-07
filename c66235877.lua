@@ -1,5 +1,4 @@
 --デス・デーモン・ドラゴン
----@param c Card
 function c66235877.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --エッジインプ・DTモドキ
----@param c Card
 function c34566435.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

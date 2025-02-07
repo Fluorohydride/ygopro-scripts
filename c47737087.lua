@@ -1,5 +1,4 @@
 --E・HERO ランパートガンナー
----@param c Card
 function c47737087.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

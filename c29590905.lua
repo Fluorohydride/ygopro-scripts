@@ -1,5 +1,4 @@
 --スーパージュニア対決！
----@param c Card
 function c29590905.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

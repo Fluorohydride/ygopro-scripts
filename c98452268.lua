@@ -1,5 +1,4 @@
 --覇王黒竜オッドアイズ・リベリオン・ドラゴン－オーバーロード
----@param c Card
 function c98452268.initial_effect(c)
 	c:SetSPSummonOnce(98452268)
 	--xyz summon

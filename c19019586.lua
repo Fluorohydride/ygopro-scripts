@@ -1,5 +1,4 @@
 --ジェムエレファント
----@param c Card
 function c19019586.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --D-HERO ダッシュガイ
----@param c Card
 function c81866673.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --メンタル・カウンセラー リリー
----@param c Card
 function c5519829.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

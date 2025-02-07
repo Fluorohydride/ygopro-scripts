@@ -1,5 +1,4 @@
 --トライエッジ・マスター
----@param c Card
 function c52445243.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

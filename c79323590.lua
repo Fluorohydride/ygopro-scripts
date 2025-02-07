@@ -1,5 +1,4 @@
 --魔力の枷
----@param c Card
 function c79323590.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

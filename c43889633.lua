@@ -1,5 +1,4 @@
 --忘却の海底神殿
----@param c Card
 function c43889633.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate

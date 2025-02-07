@@ -1,5 +1,4 @@
 --赤鬼
----@param c Card
 function c68722455.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

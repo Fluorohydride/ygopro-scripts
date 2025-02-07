@@ -1,5 +1,4 @@
 --ネイビィロイド
----@param c Card
 function c46848859.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エクソシスターズ・マニフィカ
----@param c Card
 function c59242457.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

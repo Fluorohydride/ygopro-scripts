@@ -1,5 +1,4 @@
 --ドロー・ディスチャージ
----@param c Card
 function c26557451.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

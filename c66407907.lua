@@ -1,5 +1,4 @@
 --聖種の天双芽
----@param c Card
 function c66407907.initial_effect(c)
 	--SpecialSummon
 	local e1=Effect.CreateEffect(c)

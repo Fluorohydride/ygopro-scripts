@@ -1,5 +1,4 @@
 --ロケット・ジャンパー
----@param c Card
 function c53890795.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

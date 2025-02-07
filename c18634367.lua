@@ -1,5 +1,4 @@
 --スクリーン・オブ・レッド
----@param c Card
 function c18634367.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--activate

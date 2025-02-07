@@ -1,5 +1,4 @@
 --氷結界の三方陣
----@param c Card
 function c64990807.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

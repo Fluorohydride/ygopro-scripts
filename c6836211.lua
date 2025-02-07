@@ -1,5 +1,4 @@
 --大皇帝ペンギン
----@param c Card
 function c6836211.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

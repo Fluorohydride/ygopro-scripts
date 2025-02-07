@@ -1,5 +1,4 @@
 --Uk－P.U.N.K.カープ・ライジング
----@param c Card
 function c18313046.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

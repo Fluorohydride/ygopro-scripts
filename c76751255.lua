@@ -1,5 +1,4 @@
 --イグナイト・リロード
----@param c Card
 function c76751255.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

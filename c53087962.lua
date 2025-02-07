@@ -1,5 +1,4 @@
 --ベアルクティ－セプテン＝トリオン
----@param c Card
 function c53087962.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

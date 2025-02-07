@@ -1,5 +1,4 @@
 --破械神シュヤーマ
----@param c Card
 function c88554436.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

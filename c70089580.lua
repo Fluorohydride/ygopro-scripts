@@ -1,5 +1,4 @@
 --オーロラ・ウィング
----@param c Card
 function c70089580.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

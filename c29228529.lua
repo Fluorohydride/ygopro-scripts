@@ -1,5 +1,4 @@
 --魔法再生
----@param c Card
 function c29228529.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND)

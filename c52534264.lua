@@ -1,5 +1,4 @@
 --第弐次未界域探険隊
----@param c Card
 function c52534264.initial_effect(c)
 	--activate inst
 	local e1=Effect.CreateEffect(c)

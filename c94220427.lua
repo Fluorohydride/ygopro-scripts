@@ -1,5 +1,4 @@
 --RUM－アージェント・カオス・フォース
----@param c Card
 function c94220427.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

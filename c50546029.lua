@@ -1,5 +1,4 @@
 --Gゴーレム・ディグニファイド・トリリトン
----@param c Card
 function c50546029.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkAttribute,ATTRIBUTE_EARTH),2)

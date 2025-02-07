@@ -1,6 +1,5 @@
 --魔法名－「解体し統合せよ」
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

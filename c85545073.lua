@@ -1,5 +1,4 @@
 --デストーイ・シザー・ベアー
----@param c Card
 function c85545073.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --リンク・ディヴォーティー
----@param c Card
 function c48068378.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

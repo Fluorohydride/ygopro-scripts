@@ -1,5 +1,4 @@
 --ロイヤルナイツ
----@param c Card
 function c68280530.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

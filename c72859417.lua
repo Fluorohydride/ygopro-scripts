@@ -1,5 +1,4 @@
 --LL－バード・サンクチュアリ
----@param c Card
 function c72859417.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

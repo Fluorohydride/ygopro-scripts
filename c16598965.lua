@@ -1,5 +1,4 @@
 --聖邪のステンドグラス
----@param c Card
 function c16598965.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

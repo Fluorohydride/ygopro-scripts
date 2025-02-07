@@ -1,5 +1,4 @@
 --死霊王 ドーハスーラ
----@param c Card
 function c39185163.initial_effect(c)
 	--negate / banish
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --月光輪廻舞踊
----@param c Card
 function c11193246.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

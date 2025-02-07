@@ -1,5 +1,4 @@
 --王座の侵略者
----@param c Card
 function c3056267.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

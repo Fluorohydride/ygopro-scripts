@@ -1,5 +1,4 @@
 --漆黒の名馬
----@param c Card
 function c12324546.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

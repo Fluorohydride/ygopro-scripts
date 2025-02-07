@@ -1,5 +1,4 @@
 --救急救命
----@param c Card
 function c24019261.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --肆世壊の牙掌突
----@param c Card
 function c79552283.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate

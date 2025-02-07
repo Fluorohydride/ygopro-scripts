@@ -1,5 +1,4 @@
 --先史遺産アカンバロの土偶
----@param c Card
 function c24506253.initial_effect(c)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)

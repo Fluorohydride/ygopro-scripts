@@ -1,5 +1,4 @@
 --与奪の首飾り
----@param c Card
 function c48576971.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

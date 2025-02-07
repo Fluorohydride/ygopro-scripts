@@ -1,5 +1,4 @@
 --孤高除獣
----@param c Card
 function c92998610.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)

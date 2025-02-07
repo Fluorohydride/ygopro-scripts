@@ -1,5 +1,4 @@
 --武装鍛錬
----@param c Card
 function c27979109.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

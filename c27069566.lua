@@ -1,5 +1,4 @@
 --電脳堺凰－凰々
----@param c Card
 function c27069566.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --アンブラル・ウィル・オ・ザ・ウィスプ
----@param c Card
 function c70546737.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

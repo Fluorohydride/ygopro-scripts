@@ -1,5 +1,4 @@
 --前線基地
----@param c Card
 function c46181000.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ドレミコード・エレガンス
----@param c Card
 function c27870337.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

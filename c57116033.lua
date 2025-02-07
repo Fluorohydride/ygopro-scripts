@@ -1,5 +1,4 @@
 --ハネクリボー
----@param c Card
 function c57116033.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(57116033,0))

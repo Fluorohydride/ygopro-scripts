@@ -1,5 +1,4 @@
 --ドラグマ・パニッシュメント
----@param c Card
 function c82956214.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

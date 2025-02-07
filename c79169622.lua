@@ -1,5 +1,4 @@
 --極氷獣ポーラ・ペンギン
----@param c Card
 function c79169622.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

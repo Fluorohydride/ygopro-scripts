@@ -1,5 +1,4 @@
 --方界業
----@param c Card
 function c9659580.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

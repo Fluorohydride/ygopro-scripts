@@ -1,5 +1,4 @@
 --流星方界器デューザ
----@param c Card
 function c20137754.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

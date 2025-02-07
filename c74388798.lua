@@ -1,5 +1,4 @@
 --サイレント・ソードマン LV5
----@param c Card
 function c74388798.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

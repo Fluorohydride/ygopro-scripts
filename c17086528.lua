@@ -1,5 +1,4 @@
 --相生の魔術師
----@param c Card
 function c17086528.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

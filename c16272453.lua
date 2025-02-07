@@ -1,5 +1,4 @@
 --機甲忍法ゴールド・コンバージョン
----@param c Card
 function c16272453.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

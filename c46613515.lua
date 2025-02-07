@@ -1,5 +1,4 @@
 --クリアクリボー
----@param c Card
 function c46613515.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

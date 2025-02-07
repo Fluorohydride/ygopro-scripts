@@ -1,5 +1,4 @@
 --ジャンク・ガードナー
----@param c Card
 function c37993923.initial_effect(c)
 	aux.AddMaterialCodeList(c,63977008)
 	--synchro summon

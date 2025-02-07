@@ -1,5 +1,4 @@
 --アーケイン・ファイロ
----@param c Card
 function c40048324.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--search

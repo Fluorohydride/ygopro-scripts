@@ -1,5 +1,4 @@
 --S－Force ドッグ・タッグ
----@param c Card
 function c65479980.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

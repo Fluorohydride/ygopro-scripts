@@ -1,5 +1,4 @@
 --ダーク・パーシアス
----@param c Card
 function c76925842.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --人造人間7号
----@param c Card
 function c32809211.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

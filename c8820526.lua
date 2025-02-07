@@ -1,5 +1,4 @@
 --EMクレイブレイカー
----@param c Card
 function c8820526.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

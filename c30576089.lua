@@ -1,5 +1,4 @@
 --ブルーアイズ・ジェット・ドラゴン
----@param c Card
 function c30576089.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--special summon

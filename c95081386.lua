@@ -1,5 +1,4 @@
 --スリーストライク・バリア
----@param c Card
 function c95081386.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

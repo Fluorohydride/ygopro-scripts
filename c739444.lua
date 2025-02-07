@@ -1,5 +1,4 @@
 --マガジンドラムゴン
----@param c Card
 function c739444.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --王の影 ロプトル
----@param c Card
 function c94183877.initial_effect(c)
 	c:SetUniqueOnField(1,0,94183877)
 	--atk/def up

@@ -1,5 +1,4 @@
 --A・ジェネクス・トライアーム
----@param c Card
 function c17760003.initial_effect(c)
 	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon

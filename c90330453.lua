@@ -1,5 +1,4 @@
 --魔女狩り
----@param c Card
 function c90330453.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

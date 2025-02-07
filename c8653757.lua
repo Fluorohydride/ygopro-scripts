@@ -1,5 +1,4 @@
 --フォトン・リタデイション
----@param c Card
 function c8653757.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

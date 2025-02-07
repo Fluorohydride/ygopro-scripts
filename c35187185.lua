@@ -1,5 +1,4 @@
 --夢魔鏡の天魔－ネイロス
----@param c Card
 function c35187185.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
