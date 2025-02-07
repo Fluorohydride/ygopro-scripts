@@ -33,7 +33,7 @@ function c1527418.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c1527418.recfilter,tp,LOCATION_MZONE,0,1,nil) end
 	local g=Duel.GetMatchingGroup(c1527418.recfilter,tp,LOCATION_MZONE,0,nil)
 	local rec=g:GetClassCount(Card.GetCode)*500
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,1-tp,rec)
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,rec)
 end
 function c1527418.recop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c1527418.recfilter,tp,LOCATION_MZONE,0,nil)

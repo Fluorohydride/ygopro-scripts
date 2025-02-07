@@ -259,6 +259,51 @@ function Auxiliary.NeosReturnTargetOptional(set_category)
 				if set_category then set_category(e,tp,eg,ep,ev,re,r,rp) end
 			end
 end
+---add "Toss a coin and get the following effects" effect to Arcana Force monsters
+---@param c Card
+---@param event1 integer
+---@param ... integer
+function Auxiliary.EnableArcanaCoin(c,event1,...)
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(1623)
+	e1:SetCategory(CATEGORY_COIN)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetCode(event1)
+	e1:SetTarget(Auxiliary.ArcanaCoinTarget)
+	e1:SetOperation(Auxiliary.ArcanaCoinOperation)
+	c:RegisterEffect(e1)
+	for _,event in ipairs{...} do
+		local e2=e1:Clone()
+		e2:SetCode(event)
+		c:RegisterEffect(e2)
+	end
+end
+function Auxiliary.ArcanaCoinTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
+end
+function Auxiliary.ArcanaCoinOperation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local res=0
+	local toss=false
+	if Duel.IsPlayerAffectedByEffect(tp,73206827) then
+		res=1-Duel.SelectOption(tp,60,61)
+	else
+		res=Duel.TossCoin(tp,1)
+		toss=true
+	end
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if toss then
+		c:RegisterFlagEffect(FLAG_ID_REVERSAL_OF_FATE,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,res,63-res)
+end
+---condition of Arcana Force monster effect from coin toss
+---@param e Effect
+---@return boolean
+function Auxiliary.ArcanaCondition(e)
+	return e:GetHandler():GetFlagEffect(FLAG_ID_ARCANA_COIN)>0
+end
 function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
 	return c:IsHasEffect(EFFECT_UNION_STATUS) and c:GetEquipTarget()
@@ -863,7 +908,7 @@ end
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
-	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
+	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x1019))
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
@@ -1007,7 +1052,7 @@ function Auxiliary.DrytronSpSummonCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function Auxiliary.DrytronSpSummonLimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsSummonableCard()
+	return c:IsSummonableCard() and c:GetOriginalType()&(TYPE_SPELL|TYPE_TRAP|TYPE_TRAPMONSTER)==0
 end
 function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==100 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -1576,6 +1621,94 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 		g:Clear()
 	end
 end
+--Once the card has been moved to the public area, it should be listened to again
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
+	local g=Group.CreateGroup()
+	g:KeepAlive()
+	local mt=getmetatable(c)
+	local seed=0
+	if type(events) == "table" then
+		for _, event in ipairs(events) do
+			seed = seed + event
+		end
+	else
+		seed = events
+	end
+	while(mt[seed]==true) do
+		seed = seed + 1
+	end
+	mt[seed]=true
+	local event_code_single = (code ~ (seed << 16)) | EVENT_CUSTOM
+	if type(events) == "table" then
+		for _, event in ipairs(events) do
+			Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
+		end
+	else
+		Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,events,event_code_single)
+	end
+	--listened to again
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e3:SetCode(EVENT_MOVE)
+	e3:SetLabelObject(g)
+	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
+	c:RegisterEffect(e3)
+	return event_code_single
+end
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(event)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e1:SetRange(0xff)
+	e1:SetLabel(event_code_single)
+	e1:SetLabelObject(g)
+	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingleCard)
+	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetCode(EVENT_CHAIN_END)
+	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingleCard)
+	c:RegisterEffect(e2)
+end
+function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetOwner()
+	local g=e:GetLabelObject()
+	if c:IsFaceup() or c:IsPublic() then
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	local c=e:GetOwner()
+	g:Merge(eg)
+	if Duel.CheckEvent(EVENT_MOVE) then
+		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
+			g:Clear()
+		end
+	end
+	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	if Duel.CheckEvent(EVENT_MOVE) then
+		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
+		local c=e:GetOwner()
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
+			g:Clear()
+		end
+	end
+	if #g>0 then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
 --B.E.S. remove counter
 function Auxiliary.EnableBESRemove(c)
 	local e1=Effect.CreateEffect(c)
@@ -1792,4 +1925,28 @@ function Auxiliary.BecomeOriginalCode(c,tc,reset)
 	e1:SetReset(reset)
 	c:RegisterEffect(e1)
 	return e1
+end
+---@param category integer
+---@return function
+function Auxiliary.EffectCategoryFilter(category)
+	---@param e Effect
+	return function (e)
+		return e:IsHasCategory(category)
+	end
+end
+---@param flag integer
+---@return function
+function Auxiliary.EffectPropertyFilter(flag)
+	---@param e Effect
+	return function (e)
+		return e:IsHasProperty(flag)
+	end
+end
+---@param flag integer
+---@return function
+function Auxiliary.MonsterEffectPropertyFilter(flag)
+	---@param e Effect
+	return function (e)
+		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
+	end
 end

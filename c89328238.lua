@@ -34,12 +34,14 @@ end
 function s.act(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local d=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
-	Duel.Draw(p,d,REASON_EFFECT)
-	Duel.BreakEffect()
-	Duel.ShuffleHand(tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.GetFieldGroup(p,LOCATION_HAND,0):Select(p,d,d,nil)
-	aux.PlaceCardsOnDeckBottom(tp,g)
+	local dc=Duel.Draw(p,d,REASON_EFFECT)
+	if dc>0 then
+		Duel.BreakEffect()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+		local g=Duel.GetFieldGroup(p,LOCATION_HAND,0):Select(p,dc,dc,nil)
+		Duel.ShuffleHand(tp)
+		aux.PlaceCardsOnDeckBottom(tp,g)
+	end
 end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_END

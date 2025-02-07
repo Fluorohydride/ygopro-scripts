@@ -59,7 +59,6 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		if sc and Duel.Equip(tp,tc,sc) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetLabelObject(sc)
