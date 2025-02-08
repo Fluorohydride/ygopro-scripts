@@ -604,6 +604,7 @@ EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召
 EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
 EFFECT_KAISER_COLOSSEUM			=370	--皇帝斗技场
 EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
+EFFECT_TREAT_AS_2_XMATERIAL		=372	--需3只以上作素材的超量怪兽时可以作为2只数量
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
