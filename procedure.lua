@@ -418,6 +418,7 @@ end
 --Xyz Summon
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
 	return alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
+		and not c:IsHasEffect(EFFECT_XYZ_MIN_COUNT)
 		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
 ---Xyz monster, lv k*n
@@ -649,7 +650,15 @@ function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
 	return (not c:IsOnField() or c:IsFaceup()) and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
-	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
+	if Duel.GetLocationCountFromEx(tp,tp,g,xyzc)<=0 then return false end
+	if gf and not gf(g) then return false end
+	local lg=g:Filter(Card.IsHasEffect,nil,EFFECT_XYZ_MIN_COUNT)
+	for c in Auxiliary.Next(lg) do
+		local le=c:IsHasEffect(EFFECT_XYZ_MIN_COUNT)
+		local ct=le:GetValue()
+		if #g<ct then return false end
+	end
+	return true
 end
 function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 	return	function(e,c,og,min,max)
