@@ -18,7 +18,7 @@ function c30888983.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c30888983.cfilter(c,rc)
-	return c:IsFaceup() and c:IsRace(rc)
+	return c:IsFaceup() and c:IsRace(rc) and not c:IsStatus(STATUS_FLIP_SUMMONING)
 end
 function c30888983.filter(c)
 	return Duel.IsExistingMatchingCard(c30888983.cfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c:GetRace())
