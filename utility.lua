@@ -1476,6 +1476,15 @@ function Auxiliary.GetCappedLevel(c)
 	end
 end
 --
+function Auxiliary.GetCappedXyzLevel(c)
+	local lv=c:GetLevel()
+	if lv>MAX_XYZ_LEVEL then
+		return MAX_XYZ_LEVEL
+	else
+		return lv
+	end
+end
+--
 function Auxiliary.GetCappedAttack(c)
 	local x=c:GetAttack()
 	if x>MAX_PARAMETER then
