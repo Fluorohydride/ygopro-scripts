@@ -48,8 +48,8 @@ function s.value(e,c)
 	return math.max(0,c:GetLevel()-c:GetOriginalLevel())*500
 end
 function s.tfilter(c,tp)
-	return c:IsLocation(LOCATION_ONFIELD) and (aux.IsCodeListed(c,79791878) or c:IsCode(79791878))
-		and c:IsControler(tp) and c:IsFaceup()
+	return c:IsOnField() and c:IsControler(tp) and c:IsFaceup()
+		and (c:IsCode(79791878) or c:IsType(TYPE_MONSTER) and aux.IsCodeListed(c,79791878))
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp or e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
