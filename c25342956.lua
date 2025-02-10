@@ -1,6 +1,5 @@
 --ジェムナイトマスター・ダイヤ－ディスパージョン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x47),3,true)

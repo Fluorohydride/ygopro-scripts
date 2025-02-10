@@ -1,6 +1,5 @@
 --光なき影 ア＝バオ・ア・クゥー
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,99,s.lcheck)
