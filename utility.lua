@@ -1959,7 +1959,7 @@ end
 ---@param uniqf? function
 ---@param ... any
 ---@return boolean
-function yume.QuickDualSelectCheck(g1,g2,uniqf,...)
+function Auxiliary.QuickDualSelectCheck(g1,g2,uniqf,...)
 	local g3=g1&g2
 	return #g1>0 and #g2>0 and not (#g1==#g3 and #g2==#g3 and #g1==1)
 end
@@ -1973,7 +1973,7 @@ end
 ---@param opf? function
 ---@param ... any
 ---@return Group
-function yume.QuickDualSelect(tp,g1,g2,msg1,msg2,opf,...)
+function Auxiliary.QuickDualSelect(tp,g1,g2,msg1,msg2,opf,...)
 	local g3=g1&g2
 	local excard=nil
 	if #g2==#g3 and #g3==1 then excard=g3:GetFirst() end
