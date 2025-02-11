@@ -1257,11 +1257,7 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
-	local code={}
-	for i=1,cc do
-		code[i]=code1
-	end
-	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
+	Auxiliary.AddFusionProcMixRep(c,sub,insf,code,cc,cc)
 end
 ---Fusion monster, name * minc to maxc
 ---@param c Card
@@ -1281,11 +1277,7 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
-	local fun={}
-	for i=1,cc do
-		fun[i]=f
-	end
-	Auxiliary.AddFusionProcMix(c,sub,insf,code1,table.unpack(fun))
+	Auxiliary.AddFusionProcMixRep(c,sub,insf,code1,cc,cc)
 end
 ---Fusion monster, condition + condition
 ---@param c Card
@@ -1301,11 +1293,7 @@ end
 ---@param cc integer
 ---@param insf boolean
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
-	local fun={}
-	for i=1,cc do
-		fun[i]=f
-	end
-	Auxiliary.AddFusionProcMix(c,false,insf,table.unpack(fun))
+	Auxiliary.AddFusionProcMix(c,false,insf,f,cc,cc)
 end
 ---Fusion monster, condition * minc to maxc
 ---@param c Card
@@ -1323,11 +1311,7 @@ end
 ---@param cc integer
 ---@param insf boolean
 function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,insf)
-	local fun={}
-	for i=1,cc do
-		fun[i]=f2
-	end
-	Auxiliary.AddFusionProcMix(c,false,insf,f1,table.unpack(fun))
+	Auxiliary.AddFusionProcMixRep(c,false,insf,f2,cc,cc,f1)
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
