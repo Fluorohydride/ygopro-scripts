@@ -48,7 +48,9 @@ function c73468603.cfilter(c)
 	return c:IsFacedown() and c:GetFlagEffect(73468603)~=0
 end
 function c73468603.con(e)
-	return Duel.IsExistingMatchingCard(c73468603.cfilter,0,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+	if Duel.IsExistingMatchingCard(c73468603.cfilter,0,LOCATION_FZONE,LOCATION_FZONE,1,nil) then return true end
+	e:Reset()
+	return false
 end
 function c73468603.actlimit(e,re,tp)
 	return re:IsActiveType(TYPE_FIELD) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():GetFlagEffect(73468603)==0
