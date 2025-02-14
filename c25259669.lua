@@ -24,8 +24,8 @@ function c25259669.sumop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c25259669.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		if g:GetCount()>0 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-			if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
+			if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0
+				and c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
 				Duel.BreakEffect()
 				Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 			end
