@@ -49,7 +49,7 @@ function c31076103.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c31076103.cfilter1(c,code)
-	return c:IsFaceup() and c:IsCode(code)
+	return c:IsFaceup() and c:IsCode(code) and c:IsCanBePlacedOnField()
 end
 function c31076103.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end

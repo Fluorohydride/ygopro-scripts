@@ -43,7 +43,8 @@ function c22865492.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c22865492.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and e:GetHandler():IsCanBePlacedOnField() end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function c22865492.operation(e,tp,eg,ep,ev,re,r,rp)
