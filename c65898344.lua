@@ -51,19 +51,24 @@ end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if #g==2 and Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+		local resetv=1
+		if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()<=PHASE_STANDBY then
+			resetv=2
+		end
 		local og=Duel.GetOperatedGroup()
 		local oc=og:GetFirst()
 		while oc do
-			oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
+			oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,resetv)
 			oc=og:GetNext()
 		end
 		og:KeepAlive()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
-		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
+		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,resetv)
 		e1:SetCountLimit(1)
 		e1:SetLabelObject(og)
+		e1:SetValue(Duel.GetTurnCount())
 		e1:SetCondition(s.retcon)
 		e1:SetOperation(s.retop)
 		Duel.RegisterEffect(e1,tp)
@@ -73,7 +78,9 @@ function s.retfilter(c)
 	return c:GetFlagEffect(id)>0
 end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp
+	if Duel.GetTurnPlayer()~=tp or Duel.GetTurnCount()==e:GetValue() then return false end
+	local g=e:GetLabelObject()
+	return g:IsExists(s.retfilter,1,nil)
 end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
