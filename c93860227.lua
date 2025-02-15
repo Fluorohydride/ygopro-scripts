@@ -35,7 +35,7 @@ function s.ffilter1(c,fc,sub,mg,sg)
 	return c:GetEquipGroup():IsExists(s.eqilter,1,nil)
 end
 function s.ffilter2(c,fc,sub,mg,sg)
-	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:GetOriginalRace()&RACE_FIEND~=0
+	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:IsRace(RACE_FIEND)
 end
 function s.tgfilter(c)
 	return c:IsPreviousLocation(LOCATION_HAND) and c:IsType(TYPE_MONSTER)
