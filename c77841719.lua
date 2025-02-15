@@ -20,7 +20,7 @@ function c77841719.initial_effect(c)
 end
 function c77841719.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousControler(tp) and rp==1-tp
+	return c:IsPreviousControler(tp) and rp==1-tp and (not c:IsLocation(LOCATION_HAND) or c:IsPreviousPosition(POS_FACEUP))
 end
 function c77841719.filter(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged()
