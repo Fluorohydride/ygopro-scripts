@@ -1,5 +1,4 @@
 --ディープ・スィーパー
----@param c Card
 function c8649148.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

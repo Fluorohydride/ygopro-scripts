@@ -1,5 +1,4 @@
 --深海のアーチザン
----@param c Card
 function c8495780.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

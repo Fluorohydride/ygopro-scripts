@@ -1,5 +1,4 @@
 --LL－アセンブリー・ナイチンゲール
----@param c Card
 function c48608796.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)

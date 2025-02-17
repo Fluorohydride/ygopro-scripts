@@ -1,6 +1,5 @@
 --オルフェゴール・ガラテアi
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--link summon
 	aux.AddCodeList(c,90351981)

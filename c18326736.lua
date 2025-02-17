@@ -1,5 +1,4 @@
 --星守の騎士 プトレマイオス
----@param c Card
 function c18326736.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2,nil,nil,99)

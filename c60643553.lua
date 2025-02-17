@@ -1,5 +1,4 @@
 --儚無みずき
----@param c Card
 function c60643553.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

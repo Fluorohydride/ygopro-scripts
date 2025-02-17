@@ -1,6 +1,5 @@
 --冑の忍者－櫓丸
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material

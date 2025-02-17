@@ -1,5 +1,4 @@
 --超重蒸鬼テツドウ－O
----@param c Card
 function c17775525.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x9a),aux.NonTuner(Card.IsSetCard,0x9a),2)

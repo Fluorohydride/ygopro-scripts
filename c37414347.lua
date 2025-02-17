@@ -1,5 +1,4 @@
 --F.A.シャイニングスターGT
----@param c Card
 function c37414347.initial_effect(c)
 	c:EnableCounterPermit(0x4a)
 	--link summon

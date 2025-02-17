@@ -1,5 +1,4 @@
 --海晶乙女シースター
----@param c Card
 function c62886670.initial_effect(c)
 	--boost
 	local e1=Effect.CreateEffect(c)

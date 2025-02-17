@@ -1,5 +1,4 @@
 --スクラップ・ゴーレム
----@param c Card
 function c82012319.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

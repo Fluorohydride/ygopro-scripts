@@ -1,5 +1,4 @@
 --幻角獣フュプノコーン
----@param c Card
 function c20351153.initial_effect(c)
 	--destroy
 	local e3=Effect.CreateEffect(c)

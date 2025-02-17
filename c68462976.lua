@@ -1,5 +1,4 @@
 --魔法族の里
----@param c Card
 function c68462976.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

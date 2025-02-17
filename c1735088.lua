@@ -1,5 +1,4 @@
 --発条補修ゼンマイコン
----@param c Card
 function c1735088.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x58),2,2)

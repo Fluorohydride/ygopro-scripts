@@ -1,5 +1,4 @@
 --召喚制限－猛突するモンスター
----@param c Card
 function c30834988.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

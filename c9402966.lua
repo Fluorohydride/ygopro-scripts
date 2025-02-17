@@ -1,5 +1,4 @@
 --超重武者タマ－C
----@param c Card
 function c9402966.initial_effect(c)
 	--synchro summon
 	local e1=Effect.CreateEffect(c)

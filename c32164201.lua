@@ -1,5 +1,4 @@
 --ZW－天馬双翼剣
----@param c Card
 function c32164201.initial_effect(c)
 	c:SetUniqueOnField(1,0,32164201)
 	--Special Summon

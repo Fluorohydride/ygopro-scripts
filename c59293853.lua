@@ -6,6 +6,7 @@ function s.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetCountLimit(1,id)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
@@ -30,13 +31,12 @@ function s.filter(c,e,tp)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function s.posfilter(c)
 	return c:IsFaceup() and c:IsCanTurnSet()
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)+Duel.GetLocationCount(1-tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
@@ -44,13 +44,15 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local s1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		local s2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE,1-tp)
 		local op=aux.SelectFromOptions(tp,
-		{s1,aux.Stringid(id,2),tp},
-		{s2,aux.Stringid(id,3),1-tp})
-		if Duel.SpecialSummon(tc,0,tp,op,false,false,op==tp and POS_FACEUP or POS_FACEDOWN_DEFENCE)~=0
-			and Duel.IsExistingMatchingCard(s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+			{s1,aux.Stringid(id,2),tp},
+			{s2,aux.Stringid(id,3),1-tp})
+		local sumpos=op==tp and POS_FACEUP or POS_FACEDOWN_DEFENCE
+		if Duel.SpecialSummon(tc,0,tp,op,false,false,sumpos)==0 then return end
+		if op==1-tp then Duel.ConfirmCards(1-tp,tc) end
+		if Duel.IsExistingMatchingCard(s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 			local sg=Duel.SelectMatchingCard(tp,s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 			Duel.HintSelection(sg)
 			Duel.ChangePosition(sg:GetFirst(),POS_FACEDOWN_DEFENSE)

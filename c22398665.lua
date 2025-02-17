@@ -1,5 +1,4 @@
 --流星輝巧群
----@param c Card
 function c22398665.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

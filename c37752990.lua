@@ -1,5 +1,4 @@
 --ダイナミスト・ケラトプス
----@param c Card
 function c37752990.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

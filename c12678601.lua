@@ -1,5 +1,4 @@
 --ティンダングル・ドールス
----@param c Card
 function c12678601.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

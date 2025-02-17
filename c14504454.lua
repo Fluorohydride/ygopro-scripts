@@ -1,5 +1,4 @@
 --悪魔嬢アリス
----@param c Card
 function c14504454.initial_effect(c)
 	--self spsummon
 	local e1=Effect.CreateEffect(c)

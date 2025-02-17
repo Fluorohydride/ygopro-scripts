@@ -1,5 +1,4 @@
 --天雷震龍－サンダー・ドラゴン
----@param c Card
 function c5206415.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

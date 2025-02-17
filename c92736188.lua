@@ -1,5 +1,4 @@
 --グレート・スピリット
----@param c Card
 function c92736188.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

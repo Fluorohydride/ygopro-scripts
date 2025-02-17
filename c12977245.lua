@@ -1,5 +1,4 @@
 --オルターガイスト・フィフィネラグ
----@param c Card
 function c12977245.initial_effect(c)
 	--can't be target
 	local e1=Effect.CreateEffect(c)

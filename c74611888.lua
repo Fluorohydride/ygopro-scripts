@@ -1,5 +1,4 @@
 --手のひら返し
----@param c Card
 function c74611888.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

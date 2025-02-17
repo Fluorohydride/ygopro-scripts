@@ -1,5 +1,4 @@
 --拘束解放波
----@param c Card
 function c98847704.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

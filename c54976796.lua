@@ -1,5 +1,4 @@
 --レベル制限A地区
----@param c Card
 function c54976796.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

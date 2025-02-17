@@ -1,5 +1,4 @@
 --真紅眼の幼竜
----@param c Card
 function c58257569.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

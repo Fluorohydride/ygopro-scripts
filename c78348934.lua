@@ -1,5 +1,4 @@
 --破壊剣士の宿命
----@param c Card
 function c78348934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

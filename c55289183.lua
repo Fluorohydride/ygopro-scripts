@@ -1,5 +1,4 @@
 --享楽の堕天使
----@param c Card
 function c55289183.initial_effect(c)
 	--tribute summon
 	local e1=Effect.CreateEffect(c)

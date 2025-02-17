@@ -1,5 +1,4 @@
 --サルベージ
----@param c Card
 function c96947648.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

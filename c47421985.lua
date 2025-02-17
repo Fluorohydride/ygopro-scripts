@@ -1,5 +1,4 @@
 --ハイドロ・ジェネクス
----@param c Card
 function c47421985.initial_effect(c)
 	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon

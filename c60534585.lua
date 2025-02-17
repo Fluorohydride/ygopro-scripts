@@ -1,5 +1,4 @@
 --闘争本能
----@param c Card
 function c60534585.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

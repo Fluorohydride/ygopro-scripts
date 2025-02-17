@@ -1,5 +1,4 @@
 --魂のリレー
----@param c Card
 function c42776960.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

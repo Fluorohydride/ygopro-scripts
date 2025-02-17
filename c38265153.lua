@@ -1,5 +1,4 @@
 --電脳エナジーショック
----@param c Card
 function c38265153.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--Activate

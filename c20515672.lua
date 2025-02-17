@@ -1,5 +1,4 @@
 --S－Force ナイトチェイサー
----@param c Card
 function c20515672.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c20515672.mat,1,1)

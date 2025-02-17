@@ -1,5 +1,4 @@
 --ゴブリンの小役人
----@param c Card
 function c1918087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

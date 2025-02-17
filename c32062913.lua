@@ -1,5 +1,4 @@
 --メガトン魔導キャノン
----@param c Card
 function c32062913.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

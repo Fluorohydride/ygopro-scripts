@@ -1,5 +1,4 @@
 --VS パンテラ
----@param c Card
 function c66401502.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

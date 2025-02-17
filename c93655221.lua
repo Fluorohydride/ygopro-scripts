@@ -1,5 +1,4 @@
 --シールド・ハンドラ
----@param c Card
 function c93655221.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

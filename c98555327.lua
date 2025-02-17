@@ -1,5 +1,4 @@
 --銀河の魔導師
----@param c Card
 function c98555327.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

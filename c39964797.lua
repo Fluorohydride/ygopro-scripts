@@ -1,5 +1,4 @@
 --水晶機巧－クオンダム
----@param c Card
 function c39964797.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,5 +1,4 @@
 --占い魔女 チーちゃん
----@param c Card
 function c68078978.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

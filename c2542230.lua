@@ -1,5 +1,4 @@
 --スカーレッド・コクーン
----@param c Card
 function c2542230.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--Activate

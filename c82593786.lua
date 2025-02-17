@@ -1,5 +1,4 @@
 --タスケルトン
----@param c Card
 function c82593786.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

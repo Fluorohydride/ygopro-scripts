@@ -1,5 +1,4 @@
 --天空聖騎士アークパーシアス
----@param c Card
 function c16261341.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)

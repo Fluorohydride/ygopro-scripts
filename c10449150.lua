@@ -1,5 +1,4 @@
 --シャトルロイド
----@param c Card
 function c10449150.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

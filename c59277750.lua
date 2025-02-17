@@ -1,5 +1,4 @@
 --敵襲警報－イエローアラート－
----@param c Card
 function c59277750.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

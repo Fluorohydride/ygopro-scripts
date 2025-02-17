@@ -1,5 +1,4 @@
 --No.29 マネキンキャット
----@param c Card
 function c54191698.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,2,2)

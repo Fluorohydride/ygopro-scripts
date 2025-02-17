@@ -1,5 +1,4 @@
 --素早いモモンガ
----@param c Card
 function c22567609.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

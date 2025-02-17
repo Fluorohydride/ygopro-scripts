@@ -1,5 +1,4 @@
 --醒めない悪夢
----@param c Card
 function c69452756.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

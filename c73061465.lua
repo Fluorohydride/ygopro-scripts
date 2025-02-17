@@ -1,5 +1,4 @@
 --氷結界の封魔団
----@param c Card
 function c73061465.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

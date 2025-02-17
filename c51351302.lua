@@ -1,5 +1,4 @@
 --ウジャト眼を持つ男
----@param c Card
 function c51351302.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

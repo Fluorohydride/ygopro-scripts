@@ -1,5 +1,4 @@
 --コアラッコアラ
----@param c Card
 function c7243511.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

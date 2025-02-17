@@ -1,5 +1,4 @@
 --トリシューラの鼓動
----@param c Card
 function c6075533.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ジャンク・デストロイヤー
----@param c Card
 function c74860293.initial_effect(c)
 	aux.AddMaterialCodeList(c,63977008)
 	--synchro summon

@@ -1,5 +1,4 @@
 --取捨蘇生
----@param c Card
 function c50213848.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

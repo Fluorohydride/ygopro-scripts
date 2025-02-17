@@ -1,5 +1,4 @@
 --ゴゴゴジャイアント
----@param c Card
 function c39695323.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

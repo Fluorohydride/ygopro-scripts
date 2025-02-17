@@ -1,5 +1,4 @@
 --竜魂の幻泉
----@param c Card
 function c39122311.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

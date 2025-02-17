@@ -1,5 +1,4 @@
 --先史遺産マヤン・マシーン
----@param c Card
 function c25163248.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

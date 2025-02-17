@@ -1,5 +1,4 @@
 --トゥーン・ディフェンス
----@param c Card
 function c43509019.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

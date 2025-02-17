@@ -1,5 +1,4 @@
 --盆回し
----@param c Card
 function c73468603.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

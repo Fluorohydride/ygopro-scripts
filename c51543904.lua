@@ -1,5 +1,4 @@
 --No.99 希望皇龍ホープドラグーン
----@param c Card
 function c51543904.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,3,c51543904.ovfilter,aux.Stringid(51543904,0),3,c51543904.xyzop)

@@ -1,5 +1,4 @@
 --ミレニアム・アイズ・イリュージョニスト
----@param c Card
 function c89785779.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

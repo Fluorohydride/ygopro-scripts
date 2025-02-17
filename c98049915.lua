@@ -1,5 +1,4 @@
 --魔法のランプ
----@param c Card
 function c98049915.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

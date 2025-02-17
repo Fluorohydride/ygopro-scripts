@@ -1,5 +1,4 @@
 --輝神鳥ヴェーヌ
----@param c Card
 function c10441498.initial_effect(c)
 	c:EnableReviveLimit()
 	--change level

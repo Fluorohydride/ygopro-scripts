@@ -1,5 +1,4 @@
 --BF－白夜のグラディウス
----@param c Card
 function c28190303.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

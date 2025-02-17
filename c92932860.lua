@@ -1,5 +1,4 @@
 --EMミス・ディレクター
----@param c Card
 function c92932860.initial_effect(c)
 	--can not be battle target
 	local e1=Effect.CreateEffect(c)

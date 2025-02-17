@@ -1,5 +1,4 @@
 --被検体ミュートリアST－46
----@param c Card
 function c8200556.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

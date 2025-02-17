@@ -1,5 +1,4 @@
 --爆竜剣士イグニスターP
----@param c Card
 function c18239909.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSynchroType,TYPE_PENDULUM),1)

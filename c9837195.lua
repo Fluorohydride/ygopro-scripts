@@ -1,5 +1,4 @@
 --ガスタの神官 ムスト
----@param c Card
 function c9837195.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

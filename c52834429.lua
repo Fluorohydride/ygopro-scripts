@@ -1,5 +1,4 @@
 --オーロラの天気模様
----@param c Card
 function c52834429.initial_effect(c)
 	c:SetUniqueOnField(1,0,52834429)
 	--Activate

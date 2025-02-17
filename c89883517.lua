@@ -1,5 +1,4 @@
 --濡れ衣
----@param c Card
 function c89883517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

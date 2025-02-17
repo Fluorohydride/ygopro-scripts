@@ -1,5 +1,4 @@
 --究極恐獣
----@param c Card
 function c15894048.initial_effect(c)
 	--attack
 	local e1=Effect.CreateEffect(c)

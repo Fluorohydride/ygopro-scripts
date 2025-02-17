@@ -1,5 +1,4 @@
 --どぐう
----@param c Card
 function c95816395.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

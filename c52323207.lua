@@ -1,5 +1,4 @@
 --番兵ゴーレム
----@param c Card
 function c52323207.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

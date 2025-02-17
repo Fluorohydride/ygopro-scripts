@@ -1,5 +1,4 @@
 --ベアルクティ－グラン＝シャリオ
----@param c Card
 function c80086070.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

@@ -1,5 +1,4 @@
 --妖精竜 エンシェント
----@param c Card
 function c4179255.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

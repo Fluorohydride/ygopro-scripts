@@ -1,5 +1,4 @@
 --コードブレイカー・ウイルスバーサーカー
----@param c Card
 function c48736598.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

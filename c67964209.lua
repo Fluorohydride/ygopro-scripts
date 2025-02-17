@@ -1,5 +1,4 @@
 --神竜アクアバザル
----@param c Card
 function c67964209.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

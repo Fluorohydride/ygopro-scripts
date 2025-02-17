@@ -1,5 +1,4 @@
 --沈黙の剣士－サイレント・ソードマン
----@param c Card
 function c15180041.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

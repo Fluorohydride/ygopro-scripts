@@ -1,5 +1,4 @@
 --ボンディング－D2O
----@param c Card
 function c79402185.initial_effect(c)
 	aux.AddCodeList(c,43017476,58071123,6022371,85066822)
 	--Activate

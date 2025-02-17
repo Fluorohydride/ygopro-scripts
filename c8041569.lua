@@ -1,5 +1,4 @@
 --ラヴァル炎湖畔の淑女
----@param c Card
 function c8041569.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

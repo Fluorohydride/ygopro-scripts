@@ -1,5 +1,4 @@
 --ダイナレスラー・カポエラプトル
----@param c Card
 function c29996433.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

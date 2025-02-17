@@ -1,5 +1,4 @@
 --トゥーン・デーモン
----@param c Card
 function c91842653.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()

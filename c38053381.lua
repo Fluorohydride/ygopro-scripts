@@ -1,5 +1,4 @@
 --王の舞台
----@param c Card
 function c38053381.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

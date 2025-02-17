@@ -1,5 +1,4 @@
 --大儺主水
----@param c Card
 function c73898890.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c73898890.lcheck)
@@ -32,7 +31,7 @@ function c73898890.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c73898890.lcheck(g)
-	return g:IsExists(Card.IsType,1,nil,TYPE_RITUAL)
+	return g:IsExists(Card.IsLinkType,1,nil,TYPE_RITUAL)
 end
 function c73898890.tdfilter(c)
 	return c:IsAbleToDeck() and c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER)

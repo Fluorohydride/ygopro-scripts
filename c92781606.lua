@@ -1,5 +1,4 @@
 --エクスクローラー・クオリアーク
----@param c Card
 function c92781606.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

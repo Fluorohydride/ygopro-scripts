@@ -1,5 +1,4 @@
 --スプライト・キャロット
----@param c Card
 function c2311090.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --守護竜アガーペイン
----@param c Card
 function c59537380.initial_effect(c)
 	c:SetSPSummonOnce(59537380)
 	--link summon

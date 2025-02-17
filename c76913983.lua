@@ -1,5 +1,4 @@
 --BF－アームズ・ウィング
----@param c Card
 function c76913983.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x33),aux.NonTuner(nil),1)

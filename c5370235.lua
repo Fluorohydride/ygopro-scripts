@@ -1,6 +1,5 @@
 --サイバー・ダーク・キメラ
 --not fully implemented
----@param c Card
 function c5370235.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

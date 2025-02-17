@@ -1,5 +1,4 @@
 --放浪の勇者 フリード
----@param c Card
 function c16556849.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(16556849,0))

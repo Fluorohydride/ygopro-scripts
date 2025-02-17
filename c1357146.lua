@@ -1,5 +1,4 @@
 --粋カエル
----@param c Card
 function c1357146.initial_effect(c)
 	--change code
 	aux.EnableChangeCode(c,84451804)

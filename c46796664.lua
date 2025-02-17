@@ -1,5 +1,4 @@
 --DD魔導賢者コペルニクス
----@param c Card
 function c46796664.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,5 +1,4 @@
 --憑依装着－アウス
----@param c Card
 function c31887905.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

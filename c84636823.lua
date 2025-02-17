@@ -1,5 +1,4 @@
 --マジック・キャンセラー
----@param c Card
 function c84636823.initial_effect(c)
 	--cannot trigger
 	local e1=Effect.CreateEffect(c)

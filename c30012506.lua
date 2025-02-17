@@ -1,5 +1,4 @@
 --A－アサルト・コア
----@param c Card
 function c30012506.initial_effect(c)
 	aux.EnableUnionAttribute(c,c30012506.filter)
 	--immune

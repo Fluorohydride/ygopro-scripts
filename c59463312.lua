@@ -1,5 +1,4 @@
 --冥帝従騎エイドス
----@param c Card
 function c59463312.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

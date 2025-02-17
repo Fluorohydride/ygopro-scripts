@@ -1,5 +1,4 @@
 --サイレント・アングラー
----@param c Card
 function c90303176.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ダーク・オネスト
----@param c Card
 function c26914168.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

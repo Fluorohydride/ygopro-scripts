@@ -1,5 +1,4 @@
 --聖剣カリバーン
----@param c Card
 function c23562407.initial_effect(c)
 	c:SetUniqueOnField(1,0,23562407)
 	--Activate

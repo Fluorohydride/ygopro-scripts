@@ -1,5 +1,4 @@
 --王墓の罠
----@param c Card
 function c80955168.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

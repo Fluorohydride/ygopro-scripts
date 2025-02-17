@@ -1,5 +1,4 @@
 --邪悪な儀式
----@param c Card
 function c12470447.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

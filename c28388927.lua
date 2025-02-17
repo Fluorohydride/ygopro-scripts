@@ -1,5 +1,4 @@
 --B・F－毒針のニードル
----@param c Card
 function c28388927.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

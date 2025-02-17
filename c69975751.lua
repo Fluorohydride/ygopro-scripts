@@ -1,5 +1,4 @@
 --ドラグニティ－ギザーム
----@param c Card
 function c69975751.initial_effect(c)
 	--special summon(graveyard)
 	local e1=Effect.CreateEffect(c)

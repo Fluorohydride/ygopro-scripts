@@ -1,5 +1,4 @@
 --サイバース・マジシャン
----@param c Card
 function c24731391.initial_effect(c)
 	c:EnableReviveLimit()
 	--halve damage

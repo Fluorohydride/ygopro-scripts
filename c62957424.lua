@@ -1,5 +1,4 @@
 --彼岸の悪鬼 リビオッコ
----@param c Card
 function c62957424.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

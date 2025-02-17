@@ -1,5 +1,4 @@
 --機械天使の絶対儀式
----@param c Card
 function c11398951.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --真竜凰の使徒
----@param c Card
 function c75425320.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

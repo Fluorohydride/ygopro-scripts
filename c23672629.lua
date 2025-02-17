@@ -1,5 +1,4 @@
 --ヴァリアント・シャーク・ランサー
----@param c Card
 function c23672629.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

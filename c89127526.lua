@@ -1,5 +1,4 @@
 --バリア・リゾネーター
----@param c Card
 function c89127526.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

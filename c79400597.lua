@@ -1,5 +1,4 @@
 --静冠の呪眼
----@param c Card
 function c79400597.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

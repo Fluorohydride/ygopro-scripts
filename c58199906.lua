@@ -1,5 +1,4 @@
 --サイバネティック・フュージョン・サポート
----@param c Card
 function c58199906.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

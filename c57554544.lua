@@ -1,5 +1,4 @@
 --炎王の孤島
----@param c Card
 function c57554544.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

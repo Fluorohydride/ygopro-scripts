@@ -1,5 +1,4 @@
 --煉獄の狂宴
----@param c Card
 function c31548814.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --不知火流 輪廻の陣
----@param c Card
 function c78765160.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

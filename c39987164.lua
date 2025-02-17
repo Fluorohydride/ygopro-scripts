@@ -1,5 +1,4 @@
 --ヴァイロン・ディシグマ
----@param c Card
 function c39987164.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

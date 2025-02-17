@@ -1,5 +1,4 @@
 --魔装戦士 ハイドロータス
----@param c Card
 function c82176812.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

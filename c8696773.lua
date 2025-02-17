@@ -1,5 +1,4 @@
 --陽炎獣 ヒュドラー
----@param c Card
 function c8696773.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

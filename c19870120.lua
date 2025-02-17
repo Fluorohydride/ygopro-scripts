@@ -1,5 +1,4 @@
 --進撃の帝王
----@param c Card
 function c19870120.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ディザーム
----@param c Card
 function c26834022.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

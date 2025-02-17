@@ -1,5 +1,4 @@
 --フォトン・クラッシャー
----@param c Card
 function c1362589.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

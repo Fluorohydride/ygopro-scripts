@@ -1,5 +1,4 @@
 --超重剣聖ムサ－C
----@param c Card
 function c75988594.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

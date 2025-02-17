@@ -1,6 +1,5 @@
 --邪炎帝王テスタロス
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--tribute from each field for advance summon
 	local e1=Effect.CreateEffect(c)

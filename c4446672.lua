@@ -1,5 +1,4 @@
 --古代の機械爆弾
----@param c Card
 function c4446672.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

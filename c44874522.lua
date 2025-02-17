@@ -1,5 +1,4 @@
 --古代の機械熱核竜
----@param c Card
 function c44874522.initial_effect(c)
 	--mat check
 	local e1=Effect.CreateEffect(c)
@@ -42,8 +41,8 @@ function c44874522.valcheck(e,c)
 	local flag=0
 	local tc=g:GetFirst()
 	while tc do
-		if tc:IsSetCard(0x7) then flag=bit.bor(flag,0x1) end
-		if tc:IsSetCard(0x51) then flag=bit.bor(flag,0x2) end
+		if tc:IsSetCard(0x7) and tc:IsType(TYPE_MONSTER) then flag=bit.bor(flag,0x1) end
+		if tc:IsSetCard(0x51) and tc:IsType(TYPE_MONSTER) then flag=bit.bor(flag,0x2) end
 		tc=g:GetNext()
 	end
 	e:SetLabel(flag)

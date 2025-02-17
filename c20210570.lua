@@ -1,5 +1,4 @@
 --レグルス
----@param c Card
 function c20210570.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --星遺物からの目醒め
----@param c Card
 function c12989604.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

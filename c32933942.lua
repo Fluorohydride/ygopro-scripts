@@ -1,5 +1,4 @@
 --宝玉獣 アメジスト・キャット
----@param c Card
 function c32933942.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

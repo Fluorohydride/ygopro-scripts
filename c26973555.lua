@@ -1,5 +1,4 @@
 --FNo.0 未来龍皇ホープ
----@param c Card
 function c26973555.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --魔轟神レイヴン
----@param c Card
 function c47217354.initial_effect(c)
 	--lv atk up
 	local e1=Effect.CreateEffect(c)

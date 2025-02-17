@@ -1,5 +1,4 @@
 --大波小波
----@param c Card
 function c51562916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

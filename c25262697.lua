@@ -1,5 +1,4 @@
 --墓守の暗殺者
----@param c Card
 function c25262697.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

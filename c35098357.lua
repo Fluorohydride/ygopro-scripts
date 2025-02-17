@@ -1,5 +1,4 @@
 --ウィッチクラフト・コンフュージョン
----@param c Card
 function c35098357.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

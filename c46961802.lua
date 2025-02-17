@@ -1,5 +1,4 @@
 --クロス・アタック
----@param c Card
 function c46961802.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

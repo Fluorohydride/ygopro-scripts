@@ -1,5 +1,4 @@
 --崩界の守護竜
----@param c Card
 function c47393199.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

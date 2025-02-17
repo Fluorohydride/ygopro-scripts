@@ -1,5 +1,4 @@
 --BF－南風のアウステル
----@param c Card
 function c17465972.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--cannot special summon

@@ -1,6 +1,5 @@
 --おすすめ軍貫握り
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableCounterPermit(0x66)
 	aux.SushipMentionsTable=aux.SushipMentionsTable or {61027400,78362751,42377643}

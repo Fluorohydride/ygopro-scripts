@@ -1,5 +1,4 @@
 --絶体絶命
----@param c Card
 function c27744077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

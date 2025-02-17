@@ -1,5 +1,4 @@
 --氷結界の交霊師
----@param c Card
 function c88494899.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

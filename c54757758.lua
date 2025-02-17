@@ -1,5 +1,4 @@
 --沼地のドロゴン
----@param c Card
 function c54757758.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

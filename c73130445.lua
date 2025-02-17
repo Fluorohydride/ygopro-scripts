@@ -1,5 +1,4 @@
 --EMリザードロー
----@param c Card
 function c73130445.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

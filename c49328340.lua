@@ -1,5 +1,4 @@
 --螺旋槍殺
----@param c Card
 function c49328340.initial_effect(c)
 	aux.AddCodeList(c,6368038,16589042,66889139)
 	--activate

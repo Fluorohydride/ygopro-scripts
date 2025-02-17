@@ -1,5 +1,4 @@
 --キャノン・ソルジャー
----@param c Card
 function c11384280.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

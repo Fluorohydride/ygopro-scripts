@@ -1,5 +1,4 @@
 --XX－セイバー ダークソウル
----@param c Card
 function c31383545.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

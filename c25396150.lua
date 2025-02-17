@@ -1,5 +1,4 @@
 --アマゾネス拝謁の間
----@param c Card
 function c25396150.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

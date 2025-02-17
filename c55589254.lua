@@ -1,5 +1,4 @@
 --氷炎の双竜
----@param c Card
 function c55589254.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

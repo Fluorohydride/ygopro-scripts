@@ -1,5 +1,4 @@
 --磁石の戦士マグネット・バルキリオン
----@param c Card
 function c75347539.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

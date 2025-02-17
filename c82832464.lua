@@ -1,5 +1,4 @@
 --ネフティスの覚醒
----@param c Card
 function c82832464.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

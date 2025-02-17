@@ -1,5 +1,4 @@
 --ハーピィの羽根帚
----@param c Card
 function c18144506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

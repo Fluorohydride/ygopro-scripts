@@ -1,5 +1,4 @@
 --The アトモスフィア
----@param c Card
 function c14466224.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

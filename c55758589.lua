@@ -1,5 +1,4 @@
 --フォトン・ワイバーン
----@param c Card
 function c55758589.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

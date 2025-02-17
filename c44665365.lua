@@ -1,5 +1,4 @@
 --神光の宣告者
----@param c Card
 function c44665365.initial_effect(c)
 	c:EnableReviveLimit()
 	--Negate

@@ -1,5 +1,4 @@
 --星杯の守護竜アルマドゥーク
----@param c Card
 function c95793022.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

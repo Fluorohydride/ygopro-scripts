@@ -1,5 +1,4 @@
 --CNo.9 天蓋妖星カオス・ダイソン・スフィア
----@param c Card
 function c32559361.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,3)

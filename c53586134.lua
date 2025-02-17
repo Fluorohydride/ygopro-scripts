@@ -1,5 +1,4 @@
 --バブル・ショット
----@param c Card
 function c53586134.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--Activate

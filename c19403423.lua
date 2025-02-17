@@ -1,5 +1,4 @@
 --時を裂く魔瞳
----@param c Card
 function c19403423.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

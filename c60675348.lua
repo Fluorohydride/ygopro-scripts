@@ -1,5 +1,4 @@
 --ダイナミスト・ハウリング
----@param c Card
 function c60675348.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

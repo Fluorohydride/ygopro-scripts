@@ -1,5 +1,4 @@
 --地獄の扉越し銃
----@param c Card
 function c78783370.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

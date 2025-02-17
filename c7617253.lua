@@ -1,5 +1,4 @@
 --虹の行方
----@param c Card
 function c7617253.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

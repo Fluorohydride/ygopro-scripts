@@ -1,5 +1,4 @@
 --コアキメイル・アイス
----@param c Card
 function c54520292.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

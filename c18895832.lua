@@ -1,5 +1,4 @@
 --システム・ダウン
----@param c Card
 function c18895832.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -16,16 +15,10 @@ function c18895832.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c18895832.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
-end
-function c18895832.tfilter(c)
-	return not c:IsAbleToRemove()
+	return c:IsFaceupEx() and c:IsRace(RACE_MACHINE) and c:IsAbleToRemove()
 end
 function c18895832.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local g=Duel.GetMatchingGroup(c18895832.filter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil)
-		return g:GetCount()>0 and not g:IsExists(c18895832.tfilter,1,nil)
-	end
+	if chk==0 then return Duel.IsExistingMatchingCard(c18895832.filter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,nil) end
 	local g=Duel.GetMatchingGroup(c18895832.filter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end

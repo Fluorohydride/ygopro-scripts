@@ -1,5 +1,4 @@
 --強制転移
----@param c Card
 function c31036355.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

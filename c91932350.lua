@@ -1,5 +1,4 @@
 --ハーピィ・レディ1
----@param c Card
 function c91932350.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

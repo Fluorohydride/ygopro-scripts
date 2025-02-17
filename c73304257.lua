@@ -1,5 +1,4 @@
 --獣王アルファ
----@param c Card
 function c73304257.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,5 +1,4 @@
 --魔界台本「ドラマチック・ストーリー」
----@param c Card
 function c33503878.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

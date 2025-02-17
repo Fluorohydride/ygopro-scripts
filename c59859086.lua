@@ -1,5 +1,4 @@
 --スプラッシュ・メイジ
----@param c Card
 function c59859086.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

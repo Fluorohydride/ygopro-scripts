@@ -1,5 +1,4 @@
 --ジュラック・イグアノン
----@param c Card
 function c71106375.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71106375,0))

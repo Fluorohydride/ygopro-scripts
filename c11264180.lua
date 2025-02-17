@@ -1,5 +1,4 @@
 --TGX1－HL
----@param c Card
 function c11264180.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

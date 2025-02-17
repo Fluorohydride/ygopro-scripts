@@ -1,5 +1,4 @@
 --再臨の帝王
----@param c Card
 function c98552723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

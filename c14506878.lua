@@ -1,5 +1,4 @@
 --ダッカー
----@param c Card
 function c14506878.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

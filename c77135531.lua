@@ -1,5 +1,4 @@
 --竜の尖兵
----@param c Card
 function c77135531.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

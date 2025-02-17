@@ -1,5 +1,4 @@
 --天威無崩の地
----@param c Card
 function c39730727.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

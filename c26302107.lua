@@ -1,5 +1,4 @@
 --未界域のワーウルフ
----@param c Card
 function c26302107.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --冷薔薇の抱香
----@param c Card
 function c53503015.initial_effect(c)
 	--activate (draw and discard)
 	local e1=Effect.CreateEffect(c)

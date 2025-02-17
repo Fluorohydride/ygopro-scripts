@@ -1,5 +1,4 @@
 --転生炎獣の再起
----@param c Card
 function c83554231.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

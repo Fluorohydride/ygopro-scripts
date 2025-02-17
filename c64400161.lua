@@ -1,5 +1,4 @@
 --飛竜艇－ファンドラ
----@param c Card
 function c64400161.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

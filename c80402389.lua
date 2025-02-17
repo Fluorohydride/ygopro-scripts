@@ -1,5 +1,4 @@
 --大樹海
----@param c Card
 function c80402389.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

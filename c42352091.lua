@@ -1,5 +1,4 @@
 --ヌメロン・ウォール
----@param c Card
 function c42352091.initial_effect(c)
 	aux.AddCodeList(c,42352091,41418852)
 	--activate card

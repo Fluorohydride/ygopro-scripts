@@ -1,5 +1,4 @@
 --混沌の場
----@param c Card
 function c40089744.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,6)

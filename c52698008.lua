@@ -1,5 +1,4 @@
 --サイバース・ウィキッド
----@param c Card
 function c52698008.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2,2)

@@ -1,5 +1,4 @@
 --電脳堺龍－龍々
----@param c Card
 function c61641818.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedureLevelFree(c,c61641818.mfilter,c61641818.xyzcheck,2,99)

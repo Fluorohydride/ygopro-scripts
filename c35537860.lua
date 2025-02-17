@@ -1,5 +1,4 @@
 --精神同調波
----@param c Card
 function c35537860.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

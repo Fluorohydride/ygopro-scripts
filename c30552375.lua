@@ -1,5 +1,4 @@
 --グリッド・ロッド
----@param c Card
 function c30552375.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ホーリーナイツ・レイエル
----@param c Card
 function c23220533.initial_effect(c)
 	--Search/To Hand
 	local e1=Effect.CreateEffect(c)

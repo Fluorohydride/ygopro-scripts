@@ -1,5 +1,4 @@
 --スピア・シャーク
----@param c Card
 function c70655556.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --裏風の精霊
----@param c Card
 function c26517393.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

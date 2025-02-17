@@ -1,5 +1,4 @@
 --影星軌道兵器ハイドランダー
----@param c Card
 function c44009443.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

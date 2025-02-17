@@ -1,5 +1,4 @@
 --E-HERO マリシャス・デビル
----@param c Card
 function c86676862.initial_effect(c)
 	aux.AddCodeList(c,94820406)
 	--fusion material

@@ -1,5 +1,4 @@
 --達磨落師
----@param c Card
 function c35394356.initial_effect(c)
 	--atk 0
 	local e1=Effect.CreateEffect(c)

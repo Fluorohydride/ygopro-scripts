@@ -1,5 +1,4 @@
 --森羅の守神 アルセイ
----@param c Card
 function c10406322.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

@@ -1,5 +1,4 @@
 --フェニックス・ギア・フリード
----@param c Card
 function c69488544.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

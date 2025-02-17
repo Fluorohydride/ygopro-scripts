@@ -1,5 +1,4 @@
 --豪雨の結界像
----@param c Card
 function c10963799.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

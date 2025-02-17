@@ -1,5 +1,4 @@
 --カンツウツボ
----@param c Card
 function c69846323.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --重騎甲虫マイティ・ネプチューン
----@param c Card
 function c14357527.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

@@ -1,5 +1,4 @@
 --DD魔導賢者ニュートン
----@param c Card
 function c19302550.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

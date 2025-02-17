@@ -1,5 +1,4 @@
 --魂を喰らう者 バズー
----@param c Card
 function c40133511.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

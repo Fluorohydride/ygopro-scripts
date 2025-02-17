@@ -1,5 +1,4 @@
 --G・B・ハンター
----@param c Card
 function c4130270.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

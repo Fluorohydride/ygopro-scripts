@@ -1,5 +1,4 @@
 --武神器－ヘツカ
----@param c Card
 function c5818294.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --竜破壊の証
----@param c Card
 function c6390406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

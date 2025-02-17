@@ -1,5 +1,4 @@
 --クリムゾン・ヘル・セキュア
----@param c Card
 function c50215517.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--Activate

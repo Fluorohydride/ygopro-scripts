@@ -1,5 +1,4 @@
 --サイバー・ドラゴン・ノヴァ
----@param c Card
 function c58069384.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),5,2)

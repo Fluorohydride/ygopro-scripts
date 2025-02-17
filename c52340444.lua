@@ -1,5 +1,4 @@
 --閃刀機－ホーネットビット
----@param c Card
 function c52340444.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --天気予報
 local s,id,o=GetID()
----@param c Card
 function c18720257.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

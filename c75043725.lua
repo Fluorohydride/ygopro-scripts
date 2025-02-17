@@ -1,5 +1,4 @@
 --冥界の使者
----@param c Card
 function c75043725.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ナーガ
----@param c Card
 function c71829750.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

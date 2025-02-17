@@ -1,5 +1,4 @@
 --スワップリースト
----@param c Card
 function c30968774.initial_effect(c)
 	--reduce atk and draw
 	local e1=Effect.CreateEffect(c)

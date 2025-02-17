@@ -1,5 +1,4 @@
 --ティアラメンツ・レイノハート
----@param c Card
 function c73956664.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

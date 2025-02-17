@@ -1,5 +1,4 @@
 --EMショーダウン
----@param c Card
 function c92958307.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

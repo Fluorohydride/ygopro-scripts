@@ -1,5 +1,4 @@
 --キャッチ・コピー
----@param c Card
 function c2971446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヘルカイザー・ドラゴン
----@param c Card
 function c95888876.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--double atk

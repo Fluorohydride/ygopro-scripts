@@ -1,5 +1,4 @@
 --ディメンション・アトラクター
----@param c Card
 function c91800273.initial_effect(c)
 	--redirect
 	local e1=Effect.CreateEffect(c)

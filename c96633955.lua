@@ -1,5 +1,4 @@
 --相剣大公－承影
----@param c Card
 function c96633955.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,5 +1,4 @@
 --ニードル・ガンナー
----@param c Card
 function c17841097.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

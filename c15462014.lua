@@ -1,5 +1,4 @@
 --龍馬躓図
----@param c Card
 function c15462014.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

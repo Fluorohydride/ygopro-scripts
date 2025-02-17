@@ -1,5 +1,4 @@
 --龍皇の波動
----@param c Card
 function c9070454.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

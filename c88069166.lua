@@ -1,5 +1,4 @@
 --オーディンの眼
----@param c Card
 function c88069166.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

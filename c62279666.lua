@@ -1,5 +1,4 @@
 --星遺物が導く果て
----@param c Card
 function c62279666.initial_effect(c)
 	c:SetUniqueOnField(1,0,62279666)
 	--Activate

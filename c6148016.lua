@@ -1,5 +1,4 @@
 --ギアギアギア
----@param c Card
 function c6148016.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

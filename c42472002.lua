@@ -1,5 +1,4 @@
 --聖騎士コルネウス
----@param c Card
 function c42472002.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

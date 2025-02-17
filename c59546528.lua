@@ -1,5 +1,4 @@
 --氷結界の舞姫
----@param c Card
 function c59546528.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

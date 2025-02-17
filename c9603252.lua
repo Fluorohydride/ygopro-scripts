@@ -1,5 +1,4 @@
 --ウィッチクラフト・バイスマスター
----@param c Card
 function c9603252.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

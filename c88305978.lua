@@ -1,5 +1,4 @@
 --BF－陽炎のカーム
----@param c Card
 function c88305978.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

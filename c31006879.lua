@@ -1,5 +1,4 @@
 --ライディング・デュエル！アクセラレーション！
----@param c Card
 function c31006879.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

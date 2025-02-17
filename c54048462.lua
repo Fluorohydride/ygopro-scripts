@@ -1,5 +1,4 @@
 --魔轟神ヴァルキュルス
----@param c Card
 function c54048462.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)

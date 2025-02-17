@@ -1,5 +1,4 @@
 --無限起動ゴライアス
----@param c Card
 function c23689428.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c23689428.matfilter,1,1)

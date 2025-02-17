@@ -1,5 +1,4 @@
 --魔轟神トピー
----@param c Card
 function c46833854.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

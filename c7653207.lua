@@ -1,5 +1,4 @@
 --アクア・ジェット
----@param c Card
 function c7653207.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

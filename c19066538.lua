@@ -1,5 +1,4 @@
 --轟きの大海蛇
----@param c Card
 function c19066538.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

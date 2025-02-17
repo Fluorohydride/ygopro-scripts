@@ -1,6 +1,5 @@
 --エヴォルカイザー・ラーズ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,6,2)

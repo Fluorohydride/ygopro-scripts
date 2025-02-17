@@ -1,5 +1,4 @@
 --鉄獣戦線 凶鳥のシュライグ
----@param c Card
 function c99726621.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST),2,4)

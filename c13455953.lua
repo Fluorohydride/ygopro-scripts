@@ -1,5 +1,4 @@
 --極星霊ドヴェルグ
----@param c Card
 function c13455953.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

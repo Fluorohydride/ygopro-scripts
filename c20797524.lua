@@ -1,5 +1,4 @@
 --トライクラー
----@param c Card
 function c20797524.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

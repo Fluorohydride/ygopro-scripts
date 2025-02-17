@@ -1,5 +1,4 @@
 --ドラゴニック・ガード
----@param c Card
 function c78009994.initial_effect(c)
 	c:EnableCounterPermit(0x22)
 	--add counter

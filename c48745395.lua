@@ -1,5 +1,4 @@
 --白銀の城の魔神像
----@param c Card
 function c48745395.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

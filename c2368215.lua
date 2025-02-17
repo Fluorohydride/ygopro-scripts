@@ -1,5 +1,4 @@
 --魔界劇団－ハイパー・ディレクター
----@param c Card
 function c2368215.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

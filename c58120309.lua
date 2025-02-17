@@ -1,5 +1,4 @@
 --スターライト・ロード
----@param c Card
 function c58120309.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate

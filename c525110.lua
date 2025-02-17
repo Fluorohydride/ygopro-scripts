@@ -1,5 +1,4 @@
 --プチトマボー
----@param c Card
 function c525110.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --黒蛇病
----@param c Card
 function c47233801.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

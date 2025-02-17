@@ -1,5 +1,4 @@
 --クリアー・バイス・ドラゴン
----@param c Card
 function c97811903.initial_effect(c)
 	aux.AddCodeList(c,33900648)
 	--atk

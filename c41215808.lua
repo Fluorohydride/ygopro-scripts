@@ -1,5 +1,4 @@
 --ふわんだりぃずと夢の町
----@param c Card
 function c41215808.initial_effect(c)
 	--Normal Summon
 	local e1=Effect.CreateEffect(c)

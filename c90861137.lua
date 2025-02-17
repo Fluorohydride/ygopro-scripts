@@ -1,5 +1,4 @@
 --『焔聖剣－ジョワユーズ』
----@param c Card
 function c90861137.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

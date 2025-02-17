@@ -1,5 +1,4 @@
 --E・HERO キャプテン・ゴールド
----@param c Card
 function c80908502.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

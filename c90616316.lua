@@ -1,5 +1,4 @@
 --魔轟神獣ペガラサス
----@param c Card
 function c90616316.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

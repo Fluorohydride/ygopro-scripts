@@ -1,5 +1,4 @@
 --レスキューロイド
----@param c Card
 function c24311595.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

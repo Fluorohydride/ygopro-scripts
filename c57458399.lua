@@ -1,5 +1,4 @@
 --サテライト・シンクロン
----@param c Card
 function c57458399.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

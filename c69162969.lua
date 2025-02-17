@@ -1,5 +1,4 @@
 --ライトニング・ボルテックス
----@param c Card
 function c69162969.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

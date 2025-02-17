@@ -1,5 +1,4 @@
 --アルカナ ナイトジョーカー
----@param c Card
 function c6150044.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

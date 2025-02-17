@@ -1,5 +1,4 @@
 --競闘－クロス・ディメンション
----@param c Card
 function c56889.initial_effect(c)
 	aux.AddCodeList(c,83104731)
 	--Activate

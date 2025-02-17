@@ -1,5 +1,4 @@
 --ユニコーンの導き
----@param c Card
 function c63595262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

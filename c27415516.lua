@@ -1,6 +1,6 @@
 --水征竜－ストリーム
----@param c Card
 function c27415516.initial_effect(c)
+	aux.AddCodeList(c,26400609)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(27415516,0))

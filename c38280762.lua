@@ -1,5 +1,4 @@
 --紫炎の老中 エニシ
----@param c Card
 function c38280762.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon limit

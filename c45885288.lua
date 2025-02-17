@@ -1,5 +1,4 @@
 --ネオ・カイザー・グライダー
----@param c Card
 function c45885288.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

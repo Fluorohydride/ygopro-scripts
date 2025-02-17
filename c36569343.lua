@@ -1,5 +1,4 @@
 --紅炎の騎士
----@param c Card
 function c36569343.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

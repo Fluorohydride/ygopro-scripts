@@ -1,5 +1,4 @@
 --天威の拳僧
----@param c Card
 function c32519092.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c32519092.matfilter,1,1)

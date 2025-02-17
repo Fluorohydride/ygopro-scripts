@@ -1,5 +1,4 @@
 --究極伝導恐獣
----@param c Card
 function c18940556.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

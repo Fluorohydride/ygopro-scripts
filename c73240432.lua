@@ -1,5 +1,4 @@
 --エッジインプ・コットン・イーター
----@param c Card
 function c73240432.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

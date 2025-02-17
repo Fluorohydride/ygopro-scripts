@@ -1,5 +1,4 @@
 --伊弉波
----@param c Card
 function c43543777.initial_effect(c)
 	--spirit return
 	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)

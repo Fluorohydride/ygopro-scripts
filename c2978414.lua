@@ -1,5 +1,4 @@
 --No.46 神影龍ドラッグルーオン
----@param c Card
 function c2978414.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),8,2)

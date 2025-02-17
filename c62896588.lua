@@ -1,5 +1,4 @@
 --ナチュラル・チューン
----@param c Card
 function c62896588.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

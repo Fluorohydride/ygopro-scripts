@@ -1,5 +1,4 @@
 --除草獣
----@param c Card
 function c35448319.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

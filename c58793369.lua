@@ -1,5 +1,4 @@
 --竜輝巧－ファフニール
----@param c Card
 function c58793369.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

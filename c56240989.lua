@@ -1,5 +1,4 @@
 --エヴォルド・カシネリア
----@param c Card
 function c56240989.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

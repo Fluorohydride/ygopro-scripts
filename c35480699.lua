@@ -1,5 +1,4 @@
 --皆既日蝕の書
----@param c Card
 function c35480699.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

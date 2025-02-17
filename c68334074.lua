@@ -1,5 +1,4 @@
 --奇跡の復活
----@param c Card
 function c68334074.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--Activate

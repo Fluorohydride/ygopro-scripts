@@ -1,5 +1,4 @@
 --コアキメイル・マキシマム
----@param c Card
 function c65026212.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	c:EnableReviveLimit()

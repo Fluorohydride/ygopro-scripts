@@ -1,5 +1,4 @@
 --異国の剣士
----@param c Card
 function c85255550.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(85255550,0))

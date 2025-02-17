@@ -1,5 +1,4 @@
 --壱世壊を劈く弦声
----@param c Card
 function c6767771.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--activate

@@ -1,5 +1,4 @@
 --運命のドロー
----@param c Card
 function c856784.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --戦華史略－長坂之雄
----@param c Card
 function c4810585.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

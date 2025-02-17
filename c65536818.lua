@@ -1,5 +1,4 @@
 --源竜星－ボウテンコウ
----@param c Card
 function c65536818.initial_effect(c)
 	c:SetSPSummonOnce(65536818)
 	--synchro summon

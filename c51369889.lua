@@ -1,5 +1,4 @@
 --掃射特攻
----@param c Card
 function c51369889.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

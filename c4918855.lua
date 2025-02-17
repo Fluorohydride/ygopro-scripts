@@ -1,5 +1,4 @@
 --竜血公ヴァンパイア
----@param c Card
 function c4918855.initial_effect(c)
 	--Special Summon up to 2 Zombie monsters
 	local e1=Effect.CreateEffect(c)

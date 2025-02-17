@@ -1,5 +1,4 @@
 --覇王天龍オッドアイズ・アークレイ・ドラゴン
----@param c Card
 function c6218704.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--fusion summon

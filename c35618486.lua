@@ -1,5 +1,4 @@
 --インヴェルズの先鋭
----@param c Card
 function c35618486.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

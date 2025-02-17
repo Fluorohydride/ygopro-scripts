@@ -1,5 +1,4 @@
 --クリストロン・インパクト
----@param c Card
 function c99274184.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --D-HERO ドレッドサーヴァント
----@param c Card
 function c36625827.initial_effect(c)
 	aux.AddCodeList(c,75041269)
 	--summon success

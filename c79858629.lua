@@ -1,5 +1,4 @@
 --エクソシスター・イレーヌ
----@param c Card
 function c79858629.initial_effect(c)
 	aux.AddCodeList(c,5352328)
 	--draw

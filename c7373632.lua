@@ -1,5 +1,4 @@
 --神の進化
----@param c Card
 function c7373632.initial_effect(c)
 	aux.AddCodeList(c,21208154,62180201,57793869)
 	--Activate

@@ -1,5 +1,4 @@
 --H・C エクストラ・ソード
----@param c Card
 function c34143852.initial_effect(c)
 	--effect gain
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ヴァレルロード・F・ドラゴン
----@param c Card
 function c92892239.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

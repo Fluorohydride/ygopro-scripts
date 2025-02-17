@@ -1,6 +1,5 @@
 --赫ける王の烙印
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate

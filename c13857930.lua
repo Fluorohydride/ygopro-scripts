@@ -1,5 +1,4 @@
 --N・ティンクル・モス
----@param c Card
 function c13857930.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

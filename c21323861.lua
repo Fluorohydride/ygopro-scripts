@@ -1,5 +1,4 @@
 --酸の嵐
----@param c Card
 function c21323861.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --蛇神の勅命
----@param c Card
 function c80678380.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

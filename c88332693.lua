@@ -1,5 +1,4 @@
 --バスター・モード・ゼロ
----@param c Card
 function c88332693.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--Activate

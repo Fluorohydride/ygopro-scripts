@@ -1,5 +1,4 @@
 --氷水のティノーラ
----@param c Card
 function c28762303.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

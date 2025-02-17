@@ -1,5 +1,4 @@
 --カップ・オブ・エース
----@param c Card
 function c37812118.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --挑発
----@param c Card
 function c90740329.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

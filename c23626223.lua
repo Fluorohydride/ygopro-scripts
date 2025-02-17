@@ -1,5 +1,4 @@
 --苦紋様の土像
----@param c Card
 function c23626223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ガード・マンティス
----@param c Card
 function c53754104.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

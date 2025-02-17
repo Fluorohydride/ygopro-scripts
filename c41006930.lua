@@ -1,6 +1,5 @@
 --速攻の黒い忍者
 local s,id,o=GetID()
----@param c Card
 function c41006930.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

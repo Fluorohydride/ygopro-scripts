@@ -1,5 +1,4 @@
 --破魔のカラス天狗
----@param c Card
 function c64806765.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

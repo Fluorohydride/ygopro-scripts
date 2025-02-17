@@ -1,5 +1,4 @@
 --泥岩の霊長－マンドストロング
----@param c Card
 function c37021315.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

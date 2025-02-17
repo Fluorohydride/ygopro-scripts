@@ -1,5 +1,4 @@
 --EMユニ
----@param c Card
 function c7714344.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

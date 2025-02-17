@@ -1,5 +1,4 @@
 --救援光
----@param c Card
 function c2362787.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

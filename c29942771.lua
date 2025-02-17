@@ -1,5 +1,4 @@
 --ナチュル・カメリア
----@param c Card
 function c29942771.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

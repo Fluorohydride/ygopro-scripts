@@ -1,5 +1,4 @@
 --オッドアイズ・ドラゴン
----@param c Card
 function c53025096.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

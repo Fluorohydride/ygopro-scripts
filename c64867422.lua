@@ -1,5 +1,4 @@
 --『焔聖剣－オートクレール』
----@param c Card
 function c64867422.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

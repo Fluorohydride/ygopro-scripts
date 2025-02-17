@@ -1,5 +1,4 @@
 --シャブティのお守り
----@param c Card
 function c50412166.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

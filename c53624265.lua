@@ -1,5 +1,4 @@
 --破械童子ラキア
----@param c Card
 function c53624265.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --ジャック・ア・ボーラン
 local s,id,o=GetID()
----@param c Card
 function c36016907.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ピアニッシモ
----@param c Card
 function c70899775.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --コンデンサー・デスストーカー
----@param c Card
 function c29716911.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

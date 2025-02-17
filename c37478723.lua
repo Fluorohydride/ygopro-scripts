@@ -1,5 +1,4 @@
 --『焔聖剣－デュランダル』
----@param c Card
 function c37478723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

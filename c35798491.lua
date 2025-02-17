@@ -1,5 +1,4 @@
 --ダークビショップデーモン
----@param c Card
 function c35798491.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

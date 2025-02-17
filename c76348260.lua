@@ -1,5 +1,4 @@
 --極星天ミーミル
----@param c Card
 function c76348260.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

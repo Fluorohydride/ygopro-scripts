@@ -1,5 +1,4 @@
 --マジェスペクター・キャット
----@param c Card
 function c5506791.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

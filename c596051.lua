@@ -1,5 +1,4 @@
 --毒蛇の牙
----@param c Card
 function c596051.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

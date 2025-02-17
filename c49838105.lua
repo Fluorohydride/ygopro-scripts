@@ -1,5 +1,4 @@
 --森羅の滝滑り
----@param c Card
 function c49838105.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

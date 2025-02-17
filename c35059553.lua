@@ -1,5 +1,4 @@
 --カイザーコロシアム
----@param c Card
 function c35059553.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

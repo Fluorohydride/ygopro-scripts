@@ -1,5 +1,4 @@
 --SDロボ・ライオ
----@param c Card
 function c8091563.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

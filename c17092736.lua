@@ -1,5 +1,4 @@
 --古代の遠眼鏡
----@param c Card
 function c17092736.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

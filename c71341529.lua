@@ -1,5 +1,4 @@
 --インフェルニティ・ナイト
----@param c Card
 function c71341529.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

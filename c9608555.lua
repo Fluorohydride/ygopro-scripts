@@ -1,5 +1,4 @@
 --転生炎獣ブレイズ・ドラゴン
----@param c Card
 function c9608555.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

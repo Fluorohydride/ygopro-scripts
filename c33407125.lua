@@ -1,5 +1,4 @@
 --白銀の迷宮城
----@param c Card
 function c33407125.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --C・パンテール
----@param c Card
 function c43751755.initial_effect(c)
 	aux.AddCodeList(c,43237273)
 	--spsummon

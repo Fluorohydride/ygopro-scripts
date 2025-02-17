@@ -1,5 +1,4 @@
 --真空イタチ
----@param c Card
 function c93730409.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

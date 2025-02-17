@@ -1,5 +1,4 @@
 --盗人ゴブリン
----@param c Card
 function c45311864.initial_effect(c)
 	--recover&damage
 	local e1=Effect.CreateEffect(c)

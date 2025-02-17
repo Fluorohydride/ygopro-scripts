@@ -1,5 +1,4 @@
 --ナイト・ドラゴリッチ
----@param c Card
 function c88724332.initial_effect(c)
 	--pos change
 	local e1=Effect.CreateEffect(c)

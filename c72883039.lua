@@ -1,5 +1,4 @@
 --無限光アイン・ソフ・オウル
----@param c Card
 function c72883039.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

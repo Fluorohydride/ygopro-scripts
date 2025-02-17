@@ -1,5 +1,4 @@
 --天空の聖水
----@param c Card
 function c26684111.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--Activate

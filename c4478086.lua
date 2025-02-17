@@ -1,5 +1,4 @@
 --クロック・スパルトイ
----@param c Card
 function c4478086.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2,2)

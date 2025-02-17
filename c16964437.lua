@@ -1,5 +1,4 @@
 --ダーク・ホライズン
----@param c Card
 function c16964437.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

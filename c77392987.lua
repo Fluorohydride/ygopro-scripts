@@ -1,6 +1,5 @@
 --TG ロケット・サラマンダー
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--spsummon from Deck
 	local e1=Effect.CreateEffect(c)

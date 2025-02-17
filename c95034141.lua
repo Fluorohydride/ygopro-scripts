@@ -1,5 +1,4 @@
 --黄金郷の七摩天
----@param c Card
 function c95034141.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

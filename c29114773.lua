@@ -1,5 +1,4 @@
 --SRスクラッチ
----@param c Card
 function c29114773.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --月華竜 ブラック・ローズ
----@param c Card
 function c33698022.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

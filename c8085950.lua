@@ -1,5 +1,4 @@
 --バーニング・ドラゴン
----@param c Card
 function c8085950.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

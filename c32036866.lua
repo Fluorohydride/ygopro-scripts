@@ -1,5 +1,4 @@
 --F.A.オーバー・ヒート
----@param c Card
 function c32036866.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

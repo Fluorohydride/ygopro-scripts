@@ -1,5 +1,4 @@
 --創造の代行者 ヴィーナス
----@param c Card
 function c64734921.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

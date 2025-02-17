@@ -1,5 +1,4 @@
 --鎖付き尖盾
----@param c Card
 function c6691855.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

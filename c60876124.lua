@@ -1,5 +1,4 @@
 --レア・ヴァリュー
----@param c Card
 function c60876124.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

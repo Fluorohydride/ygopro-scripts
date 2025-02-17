@@ -1,5 +1,4 @@
 --リグレット・リボーン
----@param c Card
 function c79544790.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

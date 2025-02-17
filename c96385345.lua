@@ -1,5 +1,4 @@
 --薔薇の聖騎士
----@param c Card
 function c96385345.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

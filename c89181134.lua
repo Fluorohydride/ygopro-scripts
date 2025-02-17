@@ -1,5 +1,4 @@
 --捕食植物サンデウ・キンジー
----@param c Card
 function c89181134.initial_effect(c)
 	--fusattribute
 	local e1=Effect.CreateEffect(c)

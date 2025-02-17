@@ -1,5 +1,4 @@
 --リチュア・ディバイナー
----@param c Card
 function c72403299.initial_effect(c)
 	--announce
 	local e1=Effect.CreateEffect(c)

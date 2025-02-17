@@ -1,5 +1,4 @@
 --超重禽属コカトリウム
----@param c Card
 function c94395649.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

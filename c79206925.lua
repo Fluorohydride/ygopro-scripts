@@ -1,5 +1,4 @@
 --墓守の異能者
----@param c Card
 function c79206925.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

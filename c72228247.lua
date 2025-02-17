@@ -1,5 +1,4 @@
 --マギアス・パラディオン
----@param c Card
 function c72228247.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c72228247.matfilter,1,1)

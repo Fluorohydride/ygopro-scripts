@@ -1,5 +1,4 @@
 --クロノダイバー・アジャスター
----@param c Card
 function c64730881.initial_effect(c)
 	--Special Summon this card
 	local e1=Effect.CreateEffect(c)

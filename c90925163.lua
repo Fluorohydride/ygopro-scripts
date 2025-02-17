@@ -1,5 +1,4 @@
 --踊る妖精
----@param c Card
 function c90925163.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

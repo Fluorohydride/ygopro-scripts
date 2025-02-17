@@ -1,5 +1,4 @@
 --バーバリアン・キング
----@param c Card
 function c39389320.initial_effect(c)
 	--multi attack
 	local e1=Effect.CreateEffect(c)

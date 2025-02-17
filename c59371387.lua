@@ -1,5 +1,4 @@
 --鉄壁の機皇兵
----@param c Card
 function c59371387.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

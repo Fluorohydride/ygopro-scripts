@@ -1,5 +1,4 @@
 --青き眼の護人
----@param c Card
 function c72855441.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ベアルクティ・ビッグディッパー
----@param c Card
 function c89264428.initial_effect(c)
 	c:EnableCounterPermit(0x5b)
 	--Activate

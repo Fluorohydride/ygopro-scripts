@@ -1,5 +1,4 @@
 --コアキメイル・ドラゴ
----@param c Card
 function c12435193.initial_effect(c)
 	aux.AddCodeList(c,36623431)
 	--cost

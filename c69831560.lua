@@ -1,6 +1,5 @@
 --アルカナフォースEX－THE DARK RULER
 local s,id,o=GetID()
----@param c Card
 function c69831560.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

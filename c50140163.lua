@@ -1,6 +1,5 @@
 --魅惑の女王 LV7
 local s,id,o=GetID()
----@param c Card
 function c50140163.initial_effect(c)
 	aux.AddCodeList(c,23756165)
 	--flag effect id+1

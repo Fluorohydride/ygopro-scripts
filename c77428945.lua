@@ -1,5 +1,4 @@
 --土地鋸
----@param c Card
 function c77428945.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

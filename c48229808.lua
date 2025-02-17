@@ -1,5 +1,4 @@
 --ホルスの黒炎竜 LV8
----@param c Card
 function c48229808.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

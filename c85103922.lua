@@ -1,5 +1,4 @@
 --アーティファクト－モラルタ
----@param c Card
 function c85103922.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

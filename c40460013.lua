@@ -1,6 +1,5 @@
 --炎魔の触媒
 local s,id,o=GetID()
----@param c Card
 function c40460013.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

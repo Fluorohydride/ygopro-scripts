@@ -1,5 +1,4 @@
 --アルカナフォースⅩⅧ－THE MOON
----@param c Card
 function c97452817.initial_effect(c)
 	--coin
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)

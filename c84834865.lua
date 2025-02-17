@@ -1,5 +1,4 @@
 --ドラゴンフライ
----@param c Card
 function c84834865.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

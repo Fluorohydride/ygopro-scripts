@@ -1,5 +1,4 @@
 --聖魔の乙女アルテミス
----@param c Card
 function c34755994.initial_effect(c)
 	c:SetSPSummonOnce(34755994)
 	--link summon

@@ -1,5 +1,4 @@
 --海晶乙女シーホース
----@param c Card
 function c36492575.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

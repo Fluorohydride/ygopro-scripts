@@ -1,5 +1,4 @@
 --SPYRAL GEAR－ビッグ・レッド
----@param c Card
 function c30979619.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

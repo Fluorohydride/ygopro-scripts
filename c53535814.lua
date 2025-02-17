@@ -1,5 +1,4 @@
 --氷結界の浄玻璃
----@param c Card
 function c53535814.initial_effect(c)
 	--It Loses 500 LP for each time they pay/activate a card effect
 	local e0=Effect.CreateEffect(c)

@@ -1,6 +1,5 @@
 --Crystal God Tistina
 local s,id=GetID()
----@param c Card
 function s.initial_effect(c)
 	--effect 1
 	local e1=Effect.CreateEffect(c)
@@ -33,8 +32,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,0,LOCATION_MZONE,nil)
-	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
+	if g:GetCount()>0 and Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)>0 then
 		local g1=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_ONFIELD,nil)
 		if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()

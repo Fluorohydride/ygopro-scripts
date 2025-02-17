@@ -1,5 +1,4 @@
 --Re－BUSTER
----@param c Card
 function c56252810.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--Activate

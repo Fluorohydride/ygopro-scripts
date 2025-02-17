@@ -1,5 +1,4 @@
 --古生代化石竜 スカルギオス
----@param c Card
 function c21225115.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

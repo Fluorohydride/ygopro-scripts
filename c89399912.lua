@@ -1,5 +1,4 @@
 --嵐征竜－テンペスト
----@param c Card
 function c89399912.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -46,6 +45,7 @@ function c89399912.initial_effect(c)
 	e4:SetTarget(c89399912.thtg)
 	e4:SetOperation(c89399912.thop)
 	c:RegisterEffect(e4)
+	c89399912.Dragon_Ruler_handes_effect=e3
 end
 function c89399912.rfilter(c)
 	return (c:IsRace(RACE_DRAGON) or c:IsAttribute(ATTRIBUTE_WIND)) and c:IsAbleToRemoveAsCost()
@@ -94,8 +94,8 @@ end
 function c89399912.shfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAbleToHand()
 end
-function c89399912.shtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c89399912.shfilter,tp,LOCATION_DECK,0,1,nil) end
+function c89399912.shtg(e,tp,eg,ep,ev,re,r,rp,chk,_,exc)
+	if chk==0 then return Duel.IsExistingMatchingCard(c89399912.shfilter,tp,LOCATION_DECK,0,1,exc) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c89399912.shop(e,tp,eg,ep,ev,re,r,rp)

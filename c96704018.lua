@@ -1,5 +1,4 @@
 --紋章獣ベルナーズ・ファルコン
----@param c Card
 function c96704018.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --No.88 ギミック・パペット－デステニー・レオ
----@param c Card
 function c48995978.initial_effect(c)
 	c:EnableCounterPermit(0x2b)
 	--xyz summon

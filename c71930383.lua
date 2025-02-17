@@ -1,5 +1,4 @@
 --パトロイド
----@param c Card
 function c71930383.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

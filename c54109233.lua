@@ -1,5 +1,4 @@
 --メサイアの蟻地獄
----@param c Card
 function c54109233.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

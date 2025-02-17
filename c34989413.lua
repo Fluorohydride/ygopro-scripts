@@ -1,5 +1,4 @@
 --リプロドクス
----@param c Card
 function c34989413.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2)

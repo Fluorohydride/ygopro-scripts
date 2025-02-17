@@ -1,6 +1,5 @@
 --刻剣の魔術師
 local s,id,o=GetID()
----@param c Card
 function c80335817.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

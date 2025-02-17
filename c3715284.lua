@@ -1,5 +1,4 @@
 --機皇兵廠オブリガード
----@param c Card
 function c3715284.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

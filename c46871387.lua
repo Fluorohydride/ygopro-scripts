@@ -1,5 +1,4 @@
 --No.55 ゴゴゴゴライアス
----@param c Card
 function c46871387.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,5 +1,4 @@
 --G・ボール・シュート
----@param c Card
 function c60619435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

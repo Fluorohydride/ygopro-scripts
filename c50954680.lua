@@ -1,5 +1,4 @@
 --クリスタルウィング・シンクロ・ドラゴン
----@param c Card
 function c50954680.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),1)

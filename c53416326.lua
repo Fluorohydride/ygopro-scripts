@@ -1,5 +1,4 @@
 --円喚師フェアリ
----@param c Card
 function c53416326.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

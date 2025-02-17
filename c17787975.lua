@@ -1,5 +1,4 @@
 --ディメンション・スフィンクス
----@param c Card
 function c17787975.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --メタルフォーゼ・シルバード
----@param c Card
 function c7868571.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

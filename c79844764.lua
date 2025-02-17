@@ -1,5 +1,4 @@
 --帝王の烈旋
----@param c Card
 function c79844764.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

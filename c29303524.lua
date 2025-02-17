@@ -1,5 +1,4 @@
 --眩月龍セレグレア
----@param c Card
 function c29303524.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

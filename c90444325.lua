@@ -1,5 +1,4 @@
 --メガリス・ハギト
----@param c Card
 function c90444325.initial_effect(c)
 	c:EnableReviveLimit()
 	--search

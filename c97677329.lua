@@ -1,5 +1,4 @@
 --バックアップ・スーパーバイザー
----@param c Card
 function c97677329.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

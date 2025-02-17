@@ -1,5 +1,4 @@
 --暴鬼
----@param c Card
 function c12694768.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --瀑征竜－タイダル
----@param c Card
 function c26400609.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -27,7 +26,7 @@ function c26400609.initial_effect(c)
 	--tograve
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(26400609,2))
-	e3:SetCategory(CATEGORY_TOGRAVE)
+	e3:SetCategory(CATEGORY_HANDES)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_HAND)
 	e3:SetCountLimit(1,26400609)
@@ -46,6 +45,7 @@ function c26400609.initial_effect(c)
 	e4:SetTarget(c26400609.thtg)
 	e4:SetOperation(c26400609.thop)
 	c:RegisterEffect(e4)
+	c26400609.Dragon_Ruler_handes_effect=e3
 end
 function c26400609.rfilter(c)
 	return (c:IsRace(RACE_DRAGON) or c:IsAttribute(ATTRIBUTE_WATER)) and c:IsAbleToRemoveAsCost()
@@ -94,8 +94,8 @@ end
 function c26400609.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
-function c26400609.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c26400609.tgfilter,tp,LOCATION_DECK,0,1,nil) end
+function c26400609.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,_,exc)
+	if chk==0 then return Duel.IsExistingMatchingCard(c26400609.tgfilter,tp,LOCATION_DECK,0,1,exc) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c26400609.tgop(e,tp,eg,ep,ev,re,r,rp)

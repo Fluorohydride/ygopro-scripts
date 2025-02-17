@@ -1,5 +1,4 @@
 --ドラゴン・ウィッチ－ドラゴンの守護者－
----@param c Card
 function c67511500.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

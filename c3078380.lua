@@ -1,5 +1,4 @@
 --合体竜ティマイオス
----@param c Card
 function c3078380.initial_effect(c)
 	aux.AddCodeList(c,46986414)
 	--special summon

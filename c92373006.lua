@@ -1,5 +1,4 @@
 --スレイブタイガー
----@param c Card
 function c92373006.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

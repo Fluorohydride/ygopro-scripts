@@ -1,5 +1,4 @@
 --幻獣機オライオン
----@param c Card
 function c72291078.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

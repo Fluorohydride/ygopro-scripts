@@ -1,5 +1,4 @@
 --機巧辰－高闇御津羽靇
----@param c Card
 function c43218406.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

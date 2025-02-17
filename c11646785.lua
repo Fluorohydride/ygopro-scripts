@@ -1,5 +1,4 @@
 --超量機獣エアロボロス
----@param c Card
 function c11646785.initial_effect(c)
 	aux.AddCodeList(c,85374678)
 	--xyz summon

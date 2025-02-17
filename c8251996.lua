@@ -1,5 +1,4 @@
 --おジャマ・デルタハリケーン！！
----@param c Card
 function c8251996.initial_effect(c)
 	aux.AddCodeList(c,12482652,42941100,79335209)
 	--Activate

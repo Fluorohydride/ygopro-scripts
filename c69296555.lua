@@ -1,5 +1,4 @@
 --光の護封陣
----@param c Card
 function c69296555.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

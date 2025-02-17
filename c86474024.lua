@@ -1,5 +1,4 @@
 --共同戦線
----@param c Card
 function c86474024.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

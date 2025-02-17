@@ -1,5 +1,4 @@
 --レプティレス・ヴァースキ
----@param c Card
 function c16886617.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,16886617)

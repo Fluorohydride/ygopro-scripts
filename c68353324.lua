@@ -1,5 +1,4 @@
 --素早いビーバー
----@param c Card
 function c68353324.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

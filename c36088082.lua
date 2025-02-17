@@ -1,5 +1,4 @@
 --ブルブレーダー
----@param c Card
 function c36088082.initial_effect(c)
 	--level change
 	local e1=Effect.CreateEffect(c)

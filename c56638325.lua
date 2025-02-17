@@ -1,5 +1,4 @@
 --星輝士 デルタテロス
----@param c Card
 function c56638325.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

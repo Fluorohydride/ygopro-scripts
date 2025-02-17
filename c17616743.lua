@@ -1,5 +1,4 @@
 --喚忌の呪眼
----@param c Card
 function c17616743.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

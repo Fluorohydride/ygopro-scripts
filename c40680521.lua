@@ -1,5 +1,4 @@
 --ヴァリアンツの聚－幻中
----@param c Card
 function c40680521.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

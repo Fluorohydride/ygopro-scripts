@@ -1,5 +1,4 @@
 --地獄の門番イル・ブラッド
----@param c Card
 function c70595331.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

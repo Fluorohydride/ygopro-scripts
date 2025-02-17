@@ -1,5 +1,4 @@
 --星なる影 ゲニウス
----@param c Card
 function c66675911.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --パンデミック・ドラゴン
----@param c Card
 function c68299524.initial_effect(c)
 	--attack down
 	local e1=Effect.CreateEffect(c)

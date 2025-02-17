@@ -1,5 +1,4 @@
 --スウィッチヒーロー
----@param c Card
 function c30426226.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

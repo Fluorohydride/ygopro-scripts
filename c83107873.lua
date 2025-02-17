@@ -1,5 +1,4 @@
 --雷鳥龍－サンダー・ドラゴン
----@param c Card
 function c83107873.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

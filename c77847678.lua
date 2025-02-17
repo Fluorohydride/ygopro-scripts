@@ -1,5 +1,4 @@
 --紫炎の計略
----@param c Card
 function c77847678.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

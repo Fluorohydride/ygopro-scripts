@@ -1,5 +1,4 @@
 --青竜の忍者
----@param c Card
 function c14568951.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

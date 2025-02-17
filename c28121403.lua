@@ -1,5 +1,4 @@
 --大成仏
----@param c Card
 function c28121403.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

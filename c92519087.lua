@@ -1,5 +1,4 @@
 --電脳堺狐－仙々
----@param c Card
 function c92519087.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

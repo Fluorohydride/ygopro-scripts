@@ -1,5 +1,4 @@
 --失われた聖域
----@param c Card
 function c90312154.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	aux.EnableChangeCode(c,56433456,LOCATION_SZONE+LOCATION_GRAVE)

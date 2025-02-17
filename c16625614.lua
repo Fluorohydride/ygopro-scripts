@@ -1,5 +1,4 @@
 --ダーク・サンクチュアリ
----@param c Card
 function c16625614.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

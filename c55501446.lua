@@ -1,5 +1,4 @@
 --ライト・サーペント
----@param c Card
 function c55501446.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

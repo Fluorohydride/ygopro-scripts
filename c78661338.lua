@@ -1,5 +1,4 @@
 --幻創龍ファンタズメイ
----@param c Card
 function c78661338.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

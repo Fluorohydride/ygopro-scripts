@@ -1,5 +1,4 @@
 --霊獣使いの長老
----@param c Card
 function c14513016.initial_effect(c)
 	c:SetSPSummonOnce(14513016)
 	--extra summon

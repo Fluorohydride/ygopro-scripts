@@ -1,5 +1,4 @@
 --ファイナル・ギアス
----@param c Card
 function c16832845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

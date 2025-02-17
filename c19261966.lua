@@ -1,5 +1,4 @@
 --エルシャドール・アノマリリス
----@param c Card
 function c19261966.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

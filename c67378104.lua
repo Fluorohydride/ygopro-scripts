@@ -1,5 +1,4 @@
 --星呼びの天儀台
----@param c Card
 function c67378104.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

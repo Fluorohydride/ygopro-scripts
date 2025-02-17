@@ -1,5 +1,4 @@
 --プラグティカル
----@param c Card
 function c33691040.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

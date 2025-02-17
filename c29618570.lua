@@ -1,5 +1,4 @@
 --グレイ・ウイング
----@param c Card
 function c29618570.initial_effect(c)
 	--multiatk
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --エキストラケアトップス
----@param c Card
 function c38383368.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

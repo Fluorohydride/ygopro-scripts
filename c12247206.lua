@@ -1,5 +1,4 @@
 --地獄の暴走召喚
----@param c Card
 function c12247206.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

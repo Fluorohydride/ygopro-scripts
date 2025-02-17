@@ -1,5 +1,4 @@
 --メガリス・フール
----@param c Card
 function c78990927.initial_effect(c)
 	c:EnableReviveLimit()
 	--to hand

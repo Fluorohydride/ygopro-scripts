@@ -1,5 +1,4 @@
 --セイバー・ヴォールト
----@param c Card
 function c73787254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

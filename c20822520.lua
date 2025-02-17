@@ -1,5 +1,4 @@
 --魔導書庫ソレイン
----@param c Card
 function c20822520.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

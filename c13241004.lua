@@ -1,5 +1,4 @@
 --ファーニマル・ペンギン
----@param c Card
 function c13241004.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

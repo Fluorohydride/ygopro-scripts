@@ -1,5 +1,4 @@
 --バイナル・ブレーダー
----@param c Card
 function c80088625.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_NORMAL),2,2)

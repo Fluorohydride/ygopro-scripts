@@ -1,5 +1,4 @@
 --銀河零式
----@param c Card
 function c97617181.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

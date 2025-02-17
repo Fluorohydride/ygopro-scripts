@@ -1,5 +1,4 @@
 --デス・ウイルス・ドラゴン
----@param c Card
 function c22804644.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

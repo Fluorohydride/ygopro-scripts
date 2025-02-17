@@ -1,5 +1,4 @@
 --レスキューキューロイド
----@param c Card
 function c98927491.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

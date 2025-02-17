@@ -1,5 +1,4 @@
 --古生代化石マシン スカルコンボイ
----@param c Card
 function c57157964.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion summon

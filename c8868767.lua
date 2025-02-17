@@ -1,5 +1,4 @@
 --ダイスエット
----@param c Card
 function c8868767.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

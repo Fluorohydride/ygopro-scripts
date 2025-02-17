@@ -1,5 +1,4 @@
 --魔獣皇帝ガーゼット
----@param c Card
 function c33022867.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

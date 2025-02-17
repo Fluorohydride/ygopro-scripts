@@ -1,5 +1,4 @@
 --水竜星－ビシキ
----@param c Card
 function c2095764.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

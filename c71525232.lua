@@ -1,5 +1,4 @@
 --破滅竜ガンドラX
----@param c Card
 function c71525232.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

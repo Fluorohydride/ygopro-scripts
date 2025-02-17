@@ -1,5 +1,4 @@
 --カラクリ商人 壱七七
----@param c Card
 function c30230789.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

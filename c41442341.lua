@@ -1,5 +1,4 @@
 --死霊操りしパペットマスター
----@param c Card
 function c41442341.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

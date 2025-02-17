@@ -1,5 +1,4 @@
 --月光彩雛
----@param c Card
 function c35618217.initial_effect(c)
 	--fusion name
 	local e1=Effect.CreateEffect(c)

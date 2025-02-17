@@ -1,5 +1,4 @@
 --インフェルニティ・ポーン
----@param c Card
 function c82434071.initial_effect(c)
 	--Optional
 	local e1=Effect.CreateEffect(c)

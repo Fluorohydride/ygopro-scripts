@@ -1,5 +1,4 @@
 --焔征竜－ブラスター
----@param c Card
 function c53804307.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -47,6 +46,7 @@ function c53804307.initial_effect(c)
 	e4:SetTarget(c53804307.thtg)
 	e4:SetOperation(c53804307.thop)
 	c:RegisterEffect(e4)
+	c53804307.Dragon_Ruler_handes_effect=e3
 end
 function c53804307.rfilter(c)
 	return (c:IsRace(RACE_DRAGON) or c:IsAttribute(ATTRIBUTE_FIRE)) and c:IsAbleToRemoveAsCost()

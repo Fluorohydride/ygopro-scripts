@@ -1,5 +1,4 @@
 --M.X－セイバー インヴォーカー
----@param c Card
 function c4423206.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

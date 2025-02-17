@@ -1,5 +1,4 @@
 --幻影騎士団ティアースケイル
----@param c Card
 function c25538345.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

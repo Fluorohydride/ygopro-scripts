@@ -1,5 +1,4 @@
 --潜海奇襲
----@param c Card
 function c19089195.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	local e1=Effect.CreateEffect(c)

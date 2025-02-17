@@ -1,5 +1,4 @@
 --スモーク・モスキート
----@param c Card
 function c28427869.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

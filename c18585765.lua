@@ -1,5 +1,4 @@
 --ボルテスター
----@param c Card
 function c18585765.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --水精鱗－ガイオアビス
----@param c Card
 function c74371660.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),7,2)

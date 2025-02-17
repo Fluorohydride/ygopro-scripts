@@ -1,5 +1,4 @@
 --起動兵長コマンドリボルバー
----@param c Card
 function c938717.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

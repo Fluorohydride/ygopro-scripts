@@ -1,5 +1,4 @@
 --ディメンション・ウォール
----@param c Card
 function c67095270.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

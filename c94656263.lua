@@ -1,5 +1,4 @@
 --カゲトカゲ
----@param c Card
 function c94656263.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

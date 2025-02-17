@@ -1,5 +1,4 @@
 --RAMクラウダー
----@param c Card
 function c9190563.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

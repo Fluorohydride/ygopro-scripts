@@ -1,5 +1,4 @@
 --決戦のゴルゴンダ
----@param c Card
 function c70485614.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	aux.EnableChangeCode(c,60884672,LOCATION_SZONE+LOCATION_GRAVE)

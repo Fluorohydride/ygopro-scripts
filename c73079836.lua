@@ -1,5 +1,4 @@
 --魔救の奇跡－ラプタイト
----@param c Card
 function c73079836.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

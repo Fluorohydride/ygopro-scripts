@@ -1,5 +1,4 @@
 --青眼の精霊龍
----@param c Card
 function c59822133.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0xdd),1)

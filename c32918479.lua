@@ -1,5 +1,4 @@
 --光神機－閃空
----@param c Card
 function c32918479.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

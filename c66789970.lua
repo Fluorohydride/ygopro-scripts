@@ -1,5 +1,4 @@
 --聖刻龍－セテクドラゴン
----@param c Card
 function c66789970.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon from hand

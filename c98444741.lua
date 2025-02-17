@@ -1,5 +1,4 @@
 --積み上げる幸福
----@param c Card
 function c98444741.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

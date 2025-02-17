@@ -1,5 +1,4 @@
 --X－セイバー アクセル
----@param c Card
 function c53100061.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

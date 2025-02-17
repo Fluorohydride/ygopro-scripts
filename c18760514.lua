@@ -1,5 +1,4 @@
 --マッドマーダー
----@param c Card
 function c18760514.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,33420078,LOCATION_MZONE+LOCATION_GRAVE)

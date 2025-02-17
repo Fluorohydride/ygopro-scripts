@@ -1,5 +1,4 @@
 --EMオッドアイズ・ミノタウロス
----@param c Card
 function c10731333.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--pierce

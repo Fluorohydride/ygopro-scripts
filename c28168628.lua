@@ -1,5 +1,4 @@
 --闘神の虚像
----@param c Card
 function c28168628.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

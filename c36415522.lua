@@ -1,5 +1,4 @@
 --EMピンチヘルパー
----@param c Card
 function c36415522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

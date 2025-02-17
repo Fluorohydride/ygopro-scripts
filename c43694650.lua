@@ -1,5 +1,4 @@
 --未界域のジャッカロープ
----@param c Card
 function c43694650.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

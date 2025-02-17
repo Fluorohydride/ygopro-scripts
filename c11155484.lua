@@ -1,7 +1,6 @@
 --宝玉の奇跡
 --not fully implemented
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

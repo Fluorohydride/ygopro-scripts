@@ -1,5 +1,4 @@
 --聖蔓の社
----@param c Card
 function c27946124.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

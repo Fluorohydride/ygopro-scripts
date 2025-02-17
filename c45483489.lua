@@ -1,5 +1,4 @@
 --深海のセントリー
----@param c Card
 function c45483489.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

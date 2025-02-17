@@ -1,5 +1,4 @@
 --華信龍－ノウルーズ・エリーズ
----@param c Card
 function c25607552.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

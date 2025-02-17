@@ -1,5 +1,4 @@
 --FA－クリスタル・ゼロ・ランサー
----@param c Card
 function c99469936.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),6,3,c99469936.ovfilter,aux.Stringid(99469936,0))

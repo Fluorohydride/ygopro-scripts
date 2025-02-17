@@ -1,5 +1,4 @@
 --モンスターレリーフ
----@param c Card
 function c37507488.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --月の女戦士
----@param c Card
 function c64751286.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

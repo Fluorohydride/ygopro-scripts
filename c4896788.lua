@@ -1,5 +1,4 @@
 --強欲な壺の精霊
----@param c Card
 function c4896788.initial_effect(c)
 	--draw
 	local e2=Effect.CreateEffect(c)

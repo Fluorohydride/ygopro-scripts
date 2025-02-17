@@ -1,5 +1,4 @@
 --オッドアイズ・セイバー・ドラゴン
----@param c Card
 function c19221310.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --死神鳥シムルグ
----@param c Card
 function c23619206.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

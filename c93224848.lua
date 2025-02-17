@@ -1,5 +1,4 @@
 --幻魔の殉教者
----@param c Card
 function c93224848.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822)
 	--Activate

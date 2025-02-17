@@ -1,5 +1,4 @@
 --地霊術－「鉄」
----@param c Card
 function c70156997.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

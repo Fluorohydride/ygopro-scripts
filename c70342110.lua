@@ -1,5 +1,4 @@
 --次元幽閉
----@param c Card
 function c70342110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

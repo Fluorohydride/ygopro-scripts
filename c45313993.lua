@@ -1,5 +1,4 @@
 --レッド・ウルフ
----@param c Card
 function c45313993.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

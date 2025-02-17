@@ -1,5 +1,4 @@
 --守護神－ネフティス
----@param c Card
 function c50669347.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x11f),2,2)

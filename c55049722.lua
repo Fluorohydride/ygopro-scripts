@@ -1,5 +1,4 @@
 --S－Force チェイス
----@param c Card
 function c55049722.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

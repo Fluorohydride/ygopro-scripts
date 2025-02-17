@@ -1,5 +1,4 @@
 --レイジアース
----@param c Card
 function c50957346.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

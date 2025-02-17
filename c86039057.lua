@@ -1,5 +1,4 @@
 --タスケナイト
----@param c Card
 function c86039057.initial_effect(c)
 	--end battle phase
 	local e1=Effect.CreateEffect(c)

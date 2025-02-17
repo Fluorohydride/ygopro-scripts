@@ -1,5 +1,4 @@
 --秒殺の暗殺者
----@param c Card
 function c96890582.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

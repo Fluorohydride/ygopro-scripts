@@ -1,5 +1,4 @@
 --ヴォルカニック・トルーパー
----@param c Card
 function c22411609.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

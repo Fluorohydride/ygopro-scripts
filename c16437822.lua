@@ -1,5 +1,4 @@
 --フリント・アタック
----@param c Card
 function c16437822.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

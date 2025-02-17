@@ -1,5 +1,4 @@
 --X・Y・Zハイパーキャノン
----@param c Card
 function c21723081.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --覇蛇大公ゴルゴンダ
----@param c Card
 function c31042659.initial_effect(c)
 	aux.AddCodeList(c,60884672)
 	--special summon

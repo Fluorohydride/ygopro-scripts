@@ -1,5 +1,4 @@
 --魔風衝撃波
----@param c Card
 function c60176682.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	--Activate

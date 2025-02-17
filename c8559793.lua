@@ -1,5 +1,4 @@
 --RR－ネスト
----@param c Card
 function c8559793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

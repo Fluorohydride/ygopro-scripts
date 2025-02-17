@@ -1,5 +1,4 @@
 --トライアングル・X・スパーク
----@param c Card
 function c12181376.initial_effect(c)
 	aux.AddCodeList(c,12206212)
 	--Activate

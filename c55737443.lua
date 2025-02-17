@@ -1,5 +1,4 @@
 --守護神エクゾード
----@param c Card
 function c55737443.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

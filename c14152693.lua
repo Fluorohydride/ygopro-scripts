@@ -1,5 +1,4 @@
 --月光翠鳥
----@param c Card
 function c14152693.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

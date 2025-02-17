@@ -1,5 +1,4 @@
 --幽合－ゴースト・フュージョン
----@param c Card
 function c35705817.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

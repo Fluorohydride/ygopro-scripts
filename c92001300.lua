@@ -1,5 +1,4 @@
 --古代の機械城
----@param c Card
 function c92001300.initial_effect(c)
 	c:EnableCounterPermit(0xb)
 	--Activate

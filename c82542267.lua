@@ -1,5 +1,4 @@
 --墓掘りグール
----@param c Card
 function c82542267.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

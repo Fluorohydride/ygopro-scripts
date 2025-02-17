@@ -1,5 +1,4 @@
 --九蛇孔雀
----@param c Card
 function c24384095.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

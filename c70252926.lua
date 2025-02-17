@@ -1,5 +1,4 @@
 --フォーチュンレディ・エヴァリー
----@param c Card
 function c70252926.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_SPELLCASTER),1)

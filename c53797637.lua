@@ -1,6 +1,6 @@
 --炎征竜－バーナー
----@param c Card
 function c53797637.initial_effect(c)
+	aux.AddCodeList(c,53804307)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(53797637,0))

@@ -1,5 +1,4 @@
 --白竜の忍者
----@param c Card
 function c99212922.initial_effect(c)
 	--spsummon limit
 	local e1=Effect.CreateEffect(c)

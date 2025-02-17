@@ -1,5 +1,4 @@
 --引きガエル
----@param c Card
 function c56840658.initial_effect(c)
 	--draw
 	local e2=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --TG パワー・グラディエイター
----@param c Card
 function c24943456.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x27),1)

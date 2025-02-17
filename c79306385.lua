@@ -1,5 +1,4 @@
 --宣告者の神託
----@param c Card
 function c79306385.initial_effect(c)
 	--Activate
 	aux.AddRitualProcGreaterCode(c,48546368,nil,nil,nil,false,nil,c79306385.extratg)

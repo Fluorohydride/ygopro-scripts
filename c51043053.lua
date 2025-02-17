@@ -1,5 +1,4 @@
 --防覇龍ヘリオスフィア
----@param c Card
 function c51043053.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

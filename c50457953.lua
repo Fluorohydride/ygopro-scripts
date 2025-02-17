@@ -1,5 +1,4 @@
 --幻木龍
----@param c Card
 function c50457953.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --蜃気楼の筒
----@param c Card
 function c48017809.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

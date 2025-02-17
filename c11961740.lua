@@ -1,5 +1,4 @@
 --タイムカプセル
----@param c Card
 function c11961740.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

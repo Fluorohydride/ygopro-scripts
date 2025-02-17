@@ -1,5 +1,4 @@
 --満天禍コルドー
----@param c Card
 function c19420830.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

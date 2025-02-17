@@ -1,5 +1,4 @@
 --超装甲兵器ロボ ブラックアイアンG
----@param c Card
 function c77754169.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

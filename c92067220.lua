@@ -1,5 +1,4 @@
 --ジョーカーズ・ストレート
----@param c Card
 function c92067220.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--Activate

@@ -1,5 +1,4 @@
 --オーバーレイ・キャプチャー
----@param c Card
 function c74852810.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

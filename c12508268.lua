@@ -1,5 +1,4 @@
 --フューチャー・ドライブ
----@param c Card
 function c12508268.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

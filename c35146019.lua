@@ -1,5 +1,4 @@
 --オルターガイスト・マテリアリゼーション
----@param c Card
 function c35146019.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

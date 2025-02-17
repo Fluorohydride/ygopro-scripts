@@ -1,5 +1,4 @@
 --BF－極光のアウロラ
----@param c Card
 function c4068622.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

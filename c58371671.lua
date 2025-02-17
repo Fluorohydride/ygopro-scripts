@@ -1,6 +1,5 @@
 --宝玉の加護
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

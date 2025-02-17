@@ -1,5 +1,4 @@
 --死霊騎士デスカリバー・ナイト
----@param c Card
 function c78700060.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

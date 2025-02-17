@@ -1,5 +1,4 @@
 --憑依覚醒－ラセンリュウ
----@param c Card
 function c410904.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

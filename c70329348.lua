@@ -1,5 +1,4 @@
 --炎舞－「天権」
----@param c Card
 function c70329348.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

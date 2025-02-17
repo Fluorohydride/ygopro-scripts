@@ -1,5 +1,4 @@
 --ミスト・ボディ
----@param c Card
 function c47529357.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

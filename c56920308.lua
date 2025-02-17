@@ -1,5 +1,4 @@
 --強靭！無敵！最強！
----@param c Card
 function c56920308.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--effect gain

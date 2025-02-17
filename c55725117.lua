@@ -1,5 +1,4 @@
 --プランキッズ・ドロップ
----@param c Card
 function c55725117.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

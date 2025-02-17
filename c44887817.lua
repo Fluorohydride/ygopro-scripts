@@ -1,5 +1,4 @@
 --増草剤
----@param c Card
 function c44887817.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

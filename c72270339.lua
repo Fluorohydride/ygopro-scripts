@@ -1,6 +1,5 @@
 --黒魔女ディアベルスター
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--spsummon rule
 	local e1=Effect.CreateEffect(c)

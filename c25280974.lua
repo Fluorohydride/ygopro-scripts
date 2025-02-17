@@ -1,5 +1,4 @@
 --魔道化リジョン
----@param c Card
 function c25280974.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --サモンオーバー
----@param c Card
 function c48015771.initial_effect(c)
 	c:EnableCounterPermit(0x4c)
 	c:SetCounterLimit(0x4c,6)

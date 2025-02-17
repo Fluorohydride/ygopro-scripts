@@ -1,6 +1,5 @@
 --エレキハダマグロ
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

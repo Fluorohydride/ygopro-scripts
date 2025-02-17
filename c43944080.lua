@@ -1,5 +1,4 @@
 --ネムレリアの夢守り－クエット
----@param c Card
 function c43944080.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

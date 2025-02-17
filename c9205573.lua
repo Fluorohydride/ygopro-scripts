@@ -1,5 +1,4 @@
 --Evil★Twin キスキル
----@param c Card
 function c9205573.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c9205573.lcheck)

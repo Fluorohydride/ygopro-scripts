@@ -1,5 +1,4 @@
 --レッカーパンダ
----@param c Card
 function c28139785.initial_effect(c)
 	--deckdes
 	local e1=Effect.CreateEffect(c)

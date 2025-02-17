@@ -1,5 +1,4 @@
 --二重光波
----@param c Card
 function c63992027.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --紅蓮の指名者
----@param c Card
 function c43262273.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

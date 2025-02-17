@@ -1,5 +1,4 @@
 --トラパート
----@param c Card
 function c83370323.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

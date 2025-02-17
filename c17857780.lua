@@ -1,5 +1,4 @@
 --EMチアモール
----@param c Card
 function c17857780.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

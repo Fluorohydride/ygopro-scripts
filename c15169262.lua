@@ -1,5 +1,4 @@
 --ラヴァル炎樹海の妖女
----@param c Card
 function c15169262.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

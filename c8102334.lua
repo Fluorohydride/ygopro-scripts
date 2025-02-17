@@ -1,5 +1,4 @@
 --ゲート・ブロッカー
----@param c Card
 function c8102334.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

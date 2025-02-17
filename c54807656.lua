@@ -1,5 +1,4 @@
 --破械神の慟哭
----@param c Card
 function c54807656.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

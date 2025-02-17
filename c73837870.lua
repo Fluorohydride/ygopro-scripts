@@ -1,5 +1,4 @@
 --サニー・ピクシー
----@param c Card
 function c73837870.initial_effect(c)
 	--lp rec
 	local e1=Effect.CreateEffect(c)

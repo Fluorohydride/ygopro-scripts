@@ -1,5 +1,4 @@
 --切り込み隊長
----@param c Card
 function c2460565.initial_effect(c)
 	--cannot select battle target
 	local e1=Effect.CreateEffect(c)

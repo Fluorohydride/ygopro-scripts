@@ -1,5 +1,4 @@
 --海造賊－誇示
----@param c Card
 function c17016131.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

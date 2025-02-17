@@ -1,5 +1,4 @@
 --白兵戦型お手伝いロボ
----@param c Card
 function c47025270.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --星遺物の機憶
----@param c Card
 function c68191756.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

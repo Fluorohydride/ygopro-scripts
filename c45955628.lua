@@ -1,5 +1,4 @@
 --呪眼の眷属 カトブレパス
----@param c Card
 function c45955628.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

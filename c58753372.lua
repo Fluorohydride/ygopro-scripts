@@ -1,5 +1,4 @@
 --超量妖精アルファン
----@param c Card
 function c58753372.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

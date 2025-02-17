@@ -1,5 +1,4 @@
 --夢魔鏡の使徒－ネイロイ
----@param c Card
 function c18189187.initial_effect(c)
 	aux.AddCodeList(c,74665651,1050355)
 	--spsummon

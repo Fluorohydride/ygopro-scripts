@@ -1,5 +1,4 @@
 --真紅眼の凶雷皇－エビル・デーモン
----@param c Card
 function c39357122.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

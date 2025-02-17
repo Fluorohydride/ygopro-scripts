@@ -1,5 +1,4 @@
 --隼の騎士
----@param c Card
 function c21015833.initial_effect(c)
 	--double attack
 	local e1=Effect.CreateEffect(c)

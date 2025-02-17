@@ -1,5 +1,4 @@
 --転生炎獣フォウル
----@param c Card
 function c89662401.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --異界空間－Aゾーン
----@param c Card
 function c60946968.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --モーターバイオレンス
----@param c Card
 function c77672444.initial_effect(c)
 	aux.AddCodeList(c,82556059)
 	--atk up

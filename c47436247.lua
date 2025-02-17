@@ -1,5 +1,4 @@
 --紫炎の道場
----@param c Card
 function c47436247.initial_effect(c)
 	c:EnableCounterPermit(0x3)
 	--Activate

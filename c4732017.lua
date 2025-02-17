@@ -1,5 +1,4 @@
 --灼熱ゾンビ
----@param c Card
 function c4732017.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

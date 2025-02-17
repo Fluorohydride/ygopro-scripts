@@ -1,5 +1,4 @@
 --E・HERO アナザー・ネオス
----@param c Card
 function c69884162.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--code

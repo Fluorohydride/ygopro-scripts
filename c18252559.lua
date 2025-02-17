@@ -1,5 +1,4 @@
 --仕込み爆弾
----@param c Card
 function c18252559.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --混沌の創世神
----@param c Card
 function c90488465.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

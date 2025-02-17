@@ -1,6 +1,5 @@
 --ガジェット・ゲーマー
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

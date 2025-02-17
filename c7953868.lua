@@ -1,5 +1,4 @@
 --蒼血鬼
----@param c Card
 function c7953868.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --強制進化
----@param c Card
 function c5338223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

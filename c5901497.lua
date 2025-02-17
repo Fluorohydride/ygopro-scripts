@@ -1,5 +1,4 @@
 --女王の影武者
----@param c Card
 function c5901497.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

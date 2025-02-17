@@ -1,5 +1,4 @@
 --フォーム・チェンジ
----@param c Card
 function c84536654.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --魔導獣 ケルベロス
----@param c Card
 function c55424270.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

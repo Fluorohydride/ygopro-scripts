@@ -1,5 +1,4 @@
 --ワーム・バルサス
----@param c Card
 function c15658249.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

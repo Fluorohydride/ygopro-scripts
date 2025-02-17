@@ -1,6 +1,5 @@
 --捕食植物ビブリスプ
 local s,id,o=GetID()
----@param c Card
 function c44932065.initial_effect(c)
 	--Effect 1 : Search
 	local e1=Effect.CreateEffect(c)

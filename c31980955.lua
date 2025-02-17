@@ -1,5 +1,4 @@
 --スローライフ
----@param c Card
 function c31980955.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

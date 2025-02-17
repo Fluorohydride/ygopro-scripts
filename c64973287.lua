@@ -1,5 +1,4 @@
 --ダイナミスト・プテラン
----@param c Card
 function c64973287.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

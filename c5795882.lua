@@ -1,5 +1,4 @@
 --ヴァンパイアの領域
----@param c Card
 function c5795882.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --超越竜ギガントザウラー
----@param c Card
 function c67745632.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --闇の精霊 ルーナ
----@param c Card
 function c48596760.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

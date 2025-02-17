@@ -1,5 +1,4 @@
 --銀龍の轟咆
----@param c Card
 function c87025064.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --剣の王 フローディ
----@param c Card
 function c40998517.initial_effect(c)
 	c:SetUniqueOnField(1,0,40998517)
 	--destroy

@@ -1,5 +1,4 @@
 --ハーピィズペット幻竜
----@param c Card
 function c85909450.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WIND),4,3)

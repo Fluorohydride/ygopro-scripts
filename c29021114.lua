@@ -1,5 +1,4 @@
 --シルバー・ガジェット
----@param c Card
 function c29021114.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

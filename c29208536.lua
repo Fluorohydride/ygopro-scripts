@@ -1,5 +1,4 @@
 --No.45 滅亡の予言者 クランブル・ロゴス
----@param c Card
 function c29208536.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2,nil,nil,99)

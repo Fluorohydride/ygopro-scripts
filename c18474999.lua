@@ -1,5 +1,4 @@
 --魔神儀－ブックストーン
----@param c Card
 function c18474999.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

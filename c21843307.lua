@@ -1,5 +1,4 @@
 --コピー・ナイト
----@param c Card
 function c21843307.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

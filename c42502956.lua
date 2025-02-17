@@ -1,5 +1,4 @@
 --エアーズロック・サンライズ
----@param c Card
 function c42502956.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

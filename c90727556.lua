@@ -1,5 +1,4 @@
 --インヴェルズの斥候
----@param c Card
 function c90727556.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

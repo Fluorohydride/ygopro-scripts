@@ -1,5 +1,4 @@
 --管魔人メロメロメロディ
----@param c Card
 function c88942504.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

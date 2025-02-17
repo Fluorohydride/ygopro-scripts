@@ -1,6 +1,6 @@
 --地征竜－リアクタン
----@param c Card
 function c91020571.initial_effect(c)
+	aux.AddCodeList(c,90411554)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(91020571,0))

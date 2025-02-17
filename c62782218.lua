@@ -1,5 +1,4 @@
 --スカル・コンダクター
----@param c Card
 function c62782218.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

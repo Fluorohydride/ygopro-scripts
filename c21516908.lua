@@ -1,5 +1,4 @@
 --HSRマッハゴー・イータ
----@param c Card
 function c21516908.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

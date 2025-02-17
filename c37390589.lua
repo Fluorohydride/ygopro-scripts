@@ -1,5 +1,4 @@
 --鎖付きブーメラン
----@param c Card
 function c37390589.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

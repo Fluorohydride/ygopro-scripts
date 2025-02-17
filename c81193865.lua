@@ -1,5 +1,4 @@
 --エターナル・エヴォリューション・バースト
----@param c Card
 function c81193865.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

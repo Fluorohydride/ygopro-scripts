@@ -1,5 +1,4 @@
 --破壊竜ガンドラ－ギガ・レイズ
----@param c Card
 function c58330108.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

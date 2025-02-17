@@ -1,5 +1,4 @@
 --ZW－不死鳥弩弓
----@param c Card
 function c87008374.initial_effect(c)
 	c:SetUniqueOnField(1,0,87008374)
 	--equip

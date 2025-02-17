@@ -1,5 +1,4 @@
 --ハニーボット
----@param c Card
 function c34472920.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2,2)

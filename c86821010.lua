@@ -1,5 +1,4 @@
 --パワー・ブレイク
----@param c Card
 function c86821010.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

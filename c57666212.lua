@@ -1,5 +1,4 @@
 --光帝クライス
----@param c Card
 function c57666212.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --レッドアイズ・ブラックメタルドラゴン
----@param c Card
 function c64335804.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

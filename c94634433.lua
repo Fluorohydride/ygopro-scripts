@@ -1,5 +1,4 @@
 --緊急同調
----@param c Card
 function c94634433.initial_effect(c)
 	--synchro effect
 	local e1=Effect.CreateEffect(c)

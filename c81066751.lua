@@ -1,5 +1,4 @@
 --神罰
----@param c Card
 function c81066751.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--Activate(effect)

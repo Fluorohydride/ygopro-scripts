@@ -1,5 +1,4 @@
 --一族の結集
----@param c Card
 function c8608979.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

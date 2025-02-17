@@ -1,5 +1,4 @@
 --光天使セプター
----@param c Card
 function c38331564.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

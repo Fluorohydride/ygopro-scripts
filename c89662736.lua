@@ -1,5 +1,4 @@
 --武神器－ヤタ
----@param c Card
 function c89662736.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

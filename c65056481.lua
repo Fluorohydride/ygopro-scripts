@@ -1,5 +1,4 @@
 --星因士 シャム
----@param c Card
 function c65056481.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

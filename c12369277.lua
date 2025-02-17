@@ -1,5 +1,4 @@
 --超量士ブルーレイヤー
----@param c Card
 function c12369277.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

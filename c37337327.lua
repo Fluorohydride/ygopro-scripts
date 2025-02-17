@@ -1,5 +1,4 @@
 --ジャンク・コネクター
----@param c Card
 function c37337327.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --人造人間－サイコ・ジャッカー
----@param c Card
 function c51916032.initial_effect(c)
 	--change
 	aux.EnableChangeCode(c,77585513,LOCATION_MZONE+LOCATION_GRAVE)

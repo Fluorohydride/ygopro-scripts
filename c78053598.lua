@@ -1,5 +1,4 @@
 --闇の指名者
----@param c Card
 function c78053598.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --巌征竜－レドックス
----@param c Card
 function c90411554.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -47,6 +46,7 @@ function c90411554.initial_effect(c)
 	e4:SetTarget(c90411554.thtg)
 	e4:SetOperation(c90411554.thop)
 	c:RegisterEffect(e4)
+	c90411554.Dragon_Ruler_handes_effect=e3
 end
 function c90411554.rfilter(c)
 	return (c:IsRace(RACE_DRAGON) or c:IsAttribute(ATTRIBUTE_EARTH)) and c:IsAbleToRemoveAsCost()
@@ -109,6 +109,7 @@ end
 function c90411554.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
+	if not aux.NecroValleyFilter()(tc) then return end
 	if tc:IsRelateToChain() or (tc==c and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_HAND) and c:GetReasonEffect()==e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end

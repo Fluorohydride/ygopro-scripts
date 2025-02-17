@@ -1,5 +1,4 @@
 --掃除機塊バキューネシア
----@param c Card
 function c30118200.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()

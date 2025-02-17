@@ -1,5 +1,4 @@
 --シンデレラ
----@param c Card
 function c78527720.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--special summon

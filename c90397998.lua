@@ -1,5 +1,4 @@
 --六武衆－カモン
----@param c Card
 function c90397998.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

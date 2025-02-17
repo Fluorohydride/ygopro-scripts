@@ -1,5 +1,4 @@
 --永遠の淑女 ベアトリーチェ
----@param c Card
 function c27552504.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2,c27552504.ovfilter,aux.Stringid(27552504,0),2,c27552504.xyzop)

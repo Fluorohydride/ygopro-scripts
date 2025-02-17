@@ -1,5 +1,4 @@
 --影霊衣の大魔道士
----@param c Card
 function c27796375.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

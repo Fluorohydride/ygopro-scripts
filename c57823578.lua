@@ -1,5 +1,4 @@
 --神鳥の烈戦
----@param c Card
 function c57823578.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

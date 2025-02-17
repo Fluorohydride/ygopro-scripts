@@ -1,5 +1,4 @@
 --傀儡葬儀－パペット・パレード
----@param c Card
 function c32875265.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,4 @@
 --ダーク・アドバンス
----@param c Card
 function c97001138.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

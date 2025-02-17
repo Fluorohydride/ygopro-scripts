@@ -1,5 +1,4 @@
 --相視相殺
----@param c Card
 function c75364199.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

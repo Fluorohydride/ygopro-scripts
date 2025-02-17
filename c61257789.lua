@@ -1,5 +1,4 @@
 --スターダスト・ドラゴン／バスター
----@param c Card
 function c61257789.initial_effect(c)
 	aux.AddCodeList(c,80280737,44508094)
 	c:EnableReviveLimit()

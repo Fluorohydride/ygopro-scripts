@@ -1,5 +1,4 @@
 --鉄獣戦線 銀弾のルガル
----@param c Card
 function c52331012.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST),2,3)

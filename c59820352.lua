@@ -1,5 +1,4 @@
 --大地讃頌
----@param c Card
 function c59820352.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c59820352.ritual_filter)
 end

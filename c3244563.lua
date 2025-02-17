@@ -1,5 +1,4 @@
 --シールドスピア
----@param c Card
 function c3244563.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

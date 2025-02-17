@@ -1,5 +1,4 @@
 --颶風龍－ビュフォート・ノウェム
----@param c Card
 function c8836329.initial_effect(c)
 	c:EnableReviveLimit()
 	--disable

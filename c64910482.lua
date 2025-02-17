@@ -1,5 +1,4 @@
 --TG サイバー・マジシャン
----@param c Card
 function c64910482.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

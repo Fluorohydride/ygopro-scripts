@@ -1,5 +1,4 @@
 --クルセイダー・オブ・エンディミオン
----@param c Card
 function c73853830.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--add counter

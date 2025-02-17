@@ -1,5 +1,4 @@
 --No.15 ギミック・パペット－ジャイアントキラー
----@param c Card
 function c88120966.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

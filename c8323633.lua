@@ -1,5 +1,4 @@
 --夜霧のスナイパー
----@param c Card
 function c8323633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

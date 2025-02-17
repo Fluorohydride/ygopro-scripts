@@ -1,5 +1,4 @@
 --雲魔物－ポイズン・クラウド
----@param c Card
 function c83982270.initial_effect(c)
 	--destroy&damage
 	local e1=Effect.CreateEffect(c)

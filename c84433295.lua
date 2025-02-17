@@ -1,5 +1,4 @@
 --クインテット・マジシャン
----@param c Card
 function c84433295.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

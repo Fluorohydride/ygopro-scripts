@@ -1,5 +1,4 @@
 --エヴォルテクター シュバリエ
----@param c Card
 function c96872283.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

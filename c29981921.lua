@@ -1,5 +1,4 @@
 --真六武衆－シエン
----@param c Card
 function c29981921.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),aux.NonTuner(Card.IsSetCard,0x103d),1)

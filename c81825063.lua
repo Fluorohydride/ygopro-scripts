@@ -1,5 +1,4 @@
 --氷結界の虎将 ウェイン
----@param c Card
 function c81825063.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

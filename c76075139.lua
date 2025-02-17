@@ -1,5 +1,4 @@
 --ヴァリアンツG－グランデューク
----@param c Card
 function c76075139.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

@@ -1,5 +1,4 @@
 --No.103 神葬零嬢ラグナ・ゼロ
----@param c Card
 function c94380860.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

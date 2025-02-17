@@ -1,5 +1,4 @@
 --幻影騎士団ロスト・ヴァンブレイズ
----@param c Card
 function c36247316.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

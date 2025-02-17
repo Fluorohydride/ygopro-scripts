@@ -1,6 +1,5 @@
 --俱利伽羅天童
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

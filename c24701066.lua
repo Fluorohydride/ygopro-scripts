@@ -1,5 +1,4 @@
 --無限起動リヴァーストーム
----@param c Card
 function c24701066.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

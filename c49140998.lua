@@ -1,5 +1,4 @@
 --鳳凰神の羽根
----@param c Card
 function c49140998.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

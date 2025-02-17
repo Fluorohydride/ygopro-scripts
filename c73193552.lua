@@ -1,5 +1,4 @@
 --革命の御旗
----@param c Card
 function c73193552.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

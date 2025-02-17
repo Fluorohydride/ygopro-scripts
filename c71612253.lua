@@ -1,5 +1,4 @@
 --DDD狙撃王テル
----@param c Card
 function c71612253.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,c71612253.ovfilter,aux.Stringid(71612253,0))

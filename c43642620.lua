@@ -1,5 +1,4 @@
 --マンモス・ゾンビ
----@param c Card
 function c43642620.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

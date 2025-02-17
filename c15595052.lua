@@ -1,5 +1,4 @@
 --封魔の伝承者
----@param c Card
 function c15595052.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)

@@ -1,6 +1,6 @@
 --風征竜－ライトニング
----@param c Card
 function c89185742.initial_effect(c)
+	aux.AddCodeList(c,89399912)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(89185742,0))

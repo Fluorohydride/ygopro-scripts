@@ -1,5 +1,4 @@
 --甲虫装機 アーマイゼ
----@param c Card
 function c95395761.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

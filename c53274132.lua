@@ -1,5 +1,4 @@
 --C・リペアラー
----@param c Card
 function c53274132.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

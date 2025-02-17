@@ -1,5 +1,4 @@
 --戦神－不知火
----@param c Card
 function c83283063.initial_effect(c)
 	c:SetSPSummonOnce(83283063)
 	--synchro summon

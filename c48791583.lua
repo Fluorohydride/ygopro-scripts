@@ -1,5 +1,4 @@
 --召喚獣メガラニカ
----@param c Card
 function c48791583.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

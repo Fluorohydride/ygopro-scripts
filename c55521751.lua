@@ -1,5 +1,4 @@
 --ふわんだりぃずと未知の風
----@param c Card
 function c55521751.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

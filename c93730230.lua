@@ -1,5 +1,4 @@
 --先史遺産クリスタル・エイリアン
----@param c Card
 function c93730230.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)
