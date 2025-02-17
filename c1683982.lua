@@ -1,4 +1,5 @@
 --毒蛇の怨念
+---@param c Card
 function c1683982.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)
@@ -18,28 +19,22 @@ function c1683982.initial_effect(c)
 	c:RegisterEffect(e2)
 	--SpecialSummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetDescription(aux.Stringid(1683982,1))
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e3:SetCode(EVENT_DESTROYED)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCode(EVENT_BATTLE_DESTROYED)
+	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL+EFFECT_FLAG_DELAY)
+	e3:SetCountLimit(1,1683982)
 	e3:SetCondition(c1683982.regcon)
-	e3:SetOperation(c1683982.regop)
+	e3:SetTarget(c1683982.sptg)
+	e3:SetOperation(c1683982.spop)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_TO_GRAVE)
+	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetCondition(c1683982.regcon2)
 	c:RegisterEffect(e4)
-	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(1683982,1))
-	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
-	e5:SetCode(EVENT_CUSTOM+1683982)
-	e5:SetRange(LOCATION_SZONE)
-	e5:SetCountLimit(1,1683982)
-	e5:SetTarget(c1683982.sptg)
-	e5:SetOperation(c1683982.spop)
-	c:RegisterEffect(e5)
 	--return to grave
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(1683982,2))
@@ -57,7 +52,7 @@ function c1683982.atktg(e,c)
 	return not c:IsRace(RACE_REPTILE)
 end
 function c1683982.cfilter(c,tp)
-	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousRaceOnField()&RACE_REPTILE~=0
+	return c:IsPreviousControler(tp) and c:IsReason(REASON_BATTLE) and c:GetPreviousRaceOnField()&RACE_REPTILE~=0
 end
 function c1683982.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c1683982.cfilter,1,nil,tp)
