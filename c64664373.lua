@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.tgfilter(c,e,tp)
-	return c:IsFaceup() and not c:IsType(TYPE_TOKEN) and not c:IsDisabled() and c:IsType(TYPE_EFFECT) 
+	return aux.NegateEffectMonsterFilter(c) 
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA+LOCATION_HAND,0,1,nil,e,tp,c:GetRace(),c:GetAttribute(),c:GetAttack())
 end
 function s.spfilter(c,e,tp,race,att,atk)
