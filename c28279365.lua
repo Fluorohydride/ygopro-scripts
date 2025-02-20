@@ -29,14 +29,17 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
-	local mg=tc:GetMaterial():Filter(aux.NecroValleyFilter(s.mgfilter),nil,e,tp,tc)
+	local mg=tc:GetMaterial()
 	local sumtype=tc:GetSummonType()
-	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and sumtype==SUMMON_TYPE_LINK
-		and tc:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>0
-		and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=mg:Select(tp,1,1,nil)
-		Duel.BreakEffect()
-		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 then
+		mg=mg:Filter(aux.NecroValleyFilter(s.mgfilter),nil,e,tp,tc)
+		if sumtype==SUMMON_TYPE_LINK and tc:IsLocation(LOCATION_EXTRA)
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>0
+			and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local sg=mg:Select(tp,1,1,nil)
+			Duel.BreakEffect()
+			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+		end
 	end
 end
