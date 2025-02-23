@@ -1968,13 +1968,17 @@ do
 	---@param seq integer
 	---@param pos integer
 	---@param proc? boolean default: false
-	function Auxiliary.PuzzleAddCard(code, owner, location, seq, pos, proc)
+	---@param force? boolean default: false
+	function Auxiliary.PuzzleAddCard(code, owner, location, seq, pos, proc, force)
 		local _seq
 		puzzle_card_table[owner] = puzzle_card_table[owner] or {}
 		puzzle_card_table[owner][location] = puzzle_card_table[owner][location] or {}
 		_seq = seq
-		while puzzle_card_table[owner][location][_seq] do
-			_seq = _seq + 1
+		if force then
+		else
+			while puzzle_card_table[owner][location][_seq] do
+				_seq = _seq + 1
+			end
 		end
 		puzzle_card_table[owner][location][_seq] = true
 		return Debug.AddCard(code, owner, owner, location, _seq, pos, proc)
