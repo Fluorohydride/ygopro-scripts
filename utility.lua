@@ -1961,13 +1961,13 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 end
 do
 	local puzzle_card_table = {}
----@return Card
----@param code integer
----@param owner integer
----@param location integer
----@param seq integer
----@param pos integer
----@param proc? boolean default: false
+	---@return Card
+	---@param code integer
+	---@param owner integer
+	---@param location integer
+	---@param seq integer
+	---@param pos integer
+	---@param proc? boolean default: false
 	function Auxiliary.PuzzleAddCard(code, owner, location, seq, pos, proc)
 		local _seq
 		puzzle_card_table[owner] = puzzle_card_table[owner] or {}
