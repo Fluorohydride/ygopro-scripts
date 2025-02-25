@@ -86,6 +86,31 @@ function Auxiliary.Next(g)
 				else return g:GetNext() end
 			end
 end
+function Auxiliary.Nexts(...)
+	local groups, current_group, first, return_function
+	groups = {...}
+	current_group = 1
+	first = true
+	return_function = function()
+		while current_group <= #groups do
+			local g = groups[current_group]
+			local res
+			if first then
+				res = g:GetFirst()
+				first = false
+			else
+				res = g:GetNext()
+			end
+			if res then
+				return res
+			else
+				current_group = current_group + 1
+				first = true
+			end
+		end
+	end
+	return return_function
+end
 function Auxiliary.NULL()
 end
 function Auxiliary.TRUE()
