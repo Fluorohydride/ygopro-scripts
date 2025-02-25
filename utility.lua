@@ -93,8 +93,8 @@ function Auxiliary.Nexts(...)
 	first = true
 	return_function = function()
 		while current_group <= #groups do
-			local g = groups[current_group]
-			local res
+			local g, res
+			g = groups[current_group]
 			if first then
 				res = g:GetFirst()
 				first = false
