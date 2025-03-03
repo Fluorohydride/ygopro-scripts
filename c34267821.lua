@@ -61,5 +61,5 @@ function c34267821.rmop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	Duel.RegisterFlagEffect(tp,34267821,RESET_PHASE+PHASE_END,0,0)
+	Duel.RegisterFlagEffect(tp,34267821,RESET_PHASE+PHASE_END,0,1)
 end
