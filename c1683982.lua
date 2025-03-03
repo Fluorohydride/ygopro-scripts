@@ -25,14 +25,13 @@ function c1683982.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL+EFFECT_FLAG_DELAY)
 	e3:SetCountLimit(1,1683982)
-	e3:SetCondition(c1683982.regcon)
+	e3:SetCondition(c1683982.spcon)
 	e3:SetTarget(c1683982.sptg)
 	e3:SetOperation(c1683982.spop)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_TO_GRAVE)
-	e4:SetProperty(EFFECT_FLAG_DELAY)
-	e4:SetCondition(c1683982.regcon2)
+	e4:SetCondition(c1683982.spcon2)
 	c:RegisterEffect(e4)
 	--return to grave
 	local e6=Effect.CreateEffect(c)
@@ -53,18 +52,15 @@ end
 function c1683982.cfilter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsReason(REASON_BATTLE) and c:GetPreviousRaceOnField()&RACE_REPTILE~=0
 end
-function c1683982.regcon(e,tp,eg,ep,ev,re,r,rp)
+function c1683982.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c1683982.cfilter,1,nil,tp)
 end
 function c1683982.cfilter2(c,tp)
 	return not c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:GetPreviousRaceOnField()&RACE_REPTILE~=0 and c:IsRace(RACE_REPTILE) and c:IsPreviousPosition(POS_FACEUP)
 end
-function c1683982.regcon2(e,tp,eg,ep,ev,re,r,rp)
+function c1683982.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c1683982.cfilter2,1,nil,tp)
-end
-function c1683982.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+1683982,e,0,tp,0,0)
 end
 function c1683982.spfilter(c,e,tp)
 	return c:IsRace(RACE_REPTILE) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
