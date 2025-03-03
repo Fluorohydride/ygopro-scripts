@@ -31,5 +31,5 @@ function c91800273.redop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(LOCATION_REMOVED)
 	e1:SetReset(RESET_PHASE+PHASE_END,2)
 	Duel.RegisterEffect(e1,tp)
-	Duel.RegisterFlagEffect(tp,91800273,RESET_PHASE+PHASE_END,0,0)
+	Duel.RegisterFlagEffect(tp,91800273,RESET_PHASE+PHASE_END,0,1)
 end
