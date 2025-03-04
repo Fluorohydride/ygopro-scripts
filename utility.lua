@@ -1959,3 +1959,26 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+do
+	local puzzle_card_table = {}
+	---@return Card
+	---@param code integer
+	---@param owner integer
+	---@param location integer
+	---@param seq integer
+	---@param pos integer
+	---@param proc? boolean default: false
+	---@param force? boolean default: false
+	function Auxiliary.PuzzleAddCard(code, owner, location, seq, pos, proc, force)
+		puzzle_card_table[owner] = puzzle_card_table[owner] or {}
+		puzzle_card_table[owner][location] = puzzle_card_table[owner][location] or {}
+		if force then
+		else
+			while puzzle_card_table[owner][location][seq] do
+				seq = seq + 1
+			end
+		end
+		puzzle_card_table[owner][location][seq] = true
+		return Debug.AddCard(code, owner, owner, location, seq, pos, proc)
+	end
+end
