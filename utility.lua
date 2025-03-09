@@ -1959,3 +1959,48 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+do
+	local puzzle_card = {}
+	
+	local puzzle_location = {
+		[LOCATION_MZONE] = "m",
+		[LOCATION_SZONE] = "s",
+		[LOCATION_PZONE] = "p",
+		[LOCATION_DECK] = "d",
+		[LOCATION_EXTRA] = "e",
+		[LOCATION_GRAVE] = "g",
+		[LOCATION_REMOVED] = "r",
+		[LOCATION_HAND] = "h",
+		[LOCATION_FZONE] = "f",
+	}
+	
+	local SetPuzzleCard = function(code, owner, location, seq, pos)
+		local card = Debug.AddCard(code, owner, owner, location, seq, pos)
+		puzzle_card[owner][location][seq] = card
+		puzzle_card[owner .. puzzle_location[location] .. seq] = card
+	end
+	
+	local AddPuzzleCard = function(code, owner, location, seq, pos, force)
+		puzzle_card[owner] = puzzle_card[owner] or {}
+		puzzle_card[owner][location] = puzzle_card[owner][location] or {}
+		if force then
+			Debug.AddCard(code, owner, owner, location, seq, pos)
+		else
+			while puzzle_card[owner][location][seq] do
+				seq = seq + 1
+			end
+			SetPuzzleCard(code, owner, location, seq, pos)
+		end
+	end
+	
+	local AddPuzzleCards = function(puzzle_data)
+		for _, i in ipairs(puzzle_data) do
+		  AddPuzzleCard(table.unpack(i))
+		end
+	end
+	
+	aux.SetPuzzle = function(puzzle_data)
+		AddPuzzleCards(puzzle_data)
+		return puzzle_card
+	end
+end
