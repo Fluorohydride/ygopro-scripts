@@ -31,7 +31,7 @@ function c85888377.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
 		local ct=Duel.GetMatchingGroupCount(c85888377.filter,tp,LOCATION_ONFIELD,0,c)
 		local g=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
-		if ct>0 and g:GetCount() and Duel.SelectYesNo(tp,aux.Stringid(85888377,0)) then
+		if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(85888377,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 			local sg=g:Select(tp,1,ct,nil)
