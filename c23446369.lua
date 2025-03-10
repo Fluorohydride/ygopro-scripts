@@ -70,7 +70,7 @@ end
 function s.tattack(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and a:IsAttackable() and not a:IsImmuneToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and a:IsRelateToBattle() and a:IsAttackable() and not a:IsImmuneToEffect(e) then
 		Duel.CalculateDamage(a,tc)
 	end
 end
