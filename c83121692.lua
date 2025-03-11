@@ -44,17 +44,15 @@ function c83121692.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		c:SetCardTarget(tc)
 	end
-	if c:GetFlagEffect(83121693)==0 then
-		c:RegisterFlagEffect(83121693,RESET_EVENT+RESETS_STANDARD,0,0)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetCondition(c83121692.indcon)
-		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
-	end
+	c:RegisterFlagEffect(83121693,RESET_EVENT+RESETS_STANDARD,0,0)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetCondition(c83121692.indcon)
+	e1:SetValue(1)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	tc:RegisterEffect(e1)
 end
 function c83121692.indcon(e)
 	local c=e:GetHandler()
