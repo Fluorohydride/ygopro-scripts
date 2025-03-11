@@ -1,11 +1,12 @@
 --星遺物－『星杯』
 function c57288708.initial_effect(c)
 	--send to grave
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,57288708,EVENT_SPSUMMON_SUCCESS)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(57288708,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e1:SetCode(custom_code)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c57288708.tgcon)
