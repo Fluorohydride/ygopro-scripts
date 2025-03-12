@@ -29,7 +29,7 @@ function c18558867.initial_effect(c)
 		c18558867.global_check=true
 		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_BATTLE_CONFIRM)
+		ge1:SetCode(EVENT_BATTLED)
 		ge1:SetOperation(c18558867.checkop)
 		Duel.RegisterEffect(ge1,0)
 	end
