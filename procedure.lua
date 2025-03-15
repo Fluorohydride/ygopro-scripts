@@ -1252,7 +1252,7 @@ function Auxiliary.ParseLegacyFusionConds(...)
 			conds[i]={
 				min=1,
 				max=1,
-				miltiple=val[i]
+				multiple=val[i]
 			}
 		elseif type(val[i])=='function' then
 			conds[i]={
