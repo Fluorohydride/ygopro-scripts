@@ -90,8 +90,8 @@ end
 function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp)
-		aux.FCheckAdditional=c10833828.fcheck1(e:GetHandler():GetFieldID())
+		local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
+		aux.FGoalCheckAdditional=c10833828.fcheck1(e:GetHandler():GetFieldID())
 		local res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -102,7 +102,7 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -112,7 +112,7 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
-	aux.FCheckAdditional=c10833828.fcheck1(c:GetFieldID())
+	aux.FGoalCheckAdditional=c10833828.fcheck1(c:GetFieldID())
 	local sg1=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
@@ -129,20 +129,20 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		else
+		elseif ce then
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 end
 function c10833828.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

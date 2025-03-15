@@ -40,7 +40,7 @@ end
 function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local fmg1=Duel.GetFusionMaterial(tp)
+		local fmg1=Duel.GetFusionMaterial(tp):Filter(c99426088.ffilter1,nil,e)
 		if c99426088.excon(tp) then
 			local fmg2=Duel.GetMatchingGroup(c99426088.fexfilter,tp,LOCATION_DECK,0,nil)
 			if fmg2:GetCount()>0 then
@@ -135,7 +135,7 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=sg:Select(tp,1,1,nil):GetFirst()
 		fmg1:RemoveCard(tc)
-		if fsg1:IsContains(tc) and (fsg2==nil or not fsg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+		if fsg1:IsContains(tc) and (fsg2==nil or not fsg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if exmat then
 				aux.FCheckAdditional=c99426088.frcheck
 				aux.GCheckAdditional=c99426088.gcheck
@@ -147,7 +147,7 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		else
+		elseif ce then
 			local mat2=Duel.SelectFusionMaterial(tp,tc,fmg3,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)

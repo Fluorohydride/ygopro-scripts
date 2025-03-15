@@ -62,7 +62,7 @@ function c34995106.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if mg1:IsExists(c34995106.chkfilter,1,nil,tp) and mg2:GetCount()>0 or mg2:IsExists(c34995106.chkfilter,1,nil,tp) then
 			mg1:Merge(mg2)
 		end
-		aux.FCheckAdditional=c34995106.fcheck
+		aux.FGoalCheckAdditional=c34995106.fcheck
 		local res=Duel.IsExistingMatchingCard(c34995106.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -73,7 +73,7 @@ function c34995106.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c34995106.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -86,7 +86,7 @@ function c34995106.activate(e,tp,eg,ep,ev,re,r,rp)
 	if mg1:IsExists(c34995106.chkfilter,1,nil,tp) and mg2:GetCount()>0 or mg2:IsExists(c34995106.chkfilter,1,nil,tp) then
 		mg1:Merge(mg2)
 	end
-	aux.FCheckAdditional=c34995106.fcheck
+	aux.FGoalCheckAdditional=c34995106.fcheck
 	local sg1=Duel.GetMatchingGroup(c34995106.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -103,7 +103,7 @@ function c34995106.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
 			local mat2=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
@@ -112,14 +112,14 @@ function c34995106.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Remove(mat2,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		else
+		elseif ce then
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 end
 function c34995106.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)

@@ -23,9 +23,9 @@ end
 function c71143015.filter1(c,e,tp,m,f,chkf)
 	if not (c:IsType(TYPE_FUSION) and (aux.IsMaterialListCode(c,89631139) or aux.IsMaterialListCode(c,23995346)) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
-	aux.FCheckAdditional=c.ultimate_fusion_check or c71143015.fcheck
+	aux.FGoalCheckAdditional=c.ultimate_fusion_check or c71143015.fcheck
 	local res=c:CheckFusionMaterial(m,nil,chkf)
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 	return res
 end
 function c71143015.fcheck(tp,sg,fc)
@@ -74,8 +74,8 @@ function c71143015.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		aux.FCheckAdditional=tc.ultimate_fusion_check or c71143015.fcheck
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+		aux.FGoalCheckAdditional=tc.ultimate_fusion_check or c71143015.fcheck
+		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
 			ct=mat1:FilterCount(c71143015.desfilter,nil)
 			tc:SetMaterial(mat1)
@@ -91,7 +91,7 @@ function c71143015.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 			spchk=1
-		else
+		elseif ce then
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
 			ct=mat2:FilterCount(c71143015.desfilter,nil)
 			local fop=ce:GetOperation()
@@ -100,7 +100,7 @@ function c71143015.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 	if ct>0 and spchk>0 and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_ONFIELD,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(71143015,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

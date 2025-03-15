@@ -37,8 +37,8 @@ end
 function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp)
-		aux.FCheckAdditional=s.check
+		local mg1=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsImmuneToEffect),nil,e)
+		aux.FGoalCheckAdditional=s.check
 		local res=Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -49,7 +49,7 @@ function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -57,7 +57,7 @@ end
 function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsImmuneToEffect),nil,e)
-	aux.FCheckAdditional=s.check
+	aux.FGoalCheckAdditional=s.check
 	local sg1=Duel.GetMatchingGroup(s.filter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2,sg2=nil,nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -74,14 +74,14 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=sg:Select(tp,1,1,nil):GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not (sg2:IsContains(tc)
-			and Duel.SelectYesNo(tp,ce:GetDescription()))) then
+			and ce and Duel.SelectYesNo(tp,ce:GetDescription()))) then
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			if #mat==0 then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		else
+		elseif ce then
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
 			if #mat==0 then goto cancel end
 			local fop=ce:GetOperation()
@@ -89,7 +89,7 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 end
 function s.cfilter(c)
 	return c:IsFaceupEx() and c:IsCode(4796100)
