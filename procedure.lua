@@ -874,6 +874,32 @@ end
 
 --Fusion Summon
 
+function Auxiliary.ParseLegacyFusionCond(src)
+	local dist={
+		min=1,
+		max=1,
+	}
+	local inject_field=nil
+	if type(src)=='table' then
+		inject_field="multiple"
+	elseif type(src)=='function' then
+		inject_field="f"
+	elseif type(src)=='number' then
+		inject_field="code"
+	end
+	if inject_field then
+		dist[inject_field]=src
+	end
+	return dist
+end
+
+function Auxiliary.ParseLegacyFusionConds(cur,next,...)
+	if not next then
+		return Auxiliary.ParseLegacyFusionCond(cur)
+	end
+	return Auxiliary.ParseLegacyFusionCond(cur),Auxiliary.ParseLegacyFusionConds(next,...)
+end
+
 ---Fusion monster, ultimate
 ---@param fcard Card
 ---@param sub boolean Can be fusion summoned with substitute material
@@ -884,11 +910,8 @@ function Auxiliary.AddFusionProcUltimate(fcard,sub,insf,...)
 	local val={...}
 	local mat={}
 	for i=1,#val do
-		if type(val[i])=='function' then
-			val[i]={ min=1, max=1, f=val[i] }
-		elseif type(val[i])=='number' then
-			local code=val[i]
-			val[i]={ min=1, max=1, code=code }
+		if type(val[i])=='function' or type(val[i])=='number' then
+			val[i]=Auxiliary.ParseLegacyFusionConds(val[i])
 		end
 
 		if val[i].multiple then
@@ -1244,33 +1267,6 @@ function Auxiliary.FOperationUltimate(insf,sub,...)
 			end
 end
 
-function Auxiliary.ParseLegacyFusionConds(...)
-	local val={...}
-	local conds={}
-	for i=1,#val do
-		if type(val[i])=='table' then
-			conds[i]={
-				min=1,
-				max=1,
-				multiple=val[i]
-			}
-		elseif type(val[i])=='function' then
-			conds[i]={
-				min=1,
-				max=1,
-				f=val[i]
-			}
-		elseif type(val[i])=='number' then
-			conds[i]={
-				min=1,
-				max=1,
-				code=val[i]
-			}
-		end
-	end
-	return table.unpack(conds)
-end
-
 ---Fusion monster, mixed materials (fixed count)
 ---@param fcard Card
 ---@param sub boolean Can be fusion summoned with substitute material
@@ -1358,10 +1354,10 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
-	local fcond=Auxiliary.ParseLegacyFusionConds(f)
+	local code1cond,fcond=Auxiliary.ParseLegacyFusionConds(code1,f)
 	fcond.min=cc
 	fcond.max=cc
-	Auxiliary.AddFusionProcUltimate(c,sub,insf,code1,fcond)
+	Auxiliary.AddFusionProcUltimate(c,sub,insf,code1cond,fcond)
 end
 ---Fusion monster, condition + condition
 ---@param c Card
@@ -1398,10 +1394,10 @@ end
 ---@param cc integer
 ---@param insf boolean
 function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,insf)
-	local f2cond=Auxiliary.ParseLegacyFusionConds(f2)
+	local f1cond,f2cond=Auxiliary.ParseLegacyFusionConds(f1,f2)
 	f2cond.min=cc
 	f2cond.max=cc
-	Auxiliary.AddFusionProcUltimate(c,false,insf,f1,f2cond)
+	Auxiliary.AddFusionProcUltimate(c,false,insf,f1cond,f2cond)
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
