@@ -1244,41 +1244,8 @@ function Auxiliary.FOperationUltimate(insf,sub,...)
 			end
 end
 
----Fusion monster, mixed materials (fixed count)
----@param fcard Card
----@param sub boolean Can be fusion summoned with substitute material
----@param insf boolean Can be fusion summoned with no material (Instant Fusion)
----@param ... number|function|table
-function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
-	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
+function Auxiliary.ParseLegacyFusionConds(...)
 	local val={...}
-	local conds={}
-	for i=1,#val do
-		if type(val[i])=='table' then
-			conds[i]={
-				min=1,
-				max=1,
-				miltiple=val[i]
-			}
-		else
-			conds[i]=val[i]
-		end
-	end
-	Auxiliary.AddFusionProcUltimate(fcard,sub,insf,table.unpack(conds))
-end
-
-
----Fusion monster, mixed material * minc to maxc + material + ...
----@param fcard Card
----@param sub boolean Can be fusion summoned with substitute material
----@param insf boolean Can be fusion summoned with no material (Instant Fusion)
----@param fun1 number|function|table
----@param minc integer
----@param maxc integer
----@param ... number|function|table
-function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
-	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
-	local val={fun1,...}
 	local conds={}
 	for i=1,#val do
 		if type(val[i])=='table' then
@@ -1301,9 +1268,34 @@ function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
 			}
 		end
 	end
-	conds[1].min=minc
-	conds[1].max=maxc
-	Auxiliary.AddFusionProcUltimate(fcard,sub,insf,table.unpack(conds))
+	return table.unpack(conds)
+end
+
+---Fusion monster, mixed materials (fixed count)
+---@param fcard Card
+---@param sub boolean Can be fusion summoned with substitute material
+---@param insf boolean Can be fusion summoned with no material (Instant Fusion)
+---@param ... number|function|table
+function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
+	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
+	Auxiliary.AddFusionProcUltimate(fcard,sub,insf,Auxiliary.ParseLegacyFusionConds(...))
+end
+
+
+---Fusion monster, mixed material * minc to maxc + material + ...
+---@param fcard Card
+---@param sub boolean Can be fusion summoned with substitute material
+---@param insf boolean Can be fusion summoned with no material (Instant Fusion)
+---@param fun1 number|function|table
+---@param minc integer
+---@param maxc integer
+---@param ... number|function|table
+function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
+	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
+	local first_cond=Auxiliary.ParseLegacyFusionConds(fun1)
+	first_cond.min=minc
+	first_cond.max=maxc
+	Auxiliary.AddFusionProcUltimate(fcard,sub,insf,first_cond,Auxiliary.ParseLegacyFusionConds(...))
 end
 
 ---Fusion monster, name + name
@@ -1343,11 +1335,10 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
-	Auxiliary.AddFusionProcUltimate(c,sub,insf,{
-		min=cc,
-		max=cc,
-		code=code1
-	})
+	local cond=Auxiliary.ParseLegacyFusionConds(code1)
+	cond.min=cc
+	cond.max=cc
+	Auxiliary.AddFusionProcUltimate(c,sub,insf,cond)
 end
 ---Fusion monster, name * minc to maxc
 ---@param c Card
@@ -1367,11 +1358,10 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
-	Auxiliary.AddFusionProcUltimate(c,sub,insf,code1,{
-		min=cc,
-		max=cc,
-		f=f
-	})
+	local fcond=Auxiliary.ParseLegacyFusionConds(f)
+	fcond.min=cc
+	fcond.max=cc
+	Auxiliary.AddFusionProcUltimate(c,sub,insf,code1,fcond)
 end
 ---Fusion monster, condition + condition
 ---@param c Card
@@ -1387,11 +1377,10 @@ end
 ---@param cc integer
 ---@param insf boolean
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
-	Auxiliary.AddFusionProcUltimate(c,false,insf,{
-		min=cc,
-		max=cc,
-		f=f
-	})
+	local cond=Auxiliary.ParseLegacyFusionConds(f)
+	cond.min=cc
+	cond.max=cc
+	Auxiliary.AddFusionProcUltimate(c,false,insf,cond)
 end
 ---Fusion monster, condition * minc to maxc
 ---@param c Card
@@ -1409,11 +1398,10 @@ end
 ---@param cc integer
 ---@param insf boolean
 function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,insf)
-	Auxiliary.AddFusionProcUltimate(c,false,insf,f1,{
-		min=cc,
-		max=cc,
-		f=f2
-	})
+	local f2cond=Auxiliary.ParseLegacyFusionConds(f2)
+	f2cond.min=cc
+	f2cond.max=cc
+	Auxiliary.AddFusionProcUltimate(c,false,insf,f1,f2cond)
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
