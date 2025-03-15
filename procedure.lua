@@ -1293,7 +1293,7 @@ end
 ---@param cc integer
 ---@param insf boolean
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
-	Auxiliary.AddFusionProcMixRep(c,false,insf,f,cc,cc)
+	Auxiliary.AddFusionProcMix(c,false,insf,f,cc,cc)
 end
 ---Fusion monster, condition * minc to maxc
 ---@param c Card
