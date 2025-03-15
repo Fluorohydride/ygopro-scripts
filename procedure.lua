@@ -874,376 +874,6 @@ end
 
 --Fusion Summon
 
----Fusion monster, ultimate
----@param fcard Card
----@param sub boolean Can be fusion summoned with substitute material
----@param insf boolean Can be fusion summoned with no material (Instant Fusion)
----@param ... table { min: number, max: number, f: function, code: number, multiple: (string|function)[] }
-function Auxiliary.AddFusionProcUltimate(fcard,sub,insf,...)
-	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
-	local val={...}
-	local mat={}
-	for i=1,#val do
-		if type(val[i])=='function' then
-			val[i]={ min=1, max=1, f=val[i] }
-		elseif type(val[i])=='number' then
-			local code=val[i]
-			val[i]={ min=1, max=1, code=code }
-		end
-
-		if val[i].multiple then
-			local multiple_list=val[i].multiple
-			val[i].multiple=nil
-			local use_code=nil
-			for _,item in ipairs(multiple_list) do
-				if type(item)=="number" then
-					mat[item]=true
-					if not use_code then
-						use_code=item
-					end
-				end
-			end
-			val[i].code=use_code
-			val[i].f=function(c,fc,subm,mg,sg)
-				for _,fcode in ipairs(multiple_list) do
-					if type(fcode)=='function' then
-						if fcode(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) then return true end
-					elseif type(fcode)=='number' then
-						if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
-					end
-				end
-				return false
-			end
-		elseif val[i].code then
-			local code=val[i].code
-			mat[code]=true
-			val[i].f = function(c,fc,subm) return c:IsFusionCode(code) or (subm and c:CheckFusionSubstitute(fc)) end
-		else
-			local f = val[i].f
-			val[i].f = function(c,fc,subm,mg,sg)
-				return f(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579)
-			end
-		end
-	end
-	local mt=getmetatable(fcard)
-	if mt.material==nil then
-		mt.material=mat
-	end
-	if mt.material_count==nil then
-		local min=0
-		local max=0
-		for i=1,#val do
-			min=min+val[i].min
-			max=max+val[i].max
-		end
-		mt.material_count={min,max}
-	end
-	for index,_ in pairs(mat) do
-		Auxiliary.AddCodeList(fcard,index)
-	end
-	local e1=Effect.CreateEffect(fcard)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(Auxiliary.FConditionUltimate(insf,sub,table.unpack(val)))
-	e1:SetOperation(Auxiliary.FOperationUltimate(insf,sub,table.unpack(val)))
-	fcard:RegisterEffect(e1)
-end
-
-function Auxiliary.FConditionFilterUltimate(c,fc,sub,notfusion,conds)
-	local check_type=notfusion and SUMMON_TYPE_SPECIAL or SUMMON_TYPE_FUSION
-	if not c:IsCanBeFusionMaterial(fc,check_type) then return false end
-	for _,o in ipairs(conds) do
-		if o.f(c,fc,sub) then return true end
-	end
-	return false
-end
-
-function Auxiliary.FUltimateGoal(sg,tp,fc,sub,chkfnf,conds)
-	for i,o in ipairs(conds) do
-		if o.min>0 then
-			return false
-		end
-	end
-
-
-	local chkf=chkfnf&0xff
-	local not_fusion=chkfnf&(0x100|0x200)>0
-	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
-	local g=Group.CreateGroup()
-	return (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
-		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
-end
-
-function Auxiliary.FUltimateGetCondsResultCode(c,conds,fc,sub,mg,sg)
-	-- -1 means crcode is invalid
-	if c:IsLocation(LOCATION_MZONE) or Auxiliary.FGoalCheckAdditional then return -1 end
-
-	local code=0
-	if sub and c:CheckFusionSubstitute(fc) then
-		code=code|0x1
-	end
-	for i,o in ipairs(conds) do
-		if o.max>0 and o.f(c,fc,sub,mg,sg) then
-			code=code|(1<<i)
-		end
-	end
-	return code
-end
-
-function Auxiliary.FUltimateNext(c,i,mg,sg,tp,fc,sub,chkfnf,conds)
-	local not_fusion=chkfnf&(0x100|0x200)>0
-	if not not_fusion and Auxiliary.TuneMagicianCheckX(c,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
-
-	sg:AddCard(c)
-
-	if Auxiliary.FCheckAdditional and not Auxiliary.FCheckAdditional(tp,sg,fc)
-			or chkf~=PLAYER_NONE and Duel.GetLocationCountFromEx(tp,tp,sg,fc)<=0 and not c:IsLocation(LOCATION_MZONE) then
-		sg:RemoveCard(c)
-		return false
-	end
-
-	conds[i].min=conds[i].min-1
-	conds[i].max=conds[i].max-1
-	local res=Auxiliary.FUltimateGoal(sg,tp,fc,sub,chkfnf,conds)
-		or mg:IsExists(Auxiliary.CreateFUltimateCheck(mg,sg,tp,fc,sub,chkfnf,conds),1,sg)
-	conds[i].min=conds[i].min+1
-	conds[i].max=conds[i].max+1
-
-	sg:RemoveCard(c)
-	return res
-end
-
-function Auxiliary.FUltimateCheck(c,mg,sg,tp,fc,sub,chkfnf,conds)
-	-- we consider unfulfilled conditions first
-	local unfulfilled_conds={}
-	local fulfilled_conds={}
-	
-	for i,o in ipairs(conds) do
-		if o.min>0 then
-			table.insert(unfulfilled_conds, {cond=o, i=i})
-		else
-			table.insert(fulfilled_conds, {cond=o, i=i})
-		end
-	end
-
-	local sorted_conds={}
-	for _,o in ipairs(unfulfilled_conds) do
-		table.insert(sorted_conds, o)
-	end
-	for _,o in ipairs(fulfilled_conds) do
-		table.insert(sorted_conds, o)
-	end
-
-	for _,item in ipairs(sorted_conds) do
-		local o=item.cond
-		local i=item.i
-		if o.max>0 then
-			if o.f(c,fc,false,mg,sg) and Auxiliary.FUltimateNext(c,i,mg,sg,tp,fc,sub,chkfnf,conds) then
-				return true
-			elseif sub and o.code and o.f(c,fc,true,mg,sg) and Auxiliary.FUltimateNext(c,i,mg,sg,tp,fc,false,chkfnf,conds) then
-				return true
-			end
-		end
-	end
-
-	return false
-end
-
-function Auxiliary.CreateFUltimateCheck(mg,sg,tp,fc,sub,chkfnf,conds)
-	local crcode_cache={}
-	return	function(c)
-				local crcode=Auxiliary.FUltimateGetCondsResultCode(c,conds,fc,sub,mg,sg)
-				local cached=crcode_cache[crcode]
-				if cached then return cached==1 end
-				local res=Auxiliary.FUltimateCheck(c,mg,sg,tp,fc,sub,chkfnf,conds)
-				if crcode~=-1 then
-					crcode_cache[crcode]=res and 1 or 0
-				end
-				return res
-			end
-end
-
-function Auxiliary.FUltimateGetNextRoutes(c,mg,sg,tp,fc,chkfnf,routes)
-	local next_routes={}
-
-	for _,route in ipairs(routes) do
-		local conds=route.conds
-		local sub=route.sub
-		for i,o in ipairs(conds) do
-			if o.max>0 then
-				local new_route={ sub=sub, conds={} }
-
-				for j,oo in ipairs(conds) do
-					if j==i then
-						table.insert(new_route.conds, { min=oo.min-1, max=oo.max-1, f=oo.f, code=oo.code })
-					else
-						table.insert(new_route.conds, oo)
-					end
-				end
-
-				local function check_duplicate(sub)
-					for _,r in ipairs(next_routes) do
-						if r.sub==sub then
-							local same=true
-							for j,oo in ipairs(r.conds) do
-								local cond=new_route.conds[j]
-								if oo.min~=cond.min or oo.max~=cond.max then
-									same=false
-									break
-								end
-							end
-							if same then return true end
-						end
-					end
-					return false
-				end
-
-				if o.f(c,fc,false,mg,sg) and not check_duplicate(sub) and Auxiliary.FUltimateNext(c,i,mg,sg,tp,fc,sub,chkfnf,conds) then
-					table.insert(next_routes, new_route)
-				elseif sub and o.code and o.f(c,fc,true,mg,sg) and not check_duplicate(false) and Auxiliary.FUltimateNext(c,i,mg,sg,tp,fc,false,chkfnf,conds) then
-					new_route.sub=false
-					table.insert(next_routes, new_route)
-				end
-			end
-		end
-	end
-
-	return next_routes
-end
-
-function Auxiliary.FConditionUltimate(insf,sub,...)
-	--g:Material group(nil for Instant Fusion)
-	--gc:Material already used
-	--chkf: check field, default:PLAYER_NONE
-	--chkf&0x100: Not fusion summon, can use substitute (Hex-Sealed Fusion)
-	--chkf&0x200: Not fusion summon, can't use substitute ("Contact Fusion", Neos Fusion)
-	local conds={...}
-	return	function(e,g,gc,chkfnf)
-				if g==nil then return insf and Auxiliary.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
-				local c=e:GetHandler()
-				local tp=c:GetControler()
-				local hexsealed=chkfnf&0x100>0
-				local notfusion=chkfnf&0x200>0
-				local sub2=(sub or hexsealed) and not notfusion
-				local mg=g:Filter(Auxiliary.FConditionFilterUltimate,c,c,sub2,notfusion,conds)
-				for _,cond in ipairs(conds) do
-					if not mg:IsExists(cond.f,cond.min,nil,c,sub) then return false end
-				end
-				local checkf=Auxiliary.CreateFUltimateCheck(mg,Group.CreateGroup(),tp,c,sub2,chkfnf,conds)
-				if gc then
-					if not mg:IsContains(gc) then return false end
-					return checkf(gc)
-				end
-				return mg:IsExists(checkf,1,nil)
-			end
-end
-
-function Auxiliary.FOperationUltimate(insf,sub,...)
-	local conds={...}
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-				local c=e:GetHandler()
-				local hexsealed=chkfnf&0x100>0
-				local notfusion=chkfnf&0x200>0
-				local sub2=(sub or hexsealed) and not notfusion
-				local cancel=notfusion and Duel.GetCurrentChain()==0
-				local mg=eg:Filter(Auxiliary.FConditionFilterUltimate,c,c,sub2,notfusion,conds)
-				local sg=Group.CreateGroup()
-				if gc then sg:AddCard(gc) end
-				local current_conds={}
-				local total_minc=0
-				local total_maxc=0
-				for _,o in ipairs(conds) do
-					table.insert(current_conds, { min=o.min, max=o.max, f=o.f, code=o.code })
-					total_minc=total_minc+o.min
-					total_maxc=total_maxc+o.max
-				end
-				local current_routes = {
-					{ sub=sub2, conds=current_conds }
-				}
-				if gc then
-					current_routes = Auxiliary.FUltimateGetNextRoutes(gc,mg,sg,tp,c,chkfnf,current_routes)
-				end
-				local select_history_cards={}
-				local select_history_routes={}
-				while sg:GetCount()<total_maxc do
-					local crcode_cache={}
-					local function select_filter(sc)
-						for _,route in ipairs(current_routes) do
-							if not crcode_cache[route] then
-								crcode_cache[route]={}
-							end
-							local crcode=Auxiliary.FUltimateGetCondsResultCode(sc,route.conds,c,route.sub,mg,sg)
-							local cached=crcode_cache[route][crcode]
-							if cached then
-								if cached==1 then return true end
-							else
-								local res=Auxiliary.FUltimateCheck(sc,mg,sg,tp,c,route.sub,chkfnf,route.conds)
-								if res then
-									if crcode~=-1 then
-										crcode_cache[route][crcode]=1
-									end
-									return true
-								elseif crcode~=-1 then
-									crcode_cache[route][crcode]=0
-								end
-							end
-						end
-						return false
-					end
-					local cg=mg:Filter(select_filter,sg)
-					if cg:GetCount()==0 then
-						break
-					end
-
-					local finish=false
-					for _,route in ipairs(current_routes) do
-						if Auxiliary.FUltimateGoal(sg,tp,c,sub2,chkfnf,route.conds) then
-							finish=true
-							break
-						end
-					end
-					
-					local cancel_group=sg:Clone()
-					if gc then cancel_group:RemoveCard(gc) end
-
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local tc=cg:SelectUnselect(cancel_group,tp,finish,cancel,total_minc,total_maxc)
-
-					if not tc then
-						if not finish then sg:Clear() end
-						break
-					end
-
-					if sg:IsContains(tc) then
-						local remove_index=1
-						for i=1,#select_history_cards do
-							if select_history_cards[i]==tc then
-								remove_index=i
-								break
-							end
-						end
-
-						-- revert to old routes
-						current_routes=select_history_routes[remove_index]
-						while true do
-							local rc=table.remove(select_history_cards,remove_index)
-							if not rc then break end
-							sg:RemoveCard(rc)
-							table.remove(select_history_routes,remove_index)
-						end
-					else
-						table.insert(select_history_cards, tc)
-						table.insert(select_history_routes, current_routes)
-						local next_routes=Auxiliary.FUltimateGetNextRoutes(tc,mg,sg,tp,c,chkfnf,current_routes)
-						current_routes=next_routes
-						sg:AddCard(tc)
-					end
-				end
-				Duel.SetFusionMaterial(sg)
-			end
-end
-
 ---Fusion monster, mixed materials (fixed count)
 ---@param fcard Card
 ---@param sub boolean Can be fusion summoned with substitute material
@@ -1252,21 +882,123 @@ end
 function Auxiliary.AddFusionProcMix(fcard,sub,insf,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={...}
-	local conds={}
+	local fun={}
+	local mat={}
 	for i=1,#val do
-		if type(val[i])=='table' then
-			conds[i]={
-				min=1,
-				max=1,
-				miltiple=val[i]
-			}
-		else
-			conds[i]=val[i]
+		if type(val[i])=='function' then
+			fun[i]=function(c,fc,subm,mg,sg) return val[i](c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) end
+		elseif type(val[i])=='table' then
+			fun[i]=function(c,fc,subm,mg,sg)
+					for _,fcode in ipairs(val[i]) do
+						if type(fcode)=='function' then
+							if fcode(c,fc,subm,mg,sg) and not c:IsHasEffect(6205579) then return true end
+						elseif type(fcode)=='number' then
+							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
+						end
+					end
+					return false
+			end
+			for _,fcode in ipairs(val[i]) do
+				if type(fcode)=='number' then mat[fcode]=true end
+			end
+		elseif type(val[i])=='number' then
+			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
+			mat[val[i]]=true
 		end
 	end
-	Auxiliary.AddFusionProcUltimate(fcard,sub,insf,table.unpack(conds))
+	local mt=getmetatable(fcard)
+	if mt.material==nil then
+		mt.material=mat
+	end
+	if mt.material_count==nil then
+		mt.material_count={#fun,#fun}
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(fcard,index)
+	end
+	local e1=Effect.CreateEffect(fcard)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(EFFECT_FUSION_MATERIAL)
+	e1:SetCondition(Auxiliary.FConditionMix(insf,sub,table.unpack(fun)))
+	e1:SetOperation(Auxiliary.FOperationMix(insf,sub,table.unpack(fun)))
+	fcard:RegisterEffect(e1)
 end
-
+function Auxiliary.FConditionMix(insf,sub,...)
+	--g:Material group(nil for Instant Fusion)
+	--gc:Material already used
+	--chkf: check field, default:PLAYER_NONE
+	--chkf&0x100: Not fusion summon, can use substitute (Hex-Sealed Fusion)
+	--chkf&0x200: Not fusion summon, can't use substitute ("Contact Fusion", Neos Fusion)
+	local funs={...}
+	return	function(e,g,gc,chkfnf)
+				if g==nil then return insf and Auxiliary.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
+				local c=e:GetHandler()
+				local tp=c:GetControler()
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,table.unpack(funs))
+				if gc then
+					if not mg:IsContains(gc) then return false end
+					Duel.SetSelectedCard(gc)
+				end
+				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+			end
+end
+function Auxiliary.FOperationMix(insf,sub,...)
+	local funs={...}
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local c=e:GetHandler()
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local cancel=notfusion and Duel.GetCurrentChain()==0
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,table.unpack(funs))
+				if gc then Duel.SetSelectedCard(gc) end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,cancel,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				if sg then
+					Duel.SetFusionMaterial(sg)
+				else
+					Duel.SetFusionMaterial(Group.CreateGroup())
+				end
+			end
+end
+function Auxiliary.FConditionFilterMix(c,fc,sub,notfusion,...)
+	local check_type=notfusion and SUMMON_TYPE_SPECIAL or SUMMON_TYPE_FUSION
+	if not c:IsCanBeFusionMaterial(fc,check_type) then return false end
+	for i,f in ipairs({...}) do
+		if f(c,fc,sub) then return true end
+	end
+	return false
+end
+function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
+	if fun2 then
+		sg:AddCard(c)
+		local res=false
+		if fun1(c,fc,false,mg,sg) then
+			res=mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,sub,fun2,...)
+		elseif sub and fun1(c,fc,true,mg,sg) then
+			res=mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,false,fun2,...)
+		end
+		sg:RemoveCard(c)
+		return res
+	else
+		return fun1(c,fc,sub,mg,sg)
+	end
+end
+--if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
+function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
+	local chkf=chkfnf&0xff
+	local not_fusion=chkfnf&(0x100|0x200)>0
+	if not not_fusion and sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
+	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
+	local g=Group.CreateGroup()
+	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
+		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
+		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
+end
 
 ---Fusion monster, mixed material * minc to maxc + material + ...
 ---@param fcard Card
@@ -1279,31 +1011,213 @@ end
 function Auxiliary.AddFusionProcMixRep(fcard,sub,insf,fun1,minc,maxc,...)
 	if fcard:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={fun1,...}
-	local conds={}
+	local fun={}
+	local mat={}
 	for i=1,#val do
-		if type(val[i])=='table' then
-			conds[i]={
-				min=1,
-				max=1,
-				miltiple=val[i]
-			}
-		elseif type(val[i])=='function' then
-			conds[i]={
-				min=1,
-				max=1,
-				f=val[i]
-			}
+		if type(val[i])=='function' then
+			fun[i]=function(c,fc,subm) return val[i](c,fc,subm) and not c:IsHasEffect(6205579) end
+		elseif type(val[i])=='table' then
+			fun[i]=function(c,fc,subm)
+					for _,fcode in ipairs(val[i]) do
+						if type(fcode)=='function' then
+							if fcode(c,fc,subm) and not c:IsHasEffect(6205579) then return true end
+						elseif type(fcode)=='number' then
+							if c:IsFusionCode(fcode) or (subm and c:CheckFusionSubstitute(fc)) then return true end
+						end
+					end
+					return false
+			end
+			for _,fcode in ipairs(val[i]) do
+				if type(fcode)=='number' then mat[fcode]=true end
+			end
 		elseif type(val[i])=='number' then
-			conds[i]={
-				min=1,
-				max=1,
-				code=val[i]
-			}
+			fun[i]=function(c,fc,subm) return c:IsFusionCode(val[i]) or (subm and c:CheckFusionSubstitute(fc)) end
+			mat[val[i]]=true
 		end
 	end
-	conds[1].min=minc
-	conds[1].max=maxc
-	Auxiliary.AddFusionProcUltimate(fcard,sub,insf,table.unpack(conds))
+	local mt=getmetatable(fcard)
+	if mt.material==nil then
+		mt.material=mat
+	end
+	if mt.material_count==nil then
+		mt.material_count={#fun+minc-1,#fun+maxc-1}
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(fcard,index)
+	end
+	local e1=Effect.CreateEffect(fcard)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(EFFECT_FUSION_MATERIAL)
+	e1:SetCondition(Auxiliary.FConditionMixRep(insf,sub,fun[1],minc,maxc,table.unpack(fun,2)))
+	e1:SetOperation(Auxiliary.FOperationMixRep(insf,sub,fun[1],minc,maxc,table.unpack(fun,2)))
+	fcard:RegisterEffect(e1)
+end
+function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
+	local funs={...}
+	return	function(e,g,gc,chkfnf)
+				if g==nil then return insf and Auxiliary.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
+				local c=e:GetHandler()
+				local tp=c:GetControler()
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,fun1,table.unpack(funs))
+				if gc then
+					if not mg:IsContains(gc) then return false end
+					local sg=Group.CreateGroup()
+					return Auxiliary.FSelectMixRep(gc,tp,mg,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
+				end
+				local sg=Group.CreateGroup()
+				return mg:IsExists(Auxiliary.FSelectMixRep,1,nil,tp,mg,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
+			end
+end
+function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
+	local funs={...}
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local c=e:GetHandler()
+				local tp=c:GetControler()
+				local hexsealed=chkfnf&0x100>0
+				local notfusion=chkfnf&0x200>0
+				local sub2=(sub or hexsealed) and not notfusion
+				local cancel=notfusion and Duel.GetCurrentChain()==0
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,fun1,table.unpack(funs))
+				local sg=Group.CreateGroup()
+				if gc then sg:AddCard(gc) end
+				while sg:GetCount()<maxc+#funs do
+					local cg=mg:Filter(Auxiliary.FSelectMixRep,sg,tp,mg,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
+					if cg:GetCount()==0 then break end
+					local finish=Auxiliary.FCheckMixRepGoal(tp,sg,c,sub2,chkfnf,fun1,minc,maxc,table.unpack(funs))
+					local cancel_group=sg:Clone()
+					if gc then cancel_group:RemoveCard(gc) end
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local tc=cg:SelectUnselect(cancel_group,tp,finish,cancel,minc+#funs,maxc+#funs)
+					if not tc then
+						if not finish then sg:Clear() end
+						break
+					end
+					if sg:IsContains(tc) then
+						sg:RemoveCard(tc)
+					else
+						sg:AddCard(tc)
+					end
+				end
+				Duel.SetFusionMaterial(sg)
+			end
+end
+function Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
+	if fun2 then
+		return sg:IsExists(Auxiliary.FCheckMixRepFilter,1,g,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
+	else
+		local ct1=sg:FilterCount(fun1,g,fc,sub)
+		local ct2=sg:FilterCount(fun1,g,fc,false)
+		return ct1==sg:GetCount()-g:GetCount() and ct1-ct2<=1
+	end
+end
+function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
+	if fun2(c,fc,sub) then
+		g:AddCard(c)
+		sub=sub and fun2(c,fc,false)
+		local res=Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...)
+		g:RemoveCard(c)
+		return res
+	end
+	return false
+end
+function Auxiliary.FCheckMixRepGoalCheck(tp,sg,fc,chkfnf)
+	local not_fusion=chkfnf&(0x100|0x200)>0
+	if not not_fusion and sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
+	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
+	if Auxiliary.FGoalCheckAdditional and not Auxiliary.FGoalCheckAdditional(tp,sg,fc) then return false end
+	return true
+end
+function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkfnf,fun1,minc,maxc,...)
+	local chkf=chkfnf&0xff
+	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
+	if not (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0) then return false end
+	if Auxiliary.FCheckAdditional and not Auxiliary.FCheckAdditional(tp,sg,fc) then return false end
+	if not Auxiliary.FCheckMixRepGoalCheck(tp,sg,fc,chkfnf) then return false end
+	local g=Group.CreateGroup()
+	return Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...)
+end
+function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
+	for i,f in ipairs({...}) do
+		if f(c,fc,sub) then
+			g:AddCard(c)
+			local subf=sub and f(c,fc,false)
+			local t={...}
+			table.remove(t,i)
+			local res=cond(tp,mg,sg,g,fc,subf,chkfnf,fun1,minc,maxc,table.unpack(t))
+			g:RemoveCard(c)
+			if res then return true end
+		end
+	end
+	if maxc>0 then
+		if fun1(c,fc,sub) then
+			g:AddCard(c)
+			local subf1=sub and fun1(c,fc,false)
+			local res=cond(tp,mg,sg,g,fc,subf1,chkfnf,fun1,minc-1,maxc-1,...)
+			g:RemoveCard(c)
+			if res then return true end
+		end
+	end
+	return false
+end
+function Auxiliary.FCheckMixRepSelectedCond(tp,mg,sg,g,...)
+	if g:GetCount()<sg:GetCount() then
+		return sg:IsExists(Auxiliary.FCheckMixRepSelected,1,g,tp,mg,sg,g,...)
+	else
+		return Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,...)
+	end
+end
+function Auxiliary.FCheckMixRepSelected(c,...)
+	return Auxiliary.FCheckMixRepTemplate(c,Auxiliary.FCheckMixRepSelectedCond,...)
+end
+function Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
+	local chkf=chkfnf&0xff
+	if Auxiliary.FCheckAdditional and not Auxiliary.FCheckAdditional(tp,g,fc) then return false end
+	if chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,g,fc)>0 then
+		if minc<=0 and #{...}==0 and Auxiliary.FCheckMixRepGoalCheck(tp,g,fc,chkfnf) then return true end
+		return mg:IsExists(Auxiliary.FCheckSelectMixRepAll,1,g,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
+	else
+		return mg:IsExists(Auxiliary.FCheckSelectMixRepM,1,g,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
+	end
+end
+function Auxiliary.FCheckSelectMixRepAll(c,tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
+	if fun2 then
+		if fun2(c,fc,sub) then
+			g:AddCard(c)
+			local subf2=sub and fun2(c,fc,false)
+			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf2,chkf,fun1,minc,maxc,...)
+			g:RemoveCard(c)
+			return res
+		end
+	elseif maxc>0 and fun1(c,fc,sub) then
+		g:AddCard(c)
+		local subf1=sub and fun1(c,fc,false)
+		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,subf1,chkf,fun1,minc-1,maxc-1)
+		g:RemoveCard(c)
+		return res
+	end
+	return false
+end
+function Auxiliary.FCheckSelectMixRepM(c,tp,...)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
+		and Auxiliary.FCheckMixRepTemplate(c,Auxiliary.FCheckSelectMixRep,tp,...)
+end
+function Auxiliary.FSelectMixRep(c,tp,mg,sg,fc,sub,chkfnf,...)
+	sg:AddCard(c)
+	local res=false
+	if Auxiliary.FCheckAdditional and not Auxiliary.FCheckAdditional(tp,sg,fc) then
+		res=false
+	elseif Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkfnf,...) then
+		res=true
+	else
+		local g=Group.CreateGroup()
+		res=sg:IsExists(Auxiliary.FCheckMixRepSelected,1,nil,tp,mg,sg,g,fc,sub,chkfnf,...)
+	end
+	sg:RemoveCard(c)
+	return res
 end
 
 ---Fusion monster, name + name
@@ -1343,11 +1257,11 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
-	Auxiliary.AddFusionProcUltimate(c,sub,insf,{
-		min=cc,
-		max=cc,
-		code=code1
-	})
+	local code={}
+	for i=1,cc do
+		code[i]=code1
+	end
+	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
 ---Fusion monster, name * minc to maxc
 ---@param c Card
@@ -1367,11 +1281,11 @@ end
 ---@param sub boolean
 ---@param insf boolean
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
-	Auxiliary.AddFusionProcUltimate(c,sub,insf,code1,{
-		min=cc,
-		max=cc,
-		f=f
-	})
+	local fun={}
+	for i=1,cc do
+		fun[i]=f
+	end
+	Auxiliary.AddFusionProcMix(c,sub,insf,code1,table.unpack(fun))
 end
 ---Fusion monster, condition + condition
 ---@param c Card
