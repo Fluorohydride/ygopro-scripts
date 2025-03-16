@@ -64,6 +64,9 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+function s.filter(c,e)
+	return c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
+end
 function s.thfilters(c)
 	return c:IsFaceup() and c:IsAllTypes(TYPE_CONTINUOUS|TYPE_TRAP) and c:IsSetCard(0x1c1)
 end
@@ -71,7 +74,7 @@ function s.sgselect(g)
 	return g:IsExists(s.thfilters,1,nil)
 end
 function s.thtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
+	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chkc then return false end
 	if chk==0 then return g:CheckSubGroup(s.sgselect,2,2) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
