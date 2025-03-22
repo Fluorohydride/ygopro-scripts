@@ -99,7 +99,10 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		tg=tg:Select(tp,ft,ft,nil)
 	end
-	Duel.SSet(tp,tg)
+	if tg:GetCount()>0 then
+		Duel.SSet(tp,tg)
+		Duel.ShuffleSetCard(tg)
+	end
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_TRAP)

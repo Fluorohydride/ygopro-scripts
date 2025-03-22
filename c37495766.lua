@@ -27,13 +27,14 @@ function s.initial_effect(c)
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
-	e3:SetCode(EVENT_LEAVE_FIELD)
+	e3:SetCode(EVENT_CUSTOM+id)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,id+o*2)
 	e3:SetCondition(s.descon)
 	e3:SetTarget(s.destg)
 	e3:SetOperation(s.desop)
 	c:RegisterEffect(e3)
+	aux.RegisterMergedDelayedEvent(c,id,EVENT_LEAVE_FIELD)
 end
 function s.costfilter(c)
 	return c:IsSetCard(0x18b) and c:IsAbleToRemoveAsCost()
@@ -71,12 +72,13 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)
 		if sg:GetCount()>0 then
 			Duel.SSet(tp,sg)
+			Duel.ShuffleSetCard(sg)
 		end
 	end
 end
 function s.cfilter(c,tp)
 	return c:IsPreviousControler(tp)
-		and c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT)
+		and c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
