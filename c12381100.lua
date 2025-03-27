@@ -87,7 +87,7 @@ function s.foperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	Duel.SetFusionMaterial(g)
 end
 function s.ultimate_fusion_check(tp,sg,fc)
-	return #sg==2 and aux.gffcheck(sg,s.ffilter1,fc,s.ffilter3,nil)
+	return #sg==2 and aux.gffcheck(sg,Card.IsFusionCode,23995346,s.ffilter3,nil)
 end
 function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
