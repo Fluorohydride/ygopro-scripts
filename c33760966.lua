@@ -92,6 +92,7 @@ function s.RegisterMergedEvent_ToSingleCard_AddOperation(c,g,event,event_code_si
 		EVENT_CHAIN_END,
 		EVENT_SUMMON,
 		EVENT_SPSUMMON,
+		EVENT_MSET,
 		EVENT_BATTLE_DESTROYED
 	}
 	for _,code in ipairs(ec) do
@@ -111,7 +112,7 @@ function s.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 			g:Clear()
 		end
 	end
-	if Duel.GetCurrentChain()==0 and #g>0 and g:IsExists(Card.IsReason,1,nil,REASON_ADJUST) then
+	if Duel.GetCurrentChain()==0 and #g>0 and g:IsExists(Card.IsReason,1,nil,REASON_ADJUST|REASON_EFFECT) then
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
 		g:Clear()
