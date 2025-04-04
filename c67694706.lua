@@ -95,10 +95,12 @@ function s.scop(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local mg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 		local exg=Duel.GetMatchingGroup(s.exgfilter,tp,LOCATION_EXTRA,0,nil,mg,c)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sc=exg:Select(tp,1,1,nil):GetFirst()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local msg=mg:SelectSubGroup(tp,s.exgselect,false,1,#mg,sc,c)
-		Duel.XyzSummon(tp,sc,msg,#msg,#msg)
+		if exg:GetCount()>0 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local sc=exg:Select(tp,1,1,nil):GetFirst()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+			local msg=mg:SelectSubGroup(tp,s.exgselect,false,1,#mg,sc,c)
+			Duel.XyzSummon(tp,sc,msg,#msg,#msg)
+		end
 	end
 end
