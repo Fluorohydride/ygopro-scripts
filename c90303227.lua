@@ -62,6 +62,7 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local g1=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,nil)
 		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_GRAVE,nil)
 		g1:Merge(g2)
+		if g1:GetCount()==0 then return end
 		aux.GCheckAdditional=s.gcheck
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local sg=g1:SelectSubGroup(tp,aux.TRUE,false,1,2)
