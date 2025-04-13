@@ -33,7 +33,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.mvcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsMainPhase() and e:GetHandler():GetFlagEffect(id)==0
+	return Duel.IsMainPhase() and Duel.GetTurnCount()~=e:GetHandler():GetFlagEffectLabel(id)
 end
 function s.mvfilter(c,tp)
 	local r=LOCATION_REASON_TOFIELD
@@ -68,7 +68,7 @@ function s.mvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2,Duel.GetTurnCount()+1)
 	end
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
