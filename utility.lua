@@ -1959,3 +1959,19 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+do
+	local dispatch = {}
+	dispatch["boolean"] = function(arg)
+		Debug.ShowHint(tostring(arg))
+	end
+	dispatch["number"] = dispatch["boolean"]
+	dispatch["string"] = dispatch["boolean"]
+	dispatch["nil"] = dispatch["boolean"]
+	aux.DebugHint = function(...)
+		local count = select('#', ...)
+		for i = 1, count do
+			local arg = select(i, ...)
+			dispatch[type(arg)](arg)
+		end
+	end
+end
