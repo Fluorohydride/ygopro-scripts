@@ -27,7 +27,7 @@ function c29223325.desfilter(c,tp,ft)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and Duel.GetSZoneCount(tp,c)>ft
 end
 function c29223325.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c29223325.desfilter(chkc) and chkc~=e:GetHandler() end
+	if chkc then return chkc:IsOnField() and c29223325.desfilter(chkc,tp,0) and chkc~=e:GetHandler() end
 	if chk==0 then
 		if not Duel.IsExistingMatchingCard(c29223325.filter,tp,LOCATION_DECK,0,1,nil) then return false end
 		local ft=0
