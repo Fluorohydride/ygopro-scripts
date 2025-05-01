@@ -1751,7 +1751,7 @@ function Auxiliary.ContactFusionOperation(mat_operation,operation_params)
 			end
 end
 --send to deck of contact fusion
-function Auxiliary.tdcfop(c)
+function Auxiliary.ContactFusionSendToDeck(c)
 	return	function(g)
 				local cg=g:Filter(Card.IsFacedown,nil)
 				if cg:GetCount()>0 then
