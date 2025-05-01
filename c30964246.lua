@@ -67,18 +67,18 @@ end
 function s.filter(c,e)
 	return c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
 end
-function s.thfilters(c)
-	return c:IsFaceup() and c:IsAllTypes(TYPE_CONTINUOUS|TYPE_TRAP) and c:IsSetCard(0x1c1)
+function s.thfilters(c,tp)
+	return c:IsControler(tp) and c:IsFaceup() and c:IsAllTypes(TYPE_CONTINUOUS|TYPE_TRAP) and c:IsSetCard(0x1c1)
 end
-function s.sgselect(g)
-	return g:IsExists(s.thfilters,1,nil)
+function s.sgselect(g,tp)
+	return g:IsExists(s.thfilters,1,nil,tp)
 end
 function s.thtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chkc then return false end
-	if chk==0 then return g:CheckSubGroup(s.sgselect,2,2) end
+	if chk==0 then return g:CheckSubGroup(s.sgselect,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local sg=g:SelectSubGroup(tp,s.sgselect,false,2,2)
+	local sg=g:SelectSubGroup(tp,s.sgselect,false,2,2,tp)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,sg,#sg,0,0)
 end
