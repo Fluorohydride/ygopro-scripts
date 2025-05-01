@@ -22,7 +22,6 @@ function s.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCondition(s.repcon)
 	e3:SetOperation(s.repop)
-	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_GRANT)
