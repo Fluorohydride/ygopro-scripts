@@ -59,7 +59,7 @@ function s.checkop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.checkop2(e,tp,eg,ep,ev,re,r,rp)
 	if re and re:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER) then
-		local ct=Duel.GetFlagEffect(re:GetHandlerPlayer(),id)
+		local ct=Duel.GetFlagEffect(re:GetHandlerPlayer(),id) or 0
 		Duel.ResetFlagEffect(re:GetHandlerPlayer(),id)
 		if ct>1 then
 			local ra=0
