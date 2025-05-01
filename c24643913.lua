@@ -71,7 +71,7 @@ end
 function s.efilter(e,re)
 	if Duel.GetTurnPlayer()==e:GetHandlerPlayer() and e:GetHandlerPlayer()~=re:GetOwnerPlayer()
 		and re:IsActivated() and re:IsActiveType(TYPE_MONSTER) then
-		local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION)
+		local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION) or 0
 		return LOCATION_ONFIELD&loc~=0
 	end
 	return false
