@@ -36,8 +36,9 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local a=Duel.GetAttacker()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 and a:IsAttackable() and not a:IsImmuneToEffect(e) then
-		 Duel.CalculateDamage(a,c)
+	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0
+		and a:IsRelateToBattle() and a:IsAttackable() and not a:IsImmuneToEffect(e) then
+		Duel.CalculateDamage(a,c)
 	end
 end
 function s.atkfilter(c,ac)
