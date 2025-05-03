@@ -22,25 +22,25 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DisableShuffleCheck()
 	Duel.Remove(g,POS_FACEDOWN,REASON_COST)
 end
-function s.getrmdg(tp)
+function s.getrmdg(tp,reason)
 	local cg=Group.CreateGroup()
 	for ct=1,7 do
 		local g=Duel.GetDecktopGroup(1-tp,ct)
-		if not g:FilterCount(Card.IsAbleToRemove,nil,1-tp,POS_FACEDOWN,REASON_RULE)==ct then break end
+		if not g:FilterCount(Card.IsAbleToRemove,nil,1-tp,POS_FACEDOWN,reason)==ct then break end
 		cg=g
 	end
 	return cg
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=s.getrmdg(tp)
-	local ct1=Duel.GetMatchingGroupCount(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil,1-tp,POS_FACEDOWN,REASON_RULE)
+	local rg=s.getrmdg(tp,REASON_COST)
+	local ct1=Duel.GetMatchingGroupCount(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil,1-tp,POS_FACEDOWN,REASON_COST)
 	local ct2=rg:GetCount()
 	if chk==0 then return ct1+ct2>=7 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,7,0,LOCATION_EXTRA+LOCATION_DECK)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp,chk)
-	local dg=s.getrmdg(tp)
-	local edg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil,1-tp,POS_FACEDOWN,REASON_RULE)
+	local dg=s.getrmdg(tp,REASON_EFFECT)
+	local edg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil,1-tp,POS_FACEDOWN,REASON_EFFECT)
 	local ct1=dg:GetCount()
 	local ct2=edg:GetCount()
 	if ct1+ct2<7 then return end
