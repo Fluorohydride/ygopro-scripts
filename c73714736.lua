@@ -2,12 +2,12 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,45231177)
-	--
+	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--
+	--Fusion Summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -18,7 +18,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.sptg)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
-	--
+	--Chain Limit
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
@@ -26,14 +26,14 @@ function s.initial_effect(c)
 	e3:SetCondition(s.limcon)
 	e3:SetOperation(s.limop)
 	c:RegisterEffect(e3)
-	--
+	--Chain Limit
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_CHAIN_END)
 	e4:SetOperation(s.limop2)
 	c:RegisterEffect(e4)
-	--
+	--atk Change
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(id,1))
 	e5:SetCategory(CATEGORY_ATKCHANGE)
@@ -117,11 +117,14 @@ end
 function s.chainlm(e,rp,tp)
 	return tp==rp
 end
+function s.atkfilter(c)
+	return c:IsFaceup() and c:IsRace(RACE_WARRIOR) and c:IsAttackAbove(1000)
+end
 function s.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() and chkc:IsRace(RACE_WARRIOR) end
-	if chk==0 then return Duel.IsExistingTarget(aux.AND(Card.IsRace,Card.IsFaceup),tp,LOCATION_MZONE,0,1,nil,RACE_WARRIOR) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and s.atkfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(s.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,aux.AND(Card.IsRace,Card.IsFaceup),tp,LOCATION_MZONE,0,1,1,nil,RACE_WARRIOR)
+	Duel.SelectTarget(tp,s.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
