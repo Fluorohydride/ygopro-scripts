@@ -56,16 +56,18 @@ function s.drop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(s.regcon)
 	e2:SetOperation(s.regop)
+	e2:SetLabel(0)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e3:SetCode(EVENT_CHAIN_SOLVED)
+	e3:SetLabelObject(e2)
 	e3:SetCondition(s.drcon2)
 	e3:SetOperation(s.drop2)
 	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
-	local e4=Effect.CreateEffect(e:GetHandler())
+	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
 	e4:SetCountLimit(1)
@@ -90,15 +92,15 @@ function s.regcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsChainSolving()
 end
 function s.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,id+o,RESET_CHAIN,0,1)
+	e:SetLabel(e:GetLabel()+1)
 end
 function s.drcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,id+o)>0
+	return e:GetLabelObject():GetLabel()>0
 end
 function s.drop2(e,tp,eg,ep,ev,re,r,rp)
-	local n=Duel.GetFlagEffect(tp,id+o)
-	Duel.ResetFlagEffect(tp,id+o)
-	if n>0 then Duel.Draw(tp,n,REASON_EFFECT) end
+	local n=e:GetLabelObject():GetLabel()>0
+	e:GetLabelObject():SetLabel(0)
+	Duel.Draw(tp,n,REASON_EFFECT)
 end
 function s.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(e:GetOwnerPlayer(),LOCATION_HAND,0)>Duel.GetFieldGroupCount(e:GetOwnerPlayer(),0,LOCATION_ONFIELD)+6
