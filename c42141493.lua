@@ -98,7 +98,7 @@ end
 function s.drop2(e,tp,eg,ep,ev,re,r,rp)
 	local n=Duel.GetFlagEffect(tp,id+o)
 	Duel.ResetFlagEffect(tp,id+o)
-	Duel.Draw(tp,n,REASON_EFFECT)
+	if n>0 then Duel.Draw(tp,n,REASON_EFFECT) end
 end
 function s.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(e:GetOwnerPlayer(),LOCATION_HAND,0)>Duel.GetFieldGroupCount(e:GetOwnerPlayer(),0,LOCATION_ONFIELD)+6
