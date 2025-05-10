@@ -103,7 +103,7 @@ function s.drcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetLabelObject():GetLabel()>0
 end
 function s.drop2(e,tp,eg,ep,ev,re,r,rp)
-	local n=e:GetLabelObject():GetLabel()>0
+	local n=e:GetLabelObject():GetLabel()
 	e:GetLabelObject():SetLabel(0)
 	Duel.Draw(tp,n,REASON_EFFECT)
 end
