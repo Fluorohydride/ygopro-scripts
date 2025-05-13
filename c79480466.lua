@@ -64,9 +64,9 @@ end
 function s.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(s.mattgfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,3,nil,c) end
+	if chk==0 then return Duel.IsExistingTarget(s.mattgfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local g=Duel.SelectTarget(tp,s.mattgfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,3,3,nil,c)
+	local g=Duel.SelectTarget(tp,s.mattgfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,3,nil,c)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,#g,0,0)
 end
 function s.mafilter(c,e)
