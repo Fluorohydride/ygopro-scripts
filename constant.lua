@@ -877,6 +877,9 @@ DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
 DUEL_RETURN_DECK_TOP	=0x80		--回卡组洗切的卡放到卡组最上方（不洗牌模式下曾经的默认行为）
 DUEL_REVEAL_DECK_SEQ	=0x100		--从卡组选卡显示实际顺序（曾经的默认行为）
+if OPCODE_ADD > 0x100000000 then
+  DUEL_REVEAL_DECK_SEQ = 0
+end
 --Duel rule (Debug.ReloadFieldBegin)
 MASTER_RULE3		=3	--Master Rule 3 (2014)
 NEW_MASTER_RULE		=4	--New Master Rule (2017)
