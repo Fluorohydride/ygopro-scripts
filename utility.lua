@@ -1986,17 +1986,14 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 end
 ---@param field string
 ---@param f function
-function Auxiliary.DefineCardmetaGetter(mt,field,f)
+function Auxiliary.DefineGetter(mt,field,f)
 	if not mt._getters then
 		mt._getters = {}
 		mt.__index = function(self, key)
 			if mt._getters[key]~=nil then
 				return mt._getters[key](self)
 			end
-			if mt[key]~=nil then
-				return mt[key]
-			end
-			return Card[key]
+			return mt[key]
 		end
 	end
 	mt._getters[field]=f
