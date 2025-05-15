@@ -44,7 +44,6 @@ function c83121692.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		c:SetCardTarget(tc)
 	end
-	c:RegisterFlagEffect(83121693,RESET_EVENT+RESETS_STANDARD,0,0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
