@@ -1904,7 +1904,12 @@ end
 ---@param id integer
 ---@return boolean
 function Auxiliary.IsSelfEquip(c,id)
-	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
+	local eg=c:GetEquipGroup()
+	local flag=0
+	for tc in aux.Next(eg) do
+		flag=flag+tc:GetFlagEffect(id)
+	end
+	return flag>0
 end
 ---Orcustrated Babel
 ---@param c Card
