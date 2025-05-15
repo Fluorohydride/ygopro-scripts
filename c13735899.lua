@@ -52,8 +52,9 @@ function c13735899.rmfilter(c,tc)
 	return c:IsFaceup() and c:GetOriginalRace()==tc:GetOriginalRace() and c:IsAbleToRemove()
 end
 function c13735899.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return eg:IsContains(chkc) and c13735899.cfilter(chkc,e) end
-	if chk==0 then return true end
+	local g=eg:Filter(c13735899.cfilter,nil,e):Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.IsInGroup(chkc,g) end
+	if chk==0 then return Duel.IsExistingTarget(aux.IsInGroup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g) end
 	local tc=eg:GetFirst()
 	if #eg>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
