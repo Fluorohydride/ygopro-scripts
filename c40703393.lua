@@ -16,7 +16,7 @@ function c40703393.spfilter(c,e,tp,ft,rg)
 		and rg:CheckWithSumEqual(Card.GetLevel,lv,ft,99)
 end
 function c40703393.rmfilter(c)
-	return c:GetLevel()>0 and c:IsAbleToRemove()
+	return c:GetLevel()>0 and c:IsAbleToRemove() and c:IsFaceup()
 end
 function c40703393.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
