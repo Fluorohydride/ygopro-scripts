@@ -39,6 +39,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,7,0,LOCATION_EXTRA+LOCATION_DECK)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp,chk)
+	if not Duel.IsPlayerCanRemove(1-tp) then return end
 	local dg=s.getrmdg(tp)
 	local edg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil,1-tp,POS_FACEDOWN,REASON_RULE)
 	local ct1=dg:GetCount()
