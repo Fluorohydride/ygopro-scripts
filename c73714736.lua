@@ -128,14 +128,14 @@ function s.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackAbove(1000) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-1000)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		if not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+		if not tc:IsImmuneToEffect(e) and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 			local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,tc)
 			local oc=g:GetFirst()
 			while oc do
