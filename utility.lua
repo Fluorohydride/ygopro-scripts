@@ -1984,17 +1984,67 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+---@param mt metatable
 ---@param field string
 ---@param f function
 function Auxiliary.DefineGetter(mt,field,f)
 	if not mt._getters then
 		mt._getters = {}
+	end
+	if not mt.__define_getter_registered__ then
+		mt.__define_getter_registered__ = true
+		local old_index = mt.__index
 		mt.__index = function(self, key)
-			if mt._getters[key]~=nil then
+			if mt._getters and mt._getters[key]~=nil then
 				return mt._getters[key](self)
 			end
-			return mt[key]
+			if type(old_index) == "function" then
+				return old_index(self, key)
+			elseif type(old_index) == "table" then
+				return old_index[key]
+			end
+			return nil
 		end
 	end
 	mt._getters[field]=f
+end
+---@param mt metatable
+---@param field string
+---@param f function
+function Auxiliary.DefineSetter(mt,field,f)
+	local mtmt=getmetatable(mt)
+	if not mt._setters then
+		mt._setters = {}
+	end
+	if not mtmt.__define_setter_registered__ then
+		mtmt.__define_setter_registered__ = true
+		local old_newindex = mtmt.__newindex
+		mtmt.__newindex = function(self, key, value)
+			if self._setters and self._setters[key]~=nil then
+				self._setters[key](self,value)
+			else
+				if type(old_newindex) == "function" then
+					old_newindex(self, key, value)
+				else
+					rawset(self, key, value)
+				end
+			end
+		end
+	end
+	mt._setters[field]=f
+end
+---@param mt metatable
+---@param field string
+---@param f function
+function Auxiliary.DefineGetterTemp(mt, field, f)
+	Auxiliary.DefineGetter(mt, field, f)
+	Auxiliary.DefineSetter(mt, field, function(self, value)
+		if self._getters and self._getters[field] == f then
+			self._getters[field] = nil
+		end
+		if self._setters then
+			self._setters[field] = nil
+		end
+		rawset(self, field, value)
+	end)
 end
