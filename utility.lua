@@ -1984,3 +1984,20 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+---@param field string
+---@param f function
+function Auxiliary.DefineCardmetaGetter(mt,field,f)
+	if not mt._getters then
+		mt._getters = {}
+		mt.__index = function(self, key)
+			if mt._getters[key]~=nil then
+				return mt._getters[key](self)
+			end
+			if mt[key]~=nil then
+				return mt[key]
+			end
+			return Card[key]
+		end
+	end
+	mt._getters[field]=f
+end
