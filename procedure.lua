@@ -1764,6 +1764,7 @@ function Auxiliary.ContactFusionSendToDeck(c)
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
 end
+Auxiliary.tdcfop=Auxiliary.ContactFusionSendToDeck
 
 --Ritual Summon
 function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,pause,extra_operation,extra_target)
