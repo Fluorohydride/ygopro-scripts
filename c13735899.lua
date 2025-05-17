@@ -53,17 +53,17 @@ function c13735899.rmfilter(c,tc)
 end
 function c13735899.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(c13735899.cfilter,nil,e):Filter(Card.IsLocation,nil,LOCATION_MZONE)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.IsInGroup(chkc,g) end
+	if chkc then return aux.IsInGroup(chkc,g) end
 	if chk==0 then return Duel.IsExistingTarget(aux.IsInGroup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g) end
-	local tc=eg:GetFirst()
-	if #eg>1 then
+	local tc=g:GetFirst()
+	if #g>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		tc=eg:FilterSelect(tp,c13735899.cfilter,1,1,nil,e):GetFirst()
+		tc=g:Select(tp,1,1,nil):GetFirst()
 	end
 	Duel.SetTargetCard(tc)
-	local g=Duel.GetMatchingGroup(c13735899.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tc)
-	g:AddCard(tc)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,#g,0,0)
+	local tg=Duel.GetMatchingGroup(c13735899.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tc)
+	tg:AddCard(tc)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tg,#tg,0,0)
 end
 function c13735899.remop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
