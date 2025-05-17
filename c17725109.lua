@@ -62,7 +62,7 @@ function s.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function s.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsSetCard,1,nil,0xdd)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0xdd)
 end
 function s.fsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
