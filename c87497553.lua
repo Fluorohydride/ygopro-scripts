@@ -29,7 +29,7 @@ function c87497553.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(1)
 		Duel.SelectOption(tp,aux.Stringid(87497553,0))
 		e:SetCategory(0)
-		e:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+		e:SetProperty(0)
 	else
 		e:SetLabel(2)
 		Duel.SelectOption(tp,aux.Stringid(87497553,1))
