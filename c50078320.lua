@@ -22,30 +22,55 @@ function c50078320.initial_effect(c)
 	e2:SetOperation(c50078320.regop)
 	c:RegisterEffect(e2)
 end
+
+function c50078320.GetAnnounceFilter(ep,ev,re)
+	local code=Duel.GetChainInfo(ev,CHAININFO_TARGET_PARAM)
+	local announce_filter=re:GetHandler().announce_filter
+	if not announce_filter then
+		-- announce_filter not specified
+		return {code,OPCODE_ISCODE,OPCODE_NOT}
+	end
+	local function AddNotCodeCondition(t)
+		-- ... and not c:IsCode(code)
+		local afilter={table.unpack(t)}
+		table.insert(afilter,code)
+		table.insert(afilter,OPCODE_ISCODE)
+		table.insert(afilter,OPCODE_NOT)
+		table.insert(afilter,OPCODE_AND)
+		return afilter
+	end
+	if aux.GetValueType(announce_filter)=="function" then
+		-- function form
+		local res=announce_filter(re,ep,ev)
+		if res==true then
+			-- allow any except announced code
+			return {code,OPCODE_ISCODE,OPCODE_NOT}
+		elseif not res then
+			-- cannot be reannounced
+			return false
+		else
+			-- returns a table, so we wrap it
+			return AddNotCodeCondition(res)
+		end
+	else
+		-- table form
+		return AddNotCodeCondition(announce_filter)
+	end
+end
+
 function c50078320.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ex=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
-	return rp==1-tp and ex
+	return rp==1-tp and ex and c50078320.GetAnnounceFilter(ep,ev,re)~=false
 end
 function c50078320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
-	local code=Duel.GetChainInfo(ev,CHAININFO_TARGET_PARAM)
-	local ac=0
+	local afilter=c50078320.GetAnnounceFilter(ep,ev,re)
+	if afilter==false then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	if re:GetHandler().announce_filter==nil then
-		--not c:IsCode(code)
-		ac=Duel.AnnounceCard(tp,code,OPCODE_ISCODE,OPCODE_NOT)
-	else
-		local afilter={table.unpack(re:GetHandler().announce_filter)}
-		--and not c:IsCode(code)
-		table.insert(afilter,code)
-		table.insert(afilter,OPCODE_ISCODE)
-		table.insert(afilter,OPCODE_NOT)
-		table.insert(afilter,OPCODE_AND)
-		ac=Duel.AnnounceCard(tp,table.unpack(afilter))
-	end
+	local ac=Duel.AnnounceCard(tp,table.unpack(afilter))
 	Duel.ChangeTargetParam(ev,ac)
 end
 function c50078320.desfilter(c)
