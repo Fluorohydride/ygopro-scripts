@@ -39,7 +39,7 @@ function c4064925.initial_effect(c)
 		local ge4=ge1:Clone()
 		ge4:SetCode(EVENT_CHANGE_POS)
 		ge4:SetCondition(c4064925.cpcon)
-		Duel.RegisterEffect(ge4,0)	
+		Duel.RegisterEffect(ge4,0)
 	end
 end
 function c4064925.checkop(e,tp,eg,ep,ev,re,r,rp)

@@ -81,4 +81,3 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=g:Filter(s.desfilter,nil,e:GetLabel())
 	Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 end
-

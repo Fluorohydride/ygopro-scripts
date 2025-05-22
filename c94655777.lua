@@ -79,9 +79,9 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e1)
 		end
-        tg:Sub(sg)
-        Duel.SendtoGrave(tg,REASON_RULE)
-    end
+		tg:Sub(sg)
+		Duel.SendtoGrave(tg,REASON_RULE)
+	end
 	Duel.SpecialSummonComplete()
 end
 function s.costfilter(c,e,tp)

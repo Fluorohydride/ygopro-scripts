@@ -47,7 +47,7 @@ function s.actarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local b1=Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local b2=c:IsAbleToRemove() and Duel.GetMZoneCount(tp,c)>0
-        and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
 		{b1,aux.Stringid(id,2)},

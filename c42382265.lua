@@ -116,7 +116,7 @@ function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsLocation(LOCATION_EXTRA) and c:IsFaceup()
 end
 function s.thfilter(c)
-	 return c:IsAbleToHand() and c:IsFaceup() and c:IsSetCard(0xaf)
+	return c:IsAbleToHand() and c:IsFaceup() and c:IsSetCard(0xaf)
 		and c:GetOriginalType()&TYPE_PENDULUM~=0
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
