@@ -19,7 +19,6 @@ function s.fcheck1(ct)
 				end
 				return true
 			end
-				
 end
 function s.fcheck2(tp,sg,fc)
 	return sg:GetCount()>=3

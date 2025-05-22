@@ -43,7 +43,7 @@ end
 function c4055337.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c4055337.tgfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c4055337.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		 and Duel.IsExistingMatchingCard(c4055337.filter,tp,LOCATION_DECK,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c4055337.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c4055337.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)

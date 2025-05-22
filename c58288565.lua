@@ -64,7 +64,7 @@ function s.cfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and not c:IsReason(REASON_BATTLE) and c:IsControler(tp)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	 return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.AND(Card.IsDiscardable,Card.IsAbleToGraveAsCost),tp,LOCATION_HAND,0,1,nil)

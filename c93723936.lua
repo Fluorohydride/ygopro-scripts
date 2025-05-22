@@ -26,7 +26,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.setop)
 	c:RegisterEffect(e2)
 end
-
 function s.costfilter(c,tp)
 	return c:IsType(TYPE_SYNCHRO) and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingTarget(s.negfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)

@@ -112,4 +112,3 @@ end
 function c71143015.cfilter(c)
 	return c:IsLocation(LOCATION_GRAVE) or (c:IsLocation(LOCATION_MZONE) and c:IsFaceup())
 end
-

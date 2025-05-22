@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddSynchroMixProcedure(c,aux.FilterBoolFunction(Card.IsCode,82044279),nil,nil,aux.Tuner(nil),1,99,s.syncheck)   
+	aux.AddSynchroMixProcedure(c,aux.FilterBoolFunction(Card.IsCode,82044279),nil,nil,aux.Tuner(nil),1,99,s.syncheck)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

@@ -30,7 +30,7 @@ function c27346636.splimit(e,se,sp,st)
 end
 function c27346636.cfilter(c)
 	return (c:IsFusionCode(78868776) or c:IsFusionSetCard(0x1019) and c:IsType(TYPE_MONSTER))
-		 and c:IsAbleToDeckOrExtraAsCost()
+		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c27346636.discon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)

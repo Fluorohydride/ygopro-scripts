@@ -92,7 +92,7 @@ function s.sxyzfilter(e,c)
 end
 function s.Drake_shark_f(function_f,int_lv,card_c)
 	return function (c)
-			   return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
+				return c:IsXyzLevel(card_c,int_lv) and (not function_f or function_f(c))
 	end
 end
 function s.sxfilter(c,tp,xc)
@@ -114,27 +114,27 @@ function s.sxvalue(c,tp,xc)
 end
 function s.Drake_shark_gf(int_ct,int_tp,xc)
 	return function (g)
-			   local ct=g:GetCount()
-			   local eg=g:Filter(s.sxfilter,nil,int_tp,xc)
-			   if #eg>0 then
+				local ct=g:GetCount()
+				local eg=g:Filter(s.sxfilter,nil,int_tp,xc)
+				if #eg>0 then
 					ct=ct+eg:GetClassCount(s.sxvalue,int_tp,xc)
-			   end
-			   local tc=g:GetFirst()
-			   while tc do
-				   local te=tc:IsHasEffect(EFFECT_XYZ_LEVEL,int_tp)
-				   if te then
-					   local evf=te:GetValue()
-					   if evf then
-						   local ev=evf(te,tc,xc)
-						   local lmct=(ev>>12)&0xf
-						   if lmct>0 and lmct>g:GetCount() then
-							   return false
-						   end
-					   end
-				   end
-				   tc=g:GetNext()
-			   end
-			   return ct>=int_ct
+				end
+				local tc=g:GetFirst()
+				while tc do
+					local te=tc:IsHasEffect(EFFECT_XYZ_LEVEL,int_tp)
+					if te then
+						local evf=te:GetValue()
+						if evf then
+							local ev=evf(te,tc,xc)
+							local lmct=(ev>>12)&0xf
+							if lmct>0 and lmct>g:GetCount() then
+								return false
+							end
+						end
+					end
+					tc=g:GetNext()
+				end
+				return ct>=int_ct
 	end
 end
 function s.xfilter(c,tp)
