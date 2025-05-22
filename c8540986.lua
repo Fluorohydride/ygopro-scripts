@@ -1,4 +1,4 @@
---Veidos Der Drache Der Endlosen Finsternis
+--滅亡き闇 ヴェイドス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddFusionProcCodeFunRep(c,78783557,s.ffilter,2,127,true,true)

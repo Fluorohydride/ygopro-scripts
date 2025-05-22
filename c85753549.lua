@@ -1,4 +1,4 @@
---月牙竜-クレセント·ドラゴン
+--月牙龍－クレセント・ドラゴン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special Summon

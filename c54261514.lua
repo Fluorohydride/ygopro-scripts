@@ -1,4 +1,4 @@
---超獣の咆哮
+--超獸の咆哮
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

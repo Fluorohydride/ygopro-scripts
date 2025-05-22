@@ -1,4 +1,4 @@
---Battleguard Echoes
+--バーバリアン・エコーズ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,42233477,78621186)

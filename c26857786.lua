@@ -1,4 +1,4 @@
---呪炎王バースト・カースド
+--呪炎王 バースト・カースド
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

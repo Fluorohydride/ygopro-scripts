@@ -1,4 +1,4 @@
---King of the Ashened City
+--灰滅せし都の王
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,3055018)

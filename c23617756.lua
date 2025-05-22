@@ -1,4 +1,4 @@
---怒りの業火 エクソード・フレイム
+--怒りの業火 エクゾード・フレイム
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

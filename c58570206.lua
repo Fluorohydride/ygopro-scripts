@@ -1,4 +1,4 @@
---Heavy Polymerization
+--多層融合
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

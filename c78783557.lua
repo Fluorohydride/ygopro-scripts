@@ -1,4 +1,4 @@
---Veidos the Eruption Dragon of Extinction
+--滅亡龍 ヴェイドス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

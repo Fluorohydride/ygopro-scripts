@@ -1,4 +1,4 @@
---Crystal God Tistina
+--結晶神ティスティナ
 local s,id=GetID()
 function s.initial_effect(c)
 	--effect 1

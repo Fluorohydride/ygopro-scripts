@@ -1,4 +1,4 @@
---Conbirdable
+--半纏鳥官－コンバード
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

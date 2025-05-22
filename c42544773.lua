@@ -1,4 +1,4 @@
---封印の魔道士 スプーン
+--封印の魔導士スプーン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--search or half atk

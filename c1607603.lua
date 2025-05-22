@@ -1,4 +1,4 @@
---Double Dai
+--想定GUYS
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

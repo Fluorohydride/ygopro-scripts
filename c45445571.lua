@@ -1,4 +1,4 @@
---死靈公爵
+--死霊公爵
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddFusionProcFunRep(c,s.ffilter,2,true)

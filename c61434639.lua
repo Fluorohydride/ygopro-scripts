@@ -1,4 +1,4 @@
---Reignite the Ashened
+--灰滅の復燃
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

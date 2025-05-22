@@ -1,4 +1,4 @@
---Vouiburial the Dragon Undertaker
+--竜葬主－ヴィブリアル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--indes

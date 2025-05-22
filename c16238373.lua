@@ -1,4 +1,4 @@
---Psychic Arsenal
+--大電脳兵廠
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

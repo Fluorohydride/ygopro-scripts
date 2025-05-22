@@ -1,4 +1,4 @@
---Finis Terrae, Tower of the Necroworld
+--屍界塔フィニステラ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

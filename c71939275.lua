@@ -1,4 +1,4 @@
---死靈の殘像
+--死霊の残像
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--equip

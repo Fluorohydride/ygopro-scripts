@@ -1,4 +1,4 @@
---Xyz Force
+--エクシーズ・フォース
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

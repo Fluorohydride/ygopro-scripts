@@ -1,4 +1,4 @@
---Ken the Warrior Dragon
+--毘龍之謙
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to hand

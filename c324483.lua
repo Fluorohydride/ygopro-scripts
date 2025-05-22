@@ -1,4 +1,4 @@
---Ultimate Flame Swordsman
+--極炎の剣士
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

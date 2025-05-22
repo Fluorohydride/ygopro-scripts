@@ -1,4 +1,4 @@
---Pitknight Filly
+--ピットナイト・フィル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

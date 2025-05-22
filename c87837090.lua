@@ -1,4 +1,4 @@
---Kuibelt the Blade Dragon
+--帯刃龍 カイベルト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

@@ -1,4 +1,4 @@
---Aiza the Dragoness of Deranged Devotion
+--狂愛の竜娘アイザ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--add counter
