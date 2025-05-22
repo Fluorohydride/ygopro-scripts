@@ -1,4 +1,4 @@
---死靈の盾
+--死霊の盾
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

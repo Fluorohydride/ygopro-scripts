@@ -1,4 +1,4 @@
---アンティーク・ギアドラゴン
+--古代の機械竜
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,83104731)

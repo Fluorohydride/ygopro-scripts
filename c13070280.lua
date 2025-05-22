@@ -1,4 +1,4 @@
---Play of the Tistina
+--ティスティナの戯れ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spummon

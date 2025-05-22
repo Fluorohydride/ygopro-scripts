@@ -1,4 +1,4 @@
---Fallen of the Tistina
+--ティスティナの落とし仔
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,12397569)

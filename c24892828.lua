@@ -1,4 +1,4 @@
---Returned of the Tistina
+--ティスティナの還り仔
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spummon

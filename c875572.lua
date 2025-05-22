@@ -1,4 +1,4 @@
---天賦の魔導士 クロウリ一
+--天賦の魔導士クロウリー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,86120751)

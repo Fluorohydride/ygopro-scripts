@@ -1,4 +1,4 @@
---黒魔術のバリア－ミラーフォース－
+--黒魔術のバリア －ミラーフォース－
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,79791878,46986414)

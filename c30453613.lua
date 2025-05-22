@@ -1,4 +1,4 @@
---Awakening of Veidos
+--ヴェイドスの目覚め
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,3055018)

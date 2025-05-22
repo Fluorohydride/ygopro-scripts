@@ -1,4 +1,4 @@
---Flame Swordsrealm
+--炎の剣域
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,45231177)

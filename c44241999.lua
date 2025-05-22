@@ -1,4 +1,4 @@
---百鬼羅刹 ダリアーレ三傑
+--百鬼羅刹 グリアーレ三傑
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

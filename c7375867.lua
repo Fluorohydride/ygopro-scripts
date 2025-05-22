@@ -1,4 +1,4 @@
---星辰竜 ムルル
+--星辰竜ムルル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion summon

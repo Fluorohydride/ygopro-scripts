@@ -1,4 +1,4 @@
---Haggard Lizardose
+--盛悴のリザルドーズ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

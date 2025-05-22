@@ -1,4 +1,4 @@
---Discordance of the Tistina
+--ティスティナの変晶
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--remove 1 card

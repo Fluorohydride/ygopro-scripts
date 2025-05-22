@@ -1,4 +1,4 @@
---Wattsychic Fighting Porter
+--エレキック・ファイティング・ポーター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

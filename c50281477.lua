@@ -1,4 +1,4 @@
---Tainted of the Tistina
+--ティスティナの瘴神
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--tribute opponent 1 facedown monster for advance summon

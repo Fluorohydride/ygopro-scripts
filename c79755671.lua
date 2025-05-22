@@ -1,4 +1,4 @@
---星辰法官グラメル
+--星辰法宮グラメル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material
