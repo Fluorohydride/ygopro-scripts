@@ -52,7 +52,7 @@ function s.chk(e,tp,eg,ep,ev,re,r,rp)
 			if s.chkfilter(tc,p) then
 				Duel.RegisterFlagEffect(p,id,RESET_PHASE+PHASE_END,0,1)
 			end
-			tc=eg:GetNext()	
+			tc=eg:GetNext()
 		end
 		if Duel.GetFlagEffect(p,id)>1 then
 			Duel.RegisterFlagEffect(p,id+o,RESET_PHASE+PHASE_END,0,2)

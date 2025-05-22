@@ -20,7 +20,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.acop)
 	c:RegisterEffect(e2)
 	local g=Group.CreateGroup()
-    aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE,g)
+	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE,g)
 	--tohand
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_TOHAND)

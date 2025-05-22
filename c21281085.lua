@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
-	--get 
+	--get
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_RELEASE|CATEGORY_CONTROL)

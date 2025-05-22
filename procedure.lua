@@ -1751,7 +1751,7 @@ function Auxiliary.ContactFusionOperation(mat_operation,operation_params)
 			end
 end
 --send to deck of contact fusion
-function Auxiliary.tdcfop(c)
+function Auxiliary.ContactFusionSendToDeck(c)
 	return	function(g)
 				local cg=g:Filter(Card.IsFacedown,nil)
 				if cg:GetCount()>0 then
@@ -1764,6 +1764,7 @@ function Auxiliary.tdcfop(c)
 				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
 end
+Auxiliary.tdcfop=Auxiliary.ContactFusionSendToDeck
 
 --Ritual Summon
 function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,pause,extra_operation,extra_target)

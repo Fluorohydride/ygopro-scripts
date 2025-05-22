@@ -1,7 +1,7 @@
 --ARG☆S－GiantKilling
 local s,id,o=GetID()
 function s.initial_effect(c)
-	 --activate
+	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SEARCH|CATEGORY_TOHAND|CATEGORY_SUMMON)

@@ -80,7 +80,7 @@ function c10852583.mvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()
 	if not c:IsRelateToEffect(e) or c:IsControler(1-tp)
-	 	or not tc:IsRelateToEffect(e) or tc:IsControler(tp) then return end
+		or not tc:IsRelateToEffect(e) or tc:IsControler(tp) then return end
 	local seq1=c:GetSequence()
 	local seq2=tc:GetSequence()
 	if seq1>4 then return end

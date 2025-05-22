@@ -90,7 +90,9 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.setfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local tg1=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
-	for tc in aux.Next(tg1) do
-		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+	if tg1 then
+		for tc in aux.Next(tg1) do
+			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+		end
 	end
 end

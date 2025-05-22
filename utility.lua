@@ -1631,6 +1631,7 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 --Once the card has been moved to the public area, it should be listened to again
+Auxiliary.merge_single_effect_codes={}
 function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
 	local g=Group.CreateGroup()
 	g:KeepAlive()
@@ -1660,9 +1661,20 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
 	e3:SetCode(EVENT_MOVE)
+	e3:SetLabel(event_code_single)
 	e3:SetLabelObject(g)
 	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
 	c:RegisterEffect(e3)
+	Auxiliary.merge_single_effect_codes[event_code_single]=g
+	--use global effect to raise event for face-down cards
+	if not Auxiliary.merge_single_global_check then
+		Auxiliary.merge_single_global_check=true
+		local ge1=Effect.GlobalEffect()
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_CHAIN_END)
+		ge1:SetOperation(Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_RaiseEvent)
+		Duel.RegisterEffect(ge1,0)
+	end
 	return event_code_single
 end
 function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
@@ -1671,7 +1683,7 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,even
 	e1:SetCode(event)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
 	e1:SetRange(0xff)
-	e1:SetLabel(event_code_single)
+	e1:SetLabel(event_code_single,event)
 	e1:SetLabelObject(g)
 	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingleCard)
 	c:RegisterEffect(e1)
@@ -1689,17 +1701,16 @@ function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re
 end
 function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
-	local c=e:GetOwner()
 	g:Merge(eg)
-	if Duel.CheckEvent(EVENT_MOVE) then
-		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
-		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
-			g:Clear()
-		end
+	local code,event=e:GetLabel()
+	local c=e:GetOwner()
+	local mr,meg=Duel.CheckEvent(event,true)
+	if mr and meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
+		g:Clear()
 	end
 	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
 		local _eg=g:Clone()
-		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
+		Duel.RaiseEvent(_eg,code,re,r,rp,ep,ev)
 		g:Clear()
 	end
 end
@@ -1708,7 +1719,7 @@ function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckEvent(EVENT_MOVE) then
 		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
 		local c=e:GetOwner()
-		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then 
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
 			g:Clear()
 		end
 	end
@@ -1716,6 +1727,15 @@ function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 		local _eg=g:Clone()
 		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
 		g:Clear()
+	end
+end
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_RaiseEvent(e,tp,eg,ep,ev,re,r,rp)
+	for code,g in pairs(Auxiliary.merge_single_effect_codes) do
+		if #g>0 then
+			local _eg=g:Clone()
+			Duel.RaiseEvent(_eg,code,re,r,rp,ep,ev)
+			g:Clear()
+		end
 	end
 end
 --B.E.S. remove counter
@@ -1882,7 +1902,10 @@ end
 ---@param id integer
 ---@return boolean
 function Auxiliary.IsSelfEquip(c,id)
-	return c:GetEquipGroup():IsExists(Card.GetFlagEffect,1,nil,id)
+	return c:GetEquipGroup():IsExists(Auxiliary.SelfEquipFilter,1,nil,id)
+end
+function Auxiliary.SelfEquipFilter(c,id)
+	return c:GetFlagEffect(id)>0
 end
 ---Orcustrated Babel
 ---@param c Card

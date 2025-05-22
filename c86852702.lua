@@ -65,7 +65,7 @@ function c86852702.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			op=Duel.SelectOption(tp,aux.Stringid(86852702,1))+1
 		end
 		e:SetLabel(0,op)
-	end 
+	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,tp,LOCATION_DECK)
 end
 function c86852702.activate(e,tp,eg,ep,ev,re,r,rp)
