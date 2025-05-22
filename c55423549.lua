@@ -1,6 +1,6 @@
 --黒き魔族－レオ・ウィザード
 local s,id,o=GetID()
-function s.initial_effect(c)	
+function s.initial_effect(c)
 	local e0=Effect.CreateEffect(c)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e0:SetType(EFFECT_TYPE_SINGLE)

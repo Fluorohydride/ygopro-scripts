@@ -51,7 +51,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-   local tc=Duel.GetFirstTarget()
+	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToChain() and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and tc:IsRelateToChain() and not tc:IsAttackPos() then
 		Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
