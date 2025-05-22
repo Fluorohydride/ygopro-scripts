@@ -126,7 +126,7 @@ function s.filter3(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function s.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsSetCard,1,nil,0x1a5)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x1a5)
 end
 function s.futg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
