@@ -50,7 +50,7 @@ function c70939418.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		c:RegisterFlagEffect(70939418,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_BATTLE,0,1)
+		c:RegisterFlagEffect(70939418,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 	end
 end
 function c70939418.sccon(e,tp,eg,ep,ev,re,r,rp)
