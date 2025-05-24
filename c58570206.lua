@@ -85,37 +85,38 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=sg:Select(tp,1,1,nil)
 	local tc=tg:GetFirst()
-	if not tc then return end
-	if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-		aux.FCheckAdditional=s.fcheck1(ct)
-		aux.FGoalCheckAdditional=s.fcheck2
-		local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-		aux.FCheckAdditional=nil
-		aux.FGoalCheckAdditional=nil
-		tc:SetMaterial(mat1)
-		local rg=mat1:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
-		mat1:Sub(rg)
-		Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-		Duel.Remove(rg,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-		Duel.BreakEffect()
-		Duel.SpecialSummonStep(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-	elseif ce then
-		local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-		local fop=ce:GetOperation()
-		fop(ce,e,tp,tc,mat2)
-	end
-	local exmat=tc:GetMaterial():Filter(Card.IsPreviousLocation,nil,LOCATION_EXTRA)
-	if #exmat>0 then
-		local dam=exmat:GetSum(Card.GetAttack)
-		local lp=Duel.GetLP(tp)
-		if lp>=dam then
-			Duel.SetLP(tp,lp-dam)
-		else
-			Duel.SetLP(tp,0)
+	if tc then
+		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
+			aux.FCheckAdditional=s.fcheck1(ct)
+			aux.FGoalCheckAdditional=s.fcheck2
+			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
+			aux.FCheckAdditional=nil
+			aux.FGoalCheckAdditional=nil
+			tc:SetMaterial(mat1)
+			local rg=mat1:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
+			mat1:Sub(rg)
+			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+			Duel.Remove(rg,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+			Duel.BreakEffect()
+			Duel.SpecialSummonStep(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
+		elseif ce then
+			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
+			local fop=ce:GetOperation()
+			fop(ce,e,tp,tc,mat2)
 		end
+		local exmat=tc:GetMaterial():Filter(Card.IsPreviousLocation,nil,LOCATION_EXTRA)
+		if #exmat>0 then
+			local dam=exmat:GetSum(Card.GetAttack)
+			local lp=Duel.GetLP(tp)
+			if lp>=dam then
+				Duel.SetLP(tp,lp-dam)
+			else
+				Duel.SetLP(tp,0)
+			end
+		end
+		Duel.SpecialSummonComplete()
+		tc:CompleteProcedure()
 	end
-	Duel.SpecialSummonComplete()
-	tc:CompleteProcedure()
 	aux.FCheckAdditional=nil
 	aux.FGoalCheckAdditional=nil
 end
