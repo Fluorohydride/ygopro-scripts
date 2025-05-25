@@ -54,7 +54,7 @@ function s.cfilter2(c)
 	return c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT)
 end
 function s.lpcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsAllTypes(TYPE_RITUAL+TYPE_MONSTER)
+	return re and re:GetHandler():IsAllTypes(TYPE_RITUAL+TYPE_MONSTER)
 		and eg:IsExists(s.cfilter2,1,nil)
 end
 function s.lpop(e,tp,eg,ep,ev,re,r,rp)
