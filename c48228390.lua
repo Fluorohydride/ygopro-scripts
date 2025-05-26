@@ -1,4 +1,4 @@
---Pyrite Knight
+--黄鉄の愚騎士
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to hand

@@ -1,4 +1,4 @@
---靈王の波動
+--霊王の波動
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

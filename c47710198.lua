@@ -93,7 +93,7 @@ function c47710198.remop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
 	if tc:IsRelateToEffect(re) then
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
-			 Duel.Damage(1-tp,1200,REASON_EFFECT)
+			Duel.Damage(1-tp,1200,REASON_EFFECT)
 		end
 	end
 end

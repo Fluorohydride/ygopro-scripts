@@ -1,4 +1,4 @@
---ヤミー★スナイッチー
+--ヤミー★スナッチー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddLinkProcedure(c,s.matfilter,1,1)

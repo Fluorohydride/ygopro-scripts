@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.cfilter(c)
-    return c:IsFaceupEx() and c:IsAbleToRemove() and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1bf)
+	return c:IsFaceupEx() and c:IsAbleToRemove() and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1bf)
 end
 function s.disfilter(c)
 	return c:IsType(TYPE_MONSTER) and aux.NegateMonsterFilter(c)
@@ -38,7 +38,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,s.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
-    Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_MZONE+LOCATION_HAND)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_MZONE+LOCATION_HAND)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

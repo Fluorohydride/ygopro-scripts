@@ -1,4 +1,4 @@
---Salamandra with Chain
+--鎖付き飛龍炎刃
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

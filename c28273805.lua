@@ -1,4 +1,4 @@
---六武式襲雙陣
+--六武式襲双陣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

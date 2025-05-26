@@ -1,4 +1,4 @@
---Swarm of Centipedes
+--ムカデの進軍
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

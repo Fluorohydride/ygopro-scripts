@@ -1,4 +1,4 @@
---Demigod of the Tistina
+--ティスティナの半神
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

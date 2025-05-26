@@ -1,4 +1,4 @@
---Ashened to Infinity
+--果てなき灰滅
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,78783557)

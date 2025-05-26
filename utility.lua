@@ -1631,7 +1631,7 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 --Once the card has been moved to the public area, it should be listened to again
-Auxiliary.merge_single_effects={}
+Auxiliary.merge_single_effect_codes={}
 function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
 	local g=Group.CreateGroup()
 	g:KeepAlive()
@@ -1665,7 +1665,7 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
 	e3:SetLabelObject(g)
 	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
 	c:RegisterEffect(e3)
-	table.insert(Auxiliary.merge_single_effects,e3)
+	Auxiliary.merge_single_effect_codes[event_code_single]=g
 	--use global effect to raise event for face-down cards
 	if not Auxiliary.merge_single_global_check then
 		Auxiliary.merge_single_global_check=true
@@ -1730,9 +1730,7 @@ function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_RaiseEvent(e,tp,eg,ep,ev,re,r,rp)
-	for _,mse in ipairs(Auxiliary.merge_single_effects) do
-		local code=mse:GetLabel()
-		local g=mse:GetLabelObject()
+	for code,g in pairs(Auxiliary.merge_single_effect_codes) do
 		if #g>0 then
 			local _eg=g:Clone()
 			Duel.RaiseEvent(_eg,code,re,r,rp,ep,ev)

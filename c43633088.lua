@@ -1,4 +1,4 @@
---Emergency Apport
+--緊急アポート
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

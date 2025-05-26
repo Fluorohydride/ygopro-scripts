@@ -1,4 +1,4 @@
---Jungle Dweller
+--密林に潜む者
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--splimit

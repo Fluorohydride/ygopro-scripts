@@ -1,4 +1,4 @@
---K9－EX特殊解除実験
+--K9－EW特殊解除実験
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

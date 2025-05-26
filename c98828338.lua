@@ -1,4 +1,4 @@
---Extinguishment of the Ashened
+--灰滅の憤怒
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

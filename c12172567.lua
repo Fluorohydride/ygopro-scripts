@@ -1,4 +1,4 @@
---Mind Castlin
+--マインド・キャスリン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Synchro summon

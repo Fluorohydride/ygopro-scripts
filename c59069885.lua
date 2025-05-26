@@ -1,4 +1,4 @@
---Embrace of the Tistina
+--ティスティナの抱擁
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

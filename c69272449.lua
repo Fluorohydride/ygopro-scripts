@@ -1,4 +1,4 @@
---M∀LICE＜P＞White Rabiit
+--M∀LICE＜P＞White Rabbit
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--set

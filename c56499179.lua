@@ -1,4 +1,4 @@
---幻朧竜華－覇巴
+--幻朧竜華－霸巴
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,55154344)

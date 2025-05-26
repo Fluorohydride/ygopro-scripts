@@ -1,4 +1,4 @@
---ネオ・カイザ・シーホース
+--ネオ・カイザー・シーホース
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,89631139)

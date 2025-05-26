@@ -1,4 +1,4 @@
---爆撃獸ファイヤ・ボンバー
+--爆撃獣ファイヤ・ボンバー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

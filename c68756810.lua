@@ -1,4 +1,4 @@
---カツト・イン・シャーク
+--カット・イン・シャーク
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

@@ -1,4 +1,4 @@
---Divine Domain Baatistina
+--神域 バ＝ティスティナ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
