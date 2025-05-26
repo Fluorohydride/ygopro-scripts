@@ -62,11 +62,11 @@ function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,s.costfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function s.anfilter(c,tp)
-	return c:IsSetCard(0x2cd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1cd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 		and not s.announced_set[tp][c:GetCode()]
 end
 function s.thfilter(c,code)
-	return c:IsSetCard(0x2cd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1cd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 		and c:IsCode(code)
 end
 
@@ -152,18 +152,18 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function s.splimit(e,c)
-	return not (c:IsSetCard(0x2cd) or c:IsCode(101301008)) and not c:IsLocation(LOCATION_EXTRA)
+	return not (c:IsSetCard(0x1cd) or c:IsCode(97556336)) and not c:IsLocation(LOCATION_EXTRA)
 end
 
 function s.announce_filter_func(e,tp,ev)
-	local exg=Duel.GetMatchingGroup(aux.AND(Card.IsFaceup,Card.IsSetCard),tp,LOCATION_MZONE,0,nil,0x2cd)
+	local exg=Duel.GetMatchingGroup(aux.AND(Card.IsFaceup,Card.IsSetCard),tp,LOCATION_MZONE,0,nil,0x1cd)
 	local ncodes=s.CreateCodeList(exg,s.announced[tp],nil,nil)
 	if #ncodes>=ARTMEGIA_COUNT then
 		return false
 	end
 	local af={
 		TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT,
-		0x2cd,OPCODE_ISSETCARD,OPCODE_AND,
+		0x1cd,OPCODE_ISSETCARD,OPCODE_AND,
 		TYPE_MONSTER,OPCODE_ISTYPE,OPCODE_AND
 	}
 	for i=1,#ncodes do
