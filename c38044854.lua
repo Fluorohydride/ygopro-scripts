@@ -36,6 +36,9 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,sg:Filter(Card.IsLocation,nil,LOCATION_GRAVE),1,0,0)
 end
+function s.ovfilter(c,e)
+	return c:IsCanOverlay() and not c:IsImmuneToEffect(e)
+end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tg=Duel.GetTargetsRelateToChain()
@@ -45,7 +48,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=sg:GetFirst()
 	if sc and Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)~=0 then
 		sc:CompleteProcedure()
-		local og=tg:Filter(Card.IsCanOverlay,nil)
+		local og=tg:Filter(s.ovfilter,nil,e)
 		for tc in aux.Next(og) do
 			local mg=tc:GetOverlayGroup()
 			if mg:GetCount()~=0 then
