@@ -32,7 +32,6 @@ function c47355498.initial_effect(c)
 	--necro valley
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_FIELD)
-	e6:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e6:SetCode(EFFECT_NECRO_VALLEY)
 	e6:SetRange(LOCATION_FZONE)
 	e6:SetTargetRange(LOCATION_GRAVE,0)
