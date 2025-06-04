@@ -921,31 +921,31 @@ end
 ---@param e Effect triggering effect, to check whether the triggering card is immunte to necrovalley effects
 ---@return fun(...):boolean altered_filter filter function that cares about necrovalley
 function Auxiliary.NecroValleyFilter(f,e)
-    return function(target,...)
+	return function(target,...)
 		if f and not f(target,...) then
 			return false
 		end
 
-        local handler=e and e.GetHandler and e:GetHandler()
-        local effects={target:IsHasEffect(EFFECT_NECRO_VALLEY)}
-        if not handler then
-            if #effects>0 then
-                return false
-            else
+		local handler=e and e.GetHandler and e:GetHandler()
+		local effects={target:IsHasEffect(EFFECT_NECRO_VALLEY)}
+		if not handler then
+			if #effects>0 then
+				return false
+			else
 				--- no effect to check, but no necrovalley effect either
-                return true
-            end
-        end
+				return true
+			end
+		end
 
-        for _, eff in ipairs(effects) do
-            if not handler:IsImmuneToEffect(eff) then
-                return false
-            end
-        end
+		for _, eff in ipairs(effects) do
+			if not handler:IsImmuneToEffect(eff) then
+				return false
+			end
+		end
 
 		--- trigger effect immune to necrovalley effects
 		return true
-    end
+	end
 end
 --Necrovalley test for effect with not certain target or not certain action
 function Auxiliary.NecroValleyNegateCheck(v)
