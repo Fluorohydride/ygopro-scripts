@@ -58,7 +58,7 @@ function c59805313.opop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local rmg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c59805313.rmfilter),tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,nil,tp)
+		local rmg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c59805313.rmfilter,e),tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,nil,tp)
 		if #rmg>0 and Duel.Remove(rmg,POS_FACEUP,REASON_EFFECT)~=0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 			local g2=Duel.SelectMatchingCard(tp,c59805313.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)

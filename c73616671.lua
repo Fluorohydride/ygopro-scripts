@@ -26,7 +26,7 @@ function c73616671.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c73616671.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c73616671.filter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,2,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c73616671.filter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,2,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

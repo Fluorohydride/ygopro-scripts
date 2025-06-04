@@ -48,7 +48,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 	if zone~=0 and ft>0 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-		local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
+		local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
 		local g=nil
 		if tg:GetCount()>ft then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

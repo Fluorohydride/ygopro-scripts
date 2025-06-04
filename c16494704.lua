@@ -35,7 +35,7 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 		sg=Duel.GetMatchingGroup(c16494704.exfilter0,tp,LOCATION_EXTRA,0,nil)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(aux.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c16494704.filter,e,tp,mg,sg,Card.GetLevel,"Greater")
+	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(aux.RitualUltimateFilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c16494704.filter,e,tp,mg,sg,Card.GetLevel,"Greater")
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)

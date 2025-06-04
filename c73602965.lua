@@ -62,7 +62,7 @@ function s.tfop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter),tp,LOCATION_HAND,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter,e),tp,LOCATION_HAND,0,1,1,nil)
 		local tc=g:GetFirst()
 		if tc and Duel.SSet(tp,tc)~=0 then
 			local e1=Effect.CreateEffect(c)

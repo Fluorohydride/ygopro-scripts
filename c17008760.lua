@@ -21,7 +21,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()==0 then return end
 	if sg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
 		local tc=Duel.GetOperatedGroup():GetFirst()
-		if tc and tc:IsControler(tp) and tc:IsLocation(LOCATION_GRAVE) and aux.NecroValleyFilter()(tc) then
+		if tc and tc:IsControler(tp) and tc:IsLocation(LOCATION_GRAVE) and aux.NecroValleyFilter(nil,e)(tc) then
 			if tc:IsType(TYPE_MONSTER) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 				and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 				and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then

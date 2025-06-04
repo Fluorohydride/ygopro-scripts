@@ -142,7 +142,7 @@ end
 function c28827503.thop(e,tp,eg,ep,ev,re,r,rp)
 	local race=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28827503.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,race)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28827503.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,race)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end

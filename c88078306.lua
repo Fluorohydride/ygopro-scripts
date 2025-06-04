@@ -41,7 +41,7 @@ function c88078306.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88078306.setop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<2 then return end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c88078306.setfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c88078306.setfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local sg=g:SelectSubGroup(tp,c88078306.fselect,false,2,2)
 	if sg and #sg==2 then

@@ -60,7 +60,7 @@ end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()==tp then
 		local g1=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,nil)
-		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_GRAVE,nil)
+		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,0,LOCATION_GRAVE,nil)
 		g1:Merge(g2)
 		if g1:GetCount()==0 then return end
 		aux.GCheckAdditional=s.gcheck

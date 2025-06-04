@@ -55,7 +55,7 @@ function c36745317.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c36745317.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE) then
-		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c36745317.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,tc:GetCode())
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c36745317.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,tc:GetCode())
 		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(36745317,0)) then
 			Duel.BreakEffect()

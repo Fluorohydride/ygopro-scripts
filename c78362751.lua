@@ -57,7 +57,7 @@ function c78362751.spop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c78362751.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if #g>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c78362751.filter),tp,LOCATION_GRAVE+LOCATION_DECK,0,nil)
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c78362751.filter,e),tp,LOCATION_GRAVE+LOCATION_DECK,0,nil)
 		if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(78362751,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local dg=sg:Select(tp,1,#sg,nil)

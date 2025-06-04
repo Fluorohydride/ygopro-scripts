@@ -44,7 +44,7 @@ end
 function s.stop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local ct=math.min(Duel.GetLocationCount(tp,LOCATION_SZONE),2)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.stfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_MZONE+LOCATION_GRAVE,0,1,ct,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.stfilter,e),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_MZONE+LOCATION_GRAVE,0,1,ct,nil)
 	Duel.SSet(tp,g)
 end
 function s.desfilter(c)

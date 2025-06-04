@@ -72,7 +72,7 @@ function c97091969.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c97091969.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,tc:GetLevel())
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c97091969.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,tc:GetLevel())
 		if #g>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)

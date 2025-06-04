@@ -64,7 +64,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		if aux.NecroValleyNegateCheck(tc) then return end
-		if not aux.NecroValleyFilter()(tc) then return end
+		if not aux.NecroValleyFilter(nil,e)(tc) then return end
 		local opt=0
 		local b1=tc:IsAbleToDeck()
 		local b2=tc:IsAbleToHand() and Duel.IsExistingMatchingCard(s.chkfilter,tp,LOCATION_MZONE,0,1,nil)

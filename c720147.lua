@@ -59,7 +59,7 @@ function c720147.activate(e,tp,eg,ep,ev,re,r,rp)
 		local exg=rg:Filter(Card.IsRelateToEffect,nil,e)
 		exg:AddCard(tc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c720147.matfilter2),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,rg:GetCount(),rg:GetCount(),exg)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c720147.matfilter2,e),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,rg:GetCount(),rg:GetCount(),exg)
 		if g:GetCount()>0 then
 			for oc in aux.Next(g) do
 				local og=oc:GetOverlayGroup()

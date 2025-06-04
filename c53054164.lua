@@ -70,14 +70,14 @@ function c53054164.teop(e,tp,eg,ep,ev,re,r,rp)
 		local ct=tc:GetOverlayCount()
 		if Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA)
 			and ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c53054164.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp)
+			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c53054164.spfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp)
 			and Duel.SelectYesNo(tp,aux.Stringid(53054164,2)) then
 			Duel.BreakEffect()
 			local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 			ct=math.min(ct,ft)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c53054164.spfilter),tp,LOCATION_GRAVE,0,1,ct,nil,e,tp)
+			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c53054164.spfilter,e),tp,LOCATION_GRAVE,0,1,ct,nil,e,tp)
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

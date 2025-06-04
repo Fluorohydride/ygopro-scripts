@@ -20,7 +20,7 @@ function c47829960.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47829960.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c47829960.filter),tp,LOCATION_GRAVE,0,1,2,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c47829960.filter,e),tp,LOCATION_GRAVE,0,1,2,nil)
 	if #g>0 then
 		local count=Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		local c=e:GetHandler()

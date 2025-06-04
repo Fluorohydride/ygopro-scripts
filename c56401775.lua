@@ -54,11 +54,11 @@ end
 function c56401775.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_HAND)
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c56401775.thfilter),tp,LOCATION_GRAVE,0,1,nil)
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c56401775.thfilter,e),tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(56401775,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56401775.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56401775.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end
 end

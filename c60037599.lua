@@ -21,7 +21,7 @@ function c60037599.rbfilter(c,e,tp)
 	return c:IsSetCard(0x154) and c:IsAttack(2000) and not c:IsCode(60037599) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DrytronSpSummonType(c))
 end
 function c60037599.extraop(e,tp)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c60037599.rbfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c60037599.rbfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.SelectYesNo(tp,aux.Stringid(60037599,1)) then
 		Duel.BreakEffect()

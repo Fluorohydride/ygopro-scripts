@@ -22,7 +22,7 @@ end
 function c92345028.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c92345028.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c92345028.filter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetCount()>0 and ft>0 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		local ct=math.min(ft,2)

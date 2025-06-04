@@ -39,7 +39,7 @@ function s.filter(c,tp)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_HAND,0,nil,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter,e),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_HAND,0,nil,tp)
 	if #g==0 or not Duel.SelectEffectYesNo(tp,c,aux.Stringid(id,1)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local tc=g:Select(tp,1,1,nil):GetFirst()

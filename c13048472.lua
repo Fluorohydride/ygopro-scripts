@@ -25,7 +25,7 @@ function c13048472.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c13048472.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	if g:GetCount()>0 then
-		local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13048472.filter2),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,g:GetFirst())
+		local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13048472.filter2,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,g:GetFirst())
 		if mg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=mg:Select(tp,1,1,nil)

@@ -65,7 +65,7 @@ function c51476410.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanRemove(tp) then return end
 	local chkf=tp
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c51476410.spfilter3),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,chkf,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c51476410.spfilter3,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,chkf,nil)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
 		local mg1=Duel.GetMatchingGroup(c51476410.spfilter1,tp,LOCATION_GRAVE,0,nil,e)

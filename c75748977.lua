@@ -84,7 +84,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft>3 then ft=3 end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local fc=e:GetLabelObject()
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e,tp,fc)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e,tp,fc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=mg:SelectSubGroup(tp,aux.TRUE,false,1,ft)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

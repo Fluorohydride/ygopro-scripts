@@ -63,7 +63,7 @@ function c13046291.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13046291.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13046291.matfilter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13046291.matfilter2,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,2)

@@ -41,7 +41,7 @@ function c91742238.activate(e,tp,eg,ep,ev,re,r,rp)
 	if rc and Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)~=0 then
 		local p=rc:GetPreviousControler()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c91742238.spfilter),p,LOCATION_GRAVE,0,1,1,nil,e,tp,p)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c91742238.spfilter,e),p,LOCATION_GRAVE,0,1,1,nil,e,tp,p)
 		if #g>0 then Duel.SpecialSummon(g,0,tp,p,false,false,POS_FACEUP_DEFENSE) end
 	end
 end

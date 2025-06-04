@@ -90,7 +90,7 @@ function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 			sc:CompleteProcedure()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.mtfilter),tp,LOCATION_GRAVE,0,1,1,nil,e)
+			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.mtfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e)
 			if sg:GetCount()>0 then
 				Duel.Overlay(sc,sg)
 			end

@@ -32,7 +32,7 @@ function c19712214.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_EXTRA)
 end
 function c19712214.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c19712214.spfilter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c19712214.spfilter,e),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,nil,e,tp)
 	if Duel.NegateAttack() and #g>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)

@@ -50,7 +50,7 @@ function c44161893.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c44161893.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=1 then return end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c44161893.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c44161893.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:SelectSubGroup(tp,c44161893.fselect,false,2,2,tp,e:GetHandler())

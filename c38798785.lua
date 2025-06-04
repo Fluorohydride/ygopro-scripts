@@ -43,10 +43,10 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<3 then return end
-	local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter0),tp,LOCATION_GRAVE,0,nil,e,tp)
+	local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter0,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 	if g1:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.filter0),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local sg1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.filter0,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc1=sg1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg2=Duel.SelectMatchingCard(tp,s.filter1,tp,LOCATION_HAND,0,1,1,nil,e,tp,tc1:GetRace())

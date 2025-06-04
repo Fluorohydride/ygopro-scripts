@@ -52,7 +52,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local g=mg:Filter(Card.IsRelateToChain,nil)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)==0 then return end
-	local sg=g:FilterSelect(tp,aux.NecroValleyFilter(s.spfilter),1,1,nil,e,tp,e:GetHandler())
+	local sg=g:FilterSelect(tp,aux.NecroValleyFilter(s.spfilter,e),1,1,nil,e,tp,e:GetHandler())
 	local tc=sg:GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -75,7 +75,7 @@ function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToChain() and aux.NecroValleyFilter()(c) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain() and aux.NecroValleyFilter(nil,e)(c) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)

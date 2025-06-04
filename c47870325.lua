@@ -32,8 +32,8 @@ end
 function c47870325.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Group.CreateGroup()
-	local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter),tp,LOCATION_GRAVE,0,nil,tp)
-	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter),tp,0,LOCATION_GRAVE,nil,1-tp)
+	local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter,e),tp,LOCATION_GRAVE,0,nil,tp)
+	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter,e),tp,0,LOCATION_GRAVE,nil,1-tp)
 	if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(47870325,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local sg1=g1:Select(tp,1,5,nil)

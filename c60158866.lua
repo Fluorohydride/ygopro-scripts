@@ -87,10 +87,10 @@ function c60158866.operation(e,tp,eg,ep,ev,re,r,rp)
 			local og=tc:GetOverlayGroup()
 			if og:GetCount()>0 and Duel.SendtoGrave(og,REASON_EFFECT)>0
 				and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-				and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c60158866.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp)
+				and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c60158866.spfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp)
 				and Duel.SelectYesNo(tp,aux.Stringid(60158866,2)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local ng=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c60158866.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+				local ng=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c60158866.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 				if ng:GetCount()>0 then
 					Duel.BreakEffect()
 					Duel.SpecialSummon(ng,0,tp,tp,false,false,POS_FACEUP)

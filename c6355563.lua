@@ -31,7 +31,7 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c,tp)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c,tp)
 		local sc=g:GetFirst()
 		if sc and Duel.Equip(tp,sc,c) then
 			local e1=Effect.CreateEffect(c)

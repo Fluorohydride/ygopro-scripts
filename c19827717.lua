@@ -31,12 +31,12 @@ function c19827717.filter(c,tid)
 end
 function c19827717.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local tid=Duel.GetTurnCount()
-	return Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c19827717.filter),tp,LOCATION_GRAVE,0,1,nil,tid)
+	return Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c19827717.filter,e),tp,LOCATION_GRAVE,0,1,nil,tid)
 end
 function c19827717.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tid=Duel.GetTurnCount()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19827717.filter),tp,LOCATION_GRAVE,0,1,1,nil,tid)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19827717.filter,e),tp,LOCATION_GRAVE,0,1,1,nil,tid)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

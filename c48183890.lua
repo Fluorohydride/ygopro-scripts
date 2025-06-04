@@ -92,11 +92,11 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	Duel.AdjustInstantly(c)
-	if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.rmfilter),tp,LOCATION_GRAVE,0,1,nil)
+	if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.rmfilter,e),tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.rmfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+		local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.rmfilter,e),tp,LOCATION_GRAVE,0,1,1,nil)
 		local tg=g:Filter(Card.IsFaceup,nil)
 		if #rg>0 and #tg>0 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

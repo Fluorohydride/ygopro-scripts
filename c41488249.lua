@@ -49,10 +49,10 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetLabel(code)
 	Duel.RegisterEffect(e1,tp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.smfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp,code)
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.smfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp,code)
 		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.smfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,code)
+			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.smfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,code)
 			if g:GetCount()>0 then
 				Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 			end

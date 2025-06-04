@@ -25,7 +25,7 @@ end
 function c16135253.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local dc=Duel.TossDice(tp,1)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16135253.filter),tp,LOCATION_GRAVE,0,nil,e,tp,dc)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16135253.filter,e),tp,LOCATION_GRAVE,0,nil,e,tp,dc)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(16135253,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)

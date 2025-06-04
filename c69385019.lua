@@ -68,7 +68,7 @@ end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,tp,c)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,tp,c)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 then
 		if tc:CheckEquipTarget(c) and tc:CheckUniqueOnField(tp) and not tc:IsForbidden()

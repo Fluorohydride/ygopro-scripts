@@ -49,7 +49,7 @@ end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	local mft,sft=Duel.GetLocationCount(tp,LOCATION_MZONE),Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if mft<=0 and sft<=0 then return end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,sft)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,sft)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local tg=g:SelectSubGroup(tp,s.gcheck,false,1,2)
 	if not tg then return end

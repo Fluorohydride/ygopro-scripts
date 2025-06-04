@@ -40,7 +40,7 @@ function c45948430.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	::cancel::
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45948430.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45948430.filter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local rc=rg:GetFirst()
 	if rc then
 		local mg=Duel.GetMatchingGroup(c45948430.mfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,rc)

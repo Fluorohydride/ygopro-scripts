@@ -57,12 +57,12 @@ function c9175957.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-		local ct=Duel.GetMatchingGroupCount(aux.NecroValleyFilter(c9175957.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
+		local ct=Duel.GetMatchingGroupCount(aux.NecroValleyFilter(c9175957.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 		local spct=e:GetLabel()
 		if spct>0 and ct>=spct and ft>=spct
 			and Duel.SelectYesNo(tp,aux.Stringid(9175957,2)) then
 			Duel.BreakEffect()
-			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c9175957.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,spct,spct,nil,e,tp)
+			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c9175957.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,spct,spct,nil,e,tp)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

@@ -84,7 +84,7 @@ function c91272072.operation(e,tp,eg,ep,ev,re,r,rp)
 				chk=true
 			end
 		end
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c91272072.thfilter),tp,LOCATION_GRAVE,0,nil)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c91272072.thfilter,e),tp,LOCATION_GRAVE,0,nil)
 		if chk and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(91272072,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

@@ -63,7 +63,7 @@ function c91027843.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()
 	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),3)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c91027843.eqfilter),tp,LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c91027843.eqfilter,e),tp,LOCATION_GRAVE,0,nil)
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) or ft<=0 or g:GetCount()<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)

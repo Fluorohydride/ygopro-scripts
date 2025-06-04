@@ -85,7 +85,7 @@ end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
-		local sc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil):GetFirst()
+		local sc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil):GetFirst()
 		if sc then
 			local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
 			if fc then

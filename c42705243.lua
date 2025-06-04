@@ -36,11 +36,11 @@ function c42705243.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1,true)
 		Duel.SpecialSummonComplete()
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c42705243.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp,tc)
+			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c42705243.eqfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp,tc)
 			and Duel.SelectYesNo(tp,aux.Stringid(42705243,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-			local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c42705243.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp,tc)
+			local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c42705243.eqfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp,tc)
 			local eqc=eqg:GetFirst()
 			Duel.Equip(tp,eqc,tc)
 		end

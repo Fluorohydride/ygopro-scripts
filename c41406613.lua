@@ -75,10 +75,10 @@ function c41406613.operation(e,tp,eg,ep,ev,re,r,rp)
 	if #g>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		Duel.ConfirmCards(1-tp,g)
 		if rp==1-tp and tp==e:GetLabel()
-			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c41406613.filter2),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp,ft,ft2)
+			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c41406613.filter2,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp,ft,ft2)
 			and Duel.SelectYesNo(tp,aux.Stringid(41406613,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c41406613.filter2),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,ft,ft2)
+			local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c41406613.filter2,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,ft,ft2)
 			Duel.BreakEffect()
 			local tc=tg:GetFirst()
 			local o1=ft>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)

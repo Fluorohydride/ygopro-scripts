@@ -42,7 +42,7 @@ function c13965201.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c13965201.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dc=e:GetLabelObject()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13965201.spfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,dc:GetCode())
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13965201.spfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,dc:GetCode())
 	if #g>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)

@@ -52,7 +52,7 @@ end
 function c9238125.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)>0 then
-		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c9238125.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c9238125.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(9238125,0)) then
 			Duel.BreakEffect()

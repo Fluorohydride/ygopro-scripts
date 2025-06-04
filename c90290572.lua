@@ -46,7 +46,7 @@ end
 function c90290572.operation(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.IsExistingMatchingCard(c90290572.tgfilter,tp,LOCATION_DECK,0,1,nil)
 	local b=Duel.IsEnvironment(56433456,PLAYER_ALL,LOCATION_ONFIELD+LOCATION_GRAVE)
-	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c90290572.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
+	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c90290572.thfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 	if b and #tg>0 and (not a or Duel.SelectYesNo(tp,aux.Stringid(90290572,2))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=tg:Select(tp,1,1,nil)

@@ -42,7 +42,7 @@ function s.dcfilter(c)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(tc) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0
 			and tc:IsRace(RACE_MACHINE) and tc:IsLevelAbove(5)
 			and Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil)

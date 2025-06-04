@@ -45,7 +45,7 @@ function c83116692.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local sc=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_SPELL+TYPE_TRAP)
 	if mc>sc then
 		if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
-			local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83116692.rmfilter),tp,0,LOCATION_GRAVE,nil)
+			local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83116692.rmfilter,e),tp,0,LOCATION_GRAVE,nil)
 			if g:GetCount()>0 then
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
 				local sg=g:Select(1-tp,1,1,nil)

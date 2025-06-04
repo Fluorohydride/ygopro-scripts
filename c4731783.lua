@@ -88,9 +88,9 @@ function s.acoperation(e,tp,eg,ep,ev,re,r,rp)
 				Duel.RegisterEffect(e1,tp)
 			end
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-				and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) then
+				and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.spfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+				local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 				Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			end
 		end

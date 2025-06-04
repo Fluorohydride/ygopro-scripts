@@ -51,11 +51,11 @@ function c27623932.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local dg=Duel.GetMatchingGroup(c27623932.desfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 		if Duel.Destroy(dg,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp)
+			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.eqfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp)
 			and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-			local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp)
+			local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp)
 			local eqc=eqg:GetFirst()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			local mg=Duel.SelectMatchingCard(tp,s.CanEquipFilter,tp,LOCATION_MZONE,0,1,1,nil,eqc)

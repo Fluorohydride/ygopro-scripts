@@ -43,7 +43,7 @@ function c11074235.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
 		e1:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e1,true)
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c11074235.setfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c11074235.setfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(11074235,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)

@@ -35,7 +35,7 @@ function c95286165.activate(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsSummonType(SUMMON_TYPE_FUSION)
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		and (not Duel.IsPlayerAffectedByEffect(tp,59822133) or ct==1)
-		and mg:FilterCount(aux.NecroValleyFilter(c95286165.mgfilter),nil,e,tp,tc,mg)==ct
+		and mg:FilterCount(aux.NecroValleyFilter(c95286165.mgfilter,e),nil,e,tp,tc,mg)==ct
 		and Duel.SelectYesNo(tp,aux.Stringid(95286165,0)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)

@@ -78,7 +78,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.tdfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,2,nil)
+	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.tdfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,2,nil)
 	if tg:GetCount()>0 then
 		Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		tg=tg:Filter(Card.IsLocation,nil,LOCATION_DECK)

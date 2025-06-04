@@ -70,7 +70,7 @@ function c3574681.operation(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
 			bc:RegisterEffect(e2)
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-			local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c3574681.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp,ac:GetCode(),bc:GetCode())
+			local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c3574681.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp,ac:GetCode(),bc:GetCode())
 			if #rg==0 then return end
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

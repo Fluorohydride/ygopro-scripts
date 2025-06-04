@@ -38,7 +38,7 @@ function c25415161.spfilter(c,e,tp)
 end
 function c25415161.spsfilter(c,e,tp,solve)
 	if solve then
-		return aux.NecroValleyFilter(c25415161.spfilter)(c,e,tp)
+		return aux.NecroValleyFilter(c25415161.spfilter,e)(c,e,tp)
 	else
 		return c25415161.spfilter(c,e,tp)
 	end

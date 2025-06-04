@@ -32,7 +32,7 @@ function c41773061.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=0
 	if tc:IsRace(RACE_BEASTWARRIOR) then code=87778106 end
 	if tc:IsRace(RACE_WARRIOR) then code=14166715 end
-	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c41773061.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,code)
+	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c41773061.thfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,code)
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsRace(RACE_BEASTWARRIOR+RACE_WARRIOR)
 		and #g2>0 and Duel.SelectYesNo(tp,aux.Stringid(41773061,1)) then
 		Duel.BreakEffect()

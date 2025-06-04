@@ -37,7 +37,7 @@ end
 function c38082437.opa(e,tp,eg,ep,ev,re,r,rp)
 	local dc=Duel.TossDice(tp,1)
 	local rec=dc*100
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c38082437.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,dc)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c38082437.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,dc)
 	if Duel.Recover(tp,rec,REASON_EFFECT)>0 and g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.SelectYesNo(tp,aux.Stringid(38082437,1)) then
 		Duel.BreakEffect()

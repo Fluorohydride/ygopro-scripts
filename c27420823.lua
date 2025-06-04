@@ -53,12 +53,12 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
 		Duel.ConfirmCards(1-tp,g)
-		if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.setfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
+		if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.setfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
 			and Duel.GetCustomActivityCount(id,1-tp,ACTIVITY_CHAIN)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
+			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 			if sg:GetCount()>0 then
 				Duel.SSet(tp,sg)
 			end

@@ -26,7 +26,7 @@ function c10125011.spfilter(c,e,sp)
 	return c10125011.setcardfilter(c) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c10125011.activate(e,tp,eg,ep,ev,re,r,rp)
-	local cg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c10125011.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
+	local cg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c10125011.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 	if #cg>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.SelectYesNo(tp,aux.Stringid(10125011,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

@@ -54,7 +54,7 @@ function c64178868.thop(e,tp,eg,ep,ev,re,r,rp)
 	local ng=e:GetLabelObject()
 	if not ng or ng:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=ng:FilterSelect(tp,aux.NecroValleyFilter(c64178868.thfilter),1,1,nil)
+	local g=ng:FilterSelect(tp,aux.NecroValleyFilter(c64178868.thfilter,e),1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

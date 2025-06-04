@@ -42,7 +42,7 @@ function c80033124.cfilter2(c)
 end
 function c80033124.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c80033124.ffilter),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c80033124.ffilter,e),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=mg:SelectSubGroupEach(tp,c80033124.fchecks,false,c80033124.fgoal,e,tp)
 	if not sg then return end

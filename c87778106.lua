@@ -14,7 +14,7 @@ function s.thfilter(c)
 end
 function s.extraop(e,tp,eg,ep,ev,re,r,rp,tc,mat)
 	if not tc or not tc:IsCode(26223582) then return end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.thfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

@@ -67,7 +67,7 @@ function c2390019.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	if ft<ct then return end
 	local fc=e:GetLabelObject()
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,fc)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.spfilter,e),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,fc)
 	if mg:GetClassCount(Card.GetCode)<ct then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=mg:SelectSubGroup(tp,aux.dncheck,false,ct,ct)

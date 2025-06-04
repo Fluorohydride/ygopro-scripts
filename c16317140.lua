@@ -91,7 +91,7 @@ function c16317140.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16317140.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-	local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16317140.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16317140.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local sc=sg:GetFirst()
 	if sc then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and sc:IsCanBeSpecialSummoned(e,0,tp,true,false)

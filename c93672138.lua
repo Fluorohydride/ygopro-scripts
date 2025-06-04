@@ -48,7 +48,7 @@ function c93672138.gcheck(g)
 	return aux.gfcheck(g,Card.IsSetCard,0x153,0x152)
 end
 function c93672138.spop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c93672138.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c93672138.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>0 and #g>0 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

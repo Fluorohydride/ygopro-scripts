@@ -39,8 +39,8 @@ function c25209168.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft2>1 and Duel.IsPlayerAffectedByEffect(1-p,59822133) then ft2=1 end
 	local ct2=g1:FilterCount(c25209168.ctfilter,nil,p)
 	if ct2>ft2 then ct2=ft2 end
-	local sg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),p,0,LOCATION_GRAVE,nil,e,0,p,false,false)
-	local sg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),1-p,0,LOCATION_GRAVE,nil,e,0,1-p,false,false)
+	local sg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned,e),p,0,LOCATION_GRAVE,nil,e,0,p,false,false)
+	local sg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned,e),1-p,0,LOCATION_GRAVE,nil,e,0,1-p,false,false)
 	local tg1=Group.CreateGroup()
 	local tg2=Group.CreateGroup()
 	if ft1>0 and sg1:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(25209168,1)) then

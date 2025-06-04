@@ -54,7 +54,7 @@ function c17751597.fselect(sg)
 end
 function c17751597.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.GetMatchingGroup(c17751597.filter1,tp,LOCATION_MZONE,0,nil)
-	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17751597.filter2),tp,LOCATION_GRAVE,0,nil)
+	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17751597.filter2,e),tp,LOCATION_GRAVE,0,nil)
 	if #g1==0 and #g2==0 then return end
 	g1:Merge(g2)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

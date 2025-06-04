@@ -82,7 +82,7 @@ end
 function s.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.ofilter),tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.ofilter,e),tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e)
 		if #g>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local sg=g:SelectSubGroup(tp,s.gcheck,false,1,2,tp)

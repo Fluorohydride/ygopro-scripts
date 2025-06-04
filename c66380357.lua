@@ -35,7 +35,7 @@ function c66380357.activate(e,tp,eg,ep,ev,re,r,rp)
 	if upbound<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then upbound=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c66380357.gfilter),tp,LOCATION_GRAVE,0,1,upbound,nil,e,tp,zone)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c66380357.gfilter,e),tp,LOCATION_GRAVE,0,1,upbound,nil,e,tp,zone)
 	if g:GetCount()>0 then
 		local fid=e:GetHandler():GetFieldID()
 		local tc=g:GetFirst()

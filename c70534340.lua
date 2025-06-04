@@ -59,7 +59,7 @@ end
 function c70534340.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70534340.filter1),tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70534340.filter1,e),tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c70534340.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg3=nil
 	local sg2=nil

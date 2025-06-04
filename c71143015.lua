@@ -55,7 +55,7 @@ function c71143015.desfilter(c)
 end
 function c71143015.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c71143015.filter0),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c71143015.filter0,e),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c71143015.filter1,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg3=nil
 	local sg2=nil

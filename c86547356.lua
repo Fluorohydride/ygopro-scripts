@@ -52,7 +52,7 @@ function c86547356.activate(e,tp,eg,ep,ev,re,r,rp)
 	local check,code,lv=e:GetLabel()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c86547356.spfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,code,lv)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c86547356.spfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,code,lv)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)

@@ -76,7 +76,7 @@ function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft1>0 then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
 	if ect>0 and (ft2>0 or ft3>0) then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end
-	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c84869738.spfilter),tp,loc,0,nil,e,tp)
+	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c84869738.spfilter,e),tp,loc,0,nil,e,tp)
 	if sg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local rg=sg:SelectSubGroup(tp,c84869738.gcheck,false,1,4,ft1,ft2,ft3,ect,ft)
@@ -99,7 +99,7 @@ function c84869738.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c84869738.matfilter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,2,2,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c84869738.matfilter,e),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,2,2,nil)
 		if g:GetCount()>0 then
 			Duel.Overlay(tc,g)
 		end

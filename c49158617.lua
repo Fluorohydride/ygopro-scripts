@@ -64,7 +64,7 @@ function c49158617.activate(e,tp,eg,ep,ev,re,r,rp)
 			elseif sel==2 then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-				local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_GRAVE,1,1,nil)
+				local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,0,LOCATION_GRAVE,1,1,nil)
 				if #g>0 then
 					Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 				end

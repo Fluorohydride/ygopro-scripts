@@ -81,7 +81,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and c:IsRelateToEffect(e)
 			and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and aux.NecroValleyFilter()(c)
+			and aux.NecroValleyFilter(nil,e)(c)
 			and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)

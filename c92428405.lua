@@ -145,7 +145,7 @@ function c92428405.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft1>0 then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
 	if ect>0 and (ft2>0 or ft3>0) then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end
-	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c92428405.spfilter),tp,loc,0,nil,e,tp)
+	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c92428405.spfilter,e),tp,loc,0,nil,e,tp)
 	if sg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local rg=sg:SelectSubGroup(tp,c92428405.gcheck,false,1,4,ft1,ft2,ft3,ect,ft)

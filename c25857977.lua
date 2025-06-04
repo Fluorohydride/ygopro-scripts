@@ -127,7 +127,7 @@ function c25857977.desop(e,tp,eg,ep,ev,re,r,rp)
 	local exc=nil
 	if tc:IsRelateToEffect(e) then exc=tc end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c25857977.tdfilter),tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,exc)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c25857977.tdfilter,e),tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,exc)
 	if g:GetCount()>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and g:GetFirst():IsLocation(LOCATION_DECK+LOCATION_EXTRA) and tc:IsRelateToEffect(e) then
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 then

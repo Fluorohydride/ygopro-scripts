@@ -98,7 +98,7 @@ end
 function c90587641.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c90587641.spfilter),tp,LOCATION_SZONE+LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c90587641.spfilter,e),tp,LOCATION_SZONE+LOCATION_GRAVE,0,nil,e,tp)
 	if ft<=0 or #g==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:Select(tp,1,1,nil)

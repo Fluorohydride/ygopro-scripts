@@ -38,7 +38,7 @@ function c90814668.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local race,att=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c90814668.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,race,att)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c90814668.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,race,att)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

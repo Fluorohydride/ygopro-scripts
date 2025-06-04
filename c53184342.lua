@@ -113,7 +113,7 @@ function c53184342.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53184342.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(aux.NecroValleyFilter(c53184342.chkfilter),nil,tp)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(aux.NecroValleyFilter(c53184342.chkfilter,e),nil,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if c:IsFaceup() and c:IsRelateToEffect(e) and #g>0 and ft>0 then
 		local sg=nil

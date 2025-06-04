@@ -27,7 +27,7 @@ function c25396150.filter(c,tp,pcon)
 end
 function c25396150.activate(e,tp,eg,ep,ev,re,r,rp)
 	local pcon=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c25396150.filter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,nil,tp,pcon)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c25396150.filter,e),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,nil,tp,pcon)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(25396150,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local sc=g:Select(tp,1,1,nil):GetFirst()

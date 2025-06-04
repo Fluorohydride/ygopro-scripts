@@ -42,9 +42,9 @@ function c89397517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local rmg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89397517.rmfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local rmg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89397517.rmfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	local rmct=rmg:GetClassCount(Card.GetCode)
-	local spg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89397517.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp)
+	local spg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89397517.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp)
 	local spct=spg:GetClassCount(Card.GetCode)
 	local ct=math.min(3,ft,spct,rmct)
 	if ct==0 then return end

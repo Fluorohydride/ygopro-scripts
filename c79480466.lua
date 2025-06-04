@@ -74,7 +74,7 @@ function s.mafilter(c,e)
 end
 function s.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(s.mafilter),nil,e)
+	local g=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(s.mafilter,e),nil,e)
 	if c:IsRelateToChain() and #g>0 then
 		Duel.Overlay(c,g)
 	end

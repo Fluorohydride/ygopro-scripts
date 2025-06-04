@@ -38,7 +38,7 @@ function c14386013.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14386013.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c14386013.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c14386013.thfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
@@ -55,7 +55,7 @@ function c14386013.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14386013.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c14386013.drfilter),p,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c14386013.drfilter,e),p,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 	aux.GCheckAdditional=aux.dncheck
 	local sg=g:SelectSubGroup(p,aux.TRUE,false,1,Duel.GetFieldGroupCount(p,LOCATION_DECK,0))

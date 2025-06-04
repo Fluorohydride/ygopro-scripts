@@ -72,7 +72,7 @@ function c70155677.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70155677.mvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70155677.mvfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70155677.mvfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,tp)
 	if #g==0 or Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local tc=g:Select(tp,1,1,nil):GetFirst()
@@ -99,7 +99,7 @@ function c70155677.drmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_REMOVED,0,nil)
 	local tg=g:Filter(Card.IsAbleToDeck,nil)
-	local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil,tp,POS_FACEDOWN)
+	local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil,tp,POS_FACEDOWN)
 	local ct=math.floor(#g/3)
 	if ct==0 or #tg==0 or #rg==0 then return end
 	if ct>#tg then ct=#tg end

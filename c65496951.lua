@@ -47,7 +47,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
 			Duel.ConfirmCards(1-tp,sg)
 		end
 	elseif Duel.Damage(tp,500,REASON_EFFECT)>0 then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter),tp,LOCATION_GRAVE,0,nil)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter,e),tp,LOCATION_GRAVE,0,nil)
 		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=g:Select(tp,1,1,nil)

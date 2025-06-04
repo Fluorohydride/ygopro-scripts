@@ -27,7 +27,7 @@ end
 function c11398951.activate(e,tp,eg,ep,ev,re,r,rp)
 	::cancel::
 	local mg1=Duel.GetRitualMaterial(tp)
-	local mg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c11398951.mfilter),tp,LOCATION_GRAVE,0,nil)
+	local mg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c11398951.mfilter,e),tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,c11398951.filter,e,tp,mg1,mg2,Card.GetLevel,"Equal")
 	local tc=g:GetFirst()

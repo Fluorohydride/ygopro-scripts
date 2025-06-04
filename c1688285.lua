@@ -85,7 +85,7 @@ end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=eg:Filter(s.cfilter,nil,tp)
-	local mg=g:Filter(aux.NecroValleyFilter(Card.IsRelateToChain),nil)
+	local mg=g:Filter(aux.NecroValleyFilter(Card.IsRelateToChain,e),nil)
 	if #mg>0 and c:IsRelateToChain() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local og=mg:Select(tp,1,1,nil)

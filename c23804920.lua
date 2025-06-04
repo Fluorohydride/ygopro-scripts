@@ -47,7 +47,7 @@ end
 function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and aux.NecroValleyFilter()(tc) and tc:IsType(TYPE_MONSTER)
+	if tc and aux.NecroValleyFilter(nil,e)(tc) and tc:IsType(TYPE_MONSTER)
 		and tc:IsRelateToChain() and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0
 		and (tc:IsLocation(LOCATION_REMOVED) or tc:IsType(TYPE_TOKEN))
 		and c:IsRelateToChain() and c:IsFaceup() then

@@ -57,7 +57,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=#mg
 	if Duel.Remove(c,POS_FACEUP,REASON_EFFECT)>0 and c:IsLocation(LOCATION_REMOVED) and c:GetSummonType()==SUMMON_TYPE_SYNCHRO
 		and ct>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133)) and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and mg:FilterCount(aux.NecroValleyFilter(s.mgfilter),nil,e,tp,c)==ct and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		and mg:FilterCount(aux.NecroValleyFilter(s.mgfilter,e),nil,e,tp,c)==ct and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.BreakEffect()
 		for tc in aux.Next(mg) do
 			if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then

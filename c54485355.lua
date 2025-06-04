@@ -96,7 +96,7 @@ function c54485355.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	local g=e:GetLabelObject():GetLabelObject()
-	local sg=g:Filter(aux.NecroValleyFilter(c54485355.spfilter2),nil,e,tp)
+	local sg=g:Filter(aux.NecroValleyFilter(c54485355.spfilter2,e),nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local spg=sg:Select(tp,ft,ft,nil)

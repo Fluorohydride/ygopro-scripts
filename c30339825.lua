@@ -56,7 +56,7 @@ function s.activate(att)
 			local g=Duel.SelectMatchingCard(tp,s.desfilter,sp,LOCATION_MZONE,0,1,1,nil,sp,att,tp)
 			if g then
 				Duel.HintSelection(g)
-				if Duel.Destroy(g,REASON_EFFECT)~=0 and aux.NecroValleyFilter()(tc) then
+				if Duel.Destroy(g,REASON_EFFECT)~=0 and aux.NecroValleyFilter(nil,e)(tc) then
 					Duel.SpecialSummon(tc,0,tp,sp,false,false,POS_FACEUP_DEFENSE)
 				end
 			end

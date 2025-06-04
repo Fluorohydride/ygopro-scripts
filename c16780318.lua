@@ -40,7 +40,7 @@ function c16780318.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tg and Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tg:IsLocation(LOCATION_EXTRA) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<4 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16780318.spfilter),tp,LOCATION_GRAVE,0,4,4,nil,e,tp)
+		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16780318.spfilter,e),tp,LOCATION_GRAVE,0,4,4,nil,e,tp)
 		if #sg>0 then
 			if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)~=0 then
 				Duel.BreakEffect()
@@ -90,7 +90,7 @@ function c16780318.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16780318.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16780318.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16780318.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil)
 	if #g>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

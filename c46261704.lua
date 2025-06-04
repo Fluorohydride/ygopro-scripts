@@ -52,7 +52,7 @@ function c46261704.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			local mg=Duel.GetMatchingGroup(c46261704.mfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 			if Duel.ChangeAttackTarget(tc) and mg:GetCount()>0
-				and c:IsRelateToChain() and c:IsLocation(LOCATION_GRAVE) and aux.NecroValleyFilter()(c)
+				and c:IsRelateToChain() and c:IsLocation(LOCATION_GRAVE) and aux.NecroValleyFilter(nil,e)(c)
 				and c:IsCanOverlay() and Duel.SelectYesNo(tp,aux.Stringid(46261704,2)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)

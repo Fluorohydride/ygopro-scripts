@@ -38,7 +38,7 @@ function c37313338.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		if aux.NecroValleyNegateCheck(tc) then return end
-		if not aux.NecroValleyFilter()(tc) then return end
+		if not aux.NecroValleyFilter(nil,e)(tc) then return end
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
@@ -60,7 +60,7 @@ function c37313338.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c37313338.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c37313338.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c37313338.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 	if ft<=0 or g:GetCount()==0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=math.min(g:GetClassCount(Card.GetCode),ft)

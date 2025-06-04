@@ -73,7 +73,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),3)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.pfilter),tp,LOCATION_GRAVE,0,1,ct,nil,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.pfilter,e),tp,LOCATION_GRAVE,0,1,ct,nil,tp)
 	for tc in aux.Next(g) do
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	end

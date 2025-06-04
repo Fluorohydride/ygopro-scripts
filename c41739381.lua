@@ -80,7 +80,7 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.SelectMatchingCard(tp,s.rspfilter,tp,LOCATION_MZONE,0,1,1,aux.ExceptThisCard(e),tp)
-	if g:GetCount()>0 and Duel.Release(g,REASON_EFFECT)~=0 and tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) then
+	if g:GetCount()>0 and Duel.Release(g,REASON_EFFECT)~=0 and tc:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(tc) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

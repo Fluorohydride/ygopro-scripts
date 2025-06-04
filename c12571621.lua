@@ -64,13 +64,13 @@ function c12571621.thfilter(c)
 	return c:IsSetCard(0x14e) and c:IsType(TYPE_MONSTER) and not c:IsCode(12571621) and c:IsAbleToHand()
 end
 function c12571621.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c12571621.thfilter),tp,LOCATION_GRAVE,0,1,nil)
+	return Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c12571621.thfilter,e),tp,LOCATION_GRAVE,0,1,nil)
 end
 function c12571621.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(12571621,1)) then
 		Duel.Hint(HINT_CARD,0,12571621)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c12571621.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c12571621.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)

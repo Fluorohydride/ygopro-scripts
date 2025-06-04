@@ -66,7 +66,7 @@ function s.xop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or not c:IsLocation(LOCATION_ONFIELD) or not s.xyzfilter(c,tp,e) then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.xyzfilter),tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,1,1,c,tp,e)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.xyzfilter,e),tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,1,1,c,tp,e)
 	if g:GetCount()>0 then
 		local mg=c+g
 		Duel.Overlay(tc,mg)

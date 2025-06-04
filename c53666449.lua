@@ -33,7 +33,7 @@ function c53666449.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 	c:RegisterEffect(e1)
 	local rc=re:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c53666449.thfilter),tp,LOCATION_GRAVE,0,nil,rc:GetCode())
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c53666449.thfilter,e),tp,LOCATION_GRAVE,0,nil,rc:GetCode())
 	if Duel.IsEnvironment(56433456) and g:GetCount()>0 then
 		Duel.Hint(HINT_CARD,0,53666449)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

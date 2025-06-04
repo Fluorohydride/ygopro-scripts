@@ -36,7 +36,7 @@ function c83266006.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local att=tc:GetAttribute()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c83266006.spfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,e,tp,att)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c83266006.spfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,e,tp,att)
 		if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local tc=g:GetFirst()
 			tc:RegisterFlagEffect(83266006,RESET_EVENT+RESETS_STANDARD,0,1)

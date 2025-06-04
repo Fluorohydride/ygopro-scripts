@@ -25,7 +25,7 @@ function c52711246.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52711246.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c52711246.filter),tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c52711246.filter,e),tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if not tc then return end
 	local b1=tc:IsRace(RACE_ZOMBIE)

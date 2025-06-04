@@ -42,7 +42,7 @@ function c86483512.spop(e,tp,eg,ep,ev,re,r,rp)
 		if tgc and Duel.SendtoGrave(tgc,REASON_EFFECT)~=0 and tgc:IsLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
 			and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local code1=tgc:GetCode()
-			local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c86483512.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,code1)
+			local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c86483512.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,code1)
 			if #sg>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(86483512,1)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

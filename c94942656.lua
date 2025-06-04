@@ -85,10 +85,10 @@ function c94942656.spop(e,tp,eg,ep,ev,re,r,rp)
 	ft=math.min(ft,e:GetLabel())
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c94942656.spfilter),tp,LOCATION_GRAVE,0,1,ft,e:GetHandler(),e,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c94942656.spfilter,e),tp,LOCATION_GRAVE,0,1,ft,e:GetHandler(),e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_MZONE)
-		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c94942656.matfilter),tp,LOCATION_GRAVE,0,nil)
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c94942656.matfilter,e),tp,LOCATION_GRAVE,0,nil)
 		local res=false
 		local tc=og:GetFirst()
 		while tc do

@@ -917,10 +917,35 @@ function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 --filter for necro_valley test
-function Auxiliary.NecroValleyFilter(f)
-	return	function(target,...)
-				return (not f or f(target,...)) and not target:IsHasEffect(EFFECT_NECRO_VALLEY)
-			end
+---@param f fun(...):boolean logical filtering function
+---@param e Effect triggering effect, to check whether the triggering card is immunte to necrovalley effects
+---@return fun(...):boolean altered_filter filter function that cares about necrovalley
+function Auxiliary.NecroValleyFilter(f,e)
+    return function(target,...)
+		if f and not f(target,...) then
+			return false
+		end
+
+        local handler=e and e.GetHandler and e:GetHandler()
+        local effects={target:IsHasEffect(EFFECT_NECRO_VALLEY)}
+        if not handler then
+            if #effects>0 then
+                return false
+            else
+				--- no effect to check, but no necrovalley effect either
+                return true
+            end
+        end
+
+        for _, eff in ipairs(effects) do
+            if not handler:IsImmuneToEffect(eff) then
+                return false
+            end
+        end
+
+		--- trigger effect immune to necrovalley effects
+		return true
+    end
 end
 --Necrovalley test for effect with not certain target or not certain action
 function Auxiliary.NecroValleyNegateCheck(v)

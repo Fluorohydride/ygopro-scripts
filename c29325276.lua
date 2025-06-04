@@ -78,7 +78,7 @@ end
 function s.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if c:IsRelateToEffect(e) and aux.NecroValleyFilter()(c) then
+	if c:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(c) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

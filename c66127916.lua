@@ -33,7 +33,7 @@ function c66127916.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-		local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c66127916.filter3),tp,LOCATION_GRAVE,0,nil)
+		local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c66127916.filter3,e),tp,LOCATION_GRAVE,0,nil)
 		if tg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66127916,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

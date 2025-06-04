@@ -53,7 +53,7 @@ function s.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToChain() and aux.NecroValleyFilter(tc) then
+	if tc and tc:IsRelateToChain() and aux.NecroValleyFilter(tc,e) then
 		Duel.SSet(tp,tc)
 	end
 end

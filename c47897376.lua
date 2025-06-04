@@ -36,7 +36,7 @@ function c47897376.dttg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47897376.dtop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c47897376.dtfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c47897376.dtfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		if tc:IsLocation(LOCATION_HAND) then

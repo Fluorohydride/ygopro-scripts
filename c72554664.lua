@@ -38,8 +38,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e)
 		and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_EXTRA) then
-		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter1),tp,LOCATION_GRAVE,0,nil,e,tp)
-		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter2),tp,0,LOCATION_GRAVE,nil,e,tp)
+		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter1,e),tp,LOCATION_GRAVE,0,nil,e,tp)
+		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter2,e),tp,0,LOCATION_GRAVE,nil,e,tp)
 		if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and #g1>0 and #g2>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then

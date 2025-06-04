@@ -30,7 +30,7 @@ end
 function c32120116.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c32120116.filter2,nil,e,1-tp)
 	if #g>0 and Duel.Destroy(g,REASON_EFFECT)>0 then
-		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c32120116.rmfilter),tp,LOCATION_GRAVE,0,nil)
+		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c32120116.rmfilter,e),tp,LOCATION_GRAVE,0,nil)
 		local g2=Duel.GetMatchingGroup(c32120116.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil,e,tp)
 		if #g1>4 and #g2>0 and Duel.SelectYesNo(tp,aux.Stringid(32120116,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

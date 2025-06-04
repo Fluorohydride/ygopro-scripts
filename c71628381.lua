@@ -37,7 +37,7 @@ function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_EXTRA)
 		and c:IsSummonType(SUMMON_TYPE_FUSION)
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and mg:FilterCount(aux.NecroValleyFilter(c71628381.mgfilter),nil,e,tp,c,mg)==ct
+		and mg:FilterCount(aux.NecroValleyFilter(c71628381.mgfilter,e),nil,e,tp,c,mg)==ct
 		and (not Duel.IsPlayerAffectedByEffect(tp,59822133) or ct==1)
 		and Duel.SelectYesNo(tp,aux.Stringid(71628381,1)) then
 		Duel.BreakEffect()

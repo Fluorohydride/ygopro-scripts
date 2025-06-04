@@ -45,7 +45,7 @@ end
 function c83888009.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83888009.ovfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,tc)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83888009.ovfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,tc)
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
 		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(83888009,0)) then
 		Duel.BreakEffect()

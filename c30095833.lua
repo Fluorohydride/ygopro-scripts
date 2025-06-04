@@ -62,10 +62,10 @@ function c30095833.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	if c:IsType(TYPE_XYZ)
-		and Duel.GetMatchingGroupCount(aux.NecroValleyFilter(c30095833.mfilter),tp,LOCATION_GRAVE,0,nil)>0
+		and Duel.GetMatchingGroupCount(aux.NecroValleyFilter(c30095833.mfilter,e),tp,LOCATION_GRAVE,0,nil)>0
 		and Duel.SelectYesNo(tp,aux.Stringid(30095833,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c30095833.mfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c30095833.mfilter,e),tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Overlay(c,g)
 	end
 end

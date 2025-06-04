@@ -23,7 +23,7 @@ function c8868767.activate(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.TossDice(tp,1)
 	if Duel.GetTurnPlayer()==tp then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove),tp,LOCATION_GRAVE,0,d,d,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,LOCATION_GRAVE,0,d,d,nil)
 		if g:GetCount()>0 then
 			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		end
@@ -33,7 +33,7 @@ function c8868767.activate(e,tp,eg,ep,ev,re,r,rp)
 	else
 		Duel.DiscardDeck(tp,d,REASON_EFFECT)
 		if d==6 then
-			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove),tp,LOCATION_GRAVE,0,1,1,nil)
+			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,LOCATION_GRAVE,0,1,1,nil)
 			if g:GetCount()>0 then
 				Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 			end

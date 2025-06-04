@@ -76,7 +76,7 @@ function s.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.thop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToChain() and tc:IsType(TYPE_MONSTER) and aux.NecroValleyFilter()(tc) then
+	if tc:IsRelateToChain() and tc:IsType(TYPE_MONSTER) and aux.NecroValleyFilter(nil,e)(tc) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

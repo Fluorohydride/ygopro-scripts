@@ -52,7 +52,7 @@ function s.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(1-tp,LOCATION_SZONE)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(1-tp,aux.NecroValleyFilter(s.mfilter),1-tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,1-tp)
+	local g=Duel.SelectMatchingCard(1-tp,aux.NecroValleyFilter(s.mfilter,e),1-tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,1-tp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.MoveToField(tc,1-tp,1-tp,LOCATION_SZONE,POS_FACEUP,true)

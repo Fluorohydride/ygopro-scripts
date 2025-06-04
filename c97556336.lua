@@ -76,7 +76,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0
 			and rg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)>0
-			and c:IsRelateToChain() and aux.NecroValleyFilter()(c)
+			and c:IsRelateToChain() and aux.NecroValleyFilter(nil,e)(c)
 			and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 			and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local e1=Effect.CreateEffect(c)

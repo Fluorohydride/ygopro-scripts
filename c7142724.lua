@@ -29,7 +29,7 @@ function c7142724.thfilter(c)
 		and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 end
 function c7142724.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c7142724.thfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c7142724.thfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(7142724,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)

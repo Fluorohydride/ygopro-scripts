@@ -61,7 +61,7 @@ function c50863093.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50863093.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,tc:GetCode(),tc:GetLevel())
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50863093.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,tc:GetCode(),tc:GetLevel())
 		if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end

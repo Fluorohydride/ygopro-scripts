@@ -66,11 +66,11 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc)
-		if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.thorspfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.thorspfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp)
 			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-			local gg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.thorspfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+			local gg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.thorspfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 			local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 			local hc=gg:GetFirst()
 			if hc then

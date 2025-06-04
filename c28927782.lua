@@ -65,7 +65,7 @@ function c28927782.efop(e,tp,eg,ep,ev,re,r,rp)
 		local ec=Duel.GetFirstTarget()
 		if ec:IsRelateToEffect(e) and ec:IsFaceup() then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28927782.eqfilter2),tp,LOCATION_GRAVE,0,1,1,nil,ec,tp)
+			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28927782.eqfilter2,e),tp,LOCATION_GRAVE,0,1,1,nil,ec,tp)
 			local tc=g:GetFirst()
 			if not tc or not Duel.Equip(tp,tc,ec) then return end
 			local e1=Effect.CreateEffect(c)

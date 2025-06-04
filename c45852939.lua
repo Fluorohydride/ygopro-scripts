@@ -80,7 +80,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		if #exg==2 then exg=nil end
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local dc=g:FilterSelect(tp,aux.NecroValleyFilter(s.spfilter),1,1,exg,g,e,tp):GetFirst()
+	local dc=g:FilterSelect(tp,aux.NecroValleyFilter(s.spfilter,e),1,1,exg,g,e,tp):GetFirst()
 	if not dc then return end
 	if Duel.SpecialSummon(dc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		g:RemoveCard(dc)

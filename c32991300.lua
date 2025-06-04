@@ -40,7 +40,7 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0
+	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(tc) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0
 		and c:IsRelateToEffect(e) and c:IsFaceup() and c:IsControler(tp) then
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or not tc:IsLocation(LOCATION_MZONE) then
 			Duel.SendtoGrave(c,REASON_EFFECT)

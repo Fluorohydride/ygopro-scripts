@@ -95,7 +95,7 @@ function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
-	local mg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.mfilter),tp,LOCATION_GRAVE,0,nil)
+	local mg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.mfilter,e),tp,LOCATION_GRAVE,0,nil)
 	local sg1=Duel.GetMatchingGroup(s.ffilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil

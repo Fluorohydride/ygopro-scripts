@@ -40,11 +40,11 @@ function s.tspop(e,tp,eg,ep,ev,re,r,rp)
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP)
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_GRAVE,1,nil)
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,0,LOCATION_GRAVE,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_GRAVE,1,2,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove,e),tp,0,LOCATION_GRAVE,1,2,nil)
 		if g:GetCount()>0 then
 			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		end
@@ -62,7 +62,7 @@ function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,2,tp,LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
-	local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.tdfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
+	local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.tdfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
 	if rg:GetCount()<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=rg:Select(tp,2,2,nil)
@@ -70,7 +70,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(sg)
 		local c=e:GetHandler()
 		if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT) and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)>0
-			and c:IsRelateToEffect(e) and aux.NecroValleyFilter()(c) then
+			and c:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(c) then
 			Duel.SSet(tp,c)
 		end
 	end

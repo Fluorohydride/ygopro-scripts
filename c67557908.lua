@@ -90,7 +90,7 @@ function c67557908.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c67557908.spfilter,tp,LOCATION_EXTRA,0,1,ft,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_MZONE)
-		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c67557908.matfilter),tp,LOCATION_GRAVE,0,nil)
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c67557908.matfilter,e),tp,LOCATION_GRAVE,0,nil)
 		local res=false
 		local tc=og:GetFirst()
 		while tc do

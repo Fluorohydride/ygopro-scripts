@@ -116,7 +116,7 @@ function c67288539.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.HintSelection(tg)
 	if Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c67288539.spfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,nil,e,tp,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c67288539.spfilter,e),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,nil,e,tp,nil)
 		if #g>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end

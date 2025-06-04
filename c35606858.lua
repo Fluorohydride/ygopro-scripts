@@ -90,7 +90,7 @@ function c35606858.dctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35606858.dcop(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.TossDice(tp,1)
-	local g=eg:Filter(aux.NecroValleyFilter(c35606858.cfilter),nil,e,tp)
+	local g=eg:Filter(aux.NecroValleyFilter(c35606858.cfilter,e),nil,e,tp)
 	if g:GetCount()==0 then return end
 	local tc=nil
 	if g:GetCount()>1 then

@@ -38,13 +38,13 @@ function c16605586.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16605586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local loc=LOCATION_GRAVE+LOCATION_REMOVED
-	if not Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c16605586.tdfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,tp)
+	if not Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c16605586.tdfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,tp)
 		or Duel.IsExistingMatchingCard(c16605586.tdfilter,tp,LOCATION_DECK,0,1,nil,tp)
 			and Duel.SelectYesNo(tp,aux.Stringid(16605586,3)) then
 		loc=loc+LOCATION_DECK
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16605586,2))
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16605586.tdfilter),tp,loc,0,1,1,nil,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16605586.tdfilter,e),tp,loc,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
 		if not tc:IsLocation(LOCATION_DECK) then

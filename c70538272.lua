@@ -92,7 +92,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if rg and rg:GetCount()>0 then
 		Duel.HintSelection(rg)
 		if Duel.SendtoHand(rg,nil,REASON_EFFECT)~=0 and rg:IsExists(Card.IsLocation,1,nil,LOCATION_HAND+LOCATION_EXTRA)
-			and c:IsRelateToEffect(e) and aux.NecroValleyFilter()(c) then
+			and c:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(c) then
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

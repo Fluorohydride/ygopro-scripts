@@ -59,7 +59,7 @@ function s.rmopfilter(c,e)
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(aux.NecroValleyFilter(s.rmopfilter),nil,e)
+	local tg=g:Filter(aux.NecroValleyFilter(s.rmopfilter,e),nil,e)
 	if tg:GetCount()==2 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end

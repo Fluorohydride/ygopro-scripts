@@ -53,7 +53,7 @@ function c97383507.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 	if zone==0 or ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c97383507.spfilter1),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
+	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c97383507.spfilter1,e),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
 	local g=nil
 	if tg:GetCount()>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -92,7 +92,7 @@ end
 function c97383507.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c97383507.spfilter2),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c97383507.spfilter2,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

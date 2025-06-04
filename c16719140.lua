@@ -71,7 +71,7 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
 	local mg=Duel.GetReleaseGroup(tp,false,REASON_EFFECT):Filter(c16719140.relfilter,c)
 	if mg:GetCount()==0 then return end
-	if aux.NecroValleyFilter()(tc) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE) then
+	if aux.NecroValleyFilter(nil,e)(tc) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local g=mg:SelectSubGroup(tp,c16719140.fselect,false,1,tc:GetLevel(),tp,tc:GetLevel()-c:GetOriginalLevel(),c)
 		if g and g:GetCount()>0 then

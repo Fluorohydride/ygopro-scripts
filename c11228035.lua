@@ -34,7 +34,7 @@ function c11228035.activate(e,tp,eg,ep,ev,re,r,rp)
 			sc:RegisterEffect(e1)
 			sc=g:GetNext()
 		end
-		if tc:IsAbleToDeck() and aux.NecroValleyFilter()(tc)
+		if tc:IsAbleToDeck() and aux.NecroValleyFilter(nil,e)(tc)
 			and Duel.SelectYesNo(tp,aux.Stringid(11228035,0)) then
 			Duel.BreakEffect()
 			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)

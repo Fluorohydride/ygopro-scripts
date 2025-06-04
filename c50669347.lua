@@ -60,7 +60,7 @@ function c50669347.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c50669347.thfilter1,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		Duel.ConfirmCards(1-tp,g)
-		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50669347.thfilter2),tp,LOCATION_GRAVE,0,nil)
+		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50669347.thfilter2,e),tp,LOCATION_GRAVE,0,nil)
 		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(50669347,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg2=g2:Select(tp,1,1,nil)
@@ -75,7 +75,7 @@ function c50669347.desop(e,tp,eg,ep,ev,re,r,rp)
 	local dc=Duel.SelectMatchingCard(tp,c50669347.desfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,lg):GetFirst()
 	if dc and Duel.Destroy(dc,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50669347.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,dc):GetFirst()
+		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50669347.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,dc):GetFirst()
 		if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

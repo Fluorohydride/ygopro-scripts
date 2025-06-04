@@ -43,7 +43,7 @@ end
 function c84404797.activate(e,tp,eg,ep,ev,re,r,rp)
 	local label,code=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c84404797.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,code)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c84404797.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,code)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

@@ -51,7 +51,7 @@ function c81038234.spfilter(c,e,tp,code)
 end
 function c81038234.tfop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c81038234.tffilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,tp)
+	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c81038234.tffilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,tp)
 	if #tg==0 then return end
 	Duel.HintSelection(tg)
 	local tc=tg:GetFirst()

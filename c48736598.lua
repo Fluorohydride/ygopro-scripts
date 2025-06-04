@@ -60,7 +60,7 @@ function c48736598.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=math.min(ft1+ft2,2)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c48736598.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ct,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c48736598.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ct,nil,e,tp)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		while tc do

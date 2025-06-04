@@ -44,7 +44,7 @@ function c13923256.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c13923256.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,tc:GetCode())
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c13923256.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,tc:GetCode())
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)

@@ -37,7 +37,7 @@ end
 function c16691074.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16691074.spfilter1),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
+		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16691074.spfilter1,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 		if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(16691074,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

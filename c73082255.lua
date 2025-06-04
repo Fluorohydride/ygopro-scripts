@@ -63,7 +63,7 @@ function c73082255.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardDeck(1-tp,4,REASON_EFFECT)
 	local g2=Duel.GetOperatedGroup()
 	g:Merge(g2)
-	local fg=g:Filter(aux.NecroValleyFilter(c73082255.cfilter),nil,e,tp)
+	local fg=g:Filter(aux.NecroValleyFilter(c73082255.cfilter,e),nil,e,tp)
 	if fg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(73082255,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

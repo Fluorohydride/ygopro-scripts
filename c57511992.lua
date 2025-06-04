@@ -43,7 +43,7 @@ function c57511992.operation(e,tp,eg,ep,ev,re,r,rp)
 	local b1=tc:IsRelateToEffect(e) and c:IsRelateToEffect(e) and c:IsFaceup() and c:IsLevelAbove(1)
 		and tc:IsLevelAbove(1) and (not c:IsLevel(tc:GetLevel()) or not c:IsCode(tc:GetCode()))
 	local b2=tc:IsRelateToEffect(e) and Duel.IsEnvironment(22702055) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and aux.NecroValleyFilter()(tc) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+		and aux.NecroValleyFilter(nil,e)(tc) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 	if b1 or b2 then
 		local s
 		if b1 and b2 then

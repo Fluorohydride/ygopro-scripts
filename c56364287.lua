@@ -61,7 +61,7 @@ function c56364287.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56364287.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56364287.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56364287.thfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,e:GetHandler())
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

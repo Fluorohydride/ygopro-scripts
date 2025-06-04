@@ -47,7 +47,7 @@ function c98020526.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c98020526.activate(e,tp,eg,ep,ev,re,r,rp)
 	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and eg:Filter(c98020526.cfilter,nil,tp,rp):IsExists(c98020526.spfilter,1,nil,e,tp) and Duel.GetFlagEffect(tp,98020526)==0
-	local b2=Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c98020526.rfilter),tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,nil) and Duel.GetFlagEffect(tp,98020527)==0
+	local b2=Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c98020526.rfilter,e),tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,nil) and Duel.GetFlagEffect(tp,98020527)==0
 	local b3=Duel.GetFlagEffect(tp,98020528)==0
 	local off=1
 	local ops={}
@@ -80,7 +80,7 @@ function c98020526.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterFlagEffect(tp,98020526,RESET_PHASE+PHASE_END,0,1)
 	elseif opval[op]==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local rg=aux.SelectCardFromFieldFirst(tp,aux.NecroValleyFilter(c98020526.rfilter),tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
+		local rg=aux.SelectCardFromFieldFirst(tp,aux.NecroValleyFilter(c98020526.rfilter,e),tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
 		Duel.HintSelection(rg)
 		Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 		Duel.RegisterFlagEffect(tp,98020527,RESET_PHASE+PHASE_END,0,1)

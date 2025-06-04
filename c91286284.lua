@@ -23,8 +23,8 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.filter),tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil,e,tp)
-	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),tp,0,LOCATION_GRAVE+LOCATION_HAND,nil,e,0,1-tp,false,false)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.filter,e),tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil,e,tp)
+	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned,e),tp,0,LOCATION_GRAVE+LOCATION_HAND,nil,e,0,1-tp,false,false)
 	if #g>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and #tg>0
 		and Duel.SelectYesNo(1-tp,aux.Stringid(id,1)) then

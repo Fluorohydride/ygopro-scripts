@@ -112,7 +112,7 @@ function s.eqfilter(c,ec,tp)
 end
 function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler()
-	if ec:IsRelateToEffect(e) and aux.NecroValleyFilter()(ec) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if ec:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(ec) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(s.eqfilter,tp,LOCATION_MZONE,0,1,nil,ec,tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local tg=Duel.SelectMatchingCard(tp,s.eqfilter,tp,LOCATION_MZONE,0,1,1,nil,ec,tp)

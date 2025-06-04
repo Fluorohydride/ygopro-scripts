@@ -42,7 +42,7 @@ function c63265554.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	local c=e:GetHandler()
 	if ft<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c63265554.eqfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,c,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c63265554.eqfilter,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,c,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,math.min(ft,3))
 	if not sg then return end

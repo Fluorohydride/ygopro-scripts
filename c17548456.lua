@@ -28,9 +28,9 @@ end
 function c17548456.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if g:GetCount()>0 then
-		if Duel.Destroy(g,REASON_EFFECT)~=0 and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c17548456.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and Duel.SelectYesNo(tp,aux.Stringid(17548456,1)) then
+		if Duel.Destroy(g,REASON_EFFECT)~=0 and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c17548456.spfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp) and Duel.SelectYesNo(tp,aux.Stringid(17548456,1)) then
 			Duel.BreakEffect()
-			local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17548456.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
+			local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17548456.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sp=sg:Select(tp,1,1,nil)
 			Duel.SpecialSummon(sp,0,tp,tp,false,false,POS_FACEUP)

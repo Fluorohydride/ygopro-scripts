@@ -41,7 +41,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.xyzfilter(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsRank(4)
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.mtfilter),tp,LOCATION_GRAVE,0,1,nil,e)
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.mtfilter,e),tp,LOCATION_GRAVE,0,1,nil,e)
 end
 function s.mtfilter(c,e)
 	return c:IsSetCard(0x1be)
@@ -56,7 +56,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,s.xyzfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 		local xc=g:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local mg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.mtfilter),tp,LOCATION_GRAVE,0,1,1,nil,e)
+		local mg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.mtfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e)
 		if mg:GetCount()>0 then
 			Duel.Overlay(xc,mg)
 		end

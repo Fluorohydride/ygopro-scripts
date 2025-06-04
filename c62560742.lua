@@ -39,7 +39,7 @@ function c62560742.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and sumtype==SUMMON_TYPE_SYNCHRO
 		and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and mg:FilterCount(aux.NecroValleyFilter(c62560742.mgfilter),nil,e,tp,tc)==ct
+		and mg:FilterCount(aux.NecroValleyFilter(c62560742.mgfilter,e),nil,e,tp,tc)==ct
 		and Duel.SelectYesNo(tp,aux.Stringid(62560742,1)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)

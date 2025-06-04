@@ -68,7 +68,7 @@ function c87091930.ssettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87091930.ssetop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c87091930.ssetfilter),tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c87091930.ssetfilter,e),tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil)
 	if g then
 		Duel.SSet(tp,g)
 	end

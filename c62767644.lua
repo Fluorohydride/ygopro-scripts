@@ -71,7 +71,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=tg:Filter(Card.IsLocation,nil,LOCATION_ONFIELD):GetFirst()
 	local tc2=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
 	if tc1 and Duel.SendtoGrave(tc1,REASON_EFFECT)>0 and tc1:IsLocation(LOCATION_GRAVE)
-		and tc2 and aux.NecroValleyFilter()(tc2) then
+		and tc2 and aux.NecroValleyFilter(nil,e)(tc2) then
 		Duel.SpecialSummon(tc2,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

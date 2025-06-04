@@ -138,7 +138,7 @@ end
 function c27693363.thop(e,tp,eg,ep,ev,re,r,rp)
 	local check=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27693363.tgfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,check)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27693363.tgfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,check)
 	local tc=g:GetFirst()
 	if tc then
 		if tc:IsAbleToHand() and (not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) or not check

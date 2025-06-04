@@ -64,7 +64,7 @@ function c27104921.operation(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetReset(RESET_PHASE+PHASE_END)
 			Duel.RegisterEffect(e3,tp)
 		end
-		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c27104921.spfilter1),tp,LOCATION_GRAVE,0,nil,e,tp)
+		local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c27104921.spfilter1,e),tp,LOCATION_GRAVE,0,nil,e,tp)
 		if ct==2 and g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(27104921,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

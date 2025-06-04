@@ -33,7 +33,7 @@ function c89190953.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89190953.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp|0x200
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89190953.filter1),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89190953.filter1,e),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c89190953.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,chkf)
 	if sg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

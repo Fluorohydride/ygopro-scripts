@@ -32,7 +32,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg=tc:GetMaterial()
 	local sumtype=tc:GetSummonType()
 	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)~=0 then
-		mg=mg:Filter(aux.NecroValleyFilter(s.mgfilter),nil,e,tp,tc)
+		mg=mg:Filter(aux.NecroValleyFilter(s.mgfilter,e),nil,e,tp,tc)
 		if sumtype==SUMMON_TYPE_LINK and tc:IsLocation(LOCATION_EXTRA)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then

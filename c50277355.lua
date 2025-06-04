@@ -59,11 +59,11 @@ function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	lg=e:GetHandler():GetLinkedGroup()
 	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_FUSION)
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c50277355.spfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_FUSION)
 	if b2 then
 		if res~=0 then Duel.BreakEffect() end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50277355.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 		if g1:GetCount()>0 then
 			res=Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
 		end

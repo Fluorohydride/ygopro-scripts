@@ -71,7 +71,7 @@ function c57869175.rmop(e,tp,eg,ep,ev,re,r,rp)
 		ec=tc
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57869175.rmfilter),tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,1,99,ec,tp)
+	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57869175.rmfilter,e),tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,1,99,ec,tp)
 	if rg:GetCount()>0 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local lv=og:FilterCount(Card.IsLocation,nil,LOCATION_REMOVED)

@@ -81,7 +81,7 @@ function c45819647.spop(e,tp,eg,ep,ev,re,r,rp)
 	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
 	if zone==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45819647.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,zone)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45819647.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,zone)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE,zone)
 	end

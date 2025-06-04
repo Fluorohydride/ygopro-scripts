@@ -38,7 +38,7 @@ function c6309986.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c6309986.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c6309986.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c6309986.spfilter,e),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:SelectSubGroupEach(tp,c6309986.spchecks,false)
 		if sg then

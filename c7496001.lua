@@ -67,7 +67,7 @@ function c7496001.aftg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c7496001.afop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c7496001.affilter),tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil,tp):GetFirst()
+	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c7496001.affilter,e),tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	if tc then
 		local field=tc:IsType(TYPE_FIELD)
 		if field then

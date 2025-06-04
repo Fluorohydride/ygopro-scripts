@@ -57,7 +57,7 @@ function c26285788.effectop(e,tp,eg,ep,ev,re,r,rp)
 	if ct==1 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	elseif ct==2 then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c26285788.filter1),tp,LOCATION_GRAVE,0,nil)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c26285788.filter1,e),tp,LOCATION_GRAVE,0,nil)
 		if g:GetCount()>1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local tg=g:Select(tp,2,2,nil)

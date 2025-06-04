@@ -62,7 +62,7 @@ function c50750868.spop(e,tp,eg,ep,ev,re,r,rp)
 		if ct>=3 then
 			local g1=Duel.GetMatchingGroup(c50750868.spfilter,tp,LOCATION_HAND,0,nil,e,tp,zone)
 			local g2=Duel.GetMatchingGroup(c50750868.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
-			local g3=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50750868.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
+			local g3=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50750868.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
 			if #g1>0 and #g2>0 and #g3>0 then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sg1=g1:Select(tp,1,1,nil)

@@ -30,7 +30,7 @@ function c91650245.activate(e,tp,eg,ep,ev,re,r,rp)
 		local opt=Duel.SelectOption(tp,aux.Stringid(91650245,0),aux.Stringid(91650245,1))
 		Duel.SendtoDeck(g,nil,opt,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c91650245.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,tc,e,tp)
+		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c91650245.spfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,tc,e,tp)
 		local sc=sg:GetFirst()
 		if sc then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

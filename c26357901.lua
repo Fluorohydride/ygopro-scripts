@@ -59,7 +59,7 @@ function c26357901.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if e:GetLabel()==1 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c26357901.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,dif,e,tp)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c26357901.spfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,dif,e,tp)
 		if g:GetCount()>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end

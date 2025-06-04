@@ -69,7 +69,7 @@ function c46935289.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46935289.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c46935289.thfilter),tp,LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c46935289.thfilter,e),tp,LOCATION_GRAVE,0,nil)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,2)
 	if sg and sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

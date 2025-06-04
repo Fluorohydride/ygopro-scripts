@@ -67,7 +67,7 @@ function c74329404.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local tc=g:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local ag=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c74329404.filter2),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,2,nil,tc:GetCode())
+	local ag=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c74329404.filter2,e),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,2,nil,tc:GetCode())
 	Duel.SendtoHand(ag,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,ag)
 end

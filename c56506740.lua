@@ -87,7 +87,7 @@ end
 function s.smop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local code=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
-		local og=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.smfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp):Filter(Card.IsCode,nil,code)
+		local og=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.smfilter,e),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp):Filter(Card.IsCode,nil,code)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=og:Select(tp,1,1,nil)
 		if g:GetCount()>0 then

@@ -69,7 +69,7 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsFaceup() or not tc:IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,tc)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,tc)
 	while #g>0 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
@@ -97,7 +97,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			sel_zone=sel_zone>>16
 		end
 		Duel.SpecialSummonStep(sc,0,tp,sump,false,false,POS_FACEUP,sel_zone)
-		g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,tc)
+		g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter,e),tp,LOCATION_GRAVE,0,nil,e,tp,tc)
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) or #g==0
 			or not Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			break

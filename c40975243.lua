@@ -43,7 +43,7 @@ function c40975243.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanSpecialSummonCount(tp,2) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c40975243.spfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c40975243.spfilter,e),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e,tp)
 	local cg=Duel.GetMatchingGroup(c40975243.chkfilter,tp,LOCATION_EXTRA,0,nil,tp)
 	local _,maxlink=cg:GetMaxGroup(Card.GetLink)
 	if ft>0 and maxlink then

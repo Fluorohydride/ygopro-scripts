@@ -54,10 +54,10 @@ function c20426176.atrop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c20426176.thfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp,ft) and Duel.SelectYesNo(tp,aux.Stringid(20426176,2)) then
+		if Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c20426176.thfilter,e),tp,LOCATION_GRAVE,0,1,nil,e,tp,ft) and Duel.SelectYesNo(tp,aux.Stringid(20426176,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELECT)
-			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c20426176.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,ft)
+			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c20426176.thfilter,e),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,ft)
 			local sc=g:GetFirst()
 			if ft>0 and sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 				and (not sc:IsAbleToDeck() or Duel.SelectOption(tp,aux.Stringid(20426176,3),1152)==1) then

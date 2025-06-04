@@ -54,7 +54,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc)) then return end
+	if not (tc:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(tc)) then return end
 	local b1=tc:IsAbleToDeck()
 	local b2=e:GetLabel()==1 and tc:IsAbleToRemove()
 	if b1 and (not b2 or not Duel.SelectYesNo(tp,aux.Stringid(id,2))) then

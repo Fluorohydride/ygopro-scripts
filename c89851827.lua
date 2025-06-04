@@ -69,7 +69,7 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
 	if #g==0 or Duel.GetLocationCount(tp,LOCATION_MZONE)==0 then return end
-	local sg=g:Filter(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),nil,e,0,tp,false,false)
+	local sg=g:Filter(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned,e),nil,e,0,tp,false,false)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sc=sg:Select(tp,1,1,nil):GetFirst()
 	if not sc then return end

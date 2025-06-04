@@ -102,7 +102,7 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter2,nil,e)
-	local mg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter1),tp,LOCATION_GRAVE,0,nil,e)
+	local mg2=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter1,e),tp,LOCATION_GRAVE,0,nil,e)
 	if Duel.GetFlagEffect(tp,id)~=0 then
 		mg1:Merge(mg2)
 	end

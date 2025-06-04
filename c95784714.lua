@@ -54,7 +54,7 @@ function s.mvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 		e1:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
 		c:RegisterEffect(e1)
-		if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) then
+		if tc:IsRelateToEffect(e) and aux.NecroValleyFilter(nil,e)(tc) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
