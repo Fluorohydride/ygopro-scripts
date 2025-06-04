@@ -25,6 +25,7 @@ function c83407038.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLED)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c83407038.rmcon)
 	e3:SetTarget(c83407038.rmtg)
 	e3:SetOperation(c83407038.rmop)
 	c:RegisterEffect(e3)
@@ -69,6 +70,9 @@ function c83407038.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83407038.check(c,tp)
 	return c and c:IsControler(tp) and c:IsSetCard(0x4)
+end
+function c83407038.rmcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c83407038.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttackTarget()~=nil
