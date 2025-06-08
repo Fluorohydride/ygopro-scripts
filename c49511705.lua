@@ -78,11 +78,14 @@ function c49511705.effop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49511705.coincon1(e,tp,eg,ep,ev,re,r,rp)
 	local ex,eg,et,cp,ct=Duel.GetOperationInfo(ev,CATEGORY_COIN)
+	if not ex then
+		return false
+	end
 	local tot=ct
 	if cp==PLAYER_ALL then
 		tot=ct*2
 	end
-	if ex and tot>1 then
+	if tot>1 then
 		e:SetLabelObject(re)
 		return true
 	else return false end
