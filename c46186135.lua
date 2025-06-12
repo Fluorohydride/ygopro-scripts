@@ -60,20 +60,20 @@ end
 function s.fusfilter(c)
 	return c:IsCode(19959563,57774843) and c:IsAbleToRemoveAsCost()
 end
-function s.fselect(g)
-	return g:GetClassCount(Card.GetCode)==2 and g:IsExists(Card.IsLocation,1,nil,LOCATION_ONFIELD) and g:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)
+function s.fselect(g,tp)
+	return g:GetClassCount(Card.GetCode)==2 and Duel.GetMZoneCount(tp,g)>0
+		and g:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE) and g:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)
 end
 function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local fg=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	return fg:CheckSubGroup(s.fselect,2,2)
+	local g=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
+	return g:CheckSubGroup(s.fselect,2,2,tp)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local cp=c:GetControler()
-	local g=Duel.GetMatchingGroup(s.fusfilter,cp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,cp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroup(cp,s.fselect,true,2,2)
+	local g=Duel.GetMatchingGroup(s.fusfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,s.fselect,true,2,2,tp)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -84,6 +84,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=e:GetLabelObject()
 	c:SetMaterial(sg)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
+	sg:DeleteGroup()
 end
 function s.recost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
