@@ -37,8 +37,8 @@ function s.initial_effect(c)
 	--discard deck
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,1))
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCategory(CATEGORY_DECKDES)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCountLimit(1)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
 	e4:SetRange(LOCATION_MZONE)
@@ -49,6 +49,7 @@ function s.initial_effect(c)
 	--to hand
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(id,2))
+	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DESTROYED)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
@@ -113,31 +114,32 @@ end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
-function s.thfilter1(c)
+function s.thfilter1(c,tp)
 	return c:IsFaceup() and c:IsCode(19959563) and c:IsAbleToHand()
+		and Duel.IsExistingMatchingCard(s.thfilter2,tp,LOCATION_REMOVED,0,1,c)
 end
 function s.thfilter2(c)
 	return c:IsFaceup() and c:IsCode(57774843) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter1,tp,LOCATION_REMOVED,0,1,nil) and Duel.IsExistingMatchingCard(s.thfilter2,tp,LOCATION_REMOVED,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter1,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,0,LOCATION_REMOVED)
 end
-function s.fselect2(g)
-	return g:GetClassCount(Card.GetCode)==g:GetCount()
-end
 function s.spfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsLocation(LOCATION_HAND) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g1=Duel.GetMatchingGroup(s.thfilter1,tp,LOCATION_REMOVED,0,nil)
-	local g2=Duel.GetMatchingGroup(s.thfilter2,tp,LOCATION_REMOVED,0,nil)
-	if #g1>0 and #g2>0 then
-		Duel.SendtoHand((g1+g2):SelectSubGroup(tp,s.fselect2,false,2,2),nil,REASON_EFFECT)
+	local g1=Duel.SelectMatchingCard(tp,s.thfilter1,tp,LOCATION_REMOVED,0,1,1,nil,tp)
+	if #g1==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g2=Duel.SelectMatchingCard(tp,s.thfilter2,tp,LOCATION_REMOVED,0,1,1,g1,tp)
+	g1:Merge(g2)
+	if Duel.SendtoHand(g1,nil,REASON_EFFECT)==2 then
 		local tg=Duel.GetOperatedGroup()
-		Duel.ConfirmCards(1-tp,tg)
-		if tg:FilterCount(s.spfilter,nil,e,tp)==2 and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		if tg:FilterCount(s.spfilter,nil,e,tp)==2
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 			Duel.BreakEffect()
 			for tc in aux.Next(tg) do
 				Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP)
