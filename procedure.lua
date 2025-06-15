@@ -2421,7 +2421,6 @@ function FusionSpell.CreateSummonEffect(c,opts)
 		gc
 	))
 	e1:SetDescription(1169) --- 融合召喚
-
 	return e1
 end
 
@@ -3030,7 +3029,7 @@ end
 ---@type FUSION_OPERATION_FUNCTION
 function FusionSpell.SendDeckBottomMaterial(sg,tp)
 	-- prompt user to select order
-	return Duel.SendtoDeck(sg,nil,SEQ_DECKBOTTOM,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION,tp)
+	return aux.PlaceCardsOnDeckBottom(tp,sg,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 end
 
 ---@type FUSION_FILTER_FUNCTION
