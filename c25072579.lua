@@ -60,7 +60,7 @@ function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ac=c:GetBattleTarget()
 	e:SetLabelObject(ac)
-	return ac and ac:IsFaceup() and ac:IsControler(1-tp)
+	return ac and ac:IsControler(1-tp)
 end
 function s.desfilter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x1115)
