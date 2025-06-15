@@ -2508,223 +2508,226 @@ function FusionSpell.GetSummonOperation(
 		gc
 	)
 	return function(e,tp,eg,ep,ev,re,r,rp)
-		local fusion_targets=Group.CreateGroup()
-		local sg=Duel.GetMatchingGroup(
-				FusionSpell.SummonTargetFilter,tp,fuslocation,0,nil,
-				--- FusionSpell.SummonTargetFilter param
-				fusfilter,aux.NecroValleyFilter(matfilter),e,tp,pre_select_mat_location,mat_operation_code_map,post_select_mat_location,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,pre_select_mat_opponent_location,gc)
-		fusion_targets:Merge(sg)
-		--- check for chain material targets
-		local ce_sgs={}
-		if sumtype&SUMMON_TYPE_FUSION~=0 then
-			ce_sgs=FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,aux.NecroValleyFilter(matfilter),additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc)
-			--- add chain material targets
-			for _,ce_sg in pairs(ce_sgs) do
-				fusion_targets:Merge(ce_sg)
-			end
-		end
-
-		local tc=nil
-
-		if #fusion_targets>0 then
-			local materials=Group.CreateGroup()
-			local fusion_effect=nil
-			local fusion_succeeded=false
-
-			while #materials==0 do
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-
-				tc=fusion_targets:Select(tp,1,1,nil):GetFirst()
-
-				---@type Effect[]
-				local avaliable_fusion_effect = {}
-				if sg:IsContains(tc) then
-					table.insert(avaliable_fusion_effect,e)
-				end
-				for ce, ce_sg in pairs(ce_sgs) do
-					if ce_sg:IsContains(tc) then
-						table.insert(avaliable_fusion_effect,ce)
-					end
-				end
-				assert(#avaliable_fusion_effect>0, "Selected a target card that has 0 fusion effect")
-				fusion_effect=avaliable_fusion_effect[1]
-				if #avaliable_fusion_effect>1 then
-					fusion_effect=FusionSpell.MultiFusionEffectPrompt(avaliable_fusion_effect)
-				end
-				if fusion_effect==e then
-					--- use fusion spell effect
-					local mg=FusionSpell.GetMaterialsGroupForTargetCard(
-							tc,
-							tp,
-							e,
-							aux.NecroValleyFilter(matfilter),
-							pre_select_mat_location,
-							mat_operation_code_map,
-							post_select_mat_location,
-							sumtype,
-							pre_select_mat_opponent_location)
-					aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunction(additional_fcheck,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location)
-					aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,tc,pre_select_mat_location)
-					materials=Duel.SelectFusionMaterial(tp,tc,mg,gc(e),tp)
-					aux.FCheckAdditional=nil
-					aux.FGoalCheckAdditional=nil
-				else
-					--- use chain material effect
-					---@type function
-					local chain_material_filter=fusion_effect:GetTarget()
-					local chain_mg=chain_material_filter(fusion_effect,e,tp):Filter(aux.NecroValleyFilter(matfilter),nil)
-					assert(#chain_mg>0, "we are trying to apply a chain material, but it has no possible material")
-					aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck)
-					aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck)
-					materials=Duel.SelectFusionMaterial(tp,tc,chain_mg,gc(e),tp)
-					aux.FCheckAdditional=nil
-					aux.FGoalCheckAdditional=nil
+		-- if gc is gone, terminate
+		if gc(e)==nil or gc(e):IsRelateToEffect(e) then
+			local fusion_targets=Group.CreateGroup()
+			local sg=Duel.GetMatchingGroup(
+					FusionSpell.SummonTargetFilter,tp,fuslocation,0,nil,
+					--- FusionSpell.SummonTargetFilter param
+					fusfilter,aux.NecroValleyFilter(matfilter),e,tp,pre_select_mat_location,mat_operation_code_map,post_select_mat_location,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,pre_select_mat_opponent_location,gc)
+			fusion_targets:Merge(sg)
+			--- check for chain material targets
+			local ce_sgs={}
+			if sumtype&SUMMON_TYPE_FUSION~=0 then
+				ce_sgs=FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,aux.NecroValleyFilter(matfilter),additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc)
+				--- add chain material targets
+				for _,ce_sg in pairs(ce_sgs) do
+					fusion_targets:Merge(ce_sg)
 				end
 			end
 
-			assert(tc~=nil)
-			assert(fusion_effect~=nil)
+			local tc=nil
 
-			if #materials>0 then
-				local materials_from_spell_card=Group.CreateGroup()
-				if fusion_effect==e then
-					--- fusion with fusion spell
-					tc:SetMaterial(materials)
-					---@type {[Effect]:true}
-					local applied_extra_effects={}
-					---@type {[FUSION_OPERATION_FUNCTION]:Group}
-					local material_grouped_by_op={}
+			if #fusion_targets>0 then
+				local materials=Group.CreateGroup()
+				local fusion_effect=nil
+				local fusion_succeeded=false
 
-					local materials_with_one_material_effect=materials:Filter(function(mc) return (#FusionSpell.GetMaterialEffects(mc,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location))==1 end,nil)
-					for material in aux.Next(materials_with_one_material_effect) do
-						--For material that can be material only by 1 effect, either fusion spell or extra material effect, do the operation on it.
-						local fusion_operation=nil
-						local material_effect=FusionSpell.GetMaterialEffects(material,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location)[1]
+				while #materials==0 do
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 
-						if material_effect==true then
-							local fusion_operation_code=FusionSpell.GetOperationCodeByMaterialLocation(material:GetLocation(),mat_operation_code_map)
-							fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code)
-							materials_from_spell_card:AddCard(material)
-						else
-							-- extra material effects
-							--- pay the operation cost, only valid in 影牢の呪縛 as of 2025 May
-							local material_cost=material_effect:GetCost()
-							if material_cost~=nil then
-								material_cost(material_effect,tp,eg,ep,ev,re,r,rp)
-							end
-							local fusion_operation_code=material_effect:GetOperation()()
-							fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code,material:GetLocation(),mat_operation_code_map)
-							applied_extra_effects[material_effect]=true
-						end
+					tc=fusion_targets:Select(tp,1,1,nil):GetFirst()
 
-						assert(fusion_operation~=nil)
-						material_grouped_by_op[fusion_operation]=material_grouped_by_op[fusion_operation] or Group.CreateGroup()
-						material_grouped_by_op[fusion_operation]:AddCard(material)
+					---@type Effect[]
+					local avaliable_fusion_effect = {}
+					if sg:IsContains(tc) then
+						table.insert(avaliable_fusion_effect,e)
 					end
-					local materials_with_two_material_effect=materials:Filter(function(mc) return (#FusionSpell.GetMaterialEffects(mc,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location))==2 end,nil)
-					assert(#materials_with_one_material_effect+#materials_with_two_material_effect==#materials, "We can not have one material have zero/3+ material effect yet")
-					--For material that can be material by multiple effect, ask user which to apply.
-					--As of 2025 May, if a material could be used as extra material, it must be able to be used as fusion spell material. The code below is based on this assumption.
-					--   If we have Aiラブ融合 + 影牢の呪縛 or 多層融合 + アマゾネスの秘術 in same archetype, is code would fail in some scenario.
-					--First, group them by extra_material_effect
-					---@type {[Effect]:Group}
-					local material_grouped_by_extra_material_effect={}
-					for material in aux.Next(materials_with_two_material_effect) do
-						local material_effect=FusionSpell.GetExtraMaterialEffect(material,tp,tc,pre_select_mat_location)
-						assert(material_effect~=nil, "We can not have a material w/o extra material effect when it has 2 options")
-						material_grouped_by_extra_material_effect[material_effect]=material_grouped_by_extra_material_effect[material_effect] or Group.CreateGroup()
-						material_grouped_by_extra_material_effect[material_effect]:AddCard(material)
-					end
-
-					---For each group, let user select the material that apply the extra material effect.
-					for material_effect,grouped_materials in pairs(material_grouped_by_extra_material_effect) do
-						Duel.Hint(HINT_SELECTMSG,tp,material_effect:GetDescription())
-						local extra_material_limit=#grouped_materials
-						--- in case of アマゾネスの秘術 or 影牢の呪縛, limit the maximuim number to choose
-						local material_effect_material_count_limit=({material_effect:GetLabel()})[1]
-						if material_effect_material_count_limit~= 0 then
-							extra_material_limit=material_effect_material_count_limit
+					for ce, ce_sg in pairs(ce_sgs) do
+						if ce_sg:IsContains(tc) then
+							table.insert(avaliable_fusion_effect,ce)
 						end
-						local materials_to_apply=grouped_materials:Select(tp,0,extra_material_limit,nil)
-						local rest_materials=grouped_materials-materials_to_apply
-						if #rest_materials>0 then
-							for material in aux.Next(rest_materials) do
+					end
+					assert(#avaliable_fusion_effect>0, "Selected a target card that has 0 fusion effect")
+					fusion_effect=avaliable_fusion_effect[1]
+					if #avaliable_fusion_effect>1 then
+						fusion_effect=FusionSpell.MultiFusionEffectPrompt(avaliable_fusion_effect)
+					end
+					if fusion_effect==e then
+						--- use fusion spell effect
+						local mg=FusionSpell.GetMaterialsGroupForTargetCard(
+								tc,
+								tp,
+								e,
+								aux.NecroValleyFilter(matfilter),
+								pre_select_mat_location,
+								mat_operation_code_map,
+								post_select_mat_location,
+								sumtype,
+								pre_select_mat_opponent_location)
+						aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunction(additional_fcheck,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location)
+						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,tc,pre_select_mat_location)
+						materials=Duel.SelectFusionMaterial(tp,tc,mg,gc(e),tp)
+						aux.FCheckAdditional=nil
+						aux.FGoalCheckAdditional=nil
+					else
+						--- use chain material effect
+						---@type function
+						local chain_material_filter=fusion_effect:GetTarget()
+						local chain_mg=chain_material_filter(fusion_effect,e,tp):Filter(aux.NecroValleyFilter(matfilter),nil)
+						assert(#chain_mg>0, "we are trying to apply a chain material, but it has no possible material")
+						aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck)
+						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck)
+						materials=Duel.SelectFusionMaterial(tp,tc,chain_mg,gc(e),tp)
+						aux.FCheckAdditional=nil
+						aux.FGoalCheckAdditional=nil
+					end
+				end
+
+				assert(tc~=nil)
+				assert(fusion_effect~=nil)
+
+				if #materials>0 then
+					local materials_from_spell_card=Group.CreateGroup()
+					if fusion_effect==e then
+						--- fusion with fusion spell
+						tc:SetMaterial(materials)
+						---@type {[Effect]:true}
+						local applied_extra_effects={}
+						---@type {[FUSION_OPERATION_FUNCTION]:Group}
+						local material_grouped_by_op={}
+
+						local materials_with_one_material_effect=materials:Filter(function(mc) return (#FusionSpell.GetMaterialEffects(mc,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location))==1 end,nil)
+						for material in aux.Next(materials_with_one_material_effect) do
+							--For material that can be material only by 1 effect, either fusion spell or extra material effect, do the operation on it.
+							local fusion_operation=nil
+							local material_effect=FusionSpell.GetMaterialEffects(material,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location)[1]
+
+							if material_effect==true then
 								local fusion_operation_code=FusionSpell.GetOperationCodeByMaterialLocation(material:GetLocation(),mat_operation_code_map)
-								local fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code)
-								material_grouped_by_op[fusion_operation]=material_grouped_by_op[fusion_operation] or Group.CreateGroup()
-								material_grouped_by_op[fusion_operation]:AddCard(material)
+								fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code)
 								materials_from_spell_card:AddCard(material)
-							end
-						end
-						if #materials_to_apply>0 then
-							applied_extra_effects[material_effect]=true
-							local fusion_operation_code=material_effect:GetOperation()()
-							for material in aux.Next(materials_to_apply) do
-								local fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code,material:GetLocation(),mat_operation_code_map)
-								assert(fusion_operation~=nil)
+							else
+								-- extra material effects
 								--- pay the operation cost, only valid in 影牢の呪縛 as of 2025 May
 								local material_cost=material_effect:GetCost()
 								if material_cost~=nil then
 									material_cost(material_effect,tp,eg,ep,ev,re,r,rp)
 								end
-								material_grouped_by_op[fusion_operation]=material_grouped_by_op[fusion_operation] or Group.CreateGroup()
-								material_grouped_by_op[fusion_operation]:AddCard(material)
+								local fusion_operation_code=material_effect:GetOperation()()
+								fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code,material:GetLocation(),mat_operation_code_map)
+								applied_extra_effects[material_effect]=true
+							end
+
+							assert(fusion_operation~=nil)
+							material_grouped_by_op[fusion_operation]=material_grouped_by_op[fusion_operation] or Group.CreateGroup()
+							material_grouped_by_op[fusion_operation]:AddCard(material)
+						end
+						local materials_with_two_material_effect=materials:Filter(function(mc) return (#FusionSpell.GetMaterialEffects(mc,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location))==2 end,nil)
+						assert(#materials_with_one_material_effect+#materials_with_two_material_effect==#materials, "We can not have one material have zero/3+ material effect yet")
+						--For material that can be material by multiple effect, ask user which to apply.
+						--As of 2025 May, if a material could be used as extra material, it must be able to be used as fusion spell material. The code below is based on this assumption.
+						--   If we have Aiラブ融合 + 影牢の呪縛 or 多層融合 + アマゾネスの秘術 in same archetype, is code would fail in some scenario.
+						--First, group them by extra_material_effect
+						---@type {[Effect]:Group}
+						local material_grouped_by_extra_material_effect={}
+						for material in aux.Next(materials_with_two_material_effect) do
+							local material_effect=FusionSpell.GetExtraMaterialEffect(material,tp,tc,pre_select_mat_location)
+							assert(material_effect~=nil, "We can not have a material w/o extra material effect when it has 2 options")
+							material_grouped_by_extra_material_effect[material_effect]=material_grouped_by_extra_material_effect[material_effect] or Group.CreateGroup()
+							material_grouped_by_extra_material_effect[material_effect]:AddCard(material)
+						end
+
+						---For each group, let user select the material that apply the extra material effect.
+						for material_effect,grouped_materials in pairs(material_grouped_by_extra_material_effect) do
+							Duel.Hint(HINT_SELECTMSG,tp,material_effect:GetDescription())
+							local extra_material_limit=#grouped_materials
+							--- in case of アマゾネスの秘術 or 影牢の呪縛, limit the maximuim number to choose
+							local material_effect_material_count_limit=({material_effect:GetLabel()})[1]
+							if material_effect_material_count_limit~= 0 then
+								extra_material_limit=material_effect_material_count_limit
+							end
+							local materials_to_apply=grouped_materials:Select(tp,0,extra_material_limit,nil)
+							local rest_materials=grouped_materials-materials_to_apply
+							if #rest_materials>0 then
+								for material in aux.Next(rest_materials) do
+									local fusion_operation_code=FusionSpell.GetOperationCodeByMaterialLocation(material:GetLocation(),mat_operation_code_map)
+									local fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code)
+									material_grouped_by_op[fusion_operation]=material_grouped_by_op[fusion_operation] or Group.CreateGroup()
+									material_grouped_by_op[fusion_operation]:AddCard(material)
+									materials_from_spell_card:AddCard(material)
+								end
+							end
+							if #materials_to_apply>0 then
+								applied_extra_effects[material_effect]=true
+								local fusion_operation_code=material_effect:GetOperation()()
+								for material in aux.Next(materials_to_apply) do
+									local fusion_operation=FusionSpell.GetFusionOperationByCode(fusion_operation_code,material:GetLocation(),mat_operation_code_map)
+									assert(fusion_operation~=nil)
+									--- pay the operation cost, only valid in 影牢の呪縛 as of 2025 May
+									local material_cost=material_effect:GetCost()
+									if material_cost~=nil then
+										material_cost(material_effect,tp,eg,ep,ev,re,r,rp)
+									end
+									material_grouped_by_op[fusion_operation]=material_grouped_by_op[fusion_operation] or Group.CreateGroup()
+									material_grouped_by_op[fusion_operation]:AddCard(material)
+								end
 							end
 						end
-					end
 
-					-- before do the operations to the materials, hint the opponent selected materials
-					local confirm_materials=materials:Filter(function(c) return c:IsLocation(LOCATION_HAND|LOCATION_EXTRA|LOCATION_DECK) or c:IsFacedown() end,nil)
-					if #confirm_materials>0 then
-						Duel.ConfirmCards(1-tp,confirm_materials)
-					end
-					Duel.HintSelection(materials-confirm_materials)
-
-					local operated_material_count=0
-					-- perform operations on grouped materials
-					for operation,grouped_materials in pairs(material_grouped_by_op) do
-						operated_material_count=operated_material_count+operation(grouped_materials,tp)
-					end
-
-					-- mark effect as used once. if count limit reached, reset the effect
-					for effect,_ in pairs(applied_extra_effects) do
-						--- hint opponent that this effect is applied
-						Duel.Hint(HINT_OPSELECTED,1-tp,effect:GetDescription())
-						effect:UseCountLimit(tp)
-						if effect:CheckCountLimit(tp)==false then
-							effect:Reset()
+						-- before do the operations to the materials, hint the opponent selected materials
+						local confirm_materials=materials:Filter(function(c) return c:IsLocation(LOCATION_HAND|LOCATION_EXTRA|LOCATION_DECK) or c:IsFacedown() end,nil)
+						if #confirm_materials>0 then
+							Duel.ConfirmCards(1-tp,confirm_materials)
 						end
-					end
+						Duel.HintSelection(materials-confirm_materials)
 
-					-- check if all materials are moved successfully (ラピッド・トリガー)
-					fusion_succeeded=(operated_material_count==#materials)
+						local operated_material_count=0
+						-- perform operations on grouped materials
+						for operation,grouped_materials in pairs(material_grouped_by_op) do
+							operated_material_count=operated_material_count+operation(grouped_materials,tp)
+						end
+
+						-- mark effect as used once. if count limit reached, reset the effect
+						for effect,_ in pairs(applied_extra_effects) do
+							--- hint opponent that this effect is applied
+							Duel.Hint(HINT_OPSELECTED,1-tp,effect:GetDescription())
+							effect:UseCountLimit(tp)
+							if effect:CheckCountLimit(tp)==false then
+								effect:Reset()
+							end
+						end
+
+						-- check if all materials are moved successfully (ラピッド・トリガー)
+						fusion_succeeded=(operated_material_count==#materials)
+
+						if fusion_succeeded==true then
+							Duel.BreakEffect()
+							Duel.SpecialSummonStep(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,sumpos)
+						end
+					else
+						--- hint opponent that this effect is applied
+						Duel.Hint(HINT_OPSELECTED,1-tp,fusion_effect:GetDescription())
+
+						--- fusion with chain material
+						fusion_effect:GetOperation()(e,e,tp,tc,materials,sumtype,sumpos)
+						--- use the chain material effect, reset if exhausted
+						fusion_effect:UseCountLimit(tp)
+						if fusion_effect:CheckCountLimit(tp)==false then
+							fusion_effect:Reset()
+						end
+
+						-- for chain material effects as of 2025 May it always succeeds
+						fusion_succeeded=true
+					end
 
 					if fusion_succeeded==true then
-						Duel.BreakEffect()
-						Duel.SpecialSummonStep(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,sumpos)
+						stage_x_operation(e,tc,tp,FusionSpell.STAGE_BEFORE_SUMMON_COMPLETE,materials_from_spell_card,materials)
+						Duel.SpecialSummonComplete()
+						stage_x_operation(e,tc,tp,FusionSpell.STAGE_BEFORE_PROCEDURE_COMPLETE,materials_from_spell_card,materials)
+						tc:CompleteProcedure()
+						stage_x_operation(e,tc,tp,FusionSpell.STAGE_AT_SUMMON_OPERATION_FINISH,materials_from_spell_card,materials)
 					end
-				else
-					--- hint opponent that this effect is applied
-					Duel.Hint(HINT_OPSELECTED,1-tp,fusion_effect:GetDescription())
-
-					--- fusion with chain material
-					fusion_effect:GetOperation()(e,e,tp,tc,materials,sumtype,sumpos)
-					--- use the chain material effect, reset if exhausted
-					fusion_effect:UseCountLimit(tp)
-					if fusion_effect:CheckCountLimit(tp)==false then
-						fusion_effect:Reset()
-					end
-
-					-- for chain material effects as of 2025 May it always succeeds
-					fusion_succeeded=true
-				end
-
-				if fusion_succeeded==true then
-					stage_x_operation(e,tc,tp,FusionSpell.STAGE_BEFORE_SUMMON_COMPLETE,materials_from_spell_card,materials)
-					Duel.SpecialSummonComplete()
-					stage_x_operation(e,tc,tp,FusionSpell.STAGE_BEFORE_PROCEDURE_COMPLETE,materials_from_spell_card,materials)
-					tc:CompleteProcedure()
-					stage_x_operation(e,tc,tp,FusionSpell.STAGE_AT_SUMMON_OPERATION_FINISH,materials_from_spell_card,materials)
 				end
 			end
 		end
