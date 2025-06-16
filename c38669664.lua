@@ -1,4 +1,4 @@
---原質の炉心溶解
+--原質の炉心溶融
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

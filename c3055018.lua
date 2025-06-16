@@ -1,4 +1,4 @@
---Obsidim, The Ashened City
+--灰滅の都 オブシディム
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

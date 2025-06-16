@@ -1,4 +1,4 @@
---Ashened For Eternity
+--終わりなき灰滅
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

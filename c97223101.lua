@@ -3,12 +3,12 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableCounterPermit(0x6c)
 	c:SetCounterLimit(0x6c,10)
-	--
+	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--
+	--add counter
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_COUNTER)
@@ -20,7 +20,7 @@ function s.initial_effect(c)
 	e2:SetTarget(s.cttg)
 	e2:SetOperation(s.ctop)
 	c:RegisterEffect(e2)
-	--
+	--atk up
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
@@ -28,7 +28,7 @@ function s.initial_effect(c)
 	e3:SetTargetRange(LOCATION_MZONE,0)
 	e3:SetValue(s.val)
 	c:RegisterEffect(e3)
-	--
+	--set
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetCategory(CATEGORY_TOHAND)
@@ -58,8 +58,8 @@ end
 function s.val(e,c)
 	return e:GetHandler():GetCounter(0x6c)*100
 end
-function s.filter(c)
-	return c:IsType(TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:IsSSetable()
+function s.filter(c,ignore)
+	return c:IsType(TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:IsSSetable(ignore)
 		and (c:GetOriginalLevel()>0
 		or bit.band(c:GetOriginalRace(),0x3fffffff)~=0
 		or bit.band(c:GetOriginalAttribute(),0x7f)~=0
@@ -68,7 +68,9 @@ function s.filter(c)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return eg:IsContains(c) and c:GetCounter(0x6c)==10 and c:IsAbleToHand() and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return eg:IsContains(c) and c:GetCounter(0x6c)==10 and c:IsAbleToHand()
+		and Duel.GetSZoneCount(tp,c)>0
+		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,true) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,c,1,0,0)
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
@@ -76,7 +78,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_HAND) then
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,nil,false)
 		local tc=g:GetFirst()
 		if tc and Duel.SSet(tp,tc)~=0 then
 			local e1=Effect.CreateEffect(e:GetHandler())

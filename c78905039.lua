@@ -1,4 +1,4 @@
---Tricorn the Cacophonous Concept
+--響魔従トライコーン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--

@@ -1,4 +1,4 @@
---Embres of the Ashened
+--灰滅せし成れの果て
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material

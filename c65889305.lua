@@ -1,4 +1,4 @@
---ARG☆S－紫電のデュデル
+--ARG☆S－紫電のテュデル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

@@ -1,6 +1,5 @@
 --魔轟神ガミュジン
 local s,id,o=GetID()
----@param c Card
 function s.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)

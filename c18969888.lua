@@ -1,4 +1,4 @@
---燦幻超龍ドランセンド·ドラギオン
+--燦幻超龍トランセンド・ドラギオン
 function c18969888.initial_effect(c)
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(Card.IsRace,RACE_DRAGON),1)
 	c:EnableReviveLimit()

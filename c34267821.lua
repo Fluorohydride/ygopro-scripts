@@ -24,6 +24,7 @@ function c34267821.initial_effect(c)
 	e3:SetRange(LOCATION_HAND+LOCATION_MZONE)
 	e3:SetCondition(c34267821.rmcon)
 	e3:SetCost(c34267821.rmcost)
+	e3:SetTarget(c34267821.rmtg)
 	e3:SetOperation(c34267821.rmop)
 	c:RegisterEffect(e3)
 end
@@ -48,6 +49,9 @@ function c34267821.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
+function c34267821.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFlagEffect(tp,34267821)==0 end
+end
 function c34267821.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -57,4 +61,5 @@ function c34267821.rmop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,34267821,RESET_PHASE+PHASE_END,0,1)
 end

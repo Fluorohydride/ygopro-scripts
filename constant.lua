@@ -3,6 +3,7 @@ MIN_ID		=128		--0x80, by DataManager::GetDesc()
 MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 MAX_PARAMETER	=0xffff
+MAX_XYZ_LEVEL	=0x0fff
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -168,7 +169,7 @@ STATUS_SET_TURN				=0x0010		--在本回合覆盖
 STATUS_NO_LEVEL				=0x0020		--无等级
 STATUS_BATTLE_RESULT		=0x0040		--傷害計算結果預計要破壞的怪獸
 STATUS_SPSUMMON_STEP		=0x0080		--效果特召處理中
-STATUS_FORM_CHANGED			=0x0100		--改变过表示形式
+STATUS_CANNOT_CHANGE_FORM	=0x0100		--回合玩家不能手动改变表示形式
 STATUS_SUMMONING			=0x0200		--召唤中
 STATUS_EFFECT_ENABLED		=0x0400		--卡片準備就緒(不在移動、召喚、魔法陷阱發動中)
 STATUS_SUMMON_TURN			=0x0800		--在本回合召喚/SET
@@ -605,6 +606,9 @@ EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召
 EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
 EFFECT_KAISER_COLOSSEUM			=370	--皇帝斗技场
 EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
+EFFECT_XYZ_MIN_COUNT			=372	--只能用在X只以上的超量召唤
+EFFECT_SYNCHRO_LEVEL_EX			=373	--支持使用没有等级的怪兽作为同调素材
+EFFECT_RITUAL_LEVEL_EX			=374	--支持使用没有等级的怪兽作为仪式素材
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）

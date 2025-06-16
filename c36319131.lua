@@ -1,4 +1,4 @@
---Fighting Flame Dragon
+--闘気炎斬龍
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,45231177)

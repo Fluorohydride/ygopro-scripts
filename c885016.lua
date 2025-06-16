@@ -1,4 +1,4 @@
---Multi-universe
+--多元宇宙
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

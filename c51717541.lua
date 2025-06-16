@@ -24,20 +24,18 @@ function c51717541.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c51717541.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=Duel.SelectTarget(tp,c51717541.filter,tp,LOCATION_GRAVE,0,1,1,nil)
-	local rm=g1:GetFirst()
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,rm,1,tp,LOCATION_GRAVE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g2=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
-	local ds=g2:GetFirst()
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,ds,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,1,tp,LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,1,0,0)
 end
 function c51717541.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ex1,g1=Duel.GetOperationInfo(0,CATEGORY_REMOVE)
-	local rm=g1:GetFirst()
-	if not rm:IsRelateToEffect(e) then return end
-	if Duel.Remove(rm,POS_FACEUP,REASON_EFFECT)==0 then return end
-	local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
-	local ds=g2:GetFirst()
-	if not ds:IsRelateToEffect(e) then return end
-	Duel.Destroy(ds,REASON_EFFECT)
+	local g=Duel.GetTargetsRelateToChain()
+	local rm=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
+	if rm and Duel.Remove(rm,POS_FACEUP,REASON_EFFECT)>0 then
+		local ds=g:Filter(Card.IsLocation,nil,LOCATION_ONFIELD):GetFirst()
+		if ds then
+			Duel.Destroy(ds,REASON_EFFECT)
+		end
+	end
 end

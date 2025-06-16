@@ -22,15 +22,15 @@ function c37119142.initial_effect(c)
 	e2:SetOperation(c37119142.thop)
 	c:RegisterEffect(e2)
 end
-function c37119142.mfilter(c)
-	return c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_CYBERSE)
+function c37119142.mfilter(c,tp)
+	return c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_CYBERSE) and c:IsControler(tp)
 end
 function c37119142.exmfilter(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsCode(37119142)
 end
 function c37119142.matval(e,lc,mg,c,tp)
 	if not lc:IsSetCard(0x101) then return false,nil end
-	return true,not mg or mg:IsExists(c37119142.mfilter,1,nil) and not mg:IsExists(c37119142.exmfilter,1,nil)
+	return true,not mg or mg:IsExists(c37119142.mfilter,1,nil,tp) and not mg:IsExists(c37119142.exmfilter,1,nil)
 end
 function c37119142.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

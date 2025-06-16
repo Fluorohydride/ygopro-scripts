@@ -39,13 +39,13 @@ end
 function s.natg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local a=Duel.GetAttacker()
 	if chkc then return chkc==a end
-	if chk==0 then return a~=nil and a:IsCanBeEffectTarget(e) and a:GetAttack()>0 end
+	if chk==0 then return a~=nil and a:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(a)
 end
 function s.naop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if Duel.NegateAttack() and tc:IsRelateToEffect(e) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if Duel.NegateAttack() and tc:IsRelateToEffect(e) and tc:GetAttack()>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local preatk=c:GetAttack()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

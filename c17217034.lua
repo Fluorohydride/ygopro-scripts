@@ -1,4 +1,4 @@
---合体術式ーエンゲージ・ゼロ
+--合体術式－エンゲージ・ゼロ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:SetSPSummonOnce(id)

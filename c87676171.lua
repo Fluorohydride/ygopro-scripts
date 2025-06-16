@@ -1,4 +1,4 @@
---Tistina, the Divinity that Defies Darkness
+--神蝕む光 ティスティナ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

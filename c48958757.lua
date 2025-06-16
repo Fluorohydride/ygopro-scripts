@@ -4,7 +4,7 @@ function s.initial_effect(c)
 	--fusion summon
 	aux.AddFusionProcFunRep(c,s.matfilter,5,true)
 	c:EnableReviveLimit()
-	aux.AddContactFusionProcedure(c,s.cfilter,LOCATION_MZONE+LOCATION_GRAVE,0,aux.tdcfop(c)):SetValue(SUMMON_VALUE_SELF)
+	aux.AddContactFusionProcedure(c,s.cfilter,LOCATION_MZONE+LOCATION_GRAVE,0,aux.ContactFusionSendToDeck(c)):SetValue(SUMMON_VALUE_SELF)
 	--spsummon condition
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)

@@ -42,7 +42,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function s.spfilter(c,e,tp)
-	return c:IsType(TYPE_XYZ) and c:IsFaceupEx() and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
+	return c:IsType(TYPE_XYZ) and c:IsFaceup()
+		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)

@@ -1,4 +1,4 @@
---Fighting Flame Sword
+--闘気炎斬剣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,45231177)

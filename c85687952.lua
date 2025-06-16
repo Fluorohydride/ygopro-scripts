@@ -1,4 +1,4 @@
---Theia, the Primal Being
+--原始生命態ティア
 local s,id,o=GetID()
 function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)

@@ -38,8 +38,9 @@ end
 function s.mfilter2(c)
 	return c:IsRace(RACE_ILLUSION)
 end
-function s.sprfilter(c)
-	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:IsFaceup() and c:IsAbleToGraveAsCost()
+function s.sprfilter(c,sc)
+	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:IsFaceup()
+		and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function s.sgchk(g,tp,sc)
 	return Duel.GetLocationCountFromEx(tp,tp,g,sc)>0
@@ -47,12 +48,12 @@ end
 function s.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(s.sprfilter,tp,LOCATION_SZONE,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(s.sprfilter,tp,LOCATION_SZONE,0,c,c)
 	return g:CheckSubGroup(s.sgchk,2,2,tp,c)
 end
 function s.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local cp=c:GetControler()
-	local g=Duel.GetMatchingGroup(s.sprfilter,cp,LOCATION_SZONE,0,nil)
+	local g=Duel.GetMatchingGroup(s.sprfilter,cp,LOCATION_SZONE,0,c,c)
 	Duel.Hint(HINT_SELECTMSG,cp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(cp,s.sgchk,true,2,2,cp,c)
 	if sg then

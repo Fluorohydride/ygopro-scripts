@@ -51,7 +51,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e8)
 end
 function s.quick_filter(e)
-	return e:GetCode()==EVENT_CHAINING and e:IsHasType(EFFECT_TYPE_QUICK_O+EFFECT_TYPE_QUICK_F) and e:IsHasRange(LOCATION_HAND+LOCATION_MZONE)
+	return (e:GetCode()==EVENT_CHAINING or e:GetCode()==EVENT_BECOME_TARGET) and e:IsHasType(EFFECT_TYPE_QUICK_O+EFFECT_TYPE_QUICK_F) and e:IsHasRange(LOCATION_HAND+LOCATION_MZONE)
 end
 function s.cfilter(c)
 	return c:IsOriginalEffectProperty(s.quick_filter) and c:GetOriginalType()&TYPE_MONSTER==TYPE_MONSTER and c:IsFaceupEx()
@@ -71,7 +71,7 @@ end
 function s.efilter(e,re)
 	if Duel.GetTurnPlayer()==e:GetHandlerPlayer() and e:GetHandlerPlayer()~=re:GetOwnerPlayer()
 		and re:IsActivated() and re:IsActiveType(TYPE_MONSTER) then
-		local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION)
+		local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION) or 0
 		return LOCATION_ONFIELD&loc~=0
 	end
 	return false
