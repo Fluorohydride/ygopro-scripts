@@ -11,7 +11,7 @@ function s.initial_effect(c)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetTargetRange(LOCATION_PZONE,0)
 	e1:SetValue(s.mtval)
-	e1:SetOperation(function() return FusionSpell.FUSION_OPERATION_INHERIT end)
+	e1:SetOperation(function() return FusionSpell.FUSION_OPERATION_INHERIT|LOCATION_MZONE end)
 	-- as of 2025 May, there is no card can add LOCATION_MZONE base on material group. So we can just check pre_select_mat_location.
 	e1:SetLabel(0,LOCATION_MZONE) ---  only avaliable when pre_select_mat_location contains LOCATION_MZONE, 1st number is limitaion of count materials, set 0 as infinity
 	c:RegisterEffect(e1)
