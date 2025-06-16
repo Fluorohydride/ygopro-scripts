@@ -2533,6 +2533,7 @@ function FusionSpell.GetSummonOperation(
 		fusion_spell_matfilter
 	)
 	return function(e,tp,eg,ep,ev,re,r,rp)
+		local tc=nil
 		-- if gc is gone, terminate
 		if gc(e)==nil or gc(e):IsRelateToEffect(e) then
 			local fusion_targets=Group.CreateGroup()
@@ -2565,8 +2566,6 @@ function FusionSpell.GetSummonOperation(
 				end
 			end
 
-			local tc=nil
-
 			if #fusion_targets>0 then
 				local materials=Group.CreateGroup()
 				local fusion_effect=nil
@@ -2590,7 +2589,7 @@ function FusionSpell.GetSummonOperation(
 					assert(#avaliable_fusion_effect>0, "Selected a target card that has 0 fusion effect")
 					fusion_effect=avaliable_fusion_effect[1]
 					if #avaliable_fusion_effect>1 then
-						fusion_effect=FusionSpell.MultiFusionEffectPrompt(avaliable_fusion_effect)
+						fusion_effect=FusionSpell.MultiFusionEffectPrompt(avaliable_fusion_effect,tp)
 					end
 					if fusion_effect==e then
 						--- use fusion spell effect
@@ -3186,22 +3185,6 @@ function FusionSpell.MultiFusionEffectPrompt(effects,tp)
 	local ops={}
 	for _,eff in ipairs(effects) do
 		table.insert(ops,eff:GetDescription())
-	end
-	local op=Duel.SelectOption(tp,table.unpack(ops))
-	return effects[op+1]
-end
-
--- when a material has multiple effect make it could be material, ask for which to apply.
----@return true|Effect
-function FusionSpell.MultiMaterialEffectPrompt(effects,tp,e)
-	local ops={}
-	for i,eff in ipairs(effects) do
-		if eff==true then
-		-- this can be used as default material
-			table.insert(ops,e:GetDescription())
-		else
-			table.insert(ops,eff:GetDescription())
-		end
 	end
 	local op=Duel.SelectOption(tp,table.unpack(ops))
 	return effects[op+1]
