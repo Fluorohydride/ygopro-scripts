@@ -2742,7 +2742,7 @@ function FusionSpell.GetSummonOperation(
 
 						if fusion_succeeded==true then
 							Duel.BreakEffect()
-							Duel.SpecialSummonStep(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,sumpos)
+							Duel.SpecialSummonStep(tc,sumtype,tp,tp,false,false,sumpos)
 						end
 					else
 						--- hint opponent that this effect is applied
