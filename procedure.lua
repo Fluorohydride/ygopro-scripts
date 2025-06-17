@@ -2262,7 +2262,17 @@ end
 FusionSpell = {}
 
 ---@alias FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION fun(tc:Card,tp:integer):integer
----@alias FUSION_FGCHECK_FUNCTION fun(tp:integer,mg:Group,fc:Card,all_mg:Group):boolean
+
+--- A check function for Fusion FCheckAdditional/FGoalCheckAdditional.
+--- Parameters:
+---  • tp      integer  — player ID (0 or 1)
+---  • mg      Group    — selected materials from fusion spell, exclude materials from Chain Material or EXTRA_FUSION_MATERIAL
+---  • fc      Card     — the Fusion Monster being summoned
+---  • mg_all  Group    — all selected materials
+---  • e       Effect   — the fusion effect object
+--- Returns:
+---  • boolean  — true if the selected materials is a valid group
+---@alias FUSION_FGCHECK_FUNCTION fun(tp:integer,mg:Group,fc:Card,mg_all:Group,e:Effect):boolean
 
 ---	@class FusionEffectParams
 --- @field fusfilter? fun(c:Card):boolean
@@ -2605,7 +2615,7 @@ function FusionSpell.GetSummonOperation(
 								pre_select_mat_opponent_location,
 								fusion_spell_matfilter)
 						aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunction(additional_fcheck,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location,fusion_spell_matfilter,e,mat_operation_code_map)
-						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,tc,pre_select_mat_location)
+						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,tc,pre_select_mat_location,e)
 						materials=Duel.SelectFusionMaterial(tp,tc,mg,gc(e),tp)
 						aux.FCheckAdditional=nil
 						aux.FGoalCheckAdditional=nil
@@ -2615,8 +2625,8 @@ function FusionSpell.GetSummonOperation(
 						local chain_material_filter=fusion_effect:GetTarget()
 						local chain_mg=chain_material_filter(fusion_effect,e,tp):Filter(aux.NecroValleyFilter(function(c) return matfilter(c,e,tp) end),nil)
 						assert(#chain_mg>0, "we are trying to apply a chain material, but it has no possible material")
-						aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck)
-						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck)
+						aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck,e)
+						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck,e)
 						materials=Duel.SelectFusionMaterial(tp,tc,chain_mg,gc(e),tp)
 						aux.FCheckAdditional=nil
 						aux.FGoalCheckAdditional=nil
@@ -2870,7 +2880,7 @@ function FusionSpell.SummonTargetFilter(c,fusfilter,matfilter,e,tp,pre_select_ma
 	end
 	local mg=FusionSpell.GetMaterialsGroupForTargetCard(c,tp,e,matfilter,pre_select_mat_location,mat_operation_code_map,post_select_mat_location,sumtype,pre_select_mat_opponent_location,fusion_spell_matfilter)
 	aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunction(additional_fcheck,tp,c,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location,fusion_spell_matfilter,e,mat_operation_code_map)
-	aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,c,pre_select_mat_location)
+	aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,c,pre_select_mat_location,e)
 	res=c:CheckFusionMaterial(mg,gc(e),tp)
 	aux.FCheckAdditional=nil
 	aux.FGoalCheckAdditional=nil
@@ -2934,8 +2944,8 @@ function FusionSpell.ChainMaterialSummonTargetFilter(c,fusfilter,e,tp,mg,additio
 	if res==false then
 		return false
 	end
-	aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck)
-	aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck)
+	aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck,e)
+	aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck,e)
 	res=c:CheckFusionMaterial(mg,gc(e),tp)
 	aux.FCheckAdditional=nil
 	aux.FGoalCheckAdditional=nil
@@ -3198,15 +3208,15 @@ end
 --- for each extra material effect, check the maximuim size is not exceeded.
 --- As of 2025 May, if a material could (but not forced) be used as extra material, it must be able to be used as fusion spell material. The code below is based on this assumption.
 ---   If we have Aiラブ融合 + 影牢の呪縛 or 多層融合 + アマゾネスの秘術 in same archetype, is code would fail in some scenario.
----@param fusion_spell_additional_fcheck_function FUSION_FGCHECK_FUNCTION
----@param tp integer
----@param tc Card
----@param pre_select_mat_location integer|function location where to find the materials before known the materials (default LOCATION_HAND|LOCATION_MZONE)
----@param post_select_mat_location integer?
----@param pre_select_mat_opponent_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials on opponent location
----@param fusion_spell_matfilter fun(c:Card):boolean a material must pass this to be legal as material come from fusion spell
----@param e Effect the fusion effect
----@param mat_operation_code_map {[integer]:FUSION_OPERATION_CODE}[] operation code to do for the materials, it will be check in order
+--- @param fusion_spell_additional_fcheck_function FUSION_FGCHECK_FUNCTION
+--- @param tp integer
+--- @param tc Card
+--- @param pre_select_mat_location integer|function location where to find the materials before known the materials (default LOCATION_HAND|LOCATION_MZONE)
+--- @param post_select_mat_location integer?
+--- @param pre_select_mat_opponent_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials on opponent location
+--- @param fusion_spell_matfilter fun(c:Card):boolean a material must pass this to be legal as material come from fusion spell
+--- @param e Effect the fusion effect
+--- @param mat_operation_code_map {[integer]:FUSION_OPERATION_CODE}[] operation code to do for the materials, it will be check in order
 function FusionSpell.GetFusionSpellFCheckAdditionalFunction(fusion_spell_additional_fcheck_function,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location,fusion_spell_matfilter,e,mat_operation_code_map)
 	---@param mg Group
 	return (function(f_tp,mg,fc)
@@ -3236,36 +3246,38 @@ function FusionSpell.GetFusionSpellFCheckAdditionalFunction(fusion_spell_additio
 		end
 
 		local extra_mg=mg:Filter(FusionSpell.GetExtraMaterialEffect,nil,tp,tc,pre_select_mat_location)
-		return fusion_spell_additional_fcheck_function(f_tp,mg-extra_mg,fc,mg)
+		return fusion_spell_additional_fcheck_function(f_tp,mg-extra_mg,fc,mg,e)
 	end)
 end
 
 
 --- filter out materials that does not necessary come from fusion spell and pass to the gcheck of fusion spell
----@param fusion_spell_additional_fgoalcheck_function FUSION_FGCHECK_FUNCTION
----@param tp integer
----@param tc Card
----@param pre_select_mat_location integer|function location where to find the materials before known the materials (default LOCATION_HAND|LOCATION_MZONE)
-function FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(fusion_spell_additional_fgoalcheck_function,tp,tc,pre_select_mat_location)
+--- @param fusion_spell_additional_fgoalcheck_function FUSION_FGCHECK_FUNCTION
+--- @param tp integer
+--- @param tc Card
+--- @param pre_select_mat_location integer|function location where to find the materials before known the materials (default LOCATION_HAND|LOCATION_MZONE)
+--- @param e Effect the fusion effect
+function FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(fusion_spell_additional_fgoalcheck_function,tp,tc,pre_select_mat_location,e)
 	---@param mg Group
 	return (function(f_tp,mg,fc)
 		local extra_mg=mg:Filter(FusionSpell.GetExtraMaterialEffect,nil,tp,tc,pre_select_mat_location)
-		return fusion_spell_additional_fgoalcheck_function(f_tp,mg-extra_mg,fc,mg)
+		return fusion_spell_additional_fgoalcheck_function(f_tp,mg-extra_mg,fc,mg,e)
 	end)
 end
 
 --- all material must come from chain material, only pass all material group to the fcheck of fusion spell
 --- @param fusion_spell_additional_fcheck_function FUSION_FGCHECK_FUNCTION
-function FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(fusion_spell_additional_fcheck_function)
+function FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(fusion_spell_additional_fcheck_function,e)
 	return (function(f_tp,mg,fc)
-		return fusion_spell_additional_fcheck_function(f_tp,Group.CreateGroup(),fc,mg)
+		return fusion_spell_additional_fcheck_function(f_tp,Group.CreateGroup(),fc,mg,e)
 	end)
 end
 
 --- all material must come from chain material, only pass all material group to the gcheck of fusion spell
 --- @param fusion_spell_additional_fgoalcheck_function FUSION_FGCHECK_FUNCTION
-function FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(fusion_spell_additional_fgoalcheck_function)
+--- @param e Effect the fusion effect
+function FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(fusion_spell_additional_fgoalcheck_function,e)
 	return (function(f_tp,mg,fc)
-		return fusion_spell_additional_fgoalcheck_function(f_tp,Group.CreateGroup(),fc,mg)
+		return fusion_spell_additional_fgoalcheck_function(f_tp,Group.CreateGroup(),fc,mg,e)
 	end)
 end
