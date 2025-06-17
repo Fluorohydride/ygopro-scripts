@@ -2270,7 +2270,7 @@ FusionSpell = {}
 --- Optional filter for valid Fusion Materials.
 --- Use only under strong constraints (e.g., D-Fusion effects).
 --- If some card can not be used even under Chain Material or EXTRA_FUSION_MATERIAL, use this filter.
---- @field matfilter? fun(c:Card):boolean
+--- @field matfilter? fun(c:Card,e:Effect,tp:integer):boolean
 --- Location(s) to look for materials before knowing which ones will be used.
 --- Defaults to `LOCATION_HAND | LOCATION_MZONE`.
 --- @field pre_select_mat_location? integer|fun():integer
@@ -2433,7 +2433,7 @@ function FusionSpell.CreateSummonEffect(c,opts)
 end
 
 ---@param fusfilter fun(c:Card):boolean filter for the monster to be Fusion Summoned
----@param matfilter fun(c:Card):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
+---@param matfilter fun(c:Card,e:Effect,tp:integer):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param pre_select_mat_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials
 ---@param mat_operation_code_map {[integer]:FUSION_OPERATION_CODE}[] operation code to do for the materials, it will be check in order
 ---@param post_select_mat_location integer location where to find the materials after known the materials
@@ -2503,7 +2503,7 @@ function FusionSpell.GetSummonTarget(
 end
 
 ---@param fusfilter fun(c:Card):boolean filter for the monster to be Fusion Summoned
----@param matfilter	fun(c:Card):boolean filter for the materials, use it only under very strong limitation like D－フュージョン.
+---@param matfilter fun(c:Card,e:Effect,tp:integer):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param pre_select_mat_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials
 ---@param mat_operation_code_map {[integer]:FUSION_OPERATION_CODE}[] operation code to do for the materials, it will be check in order
 ---@param post_select_mat_location integer location where to find the materials after known the materials
@@ -2613,7 +2613,7 @@ function FusionSpell.GetSummonOperation(
 						--- use chain material effect
 						---@type function
 						local chain_material_filter=fusion_effect:GetTarget()
-						local chain_mg=chain_material_filter(fusion_effect,e,tp):Filter(aux.NecroValleyFilter(matfilter),nil)
+						local chain_mg=chain_material_filter(fusion_effect,e,tp):Filter(aux.NecroValleyFilter(function(c) return matfilter(c,e,tp) end),nil)
 						assert(#chain_mg>0, "we are trying to apply a chain material, but it has no possible material")
 						aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck)
 						aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck)
@@ -2791,7 +2791,7 @@ end
 ---@param tc Card the target card to summon
 ---@param tp integer the triggering player
 ---@param e Effect the fusion effect
----@param matfilter	fun(c:Card):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
+---@param matfilter fun(c:Card,e:Effect,tp:integer):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param pre_select_mat_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials
 ---@param mat_operation_code_map {[integer]:FUSION_OPERATION_CODE}[] operation code to do for the materials, it will be check in order
 ---@param post_select_mat_location integer location where to find the materials after known the materials
@@ -2824,7 +2824,7 @@ function FusionSpell.GetMaterialsGroupForTargetCard(
 	end
 
 	--- filter by the strong material filter, target card can not be fusion material of itself
-	mg=mg:Filter(matfilter,tc)
+	mg=mg:Filter(function(c) return matfilter(c,e,tp) end,tc)
 	--- filter out card can not be affected by effect
 	mg=mg:Filter(aux.NOT(Card.IsImmuneToEffect),nil,e)
 	--- filter out card that are facedown banished
@@ -2858,7 +2858,7 @@ function FusionSpell.GetOperationCodeByMaterialLocation(location,mat_operation_c
 end
 
 ---@param fusfilter fun(c:Card,tp:integer):boolean
----@param matfilter fun(c:Card,tp:integer):boolean
+---@param matfilter fun(c:Card,e:Effect,tp:integer):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param pre_select_mat_location integer|function location where to find the materials before known the materials (default LOCATION_HAND|LOCATION_MZONE)
 ---@param pre_select_mat_opponent_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials on opponent location
 ---@param gc fun(e:Effect):Card|nil
@@ -2877,8 +2877,9 @@ function FusionSpell.SummonTargetFilter(c,fusfilter,matfilter,e,tp,pre_select_ma
 	return res
 end
 
----@return {[Effect]:Group} effect_targets_map Return a map of different chain material to potiential fusion targets
+---@param matfilter fun(c:Card,e:Effect,tp:integer):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param gc fun(e:Effect):Card|nil
+---@return {[Effect]:Group} effect_targets_map Return a map of different chain material to potiential fusion targets
 function FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc)
 	local chain_material_effects={Duel.IsPlayerAffectedByEffect(tp,EFFECT_CHAIN_MATERIAL)}
 	---@type {[Effect]:Group}
@@ -2887,7 +2888,7 @@ function FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,matfilter,add
 		---@type function
 		local chain_material_filter=ce:GetTarget()
 		---@type Group
-		local chain_mg=chain_material_filter(ce,e,tp):Filter(matfilter,nil)
+		local chain_mg=chain_material_filter(ce,e,tp):Filter(function(c) return matfilter(c,e,tp) end,nil)
 		if #chain_mg>0 then
 			local ce_fusfilter=ce:GetValue()
 			local ce_sg=Duel.GetMatchingGroup(function(c)
@@ -2901,15 +2902,16 @@ function FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,matfilter,add
 	return chain_material_targets
 end
 
----@return boolean res return whether there is a valid target for any chain material effect
+---@param matfilter fun(c:Card,e:Effect,tp:integer):boolean filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param gc fun(e:Effect):Card|nil
+---@return boolean res return whether there is a valid target for any chain material effect
 function FusionSpell.IsExistsChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc)
 	local chain_material_effects={Duel.IsPlayerAffectedByEffect(tp,EFFECT_CHAIN_MATERIAL)}
 	---@type {[Effect]:Group}
 	for _,ce in ipairs(chain_material_effects) do
 		---@type function
 		local chain_material_filter=ce:GetTarget()
-		local chain_mg=chain_material_filter(ce,e,tp):Filter(matfilter,nil)
+		local chain_mg=chain_material_filter(ce,e,tp):Filter(function(c) return matfilter(c,e,tp) end,nil)
 		if #chain_mg>0 then
 			local ce_fusfilter=ce:GetValue()
 			local res=Duel.IsExistingMatchingCard(function(c)
