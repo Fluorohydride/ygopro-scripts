@@ -2731,6 +2731,8 @@ function FusionSpell.GetSummonOperation(
 						end
 						Duel.HintSelection(materials-confirm_materials)
 
+						stage_x_operation(e,tc,tp,FusionSpell.STAGE_BEFORE_MOVE_MATERIAL,materials_from_spell_card,materials)
+
 						local operated_material_count=0
 						-- perform operations on grouped materials
 						for operation,grouped_materials in pairs(material_grouped_by_op) do
@@ -2955,10 +2957,16 @@ end
 ---@alias FUSION_SPELL_STAGE_X_CALLBACK_FUNCTION fun(e:Effect,tc:Card,tp:integer,stage:FUSION_SPELL_CALLBACK_STAGE,mg_fuison_spell:Group,mg_all:Group)
 -- different stage for call back
 ---@alias FUSION_SPELL_CALLBACK_STAGE integer
+-- Right before the Fusion Monster is officially summoned
 FusionSpell.STAGE_BEFORE_SUMMON_COMPLETE=1
+-- Right before the entire Fusion procedure finishes
 FusionSpell.STAGE_BEFORE_PROCEDURE_COMPLETE=2
+-- After the summon operation succeeds
 FusionSpell.STAGE_AT_SUMMON_OPERATION_FINISH=3
+-- After **all** operations have run, whether the summon succeeded or not
 FusionSpell.STAGE_AT_ALL_OPERATION_FINISH=4
+-- Right before the selected materials are moved
+FusionSpell.STAGE_BEFORE_MOVE_MATERIAL=5
 
 -- operation that would be applied on the material
 ---@alias FUSION_OPERATION_CODE integer
