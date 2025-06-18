@@ -449,14 +449,14 @@ function Auxiliary.XyzCondition(f,lv,minct,maxct,alterf,alterdesc,alterop)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				if alterf then
+				if alterf and (not min or min<=1) then
 					local mg=nil
 					if og then
 						mg=og
 					else
 						mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 					end
-					if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop) then
+					if mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop) then
 						return true
 					end
 				end
@@ -484,7 +484,7 @@ function Auxiliary.XyzTarget(f,lv,minct,maxct,alterf,alterdesc,alterop)
 				local b1=true
 				local b2=false
 				local altg=nil
-				if alterf then
+				if alterf and (not min or min<=1) then
 					local mg=nil
 					if og then
 						mg=og
@@ -493,7 +493,7 @@ function Auxiliary.XyzTarget(f,lv,minct,maxct,alterf,alterdesc,alterop)
 					end
 					altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 					b1=Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-					b2=(not min or min<=1) and #altg>0
+					b2=#altg>0
 				end
 				local g=nil
 				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
@@ -709,9 +709,8 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct,alterf,alterdesc,alter
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				if alterf then
-					local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
-					if (not min or min<=1) and altg:GetCount()>0 then
+				if alterf and (not min or min<=1) then
+					if mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop) then
 						return true
 					end
 				end
@@ -746,14 +745,14 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 				local b2=false
 				local altg=nil
 				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
-				if alterf then
+				if alterf and (not min or min<=1) then
 					altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 					mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 					Duel.SetSelectedCard(sg)
 					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
 					b1=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
-					b2=(not min or min<=1) and #altg>0
+					b2=#altg>0
 				else
 					mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				end
