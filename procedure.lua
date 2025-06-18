@@ -417,7 +417,7 @@ end
 
 --Xyz Summon
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
-	return alterf and alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
+	return alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
 		and not c:IsHasEffect(EFFECT_XYZ_MIN_COUNT)
 		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
@@ -742,17 +742,20 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
-				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				local b1=true
 				local b2=false
+				local altg=nil
+				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				if alterf then
-					local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
+					altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
+					mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 					Duel.SetSelectedCard(sg)
 					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
 					b1=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
 					b2=(not min or min<=1) and #altg>0
+				else
+					mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				end
 				local g=nil
 				local cancel=Duel.IsSummonCancelable()
