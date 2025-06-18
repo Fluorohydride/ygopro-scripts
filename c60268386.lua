@@ -153,97 +153,49 @@ function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		Drake_shark_AddXyzProcedure=aux.AddXyzProcedure
 		function aux.AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
 			if int_ct>=3 then
-				if function_alterf then
-					Drake_shark_XyzLevelFreeOperationAlter=Auxiliary.XyzLevelFreeOperationAlter
-					function Auxiliary.XyzLevelFreeOperationAlter(f,gf,minc,maxc,alterf,alterdesc,alterop)
-						return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-									if og and not min then
-										Auxiliary.Drake_Solve(tp,og,maxc,minc)
+				Drake_shark_XyzLevelFreeOperation=Auxiliary.XyzLevelFreeOperation
+				function Auxiliary.XyzLevelFreeOperation(f,gf,minc,maxc,alterf,alterdesc,alterop)
+					return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+								if og and not min then
+									Auxiliary.Drake_Solve(tp,og,maxc,minc)
+									local sg=Group.CreateGroup()
+									local tc=og:GetFirst()
+									while tc do
+										local sg1=tc:GetOverlayGroup()
+										sg:Merge(sg1)
+										tc=og:GetNext()
+									end
+									Duel.SendtoGrave(sg,REASON_RULE)
+									c:SetMaterial(og)
+									Duel.Overlay(c,og)
+								else
+									local mg=e:GetLabelObject()
+									Auxiliary.Drake_Solve(tp,mg,maxc,minc)
+									if e:GetLabel()==1 then
+										local mg2=mg:GetFirst():GetOverlayGroup()
+										if mg2:GetCount()~=0 then
+											Duel.Overlay(c,mg2)
+										end
+									else
 										local sg=Group.CreateGroup()
-										local tc=og:GetFirst()
+										local tc=mg:GetFirst()
 										while tc do
 											local sg1=tc:GetOverlayGroup()
 											sg:Merge(sg1)
-											tc=og:GetNext()
+											tc=mg:GetNext()
 										end
 										Duel.SendtoGrave(sg,REASON_RULE)
-										c:SetMaterial(og)
-										Duel.Overlay(c,og)
-									else
-										local mg=e:GetLabelObject()
-										Auxiliary.Drake_Solve(tp,mg,maxc,minc)
-										if e:GetLabel()==1 then
-											local mg2=mg:GetFirst():GetOverlayGroup()
-											if mg2:GetCount()~=0 then
-												Duel.Overlay(c,mg2)
-											end
-										else
-											local sg=Group.CreateGroup()
-											local tc=mg:GetFirst()
-											while tc do
-												local sg1=tc:GetOverlayGroup()
-												sg:Merge(sg1)
-												tc=mg:GetNext()
-											end
-											Duel.SendtoGrave(sg,REASON_RULE)
-										end
-										c:SetMaterial(mg)
-										Duel.Overlay(c,mg)
-										mg:DeleteGroup()
 									end
+									c:SetMaterial(mg)
+									Duel.Overlay(c,mg)
+									mg:DeleteGroup()
 								end
-					end
-					aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner(),card_c),int_ct-2,int_ct,function_alterf,int_dese,function_op)
-					Auxiliary.XyzLevelFreeOperationAlter=Drake_shark_XyzLevelFreeOperationAlter
-				else
-					Drake_shark_XyzLevelFreeOperation=Auxiliary.XyzLevelFreeOperation
-					function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
-						return  function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-									if og and not min then
-										Auxiliary.Drake_Solve(tp,og,maxct,minct)
-										local sg=Group.CreateGroup()
-										local tc=og:GetFirst()
-										while tc do
-											local sg1=tc:GetOverlayGroup()
-											sg:Merge(sg1)
-											tc=og:GetNext()
-										end
-										Duel.SendtoGrave(sg,REASON_RULE)
-										c:SetMaterial(og)
-										Duel.Overlay(c,og)
-									else
-										local mg=e:GetLabelObject()
-										Auxiliary.Drake_Solve(tp,mg,maxct,minct)
-										if e:GetLabel()==1 then
-											local mg2=mg:GetFirst():GetOverlayGroup()
-											if mg2:GetCount()~=0 then
-												Duel.Overlay(c,mg2)
-											end
-										else
-											local sg=Group.CreateGroup()
-											local tc=mg:GetFirst()
-											while tc do
-												local sg1=tc:GetOverlayGroup()
-												sg:Merge(sg1)
-												tc=mg:GetNext()
-											end
-											Duel.SendtoGrave(sg,REASON_RULE)
-										end
-										c:SetMaterial(mg)
-										Duel.Overlay(c,mg)
-										mg:DeleteGroup()
-									end
-								end
-					end
-					aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner(),card_c),int_ct-2,int_ct)
-					Auxiliary.XyzLevelFreeOperation=Drake_shark_XyzLevelFreeOperation
+							end
 				end
+				aux.AddXyzProcedureLevelFree(card_c,s.Drake_shark_f(function_f,int_lv,card_c),s.Drake_shark_gf(int_ct,card_c:GetOwner(),card_c),int_ct-2,int_ct,function_alterf,int_dese,function_op)
+				Auxiliary.XyzLevelFreeOperation=Drake_shark_XyzLevelFreeOperation
 			else
-				if function_alterf then
-					Drake_shark_AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
-				else
-					Drake_shark_AddXyzProcedure(card_c,function_f,int_lv,int_ct,nil,nil,int_maxc,nil)
-				end
+				Drake_shark_AddXyzProcedure(card_c,function_f,int_lv,int_ct,function_alterf,int_dese,int_maxc,function_op)
 			end
 		end
 		local rg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_EXTRA,LOCATION_EXTRA,nil,TYPE_MONSTER)
