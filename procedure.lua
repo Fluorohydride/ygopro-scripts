@@ -417,7 +417,7 @@ end
 
 --Xyz Summon
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)
-	return alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
+	return alterf and alterf(c,e,tp,xyzc) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0
 		and not c:IsHasEffect(EFFECT_XYZ_MIN_COUNT)
 		and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not alterop or alterop(e,tp,0,c))
 end
@@ -438,25 +438,28 @@ function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,alterdesc,maxct,alterop)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	if alterf then
-		e1:SetCondition(Auxiliary.XyzConditionAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
-		e1:SetTarget(Auxiliary.XyzTargetAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
-		e1:SetOperation(Auxiliary.XyzOperationAlter(f,lv,ct,maxct,alterf,alterdesc,alterop))
-	else
-		e1:SetCondition(Auxiliary.XyzCondition(f,lv,ct,maxct))
-		e1:SetTarget(Auxiliary.XyzTarget(f,lv,ct,maxct))
-		e1:SetOperation(Auxiliary.XyzOperation(f,lv,ct,maxct))
-	end
+	e1:SetCondition(Auxiliary.XyzCondition(f,lv,ct,maxct,alterf,alterdesc,alterop))
+	e1:SetTarget(Auxiliary.XyzTarget(f,lv,ct,maxct,alterf,alterdesc,alterop))
+	e1:SetOperation(Auxiliary.XyzOperation(f,lv,ct,maxct,alterf,alterdesc,alterop))
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
 end
---Xyz Summon(normal)
-function Auxiliary.XyzCondition(f,lv,minct,maxct)
-	--og: use special material
+function Auxiliary.XyzCondition(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
+				if alterf then
+					local mg=nil
+					if og then
+						mg=og
+					else
+						mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+					end
+					if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,alterop) then
+						return true
+					end
+				end
 				local minc=minct
 				local maxc=maxct
 				if min then
@@ -467,7 +470,7 @@ function Auxiliary.XyzCondition(f,lv,minct,maxct)
 				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
-function Auxiliary.XyzTarget(f,lv,minct,maxct)
+function Auxiliary.XyzTarget(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
@@ -478,7 +481,34 @@ function Auxiliary.XyzTarget(f,lv,minct,maxct)
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
 				end
-				local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
+				local b1=true
+				local b2=false
+				local altg=nil
+				if alterf then
+					local mg=nil
+					if og then
+						mg=og
+					else
+						mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+					end
+					altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
+					b1=Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
+					b2=(not min or min<=1) and #altg>0
+				end
+				local g=nil
+				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
+					e:SetLabel(1)
+					local cancel=Duel.IsSummonCancelable()
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					local tc=altg:SelectUnselect(nil,tp,false,cancel,1,1)
+					if tc then
+						g=Group.FromCards(tc)
+						if alterop then alterop(e,tp,1,tc) end
+					end
+				else
+					e:SetLabel(0)
+					g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
+				end
 				if g then
 					g:KeepAlive()
 					e:SetLabelObject(g)
@@ -486,7 +516,7 @@ function Auxiliary.XyzTarget(f,lv,minct,maxct)
 				else return false end
 			end
 end
-function Auxiliary.XyzOperation(f,lv,minct,maxct)
+function Auxiliary.XyzOperation(f,lv,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
@@ -501,14 +531,21 @@ function Auxiliary.XyzOperation(f,lv,minct,maxct)
 					Duel.Overlay(c,og)
 				else
 					local mg=e:GetLabelObject()
-					local sg=Group.CreateGroup()
-					local tc=mg:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=mg:GetNext()
+					if e:GetLabel()==1 then
+						local mg2=mg:GetFirst():GetOverlayGroup()
+						if mg2:GetCount()~=0 then
+							Duel.Overlay(c,mg2)
+						end
+					else
+						local sg=Group.CreateGroup()
+						local tc=mg:GetFirst()
+						while tc do
+							local sg1=tc:GetOverlayGroup()
+							sg:Merge(sg1)
+							tc=mg:GetNext()
+						end
+						Duel.SendtoGrave(sg,REASON_RULE)
 					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
 					mg:DeleteGroup()
@@ -633,15 +670,9 @@ function Auxiliary.AddXyzProcedureLevelFree(c,f,gf,minc,maxc,alterf,alterdesc,al
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	if alterf then
-		e1:SetCondition(Auxiliary.XyzLevelFreeConditionAlter(f,gf,minc,maxc,alterf,alterdesc,alterop))
-		e1:SetTarget(Auxiliary.XyzLevelFreeTargetAlter(f,gf,minc,maxc,alterf,alterdesc,alterop))
-		e1:SetOperation(Auxiliary.XyzLevelFreeOperationAlter(f,gf,minc,maxc,alterf,alterdesc,alterop))
-	else
-		e1:SetCondition(Auxiliary.XyzLevelFreeCondition(f,gf,minc,maxc))
-		e1:SetTarget(Auxiliary.XyzLevelFreeTarget(f,gf,minc,maxc))
-		e1:SetOperation(Auxiliary.XyzLevelFreeOperation(f,gf,minc,maxc))
-	end
+	e1:SetCondition(Auxiliary.XyzLevelFreeCondition(f,gf,minc,maxc,alterf,alterdesc,alterop))
+	e1:SetTarget(Auxiliary.XyzLevelFreeTarget(f,gf,minc,maxc,alterf,alterdesc,alterop))
+	e1:SetOperation(Auxiliary.XyzLevelFreeOperation(f,gf,minc,maxc,alterf,alterdesc,alterop))
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
 end
@@ -660,7 +691,7 @@ function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
 	end
 	return true
 end
-function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
+function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
@@ -668,16 +699,23 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 				local minc=minct
 				local maxc=maxct
 				if min then
-					minc=math.max(minc,min)
-					maxc=math.min(maxc,max)
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
 				end
 				if maxc<minc then return false end
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
+					mg=og
 				else
-					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
+					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
+				if alterf then
+					local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
+					if (not min or min<=1) and altg:GetCount()>0 then
+						return true
+					end
+				end
+				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
@@ -687,7 +725,7 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 				return res
 			end
 end
-function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
+function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
@@ -700,17 +738,40 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				end
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
+					mg=og
 				else
-					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
+					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
-				Duel.SetSelectedCard(sg)
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
+				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
+				local b1=true
+				local b2=false
+				if alterf then
+					local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
+					Duel.SetSelectedCard(sg)
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+					b1=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
+					Auxiliary.GCheckAdditional=nil
+					b2=(not min or min<=1) and #altg>0
+				end
+				local g=nil
 				local cancel=Duel.IsSummonCancelable()
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
-				local g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
-				Auxiliary.GCheckAdditional=nil
+				if b2 and (not b1 or Duel.SelectYesNo(tp,alterdesc)) then
+					e:SetLabel(1)
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					local tc=altg:SelectUnselect(nil,tp,false,cancel,1,1)
+					if tc then
+						g=Group.FromCards(tc)
+						if alterop then alterop(e,tp,1,tc) end
+					end
+				else
+					e:SetLabel(0)
+					Duel.SetSelectedCard(sg)
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+					g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
+					Auxiliary.GCheckAdditional=nil
+				end
 				if g and g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
@@ -718,7 +779,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				else return false end
 			end
 end
-function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct)
+function Auxiliary.XyzLevelFreeOperation(f,gf,minct,maxct,alterf,alterdesc,alterop)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
