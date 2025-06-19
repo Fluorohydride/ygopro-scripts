@@ -13,7 +13,7 @@ function c21143940.initial_effect(c)
 end
 function c21143940.tfilter(c,att,e,tp,tc)
 	return c:IsSetCard(0xa008) and c:IsAttribute(att)
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,true) and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
 end
 function c21143940.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x8)
@@ -39,7 +39,7 @@ function c21143940.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.SelectMatchingCard(tp,c21143940.tfilter,tp,LOCATION_EXTRA,0,1,1,nil,att,e,tp,nil)
 	if sg:GetCount()>0 then
 		Duel.BreakEffect()
-		Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(sg,0,tp,tp,false,true,POS_FACEUP)
 		sg:GetFirst():CompleteProcedure()
 	end
 end

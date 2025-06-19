@@ -1,4 +1,4 @@
---Orphebull the Harmonious Bullfighter Bard
+--渾然たる闘牛詩－オルフェブル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
@@ -55,7 +55,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	local gatk=g:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
 	local matk=g:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 	if gatk>0 then
 		local e1=Effect.CreateEffect(c)

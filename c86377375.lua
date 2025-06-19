@@ -1,5 +1,6 @@
 --悪王アフリマ
 function c86377375.initial_effect(c)
+	aux.AddCodeList(c,59160188)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(86377375,0))
@@ -30,7 +31,7 @@ end
 function c86377375.thfilter1(c)
 	return c:IsCode(59160188) and c:IsAbleToHand()
 end
-function c86377375.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c86377375.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c86377375.thfilter1,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

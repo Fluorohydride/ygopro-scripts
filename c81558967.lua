@@ -42,7 +42,7 @@ function c81558967.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 then return end
 	local g=Duel.GetDecktopGroup(tp,ct)
 	Duel.ConfirmDecktop(tp,ct)
-	tg=g:Filter(c81558967.thfilter,nil)
+	local tg=g:Filter(c81558967.thfilter,nil)
 	if tg:GetCount()>0 then
 		Duel.DisableShuffleCheck()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

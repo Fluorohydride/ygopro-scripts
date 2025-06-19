@@ -9,6 +9,6 @@ function c38670435.initial_effect(c)
 end
 function c38670435.dircon(e)
 	local tp=e:GetHandler():GetControler()
-	return Duel.GetFieldGroupCount(tp,0,LOCATION_SZONE)==0
+	return not Duel.IsExistingMatchingCard(Card.IsType,tp,0,LOCATION_MZONE,1,nil,TYPE_SPELL+TYPE_TRAP)
 		and not Duel.IsExistingMatchingCard(Card.IsAttackPos,tp,0,LOCATION_MZONE,1,nil)
 end

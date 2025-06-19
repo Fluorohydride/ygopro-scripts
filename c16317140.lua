@@ -55,7 +55,7 @@ function c16317140.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c16317140.cfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c16317140.cfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
-	Duel.SendtoGrave(g:GetFirst(),nil,REASON_COST)
+	Duel.SendtoGrave(g:GetFirst(),REASON_COST)
 end
 function c16317140.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

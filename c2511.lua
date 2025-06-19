@@ -40,6 +40,7 @@ function c2511.acttg(e,c)
 end
 function c2511.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetDescription(aux.Stringid(2511,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
@@ -68,20 +69,11 @@ function c2511.tsop(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.NecroValleyFilter()(c) then return end
 	local b1=c:IsAbleToHand()
 	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-	local op=0
-	if b1 and not b2 then
-		op=Duel.SelectOption(tp,1190)
-	end
-	if not b1 and b2 then
-		op=Duel.SelectOption(tp,1152)+1
-	end
-	if b1 and b2 then
-		op=Duel.SelectOption(tp,1190,1152)
-	end
-	if op==0 then
+	local op=aux.SelectFromOptions(tp,{b1,1190},{b2,1152})
+	if op==1 then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
-	if op==1 then
+	if op==2 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

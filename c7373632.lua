@@ -1,10 +1,11 @@
 --神の進化
 function c7373632.initial_effect(c)
+	aux.AddCodeList(c,21208154,62180201,57793869)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c7373632.target)
 	e1:SetOperation(c7373632.activate)
@@ -85,7 +86,7 @@ function c7373632.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
-		Duel.SendtoGrave(sg,REASON_RULE)
+		Duel.SendtoGrave(sg,REASON_RULE,1-tp)
 	end
 end
 function c7373632.effectfilter(e,ct)

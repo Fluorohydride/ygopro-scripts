@@ -38,7 +38,7 @@ function c6128460.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_DISCARD)
 end
 function c6128460.thfilter(c)
-	return (aux.IsCodeListed(c,32274490) or c:IsCode(32274490)) and not c:IsCode(6128460) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return aux.IsCodeOrListed(c,32274490) and not c:IsCode(6128460) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c6128460.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

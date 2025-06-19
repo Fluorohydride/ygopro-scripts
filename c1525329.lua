@@ -1,4 +1,4 @@
---７つの武器を持つハンター
+--7つの武器を持つハンター
 function c1525329.initial_effect(c)
 	--arm
 	local e1=Effect.CreateEffect(c)

@@ -39,7 +39,7 @@ function c68304193.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1,68304194)
 	e4:SetCondition(c68304193.rmcon)
-	e4:SetTarget(c68304193.rmtg)
+	e4:SetTarget(c68304193.rmtg2)
 	e4:SetOperation(c68304193.rmop)
 	c:RegisterEffect(e4)
 end
@@ -82,4 +82,8 @@ function c68304193.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68304193.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
+end
+function c68304193.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return rp==1-tp and Duel.IsExistingMatchingCard(c68304193.rmfilter,tp,0,LOCATION_EXTRA,1,nil,tp) end
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_EXTRA)
 end

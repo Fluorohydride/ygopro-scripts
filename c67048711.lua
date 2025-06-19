@@ -1,4 +1,4 @@
---７
+--7
 function c67048711.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -31,11 +31,12 @@ function c67048711.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c67048711.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetMatchingGroupCount(c67048711.filter,tp,LOCATION_SZONE,0,nil)==3 then
+	local ex=Duel.GetOperationInfo(0,CATEGORY_DRAW)
+	if ex then
 		if Duel.Draw(tp,3,REASON_EFFECT)~=0 then
 			Duel.BreakEffect()
 			local g=Duel.GetMatchingGroup(c67048711.filter,tp,LOCATION_ONFIELD,0,nil)
-			Duel.Destroy(g,REASON_EFFECT)
+			Duel.Destroy(g,REASON_RULE)
 		end
 	end
 end

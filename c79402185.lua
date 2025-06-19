@@ -1,5 +1,6 @@
 --ボンディング－D2O
 function c79402185.initial_effect(c)
+	aux.AddCodeList(c,43017476,58071123,6022371,85066822)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -27,7 +28,7 @@ function c79402185.costfilter(c,tp)
 	return c:IsCode(43017476,58071123) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c79402185.fgoal(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,REASON_COST,true,nil,g)
 end
 function c79402185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

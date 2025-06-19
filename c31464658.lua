@@ -1,7 +1,7 @@
 --三眼の死霊
 function c31464658.initial_effect(c)
 	--to hand
-	local e1=Effect.CreateEffect(c)  
+	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31464658,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_IGNITION)
@@ -10,7 +10,7 @@ function c31464658.initial_effect(c)
 	e1:SetCost(c31464658.cost)
 	e1:SetTarget(c31464658.target)
 	e1:SetOperation(c31464658.operation)
-	c:RegisterEffect(e1) 
+	c:RegisterEffect(e1)
 end
 function c31464658.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

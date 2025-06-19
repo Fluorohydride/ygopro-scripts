@@ -1,4 +1,4 @@
---ジ・アライバル・サイバース@イグニスター
+--ジ・アライバル・サイバース＠イグニスター
 function c11738489.initial_effect(c)
 	c:SetUniqueOnField(1,0,11738489)
 	--link summon
@@ -52,7 +52,7 @@ function c11738489.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local zone=bit.band(c:GetLinkedZone(tp),0x1f)
 	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 	local lg=c:GetLinkedGroup():Filter(Card.IsControler,nil,tp)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c11738489.cfilter(chkc,g,ct) and chkc~=c end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c11738489.cfilter(chkc,lg,ct) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c11738489.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,lg,ct)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0x135,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK,POS_FACEUP,tp,0,zone) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

@@ -46,6 +46,7 @@ function c90411554.initial_effect(c)
 	e4:SetTarget(c90411554.thtg)
 	e4:SetOperation(c90411554.thop)
 	c:RegisterEffect(e4)
+	c90411554.Dragon_Ruler_handes_effect=e3
 end
 function c90411554.rfilter(c)
 	return (c:IsRace(RACE_DRAGON) or c:IsAttribute(ATTRIBUTE_EARTH)) and c:IsAbleToRemoveAsCost()
@@ -100,11 +101,16 @@ function c90411554.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c90411554.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c90411554.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	if g:GetFirst()==e:GetHandler() then
+		e:GetHandler():ReleaseEffectRelation(e)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c90411554.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	local c=e:GetHandler()
+	if not aux.NecroValleyFilter()(tc) then return end
+	if tc:IsRelateToChain() or (tc==c and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_HAND) and c:GetReasonEffect()==e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

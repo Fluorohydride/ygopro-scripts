@@ -36,7 +36,8 @@ function c36346532.efilter(e,re)
 	return re:IsActiveType(TYPE_MONSTER) and re:GetOwner()~=e:GetOwner()
 end
 function c36346532.cfilter(c,tp)
-	return c:GetSequence()<5 and c:IsFacedown() and c:IsAbleToGrave() and Duel.IsExistingMatchingCard(c36346532.setfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
+	return c:GetSequence()<5 and c:IsFacedown() and c:IsAbleToGrave() and Duel.GetSZoneCount(tp,c)>0
+		and Duel.IsExistingMatchingCard(c36346532.setfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
 end
 function c36346532.setfilter(c,mc,tp)
 	if not (c:IsSetCard(0xd4) and c:IsType(TYPE_TRAP)) then return false end
@@ -61,6 +62,7 @@ function c36346532.setop(e,tp,eg,ep,ev,re,r,rp)
 		local sc=g:GetFirst()
 		if sc and Duel.SSet(tp,sc)~=0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetDescription(aux.Stringid(36346532,1))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

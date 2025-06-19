@@ -15,6 +15,7 @@ function c63468625.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c63468625.spcon)
+	e2:SetTarget(c63468625.sptg)
 	e2:SetOperation(c63468625.spop)
 	c:RegisterEffect(e2)
 	--equip
@@ -51,10 +52,19 @@ function c63468625.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c63468625.spfilter,c:GetControler(),LOCATION_HAND,0,3,c)
 end
-function c63468625.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c63468625.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c63468625.spfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c63468625.spfilter,tp,LOCATION_HAND,0,3,3,c)
-	Duel.SendtoGrave(g,REASON_COST)
+	local sg=g:CancelableSelect(tp,3,3,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c63468625.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 end
 function c63468625.eqfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsAbleToChangeControler()
@@ -80,7 +90,6 @@ function c63468625.eqop(e,tp,eg,ep,ev,re,r,rp)
 		--Add Equip limit
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c63468625.eqlimit)

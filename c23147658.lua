@@ -29,8 +29,7 @@ function c23147658.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c23147658.thfilter(c)
-	if not c:IsAbleToHand() or c:IsCode(23147658) then return false end
-	return c:IsCode(59419719) or aux.IsCodeListed(c,59419719)
+	return aux.IsCodeOrListed(c,59419719) and not c:IsCode(23147658) and c:IsAbleToHand()
 end
 function c23147658.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_EFFECT)

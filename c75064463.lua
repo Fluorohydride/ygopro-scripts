@@ -1,5 +1,6 @@
 --ハーピィ・クィーン
 function c75064463.initial_effect(c)
+	aux.AddCodeList(c,75782277)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75064463,0))
@@ -21,7 +22,7 @@ end
 function c75064463.filter(c)
 	return c:IsCode(75782277) and c:IsAbleToHand()
 end
-function c75064463.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c75064463.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75064463.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

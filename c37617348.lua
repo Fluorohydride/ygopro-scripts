@@ -1,4 +1,4 @@
---R-ACEハイドラント
+--R－ACEハイドラント
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--cannot be battle and effect target
@@ -16,6 +16,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--quick activate
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e3:SetTargetRange(LOCATION_SZONE,0)

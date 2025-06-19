@@ -11,7 +11,7 @@ end
 function c53193261.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe)
 end
-function c53193261.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c53193261.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c53193261.filter,tp,LOCATION_MZONE,0,1,nil) end
 end
 function c53193261.activate(e,tp,eg,ep,ev,re,r,rp)

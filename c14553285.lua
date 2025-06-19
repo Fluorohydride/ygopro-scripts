@@ -8,7 +8,7 @@ function c14553285.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(aux.FALSE)
+	e1:SetValue(aux.AssaultModeLimit)
 	c:RegisterEffect(e1)
 	--counter
 	local e2=Effect.CreateEffect(c)

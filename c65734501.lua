@@ -1,4 +1,4 @@
---R-ACEエアホイスター
+--R－ACEエアホイスター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--search

@@ -36,7 +36,8 @@ function c79552283.filter(c,e,tp)
 end
 function c79552283.adatktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c79552283.filter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c79552283.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetTurnPlayer()==tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
+		and Duel.IsExistingTarget(c79552283.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c79552283.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 end

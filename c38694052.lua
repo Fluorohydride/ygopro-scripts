@@ -60,7 +60,8 @@ function c38694052.desop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 		if og:IsExists(c38694052.checkfilter,1,nil) and #g>0
 			and Duel.SelectYesNo(tp,aux.Stringid(38694052,1)) then
-			if tc:IsType(TYPE_XYZ) then atk=tc:GetOriginalRank() else atk=tc:GetOriginalLevel() end
+			local star=0
+			if tc:IsType(TYPE_XYZ) then star=tc:GetOriginalRank() else star=tc:GetOriginalLevel() end
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(38694052,2))
 			local sg=g:Select(tp,1,1,nil)
 			Duel.HintSelection(sg)
@@ -69,7 +70,8 @@ function c38694052.desop(e,tp,eg,ep,ev,re,r,rp)
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_UPDATE_ATTACK)
-				e1:SetValue(atk*300)
+				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+				e1:SetValue(star*300)
 				e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
 				tc:RegisterEffect(e1)
 			end

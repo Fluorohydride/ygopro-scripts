@@ -1,5 +1,6 @@
 --ローズ・プリンセス
 function c58062306.initial_effect(c)
+	aux.AddCodeList(c,84335863)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -21,6 +22,7 @@ function c58062306.initial_effect(c)
 	e2:SetOperation(c58062306.operation)
 	c:RegisterEffect(e2)
 end
+c58062306.treat_itself_tuner=true
 function c58062306.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0)==0
@@ -44,7 +46,7 @@ end
 function c58062306.filter(c)
 	return c:IsCode(84335863) and c:IsAbleToHand()
 end
-function c58062306.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c58062306.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c58062306.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

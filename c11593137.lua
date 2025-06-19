@@ -21,14 +21,14 @@ function c11593137.filter(c)
 	return c:IsAttribute(0x30) and c:IsAbleToRemove()
 end
 function c11593137.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and eg:IsExists(c11593137.filter,1,nil)
+	return aux.NegateSummonCondition() and eg:IsExists(c11593137.filter,1,nil)
 end
 function c11593137.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
 	Duel.PayLPCost(tp,2000)
 end
 function c11593137.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return Duel.IsPlayerCanRemove(tp) end
 	local g=eg:Filter(c11593137.filter,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE_SUMMON,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)

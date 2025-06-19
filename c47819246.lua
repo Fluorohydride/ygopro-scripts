@@ -64,7 +64,7 @@ function c47819246.filter(c)
 end
 function c47819246.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c47819246.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c47819246.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c47819246.filter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -75,7 +75,7 @@ function c47819246.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsLocation(LOCATION_SZONE) then return end
 	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetControler()==c:GetControler() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 		--Equip limit
 		local e1=Effect.CreateEffect(c)
@@ -90,7 +90,8 @@ function c47819246.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c47819246.eqlimit(e,c)
-	return c:GetControler()==e:GetOwnerPlayer() and c:IsSetCard(0xdc) and c:IsType(TYPE_XYZ)
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsSetCard(0xdc) and c:IsType(TYPE_XYZ)
 end
 function c47819246.atkval(e,c)
 	return c:GetRank()*100
@@ -106,7 +107,7 @@ function c47819246.mtcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47819246.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=e:GetHandler():GetEquipTarget()
-	if chk==0 then return ec and not ec:IsHasEffect(EFFECT_EXTRA_ATTACK) end
+	if chk==0 then return ec and ec:IsControler(tp) and not ec:IsHasEffect(EFFECT_EXTRA_ATTACK) end
 end
 function c47819246.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=Duel.GetFirstTarget()

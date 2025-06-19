@@ -1,4 +1,4 @@
---D－HERO Bloo－D
+--D-HERO Bloo-D
 function c83965310.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -42,13 +42,13 @@ end
 function c83965310.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp)
-	return rg:CheckSubGroup(aux.mzctcheckrel,3,3,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
+	return rg:CheckSubGroup(aux.mzctcheckrel,3,3,tp,REASON_SPSUMMON)
 end
 function c83965310.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,3,3,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,3,3,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -57,7 +57,7 @@ function c83965310.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c83965310.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c83965310.cfilter(c)
@@ -91,7 +91,7 @@ function c83965310.eqop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterFlagEffect(83965310,RESET_EVENT+RESETS_STANDARD,0,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c83965310.eqlimit)

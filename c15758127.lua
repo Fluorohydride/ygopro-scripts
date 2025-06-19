@@ -58,7 +58,7 @@ function c15758127.fselect(g,e,tp)
 end
 function c15758127.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c15758127.thfilter,tp,LOCATION_GRAVE,0,1,nil)
-	local g=Duel.GetReleaseGroup(tp):Filter(c15758127.rfilter,nil,tp)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_EFFECT):Filter(c15758127.rfilter,nil,tp)
 	local b2=g:CheckSubGroup(c15758127.fselect,2,2,e,tp)
 	if chk==0 then return b1 or b2 end
 	local s=0
@@ -89,7 +89,7 @@ function c15758127.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if e:GetLabel()==1 then
-		local g=Duel.GetReleaseGroup(tp):Filter(c15758127.rfilter,nil,tp)
+		local g=Duel.GetReleaseGroup(tp,false,REASON_EFFECT):Filter(c15758127.rfilter,nil,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local rg=g:SelectSubGroup(tp,c15758127.fselect,false,2,2,e,tp)
 		if rg and rg:GetCount()==2 then

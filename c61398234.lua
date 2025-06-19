@@ -1,4 +1,4 @@
---Gate Guardian of Wind and Water
+--風水魔神－ゲート・ガーディアン
 function c61398234.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

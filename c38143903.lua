@@ -25,7 +25,6 @@ function c38143903.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e2)
 end
-c38143903.toss_coin=true
 function c38143903.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
 		and Duel.IsChainNegatable(ev)
@@ -33,7 +32,7 @@ end
 function c38143903.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGrave()
 		and (not re:GetHandler():IsRelateToEffect(re) or re:GetHandler():IsAbleToChangeControler()) end
-	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,p,1)
+	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,ep,1)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
 	if re:GetHandler():IsRelateToEffect(re) then

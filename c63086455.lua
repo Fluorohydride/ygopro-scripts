@@ -16,8 +16,7 @@ function c63086455.tgfilter(c,e,tp)
 end
 function c63086455.setfilter(c,cc,e,tp)
 	local b1=Duel.GetMZoneCount(1-tp,cc,tp)>0
-	local st=Duel.GetLocationCount(1-tp,LOCATION_SZONE,tp)
-	local b2=st>0 or cc:IsLocation(LOCATION_SZONE) and cc:GetSequence()<5 and st>-1
+	local b2=Duel.GetSZoneCount(1-tp,cc,tp)>0
 	return b1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE,1-tp)
 		or (b2 or c:IsType(TYPE_FIELD)) and c:IsSSetable(true)
 end
@@ -38,11 +37,10 @@ function c63086455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c63086455.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local tg=Duel.GetTargetsRelateToChain()
 	local tc1=tg:Filter(Card.IsLocation,nil,LOCATION_ONFIELD):GetFirst()
 	local tc2=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
-	if tc1 and tc1:IsRelateToEffect(e) and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE)
-		and tc2 and tc2:IsRelateToEffect(e) then
+	if tc1 and Duel.SendtoGrave(tc1,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_GRAVE) and tc2 then
 		if tc2:IsType(TYPE_MONSTER) then
 			Duel.SpecialSummon(tc2,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 		else

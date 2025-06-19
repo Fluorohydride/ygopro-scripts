@@ -14,6 +14,9 @@ end
 function c1984618.tgfilter(c,tp)
 	return c:IsAbleToGrave() and Duel.IsExistingMatchingCard(c1984618.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c:GetAttack())
 end
+function c1984618.opfilter(c,tp)
+	return c:IsAbleToGrave() and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c1984618.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c:GetAttack())
+end
 function c1984618.thfilter(c,atk)
 	return (c:IsSetCard(0x145) and c:IsType(TYPE_MONSTER) or c:IsCode(68468459)) and c:IsAttackBelow(atk) and c:IsAbleToHand()
 end
@@ -24,7 +27,7 @@ function c1984618.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1984618.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c1984618.tgfilter,tp,LOCATION_EXTRA,0,1,1,nil,tp)
+	local g=Duel.SelectMatchingCard(tp,c1984618.opfilter,tp,LOCATION_EXTRA,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		local atk=tc:GetAttack()

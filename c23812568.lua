@@ -32,7 +32,7 @@ end
 function c23812568.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c23812568.cfilter,tp,LOCATION_HAND+LOCATION_DECK,0,2,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c23812568.cfilter,tp,LOCATION_DECK,0,2,2,e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,c23812568.cfilter,tp,LOCATION_HAND+LOCATION_DECK,0,2,2,e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c23812568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

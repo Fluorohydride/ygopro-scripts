@@ -10,6 +10,7 @@ function c37406863.initial_effect(c)
 	e1:SetOperation(c37406863.activate)
 	c:RegisterEffect(e1)
 end
+c37406863.has_text_type=TYPE_SPIRIT
 function c37406863.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
 	Duel.SetTargetPlayer(tp)

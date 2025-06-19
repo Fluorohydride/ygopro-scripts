@@ -35,7 +35,7 @@ function c42256406.initial_effect(c)
 	e5:SetOperation(c42256406.defop)
 	c:RegisterEffect(e5)
 end
-function c42256406.potg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c42256406.potg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAttackPos() end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
 end

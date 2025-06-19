@@ -1,5 +1,6 @@
 --トラミッド・スフィンクス
 function c68406755.initial_effect(c)
+	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -61,13 +62,15 @@ function c68406755.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68406755.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,true) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c68406755.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	if Duel.SpecialSummon(c,0,tp,tp,false,true,POS_FACEUP)~=0 then
+		c:CompleteProcedure()
+	end
 end
 function c68406755.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe2)

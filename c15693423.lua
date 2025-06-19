@@ -12,6 +12,7 @@ function c15693423.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(15693423,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c15693423.handcon)
@@ -35,7 +36,7 @@ function c15693423.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
 		local sg=g:FilterSelect(1-tp,Card.IsAbleToRemove,ct,ct,nil,1-tp,POS_FACEDOWN,REASON_RULE)
-		Duel.Remove(sg,POS_FACEDOWN,REASON_RULE)
+		Duel.Remove(sg,POS_FACEDOWN,REASON_RULE,1-tp)
 	end
 end
 function c15693423.handcon(e)

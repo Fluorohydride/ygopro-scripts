@@ -12,24 +12,27 @@ function c43378048.initial_effect(c)
 	e1:SetValue(c43378048.splimit)
 	c:RegisterEffect(e1)
 	--indes
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
+	e2:SetValue(1)
+	c:RegisterEffect(e2)
+	--atkup
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e3:SetValue(1)
+	e3:SetCode(EFFECT_UPDATE_ATTACK)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetValue(c43378048.atkval)
 	c:RegisterEffect(e3)
-	--atkup
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_UPDATE_ATTACK)
-	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetCondition(c43378048.atkcon)
-	e4:SetValue(10000)
-	c:RegisterEffect(e4)
 end
 function c43378048.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c43378048.atkcon(e)
-	return Duel.GetTurnPlayer()==e:GetHandlerPlayer()
+function c43378048.atkval(e,c)
+	if Duel.GetTurnPlayer()==e:GetHandlerPlayer() then
+		return 10000
+	else
+		return 0
+	end
 end

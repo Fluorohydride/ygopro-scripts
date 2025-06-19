@@ -64,7 +64,7 @@ function c5916510.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
-		and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

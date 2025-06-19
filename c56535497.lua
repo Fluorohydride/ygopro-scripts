@@ -25,7 +25,7 @@ end
 function c56535497.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	if Duel.GetTurnPlayer()==tp then return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
-	else return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon() end
+	else return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon(e,tp,eg,ep,ev,re,r,rp) end
 end
 function c56535497.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

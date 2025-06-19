@@ -44,11 +44,15 @@ function c85651167.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tg,REASON_EFFECT)
 	end
 end
+function c85651167.spcostfilter(c,tp)
+	return c:IsControler(tp) and c:IsAbleToGraveAsCost()
+end
 function c85651167.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipGroup():IsExists(Card.IsAbleToGraveAsCost,1,nil) end
+	local g=e:GetHandler():GetEquipGroup()
+	if chk==0 then return g:IsExists(c85651167.spcostfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=e:GetHandler():GetEquipGroup():FilterSelect(tp,Card.IsAbleToGraveAsCost,1,1,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	local tg=g:FilterSelect(tp,c85651167.spcostfilter,1,1,nil,tp)
+	Duel.SendtoGrave(tg,REASON_COST)
 end
 function c85651167.spfilter(c,e,tp)
 	return c:IsSetCard(0x3b) and c:IsLevelBelow(7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

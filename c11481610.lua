@@ -51,7 +51,7 @@ function c11481610.activate(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 			local g=Duel.GetMatchingGroup(c11481610.cfilter,tp,LOCATION_HAND,0,nil,e,tp,lsc,rsc)
 			local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
-			res=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+			res=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)>0
 		end
 	end
 	if not res then

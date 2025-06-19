@@ -43,7 +43,7 @@ function c69167267.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c69167267.spfilter2(c,e,tp)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and (c:IsCode(73580471) or aux.IsCodeListed(c,73580471)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceupEx() and aux.IsCodeOrListed(c,73580471) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c69167267.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and c69167267.spfilter2(chkc,e,tp) end

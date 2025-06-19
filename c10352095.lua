@@ -13,6 +13,7 @@ function c10352095.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_CHANGE_ATTRIBUTE)
+	e2:SetCondition(c10352095.con)
 	e2:SetValue(c10352095.value)
 	c:RegisterEffect(e2)
 	e1:SetLabelObject(e2)
@@ -30,7 +31,7 @@ function c10352095.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local rc=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-g:GetFirst():GetAttribute())
+	local rc=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~g:GetFirst():GetAttribute())
 	e:GetLabelObject():SetLabel(rc)
 	e:GetHandler():SetHint(CHINT_ATTRIBUTE,rc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
@@ -40,6 +41,9 @@ function c10352095.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
+end
+function c10352095.con(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetLabel()>0
 end
 function c10352095.value(e,c)
 	return e:GetLabel()

@@ -53,7 +53,7 @@ function c33438666.spfilter(c,e,tp,rc,tid)
 	return c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc and c:GetTurnID()==tid
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c33438666.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c33438666.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c33438666.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp,e:GetHandler(),Duel.GetTurnCount()) end
 	local g=Duel.GetMatchingGroup(c33438666.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e,tp,e:GetHandler(),Duel.GetTurnCount())

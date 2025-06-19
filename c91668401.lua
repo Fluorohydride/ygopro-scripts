@@ -1,4 +1,4 @@
---サイバー・エンジェル-伊舎那-
+--サイバー・エンジェル－伊舎那－
 function c91668401.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave
@@ -44,7 +44,7 @@ function c91668401.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
-		Duel.SendtoGrave(sg,REASON_RULE)
+		Duel.SendtoGrave(sg,REASON_RULE,1-tp)
 	end
 end
 function c91668401.atcon(e,tp,eg,ep,ev,re,r,rp)
@@ -86,11 +86,15 @@ end
 function c91668401.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c91668401.tdfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	if #g>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g2=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
-		if #g2>0 then
-			Duel.Destroy(g2,REASON_EFFECT)
+	if #g>0 then
+		Duel.HintSelection(g)
+		if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+			local g2=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
+			if #g2>0 then
+				Duel.HintSelection(g2)
+				Duel.Destroy(g2,REASON_EFFECT)
+			end
 		end
 	end
 end

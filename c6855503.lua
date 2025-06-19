@@ -17,7 +17,7 @@ function c6855503.initial_effect(c)
 	--accumulate
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(0x10000000+6855503)
+	e2:SetCode(EFFECT_FLAG_EFFECT+6855503)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCondition(c6855503.costcon)

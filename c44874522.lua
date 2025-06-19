@@ -41,8 +41,8 @@ function c44874522.valcheck(e,c)
 	local flag=0
 	local tc=g:GetFirst()
 	while tc do
-		if tc:IsSetCard(0x7) then flag=bit.bor(flag,0x1) end
-		if tc:IsSetCard(0x51) then flag=bit.bor(flag,0x2) end
+		if tc:IsSetCard(0x7) and tc:IsType(TYPE_MONSTER) then flag=bit.bor(flag,0x1) end
+		if tc:IsSetCard(0x51) and tc:IsType(TYPE_MONSTER) then flag=bit.bor(flag,0x2) end
 		tc=g:GetNext()
 	end
 	e:SetLabel(flag)
@@ -76,7 +76,7 @@ function c44874522.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.condition(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dsercon(e) and Duel.GetAttacker()==e:GetHandler()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

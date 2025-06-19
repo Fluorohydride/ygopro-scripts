@@ -1,4 +1,5 @@
 --コズミック・ブレイザー・ドラゴン
+local s,id,o=GetID()
 function c21123811.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSynchroType,TYPE_SYNCHRO),aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),2)
@@ -55,13 +56,14 @@ function c21123811.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 c21123811.material_type=TYPE_SYNCHRO
+c21123811.cosmic_quasar_dragon_summon=true
 function c21123811.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c21123811.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToRemoveAsCost() end
-	if Duel.Remove(c,0,REASON_COST+REASON_TEMPORARY)~=0 then
+	if Duel.Remove(c,0,REASON_COST+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

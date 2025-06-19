@@ -1,4 +1,4 @@
---Prey of the Jirai Gumo
+--地雷蜘蛛の餌食
 function c33055499.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	--Activate
@@ -28,7 +28,8 @@ function c33055499.initial_effect(c)
 end
 function c33055499.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local seq=e:GetHandler():GetSequence()
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_MZONE,seq)
+	if chk==0 then return e:IsCostChecked()
+		and Duel.CheckLocation(tp,LOCATION_MZONE,seq)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,33055499,0,TYPES_NORMAL_TRAP_MONSTER,2100,100,5,RACE_INSECT,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
@@ -39,8 +40,7 @@ function c33055499.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local seq=c:GetSequence()
 	local zone=1<<seq
-	if not Duel.CheckLocation(tp,LOCATION_MZONE,seq)
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,33055499,0,TYPES_NORMAL_TRAP_MONSTER,2100,100,5,RACE_INSECT,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,33055499,0,TYPES_NORMAL_TRAP_MONSTER,2100,100,5,RACE_INSECT,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP)
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP,zone)~=0 then
 		local g=c:GetColumnGroup():Filter(c33055499.filter,nil,tp)

@@ -9,7 +9,7 @@ function c38299233.initial_effect(c)
 	--roll and destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(38299233,0))
-	e2:SetCategory(CATEGORY_DESTROY)
+	e2:SetCategory(CATEGORY_DICE+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
@@ -19,7 +19,6 @@ function c38299233.initial_effect(c)
 	e2:SetOperation(c38299233.rdop)
 	c:RegisterEffect(e2)
 end
-c38299233.toss_dice=true
 function c38299233.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end

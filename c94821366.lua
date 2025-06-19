@@ -56,7 +56,7 @@ function c94821366.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94821366.eqfilter1(c,e,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsSummonPlayer(1-tp)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsControler(1-tp) and c:IsSummonPlayer(1-tp)
 		and Duel.IsExistingMatchingCard(c94821366.eqfilter2,tp,LOCATION_DECK,0,1,nil)
 end
 function c94821366.eqfilter2(c)
@@ -99,7 +99,7 @@ function c94821366.costfilter(c)
 end
 function c94821366.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94821366.costfilter,tp,LOCATION_GRAVE,0,1,nil) end
-	local rt=Duel.GetTargetCount(nil,tp,0,LOCATION_ONFIELD,1,nil)
+	local rt=Duel.GetTargetCount(nil,tp,0,LOCATION_ONFIELD,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c94821366.costfilter,tp,LOCATION_GRAVE,0,1,rt,nil)
 	local cg=Duel.Remove(g,POS_FACEUP,REASON_COST)

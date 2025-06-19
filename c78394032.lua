@@ -1,5 +1,6 @@
 --モーターシェル
 function c78394032.initial_effect(c)
+	aux.AddCodeList(c,82556059)
 	--"Motor Token" Summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
@@ -15,7 +16,7 @@ end
 function c78394032.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
-function c78394032.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c78394032.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	and Duel.IsPlayerCanSpecialSummonMonster(tp,78394033,0,TYPES_TOKEN_MONSTER,200,200,1,RACE_MACHINE,ATTRIBUTE_EARTH,POS_FACEUP_ATTACK) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)

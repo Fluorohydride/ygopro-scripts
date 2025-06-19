@@ -7,7 +7,7 @@ function c9264485.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e1:SetTarget(aux.TargetBoolFunction(Card.IsCode,75830094,11224103,48229808))
+	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x119d))
 	e1:SetValue(aux.tgoval)
 	c:RegisterEffect(e1)
 end

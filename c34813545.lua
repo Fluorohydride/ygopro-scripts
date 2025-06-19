@@ -48,29 +48,38 @@ end
 function c34813545.mfilter(c)
 	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER)
 end
-function c34813545.cfilter(c,syn)
-	return syn:IsSynchroSummonable(c)
+function c34813545.syncheck(g,tp,syncard)
+	return g:IsExists(c34813545.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
 end
-function c34813545.scfilter(c,mg)
-	return mg:IsExists(c34813545.cfilter,1,nil,c)
+function c34813545.scfilter(c,tp,mg)
+	return mg:CheckSubGroup(c34813545.syncheck,2,#mg,tp,c)
 end
 function c34813545.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetMatchingGroup(c34813545.mfilter,tp,LOCATION_MZONE,0,nil)
-		return Duel.IsExistingMatchingCard(c34813545.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
+		local mg=Duel.GetSynchroMaterial(tp)
+		if mg:IsExists(Card.GetHandSynchro,1,nil) then
+			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+			if mg2:GetCount()>0 then mg:Merge(mg2) end
+		end
+		return Duel.IsExistingMatchingCard(c34813545.scfilter,tp,LOCATION_EXTRA,0,1,nil,tp,mg)
 	end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c34813545.scop(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetMatchingGroup(c34813545.mfilter,tp,LOCATION_MZONE,0,nil)
-	local g=Duel.GetMatchingGroup(c34813545.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
+	local mg=Duel.GetSynchroMaterial(tp)
+	if mg:IsExists(Card.GetHandSynchro,1,nil) then
+		local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+		if mg2:GetCount()>0 then mg:Merge(mg2) end
+	end
+	local g=Duel.GetMatchingGroup(c34813545.scfilter,tp,LOCATION_EXTRA,0,nil,tp,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
+		local sc=sg:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local tg=mg:FilterSelect(tp,c34813545.cfilter,1,1,nil,sg:GetFirst())
-		Duel.SynchroSummon(tp,sg:GetFirst(),tg:GetFirst())
+		local tg=mg:SelectSubGroup(tp,c34813545.syncheck,false,2,#mg,tp,sc)
+		Duel.SynchroSummon(tp,sc,nil,tg,#tg-1,#tg-1)
 	end
 end
 function c34813545.filter1(c,e)
@@ -81,7 +90,7 @@ function c34813545.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c34813545.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsSetCard,1,nil,0x2a)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x2a)
 end
 function c34813545.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

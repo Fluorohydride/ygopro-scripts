@@ -2,7 +2,7 @@
 function c82734805.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCode2FunRep(c,14799437,23440231,aux.FilterBoolFunction(Card.IsFusionSetCard,0xbb),1,63,true,true)
+	aux.AddFusionProcCode2FunRep(c,14799437,23440231,aux.FilterBoolFunction(Card.IsFusionSetCard,0xbb),1,127,true,true)
 	--spsummon success
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(82734805,0))
@@ -29,7 +29,7 @@ function c82734805.con(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82734805.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetLabel()
-	local con3,con5,con8,con10=nil
+	local con3,con5,con8,con10=nil,nil,nil,nil
 	if ct>=3 then
 		con3=Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_EXTRA,0,3,nil)
 			and Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,0,LOCATION_EXTRA,3,nil)

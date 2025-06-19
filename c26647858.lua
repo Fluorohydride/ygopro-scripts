@@ -41,11 +41,11 @@ function c26647858.filter(c)
 	return c:IsFaceup() and c:IsAttackBelow(1500) and c:IsRace(RACE_WARRIOR)
 end
 function c26647858.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c26647858.filter(chkc) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and Duel.IsExistingTarget(c26647858.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c26647858.filter(chkc) end
+	if chk==0 then return e:IsCostChecked()
+		and Duel.IsExistingTarget(c26647858.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c26647858.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c26647858.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
 function c26647858.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -75,7 +75,8 @@ function c26647858.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c26647858.eqlimit(e,c)
-	return c:IsAttackBelow(1500) and c:IsRace(RACE_WARRIOR)
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsAttackBelow(1500) and c:IsRace(RACE_WARRIOR)
 end
 function c26647858.atval(e,c)
 	return c:IsAttackAbove(1900) and not c:IsImmuneToEffect(e)

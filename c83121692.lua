@@ -28,11 +28,15 @@ function c83121692.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end
+function c83121692.tgfilter(c,ec)
+	return c:GetFlagEffect(83121692)==0 and not ec:IsHasCardTarget(c)
+end
 function c83121692.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,0,1,nil) end
+	local c=e:GetHandler()
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c83121692.tgfilter(chkc,c) end
+	if chk==0 then return Duel.IsExistingTarget(c83121692.tgfilter,tp,LOCATION_MZONE,0,1,nil,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,nil,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c83121692.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,c)
 end
 function c83121692.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -44,17 +48,14 @@ function c83121692.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		c:SetCardTarget(tc)
 	end
-	if c:GetFlagEffect(83121693)==0 then
-		c:RegisterFlagEffect(83121693,RESET_EVENT+RESETS_STANDARD,0,0)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetCondition(c83121692.indcon)
-		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
-	end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetCondition(c83121692.indcon)
+	e1:SetValue(1)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	tc:RegisterEffect(e1)
 end
 function c83121692.indcon(e)
 	local c=e:GetHandler()

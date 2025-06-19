@@ -34,7 +34,7 @@ function c71921856.initial_effect(c)
 end
 aux.xyz_number[71921856]=79
 function c71921856.filter(c)
-	return c:IsSetCard(0x84) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
+	return c:IsSetCard(0x1084) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c71921856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
@@ -54,13 +54,13 @@ function c71921856.atkval(e,c)
 end
 function c71921856.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetOverlayCount()
+	local ct=c:GetPreviousOverlayCountOnField()
 	e:SetLabel(ct)
 	return c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and ct>0
 end
 function c71921856.spfilter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x84) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x1084) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c71921856.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c71921856.spfilter(chkc,e,tp) end

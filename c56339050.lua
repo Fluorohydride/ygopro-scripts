@@ -20,7 +20,7 @@ function c56339050.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c56339050.cfilter(c,atk)
-	return c:IsFaceup() and c:IsSetCard(0x21) and c:GetAttack()>atk
+	return c:IsFaceup() and c:IsSetCard(0x1021) and c:GetAttack()>atk
 end
 function c56339050.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()

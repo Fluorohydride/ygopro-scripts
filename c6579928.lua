@@ -23,7 +23,7 @@ function c6579928.filter(c,att)
 	return c:IsFaceup() and c:IsAttribute(att)
 end
 function c6579928.thfilter(c,tp)
-	return c:IsSetCard(0x3d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x103d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 		and not Duel.IsExistingMatchingCard(c6579928.filter,tp,LOCATION_MZONE,0,1,nil,c:GetAttribute())
 end
 function c6579928.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -39,7 +39,7 @@ function c6579928.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c6579928.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c6579928.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

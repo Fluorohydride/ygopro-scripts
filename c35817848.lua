@@ -38,7 +38,7 @@ function c35817848.scop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
-		Duel.SynchroSummon(tp,sg:GetFirst(),nil,mg)
+		Duel.SynchroSummon(tp,sg:GetFirst(),nil)
 	end
 end
 function c35817848.tdcon(e,tp,eg,ep,ev,re,r,rp)

@@ -14,6 +14,7 @@ function c53087962.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c53087962.sprcon)
+	e2:SetTarget(c53087962.sprtg)
 	e2:SetOperation(c53087962.sprop)
 	c:RegisterEffect(e2)
 	--disable
@@ -65,17 +66,26 @@ function c53087962.sprcon(e,c)
 	local g=Duel.GetMatchingGroup(c53087962.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	return g:CheckSubGroup(c53087962.fselect,2,2,tp,c)
 end
-function c53087962.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c53087962.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c53087962.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,c53087962.fselect,false,2,2,tp,c)
-	Duel.SendtoGrave(tg,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c53087962.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c53087962.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local tg=e:GetLabelObject()
+	Duel.SendtoGrave(tg,REASON_SPSUMMON)
+	tg:DeleteGroup()
 end
 function c53087962.distg(e,c)
 	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsLevel(0)
 end
 function c53087962.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsSummonPlayer,1,nil,1-tp)
+	return eg:IsExists(Card.IsSummonPlayer,1,e:GetHandler(),1-tp)
 end
 function c53087962.thfilter(c)
 	return c:IsSetCard(0x163) and c:IsAbleToHand()

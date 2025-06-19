@@ -21,7 +21,7 @@ function c71934924.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c71934924.check(c,tp)
-	return c and c:IsSetCard(0x3d) and c:IsControler(tp)
+	return c and c:IsSetCard(0x103d) and c:IsControler(tp)
 end
 function c71934924.atop(e,tp,eg,ep,ev,re,r,rp)
 	if c71934924.check(Duel.GetAttacker(),tp) or c71934924.check(Duel.GetAttackTarget(),tp) then
@@ -29,7 +29,7 @@ function c71934924.atop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71934924.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetFlagEffect(71934924)==0
+	return c:IsFaceup() and c:IsSetCard(0x103d) and c:GetFlagEffect(71934924)==0
 end
 function c71934924.upop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

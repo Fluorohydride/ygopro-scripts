@@ -35,7 +35,7 @@ function c45112597.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,PLAYER_ALL,LOCATION_REMOVED)
 end
 function c45112597.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_REMOVED) and not c:IsReason(REASON_REDIRECT)
+	return not c:IsType(TYPE_TOKEN) and c:IsFaceup() and c:IsLocation(LOCATION_REMOVED) and not c:IsReason(REASON_REDIRECT)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP+POS_FACEDOWN_DEFENSE,c:GetControler())
 end
 function c45112597.rmop(e,tp,eg,ep,ev,re,r,rp)
@@ -86,7 +86,7 @@ function c45112597.rmop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummonComplete()
 			local cg=spg:Filter(Card.IsFacedown,nil)
 			if #cg>0 then
-				Duel.ConfirmCards(1-tp,g)
+				Duel.ConfirmCards(1-tp,cg)
 			end
 		end
 	end

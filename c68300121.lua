@@ -1,4 +1,4 @@
---魔鍵憑霊-ウェパルトゥ
+--魔鍵憑霊－ウェパルトゥ
 function c68300121.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -70,6 +70,6 @@ end
 function c68300121.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() then
-		Duel.SendtoGrave(tc,REASON_RULE)
+		Duel.SendtoGrave(tc,REASON_RULE,1-tp)
 	end
 end

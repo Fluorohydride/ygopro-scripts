@@ -1,6 +1,7 @@
---Gold Pride - Nytro Blaster
+--GP－Nブラスター
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,59900655)
 	--link summon
 	aux.AddLinkProcedure(c,s.mfilter,2,2,s.lcheck)
 	c:EnableReviveLimit()
@@ -44,14 +45,14 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.desfilter(c,tp,seq)
 	local sseq=c:GetSequence()
-	if c:IsControler(tp) then
-		return sseq==5 and seq==3 or sseq==6 and seq==1
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+		return sseq==5 and seq==3 or sseq==6 and seq==1 or sseq==3 and seq==5 or sseq==1 and seq==6
 	end
-	if c:IsLocation(LOCATION_SZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) then
 		return sseq<5 and sseq==seq
 	end
 	if sseq<5 then
-		return math.abs(sseq-seq)==1
+		return math.abs(sseq-seq)==1 or sseq==1 and seq==5 or sseq==3 and seq==6
 	end
 	if sseq>=5 then
 		return sseq==5 and seq==1 or sseq==6 and seq==3
@@ -59,10 +60,13 @@ function s.desfilter(c,tp,seq)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		local cg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,tp,tc:GetSequence())
-		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLP(tp)<Duel.GetLP(1-tp) and #cg>0
-			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
+		local row,column=aux.GetFieldIndex(tc)
+		if Duel.Destroy(tc,REASON_EFFECT)==0 or row<0 or column<0 then
+			return
+		end
+		local cg=aux.GetAdjacentGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD,row,column)
+		if Duel.GetLP(tp)<Duel.GetLP(1-tp) and #cg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
 			Duel.Destroy(cg,REASON_EFFECT)
 		end

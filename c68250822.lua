@@ -57,10 +57,10 @@ function c68250822.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectMatchingCard(tp,c68250822.filter1,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c68250822.filter1,tp,LOCATION_MZONE,0,1,1,tc)
 	if #g==0 then return end
 	local tc2=g:GetFirst()
-	if not tc:IsImmuneToEffect(e) and not tc2:IsImmuneToEffect(e) then
+	if not tc:IsImmuneToEffect(e) and not tc2:IsImmuneToEffect(e) and tc:IsCanOverlay() then
 		local og=tc:GetOverlayGroup()
 		if og:GetCount()>0 then
 			Duel.SendtoGrave(og,REASON_RULE)

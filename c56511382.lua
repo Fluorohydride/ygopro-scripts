@@ -30,11 +30,13 @@ function c56511382.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,1,1-tp,g:GetFirst():GetLevel()*400)
 end
+function c56511382.desfilter(c,tp)
+	return c:IsFaceup() and c:IsControler(tp)
+end
 function c56511382.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local lv=tc:GetLevel()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Destroy(tc,REASON_EFFECT)
+	if tc:IsRelateToEffect(e) and c56511382.desfilter(tc,1-tp) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,lv*400,REASON_EFFECT)
 	end
 end

@@ -1,4 +1,5 @@
 --刻剣の魔術師
+local s,id,o=GetID()
 function c80335817.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -70,9 +71,12 @@ function c80335817.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.FromCards(c,tc)
 	if Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local og=Duel.GetOperatedGroup()
+		if c:GetOriginalCode()~=id then
+			og:RemoveCard(c)
+		end
 		local oc=og:GetFirst()
 		while oc do
-			oc:RegisterFlagEffect(80335817,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
+			oc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
 			oc=og:GetNext()
 		end
 		og:KeepAlive()

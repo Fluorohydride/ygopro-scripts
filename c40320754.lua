@@ -27,7 +27,7 @@ function c40320754.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c40320754.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_PLANT) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

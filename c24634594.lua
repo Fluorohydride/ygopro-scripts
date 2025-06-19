@@ -1,4 +1,4 @@
---Diabolantis the Menacing Mantis
+--魔螂ディアボランティス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

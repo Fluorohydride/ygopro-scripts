@@ -47,19 +47,19 @@ function c44335251.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c44335251.desfilter(c)
-	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsRace(RACE_DINOSAUR)
+function c44335251.desfilter(c,tp)
+	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsRace(RACE_DINOSAUR) and Duel.GetMZoneCount(tp,c,tp)>0
 end
 function c44335251.spfilter(c,e,tp)
 	return c:IsRace(RACE_DINOSAUR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c44335251.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c44335251.desfilter(chkc) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c44335251.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c44335251.desfilter(chkc,tp) and chkc~=c end
+	if chk==0 then return Duel.IsExistingTarget(c44335251.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,tp)
 		and Duel.IsExistingMatchingCard(c44335251.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c44335251.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,c)
+	local g=Duel.SelectTarget(tp,c44335251.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,c,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end

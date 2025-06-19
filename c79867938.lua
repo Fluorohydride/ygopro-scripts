@@ -21,7 +21,7 @@ function c79867938.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c79867938.tgfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x84) and c:IsAbleToGrave()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1084) and c:IsAbleToGrave()
 end
 function c79867938.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79867938.tgfilter,tp,LOCATION_DECK,0,1,nil) end

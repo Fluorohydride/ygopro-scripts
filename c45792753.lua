@@ -1,4 +1,4 @@
---Ghoti Chain
+--ゴーティス・チェイン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

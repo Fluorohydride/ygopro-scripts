@@ -34,6 +34,7 @@ function c31044787.activate(e,tp,eg,ep,ev,re,r,rp)
 	local lp=Duel.GetLP(tp)
 	local diff=atk-lp
 	if diff<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TODECK)
 	local sg=g:SelectWithSumGreater(1-tp,c31044787.getAttack,diff)
-	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_RULE)
+	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_RULE,1-tp)
 end

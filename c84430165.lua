@@ -11,6 +11,7 @@ function c84430165.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(84430165,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c84430165.handcon)
@@ -19,7 +20,7 @@ end
 function c84430165.afilter(c,tp)
 	return c:IsControler(tp) and c:IsSetCard(0x12b) and c:IsType(TYPE_LINK)
 end
-function c84430165.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c84430165.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c84430165.afilter,1,nil,tp) end
 end
 function c84430165.cfilter(c)

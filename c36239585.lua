@@ -68,7 +68,7 @@ end
 function c36239585.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	local res=false
+	local res=0
 	if tc:IsType(TYPE_MONSTER) then
 		res=Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		if res~=0 then Duel.ConfirmCards(1-tp,tc) end

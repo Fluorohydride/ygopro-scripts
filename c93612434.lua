@@ -31,7 +31,8 @@ function c93612434.spfilter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x102) and c:IsCanBeEffectTarget(e)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
-function c93612434.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c93612434.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c93612434.spfilter(chkc,e,tp) end
 	local g=Duel.GetMatchingGroup(c93612434.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>=2 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and g:GetClassCount(Card.GetCode)>=2 end

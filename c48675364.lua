@@ -1,5 +1,6 @@
 --ジェネラルデーモン
 function c48675364.initial_effect(c)
+	aux.AddCodeList(c,94585852)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(48675364,0))
@@ -27,7 +28,7 @@ end
 function c48675364.filter(c)
 	return c:IsCode(94585852) and c:IsAbleToHand()
 end
-function c48675364.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c48675364.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48675364.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

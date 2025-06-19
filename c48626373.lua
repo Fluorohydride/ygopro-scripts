@@ -10,20 +10,19 @@ function s.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
-	e1:SetTargetRange(0xff,0xff)
+	e1:SetTargetRange(LOCATION_DECK,LOCATION_DECK)
 	e1:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e1)
 	--material
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,EVENT_REMOVE)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_CUSTOM+id)
+	e2:SetCode(custom_code)
 	e2:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
-	e2:SetCondition(s.mtcon)
 	e2:SetOperation(s.mtop)
 	c:RegisterEffect(e2)
-	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
 	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,2))
@@ -52,13 +51,6 @@ function s.xyzop(e,tp,chk)
 		and (Duel.GetCustomActivityCount(id,tp,ACTIVITY_CHAIN)>0
 			or Duel.GetCustomActivityCount(id,1-tp,ACTIVITY_CHAIN)>0) end
 	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
-end
-function s.remfilter(c)
-	return not c:IsType(TYPE_TOKEN)
-end
-function s.mtcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return eg:IsExists(s.remfilter,1,nil)
 end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

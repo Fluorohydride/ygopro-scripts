@@ -21,10 +21,10 @@ function c30888983.cfilter(c,rc)
 	return c:IsFaceup() and c:IsRace(rc)
 end
 function c30888983.filter(c)
-	return Duel.IsExistingMatchingCard(c30888983.cfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c:GetRace())
+	return Duel.IsExistingMatchingCard(c30888983.cfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetRace())
 end
 function c30888983.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and eg:IsExists(c30888983.filter,1,nil)
+	return aux.NegateSummonCondition() and eg:IsExists(c30888983.filter,1,nil)
 end
 function c30888983.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end

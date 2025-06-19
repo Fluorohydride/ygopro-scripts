@@ -57,7 +57,11 @@ function c18678554.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsCanOverlay),tp,0,LOCATION_GRAVE,1,1,nil)
-		Duel.Overlay(tc,g)
+		local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE)
+		if aux.NecroValleyNegateCheck(g) then return end
+		local tg=g:FilterSelect(tp,Card.IsCanOverlay,1,1,nil)
+		if #tg>0 then
+			Duel.Overlay(tc,tg)
+		end
 	end
 end

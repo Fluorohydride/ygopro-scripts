@@ -38,14 +38,14 @@ function c7602800.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:FilterCount(c7602800.cfilter,nil,tp)>0
 end
 function c7602800.spfilter(c,e,tp,atk)
-	return (c:IsSetCard(0x33) and c:GetAttack()<atk or c:IsCode(9012916))
+	return (c:IsSetCard(0x33) or c:IsCode(9012916)) and c:GetAttack()<atk
 		and (not c:IsLocation(LOCATION_REMOVED) or c:IsFaceup())
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c7602800.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local _,atk=eg:Filter(c7602800.cfilter,nil,tp):GetMaxGroup(Card.GetAttack)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
-		and c7602800.spfilter(c,e,tp,atk) end
+		and c7602800.spfilter(chkc,e,tp,atk) end
 	if chk==0 then return atk and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c7602800.spfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp,atk) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

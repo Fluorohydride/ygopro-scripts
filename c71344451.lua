@@ -39,15 +39,18 @@ function c71344451.activate(e,tp,eg,ep,ev,re,r,rp)
 					Duel.Destroy(sg,REASON_EFFECT)
 					local tg=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 					if tg:GetCount()>0 then
-						Duel.BreakEffect()
 						local dam=tg:GetCount()*2000
-						Duel.Damage(1-tp,dam,REASON_EFFECT)
+						if dam>0 then
+							Duel.BreakEffect()
+							Duel.Damage(1-tp,dam,REASON_EFFECT)
+						end
 					end
 				end
 			else
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 				local dg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToDeck),tp,LOCATION_GRAVE,0,ct2,ct2,nil)
 				if dg:GetCount()>0 then
+					Duel.HintSelection(dg)
 					Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 				end
 			end

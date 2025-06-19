@@ -1,7 +1,7 @@
 --チューン・ナイト
 function c38783169.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
-	aux.EnableUnionAttribute(c,1)
+	aux.EnableUnionAttribute(c,aux.TRUE)
 	--tuner
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(38783169,0))
@@ -11,26 +11,8 @@ function c38783169.initial_effect(c)
 	e1:SetTarget(c38783169.tntg)
 	e1:SetOperation(c38783169.tnop)
 	c:RegisterEffect(e1)
-	--equip
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(38783169,1))
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCategory(CATEGORY_EQUIP)
-	e2:SetType(EFFECT_TYPE_IGNITION)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetTarget(c38783169.eqtg)
-	e2:SetOperation(c38783169.eqop)
-	c:RegisterEffect(e2)
-	--unequip
-	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(38783169,2))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetType(EFFECT_TYPE_IGNITION)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetTarget(c38783169.sptg)
-	e3:SetOperation(c38783169.spop)
-	c:RegisterEffect(e3)
 end
+c38783169.treat_itself_tuner=true
 function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsType(TYPE_TUNER) end
 end
@@ -80,41 +62,4 @@ function c38783169.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c38783169.cfilter,1,nil,1-tp) then
 		aux.ExtraDeckSummonCountLimit[1-tp]=aux.ExtraDeckSummonCountLimit[1-tp]-1
 	end
-end
-function c38783169.filter(c)
-	local ct1,ct2=c:GetUnionCount()
-	return c:IsFaceup() and ct2==0
-end
-function c38783169.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c38783169.filter(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(38783169)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-	and Duel.IsExistingTarget(c38783169.filter,tp,LOCATION_MZONE,0,1,c) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c38783169.filter,tp,LOCATION_MZONE,0,1,1,c)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
-	c:RegisterFlagEffect(38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c38783169.eqop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c38783169.filter(tc) then
-		Duel.SendtoGrave(c,REASON_EFFECT)
-		return
-	end
-	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
-end
-function c38783169.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:GetFlagEffect(38783169)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,true,false) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
-	c:RegisterFlagEffect(38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c38783169.spop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end

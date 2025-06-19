@@ -1,4 +1,4 @@
---ZS-双頭龍賢者
+--ZS－双頭龍賢者
 function c32281491.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -56,8 +56,8 @@ function c32281491.spop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.SelectMatchingCard(tp,c32281491.eqfilter,tp,LOCATION_MZONE,0,1,1,tc)
 		local ec=sg:GetFirst()
 		if ec then
-			c32281491.equip_monster(c,c,tp,tc)
-			c32281491.equip_monster(c,ec,tp,tc)
+			c32281491.zs_equip_monster(c,c,tp,tc)
+			c32281491.zs_equip_monster(c,ec,tp,tc)
 			c:RegisterFlagEffect(32281491,RESET_EVENT+RESETS_STANDARD,1,0)
 		end
 	end
@@ -81,7 +81,7 @@ function c32281491.spop(e,tp,eg,ep,ev,re,r,rp)
 	e4:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e4,tp)
 end
-function c32281491.equip_monster(c,ec,tp,tc)
+function c32281491.zs_equip_monster(c,ec,tp,tc)
 	if not Duel.Equip(tp,ec,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

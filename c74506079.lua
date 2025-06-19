@@ -2,7 +2,7 @@
 function c74506079.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep2(c,c74506079.ffilter,2,63,true)
+	aux.AddFusionProcFunRep2(c,c74506079.ffilter,2,127,true)
 	--summon success
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -76,7 +76,7 @@ function c74506079.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74506079.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_REPTILE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,tc)
 	end

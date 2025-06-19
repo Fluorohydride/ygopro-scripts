@@ -31,8 +31,8 @@ function c81269231.valcheck(e,c)
 	local flag=0
 	local tc=g:GetFirst()
 	while tc do
-		if tc:IsSetCard(0x7) then flag=bit.bor(flag,0x1) end
-		if tc:IsSetCard(0x51) then flag=bit.bor(flag,0x2) end
+		if tc:IsSetCard(0x7) and tc:IsType(TYPE_MONSTER) then flag=bit.bor(flag,0x1) end
+		if tc:IsSetCard(0x51) and tc:IsType(TYPE_MONSTER) then flag=bit.bor(flag,0x2) end
 		tc=g:GetNext()
 	end
 	e:SetLabel(flag)
@@ -67,7 +67,7 @@ end
 function c81269231.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local t=Duel.GetBattleMonster(1-tp)
 	e:SetLabelObject(t)
-	return aux.dsercon(e) and t and t:IsRelateToBattle()
+	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and t and t:IsRelateToBattle()
 end
 function c81269231.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetLabelObject():IsAbleToRemove() end

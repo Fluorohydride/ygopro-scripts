@@ -9,12 +9,13 @@ function c15521027.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c15521027.spcon)
+	e1:SetTarget(c15521027.sptg)
 	e1:SetOperation(c15521027.spop)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(15521027,1))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetCategory(CATEGORY_DICE+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
@@ -25,6 +26,7 @@ function c15521027.initial_effect(c)
 	--sort deck
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(15521027,2))
+	e3:SetCategory(CATEGORY_DICE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
@@ -33,7 +35,6 @@ function c15521027.initial_effect(c)
 	e3:SetOperation(c15521027.opd)
 	c:RegisterEffect(e3)
 end
-c15521027.toss_dice=true
 function c15521027.spfilter(c)
 	return c:IsSetCard(0x26) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
@@ -43,10 +44,18 @@ function c15521027.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c15521027.spfilter,tp,LOCATION_GRAVE,0,1,nil)
 end
-function c15521027.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c15521027.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c15521027.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c15521027.spfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c15521027.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 end
 function c15521027.cona(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsAttackPos()

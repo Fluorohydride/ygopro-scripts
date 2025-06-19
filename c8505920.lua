@@ -1,4 +1,4 @@
---Gate Guardians Combined
+--合体魔神－ゲート・ガーディアン
 function c8505920.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

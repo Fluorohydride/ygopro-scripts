@@ -81,7 +81,8 @@ function c17228908.tkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17228908.tgcon(e)
-	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),0,LOCATION_ONFIELD,1,nil,TYPE_TOKEN)
+	local tp=e:GetHandlerPlayer()
+	return aux.tkfcon(e,1-tp)
 end
 function c17228908.tglimit(e,c)
 	return not c:IsType(TYPE_TOKEN)

@@ -73,7 +73,7 @@ function c88301393.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c88301393.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c88301393.atcon(e,tp,eg,ep,ev,re,r,rp)
@@ -85,8 +85,8 @@ function c88301393.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChainAttack()
 end
 function c88301393.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsReleasable,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsReleasable,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c88301393.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

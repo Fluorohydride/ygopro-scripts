@@ -11,7 +11,7 @@ function c8316565.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c8316565.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x84)
+	return c:IsFaceup() and c:IsSetCard(0x1084)
 end
 function c8316565.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

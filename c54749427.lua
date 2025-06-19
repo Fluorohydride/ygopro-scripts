@@ -1,4 +1,4 @@
---D－HERO ディフェンドガイ
+--D-HERO ディフェンドガイ
 function c54749427.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

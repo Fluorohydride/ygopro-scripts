@@ -8,21 +8,30 @@ function c46565218.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetTargetRange(POS_FACEUP_DEFENSE,1)
 	e1:SetCondition(c46565218.spcon)
+	e1:SetTarget(c46565218.sptg)
 	e1:SetOperation(c46565218.spop)
 	c:RegisterEffect(e1)
 end
 function c46565218.spfilter(c,tp)
-	return c:IsReleasable() and Duel.GetMZoneCount(1-tp,c,tp)>0
+	return c:IsReleasable(REASON_SPSUMMON) and Duel.GetMZoneCount(1-tp,c,tp)>0
 end
 function c46565218.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.IsExistingMatchingCard(c46565218.spfilter,tp,0,LOCATION_MZONE,1,nil,tp)
 end
-function c46565218.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c46565218.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c46565218.spfilter,tp,0,LOCATION_MZONE,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c46565218.spfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
-	Duel.Release(g,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c46565218.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Release(g,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(46565218,0))
 	e1:SetCategory(CATEGORY_DRAW)

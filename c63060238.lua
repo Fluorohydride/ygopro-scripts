@@ -87,5 +87,5 @@ function c63060238.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e5,tp)
 end
 function c63060238.splimit(e,c,tp,sumtp,sumpos)
-	return not c:IsType(TYPE_FUSION)
+	return c:GetOriginalType()&TYPE_FUSION~=TYPE_FUSION
 end

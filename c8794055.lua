@@ -1,4 +1,4 @@
---The Most Distant, Deepest Depths
+--最果ての宇宙
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

@@ -1,4 +1,4 @@
---Gold Pride - The Crowd Goes Wild!
+--GP－ゴー・ワイルド
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

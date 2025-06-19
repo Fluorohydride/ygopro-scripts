@@ -1,6 +1,6 @@
 --クリベー
 function c34419588.initial_effect(c)
-	aux.AddCodeList(c,40640057)
+	aux.AddCodeList(c,44632120,71036835,7021574,40640057)
 	--atkup
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34419588,0))
@@ -57,7 +57,7 @@ end
 function c34419588.rlcheck(sg,c,tp)
 	local g=sg:Clone()
 	g:AddCard(c)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,REASON_COST,true,nil,g)
 end
 function c34419588.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

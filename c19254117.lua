@@ -69,7 +69,7 @@ function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
 	e:Reset()
 end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and aux.bpcon()
+	return Duel.GetTurnPlayer()~=tp and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19254117.tgfilter(c)
 	return c:GetFlagEffect(19254117)==0
