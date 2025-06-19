@@ -479,7 +479,7 @@ function Auxiliary.Xyz2XMaterialFilter(c,xyzc,lv,f)
 end
 function Auxiliary.Xyz2XMaterialEffectFilter(c,xyzc,lv,f,tp,checked)
 	if not checked and not Auxiliary.Xyz2XMaterialFilter(c,xyzc,lv,f) then return false end
-	local e=c:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+	local e=c:IsHasEffect(EFFECT_DOUBLE_XMATERIAL,tp)
 	if not e then return false end
 	local tg=e:GetTarget()
 	if tg and not tg(e,xyzc) then return false end
@@ -496,7 +496,7 @@ function Auxiliary.Xyz2XMaterialGoal(g,tp,xyzc,minc)
 	local ct2=0
 	local limit_table={}
 	for c in Auxiliary.Next(g) do
-		local le=c:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+		local le=c:IsHasEffect(EFFECT_DOUBLE_XMATERIAL,tp)
 		if le and not limit_table[le:GetValue()] then -- not fully implemented: assuming Hard once per turn effects
 			local tg=le:GetTarget()
 			if not tg or tg(le,xyzc) then
@@ -626,14 +626,14 @@ function Auxiliary.Xyz2XMaterialOperation(tp,mg,xyzc,minct,maxct)
 			g=g:Select(tp,1,1,nil)
 		end
 		local tc=g:GetFirst()
-		local te=tc:IsHasEffect(EFFECT_TREAT_AS_2_XMATERIAL,tp)
+		local te=tc:IsHasEffect(EFFECT_DOUBLE_XMATERIAL,tp)
 		Duel.Hint(HINT_CARD,0,tc:GetCode())
 		te:UseCountLimit(tp)
 		sg:RemoveCard(tc)
 		minct=minct-2
 	end
 end
----Xyz monster, any condition
+---Xyz monster, any condition(level free)
 ---@param c Card
 ---@param f function|nil
 ---@param gf function|nil
@@ -655,7 +655,7 @@ function Auxiliary.AddXyzProcedureLevelFree(c,f,gf,minc,maxc,alterf,alterdesc,al
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
 end
---Xyz Summon(level free)
+-- not fully implemented: EFFECT_DOUBLE_XMATERIAL is not supported
 function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
 	return (not c:IsOnField() or c:IsFaceup()) and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
 end
