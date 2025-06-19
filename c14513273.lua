@@ -48,7 +48,7 @@ end
 function s.rmlimit(e,c,rp,r,re)
 	local tp=e:GetHandlerPlayer()
 	return c:IsControler(tp) and c:IsOnField() and c:IsCode(13331639) and c:IsFaceup()
-		and r&REASON_EFFECT~=0 and re:GetOwnerPlayer()~=tp
+		and r&REASON_EFFECT~=0 and r&REASON_REDIRECT==0 and rp==1-tp
 end
 function s.penfilter(c)
 	return c:IsSetCard(0x10f8) and c:IsType(TYPE_PENDULUM) and not c:IsCode(id) and not c:IsForbidden()

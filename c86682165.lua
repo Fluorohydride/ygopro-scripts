@@ -74,7 +74,8 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.efilter(e,c,rp,r,re)
 	local tp=e:GetHandlerPlayer()
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and re and r&REASON_EFFECT>0 and rp==1-tp
+	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
+		and r&REASON_EFFECT>0 and r&REASON_REDIRECT==0 and rp==1-tp
 end
 function s.rmfilter(c,code)
 	return c:IsFaceupEx() and c:IsCode(code) and c:IsAbleToRemove()
