@@ -54,12 +54,12 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	g1:Merge(g2)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,g1:GetCount(),0,0)
 end
-function s.rmopfilter(c,e)
-	return c:IsType(TYPE_MONSTER) and c:IsRelateToEffect(e)
+function s.rmopfilter(c)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(aux.NecroValleyFilter(s.rmopfilter),nil,e)
+	local g=Duel.GetTargetsRelateToChain()
+	local tg=g:Filter(aux.NecroValleyFilter(s.rmopfilter),nil)
 	if tg:GetCount()==2 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end
