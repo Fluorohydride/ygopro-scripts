@@ -27,8 +27,8 @@ function c60921537.extraop(e,tp,eg,ep,ev,re,r,rp,tc)
 			g=g1
 		else
 			g=g2
+			Duel.ConfirmCards(tp,g,true)
 		end
-		Duel.ConfirmCards(tp,g)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local tg=g:FilterSelect(tp,Card.IsAbleToGrave,1,1,nil)
 		Duel.SendtoGrave(tg,REASON_EFFECT)

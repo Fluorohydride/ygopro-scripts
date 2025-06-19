@@ -86,7 +86,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 		g=g1
 	elseif sel==1 then
 		g=g2
-		Duel.ConfirmCards(tp,g)
+		Duel.ConfirmCards(tp,g,true)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:FilterSelect(tp,s.tgfilter,1,1,nil)

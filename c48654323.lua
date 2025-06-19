@@ -90,7 +90,7 @@ end
 function c48654323.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 	if #g==0 then return end
-	Duel.ConfirmCards(tp,g)
+	Duel.ConfirmCards(tp,g,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tg=g:FilterSelect(tp,Card.IsAbleToGrave,1,1,nil)
 	Duel.SendtoGrave(tg,REASON_EFFECT)

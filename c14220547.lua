@@ -50,7 +50,7 @@ function c14220547.tgop(e,tp,eg,ep,ev,re,r,rp)
 			g=g1
 		else
 			g=g2
-			Duel.ConfirmCards(tp,g)
+			Duel.ConfirmCards(tp,g,true)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local tg=g:FilterSelect(tp,Card.IsAbleToGrave,1,1,nil)
