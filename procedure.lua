@@ -497,11 +497,14 @@ function Auxiliary.Xyz2XMaterialGoal(g,tp,xyzc,minc)
 	local limit_table={}
 	for c in Auxiliary.Next(g) do
 		local le=c:IsHasEffect(EFFECT_DOUBLE_XMATERIAL,tp)
-		if le and not limit_table[le:GetValue()] then -- not fully implemented: assuming Hard once per turn effects
+		if le then
 			local tg=le:GetTarget()
-			if not tg or tg(le,xyzc) then
+			local limit_value=le:GetValue() -- not fully implemented: assuming Hard once per turn effects
+			if (not tg or tg(le,xyzc)) and (not limit_value or not limit_table[limit_value]) then
 				ct2=ct2+1
-				limit_table[le:GetValue()]=true
+				if limit_value then
+					limit_table[limit_value]=true
+				end
 			end
 		end
 	end
