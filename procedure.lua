@@ -465,11 +465,11 @@ function Auxiliary.XyzCondition(f,lv,minct,maxct,alterf,alterdesc,alterop)
 				if min then
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
-					if minc>maxc then return false end
 				end
 				if minct>=3 and mg:IsExists(Auxiliary.Xyz2XMaterialEffectFilter,1,nil,c,lv,f,tp) then
 					return Auxiliary.CheckXyz2XMaterial(c,f,lv,minc,maxc,mg)
 				else
+					if minc>maxc then return false end
 					return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 				end
 			end
