@@ -4,7 +4,8 @@ function s.initial_effect(c)
 	--Activate
 	local e1=FusionSpell.CreateSummonEffect(c,{
 		fusfilter=s.fusfilter,
-		pre_select_mat_opponent_location=LOCATION_MZONE,
+		post_select_mat_opponent_location=LOCATION_MZONE,
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
 		additional_fcheck=s.fcheck
 	})
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
@@ -16,6 +17,14 @@ function s.fusfilter(c)
 	return c:IsRace(RACE_CYBERSE)
 end
 
+function s.fusion_spell_matfilter(c,e,tp)
+	--- if it comes from opponent, it must be a link monster
+	if c:IsControler(1-tp) and not c:IsType(TYPE_LINK) then
+		return false
+	end
+	return true
+end
+
 ---@type FUSION_FGCHECK_FUNCTION
 function s.fcheck(tp,mg,fc,mg_all)
 	-- Filter the group to get only the opponent’s Fusion Materials
@@ -25,12 +34,7 @@ function s.fcheck(tp,mg,fc,mg_all)
 	if #mg_opponent>1 then
 		return false
 	end
-	-- Any opponent material used must be a LINK monster
-	---@param c Card
-	if mg_opponent:IsExists(function(c) return not c:IsType(TYPE_LINK) end,1,nil) then
-		return false
-	end
-	-- If using an opponent’s monster, you must also use at least one “@Ignister” monster you control
+	-- If using an opponent’s monster, you must also use at least one ＠イグニスター monster belongs to you
 	---@param c Card
 	if #mg_opponent>0 and not mg_all:IsExists(function(c)
 				return c:IsControler(tp) and c:IsFusionSetCard(0x135)
