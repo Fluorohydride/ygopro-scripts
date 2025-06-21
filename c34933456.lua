@@ -36,7 +36,7 @@ function s.fcheck(tp,mg,tc,mg_all)
 	return true
 end
 
-function s.mttg(e,c)
+function s.mttg(c)
 	local tc=c:GetEquipTarget()
 	return tc and tc:IsSetCard(0x150) and c:GetOriginalType()&TYPE_MONSTER~=0
 end
