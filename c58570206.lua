@@ -6,7 +6,7 @@ function s.initial_effect(c)
 		fusfilter=s.fusfilter,
 		additional_fcheck=s.additional_fcheck,
 		additional_fgoalcheck=s.additional_fgoalcheck,
-		pre_select_mat_location=LOCATION_HAND|LOCATION_MZONE|LOCATION_EXTRA,
+		pre_select_mat_location=s.pre_select_mat_location,
 		mat_operation_code_map={
 			{ [LOCATION_EXTRA|LOCATION_GRAVE] = FusionSpell.FUSION_OPERATION_BANISH },
 			{ [0xff] = FusionSpell.FUSION_OPERATION_GRAVE }
@@ -29,6 +29,15 @@ function s.fusfilter(c)
 		end
 	end
 	return true
+end
+
+--- @type FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION
+function s.pre_select_mat_location(tc,tp)
+	local location=LOCATION_HAND|LOCATION_MZONE
+	if Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) then
+		location=location|LOCATION_EXTRA
+	end
+	return location
 end
 
 ---@type FUSION_FGCHECK_FUNCTION
