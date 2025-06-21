@@ -2980,6 +2980,7 @@ FusionSpell.FUSION_OPERATION_BANISH_FACEDOWN=0x3
 FusionSpell.FUSION_OPERATION_SHUFFLE=0x4
 FusionSpell.FUSION_OPERATION_DECK_BOTTOM=0x5
 FusionSpell.FUSION_OPERATION_DESTROY=0x6
+FusionSpell.FUSION_OPERATION_DISCARD=0x7
 
 ---@return FUSION_OPERATION_FUNCTION
 function FusionSpell.GetFusionOperationByCode(code,matlocation,fusion_spell_operation_code_map)
@@ -2995,6 +2996,8 @@ function FusionSpell.GetFusionOperationByCode(code,matlocation,fusion_spell_oper
 		return FusionSpell.SendDeckBottomMaterial
 	elseif code==FusionSpell.FUSION_OPERATION_DESTROY then
 		return FusionSpell.DestroyMaterial
+	elseif code==FusionSpell.FUSION_OPERATION_DISCARD then
+		return FusionSpell.DiscardMaterial
 	elseif code&FusionSpell.FUSION_OPERATION_INHERIT==FusionSpell.FUSION_OPERATION_INHERIT then
 		local inhreit_as=code&(~FusionSpell.FUSION_OPERATION_INHERIT)&0xff   --- 0xff is LOCATION_ALL
 		if inhreit_as~=0 then
@@ -3025,6 +3028,8 @@ function FusionSpell.GetFusionFilterByCode(code,matlocation,fusion_spell_operati
 		return FusionSpell.SendDeckBottomMaterialFilter
 	elseif code==FusionSpell.FUSION_OPERATION_DESTROY then
 		return FusionSpell.DestroyMaterialFilter
+	elseif code==FusionSpell.FUSION_OPERATION_DISCARD then
+		return FusionSpell.DiscardMaterialFilter
 	elseif code&FusionSpell.FUSION_OPERATION_INHERIT==FusionSpell.FUSION_OPERATION_INHERIT then
 		local inhreit_as=code&(~FusionSpell.FUSION_OPERATION_INHERIT)&0xff   --- 0xff is LOCATION_ALL
 		if inhreit_as~=0 then
@@ -3043,16 +3048,6 @@ end
 
 ---@alias FUSION_OPERATION_FUNCTION fun(sg:Card|Group,tp:integer):integer
 ---@alias FUSION_FILTER_FUNCTION fun(c:Card,tp:integer?,e:Effect?):boolean
-
----@type FUSION_OPERATION_FUNCTION
-function FusionSpell.DestroyMaterial(sg,tp)
-	return Duel.Destroy(sg,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION,nil,tp)
-end
-
----@type FUSION_FILTER_FUNCTION
-function FusionSpell.DestroyMaterialFilter(c,tp,e)
-	return c:IsDestructable(e)
-end
 
 ---@type FUSION_OPERATION_FUNCTION
 function FusionSpell.GraveMaterial(sg,tp)
@@ -3103,6 +3098,26 @@ end
 ---@type FUSION_FILTER_FUNCTION
 function FusionSpell.SendDeckBottomMaterialFilter(c)
 	return c:IsAbleToDeck()
+end
+
+---@type FUSION_OPERATION_FUNCTION
+function FusionSpell.DestroyMaterial(sg,tp)
+	return Duel.Destroy(sg,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION,nil,tp)
+end
+
+---@type FUSION_FILTER_FUNCTION
+function FusionSpell.DestroyMaterialFilter(c,tp,e)
+	return c:IsDestructable(e)
+end
+
+---@type FUSION_OPERATION_FUNCTION
+function FusionSpell.DiscardMaterial(sg,tp)
+	return Duel.SendtoGrave(sg,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION+REASON_DISCARD,tp)
+end
+
+---@type FUSION_FILTER_FUNCTION
+function FusionSpell.DiscardMaterialFilter(c)
+	return c:IsDiscardable(REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 end
 
 --Returns a list of effect, if element is the EFFECT_EXTRA_FUSION_MATERIAL, stands for it can be included by that extra material effect.
