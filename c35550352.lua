@@ -72,6 +72,7 @@ function s.repfilter(c,tp)
 end
 function s.spcostfilter(c)
 	return c:IsSetCard(0x195) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function s.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
