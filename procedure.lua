@@ -2324,6 +2324,8 @@ FusionSpell = {}
 --- @field fusion_spell_matfilter? FUSION_SPELL_MATFILTER_FUNCTION
 --- Whether skip the IsCanBeSpecialSummoned check, for クロック・リザード, default false
 --- @field skip_summon_check? boolean
+--- Whether skip the location count check, default false, used for 叛逆の堕天使, only works for target function
+--- @field skip_location_count_check? boolean
 
 
 --- Add LOCATION_EXTRA and opponent mzone to EFFECT_EXTRA_FUSION_MATERIAL list, remove once core updated
@@ -2403,6 +2405,7 @@ function FusionSpell.CreateSummonEffect(c,opts)
 	local gc=opts.gc or function() return nil end
 	local fusion_spell_matfilter=opts.fusion_spell_matfilter or aux.TRUE
 	local skip_summon_check=opts.skip_summon_check or false
+	local skip_location_count_check=opts.skip_location_count_check or false
 
 	-- Ensure material operation fallbacks are present
 	table.insert(mat_operation_code_map,{ [LOCATION_GRAVE] = FusionSpell.FUSION_OPERATION_BANISH })
@@ -2429,7 +2432,8 @@ function FusionSpell.CreateSummonEffect(c,opts)
 		post_select_mat_opponent_location,
 		gc,
 		fusion_spell_matfilter,
-		skip_summon_check
+		skip_summon_check,
+		skip_location_count_check
 	))
 	e1:SetOperation(FusionSpell.GetSummonOperation(
 		fusfilter,
@@ -2469,6 +2473,7 @@ end
 ---@param gc fun(e:Effect):Card|nil Function that returns a card that must be included in the fusion materials
 ---@param fusion_spell_matfilter FUSION_SPELL_MATFILTER_FUNCTION a material must pass this to be legal as material come from fusion spell
 ---@param skip_summon_check boolean whether skip the IsCanBeSpecialSummoned check, for クロック・リザード
+---@param skip_location_count_check boolean Whether skip the location count check, default false, used for 叛逆の堕天使
 function FusionSpell.GetSummonTarget(
 		fusfilter,
 		matfilter,
@@ -2485,7 +2490,8 @@ function FusionSpell.GetSummonTarget(
 		post_select_mat_opponent_location,
 		gc,
 		fusion_spell_matfilter,
-		skip_summon_check
+		skip_summon_check,
+		skip_location_count_check
 	)
 	return function(e,tp,eg,ep,ev,re,r,rp,chk)
 		if chk==0 then
@@ -2509,7 +2515,8 @@ function FusionSpell.GetSummonTarget(
 						post_select_mat_opponent_location,
 						gc,
 						fusion_spell_matfilter,
-						skip_summon_check)
+						skip_summon_check,
+						skip_location_count_check)
 				end,
 				tp,fuslocation,0,1,nil)
 			if sg==true then
@@ -2517,7 +2524,7 @@ function FusionSpell.GetSummonTarget(
 			end
 			-- --- check for chain material targets
 			if sumtype&SUMMON_TYPE_FUSION~=0 then
-				local ce_sg=FusionSpell.IsExistsChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check)
+				local ce_sg=FusionSpell.IsExistsChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check,skip_location_count_check)
 				if ce_sg==true then
 					return true
 				end
@@ -2585,14 +2592,15 @@ function FusionSpell.GetSummonOperation(
 						post_select_mat_opponent_location,
 						gc,
 						fusion_spell_matfilter,
-						skip_summon_check)
+						skip_summon_check,
+						false --[[skip_location_count_check]])
 				end,
 				tp,fuslocation,0,nil)
 			fusion_targets:Merge(sg)
 			--- check for chain material targets
 			local ce_sgs={}
 			if sumtype&SUMMON_TYPE_FUSION~=0 then
-				ce_sgs=FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,aux.NecroValleyFilter(matfilter),additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check)
+				ce_sgs=FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,aux.NecroValleyFilter(matfilter),additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check,false--[[skip_location_count_check]])
 				--- add chain material targets
 				for _,ce_sg in pairs(ce_sgs) do
 					fusion_targets:Merge(ce_sg)
@@ -2917,6 +2925,7 @@ function FusionSpell.GetOperationCodeByMaterialLocation(location,mat_operation_c
 	end
 end
 
+---@param c Card the candidate card to summon
 ---@param fusfilter fun(c:Card,e:Effect,tp:integer):boolean
 ---@param matfilter FUSION_SPELL_MATFILTER_FUNCTION filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param pre_select_mat_location integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION location where to find the materials before known the materials (default LOCATION_HAND|LOCATION_MZONE)
@@ -2926,6 +2935,7 @@ end
 ---@param gc fun(e:Effect):Card|nil
 ---@param fusion_spell_matfilter fun(c:Card):boolean a material must pass this to be legal as material come from fusion spell
 ---@param skip_summon_check boolean whether skip the IsCanBeSpecialSummoned check, for クロック・リザード
+---@param skip_location_count_check boolean Whether skip the location count check, default false, used for 叛逆の堕天使
 function FusionSpell.SummonTargetFilter(
 		c,
 		fusfilter,
@@ -2943,7 +2953,8 @@ function FusionSpell.SummonTargetFilter(
 		post_select_mat_opponent_location,
 		gc,
 		fusion_spell_matfilter,
-		skip_summon_check)
+		skip_summon_check,
+		skip_location_count_check)
 	if not c:IsType(TYPE_FUSION) or fusfilter(c,e,tp)==false then
 		return false
 	end
@@ -2976,7 +2987,8 @@ function FusionSpell.SummonTargetFilter(
 		e,
 		mat_operation_code_map)
 	aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunction(additional_fgoalcheck,tp,c,pre_select_mat_location,e)
-	local res=c:CheckFusionMaterial(mg,gc(e),tp)
+	local chkf=FusionSpell.GetCheckFieldPlayer(tp,skip_location_count_check)
+	local res=c:CheckFusionMaterial(mg,gc(e),chkf)
 	aux.FCheckAdditional=nil
 	aux.FGoalCheckAdditional=nil
 	return res
@@ -2985,8 +2997,9 @@ end
 ---@param matfilter FUSION_SPELL_MATFILTER_FUNCTION filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param gc fun(e:Effect):Card|nil
 ---@param skip_summon_check boolean whether skip the IsCanBeSpecialSummoned check, for クロック・リザード
+---@param skip_location_count_check boolean Whether skip the location count check, default false, used for 叛逆の堕天使
 ---@return {[Effect]:Group} effect_targets_map Return a map of different chain material to potiential fusion targets
-function FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check)
+function FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check,skip_location_count_check)
 	local chain_material_effects={Duel.IsPlayerAffectedByEffect(tp,EFFECT_CHAIN_MATERIAL)}
 	---@type {[Effect]:Group}
 	local chain_material_targets={}
@@ -2998,7 +3011,7 @@ function FusionSpell.ListChainMaterialSummonTargets(e,tp,fusfilter,matfilter,add
 		if #chain_mg>0 then
 			local ce_fusfilter=ce:GetValue()
 			local ce_sg=Duel.GetMatchingGroup(function(c)
-				return FusionSpell.ChainMaterialSummonTargetFilter(c,aux.AND(ce_fusfilter,fusfilter),e,tp,chain_mg,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,gc,skip_summon_check)
+				return FusionSpell.ChainMaterialSummonTargetFilter(c,aux.AND(ce_fusfilter,fusfilter),e,tp,chain_mg,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,gc,skip_summon_check,skip_location_count_check)
 			end,tp,fuslocation,0,nil)
 			if #ce_sg>0 then
 				chain_material_targets[ce]=ce_sg
@@ -3012,8 +3025,9 @@ end
 ---@param matfilter FUSION_SPELL_MATFILTER_FUNCTION filter for the materials, use it only under very strong limitation like D-Fusion.
 ---@param gc fun(e:Effect):Card|nil
 ---@param skip_summon_check boolean whether skip the IsCanBeSpecialSummoned check, for クロック・リザード
+---@param skip_location_count_check boolean Whether skip the location count check, default false, used for 叛逆の堕天使
 ---@return boolean res return whether there is a valid target for any chain material effect
-function FusionSpell.IsExistsChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check)
+function FusionSpell.IsExistsChainMaterialSummonTargets(e,tp,fusfilter,matfilter,additional_fcheck,additional_fgoalcheck,fuslocation,sumtype,sumpos,gc,skip_summon_check,skip_location_count_check)
 	local chain_material_effects={Duel.IsPlayerAffectedByEffect(tp,EFFECT_CHAIN_MATERIAL)}
 	---@type {[Effect]:Group}
 	for _,ce in ipairs(chain_material_effects) do
@@ -3023,7 +3037,7 @@ function FusionSpell.IsExistsChainMaterialSummonTargets(e,tp,fusfilter,matfilter
 		if #chain_mg>0 then
 			local ce_fusfilter=ce:GetValue()
 			local res=Duel.IsExistingMatchingCard(function(c)
-				return FusionSpell.ChainMaterialSummonTargetFilter(c,aux.AND(ce_fusfilter,fusfilter or aux.TRUE),e,tp,chain_mg,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,gc,skip_summon_check)
+				return FusionSpell.ChainMaterialSummonTargetFilter(c,aux.AND(ce_fusfilter,fusfilter or aux.TRUE),e,tp,chain_mg,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,gc,skip_summon_check,skip_location_count_check)
 			end,
 			tp,fuslocation,0,1,nil)
 			if res==true then
@@ -3038,8 +3052,9 @@ end
 ---@param fusfilter fun(c:Card,e:Effect,tp:integer):boolean
 ---@param gc fun(e:Effect):Card|nil
 ---@param skip_summon_check boolean whether skip the IsCanBeSpecialSummoned check, for クロック・リザード
+---@param skip_location_count_check boolean Whether skip the location count check, default false, used for 叛逆の堕天使
 ---@return boolean result Whether c could be fusion summoned by this chain material effect
-function FusionSpell.ChainMaterialSummonTargetFilter(c,fusfilter,e,tp,mg,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,gc,skip_summon_check)
+function FusionSpell.ChainMaterialSummonTargetFilter(c,fusfilter,e,tp,mg,additional_fcheck,additional_fgoalcheck,sumtype,sumpos,gc,skip_summon_check,skip_location_count_check)
 	if not c:IsType(TYPE_FUSION) or fusfilter(c,e,tp)==false then
 		return false
 	end
@@ -3050,7 +3065,8 @@ function FusionSpell.ChainMaterialSummonTargetFilter(c,fusfilter,e,tp,mg,additio
 	end
 	aux.FCheckAdditional=FusionSpell.GetFusionSpellFCheckAdditionalFunctionForChainMaterial(additional_fcheck,e)
 	aux.FGoalCheckAdditional=FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(additional_fgoalcheck,e)
-	local res=c:CheckFusionMaterial(mg,gc(e),tp)
+	local chkf=FusionSpell.GetCheckFieldPlayer(tp,skip_location_count_check)
+	local res=c:CheckFusionMaterial(mg,gc(e),chkf)
 	aux.FCheckAdditional=nil
 	aux.FGoalCheckAdditional=nil
 	return res
@@ -3412,4 +3428,14 @@ function FusionSpell.GetFusionSpellFGoalCheckAdditionalFunctionForChainMaterial(
 	return (function(f_tp,mg,fc)
 		return fusion_spell_additional_fgoalcheck_function(f_tp,Group.CreateGroup(),fc,mg,e)
 	end)
+end
+
+--- @param tp integer
+--- @param skip_location_count_check boolean
+--- @return integer chkf the player id to check the field count
+function FusionSpell.GetCheckFieldPlayer(tp,skip_location_count_check)
+	if skip_location_count_check==true then
+		return PLAYER_NONE
+	end
+	return tp
 end
