@@ -4,7 +4,7 @@ function s.initial_effect(c)
 	--Activate
 	local e1=FusionSpell.CreateSummonEffect(c,{
 		fusfilter=s.fusfilter,
-		matfilter=s.matfilter,
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
 		pre_select_mat_location=LOCATION_MZONE|LOCATION_GRAVE,
 		mat_operation_code_map={
 			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
@@ -40,7 +40,7 @@ function s.fusfilter(c)
 	return c:IsRace(RACE_PSYCHO)
 end
 
-function s.matfilter(c)
+function s.fusion_spell_matfilter(c)
 	return c:IsRace(RACE_PSYCHO)
 end
 
