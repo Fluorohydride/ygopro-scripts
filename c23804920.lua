@@ -22,6 +22,7 @@ function s.initial_effect(c)
 	e2:SetCode(EVENT_BATTLE_START)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,id)
+	e2:SetCondition(s.atkcon)
 	e2:SetTarget(s.atktg)
 	e2:SetOperation(s.atkop)
 	c:RegisterEffect(e2)
@@ -35,6 +36,10 @@ function s.initial_effect(c)
 end
 function s.atkfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsFaceupEx() and c:IsAbleToRemove()
+end
+function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetHandler():GetBattleTarget()
+	return tc and tc:IsControler(1-tp) 
 end
 function s.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
