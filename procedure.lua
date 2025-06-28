@@ -2368,7 +2368,7 @@ end
 
 --- Get possible materials from opponent locations, must be face-up
 function FusionSpell.GetFusionMaterialFromOpponentLocation(tp,locations)
-	return Duel.GetMatchingGroup(Card.IsFaceup,tp,0,locations,nil)
+	return Duel.GetMatchingGroup(Card.IsFaceupEx,tp,0,locations,nil)
 end
 
 --- Registers a Fusion Summon effect to a card.
