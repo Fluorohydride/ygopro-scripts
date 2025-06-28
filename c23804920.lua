@@ -61,5 +61,5 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.eacon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(aux.AND(Card.IsFaceupEx,Card.IsLevelAbove),e:GetHandlerPlayer(),LOCATION_REMOVED,LOCATION_REMOVED,1,nil,10)
+	return Duel.IsExistingMatchingCard(aux.AND(Card.IsFaceup,Card.IsLevelAbove),0,LOCATION_REMOVED,LOCATION_REMOVED,1,nil,10)
 end
