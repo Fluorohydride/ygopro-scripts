@@ -2267,7 +2267,7 @@ FusionSpell = {}
 --- A check function for Fusion FCheckAdditional/FGoalCheckAdditional.
 --- Parameters:
 ---  • tp      integer  — player ID (0 or 1)
----  • mg      Group    — selected materials from fusion spell, exclude materials from Chain Material or EXTRA_FUSION_MATERIAL
+---  • mg      Group    — selected materials from fusion spell, excluding materials from Chain Material or EXTRA_FUSION_MATERIAL
 ---  • fc      Card     — the Fusion Monster being summoned
 ---  • mg_all  Group    — all selected materials
 ---  • e       Effect   — the fusion effect object
@@ -2285,7 +2285,8 @@ FusionSpell = {}
 --- Location(s) to look for materials before knowing which ones will be used.
 --- Defaults to `LOCATION_HAND | LOCATION_MZONE`.
 --- @field pre_select_mat_location? integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION
---- List of operations to perform on materials based on location.
+--- Specifies handling operations for Fusion Materials in designated locations.
+--- Matches locations in list order, executes the first valid operation, then stops processing.
 --- Defaults to:
 ---     ```lua
 ---     {
@@ -2294,7 +2295,7 @@ FusionSpell = {}
 ---     }
 ---     ```
 --- @field mat_operation_code_map? {[integer]:FUSION_OPERATION_CODE}[]
---- Location(s) to look for materials after they've been selected.
+--- Extra location(s) to look for materials after some of them have been selected.
 --- @field post_select_mat_location? integer
 --- Optional quick check to validate the selected material group.
 --- @field additional_fcheck? FUSION_FGCHECK_FUNCTION
@@ -2313,7 +2314,7 @@ FusionSpell = {}
 --- @field extra_target? fun(e:Effect, tp:integer, eg:Group, ep:integer, ev:integer, re:Effect, r:integer, rp:integer, chk:integer):nil
 --- Opponent-side locations to search for materials before they are selected.
 --- @field pre_select_mat_opponent_location? integer|FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION
---- Opponent-side locations to search for materials after they are selected.
+--- Opponent-side locations to search for materials after some of them have been selected.
 --- @field post_select_mat_opponent_location? integer
 --- Function that returns a card that must be included in the fusion materials
 --- @field gc? fun(e:Effect):Card|nil
@@ -2324,7 +2325,7 @@ FusionSpell = {}
 --- @field fusion_spell_matfilter? FUSION_SPELL_MATFILTER_FUNCTION
 --- Whether skip the IsCanBeSpecialSummoned check, for クロック・リザード, default false
 --- @field skip_summon_check? boolean
---- Whether skip the location count check, default false, used for 叛逆の堕天使, only works for target function
+--- Whether skip the location count check, default false, used for 叛逆の堕天使, only works for cost/target function
 --- @field skip_location_count_check? boolean
 
 
@@ -3076,8 +3077,10 @@ end
 -- different stage for call back
 ---@alias FUSION_SPELL_CALLBACK_STAGE integer
 -- Right before the Fusion Monster is officially summoned
+-- Called before Duel.SpecialSummonComplete()
 FusionSpell.STAGE_BEFORE_SUMMON_COMPLETE=1
 -- Right before the entire Fusion procedure finishes
+-- Called before tc:CompleteProcedure()
 FusionSpell.STAGE_BEFORE_PROCEDURE_COMPLETE=2
 -- After the summon operation succeeds
 FusionSpell.STAGE_AT_SUMMON_OPERATION_FINISH=3
