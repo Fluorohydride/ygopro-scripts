@@ -36,7 +36,7 @@ function s.cfilter(c,re)
 		or recode==EFFECT_QP_ACT_IN_SET_TURN
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,re)
+	return eg:IsExists(s.cfilter,1,nil,re) and r&REASON_COST>0
 end
 function s.tgfilter(c)
 	return c:IsRace(RACE_ILLUSION+RACE_SPELLCASTER) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
