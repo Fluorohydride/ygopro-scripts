@@ -2574,7 +2574,7 @@ function FusionSpell.GetSummonOperation(
 	return function(e,tp,eg,ep,ev,re,r,rp)
 		local tc=nil
 		-- if gc is gone, terminate
-		if gc(e)==nil or gc(e):IsRelateToEffect(e) then
+		if gc(e)==nil or gc(e):IsRelateToEffect(e) or e:GetHandler()~=gc(e) then
 			local fusion_targets=Group.CreateGroup()
 			local sg=Duel.GetMatchingGroup(function(c)
 					return FusionSpell.SummonTargetFilter(
