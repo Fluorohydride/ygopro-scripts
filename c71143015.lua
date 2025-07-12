@@ -10,7 +10,8 @@ function s.initial_effect(c)
 			{ [LOCATION_DECK]=FusionSpell.FUSION_OPERATION_GRAVE },
 			{ [0xff]=FusionSpell.FUSION_OPERATION_SHUFFLE }
 		},
-		stage_x_operation=s.stage_x_operation
+		additional_fcheck=s.fcheck,
+		stage_x_operation=s.stage_x_operation,
 	})
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_GRAVE_ACTION)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
