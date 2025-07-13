@@ -4,7 +4,6 @@ function s.initial_effect(c)
 	--Activate
 	FusionSpell.RegisterSummonEffect(c,{
 		fusfilter=s.fusfilter,
-		sumtype=SUMMON_VALUE_DARK_FUSION,
 		stage_x_operation=s.stage_x_operation
 	})
 end
