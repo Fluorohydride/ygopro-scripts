@@ -7,6 +7,7 @@ function s.initial_effect(c)
 		pre_select_mat_location=LOCATION_DECK,
 		stage_x_operation=s.stage_x_operation
 	})
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_DECKDES)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	c:RegisterEffect(e1)
 	--Destroy
