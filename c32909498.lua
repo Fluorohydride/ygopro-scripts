@@ -81,7 +81,7 @@ function c32909498.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c32909498.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
+	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and not (re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_TRAP))
 end
 function c32909498.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c32909498.rmfilter(chkc,tp) end
