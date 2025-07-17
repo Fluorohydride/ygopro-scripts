@@ -36,6 +36,7 @@ function c49398568.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetCostCheck(false)
 		ftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
+	Duel.ClearOperationInfo(0)
 end
 function c49398568.activate(e,tp,eg,ep,ev,re,r,rp)
 	local fop=re:GetOperation()
