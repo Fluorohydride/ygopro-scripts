@@ -30,12 +30,11 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.GetOperationInfo(ev,CATEGORY_TOHAND)
 	local tg=Duel.GetTargetsRelateToChain()
 	local hc=e:GetLabelObject()
-	local tc=(tg-hc):GetFirst()
 	if hc and hc:IsControler(tp) and hc:IsRelateToEffect(e)
 		and Duel.SendtoHand(hc,nil,REASON_EFFECT)>0 and hc:IsLocation(LOCATION_HAND) then
+		local tc=(tg-hc):GetFirst()
 		if tc and tc:IsControler(1-tp) and tc:IsRelateToEffect(e)
 			and Duel.GetControl(tc,tp)>0 and not hc:IsType(TYPE_RITUAL) then
 			local fid=c:GetFieldID()
