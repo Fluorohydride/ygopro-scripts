@@ -3,7 +3,6 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddMaterialCodeList(c,38033121,46986414)
 	aux.AddFusionProcCodeFun(c,{46986414,38033121},aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON+RACE_SPELLCASTER),1,true,true)
 	--immune
 	local e1=Effect.CreateEffect(c)
