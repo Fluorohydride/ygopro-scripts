@@ -3,8 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddMaterialCodeList(c,38033121,46986414)
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionCode,38033121,46986414),aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON+RACE_SPELLCASTER),true)
+	aux.AddFusionProcCodeFun(c,{46986414,38033121},aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON+RACE_SPELLCASTER),1,true,true)
 	--immune
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
