@@ -30,8 +30,7 @@ end
 function c57831349.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
 	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
-		ec:CancelToGrave()
-		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			local g=Duel.GetMatchingGroup(c57831349.desfilter,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 			if g:GetCount()>0 then
 				Duel.BreakEffect()
