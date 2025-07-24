@@ -19,10 +19,6 @@ function s.initial_effect(c)
 	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
-function s.filter0(c)
-	return c:IsSetCard(0x1047) and not c:IsRace(RACE_ROCK)
-		and c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
-end
 
 function s.fusfilter(c)
 	return c:IsSetCard(0x1047)

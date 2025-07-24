@@ -9,7 +9,8 @@ function s.initial_effect(c)
 		mat_operation_code_map={
 			{ [LOCATION_SZONE]=FusionSpell.FUSION_OPERATION_BANISH },
 			{ [0xff]=FusionSpell.FUSION_OPERATION_GRAVE }
-		}
+		},
+		additional_fcheck=s.fcheck,
 	})
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	c:RegisterEffect(e1)

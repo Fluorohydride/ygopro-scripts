@@ -9,7 +9,8 @@ function s.initial_effect(c)
 			{ [0xff]=FusionSpell.FUSION_OPERATION_GRAVE }
 		},
 		extra_target=s.extra_target,
-		fusion_spell_matfilter=s.fusion_spell_matfilter
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
+		additional_fcheck=s.fcheck,
 	})
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_TODECK)

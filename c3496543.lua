@@ -36,11 +36,6 @@ function s.spfilter(c,e,tp)
 	return c:IsRace(RACE_ILLUSION+RACE_SPELLCASTER+RACE_FIEND) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 
-function s.filter(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-
 function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)

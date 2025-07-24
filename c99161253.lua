@@ -29,11 +29,6 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 
-function s.filter1(c,e)
-	return (c:IsLocation(LOCATION_ONFIELD+LOCATION_GRAVE) or c:IsFaceup()) and c:IsType(TYPE_MONSTER)
-		and c:IsCanBeFusionMaterial() and c:IsAbleToDeck() and not c:IsImmuneToEffect(e)
-end
-
 function s.fusfilter(c)
 	return c:IsRace(RACE_DRAGON)
 end
