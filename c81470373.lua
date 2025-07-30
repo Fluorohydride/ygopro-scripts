@@ -87,7 +87,7 @@ function c81470373.splimit(e,c)
 end
 function c81470373.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
+	if Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
 		Duel.Damage(tp,1000,REASON_EFFECT)
 	end
 end
