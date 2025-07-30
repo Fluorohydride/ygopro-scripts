@@ -1,31 +1,32 @@
 --魔獣の懐柔
-function c72537897.initial_effect(c)
+local s,id,o=GetID()
+function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCondition(c72537897.condition)
-	e1:SetTarget(c72537897.target)
-	e1:SetOperation(c72537897.activate)
+	e1:SetCondition(s.condition)
+	e1:SetTarget(s.target)
+	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 end
-function c72537897.condition(e,tp,eg,ep,ev,re,r,rp)
+function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
-function c72537897.spfilter(c,e,tp)
+function s.spfilter(c,e,tp)
 	return c:IsRace(RACE_BEAST) and c:IsLevelBelow(2) and c:IsType(TYPE_EFFECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c72537897.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local g=Duel.GetMatchingGroup(c72537897.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
+		local g=Duel.GetMatchingGroup(s.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>2 and g:GetClassCount(Card.GetCode)>=3 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,3,tp,LOCATION_DECK)
 end
-function c72537897.activate(e,tp,eg,ep,ev,re,r,rp)
+function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c72537897.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(s.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and g:GetClassCount(Card.GetCode)>=3 then
@@ -35,7 +36,7 @@ function c72537897.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=sg1:GetFirst()
 		while tc do
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-			tc:RegisterFlagEffect(72537897,RESET_EVENT+RESETS_STANDARD,0,1,fid)
+			tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_DISABLE)
@@ -57,8 +58,8 @@ function c72537897.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCountLimit(1)
 		e3:SetLabel(fid)
 		e3:SetLabelObject(sg1)
-		e3:SetCondition(c72537897.descon)
-		e3:SetOperation(c72537897.desop)
+		e3:SetCondition(s.descon)
+		e3:SetOperation(s.desop)
 		Duel.RegisterEffect(e3,tp)
 		Duel.SpecialSummonComplete()
 	end
@@ -68,27 +69,28 @@ function c72537897.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 		e1:SetTargetRange(1,0)
-		e1:SetTarget(c72537897.splimit)
+		e1:SetTarget(s.splimit)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
-function c72537897.splimit(e,c)
+function s.splimit(e,c)
 	return c:GetRace()~=RACE_BEAST
 end
-function c72537897.desfilter(c,fid)
-	return c:GetFlagEffectLabel(72537897)==fid
+function s.desfilter(c,fid)
+	return c:GetFlagEffectLabel(id)==fid
 end
-function c72537897.descon(e,tp,eg,ep,ev,re,r,rp)
+function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
-	if not g:IsExists(c72537897.desfilter,1,nil,e:GetLabel()) then
+	if not g:IsExists(s.desfilter,1,nil,e:GetLabel()) then
 		g:DeleteGroup()
 		e:Reset()
 		return false
 	else return true end
 end
-function c72537897.desop(e,tp,eg,ep,ev,re,r,rp)
+function s.desop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,id)
 	local g=e:GetLabelObject()
-	local tg=g:Filter(c72537897.desfilter,nil,e:GetLabel())
+	local tg=g:Filter(s.desfilter,nil,e:GetLabel())
 	Duel.Destroy(tg,REASON_EFFECT)
 end

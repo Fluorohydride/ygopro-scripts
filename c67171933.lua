@@ -74,6 +74,7 @@ function s.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	else return true end
 end
 function s.tgop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,id)
 	Duel.SendtoGrave(e:GetLabelObject(),REASON_EFFECT)
 end
 function s.splimit(e,c)

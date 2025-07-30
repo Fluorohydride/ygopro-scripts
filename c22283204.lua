@@ -75,6 +75,7 @@ function s.rmcon(fid)
 	end
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,id)
 	local tc=e:GetLabelObject()
 	if tc and tc:IsOnField() then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
