@@ -10,7 +10,8 @@ function s.initial_effect(c)
 		mat_operation_code_map={
 			{ [LOCATION_DECK]=FusionSpell.FUSION_OPERATION_GRAVE },
 			{ [0xff]=FusionSpell.FUSION_OPERATION_SHUFFLE }
-		}
+		},
+		extra_target=s.extra_target,
 	})
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	c:RegisterEffect(e1)
@@ -23,4 +24,11 @@ end
 function s.matfilter(c)
 	--- material must be one of this name
 	return c:IsFusionCode(41230939,77625948,3019642)
+end
+
+function s.extra_target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		return true
+	end
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND)
 end

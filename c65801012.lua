@@ -6,9 +6,9 @@ function s.initial_effect(c)
 		fusfilter=s.fusfilter,
 		pre_select_mat_location=s.pre_select_mat_location,
 		fusion_spell_matfilter=s.fusion_spell_matfilter,
-		additional_fcheck=s.fcheck
+		additional_fcheck=s.fcheck,
 	})
-	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_GRAVE_ACTION)
 	c:RegisterEffect(e1)
 end
 

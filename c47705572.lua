@@ -20,6 +20,7 @@ function s.initial_effect(c)
 			{ [LOCATION_REMOVED] = FusionSpell.FUSION_OPERATION_GRAVE },
 			{ [0xff] = FusionSpell.FUSION_OPERATION_BANISH }
 		},
+		extra_target=s.extra_target,
 	})
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_PZONE)
@@ -41,6 +42,13 @@ end
 
 function s.fusfilter(c)
 	return c:IsSetCard(0xdf)
+end
+
+function s.extra_target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		return true
+	end
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_ONFIELD+LOCATION_GRAVE)
 end
 
 function s.ptg(e,c)
