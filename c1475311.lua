@@ -18,11 +18,11 @@ function c1475311.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1475311.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	Duel.Draw(p,d,REASON_EFFECT)
-	Duel.ShuffleHand(p)
+	if Duel.Draw(p,d,REASON_EFFECT)<=0 then return end
 	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(p,Card.IsAttribute,p,LOCATION_HAND,0,1,1,nil,ATTRIBUTE_DARK)
+	Duel.ShuffleHand(p)
 	local tg=g:GetFirst()
 	if tg then
 		if Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)==0 then
