@@ -75,9 +75,10 @@ function c61322713.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	c61322713.cost1(e,tp,eg,ep,ev,re,r,rp,1)
 end
 function c61322713.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) and Duel.GetFlagEffect(tp,61322713)==0 end
 end
 function c61322713.sumop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,61322713)~=0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(61322713,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
