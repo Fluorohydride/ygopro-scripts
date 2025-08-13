@@ -14,7 +14,6 @@ function c99328137.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c99328137.sumcon)
 	e2:SetTarget(c99328137.sumtg)
 	e2:SetOperation(c99328137.sumop)
 	c:RegisterEffect(e2)
@@ -25,11 +24,9 @@ end
 function c99328137.val(e,c)
 	return Duel.GetMatchingGroupCount(c99328137.cfilter,c:GetControler(),LOCATION_MZONE,0,nil)*400
 end
-function c99328137.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,99328137)==0
-end
 function c99328137.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) and Duel.GetFlagEffect(tp,99328137)==0 end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,99328137)==0 end
 end
 function c99328137.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,94076521)==0 then

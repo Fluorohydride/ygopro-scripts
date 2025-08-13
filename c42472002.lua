@@ -39,7 +39,6 @@ function c42472002.effop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e1:SetCondition(c42472002.sumcon)
 	e1:SetTarget(c42472002.sumtg)
 	e1:SetOperation(c42472002.sumop)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
@@ -53,11 +52,9 @@ function c42472002.effop(e,tp,eg,ep,ev,re,r,rp)
 		rc:RegisterEffect(e2,true)
 	end
 end
-function c42472002.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,42472002)==0 and Duel.GetTurnPlayer()==tp
-end
 function c42472002.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,42472002)==0 and Duel.GetTurnPlayer()==tp end
 end
 function c42472002.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
