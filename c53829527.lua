@@ -32,7 +32,7 @@ end
 function s.rmlimit(e,c,rp,r,re)
 	local tp=e:GetHandlerPlayer()
 	return c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0xea) and c:IsFaceup()
-		and r&REASON_EFFECT~=0 and re:GetOwnerPlayer()~=tp
+		and r&REASON_EFFECT~=0 and r&REASON_REDIRECT==0 and rp==1-tp
 end
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xea) and c:IsType(TYPE_SYNCHRO)

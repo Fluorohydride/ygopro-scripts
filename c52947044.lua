@@ -60,6 +60,7 @@ function s.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,id)
 	local tc=e:GetLabelObject()
 	Duel.Destroy(tc,REASON_EFFECT)
 end
