@@ -90,7 +90,7 @@ function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local at=Duel.GetAttacker()
 	if c:IsRelateToEffect(e) and c:IsCanOverlay()
-		and at:IsRelateToEffect(e) and at:IsRelateToBattle() and not at:IsImmuneToEffect(e) then
+		and at:IsRelateToBattle() and not at:IsImmuneToEffect(e) then
 		Duel.Overlay(at,Group.FromCards(c))
 	end
 end
