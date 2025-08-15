@@ -39,9 +39,7 @@ function c24793135.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c24793135.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetDecktopGroup(tp,3)
-	if chk==0 then return #g==3 and g:IsExists(Card.IsAbleToHand,1,nil)
-		and Duel.IsPlayerCanRemove(tp) end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3 and Duel.IsPlayerCanRemove(tp) end
 end
 function c24793135.thfilter(c)
 	return aux.AtkEqualsDef(c) and c:IsRace(RACE_MACHINE) and c:IsAbleToHand()
