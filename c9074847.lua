@@ -39,18 +39,28 @@ function c9074847.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.SelectMatchingCard(tp,c9074847.spfilter,tp,LOCATION_HAND,0,ct1,ct1,nil,e,tp)
 	if g1:GetCount()>0 then
 		local tc=g1:GetFirst()
+		local cg1=Group.CreateGroup()
 		while tc do
+			if tc:IsPublic() then cg1:AddCard(tc) end
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 			tc=g1:GetNext()
+		end
+		if cg1:GetCount()>0 then
+			Duel.ConfirmCards(1-tp,cg1)
 		end
 	end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectMatchingCard(1-tp,c9074847.spfilter,1-tp,LOCATION_HAND,0,ct2,ct2,nil,e,1-tp)
 	if g2:GetCount()>0 then
 		local tc=g2:GetFirst()
+		local cg2=Group.CreateGroup()
 		while tc do
+			if tc:IsPublic() then cg2:AddCard(tc) end
 			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 			tc=g2:GetNext()
+		end
+		if cg2:GetCount()>0 then
+			Duel.ConfirmCards(tp,cg2)
 		end
 	end
 	Duel.SpecialSummonComplete()

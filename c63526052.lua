@@ -118,5 +118,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	aux.GCheckAdditional=s.gcheck(lv)
 	local sg=g:SelectSubGroup(tp,s.gselect,false,1,ft,lv)
 	aux.GCheckAdditional=nil
+	Duel.ConfirmCards(1-tp,sg)
 	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_DEFENSE)
 end
