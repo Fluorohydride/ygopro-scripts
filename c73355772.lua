@@ -1,4 +1,4 @@
---教導の雷霆 フルルドリス
+--教導の雷霆フルルドリス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

@@ -1,4 +1,4 @@
---鉄獣式撃滅兵装”Mouser”
+--鉄獣式撃滅兵装“Mouser”
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

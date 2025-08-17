@@ -1,4 +1,4 @@
---螢焅聖 アレクウス
+--熒焅聖 アレクゥス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

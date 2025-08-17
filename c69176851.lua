@@ -1,4 +1,4 @@
---瘴煙の死靈術師
+--瘴煙の死霊術師
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddLinkProcedure(c,nil,2,2,s.lcheck)
