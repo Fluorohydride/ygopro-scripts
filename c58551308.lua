@@ -45,7 +45,7 @@ function c58551308.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
 		if Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE) and tc:IsFacedown() then
-			Duel.ConfirmCards(1-tp,tc)
+			Duel.ConfirmCards(1-sp,tc)
 		end
 	end
 	tc=sg:GetNext()
