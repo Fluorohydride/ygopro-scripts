@@ -37,7 +37,7 @@ function s.initial_effect(c)
 	aux.RegisterMergedDelayedEvent(c,id,EVENT_SPSUMMON_SUCCESS)
 	if not s.global_check then
 		s.global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_CHAINING)
 		ge1:SetCondition(s.checkcon)
@@ -51,7 +51,7 @@ end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(rp,id)==0 then
 		Duel.RegisterFlagEffect(rp,id,0,0,0)
-		local e1=Effect.GlobalEffect()
+		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_CHAIN_NEGATED)
 		e1:SetOperation(s.rsop)
