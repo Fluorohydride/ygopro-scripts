@@ -84,6 +84,7 @@ function c92781606.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+		Duel.ConfirmCards(1-tp,g)
 	end
 end
 function c92781606.effilter(c)
