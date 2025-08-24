@@ -1669,7 +1669,7 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
 	--use global effect to raise event for face-down cards
 	if not Auxiliary.merge_single_global_check then
 		Auxiliary.merge_single_global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_CHAIN_END)
 		ge1:SetOperation(Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_RaiseEvent)

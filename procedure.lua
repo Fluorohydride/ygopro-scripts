@@ -1886,7 +1886,7 @@ end
 function Auxiliary.EnablePendulumAttribute(c,reg)
 	if not Auxiliary.PendulumChecklist then
 		Auxiliary.PendulumChecklist=0
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
 		ge1:SetOperation(Auxiliary.PendulumReset)
