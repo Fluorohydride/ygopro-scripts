@@ -29,7 +29,8 @@ function c40441990.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c40441990.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c40441990.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,40441990)==0 end
 end
 function c40441990.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,40441990)~=0 then return end

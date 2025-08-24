@@ -6,7 +6,6 @@ function c8567955.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
-	e1:SetCondition(c8567955.sumcon)
 	e1:SetCost(c8567955.sumcost)
 	e1:SetTarget(c8567955.sumtg)
 	e1:SetOperation(c8567955.sumop)
@@ -23,17 +22,16 @@ function c8567955.initial_effect(c)
 	e2:SetOperation(c8567955.spop)
 	c:RegisterEffect(e2)
 end
-function c8567955.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,8567955)==0
-end
 function c8567955.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)
 end
 function c8567955.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,8567955)==0 end
 end
 function c8567955.sumop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,8567955)~=0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(8567955,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
