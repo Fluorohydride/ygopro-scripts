@@ -26,8 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.cfilter(c,re)
-	if not c:IsType(TYPE_SPELL+TYPE_TRAP) or not c:IsReason(REASON_COST) then return false end
-	if c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousTypeOnField()&(TYPE_SPELL+TYPE_TRAP)==0 then return false end
+	if c:GetOriginalType()&(TYPE_SPELL+TYPE_TRAP)==0 or not re then return false end
 	local recode=re:GetCode()
 	return re:IsActivated()
 		or recode==EFFECT_TRAP_ACT_IN_HAND
@@ -36,7 +35,7 @@ function s.cfilter(c,re)
 		or recode==EFFECT_QP_ACT_IN_SET_TURN
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,re) and r&REASON_COST>0
+	return r&REASON_COST>0 and eg:IsExists(s.cfilter,1,nil,re)
 end
 function s.tgfilter(c)
 	return c:IsRace(RACE_ILLUSION+RACE_SPELLCASTER) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
