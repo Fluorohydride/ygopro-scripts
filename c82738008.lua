@@ -1,75 +1,66 @@
 --赫の烙印
-function c82738008.initial_effect(c)
+local s,id,o=GetID()
+function s.initial_effect(c)
 	aux.AddCodeList(c,68468459)
+	--- fusion effect
+	local e0=FusionSpell.CreateSummonEffect(c,{
+		fusfilter=s.fusfilter,
+		matfilter=aux.NecroValleyFilter(),
+		mat_operation_code_map={
+			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
+			{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
+		},
+		stage_x_operation=s.stage_x_operation
+	})
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetCountLimit(1,82738008+EFFECT_COUNT_CODE_OATH)
-	e1:SetTarget(c82738008.target)
-	e1:SetOperation(c82738008.activate)
+	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
+	e1:SetTarget(s.target)
+	e1:SetOperation(s.activate)
+	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
-function c82738008.filter(c)
+
+function s.filter(c)
 	return (c:IsSetCard(0x164) and c:IsType(TYPE_MONSTER) or c:IsCode(68468459)) and c:IsAbleToHand()
 end
-function c82738008.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c82738008.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c82738008.filter,tp,LOCATION_GRAVE,0,1,nil) end
+
+function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectTarget(tp,c82738008.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,s.filter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
-function c82738008.filter1(c,e)
-	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
+
+function s.fusfilter(c)
+	return c:IsLevelAbove(8)
 end
-function c82738008.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsLevelAbove(8) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-function c82738008.activate(e,tp,eg,ep,ev,re,r,rp)
+
+function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(c82738008.filter1,nil,e)
-		local sg1=Duel.GetMatchingGroup(c82738008.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-		local mg2=nil
-		local sg2=nil
-		local ce=Duel.GetChainMaterial(tp)
-		if ce~=nil then
-			local fgroup=ce:GetTarget()
-			mg2=fgroup(ce,e,tp)
-			local mf=ce:GetValue()
-			sg2=Duel.GetMatchingGroup(c82738008.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-		end
-		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(82738008,0)) then
+		local fusion_effect=e:GetLabelObject()
+		if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.BreakEffect()
 			Duel.ShuffleHand(tp)
-			local sg=sg1:Clone()
-			if sg2 then sg:Merge(sg2) end
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local tg=sg:Select(tp,1,1,nil)
-			local tc=tg:GetFirst()
-			if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-				local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-				tc:SetMaterial(mat1)
-				Duel.Remove(mat1,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-				Duel.BreakEffect()
-				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-			else
-				local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-				local fop=ce:GetOperation()
-				fop(ce,e,tp,tc,mat2)
-			end
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
-			tc:CompleteProcedure()
+			fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 		end
+	end
+end
+
+--- @type FUSION_SPELL_STAGE_X_CALLBACK_FUNCTION
+function s.stage_x_operation(e,tc,tp,stage)
+	if stage==FusionSpell.STAGE_BEFORE_SUMMON_COMPLETE then
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		tc:RegisterEffect(e1)
 	end
 end
