@@ -78,7 +78,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:FilterCount(aux.TRUE,nil,e:GetHandler())>0
+	return eg:FilterCount(aux.TRUE,e:GetHandler())>0
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToHand() end
