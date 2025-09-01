@@ -40,6 +40,12 @@ function s.initial_effect(c)
 	e3:SetOperation(s.spop)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
+	--double tuner check
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_MATERIAL_CHECK)
+	e4:SetValue(s.valcheck)
+	c:RegisterEffect(e4)
 end
 function s.mfilter(c,syncard)
 	return (c:IsRace(RACE_FISH) and c:IsTuner(syncard)) or c:IsNotTuner(syncard)
@@ -83,4 +89,15 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+end
+function s.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsType,2,nil,TYPE_TUNER) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+		e1:SetCode(21142671)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e1)
+	end
 end
