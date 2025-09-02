@@ -18,7 +18,6 @@ function c61322713.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,61322714)
-	e2:SetCondition(c61322713.sumcon)
 	e2:SetCost(c61322713.cost2)
 	e2:SetTarget(c61322713.sumtg)
 	e2:SetOperation(c61322713.sumop)
@@ -65,9 +64,6 @@ function c61322713.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c61322713.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,61322713)==0
-end
 function c61322713.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c61322713.cost1(e,tp,eg,ep,ev,re,r,rp,0) and c:IsAbleToRemove() end
@@ -75,9 +71,11 @@ function c61322713.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	c61322713.cost1(e,tp,eg,ep,ev,re,r,rp,1)
 end
 function c61322713.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,61322713)==0 end
 end
 function c61322713.sumop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,61322713)~=0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(61322713,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
