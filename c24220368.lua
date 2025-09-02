@@ -2,6 +2,12 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,1264319)
+	local e0=FusionSpell.CreateSummonEffect(c,{
+		fusfilter=s.fusfilter,
+		pre_select_mat_location=s.pre_select_mat_location,
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
+		additional_fcheck=s.fcheck
+	})
 	--Activate 1
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -10,49 +16,53 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
+	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
-function s.filter0(c)
-	return c:IsSetCard(0x1047) and not c:IsRace(RACE_ROCK)
-		and c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+
+function s.fusfilter(c)
+	return c:IsSetCard(0x1047)
 end
-function s.filter1(c,e)
-	return not c:IsImmuneToEffect(e)
+
+--- @type FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION
+function s.pre_select_mat_location(tc,tp)
+	local location=LOCATION_HAND|LOCATION_MZONE
+	if Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,1264319) then
+		location=location|LOCATION_DECK|LOCATION_EXTRA
+	end
+	return location
 end
-function s.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1047) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+
+function s.fusion_spell_matfilter(c)
+	--- materials from deck/extra must be ジェムナイト
+	if c:IsLocation(LOCATION_DECK|LOCATION_EXTRA) and not c:IsFusionSetCard(0x1047) then
+		return false
+	end
+	return true
 end
+
 function s.thfilter(c)
 	return c:IsFaceupEx() and c:IsSetCard(0x47) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function s.fcheck(tp,sg,fc)
-	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)<=2
+
+--- @type FUSION_FGCHECK_FUNCTION
+function s.fcheck(tp,mg,fc,all_mg)
+	--- if we have this, we already know there is ジェムナイト・フュージョン in GY
+	local mg_deck=mg:Filter(function(c) return c:IsLocation(LOCATION_DECK|LOCATION_EXTRA) end,nil)
+	--- Up to 2 monsters from your Deck/Extra Deck can be used,
+	if #mg_deck>2 then
+		return false
+	end
+	--- Only if they are non-Rock "Gem-Knight" monsters
+	if mg_deck:IsExists(function(c) return c:IsRace(RACE_ROCK) end,1,nil) then
+		return false
+	end
+	return true
 end
-function s.gcheck(sg)
-	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)<=2
-end
+
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter1,nil,e)
-	if Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,1264319) then
-		local sg=Duel.GetMatchingGroup(s.filter0,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
-		mg1:Merge(sg)
-		aux.FCheckAdditional=s.fcheck
-		aux.GCheckAdditional=s.gcheck
-	end
-	local res=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
-	aux.FCheckAdditional=nil
-	aux.GCheckAdditional=nil
-	if not res then
-		local ce=Duel.GetChainMaterial(tp)
-		if ce~=nil then
-			local fgroup=ce:GetTarget()
-			local mg2=fgroup(ce,e,tp)
-			local mf=ce:GetValue()
-			res=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
-		end
-	end
+	local fusion_effect=e:GetLabelObject()
+	local res=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	local b1=res and (Duel.GetFlagEffect(tp,id)==0 or not e:IsCostChecked())
 	local b2=Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK+LOCATION_REMOVED,0,1,nil)
 		and (Duel.GetFlagEffect(tp,id+o)==0 or not e:IsCostChecked())
@@ -86,60 +96,11 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_REMOVED)
 	end
 end
+
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter1,nil,e)
-		local exmat=false
-		if Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,1264319) then
-			local sg=Duel.GetMatchingGroup(s.filter0,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e)
-			if sg:GetCount()>0 then
-				mg1:Merge(sg)
-				exmat=true
-			end
-		end
-		if exmat then
-			aux.FCheckAdditional=s.fcheck
-			aux.GCheckAdditional=s.gcheck
-		end
-		local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-		aux.FCheckAdditional=nil
-		aux.GCheckAdditional=nil
-		local mg2=nil
-		local sg2=nil
-		local ce=Duel.GetChainMaterial(tp)
-		if ce~=nil then
-			local fgroup=ce:GetTarget()
-			mg2=fgroup(ce,e,tp)
-			local mf=ce:GetValue()
-			sg2=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-		end
-		if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
-			local sg=sg1:Clone()
-			if sg2 then sg:Merge(sg2) end
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local tg=sg:Select(tp,1,1,nil)
-			local tc=tg:GetFirst()
-			mg1:RemoveCard(tc)
-			if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-				if exmat then
-					aux.FCheckAdditional=s.fcheck
-					aux.GCheckAdditional=s.gcheck
-				end
-				local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-				aux.FCheckAdditional=nil
-				aux.GCheckAdditional=nil
-				tc:SetMaterial(mat1)
-				Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-				Duel.BreakEffect()
-				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-			elseif ce~=nil then
-				local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-				local fop=ce:GetOperation()
-				fop(ce,e,tp,tc,mat2)
-			end
-			tc:CompleteProcedure()
-		end
+		local fusion_effect=e:GetLabelObject()
+		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	elseif e:GetLabel()==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK+LOCATION_REMOVED,0,1,1,nil)
@@ -161,10 +122,12 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 end
+
 function s.damval(e,re,val,r,rp,rc)
 	if r&REASON_EFFECT==REASON_EFFECT then
 		return math.ceil(val/2)
