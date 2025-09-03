@@ -31,7 +31,7 @@ function c66675911.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x9d)
 end
 function c66675911.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c66675911.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c66675911.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c66675911.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c66675911.filter,tp,LOCATION_MZONE,0,1,1,nil)
