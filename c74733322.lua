@@ -36,8 +36,11 @@ function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.anfilter(c,tp)
 	return c:IsSetCard(0x1cd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
-		and not Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_MZONE,0,1,nil,c:GetCode())
+		and not Duel.IsExistingMatchingCard(s.anexfilter,tp,LOCATION_MZONE,0,1,nil,c:GetCode())
 		and not c:IsHasEffect(id,tp)
+end
+function s.anexfilter(c,code)
+	return c:IsFaceup() and c:IsCode(code)
 end
 function s.thfilter(c,code)
 	return c:IsSetCard(0x1cd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
