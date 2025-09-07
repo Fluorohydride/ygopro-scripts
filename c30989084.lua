@@ -1,6 +1,6 @@
 --アロマリリス－ローズマリー
 local s,id,o=GetID()
-function c30989084.initial_effect(c)
+function s.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_PLANT),2,3)

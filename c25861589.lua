@@ -1,6 +1,6 @@
 --アロマブレンド
 local s,id,o=GetID()
-function c25861589.initial_effect(c)
+function s.initial_effect(c)
 	aux.AddCodeList(c,15177750,92266279,28265983)
 	--Activate
 	local e1=Effect.CreateEffect(c)

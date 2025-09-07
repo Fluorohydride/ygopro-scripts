@@ -1,6 +1,6 @@
 --アロマリリス－マグノリア
 local s,id,o=GetID()
-function c73167098.initial_effect(c)
+function s.initial_effect(c)
 	--material
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xc9),aux.FilterBoolFunction(Card.IsRace,RACE_PLANT),true)
 	c:EnableReviveLimit()
