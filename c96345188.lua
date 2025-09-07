@@ -35,6 +35,13 @@ function s.initial_effect(c)
 		ge2:SetLabel(id)
 		Duel.RegisterEffect(ge2,0)
 	end
+	--register to grave
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetOperation(s.regop)
+	c:RegisterEffect(e3)
 end
 function s.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(id)>0
@@ -76,4 +83,13 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
+end
+function s.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
+	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetReset(RESET_EVENT|RESETS_STANDARD|RESET_PHASE|PHASE_END)
+	c:RegisterEffect(e1)
 end
