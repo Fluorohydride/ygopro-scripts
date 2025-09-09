@@ -1,67 +1,67 @@
 --TG ワーウルフ
 local s,id,o=GetID()
-function c293542.initial_effect(c)
+function s.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(293542,0))
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e1:SetCondition(c293542.spcon)
-	e1:SetTarget(c293542.sptg)
-	e1:SetOperation(c293542.spop)
+	e1:SetCondition(s.spcon)
+	e1:SetTarget(s.sptg)
+	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetCode(EVENT_TO_GRAVE)
-	e2:SetOperation(c293542.regop)
+	e2:SetOperation(s.regop)
 	c:RegisterEffect(e2)
 end
-function c293542.cfilter(c)
+function s.cfilter(c)
 	return c:IsFaceup() and c:IsLevelBelow(4)
 end
-function c293542.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c293542.cfilter,1,nil)
+function s.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(s.cfilter,1,nil)
 end
-function c293542.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
-function c293542.spop(e,tp,eg,ep,ev,re,r,rp)
+function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
-function c293542.regop(e,tp,eg,ep,ev,re,r,rp)
+function s.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(293542,1))
+		e1:SetDescription(aux.Stringid(id,1))
 		e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetCountLimit(1)
 		e1:SetRange(LOCATION_GRAVE)
-		e1:SetTarget(c293542.thtg)
-		e1:SetOperation(c293542.thop)
+		e1:SetTarget(s.thtg)
+		e1:SetOperation(s.thop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end
-function c293542.filter(c)
-	return c:IsSetCard(0x27) and not c:IsCode(293542) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+function s.filter(c)
+	return c:IsSetCard(0x27) and not c:IsCode(id) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c293542.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c293542.filter,tp,LOCATION_DECK,0,1,nil) end
+function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function c293542.thop(e,tp,eg,ep,ev,re,r,rp)
+function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c293542.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
