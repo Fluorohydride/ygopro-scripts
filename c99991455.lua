@@ -1,4 +1,5 @@
 --覇雷星ライジン
+local s,id,o=GetID()
 function c99991455.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

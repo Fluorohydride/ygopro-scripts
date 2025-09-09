@@ -1,4 +1,5 @@
 --白銀のスナイパー
+local s,id,o=GetID()
 function c9791914.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

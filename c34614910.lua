@@ -1,4 +1,5 @@
 --六花精シクラン
+local s,id,o=GetID()
 function c34614910.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

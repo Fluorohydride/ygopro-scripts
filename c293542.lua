@@ -1,4 +1,5 @@
 --TG ワーウルフ
+local s,id,o=GetID()
 function c293542.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

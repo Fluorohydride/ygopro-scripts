@@ -1,4 +1,5 @@
 --ダーク・ネクロフィア
+local s,id,o=GetID()
 function c31829185.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

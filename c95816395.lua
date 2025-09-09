@@ -1,4 +1,5 @@
 --どぐう
+local s,id,o=GetID()
 function c95816395.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

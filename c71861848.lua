@@ -1,4 +1,5 @@
 --転生炎獣コヨーテ
+local s,id,o=GetID()
 function c71861848.initial_effect(c)
 	--register effect
 	local e1=Effect.CreateEffect(c)

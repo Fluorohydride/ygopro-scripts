@@ -1,4 +1,5 @@
 --雙極の破械神
+local s,id,o=GetID()
 function c1966438.initial_effect(c)
 	c:SetSPSummonOnce(1966438)
 	--spsummon

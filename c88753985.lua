@@ -1,4 +1,5 @@
 --きつね火
+local s,id,o=GetID()
 function c88753985.initial_effect(c)
 	--register
 	local e1=Effect.CreateEffect(c)

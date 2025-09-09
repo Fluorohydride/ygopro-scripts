@@ -1,4 +1,5 @@
 --TG サイバー・マジシャン
+local s,id,o=GetID()
 function c64910482.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

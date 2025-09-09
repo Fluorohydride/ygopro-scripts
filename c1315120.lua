@@ -1,4 +1,5 @@
 --TG ストライカー
+local s,id,o=GetID()
 function c1315120.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

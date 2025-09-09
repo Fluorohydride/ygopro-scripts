@@ -1,4 +1,5 @@
 --超勝負！
+local s,id,o=GetID()
 function c16780318.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

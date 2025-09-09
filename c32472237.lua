@@ -1,4 +1,5 @@
 --メタルヴァレット・ドラゴン
+local s,id,o=GetID()
 function c32472237.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

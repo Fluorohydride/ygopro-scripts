@@ -1,4 +1,5 @@
 --コードブレイカー・ウイルスソードマン
+local s,id,o=GetID()
 function c84121193.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)

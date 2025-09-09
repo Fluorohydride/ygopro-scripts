@@ -1,4 +1,5 @@
 --BF－上弦のピナーカ
+local s,id,o=GetID()
 function c55610595.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

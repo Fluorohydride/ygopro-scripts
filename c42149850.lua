@@ -1,4 +1,5 @@
 --使い捨て学習装置
+local s,id,o=GetID()
 function c42149850.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

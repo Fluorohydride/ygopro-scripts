@@ -1,4 +1,5 @@
 --ダイナレスラー・マーシャルアンキロ
+local s,id,o=GetID()
 function c35770983.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

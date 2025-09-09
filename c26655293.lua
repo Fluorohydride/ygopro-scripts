@@ -1,4 +1,5 @@
 --マグナヴァレット・ドラゴン
+local s,id,o=GetID()
 function c26655293.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
