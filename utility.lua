@@ -1988,7 +1988,7 @@ function Auxiliary.SPSummonOnceHintCondition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsGlobalFlag(GLOBALFLAG_SPSUMMON_ONCE)
 end
 function Auxiliary.SPSummonOnceHintTarget(e,c)
-	return c:IsType(TYPE_MONSTER) and c:CheckSPSummonOnce(c:GetControler())
+	return c:IsType(TYPE_MONSTER) and not c:CheckSPSummonOnce(c:GetControler())
 end
 function Auxiliary.SPSummonOnceHintInit(c)
 	local e1=Effect.CreateEffect(c)
