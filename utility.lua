@@ -2010,7 +2010,7 @@ end
 Auxiliary.SPSummonOnceHintInited=false
 Auxiliary.original_SetSPSummonOnce=Card.SetSPSummonOnce
 function Card.SetSPSummonOnce(c,...)
-	if Auxiliary.SPSummonOnceHintInited then
+	if not Auxiliary.SPSummonOnceHintInited then
 		Auxiliary.SPSummonOnceHintInited=true
 		Auxiliary.SPSummonOnceHintInit(c)
 	end
