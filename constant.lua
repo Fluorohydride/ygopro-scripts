@@ -609,6 +609,7 @@ EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
 EFFECT_XYZ_MIN_COUNT			=372	--只能用在X只以上的超量召唤
 EFFECT_SYNCHRO_LEVEL_EX			=373	--支持使用没有等级的怪兽作为同调素材
 EFFECT_RITUAL_LEVEL_EX			=374	--支持使用没有等级的怪兽作为仪式素材
+EFFECT_DOUBLE_XMATERIAL			=375	--召唤需3只以上作素材的超量怪兽时可以作为2只数量的素材
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）

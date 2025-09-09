@@ -69,9 +69,9 @@ function s.exfilter(c,tp)
 end
 function s.fcheck(tp,sg,fc)
 	if Duel.GetFlagEffect(tp,id)~=0 then
-		return sg:IsExists(Card.IsSetCard,1,nil,0x1a1)
+		return sg:IsExists(Card.IsFusionSetCard,1,nil,0x1a1)
 	else
-		return sg:IsExists(Card.IsSetCard,1,nil,0x1a1) and not sg:IsExists(s.exfilter,1,nil,tp)
+		return sg:IsExists(Card.IsFusionSetCard,1,nil,0x1a1) and not sg:IsExists(s.exfilter,1,nil,tp)
 	end
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)

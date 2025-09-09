@@ -51,7 +51,7 @@ function c71187462.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local clv=c:GetLevel()
 	local lv=8-clv
-	if c:IsRelateToEffect(e) and not c:IsFacedown() and lv>0 then
+	if c:IsRelateToEffect(e) and lv>0 then
 		local g=Duel.GetMatchingGroup(c71187462.tgfilter,tp,LOCATION_DECK,0,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local tg=g:SelectWithSumEqual(tp,Card.GetLevel,lv,1,99)
