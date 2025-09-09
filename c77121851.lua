@@ -24,7 +24,7 @@ function s.initial_effect(c)
 end
 function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,REASON_RETURN+REASON_ADJUST)~=0 then return end
-	e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(id)~=0

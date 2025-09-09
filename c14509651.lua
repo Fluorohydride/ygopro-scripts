@@ -67,7 +67,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and rp==1-tp and bit.band(r,REASON_DESTROY)~=0 then
-		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 	end
 end
 function s.spcon2(e,tp,eg,ep,ev,re,r,rp)
