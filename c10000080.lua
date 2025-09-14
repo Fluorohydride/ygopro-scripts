@@ -123,7 +123,7 @@ function c10000080.retop(e,tp,eg,ep,ev,re,r,rp)
 	--reset
 	local e2=Effect.CreateEffect(e:GetHandler())
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_ADJUST)
+	e2:SetCode(EVENT_LEAVE_FIELD)
 	e2:SetLabelObject(e1)
 	e2:SetOperation(c10000080.reset)
 	Duel.RegisterEffect(e2,tp)
