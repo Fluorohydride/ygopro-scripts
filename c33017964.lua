@@ -25,8 +25,8 @@ function s.spfilter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-    if Duel.GetFlagEffect(tp,id)>0 then return end
-    Duel.RegisterFlagEffect(tp,id,0,0,0)
+	if Duel.GetFlagEffect(tp,id)>0 then return end
+	Duel.RegisterFlagEffect(tp,id,0,0,0)
 	local dg=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 	if Duel.Destroy(dg,REASON_EFFECT)>0 and Duel.GetMZoneCount(tp)>0 then
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter),tp,0,LOCATION_GRAVE,nil,e,tp)

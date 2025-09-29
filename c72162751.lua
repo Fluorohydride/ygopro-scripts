@@ -45,9 +45,9 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local ct=Duel.GetOperatedGroup():GetCount()
 		local c=e:GetHandler()
-        if Duel.GetLocationCount(tp,LOCATION_MZONE)==0 then
-            Duel.SendtoGrave(c,REASON_EFFECT)
-        end
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)==0 then
+			Duel.SendtoGrave(c,REASON_EFFECT)
+		end
 		if not c:IsRelateToChain() then return end
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			if ct==1 then
