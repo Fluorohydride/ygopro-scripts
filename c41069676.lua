@@ -58,7 +58,6 @@ function s.cptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=g:GetFirst()
 	local te=tc.killer_tune_be_material_effect
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
-	e:SetProperty(te:GetProperty())
 	Duel.ClearTargetCard()
 	e:SetLabelObject(te)
 	local tg=te:GetTarget()
