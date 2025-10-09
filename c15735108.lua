@@ -1,4 +1,4 @@
---マジックカード「クロス・ソウル」
+--魔法卡「灵魂交错」
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -43,7 +43,8 @@ end
 function s.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
-	local tc=Duel.SelectMatchingCard(tp,s.sumfilter,tp,LOCATION_HAND,0,1,1,nil,c):GetFirst()
+	local g=Duel.SelectMatchingCard(tp,s.sumfilter,tp,LOCATION_HAND,0,1,1,nil,c)
+	local tc=g:GetFirst()
 	if tc then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -53,7 +54,13 @@ function s.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		Duel.Summon(tp,tc,true,nil,1)
+		local s1=tc:IsSummonable(true,nil,1)
+		local s2=tc:IsMSetable(true,nil,1)
+		if (s1 and s2 and Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)==POS_FACEUP_ATTACK) or not s2 then
+			Duel.Summon(tp,tc,true,nil,1)
+		else
+			Duel.MSet(tp,tc,true,nil,1)
+		end
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_UNRELEASABLE_SUM)
@@ -61,7 +68,7 @@ function s.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetRange(LOCATION_MZONE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_PHASE+PHASE_END)
 		e2:SetValue(1)
-		tc:RegisterEffect(e2,true)
+		tc:RegisterEffect(e2,true) 
 		local e3=e2:Clone()
 		e3:SetCode(EFFECT_UNRELEASABLE_NONSUM)
 		tc:RegisterEffect(e3,true)
@@ -78,7 +85,8 @@ function s.sumop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.IsExistingMatchingCard(s.sumfilter,1-tp,LOCATION_HAND,0,1,nil,c) and Duel.SelectYesNo(1-tp,aux.Stringid(id,2)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SUMMON)
-		local tc=Duel.SelectMatchingCard(1-tp,s.sumfilter,1-tp,LOCATION_HAND,0,1,1,nil,c):GetFirst()
+		local g=Duel.SelectMatchingCard(1-tp,s.sumfilter,1-tp,LOCATION_HAND,0,1,1,nil,c)
+		local tc=g:GetFirst()
 		if tc then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -88,7 +96,13 @@ function s.sumop2(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1)
-			Duel.Summon(1-tp,tc,true,nil,1)
+			local s1=tc:IsSummonable(true,nil,1)
+			local s2=tc:IsMSetable(true,nil,1)
+			if (s1 and s2 and Duel.SelectPosition(1-tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)==POS_FACEUP_ATTACK) or not s2 then
+				Duel.Summon(1-tp,tc,true,nil,1)
+			else
+				Duel.MSet(1-tp,tc,true,nil,1)
+			end
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_UNRELEASABLE_SUM)
@@ -96,7 +110,7 @@ function s.sumop2(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetRange(LOCATION_MZONE)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_PHASE+PHASE_END)
 			e2:SetValue(1)
-			tc:RegisterEffect(e2,true)
+			tc:RegisterEffect(e2,true) 
 			local e3=e2:Clone()
 			e3:SetCode(EFFECT_UNRELEASABLE_NONSUM)
 			tc:RegisterEffect(e3,true)
