@@ -49,6 +49,5 @@ function c11961740.thop(e,tp,eg,ep,ev,re,r,rp)
 	if ct~=2 then return end
 	if Duel.Destroy(c,REASON_EFFECT)>0 and tc:GetFlagEffectLabel(11961740)==fid then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end
