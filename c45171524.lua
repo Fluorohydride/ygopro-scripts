@@ -1,4 +1,4 @@
---Mitsurugi Prayers
+--巳剣勧請
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -65,7 +65,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 				local e1=Effect.CreateEffect(e:GetHandler())
 				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_OATH)
+				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 				e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
 				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 				tc:RegisterEffect(e1)
