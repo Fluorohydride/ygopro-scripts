@@ -113,9 +113,9 @@ end
 function s.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.cfilter(chkc) end
-	if chk==0 then return c:GetFlagEffect(id)==0
+	if chk==0 then return Duel.GetFlagEffect(tp,id+o)==0
 		and Duel.IsExistingTarget(s.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	c:RegisterFlagEffect(id,RESET_CHAIN,0,1)
+	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,s.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
@@ -142,9 +142,9 @@ function s.rfilter(c)
 end
 function s.rsptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chk==0 then return e:IsCostChecked() and c:GetFlagEffect(id)==0
+	if chk==0 then return e:IsCostChecked() and Duel.GetFlagEffect(tp,id)==0
 		and Duel.IsExistingMatchingCard(s.rfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
-	c:RegisterFlagEffect(id,RESET_CHAIN,0,1)
+	Duel.RegisterFlagEffect(tp,id+o,RESET_CHAIN,0,1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,s.rfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	local te,ceg,cep,cev,cre,cr,crp=g:GetFirst():CheckActivateEffect(false,true,true)
