@@ -35,7 +35,7 @@ function s.srfilter(c)
 end
 function s.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.srfilter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.GetFlagEffect(tp,id)==0 end
+		and Duel.GetFlagEffect(tp,id+o)==0 end
 	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
@@ -67,7 +67,7 @@ function s.rstg(e,tp,eg,ep,ev,re,r,rp,chk)
 		aux.RCheckAdditional=nil
 		return res and Duel.GetFlagEffect(tp,id)==0
 	end
-	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1)
+	Duel.RegisterFlagEffect(tp,id+o,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function s.rsop(e,tp,eg,ep,ev,re,r,rp)
