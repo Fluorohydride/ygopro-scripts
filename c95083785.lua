@@ -30,7 +30,7 @@ function c95083785.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95083785.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)>0 then
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end

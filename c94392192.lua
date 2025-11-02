@@ -72,6 +72,7 @@ function c94392192.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_DECK)
 end
 function c94392192.rmop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanRemove(tp) then return end
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)
 	if ct>5 then ct=5 end
 	if ct>1 then

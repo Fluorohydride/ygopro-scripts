@@ -39,7 +39,7 @@ function s.atkfilter(c)
 end
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
-	return tc and tc:IsControler(1-tp) 
+	return tc and tc:IsControler(1-tp)
 end
 function s.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
