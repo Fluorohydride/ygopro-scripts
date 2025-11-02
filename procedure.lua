@@ -895,7 +895,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 end
 function Auxiliary.FConditionFilterMix(c,fc,sub,notfusion,...)
 	local check_type=notfusion and SUMMON_TYPE_SPECIAL or SUMMON_TYPE_FUSION
-	if not FusionSpell.IsCanBeFusionMaterial(c,fc,check_type) then return false end
+	if not c:IsCanBeFusionMaterial(fc,check_type) then return false end
 	for i,f in ipairs({...}) do
 		if f(c,fc,sub) then return true end
 	end
@@ -1291,7 +1291,7 @@ end
 
 --Fusion Summon Effect
 function Auxiliary.FMaterialFilter(c,e,tp)
-	return FusionSpell.IsCanBeFusionMaterial(c)
+	return c:IsCanBeFusionMaterial()
 end
 function Auxiliary.FMaterialRemoveFilter(c,e,tp)
 	return c:IsAbleToRemove()
@@ -1562,7 +1562,7 @@ function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_loc
 	return e2
 end
 function Auxiliary.ContactFusionMaterialFilter(c,fc,filter)
-	return FusionSpell.IsCanBeFusionMaterial(c,fc,SUMMON_TYPE_SPECIAL) and (not filter or filter(c,fc))
+	return c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and (not filter or filter(c,fc))
 end
 function Auxiliary.ContactFusionCondition(filter,self_location,opponent_location)
 	return	function(e,c)
@@ -2256,45 +2256,6 @@ FusionSpell = {}
 --- Whether skip the location count check, default false, used for 叛逆の堕天使, only works for cost/target function
 --- @field skip_location_count_check? boolean
 
-
---- Add LOCATION_EXTRA and opponent mzone to EFFECT_EXTRA_FUSION_MATERIAL list, remove once core updated
-function FusionSpell.GetFusionMaterial(tp,locations)
-	local res=Duel.GetFusionMaterial(tp,locations)
-	local g_from_extra=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_EXTRA,0,nil,EFFECT_EXTRA_FUSION_MATERIAL)
-	if #g_from_extra>0 then
-		res:Merge(g_from_extra)
-	end
-	local g_from_opponent_field=Duel.GetMatchingGroup(Card.IsHasEffect,tp,0,LOCATION_ONFIELD,nil,EFFECT_EXTRA_FUSION_MATERIAL)
-	if #g_from_opponent_field>0 then
-		res:Merge(g_from_opponent_field)
-	end
-	return res
-end
-
---- Workaround for IsCanBeFusionMaterial, remove once core fixes
---- @param c Card
---- @param tc Card
---- @param sumtype? integer
-function FusionSpell.IsCanBeFusionMaterial(c,tc,sumtype)
-	sumtype=sumtype or SUMMON_TYPE_FUSION
-	--- Prohibition will prevent card to be fusion material
-	if c:IsForbidden()==true then
-		return false
-	end
-	local can_not_be_fusion_material_effects={c:IsHasEffect(EFFECT_CANNOT_BE_FUSION_MATERIAL)}
-	for _,effect in ipairs(can_not_be_fusion_material_effects) do
-		local value=effect:GetValue()
-		if value~=nil then
-			if type(value)=='function' and value(effect,tc,sumtype)==true then
-				return false
-			elseif value==1 or value==true then
-				return false
-			end
-		end
-	end
-	return true
-end
-
 --- Get possible materials from opponent locations, must be face-up
 function FusionSpell.GetFusionMaterialFromOpponentLocation(tp,locations)
 	return Duel.GetMatchingGroup(Card.IsFaceupEx,tp,0,locations,nil)
@@ -2813,7 +2774,7 @@ function FusionSpell.GetMaterialsGroupForTargetCard(
 		fusion_spell_matfilter
 	)
 	local all_locations=FusionSpell.GetAllLocationsForTargetCard(tc,tp,pre_select_mat_location,post_select_mat_location)
-	local mg=FusionSpell.GetFusionMaterial(tp,all_locations)
+	local mg=Duel.GetFusionMaterial(tp,all_locations)
 	local calculated_mat_opponent_location=FusionSpell.GetAllLocationsForTargetCard(tc,tp,pre_select_mat_opponent_location,post_select_mat_opponent_location)
 	local opponent_mg=FusionSpell.GetFusionMaterialFromOpponentLocation(tp,calculated_mat_opponent_location)
 	if #opponent_mg>0 then
@@ -2828,9 +2789,7 @@ function FusionSpell.GetMaterialsGroupForTargetCard(
 	mg=mg:Filter(function(c) return not(c:IsLocation(LOCATION_REMOVED) and c:IsFacedown()) end,nil)
 	--- filter out card can not be material
 	--- comment out, currently core can not return correct value if affected by EFFECT_EXTRA_FUSION_MATERIAL.
-	--mg=mg:Filter(Card.IsCanBeFusionMaterial,nil,tc,sumtype)
-	--- workaround until core fixes
-	mg=mg:Filter(function(mc) return FusionSpell.IsCanBeFusionMaterial(mc,tc,sumtype) end,nil)
+	mg=mg:Filter(Card.IsCanBeFusionMaterial,nil,tc,sumtype)
 	--- a material must come from at least one source, either from fusion spell or EXTRA_FUSION_MATERIAL
 	mg=mg:Filter(function(mc)
 		local effects=FusionSpell.GetMaterialEffects(mc,tp,tc,pre_select_mat_location,post_select_mat_location,pre_select_mat_opponent_location,post_select_mat_opponent_location,fusion_spell_matfilter,e,mat_operation_code_map)
