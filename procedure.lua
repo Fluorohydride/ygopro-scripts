@@ -3001,7 +3001,7 @@ function FusionSpell.ChainMaterialSummonTargetFilter(c,fusfilter,e,tp,mg,additio
 	return res
 end
 
----@alias FUSION_SPELL_STAGE_X_CALLBACK_FUNCTION fun(e:Effect,tc:Card,tp:integer,stage:FUSION_SPELL_CALLBACK_STAGE,mg_fuison_spell:Group,mg_all:Group):boolean|nil
+---@alias FUSION_SPELL_STAGE_X_CALLBACK_FUNCTION fun(e:Effect,tc:Card,tp:integer,stage:FUSION_SPELL_CALLBACK_STAGE,mg_fusion_spell:Group,mg_all:Group):boolean|nil
 -- different stage for call back
 ---@alias FUSION_SPELL_CALLBACK_STAGE integer
 -- Right before the Fusion Monster is officially summoned
