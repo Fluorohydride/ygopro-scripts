@@ -90,7 +90,7 @@ function s.nsop(e,tp,eg,ep,ev,re,r,rp)
 	for tc in aux.Next(sg) do
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE|EFFECT_FLAG_SET_AVAILABLE)
+		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e1:SetCode(EFFECT_CANNOT_BE_LINK_MATERIAL)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
@@ -106,7 +106,7 @@ function s.nsop(e,tp,eg,ep,ev,re,r,rp)
 		local e5=e1:Clone()
 		e5:SetDescription(aux.Stringid(id,1))
 		e5:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
-		e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE|EFFECT_FLAG_SET_AVAILABLE|EFFECT_FLAG_CLIENT_HINT)
+		e5:SetProperty(EFFECT_FLAG_SET_AVAILABLE|EFFECT_FLAG_CLIENT_HINT)
 		tc:RegisterEffect(e5)
 	end
 end
