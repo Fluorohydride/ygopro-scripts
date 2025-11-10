@@ -1,4 +1,4 @@
---Kuebiko
+--久延毘古
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -47,11 +47,13 @@ function s.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsSSetable() end
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	local rc=re:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local tg=g:GetMaxGroup(Card.GetAttack)
-	if tg:IsContains(re:GetHandler()) and re:GetHandler():IsRelateToEffect(re) then
+	local rchk=tg:IsContains(rc) and rc:IsRelateToEffect(re)
+	if chk==0 then return c:IsSSetable() and (not rchk or rc:IsAbleToHand()) end
+	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	if rchk then
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,eg,1,0,0)
 	end
 end
