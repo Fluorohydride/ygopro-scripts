@@ -1,4 +1,4 @@
---Mitsurugi Ritual
+--巳剣降臨
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--select effect

@@ -1,4 +1,4 @@
---Heavy Cavalry of the Indestructible Insects
+--無死虫団の重騎兵
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material

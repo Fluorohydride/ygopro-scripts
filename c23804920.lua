@@ -1,4 +1,4 @@
---Divine Scorpion Beast of Serket
+--聖神獣セルケト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material

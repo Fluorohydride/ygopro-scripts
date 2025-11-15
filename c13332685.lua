@@ -1,4 +1,4 @@
---Ame no Habakiri no Mitsurugi
+--天羽々斬之巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

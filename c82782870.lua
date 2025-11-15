@@ -1,4 +1,4 @@
---Mitsurugi no Mikoto, Kusanagi
+--巳剣之尊 草那藝
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to hand

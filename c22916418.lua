@@ -1,4 +1,4 @@
---Mantman the Ultrahuman
+--超人伝－マントマン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--cannot release

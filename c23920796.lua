@@ -1,4 +1,4 @@
---Mimighoul Cerberus
+--ミミグル・ケルベロス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--flip

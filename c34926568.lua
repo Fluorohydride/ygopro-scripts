@@ -1,4 +1,4 @@
---Merciless Scorpion of Serket
+--守護獣セルケト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,29762407)

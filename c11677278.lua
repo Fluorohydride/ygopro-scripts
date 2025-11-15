@@ -1,4 +1,4 @@
---Mimighoul Armor
+--ミミグル・アーマー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--flip

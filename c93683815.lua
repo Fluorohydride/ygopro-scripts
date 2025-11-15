@@ -1,4 +1,4 @@
---Vulmina, Statue of the Sacred Dragon
+--聖竜ヴルミナ像
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.EnablePendulumAttribute(c)

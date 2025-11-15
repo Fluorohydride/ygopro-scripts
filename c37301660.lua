@@ -1,4 +1,4 @@
---Winds of Victory
+--WINDS OF VICTORY
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddEquipSpellEffect(c,true,true,Card.IsFaceup,nil)

@@ -1,4 +1,4 @@
---Mitsurugi no Miko, Wousu
+--巳剣之皇子 小碓
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

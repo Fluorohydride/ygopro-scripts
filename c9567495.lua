@@ -1,4 +1,4 @@
---Dragon Gate
+--闘龍門
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

@@ -1,4 +1,4 @@
---Treasures of the Kings
+--王の遺宝祀りし聖域
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,29762407)

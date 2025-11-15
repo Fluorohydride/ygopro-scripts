@@ -1,4 +1,4 @@
---The League of Uniform Nomenclature Strikes
+--同姓同名同盟罷業
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

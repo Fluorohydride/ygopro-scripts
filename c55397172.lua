@@ -1,4 +1,4 @@
---Futsu no Mitama no Mitsurugi
+--布都御魂之巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

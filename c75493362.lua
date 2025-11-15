@@ -1,4 +1,4 @@
---Vingolf's Blessing
+--ヴィンゴルヴの祝福
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

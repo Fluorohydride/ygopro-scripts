@@ -1,4 +1,4 @@
---Defense of the Temple
+--神殿の守護神
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,29762407,22082432)

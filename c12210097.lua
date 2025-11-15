@@ -1,4 +1,4 @@
---Mitsurugi Sacred Boundary
+--巳剣之磐境
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

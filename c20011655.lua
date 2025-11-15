@@ -1,4 +1,4 @@
---Beast of Talwar - The Sword Summit
+--魔剣達士－タルワール・デーモン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon
