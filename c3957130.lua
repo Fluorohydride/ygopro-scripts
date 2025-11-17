@@ -1,7 +1,7 @@
 --トゥリスヴァレル・ドラゴン
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,67526112,20071842,23219325)
+	aux.AddCodeList(c,67526112,20071842,38129297)
 	--link summon
 	aux.AddLinkProcedure(c,s.mfilter,2,99,s.lcheck)
 	c:EnableReviveLimit()
@@ -39,7 +39,7 @@ function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function s.thfilter(c)
-	return c:IsCode(67526112,20071842,23219325) and c:IsAbleToHand()
+	return c:IsCode(67526112,20071842,38129297) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil) end
