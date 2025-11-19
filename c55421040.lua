@@ -2,16 +2,18 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
-	local e1=Effect.CreateEffect(c)
+	local e1=FusionSpell.CreateSummonEffect(c,{
+		fusfilter=s.fusfilter,
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
+		pre_select_mat_location=LOCATION_HAND|LOCATION_MZONE,
+		extra_target=s.target,
+		stage_x_operation=s.stage_x_operation,
+	})
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_ATKCHANGE)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	e1:SetCost(s.cost)
-	e1:SetTarget(s.target)
-	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 	if not s.global_check then
 		s.global_check=true
@@ -22,12 +24,14 @@ function s.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
+
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	if not (tc:IsRace(RACE_WARRIOR) and tc:IsAttribute(ATTRIBUTE_EARTH)) then
 		Duel.RegisterFlagEffect(tc:GetControler(),id,RESET_PHASE+PHASE_END,0,1)
 	end
 end
+
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,id)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -39,94 +43,60 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
+
 function s.attg(e,c)
 	return not (c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_EARTH))
 end
-function s.filter1(c,e)
-	return not c:IsImmuneToEffect(e) and c:IsRace(RACE_WARRIOR)
+
+function s.fusfilter(c)
+	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_EARTH)
 end
-function s.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_WARRIOR)
-		and c:IsAttribute(ATTRIBUTE_EARTH) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+
+function s.fusion_spell_matfilter(c)
+	return c:IsRace(RACE_WARRIOR)
 end
+
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter1,nil,e)
-		local res=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
-		if not res then
-			local ce=Duel.GetChainMaterial(tp)
-			if ce~=nil then
-				local fgroup=ce:GetTarget()
-				local mg2=fgroup(ce,e,tp)
-				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
-			end
-		end
-		return res
-	end
+	if chk==0 then return true end
 	if Duel.IsBattlePhase() then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_ATKCHANGE)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
-function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter1,nil,e)
-	local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-	local mg2=nil
-	local sg2=nil
-	local ce=Duel.GetChainMaterial(tp)
-	if ce~=nil then
-		local fgroup=ce:GetTarget()
-		mg2=fgroup(ce,e,tp)
-		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-	end
-	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
-		local sg=sg1:Clone()
-		if sg2 then sg:Merge(sg2) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:Select(tp,1,1,nil)
-		local tc=tg:GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-			tc:SetMaterial(mat1)
-			local ct=mat1:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
-			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-			s.atkop(c,tp,ct)
-		elseif ce then
-			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-			local ct=mat2:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
-			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2)
-			s.atkop(c,tp,ct)
+
+function s.hand_filter(c)
+	return c:IsLocation(LOCATION_HAND)
+end
+
+--- @type FUSION_SPELL_STAGE_X_CALLBACK_FUNCTION
+function s.stage_x_operation(e,tc,tp,stage,mg_fusion_spell,mg_all)
+	if not Duel.IsBattlePhase() then return end
+	if stage==FusionSpell.STAGE_BEFORE_MOVE_MATERIAL then
+		--- calculate the count from hand
+		local atk_count=mg_all:FilterCount(s.hand_filter,nil)
+		if atk_count>0 then
+			e:SetLabel(atk_count)
+		else
+			e:SetLabel(0)
 		end
-		tc:CompleteProcedure()
-	end
-end
-function s.atkop(c,tp,ct)
-	if not Duel.IsBattlePhase() or ct==0 then return end
-	if Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,ct,nil)
-		if g:GetCount()>0 then
-			Duel.HintSelection(g)
-			for tc in aux.Next(g) do
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-				e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-				e1:SetValue(math.ceil(tc:GetAttack()/2))
-				e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-				tc:RegisterEffect(e1)
+	elseif stage==FusionSpell.STAGE_AT_SUMMON_OPERATION_FINISH then
+		local atk_count=e:GetLabel()
+		if atk_count>0 and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			Duel.BreakEffect()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+			local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,atk_count,nil)
+			if g:GetCount()>0 then
+				Duel.HintSelection(g)
+				for stc in aux.Next(g) do
+					local e1=Effect.CreateEffect(e:GetHandler())
+					e1:SetType(EFFECT_TYPE_SINGLE)
+					e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+					e1:SetCode(EFFECT_SET_ATTACK_FINAL)
+					e1:SetValue(math.ceil(stc:GetAttack()/2))
+					e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+					stc:RegisterEffect(e1)
+				end
 			end
 		end
 	end
