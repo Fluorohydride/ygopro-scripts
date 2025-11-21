@@ -75,7 +75,10 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local sg=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	local ct=Duel.Destroy(sg,REASON_EFFECT,LOCATION_REMOVED)
+	local tkrmc=sg:FilterCount(aux.AND(Card.IsType,Card.IsAbleToRemove),nil,TYPE_TOKEN,tp)
 	if ct==0 then return end
+	local rg=sg:Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+	if tkrmc==0 and rg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
