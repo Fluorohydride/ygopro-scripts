@@ -20,7 +20,7 @@ function c66970385.filter(c,e,tp)
 		and Duel.IsExistingTarget(c66970385.eqfilter,tp,LOCATION_GRAVE,0,1,nil,tp,c)
 end
 function c66970385.eqfilter(c,tp,ec)
-	return c:IsSetCard(0x207a) and c:CheckUniqueOnField(tp) and c:CheckEquipTarget(ec)
+	return c:IsSetCard(0x207a) and c:CheckUniqueOnField(tp) and c:CheckEquipTarget(ec) and not c:IsForbidden()
 end
 function c66970385.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
