@@ -6,7 +6,6 @@ function c21140872.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(21140872,0))
-	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -63,7 +62,6 @@ function c21140872.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c21140872.eqfilter,tp,LOCATION_GRAVE,0,1,1,nil,tp)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c21140872.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

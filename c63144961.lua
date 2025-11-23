@@ -55,8 +55,6 @@ function c63144961.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local op=opval[sel]
 	e:SetLabel(op)
 	if op==0 then
-		e:SetCategory(CATEGORY_EQUIP)
-		Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 	else
 		e:SetCategory(0)
 	end

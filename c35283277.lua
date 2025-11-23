@@ -17,7 +17,6 @@ function c35283277.initial_effect(c)
 	--equip
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(35283277,1))
-	e3:SetCategory(CATEGORY_EQUIP)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_MZONE)
@@ -53,7 +52,6 @@ function c35283277.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c35283277.eqfilter,tp,LOCATION_MZONE,0,1,c,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c35283277.eqfilter,tp,LOCATION_MZONE,0,1,1,c,tp)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c35283277.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

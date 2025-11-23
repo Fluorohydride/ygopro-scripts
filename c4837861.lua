@@ -14,7 +14,6 @@ function c4837861.initial_effect(c)
 	--equip
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(4837861,0))
-	e3:SetCategory(CATEGORY_EQUIP)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetCountLimit(1)
@@ -68,7 +67,6 @@ function c4837861.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and g:GetCount()>0
 		and g:IsExists(c4837861.filter,1,nil,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,1-tp,LOCATION_EXTRA)
 end
 function c4837861.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
