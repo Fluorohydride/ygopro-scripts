@@ -22,6 +22,7 @@ function c92079625.initial_effect(c)
 	e2:SetTarget(c92079625.tgtg)
 	e2:SetOperation(c92079625.tgop)
 	c:RegisterEffect(e2)
+	c92079625.shadoll_flip_effect=e1
 end
 function c92079625.cfilter(c,tp)
 	return c:IsFaceup() and c:IsAbleToRemove()
