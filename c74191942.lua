@@ -10,12 +10,12 @@ function c74191942.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c74191942.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,LOCATION_DECK,0,5,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.AND(Card.IsAbleToHand,Card.IsAbleToGrave),tp,LOCATION_DECK,0,5,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c74191942.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191942,0))
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,5,5,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.AND(Card.IsAbleToHand,Card.IsAbleToGrave),tp,LOCATION_DECK,0,5,5,nil)
 	if g:GetCount()<5 then return end
 	Duel.ConfirmCards(1-tp,g)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191942,1))
