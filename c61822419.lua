@@ -62,7 +62,8 @@ function s.nttg(e,c)
 	return c:IsLevelAbove(5)
 end
 function s.costchange(e,re,rp,val)
-	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_SPELL+TYPE_TRAP) then
+	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_SPELL+TYPE_TRAP)
+		and not Duel.IsChainSolving() then
 		return 0
 	else return val end
 end
