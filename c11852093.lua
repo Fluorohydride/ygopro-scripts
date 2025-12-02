@@ -100,7 +100,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.tffilter(c,tp)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0xae) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0xae) and c:IsFaceupEx() and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
 function s.mfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x10af)
@@ -120,7 +120,8 @@ function s.tftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.tfop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
-	local ct=math.min(g:GetCount(),Duel.GetLocationCount(tp,LOCATION_SZONE))
+	local sct=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	local ct=math.min(g:GetCount(),sct)
 	local pg=g
 	if ct<=0 then
 		pg=Group.CreateGroup()
