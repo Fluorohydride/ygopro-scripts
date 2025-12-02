@@ -1,164 +1,129 @@
 --魔鍵－マフテア
-function c99426088.initial_effect(c)
+local s,id,o=GetID()
+function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c99426088.target)
-	e1:SetOperation(c99426088.activate)
+	e1:SetTarget(s.target)
+	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 end
-function c99426088.exconfilter(c)
+
+function s.exconfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL)
 end
-function c99426088.excon(tp)
-	return Duel.IsExistingMatchingCard(c99426088.exconfilter,tp,LOCATION_MZONE,0,1,nil)
+
+function s.excon(tp)
+	return Duel.IsExistingMatchingCard(s.exconfilter,tp,LOCATION_MZONE,0,1,nil)
 end
-function c99426088.ffilter1(c,e)
-	return not c:IsImmuneToEffect(e)
-end
-function c99426088.ffilter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x165) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-function c99426088.fexfilter(c)
-	return c:IsType(TYPE_NORMAL) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
-end
-function c99426088.rfilter(c,e,tp)
+
+function s.fusfilter(c)
 	return c:IsSetCard(0x165)
 end
-function c99426088.rexfilter(c)
+
+--- @type FUSION_SPELL_PRE_SELECT_MAT_LOCATION_FUNCTION
+function s.pre_select_mat_location(tc,tp)
+	local location=LOCATION_HAND|LOCATION_MZONE
+	--- Add Deck if controls a Normal Monster
+	if Duel.IsExistingMatchingCard(function(c) return c:IsFaceup() and c:IsType(TYPE_NORMAL) end,tp,LOCATION_MZONE,0,1,nil) then
+		location=location|LOCATION_DECK
+	end
+	return location
+end
+
+function s.fusion_spell_matfilter(c)
+	--- material from Deck must be Normal Monster
+	if c:IsLocation(LOCATION_DECK) and not c:IsType(TYPE_NORMAL) then
+		return false
+	end
+	return true
+end
+
+function s.rfilter(c,e,tp)
+	return c:IsSetCard(0x165)
+end
+
+function s.rexfilter(c)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelAbove(1) and c:IsAbleToGrave()
 end
-function c99426088.frcheck(tp,sg,fc)
+
+function s.rcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
-function c99426088.gcheck(sg,ec)
+
+function s.gcheck(sg,ec)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
-function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
+
+function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=tp
-		local fmg1=Duel.GetFusionMaterial(tp)
-		if c99426088.excon(tp) then
-			local fmg2=Duel.GetMatchingGroup(c99426088.fexfilter,tp,LOCATION_DECK,0,nil)
-			if fmg2:GetCount()>0 then
-				fmg1:Merge(fmg2)
-				aux.FCheckAdditional=c99426088.frcheck
-				aux.GCheckAdditional=c99426088.gcheck
-			end
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			fusfilter=s.fusfilter,
+			pre_select_mat_location=s.pre_select_mat_location,
+			fusion_spell_matfilter=s.fusion_spell_matfilter
+		})
+		if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) then
+			return true
 		end
-		local res=Duel.IsExistingMatchingCard(c99426088.ffilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,fmg1,nil,chkf)
-		aux.FCheckAdditional=nil
-		aux.GCheckAdditional=nil
-		if not res then
-			local ce=Duel.GetChainMaterial(tp)
-			if ce~=nil then
-				local fgroup=ce:GetTarget()
-				local fmg3=fgroup(ce,e,tp)
-				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c99426088.ffilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,fmg3,mf,chkf)
-			end
+
+		local rmg1=Duel.GetRitualMaterial(tp)
+		local rmg2
+		if s.excon(tp) then
+			rmg2=Duel.GetMatchingGroup(s.rexfilter,tp,LOCATION_DECK,0,nil)
 		end
-		if not res then
-			local rmg1=Duel.GetRitualMaterial(tp)
-			local rmg2
-			if c99426088.excon(tp) then
-				rmg2=Duel.GetMatchingGroup(c99426088.rexfilter,tp,LOCATION_DECK,0,nil)
-			end
-			aux.RCheckAdditional=c99426088.frcheck
-			aux.RGCheckAdditional=c99426088.gcheck
-			res=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c99426088.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
-			aux.RCheckAdditional=nil
-			aux.RGCheckAdditional=nil
-		end
+		aux.RCheckAdditional=s.rcheck
+		aux.RGCheckAdditional=s.gcheck
+		local res=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,s.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
+		aux.RCheckAdditional=nil
+		aux.RGCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_EXTRA)
 end
-function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=tp
-	local fmg1=Duel.GetFusionMaterial(tp):Filter(c99426088.ffilter1,nil,e)
-	local exmat=false
-	if c99426088.excon(tp) then
-		local fmg2=Duel.GetMatchingGroup(c99426088.fexfilter,tp,LOCATION_DECK,0,nil)
-		if fmg2:GetCount()>0 then
-			fmg1:Merge(fmg2)
-			exmat=true
-		end
-	end
-	if exmat then
-		aux.FCheckAdditional=c99426088.frcheck
-		aux.GCheckAdditional=c99426088.gcheck
-	end
-	local fsg1=Duel.GetMatchingGroup(c99426088.ffilter2,tp,LOCATION_EXTRA,0,nil,e,tp,fmg1,nil,chkf)
-	aux.FCheckAdditional=nil
-	aux.GCheckAdditional=nil
-	local fmg3=nil
-	local fsg2=nil
-	local ce=Duel.GetChainMaterial(tp)
-	if ce~=nil then
-		local fgroup=ce:GetTarget()
-		fmg3=fgroup(ce,e,tp)
-		local mf=ce:GetValue()
-		fsg2=Duel.GetMatchingGroup(c99426088.ffilter2,tp,LOCATION_EXTRA,0,nil,e,tp,fmg3,mf,chkf)
-	end
+
+function s.activate(e,tp,eg,ep,ev,re,r,rp)
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+		fusfilter=s.fusfilter,
+		matfilter=aux.NecroValleyFilter(),
+		pre_select_mat_location=s.pre_select_mat_location,
+		fusion_spell_matfilter=s.fusion_spell_matfilter
+	})
+	local can_fusion=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	local rmg1=Duel.GetRitualMaterial(tp)
 	local rmg2
-	if c99426088.excon(tp) then
-		rmg2=Duel.GetMatchingGroup(c99426088.rexfilter,tp,LOCATION_DECK,0,nil)
+	if s.excon(tp) then
+		rmg2=Duel.GetMatchingGroup(s.rexfilter,tp,LOCATION_DECK,0,nil)
 	end
-	aux.RCheckAdditional=c99426088.frcheck
-	aux.RGCheckAdditional=c99426088.gcheck
-	local rsg=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c99426088.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
+	aux.RCheckAdditional=s.rcheck
+	aux.RGCheckAdditional=s.gcheck
+	local rsg=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,s.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
 	aux.RCheckAdditional=nil
 	aux.RGCheckAdditional=nil
 	local off=1
 	local ops={}
 	local opval={}
-	if fsg1:GetCount()>0 or (fsg2~=nil and fsg2:GetCount()>0) then
-		ops[off]=aux.Stringid(99426088,0)
+	if can_fusion then
+		ops[off]=aux.Stringid(id,0)
 		opval[off-1]=1
 		off=off+1
 	end
 	if rsg:GetCount()>0 then
-		ops[off]=aux.Stringid(99426088,1)
+		ops[off]=aux.Stringid(id,1)
 		opval[off-1]=2
 		off=off+1
 	end
 	if off==1 then return end
 	local op=Duel.SelectOption(tp,table.unpack(ops))
 	if opval[op]==1 then
-		local sg=fsg1:Clone()
-		if fsg2 then sg:Merge(fsg2) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tc=sg:Select(tp,1,1,nil):GetFirst()
-		fmg1:RemoveCard(tc)
-		if fsg1:IsContains(tc) and (fsg2==nil or not fsg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			if exmat then
-				aux.FCheckAdditional=c99426088.frcheck
-				aux.GCheckAdditional=c99426088.gcheck
-			end
-			local mat1=Duel.SelectFusionMaterial(tp,tc,fmg1,nil,chkf)
-			aux.FCheckAdditional=nil
-			aux.GCheckAdditional=nil
-			tc:SetMaterial(mat1)
-			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		else
-			local mat2=Duel.SelectFusionMaterial(tp,tc,fmg3,nil,chkf)
-			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2)
-		end
-		tc:CompleteProcedure()
+		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	else
 		::rcancel::
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=rsg:Select(tp,1,1,nil):GetFirst()
-		aux.RCheckAdditional=c99426088.frcheck
-		aux.RGCheckAdditional=c99426088.gcheck
+		aux.RCheckAdditional=s.rcheck
+		aux.RGCheckAdditional=s.gcheck
 		local rmg=rmg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if rmg2 then rmg:Merge(rmg2) end
 		if tc.mat_filter then
