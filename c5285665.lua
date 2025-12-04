@@ -34,7 +34,7 @@ function c5285665.spfilter(c)
 	return c:IsCode(79979666,46411259) and c:IsAbleToGraveAsCost()
 end
 function c5285665.spfilter1(c,tp)
-	return c:IsCode(79979666) and c:IsLocation(LOCATION_MZONE) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsCode(79979666) and c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and Duel.GetMZoneCount(tp,c)>0
 end
 function c5285665.spfilter2(c)
 	return c:IsCode(46411259) and c:IsLocation(LOCATION_HAND)
