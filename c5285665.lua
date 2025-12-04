@@ -1,5 +1,6 @@
 --E・HERO バブルマン・ネオ
 function c5285665.initial_effect(c)
+	aux.AddCodeList(c,79979666,46411259)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
