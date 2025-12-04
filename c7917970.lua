@@ -59,6 +59,7 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 			and Duel.IsExistingMatchingCard(s.eqfilter,tp,LOCATION_DECK,0,1,nil,tp)
 			and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local ec=Duel.SelectMatchingCard(tp,s.eqfilter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 			if ec and Duel.Equip(tp,ec,tc) then
