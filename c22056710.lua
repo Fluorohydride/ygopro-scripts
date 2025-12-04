@@ -1,5 +1,6 @@
 --ヴァンパイアジェネシス
 function c22056710.initial_effect(c)
+	aux.AddCodeList(c,53839837)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -30,7 +31,7 @@ function c22056710.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c22056710.hspfilter(c,tp)
-	return c:IsFaceup() and c:IsCode(53839837) and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsCode(53839837) and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
 end
 function c22056710.hspcon(e,c)
 	if c==nil then return true end
