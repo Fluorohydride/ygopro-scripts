@@ -3,7 +3,6 @@ function c61538782.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(61538782,0))
-	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetCode(EVENT_BATTLE_DESTROYING)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCondition(c61538782.eqcon)
