@@ -55,12 +55,14 @@ function c64280356.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64280356.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanDiscardDeck(tp,1) then return false end
 		local dg=Duel.GetMatchingGroup(c64280356.thfilter,tp,LOCATION_DECK,0,nil)
 		return dg:GetClassCount(Card.GetCode)>=3
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c64280356.thop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
 	local g=Duel.GetMatchingGroup(c64280356.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
