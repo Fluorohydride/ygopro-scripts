@@ -22,6 +22,7 @@ function c30328508.initial_effect(c)
 	e2:SetTarget(c30328508.tgtg)
 	e2:SetOperation(c30328508.tgop)
 	c:RegisterEffect(e2)
+	c30328508.shadoll_flip_effect=e1
 end
 function c30328508.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) end

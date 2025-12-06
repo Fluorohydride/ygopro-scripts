@@ -24,6 +24,7 @@ function c4939890.initial_effect(c)
 	e2:SetTarget(c4939890.thtg)
 	e2:SetOperation(c4939890.thop)
 	c:RegisterEffect(e2)
+	c4939890.shadoll_flip_effect=e1
 end
 function c4939890.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
