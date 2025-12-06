@@ -72,7 +72,7 @@ function s.tsop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsFaceup() and c:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local ec=eg:FilterSelect(tp,aux.NecroValleyFilter(s.eqfilter),1,1,nil):GetFirst()
-			if not Duel.Equip(tp,ec,c) then return end
+			if ec==nil or not Duel.Equip(tp,ec,c) then return end
 			--equip limit
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
