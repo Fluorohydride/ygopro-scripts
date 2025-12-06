@@ -86,7 +86,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.thfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local sg=g:SelectSubGroup(tp,s.sporthGroup,false,2,2,e,tp)
-	if g:GetCount()>1 then
+	if sg then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tc=sg:FilterSelect(tp,s.rthfilter,1,1,nil,tp,e,sg):GetFirst()
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
