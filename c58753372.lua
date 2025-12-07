@@ -63,12 +63,14 @@ function c58753372.spfilter1(c,e,tp)
 end
 function c58753372.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanDiscardDeck(tp,1) then return false end
 		local g=Duel.GetMatchingGroup(c58753372.spfilter1,tp,LOCATION_DECK,0,nil,e,tp)
 		return g:GetClassCount(Card.GetCode)>=3
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_DECK)
 end
 function c58753372.spop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
 	local g=Duel.GetMatchingGroup(c58753372.spfilter1,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
