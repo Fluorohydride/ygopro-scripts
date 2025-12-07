@@ -1,4 +1,4 @@
---三英の相劍師
+--三英の相剣師
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,68468459)
