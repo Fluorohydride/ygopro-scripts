@@ -145,7 +145,6 @@ function s.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 		exg=Duel.GetMatchingGroup(s.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
 	end
 	if exg then mg:Merge(exg) end
-	if gc and not s.FShaddollSpFilter1(gc,c,tp,mg,exg,chkf) then return false end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 	local g=mg:SelectSubGroup(tp,s.FShaddollCheck,false,3,3,gc,c,tp,c,chkf,exg)
 	if exg and g:IsExists(aux.IsInGroup,1,nil,exg) then
