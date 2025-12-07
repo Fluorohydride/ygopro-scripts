@@ -112,6 +112,7 @@ function s.FShaddollFilter3(c)
 end
 function s.FShaddollCheck(g,gc,fc,tp,c,chkf,exg)
 	if gc and not g:IsContains(gc) then return false end
+	if exg and g:FilterCount(aux.IsInGroup,nil,exg)>1 then return false end
 	if g:IsExists(aux.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not aux.MustMaterialCheck(g,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,g,fc)
@@ -132,7 +133,7 @@ function s.FShaddollCondition(e,g,gc,chkf)
 	end
 	if exg then mg:Merge(exg) end
 	if gc and not mg:IsContains(gc) then return false end
-	return mg:CheckSubGroup(s.FShaddollCheck,3,3,gc,fc,tp,c,chkf)
+	return mg:CheckSubGroup(s.FShaddollCheck,3,3,gc,fc,tp,c,chkf,exg)
 end
 function s.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	local c=e:GetHandler()
@@ -146,7 +147,7 @@ function s.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	if exg then mg:Merge(exg) end
 	if gc and not s.FShaddollSpFilter1(gc,c,tp,mg,exg,chkf) then return false end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g=mg:SelectSubGroup(tp,s.FShaddollCheck,false,3,3,gc,c,tp,c,chkf)
+	local g=mg:SelectSubGroup(tp,s.FShaddollCheck,false,3,3,gc,c,tp,c,chkf,exg)
 	if exg and g:IsExists(aux.IsInGroup,1,nil,exg) then
 		fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 	end
