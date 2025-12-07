@@ -22,6 +22,7 @@ function c51023024.initial_effect(c)
 	e2:SetTarget(c51023024.sptg)
 	e2:SetOperation(c51023024.spop)
 	c:RegisterEffect(e2)
+	c51023024.shadoll_flip_effect=e1
 end
 function c51023024.filter(c,e,tp)
 	return c:IsSetCard(0x9d) and not c:IsCode(51023024) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE)

@@ -22,6 +22,7 @@ function c52551211.initial_effect(c)
 	e2:SetTarget(c52551211.postg)
 	e2:SetOperation(c52551211.posop)
 	c:RegisterEffect(e2)
+	c52551211.shadoll_flip_effect=e1
 end
 function c52551211.filter(c)
 	return c:IsSetCard(0x9d) and c:IsAbleToHand()
