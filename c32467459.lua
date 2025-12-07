@@ -3,23 +3,14 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	if aux.AddFusionProcShaddoll then
-		--old function
-		local e0=Effect.CreateEffect(c)
-		e0:SetType(EFFECT_TYPE_SINGLE)
-		e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-		e0:SetCode(EFFECT_FUSION_MATERIAL)
-		e0:SetCondition(s.FShaddollCondition)
-		e0:SetOperation(s.FShaddollOperation)
-		c:RegisterEffect(e0)
-	else
-		--new function
-		aux.AddFusionProcMix(c,false,true,
-			function (mc) return mc:IsFusionSetCard(0x9d) end,
-			function (mc) return aux.FShaddollFilter2(mc,ATTRIBUTE_DARK) end,
-			function (mc) return aux.FShaddollFilter2(mc,ATTRIBUTE_EARTH) end
-		)
-	end
+	--fusion
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e0:SetCode(EFFECT_FUSION_MATERIAL)
+	e0:SetCondition(s.FShaddollCondition)
+	e0:SetOperation(s.FShaddollOperation)
+	c:RegisterEffect(e0)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -102,7 +93,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-
 function s.FShaddollFilter(c,fc)
 	return (c:IsFusionSetCard(0x9d) or c:IsFusionAttribute(ATTRIBUTE_DARK+ATTRIBUTE_EARTH) or c:IsHasEffect(4904633))
 		and c:IsCanBeFusionMaterial(fc) and not c:IsHasEffect(6205579)
@@ -120,22 +110,13 @@ end
 function s.FShaddollFilter3(c)
 	return c:IsFusionAttribute(ATTRIBUTE_EARTH) or c:IsHasEffect(4904633)
 end
-function s.FShaddollSpFilter1(c,fc,tp,mg,exg,chkf)
-	local emg=mg:Clone()
-	if exg then
-		emg:Merge(exg)
-	end
-	return mg:CheckSubGroup(s.FShaddollgcheck,3,3,c,fc,tp,c,chkf,exg)
-		or (exg and emg:CheckSubGroup(s.FShaddollgcheck,3,3,c,fc,tp,c,chkf,exg))
-end
-function s.FShaddollgcheck(g,gc,fc,tp,c,chkf,exg)
-	if gc and g:IsContains(gc) then return false end
+function s.FShaddollCheck(g,gc,fc,tp,c,chkf,exg)
+	if gc and not g:IsContains(gc) then return false end
 	if g:IsExists(aux.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not aux.MustMaterialCheck(g,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,g,fc)
 		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,g,fc) then return false end
 	return g:IsExists(s.FShaddollFilter1,1,nil,g)
-		and (not exg or not g:IsExists(s.exfilter,2,nil,exg))
 		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,g,fc)>0)
 end
 function s.FShaddollCondition(e,g,gc,chkf)
@@ -149,14 +130,9 @@ function s.FShaddollCondition(e,g,gc,chkf)
 		local fe=fc:IsHasEffect(81788994)
 		exg=Duel.GetMatchingGroup(s.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
 	end
-	if gc then
-		if not mg:IsContains(gc) then return false end
-		return s.FShaddollSpFilter1(gc,c,tp,mg,exg,chkf)
-	end
-	return mg:IsExists(s.FShaddollSpFilter1,1,nil,c,tp,mg,exg,chkf)
-end
-function s.exfilter(c,g)
-	return g:IsContains(c)
+	if exg then mg:Merge(exg) end
+	if gc and not mg:IsContains(gc) then return false end
+	return mg:CheckSubGroup(s.FShaddollCheck,3,3,gc,fc,tp,c,chkf)
 end
 function s.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	local c=e:GetHandler()
@@ -170,8 +146,8 @@ function s.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	if exg then mg:Merge(exg) end
 	if gc and not s.FShaddollSpFilter1(gc,c,tp,mg,exg,chkf) then return false end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g=mg:SelectSubGroup(tp,s.FShaddollgcheck,false,3,3,c,tp,c,chkf,exg)
-	if exg and g:IsExists(s.exfilter,1,nil,exg) then
+	local g=mg:SelectSubGroup(tp,s.FShaddollCheck,false,3,3,gc,c,tp,c,chkf)
+	if exg and g:IsExists(aux.IsInGroup,1,nil,exg) then
 		fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 	end
 	Duel.SetFusionMaterial(g)
