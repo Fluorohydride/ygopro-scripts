@@ -1,4 +1,4 @@
---Mimighoul Archfiend
+--ミミグル・デーモン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--flip

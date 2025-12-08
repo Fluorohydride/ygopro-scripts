@@ -1,4 +1,4 @@
---Hrimnir the Divine Follower
+--久遠の神徒フリムニル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--set

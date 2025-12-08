@@ -1,4 +1,4 @@
---Denial Deity Dotan
+--拒神ドゥータン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material

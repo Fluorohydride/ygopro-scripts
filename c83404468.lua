@@ -1,4 +1,4 @@
---The Toil of the Normal
+--一色万骨
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,id)

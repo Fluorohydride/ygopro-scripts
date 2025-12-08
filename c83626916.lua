@@ -1,4 +1,4 @@
---D.D. Post
+--異次元ポスト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

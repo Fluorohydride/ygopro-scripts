@@ -1,4 +1,4 @@
---Insect Invitation
+--虫だけエリアー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

@@ -1,4 +1,4 @@
---Anubis the Last Judge
+--ジャッジメント・オブ・アヌビス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,29762407,97522863)

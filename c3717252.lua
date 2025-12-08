@@ -24,6 +24,7 @@ function c3717252.initial_effect(c)
 	e2:SetTarget(c3717252.drtg)
 	e2:SetOperation(c3717252.drop)
 	c:RegisterEffect(e2)
+	c3717252.shadoll_flip_effect=e1
 end
 function c3717252.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

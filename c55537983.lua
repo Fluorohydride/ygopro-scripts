@@ -1,4 +1,4 @@
---Mimighoul Master
+--ミミグル・マスター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--indestructable

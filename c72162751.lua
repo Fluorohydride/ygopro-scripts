@@ -1,4 +1,4 @@
---Queen of the Blazing Domain
+--陽炎殿の君主
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--indes

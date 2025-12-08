@@ -1646,7 +1646,17 @@ end
 ---|"'Equal'"
 ---@return boolean
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
-	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
+	-- Check if there's space to summon
+	if c:IsLocation(LOCATION_EXTRA) then
+		if Duel.GetLocationCountFromEx(tp,tp,g,c)<=0 then
+			return false
+		end
+	else
+		if Duel.GetMZoneCount(tp,g,tp)<=0 then
+			return false
+		end
+	end
+	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and (not c.mat_group_check or c.mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
 end
 function Auxiliary.RitualCheckAdditionalLevel(c,rc)
