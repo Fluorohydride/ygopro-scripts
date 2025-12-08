@@ -1,8 +1,6 @@
 --白き森の罪宝
 local s,id,o=GetID()
 function s.initial_effect(c)
-	--- fusion effect
-	local e0=FusionSpell.CreateSummonEffect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -13,7 +11,6 @@ function s.initial_effect(c)
 	e1:SetCondition(s.fscon)
 	e1:SetTarget(s.fstg)
 	e1:SetOperation(s.fsop)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 	--set
 	local e2=Effect.CreateEffect(c)
@@ -39,7 +36,7 @@ end
 function s.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
-	local fusion_effect=e:GetLabelObject()
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler())
 	local res2=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	if chk==0 then return res1 or res2 end
 	local op=0
@@ -75,7 +72,7 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	elseif e:GetLabel()==2 then
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler())
 		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	end
 end

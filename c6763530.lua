@@ -1,16 +1,6 @@
 --烙印追放
 local s,id,o=GetID()
 function s.initial_effect(c)
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		matfilter=aux.NecroValleyFilter(),
-		pre_select_mat_location=LOCATION_MZONE,
-		pre_select_mat_opponent_location=LOCATION_MZONE,
-		mat_operation_code_map={
-			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
-			{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
-		}
-	})
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -21,7 +11,6 @@ function s.initial_effect(c)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
 
@@ -46,7 +35,16 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 and tc:IsLocation(LOCATION_MZONE) then
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			fusfilter=s.fusfilter,
+			matfilter=aux.NecroValleyFilter(),
+			pre_select_mat_location=LOCATION_MZONE,
+			pre_select_mat_opponent_location=LOCATION_MZONE,
+			mat_operation_code_map={
+				{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
+				{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
+			}
+		})
 		if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.BreakEffect()
 			fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)

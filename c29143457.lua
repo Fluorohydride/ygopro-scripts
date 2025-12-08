@@ -1,11 +1,6 @@
 --炎舞－「隠元」
 local s,id,o=GetID()
 function s.initial_effect(c)
-	--- fusion effect
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		matfilter=aux.NecroValleyFilter()
-	})
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -13,7 +8,6 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
@@ -34,7 +28,10 @@ function s.fusfilter(c)
 end
 
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local fusion_effect=e:GetLabelObject()
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+		fusfilter=s.fusfilter,
+		matfilter=aux.NecroValleyFilter()
+	})
 	if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 		Duel.BreakEffect()
 		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)

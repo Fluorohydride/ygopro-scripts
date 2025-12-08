@@ -1,15 +1,6 @@
 --吸光融合
 local s,id,o=GetID()
 function s.initial_effect(c)
-	-- fusion
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		matfilter=aux.NecroValleyFilter(),
-		mat_operation_code_map={
-			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
-			{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
-		},
-	})
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -19,7 +10,6 @@ function s.initial_effect(c)
 	e1:SetCost(s.cost)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
@@ -64,7 +54,14 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			fusfilter=s.fusfilter,
+			matfilter=aux.NecroValleyFilter(),
+			mat_operation_code_map={
+				{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
+				{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
+			},
+		})
 		if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.BreakEffect()
 			fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)

@@ -2,16 +2,6 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,68468459)
-	--- fusion effect
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		matfilter=aux.NecroValleyFilter(),
-		mat_operation_code_map={
-			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
-			{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
-		},
-		stage_x_operation=s.stage_x_operation
-	})
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -21,7 +11,6 @@ function s.initial_effect(c)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
 
@@ -44,7 +33,15 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			fusfilter=s.fusfilter,
+			matfilter=aux.NecroValleyFilter(),
+			mat_operation_code_map={
+				{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
+				{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
+			},
+			stage_x_operation=s.stage_x_operation
+		})
 		if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.BreakEffect()
 			Duel.ShuffleHand(tp)

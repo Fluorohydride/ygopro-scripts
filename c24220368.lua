@@ -2,12 +2,6 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,1264319)
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		pre_select_mat_location=s.pre_select_mat_location,
-		fusion_spell_matfilter=s.fusion_spell_matfilter,
-		additional_fcheck=s.fcheck
-	})
 	--Activate 1
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -16,7 +10,6 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
 
@@ -61,7 +54,12 @@ function s.fcheck(tp,mg,fc,all_mg)
 end
 
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fusion_effect=e:GetLabelObject()
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+		fusfilter=s.fusfilter,
+		pre_select_mat_location=s.pre_select_mat_location,
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
+		additional_fcheck=s.fcheck
+	})
 	local res=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	local b1=res and (Duel.GetFlagEffect(tp,id)==0 or not e:IsCostChecked())
 	local b2=Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK+LOCATION_REMOVED,0,1,nil)
@@ -99,7 +97,12 @@ end
 
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			fusfilter=s.fusfilter,
+			pre_select_mat_location=s.pre_select_mat_location,
+			fusion_spell_matfilter=s.fusion_spell_matfilter,
+			additional_fcheck=s.fcheck
+		})
 		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	elseif e:GetLabel()==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

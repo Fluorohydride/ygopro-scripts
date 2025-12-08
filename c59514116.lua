@@ -2,9 +2,6 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		additional_fcheck=s.fcheck
-	})
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -14,7 +11,6 @@ function s.initial_effect(c)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
 
@@ -32,7 +28,9 @@ function s.rcheck(tp,g,c)
 end
 
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fusion_effect=e:GetLabelObject()
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+		additional_fcheck=s.fcheck
+	})
 	local res1=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	local mg3=Duel.GetRitualMaterial(tp)
 	aux.RCheckAdditional=s.rcheck
@@ -67,7 +65,9 @@ end
 
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			additional_fcheck=s.fcheck
+		})
 		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	elseif e:GetLabel()==1 then
 		::rcancel::

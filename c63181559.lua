@@ -1,15 +1,6 @@
 --トリックスター・ディフュージョン
 local s,id,o=GetID()
 function s.initial_effect(c)
-	-- fusion effect
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		pre_select_mat_location=LOCATION_GRAVE,
-		mat_operation_code_map={
-			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
-			{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
-		}
-	})
 	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -18,7 +9,6 @@ function s.initial_effect(c)
 	e1:SetCountLimit(1,id)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
@@ -44,7 +34,14 @@ function s.filter(c)
 end
 
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fusion_effect=e:GetLabelObject()
+	local fusion_effect=FusionSpell.CreateSummonEffect(c,{
+		fusfilter=s.fusfilter,
+		pre_select_mat_location=LOCATION_GRAVE,
+		mat_operation_code_map={
+			{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
+			{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
+		}
+	})
 	local res=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	if chk==0 then
 		return res or Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_EXTRA,0,1,nil)
@@ -73,7 +70,14 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()
 	if op==1 then
-		local fusion_effect=e:GetLabelObject()
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			fusfilter=s.fusfilter,
+			pre_select_mat_location=LOCATION_GRAVE,
+			mat_operation_code_map={
+				{ [LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE },
+				{ [0xff]=FusionSpell.FUSION_OPERATION_BANISH }
+			}
+		})
 		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	elseif op==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

@@ -1,12 +1,6 @@
 --繋がれし魔鍵
 local s,id,o=GetID()
 function s.initial_effect(c)
-	--- fusion effect
-	local e0=FusionSpell.CreateSummonEffect(c,{
-		fusfilter=s.fusfilter,
-		matfilter=aux.NecroValleyFilter(),
-		sumpos=POS_FACEUP_DEFENSE
-	})
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -16,7 +10,6 @@ function s.initial_effect(c)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(s.target)
 	e1:SetOperation(s.activate)
-	e1:SetLabelObject(e0)
 	c:RegisterEffect(e1)
 end
 
@@ -43,7 +36,11 @@ end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local th=Duel.GetFirstTarget()
 	if not th:IsRelateToEffect(e) or Duel.SendtoHand(th,nil,REASON_EFFECT)==0 or not th:IsLocation(LOCATION_HAND) then return end
-	local fusion_effect=e:GetLabelObject()
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+		fusfilter=s.fusfilter,
+		matfilter=aux.NecroValleyFilter(),
+		sumpos=POS_FACEUP_DEFENSE
+	})
 	local rmg1=Duel.GetRitualMaterial(tp)
 	local rsg=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,s.rfilter,e,tp,rmg1,nil,Card.GetLevel,"Greater")
 	local off=1
