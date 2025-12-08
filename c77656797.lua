@@ -18,7 +18,6 @@ function c77656797.initial_effect(c)
 	--equip
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(77656797,1))
-	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
 	e2:SetRange(LOCATION_MZONE)
@@ -50,7 +49,6 @@ function c77656797.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c77656797.eqfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,c,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c77656797.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -3,7 +3,7 @@ function c66094973.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(66094973,0))
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_EQUIP)
+	e1:SetCategory(CATEGORY_HANDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)
@@ -48,7 +48,6 @@ function c66094973.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c66094973.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c66094973.eqlimit(e,c)
 	return e:GetOwner()==c

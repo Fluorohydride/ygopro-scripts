@@ -19,7 +19,7 @@ function c39568067.initial_effect(c)
 	--equip
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(39568067,1))
-	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_EQUIP)
+	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)

@@ -2,7 +2,6 @@
 function c62878208.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -30,7 +29,6 @@ function c62878208.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPATTACK)
 	local g2=Duel.SelectTarget(tp,c62878208.filter2,tp,0,LOCATION_MZONE,1,1,nil,g1:GetFirst())
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g1,1,0,0)
 end
 function c62878208.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local eq=e:GetLabelObject()

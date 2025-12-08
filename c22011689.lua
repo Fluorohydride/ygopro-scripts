@@ -11,7 +11,6 @@ function c22011689.initial_effect(c)
 	--equip
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(22011689,0))
-	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCondition(c22011689.eqcon)
