@@ -44,7 +44,7 @@ function c18094166.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c18094166.filter(c)
-	return c:IsSetCard(0x5008) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and not c:IsCode(18094166)
+	return c:IsSetCard(0x5008) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField() and not c:IsCode(18094166)
 end
 function c18094166.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c18094166.filter,tp,LOCATION_DECK,0,1,nil)
