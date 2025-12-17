@@ -20,7 +20,7 @@ function c46925518.initial_effect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_FLIP)
-	e2:SetTarget(c46925518.fdtg)
+	e3:SetTarget(c46925518.fdtg)
 	e3:SetOperation(c46925518.fdop)
 	c:RegisterEffect(e3)
 end
