@@ -39,8 +39,10 @@ function c3211439.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(opval[op])
 end
 function c3211439.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c3211439.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e:GetLabel())
-	if g:GetCount()>1 then
-		Duel.SendtoGrave(g,REASON_RULE)
+	local g1=Duel.GetMatchingGroup(c3211439.filter,tp,LOCATION_MZONE,0,nil,e:GetLabel())
+	local g2=Duel.GetMatchingGroup(c3211439.filter,tp,0,LOCATION_MZONE,nil,e:GetLabel())
+	if #g1+#g2>=2 then
+		Duel.SendtoGrave(g1,REASON_RULE,tp)
+		Duel.SendtoGrave(g2,REASON_RULE,1-tp)
 	end
 end
