@@ -1982,3 +1982,21 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+--register a flag for "(special )summoned this turn and keep on field face-up"
+---comment
+---@param c Card
+---@param event integer
+---@param id integer
+function Auxiliary.RegisterSummonFlag(c,event,id)
+	local e1=Effect.CreateEffect(c)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(event)
+	e1:SetOperation(Auxiliary.RegisterSummonFlagOperation(id))
+	c:RegisterEffect(e1)
+end
+function Auxiliary.RegisterSummonFlagOperation(id)
+	return function(e,tp,eg,ep,ev,re,r,rp)
+		e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	end
+end
