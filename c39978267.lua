@@ -40,14 +40,10 @@ function c39978267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if sel==1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectTarget(tp,c39978267.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
-		if g:GetCount()>0 then
-			Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-		end
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	elseif sel==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectTarget(tp,c39978267.eqfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil,e:GetHandler())
-		if g:GetCount()>0 then
-		end
 	end
 end
 function c39978267.operation(e,tp,eg,ep,ev,re,r,rp)
