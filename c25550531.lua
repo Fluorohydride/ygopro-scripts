@@ -29,8 +29,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<3 then return false end
 		local g=Duel.GetDecktopGroup(tp,3)
-		local result=g:FilterCount(Card.IsAbleToHand,nil)>0
-		return result
+		return g:FilterCount(Card.IsAbleToHand,nil)>0
 	end
 	Duel.SetTargetPlayer(tp)
 end
@@ -41,9 +40,9 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	Duel.ConfirmDecktop(p,3)
 	local g=Duel.GetDecktopGroup(p,3)
-	if not g or #g<3 then return end
+	if not g or #g<1 then return end
+	local ct=#g
 	g=g:Filter(s.tdfilter,nil)
-	local ct=3
 	if #g>0 and Duel.SelectYesNo(p,aux.Stringid(id,2)) then
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
 		local sg=g:Select(p,1,1,nil)
@@ -53,6 +52,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleHand(p)
 		ct=ct-1
 	end
+	if ct<=1 then return end
 	Duel.SortDecktop(p,p,ct)
 	for i=1,ct do
 		local mg=Duel.GetDecktopGroup(p,1)
