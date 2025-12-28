@@ -32,8 +32,11 @@ c37993923.material_setcode=0x1017
 function c37993923.tfilter(c)
 	return c:IsCode(63977008) or c:IsHasEffect(20932152)
 end
+function c37993923.filter(c)
+	return c:IsCanChangePosition()
+end
 function c37993923.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c37993923.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c37993923.filter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 	local g=Duel.SelectTarget(tp,c37993923.filter,tp,0,LOCATION_MZONE,1,1,nil)
@@ -41,9 +44,6 @@ function c37993923.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c37993923.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
-end
-function c37993923.filter(c)
-	return c:IsCanChangePosition()
 end
 function c37993923.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c37993923.filter(chkc) end
