@@ -38,8 +38,7 @@ function s.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 	local ct=Duel.GetOperatedGroup():GetFirst()
 	if ct:IsType(TYPE_MONSTER) then
-		e:SetLabel(ct:GetFieldID())
-		e:SetLabelObject(ct)
+		e:SetLabel(ct:GetOriginalRace())
 	else
 		e:SetLabel(0)
 	end
@@ -68,19 +67,14 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
-		local fid=e:GetLabel()
-		if fid>0 then
-			local cc=e:GetLabelObject()
-			local race=cc:GetRace()
-			if cc:GetFieldID()~=fid then race=cc:GetOriginalRace() end
-			if fid~=0 and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_DECK,0,1,nil,race)
-				and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
-				Duel.BreakEffect()
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-				local g=Duel.SelectMatchingCard(tp,s.tgfilter,tp,LOCATION_DECK,0,1,1,nil,race)
-				if g:GetCount()>0 then
-					Duel.SendtoGrave(g,REASON_EFFECT)
-				end
+		local race=e:GetLabel()
+		if e:GetLabel()~=0 and Duel.IsExistingMatchingCard(s.tgfilter,tp,LOCATION_DECK,0,1,nil,race)
+			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+			Duel.BreakEffect()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+			local g=Duel.SelectMatchingCard(tp,s.tgfilter,tp,LOCATION_DECK,0,1,1,nil,race)
+			if g:GetCount()>0 then
+				Duel.SendtoGrave(g,REASON_EFFECT)
 			end
 		end
 	end
