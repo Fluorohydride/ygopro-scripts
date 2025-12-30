@@ -78,7 +78,7 @@ function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(c,REASON_EFFECT)
 end
 function s.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler()==e:GetHandler()
+	return re and re:GetHandler()==e:GetHandler()
 end
 function s.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,10) end
