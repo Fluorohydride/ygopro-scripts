@@ -48,7 +48,6 @@ function s.initial_effect(c)
 	e4:SetOperation(s.thop)
 	c:RegisterEffect(e4)
 end
-
 function s.ritcon(e)
 	local c=e:GetHandler()
 	return c:IsSummonType(SUMMON_TYPE_RITUAL)
@@ -83,6 +82,7 @@ end
 function s.pztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
+		if not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 		local mg=Duel.GetRitualMaterial(tp)
 		Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,1,"Greater")
 		local bool=mg:CheckSubGroup(Auxiliary.RitualCheck,1,1,tp,c,1,"Greater")
@@ -93,7 +93,7 @@ function s.pztg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.pzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return end
 	local mg=Duel.GetRitualMaterial(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,1,"Greater")
