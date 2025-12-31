@@ -349,12 +349,16 @@ function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat
 	ct=ct+1
 	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if not res and ct<maxc then
-		local g=sg:Clone()
-		g:Merge(sg1)
 		local maxlv=syncard:GetLevel()
-		local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
-		if sumlv<maxlv or g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g<maxlv/2 then
+		if #mg<=7 or #sg<=maxlv/7 then
 			res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
+		else
+			local g=sg:Clone()
+			g:Merge(sg1)
+			local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+			if sumlv<maxlv or g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g<maxlv/2 then
+				res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
+			end
 		end
 	end
 	sg:RemoveCard(c)
