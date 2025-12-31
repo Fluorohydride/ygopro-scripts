@@ -58,16 +58,17 @@ end
 ---@param minc integer
 ---@param maxc? integer
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
-	if maxc==nil then maxc=99 end
+	if maxc==nil then maxc=c:GetLevel()-1 end
+	local maxct=math.min(maxc,c:GetLevel()-1)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,minc,maxc))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,minc,maxc))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,minc,maxc))
+	e1:SetCondition(Auxiliary.SynCondition(f1,f2,minc,maxct))
+	e1:SetTarget(Auxiliary.SynTarget(f1,f2,minc,maxct))
+	e1:SetOperation(Auxiliary.SynOperation(f1,f2,minc,maxct))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
@@ -132,15 +133,22 @@ end
 ---@param maxc integer
 ---@param gc? function
 function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
+	local maxct=maxc
+	if maxct>c:GetLevel() then
+		maxct=c:GetLevel()
+		if f1 then maxct=maxct-1 end
+		if f2 then maxct=maxct-1 end
+		if f3 then maxct=maxct-1 end
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc))
-	e1:SetTarget(Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc))
-	e1:SetOperation(Auxiliary.SynMixOperation(f1,f2,f3,f4,minc,maxc,gc))
+	e1:SetCondition(Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxct,gc))
+	e1:SetTarget(Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxct,gc))
+	e1:SetOperation(Auxiliary.SynMixOperation(f1,f2,f3,f4,minc,maxct,gc))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
