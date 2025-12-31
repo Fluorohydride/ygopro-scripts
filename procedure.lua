@@ -161,6 +161,15 @@ end
 function Auxiliary.GetSynchroLevelFlowerCardian(c)
 	return 2
 end
+function Auxiliary.GetMinSynchroLevel(c,syncard)
+	local lv=c:GetSynchroLevel(syncard)
+	local minlv=c:GetLevel()
+	while lv&MAX_PARAMETER>0 do
+		minlv=math.min(minlv,lv&MAX_PARAMETER)
+		lv=lv>>16
+	end
+	return minlv
+end
 function Auxiliary.GetSynMaterials(tp,syncard)
 	local mg=Duel.GetSynchroMaterial(tp):Filter(Auxiliary.SynMaterialFilter,nil,syncard)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
@@ -339,7 +348,15 @@ function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat
 	sg:AddCard(c)
 	ct=ct+1
 	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
-		or (ct<maxc and mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk))
+	if not res and ct<maxc then
+		local g=sg:Clone()
+		g:Merge(sg1)
+		local maxlv=syncard:GetLevel()
+		local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+		if sumlv<maxlv or g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g<maxlv/2 then
+			res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
+		end
+	end
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
