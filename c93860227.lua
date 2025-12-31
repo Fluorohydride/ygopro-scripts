@@ -59,7 +59,7 @@ function s.tstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(op)
 	if op==0 then
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,0,0)
 	else
 		e:SetCategory(CATEGORY_DRAW)

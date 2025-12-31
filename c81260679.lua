@@ -27,7 +27,6 @@ function c81260679.initial_effect(c)
 	--equip
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(81260679,1))
-	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_MZONE)

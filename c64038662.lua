@@ -40,7 +40,7 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	else op=Duel.SelectOption(tp,aux.Stringid(64038662,3))+2 end
 	e:SetLabel(op)
 	if op==1 then
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,4))
 		local g1=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
