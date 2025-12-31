@@ -42,7 +42,7 @@ function c66156348.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		if Duel.IsExistingMatchingCard(c66156348.filter,tp,0,LOCATION_MZONE,1,nil) then
-			tc:RegisterFlagEffect(66156348,RESET_EVENT+RESET_TOFIELD+RESET_TEMP_REMOVE+RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
+			tc:RegisterFlagEffect(66156348,RESET_EVENT+RESET_TOFIELD+RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
 			local e2=Effect.CreateEffect(e:GetHandler())
 			e2:SetType(EFFECT_TYPE_FIELD)
 			e2:SetCode(EFFECT_CANNOT_INACTIVATE)
