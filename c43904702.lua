@@ -52,7 +52,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function s.spfilter(c)
-	return c:IsSynchroSummonable(nil) and c:IsType(TYPE_TUNER)
+	return c:IsType(TYPE_TUNER) and c:IsSynchroSummonable(nil)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

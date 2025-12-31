@@ -77,7 +77,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
 function s.spfilter(c)
-	return c:IsSynchroSummonable(nil) and c:IsType(TYPE_TUNER)
+	return c:IsType(TYPE_TUNER) and c:IsSynchroSummonable(nil)
 end
 function s.rthfilter(c,tp,e,g)
 	return c:IsAbleToHand() and g:FilterCount(Card.IsCanBeSpecialSummoned,c,e,0,tp,false,false)==1
