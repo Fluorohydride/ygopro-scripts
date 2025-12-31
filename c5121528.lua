@@ -78,7 +78,7 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 			{b2,aux.Stringid(id,3),2})
 	end
 	e:SetLabel(op)
-	if op==1  then
+	if op==1 then
 		if e:IsCostChecked() then
 			e:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 		end

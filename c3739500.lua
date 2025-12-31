@@ -1,4 +1,4 @@
---破壊と終焉の支配者
+--破滅と終焉の支配者
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
