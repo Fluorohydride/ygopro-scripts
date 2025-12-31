@@ -44,7 +44,8 @@ function c44822037.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
 function c44822037.discon(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=ep and Duel.GetCurrentChain()==0
+	local se=e:GetHandler():GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
+	return tp~=ep and Duel.GetCurrentChain()==0 and se and se:GetHandler()==e:GetHandler()
 end
 function c44822037.discfilter(c)
 	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsSummonLocation(LOCATION_SZONE) and (c:GetType()&(TYPE_TRAP+TYPE_CONTINUOUS))==TYPE_TRAP+TYPE_CONTINUOUS
