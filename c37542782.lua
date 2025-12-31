@@ -76,6 +76,7 @@ function c37542782.efilter(e,re)
 end
 function c37542782.eqfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and (c:IsControler(tp) or c:IsAbleToChangeControler())
+		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
 function c37542782.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
