@@ -32,23 +32,25 @@ function c72181263.initial_effect(c)
 	e3:SetOperation(c72181263.regop)
 	c:RegisterEffect(e3)
 end
-function c72181263.desfilter1(c,tp,ec)
+function c72181263.desfilter1(c,tp,ec,g)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
-		and Duel.IsExistingTarget(c72181263.desfilter2,tp,LOCATION_ONFIELD,0,1,c,ec)
+		and g:IsExists(c72181263.desfilter2,1,nil,tp,ec)
 end
-function c72181263.desfilter2(c,ec)
-	return c~=ec and c:IsFaceup() and c:IsSetCard(0xaf,0xae)
+function c72181263.desfilter2(c,tp,ec)
+	return c~=ec and c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0xaf,0xae)
+end
+function c72181263.gcheck(g,tp,ec)
+	return g:IsExists(c72181263.desfilter1,1,nil,tp,ec,g)
 end
 function c72181263.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingTarget(c72181263.desfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,tp,c) end
+	local g=Duel.GetMatchingGroup(Card.IsCanBeEffectTarget,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
+	if chk==0 then return g:CheckSubGroup(c72181263.gcheck,2,2,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g1=Duel.SelectTarget(tp,c72181263.desfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,tp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g2=Duel.SelectTarget(tp,c72181263.desfilter2,tp,LOCATION_ONFIELD,0,1,1,g1:GetFirst(),c)
-	g1:Merge(g2)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,2,0,0)
+	local tg=g:SelectSubGroup(tp,c72181263.gcheck,false,2,2,tp,c)
+	Duel.SetTargetCard(tg)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,2,0,0)
 end
 function c72181263.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
