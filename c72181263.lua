@@ -34,7 +34,7 @@ function c72181263.initial_effect(c)
 end
 function c72181263.desfilter1(c,tp,ec,g)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
-		and g:IsExists(c72181263.desfilter2,1,nil,tp,ec)
+		and g:IsExists(c72181263.desfilter2,1,c,tp,ec)
 end
 function c72181263.desfilter2(c,tp,ec)
 	return c~=ec and c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0xaf,0xae)
