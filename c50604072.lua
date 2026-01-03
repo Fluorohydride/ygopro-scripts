@@ -66,7 +66,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.aclimit(e,re)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rc:IsLevelAbove(5) and rc:IsSummonLocation(LOCATION_EXTRA)
+	return re:IsActiveType(TYPE_MONSTER) and rc:IsLevelAbove(5) and rc:IsLocation(LOCATION_MZONE) and rc:IsSummonLocation(LOCATION_EXTRA)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
