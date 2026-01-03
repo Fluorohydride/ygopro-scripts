@@ -335,31 +335,29 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgc
 	else
 		mg:Sub(sg)
 	end
-	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	local fulltraversal=#mg<=5 or mg1:IsExists(Card.IsHasEffect,1,nil,89818984)
+	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk,fulltraversal)
 end
-function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk)
+function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk,fulltraversal)
 	local tp=syncard:GetControler()
 	local sg=Group.CreateGroup()
 	if minc<=0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc,mgchk) then return true end
 	if maxc==0 then return false end
-	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc,mgchk)
+	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc,mgchk,fulltraversal)
 end
-function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
+function Auxiliary.SynMixCheckPrune(sg,sg1,syncard)
+	local g=sg:Clone()
+	g:Merge(sg1)
+	local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+	return sumlv>=syncard:GetLevel()
+end
+function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk,fulltraversal)
 	sg:AddCard(c)
 	ct=ct+1
 	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
-	if not res and ct<maxc then
-		local maxlv=syncard:GetLevel()
-		if #mg<=7 or #sg<=maxlv/7 then
-			res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
-		else
-			local g=sg:Clone()
-			g:Merge(sg1)
-			local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
-			if sumlv<maxlv or g:IsExists(Card.IsHasEffect,1,nil,89818984) and #g<maxlv/2 then
-				res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
-			end
-		end
+	if not res and ct<maxc
+		and (fulltraversal or not Auxiliary.SynMixCheckPrune(sg,sg1,syncard)) then
+		res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk,fulltraversal)
 	end
 	sg:RemoveCard(c)
 	ct=ct-1
