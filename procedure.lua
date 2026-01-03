@@ -270,7 +270,8 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 					else
 						mg2:Sub(g)
 					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk)
+					local fulltraversal=mg:IsExists(Card.IsHasEffect,1,nil,89818984)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk,fulltraversal)
 					if cg:GetCount()==0 then break end
 					local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -335,21 +336,15 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgc
 	else
 		mg:Sub(sg)
 	end
-	local fulltraversal=#mg<=5 or mg1:IsExists(Card.IsHasEffect,1,nil,89818984)
-	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk,fulltraversal)
+	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,mg1,smat,gc,mgchk)
 end
-function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk,fulltraversal)
+function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,mg1,smat,gc,mgchk)
 	local tp=syncard:GetControler()
 	local sg=Group.CreateGroup()
 	if minc<=0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc,mgchk) then return true end
 	if maxc==0 then return false end
+	local fulltraversal=#mg<=5 or mg1:IsExists(Card.IsHasEffect,1,nil,89818984)
 	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc,mgchk,fulltraversal)
-end
-function Auxiliary.SynMixCheckPrune(sg,sg1,syncard)
-	local g=sg:Clone()
-	g:Merge(sg1)
-	local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
-	return sumlv>=syncard:GetLevel()
 end
 function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk,fulltraversal)
 	sg:AddCard(c)
@@ -362,6 +357,11 @@ function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
+end
+function Auxiliary.SynMixCheckPrune(sg,sg1,syncard)
+	local g=sg+sg1
+	local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+	return sumlv>=syncard:GetLevel()
 end
 -- the material is in hand and don't has extra synchro material effect itself
 -- that mean some other tuner added it as material
@@ -397,8 +397,7 @@ function Auxiliary.SynMixHandCheck(g,tp,syncard)
 end
 function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if ct<minc then return false end
-	local g=sg:Clone()
-	g:Merge(sg1)
+	local g=sg+sg1
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
 	if gc and not gc(g,syncard,tp) then return false end
 	if smat and not g:IsContains(smat) then return false end
