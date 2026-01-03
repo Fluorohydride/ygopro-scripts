@@ -62,8 +62,8 @@ function c42158279.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
-function c42158279.thfilter(c)
-	return c:IsSetCard(0x145) and c:IsType(TYPE_MONSTER)
+function c42158279.thfilter(c,e)
+	return c:IsSetCard(0x145) and c:IsType(TYPE_MONSTER) and c:IsCanBeEffectTarget(e)
 end
 function c42158279.fselect(g)
 	return aux.dlvcheck(g) and g:IsExists(c42158279.fcheck,1,nil,g)
@@ -75,8 +75,8 @@ function c42158279.fcheck2(c)
 	return c:IsAbleToDeck()
 end
 function c42158279.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(c42158279.thfilter,tp,LOCATION_GRAVE,0,nil)
 	if chkc then return false end
+	local g=Duel.GetMatchingGroup(c42158279.thfilter,tp,LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return g:CheckSubGroup(c42158279.fselect,2,2) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local sg=g:SelectSubGroup(tp,c42158279.fselect,false,2,2)
