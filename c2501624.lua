@@ -59,7 +59,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetCode(EFFECT_CHANGE_CODE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetValue(38033121)
-	e1:SetReset(RESET_EVENT+0xff0000)
+	e1:SetReset(RESET_EVENT+0xfe0000)
 	c:RegisterEffect(e1)
 end
 function s.thfilter(c)
