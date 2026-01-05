@@ -25,6 +25,7 @@ function s.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetCountLimit(1,id+o)
+	e2:SetCondition(s.spcon)
 	e2:SetTarget(s.sptg)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
@@ -55,6 +56,9 @@ function s.deop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 		end
 	end
+end
+function s.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function s.spfilter(c,e,tp)
 	return c:IsLevelBelow(5) and c:IsRace(RACE_MACHINE)
