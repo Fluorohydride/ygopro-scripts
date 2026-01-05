@@ -52,7 +52,7 @@ function c51369889.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local min=1
 	while ct<rt do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEATTACHFROM)
-		local sg=Duel.SelectMatchingCard(tp,c51369889.rmfilter,tp,LOCATION_MZONE,0,min,1,nil,tp)
+		local sg=Duel.GetMatchingGroup(c51369889.rmfilter,tp,LOCATION_MZONE,0,nil,tp):SelectSubGroup(tp,aux.TRUE,min==0,min,1)
 		if #sg==0 then break end
 		sg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_COST)
 		ct=ct+1
