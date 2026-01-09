@@ -29,11 +29,11 @@ function c45675980.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45675980.syncheck(g,tp,syncard)
-	return aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
+	return g:IsExists(Card.IsRace,1,nil,RACE_DRAGON)
+		and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c45675980.syncheckaddition(syncard)
 	return	function(g)
-				if not g:IsExists(Card.IsRace,1,nil,RACE_DRAGON) then return false end
 				local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
 				return sumlv<=syncard:GetLevel()
 			end
