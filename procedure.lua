@@ -440,6 +440,12 @@ function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
 				return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,ecode)
 			end
 end
+function Auxiliary.SynGroupCheckLevelAddition(syncard)
+	return	function(g)
+				local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+				return sumlv<=syncard:GetLevel()
+			end
+end
 
 --Xyz Summon
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,alterop)

@@ -32,14 +32,8 @@ function c45675980.syncheck(g,tp,syncard)
 	return g:IsExists(Card.IsRace,1,nil,RACE_DRAGON)
 		and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
-function c45675980.syncheckaddition(syncard)
-	return	function(g)
-				local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
-				return sumlv<=syncard:GetLevel()
-			end
-end
 function c45675980.spfilter(c,tp,mg)
-	aux.GCheckAdditional=c45675980.syncheckaddition(c)
+	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
 	local res=mg:CheckSubGroup(c45675980.syncheck,2,#mg,tp,c)
 	aux.GCheckAdditional=nil
 	return res
