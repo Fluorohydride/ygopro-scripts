@@ -9,6 +9,7 @@ function c40456412.initial_effect(c)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetCondition(c40456412.condition)
 	e1:SetTarget(c40456412.target)
+	e1:SetOperation(c40456412.operation)
 	c:RegisterEffect(e1)
 end
 function c40456412.cfilter(c)
@@ -50,23 +51,27 @@ function c40456412.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if e:IsCostChecked() then
 		Duel.RegisterFlagEffect(tp,40456412+op,RESET_PHASE+PHASE_END,0,1)
 	end
+	e:SetLabel(op)
 	if op==1 then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,1,0,0)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 		if e:IsCostChecked() then
 			e:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
 		end
-		e:SetOperation(c40456412.spop)
-	elseif op==2 then
-		if e:IsCostChecked() then
-			e:SetCategory(0)
-		end
-		e:SetOperation(c40456412.psop)
 	else
 		if e:IsCostChecked() then
 			e:SetCategory(0)
 		end
-		e:SetOperation(c40456412.ssop)
+	end
+end
+function c40456412.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		c40456412.spop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		c40456412.psop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==3 then
+		c40456412.ssop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c40456412.spop(e,tp,eg,ep,ev,re,r,rp)

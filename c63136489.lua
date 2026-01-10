@@ -21,6 +21,7 @@ function s.initial_effect(c)
 	e2:SetCountLimit(1,id)
 	e2:SetCondition(s.gycon)
 	e2:SetTarget(s.gytg)
+	e2:SetOperation(s.gyop)
 	c:RegisterEffect(e2)
 end
 function s.fscon(e,tp,eg,ep,ev,re,r,rp)
@@ -109,15 +110,22 @@ function s.gytg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and g:GetClassCount(Card.GetCode)>1
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,{b1,aux.Stringid(id,2)},{b2,aux.Stringid(id,3)})
+	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(CATEGORY_TOHAND)
-		e:SetOperation(s.tohand)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,c,1,0,0)
 	else
 		e:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON)
-		e:SetOperation(s.banish)
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,c,1,0,0)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK+LOCATION_GRAVE)
+	end
+end
+function s.gyop(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		s.tohand(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		s.banish(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.tohand(e,tp,eg,ep,ev,re,r,rp)
