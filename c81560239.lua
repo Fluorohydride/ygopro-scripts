@@ -8,6 +8,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(s.target)
+	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
 end
 function s.filter(c,e,tp)
@@ -35,20 +36,27 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=s2 and (Duel.GetFlagEffect(tp,id+o)==0 or not e:IsCostChecked())
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,1)},
-		{b2,aux.Stringid(id,2)})
+		{b1,aux.Stringid(id,1),1},
+		{b2,aux.Stringid(id,2),2})
+	e:SetLabel(op)
 	if op==1 then
 		if e:IsCostChecked() then
 			Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 		end
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-		e:SetOperation(s.spop1)
 	elseif op==2 then
 		if e:IsCostChecked() then
 			Duel.RegisterFlagEffect(tp,id+o,RESET_PHASE+PHASE_END,0,1)
 		end
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-		e:SetOperation(s.spop2)
+	end
+end
+function s.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		s.spop1(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spop1(e,tp,eg,ep,ev,re,r,rp)
