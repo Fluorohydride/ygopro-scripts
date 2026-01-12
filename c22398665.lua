@@ -62,8 +62,8 @@ function c22398665.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			mg:RemoveCard(tc)
 		end
@@ -114,8 +114,8 @@ function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,grea
 	if m2 then
 		mg:Merge(m2)
 	end
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c,tp)
+	if c.ritual_mat_filter then
+		mg=mg:Filter(c.ritual_mat_filter,c,tp)
 	else
 		mg:RemoveCard(c)
 	end

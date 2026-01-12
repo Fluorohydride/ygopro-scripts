@@ -31,7 +31,7 @@ end
 function c21105106.splimit(e,se,sp,st)
 	return e:GetHandler():IsLocation(LOCATION_HAND) and bit.band(st,SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
 end
-function c21105106.mat_filter(c,tp)
+function c21105106.ritual_mat_filter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp)
 end
 function c21105106.discon(e,tp,eg,ep,ev,re,r,rp)
