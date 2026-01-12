@@ -1,4 +1,4 @@
---Necroquip Princess
+--優麗なる霊鏡姫
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:SetUniqueOnField(1,0,id)
@@ -59,7 +59,7 @@ function s.tstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(op)
 	if op==0 then
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,0,0)
 	else
 		e:SetCategory(CATEGORY_DRAW)
@@ -72,7 +72,7 @@ function s.tsop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsFaceup() and c:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local ec=eg:FilterSelect(tp,aux.NecroValleyFilter(s.eqfilter),1,1,nil):GetFirst()
-			if not Duel.Equip(tp,ec,c) then return end
+			if ec==nil or not Duel.Equip(tp,ec,c) then return end
 			--equip limit
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

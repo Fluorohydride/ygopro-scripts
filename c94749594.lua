@@ -1,4 +1,4 @@
---Curse of the Ancient Turtle
+--古代亀の呪い
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

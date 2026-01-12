@@ -70,6 +70,7 @@ function c27642961.drcon(e,tp,eg,ep,ev,re,r,rp)
 		local rc=re:GetHandler()
 		return eg:IsExists(c27642961.cfilter,1,nil,tp)
 			and rc and rc:IsSetCard(0xee) and rc:IsControler(tp) and re:IsActiveType(TYPE_MONSTER)
+			and re:GetActivateLocation()==LOCATION_MZONE
 	end
 	return false
 end

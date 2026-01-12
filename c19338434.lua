@@ -1,4 +1,4 @@
---Mimighoul Fork
+--ミミグル・フォーク
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

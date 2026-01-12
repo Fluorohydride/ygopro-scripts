@@ -18,11 +18,15 @@ function c32360466.filter2(c)
 	return c:IsSetCard(0x10cf,0xbd)
 end
 function c32360466.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c32360466.filter1,tp,LOCATION_DECK,0,nil)
-	if chk==0 then return g:GetCount()>2 and g:IsExists(c32360466.filter2,1,nil) end
+	if chk==0 then
+		if not Duel.IsPlayerCanDiscardDeck(tp,1) then return false end
+		local g=Duel.GetMatchingGroup(c32360466.filter1,tp,LOCATION_DECK,0,nil)
+		return g:GetCount()>2 and g:IsExists(c32360466.filter2,1,nil)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 end
 function c32360466.activate(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
 	local g=Duel.GetMatchingGroup(c32360466.filter1,tp,LOCATION_DECK,0,nil)
 	if g:IsExists(c32360466.filter2,1,nil) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

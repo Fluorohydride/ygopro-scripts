@@ -1,4 +1,4 @@
---Supply Soldier of the Indestructible Insects
+--無死虫団の補給兵
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

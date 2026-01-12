@@ -36,7 +36,7 @@ function c26931058.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	else op=Duel.SelectOption(tp,aux.Stringid(26931058,1))+1 end
 	e:SetLabel(op)
 	if op==0 then
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26931058,2))
 		Duel.SelectTarget(tp,c26931058.filter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	else

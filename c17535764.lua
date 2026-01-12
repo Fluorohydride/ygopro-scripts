@@ -30,13 +30,14 @@ function c17535764.tgop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsType(TYPE_NORMAL) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 			and Duel.SelectYesNo(tp,aux.Stringid(17535764,1)) then
 			Duel.BreakEffect()
-			local g=Duel.GetMatchingGroup(c17535764.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tc:GetAttack())
-			if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 and g:GetCount()>0
-				and Duel.SelectYesNo(tp,aux.Stringid(17535764,2)) then
-				Duel.BreakEffect()
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-				local tc2=g:Select(tp,1,1,nil)
-				Duel.Destroy(tc2,REASON_EFFECT)
+			if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+				local g=Duel.GetMatchingGroup(c17535764.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tc:GetAttack())
+				if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(17535764,2)) then
+					Duel.BreakEffect()
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+					local tc2=g:Select(tp,1,1,nil)
+					Duel.Destroy(tc2,REASON_EFFECT)
+				end
 			end
 		end
 	end

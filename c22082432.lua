@@ -1,4 +1,4 @@
---Dangers of the Divine
+--神の怒り
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,10000010)

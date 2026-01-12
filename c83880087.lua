@@ -5,16 +5,17 @@ function c83880087.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_DISABLED)
 	e1:SetTarget(c83880087.target)
+	e1:SetOperation(c83880087.operation)
 	c:RegisterEffect(e1)
 	--remove overlay replace
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(83880087,2))
-	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_OVERLAY_REMOVE_REPLACE)
-	e1:SetRange(LOCATION_GRAVE)
-	e1:SetCondition(c83880087.rcon)
-	e1:SetOperation(c83880087.rop)
-	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(83880087,2))
+	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_OVERLAY_REMOVE_REPLACE)
+	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCondition(c83880087.rcon)
+	e2:SetOperation(c83880087.rop)
+	c:RegisterEffect(e2)
 end
 function c83880087.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x107f)
@@ -28,16 +29,23 @@ function c83880087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(83880087,0))
 	end
+	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(0)
 		e:SetProperty(0)
-		e:SetOperation(c83880087.endop)
 	else
 		e:SetCategory(CATEGORY_ATKCHANGE)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		Duel.SelectTarget(tp,c83880087.filter,tp,LOCATION_MZONE,0,1,1,nil)
-		e:SetOperation(c83880087.atkop)
+	end
+end
+function c83880087.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==0 then
+		c83880087.endop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==1 then
+		c83880087.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c83880087.endop(e,tp,eg,ep,ev,re,r,rp)

@@ -1,4 +1,4 @@
---Phalaenop Sisters
+--胡蝶姉妹
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--search

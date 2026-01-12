@@ -33,7 +33,7 @@ function s.initial_effect(c)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
-	--to 
+	--to grave
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_ADJUST)
@@ -78,7 +78,7 @@ function s.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(c,REASON_EFFECT)
 end
 function s.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler()==e:GetHandler()
+	return re and re:GetHandler()==e:GetHandler()
 end
 function s.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,10) end

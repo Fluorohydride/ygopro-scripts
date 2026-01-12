@@ -1,4 +1,4 @@
---Mitsurugi Tempest
+--八雲断巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,13332685,19899073,55397172)

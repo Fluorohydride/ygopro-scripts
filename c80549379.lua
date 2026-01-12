@@ -3,6 +3,7 @@ function c80549379.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetCode(EFFECT_TO_GRAVE_REDIRECT_CB)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCondition(c80549379.repcon)

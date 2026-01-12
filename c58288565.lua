@@ -1,4 +1,4 @@
---Butterfly Fish
+--バタフライ・フィッシュ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to hand

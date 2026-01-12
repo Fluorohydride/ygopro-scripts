@@ -53,19 +53,14 @@ function s.valcheck(e,c)
 		c:RegisterEffect(e1)
 	end
 end
-function s.mgcheck(c,mg)
-	local rg=mg-c
-	if c:IsCode(82044279) then
-		return (rg:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO) or #rg>=2) and not rg:IsExists(s.chkfilter,1,nil)
-	else
-		return false
-	end
+function s.mfilter2(c,mg,syncard)
+	return c:IsCode(82044279) and (mg:IsExists(Card.IsType,1,c,TYPE_SYNCHRO) or #mg-1>=2) and not mg:IsExists(s.chkfilter,1,c,syncard)
 end
-function s.chkfilter(c)
-	return not c:IsTuner(c)
+function s.chkfilter(c,syncard)
+	return not c:IsTuner(syncard)
 end
-function s.syncheck(g)
-	return g:IsExists(s.mgcheck,1,nil,g)
+function s.syncheck(g,syncard)
+	return g:IsExists(s.mfilter2,1,nil,g,syncard)
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)

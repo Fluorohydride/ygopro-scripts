@@ -1,4 +1,4 @@
---Mitsurugi Great Purification
+--巳剣大祓
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

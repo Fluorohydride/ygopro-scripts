@@ -373,7 +373,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	local g=sg:Clone()
 	g:Merge(sg1)
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
-	if gc and not gc(g) then return false end
+	if gc and not gc(g,syncard,tp) then return false end
 	if smat and not g:IsContains(smat) then return false end
 	if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL) then return false end
 	if Duel.IsPlayerAffectedByEffect(tp,8173184)
@@ -482,7 +482,7 @@ function Auxiliary.Xyz2XMaterialEffectFilter(c,xyzc,lv,f,tp,checked)
 	local e=c:IsHasEffect(EFFECT_DOUBLE_XMATERIAL,tp)
 	if not e then return false end
 	local tg=e:GetTarget()
-	if tg and not tg(e,xyzc) then return false end
+	if tg and not tg(e,xyzc,tp) then return false end
 	return true
 end
 function Auxiliary.Xyz2XMaterialGoal(g,tp,xyzc,minc)
@@ -500,7 +500,7 @@ function Auxiliary.Xyz2XMaterialGoal(g,tp,xyzc,minc)
 		if le then
 			local tg=le:GetTarget()
 			local limit_value=le:GetValue() -- not fully implemented: assuming Hard once per turn effects
-			if (not tg or tg(le,xyzc)) and (not limit_value or not limit_table[limit_value]) then
+			if (not tg or tg(le,xyzc,tp)) and (not limit_value or not limit_table[limit_value]) then
 				ct2=ct2+1
 				if limit_value then
 					limit_table[limit_value]=true
@@ -664,7 +664,7 @@ function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
 	if Duel.GetLocationCountFromEx(tp,tp,g,xyzc)<=0 then return false end
-	if gf and not gf(g) then return false end
+	if gf and not gf(g,xyzc,tp) then return false end
 	local lg=g:Filter(Card.IsHasEffect,nil,EFFECT_XYZ_MIN_COUNT)
 	for c in Auxiliary.Next(lg) do
 		local le=c:IsHasEffect(EFFECT_XYZ_MIN_COUNT)
@@ -1732,7 +1732,17 @@ end
 ---|"'Equal'"
 ---@return boolean
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
-	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
+	-- Check if there's space to summon
+	if c:IsLocation(LOCATION_EXTRA) then
+		if Duel.GetLocationCountFromEx(tp,tp,g,c)<=0 then
+			return false
+		end
+	else
+		if Duel.GetMZoneCount(tp,g,tp)<=0 then
+			return false
+		end
+	end
+	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and (not c.mat_group_check or c.mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
 end
 function Auxiliary.RitualCheckAdditionalLevel(c,rc)

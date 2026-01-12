@@ -1,4 +1,4 @@
---Ame no Murakumo no Mitsurugi
+--天叢雲之巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

@@ -1,4 +1,4 @@
---Dawn Angel Kambi
+--暁天使カムビン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

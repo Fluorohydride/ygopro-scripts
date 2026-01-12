@@ -1,4 +1,4 @@
---Magicolloidal Sol
+--魔溶生物ゾル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special Summon

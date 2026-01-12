@@ -1,4 +1,4 @@
---Mitsurugi no Mikoto, Saji
+--巳剣之尊 佐士
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--search

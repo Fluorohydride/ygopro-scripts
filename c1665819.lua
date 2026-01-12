@@ -1,4 +1,4 @@
---Replicard LAD
+--レプリカルド・ラッド
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Special Summon

@@ -1,4 +1,4 @@
---Divine Serpent Apophis
+--聖神蛇アポピス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,29762407)

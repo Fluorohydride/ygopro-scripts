@@ -1,4 +1,4 @@
---Mitsurugi no Mikoto, Aramasa
+--巳剣之尊 麁正
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--search
