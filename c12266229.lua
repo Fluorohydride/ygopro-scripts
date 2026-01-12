@@ -31,7 +31,7 @@ function c12266229.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsPublic() end
 end
 function c12266229.thfilter(c)
-	return (c:IsCode(46986414) or aux.IsCodeListed(c,46986414)) and c:IsAbleToHand()
+	return aux.IsCodeOrListed(c,46986414) and c:IsAbleToHand()
 		and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_RITUAL)
 end
 function c12266229.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

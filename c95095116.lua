@@ -30,8 +30,9 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
-function s.mfilter(c)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE)
+c95095116.material_type=TYPE_SYNCHRO
+function s.mfilter(c,fc)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsControler(fc:GetControler())
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

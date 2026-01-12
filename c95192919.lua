@@ -49,8 +49,8 @@ function c95192919.costfilter(c,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:IsAttribute(ATTRIBUTE_WIND) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c95192919.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c95192919.costfilter,1,nil,tp) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,c95192919.costfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c95192919.costfilter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c95192919.costfilter,1,1,nil,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c95192919.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

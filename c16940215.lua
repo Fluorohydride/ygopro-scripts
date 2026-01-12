@@ -25,14 +25,14 @@ function c16940215.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local fe=Duel.IsPlayerAffectedByEffect(tp,29942771)
 	local b1=fe and Duel.IsPlayerCanDiscardDeckAsCost(tp,2)
-	local b2=c:IsReleasable() and Duel.CheckReleaseGroup(REASON_COST,tp,c16940215.cfilter,1,c)
+	local b2=c:IsReleasable() and Duel.CheckReleaseGroup(tp,c16940215.cfilter,1,c)
 	if chk==0 then return b1 or b2 end
 	if b1 and (not b2 or Duel.SelectYesNo(tp,fe:GetDescription())) then
 		Duel.Hint(HINT_CARD,0,29942771)
 		fe:UseCountLimit(tp)
 		Duel.DiscardDeck(tp,2,REASON_COST)
 	else
-		local g=Duel.SelectReleaseGroup(REASON_COST,tp,c16940215.cfilter,1,1,c)
+		local g=Duel.SelectReleaseGroup(tp,c16940215.cfilter,1,1,c)
 		g:AddCard(c)
 		Duel.Release(g,REASON_COST)
 	end

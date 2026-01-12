@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.filter(c,e,tp)
-	return c:IsFaceupEx() and c:IsSetCard(0x19b) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+	return c:IsFaceupEx() and c:IsSetCard(0x119b) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingTarget(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,Group.FromCards(c,e:GetHandler()))
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -62,6 +62,13 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
+		if tc:IsType(TYPE_TRAPMONSTER) then
+			local e3=Effect.CreateEffect(c)
+			e3:SetType(EFFECT_TYPE_SINGLE)
+			e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
+			tc:RegisterEffect(e3)
+		end
 	end
 end
 function s.discon(e,tp,eg,ep,ev,re,r,rp)
@@ -69,7 +76,7 @@ function s.discon(e,tp,eg,ep,ev,re,r,rp)
 	local te,p=Duel.GetChainInfo(ev-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 	if not te or p~=tp then return false end
 	local tc=te:GetHandler()
-	return tc:IsSetCard(0x19b) and te:IsActiveType(TYPE_MONSTER) or tc:IsSetCard(0x19e)
+	return tc:IsSetCard(0x119b) and te:IsActiveType(TYPE_MONSTER) or tc:IsSetCard(0x19e)
 		and te:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)

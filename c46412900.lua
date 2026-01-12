@@ -58,7 +58,7 @@ end
 function c46412900.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c46412900.sprfilter,tp,LOCATION_GRAVE+LOCATION_ONFIELD,0,e:GetHandler())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroup(tp,c46412900.gcheck,false,1,3,tp)
+	local sg=g:SelectSubGroup(tp,c46412900.gcheck,true,1,3,tp)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -67,7 +67,7 @@ function c46412900.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c46412900.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c46412900.damcon(e,tp,eg,ep,ev,re,r,rp)

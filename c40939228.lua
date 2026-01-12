@@ -4,7 +4,7 @@ function c40939228.initial_effect(c)
 	aux.AddMaterialCodeList(c,21159309)
 	aux.AddCodeList(c,44508094)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,aux.Tuner(Card.IsCode,21159309),nil,nil,aux.NonTuner(nil),1,99,c40939228.syncheck(c))
+	aux.AddSynchroMixProcedure(c,aux.Tuner(Card.IsCode,21159309),nil,nil,aux.NonTuner(nil),1,99,c40939228.syncheck)
 	c:EnableReviveLimit()
 	--special summon condition
 	local e1=Effect.CreateEffect(c)
@@ -50,10 +50,8 @@ c40939228.material_type=TYPE_SYNCHRO
 function c40939228.cfilter(c,syncard)
 	return c:IsRace(RACE_DRAGON) and c:IsSynchroType(TYPE_SYNCHRO) and c:IsNotTuner(syncard)
 end
-function c40939228.syncheck(syncard)
-	return	function(g)
-				return g:IsExists(c40939228.cfilter,1,nil,syncard)
-			end
+function c40939228.syncheck(g,syncard)
+	return g:IsExists(c40939228.cfilter,1,nil,syncard)
 end
 function c40939228.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
@@ -109,18 +107,20 @@ end
 function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and c:GetOriginalCode()==id then
-		c:RegisterFlagEffect(40939228,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetReset(RESET_PHASE+PHASE_END)
-		e1:SetLabel(fid)
-		e1:SetLabelObject(c)
-		e1:SetCountLimit(1)
-		e1:SetCondition(c40939228.retcon)
-		e1:SetOperation(c40939228.retop)
-		Duel.RegisterEffect(e1,tp)
+	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+		if c:GetOriginalCode()==id then
+			c:RegisterFlagEffect(40939228,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_END)
+			e1:SetReset(RESET_PHASE+PHASE_END)
+			e1:SetLabel(fid)
+			e1:SetLabelObject(c)
+			e1:SetCountLimit(1)
+			e1:SetCondition(c40939228.retcon)
+			e1:SetOperation(c40939228.retop)
+			Duel.RegisterEffect(e1,tp)
+		end
 		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 		end

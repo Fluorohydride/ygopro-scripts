@@ -9,7 +9,9 @@ function c52112003.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52112003.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
+		and Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp)
+		and Duel.GetFlagEffect(tp,52112003)==0 end
 end
 function c52112003.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=math.min(5,Duel.GetFieldGroupCount(tp,LOCATION_DECK,0))

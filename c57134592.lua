@@ -68,7 +68,7 @@ end
 function s.cfilter(c,tp)
 	return not c:IsType(TYPE_TOKEN) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousAttributeOnField()&ATTRIBUTE_FIRE~=0
-		and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsAttackAbove(1)
 end
 function s.tgfilter(c,e,tp)
 	return s.cfilter(c,tp) and c:IsCanBeEffectTarget(e)

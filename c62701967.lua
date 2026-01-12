@@ -21,8 +21,8 @@ function c62701967.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c62701967.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_DINOSAUR) end
-	local sg=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,1,e:GetHandler(),RACE_DINOSAUR)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_DINOSAUR) end
+	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,e:GetHandler(),RACE_DINOSAUR)
 	Duel.Release(sg,REASON_COST)
 end
 function c62701967.operation(e,tp,eg,ep,ev,re,r,rp)

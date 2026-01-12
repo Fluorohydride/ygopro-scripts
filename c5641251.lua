@@ -20,7 +20,7 @@ function c5641251.initial_effect(c)
 	--atk up
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(5641251,1))
-	e3:SetCategory(CATEGORY_DESTROY)
+	e3:SetCategory(CATEGORY_DICE+CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_CONFIRM)
 	e3:SetRange(LOCATION_SZONE)
@@ -28,7 +28,6 @@ function c5641251.initial_effect(c)
 	e3:SetOperation(c5641251.lvlop)
 	c:RegisterEffect(e3)
 end
-c5641251.toss_dice=true
 function c5641251.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end

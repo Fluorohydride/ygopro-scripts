@@ -19,8 +19,8 @@ function c71717923.filter(c,atk)
 	return c:IsFaceup() and c:IsDefenseBelow(atk)
 end
 function c71717923.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c71717923.costfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c71717923.costfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c71717923.costfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c71717923.costfilter,1,1,nil)
 	e:SetLabel(g:GetFirst():GetAttack())
 	Duel.Release(g,REASON_COST)
 end

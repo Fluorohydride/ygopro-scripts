@@ -30,7 +30,6 @@ function c70583986.thfilter(c,tp)
 end
 function c70583986.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=Duel.GetTargetsRelateToChain()
 	local rg=tg:Filter(c70583986.thfilter,nil,tp)
 	Duel.SendtoHand(rg,nil,REASON_EFFECT)

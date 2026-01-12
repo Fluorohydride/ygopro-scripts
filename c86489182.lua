@@ -45,7 +45,7 @@ function c86489182.initial_effect(c)
 end
 function c86489182.valcheck(e,c)
 	local g=c:GetMaterial()
-	if g:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_WIND)==g:GetCount() then
+	if g:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_WIND)==#g and #g>0 then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)

@@ -12,6 +12,7 @@ function c3734202.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetHintTiming(0,TIMING_END_PHASE)
 	e2:SetCountLimit(1,3734202)
 	e2:SetCost(c3734202.spcost1)
 	e2:SetTarget(c3734202.sptg1)
@@ -24,6 +25,7 @@ function c3734202.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCode(EVENT_FREE_CHAIN)
+	e3:SetHintTiming(0,TIMING_END_PHASE)
 	e3:SetCountLimit(1,3734202)
 	e3:SetCost(c3734202.spcost2)
 	e3:SetTarget(c3734202.sptg2)
@@ -43,8 +45,8 @@ function c3734202.cfilter1(c,tp)
 	return c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_EARTH) and Duel.GetMZoneCount(tp,c)>0
 end
 function c3734202.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c3734202.cfilter1,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c3734202.cfilter1,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c3734202.cfilter1,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c3734202.cfilter1,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c3734202.spfilter1(c,e,tp)
@@ -67,8 +69,8 @@ function c3734202.cfilter2(c,tp)
 	return c:IsRace(RACE_PLANT) and c:IsAttribute(ATTRIBUTE_EARTH) and Duel.GetMZoneCount(tp,c)>0
 end
 function c3734202.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c3734202.cfilter2,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c3734202.cfilter2,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c3734202.cfilter2,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c3734202.cfilter2,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c3734202.spfilter2(c,e,tp)

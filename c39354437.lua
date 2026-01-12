@@ -19,7 +19,7 @@ function c39354437.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_BE_BATTLE_TARGET)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCountLimit(1,39354438+EFFECT_COUNT_CODE_SINGLE)
+	e3:SetCountLimit(1,39354438)
 	e3:SetCondition(c39354437.spcon1)
 	e3:SetTarget(c39354437.sptg)
 	e3:SetOperation(c39354437.spop)
@@ -45,7 +45,7 @@ function c39354437.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39354437.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp)
+	return eg:IsContains(e:GetHandler()) and Duel.GetAttacker():IsControler(1-tp)
 end
 function c39354437.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler()) and rp==1-tp

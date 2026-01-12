@@ -14,7 +14,7 @@ function c67196946.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)
 	local g=Duel.GetMatchingGroup(Card.IsLevelAbove,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,2)
 	local tg=g:GetMaxGroup(Card.GetLevel)
-	local maxlv=tg:GetFirst():GetLevel()
+	local maxlv=math.min(tg:GetFirst():GetLevel(),255)
 	local t={}
 	local l=1
 	while l<maxlv and l*500<=lp do

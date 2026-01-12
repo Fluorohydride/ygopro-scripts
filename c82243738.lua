@@ -9,6 +9,7 @@ function c82243738.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,82243738+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c82243738.spcon)
+	e1:SetTarget(c82243738.sptg)
 	e1:SetOperation(c82243738.spop)
 	c:RegisterEffect(e1)
 	--Tribute Summon
@@ -32,9 +33,17 @@ function c82243738.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c82243738.spfilter,tp,LOCATION_HAND,0,1,nil)
 end
-function c82243738.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c82243738.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c82243738.spfilter,tp,LOCATION_HAND,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local g=Duel.SelectMatchingCard(tp,c82243738.spfilter,tp,LOCATION_HAND,0,1,1,nil)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c82243738.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	Duel.ConfirmCards(1-tp,g)
 	Duel.ShuffleHand(tp)
 end

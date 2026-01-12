@@ -42,9 +42,9 @@ function c74431740.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c74431740.cfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,c74431740.cfilter,1,nil,e,tp)
 	end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c74431740.cfilter,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c74431740.cfilter,1,1,nil,e,tp)
 	Duel.SetTargetParam(rg:GetFirst():GetCode())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
@@ -59,7 +59,7 @@ function c74431740.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74431740.tdfilter(c,e)
-	return not c:IsCode(74431740) and (aux.IsCodeListed(c,80280737) or c:IsCode(80280737)) and c:IsAbleToDeck()
+	return not c:IsCode(74431740) and aux.IsCodeOrListed(c,80280737) and c:IsAbleToDeck()
 		and (not e or c:IsCanBeEffectTarget(e))
 end
 function c74431740.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -14,7 +14,6 @@ function c48948935.initial_effect(c)
 	--equip
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(48948935,0))
-	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetCode(EVENT_TO_GRAVE)
@@ -24,7 +23,7 @@ function c48948935.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c48948935.fselect(g,tp)
-	return g:IsExists(Card.IsCode,1,nil,13676474,86569121) and aux.mzctcheckrel(g,tp)
+	return g:IsExists(Card.IsCode,1,nil,13676474,86569121) and aux.mzctcheckrel(g,tp,REASON_SPSUMMON)
 end
 function c48948935.spcon(e,c)
 	if c==nil then return true end
@@ -55,7 +54,6 @@ function c48948935.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c48948935.filter(c)
 	return c:IsCode(22610082) and not c:IsForbidden()

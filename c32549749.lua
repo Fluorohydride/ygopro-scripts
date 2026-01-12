@@ -49,7 +49,7 @@ function c32549749.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	else
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local g=Duel.SelectTarget(tp,c32549749.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,tp)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)

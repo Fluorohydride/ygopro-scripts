@@ -4,19 +4,11 @@ function c50237654.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,{46986414,38033121},aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,true,true)
 	--draw
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_CHAINING)
-	e0:SetRange(LOCATION_MZONE)
-	e0:SetCondition(c50237654.drcon1)
-	e0:SetOperation(aux.chainreg)
-	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(50237654,1))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetCode(EVENT_CHAIN_SOLVED)
+	e1:SetCode(EVENT_CHAINING)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
@@ -34,11 +26,8 @@ function c50237654.initial_effect(c)
 	e2:SetOperation(c50237654.spop)
 	c:RegisterEffect(e2)
 end
-function c50237654.drcon1(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
-end
 function c50237654.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(1)>0
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function c50237654.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
@@ -54,6 +43,7 @@ function c50237654.drop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.SSet(tp,dc,tp,false)==0 then return end
 			if dc:IsType(TYPE_QUICKPLAY) then
 				local e1=Effect.CreateEffect(c)
+				e1:SetDescription(aux.Stringid(50237654,2))
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 				e1:SetCode(EFFECT_QP_ACT_IN_SET_TURN)
@@ -62,6 +52,7 @@ function c50237654.drop(e,tp,eg,ep,ev,re,r,rp)
 			end
 			if dc:IsType(TYPE_TRAP) then
 				local e1=Effect.CreateEffect(c)
+				e1:SetDescription(aux.Stringid(50237654,2))
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 				e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

@@ -46,9 +46,9 @@ function c29884951.rfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and Duel.GetMZoneCount(tp,c)>0
 end
 function c29884951.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c29884951.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c29884951.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c29884951.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(tp,c29884951.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c29884951.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -89,23 +89,8 @@ end
 function c29884951.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_ONFIELD+LOCATION_GRAVE) and c29884951.remfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c29884951.remfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,nil) end
-	local b1=Duel.IsExistingTarget(c29884951.remfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-	local b2=Duel.IsExistingTarget(c29884951.remfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
-	local op=0
-	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(29884951,3),aux.Stringid(29884951,4))
-	else
-		op=2
-	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=nil
-	if op==0 then
-		g=Duel.SelectTarget(tp,c29884951.remfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
-	elseif op==1 then
-		g=Duel.SelectTarget(tp,c29884951.remfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
-	else
-		g=Duel.SelectTarget(tp,c29884951.remfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
-	end
+	local g=aux.SelectTargetFromFieldFirst(tp,c29884951.remfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c29884951.remop(e,tp,eg,ep,ev,re,r,rp)

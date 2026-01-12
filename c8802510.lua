@@ -26,7 +26,7 @@ function c8802510.initial_effect(c)
 end
 function c8802510.cfilter(c,tp)
 	return c:IsFaceup() and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE)
-		and bit.band(c:GetPreviousRaceOnField(),RACE_PSYCHO)~=0 and c:IsPreviousControler(tp)
+		and bit.band(c:GetPreviousRaceOnField(),RACE_PSYCHO)~=0 and c:IsPreviousControler(tp) and c:IsRace(RACE_PSYCHO)
 end
 function c8802510.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8802510.cfilter,1,nil,tp)

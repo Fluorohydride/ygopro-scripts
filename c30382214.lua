@@ -53,8 +53,8 @@ function c30382214.splimit(e,c)
 	return not c:IsSetCard(0xe6)
 end
 function c30382214.drawcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,nil,0xe6) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsSetCard,1,1,nil,0xe6)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xe6) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xe6)
 	Duel.Release(g,REASON_COST)
 end
 function c30382214.drawtg(e,tp,eg,ep,ev,re,r,rp,chk)

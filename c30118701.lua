@@ -9,6 +9,7 @@ function c30118701.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,30118701+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c30118701.hspcon)
+	e1:SetTarget(c30118701.hsptg)
 	e1:SetOperation(c30118701.hspop)
 	c:RegisterEffect(e1)
 	--fusion summon
@@ -35,10 +36,18 @@ function c30118701.hspcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c30118701.hspcfilter,tp,LOCATION_HAND,0,1,c)
 end
-function c30118701.hspop(e,tp,eg,ep,ev,re,r,rp,c)
+function c30118701.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c30118701.hspcfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c30118701.hspcfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.SendtoGrave(g,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c30118701.hspop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

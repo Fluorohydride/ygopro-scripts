@@ -47,12 +47,25 @@ end
 function c67466547.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c67466547.cfilter,1,nil,tp)
 end
-function c67466547.drcfilter(c)
-	return c:IsSetCard(0x114) and c:IsDiscardable()
+function c67466547.drcfilter(c,e,tp)
+	if c:IsLocation(LOCATION_HAND) then
+		return c:IsSetCard(0x114) and c:IsDiscardable()
+	else
+		return e:GetHandler():IsSetCard(0x114) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(53557529,tp)
+	end
 end
 function c67466547.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c67466547.drcfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.DiscardHand(tp,c67466547.drcfilter,1,1,REASON_COST+REASON_DISCARD)
+	if chk==0 then return Duel.IsExistingMatchingCard(c67466547.drcfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+	local g=Duel.SelectMatchingCard(tp,c67466547.drcfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local tc=g:GetFirst()
+	local te=tc:IsHasEffect(53557529,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+	else
+		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
+	end
 end
 function c67466547.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

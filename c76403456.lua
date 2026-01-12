@@ -15,7 +15,7 @@ function c76403456.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76403456.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local val=math.ceil(Duel.GetBattleDamage(tp)/500)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,val)
+	if chk==0 then return val>0 and Duel.IsPlayerCanDiscardDeck(tp,val)
 		and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_AVOID_BATTLE_DAMAGE) end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,0)
 end

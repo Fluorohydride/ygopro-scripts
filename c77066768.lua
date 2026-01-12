@@ -35,7 +35,7 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(Duel.AnnounceType(tp))
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 or Duel.GetFieldGroup(tp,0,LOCATION_DECK)==0 then return end
+	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 or Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)==0 then return end
 	local sc=Duel.GetFieldCard(tp,LOCATION_DECK,0)
 	local oc=Duel.GetFieldCard(1-tp,LOCATION_DECK,0)
 	Duel.ConfirmCards(tp,sc)

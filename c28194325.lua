@@ -13,7 +13,8 @@ function c28194325.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c28194325.condition(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0x106f)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x106f)
 end
 function c28194325.filter(c)
 	return c:IsSetCard(0x106f) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

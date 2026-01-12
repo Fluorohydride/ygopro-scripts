@@ -39,9 +39,9 @@ function c51684157.thfilter2(c,e,tp,ft,check)
 end
 function c51684157.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100,0)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c51684157.filter,1,nil,e,tp,true) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c51684157.filter,1,nil,e,tp,true) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c51684157.filter,1,1,nil,e,tp,true)
+	local g=Duel.SelectReleaseGroup(tp,c51684157.filter,1,1,nil,e,tp,true)
 	if not g:GetFirst():IsType(TYPE_EFFECT) then e:SetLabel(100,1) end
 	Duel.Release(g,REASON_COST)
 end

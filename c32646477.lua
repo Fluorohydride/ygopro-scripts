@@ -21,8 +21,8 @@ function c32646477.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
 end
 function c32646477.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsLevelAbove,1,nil,1) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsLevelAbove,1,1,nil,1)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsLevelAbove,1,nil,1) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsLevelAbove,1,1,nil,1)
 	e:SetLabel(g:GetFirst():GetLevel()*200)
 	Duel.Release(g,REASON_COST)
 end

@@ -40,9 +40,9 @@ function c33318980.rfilter(c,tp)
 	return Duel.GetMZoneCount(tp,c)>0 and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_FUSION)
 end
 function c33318980.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c33318980.rfilter,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c33318980.rfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c33318980.rfilter,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroup(tp,c33318980.rfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c33318980.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -75,7 +75,7 @@ function c33318980.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c33318980.thfilter(c)
-	return c:IsLevelAbove(7) and c:IsRace(RACE_WARRIOR) and not c:IsCode(61525276) and c:IsAbleToHand()
+	return c:IsLevelAbove(7) and c:IsRace(RACE_WARRIOR) and not c:IsCode(33318980) and c:IsAbleToHand()
 end
 function c33318980.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33318980.thfilter,tp,LOCATION_DECK,0,1,nil) end

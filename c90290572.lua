@@ -33,7 +33,7 @@ function c90290572.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function c90290572.tgfilter(c)
-	return (c:IsCode(56433456) or aux.IsCodeListed(c,56433456)) and c:IsAbleToGrave()
+	return aux.IsCodeOrListed(c,56433456) and c:IsAbleToGrave()
 end
 function c90290572.thfilter(c)
 	return c:IsCode(91188343) and c:IsAbleToHand()
@@ -67,8 +67,8 @@ function c90290572.costfilter(c,tp)
 		and Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,c)
 end
 function c90290572.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c90290572.costfilter,1,nil,tp) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c90290572.costfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c90290572.costfilter,1,nil,tp) end
+	local rg=Duel.SelectReleaseGroup(tp,c90290572.costfilter,1,1,nil,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c90290572.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

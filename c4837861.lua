@@ -8,12 +8,12 @@ function c4837861.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c4837861.spcon)
+	e2:SetTarget(c4837861.sptg)
 	e2:SetOperation(c4837861.spop)
 	c:RegisterEffect(e2)
 	--equip
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(4837861,0))
-	e3:SetCategory(CATEGORY_EQUIP)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetCountLimit(1)
@@ -40,13 +40,22 @@ function c4837861.spcon(e,c)
 	local ct=g:GetClassCount(Card.GetCode)
 	return ct>=3
 end
-function c4837861.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c4837861.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c4837861.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	aux.GCheckAdditional=aux.dncheck
-	local rg=g:SelectSubGroup(tp,aux.TRUE,false,3,3)
+	local rg=g:SelectSubGroup(tp,aux.TRUE,true,3,3)
 	aux.GCheckAdditional=nil
-	Duel.Remove(rg,POS_FACEUP,REASON_COST)
+	if rg then
+		rg:KeepAlive()
+		e:SetLabelObject(rg)
+		return true
+	else return false end
+end
+function c4837861.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local rg=e:GetLabelObject()
+	Duel.Remove(rg,POS_FACEUP,REASON_SPSUMMON)
+	rg:DeleteGroup()
 end
 function c4837861.eqfilter(c,tp)
 	return not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
@@ -58,13 +67,12 @@ function c4837861.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and g:GetCount()>0
 		and g:IsExists(c4837861.filter,1,nil,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,1-tp,LOCATION_EXTRA)
 end
 function c4837861.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
-	Duel.ConfirmCards(tp,g)
+	Duel.ConfirmCards(tp,g,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=g:FilterSelect(tp,c4837861.eqfilter,1,1,nil,tp)
 	local tc=sg:GetFirst()
@@ -75,7 +83,7 @@ function c4837861.eqop(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(c4837861.eqlimit)
 			tc:RegisterEffect(e1)

@@ -73,7 +73,7 @@ function c23440231.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c23440231.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c23440231.desfilter(c)
@@ -98,8 +98,8 @@ function c23440231.cfilter(c)
 	return not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c23440231.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c23440231.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c23440231.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c23440231.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c23440231.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c23440231.negop(e,tp,eg,ep,ev,re,r,rp)

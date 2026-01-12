@@ -55,7 +55,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function s.costfilter(c,e,tp)
-	return c:IsFaceup() and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,c,e,tp)
+	return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,c,e,tp)
 		and Duel.GetMZoneCount(tp,c)>0
 end
 function s.spfilter(c,tc,e,tp)
@@ -67,10 +67,10 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,s.costfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,s.costfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,s.costfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(tp,s.costfilter,1,1,nil,e,tp)
 	Duel.Release(g,REASON_COST)
 	e:SetLabelObject(g:GetFirst())
 	if g:GetFirst():IsType(TYPE_LINK) then

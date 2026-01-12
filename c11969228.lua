@@ -1,5 +1,6 @@
 --ドラグニティナイト－ロムルス
 function c11969228.initial_effect(c)
+	aux.AddCodeList(c,62265044)
 	--link summon
 	aux.AddLinkProcedure(c,c11969228.mfilter,2,2)
 	c:EnableReviveLimit()

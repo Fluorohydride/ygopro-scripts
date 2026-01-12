@@ -84,9 +84,9 @@ function c66171432.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c66171432.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost()
-		and Duel.CheckReleaseGroup(REASON_COST,tp,nil,1,nil) end
+		and Duel.CheckReleaseGroup(tp,nil,1,nil) end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,nil,1,1,nil)
+	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c66171432.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -27,9 +27,9 @@ function c66727115.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(REASON_COST,tp,c66727115.rfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,c66727115.rfilter,1,nil,e,tp)
 	end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c66727115.rfilter,1,1,nil,e,tp)
+	local g=Duel.SelectReleaseGroup(tp,c66727115.rfilter,1,1,nil,e,tp)
 	local code=g:GetFirst():GetCode()
 	e:SetLabel(code)
 	Duel.Release(g,REASON_COST)

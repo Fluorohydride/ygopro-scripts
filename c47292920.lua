@@ -12,7 +12,7 @@ function c47292920.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c47292920.cfilter(c)
-	return c:IsFaceup() and c.toss_dice
+	return c:IsFaceup() and c:IsEffectProperty(aux.EffectPropertyFilter(EFFECT_FLAG_DICE))
 end
 function c47292920.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c47292920.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
@@ -22,13 +22,13 @@ function c47292920.costfilter(c,tp)
 end
 function c47292920.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c47292920.costfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c47292920.costfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c47292920.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c47292920.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c47292920.spfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c.toss_dice and not c.toss_dice_in_pendulum_only
+	return c:IsType(TYPE_MONSTER) and c:IsEffectProperty(aux.MonsterEffectPropertyFilter(EFFECT_FLAG_DICE))
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c47292920.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

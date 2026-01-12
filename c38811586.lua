@@ -54,18 +54,15 @@ end
 function c38811586.spfilter(c,e,tp)
 	return c:IsCanBeEffectTarget(e) and c:IsType(TYPE_MONSTER)
 end
-function c38811586.spsumfilter1(c,e,tp)
+function c38811586.spsumfilter1(c,e,tp,g)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp)
+		and g:IsExists(c38811586.spsumfilter2,1,c,e,tp)
 end
 function c38811586.spsumfilter2(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
 function c38811586.gcheck(g,e,tp)
-	if #g~=2 then return false end
-	local ac=g:GetFirst()
-	local bc=g:GetNext()
-	return c38811586.spsumfilter1(ac,e,tp) and c38811586.spsumfilter2(bc,e,tp)
-		or c38811586.spsumfilter1(bc,e,tp) and c38811586.spsumfilter2(ac,e,tp)
+	return g:IsExists(c38811586.spsumfilter1,1,nil,e,tp,g)
 end
 function c38811586.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -74,7 +71,7 @@ function c38811586.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)
 		return not Duel.IsPlayerAffectedByEffect(tp,59822133) and ft1>0 and ft2>0
-			and g:CheckSubGroup(c38811586.gcheck,2,2,e,tp)
+			and g:IsExists(c38811586.spsumfilter1,1,nil,e,tp,g)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:SelectSubGroup(tp,c38811586.gcheck,false,2,2,e,tp)
@@ -86,9 +83,10 @@ function c38811586.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) or ft1<=0 or ft2<=0 then return end
 	local g=Duel.GetTargetsRelateToChain()
-	if not g:CheckSubGroup(c38811586.gcheck,2,2,e,tp) then return end
+	if #g~=2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(38811586,1))
-	local sg=g:FilterSelect(tp,c38811586.spsumfilter1,1,1,nil,e,tp)
+	local sg=g:FilterSelect(tp,c38811586.spsumfilter1,1,1,nil,e,tp,g)
+	if #sg==0 then return end
 	Duel.SpecialSummonStep(sg:GetFirst(),0,tp,tp,false,false,POS_FACEUP)
 	Duel.SpecialSummonStep((g-sg):GetFirst(),0,tp,1-tp,false,false,POS_FACEUP)
 	Duel.SpecialSummonComplete()

@@ -1,6 +1,6 @@
 --夢魔鏡の逆徒－ネイロイ
 function c90176467.initial_effect(c)
-	aux.AddCodeList(c,74665651,1050355)
+	aux.AddCodeList(c,74665651,1050355,18189187)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(90176467,0))
@@ -69,7 +69,7 @@ end
 function c90176467.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
-		if Duel.CheckReleaseGroup(REASON_COST,tp,c90176467.costfilter,1,c,e,tp) then
+		if Duel.CheckReleaseGroup(tp,c90176467.costfilter,1,c,e,tp) then
 			e:SetLabel(1)
 			return true
 		else
@@ -78,7 +78,7 @@ function c90176467.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rc=Duel.SelectReleaseGroup(REASON_COST,tp,c90176467.costfilter,1,1,c,e,tp):GetFirst()
+	local rc=Duel.SelectReleaseGroup(tp,c90176467.costfilter,1,1,c,e,tp):GetFirst()
 	e:SetLabel(rc:GetLevel())
 	Duel.Release(rc,REASON_COST)
 end

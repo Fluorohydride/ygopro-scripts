@@ -12,7 +12,9 @@ function c30494314.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30494314.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE) and re:GetHandler():IsRace(RACE_ZOMBIE)
+	local c=e:GetHandler()
+	local typ,race=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return c:IsPreviousLocation(LOCATION_GRAVE) and typ&TYPE_MONSTER~=0 and race&RACE_ZOMBIE~=0
 end
 function c30494314.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsLevelAbove(0)

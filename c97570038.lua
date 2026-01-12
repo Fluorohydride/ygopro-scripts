@@ -1,5 +1,6 @@
 --ゴッドハンド・スマッシュ
 function c97570038.initial_effect(c)
+	aux.AddCodeList(c,8508055,3810071,49814180)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

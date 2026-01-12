@@ -31,15 +31,15 @@ function c53782828.initial_effect(c)
 	e3:SetCountLimit(1,53782830)
 	c:RegisterEffect(e3)
 end
-function c53782828.mfilter(c)
-	return c:IsLocation(LOCATION_MZONE)
+function c53782828.mfilter(c,tp)
+	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp)
 end
 function c53782828.exmfilter(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsCode(53782828)
 end
 function c53782828.matval(e,lc,mg,c,tp)
 	if not lc:IsSetCard(0x156) then return false,nil end
-	return true,not mg or mg:IsExists(c53782828.mfilter,1,nil) and not mg:IsExists(c53782828.exmfilter,1,nil)
+	return true,not mg or mg:IsExists(c53782828.mfilter,1,nil,tp) and not mg:IsExists(c53782828.exmfilter,1,nil)
 end
 function c53782828.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2

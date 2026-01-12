@@ -22,7 +22,7 @@ function c49721904.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c49721904.spfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(49721904)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(49721904)
 end
 function c49721904.spcon(e,c)
 	if c==nil then return true end
@@ -30,7 +30,7 @@ function c49721904.spcon(e,c)
 		and Duel.IsExistingMatchingCard(c49721904.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c49721904.vfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c49721904.valcon(e)
 	local c=e:GetHandler()

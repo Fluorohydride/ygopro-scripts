@@ -48,6 +48,7 @@ end
 function c94568601.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsActiveType(TYPE_TRAP) then return end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
+	if not e:GetHandler():IsRelateToEffect(re) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or g:GetCount()==0 then return end
 	if g:IsContains(e:GetHandler()) then
@@ -60,9 +61,9 @@ function c94568601.atkcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>0
 end
 function c94568601.spcost(e,c,tp)
-	return Duel.CheckReleaseGroup(REASON_ACTION,tp,Card.IsRace,1,nil,RACE_DRAGON)
+	return Duel.CheckReleaseGroupEx(tp,Card.IsRace,1,REASON_ACTION,false,nil,RACE_DRAGON)
 end
 function c94568601.spcop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectReleaseGroup(REASON_ACTION,tp,Card.IsRace,1,1,nil,RACE_DRAGON)
+	local g=Duel.SelectReleaseGroupEx(tp,Card.IsRace,1,1,REASON_ACTION,false,nil,RACE_DRAGON)
 	Duel.Release(g,REASON_ACTION)
 end

@@ -33,8 +33,8 @@ function c76614340.costfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x47)
 end
 function c76614340.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c76614340.costfilter,1,e:GetHandler()) end
-	local rg=Duel.SelectReleaseGroup(REASON_COST,tp,c76614340.costfilter,1,1,e:GetHandler())
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c76614340.costfilter,1,e:GetHandler()) end
+	local rg=Duel.SelectReleaseGroup(tp,c76614340.costfilter,1,1,e:GetHandler())
 	e:SetLabel(rg:GetFirst():GetAttack())
 	Duel.Release(rg,REASON_COST)
 end

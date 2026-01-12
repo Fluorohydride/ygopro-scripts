@@ -53,7 +53,7 @@ end
 function c55749927.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c55749927.rmfilter),tp,LOCATION_GRAVE+LOCATION_ONFIELD,0,1,1,nil)
 		local exc=nil
 		if e:IsHasType(EFFECT_TYPE_ACTIVATE) then exc=e:GetHandler() end

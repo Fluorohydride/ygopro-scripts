@@ -20,14 +20,14 @@ function c64332231.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c64332231.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(REASON_EFFECT,tp,Card.IsReleasableByEffect,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,nil,1,REASON_EFFECT,true,nil)
 		and Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c64332231.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ct1=Duel.GetMatchingGroupCount(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	local rg=Duel.SelectReleaseGroupEx(REASON_EFFECT,tp,Card.IsReleasableByEffect,1,ct1,nil)
+	local rg=Duel.SelectReleaseGroupEx(tp,nil,1,ct1,REASON_EFFECT,true,nil)
 	local ct2=Duel.Release(rg,REASON_EFFECT)
 	if ct2==0 then return end
 	Duel.BreakEffect()

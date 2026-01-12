@@ -1,6 +1,6 @@
 --夢魔鏡の白騎士－ルペウス
 function c1872843.initial_effect(c)
-	aux.AddCodeList(c,1050355)
+	aux.AddCodeList(c,1050355,38267552)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(1872843,0))
@@ -27,7 +27,8 @@ function c1872843.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1872843.indcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:GetHandler():IsType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x131)
 end
 function c1872843.indop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

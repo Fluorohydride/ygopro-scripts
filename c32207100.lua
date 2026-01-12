@@ -14,8 +14,8 @@ function c32207100.cfilter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsLevelBelow(2)
 end
 function c32207100.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,c32207100.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,c32207100.cfilter,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c32207100.cfilter,1,nil) end
+	local g=Duel.SelectReleaseGroup(tp,c32207100.cfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
 end
 function c32207100.filter(c)

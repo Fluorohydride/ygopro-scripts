@@ -28,8 +28,8 @@ function c51355346.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c51355346.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(REASON_COST,tp,Card.IsRace,1,e:GetHandler(),RACE_PYRO) end
-	local g=Duel.SelectReleaseGroup(REASON_COST,tp,Card.IsRace,1,2,e:GetHandler(),RACE_PYRO)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_PYRO) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,2,e:GetHandler(),RACE_PYRO)
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(g:GetCount())
 end
@@ -38,7 +38,6 @@ function c51355346.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetValue(e:GetLabel()*1000)

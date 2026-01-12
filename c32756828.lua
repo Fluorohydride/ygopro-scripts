@@ -30,7 +30,7 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,id)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetHintTiming(TIMING_END_PHASE)	
+	e2:SetHintTiming(TIMING_END_PHASE)
 	e2:SetCondition(s.condition)
 	e2:SetTarget(s.target)
 	e2:SetOperation(s.operation)
@@ -54,12 +54,12 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local l=e:GetLabel()==1
 	if chk==0 then
 		e:SetLabel(0)
-		return l and Duel.CheckReleaseGroup(REASON_COST,tp,s.cfilter,1,nil,tp)
+		return l and Duel.CheckReleaseGroup(tp,s.cfilter,1,nil,tp)
 	end
 	if l then
 		e:SetLabel(0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=Duel.SelectReleaseGroup(REASON_COST,tp,s.cfilter,1,1,nil,tp)
+		local sg=Duel.SelectReleaseGroup(tp,s.cfilter,1,1,nil,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
