@@ -30,7 +30,7 @@ function c45883110.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c45883110.tgfilter(c)
-	return (c:IsCode(68468459) or aux.IsCodeListed(c,68468459)) and c:IsAbleToGrave()
+	return aux.IsCodeOrListed(c,68468459) and c:IsAbleToGrave()
 end
 function c45883110.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c45883110.tgfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -47,7 +47,7 @@ function c45883110.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_EXTRA)
 end
 function c45883110.spfilter(c,e,tp)
-	return (c:IsCode(68468459) or aux.IsCodeListed(c,68468459)) and not c:IsCode(45883110)
+	return aux.IsCodeOrListed(c,68468459) and not c:IsCode(45883110)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c45883110.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

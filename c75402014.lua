@@ -6,7 +6,6 @@ function c75402014.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75402014,0))
-	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_BECOME_TARGET)
 	e1:SetRange(LOCATION_MZONE)
@@ -42,7 +41,6 @@ end
 function c75402014.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c75402014.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c75402014.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

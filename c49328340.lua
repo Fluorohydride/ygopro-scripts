@@ -1,6 +1,6 @@
 --螺旋槍殺
 function c49328340.initial_effect(c)
-	aux.AddCodeList(c,66889139)
+	aux.AddCodeList(c,6368038,16589042,66889139)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

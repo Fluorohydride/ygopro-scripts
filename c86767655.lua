@@ -10,6 +10,7 @@ function c86767655.initial_effect(c)
 	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCategory(CATEGORY_COIN)
 	e1:SetCode(EVENT_CHAIN_SOLVING)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,86767655)
@@ -17,7 +18,6 @@ function c86767655.initial_effect(c)
 	e1:SetOperation(c86767655.disop)
 	c:RegisterEffect(e1)
 end
-c86767655.toss_coin=true
 function c86767655.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end

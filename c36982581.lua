@@ -25,7 +25,7 @@ function c36982581.rfilter2(c,e,tp)
 	return bit.band(c:GetType(),0x81)==0x81 and c:IsSetCard(0x3a) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true)
 end
 function c36982581.cfilter(c,e,tp)
-	return c:IsFaceup() and not c:IsImmuneToEffect(e) and c:IsControler(tp)
+	return c:IsFaceup() and not c:IsImmuneToEffect(e) and c:IsReleasableByEffect() and c:IsControler(tp)
 end
 function c36982581.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

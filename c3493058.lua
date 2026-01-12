@@ -10,12 +10,11 @@ function c3493058.initial_effect(c)
 	e1:SetOperation(c3493058.activate)
 	c:RegisterEffect(e1)
 end
-c3493058.toss_dice=true
 function c3493058.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c3493058.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c3493058.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -27,10 +26,12 @@ function c3493058.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()<2 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local dg=g:Select(tp,2,2,nil)
+		Duel.HintSelection(dg)
 		Duel.Destroy(dg,REASON_EFFECT)
 	elseif dc>=2 and dc<=4 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,aux.ExceptThisCard(e))
+		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
 end

@@ -12,7 +12,7 @@ function c27178262.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c27178262.costfilter(c,ft)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:IsAbleToGraveAsCost() and (ft>0 or c:GetSequence()<5)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and c:IsAbleToGraveAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c27178262.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -22,7 +22,7 @@ function c27178262.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c27178262.filter(c,e,tp)
-	return c:IsSetCard(0x3d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x103d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27178262.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c27178262.filter(chkc,e,tp) end

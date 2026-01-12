@@ -39,7 +39,7 @@ function c94392192.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1,94392193)
 	e4:SetCondition(c94392192.rmcon)
-	e4:SetTarget(c94392192.rmtg)
+	e4:SetTarget(c94392192.rmtg2)
 	e4:SetOperation(c94392192.rmop)
 	c:RegisterEffect(e4)
 end
@@ -68,10 +68,11 @@ function c94392192.rmfilter(c,tp)
 end
 function c94392192.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetDecktopGroup(1-tp,1)
-	if chk==0 then return g and #g>0 and g:GetFirst():IsAbleToRemove(tp,POS_FACEDOWN) end
+	if chk==0 then return #g>0 and g:GetFirst():IsAbleToRemove(tp,POS_FACEDOWN) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_DECK)
 end
 function c94392192.rmop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanRemove(tp) then return end
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)
 	if ct>5 then ct=5 end
 	if ct>1 then
@@ -85,9 +86,9 @@ function c94392192.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(1-tp,ct)
 	local g=Duel.GetDecktopGroup(1-tp,ct)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	Duel.PreserveSelectDeckSequence(true)
+	Duel.RevealSelectDeckSequence(true)
 	local sg=g:FilterSelect(tp,c94392192.rmfilter,1,1,nil,tp)
-	Duel.PreserveSelectDeckSequence(false)
+	Duel.RevealSelectDeckSequence(false)
 	if #sg>0 then
 		Duel.DisableShuffleCheck(true)
 		Duel.Remove(sg,POS_FACEDOWN,REASON_EFFECT)
@@ -95,4 +96,9 @@ function c94392192.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94392192.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
+end
+function c94392192.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk)
+	local g=Duel.GetDecktopGroup(1-tp,1)
+	if chk==0 then return rp==1-tp and #g>0 and g:GetFirst():IsAbleToRemove(tp,POS_FACEDOWN) end
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_DECK)
 end

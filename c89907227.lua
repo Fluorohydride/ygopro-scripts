@@ -56,7 +56,7 @@ function c89907227.tkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c89907227.tkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
+	return Duel.IsTurnPlayer(1-tp) and not aux.tkfcon(e,tp)
 end
 function c89907227.tkop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end

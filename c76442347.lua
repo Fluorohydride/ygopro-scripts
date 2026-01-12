@@ -37,7 +37,8 @@ function c76442347.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c76442347.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
+	if tc and tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)>0
+		and tc:IsFacedown() then
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end

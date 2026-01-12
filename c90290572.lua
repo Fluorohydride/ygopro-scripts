@@ -33,7 +33,7 @@ function c90290572.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function c90290572.tgfilter(c)
-	return (c:IsCode(56433456) or aux.IsCodeListed(c,56433456)) and c:IsAbleToGrave()
+	return aux.IsCodeOrListed(c,56433456) and c:IsAbleToGrave()
 end
 function c90290572.thfilter(c)
 	return c:IsCode(91188343) and c:IsAbleToHand()

@@ -3,6 +3,7 @@ MIN_ID		=128		--0x80, by DataManager::GetDesc()
 MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 MAX_PARAMETER	=0xffff
+MAX_XYZ_LEVEL	=0x0fff
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -168,7 +169,7 @@ STATUS_SET_TURN				=0x0010		--在本回合覆盖
 STATUS_NO_LEVEL				=0x0020		--无等级
 STATUS_BATTLE_RESULT		=0x0040		--傷害計算結果預計要破壞的怪獸
 STATUS_SPSUMMON_STEP		=0x0080		--效果特召處理中
-STATUS_FORM_CHANGED			=0x0100		--改变过表示形式
+STATUS_CANNOT_CHANGE_FORM	=0x0100		--回合玩家不能手动改变表示形式
 STATUS_SUMMONING			=0x0200		--召唤中
 STATUS_EFFECT_ENABLED		=0x0400		--卡片準備就緒(不在移動、召喚、魔法陷阱發動中)
 STATUS_SUMMON_TURN			=0x0800		--在本回合召喚/SET
@@ -180,7 +181,7 @@ STATUS_CHAINING				=0x10000	--正在連鎖串中
 STATUS_SUMMON_DISABLED		=0x20000	--召唤无效後尚未移動
 STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效後尚未移動
 STATUS_EFFECT_REPLACED		=0x80000	--效果被替代(红莲霸权)
-STATUS_FUTURE_FUSION		=0x100000	--未来融合特殊召唤(不触发融合素材效果)
+STATUS_FLIP_SUMMONING		=0x100000	--反转召唤中
 STATUS_ATTACK_CANCELED		=0x200000	--若其為攻擊者，則攻擊中止
 STATUS_INITIALIZING			=0x400000	--正在初始化
 STATUS_TO_HAND_WITHOUT_CONFIRM	=0x800000	--非公开的卡被效果加入手卡但未给对方确认
@@ -191,6 +192,7 @@ STATUS_ACT_FROM_HAND		=0x8000000	--從手牌发动
 STATUS_OPPO_BATTLE			=0x10000000	--和對手的怪兽戰鬥
 STATUS_FLIP_SUMMON_TURN		=0x20000000	--在本回合反转召唤
 STATUS_SPSUMMON_TURN		=0x40000000	--在本回合特殊召唤
+STATUS_FLIP_SUMMON_DISABLED	=0x80000000	--反转召唤被无效
 --Assume
 ASSUME_CODE			=1
 ASSUME_TYPE			=2
@@ -304,20 +306,20 @@ EFFECT_TYPE_XMATERIAL		=0x1000		--作为超量素材时超量怪兽获得的效�
 EFFECT_TYPE_GRANT			=0x2000		--使其他卡片获得效果（天气模样）
 EFFECT_TYPE_TARGET			=0x4000		--影响持续取的对象的效果（基本只用于魔陷）
 --========== Flags ==========	--效果的特殊性质
-EFFECT_FLAG_INITIAL			=0x0001		--可以发动的
-EFFECT_FLAG_FUNC_VALUE		=0x0002		--此效果的Value属性是函数
-EFFECT_FLAG_COUNT_LIMIT		=0x0004		--发动次数限制
-EFFECT_FLAG_FIELD_ONLY		=0x0008		--此效果是注册给全局环境的
+EFFECT_FLAG_INITIAL			=0x0001		--卡片记载的效果(internal)
+EFFECT_FLAG_FUNC_VALUE		=0x0002		--此效果的Value属性是函数(internal)
+EFFECT_FLAG_COUNT_LIMIT		=0x0004		--发动次数限制(internal)
+EFFECT_FLAG_FIELD_ONLY		=0x0008		--此效果是注册给玩家的(internal)
 EFFECT_FLAG_CARD_TARGET		=0x0010		--取对象效果
 EFFECT_FLAG_IGNORE_RANGE	=0x0020		--影响所有区域的卡（大宇宙）
-EFFECT_FLAG_ABSOLUTE_TARGET	=0x0040		--Target Range固定為某個玩家的視角所見的自己/對方(SetAbsoluteRange()專用)
+EFFECT_FLAG_ABSOLUTE_TARGET	=0x0040		--Target Range固定為某個玩家的視角所見的自己/對方(internal)
 EFFECT_FLAG_IGNORE_IMMUNE	=0x0080		--无视效果免疫
 EFFECT_FLAG_SET_AVAILABLE	=0x0100		--裡側狀態可發動的效果、影响场上里侧的卡的永續型效果
 EFFECT_FLAG_CAN_FORBIDDEN	=0x0200		--可被禁止令停止適用的效果（與EFFECT_FLAG_CANNOT_DISABLE並用）
 EFFECT_FLAG_CANNOT_DISABLE	=0x0400		--效果不会被无效
 EFFECT_FLAG_PLAYER_TARGET	=0x0800		--含有"以玩家为对象"的特性（精靈之鏡）、影響玩家的永續型效果(SetTargetRange()改成指定玩家)
 EFFECT_FLAG_BOTH_SIDE		=0x1000		--双方都能使用（部分场地，弹压）
-EFFECT_FLAG_COPY_INHERIT	=0x2000		--若由复制的效果產生則继承其Reset属性
+EFFECT_FLAG_COPY			=0x2000		--复制得到的效果(internal)
 EFFECT_FLAG_DAMAGE_STEP		=0x4000		--可以在伤害步骤发动
 EFFECT_FLAG_DAMAGE_CAL		=0x8000		--可以在伤害计算时发动
 EFFECT_FLAG_DELAY			=0x10000	--場合型誘發效果、用於永續效果的EFFECT_TYPE_CONTINUOUS
@@ -336,6 +338,9 @@ EFFECT_FLAG_LIMIT_ZONE			=0x10000000 --限制魔法·陷阱卡发动时可以放
 EFFECT_FLAG_ACTIVATE_CONDITION	=0x20000000 --诱发效果即将发动时检查条件（手卡诱发之外的无此标记的诱发效果为触发事件时检查）
 EFFECT_FLAG_CVAL_CHECK			=0x40000000	--N/A
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用
+EFFECT_FLAG_COIN			=0x100000000	--
+EFFECT_FLAG_DICE			=0x200000000	--
+EFFECT_FLAG_FUSION_SUMMON	=0x400000000	--
 
 EFFECT_FLAG2_REPEAT_UPDATE			=0x0001 --最后计算的攻击力上升
 EFFECT_FLAG2_COF					=0x0002 --通常魔法卡在MP1以外发动（邪恶的仪式的特殊处理）
@@ -601,6 +606,10 @@ EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--不能以特定表示形式特殊召
 EFFECT_TUNER					=369	--同调召唤时可以当作调整（百檎龙-苹果鳞虫）
 EFFECT_KAISER_COLOSSEUM			=370	--皇帝斗技场
 EFFECT_REPLACE_DAMAGE			=371	--伤害由特定行动代替
+EFFECT_XYZ_MIN_COUNT			=372	--只能用在X只以上的超量召唤
+EFFECT_SYNCHRO_LEVEL_EX			=373	--支持使用没有等级的怪兽作为同调素材
+EFFECT_RITUAL_LEVEL_EX			=374	--支持使用没有等级的怪兽作为仪式素材
+EFFECT_DOUBLE_XMATERIAL			=375	--召唤需3只以上作素材的超量怪兽时可以作为2只数量的素材
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
@@ -700,7 +709,7 @@ CATEGORY_DISABLE			=0x4000 	--使效果无效效果
 CATEGORY_DISABLE_SUMMON		=0x8000		--无效召唤效果
 CATEGORY_DRAW				=0x10000	--抽卡效果
 CATEGORY_SEARCH				=0x20000	--检索卡组效果
-CATEGORY_EQUIP				=0x40000	--装备效果
+CATEGORY_EQUIP				=0x40000	--把自己装备效果（请勿用于把其他卡装备的效果）
 CATEGORY_DAMAGE				=0x80000	--伤害效果
 CATEGORY_RECOVER			=0x100000	--回复效果
 CATEGORY_ATKCHANGE			=0x200000	--改变攻击效果
@@ -807,6 +816,7 @@ HINTMSG_TOZONE			=571	--请选择要移动到的位置
 HINTMSG_COUNTER			=572	--请选择要放置指示物的卡
 HINTMSG_DISABLE			=573	--请选择要无效的卡
 HINTMSG_OPERATECARD		=574	--请选择要操作的卡
+HINTMSG_FIELD_FIRST		=575	--请选择场上的卡（按取消可选择其他区域的卡）
 --Select	--请选择
 SELECT_HEADS				=60	--正面
 SELECT_TAILS				=61	--反面
@@ -867,6 +877,11 @@ DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
 DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
 DUEL_RETURN_DECK_TOP	=0x80		--回卡组洗切的卡放到卡组最上方（不洗牌模式下曾经的默认行为）
+DUEL_REVEAL_DECK_SEQ	=0x100		--从卡组选卡显示实际顺序（曾经的默认行为）
+--Duel rule (Debug.ReloadFieldBegin)
+MASTER_RULE3		=3	--Master Rule 3 (2014)
+NEW_MASTER_RULE		=4	--New Master Rule (2017)
+MASTER_RULE_2020	=5	--Master Rule 2020
 --Activity counter
 --global: 1-6 (binary: 5,6)
 --custom: 1-5,7 (binary: 1-5)
@@ -885,3 +900,6 @@ CARD_QUESTION			=38723936	--谜题
 FLAG_ID_CHAINING		=1
 FLAG_ID_UNION			=2
 FLAG_ID_NO_NORMAL_DRAW	=3
+FLAG_ID_ALLURE_QUEEN	=4
+FLAG_ID_ARCANA_COIN     =5
+FLAG_ID_REVERSAL_OF_FATE=36690018

@@ -14,14 +14,14 @@ function c78792195.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78792195.confilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c78792195.con(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c78792195.confilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c78792195.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x3d) end
-	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x3d)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x103d) end
+	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x103d)
 	Duel.Release(sg,REASON_COST)
 end
 function c78792195.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

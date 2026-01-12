@@ -20,7 +20,7 @@ function c30922149.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanDraw(p) then return end
 	local ct=Duel.GetFieldGroupCount(p,LOCATION_DECK,0)
 	local ac=0
-	if ct==0 then ac=1 end
+	if ct==1 then ac=1 end
 	if ct>1 then
 		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(30922149,0))
 		if ct==2 then ac=Duel.AnnounceNumber(p,1,2)

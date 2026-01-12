@@ -6,7 +6,7 @@ function c67489919.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e1:SetCondition(c67489919.indcon)
+	e1:SetCondition(aux.tkfcon)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
@@ -37,9 +37,6 @@ function c67489919.initial_effect(c)
 	e6:SetTarget(c67489919.synlimit2)
 	e6:SetValue(LOCATION_MZONE+LOCATION_HAND)
 	c:RegisterEffect(e6)
-end
-function c67489919.indcon(e)
-	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c67489919.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0

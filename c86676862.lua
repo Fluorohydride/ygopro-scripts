@@ -26,6 +26,7 @@ function c86676862.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_MUST_ATTACK)
 	e4:SetRange(LOCATION_MZONE)
+	e4:SetCondition(c86676862.poscon)
 	e4:SetTargetRange(0,LOCATION_MZONE)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
@@ -39,9 +40,7 @@ function c86676862.ffilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsLevelAbove(6)
 end
 function c86676862.poscon(e)
-	local ph=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
-		and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
+	return Duel.IsTurnPlayer(1-e:GetHandlerPlayer()) and Duel.IsBattlePhase()
 end
 function c86676862.atklimit(e,c)
 	return c==e:GetHandler()

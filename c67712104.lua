@@ -72,7 +72,8 @@ function c67712104.indcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if at==c then return true end
 	local lg=c:GetLinkedGroup()
-	return at and at:IsControler(tp) and at:IsFaceup() and at:IsSetCard(0x12b) and lg:IsContains(at)
+	return at:IsControler(tp) and at:IsFaceup()
+		and at:IsSetCard(0x12b) and at:IsType(TYPE_LINK) and lg:IsContains(at)
 end
 function c67712104.costfilter(c)
 	return c:IsSetCard(0x12b) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()

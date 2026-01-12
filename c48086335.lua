@@ -30,6 +30,7 @@ end
 function c48086335.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEDOWN)
+		and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_DESTROY) and Duel.GetTurnPlayer()~=tp
 end
 function c48086335.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
