@@ -11,6 +11,7 @@ function s.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCondition(s.condition)
 	e1:SetTarget(s.target)
+	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
 end
 function s.cfilter(c)
@@ -46,15 +47,21 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(0)
-		e:SetOperation(s.mvop)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local g=aux.SelectTargetFromFieldFirst(tp,s.mfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil,tp,0)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-		e:SetOperation(s.spop)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectTarget(tp,s.sfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,e,tp)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
+	end
+end
+function s.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		s.mvop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.mvop(e,tp,eg,ep,ev,re,r,rp)
