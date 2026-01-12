@@ -34,6 +34,9 @@ end
 function c21105106.ritual_mat_filter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp)
 end
+function c21105106.ritual_mat_group_check(g,tp)
+	return #g==3 and g:GetClassCount(Card.GetRace)==3
+end
 function c21105106.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
 end
@@ -89,7 +92,4 @@ end
 function c21105106.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,aux.ExceptThisCard(e))
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
-end
-function c21105106.mat_group_check(g)
-	return #g==3 and g:GetClassCount(Card.GetRace)==3
 end

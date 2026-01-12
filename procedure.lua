@@ -1742,7 +1742,7 @@ function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 			return false
 		end
 	end
-	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and (not c.mat_group_check or c.mat_group_check(g,tp))
+	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and (not c.ritual_mat_group_check or c.ritual_mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
 end
 function Auxiliary.RitualCheckAdditionalLevel(c,rc)

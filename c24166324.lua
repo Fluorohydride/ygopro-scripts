@@ -120,7 +120,7 @@ function s.RitualCheckEqual(g,c,atk)
 	return g:CheckWithSumEqual(aux.GetCappedAttack,atk,#g,#g)
 end
 function s.RitualCheck(g,tp,c,atk,greater_or_equal)
-	return s["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
+	return s["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.ritual_mat_group_check or c.ritual_mat_group_check(g,tp))
 		and (not aux.RCheckAdditional or aux.RCheckAdditional(tp,g,c))
 end
 function s.RitualCheckAdditional(c,atk,greater_or_equal)
