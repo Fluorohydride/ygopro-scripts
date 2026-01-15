@@ -65,7 +65,7 @@ function c62089826.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 	else
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 	end
 	e:SetLabel(op)
 end

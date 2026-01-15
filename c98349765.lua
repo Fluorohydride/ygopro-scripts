@@ -68,7 +68,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	elseif op==3 then
 		if e:IsCostChecked() then
 			Duel.RegisterFlagEffect(tp,id+o*2,RESET_PHASE+PHASE_END,0,1)
-			e:SetCategory(0)
+			e:SetCategory(CATEGORY_SSET)
 		end
 		e:SetProperty(0)
 	end

@@ -6,6 +6,7 @@ function c7480763.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(7480763,0))
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)

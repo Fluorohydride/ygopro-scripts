@@ -40,6 +40,9 @@ function c82434071.optg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local op=Duel.SelectOption(tp,table.unpack(ops))+1
 	local sel=opval[op]
+	if sel==1 then
+		e:SetCategory(CATEGORY_SSET)
+	end
 	e:SetLabel(sel)
 end
 function c82434071.opop(e,tp,eg,ep,ev,re,r,rp)

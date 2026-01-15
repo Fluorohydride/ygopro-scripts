@@ -65,7 +65,7 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	if op==2 then
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,tp,LOCATION_MZONE)
-		e:SetCategory(CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	end
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)

@@ -87,7 +87,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_TOEXTRA)
 		Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,nil,1,tp,LOCATION_DECK)
 	elseif sel==1 then
-		e:SetCategory(CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g2,1,0,0)
 	end
 end

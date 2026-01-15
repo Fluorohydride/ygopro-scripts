@@ -14,6 +14,7 @@ function c94224458.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(94224458,1))
+	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,94224458)

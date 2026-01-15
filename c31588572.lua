@@ -3,6 +3,7 @@ function c31588572.initial_effect(c)
 	--set card
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31588572,0))
+	e1:SetCategory(CATEGORY_SSET+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)

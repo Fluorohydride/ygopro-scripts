@@ -81,9 +81,9 @@ function c90809975.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 	if bit.band(re:GetHandler():GetOriginalType(),TYPE_MONSTER)~=0 then
-		e:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
+		e:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON+CATEGORY_MSET)
 	else
-		e:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
+		e:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_SSET)
 	end
 end
 function c90809975.negop(e,tp,eg,ep,ev,re,r,rp)

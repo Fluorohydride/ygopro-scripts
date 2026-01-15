@@ -3,7 +3,7 @@ function c41039846.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(41039846,0))
-	e1:SetCategory(CATEGORY_POSITION)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(c41039846.target)

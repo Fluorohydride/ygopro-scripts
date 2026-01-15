@@ -20,7 +20,7 @@ function c82738277.initial_effect(c)
 	--return
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(82738277,1))
-	e3:SetCategory(CATEGORY_TOHAND)
+	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_MZONE)

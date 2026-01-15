@@ -39,7 +39,7 @@ function c51474037.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	e:SetLabel(sel)
 	if sel==0 then
-		e:SetCategory(CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 		g1:Merge(g2)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g1,1,0,0)
 	else

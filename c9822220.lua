@@ -63,6 +63,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 	if c:IsPublic() then
+		e:SetCategory(CATEGORY_SSET)
 		e:SetLabel(1)
 	else
 		e:SetLabel(0)

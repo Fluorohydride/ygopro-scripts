@@ -19,7 +19,7 @@ function c9156135.initial_effect(c)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(9156135,1))
-	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_DESTROYED)
 	e4:SetTarget(c9156135.target)

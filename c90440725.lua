@@ -21,6 +21,7 @@ function c90440725.initial_effect(c)
 	--turn set
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(90440725,0))
+	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_MZONE)

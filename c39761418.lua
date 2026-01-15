@@ -16,7 +16,7 @@ function s.initial_effect(c)
 	--coin
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_COIN+CATEGORY_DESTROY)
+	e2:SetCategory(CATEGORY_COIN+CATEGORY_DESTROY+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetTarget(s.cointg)

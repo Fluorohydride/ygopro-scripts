@@ -13,6 +13,7 @@ function c66762372.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(66762372,1))
+	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_MZONE)

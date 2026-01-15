@@ -13,6 +13,7 @@ function c47126872.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(47126872,1))
+	e2:SetCategory(CATEGORY_SSET+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_LEAVE_FIELD)
 	e2:SetCondition(c47126872.setcon)

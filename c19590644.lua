@@ -2,7 +2,7 @@
 function c19590644.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCountLimit(1,19590644+EFFECT_COUNT_CODE_OATH)

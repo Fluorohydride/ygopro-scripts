@@ -27,7 +27,7 @@ function c70389815.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	else
 		if chk==0 then return Duel.IsExistingMatchingCard(c70389815.setfilter,tp,LOCATION_DECK,0,1,nil) end
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 	end
 end
 function c70389815.activate(e,tp,eg,ep,ev,re,r,rp)

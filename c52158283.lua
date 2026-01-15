@@ -3,7 +3,7 @@ function c52158283.initial_effect(c)
 	--adchange
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(52158283,0))
-	e1:SetCategory(CATEGORY_POSITION)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)

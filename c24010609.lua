@@ -19,7 +19,7 @@ function c24010609.initial_effect(c)
 	--set
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(24010609,1))
-	e3:SetCategory(CATEGORY_LEAVE_GRAVE)
+	e3:SetCategory(CATEGORY_LEAVE_GRAVE+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_SZONE)

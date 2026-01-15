@@ -56,7 +56,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetOperation(s.retrieve)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE+LOCATION_REMOVED)
 	else
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 		e:SetOperation(s.ssettrap)
 	end
 end
