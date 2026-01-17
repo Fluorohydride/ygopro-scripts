@@ -34,7 +34,7 @@ function c16708652.gcheck(g)
 end
 function c16708652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c16708652.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e) end
+	if chk==0 then return Duel.IsExistingTarget(c16708652.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c16708652.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local sg=g:SelectSubGroup(tp,c16708652.gcheck,false,2,2)
@@ -52,6 +52,7 @@ function c16708652.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,0))
 		tc1=g:FilterSelect(tp,c16708652.atkfilter2,1,1,nil):GetFirst()
 	end
+	if not tc1 then return end
 	local tc2=(g-tc1):GetFirst()
 	if Duel.ChangePosition(tc1,POS_FACEUP_DEFENSE)>0 and tc2 then
 		local e1=Effect.CreateEffect(e:GetHandler())

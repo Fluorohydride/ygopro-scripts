@@ -9,12 +9,6 @@ function c26864586.initial_effect(c)
 	e1:SetOperation(c26864586.activate)
 	c:RegisterEffect(e1)
 end
-function c26864586.filter(c,e)
-	return c:IsFaceup() and c:IsHasLevel() and c:IsCanBeEffectTarget(e)
-end
-function c26864586.fselect(g)
-	return aux.SameValueCheck(g,Card.GetAttribute) and aux.SameValueCheck(g,Card.GetRace) and aux.dlvcheck(g)
-end
 function c26864586.tgfilter(c,e)
 	return c:IsFaceup() and c:IsLevelAbove(1) and c:IsCanBeEffectTarget(e)
 end
@@ -23,8 +17,8 @@ function c26864586.gcheck(g)
 end
 function c26864586.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c26864586.filter1,tp,LOCATION_MZONE,0,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c26864586.tgfilter,tp,LOCATION_MZONE,0,nil,e)
+	if chk==0 then return g:CheckSubGroup(c26864586.gcheck,2,2) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local tg=g:SelectSubGroup(tp,c26864586.gcheck,false,2,2)
 	Duel.SetTargetCard(tg)
