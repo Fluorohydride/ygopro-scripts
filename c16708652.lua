@@ -24,7 +24,7 @@ function c16708652.filter1(c,tp)
 		and Duel.IsExistingTarget(c16708652.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c16708652.filter2(c)
-	return c:IsAttackPos() and c:IsCanChangePosition() and c:GetAttack()>0
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x11)
 end
 function c16708652.tgfilter(c,e)
 	return c16708652.filter2(c) and c:IsCanBeEffectTarget(e)
