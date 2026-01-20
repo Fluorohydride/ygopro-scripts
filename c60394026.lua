@@ -30,7 +30,7 @@ function s.xyzfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(s.mtfilter,tp,LOCATION_DECK,0,1,nil,e)
 end
 function s.mtfilter(c,e)
-	return c:IsSetCard(0x1be)
+	return c:IsSetCard(0x1be) and not c:IsImmuneToEffect(e)
 		and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
