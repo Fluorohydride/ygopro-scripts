@@ -47,10 +47,10 @@ function c65330383.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c65330383.setfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	if e:GetHandler():GetMutualLinkedGroupCount()>0 then
-		e:SetCategory(CATEGORY_LEAVE_GRAVE+CATEGORY_DRAW)
+		e:SetCategory(CATEGORY_LEAVE_GRAVE+CATEGORY_DRAW+CATEGORY_SSET)
 		e:SetLabel(1)
 	else
-		e:SetCategory(CATEGORY_LEAVE_GRAVE)
+		e:SetCategory(CATEGORY_LEAVE_GRAVE+CATEGORY_SSET)
 		e:SetLabel(0)
 	end
 end
