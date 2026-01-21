@@ -20,17 +20,9 @@ function c1995985.initial_effect(c)
 	e2:SetOperation(c1995985.spop)
 	c:RegisterEffect(e2)
 	--reg
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_SUMMON_SUCCESS)
-	e3:SetOperation(c1995985.regop)
-	c:RegisterEffect(e3)
-	local e4=e3:Clone()
-	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
-	c:RegisterEffect(e4)
-	local e5=e3:Clone()
-	e5:SetCode(EVENT_FLIP)
-	c:RegisterEffect(e5)
+	aux.RegisterSummonFlag(c,EVENT_SUMMON_SUCCESS,1995985)
+	aux.RegisterSummonFlag(c,EVENT_SPSUMMON_SUCCESS,1995985)
+	aux.RegisterSummonFlag(c,EVENT_FLIP,1995985)
 end
 c1995985.lvup={74388798}
 function c1995985.disop(e,tp,eg,ep,ev,re,r,rp)
@@ -41,9 +33,6 @@ function c1995985.disop(e,tp,eg,ep,ev,re,r,rp)
 	if g and g:IsContains(e:GetHandler()) then
 		Duel.NegateEffect(ev)
 	end
-end
-function c1995985.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(1995985,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c1995985.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and e:GetHandler():GetFlagEffect(1995985)==0
