@@ -41,6 +41,13 @@ function c53389254.initial_effect(c)
 	e4:SetTarget(c53389254.sptg2)
 	e4:SetOperation(c53389254.spop2)
 	c:RegisterEffect(e4)
+	--register to grave
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetCode(EVENT_TO_GRAVE)
+	e5:SetOperation(c53389254.regop)
+	c:RegisterEffect(e5)
 end
 c53389254.treat_itself_tuner=true
 function c53389254.valcheck(e,c)
@@ -106,4 +113,13 @@ function c53389254.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
+end
+function c53389254.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
+	e1:SetDescription(227)
+	e1:SetReset(RESET_EVENT|RESETS_STANDARD|RESET_PHASE|PHASE_END)
+	c:RegisterEffect(e1)
 end

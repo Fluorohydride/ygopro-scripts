@@ -82,7 +82,7 @@ function c67100549.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67100549.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(67100549,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(67100549,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 end
 function c67100549.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(67100549)>0 and Duel.GetCurrentPhase()&PHASE_END~=0
