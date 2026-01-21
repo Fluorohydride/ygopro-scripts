@@ -59,7 +59,9 @@ function c87497553.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87497553.actop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if re:IsActiveType(TYPE_MONSTER) and rc:IsSetCard(0x116) and ep==tp then
+	local b1=rc:IsSetCard(0x116)
+	local b2=re:GetActivateLocation()==LOCATION_MZONE and not rc:IsLocation(LOCATION_MZONE) and rc:IsPreviousSetCard(0x116)
+	if re:IsActiveType(TYPE_MONSTER) and (b1 or b2) and ep==tp then
 		Duel.SetChainLimit(c87497553.chainlm)
 	end
 end
