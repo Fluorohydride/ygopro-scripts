@@ -33,6 +33,7 @@ function c45675980.syncheck(g,tp,syncard)
 		and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c45675980.spfilter(c,tp,mg)
+	if not c:IsType(TYPE_SYNCHRO) then return false end
 	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
 	local res=mg:CheckSubGroup(c45675980.syncheck,2,#mg,tp,c)
 	aux.GCheckAdditional=nil
@@ -40,6 +41,7 @@ function c45675980.spfilter(c,tp,mg)
 end
 function c45675980.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanSpecialSummon(tp) then return false end
 		local mg=Duel.GetSynchroMaterial(tp)
 		if mg:IsExists(Card.GetHandSynchro,1,nil) then
 			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
