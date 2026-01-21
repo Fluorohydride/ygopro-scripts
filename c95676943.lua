@@ -38,7 +38,9 @@ function c95676943.tgop(e,tp,eg,ep,ev,re,r,rp)
 	ct=ct+1
 	c:SetTurnCounter(ct)
 	if ct==3 then
-		local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-		Duel.SendtoGrave(g,REASON_RULE)
+		local g1=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,0)
+		Duel.SendtoGrave(g1,REASON_RULE)
+		local g2=Duel.GetFieldGroup(tp,0,LOCATION_ONFIELD)
+		Duel.SendtoGrave(g2,REASON_RULE,1-tp)
 	end
 end
