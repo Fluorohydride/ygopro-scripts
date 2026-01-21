@@ -13,37 +13,32 @@ function s.initial_effect(c)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(s.effcon)
 	e2:SetTarget(s.efftg)
 	e2:SetOperation(s.effop)
 	c:RegisterEffect(e2)
 end
-function s.effcon(e,tp,eg,ep,ev,re,r,rp)
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	if a:IsControler(tp) then e:SetLabelObject(a) else e:SetLabelObject(d) end
-	local g=a:GetColumnGroup():Filter(Card.IsLocation,nil,LOCATION_MZONE)
-	if d and g:IsContains(d) then e:SetLabel(1) else e:SetLabel(0) end
-	return true
-end
 function s.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetTargetCard(e:GetLabelObject())
-	if e:GetLabel()~=1 then
+	local a,d=Duel.GetBattleMonster(tp)
+	if chk==0 then return a end
+	Duel.SetTargetCard(a)
+	local g=a:GetColumnGroup():Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	if d and g:IsContains(d) then
+		e:SetLabel(1)
 		Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
+	else
+		e:SetLabel(0)
 	end
 end
 function s.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
+	if not tc:IsRelateToChain() then return end
 	local d=0
 	if e:GetLabel()==1 then
-		if not tc:IsRelateToChain() then return end
 		d=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2),aux.Stringid(id,3))+1
 	else
 		d=Duel.TossDice(tp,1)
 	end
-	if not tc:IsRelateToChain() then return end
 	if d==1 or d==4 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(id,4))
