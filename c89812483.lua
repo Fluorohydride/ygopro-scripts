@@ -23,9 +23,9 @@ function s.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp,1,c:GetLevel(),c:GetRace(),c:GetAttribute())
 end
 function s.filter2(c,e,tp,ft,lv,race,att)
-	return not c:IsSummonableCard() and aux.IsCodeListed(c,89812483) and c:IsType(TYPE_MONSTER)
-		and (not c:IsLocation(LOCATION_DECK+LOCATION_HAND) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP)
-		or c.Metallization_material and c.Metallization_material(ft,lv,race,att) and c:IsCanBeSpecialSummoned(e,0,tp,true,true,POS_FACEUP))
+	if not (not c:IsSummonableCard() and aux.IsCodeListed(c,89812483) and c:IsType(TYPE_MONSTER)) then return false end
+	local proc=e:GetHandler():IsCode(id) and c.Metallization_material and c.Metallization_material(ft,lv,race,att)
+	return c:IsCanBeSpecialSummoned(e,0,tp,proc,proc,POS_FACEUP)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -49,7 +49,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.filter2),tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,e:GetLabel()):GetFirst()
 	if tc and Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)>0 then
-		tc:CompleteProcedure()
+		local proc=c:IsCode(id) and tc.Metallization_material and tc.Metallization_material(ft,lv,race,att)
+		if proc then tc:CompleteProcedure() end
 		if ft==1 and c:IsOnField() and c:IsRelateToEffect(e) and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			c:CancelToGrave(true)
