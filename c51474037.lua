@@ -2,6 +2,7 @@
 function c51474037.initial_effect(c)
 	--change / destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)

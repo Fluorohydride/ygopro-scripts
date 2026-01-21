@@ -90,7 +90,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(op)
 	if op==1 then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 	elseif op==2 then
 		e:SetCategory(CATEGORY_POSITION)

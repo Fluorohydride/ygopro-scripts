@@ -67,9 +67,11 @@ function c14756848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(sel)
 	if sel==1 then
+		e:SetCategory(CATEGORY_DESTROY+CATEGORY_SSET)
 		local g=Duel.GetMatchingGroup(c14756848.desfilter1,tp,0,LOCATION_SZONE,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	else
+		e:SetCategory(CATEGORY_DESTROY)
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	end

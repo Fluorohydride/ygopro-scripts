@@ -24,6 +24,13 @@ function c6137095.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			return re:GetHandler():IsCanTurnSet()
 		else return true end
 	end
+	if e:IsCostChecked() then
+		if re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
+			e:SetCategory(CATEGORY_NEGATE+CATEGORY_TOHAND)
+		else
+			e:SetCategory(CATEGORY_NEGATE+CATEGORY_SSET)
+		end
+	end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsRelateToEffect(re) and re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,eg,1,0,0)

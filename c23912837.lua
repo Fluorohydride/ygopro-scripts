@@ -70,6 +70,11 @@ function c23912837.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 		s=Duel.SelectOption(tp,aux.Stringid(23912837,2),aux.Stringid(23912837,3))
 	end
 	e:SetLabel(s)
+	if s==0 then
+		e:SetCategory(CATEGORY_POSITION)
+	else
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 end
 function c23912837.posop(e,tp,eg,ep,ev,re,r,rp)
