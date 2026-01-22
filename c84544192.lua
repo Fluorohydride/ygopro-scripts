@@ -61,29 +61,34 @@ end
 function s.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsFusionSetCard(0x2034,0x1034) and c:IsAbleToRemoveAsCost()
 end
-function s.cfilter1(c,g)
-	return c:IsFusionSetCard(0x2034) and g:FilterCount(s.cfilter2,c)>=7
+function s.cfilter1(c,g,tp,ec)
+	local cg=g:Filter(s.cfilter2,c)
+	return c:IsFusionSetCard(0x2034) and #cg>=7 and (Duel.GetLocationCountFromEx(tp,tp,c,ec)>0 or Duel.GetLocationCountFromEx(tp,tp,cg,ec)>0)
 end
 function s.cfilter2(c)
-	return c:IsFusionSetCard(0x1034)
+	return c:IsFusionSetCard(0x1034) 
+end
+function s.exselect(g,tp,c,check)
+	return check or Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 end
 function s.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	if Duel.GetFlagEffect(tp,id)==0 then return false end
 	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	return g:IsExists(s.cfilter1,1,nil,g)
+	return g:IsExists(s.cfilter1,1,nil,g,tp,c)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	local sg=Group.CreateGroup()
-	local cg=g:Filter(s.cfilter1,nil,g)
+	local cg=g:Filter(s.cfilter1,nil,g,tp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local tc1=cg:SelectUnselect(sg,tp,false,true,1,1)
 	if not tc1 then return false end
+	local check=Duel.GetLocationCountFromEx(tp,tp,tc1,c)>0
 	cg=g:Filter(s.cfilter2,tc1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg2=cg:SelectSubGroup(tp,aux.TRUE,true,7,7)
+	local sg2=cg:SelectSubGroup(tp,s.exselect,true,7,7,tp,c,check)
 	if not sg2 then return false end
 	sg:AddCard(tc1)
 	sg:Merge(sg2)
