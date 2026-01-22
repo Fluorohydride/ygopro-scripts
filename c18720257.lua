@@ -31,7 +31,7 @@ function c18720257.initial_effect(c)
 end
 function c18720257.tffilter(c,tp)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and not c:IsType(TYPE_FIELD) and c:IsSetCard(0x109)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c18720257.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c18720257.tffilter,tp,LOCATION_DECK,0,nil,tp)

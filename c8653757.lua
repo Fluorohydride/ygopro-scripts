@@ -20,7 +20,7 @@ function c8653757.initial_effect(c)
 end
 function c8653757.filter(c,tp)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0x55,0x7b)
-		and (c:IsAbleToHand() or (Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and not c:IsForbidden() and c:CheckUniqueOnField(tp)))
+		and (c:IsAbleToHand() or (Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsCanBePlacedOnField(tp)))
 end
 function c8653757.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c8653757.filter,tp,LOCATION_DECK,0,1,nil,tp) end
