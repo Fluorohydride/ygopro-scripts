@@ -42,19 +42,19 @@ function c66156348.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		if Duel.IsExistingMatchingCard(c66156348.filter,tp,0,LOCATION_MZONE,1,nil) then
+			tc:RegisterFlagEffect(66156348,RESET_EVENT+RESET_TOFIELD+RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
 			local e2=Effect.CreateEffect(e:GetHandler())
 			e2:SetType(EFFECT_TYPE_FIELD)
 			e2:SetCode(EFFECT_CANNOT_INACTIVATE)
 			e2:SetReset(RESET_PHASE+PHASE_END)
 			e2:SetValue(c66156348.efilter)
-			e2:SetLabelObject(tc)
 			Duel.RegisterEffect(e2,tp)
 		end
 	end
 end
 function c66156348.efilter(e,ct)
-	local te=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT)
-	return te:GetHandler()==e:GetLabelObject()
+	local te,loc=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_LOCATION)
+	return te:GetHandler():GetFlagEffect(66156348)~=0 and loc==LOCATION_MZONE
 end
 function c66156348.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_XYZ) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())

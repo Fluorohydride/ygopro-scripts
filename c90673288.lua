@@ -35,7 +35,7 @@ function c90673288.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c90673288.matfilter(c)
-	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL-ATTRIBUTE_WATER)
+	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL&~ATTRIBUTE_WATER)
 end
 function c90673288.atkval(e)
 	return Duel.GetMatchingGroupCount(Card.IsType,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,TYPE_SPELL)*-100

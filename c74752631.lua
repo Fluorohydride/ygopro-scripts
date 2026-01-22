@@ -39,7 +39,7 @@ function c74752631.initial_effect(c)
 end
 c74752631.counter_add_list={0x3}
 function c74752631.lcheck(g,lc)
-	return g:IsExists(Card.IsLinkSetCard,1,nil,0x3d)
+	return g:IsExists(Card.IsLinkSetCard,1,nil,0x103d)
 end
 function c74752631.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
@@ -65,9 +65,9 @@ function c74752631.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74752631.cfilter(c,ec)
 	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsSetCard(0x3d) and c:IsFaceup() and ec:GetLinkedGroup():IsContains(c)
+		return c:IsSetCard(0x103d) and c:IsFaceup() and ec:GetLinkedGroup():IsContains(c)
 	else
-		return c:IsPreviousSetCard(0x3d) and c:IsPreviousPosition(POS_FACEUP)
+		return c:IsPreviousSetCard(0x103d) and c:IsPreviousPosition(POS_FACEUP)
 			and bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
 	end
 end

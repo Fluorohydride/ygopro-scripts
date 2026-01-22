@@ -9,6 +9,7 @@ function c33331231.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCountLimit(1,33331231+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c33331231.spcon)
+	e1:SetTarget(c33331231.sptg)
 	e1:SetOperation(c33331231.spop)
 	c:RegisterEffect(e1)
 	--special summon rule(on oppent field)
@@ -21,7 +22,8 @@ function c33331231.initial_effect(c)
 	e2:SetTargetRange(POS_FACEUP,1)
 	e2:SetCountLimit(1,33331231+EFFECT_COUNT_CODE_OATH)
 	e2:SetCondition(c33331231.spcon2)
-	e2:SetOperation(c33331231.spop2)
+	e2:SetTarget(c33331231.sptg2)
+	e2:SetOperation(c33331231.spop)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
@@ -46,9 +48,17 @@ function c33331231.spcon(e,c)
 	return Duel.IsExistingMatchingCard(c33331231.checkfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c33331231.sprfilter,tp,LOCATION_MZONE,0,1,nil,tp,tp)
 end
-function c33331231.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c33331231.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c33331231.sprfilter,tp,LOCATION_MZONE,0,nil,tp,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c33331231.sprfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,tp)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c33331231.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c33331231.spcon2(e,c)
@@ -57,10 +67,14 @@ function c33331231.spcon2(e,c)
 	return Duel.IsExistingMatchingCard(c33331231.checkfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c33331231.sprfilter,tp,0,LOCATION_MZONE,1,nil,1-tp,tp)
 end
-function c33331231.spop2(e,tp,eg,ep,ev,re,r,rp,c)
+function c33331231.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c33331231.sprfilter,tp,0,LOCATION_MZONE,nil,1-tp,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c33331231.sprfilter,tp,0,LOCATION_MZONE,1,1,nil,1-tp,tp)
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c33331231.dstg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end

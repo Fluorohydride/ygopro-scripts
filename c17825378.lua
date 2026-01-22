@@ -45,6 +45,7 @@ function c17825378.ctop(e,tp,eg,ep,ev,re,r,rp)
 			if sc:AddCounter(0x1041,1) and sc:GetLevel()>1 then
 				local e1=Effect.CreateEffect(e:GetHandler())
 				e1:SetType(EFFECT_TYPE_SINGLE)
+				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 				e1:SetCode(EFFECT_CHANGE_LEVEL)
 				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 				e1:SetCondition(c17825378.lvcon)

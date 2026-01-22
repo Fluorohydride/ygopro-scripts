@@ -17,6 +17,7 @@ function c41685633.initial_effect(c)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c41685633.sprcon)
+	e2:SetTarget(c41685633.sptg)
 	e2:SetOperation(c41685633.sprop)
 	c:RegisterEffect(e2)
 	--destroy
@@ -43,24 +44,39 @@ end
 function c41685633.sprfilter1(c,sc)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
-function c41685633.sprfilter2(c,tp,sc)
-	return c:IsRace(RACE_THUNDER) and c:IsFusionType(TYPE_FUSION)
-		and not c:IsFusionCode(41685633) and c:IsAbleToRemoveAsCost() and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
+function c41685633.sprfilter2(c)
+	if not (c:IsLocation(LOCATION_MZONE) and c:IsFusionType(TYPE_FUSION)) then return false end
+	if not c:IsFusionCode(41685633) then return true end
+	for i,code in ipairs({c:GetFusionCode()}) do
+		if code~=41685633 then return true end
+	end
+	return false
+end
+function c41685633.fselect(g,tp,sc)
+	return aux.gffcheck(g,Card.IsLocation,LOCATION_HAND,c41685633.sprfilter2,nil)
+		and Duel.GetLocationCountFromEx(tp,tp,g,sc)>0
 end
 function c41685633.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c41685633.sprfilter1,tp,LOCATION_HAND,0,1,nil,c)
-		and Duel.IsExistingMatchingCard(c41685633.sprfilter2,tp,LOCATION_MZONE,0,1,nil,tp,c)
+	local g=Duel.GetMatchingGroup(c41685633.sprfilter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,c)
+	return g:CheckSubGroup(c41685633.fselect,2,2,tp,c)
+end
+function c41685633.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c41685633.sprfilter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,c41685633.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c41685633.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c41685633.sprfilter1,tp,LOCATION_HAND,0,1,1,nil,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c41685633.sprfilter2,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
-	g1:Merge(g2)
-	c:SetMaterial(g1)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	c:SetMaterial(g)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c41685633.descon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)

@@ -1,14 +1,6 @@
 --ドラゴンの秘宝
 function c1435851.initial_effect(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
-	e1:SetTarget(c1435851.target)
-	e1:SetOperation(c1435851.operation)
-	c:RegisterEffect(e1)
+	aux.AddEquipSpellEffect(c,true,true,c1435851.filter,c1435851.eqlimit)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
@@ -21,13 +13,6 @@ function c1435851.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	e3:SetValue(300)
 	c:RegisterEffect(e3)
-	--equip limit
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(c1435851.eqlimit)
-	c:RegisterEffect(e4)
 end
 function c1435851.eqlimit(e,c)
 	return c:IsRace(RACE_DRAGON)

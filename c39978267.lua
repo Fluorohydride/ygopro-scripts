@@ -3,7 +3,6 @@ function c39978267.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39978267,0))
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -38,17 +37,14 @@ function c39978267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	e:SetLabel(sel)
 	if sel==1 then
+		e:SetCategory(CATEGORY_DESTROY)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectTarget(tp,c39978267.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
-		if g:GetCount()>0 then
-			Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-		end
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	elseif sel==2 then
+		e:SetCategory(0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectTarget(tp,c39978267.eqfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil,e:GetHandler())
-		if g:GetCount()>0 then
-			Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,0,0)
-		end
 	end
 end
 function c39978267.operation(e,tp,eg,ep,ev,re,r,rp)

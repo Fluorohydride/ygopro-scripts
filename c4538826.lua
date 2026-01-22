@@ -28,6 +28,7 @@ function c4538826.initial_effect(c)
 	e3:SetCountLimit(1,4538827+EFFECT_COUNT_CODE_OATH)
 	e3:SetRange(LOCATION_EXTRA+LOCATION_HAND)
 	e3:SetCondition(c4538826.spcon)
+	e3:SetTarget(c4538826.sptg)
 	e3:SetOperation(c4538826.spop)
 	c:RegisterEffect(e3)
 	--to grave and damage
@@ -71,24 +72,31 @@ function c4538826.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
-function c4538826.spfilter(c,att)
-	return c:IsAttribute(att) and c:IsAbleToRemoveAsCost()
+function c4538826.spfilter(c)
+	return c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK) and c:IsAbleToRemoveAsCost()
 end
 function c4538826.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(c4538826.spfilter,tp,LOCATION_GRAVE,0,nil)
 	return ((c:IsLocation(LOCATION_HAND) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0) or
 		(c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0))
-		and Duel.IsExistingMatchingCard(c4538826.spfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_LIGHT)
-		and Duel.IsExistingMatchingCard(c4538826.spfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_DARK)
+		and g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
+end
+function c4538826.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c4538826.spfilter,tp,LOCATION_GRAVE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,true,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c4538826.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c4538826.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_LIGHT)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c4538826.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_DARK)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c4538826.gycost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

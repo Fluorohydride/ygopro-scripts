@@ -59,6 +59,7 @@ function c17751597.operation(e,tp,eg,ep,ev,re,r,rp)
 	g1:Merge(g2)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=g1:SelectSubGroup(tp,c17751597.fselect,false,1,2)
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 	local fg=g:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
 	if #fg~=#g then return end

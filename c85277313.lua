@@ -1,4 +1,4 @@
---Signs of the Tistina
+--ティスティナの胎動
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

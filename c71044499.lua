@@ -23,18 +23,17 @@ function c71044499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71044499.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFacedown() and tc:IsRelateToEffect(e) then
-		Duel.Destroy(tc,REASON_EFFECT,LOCATION_REMOVED)
-		if tc:IsType(TYPE_FLIP) then
-			local code=tc:GetCode()
-			local g=Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_DECK,LOCATION_DECK,nil,code)
-			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
-			g=Duel.GetFieldGroup(tp,0,LOCATION_DECK)
-			Duel.ConfirmCards(tp,g)
-			g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-			Duel.ConfirmCards(1-tp,g)
-			Duel.ShuffleDeck(tp)
-			Duel.ShuffleDeck(1-tp)
-		end
+	if tc:IsFacedown() and tc:IsRelateToEffect(e)
+		and Duel.Destroy(tc,REASON_EFFECT,LOCATION_REMOVED)>0
+		and tc:IsLocation(LOCATION_REMOVED) and tc:IsType(TYPE_FLIP) then
+		local code=tc:GetCode()
+		local g=Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_DECK,LOCATION_DECK,nil,code)
+		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
+		g=Duel.GetFieldGroup(tp,0,LOCATION_DECK)
+		Duel.ConfirmCards(tp,g)
+		g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
+		Duel.ConfirmCards(1-tp,g)
+		Duel.ShuffleDeck(tp)
+		Duel.ShuffleDeck(1-tp)
 	end
 end

@@ -25,13 +25,6 @@ function c9486959.initial_effect(c)
 	e2:SetTarget(c9486959.tdtg)
 	e2:SetOperation(c9486959.tdop)
 	c:RegisterEffect(e2)
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_LEAVE_FIELD_P)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetOperation(c9486959.regop)
-	e3:SetLabelObject(e2)
-	c:RegisterEffect(e3)
 end
 function c9486959.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -65,11 +58,6 @@ end
 function c9486959.retop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ReturnToField(e:GetLabelObject())
 end
-function c9486959.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local ct=c:GetOverlayCount()
-	e:GetLabelObject():SetLabel(ct)
-end
 function c9486959.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
@@ -79,7 +67,7 @@ function c9486959.tdfilter(c)
 end
 function c9486959.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and c9486959.tdfilter(chkc) end
-	local ct=e:GetLabel()
+	local ct=e:GetHandler():GetPreviousOverlayCountOnField()
 	if chk==0 then return ct>0 and Duel.IsExistingTarget(c9486959.tdfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=Duel.SelectTarget(tp,c9486959.tdfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,ct,nil)

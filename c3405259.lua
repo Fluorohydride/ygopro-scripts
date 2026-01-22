@@ -18,6 +18,7 @@ function c3405259.initial_effect(c)
 	e5:SetOperation(c3405259.spop2)
 	c:RegisterEffect(e5)
 end
+c3405259.has_text_type=TYPE_UNION
 function c3405259.filter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end

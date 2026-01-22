@@ -10,13 +10,7 @@ function c42338879.initial_effect(c)
 	e1:SetOperation(c42338879.spop)
 	c:RegisterEffect(e1)
 	--redirect
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCondition(c42338879.recon)
-	e2:SetValue(LOCATION_REMOVED)
-	c:RegisterEffect(e2)
+	aux.AddBanishRedirect(c)
 end
 function c42338879.spcon(e,c)
 	if c==nil then return true end
@@ -36,7 +30,4 @@ function c42338879.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	end
 	e1:SetReset(RESET_EVENT+0xff0000)
 	c:RegisterEffect(e1)
-end
-function c42338879.recon(e)
-	return e:GetHandler():IsFaceup()
 end

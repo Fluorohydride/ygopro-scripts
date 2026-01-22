@@ -24,7 +24,7 @@ function c13650422.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
 function c13650422.filter(c)
-	return (aux.IsCodeListed(c,94820406) or c:IsCode(94820406)) and not c:IsCode(13650422) and c:IsAbleToHand()
+	return aux.IsCodeOrListed(c,94820406) and not c:IsCode(13650422) and c:IsAbleToHand()
 end
 function c13650422.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c13650422.filter,tp,LOCATION_DECK,0,1,nil) end

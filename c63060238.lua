@@ -52,7 +52,8 @@ function c63060238.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c63060238.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
+	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
+		and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
@@ -87,5 +88,5 @@ function c63060238.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e5,tp)
 end
 function c63060238.splimit(e,c,tp,sumtp,sumpos)
-	return not c:IsType(TYPE_FUSION)
+	return c:GetOriginalType()&TYPE_FUSION~=TYPE_FUSION
 end

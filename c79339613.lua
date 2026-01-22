@@ -1,5 +1,6 @@
 --ソウルエナジーMAX！！
 function c79339613.initial_effect(c)
+	aux.AddCodeList(c,10000000)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)

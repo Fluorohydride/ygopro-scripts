@@ -14,6 +14,7 @@ function c94689206.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e2:SetCondition(c94689206.spcon)
+	e2:SetTarget(c94689206.sptg)
 	e2:SetOperation(c94689206.spop)
 	c:RegisterEffect(e2)
 	--indes
@@ -47,10 +48,20 @@ function c94689206.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c94689206.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,3,c)
 end
-function c94689206.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c94689206.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c94689206.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c94689206.spfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,3,3,c)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local sg=g:CancelableSelect(tp,3,3,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c94689206.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c94689206.indesval(e,re,r,rp)
 	return bit.band(r,REASON_RULE+REASON_BATTLE)==0

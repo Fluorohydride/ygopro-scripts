@@ -14,7 +14,7 @@ function c96218085.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()<PHASE_MAIN2
 end
 function c96218085.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c96218085.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c96218085.filter(chkc) end
@@ -35,7 +35,7 @@ function c96218085.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c96218085.filter2(c)
-	return c:IsFaceup() and (c:IsSetCard(0x3d) or c:IsCode(63176202))
+	return c:IsFaceup() and (c:IsSetCard(0x103d) or c:IsCode(63176202))
 end
 function c96218085.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c96218085.filter2,tp,LOCATION_MZONE,0,nil)

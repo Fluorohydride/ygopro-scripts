@@ -40,6 +40,7 @@ function c1561110.initial_effect(c)
 	e4:SetOperation(c1561110.spop2)
 	c:RegisterEffect(e4)
 end
+c1561110.has_text_type=TYPE_UNION
 function c1561110.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end

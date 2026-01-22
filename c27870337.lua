@@ -4,10 +4,29 @@ function c27870337.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_LIMIT_ZONE)
 	e1:SetCountLimit(1,27870337+EFFECT_COUNT_CODE_OATH)
 	e1:SetTarget(c27870337.target)
 	e1:SetOperation(c27870337.activate)
+	e1:SetValue(c27870337.zones)
 	c:RegisterEffect(e1)
+end
+function c27870337.sel3(tp)
+	return Duel.IsExistingMatchingCard(c27870337.toexfilter1,tp,LOCATION_PZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(c27870337.toexfilter2,tp,LOCATION_PZONE,0,1,nil)
+		and Duel.IsPlayerCanDraw(tp,2)
+end
+function c27870337.zones(e,tp,eg,ep,ev,re,r,rp)
+	local zone=0xff
+	local b3=c27870337.sel3(tp)
+	if b3 then return zone end
+	local p0=Duel.CheckLocation(tp,LOCATION_PZONE,0)
+	local p1=Duel.CheckLocation(tp,LOCATION_PZONE,1)
+	local b=e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE)
+	if not b or p0 and p1 then return zone end
+	if p0 then zone=zone-0x1 end
+	if p1 then zone=zone-0x10 end
+	return zone
 end
 function c27870337.pendfilter(c)
 	return c:IsSetCard(0x162) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
@@ -34,9 +53,7 @@ function c27870337.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c27870337.pendfilter1,tp,LOCATION_DECK,0,1,nil)
 		and Duel.IsExistingMatchingCard(c27870337.pendfilter2,tp,LOCATION_DECK,0,1,nil)
 		and Duel.CheckLocation(tp,LOCATION_PZONE,0) and Duel.CheckLocation(tp,LOCATION_PZONE,1)
-	local b3=Duel.IsExistingMatchingCard(c27870337.toexfilter1,tp,LOCATION_PZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(c27870337.toexfilter2,tp,LOCATION_PZONE,0,1,nil)
-		and Duel.IsPlayerCanDraw(tp,2)
+	local b3=c27870337.sel3(tp)
 	if chk==0 then return b1 or b2 or b3 end
 	local off=1
 	local ops,opval={},{}
@@ -62,7 +79,7 @@ function c27870337.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(0)
 	elseif sel==1 then
 		e:SetCategory(0)
-	else
+	elseif sel==2 then
 		e:SetCategory(CATEGORY_DRAW)
 		Duel.SetTargetPlayer(tp)
 		Duel.SetTargetParam(2)
@@ -100,7 +117,7 @@ function c27870337.activate(e,tp,eg,ep,ev,re,r,rp)
 				end
 			end
 		end
-	else
+	elseif sel==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27870337,3))
 		local g1=Duel.SelectMatchingCard(tp,c27870337.toexfilter1,tp,LOCATION_PZONE,0,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27870337,3))

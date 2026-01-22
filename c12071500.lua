@@ -74,7 +74,7 @@ function c12071500.activate(e,tp,eg,ep,ev,re,r,rp)
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
 			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2,SUMMON_TYPE_FUSION)
+			fop(ce,e,tp,tc,mat2,SUMMON_VALUE_DARK_FUSION)
 		end
 		tc:CompleteProcedure()
 	end

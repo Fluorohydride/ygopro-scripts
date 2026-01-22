@@ -11,13 +11,13 @@ function c77847678.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c77847678.cfilter(c,tp)
-	return c:IsSetCard(0x3d) and c:IsPreviousControler(tp)
+	return c:IsSetCard(0x103d) and c:IsPreviousControler(tp)
 end
 function c77847678.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c77847678.cfilter,1,nil,tp)
 end
 function c77847678.filter(c,e,tp)
-	return c:IsSetCard(0x3d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x103d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c77847678.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

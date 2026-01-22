@@ -8,6 +8,7 @@ function c25449584.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,25449584+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c25449584.spcon)
+	e1:SetTarget(c25449584.sptg)
 	e1:SetOperation(c25449584.spop)
 	c:RegisterEffect(e1)
 	--to grave
@@ -30,11 +31,20 @@ function c25449584.spcon(e,c)
 	local tp=c:GetControler()
 	return Duel.CheckReleaseGroupEx(tp,c25449584.spfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
+function c25449584.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c25449584.spfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
 function c25449584.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroupEx(tp,c25449584.spfilter,1,1,REASON_SPSUMMON,false,nil,tp)
-	Duel.Release(g,REASON_SPSUMMON)
+	local tc=e:GetLabelObject()
+	Duel.Release(tc,REASON_SPSUMMON)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(25449584,1))
-	local atk=g:GetFirst():GetBaseAttack()
+	local atk=tc:GetBaseAttack()
 	if atk<0 then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -19,6 +19,7 @@ function c39890958.initial_effect(c)
 	e5:SetOperation(c39890958.sumop)
 	c:RegisterEffect(e5)
 end
+c39890958.has_text_type=TYPE_UNION
 function c39890958.filter(c)
 	return c:IsRace(RACE_MACHINE)
 end

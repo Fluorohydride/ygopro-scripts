@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddFusionProcCodeFunRep(c,99458769,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),2,63,true,true)
+	aux.AddFusionProcCodeFunRep(c,99458769,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),2,127,true,true)
 	--des
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))

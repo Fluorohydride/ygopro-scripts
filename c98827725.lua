@@ -11,6 +11,7 @@ function c98827725.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in set turn
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(98827725,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

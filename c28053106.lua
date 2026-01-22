@@ -1,5 +1,6 @@
 --サイバー・エッグ・エンジェル
 function c28053106.initial_effect(c)
+	aux.AddCodeList(c,95658967)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(28053106,0))

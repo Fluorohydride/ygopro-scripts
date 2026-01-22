@@ -15,6 +15,7 @@ function c65172015.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c65172015.spcon)
+	e2:SetTarget(c65172015.sptg)
 	e2:SetOperation(c65172015.spop)
 	c:RegisterEffect(e2)
 	--negate
@@ -40,37 +41,38 @@ function c65172015.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e4:SetCost(c65172015.spcost)
-	e4:SetTarget(c65172015.sptg)
+	e4:SetTarget(c65172015.sptg2)
 	e4:SetOperation(c65172015.spop2)
 	c:RegisterEffect(e4)
 end
 function c65172015.matfilter(c,sc)
 	return c:IsOriginalCodeRule(1561110,91998119) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
-function c65172015.cfilter1(c,tp,g,sc)
-	return g:IsExists(c65172015.cfilter2,1,c,tp,c,sc)
-end
-function c65172015.cfilter2(c,tp,mc,sc)
-	return (c:IsOriginalCodeRule(1561110) and mc:IsOriginalCodeRule(91998119)
-		or c:IsOriginalCodeRule(91998119) and mc:IsOriginalCodeRule(1561110))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc),sc)>0
+function c65172015.fselect(g,tp,sc)
+	return aux.gfcheck(g,Card.IsOriginalCodeRule,1561110,91998119)
+		and Duel.GetLocationCountFromEx(tp,tp,g,sc)>0
 end
 function c65172015.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
-	return g:IsExists(c65172015.cfilter1,1,nil,tp,g,c)
+	return g:CheckSubGroup(c65172015.fselect,2,2,tp,c)
 end
-function c65172015.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c65172015.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=g:FilterSelect(tp,c65172015.cfilter1,1,1,nil,tp,g,c)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=g:FilterSelect(tp,c65172015.cfilter2,1,1,mc,tp,mc,c)
-	g1:Merge(g2)
-	c:SetMaterial(g1)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c65172015.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c65172015.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	c:SetMaterial(g)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c65172015.discon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
@@ -104,7 +106,7 @@ end
 function c65172015.spfilter3(c,e,tp)
 	return c:IsFaceup() and c:IsCode(91998119) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c65172015.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c65172015.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

@@ -7,6 +7,7 @@ function c13224603.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c13224603.hspcon)
+	e1:SetTarget(c13224603.hsptg)
 	e1:SetOperation(c13224603.hspop)
 	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
@@ -56,8 +57,17 @@ function c13224603.hspcon(e,c)
 	local tp=c:GetControler()
 	return Duel.CheckReleaseGroupEx(tp,c13224603.hspfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
+function c13224603.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c13224603.hspfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
 function c13224603.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroupEx(tp,c13224603.hspfilter,1,1,REASON_SPSUMMON,false,nil,tp)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c13224603.sumcon(e,tp,eg,ep,ev,re,r,rp)

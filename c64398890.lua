@@ -24,7 +24,7 @@ function c64398890.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c64398890.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(64398890)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(64398890)
 end
 function c64398890.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c64398890.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -56,7 +56,7 @@ function c64398890.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64398890.repfilter(c,e)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c64398890.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

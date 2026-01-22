@@ -26,7 +26,7 @@ function c44686185.filter0(c)
 	return c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
 end
 function c44686185.filter1(c)
-	return c:IsSetCard(0x3d) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost() and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
+	return c:IsSetCard(0x103d) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost() and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 end
 function c44686185.filter3(c,e,tp)
 	return c44686185.filter1(c)
@@ -49,7 +49,7 @@ function c44686185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c44686185.filter2(c,e,tp)
-	return c:IsSetCard(0x3d) and not c:IsCode(44686185) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x103d) and not c:IsCode(44686185) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c44686185.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c44686185.filter2(chkc,e,tp) end
@@ -65,7 +65,7 @@ function c44686185.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c44686185.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c44686185.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

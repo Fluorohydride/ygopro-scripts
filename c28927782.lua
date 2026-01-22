@@ -47,7 +47,7 @@ function c28927782.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local g=Duel.SelectTarget(tp,c28927782.spfilter,tp,LOCATION_SZONE,0,1,1,nil,e,tp)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 	else
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		Duel.SelectTarget(tp,c28927782.eqfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,0)

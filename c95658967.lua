@@ -82,6 +82,7 @@ function c95658967.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabel(lv)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local tg=Duel.SelectMatchingCard(tp,c95658967.cfilter2,tp,LOCATION_GRAVE,0,lv,lv,nil)
+	Duel.HintSelection(tg)
 	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end

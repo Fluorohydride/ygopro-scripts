@@ -70,6 +70,10 @@ function c31855260.activate(e,tp,eg,ep,ev,re,r,rp)
 				local cg=mat:Filter(Card.IsFacedown,nil)
 				Duel.ConfirmCards(1-tp,cg)
 			end
+			if mat:Filter(c31855260.cfilter,nil):GetCount()>0 then
+				local cg=mat:Filter(c31855260.cfilter,nil)
+				Duel.HintSelection(cg)
+			end
 			Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
@@ -80,4 +84,7 @@ function c31855260.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
+end
+function c31855260.cfilter(c)
+	return c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) or (c:IsLocation(LOCATION_MZONE) and c:IsFaceup())
 end

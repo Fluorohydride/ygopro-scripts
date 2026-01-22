@@ -1,6 +1,7 @@
 --音響戦士ギタリス
 local s,id,o=GetID()
 function c43210483.initial_effect(c)
+	aux.AddCodeList(c,75304793)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--pzone

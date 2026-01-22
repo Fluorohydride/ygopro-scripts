@@ -49,8 +49,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function s.cfilter(c,tp)
-	return c:IsPreviousControler(tp) and not c:IsPreviousLocation(LOCATION_SZONE) and c:GetOriginalAttribute()==ATTRIBUTE_FIRE
-		and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+	return c:IsPreviousControler(tp) and not c:IsPreviousLocation(LOCATION_SZONE)
+		and (c:IsPreviousLocation(LOCATION_MZONE) or c:GetOriginalType()&TYPE_MONSTER~=0)
+		and c:GetOriginalAttribute()==ATTRIBUTE_FIRE and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.cfilter,1,nil,tp)

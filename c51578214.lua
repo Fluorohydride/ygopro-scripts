@@ -8,6 +8,7 @@ function c51578214.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,51578214+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c51578214.spcon)
+	e1:SetTarget(c51578214.sptg)
 	e1:SetOperation(c51578214.spop)
 	c:RegisterEffect(e1)
 	--atkup
@@ -38,13 +39,18 @@ function c51578214.spcon(e,c)
 	local g=Duel.GetMatchingGroup(c51578214.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
 	return #g>0
 end
-function c51578214.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c51578214.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c51578214.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:Select(tp,1,1,nil)
-	if #sg>0 then
-		Duel.Remove(sg,POS_FACEUP,REASON_COST)
-	end
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c51578214.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local sg=e:GetLabelObject()
+	Duel.Remove(sg,POS_FACEUP,REASON_SPSUMMON)
 end
 function c51578214.atkfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_INSECT)

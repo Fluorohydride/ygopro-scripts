@@ -22,6 +22,7 @@ function c24635329.initial_effect(c)
 	e2:SetTarget(c24635329.tgtg)
 	e2:SetOperation(c24635329.tgop)
 	c:RegisterEffect(e2)
+	c24635329.shadoll_flip_effect=e1
 end
 function c24635329.filter(c,e,tp)
 	return c:IsSetCard(0x9d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE)

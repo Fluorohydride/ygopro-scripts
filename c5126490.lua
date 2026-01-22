@@ -1,6 +1,6 @@
 --ネオス・ワイズマン
 function c5126490.initial_effect(c)
-	aux.AddCodeList(c,89943723)
+	aux.AddCodeList(c,89943723,78371393)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -61,7 +61,7 @@ function c5126490.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c5126490.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c5126490.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

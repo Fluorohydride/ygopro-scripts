@@ -1,6 +1,6 @@
 --混沌の召喚神
 function c27439792.initial_effect(c)
-	aux.AddCodeList(c,6007213,32491822,69890967)
+	aux.AddCodeList(c,6007213,32491822,69890967,13301895)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(27439792,0))

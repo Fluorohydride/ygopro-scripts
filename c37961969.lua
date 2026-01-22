@@ -99,6 +99,10 @@ function c37961969.activate(e,tp,eg,ep,ev,re,r,rp)
 				local cg=mat1:Filter(c37961969.fdfilter,nil)
 				Duel.ConfirmCards(1-tp,cg)
 			end
+			if mat1:IsExists(c37961969.fdfilter2,1,nil) then
+				local cg=mat1:Filter(c37961969.fdfilter2,nil)
+				Duel.HintSelection(cg)
+			end
 			aux.PlaceCardsOnDeckBottom(tp,mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
@@ -112,4 +116,7 @@ function c37961969.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c37961969.fdfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFacedown() or c:IsLocation(LOCATION_HAND)
+end
+function c37961969.fdfilter2(c)
+	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)
 end

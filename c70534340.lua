@@ -83,6 +83,10 @@ function c70534340.spop(e,tp,eg,ep,ev,re,r,rp)
 				local cg=mat:Filter(Card.IsFacedown,nil)
 				Duel.ConfirmCards(1-tp,cg)
 			end
+			if mat:IsExists(c70534340.fdfilter,1,nil) then
+				local cg=mat:Filter(c70534340.fdfilter,nil)
+				Duel.HintSelection(cg)
+			end
 			Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
@@ -112,4 +116,7 @@ function c70534340.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70534340.splimit(e,c)
 	return not c:IsType(TYPE_FUSION) and c:IsLocation(LOCATION_EXTRA)
+end
+function c70534340.fdfilter(c)
+	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() or c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
 end

@@ -8,6 +8,7 @@ function c5206415.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c5206415.spcon)
+	e1:SetTarget(c5206415.sptg)
 	e1:SetOperation(c5206415.spop)
 	c:RegisterEffect(e1)
 	--effect target
@@ -53,10 +54,18 @@ function c5206415.spcon(e,c)
 		or Duel.GetCustomActivityCount(5206415,1-tp,ACTIVITY_CHAIN)~=0)
 		and Duel.IsExistingMatchingCard(c5206415.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,c,tp)
 end
-function c5206415.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c5206415.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c5206415.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,c,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c5206415.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,c,tp)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c5206415.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 end
 function c5206415.etcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp

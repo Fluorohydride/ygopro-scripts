@@ -4,9 +4,10 @@ function c61245403.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e1:SetProperty(EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCountLimit(1,61245403)
+	e1:SetCondition(c61245403.thcon1)
 	e1:SetTarget(c61245403.thtg1)
 	e1:SetOperation(c61245403.thop1)
 	c:RegisterEffect(e1)
@@ -22,12 +23,14 @@ function c61245403.initial_effect(c)
 	e2:SetOperation(c61245403.thop2)
 	c:RegisterEffect(e2)
 end
+function c61245403.thcon1(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetFieldGroupCount(tp,LOCATION_FZONE,0)==0
+end
 function c61245403.thfilter1(c)
 	return c:IsType(TYPE_FIELD) and c:IsAbleToHand()
 end
 function c61245403.thtg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_FZONE,0,nil)
-	if chk==0 then return #g==0 and Duel.IsExistingMatchingCard(c61245403.thfilter1,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c61245403.thfilter1,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c61245403.thop1(e,tp,eg,ep,ev,re,r,rp)

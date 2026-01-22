@@ -1,5 +1,6 @@
 --CNo.1 ゲート・オブ・カオス・ヌメロン－シニューニャ
 function c79747096.initial_effect(c)
+	aux.AddCodeList(c,15232745,41418852)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,4,c79747096.ovfilter,aux.Stringid(79747096,0))
 	c:EnableReviveLimit()

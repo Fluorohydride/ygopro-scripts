@@ -83,7 +83,7 @@ function c46593546.ovltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:IsType(TYPE_XYZ)
 		and (c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
 			or Duel.IsExistingMatchingCard(c46593546.ovltgfilter,tp,LOCATION_ONFIELD,0,1,nil))
-		and rc:IsRelateToEffect(re) and rc:IsCanBeXyzMaterial(c) end
+		and rc:IsRelateToEffect(re) and rc:IsCanOverlay() end
 end
 function c46593546.ovlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

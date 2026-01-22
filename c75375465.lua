@@ -1,5 +1,6 @@
 --地獄の番熊
 function c75375465.initial_effect(c)
+	aux.AddCodeList(c,94585852)
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

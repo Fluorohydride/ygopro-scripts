@@ -49,12 +49,12 @@ end
 function c98127546.exmatcheck(c,lc,tp)
 	if not c:IsControler(1-tp) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
-	for _,te in pairs(le) do	 
+	for _,te in pairs(le) do
 		local f=te:GetValue()
 		local related,valid=f(te,lc,nil,c,tp)
 		if related and not te:GetHandler():IsCode(98127546) then return false end
 	end
-	return true	 
+	return true
 end
 function c98127546.matval(e,lc,mg,c,tp)
 	if e:GetHandler()~=lc then return false,nil end

@@ -51,7 +51,8 @@ function c9336190.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and Duel.IsExistingTarget(c9336190.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+		and Duel.IsExistingTarget(c9336190.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c9336190.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	g:AddCard(e:GetHandler())
@@ -61,6 +62,7 @@ function c9336190.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,9336190,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,tc:GetLevel(),RACE_WARRIOR,ATTRIBUTE_DARK) then
 		c:AddMonsterAttribute(TYPE_NORMAL,0,0,tc:GetLevel(),0,0)

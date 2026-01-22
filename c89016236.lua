@@ -44,7 +44,7 @@ function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>0
 end
 function s.relfilter1(c,tp)
-	return c:IsSetCard(0x196) and c:IsFaceup() and c:IsReleasableByEffect()
+	return c:IsSetCard(0x196) and c:IsReleasableByEffect()
 		and Duel.IsExistingMatchingCard(s.relfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,tp,c)
 end
 function s.relfilter2(c,tp,ec)

@@ -6,6 +6,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(s.tg)
+	e1:SetOperation(s.op)
 	c:RegisterEffect(e1)
 end
 function s.filter(c,e,tp)
@@ -18,29 +19,40 @@ function s.dfilter(c,tp)
 end
 function s.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.dfilter(chkc,tp) end
-	local b1=Duel.GetFlagEffect(tp,id)==0
+	local b1=(Duel.GetFlagEffect(tp,id)==0 or not e:IsCostChecked())
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
-	local b2=Duel.GetFlagEffect(tp,id+o)==0
+	local b2=(Duel.GetFlagEffect(tp,id+o)==0 or not e:IsCostChecked())
 		and Duel.IsExistingTarget(s.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp)
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,{b1,aux.Stringid(id,0)},{b2,aux.Stringid(id,1)})
+	e:SetLabel(op)
 	if op==1 then
-		e:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
-		e:SetProperty(0)
-		e:SetOperation(s.sop)
-		Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
+		if e:IsCostChecked() then
+			e:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+			e:SetProperty(0)
+			Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
+		end
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 	else
-		e:SetCategory(CATEGORY_DAMAGE)
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:SetOperation(s.dop)
-		Duel.RegisterFlagEffect(tp,id+o,RESET_PHASE+PHASE_END,0,1)
+		if e:IsCostChecked() then
+			e:SetCategory(CATEGORY_DAMAGE)
+			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
+			Duel.RegisterFlagEffect(tp,id+o,RESET_PHASE+PHASE_END,0,1)
+		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local tc=Duel.SelectTarget(tp,s.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp):GetFirst()
 		local atk=tc:GetBaseAttack()
 		if tc:IsControler(tp) then atk=atk//2 end
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,atk)
+	end
+end
+function s.op(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		s.sop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		s.dop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.sop(e,tp,eg,ep,ev,re,r,rp)

@@ -9,7 +9,7 @@ function c76895648.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(76895648,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DRAW)
+	e2:SetCategory(CATEGORY_DICE+CATEGORY_ATKCHANGE+CATEGORY_DRAW)
 	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
@@ -18,7 +18,6 @@ function c76895648.initial_effect(c)
 	e2:SetOperation(c76895648.operation)
 	c:RegisterEffect(e2)
 end
-c76895648.toss_dice=true
 function c76895648.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end

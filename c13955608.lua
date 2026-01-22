@@ -1,5 +1,6 @@
 --機動砦 ストロング・ホールド
 function c13955608.initial_effect(c)
+	aux.AddCodeList(c,41172955,86445415,13839120)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

@@ -30,7 +30,7 @@ function c98301564.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c98301564.costchange(e,re,rp,val)
-	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER) then
+	if re and (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:GetCode()==EFFECT_TRAP_ACT_IN_HAND or re:GetCode()==EFFECT_TRAP_ACT_IN_SET_TURN) and re:GetHandler():IsType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER) then
 		return 0
 	else
 		return val

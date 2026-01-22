@@ -67,7 +67,11 @@ function c74937659.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c74937659.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone)
 		if zone~=0 and sg:GetCount()>0 then
+			local hint=sg:GetFirst():IsPublic()
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE,zone)
+			if hint then
+				Duel.ConfirmCards(1-tp,sg)
+			end
 		end
 	end
 end

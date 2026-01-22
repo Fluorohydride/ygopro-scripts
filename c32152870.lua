@@ -1,6 +1,6 @@
 --械貶する肆世壊
 function c32152870.initial_effect(c)
-	aux.AddCodeList(c,56099748)
+	aux.AddCodeList(c,56099748,56063182)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(32152870,0))

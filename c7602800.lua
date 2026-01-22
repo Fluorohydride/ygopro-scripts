@@ -38,7 +38,7 @@ function c7602800.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:FilterCount(c7602800.cfilter,nil,tp)>0
 end
 function c7602800.spfilter(c,e,tp,atk)
-	return (c:IsSetCard(0x33) and c:GetAttack()<atk or c:IsCode(9012916))
+	return (c:IsSetCard(0x33) or c:IsCode(9012916)) and c:GetAttack()<atk
 		and (not c:IsLocation(LOCATION_REMOVED) or c:IsFaceup())
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

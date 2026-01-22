@@ -22,7 +22,7 @@ function c11074235.cfilter(c,tp)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c11074235.spcon(e,tp,eg,ep,ev,re,r,rp)
-	 return eg:IsExists(c11074235.cfilter,1,nil,tp)
+	return eg:IsExists(c11074235.cfilter,1,nil,tp)
 end
 function c11074235.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

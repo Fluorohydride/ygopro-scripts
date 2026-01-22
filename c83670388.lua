@@ -1,5 +1,6 @@
 --氷水呪縛
 function c83670388.initial_effect(c)
+	aux.AddCodeList(c,7142724)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

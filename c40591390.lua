@@ -1,5 +1,6 @@
 --D-HERO ドレッドガイ
 function c40591390.initial_effect(c)
+	aux.AddCodeList(c,75041269)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40591390,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)

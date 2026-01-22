@@ -17,13 +17,14 @@ function c47710198.initial_effect(c)
 	e1:SetOperation(c47710198.drop)
 	c:RegisterEffect(e1)
 	--remove monster
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,47710198,EVENT_SPSUMMON_SUCCESS)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(47710198,1))
 	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetCode(custom_code)
 	e2:SetCountLimit(1,47710199)
 	e2:SetTarget(c47710198.remtg1)
 	e2:SetOperation(c47710198.remop1)
@@ -92,7 +93,7 @@ function c47710198.remop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
 	if tc:IsRelateToEffect(re) then
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
-			 Duel.Damage(1-tp,1200,REASON_EFFECT)
+			Duel.Damage(1-tp,1200,REASON_EFFECT)
 		end
 	end
 end

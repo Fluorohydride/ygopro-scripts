@@ -29,15 +29,15 @@ function s.initial_effect(c)
 	e3:SetValue(s.matval2)
 	c:RegisterEffect(e3)
 end
-function s.mfilter(c)
-	return c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_CYBERSE)
+function s.mfilter(c,tp)
+	return c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_CYBERSE) and c:IsControler(tp)
 end
 function s.exmfilter(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsCode(id)
 end
 function s.matval1(e,lc,mg,c,tp)
 	if not lc:IsSetCard(0x101) then return false,nil end
-	return true,not mg or mg:IsExists(s.mfilter,1,nil) and not mg:IsExists(s.exmfilter,1,nil)
+	return true,not mg or mg:IsExists(s.mfilter,1,nil,tp) and not mg:IsExists(s.exmfilter,1,nil)
 end
 function s.exmatcheck(c,lc,tp)
 	if not c:IsLocation(LOCATION_HAND) then return false end

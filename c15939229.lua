@@ -52,6 +52,14 @@ function c15939229.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	e2:SetLabel(c:GetFieldID())
 	Duel.RegisterEffect(e2,tp)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_CHAIN_SOLVING)
+	e3:SetCondition(c15939229.discon)
+	e3:SetOperation(c15939229.disop)
+	e3:SetReset(RESET_PHASE+PHASE_END)
+	e3:SetLabel(c:GetFieldID())
+	Duel.RegisterEffect(e3,tp)
 	c:RegisterFlagEffect(15939229,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,c:GetFieldID())
 end
 function c15939229.aclimit(e,re,tp)
@@ -60,6 +68,14 @@ function c15939229.aclimit(e,re,tp)
 end
 function c15939229.disable(e,c)
 	return c:GetFlagEffectLabel(15939229)~=e:GetLabel() and (not c:IsType(TYPE_MONSTER) or (c:IsType(TYPE_EFFECT) or bit.band(c:GetOriginalType(),TYPE_EFFECT)==TYPE_EFFECT))
+end
+function c15939229.discon(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
+	return bit.band(loc,LOCATION_ONFIELD)~=0 and rc:GetFlagEffectLabel(15939229)~=e:GetLabel()
+end
+function c15939229.disop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.NegateEffect(ev)
 end
 function c15939229.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

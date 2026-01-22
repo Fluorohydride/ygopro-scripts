@@ -17,12 +17,9 @@ function c8700633.initial_effect(c)
 		c8700633.global_check=true
 		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SUMMON_SUCCESS)
+		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
 		ge1:SetOperation(c8700633.checkop)
 		Duel.RegisterEffect(ge1,0)
-		local ge2=ge1:Clone()
-		ge2:SetCode(EVENT_SPSUMMON_SUCCESS)
-		Duel.RegisterEffect(ge2,0)
 	end
 	--ind
 	local e2=Effect.CreateEffect(c)

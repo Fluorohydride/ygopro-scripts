@@ -51,7 +51,7 @@ function c27970830.initial_effect(c)
 end
 c27970830.counter_add_list={0x3}
 function c27970830.ctfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c27970830.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c27970830.ctfilter,1,nil) then
@@ -64,7 +64,7 @@ function c27970830.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x3,2,REASON_COST)
 end
 function c27970830.filter1(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d,0x20) and c:IsType(TYPE_EFFECT)
+	return c:IsFaceup() and c:IsSetCard(0x103d,0x20) and c:IsType(TYPE_EFFECT)
 end
 function c27970830.tg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c27970830.filter1(chkc) end
@@ -90,7 +90,7 @@ function c27970830.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x3,4,REASON_COST)
 end
 function c27970830.filter2(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x3d) and c:IsAbleToHand()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x103d) and c:IsAbleToHand()
 end
 function c27970830.tg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c27970830.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end

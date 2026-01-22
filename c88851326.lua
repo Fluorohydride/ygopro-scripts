@@ -96,51 +96,18 @@ function c88851326.attg(e,c)
 	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c88851326.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
-		and Duel.GetDrawCount(tp)>0
+	return tp==Duel.GetTurnPlayer()
 end
 function c88851326.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c88851326.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c88851326.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
-	local dt=Duel.GetDrawCount(tp)
-	if dt~=0 then
-		aux.DrawReplaceCount=0
-		aux.DrawReplaceMax=dt
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_DRAW_COUNT)
-		e1:SetTargetRange(1,0)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW)
-		e1:SetValue(0)
-		Duel.RegisterEffect(e1,tp)
-		local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e2:SetCode(EVENT_CHAIN_SOLVING)
-		e2:SetLabel(cid)
-		e2:SetLabelObject(e1)
-		e2:SetReset(RESET_PHASE+PHASE_DRAW)
-		e2:SetCondition(c88851326.checkcon1)
-		e2:SetOperation(c88851326.checkop1)
-		Duel.RegisterEffect(e2,tp)
-	end
+	if chk==0 then return aux.IsPlayerCanNormalDraw(tp) and Duel.IsExistingMatchingCard(c88851326.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
-function c88851326.checkcon1(e,tp,eg,ep,ev,re,r,rp)
-	local cid,orig_effect=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID,CHAININFO_TRIGGERING_EFFECT)
-	return cid==e:GetLabel() and not e:GetOwner():IsRelateToEffect(orig_effect)
-end
-function c88851326.checkop1(e,tp,eg,ep,ev,re,r,rp)
-	e:GetLabelObject():Reset()
-	e:Reset()
-end
 function c88851326.thop(e,tp,eg,ep,ev,re,r,rp)
-	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount>aux.DrawReplaceMax or not e:GetHandler():IsRelateToEffect(e) then return end
+	if not aux.IsPlayerCanNormalDraw(tp) then return end
+	aux.GiveUpNormalDraw(e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c88851326.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then

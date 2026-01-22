@@ -50,7 +50,7 @@ function c67331360.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return ft>0 and Duel.IsExistingTarget(c67331360.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	local ct=math.min(2,ft)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133)
-		or not Duel.IsExistingMatchingCard(c67331360.cfilter,tp,LOCATION_MZONE,0,1,nil) then ct=1 end
+		or not Duel.IsExistingMatchingCard(c67331360.cfilter,tp,LOCATION_ONFIELD,0,1,nil) then ct=1 end
 	local g=Duel.GetMatchingGroup(c67331360.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local tg=g:SelectSubGroup(tp,c67331360.gcheck,false,1,ct,e,tp)

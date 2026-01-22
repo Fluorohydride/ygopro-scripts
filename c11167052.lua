@@ -1,5 +1,6 @@
 --霊神統一
 function c11167052.initial_effect(c)
+	aux.AddCodeList(c,61557074)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

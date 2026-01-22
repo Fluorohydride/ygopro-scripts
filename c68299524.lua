@@ -39,7 +39,7 @@ function c68299524.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
 	local g=Duel.GetMatchingGroup(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	local tg,atk=g:GetMaxGroup(Card.GetAttack)
-	local maxc=math.min(Duel.GetLP(tp),atk)
+	local maxc=math.min(Duel.GetLP(tp),atk,25500)
 	local ct=math.floor(maxc/100)
 	local t={}
 	for i=1,ct do

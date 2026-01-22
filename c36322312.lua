@@ -62,7 +62,7 @@ function c36322312.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c36322312.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c36322312.indfilter(c)

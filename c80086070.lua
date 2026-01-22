@@ -14,6 +14,7 @@ function c80086070.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c80086070.sprcon)
+	e2:SetTarget(c80086070.sprtg)
 	e2:SetOperation(c80086070.sprop)
 	c:RegisterEffect(e2)
 	--destroy
@@ -68,11 +69,20 @@ function c80086070.sprcon(e,c)
 	local g=Duel.GetMatchingGroup(c80086070.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	return g:CheckSubGroup(c80086070.fselect,2,2,tp,c)
 end
-function c80086070.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c80086070.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c80086070.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,c80086070.fselect,false,2,2,tp,c)
-	Duel.SendtoGrave(tg,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c80086070.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c80086070.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c80086070.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() end

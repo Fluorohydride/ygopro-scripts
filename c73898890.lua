@@ -23,7 +23,7 @@ function c73898890.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
-	e2:SetCountLimit(1,897409)
+	e2:SetCountLimit(1,73898891)
 	e2:SetCost(c73898890.spcost)
 	e2:SetCondition(c73898890.spcon)
 	e2:SetTarget(c73898890.sptg)
@@ -31,7 +31,7 @@ function c73898890.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c73898890.lcheck(g)
-	return g:IsExists(Card.IsType,1,nil,TYPE_RITUAL)
+	return g:IsExists(Card.IsLinkType,1,nil,TYPE_RITUAL)
 end
 function c73898890.tdfilter(c)
 	return c:IsAbleToDeck() and c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER)
@@ -48,7 +48,7 @@ function c73898890.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,2,0,0)
 end
 function c73898890.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetTargetsRelateToChain()
+	local g=Duel.GetTargetsRelateToChain():Filter(Card.IsAbleToDeck,nil)
 	if #g==2 then
 		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end

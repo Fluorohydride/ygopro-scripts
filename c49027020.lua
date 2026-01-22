@@ -1,6 +1,7 @@
 --プティカの蟲惑魔
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,12801833)
 	--immune
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

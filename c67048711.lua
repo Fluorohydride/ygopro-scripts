@@ -36,7 +36,7 @@ function c67048711.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.Draw(tp,3,REASON_EFFECT)~=0 then
 			Duel.BreakEffect()
 			local g=Duel.GetMatchingGroup(c67048711.filter,tp,LOCATION_ONFIELD,0,nil)
-			Duel.Destroy(g,REASON_EFFECT)
+			Duel.Destroy(g,REASON_RULE)
 		end
 	end
 end

@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep2(c,s.mfilter,2,63,true)
+	aux.AddFusionProcFunRep2(c,s.mfilter,2,127,true)
 	--atk down
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

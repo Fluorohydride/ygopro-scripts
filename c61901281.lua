@@ -15,6 +15,7 @@ function c61901281.initial_effect(c)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCountLimit(1,61901281+EFFECT_COUNT_CODE_OATH)
 	e2:SetCondition(c61901281.spcon)
+	e2:SetTarget(c61901281.sptg)
 	e2:SetOperation(c61901281.spop)
 	c:RegisterEffect(e2)
 	--search
@@ -38,10 +39,18 @@ function c61901281.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c61901281.spfilter,tp,LOCATION_GRAVE,0,1,nil)
 end
-function c61901281.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c61901281.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c61901281.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c61901281.spfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c61901281.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 end
 function c61901281.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

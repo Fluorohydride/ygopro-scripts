@@ -27,7 +27,7 @@ function c29177818.initial_effect(c)
 end
 function c29177818.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
-		and bit.band(c:GetPreviousRaceOnField(),RACE_PLANT)>0
+		and bit.band(c:GetPreviousRaceOnField(),RACE_PLANT)>0 and c:IsRace(RACE_PLANT)
 end
 function c29177818.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c29177818.cfilter,1,nil,tp)

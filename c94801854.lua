@@ -1,5 +1,6 @@
 --不知火の隠者
 function c94801854.initial_effect(c)
+	aux.AddCodeList(c,40005099)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94801854,0))

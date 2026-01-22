@@ -34,7 +34,7 @@ function c84687358.descon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84687358.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
-		 and not e:GetHandler():IsStatus(STATUS_CHAINING) end
+		and not e:GetHandler():IsStatus(STATUS_CHAINING) end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end

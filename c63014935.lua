@@ -9,6 +9,7 @@ function c63014935.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetTargetRange(POS_FACEUP,1)
 	e1:SetCondition(c63014935.spcon)
+	e1:SetTarget(c63014935.sptg)
 	e1:SetOperation(c63014935.spop)
 	c:RegisterEffect(e1)
 	--damage
@@ -51,9 +52,17 @@ function c63014935.spcon(e,c)
 	local tp=c:GetControler()
 	return Duel.IsExistingMatchingCard(c63014935.spfilter,tp,0,LOCATION_MZONE,1,nil,tp)
 end
-function c63014935.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c63014935.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c63014935.spfilter,tp,0,LOCATION_MZONE,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c63014935.spfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c63014935.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c63014935.damcost(e,tp,eg,ep,ev,re,r,rp,chk)

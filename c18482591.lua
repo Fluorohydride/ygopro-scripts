@@ -32,7 +32,8 @@ end
 function c18482591.aclimset(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(18482591,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,1)
+		local reset=tc:IsControler(tp) and RESET_OPPO_TURN or RESET_SELF_TURN
+		tc:RegisterFlagEffect(18482591,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+reset,0,1)
 		tc=eg:GetNext()
 	end
 end

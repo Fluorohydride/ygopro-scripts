@@ -92,28 +92,37 @@ end
 function s.mfilter(c)
 	return c:IsSetCard(0x1a2) and c:IsType(TYPE_MONSTER) and c:IsFaceup()
 end
-function s.cfilter(c,syn)
-	return syn:IsSynchroSummonable(c)
+function s.syncheck(g,tp,syncard)
+	return g:IsExists(s.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
 end
-function s.scfilter(c,mg)
-	return mg:IsExists(s.cfilter,1,nil,c)
+function s.scfilter(c,tp,mg)
+	return mg:CheckSubGroup(s.syncheck,2,#mg,tp,c)
 end
 function s.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetMatchingGroup(s.mfilter,tp,LOCATION_MZONE,0,nil)
-		return Duel.IsExistingMatchingCard(s.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
+		local mg=Duel.GetSynchroMaterial(tp)
+		if mg:IsExists(Card.GetHandSynchro,1,nil) then
+			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+			if mg2:GetCount()>0 then mg:Merge(mg2) end
+		end
+		return Duel.IsExistingMatchingCard(s.scfilter,tp,LOCATION_EXTRA,0,1,nil,tp,mg)
 	end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function s.scop(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetMatchingGroup(s.mfilter,tp,LOCATION_MZONE,0,nil)
-	local g=Duel.GetMatchingGroup(s.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
+	local mg=Duel.GetSynchroMaterial(tp)
+	if mg:IsExists(Card.GetHandSynchro,1,nil) then
+		local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
+		if mg2:GetCount()>0 then mg:Merge(mg2) end
+	end
+	local g=Duel.GetMatchingGroup(s.scfilter,tp,LOCATION_EXTRA,0,nil,tp,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
+		local sc=sg:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local tg=mg:FilterSelect(tp,s.cfilter,1,1,nil,sg:GetFirst())
-		Duel.SynchroSummon(tp,sg:GetFirst(),tg:GetFirst())
+		local tg=mg:SelectSubGroup(tp,s.syncheck,false,2,#mg,tp,sc)
+		Duel.SynchroSummon(tp,sc,nil,tg,#tg-1,#tg-1)
 	end
 end

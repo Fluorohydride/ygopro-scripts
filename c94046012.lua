@@ -20,10 +20,10 @@ function c94046012.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c94046012.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c94046012.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c94046012.spfilter(c,e,tp)
 	return c:IsSetCard(0x11b) and not c:IsCode(94046012) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -11,6 +11,7 @@ function c8038143.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(8038143,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c8038143.handcon)
@@ -38,7 +39,7 @@ function c8038143.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if tgp~=tp and (te:IsActiveType(TYPE_MONSTER) or te:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(i) then
 			local tc=te:GetHandler()
 			ng:AddCard(tc)
-			if tc:IsOnField() and tc:IsRelateToEffect(te) and tc:IsAbleToDeck() then
+			if tc:IsOnField() and tc:IsRelateToEffect(te) then
 				dg:AddCard(tc)
 			end
 		end
@@ -53,13 +54,12 @@ function c8038143.activate(e,tp,eg,ep,ev,re,r,rp)
 		local te,tgp=Duel.GetChainInfo(i,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 		if tgp~=tp and (te:IsActiveType(TYPE_MONSTER) or te:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.NegateActivation(i) then
 			local tc=te:GetHandler()
-			if tc:IsRelateToEffect(e) and tc:IsRelateToEffect(te) and tc:IsAbleToDeck() then
-				tc:CancelToGrave()
+			if tc:IsRelateToEffect(e) and tc:IsRelateToEffect(te) then
 				dg:AddCard(tc)
 			end
 		end
 	end
-	Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 end
 function c8038143.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x307b)

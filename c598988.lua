@@ -9,6 +9,7 @@ function c598988.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c598988.spcon)
+	e1:SetTarget(c598988.sptg)
 	e1:SetOperation(c598988.spop)
 	c:RegisterEffect(e1)
 	--selfdes
@@ -56,21 +57,28 @@ function c598988.spcon(e,c)
 	local b2=Duel.IsExistingMatchingCard(c598988.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
 	return b1 or b2
 end
-function c598988.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c598988.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil)
-	local b2=Duel.IsExistingMatchingCard(c598988.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
-	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(48829461,0))) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tg=Duel.SelectMatchingCard(tp,c598988.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
-		local te=tg:GetFirst():IsHasEffect(48829461,tp)
-		te:UseCountLimit(tp)
-		Duel.Remove(tg,POS_FACEUP,REASON_COST)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tg=Duel.SelectMatchingCard(tp,c598988.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
-		Duel.Remove(tg,POS_FACEUP,REASON_COST)
+function c598988.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Group.CreateGroup()
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+		local g1=Duel.GetMatchingGroup(c598988.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
+		g:Merge(g1)
 	end
+	local g2=Duel.GetMatchingGroup(c598988.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	g:Merge(g2)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		if g2:IsContains(tc) then
+			local te=tc:IsHasEffect(48829461,tp)
+			te:UseCountLimit(tp)
+		end
+		return true
+	else return false end
+end
+function c598988.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local tc=e:GetLabelObject()
+	Duel.Remove(tc,POS_FACEUP,REASON_SPSUMMON)
 end
 function c598988.descon(e)
 	return not Duel.IsExistingMatchingCard(Card.IsFaceup,0,LOCATION_FZONE,LOCATION_FZONE,1,nil)

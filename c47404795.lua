@@ -1,6 +1,7 @@
 --魔界劇団－スーパー・プロデューサー
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,77297908)
 	c:EnableReviveLimit()
 	--material
 	aux.AddLinkProcedure(c,nil,2,2,s.lchk)

@@ -20,7 +20,7 @@ function c34620088.initial_effect(c)
 	c:RegisterEffect(e2)
 	if not c34620088.global_check then
 		c34620088.global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD)
 		ge1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 		ge1:SetTargetRange(LOCATION_OVERLAY,LOCATION_OVERLAY)

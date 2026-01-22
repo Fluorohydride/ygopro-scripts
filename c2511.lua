@@ -40,6 +40,7 @@ function c2511.acttg(e,c)
 end
 function c2511.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetDescription(aux.Stringid(2511,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

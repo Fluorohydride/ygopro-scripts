@@ -36,7 +36,7 @@ function c92559258.initial_effect(c)
 	c:RegisterEffect(e4)
 	--add counter
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(66104644,2))
+	e5:SetDescription(aux.Stringid(92559258,1))
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_FREE_CHAIN)
 	e5:SetRange(LOCATION_MZONE)
@@ -49,7 +49,7 @@ function c92559258.initial_effect(c)
 	c:RegisterEffect(e5)
 	--pendulum set
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(92559258,1))
+	e6:SetDescription(aux.Stringid(92559258,2))
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
 	e6:SetCode(EVENT_DESTROYED)
@@ -110,8 +110,7 @@ function c92559258.countercost2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92559258.countertg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsCanAddCounter(0x1,1)
-		and Duel.IsExistingMatchingCard(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,c,0x1,1) end
+	if chk==0 then return c:IsCanAddCounter(0x1,1) end
 	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,c,0x1,1)
 	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,g,#g,0,0)

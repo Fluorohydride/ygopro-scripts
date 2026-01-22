@@ -13,6 +13,7 @@ function c78349103.initial_effect(c)
 	e5:SetOperation(c78349103.sop)
 	c:RegisterEffect(e5)
 end
+c78349103.has_text_type=TYPE_UNION
 function c78349103.filter(c)
 	return c:IsRace(RACE_MACHINE)
 end

@@ -2,7 +2,7 @@
 function c34959756.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -49,7 +49,8 @@ end
 function c34959756.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Equip(tp,c,tc)
 		--Add Equip limit
 		local e1=Effect.CreateEffect(c)
@@ -66,9 +67,8 @@ function c34959756.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetReset(RESET_EVENT+RESETS_REDIRECT)
 		e2:SetValue(LOCATION_REMOVED)
-		tc:RegisterEffect(e2)
+		tc:RegisterEffect(e2,true)
 	end
-	Duel.SpecialSummonComplete()
 end
 function c34959756.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

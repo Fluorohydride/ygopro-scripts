@@ -13,7 +13,7 @@ function c81344070.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon from grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(33420078,0))
+	e2:SetDescription(aux.Stringid(81344070,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

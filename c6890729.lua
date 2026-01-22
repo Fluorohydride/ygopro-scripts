@@ -1,5 +1,6 @@
 --ボンディング－DHO
 function c6890729.initial_effect(c)
+	aux.AddCodeList(c,43017476,22587018,58071123,6022371,85066822)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

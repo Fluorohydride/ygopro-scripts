@@ -1,6 +1,6 @@
 --夢魔鏡の夢魔－イケロス
 function c75888208.initial_effect(c)
-	aux.AddCodeList(c,74665651)
+	aux.AddCodeList(c,74665651,49389190)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75888208,0))

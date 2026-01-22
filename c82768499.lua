@@ -6,6 +6,7 @@ function c82768499.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(c82768499.target)
+	e1:SetOperation(c82768499.operation)
 	c:RegisterEffect(e1)
 end
 function c82768499.desfilter(c)
@@ -28,19 +29,25 @@ function c82768499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(82768499,1))+1
 	end
+	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(CATEGORY_DESTROY)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
-		e:SetOperation(c82768499.desop)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	else
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e:SetProperty(0)
-		local g=Duel.GetMatchingGroup(c82768499.thfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
-		e:SetOperation(c82768499.thop)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
+	end
+end
+function c82768499.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==0 then
+		c82768499.desop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==1 then
+		c82768499.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c82768499.desop(e,tp,eg,ep,ev,re,r,rp)

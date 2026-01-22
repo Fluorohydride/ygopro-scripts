@@ -25,7 +25,7 @@ function c90312154.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c90312154.filter(c,ft)
-	return (c:IsCode(56433456) or aux.IsCodeListed(c,56433456)) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+	return aux.IsCodeOrListed(c,56433456) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
 		and (ft==nil or ft>0 or c:IsType(TYPE_FIELD))
 end
 function c90312154.target(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -47,37 +47,22 @@ function c49838105.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c49838105.cfcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetDrawCount(tp)>0
+	return tp==Duel.GetTurnPlayer()
 end
 function c49838105.cftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local dt=Duel.GetDrawCount(tp)
-	if dt~=0 then
-		aux.DrawReplaceCount=0
-		aux.DrawReplaceMax=dt
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_DRAW_COUNT)
-		e1:SetTargetRange(1,0)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW)
-		e1:SetValue(0)
-		Duel.RegisterEffect(e1,tp)
-	end
+	if chk==0 then return aux.IsPlayerCanNormalDraw(tp) end
+	aux.GiveUpNormalDraw(e,tp)
 end
 function c49838105.cfop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
-	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount<=aux.DrawReplaceMax then
-		Duel.ConfirmDecktop(tp,1)
-		local g=Duel.GetDecktopGroup(tp,1)
-		local tc=g:GetFirst()
-		Duel.DisableShuffleCheck()
-		if tc:IsRace(RACE_PLANT) then
-			Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)
-		else
-			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-			Duel.ShuffleHand(tp)
-		end
+	Duel.ConfirmDecktop(tp,1)
+	local g=Duel.GetDecktopGroup(tp,1)
+	local tc=g:GetFirst()
+	Duel.DisableShuffleCheck()
+	if tc:IsRace(RACE_PLANT) then
+		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)
+	else
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		Duel.ShuffleHand(tp)
 	end
 end

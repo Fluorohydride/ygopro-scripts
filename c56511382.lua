@@ -36,7 +36,7 @@ end
 function c56511382.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local lv=tc:GetLevel()
-	if tc:IsRelateToEffect(e) and c56511382.desfilter(tc,tp) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToEffect(e) and c56511382.desfilter(tc,1-tp) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,lv*400,REASON_EFFECT)
 	end
 end

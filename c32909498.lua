@@ -40,7 +40,7 @@ function c32909498.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1,32909499)
 	e4:SetCondition(c32909498.rmcon)
-	e4:SetTarget(c32909498.rmtg)
+	e4:SetTarget(c32909498.rmtg2)
 	e4:SetOperation(c32909498.rmop)
 	c:RegisterEffect(e4)
 end
@@ -82,4 +82,11 @@ function c32909498.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32909498.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
+end
+function c32909498.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c32909498.rmfilter(chkc,tp) end
+	if chk==0 then return rp==1-tp and Duel.IsExistingTarget(c32909498.rmfilter,tp,0,LOCATION_ONFIELD,1,nil,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g=Duel.SelectTarget(tp,c32909498.rmfilter,tp,0,LOCATION_ONFIELD,1,1,nil,tp)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end

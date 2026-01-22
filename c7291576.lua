@@ -21,7 +21,7 @@ function c7291576.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7291576.thfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x103d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c7291576.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c7291576.thfilter(chkc) end
@@ -37,7 +37,7 @@ function c7291576.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c7291576.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c7291576.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -1,6 +1,6 @@
 --夢魔鏡の乙女－イケロス
 function c49389190.initial_effect(c)
-	aux.AddCodeList(c,1050355)
+	aux.AddCodeList(c,1050355,75888208)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(49389190,0))

@@ -8,6 +8,7 @@ function c14536035.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c14536035.spcon)
+	e1:SetTarget(c14536035.sptg)
 	e1:SetOperation(c14536035.spop)
 	c:RegisterEffect(e1)
 	--to grave
@@ -30,10 +31,18 @@ function c14536035.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and
 		Duel.IsExistingMatchingCard(c14536035.spfilter,c:GetControler(),LOCATION_HAND,0,1,c)
 end
-function c14536035.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c14536035.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c14536035.spfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local g=Duel.SelectMatchingCard(tp,c14536035.spfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.SendtoGrave(g,REASON_DISCARD+REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c14536035.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_DISCARD+REASON_SPSUMMON)
 end
 function c14536035.costfilter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsDiscardable()

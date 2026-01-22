@@ -63,7 +63,7 @@ function c2609443.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(math.ceil(atk/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		ac:RegisterEffect(e1)
-		if not ac:IsHasEffect(EFFECT_REVERSE_UPDATE) and e:GetHandler():IsRelateToEffect(e) then
+		if not ac:IsHasEffect(EFFECT_REVERSE_UPDATE) and e:GetHandler():IsRelateToEffect(e) and tc:IsCanOverlay() then
 			Duel.BreakEffect()
 			Duel.Overlay(e:GetHandler(),tc)
 		end

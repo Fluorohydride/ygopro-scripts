@@ -22,6 +22,7 @@ function c37445295.initial_effect(c)
 	e2:SetTarget(c37445295.sptg)
 	e2:SetOperation(c37445295.spop)
 	c:RegisterEffect(e2)
+	c37445295.shadoll_flip_effect=e1
 end
 function c37445295.filter(c,e,tp)
 	return c:IsSetCard(0x9d) and not c:IsCode(37445295) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)

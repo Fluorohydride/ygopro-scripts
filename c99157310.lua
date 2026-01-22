@@ -29,7 +29,7 @@ function c99157310.cfilter1(c)
 end
 function c99157310.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and Duel.GetAttacker():IsControler(1-tp)
-		and Duel.IsExistingMatchingCard(c99157310.cfilter1,tp,LOCATION_GRAVE,0,3,nil)
+		and Duel.GetMatchingGroup(c99157310.cfilter1,tp,LOCATION_GRAVE,0,nil):GetClassCount(Card.GetCode)>=3
 end
 function c99157310.filter(c,e,tp)
 	return c:IsCode(75119040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0

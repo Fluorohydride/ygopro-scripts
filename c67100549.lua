@@ -34,7 +34,7 @@ function c67100549.initial_effect(c)
 	c:RegisterEffect(e3)
 	if not c67100549.global_check then
 		c67100549.global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_TO_GRAVE)
 		ge1:SetCondition(c67100549.checkcon)

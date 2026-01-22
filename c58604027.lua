@@ -14,6 +14,7 @@ function c58604027.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c58604027.spcon)
+	e2:SetTarget(c58604027.sptg)
 	e2:SetOperation(c58604027.spop)
 	c:RegisterEffect(e2)
 	--atkup
@@ -61,19 +62,26 @@ end
 function c58604027.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c58604027.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil)*1000
 end
-function c58604027.spfilter(c,ft,tp)
+function c58604027.spfilter(c,tp)
 	return c:IsSetCard(0x40)
-		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())
 end
 function c58604027.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-1 and Duel.CheckReleaseGroupEx(tp,c58604027.spfilter,1,REASON_SPSUMMON,false,nil,ft,tp)
+	return Duel.CheckReleaseGroupEx(tp,c58604027.spfilter,1,REASON_SPSUMMON,false,nil,tp)
+end
+function c58604027.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c58604027.spfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
 end
 function c58604027.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.SelectReleaseGroupEx(tp,c58604027.spfilter,1,1,REASON_SPSUMMON,false,nil,ft,tp)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c58604027.efilter(e,te)

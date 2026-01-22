@@ -159,6 +159,7 @@ function c55795155.pop(e,tp,eg,ep,ev,re,r,rp)
 	sg:Merge(g)
 	Duel.HintSelection(Group.FromCards(lpz))
 	Duel.HintSelection(Group.FromCards(rpz))
+	Duel.RaiseEvent(sg,EVENT_SPSUMMON_SUCCESS_G_P,e,REASON_EFFECT,tp,tp,0)
 	Duel.SpecialSummon(sg,SUMMON_TYPE_PENDULUM,tp,tp,true,true,POS_FACEUP)
 	e1:Reset()
 end

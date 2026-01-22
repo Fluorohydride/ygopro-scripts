@@ -8,6 +8,7 @@ function c74148483.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,74148483+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c74148483.spcon)
+	e1:SetTarget(c74148483.sptg)
 	e1:SetOperation(c74148483.spop)
 	c:RegisterEffect(e1)
 	--lv
@@ -31,10 +32,18 @@ function c74148483.spcon(e,c)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 	return Duel.IsExistingMatchingCard(c74148483.spfilter,tp,LOCATION_HAND,0,1,c)
 end
-function c74148483.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c74148483.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c74148483.spfilter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c74148483.spfilter,tp,LOCATION_HAND,0,1,1,c)
-	Duel.SendtoGrave(g,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c74148483.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 end
 function c74148483.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0

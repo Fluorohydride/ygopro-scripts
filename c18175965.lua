@@ -31,7 +31,6 @@ function c18175965.initial_effect(c)
 	--equip
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(18175965,1))
-	e5:SetCategory(CATEGORY_EQUIP)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -85,7 +84,6 @@ end
 function c18175965.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c18175965.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c18175965.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -54,17 +54,11 @@ function c17775525.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(rg,REASON_EFFECT)
 	end
 end
-function c17775525.chkfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and not c:IsAbleToRemove()
-end
 function c17775525.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemove()
 end
 function c17775525.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		return Duel.IsExistingMatchingCard(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
-			and not Duel.IsExistingMatchingCard(c17775525.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
-	end
+	if chk==0 then return Duel.IsExistingMatchingCard(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) end
 	local g=Duel.GetMatchingGroup(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,g:GetCount()*200)

@@ -16,7 +16,6 @@ function c94821366.initial_effect(c)
 	--equip
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(94821366,1))
-	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
@@ -56,7 +55,7 @@ function c94821366.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94821366.eqfilter1(c,e,tp)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsSummonPlayer(1-tp)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e) and c:IsControler(1-tp) and c:IsSummonPlayer(1-tp)
 		and Duel.IsExistingMatchingCard(c94821366.eqfilter2,tp,LOCATION_DECK,0,1,nil)
 end
 function c94821366.eqfilter2(c)

@@ -1,5 +1,6 @@
 --ヴァリアンツの武者－北条
 function c88919365.initial_effect(c)
+	aux.AddCodeList(c,49568943)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--spsummon

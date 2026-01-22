@@ -1,5 +1,6 @@
 --イグニスターAiランド
 function c59054773.initial_effect(c)
+	aux.AddCodeList(c,59054773)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

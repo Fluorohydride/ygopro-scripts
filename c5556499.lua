@@ -7,6 +7,7 @@ function c5556499.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCondition(c5556499.spcon)
+	e1:SetTarget(c5556499.sptg)
 	e1:SetOperation(c5556499.spop)
 	c:RegisterEffect(e1)
 	--destroy
@@ -49,14 +50,27 @@ function c5556499.spcon(e,c)
 	end
 	return g:CheckWithSumGreater(Card.GetLevel,8)
 end
-function c5556499.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c5556499.spfilter,c:GetControler(),LOCATION_HAND,0,nil)
+function c5556499.fselect(g)
+	Duel.SetSelectedCard(g)
+	return g:CheckWithSumGreater(Card.GetLevel,8)
+end
+function c5556499.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c5556499.spfilter,tp,LOCATION_HAND,0,nil)
 	if not c:IsAbleToGraveAsCost() or Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY) then
 		g:RemoveCard(c)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local sg=g:SelectWithSumGreater(tp,Card.GetLevel,8)
-	Duel.SendtoGrave(sg,REASON_COST+REASON_DISCARD)
+	local sg=g:SelectSubGroup(tp,c5556499.fselect,true,1,g:GetCount())
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c5556499.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local sg=e:GetLabelObject()
+	Duel.SendtoGrave(sg,REASON_SPSUMMON+REASON_DISCARD)
+	sg:DeleteGroup()
 end
 function c5556499.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)

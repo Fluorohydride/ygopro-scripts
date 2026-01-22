@@ -1,5 +1,6 @@
 --転生炎獣ベイルリンクス
 function c14812471.initial_effect(c)
+	aux.AddCodeList(c,1295111)
 	--link summon
 	aux.AddLinkProcedure(c,c14812471.mfilter,1,1)
 	c:EnableReviveLimit()

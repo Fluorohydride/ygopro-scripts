@@ -1,7 +1,7 @@
 --伍世壊摘心
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,56099748)
+	aux.AddCodeList(c,56099748,82460246)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SEARCH+CATEGORY_TOHAND)

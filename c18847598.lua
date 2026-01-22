@@ -1,5 +1,6 @@
 --A宝玉獣 アンバー・マンモス
 function c18847598.initial_effect(c)
+	aux.AddCodeList(c,12644061)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--self to grave
 	local e1=Effect.CreateEffect(c)

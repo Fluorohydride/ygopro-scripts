@@ -1,5 +1,6 @@
 --超量必殺アルファンボール
 function c72332074.initial_effect(c)
+	aux.AddCodeList(c,58753372,10424147)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(72332074,0))

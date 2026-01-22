@@ -29,13 +29,7 @@ function c52296675.initial_effect(c)
 	e3:SetCondition(c52296675.hspcon)
 	c:RegisterEffect(e3)
 	--redirect
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetCondition(c52296675.recon)
-	e4:SetValue(LOCATION_REMOVED)
-	c:RegisterEffect(e4)
+	aux.AddBanishRedirect(c,c52296675.recon)
 end
 function c52296675.drfilter(c)
 	return c:IsFaceup() and c:IsCode(52296675)
@@ -63,5 +57,6 @@ function c52296675.hspcon(e,c)
 	return ct==Duel.GetMatchingGroupCount(c52296675.drfilter,tp,LOCATION_EXTRA,0,nil) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c52296675.recon(e)
-	return e:GetHandler():IsLocation(LOCATION_MZONE) and e:GetHandler():IsFaceup()
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup()
 end

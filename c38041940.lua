@@ -23,6 +23,7 @@ end
 function c38041940.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c38041940.spfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.IsExistingTarget(c38041940.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,38041941,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_PLANT,ATTRIBUTE_EARTH,POS_FACEUP_DEFENSE,1-tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -34,6 +35,7 @@ function c38041940.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_PLANT) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
+			and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,38041941,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_PLANT,ATTRIBUTE_EARTH,POS_FACEUP_DEFENSE,1-tp) then
 			local token=Duel.CreateToken(tp,38041941)
 			Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)

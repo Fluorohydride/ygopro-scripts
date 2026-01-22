@@ -6,6 +6,7 @@ function c26118970.initial_effect(c)
 	e1:SetDescription(aux.Stringid(26118970,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_BE_MATERIAL)
 	e1:SetCountLimit(1,26118970)
 	e1:SetCondition(c26118970.spcon)
@@ -26,8 +27,10 @@ function c26118970.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 	local rc=e:GetHandler():GetReasonCard()
 	if rc and (rc:IsCode(73580471) or (rc:IsRace(RACE_PLANT) and rc:IsType(TYPE_SYNCHRO))) then
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH+CATEGORY_TOHAND)
 		e:SetLabel(1)
 	else
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetLabel(0)
 	end
 end

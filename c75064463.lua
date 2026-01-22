@@ -1,5 +1,6 @@
 --ハーピィ・クィーン
 function c75064463.initial_effect(c)
+	aux.AddCodeList(c,75782277)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75064463,0))

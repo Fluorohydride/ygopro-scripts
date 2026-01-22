@@ -7,6 +7,7 @@ function c99365553.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c99365553.spcon1)
+	e1:SetTarget(c99365553.sptg1)
 	e1:SetOperation(c99365553.spop1)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
@@ -15,6 +16,7 @@ function c99365553.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c99365553.spcon2)
+	e2:SetTarget(c99365553.sptg2)
 	e2:SetOperation(c99365553.spop2)
 	c:RegisterEffect(e2)
 	--spsummon
@@ -42,11 +44,20 @@ function c99365553.spcon1(e,c)
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
 	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
-function c99365553.spop1(e,tp,eg,ep,ev,re,r,rp,c)
+function c99365553.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
-	Duel.Remove(sg,POS_FACEUP,REASON_COST)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,true,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c99365553.spop1(e,tp,eg,ep,ev,re,r,rp,c)
+	local sg=e:GetLabelObject()
+	Duel.Remove(sg,POS_FACEUP,REASON_SPSUMMON)
+	sg:DeleteGroup()
 end
 function c99365553.spcon2(e,c)
 	if c==nil then return true end
@@ -55,12 +66,20 @@ function c99365553.spcon2(e,c)
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
 	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
-function c99365553.spop2(e,tp,eg,ep,ev,re,r,rp,c)
+function c99365553.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
-	local sg=Group.CreateGroup()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
-	Duel.SendtoGrave(sg,REASON_COST)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,true,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c99365553.spop2(e,tp,eg,ep,ev,re,r,rp,c)
+	local sg=e:GetLabelObject()
+	Duel.SendtoGrave(sg,REASON_SPSUMMON)
+	sg:DeleteGroup()
 end
 function c99365553.spcon3(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

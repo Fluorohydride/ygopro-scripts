@@ -27,7 +27,7 @@ function c42228966.initial_effect(c)
 	c:RegisterEffect(e3)
 	if not c42228966.global_check then
 		c42228966.global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_BATTLED)
 		ge1:SetOperation(c42228966.checkop)

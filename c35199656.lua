@@ -37,19 +37,6 @@ function c35199656.initial_effect(c)
 	e4:SetCondition(c35199656.damcon2)
 	e4:SetOperation(c35199656.damop2)
 	c:RegisterEffect(e4)
-	if not c35199656.global_check then
-		c35199656.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_CHAIN_SOLVING)
-		ge1:SetOperation(c35199656.count)
-		Duel.RegisterEffect(ge1,0)
-		local ge2=Effect.CreateEffect(c)
-		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge2:SetCode(EVENT_CHAIN_SOLVED)
-		ge2:SetOperation(c35199656.reset)
-		Duel.RegisterEffect(ge2,0)
-	end
 end
 function c35199656.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -79,14 +66,8 @@ function c35199656.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c35199656.count(e,tp,eg,ep,ev,re,r,rp)
-	c35199656.chain_solving=true
-end
-function c35199656.reset(e,tp,eg,ep,ev,re,r,rp)
-	c35199656.chain_solving=false
-end
 function c35199656.damcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsControler,1,nil,1-tp) and not c35199656.chain_solving
+	return eg:IsExists(Card.IsControler,1,nil,1-tp) and not Duel.IsChainSolving()
 end
 function c35199656.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,35199656)
@@ -94,7 +75,7 @@ function c35199656.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 end
 function c35199656.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsControler,1,nil,1-tp) and c35199656.chain_solving
+	return eg:IsExists(Card.IsControler,1,nil,1-tp) and Duel.IsChainSolving()
 end
 function c35199656.regop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(Card.IsControler,nil,1-tp)

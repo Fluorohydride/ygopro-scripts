@@ -6,7 +6,6 @@ function c23002292.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c23002292.condition)
-	e1:SetCost(c23002292.cost)
 	e1:SetTarget(c23002292.target)
 	e1:SetOperation(c23002292.activate)
 	c:RegisterEffect(e1)
@@ -14,6 +13,8 @@ function c23002292.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
+	e2:SetCost(c23002292.cost)
+	e2:SetDescription(aux.Stringid(23002292,1))
 	c:RegisterEffect(e2)
 end
 function c23002292.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -22,9 +23,7 @@ function c23002292.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23002292.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if e:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
-		Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
-	end
+	Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
 end
 function c23002292.setfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsSSetable(true)

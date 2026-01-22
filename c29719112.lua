@@ -7,6 +7,7 @@ function c29719112.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c29719112.hspcon)
+	e1:SetTarget(c29719112.hsptg)
 	e1:SetOperation(c29719112.hspop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -42,8 +43,17 @@ function c29719112.hspcon(e,c)
 	local tp=c:GetControler()
 	return Duel.CheckReleaseGroupEx(tp,c29719112.spfilter,1,REASON_SPSUMMON,false,nil,tp)
 end
+function c29719112.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c29719112.spfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
 function c29719112.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroupEx(tp,c29719112.spfilter,1,1,REASON_SPSUMMON,false,nil,tp)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_SPSUMMON)
 end
 function c29719112.spfilter1(c,e)

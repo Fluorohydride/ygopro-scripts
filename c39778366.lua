@@ -24,6 +24,7 @@ function c39778366.initial_effect(c)
 	e2:SetOperation(c39778366.thop)
 	c:RegisterEffect(e2)
 end
+c39778366.has_text_type=TYPE_UNION
 function c39778366.filter(c,e,tp)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
 		and c:IsType(TYPE_NORMAL+TYPE_UNION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

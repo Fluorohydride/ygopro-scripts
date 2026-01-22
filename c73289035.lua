@@ -44,7 +44,7 @@ function c73289035.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73289035.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local ct=e:GetHandler():GetOverlayCount()
+	local ct=e:GetHandler():GetPreviousOverlayCountOnField()
 	e:SetLabel(ct)
 	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and ct>0
 		and e:GetHandler():IsPreviousPosition(POS_FACEUP)

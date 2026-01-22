@@ -15,6 +15,7 @@ function c23303072.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c23303072.spcon)
+	e2:SetTarget(c23303072.sptg)
 	e2:SetOperation(c23303072.spop)
 	c:RegisterEffect(e2)
 end
@@ -26,10 +27,19 @@ function c23303072.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c23303072.filter,c:GetControler(),LOCATION_HAND,0,3,e:GetHandler())
 end
-function c23303072.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c23303072.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c23303072.filter,tp,LOCATION_HAND,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c23303072.filter,tp,LOCATION_HAND,0,3,3,c)
-	Duel.SendtoGrave(g,REASON_COST)
+	local sg=g:CancelableSelect(tp,3,3,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c23303072.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	local sum=0
 	local tc=g:GetFirst()
 	while tc do
@@ -43,4 +53,5 @@ function c23303072.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetValue(sum*300)
 	e1:SetReset(RESET_EVENT+0xff0000)
 	c:RegisterEffect(e1)
+	g:DeleteGroup()
 end

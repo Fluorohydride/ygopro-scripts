@@ -8,6 +8,7 @@ function c41406613.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c41406613.spcon)
+	e1:SetTarget(c41406613.sptg)
 	e1:SetOperation(c41406613.spop)
 	c:RegisterEffect(e1)
 	--search
@@ -31,10 +32,18 @@ function c41406613.spcon(e,c)
 	local tp=c:GetControler()
 	return Duel.IsExistingMatchingCard(c41406613.spfilter,tp,LOCATION_MZONE,0,1,nil,tp)
 end
-function c41406613.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c41406613.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c41406613.spfilter,tp,LOCATION_MZONE,0,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c41406613.spfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	Duel.SendtoHand(g,nil,REASON_COST)
+	local tc=g:SelectUnselect(nil,tp,false,true,1,1)
+	if tc then
+		e:SetLabelObject(tc)
+		return true
+	else return false end
+end
+function c41406613.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoHand(g,nil,REASON_SPSUMMON)
 end
 function c41406613.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

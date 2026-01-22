@@ -1,5 +1,6 @@
 --ベアルクティ－ポラリィ
 function c27693363.initial_effect(c)
+	aux.AddCodeList(c,89264428)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -14,6 +15,7 @@ function c27693363.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c27693363.sprcon)
+	e2:SetTarget(c27693363.sprtg)
 	e2:SetOperation(c27693363.sprop)
 	c:RegisterEffect(e2)
 	--activate card
@@ -59,11 +61,20 @@ function c27693363.sprcon(e,c)
 	local g=Duel.GetMatchingGroup(c27693363.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	return g:CheckSubGroup(c27693363.fselect,2,2,tp,c)
 end
-function c27693363.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function c27693363.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c27693363.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,c27693363.fselect,false,2,2,tp,c)
-	Duel.SendtoGrave(tg,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c27693363.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c27693363.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local tg=e:GetLabelObject()
+	Duel.SendtoGrave(tg,REASON_SPSUMMON)
+	tg:DeleteGroup()
 end
 function c27693363.actfilter(c,tp)
 	return c:IsCode(89264428) and c:GetActivateEffect():IsActivatable(tp,true,true)

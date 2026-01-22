@@ -62,11 +62,32 @@ function c61405855.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local bc=e:GetHandler():GetEquipTarget():GetBattleTarget()
 	Duel.SetTargetCard(bc)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,bc,1,0,0)
 end
 function c61405855.desop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
 	if bc:IsRelateToEffect(e) then
-		Duel.Destroy(bc,REASON_EFFECT)
+		local c=e:GetHandler()
+		local fid=c:GetFieldID()
+		bc:RegisterFlagEffect(61405855,RESET_PHASE+PHASE_BATTLE+RESET_EVENT+RESETS_STANDARD,0,1,fid)
+		local e1=Effect.CreateEffect(c)
+		e1:SetDescription(aux.Stringid(61405855,1))
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
+		e1:SetCountLimit(1)
+		e1:SetLabel(fid)
+		e1:SetLabelObject(bc)
+		e1:SetCondition(c61405855.descon2)
+		e1:SetOperation(c61405855.desop2)
+		e1:SetReset(RESET_PHASE+PHASE_BATTLE)
+		Duel.RegisterEffect(e1,tp)
 	end
+end
+function c61405855.descon2(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	return tc:GetFlagEffectLabel(61405855)==e:GetLabel()
+end
+function c61405855.desop2(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	Duel.Hint(HINT_CARD,0,61405855)
+	Duel.Destroy(tc,REASON_EFFECT)
 end

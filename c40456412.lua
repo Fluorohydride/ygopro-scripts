@@ -9,6 +9,7 @@ function c40456412.initial_effect(c)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetCondition(c40456412.condition)
 	e1:SetTarget(c40456412.target)
+	e1:SetOperation(c40456412.operation)
 	c:RegisterEffect(e1)
 end
 function c40456412.cfilter(c)
@@ -35,30 +36,42 @@ end
 function c40456412.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=Duel.GetMatchingGroup(c40456412.desfilter,tp,LOCATION_ONFIELD,0,nil)
 	local g2=Duel.GetMatchingGroup(c40456412.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)
-	local b1=Duel.GetFlagEffect(tp,40456412+1)==0
+	local b1=(Duel.GetFlagEffect(tp,40456412+1)==0 or not e:IsCostChecked())
 		and g1:GetCount()>0 and g2:GetCount()>0
-	local b2=Duel.GetFlagEffect(tp,40456412+2)==0
+	local b2=(Duel.GetFlagEffect(tp,40456412+2)==0 or not e:IsCostChecked())
 		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
 		and Duel.IsExistingMatchingCard(c40456412.psfilter,tp,LOCATION_EXTRA,0,1,nil)
-	local b3=Duel.GetFlagEffect(tp,40456412+3)==0
+	local b3=(Duel.GetFlagEffect(tp,40456412+3)==0 or not e:IsCostChecked())
 		and Duel.IsExistingMatchingCard(c40456412.ssfilter,tp,LOCATION_DECK,0,1,nil)
 	if chk==0 then return b1 or b2 or b3 end
 	local op=aux.SelectFromOptions(tp,
 		{b1,aux.Stringid(40456412,1)},
 		{b2,aux.Stringid(40456412,2)},
 		{b3,aux.Stringid(40456412,3)})
-	Duel.RegisterFlagEffect(tp,40456412+op,RESET_PHASE+PHASE_END,0,1)
+	if e:IsCostChecked() then
+		Duel.RegisterFlagEffect(tp,40456412+op,RESET_PHASE+PHASE_END,0,1)
+	end
+	e:SetLabel(op)
 	if op==1 then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,1,0,0)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
-		e:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
-		e:SetOperation(c40456412.spop)
-	elseif op==2 then
-		e:SetCategory(0)
-		e:SetOperation(c40456412.psop)
+		if e:IsCostChecked() then
+			e:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
+		end
 	else
-		e:SetCategory(0)
-		e:SetOperation(c40456412.ssop)
+		if e:IsCostChecked() then
+			e:SetCategory(0)
+		end
+	end
+end
+function c40456412.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		c40456412.spop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		c40456412.psop(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==3 then
+		c40456412.ssop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c40456412.spop(e,tp,eg,ep,ev,re,r,rp)

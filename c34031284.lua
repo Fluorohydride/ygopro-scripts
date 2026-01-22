@@ -1,5 +1,6 @@
 --おジャマ・エンペラー
 function c34031284.initial_effect(c)
+	aux.AddCodeList(c,90011152)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_BEAST),3,3,c34031284.lcheck)
 	c:EnableReviveLimit()

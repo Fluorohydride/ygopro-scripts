@@ -3,7 +3,7 @@ function c57769391.initial_effect(c)
 	--mill
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(57769391,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,57769391)

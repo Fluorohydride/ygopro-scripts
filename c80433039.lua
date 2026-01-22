@@ -13,13 +13,7 @@ function c80433039.initial_effect(c)
 	e1:SetOperation(c80433039.rmop)
 	c:RegisterEffect(e1)
 	--redirect
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCondition(c80433039.recon)
-	e2:SetValue(LOCATION_REMOVED)
-	c:RegisterEffect(e2)
+	aux.AddBanishRedirect(c)
 	--to hand(self)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(80433039,1))
@@ -69,9 +63,6 @@ function c80433039.rmop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Summon(tp,sg:GetFirst(),true,nil)
 		end
 	end
-end
-function c80433039.recon(e)
-	return e:GetHandler():IsFaceup()
 end
 function c80433039.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()

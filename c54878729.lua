@@ -13,7 +13,7 @@ function c54878729.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c54878729.filter(c,code)
-	return not c:IsCode(54878729) and (c:IsCode(code) or aux.IsCodeListed(c,code)) and c:IsAbleToGrave()
+	return not c:IsCode(54878729) and aux.IsCodeOrListed(c,code) and c:IsAbleToGrave()
 end
 function c54878729.chkfunc(g,attr,tp,code)
 	return g:IsExists(Card.IsAttribute,1,nil,attr) and Duel.IsExistingMatchingCard(c54878729.filter,tp,LOCATION_DECK,0,1,nil,code)

@@ -27,23 +27,10 @@ end
 function c90452877.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
-		local b1=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
-		local b2=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
-		local op=0
-		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(90452877,0),aux.Stringid(90452877,1))
-		else
-			op=2
-		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=nil
-		if op==0 then
-			g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,1,nil)
-		elseif op==1 then
-			g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,1,nil)
-		else
-			g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
+		local g=aux.SelectCardFromFieldFirst(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
+		if #g>0 then
+			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		end
-		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	end
 end

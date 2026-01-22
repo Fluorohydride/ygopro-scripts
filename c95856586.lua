@@ -49,7 +49,8 @@ function c95856586.chainlm(e,rp,tp)
 	return tp==rp
 end
 function c95856586.tgfilter(c,e,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsType(TYPE_XYZ) and c:IsCanBeEffectTarget(e)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsType(TYPE_XYZ)
+		and c:IsLocation(LOCATION_MZONE) and c:IsCanBeEffectTarget(e)
 end
 function c95856586.matfilter(c)
 	return c:IsType(TYPE_XYZ) and c:IsCanOverlay()

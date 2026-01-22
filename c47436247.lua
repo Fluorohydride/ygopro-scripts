@@ -29,7 +29,7 @@ function c47436247.initial_effect(c)
 end
 c47436247.counter_add_list={0x3}
 function c47436247.ctfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c47436247.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c47436247.ctfilter,1,nil) then
@@ -43,7 +43,7 @@ function c47436247.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c47436247.filter(c,ct,e,tp)
-	return c:IsLevelBelow(ct) and c:IsSetCard(0x3d,0x20)
+	return c:IsLevelBelow(ct) and c:IsSetCard(0x103d,0x20)
 		and c:IsType(TYPE_EFFECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c47436247.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

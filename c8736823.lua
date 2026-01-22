@@ -31,6 +31,7 @@ function c8736823.initial_effect(c)
 	e3:SetOperation(c8736823.tdop)
 	c:RegisterEffect(e3)
 end
+c8736823.treat_itself_tuner=true
 function c8736823.cfilter(c,tp,se)
 	return c:IsFaceup() and c:IsLevel(3) and c:IsControler(tp) and (se==nil or c:GetReasonEffect()~=se)
 end

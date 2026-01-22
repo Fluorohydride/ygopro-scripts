@@ -81,7 +81,7 @@ function c46033517.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c46033517.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=e:GetLabelObject()
-	Duel.Remove(sg,POS_FACEUP,REASON_COST)
+	Duel.Remove(sg,POS_FACEUP,REASON_SPSUMMON)
 	sg:DeleteGroup()
 end
 function c46033517.negcost(e,tp,eg,ep,ev,re,r,rp,chk)

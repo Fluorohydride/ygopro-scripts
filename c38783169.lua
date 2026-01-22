@@ -12,6 +12,7 @@ function c38783169.initial_effect(c)
 	e1:SetOperation(c38783169.tnop)
 	c:RegisterEffect(e1)
 end
+c38783169.treat_itself_tuner=true
 function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsType(TYPE_TUNER) end
 end

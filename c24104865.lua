@@ -97,6 +97,6 @@ function c24104865.desfilter(c,rc)
 	return c:GetFlagEffect(24104865)~=0 and rc:IsRelateToCard(c)
 end
 function c24104865.desop(e,tp,eg,ep,ev,re,r,rp)
-	local dg=Duel.GetMatchingGroup(c24104865.desfilter,tp,LOCATION_MZONE,0,nil,e:GetHandler())
+	local dg=Duel.GetMatchingGroup(c24104865.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e:GetHandler())
 	Duel.Destroy(dg,REASON_EFFECT)
 end

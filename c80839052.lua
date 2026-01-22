@@ -28,7 +28,7 @@ function c80839052.initial_effect(c)
 end
 function c80839052.spfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
-		and (c:GetPreviousRaceOnField()&RACE_ROCK)>0
+		and (c:GetPreviousRaceOnField()&RACE_ROCK)>0 and c:IsRace(RACE_ROCK)
 end
 function c80839052.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c80839052.spfilter,1,nil,tp)
@@ -45,7 +45,7 @@ function c80839052.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80839052.thfilter(c)
-	return c:IsAbleToHand() and (not c:IsCode(80839052)) and (aux.IsCodeListed(c,36623431) or c:IsCode(36623431))
+	return c:IsAbleToHand() and not c:IsCode(80839052) and aux.IsCodeOrListed(c,36623431)
 end
 function c80839052.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80839052.thfilter,tp,LOCATION_DECK,0,1,nil) end
