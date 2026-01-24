@@ -110,7 +110,7 @@ function Auxiliary.SynTarget(f1,f2,minct,maxct)
 				else return false end
 			end
 end
-function Auxiliary.SynOperation(f1,f2,minct,maxc)
+function Auxiliary.SynOperation(f1,f2,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
@@ -205,7 +205,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 				local goalchk=false
 				if mg1 then
 					mgchk=true
-					if min==max and #mg1==min+1 then
+					if min and min==max and #mg1==min+1 then
 						goalchk=Auxiliary.SynMixCheckGoal(tp,mg1,0,0,c,Group.CreateGroup(),smat,gc,mgchk,goalchk)
 						if not goalchk then
 							Duel.ResetFlagEffect(tp,8173184+1)
