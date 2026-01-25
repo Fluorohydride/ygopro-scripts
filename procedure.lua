@@ -1742,7 +1742,7 @@ function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 			return false
 		end
 	end
-	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and (not c.mat_group_check or c.mat_group_check(g,tp))
+	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and (not c.ritual_mat_group_check or c.ritual_mat_group_check(g,tp))
 		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
 end
 function Auxiliary.RitualCheckAdditionalLevel(c,rc)
@@ -1776,8 +1776,8 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 	if m2 then
 		mg:Merge(m2)
 	end
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c,tp)
+	if c.ritual_mat_filter then
+		mg=mg:Filter(c.ritual_mat_filter,c,tp)
 	else
 		mg:RemoveCard(c)
 	end
@@ -1828,8 +1828,8 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					if exg then
 						mg:Merge(exg)
 					end
-					if tc.mat_filter then
-						mg=mg:Filter(tc.mat_filter,tc,tp)
+					if tc.ritual_mat_filter then
+						mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 					else
 						mg:RemoveCard(tc)
 					end

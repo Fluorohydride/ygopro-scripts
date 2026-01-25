@@ -32,7 +32,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.negop)
 	c:RegisterEffect(e2)
 end
-function s.mat_filter(c)
+function s.ritual_mat_filter(c)
 	return c:IsAllTypes(TYPE_RITUAL+TYPE_MONSTER)
 end
 function s.prcost(e,tp,eg,ep,ev,re,r,rp,chk)

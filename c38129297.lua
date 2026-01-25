@@ -117,8 +117,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tg=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,aux.TRUE,e,tp,Group.CreateGroup(),mg,Card.GetLevel,"Greater")
 		local tc=tg:GetFirst()
 		if tc then
-			if tc.mat_filter then
-				mg=mg:Filter(tc.mat_filter,tc,tp)
+			if tc.ritual_mat_filter then
+				mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 			end
 			local lv=tc:GetLevel()
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
