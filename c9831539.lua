@@ -10,11 +10,11 @@ function c9831539.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9831539.filter1(c,tp)
-	return c:IsLevelAbove(1) and c:IsAttackBelow(1000)
+	return c:IsLevelAbove(1) and c:IsAttackBelow(1000) and c:IsFaceup()
 		and Duel.IsExistingTarget(c9831539.filter2,tp,LOCATION_MZONE,0,1,c,c:GetRace())
 end
 function c9831539.filter2(c,rac)
-	return c:IsLevelAbove(1) and c:IsAttackBelow(1000) and c:IsRace(rac)
+	return c:IsLevelAbove(1) and c:IsAttackBelow(1000) and c:IsFaceup() and c:IsRace(rac)
 end
 function c9831539.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
