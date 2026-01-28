@@ -49,7 +49,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_ATTACK_ALL)
 		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 		if #og>0 then
 			local ct=0
@@ -82,7 +82,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 						e3:SetCode(EFFECT_UPDATE_ATTACK)
 						e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 						e3:SetValue(-ct*1000)
-						e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+						e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 						tc:RegisterEffect(e3)
 						tc=g:GetNext()
 					end
