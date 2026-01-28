@@ -29,13 +29,19 @@ function c45675980.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45675980.syncheck(g,tp,syncard)
-	return g:IsExists(Card.IsRace,1,nil,RACE_DRAGON) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
+	return g:IsExists(Card.IsRace,1,nil,RACE_DRAGON)
+		and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c45675980.spfilter(c,tp,mg)
-	return mg:CheckSubGroup(c45675980.syncheck,2,#mg,tp,c)
+	if not c:IsType(TYPE_SYNCHRO) then return false end
+	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
+	local res=mg:CheckSubGroup(c45675980.syncheck,2,#mg,tp,c)
+	aux.GCheckAdditional=nil
+	return res
 end
 function c45675980.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanSpecialSummon(tp) then return false end
 		local mg=Duel.GetSynchroMaterial(tp)
 		if mg:IsExists(Card.GetHandSynchro,1,nil) then
 			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
