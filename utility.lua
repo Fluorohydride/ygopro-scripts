@@ -1704,8 +1704,8 @@ function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	g:Merge(eg)
 	local code,event=e:GetLabel()
 	local c=e:GetOwner()
-	local mr,meg=Duel.CheckEvent(event,true)
-	if mr and meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
+	-- clear if the owner card is in the event group
+	if eg:IsContains(c) then
 		g:Clear()
 	end
 	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
