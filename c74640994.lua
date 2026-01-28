@@ -2,6 +2,7 @@
 function c74640994.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_MSET+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
@@ -52,11 +53,16 @@ function c74640994.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local op=Duel.SelectOption(tp,table.unpack(ops))
 	local sel=opval[op]
 	e:SetLabel(sel)
-	if sel==1 or sel==2 then
-		e:SetCategory(CATEGORY_POSITION)
+	if sel==1 then
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_SSET)
+		Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
+	elseif sel==2 then
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET+CATEGORY_SSET)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 	elseif sel==3 then
-		e:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
+		e:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE+CATEGORY_SSET)
+	elseif sel==4 then
+		e:SetCategory(CATEGORY_SSET)
 	end
 end
 function c74640994.activate(e,tp,eg,ep,ev,re,r,rp)

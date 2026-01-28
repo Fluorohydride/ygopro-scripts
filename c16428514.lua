@@ -13,7 +13,7 @@ function c16428514.initial_effect(c)
 	--position
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(16428514,1))
-	e2:SetCategory(CATEGORY_POSITION)
+	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)

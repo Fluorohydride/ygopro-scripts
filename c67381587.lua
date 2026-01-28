@@ -9,7 +9,7 @@ function c67381587.initial_effect(c)
 	c:RegisterEffect(e1)
 	--position change
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_POSITION)
+	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)

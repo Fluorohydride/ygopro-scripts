@@ -21,7 +21,7 @@ function c53212882.initial_effect(c)
 	--turn set
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(53212882,1))
-	e3:SetCategory(CATEGORY_POSITION)
+	e3:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_MZONE)

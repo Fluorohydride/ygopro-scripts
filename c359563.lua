@@ -6,7 +6,7 @@ function c359563.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(359563,0))
-	e1:SetCategory(CATEGORY_POSITION)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetRange(LOCATION_MZONE)

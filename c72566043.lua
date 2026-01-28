@@ -30,6 +30,7 @@ function c72566043.initial_effect(c)
 	--set
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(72566043,0))
+	e5:SetCategory(CATEGORY_SSET)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DESTROYED)
 	e5:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)

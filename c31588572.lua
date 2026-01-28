@@ -3,6 +3,7 @@ function c31588572.initial_effect(c)
 	--set card
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31588572,0))
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY+CATEGORY_SSET+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)
@@ -36,10 +37,10 @@ function c31588572.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectTarget(tp,c31588572.setfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetFirst():IsType(TYPE_MONSTER) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 	else
-		e:SetCategory(CATEGORY_DESTROY)
+		e:SetCategory(CATEGORY_DESTROY+CATEGORY_SSET)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	end
 	local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,0,nil)

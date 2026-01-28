@@ -3,7 +3,7 @@ function c6713443.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c6713443.spcost)
 	e1:SetTarget(c6713443.sptg)

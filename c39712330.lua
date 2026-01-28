@@ -8,7 +8,7 @@ function c39712330.initial_effect(c)
 	--summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(39712330,0))
-	e2:SetCategory(CATEGORY_SUMMON)
+	e2:SetCategory(CATEGORY_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)

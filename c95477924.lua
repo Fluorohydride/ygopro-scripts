@@ -3,6 +3,7 @@ function c95477924.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,95477924+EFFECT_COUNT_CODE_OATH)

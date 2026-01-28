@@ -31,6 +31,7 @@ function s.initial_effect(c)
 	--sset
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,1))
+	e4:SetCategory(CATEGORY_SSET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SUMMON_SUCCESS)
 	e4:SetCountLimit(1,id+o)

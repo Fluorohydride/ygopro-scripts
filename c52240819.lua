@@ -29,6 +29,7 @@ function c52240819.initial_effect(c)
 	--set
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e4:SetCategory(CATEGORY_SSET)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCondition(aux.bdocon)

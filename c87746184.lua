@@ -25,7 +25,7 @@ function c87746184.initial_effect(c)
 	--to hand/set
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(87746184,1))
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_GRAVE)

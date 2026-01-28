@@ -27,7 +27,7 @@ function c96570609.initial_effect(c)
 	--summon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(96570609,2))
-	e4:SetCategory(CATEGORY_SUMMON)
+	e4:SetCategory(CATEGORY_SUMMON+CATEGORY_MSET)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetRange(LOCATION_HAND)
 	e4:SetCode(EVENT_FREE_CHAIN)

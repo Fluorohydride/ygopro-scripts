@@ -29,6 +29,7 @@ function c27946124.initial_effect(c)
 	--to deck
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(27946124,1))
+	e4:SetCategory(CATEGORY_SSET)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetRange(LOCATION_SZONE)

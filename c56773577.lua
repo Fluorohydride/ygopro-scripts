@@ -34,6 +34,7 @@ function c56773577.initial_effect(c)
 	--set
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(56773577,1))
+	e5:SetCategory(CATEGORY_SSET)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_TO_GRAVE)
 	e5:SetProperty(EFFECT_FLAG_DELAY)

@@ -12,7 +12,7 @@ function c74937659.initial_effect(c)
 	--to grave
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(74937659,0))
-	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1,74937659)
 	e2:SetRange(LOCATION_MZONE)
