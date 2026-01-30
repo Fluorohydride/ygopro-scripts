@@ -35,7 +35,7 @@ function c32909498.initial_effect(c)
 	e4:SetDescription(aux.Stringid(32909498,2))
 	e4:SetCategory(CATEGORY_REMOVE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e4:SetCode(EVENT_CHAINING)
+	e4:SetCode(EVENT_CHAIN_SOLVED)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1,32909499)
@@ -43,6 +43,13 @@ function c32909498.initial_effect(c)
 	e4:SetTarget(c32909498.rmtg2)
 	e4:SetOperation(c32909498.rmop)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_CHAINING)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetOperation(c32909498.chainreg)
+	c:RegisterEffect(e5)
 end
 function c32909498.spcon(e,c)
 	if c==nil then return true end
@@ -81,7 +88,13 @@ function c32909498.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c32909498.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and c:GetFlagEffectLabel(FLAG_ID_CHAINING)==c:GetControler()
+end
+function c32909498.chainreg(e,tp,eg,ep,ev,re,r,rp)
+	aux.chainreg(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	c:SetFlagEffectLabel(FLAG_ID_CHAINING,c:GetControler())
 end
 function c32909498.rmtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c32909498.rmfilter(chkc,tp) end
