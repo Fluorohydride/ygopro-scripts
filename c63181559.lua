@@ -34,7 +34,7 @@ function s.filter(c)
 end
 
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fusion_effect=FusionSpell.CreateSummonEffect(c,{
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
 		fusfilter=s.fusfilter,
 		pre_select_mat_location=LOCATION_GRAVE,
 		mat_operation_code_map={
