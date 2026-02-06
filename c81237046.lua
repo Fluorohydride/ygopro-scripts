@@ -212,5 +212,6 @@ function s.damcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.damop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,id)
+	e:GetHandler():ResetFlagEffect(id+o)
 	Duel.Damage(1-tp,900,REASON_EFFECT)
 end
