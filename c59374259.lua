@@ -51,7 +51,7 @@ function s.cfilter2(c)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil)
-	if not g:IsExists(aux.NOT(Card.IsAbleToRemove),1,nil)
+	if g:IsExists(Card.IsAbleToRemove,1,nil,tp)
 		and Duel.IsExistingMatchingCard(s.cfilter1,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(s.cfilter2,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
