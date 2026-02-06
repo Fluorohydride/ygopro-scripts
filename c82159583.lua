@@ -1,4 +1,4 @@
---道化の一座 ホワイトフェイス 
+--道化の一座 ホワイトフェイス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--summon with 1 tribute

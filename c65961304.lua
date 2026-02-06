@@ -1,4 +1,4 @@
---キラーチューンB2B
+--キラーチューン B２B
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Synchro Summon
@@ -72,7 +72,7 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToChain() and aux.NecroValleyFilter()(tc)  then
+	if tc:IsRelateToChain() and aux.NecroValleyFilter()(tc) then
 		local b1=tc:IsAbleToHand()
 		local b2=tc:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		local op=aux.SelectFromOptions(tp,

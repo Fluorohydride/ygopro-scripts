@@ -1,4 +1,4 @@
---糾罪巧γ'-「exapatisIA」
+--糾罪巧γ’－「exapatisIA」
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--pendulum summon

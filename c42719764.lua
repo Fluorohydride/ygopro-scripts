@@ -1,4 +1,4 @@
---サモンカウンター
+--サモンショック
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableCounterPermit(0x4c)

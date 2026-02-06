@@ -83,7 +83,7 @@ end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
 	local fid=e:GetLabel()
 	local tc=e:GetLabelObject()
-	if tc and tc:GetFlagEffectLabel(id)==fid  then
+	if tc and tc:GetFlagEffectLabel(id)==fid then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

@@ -1,4 +1,4 @@
---糾罪巧-「Atilε.SPIA」
+--糾罪巧－Atilε.SPIA
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--pendulum summon

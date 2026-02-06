@@ -92,11 +92,11 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetTargetRange(1,0)
 	e1:SetValue(s.aclimit)
-    if Duel.GetTurnPlayer()==tp then
-        e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
-    else
-        e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
-    end
+	if Duel.GetTurnPlayer()==tp then
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+	else
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
+	end
 	Duel.RegisterEffect(e1,tp)
 end
 function s.aclimit(e,re,tp)

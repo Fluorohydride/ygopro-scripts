@@ -1,4 +1,4 @@
---捕食植物テゥポウリザード
+--捕食植物テッポウリザード
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,24094653)
