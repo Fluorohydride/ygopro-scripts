@@ -67,24 +67,25 @@ function s.desrepfilter(c,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
-function s.rfilter(c)
+function s.rfilter(c,e)
 	return c:IsRace(RACE_REPTILE+RACE_DINOSAUR)
-		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function s.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(s.desrepfilter,1,nil,tp)
-		and Duel.CheckReleaseGroupEx(tp,s.rfilter,1,REASON_EFFECT,false,nil) end
-	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
+		and Duel.CheckReleaseGroupEx(tp,s.rfilter,1,REASON_EFFECT,false,nil,e) end
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96)	then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
+		local rg=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,REASON_EFFECT,false,nil,e)
+		e:SetLabelObject(rg:GetFirst())
+		return true
+	else return false end
 end
 function s.desrepval(e,c)
 	return s.desrepfilter(c,e:GetHandlerPlayer())
 end
 function s.desrepop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,REASON_EFFECT,false,nil)
-	if #g>0 then
-		Duel.Hint(HINT_CARD,0,id)
-		Duel.HintSelection(g)
-		Duel.Release(g,REASON_EFFECT+REASON_REPLACE)
-	end
+	local rc=e:GetLabelObject()
+	Duel.Hint(HINT_CARD,0,id)
+	Duel.Release(rc,REASON_EFFECT+REASON_REPLACE)
 end
