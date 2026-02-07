@@ -12,16 +12,20 @@ function s.initial_effect(c)
 	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 end
-function s.cfilter1(c,tp)
+function s.cfilter1(c)
 	return c:IsSetCard(0x1dd) and c:IsType(TYPE_MONSTER)
-		and Duel.IsExistingMatchingCard(s.cfilter2,tp,LOCATION_DECK,0,1,c)
 end
 function s.cfilter2(c)
 	return c:IsRace(RACE_DINOSAUR)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		return Duel.IsExistingMatchingCard(s.cfilter1,tp,LOCATION_DECK,0,1,nil,tp) and Duel.IsPlayerCanDiscardDeck(tp,2)
+		return Duel.IsExistingMatchingCard(s.cfilter1,tp,LOCATION_DECK,0,1,nil)
+			and Duel.IsExistingMatchingCard(s.cfilter2,tp,LOCATION_DECK,0,1,nil)
+			and Duel.IsExistingMatchingCard(
+				function(c) return s.cfilter1(c) or s.cfilter2(c) end,
+				tp,LOCATION_DECK,0,2,nil
+			)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_EXTRA)
 end
@@ -30,35 +34,32 @@ function s.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g1=Duel.GetMatchingGroup(s.cfilter1,tp,LOCATION_DECK,0,nil,tp)
 	local dcount=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 	if dcount==0 then return end
-	local seq1=-1
-	local spcard1=nil
-	for tc in aux.Next(g1) do
-		if tc:GetSequence()>seq1 then
-			seq1=tc:GetSequence()
-			spcard1=tc
-		end
-	end
+	local g1=Duel.GetMatchingGroup(s.cfilter1,tp,LOCATION_DECK,0,nil)
+	if #g1==0 then return end
 	local g2=Duel.GetMatchingGroup(s.cfilter2,tp,LOCATION_DECK,0,nil)
-	local seq2=-1
-	local spcard2=nil
-	for tc in aux.Next(g2) do
-		if tc:GetSequence()>seq2 and tc:GetSequence()~=seq1 then
-			seq2=tc:GetSequence()
-			spcard2=tc
-		end
+	if #g2==0 then return end
+	-- top card in g1
+	local c1=g1:GetMaxGroup(Card.GetSequence):GetFirst()
+	-- top card in g2
+	local c2=g2:GetMaxGroup(Card.GetSequence):GetFirst()
+	local seq=math.min(c1:GetSequence(),c2:GetSequence())
+	-- same card: try 2nd top
+	if c1==c2 then
+		g1:RemoveCard(c1)
+		g2:RemoveCard(c2)
+		-- if no 2nd cards, just exit
+		if #g1==0 and #g2==0 then return end
+
+		local seq1=(#g1>0) and select(2,g1:GetMaxGroup(Card.GetSequence)) or -1
+		local seq2=(#g2>0) and select(2,g2:GetMaxGroup(Card.GetSequence)) or -1
+		seq=math.max(seq1,seq2)
 	end
-	if seq1==-1 or seq2==-1 then
-		Duel.ConfirmDecktop(tp,dcount)
-		Duel.ShuffleDeck(tp)
-		return
-	end
-	if seq2<seq1 then seq1=seq2 end
-	Duel.ConfirmDecktop(tp,dcount-seq1)
-	Duel.SetLP(tp,Duel.GetLP(tp)-(dcount-seq1)*400)
-	local mg=Duel.GetDecktopGroup(tp,dcount-seq1):Filter(Card.IsType,nil,TYPE_MONSTER)
+	local excavate_count=dcount-seq
+	Duel.ConfirmDecktop(tp,excavate_count)
+	Duel.SetLP(tp,Duel.GetLP(tp)-excavate_count*400)
+	local mg=Duel.GetDecktopGroup(tp,excavate_count):Filter(Card.IsType,nil,TYPE_MONSTER)
 	local chkf=tp
 	local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg2=nil
@@ -85,6 +86,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		elseif ce~=nil then
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
+			Duel.BreakEffect()
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
