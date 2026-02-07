@@ -61,7 +61,12 @@ function s.cptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.ClearTargetCard()
 	e:SetLabelObject(te)
 	local tg=te:GetTarget()
-	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
+	if tg then
+		local cchk=e:IsCostChecked()
+		e:SetCostCheck(false)
+		tg(e,tp,eg,ep,ev,re,r,rp,1)
+		e:SetCostCheck(cchk)
+	end
 	Duel.ClearOperationInfo(0)
 end
 function s.cpop(e,tp,eg,ep,ev,re,r,rp)
