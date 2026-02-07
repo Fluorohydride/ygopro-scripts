@@ -8,7 +8,7 @@ function c19671102.initial_effect(c)
 	--position
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(19671102,0))
-	e2:SetCategory(CATEGORY_HANDES+CATEGORY_POSITION)
+	e2:SetCategory(CATEGORY_HANDES+CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTarget(c19671102.postg)

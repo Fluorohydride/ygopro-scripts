@@ -7,7 +7,7 @@ function c91957038.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Normal Summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_SUMMON)
+	e2:SetCategory(CATEGORY_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,91957038)

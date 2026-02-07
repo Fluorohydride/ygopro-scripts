@@ -3,6 +3,7 @@ function c67829249.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(c67829249.condition)
 	e1:SetCost(c67829249.cost)

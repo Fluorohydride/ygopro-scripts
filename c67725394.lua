@@ -16,7 +16,7 @@ function c67725394.initial_effect(c)
 	--tribute summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(67725394,1))
-	e3:SetCategory(CATEGORY_SUMMON)
+	e3:SetCategory(CATEGORY_SUMMON+CATEGORY_MSET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_HAND)

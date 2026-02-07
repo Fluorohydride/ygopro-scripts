@@ -3,6 +3,7 @@ function c82434071.initial_effect(c)
 	--Optional
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(82434071,0))
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCode(EVENT_PREDRAW)
@@ -40,6 +41,11 @@ function c82434071.optg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local op=Duel.SelectOption(tp,table.unpack(ops))+1
 	local sel=opval[op]
+	if sel==1 then
+		e:SetCategory(CATEGORY_SSET)
+	else
+		e:SetCategory(0)
+	end
 	e:SetLabel(sel)
 end
 function c82434071.opop(e,tp,eg,ep,ev,re,r,rp)

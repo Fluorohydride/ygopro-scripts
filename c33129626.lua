@@ -16,7 +16,7 @@ function c33129626.initial_effect(c)
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(33129626,1))
-	e2:SetCategory(CATEGORY_NEGATE)
+	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)

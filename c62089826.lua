@@ -9,6 +9,7 @@ function c62089826.initial_effect(c)
 	--select effect
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(62089826,0))
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -65,7 +66,7 @@ function c62089826.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 	else
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 	end
 	e:SetLabel(op)
 end

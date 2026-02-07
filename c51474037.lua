@@ -2,6 +2,7 @@
 function c51474037.initial_effect(c)
 	--change / destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)
@@ -39,7 +40,7 @@ function c51474037.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	e:SetLabel(sel)
 	if sel==0 then
-		e:SetCategory(CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 		g1:Merge(g2)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g1,1,0,0)
 	else

@@ -13,6 +13,7 @@ function c47126872.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(47126872,1))
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_LEAVE_FIELD)
 	e2:SetCondition(c47126872.setcon)
@@ -50,10 +51,10 @@ function c47126872.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject():GetLabelObject()
 	Duel.SetTargetCard(tc)
 	if tc:IsType(TYPE_MONSTER) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
 	else
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 	end
 end
 function c47126872.setop(e,tp,eg,ep,ev,re,r,rp)

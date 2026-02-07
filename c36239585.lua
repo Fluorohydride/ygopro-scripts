@@ -9,7 +9,7 @@ function c36239585.initial_effect(c)
 	--turn set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(36239585,0))
-	e2:SetCategory(CATEGORY_POSITION)
+	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTarget(c36239585.postg)
@@ -18,6 +18,7 @@ function c36239585.initial_effect(c)
 	--set card
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(36239585,1))
+	e3:SetCategory(CATEGORY_MSET+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_FLIP)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -58,10 +59,10 @@ function c36239585.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectTarget(tp,c36239585.setfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetFirst():IsType(TYPE_MONSTER) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_POSITION+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 	else
-		e:SetCategory(CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_SSET+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	end
 end

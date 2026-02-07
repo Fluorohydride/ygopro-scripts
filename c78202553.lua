@@ -24,7 +24,7 @@ function c78202553.initial_effect(c)
 	--turn set
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(78202553,2))
-	e3:SetCategory(CATEGORY_POSITION)
+	e3:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTarget(c78202553.postg)
