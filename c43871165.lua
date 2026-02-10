@@ -42,12 +42,20 @@ function s.desfilter(c)
 	return c:IsFaceupEx() and c:IsSetCard(0x1ce,0x1d2)
 		and c:IsType(TYPE_MONSTER)
 end
+function s.hdesfilter(c)
+	return c:IsSetCard(0x1ce,0x1d2) and c:IsType(TYPE_MONSTER) and c:IsPublic()
+end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(s.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,c) end
 	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,c)
 	g:AddCard(c)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
+	if Duel.IsExistingMatchingCard(aux.NOT(Card.IsPublic),tp,LOCATION_HAND,0,1,nil)
+		or Duel.IsExistingMatchingCard(s.hdesfilter,tp,LOCATION_HAND,0,1,nil) then
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,c,1,0,0)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
+	end
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
