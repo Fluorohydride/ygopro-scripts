@@ -68,7 +68,6 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_REMOVED,0,1,1,nil)
 		if #g>0 then
-			Duel.HintSelection(g)
 			Duel.SSet(tp,g)
 		end
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND)
