@@ -31,7 +31,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return c:IsAttribute(ATTRIBUTE_LIGHT)
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsFaceup()
 end
 function s.spfilter(c,tp,se)
 	return c:IsControler(tp) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and c:IsFaceup()

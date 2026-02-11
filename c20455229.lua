@@ -26,7 +26,7 @@ function c20455229.initial_effect(c)
 	Duel.AddCustomActivityCounter(20455229,ACTIVITY_SPSUMMON,c20455229.counterfilter)
 end
 function c20455229.counterfilter(c)
-	return c:IsRace(RACE_CYBERSE)
+	return c:IsRace(RACE_CYBERSE) and c:IsFaceup()
 end
 function c20455229.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
