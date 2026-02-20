@@ -53,7 +53,9 @@ function s.repfilter(c,tp)
 		and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function s.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(s.repfilter,1,nil,tp) end
+	local c=e:GetHandler()
+	if chk==0 then return c:IsAbleToRemove() and eg:IsExists(s.repfilter,1,c,tp)
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function s.repval(e,c)
