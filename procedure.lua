@@ -1487,7 +1487,7 @@ function Auxiliary.FusionEffectUltimateFilter(c,e,tp,mg,chkf,params)
 	return res
 end
 function Auxiliary.FusionEffectUltimateMatFilter(c,e,tp,f)
-	return not c:IsImmuneToEffect(e) and not f or f(c,e,tp)
+	return not c:IsImmuneToEffect(e) and (not f or f(c,e,tp))
 end
 function Auxiliary.FusionEffectUltimateMatLocFilter(c,e,tp,loc,f)
 	return not c:IsLocation(loc) or (not f or f(c,e,tp))
