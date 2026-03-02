@@ -93,7 +93,7 @@ function c17228908.repfilter(c,tp)
 end
 function c17228908.desfilter(c,e)
 	return c:IsRace(RACE_DINOSAUR) and c:IsDestructable(e)
-		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c17228908.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=eg:FilterCount(c17228908.repfilter,nil,tp)
