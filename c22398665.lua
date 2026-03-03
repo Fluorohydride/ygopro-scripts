@@ -62,8 +62,8 @@ function c22398665.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			mg:RemoveCard(tc)
 		end
@@ -89,7 +89,7 @@ function c22398665.RitualCheckEqual(g,c,atk)
 	return g:CheckWithSumEqual(aux.GetCappedAttack,atk,#g,#g)
 end
 function c22398665.RitualCheck(g,tp,c,atk,greater_or_equal)
-	return c22398665["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
+	return c22398665["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.ritual_mat_group_check or c.ritual_mat_group_check(g,tp))
 		and (not aux.RCheckAdditional or aux.RCheckAdditional(tp,g,c))
 end
 function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
@@ -114,8 +114,8 @@ function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,grea
 	if m2 then
 		mg:Merge(m2)
 	end
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c,tp)
+	if c.ritual_mat_filter then
+		mg=mg:Filter(c.ritual_mat_filter,c,tp)
 	else
 		mg:RemoveCard(c)
 	end
