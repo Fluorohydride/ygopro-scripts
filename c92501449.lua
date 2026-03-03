@@ -22,7 +22,27 @@ function s.initial_effect(c)
 	e2:SetTarget(s.rmtg)
 	e2:SetOperation(s.rmop)
 	c:RegisterEffect(e2)
+	if not s.global_check then
+		s.global_check=true
+		-- reset announced codes at opponent's End Phase
+		local ge=Effect.CreateEffect(c)
+		ge:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge:SetCode(EVENT_PHASE+PHASE_END)
+		ge:SetCountLimit(1)
+		ge:SetOperation(function(e,tp)
+			if Duel.GetTurnPlayer()~=tp then
+				s.resolved_codes[tp]={}
+			end
+		end)
+		Duel.RegisterEffect(ge,0)
+	end
 end
+
+s.resolved_codes={
+	[0]={},
+	[1]={},
+}
+
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
 	Duel.PayLPCost(tp,2000)
@@ -30,7 +50,25 @@ end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	getmetatable(e:GetHandler()).announce_filter={TYPE_MONSTER,OPCODE_ISTYPE,TYPE_NORMAL,OPCODE_ISTYPE,5405694,OPCODE_ISCODE,OPCODE_OR,OPCODE_AND}
+
+	-- Monster AND (Normal OR code 5405694 カオス・ソルジャー)
+	local filter={
+		TYPE_MONSTER,OPCODE_ISTYPE,
+		TYPE_NORMAL,OPCODE_ISTYPE,
+		5405694,OPCODE_ISCODE,
+		OPCODE_OR,
+		OPCODE_AND
+	}
+
+	-- exclude previously resolved codes
+	for code,_ in pairs(s.resolved_codes[tp]) do
+		filter[#filter+1]=code
+		filter[#filter+1]=OPCODE_ISCODE
+		filter[#filter+1]=OPCODE_NOT
+		filter[#filter+1]=OPCODE_AND
+	end
+
+	getmetatable(e:GetHandler()).announce_filter=filter
 	local ac=Duel.AnnounceCard(tp,table.unpack(getmetatable(e:GetHandler()).announce_filter))
 	Duel.SetTargetParam(ac)
 	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
@@ -44,6 +82,12 @@ function s.smfilter(c,e,tp,code)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
+
+	-- skip if code was already resolved
+	if s.resolved_codes[tp][code] then return end
+	-- remember resolving code
+	s.resolved_codes[tp][code]=true
+
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
@@ -59,6 +103,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=Duel.SelectMatchingCard(tp,s.smfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,code)
 			if g:GetCount()>0 then
+				Duel.BreakEffect()
 				Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 			end
 	end
