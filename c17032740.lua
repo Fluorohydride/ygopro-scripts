@@ -12,7 +12,7 @@ function c17032740.initial_effect(c)
 	e1:SetValue(c17032740.splimit)
 	c:RegisterEffect(e1)
 	--return
-	aux.EnableNeosReturn(c,c17032740.retop,CATEGORY_MSET)
+	aux.EnableNeosReturn(c,c17032740.retop,c17032740.set_category)
 	--coin
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(17032740,1))
@@ -28,6 +28,9 @@ end
 c17032740.material_setcode=0x8
 function c17032740.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
+end
+function c17032740.set_category(e,tp,eg,ep,ev,re,r,rp)
+	e:SetCategory(CATEGORY_MSET)
 end
 function c17032740.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
