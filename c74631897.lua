@@ -72,7 +72,10 @@ function s.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 end
 function s.spfilter(c,tp,sc)
-	return c:IsFusionSetCard(0x1cd) and c:IsLevelAbove(7) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsFusionSetCard(0x1cd) and c:IsLevelAbove(7)
+		and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0
+		and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function s.cfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDiscardable(REASON_SPSUMMON)
