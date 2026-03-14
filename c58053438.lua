@@ -55,6 +55,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(s.aclimit)
 		e1:SetReset(RESET_PHASE+PHASE_END,2)
 		Duel.RegisterEffect(e1,tp)
+		e:SetLabel(0)
 	end
 end
 function s.aclimit(e,re,tp)

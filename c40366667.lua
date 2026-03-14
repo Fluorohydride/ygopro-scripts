@@ -45,6 +45,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTargetRange(1,0)
 		e1:SetValue(s.aclimit)
 		Duel.RegisterEffect(e1,tp)
+		e:SetLabel(0)
 	end
 end
 function s.handcon(e)
