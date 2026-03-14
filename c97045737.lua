@@ -30,6 +30,8 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 	if e:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
 		e:SetLabel(100)
+	else
+		e:SetLabel(0)
 	end
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
@@ -46,7 +48,6 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTargetRange(1,0)
 		e1:SetValue(s.aclimit)
 		Duel.RegisterEffect(e1,tp)
-		e:SetLabel(0)
 	end
 end
 function s.handcon(e)
