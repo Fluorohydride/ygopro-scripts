@@ -93,7 +93,7 @@ function c73193552.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73193552.repfilter(c,e)
-	return c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+	return c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c73193552.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -109,6 +109,7 @@ function c73193552.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	else return false end
 end
 function c73193552.desrepop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,73193552)
 	local tc=e:GetLabelObject()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)
