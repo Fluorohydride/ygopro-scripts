@@ -343,7 +343,6 @@ end
 function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgchk,goalchk)
 	if f4 and not f4(c,syncard,c1,c2,c3) then return false end
 	local sg=Group.FromCards(c1,c)
-	sg:AddCard(c1)
 	if c2 then sg:AddCard(c2) end
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
@@ -1488,7 +1487,7 @@ function Auxiliary.FusionEffectUltimateFilter(c,e,tp,mg,chkf,params)
 	return res
 end
 function Auxiliary.FusionEffectUltimateMatFilter(c,e,tp,f)
-	return not c:IsImmuneToEffect(e) and not f or f(c,e,tp)
+	return not c:IsImmuneToEffect(e) and (not f or f(c,e,tp))
 end
 function Auxiliary.FusionEffectUltimateMatLocFilter(c,e,tp,loc,f)
 	return not c:IsLocation(loc) or (not f or f(c,e,tp))

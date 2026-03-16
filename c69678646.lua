@@ -18,7 +18,7 @@ function s.racefilter(c,sc)
 end
 function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x9c,0x53) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and not Duel.IsExistingMatchingCard(s.racefilter,tp,LOCATION_ONFIELD,0,1,nil,c)
+		and not Duel.IsExistingMatchingCard(s.racefilter,tp,LOCATION_MZONE,0,1,nil,c)
 end
 function s.cfilter(c)
 	return c:IsSetCard(0x9c,0x53) and c:IsFaceup()
