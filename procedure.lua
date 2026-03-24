@@ -451,10 +451,10 @@ function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
 	end
 	return false
 end
-function Auxiliary.TuneMagicianCheckAdditionalXYZ(g)
+function Auxiliary.TuneMagicianCheckAdditionalXyz(g)
 	return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_X)
 end
---deprecated, use plain function instead
+--deprecated, use plain function instead of this factory
 function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
 	return	function(g)
 				return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,ecode)
@@ -568,7 +568,7 @@ function Auxiliary.CheckXyz2XMaterial(c,f,lv,minc,maxc,mg)
 	local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 	if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 	Duel.SetSelectedCard(sg)
-	Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXYZ
+	Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 	local res=mg:CheckSubGroup(Auxiliary.Xyz2XMaterialGoal,2,maxc,tp,c,minc)
 	Auxiliary.GCheckAdditional=nil
 	return res
@@ -620,7 +620,7 @@ function Auxiliary.XyzTarget(f,lv,minct,maxct,alterf,alterdesc,alterop)
 						local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 						Duel.SetSelectedCard(sg)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-						Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXYZ
+						Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 						g=mg:SelectSubGroup(tp,Auxiliary.Xyz2XMaterialGoal,cancel,2,maxc,tp,c,minc)
 						Auxiliary.GCheckAdditional=nil
 					else
@@ -752,7 +752,7 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct,alterf,alterdesc,alter
 				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXYZ
+				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 				local res=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 				Auxiliary.GCheckAdditional=nil
 				return res
@@ -783,7 +783,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 					altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 					mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 					Duel.SetSelectedCard(sg)
-					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXYZ
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 					b1=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
 					b2=#altg>0
@@ -804,7 +804,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 					e:SetLabel(0)
 					Duel.SetSelectedCard(sg)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXYZ
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 					g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
 				end
