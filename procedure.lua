@@ -919,7 +919,10 @@ function Auxiliary.FConditionMix(insf,sub,...)
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(gc)
 				end
-				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				Auxiliary.GCheckClassifier=Auxiliary.FGetMixClassifier(tp,mg,c,sub2,chkfnf,table.unpack(funs))
+				local res=mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				Auxiliary.GCheckClassifier=nil
+				return res
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
@@ -933,7 +936,9 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+				Auxiliary.GCheckClassifier=Auxiliary.FGetMixClassifier(tp,mg,c,sub2,chkfnf,table.unpack(funs))
 				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,cancel,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				Auxiliary.GCheckClassifier=nil
 				if sg then
 					Duel.SetFusionMaterial(sg)
 				else
@@ -948,6 +953,70 @@ function Auxiliary.FConditionFilterMix(c,fc,sub,notfusion,...)
 		if f(c,fc,sub) then return true end
 	end
 	return false
+end
+function Auxiliary.FClassifierCheckMixFilter(f,c,fc,sub,mg)
+	local touched_sg=false
+	local sg_probe=setmetatable({},{
+		__len=function()
+			touched_sg=true
+			return 0
+		end,
+		__index=function()
+			touched_sg=true
+			return function() return nil end
+		end,
+		__add=function()
+			touched_sg=true
+			return nil
+		end,
+		__sub=function()
+			touched_sg=true
+			return nil
+		end,
+		__eq=function()
+			touched_sg=true
+			return false
+		end
+	})
+	local ok,res=pcall(f,c,fc,sub,mg,sg_probe)
+	if not ok or touched_sg then return nil end
+	return res and true or false
+end
+function Auxiliary.FGetMixClassifier(tp,mg,fc,sub,chkfnf,...)
+	if Auxiliary.FCheckAdditional or Auxiliary.FGoalCheckAdditional then
+		return nil
+	end
+	local not_fusion=chkfnf&(0x100|0x200)>0
+	if not not_fusion and mg:IsExists(Card.IsHasEffect,1,nil,EFFECT_TUNE_MAGICIAN_F) then
+		return nil
+	end
+	local chkf=chkfnf&0xff
+	local mustg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_FMATERIAL)
+	local funs={...}
+	return	function(c)
+				if chkf~=PLAYER_NONE and c:IsLocation(LOCATION_MZONE) then
+					return nil
+				end
+				if mustg:IsContains(c) then
+					return nil
+				end
+				local normal_key={}
+				for i,f in ipairs(funs) do
+					local res=Auxiliary.FClassifierCheckMixFilter(f,c,fc,false,mg)
+					if res==nil then return nil end
+					normal_key[i]=res and "1" or "0"
+				end
+				if not sub then
+					return table.concat(normal_key)
+				end
+				local sub_key={}
+				for i,f in ipairs(funs) do
+					local res=Auxiliary.FClassifierCheckMixFilter(f,c,fc,true,mg)
+					if res==nil then return nil end
+					sub_key[i]=res and "1" or "0"
+				end
+				return table.concat(normal_key).."|"..table.concat(sub_key)
+			end
 end
 function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 	if fun2 then
