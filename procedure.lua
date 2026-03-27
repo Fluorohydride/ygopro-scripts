@@ -1818,6 +1818,15 @@ function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 				end
 	end
 end
+function Auxiliary.RitualGetClassifier(c)
+	if c.mat_group_check or Auxiliary.RCheckAdditional or Auxiliary.RGCheckAdditional then
+		return nil
+	end
+	return	function(mc)
+				if mc:IsLocation(LOCATION_MZONE) then return nil end
+				return mc:GetRitualLevel(c)
+			end
+end
 function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal,chk)
 	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp,chk)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
@@ -1831,7 +1840,9 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 	end
 	local lv=level_function(c)
 	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
+	Auxiliary.GCheckClassifier=Auxiliary.RitualGetClassifier(c)
 	local res=mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
+	Auxiliary.GCheckClassifier=nil
 	Auxiliary.GCheckAdditional=nil
 	return res
 end
@@ -1884,7 +1895,9 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
+					Auxiliary.GCheckClassifier=Auxiliary.RitualGetClassifier(tc)
 					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
+					Auxiliary.GCheckClassifier=nil
 					Auxiliary.GCheckAdditional=nil
 					if not mat then goto RitualUltimateSelectStart end
 					tc:SetMaterial(mat)
@@ -2026,6 +2039,20 @@ function Auxiliary.PendOperationCheck(ft1,ft2,ft)
 				return #g<=ft and #exg<=ft2 and #mg<=ft1
 			end
 end
+function Auxiliary.PendClassifier(c)
+	local lv=0
+	if c.pendulum_level then
+		lv=c.pendulum_level
+	else
+		lv=c:GetLevel()
+	end
+	lv=lv&0x7f
+	if c:IsLocation(LOCATION_EXTRA) then
+		return lv|0x80
+	else
+		return lv
+	end
+end
 function Auxiliary.PendOperation(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	local lscale=c:GetLeftScale()
@@ -2076,7 +2103,9 @@ function Auxiliary.PendOperation(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
+	Auxiliary.GCheckClassifier=Auxiliary.PendClassifier
 	local g=tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
+	Auxiliary.GCheckClassifier=nil
 	Auxiliary.GCheckAdditional=nil
 	if not g then return end
 	if ce then

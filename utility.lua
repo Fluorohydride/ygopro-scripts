@@ -54,6 +54,12 @@ end
 ---@param g Group
 ---@return boolean
 Auxiliary.GCheckAdditional=function(sg,c,g) return true end
+---Subgroup classifier function used to deduplicate equivalent branches on the same recursion layer
+---@param c Card
+---@param sg Group
+---@param g Group
+---@return any
+Auxiliary.GCheckClassifier=nil
 
 --the table of xyz number
 Auxiliary.xyz_number={}
@@ -1193,6 +1199,28 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	return multi_linked_zone
 end
 Auxiliary.SubGroupCaptured=nil
+function Auxiliary.GetGroupClassifier(c,sg,g)
+	if not Auxiliary.GCheckClassifier then return nil end
+	return Auxiliary.GCheckClassifier(c,sg,g)
+end
+function Auxiliary.CloneCapturedSubGroup()
+	local cg=Group.CreateGroup()
+	cg:Merge(Auxiliary.SubGroupCaptured)
+	return cg
+end
+function Auxiliary.MergeClassifiedCaptured(cg,entry,c)
+	if not entry.captured then return end
+	local rep=entry.rep
+	if rep==c then
+		cg:Merge(entry.captured)
+		return
+	end
+	local cap=Group.CreateGroup()
+	cap:Merge(entry.captured)
+	cap:RemoveCard(rep)
+	cap:AddCard(c)
+	cg:Merge(cap)
+end
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
 	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g) then
@@ -1200,7 +1228,26 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 		return false
 	end
 	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
-		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
+	if not res and #sg<max then
+		local eg=g:Clone()
+		local classified={}
+		for tc in Auxiliary.Next(g-sg) do
+			local cls=Auxiliary.GetGroupClassifier(tc,sg,eg)
+			if not cls then
+				res=Auxiliary.CheckGroupRecursive(tc,sg,eg,f,min,max,ext_params)
+			else
+				local entry=classified[cls]
+				if entry~=nil then
+					res=entry
+				else
+					res=Auxiliary.CheckGroupRecursive(tc,sg,eg,f,min,max,ext_params)
+					classified[cls]=res
+				end
+			end
+			if res then break end
+			eg:RemoveCard(tc)
+		end
+	end
 	sg:RemoveCard(c)
 	return res
 end
@@ -1215,7 +1262,36 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 		Auxiliary.SubGroupCaptured:Clear()
 		Auxiliary.SubGroupCaptured:Merge(sg)
 	else
-		res=#sg<max and g:IsExists(Auxiliary.CheckGroupRecursiveCapture,1,sg,sg,g,f,min,max,ext_params)
+		if #sg<max then
+			local eg=g:Clone()
+			local classified={}
+			for tc in Auxiliary.Next(g-sg) do
+				local cls=Auxiliary.GetGroupClassifier(tc,sg,eg)
+				if not cls then
+					res=Auxiliary.CheckGroupRecursiveCapture(tc,sg,eg,f,min,max,ext_params)
+				else
+					local entry=classified[cls]
+					if entry~=nil then
+						res=entry.res
+						if res then
+							Auxiliary.SubGroupCaptured:Clear()
+							Auxiliary.MergeClassifiedCaptured(Auxiliary.SubGroupCaptured,entry,tc)
+						end
+					else
+						res=Auxiliary.CheckGroupRecursiveCapture(tc,sg,eg,f,min,max,ext_params)
+						entry={res=res,rep=tc}
+						if res then
+							entry.captured=Auxiliary.CloneCapturedSubGroup()
+						end
+						classified[cls]=entry
+					end
+				end
+				if res then break end
+				eg:RemoveCard(tc)
+			end
+		else
+			res=false
+		end
 	end
 	sg:RemoveCard(c)
 	return res
@@ -1237,8 +1313,21 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g)) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil,g)) then return true end
 	local eg=g:Clone()
+	local classified={}
 	for c in Auxiliary.Next(g-sg) do
-		if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
+		local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+		if not cls then
+			if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
+		else
+			local entry=classified[cls]
+			if entry~=nil then
+				if entry then return true end
+			else
+				entry=Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params)
+				classified[cls]=entry
+				if entry then return true end
+			end
+		end
 		eg:RemoveCard(c)
 	end
 	return false
@@ -1268,11 +1357,29 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	while #sg<max do
 		local cg=Group.CreateGroup()
 		local eg=g:Clone()
+		local classified={}
 		for c in Auxiliary.Next(g-sg) do
 			if not cg:IsContains(c) then
-				if Auxiliary.CheckGroupRecursiveCapture(c,sg,eg,f,min,max,ext_params) then
+				local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+				local entry
+				if cls then
+					entry=classified[cls]
+				end
+				if entry~=nil then
+					if entry.res then
+						Auxiliary.MergeClassifiedCaptured(cg,entry,c)
+					else
+						eg:RemoveCard(c)
+					end
+				elseif Auxiliary.CheckGroupRecursiveCapture(c,sg,eg,f,min,max,ext_params) then
+					if cls then
+						classified[cls]={res=true,rep=c,captured=Auxiliary.CloneCapturedSubGroup()}
+					end
 					cg:Merge(Auxiliary.SubGroupCaptured)
 				else
+					if cls then
+						classified[cls]={res=false,rep=c}
+					end
 					eg:RemoveCard(c)
 				end
 			end
@@ -1324,7 +1431,24 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	if #sg==#checks then
 		res=f(sg,table.unpack(ext_params))
 	else
-		res=g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
+		local eg=g:Clone()
+		local classified={}
+		for tc in Auxiliary.Next(g-sg) do
+			local cls=Auxiliary.GetGroupClassifier(tc,sg,eg)
+			if not cls then
+				res=Auxiliary.CheckGroupRecursiveEach(tc,sg,eg,f,checks,ext_params)
+			else
+				local entry=classified[cls]
+				if entry~=nil then
+					res=entry
+				else
+					res=Auxiliary.CheckGroupRecursiveEach(tc,sg,eg,f,checks,ext_params)
+					classified[cls]=res
+				end
+			end
+			if res then break end
+			eg:RemoveCard(tc)
+		end
 	end
 	sg:RemoveCard(c)
 	return res
@@ -1340,7 +1464,25 @@ function Group.CheckSubGroupEach(g,checks,f,...)
 	if #g<#checks then return false end
 	local ext_params={...}
 	local sg=Group.CreateGroup()
-	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
+	local eg=g:Clone()
+	local classified={}
+	for c in Auxiliary.Next(g-sg) do
+		local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+		if not cls then
+			if Auxiliary.CheckGroupRecursiveEach(c,sg,eg,f,checks,ext_params) then return true end
+		else
+			local entry=classified[cls]
+			if entry~=nil then
+				if entry then return true end
+			else
+				entry=Auxiliary.CheckGroupRecursiveEach(c,sg,eg,f,checks,ext_params)
+				classified[cls]=entry
+				if entry then return true end
+			end
+		end
+		eg:RemoveCard(c)
+	end
+	return false
 end
 ---
 ---@param g Group
@@ -1358,7 +1500,29 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	local sg=Group.CreateGroup()
 	local finish=false
 	while #sg<ct do
-		local cg=g:Filter(Auxiliary.CheckGroupRecursiveEach,sg,sg,g,f,checks,ext_params)
+		local cg=Group.CreateGroup()
+		local eg=g:Clone()
+		local classified={}
+		for c in Auxiliary.Next(g-sg) do
+			local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+			local res
+			if not cls then
+				res=Auxiliary.CheckGroupRecursiveEach(c,sg,eg,f,checks,ext_params)
+			else
+				local entry=classified[cls]
+				if entry~=nil then
+					res=entry
+				else
+					res=Auxiliary.CheckGroupRecursiveEach(c,sg,eg,f,checks,ext_params)
+					classified[cls]=res
+				end
+			end
+			if res then
+				cg:AddCard(c)
+			else
+				eg:RemoveCard(c)
+			end
+		end
 		if #cg==0 then break end
 		local tc=cg:SelectUnselect(sg,tp,false,cancelable,ct,ct)
 		if not tc then break end
