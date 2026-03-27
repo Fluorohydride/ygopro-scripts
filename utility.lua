@@ -1132,25 +1132,61 @@ end
 function Auxiliary.dncheck(g)
 	return g:GetClassCount(Card.GetCode)==#g
 end
+function Auxiliary.dncheck_additional(sg,c,g)
+	return Auxiliary.dncheck(sg)
+end
+function Auxiliary.dncheck_classifier(c,sg,g)
+	return c:GetCode()
+end
 --check for cards with different levels
 function Auxiliary.dlvcheck(g)
 	return g:GetClassCount(Card.GetLevel)==#g
+end
+function Auxiliary.dlvcheck_additional(sg,c,g)
+	return Auxiliary.dlvcheck(sg)
+end
+function Auxiliary.dlvcheck_classifier(c,sg,g)
+	return c:GetLevel()
 end
 --check for cards with different ranks
 function Auxiliary.drkcheck(g)
 	return g:GetClassCount(Card.GetRank)==#g
 end
+function Auxiliary.drkcheck_additional(sg,c,g)
+	return Auxiliary.drkcheck(sg)
+end
+function Auxiliary.drkcheck_classifier(c,sg,g)
+	return c:GetRank()
+end
 --check for cards with different links
 function Auxiliary.dlkcheck(g)
 	return g:GetClassCount(Card.GetLink)==#g
+end
+function Auxiliary.dlkcheck_additional(sg,c,g)
+	return Auxiliary.dlkcheck(sg)
+end
+function Auxiliary.dlkcheck_classifier(c,sg,g)
+	return c:GetLink()
 end
 --check for cards with different attributes
 function Auxiliary.dabcheck(g)
 	return g:GetClassCount(Card.GetAttribute)==#g
 end
+function Auxiliary.dabcheck_additional(sg,c,g)
+	return Auxiliary.dabcheck(sg)
+end
+function Auxiliary.dabcheck_classifier(c,sg,g)
+	return c:GetAttribute()
+end
 --check for cards with different races
 function Auxiliary.drccheck(g)
 	return g:GetClassCount(Card.GetRace)==#g
+end
+function Auxiliary.drccheck_additional(sg,c,g)
+	return Auxiliary.drccheck(sg)
+end
+function Auxiliary.drccheck_classifier(c,sg,g)
+	return c:GetRace()
 end
 --check for group with 2 cards, each card match f with a1/a2 as argument
 function Auxiliary.gfcheck(g,f,a1,a2)
@@ -1417,6 +1453,13 @@ function Auxiliary.CreateChecks(f,list)
 		checks[i]=function(c) return f(c,list[i]) end
 	end
 	return checks
+end
+function Auxiliary.GetCheckSignature(c,checks,...)
+	local sig={}
+	for i=1,#checks do
+		sig[i]=checks[i](c,...) and "1" or "0"
+	end
+	return table.concat(sig)
 end
 function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	if not checks[1+#sg](c) then

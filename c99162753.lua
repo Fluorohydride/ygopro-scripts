@@ -11,6 +11,13 @@ function c99162753.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c99162753.spchecks=aux.CreateChecks(Card.IsType,{TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ,TYPE_PENDULUM,TYPE_LINK})
+function c99162753.fadditional(sg,c,g)
+	return sg:GetClassCount(Card.GetOriginalRace)<=1
+end
+function c99162753.fclassifier(c,sg,g)
+	if c:IsLocation(LOCATION_MZONE) then return nil end
+	return c:GetOriginalRace().."|"..aux.GetCheckSignature(c,c99162753.spchecks)
+end
 function c99162753.rmfilter(c)
 	return (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup()) and c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_PENDULUM+TYPE_LINK) and c:IsAbleToRemove()
 end
@@ -25,14 +32,25 @@ function c99162753.spfilter(c,e,tp,g)
 end
 function c99162753.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c99162753.rmfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	if chk==0 then return g:CheckSubGroupEach(c99162753.spchecks,c99162753.fgoal,e,tp) end
+	if chk==0 then
+		aux.GCheckAdditional=c99162753.fadditional
+		aux.GCheckClassifier=c99162753.fclassifier
+		local res=g:CheckSubGroupEach(c99162753.spchecks,c99162753.fgoal,e,tp)
+		aux.GCheckClassifier=nil
+		aux.GCheckAdditional=nil
+		return res
+	end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,6,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
 function c99162753.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c99162753.rmfilter),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	aux.GCheckAdditional=c99162753.fadditional
+	aux.GCheckClassifier=c99162753.fclassifier
 	local rg=g:SelectSubGroupEach(tp,c99162753.spchecks,false,c99162753.fgoal,e,tp)
+	aux.GCheckClassifier=nil
+	aux.GCheckAdditional=nil
 	if rg and rg:GetCount()==6 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=Duel.SelectMatchingCard(tp,c99162753.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp,rg)

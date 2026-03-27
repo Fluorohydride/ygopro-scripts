@@ -38,7 +38,11 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	aux.GCheckAdditional=aux.dncheck_additional
+	aux.GCheckClassifier=aux.dncheck_classifier
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,0,nil):SelectSubGroup(tp,aux.dncheck,false,2,2)
+	aux.GCheckClassifier=nil
+	aux.GCheckAdditional=nil
 	if g then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

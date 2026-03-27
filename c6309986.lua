@@ -13,6 +13,9 @@ function c6309986.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c6309986.spchecks=aux.CreateChecks(Card.IsCode,{44632120,71036835,7021574,34419588,40640057})
+function c6309986.spclassifier(c,sg,g)
+	return aux.GetCheckSignature(c,c6309986.spchecks)
+end
 function c6309986.cfilter(c,tp)
 	return c:IsFaceup() and c:IsLevel(5) and c:IsReleasable() and Duel.GetMZoneCount(tp,c)>=5
 end
@@ -31,8 +34,11 @@ function c6309986.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		e:SetLabel(0)
 		local g=Duel.GetMatchingGroup(c6309986.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
-		return res and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-			and g:CheckSubGroupEach(c6309986.spchecks)
+		if not (res and not Duel.IsPlayerAffectedByEffect(tp,59822133)) then return false end
+		aux.GCheckClassifier=c6309986.spclassifier
+		local ok=g:CheckSubGroupEach(c6309986.spchecks)
+		aux.GCheckClassifier=nil
+		return ok
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,5,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
@@ -40,7 +46,9 @@ function c6309986.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c6309986.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		aux.GCheckClassifier=c6309986.spclassifier
 		local sg=g:SelectSubGroupEach(tp,c6309986.spchecks,false)
+		aux.GCheckClassifier=nil
 		if sg then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			for tc in aux.Next(sg) do

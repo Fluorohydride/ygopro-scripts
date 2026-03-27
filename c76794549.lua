@@ -50,6 +50,10 @@ function c76794549.initial_effect(c)
 	end
 end
 c76794549.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
+function c76794549.hnclassifier(c,sg,g)
+	if c:IsLocation(LOCATION_MZONE) then return nil end
+	return aux.GetCheckSignature(c,c76794549.hnchecks)
+end
 function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
@@ -155,11 +159,18 @@ end
 function c76794549.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c76794549.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	if chk==0 then return c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingMatchingCard(c76794549.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
-		and mg:CheckSubGroupEach(c76794549.hnchecks,c76794549.hngoal,e,tp,c) end
+	if chk==0 then
+		if not (c:IsAbleToRemoveAsCost()
+			and Duel.IsExistingMatchingCard(c76794549.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)) then return false end
+		aux.GCheckClassifier=c76794549.hnclassifier
+		local res=mg:CheckSubGroupEach(c76794549.hnchecks,c76794549.hngoal,e,tp,c)
+		aux.GCheckClassifier=nil
+		return res
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	aux.GCheckClassifier=c76794549.hnclassifier
 	local sg=mg:SelectSubGroupEach(tp,c76794549.hnchecks,false,c76794549.hngoal,e,tp,c)
+	aux.GCheckClassifier=nil
 	sg:AddCard(c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
