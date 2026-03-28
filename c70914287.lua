@@ -40,7 +40,7 @@ function c70914287.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c70914287.spchecks=aux.CreateChecks(Card.IsCode,{44632120,71036835,7021574,34419588,40640057})
-function c70914287.spclassifier(c,sg,g)
+function c70914287.spclassifier(c)
 	return aux.GetCheckSignature(c,c70914287.spchecks)
 end
 function c70914287.spcon1(e,tp,eg,ep,ev,re,r,rp)

@@ -45,7 +45,7 @@ function c12289247.initial_effect(c)
 	end
 end
 c12289247.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
-function c12289247.hnclassifier(c,sg,g)
+function c12289247.hnclassifier(c)
 	if c:IsLocation(LOCATION_MZONE) then return nil end
 	return aux.GetCheckSignature(c,c12289247.hnchecks)
 end

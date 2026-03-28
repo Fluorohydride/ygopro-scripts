@@ -11,7 +11,7 @@ function c80033124.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c80033124.fchecks=aux.CreateChecks(Card.IsFusionCode,{41230939,77625948,3019642})
-function c80033124.fclassifier(c,sg,g)
+function c80033124.fclassifier(c)
 	if c:IsLocation(LOCATION_MZONE) then return nil end
 	return aux.GetCheckSignature(c,c80033124.fchecks)
 end

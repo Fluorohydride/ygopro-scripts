@@ -12,7 +12,7 @@ function c61411502.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c61411502.rchecks=aux.CreateChecks(Card.IsAttribute,{ATTRIBUTE_WIND,ATTRIBUTE_WATER,ATTRIBUTE_FIRE,ATTRIBUTE_EARTH})
-function c61411502.rclassifier(c,sg,g)
+function c61411502.rclassifier(c)
 	return aux.GetCheckSignature(c,c61411502.rchecks)
 end
 function c61411502.rgoal(g,tp)

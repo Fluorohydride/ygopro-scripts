@@ -56,8 +56,6 @@ end
 Auxiliary.GCheckAdditional=function(sg,c,g) return true end
 ---Subgroup classifier function used to deduplicate equivalent branches on the same recursion layer
 ---@param c Card
----@param sg Group
----@param g Group
 ---@return any
 Auxiliary.GCheckClassifier=nil
 
@@ -1135,7 +1133,7 @@ end
 function Auxiliary.dncheck_additional(sg,c,g)
 	return Auxiliary.dncheck(sg)
 end
-function Auxiliary.dncheck_classifier(c,sg,g)
+function Auxiliary.dncheck_classifier(c)
 	return c:GetCode()
 end
 --check for cards with different levels
@@ -1145,7 +1143,7 @@ end
 function Auxiliary.dlvcheck_additional(sg,c,g)
 	return Auxiliary.dlvcheck(sg)
 end
-function Auxiliary.dlvcheck_classifier(c,sg,g)
+function Auxiliary.dlvcheck_classifier(c)
 	return c:GetLevel()
 end
 --check for cards with different ranks
@@ -1155,7 +1153,7 @@ end
 function Auxiliary.drkcheck_additional(sg,c,g)
 	return Auxiliary.drkcheck(sg)
 end
-function Auxiliary.drkcheck_classifier(c,sg,g)
+function Auxiliary.drkcheck_classifier(c)
 	return c:GetRank()
 end
 --check for cards with different links
@@ -1165,7 +1163,7 @@ end
 function Auxiliary.dlkcheck_additional(sg,c,g)
 	return Auxiliary.dlkcheck(sg)
 end
-function Auxiliary.dlkcheck_classifier(c,sg,g)
+function Auxiliary.dlkcheck_classifier(c)
 	return c:GetLink()
 end
 --check for cards with different attributes
@@ -1175,7 +1173,7 @@ end
 function Auxiliary.dabcheck_additional(sg,c,g)
 	return Auxiliary.dabcheck(sg)
 end
-function Auxiliary.dabcheck_classifier(c,sg,g)
+function Auxiliary.dabcheck_classifier(c)
 	return c:GetAttribute()
 end
 --check for cards with different races
@@ -1185,7 +1183,7 @@ end
 function Auxiliary.drccheck_additional(sg,c,g)
 	return Auxiliary.drccheck(sg)
 end
-function Auxiliary.drccheck_classifier(c,sg,g)
+function Auxiliary.drccheck_classifier(c)
 	return c:GetRace()
 end
 --check for group with 2 cards, each card match f with a1/a2 as argument
@@ -1235,9 +1233,9 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	return multi_linked_zone
 end
 Auxiliary.SubGroupCaptured=nil
-function Auxiliary.GetGroupClassifier(c,sg,g)
+function Auxiliary.GetGroupClassifier(c)
 	if not Auxiliary.GCheckClassifier then return nil end
-	return Auxiliary.GCheckClassifier(c,sg,g)
+	return Auxiliary.GCheckClassifier(c)
 end
 function Auxiliary.CloneCapturedSubGroup()
 	local cg=Group.CreateGroup()
@@ -1268,7 +1266,7 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 		local eg=g:Clone()
 		local classified={}
 		for tc in Auxiliary.Next(g-sg) do
-			local cls=Auxiliary.GetGroupClassifier(tc,sg,eg)
+			local cls=Auxiliary.GetGroupClassifier(tc)
 			if not cls then
 				res=Auxiliary.CheckGroupRecursive(tc,sg,eg,f,min,max,ext_params)
 			else
@@ -1302,7 +1300,7 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 			local eg=g:Clone()
 			local classified={}
 			for tc in Auxiliary.Next(g-sg) do
-				local cls=Auxiliary.GetGroupClassifier(tc,sg,eg)
+				local cls=Auxiliary.GetGroupClassifier(tc)
 				if not cls then
 					res=Auxiliary.CheckGroupRecursiveCapture(tc,sg,eg,f,min,max,ext_params)
 				else
@@ -1351,7 +1349,7 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local eg=g:Clone()
 	local classified={}
 	for c in Auxiliary.Next(g-sg) do
-		local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+		local cls=Auxiliary.GetGroupClassifier(c)
 		if not cls then
 			if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
 		else
@@ -1396,7 +1394,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 		local classified={}
 		for c in Auxiliary.Next(g-sg) do
 			if not cg:IsContains(c) then
-				local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+				local cls=Auxiliary.GetGroupClassifier(c)
 				local entry
 				if cls then
 					entry=classified[cls]
@@ -1477,7 +1475,7 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 		local eg=g:Clone()
 		local classified={}
 		for tc in Auxiliary.Next(g-sg) do
-			local cls=Auxiliary.GetGroupClassifier(tc,sg,eg)
+			local cls=Auxiliary.GetGroupClassifier(tc)
 			if not cls then
 				res=Auxiliary.CheckGroupRecursiveEach(tc,sg,eg,f,checks,ext_params)
 			else
@@ -1510,7 +1508,7 @@ function Group.CheckSubGroupEach(g,checks,f,...)
 	local eg=g:Clone()
 	local classified={}
 	for c in Auxiliary.Next(g-sg) do
-		local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+		local cls=Auxiliary.GetGroupClassifier(c)
 		if not cls then
 			if Auxiliary.CheckGroupRecursiveEach(c,sg,eg,f,checks,ext_params) then return true end
 		else
@@ -1547,7 +1545,7 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 		local eg=g:Clone()
 		local classified={}
 		for c in Auxiliary.Next(g-sg) do
-			local cls=Auxiliary.GetGroupClassifier(c,sg,eg)
+			local cls=Auxiliary.GetGroupClassifier(c)
 			local res
 			if not cls then
 				res=Auxiliary.CheckGroupRecursiveEach(c,sg,eg,f,checks,ext_params)
