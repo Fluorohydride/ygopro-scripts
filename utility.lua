@@ -1237,24 +1237,6 @@ function Auxiliary.GetGroupClassifier(c)
 	if not Auxiliary.GCheckClassifier then return nil end
 	return Auxiliary.GCheckClassifier(c)
 end
-function Auxiliary.CloneCapturedSubGroup()
-	local cg=Group.CreateGroup()
-	cg:Merge(Auxiliary.SubGroupCaptured)
-	return cg
-end
-function Auxiliary.MergeClassifiedCaptured(cg,entry,c)
-	if not entry.captured then return end
-	local rep=entry.rep
-	if rep==c then
-		cg:Merge(entry.captured)
-		return
-	end
-	local cap=Group.CreateGroup()
-	cap:Merge(entry.captured)
-	cap:RemoveCard(rep)
-	cap:AddCard(c)
-	cg:Merge(cap)
-end
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
 	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g) then
@@ -1306,18 +1288,10 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 				else
 					local entry=classified[cls]
 					if entry~=nil then
-						res=entry.res
-						if res then
-							Auxiliary.SubGroupCaptured:Clear()
-							Auxiliary.MergeClassifiedCaptured(Auxiliary.SubGroupCaptured,entry,tc)
-						end
+						res=entry
 					else
 						res=Auxiliary.CheckGroupRecursiveCapture(tc,sg,eg,f,min,max,ext_params)
-						entry={res=res,rep=tc}
-						if res then
-							entry.captured=Auxiliary.CloneCapturedSubGroup()
-						end
-						classified[cls]=entry
+						classified[cls]=res
 					end
 				end
 				if res then break end
@@ -1400,19 +1374,19 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 					entry=classified[cls]
 				end
 				if entry~=nil then
-					if entry.res then
-						Auxiliary.MergeClassifiedCaptured(cg,entry,c)
+					if entry then
+						cg:AddCard(c)
 					else
 						eg:RemoveCard(c)
 					end
 				elseif Auxiliary.CheckGroupRecursiveCapture(c,sg,eg,f,min,max,ext_params) then
 					if cls then
-						classified[cls]={res=true,rep=c,captured=Auxiliary.CloneCapturedSubGroup()}
+						classified[cls]=true
 					end
-					cg:Merge(Auxiliary.SubGroupCaptured)
+					cg:AddCard(c)
 				else
 					if cls then
-						classified[cls]={res=false,rep=c}
+						classified[cls]=false
 					end
 					eg:RemoveCard(c)
 				end
