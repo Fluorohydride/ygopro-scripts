@@ -20,7 +20,7 @@ end
 function s.rcheck(tp,g,c)
 	return g:GetCount()<3
 end
-function s.rgcheck(g,ec)
+function s.rgcheck(g)
 	return g:GetCount()<3
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)

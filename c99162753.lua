@@ -11,7 +11,7 @@ function c99162753.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c99162753.spchecks=aux.CreateChecks(Card.IsType,{TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ,TYPE_PENDULUM,TYPE_LINK})
-function c99162753.fadditional(sg,c,g)
+function c99162753.fadditional(sg)
 	return sg:GetClassCount(Card.GetOriginalRace)<=1
 end
 function c99162753.fclassifier(c)
