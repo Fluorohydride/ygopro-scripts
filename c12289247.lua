@@ -47,7 +47,7 @@ end
 c12289247.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
 function c12289247.hnclassifier(c)
 	if c:IsLocation(LOCATION_MZONE) then return nil end
-	return aux.GetCheckSignature(c,c12289247.hnchecks)
+	return aux.GetCheckMask(c,c12289247.hnchecks)
 end
 function c12289247.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)

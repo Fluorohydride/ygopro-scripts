@@ -14,7 +14,7 @@ function c6309986.initial_effect(c)
 end
 c6309986.spchecks=aux.CreateChecks(Card.IsCode,{44632120,71036835,7021574,34419588,40640057})
 function c6309986.spclassifier(c)
-	return aux.GetCheckSignature(c,c6309986.spchecks)
+	return aux.GetCheckMask(c,c6309986.spchecks)
 end
 function c6309986.cfilter(c,tp)
 	return c:IsFaceup() and c:IsLevel(5) and c:IsReleasable() and Duel.GetMZoneCount(tp,c)>=5

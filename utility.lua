@@ -1426,12 +1426,14 @@ function Auxiliary.CreateChecks(f,list)
 	end
 	return checks
 end
-function Auxiliary.GetCheckSignature(c,checks,...)
-	local sig={}
+function Auxiliary.GetCheckMask(c,checks,...)
+	local mask=0
 	for i=1,#checks do
-		sig[i]=checks[i](c,...) and "1" or "0"
+		if checks[i](c,...) then
+			mask=mask|(1<<(#checks-i))
+		end
 	end
-	return table.concat(sig)
+	return mask
 end
 function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	if not checks[1+#sg](c) then

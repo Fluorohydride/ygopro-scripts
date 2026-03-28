@@ -13,7 +13,7 @@ end
 c80033124.fchecks=aux.CreateChecks(Card.IsFusionCode,{41230939,77625948,3019642})
 function c80033124.fclassifier(c)
 	if c:IsLocation(LOCATION_MZONE) then return nil end
-	return aux.GetCheckSignature(c,c80033124.fchecks)
+	return aux.GetCheckMask(c,c80033124.fchecks)
 end
 function c80033124.ffilter0(c)
 	return c:IsFusionCode(41230939,77625948,3019642) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()

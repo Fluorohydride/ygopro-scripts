@@ -52,7 +52,7 @@ end
 c76794549.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
 function c76794549.hnclassifier(c)
 	if c:IsLocation(LOCATION_MZONE) then return nil end
-	return aux.GetCheckSignature(c,c76794549.hnchecks)
+	return aux.GetCheckMask(c,c76794549.hnchecks)
 end
 function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
