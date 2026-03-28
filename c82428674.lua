@@ -37,11 +37,7 @@ function c82428674.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c82428674.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_MZONE,0,nil)
 	if ct==0 or g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	aux.GCheckAdditional=aux.dlvcheck_additional
-	aux.GCheckClassifier=aux.dlvcheck_classifier
-	local rg=g:SelectSubGroup(tp,aux.TRUE,false,1,ct)
-	aux.GCheckClassifier=nil
-	aux.GCheckAdditional=nil
+	local rg=aux.SelectSubGroupByCheckSpec(g,tp,aux.dlvcheck_spec,aux.TRUE,false,1,ct)
 	local rc=Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	if rc>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

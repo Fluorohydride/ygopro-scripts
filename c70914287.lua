@@ -76,10 +76,9 @@ function c70914287.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c70914287.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 	if chk==0 then
 		if not (c:IsAbleToHand() and Duel.GetMZoneCount(tp,c)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133)) then return false end
-		aux.GCheckClassifier=c70914287.spclassifier
-		local res=g:CheckSubGroupEach(c70914287.spchecks)
-		aux.GCheckClassifier=nil
-		return res
+		return aux.WithSubGroupContext(nil,c70914287.spclassifier,function()
+			return g:CheckSubGroupEach(c70914287.spchecks)
+		end)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,c,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,5,tp,LOCATION_HAND+LOCATION_GRAVE)
@@ -90,9 +89,9 @@ function c70914287.spop2(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70914287.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		aux.GCheckClassifier=c70914287.spclassifier
-		local sg=g:SelectSubGroupEach(tp,c70914287.spchecks,false)
-		aux.GCheckClassifier=nil
+		local sg=aux.WithSubGroupContext(nil,c70914287.spclassifier,function()
+			return g:SelectSubGroupEach(tp,c70914287.spchecks,false)
+		end)
 		if sg then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 		end

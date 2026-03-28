@@ -34,10 +34,9 @@ function c80033124.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 		if not Duel.IsExistingMatchingCard(c80033124.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil) then return false end
 		local mg=Duel.GetMatchingGroup(c80033124.ffilter0,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-		aux.GCheckClassifier=c80033124.fclassifier
-		local res=mg:CheckSubGroupEach(c80033124.fchecks,c80033124.fgoal,e,tp)
-		aux.GCheckClassifier=nil
-		return res
+		return aux.WithSubGroupContext(nil,c80033124.fclassifier,function()
+			return mg:CheckSubGroupEach(c80033124.fchecks,c80033124.fgoal,e,tp)
+		end)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
@@ -51,9 +50,9 @@ function c80033124.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c80033124.ffilter),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	aux.GCheckClassifier=c80033124.fclassifier
-	local sg=mg:SelectSubGroupEach(tp,c80033124.fchecks,false,c80033124.fgoal,e,tp)
-	aux.GCheckClassifier=nil
+	local sg=aux.WithSubGroupContext(nil,c80033124.fclassifier,function()
+		return mg:SelectSubGroupEach(tp,c80033124.fchecks,false,c80033124.fgoal,e,tp)
+	end)
 	if not sg then return end
 	local cg=sg:Filter(c80033124.cfilter,nil)
 	if cg:GetCount()>0 then

@@ -134,15 +134,14 @@ function c12289247.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if not (c:IsAbleToRemoveAsCost()
 			and Duel.IsExistingMatchingCard(c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)) then return false end
-		aux.GCheckClassifier=c12289247.hnclassifier
-		local res=mg:CheckSubGroupEach(c12289247.hnchecks,c12289247.hngoal,e,tp,c)
-		aux.GCheckClassifier=nil
-		return res
+		return aux.WithSubGroupContext(nil,c12289247.hnclassifier,function()
+			return mg:CheckSubGroupEach(c12289247.hnchecks,c12289247.hngoal,e,tp,c)
+		end)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	aux.GCheckClassifier=c12289247.hnclassifier
-	local sg=mg:SelectSubGroupEach(tp,c12289247.hnchecks,false,c12289247.hngoal,e,tp,c)
-	aux.GCheckClassifier=nil
+	local sg=aux.WithSubGroupContext(nil,c12289247.hnclassifier,function()
+		return mg:SelectSubGroupEach(tp,c12289247.hnchecks,false,c12289247.hngoal,e,tp,c)
+	end)
 	sg:AddCard(c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end

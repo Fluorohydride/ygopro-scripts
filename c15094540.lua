@@ -81,11 +81,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return ft>=5 and Duel.IsExistingTarget(s.spfilter,tp,LOCATION_REMOVED,0,5,nil,e,tp) and g:GetClassCount(Card.GetCode)>=5
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	aux.GCheckAdditional=aux.dncheck_additional
-	aux.GCheckClassifier=aux.dncheck_classifier
-	local tg=g:SelectSubGroup(tp,aux.dncheck,false,5,5)
-	aux.GCheckClassifier=nil
-	aux.GCheckAdditional=nil
+	local tg=aux.SelectSubGroupByCheckSpec(g,tp,aux.dncheck_spec,nil,false,5,5)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,tg:GetCount(),0,0)
 end

@@ -919,9 +919,9 @@ function Auxiliary.FConditionMix(insf,sub,...)
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(gc)
 				end
-				Auxiliary.GCheckClassifier=Auxiliary.FGetMixClassifier(tp,mg,c,sub2,chkfnf,table.unpack(funs))
-				local res=mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
-				Auxiliary.GCheckClassifier=nil
+				local res=Auxiliary.WithSubGroupContext(nil,Auxiliary.FGetMixClassifier(tp,mg,c,sub2,chkfnf,table.unpack(funs)),function()
+					return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				end)
 				return res
 			end
 end
@@ -936,9 +936,9 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub2,notfusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(gc) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				Auxiliary.GCheckClassifier=Auxiliary.FGetMixClassifier(tp,mg,c,sub2,chkfnf,table.unpack(funs))
-				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,cancel,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
-				Auxiliary.GCheckClassifier=nil
+				local sg=Auxiliary.WithSubGroupContext(nil,Auxiliary.FGetMixClassifier(tp,mg,c,sub2,chkfnf,table.unpack(funs)),function()
+					return mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,cancel,#funs,#funs,tp,c,sub2,chkfnf,table.unpack(funs))
+				end)
 				if sg then
 					Duel.SetFusionMaterial(sg)
 				else
@@ -1908,11 +1908,9 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 		mg:RemoveCard(c)
 	end
 	local lv=level_function(c)
-	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
-	Auxiliary.GCheckClassifier=Auxiliary.RitualGetClassifier(c)
-	local res=mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
-	Auxiliary.GCheckClassifier=nil
-	Auxiliary.GCheckAdditional=nil
+	local res=Auxiliary.WithSubGroupContext(Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal),Auxiliary.RitualGetClassifier(c),function()
+		return mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
+	end)
 	return res
 end
 function Auxiliary.RitualExtraFilter(c,f)
@@ -1963,11 +1961,9 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
-					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
-					Auxiliary.GCheckClassifier=Auxiliary.RitualGetClassifier(tc)
-					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
-					Auxiliary.GCheckClassifier=nil
-					Auxiliary.GCheckAdditional=nil
+					mat=Auxiliary.WithSubGroupContext(Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal),Auxiliary.RitualGetClassifier(tc),function()
+						return mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
+					end)
 					if not mat then goto RitualUltimateSelectStart end
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
@@ -2171,11 +2167,9 @@ function Auxiliary.PendOperation(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 		tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
-	Auxiliary.GCheckClassifier=Auxiliary.PendClassifier
-	local g=tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
-	Auxiliary.GCheckClassifier=nil
-	Auxiliary.GCheckAdditional=nil
+	local g=Auxiliary.WithSubGroupContext(Auxiliary.PendOperationCheck(ft1,ft2,ft),Auxiliary.PendClassifier,function()
+		return tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
+	end)
 	if not g then return end
 	if ce then
 		Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())

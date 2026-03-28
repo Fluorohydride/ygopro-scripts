@@ -35,10 +35,9 @@ function c6309986.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 		local g=Duel.GetMatchingGroup(c6309986.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 		if not (res and not Duel.IsPlayerAffectedByEffect(tp,59822133)) then return false end
-		aux.GCheckClassifier=c6309986.spclassifier
-		local ok=g:CheckSubGroupEach(c6309986.spchecks)
-		aux.GCheckClassifier=nil
-		return ok
+		return aux.WithSubGroupContext(nil,c6309986.spclassifier,function()
+			return g:CheckSubGroupEach(c6309986.spchecks)
+		end)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,5,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
@@ -46,9 +45,9 @@ function c6309986.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c6309986.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		aux.GCheckClassifier=c6309986.spclassifier
-		local sg=g:SelectSubGroupEach(tp,c6309986.spchecks,false)
-		aux.GCheckClassifier=nil
+		local sg=aux.WithSubGroupContext(nil,c6309986.spclassifier,function()
+			return g:SelectSubGroupEach(tp,c6309986.spchecks,false)
+		end)
 		if sg then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			for tc in aux.Next(sg) do

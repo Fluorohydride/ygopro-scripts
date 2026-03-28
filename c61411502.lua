@@ -21,15 +21,14 @@ end
 function c61411502.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp)
 	if chk==0 then
-		aux.GCheckClassifier=c61411502.rclassifier
-		local res=g:CheckSubGroupEach(c61411502.rchecks,c61411502.rgoal,tp)
-		aux.GCheckClassifier=nil
-		return res
+		return aux.WithSubGroupContext(nil,c61411502.rclassifier,function()
+			return g:CheckSubGroupEach(c61411502.rchecks,c61411502.rgoal,tp)
+		end)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	aux.GCheckClassifier=c61411502.rclassifier
-	local rg=g:SelectSubGroupEach(tp,c61411502.rchecks,false,c61411502.rgoal,tp)
-	aux.GCheckClassifier=nil
+	local rg=aux.WithSubGroupContext(nil,c61411502.rclassifier,function()
+		return g:SelectSubGroupEach(tp,c61411502.rchecks,false,c61411502.rgoal,tp)
+	end)
 	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
