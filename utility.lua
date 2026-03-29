@@ -1484,8 +1484,8 @@ function Auxiliary.GetEachBuckets(g,checks)
 	local buckets={}
 	local classified={}
 	local card_to_bucket={}
-	local function new_bucket(c,valid)
-		local bucket={cards=Group.CreateGroup(),rep=c,valid=valid}
+	local function new_bucket(valid)
+		local bucket={cards=Group.CreateGroup(),valid=valid}
 		buckets[#buckets+1]=bucket
 		return bucket
 	end
@@ -1500,7 +1500,7 @@ function Auxiliary.GetEachBuckets(g,checks)
 					bucket=by_sig[sig]
 				end
 				if not bucket then
-					bucket=new_bucket(c,valid)
+					bucket=new_bucket(valid)
 					if not by_sig then
 						by_sig={}
 						classified[cls]=by_sig
@@ -1512,7 +1512,7 @@ function Auxiliary.GetEachBuckets(g,checks)
 			end
 		end
 		if not bucket then
-			bucket=new_bucket(c,valid)
+			bucket=new_bucket(valid)
 			if cls~=nil and #checks==0 then
 				classified[cls]=bucket
 			end
@@ -1536,6 +1536,12 @@ function Auxiliary.GetEachCounts(buckets,card_to_bucket,sg)
 	end
 	return counts
 end
+function Auxiliary.IsNotInGroup(c,g)
+	return not g:IsContains(c)
+end
+function Auxiliary.GetBucketCard(bucket,sg)
+	return bucket.cards:SearchCard(Auxiliary.IsNotInGroup,sg)
+end
 function Auxiliary.GetSubGroupStateKey(size,counts)
 	return size.."|"..table.concat(counts,",")
 end
@@ -1550,14 +1556,16 @@ function Auxiliary.CheckSubGroupState(sg,g,buckets,counts,min,max,f,ext_params,m
 	if not res and #sg<max then
 		for i,bucket in ipairs(buckets) do
 			if counts[i]>0 then
-				local c=bucket.rep
-				sg:AddCard(c)
-				counts[i]=counts[i]-1
-				if not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,c,g) then
-					res=Auxiliary.CheckSubGroupState(sg,g,buckets,counts,min,max,f,ext_params,memo)
+				local c=Auxiliary.GetBucketCard(bucket,sg)
+				if c then
+					sg:AddCard(c)
+					counts[i]=counts[i]-1
+					if not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,c,g) then
+						res=Auxiliary.CheckSubGroupState(sg,g,buckets,counts,min,max,f,ext_params,memo)
+					end
+					counts[i]=counts[i]+1
+					sg:RemoveCard(c)
 				end
-				counts[i]=counts[i]+1
-				sg:RemoveCard(c)
 				if res then break end
 			end
 		end
@@ -1574,18 +1582,20 @@ function Auxiliary.CheckSubGroupEachState(sg,g,buckets,counts,pos,f,ext_params,m
 	local res=false
 	for i,bucket in ipairs(buckets) do
 		if counts[i]>0 and bucket.valid[pos] then
-			local c=bucket.rep
-			sg:AddCard(c)
-			counts[i]=counts[i]-1
-			if not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,c,g) then
-				if pos==#buckets[1].valid then
-					res=f(sg,table.unpack(ext_params))
-				else
-					res=Auxiliary.CheckSubGroupEachState(sg,g,buckets,counts,pos+1,f,ext_params,memo)
+			local c=Auxiliary.GetBucketCard(bucket,sg)
+			if c then
+				sg:AddCard(c)
+				counts[i]=counts[i]-1
+				if not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,c,g) then
+					if pos==#buckets[1].valid then
+						res=f(sg,table.unpack(ext_params))
+					else
+						res=Auxiliary.CheckSubGroupEachState(sg,g,buckets,counts,pos+1,f,ext_params,memo)
+					end
 				end
+				counts[i]=counts[i]+1
+				sg:RemoveCard(c)
 			end
-			counts[i]=counts[i]+1
-			sg:RemoveCard(c)
 			if res then break end
 		end
 	end
