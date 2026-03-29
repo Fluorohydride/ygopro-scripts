@@ -31,9 +31,6 @@ end
 function c99426088.rexfilter(c)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelAbove(1) and c:IsAbleToGrave()
 end
-function c99426088.frcheck(tp,sg,fc)
-	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
-end
 function c99426088.gcheck(sg)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
@@ -45,12 +42,10 @@ function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			local fmg2=Duel.GetMatchingGroup(c99426088.fexfilter,tp,LOCATION_DECK,0,nil)
 			if fmg2:GetCount()>0 then
 				fmg1:Merge(fmg2)
-				aux.FCheckAdditional=c99426088.frcheck
 				aux.GCheckAdditional=c99426088.gcheck
 			end
 		end
 		local res=Duel.IsExistingMatchingCard(c99426088.ffilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,fmg1,nil,chkf)
-		aux.FCheckAdditional=nil
 		aux.GCheckAdditional=nil
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -67,10 +62,8 @@ function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			if c99426088.excon(tp) then
 				rmg2=Duel.GetMatchingGroup(c99426088.rexfilter,tp,LOCATION_DECK,0,nil)
 			end
-			aux.RCheckAdditional=c99426088.frcheck
 			aux.RGCheckAdditional=c99426088.gcheck
 			res=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c99426088.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
-			aux.RCheckAdditional=nil
 			aux.RGCheckAdditional=nil
 		end
 		return res
@@ -89,11 +82,9 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if exmat then
-		aux.FCheckAdditional=c99426088.frcheck
 		aux.GCheckAdditional=c99426088.gcheck
 	end
 	local fsg1=Duel.GetMatchingGroup(c99426088.ffilter2,tp,LOCATION_EXTRA,0,nil,e,tp,fmg1,nil,chkf)
-	aux.FCheckAdditional=nil
 	aux.GCheckAdditional=nil
 	local fmg3=nil
 	local fsg2=nil
@@ -109,10 +100,8 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c99426088.excon(tp) then
 		rmg2=Duel.GetMatchingGroup(c99426088.rexfilter,tp,LOCATION_DECK,0,nil)
 	end
-	aux.RCheckAdditional=c99426088.frcheck
 	aux.RGCheckAdditional=c99426088.gcheck
 	local rsg=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c99426088.rfilter,e,tp,rmg1,rmg2,Card.GetLevel,"Greater")
-	aux.RCheckAdditional=nil
 	aux.RGCheckAdditional=nil
 	local off=1
 	local ops={}
@@ -137,11 +126,9 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		fmg1:RemoveCard(tc)
 		if fsg1:IsContains(tc) and (fsg2==nil or not fsg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if exmat then
-				aux.FCheckAdditional=c99426088.frcheck
 				aux.GCheckAdditional=c99426088.gcheck
 			end
 			local mat1=Duel.SelectFusionMaterial(tp,tc,fmg1,nil,chkf)
-			aux.FCheckAdditional=nil
 			aux.GCheckAdditional=nil
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
@@ -157,7 +144,6 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		::rcancel::
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=rsg:Select(tp,1,1,nil):GetFirst()
-		aux.RCheckAdditional=c99426088.frcheck
 		aux.RGCheckAdditional=c99426088.gcheck
 		local rmg=rmg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if rmg2 then rmg:Merge(rmg2) end
@@ -171,7 +157,6 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
 		if not mat then
-			aux.RCheckAdditional=nil
 			aux.RGCheckAdditional=nil
 			goto rcancel
 		end
@@ -185,7 +170,6 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
 		tc:CompleteProcedure()
-		aux.RCheckAdditional=nil
 		aux.RGCheckAdditional=nil
 	end
 end

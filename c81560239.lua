@@ -17,9 +17,6 @@ end
 function s.mfilter(c)
 	return c:GetLevel()>0 and c:IsRace(RACE_REPTILE) and c:IsReleasable(REASON_EFFECT|REASON_MATERIAL|REASON_RITUAL)
 end
-function s.rcheck(tp,g,c)
-	return g:GetCount()<3
-end
 function s.rgcheck(g)
 	return g:GetCount()<3
 end
@@ -27,10 +24,8 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg1=Duel.GetRitualMaterial(tp):Filter(Card.IsRace,nil,RACE_REPTILE)
 	local mg2=Duel.GetMatchingGroup(s.mfilter,tp,LOCATION_DECK,0,nil)
 	local s1=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_DECK,0,1,nil,s.filter,e,tp,mg1,nil,Card.GetLevel,"Equal")
-	aux.RCheckAdditional=s.rcheck
 	aux.RGCheckAdditional=s.rgcheck
 	local s2=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,s.filter,e,tp,mg1,mg2,Card.GetLevel,"Equal")
-	aux.RCheckAdditional=nil
 	aux.RGCheckAdditional=nil
 	local b1=s1 and (Duel.GetFlagEffect(tp,id)==0 or not e:IsCostChecked())
 	local b2=s2 and (Duel.GetFlagEffect(tp,id+o)==0 or not e:IsCostChecked())
