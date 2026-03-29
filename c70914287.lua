@@ -40,8 +40,8 @@ function c70914287.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c70914287.spchecks=aux.CreateChecks(Card.IsCode,{44632120,71036835,7021574,34419588,40640057})
-function c70914287.spclassifier(c,sg,g)
-	return aux.GetCheckSignature(c,c70914287.spchecks)
+function c70914287.spclassifier(c,g)
+	return 1
 end
 function c70914287.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)>Duel.GetMatchingGroupCount(Card.IsType,1-tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)

@@ -14,9 +14,9 @@ c99162753.spchecks=aux.CreateChecks(Card.IsType,{TYPE_RITUAL,TYPE_FUSION,TYPE_SY
 function c99162753.fadditional(sg,c,g)
 	return sg:GetClassCount(Card.GetOriginalRace)<=1
 end
-function c99162753.fclassifier(c,sg,g)
+function c99162753.fclassifier(c,g)
 	if c:IsLocation(LOCATION_MZONE) then return nil end
-	return c:GetOriginalRace().."|"..aux.GetCheckSignature(c,c99162753.spchecks)
+	return c:GetOriginalRace()
 end
 function c99162753.rmfilter(c)
 	return (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup()) and c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_PENDULUM+TYPE_LINK) and c:IsAbleToRemove()

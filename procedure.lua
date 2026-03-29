@@ -993,7 +993,7 @@ function Auxiliary.FGetMixClassifier(tp,mg,fc,sub,chkfnf,...)
 	local chkf=chkfnf&0xff
 	local mustg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_FMATERIAL)
 	local funs={...}
-	return	function(c)
+	return	function(c,g)
 				if chkf~=PLAYER_NONE and c:IsLocation(LOCATION_MZONE) then
 					return nil
 				end
@@ -1891,7 +1891,7 @@ function Auxiliary.RitualGetClassifier(c)
 	if c.mat_group_check or Auxiliary.RCheckAdditional or Auxiliary.RGCheckAdditional then
 		return nil
 	end
-	return	function(mc)
+	return	function(mc,g)
 				if mc:IsLocation(LOCATION_MZONE) then return nil end
 				return mc:GetRitualLevel(c)
 			end

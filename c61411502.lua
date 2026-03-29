@@ -12,8 +12,8 @@ function c61411502.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c61411502.rchecks=aux.CreateChecks(Card.IsAttribute,{ATTRIBUTE_WIND,ATTRIBUTE_WATER,ATTRIBUTE_FIRE,ATTRIBUTE_EARTH})
-function c61411502.rclassifier(c,sg,g)
-	return aux.GetCheckSignature(c,c61411502.rchecks)
+function c61411502.rclassifier(c,g)
+	return 1
 end
 function c61411502.rgoal(g,tp)
 	return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,g)
