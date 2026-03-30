@@ -1348,6 +1348,9 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 		end
 		cg:Sub(sg)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
+		if finish and Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg) then
+			finish=false
+		end
 		if #cg==0 then break end
 		local cancel=not finish and cancelable
 		local tc=cg:SelectUnselect(sg,tp,finish,cancel,min,max)
