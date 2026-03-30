@@ -103,7 +103,7 @@ function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 					local sum=g:GetSum(aux.GetCappedAttack)
 					if aux.RGCheckAdditional and not aux.RGCheckAdditional(g) then return false end
 					local _,minatk=g:GetMinGroup(aux.GetCappedAttack)
-					return sum-minatk<=atk
+					return sum-minatk<atk
 				end
 	end
 end

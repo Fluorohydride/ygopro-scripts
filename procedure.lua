@@ -1813,7 +1813,7 @@ function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 					local sum=g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)
 					if Auxiliary.RGCheckAdditional and not Auxiliary.RGCheckAdditional(g) then return false end
 					local _,minv=g:GetMinGroup(Auxiliary.RitualCheckAdditionalLevel,c)
-					return sum-minv<=lv
+					return sum-minv<lv
 				end
 	end
 end
