@@ -1150,13 +1150,15 @@ function Auxiliary.MakeDistinctCheckSpec(getter)
 	return check,{check=check,additional=additional,classifier=classifier}
 end
 function Auxiliary.CheckSubGroupByCheckSpec(g,spec,f,min,max,...)
+	local ext_params={...}
 	return Auxiliary.WithSubGroupContext(spec.additional,spec.classifier,function()
-		return g:CheckSubGroup(f or spec.check,min,max,...)
+		return g:CheckSubGroup(f or spec.check,min,max,table.unpack(ext_params))
 	end)
 end
 function Auxiliary.SelectSubGroupByCheckSpec(g,tp,spec,f,cancelable,min,max,...)
+	local ext_params={...}
 	return Auxiliary.WithSubGroupContext(spec.additional,spec.classifier,function()
-		return g:SelectSubGroup(tp,f or spec.check,cancelable,min,max,...)
+		return g:SelectSubGroup(tp,f or spec.check,cancelable,min,max,table.unpack(ext_params))
 	end)
 end
 --check for cards with different names
