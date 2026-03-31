@@ -69,6 +69,7 @@ function c9012916.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-val)
 		tc:RegisterEffect(e1)
+		if tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then return end
 		if val>atk then Duel.Damage(1-tp,atk,REASON_EFFECT)
 		else Duel.Damage(1-tp,val,REASON_EFFECT) end
 	end
