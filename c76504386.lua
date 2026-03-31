@@ -44,6 +44,7 @@ function s.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
+aux.xyz_number[76504386]=39
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 	Duel.RegisterFlagEffect(1-tp,id,RESET_PHASE+PHASE_END,0,1)
