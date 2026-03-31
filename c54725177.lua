@@ -1,4 +1,4 @@
---銀河眼の辉光子竜
+--銀河眼の輝光子竜
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,93717133)

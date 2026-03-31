@@ -1,4 +1,4 @@
---四天の龍ダーク・リベリオン・エクシーズ・ドラゴン
+--四天の龍 ダーク・リベリオン・エクシーズ・ドラゴン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon
