@@ -35,7 +35,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.costfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,aux.dncheck,false,1,5)
+	local tg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,nil,false,1,5)
 	Duel.SendtoGrave(tg,REASON_COST)
 	e:SetLabel(tg:GetCount())
 end

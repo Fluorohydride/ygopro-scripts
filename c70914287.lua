@@ -40,6 +40,9 @@ function c70914287.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c70914287.spchecks=aux.CreateChecks(Card.IsCode,{44632120,71036835,7021574,34419588,40640057})
+function c70914287.spclassifier(c)
+	return aux.GetCheckMask(c,c70914287.spchecks)
+end
 function c70914287.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)>Duel.GetMatchingGroupCount(Card.IsType,1-tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
 end
@@ -71,8 +74,10 @@ end
 function c70914287.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c70914287.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
-	if chk==0 then return c:IsAbleToHand() and Duel.GetMZoneCount(tp,c)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and g:CheckSubGroupEach(c70914287.spchecks) end
+	if chk==0 then
+		if not (c:IsAbleToHand() and Duel.GetMZoneCount(tp,c)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133)) then return false end
+		return g:WithSubGroupContext(nil,c70914287.spclassifier):CheckSubGroupEach(c70914287.spchecks)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,c,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,5,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
@@ -82,7 +87,7 @@ function c70914287.spop2(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70914287.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:SelectSubGroupEach(tp,c70914287.spchecks,false)
+		local sg=g:WithSubGroupContext(nil,c70914287.spclassifier):SelectSubGroupEach(tp,c70914287.spchecks,false)
 		if sg then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 		end

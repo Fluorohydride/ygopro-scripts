@@ -58,7 +58,7 @@ function c17197110.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft<ct or ft<=0 then return end
 	local g=Duel.GetMatchingGroup(c17197110.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
+	local sg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,nil,false,ct,ct)
 	if sg then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	end

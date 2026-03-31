@@ -1813,14 +1813,22 @@ function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 					return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)) and g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)<=lv
 				end
 	else
-		return	function(g,ec)
-					if ec then
-						return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g,ec)) and g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)-Auxiliary.RitualCheckAdditionalLevel(ec,c)<=lv
-					else
-						return not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)
-					end
+		return	function(g)
+					local sum=g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)
+					if Auxiliary.RGCheckAdditional and not Auxiliary.RGCheckAdditional(g) then return false end
+					local _,minv=g:GetMinGroup(Auxiliary.RitualCheckAdditionalLevel,c)
+					return sum-minv<lv
 				end
 	end
+end
+function Auxiliary.RitualGetClassifier(c)
+	if c.mat_group_check or Auxiliary.RCheckAdditional or Auxiliary.RGCheckAdditional then
+		return nil
+	end
+	return	function(mc)
+				if mc:IsLocation(LOCATION_MZONE) then return nil end
+				return mc:GetRitualLevel(c)
+			end
 end
 function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal,chk)
 	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp,chk)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
@@ -1834,9 +1842,9 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 		mg:RemoveCard(c)
 	end
 	local lv=level_function(c)
-	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
-	local res=mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
-	Auxiliary.GCheckAdditional=nil
+	local res=Auxiliary.WithSubGroupContext(Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal),Auxiliary.RitualGetClassifier(c),function()
+		return mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
+	end)
 	return res
 end
 function Auxiliary.RitualExtraFilter(c,f)
@@ -1887,9 +1895,9 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
-					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
-					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
-					Auxiliary.GCheckAdditional=nil
+					mat=Auxiliary.WithSubGroupContext(Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal),Auxiliary.RitualGetClassifier(tc),function()
+						return mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
+					end)
 					if not mat then goto RitualUltimateSelectStart end
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
@@ -2030,6 +2038,20 @@ function Auxiliary.PendOperationCheck(ft1,ft2,ft)
 				return #g<=ft and #exg<=ft2 and #mg<=ft1
 			end
 end
+function Auxiliary.PendClassifier(c)
+	local lv=0
+	if c.pendulum_level then
+		lv=c.pendulum_level
+	else
+		lv=c:GetLevel()
+	end
+	lv=lv&0x7f
+	if c:IsLocation(LOCATION_EXTRA) then
+		return lv|0x80
+	else
+		return lv
+	end
+end
 function Auxiliary.PendOperation(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	local lscale=c:GetLeftScale()
@@ -2079,9 +2101,9 @@ function Auxiliary.PendOperation(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 		tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
-	local g=tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
-	Auxiliary.GCheckAdditional=nil
+	local g=Auxiliary.WithSubGroupContext(Auxiliary.PendOperationCheck(ft1,ft2,ft),Auxiliary.PendClassifier,function()
+		return tg:SelectSubGroup(tp,Auxiliary.TRUE,true,1,math.min(#tg,ft))
+	end)
 	if not g then return end
 	if ce then
 		Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())

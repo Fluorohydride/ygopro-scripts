@@ -42,16 +42,20 @@ function s.initial_effect(c)
 	e4:SetOperation(s.tgop)
 	c:RegisterEffect(e4)
 end
+-- check/spec for materials with different Fusion Codes
+s.dfccheck,s.dfccheck_spec=aux.MakeDistinctCheckSpec(Card.GetFusionCode)
 function s.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
-function s.Alba_System_Drugmata_Fusion_Filter(c,mg,fc,tp,chkf,gc)
-	if not c:IsFusionCode(68468459) and not c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then return false end
+-- The custom fusion procedure picks this required Alba/substitute material first,
+-- then checks whether the remaining pool can complete the 6-material fusion.
+function s.IsAlbaSystemDrugmataLeadMaterial(c)
+	return c:IsFusionCode(68468459) or c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE)
+end
+function s.CanCompleteAlbaSystemDrugmataFusion(c,mg,fc,tp,chkf,gc)
+	if not s.IsAlbaSystemDrugmataLeadMaterial(c) then return false end
 	local g=mg:Filter(s.matfilter,c,tp)
-	aux.GCheckAdditional=aux.dncheck
-	local res=g:CheckSubGroup(s.Alba_System_Drugmata_Fusion_Gcheck,6,6,fc,tp,c,chkf,gc)
-	aux.GCheckAdditional=nil
-	return res
+	return g:WithSubGroupContext(s.dfccheck_spec.additional,s.dfccheck_spec.classifier):CheckSubGroup(s.Alba_System_Drugmata_Fusion_Gcheck,6,6,fc,tp,c,chkf,gc)
 end
 function s.matfilter(c,tp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and not c:IsHasEffect(6205579)
@@ -73,9 +77,9 @@ function s.Alba_System_Drugmata_Fusion_Condition()
 			local tp=e:GetHandlerPlayer()
 			if gc then
 				if not g:IsContains(gc) then return false end
-				return g:IsExists(s.Alba_System_Drugmata_Fusion_Filter,1,nil,g,fc,tp,chkf,gc)
+				return g:IsExists(s.CanCompleteAlbaSystemDrugmataFusion,1,nil,g,fc,tp,chkf,gc)
 			end
-			return g:IsExists(s.Alba_System_Drugmata_Fusion_Filter,1,nil,g,fc,tp,chkf,nil)
+			return g:IsExists(s.CanCompleteAlbaSystemDrugmataFusion,1,nil,g,fc,tp,chkf,nil)
 		end
 end
 function s.Alba_System_Drugmata_Fusion_Operation()
@@ -90,7 +94,7 @@ function s.Alba_System_Drugmata_Fusion_Operation()
 					fg:AddCard(g:GetFirst())
 				end
 				if gc then
-					if s.Alba_System_Drugmata_Fusion_Filter(gc,fg,fc,tp,chkf) then
+					if s.CanCompleteAlbaSystemDrugmataFusion(gc,fg,fc,tp,chkf) then
 						g=Group.FromCards(gc)
 						fg:RemoveCard(gc)
 						local mg=fg:Filter(s.matfilter,fc,tp)
@@ -98,7 +102,7 @@ function s.Alba_System_Drugmata_Fusion_Operation()
 						sg=mg:SelectSubGroup(tp,s.Alba_System_Drugmata_Fusion_Gcheck,false,6,6,fc,tp,g:GetFirst(),chkf,gc)
 					else
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-						g=fg:FilterSelect(tp,s.Alba_System_Drugmata_Fusion_Filter,1,1,nil,fg,fc,tp,chkf,gc)
+						g=fg:FilterSelect(tp,s.CanCompleteAlbaSystemDrugmataFusion,1,1,nil,fg,fc,tp,chkf,gc)
 						fg:Sub(g)
 						local mg=fg:Filter(s.matfilter,fc,tp)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -106,13 +110,11 @@ function s.Alba_System_Drugmata_Fusion_Operation()
 					end
 				else
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					g=fg:FilterSelect(tp,s.Alba_System_Drugmata_Fusion_Filter,1,1,nil,fg,fc,tp,chkf,nil)
+					g=fg:FilterSelect(tp,s.CanCompleteAlbaSystemDrugmataFusion,1,1,nil,fg,fc,tp,chkf,nil)
 					fg:Sub(g)
 					local mg=fg:Filter(s.matfilter,fc,tp)
-					aux.GCheckAdditional=aux.dncheck
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					sg=mg:SelectSubGroup(tp,s.Alba_System_Drugmata_Fusion_Gcheck,true,6,6,fc,tp,g:GetFirst(),chkf)
-					aux.GCheckAdditional=nil
+					sg=mg:WithSubGroupContext(s.dfccheck_spec.additional,s.dfccheck_spec.classifier):SelectSubGroup(tp,s.Alba_System_Drugmata_Fusion_Gcheck,true,6,6,fc,tp,g:GetFirst(),chkf)
 				end
 			end
 			g:Merge(sg)

@@ -49,7 +49,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 	local g=Duel.GetMatchingGroup(s.sfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local mg=g:SelectSubGroup(tp,aux.dncheck,false,5,5)
+	local mg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,nil,false,5,5)
 	if mg then
 		Duel.BreakEffect()
 		Duel.ConfirmCards(1-tp,mg)

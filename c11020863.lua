@@ -45,7 +45,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if not Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) then return false end
 		local tg=Duel.GetMatchingGroup(s.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
-		return tg:CheckSubGroup(aux.dlvcheck,5,5)
+		return tg:WithCheckSpec(aux.dlvcheck_spec):CheckSubGroup(nil,5,5)
 	end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,5,tp,LOCATION_HAND+LOCATION_DECK)
@@ -54,7 +54,7 @@ end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(s.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg=tg:SelectSubGroup(tp,aux.dlvcheck,false,5,5)
+	local sg=tg:WithCheckSpec(aux.dlvcheck_spec):SelectSubGroup(tp,nil,false,5,5)
 	if sg then
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
