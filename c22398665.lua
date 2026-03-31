@@ -68,9 +68,7 @@ function c22398665.operation(e,tp,eg,ep,ev,re,r,rp)
 			mg:RemoveCard(tc)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local mat=aux.WithSubGroupContext(c22398665.RitualCheckAdditional(tc,tc:GetAttack(),"Greater"),c22398665.RitualClassifier,function()
-			return mg:SelectSubGroup(tp,c22398665.RitualCheck,true,1,#mg,tp,tc,tc:GetAttack(),"Greater")
-		end)
+		local mat=mg:WithSubGroupContext(c22398665.RitualCheckAdditional(tc,tc:GetAttack(),"Greater"),c22398665.RitualClassifier):SelectSubGroup(tp,c22398665.RitualCheck,true,1,#mg,tp,tc,tc:GetAttack(),"Greater")
 		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
@@ -123,7 +121,5 @@ function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,grea
 		mg:RemoveCard(c)
 	end
 	local atk=attack_function(c)
-	return aux.WithSubGroupContext(c22398665.RitualCheckAdditional(c,atk,greater_or_equal),c22398665.RitualClassifier,function()
-		return mg:CheckSubGroup(c22398665.RitualCheck,1,#mg,tp,c,atk,greater_or_equal)
-	end)
+	return mg:WithSubGroupContext(c22398665.RitualCheckAdditional(c,atk,greater_or_equal),c22398665.RitualClassifier):CheckSubGroup(c22398665.RitualCheck,1,#mg,tp,c,atk,greater_or_equal)
 end

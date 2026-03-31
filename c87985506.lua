@@ -39,7 +39,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		if ft>0 and #g>0 then
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=aux.SelectSubGroupByCheckSpec(g,tp,aux.dncheck_spec,nil,false,1,math.min(3,ft))
+			local sg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,nil,false,1,math.min(3,ft))
 			if sg then
 				Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			end

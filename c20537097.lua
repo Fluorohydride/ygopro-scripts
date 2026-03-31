@@ -70,7 +70,7 @@ function c20537097.thop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsControler(1-tp) then ct=ct+1 end
 	if ct<=0 or g:GetClassCount(Card.GetCode)<ct then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local hg=aux.SelectSubGroupByCheckSpec(g,tp,aux.dncheck_spec,nil,false,ct,ct)
+	local hg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,nil,false,ct,ct)
 	Duel.SendtoHand(hg,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,hg)
 end

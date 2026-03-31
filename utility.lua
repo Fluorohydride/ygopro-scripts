@@ -1153,6 +1153,40 @@ function Auxiliary.MakeDistinctCheckSpec(getter)
 	local check,additional,classifier=Auxiliary.MakeDistinctCheck(getter)
 	return check,{check=check,additional=additional,classifier=classifier}
 end
+local SubGroupContextProxy={}
+function SubGroupContextProxy.CheckSubGroup(self,f,min,max,...)
+	local ext_params={...}
+	return Auxiliary.WithSubGroupContext(self.additional,self.classifier,function()
+		return self.group:CheckSubGroup(f,min,max,table.unpack(ext_params))
+	end)
+end
+function SubGroupContextProxy.SelectSubGroup(self,tp,f,cancelable,min,max,...)
+	local ext_params={...}
+	return Auxiliary.WithSubGroupContext(self.additional,self.classifier,function()
+		return self.group:SelectSubGroup(tp,f,cancelable,min,max,table.unpack(ext_params))
+	end)
+end
+function SubGroupContextProxy.CheckSubGroupEach(self,checks,f,...)
+	local ext_params={...}
+	return Auxiliary.WithSubGroupContext(self.additional,self.classifier,function()
+		return self.group:CheckSubGroupEach(checks,f,table.unpack(ext_params))
+	end)
+end
+function SubGroupContextProxy.SelectSubGroupEach(self,tp,checks,cancelable,f,...)
+	local ext_params={...}
+	return Auxiliary.WithSubGroupContext(self.additional,self.classifier,function()
+		return self.group:SelectSubGroupEach(tp,checks,cancelable,f,table.unpack(ext_params))
+	end)
+end
+-- Syntax sugar for subgroup context chaining, e.g.
+-- g:WithSubGroupContext(additional,classifier):CheckSubGroup(...)
+-- g:WithCheckSpec(spec):SelectSubGroup(...)
+function Group.WithSubGroupContext(g,additional,classifier)
+	return setmetatable({group=g,additional=additional,classifier=classifier},{__index=SubGroupContextProxy})
+end
+function Group.WithCheckSpec(g,spec)
+	return g:WithSubGroupContext(spec.additional,spec.classifier)
+end
 function Auxiliary.CheckSubGroupByCheckSpec(g,spec,f,min,max,...)
 	local ext_params={...}
 	return Auxiliary.WithSubGroupContext(spec.additional,spec.classifier,function()

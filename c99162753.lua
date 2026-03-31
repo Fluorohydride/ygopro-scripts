@@ -33,9 +33,7 @@ end
 function c99162753.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c99162753.rmfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	if chk==0 then
-		return aux.WithSubGroupContext(c99162753.fadditional,c99162753.fclassifier,function()
-			return g:CheckSubGroupEach(c99162753.spchecks,c99162753.fgoal,e,tp)
-		end)
+		return g:WithSubGroupContext(c99162753.fadditional,c99162753.fclassifier):CheckSubGroupEach(c99162753.spchecks,c99162753.fgoal,e,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,6,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
@@ -43,9 +41,7 @@ end
 function c99162753.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c99162753.rmfilter),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rg=aux.WithSubGroupContext(c99162753.fadditional,c99162753.fclassifier,function()
-		return g:SelectSubGroupEach(tp,c99162753.spchecks,false,c99162753.fgoal,e,tp)
-	end)
+	local rg=g:WithSubGroupContext(c99162753.fadditional,c99162753.fclassifier):SelectSubGroupEach(tp,c99162753.spchecks,false,c99162753.fgoal,e,tp)
 	if rg and rg:GetCount()==6 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=Duel.SelectMatchingCard(tp,c99162753.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp,rg)

@@ -33,7 +33,7 @@ function c57093995.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c57093995.tgfilter,tp,LOCATION_DECK,0,nil)
 	local ct=Duel.GetMatchingGroupCount(Card.IsSummonLocation,tp,0,LOCATION_MZONE,nil,LOCATION_EXTRA)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg=aux.SelectSubGroupByCheckSpec(g,tp,aux.dncheck_spec,nil,false,1,ct+1)
+	local sg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,nil,false,1,ct+1)
 	if sg and sg:GetCount()>0 then
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 	end

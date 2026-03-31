@@ -25,7 +25,7 @@ function c16329071.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16329071.filter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_ONFIELD+LOCATION_REMOVED,0,nil)
 	if g:GetClassCount(Card.GetCode)<5 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=aux.SelectSubGroupByCheckSpec(g,tp,aux.dncheck_spec,aux.TRUE,false,5,5)
+	local sg=g:WithCheckSpec(aux.dncheck_spec):SelectSubGroup(tp,aux.TRUE,false,5,5)
 	local cg=sg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
