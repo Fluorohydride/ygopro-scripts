@@ -34,7 +34,7 @@ function c52068432.initial_effect(c)
 	e3:SetOperation(c52068432.remop)
 	c:RegisterEffect(e3)
 end
-function c52068432.mat_filter(c)
+function c52068432.ritual_mat_filter(c)
 	return not c:IsLevel(9)
 end
 function c52068432.tfilter(c,tp)

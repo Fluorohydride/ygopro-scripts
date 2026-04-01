@@ -12,8 +12,8 @@ end
 function c2266498.cfilter(c,e,tp,m,ft)
 	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsSetCard(0x106) or c:IsPublic()
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	if c.mat_filter then
-		m=m:Filter(c.mat_filter,nil,tp)
+	if c.ritual_mat_filter then
+		m=m:Filter(c.ritual_mat_filter,nil,tp)
 	end
 	aux.GCheckAdditional=aux.RitualCheckAdditional(c,c:GetLevel(),"Equal")
 	local res=m:CheckSubGroup(c2266498.fselect,1,math.min(c:GetLevel(),ft),c)
@@ -47,8 +47,8 @@ function c2266498.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,tg)
 		local tc=tg:GetFirst()
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,nil,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,nil,tp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
