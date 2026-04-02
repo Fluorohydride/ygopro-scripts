@@ -1,6 +1,7 @@
 --クリスタルクリアウィング・オーバー・シンクロ・ドラゴン
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddMaterialCodeList(c,82044279)
 	c:EnableReviveLimit()
 	--material
 	aux.AddSynchroMixProcedure(c,aux.FilterBoolFunction(Card.IsCode,82044279),nil,nil,aux.Tuner(nil),1,99,s.syncheck)
