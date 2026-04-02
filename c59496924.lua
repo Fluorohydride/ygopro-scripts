@@ -28,7 +28,7 @@ function c59496924.repfilter(c,tp)
 end
 function c59496924.desfilter(c,e,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0xd2)
-		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c59496924.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c59496924.repfilter,1,nil,tp)
