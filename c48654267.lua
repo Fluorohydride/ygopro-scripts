@@ -89,34 +89,37 @@ end
 function c48654267.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsLocation(LOCATION_EXTRA)
 end
-function c48654267.gcheck(g,tp,eft)
-	return g:FilterCount(c48654267.filter,nil)<=eft
+function c48654267.filter2(c)
+	return c:IsLocation(LOCATION_EXTRA) and c:IsFacedown() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+end
+function c48654267.gcheck(g,ft1,ft2,ft3,ect,ft)
+	return #g<=ft
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_GRAVE)<=ft1
+		and g:FilterCount(c48654267.filter,nil)<=ft2
+		and g:FilterCount(c48654267.filter2,nil)<=ft3
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect
 end
 function c48654267.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local eft=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM)
-	if ft<=0 then return end
-	if ft>=2 then ft=2 end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local g=Duel.GetMatchingGroup(c48654267.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA+LOCATION_GRAVE,0,nil,e,tp)
-	if g:GetCount()==0 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,c48654267.gcheck,false,1,ft,tp,eft)
-	if sg:GetCount()>0 then
-		local exg=sg:Filter(c48654267.filter,nil)
-		sg:Sub(exg)
-		if exg:GetCount()>0 then
-			for tc in aux.Next(exg) do
-				Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-			end
-		end
-		if sg:GetCount()>0 then
-			for tc in aux.Next(sg) do
-				Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-			end
-		end
-		Duel.SpecialSummonComplete()
+	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft2=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM)
+	local ft3=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+	local ft=Duel.GetUsableMZoneCount(tp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
+		if ft1>0 then ft1=1 end
+		if ft2>0 then ft2=1 end
+		if ft3>0 then ft3=1 end
+		ft=1
 	end
+	local ect=(c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]) or ft
+	local loc=0
+	if ft1>0 then loc=loc+LOCATION_DECK+LOCATION_GRAVE end
+	if ect>0 and (ft2>0 or ft3>0) then loc=loc+LOCATION_EXTRA end
+	if loc==0 then return end
+	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c48654267.spfilter),tp,loc,0,nil,e,tp)
+	if sg:GetCount()==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local rg=sg:SelectSubGroup(tp,c48654267.gcheck,false,1,2,ft1,ft2,ft3,ect,ft)
+	Duel.SpecialSummon(rg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c48654267.pencon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

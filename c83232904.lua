@@ -42,49 +42,36 @@ function s.filter(c)
 		and c:IsLocation(LOCATION_EXTRA)
 end
 function s.filter2(c)
-	return c:IsLocation(LOCATION_EXTRA)
+	return c:IsLocation(LOCATION_EXTRA) and c:IsFacedown() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
 end
-function s.gcheck(g,tp,eft,ect)
-	return g:FilterCount(s.filter,nil)<=eft and g:FilterCount(s.filter2,nil)<=ect
+function s.gcheck(g,ft1,ft2,ft3,ect,ft)
+	return #g<=ft
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=ft1
+		and g:FilterCount(s.filter,nil)<=ft2
+		and g:FilterCount(s.filter2,nil)<=ft3
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
+	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft2=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM+TYPE_LINK)
+	local ft3=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
 	local ft=Duel.GetUsableMZoneCount(tp)
-	local eft=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM)
-	if ft>0 then
-		if ft>=2 then ft=2 end
-		local ct=2
-		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-		local ect=(c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]) or ft
-		local loc=LOCATION_DECK
-		if ect>0 then loc=loc+LOCATION_EXTRA end
-		local g=Duel.GetMatchingGroup(s.spfilter,tp,loc,0,nil,e,tp)
-		if g:GetCount()>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=g:SelectSubGroup(tp,s.gcheck,false,1,ct,tp,eft,ect)
-			if sg:GetCount()>0 then
-				local exg=sg:Filter(s.filter,nil)
-				sg:Sub(exg)
-				if exg:GetCount()>0 then
-					for tc in aux.Next(exg) do
-						Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP)
-					end
-				end
-				local exg2=sg:Filter(s.filter2,nil)
-				sg:Sub(exg2)
-				if exg2:GetCount()>0 then
-					for tc in aux.Next(exg2) do
-						Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP)
-					end
-				end
-				if sg:GetCount()>0 then
-					for tc in aux.Next(sg) do
-						Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP)
-					end
-				end
-				Duel.SpecialSummonComplete()
-			end
-		end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
+		if ft1>0 then ft1=1 end
+		if ft2>0 then ft2=1 end
+		if ft3>0 then ft3=1 end
+		ft=1
 	end
+	local ect=(c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]) or ft
+	local loc=0
+	if ft1>0 then loc=loc+LOCATION_DECK end
+	if ect>0 and (ft2>0 or ft3>0) then loc=loc+LOCATION_EXTRA end
+	if loc==0 then return end
+	local sg=Duel.GetMatchingGroup(s.spfilter,tp,loc,0,nil,e,tp)
+	if sg:GetCount()==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local rg=sg:SelectSubGroup(tp,s.gcheck,false,1,2,ft1,ft2,ft3,ect,ft)
+	Duel.SpecialSummon(rg,0,tp,tp,true,false,POS_FACEUP)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
