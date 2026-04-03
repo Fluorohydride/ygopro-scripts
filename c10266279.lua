@@ -1,7 +1,7 @@
 --獄神影精－ジュノルド
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,5914858)
+	aux.AddCodeList(c,10266279,5914858)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--draw
