@@ -59,38 +59,40 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local excavate_count=dcount-seq
 	Duel.ConfirmDecktop(tp,excavate_count)
 	Duel.SetLP(tp,Duel.GetLP(tp)-excavate_count*400)
-	local mg=Duel.GetDecktopGroup(tp,excavate_count):Filter(Card.IsType,nil,TYPE_MONSTER)
-	local chkf=tp
-	local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
-	local mg2=nil
-	local sg2=nil
-	local ce=Duel.GetChainMaterial(tp)
-	if ce~=nil then
-		local fgroup=ce:GetTarget()
-		mg2=fgroup(ce,e,tp)
-		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-	end
-	if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
-		local sg=sg1:Clone()
-		if sg2 then sg:Merge(sg2) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:Select(tp,1,1,nil)
-		local tc=tg:GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
-			tc:SetMaterial(mat1)
-			Duel.BreakEffect()
-			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		elseif ce~=nil then
-			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-			Duel.BreakEffect()
-			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2)
+	if Duel.GetLP(tp)>0 then
+		local mg=Duel.GetDecktopGroup(tp,excavate_count):Filter(Card.IsType,nil,TYPE_MONSTER)
+		local chkf=tp
+		local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
+		local mg2=nil
+		local sg2=nil
+		local ce=Duel.GetChainMaterial(tp)
+		if ce~=nil then
+			local fgroup=ce:GetTarget()
+			mg2=fgroup(ce,e,tp)
+			local mf=ce:GetValue()
+			sg2=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
 		end
-		tc:CompleteProcedure()
+		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			local sg=sg1:Clone()
+			if sg2 then sg:Merge(sg2) end
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local tg=sg:Select(tp,1,1,nil)
+			local tc=tg:GetFirst()
+			if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
+				local mat1=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
+				tc:SetMaterial(mat1)
+				Duel.BreakEffect()
+				Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+				Duel.BreakEffect()
+				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
+			elseif ce~=nil then
+				local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
+				Duel.BreakEffect()
+				local fop=ce:GetOperation()
+				fop(ce,e,tp,tc,mat2)
+			end
+			tc:CompleteProcedure()
+		end
+		Duel.ShuffleDeck(tp)
 	end
-	Duel.ShuffleDeck(tp)
 end
