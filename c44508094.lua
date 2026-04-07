@@ -39,8 +39,10 @@ function c44508094.excostfilter(c,tp)
 	return c:IsAbleToRemoveAsCost() and c:IsHasEffect(84012625,tp)
 end
 function c44508094.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c44508094.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
-	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
+	local g=Group.CreateGroup()
+	local c=e:GetHandler()
+	if c:IsReleasable() then g:AddCard(c) end
+	if c:IsSetCard(0xa3) then g:Merge(Duel.GetMatchingGroup(s.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)) end
 	if chk==0 then return #g>0 end
 	local tc
 	if #g>1 then
