@@ -106,7 +106,7 @@ function c91073013.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,3,3)
 	Duel.ConfirmCards(1-tp,sg)
-	if e:GetHandler():IsSetCard(0x195) then Duel.RaiseEvent(g,EVENT_CUSTOM+9091064,e,REASON_COST,tp,tp,0) end
+	if e:GetHandler():IsSetCard(0x195) then Duel.RaiseEvent(sg,EVENT_CUSTOM+9091064,e,REASON_COST,tp,tp,0) end
 	Duel.ShuffleHand(tp)
 end
 function c91073013.destg(e,tp,eg,ep,ev,re,r,rp,chk)
