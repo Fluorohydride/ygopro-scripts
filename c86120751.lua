@@ -1,5 +1,6 @@
 --召喚師アレイスター
 function c86120751.initial_effect(c)
+	aux.AddCodeList(c,74063034)
 	--boost
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(86120751,0))

@@ -1,7 +1,7 @@
 --獄神影獣－ネルヴェド
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,53589300)
+	aux.AddCodeList(c,17473466,53589300)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--Negate
