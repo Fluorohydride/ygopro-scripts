@@ -88,7 +88,8 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ect1=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	local ect2=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
 		and aux.ExtraDeckSummonCountLimit[tp]
-	local g=Duel.GetMatchingGroup(c30983281.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
+	local g=Group.CreateGroup()
+	if c:IsSetCard(0xa3) then g:Merge(Duel.GetMatchingGroup(c30983281.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)) end
 	local chkrel=c:IsReleasable()
 	local chknotrel=g:GetCount()>0
 	local b1=chkrel and Duel.IsExistingMatchingCard(c30983281.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,chkrel,nil)
