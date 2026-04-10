@@ -59,6 +59,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local excavate_count=dcount-seq
 	Duel.ConfirmDecktop(tp,excavate_count)
 	Duel.SetLP(tp,Duel.GetLP(tp)-excavate_count*400)
+	if Duel.GetLP(tp)<=0 then return end
 	local mg=Duel.GetDecktopGroup(tp,excavate_count):Filter(Card.IsType,nil,TYPE_MONSTER)
 	local chkf=tp
 	local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
