@@ -1,7 +1,7 @@
 --デーモンズ・マタドール
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddCodeList(c,33017966)
+	aux.AddCodeList(c,70105073)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

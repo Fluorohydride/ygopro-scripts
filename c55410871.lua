@@ -1,5 +1,6 @@
 --ブルーアイズ・カオス・MAX・ドラゴン
 function c55410871.initial_effect(c)
+	aux.AddCodeList(c,21082832,46986414)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

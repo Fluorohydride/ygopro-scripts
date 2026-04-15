@@ -1,5 +1,6 @@
 --精霊術師 ドリアード
 function c99414168.initial_effect(c)
+	aux.AddCodeList(c,23965037)
 	c:EnableReviveLimit()
 	--Attribute
 	local e1=Effect.CreateEffect(c)

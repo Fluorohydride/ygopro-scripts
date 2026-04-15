@@ -1,6 +1,7 @@
 --霊魂鳥影－彦孔雀
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,73055622)
 	c:EnableReviveLimit()
 	--change name
 	aux.EnableChangeCode(c,52900000,LOCATION_HAND+LOCATION_MZONE)

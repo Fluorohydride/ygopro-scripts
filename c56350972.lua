@@ -1,5 +1,6 @@
 --竜姫神サフィラ
 function c56350972.initial_effect(c)
+	aux.AddCodeList(c,80566312)
 	c:EnableReviveLimit()
 	--effect
 	local e1=Effect.CreateEffect(c)
