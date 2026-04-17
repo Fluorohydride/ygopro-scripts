@@ -28,7 +28,7 @@ function c18458255.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c18458255.counterfilter(c)
-	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_PENDULUM)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_PENDULUM) and c:IsFaceup()
 end
 function c18458255.rmfilter(c)
 	return c:IsFacedown() and c:IsAbleToRemoveAsCost(POS_FACEDOWN)

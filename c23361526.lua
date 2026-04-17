@@ -24,7 +24,7 @@ function c23361526.initial_effect(c)
 	Duel.AddCustomActivityCounter(23361526,ACTIVITY_SPSUMMON,c23361526.counterfilter)
 end
 function c23361526.counterfilter(c)
-	return c:IsAttribute(ATTRIBUTE_WIND)
+	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsFaceup()
 end
 function c23361526.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
