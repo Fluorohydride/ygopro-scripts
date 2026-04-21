@@ -1,7 +1,7 @@
 --シンクロ・フェローズ
 local s,id,o=GetID()
 function s.initial_effect(c)
-	aux.AddMaterialCodeList(c,63977008,60800381,44508094)
+	aux.AddCodeList(c,63977008,60800381,44508094)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
