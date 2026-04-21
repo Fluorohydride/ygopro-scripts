@@ -56,7 +56,7 @@ function c35622739.splimit(e,c)
 end
 function c35622739.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsLocation(LOCATION_REMOVED) and c:IsFaceup()) and r==REASON_FUSION
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsLocation(LOCATION_REMOVED) and c:IsFaceup()) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function c35622739.thfilter(c)
 	return not c:IsCode(35622739) and c:IsSetCard(0x1047) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

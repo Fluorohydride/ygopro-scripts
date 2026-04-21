@@ -43,7 +43,7 @@ function c59392529.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59392529.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and r==REASON_FUSION and c:GetReasonCard():IsSetCard(0x8)
+	return c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and r==REASON_FUSION and c:GetReasonCard():IsSetCard(0x8) and not c:IsReason(REASON_RETURN)
 end
 function c59392529.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end
