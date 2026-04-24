@@ -1,5 +1,6 @@
 --超戦士カオス・ソルジャー
 function c54484652.initial_effect(c)
+	aux.AddCodeList(c,14094090)
 	c:SetSPSummonOnce(54484652)
 	c:EnableReviveLimit()
 	--damage

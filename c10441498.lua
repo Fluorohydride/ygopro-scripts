@@ -1,5 +1,6 @@
 --輝神鳥ヴェーヌ
 function c10441498.initial_effect(c)
+	aux.AddCodeList(c,47435107)
 	c:EnableReviveLimit()
 	--change level
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --魔神儀－カリスライム
 function c65877963.initial_effect(c)
+	aux.AddCodeList(c,86758915)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

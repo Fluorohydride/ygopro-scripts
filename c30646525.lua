@@ -1,5 +1,6 @@
 --破滅の魔王ガーランドルフ
 function c30646525.initial_effect(c)
+	aux.AddCodeList(c,52913738)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

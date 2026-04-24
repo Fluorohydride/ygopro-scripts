@@ -1,5 +1,6 @@
 --竜儀巧－メテオニス＝QUA
 function c95209656.initial_effect(c)
+	aux.AddCodeList(c,22398665)
 	c:EnableReviveLimit()
 	--
 	local e0=Effect.CreateEffect(c)

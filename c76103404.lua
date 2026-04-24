@@ -1,5 +1,6 @@
 --サイバー・プチ・エンジェル
 function c76103404.initial_effect(c)
+	aux.AddCodeList(c,39996157)
 	--tohand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(76103404,0))

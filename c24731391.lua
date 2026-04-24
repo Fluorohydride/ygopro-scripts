@@ -1,5 +1,6 @@
 --サイバース・マジシャン
 function c24731391.initial_effect(c)
+	aux.AddCodeList(c,34767865)
 	c:EnableReviveLimit()
 	--halve damage
 	local e1=Effect.CreateEffect(c)

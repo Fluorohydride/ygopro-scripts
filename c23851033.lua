@@ -1,5 +1,6 @@
 --オッドアイズ・グラビティ・ドラゴン
 function c23851033.initial_effect(c)
+	aux.AddCodeList(c,16494704)
 	c:EnableReviveLimit()
 	--tohand
 	local e1=Effect.CreateEffect(c)

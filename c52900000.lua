@@ -1,5 +1,6 @@
 --霊魂鳥神－彦孔雀
 function c52900000.initial_effect(c)
+	aux.AddCodeList(c,73055622)
 	c:EnableReviveLimit()
 	--special summon condition
 	local e1=Effect.CreateEffect(c)

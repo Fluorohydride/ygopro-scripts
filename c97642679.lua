@@ -1,5 +1,6 @@
 --闇の支配者－ゾーク
 function c97642679.initial_effect(c)
+	aux.AddCodeList(c,96420087)
 	c:EnableReviveLimit()
 	--dice
 	local e1=Effect.CreateEffect(c)
