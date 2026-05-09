@@ -1,5 +1,6 @@
 --破滅の天使ルイン
 function c50139096.initial_effect(c)
+	aux.AddCodeList(c,32828635)
 	c:EnableReviveLimit()
 	--multi attack
 	local e1=Effect.CreateEffect(c)

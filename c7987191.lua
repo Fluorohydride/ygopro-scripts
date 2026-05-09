@@ -1,5 +1,6 @@
 --ヴァレルロード・R・ドラゴン
 function c7987191.initial_effect(c)
+	aux.AddCodeList(c,20071842)
 	c:EnableReviveLimit()
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

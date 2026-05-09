@@ -1,6 +1,7 @@
 --冥占術姫タロットレイス
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,8428836,94997874)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e0=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --鎧竜の聖騎士
 function c75901113.initial_effect(c)
+	aux.AddCodeList(c,58827995)
 	c:EnableReviveLimit()
 	--todeck
 	local e1=Effect.CreateEffect(c)

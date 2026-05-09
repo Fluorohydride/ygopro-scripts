@@ -1,5 +1,6 @@
 --ネフティスの蒼凰神
 function c24175232.initial_effect(c)
+	aux.AddCodeList(c,23459650)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)
