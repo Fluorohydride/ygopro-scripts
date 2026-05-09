@@ -28,7 +28,7 @@ function c37343995.initial_effect(c)
 	Duel.AddCustomActivityCounter(37343995,ACTIVITY_SPSUMMON,c37343995.counterfilter)
 end
 function c37343995.counterfilter(c)
-	return c:IsSetCard(0x172)
+	return c:IsSetCard(0x172) and c:IsFaceup()
 end
 function c37343995.cfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)

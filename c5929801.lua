@@ -25,7 +25,7 @@ function c5929801.initial_effect(c)
 	Duel.AddCustomActivityCounter(5929801,ACTIVITY_SPSUMMON,c5929801.counterfilter)
 end
 function c5929801.counterfilter(c)
-	return c:IsSetCard(0xba)
+	return c:IsSetCard(0xba) and c:IsFaceup()
 end
 function c5929801.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(5929801,tp,ACTIVITY_SPSUMMON)==0 end

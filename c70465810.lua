@@ -24,7 +24,7 @@ function c70465810.initial_effect(c)
 	Duel.AddCustomActivityCounter(70465810,ACTIVITY_SPSUMMON,c70465810.counterfilter)
 end
 function c70465810.counterfilter(c)
-	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_SYNCHRO)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_SYNCHRO) and c:IsFaceup()
 end
 function c70465810.thfilter(c)
 	return aux.IsCodeListed(c,9012916) and not c:IsCode(70465810) and c:IsAbleToHand()

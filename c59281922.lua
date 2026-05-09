@@ -23,7 +23,7 @@ function c59281922.initial_effect(c)
 	Duel.AddCustomActivityCounter(59281922,ACTIVITY_SPSUMMON,c59281922.counterfilter)
 end
 function c59281922.counterfilter(c)
-	return c:IsRace(RACE_MACHINE)
+	return c:IsRace(RACE_MACHINE) and c:IsFaceup()
 end
 function c59281922.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(59281922,tp,ACTIVITY_SPSUMMON)==0 end

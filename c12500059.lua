@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return c:IsRace(RACE_FAIRY)
+	return c:IsRace(RACE_FAIRY) and c:IsFaceup()
 end
 function s.cfilter(c)
 	return c:IsFacedown() or not c:IsRace(RACE_FAIRY)
