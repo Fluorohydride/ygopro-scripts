@@ -71,10 +71,9 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.cfilter2(c,tp)
-	return c:IsReason(REASON_EFFECT)
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 		and (not c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsType(TYPE_MONSTER)
-		or c:GetPreviousTypeOnField(TYPE_MONSTER))
-		and c:IsPreviousControler(tp)
+		or c:GetPreviousTypeOnField()&TYPE_MONSTER~=0)
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(s.cfilter2,1,nil,tp)
