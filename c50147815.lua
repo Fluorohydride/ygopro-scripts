@@ -25,12 +25,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.fspop)
 	c:RegisterEffect(e2)
 end
----The `nolimit` parameter for Special Summon effects of Phantasms cards
----@param c Card
----@return boolean
-function aux.PhantasmsSpSummonType(c)
-	return c:IsType(TYPE_SPSUMMON)
-end
 function s.spfilter(c,e,tp)
 	if not c:IsSetCard(0x1144) or not c:IsType(TYPE_MONSTER) then return false end
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,aux.PhantasmsSpSummonType(c),POS_FACEUP_DEFENSE)

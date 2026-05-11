@@ -29,12 +29,6 @@ function s.initial_effect(c)
 	e3:SetOperation(s.drop)
 	c:RegisterEffect(e3)
 end
----The `nolimit` parameter for Special Summon effects of Phantasms cards
----@param c Card
----@return boolean
-function aux.PhantasmsSpSummonType(c)
-	return c:IsType(TYPE_SPSUMMON)
-end
 function s.tgfilter(c)
 	return c:IsFaceupEx() and c:IsAbleToGrave()
 end

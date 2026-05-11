@@ -1982,3 +1982,9 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
 	end
 end
+---The `nolimit` parameter for Special Summon effects of Phantasms cards
+---@param c Card
+---@return boolean
+function Auxiliary.PhantasmsSpSummonType(c)
+	return c:IsType(TYPE_SPSUMMON)
+end
