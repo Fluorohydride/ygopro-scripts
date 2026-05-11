@@ -77,6 +77,9 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if seq>-1 then
 		Duel.ConfirmDecktop(tp,dct-seq)
+		if e:GetHandler():IsSetCard(0x1dd) then
+			Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+1595137,e,0,tp,tp,0)
+		end
 		Duel.DisableShuffleCheck()
 		Duel.SetLP(tp,Duel.GetLP(tp)-(dct-seq)*400)
 		local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and hc:IsCanBeSpecialSummoned(e,0,tp,false,false)

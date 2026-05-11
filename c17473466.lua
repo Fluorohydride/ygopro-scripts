@@ -54,12 +54,30 @@ function s.negop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+function s.costfilter(c,e,tp)
+	return e:GetHandler():IsSetCard(0x1ce) and c:IsAbleToRemove() and c:IsHasEffect(99311889,tp)
+end
 function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetDecktopGroup(tp,3)
 	if chk==0 then return g:FilterCount(Card.IsAbleToRemoveAsCost,nil,POS_FACEDOWN)==3
-		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3 end
-	Duel.DisableShuffleCheck()
-	Duel.Remove(g,POS_FACEDOWN,REASON_COST)
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3
+		or Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if g:FilterCount(Card.IsAbleToRemoveAsCost,nil,POS_FACEDOWN)==3
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3
+		and (not Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		or not Duel.SelectYesNo(tp,aux.Stringid(99311889,1))) then
+		Duel.DisableShuffleCheck()
+		Duel.Remove(g,POS_FACEDOWN,REASON_COST)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local sg=Duel.SelectMatchingCard(tp,s.costfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		local tc=sg:GetFirst()
+		local te=tc:IsHasEffect(99311889,tp)
+		if te then
+			te:UseCountLimit(tp)
+			Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
+		end
+	end
 end
 function s.spfilter(c,e,tp,mc)
 	return c:IsType(TYPE_FUSION) and c:IsCode(53589300) and c:CheckFusionMaterial()
