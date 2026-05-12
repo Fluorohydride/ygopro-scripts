@@ -67,7 +67,8 @@ function c11317977.scop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11317977.thcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function c11317977.thfilter2(c)
 	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and not c:IsCode(11317977) and c:IsAbleToHand()

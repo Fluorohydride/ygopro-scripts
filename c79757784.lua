@@ -43,7 +43,8 @@ function c79757784.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79757784.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return r==REASON_FUSION and e:GetHandler():IsLocation(LOCATION_GRAVE)
+	local c=e:GetHandler()
+	return r==REASON_FUSION and c:IsLocation(LOCATION_GRAVE) and not c:IsReason(REASON_RETURN)
 end
 function c79757784.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x9b) and c:IsAttackAbove(500)
