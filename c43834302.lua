@@ -33,18 +33,21 @@ function s.thfilter(c)
 	return (c:IsCode(63977008) or (aux.IsCodeListed(c,60800381) or aux.IsCodeListed(c,44508094)) and c:IsType(TYPE_MONSTER))
 		and c:IsAbleToHand()
 end
+function s.fselect(g,c,tp)
+	return aux.gffcheck(g,s.thfilter1,nil,s.thfilter2,nil)
+end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
-		return g:CheckSubGroup(aux.gffcheck,2,2,s.thfilter1,nil,s.thfilter2,nil)
+		return g:CheckSubGroup(s.fselect,2,2,s.thfilter1,nil,s.thfilter2,nil)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,tp,LOCATION_DECK)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
-	if not g:CheckSubGroup(aux.gffcheck,2,2,s.thfilter1,nil,s.thfilter2,nil) then return end
+	if not g:CheckSubGroup(s.fselect,2,2,s.thfilter1,nil,s.thfilter2,nil) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local tg1=g:SelectSubGroup(tp,aux.gffcheck,false,2,2,s.thfilter1,nil,s.thfilter2,nil)
+	local tg1=g:SelectSubGroup(tp,s.fselect,false,2,2,s.thfilter1,nil,s.thfilter2,nil)
 	if #tg1==2 then
 		Duel.SendtoHand(tg1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tg1)
