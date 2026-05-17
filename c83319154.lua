@@ -40,7 +40,7 @@ function s.initial_effect(c)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
 	for tc in aux.Next(eg) do
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESET_TOFIELD+RESET_REMOVE+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(id,RESET_EVENT+RESET_TOFIELD+RESET_TEMP_REMOVE+RESET_REMOVE+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
