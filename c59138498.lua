@@ -45,6 +45,7 @@ function s.pfilter(c,tp)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.pfilter,tp,LOCATION_DECK,0,1,nil,tp) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
@@ -70,6 +71,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,2,nil,e,tp) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
