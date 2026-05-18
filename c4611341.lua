@@ -39,7 +39,7 @@ function s.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkSetCard,1,nil,0x156)
 end
 function s.cfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsControler(1-tp)
+	return c:IsType(TYPE_MONSTER) and c:IsControler(1-tp) and c:IsOnField()
 end
 function s.indcon(e)
 	local cg=e:GetHandler():GetColumnGroup()
