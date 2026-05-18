@@ -39,7 +39,7 @@ function s.sucop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentChain()==0 then
 		Duel.SetChainLimitTillChainEnd(s.chainlm)
 	elseif Duel.GetCurrentChain()==1 then
-		Duel.RegisterFlagEffect(tp,id+o,RESET_EVENT+RESETS_STANDARD,0,1)
+		Duel.RegisterFlagEffect(tp,id+o*2,RESET_EVENT+RESETS_STANDARD,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_CHAINING)

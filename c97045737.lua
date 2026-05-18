@@ -33,8 +33,7 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
-	if Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_TRAP) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_TRAP) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 	if e:GetLabel()==100 then

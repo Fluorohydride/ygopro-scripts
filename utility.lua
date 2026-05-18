@@ -1746,22 +1746,22 @@ function Auxiliary.EnableBESRemove(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_DAMAGE_STEP_END)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(Auxiliary.RemoveCondtion)
-	e1:SetTarget(Auxiliary.RemoveTarget)
-	e1:SetOperation(Auxiliary.RemoveOperation)
+	e1:SetCondition(Auxiliary.BESRemoveCondition)
+	e1:SetTarget(Auxiliary.BESRemoveTarget)
+	e1:SetOperation(Auxiliary.BESRemoveOperation)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.RemoveCondtion(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.BESRemoveCondition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsRelateToBattle()
 end
-function Auxiliary.RemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+function Auxiliary.BESRemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	end
 end
-function Auxiliary.RemoveOperation(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.BESRemoveOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
