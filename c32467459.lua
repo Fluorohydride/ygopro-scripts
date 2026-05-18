@@ -3,14 +3,23 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	--fusion
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_SINGLE)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e0:SetCode(EFFECT_FUSION_MATERIAL)
-	e0:SetCondition(s.FShaddollCondition)
-	e0:SetOperation(s.FShaddollOperation)
-	c:RegisterEffect(e0)
+	if aux.AddFusionProcShaddoll then
+		--old function
+		local e0=Effect.CreateEffect(c)
+		e0:SetType(EFFECT_TYPE_SINGLE)
+		e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+		e0:SetCode(EFFECT_FUSION_MATERIAL)
+		e0:SetCondition(s.FShaddollCondition)
+		e0:SetOperation(s.FShaddollOperation)
+		c:RegisterEffect(e0)
+	else
+		--new function
+		aux.AddFusionProcMix(c,false,true,
+			function (mc) return mc:IsFusionSetCard(0x9d) end,
+			function (mc) return aux.FShaddollFilter2(mc,ATTRIBUTE_DARK) end,
+			function (mc) return aux.FShaddollFilter2(mc,ATTRIBUTE_EARTH) end
+		)
+	end
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
