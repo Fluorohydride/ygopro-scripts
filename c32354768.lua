@@ -38,7 +38,7 @@ function c32354768.initial_effect(c)
 	c:RegisterEffect(e4)
 	local e5=e2:Clone()
 	e5:SetDescription(aux.Stringid(32354768,3))
-	e5:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+	e5:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 	e5:SetTarget(c32354768.drtg)
 	e5:SetOperation(c32354768.drop)
 	e5:SetLabel(TYPE_XYZ)
@@ -133,7 +133,7 @@ function c32354768.stop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32354768.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c32354768.drop(e,tp,eg,ep,ev,re,r,rp)

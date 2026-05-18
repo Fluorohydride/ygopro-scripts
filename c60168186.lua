@@ -45,7 +45,7 @@ function c60168186.initial_effect(c)
 	--draw
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(60168186,3))
-	e5:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+	e5:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e5:SetRange(LOCATION_SZONE)
@@ -115,7 +115,7 @@ function c60168186.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60168186.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c60168186.drop(e,tp,eg,ep,ev,re,r,rp)

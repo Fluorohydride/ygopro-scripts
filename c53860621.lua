@@ -30,7 +30,7 @@ function c53860621.initial_effect(c)
 	--discard
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(53860621,0))
-	e5:SetCategory(CATEGORY_HANDES)
+	e5:SetCategory(CATEGORY_HANDES_OPPO)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_BATTLE_DESTROYING)
 	e5:SetRange(LOCATION_SZONE)
@@ -77,7 +77,7 @@ function c53860621.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c53860621.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c53860621.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)

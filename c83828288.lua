@@ -2,7 +2,7 @@
 function c83828288.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_DRAW+CATEGORY_TOHAND)
+	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DRAW+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -20,7 +20,7 @@ function c83828288.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c83828288.filter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	local lv=g:GetFirst():GetLevel()
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,lv)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,lv)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,lv)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end

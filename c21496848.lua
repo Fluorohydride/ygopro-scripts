@@ -4,7 +4,7 @@ function c21496848.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(21496848,0))
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_HANDES_OPPO)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)

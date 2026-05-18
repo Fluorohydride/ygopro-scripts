@@ -3,7 +3,7 @@ function c78202553.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(78202553,0))
-	e1:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,78202553)
@@ -37,7 +37,7 @@ end
 function c78202553.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c78202553.tgfilter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.IsPlayerCanDraw(tp,2) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c78202553.operation(e,tp,eg,ep,ev,re,r,rp)

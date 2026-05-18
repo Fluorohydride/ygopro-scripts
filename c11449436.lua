@@ -3,7 +3,7 @@ function c11449436.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(11449436,0))
-	e1:SetCategory(CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_START)
 	e1:SetRange(LOCATION_HAND)
@@ -15,7 +15,7 @@ function c11449436.initial_effect(c)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(11449436,1))
-	e2:SetCategory(CATEGORY_HANDES+CATEGORY_DESTROY)
+	e2:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_START)
 	e2:SetCost(c11449436.descost)
@@ -33,7 +33,7 @@ function c11449436.indescost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11449436.indestg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 end
 function c11449436.indesop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -62,7 +62,7 @@ function c11449436.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(tc)
 	if chk==0 then return tc and tc:IsControler(1-tp) and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 end
 function c11449436.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--synchro summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_HANDES|CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_HANDES_SELF|CATEGORY_SPECIAL_SUMMON)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -40,7 +40,7 @@ end
 function s.syntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.dfilter,tp,LOCATION_HAND,0,nil)
 	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) and g:CheckSubGroup(s.fselect,2,99,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,LOCATION_HAND)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,LOCATION_HAND)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function s.synop(e,tp,eg,ep,ev,re,r,rp)

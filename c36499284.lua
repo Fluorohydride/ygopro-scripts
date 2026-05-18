@@ -1,7 +1,7 @@
 --炎舞－「揺光」
 function c36499284.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DESTROY)
+	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c36499284.target)
@@ -29,11 +29,13 @@ function c36499284.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.IsExistingTarget(c36499284.filter,tp,0,LOCATION_ONFIELD,1,nil)
 		and Duel.IsExistingMatchingCard(c36499284.filter2,tp,LOCATION_HAND,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(36499284,0)) then
+		e:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DESTROY)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectTarget(tp,c36499284.filter,tp,0,LOCATION_ONFIELD,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	else
+		e:SetCategory(0)
 		e:SetProperty(0)
 	end
 end

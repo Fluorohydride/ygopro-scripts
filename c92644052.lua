@@ -37,7 +37,7 @@ function s.initial_effect(c)
 	--remove
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,3))
-	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES)
+	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e4:SetRange(LOCATION_MZONE)
@@ -119,7 +119,13 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetTargetPlayer(1-Duel.GetAttacker():GetControler())
+	local p=1-Duel.GetAttacker():GetControler()
+	Duel.SetTargetPlayer(p)
+	if p==tp then
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_SELF)
+	else
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_OPPO)
+	end
 end
 function s.disfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsFaceup() and c:IsAbleToHand()

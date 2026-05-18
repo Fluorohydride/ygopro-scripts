@@ -14,7 +14,7 @@ function c29590752.initial_effect(c)
 	--discard or return
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(29590752,1))
-	e2:SetCategory(CATEGORY_HANDES+CATEGORY_TODECK)
+	e2:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE)
 	e2:SetRange(LOCATION_MZONE)
@@ -45,7 +45,6 @@ end
 function c29590752.dtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(29590753)==0 end
 	e:GetHandler():RegisterFlagEffect(29590753,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,EFFECT_FLAG_OATH,1)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,1,tp,0)
 end
 function c29590752.dop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
