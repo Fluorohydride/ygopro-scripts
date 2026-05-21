@@ -85,7 +85,7 @@ function c70427670.fusop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70427670.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() and c:IsLocation(LOCATION_EXTRA)) and r==REASON_FUSION
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() and c:IsLocation(LOCATION_EXTRA)) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function c70427670.thfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_PENDULUM) and not c:IsCode(70427670) and c:IsAbleToHand()

@@ -14,7 +14,8 @@ function c2729285.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c2729285.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function c2729285.filter(c)
 	return c:IsCode(24094653) and c:IsAbleToHand()
