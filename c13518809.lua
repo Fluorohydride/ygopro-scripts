@@ -1,5 +1,6 @@
 --破滅の美神ルイン
 function c13518809.initial_effect(c)
+	aux.AddCodeList(c,32828635)
 	c:EnableReviveLimit()
 	--code
 	aux.EnableChangeCode(c,46427957,LOCATION_MZONE+LOCATION_HAND)

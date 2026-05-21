@@ -1,5 +1,6 @@
 --颶風龍－ビュフォート・ノウェム
 function c8836329.initial_effect(c)
+	aux.AddCodeList(c,44221928)
 	c:EnableReviveLimit()
 	--disable
 	local e1=Effect.CreateEffect(c)

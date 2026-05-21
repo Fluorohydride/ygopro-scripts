@@ -1,5 +1,6 @@
 --転生炎獣エメラルド・イーグル
 function c16313112.initial_effect(c)
+	aux.AddCodeList(c,38784726)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

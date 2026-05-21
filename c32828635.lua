@@ -1,5 +1,6 @@
 --エンドレス・オブ・ザ・ワールド
 function c32828635.initial_effect(c)
+	aux.AddCodeList(c,8198712,46427957,72426662)
 	aux.AddRitualProcGreater2Code2(c,46427957,72426662,nil,nil,c32828635.mfilter)
 	--salvage
 	local e2=Effect.CreateEffect(c)

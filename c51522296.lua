@@ -1,6 +1,7 @@
 --凶導の白き天底
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,31002402)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

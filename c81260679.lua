@@ -1,5 +1,6 @@
 --オオヒメの御巫
 function c81260679.initial_effect(c)
+	aux.AddCodeList(c,16310544)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

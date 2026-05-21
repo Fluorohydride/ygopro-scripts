@@ -1,5 +1,6 @@
 --終焉の悪魔デミス
 function c86124104.initial_effect(c)
+	aux.AddCodeList(c,32828635)
 	c:EnableReviveLimit()
 	--code
 	aux.EnableChangeCode(c,72426662,LOCATION_MZONE+LOCATION_HAND)
