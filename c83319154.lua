@@ -1,4 +1,4 @@
---時空穿つ溯光
+--時空穿つ遡光
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

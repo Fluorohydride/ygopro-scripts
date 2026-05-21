@@ -1,4 +1,4 @@
---雷盟－ステゥプリーダ
+--雷盟－ステップリーダ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

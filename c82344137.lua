@@ -1,4 +1,4 @@
---始まりの神 ファーラ
+--始まりの神ファーラ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--chain limit
