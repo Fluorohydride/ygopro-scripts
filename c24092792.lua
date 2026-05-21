@@ -19,7 +19,6 @@ function s.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
-
 	--spsummon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,0))
