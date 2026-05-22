@@ -1,5 +1,6 @@
 --魔神儀の創造主－クリオルター
 function c96915510.initial_effect(c)
+	aux.AddCodeList(c,86758915)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

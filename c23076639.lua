@@ -34,7 +34,7 @@ function s.filter(c)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function s.ifilter(c)
 	return c:IsRace(RACE_ILLUSION) and c:IsAbleToHand()

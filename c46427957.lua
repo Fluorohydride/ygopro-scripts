@@ -1,5 +1,6 @@
 --破滅の女神ルイン
 function c46427957.initial_effect(c)
+	aux.AddCodeList(c,8198712)
 	c:EnableReviveLimit()
 	--chain attack
 	local e1=Effect.CreateEffect(c)

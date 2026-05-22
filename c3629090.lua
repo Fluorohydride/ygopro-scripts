@@ -1,5 +1,6 @@
 --サイバー・エンジェル－韋駄天－
 function c3629090.initial_effect(c)
+	aux.AddCodeList(c,39996157)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

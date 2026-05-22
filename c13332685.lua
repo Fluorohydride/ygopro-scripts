@@ -1,6 +1,7 @@
 --天羽々斬之巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,81560239)
 	c:EnableReviveLimit()
 	--summon and release
 	local e1=Effect.CreateEffect(c)

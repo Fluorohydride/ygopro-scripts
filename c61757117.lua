@@ -1,5 +1,6 @@
 --救世の美神ノースウェムコ
 function c61757117.initial_effect(c)
+	aux.AddCodeList(c,60234913)
 	c:EnableReviveLimit()
 	--set target
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --リトマスの死の剣士
 function c72566043.initial_effect(c)
+	aux.AddCodeList(c,8955148)
 	c:EnableReviveLimit()
 	--trap immunity
 	local e1=Effect.CreateEffect(c)

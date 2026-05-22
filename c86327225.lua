@@ -1,5 +1,6 @@
 --天界王 シナト
 function c86327225.initial_effect(c)
+	aux.AddCodeList(c,60365591)
 	c:EnableReviveLimit()
 	--damage
 	local e1=Effect.CreateEffect(c)
