@@ -32,15 +32,37 @@ end
 function s.desfilter(c,e)
 	return c:IsCanBeEffectTarget(e)
 end
-function s.gcheck(g,tp)
-	return g:FilterCount(Card.IsControler,nil,tp)==g:FilterCount(Card.IsControler,nil,1-tp)
+function s.gcheck(g)
+	local ct=#g
+	if ct%2~=0 then return false end
+	local diff=0
+	for tc in aux.Next(g) do
+		ct=ct-1
+		diff=diff+(tc:IsControler(0) and 1 or -1)
+		if math.abs(diff)>ct then return false end
+	end
+	return diff==0
+end
+function s.gcheckadd(g)
+	local ct=#g
+	local diff=0
+	for tc in aux.Next(g) do
+		ct=ct-1
+		diff=diff+(tc:IsControler(0) and 1 or -1)
+		if math.abs(diff)>ct+1 then return false end
+	end
+	return math.abs(diff)<=1
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chkc then return false end
-	if chk==0 then return g:CheckSubGroup(s.gcheck,2,2,tp) end
+	if chk==0 then
+		return g:IsExists(Card.IsControler,1,nil,tp) and g:IsExists(Card.IsControler,1,nil,1-tp)
+	end
+	aux.GCheckAdditional=s.gcheckadd
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,24,tp)
+	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,24)
+	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 end
