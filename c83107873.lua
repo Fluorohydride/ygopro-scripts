@@ -11,7 +11,7 @@ function c83107873.initial_effect(c)
 	e1:SetTarget(c83107873.target)
 	e1:SetOperation(c83107873.operation)
 	c:RegisterEffect(e1)
-	c83107873.discard_effect=e1
+	c83107873.thunder_dragon_discard_effect=e1
 	--shuffle and draw
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(83107873,1))

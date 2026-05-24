@@ -29,7 +29,7 @@ function c12081875.effcon(e)
 end
 function c12081875.efffilter(c,e,tp,eg,ep,ev,re,r,rp)
 	if not (c:IsSetCard(0x11c) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())) then return false end
-	local te=c.discard_effect
+	local te=c.thunder_dragon_discard_effect
 	if not te then return false end
 	local tg=te:GetTarget()
 	return not tg or tg and tg(e,tp,eg,ep,ev,re,r,rp,0)
@@ -44,14 +44,14 @@ function c12081875.efftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.ClearTargetCard()
 	tc:CreateEffectRelation(e)
 	e:SetLabelObject(tc)
-	local te=tc.discard_effect
+	local te=tc.thunder_dragon_discard_effect
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
 end
 function c12081875.effop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then
-		local te=tc.discard_effect
+		local te=tc.thunder_dragon_discard_effect
 		local op=te:GetOperation()
 		if op then op(e,tp,eg,ep,ev,re,r,rp) end
 		Duel.BreakEffect()
