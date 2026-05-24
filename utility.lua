@@ -1413,14 +1413,14 @@ function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 end
 ---
 ---Select the same number of cards from each group.
+---@param tp integer
 ---@param g1 Group
 ---@param g2 Group
----@param tp integer
 ---@param min integer Cards to select from each group, minimum
 ---@param max integer Cards to select from each group, maximum
 ---@param except? Card|Group
 ---@return Group|nil
-function Auxiliary.SelectSameCount(g1,g2,tp,min,max,except)
+function Auxiliary.SelectSameCount(tp,g1,g2,min,max,except)
 	if except then
 		g1=g1-except
 		g2=g2-except
