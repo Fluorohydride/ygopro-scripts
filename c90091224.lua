@@ -32,49 +32,6 @@ end
 function s.desfilter(c,e)
 	return c:IsCanBeEffectTarget(e)
 end
-function s.selecttg(g,tp)
-	local g1=Group.CreateGroup()
-	local g2=Group.CreateGroup()
-	for tc in aux.Next(g) do
-		if tc:IsControler(tp) then
-			g1:AddCard(tc)
-		else
-			g2:AddCard(tc)
-		end
-	end
-	local max=math.min(#g1,#g2,12)
-	local sg1=Group.CreateGroup()
-	local sg2=Group.CreateGroup()
-	local sg=sg1+sg2
-	local fg=g1+g2
-	while true do
-		local finish=#sg1==#sg2 and #sg>0
-		local tc=fg:SelectUnselect(sg,tp,finish,false,2,max*2)
-		if not tc then break end
-		if sg:IsContains(tc) then
-			if g1:IsContains(tc) then
-				sg1:RemoveCard(tc)
-			else
-				sg2:RemoveCard(tc)
-			end
-		else
-			if g1:IsContains(tc) then
-				sg1:AddCard(tc)
-			else
-				sg2:AddCard(tc)
-			end
-		end
-		sg=sg1+sg2
-		fg=g1+g2-sg
-		if #sg1>=max then
-			fg=fg-g1
-		end
-		if #sg2>=max then
-			fg=fg-g2
-		end
-	end
-	return sg
-end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chkc then return false end
@@ -82,7 +39,9 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return g:IsExists(Card.IsControler,1,nil,tp) and g:IsExists(Card.IsControler,1,nil,1-tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local sg=s.selecttg(g,tp)
+	local g1=g:Filter(Card.IsControler,nil,tp)
+	local g2=g:Filter(Card.IsControler,nil,1-tp)
+	local sg=aux.SelectSameCount(g1,g2,tp,1,13)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 end
