@@ -30,7 +30,7 @@ function c25857246.initial_effect(c)
 	e3:SetOperation(c25857246.operation)
 	c:RegisterEffect(e3)
 end
-function c25857246.mat_filter(c)
+function c25857246.ritual_mat_filter(c)
 	return not c:IsLevel(8)
 end
 function c25857246.atkcon(e,tp,eg,ep,ev,re,r,rp)

@@ -90,8 +90,8 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=rsg:Select(tp,1,1,nil):GetFirst()
 		local rmg=rmg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if tc.mat_filter then
-			rmg=rmg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			rmg=rmg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			rmg:RemoveCard(tc)
 		end
