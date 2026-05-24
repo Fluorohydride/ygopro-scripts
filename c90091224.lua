@@ -32,15 +32,32 @@ end
 function s.desfilter(c,e)
 	return c:IsCanBeEffectTarget(e)
 end
-function s.gcheck(g,tp)
-	return g:FilterCount(Card.IsControler,nil,tp)==g:FilterCount(Card.IsControler,nil,1-tp)
+function s.selfilter(c,tp,gc1,gc2,sc1,sc2)
+	return c:IsControler(tp) and sc1<gc2 or c:IsControler(1-tp) and sc2<gc1
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chkc then return false end
-	if chk==0 then return g:CheckSubGroup(s.gcheck,2,2,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,24,tp)
+	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
+	if chk==0 then return g:IsExists(Card.IsControler,1,nil,tp) and g:IsExists(Card.IsControler,1,nil,1-tp) end
+	local gc1=g:FilterCount(Card.IsControler,nil,tp)
+	local gc2=g:FilterCount(Card.IsControler,nil,1-tp)
+	local maxct=math.min(gc1,gc2)*2
+	local sg=Group.CreateGroup()
+	while true do
+		local sc1=sg:FilterCount(Card.IsControler,nil,tp)
+		local sc2=sg:FilterCount(Card.IsControler,nil,1-tp)
+		local tg=g:Filter(s.selfilter,sg,tp,gc1,gc2,sc1,sc2)
+		if #tg==0 then break end
+		local finish=sc1==sc2 and #sg>0
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local tc=tg:SelectUnselect(sg,tp,finish,false,2,maxct)
+		if not tc then break end
+		if sg:IsContains(tc) then
+			sg:RemoveCard(tc)
+		else
+			sg:AddCard(tc)
+		end
+	end
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 end
