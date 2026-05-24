@@ -1426,7 +1426,7 @@ function Auxiliary.SelectSameCount(g1,g2,tp,min,max,except)
 		g2=g2-except
 	end
 	min=min or 1
-	max=math.min(max or math.min(#g1,#g2),#g1,#g2)
+	max=math.min(max or 127,#g1,#g2)
 	if min>max then return nil end
 	local sg=Group.CreateGroup()
 	local ct1=0
