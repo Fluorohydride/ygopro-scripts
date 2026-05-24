@@ -33,14 +33,14 @@ function s.desfilter(c,e)
 	return c:IsCanBeEffectTarget(e)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chkc then return false end
+	local g=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e)
 	if chk==0 then
 		return g:IsExists(Card.IsControler,1,nil,tp) and g:IsExists(Card.IsControler,1,nil,1-tp)
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g1=g:Filter(Card.IsControler,nil,tp)
 	local g2=g:Filter(Card.IsControler,nil,1-tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local sg=aux.SelectSameCount(tp,g1,g2)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
