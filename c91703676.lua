@@ -26,9 +26,9 @@ function s.filter(c,e)
 	return c:IsSetCard(0x81) and c:IsFaceup() and c:IsCanBeEffectTarget(e)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return false end
 	local g1=Duel.GetMatchingGroup(s.filter,tp,LOCATION_MZONE,0,nil,e)
 	local g2=Duel.GetMatchingGroup(Card.IsCanBeEffectTarget,tp,0,LOCATION_ONFIELD,nil,e)
-	if chkc then return false end
 	if chk==0 then return #g1>0 and #g2>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local sg=aux.SelectSameCount(tp,g1,g2)

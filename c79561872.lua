@@ -41,14 +41,17 @@ end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
-function s.thfilter(c,e,tp)
+function s.thfilter1(c,e)
 	return c:IsCanBeEffectTarget(e) and c:IsAbleToHand()
-		and (c:IsControler(1-tp) or c:IsFaceup() and c:IsSetCard(0x146))
+		and c:IsFaceup() and c:IsSetCard(0x146)
+end
+function s.thfilter2(c,e)
+	return c:IsCanBeEffectTarget(e) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g1=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_ONFIELD,0,nil,e,tp)
-	local g2=Duel.GetMatchingGroup(s.thfilter,tp,0,LOCATION_ONFIELD,nil,e,tp)
 	if chkc then return false end
+	local g1=Duel.GetMatchingGroup(s.thfilter1,tp,LOCATION_ONFIELD,0,nil,e)
+	local g2=Duel.GetMatchingGroup(s.thfilter2,tp,0,LOCATION_ONFIELD,nil,e)
 	if chk==0 then return #g1>0 and #g2>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local sg=aux.SelectSameCount(tp,g1,g2)

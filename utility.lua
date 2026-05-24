@@ -1419,7 +1419,7 @@ end
 ---@param min? integer Cards to select from each group, minimum
 ---@param max? integer Cards to select from each group, maximum
 ---@param except? Card|Group
----@return Group|nil
+---@return Group
 function Auxiliary.SelectSameCount(tp,g1,g2,min,max,except)
 	if except then
 		g1=g1-except

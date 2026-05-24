@@ -61,12 +61,12 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end
 function s.desfilter(c,e)
-	return c:IsFaceup() and c:IsSetCard(0x1a1) and (not e or c:IsCanBeEffectTarget(e))
+	return c:IsFaceup() and c:IsSetCard(0x1a1) and c:IsCanBeEffectTarget(e)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return false end
 	local g1=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_MZONE,0,nil,e)
 	local g2=Duel.GetMatchingGroup(Card.IsCanBeEffectTarget,tp,0,LOCATION_ONFIELD,nil,e)
-	if chkc then return false end
 	if chk==0 then return Duel.GetFlagEffect(tp,id)==0
 		and #g1>0 and #g2>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
