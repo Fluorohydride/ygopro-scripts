@@ -1416,8 +1416,8 @@ end
 ---@param tp integer
 ---@param g1 Group
 ---@param g2 Group
----@param min integer Cards to select from each group, minimum
----@param max integer Cards to select from each group, maximum
+---@param min? integer Cards to select from each group, minimum
+---@param max? integer Cards to select from each group, maximum
 ---@param except? Card|Group
 ---@return Group|nil
 function Auxiliary.SelectSameCount(tp,g1,g2,min,max,except)
