@@ -17,7 +17,7 @@ function c3429238.initial_effect(c)
 	--remove
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(3429238,1))
-	e2:SetCategory(CATEGORY_REMOVE)
+	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_HANDES_SELF)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)
@@ -66,6 +66,7 @@ end
 function c3429238.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 and e:GetHandler():IsAbleToRemove() end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,e:GetHandler(),1,0,0)
 end
 function c3429238.rmop(e,tp,eg,ep,ev,re,r,rp)

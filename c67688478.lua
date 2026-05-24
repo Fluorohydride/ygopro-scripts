@@ -17,8 +17,8 @@ end
 function c67688478.condition(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or (not re:IsHasType(EFFECT_TYPE_ACTIVATE) and not re:IsActiveType(TYPE_MONSTER))
 		or (not Duel.IsChainNegatable(ev)) then return false end
-	local ex,tg,tc,p=Duel.GetOperationInfo(ev,CATEGORY_HANDES)
-	return re:IsHasCategory(CATEGORY_HANDES) and (not ex or p~=1-tp)
+	local ex,tg,tc,p=Duel.GetOperationInfo(ev,CATEGORY_HANDES_OPPO)
+	return re:IsHasCategory(CATEGORY_HANDES_OPPO) or ex
 end
 function c67688478.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

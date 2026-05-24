@@ -30,7 +30,7 @@ function c9888196.initial_effect(c)
 	--handes
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(9888196,2))
-	e3:SetCategory(CATEGORY_HANDES+CATEGORY_TOGRAVE+CATEGORY_DAMAGE)
+	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e3:SetRange(LOCATION_MZONE)
@@ -90,7 +90,6 @@ function c9888196.hdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9888196.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,0,1-tp,LOCATION_HAND)
 end
 function c9888196.hdop(e,tp,eg,ep,ev,re,r,rp)

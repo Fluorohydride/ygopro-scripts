@@ -6,7 +6,7 @@ function c22593417.initial_effect(c)
 	--discard
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(22593417,0))
-	e1:SetCategory(CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetRange(LOCATION_MZONE)
@@ -18,7 +18,7 @@ function c22593417.initial_effect(c)
 	--discard
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(22593417,1))
-	e2:SetCategory(CATEGORY_HANDES+CATEGORY_DAMAGE)
+	e2:SetCategory(CATEGORY_HANDES_OPPO+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,22593417)
@@ -38,8 +38,8 @@ function c22593417.hdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22593417.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c22593417.hdop(e,tp,eg,ep,ev,re,r,rp)
 	local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
@@ -58,7 +58,7 @@ function c22593417.hdcon2(e)
 end
 function c22593417.hdtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(1-tp,LOCATION_HAND,0)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,2)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,2)
 end
 function c22593417.hdop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.DiscardHand(1-tp,nil,2,2,REASON_EFFECT+REASON_DISCARD)~=0

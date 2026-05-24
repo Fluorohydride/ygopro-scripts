@@ -9,10 +9,10 @@ function c41039846.initial_effect(c)
 	e1:SetTarget(c41039846.target)
 	e1:SetOperation(c41039846.operation)
 	c:RegisterEffect(e1)
-	--draw
+	--handes
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(41039846,1))
-	e2:SetCategory(CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
 	e2:SetTarget(c41039846.hdtg)
@@ -40,7 +40,7 @@ function c41039846.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41039846.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c41039846.hdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0)
