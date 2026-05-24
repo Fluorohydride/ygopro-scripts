@@ -1411,6 +1411,57 @@ function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 	end
 	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
 end
+---
+---Select the same number of cards from each group.
+---@param tp integer
+---@param g1 Group
+---@param g2 Group
+---@param min? integer Cards to select from each group, minimum
+---@param max? integer Cards to select from each group, maximum
+---@param except? Card|Group
+---@return Group
+function Auxiliary.SelectSameCount(tp,g1,g2,min,max,except)
+	if except then
+		g1=g1-except
+		g2=g2-except
+	end
+	min=min or 1
+	max=math.min(max or 127,#g1,#g2)
+	if min>max then return nil end
+	local sg=Group.CreateGroup()
+	local ct1=0
+	local ct2=0
+	while true do
+		local fg=Group.CreateGroup()
+		if ct1<max then
+			fg:Merge(g1)
+		end
+		if ct2<max then
+			fg:Merge(g2)
+		end
+		fg:Sub(sg)
+		local finish=ct1==ct2 and ct1>=min and ct1<=max
+		local tc=fg:SelectUnselect(sg,tp,finish,false,min*2,max*2)
+		if not tc then break end
+		if sg:IsContains(tc) then
+			sg:RemoveCard(tc)
+			if g1:IsContains(tc) then
+				ct1=ct1-1
+			else
+				ct2=ct2-1
+			end
+		else
+			sg:AddCard(tc)
+			if g1:IsContains(tc) then
+				ct1=ct1+1
+			else
+				ct2=ct2+1
+			end
+		end
+		if ct1==max and ct2==max then break end
+	end
+	return sg
+end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()

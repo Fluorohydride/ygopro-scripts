@@ -41,19 +41,20 @@ end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
-function s.thfilter(c,e,tp)
+function s.thfilter1(c,e)
 	return c:IsCanBeEffectTarget(e) and c:IsAbleToHand()
-		and (c:IsControler(1-tp) or c:IsFaceup() and c:IsSetCard(0x146))
+		and c:IsFaceup() and c:IsSetCard(0x146)
 end
-function s.gcheck(g,tp)
-	return g:FilterCount(Card.IsControler,nil,tp)==g:FilterCount(Card.IsControler,nil,1-tp)
+function s.thfilter2(c,e)
+	return c:IsCanBeEffectTarget(e) and c:IsAbleToHand()
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,e,tp)
 	if chkc then return false end
-	if chk==0 then return g:CheckSubGroup(s.gcheck,2,2,tp) end
+	local g1=Duel.GetMatchingGroup(s.thfilter1,tp,LOCATION_ONFIELD,0,nil,e)
+	local g2=Duel.GetMatchingGroup(s.thfilter2,tp,0,LOCATION_ONFIELD,nil,e)
+	if chk==0 then return #g1>0 and #g2>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,g:GetCount(),tp)
+	local sg=aux.SelectSameCount(tp,g1,g2)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,sg,sg:GetCount(),0,0)
 end
