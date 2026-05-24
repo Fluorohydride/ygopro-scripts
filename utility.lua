@@ -1428,35 +1428,37 @@ function Auxiliary.SelectSameCount(g1,g2,tp,min,max,except)
 	min=min or 1
 	max=math.min(max or math.min(#g1,#g2),#g1,#g2)
 	if min>max then return nil end
-	local sg1=Group.CreateGroup()
-	local sg2=Group.CreateGroup()
-	local sg=sg1+sg2
+	local sg=Group.CreateGroup()
 	local fg=g1+g2
+	local ct1=0
+	local ct2=0
 	while true do
-		local finish=#sg1==#sg2 and #sg1>=min and #sg1<=max
+		local finish=ct1==ct2 and ct1>=min and ct1<=max
 		local tc=fg:SelectUnselect(sg,tp,finish,false,min*2,max*2)
 		if not tc then break end
 		if sg:IsContains(tc) then
+			sg:RemoveCard(tc)
 			if g1:IsContains(tc) then
-				sg1:RemoveCard(tc)
+				ct1=ct1-1
 			else
-				sg2:RemoveCard(tc)
+				ct2=ct2-1
 			end
 		else
+			sg:AddCard(tc)
 			if g1:IsContains(tc) then
-				sg1:AddCard(tc)
+				ct1=ct1+1
 			else
-				sg2:AddCard(tc)
+				ct2=ct2+1
 			end
 		end
-		sg=sg1+sg2
-		fg=g1+g2-sg
-		if #sg1>=max then
-			fg=fg-g1
+		fg=Group.CreateGroup()
+		if ct1<max then
+			fg:Merge(g1)
 		end
-		if #sg2>=max then
-			fg=fg-g2
+		if ct2<max then
+			fg:Merge(g2)
 		end
+		fg:Sub(sg)
 	end
 	return sg
 end
