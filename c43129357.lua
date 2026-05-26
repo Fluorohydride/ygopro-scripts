@@ -30,7 +30,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return c:IsRace(RACE_INSECT+RACE_PLANT+RACE_REPTILE)
+	return c:IsRace(RACE_INSECT+RACE_PLANT+RACE_REPTILE) and c:IsFaceup()
 end
 function s.lcheck(g)
 	return g:IsExists(Card.IsLinkRace,1,nil,RACE_INSECT+RACE_PLANT+RACE_REPTILE)

@@ -24,7 +24,7 @@ function c703897.initial_effect(c)
 	Duel.AddCustomActivityCounter(703897,ACTIVITY_SPSUMMON,c703897.counterfilter)
 end
 function c703897.counterfilter(c)
-	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsFaceup()
 end
 function c703897.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x11b) and c:IsType(TYPE_LINK)

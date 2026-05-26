@@ -16,7 +16,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return not c:IsSummonLocation(LOCATION_EXTRA) or (c:IsRace(RACE_DRAGON) and c:IsType(TYPE_XYZ))
+	return not c:IsSummonLocation(LOCATION_EXTRA) or (c:IsRace(RACE_DRAGON) and c:IsType(TYPE_XYZ) and c:IsFaceup())
 end
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsAttackAbove(2000)
