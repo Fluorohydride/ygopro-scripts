@@ -48,7 +48,7 @@ function c72330894.etlimit(e,c)
 end
 function c72330894.desfilter(c,e)
 	return c:IsFaceup() and c:IsSetCard(0x12d) and c:IsDestructable(e)
-		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c72330894.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
