@@ -48,7 +48,7 @@ end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToChain() and aux.NecroValleyFilter()(tc)
-		and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
+		and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0
 		and Duel.IsExistingMatchingCard(s.eqfiltter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0
 		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
