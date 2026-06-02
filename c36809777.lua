@@ -44,7 +44,7 @@ function c36809777.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if sg:GetCount()>0 then
 			res[p]=true
-			Duel.SendtoGrave(sg,REASON_RULE)
+			Duel.SendtoGrave(sg,REASON_RULE,p)
 		end
 	end
 	if res[0] or res[1] then
