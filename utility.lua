@@ -446,27 +446,27 @@ function Auxiliary.EnableChangeCode(c,code,location,condition)
 	return e1
 end
 function Auxiliary.TargetEqualFunction(f,value,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(effect,target)
-				return f(target,table.unpack(ext_params))==value
+				return f(target,table.unpack(ext_params,1,ext_params.n))==value
 			end
 end
 function Auxiliary.TargetBoolFunction(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(effect,target)
-				return f(target,table.unpack(ext_params))
+				return f(target,table.unpack(ext_params,1,ext_params.n))
 			end
 end
 function Auxiliary.FilterEqualFunction(f,value,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target)
-				return f(target,table.unpack(ext_params))==value
+				return f(target,table.unpack(ext_params,1,ext_params.n))==value
 			end
 end
 function Auxiliary.FilterBoolFunction(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target)
-				return f(target,table.unpack(ext_params))
+				return f(target,table.unpack(ext_params,1,ext_params.n))
 			end
 end
 function Auxiliary.GetValueType(v)
