@@ -1199,7 +1199,7 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 		sg:RemoveCard(c)
 		return false
 	end
-	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params,1,ext_params.n)))
 		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
@@ -1210,7 +1210,7 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 		sg:RemoveCard(c)
 		return false
 	end
-	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params))
+	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params,1,ext_params.n))
 	if res then
 		Auxiliary.SubGroupCaptured:Clear()
 		Auxiliary.SubGroupCaptured:Merge(sg)
@@ -1231,7 +1231,7 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
 	max=max or #g
 	if min>max then return false end
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min then return false end
 	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g)) then return false end
@@ -1256,7 +1256,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
 	max=max or #g
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	local fg=Duel.GrabSelectedCard()
 	if #fg>max or min>max or #(g+fg)<min then return nil end
@@ -1322,7 +1322,7 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	end
 	local res
 	if #sg==#checks then
-		res=f(sg,table.unpack(ext_params))
+		res=f(sg,table.unpack(ext_params,1,ext_params.n))
 	else
 		res=g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 	end
@@ -1338,7 +1338,7 @@ end
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
 	if #g<#checks then return false end
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 end
@@ -1354,7 +1354,7 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
 	local ct=#checks
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	local finish=false
 	while #sg<ct do
