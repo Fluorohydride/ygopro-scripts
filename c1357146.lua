@@ -21,7 +21,7 @@ function c1357146.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c1357146.costfilter(c)
-	return c:IsSetCard(0x12) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x12) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c1357146.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c1357146.costfilter,tp,LOCATION_GRAVE,0,1,nil) end
