@@ -67,7 +67,7 @@ function s.effop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g=Duel.SelectMatchingCard(tp,s.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=g:GetFirst()
-		if Duel.SSet(tp,tc)>0 then
+		if tc and Duel.SSet(tp,tc)>0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetDescription(aux.Stringid(id,3))
 			e1:SetType(EFFECT_TYPE_SINGLE)
