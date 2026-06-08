@@ -28,7 +28,7 @@ function s.dcfilter(c)
 end
 function s.regop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(s.dcfilter,1,nil) then
-		Duel.RegisterFlagEffect(rp,id,RESET_PHASE+PHASE_END,0,1)
+		Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function s.tdfilter(c)
