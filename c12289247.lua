@@ -45,6 +45,10 @@ function c12289247.initial_effect(c)
 	end
 end
 c12289247.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
+function c12289247.hnclassifier(c)
+	if c:IsLocation(LOCATION_MZONE) then return nil end
+	return aux.GetCheckMask(c,c12289247.hnchecks)
+end
 function c12289247.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
@@ -127,11 +131,13 @@ end
 function c12289247.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c12289247.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	if chk==0 then return c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingMatchingCard(c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
-		and mg:CheckSubGroupEach(c12289247.hnchecks,c12289247.hngoal,e,tp,c) end
+	if chk==0 then
+		if not (c:IsAbleToRemoveAsCost()
+			and Duel.IsExistingMatchingCard(c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)) then return false end
+		return mg:WithSubGroupContext(nil,c12289247.hnclassifier):CheckSubGroupEach(c12289247.hnchecks,c12289247.hngoal,e,tp,c)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=mg:SelectSubGroupEach(tp,c12289247.hnchecks,false,c12289247.hngoal,e,tp,c)
+	local sg=mg:WithSubGroupContext(nil,c12289247.hnclassifier):SelectSubGroupEach(tp,c12289247.hnchecks,false,c12289247.hngoal,e,tp,c)
 	sg:AddCard(c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end

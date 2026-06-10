@@ -68,9 +68,7 @@ function c22398665.operation(e,tp,eg,ep,ev,re,r,rp)
 			mg:RemoveCard(tc)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		aux.GCheckAdditional=c22398665.RitualCheckAdditional(tc,tc:GetAttack(),"Greater")
-		local mat=mg:SelectSubGroup(tp,c22398665.RitualCheck,true,1,#mg,tp,tc,tc:GetAttack(),"Greater")
-		aux.GCheckAdditional=nil
+		local mat=mg:WithSubGroupContext(c22398665.RitualCheckAdditional(tc,tc:GetAttack(),"Greater"),c22398665.RitualClassifier):SelectSubGroup(tp,c22398665.RitualCheck,true,1,#mg,tp,tc,tc:GetAttack(),"Greater")
 		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
@@ -98,15 +96,18 @@ function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 					return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g)) and g:GetSum(aux.GetCappedAttack)<=atk
 				end
 	else
-		return	function(g,ec)
+		return	function(g)
 					if atk==0 then return #g<=1 end
-					if ec then
-						return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g,ec)) and g:GetSum(aux.GetCappedAttack)-aux.GetCappedAttack(ec)<=atk
-					else
-						return not aux.RGCheckAdditional or aux.RGCheckAdditional(g)
-					end
+					local sum=g:GetSum(aux.GetCappedAttack)
+					if aux.RGCheckAdditional and not aux.RGCheckAdditional(g) then return false end
+					local _,minatk=g:GetMinGroup(aux.GetCappedAttack)
+					return sum-minatk<atk
 				end
 	end
+end
+function c22398665.RitualClassifier(c)
+	if c:IsLocation(LOCATION_MZONE) then return nil end
+	return aux.GetCappedAttack(c)
 end
 function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,greater_or_equal,chk)
 	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp,chk)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
@@ -120,8 +121,5 @@ function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,grea
 		mg:RemoveCard(c)
 	end
 	local atk=attack_function(c)
-	aux.GCheckAdditional=c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
-	local res=mg:CheckSubGroup(c22398665.RitualCheck,1,#mg,tp,c,atk,greater_or_equal)
-	aux.GCheckAdditional=nil
-	return res
+	return mg:WithSubGroupContext(c22398665.RitualCheckAdditional(c,atk,greater_or_equal),c22398665.RitualClassifier):CheckSubGroup(c22398665.RitualCheck,1,#mg,tp,c,atk,greater_or_equal)
 end

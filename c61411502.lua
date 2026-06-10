@@ -12,14 +12,19 @@ function c61411502.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c61411502.rchecks=aux.CreateChecks(Card.IsAttribute,{ATTRIBUTE_WIND,ATTRIBUTE_WATER,ATTRIBUTE_FIRE,ATTRIBUTE_EARTH})
+function c61411502.rclassifier(c)
+	return aux.GetCheckMask(c,c61411502.rchecks)
+end
 function c61411502.rgoal(g,tp)
 	return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,g)
 end
 function c61411502.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp)
-	if chk==0 then return g:CheckSubGroupEach(c61411502.rchecks,c61411502.rgoal,tp) end
+	if chk==0 then
+		return g:WithSubGroupContext(nil,c61411502.rclassifier):CheckSubGroupEach(c61411502.rchecks,c61411502.rgoal,tp)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=g:SelectSubGroupEach(tp,c61411502.rchecks,false,c61411502.rgoal,tp)
+	local rg=g:WithSubGroupContext(nil,c61411502.rclassifier):SelectSubGroupEach(tp,c61411502.rchecks,false,c61411502.rgoal,tp)
 	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
