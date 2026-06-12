@@ -42,7 +42,9 @@ end
 function s.drop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(Card.IsPublic,tp,LOCATION_HAND,0,1,nil) then
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_HAND,0,nil)
+		local sflag=false
 		if g:GetCount()>0 then
+			sflag=true
 			Duel.ConfirmCards(1-tp,g)
 			if g:IsExists(s.cfilter2,1,nil)
 				and Duel.IsPlayerCanDraw(tp,3)
@@ -51,11 +53,15 @@ function s.drop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 				local dg=Duel.SelectMatchingCard(tp,Card.IsDiscardable,tp,LOCATION_HAND,0,2,2,nil,REASON_EFFECT+REASON_DISCARD)
 				if dg:GetCount()>0 then
+					sflag=false
 					Duel.ShuffleHand(tp)
 					Duel.BreakEffect()
 					Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
 				end
 			end
+		end
+		if sflag then
+			Duel.ShuffleHand(tp)
 		end
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
