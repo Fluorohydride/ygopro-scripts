@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.cfilter(c,tp)
-	return c:IsSetCard(0x77,0x74) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsSetCard(0x77,0x74)
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
