@@ -129,13 +129,12 @@ function s.RitualCheckAdditional(c,atk,greater_or_equal)
 					return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g)) and g:GetSum(aux.GetCappedAttack)<=atk
 				end
 	else
-		return  function(g,ec)
+		return  function(g)
 					if atk==0 then return #g<=1 end
-					if ec then
-						return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g,ec)) and g:GetSum(aux.GetCappedAttack)-aux.GetCappedAttack(ec)<=atk
-					else
-						return not aux.RGCheckAdditional or aux.RGCheckAdditional(g)
-					end
+					local sum=g:GetSum(aux.GetCappedAttack)
+					if aux.RGCheckAdditional and not aux.RGCheckAdditional(g) then return false end
+					local _,minatk=g:GetMinGroup(aux.GetCappedAttack)
+					return sum-minatk<atk
 				end
 	end
 end
