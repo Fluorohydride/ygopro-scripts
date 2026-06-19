@@ -87,8 +87,10 @@ function s.pthop(e,tp,eg,ep,ev,re,r,rp)
 		local op=aux.SelectFromOptions(tp,
 			{b1,aux.Stringid(id,3),1},
 			{b2,aux.Stringid(id,4),2})
-		if op==1 and not tc:IsImmuneToEffect(e) then
-			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
+		if op==1 then
+			if not not tc:IsImmuneToEffect(e) then
+				Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
+			end
 		else
 			Duel.HintSelection(og)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
