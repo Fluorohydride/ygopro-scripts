@@ -40,15 +40,15 @@ end
 
 --Synchro Summon
 function Auxiliary.Tuner(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target,syncard)
-				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
+				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params,1,ext_params.n)))
 			end
 end
 function Auxiliary.NonTuner(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target,syncard)
-				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
+				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params,1,ext_params.n)))
 			end
 end
 ---Synchro monster, 1 tuner + min to max monsters
