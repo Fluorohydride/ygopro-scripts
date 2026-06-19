@@ -35,8 +35,8 @@ function c71861848.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c71861848.regop(e,tp,eg,ep,ev,re,r,rp)
-	if r==REASON_LINK then
-		e:GetHandler():RegisterFlagEffect(71861848,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	if r==REASON_LINK and e:GetHandler():IsLocation(LOCATION_GRAVE) then
+		e:GetHandler():RegisterFlagEffect(71861848,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 	end
 end
 function c71861848.condition(e,tp,eg,ep,ev,re,r,rp)

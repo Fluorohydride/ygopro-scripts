@@ -106,7 +106,7 @@ function c2542230.discon(e)
 end
 function c2542230.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(2542230,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(2542230,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 end
 function c2542230.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
