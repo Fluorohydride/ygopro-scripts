@@ -81,6 +81,7 @@ function s.pthop(e,tp,eg,ep,ev,re,r,rp)
 	if mg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local og=mg:Select(tp,1,1,nil)
+		Duel.HintSelection(og)
 		local tc=og:GetFirst()
 		local b1=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
 		local b2=tc:IsAbleToHand()
@@ -92,7 +93,6 @@ function s.pthop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 			end
 		else
-			Duel.HintSelection(og)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 	end
