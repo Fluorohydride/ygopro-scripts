@@ -26,7 +26,7 @@ function c1197847.initial_effect(c)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(1197847,0))
-	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES)
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES_OPPO)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_PHASE+PHASE_BATTLE)
 	e4:SetRange(LOCATION_SZONE)
@@ -72,7 +72,7 @@ function c1197847.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 then
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 	end
 end
 function c1197847.spop(e,tp,eg,ep,ev,re,r,rp)

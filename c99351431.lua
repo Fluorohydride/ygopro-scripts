@@ -22,7 +22,7 @@ function c99351431.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterFlagEffect(99351431,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(99351431,0))
-		e1:SetCategory(CATEGORY_HANDES)
+		e1:SetCategory(CATEGORY_HANDES_OPPO)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_BATTLE_DAMAGE)
 		e1:SetLabelObject(tc)
@@ -38,7 +38,7 @@ function c99351431.hdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c99351431.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c99351431.hdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)

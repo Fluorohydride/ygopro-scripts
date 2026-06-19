@@ -16,7 +16,7 @@ function c49456901.initial_effect(c)
 	--negate activate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(49456901,1))
-	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_TOGRAVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)

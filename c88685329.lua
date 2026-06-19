@@ -41,9 +41,9 @@ function c88685329.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_DRAW)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 	elseif label==3 then
-		e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+		e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	end
 end
 function c88685329.drop(e,tp,eg,ep,ev,re,r,rp)

@@ -13,7 +13,7 @@ function c7623640.initial_effect(c)
 	--spsummon success
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(7623640,1))
-	e2:SetCategory(CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c7623640.hdcon)
@@ -38,7 +38,7 @@ function c7623640.hdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7623640.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c7623640.hdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD,nil)

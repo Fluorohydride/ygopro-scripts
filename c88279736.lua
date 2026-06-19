@@ -8,7 +8,7 @@ function c88279736.initial_effect(c)
 	--handes
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(88279736,0))
-	e2:SetCategory(CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_BATTLE_DAMAGE)
@@ -22,7 +22,7 @@ function c88279736.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88279736.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c88279736.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0)
