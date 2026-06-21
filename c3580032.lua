@@ -39,7 +39,7 @@ function c3580032.initial_effect(c)
 	Duel.AddCustomActivityCounter(3580032,ACTIVITY_SPSUMMON,c3580032.counterfilter)
 end
 function c3580032.counterfilter(c)
-	return c:IsSetCard(0x107a)
+	return c:IsSetCard(0x107a) and c:IsFaceup()
 end
 function c3580032.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable()

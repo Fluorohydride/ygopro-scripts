@@ -15,7 +15,7 @@ function c35629124.initial_effect(c)
 	Duel.AddCustomActivityCounter(35629124,ACTIVITY_SPSUMMON,c35629124.counterfilter)
 end
 function c35629124.counterfilter(c)
-	return c:IsRace(RACE_DRAGON)
+	return c:IsRace(RACE_DRAGON) and c:IsFaceup()
 end
 function c35629124.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_BATTLE_PHASE)==0
