@@ -21,10 +21,13 @@ function s.tdfilter(c)
 	return c:IsSetCard(0x1c9) and not c:IsCode(id) and c:IsAbleToDeck()
 		and c:IsFaceupEx()
 end
+function s.rmfilter(c,e)
+	return c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
+end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.GetMatchingGroupCount(aux.AND(Card.IsAbleToRemove,Card.IsCanBeEffectTarget),tp,0,LOCATION_GRAVE,nil,e)>0 end
-	local g=Duel.GetMatchingGroup(aux.AND(Card.IsAbleToRemove,Card.IsCanBeEffectTarget),tp,0,LOCATION_GRAVE,nil,e)
+	if chk==0 then return Duel.GetMatchingGroupCount(s.rmfilter,tp,0,LOCATION_GRAVE,nil,e)>0 end
+	local g=Duel.GetMatchingGroup(s.rmfilter,tp,0,LOCATION_GRAVE,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=g:SelectSubGroup(tp,s.fselect,false,1,2)
 	Duel.SetTargetCard(sg)

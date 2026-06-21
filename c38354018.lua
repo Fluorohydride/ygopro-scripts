@@ -73,7 +73,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,ct,0,0)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(aux.AND(Card.IsRelateToChain,Card.IsOnField),nil)
+	local g=Duel.GetTargetsRelateToChain()
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end
