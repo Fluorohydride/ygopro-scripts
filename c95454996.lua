@@ -49,8 +49,7 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(aux.NecroValleyFilter(Card.IsRelateToEffect),nil,e)
+	local tg=Duel.GetTargetsRelateToChain()
 	if tg:GetCount()>0 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end

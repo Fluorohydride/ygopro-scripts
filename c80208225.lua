@@ -34,7 +34,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,sg,#sg,0,0)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local rg=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(),nil)
+	local rg=Duel.GetTargetsRelateToChain()
 	if #rg==0 then return end
 	if Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)>0 then
 		local dg=Duel.GetMatchingGroup(s.tdfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
