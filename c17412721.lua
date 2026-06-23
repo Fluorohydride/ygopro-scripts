@@ -10,6 +10,8 @@ function c17412721.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e1:SetCountLimit(1,17412721)
+	e1:SetCondition(c17412721.spcon)
 	e1:SetTarget(c17412721.sptg)
 	e1:SetOperation(c17412721.spop)
 	c:RegisterEffect(e1)
@@ -24,6 +26,9 @@ end
 c17412721.material_type=TYPE_SYNCHRO
 function c17412721.ffilter(c)
 	return c:IsFusionType(TYPE_XYZ+TYPE_SYNCHRO)
+end
+function c17412721.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function c17412721.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
