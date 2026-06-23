@@ -28,31 +28,31 @@ function s.initial_effect(c)
 	e2:SetOperation(s.drop)
 	c:RegisterEffect(e2)
 end
-function s.cfilter(c,tp)
-	return c:IsSetCard(0x77,0x74) and Duel.GetMZoneCount(tp,c)>0
+function s.cfilter(c,e,tp)
+	return c:IsSetCard(0x77,0x74)
+		and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c)
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	e:SetLabel(100)
-	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroupEx(tp,s.cfilter,1,REASON_COST,true,c,tp) end
-	local g=Duel.SelectReleaseGroupEx(tp,s.cfilter,1,1,REASON_COST,true,c,tp)
+	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroupEx(tp,s.cfilter,1,REASON_COST,true,c,e,tp) end
+	local g=Duel.SelectReleaseGroupEx(tp,s.cfilter,1,1,REASON_COST,true,c,e,tp)
 	g:AddCard(c)
 	Duel.Release(g,REASON_COST)
 end
-function s.thfilter(c,e,tp,el)
+function s.thfilter(c,e,tp,rc)
 	if not (c:IsLevel(7) and c:IsRace(RACE_AQUA+RACE_FISH+RACE_SEASERPENT)) then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return c:IsAbleToHand() or ((ft>0 or el==100) and c:IsCanBeSpecialSummoned(e,0,tp,false,false))
+	return c:IsAbleToHand() or (Duel.GetMZoneCount(tp,rc)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false))
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp,e:GetLabel()) end
+	if chk==0 then return e:IsCostChecked()
+		or Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp,nil) end
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-	local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,0)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,nil)
 	local tc=g:GetFirst()
 	if tc then
+		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if tc:IsAbleToHand() and (not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) or ft<=0 or Duel.SelectOption(tp,1190,1152)==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)

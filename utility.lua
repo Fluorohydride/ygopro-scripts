@@ -2037,3 +2037,18 @@ end
 function Auxiliary.PhantasmsSpSummonType(c)
 	return c:IsType(TYPE_SPSUMMON)
 end
+---Count for the activation of "Mulcharmy" monsters
+function Auxiliary.EnableMulcharmyGlobalCheck()
+	if Auxiliary.MulcharmyGlobalFlag then return end
+	Auxiliary.MulcharmyGlobalFlag=true
+	local ge1=Effect.GlobalEffect()
+	ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	ge1:SetCode(EVENT_CHAINING)
+	ge1:SetOperation(Auxiliary.MulcharmyGlobalCheck)
+	Duel.RegisterEffect(ge1,0)
+end
+function Auxiliary.MulcharmyGlobalCheck(e,tp,eg,ep,ev,re,r,rp)
+	if re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x1b2) then
+		Duel.RegisterFlagEffect(ep,84192580,RESET_PHASE+PHASE_END,0,1)
+	end
+end
