@@ -137,7 +137,7 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToChain() and aux.NecroValleyFilter()(c) then
+	if c:IsRelateToChain() then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

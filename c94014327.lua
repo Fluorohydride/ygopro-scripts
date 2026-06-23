@@ -50,7 +50,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(aux.NecroValleyFilter(Card.IsRelateToChain),nil)
+	local g=Duel.GetTargetsRelateToChain()
 	if ft>0 and g:GetCount()>0 and
 		not (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then
 		if g:GetCount()>ft then

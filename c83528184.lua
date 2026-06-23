@@ -45,7 +45,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,g1:GetCount(),0,0)
 end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(),nil)
+	local tg=Duel.GetTargetsRelateToChain()
 	if tg:GetCount()>0 then
 		for tc in aux.Next(tg) do
 			if tc:IsExtraDeckMonster()
