@@ -33,7 +33,6 @@ end
 function c86060749.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) then
-		rc:CancelToGrave()
-		Duel.SendtoDeck(rc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		Duel.SendtoDeck(rc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 	end
 end

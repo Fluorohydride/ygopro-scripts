@@ -11,14 +11,13 @@ function c63571750.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63571750.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToDeck() end
+	if chk==0 then return e:IsCostChecked() and e:GetHandler():IsAbleToDeck() end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c63571750.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	c:CancelToGrave()
-	Duel.SendtoDeck(c,tp,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	Duel.SendtoDeck(c,tp,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 	if not c:IsLocation(LOCATION_DECK) then return end
 	Duel.ShuffleDeck(tp)
 	c:ReverseInDeck()
