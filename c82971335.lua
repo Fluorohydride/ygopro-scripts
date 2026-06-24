@@ -27,10 +27,18 @@ function c82971335.initial_effect(c)
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e4:SetCode(EVENT_LEVEL_UP)
+	e4:SetCode(EVENT_CUSTOM+82971335)
 	e4:SetTarget(c82971335.damtg)
 	e4:SetOperation(c82971335.damop)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_ADJUST)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetCondition(c82971335.regcon)
+	e5:SetOperation(c82971335.regop)
+	c:RegisterEffect(e5)
 end
 function c82971335.value(e,c)
 	return c:GetLevel()*400
@@ -47,6 +55,20 @@ function c82971335.lvop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(1)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 	c:RegisterEffect(e1)
+end
+function c82971335.regcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local lv=c:GetFlagEffectLabel(82971335)
+	return lv~=c:GetLevel()
+end
+function c82971335.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local lv=c:GetFlagEffectLabel(82971335)
+	if lv and c:GetLevel()>lv then
+		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+82971335,re,r,rp,ep,lv)
+	end
+	c:ResetFlagEffect(82971335)
+	c:RegisterFlagEffect(82971335,RESET_EVENT+RESETS_STANDARD,0,1,c:GetLevel())
 end
 function c82971335.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
