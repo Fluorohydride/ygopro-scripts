@@ -62,13 +62,21 @@ function c10497636.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10497636.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ac=e:GetLabelObject()
-	if chk==0 then return true end
+	if chk==0 then
+		if not ac:IsFaceup() then return false end
+		local code=ac:GetOriginalCodeRule()
+		local labels={Duel.GetFlagEffectLabel(0,10497636)}
+		for _,v in ipairs(labels) do
+			if v==code then return false end
+		end
+		return true
+	end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,ac,1,0,0)
 end
 function c10497636.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ac=e:GetLabelObject()
-	if ac:IsFaceup() and ac:IsRelateToBattle() and ac:IsCanBeDisabledByEffect(e) and ac:IsControler(1-tp) then
+	if ac:IsFaceup() and ac:IsRelateToBattle() and ac:IsControler(1-tp) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -94,6 +102,7 @@ function c10497636.disop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetLabelObject(ac)
 		e4:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e4,tp)
+		Duel.RegisterFlagEffect(0,10497636,RESET_PHASE+PHASE_END,0,1,ac:GetOriginalCodeRule())
 	end
 end
 function c10497636.distg2(e,c)
