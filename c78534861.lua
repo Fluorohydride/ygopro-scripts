@@ -25,8 +25,12 @@ function s.initial_effect(c)
 	e3:SetCode(EVENT_BE_BATTLE_TARGET)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetCondition(s.discon)
 	e3:SetOperation(s.disop)
 	c:RegisterEffect(e3)
+	local e4=e3:Clone()
+	e4:SetCode(EVENT_ATTACK_ANNOUNCE)
+	c:RegisterEffect(e4)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
 	e5:SetCode(EFFECT_DISABLE)
@@ -36,7 +40,6 @@ function s.initial_effect(c)
 	c:RegisterEffect(e5)
 	local e6=e5:Clone()
 	e6:SetCode(EFFECT_DISABLE_EFFECT)
-	e6:SetValue(RESET_TURN_SET)
 	c:RegisterEffect(e6)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -66,20 +69,21 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.AdjustInstantly(e:GetHandler())
+	local c=e:GetHandler()
+	local tc=Duel.GetAttackTarget()
+	if tc:IsControler(tp) then tc=Duel.GetAttacker() end
+	tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	Duel.AdjustInstantly(c)
 end
 function s.disfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x189,0x17a) and c:IsControler(tp)
 end
+function s.discon(e,tp,eg,ep,ev,re,r,rp)
+	local c=Duel.GetAttackTarget()
+	if not c then return false end
+	if c:IsControler(1-tp) then c=Duel.GetAttacker() end
+	return c and s.disfilter(c,tp)
+end
 function s.distg(e,c)
-	local fid=e:GetHandler():GetFieldID()
-	for _,flag in ipairs({c:GetFlagEffectLabel(id)}) do
-		if flag==fid then return true end
-	end
-	local bc=c:GetBattleTarget()
-	if c:IsRelateToBattle() and bc and s.disfilter(bc,e:GetHandlerPlayer()) then
-		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
-		return true
-	end
-	return false
+	return c:GetFlagEffect(id)~=0
 end
