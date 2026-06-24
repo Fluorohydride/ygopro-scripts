@@ -22,19 +22,25 @@ function c46589034.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xba) and c:IsLevelAbove(1) and c:IsAttackAbove(1) and c:IsDefenseAbove(1)
 end
 function c46589034.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c46589034.cfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c46589034.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	if chk==0 then 
+		local arr={Duel.IsPlayerAffectedByEffect(tp,EFFECT_NO_EFFECT_DAMAGE)}
+		for _,ae in pairs(arr) do
+			local val=ae:GetValue()
+			if not val or val(ae,e,114514,REASON_EFFECT,tp,c)==0 then return false end
+		end
+		return Duel.IsExistingTarget(c46589034.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NO_EFFECT_DAMAGE) end
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c46589034.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
-	local val=math.min(atk,def)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,val)
+	local dam=math.min(atk,def)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,dam)
 end
 function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -42,8 +48,8 @@ function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
-	local val=math.min(atk,def)
-	if Duel.Damage(tp,val,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+	local dam=math.min(atk,def)
+	if Duel.Damage(tp,dam,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
 		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
