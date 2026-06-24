@@ -36,6 +36,7 @@ function c40003819.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				local fgroup=ce:GetTarget()
 				local mg3=fgroup(ce,e,tp)
 				local mf=ce:GetValue()
+				mg3=mg3:Filter(Card.IsType,nil,TYPE_LINK)
 				res=Duel.IsExistingMatchingCard(c40003819.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
@@ -56,6 +57,7 @@ function c40003819.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ce~=nil then
 		local fgroup=ce:GetTarget()
 		mg3=fgroup(ce,e,tp)
+		mg3=mg3:Filter(Card.IsType,nil,TYPE_LINK)
 		local mf=ce:GetValue()
 		sg2=Duel.GetMatchingGroup(c40003819.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg3,mf,chkf)
 	end
@@ -65,7 +67,8 @@ function c40003819.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+		local exmg=mg3~=nil and mg3:Filter(Card.IsLocation,nil,LOCATION_HAND+LOCATION_DECK) or 0
+		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or #exmg<1 or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
 			Duel.Remove(mat1,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
