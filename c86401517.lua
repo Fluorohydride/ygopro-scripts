@@ -1,5 +1,6 @@
 --嵐竜の聖騎士
 function c86401517.initial_effect(c)
+	aux.AddCodeList(c,34767865)
 	c:EnableReviveLimit()
 	--return to hand
 	local e1=Effect.CreateEffect(c)

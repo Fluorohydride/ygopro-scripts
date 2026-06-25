@@ -3,7 +3,7 @@ function c3055837.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCategory(CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_HANDES_OPPO)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c3055837.condition)
 	e1:SetTarget(c3055837.target)
@@ -23,7 +23,7 @@ function c3055837.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3055837.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c3055837.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardHand(1-tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)

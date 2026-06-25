@@ -10,7 +10,7 @@ function c47870325.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable attack
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_FZONE)
@@ -71,8 +71,14 @@ end
 function c47870325.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local p=1-ep
+	if e:IsCostChecked() then
+		if Duel.GetTurnPlayer()==tp then
+			e:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_OPPO)
+		else
+			e:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_SELF)
+		end
+	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,p,LOCATION_REMOVED)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,1,p,LOCATION_HAND)
 end
 function c47870325.thfilter(c,rc,p)
 	return c:IsRelateToCard(rc) and c:IsControler(p) and c:IsAbleToHand()

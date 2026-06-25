@@ -35,6 +35,7 @@ function s.initial_effect(c)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
 end
+s.material_type=TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK
 function s.matfilter(c)
 	return c:IsFusionType(TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
 end

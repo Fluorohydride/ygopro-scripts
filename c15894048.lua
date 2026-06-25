@@ -6,8 +6,8 @@ function c15894048.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_ATTACK)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_MZONE,0)
-	e1:SetTarget(c15894048.catg)
 	e1:SetCondition(c15894048.cacon)
+	e1:SetTarget(c15894048.catg)
 	c:RegisterEffect(e1)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -15,15 +15,15 @@ function c15894048.initial_effect(c)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
+function c15894048.cacon(e)
+	return Duel.IsBattlePhase() and Duel.IsTurnPlayer(e:GetHandlerPlayer())
+end
 function c15894048.catg(e,c)
 	return not c:IsCode(15894048)
+		and Duel.IsExistingMatchingCard(c15894048.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,c)
 end
 function c15894048.cfilter(c)
-	if c:IsFacedown() or not c:IsCode(15894048) or not c:IsAttackable() then return false end
+	if not (c:IsCode(15894048) and c:IsAttackable()) then return false end
 	local ag,direct=c:GetAttackableTarget()
 	return ag:GetCount()>0 or direct
-end
-function c15894048.cacon(e)
-	return Duel.GetCurrentPhase()>PHASE_MAIN1 and Duel.GetCurrentPhase()<PHASE_MAIN2
-		and Duel.IsExistingMatchingCard(c15894048.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end

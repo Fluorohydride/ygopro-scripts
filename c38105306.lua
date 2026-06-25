@@ -20,7 +20,7 @@ function c38105306.initial_effect(c)
 	c:RegisterEffect(e2)
 	--discard
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_HANDES)
+	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_HANDES_OPPO)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_SZONE)

@@ -1,5 +1,6 @@
 --ネフティスの祀り手
 function c88176533.initial_effect(c)
+	aux.AddCodeList(c,23459650)
 	c:EnableReviveLimit()
 	--spsummon (deck)
 	local e1=Effect.CreateEffect(c)

@@ -36,7 +36,7 @@ function c11167052.initial_effect(c)
 	--discard & salvage
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(11167052,1))
-	e5:SetCategory(CATEGORY_HANDES+CATEGORY_TOHAND)
+	e5:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_TOHAND)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_FREE_CHAIN)
 	e5:SetHintTiming(0,TIMING_END_PHASE)
@@ -95,7 +95,7 @@ function c11167052.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	local ct=hg:GetCount()
 	if chk==0 then return ct>0 and Duel.IsExistingMatchingCard(c11167052.thfilter,tp,LOCATION_GRAVE,0,ct,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,hg,ct,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,hg,ct,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,ct,tp,LOCATION_GRAVE)
 end
 function c11167052.thop(e,tp,eg,ep,ev,re,r,rp)

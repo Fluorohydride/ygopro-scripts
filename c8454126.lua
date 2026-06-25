@@ -1,5 +1,6 @@
 --ネフティスの繋ぎ手
 function c8454126.initial_effect(c)
+	aux.AddCodeList(c,23459650)
 	c:EnableReviveLimit()
 	--spsummon
 	local e1=Effect.CreateEffect(c)

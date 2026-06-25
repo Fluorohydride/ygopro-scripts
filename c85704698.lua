@@ -62,13 +62,18 @@ function c85704698.mfilter(c)
 	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER)
 end
 function c85704698.syncheck(g,tp,syncard)
-	return g:IsExists(c85704698.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
+	return g:IsExists(c85704698.mfilter,1,nil) and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c85704698.spfilter(c,tp,mg)
-	return c:IsAttribute(ATTRIBUTE_WIND) and mg:CheckSubGroup(c85704698.syncheck,2,#mg,tp,c)
+	if not (c:IsType(TYPE_SYNCHRO) and c:IsAttribute(ATTRIBUTE_WIND)) then return false end
+	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
+	local res=mg:CheckSubGroup(c85704698.syncheck,2,#mg,tp,c)
+	aux.GCheckAdditional=nil
+	return res
 end
 function c85704698.syntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanSpecialSummon(tp) then return false end
 		local mg=Duel.GetSynchroMaterial(tp)
 		if mg:IsExists(Card.GetHandSynchro,1,nil) then
 			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)

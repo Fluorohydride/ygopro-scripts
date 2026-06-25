@@ -1,5 +1,6 @@
 --サクリファイス
 function c64631466.initial_effect(c)
+	aux.AddCodeList(c,41426869)
 	c:EnableReviveLimit()
 	--equip
 	local e1=Effect.CreateEffect(c)

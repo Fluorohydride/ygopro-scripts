@@ -2,7 +2,7 @@
 function c66926224.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(c66926224.condition)
@@ -25,7 +25,8 @@ function c66926224.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 		and Duel.IsExistingMatchingCard(c66926224.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c) end
 	local g=Duel.GetMatchingGroup(c66926224.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,PLAYER_ALL,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c66926224.activate(e,tp,eg,ep,ev,re,r,rp)

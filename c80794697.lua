@@ -3,7 +3,7 @@ function c80794697.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(80794697,0))
-	e1:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_LEAVE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -22,7 +22,7 @@ end
 function c80794697.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80794697.tgfilter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.IsPlayerCanDraw(tp,2) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c80794697.operation(e,tp,eg,ep,ev,re,r,rp)

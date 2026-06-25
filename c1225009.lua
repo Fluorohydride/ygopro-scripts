@@ -17,7 +17,7 @@ function c1225009.initial_effect(c)
 	--draw
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(1225009,1))
-	e3:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON)
+	e3:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_LEAVE_FIELD)
 	e3:SetRange(LOCATION_MZONE)

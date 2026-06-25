@@ -3,7 +3,7 @@ function c31759689.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31759689,0))
-	e1:SetCategory(CATEGORY_POSITION+CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_ATKCHANGE+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e1:SetTarget(c31759689.target)

@@ -15,7 +15,7 @@ function c23379054.initial_effect(c)
 	Duel.AddCustomActivityCounter(23379054,ACTIVITY_SPSUMMON,c23379054.counterfilter)
 end
 function c23379054.counterfilter(c)
-	return c:IsRace(RACE_DRAGON)
+	return c:IsRace(RACE_DRAGON) and c:IsFaceup()
 end
 function c23379054.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0

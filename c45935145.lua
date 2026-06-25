@@ -33,6 +33,7 @@ function s.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetType(EFFECT_TYPE_QUICK_O)
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET+CATEGORY_MSET)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_MZONE)
@@ -87,10 +88,10 @@ function s.spttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,s.sptfilter,tp,0,LOCATION_GRAVE,1,1,nil,e,tp)
 	if g:GetFirst():IsType(TYPE_MONSTER) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 	else
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	end
 end

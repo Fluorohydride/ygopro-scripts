@@ -96,21 +96,11 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	g1:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,3,0,0)
 end
-function s.ntdfilter(c)
-	return not c:IsAbleToDeck()
-end
 function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,e)
-	local sg=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 	if not c:IsRelateToChain() then return end
+	local g=Duel.GetTargetsRelateToChain()
 	g:AddCard(c)
-	local res=true
-	for tc in aux.Next(sg) do
-		if not aux.NecroValleyFilter()(tc) then res=false end
-	end
-	if g:IsExists(s.ntdfilter,1,nil) then return end
-	if res and g:GetCount()==3 then
-		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
-	end
+	if g:FilterCount(Card.IsAbleToDeck,nil)~=3 then return end
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

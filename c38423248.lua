@@ -28,6 +28,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
+s.material_type=TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK
 function s.rmfilter(c,tp)
 	return c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
 		and c:IsAbleToRemove()
@@ -44,8 +45,8 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,g1:GetCount(),0,0)
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(aux.NecroValleyFilter(aux.AND(Card.IsRelateToChain,Card.IsType)),nil,TYPE_MONSTER)
+	local g=Duel.GetTargetsRelateToChain()
+	local tg=g:Filter(Card.IsType,nil,TYPE_MONSTER)
 	if tg:GetCount()>0 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end

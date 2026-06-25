@@ -9,6 +9,7 @@ function c41930553.initial_effect(c)
 	--remove
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(41930553,1))
+	e2:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_REMOVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
@@ -31,7 +32,7 @@ function c41930553.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c41930553.rfilter,tp,0,LOCATION_GRAVE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c41930553.rfilter,tp,0,LOCATION_GRAVE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c41930553.operation(e,tp,eg,ep,ev,re,r,rp)

@@ -84,7 +84,7 @@ function s.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToChain() then
+	if tc:IsRelateToChain() and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.matfilter2),tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil,tc)
 		if #g>0 then

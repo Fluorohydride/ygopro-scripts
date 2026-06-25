@@ -33,51 +33,13 @@ end
 function s.mfilter(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1115) and (not e or c:IsCanBeEffectTarget(e))
 end
-function s.fselect(g)
-	return g:FilterCount(s.sfilter,nil)==g:FilterCount(s.mfilter,nil)
-end
-function s.SelectSub(g1,g2,tp)
-	local max=math.min(#g1,#g2)
-	local sg1=Group.CreateGroup()
-	local sg2=Group.CreateGroup()
-	local sg=sg1+sg2
-	local fg=g1+g2
-	local finish=false
-	while true do
-		finish=#sg1==#sg2 and #sg>0
-		local sc=fg:SelectUnselect(sg,tp,finish,finish,2,max*2)
-		if not sc then break end
-		if sg:IsContains(sc) then
-			if g1:IsContains(sc) then
-				sg1:RemoveCard(sc)
-			else
-				sg2:RemoveCard(sc)
-			end
-		else
-			if g1:IsContains(sc) then
-				sg1:AddCard(sc)
-			else
-				sg2:AddCard(sc)
-			end
-		end
-		sg=sg1+sg2
-		fg=g1+g2-sg
-		if #sg1>=max then
-			fg=fg-g1
-		end
-		if #sg2>=max then
-			fg=fg-g2
-		end
-	end
-	return sg
-end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local c=e:GetHandler()
+	if chkc then return false end
 	local g1=Duel.GetMatchingGroup(s.sfilter,tp,LOCATION_GRAVE,0,nil,e)
 	local g2=Duel.GetMatchingGroup(s.mfilter,tp,LOCATION_GRAVE,0,nil,e)
-	if chkc then return false end
 	if chk==0 then return g1:GetCount()>0 and g2:GetCount()>0 end
-	local tg=s.SelectSub(g1,g2,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local tg=aux.SelectSameCount(tp,g1,g2)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,tg,#tg,0,0)
 end

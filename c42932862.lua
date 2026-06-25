@@ -1,6 +1,7 @@
 --冥占術姫タロットレイス
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,8428836,94997874)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e0=Effect.CreateEffect(c)
@@ -12,7 +13,7 @@ function s.initial_effect(c)
 	--Special Summon Flip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,id)
@@ -22,7 +23,7 @@ function s.initial_effect(c)
 	--select position
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_POSITION)
+	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(TIMING_END_PHASE,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE+TIMING_STANDBY_PHASE)
@@ -66,6 +67,11 @@ function s.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 		op=Duel.SelectOption(tp,aux.Stringid(id,3))+1
 	end
 	e:SetLabel(op)
+	if op==0 then
+		e:SetCategory(CATEGORY_POSITION)
+	else
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 end
 function s.posop(e,tp,eg,ep,ev,re,r,rp)

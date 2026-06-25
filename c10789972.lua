@@ -1,5 +1,6 @@
 --覚醒戦士 クーフーリン
 function c10789972.initial_effect(c)
+	aux.AddCodeList(c,9845733)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)

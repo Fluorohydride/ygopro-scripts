@@ -25,7 +25,7 @@ function c12612470.initial_effect(c)
 	c:RegisterEffect(e3)
 	--move
 	local e4=Effect.CreateEffect(c)
-	e4:SetCategory(CATEGORY_POSITION)
+	e4:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_MOVE)
 	e4:SetCountLimit(1,12612470+1)

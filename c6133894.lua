@@ -21,7 +21,7 @@ function c6133894.initial_effect(c)
 	--handes
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(6133894,0))
-	e3:SetCategory(CATEGORY_HANDES)
+	e3:SetCategory(CATEGORY_HANDES_OPPO)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetTarget(c6133894.hdtg)
@@ -50,7 +50,7 @@ function c6133894.spop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c6133894.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,3)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,3)
 end
 function c6133894.hdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsEnvironment(94585852,tp) then

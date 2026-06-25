@@ -47,7 +47,7 @@ end
 function c5969957.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(c5969957.tgfilter,nil,e,tp)
 	if chkc then return g:IsContains(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetCount()>0 end
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0 and g:GetCount()>0 end
 	local c=nil
 	if g:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

@@ -1,5 +1,6 @@
 --凶導の白騎士
 function c40352445.initial_effect(c)
+	aux.AddCodeList(c,31002402)
 	c:EnableReviveLimit()
 	--splimit
 	local e1=Effect.CreateEffect(c)

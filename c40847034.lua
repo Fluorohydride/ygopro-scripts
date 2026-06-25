@@ -42,7 +42,12 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local te=tc.killer_tune_be_material_effect
 	if te then
 		local tg=te:GetTarget()
-		if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
+		if tg then
+			local cchk=e:IsCostChecked()
+			e:SetCostCheck(false)
+			tg(e,tp,eg,ep,ev,re,r,rp,1)
+			e:SetCostCheck(cchk)
+		end
 	end
 	Duel.ClearOperationInfo(0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)

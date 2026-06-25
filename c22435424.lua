@@ -35,7 +35,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return c:IsRace(RACE_MACHINE) or not c:IsSummonType(SUMMON_TYPE_RITUAL)
+	return c:IsRace(RACE_MACHINE) and c:IsFaceup() or not c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function s.splimit(e,se,sp,st)
 	return se:IsHasType(EFFECT_TYPE_ACTIONS)

@@ -57,7 +57,7 @@ function c33900648.initial_effect(c)
 	--water
 	local e8=Effect.CreateEffect(c)
 	e8:SetDescription(aux.Stringid(33900648,2))
-	e8:SetCategory(CATEGORY_HANDES)
+	e8:SetCategory(CATEGORY_HANDES_SELF)
 	e8:SetCode(EVENT_PHASE+PHASE_END)
 	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e8:SetRange(LOCATION_FZONE)

@@ -3,6 +3,7 @@ function c93294869.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93294869,0))
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_FLIP)

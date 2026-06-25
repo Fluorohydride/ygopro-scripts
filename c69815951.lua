@@ -1,5 +1,6 @@
 --竜儀巧－メテオニス＝DRA
 function c69815951.initial_effect(c)
+	aux.AddCodeList(c,22398665)
 	c:EnableReviveLimit()
 	--
 	local e0=Effect.CreateEffect(c)

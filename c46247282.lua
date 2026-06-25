@@ -65,7 +65,7 @@ end
 function c46247282.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cg=c:GetColumnGroup()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToEffect(e) then
 		local g=Duel.GetMatchingGroup(c46247282.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,cg)
 		if g:GetCount()>0 then
 			Duel.Destroy(g,REASON_EFFECT)

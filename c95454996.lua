@@ -18,6 +18,7 @@ function s.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,id+o)
@@ -48,8 +49,7 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(aux.NecroValleyFilter(Card.IsRelateToEffect),nil,e)
+	local tg=Duel.GetTargetsRelateToChain()
 	if tg:GetCount()>0 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end

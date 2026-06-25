@@ -74,14 +74,18 @@ function s.mfilter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsType(TYPE_MONSTER) and c:IsFaceupEx()
 end
 function s.syncheck(g,tp,syncard)
-	return g:IsExists(s.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
-		and aux.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL)
+	return g:IsExists(s.mfilter,1,nil) and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function s.scfilter(c,tp,mg)
-	return mg:CheckSubGroup(s.syncheck,2,#mg,tp,c)
+	if not c:IsType(TYPE_SYNCHRO) then return false end
+	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
+	local res=mg:CheckSubGroup(s.syncheck,2,#mg,tp,c)
+	aux.GCheckAdditional=nil
+	return res
 end
 function s.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanSpecialSummon(tp) then return false end
 		local mg=Duel.GetSynchroMaterial(tp)
 		if mg:IsExists(Card.GetHandSynchro,1,nil) then
 			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)

@@ -27,6 +27,7 @@ function s.initial_effect(c)
 	e1:SetOperation(s.naop)
 	c:RegisterEffect(e1)
 end
+s.material_type=TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK
 function s.mfilter1(c)
 	return bit.band(c:GetOriginalType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_LINK+TYPE_XYZ)~=0
 end

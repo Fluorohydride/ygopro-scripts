@@ -2,7 +2,7 @@
 function c33508719.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_DRAW)
+	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP)
 	e1:SetTarget(c33508719.target)
 	e1:SetOperation(c33508719.operation)
@@ -10,7 +10,8 @@ function c33508719.initial_effect(c)
 end
 function c33508719.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,PLAYER_ALL,0)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,0)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,5)
 end
 function c33508719.operation(e,tp,eg,ep,ev,re,r,rp)

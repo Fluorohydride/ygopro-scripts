@@ -29,7 +29,7 @@ function c67288539.initial_effect(c)
 	--destroy
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(67288539,1))
-	e4:SetCategory(CATEGORY_HANDES+CATEGORY_DESTROY)
+	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_START)
 	e4:SetCountLimit(1,67288539)

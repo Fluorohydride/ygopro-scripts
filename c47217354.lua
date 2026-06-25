@@ -3,7 +3,7 @@ function c47217354.initial_effect(c)
 	--lv atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(47217354,0))
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)
@@ -13,7 +13,7 @@ function c47217354.initial_effect(c)
 end
 function c47217354.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 end
 function c47217354.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

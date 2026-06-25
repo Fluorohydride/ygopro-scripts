@@ -9,7 +9,7 @@ function c80885284.initial_effect(c)
 	--turn set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(80885284,0))
-	e2:SetCategory(CATEGORY_POSITION)
+	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTarget(c80885284.postg)

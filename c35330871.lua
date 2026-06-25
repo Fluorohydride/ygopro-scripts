@@ -1,5 +1,6 @@
 --彼岸の鬼神 ヘルレイカー
 function c35330871.initial_effect(c)
+	aux.AddCodeList(c,62835876)
 	c:EnableReviveLimit()
 	--special summon condition
 	local e1=Effect.CreateEffect(c)

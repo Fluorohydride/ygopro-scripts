@@ -1,6 +1,7 @@
 --伝説の剣闘士 カオス・ソルジャー
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,21082832,14094090)
 	c:EnableReviveLimit()
 	--Special Summon Condition
 	local e1=Effect.CreateEffect(c)

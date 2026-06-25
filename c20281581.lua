@@ -31,7 +31,7 @@ function c20281581.initial_effect(c)
 	--sp set
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(20281581,2))
-	e4:SetCategory(CATEGORY_POSITION)
+	e4:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)

@@ -2,13 +2,14 @@
 function c97973962.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
+	aux.AddCodeList(c,74063034,458748,47457347)
 	aux.AddLinkProcedure(c,nil,2,2,c97973962.spcheck)
 	--code
 	aux.EnableChangeCode(c,86120751,LOCATION_MZONE+LOCATION_GRAVE)
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(97973962,0))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES_SELF)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -41,7 +42,7 @@ end
 function c97973962.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0
 		and Duel.IsExistingMatchingCard(c97973962.thfilter,tp,LOCATION_DECK,0,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c97973962.thop(e,tp,eg,ep,ev,re,r,rp)

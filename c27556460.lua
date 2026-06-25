@@ -15,6 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--set
 	local e3=Effect.CreateEffect(c)
+	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e3:SetRange(LOCATION_GRAVE)

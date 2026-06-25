@@ -44,7 +44,8 @@ function c99890852.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if not tc1 then return end
 	local tc2=(g-tc1):GetFirst()
-	if Duel.SendtoHand(tc1,nil,REASON_EFFECT)~=0 and tc2 and tc2:IsFaceup() then
+	if Duel.SendtoHand(tc1,nil,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_HAND)
+		and tc2 and tc2:IsFaceup() then
 		local atk=tc1:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

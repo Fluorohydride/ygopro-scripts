@@ -14,7 +14,8 @@ function c38124994.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38124994.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function c38124994.filter(c)
 	return (c:IsCode(30068120) or (c:IsSetCard(0xa9) and c:IsType(TYPE_MONSTER) and not c:IsCode(38124994)))

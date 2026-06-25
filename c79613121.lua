@@ -1,5 +1,6 @@
 --マジシャン・オブ・ブラックカオス・MAX
 function c79613121.initial_effect(c)
+	aux.AddCodeList(c,21082832)
 	c:EnableReviveLimit()
 	--act limit
 	local e1=Effect.CreateEffect(c)

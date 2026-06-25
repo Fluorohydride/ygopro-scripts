@@ -1,5 +1,6 @@
 --オッドアイズ・ペンデュラムグラフ・ドラゴン
 function c66425726.initial_effect(c)
+	aux.AddCodeList(c,16494704)
 	aux.EnablePendulumAttribute(c)
 	--revive limit
 	aux.EnableReviveLimitPendulumSummonable(c,LOCATION_HAND)
