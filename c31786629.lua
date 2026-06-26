@@ -10,7 +10,7 @@ function c31786629.initial_effect(c)
 	e1:SetTarget(c31786629.target)
 	e1:SetOperation(c31786629.operation)
 	c:RegisterEffect(e1)
-	c31786629.discard_effect=e1
+	c31786629.thunder_dragon_discard_effect=e1
 end
 function c31786629.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

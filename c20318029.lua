@@ -15,7 +15,7 @@ function c20318029.initial_effect(c)
 	e1:SetTarget(c20318029.atktg)
 	e1:SetOperation(c20318029.atkop)
 	c:RegisterEffect(e1)
-	c20318029.discard_effect=e1
+	c20318029.thunder_dragon_discard_effect=e1
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(20318029,1))

@@ -46,7 +46,7 @@ function c90411554.initial_effect(c)
 	e4:SetTarget(c90411554.thtg)
 	e4:SetOperation(c90411554.thop)
 	c:RegisterEffect(e4)
-	c90411554.Dragon_Ruler_handes_effect=e3
+	c90411554.dragon_ruler_discard_effect=e3
 end
 function c90411554.rfilter(c)
 	return (c:IsRace(RACE_DRAGON) or c:IsAttribute(ATTRIBUTE_EARTH)) and c:IsAbleToRemoveAsCost()
