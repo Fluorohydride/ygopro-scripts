@@ -15,25 +15,28 @@ function c87804365.spfilter1(c,e,tp)
 	return c:IsSetCard(0x132) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCanBeEffectTarget(e)
 end
 function c87804365.fselect1(g,tp)
-	return Duel.IsExistingMatchingCard(c87804365.synfilter,tp,LOCATION_EXTRA,0,1,nil,g) and aux.dncheck(g)
+	return Duel.IsExistingMatchingCard(c87804365.synfilter,tp,LOCATION_EXTRA,0,1,nil,g)
 end
 function c87804365.synfilter(c,g)
-	return c:IsSetCard(0x132) and c:IsSynchroSummonable(nil,g,g:GetCount()-1,g:GetCount()-1)
+	return c:IsSetCard(0x132) and c:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c87804365.fselect2(g,tp)
-	return Duel.IsExistingMatchingCard(c87804365.xyzfilter,tp,LOCATION_EXTRA,0,1,nil,g) and aux.dncheck(g)
+	return Duel.IsExistingMatchingCard(c87804365.xyzfilter,tp,LOCATION_EXTRA,0,1,nil,g)
 end
 function c87804365.xyzfilter(c,g)
-	return c:IsSetCard(0x132) and c:IsXyzSummonable(g,g:GetCount(),g:GetCount())
+	return c:IsSetCard(0x132) and c:IsXyzSummonable(g,#g,#g)
 end
 function c87804365.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),3)
+	if chk==0 and (ft<=0 or not Duel.IsPlayerCanSpecialSummonCount(tp,2)
+		or Duel.IsPlayerAffectedByEffect(tp,59822133)) then return false end
 	local g=Duel.GetMatchingGroup(c87804365.spfilter1,tp,LOCATION_GRAVE,0,nil,e,tp)
+	aux.GCheckAdditional=aux.dncheck
 	local b1=g:CheckSubGroup(c87804365.fselect1,1,ft,tp)
 	local b2=g:CheckSubGroup(c87804365.fselect2,1,ft,tp)
-	if chk==0 then return ft>0 and Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and not Duel.IsPlayerAffectedByEffect(tp,59822133) and (b1 or b2) end
+	aux.GCheckAdditional=nil
+	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(87804365,0),aux.Stringid(87804365,1))
@@ -44,6 +47,7 @@ function c87804365.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	e:SetLabel(op)
 	local sg=nil
+	aux.GCheckAdditional=aux.dncheck
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=g:SelectSubGroup(tp,c87804365.fselect1,false,1,ft,tp)
@@ -51,6 +55,7 @@ function c87804365.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=g:SelectSubGroup(tp,c87804365.fselect2,false,1,ft,tp)
 	end
+	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
 end
@@ -102,14 +107,14 @@ function c87804365.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local rg=tg:Select(tp,1,1,nil)
-			Duel.SynchroSummon(tp,rg:GetFirst(),nil,og,og:GetCount()-1,og:GetCount()-1)
+			Duel.SynchroSummon(tp,rg:GetFirst(),nil,og,#og-1,#og-1)
 		end
 	else
 		local tg=Duel.GetMatchingGroup(c87804365.xyzfilter,tp,LOCATION_EXTRA,0,nil,og)
 		if og:GetCount()==g:GetCount() and tg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local rg=tg:Select(tp,1,1,nil)
-			Duel.XyzSummon(tp,rg:GetFirst(),og,og:GetCount(),og:GetCount())
+			Duel.XyzSummon(tp,rg:GetFirst(),og,#og,#og)
 		end
 	end
 end

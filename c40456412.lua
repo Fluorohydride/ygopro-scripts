@@ -58,9 +58,13 @@ function c40456412.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:IsCostChecked() then
 			e:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
 		end
-	else
+	elseif op==2 then
 		if e:IsCostChecked() then
 			e:SetCategory(0)
+		end
+	elseif op==3 then
+		if e:IsCostChecked() then
+			e:SetCategory(CATEGORY_SSET)
 		end
 	end
 end

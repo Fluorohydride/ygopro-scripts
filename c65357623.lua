@@ -14,7 +14,7 @@ function c65357623.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Shuffle to set from GY
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_TODECK)
+	e2:SetCategory(CATEGORY_TODECK+CATEGORY_SSET)
 	e2:SetDescription(aux.Stringid(65357623,3))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

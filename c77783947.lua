@@ -33,10 +33,14 @@ function c77783947.mfilter(c)
 	return c:IsSetCard(0x9e) and c:IsType(TYPE_MONSTER)
 end
 function c77783947.syncheck(g,tp,syncard)
-	return g:IsExists(c77783947.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
+	return g:IsExists(c77783947.mfilter,1,nil) and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c77783947.spfilter(c,tp,mg)
-	return mg:CheckSubGroup(c77783947.syncheck,2,#mg,tp,c)
+	if not c:IsType(TYPE_SYNCHRO) then return false end
+	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
+	local res=mg:CheckSubGroup(c77783947.syncheck,2,#mg,tp,c)
+	aux.GCheckAdditional=nil
+	return res
 end
 function c77783947.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -44,6 +48,7 @@ function c77783947.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c77783947.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanSpecialSummon(tp) then return false end
 		local mg=Duel.GetSynchroMaterial(tp)
 		if mg:IsExists(Card.GetHandSynchro,1,nil) then
 			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)

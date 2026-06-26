@@ -18,6 +18,7 @@ function c36577931.initial_effect(c)
 	--set to your field
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(36577931,1))
+	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_GRAVE)

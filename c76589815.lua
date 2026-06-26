@@ -19,6 +19,7 @@ function c76589815.initial_effect(c)
 	--atk
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(76589815,0))
+	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetRange(LOCATION_MZONE)

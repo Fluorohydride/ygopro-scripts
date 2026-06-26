@@ -20,7 +20,7 @@ function s.initial_effect(c)
 	--trigger
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,3))
-	e3:SetCategory(CATEGORY_DRAW+CATEGORY_RELEASE+CATEGORY_HANDES)
+	e3:SetCategory(CATEGORY_DRAW+CATEGORY_RELEASE+CATEGORY_HANDES_SELF)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -79,13 +79,13 @@ function s.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 	if op==1 then
 		if e:IsCostChecked() then
-			e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+			e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 			Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 		end
 		Duel.SetTargetPlayer(tp)
 		Duel.SetTargetParam(2)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	elseif op==2 then
 		if e:IsCostChecked() then
 			e:SetCategory(CATEGORY_RELEASE)

@@ -27,7 +27,7 @@ function s.initial_effect(c)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCost(s.spcost)
@@ -212,5 +212,6 @@ function s.damcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.damop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,id)
+	e:GetHandler():ResetFlagEffect(id+o)
 	Duel.Damage(1-tp,900,REASON_EFFECT)
 end

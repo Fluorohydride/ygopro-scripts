@@ -11,11 +11,12 @@ function c46290741.initial_effect(c)
 	e1:SetTarget(c46290741.sptg)
 	e1:SetOperation(c46290741.spop)
 	c:RegisterEffect(e1)
-	--search
+	--sset
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(46290741,1))
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetCategory(CATEGORY_SSET)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetTarget(c46290741.settg)
 	e2:SetOperation(c46290741.setop)

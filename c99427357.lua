@@ -1,5 +1,6 @@
 --サイバー・エンジェル－那沙帝弥－
 function c99427357.initial_effect(c)
+	aux.AddCodeList(c,39996157)
 	c:EnableReviveLimit()
 	--recover
 	local e1=Effect.CreateEffect(c)

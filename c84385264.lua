@@ -1,5 +1,6 @@
 --ライカン・スロープ
 function c84385264.initial_effect(c)
+	aux.AddCodeList(c,72446038)
 	c:EnableReviveLimit()
 	--damage
 	local e1=Effect.CreateEffect(c)

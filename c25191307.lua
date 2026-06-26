@@ -27,7 +27,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsFaceup()
 end
 function s.cfilter(c)
 	return c:IsFaceup() and not c:IsRace(RACE_WINDBEAST)

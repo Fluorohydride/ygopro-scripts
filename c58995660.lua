@@ -32,14 +32,13 @@ end
 function s.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
+	if not tc:IsRelateToChain() then return end
 	local d=0
 	if e:GetLabel()==1 then
-		if not tc:IsRelateToChain() then return end
 		d=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2),aux.Stringid(id,3))+1
 	else
 		d=Duel.TossDice(tp,1)
 	end
-	if not tc:IsRelateToChain() then return end
 	if d==1 or d==4 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(id,4))

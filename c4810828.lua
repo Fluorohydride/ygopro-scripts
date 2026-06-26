@@ -1,5 +1,6 @@
 --古聖戴サウラヴィス
 function c4810828.initial_effect(c)
+	aux.AddCodeList(c,37626500)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

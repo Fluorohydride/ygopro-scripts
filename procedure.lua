@@ -40,15 +40,15 @@ end
 
 --Synchro Summon
 function Auxiliary.Tuner(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target,syncard)
-				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
+				return target:IsTuner(syncard) and (not f or f(target,table.unpack(ext_params,1,ext_params.n)))
 			end
 end
 function Auxiliary.NonTuner(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target,syncard)
-				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
+				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params,1,ext_params.n)))
 			end
 end
 ---Synchro monster, 1 tuner + min to max monsters
@@ -58,16 +58,17 @@ end
 ---@param minc integer
 ---@param maxc? integer
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
-	if maxc==nil then maxc=99 end
+	if maxc==nil then maxc=c:GetLevel()-1 end
+	local maxct=math.min(maxc,c:GetLevel()-1)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,minc,maxc))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,minc,maxc))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,minc,maxc))
+	e1:SetCondition(Auxiliary.SynCondition(f1,f2,minc,maxct))
+	e1:SetTarget(Auxiliary.SynTarget(f1,f2,minc,maxct))
+	e1:SetOperation(Auxiliary.SynOperation(f1,f2,minc,maxct))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
@@ -109,7 +110,7 @@ function Auxiliary.SynTarget(f1,f2,minct,maxct)
 				else return false end
 			end
 end
-function Auxiliary.SynOperation(f1,f2,minct,maxc)
+function Auxiliary.SynOperation(f1,f2,minct,maxct)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
@@ -132,15 +133,22 @@ end
 ---@param maxc integer
 ---@param gc? function
 function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
+	local maxct=maxc
+	if maxct>c:GetLevel() then
+		maxct=c:GetLevel()
+		if f1 then maxct=maxct-1 end
+		if f2 then maxct=maxct-1 end
+		if f3 then maxct=maxct-1 end
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc))
-	e1:SetTarget(Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc))
-	e1:SetOperation(Auxiliary.SynMixOperation(f1,f2,f3,f4,minc,maxc,gc))
+	e1:SetCondition(Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxct,gc))
+	e1:SetTarget(Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxct,gc))
+	e1:SetOperation(Auxiliary.SynMixOperation(f1,f2,f3,f4,minc,maxct,gc))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
@@ -152,6 +160,15 @@ function Auxiliary.SynLimitFilter(c,f,e,syncard)
 end
 function Auxiliary.GetSynchroLevelFlowerCardian(c)
 	return 2
+end
+function Auxiliary.GetMinSynchroLevel(c,syncard)
+	local lv=c:GetSynchroLevel(syncard)
+	local minlv=c:GetLevel()
+	while lv&MAX_PARAMETER>0 do
+		minlv=math.min(minlv,lv&MAX_PARAMETER)
+		lv=lv>>16
+	end
+	return minlv
 end
 function Auxiliary.GetSynMaterials(tp,syncard)
 	local mg=Duel.GetSynchroMaterial(tp):Filter(Auxiliary.SynMaterialFilter,nil,syncard)
@@ -185,14 +202,22 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 				end
 				local mg
 				local mgchk=false
+				local goalchk=false
 				if mg1 then
 					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
 					mgchk=true
+					if min and min==max and #mg==#mg1 and #mg==min+1 then
+						goalchk=Auxiliary.SynMixCheckGoal(tp,mg,0,0,c,Group.CreateGroup(),smat,gc,mgchk,goalchk)
+						if not goalchk then
+							Duel.ResetFlagEffect(tp,8173184+1)
+							return false
+						end
+					end
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
-				local res=mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk)
+				local res=mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk)
 				Duel.ResetFlagEffect(tp,8173184+1)
 				return res
 			end
@@ -213,12 +238,21 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				if Duel.IsPlayerAffectedByEffect(tp,8173184) then
 					Duel.RegisterFlagEffect(tp,8173184+1,0,0,1)
 				end
+				local cancel=Duel.IsSummonCancelable()
 				local g=Group.CreateGroup()
 				local mg
 				local mgchk=false
+				local goalchk=false
 				if mg1 then
 					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
 					mgchk=true
+					if min and min==max and #mg==#mg1 and #mg==min+1 and not cancel then
+						g:Merge(mg)
+						g:KeepAlive()
+						e:SetLabelObject(g)
+						Duel.ResetFlagEffect(tp,8173184+1)
+						return true
+					end
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
@@ -227,20 +261,19 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				local c2
 				local c3
 				local g4=Group.CreateGroup()
-				local cancel=Duel.IsSummonCancelable()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+				c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
 				if not c1 then goto SynMixTargetSelectCancel end
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+					c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
 					if not c2 then goto SynMixTargetSelectCancel end
 					if g:IsContains(c2) then goto SynMixTargetSelectStart end
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk):SelectUnselect(g,tp,false,cancel,1,1)
+						c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
 						if not c3 then goto SynMixTargetSelectCancel end
 						if g:IsContains(c3) then goto SynMixTargetSelectStart end
 						g:AddCard(c3)
@@ -253,9 +286,10 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 					else
 						mg2:Sub(g)
 					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk)
+					local fulltraversal=mg:IsExists(Card.IsHasEffect,1,nil,89818984)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk,goalchk,fulltraversal)
 					if cg:GetCount()==0 then break end
-					local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk)
+					local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk,goalchk)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 					local c4=cg:SelectUnselect(g+g4,tp,finish,cancel,minc,maxc)
 					if not c4 then
@@ -285,31 +319,30 @@ function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxct,gc)
 				g:DeleteGroup()
 			end
 end
-function Auxiliary.SynMixFilter1(c,f1,f2,f3,f4,minc,maxc,syncard,mg,smat,gc,mgchk)
-	return (not f1 or f1(c,syncard)) and mg:IsExists(Auxiliary.SynMixFilter2,1,c,f2,f3,f4,minc,maxc,syncard,mg,smat,c,gc,mgchk)
+function Auxiliary.SynMixFilter1(c,f1,f2,f3,f4,minc,maxc,syncard,mg,smat,gc,mgchk,goalchk)
+	return (not f1 or f1(c,syncard)) and mg:IsExists(Auxiliary.SynMixFilter2,1,c,f2,f3,f4,minc,maxc,syncard,mg,smat,c,gc,mgchk,goalchk)
 end
-function Auxiliary.SynMixFilter2(c,f2,f3,f4,minc,maxc,syncard,mg,smat,c1,gc,mgchk)
+function Auxiliary.SynMixFilter2(c,f2,f3,f4,minc,maxc,syncard,mg,smat,c1,gc,mgchk,goalchk)
 	if f2 then
 		return f2(c,syncard,c1)
-			and (mg:IsExists(Auxiliary.SynMixFilter3,1,Group.FromCards(c1,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c,gc,mgchk)
-				or minc==0 and Auxiliary.SynMixFilter4(c,nil,1,1,syncard,mg,smat,c1,nil,nil,gc,mgchk))
+			and (mg:IsExists(Auxiliary.SynMixFilter3,1,Group.FromCards(c1,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c,gc,mgchk,goalchk)
+				or minc==0 and Auxiliary.SynMixFilter4(c,nil,1,1,syncard,mg,smat,c1,nil,nil,gc,mgchk,goalchk))
 	else
-		return mg:IsExists(Auxiliary.SynMixFilter4,1,c1,f4,minc,maxc,syncard,mg,smat,c1,nil,nil,gc,mgchk)
+		return mg:IsExists(Auxiliary.SynMixFilter4,1,c1,f4,minc,maxc,syncard,mg,smat,c1,nil,nil,gc,mgchk,goalchk)
 	end
 end
-function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc,mgchk)
+function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc,mgchk,goalchk)
 	if f3 then
 		return f3(c,syncard,c1,c2)
-			and (mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2,c),f4,minc,maxc,syncard,mg,smat,c1,c2,c,gc,mgchk)
-				or minc==0 and Auxiliary.SynMixFilter4(c,nil,1,1,syncard,mg,smat,c1,c2,nil,gc,mgchk))
+			and (mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2,c),f4,minc,maxc,syncard,mg,smat,c1,c2,c,gc,mgchk,goalchk)
+				or minc==0 and Auxiliary.SynMixFilter4(c,nil,1,1,syncard,mg,smat,c1,c2,nil,gc,mgchk,goalchk))
 	else
-		return mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2),f4,minc,maxc,syncard,mg,smat,c1,c2,nil,gc,mgchk)
+		return mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2),f4,minc,maxc,syncard,mg,smat,c1,c2,nil,gc,mgchk,goalchk)
 	end
 end
-function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgchk)
+function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgchk,goalchk)
 	if f4 and not f4(c,syncard,c1,c2,c3) then return false end
 	local sg=Group.FromCards(c1,c)
-	sg:AddCard(c1)
 	if c2 then sg:AddCard(c2) end
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
@@ -318,23 +351,32 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgc
 	else
 		mg:Sub(sg)
 	end
-	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	return Auxiliary.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,mg1,smat,gc,mgchk,goalchk)
 end
-function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk)
+function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,mg1,smat,gc,mgchk,goalchk)
 	local tp=syncard:GetControler()
 	local sg=Group.CreateGroup()
-	if minc<=0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc,mgchk) then return true end
+	if minc<=0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc,mgchk,goalchk) then return true end
 	if maxc==0 then return false end
-	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc,mgchk)
+	local fulltraversal=#mg<=5 or mg1:IsExists(Card.IsHasEffect,1,nil,89818984)
+	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc,mgchk,goalchk,fulltraversal)
 end
-function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
+function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk,goalchk,fulltraversal)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
-		or (ct<maxc and mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk))
+	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk,goalchk)
+	if not res and ct<maxc
+		and (fulltraversal or not Auxiliary.SynMixCheckPrune(sg,sg1,syncard)) then
+		res=mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk,goalchk,fulltraversal)
+	end
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
+end
+function Auxiliary.SynMixCheckPrune(sg,sg1,syncard)
+	local g=sg+sg1
+	local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+	return sumlv>=syncard:GetLevel()
 end
 -- the material is in hand and don't has extra synchro material effect itself
 -- that mean some other tuner added it as material
@@ -368,10 +410,10 @@ function Auxiliary.SynMixHandCheck(g,tp,syncard)
 	end
 	return true
 end
-function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
+function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk,goalchk)
+	if goalchk then return true end
 	if ct<minc then return false end
-	local g=sg:Clone()
-	g:Merge(sg1)
+	local g=sg+sg1
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
 	if gc and not gc(g,syncard,tp) then return false end
 	if smat and not g:IsContains(smat) then return false end
@@ -409,9 +451,19 @@ function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
 	end
 	return false
 end
+function Auxiliary.TuneMagicianCheckAdditionalXyz(g)
+	return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_X)
+end
+--deprecated, use plain function instead of this factory
 function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
 	return	function(g)
 				return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,ecode)
+			end
+end
+function Auxiliary.SynGroupCheckLevelAddition(syncard)
+	return	function(g)
+				local sumlv=g:GetSum(Auxiliary.GetMinSynchroLevel,syncard)
+				return sumlv<=syncard:GetLevel()
 			end
 end
 
@@ -516,7 +568,7 @@ function Auxiliary.CheckXyz2XMaterial(c,f,lv,minc,maxc,mg)
 	local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 	if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 	Duel.SetSelectedCard(sg)
-	Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+	Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 	local res=mg:CheckSubGroup(Auxiliary.Xyz2XMaterialGoal,2,maxc,tp,c,minc)
 	Auxiliary.GCheckAdditional=nil
 	return res
@@ -568,7 +620,7 @@ function Auxiliary.XyzTarget(f,lv,minct,maxct,alterf,alterdesc,alterop)
 						local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 						Duel.SetSelectedCard(sg)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-						Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+						Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 						g=mg:SelectSubGroup(tp,Auxiliary.Xyz2XMaterialGoal,cancel,2,maxc,tp,c,minc)
 						Auxiliary.GCheckAdditional=nil
 					else
@@ -700,7 +752,7 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct,alterf,alterdesc,alter
 				local sg=Duel.GetMustMaterial(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 				local res=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 				Auxiliary.GCheckAdditional=nil
 				return res
@@ -731,7 +783,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 					altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,alterop)
 					mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 					Duel.SetSelectedCard(sg)
-					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 					b1=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
 					b2=#altg>0
@@ -752,7 +804,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct,alterf,alterdesc,alterop)
 					e:SetLabel(0)
 					Duel.SetSelectedCard(sg)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalXyz
 					g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
 				end
@@ -1439,7 +1491,7 @@ function Auxiliary.FusionEffectUltimateFilter(c,e,tp,mg,chkf,params)
 	return res
 end
 function Auxiliary.FusionEffectUltimateMatFilter(c,e,tp,f)
-	return not c:IsImmuneToEffect(e) and not f or f(c,e,tp)
+	return not c:IsImmuneToEffect(e) and (not f or f(c,e,tp))
 end
 function Auxiliary.FusionEffectUltimateMatLocFilter(c,e,tp,loc,f)
 	return not c:IsLocation(loc) or (not f or f(c,e,tp))

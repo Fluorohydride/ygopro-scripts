@@ -108,10 +108,10 @@ function s.ovtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,1)
-	if g:GetCount()==1 then
+	if Duel.IsExistingMatchingCard(s.matfilter,tp,LOCATION_MZONE,0,1,nil) and g:GetCount()==1 then
 		local tc=g:GetFirst()
 		Duel.DisableShuffleCheck()
-		if Duel.IsExistingMatchingCard(s.matfilter,tp,LOCATION_MZONE,0,1,nil) and tc:IsCanOverlay() then
+		if tc:IsCanOverlay() then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			local sg=Duel.SelectMatchingCard(tp,s.matfilter,tp,LOCATION_MZONE,0,1,1,nil)
 			Duel.HintSelection(sg)

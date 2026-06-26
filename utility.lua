@@ -446,27 +446,27 @@ function Auxiliary.EnableChangeCode(c,code,location,condition)
 	return e1
 end
 function Auxiliary.TargetEqualFunction(f,value,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(effect,target)
-				return f(target,table.unpack(ext_params))==value
+				return f(target,table.unpack(ext_params,1,ext_params.n))==value
 			end
 end
 function Auxiliary.TargetBoolFunction(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(effect,target)
-				return f(target,table.unpack(ext_params))
+				return f(target,table.unpack(ext_params,1,ext_params.n))
 			end
 end
 function Auxiliary.FilterEqualFunction(f,value,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target)
-				return f(target,table.unpack(ext_params))==value
+				return f(target,table.unpack(ext_params,1,ext_params.n))==value
 			end
 end
 function Auxiliary.FilterBoolFunction(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target)
-				return f(target,table.unpack(ext_params))
+				return f(target,table.unpack(ext_params,1,ext_params.n))
 			end
 end
 function Auxiliary.GetValueType(v)
@@ -1199,7 +1199,7 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 		sg:RemoveCard(c)
 		return false
 	end
-	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params,1,ext_params.n)))
 		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
@@ -1210,7 +1210,7 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 		sg:RemoveCard(c)
 		return false
 	end
-	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params))
+	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params,1,ext_params.n))
 	if res then
 		Auxiliary.SubGroupCaptured:Clear()
 		Auxiliary.SubGroupCaptured:Merge(sg)
@@ -1231,7 +1231,7 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
 	max=max or #g
 	if min>max then return false end
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min then return false end
 	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g)) then return false end
@@ -1256,7 +1256,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
 	max=max or #g
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	local fg=Duel.GrabSelectedCard()
 	if #fg>max or min>max or #(g+fg)<min then return nil end
@@ -1322,7 +1322,7 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	end
 	local res
 	if #sg==#checks then
-		res=f(sg,table.unpack(ext_params))
+		res=f(sg,table.unpack(ext_params,1,ext_params.n))
 	else
 		res=g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 	end
@@ -1338,7 +1338,7 @@ end
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
 	if #g<#checks then return false end
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 end
@@ -1354,7 +1354,7 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
 	local ct=#checks
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	local finish=false
 	while #sg<ct do
@@ -1377,8 +1377,7 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 end
 --for effects that player usually select card from field, avoid showing panel
 function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
-	local ext_params={...}
-	local g=Duel.GetMatchingGroup(f,player,s,o,ex,table.unpack(ext_params))
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,...)
 	local fg=g:Filter(Card.IsOnField,nil)
 	g:Sub(fg)
 	if #fg>=min and #g>0 then
@@ -1391,11 +1390,10 @@ function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
 		end
 	end
-	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
+	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,...)
 end
 function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
-	local ext_params={...}
-	local g=Duel.GetMatchingGroup(f,player,s,o,ex,table.unpack(ext_params)):Filter(Card.IsCanBeEffectTarget,nil)
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,...):Filter(Card.IsCanBeEffectTarget,nil)
 	local fg=g:Filter(Card.IsOnField,nil)
 	g:Sub(fg)
 	if #fg>=min and #g>0 then
@@ -1409,7 +1407,58 @@ function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
 			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
 		end
 	end
-	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,table.unpack(ext_params))
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,...)
+end
+---
+---Select the same number of cards from each group.
+---@param tp integer
+---@param g1 Group
+---@param g2 Group
+---@param min? integer Cards to select from each group, minimum
+---@param max? integer Cards to select from each group, maximum
+---@param except? Card|Group
+---@return Group
+function Auxiliary.SelectSameCount(tp,g1,g2,min,max,except)
+	if except then
+		g1=g1-except
+		g2=g2-except
+	end
+	min=min or 1
+	max=math.min(max or 127,#g1,#g2)
+	if min>max then return nil end
+	local sg=Group.CreateGroup()
+	local ct1=0
+	local ct2=0
+	while true do
+		local fg=Group.CreateGroup()
+		if ct1<max then
+			fg:Merge(g1)
+		end
+		if ct2<max then
+			fg:Merge(g2)
+		end
+		fg:Sub(sg)
+		local finish=ct1==ct2 and ct1>=min and ct1<=max
+		local tc=fg:SelectUnselect(sg,tp,finish,false,min*2,max*2)
+		if not tc then break end
+		if sg:IsContains(tc) then
+			sg:RemoveCard(tc)
+			if g1:IsContains(tc) then
+				ct1=ct1-1
+			else
+				ct2=ct2-1
+			end
+		else
+			sg:AddCard(tc)
+			if g1:IsContains(tc) then
+				ct1=ct1+1
+			else
+				ct2=ct2+1
+			end
+		end
+		if ct1==max and ct2==max then break end
+	end
+	return sg
 end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
@@ -1704,8 +1753,8 @@ function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	g:Merge(eg)
 	local code,event=e:GetLabel()
 	local c=e:GetOwner()
-	local mr,meg=Duel.CheckEvent(event,true)
-	if mr and meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
+	-- clear if the owner card is in the event group
+	if eg:IsContains(c) then
 		g:Clear()
 	end
 	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
@@ -1746,22 +1795,22 @@ function Auxiliary.EnableBESRemove(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_DAMAGE_STEP_END)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(Auxiliary.RemoveCondtion)
-	e1:SetTarget(Auxiliary.RemoveTarget)
-	e1:SetOperation(Auxiliary.RemoveOperation)
+	e1:SetCondition(Auxiliary.BESRemoveCondition)
+	e1:SetTarget(Auxiliary.BESRemoveTarget)
+	e1:SetOperation(Auxiliary.BESRemoveOperation)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.RemoveCondtion(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.BESRemoveCondition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsRelateToBattle()
 end
-function Auxiliary.RemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+function Auxiliary.BESRemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	end
 end
-function Auxiliary.RemoveOperation(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.BESRemoveOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
@@ -1980,5 +2029,26 @@ function Auxiliary.MonsterEffectPropertyFilter(flag)
 	---@param e Effect
 	return function (e)
 		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
+	end
+end
+---The `nolimit` parameter for Special Summon effects of Phantasms cards
+---@param c Card
+---@return boolean
+function Auxiliary.PhantasmsSpSummonType(c)
+	return c:IsType(TYPE_SPSUMMON)
+end
+---Count for the activation of "Mulcharmy" monsters
+function Auxiliary.EnableMulcharmyGlobalCheck()
+	if Auxiliary.MulcharmyGlobalFlag then return end
+	Auxiliary.MulcharmyGlobalFlag=true
+	local ge1=Effect.GlobalEffect()
+	ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	ge1:SetCode(EVENT_CHAINING)
+	ge1:SetOperation(Auxiliary.MulcharmyGlobalCheck)
+	Duel.RegisterEffect(ge1,0)
+end
+function Auxiliary.MulcharmyGlobalCheck(e,tp,eg,ep,ev,re,r,rp)
+	if re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x1b2) then
+		Duel.RegisterFlagEffect(ep,84192580,RESET_PHASE+PHASE_END,0,1)
 	end
 end

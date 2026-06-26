@@ -50,6 +50,7 @@ function s.spfilter(c,tp,sc)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsLevelAbove(6)
 		and c:IsAbleToRemoveAsCost() and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0
 		and c:IsAbleToRemove(tp,POS_FACEUP,REASON_SPSUMMON)
+		and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function s.spcon(e,c)
 	if c==nil then return true end

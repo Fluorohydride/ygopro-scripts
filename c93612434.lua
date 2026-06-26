@@ -1,5 +1,6 @@
 --デュアルウィール・ドラゴン
 function c93612434.initial_effect(c)
+	aux.AddCodeList(c,20071842,67526112)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

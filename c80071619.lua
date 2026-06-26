@@ -15,6 +15,7 @@ function s.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,0))
+	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,id)
@@ -89,7 +90,7 @@ function s.fselect2(g,e,tp,sg)
 		or Duel.GetLocationCount(tp,LOCATION_MZONE)==0)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(aux.NecroValleyFilter(Card.IsRelateToChain),nil)
+	local tg=Duel.GetTargetsRelateToChain()
 	if tg:GetCount()<2 then
 		return
 	elseif tg:GetCount()==2 and tg:IsExists(Card.IsAbleToDeck,2,nil) then

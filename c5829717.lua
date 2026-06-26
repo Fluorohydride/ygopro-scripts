@@ -1,6 +1,7 @@
 --竜魔導騎士ブラック・マジシャン
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,66889139)
 	c:EnableReviveLimit()
 	--material
 	aux.AddFusionProcCodeFun(c,46986414,s.mfilter,1,true,true)

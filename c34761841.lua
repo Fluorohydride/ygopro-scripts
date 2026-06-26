@@ -28,7 +28,7 @@ function c34761841.initial_effect(c)
 end
 function c34761841.counterfilter(c)
 	return not c:IsSummonLocation(LOCATION_EXTRA)
-		or (c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_SYNCHRO))
+		or (c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_SYNCHRO) and c:IsFaceup())
 end
 function c34761841.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0

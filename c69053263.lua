@@ -82,11 +82,11 @@ end
 function s.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local dam=Duel.GetMatchingGroupCount(s.cfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)*100
+	Duel.SetTargetPlayer(1-tp)
 	if dam>0 then
 		if e:GetLabel()==1 then
 			dam=dam+2400
 		end
-		Duel.SetTargetPlayer(1-tp)
 		Duel.SetTargetParam(dam)
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
 	end

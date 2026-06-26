@@ -1,5 +1,6 @@
 --トランソニックバード
 function c34072799.initial_effect(c)
+	aux.AddCodeList(c,17888577)
 	c:EnableReviveLimit()
 	--search
 	local e1=Effect.CreateEffect(c)

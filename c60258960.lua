@@ -1,5 +1,6 @@
 --伝説の爆炎使い
 function c60258960.initial_effect(c)
+	aux.AddCodeList(c,33031674)
 	c:EnableReviveLimit()
 	c:EnableCounterPermit(0x1)
 	--add counter

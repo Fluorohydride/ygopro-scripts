@@ -20,6 +20,7 @@ function s.initial_effect(c)
 	--retrieve/sset, on bounce
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
+	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_HAND)
 	e3:SetRange(LOCATION_FZONE)
@@ -56,7 +57,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetOperation(s.retrieve)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE+LOCATION_REMOVED)
 	else
-		e:SetCategory(0)
+		e:SetCategory(CATEGORY_SSET)
 		e:SetOperation(s.ssettrap)
 	end
 end

@@ -25,7 +25,7 @@ function c79703905.initial_effect(c)
 	--handes
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(79703905,1))
-	e4:SetCategory(CATEGORY_HANDES)
+	e4:SetCategory(CATEGORY_HANDES_OPPO)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCost(c79703905.hdcost)
@@ -51,7 +51,7 @@ function c79703905.hdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79703905.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)~=0 end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 end
 function c79703905.hdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)

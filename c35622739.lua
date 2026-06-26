@@ -2,6 +2,7 @@
 function c35622739.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,35622739)
@@ -55,7 +56,7 @@ function c35622739.splimit(e,c)
 end
 function c35622739.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsLocation(LOCATION_REMOVED) and c:IsFaceup()) and r==REASON_FUSION
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsLocation(LOCATION_REMOVED) and c:IsFaceup()) and r==REASON_FUSION and not c:IsReason(REASON_RETURN)
 end
 function c35622739.thfilter(c)
 	return not c:IsCode(35622739) and c:IsSetCard(0x1047) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
