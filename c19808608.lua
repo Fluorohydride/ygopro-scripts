@@ -19,7 +19,7 @@ function c19808608.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c19808608.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local lv=g:GetFirst():GetLevel()
-	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
 	e:SetLabel(Duel.AnnounceLevel(tp,1,8,lv))
 end
 function c19808608.lvop(e,tp,eg,ep,ev,re,r,rp)
