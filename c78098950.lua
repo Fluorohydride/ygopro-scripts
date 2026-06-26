@@ -59,7 +59,7 @@ function c78098950.op(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(78098950,2)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 		local tg=g:Select(1-tp,1,#g,nil)
-		if #tg>0 and Duel.SendtoGrave(tg,REASON_EFFECT) and tg:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
+		if #tg>0 and Duel.SendtoGrave(tg,REASON_EFFECT)>0 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
 			Duel.Draw(tp,#tg,REASON_EFFECT)
 			Duel.Draw(1-tp,#tg,REASON_EFFECT)
 		end

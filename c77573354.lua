@@ -69,7 +69,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()>0 then
 		Duel.HintSelection(sg)
 		local c=e:GetHandler()
-		if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT) and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)>0
+		if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)>0
 			and c:IsRelateToEffect(e) and aux.NecroValleyFilter()(c) then
 			Duel.SSet(tp,c)
 		end

@@ -49,7 +49,7 @@ function c53742162.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectMatchingCard(tp,c53742162.disfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT) then
+	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)>0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsCanBeDisabledByEffect(e) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
