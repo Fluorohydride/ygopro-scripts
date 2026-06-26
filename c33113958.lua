@@ -61,7 +61,7 @@ function s.thtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
 function s.thop2(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckRemoveOverlayCard(tp,1,0,1,REASON_EFFECT) or not Duel.RemoveOverlayCard(tp,1,0,1,1,REASON_EFFECT) then return end
+	if not Duel.CheckRemoveOverlayCard(tp,1,0,1,REASON_EFFECT) or Duel.RemoveOverlayCard(tp,1,0,1,1,REASON_EFFECT)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.thfilter2),tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then

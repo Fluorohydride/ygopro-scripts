@@ -62,7 +62,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=g:GetMaxGroup(Card.GetAttack)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SSet(tp,c) and Duel.NegateEffect(ev) and tg:IsContains(rc) and rc:IsRelateToEffect(re) then
+	if c:IsRelateToEffect(e) and Duel.SSet(tp,c)>0 and Duel.NegateEffect(ev) and tg:IsContains(rc) and rc:IsRelateToEffect(re) then
 		Duel.BreakEffect()
 		Duel.SendtoHand(rc,nil,REASON_EFFECT)
 	end

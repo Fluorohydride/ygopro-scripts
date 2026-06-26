@@ -55,7 +55,7 @@ function s.ctop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local tg=Duel.SelectMatchingCard(tp,s.ctfilter,tp,0,LOCATION_MZONE,ct,ct,nil)
 		Duel.HintSelection(tg)
-		if not Duel.GetControl(tg,tp) then return end
+		if Duel.GetControl(tg,tp)==0 then return end
 		local cg=tg:Filter(Card.IsControler,nil,tp)
 		for tc in aux.Next(cg) do
 			local e1=Effect.CreateEffect(c)

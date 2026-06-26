@@ -31,7 +31,7 @@ function c65240384.negcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c65240384.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE) then
+	if c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE)>0 then
 		Duel.NegateActivation(ev)
 	end
 end
