@@ -31,7 +31,7 @@ end
 function s.mfilter(ft,lv,race,att)
 	return ft==1 and lv>=5 and bit.band(race,RACE_DRAGON)==RACE_DRAGON
 end
-s.Metallization_material=s.mfilter
+s.metalmorph_material=s.mfilter
 function s.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsPublic() end
 end
