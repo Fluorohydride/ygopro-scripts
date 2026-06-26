@@ -49,7 +49,7 @@ function c84271823.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	for i=1,8 do
 		if not g:IsExists(Card.IsLevel,1,nil,i) then table.insert(ct,i) end
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	local lv=Duel.AnnounceNumber(tp,table.unpack(ct))
 	e:SetLabel(lv)
 	e:SetLabelObject(g)

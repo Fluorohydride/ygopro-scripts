@@ -35,7 +35,7 @@ end
 function s.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local lv=e:GetHandler():GetLevel()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	e:SetLabel(Duel.AnnounceLevel(tp,1,9,lv))
 end
 function s.lvop(e,tp,eg,ep,ev,re,r,rp)

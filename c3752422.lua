@@ -51,7 +51,7 @@ function c3752422.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c3752422.filter,tp,LOCATION_MZONE,0,1,c) end
 	local p=c:GetLevel()-1
 	p=math.min(p,5)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	e:SetLabel(Duel.AnnounceLevel(tp,1,p))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c3752422.filter,tp,LOCATION_MZONE,0,1,1,c)
