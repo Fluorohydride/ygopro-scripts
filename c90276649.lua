@@ -72,7 +72,7 @@ function c90276649.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90276649.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return not (r==REASON_RULE)
+	return r~=REASON_RULE
 end
 function c90276649.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsPublic() end

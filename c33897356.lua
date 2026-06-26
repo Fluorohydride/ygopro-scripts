@@ -58,7 +58,7 @@ function c33897356.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c33897356.atkcon(e)
-	if not Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL then return false end
+	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local tp=e:GetHandlerPlayer()
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	if #g~=1 then return false end
