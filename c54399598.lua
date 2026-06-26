@@ -34,7 +34,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function s.stfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
+	return c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(tp,LOCATION_SZONE)
 end
 function s.thfilter(c)
 	return (c:IsAllTypes(TYPE_EQUIP+TYPE_SPELL) or c:IsAllTypes(TYPE_CONTINUOUS+TYPE_SPELL)) and c:IsAbleToHand()

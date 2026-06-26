@@ -60,7 +60,7 @@ function c67754901.cfilter(c,tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 end
 function c67754901.penfilter(c)
-	return c:IsSetCard(0x99) and c:IsType(TYPE_PENDULUM) and c:IsFaceup() and not c:IsCode(67754901) and not c:IsForbidden()
+	return c:IsSetCard(0x99) and c:IsType(TYPE_PENDULUM) and c:IsFaceup() and not c:IsCode(67754901) and c:IsCanBePlacedOnField()
 end
 function c67754901.pencon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c67754901.cfilter,1,nil,tp)

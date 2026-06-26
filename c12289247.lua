@@ -61,7 +61,7 @@ function c12289247.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseEvent(eg,EVENT_CUSTOM+12289247,re,r,rp,ep,e:GetLabel())
 end
 function c12289247.rpfilter(c,e,tp)
-	return c:IsCode(20409757) and (not c:IsForbidden()
+	return c:IsCode(20409757) and (c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
 		or (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c12289247.rptg(e,tp,eg,ep,ev,re,r,rp,chk)

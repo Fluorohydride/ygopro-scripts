@@ -76,7 +76,7 @@ function s.pzcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD,c)
 end
 function s.filter(c)
-	return c:IsCode(3048768) and not c:IsForbidden()
+	return c:IsCode(3048768) and c:IsCanBePlacedOnField()
 end
 function s.pztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) and Duel.CheckLocation(tp,LOCATION_PZONE,1)

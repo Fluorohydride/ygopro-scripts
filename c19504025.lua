@@ -27,7 +27,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.stfilter(c,tp)
-	return c:IsCode(17621695) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(17621695) and c:IsCanBePlacedOnField(tp)
 end
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsLocation(LOCATION_PZONE)

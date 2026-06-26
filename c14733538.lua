@@ -13,7 +13,8 @@ function c14733538.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14733538.filter(c,e,tp,b1,setcode)
-	return c:IsSetCard(setcode) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsSetCard(setcode) and c:IsType(TYPE_PENDULUM)
+		and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
 		and (b1 or c:IsCanBeSpecialSummoned(e,0,tp,false,false))
 end
 function c14733538.zones(e,tp,eg,ep,ev,re,r,rp)

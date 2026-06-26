@@ -64,7 +64,7 @@ function s.faccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function s.pfilter(c,tp)
-	return not c:IsCode(id) and not c:IsForbidden() and c:IsType(TYPE_FIELD) and c:CheckUniqueOnField(tp)
+	return not c:IsCode(id) and c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(tp)
 end
 function s.factg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.pfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,tp) end

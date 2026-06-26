@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.mvfilter(c,tp)
-	return c:IsSetCard(0x1b1) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsSetCard(0x1b1) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(tp)
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and s.mvfilter(chkc,tp) end

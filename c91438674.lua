@@ -76,7 +76,7 @@ function s.chainlm(e,rp,tp)
 	return tp==rp
 end
 function s.setfilter(c,tp)
-	return c:IsSetCard(0x1c1) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
+	return c:IsSetCard(0x1c1) and c:IsCanBePlacedOnField(tp)
 		and c:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)

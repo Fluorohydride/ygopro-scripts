@@ -62,17 +62,18 @@ function c21949879.sop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c21949879.penfilter(c)
-	return c:IsSetCard(0x9f) and c:IsType(TYPE_PENDULUM) and not c:IsCode(21949879) and not c:IsForbidden()
+function c21949879.penfilter(c,tp)
+	return c:IsSetCard(0x9f) and c:IsType(TYPE_PENDULUM) and not c:IsCode(21949879)
+		and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
 end
 function c21949879.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
-		and Duel.IsExistingMatchingCard(c21949879.penfilter,tp,LOCATION_DECK,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c21949879.penfilter,tp,LOCATION_DECK,0,1,nil,tp) end
 end
 function c21949879.penop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,c21949879.penfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c21949879.penfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

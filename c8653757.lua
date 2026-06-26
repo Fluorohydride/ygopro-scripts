@@ -29,7 +29,7 @@ function c8653757.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local tc=Duel.SelectMatchingCard(tp,c8653757.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	if tc then
-		if tc:IsAbleToHand() and (Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsForbidden() or not tc:CheckUniqueOnField(tp) or Duel.SelectOption(tp,1190,aux.Stringid(8653757,1))==0) then
+		if tc:IsAbleToHand() and (Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or not tc:IsCanBePlacedOnField(tp) or Duel.SelectOption(tp,1190,aux.Stringid(8653757,1))==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else

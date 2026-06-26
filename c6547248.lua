@@ -98,7 +98,7 @@ end
 function s.sttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp) end
+		and c:IsCanBePlacedOnField(tp) end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function s.stop(e,tp,eg,ep,ev,re,r,rp)

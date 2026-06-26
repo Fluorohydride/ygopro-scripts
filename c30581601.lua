@@ -32,7 +32,7 @@ function s.matfilter(c)
 	return c:IsLinkAttribute(ATTRIBUTE_LIGHT) and c:IsLinkRace(RACE_BEAST) and c:IsLevelBelow(4)
 end
 function s.stfilter(c,tp)
-	return c:IsSetCard(0x1ca) and c:IsType(TYPE_FIELD) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsSetCard(0x1ca) and c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(tp)
 end
 function s.actg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.stfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,tp) end

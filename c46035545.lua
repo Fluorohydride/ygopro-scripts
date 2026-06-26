@@ -77,7 +77,7 @@ function c46035545.thfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x10af) and c:IsAbleToHand()
 end
 function c46035545.pfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function c46035545.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c46035545.thfilter(chkc) end

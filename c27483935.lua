@@ -88,7 +88,7 @@ function c27483935.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27483935.pfilter(c,tp)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsType(TYPE_TRAP) and c:IsSetCard(0x7)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c27483935.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
