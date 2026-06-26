@@ -28,7 +28,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if sg:GetClassCount(Card.GetLevel)==1 then
 		exlv=sg:GetFirst():GetLevel()
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
 	local lv=Duel.AnnounceLevel(tp,1,12,exlv)
 	e:SetLabel(lv)
 end
