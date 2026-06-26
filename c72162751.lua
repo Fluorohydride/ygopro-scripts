@@ -41,7 +41,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetTargetsRelateToChain()
+	local g=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(),nil)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local ct=Duel.GetOperatedGroup():GetCount()
 		local c=e:GetHandler()

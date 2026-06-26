@@ -50,7 +50,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tg=Duel.GetTargetsRelateToChain()
+	local tg=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(),nil)
 	if #tg>0 then
 		local ct=aux.PlaceCardsOnDeckBottom(tp,tg)
 		if ct>0 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA)
