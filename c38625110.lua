@@ -26,7 +26,7 @@ function s.getrmdg(tp)
 	local cg=Group.CreateGroup()
 	for ct=1,7 do
 		local g=Duel.GetDecktopGroup(1-tp,ct)
-		if not g:FilterCount(Card.IsAbleToRemove,nil,1-tp,POS_FACEDOWN,REASON_RULE)==ct then break end
+		if g:FilterCount(Card.IsAbleToRemove,nil,1-tp,POS_FACEDOWN,REASON_RULE)~=ct then break end
 		cg=g
 	end
 	return cg
