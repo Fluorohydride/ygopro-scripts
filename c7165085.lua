@@ -5,16 +5,25 @@ function c7165085.initial_effect(c)
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetCost(c7165085.cost)
 	e1:SetTarget(c7165085.target)
 	e1:SetOperation(c7165085.activate)
 	c:RegisterEffect(e1)
+end
+function c7165085.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
+	return true
 end
 function c7165085.filter(c)
 	return c:IsFacedown() and c:GetSequence()~=5
 end
 function c7165085.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c7165085.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c7165085.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler()) end
+	if chk==0 then
+		if e:GetLabel()==0 then return false end
+		e:SetLabel(0)
+		return not Duel.IsPlayerAffectedByEffect(tp,4130270) and Duel.IsExistingTarget(c7165085.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
+	end
 	e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWN)
 	Duel.SelectTarget(tp,c7165085.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,e:GetHandler())
