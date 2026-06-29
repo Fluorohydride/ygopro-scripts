@@ -65,7 +65,7 @@ function s.sop(e,tp,eg,ep,ev,re,r,rp)
 	if op==1 then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
-	elseif Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP) then
+	elseif Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)>0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

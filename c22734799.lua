@@ -48,7 +48,7 @@ function s.spfilter(c,e,tp)
 end
 function s.spsummon(c,tp)
 	local flag=aux.PhantasmsSpSummonType(c)
-	if Duel.SpecialSummon(c,0,tp,tp,false,flag,POS_FACEUP_DEFENSE) and flag then
+	if Duel.SpecialSummon(c,0,tp,tp,false,flag,POS_FACEUP_DEFENSE)>0 and flag then
 		c:CompleteProcedure()
 	end
 end
