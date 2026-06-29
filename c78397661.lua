@@ -101,6 +101,6 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToChain() then return end
 	local g=Duel.GetTargetsRelateToChain()
 	g:AddCard(c)
-	if g:FilterCount(Card.IsAbleToDeck,nil)~=3 then return end
+	if g:FilterCount(aux.NecroValleyFilter(Card.IsAbleToDeck),nil)~=3 then return end
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

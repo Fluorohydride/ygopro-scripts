@@ -46,7 +46,7 @@ function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
-	local tg=g:Filter(Card.IsType,nil,TYPE_MONSTER)
+	local tg=g:Filter(aux.NecroValleyFilter(Card.IsType),nil,TYPE_MONSTER)
 	if tg:GetCount()>0 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end
