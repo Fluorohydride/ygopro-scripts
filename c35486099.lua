@@ -11,7 +11,7 @@ function c35486099.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35486099.filter(c)
-	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function c35486099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c35486099.filter(chkc) end

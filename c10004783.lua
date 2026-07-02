@@ -56,7 +56,7 @@ function c10004783.tfcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c10004783.tffilter(c)
-	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function c10004783.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

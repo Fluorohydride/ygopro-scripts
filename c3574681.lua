@@ -24,7 +24,7 @@ function c3574681.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c3574681.filter(c)
-	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function c3574681.spfilter(c,e,tp,code1,code2)
 	return not c:IsCode(code1,code2) and c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
