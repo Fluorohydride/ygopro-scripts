@@ -23,6 +23,9 @@ function c14957440.initial_effect(c)
 	e2:SetOperation(c14957440.tkop)
 	c:RegisterEffect(e2)
 end
+c14957440.mentioned_counter={
+	[0x59]=true,
+}
 function c14957440.atkfilter(c)
 	return c:IsFacedown() or c:IsFaceup() and not c:IsType(TYPE_TUNER)
 end

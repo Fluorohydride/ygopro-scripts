@@ -32,6 +32,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 s.counter_add_list={0x1072}
+s.mentioned_counter={
+	[0x1072]=true,
+}
 function s.atklimit(e,c)
 	return c==e:GetHandler()
 end

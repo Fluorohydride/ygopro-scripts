@@ -29,6 +29,9 @@ function c84769941.initial_effect(c)
 	e3:SetValue(c84769941.atkval)
 	c:RegisterEffect(e3)
 end
+c84769941.mentioned_counter={
+	[0x37]=true,
+}
 function c84769941.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xd3)
 end

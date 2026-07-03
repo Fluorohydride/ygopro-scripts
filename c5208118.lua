@@ -31,6 +31,9 @@ function s.initial_effect(c)
 	e3:SetOperation(s.seqop)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x73]=true,
+}
 function s.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x73)

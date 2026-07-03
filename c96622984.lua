@@ -21,6 +21,9 @@ function c96622984.initial_effect(c)
 	e2:SetOperation(c96622984.desop)
 	c:RegisterEffect(e2)
 end
+c96622984.mentioned_counter={
+	[0x1041]=true,
+}
 function c96622984.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsCanAddCounter(0x1041,1) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x1041,1) end

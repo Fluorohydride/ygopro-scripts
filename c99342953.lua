@@ -26,6 +26,9 @@ function c99342953.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c99342953.counter_add_list={0x100e}
+c99342953.mentioned_counter={
+	[0x100e]=true,
+}
 function c99342953.ctfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0xc)
 end

@@ -40,6 +40,9 @@ function c80959027.initial_effect(c)
 	e4:SetOperation(c80959027.thop)
 	c:RegisterEffect(e4)
 end
+c80959027.mentioned_counter={
+	[0x1]=true,
+}
 function c80959027.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end

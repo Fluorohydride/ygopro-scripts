@@ -19,6 +19,9 @@ function c72129804.initial_effect(c)
 	e2:SetOperation(c72129804.repop)
 	c:RegisterEffect(e2)
 end
+c72129804.mentioned_counter={
+	[0x1041]=true,
+}
 function c72129804.cfilter(c)
 	return c:IsSetCard(0xf3) and not c:IsPublic()
 end

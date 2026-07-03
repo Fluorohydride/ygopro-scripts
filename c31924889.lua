@@ -34,6 +34,9 @@ function c31924889.initial_effect(c)
 	e3:SetOperation(c31924889.desop)
 	c:RegisterEffect(e3)
 end
+c31924889.mentioned_counter={
+	[0x1]=true,
+}
 function c31924889.attackup(e,c)
 	return c:GetCounter(0x1)*1000
 end

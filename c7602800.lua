@@ -30,6 +30,9 @@ function c7602800.initial_effect(c)
 	e3:SetOperation(c7602800.repop)
 	c:RegisterEffect(e3)
 end
+c7602800.mentioned_counter={
+	[0x10]=true,
+}
 function c7602800.cfilter(c,tp)
 	return c:IsSummonPlayer(tp) and c:IsType(TYPE_SYNCHRO) and c:IsAttribute(ATTRIBUTE_DARK)
 		and c:IsPreviousLocation(LOCATION_EXTRA)

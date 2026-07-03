@@ -43,6 +43,9 @@ function c82735249.initial_effect(c)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e5)
 end
+c82735249.mentioned_counter={
+	[0x35]=true,
+}
 function c82735249.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:GetHandler():IsSetCard(0x1066) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

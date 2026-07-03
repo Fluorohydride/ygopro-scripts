@@ -20,6 +20,9 @@ function c8025950.initial_effect(c)
 	e2:SetOperation(c8025950.spop)
 	c:RegisterEffect(e2)
 end
+c8025950.mentioned_counter={
+	[0x8]=true,
+}
 function c8025950.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanAddCounter(tp,0x8,3,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,3,0,0x8)

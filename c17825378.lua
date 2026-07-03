@@ -22,6 +22,9 @@ function c17825378.initial_effect(c)
 	e2:SetOperation(c17825378.ctop)
 	c:RegisterEffect(e2)
 end
+c17825378.mentioned_counter={
+	[0x1041]=true,
+}
 function c17825378.mtval(e,c)
 	if not c then return true end
 	return true --c:IsAttribute(ATTRIBUTE_DARK)

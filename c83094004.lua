@@ -24,6 +24,9 @@ function c83094004.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
+c83094004.mentioned_counter={
+	[0x105c]=true,
+}
 function c83094004.seqfilter(c,e,tp)
 	local g=e:GetHandler():GetColumnGroup()
 	if not (c:IsFaceup() and g:IsContains(c) and c:IsCanAddCounter(0x105c,1)) then return false end

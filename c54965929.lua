@@ -45,6 +45,9 @@ function c54965929.initial_effect(c)
 	e4:SetOperation(c54965929.atkop)
 	c:RegisterEffect(e4)
 end
+c54965929.mentioned_counter={
+	[0x1]=true,
+}
 function c54965929.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end

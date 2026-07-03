@@ -40,6 +40,9 @@ function s.initial_effect(c)
 	e4:SetOperation(s.setop)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x6c]=true,
+}
 function s.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return not re:GetHandler():IsCode(id)
 end

@@ -26,6 +26,9 @@ function c96367119.initial_effect(c)
 	e2:SetOperation(c96367119.setop)
 	c:RegisterEffect(e2)
 end
+c96367119.mentioned_counter={
+	[0x10]=true,
+}
 function c96367119.discon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end

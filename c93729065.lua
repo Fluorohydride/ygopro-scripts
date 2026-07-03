@@ -52,6 +52,9 @@ function c93729065.initial_effect(c)
 	e5:SetOperation(c93729065.penop)
 	c:RegisterEffect(e5)
 end
+c93729065.mentioned_counter={
+	[0x104f]=true,
+}
 function c93729065.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_ONFIELD)
 end

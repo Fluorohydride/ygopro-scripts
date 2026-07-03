@@ -22,6 +22,9 @@ function c38325384.initial_effect(c)
 	e2:SetOperation(c38325384.spop)
 	c:RegisterEffect(e2)
 end
+c38325384.mentioned_counter={
+	[0x1]=true,
+}
 function c38325384.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeckAsCost(tp,2) end
 	Duel.DiscardDeck(tp,2,REASON_COST)

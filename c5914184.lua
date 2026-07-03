@@ -10,6 +10,9 @@ function c5914184.initial_effect(c)
 	e1:SetOperation(c5914184.actop)
 	c:RegisterEffect(e1)
 end
+c5914184.mentioned_counter={
+	[0x1a]=true,
+}
 function c5914184.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and 1-tp==rp and ev>=1000 and bit.band(r,REASON_EFFECT)~=0
 end

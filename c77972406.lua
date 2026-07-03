@@ -10,6 +10,9 @@ function c77972406.initial_effect(c)
 	e1:SetOperation(c77972406.activate)
 	c:RegisterEffect(e1)
 end
+c77972406.mentioned_counter={
+	[0x1009]=true,
+}
 function c77972406.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
 	return tc and tc:IsControler(tp) and tc:IsFaceup() and tc:IsSetCard(0x50)

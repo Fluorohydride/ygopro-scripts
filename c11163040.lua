@@ -37,6 +37,9 @@ function c11163040.initial_effect(c)
 	e4:SetOperation(c11163040.thop)
 	c:RegisterEffect(e4)
 end
+c11163040.mentioned_counter={
+	[0x37]=true,
+}
 function c11163040.cfilter(c)
 	return c:IsSetCard(0xd3) and c:IsPreviousLocation(LOCATION_HAND+LOCATION_GRAVE)
 end

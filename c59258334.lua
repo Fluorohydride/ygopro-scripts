@@ -43,6 +43,9 @@ function c59258334.initial_effect(c)
 	e5:SetValue(c59258334.ctval)
 	c:RegisterEffect(e5)
 end
+c59258334.mentioned_counter={
+	[0x100e]=true,
+}
 function c59258334.filter(c)
 	return c:GetCounter(0x100e)>0 and c:IsControlerCanBeChanged()
 end

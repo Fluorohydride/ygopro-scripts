@@ -53,6 +53,9 @@ function c22070401.initial_effect(c)
 	e6:SetOperation(c22070401.penop)
 	c:RegisterEffect(e6)
 end
+c22070401.mentioned_counter={
+	[0x104f]=true,
+}
 function c22070401.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsFusionType(TYPE_PENDULUM)
 end

@@ -34,6 +34,9 @@ function c54306223.initial_effect(c)
 	e4:SetOperation(c54306223.desop)
 	c:RegisterEffect(e4)
 end
+c54306223.mentioned_counter={
+	[0x1009]=true,
+}
 function c54306223.atkval(e,c)
 	return c:GetCounter(0x1009)*-500
 end

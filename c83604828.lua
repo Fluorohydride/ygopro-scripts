@@ -24,6 +24,9 @@ function c83604828.initial_effect(c)
 	e4:SetOperation(c83604828.ctop)
 	c:RegisterEffect(e4)
 end
+c83604828.mentioned_counter={
+	[0x1019]=true,
+}
 function c83604828.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local lv=e:GetHandler():GetBattleTarget():GetLevel()
 	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,0x1019,1)

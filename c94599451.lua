@@ -35,6 +35,9 @@ function c94599451.initial_effect(c)
 	e4:SetOperation(c94599451.repop)
 	c:RegisterEffect(e4)
 end
+c94599451.mentioned_counter={
+	[0x1]=true,
+}
 function c94599451.ctfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and c:IsType(TYPE_PENDULUM) and c:IsPreviousSetCard(0x10d) and c:IsReason(REASON_BATTLE+REASON_EFFECT)

@@ -38,6 +38,9 @@ function c20630765.initial_effect(c)
 	e3:SetOperation(c20630765.rmop)
 	c:RegisterEffect(e3)
 end
+c20630765.mentioned_counter={
+	[0x16]=true,
+}
 function c20630765.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=re:GetHandler()
 	if re:IsActiveType(TYPE_MONSTER) and c~=e:GetHandler() and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then

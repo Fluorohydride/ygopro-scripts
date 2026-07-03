@@ -33,6 +33,9 @@ function c81788994.initial_effect(c)
 	e4:SetCode(81788994)
 	c:RegisterEffect(e4)
 end
+c81788994.mentioned_counter={
+	[0x16]=true,
+}
 function c81788994.cfilter(c)
 	return c:IsSetCard(0x9d) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT)
 end

@@ -45,6 +45,9 @@ function c75041269.initial_effect(c)
 	e4:SetLabelObject(e0)
 	c:RegisterEffect(e4)
 end
+c75041269.mentioned_counter={
+	[0x1b]=true,
+}
 function c75041269.dcon(e)
 	return e:GetHandler():GetCounter(0x1b)>=4
 end

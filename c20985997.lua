@@ -10,6 +10,9 @@ function c20985997.initial_effect(c)
 	e1:SetOperation(c20985997.activate)
 	c:RegisterEffect(e1)
 end
+c20985997.mentioned_counter={
+	[0x100e]=true,
+}
 function c20985997.filter(c)
 	return c:GetCounter(0x100e)>0
 end

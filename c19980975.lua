@@ -10,6 +10,9 @@ function c19980975.initial_effect(c)
 	e1:SetOperation(c19980975.activate)
 	c:RegisterEffect(e1)
 end
+c19980975.mentioned_counter={
+	[0x1019]=true,
+}
 function c19980975.filter(c)
 	return c:GetCounter(0x1019)>=4
 end

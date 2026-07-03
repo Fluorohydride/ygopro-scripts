@@ -24,6 +24,9 @@ function c44932065.initial_effect(c)
 	e2:SetOperation(c44932065.spop)
 	c:RegisterEffect(e2)
 end
+c44932065.mentioned_counter={
+	[0x1041]=true,
+}
 function c44932065.thfilter(c)
 	return c:IsSetCard(0x10f3) and c:IsType(TYPE_MONSTER) and not c:IsCode(44932065) and c:IsAbleToHand()
 end

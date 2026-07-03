@@ -45,6 +45,9 @@ function c85668449.initial_effect(c)
 	e5:SetLabelObject(e4)
 	c:RegisterEffect(e5)
 end
+c85668449.mentioned_counter={
+	[0x4]=true,
+}
 function c85668449.esop(e,tp,eg,ep,ev,re,r,rp,c)
 	c:RegisterFlagEffect(85668449,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_PHASE+PHASE_END,0,1)
 end

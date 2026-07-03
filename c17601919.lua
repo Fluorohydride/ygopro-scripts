@@ -10,6 +10,9 @@ function c17601919.initial_effect(c)
 	e1:SetOperation(c17601919.repop)
 	c:RegisterEffect(e1)
 end
+c17601919.mentioned_counter={
+	[0x2f]=true,
+}
 function c17601919.repcon(e)
 	local c=e:GetHandler()
 	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsReason(REASON_DESTROY)

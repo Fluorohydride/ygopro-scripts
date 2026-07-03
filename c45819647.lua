@@ -37,6 +37,9 @@ function c45819647.initial_effect(c)
 	e3:SetOperation(c45819647.spop)
 	c:RegisterEffect(e3)
 end
+c45819647.mentioned_counter={
+	[0x1]=true,
+}
 function c45819647.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkRace,1,nil,RACE_SPELLCASTER)
 end

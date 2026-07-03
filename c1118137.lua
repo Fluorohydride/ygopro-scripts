@@ -45,6 +45,9 @@ function c1118137.initial_effect(c)
 	e6:SetValue(1)
 	c:RegisterEffect(e6)
 end
+c1118137.mentioned_counter={
+	[0x1]=true,
+}
 function c1118137.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

@@ -34,6 +34,9 @@ function c56111151.initial_effect(c)
 	e4:SetOperation(c56111151.desrepop)
 	c:RegisterEffect(e4)
 end
+c56111151.mentioned_counter={
+	[0x37]=true,
+}
 function c56111151.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_ONFIELD)
 end

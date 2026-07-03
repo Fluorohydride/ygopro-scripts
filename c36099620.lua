@@ -32,6 +32,9 @@ function c36099620.initial_effect(c)
 	e4:SetOperation(c36099620.desrepop)
 	c:RegisterEffect(e4)
 end
+c36099620.mentioned_counter={
+	[0x5]=true,
+}
 function c36099620.atkval(e,c)
 	return e:GetHandler():GetCounter(0x5)*100
 end

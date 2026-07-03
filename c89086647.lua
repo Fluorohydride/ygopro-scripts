@@ -53,6 +53,9 @@ function s.initial_effect(c)
 	e5:SetOperation(s.tgop)
 	c:RegisterEffect(e5)
 end
+s.mentioned_counter={
+	[0x70]=true,
+}
 function s.coucon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp
 end

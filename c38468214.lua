@@ -13,6 +13,9 @@ function c38468214.initial_effect(c)
 	e1:SetOperation(c38468214.operation)
 	c:RegisterEffect(e1)
 end
+c38468214.mentioned_counter={
+	[0x100e]=true,
+}
 function c38468214.filter(c)
 	return c:GetCounter(0x100e)>0 and c:IsControlerCanBeChanged()
 end

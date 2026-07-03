@@ -32,6 +32,9 @@ function c57543573.initial_effect(c)
 	e5:SetOperation(c57543573.desop)
 	c:RegisterEffect(e5)
 end
+c57543573.mentioned_counter={
+	[0xf]=true,
+}
 function c57543573.accon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetFirst():IsControler(tp)
 end

@@ -42,6 +42,9 @@ function s.initial_effect(c)
 	e4:SetOperation(s.disop)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x75]=true,
+}
 function s.sumcon(e,c,minc)
 	if c==nil then return true end
 	local min=1

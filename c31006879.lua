@@ -29,6 +29,9 @@ function c31006879.initial_effect(c)
 	e3:SetOperation(c31006879.drop)
 	c:RegisterEffect(e3)
 end
+c31006879.mentioned_counter={
+	[0x104d]=true,
+}
 function c31006879.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1017) and c:IsAbleToHand()
 end

@@ -12,6 +12,9 @@ function c36278828.initial_effect(c)
 	e1:SetOperation(c36278828.operation)
 	c:RegisterEffect(e1)
 end
+c36278828.mentioned_counter={
+	[0x1009]=true,
+}
 function c36278828.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsCanAddCounter(0x1009,1) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x1009,1) end

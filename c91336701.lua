@@ -46,6 +46,9 @@ function c91336701.initial_effect(c)
 	e4:SetOperation(c91336701.desop)
 	c:RegisterEffect(e4)
 end
+c91336701.mentioned_counter={
+	[0x1]=true,
+}
 function c91336701.ctcon1(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end

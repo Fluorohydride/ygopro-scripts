@@ -46,6 +46,9 @@ function c28570310.initial_effect(c)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e5)
 end
+c28570310.mentioned_counter={
+	[0x1]=true,
+}
 function c28570310.descon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end

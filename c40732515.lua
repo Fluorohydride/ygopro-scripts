@@ -35,6 +35,9 @@ function c40732515.initial_effect(c)
 	e3:SetOperation(c40732515.desop)
 	c:RegisterEffect(e3)
 end
+c40732515.mentioned_counter={
+	[0x1]=true,
+}
 function c40732515.spcfilter(c,tp)
 	return c:IsCode(39910367) and c:IsCanRemoveCounter(tp,0x1,1,REASON_COST)
 end

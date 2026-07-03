@@ -11,6 +11,9 @@ function c57384901.initial_effect(c)
 	e1:SetOperation(c57384901.activate)
 	c:RegisterEffect(e1)
 end
+c57384901.mentioned_counter={
+	[0x100e]=true,
+}
 function c57384901.filter1(c)
 	local tp=c:GetControler()
 	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0

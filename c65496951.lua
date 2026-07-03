@@ -12,6 +12,9 @@ function s.initial_effect(c)
 	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 end
+s.mentioned_counter={
+	[0x6a]=true,
+}
 function s.pfilter(c)
 	return c:IsFaceup() and c:IsCanAddCounter(0x6a,1)
 end

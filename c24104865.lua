@@ -37,6 +37,9 @@ function c24104865.initial_effect(c)
 	e4:SetOperation(c24104865.desop)
 	c:RegisterEffect(e4)
 end
+c24104865.mentioned_counter={
+	[0x100e]=true,
+}
 function c24104865.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local t=Duel.GetAttackTarget()
