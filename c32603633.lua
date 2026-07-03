@@ -16,7 +16,7 @@ function c32603633.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,lp-100)
 end
 function c32603633.filter(c,e,tp)
-	return c:IsSetCard(0x3d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x103d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and not Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,c:GetCode())
 end
 function c32603633.tg(e,tp,eg,ep,ev,re,r,rp,chk)

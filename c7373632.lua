@@ -1,5 +1,6 @@
 --神の進化
 function c7373632.initial_effect(c)
+	aux.AddCodeList(c,21208154,62180201,57793869)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)

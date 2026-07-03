@@ -23,6 +23,7 @@ function c67100549.initial_effect(c)
 	--set
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(67100549,1))
+	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
@@ -34,7 +35,7 @@ function c67100549.initial_effect(c)
 	c:RegisterEffect(e3)
 	if not c67100549.global_check then
 		c67100549.global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_TO_GRAVE)
 		ge1:SetCondition(c67100549.checkcon)

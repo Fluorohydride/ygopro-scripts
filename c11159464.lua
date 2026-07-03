@@ -10,7 +10,7 @@ function c11159464.initial_effect(c)
 	--discard
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(11159464,0))
-	e2:SetCategory(CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCondition(c11159464.tgcon)
@@ -37,5 +37,9 @@ function c11159464.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)
 end
 function c11159464.tgop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_HAND,0,1,1,nil)
+	if g:GetCount()>0 then
+		Duel.SendtoGrave(g,REASON_EFFECT)
+	end
 end

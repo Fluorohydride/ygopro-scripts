@@ -55,7 +55,7 @@ function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
 	if hc:IsRelateToEffect(e) and Duel.SpecialSummon(hc,0,tp,tp,false,false,POS_FACEUP)>0 then
-		if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and tc:IsControler(1-tp) and tc:IsCanOverlay() then
 			local og=tc:GetOverlayGroup()
 			if og:GetCount()>0 then
 				Duel.SendtoGrave(og,REASON_RULE)

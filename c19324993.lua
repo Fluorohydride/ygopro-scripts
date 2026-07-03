@@ -31,7 +31,7 @@ function c19324993.initial_effect(c)
 	Duel.AddCustomActivityCounter(19324993,ACTIVITY_SPSUMMON,c19324993.counterfilter)
 end
 function c19324993.counterfilter(c)
-	return c:IsSetCard(0x8)
+	return c:IsSetCard(0x8) and c:IsFaceup()
 end
 function c19324993.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

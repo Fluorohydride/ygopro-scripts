@@ -30,7 +30,7 @@ function c74094021.spcon(e,c)
 		Duel.IsExistingMatchingCard(c74094021.spfilter,c:GetControler(),LOCATION_ONFIELD,0,1,nil)
 end
 function c74094021.costfilter(c,tp)
-	return c:IsSetCard(0x3d) and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsSetCard(0x103d) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c74094021.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c74094021.costfilter,1,e:GetHandler(),tp) end

@@ -58,7 +58,7 @@ function c95474755.extg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95474755.exop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
-	Duel.ConfirmCards(tp,g)
+	Duel.ConfirmCards(tp,g,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=g:FilterSelect(tp,Card.IsAbleToRemove,1,1,nil,tp,POS_FACEDOWN)
 	Duel.Remove(sg,POS_FACEDOWN,REASON_EFFECT)

@@ -36,6 +36,7 @@ function s.initial_effect(c)
 	e3:SetCode(EVENT_DESTROYED)
 	e3:SetCountLimit(1,id+o*2)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
+	e3:SetCondition(s.spcon)
 	e3:SetTarget(s.sptg)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
@@ -76,6 +77,9 @@ function s.dsop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
+function s.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsPreviousLocation(LOCATION_MZONE)
+end
 function s.filter(c,e,tp)
 	return c:IsSetCard(0x81) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
@@ -90,5 +94,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_GRAVE,0,1,e:GetLabel(),nil,e,tp)
-	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	if #g>0 then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	end
 end

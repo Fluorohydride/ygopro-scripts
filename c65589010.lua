@@ -78,15 +78,19 @@ function c65589010.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,2,PLAYER_ALL,LOCATION_EXTRA)
 end
 function c65589010.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local turnp=Duel.GetTurnPlayer()
-	local g=Duel.GetMatchingGroup(Card.IsAbleToGrave,turnp,LOCATION_EXTRA,0,nil)
-	local g2=Duel.GetMatchingGroup(Card.IsAbleToGrave,turnp,0,LOCATION_EXTRA,nil)
-	Duel.Hint(HINT_SELECTMSG,turnp,HINTMSG_TOGRAVE)
-	local sg=g:Select(turnp,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,1-turnp,HINTMSG_TOGRAVE)
-	local sg2=g2:Select(1-turnp,1,1,nil)
-	sg:Merge(sg2)
+	if not Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_EXTRA,0,1,nil)
+		or not Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,0,LOCATION_EXTRA,1,nil) then return end
+	local p=Duel.GetTurnPlayer()
+	local g=Duel.GetMatchingGroup(Card.IsAbleToGrave,p,LOCATION_EXTRA,0,nil)
+	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOGRAVE)
+	local sg=g:Select(p,1,1,nil)
 	if sg:GetCount()>0 then
 		Duel.SendtoGrave(sg,REASON_EFFECT)
+	end
+	local g2=Duel.GetMatchingGroup(Card.IsAbleToGrave,p,0,LOCATION_EXTRA,nil)
+	Duel.Hint(HINT_SELECTMSG,1-p,HINTMSG_TOGRAVE)
+	local sg2=g2:Select(1-p,1,1,nil)
+	if sg2:GetCount()>0 then
+		Duel.SendtoGrave(sg2,REASON_EFFECT)
 	end
 end

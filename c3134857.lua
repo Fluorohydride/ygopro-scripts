@@ -42,10 +42,10 @@ function c3134857.indcon(e)
 	return e:GetHandler():IsLinkState()
 end
 function c3134857.tdcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c3134857.tdcon2(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c3134857.tdfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAbleToDeck()

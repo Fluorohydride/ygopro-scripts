@@ -61,7 +61,7 @@ function c72772445.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c72772445.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		local sc=g:GetFirst()
-		if Duel.SpecialSummon(g,0,tp,tp,false,aux.TriamidSpSummonType(sc),POS_FACEUP) and aux.TriamidSpSummonType(sc) then
+		if Duel.SpecialSummon(g,0,tp,tp,false,aux.TriamidSpSummonType(sc),POS_FACEUP)>0 and aux.TriamidSpSummonType(sc) then
 			sc:CompleteProcedure()
 		end
 	end

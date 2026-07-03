@@ -2,6 +2,7 @@
 function c63086455.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -16,8 +17,7 @@ function c63086455.tgfilter(c,e,tp)
 end
 function c63086455.setfilter(c,cc,e,tp)
 	local b1=Duel.GetMZoneCount(1-tp,cc,tp)>0
-	local st=Duel.GetLocationCount(1-tp,LOCATION_SZONE,tp)
-	local b2=st>0 or cc:IsLocation(LOCATION_SZONE) and cc:GetSequence()<5 and st>-1
+	local b2=Duel.GetSZoneCount(1-tp,cc,tp)>0
 	return b1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE,1-tp)
 		or (b2 or c:IsType(TYPE_FIELD)) and c:IsSSetable(true)
 end
@@ -30,10 +30,10 @@ function c63086455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g2=Duel.SelectTarget(tp,c63086455.setfilter,tp,0,LOCATION_GRAVE,1,1,nil,g1:GetFirst(),e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g1,1,0,0)
 	if g2:GetFirst():IsType(TYPE_MONSTER) then
-		e:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
+		e:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g2,1,0,0)
 	else
-		e:SetCategory(CATEGORY_TOGRAVE)
+		e:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SSET)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g2,1,0,0)
 	end
 end

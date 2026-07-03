@@ -38,7 +38,7 @@ function c12079734.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectTarget(tp,c12079734.filter1,tp,LOCATION_GRAVE,0,1,1,nil,c)
-		e:SetCategory(CATEGORY_EQUIP)
+		e:SetCategory(0)
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

@@ -6,8 +6,8 @@ function c50907446.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(c50907446.FShaddollCondition())
-	e1:SetOperation(c50907446.FShaddollOperation())
+	e1:SetCondition(c50907446.FShaddollCondition)
+	e1:SetOperation(c50907446.FShaddollOperation)
 	c:RegisterEffect(e1)
 	--cannot spsummon
 	local e2=Effect.CreateEffect(c)
@@ -39,7 +39,7 @@ function c50907446.initial_effect(c)
 	--to hand
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(50907446,1))
-	e5:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES)
+	e5:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES_SELF)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_TO_GRAVE)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
@@ -91,7 +91,7 @@ end
 function c50907446.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c50907446.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 end
 function c50907446.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -131,55 +131,51 @@ function c50907446.FShaddollSpFilter2(c,fc,tp,mc,chkf)
 		or (c50907446.FShaddollFilter1(mc,sg) and c50907446.FShaddollFilter2(c)))
 		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 end
-function c50907446.FShaddollCondition()
-	return	function(e,g,gc,chkf)
-			if g==nil then return aux.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
-			local c=e:GetHandler()
-			local mg=g:Filter(c50907446.FShaddollFilter,nil,c)
-			local tp=e:GetHandlerPlayer()
-			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
-			local exg=nil
-			if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-				local fe=fc:IsHasEffect(81788994)
-				exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
-			end
-			if gc then
-				if not mg:IsContains(gc) then return false end
-				return c50907446.FShaddollSpFilter1(gc,c,tp,mg,exg,chkf)
-			end
-			return mg:IsExists(c50907446.FShaddollSpFilter1,1,nil,c,tp,mg,exg,chkf)
-		end
+function c50907446.FShaddollCondition(e,g,gc,chkf)
+	if g==nil then return aux.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
+	local c=e:GetHandler()
+	local mg=g:Filter(c50907446.FShaddollFilter,nil,c)
+	local tp=e:GetHandlerPlayer()
+	local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
+	local exg=nil
+	if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
+		local fe=fc:IsHasEffect(81788994)
+		exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
+	end
+	if gc then
+		if not mg:IsContains(gc) then return false end
+		return c50907446.FShaddollSpFilter1(gc,c,tp,mg,exg,chkf)
+	end
+	return mg:IsExists(c50907446.FShaddollSpFilter1,1,nil,c,tp,mg,exg,chkf)
 end
-function c50907446.FShaddollOperation()
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
-			local c=e:GetHandler()
-			local mg=eg:Filter(c50907446.FShaddollFilter,nil,c)
-			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
-			local exg=nil
-			if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-				local fe=fc:IsHasEffect(81788994)
-				exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
-			end
-			local g=nil
-			if gc then
-				g=Group.FromCards(gc)
-				mg:RemoveCard(gc)
-			else
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				g=mg:FilterSelect(tp,c50907446.FShaddollSpFilter1,1,1,nil,c,tp,mg,exg,chkf)
-				mg:Sub(g)
-			end
-			if exg and exg:IsExists(c50907446.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),chkf)
-				and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
-				fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local sg=exg:FilterSelect(tp,c50907446.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),chkf)
-				g:Merge(sg)
-			else
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local sg=mg:FilterSelect(tp,c50907446.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),chkf)
-				g:Merge(sg)
-			end
-			Duel.SetFusionMaterial(g)
-		end
+function c50907446.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	local c=e:GetHandler()
+	local mg=eg:Filter(c50907446.FShaddollFilter,nil,c)
+	local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
+	local exg=nil
+	if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
+		local fe=fc:IsHasEffect(81788994)
+		exg=Duel.GetMatchingGroup(c50907446.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,fe)
+	end
+	local g=nil
+	if gc then
+		g=Group.FromCards(gc)
+		mg:RemoveCard(gc)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		g=mg:FilterSelect(tp,c50907446.FShaddollSpFilter1,1,1,nil,c,tp,mg,exg,chkf)
+		mg:Sub(g)
+	end
+	if exg and exg:IsExists(c50907446.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),chkf)
+		and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
+		fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		local sg=exg:FilterSelect(tp,c50907446.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),chkf)
+		g:Merge(sg)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		local sg=mg:FilterSelect(tp,c50907446.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),chkf)
+		g:Merge(sg)
+	end
+	Duel.SetFusionMaterial(g)
 end

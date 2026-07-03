@@ -37,7 +37,7 @@ function c73881652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c73881652.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c73881652.matfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then

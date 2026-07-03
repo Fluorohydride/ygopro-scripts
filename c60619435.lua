@@ -87,7 +87,7 @@ function c60619435.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:Filter(Card.IsControler,nil,tp):GetFirst()
 	local tc2=g:Filter(Card.IsControler,nil,1-tp):GetFirst()
 	if tc and tc2 then
-		if Duel.SwapControl(tc,tc2)~=0 then
+		if Duel.SwapControl(tc,tc2) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_RACE)

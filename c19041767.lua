@@ -2,6 +2,7 @@
 function c19041767.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)

@@ -1,5 +1,6 @@
 --凶導の白騎士
 function c40352445.initial_effect(c)
+	aux.AddCodeList(c,31002402)
 	c:EnableReviveLimit()
 	--splimit
 	local e1=Effect.CreateEffect(c)
@@ -43,7 +44,7 @@ function c40352445.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local atk=tc1:GetAttack()
 		local rg=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 		if #rg>0 then
-			Duel.ConfirmCards(tp,rg)
+			Duel.ConfirmCards(tp,rg,true)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 			local tc2=rg:FilterSelect(tp,Card.IsAbleToGrave,1,1,nil):GetFirst()
 			Duel.ShuffleExtra(1-tp)

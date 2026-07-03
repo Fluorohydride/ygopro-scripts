@@ -4,7 +4,7 @@ function c7868571.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--destroy and set
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DESTROY)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SSET)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
@@ -15,12 +15,7 @@ function c7868571.initial_effect(c)
 end
 function c7868571.desfilter(c,tp)
 	if c:IsFacedown() then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if ft==0 and c:IsLocation(LOCATION_SZONE) and c:GetSequence()<5 then
-		return Duel.IsExistingMatchingCard(c7868571.filter,tp,LOCATION_DECK,0,1,nil,true)
-	else
-		return Duel.IsExistingMatchingCard(c7868571.filter,tp,LOCATION_DECK,0,1,nil,false)
-	end
+	return Duel.GetSZoneCount(tp,c)>0 and Duel.IsExistingMatchingCard(c7868571.filter,tp,LOCATION_DECK,0,1,nil,true)
 end
 function c7868571.filter(c,ignore)
 	return c:IsSetCard(0xe1) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable(ignore)

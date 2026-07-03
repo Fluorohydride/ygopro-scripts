@@ -44,7 +44,7 @@ function c63176202.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c63176202.spfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 end
 function c63176202.spcon(e,c)
 	if c==nil then return true end
@@ -53,7 +53,7 @@ function c63176202.spcon(e,c)
 		and Duel.IsExistingMatchingCard(c63176202.spfilter,tp,LOCATION_MZONE,0,2,nil)
 end
 function c63176202.repfilter(c,e)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c63176202.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

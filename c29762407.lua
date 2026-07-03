@@ -1,5 +1,6 @@
 --王家の神殿
 function c29762407.initial_effect(c)
+	aux.AddCodeList(c,89194033)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -59,7 +59,7 @@ function c18678554.matop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_GRAVE)
 		if aux.NecroValleyNegateCheck(g) then return end
-		local tg=g:Select(tp,1,1,nil)
+		local tg=g:FilterSelect(tp,Card.IsCanOverlay,1,1,nil)
 		if #tg>0 then
 			Duel.Overlay(tc,tg)
 		end

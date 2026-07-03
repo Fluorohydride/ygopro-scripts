@@ -1,4 +1,4 @@
---Hound of the Tistina
+--ティスティナの猟犬
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

@@ -1,5 +1,6 @@
 --E・HERO バブルマン・ネオ
 function c5285665.initial_effect(c)
+	aux.AddCodeList(c,79979666,46411259)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -34,7 +35,7 @@ function c5285665.spfilter(c)
 	return c:IsCode(79979666,46411259) and c:IsAbleToGraveAsCost()
 end
 function c5285665.spfilter1(c,tp)
-	return c:IsCode(79979666) and c:IsLocation(LOCATION_MZONE) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsCode(79979666) and c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and Duel.GetMZoneCount(tp,c)>0
 end
 function c5285665.spfilter2(c)
 	return c:IsCode(46411259) and c:IsLocation(LOCATION_HAND)
@@ -46,7 +47,7 @@ function c5285665.spcon(e,c)
 	return g:CheckSubGroup(aux.gffcheck,2,2,c5285665.spfilter1,tp,c5285665.spfilter2,nil)
 end
 function c5285665.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(c5556499.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c5285665.spfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(tp,aux.gffcheck,true,2,2,c5285665.spfilter1,tp,c5285665.spfilter2,nil)
 	if sg then

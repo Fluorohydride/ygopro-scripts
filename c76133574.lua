@@ -54,7 +54,8 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==1-tp
+	local c=e:GetHandler()
+	return Duel.GetTurnPlayer()==1-tp and c:IsPreviousControler(tp)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

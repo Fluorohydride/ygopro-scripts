@@ -8,6 +8,7 @@ function c96015976.initial_effect(c)
 	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(96015976,0))
+	e2:SetCategory(CATEGORY_DICE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -17,7 +18,6 @@ function c96015976.initial_effect(c)
 	e2:SetOperation(c96015976.operation)
 	c:RegisterEffect(e2)
 end
-c96015976.toss_dice=true
 function c96015976.filter(c)
 	local lv=c:GetLevel()
 	local olv=c:GetOriginalLevel()

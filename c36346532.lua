@@ -13,7 +13,7 @@ function c36346532.initial_effect(c)
 	--to grave/set card
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(36346532,0))
-	e2:SetCategory(CATEGORY_TOGRAVE)
+	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -36,7 +36,8 @@ function c36346532.efilter(e,re)
 	return re:IsActiveType(TYPE_MONSTER) and re:GetOwner()~=e:GetOwner()
 end
 function c36346532.cfilter(c,tp)
-	return c:GetSequence()<5 and c:IsFacedown() and c:IsAbleToGrave() and Duel.IsExistingMatchingCard(c36346532.setfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
+	return c:GetSequence()<5 and c:IsFacedown() and c:IsAbleToGrave() and Duel.GetSZoneCount(tp,c)>0
+		and Duel.IsExistingMatchingCard(c36346532.setfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
 end
 function c36346532.setfilter(c,mc,tp)
 	if not (c:IsSetCard(0xd4) and c:IsType(TYPE_TRAP)) then return false end

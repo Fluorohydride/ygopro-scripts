@@ -15,7 +15,8 @@ function c28566710.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)<=1000 and Duel.GetTurnPlayer()~=tp
 end
 function c28566710.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsPlayerCanSpecialSummon(1-tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,1-tp,LOCATION_DECK)
 end
 function c28566710.spfilter(c,e,tp)

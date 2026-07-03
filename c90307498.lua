@@ -35,7 +35,7 @@ end
 c90307498.material_setcode=0x8
 function c90307498.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetHandler():GetBattleTarget()
-	return bc and bc:IsControler(1-tp)
+	return bc and bc:IsControler(1-tp) and bc:GetAttack()>0
 end
 function c90307498.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

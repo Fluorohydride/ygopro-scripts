@@ -10,7 +10,7 @@ function c58551308.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(58551308,0))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_TO_GRAVE)
@@ -44,12 +44,16 @@ function c58551308.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=sg:GetFirst()
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
-		Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
+		if Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE) and tc:IsFacedown() then
+			Duel.ConfirmCards(1-sp,tc)
+		end
 	end
 	tc=sg:GetNext()
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
-		Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
+		if Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE) and tc:IsFacedown() then
+			Duel.ConfirmCards(1-sp,tc)
+		end
 	end
 	Duel.SpecialSummonComplete()
 end

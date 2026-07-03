@@ -7,7 +7,7 @@ function c45112597.initial_effect(c)
 	--remove & special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(45112597,0))
-	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,45112597)
@@ -86,7 +86,7 @@ function c45112597.rmop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummonComplete()
 			local cg=spg:Filter(Card.IsFacedown,nil)
 			if #cg>0 then
-				Duel.ConfirmCards(1-tp,g)
+				Duel.ConfirmCards(1-tp,cg)
 			end
 		end
 	end

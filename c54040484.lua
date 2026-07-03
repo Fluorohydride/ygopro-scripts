@@ -32,7 +32,7 @@ function c54040484.countcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler())
 end
 function c54040484.countcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp)
+	return Duel.GetAttacker():IsControler(1-tp) and e:GetHandler()==Duel.GetAttackTarget()
 end
 function c54040484.tgfilter(c)
 	return c:IsCode(6007213,32491822,69890967) and c:IsAbleToGrave()

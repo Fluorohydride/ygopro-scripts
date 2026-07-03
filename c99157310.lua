@@ -12,7 +12,7 @@ function c99157310.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(99157310,0))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -29,7 +29,7 @@ function c99157310.cfilter1(c)
 end
 function c99157310.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and Duel.GetAttacker():IsControler(1-tp)
-		and Duel.IsExistingMatchingCard(c99157310.cfilter1,tp,LOCATION_GRAVE,0,3,nil)
+		and Duel.GetMatchingGroup(c99157310.cfilter1,tp,LOCATION_GRAVE,0,nil):GetClassCount(Card.GetCode)>=3
 end
 function c99157310.filter(c,e,tp)
 	return c:IsCode(75119040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0

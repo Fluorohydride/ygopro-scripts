@@ -31,7 +31,7 @@ function c10485110.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c10485110.spfilter(c,tp)
-	return c:IsFaceup() and c:IsCode(37721209) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsCode(37721209) and Duel.GetMZoneCount(tp,c)>0
 end
 function c10485110.spcon(e,c)
 	if c==nil then return true end

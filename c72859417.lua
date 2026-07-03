@@ -30,38 +30,28 @@ end
 function c72859417.ovfilter(c,e)
 	return c:IsFaceup() and c:IsRace(RACE_WINDBEAST) and c:IsType(TYPE_XYZ) and c:IsCanBeEffectTarget(e)
 end
-function c72859417.fselect(g)
+function c72859417.gcheck(g)
 	return g:IsExists(Card.IsCanOverlay,1,nil)
 end
 function c72859417.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(c72859417.ovfilter,tp,LOCATION_MZONE,0,nil,e)
 	if chkc then return false end
-	if chk==0 then return g:CheckSubGroup(c72859417.fselect,2,2) end
+	local g=Duel.GetMatchingGroup(c72859417.ovfilter,tp,LOCATION_MZONE,0,nil,e)
+	if chk==0 then return g:CheckSubGroup(c72859417.gcheck,2,2) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local sg=g:SelectSubGroup(tp,c72859417.fselect,false,2,2)
+	local sg=g:SelectSubGroup(tp,c72859417.gcheck,false,2,2)
 	Duel.SetTargetCard(sg)
 end
 function c72859417.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	if not c1:IsRelateToEffect(e) or not c2:IsRelateToEffect(e) then return end
-	if c1:IsImmuneToEffect(e) or c2:IsImmuneToEffect(e) then return end
-	local b1=c1:IsCanOverlay()
-	local b2=c2:IsCanOverlay()
-	if not b1 and not b2 then return end
-	if not (b1 and b2) then
-		if not b1 and b2 then
-			c1,c2=c2,c1
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		c1=g:Select(tp,1,1,nil):GetFirst()
-		c2=g:Filter(aux.TRUE,c1):GetFirst()
-	end
+	local g=Duel.GetTargetsRelateToChain()
+	if #g<2 then return end
+	if g:IsExists(Card.IsImmuneToEffect,1,nil,e) then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+	local c1=g:FilterSelect(tp,Card.IsCanOverlay,1,1,nil):GetFirst()
+	if not c1 then return end
+	local c2=(g-c1):GetFirst()
 	local mg=c1:GetOverlayGroup()
 	if mg:GetCount()>0 then Duel.Overlay(c2,mg,false) end
-	Duel.Overlay(c2,Group.FromCards(c1))
+	Duel.Overlay(c2,c1)
 end
 function c72859417.drfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetOverlayCount()>=3

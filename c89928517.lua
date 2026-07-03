@@ -31,7 +31,7 @@ function c89928517.operation(e,tp,eg,ep,ev,re,r,rp)
 		local p=tp
 		while i<=1 do
 			local tc=tg:Filter(Card.IsControler,nil,p):GetFirst()
-			if Duel.GetLocationCount(p,LOCATION_MZONE)>0
+			if Duel.GetLocationCount(p,LOCATION_MZONE,p)>0
 				and tc:IsCanBeSpecialSummoned(e,0,p,false,false)
 				and Duel.SelectYesNo(p,aux.Stringid(89928517,1)) then
 				Duel.SpecialSummonStep(tc,0,p,p,false,false,POS_FACEUP)

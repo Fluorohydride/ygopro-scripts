@@ -56,8 +56,14 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 	local ch=Duel.GetCurrentChain()
 	if ch>1 then
-		local p,code=Duel.GetChainInfo(ch-1,CHAININFO_TRIGGERING_PLAYER,CHAININFO_TRIGGERING_CODE)
+		local p,code,te=Duel.GetChainInfo(ch-1,CHAININFO_TRIGGERING_PLAYER,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_EFFECT)
 		if p==1-tp then
+			if te then
+				local tc=te:GetHandler()
+				if tc and tc:IsRelateToEffect(te) then
+					code=tc:GetCode()
+				end
+			end
 			local g=Duel.GetMatchingGroup(s.rmfilter,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil,code)
 			if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 				Duel.BreakEffect()
@@ -68,7 +74,8 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.efilter(e,c,rp,r,re)
 	local tp=e:GetHandlerPlayer()
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and re and r&REASON_EFFECT>0 and rp==1-tp
+	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
+		and r&REASON_EFFECT>0 and r&REASON_REDIRECT==0 and rp==1-tp
 end
 function s.rmfilter(c,code)
 	return c:IsFaceupEx() and c:IsCode(code) and c:IsAbleToRemove()

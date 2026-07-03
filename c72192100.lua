@@ -12,6 +12,7 @@ function c72192100.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable and destroy
 	local e2=Effect.CreateEffect(c)
+	e2:SetCategory(CATEGORY_DICE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_CHAIN_SOLVING)
 	e2:SetRange(LOCATION_MZONE)
@@ -30,7 +31,6 @@ function c72192100.initial_effect(c)
 	e3:SetOperation(c72192100.spop)
 	c:RegisterEffect(e3)
 end
-c72192100.toss_dice=true
 function c72192100.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

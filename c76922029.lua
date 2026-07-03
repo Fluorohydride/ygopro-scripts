@@ -2,7 +2,7 @@
 function c76922029.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(76922029,0))
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_HANDES_OPPO+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_DAMAGE)
 	e1:SetCondition(c76922029.condition)
@@ -27,8 +27,13 @@ function c76922029.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		op=1
 	end
 	e:SetLabel(op)
-	if op==0 then Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,1-tp,1)
-	else Duel.SetOperationInfo(0,CATEGORY_DECKDES,0,0,1-tp,2) end
+	if op==0 then
+		e:SetCategory(CATEGORY_HANDES_OPPO)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
+	else
+		e:SetCategory(CATEGORY_DECKDES)
+		Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,1-tp,2)
+	end
 end
 function c76922029.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then

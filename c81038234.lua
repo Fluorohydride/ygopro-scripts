@@ -37,8 +37,9 @@ function c81038234.tfcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
 function c81038234.tfcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsAbleToGraveAsCost() and c:IsStatus(STATUS_EFFECT_ENABLED) end
+	Duel.SendtoGrave(c,REASON_COST)
 end
 function c81038234.tffilter(c)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsCode(74665651,1050355)

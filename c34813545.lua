@@ -49,13 +49,18 @@ function c34813545.mfilter(c)
 	return c:IsSetCard(0x2a) and c:IsType(TYPE_MONSTER)
 end
 function c34813545.syncheck(g,tp,syncard)
-	return g:IsExists(c34813545.mfilter,1,nil) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1) and aux.SynMixHandCheck(g,tp,syncard)
+	return g:IsExists(c34813545.mfilter,1,nil) and aux.SynMixHandCheck(g,tp,syncard) and syncard:IsSynchroSummonable(nil,g,#g-1,#g-1)
 end
 function c34813545.scfilter(c,tp,mg)
-	return mg:CheckSubGroup(c34813545.syncheck,2,#mg,tp,c)
+	if not c:IsType(TYPE_SYNCHRO) then return false end
+	aux.GCheckAdditional=aux.SynGroupCheckLevelAddition(c)
+	local res=mg:CheckSubGroup(c34813545.syncheck,2,#mg,tp,c)
+	aux.GCheckAdditional=nil
+	return res
 end
 function c34813545.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
+		if not Duel.IsPlayerCanSpecialSummon(tp) then return false end
 		local mg=Duel.GetSynchroMaterial(tp)
 		if mg:IsExists(Card.GetHandSynchro,1,nil) then
 			local mg2=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,nil)
@@ -90,7 +95,7 @@ function c34813545.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c34813545.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsSetCard,1,nil,0x2a)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x2a)
 end
 function c34813545.fstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

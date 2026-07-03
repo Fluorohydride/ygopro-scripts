@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	--activate effect
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
+	e3:SetCategory(CATEGORY_TOEXTRA+CATEGORY_POSITION+CATEGORY_MSET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -87,7 +88,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_TOEXTRA)
 		Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,nil,1,tp,LOCATION_DECK)
 	elseif sel==1 then
-		e:SetCategory(CATEGORY_POSITION)
+		e:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g2,1,0,0)
 	end
 end

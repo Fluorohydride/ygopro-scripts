@@ -36,10 +36,10 @@ function c25750986.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c25750986.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tp,atk)
 		local gc=g:GetFirst()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g1=Duel.SelectMatchingCard(tp,c25750986.tgfilter1,tp,LOCATION_DECK,0,1,1,gc,atk-gc:GetAttack(),gc:GetAttribute())
-		g:Merge(g1)
-		if g:GetCount()>1 then
+		if gc then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+			local g1=Duel.SelectMatchingCard(tp,c25750986.tgfilter1,tp,LOCATION_DECK,0,1,1,gc,atk-gc:GetAttack(),gc:GetAttribute())
+			g:Merge(g1)
 			Duel.SendtoGrave(g,REASON_EFFECT)
 		end
 	end
@@ -68,7 +68,7 @@ function c25750986.actlimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER) and re:GetActivateLocation()==LOCATION_GRAVE
 end
 function c25750986.aclimit1(e,tp,eg,ep,ev,re,r,rp)
-	local tp=e:GetHandlerPlayer()
-	if ep~=tp or not re:IsActiveType(TYPE_MONSTER) or not re:GetActivateLocation()==LOCATION_GRAVE then return end
-	Duel.RegisterFlagEffect(tp,25750986,RESET_PHASE+PHASE_END,0,1)
+	local p=e:GetHandlerPlayer()
+	if ep~=p or not re:IsActiveType(TYPE_MONSTER) or re:GetActivateLocation()~=LOCATION_GRAVE then return end
+	Duel.RegisterFlagEffect(p,25750986,RESET_PHASE+PHASE_END,0,1)
 end

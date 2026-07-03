@@ -33,7 +33,7 @@ function c81146288.spcon(e,c)
 		and g:CheckSubGroup(aux.gfcheck,2,2,Card.IsLocation,LOCATION_HAND,LOCATION_GRAVE)
 end
 function c81146288.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(c81146288.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c81146288.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=g:SelectSubGroup(tp,aux.gfcheck,true,2,2,Card.IsLocation,LOCATION_HAND,LOCATION_GRAVE)
 	if sg then

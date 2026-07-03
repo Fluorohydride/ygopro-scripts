@@ -3,7 +3,7 @@ function c2196767.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(2196767,0))
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_HANDES+CATEGORY_COIN)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO+CATEGORY_COIN)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
@@ -11,7 +11,6 @@ function c2196767.initial_effect(c)
 	e1:SetOperation(c2196767.desop)
 	c:RegisterEffect(e1)
 end
-c2196767.toss_coin=true
 function c2196767.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)

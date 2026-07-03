@@ -48,12 +48,4 @@ function c28297833.rmop(e,tp,eg,ep,ev,re,r,rp)
 	g1:Merge(g2)
 	Duel.DisableShuffleCheck()
 	Duel.Remove(g1,POS_FACEUP,REASON_EFFECT)
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetValue(500)
-		c:RegisterEffect(e1)
-	end
 end

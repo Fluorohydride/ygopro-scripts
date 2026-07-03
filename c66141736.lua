@@ -30,7 +30,7 @@ function c66141736.initial_effect(c)
 	Duel.AddCustomActivityCounter(66141736,ACTIVITY_SPSUMMON,c66141736.counterfilter)
 end
 function c66141736.counterfilter(c)
-	return not c:IsSummonLocation(LOCATION_EXTRA) or (c:IsType(TYPE_SYNCHRO) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_DRAGON))
+	return not c:IsSummonLocation(LOCATION_EXTRA) or (c:IsType(TYPE_SYNCHRO) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_DRAGON) and c:IsFaceup())
 end
 function c66141736.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)

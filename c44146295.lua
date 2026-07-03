@@ -40,7 +40,7 @@ function c44146295.branded_fusion_check(tp,sg,fc)
 	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsFusionType,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
 end
 function c44146295.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(44146295)==0
+	return e:GetHandler():GetFlagEffectLabel(44146295)~=Duel.GetTurnCount()-1
 end
 function c44146295.costfilter(c)
 	return c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,68468459) and c:IsAbleToGraveAsCost()
@@ -65,7 +65,7 @@ function c44146295.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		c:RegisterFlagEffect(44146295,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+		c:RegisterFlagEffect(44146295,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2,Duel.GetTurnCount())
 	end
 end
 function c44146295.descon(e,tp,eg,ep,ev,re,r,rp)

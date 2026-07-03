@@ -51,7 +51,7 @@ function c80949182.initial_effect(c)
 		c80949182.global_check=true
 		c80949182[0]=-1
 		c80949182[1]=-1
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_BATTLE_DAMAGE)
 		ge1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE)

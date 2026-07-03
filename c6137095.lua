@@ -2,7 +2,7 @@
 function c6137095.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_NEGATE)
+	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c6137095.condition)
@@ -23,6 +23,13 @@ function c6137095.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if not re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
 			return re:GetHandler():IsCanTurnSet()
 		else return true end
+	end
+	if e:IsCostChecked() then
+		if re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
+			e:SetCategory(CATEGORY_NEGATE+CATEGORY_TOHAND)
+		else
+			e:SetCategory(CATEGORY_NEGATE+CATEGORY_SSET)
+		end
 	end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsRelateToEffect(re) and re:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then

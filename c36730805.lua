@@ -35,6 +35,8 @@ function c36730805.activate(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e2:SetCode(EVENT_CHAIN_END)
 			e2:SetOperation(c36730805.limitop)
+			e2:SetCountLimit(1)
+			e2:SetReset(RESET_PHASE+PHASE_END)
 			Duel.RegisterEffect(e2,tp)
 		end
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

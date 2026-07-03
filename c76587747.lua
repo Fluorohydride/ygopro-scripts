@@ -31,7 +31,7 @@ function c76587747.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g=Duel.SelectMatchingCard(tp,c76587747.cfilter2,tp,LOCATION_MZONE,0,1,1,nil)
-		if g:GetCount()>0 and not g:GetFirst():IsImmuneToEffect(e) then
+		if g:GetCount()>0 and not g:GetFirst():IsImmuneToEffect(e) and rc:IsCanOverlay() then
 			rc:CancelToGrave()
 			Duel.Overlay(g:GetFirst(),Group.FromCards(rc))
 		end

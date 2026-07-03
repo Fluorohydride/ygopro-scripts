@@ -24,7 +24,7 @@ function c56294501.initial_effect(c)
 	--turn facedown
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(56294501,1))
-	e4:SetCategory(CATEGORY_POSITION)
+	e4:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
 	e4:SetRange(LOCATION_SZONE)

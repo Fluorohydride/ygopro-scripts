@@ -29,10 +29,13 @@ function c19310321.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g2=Duel.SelectTarget(tp,c19310321.filter2,tp,LOCATION_GRAVE,0,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g2,2,0,0)
 end
+function c19310321.ovfilter(c,e)
+	return c:IsRelateToEffect(e) and c:IsCanOverlay()
+end
 function c19310321.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,tc,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c19310321.ovfilter,tc,e)
 	if g:GetCount()>0 then
 		Duel.Overlay(tc,g)
 	end

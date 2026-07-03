@@ -35,11 +35,11 @@ function c66011101.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 		{b3,aux.Stringid(66011101,2)})
 	e:SetLabel(op)
 	if op==1 then
-		e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
+		e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 		Duel.SetTargetPlayer(tp)
 		Duel.SetTargetParam(2)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	elseif op==2 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)

@@ -32,6 +32,7 @@ function c69811710.tgfilter(c)
 end
 function c69811710.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c69811710.tgfilter,tp,LOCATION_DECK,0,1,nil) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c69811710.tgop(e,tp,eg,ep,ev,re,r,rp)
@@ -62,6 +63,7 @@ function c69811710.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,TYPES_TOKEN_MONSTER,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,tp)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,TYPES_TOKEN_MONSTER,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 end

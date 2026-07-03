@@ -11,7 +11,7 @@ function c42421606.initial_effect(c)
 	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(42421606,0))
-	e2:SetCategory(CATEGORY_DICE+CATEGORY_DRAW)
+	e2:SetCategory(CATEGORY_DICE+CATEGORY_DRAW+CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
@@ -21,7 +21,6 @@ function c42421606.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 aux.xyz_number[42421606]=85
-c42421606.toss_dice=true
 function c42421606.efcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

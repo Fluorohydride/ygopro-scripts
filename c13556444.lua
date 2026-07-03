@@ -20,6 +20,7 @@ function c13556444.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c13556444.spfilter(c,e,tp,tid)
 	return c:GetTurnID()==tid and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsReason(REASON_DESTROY)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c13556444.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

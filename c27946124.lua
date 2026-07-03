@@ -29,6 +29,7 @@ function c27946124.initial_effect(c)
 	--to deck
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(27946124,1))
+	e4:SetCategory(CATEGORY_SSET)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetRange(LOCATION_SZONE)
@@ -81,7 +82,7 @@ function c27946124.setfilter(c)
 end
 function c27946124.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c27946124.setfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>-1
+	if chk==0 then return Duel.GetSZoneCount(tp,e:GetHandler())>0
 		and Duel.IsExistingTarget(c27946124.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local sg=Duel.SelectTarget(tp,c27946124.setfilter,tp,LOCATION_GRAVE,0,1,1,nil)

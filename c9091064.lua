@@ -45,7 +45,9 @@ end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetFlagEffect(tp,id)==0 end
+	Duel.RegisterFlagEffect(tp,id,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -63,7 +65,7 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local g=Duel.SelectMatchingCard(tp,s.cfilter,tp,LOCATION_HAND,0,ct,ct,nil)
 	Duel.ConfirmCards(1-tp,g)
-	Duel.RaiseEvent(g,EVENT_CUSTOM+id,e,REASON_COST,tp,tp,0)
+	if e:GetHandler():IsSetCard(0x195) then Duel.RaiseEvent(g,EVENT_CUSTOM+id,e,REASON_COST,tp,tp,0) end
 	Duel.ShuffleHand(tp)
 end
 function s.postg(e,tp,eg,ep,ev,re,r,rp,chk)

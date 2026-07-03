@@ -26,7 +26,7 @@ function c15327215.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c15327215.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsSetCard(0x103d)
+	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsSetCard(0x903d)
 end
 function c15327215.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15327215.cfilter,1,nil,tp)
@@ -43,7 +43,7 @@ function c15327215.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c15327215.filter(c,mc)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x3d) and c:IsAbleToRemoveAsCost()
+	return c:IsLevelBelow(4) and c:IsSetCard(0x103d) and c:IsAbleToRemoveAsCost()
 		and not (c:IsLevel(mc:GetLevel()) and c:IsAttribute(mc:GetAttribute()) and c:IsAttack(mc:GetAttack()) and c:IsDefense(mc:GetDefense()))
 end
 function c15327215.cost(e,tp,eg,ep,ev,re,r,rp,chk)

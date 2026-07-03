@@ -21,7 +21,7 @@ function c95519486.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c95519486.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(95519486)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(95519486)
 end
 function c95519486.descon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget()
@@ -38,7 +38,7 @@ function c95519486.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95519486.repfilter(c,e)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c95519486.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

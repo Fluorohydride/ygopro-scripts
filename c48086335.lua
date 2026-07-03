@@ -20,6 +20,7 @@ function c48086335.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(48086335,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e3:SetCategory(CATEGORY_SSET)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET)
 	e3:SetCondition(c48086335.setcon)
@@ -30,6 +31,7 @@ end
 function c48086335.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEDOWN)
+		and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_DESTROY) and Duel.GetTurnPlayer()~=tp
 end
 function c48086335.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

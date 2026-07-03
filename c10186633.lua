@@ -68,11 +68,14 @@ function c10186633.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c10186633.filter),tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:SelectSubGroup(tp,c10186633.gcheck,false,1,2)
-	if sg and Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 then
-		local og=Duel.GetOperatedGroup()
-		if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
-		Duel.ShuffleDeck(tp)
-		Duel.BreakEffect()
-		Duel.Draw(tp,1,REASON_EFFECT)
+	if sg then
+		Duel.HintSelection(sg)
+		if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 then
+			local og=Duel.GetOperatedGroup()
+			if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
+			Duel.ShuffleDeck(tp)
+			Duel.BreakEffect()
+			Duel.Draw(tp,1,REASON_EFFECT)
+		end
 	end
 end

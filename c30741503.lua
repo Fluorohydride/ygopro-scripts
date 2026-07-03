@@ -15,7 +15,7 @@ function c30741503.initial_effect(c)
 	--todeck
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(30741503,0))
-	e2:SetCategory(CATEGORY_TODECK)
+	e2:SetCategory(CATEGORY_TODECK+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -37,10 +37,10 @@ function c30741503.indcon(e)
 	return e:GetHandler():IsLinkState()
 end
 function c30741503.tdcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c30741503.tdcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c30741503.tdfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAbleToDeck()

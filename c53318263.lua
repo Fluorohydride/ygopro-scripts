@@ -16,7 +16,7 @@ function c53318263.initial_effect(c)
 	--tribute summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(53318263,1))
-	e3:SetCategory(CATEGORY_SUMMON)
+	e3:SetCategory(CATEGORY_SUMMON+CATEGORY_MSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_TO_HAND)

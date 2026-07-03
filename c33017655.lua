@@ -20,7 +20,7 @@ function c33017655.initial_effect(c)
 	c:RegisterEffect(e3)
 	--discard & draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetCategory(CATEGORY_HANDES+CATEGORY_DRAW)
+	e4:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DRAW)
 	e4:SetDescription(aux.Stringid(33017655,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_FZONE)
@@ -42,7 +42,7 @@ end
 function c33017655.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_HAND,0,1,nil,RACE_FIEND)
 		and Duel.IsPlayerCanDraw(tp,1) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c33017655.operation(e,tp,eg,ep,ev,re,r,rp)

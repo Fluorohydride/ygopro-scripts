@@ -26,7 +26,7 @@ function c1965724.initial_effect(c)
 end
 function c1965724.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsPreviousControler(tp) and c:IsRace(RACE_FAIRY)
+		and c:IsPreviousControler(tp) and c:GetPreviousRaceOnField()&RACE_FAIRY~=0
 end
 function c1965724.cfilter2(c)
 	return c:IsFaceup() and c:IsCode(27288416)

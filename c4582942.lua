@@ -23,6 +23,7 @@ function s.afilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1a3) and c:IsType(TYPE_LINK)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
+	if op==nil and not s.condition(e,tp) then return end
 	if op==nil then
 		local chk=Duel.IsExistingMatchingCard(s.afilter,tp,LOCATION_MZONE,0,1,nil)
 		op=aux.SelectFromOptions(tp,

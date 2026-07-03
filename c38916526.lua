@@ -57,12 +57,25 @@ function c38916526.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 		and ep~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
-function c38916526.cfilter(c)
-	return c:IsSetCard(0x114) and c:IsDiscardable()
+function c38916526.cfilter(c,e,tp)
+	if c:IsLocation(LOCATION_HAND) then
+		return c:IsSetCard(0x114) and c:IsDiscardable()
+	else
+		return e:GetHandler():IsSetCard(0x114) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(53557529,tp)
+	end
 end
 function c38916526.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c38916526.cfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.DiscardHand(tp,c38916526.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(c38916526.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+	local g=Duel.SelectMatchingCard(tp,c38916526.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local tc=g:GetFirst()
+	local te=tc:IsHasEffect(53557529,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
+	else
+		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
+	end
 end
 function c38916526.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

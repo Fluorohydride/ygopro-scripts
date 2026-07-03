@@ -16,6 +16,7 @@ function c32543380.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_MUST_ATTACK)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetCondition(c32543380.bpcon)
 	e2:SetTargetRange(0,LOCATION_MZONE)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -54,6 +55,9 @@ end
 function c32543380.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	Duel.SendtoGrave(g,REASON_SPSUMMON)
+end
+function c32543380.bpcon(e)
+	return Duel.IsTurnPlayer(1-e:GetHandlerPlayer()) and Duel.IsBattlePhase()
 end
 function c32543380.atklimit(e,c)
 	return c==e:GetHandler()

@@ -3,6 +3,7 @@ aux=Auxiliary
 POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
+NULL_VALUE=-10
 
 function GetID()
 	local offset=self_code<100000000 and 1 or 100
@@ -258,6 +259,51 @@ function Auxiliary.NeosReturnTargetOptional(set_category)
 				if set_category then set_category(e,tp,eg,ep,ev,re,r,rp) end
 			end
 end
+---add "Toss a coin and get the following effects" effect to Arcana Force monsters
+---@param c Card
+---@param event1 integer
+---@param ... integer
+function Auxiliary.EnableArcanaCoin(c,event1,...)
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(1623)
+	e1:SetCategory(CATEGORY_COIN)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetCode(event1)
+	e1:SetTarget(Auxiliary.ArcanaCoinTarget)
+	e1:SetOperation(Auxiliary.ArcanaCoinOperation)
+	c:RegisterEffect(e1)
+	for _,event in ipairs{...} do
+		local e2=e1:Clone()
+		e2:SetCode(event)
+		c:RegisterEffect(e2)
+	end
+end
+function Auxiliary.ArcanaCoinTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
+end
+function Auxiliary.ArcanaCoinOperation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local res=0
+	local toss=false
+	if Duel.IsPlayerAffectedByEffect(tp,73206827) then
+		res=1-Duel.SelectOption(tp,60,61)
+	else
+		res=Duel.TossCoin(tp,1)
+		toss=true
+	end
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if toss then
+		c:RegisterFlagEffect(FLAG_ID_REVERSAL_OF_FATE,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
+	c:RegisterFlagEffect(FLAG_ID_ARCANA_COIN,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,res,63-res)
+end
+---condition of Arcana Force monster effect from coin toss
+---@param e Effect
+---@return boolean
+function Auxiliary.ArcanaCondition(e)
+	return e:GetHandler():GetFlagEffect(FLAG_ID_ARCANA_COIN)>0
+end
 function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
 	return c:IsHasEffect(EFFECT_UNION_STATUS) and c:GetEquipTarget()
@@ -400,27 +446,27 @@ function Auxiliary.EnableChangeCode(c,code,location,condition)
 	return e1
 end
 function Auxiliary.TargetEqualFunction(f,value,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(effect,target)
-				return f(target,table.unpack(ext_params))==value
+				return f(target,table.unpack(ext_params,1,ext_params.n))==value
 			end
 end
 function Auxiliary.TargetBoolFunction(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(effect,target)
-				return f(target,table.unpack(ext_params))
+				return f(target,table.unpack(ext_params,1,ext_params.n))
 			end
 end
 function Auxiliary.FilterEqualFunction(f,value,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target)
-				return f(target,table.unpack(ext_params))==value
+				return f(target,table.unpack(ext_params,1,ext_params.n))==value
 			end
 end
 function Auxiliary.FilterBoolFunction(f,...)
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	return	function(target)
-				return f(target,table.unpack(ext_params))
+				return f(target,table.unpack(ext_params,1,ext_params.n))
 			end
 end
 function Auxiliary.GetValueType(v)
@@ -501,6 +547,9 @@ end
 function Auxiliary.IsCodeListed(c,code)
 	return c.card_code_list and c.card_code_list[code]
 end
+function Auxiliary.IsCodeOrListed(c,code)
+	return c:IsCode(code) or Auxiliary.IsCodeListed(c,code)
+end
 function Auxiliary.AddSetNameMonsterList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.setcode_monster_list==nil then
@@ -548,38 +597,130 @@ end
 function Auxiliary.IsInGroup(c,g)
 	return g:IsContains(c)
 end
---return the column of card c (from the viewpoint of p)
-function Auxiliary.GetColumn(c,p)
-	local seq=c:GetSequence()
-	if c:IsLocation(LOCATION_MZONE) then
-		if seq==5 then
-			seq=1
-		elseif seq==6 then
-			seq=3
+--Get the row index (from the viewpoint of controller)
+function Auxiliary.GetLocalRow(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return 0
+		else
+			return NULL_VALUE
 		end
-	elseif c:IsLocation(LOCATION_SZONE) then
-		if seq>4 then
-			return nil
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return 1
+		elseif 5<=sequence and sequence<=6 then
+			return 2
+		else
+			return NULL_VALUE
 		end
 	else
-		return nil
+		return NULL_VALUE
 	end
-	if c:IsControler(p or 0) then
-		return seq
+end
+--Get the global row index (from the viewpoint of 0)
+function Auxiliary.GetGlobalRow(p,location,sequence)
+	local row=Auxiliary.GetLocalRow(location,sequence)
+	if row<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return row
 	else
-		return 4-seq
+		return 4-row
+	end
+end
+--Get the column index (from the viewpoint of controller)
+function Auxiliary.GetLocalColumn(location,sequence)
+	if location==LOCATION_SZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		else
+			return NULL_VALUE
+		end
+	elseif location==LOCATION_MZONE then
+		if 0<=sequence and sequence<=4 then
+			return sequence
+		elseif sequence==5 then
+			return 1
+		elseif sequence==6 then
+			return 3
+		else
+			return NULL_VALUE
+		end
+	else
+		return NULL_VALUE
+	end
+end
+--Get the global column index (from the viewpoint of 0)
+function Auxiliary.GetGlobalColumn(p,location,sequence)
+	local column=Auxiliary.GetLocalColumn(location,sequence)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
+	end
+end
+---Get the global row and column index of c
+---@param c Card
+---@return integer
+---@return integer
+function Auxiliary.GetFieldIndex(c)
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	return Auxiliary.GetGlobalRow(cp,loc,seq),Auxiliary.GetGlobalColumn(cp,loc,seq)
+end
+---Check if c is adjacent to (i,j)
+---@param c Card
+---@param i integer
+---@param j integer
+---@return boolean
+function Auxiliary.AdjacentFilter(c,i,j)
+	local row,column=Auxiliary.GetFieldIndex(c)
+	if row<0 or column<0 then
+		return false
+	end
+	return (row==i and math.abs(column-j)==1) or (math.abs(row-i)==1 and column==j)
+end
+---Get the card group adjacent to (i,j)
+---@param tp integer
+---@param location1 integer
+---@param location2 integer
+---@param i integer
+---@param j integer
+---@return Group
+function Auxiliary.GetAdjacentGroup(tp,location1,location2,i,j)
+	return Duel.GetMatchingGroup(Auxiliary.AdjacentFilter,tp,location1,location2,nil,i,j)
+end
+---Get the column index of card c (from the viewpoint of p)
+---@param c Card
+---@param p? integer default: 0
+---@return integer
+function Auxiliary.GetColumn(c,p)
+	p=p or 0
+	local cp=c:GetControler()
+	local loc=c:GetLocation()
+	local seq=c:GetSequence()
+	local column=Auxiliary.GetGlobalColumn(cp,loc,seq)
+	if column<0 then
+		return NULL_VALUE
+	end
+	if p==0 then
+		return column
+	else
+		return 4-column
 	end
 end
 --return the column of monster zone seq (from the viewpoint of controller)
 function Auxiliary.MZoneSequence(seq)
-	if seq==5 then return 1 end
-	if seq==6 then return 3 end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_MZONE,seq)
 end
 --return the column of spell/trap zone seq (from the viewpoint of controller)
 function Auxiliary.SZoneSequence(seq)
-	if seq>4 then return nil end
-	return seq
+	return Auxiliary.GetLocalColumn(LOCATION_SZONE,seq)
 end
 --generate the value function of EFFECT_CHANGE_BATTLE_DAMAGE on monsters
 function Auxiliary.ChangeBattleDamage(player,value)
@@ -767,7 +908,7 @@ end
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
-	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x19))
+	return c:IsSummonType(SUMMON_VALUE_GLADIATOR) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x1019))
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
@@ -911,7 +1052,7 @@ function Auxiliary.DrytronSpSummonCost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function Auxiliary.DrytronSpSummonLimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsSummonableCard()
+	return c:IsSummonableCard() and c:GetOriginalType()&(TYPE_SPELL|TYPE_TRAP|TYPE_TRAPMONSTER)==0
 end
 function Auxiliary.DrytronSpSummonTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==100 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -1058,7 +1199,7 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 		sg:RemoveCard(c)
 		return false
 	end
-	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params,1,ext_params.n)))
 		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
@@ -1069,7 +1210,7 @@ function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 		sg:RemoveCard(c)
 		return false
 	end
-	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params))
+	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params,1,ext_params.n))
 	if res then
 		Auxiliary.SubGroupCaptured:Clear()
 		Auxiliary.SubGroupCaptured:Merge(sg)
@@ -1090,7 +1231,7 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	min=min or 1
 	max=max or #g
 	if min>max then return false end
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min then return false end
 	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g)) then return false end
@@ -1115,7 +1256,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	Auxiliary.SubGroupCaptured=Group.CreateGroup()
 	min=min or 1
 	max=max or #g
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	local fg=Duel.GrabSelectedCard()
 	if #fg>max or min>max or #(g+fg)<min then return nil end
@@ -1181,7 +1322,7 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	end
 	local res
 	if #sg==#checks then
-		res=f(sg,table.unpack(ext_params))
+		res=f(sg,table.unpack(ext_params,1,ext_params.n))
 	else
 		res=g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 	end
@@ -1197,7 +1338,7 @@ end
 function Group.CheckSubGroupEach(g,checks,f,...)
 	if f==nil then f=Auxiliary.TRUE end
 	if #g<#checks then return false end
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 end
@@ -1213,7 +1354,7 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	if cancelable==nil then cancelable=false end
 	if f==nil then f=Auxiliary.TRUE end
 	local ct=#checks
-	local ext_params={...}
+	local ext_params=table.pack(...)
 	local sg=Group.CreateGroup()
 	local finish=false
 	while #sg<ct do
@@ -1233,6 +1374,91 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 	else
 		return nil
 	end
+end
+--for effects that player usually select card from field, avoid showing panel
+function Auxiliary.SelectCardFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,...)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectMatchingCard(tp,f,player,s,o,min,max,ex,...)
+end
+function Auxiliary.SelectTargetFromFieldFirst(tp,f,player,s,o,min,max,ex,...)
+	local g=Duel.GetMatchingGroup(f,player,s,o,ex,...):Filter(Card.IsCanBeEffectTarget,nil)
+	local fg=g:Filter(Card.IsOnField,nil)
+	g:Sub(fg)
+	if #fg>=min and #g>0 then
+		local last_hint=Duel.GetLastSelectHint(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FIELD_FIRST)
+		local sg=fg:CancelableSelect(tp,min,max,nil)
+		if sg then
+			Duel.SetTargetCard(sg)
+			return sg
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,last_hint)
+		end
+	end
+	return Duel.SelectTarget(tp,f,player,s,o,min,max,ex,...)
+end
+---
+---Select the same number of cards from each group.
+---@param tp integer
+---@param g1 Group
+---@param g2 Group
+---@param min? integer Cards to select from each group, minimum
+---@param max? integer Cards to select from each group, maximum
+---@param except? Card|Group
+---@return Group
+function Auxiliary.SelectSameCount(tp,g1,g2,min,max,except)
+	if except then
+		g1=g1-except
+		g2=g2-except
+	end
+	min=min or 1
+	max=math.min(max or 127,#g1,#g2)
+	if min>max then return nil end
+	local sg=Group.CreateGroup()
+	local ct1=0
+	local ct2=0
+	while true do
+		local fg=Group.CreateGroup()
+		if ct1<max then
+			fg:Merge(g1)
+		end
+		if ct2<max then
+			fg:Merge(g2)
+		end
+		fg:Sub(sg)
+		local finish=ct1==ct2 and ct1>=min and ct1<=max
+		local tc=fg:SelectUnselect(sg,tp,finish,false,min*2,max*2)
+		if not tc then break end
+		if sg:IsContains(tc) then
+			sg:RemoveCard(tc)
+			if g1:IsContains(tc) then
+				ct1=ct1-1
+			else
+				ct2=ct2-1
+			end
+		else
+			sg:AddCard(tc)
+			if g1:IsContains(tc) then
+				ct1=ct1+1
+			else
+				ct2=ct2+1
+			end
+		end
+		if ct1==max and ct2==max then break end
+	end
+	return sg
 end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
@@ -1294,6 +1520,15 @@ function Auxiliary.GetCappedLevel(c)
 	local lv=c:GetLevel()
 	if lv>MAX_PARAMETER then
 		return MAX_PARAMETER
+	else
+		return lv
+	end
+end
+--
+function Auxiliary.GetCappedXyzLevel(c)
+	local lv=c:GetLevel()
+	if lv>MAX_XYZ_LEVEL then
+		return MAX_XYZ_LEVEL
 	else
 		return lv
 	end
@@ -1444,6 +1679,114 @@ function Auxiliary.MergedDelayEventCheck2(e,tp,eg,ep,ev,re,r,rp)
 		g:Clear()
 	end
 end
+--Once the card has been moved to the public area, it should be listened to again
+Auxiliary.merge_single_effect_codes={}
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard(c,code,events)
+	local g=Group.CreateGroup()
+	g:KeepAlive()
+	local mt=getmetatable(c)
+	local seed=0
+	if type(events) == "table" then
+		for _, event in ipairs(events) do
+			seed = seed + event
+		end
+	else
+		seed = events
+	end
+	while(mt[seed]==true) do
+		seed = seed + 1
+	end
+	mt[seed]=true
+	local event_code_single = (code ~ (seed << 16)) | EVENT_CUSTOM
+	if type(events) == "table" then
+		for _, event in ipairs(events) do
+			Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
+		end
+	else
+		Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,events,event_code_single)
+	end
+	--listened to again
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e3:SetCode(EVENT_MOVE)
+	e3:SetLabel(event_code_single)
+	e3:SetLabelObject(g)
+	e3:SetOperation(Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard)
+	c:RegisterEffect(e3)
+	Auxiliary.merge_single_effect_codes[event_code_single]=g
+	--use global effect to raise event for face-down cards
+	if not Auxiliary.merge_single_global_check then
+		Auxiliary.merge_single_global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_CHAIN_END)
+		ge1:SetOperation(Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_RaiseEvent)
+		Duel.RegisterEffect(ge1,0)
+	end
+	return event_code_single
+end
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,event,event_code_single)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(event)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
+	e1:SetRange(0xff)
+	e1:SetLabel(event_code_single,event)
+	e1:SetLabelObject(g)
+	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingleCard)
+	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetCode(EVENT_CHAIN_END)
+	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingleCard)
+	c:RegisterEffect(e2)
+end
+function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetOwner()
+	local g=e:GetLabelObject()
+	if c:IsFaceup() or c:IsPublic() then
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck1_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	g:Merge(eg)
+	local code,event=e:GetLabel()
+	local c=e:GetOwner()
+	-- clear if the owner card is in the event group
+	if eg:IsContains(c) then
+		g:Clear()
+	end
+	if Duel.GetCurrentChain()==0 and #g>0 and not Duel.CheckEvent(EVENT_CHAIN_END) then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,code,re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
+function Auxiliary.MergedDelayEventCheck2_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetLabelObject()
+	if Duel.CheckEvent(EVENT_MOVE) then
+		local _,meg=Duel.CheckEvent(EVENT_MOVE,true)
+		local c=e:GetOwner()
+		if meg:IsContains(c) and (c:IsFaceup() or c:IsPublic()) then
+			g:Clear()
+		end
+	end
+	if #g>0 then
+		local _eg=g:Clone()
+		Duel.RaiseEvent(_eg,e:GetLabel(),re,r,rp,ep,ev)
+		g:Clear()
+	end
+end
+function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_RaiseEvent(e,tp,eg,ep,ev,re,r,rp)
+	for code,g in pairs(Auxiliary.merge_single_effect_codes) do
+		if #g>0 then
+			local _eg=g:Clone()
+			Duel.RaiseEvent(_eg,code,re,r,rp,ep,ev)
+			g:Clear()
+		end
+	end
+end
 --B.E.S. remove counter
 function Auxiliary.EnableBESRemove(c)
 	local e1=Effect.CreateEffect(c)
@@ -1452,22 +1795,22 @@ function Auxiliary.EnableBESRemove(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_DAMAGE_STEP_END)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(Auxiliary.RemoveCondtion)
-	e1:SetTarget(Auxiliary.RemoveTarget)
-	e1:SetOperation(Auxiliary.RemoveOperation)
+	e1:SetCondition(Auxiliary.BESRemoveCondition)
+	e1:SetTarget(Auxiliary.BESRemoveTarget)
+	e1:SetOperation(Auxiliary.BESRemoveOperation)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.RemoveCondtion(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.BESRemoveCondition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsRelateToBattle()
 end
-function Auxiliary.RemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
+function Auxiliary.BESRemoveTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	end
 end
-function Auxiliary.RemoveOperation(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.BESRemoveOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		if c:IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
@@ -1602,4 +1945,110 @@ end
 ---@param e Effect
 function Auxiliary.BanishRedirectCondition(e)
 	return e:GetHandler():IsFaceup()
+end
+---Check if c has a equip card equipped by the effect of itself.
+---@param c Card
+---@param id integer
+---@return boolean
+function Auxiliary.IsSelfEquip(c,id)
+	return c:GetEquipGroup():IsExists(Auxiliary.SelfEquipFilter,1,nil,id)
+end
+function Auxiliary.SelfEquipFilter(c,id)
+	return c:GetFlagEffect(id)>0
+end
+---Orcustrated Babel
+---@param c Card
+---@return boolean
+function Auxiliary.OrcustratedBabelFilter(c)
+	return c:IsOriginalSetCard(0x11b) and
+		(c:IsLocation(LOCATION_MZONE) and c:IsAllTypes(TYPE_LINK+TYPE_MONSTER) or c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER))
+end
+---Golden Allure Queen
+---@param c Card
+---@return boolean
+function Auxiliary.GoldenAllureQueenFilter(c)
+	return c:IsOriginalSetCard(0x3)
+end
+--The table of all "become quick effects"
+Auxiliary.quick_effect_filter={}
+Auxiliary.quick_effect_filter[90351981]=Auxiliary.OrcustratedBabelFilter
+Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
+---Check if the effect of c becomes a Quick Effect.
+---@param c Card
+---@param tp integer
+---@param code integer
+---@return boolean
+function Auxiliary.IsCanBeQuickEffect(c,tp,code)
+	local filter=Auxiliary.quick_effect_filter[code]
+	return Duel.IsPlayerAffectedByEffect(tp,code)~=nil and filter~=nil and filter(c)
+end
+--
+function Auxiliary.DimensionalFissureTarget(e,c)
+	return c:GetOriginalType()&TYPE_MONSTER>0 and not c:IsLocation(LOCATION_OVERLAY) and not c:IsType(TYPE_SPELL+TYPE_TRAP)
+end
+--
+function Auxiliary.MimighoulFlipCondition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsMainPhase()
+end
+---The name of `c` becomes the original name of `tc`
+---@param c Card
+---@param tc Card
+---@param reset? integer defult: RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END
+---@return Effect
+function Auxiliary.BecomeOriginalCode(c,tc,reset)
+	reset=reset or (RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+	local code=tc:GetOriginalCodeRule()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_CHANGE_CODE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetValue(code)
+	e1:SetReset(reset)
+	c:RegisterEffect(e1)
+	return e1
+end
+---@param category integer
+---@return function
+function Auxiliary.EffectCategoryFilter(category)
+	---@param e Effect
+	return function (e)
+		return e:IsHasCategory(category)
+	end
+end
+---@param flag integer
+---@return function
+function Auxiliary.EffectPropertyFilter(flag)
+	---@param e Effect
+	return function (e)
+		return e:IsHasProperty(flag)
+	end
+end
+---@param flag integer
+---@return function
+function Auxiliary.MonsterEffectPropertyFilter(flag)
+	---@param e Effect
+	return function (e)
+		return e:IsHasProperty(flag) and not e:IsHasRange(LOCATION_PZONE)
+	end
+end
+---The `nolimit` parameter for Special Summon effects of Phantasms cards
+---@param c Card
+---@return boolean
+function Auxiliary.PhantasmsSpSummonType(c)
+	return c:IsType(TYPE_SPSUMMON)
+end
+---Count for the activation of "Mulcharmy" monsters
+function Auxiliary.EnableMulcharmyGlobalCheck()
+	if Auxiliary.MulcharmyGlobalFlag then return end
+	Auxiliary.MulcharmyGlobalFlag=true
+	local ge1=Effect.GlobalEffect()
+	ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	ge1:SetCode(EVENT_CHAINING)
+	ge1:SetOperation(Auxiliary.MulcharmyGlobalCheck)
+	Duel.RegisterEffect(ge1,0)
+end
+function Auxiliary.MulcharmyGlobalCheck(e,tp,eg,ep,ev,re,r,rp)
+	if re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x1b2) then
+		Duel.RegisterFlagEffect(ep,84192580,RESET_PHASE+PHASE_END,0,1)
+	end
 end

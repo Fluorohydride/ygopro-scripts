@@ -28,7 +28,7 @@ function c17264592.initial_effect(c)
 end
 function c17264592.thfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xb2) and not c:IsCode(17264592) and c:IsAbleToHandAsCost()
-		 and Duel.GetMZoneCount(tp,c)>0
+		and Duel.GetMZoneCount(tp,c)>0
 end
 function c17264592.sprcon(e,c)
 	if c==nil then return true end

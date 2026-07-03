@@ -1,5 +1,6 @@
 --サイバース・セイジ
 function c65037172.initial_effect(c)
+	aux.AddCodeList(c,34767865)
 	c:EnableReviveLimit()
 	--fusion summon
 	local e1=Effect.CreateEffect(c)
@@ -22,42 +23,6 @@ function c65037172.initial_effect(c)
 	e2:SetTarget(c65037172.thtg)
 	e2:SetOperation(c65037172.thop)
 	c:RegisterEffect(e2)
-end
-function c65037172.filter1(c,e)
-	return c:IsOnField() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
-end
-function c65037172.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-function c65037172.filter3(c)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
-end
-function c65037172.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsRace,1,nil,RACE_CYBERSE)
-end
-function c65037172.fsptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(c65037172.filter1,nil,e)
-		local mg2=Duel.GetMatchingGroup(c65037172.filter3,tp,LOCATION_GRAVE,0,nil)
-		mg1:Merge(mg2)
-		aux.FCheckAdditional=c65037172.fcheck
-		local res=Duel.IsExistingMatchingCard(c65037172.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
-		if not res then
-			local ce=Duel.GetChainMaterial(tp)
-			if ce~=nil then
-				local fgroup=ce:GetTarget()
-				local mg3=fgroup(ce,e,tp)
-				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c65037172.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
-			end
-		end
-		aux.FCheckAdditional=nil
-		return res
-	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_ONFIELD+LOCATION_GRAVE)
 end
 function c65037172.fspop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp

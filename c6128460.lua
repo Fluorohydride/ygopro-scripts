@@ -13,7 +13,7 @@ function c6128460.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES)
+	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES_SELF)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -38,7 +38,7 @@ function c6128460.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_DISCARD)
 end
 function c6128460.thfilter(c)
-	return (aux.IsCodeListed(c,32274490) or c:IsCode(32274490)) and not c:IsCode(6128460) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return aux.IsCodeOrListed(c,32274490) and not c:IsCode(6128460) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c6128460.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

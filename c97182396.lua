@@ -107,7 +107,7 @@ function c97182396.natg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c97182396.naop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	if Duel.NegateAttack()~=0 and ec then
+	if Duel.NegateAttack() and ec then
 		Duel.GetControl(ec,1-ec:GetControler(),PHASE_BATTLE,1)
 	end
 end

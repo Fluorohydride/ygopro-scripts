@@ -66,7 +66,7 @@ function c57031794.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c57031794.mtfilter(c,e)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x10dc) and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
+	return c:IsFaceupEx() and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x10dc) and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
 end
 function c57031794.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
@@ -74,10 +74,14 @@ function c57031794.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57031794.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c57031794.mtfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,e)
 	if g:GetCount()>0 then
+		local mg=g:GetFirst():GetOverlayGroup()
+		if mg:GetCount()>0 then
+			Duel.SendtoGrave(mg,REASON_RULE)
+		end
 		Duel.Overlay(c,g)
 	end
 end

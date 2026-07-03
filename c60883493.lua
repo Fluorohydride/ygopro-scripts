@@ -23,7 +23,7 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,1,3)
 	Duel.ConfirmCards(1-tp,sg)
-	Duel.RaiseEvent(sg,EVENT_CUSTOM+9091064,e,REASON_COST,tp,tp,0)
+	if e:GetHandler():IsSetCard(0x195) then Duel.RaiseEvent(sg,EVENT_CUSTOM+9091064,e,REASON_COST,tp,tp,0) end
 	Duel.ShuffleHand(tp)
 	e:SetLabel(#sg)
 end

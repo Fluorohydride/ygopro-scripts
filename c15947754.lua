@@ -4,7 +4,6 @@ function s.initial_effect(c)
 	--Equip Fadown
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
-	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetTarget(s.eqtg)
@@ -16,7 +15,7 @@ function s.initial_effect(c)
 	--Guess
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
-	e3:SetCategory(CATEGORY_HANDES)
+	e3:SetCategory(CATEGORY_HANDES_OPPO)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_MZONE)
@@ -27,7 +26,6 @@ function s.initial_effect(c)
 end
 function s.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -64,7 +62,6 @@ function s.eqlimit(e,c)
 end
 function s.guesstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,1-tp,1)
 end
 function s.eqfilter(c)
 	return c:IsFacedown() and c:GetFlagEffect(id)~=0

@@ -54,7 +54,7 @@ function c66961194.spop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c66961194.spcostfilter2(c)
-	return (c:IsCode(89631139) or aux.IsCodeListed(c,89631139)) and c:IsDiscardable()
+	return aux.IsCodeOrListed(c,89631139) and c:IsDiscardable()
 end
 function c66961194.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66961194.spcostfilter2,tp,LOCATION_HAND,0,1,nil) end

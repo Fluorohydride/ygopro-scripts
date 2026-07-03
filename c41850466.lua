@@ -13,7 +13,7 @@ function c41850466.initial_effect(c)
 	c:RegisterEffect(e1)
 	if not c41850466.global_check then
 		c41850466.global_check=true
-		local ge1=Effect.GlobalEffect()
+		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_DESTROYED)
 		ge1:SetOperation(c41850466.checkop)

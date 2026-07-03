@@ -24,6 +24,7 @@ function c77723643.initial_effect(c)
 	e2:SetTarget(c77723643.destg)
 	e2:SetOperation(c77723643.desop)
 	c:RegisterEffect(e2)
+	c77723643.shadoll_flip_effect=e1
 end
 function c77723643.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

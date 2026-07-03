@@ -57,7 +57,7 @@ function c23776077.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and c23776077.rmfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c23776077.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,c23776077.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
+	local g=aux.SelectTargetFromFieldFirst(tp,c23776077.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
 	if g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,1-tp,LOCATION_GRAVE)
 	else

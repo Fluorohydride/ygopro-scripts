@@ -3,7 +3,7 @@ function c94283662.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94283662,0))
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)
@@ -27,7 +27,7 @@ function c94283662.dfilter(c)
 end
 function c94283662.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94283662.dfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 end
 function c94283662.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

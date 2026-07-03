@@ -3,7 +3,7 @@ function c17032740.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode3(c,89943723,43237273,17732278,false,false)
-	aux.AddContactFusionProcedure(c,Card.IsAbleToDeckOrExtraAsCost,LOCATION_ONFIELD,0,aux.tdcfop(c))
+	aux.AddContactFusionProcedure(c,Card.IsAbleToDeckOrExtraAsCost,LOCATION_ONFIELD,0,aux.ContactFusionSendToDeck(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -12,7 +12,7 @@ function c17032740.initial_effect(c)
 	e1:SetValue(c17032740.splimit)
 	c:RegisterEffect(e1)
 	--return
-	aux.EnableNeosReturn(c,c17032740.retop)
+	aux.EnableNeosReturn(c,c17032740.retop,c17032740.set_category)
 	--coin
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(17032740,1))
@@ -26,9 +26,11 @@ function c17032740.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c17032740.material_setcode=0x8
-c17032740.toss_coin=true
 function c17032740.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
+end
+function c17032740.set_category(e,tp,eg,ep,ev,re,r,rp)
+	e:SetCategory(CATEGORY_MSET)
 end
 function c17032740.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -1,5 +1,6 @@
 --ウォーターリヴァイアサン＠イグニスター
 function c37061511.initial_effect(c)
+	aux.AddCodeList(c,85327820)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

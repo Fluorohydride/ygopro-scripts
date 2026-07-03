@@ -5,6 +5,7 @@ function c77994337.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77994337,0))
+	e1:SetCategory(CATEGORY_DICE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_PZONE)
@@ -13,8 +14,6 @@ function c77994337.initial_effect(c)
 	e1:SetOperation(c77994337.lvop)
 	c:RegisterEffect(e1)
 end
-c77994337.toss_dice=true
-c77994337.toss_dice_in_pendulum_only=true
 function c77994337.lvfilter(c)
 	return c:IsFaceup() and c:GetLevel()>0
 end

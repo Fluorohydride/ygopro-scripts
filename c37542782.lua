@@ -31,7 +31,6 @@ function c37542782.initial_effect(c)
 	--equip
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(37542782,0))
-	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1)
@@ -76,12 +75,12 @@ function c37542782.efilter(e,re)
 end
 function c37542782.eqfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and (c:IsControler(tp) or c:IsAbleToChangeControler())
+		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
 function c37542782.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c37542782.eqfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,tp) end
 	local g=Duel.GetFieldGroup(tp, LOCATION_GRAVE, LOCATION_GRAVE)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 end
 function c37542782.eqop(e,tp,eg,ep,ev,re,r,rp)

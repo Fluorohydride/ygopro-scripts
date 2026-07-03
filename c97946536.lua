@@ -12,7 +12,6 @@ function c97946536.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetDescription(aux.Stringid(97946536,1))
-	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetTarget(c97946536.eqtg)
 	e2:SetOperation(c97946536.eqop)
 	c:RegisterEffect(e2)
@@ -82,7 +81,6 @@ end
 function c97946536.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c97946536.eqfilter,tp,LOCATION_DECK,0,1,nil,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c97946536.eqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

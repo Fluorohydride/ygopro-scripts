@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetCondition(s.drcon)
 	e2:SetOperation(s.regop)
+	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCondition(s.regcon)
@@ -70,7 +71,7 @@ end
 function s.cfilter(c,tp,lc)
 	local seq=c:GetPreviousSequence()
 	if c:IsPreviousControler(1-tp) then seq=seq+16 end
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousRaceOnField()&RACE_DINOSAUR>0
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousRaceOnField()&RACE_DINOSAUR>0 and c:IsRace(RACE_DINOSAUR)
 		and c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(lc:GetLinkedZone(),seq)>0
 end
 function s.drcon(e,tp,eg,ep,ev,re,r,rp)

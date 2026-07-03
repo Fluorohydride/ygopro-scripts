@@ -47,5 +47,5 @@ function c64442155.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c64442155.splimit(e,c)
-	return c:GetType()&0x81~=0x81
+	return c:GetOriginalType()&0x81~=0x81
 end

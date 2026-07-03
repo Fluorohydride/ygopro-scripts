@@ -25,13 +25,13 @@ function c70180284.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c70180284.tgcfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:IsControler(tp)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and c:IsControler(tp)
 end
 function c70180284.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg and eg:IsExists(c70180284.tgcfilter,1,e:GetHandler(),tp)
 end
 function c70180284.tgfilter(c)
-	return c:IsSetCard(0x3d) and c:IsAbleToGrave()
+	return c:IsSetCard(0x103d) and c:IsAbleToGrave()
 end
 function c70180284.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c70180284.tgfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -45,7 +45,7 @@ function c70180284.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c70180284.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x3d)
+	return c:IsFaceup() and c:IsSetCard(0x103d)
 		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c70180284.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

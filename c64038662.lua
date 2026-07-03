@@ -32,20 +32,14 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.IsExistingTarget(c64038662.filter1,tp,LOCATION_MZONE,0,2,nil) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 	local b2=Duel.IsExistingTarget(c64038662.filter2,tp,LOCATION_SZONE,0,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	if chk==0 then return b1 or b2 end
-	local op=0
-	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(64038662,2),aux.Stringid(64038662,3))+1
-	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(64038662,2))+1
-	else op=Duel.SelectOption(tp,aux.Stringid(64038662,3))+2 end
+	local op=aux.SelectFromOptions(tp,
+		{b1,aux.Stringid(64038662,2),1},
+		{b2,aux.Stringid(64038662,3),2})
 	e:SetLabel(op)
 	if op==1 then
-		e:SetCategory(CATEGORY_EQUIP)
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,4))
-		local g1=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,nil)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g2=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
-		e:SetLabelObject(g1:GetFirst())
+		e:SetCategory(0)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+		Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,2,2,nil)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -55,11 +49,13 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c64038662.efop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
-		local tc1=e:GetLabelObject()
-		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-		local tc2=g:GetFirst()
-		if tc1==tc2 then tc2=g:GetNext() end
-		if tc1:IsFaceup() and tc2:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e) and Duel.Equip(tp,tc1,tc2,false) then
+		local g=Duel.GetTargetsRelateToChain()
+		if g:FilterCount(Card.IsFaceup,nil)<2 then return end
+		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,4))
+		local tc1=g:Select(tp,1,1,nil):GetFirst()
+		local tc2=(g-tc1):GetFirst()
+		if Duel.Equip(tp,tc1,tc2,false) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)

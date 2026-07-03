@@ -25,25 +25,27 @@ function c59228631.initial_effect(c)
 	e2:SetOperation(c59228631.atkop)
 	c:RegisterEffect(e2)
 end
-function c59228631.releasefilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsReleasableByEffect()
+function c59228631.releasefilter(c,tp)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT)
+		and c:IsReleasableByEffect() and Duel.GetMZoneCount(tp,c)>0
 end
 function c59228631.spfilter(c,e,tp)
 	return c:IsLevel(7) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_DRAGON)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c59228631.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c59228631.releasefilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c59228631.releasefilter,tp,LOCATION_MZONE,0,1,nil,e,tp)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c59228631.releasefilter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c59228631.releasefilter,tp,LOCATION_MZONE,0,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c59228631.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectTarget(tp,c59228631.releasefilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c59228631.releasefilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_RELEASE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c59228631.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Release(tc,REASON_EFFECT)~=0 then
+	if tc and tc:IsRelateToEffect(e) and Duel.Release(tc,REASON_EFFECT)~=0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c59228631.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		if g:GetCount()>0 then

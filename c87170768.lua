@@ -45,7 +45,7 @@ function c87170768.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87170768.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0 then
+	if c:IsRelateToEffect(e) then
 		Duel.SpecialSummon(c,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

@@ -48,7 +48,6 @@ function c82734805.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local cat=0
 	if ct>=3 or ct>=8 then cat=cat+CATEGORY_TOGRAVE end
 	if ct>=5 then cat=cat+CATEGORY_DECKDES end
-	if ct>=10 then cat=cat+CATEGORY_HANDES end
 	e:SetCategory(cat)
 end
 function c82734805.op(e,tp,eg,ep,ev,re,r,rp)

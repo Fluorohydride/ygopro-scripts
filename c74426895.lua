@@ -14,7 +14,7 @@ function c74426895.initial_effect(c)
 	--discard & draw
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(74426895,0))
-	e2:SetCategory(CATEGORY_HANDES+CATEGORY_DRAW)
+	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCountLimit(1,74426895)
@@ -71,7 +71,6 @@ end
 function c74426895.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 		and Duel.IsPlayerCanDraw(tp,1) and Duel.IsPlayerCanDraw(1-tp,1) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,1)
 end
 function c74426895.hdop(e,tp,eg,ep,ev,re,r,rp)

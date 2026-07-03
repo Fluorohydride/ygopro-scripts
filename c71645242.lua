@@ -64,7 +64,7 @@ function c71645242.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c71645242.opfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsLocation(LOCATION_MZONE) and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c71645242.opfilter,nil,e)

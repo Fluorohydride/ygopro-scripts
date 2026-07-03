@@ -38,7 +38,7 @@ function c95134948.initial_effect(c)
 end
 aux.xyz_number[95134948]=99
 function c95134948.counterfilter(c)
-	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_XYZ)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_XYZ) and c:IsFaceup()
 end
 function c95134948.dacheck(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()

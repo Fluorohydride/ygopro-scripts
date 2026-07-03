@@ -29,13 +29,13 @@ function c75116619.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c75116619.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(75116619)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(75116619)
 end
 function c75116619.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c75116619.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c75116619.costfilter(c)
-	return c:IsSetCard(0x3d) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x103d) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c75116619.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75116619.costfilter,tp,LOCATION_GRAVE,0,2,nil) end
@@ -61,7 +61,7 @@ function c75116619.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c75116619.vfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(75116619)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(75116619)
 end
 function c75116619.valcon(e)
 	local c=e:GetHandler()

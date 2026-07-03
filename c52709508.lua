@@ -68,7 +68,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(att,ATTRIBUTE_LIGHT)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(52709508,1))
-		e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+		e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e1:SetRange(LOCATION_MZONE)
@@ -116,7 +116,8 @@ function c52709508.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52709508.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsAttribute(ATTRIBUTE_LIGHT) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+	if tc:IsRelateToEffect(e) and tc:IsAttribute(ATTRIBUTE_LIGHT)
+		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)>0 then
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end

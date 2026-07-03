@@ -91,6 +91,7 @@ function c9603252.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c9603252.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
+		Duel.HintSelection(g)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end
 end

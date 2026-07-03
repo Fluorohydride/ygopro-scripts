@@ -33,26 +33,29 @@ function c84274024.initial_effect(c)
 	e4:SetOperation(c84274024.thop2)
 	e4:SetLabel(TYPE_XYZ)
 	c:RegisterEffect(e4)
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
-	e5:SetRange(LOCATION_SZONE)
-	e5:SetCode(EFFECT_MATERIAL_CHECK)
-	e5:SetValue(c84274024.valcheck)
-	c:RegisterEffect(e5)
+	--
+	if not c84274024.global_check then
+		c84274024.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c84274024.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
 end
 function c84274024.valcheck(e,c)
 	local g=c:GetMaterial()
-	if c:IsType(TYPE_FUSION) and g:IsExists(Card.IsFusionType,1,nil,TYPE_PENDULUM) then
-		c:RegisterFlagEffect(84274024,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
-	elseif c:IsType(TYPE_SYNCHRO) and g:IsExists(Card.IsSynchroType,1,nil,TYPE_PENDULUM) then
-		c:RegisterFlagEffect(84274024,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
-	elseif c:IsType(TYPE_XYZ) and g:IsExists(Card.IsXyzType,1,nil,TYPE_PENDULUM) then
+	if c:IsType(TYPE_FUSION) and g:IsExists(Card.IsFusionType,1,nil,TYPE_PENDULUM)
+		or c:IsType(TYPE_SYNCHRO) and g:IsExists(Card.IsSynchroType,1,nil,TYPE_PENDULUM)
+		or c:IsType(TYPE_XYZ) and g:IsExists(Card.IsXyzType,1,nil,TYPE_PENDULUM) then
 		c:RegisterFlagEffect(84274024,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c84274024.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetCount()==1 and eg:GetFirst():IsFaceup() and eg:GetFirst():IsType(e:GetLabel()) and eg:GetFirst():GetFlagEffect(84274024)~=0
+	local ec=eg:GetFirst()
+	return e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) and eg:GetCount()==1
+		and ec:IsSummonPlayer(tp) and ec:IsFaceup() and ec:IsType(e:GetLabel()) and ec:GetFlagEffect(84274024)~=0
 end
 function c84274024.spfilter(c,e,tp,lv)
 	local lvl=c:GetOriginalLevel()
@@ -68,6 +71,7 @@ function c84274024.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,84274024)~=0 then return end
 	local c=e:GetHandler()
 	if eg:GetFirst():IsFaceup() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c84274024.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,eg:GetFirst():GetOriginalLevel())
 		local tc=g:GetFirst()
 		if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then

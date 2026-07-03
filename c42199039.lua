@@ -57,7 +57,7 @@ end
 function c42199039.dttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c42199039.filter(chkc) and chkc~=e:GetHandler() end
 	local eq=e:GetHandler():GetEquipTarget()
-	if chk==0 then return eq and not eq:IsHasEffect(EFFECT_DIRECT_ATTACK) and Duel.IsAbleToEnterBP() and Duel.IsExistingTarget(c42199039.filter,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
+	if chk==0 then return eq and not eq:IsHasEffect(EFFECT_DIRECT_ATTACK) and Duel.IsExistingTarget(c42199039.filter,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c42199039.filter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)

@@ -1,5 +1,6 @@
 --大邪神 レシェフ
 function c62420419.initial_effect(c)
+	aux.AddCodeList(c,60369732)
 	c:EnableReviveLimit()
 	--control
 	local e1=Effect.CreateEffect(c)

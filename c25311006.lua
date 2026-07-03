@@ -7,6 +7,7 @@ function c25311006.initial_effect(c)
 	e1:SetCountLimit(1,25311006+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c25311006.condition)
 	e1:SetTarget(c25311006.target)
+	e1:SetOperation(c25311006.operation)
 	c:RegisterEffect(e1)
 	Duel.AddCustomActivityCounter(25311006,ACTIVITY_CHAIN,c25311006.chainfilter)
 end
@@ -42,25 +43,33 @@ function c25311006.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	local op=Duel.SelectOption(tp,table.unpack(ops))
+	e:SetLabel(opval[op])
 	if opval[op]==1 then
 		e:SetCategory(CATEGORY_DRAW)
 		e:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e:SetOperation(c25311006.draw)
 		Duel.SetTargetPlayer(tp)
 		Duel.SetTargetParam(2)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 	elseif opval[op]==2 then
 		e:SetCategory(CATEGORY_CONTROL)
 		e:SetProperty(0)
-		e:SetOperation(c25311006.control)
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE):Filter(Card.IsControlerCanBeChanged,nil)
 		Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 	elseif opval[op]==3 then
 		e:SetCategory(CATEGORY_TODECK)
 		e:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e:SetOperation(c25311006.todeck)
 		Duel.SetTargetPlayer(tp)
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,0,1-tp,LOCATION_HAND)
+	end
+end
+function c25311006.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		c25311006.draw(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		c25311006.control(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==3 then
+		c25311006.todeck(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25311006.draw(e,tp,eg,ep,ev,re,r,rp)

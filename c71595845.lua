@@ -1,5 +1,6 @@
 --人形の幸福
 function c71595845.initial_effect(c)
+	aux.AddCodeList(c,44190146,81587028,75574498)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -64,7 +65,7 @@ end
 function c71595845.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil,TYPE_MONSTER)
-	if Duel.Destroy(g,REASON_EFFECT) then
+	if Duel.Destroy(g,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		g=Duel.SelectMatchingCard(tp,c71595845.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.SendtoGrave(g,REASON_EFFECT)

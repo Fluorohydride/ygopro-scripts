@@ -3,7 +3,7 @@ function c46435376.initial_effect(c)
 	--Discard
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(46435376,0))
-	e1:SetCategory(CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,46435376)
@@ -26,7 +26,7 @@ end
 function c46435376.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 end
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,g:GetCount())
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,g:GetCount())
 end
 function c46435376.hdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)

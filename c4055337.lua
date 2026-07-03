@@ -29,10 +29,10 @@ function c4055337.indval(e,c)
 	return c:IsType(TYPE_LINK)
 end
 function c4055337.atkcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c4055337.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and Duel.IsPlayerAffectedByEffect(tp,90351981)
+	return aux.dscon(e,tp,eg,ep,ev,re,r,rp) and aux.IsCanBeQuickEffect(e:GetHandler(),tp,90351981)
 end
 function c4055337.tgfilter(c)
 	return c:IsFaceup()
@@ -43,7 +43,7 @@ end
 function c4055337.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c4055337.tgfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c4055337.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		 and Duel.IsExistingMatchingCard(c4055337.filter,tp,LOCATION_DECK,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c4055337.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c4055337.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)

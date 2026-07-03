@@ -1,4 +1,4 @@
---Storagepod
+--脚納母艦ブラキオーバー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

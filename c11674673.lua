@@ -2,6 +2,7 @@
 function c11674673.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2,2)
+	aux.AddCodeList(c,34767865)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

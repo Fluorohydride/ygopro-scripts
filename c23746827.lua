@@ -10,6 +10,7 @@ function s.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCondition(s.condition)
 	e1:SetTarget(s.target)
+	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
 end
 function s.filter(c,tp)
@@ -24,8 +25,15 @@ end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local op=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))
-	if op==0 then e:SetOperation(s.endthism1)
-	else e:SetOperation(s.skipnxtm1) end
+	e:SetLabel(op)
+end
+function s.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==0 then
+		s.endthism1(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==1 then
+		s.skipnxtm1(e,tp,eg,ep,ev,re,r,rp)
+	end
 end
 function s.endthism1(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

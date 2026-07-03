@@ -1,5 +1,6 @@
 --サイバー・エンジェル－荼吉尼－
 function c39618799.initial_effect(c)
+	aux.AddCodeList(c,39996157)
 	c:EnableReviveLimit()
 	--to grave
 	local e1=Effect.CreateEffect(c)

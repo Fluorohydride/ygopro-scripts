@@ -20,7 +20,7 @@ function c2511717.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c2511717.filter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x3d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x103d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c2511717.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -36,7 +36,7 @@ function c2511717.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2511717.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(2511717)
+	return c:IsFaceup() and c:IsSetCard(0x103d) and not c:IsCode(2511717)
 end
 function c2511717.atkcon(e)
 	local c=e:GetHandler()

@@ -9,6 +9,7 @@ function s.initial_effect(c)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetCondition(s.condition)
 	e1:SetTarget(s.target)
+	e1:SetOperation(s.operation)
 	c:RegisterEffect(e1)
 end
 function s.cfilter(c)
@@ -37,20 +38,27 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if op==1 then
 		e:SetCategory(0)
 		e:SetProperty(0)
-		e:SetOperation(s.protect)
 	elseif op==2 then
 		e:SetCategory(CATEGORY_CONTROL)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:SetOperation(s.control)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local g=Duel.SelectTarget(tp,s.tfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 	else
 		e:SetCategory(0)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:SetOperation(s.tattack)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,a)
+	end
+end
+function s.operation(e,tp,eg,ep,ev,re,r,rp)
+	local op=e:GetLabel()
+	if op==1 then
+		s.protect(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==2 then
+		s.control(e,tp,eg,ep,ev,re,r,rp)
+	elseif op==3 then
+		s.tattack(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.protect(e,tp,eg,ep,ev,re,r,rp)

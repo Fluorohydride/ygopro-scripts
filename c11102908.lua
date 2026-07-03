@@ -18,7 +18,7 @@ function c11102908.initial_effect(c)
 end
 function c11102908.atkcon(e)
 	local d=Duel.GetAttackTarget()
-	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and d and d:IsSetCard(0x3d)
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and d and d:IsSetCard(0x103d)
 end
 function c11102908.atktg(e,c)
 	return c==Duel.GetAttacker()

@@ -41,7 +41,7 @@ function s.initial_effect(c)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(id,1))
-	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_TO_GRAVE)
 	e5:SetCountLimit(1,id+o)
@@ -102,7 +102,9 @@ function s.rtop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 		and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)>0 then
+			Duel.ConfirmCards(1-tp,tc)
+		end
 	else
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end

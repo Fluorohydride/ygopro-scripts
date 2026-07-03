@@ -59,10 +59,13 @@ function c1992816.oltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c1992816.matfilter,tp,LOCATION_GRAVE,0,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,2,0,0)
 end
+function c1992816.olfilter(c,e)
+	return c:IsRelateToEffect(e) and c:IsCanOverlay()
+end
 function c1992816.olop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c1992816.olfilter,nil,e)
 		if g:GetCount()>0 then
 			Duel.Overlay(c,g)
 		end

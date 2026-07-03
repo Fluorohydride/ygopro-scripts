@@ -6,6 +6,7 @@ function c61728808.initial_effect(c)
 	--(1) Equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(61728808,0))
+	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
@@ -35,11 +36,11 @@ function c61728808.eqfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe1)
 end
 function c61728808.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c61728808.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c61728808.eqfilter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c61728808.filter,tp,LOCATION_MZONE,0,1,nil) end
+		and Duel.IsExistingTarget(c61728808.eqfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c61728808.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c61728808.eqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function c61728808.eqop(e,tp,eg,ep,ev,re,r,rp)

@@ -50,35 +50,40 @@ function c79016563.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.dscon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetMutualLinkedGroupCount()>=2
 end
+function c79016563.tgfilter(c,e)
+	return c:IsFaceup() and c:IsCanBeEffectTarget(e)
+end
+function c79016563.gcheck(g)
+	return g:IsExists(Card.IsAttackAbove,1,nil,1)
+end
 function c79016563.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,2,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,2,2,nil)
+	if chkc then return false end
+	local g=Duel.GetMatchingGroup(c79016563.tgfilter,tp,LOCATION_MZONE,0,nil,e)
+	if chk==0 then return g:CheckSubGroup(c79016563.gcheck,2,2) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	local sg=g:SelectSubGroup(tp,c79016563.gcheck,false,2,2)
+	Duel.SetTargetCard(sg)
 end
 function c79016563.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc1=g:GetFirst()
-	local tc2=g:GetNext()
-	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79016563,2))
-		local sg=g:Select(tp,1,1,nil)
-		local atk=sg:GetFirst():GetAttack()
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetValue(math.ceil(atk/2))
-		if sg:GetFirst():RegisterEffect(e1) then
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e2:SetCode(EFFECT_UPDATE_ATTACK)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			e2:SetValue(math.ceil(atk/2))
-			if sg:GetFirst()==tc1 then tc2:RegisterEffect(e2)
-			else tc1:RegisterEffect(e2) end
-		end
+	local g=Duel.GetTargetsRelateToChain()
+	if g:FilterCount(Card.IsFaceup,nil)<2 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79016563,2))
+	local tc1=g:FilterSelect(tp,Card.IsAttackAbove,1,1,nil,1):GetFirst()
+	local tc2=(g-tc1):GetFirst()
+	local atk=tc1:GetAttack()
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetCode(EFFECT_SET_ATTACK_FINAL)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+	e1:SetValue(math.ceil(atk/2))
+	if tc1:RegisterEffect(e1) then
+		local e2=Effect.CreateEffect(e:GetHandler())
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetCode(EFFECT_UPDATE_ATTACK)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		e2:SetValue(math.ceil(atk/2))
+		tc2:RegisterEffect(e2)
 	end
 end

@@ -27,7 +27,7 @@ function c80159717.exop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 	local ct=e:GetLabel()
 	if g:GetCount()<ct then return end
-	Duel.ConfirmCards(tp,g)
+	Duel.ConfirmCards(tp,g,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=Duel.SelectMatchingCard(tp,Card.IsAbleToGrave,tp,0,LOCATION_EXTRA,ct,ct,nil)
 	Duel.SendtoGrave(sg,REASON_EFFECT)

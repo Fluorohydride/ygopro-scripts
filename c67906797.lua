@@ -19,6 +19,7 @@ function c67906797.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	local tc=g:GetMinGroup(Card.GetSequence):GetFirst()
 	Duel.DisableShuffleCheck()
+	tc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 	if Duel.SendtoHand(tc,tp,REASON_EFFECT)>0 then
 		Duel.ShuffleHand(tp)
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<=1 then return end

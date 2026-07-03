@@ -4,6 +4,7 @@ function c90312154.initial_effect(c)
 	aux.EnableChangeCode(c,56433456,LOCATION_SZONE+LOCATION_GRAVE)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
@@ -25,7 +26,7 @@ function c90312154.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c90312154.filter(c,ft)
-	return (c:IsCode(56433456) or aux.IsCodeListed(c,56433456)) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+	return aux.IsCodeOrListed(c,56433456) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
 		and (ft==nil or ft>0 or c:IsType(TYPE_FIELD))
 end
 function c90312154.target(e,tp,eg,ep,ev,re,r,rp,chk)

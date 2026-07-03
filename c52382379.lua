@@ -15,6 +15,7 @@ function s.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,id+o)
@@ -26,7 +27,7 @@ function s.initial_effect(c)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
 function s.counterfilter(c)
-	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_PENDULUM)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_PENDULUM) and c:IsFaceup()
 end
 function s.rmfilter(c)
 	return c:IsAbleToRemoveAsCost(POS_FACEDOWN) and not c:IsCode(70155677)
