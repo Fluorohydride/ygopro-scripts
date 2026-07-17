@@ -24,7 +24,7 @@ function s.filter2(c,e,tp,mc)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and s.filter1(chkc,e,tp) end
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingTarget(s.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
@@ -36,7 +36,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
+	if not tc:IsRelateToChain() or tc:IsImmuneToEffect(e) then return end
 	if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -49,21 +49,22 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
-		if aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g=Duel.SelectMatchingCard(tp,s.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
-			local sc=g:GetFirst()
-			if sc then
-				sc:SetMaterial(Group.FromCards(tc))
-				Duel.Overlay(sc,Group.FromCards(tc))
-				Duel.SpecialSummonStep(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
-				sc:CompleteProcedure()
-				if c:IsRelateToEffect(e) and c:IsCanOverlay() then
-					c:CancelToGrave()
-					Duel.Overlay(sc,Group.FromCards(c))
-				end
-			end
-		end
 		Duel.SpecialSummonComplete()
+		if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g=Duel.SelectMatchingCard(tp,s.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
+		local sc=g:GetFirst()
+		if sc then
+			Duel.BreakEffect()
+			sc:SetMaterial(Group.FromCards(tc))
+			Duel.Overlay(sc,Group.FromCards(tc))
+			Duel.SpecialSummonStep(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
+			sc:CompleteProcedure()
+			if c:IsRelateToEffect(e) and c:IsCanOverlay() then
+				c:CancelToGrave()
+				Duel.Overlay(sc,Group.FromCards(c))
+			end
+			Duel.SpecialSummonComplete()
+		end
 	end
 end
