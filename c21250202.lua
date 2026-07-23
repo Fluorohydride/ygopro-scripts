@@ -61,7 +61,7 @@ function c21250202.regop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c21250202.penfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x99) and c:IsType(TYPE_PENDULUM) and not c:IsCode(21250202)
-		and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c21250202.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(21250203)~=0

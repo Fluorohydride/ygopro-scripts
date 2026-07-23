@@ -46,7 +46,7 @@ function c33503878.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c33503878.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetCode())
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-		if (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) and tc:IsCanBePlacedOnField(tp,LOCATION_PZONE)
+		if (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) and tc:IsCanBePlacedOnField(tp)
 			and Duel.SelectOption(tp,aux.Stringid(33503878,2),aux.Stringid(33503878,3))==0 then
 			Duel.BreakEffect()
 			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

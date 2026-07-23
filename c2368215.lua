@@ -24,7 +24,7 @@ function c2368215.spfilter(c,e,tp)
 end
 function c2368215.stfilter(c,code,tp)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_DECK)) and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x10ec)
-		and not c:IsCode(code) and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
+		and not c:IsCode(code) and c:IsCanBePlacedOnField(tp)
 end
 function c2368215.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) and c2368215.spfilter(chkc,e,tp) end

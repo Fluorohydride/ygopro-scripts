@@ -58,7 +58,7 @@ function c13179234.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c13179234.psfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x17d) and c:IsType(TYPE_PENDULUM)
-		and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c13179234.pstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))

@@ -129,7 +129,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and s.thfilter(chkc) end
-	if chk==0 then return e:GetHandler():IsCanBePlacedOnField(tp,LOCATION_PZONE) and Duel.IsExistingTarget(s.thfilter,tp,LOCATION_GRAVE,0,1,nil)
+	if chk==0 then return e:GetHandler():IsCanBePlacedOnField(tp) and Duel.IsExistingTarget(s.thfilter,tp,LOCATION_GRAVE,0,1,nil)
 		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,s.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
@@ -140,7 +140,7 @@ function s.thop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND)
 		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
-		and c:IsRelateToEffect(e) and c:IsCanBePlacedOnField(tp,LOCATION_PZONE) then
+		and c:IsRelateToEffect(e) and c:IsCanBePlacedOnField(tp) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

@@ -41,7 +41,7 @@ function c82112494.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82112494.pcfilter(c,tp)
 	return not c:IsCode(82112494) and c:IsSetCard(0x9a) and c:IsType(TYPE_PENDULUM)
-		and c:IsCanBePlacedOnField(tp,LOCATION_SZONE)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c82112494.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

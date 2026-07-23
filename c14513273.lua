@@ -52,7 +52,7 @@ function s.rmlimit(e,c,rp,r,re)
 end
 function s.penfilter(c,tp)
 	return c:IsSetCard(0x10f8) and c:IsType(TYPE_PENDULUM) and not c:IsCode(id)
-		and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDestructable()

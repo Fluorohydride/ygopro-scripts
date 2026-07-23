@@ -64,7 +64,7 @@ function c21949879.sop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c21949879.penfilter(c,tp)
 	return c:IsSetCard(0x9f) and c:IsType(TYPE_PENDULUM) and not c:IsCode(21949879)
-		and c:IsCanBePlacedOnField(tp,LOCATION_PZONE)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c21949879.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
