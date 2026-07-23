@@ -40,7 +40,10 @@ function s.mvcon(e,tp,eg,ep,ev,re,r,rp)
 	else
 		ft2=ft2+1
 	end
-	return ac and ac:IsControler(1-tp) and Duel.GetLocationCount(tp,LOCATION_SZONE)>=ft1
+	return ac and ac:IsControler(1-tp)
+		and (c:IsControler(c:GetOwner()) or c:IsAbleToChangeControler())
+		and (ac:IsControler(ac:GetOwner()) or ac:IsAbleToChangeControler())
+		and Duel.GetLocationCount(tp,LOCATION_SZONE)>=ft1
 		and Duel.GetLocationCount(1-tp,LOCATION_SZONE)>=ft2
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -68,7 +71,8 @@ function s.mvop(e,tp,eg,ep,ev,re,r,rp)
 	if not (Duel.GetLocationCount(tp,LOCATION_SZONE)>=ft1)
 		or not (Duel.GetLocationCount(1-tp,LOCATION_SZONE)>=ft2) then return false end
 	if not ac:IsControler(1-tp) then return false end
-	if ac:IsType(TYPE_MONSTER) and not ac:IsImmuneToEffect(e)
+	if (ac:IsControler(ac:GetOwner()) or ac:IsAbleToChangeControler())
+		and ac:IsType(TYPE_MONSTER) and not ac:IsImmuneToEffect(e)
 		and Duel.MoveToField(ac,tp,ac:GetOwner(),LOCATION_SZONE,POS_FACEUP,true) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetCode(EFFECT_CHANGE_TYPE)
@@ -78,7 +82,8 @@ function s.mvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
 		ac:RegisterEffect(e1)
 	end
-	if not c:IsImmuneToEffect(e)
+	if (c:IsControler(c:GetOwner()) or c:IsAbleToChangeControler())
+		and not c:IsImmuneToEffect(e)
 		and Duel.MoveToField(c,tp,c:GetOwner(),LOCATION_SZONE,POS_FACEUP,true) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetCode(EFFECT_CHANGE_TYPE)

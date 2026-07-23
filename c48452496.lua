@@ -40,7 +40,10 @@ function s.initial_effect(c)
 end
 function s.filter(c,tp)
 	local r=LOCATION_REASON_TOFIELD
-	if not c:IsControler(c:GetOwner()) then r=LOCATION_REASON_CONTROL end
+	if not c:IsControler(c:GetOwner()) then
+		if not c:IsAbleToChangeControler() then return false end
+		r=LOCATION_REASON_CONTROL
+	end
 	return (c:IsLocation(LOCATION_MZONE) or c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(c:GetOwner()))
 		and c:IsFaceupEx() and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
 end
