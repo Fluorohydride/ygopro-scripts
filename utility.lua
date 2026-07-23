@@ -2052,3 +2052,11 @@ function Auxiliary.MulcharmyGlobalCheck(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterFlagEffect(ep,84192580,RESET_PHASE+PHASE_END,0,1)
 	end
 end
+---Check whether a monster is special summoned by Tiki Peace, which should not calculate its original value after leaving the field
+---@param c Card
+---@return boolean
+function Auxiliary.covcheck(c)
+	if c:GetOriginalType()&TYPE_MONSTER~=0 then return true end
+	local se=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
+	return se and se:GetHandler()==c
+end
