@@ -98,13 +98,11 @@ function s.confilter(c)
 	return c:IsSetCard(0x1ce) and c:IsType(TYPE_LINK)
 end
 function s.rmcon1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsPlayerAffectedByEffect(tp,37279096)==nil
-		or not e:GetHandler():IsOriginalSetCard(0x1e6)
+	return not aux.IsCanBeQuickEffect(e:GetHandler(),tp,37279096)
 		or not Duel.IsExistingMatchingCard(s.confilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.rmcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsPlayerAffectedByEffect(tp,37279096)~=nil
-		and e:GetHandler():IsOriginalSetCard(0x1e6)
+	return aux.IsCanBeQuickEffect(e:GetHandler(),tp,37279096)
 		and Duel.IsExistingMatchingCard(s.confilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function s.cfilter2(c)

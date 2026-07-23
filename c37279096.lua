@@ -50,8 +50,3 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
--- Auxiliary.quick_effect_filter=Auxiliary.quick_effect_filter or {}
--- Auxiliary.quick_effect_filter[id]=Auxiliary.ArsMagnaFilter
--- function Auxiliary.ArsMagnaFilter(c)
--- 	return c:IsOriginalSetCard(0x1e6)
--- end

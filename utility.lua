@@ -1969,10 +1969,17 @@ end
 function Auxiliary.GoldenAllureQueenFilter(c)
 	return c:IsOriginalSetCard(0x3)
 end
+---無垢なる芸術－「黄昏の変幻」
+---@param c Card
+---@return boolean
+function Auxiliary.ArsMagnaFilter(c)
+	return c:IsOriginalSetCard(0x1e6)
+end
 --The table of all "become quick effects"
 Auxiliary.quick_effect_filter={}
 Auxiliary.quick_effect_filter[90351981]=Auxiliary.OrcustratedBabelFilter
 Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
+Auxiliary.quick_effect_filter[37279096]=Auxiliary.ArsMagnaFilter
 ---Check if the effect of c becomes a Quick Effect.
 ---@param c Card
 ---@param tp integer
