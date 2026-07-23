@@ -23,7 +23,8 @@ function c25396150.initial_effect(c)
 end
 function c25396150.filter(c,tp,pcon)
 	return ((c:IsFaceup() and c:IsLocation(LOCATION_EXTRA) and c:IsType(TYPE_PENDULUM)) or c:IsLocation(LOCATION_GRAVE))
-		and c:IsSetCard(0x4) and c:IsType(TYPE_MONSTER) and (c:IsAbleToHand() or c:IsType(TYPE_PENDULUM) and pcon)
+		and c:IsSetCard(0x4) and c:IsType(TYPE_MONSTER)
+		and (c:IsAbleToHand() or c:IsType(TYPE_PENDULUM) and pcon and c:IsCanBePlacedOnField(tp))
 end
 function c25396150.activate(e,tp,eg,ep,ev,re,r,rp)
 	local pcon=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
@@ -33,7 +34,7 @@ function c25396150.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
 		if sc then
 			local b1=sc:IsAbleToHand()
-			local b2=sc:IsType(TYPE_PENDULUM) and pcon
+			local b2=sc:IsType(TYPE_PENDULUM) and pcon and sc:IsCanBePlacedOnField(tp)
 			local s=0
 			if b1 and not b2 then
 				s=Duel.SelectOption(tp,aux.Stringid(25396150,1))

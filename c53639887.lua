@@ -35,7 +35,8 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.filter(c,tp)
-	return c:IsSetCard(0x19c) and c:IsType(TYPE_MONSTER) and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp)>0
+	return c:IsSetCard(0x19c) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(c:GetOwner())
+		and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp)>0
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

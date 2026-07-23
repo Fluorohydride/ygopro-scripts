@@ -62,8 +62,8 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.pthfilter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x1d4) and c:IsControler(tp) and c:IsFaceup()
-		and (Duel.CheckLocation(tp,LOCATION_PZONE,0)
-		or Duel.CheckLocation(tp,LOCATION_PZONE,1)
+		and ((Duel.CheckLocation(tp,LOCATION_PZONE,0)
+		or Duel.CheckLocation(tp,LOCATION_PZONE,1)) and c:IsCanBePlacedOnField(tp)
 		or c:IsAbleToHand())
 end
 function s.pthcon(e,tp,eg,ep,ev,re,r,rp)
@@ -83,7 +83,8 @@ function s.pthop(e,tp,eg,ep,ev,re,r,rp)
 		local og=mg:Select(tp,1,1,nil)
 		Duel.HintSelection(og)
 		local tc=og:GetFirst()
-		local b1=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
+		local b1=(Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
+			and tc:IsCanBePlacedOnField(tp)
 		local b2=tc:IsAbleToHand()
 		local op=aux.SelectFromOptions(tp,
 			{b1,aux.Stringid(id,3),1},

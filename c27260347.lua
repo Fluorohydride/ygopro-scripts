@@ -100,7 +100,7 @@ function s.mvcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.filter2(c,tp)
 	return not c:IsCode(id) and c:IsAttribute(ATTRIBUTE_FIRE)
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and c:IsCanBePlacedOnField(c:GetOwner()) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 end
 function s.mvtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and s.filter2(chkc,tp) end

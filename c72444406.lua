@@ -51,6 +51,7 @@ function s.filter(c,tp)
 		r=LOCATION_REASON_CONTROL
 	end
 	return (c:IsType(TYPE_MONSTER) or c:IsLocation(LOCATION_MZONE)) and c:IsFaceupEx()
+		and c:IsCanBePlacedOnField(c:GetOwner())
 		and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
