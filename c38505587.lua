@@ -83,7 +83,7 @@ function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter2),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,e:GetHandler(),e,tp)
 	if g:GetCount()>0 then
-		if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP) then
+		if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then
 			Duel.Damage(1-tp,1000,REASON_EFFECT)
 		end
 	end

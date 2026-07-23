@@ -36,7 +36,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),PLAYER_ALL,LOCATION_GRAVE)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetTargetsRelateToChain()
+	local sg=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(),nil)
 	Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 end
 function s.spfilter(c,e,tp)

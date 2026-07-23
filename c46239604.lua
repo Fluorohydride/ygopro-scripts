@@ -29,7 +29,7 @@ function c46239604.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c46239604.filter(c)
-	return c:IsSetCard(0x12) and not c:IsCode(46239604) and c:IsAbleToHand()
+	return c:IsSetCard(0x12) and c:IsType(TYPE_MONSTER) and not c:IsCode(46239604) and c:IsAbleToHand()
 end
 function c46239604.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46239604.filter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,nil) end

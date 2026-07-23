@@ -35,7 +35,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		or Duel.IsExistingMatchingCard(s.lvfilter2,tp,LOCATION_MZONE,0,1,nil) end
 end
 function s.lvfilter(c)
-	return c:IsFaceup() and c:IsLevelAbove(3)
+	return c:IsFaceup() and c:IsLevelAbove(2)
 end
 function s.lvfilter2(c)
 	return c:IsFaceup() and c:IsLevelAbove(1)

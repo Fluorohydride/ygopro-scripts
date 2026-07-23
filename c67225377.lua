@@ -26,7 +26,7 @@ function c67225377.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c67225377.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return not (r==REASON_RULE)
+	return r~=REASON_RULE
 end
 function c67225377.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsPublic() end

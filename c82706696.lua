@@ -92,11 +92,9 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(hc,REASON_RULE)
 		end
 		Duel.ShuffleDeck(tp)
-		if tc:IsRelateToChain() and tc:IsOnField() then
-			Duel.BreakEffect()
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
-	else
-		Duel.ConfirmDecktop(tp,dct)
+	end
+	if tc:IsRelateToChain() and tc:IsOnField() then
+		Duel.BreakEffect()
+		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

@@ -56,7 +56,7 @@ function s.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function s.drop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetTargetsRelateToChain()
+	local tg=Duel.GetTargetsRelateToChain():Filter(aux.NecroValleyFilter(),nil)
 	if #tg>0 then
 		local ct=aux.PlaceCardsOnDeckBottom(tp,tg)
 		if ct>0 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then

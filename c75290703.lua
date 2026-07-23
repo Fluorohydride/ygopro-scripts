@@ -108,7 +108,7 @@ end
 function c75290703.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP) and tc then
+	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 and tc then
 		Duel.BreakEffect()
 		Duel.Equip(tp,tc,c,false)
 		local e1=Effect.CreateEffect(c)
