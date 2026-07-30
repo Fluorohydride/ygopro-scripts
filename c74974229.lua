@@ -30,6 +30,9 @@ function c74974229.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c74974229.counter_add_list={0x100e}
+c74974229.mentioned_counter={
+	[0x100e]=true,
+}
 function c74974229.costfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsLevelAbove(1) and c:IsDiscardable()
 end

@@ -43,6 +43,9 @@ function c94243005.initial_effect(c)
 	e4:SetLabelObject(e0)
 	c:RegisterEffect(e4)
 end
+c94243005.mentioned_counter={
+	[0x13]=true,
+}
 function c94243005.ctfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsPreviousLocation(0x80+LOCATION_SZONE) and not c:IsType(TYPE_TOKEN)
 end

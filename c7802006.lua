@@ -8,6 +8,9 @@ function c7802006.initial_effect(c)
 	e1:SetOperation(c7802006.operation)
 	c:RegisterEffect(e1)
 end
+c7802006.mentioned_counter={
+	[0x1]=true,
+}
 function c7802006.filter(c)
 	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end

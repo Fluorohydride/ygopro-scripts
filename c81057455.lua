@@ -33,6 +33,9 @@ function c81057455.initial_effect(c)
 	e3:SetOperation(c81057455.drop)
 	c:RegisterEffect(e3)
 end
+c81057455.mentioned_counter={
+	[0x37]=true,
+}
 function c81057455.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0x37)<3
 end

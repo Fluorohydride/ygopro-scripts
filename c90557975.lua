@@ -11,6 +11,9 @@ function c90557975.initial_effect(c)
 	e1:SetOperation(c90557975.damop)
 	c:RegisterEffect(e1)
 end
+c90557975.mentioned_counter={
+	[0x1019]=true,
+}
 function c90557975.filter(c)
 	return c:GetCounter(0x1019)>0
 end

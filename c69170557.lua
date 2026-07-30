@@ -25,6 +25,9 @@ function c69170557.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 aux.xyz_number[69170557]=40
+c69170557.mentioned_counter={
+	[0x1024]=true,
+}
 function c69170557.desfilter(c)
 	return c:GetCounter(0x1024)~=0
 end

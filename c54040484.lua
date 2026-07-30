@@ -28,6 +28,9 @@ function c54040484.initial_effect(c)
 	e3:SetOperation(c54040484.repop)
 	c:RegisterEffect(e3)
 end
+c54040484.mentioned_counter={
+	[0x57]=true,
+}
 function c54040484.countcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler())
 end

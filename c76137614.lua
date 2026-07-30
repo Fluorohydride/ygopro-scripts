@@ -12,6 +12,9 @@ function c76137614.initial_effect(c)
 	e1:SetOperation(c76137614.thop)
 	c:RegisterEffect(e1)
 end
+c76137614.mentioned_counter={
+	[0x1]=true,
+}
 function c76137614.filter(c)
 	return c:IsType(TYPE_SPELL) and c:IsFaceup() and c:IsAbleToHand()
 end

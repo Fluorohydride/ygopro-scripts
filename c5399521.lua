@@ -45,6 +45,9 @@ function c5399521.initial_effect(c)
 	e7:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e7)
 end
+c5399521.mentioned_counter={
+	[0x35]=true,
+}
 function c5399521.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

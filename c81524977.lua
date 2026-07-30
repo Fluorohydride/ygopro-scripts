@@ -34,6 +34,9 @@ function c81524977.initial_effect(c)
 	e5:SetOperation(c81524977.damop)
 	c:RegisterEffect(e5)
 end
+c81524977.mentioned_counter={
+	[0x20]=true,
+}
 function c81524977.ctfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)
 end

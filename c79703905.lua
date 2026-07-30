@@ -33,6 +33,9 @@ function c79703905.initial_effect(c)
 	e4:SetOperation(c79703905.hdop)
 	c:RegisterEffect(e4)
 end
+c79703905.mentioned_counter={
+	[0x1019]=true,
+}
 function c79703905.sdcon(e)
 	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end

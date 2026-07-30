@@ -22,6 +22,9 @@ function c7180418.initial_effect(c)
 	e4:SetOperation(c7180418.ccost)
 	c:RegisterEffect(e4)
 end
+c7180418.mentioned_counter={
+	[0x1]=true,
+}
 function c7180418.atklimit(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

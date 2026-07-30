@@ -22,6 +22,9 @@ function c91231901.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c91231901.counter_add_list={0x100e}
+c91231901.mentioned_counter={
+	[0x100e]=true,
+}
 function c91231901.filter(c)
 	return c:GetLevel()>0 and c:IsSetCard(0xc) and c:IsAbleToGrave()
 end

@@ -33,6 +33,9 @@ function c61668670.initial_effect(c)
 	e4:SetCode(EFFECT_PIERCE)
 	c:RegisterEffect(e4)
 end
+c61668670.mentioned_counter={
+	[0x64]=true,
+}
 function c61668670.filter(c,e,tp,zone)
 	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsType(TYPE_LINK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end

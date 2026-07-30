@@ -28,6 +28,9 @@ function c4404099.initial_effect(c)
 	e2:SetLabelObject(e0)
 	c:RegisterEffect(e2)
 end
+c4404099.mentioned_counter={
+	[0x23]=true,
+}
 function c4404099.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x23)

@@ -578,6 +578,9 @@ function Auxiliary.IsCounterAdded(c,counter)
 	end
 	return false
 end
+function Auxiliary.HasMentionedCounter(c,counter)
+	return c.mentioned_counter and c.mentioned_counter[counter] or false
+end
 function Auxiliary.IsTypeInText(c,type)
 	return c.has_text_type and type&c.has_text_type==type
 end

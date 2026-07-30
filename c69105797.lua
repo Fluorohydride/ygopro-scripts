@@ -20,6 +20,9 @@ function c69105797.initial_effect(c)
 	e2:SetOperation(c69105797.cop)
 	c:RegisterEffect(e2)
 end
+c69105797.mentioned_counter={
+	[0x1041]=true,
+}
 function c69105797.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end

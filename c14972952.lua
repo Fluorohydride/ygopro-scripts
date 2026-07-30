@@ -26,6 +26,9 @@ function s.initial_effect(c)
 	e2:SetOperation(s.tdop)
 	c:RegisterEffect(e2)
 end
+s.mentioned_counter={
+	[0x6a]=true,
+}
 function s.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1a3) and c:IsType(TYPE_LINK)
 end

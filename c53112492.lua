@@ -11,6 +11,9 @@ function c53112492.initial_effect(c)
 	e1:SetOperation(c53112492.activate)
 	c:RegisterEffect(e1)
 end
+c53112492.mentioned_counter={
+	[0x1]=true,
+}
 function c53112492.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end

@@ -37,6 +37,9 @@ function c88901771.initial_effect(c)
 	e3:SetOperation(c88901771.ctop)
 	c:RegisterEffect(e3)
 end
+c88901771.mentioned_counter={
+	[0x1]=true,
+}
 function c88901771.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,1)

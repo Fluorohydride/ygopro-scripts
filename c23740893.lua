@@ -20,6 +20,9 @@ function c23740893.initial_effect(c)
 	e2:SetOperation(c23740893.sumop)
 	c:RegisterEffect(e2)
 end
+c23740893.mentioned_counter={
+	[0x33]=true,
+}
 function c23740893.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)

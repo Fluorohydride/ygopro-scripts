@@ -29,6 +29,9 @@ function c27548199.initial_effect(c)
 	e2:SetOperation(c27548199.disop)
 	c:RegisterEffect(e2)
 end
+c27548199.mentioned_counter={
+	[0x4b]=true,
+}
 function c27548199.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end

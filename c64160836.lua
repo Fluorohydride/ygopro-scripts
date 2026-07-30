@@ -22,6 +22,9 @@ function c64160836.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c64160836.counter_add_list={0x100e}
+c64160836.mentioned_counter={
+	[0x100e]=true,
+}
 function c64160836.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do

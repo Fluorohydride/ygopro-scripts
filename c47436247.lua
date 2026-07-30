@@ -28,6 +28,9 @@ function c47436247.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c47436247.counter_add_list={0x3}
+c47436247.mentioned_counter={
+	[0x3]=true,
+}
 function c47436247.ctfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x103d)
 end

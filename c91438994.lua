@@ -40,6 +40,9 @@ function c91438994.initial_effect(c)
 	e5:SetLabelObject(e4)
 	c:RegisterEffect(e5)
 end
+c91438994.mentioned_counter={
+	[0xa]=true,
+}
 function c91438994.filter1(c,tp)
 	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end

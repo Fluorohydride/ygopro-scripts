@@ -47,6 +47,9 @@ function c67547370.initial_effect(c)
 	e5:SetOperation(c67547370.atkop)
 	c:RegisterEffect(e5)
 end
+c67547370.mentioned_counter={
+	[0x1039]=true,
+}
 function c67547370.cfilter(c,tp)
 	return c:IsFaceup() and c:GetCounter(0x1039)==10
 		and Duel.GetMZoneCount(tp,c)>0

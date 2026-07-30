@@ -28,6 +28,9 @@ function s.initial_effect(c)
 	e3:SetOperation(s.effop)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x1041]=true,
+}
 function s.thfilter(c)
 	return not c:IsCode(id) and c:IsSetCard(0xf3) and c:IsAbleToHand()
 end

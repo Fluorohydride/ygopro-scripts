@@ -31,6 +31,9 @@ function s.initial_effect(c)
 	e4:SetOperation(s.tgop)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x4c]=true,
+}
 function s.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanAddCounter(0x4c,1) end
 end

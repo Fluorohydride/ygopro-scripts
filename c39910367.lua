@@ -41,6 +41,9 @@ function c39910367.initial_effect(c)
 	e6:SetOperation(c39910367.addop2)
 	c:RegisterEffect(e6)
 end
+c39910367.mentioned_counter={
+	[0x1]=true,
+}
 function c39910367.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=re:GetHandler()
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c~=e:GetHandler() then

@@ -48,6 +48,9 @@ function c5973663.initial_effect(c)
 	e5:SetOperation(c5973663.op3)
 	c:RegisterEffect(e5)
 end
+c5973663.mentioned_counter={
+	[0x18]=true,
+}
 function c5973663.ctfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousRaceOnField(),RACE_PLANT)~=0
 end

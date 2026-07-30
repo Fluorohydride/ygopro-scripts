@@ -59,6 +59,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 s.counter_add_list={0x104d}
+s.mentioned_counter={
+	[0x104d]=true,
+}
 function s.ctfilter(c)
 	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end

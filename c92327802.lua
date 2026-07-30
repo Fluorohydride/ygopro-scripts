@@ -27,6 +27,9 @@ function c92327802.initial_effect(c)
 	e2:SetOperation(c92327802.op)
 	c:RegisterEffect(e2)
 end
+c92327802.mentioned_counter={
+	[0x43]=true,
+}
 function c92327802.damval(e,re,val,r,rp,rc)
 	local c=e:GetHandler()
 	if bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetOwnerPlayer()

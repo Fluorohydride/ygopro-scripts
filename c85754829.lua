@@ -18,6 +18,9 @@ function c85754829.initial_effect(c)
 	e2:SetValue(c85754829.atkval)
 	c:RegisterEffect(e2)
 end
+c85754829.mentioned_counter={
+	[0xf]=true,
+}
 function c85754829.atkval(e,c)
 	return c:GetCounter(0xf)*300
 end

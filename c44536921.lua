@@ -25,6 +25,9 @@ function c44536921.initial_effect(c)
 	e2:SetOperation(c44536921.desop)
 	c:RegisterEffect(e2)
 end
+c44536921.mentioned_counter={
+	[0x1041]=true,
+}
 function c44536921.costfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x10f3) and c:IsAbleToGraveAsCost()
 end

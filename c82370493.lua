@@ -37,6 +37,9 @@ function s.initial_effect(c)
 	e3:SetOperation(s.desop)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x1041]=true,
+}
 function s.hspfilter1(c,tp,fc,g)
 	return c:IsFusionSetCard(0x10f3)
 		and c:IsControler(tp) and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)

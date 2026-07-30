@@ -20,6 +20,9 @@ function c24661486.initial_effect(c)
 	e2:SetValue(c24661486.atkval)
 	c:RegisterEffect(e2)
 end
+c24661486.mentioned_counter={
+	[0x1015]=true,
+}
 function c24661486.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)

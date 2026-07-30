@@ -23,6 +23,9 @@ function c26308721.initial_effect(c)
 	e2:SetOperation(c26308721.ctop2)
 	c:RegisterEffect(e2)
 end
+c26308721.mentioned_counter={
+	[0x1041]=true,
+}
 function c26308721.ctcon1(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end

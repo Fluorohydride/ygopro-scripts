@@ -35,6 +35,9 @@ function c48015771.initial_effect(c)
 	e4:SetOperation(c48015771.tgop)
 	c:RegisterEffect(e4)
 end
+c48015771.mentioned_counter={
+	[0x4c]=true,
+}
 function c48015771.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x4c,1)
 end

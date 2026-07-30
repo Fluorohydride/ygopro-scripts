@@ -72,6 +72,9 @@ function s.initial_effect(c)
 	e7:SetOperation(s.op5)
 	c:RegisterEffect(e7)
 end
+s.mentioned_counter={
+	[0x25]=true,
+}
 function s.cfilter(c)
 	return c:IsSetCard(0x1a5) or aux.IsCodeListed(c,78371393)
 end

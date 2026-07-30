@@ -28,6 +28,9 @@ function c21984400.initial_effect(c)
 	e3:SetOperation(c21984400.spop2)
 	c:RegisterEffect(e3)
 end
+c21984400.mentioned_counter={
+	[0x1]=true,
+}
 function c21984400.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetLabel()
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,ct,REASON_COST) end

@@ -47,6 +47,9 @@ function c67234805.initial_effect(c)
 	e5:SetOperation(c67234805.rmop)
 	c:RegisterEffect(e5)
 end
+c67234805.mentioned_counter={
+	[0x16]=true,
+}
 function c67234805.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsActiveType(TYPE_MONSTER) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x16,1)

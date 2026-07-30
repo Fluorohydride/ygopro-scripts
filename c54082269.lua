@@ -49,6 +49,9 @@ function c54082269.initial_effect(c)
 	e5:SetOperation(c54082269.desop)
 	c:RegisterEffect(e5)
 end
+c54082269.mentioned_counter={
+	[0x1002]=true,
+}
 function c54082269.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
 end

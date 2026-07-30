@@ -29,6 +29,9 @@ function c22011689.initial_effect(c)
 	e3:SetOperation(c22011689.operation)
 	c:RegisterEffect(e3)
 end
+c22011689.mentioned_counter={
+	[0x1041]=true,
+}
 function c22011689.atkval(e,c)
 	return Duel.GetCounter(0,1,1,0x1041)*200
 end

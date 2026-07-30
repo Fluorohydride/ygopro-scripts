@@ -22,6 +22,9 @@ function c38606913.initial_effect(c)
 	e2:SetOperation(c38606913.damop)
 	c:RegisterEffect(e2)
 end
+c38606913.mentioned_counter={
+	[0x1038]=true,
+}
 function c38606913.ctfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe3)
 end

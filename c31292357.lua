@@ -28,6 +28,9 @@ function c31292357.initial_effect(c)
 	e3:SetOperation(c31292357.atkop)
 	c:RegisterEffect(e3)
 end
+c31292357.mentioned_counter={
+	[0x36]=true,
+}
 function c31292357.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()

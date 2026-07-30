@@ -30,6 +30,9 @@ function c99011763.initial_effect(c)
 	e3:SetOperation(c99011763.ctop)
 	c:RegisterEffect(e3)
 end
+c99011763.mentioned_counter={
+	[0x1049]=true,
+}
 function c99011763.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and e:GetLabel()==1
 end

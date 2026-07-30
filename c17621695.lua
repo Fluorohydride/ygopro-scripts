@@ -43,6 +43,9 @@ function s.initial_effect(c)
 	e4:SetOperation(s.damop)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x71]=true,
+}
 function s.thfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1d4) and c:GetOriginalType()&TYPE_PENDULUM~=0
 end

@@ -21,6 +21,9 @@ function c58012107.initial_effect(c)
 	e3:SetTarget(c58012107.atktg)
 	c:RegisterEffect(e3)
 end
+c58012107.mentioned_counter={
+	[0x100e]=true,
+}
 function c58012107.potg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAttackPos() end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)

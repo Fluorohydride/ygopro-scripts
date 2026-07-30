@@ -28,6 +28,9 @@ function c60258960.initial_effect(c)
 	e2:SetOperation(c60258960.desop)
 	c:RegisterEffect(e2)
 end
+c60258960.mentioned_counter={
+	[0x1]=true,
+}
 function c60258960.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,1)

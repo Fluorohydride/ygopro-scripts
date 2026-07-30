@@ -36,6 +36,9 @@ function c83269557.initial_effect(c)
 	e4:SetOperation(c83269557.operation2)
 	c:RegisterEffect(e4)
 end
+c83269557.mentioned_counter={
+	[0x1]=true,
+}
 function c83269557.atkval(e,c)
 	return c:GetCounter(0x1)*300
 end

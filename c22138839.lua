@@ -19,6 +19,9 @@ function c22138839.initial_effect(c)
 	e2:SetOperation(c22138839.cop)
 	c:RegisterEffect(e2)
 end
+c22138839.mentioned_counter={
+	[0x1041]=true,
+}
 function c22138839.rfilter(c)
 	return c:GetCounter(0x1041)>0 and c:IsReleasable(REASON_SPSUMMON)
 end

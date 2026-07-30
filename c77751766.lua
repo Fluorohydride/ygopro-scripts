@@ -31,6 +31,9 @@ function s.initial_effect(c)
 	e4:SetCondition(s.ccon2)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x6d]=true,
+}
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsCanAddCounter(tp,0x6d,5,c) end

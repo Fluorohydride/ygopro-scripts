@@ -27,6 +27,9 @@ function c17896384.initial_effect(c)
 	e3:SetOperation(c17896384.drop)
 	c:RegisterEffect(e3)
 end
+c17896384.mentioned_counter={
+	[0x1]=true,
+}
 function c17896384.ctfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousRaceOnField(),RACE_SPELLCASTER)~=0
 end
