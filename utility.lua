@@ -1972,10 +1972,17 @@ end
 function Auxiliary.GoldenAllureQueenFilter(c)
 	return c:IsOriginalSetCard(0x3)
 end
+---無垢なる芸術－「黄昏の変幻」
+---@param c Card
+---@return boolean
+function Auxiliary.ArsMagnaFilter(c)
+	return c:IsOriginalSetCard(0x1e6)
+end
 --The table of all "become quick effects"
 Auxiliary.quick_effect_filter={}
 Auxiliary.quick_effect_filter[90351981]=Auxiliary.OrcustratedBabelFilter
 Auxiliary.quick_effect_filter[95937545]=Auxiliary.GoldenAllureQueenFilter
+Auxiliary.quick_effect_filter[37279096]=Auxiliary.ArsMagnaFilter
 ---Check if the effect of c becomes a Quick Effect.
 ---@param c Card
 ---@param tp integer
@@ -2054,4 +2061,12 @@ function Auxiliary.MulcharmyGlobalCheck(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x1b2) then
 		Duel.RegisterFlagEffect(ep,84192580,RESET_PHASE+PHASE_END,0,1)
 	end
+end
+---Check whether a monster is special summoned by Tiki Peace, which should not calculate its original value after leaving the field
+---@param c Card
+---@return boolean
+function Auxiliary.covcheck(c)
+	if c:GetOriginalType()&TYPE_MONSTER~=0 then return true end
+	local se=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
+	return se and se:GetHandler()==c
 end
