@@ -1,4 +1,4 @@
---Cursed Copycat Noble Arms
+--天魔伏聖剣
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddEquipSpellEffect(c,true,true,Card.IsFaceup,nil)

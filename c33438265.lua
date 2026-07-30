@@ -1,4 +1,4 @@
---R.B. Ga10 Cutter
+--R.B.GA１０カッター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

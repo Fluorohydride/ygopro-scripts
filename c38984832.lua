@@ -1,4 +1,4 @@
---GMX 55th Experiment Report
+--第５５次GMX試験報告
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion summon

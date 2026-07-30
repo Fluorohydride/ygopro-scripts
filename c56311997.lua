@@ -1,4 +1,4 @@
---GMX - ALLOS
+--GMX－ALLOS
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion procedure

@@ -1,4 +1,4 @@
---Great Mammoth of the Netherworld
+--冥界の魔象
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)

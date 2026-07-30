@@ -1,4 +1,4 @@
---R.B. Funk Dock
+--R.B.ファンク・ドック
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

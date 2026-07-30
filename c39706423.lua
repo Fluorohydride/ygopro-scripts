@@ -1,4 +1,4 @@
---GMX Suppression Squad
+--GMX鎮圧部隊アプト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

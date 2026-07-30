@@ -1,4 +1,4 @@
---GMX - COMPREX
+--GMX－COMPREX
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material

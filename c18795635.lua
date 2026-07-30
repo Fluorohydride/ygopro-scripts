@@ -1,4 +1,4 @@
---GMX Applied Experiment #55
+--第５５次GMX応用試験
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

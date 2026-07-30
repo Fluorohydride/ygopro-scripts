@@ -1,4 +1,4 @@
---R.B. VALCan Booster
+--R.B.バルカンブースター
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

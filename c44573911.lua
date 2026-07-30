@@ -1,4 +1,4 @@
---R.B. Ga10 Pile Bunker
+--R.B.GA１０パイルバンカー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,32216688)

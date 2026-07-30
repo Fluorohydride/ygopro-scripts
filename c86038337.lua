@@ -1,4 +1,4 @@
---Faisan, Hunting Scout of the Deep Forest
+--密林の狩猟者フザン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--material

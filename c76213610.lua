@@ -1,4 +1,4 @@
---Officiator of Doom Samuel
+--死宰 サムエル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

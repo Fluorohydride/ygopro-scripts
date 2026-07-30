@@ -1,4 +1,4 @@
---ASHLAN U1000
+--ASHLAN－U１０００型
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Link Summon

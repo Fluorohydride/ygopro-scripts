@@ -1,4 +1,4 @@
---Anti-GMX Final Experiment
+--A－GMX最終検証
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate

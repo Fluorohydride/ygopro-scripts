@@ -1,4 +1,4 @@
---GMX Chairman Kimridge
+--GMX主任教授キンリッジ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,18795635)

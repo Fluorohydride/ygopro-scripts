@@ -1,4 +1,4 @@
---Genia of the Ring
+--指環の精霊ジーニャ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

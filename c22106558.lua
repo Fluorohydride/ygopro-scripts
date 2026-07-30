@@ -1,4 +1,4 @@
---Mechanical Mechanic
+--機叡のメカチューナー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--lv

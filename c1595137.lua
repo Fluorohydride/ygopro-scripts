@@ -1,4 +1,4 @@
---Evolved Daneen
+--暁世竜ダニアン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion material

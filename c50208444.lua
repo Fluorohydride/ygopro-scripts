@@ -1,4 +1,4 @@
---精霊世妃ドリアード
+--精霊世妃 ドリアード
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

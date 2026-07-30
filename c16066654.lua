@@ -1,4 +1,4 @@
---R.B. Operation Test
+--R.B.オペレーション・テスト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

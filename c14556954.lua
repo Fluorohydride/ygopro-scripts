@@ -1,4 +1,4 @@
---VIP Whale
+--豪回遊鯨 VIPホエール
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableCounterPermit(0x75)

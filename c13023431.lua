@@ -1,4 +1,4 @@
---Chevreuil, Hunting Scout of the Deep Forest
+--密林の狩猟者シュヴルイユ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--material

@@ -1,4 +1,4 @@
---Rustin Mammoth
+--ラスティン・マンモス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

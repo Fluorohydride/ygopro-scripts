@@ -1,4 +1,4 @@
---Flux Ochsenfeld
+--フラックス・オクセンフェルト
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion procedure

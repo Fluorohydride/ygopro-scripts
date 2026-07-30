@@ -1,4 +1,4 @@
---R.B. Shepherd's Crook
+--R.B.シェパード・クルーク
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

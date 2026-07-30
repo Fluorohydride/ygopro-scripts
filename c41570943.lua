@@ -1,4 +1,4 @@
---蒼海竜神ーネオダイダロス・レイジ
+--蒼海竜神－ネオダイダロス・レイジ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,38391684,22702055)

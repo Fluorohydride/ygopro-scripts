@@ -1,4 +1,4 @@
---GMX Researcher Selande
+--GMX研究員セラン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

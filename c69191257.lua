@@ -1,4 +1,4 @@
---Jade Dragon Mech
+--翠鋁の機竜
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Synchro summon

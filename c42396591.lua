@@ -1,4 +1,4 @@
---CNo.104 仮面魔踏士 アンブラル・ヴィクトリー
+--CNo.104 仮面魔踏士アンブラル・ヴィクトリー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

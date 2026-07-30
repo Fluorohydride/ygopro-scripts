@@ -1,4 +1,4 @@
---GMX Lab #5
+--旧GMX第５研究所
 local s,id,o=GetID()
 function s.initial_effect(c)
 	local e0=Effect.CreateEffect(c)

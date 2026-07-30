@@ -1,4 +1,4 @@
---GMX Partner Selandea
+--GMX同絆者セランディア
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon from hand

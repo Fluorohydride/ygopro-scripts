@@ -1,4 +1,4 @@
---Hunting Horn
+--ハンティングホーン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

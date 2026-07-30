@@ -1,4 +1,4 @@
---Storm-Bane Dragon Destorbim
+--嵐忌竜デストゥビム
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Synchro summon

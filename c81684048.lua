@@ -1,4 +1,4 @@
---Pumpking the King of Grave Ghosts
+--墓場のゴースト王－パンプキング－
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)

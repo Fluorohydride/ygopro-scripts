@@ -1,4 +1,4 @@
---Rain of Frogs
+--悪鵺死ノ雨
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

@@ -1,4 +1,4 @@
---真海竜騎ーダイダロス
+--真海竜騎－ダイダロス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,38391684,22702055)

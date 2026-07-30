@@ -1,4 +1,4 @@
---R.B. The Brute Blues
+--R.B.ブルート・ブルース
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--link summon

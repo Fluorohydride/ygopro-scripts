@@ -1,4 +1,4 @@
---No.104 仮面魔踏士 シャイニングＶ
+--No.104 仮面魔踏士シャイニングV
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

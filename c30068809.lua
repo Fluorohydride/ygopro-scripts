@@ -1,4 +1,4 @@
---魔救の合緣
+--魔救の合縁
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

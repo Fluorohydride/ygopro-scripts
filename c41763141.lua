@@ -1,4 +1,4 @@
---Fata Dragna
+--蜃欺龍
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

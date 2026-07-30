@@ -1,4 +1,4 @@
---Deadly Zombie Breath
+--朽ち果ての吐息
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)

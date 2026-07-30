@@ -1,4 +1,4 @@
---Shipping Archfiend
+--カップリング・デーモン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--change race/attribute

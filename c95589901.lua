@@ -1,4 +1,4 @@
---Mischief of the Wolves
+--大狼のいたずら
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
