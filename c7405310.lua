@@ -11,7 +11,7 @@ end
 function c7405310.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,1,e:GetHandler())
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
 	local lv=Duel.AnnounceLevel(tp)
 	e:SetLabel(lv)
 end
