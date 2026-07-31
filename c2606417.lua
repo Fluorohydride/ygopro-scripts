@@ -71,7 +71,7 @@ function s.ctop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.mfilter(c)
 	return c:IsOnField() and c:IsFaceup() and c:IsType(TYPE_MONSTER)
-		and (not c:GetAttack()==0 or not c:IsDisabled())
+		and (c:GetAttack()~=0 or not c:IsDisabled())
 end
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
