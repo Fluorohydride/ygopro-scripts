@@ -41,6 +41,10 @@ function s.fusion_spell_matfilter(c)
 	return true
 end
 
+function s.fcheck(tp,mg,fc,mg_all,e)
+	return mg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
+end
+
 function s.rfilter(c,e,tp)
 	return c:IsSetCard(0x165)
 end
@@ -62,7 +66,8 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
 			fusfilter=s.fusfilter,
 			pre_select_mat_location=s.pre_select_mat_location,
-			fusion_spell_matfilter=s.fusion_spell_matfilter
+			fusion_spell_matfilter=s.fusion_spell_matfilter,
+			additional_fcheck=s.fcheck
 		})
 		if fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0) then
 			return true
@@ -88,7 +93,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		fusfilter=s.fusfilter,
 		matfilter=aux.NecroValleyFilter(),
 		pre_select_mat_location=s.pre_select_mat_location,
-		fusion_spell_matfilter=s.fusion_spell_matfilter
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
+		additional_fcheck=s.fcheck
 	})
 	local can_fusion=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 	local rmg1=Duel.GetRitualMaterial(tp)
