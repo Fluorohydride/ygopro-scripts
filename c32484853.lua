@@ -31,7 +31,7 @@ function s.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,s.costfilter,tp,LOCATION_HAND,0,1,1,c)
 	g:AddCard(c)
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_COST+REASON_DISCARD)
 end
 function s.desfilter(c,e,tp)
 	return c:IsSummonPlayer(1-tp) and (not e or c:IsRelateToEffect(e))
