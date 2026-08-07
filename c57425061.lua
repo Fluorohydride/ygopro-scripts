@@ -91,6 +91,7 @@ function c57425061.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 		local sg=sg1:Clone()
 		if sg2 then sg:Merge(sg2) end
+		::cancel::
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
@@ -103,6 +104,7 @@ function c57425061.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			aux.FCheckAdditional=nil
 			aux.GCheckAdditional=nil
+			if #mat1==0 then mg1:AddCard(tc) goto cancel end
 			tc:SetMaterial(mat1)
 			local rg=mat1:Filter(Card.IsLocation,nil,LOCATION_SZONE)
 			mat1:Sub(rg)
@@ -112,6 +114,7 @@ function c57425061.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
+			if #mat2<2 then goto cancel end
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
