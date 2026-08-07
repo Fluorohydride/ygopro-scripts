@@ -20,7 +20,8 @@ function c564541.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c564541.dccon(e,c)
-	return c:IsRace(RACE_DRAGON)
+	local ec=e:GetHandler()
+	return c:IsRace(RACE_DRAGON) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
 function c564541.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and not c:IsRace(RACE_DRAGON)

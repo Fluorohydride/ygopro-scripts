@@ -14,7 +14,8 @@ function c42029847.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c42029847.condition(e,c)
-	return c:IsRace(RACE_FAIRY)
+	local ec=e:GetHandler()
+	return c:IsRace(RACE_FAIRY) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
 function c42029847.regop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,42029847)~=0 then return end
