@@ -28,7 +28,7 @@ function c9024198.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c9024198.setfilter(c)
-	return c:IsSetCard(0xaf) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsSetCard(0xaf) and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function c9024198.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c9024198.setfilter,tp,LOCATION_DECK,0,nil)

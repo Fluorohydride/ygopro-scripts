@@ -23,7 +23,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.stfilter(c,tp)
-	return c:IsCode(3055018) and not c:IsForbidden() and (c:CheckUniqueOnField(tp) or c:CheckUniqueOnField(1-tp))
+	return c:IsCode(3055018) and (c:IsCanBePlacedOnField(tp) or c:IsCanBePlacedOnField(1-tp))
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,nil,tp)
@@ -32,7 +32,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=Duel.SelectMatchingCard(tp,s.stfilter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 		if tc then
 			local p=0
-			if tc:CheckUniqueOnField(tp) and (not tc:CheckUniqueOnField(1-tp) or Duel.SelectYesNo(tp,aux.Stringid(id,3))) then
+			if tc:IsCanBePlacedOnField(tp) and (not tc:IsCanBePlacedOnField(1-tp) or Duel.SelectYesNo(tp,aux.Stringid(id,3))) then
 				p=tp
 			else
 				p=1-tp

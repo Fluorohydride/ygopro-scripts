@@ -20,7 +20,7 @@ function c8653757.initial_effect(c)
 end
 function c8653757.filter(c,tp)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0x55,0x7b)
-		and (c:IsAbleToHand() or (Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and not c:IsForbidden() and c:CheckUniqueOnField(tp)))
+		and (c:IsAbleToHand() or (Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsCanBePlacedOnField(tp)))
 end
 function c8653757.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c8653757.filter,tp,LOCATION_DECK,0,1,nil,tp) end
@@ -29,7 +29,7 @@ function c8653757.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local tc=Duel.SelectMatchingCard(tp,c8653757.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	if tc then
-		if tc:IsAbleToHand() and (Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsForbidden() or not tc:CheckUniqueOnField(tp) or Duel.SelectOption(tp,1190,aux.Stringid(8653757,1))==0) then
+		if tc:IsAbleToHand() and (Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or not tc:IsCanBePlacedOnField(tp) or Duel.SelectOption(tp,1190,aux.Stringid(8653757,1))==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else

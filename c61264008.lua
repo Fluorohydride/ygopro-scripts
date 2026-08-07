@@ -12,10 +12,10 @@ function c61264008.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c61264008.filter(c)
-	return c:IsFaceup() and c:IsAbleToRemove()
+	return c:IsFaceup() and c:IsAbleToRemove() and c:IsCanBePlacedOnField(1-c:GetControler())
 end
-function c61264008.filter2(c,code)
-	return c:IsType(TYPE_FIELD) and not c:IsCode(code)
+function c61264008.filter2(c,code,tp)
+	return c:IsType(TYPE_FIELD) and not c:IsCode(code) and c:IsCanBePlacedOnField(tp)
 end
 function c61264008.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_FZONE) and c61264008.filter(chkc) end
@@ -33,10 +33,10 @@ function c61264008.activate(e,tp,eg,ep,ev,re,r,rp)
 			local tc2=g:GetFirst()
 			local code=tc2:GetOriginalCode()
 			if Duel.MoveToField(tc2,1-ttp,1-ttp,LOCATION_FZONE,POS_FACEUP,true)
-				and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c61264008.filter2),1-ttp,LOCATION_GRAVE,0,1,nil,code)
+				and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c61264008.filter2),1-ttp,LOCATION_GRAVE,0,1,nil,code,ttp)
 				and Duel.SelectYesNo(tp,aux.Stringid(61264008,0)) then
 				Duel.BreakEffect()
-				local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c61264008.filter2),1-ttp,LOCATION_GRAVE,0,1,1,nil,code)
+				local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c61264008.filter2),1-ttp,LOCATION_GRAVE,0,1,1,nil,code,ttp)
 				if #rg>0 then
 					Duel.MoveToField(rg:GetFirst(),tp,ttp,LOCATION_FZONE,POS_FACEUP,true)
 				end

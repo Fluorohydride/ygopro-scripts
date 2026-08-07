@@ -46,8 +46,12 @@ function s.sumcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.filter(c,tp)
 	local r=LOCATION_REASON_TOFIELD
-	if not c:IsControler(c:GetOwner()) then r=LOCATION_REASON_CONTROL end
+	if not c:IsControler(c:GetOwner()) then
+		if not c:IsAbleToChangeControler() then return false end
+		r=LOCATION_REASON_CONTROL
+	end
 	return (c:IsType(TYPE_MONSTER) or c:IsLocation(LOCATION_MZONE)) and c:IsFaceupEx()
+		and c:IsCanBePlacedOnField(c:GetOwner())
 		and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

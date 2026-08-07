@@ -21,7 +21,7 @@ function c61884774.thfilter(c)
 	return c:IsSetCard(0xb3) and c:IsLevelAbove(5) and c:IsAbleToHand()
 end
 function c61884774.pzfilter(c,cd)
-	return c:IsCode(cd) and not c:IsForbidden()
+	return c:IsCode(cd) and c:IsCanBePlacedOnField()
 end
 function c61884774.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c61884774.thfilter,tp,LOCATION_DECK,0,1,nil)

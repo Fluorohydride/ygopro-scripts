@@ -65,6 +65,7 @@ end
 function s.mfilter(c)
 	local seq=c:GetSequence()
 	return seq<=4 and c:IsType(TYPE_EFFECT) and c:IsFaceup()
+		and c:IsCanBePlacedOnField(c:GetControler())
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and s.mfilter(chkc) end

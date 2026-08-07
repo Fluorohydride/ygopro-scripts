@@ -14,7 +14,7 @@ function c53265336.cfilter(c)
 	return c:IsSetCard(0x162) and c:GetOriginalType()&TYPE_PENDULUM>0 and c:IsFaceup()
 end
 function c53265336.tpfilter(c)
-	return c:IsSetCard(0x162) and c:IsType(TYPE_PENDULUM) and c:IsFaceup() and not c:IsForbidden()
+	return c:IsSetCard(0x162) and c:IsType(TYPE_PENDULUM) and c:IsFaceup() and c:IsCanBePlacedOnField()
 end
 function c53265336.spfilter(c,e,tp)
 	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x162) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

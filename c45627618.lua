@@ -44,7 +44,7 @@ function c45627618.initial_effect(c)
 end
 c45627618.pendulum_level=7
 function c45627618.pcfilter(c)
-	return c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function c45627618.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))

@@ -28,7 +28,7 @@ function c40456412.spfilter(c,e,tp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c40456412.psfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsFaceup() and not c:IsForbidden()
+	return c:IsType(TYPE_PENDULUM) and c:IsFaceup() and c:IsCanBePlacedOnField()
 end
 function c40456412.ssfilter(c)
 	return c:IsType(TYPE_QUICKPLAY) and c:IsSSetable()

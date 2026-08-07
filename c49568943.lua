@@ -20,7 +20,7 @@ function c49568943.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c49568943.setfilter(c,tp)
-	return c:IsSetCard(0x17d) and not c:IsCode(49568943) and c:IsType(TYPE_FIELD) and not c:IsForbidden() and c:CheckUniqueOnField(1-tp)
+	return c:IsSetCard(0x17d) and not c:IsCode(49568943) and c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(1-tp)
 end
 function c49568943.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49568943.setfilter,tp,LOCATION_DECK,0,1,nil,tp) end

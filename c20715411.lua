@@ -55,7 +55,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.pfilter(c,tp)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0xae)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

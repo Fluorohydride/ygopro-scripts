@@ -25,7 +25,7 @@ function s.xfilter(c,code)
 	return c:IsFaceup() and c:IsCode(code)
 end
 function s.filter(c,tp)
-	return c:IsType(TYPE_FIELD) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(tp)
 		and not Duel.IsExistingMatchingCard(s.xfilter,tp,LOCATION_FZONE,0,1,nil,c:GetCode())
 end
 function s.sfilter(c,e,tp)

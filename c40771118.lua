@@ -64,7 +64,7 @@ function c40771118.plfilter(c,tp,mc)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,SUMMON_VALUE_DARK_SANCTUARY) then return true end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if mc:IsLocation(LOCATION_SZONE) then ft=ft+1 end
-	return ft>0 and not c:IsForbidden()
+	return ft>0 and c:IsCanBePlacedOnField()
 end
 function c40771118.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c40771118.plfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,nil,tp,e:GetHandler()) end

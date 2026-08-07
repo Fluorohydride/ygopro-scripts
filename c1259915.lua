@@ -31,7 +31,7 @@ function s.initial_effect(c)
 end
 function s.tffilter(c,tp)
 	return c:IsCode(id)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
@@ -41,7 +41,7 @@ function s.cfilter(c)
 	return not c:IsPublic() and c:IsSetCard(0x1144) and c:IsLevel(10)
 end
 function s.setfilter(c)
-	return c:IsCode(65861210) and not c:IsForbidden()
+	return c:IsCode(65861210) and c:IsCanBePlacedOnField()
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=1 then return end

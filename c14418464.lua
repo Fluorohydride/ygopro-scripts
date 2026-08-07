@@ -95,8 +95,9 @@ end
 function c14418464.mvfilter(c)
 	local seq=c:GetSequence()
 	local tp=c:GetControler()
-	return (seq==0 and Duel.CheckLocation(tp,LOCATION_SZONE,1))
-		or (seq==4 and Duel.CheckLocation(tp,LOCATION_SZONE,3))
+	return c:IsCanBePlacedOnField(tp)
+		and ((seq==0 and Duel.CheckLocation(tp,LOCATION_SZONE,1))
+		or (seq==4 and Duel.CheckLocation(tp,LOCATION_SZONE,3)))
 end
 function c14418464.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_PZONE) and c14418464.mvfilter(chkc) end

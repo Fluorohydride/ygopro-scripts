@@ -62,7 +62,8 @@ function c19673561.setcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c19673561.rccfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c19673561.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and e:GetHandler():IsCanBePlacedOnField() end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function c19673561.setop(e,tp,eg,ep,ev,re,r,rp)

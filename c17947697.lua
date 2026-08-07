@@ -50,7 +50,7 @@ function s.pcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.pfilter(c,tp)
 	return c:IsCode(62089826)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

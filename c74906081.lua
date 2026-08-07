@@ -25,8 +25,11 @@ function s.mfilter(c,tp,ft)
 	local p=c:GetOwner()
 	if p~=tp then ft=0 end
 	local r=LOCATION_REASON_TOFIELD
-	if not c:IsControler(p) then r=LOCATION_REASON_CONTROL end
-	return Duel.GetLocationCount(p,LOCATION_SZONE,tp,r)>ft
+	if not c:IsControler(p) then
+		if not c:IsAbleToChangeControler() then return false end
+		r=LOCATION_REASON_CONTROL
+	end
+	return c:IsCanBePlacedOnField(p) and Duel.GetLocationCount(p,LOCATION_SZONE,tp,r)>ft
 end
 function s.sfilter(c,e,tp)
 	return c:GetOriginalType()&TYPE_MONSTER>0 and c:GetType()&TYPE_CONTINUOUS+TYPE_SPELL==TYPE_CONTINUOUS+TYPE_SPELL

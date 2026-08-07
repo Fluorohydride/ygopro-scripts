@@ -53,7 +53,7 @@ function c58981727.tdfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xb3) and c:IsAbleToDeck()
 end
 function c58981727.tffilter(c)
-	return c:IsCode(62681049,79861914) and not c:IsForbidden()
+	return c:IsCode(62681049,79861914) and c:IsCanBePlacedOnField()
 end
 function c58981727.tftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() and c58981727.tdfilter(chkc) end

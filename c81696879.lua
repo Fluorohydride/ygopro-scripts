@@ -30,7 +30,7 @@ function s.chcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.GetCurrentChain()>=2
 end
 function s.mfilter(c,tp)
-	return c:IsSetCard(0x1a2) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:IsFaceupEx() and c:CheckUniqueOnField(tp)
+	return c:IsSetCard(0x1a2) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(tp) and c:IsFaceupEx()
 end
 function s.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.mfilter,rp,0,LOCATION_MZONE+LOCATION_GRAVE,1,nil,rp) and Duel.GetLocationCount(1-rp,LOCATION_SZONE)>0 end
