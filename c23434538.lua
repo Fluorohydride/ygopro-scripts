@@ -66,5 +66,5 @@ end
 function c23434538.drop2(e,tp,eg,ep,ev,re,r,rp)
 	local n=Duel.GetFlagEffect(tp,23434538)
 	Duel.ResetFlagEffect(tp,23434538)
-	Duel.Draw(tp,n,REASON_EFFECT)
+	if n>0 then Duel.Draw(tp,n,REASON_EFFECT) end
 end
