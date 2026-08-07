@@ -43,7 +43,7 @@ function c2434862.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local at=Duel.GetAttacker()
-		if at:IsAttackable() and not at:IsImmuneToEffect(e) then
+		if at:IsRelateToBattle() and at:IsAttackable() and not at:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(at,tc)
 		end
 	end

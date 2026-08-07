@@ -30,9 +30,9 @@ function c64966519.cbcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c64966519.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) then
 		local at=Duel.GetAttacker()
-		if at:IsAttackable() and not at:IsImmuneToEffect(e) and not c:IsImmuneToEffect(e) then
+		if at:IsRelateToBattle() and at:IsAttackable() and not at:IsImmuneToEffect(e) and not c:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(at,c)
 		end
 	end
