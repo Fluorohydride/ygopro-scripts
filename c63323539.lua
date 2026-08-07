@@ -11,12 +11,11 @@ function c63323539.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63323539.filter(c,e,tp)
-	return c:IsControler(1-tp) and c:IsCanBeEffectTarget(e)
+	return c:IsControler(1-tp) and c:GetReasonPlayer()==1-tp and c:IsCanBeEffectTarget(e)
 end
 function c63323539.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c63323539.filter(chkc,e,tp) end
-	if chk==0 then return r==REASON_EFFECT and rp==1-tp
-		and eg:IsExists(c63323539.filter,1,nil,e,tp) end
+	if chk==0 then return r==REASON_EFFECT and eg:IsExists(c63323539.filter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=eg:FilterSelect(tp,c63323539.filter,1,1,nil,e,tp)
 	Duel.SetTargetCard(g)
