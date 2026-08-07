@@ -19,6 +19,7 @@ function s.initial_effect(c)
 	e3:SetCode(EFFECT_EXTRA_RITUAL_MATERIAL)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,id)
+	e3:SetCondition(s.ritcon)
 	e3:SetTargetRange(LOCATION_EXTRA,0)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
@@ -43,8 +44,12 @@ function s.initial_effect(c)
 			if tc then
 				local te=tc:IsHasEffect(EFFECT_EXTRA_RITUAL_MATERIAL,tc:GetControler())
 				te:UseCountLimit(tc:GetControler())
+				Duel.RegisterFlagEffect(0,id,RESET_PHASE+PHASE_END,0,1)
 			end
 			return _ReleaseRitualMaterial(mat)
 		end
 	end
+end
+function s.ritcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetFlagEffect(e:GetHandlerPlayer(),id)==0
 end
