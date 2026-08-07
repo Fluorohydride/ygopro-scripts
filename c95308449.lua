@@ -24,8 +24,10 @@ function c95308449.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCountLimit(1)
 	e1:SetReset(RESET_PHASE+PHASE_END,20)
 	Duel.RegisterEffect(e1,tp)
-	c:RegisterFlagEffect(1082946,RESET_PHASE+PHASE_END,0,20)
-	c95308449[c]=e1
+	if c1082946 then
+		c:RegisterFlagEffect(1082946,RESET_PHASE+PHASE_END,0,20)
+		c1082946[c]=e1
+	end
 end
 function c95308449.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
