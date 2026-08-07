@@ -47,7 +47,7 @@ function s.initial_effect(c)
 	e3:SetTarget(s.immtg)
 	c:RegisterEffect(e3)
 end
-function s.mat_filter(c)
+function s.ritual_mat_filter(c)
 	return not c:IsLevel(9)
 end
 function s.cfilter(c,tp)

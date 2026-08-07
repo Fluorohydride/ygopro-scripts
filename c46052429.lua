@@ -12,8 +12,8 @@ end
 function c46052429.filter(c,e,tp,m)
 	if bit.band(c:GetType(),0x81)~=0x81
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	if c.mat_filter then
-		m=m:Filter(c.mat_filter,nil,tp)
+	if c.ritual_mat_filter then
+		m=m:Filter(c.ritual_mat_filter,nil,tp)
 	end
 	return m:CheckWithSumEqual(Card.GetRitualLevel,c:GetLevel(),1,99,c)
 end
@@ -36,8 +36,8 @@ function c46052429.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.SelectMatchingCard(tp,c46052429.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg)
 	if tg:GetCount()>0 then
 		local tc=tg:GetFirst()
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,nil,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,nil,tp)
 		end
 		local lv=tc:GetLevel()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

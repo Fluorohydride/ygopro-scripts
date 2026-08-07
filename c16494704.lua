@@ -42,8 +42,8 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 		if sg then
 			mg:Merge(sg)
 		end
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			mg:RemoveCard(tc)
 		end
