@@ -115,9 +115,9 @@ function c5861892.negop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(-1000)
 	c:RegisterEffect(e1)
-	if re:GetHandler():IsRelateToEffect(re) and not c:IsHasEffect(EFFECT_REVERSE_UPDATE) then
-		if Duel.NegateActivation(ev) then
-			Duel.Destroy(re:GetHandler(),REASON_EFFECT)
+	if not c:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end
 end
