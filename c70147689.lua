@@ -47,7 +47,10 @@ function c70147689.target(e,c)
 	return c:IsSetCard(0x7) and c:IsStatus(STATUS_SUMMON_TURN+STATUS_SPSUMMON_TURN)
 end
 function c70147689.chainop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsSetCard(0x7) then
+	local rc=re:GetHandler()
+	local b1=rc:IsSetCard(0x7)
+	local b2=re:GetActivateLocation()==LOCATION_MZONE and not ec:IsLocation(LOCATION_MZONE) and ec:IsPreviousSetCard(0x7)
+	if b1 or b2 then
 		Duel.SetChainLimit(c70147689.chainlm)
 	end
 end
