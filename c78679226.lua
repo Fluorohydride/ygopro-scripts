@@ -65,10 +65,12 @@ function s.dactivate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
+		if g:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
+			local ct1=6-Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
+			local ct2=6-Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
+			if ct1>0 or ct2>0 then Duel.BreakEffect() end
+			if ct1>0 then Duel.Draw(tp,ct1,REASON_EFFECT) end
+			if ct2>0 then Duel.Draw(1-tp,ct2,REASON_EFFECT) end
+		end
 	end
-	local ct1=6-Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
-	local ct2=6-Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
-	if ct1>0 or ct2>0 then Duel.BreakEffect() end
-	if ct1>0 then Duel.Draw(tp,ct1,REASON_EFFECT) end
-	if ct2>0 then Duel.Draw(1-tp,ct2,REASON_EFFECT) end
 end
