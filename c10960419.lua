@@ -89,9 +89,10 @@ function c10960419.rmop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCondition(c10960419.retcon)
 			e2:SetOperation(c10960419.retop)
 			Duel.RegisterEffect(e2,tp)
-			tc:RegisterFlagEffect(1082946,RESET_PHASE+PHASE_STANDBY,0,ct)
-			local mt=_G["c"..tc:GetCode()]
-			mt[tc]=e1
+			if c1082946 then
+				tc:RegisterFlagEffect(1082946,RESET_PHASE+PHASE_STANDBY,0,ct)
+				c1082946[tc]=e1
+			end
 		end
 	end
 end
