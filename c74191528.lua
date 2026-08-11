@@ -10,22 +10,22 @@ function c74191528.initial_effect(c)
 	e1:SetOperation(c74191528.activate)
 	c:RegisterEffect(e1)
 end
-function c74191528.filter(c)
-	return c:IsAbleToHand()
+function c74191528.filter(c,p)
+	return c:IsAbleToHand(p)
 end
 function c74191528.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c74191528.filter,tp,LOCATION_DECK,0,5,nil)
-		and Duel.IsExistingMatchingCard(c74191528.filter,1-tp,LOCATION_DECK,0,5,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c74191528.filter,tp,LOCATION_DECK,0,5,nil,tp)
+		and Duel.IsExistingMatchingCard(c74191528.filter,1-tp,LOCATION_DECK,0,5,nil,1-tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,PLAYER_ALL,LOCATION_DECK)
 end
 function c74191528.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<5 or Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)<5
-		or not Duel.IsExistingMatchingCard(c74191528.filter,tp,LOCATION_DECK,0,1,nil)
-		or not Duel.IsExistingMatchingCard(c74191528.filter,1-tp,LOCATION_DECK,0,1,nil) then return end
+		or not Duel.IsExistingMatchingCard(c74191528.filter,tp,LOCATION_DECK,0,1,nil,tp)
+		or not Duel.IsExistingMatchingCard(c74191528.filter,1-tp,LOCATION_DECK,0,1,nil,1-tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,0))
-	local g1=Duel.SelectMatchingCard(tp,c74191528.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c74191528.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,0))
-	local g2=Duel.SelectMatchingCard(1-tp,c74191528.filter,1-tp,LOCATION_DECK,0,1,1,nil)
+	local g2=Duel.SelectMatchingCard(1-tp,c74191528.filter,1-tp,LOCATION_DECK,0,1,1,nil,1-tp)
 	Duel.BreakEffect()
 	--[[ need Duel.RandomSelect to be updated for manually select
 	local tg1=Duel.GetMatchingGroup(nil,tp,LOCATION_DECK,0,g1:GetFirst())
@@ -53,7 +53,7 @@ function c74191528.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg1=g1:Select(1-tp,1,1,nil)
 	--
 	Duel.SendtoHand(sg1,tp,REASON_EFFECT)
-	Duel.SendtoHand(sg2,1-tp,REASON_EFFECT)
+	Duel.SendtoHand(sg2,1-tp,REASON_EFFECT,1-tp)
 	Duel.ConfirmCards(tp,sg2)
 	Duel.ConfirmCards(1-tp,sg1)
 end
