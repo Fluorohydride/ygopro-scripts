@@ -10,7 +10,7 @@ function c85066822.initial_effect(c)
 	--atkchange
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SET_ATTACK)
+	e2:SetCode(EFFECT_SET_ATTACK_FINAL)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetTarget(c85066822.atfilter)
