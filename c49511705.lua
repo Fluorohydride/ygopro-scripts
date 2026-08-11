@@ -78,7 +78,14 @@ function c49511705.effop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49511705.coincon1(e,tp,eg,ep,ev,re,r,rp)
 	local ex,eg,et,cp,ct=Duel.GetOperationInfo(ev,CATEGORY_COIN)
-	if ex and ct>1 then
+	if not ex then
+		return false
+	end
+	local tot=ct
+	if cp==PLAYER_ALL then
+		tot=ct*2
+	end
+	if tot>1 then
 		e:SetLabelObject(re)
 		return true
 	else return false end
@@ -87,7 +94,6 @@ function c49511705.coinop1(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_TOSS_COIN_NEGATE)
-	e1:SetCountLimit(1)
 	e1:SetCondition(c49511705.coincon2)
 	e1:SetOperation(c49511705.coinop2)
 	e1:SetLabelObject(e:GetLabelObject())
