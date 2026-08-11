@@ -49,7 +49,7 @@ function s.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.mtfilter),tp,LOCATION_GRAVE,0,1,1,nil,e)
 	if g:GetCount()>0 then
