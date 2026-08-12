@@ -13,7 +13,7 @@ function c56713174.initial_effect(c)
 	e1:SetTarget(c56713174.target)
 	e1:SetOperation(c56713174.operation)
 	c:RegisterEffect(e1)
-	c56713174.discard_effect=e1
+	c56713174.thunder_dragon_discard_effect=e1
 	--search thunder dragon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(56713174,1))
