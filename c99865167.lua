@@ -8,5 +8,6 @@ function c99865167.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c99865167.condition(e,c)
-	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsType(TYPE_NORMAL)
+	local ec=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsType(TYPE_NORMAL) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

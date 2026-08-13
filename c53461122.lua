@@ -8,5 +8,6 @@ function c53461122.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c53461122.condition(e,c)
-	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsType(TYPE_NORMAL)
+	local ec=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsType(TYPE_NORMAL) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

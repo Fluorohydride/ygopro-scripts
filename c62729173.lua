@@ -8,5 +8,6 @@ function c62729173.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c62729173.condition(e,c)
-	return c:IsSetCard(0x100a)
+	local ec=e:GetHandler()
+	return c:IsSetCard(0x100a) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
