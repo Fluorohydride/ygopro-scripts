@@ -35,7 +35,7 @@ function c85696777.repfilter(c,tp)
 end
 function c85696777.desfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsType(TYPE_SPELL+TYPE_TRAP)
-		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c85696777.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c85696777.repfilter,1,nil,tp)
@@ -53,6 +53,7 @@ function c85696777.desrepval(e,c)
 	return c85696777.repfilter(c,e:GetHandlerPlayer())
 end
 function c85696777.desrepop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,85696777)
 	local tc=e:GetLabelObject()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

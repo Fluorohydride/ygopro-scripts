@@ -76,20 +76,24 @@ end
 function c6284176.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_PLANT) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
-function c6284176.rfilter(c)
-	return c:IsRace(RACE_PLANT) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+function c6284176.rfilter(c,e)
+	return c:IsRace(RACE_PLANT) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c6284176.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c6284176.repfilter,1,nil,tp)
-		and Duel.CheckReleaseGroupEx(tp,c6284176.rfilter,1,REASON_EFFECT,true,nil) end
-	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
+		and Duel.CheckReleaseGroupEx(tp,c6284176.rfilter,1,REASON_EFFECT,true,nil,e) end
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96)	then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
+		local g=Duel.SelectReleaseGroupEx(tp,c6284176.rfilter,1,1,REASON_EFFECT,true,nil,e)
+		e:SetLabelObject(g:GetFirst())
+		return true
+	else return false end
 end
 function c6284176.repval(e,c)
 	return c6284176.repfilter(c,e:GetHandlerPlayer())
 end
 function c6284176.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-	local g=Duel.SelectReleaseGroupEx(tp,c6284176.rfilter,1,1,REASON_EFFECT,true,nil)
+	local rc=e:GetLabelObject()
 	Duel.Hint(HINT_CARD,0,6284176)
-	Duel.Release(g,REASON_EFFECT+REASON_REPLACE)
+	Duel.Release(rc,REASON_EFFECT+REASON_REPLACE)
 end
