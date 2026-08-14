@@ -59,8 +59,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Destroy(tc2,REASON_EFFECT)
 			Duel.Damage(1-tp,500,REASON_EFFECT)
 		elseif tc1:GetAttack()<tc2:GetAttack() then
-			if tc2:IsAbleToHand() then
-				Duel.SendtoHand(tc2,nil,REASON_EFFECT)
+			if tc2:IsAbleToHand(1-tp) then
+				Duel.SendtoHand(tc2,nil,REASON_EFFECT,1-tp)
 				Duel.ConfirmCards(tp,tc2)
 			else
 				Duel.SendtoGrave(tc2,REASON_RULE)
