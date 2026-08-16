@@ -21,11 +21,7 @@ function s.spfilter2(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.cfilter(c)
-	-- todo: use Card.IsCardType
-	-- return c:IsFaceup() and c:GetOriginalType()&(TYPE_NORMAL+TYPE_MONSTER)==(TYPE_NORMAL+TYPE_MONSTER)
-	return c:IsFaceup() and c:GetOriginalType()&TYPE_MONSTER==TYPE_MONSTER
-		and (c:IsLocation(LOCATION_MZONE) and c:IsType(TYPE_NORMAL)
-		or not c:IsLocation(LOCATION_MZONE) and c:GetOriginalType()&TYPE_NORMAL==TYPE_NORMAL)
+	return c:IsFaceup() and c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 end
 function s.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
