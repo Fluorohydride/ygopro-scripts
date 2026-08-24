@@ -18,7 +18,7 @@ function s.initial_effect(c)
 	e2:SetOperation(s.drop)
 	c:RegisterEffect(e2)
 	--destroy
-	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,EVENT_SUMMON_SUCCESS)
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,{EVENT_SUMMON_SUCCESS,EVENT_MSET})
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetCategory(CATEGORY_DESTROY)
