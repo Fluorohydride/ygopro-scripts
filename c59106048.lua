@@ -70,7 +70,7 @@ function s.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.tdfilter,p,LOCATION_HAND,0,nil)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 	local sg=g:SelectSubGroup(p,s.gcheck,false,1,g:GetCount())
-	if sg:GetCount()==0 then return end
+	if not sg then return end
 	Duel.ConfirmCards(1-p,sg)
 	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	Duel.ShuffleDeck(p)
