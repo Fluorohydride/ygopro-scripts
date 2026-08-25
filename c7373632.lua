@@ -10,6 +10,12 @@ function c7373632.initial_effect(c)
 	e1:SetTarget(c7373632.target)
 	e1:SetOperation(c7373632.activate)
 	c:RegisterEffect(e1)
+	--cannot disable
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_CANNOT_DISABLE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	c:RegisterEffect(e0)
 end
 function c7373632.filter(c)
 	return c:IsFaceup() and (c:GetOriginalRace()&RACE_DIVINE~=0 or c:IsOriginalCodeRule(21208154,62180201,57793869)) and c:GetFlagEffect(7373632)==0
