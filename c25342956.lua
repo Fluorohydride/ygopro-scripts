@@ -90,7 +90,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:SelectSubGroup(tp,s.gcheck,false,1,3,eft1,eft2,eft3,ect,ft)
-			if sg:GetCount()>0 then
+			if sg and sg:GetCount()>0 then
 				local exg1=sg:Filter(s.exfilter2,nil)
 				sg:Sub(exg1)
 				if exg1:GetCount()>0 then
