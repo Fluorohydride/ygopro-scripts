@@ -34,7 +34,7 @@ function c39468724.initial_effect(c)
 	e3:SetOperation(c39468724.negop)
 	c:RegisterEffect(e3)
 end
-function c39468724.mat_filter(c)
+function c39468724.ritual_mat_filter(c)
 	return not c:IsLevel(10)
 end
 function c39468724.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)

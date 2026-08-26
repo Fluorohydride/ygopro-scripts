@@ -31,7 +31,7 @@ function c26674724.initial_effect(c)
 	e3:SetOperation(c26674724.tdop)
 	c:RegisterEffect(e3)
 end
-function c26674724.mat_filter(c)
+function c26674724.ritual_mat_filter(c)
 	return not c:IsCode(26674724)
 end
 function c26674724.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

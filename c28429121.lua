@@ -47,8 +47,8 @@ function c28429121.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc then
 		local mg=mg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			mg:RemoveCard(tc)
 		end

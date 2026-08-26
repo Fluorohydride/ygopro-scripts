@@ -32,7 +32,7 @@ function c52846880.initial_effect(c)
 	e3:SetOperation(c52846880.operation)
 	c:RegisterEffect(e3)
 end
-function c52846880.mat_filter(c)
+function c52846880.ritual_mat_filter(c)
 	return not c:IsCode(52846880)
 end
 function c52846880.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

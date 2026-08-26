@@ -56,8 +56,8 @@ function c38784726.activate(e,tp,eg,ep,ev,re,r,rp)
 		if mg2 then
 			mg:Merge(mg2)
 		end
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			mg:RemoveCard(tc)
 		end
