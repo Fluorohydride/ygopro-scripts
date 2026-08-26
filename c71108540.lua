@@ -91,7 +91,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,ct+1,ct+1)
-	if sg:GetCount()>0 then
+	if sg then
 		Duel.ConfirmCards(1-tp,sg)
 		for tc in aux.Next(sg) do
 			Duel.MoveSequence(tc,SEQ_DECKTOP)

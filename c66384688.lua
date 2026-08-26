@@ -45,7 +45,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		if #cg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 			local hg=cg:SelectSubGroup(tp,aux.dncheck,false,1,2)
-			if hg:GetCount()>0 then
+			if hg then
 				Duel.BreakEffect()
 				Duel.SendtoExtraP(hg,nil,REASON_EFFECT)
 			end
