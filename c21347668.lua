@@ -25,6 +25,7 @@ function s.filter(c,e,tp)
 	return c:IsLevel(1) and c:IsSetCard(0x18c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.op(e,tp,eg,ep,ev,re,r,rp)
+	Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHANGE_DAMAGE)
@@ -54,12 +55,12 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.damcon(e)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetFlagEffect(tp,id)==0
+	return Duel.GetFlagEffect(tp,id)>0
 end
 function s.damval(e,re,val,r,rp,rc)
 	local tp=e:GetHandlerPlayer()
 	if bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 then
-		Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
+		while s.damcon(e) do Duel.ResetFlagEffect(tp,id) end
 		return 0
 	end
 	return val
