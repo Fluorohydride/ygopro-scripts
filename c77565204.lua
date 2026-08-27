@@ -80,12 +80,14 @@ function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(c77565204.filter1,tp,LOCATION_DECK,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c77565204.filter2,tp,LOCATION_EXTRA,0,nil,mg)
 	if sg:GetCount()>0 then
+		::cancel::
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		Duel.ConfirmCards(1-tp,tc)
 		local code=tc:GetCode()
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg)
+		if #mat<2 then goto cancel end
 		mat:KeepAlive()
 		Duel.SendtoGrave(mat,REASON_EFFECT)
 		for mc in aux.Next(mat) do
