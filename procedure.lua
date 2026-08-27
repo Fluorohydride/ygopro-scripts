@@ -3116,11 +3116,21 @@ function FusionSpell.GetFusionFilterByCode(code,matlocation,fusion_spell_operati
 	return FusionSpell.GraveMaterialFilter
 end
 
----@alias FUSION_OPERATION_FUNCTION fun(sg:Card|Group,tp:integer):integer
+---@alias FUSION_OPERATION_FUNCTION fun(sg:Group,tp:integer):integer
 ---@alias FUSION_FILTER_FUNCTION fun(c:Card,tp:integer?,e:Effect?):boolean
 
 ---@type FUSION_OPERATION_FUNCTION
 function FusionSpell.GraveMaterial(sg,tp)
+	local from_removed=sg:Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+	if #from_removed>0 then
+		local others=sg-from_removed
+		local res=0
+		if #others>0 then
+			res=res+Duel.SendtoGrave(others,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION,tp)
+		end
+		res=res+Duel.SendtoGrave(from_removed,REASON_EFFECT+REASON_RETURN+REASON_MATERIAL+REASON_FUSION,tp)
+		return res
+	end
 	return Duel.SendtoGrave(sg,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION,tp)
 end
 
