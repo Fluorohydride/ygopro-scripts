@@ -59,7 +59,9 @@ function s.ncop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function s.actop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsCode(e:GetLabel()) then
+	local code=e:GetLabel()
+	local code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)
+	if code==code1 or code==code2 then
 		Duel.SetChainLimit(aux.FALSE)
 	end
 end
