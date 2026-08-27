@@ -40,6 +40,9 @@ function c1487805.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
+c1487805.mentioned_counter={
+	[0x100e]=true,
+}
 function c1487805.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end

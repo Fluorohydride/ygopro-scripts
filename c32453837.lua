@@ -31,6 +31,9 @@ function c32453837.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 aux.xyz_number[32453837]=2
+c32453837.mentioned_counter={
+	[0x1063]=true,
+}
 function c32453837.filter(c)
 	return c:GetCounter(0x1063)>0 and c:IsFaceup()
 end

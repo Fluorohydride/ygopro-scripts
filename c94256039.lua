@@ -39,6 +39,9 @@ function c94256039.initial_effect(c)
 	e5:SetOperation(c94256039.desop)
 	c:RegisterEffect(e5)
 end
+c94256039.mentioned_counter={
+	[0x1]=true,
+}
 function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_PLAYER)
 	local c=e:GetHandler()

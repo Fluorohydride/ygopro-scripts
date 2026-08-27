@@ -27,6 +27,9 @@ function s.initial_effect(c)
 	e3:SetOperation(s.thop)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x74]=true,
+}
 function s.ctfilter(c)
 	return (c:IsPreviousLocation(LOCATION_MZONE) or
 		not c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsType(TYPE_MONSTER))

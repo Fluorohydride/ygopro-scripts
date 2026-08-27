@@ -14,6 +14,9 @@ function c62315111.initial_effect(c)
 	e2:SetOperation(c62315111.atop)
 	c:RegisterEffect(e2)
 end
+c62315111.mentioned_counter={
+	[0x100e]=true,
+}
 function c62315111.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()

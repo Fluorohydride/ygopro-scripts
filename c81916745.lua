@@ -1,4 +1,4 @@
---Lycoris Lilyreaper
+--リコリス・リリィパー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Synchro summon

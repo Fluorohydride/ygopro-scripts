@@ -34,6 +34,9 @@ function c55063751.initial_effect(c)
 	e3:SetOperation(c55063751.negop)
 	c:RegisterEffect(e3)
 end
+c55063751.mentioned_counter={
+	[0x37]=true,
+}
 function c55063751.spfilter(c,tp)
 	return c:IsReleasable(REASON_SPSUMMON) and Duel.GetMZoneCount(1-tp,c,tp)>0
 end

@@ -1,4 +1,4 @@
---Steel-Stringed Sacrifice
+--鉄絃の犠打職人
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon

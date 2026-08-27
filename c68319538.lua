@@ -29,6 +29,9 @@ function c68319538.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c68319538.counter_add_list={0x100e}
+c68319538.mentioned_counter={
+	[0x100e]=true,
+}
 function c68319538.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end

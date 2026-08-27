@@ -63,6 +63,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e5)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 end
+s.mentioned_counter={
+	[0x71]=true,
+}
 function s.counterfilter(c)
 	return c:IsFacedown()
 end

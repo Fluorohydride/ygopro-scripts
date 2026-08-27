@@ -1,6 +1,7 @@
 --布都御魂之巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,81560239)
 	c:EnableReviveLimit()
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -65,11 +65,11 @@ function c48576971.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetTargetParam(1)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 	elseif opt==1 then
-		e:SetCategory(CATEGORY_HANDES)
+		e:SetCategory(CATEGORY_HANDES_OPPO)
 		e:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		Duel.SetTargetPlayer(1-tp)
 		Duel.SetTargetParam(1)
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 	else
 		e:SetCategory(0)
 		e:SetProperty(0)

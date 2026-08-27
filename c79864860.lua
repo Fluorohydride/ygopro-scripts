@@ -34,6 +34,9 @@ function c79864860.initial_effect(c)
 	e3:SetOperation(c79864860.spop)
 	c:RegisterEffect(e3)
 end
+c79864860.mentioned_counter={
+	[0x1041]=true,
+}
 function c79864860.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsOnField()
 end

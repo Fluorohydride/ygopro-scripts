@@ -39,6 +39,9 @@ function s.initial_effect(c)
 	e3:SetCost(aux.bfgcost)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x1041]=true,
+}
 
 function s.cfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:GetCounter(0x1041)>0

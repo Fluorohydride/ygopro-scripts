@@ -11,6 +11,9 @@ function c53291093.initial_effect(c)
 	e1:SetOperation(c53291093.activate)
 	c:RegisterEffect(e1)
 end
+c53291093.mentioned_counter={
+	[0x100e]=true,
+}
 function c53291093.filter(c)
 	return c:GetCounter(0x100e)>0
 end

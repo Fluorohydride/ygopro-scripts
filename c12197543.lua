@@ -3,7 +3,7 @@ function c12197543.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCategory(CATEGORY_HANDES+CATEGORY_DESTROY)
+	e1:SetCategory(CATEGORY_HANDES_OPPO+CATEGORY_DESTROY)
 	e1:SetCode(EVENT_DRAW)
 	e1:SetCondition(c12197543.condition)
 	e1:SetOperation(c12197543.activate)

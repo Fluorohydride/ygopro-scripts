@@ -12,6 +12,9 @@ function c23212990.initial_effect(c)
 	e1:SetOperation(c23212990.activate)
 	c:RegisterEffect(e1)
 end
+c23212990.mentioned_counter={
+	[0x3]=true,
+}
 function c23212990.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3,1,REASON_COST) end
 	Duel.RemoveCounter(tp,1,0,0x3,1,REASON_COST)

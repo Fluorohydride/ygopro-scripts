@@ -35,6 +35,9 @@ function s.initial_effect(c)
 	e3:SetOperation(s.cpop)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x6a]=true,
+}
 function s.cfilter(c)
 	return c:GetOriginalRace()&RACE_FIEND>0 and c:GetOriginalType()&TYPE_MONSTER>0 and c:GetCounter(0x6a)>2
 end

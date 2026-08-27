@@ -1,4 +1,4 @@
---GMX Applied Experiment #55
+--第５５次GMX応用試験
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -58,6 +58,9 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local excavate_count=dcount-seq
 	Duel.ConfirmDecktop(tp,excavate_count)
+	if e:GetHandler():IsSetCard(0x1dd) then
+		Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+1595137,e,0,tp,tp,0)
+	end
 	Duel.SetLP(tp,Duel.GetLP(tp)-excavate_count*400)
 	if Duel.GetLP(tp)<=0 then return end
 	local mg=Duel.GetDecktopGroup(tp,excavate_count):Filter(Card.IsType,nil,TYPE_MONSTER)

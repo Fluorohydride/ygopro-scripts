@@ -10,6 +10,9 @@ function c63741331.initial_effect(c)
 	e1:SetOperation(c63741331.activate)
 	c:RegisterEffect(e1)
 end
+c63741331.mentioned_counter={
+	[0x1019]=true,
+}
 function c63741331.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x18)
 end

@@ -2,7 +2,7 @@
 function c31213049.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_HANDES_OPPO)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c31213049.condition)
@@ -18,7 +18,7 @@ function c31213049.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 then
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,1)
 	end
 end
 function c31213049.activate(e,tp,eg,ep,ev,re,r,rp)

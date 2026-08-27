@@ -610,6 +610,7 @@ EFFECT_XYZ_MIN_COUNT			=372	--只能用在X只以上的超量召唤
 EFFECT_SYNCHRO_LEVEL_EX			=373	--支持使用没有等级的怪兽作为同调素材
 EFFECT_RITUAL_LEVEL_EX			=374	--支持使用没有等级的怪兽作为仪式素材
 EFFECT_DOUBLE_XMATERIAL			=375	--召唤需3只以上作素材的超量怪兽时可以作为2只数量的素材
+EFFECT_REVEAL_ONFIELD			=376	--场上里侧表示卡片处于可以确认信息状态（看透心灵之眼）
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
@@ -698,7 +699,7 @@ CATEGORY_TOHAND				=0x8		--回手牌效果
 CATEGORY_TODECK				=0x10		--回卡组效果
 CATEGORY_TOGRAVE			=0x20		--送去墓地效果
 CATEGORY_DECKDES			=0x40   	--包含從卡组送去墓地或特殊召唤效果
-CATEGORY_HANDES				=0x80   	--捨棄手牌效果
+CATEGORY_HANDES_SELF		=0x80   	--捨棄自身手牌效果
 CATEGORY_SUMMON				=0x100  	--含召唤的效果
 CATEGORY_SPECIAL_SUMMON		=0x200  	--含特殊召唤的效果
 CATEGORY_TOKEN				=0x400		--含衍生物效果
@@ -725,6 +726,8 @@ CATEGORY_FUSION_SUMMON		=0x40000000	--融合召唤效果（暴走魔法阵）
 CATEGORY_TOEXTRA			=0x80000000	--回额外卡组效果
 CATEGORY_MSET		        =0x100000000	--包含盖放怪兽的效果
 CATEGORY_SSET			    =0x200000000	--包含盖放魔陷的效果
+CATEGORY_HANDES_OPPO		=0x400000000   	--捨棄對方手牌效果
+CATEGORY_HANDES				=CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO
 
 --Hint
 HINT_EVENT				=1
@@ -810,8 +813,8 @@ HINTMSG_POSITION		=561	--请选择表示形式
 HINTMSG_ATTRIBUTE		=562	--请选择要宣言的属性
 HINTMSG_RACE			=563	--请选择要宣言的种族
 HINTMSG_CODE			=564	--请宣言一个卡名
-HINGMSG_NUMBER			=565	--请选择一个数字
-HINGMSG_LVRANK			=567	--请宣言一个等级
+HINTMSG_NUMBER			=565	--请选择一个数字
+HINTMSG_LVRANK			=567	--请宣言一个等级
 HINTMSG_RESOLVECARD		=568	--请选择要处理效果的卡
 HINTMSG_ZONE			=569	--请选择[%ls]的位置
 HINTMSG_DISABLEZONE		=570	--请选择要变成不能使用的卡片区域

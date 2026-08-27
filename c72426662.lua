@@ -1,5 +1,6 @@
 --終焉の王デミス
 function c72426662.initial_effect(c)
+	aux.AddCodeList(c,8198712)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

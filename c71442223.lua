@@ -11,6 +11,9 @@ function c71442223.initial_effect(c)
 	e1:SetOperation(c71442223.activate)
 	c:RegisterEffect(e1)
 end
+c71442223.mentioned_counter={
+	[0x1038]=true,
+}
 function c71442223.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end

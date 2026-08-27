@@ -36,6 +36,9 @@ function c51192573.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c51192573.counter_add_list={0x100e}
+c51192573.mentioned_counter={
+	[0x100e]=true,
+}
 function c51192573.otfilter(c,tp)
 	return c:GetOwner()==tp
 end

@@ -1,4 +1,4 @@
---R.B. Ga10 Driller
+--R.B.GA１０ドリラー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

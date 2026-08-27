@@ -34,6 +34,9 @@ function c91607976.initial_effect(c)
 	e3:SetOperation(c91607976.opd2)
 	c:RegisterEffect(e3)
 end
+c91607976.mentioned_counter={
+	[0x8]=true,
+}
 function c91607976.cona(e)
 	return e:GetHandler():IsAttackPos()
 end

@@ -1,4 +1,4 @@
---GMX - VELOX
+--GMX－VELOX
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--fusion procedure
@@ -77,6 +77,9 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if seq>-1 then
 		Duel.ConfirmDecktop(tp,dct-seq)
+		if e:GetHandler():IsSetCard(0x1dd) then
+			Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+1595137,e,0,tp,tp,0)
+		end
 		Duel.DisableShuffleCheck()
 		Duel.SetLP(tp,Duel.GetLP(tp)-(dct-seq)*400)
 		local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and hc:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -89,11 +92,9 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(hc,REASON_RULE)
 		end
 		Duel.ShuffleDeck(tp)
-		if tc:IsRelateToChain() and tc:IsOnField() then
-			Duel.BreakEffect()
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
-	else
-		Duel.ConfirmDecktop(tp,dct)
+	end
+	if tc:IsRelateToChain() and tc:IsOnField() then
+		Duel.BreakEffect()
+		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

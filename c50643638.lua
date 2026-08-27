@@ -1,4 +1,4 @@
---Chanbar, the Flashy Sportsknight
+--明滅騎士チャンバル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Synchro summon

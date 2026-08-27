@@ -54,7 +54,7 @@ function s.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local lv=g:GetFirst():GetLevel()
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 	local ac=Duel.AnnounceLevel(tp,1,10,lv)
-    e:SetLabel(ac)
+	e:SetLabel(ac)
 end
 function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

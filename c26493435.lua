@@ -38,6 +38,9 @@ function c26493435.initial_effect(c)
 	e5:SetOperation(c26493435.spop)
 	c:RegisterEffect(e5)
 end
+c26493435.mentioned_counter={
+	[0x30]=true,
+}
 function c26493435.ctfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsControler(tp)
 end

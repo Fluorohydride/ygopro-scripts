@@ -1,4 +1,4 @@
---Pumpking the Great Ghost King
+--ゴースト大王－パンプキング－
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

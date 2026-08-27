@@ -45,6 +45,9 @@ function s.initial_effect(c)
 	e4:SetOperation(s.couop)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x6a]=true,
+}
 function s.cfilter(c)
 	return c:GetCounter(0x6a)>0
 end

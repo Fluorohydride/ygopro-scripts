@@ -1,4 +1,4 @@
---Disguise, the Copycat Hero
+--虚英雄ディスガイス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,23249029)

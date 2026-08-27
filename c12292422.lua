@@ -39,10 +39,10 @@ end
 function c12292422.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_HAND,0,1,1,nil,TYPE_MONSTER)
-	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT) and g:GetFirst():IsLocation(LOCATION_GRAVE) then
+	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 		local race=Duel.AnnounceRace(tp,1,RACE_ALL)
-		Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LVRANK)
 		local lv=Duel.AnnounceLevel(tp)
 		local cg=Duel.GetFieldGroup(tp,0,LOCATION_HAND+LOCATION_DECK)
 		Duel.ConfirmCards(1-tp,cg)

@@ -60,7 +60,7 @@ function s.syntg(e,syncard,f,min,max)
 	local c=e:GetHandler()
 	local tp=syncard:GetControler()
 	local lv=syncard:GetLevel()
-	if lv<=c:GetLevel() and lv<=s.cardiansynlevel(c) then return false end
+	if lv<=c:GetLevel() and lv<=s.cardiansynlevel(c,syncard) then return false end
 	local g=Group.FromCards(c)
 	local mg=Duel.GetSynchroMaterial(tp):Filter(s.synfilter,c,syncard,c,f)
 	return mg:IsExists(s.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)

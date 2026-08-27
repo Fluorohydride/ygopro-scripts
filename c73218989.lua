@@ -53,6 +53,9 @@ function c73218989.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c73218989.material_type=TYPE_SYNCHRO
+c73218989.mentioned_counter={
+	[0x10]=true,
+}
 function c73218989.mfilter(c)
 	return c:IsFaceupEx() and c:IsAbleToRemoveAsCost()
 end

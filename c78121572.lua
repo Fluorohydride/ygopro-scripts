@@ -13,6 +13,9 @@ function c78121572.initial_effect(c)
 	e1:SetOperation(c78121572.op)
 	c:RegisterEffect(e1)
 end
+c78121572.mentioned_counter={
+	[0x1]=true,
+}
 function c78121572.con(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK)
 end

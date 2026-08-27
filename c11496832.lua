@@ -60,7 +60,7 @@ function s.thfilter(c,mc)
 	return c:IsAbleToHand() and aux.IsCodeListed(mc,c:GetCode())
 end
 function s.tgfilter(c,check,tp)
-	if c:IsSummonableCard() or not c:IsSetCard(0x52) then
+	if c:IsSummonableCard() or not c:IsSetCard(0x52) or not c:IsType(TYPE_MONSTER) then
 		return false
 	else
 		if check then

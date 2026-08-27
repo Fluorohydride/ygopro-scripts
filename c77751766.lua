@@ -31,6 +31,9 @@ function s.initial_effect(c)
 	e4:SetCondition(s.ccon2)
 	c:RegisterEffect(e4)
 end
+s.mentioned_counter={
+	[0x6d]=true,
+}
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsCanAddCounter(tp,0x6d,5,c) end
@@ -70,7 +73,7 @@ function s.cop(e,tp,eg,ep,ev,re,r,rp)
 			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.setfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 			if g:GetCount()>0 then
 				Duel.BreakEffect()
-				if Duel.SSet(tp,g:GetFirst()) and Duel.GetMatchingGroupCount(aux.TRUE,tp,LOCATION_DECK,0,nil)<=1 then
+				if Duel.SSet(tp,g:GetFirst())>0 and Duel.GetMatchingGroupCount(aux.TRUE,tp,LOCATION_DECK,0,nil)<=1 then
 					Duel.BreakEffect()
 					Duel.Win(tp,0x23)
 				end

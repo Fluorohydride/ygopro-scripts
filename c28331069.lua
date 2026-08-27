@@ -90,6 +90,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Release(rg,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 		for tc in aux.Next(g) do
+			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

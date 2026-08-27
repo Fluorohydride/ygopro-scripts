@@ -1,4 +1,4 @@
---R.B. Lambda Cannon
+--R.B.ラムダキャノン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--tohand

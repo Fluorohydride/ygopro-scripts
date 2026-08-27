@@ -1,4 +1,4 @@
---R.B. Lambda Blade
+--R.B.ラムダブレード
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to grave

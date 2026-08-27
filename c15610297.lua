@@ -28,6 +28,9 @@ function c15610297.initial_effect(c)
 	e3:SetOperation(c15610297.spop)
 	c:RegisterEffect(e3)
 end
+c15610297.mentioned_counter={
+	[0x1038]=true,
+}
 function c15610297.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()

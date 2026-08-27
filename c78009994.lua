@@ -22,6 +22,9 @@ function c78009994.initial_effect(c)
 	e2:SetOperation(c78009994.spop)
 	c:RegisterEffect(e2)
 end
+c78009994.mentioned_counter={
+	[0x22]=true,
+}
 function c78009994.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:GetFirst()~=e:GetHandler() then
 		e:GetHandler():AddCounter(0x22,1)

@@ -27,7 +27,7 @@ function c84546257.initial_effect(c)
 	Duel.AddCustomActivityCounter(84546257,ACTIVITY_SPSUMMON,c84546257.counterfilter)
 end
 function c84546257.counterfilter(c)
-	return c:IsAttribute(ATTRIBUTE_WATER)
+	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsFaceup()
 end
 function c84546257.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(84546257,tp,ACTIVITY_SPSUMMON)==0 end

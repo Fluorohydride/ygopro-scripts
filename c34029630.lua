@@ -38,6 +38,9 @@ function c34029630.initial_effect(c)
 	e4:SetCondition(c34029630.descon)
 	c:RegisterEffect(e4)
 end
+c34029630.mentioned_counter={
+	[0x1]=true,
+}
 function c34029630.ctpermit(e)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_SZONE) and c:IsStatus(STATUS_CHAINING)

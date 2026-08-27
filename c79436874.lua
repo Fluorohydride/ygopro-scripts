@@ -1,4 +1,4 @@
---R.B. VALCan Rocket
+--R.B.バルカンロケット
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon

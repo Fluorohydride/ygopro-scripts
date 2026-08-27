@@ -1,6 +1,7 @@
 --サイバース・セイジ
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,34767865)
 	c:EnableReviveLimit()
 	--fusion summon
 	local e1=FusionSpell.CreateSummonEffect(c,{

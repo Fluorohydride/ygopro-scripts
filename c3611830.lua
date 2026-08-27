@@ -61,6 +61,9 @@ function c3611830.initial_effect(c)
 	e6:SetLabelObject(e5)
 	c:RegisterEffect(e6)
 end
+c3611830.mentioned_counter={
+	[0x1]=true,
+}
 function c3611830.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,6,REASON_COST) end
 	Duel.RemoveCounter(tp,1,0,0x1,6,REASON_COST)

@@ -50,6 +50,9 @@ function c53842431.initial_effect(c)
 	e5:SetOperation(c53842431.rmop)
 	c:RegisterEffect(e5)
 end
+c53842431.mentioned_counter={
+	[0x1]=true,
+}
 function c53842431.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end

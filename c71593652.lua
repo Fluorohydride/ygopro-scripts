@@ -1,4 +1,4 @@
---Mutiny in the Sky
+--天至る叛逆
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

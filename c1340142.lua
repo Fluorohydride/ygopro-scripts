@@ -33,6 +33,9 @@ function s.initial_effect(c)
 	e3:SetOperation(s.disop)
 	c:RegisterEffect(e3)
 end
+s.mentioned_counter={
+	[0x6a]=true,
+}
 function s.lfilter(c)
 	return c:IsLinkType(TYPE_LINK) and c:IsLinkSetCard(0x1a3)
 end

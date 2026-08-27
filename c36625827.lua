@@ -21,6 +21,9 @@ function c36625827.initial_effect(c)
 	e2:SetOperation(c36625827.desop)
 	c:RegisterEffect(e2)
 end
+c36625827.mentioned_counter={
+	[0x1b]=true,
+}
 function c36625827.ctfilter(c)
 	return c:IsFaceup() and c:IsCode(75041269) and c:IsCanAddCounter(0x1b,1)
 end

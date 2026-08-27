@@ -10,6 +10,9 @@ function c38943357.initial_effect(c)
 	e1:SetOperation(c38943357.operation)
 	c:RegisterEffect(e1)
 end
+c38943357.mentioned_counter={
+	[0x1]=true,
+}
 function c38943357.filter(c)
 	return c:IsSetCard(0x12a) and c:IsAbleToHand()
 end

@@ -1,6 +1,7 @@
 --天叢雲之巳剣
 local s,id,o=GetID()
 function s.initial_effect(c)
+	aux.AddCodeList(c,81560239)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +17,7 @@ function s.initial_effect(c)
 	--disable
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_HANDES+CATEGORY_DISABLE)
+	e2:SetCategory(CATEGORY_HANDES_OPPO+CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)

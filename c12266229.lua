@@ -1,6 +1,6 @@
 --イリュージョン・オブ・カオス
 function c12266229.initial_effect(c)
-	aux.AddCodeList(c,46986414)
+	aux.AddCodeList(c,46986414,21082832)
 	--
 	c:EnableReviveLimit()
 	--search

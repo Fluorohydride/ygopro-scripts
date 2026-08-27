@@ -26,6 +26,9 @@ function c78574395.initial_effect(c)
 	e3:SetValue(c78574395.atkval)
 	c:RegisterEffect(e3)
 end
+c78574395.mentioned_counter={
+	[0x32]=true,
+}
 function c78574395.atkval(e,c)
 	return e:GetHandler():GetCounter(0x32)*-300
 end

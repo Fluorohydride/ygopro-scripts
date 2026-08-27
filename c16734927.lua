@@ -1,4 +1,4 @@
---Ectoplasmic Fortification
+--霊魂プラズマ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563,80749819)

@@ -17,7 +17,7 @@ function c1218214.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_HANDES+CATEGORY_DRAW)
+	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCountLimit(1,1218214)
@@ -49,7 +49,9 @@ function c1218214.drawtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c1218214.drawop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.DiscardHand(tp,c1218214.cfilter,1,1,REASON_EFFECT)>0 then
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g=Duel.SelectMatchingCard(tp,c1218214.cfilter,tp,LOCATION_HAND,0,1,1,nil)
+	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end

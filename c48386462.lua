@@ -24,9 +24,9 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetOperation(s.destroy)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	elseif op==2 then
-		cat=cat+CATEGORY_HANDES
+		cat=cat+CATEGORY_HANDES_SELF
 		e:SetOperation(s.discard)
-		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
+		Duel.SetOperationInfo(0,CATEGORY_HANDES_SELF,nil,0,tp,1)
 	else e:SetOperation(s.epdelay) end
 	e:SetCategory(cat)
 	if op<3 then Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1) end

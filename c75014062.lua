@@ -11,6 +11,9 @@ function c75014062.initial_effect(c)
 	e1:SetOperation(c75014062.activate)
 	c:RegisterEffect(e1)
 end
+c75014062.mentioned_counter={
+	[0x1]=true,
+}
 function c75014062.filter(c)
 	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end

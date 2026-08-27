@@ -29,7 +29,7 @@ function c12766474.initial_effect(c)
 	Duel.AddCustomActivityCounter(12766474,ACTIVITY_SPSUMMON,c12766474.counterfilter)
 end
 function c12766474.counterfilter(c)
-	return c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsFaceup()
 end
 function c12766474.relfilter(c,g)
 	return g:IsContains(c)

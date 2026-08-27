@@ -32,6 +32,9 @@ function c69031175.initial_effect(c)
 	e4:SetOperation(c69031175.atkop)
 	c:RegisterEffect(e4)
 end
+c69031175.mentioned_counter={
+	[0x1002]=true,
+}
 function c69031175.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local atg=Duel.GetAttackTarget()
 	return aux.dsercon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetAttacker()==e:GetHandler()

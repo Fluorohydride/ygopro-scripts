@@ -23,6 +23,9 @@ function s.initial_effect(c)
 	e2:SetCountLimit(1,id)
 	c:RegisterEffect(e2)
 end
+s.mentioned_counter={
+	[0x1041]=true,
+}
 
 function s.attrtg(e,c)
 	return c:GetCounter(0x1041)>0

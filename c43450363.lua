@@ -1,4 +1,4 @@
---R.B. Last Stand
+--R.B.ラスト・スタンド
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

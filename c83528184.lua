@@ -1,4 +1,4 @@
---GMX Associate Noma
+--GMX准教授ノーマ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--to deck

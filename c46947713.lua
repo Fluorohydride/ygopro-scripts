@@ -33,7 +33,7 @@ function c46947713.initial_effect(c)
 	Duel.AddCustomActivityCounter(46947713,ACTIVITY_SPSUMMON,c46947713.counterfilter)
 end
 function c46947713.counterfilter(c)
-	return c:IsRace(RACE_CYBERSE)
+	return c:IsRace(RACE_CYBERSE) and c:IsFaceup()
 end
 function c46947713.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(46947713,tp,ACTIVITY_SPSUMMON)==0 end

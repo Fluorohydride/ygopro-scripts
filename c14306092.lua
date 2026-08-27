@@ -25,6 +25,9 @@ function c14306092.initial_effect(c)
 	e2:SetValue(c14306092.atkval)
 	c:RegisterEffect(e2)
 end
+c14306092.mentioned_counter={
+	[0x2e]=true,
+}
 function c14306092.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

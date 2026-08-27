@@ -40,6 +40,9 @@ function c62437709.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c62437709.counter_add_list={0x100e}
+c62437709.mentioned_counter={
+	[0x100e]=true,
+}
 function c62437709.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
 	if chk==0 then return true end

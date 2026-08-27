@@ -55,6 +55,9 @@ function c21113684.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 c21113684.material_type=TYPE_SYNCHRO
+c21113684.mentioned_counter={
+	[0x1]=true,
+}
 function c21113684.splimit(e,se,sp,st)
 	if e:GetHandler():IsLocation(LOCATION_EXTRA) then
 		return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION

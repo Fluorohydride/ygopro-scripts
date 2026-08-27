@@ -1,4 +1,4 @@
---Call of the Forgotten
+--生ける屍の呼び声
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)

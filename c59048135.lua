@@ -30,7 +30,7 @@ function c59048135.initial_effect(c)
 	Duel.AddCustomActivityCounter(59048135,ACTIVITY_SPSUMMON,c59048135.counterfilter)
 end
 function c59048135.counterfilter(c)
-	return c:IsRace(RACE_PSYCHO) and c:IsType(TYPE_XYZ) or c:IsSetCard(0x76)
+	return (c:IsRace(RACE_PSYCHO) and c:IsType(TYPE_XYZ) or c:IsSetCard(0x76)) and c:IsFaceup()
 end
 function c59048135.etarget(e,c)
 	return c:IsRace(RACE_PSYCHO) and c:IsType(TYPE_XYZ)

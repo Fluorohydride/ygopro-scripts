@@ -13,6 +13,9 @@ function c73899015.initial_effect(c)
 	e1:SetOperation(c73899015.operation)
 	c:RegisterEffect(e1)
 end
+c73899015.mentioned_counter={
+	[0x1009]=true,
+}
 function c73899015.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())

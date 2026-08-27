@@ -10,6 +10,9 @@ function c84491298.initial_effect(c)
 	e1:SetOperation(c84491298.activate)
 	c:RegisterEffect(e1)
 end
+c84491298.mentioned_counter={
+	[0x100e]=true,
+}
 function c84491298.condition(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	return a:IsControler(1-tp) and a:GetCounter(0x100e)>0

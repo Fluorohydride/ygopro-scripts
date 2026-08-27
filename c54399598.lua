@@ -1,4 +1,4 @@
---Fleeting Flower of the Magician
+--魔術師の空華
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

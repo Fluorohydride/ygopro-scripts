@@ -26,6 +26,9 @@ function c85541675.initial_effect(c)
 	e3:SetOperation(c85541675.drop)
 	c:RegisterEffect(e3)
 end
+c85541675.mentioned_counter={
+	[0x12]=true,
+}
 function c85541675.cfilter(c)
 	local np=c:GetPosition()
 	local pp=c:GetPreviousPosition()

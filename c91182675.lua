@@ -40,6 +40,9 @@ function c91182675.initial_effect(c)
 	e4:SetOperation(c91182675.spop)
 	c:RegisterEffect(e4)
 end
+c91182675.mentioned_counter={
+	[0x1]=true,
+}
 function c91182675.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end

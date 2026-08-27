@@ -29,6 +29,9 @@ function c40089744.initial_effect(c)
 	e3:SetOperation(c40089744.thop)
 	c:RegisterEffect(e3)
 end
+c40089744.mentioned_counter={
+	[0x1]=true,
+}
 function c40089744.filter(c)
 	return ((c:IsSetCard(0x10cf) and c:IsType(TYPE_RITUAL)) or c:IsSetCard(0xbd)) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end

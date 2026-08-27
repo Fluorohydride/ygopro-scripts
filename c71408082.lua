@@ -1,5 +1,6 @@
 --黒竜の聖騎士
 function c71408082.initial_effect(c)
+	aux.AddCodeList(c,18803791)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

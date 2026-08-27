@@ -8,6 +8,9 @@ function c95451366.initial_effect(c)
 	e1:SetOperation(c95451366.activate)
 	c:RegisterEffect(e1)
 end
+c95451366.mentioned_counter={
+	[0x1]=true,
+}
 function c95451366.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x1,1,REASON_EFFECT) end
 end

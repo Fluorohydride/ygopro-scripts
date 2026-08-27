@@ -19,6 +19,9 @@ function c34541863.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c34541863.counter_add_list={0x100e}
+c34541863.mentioned_counter={
+	[0x100e]=true,
+}
 function c34541863.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

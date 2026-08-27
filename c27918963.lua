@@ -28,6 +28,9 @@ function c27918963.initial_effect(c)
 	e4:SetOperation(c27918963.operation)
 	c:RegisterEffect(e4)
 end
+c27918963.mentioned_counter={
+	[0x33]=true,
+}
 function c27918963.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xb3)
 end

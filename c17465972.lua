@@ -33,6 +33,10 @@ function c17465972.initial_effect(c)
 	e4:SetOperation(c17465972.ctop2)
 	c:RegisterEffect(e4)
 end
+c17465972.mentioned_counter={
+	[0x10]=true,
+	[0x1002]=true,
+}
 function c17465972.filter(c,e,tp)
 	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsSetCard(0x33) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end

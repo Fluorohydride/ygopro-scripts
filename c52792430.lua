@@ -24,6 +24,9 @@ function c52792430.initial_effect(c)
 	e3:SetOperation(c52792430.spop)
 	c:RegisterEffect(e3)
 end
+c52792430.mentioned_counter={
+	[0x1041]=true,
+}
 function c52792430.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsCanAddCounter(0x1041,1) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x1041,1) end

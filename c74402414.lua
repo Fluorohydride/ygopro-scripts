@@ -53,6 +53,9 @@ function c74402414.initial_effect(c)
 	e5:SetLabelObject(e4)
 	c:RegisterEffect(e5)
 end
+c74402414.mentioned_counter={
+	[0x25]=true,
+}
 function c74402414.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local hg=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,e:GetHandler())
 	if chk==0 then return hg:GetCount()>0 and hg:FilterCount(Card.IsAbleToGraveAsCost,nil)==hg:GetCount() end

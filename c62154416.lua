@@ -23,6 +23,9 @@ function c62154416.initial_effect(c)
 	e2:SetOperation(c62154416.atkop)
 	c:RegisterEffect(e2)
 end
+c62154416.mentioned_counter={
+	[0x1]=true,
+}
 function c62154416.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)

@@ -35,6 +35,9 @@ function c56074358.initial_effect(c)
 	e4:SetOperation(c56074358.spop)
 	c:RegisterEffect(e4)
 end
+c56074358.mentioned_counter={
+	[0x8]=true,
+}
 function c56074358.atkval(e,c)
 	return e:GetHandler():GetCounter(0x8)*300
 end

@@ -1,4 +1,4 @@
---Stare of the Snake Hair
+--凍てつく眼光のメデューサ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)

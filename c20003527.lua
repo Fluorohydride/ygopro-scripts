@@ -48,6 +48,9 @@ function c20003527.initial_effect(c)
 	e6:SetValue(c20003527.atkval)
 	c:RegisterEffect(e6)
 end
+c20003527.mentioned_counter={
+	[0x1019]=true,
+}
 function c20003527.sdcon(e)
 	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end

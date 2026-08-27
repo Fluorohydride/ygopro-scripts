@@ -25,6 +25,9 @@ function c33904024.initial_effect(c)
 	e3:SetOperation(c33904024.drop)
 	c:RegisterEffect(e3)
 end
+c33904024.mentioned_counter={
+	[0xd]=true,
+}
 function c33904024.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp and r==REASON_RULE then
 		e:GetHandler():AddCounter(0xd,1)

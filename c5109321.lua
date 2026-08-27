@@ -1,4 +1,4 @@
---R.B. Stage Landing
+--R.B.ジャンプ・ナンバー
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

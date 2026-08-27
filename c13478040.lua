@@ -20,6 +20,9 @@ function c13478040.initial_effect(c)
 	e2:SetOperation(c13478040.desop)
 	c:RegisterEffect(e2)
 end
+c13478040.mentioned_counter={
+	[0x17]=true,
+}
 function c13478040.cfilter(c,tp)
 	return c:IsSummonPlayer(tp)
 end

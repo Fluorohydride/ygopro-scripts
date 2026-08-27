@@ -49,6 +49,9 @@ function c13235258.initial_effect(c)
 	e8:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e8)
 end
+c13235258.mentioned_counter={
+	[0x1045]=true,
+}
 function c13235258.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()

@@ -22,6 +22,9 @@ function c5259518.initial_effect(c)
 	e2:SetOperation(c5259518.spop2)
 	c:RegisterEffect(e2)
 end
+c5259518.mentioned_counter={
+	[0x1041]=true,
+}
 function c5259518.cfilter(c)
 	return c:IsFaceup() and c:GetCounter(0x1041)>0
 end

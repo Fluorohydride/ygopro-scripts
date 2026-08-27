@@ -1,4 +1,4 @@
---The Undying Legion
+--不死の大軍団
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

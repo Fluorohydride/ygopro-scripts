@@ -1,11 +1,11 @@
---Pumpking the King of Grave Ghosts
+--墓場のゴースト王－パンプキング－
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)
 	--set
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
-	e1:SetCategory(CATEGORY_SSET+CATEGORY_HANDES)
+	e1:SetCategory(CATEGORY_SSET+CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,id)

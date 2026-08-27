@@ -9,7 +9,7 @@ function c74923978.initial_effect(c)
 	--handes
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(74923978,0))
-	e2:SetCategory(CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_DISCARD)
@@ -28,7 +28,7 @@ function c74923978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local ct=eg:FilterCount(c74923978.cfilter,nil,tp)
 	e:SetLabel(ct)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,ct)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES_OPPO,nil,0,1-tp,ct)
 end
 function c74923978.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()

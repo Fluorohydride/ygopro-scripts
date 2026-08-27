@@ -1,4 +1,4 @@
---Mercurium the Living Quicksilver
+--生命の汞 メルクリウム
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon

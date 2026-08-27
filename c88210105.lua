@@ -24,6 +24,9 @@ function c88210105.initial_effect(c)
 	e2:SetOperation(c88210105.spop)
 	c:RegisterEffect(e2)
 end
+c88210105.mentioned_counter={
+	[0x1019]=true,
+}
 function c88210105.costfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x18) and c:IsDiscardable()
 end

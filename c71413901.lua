@@ -31,6 +31,9 @@ function c71413901.initial_effect(c)
 	e3:SetOperation(c71413901.desop)
 	c:RegisterEffect(e3)
 end
+c71413901.mentioned_counter={
+	[0x1]=true,
+}
 function c71413901.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)

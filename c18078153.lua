@@ -1,4 +1,4 @@
---Army of the Haunted
+--生ける屍の軍団
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,97077563)

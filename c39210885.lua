@@ -23,6 +23,9 @@ function s.initial_effect(c)
 	e2:SetOperation(s.conop)
 	c:RegisterEffect(e2)
 end
+s.mentioned_counter={
+	[0x6a]=true,
+}
 function s.filter(c)
 	return c:IsSetCard(0x1a3) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end

@@ -26,6 +26,9 @@ function c48995978.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 aux.xyz_number[48995978]=88
+c48995978.mentioned_counter={
+	[0x2b]=true,
+}
 function c48995978.filter(c)
 	return c:GetSequence()<5
 end

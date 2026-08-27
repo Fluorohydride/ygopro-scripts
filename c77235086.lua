@@ -1,5 +1,6 @@
 --サイバー・エンジェル－弁天－
 function c77235086.initial_effect(c)
+	aux.AddCodeList(c,39996157)
 	c:EnableReviveLimit()
 	--damage
 	local e1=Effect.CreateEffect(c)

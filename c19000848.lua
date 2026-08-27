@@ -1,4 +1,4 @@
---Buio the Dawn's Light
+--暁光のブイオ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,71593652)

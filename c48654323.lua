@@ -1,5 +1,6 @@
 --凶導の白聖骸
 function c48654323.initial_effect(c)
+	aux.AddCodeList(c,60921537)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)

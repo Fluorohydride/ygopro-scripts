@@ -33,6 +33,9 @@ function c75304793.initial_effect(c)
 	e4:SetOperation(c75304793.operation)
 	c:RegisterEffect(e4)
 end
+c75304793.mentioned_counter={
+	[0x35]=true,
+}
 function c75304793.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:GetHandler():IsSetCard(0x1066) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

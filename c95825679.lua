@@ -1,5 +1,6 @@
 --デーモンの降臨
 function c95825679.initial_effect(c)
+	aux.AddCodeList(c,69035382)
 	c:EnableReviveLimit()
 	--code
 	aux.EnableChangeCode(c,70781052)

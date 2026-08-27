@@ -9,7 +9,7 @@ function c75884822.initial_effect(c)
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(75884822,0))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES_SELF)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)
@@ -46,7 +46,7 @@ function c75884822.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and c75884822.thtg(e,tp,eg,ep,ev,re,r,rp,0)
 		and Duel.SelectYesNo(tp,94) then
 		Duel.RegisterFlagEffect(tp,75884822,RESET_PHASE+PHASE_END,0,0)
-		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES)
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES_SELF)
 		e:SetOperation(c75884822.thop)
 		c75884822.thtg(e,tp,eg,ep,ev,re,r,rp,1)
 	else

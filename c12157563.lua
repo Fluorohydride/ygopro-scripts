@@ -5,7 +5,7 @@ function s.initial_effect(c)
 	local e1=aux.AddRitualProcEqual2(c,aux.TRUE,LOCATION_GRAVE,aux.TRUE,aux.FALSE,false,s.extraop)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCountLimit(1,id)
-	e1:SetHintTiming(TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
+	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	c:RegisterEffect(e1)
 	--ritual
 	local e2=Effect.CreateEffect(c)

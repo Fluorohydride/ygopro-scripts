@@ -24,6 +24,9 @@ function c68441986.initial_effect(c)
 	e2:SetOperation(c68441986.counterop)
 	c:RegisterEffect(e2)
 end
+c68441986.mentioned_counter={
+	[0x1063]=true,
+}
 function c68441986.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

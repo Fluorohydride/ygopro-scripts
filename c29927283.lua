@@ -1,4 +1,4 @@
---Returned Dino Daneen
+--新世竜ダニアン
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--search

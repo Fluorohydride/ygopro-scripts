@@ -28,7 +28,7 @@ function c43464884.initial_effect(c)
 	Duel.AddCustomActivityCounter(43464884,ACTIVITY_SPSUMMON,c43464884.counterfilter)
 end
 function c43464884.counterfilter(c)
-	return c:IsRace(RACE_BEASTWARRIOR)
+	return c:IsRace(RACE_BEASTWARRIOR) and c:IsFaceup()
 end
 function c43464884.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(43464884,tp,ACTIVITY_SPSUMMON)==0 end

@@ -23,6 +23,9 @@ function c73659078.initial_effect(c)
 	e2:SetValue(c73659078.atkval)
 	c:RegisterEffect(e2)
 end
+c73659078.mentioned_counter={
+	[0x1015]=true,
+}
 function c73659078.cfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WATER) and not c:IsPublic()
 end

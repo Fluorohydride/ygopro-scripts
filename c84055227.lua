@@ -18,6 +18,9 @@ function c84055227.initial_effect(c)
 	e2:SetValue(c84055227.attackup)
 	c:RegisterEffect(e2)
 end
+c84055227.mentioned_counter={
+	[0x1]=true,
+}
 function c84055227.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsRelateToBattle() and c:GetBattleTarget():IsType(TYPE_MONSTER)

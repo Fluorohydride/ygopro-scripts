@@ -1,4 +1,4 @@
---Readying of Rites
+--供物の下ごしらえ
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

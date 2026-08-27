@@ -10,6 +10,9 @@ function c35787450.initial_effect(c)
 	e1:SetOperation(c35787450.addc)
 	c:RegisterEffect(e1)
 end
+c35787450.mentioned_counter={
+	[0x1b]=true,
+}
 function c35787450.filter(c)
 	return c:IsFaceup() and c:IsCode(75041269) and c:IsCanAddCounter(0x1b,2)
 end
