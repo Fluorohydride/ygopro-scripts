@@ -51,7 +51,8 @@ function c11662742.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c11662742.dtcon(e,c)
-	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_FAIRY)
+	local ec=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_FAIRY) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
 function c11662742.dmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
