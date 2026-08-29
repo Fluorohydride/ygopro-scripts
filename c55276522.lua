@@ -106,7 +106,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:CheckSubGroup(s.spgcheck,3,3,tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:SelectSubGroup(tp,s.spgcheck,false,3,3,tp)
-		if sg:GetCount()>2 then
+		if sg then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

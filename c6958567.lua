@@ -84,7 +84,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			g1:Merge(g2)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local sg=g1:SelectSubGroup(tp,s.gcheck,false,2,2,tp)
-			if sg:GetCount()>0 then
+			if sg then
 				Duel.HintSelection(sg)
 				Duel.Destroy(sg,REASON_EFFECT)
 			end
