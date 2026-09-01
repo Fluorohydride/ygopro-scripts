@@ -63,7 +63,11 @@ function s.chfilter(c)
 	return c:GetSequence()==2
 end
 function s.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.chfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
+	if chk==0 then
+		local c=e:GetHandler()
+		local tc=Duel.GetMatchingGroup(s.chfilter,tp,LOCATION_MZONE,0,c):GetFirst()
+		return tc~=nil and aux.swapzonecheck(c,tc)
+	end
 end
 function s.chop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -72,6 +76,7 @@ function s.chop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.chfilter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()==1 then
 		local tc=g:GetFirst()
+		if not aux.swapzonecheck(c,tc) then return end
 		Duel.SwapSequence(c,tc)
 		if c:GetSequence()==cs then return end
 		if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil)
