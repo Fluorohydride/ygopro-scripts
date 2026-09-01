@@ -80,11 +80,24 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleExtra(1-tp)
 	end
 end
+function s.retexfilter(c)
+	return c:IsPreviousLocation(LOCATION_EXTRA) and c:IsPreviousPosition(POS_FACEUP)
+end
+function s.returnremoved(g)
+	local pg=g:Filter(s.retexfilter,nil)
+	local dg=g:Filter(aux.NOT(s.retexfilter),nil)
+	if #pg>0 then
+		Duel.SendtoExtraP(pg,nil,REASON_EFFECT)
+	end
+	if #dg>0 then
+		Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	end
+end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
 	local fid=e:GetLabel()
 	local tc=e:GetLabelObject()
 	if tc and tc:GetFlagEffectLabel(id)==fid then
-		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		s.returnremoved(Group.FromCards(tc))
 	end
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -134,6 +147,8 @@ function s.retfilter(c,fid)
 end
 function s.retop2(e,tp,eg,ep,ev,re,r,rp)
 	local fid=e:GetLabel()
-	local tg=e:GetLabelObject():Filter(s.retfilter,nil,fid)
-	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local g=e:GetLabelObject()
+	local tg=g:Filter(s.retfilter,nil,fid)
+	g:DeleteGroup()
+	s.returnremoved(tg)
 end
