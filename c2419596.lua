@@ -1,4 +1,4 @@
---No.101 S·H·Ark Knight－ソウル・アサイラム
+--No.101 S・H・Ark Knight－ソウル・アサイラム
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon
