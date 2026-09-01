@@ -18,18 +18,22 @@ function c75043725.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function c75043725.filter(c)
-	return c:IsLevelBelow(3) and c:IsType(TYPE_NORMAL) and c:IsAbleToHand()
+function c75043725.filter(c,p)
+	return c:IsLevelBelow(3) and c:IsType(TYPE_NORMAL) and c:IsAbleToHand(p)
 end
 function c75043725.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g1=Duel.SelectMatchingCard(tp,c75043725.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c75043725.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc1=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
-	local g2=Duel.SelectMatchingCard(1-tp,c75043725.filter,tp,0,LOCATION_DECK,1,1,nil)
+	local g2=Duel.SelectMatchingCard(1-tp,c75043725.filter,tp,0,LOCATION_DECK,1,1,nil,1-tp)
 	local tc2=g2:GetFirst()
-	g1:Merge(g2)
-	Duel.SendtoHand(g1,nil,REASON_EFFECT)
-	if tc1 then Duel.ConfirmCards(1-tp,tc1) end
-	if tc2 then	Duel.ConfirmCards(tp,tc2) end
+	if tc1 then
+		Duel.SendtoHand(tc1,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,tc1)
+	end
+	if tc2 then
+		Duel.SendtoHand(tc2,nil,REASON_EFFECT,1-tp)
+		Duel.ConfirmCards(tp,tc2)
+	end
 end

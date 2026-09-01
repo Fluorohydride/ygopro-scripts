@@ -49,7 +49,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not g:CheckSubGroup(aux.gffcheck,2,2,s.thfilter1,nil,s.thfilter2,nil) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tg1=g:SelectSubGroup(tp,aux.gffcheck,false,2,2,s.thfilter1,nil,s.thfilter2,nil)
-	if tg1:GetCount()==2 then
+	if tg1 then
 		Duel.SendtoHand(tg1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tg1)
 	end

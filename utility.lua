@@ -1734,15 +1734,17 @@ function Auxiliary.RegisterMergedDelayedEvent_ToSingleCard_AddOperation(c,g,even
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(event)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE)
-	e1:SetRange(0xff)
 	e1:SetLabel(event_code_single,event)
 	e1:SetLabelObject(g)
 	e1:SetOperation(Auxiliary.MergedDelayEventCheck1_ToSingleCard)
-	c:RegisterEffect(e1)
+	-- Card-registered FIELD continuous effects fail is_activateable while the handler is Set.
+	-- Duel.RegisterEffect is FIELD_ONLY, so Check1 still merges when this card is face-down,
+	-- which is required for cteffect. EVENT_MOVE still clears g if this copy becomes public.
+	Duel.RegisterEffect(e1,0)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_CHAIN_END)
 	e2:SetOperation(Auxiliary.MergedDelayEventCheck2_ToSingleCard)
-	c:RegisterEffect(e2)
+	Duel.RegisterEffect(e2,0)
 end
 function Auxiliary.ThisCardMovedToPublicResetCheck_ToSingleCard(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()

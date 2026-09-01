@@ -33,7 +33,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:SelectSubGroup(tp,s.fselect,false,2,2)
-	if sg:GetCount()==2 then
+	if sg then
 		local fid=e:GetHandler():GetFieldID()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		for tc in aux.Next(sg) do

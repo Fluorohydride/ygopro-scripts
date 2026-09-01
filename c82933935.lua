@@ -27,15 +27,15 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,e:GetHandler(),1,0,0)
 end
-function s.thfilter(c)
-	return (c:IsSetCard(0x1b7) or c:IsType(TYPE_FLIP)) and c:IsAbleToHand()
+function s.thfilter(c,p)
+	return (c:IsSetCard(0x1b7) or c:IsType(TYPE_FLIP)) and c:IsAbleToHand(p)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(s.thfilter,tp,0,LOCATION_DECK,nil)
+	local g=Duel.GetMatchingGroup(s.thfilter,tp,0,LOCATION_DECK,nil,1-tp)
 	if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(id,4)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local sg=g:Select(1-tp,1,1,nil)
-		Duel.SendtoHand(sg,nil,REASON_EFFECT)
+		Duel.SendtoHand(sg,nil,REASON_EFFECT,1-tp)
 		Duel.ConfirmCards(tp,sg)
 	end
 	local c=e:GetHandler()

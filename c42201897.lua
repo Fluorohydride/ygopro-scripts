@@ -55,7 +55,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local ct=math.floor(tc:GetLevel()/4)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local sg=mg:SelectSubGroup(tp,s.gcheck,false,ct,ct,tp,tc)
-		if sg:GetCount()>0 then
+		if sg then
 			Duel.HintSelection(sg)
 			if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)~=0 then
 				Duel.BreakEffect()
