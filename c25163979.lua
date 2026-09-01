@@ -31,17 +31,16 @@ end
 function c25163979.mvfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x112)
 end
-function c25163979.mvfilter2(c,tp)
+function c25163979.chfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x112) and c:GetSequence()<5
-		and Duel.IsExistingMatchingCard(c25163979.mvfilter3,tp,LOCATION_MZONE,0,1,c)
 end
-function c25163979.mvfilter3(c)
-	return c:IsFaceup() and c:IsSetCard(0x112) and c:GetSequence()<5
+function c25163979.gcheck(g)
+	return aux.swapzonecheck(g:GetFirst(),g:GetNext())
 end
 function c25163979.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c25163979.mvfilter1,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0
-	local b2=Duel.IsExistingMatchingCard(c25163979.mvfilter2,tp,LOCATION_MZONE,0,1,nil,tp)
+	local b2=Duel.GetMatchingGroup(c25163979.chfilter,tp,LOCATION_MZONE,0,nil):CheckSubGroup(c25163979.gcheck,2,2)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(25163979,1),aux.Stringid(25163979,2))
@@ -61,15 +60,13 @@ function c25163979.mvop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.MoveSequence(g:GetFirst(),nseq)
 		end
 	else
+		local g=Duel.GetMatchingGroup(c25163979.chfilter,tp,LOCATION_MZONE,0,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25163979,3))
-		local g1=Duel.SelectMatchingCard(tp,c25163979.mvfilter2,tp,LOCATION_MZONE,0,1,1,nil,tp)
-		local tc1=g1:GetFirst()
-		if not tc1 then return end
-		Duel.HintSelection(g1)
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25163979,3))
-		local g2=Duel.SelectMatchingCard(tp,c25163979.mvfilter3,tp,LOCATION_MZONE,0,1,1,tc1)
-		Duel.HintSelection(g2)
-		local tc2=g2:GetFirst()
+		local sg=g:SelectSubGroup(tp,c25163979.gcheck,false,2,2)
+		if not sg or sg:GetCount()~=2 then return end
+		local tc1=sg:GetFirst()
+		local tc2=sg:GetNext()
+		Duel.HintSelection(sg)
 		Duel.SwapSequence(tc1,tc2)
 	end
 end
