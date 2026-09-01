@@ -31,35 +31,6 @@ function s.initial_effect(c)
 	e3:SetTarget(s.thtg)
 	e3:SetOperation(s.thop)
 	c:RegisterEffect(e3)
-	if not aux.fus_mat_hack_check then
-		aux.fus_mat_hack_check=true
-		function aux.fus_mat_hack_exmat_filter(c)
-			return c:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,c:GetControler())
-		end
-		_GetFusionMaterial=Duel.GetFusionMaterial
-		function Duel.GetFusionMaterial(tp,loc)
-			if loc==nil then loc=LOCATION_HAND+LOCATION_MZONE end
-			local g=_GetFusionMaterial(tp,loc)
-			local exg=Duel.GetMatchingGroup(aux.fus_mat_hack_exmat_filter,tp,LOCATION_EXTRA,0,nil)
-			return g+exg
-		end
-		_SendtoGrave=Duel.SendtoGrave
-		function Duel.SendtoGrave(tg,reason)
-			if reason~=REASON_EFFECT+REASON_MATERIAL+REASON_FUSION or aux.GetValueType(tg)~="Group" then
-				return _SendtoGrave(tg,reason)
-			end
-			local tc=tg:Filter(Card.IsLocation,nil,LOCATION_EXTRA+LOCATION_GRAVE):Filter(aux.fus_mat_hack_exmat_filter,nil):GetFirst()
-			if tc then
-				local te=tc:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,tc:GetControler())
-				te:UseCountLimit(tc:GetControler())
-			end
-			local rg=tg:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
-			tg:Sub(rg)
-			local ct1=_SendtoGrave(tg,reason)
-			local ct2=Duel.Remove(rg,POS_FACEUP,reason)
-			return ct1+ct2
-		end
-	end
 end
 function s.reg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -109,23 +80,18 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 			local dg=sg:Select(tp,1,1,nil)
 			Duel.ShuffleHand(tp)
 			Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
+			--Once this turn, if you Fusion Summon a "Lunalight" monster, you can also banish monsters from your grave as material
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,3))
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_EXTRA_FUSION_MATERIAL)
+			e1:SetCountLimit(1)
+			e1:SetDescription(aux.Stringid(id,3))
 			e1:SetTargetRange(LOCATION_GRAVE,0)
-			e1:SetTarget(s.mttg)
-			e1:SetValue(s.mtval)
-			e1:SetValue(1)
-			e1:SetReset(RESET_PHASE+PHASE_END)
+			e1:SetTarget(function(_,c) return c:IsAbleToRemove() and c:IsType(TYPE_MONSTER) end)
+			e1:SetOperation(function() return FusionSpell.FUSION_OPERATION_BANISH end)
+			e1:SetValue(function(extra_material_effect,c) return c and c:IsSetCard(0xdf) and c:IsControler(extra_material_effect:GetHandlerPlayer()) end)
+			e1:SetReset(RESET_PHASE|PHASE_END)
 			Duel.RegisterEffect(e1,tp)
 		end
 	end
-end
-function s.mttg(e,c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
-end
-function s.mtval(e,c)
-	if not c then return true end
-	return c:IsSetCard(0xdf)
 end

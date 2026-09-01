@@ -1,106 +1,74 @@
 --ラピッド・トリガー
-function c67526112.initial_effect(c)
+local s,id,o=GetID()
+function s.initial_effect(c)
 	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(67526112,0))
+	local e1=FusionSpell.CreateSummonEffect(c,{
+		pre_select_mat_location=LOCATION_MZONE,
+		mat_operation_code_map={
+			{ [LOCATION_ONFIELD|LOCATION_DECK|LOCATION_EXTRA|LOCATION_HAND] = FusionSpell.FUSION_OPERATION_DESTROY },
+			{ [LOCATION_GRAVE] = FusionSpell.FUSION_OPERATION_BANISH },
+			{ [0xff] = FusionSpell.FUSION_OPERATION_GRAVE }
+		},
+		extra_target=s.extra_target,
+		stage_x_operation=s.stage_x_operation
+	})
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_DESTROY)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCountLimit(1,67526112+EFFECT_COUNT_CODE_OATH)
-	e1:SetTarget(c67526112.target)
-	e1:SetOperation(c67526112.activate)
+	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
 	c:RegisterEffect(e1)
 end
-function c67526112.filter1(c,e)
-	return c:IsOnField() and not c:IsImmuneToEffect(e) and c:IsDestructable(e)
-end
-function c67526112.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-function c67526112.target(e,tp,eg,ep,ev,re,r,rp,chk)
+
+function s.extra_target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
-		local res=Duel.IsExistingMatchingCard(c67526112.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
-		if not res then
-			local ce=Duel.GetChainMaterial(tp)
-			if ce~=nil then
-				local fgroup=ce:GetTarget()
-				local mg2=fgroup(ce,e,tp)
-				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c67526112.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
-			end
-		end
-		return res
+		return true
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,tp,LOCATION_ONFIELD)
+	--- if tp is affected by any EFFECT_CHAIN_MATERIAL effect, it can not be chained with Stardust Dragon
+	local chain_material_effects={Duel.IsPlayerAffectedByEffect(tp,EFFECT_CHAIN_MATERIAL)}
+	if chain_material_effects~=nil and #chain_material_effects>0 and chain_material_effects[1]~=nil then
+		return
+	end
+	--- FIXME
+	--- if tp is affected by any EFFECT_EXTRA_FUSION_MATERIAL, and the EFFECT_EXTRA_FUSION_MATERIAL target range is out of LOCATION_FIELD, it can not be chained with Stardust Dragon
+	--- However, current core does not have a method to get the target range of an Effect, fix this once core provides
+	--- The same for continues EFFECT_EXTRA_FUSION_MATERIAL like 捕食植物トリアンティス and 魔道騎竜カース・オブ・ドラゴン
+
+	--- Otherwise, this spell will guarantee to destroy 2+ monsters from monster zone.
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,tp,LOCATION_MZONE)
 end
-function c67526112.activate(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(c67526112.filter1,nil,e)
-	local sg1=Duel.GetMatchingGroup(c67526112.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-	local mg2=nil
-	local sg2=nil
-	local ce=Duel.GetChainMaterial(tp)
-	if ce~=nil then
-		local fgroup=ce:GetTarget()
-		mg2=fgroup(ce,e,tp)
-		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(c67526112.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-	end
-	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
-		local sg=sg1:Clone()
-		if sg2 then sg:Merge(sg2) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:Select(tp,1,1,nil)
-		local tc=tg:GetFirst()
-		local res=false
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-			tc:SetMaterial(mat1)
-			if Duel.Destroy(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)==#mat1 then
-				Duel.BreakEffect()
-				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-				res=true
-			end
-		else
-			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2)
-			res=true
-		end
-		if res then
-			tc:CompleteProcedure()
-			local e0=Effect.CreateEffect(c)
-			e0:SetType(EFFECT_TYPE_SINGLE)
-			e0:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-			e0:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e0,true)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
-			e1:SetValue(c67526112.bttg)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e1,true)
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetCode(EFFECT_IMMUNE_EFFECT)
-			e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-			e2:SetRange(LOCATION_MZONE)
-			e2:SetValue(c67526112.immval)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e2,true)
-			tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(67526112,1))
-		end
+
+---@type FUSION_SPELL_STAGE_X_CALLBACK_FUNCTION
+function s.stage_x_operation(e,tc,tp,stage,mg_fuison_spell,mg_all)
+	if stage==FusionSpell.STAGE_AT_SUMMON_OPERATION_FINISH then
+		local c=e:GetHandler()
+		local e0=Effect.CreateEffect(c)
+		e0:SetType(EFFECT_TYPE_SINGLE)
+		e0:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+		e0:SetReset(RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterEffect(e0,true)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
+		e1:SetValue(s.bttg)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterEffect(e1,true)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_IMMUNE_EFFECT)
+		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+		e2:SetRange(LOCATION_MZONE)
+		e2:SetValue(s.immval)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterEffect(e2,true)
+		tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,1))
 	end
 end
-function c67526112.bttg(e,c)
+
+function s.bttg(e,c)
 	return not c:IsSummonLocation(LOCATION_EXTRA)
 end
-function c67526112.immval(e,te)
+
+function s.immval(e,te)
 	local tc=te:GetOwner()
 	return tc~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
 		and te:GetActivateLocation()==LOCATION_MZONE and tc:IsSummonLocation(LOCATION_EXTRA)

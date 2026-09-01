@@ -16,16 +16,19 @@ function s.initial_effect(c)
 	e1:SetOperation(s.disop)
 	c:RegisterEffect(e1)
 	--fusion summon
-	local e2=Effect.CreateEffect(c)
+	local e2=FusionSpell.CreateSummonEffect(c,{
+		fusfilter=s.fusfilter,
+		fusion_spell_matfilter=s.fusion_spell_matfilter,
+		pre_select_mat_location=LOCATION_MZONE,
+		pre_select_mat_opponent_location=LOCATION_MZONE,
+		gc=function(e) return e:GetHandler() end
+	})
 	e2:SetDescription(aux.Stringid(id,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,id+o)
 	e2:SetCondition(s.spcon)
-	e2:SetTarget(s.sptg)
-	e2:SetOperation(s.spop)
 	c:RegisterEffect(e2)
 end
 function s.ffilter(c)
@@ -72,74 +75,11 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp
+	return rp==1-tp and e:GetHandler():IsAttribute(ATTRIBUTE_DARK)
 end
-function s.filter1(c,e)
-	return c:IsOnField() and c:IsFusionAttribute(ATTRIBUTE_DARK) and not c:IsImmuneToEffect(e)
+function s.fusfilter(c)
+	return c:IsAttribute(ATTRIBUTE_DARK)
 end
-function s.filter2(c,e,tp,m,f,gc,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_DARK) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,gc,chkf)
-end
-function s.ffiltr(c,e)
-	return c:IsFaceup() and c:IsCanBeFusionMaterial() and c:IsFusionAttribute(ATTRIBUTE_DARK)
-		and (not e or not c:IsImmuneToEffect(e))
-end
-function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter1,nil,e)
-		local mg2=Duel.GetMatchingGroup(s.ffiltr,tp,0,LOCATION_MZONE,nil,e)
-		mg1:Merge(mg2)
-		local res=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,c,chkf)
-		if not res then
-			local ce=Duel.GetChainMaterial(tp)
-			if ce~=nil then
-				local fgroup=ce:GetTarget()
-				local mg3=fgroup(ce,e,tp)
-				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,c,chkf)
-			end
-		end
-		return res and c:IsAttribute(ATTRIBUTE_DARK)
-	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-end
-function s.spop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local chkf=tp
-	if not c:IsRelateToChain() or c:IsImmuneToEffect(e) then return end
-	local mg1=Duel.GetFusionMaterial(tp):Filter(s.filter1,nil,e)
-	local mg2=Duel.GetMatchingGroup(s.ffiltr,tp,0,LOCATION_MZONE,nil,e)
-	mg1:Merge(mg2)
-	local sg1=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)
-	local mg3=nil
-	local sg2=nil
-	local ce=Duel.GetChainMaterial(tp)
-	if ce~=nil then
-		local fgroup=ce:GetTarget()
-		mg3=fgroup(ce,e,tp)
-		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg3,mf,c,chkf)
-	end
-	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
-		local sg=sg1:Clone()
-		if sg2 then sg:Merge(sg2) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:Select(tp,1,1,nil)
-		local tc=tg:GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,c,chkf)
-			tc:SetMaterial(mat1)
-			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		elseif ce then
-			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,c,chkf)
-			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2)
-		end
-		tc:CompleteProcedure()
-	end
+function s.fusion_spell_matfilter(c)
+	return c:IsFusionAttribute(ATTRIBUTE_DARK)
 end
