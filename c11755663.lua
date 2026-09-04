@@ -35,7 +35,7 @@ function c11755663.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(c,REASON_COST)
-	c:RegisterFlagEffect(11755663,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(11755663,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 end
 function c11755663.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -67,7 +67,7 @@ function c52481437.atop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c52481437.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(52481437,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(52481437,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,227)
 end
 function c52481437.thfilter(c)
 	return c:IsRace(RACE_MACHINE) and not c:IsCode(52481437) and c:IsAbleToHand()
