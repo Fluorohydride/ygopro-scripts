@@ -135,5 +135,5 @@ function c4538826.gyop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4538826.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsFaceup()
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsFaceup() and c:IsLocation(LOCATION_MZONE)
 end
