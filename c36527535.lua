@@ -23,5 +23,6 @@ function c36527535.sprcon(e,c)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 end
 function c36527535.dtcon(e,c)
-	return c:IsSetCard(0x9f)
+	local ec=e:GetHandler()
+	return c:IsSetCard(0x9f) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

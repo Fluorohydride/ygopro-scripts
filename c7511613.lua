@@ -78,7 +78,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 		and g:GetClassCount(Card.GetCode)>=2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
-		if tg:GetCount()>0 then
+		if tg then
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tg)
 		end

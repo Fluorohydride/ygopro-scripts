@@ -69,7 +69,7 @@ function c7337976.tgop2(e,tp,eg,ep,ev,re,r,rp)
 	aux.GCheckAdditional=aux.dncheck
 	local sg=g:SelectSubGroup(tp,aux.TRUE,false,1,ct)
 	aux.GCheckAdditional=nil
-	if sg:GetCount()>0 then
+	if sg then
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 	end
 end

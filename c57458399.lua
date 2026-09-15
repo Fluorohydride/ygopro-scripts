@@ -25,7 +25,7 @@ function c57458399.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57458399.spfilter(c,tp)
-	return c:IsSummonLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
+	return c:IsSummonLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp) and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function c57458399.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57458399.spfilter,1,nil,tp)

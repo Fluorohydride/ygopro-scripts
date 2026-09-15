@@ -17,7 +17,7 @@ function c42388271.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_DOUBLE_TRIBUTE)
-	e2:SetValue(1)
+	e2:SetValue(c42388271.condition)
 	c:RegisterEffect(e2)
 	--tograve
 	local e3=Effect.CreateEffect(c)
@@ -32,6 +32,10 @@ function c42388271.initial_effect(c)
 	e3:SetTarget(c42388271.tgtg)
 	e3:SetOperation(c42388271.tgop)
 	c:RegisterEffect(e3)
+end
+function c42388271.condition(e,c)
+	local ec=e:GetHandler()
+	return ec:IsFaceup() or c:GetControler()==ec:GetControler()
 end
 function c42388271.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

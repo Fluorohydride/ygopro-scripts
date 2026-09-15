@@ -19,7 +19,8 @@ function c33750025.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c33750025.tricon(e,c)
-	return c:IsRace(RACE_DRAGON)
+	local ec=e:GetHandler()
+	return c:IsRace(RACE_DRAGON) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
 function c33750025.thfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsLevelAbove(5) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

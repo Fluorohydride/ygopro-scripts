@@ -53,7 +53,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not g:CheckSubGroup(s.gcheck,3,3,tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,3,3)
-	if sg:GetCount()>0 and Duel.SendtoGrave(sg,REASON_EFFECT)==3
+	if sg and Duel.SendtoGrave(sg,REASON_EFFECT)==3
 		and sg:IsExists(Card.IsLocation,3,nil,LOCATION_GRAVE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp)

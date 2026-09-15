@@ -27,7 +27,8 @@ function c97574404.dtcon(e)
 	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==1
 end
 function c97574404.dtval(e,c)
-	return c:IsSetCard(0x5)
+	local ec=e:GetHandler()
+	return c:IsSetCard(0x5) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
 function c97574404.sumcon(e)
 	return e:GetHandler():GetFlagEffectLabel(FLAG_ID_ARCANA_COIN)==0

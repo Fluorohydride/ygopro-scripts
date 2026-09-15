@@ -8,5 +8,6 @@ function c17444133.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17444133.condition(e,c)
-	return c:IsAttribute(ATTRIBUTE_LIGHT)
+	local ec=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

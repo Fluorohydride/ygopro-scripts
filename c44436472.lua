@@ -8,5 +8,6 @@ function c44436472.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c44436472.condition(e,c)
-	return c:IsAttribute(ATTRIBUTE_DARK)
+	local ec=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_DARK) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

@@ -66,7 +66,7 @@ function c89839552.thop2(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 			local sg=og:Select(1-tp,1,1,nil)
-			Duel.SendtoHand(sg,nil,REASON_EFFECT)
+			Duel.SendtoHand(sg,nil,REASON_EFFECT,1-tp)
 			Duel.ConfirmCards(tp,sg)
 		end
 	end

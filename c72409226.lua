@@ -85,7 +85,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:CheckSubGroup(s.thcheck,1)==false then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tg=g:SelectSubGroup(tp,s.thcheck,false,1,2)
-	if #tg>0 and Duel.SendtoHand(tg,nil,REASON_EFFECT)~=0 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
+	if tg and Duel.SendtoHand(tg,nil,REASON_EFFECT)~=0 and tg:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
 		local sg=tg:Filter(Card.IsControler,nil,tp)
 		if sg:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,sg)

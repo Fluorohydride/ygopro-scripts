@@ -59,7 +59,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	aux.GCheckAdditional=s.lncheck
 	local sg=g:SelectSubGroup(tp,aux.TRUE,false,1,2)
 	aux.GCheckAdditional=nil
-	if sg:GetCount()>0 then
+	if sg then
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

@@ -55,6 +55,7 @@ function c11481610.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if not res then
+		Duel.BreakEffect()
 		local lp=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 		Duel.SetLP(tp,Duel.GetLP(tp)-lp*1000)
 	end

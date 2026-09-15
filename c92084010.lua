@@ -8,5 +8,6 @@ function c92084010.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c92084010.condition(e,c)
-	return c:IsAttribute(ATTRIBUTE_WATER)
+	local ec=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_WATER) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

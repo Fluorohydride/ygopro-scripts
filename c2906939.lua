@@ -65,7 +65,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if sct>0 and g:GetClassCount(Card.GetCode)>=sct then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tg=g:SelectSubGroup(tp,aux.dncheck,false,sct,sct)
-		if tg:GetCount()>0 then
+		if tg then
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tg)
 			if tg:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then

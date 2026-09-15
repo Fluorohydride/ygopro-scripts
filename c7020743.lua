@@ -86,7 +86,7 @@ function s.ovop(e,tp,eg,ep,ev,re,r,rp)
 		if #g>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local sg=g:SelectSubGroup(tp,s.gcheck,false,1,2,tp)
-			if sg:GetCount()>0 then
+			if sg then
 				Duel.HintSelection(sg)
 				Duel.Overlay(c,sg)
 			end

@@ -8,5 +8,6 @@ function c23087070.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23087070.condition(e,c)
-	return c:IsRace(RACE_PLANT)
+	local ec=e:GetHandler()
+	return c:IsRace(RACE_PLANT) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

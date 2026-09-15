@@ -38,5 +38,6 @@ function c64450427.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c64450427.dtcon(e,c)
-	return c:IsType(TYPE_PENDULUM)
+	local ec=e:GetHandler()
+	return c:IsType(TYPE_PENDULUM) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end

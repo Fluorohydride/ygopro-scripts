@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCode(EVENT_CHAIN_SOLVING)
+	e3:SetLabel(id)
 	e3:SetCondition(s.rmcon)
 	e3:SetOperation(s.rmop)
 	c:RegisterEffect(e3)
@@ -83,7 +84,7 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.rmlimit(e,c,tp,r,re)
-	return c:GetOriginalCode()==e:GetLabel() and re and re:GetHandler():GetOriginalCode()==id and r&REASON_EFFECT~=0
+	return c:GetOriginalCode()==e:GetLabel() and re and re:GetLabel()==id and r&REASON_EFFECT~=0
 end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetLabelObject():GetFlagEffect(id)~=0

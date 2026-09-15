@@ -10,23 +10,23 @@ function c78053598.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c78053598.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,0,LOCATION_DECK,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,0,LOCATION_DECK,1,nil,1-tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	getmetatable(e:GetHandler()).announce_filter={TYPE_MONSTER,OPCODE_ISTYPE,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT,OPCODE_AND}
 	local code=Duel.AnnounceCard(tp,table.unpack(getmetatable(e:GetHandler()).announce_filter))
 	Duel.SetTargetParam(code)
 	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
 end
-function c78053598.filter(c,code)
-	return c:IsType(TYPE_MONSTER) and c:IsCode(code) and c:IsAbleToHand()
+function c78053598.filter(c,code,p)
+	return c:IsType(TYPE_MONSTER) and c:IsCode(code) and c:IsAbleToHand(p)
 end
 function c78053598.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(1-tp,c78053598.filter,1-tp,LOCATION_DECK,0,1,1,nil,code)
+	local g=Duel.SelectMatchingCard(1-tp,c78053598.filter,1-tp,LOCATION_DECK,0,1,1,nil,code,1-tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		Duel.SendtoHand(tc,nil,REASON_EFFECT,1-tp)
 		Duel.ConfirmCards(tp,tc)
 	end
 end

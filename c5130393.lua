@@ -42,8 +42,8 @@ end
 function c5130393.filter(c,e,tp)
 	return c:GetTextAttack()>=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c5130393.thfilter(c)
-	return c:GetTextAttack()>=0 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+function c5130393.thfilter(c,p)
+	return c:GetTextAttack()>=0 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand(p)
 end
 function c5130393.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c5130393.filter(chkc,e,tp) end
@@ -58,7 +58,7 @@ function c5130393.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local vc=tc:GetTextAttack()
 	local sel=1
-	local g=Duel.GetMatchingGroup(c5130393.thfilter,tp,0,LOCATION_DECK,nil)
+	local g=Duel.GetMatchingGroup(c5130393.thfilter,tp,0,LOCATION_DECK,nil,1-tp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(5130393,2))
 	if g:GetCount()>0 then
 		sel=Duel.SelectOption(1-tp,1213,1214)
@@ -67,13 +67,13 @@ function c5130393.tdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if sel==0 then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CONFIRM)
-		local sg=Duel.SelectMatchingCard(1-tp,c5130393.thfilter,tp,0,LOCATION_DECK,1,1,nil)
+		local sg=Duel.SelectMatchingCard(1-tp,c5130393.thfilter,tp,0,LOCATION_DECK,1,1,nil,1-tp)
 		Duel.ConfirmCards(tp,sg)
 		if sg:GetFirst():GetTextAttack()<vc then
 			Duel.ShuffleDeck(1-tp)
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		else
-			Duel.SendtoHand(sg,nil,REASON_EFFECT)
+			Duel.SendtoHand(sg,nil,REASON_EFFECT,1-tp)
 			Duel.ConfirmCards(1-tp,sg)
 		end
 	else

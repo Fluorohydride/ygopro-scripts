@@ -53,7 +53,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 			if tg:CheckSubGroup(s.gcheck,1,ft,lv) and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local ssg=tg:SelectSubGroup(tp,s.gcheck,false,1,ft,lv)
-				if ssg:GetCount()>0 then
+				if ssg then
 					Duel.BreakEffect()
 					Duel.SpecialSummon(ssg,0,tp,tp,true,false,POS_FACEUP)
 				end
