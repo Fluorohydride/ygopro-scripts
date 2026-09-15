@@ -62,7 +62,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spfilter1(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(6) and c:IsRace(RACE_FISH) and e:GetHandler():IsAbleToRemove()
+	return c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(6) and c:IsRace(RACE_FISH) and e:GetHandler():IsAbleToRemove()
 end
 function s.rmfilter(c,tp,e)
 	return c:IsLocation(LOCATION_MZONE) and c:IsControler(1-tp) and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)

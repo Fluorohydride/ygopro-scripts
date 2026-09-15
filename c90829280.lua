@@ -82,7 +82,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.filter2(c,e,tp)
-	return c:IsCode(78371393) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
+	return c:IsFaceupEx() and c:IsCode(78371393) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
