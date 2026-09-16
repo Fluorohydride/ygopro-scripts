@@ -10,6 +10,7 @@ function c30010480.initial_effect(c)
 	e1:SetCode(EFFECT_EXTRA_SUMMON_COUNT)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_HAND,LOCATION_HAND)
+	e1:SetCondition(c30010480.sumcon)
 	e1:SetValue(c30010480.sumval)
 	c:RegisterEffect(e1)
 	--atk
@@ -23,6 +24,10 @@ function c30010480.initial_effect(c)
 	e3:SetCondition(c30010480.atkcon)
 	e3:SetOperation(c30010480.atkop)
 	c:RegisterEffect(e3)
+end
+function c30010480.sumcon(e)
+	local z=e:GetHandler():GetLinkedZone()
+	return bit.band(z,0x1f)~=0 or bit.band(z,0x1f0000)~=0
 end
 function c30010480.sumval(e,c)
 	if c:IsControler(e:GetHandlerPlayer()) then
