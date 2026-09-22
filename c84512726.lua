@@ -59,7 +59,9 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 		res=false
 	end
 	local cg=Duel.GetMatchingGroup(s.chkfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_ONFIELD+LOCATION_DECK,0,nil)
-	local ct=math.min(ft,g:GetCount(),cg:GetCount())
+	local dt=g:GetCount()
+	if dt>1 and not g:IsExists(aux.NOT(Card.IsType),1,nil,TYPE_FIELD) then dt=1 end
+	local ct=math.min(ft,dt,cg:GetCount())
 	if ct==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local rg=cg:Select(tp,1,ct,nil)
