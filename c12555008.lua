@@ -34,14 +34,11 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetMatchingGroupCount(s.cfilter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then return ct>0 end
 	local diss={}
-	local dis=Duel.SelectField(tp,1,0,LOCATION_MZONE,(0x60)<<16)
-	table.insert(diss,math.log((dis>>16),2))
-	while ct>1 and (~(dis>>16))&0x1f>0
-		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) do
-		local dis2=Duel.SelectField(tp,1,0,LOCATION_MZONE,((dis>>16)|0x60)<<16)
-		ct=ct-1
-		table.insert(diss,math.log((dis2>>16),2))
-		dis=dis|dis2
+	local dis=Duel.SelectField(tp,math.min(ct,5),0,LOCATION_MZONE,0x60<<16)
+	for i=0,4 do
+		if dis&(1<<(i+16))~=0 then
+			table.insert(diss,i)
+		end
 	end
 	e:SetLabel(table.unpack(diss))
 	Duel.Hint(HINT_ZONE,tp,dis)
