@@ -60,7 +60,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spfilter(c,e,tp,fc)
-	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceupEx() and aux.IsMaterialListCode(fc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function s.fselect(tg,tp,ec)
 	return Duel.GetMZoneCount(tp,ec,tp)>=#tg

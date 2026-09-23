@@ -22,7 +22,7 @@ function c66938505.sccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c66938505.scfilter1(c,e,tp,mc)
 	local mg=Group.FromCards(c,mc)
-	return not c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and not c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c66938505.scfilter2,tp,LOCATION_EXTRA,0,1,nil,mg)
 end
 function c66938505.scfilter2(c,mg)
