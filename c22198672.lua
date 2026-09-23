@@ -51,25 +51,24 @@ function c22198672.seqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(tc,nseq)
 	end
 end
-function c22198672.chfilter1(c)
+function c22198672.chfilter(c)
 	return c:IsType(TYPE_LINK) and c:GetSequence()<5
-		and Duel.IsExistingMatchingCard(c22198672.chfilter2,c:GetControler(),LOCATION_MZONE,0,1,c)
 end
-function c22198672.chfilter2(c)
-	return c:IsType(TYPE_LINK) and c:GetSequence()<5
+function c22198672.gcheck(g)
+	if g:GetClassCount(Card.GetControler)~=1 then return false end
+	return aux.swapzonecheck(g:GetFirst(),g:GetNext())
 end
 function c22198672.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c22198672.chfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(c22198672.chfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if chk==0 then return g:CheckSubGroup(c22198672.gcheck,2,2) end
 end
 function c22198672.chop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g1=Duel.SelectMatchingCard(tp,c22198672.chfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	local tc1=g1:GetFirst()
-	if not tc1 then return end
-	Duel.HintSelection(g1)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g2=Duel.SelectMatchingCard(tp,c22198672.chfilter2,tc1:GetControler(),LOCATION_MZONE,0,1,1,tc1)
-	Duel.HintSelection(g2)
-	local tc2=g2:GetFirst()
+	local g=Duel.GetMatchingGroup(c22198672.chfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
+	local sg=g:SelectSubGroup(tp,c22198672.gcheck,false,2,2)
+	if not sg or sg:GetCount()~=2 then return end
+	local tc1=sg:GetFirst()
+	local tc2=sg:GetNext()
+	Duel.HintSelection(sg)
 	Duel.SwapSequence(tc1,tc2)
 end

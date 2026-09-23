@@ -56,7 +56,8 @@ function c3507053.chfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x14b) and c:GetSequence()<5
 end
 function c3507053.fselect(g,c)
-	return g:IsContains(c)
+	if not g:IsContains(c) then return false end
+	return aux.swapzonecheck(g:GetFirst(),g:GetNext())
 end
 function c3507053.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c3507053.chfilter,tp,LOCATION_MZONE,0,nil)
@@ -69,9 +70,9 @@ function c3507053.chop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local sg=g:SelectSubGroup(tp,c3507053.fselect,false,2,2,c)
 	if sg and sg:GetCount()==2 then
-		Duel.HintSelection(sg)
 		local tc1=sg:GetFirst()
 		local tc2=sg:GetNext()
+		Duel.HintSelection(sg)
 		Duel.SwapSequence(tc1,tc2)
 		local tc=tc1
 		if tc==c then tc=tc2 end
