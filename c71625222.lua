@@ -30,10 +30,10 @@ function c71625222.desop(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
 		Duel.Destroy(g,REASON_EFFECT)
-		local dg=Duel.GetOperatedGroup()
+		local dg=Duel.GetOperatedGroup():Filter(Card.IsPreviousPosition,nil,POS_FACEUP)
 		local sum=0
 		for c in aux.Next(dg) do
-			sum=sum+math.max(c:GetAttack(),0)
+			sum=sum+math.max(c:GetPreviousAttackOnField(),0)
 		end
 		if sum>0 then
 			Duel.Damage(tp,math.floor(sum/2),REASON_EFFECT)

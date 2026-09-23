@@ -62,7 +62,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spfilter1(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(6) and c:IsRace(RACE_FISH) and e:GetHandler():IsAbleToRemove()
+	return c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(6) and c:IsRace(RACE_FISH)
 end
 function s.rmfilter(c,tp,e)
 	return c:IsLocation(LOCATION_MZONE) and c:IsControler(1-tp) and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
@@ -71,18 +71,18 @@ function s.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,1-tp)
 end
 function s.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local c=e:GetHandler()
 	local g=eg:Filter(s.rmfilter,nil,tp,e)
-	if chkc then return g:IsContains(chkc) and e:GetHandler():IsAbleToRemove() end
-	if chk==0 then return e:IsCostChecked() and #g>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>=0
-	and Duel.IsExistingTarget(s.spfilter1,tp,LOCATION_REMOVED,0,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	if chkc then return g:IsContains(chkc) end
+	local c=e:GetHandler()
+	if chk==0 then return #g>0 and c:IsAbleToRemove() and Duel.GetMZoneCount(tp,c)>0
+		and Duel.IsExistingTarget(s.spfilter1,tp,LOCATION_REMOVED,0,1,nil,e,tp) end
 	local tg=g:Clone()
 	if #g>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		tg=g:Select(tp,1,1,nil)
 	end
 	Duel.SetTargetCard(tg)
+	tg:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tg,#tg,0,0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectTarget(tp,s.spfilter1,tp,LOCATION_REMOVED,0,1,1,nil,e,tp)
@@ -91,9 +91,11 @@ end
 function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local res1,tg1=Duel.GetOperationInfo(0,CATEGORY_REMOVE)
 	local res2,tg2=Duel.GetOperationInfo(0,CATEGORY_SPECIAL_SUMMON)
-	local c,rc,sc=e:GetHandler(),tg1:GetFirst(),tg2:GetFirst()
-	if rc:IsRelateToEffect(e) and rc:IsControler(1-tp) and rc:IsType(TYPE_MONSTER) and c:IsRelateToEffect(e)
-		and c:IsAbleToRemove() and rc:IsAbleToRemove() then
+	local c=e:GetHandler()
+	local rc=tg1:Filter(aux.TRUE,c):GetFirst()
+	local sc=tg2:GetFirst()
+	if rc:IsRelateToEffect(e) and rc:IsControler(1-tp) and rc:IsAbleToRemove()
+		and c:IsRelateToEffect(e) and c:IsAbleToRemove() then
 		local rg=Group.FromCards(c,rc)
 		if Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)==2 and sc:IsRelateToEffect(e) then
 			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)

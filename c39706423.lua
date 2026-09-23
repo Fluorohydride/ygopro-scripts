@@ -90,7 +90,7 @@ function s.excop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(qc,REASON_EFFECT)
 		Duel.ShuffleDeck(tp)
 		local tc=Duel.GetFirstTarget()
-		if not tc or not tc:IsRelateToChain() or not tc:IsFaceup() or not tc:IsOnField() then return end
+		if not qc:IsLocation(LOCATION_GRAVE) or not tc or not tc:IsRelateToChain() or not tc:IsFaceup() or not tc:IsOnField() then return end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_RACE)

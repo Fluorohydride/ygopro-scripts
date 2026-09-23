@@ -32,7 +32,6 @@ function c71344451.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.Draw(tp,1,REASON_EFFECT)~=0 then
 			local tc=Duel.GetOperatedGroup():GetFirst()
 			Duel.ConfirmCards(1-tp,tc)
-			Duel.ShuffleHand(tp)
 			if tc:IsCode(71344451) then
 				if Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 					local sg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
@@ -46,10 +45,13 @@ function c71344451.activate(e,tp,eg,ep,ev,re,r,rp)
 						end
 					end
 				end
+				Duel.ShuffleHand(tp)
 			else
+				Duel.ShuffleHand(tp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 				local dg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToDeck),tp,LOCATION_GRAVE,0,ct2,ct2,nil)
 				if dg:GetCount()>0 then
+					Duel.BreakEffect()
 					Duel.HintSelection(dg)
 					Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 				end
