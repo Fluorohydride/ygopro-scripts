@@ -61,7 +61,7 @@ function s.eqcon(e)
 	return c:GetEquipCount()>0
 end
 function s.cfilter(c)
-	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsAllCardType(TYPE_NORMAL+TYPE_MONSTER)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_ONFIELD,0,1,nil) end

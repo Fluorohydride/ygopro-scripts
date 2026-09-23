@@ -71,7 +71,7 @@ function s.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function s.csfilter(c)
-	return c:IsFaceup() and c:IsAllCardType(TYPE_NORMAL+TYPE_MONSTER)
+	return c:IsFaceup() and c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 end
 function s.getatk(c)
 	if c:IsType(TYPE_MONSTER) then

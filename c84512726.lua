@@ -35,7 +35,7 @@ function s.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function s.chkfilter(c)
-	return c:IsFaceupEx() and c:IsAllCardType(TYPE_NORMAL+TYPE_MONSTER)
+	return c:IsFaceupEx() and c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 end
 function s.setfilter(c)
 	return c:IsSetCard(0x1eb) and c:IsSSetable() and c:IsType(TYPE_SPELL)

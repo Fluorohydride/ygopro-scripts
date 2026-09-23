@@ -59,7 +59,7 @@ function s.eqcon(e)
 	return c:GetEquipCount()>0
 end
 function s.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsAllCardType(TYPE_NORMAL+TYPE_MONSTER)
+	return c:IsFaceup() and c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetSZoneCount(tp,c)>0
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

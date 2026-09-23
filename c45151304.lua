@@ -57,7 +57,7 @@ function s.spfilter(c,e,tp,m)
 	return res
 end
 function s.matfilter(c)
-	return c:IsAllCardType(TYPE_NORMAL+TYPE_MONSTER)
+	return c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 		and c:IsFaceupEx() and c:IsAbleToGrave()
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)

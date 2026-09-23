@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.chkfilter(c)
-	return c:IsFaceupEx() and c:IsAllCardType(TYPE_NORMAL+TYPE_MONSTER)
+	return c:IsFaceupEx() and c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
 end
 function s.spfilter(c,e,tp)
 	return c:IsType(TYPE_FUSION) and not c:IsType(TYPE_EFFECT) and c:IsLevelBelow(8)
