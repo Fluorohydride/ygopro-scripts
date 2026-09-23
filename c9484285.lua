@@ -69,6 +69,7 @@ function s.initial_effect(c)
 	e8:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_DELAY)
 	e8:SetCode(EVENT_CUSTOM+id)
 	e8:SetRange(LOCATION_MZONE)
+	e8:SetCondition(s.mtcon)
 	e8:SetTarget(s.mttg)
 	e8:SetOperation(s.mtop)
 	c:RegisterEffect(e8)
@@ -128,6 +129,10 @@ end
 function s.rop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():ResetFlagEffect(id)
 	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+id,e,0,tp,0,0)
+end
+function s.mtcon(e,tp,eg,ep,ev,re,r,rp)
+	local ph=Duel.GetCurrentPhase()
+	return ph~=PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL
 end
 function s.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>0 end
