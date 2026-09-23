@@ -28,6 +28,7 @@ function c94212438.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_LEAVE_FIELD)
+	e4:SetCondition(c94212438.tgcon2)
 	e4:SetOperation(c94212438.tgop)
 	c:RegisterEffect(e4)
 	--win
@@ -83,13 +84,17 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94212438.cfilter1(c,tp)
-	return c:IsControler(tp) and (c:IsCode(94212438) or c:IsSetCard(0x1c))
+	return c:IsPreviousControler(tp) and (c:IsCode(94212438) or c:IsSetCard(0x1c)) and (c:IsPreviousPosition(POS_FACEUP) or (c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsFaceup()) or (c:IsLocation(LOCATION_HAND) and c:IsPublic()))
 end
 function c94212438.cfilter2(c)
 	return c:IsFaceup() and (c:IsCode(94212438) or c:IsSetCard(0x1c))
 end
 function c94212438.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94212438.cfilter1,1,nil,tp)
+end
+function c94212438.tgcon2(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp) and (c:IsPreviousPosition(POS_FACEUP) or (c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsFaceup()) or (c:IsLocation(LOCATION_HAND) and c:IsPublic()))
 end
 function c94212438.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c94212438.cfilter2,tp,LOCATION_ONFIELD,0,nil)
