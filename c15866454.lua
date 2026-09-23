@@ -9,6 +9,12 @@ function c15866454.initial_effect(c)
 	e1:SetTarget(c15866454.target)
 	e1:SetOperation(c15866454.activate)
 	c:RegisterEffect(e1)
+	--cannot disable
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_CANNOT_DISABLE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	c:RegisterEffect(e0)
 end
 function c15866454.filter(c)
 	return c:IsAbleToHand() and c:IsType(TYPE_SPELL+TYPE_TRAP)
