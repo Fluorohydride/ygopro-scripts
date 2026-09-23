@@ -1,4 +1,4 @@
---光帰ヘの契り
+--光帰への契り
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate

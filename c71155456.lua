@@ -1,4 +1,4 @@
---天の異解△シェオル
+--天ノ異解△シェオル
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon
