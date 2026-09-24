@@ -17,7 +17,7 @@ function c90587641.initial_effect(c)
 	e1:SetTarget(c90587641.spdtg)
 	e1:SetOperation(c90587641.spdop)
 	c:RegisterEffect(e1)
-	--defence attack
+	--defense attack
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_DEFENSE_ATTACK)

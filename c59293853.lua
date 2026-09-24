@@ -46,7 +46,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local op=aux.SelectFromOptions(tp,
 			{s1,aux.Stringid(id,2),tp},
 			{s2,aux.Stringid(id,3),1-tp})
-		local sumpos=op==tp and POS_FACEUP or POS_FACEDOWN_DEFENCE
+		local sumpos=op==tp and POS_FACEUP or POS_FACEDOWN_DEFENSE
 		if Duel.SpecialSummon(tc,0,tp,op,false,false,sumpos)==0 then return end
 		if op==1-tp then Duel.ConfirmCards(1-tp,tc) end
 		if Duel.IsExistingMatchingCard(s.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
