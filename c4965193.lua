@@ -30,7 +30,7 @@ function s.initial_effect(c)
 end
 function s.efffilter(c,e,tp,eg,ep,ev,re,r,rp)
 	if not (c:IsSetCard(0x1c4) and c:IsLevel(7) and c:IsAbleToGraveAsCost()) then return false end
-	local te=c.Dragon_Ruler_handes_effect
+	local te=c.dragon_ruler_discard_effect
 	if not te then return false end
 	local tg=te:GetTarget()
 	return not tg or tg(e,tp,eg,ep,ev,re,r,rp,0,nil,c)
@@ -44,7 +44,7 @@ function s.copytg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,s.efffilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
-	local te=tc.Dragon_Ruler_handes_effect
+	local te=tc.dragon_ruler_discard_effect
 	Duel.SendtoGrave(g,REASON_COST)
 	c:RemoveOverlayCard(tp,1,1,REASON_COST)
 	e:SetProperty(te:GetProperty())
