@@ -40,6 +40,12 @@ function c48633301.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c48633301.thop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetProperty(EFFECT_FLAG_CLIENT_HINT)
+		e2:SetDescription(227)
+		e2:SetReset(RESET_EVENT|RESETS_STANDARD|RESET_PHASE|PHASE_END)
+		c:RegisterEffect(e2)
 	end
 end
 function c48633301.thfilter(c)
