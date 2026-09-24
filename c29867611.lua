@@ -115,6 +115,7 @@ function c29867611.desrepval(e,c)
 	return c29867611.repfilter(c,e:GetHandlerPlayer())
 end
 function c29867611.desrepop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,29867611)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end
 function c29867611.atkcon(e)

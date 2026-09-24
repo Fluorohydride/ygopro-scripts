@@ -19,7 +19,7 @@ function c22862454.repfilter(c,tp)
 end
 function c22862454.desfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsType(TYPE_MONSTER)
-		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) and not c:IsImmuneToEffect(e)
 end
 function c22862454.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -70,6 +70,7 @@ function c61840587.desfilter1(c,rc)
 	return c:IsRelateToCard(rc) and c:IsLocation(LOCATION_MZONE) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c61840587.desop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,61840587)
 	local c=e:GetHandler()
 	local sg=e:GetLabelObject():GetLabelObject()
 	if not sg then return end
