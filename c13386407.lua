@@ -20,8 +20,8 @@ function c13386407.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 	if m2 then
 		mg:Merge(m2)
 	end
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c,tp)
+	if c.ritual_mat_filter then
+		mg=mg:Filter(c.ritual_mat_filter,c,tp)
 	else
 		mg:RemoveCard(c)
 	end
@@ -73,8 +73,8 @@ function c13386407.activate(e,tp,eg,ep,ev,re,r,rp)
 		if tc then
 			Duel.BreakEffect()
 			mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-			if tc.mat_filter then
-				mg=mg:Filter(tc.mat_filter,tc,tp)
+			if tc.ritual_mat_filter then
+				mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 			else
 				mg:RemoveCard(tc)
 			end

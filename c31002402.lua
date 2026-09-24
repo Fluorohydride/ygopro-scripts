@@ -21,8 +21,8 @@ function c31002402.rfilter2(c,e,tp,m1)
 	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsSetCard(0x145)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c,tp)
+	if c.ritual_mat_filter then
+		mg=mg:Filter(c.ritual_mat_filter,c,tp)
 	end
 	return mg:IsExists(Card.IsLevel,1,nil,c:GetLevel())
 end
@@ -47,8 +47,8 @@ function c31002402.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:Select(tp,1,1,nil):GetFirst()
 	if tc then
 		local mg=mg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			mg=mg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			mg:RemoveCard(tc)
 		end

@@ -161,8 +161,8 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 		aux.RGCheckAdditional=c99426088.gcheck
 		local rmg=rmg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if rmg2 then rmg:Merge(rmg2) end
-		if tc.mat_filter then
-			rmg=rmg:Filter(tc.mat_filter,tc,tp)
+		if tc.ritual_mat_filter then
+			rmg=rmg:Filter(tc.ritual_mat_filter,tc,tp)
 		else
 			rmg:RemoveCard(tc)
 		end
