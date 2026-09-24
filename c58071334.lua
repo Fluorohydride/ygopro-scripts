@@ -73,7 +73,8 @@ function s.mvfilter(c,tp)
 		if not c:IsAbleToChangeControler() then return false end
 		r=LOCATION_REASON_CONTROL
 	end
-	return c:IsFaceup() and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
+	return c:IsFaceup() and c:IsCanBePlacedOnField(c:GetOwner())
+		and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.mvfilter(chkc,tp) end

@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function s.setfilter(c)
-	return c:IsCode(3055018) and not c:IsForbidden()
+	return c:IsCode(3055018) and c:IsCanBePlacedOnField()
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil) end

@@ -55,7 +55,7 @@ function s.addcon(e)
 end
 function s.thfilter(c,tp)
 	if not (c:IsSetCard(0x62) and c:IsType(TYPE_SPELL) and c:IsType(TYPE_FIELD+TYPE_CONTINUOUS)) then return false end
-	return c:IsAbleToHand() or not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsAbleToHand() or c:IsCanBePlacedOnField(tp)
 		and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -66,7 +66,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
-		local pchk=not tc:IsForbidden() and tc:CheckUniqueOnField(tp) and (tc:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
+		local pchk=tc:IsCanBePlacedOnField(tp) and (tc:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
 		if tc:IsAbleToHand() and (not pchk or Duel.SelectOption(tp,1190,aux.Stringid(id,3))==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)

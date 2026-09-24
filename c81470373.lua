@@ -40,7 +40,7 @@ function s.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function s.acfilter(c,tp)
-	return c:IsCode(91351370) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(91351370) and c:IsCanBePlacedOnField(tp)
 end
 function s.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

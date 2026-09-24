@@ -56,17 +56,18 @@ function c13179234.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c13179234.psfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x17d) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+function c13179234.psfilter(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0x17d) and c:IsType(TYPE_PENDULUM)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c13179234.pstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
-		and Duel.IsExistingMatchingCard(c13179234.psfilter,tp,LOCATION_EXTRA,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c13179234.psfilter,tp,LOCATION_EXTRA,0,1,nil,tp) end
 end
 function c13179234.psop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,c13179234.psfilter,tp,LOCATION_EXTRA,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c13179234.psfilter,tp,LOCATION_EXTRA,0,1,1,nil,tp)
 	if g:GetCount()>0 then
 		Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end

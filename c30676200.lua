@@ -48,7 +48,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function s.setfilter(c)
-	return c:IsCode(3055018) and not c:IsForbidden()
+	return c:IsCode(3055018) and c:IsCanBePlacedOnField()
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

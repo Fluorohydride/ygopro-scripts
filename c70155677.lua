@@ -64,7 +64,7 @@ function c70155677.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsCode(70155677)
 end
 function c70155677.mvfilter(c,tp)
-	return not c:IsForbidden() and c:IsSetCard(0x191) and c:GetType()==TYPE_CONTINUOUS+TYPE_SPELL and c:CheckUniqueOnField(tp)
+	return c:IsCanBePlacedOnField(tp) and c:IsSetCard(0x191) and c:GetType()==TYPE_CONTINUOUS+TYPE_SPELL
 end
 function c70155677.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

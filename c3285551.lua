@@ -50,7 +50,7 @@ function c3285551.cfilter(c)
 	return c:IsCode(39568067) and c:IsFaceup()
 end
 function c3285551.setfilter(c)
-	return c:IsCode(39568067) and not c:IsForbidden()
+	return c:IsCode(39568067) and c:IsCanBePlacedOnField()
 end
 function c3285551.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0

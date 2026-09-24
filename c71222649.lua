@@ -65,7 +65,7 @@ function s.repop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.pfilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
-		and Duel.GetMZoneCount(tp,c)>0
+		and c:IsCanBePlacedOnField(tp) and Duel.GetMZoneCount(tp,c)>0
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.pfilter(chkc,tp) and chkc:IsControler(tp) end

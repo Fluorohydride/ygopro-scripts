@@ -37,7 +37,7 @@ function s.zones(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.penfilter(c)
 	return c:IsSetCard(0x17d) and c:IsType(TYPE_PENDULUM)
-		and not c:IsForbidden()
+		and c:IsCanBePlacedOnField()
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))

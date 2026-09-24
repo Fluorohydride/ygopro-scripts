@@ -55,7 +55,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN) and re:IsActivated()
 end
 function s.filter(c)
-	return c:IsSetCard(0x1a2) and c:IsFaceupEx() and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1a2) and c:IsFaceupEx() and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE+LOCATION_REMOVED,0,nil)

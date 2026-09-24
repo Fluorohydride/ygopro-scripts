@@ -24,7 +24,7 @@ function c26435595.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c26435595.pcfilter(c,tp)
-	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField(tp)
 end
 function c26435595.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))

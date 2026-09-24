@@ -41,7 +41,7 @@ function s.check(g,tp)
 	return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,g)
 end
 function s.filter(c)
-	return c:IsFaceupEx() and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsFaceupEx() and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_EXTRA,0,nil)

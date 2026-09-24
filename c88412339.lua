@@ -42,7 +42,7 @@ function c88412339.pencost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c88412339.penfilter(c)
-	return c:IsSetCard(0x10ec) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsSetCard(0x10ec) and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function c88412339.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c88412339.penfilter,tp,LOCATION_DECK,0,1,nil)

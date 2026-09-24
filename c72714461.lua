@@ -29,7 +29,7 @@ function c72714461.pencon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c72714461.cfilter,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c72714461.penfilter(c)
-	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and not c:IsCode(72714461) and not c:IsForbidden()
+	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and not c:IsCode(72714461) and c:IsCanBePlacedOnField()
 end
 function c72714461.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDestructable()

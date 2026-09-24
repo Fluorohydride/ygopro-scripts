@@ -12,11 +12,11 @@ function c25964547.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25964547.cfilter1(c,tp)
-	return c:IsCode(74665651,1050355) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
+	return c:IsCode(74665651,1050355) and c:IsCanBePlacedOnField(tp)
 		and Duel.IsExistingMatchingCard(c25964547.cfilter2,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,tp,c:GetCode())
 end
 function c25964547.cfilter2(c,tp,code)
-	return c:IsCode(74665651,1050355) and not c:IsCode(code) and c:CheckUniqueOnField(1-tp) and not c:IsForbidden()
+	return c:IsCode(74665651,1050355) and not c:IsCode(code) and c:IsCanBePlacedOnField(1-tp)
 end
 function c25964547.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c25964547.cfilter1,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,tp) end

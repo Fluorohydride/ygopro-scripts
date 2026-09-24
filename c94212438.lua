@@ -44,7 +44,7 @@ function c94212438.plcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c94212438.plfilter(c,id)
-	return c:IsCode(id) and not c:IsForbidden()
+	return c:IsCode(id) and c:IsCanBePlacedOnField()
 end
 function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

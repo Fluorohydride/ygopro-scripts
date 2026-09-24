@@ -49,15 +49,15 @@ function c42378577.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c42378577.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
+function c42378577.filter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField(tp)
 end
 function c42378577.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42378577.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42378577.filter(chkc,tp) end
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
-		and Duel.IsExistingTarget(c42378577.filter,tp,LOCATION_MZONE,0,1,nil) end
+		and Duel.IsExistingTarget(c42378577.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(42378577,2))
-	local g=Duel.SelectTarget(tp,c42378577.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c42378577.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end
 function c42378577.penop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

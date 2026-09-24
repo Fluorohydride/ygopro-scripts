@@ -30,7 +30,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function s.stfilter(c,tp)
-	return c:IsCode(57554544) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(57554544) and c:IsCanBePlacedOnField(tp)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,nil)

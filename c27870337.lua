@@ -29,7 +29,7 @@ function c27870337.zones(e,tp,eg,ep,ev,re,r,rp)
 	return zone
 end
 function c27870337.pendfilter(c)
-	return c:IsSetCard(0x162) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsSetCard(0x162) and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function c27870337.pendfilter1(c)
 	return c27870337.pendfilter(c) and c:GetCurrentScale()%2~=0

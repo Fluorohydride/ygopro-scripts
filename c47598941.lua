@@ -41,7 +41,7 @@ function c47598941.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47598941.cfilter,1,nil,tp)
 end
 function c47598941.filter(c)
-	return c:IsSetCard(0xe0) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
+	return c:IsSetCard(0xe0) and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField()
 end
 function c47598941.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))

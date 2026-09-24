@@ -31,7 +31,7 @@ function s.accon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_FZONE,0,1,nil)
 end
 function s.filter(c)
-	return c:IsType(TYPE_FIELD) and not c:IsForbidden() and c:IsFaceup()
+	return c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField() and c:IsFaceup()
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and s.filter(chkc) end

@@ -38,7 +38,7 @@ function c86239173.con(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c86239173.pfilter(c,tp)
-	return not c:IsForbidden() and c:IsType(TYPE_FIELD) and c:CheckUniqueOnField(tp)
+	return c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(tp)
 end
 function c86239173.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c86239173.pfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,tp) end

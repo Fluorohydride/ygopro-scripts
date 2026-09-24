@@ -32,7 +32,7 @@ function s.zones(e,tp,eg,ep,ev,re,r,rp)
 	return zone
 end
 function s.psfilter(c)
-	return c:IsSetCard(0x1d4) and c:IsAllTypes(TYPE_PENDULUM+TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1d4) and c:IsAllTypes(TYPE_PENDULUM+TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))

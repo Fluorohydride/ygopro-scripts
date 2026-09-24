@@ -51,7 +51,7 @@ function c71620241.repop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c71620241.filter(c)
-	return c:IsSetCard(0x5034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x5034) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 		and (not c:IsLocation(LOCATION_REMOVED) or c:IsFaceup())
 end
 function c71620241.target(e,tp,eg,ep,ev,re,r,rp,chk)

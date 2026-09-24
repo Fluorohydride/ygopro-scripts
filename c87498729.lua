@@ -32,7 +32,7 @@ function s.pcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function s.pfilter(c,tp)
-	return c:IsCode(12397569) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(12397569) and c:IsCanBePlacedOnField(tp)
 end
 function s.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.pfilter,tp,LOCATION_DECK,0,1,nil,tp) end

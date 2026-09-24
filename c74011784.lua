@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.stfilter(c,tp)
-	return c:IsCode(74733322) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(74733322) and c:IsCanBePlacedOnField(tp)
 end
 function s.thfilter(c)
 	return not c:IsCode(id) and c:IsSetCard(0x1cd) and c:IsAbleToHand()

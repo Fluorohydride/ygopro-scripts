@@ -33,7 +33,8 @@ function s.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
 end
 function s.filter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x1a2) and not c:IsCode(id) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsFaceup() and c:IsSetCard(0x1a2) and not c:IsCode(id)
+		and c:IsCanBePlacedOnField(tp) and Duel.GetMZoneCount(tp,c)>0
 end
 function s.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

@@ -75,7 +75,7 @@ end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp) end
+		and c:IsCanBePlacedOnField(tp) end
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

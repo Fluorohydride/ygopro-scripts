@@ -51,7 +51,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x1a2) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and not c:IsType(TYPE_SYNCHRO)
+	return c:IsFaceup() and c:IsSetCard(0x1a2) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField() and not c:IsType(TYPE_SYNCHRO)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil)
