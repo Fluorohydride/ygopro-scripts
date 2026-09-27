@@ -19,8 +19,8 @@ function s.initial_effect(c)
 	e2:SetCountLimit(1,id)
 	e2:SetHintTiming(TIMINGS_CHECK_MONSTER+TIMING_CHAIN_END+TIMING_END_PHASE)
 	e2:SetCost(s.cost2)
-	e2:SetTarget(s.target)
-	e2:SetOperation(s.operation)
+	e2:SetTarget(s.target2)
+	e2:SetOperation(s.operation2)
 	c:RegisterEffect(e2)
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -43,7 +43,6 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return tg and tg(e,tp,eg,ep,ev,re,r,rp,0,chkc)
 	end
 	local loc1,loc2=0,LOCATION_GRAVE
-	if e:GetType()&EFFECT_TYPE_QUICK_O>0 then loc1,loc2=LOCATION_GRAVE,0 end
 	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,loc1,loc2,1,nil) end
 	e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
@@ -59,6 +58,37 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.ClearOperationInfo(0)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
+	local te=e:GetLabelObject()
+	if not te then return end
+	local tc=te:GetHandler()
+	if not (tc:IsRelateToEffect(e) and tc:GetType()==TYPE_TRAP) then return end
+	e:SetLabelObject(te:GetLabelObject())
+	local op=te:GetOperation()
+	if op then op(e,tp,eg,ep,ev,re,r,rp) end
+end
+function s.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then
+		local te=e:GetLabelObject()
+		local tg=te:GetTarget()
+		return tg and tg(e,tp,eg,ep,ev,re,r,rp,0,chkc)
+	end
+	local loc1,loc2=0,LOCATION_GRAVE
+	if e:GetType()&EFFECT_TYPE_QUICK_O>0 then loc1,loc2=LOCATION_GRAVE,0 end
+	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,loc1,loc2,1,nil) end
+	e:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	local g=Duel.SelectTarget(tp,s.filter,tp,loc1,loc2,1,1,nil)
+	local te,ceg,cep,cev,cre,cr,crp=g:GetFirst():CheckActivateEffect(false,true,true)
+	Duel.ClearTargetCard()
+	g:GetFirst():CreateEffectRelation(e)
+	local tg=te:GetTarget()
+	e:SetProperty(te:GetProperty())
+	if tg then tg(e,tp,ceg,cep,cev,cre,cr,crp,1) end
+	te:SetLabelObject(e:GetLabelObject())
+	e:SetLabelObject(te)
+	Duel.ClearOperationInfo(0)
+end
+function s.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	if not te then return end
 	local tc=te:GetHandler()
