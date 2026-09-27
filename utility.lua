@@ -2072,3 +2072,19 @@ function Auxiliary.covcheck(c)
 	local se=c:GetSpecialSummonInfo(SUMMON_INFO_REASON_EFFECT)
 	return se and se:GetHandler()==c
 end
+---Check if two monsters can swap Main Monster Zone positions.
+---Both cards must be the same controller, in MMZ sequences 0-4.
+---GetMZoneCount's second return is the unusable-zone bitmask after treating c1 and c2 as leaving.
+---PLAYER_NONE, 0: zone lock only, ignore EFFECT_MAX_MZONE / EFFECT_MUST_USE_MZONE.
+---@param c1 Card
+---@param c2 Card
+---@return boolean
+function Auxiliary.swapzonecheck(c1,c2)
+	if not c1 or not c2 then return false end
+	local p=c1:GetControler()
+	if p~=c2:GetControler() then return false end
+	local seq1,seq2=c1:GetSequence(),c2:GetSequence()
+	if seq1>4 or seq2>4 then return false end
+	local _,flag=Duel.GetMZoneCount(p,Group.FromCards(c1,c2),PLAYER_NONE,0)
+	return flag&(1<<seq1)==0 and flag&(1<<seq2)==0
+end

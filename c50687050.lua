@@ -117,7 +117,8 @@ function s.chfilter(c)
 	return c:GetSequence()<5
 end
 function s.gcheck(g)
-	return g:GetClassCount(Card.GetControler)==1
+	if g:GetClassCount(Card.GetControler)~=1 then return false end
+	return aux.swapzonecheck(g:GetFirst(),g:GetNext())
 end
 function s.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.chfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
@@ -129,9 +130,9 @@ function s.chop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,2)
 	if sg then
-		Duel.HintSelection(sg)
 		local tc1=sg:GetFirst()
 		local tc2=sg:GetNext()
+		Duel.HintSelection(sg)
 		Duel.SwapSequence(tc1,tc2)
 	end
 end
