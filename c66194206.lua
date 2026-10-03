@@ -20,14 +20,13 @@ function c66194206.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66194206.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToDeck() end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():IsAbleToDeck() end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c66194206.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT,tp,true)
 	end
 end
 function c66194206.thcon(e,tp,eg,ep,ev,re,r,rp)

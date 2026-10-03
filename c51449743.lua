@@ -20,7 +20,7 @@ function c51449743.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not (c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE)) then return end
 	local ct=Duel.GetCurrentChain()
 	if ct>3 then
 		c:CancelToGrave()
