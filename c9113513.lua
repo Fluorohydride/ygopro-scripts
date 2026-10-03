@@ -13,18 +13,20 @@ end
 function c9113513.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
-function c9113513.filter1(c,e,tp,mg,f,chkf)
+function c9113513.filter1(c,e,tp,mg,f,chkf,sc)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()
-		and mg:IsExists(c9113513.filter2,1,c,e,tp,c,f,chkf)
+		and mg:IsExists(c9113513.filter2,1,c,e,tp,c,f,chkf,sc)
 end
-function c9113513.filter2(c,e,tp,mc,f,chkf)
+function c9113513.filter2(c,e,tp,mc,f,chkf,sc)
 	local mg=Group.FromCards(c,mc)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()
-		and Duel.IsExistingMatchingCard(c9113513.ffilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,f,chkf)
+	if not (c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()) then return false end
+	if not sc then
+		return Duel.IsExistingMatchingCard(c9113513.ffilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,f,chkf)
+	else return sc:CheckFusionMaterial(mg,nil,chkf) end
 end
 function c9113513.ffilter(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9b) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf) and getmetatable(c).material_count[1]==2
 end
 function c9113513.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -63,25 +65,25 @@ function c9113513.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=nil
 	if g2~=nil and g2:GetCount()>0 and (g1:GetCount()==0 or Duel.SelectYesNo(tp,ce:GetDescription())) then
 		local mf=ce:GetValue()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg1=mg2:FilterSelect(tp,c9113513.filter1,1,1,nil,e,tp,mg2,mf,chkf)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg2=mg2:FilterSelect(tp,c9113513.filter2,1,1,nil,e,tp,sg1:GetFirst(),mf,chkf)
-		sg1:Merge(sg2)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,c9113513.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,sg1,mf,chkf)
-		tc=sg:GetFirst()
+		local sc=Duel.SelectMatchingCard(tp,c9113513.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg2,mf,chkf):GetFirst()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		local sg1=mg2:FilterSelect(tp,c9113513.filter1,1,1,nil,e,tp,mg2,mf,chkf,sc)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		local sg2=mg2:FilterSelect(tp,c9113513.filter2,1,1,nil,e,tp,sg1:GetFirst(),mf,chkf,sc)
+		sg1:Merge(sg2)
+		tc=sc
 		local fop=ce:GetOperation()
 		fop(ce,e,tp,tc,sg1)
 	elseif g1:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg1=mg1:FilterSelect(tp,c9113513.filter1,1,1,nil,e,tp,mg1,nil,chkf)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg2=mg1:FilterSelect(tp,c9113513.filter2,1,1,nil,e,tp,sg1:GetFirst(),nil,chkf)
-		sg1:Merge(sg2)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,c9113513.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,sg1,nil,chkf)
-		tc=sg:GetFirst()
+		local sc=Duel.SelectMatchingCard(tp,c9113513.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg1,mf,chkf):GetFirst()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		local sg1=mg1:Filter(tp,c9113513.filter1,1,1,nil,e,tp,mg1,nil,chkf,sc)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+		local sg2=mg1:Filter(tp,c9113513.filter2,1,1,nil,e,tp,sg1:GetFirst(),nil,chkf,sc)
+		sg1:Merge(sg2)
+		tc=sc
 		tc:SetMaterial(sg1)
 		Duel.SendtoGrave(sg1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 		Duel.BreakEffect()
