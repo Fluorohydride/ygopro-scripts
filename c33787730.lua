@@ -40,7 +40,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 end
 function s.xyzfilter(c,e,tp)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsRank(4)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsRank(4) and not c:IsImmuneToEffect(e)
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.mtfilter),tp,LOCATION_GRAVE,0,1,nil,e)
 end
 function s.mtfilter(c,e)
