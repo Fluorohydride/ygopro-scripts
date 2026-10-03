@@ -3,7 +3,7 @@ function c95178994.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95178994,0))
-	e1:SetCategory(CATEGORY_DAMAGE+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_DAMAGE+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCondition(c95178994.condition)

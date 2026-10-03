@@ -5,7 +5,7 @@ function c12289247.initial_effect(c)
 	--pendulum set/spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(12289247,0))
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1,12289247)

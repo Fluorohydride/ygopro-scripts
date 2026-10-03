@@ -14,7 +14,7 @@ function c48519867.initial_effect(c)
 	--spsummon2
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(48519867,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,48519868)

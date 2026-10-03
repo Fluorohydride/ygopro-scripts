@@ -19,7 +19,7 @@ function c34968834.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	if rp==1-tp and tp==e:GetLabel() then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON|CATEGORY_DECKDES)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON|CATEGORY_DECKDES|CATEGORY_DECK_SPSUMMON)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	end
