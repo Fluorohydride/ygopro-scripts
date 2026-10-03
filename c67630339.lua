@@ -51,12 +51,13 @@ end
 function c67630339.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()==nil and c67630339[tp]==2
 		and c67630339[2]:GetFlagEffect(67630339)~=0 and Duel.GetAttacker()~=c67630339[2]
+		and c67630339[2]:IsControler(1-tp)
 end
 function c67630339.operation(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=c67630339[2]
-	if a:GetFlagEffect(67630339)~=0 and d:GetFlagEffect(67630339)~=0
-		and a:IsAttackable() and not a:IsImmuneToEffect(e) and not d:IsImmuneToEffect(e) then
+	if a:GetFlagEffect(67630339)~=0 and d:GetFlagEffect(67630339)~=0 and d:IsControler(1-tp)
+		and a:IsRelateToBattle() and a:IsAttackable() and not a:IsImmuneToEffect(e) and not d:IsImmuneToEffect(e) then
 		Duel.CalculateDamage(a,d)
 	end
 end
