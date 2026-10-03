@@ -116,9 +116,14 @@ function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		g2:Remove(c90846359.rmfilter,nil,rac)
 		c90846359[1-tp]=rac
 	end
-	g1:Merge(g2)
+	local res=0
 	if g1:GetCount()>0 then
-		Duel.SendtoGrave(g1,REASON_RULE)
+		res=res+Duel.SendtoGrave(g1,REASON_RULE)
+	end
+	if g2:GetCount()>0 then
+		res=res+Duel.SendtoGrave(g2,REASON_RULE,1-tp)
+	end
+	if res>0 then
 		Duel.Readjust()
 	end
 end
