@@ -107,6 +107,10 @@ end
 function s.retfilter(c,fid)
 	return c:GetFlagEffectLabel(id)==fid
 end
+function s.retchkfilter(c)
+	local tp=c:GetPreviousControler()
+	return Duel.GetMZoneCount(tp,nil,tp,LOCATION_REASON_TOFIELD)>0
+end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetLabelObject():IsExists(s.retfilter,1,nil,e:GetLabel()) then
 		e:GetLabelObject():DeleteGroup()
@@ -119,9 +123,11 @@ function s.retop(e,tp,eg,ep,ev,re,r,rp)
 	local fid=e:GetLabel()
 	local g=e:GetLabelObject():Filter(s.retfilter,nil,fid)
 	if #g<=0 then return end
+	local g1=g:Filter(s.retchkfilter,nil)
+	local g2=g-g1
 	Duel.Hint(HINT_CARD,0,id)
 	for p in aux.TurnPlayers() do
-		local tg=g:Filter(Card.IsPreviousControler,nil,p)
+		local tg=g1:Filter(Card.IsPreviousControler,nil,p)
 		local ft=Duel.GetLocationCount(p,LOCATION_MZONE)
 		if #tg>1 and ft==1 then
 			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOFIELD)
@@ -132,6 +138,9 @@ function s.retop(e,tp,eg,ep,ev,re,r,rp)
 		for tc in aux.Next(tg) do
 			Duel.ReturnToField(tc)
 		end
+	end
+	if #g2>0 then
+		Duel.SendtoGrave(g2,REASON_RETURN+REASON_RULE)
 	end
 	e:GetLabelObject():DeleteGroup()
 end
