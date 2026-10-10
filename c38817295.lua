@@ -61,10 +61,13 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SetOperationInfo(0,CATEGORY_DISABLE,og,1,0,0)
 	end
 end
+function s.disfilter(c,e)
+	return c:IsFaceup() and c:IsCanBeDisabledByEffect(e,false)
+end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
 		local c=e:GetHandler()
-		local dg=Duel.GetTargetsRelateToChain()
+		local dg=Duel.GetTargetsRelateToChain():Filter(s.disfilter,nil,e)
 		for tc in aux.Next(dg) do
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(c)
