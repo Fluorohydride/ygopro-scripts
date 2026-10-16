@@ -1,5 +1,6 @@
 --ヒステリック・パーティー
 function c77778835.initial_effect(c)
+	aux.AddCodeList(c,76812113)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
