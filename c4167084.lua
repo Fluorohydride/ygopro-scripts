@@ -1,5 +1,6 @@
 --黎明の堕天使ルシフェル
 function c4167084.initial_effect(c)
+	aux.AddCodeList(c,25451652)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c4167084.ffilter,3,true)

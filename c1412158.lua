@@ -1,5 +1,6 @@
 --レアメタル・ナイト
 function c1412158.initial_effect(c)
+	aux.AddCodeList(c,75923050)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,92421852,38916461,true,true)
