@@ -32,7 +32,7 @@ function s.gcheck(g)
 end
 function s.synfilter(c,e,tp,g)
 	return c:IsSetCard(0x198) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
-		and (g==nil or Duel.GetLocationCountFromEx(tp,tp,g,c)>0)
+		and (g==nil or Duel.GetLocationCountFromEx(tp,tp,g,c)>0) and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 end
 function s.tdfilter(c)
 	return (s.tdfilter1(c) or s.tdfilter2(c)) and c:IsFaceupEx() and c:IsAbleToDeck()
