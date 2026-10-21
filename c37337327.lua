@@ -42,7 +42,7 @@ function c37337327.scfilter(c,mg)
 end
 function c37337327.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=e:GetHandler():GetLinkedGroup()
+		local mg=e:GetHandler():GetLinkedGroup():Filter(Card.IsFaceup,nil)
 		return Duel.IsExistingMatchingCard(c37337327.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -50,7 +50,7 @@ end
 function c37337327.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local mg=c:GetLinkedGroup()
+	local mg=c:GetLinkedGroup():Filter(Card.IsFaceup,nil)
 	local g=Duel.GetMatchingGroup(c37337327.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
