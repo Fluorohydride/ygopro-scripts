@@ -83,7 +83,7 @@ function c92932860.scop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetValue(RESET_TURN_SET)
 	tc:RegisterEffect(e2)
 	Duel.SpecialSummonComplete()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.AdjustAll()
 	local mg=Group.FromCards(c,tc)
 	if mg:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<2 then return end
