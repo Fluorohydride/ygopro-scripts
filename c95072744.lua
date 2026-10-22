@@ -11,17 +11,24 @@ function s.initial_effect(c)
 	e1:SetOperation(s.effop)
 	c:RegisterEffect(e1)
 	--fusion
-	local e2=Effect.CreateEffect(c)
+	local e2=FusionSpell.CreateSummonEffect(c,{
+		fusfilter=s.fusfilter,
+		pre_select_mat_location=LOCATION_HAND|LOCATION_MZONE|LOCATION_GRAVE,
+		mat_operation_code_map={
+			{[LOCATION_REMOVED]=FusionSpell.FUSION_OPERATION_GRAVE},
+			{[0xff]=FusionSpell.FUSION_OPERATION_BANISH}
+		},
+		extra_target=s.extra_target
+	})
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_GRAVE_ACTION+CATEGORY_REMOVE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCountLimit(1,id)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_FUSION_SUMMON)
 	e2:SetCondition(s.fspcon)
 	e2:SetCost(s.fspcost)
-	e2:SetTarget(s.fsptg)
-	e2:SetOperation(s.fspop)
 	c:RegisterEffect(e2)
 	Duel.AddCustomActivityCounter(id,ACTIVITY_SPSUMMON,s.counterfilter)
 	s.shadoll_flip_effect=e1
@@ -79,69 +86,11 @@ end
 function s.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0x9d) and c:IsLocation(LOCATION_EXTRA)
 end
-function s.mfilter(c,e)
-	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
-end
-function s.sfilter(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9d) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-function s.gfilter(c,e)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and s.mfilter(c,e)
-end
-function s.fsptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp):Filter(s.mfilter,nil,e)
-			+Duel.GetMatchingGroup(s.gfilter,tp,LOCATION_GRAVE,0,nil,e)
-		local res=Duel.IsExistingMatchingCard(s.sfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
-		if not res then
-			local ce=Duel.GetChainMaterial(tp)
-			if ce~=nil then
-				local fgroup=ce:GetTarget()
-				local mg2=fgroup(ce,e,tp)
-				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(s.sfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
-			end
-		end
-		return res
+function s.extra_target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk~=0 then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE+LOCATION_HAND+LOCATION_ONFIELD)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE+LOCATION_HAND+LOCATION_ONFIELD)
 end
-function s.fspop(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=tp
-	local mg1=Duel.GetFusionMaterial(tp):Filter(s.mfilter,nil,e)
-		+Duel.GetMatchingGroup(s.gfilter,tp,LOCATION_GRAVE,0,nil,e)
-	local sg1=Duel.GetMatchingGroup(s.sfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-	local mg2=nil
-	local sg2=nil
-	local ce=Duel.GetChainMaterial(tp)
-	if ce~=nil then
-		local fgroup=ce:GetTarget()
-		mg2=fgroup(ce,e,tp)
-		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(s.sfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-	end
-	if #sg1>0 or (sg2~=nil and #sg2>0) then
-		local sg=sg1:Clone()
-		if sg2 then sg:Merge(sg2) end
-		::cancel::
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tc=sg:Select(tp,1,1,nil):GetFirst()
-		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			local mat=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-			if #mat<2 then goto cancel end
-			tc:SetMaterial(mat)
-			Duel.Remove(mat,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		elseif ce then
-			local mat=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-			if #mat<2 then goto cancel end
-			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat)
-		end
-		tc:CompleteProcedure()
-	end
+function s.fusfilter(c)
+	return c:IsSetCard(0x9d)
 end

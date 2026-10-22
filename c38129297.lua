@@ -12,38 +12,22 @@ function s.initial_effect(c)
 	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 end
-function s.filter1(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
-end
 function s.filter2(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
-function s.fspfilter(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c)) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-end
-function s.fcheck(tp,sg,fc)
-	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x102)
+function s.fcheck(tp,mg,fc,mg_all,e)
+	return mg_all:IsExists(Card.IsFusionSetCard,1,nil,0x102)
 end
 function s.rcheck(tp,g,c)
 	return g:IsExists(Card.IsSetCard,1,nil,0x102)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local chkf=tp
-	local mg=Duel.GetMatchingGroup(s.filter1,tp,LOCATION_GRAVE,0,nil,tp)
-	aux.FCheckAdditional=s.fcheck
-	local b1=Duel.IsExistingMatchingCard(s.fspfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,nil,chkf)
+	local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+		pre_select_mat_location=LOCATION_GRAVE,
+		additional_fcheck=s.fcheck
+	})
+	local b1=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 		and (not e:IsCostChecked() or Duel.GetFlagEffect(tp,id)==0)
-	if not b1 then
-		local ce=Duel.GetChainMaterial(tp)
-		if ce~=nil then
-			local fgroup=ce:GetTarget()
-			local mg2=fgroup(ce,e,tp)
-			local mf=ce:GetValue()
-			b1=Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
-				and (not e:IsCostChecked() or Duel.GetFlagEffect(tp,id)==0)
-		end
-	end
-	aux.FCheckAdditional=nil
 	aux.RCheckAdditional=s.rcheck
 	local rg=Duel.GetMatchingGroup(s.filter2,tp,LOCATION_GRAVE,0,nil,tp)
 	local b2=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,aux.TRUE,e,tp,Group.CreateGroup(),rg,Card.GetLevel,"Greater")
@@ -76,39 +60,12 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
-		local chkf=tp
-		local mg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter1),tp,LOCATION_GRAVE,0,nil,tp)
-		aux.FCheckAdditional=s.fcheck
-		local sg1=Duel.GetMatchingGroup(s.fspfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-		local mg2=nil
-		local sg2=nil
-		local ce=Duel.GetChainMaterial(tp)
-		if ce~=nil then
-			local fgroup=ce:GetTarget()
-			mg2=fgroup(ce,e,tp)
-			local mf=ce:GetValue()
-			sg2=Duel.GetMatchingGroup(s.fspfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
-		end
-		if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
-			local sg=sg1:Clone()
-			if sg2 then sg:Merge(sg2) end
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local tg=sg:Select(tp,1,1,nil)
-			local tc=tg:GetFirst()
-			if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or ce and not Duel.SelectYesNo(tp,ce:GetDescription())) then
-				local mat=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-				tc:SetMaterial(mat)
-				Duel.Remove(mat,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-				Duel.BreakEffect()
-				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-			elseif ce then
-				local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-				local fop=ce:GetOperation()
-				fop(ce,e,tp,tc,mat2)
-			end
-			tc:CompleteProcedure()
-		end
-		aux.FCheckAdditional=nil
+		local fusion_effect=FusionSpell.CreateSummonEffect(e:GetHandler(),{
+			pre_select_mat_location=LOCATION_GRAVE,
+			matfilter=aux.NecroValleyFilter(),
+			additional_fcheck=s.fcheck
+		})
+		fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 	elseif e:GetLabel()==2 then
 		::rcancel::
 		local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.filter2),tp,LOCATION_GRAVE,0,nil,tp)
@@ -120,7 +77,6 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			if tc.mat_filter then
 				mg=mg:Filter(tc.mat_filter,tc,tp)
 			end
-			local lv=tc:GetLevel()
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")

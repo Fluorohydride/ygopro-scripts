@@ -40,18 +40,6 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SetChainLimit(aux.FALSE)
 	end
 end
-function s.fspfilter(c,e,tp,mg,f,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c)) and not mg:IsExists(Card.IsImmuneToEffect,1,nil,e)
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,nil,chkf)
-end
-function s.ffilter(c,mg)
-	return mg:IsContains(c)
-end
-function s.fcheck(mg)
-	return function(tp,sg,fc)
-				return sg:IsExists(s.ffilter,2,nil,mg)
-			end
-end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
@@ -73,26 +61,28 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			fc:RegisterEffect(e2)
 			Duel.SpecialSummonComplete()
-			local chkf=tp
-			local mg=Group.FromCards(tc,fc)
-			aux.FCheckAdditional=s.fcheck
-			local sg=Duel.GetMatchingGroup(s.fspfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
-			local b1=sg:GetCount()>0
+			local material_group=Group.FromCards(tc,fc)
+			local function matfilter(material,effect,player)
+				return material_group:IsContains(material)
+			end
+			local function gcheck(tp,mg,fc,mg_all,effect)
+				return mg_all and #mg_all==#material_group
+			end
+			local fusion_effect=FusionSpell.CreateSummonEffect(c,{
+				pre_select_mat_location=LOCATION_MZONE,
+				pre_select_mat_opponent_location=LOCATION_MZONE,
+				matfilter=matfilter,
+				additional_fgoalcheck=gcheck
+			})
+			local b1=fusion_effect:GetTarget()(e,tp,eg,ep,ev,re,r,rp,0)
 			local b2=fc:IsAbleToGrave()
 			local op=aux.SelectFromOptions(tp,
 				{b1,aux.Stringid(id,1),1},
 				{b2,aux.Stringid(id,2),2})
 			Duel.BreakEffect()
 			if op==1 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=sg:Select(tp,1,1,nil)
-				local tfc=tg:GetFirst()
-				local mat=Duel.SelectFusionMaterial(tp,tfc,mg,nil,chkf)
-				tfc:SetMaterial(mat)
-				Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-				Duel.BreakEffect()
-				Duel.SpecialSummon(tfc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-				tfc:CompleteProcedure()
+				Duel.HintSelection(material_group)
+				fusion_effect:GetOperation()(e,tp,eg,ep,ev,re,r,rp)
 			elseif op==2 then
 				Duel.SendtoGrave(fc,REASON_EFFECT)
 			end
