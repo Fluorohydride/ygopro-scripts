@@ -1,5 +1,6 @@
 --黒炎の騎士－ブラック・フレア・ナイト－
 function c13722870.initial_effect(c)
+	aux.AddCodeList(c,49217579)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,46986414,45231177,true,true)

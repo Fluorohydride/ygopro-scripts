@@ -1,5 +1,6 @@
 --N・マリン・ドルフィン
 function c78734254.initial_effect(c)
+	aux.AddCodeList(c,17955766)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
