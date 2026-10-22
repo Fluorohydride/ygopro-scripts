@@ -50,6 +50,7 @@ function c88696724.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return res
 	end
 	local mg=Duel.GetReleaseGroup(tp):Filter(c88696724.mfilter,nil,tp)
+	::cancel::
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	aux.FCheckAdditional=c88696724.fcheck
 	if c59160188 then c59160188.re_activated=true end
@@ -57,6 +58,7 @@ function c88696724.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,chkf)
 	aux.FCheckAdditional=nil
 	if c59160188 then c59160188.re_activated=false end
+	if #mat<2 then goto cancel end
 	aux.UseExtraReleaseCount(mat,tp)
 	Duel.Release(mat,REASON_COST)
 	e:SetLabel(g:GetFirst():GetCode())
