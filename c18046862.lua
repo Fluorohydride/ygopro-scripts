@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--equip
 	local e0=Effect.CreateEffect(c)
+	e0:SetDescription(aux.Stringid(id,0))
 	e0:SetCategory(CATEGORY_EQUIP)
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)

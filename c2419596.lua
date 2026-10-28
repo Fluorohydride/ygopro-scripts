@@ -56,7 +56,7 @@ function s.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=Duel.IsExistingTarget(s.filter2,tp,0,LOCATION_MZONE,1,nil)
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,1),1},
+		{b1,aux.Stringid(id,3),1},
 		{b2,aux.Stringid(id,2),2})
 	e:SetLabel(op)
 	if op==1 then

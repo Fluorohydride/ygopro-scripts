@@ -5,7 +5,7 @@ function c34086406.initial_effect(c)
 	c:EnableReviveLimit()
 	--to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(34086406,1))
+	e1:SetDescription(aux.Stringid(34086406,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

@@ -2,6 +2,7 @@
 function c77590412.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(77590412,0))
 	e1:SetCategory(CATEGORY_POSITION+CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -21,6 +22,7 @@ function c77590412.initial_effect(c)
 	c:RegisterEffect(e3)
 	--castling
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(77590412,2))
 	e4:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BE_BATTLE_TARGET)

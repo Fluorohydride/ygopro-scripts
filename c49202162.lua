@@ -65,13 +65,13 @@ function c49202162.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local op=0
 	if b2 and b3 then
-		op=Duel.SelectOption(tp,aux.Stringid(49202162,1),aux.Stringid(49202162,2),aux.Stringid(49202162,3))
+		op=Duel.SelectOption(tp,aux.Stringid(49202162,5),aux.Stringid(49202162,2),aux.Stringid(49202162,3))
 	elseif b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(49202162,1),aux.Stringid(49202162,2))
+		op=Duel.SelectOption(tp,aux.Stringid(49202162,5),aux.Stringid(49202162,2))
 	elseif b3 then
-		op=Duel.SelectOption(tp,aux.Stringid(49202162,1),aux.Stringid(49202162,3))*2
+		op=Duel.SelectOption(tp,aux.Stringid(49202162,5),aux.Stringid(49202162,3))*2
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(49202162,1))
+		op=Duel.SelectOption(tp,aux.Stringid(49202162,5))
 	end
 	e:SetLabel(op)
 end

@@ -2,6 +2,7 @@
 function c51510279.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(51510279,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -51,7 +52,7 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 	local off=1
 	local ops={}
 	local opval={}
-	ops[off]=aux.Stringid(51510279,0)
+	ops[off]=aux.Stringid(51510279,3)
 	opval[off-1]=0
 	off=off+1
 	if fsg1:GetCount()>0 or (fsg2~=nil and fsg2:GetCount()>0) then

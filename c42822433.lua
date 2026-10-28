@@ -2,6 +2,7 @@
 function c42822433.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(42822433,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -19,6 +20,7 @@ function c42822433.initial_effect(c)
 	c42822433.star_knight_summon_effect=e1
 	--special summon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(42822433,1))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY)

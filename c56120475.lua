@@ -2,6 +2,7 @@
 function c56120475.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(56120475,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

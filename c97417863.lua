@@ -11,6 +11,7 @@ function c97417863.initial_effect(c)
 	c:RegisterEffect(e0)
 	--pendulum taking
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(97417863,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_CONTROL)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
@@ -21,7 +22,7 @@ function c97417863.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(97417863,0))
+	e2:SetDescription(aux.Stringid(97417863,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_HAND)
@@ -109,7 +110,7 @@ function c97417863.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)==0 then return end
 	c:CompleteProcedure()
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
-	if Duel.Destroy(g,REASON_EFFECT)>0 and Duel.SelectYesNo(tp,aux.Stringid(97417863,1)) then
+	if Duel.Destroy(g,REASON_EFFECT)>0 and Duel.SelectYesNo(tp,aux.Stringid(97417863,3)) then
 		Duel.BreakEffect()
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end

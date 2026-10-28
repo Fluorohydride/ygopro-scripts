@@ -2,6 +2,7 @@
 function c9581215.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(9581215,0))
 	e1:SetCategory(CATEGORY_DISABLE+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
@@ -26,7 +27,7 @@ function c9581215.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sel=1
 	local g=Duel.GetMatchingGroup(c9581215.rmfilter,tp,0,LOCATION_HAND+LOCATION_DECK,nil,1-tp,eg:GetFirst())
 	local tg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_HAND,nil)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(9581215,0))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(9581215,2))
 	if g:GetCount()>0 then
 		sel=Duel.SelectOption(1-tp,1213,1214)
 	else

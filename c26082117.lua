@@ -21,7 +21,7 @@ end
 function c26082117.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local lv=e:GetHandler():GetLevel()
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26082117,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26082117,2))
 	e:SetLabel(Duel.AnnounceLevel(tp,1,8,lv))
 end
 function c26082117.op(e,tp,eg,ep,ev,re,r,rp)

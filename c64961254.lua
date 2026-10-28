@@ -11,7 +11,7 @@ function c64961254.initial_effect(c)
 	--see top
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_MSET+CATEGORY_SSET)
-	e3:SetDescription(aux.Stringid(64961254,1))
+	e3:SetDescription(aux.Stringid(64961254,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)
 	e3:SetRange(LOCATION_SZONE)
@@ -32,7 +32,7 @@ end
 function c64961254.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c64961254.thfilter,tp,LOCATION_DECK,0,nil)
 	if #g>0 and c64961254.thcon(e,tp,eg,ep,ev,re,r,rp) and
-		Duel.SelectYesNo(tp,aux.Stringid(64961254,0)) then
+		Duel.SelectYesNo(tp,aux.Stringid(64961254,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

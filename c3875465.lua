@@ -10,7 +10,7 @@ function c3875465.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(3875465,1))
+	e2:SetDescription(aux.Stringid(3875465,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -23,7 +23,7 @@ function c3875465.initial_effect(c)
 	c:RegisterEffect(e2)
 	--move
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(3875465,2))
+	e3:SetDescription(aux.Stringid(3875465,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetRange(LOCATION_FZONE)
@@ -37,7 +37,7 @@ function c3875465.thfilter1(c)
 end
 function c3875465.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c3875465.thfilter1,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3875465,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3875465,4)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

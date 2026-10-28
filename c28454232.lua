@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e0)
 	--destroy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,2))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)
@@ -36,7 +36,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,2))
+	e3:SetDescription(aux.Stringid(id,3))
 	e3:SetCategory(CATEGORY_DISABLE+CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)
@@ -163,7 +163,7 @@ end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateEffect(ev)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil,POS_FACEDOWN)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,5)) then
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_HAND,nil,POS_FACEDOWN)
 		if g:GetCount()>0 then
@@ -173,7 +173,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,4))
+	e:GetHandler():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,6))
 end
 function s.effcon(e)
 	local c=e:GetHandler()

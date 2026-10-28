@@ -29,7 +29,7 @@ function c90835938.initial_effect(c)
 	c:RegisterEffect(e4)
 	--remove
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(90835938,1))
+	e5:SetDescription(aux.Stringid(90835938,2))
 	e5:SetCategory(CATEGORY_REMOVE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_BATTLE_START)

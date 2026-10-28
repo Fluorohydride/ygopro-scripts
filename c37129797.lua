@@ -28,6 +28,7 @@ function c37129797.initial_effect(c)
 	c:RegisterEffect(e2)
 	--extra material
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(37129797,2))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetCode(EFFECT_ADD_EXTRA_TRIBUTE)

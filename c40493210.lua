@@ -2,6 +2,7 @@
 function c40493210.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(40493210,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -63,7 +64,7 @@ function c40493210.activate(e,tp,eg,ep,ev,re,r,rp)
 		local off=1
 		local ops,opval={},{}
 		if b1 then
-			ops[off]=aux.Stringid(40493210,0)
+			ops[off]=aux.Stringid(40493210,3)
 			opval[off]=0
 			off=off+1
 		end

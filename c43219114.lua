@@ -15,7 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=aux.AddRitualProcEqual2(c,nil,nil,nil,s.mfilter,true)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,2))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCountLimit(1,id+o)

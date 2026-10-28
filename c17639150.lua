@@ -2,6 +2,7 @@
 function c17639150.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(17639150,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -36,7 +37,7 @@ function c17639150.initial_effect(c)
 	c:RegisterEffect(e5)
 	--search
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(17639150,0))
+	e6:SetDescription(aux.Stringid(17639150,2))
 	e6:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_TO_GRAVE)

@@ -14,7 +14,7 @@ function c12289247.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Special Summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(12289247,3))
+	e2:SetDescription(aux.Stringid(12289247,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_CUSTOM+12289247)
@@ -26,7 +26,7 @@ function c12289247.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(12289247,5))
+	e3:SetDescription(aux.Stringid(12289247,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
@@ -76,9 +76,9 @@ function c12289247.rpop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		local op=0
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-			op=Duel.SelectOption(tp,aux.Stringid(12289247,1),aux.Stringid(12289247,2))
+			op=Duel.SelectOption(tp,aux.Stringid(12289247,3),aux.Stringid(12289247,5))
 		else
-			op=Duel.SelectOption(tp,aux.Stringid(12289247,1))
+			op=Duel.SelectOption(tp,aux.Stringid(12289247,3))
 		end
 		if op==0 then
 			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)

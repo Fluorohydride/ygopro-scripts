@@ -10,6 +10,7 @@ function c27104921.initial_effect(c)
 	c:RegisterEffect(e1)
 	--counter
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(27104921,0))
 	e2:SetCategory(CATEGORY_COUNTER+CATEGORY_SPECIAL_SUMMON+CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -35,7 +36,7 @@ function c27104921.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		c:AddCounter(0x61,1)
 		local ct=c:GetCounter(0x61)
-		if ct==1 and Duel.SelectYesNo(tp,aux.Stringid(27104921,0)) then
+		if ct==1 and Duel.SelectYesNo(tp,aux.Stringid(27104921,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 			local ac=Duel.AnnounceCard(tp)

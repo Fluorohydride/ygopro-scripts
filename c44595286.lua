@@ -3,6 +3,7 @@ function c44595286.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(44595286,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(0,TIMING_TOHAND+TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
@@ -31,7 +32,7 @@ function c44595286.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 	local opt=0
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		opt=Duel.SelectOption(tp,aux.Stringid(44595286,0),aux.Stringid(44595286,1))+1
+		opt=Duel.SelectOption(tp,aux.Stringid(44595286,2),aux.Stringid(44595286,1))+1
 	elseif g1:GetCount()>0 then opt=1
 	elseif g2:GetCount()>0 then opt=2
 	end

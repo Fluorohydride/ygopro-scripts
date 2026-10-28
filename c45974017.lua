@@ -16,7 +16,7 @@ function c45974017.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(45974017,3))
+	e3:SetDescription(aux.Stringid(45974017,1))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_SZONE)
@@ -39,8 +39,8 @@ function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return b1 or b2
 	end
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(45974017,1),aux.Stringid(45974017,2))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(45974017,1))
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(45974017,3),aux.Stringid(45974017,2))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(45974017,3))
 	else op=Duel.SelectOption(tp,aux.Stringid(45974017,2))+1 end
 	e:SetLabel(op)
 	if op==0 then

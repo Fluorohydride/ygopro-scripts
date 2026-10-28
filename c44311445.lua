@@ -1,11 +1,11 @@
 --マドルチェ・プディンセス・ショコ・ア・ラ・モード
 function c44311445.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),5,2,c44311445.ovfilter,aux.Stringid(44311445,0))
+	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),5,2,c44311445.ovfilter,aux.Stringid(44311445,2))
 	c:EnableReviveLimit()
 	--todeck
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(44311445,1))
+	e1:SetDescription(aux.Stringid(44311445,0))
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -16,7 +16,7 @@ function c44311445.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(44311445,2))
+	e2:SetDescription(aux.Stringid(44311445,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)

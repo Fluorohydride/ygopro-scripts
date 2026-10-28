@@ -2,6 +2,7 @@
 function c11234702.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(11234702,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -15,7 +16,7 @@ function c11234702.initial_effect(c)
 	c:RegisterEffect(e2)
 	--level
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(11234702,0))
+	e3:SetDescription(aux.Stringid(11234702,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -69,9 +70,9 @@ function c11234702.lvop(e,tp,eg,ep,ev,re,r,rp)
 		local sel=0
 		local lvl=1
 		if tc:IsLevel(1) then
-			sel=Duel.SelectOption(tp,aux.Stringid(11234702,1))
+			sel=Duel.SelectOption(tp,aux.Stringid(11234702,3))
 		else
-			sel=Duel.SelectOption(tp,aux.Stringid(11234702,1),aux.Stringid(11234702,2))
+			sel=Duel.SelectOption(tp,aux.Stringid(11234702,3),aux.Stringid(11234702,2))
 		end
 		if sel==1 then
 			lvl=-1

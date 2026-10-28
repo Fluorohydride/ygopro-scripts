@@ -35,7 +35,7 @@ function c45943516.thfilter(c)
 end
 function c45943516.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c45943516.thfilter,tp,LOCATION_DECK,0,nil)
-	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(45943516,0)) then
+	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(45943516,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

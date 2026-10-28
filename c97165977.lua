@@ -29,7 +29,7 @@ function c97165977.initial_effect(c)
 	c:RegisterEffect(e3)
 	--ATK Up
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(97165977,1))
+	e4:SetDescription(aux.Stringid(97165977,2))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)

@@ -17,7 +17,7 @@ function c3134857.initial_effect(c)
 	c:RegisterEffect(e2)
 	--todeck
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(3134857,0))
+	e3:SetDescription(aux.Stringid(3134857,1))
 	e3:SetCategory(CATEGORY_TODECK+CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

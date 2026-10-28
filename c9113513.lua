@@ -2,6 +2,7 @@
 function c9113513.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(9113513,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_DECKDES+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -126,7 +127,7 @@ function c9113513.desop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=mg:GetCount()
 		and mg:IsExists(aux.NecroValleyFilter(c9113513.mgfilter),mg:GetCount(),nil,e,tp,tc,mg)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.SelectYesNo(tp,aux.Stringid(9113513,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(9113513,1)) then
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

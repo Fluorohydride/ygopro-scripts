@@ -89,7 +89,7 @@ function s.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,3))
 end
 function s.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
@@ -115,7 +115,7 @@ end
 function s.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.xyzfilter,tp,LOCATION_EXTRA,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,2))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,4))
 end
 function s.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.xyzfilter,tp,LOCATION_EXTRA,0,nil)

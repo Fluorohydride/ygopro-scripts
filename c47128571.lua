@@ -2,6 +2,7 @@
 function c47128571.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(47128571,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -34,7 +35,7 @@ function c47128571.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.GetOperatedGroup()
 		if sg:GetCount()>0 and Duel.NegateAttack() and sg:IsExists(c47128571.cfilter,1,nil,tp) then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47128571,0))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47128571,1))
 			local cg=sg:FilterSelect(tp,c47128571.cfilter,1,1,nil,tp)
 			Duel.HintSelection(cg)
 			local dg=Duel.GetMatchingGroup(c47128571.desfilter,tp,0,LOCATION_MZONE,nil,cg:GetFirst():GetDefense())

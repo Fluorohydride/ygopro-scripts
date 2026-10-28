@@ -2,6 +2,7 @@
 function c81193865.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(81193865,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -28,7 +29,7 @@ function c81193865.initial_effect(c)
 	c:RegisterEffect(e3)
 	--chain attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(81193865,0))
+	e4:SetDescription(aux.Stringid(81193865,1))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DAMAGE_STEP_END)
 	e4:SetRange(LOCATION_SZONE)

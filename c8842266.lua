@@ -2,6 +2,7 @@
 function c8842266.initial_effect(c)
 	--rec or dam
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(8842266,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -12,7 +13,7 @@ end
 function c8842266.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-	local op=Duel.SelectOption(tp,aux.Stringid(8842266,0),aux.Stringid(8842266,1))
+	local op=Duel.SelectOption(tp,aux.Stringid(8842266,2),aux.Stringid(8842266,1))
 	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(CATEGORY_RECOVER)

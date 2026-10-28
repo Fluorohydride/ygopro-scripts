@@ -18,7 +18,7 @@ function c81038234.initial_effect(c)
 	c:RegisterEffect(e2)
 	--place
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(81038234,0))
+	e3:SetDescription(aux.Stringid(81038234,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -63,7 +63,7 @@ function c81038234.tfop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true) then
 		local g=Duel.GetMatchingGroup(c81038234.spfilter,tp,LOCATION_HAND,0,nil,e,tp,tc:GetCode())
-		if #g>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(81038234,1)) then
+		if #g>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(81038234,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)

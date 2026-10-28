@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,33599853,44001993,70405001)
 	local e1=aux.AddRitualProcGreater2(c,s.rfilter,nil,s.grfilter)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,2))
 	--salvage
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))

@@ -17,6 +17,7 @@ function c22510667.initial_effect(c)
 	c:RegisterEffect(e2)
 	--move
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(22510667,0))
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -42,7 +43,7 @@ function c22510667.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return Duel.IsExistingTarget(c22510667.seqfilter,tp,LOCATION_MZONE,0,1,nil)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(22510667,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(22510667,2))
 	Duel.SelectTarget(tp,c22510667.seqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c22510667.seqop(e,tp,eg,ep,ev,re,r,rp)

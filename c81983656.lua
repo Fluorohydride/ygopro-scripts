@@ -16,6 +16,7 @@ function c81983656.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change battle target
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(81983656,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)

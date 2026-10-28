@@ -15,7 +15,7 @@ function c30860696.initial_effect(c)
 	c:RegisterEffect(e2)
 	--reduce atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(30860696,0))
+	e3:SetDescription(aux.Stringid(30860696,1))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLED)

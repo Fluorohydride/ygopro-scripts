@@ -3,6 +3,7 @@ function c57329501.initial_effect(c)
 	aux.AddCodeList(c,91027843)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(57329501,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -22,9 +23,9 @@ function c57329501.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return (b1 or b2) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(57329501,0),aux.Stringid(57329501,1))
+		op=Duel.SelectOption(tp,aux.Stringid(57329501,2),aux.Stringid(57329501,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(57329501,0))
+		op=Duel.SelectOption(tp,aux.Stringid(57329501,2))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(57329501,1))+1
 	end

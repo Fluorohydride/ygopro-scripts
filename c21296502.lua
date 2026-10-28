@@ -33,7 +33,7 @@ function c21296502.initial_effect(c)
 	--search
 	local e6=e5:Clone()
 	e6:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-	e6:SetDescription(aux.Stringid(21296502,1))
+	e6:SetDescription(aux.Stringid(21296502,3))
 	e6:SetTarget(c21296502.thtg)
 	e6:SetOperation(c21296502.thop)
 	c:RegisterEffect(e6)

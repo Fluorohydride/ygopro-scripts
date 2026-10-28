@@ -17,7 +17,7 @@ function c45877457.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(45877457,0))
+	e2:SetDescription(aux.Stringid(45877457,1))
 	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
@@ -38,7 +38,7 @@ function c45877457.initial_effect(c)
 	e0:SetLabelObject(e3)
 	--search
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(45877457,1))
+	e4:SetDescription(aux.Stringid(45877457,2))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_TO_GRAVE)
@@ -57,7 +57,7 @@ function c45877457.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) and e:GetLabel()==1
 end
 function c45877457.matop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(45877457,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(45877457,2))
+	e:GetHandler():RegisterFlagEffect(45877457,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(45877457,3))
 end
 function c45877457.attfilter(c)
 	return c:GetAttribute()>0

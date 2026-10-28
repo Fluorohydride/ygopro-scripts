@@ -2,6 +2,7 @@
 function c89594399.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(89594399,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -44,7 +45,7 @@ function c89594399.spop(e,tp,eg,ep,ev,re,r,rp)
 		local ct=math.min(#cg,(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 		if ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 		local g=Duel.GetMatchingGroup(c89594399.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-		if g:GetCount()>0 and ct>0 and Duel.SelectYesNo(tp,aux.Stringid(89594399,1)) then
+		if g:GetCount()>0 and ct>0 and Duel.SelectYesNo(tp,aux.Stringid(89594399,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,ct,nil)

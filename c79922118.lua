@@ -7,6 +7,7 @@ function c79922118.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destory
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(79922118,0))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DESTROY+CATEGORY_RECOVER)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_SZONE)

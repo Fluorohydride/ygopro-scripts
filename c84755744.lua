@@ -58,7 +58,7 @@ function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToChain() or c:IsFacedown() then return end
 	local down=c:IsLevelAbove(2)
-	local lv=aux.SelectFromOptions(tp,{true,aux.Stringid(id,2)},{down,aux.Stringid(id,3),-1})
+	local lv=aux.SelectFromOptions(tp,{true,aux.Stringid(id,4)},{down,aux.Stringid(id,3),-1})
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)

@@ -25,7 +25,7 @@ function c20934852.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(20934852,1))
+	e3:SetDescription(aux.Stringid(20934852,2))
 	e3:SetCategory(CATEGORY_DISABLE+CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)

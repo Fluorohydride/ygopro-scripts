@@ -2,6 +2,7 @@
 function c11654067.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(11654067,0))
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DAMAGE+CATEGORY_DECKDES+CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,7 +27,7 @@ function c11654067.activate(e,tp,eg,ep,ev,re,r,rp)
 		local b2=Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,11654068,0,TYPES_TOKEN_MONSTER,1000,1000,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP,1-tp)
 		local sel=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(11654067,0)},
+			{b1,aux.Stringid(11654067,3)},
 			{b2,aux.Stringid(11654067,1)},
 			{true,aux.Stringid(11654067,2)})
 		if sel==1 then

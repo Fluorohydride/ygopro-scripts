@@ -57,7 +57,7 @@ function s.thdop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,g)
 			local g1=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,0,nil)
 			local g2=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
-			if #g1*#g2>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+			if #g1*#g2>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 				local dg1=g1:Select(tp,1,1,nil)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

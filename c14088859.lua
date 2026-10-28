@@ -90,7 +90,7 @@ end
 function c14088859.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return bit.band(r,REASON_EFFECT)~=0 and re
 		and e:GetHandler():IsAbleToRemove() and eg:IsExists(c14088859.repfilter2,1,nil,tp,re) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(14088859,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(14088859,2)) then
 		return true
 	else return false end
 end

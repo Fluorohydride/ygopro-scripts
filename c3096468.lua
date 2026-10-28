@@ -2,6 +2,7 @@
 function c3096468.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(3096468,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

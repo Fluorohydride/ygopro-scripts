@@ -8,6 +8,7 @@ function c2295831.initial_effect(c)
 	e1:SetOperation(c2295831.regop)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(2295831,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -24,7 +25,7 @@ function c2295831.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2295831.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.SelectYesNo(tp,aux.Stringid(2295831,0)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(2295831,1)) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_PUBLIC)

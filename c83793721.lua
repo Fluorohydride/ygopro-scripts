@@ -6,6 +6,7 @@ function s.initial_effect(c)
 	aux.AddFusionProcFunFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x109b),aux.FilterBoolFunction(Card.IsFusionSetCard,0x9b),2,2,true)
 	--remove
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -17,6 +18,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -60,7 +62,7 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	local ct=#og
 	local thg=Duel.GetMatchingGroup(s.rfilter,tp,0,LOCATION_ONFIELD,nil)
-	if ct*#thg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+	if ct*#thg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local sg2=thg:Select(tp,1,math.min(ct,#thg),nil)

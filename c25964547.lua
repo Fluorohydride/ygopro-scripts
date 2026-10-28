@@ -3,6 +3,7 @@ function c25964547.initial_effect(c)
 	aux.AddCodeList(c,74665651,1050355)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(25964547,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
@@ -22,7 +23,7 @@ function c25964547.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c25964547.cfilter1,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,tp) end
 end
 function c25964547.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25964547,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25964547,2))
 	local g1=Duel.SelectMatchingCard(tp,c25964547.cfilter1,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)
 	local tc1=g1:GetFirst()
 	if not tc1 then return end

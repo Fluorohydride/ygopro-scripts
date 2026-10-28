@@ -26,7 +26,7 @@ function c94415058.initial_effect(c)
 	c:RegisterEffect(e5)
 	--spsummon
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(94415058,0))
+	e6:SetDescription(aux.Stringid(94415058,2))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_TO_HAND)

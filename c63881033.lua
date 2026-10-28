@@ -53,7 +53,7 @@ function c63881033.filter(c)
 end
 function c63881033.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c63881033.filter,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,4))
 	local lv=Duel.AnnounceLevel(tp,5,9)
 	e:SetLabel(lv)
 end

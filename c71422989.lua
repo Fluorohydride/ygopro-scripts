@@ -2,6 +2,7 @@
 function c71422989.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(71422989,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -61,7 +62,7 @@ function c71422989.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mf=ce:GetValue()
 			sg2=Duel.GetMatchingGroup(c71422989.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
 		end
-		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(71422989,0)) then
+		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(71422989,1)) then
 			Duel.BreakEffect()
 			local sg=sg1:Clone()
 			if sg2 then sg:Merge(sg2) end

@@ -2,6 +2,7 @@
 function c49158617.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(49158617,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DRAW+CATEGORY_REMOVE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -44,7 +45,7 @@ function c49158617.activate(e,tp,eg,ep,ev,re,r,rp)
 			local ops={}
 			local opval={}
 			if b1 then
-				ops[off]=aux.Stringid(49158617,0)
+				ops[off]=aux.Stringid(49158617,3)
 				opval[off-1]=1
 				off=off+1
 			end

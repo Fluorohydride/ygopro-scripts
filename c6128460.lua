@@ -13,6 +13,7 @@ function c6128460.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(6128460,2))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_HANDES_SELF)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)

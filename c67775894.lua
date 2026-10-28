@@ -2,6 +2,7 @@
 function c67775894.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(67775894,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -24,7 +25,7 @@ function c67775894.initial_effect(c)
 	c:RegisterEffect(e3)
 	--draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(67775894,0))
+	e4:SetDescription(aux.Stringid(67775894,1))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_IGNITION)

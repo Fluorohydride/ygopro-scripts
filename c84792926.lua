@@ -20,7 +20,7 @@ function c84792926.initial_effect(c)
 	c:RegisterEffect(e2)
 	--tohand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(84792926,1))
+	e3:SetDescription(aux.Stringid(84792926,0))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_FZONE)
@@ -36,7 +36,7 @@ function c84792926.thfilter(c)
 end
 function c84792926.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c84792926.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(84792926,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(84792926,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

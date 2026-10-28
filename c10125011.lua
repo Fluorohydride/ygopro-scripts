@@ -10,6 +10,7 @@ function c10125011.initial_effect(c)
 	c:RegisterEffect(e1)
 	--xyz summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(10125011,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -28,7 +29,7 @@ end
 function c10125011.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c10125011.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 	if #cg>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.SelectYesNo(tp,aux.Stringid(10125011,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(10125011,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=cg:Select(tp,1,1,nil)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

@@ -1,11 +1,11 @@
 --ギャラクシーアイズ FA・フォトン・ドラゴン
 function c39030163.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,8,3,c39030163.ovfilter,aux.Stringid(39030163,0))
+	aux.AddXyzProcedure(c,nil,8,3,c39030163.ovfilter,aux.Stringid(39030163,2))
 	c:EnableReviveLimit()
 	--material
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(39030163,1))
+	e1:SetDescription(aux.Stringid(39030163,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -16,7 +16,7 @@ function c39030163.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(39030163,2))
+	e2:SetDescription(aux.Stringid(39030163,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

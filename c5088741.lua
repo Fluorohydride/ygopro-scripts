@@ -18,7 +18,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--ritual summon
 	local e2=aux.AddRitualProcGreater2(c,aux.TRUE,nil,nil,aux.TRUE,true)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,3))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,id+o)

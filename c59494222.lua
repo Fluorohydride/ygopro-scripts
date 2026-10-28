@@ -12,13 +12,13 @@ function c59494222.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 and not Duel.CheckPhaseActivity()
 end
 function c59494222.activate(e,tp,eg,ep,ev,re,r,rp)
-	local op=Duel.SelectOption(tp,aux.Stringid(59494222,0),aux.Stringid(59494222,1),aux.Stringid(59494222,2))
+	local op=Duel.SelectOption(tp,aux.Stringid(59494222,3),aux.Stringid(59494222,1),aux.Stringid(59494222,2))
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CLIENT_HINT)
 	e1:SetTargetRange(1,1)
 	if op==0 then
-		e1:SetDescription(aux.Stringid(59494222,0))
+		e1:SetDescription(aux.Stringid(59494222,3))
 		e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 		e1:SetValue(c59494222.actlimit)
 	elseif op==1 then

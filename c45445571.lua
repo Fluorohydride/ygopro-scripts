@@ -23,6 +23,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--recycle
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -65,7 +66,7 @@ function s.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function s.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,500) and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+	if Duel.CheckLPCost(tp,500) and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.PayLPCost(tp,500)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

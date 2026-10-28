@@ -12,6 +12,7 @@ function c90583279.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(90583279,1))
 	e2:SetCategory(CATEGORY_LEAVE_GRAVE+CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

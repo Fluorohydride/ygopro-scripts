@@ -2,6 +2,7 @@
 function c73468603.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(73468603,0))
 	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -19,7 +20,7 @@ end
 function c73468603.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c73468603.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,2))
 	local tg1=g:Select(tp,1,1,nil)
 	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,1))

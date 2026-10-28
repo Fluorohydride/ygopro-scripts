@@ -5,7 +5,7 @@ function c66393507.initial_effect(c)
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_INSECT),2,2)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(66393507,0))
+	e1:SetDescription(aux.Stringid(66393507,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_LEAVE_FIELD)

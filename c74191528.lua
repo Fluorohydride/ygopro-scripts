@@ -2,6 +2,7 @@
 function c74191528.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(74191528,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -22,9 +23,9 @@ function c74191528.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<5 or Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)<5
 		or not Duel.IsExistingMatchingCard(c74191528.filter,tp,LOCATION_DECK,0,1,nil,tp)
 		or not Duel.IsExistingMatchingCard(c74191528.filter,1-tp,LOCATION_DECK,0,1,nil,1-tp) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,3))
 	local g1=Duel.SelectMatchingCard(tp,c74191528.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,0))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,3))
 	local g2=Duel.SelectMatchingCard(1-tp,c74191528.filter,1-tp,LOCATION_DECK,0,1,1,nil,1-tp)
 	Duel.BreakEffect()
 	--[[ need Duel.RandomSelect to be updated for manually select

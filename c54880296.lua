@@ -2,6 +2,7 @@
 function c54880296.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(54880296,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -31,7 +32,7 @@ function c54880296.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoHand(sg,nil,REASON_EFFECT)>0 then
 		local ct=5-Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 		if ct>0 and Duel.IsPlayerCanDraw(tp,ct)
-			and Duel.SelectYesNo(tp,aux.Stringid(54880296,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(54880296,1)) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,ct,REASON_EFFECT)
 		end

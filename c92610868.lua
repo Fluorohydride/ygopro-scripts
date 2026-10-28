@@ -12,7 +12,7 @@ function c92610868.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(92610868,0))
+	e2:SetDescription(aux.Stringid(92610868,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)
@@ -64,7 +64,7 @@ function c92610868.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		local sg=eg:Filter(c92610868.repfilter,c,tp)
 		if sg:GetCount()>1 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(92610868,1))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(92610868,3))
 			sg=sg:Select(tp,1,1,nil)
 		end
 		sg:KeepAlive()

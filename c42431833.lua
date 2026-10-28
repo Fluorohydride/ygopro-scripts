@@ -2,6 +2,7 @@
 function c42431833.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(42431833,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
@@ -14,6 +15,7 @@ function c42431833.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(42431833,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

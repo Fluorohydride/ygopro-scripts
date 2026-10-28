@@ -2,6 +2,7 @@
 function c51849216.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(51849216,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_REMOVE+CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
@@ -29,7 +30,7 @@ function c51849216.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)~=0 and eg:GetFirst():IsLocation(LOCATION_REMOVED) then
 		local ct=Duel.GetMatchingGroupCount(Card.IsFaceup,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil)
 		if Duel.IsExistingMatchingCard(c51849216.cfilter,tp,LOCATION_MZONE,0,1,nil) and ct>0
-			and Duel.SelectYesNo(tp,aux.Stringid(51849216,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(51849216,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			local g=Duel.SelectMatchingCard(tp,c51849216.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)

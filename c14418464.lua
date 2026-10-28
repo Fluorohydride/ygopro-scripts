@@ -4,6 +4,7 @@ function c14418464.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(14418464,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
@@ -13,6 +14,7 @@ function c14418464.initial_effect(c)
 	c:RegisterEffect(e1)
 	--move
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(14418464,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -23,6 +25,7 @@ function c14418464.initial_effect(c)
 	c:RegisterEffect(e2)
 	--move
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(14418464,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_MOVE)
 	e3:SetRange(LOCATION_MZONE)
@@ -70,7 +73,7 @@ end
 function c14418464.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c14418464.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c14418464.filter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14418464,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14418464,3))
 	Duel.SelectTarget(tp,c14418464.filter,tp,LOCATION_MZONE,0,1,1,e:GetHandler())
 end
 function c14418464.seqop(e,tp,eg,ep,ev,re,r,rp)
@@ -101,7 +104,7 @@ end
 function c14418464.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_PZONE) and c14418464.mvfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c14418464.mvfilter,tp,LOCATION_PZONE,LOCATION_PZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14418464,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14418464,4))
 	Duel.SelectTarget(tp,c14418464.mvfilter,tp,LOCATION_PZONE,LOCATION_PZONE,1,1,nil)
 end
 function c14418464.mvop(e,tp,eg,ep,ev,re,r,rp)

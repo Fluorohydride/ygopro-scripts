@@ -10,7 +10,7 @@ function c99328137.initial_effect(c)
 	c:RegisterEffect(e1)
 	--extra normal summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(99328137,0))
+	e2:SetDescription(aux.Stringid(99328137,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
@@ -31,7 +31,7 @@ end
 function c99328137.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,94076521)==0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(99328137,1))
+		e1:SetDescription(aux.Stringid(99328137,2))
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetTargetRange(LOCATION_HAND+LOCATION_MZONE,0)
 		e1:SetCode(EFFECT_EXTRA_SUMMON_COUNT)

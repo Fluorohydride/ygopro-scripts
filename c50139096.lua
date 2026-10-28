@@ -57,7 +57,7 @@ function c50139096.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c50139096.actop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(50139096,2))
+		tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(50139096,3))
 	end
 end
 function c50139096.actcon(e,tp,eg,ep,ev,re,r,rp)

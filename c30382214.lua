@@ -2,6 +2,7 @@
 function c30382214.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(30382214,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -11,6 +12,7 @@ function c30382214.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(30382214,1))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -74,7 +76,7 @@ function c30382214.drawop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-p,tc)
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
 			local sel=1
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30382214,0))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30382214,2))
 			if Duel.IsExistingMatchingCard(c30382214.sfilter,tp,LOCATION_DECK,0,1,nil,e,tp) then
 				sel=Duel.SelectOption(tp,1213,1214)
 			else

@@ -2,7 +2,7 @@
 function c59975920.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(59975920,0))
+	e1:SetDescription(aux.Stringid(59975920,4))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)

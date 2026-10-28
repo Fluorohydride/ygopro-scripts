@@ -75,7 +75,7 @@ function c80773359.tnop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(3000)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
-		c:RegisterFlagEffect(80773359,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(80773359,1))
+		c:RegisterFlagEffect(80773359,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(80773359,4))
 	end
 end
 function c80773359.atkcon(e)

@@ -17,7 +17,7 @@ function c37694547.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetDescription(aux.Stringid(37694547,0))
+	e3:SetDescription(aux.Stringid(37694547,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_TO_GRAVE)

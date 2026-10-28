@@ -2,6 +2,7 @@
 function c97803170.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(97803170,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
@@ -9,7 +10,7 @@ function c97803170.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(97803170,0))
+	e2:SetDescription(aux.Stringid(97803170,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES_SELF)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

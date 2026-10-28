@@ -5,7 +5,7 @@ function c98502113.initial_effect(c)
 	aux.AddFusionProcCode2(c,46986414,78193831,true,true)
 	--negate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(98502113,0))
+	e1:SetDescription(aux.Stringid(98502113,1))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)

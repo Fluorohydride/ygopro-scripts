@@ -21,7 +21,7 @@ function c65305468.initial_effect(c)
 	c:RegisterEffect(e5)
 	--control
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(65305468,0))
+	e6:SetDescription(aux.Stringid(65305468,1))
 	e6:SetCategory(CATEGORY_CONTROL)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_DAMAGE_STEP_END)

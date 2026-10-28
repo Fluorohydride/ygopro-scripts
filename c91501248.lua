@@ -2,6 +2,7 @@
 function c91501248.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(91501248,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,91501248)
@@ -22,7 +23,7 @@ function c91501248.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(91501248,0)
+		ops[off]=aux.Stringid(91501248,4)
 		opval[off-1]=1
 		off=off+1
 	end

@@ -2,6 +2,7 @@
 function c99426088.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(99426088,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -118,7 +119,7 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if fsg1:GetCount()>0 or (fsg2~=nil and fsg2:GetCount()>0) then
-		ops[off]=aux.Stringid(99426088,0)
+		ops[off]=aux.Stringid(99426088,2)
 		opval[off-1]=1
 		off=off+1
 	end

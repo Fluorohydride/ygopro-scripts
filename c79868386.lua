@@ -3,6 +3,7 @@ function c79868386.initial_effect(c)
 	aux.AddCodeList(c,10000000)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(79868386,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -71,7 +72,7 @@ function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sg=Duel.GetMatchingGroup(c79868386.desfilter,tp,0,LOCATION_ONFIELD,nil)
 			if #sg>0 and Duel.GetTurnPlayer()==tp
 				and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
-				and Duel.SelectYesNo(tp,aux.Stringid(79868386,0)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(79868386,1)) then
 				Duel.BreakEffect()
 				Duel.Destroy(sg,REASON_EFFECT)
 			end

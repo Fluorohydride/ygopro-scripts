@@ -21,7 +21,7 @@ function c83241722.coincon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83241722.coinop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,83241722)~=0 then return end
-	if Duel.SelectYesNo(tp,aux.Stringid(83241722,0)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(83241722,1)) then
 		Duel.Hint(HINT_CARD,0,83241722)
 		Duel.RegisterFlagEffect(tp,83241722,RESET_PHASE+PHASE_END,0,1)
 		local ct1=bit.band(ev,0xff)

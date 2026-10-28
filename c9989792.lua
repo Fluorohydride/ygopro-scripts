@@ -26,7 +26,7 @@ function c9989792.initial_effect(c)
 	--to hand
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_TOHAND)
-	e4:SetDescription(aux.Stringid(9989792,0))
+	e4:SetDescription(aux.Stringid(9989792,2))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e4:SetCode(EVENT_TO_GRAVE)

@@ -3,7 +3,7 @@ function c71187462.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(71187462,0))
+	e1:SetDescription(aux.Stringid(71187462,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)

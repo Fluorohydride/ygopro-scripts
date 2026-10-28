@@ -2,6 +2,7 @@
 function c98045062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(98045062,0))
 	e1:SetCategory(CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -49,9 +50,9 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sel=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if b1 and b2 then
-		sel=Duel.SelectOption(tp,aux.Stringid(98045062,0),aux.Stringid(98045062,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(98045062,2),aux.Stringid(98045062,1))
 	elseif b1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(98045062,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(98045062,2))
 	else
 		sel=Duel.SelectOption(tp,aux.Stringid(98045062,1))+1
 	end

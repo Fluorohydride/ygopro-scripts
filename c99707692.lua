@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -14,6 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--level
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,id+o)
@@ -72,9 +74,9 @@ function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local sel=0
 	local lv=1
 	if not g:IsExists(Card.IsLevelAbove,1,nil,2) then
-		sel=Duel.SelectOption(tp,aux.Stringid(id,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(id,2))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(id,0),aux.Stringid(id,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(id,2),aux.Stringid(id,3))
 	end
 	if sel==1 then
 		lv=-1

@@ -2,6 +2,7 @@
 function c75944053.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(75944053,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -10,6 +11,7 @@ function c75944053.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(75944053,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

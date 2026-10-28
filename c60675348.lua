@@ -9,7 +9,7 @@ function c60675348.initial_effect(c)
 	c:RegisterEffect(e1)
 	--return
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(60675348,1))
+	e2:SetDescription(aux.Stringid(60675348,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -31,7 +31,7 @@ function c60675348.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=0
 	if Duel.CheckLocation(tp,LOCATION_PZONE,0) then ct=ct+1 end
 	if Duel.CheckLocation(tp,LOCATION_PZONE,1) then ct=ct+1 end
-	if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60675348,0)) then
+	if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60675348,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local sg=g:Select(tp,1,ct,nil)
 		local sc=sg:GetFirst()

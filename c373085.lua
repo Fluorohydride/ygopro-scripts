@@ -11,7 +11,7 @@ function c373085.initial_effect(c)
 	c:RegisterEffect(e1)
 	--discard self deck
 	local e2=e1:Clone()
-	e2:SetDescription(aux.Stringid(373085,1))
+	e2:SetDescription(aux.Stringid(373085,2))
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,373085)

@@ -10,6 +10,7 @@ function c40380686.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change race or attribute
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(40380686,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -31,7 +32,7 @@ function c40380686.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c40380686.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c40380686.filter,tp,LOCATION_MZONE,0,1,nil) end
 	local ar=0
-	local op=Duel.SelectOption(tp,aux.Stringid(40380686,0),aux.Stringid(40380686,1))
+	local op=Duel.SelectOption(tp,aux.Stringid(40380686,2),aux.Stringid(40380686,3))
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 		ar=Duel.AnnounceRace(tp,1,RACE_ALL)

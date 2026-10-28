@@ -2,6 +2,7 @@
 function c84808313.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(84808313,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c84808313.cost)
@@ -9,7 +10,7 @@ function c84808313.initial_effect(c)
 	c:RegisterEffect(e1)
 	--reduce tribute
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(84808313,0))
+	e2:SetDescription(aux.Stringid(84808313,1))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_SUMMON_PROC)
 	e2:SetRange(LOCATION_SZONE)

@@ -2,7 +2,7 @@
 function c82090807.initial_effect(c)
 	--spsummon rule or self
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(82090807,0))
+	e1:SetDescription(aux.Stringid(82090807,3))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
@@ -12,7 +12,7 @@ function c82090807.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon rule or your opponent
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(82090807,1))
+	e2:SetDescription(aux.Stringid(82090807,4))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetRange(LOCATION_HAND)

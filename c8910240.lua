@@ -2,7 +2,7 @@
 function c8910240.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(8910240,0))
+	e1:SetDescription(aux.Stringid(8910240,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_EXTRA_SUMMON_COUNT)
 	e1:SetRange(LOCATION_MZONE)

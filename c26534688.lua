@@ -18,7 +18,7 @@ function c26534688.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(26534688,1))
+	e3:SetDescription(aux.Stringid(26534688,2))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -32,7 +32,7 @@ function c26534688.initial_effect(c)
 end
 function c26534688.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAttribute,tp,LOCATION_DECK,0,nil,ATTRIBUTE_WATER)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(26534688,2)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(26534688,5)) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26534688,3))
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		Duel.ShuffleDeck(tp)

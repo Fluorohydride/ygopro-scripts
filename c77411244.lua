@@ -9,6 +9,7 @@ function c77411244.initial_effect(c)
 	c:RegisterEffect(e4)
 	--to hand
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(77411244,2))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)

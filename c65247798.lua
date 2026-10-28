@@ -69,7 +69,7 @@ end
 function c65247798.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(65247798,2))
+	e1:SetDescription(aux.Stringid(65247798,3))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetRange(LOCATION_MZONE)

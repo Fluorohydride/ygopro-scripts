@@ -2,7 +2,7 @@
 function c52653092.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	aux.AddXyzProcedureLevelFree(c,c52653092.mfilter,c52653092.xyzcheck,3,3,c52653092.ovfilter,aux.Stringid(52653092,0),c52653092.xyzop)
+	aux.AddXyzProcedureLevelFree(c,c52653092.mfilter,c52653092.xyzcheck,3,3,c52653092.ovfilter,aux.Stringid(52653092,4),c52653092.xyzop)
 	--cannot disable spsummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -30,7 +30,7 @@ function c52653092.initial_effect(c)
 	c:RegisterEffect(e5)
 	--activate limit
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(52653092,1))
+	e6:SetDescription(aux.Stringid(52653092,0))
 	e6:SetType(EFFECT_TYPE_QUICK_O)
 	e6:SetCode(EVENT_FREE_CHAIN)
 	e6:SetRange(LOCATION_MZONE)

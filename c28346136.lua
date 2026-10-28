@@ -1,11 +1,11 @@
 --銀河眼の極光波竜
 function c28346136.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,10,2,c28346136.ovfilter,aux.Stringid(28346136,0),2,c28346136.xyzop)
+	aux.AddXyzProcedure(c,nil,10,2,c28346136.ovfilter,aux.Stringid(28346136,2),2,c28346136.xyzop)
 	c:EnableReviveLimit()
 	--CANNOT be tg
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(28346136,1))
+	e1:SetDescription(aux.Stringid(28346136,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCost(c28346136.cost)
@@ -13,7 +13,7 @@ function c28346136.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(28346136,2))
+	e2:SetDescription(aux.Stringid(28346136,1))
 	e2:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_MZONE)

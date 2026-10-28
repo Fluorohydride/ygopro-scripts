@@ -8,6 +8,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES_SELF)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -39,7 +40,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,0),1},
+		{b1,aux.Stringid(id,2),1},
 		{b2,aux.Stringid(id,1),2})
 	e:SetLabel(op)
 	if op==1 then

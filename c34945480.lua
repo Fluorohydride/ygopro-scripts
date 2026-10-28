@@ -1,7 +1,7 @@
 --外神アザトート
 function c34945480.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,5,3,c34945480.ovfilter,aux.Stringid(34945480,1))
+	aux.AddXyzProcedure(c,nil,5,3,c34945480.ovfilter,aux.Stringid(34945480,2))
 	c:EnableReviveLimit()
 	--
 	local e1=Effect.CreateEffect(c)
@@ -19,7 +19,7 @@ function c34945480.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(34945480,0))
+	e3:SetDescription(aux.Stringid(34945480,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)

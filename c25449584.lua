@@ -13,7 +13,7 @@ function c25449584.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(25449584,0))
+	e2:SetDescription(aux.Stringid(25449584,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -43,7 +43,7 @@ end
 function c25449584.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local tc=e:GetLabelObject()
 	Duel.Release(tc,REASON_SPSUMMON)
-	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(25449584,1))
+	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(25449584,2))
 	local atk=tc:GetBaseAttack()
 	if atk<0 then return end
 	local e1=Effect.CreateEffect(c)

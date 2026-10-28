@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
@@ -53,7 +54,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(id,0)
+		ops[off]=aux.Stringid(id,3)
 		opval[off-1]=1
 		off=off+1
 	end

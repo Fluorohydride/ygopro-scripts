@@ -22,7 +22,7 @@ function c952523.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(952523,0))
+	e3:SetDescription(aux.Stringid(952523,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
@@ -47,7 +47,7 @@ function c952523.setcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c952523.setop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if Duel.SelectEffectYesNo(tp,rc,aux.Stringid(952523,1)) then
+	if Duel.SelectEffectYesNo(tp,rc,aux.Stringid(952523,3)) then
 		rc:CancelToGrave()
 		Duel.ChangePosition(rc,POS_FACEDOWN)
 		Duel.RaiseEvent(rc,EVENT_SSET,e,REASON_EFFECT,tp,tp,0)

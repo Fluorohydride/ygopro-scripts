@@ -29,7 +29,7 @@ function c6764709.initial_effect(c)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(6764709,1))
+	e5:SetDescription(aux.Stringid(6764709,2))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_IGNITION)

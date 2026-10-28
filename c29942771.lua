@@ -16,7 +16,7 @@ function c29942771.initial_effect(c)
 	c:RegisterEffect(e2)
 	--change cost
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(29942771,1))
+	e3:SetDescription(aux.Stringid(29942771,3))
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(29942771)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

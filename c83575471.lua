@@ -20,6 +20,7 @@ function c83575471.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(83575471,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
@@ -69,7 +70,7 @@ function c83575471.spop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 			local g=Duel.GetMatchingGroup(c83575471.filter,tp,LOCATION_SZONE,0,nil,e,tp)
 			local gc=g:GetCount()
-			if gc>0 and Duel.SelectYesNo(tp,aux.Stringid(83575471,0)) then
+			if gc>0 and Duel.SelectYesNo(tp,aux.Stringid(83575471,3)) then
 				Duel.DisableSelfDestroyCheck()
 				Duel.SpecialSummonComplete()
 				Duel.BreakEffect()

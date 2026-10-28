@@ -38,7 +38,7 @@ function c50907446.initial_effect(c)
 	c:RegisterEffect(e4)
 	--to hand
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(50907446,1))
+	e5:SetDescription(aux.Stringid(50907446,2))
 	e5:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES_SELF)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_TO_GRAVE)
@@ -167,7 +167,7 @@ function c50907446.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 		mg:Sub(g)
 	end
 	if exg and exg:IsExists(c50907446.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),chkf)
-		and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
+		and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,3)))) then
 		fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg=exg:FilterSelect(tp,c50907446.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),chkf)

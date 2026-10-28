@@ -29,7 +29,7 @@ function c75574498.initial_effect(c)
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(75574498,1))
+	e4:SetDescription(aux.Stringid(75574498,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)

@@ -2,6 +2,7 @@
 function c22765132.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(22765132,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -35,7 +36,7 @@ function c22765132.activate(e,tp,eg,ep,ev,re,r,rp)
 		if sc then
 			val=val-sc:GetDefense()
 			if Duel.IsExistingMatchingCard(c22765132.filter,tp,LOCATION_DECK,0,1,sc,val)
-				and Duel.SelectYesNo(tp,aux.Stringid(22765132,0)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(22765132,1)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local g2=Duel.SelectMatchingCard(tp,c22765132.filter,tp,LOCATION_DECK,0,1,1,sc,val)
 				g1:Merge(g2)

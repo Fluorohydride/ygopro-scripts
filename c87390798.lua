@@ -2,6 +2,7 @@
 function c87390798.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(87390798,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -10,7 +11,7 @@ function c87390798.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(87390798,0))
+	e2:SetDescription(aux.Stringid(87390798,1))
 	e2:SetCategory(CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -32,7 +33,7 @@ end
 function c87390798.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		tc:RegisterFlagEffect(87390798,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(87390798,0))
+		tc:RegisterFlagEffect(87390798,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(87390798,2))
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_DAMAGE_STEP_END)

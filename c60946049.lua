@@ -58,7 +58,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToChain() and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g=Duel.SelectMatchingCard(tp,s.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then

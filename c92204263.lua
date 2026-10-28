@@ -51,7 +51,7 @@ function c92204263.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c92204263.seqfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c92204263.seqfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0 end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(92204263,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(92204263,2))
 	Duel.SelectTarget(tp,c92204263.seqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c92204263.seqop(e,tp,eg,ep,ev,re,r,rp)

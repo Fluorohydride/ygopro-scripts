@@ -2,6 +2,7 @@
 function c57728570.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(57728570,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -47,7 +48,7 @@ function c57728570.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleHand(1-tp)
 	end
 	local g=Duel.GetMatchingGroup(c57728570.filter,1-tp,LOCATION_DECK,0,nil)
-	if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(57728570,0)) then
+	if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(57728570,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_DESTROY)
 		local dg=g:Select(1-tp,1,3,nil)

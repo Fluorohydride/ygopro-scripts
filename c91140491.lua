@@ -31,6 +31,7 @@ function c91140491.initial_effect(c)
 	c:RegisterEffect(e3)
 	--special summon insect
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(91140491,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

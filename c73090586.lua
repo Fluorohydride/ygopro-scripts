@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 	--eff draw
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(id,1))
+	e5:SetDescription(aux.Stringid(id,2))
 	e5:SetCategory(CATEGORY_DRAW)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e5:SetCode(EVENT_CHAIN_SOLVING)
@@ -39,7 +39,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e5)
 	--draw
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(id,2))
+	e6:SetDescription(aux.Stringid(id,0))
 	e6:SetCategory(CATEGORY_DRAW)
 	e6:SetType(EFFECT_TYPE_QUICK_O)
 	e6:SetCode(EVENT_FREE_CHAIN)
@@ -53,7 +53,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e6)
 	--draw
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(id,3))
+	e7:SetDescription(aux.Stringid(id,1))
 	e7:SetCategory(CATEGORY_DRAW)
 	e7:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e7:SetCode(EVENT_TO_GRAVE)
@@ -76,7 +76,7 @@ function s.drcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetSequence()>4
 end
 function s.drop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(id,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(id,2)) then
 		Duel.Hint(HINT_CARD,0,id)
 		local g=Group.CreateGroup()
 		Duel.ChangeTargetCard(ev,g)

@@ -2,6 +2,7 @@
 function c54527349.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(54527349,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -102,7 +103,7 @@ function c54527349.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 		local label,rec=e:GetLabel()
-		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and label==100 and rec>0 and Duel.SelectYesNo(tp,aux.Stringid(54527349,0)) then
+		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and label==100 and rec>0 and Duel.SelectYesNo(tp,aux.Stringid(54527349,1)) then
 			Duel.BreakEffect()
 			Duel.Recover(tp,rec,REASON_EFFECT)
 		end

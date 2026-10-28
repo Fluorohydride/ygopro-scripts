@@ -2,6 +2,7 @@
 function c43839002.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(43839002,0))
 	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -67,7 +68,7 @@ function c43839002.retop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:GetFlagEffectLabel(43839002)==e:GetLabel() and Duel.ReturnToField(tc) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetDescription(aux.Stringid(43839002,0))
+		e1:SetDescription(aux.Stringid(43839002,1))
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
 		e1:SetValue(1)

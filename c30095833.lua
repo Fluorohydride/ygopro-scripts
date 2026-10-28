@@ -15,6 +15,7 @@ function c30095833.initial_effect(c)
 	c:RegisterEffect(e0)
 	--pzone specialsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(30095833,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
@@ -24,7 +25,7 @@ function c30095833.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(30095833,0))
+	e2:SetDescription(aux.Stringid(30095833,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -36,7 +37,7 @@ function c30095833.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pendulum move
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(30095833,1))
+	e3:SetDescription(aux.Stringid(30095833,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DESTROYED)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -63,7 +64,7 @@ function c30095833.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	if c:IsType(TYPE_XYZ)
 		and Duel.GetMatchingGroupCount(aux.NecroValleyFilter(c30095833.mfilter),tp,LOCATION_GRAVE,0,nil)>0
-		and Duel.SelectYesNo(tp,aux.Stringid(30095833,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(30095833,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c30095833.mfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Overlay(c,g)

@@ -69,7 +69,7 @@ function c18514525.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local cg=g:Filter(c18514525.costfilter,nil,tp,tg)
 	local tc
 	if #cg>1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,2))
 		tc=cg:Select(tp,1,1,nil):GetFirst()
 	else
 		tc=cg:GetFirst()

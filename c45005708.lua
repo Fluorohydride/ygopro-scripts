@@ -4,6 +4,7 @@ function c45005708.initial_effect(c)
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)
 	--control or special summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(45005708,1))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -40,11 +41,11 @@ function c45005708.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return c:IsAbleToGrave() and (b1 or b2) end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(45005708,0),aux.Stringid(45005708,1))
+		op=Duel.SelectOption(tp,aux.Stringid(45005708,2),aux.Stringid(45005708,3))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(45005708,0))
+		op=Duel.SelectOption(tp,aux.Stringid(45005708,2))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(45005708,1))+1
+		op=Duel.SelectOption(tp,aux.Stringid(45005708,3))+1
 	end
 	e:SetLabel(op)
 	if op==0 then

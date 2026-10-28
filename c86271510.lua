@@ -2,6 +2,7 @@
 function c86271510.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(86271510,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

@@ -2,6 +2,7 @@
 function c80560728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(80560728,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -18,7 +19,7 @@ function c80560728.initial_effect(c)
 	c:RegisterEffect(e2)
 	--mulit attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(80560728,0))
+	e3:SetDescription(aux.Stringid(80560728,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
 	e3:SetRange(LOCATION_SZONE)

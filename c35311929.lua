@@ -40,7 +40,7 @@ function c35311929.spop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 		and Duel.IsExistingMatchingCard(c35311929.checkfilter,tp,LOCATION_MZONE,0,1,c)
-		and Duel.SelectYesNo(tp,aux.Stringid(35311929,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(35311929,2)) then
 			Duel.BreakEffect()
 			local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 			Duel.HintSelection(g)

@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -29,7 +30,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)>0 and Duel.IsPlayerCanDraw(p,1)
 		and Duel.GetMatchingGroupCount(s.filter,p,LOCATION_MZONE,LOCATION_MZONE,nil)>=3
-		and Duel.SelectYesNo(p,aux.Stringid(id,0)) then
+		and Duel.SelectYesNo(p,aux.Stringid(id,1)) then
 		Duel.BreakEffect()
 		Duel.Draw(p,1,REASON_EFFECT)
 	end

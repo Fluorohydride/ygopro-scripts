@@ -17,7 +17,7 @@ function c82044279.initial_effect(c)
 	e1:SetOperation(c82044279.operation)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetDescription(aux.Stringid(82044279,1))
+	e2:SetDescription(aux.Stringid(82044279,3))
 	e2:SetCondition(c82044279.condition2)
 	c:RegisterEffect(e2)
 	--atk

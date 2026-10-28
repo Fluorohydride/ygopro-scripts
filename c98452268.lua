@@ -2,13 +2,13 @@
 function c98452268.initial_effect(c)
 	c:SetSPSummonOnce(98452268)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,7,2,c98452268.ovfilter,aux.Stringid(98452268,0))
+	aux.AddXyzProcedure(c,nil,7,2,c98452268.ovfilter,aux.Stringid(98452268,5))
 	c:EnableReviveLimit()
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(98452268,1))
+	e1:SetDescription(aux.Stringid(98452268,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)

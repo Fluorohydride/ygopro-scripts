@@ -8,6 +8,7 @@ function c94317736.initial_effect(c)
 	c:RegisterEffect(e1)
 	--apply
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(94317736,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetProperty(EFFECT_FLAG_BOTH_SIDE)

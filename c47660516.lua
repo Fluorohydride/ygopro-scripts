@@ -2,6 +2,7 @@
 function c47660516.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(47660516,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -47,7 +48,7 @@ function c47660516.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetOverlayCount(tp,0,1)~=0 then
 			Duel.BreakEffect()
 			local g1=Duel.GetOverlayGroup(tp,0,1)
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47660516,0))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47660516,1))
 			local mg2=g1:Select(tp,1,1,nil)
 			local oc=mg2:GetFirst():GetOverlayTarget()
 			Duel.Overlay(sc,mg2)

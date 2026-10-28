@@ -5,7 +5,7 @@ function c63519819.initial_effect(c)
 	aux.AddFusionProcCode2(c,64631466,27125110,true,true)
 	--equip
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(63519819,0))
+	e1:SetDescription(aux.Stringid(63519819,1))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)

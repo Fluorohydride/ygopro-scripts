@@ -19,7 +19,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--trigger
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,3))
+	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetCategory(CATEGORY_DRAW+CATEGORY_RELEASE+CATEGORY_HANDES_SELF)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -73,7 +73,7 @@ function s.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local op=0
 	if b1 or b2 then
 		op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,1),1},
+			{b1,aux.Stringid(id,3),1},
 			{b2,aux.Stringid(id,2),2})
 	end
 	e:SetLabel(op)

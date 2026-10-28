@@ -33,7 +33,7 @@ function c3507053.initial_effect(c)
 	c:RegisterEffect(e3)
 	--negate attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(3507053,1))
+	e4:SetDescription(aux.Stringid(3507053,2))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BE_BATTLE_TARGET)
 	e4:SetCountLimit(1)

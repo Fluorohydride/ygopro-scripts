@@ -27,7 +27,7 @@ function c42461852.initial_effect(c)
 	c:RegisterEffect(e4)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(42461852,0))
+	e5:SetDescription(aux.Stringid(42461852,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DAMAGE)

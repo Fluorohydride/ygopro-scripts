@@ -3,6 +3,7 @@ local s,id=GetID()
 function s.initial_effect(c)
 	--effect 1
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
@@ -12,6 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--effect 2
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DESTROYED)
@@ -34,7 +36,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 and Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)>0 then
 		local g1=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_ONFIELD,nil)
-		if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+		if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.SendtoGrave(g1,REASON_EFFECT)
 		end

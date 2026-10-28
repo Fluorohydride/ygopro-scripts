@@ -110,7 +110,7 @@ function s.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,0,e:GetHandler())
 	if chk==0 then return g:GetCount()>0 and s.lv_or_rk(c)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,2))
 end
 function s.lv_or_rk(c)
 	if c:IsLevelAbove(1) then

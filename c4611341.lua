@@ -55,7 +55,7 @@ end
 function s.zonetg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and s.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(s.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 	local g=Duel.SelectTarget(tp,s.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function s.zoneop(e,tp,eg,ep,ev,re,r,rp)

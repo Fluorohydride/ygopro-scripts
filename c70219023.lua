@@ -93,7 +93,7 @@ function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.PayLPCost(tp,pay,true)
 	e:SetLabel(op)
-	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(70219023,0))
+	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(70219023,5))
 end
 function c70219023.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

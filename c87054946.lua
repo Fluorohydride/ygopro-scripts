@@ -37,7 +37,7 @@ function c87054946.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(87054946,0))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(87054946,3))
 	end
 	if ct>=2 then
 		local e2=Effect.CreateEffect(c)
@@ -54,7 +54,7 @@ function c87054946.regop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(1)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e3)
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(87054946,1))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(87054946,4))
 	end
 	if ct==3 then
 		local e4=Effect.CreateEffect(c)

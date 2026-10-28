@@ -13,6 +13,7 @@ function c84845628.initial_effect(c)
 	c:RegisterEffect(e2)
 	--control
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(84845628,1))
 	e3:SetCategory(CATEGORY_CONTROL)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)

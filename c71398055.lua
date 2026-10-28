@@ -49,7 +49,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 	--pendulum
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(id,2))
+	e5:SetDescription(aux.Stringid(id,3))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DESTROYED)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
@@ -152,7 +152,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.GetMatchingGroup(s.spfilter,tp,loc,0,nil,e,tp)
 		if not ect1 then ect1=ft end
 		if sg:GetCount()==0 or not sg:CheckSubGroup(s.gcheck,1,ct,ft1,ft2,ft3,ect1,ft)
-			or not Duel.SelectYesNo(tp,aux.Stringid(id,3)) then return end
+			or not Duel.SelectYesNo(tp,aux.Stringid(id,4)) then return end
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local rg=sg:SelectSubGroup(tp,s.gcheck,false,1,ct,ft1,ft2,ft3,ect1,ft)

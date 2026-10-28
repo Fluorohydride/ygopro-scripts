@@ -41,7 +41,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if bit.band(att,ATTRIBUTE_WIND)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(17760003,0))
+		e1:SetDescription(aux.Stringid(17760003,6))
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)

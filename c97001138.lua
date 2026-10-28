@@ -2,6 +2,7 @@
 function c97001138.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(97001138,0))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -33,7 +34,7 @@ function c97001138.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		local g=Duel.GetMatchingGroup(c97001138.sumfilter,tp,LOCATION_HAND,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(97001138,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(97001138,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local sc=g:Select(tp,1,1,nil):GetFirst()

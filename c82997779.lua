@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,7 +27,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,nil,s.rfilter,e,tp,mg,nil,Card.GetLevel,"Greater")
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,0),1},
+		{b1,aux.Stringid(id,3),1},
 		{b2,aux.Stringid(id,1),2})
 	e:SetLabel(op)
 	if op==1 then

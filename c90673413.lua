@@ -2,6 +2,7 @@
 function c90673413.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(90673413,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -17,7 +18,7 @@ function c90673413.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atkup
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(90673413,0))
+	e3:SetDescription(aux.Stringid(90673413,1))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_TO_GRAVE)

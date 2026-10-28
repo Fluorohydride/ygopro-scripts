@@ -8,7 +8,7 @@ function c52834429.initial_effect(c)
 	c:RegisterEffect(e1)
 	--effect gain
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(52834429,0))
+	e2:SetDescription(aux.Stringid(52834429,1))
 	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_HAND)

@@ -2,6 +2,7 @@
 function c43618262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(43618262,0))
 	e1:SetCategory(CATEGORY_RECOVER+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -29,7 +30,7 @@ function c43618262.cfop(e,tp,eg,ep,ev,re,r,rp)
 		t[i]=i*100
 	end
 	local val=Duel.AnnounceNumber(tp,table.unpack(t))
-	if Duel.SelectYesNo(1-p,aux.Stringid(43618262,0)) then
+	if Duel.SelectYesNo(1-p,aux.Stringid(43618262,1)) then
 		if Duel.Recover(1-p,val,REASON_EFFECT)>0 then
 			Duel.SetLP(tp,Duel.GetLP(tp)-val)
 			Duel.DisableShuffleCheck(true)

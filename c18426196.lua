@@ -8,7 +8,7 @@ function c18426196.initial_effect(c)
 	c:RegisterEffect(e1)
 	--salvage
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(18426196,0))
+	e1:SetDescription(aux.Stringid(18426196,1))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

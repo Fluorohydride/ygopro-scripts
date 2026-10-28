@@ -22,6 +22,7 @@ function c16802689.initial_effect(c)
 	c:RegisterEffect(e2)
 	--draw(battle)
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(16802689,1))
 	e3:SetCategory(CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DAMAGE)
@@ -68,7 +69,7 @@ function c16802689.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
 			if tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 				and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-				and Duel.SelectYesNo(tp,aux.Stringid(16802689,1)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(16802689,2)) then
 				Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 			end
 		else

@@ -19,6 +19,7 @@ function c79555535.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(79555535,1))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_FZONE)

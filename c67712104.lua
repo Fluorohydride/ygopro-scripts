@@ -47,7 +47,7 @@ end
 function c67712104.valcheck(e,c)
 	local g=c:GetMaterial()
 	if c:IsType(TYPE_LINK) and g:IsExists(Card.IsLinkCode,1,nil,67712104) then
-		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,0))
+		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,3))
 	end
 end
 function c67712104.immcon1(e)

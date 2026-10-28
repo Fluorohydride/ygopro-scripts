@@ -2,6 +2,7 @@
 function c9069157.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(9069157,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,9069157)
@@ -11,6 +12,7 @@ function c9069157.initial_effect(c)
 	c:RegisterEffect(e1)
 	--race change
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(9069157,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1)
@@ -31,11 +33,11 @@ function c9069157.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(9069157,0),aux.Stringid(9069157,1))
+		op=Duel.SelectOption(tp,aux.Stringid(9069157,2),aux.Stringid(9069157,3))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(9069157,0))
+		op=Duel.SelectOption(tp,aux.Stringid(9069157,2))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(9069157,1))+1
+		op=Duel.SelectOption(tp,aux.Stringid(9069157,3))+1
 	end
 	e:SetLabel(op)
 	if op==0 then

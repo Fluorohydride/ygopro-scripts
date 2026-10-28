@@ -3,6 +3,7 @@ function c82738008.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(82738008,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -44,7 +45,7 @@ function c82738008.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mf=ce:GetValue()
 			sg2=Duel.GetMatchingGroup(c82738008.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
 		end
-		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(82738008,0)) then
+		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(82738008,1)) then
 			Duel.BreakEffect()
 			Duel.ShuffleHand(tp)
 			local sg=sg1:Clone()

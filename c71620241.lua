@@ -20,6 +20,7 @@ function c71620241.initial_effect(c)
 	c:RegisterEffect(e2)
 	--place
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(71620241,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

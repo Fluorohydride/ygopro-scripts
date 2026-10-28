@@ -27,7 +27,7 @@ function c29601381.initial_effect(c)
 	c:RegisterEffect(e2)
 	--get effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(29601381,2))
+	e3:SetDescription(aux.Stringid(29601381,3))
 	e3:SetType(EFFECT_TYPE_XMATERIAL)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)

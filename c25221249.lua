@@ -9,6 +9,7 @@ function c25221249.initial_effect(c)
 	c:RegisterEffect(e1)
 	--SpecialSummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(25221249,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)

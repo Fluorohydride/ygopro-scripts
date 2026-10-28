@@ -2,7 +2,7 @@
 function c36492575.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(36492575,0))
+	e1:SetDescription(aux.Stringid(36492575,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
@@ -13,7 +13,7 @@ function c36492575.initial_effect(c)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(36492575,1))
+	e2:SetDescription(aux.Stringid(36492575,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

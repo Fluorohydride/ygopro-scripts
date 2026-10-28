@@ -18,7 +18,7 @@ function c59242457.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(59242457,0))
+	e3:SetDescription(aux.Stringid(59242457,1))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -31,7 +31,7 @@ function c59242457.initial_effect(c)
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(59242457,1))
+	e4:SetDescription(aux.Stringid(59242457,2))
 	e4:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)
@@ -85,7 +85,7 @@ function c59242457.spop(e,tp,eg,ep,ev,re,r,rp)
 			and c:IsFaceup() and c:IsControler(tp) and not c:IsImmuneToEffect(e)
 			and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and c:IsCanBeXyzMaterial(sc)
 			and sc:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(59242457,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(59242457,3)) then
 			Duel.BreakEffect()
 			local mg=c:GetOverlayGroup()
 			if mg:GetCount()~=0 then

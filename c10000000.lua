@@ -2,7 +2,7 @@
 function c10000000.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(10000000,2))
+	e1:SetDescription(aux.Stringid(10000000,5))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_LIMIT_SUMMON_PROC)
@@ -49,7 +49,7 @@ function c10000000.initial_effect(c)
 	c:RegisterEffect(e6)
 	--destroy
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(10000000,1))
+	e7:SetDescription(aux.Stringid(10000000,3))
 	e7:SetCategory(CATEGORY_DESTROY)
 	e7:SetType(EFFECT_TYPE_IGNITION)
 	e7:SetRange(LOCATION_MZONE)

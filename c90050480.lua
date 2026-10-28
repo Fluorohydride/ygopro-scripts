@@ -15,7 +15,7 @@ function c90050480.initial_effect(c)
 	aux.EnableNeosReturn(c,c90050480.retop,c90050480.set_category)
 	--act limit
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(90050480,1))
+	e5:SetDescription(aux.Stringid(90050480,0))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e5:SetProperty(EFFECT_FLAG_DELAY)

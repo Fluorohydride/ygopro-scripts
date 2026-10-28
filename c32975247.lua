@@ -23,7 +23,7 @@ function c32975247.initial_effect(c)
 	c:RegisterEffect(e2)
 	--discard deck
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(32975247,1))
+	e3:SetDescription(aux.Stringid(32975247,2))
 	e3:SetCategory(CATEGORY_DECKDES)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_MZONE)

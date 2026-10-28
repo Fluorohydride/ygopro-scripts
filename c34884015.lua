@@ -34,7 +34,7 @@ function c34884015.initial_effect(c)
 	c:RegisterEffect(e4)
 	--extra pendulum
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(34884015,3))
+	e5:SetDescription(aux.Stringid(34884015,1))
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetCost(c34884015.expcost)
@@ -57,9 +57,9 @@ function c34884015.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(Group.FromCards(tc))
 		local sel=0
 		if tc:GetLeftScale()<=1 then
-			sel=Duel.SelectOption(tp,aux.Stringid(34884015,1))
+			sel=Duel.SelectOption(tp,aux.Stringid(34884015,5))
 		else
-			sel=Duel.SelectOption(tp,aux.Stringid(34884015,1),aux.Stringid(34884015,2))
+			sel=Duel.SelectOption(tp,aux.Stringid(34884015,5),aux.Stringid(34884015,6))
 		end
 		local ct=1
 		if sel==1 then

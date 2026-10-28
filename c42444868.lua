@@ -2,6 +2,7 @@
 function c42444868.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(42444868,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
@@ -49,7 +50,7 @@ function c42444868.activate(e,tp,eg,ep,ev,re,r,rp)
 		ec:CancelToGrave()
 		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			local g=Duel.GetMatchingGroup(c42444868.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)
-			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,0)) then
+			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,1)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sg=g:Select(tp,1,1,nil)

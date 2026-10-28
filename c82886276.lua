@@ -15,7 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to extra
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,2))
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -99,7 +99,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(sc,0,tp,sump,false,false,POS_FACEUP,sel_zone)
 		g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,tc)
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) or #g==0
-			or not Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			or not Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			break
 		end
 	end

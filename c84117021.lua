@@ -2,6 +2,7 @@
 function c84117021.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(84117021,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c84117021.target)
@@ -16,7 +17,7 @@ function c84117021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	local opt=0
 	if Duel.IsExistingTarget(c84117021.filter,tp,LOCATION_MZONE,0,1,nil) then
-		opt=Duel.SelectOption(tp,aux.Stringid(84117021,0),aux.Stringid(84117021,1))
+		opt=Duel.SelectOption(tp,aux.Stringid(84117021,2),aux.Stringid(84117021,1))
 	end
 	Duel.SetTargetParam(opt)
 	if opt==0 then

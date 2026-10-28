@@ -2,6 +2,7 @@
 function c12527118.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(12527118,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -11,6 +12,7 @@ function c12527118.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk limit
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(12527118,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e2:SetRange(LOCATION_MZONE)

@@ -24,7 +24,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--disable
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,1))
+	e3:SetDescription(aux.Stringid(id,2))
 	e3:SetCategory(CATEGORY_DISABLE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -51,7 +51,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToChain() and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsPlayerCanDraw(tp,1)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

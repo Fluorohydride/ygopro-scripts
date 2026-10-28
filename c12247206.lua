@@ -1,6 +1,7 @@
 --地獄の暴走召喚
 function c12247206.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(12247206,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)

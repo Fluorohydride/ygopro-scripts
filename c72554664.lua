@@ -4,6 +4,7 @@ function s.initial_effect(c)
 	aux.AddCodeList(c,68468459)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_GRAVE_SPSUMMON+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -42,7 +43,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter2),tp,0,LOCATION_GRAVE,nil,e,tp)
 		if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and #g1>0 and #g2>0
-			and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
 			local sg1=g1:Select(tp,1,1,nil):GetFirst()

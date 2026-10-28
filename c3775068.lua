@@ -19,7 +19,7 @@ function c3775068.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(3775068,0))
+	e3:SetDescription(aux.Stringid(3775068,1))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -30,7 +30,7 @@ function c3775068.initial_effect(c)
 	c:RegisterEffect(e3)
 	--special summon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(3775068,1))
+	e4:SetDescription(aux.Stringid(3775068,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -116,7 +116,7 @@ function c3775068.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c3775068.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3775068,2)) then
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3775068,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			sg=sg:Select(tp,1,1,nil)
 			Duel.BreakEffect()

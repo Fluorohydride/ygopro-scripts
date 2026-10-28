@@ -3,6 +3,7 @@ function c24662957.initial_effect(c)
 	aux.AddCodeList(c,70902743)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(24662957,0))
 	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -46,7 +47,7 @@ function c24662957.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabel(Duel.GetTurnCount())
 		Duel.RegisterEffect(e1,tp)
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24662957.stfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
-		if e:GetLabel()>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24662957,0)) then
+		if e:GetLabel()>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24662957,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sc=g:Select(tp,1,1,nil)

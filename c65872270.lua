@@ -2,12 +2,14 @@
 function c65872270.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(65872270,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c65872270.target)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(65872270,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -29,7 +31,7 @@ function c65872270.initial_effect(c)
 end
 function c65872270.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if c65872270.descon(e,tp,eg,ep,ev,re,r,rp) and c65872270.destg(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(65872270,0)) then
+	if c65872270.descon(e,tp,eg,ep,ev,re,r,rp) and c65872270.destg(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(65872270,2)) then
 		e:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND)
 		e:SetOperation(c65872270.desop)
 		c65872270.destg(e,tp,eg,ep,ev,re,r,rp,1)

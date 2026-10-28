@@ -23,7 +23,7 @@ function c58793369.initial_effect(c)
 	c:RegisterEffect(e3)
 	--level down
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(58793369,1))
+	e4:SetDescription(aux.Stringid(58793369,0))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SUMMON_SUCCESS)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
@@ -42,7 +42,7 @@ function c58793369.thfilter(c)
 end
 function c58793369.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c58793369.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(58793369,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(58793369,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

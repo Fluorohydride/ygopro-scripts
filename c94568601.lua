@@ -33,6 +33,7 @@ function c94568601.initial_effect(c)
 	c:RegisterEffect(e4)
 	--spsummon cost
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(94568601,0))
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_SPSUMMON_COST)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SINGLE_RANGE)

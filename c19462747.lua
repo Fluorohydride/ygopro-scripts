@@ -21,7 +21,7 @@ function c19462747.initial_effect(c)
 	e3:SetOperation(c19462747.regop)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(19462747,3))
+	e4:SetDescription(aux.Stringid(19462747,1))
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
@@ -43,9 +43,9 @@ function c19462747.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local op=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if g:GetFirst():IsLevel(1) then
-		op=Duel.SelectOption(tp,aux.Stringid(19462747,1))
+		op=Duel.SelectOption(tp,aux.Stringid(19462747,3))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(19462747,1),aux.Stringid(19462747,2))
+		op=Duel.SelectOption(tp,aux.Stringid(19462747,3),aux.Stringid(19462747,2))
 	end
 	e:SetLabel(op)
 end

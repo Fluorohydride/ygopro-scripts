@@ -10,7 +10,7 @@ function c91407982.initial_effect(c)
 	c:RegisterEffect(e1)
 	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(91407982,1))
+	e2:SetDescription(aux.Stringid(91407982,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_REMOVE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -21,7 +21,7 @@ function c91407982.initial_effect(c)
 	c:RegisterEffect(e2)
 	--avoid battle damage
 	local e3=e2:Clone()
-	e3:SetDescription(aux.Stringid(91407982,2))
+	e3:SetDescription(aux.Stringid(91407982,4))
 	e3:SetCondition(c91407982.damcon)
 	e3:SetOperation(c91407982.damop)
 	c:RegisterEffect(e3)
@@ -31,7 +31,7 @@ function c91407982.filter(c)
 end
 function c91407982.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c91407982.filter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(91407982,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(91407982,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

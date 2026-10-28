@@ -3,7 +3,7 @@ function c15767889.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(15767889,0))
+	e1:SetDescription(aux.Stringid(15767889,1))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

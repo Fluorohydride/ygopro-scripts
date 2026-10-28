@@ -13,7 +13,7 @@ function c7984540.initial_effect(c)
 	c:RegisterEffect(e1)
 	--todeck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(7984540,0))
+	e2:SetDescription(aux.Stringid(7984540,1))
 	e2:SetCategory(CATEGORY_TOEXTRA)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -35,7 +35,7 @@ end
 function c7984540.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c7984540.tdfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c7984540.tdfilter,tp,LOCATION_GRAVE,0,2,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(7984540,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(7984540,2))
 	local g=Duel.SelectTarget(tp,c7984540.tdfilter,tp,LOCATION_GRAVE,0,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,g:GetCount(),0,0)
 end

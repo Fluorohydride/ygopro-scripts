@@ -17,7 +17,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,2))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -50,7 +50,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,max do
 		t[i]=max-i+1
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 	local announce=Duel.AnnounceNumber(tp,table.unpack(t))
 	Duel.DiscardDeck(tp,announce,REASON_EFFECT)
 end

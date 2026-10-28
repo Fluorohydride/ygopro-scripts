@@ -2,6 +2,7 @@
 function c42705243.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(42705243,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -37,7 +38,7 @@ function c42705243.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c42705243.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp,tc)
-			and Duel.SelectYesNo(tp,aux.Stringid(42705243,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(42705243,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c42705243.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp,tc)

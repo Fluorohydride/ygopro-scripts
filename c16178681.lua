@@ -4,7 +4,7 @@ function c16178681.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--reduce
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(16178681,0))
+	e2:SetDescription(aux.Stringid(16178681,3))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 	e2:SetRange(LOCATION_PZONE)
@@ -37,7 +37,7 @@ function c16178681.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and tc and tc:IsType(TYPE_PENDULUM) and Duel.GetFlagEffect(tp,16178681)==0
 end
 function c16178681.rdop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectYesNo(tp,aux.Stringid(16178681,2)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(16178681,4)) then
 		Duel.Hint(HINT_CARD,0,16178681)
 		Duel.ChangeBattleDamage(tp,0)
 		Duel.RegisterFlagEffect(tp,16178681,RESET_PHASE+PHASE_END,0,1)

@@ -2,6 +2,7 @@
 function c6075801.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(6075801,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -22,6 +23,7 @@ function c6075801.initial_effect(c)
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(6075801,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

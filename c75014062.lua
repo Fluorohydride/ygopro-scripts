@@ -2,6 +2,7 @@
 function c75014062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(75014062,0))
 	e1:SetCategory(CATEGORY_COUNTER+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -31,7 +32,7 @@ function c75014062.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:AddCounter(0x1,1) then
 		local th=Duel.GetFirstMatchingCard(c75014062.tfilter,tp,LOCATION_DECK,0,nil)
-		if th and Duel.SelectYesNo(tp,aux.Stringid(75014062,0)) then
+		if th and Duel.SelectYesNo(tp,aux.Stringid(75014062,1)) then
 			Duel.BreakEffect()
 			Duel.SendtoHand(th,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,th)

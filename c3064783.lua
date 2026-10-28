@@ -19,6 +19,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--2X material
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetCode(EFFECT_DOUBLE_XMATERIAL)
@@ -46,7 +47,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.Draw(tp,1,REASON_EFFECT)==0 then return end
 		local dc=Duel.GetOperatedGroup():GetFirst()
 		if dc:IsSetCard(0x87) and dc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(dc,0,tp,tp,false,false,POS_FACEUP)
 		end

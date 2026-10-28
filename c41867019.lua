@@ -7,6 +7,7 @@ function c41867019.initial_effect(c)
 	c:RegisterEffect(e1)
 	--choose effect
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(41867019,0))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_TOGRAVE+CATEGORY_DAMAGE+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
@@ -57,7 +58,7 @@ function c41867019.effop(e,tp,eg,ep,ev,re,r,rp)
 	local b3=Duel.IsExistingMatchingCard(c41867019.tgfilter,tp,0,LOCATION_MZONE,1,nil) and bit.band(flag,0x4)==0
 	local b4=bit.band(flag,0x8)==0
 	if b1 then
-		ops[off]=aux.Stringid(41867019,0)
+		ops[off]=aux.Stringid(41867019,4)
 		opval[off-1]=1
 		off=off+1
 	end

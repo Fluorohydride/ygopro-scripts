@@ -44,7 +44,7 @@ function c70875686.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return #g>0 end
 	local tc
 	if #g>1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,2))
 		tc=g:Select(tp,1,1,nil):GetFirst()
 	else
 		tc=g:GetFirst()

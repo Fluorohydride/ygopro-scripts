@@ -57,7 +57,7 @@ function s.thfilter(c)
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil) end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,0))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,3))
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
@@ -77,7 +77,7 @@ function s.filter(c)
 end
 function s.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,4))
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,nil,1,0,0)
 end
 function s.posop(e,tp,eg,ep,ev,re,r,rp)

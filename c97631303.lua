@@ -3,6 +3,7 @@ function c97631303.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(97631303,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,97631303)
@@ -12,6 +13,7 @@ function c97631303.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(97631303,1))
 	e2:SetCategory(CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -37,11 +39,11 @@ function c97631303.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(97631303,0))
+		s=Duel.SelectOption(tp,aux.Stringid(97631303,3))
 	elseif not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(97631303,1))+1
+		s=Duel.SelectOption(tp,aux.Stringid(97631303,4))+1
 	elseif b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(97631303,0),aux.Stringid(97631303,1))
+		s=Duel.SelectOption(tp,aux.Stringid(97631303,3),aux.Stringid(97631303,4))
 	end
 	e:SetLabel(s)
 	if s==0 then

@@ -5,7 +5,7 @@ function c13722870.initial_effect(c)
 	aux.AddFusionProcCode2(c,46986414,45231177,true,true)
 	--Special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(13722870,0))
+	e1:SetDescription(aux.Stringid(13722870,1))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)

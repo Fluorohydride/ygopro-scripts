@@ -26,6 +26,7 @@ function c75304793.initial_effect(c)
 	c:RegisterEffect(e3)
 	--counter
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(75304793,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCountLimit(1)
@@ -56,11 +57,11 @@ function c75304793.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ct>0 and (b1 or b2) end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(75304793,0),aux.Stringid(75304793,1))
+		op=Duel.SelectOption(tp,aux.Stringid(75304793,3),aux.Stringid(75304793,4))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(75304793,0))
+		op=Duel.SelectOption(tp,aux.Stringid(75304793,3))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(75304793,1))+1
+		op=Duel.SelectOption(tp,aux.Stringid(75304793,4))+1
 	end
 	e:SetLabel(op)
 	if op==0 then

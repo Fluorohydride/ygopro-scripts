@@ -2,6 +2,7 @@
 function c84211599.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(84211599,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -40,9 +41,9 @@ function c84211599.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(84211599,0),aux.Stringid(84211599,1))
+		op=Duel.SelectOption(tp,aux.Stringid(84211599,2),aux.Stringid(84211599,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(84211599,0))
+		op=Duel.SelectOption(tp,aux.Stringid(84211599,2))
 	end
 	local ct= op==0 and 3 or 6
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

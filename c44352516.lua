@@ -21,6 +21,7 @@ function c44352516.initial_effect(c)
 	c:RegisterEffect(e3)
 	--return to hand
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(44352516,1))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -31,6 +32,7 @@ function c44352516.initial_effect(c)
 	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(44352516,2))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DESTROYED)
@@ -60,7 +62,7 @@ function c44352516.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local g=Duel.GetMatchingGroup(c44352516.filter2,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(44352516,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(44352516,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local sg=g:Select(tp,1,1,nil):GetFirst()

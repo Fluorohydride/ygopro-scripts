@@ -2,7 +2,7 @@
 function c32841045.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(32841045,1))
+	e1:SetDescription(aux.Stringid(32841045,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e1:SetRange(LOCATION_MZONE)
@@ -15,7 +15,7 @@ function c32841045.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(32841045,0))
+	e3:SetDescription(aux.Stringid(32841045,1))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

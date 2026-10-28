@@ -2,6 +2,7 @@
 function c72648577.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(72648577,0))
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -32,7 +33,7 @@ function c72648577.operation(e,tp,eg,ep,ev,re,r,rp)
 	local og=Duel.GetOperatedGroup()
 	if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
 	local dg=Duel.GetMatchingGroup(c72648577.thfilter,tp,LOCATION_DECK,0,nil)
-	if dg:GetCount()>1 and Duel.SelectYesNo(tp,aux.Stringid(72648577,0)) then
+	if dg:GetCount()>1 and Duel.SelectYesNo(tp,aux.Stringid(72648577,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tg=dg:Select(tp,2,2,nil)

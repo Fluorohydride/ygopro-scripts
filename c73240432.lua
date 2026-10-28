@@ -26,7 +26,7 @@ function c73240432.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(73240432,1))
+	e3:SetDescription(aux.Stringid(73240432,2))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_DELAY)

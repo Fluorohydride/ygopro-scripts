@@ -8,6 +8,7 @@ function c52254878.initial_effect(c)
 	c:RegisterEffect(e1)
 	--att and race change
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(52254878,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,52254878)

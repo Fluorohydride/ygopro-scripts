@@ -2,6 +2,7 @@
 function c32036866.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(32036866,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -11,6 +12,7 @@ function c32036866.initial_effect(c)
 	c:RegisterEffect(e1)
 	--activate Spell
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(32036866,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_FREE_CHAIN)

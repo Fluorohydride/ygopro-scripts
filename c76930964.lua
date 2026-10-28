@@ -2,7 +2,7 @@
 function c76930964.initial_effect(c)
 	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(76930964,0))
+	e1:SetDescription(aux.Stringid(76930964,1))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
@@ -15,6 +15,7 @@ function c76930964.initial_effect(c)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(76930964,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)

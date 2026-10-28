@@ -2,6 +2,7 @@
 function c73977033.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(73977033,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)

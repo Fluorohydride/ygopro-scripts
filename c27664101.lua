@@ -2,6 +2,7 @@
 function c27664101.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(27664101,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)

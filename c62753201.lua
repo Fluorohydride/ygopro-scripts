@@ -2,6 +2,7 @@
 function c62753201.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(62753201,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -73,7 +74,7 @@ function c62753201.activate(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		--
 		local e2=Effect.CreateEffect(c)
-		e2:SetDescription(aux.Stringid(62753201,0))
+		e2:SetDescription(aux.Stringid(62753201,1))
 		e2:SetType(EFFECT_TYPE_QUICK_O)
 		e2:SetCode(EVENT_FREE_CHAIN)
 		e2:SetRange(LOCATION_MZONE)

@@ -38,7 +38,7 @@ function c59843383.tdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local ct=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
 	local dg=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,nil)
-	if ct>0 and dg:GetCount()>=ct and Duel.SelectYesNo(tp,aux.Stringid(59843383,1)) then
+	if ct>0 and dg:GetCount()>=ct and Duel.SelectYesNo(tp,aux.Stringid(59843383,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg2=dg:Select(tp,ct,ct,nil)

@@ -16,7 +16,7 @@ function c5851097.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(5851097,0))
+	e3:SetDescription(aux.Stringid(5851097,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCode(EVENT_TO_GRAVE)

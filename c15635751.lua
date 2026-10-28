@@ -87,7 +87,7 @@ function s.rpop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.pfilter),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil,tp):GetFirst()
 	if not (tc and Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)) then return end
 	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.sfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
-	if #tg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+	if #tg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local sc=tg:Select(tp,1,1,nil):GetFirst()
 		local b1=sc:IsSetCard(0xa7) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and sc:IsCanBeSpecialSummoned(e,0,tp,false,false)

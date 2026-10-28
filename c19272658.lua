@@ -2,6 +2,7 @@
 function c19272658.initial_effect(c)
 	--overlay
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(19272658,0))
 	e1:SetCategory(CATEGORY_LEAVE_GRAVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
@@ -15,6 +16,7 @@ function c19272658.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pos change
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(19272658,1))
 	e3:SetCategory(CATEGORY_POSITION)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

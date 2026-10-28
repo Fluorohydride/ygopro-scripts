@@ -14,6 +14,7 @@ function c84305651.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(84305651,1))
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCondition(aux.bdogcon)
@@ -50,9 +51,9 @@ function c84305651.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(84305651,1),aux.Stringid(84305651,2))
+		op=Duel.SelectOption(tp,aux.Stringid(84305651,3),aux.Stringid(84305651,2))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(84305651,1))
+		op=Duel.SelectOption(tp,aux.Stringid(84305651,3))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(84305651,2))+1
 	end

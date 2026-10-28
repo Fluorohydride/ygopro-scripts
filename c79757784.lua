@@ -2,6 +2,7 @@
 function c79757784.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(79757784,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -12,6 +13,7 @@ function c79757784.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(79757784,1))
 	e2:SetCategory(CATEGORY_DAMAGE+CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)

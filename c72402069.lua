@@ -27,7 +27,7 @@ function c72402069.initial_effect(c)
 	c:RegisterEffect(e2)
 	--disable
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(72402069,1))
+	e3:SetDescription(aux.Stringid(72402069,2))
 	e3:SetCategory(CATEGORY_DISABLE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
@@ -87,7 +87,7 @@ function c72402069.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c72402069.disfilter,tp,0,LOCATION_MZONE,1,nil) end
 end
 function c72402069.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(72402069,2))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(72402069,4))
 	local pc=Duel.SelectMatchingCard(1-tp,c72402069.disfilter,tp,0,LOCATION_MZONE,1,1,nil):GetFirst()
 	if not pc then return end
 	local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,pc)

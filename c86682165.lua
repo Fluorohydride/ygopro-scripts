@@ -16,7 +16,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon itself
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,2))
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -65,7 +65,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 				end
 			end
 			local g=Duel.GetMatchingGroup(s.rmfilter,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil,code)
-			if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 				Duel.BreakEffect()
 				Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 			end

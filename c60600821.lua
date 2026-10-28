@@ -50,7 +50,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ct do
 		t[i]=ct-i+1
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 	local dsc=Duel.AnnounceNumber(tp,table.unpack(t))
 	local dis=Duel.SelectDisableField(tp,dsc,LOCATION_MZONE,0,0xe000e0)
 	e:SetLabel(dis)

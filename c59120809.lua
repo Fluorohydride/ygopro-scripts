@@ -28,7 +28,7 @@ function c59120809.initial_effect(c)
 	c:RegisterEffect(e3)
 	--SpecialSummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(59120809,0))
+	e4:SetDescription(aux.Stringid(59120809,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetCountLimit(1)

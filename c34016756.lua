@@ -2,6 +2,7 @@
 function c34016756.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(34016756,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -27,7 +28,7 @@ end
 function c34016756.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
 	if g:FilterCount(Card.IsFaceup,nil)<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34016756,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34016756,1))
 	local tc1=g:FilterSelect(tp,Card.IsAttackAbove,1,1,nil,1):GetFirst()
 	local tc2=(g-tc1):GetFirst()
 	local atk=tc1:GetAttack()

@@ -91,7 +91,7 @@ function c96381979.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,nil)
 		or Duel.IsPlayerAffectedByEffect(tp,46241344) end
 	if Duel.IsExistingMatchingCard(c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,nil)
-		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,3))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,3,nil)
 		Duel.SendtoGrave(g,REASON_COST)

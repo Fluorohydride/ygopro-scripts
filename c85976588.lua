@@ -78,7 +78,7 @@ function s.chop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SwapSequence(c,tc)
 		if c:GetSequence()==cs then return end
 		if Duel.IsExistingMatchingCard(s.rthfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 			local rg=Duel.SelectMatchingCard(tp,s.rthfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)

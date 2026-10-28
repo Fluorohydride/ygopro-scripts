@@ -43,9 +43,9 @@ function c86852702.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 		local op=0
 		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(86852702,0),aux.Stringid(86852702,1))
+			op=Duel.SelectOption(tp,aux.Stringid(86852702,2),aux.Stringid(86852702,1))
 		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(86852702,0))
+			op=Duel.SelectOption(tp,aux.Stringid(86852702,2))
 		else
 			op=Duel.SelectOption(tp,aux.Stringid(86852702,1))+1
 		end
@@ -58,9 +58,9 @@ function c86852702.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		local op=0
 		if count1>=2 and count2>=2 then
-			op=Duel.SelectOption(tp,aux.Stringid(86852702,0),aux.Stringid(86852702,1))
+			op=Duel.SelectOption(tp,aux.Stringid(86852702,2),aux.Stringid(86852702,1))
 		elseif count1>=2 then
-			op=Duel.SelectOption(tp,aux.Stringid(86852702,0))
+			op=Duel.SelectOption(tp,aux.Stringid(86852702,2))
 		else
 			op=Duel.SelectOption(tp,aux.Stringid(86852702,1))+1
 		end

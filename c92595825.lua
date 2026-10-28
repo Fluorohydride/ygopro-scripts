@@ -89,7 +89,7 @@ function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 		local op=0
 		if tc:IsLevel(1) then op=1
 		else op=aux.SelectFromOptions(tp,
-			{true,aux.Stringid(id,2),1},
+			{true,aux.Stringid(id,4),1},
 			{true,aux.Stringid(id,3),-1})
 		end
 		local e1=Effect.CreateEffect(c)

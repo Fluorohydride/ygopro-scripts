@@ -2,6 +2,7 @@
 function c11868825.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(11868825,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCategory(CATEGORY_RECOVER)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

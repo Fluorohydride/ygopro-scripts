@@ -3,6 +3,7 @@ function c60709218.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(60709218,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -36,7 +37,7 @@ function c60709218.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=g:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local g2=Duel.GetMatchingGroup(c60709218.setfilter,tp,LOCATION_DECK,0,nil)
-		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60709218,0)) then
+		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60709218,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local tc=g2:Select(tp,1,1,nil)

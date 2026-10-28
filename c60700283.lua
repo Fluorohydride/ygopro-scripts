@@ -31,6 +31,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 	--2X material
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(id,2))
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetCode(EFFECT_DOUBLE_XMATERIAL)

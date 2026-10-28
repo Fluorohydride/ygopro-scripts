@@ -2,6 +2,7 @@
 function c34293667.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(34293667,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetTarget(c34293667.target)
@@ -9,7 +10,7 @@ function c34293667.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(34293667,0))
+	e2:SetDescription(aux.Stringid(34293667,1))
 	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_TOHAND+CATEGORY_GRAVE_ACTION)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -68,7 +69,7 @@ function c34293667.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c34293667.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c34293667.thfilter),tp,LOCATION_GRAVE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(34293667,1)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(34293667,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=g:Select(tp,1,1,nil)

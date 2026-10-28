@@ -2,6 +2,7 @@
 function c62017867.initial_effect(c)
 	--sort decktop
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(62017867,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -11,6 +12,7 @@ function c62017867.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(62017867,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)

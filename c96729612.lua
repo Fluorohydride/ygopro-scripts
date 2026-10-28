@@ -2,6 +2,7 @@
 function c96729612.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(96729612,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,7 +27,7 @@ function c96729612.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 		local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c96729612.filter2),tp,LOCATION_GRAVE,0,nil)
-		if mg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96729612,0)) then
+		if mg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96729612,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=mg:Select(tp,1,1,nil)

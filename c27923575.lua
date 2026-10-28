@@ -2,7 +2,7 @@
 function c27923575.initial_effect(c)
 	--If a monster(s) battles, you take no damage from that battle
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(27923575,0))
+	e1:SetDescription(aux.Stringid(27923575,3))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetCondition(c27923575.atcon)
@@ -10,7 +10,7 @@ function c27923575.initial_effect(c)
 	c:RegisterEffect(e1)
 	--If face-down card is destroyed: you can set up to 2 Trap cards
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(27923575,1))
+	e2:SetDescription(aux.Stringid(27923575,0))
 	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)

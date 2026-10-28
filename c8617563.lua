@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--get effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,2))
+	e3:SetDescription(aux.Stringid(id,5))
 	e3:SetType(EFFECT_TYPE_XMATERIAL)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -48,7 +48,7 @@ end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil) end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,0))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,3))
 end
 function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
@@ -66,7 +66,7 @@ end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,4))
 end
 function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

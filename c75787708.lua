@@ -31,7 +31,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to hand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,1))
+	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -127,7 +127,7 @@ function s.thop2(e,tp,eg,ep,ev,re,r,rp)
 		if e:GetLabel()==1
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end

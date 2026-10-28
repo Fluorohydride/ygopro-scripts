@@ -2,6 +2,7 @@
 function c42776855.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(42776855,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
@@ -22,7 +23,7 @@ function c42776855.initial_effect(c)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(42776855,0))
+	e5:SetDescription(aux.Stringid(42776855,1))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_BATTLE_START)

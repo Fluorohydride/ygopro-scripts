@@ -2,6 +2,7 @@
 function c37390589.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(37390589,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -28,9 +29,9 @@ function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local opt=0
 	if b1 and b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(37390589,0),aux.Stringid(37390589,1),aux.Stringid(37390589,2))
+		opt=Duel.SelectOption(tp,aux.Stringid(37390589,3),aux.Stringid(37390589,1),aux.Stringid(37390589,2))
 	elseif b1 then
-		opt=Duel.SelectOption(tp,aux.Stringid(37390589,0))
+		opt=Duel.SelectOption(tp,aux.Stringid(37390589,3))
 	else
 		opt=Duel.SelectOption(tp,aux.Stringid(37390589,1))+1
 	end

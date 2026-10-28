@@ -15,7 +15,7 @@ function c91279700.initial_effect(c)
 	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(91279700,0))
+	e2:SetDescription(aux.Stringid(91279700,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)

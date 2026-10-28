@@ -1,6 +1,7 @@
 --マグネット・インダクション
 function c54734082.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(54734082,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

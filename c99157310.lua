@@ -2,6 +2,7 @@
 function c99157310.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(99157310,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BATTLE_DAMAGE)
@@ -11,7 +12,7 @@ function c99157310.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(99157310,0))
+	e2:SetDescription(aux.Stringid(99157310,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

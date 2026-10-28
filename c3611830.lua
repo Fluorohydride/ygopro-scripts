@@ -52,6 +52,7 @@ function c3611830.initial_effect(c)
 	e5:SetOperation(c3611830.regop)
 	c:RegisterEffect(e5)
 	local e6=Effect.CreateEffect(c)
+	e6:SetDescription(aux.Stringid(3611830,3))
 	e6:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_BATTLE_DESTROYED)
@@ -118,7 +119,7 @@ function c3611830.negop(e,tp,eg,ep,ev,re,r,rp)
 	local count=tc:GetCounter(0x1)
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) and Duel.NegateActivation(ev)
 		and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)>0 then
-		if c:IsRelateToEffect(e) and Duel.SelectYesNo(tp,aux.Stringid(3611830,2)) then
+		if c:IsRelateToEffect(e) and Duel.SelectYesNo(tp,aux.Stringid(3611830,4)) then
 			Duel.BreakEffect()
 			c:AddCounter(0x1,count)
 		end

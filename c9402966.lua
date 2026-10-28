@@ -2,6 +2,7 @@
 function c9402966.initial_effect(c)
 	--synchro summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(9402966,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

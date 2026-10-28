@@ -29,10 +29,10 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		if bit.band(flag,0x1)~=0 then
-			e1:SetDescription(aux.Stringid(1516510,0))
+			e1:SetDescription(aux.Stringid(1516510,2))
 			e1:SetValue(1)
 		else
-			e1:SetDescription(aux.Stringid(1516510,1))
+			e1:SetDescription(aux.Stringid(1516510,3))
 			e1:SetValue(2)
 		end
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

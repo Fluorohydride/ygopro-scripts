@@ -7,6 +7,7 @@ function c15758127.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand/spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(15758127,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)
@@ -18,7 +19,7 @@ function c15758127.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to deck
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(15758127,2))
+	e3:SetDescription(aux.Stringid(15758127,1))
 	e3:SetCategory(CATEGORY_TODECK)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)
@@ -63,11 +64,11 @@ function c15758127.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(15758127,0))
+		s=Duel.SelectOption(tp,aux.Stringid(15758127,2))
 	elseif not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(15758127,1))+1
+		s=Duel.SelectOption(tp,aux.Stringid(15758127,3))+1
 	elseif b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(15758127,0),aux.Stringid(15758127,1))
+		s=Duel.SelectOption(tp,aux.Stringid(15758127,2),aux.Stringid(15758127,3))
 	end
 	e:SetLabel(s)
 	if s==0 then

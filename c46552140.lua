@@ -31,7 +31,7 @@ function c46552140.sorttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0x140) end
 end
 function c46552140.sortop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(46552140,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(46552140,2))
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,5,nil,0x140)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,g)

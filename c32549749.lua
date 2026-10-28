@@ -2,6 +2,7 @@
 function c32549749.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(32549749,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP,TIMINGS_CHECK_MONSTER+TIMING_DAMAGE_STEP)
@@ -38,9 +39,9 @@ function c32549749.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(32549749,0),aux.Stringid(32549749,1))
+		op=Duel.SelectOption(tp,aux.Stringid(32549749,4),aux.Stringid(32549749,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(32549749,0))
+		op=Duel.SelectOption(tp,aux.Stringid(32549749,4))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(32549749,1))+1
 	end

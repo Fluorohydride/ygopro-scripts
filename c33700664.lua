@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(s.cost)
@@ -34,7 +35,7 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if dct>5 then dct=5 end
 	local gg=Group.CreateGroup()
 	if dct>=5 and Duel.IsExistingMatchingCard(Card.IsAbleToRemoveAsCost,tp,LOCATION_GRAVE,0,1,nil,POS_FACEDOWN)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,0))
+		and Duel.SelectYesNo(tp,aux.Stringid(id,3))
 		or dct<5 then
 		local st=dct
 		if st==5 then st=4 end

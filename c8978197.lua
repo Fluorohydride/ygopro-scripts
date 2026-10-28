@@ -4,7 +4,7 @@ function c8978197.initial_effect(c)
 	aux.EnableChangeCode(c,17985575)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(8978197,0))
+	e2:SetDescription(aux.Stringid(8978197,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)

@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(s.tg)
@@ -24,7 +25,7 @@ function s.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=(Duel.GetFlagEffect(tp,id+o)==0 or not e:IsCostChecked())
 		and Duel.IsExistingTarget(s.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp)
 	if chk==0 then return b1 or b2 end
-	local op=aux.SelectFromOptions(tp,{b1,aux.Stringid(id,0)},{b2,aux.Stringid(id,1)})
+	local op=aux.SelectFromOptions(tp,{b1,aux.Stringid(id,2)},{b2,aux.Stringid(id,1)})
 	e:SetLabel(op)
 	if op==1 then
 		if e:IsCostChecked() then

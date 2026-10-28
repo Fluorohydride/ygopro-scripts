@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,id+EFFECT_COUNT_CODE_OATH)
@@ -21,7 +22,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(s.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e)
 	if chk==0 then return g:CheckSubGroup(s.gcheck,2,2,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,2,tp)
 	Duel.SetTargetCard(sg)
 	local exlv=0

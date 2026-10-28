@@ -2,6 +2,7 @@
 function c32441317.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(32441317,0))
 	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -35,7 +36,7 @@ function c32441317.activate(e,tp,eg,ep,ev,re,r,rp)
 		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		and (not Duel.IsPlayerAffectedByEffect(tp,59822133) or ct==1)
 		and mg:FilterCount(aux.NecroValleyFilter(c32441317.mgfilter),nil,e,tp,tc)==ct
-		and Duel.SelectYesNo(tp,aux.Stringid(32441317,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(32441317,1)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
 	end

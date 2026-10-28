@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--destroy & to_hand & change_level
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -16,6 +17,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -51,7 +53,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,thg)
 			if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 			local lv=thg:GetFirst():GetLevel()
-			if th*lv>0 and c:GetLevel()~=lv and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+			if th*lv>0 and c:GetLevel()~=lv and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 				Duel.BreakEffect()
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)

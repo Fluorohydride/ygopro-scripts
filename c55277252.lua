@@ -11,7 +11,7 @@ function c55277252.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon2
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(55277252,0))
+	e2:SetDescription(aux.Stringid(55277252,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

@@ -28,7 +28,7 @@ function s.filter(c)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,0,nil)
-	if #g==0 or not Duel.SelectYesNo(tp,aux.Stringid(id,1)) then return end
+	if #g==0 or not Duel.SelectYesNo(tp,aux.Stringid(id,2)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tc=g:Select(tp,1,1,nil):GetFirst()
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then

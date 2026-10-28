@@ -3,7 +3,7 @@ function c13903402.initial_effect(c)
 	c:SetUniqueOnField(1,0,13903402)
 	--to hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(13903402,0))
+	e1:SetDescription(aux.Stringid(13903402,1))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_DELAY)

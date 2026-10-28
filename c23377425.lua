@@ -10,7 +10,7 @@ function c23377425.initial_effect(c)
 	c:RegisterEffect(e1)
 	--indes battle
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(23377425,1))
+	e2:SetDescription(aux.Stringid(23377425,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_FZONE)
@@ -25,7 +25,7 @@ function c23377425.thfilter(c)
 end
 function c23377425.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c23377425.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(23377425,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(23377425,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

@@ -12,7 +12,7 @@ function c14957440.initial_effect(c)
 	c:RegisterEffect(e1)
 	--sp token
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(14957440,0))
+	e2:SetDescription(aux.Stringid(14957440,1))
 	e2:SetCategory(CATEGORY_COUNTER+CATEGORY_TOKEN)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_TO_GRAVE)
@@ -73,7 +73,7 @@ function c14957440.tkop(e,tp,eg,ep,ev,re,r,rp)
 			token:RegisterEffect(e3)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 			ct=ct-1
-			if ct>0 and not Duel.SelectYesNo(tp,aux.Stringid(14957440,1)) then ct=0 end
+			if ct>0 and not Duel.SelectYesNo(tp,aux.Stringid(14957440,2)) then ct=0 end
 		end
 		Duel.SpecialSummonComplete()
 	end

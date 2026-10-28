@@ -11,6 +11,7 @@ function c94113093.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(94113093,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -34,7 +35,7 @@ function c94113093.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c94113093.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(94113093,0)) then
+		if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(94113093,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			if tc then

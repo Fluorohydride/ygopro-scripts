@@ -2,10 +2,10 @@
 function c48348921.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),8,3,c48348921.ovfilter,aux.Stringid(48348921,1))
+	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),8,3,c48348921.ovfilter,aux.Stringid(48348921,2))
 	--atk
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(48348921,0))
+	e1:SetDescription(aux.Stringid(48348921,1))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e1:SetRange(LOCATION_MZONE)

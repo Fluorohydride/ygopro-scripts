@@ -2,11 +2,11 @@
 function c11132674.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DETACH_EVENT)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,8,2,c11132674.ovfilter,aux.Stringid(11132674,0),99,c11132674.xyzop)
+	aux.AddXyzProcedure(c,nil,8,2,c11132674.ovfilter,aux.Stringid(11132674,2),99,c11132674.xyzop)
 	c:EnableReviveLimit()
 	--search
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(11132674,1))
+	e1:SetDescription(aux.Stringid(11132674,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
@@ -17,7 +17,7 @@ function c11132674.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy or to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(11132674,2))
+	e2:SetDescription(aux.Stringid(11132674,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DETACH_MATERIAL)

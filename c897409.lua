@@ -10,6 +10,7 @@ function c897409.initial_effect(c)
 	c:RegisterEffect(e1)
 	--confirm
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(897409,1))
 	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -26,7 +27,7 @@ function c897409.filter(c)
 end
 function c897409.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c897409.filter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(897409,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(897409,4)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
@@ -55,7 +56,7 @@ function c897409.cfop(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(897409,1)
+		ops[off]=aux.Stringid(897409,5)
 		opval[off-1]=1
 		off=off+1
 	end

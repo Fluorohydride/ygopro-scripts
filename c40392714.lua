@@ -12,6 +12,7 @@ function c40392714.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Damage
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(40392714,1))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -22,6 +23,7 @@ function c40392714.initial_effect(c)
 	c:RegisterEffect(e3)
 	--special summon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(40392714,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DAMAGE_STEP_END)
@@ -96,7 +98,7 @@ function c40392714.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(c40392714.thfilter,tp,LOCATION_DECK,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(40392714,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(40392714,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			g=g:Select(tp,1,1,nil)

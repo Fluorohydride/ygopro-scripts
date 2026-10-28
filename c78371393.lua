@@ -25,7 +25,7 @@ function c78371393.initial_effect(c)
 	--destroy
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_RELEASE+CATEGORY_DESTROY)
-	e4:SetDescription(aux.Stringid(78371393,1))
+	e4:SetDescription(aux.Stringid(78371393,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1)
@@ -73,7 +73,7 @@ end
 function c78371393.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_EFFECT,false,c) and Duel.SelectYesNo(tp,aux.Stringid(78371393,2)) then
+	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_EFFECT,false,c) and Duel.SelectYesNo(tp,aux.Stringid(78371393,4)) then
 		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_EFFECT,false,c)
 		Duel.Release(g,REASON_EFFECT)
 	else

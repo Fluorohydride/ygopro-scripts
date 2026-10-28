@@ -23,7 +23,7 @@ function c95735217.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to hand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(95735217,1))
+	e4:SetDescription(aux.Stringid(95735217,2))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY)

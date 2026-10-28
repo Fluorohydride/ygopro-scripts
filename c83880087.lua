@@ -2,6 +2,7 @@
 function c83880087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(83880087,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_DISABLED)
 	e1:SetTarget(c83880087.target)
@@ -25,9 +26,9 @@ function c83880087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	local op=0
 	if Duel.IsExistingTarget(c83880087.filter,tp,LOCATION_MZONE,0,1,nil) then
-		op=Duel.SelectOption(tp,aux.Stringid(83880087,0),aux.Stringid(83880087,1))
+		op=Duel.SelectOption(tp,aux.Stringid(83880087,3),aux.Stringid(83880087,4))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(83880087,0))
+		op=Duel.SelectOption(tp,aux.Stringid(83880087,3))
 	end
 	e:SetLabel(op)
 	if op==0 then

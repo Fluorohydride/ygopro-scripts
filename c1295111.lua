@@ -7,7 +7,7 @@ function c1295111.initial_effect(c)
 	c:RegisterEffect(e1)
 	--extra material
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(1295111,0))
+	e2:SetDescription(aux.Stringid(1295111,2))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)

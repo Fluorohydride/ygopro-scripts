@@ -2,6 +2,7 @@
 function c14532163.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(14532163,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -23,13 +24,13 @@ function c14532163.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(14532163,0))
+		s=Duel.SelectOption(tp,aux.Stringid(14532163,2))
 	end
 	if not b1 and b2 then
 		s=Duel.SelectOption(tp,aux.Stringid(14532163,1))+1
 	end
 	if b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(14532163,0),aux.Stringid(14532163,1))
+		s=Duel.SelectOption(tp,aux.Stringid(14532163,2),aux.Stringid(14532163,1))
 	end
 	e:SetLabel(s)
 	local g=nil

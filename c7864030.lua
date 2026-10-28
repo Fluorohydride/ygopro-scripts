@@ -2,6 +2,7 @@
 function c7864030.initial_effect(c)
 	--change battle target
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(7864030,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetRange(LOCATION_HAND)
@@ -13,6 +14,7 @@ function c7864030.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change battle target
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(7864030,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_MZONE)

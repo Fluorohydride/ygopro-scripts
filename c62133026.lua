@@ -2,6 +2,7 @@
 function c62133026.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(14108995,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -29,7 +30,7 @@ function c62133026.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local fe=Duel.IsPlayerAffectedByEffect(tp,14108995)
 	local b2=Duel.IsExistingMatchingCard(c62133026.costfilter,tp,LOCATION_HAND,0,1,c)
 	if chk==0 then return c:IsDiscardable() and (fe or b2) end
-	if fe and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(14108995,0))) then
+	if fe and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(14108995,2))) then
 		Duel.Hint(HINT_CARD,0,14108995)
 		fe:UseCountLimit(tp)
 		Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
@@ -57,7 +58,7 @@ function c62133026.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c62133026.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(62133026,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(62133026,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=sg:Select(tp,1,1,nil)

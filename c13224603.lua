@@ -24,7 +24,7 @@ function c13224603.initial_effect(c)
 	c:RegisterEffect(e2)
 	--recover
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(13224603,1))
+	e3:SetDescription(aux.Stringid(13224603,2))
 	e3:SetCategory(CATEGORY_RECOVER)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

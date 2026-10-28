@@ -2,6 +2,7 @@
 function c16780318.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(16780318,0))
 	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_DESTROY+CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -50,7 +51,7 @@ function c16780318.activate(e,tp,eg,ep,ev,re,r,rp)
 					Duel.ConfirmCards(1-p,tc)
 					if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
 						if tc:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-							and Duel.SelectYesNo(tp,aux.Stringid(16780318,0)) then
+							and Duel.SelectYesNo(tp,aux.Stringid(16780318,2)) then
 							Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 						end
 					else
@@ -70,7 +71,7 @@ end
 function c16780318.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(16780318,1))
+	e1:SetDescription(aux.Stringid(16780318,3))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_END)

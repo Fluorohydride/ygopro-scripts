@@ -22,7 +22,7 @@ function c63941210.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Negate
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(63941210,0))
+	e3:SetDescription(aux.Stringid(63941210,3))
 	e3:SetCategory(CATEGORY_DISABLE+CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)
@@ -82,7 +82,7 @@ function c63941210.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63941210.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-	if Duel.NegateEffect(ev) and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63941210,1)) then
+	if Duel.NegateEffect(ev) and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63941210,4)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local tg=g:Select(tp,1,1,nil)
 		Duel.HintSelection(tg)

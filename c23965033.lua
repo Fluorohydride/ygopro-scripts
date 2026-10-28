@@ -85,7 +85,7 @@ function c23965033.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	if ct>=1 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(23965033,1))
+		e1:SetDescription(aux.Stringid(23965033,3))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)

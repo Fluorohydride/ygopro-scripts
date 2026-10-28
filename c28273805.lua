@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON+CATEGORY_POSITION+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -13,6 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--add to hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -45,12 +47,12 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(id,0)
+		ops[off]=aux.Stringid(id,3)
 		opval[off-1]=1
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(id,1)
+		ops[off]=aux.Stringid(id,4)
 		opval[off-1]=2
 		off=off+1
 	end

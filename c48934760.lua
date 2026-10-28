@@ -2,6 +2,7 @@
 function c48934760.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(48934760,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c48934760.condition)
@@ -22,7 +23,7 @@ function c48934760.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48934760.filter,tp,LOCATION_DECK,0,1,nil,tp) end
 end
 function c48934760.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48934760,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48934760,1))
 	local tc=Duel.SelectMatchingCard(tp,c48934760.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	if tc then
 		local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)

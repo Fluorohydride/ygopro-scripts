@@ -2,6 +2,7 @@
 function c17956906.initial_effect(c)
 	--activate
 	local e1 = Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(17956906,0))
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -39,7 +40,7 @@ function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	for p=1,ct do
 		if Duel.CheckLPCost(tp,1000*p,true) then table.insert(pay_list,p) end
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17956906,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17956906,2))
 	local pay=Duel.AnnounceNumber(tp,table.unpack(pay_list))
 	Duel.PayLPCost(tp,pay*1000,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

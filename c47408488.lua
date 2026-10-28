@@ -31,7 +31,7 @@ function c47408488.initial_effect(c)
 	c:RegisterEffect(e3)
 	--place
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(47408488,1))
+	e4:SetDescription(aux.Stringid(47408488,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCost(c47408488.plcost)

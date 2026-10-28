@@ -4,6 +4,7 @@ function c63748694.initial_effect(c)
 	aux.EnableChangeCode(c,24639891,LOCATION_HAND+LOCATION_DECK+LOCATION_MZONE+LOCATION_GRAVE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(63748694,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -45,7 +46,7 @@ function c63748694.spop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) and Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and mg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63748694,0)) then
+		and mg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63748694,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=mg:Select(tp,1,1,nil)

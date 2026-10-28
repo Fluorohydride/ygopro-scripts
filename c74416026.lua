@@ -2,6 +2,7 @@
 function c74416026.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(74416026,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
@@ -39,7 +40,7 @@ function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		local tg=g:Filter(Card.IsRelateToEffect,nil,re)
 		if tg:IsExists(c74416026.tgfilter,1,nil,e,tp) and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL)
-			and Duel.SelectYesNo(tp,aux.Stringid(74416026,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(74416026,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 			local tc=tg:FilterSelect(tp,c74416026.tgfilter,1,1,nil,e,tp):GetFirst()

@@ -2,7 +2,7 @@
 function c15066114.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(15066114,0))
+	e1:SetDescription(aux.Stringid(15066114,3))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c15066114.ntcon)
@@ -13,7 +13,7 @@ function c15066114.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(15066114,1))
+	e3:SetDescription(aux.Stringid(15066114,2))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetCode(EVENT_FREE_CHAIN)

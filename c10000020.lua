@@ -2,7 +2,7 @@
 function c10000020.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(10000020,2))
+	e1:SetDescription(aux.Stringid(10000020,5))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_LIMIT_SUMMON_PROC)
@@ -52,7 +52,7 @@ function c10000020.initial_effect(c)
 	c:RegisterEffect(e7)
 	--atkdown
 	local e8=Effect.CreateEffect(c)
-	e8:SetDescription(aux.Stringid(10000020,1))
+	e8:SetDescription(aux.Stringid(10000020,2))
 	e8:SetCategory(CATEGORY_ATKCHANGE)
 	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e8:SetRange(LOCATION_MZONE)

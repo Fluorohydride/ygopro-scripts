@@ -2,6 +2,7 @@
 function c98904974.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(98904974,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
@@ -32,7 +33,7 @@ end
 function c98904974.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0
-		and Duel.SelectYesNo(tp,aux.Stringid(98904974,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(98904974,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local attr=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)

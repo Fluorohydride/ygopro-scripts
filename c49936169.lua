@@ -2,6 +2,7 @@
 function c49936169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(49936169,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_RECOVER+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -34,7 +35,7 @@ function c49936169.activate(e,tp,eg,ep,ev,re,r,rp)
 		local d=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 		if Duel.Recover(tp,d,REASON_EFFECT)<=0 then return end
 		local tg=Duel.GetMatchingGroup(c49936169.cfilter,tp,LOCATION_HAND,0,nil)
-		if #tg<=0 or not Duel.IsPlayerCanDraw(tp) or not Duel.SelectYesNo(tp,aux.Stringid(49936169,0)) then return end
+		if #tg<=0 or not Duel.IsPlayerCanDraw(tp) or not Duel.SelectYesNo(tp,aux.Stringid(49936169,1)) then return end
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local g=Duel.SelectMatchingCard(tp,c49936169.cfilter,tp,LOCATION_HAND,0,1,63,nil)

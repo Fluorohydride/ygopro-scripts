@@ -2,6 +2,7 @@
 function c84968490.initial_effect(c)
 	--discard deck
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(84968490,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetCode(EVENT_FREE_CHAIN)

@@ -35,7 +35,7 @@ function c75676192.initial_effect(c)
 	c:RegisterEffect(e5)
 	--special summon
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(75676192,1))
+	e6:SetDescription(aux.Stringid(75676192,2))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e6:SetType(EFFECT_TYPE_IGNITION)

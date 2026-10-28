@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_RECOVER)
@@ -13,6 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_RECOVER)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_RECOVER)
@@ -39,6 +41,6 @@ function s.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.remop(e,tp,eg,ep,ev,re,r,rp)
 	local p=tp
-	if Duel.SelectYesNo(tp,aux.Stringid(id,1)) then p=1-tp end
+	if Duel.SelectYesNo(tp,aux.Stringid(id,2)) then p=1-tp end
 	Duel.Recover(p,1000,REASON_EFFECT)
 end
