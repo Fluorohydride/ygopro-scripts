@@ -1,5 +1,6 @@
 --バード・フェイス
 function c45547649.initial_effect(c)
+	aux.AddCodeList(c,76812113)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(45547649,0))

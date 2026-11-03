@@ -1,6 +1,6 @@
 --魅惑の合わせ鏡
 function c92881099.initial_effect(c)
-	aux.AddCodeList(c,12206212)
+	aux.AddCodeList(c,76812113,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

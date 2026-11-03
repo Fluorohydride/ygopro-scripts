@@ -1,5 +1,6 @@
 --ハーピィズペット竜
 function c52040216.initial_effect(c)
+	aux.AddCodeList(c,76812113)
 	--atkup
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
