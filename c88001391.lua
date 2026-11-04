@@ -52,8 +52,9 @@ function s.atklimit(e,c)
 end
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local a=Duel.GetAttacker()
 	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp)
-		and c==Duel.GetAttackTarget() and ((Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttacker():IsOnField()) or Duel.GetAttacker():IsPreviousControler(1-tp))
+		and c==Duel.GetAttackTarget() and a and ((a:IsControler(1-tp) and a:IsOnField()) or a:IsPreviousControler(1-tp))
 end
 function s.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
