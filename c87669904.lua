@@ -108,7 +108,7 @@ function c87669904.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87669904.desop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_MZONE,0,nil,TYPE_TOKEN)
+	local tg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,0,nil,TYPE_TOKEN)
 	Duel.Destroy(tg,REASON_EFFECT)
 end
 function c87669904.splimit(e,c)
