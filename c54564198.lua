@@ -13,7 +13,7 @@ function c54564198.initial_effect(c)
 	e1:SetOperation(c54564198.activate)
 	c:RegisterEffect(e1)
 	if not c54564198.global_check then
-		c54564198.globle_check=true
+		c54564198.global_check=true
 		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_BATTLE_DESTROYED)

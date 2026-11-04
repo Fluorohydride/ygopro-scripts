@@ -58,7 +58,7 @@ function s.gcheck(g)
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_MZONE,0,nil,e)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and s.thfilter(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and s.thfilter(chkc,e) end
 	if chk==0 then return tg:CheckSubGroup(s.gcheck,1,99) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=tg:SelectSubGroup(tp,s.gcheck,false,1,99)

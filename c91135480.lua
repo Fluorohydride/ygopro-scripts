@@ -51,7 +51,7 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then
 		tg:Merge(g:Filter(Card.IsType,nil,TYPE_SPELL))
 	end
-	if Duel.IsExistingMatchingCard(c91135480.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
+	if Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
 		tg:Merge(g:Filter(Card.IsType,nil,TYPE_TRAP))
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVEXYZ)

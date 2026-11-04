@@ -63,7 +63,7 @@ function c92998610.thfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c92998610.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c92998610.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c92998610.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c92998610.thfilter,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c92998610.thfilter,tp,LOCATION_REMOVED,0,1,1,nil)

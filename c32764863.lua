@@ -60,7 +60,7 @@ function c32764863.spfilter(c,e,tp,mc,rank)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c32764863.rktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c32764863.spfilter(chkc,e,tp) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c32764863.rkfilter(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c32764863.rkfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c32764863.rkfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)

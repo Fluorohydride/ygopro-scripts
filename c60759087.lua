@@ -35,7 +35,7 @@ function c60759087.tgfilter2(c)
 	return c:IsFacedown() and c:IsAbleToDeck()
 end
 function c60759087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return e:GetLabel()==1 and c60759087.tgfilter1(chkc)
+	if chkc then return e:GetLabel()==1 and c60759087.tgfilter2(chkc)
 		and chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) end
 	local b1 = Duel.IsExistingTarget(c60759087.tgfilter1a,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(c60759087.tgfilter1b,tp,0,LOCATION_MZONE,1,nil)

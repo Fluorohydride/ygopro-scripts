@@ -49,12 +49,12 @@ function c83670388.damfilter(c,e)
 	return c:GetBaseAttack()>0 and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function c83670388.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return eg:IsContains(chkc) and c83670388.filter(chkc,e,tp) end
+	if chkc then return eg:IsContains(chkc) and c83670388.damfilter(chkc,e) end
 	if chk==0 then return eg:IsExists(c83670388.damfilter,1,nil,e) end
 	local g=eg
 	if #eg>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-		e=eg:FilterSelect(tp,c83670388.damfilter,1,1,nil,e)
+		g=eg:FilterSelect(tp,c83670388.damfilter,1,1,nil,e)
 	end
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,g:GetFirst():GetBaseAttack())
