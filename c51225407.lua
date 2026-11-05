@@ -18,7 +18,7 @@ function c51225407.initial_effect(c)
 	c:RegisterEffect(e3)
 	--draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(51225407,0))
+	e4:SetDescription(aux.Stringid(51225407,1))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_IGNITION)

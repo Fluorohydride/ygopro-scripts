@@ -10,7 +10,7 @@ function c40380686.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change race or attribute
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(40380686,0))
+	e2:SetDescription(aux.Stringid(40380686,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

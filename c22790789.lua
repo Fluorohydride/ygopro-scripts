@@ -20,7 +20,7 @@ function c22790789.initial_effect(c)
 	aux.EnableBESRemove(c)
 	--pos
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(22790789,1))
+	e5:SetDescription(aux.Stringid(22790789,2))
 	e5:SetCategory(CATEGORY_POSITION)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_IGNITION)

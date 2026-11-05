@@ -8,7 +8,7 @@ function c13513663.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atkup
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(13513663,0))
+	e2:SetDescription(aux.Stringid(13513663,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)

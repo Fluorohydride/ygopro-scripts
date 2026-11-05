@@ -11,7 +11,7 @@ function c57996334.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon success
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(57996334,0))
+	e2:SetDescription(aux.Stringid(57996334,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)

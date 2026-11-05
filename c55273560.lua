@@ -12,7 +12,7 @@ function c55273560.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon other monsters
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(55273560,0))
+	e2:SetDescription(aux.Stringid(55273560,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)

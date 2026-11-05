@@ -22,7 +22,7 @@ function c91434602.initial_effect(c)
 	c:RegisterEffect(e2)
 	--banish
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(91434602,0))
+	e3:SetDescription(aux.Stringid(91434602,2))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -27,7 +27,7 @@ function c67616300.initial_effect(c)
 	c:RegisterEffect(e8)
 	--draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(67616300,0))
+	e4:SetDescription(aux.Stringid(67616300,1))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_FZONE)

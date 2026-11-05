@@ -26,7 +26,7 @@ function c9012916.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atkdown
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(9012916,0))
+	e3:SetDescription(aux.Stringid(9012916,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_MZONE)

@@ -4,7 +4,7 @@ function c48421595.initial_effect(c)
 	aux.EnableChangeCode(c,19642774,LOCATION_MZONE+LOCATION_GRAVE)
 	--lv up
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(48421595,0))
+	e1:SetDescription(aux.Stringid(48421595,1))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)

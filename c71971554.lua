@@ -2,7 +2,7 @@
 function c71971554.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(71971554,0))
+	e1:SetDescription(aux.Stringid(71971554,1))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_DAMAGE_STEP_END)
 	e1:SetCondition(c71971554.lvcon)

@@ -12,7 +12,7 @@ function c47330808.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Leave Field
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(47330808,0))
+	e2:SetDescription(aux.Stringid(47330808,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_TODECK+CATEGORY_GRAVE_ACTION)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

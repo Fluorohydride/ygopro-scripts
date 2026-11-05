@@ -18,7 +18,7 @@ function c13893596.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to grave
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(13893596,0))
+	e3:SetDescription(aux.Stringid(13893596,1))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)

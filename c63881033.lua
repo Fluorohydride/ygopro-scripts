@@ -16,7 +16,7 @@ function c63881033.initial_effect(c)
 	c:RegisterEffect(e2)
 	--lv change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(63881033,0))
+	e3:SetDescription(aux.Stringid(63881033,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCountLimit(1)
 	e3:SetRange(LOCATION_SZONE)

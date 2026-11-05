@@ -46,7 +46,7 @@ function c82103466.initial_effect(c)
 	c:RegisterEffect(e5)
 	--atk up
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(82103466,2))
+	e6:SetDescription(aux.Stringid(82103466,3))
 	e6:SetCategory(CATEGORY_ATKCHANGE)
 	e6:SetType(EFFECT_TYPE_QUICK_O)
 	e6:SetRange(LOCATION_MZONE)

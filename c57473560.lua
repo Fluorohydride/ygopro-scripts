@@ -4,7 +4,7 @@ function c57473560.initial_effect(c)
 	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(57473560,0))
+	e2:SetDescription(aux.Stringid(57473560,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)

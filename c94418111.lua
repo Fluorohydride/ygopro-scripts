@@ -15,7 +15,7 @@ function c94418111.initial_effect(c)
 	c:RegisterEffect(e2)
 	--draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(94418111,0))
+	e3:SetDescription(aux.Stringid(94418111,1))
 	e3:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)

@@ -19,7 +19,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,0))
+	e4:SetDescription(aux.Stringid(id,1))
 	e3:SetDescription(aux.Stringid(id,4))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

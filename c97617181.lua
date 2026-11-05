@@ -28,7 +28,7 @@ function c97617181.initial_effect(c)
 	c:RegisterEffect(e4)
 	--leave
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(97617181,1))
+	e5:SetDescription(aux.Stringid(97617181,2))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_LEAVE_FIELD)
 	e5:SetCondition(c97617181.atkcon)

@@ -16,7 +16,7 @@ function c1942635.initial_effect(c)
 	c:RegisterEffect(e2)
 	--draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1942635,0))
+	e3:SetDescription(aux.Stringid(1942635,1))
 	e3:SetCategory(CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)

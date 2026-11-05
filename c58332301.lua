@@ -20,7 +20,7 @@ function c58332301.initial_effect(c)
 	--Pos Change
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_POSITION)
-	e3:SetDescription(aux.Stringid(58332301,0))
+	e3:SetDescription(aux.Stringid(58332301,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetTarget(c58332301.postg)

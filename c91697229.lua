@@ -21,7 +21,7 @@ function c91697229.initial_effect(c)
 	c:RegisterEffect(e4)
 	--pos
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(91697229,0))
+	e5:SetDescription(aux.Stringid(91697229,1))
 	e5:SetCategory(CATEGORY_POSITION)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_PHASE+PHASE_BATTLE_START)

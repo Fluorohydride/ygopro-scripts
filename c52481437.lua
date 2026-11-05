@@ -13,7 +13,7 @@ function c52481437.initial_effect(c)
 	c:RegisterEffect(e1)
 	--attack cost
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(52481437,1))
+	e2:SetDescription(aux.Stringid(52481437,3))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_ATTACK_COST)
 	e2:SetCost(c52481437.atcost)

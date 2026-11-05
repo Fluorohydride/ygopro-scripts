@@ -24,7 +24,7 @@ function c47077697.initial_effect(c)
 	c:RegisterEffect(e3)
 	--change
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(47077697,1))
+	e4:SetDescription(aux.Stringid(47077697,2))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

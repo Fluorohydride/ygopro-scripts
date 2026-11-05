@@ -5,7 +5,7 @@ function s.initial_effect(c)
 	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)
 	--to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND+LOCATION_MZONE)

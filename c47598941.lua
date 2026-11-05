@@ -11,7 +11,7 @@ function c47598941.initial_effect(c)
 	c:RegisterEffect(e0)
 	--set p
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(47598941,0))
+	e2:SetDescription(aux.Stringid(47598941,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_DESTROYED)

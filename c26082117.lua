@@ -3,7 +3,7 @@ function c26082117.initial_effect(c)
 	c:SetUniqueOnField(1,0,26082117)
 	--lv change
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(26082117,0))
+	e1:SetDescription(aux.Stringid(26082117,1))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)

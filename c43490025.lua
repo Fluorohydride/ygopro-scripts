@@ -19,7 +19,7 @@ function c43490025.initial_effect(c)
 	c:RegisterEffect(e3)
 	--multi attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(43490025,0))
+	e4:SetDescription(aux.Stringid(43490025,2))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1)

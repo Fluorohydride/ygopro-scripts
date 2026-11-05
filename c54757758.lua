@@ -22,7 +22,7 @@ function c54757758.initial_effect(c)
 	c:RegisterEffect(e2)
 	--att change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(54757758,0))
+	e3:SetDescription(aux.Stringid(54757758,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_MZONE)

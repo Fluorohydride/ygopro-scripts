@@ -22,7 +22,7 @@ function c17469113.initial_effect(c)
 	c:RegisterEffect(e3)
 	--special summon cost
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(17469113,0))
+	e4:SetDescription(aux.Stringid(17469113,2))
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetCode(EFFECT_SPSUMMON_COST)

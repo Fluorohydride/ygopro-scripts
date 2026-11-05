@@ -24,7 +24,7 @@ function c41181774.initial_effect(c)
 	c:RegisterEffect(e6)
 	--handes
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(41181774,0))
+	e7:SetDescription(aux.Stringid(41181774,1))
 	e7:SetCategory(CATEGORY_TODECK+CATEGORY_HANDES_OPPO)
 	e7:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e7:SetProperty(EFFECT_FLAG_CARD_TARGET)

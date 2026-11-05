@@ -2,7 +2,7 @@
 function c34680482.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(34680482,0))
+	e1:SetDescription(aux.Stringid(34680482,1))
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_TO_GRAVE)
@@ -12,7 +12,7 @@ function c34680482.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(34680482,1))
+	e2:SetDescription(aux.Stringid(34680482,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

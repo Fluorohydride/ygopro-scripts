@@ -20,7 +20,7 @@ function c20007374.initial_effect(c)
 	c:RegisterEffect(e2)
 	--chain attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(20007374,1))
+	e4:SetDescription(aux.Stringid(20007374,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)
 	e4:SetRange(LOCATION_SZONE)

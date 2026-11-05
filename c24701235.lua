@@ -19,7 +19,7 @@ function c24701235.initial_effect(c)
 	c:RegisterEffect(e5)
 	--draw
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(24701235,0))
+	e6:SetDescription(aux.Stringid(24701235,2))
 	e6:SetCategory(CATEGORY_DRAW)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_TO_GRAVE)

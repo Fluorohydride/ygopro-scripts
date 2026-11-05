@@ -5,7 +5,7 @@ function c71921856.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(71921856,0))
+	e1:SetDescription(aux.Stringid(71921856,1))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)

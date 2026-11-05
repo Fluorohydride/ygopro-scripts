@@ -17,7 +17,7 @@ function c57690191.initial_effect(c)
 	c:RegisterEffect(e2)
 	--ret&draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(57690191,1))
+	e3:SetDescription(aux.Stringid(57690191,2))
 	e3:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)

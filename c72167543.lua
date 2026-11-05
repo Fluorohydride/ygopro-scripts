@@ -18,7 +18,7 @@ function c72167543.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(72167543,0))
+	e3:SetDescription(aux.Stringid(72167543,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLED)
 	e3:SetOperation(c72167543.rmop)

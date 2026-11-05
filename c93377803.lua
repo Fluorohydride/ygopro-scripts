@@ -4,7 +4,7 @@ function c93377803.initial_effect(c)
 	c:SetUniqueOnField(1,0,93377803)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(93377803,1))
+	e1:SetDescription(aux.Stringid(93377803,3))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)

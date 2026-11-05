@@ -2,7 +2,7 @@
 function c56790702.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(56790702,0))
+	e1:SetDescription(aux.Stringid(56790702,2))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_ATTACK_COST)
 	e1:SetCost(c56790702.atcost)
@@ -10,7 +10,7 @@ function c56790702.initial_effect(c)
 	c:RegisterEffect(e1)
 	--sp summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(56790702,1))
+	e2:SetDescription(aux.Stringid(56790702,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)

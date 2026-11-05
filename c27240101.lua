@@ -13,7 +13,7 @@ function c27240101.initial_effect(c)
 	c:RegisterEffect(e1)
 	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(27240101,0))
+	e2:SetDescription(aux.Stringid(27240101,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)

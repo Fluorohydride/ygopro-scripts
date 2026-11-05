@@ -24,7 +24,7 @@ function c44478599.initial_effect(c)
 	c:RegisterEffect(e2)
 	--multi attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(44478599,1))
+	e3:SetDescription(aux.Stringid(44478599,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -28,7 +28,7 @@ function c26493435.initial_effect(c)
 	c:RegisterEffect(e4)
 	--special summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(26493435,0))
+	e5:SetDescription(aux.Stringid(26493435,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_FZONE)

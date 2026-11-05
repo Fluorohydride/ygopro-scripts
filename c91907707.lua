@@ -51,7 +51,7 @@ function c91907707.initial_effect(c)
 	c:RegisterEffect(e7)
 	--tohand
 	local e8=Effect.CreateEffect(c)
-	e8:SetDescription(aux.Stringid(91907707,2))
+	e8:SetDescription(aux.Stringid(91907707,5))
 	e8:SetCategory(CATEGORY_TOHAND)
 	e8:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e8:SetCode(EVENT_RELEASE)

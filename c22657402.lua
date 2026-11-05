@@ -16,7 +16,7 @@ function c22657402.initial_effect(c)
 	c:RegisterEffect(e2)
 	--lv change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(22657402,0))
+	e3:SetDescription(aux.Stringid(22657402,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

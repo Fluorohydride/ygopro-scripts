@@ -9,7 +9,7 @@ function c40364916.initial_effect(c)
 	aux.EnableChangeCode(c,40005099)
 	--summon limit
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(40364916,0))
+	e3:SetDescription(aux.Stringid(40364916,3))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)

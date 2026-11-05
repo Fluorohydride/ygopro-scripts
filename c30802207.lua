@@ -17,7 +17,7 @@ function c30802207.initial_effect(c)
 	c:RegisterEffect(e1)
 	--ban
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(30802207,0))
+	e2:SetDescription(aux.Stringid(30802207,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

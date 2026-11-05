@@ -13,7 +13,7 @@ function c95735217.initial_effect(c)
 	c:RegisterEffect(e2)
 	--extra attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(95735217,0))
+	e3:SetDescription(aux.Stringid(95735217,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetCountLimit(2)

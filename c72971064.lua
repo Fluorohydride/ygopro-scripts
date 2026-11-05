@@ -13,7 +13,7 @@ function c72971064.initial_effect(c)
 	--to hand
 	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,72971064,EVENT_SPSUMMON_SUCCESS)
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(72971064,0))
+	e2:SetDescription(aux.Stringid(72971064,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(custom_code)

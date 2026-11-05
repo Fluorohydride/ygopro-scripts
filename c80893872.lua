@@ -10,7 +10,7 @@ function c80893872.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lv down
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(80893872,0))
+	e2:SetDescription(aux.Stringid(80893872,1))
 	e2:SetCategory(CATEGORY_HANDES_SELF)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)

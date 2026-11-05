@@ -9,7 +9,7 @@ function c78765160.initial_effect(c)
 	aux.EnableChangeCode(c,40005099)
 	--no damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(78765160,0))
+	e3:SetDescription(aux.Stringid(78765160,2))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_SZONE)

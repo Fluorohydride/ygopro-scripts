@@ -15,7 +15,7 @@ function c93108839.initial_effect(c)
 	c:RegisterEffect(e1)
 	--unequip
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(93108839,1))
+	e2:SetDescription(aux.Stringid(93108839,3))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)

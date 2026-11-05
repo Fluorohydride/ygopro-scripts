@@ -34,7 +34,7 @@ function c34884015.initial_effect(c)
 	c:RegisterEffect(e4)
 	--extra pendulum
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(34884015,1))
+	e5:SetDescription(aux.Stringid(34884015,3))
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetCost(c34884015.expcost)

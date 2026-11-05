@@ -13,7 +13,7 @@ function c79086452.initial_effect(c)
 	c:RegisterEffect(e1)
 	--protection
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(79086452,0))
+	e2:SetDescription(aux.Stringid(79086452,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCost(aux.bfgcost)
