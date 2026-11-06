@@ -50,7 +50,8 @@ function c8522996.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c8522996.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	--a Trap Monster is a monster only in the Monster Zone: back in the Spell & Trap Zone it has no monster effect
+	if chk==0 then return e:GetHandler():IsLocation(LOCATION_MZONE) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	e:SetLabel(aat)
