@@ -66,7 +66,8 @@ function c39064822.sumop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,39064822,RESET_PHASE+PHASE_END,0,1)
 end
 function c39064822.sumcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFieldID()==e:GetLabel()
+	local c=e:GetHandler()
+	return c:GetFieldID()==e:GetLabel() and c:GetLinkedZone()~=0
 end
 function c39064822.sumval(e,c)
 	local c=e:GetHandler()
