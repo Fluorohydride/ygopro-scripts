@@ -11,7 +11,7 @@ function c29596581.initial_effect(c)
 	e1:SetTarget(c29596581.target)
 	e1:SetOperation(c29596581.operation)
 	c:RegisterEffect(e1)
-	c29596581.discard_effect=e1
+	c29596581.thunder_dragon_discard_effect=e1
 	--spsummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(29596581,1))
