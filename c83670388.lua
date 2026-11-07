@@ -46,7 +46,7 @@ function c83670388.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return a and a:IsSetCard(0x16c)
 end
 function c83670388.damfilter(c,e)
-	return c:GetBaseAttack()>0 and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
+	return c:GetBaseAttack()>0 and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsFaceupEx()
 end
 function c83670388.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c83670388.filter(chkc,e,tp) end
