@@ -1,5 +1,6 @@
 --N・ティンクル・モス
 function c13857930.initial_effect(c)
+	aux.AddCodeList(c,17732278)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --ガエル・サンデス
 function c9910360.initial_effect(c)
+	aux.AddCodeList(c,12538374)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeRep(c,84451804,3,false,false)

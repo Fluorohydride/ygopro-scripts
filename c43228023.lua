@@ -1,5 +1,6 @@
 --青眼の究極亜竜
 function c43228023.initial_effect(c)
+	aux.AddCodeList(c,38517737)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeRep(c,89631139,3,true,true)

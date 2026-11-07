@@ -1,5 +1,6 @@
 --アマゾネス女帝王
 function c23965033.initial_effect(c)
+	aux.AddCodeList(c,4591250,15951532)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c23965033.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0x4),true)

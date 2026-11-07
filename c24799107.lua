@@ -1,5 +1,6 @@
 --ドラゴンメイド・シュトラール
 function c24799107.initial_effect(c)
+	aux.AddCodeList(c,41232647)
 	--fusion material
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x133),c24799107.ffilter,true)
 	c:EnableReviveLimit()

@@ -1,5 +1,6 @@
 --レアメタル・ヴァルキリー
 function c75923050.initial_effect(c)
+	aux.AddCodeList(c,1412158)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,92421852,38916461,true,true)

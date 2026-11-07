@@ -1,5 +1,6 @@
 --サイバー・エタニティ・ドラゴン
 function c82315403.initial_effect(c)
+	aux.AddCodeList(c,70095154)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunFun(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1093),aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),2,true)
