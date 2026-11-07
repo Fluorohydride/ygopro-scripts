@@ -93,6 +93,18 @@ function c68934651.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.NegateActivation(ev)
 	if e:GetLabel()==1 and c:IsRelateToEffect(e) and c:IsChainAttackable(0) then
+		--Needed for the end of the Damage Step
 		Duel.ChainAttack()
+		--Make another attack in a row
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_DAMAGE_STEP_END)
+		e1:SetRange(LOCATION_MZONE)
+		e1:SetOperation(c68934651.chainop)
+		e1:SetReset(RESET_PHASE|PHASE_DAMAGE)
+		c:RegisterEffect(e1)
 	end
+end
+function c68934651.chainop()
+	Duel.ChainAttack()
 end
