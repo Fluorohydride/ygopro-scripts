@@ -2,6 +2,7 @@
 function c54704216.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(54704216,0))
 	e1:SetCategory(CATEGORY_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -23,7 +24,7 @@ function c54704216.initial_effect(c)
 	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(54704216,0))
+	e4:SetDescription(aux.Stringid(54704216,1))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetCode(EVENT_PHASE+PHASE_STANDBY)

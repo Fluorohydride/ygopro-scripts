@@ -13,6 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--self_spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_LEAVE_FIELD)
@@ -25,6 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to deck
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK+CATEGORY_GRAVE_ACTION)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)
@@ -76,7 +78,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		local rc=re:GetHandler()
 		local res=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) and aux.IsCodeListed(tc,re:GetHandler():GetCode())
-		if res and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+		if res and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		else
 			Duel.HintSelection(g)

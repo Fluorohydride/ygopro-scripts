@@ -3,6 +3,7 @@ function c99092624.initial_effect(c)
 	aux.AddCodeList(c,73580471)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(99092624,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -11,6 +12,7 @@ function c99092624.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(99092624,1))
 	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_TODECK+CATEGORY_LEAVE_GRAVE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -43,9 +45,9 @@ function c99092624.activate(e,tp,eg,ep,ev,re,r,rp)
 		if not (b1 or b2) then break end
 		local op=0
 		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(99092624,1),aux.Stringid(99092624,2))
+			op=Duel.SelectOption(tp,aux.Stringid(99092624,4),aux.Stringid(99092624,2))
 		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(99092624,1))
+			op=Duel.SelectOption(tp,aux.Stringid(99092624,4))
 		else
 			op=Duel.SelectOption(tp,aux.Stringid(99092624,2))+1
 		end
@@ -54,7 +56,7 @@ function c99092624.activate(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,99092625)
 		Duel.SpecialSummonStep(token,0,tp,p,false,false,POS_FACEUP_DEFENSE)
 		ct=ct-1
-	until ct==0 or not Duel.SelectYesNo(tp,aux.Stringid(99092624,0))
+	until ct==0 or not Duel.SelectYesNo(tp,aux.Stringid(99092624,3))
 	Duel.SpecialSummonComplete()
 end
 function c99092624.rmfilter(c)

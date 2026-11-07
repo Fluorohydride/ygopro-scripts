@@ -20,7 +20,7 @@ function c38811586.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon grave 2
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(38811586,0))
+	e3:SetDescription(aux.Stringid(38811586,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -34,6 +34,7 @@ function c38811586.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Special Summon itself
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(38811586,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
@@ -84,7 +85,7 @@ function c38811586.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) or ft1<=0 or ft2<=0 then return end
 	local g=Duel.GetTargetsRelateToChain()
 	if #g~=2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(38811586,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(38811586,3))
 	local sg=g:FilterSelect(tp,c38811586.spsumfilter1,1,1,nil,e,tp,g)
 	if #sg==0 then return end
 	Duel.SpecialSummonStep(sg:GetFirst(),0,tp,tp,false,false,POS_FACEUP)

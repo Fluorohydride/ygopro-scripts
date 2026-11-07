@@ -1,11 +1,11 @@
 --DDD狙撃王テル
 function c71612253.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,5,2,c71612253.ovfilter,aux.Stringid(71612253,0))
+	aux.AddXyzProcedure(c,nil,5,2,c71612253.ovfilter,aux.Stringid(71612253,2))
 	c:EnableReviveLimit()
 	--atk & def
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(71612253,1))
+	e1:SetDescription(aux.Stringid(71612253,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE+CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -20,7 +20,7 @@ function c71612253.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(71612253,2))
+	e2:SetDescription(aux.Stringid(71612253,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)

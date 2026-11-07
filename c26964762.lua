@@ -21,7 +21,7 @@ function c26964762.initial_effect(c)
 	c:RegisterEffect(e2)
 	--deck top
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(26964762,1))
+	e3:SetDescription(aux.Stringid(26964762,2))
 	e3:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)

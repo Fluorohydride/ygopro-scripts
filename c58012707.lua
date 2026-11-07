@@ -19,7 +19,7 @@ function c58012707.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(58012707,2))
+	e3:SetDescription(aux.Stringid(58012707,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -60,7 +60,7 @@ function c58012707.dmop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c58012707.spfilter),tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp,tc:GetCode())
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-		if g:GetCount()>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(58012707,1)) then
+		if g:GetCount()>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(58012707,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,ft,nil)

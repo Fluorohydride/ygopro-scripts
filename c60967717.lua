@@ -26,7 +26,7 @@ end
 function c60967717.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetMatchingGroup(c60967717.filter,tp,LOCATION_DECK,0,nil,e,tp,ft)
-	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(60967717,0)) then
+	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(60967717,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		local opt=0

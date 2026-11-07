@@ -2,6 +2,7 @@
 function c24874630.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(24874630,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -48,7 +49,7 @@ function c24874630.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c24874630.desop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,1000) and Duel.SelectYesNo(tp,aux.Stringid(24874630,0)) then
+	if Duel.CheckLPCost(tp,1000) and Duel.SelectYesNo(tp,aux.Stringid(24874630,1)) then
 		Duel.PayLPCost(tp,1000)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

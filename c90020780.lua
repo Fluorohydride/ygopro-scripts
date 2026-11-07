@@ -2,6 +2,7 @@
 function c90020780.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(90020780,0))
 	e1:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -14,6 +15,7 @@ function c90020780.initial_effect(c)
 	c:RegisterEffect(e1)
 	--banished
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(90020780,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

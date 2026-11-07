@@ -42,7 +42,7 @@ function c4545683.initial_effect(c)
 	c:RegisterEffect(e5)
 	--special summon equip
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(4545683,2))
+	e6:SetDescription(aux.Stringid(4545683,3))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_IGNITION)
 	e6:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -2,6 +2,7 @@
 function c62219643.initial_effect(c)
 	--spsummon limit
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(62219643,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
@@ -11,6 +12,7 @@ function c62219643.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(62219643,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

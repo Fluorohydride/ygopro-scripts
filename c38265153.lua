@@ -3,6 +3,7 @@ function c38265153.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(38265153,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -36,7 +37,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 		local off=1
 		local ops={}
 		local opval={}
-		ops[off]=aux.Stringid(38265153,0)
+		ops[off]=aux.Stringid(38265153,3)
 		opval[off-1]=0
 		off=off+1
 		if #g1>0 then

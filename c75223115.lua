@@ -31,7 +31,7 @@ end
 function c75223115.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c75223115.actfilter,tp,LOCATION_DECK,0,nil,tp)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(75223115,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(75223115,3)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local sg=g:Select(tp,1,1,nil)

@@ -26,7 +26,7 @@ function c57496978.activate(e,tp,eg,ep,ev,re,r,rp)
 			local tg=g:GetMinGroup(Card.GetAttack)
 			local tc=tg:GetFirst()
 			if tg:GetCount()==1 and Duel.CheckLPCost(tc:GetControler(),500)
-				and Duel.SelectYesNo(tc:GetControler(),aux.Stringid(57496978,0)) then
+				and Duel.SelectYesNo(tc:GetControler(),aux.Stringid(57496978,1)) then
 				Duel.PayLPCost(tc:GetControler(),500)
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)

@@ -31,7 +31,7 @@ function s.initial_effect(c)
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>5 end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,0))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,4))
 end
 function s.thfilter(c)
 	return c:IsSetCard(0x160) and c:IsAbleToHand()
@@ -96,7 +96,7 @@ end
 function s.ovtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.matfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,5))
 end
 function s.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

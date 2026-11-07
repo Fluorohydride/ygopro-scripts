@@ -2,6 +2,7 @@
 function c20899496.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(20899496,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -56,7 +57,7 @@ function c20899496.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if res then
 		local g=Duel.GetMatchingGroup(c20899496.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		if g:CheckSubGroup(c20899496.fselect,2,2) and Duel.SelectYesNo(tp,aux.Stringid(20899496,0)) then
+		if g:CheckSubGroup(c20899496.fselect,2,2) and Duel.SelectYesNo(tp,aux.Stringid(20899496,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local sg=g:SelectSubGroup(tp,c20899496.fselect,false,2,2)

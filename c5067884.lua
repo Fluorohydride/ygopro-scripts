@@ -13,6 +13,7 @@ function c5067884.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Attack
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(5067884,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c5067884.atkcon)
@@ -53,9 +54,9 @@ function c5067884.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return con1 or con2 end
 	local op=0
 	if con1 and con2 then
-		op=Duel.SelectOption(tp,aux.Stringid(5067884,1),aux.Stringid(5067884,2))
+		op=Duel.SelectOption(tp,aux.Stringid(5067884,3),aux.Stringid(5067884,2))
 	elseif con1 then
-		op=Duel.SelectOption(tp,aux.Stringid(5067884,1))
+		op=Duel.SelectOption(tp,aux.Stringid(5067884,3))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(5067884,2))+1
 	end

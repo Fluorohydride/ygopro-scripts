@@ -37,9 +37,9 @@ function c12435193.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c12435193.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(12435193,0),aux.Stringid(12435193,1),aux.Stringid(12435193,2))
+		select=Duel.SelectOption(tp,aux.Stringid(12435193,3),aux.Stringid(12435193,1),aux.Stringid(12435193,2))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(12435193,0),aux.Stringid(12435193,2))
+		select=Duel.SelectOption(tp,aux.Stringid(12435193,3),aux.Stringid(12435193,2))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
 		select=Duel.SelectOption(tp,aux.Stringid(12435193,1),aux.Stringid(12435193,2))+1

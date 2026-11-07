@@ -2,6 +2,7 @@
 function c82045034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(82045034,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -50,7 +51,7 @@ function c82045034.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 		ft=ft-1
 		local g=Duel.GetMatchingGroup(c82045034.gfilter,tp,LOCATION_GRAVE,0,nil,e,tp,tc:GetCode())
-		if g:GetCount()>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(82045034,0)) then
+		if g:GetCount()>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(82045034,1)) then
 			Duel.BreakEffect()
 			ft=math.min(ft,g:GetCount())
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

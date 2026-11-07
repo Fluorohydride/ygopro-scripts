@@ -25,7 +25,7 @@ function c54828837.initial_effect(c)
 	c:RegisterEffect(e3)
 	--damage protection
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(54828837,1))
+	e4:SetDescription(aux.Stringid(54828837,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_LEAVE_FIELD)
 	e4:SetRange(LOCATION_SZONE)

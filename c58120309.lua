@@ -3,6 +3,7 @@ function c58120309.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(58120309,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DISABLE+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
@@ -32,7 +33,7 @@ end
 function c58120309.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		local sc=Duel.GetFirstMatchingCard(c58120309.sfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
-		if sc and Duel.SelectYesNo(tp,aux.Stringid(58120309,0)) then
+		if sc and Duel.SelectYesNo(tp,aux.Stringid(58120309,1)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 		end

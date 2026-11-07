@@ -4,6 +4,7 @@ function c46570372.initial_effect(c)
 	aux.AddSetNameMonsterList(c,0x3008)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(46570372,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,7 +27,7 @@ end
 function c46570372.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c46570372.filter),tp,LOCATION_GRAVE,0,nil,e,tp,Duel.GetTurnCount())
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(46570372,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(46570372,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
@@ -45,7 +46,7 @@ function c46570372.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE,1-tp)>0 then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c46570372.filter),1-tp,LOCATION_GRAVE,0,nil,e,1-tp,Duel.GetTurnCount())
-		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(46570372,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(46570372,1)) then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 			local tc=g:Select(1-tp,1,1,nil):GetFirst()
 			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK)

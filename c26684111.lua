@@ -3,6 +3,7 @@ function c26684111.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(26684111,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCountLimit(1,26684111)
@@ -41,12 +42,12 @@ function c26684111.activate(e,tp,eg,ep,ev,re,r,rp)
 	local off=1
 	local ops,opval={},{}
 	if b1 then
-		ops[off]=aux.Stringid(26684111,0)
+		ops[off]=aux.Stringid(26684111,3)
 		opval[off]=0
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(26684111,1)
+		ops[off]=aux.Stringid(26684111,4)
 		opval[off]=1
 		off=off+1
 	end

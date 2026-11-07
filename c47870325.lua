@@ -2,6 +2,7 @@
 function c47870325.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(47870325,0))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -10,6 +11,7 @@ function c47870325.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable attack
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(47870325,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -34,12 +36,12 @@ function c47870325.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
 	local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter),tp,LOCATION_GRAVE,0,nil,tp)
 	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter),tp,0,LOCATION_GRAVE,nil,1-tp)
-	if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(47870325,0)) then
+	if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(47870325,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local sg1=g1:Select(tp,1,5,nil)
 		g:Merge(sg1)
 	end
-	if g2:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(47870325,0)) then
+	if g2:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(47870325,3)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
 		local sg2=g2:Select(1-tp,1,5,nil)
 		g:Merge(sg2)
@@ -88,7 +90,7 @@ function c47870325.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if c:GetFlagEffect(47870325)==0 then return end
 	local p=1-ep
 	local g=e:GetLabelObject():Filter(c47870325.thfilter,nil,c,p)
-	if g:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(47870325,1)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(47870325,4)) then
 		local res=false
 		local sg=g:RandomSelect(1-p,1)
 		local tc=sg:GetFirst()

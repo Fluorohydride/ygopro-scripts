@@ -10,7 +10,7 @@ function c85119159.initial_effect(c)
 	c:RegisterEffect(e1)
 	--level
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(85119159,0))
+	e2:SetDescription(aux.Stringid(85119159,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1,85119160)
 	e2:SetRange(LOCATION_SZONE)
@@ -24,7 +24,7 @@ function c85119159.filter(c)
 end
 function c85119159.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c85119159.filter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(85119159,1)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(85119159,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

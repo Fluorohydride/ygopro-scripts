@@ -2,6 +2,7 @@
 function c73575650.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(73575650,0))
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -32,9 +33,9 @@ function c73575650.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(73575650,0),aux.Stringid(73575650,1))
+		op=Duel.SelectOption(tp,aux.Stringid(73575650,2),aux.Stringid(73575650,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(73575650,0))
+		op=Duel.SelectOption(tp,aux.Stringid(73575650,2))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(73575650,1))+1
 	end

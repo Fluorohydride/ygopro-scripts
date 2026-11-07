@@ -2,6 +2,7 @@
 function c21593977.initial_effect(c)
 	--activate trap in hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(21593977,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_TO_GRAVE)
@@ -17,7 +18,7 @@ end
 function c21593977.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(21593977,0))
+	e1:SetDescription(aux.Stringid(21593977,1))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e1:SetTargetRange(LOCATION_HAND,0)

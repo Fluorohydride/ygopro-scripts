@@ -3,12 +3,13 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--up atk
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -120,7 +121,7 @@ function s.tkop(e,tp,eg,ep,ev,re,r,rp)
 				num[i]=i
 				i=i+1
 			end
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 			count=Duel.AnnounceNumber(tp,table.unpack(num))
 		end
 		repeat

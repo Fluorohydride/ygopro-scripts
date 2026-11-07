@@ -7,7 +7,7 @@ function c69217334.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change level
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(69217334,2))
+	e2:SetDescription(aux.Stringid(69217334,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -17,6 +17,7 @@ function c69217334.initial_effect(c)
 	c:RegisterEffect(e2)
 	--draw
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(69217334,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -80,11 +81,11 @@ function c69217334.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sel=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if b1 and b2 then
-		sel=Duel.SelectOption(tp,aux.Stringid(69217334,0),aux.Stringid(69217334,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(69217334,2),aux.Stringid(69217334,3))
 	elseif b1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(69217334,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(69217334,2))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(69217334,1))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(69217334,3))+1
 	end
 	if sel==0 then
 		e:SetCategory(CATEGORY_DRAW)

@@ -14,6 +14,7 @@ function c34536828.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(34536828,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
@@ -33,7 +34,7 @@ function c34536828.disop(e,tp,eg,ep,ev,re,r,rp)
 		and (rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE) and (rc:IsAttack(0) or rc:IsDefense(0))
 			or not (rc:IsFaceup() and rc:IsLocation(LOCATION_MZONE)) and (rc:GetTextAttack()==0 or not rc:IsType(TYPE_LINK) and rc:GetTextDefense()==0))
 		and Duel.IsExistingMatchingCard(c34536828.disfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.SelectEffectYesNo(tp,c,aux.Stringid(34536828,0)) then
+		and Duel.SelectEffectYesNo(tp,c,aux.Stringid(34536828,2)) then
 		Duel.Hint(HINT_CARD,0,34536828)
 		Duel.NegateEffect(ev)
 		c:RegisterFlagEffect(34536828,RESET_PHASE+PHASE_END,0,0)

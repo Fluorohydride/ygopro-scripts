@@ -36,7 +36,7 @@ function c6218704.initial_effect(c)
 	c:RegisterEffect(e3)
 	--set
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(6218704,3))
+	e4:SetDescription(aux.Stringid(6218704,1))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
@@ -46,7 +46,7 @@ function c6218704.initial_effect(c)
 	c:RegisterEffect(e4)
 	--pendulum
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(6218704,4))
+	e5:SetDescription(aux.Stringid(6218704,2))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DESTROYED)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
@@ -106,13 +106,13 @@ function c6218704.pop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_PZONE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6218704,1)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6218704,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local sc=g:Select(tp,1,1,nil):GetFirst()
 			if sc and Duel.SendtoDeck(sc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and sc:IsLocation(LOCATION_EXTRA) and sc:IsControler(tp)
 				and sc:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,sc)>0
-				and Duel.SelectYesNo(tp,aux.Stringid(6218704,2)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(6218704,4)) then
 				Duel.BreakEffect()
 				Duel.SpecialSummon(sc,0,tp,tp,true,false,POS_FACEUP)
 			end

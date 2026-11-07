@@ -66,7 +66,7 @@ function s.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(1-tp,3)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and g:IsExists(s.spfilter,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:FilterSelect(tp,s.spfilter,1,1,nil,e,tp)
 		if sg:GetCount()>0 then

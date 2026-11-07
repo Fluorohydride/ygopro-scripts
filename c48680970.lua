@@ -9,6 +9,7 @@ function c48680970.initial_effect(c)
 	c:RegisterEffect(e1)
 	--instant
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(48680970,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -28,6 +29,7 @@ function c48680970.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(48680970,2))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_LEAVE_FIELD)
@@ -49,11 +51,11 @@ function c48680970.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(48680970,1),aux.Stringid(48680970,2))
+		op=Duel.SelectOption(tp,aux.Stringid(48680970,3),aux.Stringid(48680970,4))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(48680970,1))
+		op=Duel.SelectOption(tp,aux.Stringid(48680970,3))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(48680970,2))+1
+		op=Duel.SelectOption(tp,aux.Stringid(48680970,4))+1
 	end
 	e:SetLabel(op)
 	if op==0 then

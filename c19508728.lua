@@ -2,6 +2,7 @@
 function c19508728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(19508728,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -18,6 +19,7 @@ function c19508728.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(19508728,1))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
@@ -84,7 +86,7 @@ function c19508728.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c19508728.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		local opt=Duel.SelectOption(tp,aux.Stringid(19508728,0),aux.Stringid(19508728,1))
+		local opt=Duel.SelectOption(tp,aux.Stringid(19508728,2),aux.Stringid(19508728,3))
 		Duel.SendtoDeck(e:GetHandler(),nil,opt,REASON_EFFECT)
 	end
 end

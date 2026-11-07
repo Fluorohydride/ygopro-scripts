@@ -2,6 +2,7 @@
 function c79400597.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(79400597,0))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -11,6 +12,7 @@ function c79400597.initial_effect(c)
 	c:RegisterEffect(e1)
 	--banish
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(79400597,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCategory(CATEGORY_REMOVE)
 	e2:SetCode(EVENT_BATTLED)
@@ -21,6 +23,7 @@ function c79400597.initial_effect(c)
 	c:RegisterEffect(e2)
 	--recycle
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(79400597,2))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DESTROYED)
@@ -36,7 +39,7 @@ end
 function c79400597.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.IsExistingMatchingCard(c79400597.costfilter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(79400597,0)) then
+		and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(79400597,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,c79400597.costfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Remove(g,POS_FACEUP,REASON_COST)
@@ -75,7 +78,7 @@ end
 function c79400597.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and c79400597.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c79400597.filter,tp,LOCATION_REMOVED,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79400597,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79400597,4))
 	local g=Duel.SelectTarget(tp,c79400597.filter,tp,LOCATION_REMOVED,0,1,3,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end

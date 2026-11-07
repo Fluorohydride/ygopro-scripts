@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -15,6 +16,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--deckdes
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -28,6 +30,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to grave deckdes
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetCategory(CATEGORY_DECKDES)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_TO_GRAVE)
@@ -76,13 +79,13 @@ function s.ddop(e,tp,eg,ep,ev,re,r,rp)
 	if not b1 and not b2 then return end
 	local opt=0
 	if b1 and not b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(id,1))
+		opt=Duel.SelectOption(tp,aux.Stringid(id,3))
 	end
 	if not b1 and b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(id,2))+1
+		opt=Duel.SelectOption(tp,aux.Stringid(id,4))+1
 	end
 	if b1 and b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))
+		opt=Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,4))
 	end
 	if opt==0 then
 		Duel.DiscardDeck(tp,3,REASON_EFFECT)

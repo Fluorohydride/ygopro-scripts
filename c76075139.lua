@@ -24,6 +24,7 @@ function c76075139.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pzone effect
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(76075139,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_PZONE)
 	e3:SetCountLimit(1,76075139)
@@ -32,6 +33,7 @@ function c76075139.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to hand
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(76075139,1))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_DAMAGE+CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -86,13 +88,13 @@ function c76075139.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(76075139,0))
+		s=Duel.SelectOption(tp,aux.Stringid(76075139,3))
 	end
 	if not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(76075139,1))+1
+		s=Duel.SelectOption(tp,aux.Stringid(76075139,4))+1
 	end
 	if b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(76075139,0),aux.Stringid(76075139,1))
+		s=Duel.SelectOption(tp,aux.Stringid(76075139,3),aux.Stringid(76075139,4))
 	end
 	e:SetLabel(s)
 	if s==0 then

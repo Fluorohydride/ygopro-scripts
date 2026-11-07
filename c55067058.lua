@@ -5,7 +5,7 @@ function c55067058.initial_effect(c)
 	c:EnableReviveLimit()
 	--remove overlay replace
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(55067058,0))
+	e1:SetDescription(aux.Stringid(55067058,1))
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_OVERLAY_REMOVE_REPLACE)
 	e1:SetRange(LOCATION_MZONE)

@@ -8,6 +8,7 @@ function c21648584.initial_effect(c)
 	c:RegisterEffect(e1)
 	--no damage
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(21648584,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_FREE_CHAIN)

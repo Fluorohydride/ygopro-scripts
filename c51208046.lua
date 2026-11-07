@@ -2,6 +2,7 @@
 function c51208046.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(51208046,0))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -20,7 +21,7 @@ function c51208046.initial_effect(c)
 	e2:SetOperation(c51208046.spop)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetDescription(aux.Stringid(51208046,2))
+	e3:SetDescription(aux.Stringid(51208046,4))
 	e3:SetCountLimit(1,51208047)
 	e3:SetCondition(c51208046.spcon2)
 	c:RegisterEffect(e3)
@@ -53,7 +54,7 @@ function c51208046.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51208046.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c51208046.thfilter,tp,LOCATION_GRAVE,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(51208046,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(51208046,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

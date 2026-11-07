@@ -14,7 +14,7 @@ function c32446630.initial_effect(c)
 	c:RegisterEffect(e1)
 	--token
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(32446630,0))
+	e2:SetDescription(aux.Stringid(32446630,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

@@ -2,7 +2,7 @@
 function c95923441.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(95923441,1))
+	e1:SetDescription(aux.Stringid(95923441,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_HAND+LOCATION_MZONE,0)
@@ -12,7 +12,7 @@ function c95923441.initial_effect(c)
 	c:RegisterEffect(e1)
 	--field
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(95923441,0))
+	e2:SetDescription(aux.Stringid(95923441,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)

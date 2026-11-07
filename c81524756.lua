@@ -13,7 +13,7 @@ function c81524756.initial_effect(c)
 	c:RegisterEffect(e1)
 	--double damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(81524756,0))
+	e2:SetDescription(aux.Stringid(81524756,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)

@@ -34,7 +34,7 @@ function c40044918.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local sel=e:GetLabel()
 	if sel==3 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40044918,0))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40044918,3))
 		sel=Duel.SelectOption(tp,aux.Stringid(40044918,1),aux.Stringid(40044918,2))+1
 	elseif sel==1 then
 		Duel.SelectOption(tp,aux.Stringid(40044918,1))

@@ -22,7 +22,7 @@ function c26420373.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(26420373,3))
+	e3:SetDescription(aux.Stringid(26420373,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -56,9 +56,9 @@ function c26420373.scop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	local sel=0
 	if c:GetLeftScale()==1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(26420373,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(26420373,4))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(26420373,1),aux.Stringid(26420373,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(26420373,4),aux.Stringid(26420373,5))
 	end
 	if sel==1 then
 		ct=-math.min(ct,c:GetLeftScale()-1)

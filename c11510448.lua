@@ -1,7 +1,7 @@
 --十二獣タイグリス
 function c11510448.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,4,3,c11510448.ovfilter,aux.Stringid(11510448,0),3,c11510448.xyzop)
+	aux.AddXyzProcedure(c,nil,4,3,c11510448.ovfilter,aux.Stringid(11510448,3),3,c11510448.xyzop)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)

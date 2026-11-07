@@ -7,6 +7,7 @@ function c60158866.initial_effect(c)
 	c:RegisterEffect(e1)
 	--choose
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(60158866,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)
@@ -40,13 +41,13 @@ function c60158866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.IsExistingMatchingCard(c60158866.disfilter,tp,0,LOCATION_MZONE,1,nil,tc:GetAttack())
 	local b2=tc:GetOverlayGroup():GetCount()>0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(60158866,0))
+		s=Duel.SelectOption(tp,aux.Stringid(60158866,3))
 	end
 	if not b1 and b2 then
 		s=Duel.SelectOption(tp,aux.Stringid(60158866,1))+1
 	end
 	if b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(60158866,0),aux.Stringid(60158866,1))
+		s=Duel.SelectOption(tp,aux.Stringid(60158866,3),aux.Stringid(60158866,1))
 	end
 	e:SetLabel(s)
 	if s==0 then

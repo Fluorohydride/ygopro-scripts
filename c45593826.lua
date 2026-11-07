@@ -21,7 +21,7 @@ function c45593826.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to deck top
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(45593826,1))
+	e3:SetDescription(aux.Stringid(45593826,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_TO_GRAVE)
@@ -56,7 +56,7 @@ function c45593826.dttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0xb1) end
 end
 function c45593826.dtop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(45593826,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(45593826,3))
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0xb1)
 	local tc=g:GetFirst()
 	if tc then

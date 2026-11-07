@@ -2,10 +2,11 @@
 function c93854893.initial_effect(c)
 	c:SetSPSummonOnce(93854893)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,8,2,c93854893.ovfilter,aux.Stringid(93854893,0))
+	aux.AddXyzProcedure(c,nil,8,2,c93854893.ovfilter,aux.Stringid(93854893,3))
 	c:EnableReviveLimit()
 	--effect
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(93854893,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -35,7 +36,7 @@ function c93854893.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local off=1
 	local ops,opval={},{}
 	if b1 then
-		ops[off]=aux.Stringid(93854893,1)
+		ops[off]=aux.Stringid(93854893,4)
 		opval[off]=0
 		off=off+1
 	end

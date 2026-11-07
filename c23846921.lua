@@ -4,7 +4,7 @@ function c23846921.initial_effect(c)
 	aux.EnableArcanaCoin(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS)
 	--coin effect
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(23846921,1))
+	e1:SetDescription(aux.Stringid(23846921,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_PHASE+PHASE_END)

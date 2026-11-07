@@ -2,6 +2,7 @@
 function c66322203.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(66322203,0))
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -12,6 +13,7 @@ function c66322203.initial_effect(c)
 	c:RegisterEffect(e1)
 	--grave
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(66322203,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,66322204)

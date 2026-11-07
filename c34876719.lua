@@ -12,7 +12,7 @@ function c34876719.initial_effect(c)
 	c:RegisterEffect(e1)
 	--overlay
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(34876719,0))
+	e2:SetDescription(aux.Stringid(34876719,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)
@@ -55,7 +55,7 @@ function c34876719.ovop(e,tp,eg,ep,ev,re,r,rp)
 	if #mg==0 then return end
 	Duel.Overlay(c,mg)
 	local g=Duel.GetMatchingGroup(c34876719.ovfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,c)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(34876719,1)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(34876719,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local tg=g:Select(tp,1,1,nil)

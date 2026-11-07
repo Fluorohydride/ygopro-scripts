@@ -2,7 +2,7 @@
 function c85004150.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon
-	aux.AddXyzProcedure(c,c85004150.mfilter,7,2,c85004150.ovfilter,aux.Stringid(85004150,0),99,c85004150.xyzop)
+	aux.AddXyzProcedure(c,c85004150.mfilter,7,2,c85004150.ovfilter,aux.Stringid(85004150,2),99,c85004150.xyzop)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(85004150,1))

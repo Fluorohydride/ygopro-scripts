@@ -2,6 +2,7 @@
 function c53363708.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(53363708,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
@@ -26,7 +27,7 @@ function c53363708.initial_effect(c)
 	c:RegisterEffect(e3)
 	--position
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(53363708,0))
+	e4:SetDescription(aux.Stringid(53363708,1))
 	e4:SetCategory(CATEGORY_POSITION+CATEGORY_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_PHASE+PHASE_BATTLE_START)

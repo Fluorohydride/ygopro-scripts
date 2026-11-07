@@ -17,6 +17,7 @@ function c33541430.initial_effect(c)
 	c:RegisterEffect(e2)
 	--synchro level
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(33541430,3))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
 	e3:SetTarget(c33541430.syntg)
@@ -54,7 +55,7 @@ function c33541430.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-				and Duel.SelectYesNo(tp,aux.Stringid(33541430,1))
+				and Duel.SelectYesNo(tp,aux.Stringid(33541430,2))
 				and Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP) then
 				local e1=Effect.CreateEffect(e:GetHandler())
 				e1:SetType(EFFECT_TYPE_SINGLE)

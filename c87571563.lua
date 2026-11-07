@@ -2,6 +2,7 @@
 function c87571563.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(87571563,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,87571563+EFFECT_COUNT_CODE_OATH)
@@ -9,7 +10,7 @@ function c87571563.initial_effect(c)
 	c:RegisterEffect(e1)
 	--move
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(87571563,0))
+	e2:SetDescription(aux.Stringid(87571563,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)
@@ -25,7 +26,7 @@ function c87571563.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c87571563.spfilter(chkc,e,tp) end
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(c87571563.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(87571563,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(87571563,3)) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_GRAVE_ACTION+CATEGORY_GRAVE_SPSUMMON)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c87571563.activate)

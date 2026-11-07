@@ -2,6 +2,7 @@
 function c52962804.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(52962804,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,52962804+EFFECT_COUNT_CODE_OATH)
@@ -24,7 +25,7 @@ function c52962804.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c52962804.thfilter(chkc) end
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(c52962804.thfilter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(52962804,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(52962804,2)) then
 		e:SetCategory(CATEGORY_TOHAND)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c52962804.activate)

@@ -24,7 +24,7 @@ function c30128445.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon or self
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(30128445,1))
+	e3:SetDescription(aux.Stringid(30128445,2))
 	e3:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -80,7 +80,7 @@ function c30128445.tdop(e,tp,eg,ep,ev,re,r,rp)
 			and g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)>0
 			and c:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and Duel.SelectYesNo(tp,aux.Stringid(30128445,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(30128445,3)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end

@@ -23,6 +23,7 @@ function c32453837.initial_effect(c)
 	c:RegisterEffect(e3)
 	--counter
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(32453837,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e4:SetRange(LOCATION_MZONE)
@@ -44,12 +45,12 @@ function c32453837.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local off=1
 	local ops,opval={},{}
 	if b1 then
-		ops[off]=aux.Stringid(32453837,0)
+		ops[off]=aux.Stringid(32453837,3)
 		opval[off]=0
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(32453837,1)
+		ops[off]=aux.Stringid(32453837,4)
 		opval[off]=1
 		off=off+1
 	end

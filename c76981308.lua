@@ -7,6 +7,7 @@ function c76981308.initial_effect(c)
 	c:RegisterEffect(e0)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(76981308,0))
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_SZONE)
@@ -85,7 +86,7 @@ function c76981308.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76981308.atkfilter,tp,LOCATION_HAND,0,1,nil) end
 end
 function c76981308.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(76981308,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(76981308,3))
 	local g=Duel.SelectMatchingCard(tp,c76981308.atkfilter,tp,LOCATION_HAND,0,1,99,nil)
 	if #g==0 then return end
 	for tc in aux.Next(g) do

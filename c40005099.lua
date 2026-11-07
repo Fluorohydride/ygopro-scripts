@@ -8,6 +8,7 @@ function c40005099.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon&tograve
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(40005099,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_FZONE)
@@ -44,9 +45,9 @@ function c40005099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(40005099,0),aux.Stringid(40005099,1))
+		op=Duel.SelectOption(tp,aux.Stringid(40005099,2),aux.Stringid(40005099,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(40005099,0))
+		op=Duel.SelectOption(tp,aux.Stringid(40005099,2))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(40005099,1))+1
 	end

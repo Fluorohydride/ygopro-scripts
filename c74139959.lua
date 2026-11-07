@@ -33,7 +33,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,0))
+	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
@@ -98,7 +98,7 @@ function s.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[l]=l*1000
 		l=l+1
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 	local announce=Duel.AnnounceNumber(tp,table.unpack(t))
 	e:SetLabel(announce)
 	Duel.PayLPCost(tp,announce,true)

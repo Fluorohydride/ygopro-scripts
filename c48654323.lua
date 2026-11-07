@@ -24,7 +24,7 @@ function c48654323.initial_effect(c)
 	c:RegisterEffect(e2)
 	--tograve
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(48654323,1))
+	e3:SetDescription(aux.Stringid(48654323,2))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -62,7 +62,7 @@ end
 function c48654323.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c48654323.atkfilter,nil,e)
 	if #g==2 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48654323,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48654323,3))
 		local hc=g:FilterSelect(tp,c48654323.atkupfilter,1,1,nil,g):GetFirst()
 		if not hc then return end
 		local tc=g:Filter(aux.TRUE,hc):GetFirst()

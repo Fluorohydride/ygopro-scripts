@@ -17,7 +17,7 @@ function c35252119.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to grave
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(35252119,0))
+	e3:SetDescription(aux.Stringid(35252119,1))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

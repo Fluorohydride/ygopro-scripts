@@ -19,7 +19,7 @@ function c82738277.initial_effect(c)
 	c:RegisterEffect(e2)
 	--return
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(82738277,1))
+	e3:SetDescription(aux.Stringid(82738277,2))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -65,7 +65,7 @@ function c82738277.retop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFacedown()
 		and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local g=Duel.GetMatchingGroup(Card.IsSSetable,tp,LOCATION_HAND,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(82738277,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(82738277,3)) then
 			Duel.ShuffleHand(tp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)

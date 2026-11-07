@@ -2,6 +2,7 @@
 function c11481610.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(11481610,0))
 	e1:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -45,7 +46,7 @@ function c11481610.activate(e,tp,eg,ep,ev,re,r,rp)
 		local lsc=lc:GetLeftScale()
 		local rsc=rc:GetRightScale()
 		if lsc>rsc then lsc,rsc=rsc,lsc end
-		if Duel.IsExistingMatchingCard(c11481610.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,lsc,rsc) and Duel.SelectYesNo(tp,aux.Stringid(11481610,0)) then
+		if Duel.IsExistingMatchingCard(c11481610.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,lsc,rsc) and Duel.SelectYesNo(tp,aux.Stringid(11481610,1)) then
 			Duel.BreakEffect()
 			ct=math.min(ct,ft)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end

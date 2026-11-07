@@ -24,7 +24,7 @@ function c63612442.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local t1=c:GetFlagEffect(63612442)
 	local t2=c:GetFlagEffect(63612443)
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63612442,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63612442,4))
 	if t1==0 and t2==0 then
 		op=Duel.SelectOption(tp,aux.Stringid(63612442,1),aux.Stringid(63612442,2))
 	elseif t1==0 then op=Duel.SelectOption(tp,aux.Stringid(63612442,1))

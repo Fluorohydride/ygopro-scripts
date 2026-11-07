@@ -2,6 +2,7 @@
 function c197042.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(197042,0))
 	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -67,7 +68,7 @@ function c197042.activate(e,tp,eg,ep,ev,re,r,rp)
 		local b1=Duel.IsExistingMatchingCard(c197042.xyzfilter,tp,LOCATION_EXTRA,0,1,nil)
 		local b2=Duel.GetFlagEffect(tp,197042)>0 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
 		local op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(197042,0)},
+			{b1,aux.Stringid(197042,3)},
 			{b2,aux.Stringid(197042,1)},
 			{true,aux.Stringid(197042,2)})
 		if op==1 then

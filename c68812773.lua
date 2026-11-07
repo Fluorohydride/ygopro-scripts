@@ -2,6 +2,7 @@
 function c68812773.initial_effect(c)
 	--summon,flip
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(68812773,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -14,7 +15,7 @@ function c68812773.initial_effect(c)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(68812773,0))
+	e3:SetDescription(aux.Stringid(68812773,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)

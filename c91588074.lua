@@ -24,7 +24,7 @@ function c91588074.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to deck
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(91588074,0))
+	e4:SetDescription(aux.Stringid(91588074,1))
 	e4:SetCategory(CATEGORY_TODECK)
 	e4:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)

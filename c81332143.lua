@@ -17,9 +17,9 @@ function c81332143.activate(e,tp,eg,ep,ev,re,r,rp)
 		opt=1
 	end
 	if opt==0 then
-		opt=Duel.SelectOption(1-tp,aux.Stringid(81332143,0),aux.Stringid(81332143,1))
+		opt=Duel.SelectOption(1-tp,aux.Stringid(81332143,3),aux.Stringid(81332143,1))
 	else
-		opt=Duel.SelectOption(1-tp,aux.Stringid(81332143,0))
+		opt=Duel.SelectOption(1-tp,aux.Stringid(81332143,3))
 	end
 	if opt==0 then
 		local lp=math.ceil((Duel.GetLP(tp)+Duel.GetLP(1-tp))/2)

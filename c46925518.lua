@@ -17,6 +17,7 @@ function c46925518.initial_effect(c)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(46925518,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_MSET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_FLIP)
@@ -66,7 +67,7 @@ function c46925518.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local sg=Duel.GetMatchingGroup(c46925518.spfilter,tp,LOCATION_DECK,0,nil,e,tp,ct)
-	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(46925518,1)) then
+	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(46925518,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)

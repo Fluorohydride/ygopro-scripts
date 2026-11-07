@@ -2,7 +2,7 @@
 function c68815132.initial_effect(c)
 	--return
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(68815132,0))
+	e1:SetDescription(aux.Stringid(68815132,1))
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
@@ -31,7 +31,7 @@ function c68815132.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		if Duel.IsExistingMatchingCard(c68815132.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
-			and Duel.SelectYesNo(tp,aux.Stringid(68815132,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(68815132,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local g=Duel.SelectMatchingCard(tp,c68815132.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)

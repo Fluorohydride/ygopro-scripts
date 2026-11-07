@@ -31,7 +31,7 @@ function c26302522.eqop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 	--destroy&damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(26302522,1))
+	e2:SetDescription(aux.Stringid(26302522,2))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)

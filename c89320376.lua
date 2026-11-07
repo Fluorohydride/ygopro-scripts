@@ -2,6 +2,7 @@
 function c89320376.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(89320376,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c89320376.target)
@@ -9,7 +10,7 @@ function c89320376.initial_effect(c)
 	--pos (face-down)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_POSITION)
-	e2:SetDescription(aux.Stringid(89320376,0))
+	e2:SetDescription(aux.Stringid(89320376,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -20,7 +21,7 @@ function c89320376.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pos (face-up)
 	local e3=e2:Clone()
-	e3:SetDescription(aux.Stringid(89320376,1))
+	e3:SetDescription(aux.Stringid(89320376,3))
 	e3:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e3:SetCost(c89320376.poscost)
 	e3:SetTarget(c89320376.postg2)
@@ -45,11 +46,11 @@ function c89320376.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
 		local op=0
 		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(89320376,0),aux.Stringid(89320376,1))
+			op=Duel.SelectOption(tp,aux.Stringid(89320376,2),aux.Stringid(89320376,3))
 		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(89320376,0))
+			op=Duel.SelectOption(tp,aux.Stringid(89320376,2))
 		else
-			op=Duel.SelectOption(tp,aux.Stringid(89320376,1))+1
+			op=Duel.SelectOption(tp,aux.Stringid(89320376,3))+1
 		end
 		e:SetLabel(op)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)

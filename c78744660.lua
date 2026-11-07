@@ -85,7 +85,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(sg,REASON_EFFECT)~=0
 		and c:IsRelateToChain() and c:GetSequence()>4
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.rmfilter),tp,0,LOCATION_GRAVE,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.rmfilter),tp,0,LOCATION_GRAVE,nil)
 		if g:GetCount()>0 then

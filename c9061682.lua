@@ -16,7 +16,7 @@ function c9061682.initial_effect(c)
 	c:RegisterEffect(e1)
 	--SpecialSummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(9061682,2))
+	e2:SetDescription(aux.Stringid(9061682,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -32,7 +32,7 @@ function c9061682.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9061682.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 and Duel.IsChainDisablable(0)
-		and Duel.SelectYesNo(1-tp,aux.Stringid(9061682,1)) then
+		and Duel.SelectYesNo(1-tp,aux.Stringid(9061682,2)) then
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 		Duel.NegateEffect(0)
 		return

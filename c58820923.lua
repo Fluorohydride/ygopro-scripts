@@ -1,7 +1,7 @@
 --No.95 ギャラクシーアイズ・ダークマター・ドラゴン
 function c58820923.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,9,3,c58820923.ovfilter,aux.Stringid(58820923,0))
+	aux.AddXyzProcedure(c,nil,9,3,c58820923.ovfilter,aux.Stringid(58820923,2))
 	c:EnableReviveLimit()
 	--xyzlimit
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +12,7 @@ function c58820923.initial_effect(c)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(58820923,1))
+	e2:SetDescription(aux.Stringid(58820923,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c58820923.rmcon)
@@ -22,7 +22,7 @@ function c58820923.initial_effect(c)
 	c:RegisterEffect(e2)
 	--multi attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(58820923,2))
+	e3:SetDescription(aux.Stringid(58820923,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c58820923.atkcon)

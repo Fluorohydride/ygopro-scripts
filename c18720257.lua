@@ -20,7 +20,7 @@ function c18720257.initial_effect(c)
 	c:RegisterEffect(e2)
 	--summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(18720257,0))
+	e3:SetDescription(aux.Stringid(18720257,2))
 	e3:SetCategory(CATEGORY_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_FZONE)
@@ -35,7 +35,7 @@ function c18720257.tffilter(c,tp)
 end
 function c18720257.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c18720257.tffilter,tp,LOCATION_DECK,0,nil,tp)
-	if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(18720257,1)) then
+	if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(18720257,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.MoveToField(sg:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEUP,true)

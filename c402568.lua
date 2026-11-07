@@ -7,7 +7,7 @@ function c402568.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act limit
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(402568,0))
+	e2:SetDescription(aux.Stringid(402568,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_BATTLE_DAMAGE)
 	e2:SetCondition(c402568.condition)

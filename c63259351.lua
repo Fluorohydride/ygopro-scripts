@@ -18,7 +18,7 @@ function c63259351.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetDescription(aux.Stringid(63259351,0))
+	e3:SetDescription(aux.Stringid(63259351,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCost(c63259351.spcost)

@@ -39,6 +39,7 @@ function c67234805.initial_effect(c)
 	c:RegisterEffect(e4)
 	--remove counter
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(67234805,0))
 	e5:SetCategory(CATEGORY_COUNTER)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_PHASE+PHASE_END)

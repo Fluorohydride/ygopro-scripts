@@ -2,6 +2,7 @@
 function c99927991.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(99927991,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,7 +27,7 @@ function c99927991.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmDecktop(tp,count)
 		local g=Duel.GetDecktopGroup(tp,count)
 		local ct=g:GetCount()
-		if ct>0 and g:FilterCount(c99927991.thfilter,nil,ct)>0 and Duel.SelectYesNo(tp,aux.Stringid(99927991,0)) then
+		if ct>0 and g:FilterCount(c99927991.thfilter,nil,ct)>0 and Duel.SelectYesNo(tp,aux.Stringid(99927991,1)) then
 			Duel.DisableShuffleCheck()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=g:FilterSelect(tp,c99927991.thfilter,1,1,nil,ct)

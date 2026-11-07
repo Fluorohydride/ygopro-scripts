@@ -2,6 +2,7 @@
 function c75952542.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(75952542,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c75952542.target)
@@ -9,6 +10,7 @@ function c75952542.initial_effect(c)
 	c:RegisterEffect(e1)
 	--set
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(75952542,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetProperty(EFFECT_FLAG_BOTH_SIDE+EFFECT_FLAG_CARD_TARGET)
@@ -50,7 +52,7 @@ end
 function c75952542.sttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c75952542.stfilter(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c75952542.stfilter,tp,0,LOCATION_MZONE,1,nil,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(75952542,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(75952542,2))
 	Duel.SelectTarget(tp,c75952542.stfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 end
 function c75952542.stop(e,tp,eg,ep,ev,re,r,rp)

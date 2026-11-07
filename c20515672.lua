@@ -14,7 +14,7 @@ function c20515672.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(20515672,0))
+	e2:SetDescription(aux.Stringid(20515672,1))
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -63,7 +63,7 @@ function c20515672.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		local g=Duel.GetMatchingGroup(c20515672.spfilter,tp,LOCATION_REMOVED,0,nil,e,tp)
-		if ft>0 and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(20515672,1)) then
+		if ft>0 and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(20515672,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)

@@ -13,7 +13,7 @@ function c92067220.initial_effect(c)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(92067220,2))
+	e2:SetDescription(aux.Stringid(92067220,1))
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -52,7 +52,7 @@ function c92067220.spop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SendtoHand(g2,tp,REASON_EFFECT)
 				Duel.ConfirmCards(1-tp,g2)
 				if Duel.IsExistingMatchingCard(Card.IsSummonable,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,true,nil)
-					and Duel.SelectYesNo(tp,aux.Stringid(92067220,1)) then
+					and Duel.SelectYesNo(tp,aux.Stringid(92067220,2)) then
 					Duel.BreakEffect()
 					Duel.ShuffleHand(tp)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)

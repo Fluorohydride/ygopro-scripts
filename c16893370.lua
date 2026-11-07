@@ -72,7 +72,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if #g1>0 then
-		ops[off]=aux.Stringid(id,2)
+		ops[off]=aux.Stringid(id,4)
 		opval[off]=0
 		off=off+1
 	end

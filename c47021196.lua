@@ -18,6 +18,7 @@ function c47021196.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy/disable
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(47021196,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -55,7 +56,7 @@ function c47021196.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ops={}
 	local opval={}
 	if #b1>0 then
-		ops[off]=aux.Stringid(47021196,1)
+		ops[off]=aux.Stringid(47021196,3)
 		opval[off]=0
 		off=off+1
 	end

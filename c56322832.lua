@@ -65,7 +65,7 @@ function s.negcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsChainDisablable(ev) and not Duel.IsChainDisabled(ev)
 end
 function s.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(tp,id)==0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+	if Duel.GetFlagEffect(tp,id)==0 and Duel.SelectYesNo(tp,aux.Stringid(id,5)) then
 		Duel.Hint(HINT_CARD,0,id)
 		Duel.RegisterFlagEffect(tp,id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		if Duel.NegateEffect(ev) then

@@ -2,6 +2,7 @@
 function c8038143.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(8038143,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_TODECK)
 	e1:SetCode(EVENT_CHAINING)
@@ -11,7 +12,7 @@ function c8038143.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(8038143,0))
+	e2:SetDescription(aux.Stringid(8038143,1))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c8038143.handcon)

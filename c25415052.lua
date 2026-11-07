@@ -56,7 +56,7 @@ function c25415052.tdop(e,tp,eg,ep,ev,re,r,rp)
 		if not sg2:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
 		local tg=Duel.GetMatchingGroup(c25415052.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		if tg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(25415052,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(25415052,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local tc=tg:Select(tp,1,1,nil)

@@ -25,7 +25,7 @@ function c91027843.initial_effect(c)
 	c:RegisterEffect(e3)
 	--equip
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(91027843,1))
+	e4:SetDescription(aux.Stringid(91027843,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e4:SetRange(LOCATION_FZONE)

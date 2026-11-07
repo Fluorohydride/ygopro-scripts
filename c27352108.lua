@@ -2,6 +2,7 @@
 function c27352108.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(27352108,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -12,6 +13,7 @@ function c27352108.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(27352108,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
@@ -74,7 +76,7 @@ function c27352108.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c27352108.thfilter2),1-tp,LOCATION_GRAVE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(27352108,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(27352108,2)) then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 			local sg=g:Select(1-tp,1,1,nil)
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)

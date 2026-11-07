@@ -17,7 +17,7 @@ function c79559912.initial_effect(c)
 	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(79559912,2))
+	e2:SetDescription(aux.Stringid(79559912,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
@@ -51,7 +51,7 @@ function c79559912.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
 		and Duel.Destroy(eg,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup()
 		and Duel.IsExistingMatchingCard(c79559912.atkfilter,tp,LOCATION_MZONE,0,1,c)
-		and Duel.SelectYesNo(tp,aux.Stringid(79559912,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(79559912,2)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g=Duel.SelectMatchingCard(tp,c79559912.atkfilter,tp,LOCATION_MZONE,0,1,1,c)

@@ -2,6 +2,7 @@
 function c86686671.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(86686671,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,86686671+EFFECT_COUNT_CODE_OATH)
@@ -27,12 +28,12 @@ function c86686671.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local op=0
 	if b1 and b2 then
 		if Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,3,nil,70095154) then
-			op=Duel.SelectOption(tp,aux.Stringid(86686671,0),aux.Stringid(86686671,1),aux.Stringid(86686671,2))
+			op=Duel.SelectOption(tp,aux.Stringid(86686671,3),aux.Stringid(86686671,1),aux.Stringid(86686671,2))
 		else
-			op=Duel.SelectOption(tp,aux.Stringid(86686671,0),aux.Stringid(86686671,1))
+			op=Duel.SelectOption(tp,aux.Stringid(86686671,3),aux.Stringid(86686671,1))
 		end
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(86686671,0))
+		op=Duel.SelectOption(tp,aux.Stringid(86686671,3))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(86686671,1))+1
 	end

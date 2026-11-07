@@ -2,7 +2,7 @@
 function c82243738.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(82243738,0))
+	e1:SetDescription(aux.Stringid(82243738,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
@@ -14,7 +14,7 @@ function c82243738.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Tribute Summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(82243738,1))
+	e2:SetDescription(aux.Stringid(82243738,3))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_EXTRA_SUMMON_COUNT)
 	e2:SetRange(LOCATION_MZONE)

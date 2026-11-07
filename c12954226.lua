@@ -5,7 +5,7 @@ function c12954226.initial_effect(c)
 	c:EnableReviveLimit()
 	--extra summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(12954226,0))
+	e1:SetDescription(aux.Stringid(12954226,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(LOCATION_HAND+LOCATION_MZONE,0)

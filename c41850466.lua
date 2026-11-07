@@ -3,6 +3,7 @@ function c41850466.initial_effect(c)
 	aux.AddCodeList(c,79747096,41418852,89477759)
 	--Activate/Special Summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(41850466,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

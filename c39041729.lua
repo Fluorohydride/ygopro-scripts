@@ -2,6 +2,7 @@
 function c39041729.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(39041729,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -37,7 +38,7 @@ function c39041729.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if g:IsExists(c39041729.spfilter,1,nil,e,tp,i) then lvt[pc]=i pc=pc+1 end
 	end
 	lvt[pc]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39041729,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39041729,1))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	local rg=Duel.GetMatchingGroup(c39041729.cfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

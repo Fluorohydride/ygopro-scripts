@@ -2,6 +2,7 @@
 function c50675040.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)
+	e0:SetDescription(aux.Stringid(50675040,0))
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	e0:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
@@ -10,7 +11,7 @@ function c50675040.initial_effect(c)
 	c:RegisterEffect(e0)
 	--to hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(50675040,0))
+	e1:SetDescription(aux.Stringid(50675040,1))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_START)

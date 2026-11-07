@@ -61,7 +61,7 @@ function c67288539.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67288539.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(67288539,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(67288539,0))
+	c:RegisterFlagEffect(67288539,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(67288539,3))
 end
 function c67288539.valcheck(e,c)
 	local g=c:GetMaterial()

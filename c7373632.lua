@@ -3,6 +3,7 @@ function c7373632.initial_effect(c)
 	aux.AddCodeList(c,21208154,62180201,57793869)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(7373632,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
@@ -78,7 +79,7 @@ function c7373632.activate(e,tp,eg,ep,ev,re,r,rp)
 			e6:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e6)
 		end
-		tc:RegisterFlagEffect(7373632,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(7373632,0))
+		tc:RegisterFlagEffect(7373632,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(7373632,1))
 	end
 end
 function c7373632.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)

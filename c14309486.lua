@@ -13,7 +13,7 @@ function c14309486.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(14309486,3))
+	e2:SetDescription(aux.Stringid(14309486,0))
 	e2:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)
@@ -46,9 +46,9 @@ function c14309486.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c14309486.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(14309486,0),aux.Stringid(14309486,1),aux.Stringid(14309486,2))
+		select=Duel.SelectOption(tp,aux.Stringid(14309486,3),aux.Stringid(14309486,1),aux.Stringid(14309486,2))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(14309486,0),aux.Stringid(14309486,2))
+		select=Duel.SelectOption(tp,aux.Stringid(14309486,3),aux.Stringid(14309486,2))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
 		select=Duel.SelectOption(tp,aux.Stringid(14309486,1),aux.Stringid(14309486,2))+1

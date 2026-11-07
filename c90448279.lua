@@ -1,11 +1,11 @@
 --天霆號アーゼウス
 function c90448279.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,12,2,c90448279.ovfilter,aux.Stringid(90448279,0),2,c90448279.xyzop)
+	aux.AddXyzProcedure(c,nil,12,2,c90448279.ovfilter,aux.Stringid(90448279,2),2,c90448279.xyzop)
 	c:EnableReviveLimit()
 	--to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(90448279,1))
+	e1:SetDescription(aux.Stringid(90448279,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -17,7 +17,7 @@ function c90448279.initial_effect(c)
 	c:RegisterEffect(e1)
 	--overlay
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(90448279,2))
+	e2:SetDescription(aux.Stringid(90448279,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)

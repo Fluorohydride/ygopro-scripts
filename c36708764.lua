@@ -2,6 +2,7 @@
 function c36708764.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(36708764,0))
 	e1:SetCategory(CATEGORY_DICE+CATEGORY_DAMAGE+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -32,7 +33,7 @@ function c36708764.activate(e,tp,eg,ep,ev,re,r,rp)
 		local bc=Duel.GetAttackTarget()
 		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_MZONE,0,bc)
 		if g:GetCount()>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36708764,0))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36708764,1))
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			local at=Duel.GetAttacker()
 			if at:IsAttackable() and not at:IsImmuneToEffect(e) and not tc:IsImmuneToEffect(e) then
@@ -44,7 +45,7 @@ function c36708764.activate(e,tp,eg,ep,ev,re,r,rp)
 		local at=Duel.GetAttacker()
 		local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_MZONE,at)
 		if g:GetCount()>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36708764,0))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36708764,1))
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			local at=Duel.GetAttacker()
 			if at:IsAttackable() and not at:IsImmuneToEffect(e) and not tc:IsImmuneToEffect(e) then

@@ -3,7 +3,7 @@ function c42542842.initial_effect(c)
 	c:SetUniqueOnField(1,0,42542842)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(42542842,0))
+	e1:SetDescription(aux.Stringid(42542842,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)

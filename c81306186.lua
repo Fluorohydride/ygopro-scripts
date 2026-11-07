@@ -2,6 +2,7 @@
 function c81306186.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(81306186,0))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -12,6 +13,7 @@ function c81306186.initial_effect(c)
 	c:RegisterEffect(e1)
 	--ritual summon/to hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(81306186,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMING_END_PHASE)
@@ -56,11 +58,11 @@ function c81306186.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=tc:IsAbleToHand()
 	local sel=0
 	if b1 and b2 then
-		sel=Duel.SelectOption(tp,aux.Stringid(81306186,0),aux.Stringid(81306186,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(81306186,2),aux.Stringid(81306186,3))
 	elseif b1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(81306186,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(81306186,2))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(81306186,1))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(81306186,3))+1
 	end
 	if sel==0 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)

@@ -2,6 +2,7 @@
 function c16832845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(16832845,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -58,7 +59,7 @@ function c16832845.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c16832845.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup():Filter(c16832845.spfilter,nil,e,tp)
-		if og:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(16832845,0)) then
+		if og:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(16832845,1)) then
 			Duel.BreakEffect()
 			local sg=og:GetMaxGroup(Card.GetLevel)
 			if sg:GetCount()>1 then

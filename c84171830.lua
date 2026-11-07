@@ -27,7 +27,7 @@ function c84171830.initial_effect(c)
 	c:RegisterEffect(e3)
 	--lv
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(84171830,0))
+	e4:SetDescription(aux.Stringid(84171830,2))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCountLimit(1)
@@ -63,7 +63,7 @@ function c84171830.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84171830.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84171830,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84171830,3))
 	local g=Duel.SelectMatchingCard(tp,c84171830.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,g)

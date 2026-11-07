@@ -89,7 +89,7 @@ function c95856586.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95856586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<=1 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(95856586,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(95856586,3))
 	local dc=Duel.SelectMatchingCard(tp,c95856586.tdfilter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	if dc then
 		Duel.ShuffleDeck(tp)

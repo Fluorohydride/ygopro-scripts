@@ -2,6 +2,7 @@
 function c79861914.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(79861914,3))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c79861914.cost)
@@ -21,7 +22,7 @@ function c79861914.initial_effect(c)
 	c:RegisterEffect(e2)
 	--self destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(79861914,1))
+	e3:SetDescription(aux.Stringid(79861914,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_SZONE)

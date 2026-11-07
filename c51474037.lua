@@ -2,6 +2,7 @@
 function c51474037.initial_effect(c)
 	--change / destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(51474037,0))
 	e1:SetCategory(CATEGORY_POSITION+CATEGORY_MSET+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -32,11 +33,11 @@ function c51474037.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sel
 	local tc2=g2:GetFirst()
 	if tc2:IsAttack(0) then
-		sel=Duel.SelectOption(tp,aux.Stringid(51474037,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(51474037,2))
 	elseif not (check and tc2:IsCanTurnSet()) then
 		sel=Duel.SelectOption(tp,aux.Stringid(51474037,1))+1
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(51474037,0),aux.Stringid(51474037,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(51474037,2),aux.Stringid(51474037,1))
 	end
 	e:SetLabel(sel)
 	if sel==0 then

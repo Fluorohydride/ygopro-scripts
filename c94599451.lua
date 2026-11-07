@@ -17,7 +17,7 @@ function c94599451.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(94599451,0))
+	e3:SetDescription(aux.Stringid(94599451,1))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)
@@ -68,7 +68,7 @@ function c94599451.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		if lvt[i] then lvt[i]=nil lvt[pc]=i pc=pc+1 end
 	end
 	lvt[pc]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94599451,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94599451,3))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	Duel.RemoveCounter(tp,1,0,0x1,lv,REASON_COST)
 	e:SetLabel(lv)

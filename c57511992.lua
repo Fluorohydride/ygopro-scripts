@@ -14,6 +14,7 @@ function c57511992.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(57511992,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
@@ -47,9 +48,9 @@ function c57511992.operation(e,tp,eg,ep,ev,re,r,rp)
 	if b1 or b2 then
 		local s
 		if b1 and b2 then
-			s=Duel.SelectOption(tp,aux.Stringid(57511992,1),aux.Stringid(57511992,2))
+			s=Duel.SelectOption(tp,aux.Stringid(57511992,3),aux.Stringid(57511992,2))
 		elseif b1 then
-			s=Duel.SelectOption(tp,aux.Stringid(57511992,1))
+			s=Duel.SelectOption(tp,aux.Stringid(57511992,3))
 		else
 			s=Duel.SelectOption(tp,aux.Stringid(57511992,2))+1
 		end

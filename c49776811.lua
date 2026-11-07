@@ -10,6 +10,7 @@ function c49776811.initial_effect(c)
 	c:RegisterEffect(e1)
 	--add counter
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(49776811,1))
 	e2:SetCategory(CATEGORY_COUNTER+CATEGORY_DRAW+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
@@ -31,7 +32,7 @@ function c49776811.ctop(e,tp,eg,ep,ev,re,r,rp)
 		c:AddCounter(0x5f,1)
 		local ct=c:GetCounter(0x5f)
 		local dg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_DECK,0,nil,TYPE_MONSTER)
-		if ct==1 and dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(49776811,0)) then
+		if ct==1 and dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(49776811,5)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(49776811,4))
 			local g=dg:Select(tp,1,1,nil)
@@ -42,7 +43,7 @@ function c49776811.ctop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.ConfirmDecktop(tp,1)
 			end
 		end
-		if ct==2 and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(49776811,1)) then
+		if ct==2 and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(49776811,6)) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end

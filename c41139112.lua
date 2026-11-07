@@ -2,6 +2,7 @@
 function c41139112.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(41139112,0))
 	e1:SetCategory(CATEGORY_DICE+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -37,7 +38,7 @@ function c41139112.activate(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.TossDice(tp,1)
 	if d==1 or d==2 then
 		local g=Duel.GetMatchingGroup(c41139112.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			Duel.Summon(tp,tc,true,nil)

@@ -7,6 +7,7 @@ function c40680521.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	--pzone effect
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(40680521,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1,40680521)
@@ -15,6 +16,7 @@ function c40680521.initial_effect(c)
 	c:RegisterEffect(e1)
 	--set
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(40680521,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)
@@ -27,6 +29,7 @@ function c40680521.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pendulum
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(40680521,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DESTROYED)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -53,13 +56,13 @@ function c40680521.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(40680521,0))
+		s=Duel.SelectOption(tp,aux.Stringid(40680521,4))
 	end
 	if not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(40680521,1))+1
+		s=Duel.SelectOption(tp,aux.Stringid(40680521,5))+1
 	end
 	if b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(40680521,0),aux.Stringid(40680521,1))
+		s=Duel.SelectOption(tp,aux.Stringid(40680521,4),aux.Stringid(40680521,5))
 	end
 	e:SetLabel(s)
 	if s==0 then
@@ -74,7 +77,7 @@ function c40680521.pop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 	if e:GetLabel()==1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40680521,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40680521,6))
 		local sc=Duel.SelectMatchingCard(tp,c40680521.pfilter,tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
 		if sc then
 			local seq=sc:GetSequence()

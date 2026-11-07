@@ -2,6 +2,7 @@
 function c22454453.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(22454453,0))
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -21,7 +22,7 @@ function c22454453.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then
 			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		else
-			local opt=Duel.SelectOption(tp,aux.Stringid(22454453,0),aux.Stringid(22454453,1))
+			local opt=Duel.SelectOption(tp,aux.Stringid(22454453,2),aux.Stringid(22454453,1))
 			if opt==0 then
 				Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else

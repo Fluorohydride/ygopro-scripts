@@ -14,7 +14,7 @@ function c43722862.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(43722862,2))
+	e2:SetDescription(aux.Stringid(43722862,1))
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_DELAY)
@@ -62,7 +62,7 @@ function c43722862.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		local g=Duel.GetMatchingGroup(c43722862.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(43722862,1)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(43722862,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)

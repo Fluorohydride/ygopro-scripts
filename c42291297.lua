@@ -20,7 +20,7 @@ function c42291297.initial_effect(c)
 	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(42291297,0))
+	e4:SetDescription(aux.Stringid(42291297,1))
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -32,6 +32,7 @@ function c42291297.initial_effect(c)
 	c:RegisterEffect(e4)
 	--ep effects
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(42291297,2))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_PHASE+PHASE_END)
@@ -63,8 +64,8 @@ function c42291297.eptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local op=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-	if aux.NegateMonsterFilter(c) then op=Duel.SelectOption(tp,aux.Stringid(42291297,1),aux.Stringid(42291297,2))
-	else op=Duel.SelectOption(tp,aux.Stringid(42291297,1)) end
+	if aux.NegateMonsterFilter(c) then op=Duel.SelectOption(tp,aux.Stringid(42291297,3),aux.Stringid(42291297,4))
+	else op=Duel.SelectOption(tp,aux.Stringid(42291297,3)) end
 	if op==0 then
 		e:SetCategory(0)
 	else

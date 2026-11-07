@@ -2,6 +2,7 @@
 function c21623008.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(21623008,0))
 	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -35,7 +36,7 @@ function c21623008.operation(e,tp,eg,ep,ev,re,r,rp)
 		and g1:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)
 		and Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
 		and Duel.IsExistingMatchingCard(c21623008.filter,tp,0,LOCATION_MZONE,1,nil,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(21623008,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(21623008,1)) then
 		local g=Duel.GetMatchingGroup(c21623008.filter,tp,0,LOCATION_MZONE,nil,tp)
 		Duel.DisableShuffleCheck(false)
 		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)

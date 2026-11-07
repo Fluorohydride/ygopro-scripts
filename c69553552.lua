@@ -16,6 +16,7 @@ function c69553552.initial_effect(c)
 	c:RegisterEffect(e2)
 	--banish
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(69553552,1))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DAMAGE)

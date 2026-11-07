@@ -24,7 +24,7 @@ function c96897184.initial_effect(c)
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(96897184,0))
+	e4:SetDescription(aux.Stringid(96897184,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES_SELF)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetType(EFFECT_TYPE_QUICK_O)

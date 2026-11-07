@@ -3,6 +3,7 @@ function c49885567.initial_effect(c)
 	c:SetSPSummonOnce(49885567)
 	--tohand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(49885567,0))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)

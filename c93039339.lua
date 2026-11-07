@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddXyzProcedure(c,nil,12,2,s.mfilter,aux.Stringid(id,0),2,s.altop)
+	aux.AddXyzProcedure(c,nil,12,2,s.mfilter,aux.Stringid(id,2),2,s.altop)
 	if not s.global_check then
 		s.global_check=true
 		local ge1=Effect.CreateEffect(c)

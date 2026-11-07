@@ -25,7 +25,7 @@ function c65342096.initial_effect(c)
 	c:RegisterEffect(e4)
 	--Special Summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(65342096,0))
+	e5:SetDescription(aux.Stringid(65342096,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_BATTLED)

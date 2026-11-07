@@ -2,6 +2,7 @@
 function c82321037.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(82321037,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -11,6 +12,7 @@ function c82321037.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon2
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(82321037,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -75,7 +77,7 @@ function c82321037.spop(e,tp,eg,ep,ev,re,r,rp)
 			return
 		end
 		local rg=Duel.GetMatchingGroup(c82321037.rmfilter,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
-		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(82321037,0)) then
+		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(82321037,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local tg=rg:Select(tp,1,2,nil)
 			Duel.HintSelection(tg)

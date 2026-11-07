@@ -2,7 +2,7 @@
 function c59281922.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(59281922,0))
+	e1:SetDescription(aux.Stringid(59281922,1))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetCost(c59281922.lvcost)
@@ -11,7 +11,7 @@ function c59281922.initial_effect(c)
 	c:RegisterEffect(e1)
 	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(59281922,1))
+	e2:SetDescription(aux.Stringid(59281922,2))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_REMOVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

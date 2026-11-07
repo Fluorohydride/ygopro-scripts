@@ -16,7 +16,7 @@ function c39910367.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Remove counter replace
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(39910367,0))
+	e4:SetDescription(aux.Stringid(39910367,4))
 	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_RCOUNTER_REPLACE+0x1)
 	e4:SetRange(LOCATION_FZONE)

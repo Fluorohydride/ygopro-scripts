@@ -2,6 +2,7 @@
 function c94703021.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(94703021,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -16,6 +17,7 @@ function c94703021.initial_effect(c)
 	c:RegisterEffect(e2)
 	--tokens
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(94703021,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
@@ -67,6 +69,6 @@ function c94703021.tkop2(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,94703022)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		ct=ct-1
-	until ct<=0 or not Duel.SelectYesNo(tp,aux.Stringid(94703021,0))
+	until ct<=0 or not Duel.SelectYesNo(tp,aux.Stringid(94703021,2))
 	Duel.SpecialSummonComplete()
 end

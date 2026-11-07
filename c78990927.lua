@@ -15,7 +15,7 @@ function c78990927.initial_effect(c)
 	c:RegisterEffect(e1)
 	--ritual summon
 	local e2=aux.AddRitualProcGreater2(c,c78990927.filter,LOCATION_HAND+LOCATION_DECK,nil,nil,true)
-	e2:SetDescription(aux.Stringid(78990927,1))
+	e2:SetDescription(aux.Stringid(78990927,2))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)

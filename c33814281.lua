@@ -7,6 +7,7 @@ function c33814281.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon limit
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(33814281,0))
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -18,6 +19,7 @@ function c33814281.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(33814281,1))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
@@ -63,10 +65,10 @@ function c33814281.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTarget(c33814281.sumlimit)
 		c:RegisterEffect(e1)
 		if (rtype&TYPE_FUSION)>0 and c:GetFlagEffect(33814281)==0 then
-			c:RegisterFlagEffect(33814281,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,0))
+			c:RegisterFlagEffect(33814281,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,4))
 		end
 		if (rtype&TYPE_SYNCHRO)>0 and c:GetFlagEffect(33814282)==0 then
-			c:RegisterFlagEffect(33814282,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,1))
+			c:RegisterFlagEffect(33814282,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,5))
 		end
 		if (rtype&TYPE_XYZ)>0 and c:GetFlagEffect(33814283)==0 then
 			c:RegisterFlagEffect(33814283,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,2))

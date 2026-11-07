@@ -5,7 +5,7 @@ function c35306215.initial_effect(c)
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_FAIRY),2,2)
 	--summon proc
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(35306215,0))
+	e1:SetDescription(aux.Stringid(35306215,3))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetTargetRange(LOCATION_HAND,0)

@@ -1,7 +1,7 @@
 --サイバー・ドラゴン・インフィニティ
 function c10443957.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,c10443957.mfilter,6,3,c10443957.ovfilter,aux.Stringid(10443957,0),3,c10443957.xyzop)
+	aux.AddXyzProcedure(c,c10443957.mfilter,6,3,c10443957.ovfilter,aux.Stringid(10443957,3),3,c10443957.xyzop)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)
@@ -13,6 +13,7 @@ function c10443957.initial_effect(c)
 	c:RegisterEffect(e1)
 	--material
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(10443957,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -22,6 +23,7 @@ function c10443957.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(10443957,2))
 	e3:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)

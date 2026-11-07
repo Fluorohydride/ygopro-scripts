@@ -5,7 +5,7 @@ function c88021907.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz effect
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(88021907,4))
+	e1:SetDescription(aux.Stringid(88021907,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -52,12 +52,12 @@ function c88021907.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local opval={}
 		off=1
 		if b1 then
-			ops[off]=aux.Stringid(88021907,0)
+			ops[off]=aux.Stringid(88021907,3)
 			opval[off-1]=1
 			off=off+1
 		end
 		if b2 then
-			ops[off]=aux.Stringid(88021907,1)
+			ops[off]=aux.Stringid(88021907,4)
 			opval[off-1]=2
 			off=off+1
 		end

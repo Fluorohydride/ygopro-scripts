@@ -2,6 +2,7 @@
 function c98338152.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(98338152,0))
 	e1:SetCategory(CATEGORY_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -45,7 +46,7 @@ function c98338152.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.AdjustInstantly()
 		if Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
 			and tc:IsDisabled() and tc:IsControler(1-tp) and tc:IsControlerCanBeChanged()
-			and Duel.SelectYesNo(tp,aux.Stringid(98338152,0)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(98338152,1)) then
 			Duel.BreakEffect()
 			Duel.GetControl(tc,tp,PHASE_END,1)
 		end

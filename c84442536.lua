@@ -2,6 +2,7 @@
 function c84442536.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(84442536,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)
@@ -28,10 +29,10 @@ function c84442536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sel=0
 	if Duel.IsChainNegatable(ev) and tc:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-		sel=Duel.SelectOption(tp,aux.Stringid(84442536,0),aux.Stringid(84442536,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(84442536,2),aux.Stringid(84442536,1))
 	elseif tc:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-		sel=Duel.SelectOption(tp,aux.Stringid(84442536,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(84442536,2))
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 		sel=Duel.SelectOption(tp,aux.Stringid(84442536,1))+1

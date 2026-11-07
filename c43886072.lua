@@ -14,7 +14,7 @@ function c43886072.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(43886072,0))
+	e2:SetDescription(aux.Stringid(43886072,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -54,7 +54,7 @@ function c43886072.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local cg=g:Filter(c43886072.costfilter,nil,tp,tg)
 	local tc
 	if #cg>1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,2))
 		tc=cg:Select(tp,1,1,nil):GetFirst()
 	else
 		tc=cg:GetFirst()

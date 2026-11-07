@@ -17,7 +17,7 @@ function c40227329.initial_effect(c)
 	c:RegisterEffect(e2)
 	--get effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(40227329,3))
+	e3:SetDescription(aux.Stringid(40227329,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCost(c40227329.effcost)
@@ -26,6 +26,7 @@ function c40227329.initial_effect(c)
 	c:RegisterEffect(e3)
 	--attack
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(40227329,3))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -45,7 +46,7 @@ function c40227329.initial_effect(c)
 	c:RegisterEffect(e6)
 	--reduce tribute
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(40227329,4))
+	e7:SetDescription(aux.Stringid(40227329,8))
 	e7:SetType(EFFECT_TYPE_FIELD)
 	e7:SetTargetRange(LOCATION_HAND,0)
 	e7:SetCode(EFFECT_SUMMON_PROC)
@@ -93,9 +94,9 @@ function c40227329.effop(e,tp,eg,ep,ev,re,r,rp)
 	local b2=Duel.GetFlagEffect(tp,40227330)==0
 	local b3=Duel.GetFlagEffect(tp,40227331)==0
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(40227329,0)},
-		{b2,aux.Stringid(40227329,1)},
-		{b3,aux.Stringid(40227329,2)})
+		{b1,aux.Stringid(40227329,5)},
+		{b2,aux.Stringid(40227329,6)},
+		{b3,aux.Stringid(40227329,7)})
 	if op==1 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

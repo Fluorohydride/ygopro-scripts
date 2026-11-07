@@ -20,7 +20,7 @@ function c84521924.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Effect 3
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(84521924,0))
+	e4:SetDescription(aux.Stringid(84521924,2))
 	e4:SetCategory(CATEGORY_NEGATE+CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)
@@ -72,9 +72,9 @@ function c84521924.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Select(tp,1,1,nil)
 	if #sg==0 or Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP,zone)==0 then return end
 	if Duel.NegateActivation(ev) and Duel.IsExistingMatchingCard(c84521924.tefilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(84521924,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(84521924,3)) then
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84521924,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84521924,4))
 		local exg=Duel.SelectMatchingCard(tp,c84521924.tefilter,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.SendtoExtraP(exg,nil,REASON_EFFECT)
 	end

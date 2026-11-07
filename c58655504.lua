@@ -2,6 +2,7 @@
 function c58655504.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(58655504,0))
 	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetRange(LOCATION_HAND)

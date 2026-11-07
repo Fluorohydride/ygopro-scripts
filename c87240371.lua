@@ -2,6 +2,7 @@
 function c87240371.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(87240371,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -23,7 +24,7 @@ function c87240371.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)>0
 		and Duel.IsExistingMatchingCard(c87240371.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c87240371.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ec)
-		and Duel.SelectYesNo(tp,aux.Stringid(87240371,0)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(87240371,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg=Duel.SelectMatchingCard(tp,c87240371.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,ec)
 		Duel.BreakEffect()

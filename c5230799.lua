@@ -2,7 +2,7 @@
 function c5230799.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(5230799,1))
+	e1:SetDescription(aux.Stringid(5230799,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e1:SetRange(LOCATION_MZONE)
@@ -15,7 +15,7 @@ function c5230799.initial_effect(c)
 	c:RegisterEffect(e2)
 	--draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(5230799,0))
+	e3:SetDescription(aux.Stringid(5230799,1))
 	e3:SetCategory(CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_PLAYER_TARGET)

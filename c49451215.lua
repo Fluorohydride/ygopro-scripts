@@ -27,6 +27,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy and damage
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(id,2))
 	e3:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DESTROYED)
@@ -71,8 +72,8 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local b1=Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
 	local op=0
 	op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,1),1},
-		{true,aux.Stringid(id,2),2},
+		{b1,aux.Stringid(id,4),1},
+		{true,aux.Stringid(id,5),2},
 		{b1 and ct==2,aux.Stringid(id,3),3})
 	if op&1~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

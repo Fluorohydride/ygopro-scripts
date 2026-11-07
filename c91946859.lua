@@ -16,6 +16,7 @@ function c91946859.initial_effect(c)
 	c:RegisterEffect(e2)
 	--ritual summon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(91946859,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)

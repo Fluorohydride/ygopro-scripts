@@ -2,6 +2,7 @@
 function c98864751.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(98864751,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
@@ -18,7 +19,7 @@ function c98864751.initial_effect(c)
 	c:RegisterEffect(e2)
 	--extra attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(98864751,0))
+	e3:SetDescription(aux.Stringid(98864751,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetRange(LOCATION_SZONE)

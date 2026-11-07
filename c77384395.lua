@@ -3,6 +3,7 @@ function c77384395.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(77384395,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1)

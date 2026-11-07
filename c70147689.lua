@@ -34,7 +34,7 @@ function c70147689.initial_effect(c)
 	--special summon
 	local e5=Effect.CreateEffect(c)
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e5:SetDescription(aux.Stringid(70147689,0))
+	e5:SetDescription(aux.Stringid(70147689,2))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
 	e5:SetCode(EVENT_DESTROYED)

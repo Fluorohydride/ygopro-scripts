@@ -7,7 +7,7 @@ function c72497366.initial_effect(c)
 	c:RegisterEffect(e1)
 	--decrease tribute
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(72497366,0))
+	e2:SetDescription(aux.Stringid(72497366,2))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_SUMMON_PROC)
 	e2:SetRange(LOCATION_SZONE)

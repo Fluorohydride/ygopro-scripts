@@ -2,6 +2,7 @@
 function c64283880.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(64283880,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
@@ -34,7 +35,7 @@ function c64283880.spop(e,tp,eg,ep,ev,re,r,rp)
 		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ct<=0 then return end
 		local g=Duel.GetMatchingGroup(c64283880.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(64283880,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(64283880,1)) then
 			Duel.BreakEffect()
 			if ct>2 then ct=2 end
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end

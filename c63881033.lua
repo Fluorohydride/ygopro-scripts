@@ -16,7 +16,7 @@ function c63881033.initial_effect(c)
 	c:RegisterEffect(e2)
 	--lv change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(63881033,0))
+	e3:SetDescription(aux.Stringid(63881033,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCountLimit(1)
 	e3:SetRange(LOCATION_SZONE)
@@ -53,7 +53,7 @@ function c63881033.filter(c)
 end
 function c63881033.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c63881033.filter,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,4))
 	local lv=Duel.AnnounceLevel(tp,5,9)
 	e:SetLabel(lv)
 end

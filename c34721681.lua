@@ -10,6 +10,7 @@ function c34721681.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(34721681,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)
@@ -23,7 +24,7 @@ function c34721681.thfilter(c)
 end
 function c34721681.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c34721681.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(34721681,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(34721681,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
@@ -45,13 +46,13 @@ function c34721681.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local opt=0
 	local g=nil
 	if b1 and not b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(34721681,1))
+		opt=Duel.SelectOption(tp,aux.Stringid(34721681,4))
 	end
 	if not b1 and b2 then
 		opt=Duel.SelectOption(tp,aux.Stringid(34721681,2))+1
 	end
 	if b1 and b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(34721681,1),aux.Stringid(34721681,2))
+		opt=Duel.SelectOption(tp,aux.Stringid(34721681,4),aux.Stringid(34721681,2))
 	end
 	e:SetLabel(opt)
 	if opt==0 then

@@ -2,6 +2,7 @@
 function c5037726.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(5037726,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -48,7 +49,7 @@ function c5037726.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsChainDisablable(0) then
 		local sel=1
 		local g=Duel.GetMatchingGroup(c5037726.cfilter,tp,0,LOCATION_HAND,nil)
-		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(5037726,0))
+		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(5037726,1))
 		if g:GetCount()>0 then
 			sel=Duel.SelectOption(1-tp,1213,1214)
 		else

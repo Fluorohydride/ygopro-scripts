@@ -3,7 +3,7 @@ function c42940404.initial_effect(c)
 	aux.EnableUnionAttribute(c,c42940404.filter)
 	--search
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(42940404,2))
+	e5:SetDescription(aux.Stringid(42940404,0))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e5:SetCode(EVENT_SUMMON_SUCCESS)

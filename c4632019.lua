@@ -32,7 +32,7 @@ function c4632019.efop(e,tp,eg,ep,ev,re,r,rp)
 	if lv>0 and lv<=8 then
 		--atkup
 		local e1=Effect.CreateEffect(rc)
-		e1:SetDescription(aux.Stringid(4632019,0))
+		e1:SetDescription(aux.Stringid(4632019,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
@@ -46,7 +46,7 @@ function c4632019.efop(e,tp,eg,ep,ev,re,r,rp)
 	elseif lv>=9 then
 		--inflict damage
 		local e2=Effect.CreateEffect(rc)
-		e2:SetDescription(aux.Stringid(4632019,0))
+		e2:SetDescription(aux.Stringid(4632019,2))
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_PIERCE)
 		e2:SetProperty(EFFECT_FLAG_CLIENT_HINT)

@@ -25,6 +25,7 @@ function c4998619.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Special Summon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(4998619,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
@@ -95,7 +96,7 @@ function c4998619.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c4998619.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(4998619,0)) then
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(4998619,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			sg=sg:Select(tp,1,1,nil)
 			Duel.BreakEffect()

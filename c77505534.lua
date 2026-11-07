@@ -2,6 +2,7 @@
 function c77505534.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(77505534,0))
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -25,7 +26,7 @@ function c77505534.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c77505534.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
 		local tg=Duel.GetMatchingGroup(c77505534.posfilter,tp,LOCATION_MZONE,0,nil)
-		if tg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(77505534,0)) then
+		if tg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(77505534,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 			local sg=tg:Select(tp,1,7,nil)

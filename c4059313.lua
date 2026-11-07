@@ -3,6 +3,7 @@ function c4059313.initial_effect(c)
 	aux.AddCodeList(c,10000010)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(4059313,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
@@ -64,7 +65,7 @@ function c4059313.activate(e,tp,eg,ep,ev,re,r,rp)
 			e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e4)
 		end
-		tc:RegisterFlagEffect(4059313,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(4059313,0))
+		tc:RegisterFlagEffect(4059313,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(4059313,1))
 	end
 end
 function c4059313.efilter(e,re)

@@ -32,7 +32,7 @@ end
 function c13482262.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetMatchingGroup(c13482262.filter,tp,LOCATION_HAND,0,nil,e,tp)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(13482262,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(13482262,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		local tg=Duel.GetMatchingGroup(c13482262.spfilter,tp,LOCATION_DECK,0,nil,e,tp,tc:GetCode())

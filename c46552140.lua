@@ -19,7 +19,7 @@ function c46552140.initial_effect(c)
 	c:RegisterEffect(e3)
 	--resort
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(46552140,0))
+	e4:SetDescription(aux.Stringid(46552140,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCountLimit(1)
@@ -31,7 +31,7 @@ function c46552140.sorttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0x140) end
 end
 function c46552140.sortop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(46552140,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(46552140,2))
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,5,nil,0x140)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,g)

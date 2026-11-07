@@ -9,7 +9,7 @@ function c18138630.initial_effect(c)
 	aux.EnableChangeCode(c,70245411,LOCATION_SZONE+LOCATION_GRAVE)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(18138630,0))
+	e2:SetDescription(aux.Stringid(18138630,1))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_DESTROY+CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -22,7 +22,7 @@ function c18138630.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(18138630,1))
+	e3:SetDescription(aux.Stringid(18138630,2))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
@@ -48,7 +48,7 @@ function c18138630.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ShuffleHand(tp)
 	if tc:IsSetCard(0xc3) and tc:IsType(TYPE_MONSTER) then
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(18138630,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(18138630,5)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local sc=g:Select(tp,1,1,nil)

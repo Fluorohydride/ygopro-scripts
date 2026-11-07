@@ -2,6 +2,7 @@
 function c14934922.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(14934922,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -43,9 +44,9 @@ function c14934922.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(14934922,0),aux.Stringid(14934922,1))
+		op=Duel.SelectOption(tp,aux.Stringid(14934922,2),aux.Stringid(14934922,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(14934922,0))
+		op=Duel.SelectOption(tp,aux.Stringid(14934922,2))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(14934922,1))+1
 	end

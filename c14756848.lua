@@ -2,7 +2,7 @@
 function c14756848.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(14756848,0))
+	e1:SetDescription(aux.Stringid(14756848,5))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
@@ -12,6 +12,7 @@ function c14756848.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(14756848,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -59,9 +60,9 @@ function c14756848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local sel=e:GetLabel()
 	if sel==3 then
-		sel=Duel.SelectOption(tp,aux.Stringid(14756848,1),aux.Stringid(14756848,2))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(14756848,6),aux.Stringid(14756848,2))+1
 	elseif sel==1 then
-		Duel.SelectOption(tp,aux.Stringid(14756848,1))
+		Duel.SelectOption(tp,aux.Stringid(14756848,6))
 	else
 		Duel.SelectOption(tp,aux.Stringid(14756848,2))
 	end

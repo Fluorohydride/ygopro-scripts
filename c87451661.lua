@@ -8,7 +8,7 @@ function s.initial_effect(c)
 	aux.EnableChangeCode(c,70902743,LOCATION_MZONE+LOCATION_GRAVE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -48,7 +48,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 			tc:CompleteProcedure()
 			local dg=Duel.GetMatchingGroup(Card.IsAttackPos,tp,0,LOCATION_MZONE,nil)
 			if dg:GetCount()>0 and e:GetLabel()>0
-				and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 				Duel.BreakEffect()
 				Duel.Destroy(dg,REASON_EFFECT)
 			end

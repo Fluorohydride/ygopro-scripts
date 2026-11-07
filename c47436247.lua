@@ -19,7 +19,7 @@ function c47436247.initial_effect(c)
 	--special summon
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e4:SetDescription(aux.Stringid(47436247,0))
+	e4:SetDescription(aux.Stringid(47436247,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCost(c47436247.spcost)

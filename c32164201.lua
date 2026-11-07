@@ -11,7 +11,7 @@ function c32164201.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Equip
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(32164201,0))
+	e2:SetDescription(aux.Stringid(32164201,2))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCategory(CATEGORY_EQUIP)
@@ -87,7 +87,7 @@ function c32164201.negcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:GetFlagEffect(32164201)==0
 end
 function c32164201.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectYesNo(tp,aux.Stringid(32164201,1)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(32164201,4)) then
 		Duel.Hint(HINT_CARD,0,32164201)
 		Duel.NegateEffect(ev)
 		e:GetHandler():RegisterFlagEffect(32164201,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)

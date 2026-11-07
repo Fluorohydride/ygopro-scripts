@@ -29,7 +29,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--quick activate
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,2))
+	e4:SetDescription(aux.Stringid(id,3))
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e4:SetTargetRange(LOCATION_SZONE,0)

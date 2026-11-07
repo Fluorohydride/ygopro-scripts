@@ -2,6 +2,7 @@
 function c92512625.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(92512625,0))
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)

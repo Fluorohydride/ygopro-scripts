@@ -28,7 +28,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--level change
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,1))
+	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
@@ -89,7 +89,7 @@ function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 		local op=0
 		if tc:IsLevel(1) then op=1
 		else op=aux.SelectFromOptions(tp,
-			{true,aux.Stringid(id,2),1},
+			{true,aux.Stringid(id,4),1},
 			{true,aux.Stringid(id,3),-1})
 		end
 		local e1=Effect.CreateEffect(c)

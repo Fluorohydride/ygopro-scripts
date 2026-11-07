@@ -89,7 +89,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if g:FilterCount(Card.IsAbleToRemoveAsCost,nil,POS_FACEDOWN)==3
 		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3
 		and (not Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
-		or not Duel.SelectYesNo(tp,aux.Stringid(99311889,1))) then
+		or not Duel.SelectYesNo(tp,aux.Stringid(99311889,5))) then
 		Duel.DisableShuffleCheck()
 		Duel.Remove(g,POS_FACEDOWN,REASON_COST)
 	else

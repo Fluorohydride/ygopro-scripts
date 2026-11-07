@@ -9,7 +9,7 @@ function c35371948.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lock
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(35371948,1))
+	e2:SetDescription(aux.Stringid(35371948,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -36,7 +36,7 @@ function c35371948.thfilter(c)
 end
 function c35371948.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c35371948.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(35371948,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(35371948,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
@@ -49,7 +49,7 @@ end
 function c35371948.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_SZONE) and c35371948.cfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c35371948.cfilter,tp,0,LOCATION_SZONE,1,e:GetHandler()) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(35371948,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(35371948,4))
 	local g=Duel.SelectTarget(tp,c35371948.cfilter,tp,0,LOCATION_SZONE,1,1,e:GetHandler())
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
 	g:GetFirst():RegisterFlagEffect(35371949,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1,cid)

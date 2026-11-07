@@ -3,7 +3,7 @@ function c744887.initial_effect(c)
 	c:SetUniqueOnField(1,0,744887)
 	--remove
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(744887,0))
+	e1:SetDescription(aux.Stringid(744887,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -45,7 +45,7 @@ function s.negcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsChainDisablable(ev) and not Duel.IsChainDisabled(ev)
 end
 function s.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(tp,id)==0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+	if Duel.GetFlagEffect(tp,id)==0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 		Duel.Hint(HINT_CARD,0,id)
 		Duel.RegisterFlagEffect(tp,id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		if Duel.NegateEffect(ev) then
@@ -65,7 +65,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if g:FilterCount(Card.IsAbleToRemoveAsCost,nil,POS_FACEDOWN)==3
 		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3
 		and (not Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
-		or not Duel.SelectYesNo(tp,aux.Stringid(99311889,1))) then
+		or not Duel.SelectYesNo(tp,aux.Stringid(99311889,4))) then
 		Duel.DisableShuffleCheck()
 		Duel.Remove(g,POS_FACEDOWN,REASON_COST)
 	else

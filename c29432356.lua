@@ -35,7 +35,7 @@ function c29432356.initial_effect(c)
 	c:RegisterEffect(e4)
 	--special summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(29432356,3))
+	e5:SetDescription(aux.Stringid(29432356,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)
@@ -56,7 +56,7 @@ end
 function c29432356.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29432356,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29432356,3))
 	local g=Duel.SelectMatchingCard(tp,c29432356.scfilter,tp,LOCATION_DECK,0,1,1,nil,c)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoExtraP(tc,nil,REASON_EFFECT)>0 then
@@ -88,7 +88,7 @@ end
 function c29432356.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(29432356,2))
+	e2:SetDescription(aux.Stringid(29432356,4))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_EXTRA_PENDULUM_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

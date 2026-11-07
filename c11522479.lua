@@ -16,6 +16,7 @@ function c11522479.initial_effect(c)
 	c:RegisterEffect(e2)
 	--leave grave
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(11522479,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -57,8 +58,8 @@ function c11522479.lgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(c11522479.setfilter,tp,LOCATION_GRAVE,0,1,nil)
 	if chk==0 then return b1 or b2 end
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(11522479,1),aux.Stringid(11522479,2))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(11522479,1))
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(11522479,3),aux.Stringid(11522479,2))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(11522479,3))
 	else op=Duel.SelectOption(tp,aux.Stringid(11522479,2))+1 end
 	e:SetLabel(op)
 	if op==0 then

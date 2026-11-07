@@ -57,7 +57,7 @@ function c37433748.eqop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e4)
 	--direct attack
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(37433748,1))
+	e5:SetDescription(aux.Stringid(37433748,2))
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetCountLimit(1)

@@ -42,7 +42,7 @@ function c60759087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2 = Duel.IsExistingTarget(c60759087.tgfilter2,tp,0,LOCATION_SZONE,1,nil)
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(60759087,0),0},
+		{b1,aux.Stringid(60759087,2),0},
 		{b2,aux.Stringid(60759087,1),1})
 	e:SetLabel(op)
 	if op==0 then

@@ -2,6 +2,7 @@
 function c88616795.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(88616795,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -17,7 +18,7 @@ function c88616795.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c88616795.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c88616795.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	local opt=Duel.SelectOption(tp,aux.Stringid(88616795,0),aux.Stringid(88616795,1))
+	local opt=Duel.SelectOption(tp,aux.Stringid(88616795,2),aux.Stringid(88616795,1))
 	e:SetLabel(opt)
 end
 function c88616795.activate(e,tp,eg,ep,ev,re,r,rp)

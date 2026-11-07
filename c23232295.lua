@@ -14,7 +14,7 @@ function c23232295.initial_effect(c)
 	c:RegisterEffect(e1)
 	--attack up
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(23232295,0))
+	e2:SetDescription(aux.Stringid(23232295,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e2:SetCode(EVENT_DETACH_MATERIAL)

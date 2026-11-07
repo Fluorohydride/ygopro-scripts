@@ -3,6 +3,7 @@ function c63144961.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(63144961,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -36,7 +37,7 @@ function c63144961.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(63144961,0)
+		ops[off]=aux.Stringid(63144961,3)
 		opval[off-1]=0
 		off=off+1
 	end

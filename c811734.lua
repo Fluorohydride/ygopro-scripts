@@ -2,6 +2,7 @@
 function c811734.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(811734,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c811734.condition)
@@ -24,9 +25,9 @@ function c811734.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(811734,0),aux.Stringid(811734,1))
+		op=Duel.SelectOption(tp,aux.Stringid(811734,2),aux.Stringid(811734,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(811734,0))
+		op=Duel.SelectOption(tp,aux.Stringid(811734,2))
 	else op=Duel.SelectOption(tp,aux.Stringid(811734,1))+1 end
 	e:SetLabel(op)
 	if op==0 then

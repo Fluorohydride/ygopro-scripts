@@ -14,7 +14,7 @@ function c67557908.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(67557908,0))
+	e2:SetDescription(aux.Stringid(67557908,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -27,7 +27,7 @@ function c67557908.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(67557908,1))
+	e3:SetDescription(aux.Stringid(67557908,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -95,7 +95,7 @@ function c67557908.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=og:GetFirst()
 		while tc do
 			if sg:GetCount()==0 then return end
-			if Duel.SelectEffectYesNo(tp,tc,aux.Stringid(67557908,2)) then
+			if Duel.SelectEffectYesNo(tp,tc,aux.Stringid(67557908,3)) then
 				if res==false then
 					res=true
 					Duel.BreakEffect()

@@ -9,7 +9,7 @@ function c25396150.initial_effect(c)
 	c:RegisterEffect(e1)
 	--recover
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(25396150,3))
+	e2:SetDescription(aux.Stringid(25396150,1))
 	e2:SetCategory(CATEGORY_RECOVER)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -28,7 +28,7 @@ end
 function c25396150.activate(e,tp,eg,ep,ev,re,r,rp)
 	local pcon=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c25396150.filter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,nil,tp,pcon)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(25396150,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(25396150,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
 		if sc then
@@ -36,13 +36,13 @@ function c25396150.activate(e,tp,eg,ep,ev,re,r,rp)
 			local b2=sc:IsType(TYPE_PENDULUM) and pcon
 			local s=0
 			if b1 and not b2 then
-				s=Duel.SelectOption(tp,aux.Stringid(25396150,1))
+				s=Duel.SelectOption(tp,aux.Stringid(25396150,4))
 			end
 			if not b1 and b2 then
 				s=Duel.SelectOption(tp,aux.Stringid(25396150,2))+1
 			end
 			if b1 and b2 then
-				s=Duel.SelectOption(tp,aux.Stringid(25396150,1),aux.Stringid(25396150,2))
+				s=Duel.SelectOption(tp,aux.Stringid(25396150,4),aux.Stringid(25396150,2))
 			end
 			if s==0 then
 				Duel.SendtoHand(sc,nil,REASON_EFFECT)

@@ -27,7 +27,7 @@ function c69522668.initial_effect(c)
 	c:RegisterEffect(e3)
 	--set
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(69522668,0))
+	e4:SetDescription(aux.Stringid(69522668,1))
 	e4:SetCategory(CATEGORY_SSET)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
@@ -38,7 +38,7 @@ function c69522668.initial_effect(c)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(69522668,1))
+	e5:SetDescription(aux.Stringid(69522668,2))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)
@@ -57,7 +57,7 @@ function c69522668.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()==1
 end
 function c69522668.matop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(69522668,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(69522668,2))
+	e:GetHandler():RegisterFlagEffect(69522668,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(69522668,3))
 end
 function c69522668.attfilter(c,rc)
 	return c:GetAttribute()>0

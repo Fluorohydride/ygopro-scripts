@@ -7,7 +7,7 @@ function c55521751.initial_effect(c)
 	c:RegisterEffect(e0)
 	--Tribute Summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(55521751,0))
+	e1:SetDescription(aux.Stringid(55521751,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetTargetRange(LOCATION_HAND,0)

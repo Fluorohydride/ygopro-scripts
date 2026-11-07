@@ -1,7 +1,7 @@
 --旋壊のヴェスペネイト
 function c39317553.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,5,2,c39317553.ovfilter,aux.Stringid(39317553,0),2,c39317553.xyzop)
+	aux.AddXyzProcedure(c,nil,5,2,c39317553.ovfilter,aux.Stringid(39317553,2),2,c39317553.xyzop)
 	c:EnableReviveLimit()
 	--can not be xyz material
 	local e1=Effect.CreateEffect(c)

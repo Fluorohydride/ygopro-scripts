@@ -2,6 +2,7 @@
 function c45311864.initial_effect(c)
 	--recover&damage
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(45311864,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCategory(CATEGORY_RECOVER+CATEGORY_DAMAGE)
 	e1:SetCode(EVENT_FREE_CHAIN)
