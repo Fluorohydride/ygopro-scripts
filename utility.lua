@@ -1143,7 +1143,16 @@ function Auxiliary.dlkcheck(g)
 end
 --check for cards with different attributes
 function Auxiliary.dabcheck(g)
-	return g:GetClassCount(Card.GetAttribute)==#g
+	local att,zero=0,false
+	for c in Auxiliary.Next(g) do
+		local a=c:GetAttribute()
+		if a==0 then
+			if zero then return false end
+			zero=true
+		elseif a&att~=0 then return false
+		else att=att|a end
+	end
+	return true
 end
 --check for cards with different races
 function Auxiliary.drccheck(g)

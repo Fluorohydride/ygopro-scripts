@@ -21,7 +21,8 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.cfilter,tp,LOCATION_HAND,0,nil)
 	if chk==0 then return #g>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,1,3)
+	--属性各1只：保持原判定
+	local sg=g:SelectSubGroup(tp,function(g) return g:GetClassCount(Card.GetAttribute)==#g end,false,1,3)
 	Duel.ConfirmCards(1-tp,sg)
 	if e:GetHandler():IsSetCard(0x195) then Duel.RaiseEvent(sg,EVENT_CUSTOM+9091064,e,REASON_COST,tp,tp,0) end
 	Duel.ShuffleHand(tp)

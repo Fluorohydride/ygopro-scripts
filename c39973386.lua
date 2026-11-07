@@ -57,9 +57,11 @@ end
 function c39973386.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c39973386.tdfilter(chkc) end
 	local g=Duel.GetMatchingGroup(c39973386.tdfilter,tp,LOCATION_GRAVE,0,nil,e)
-	if chk==0 then return g:CheckSubGroup(aux.dabcheck,2,2) and Duel.IsPlayerCanDraw(tp,1) end
+	--属性各1只：保持原判定
+	if chk==0 then return g:CheckSubGroup(function(g) return g:GetClassCount(Card.GetAttribute)==#g end,2,2) and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,2,2)
+	--属性各1只：保持原判定
+	local sg=g:SelectSubGroup(tp,function(g) return g:GetClassCount(Card.GetAttribute)==#g end,false,2,2)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,sg,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
