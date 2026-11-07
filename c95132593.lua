@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	--special summon 2
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,id+o)

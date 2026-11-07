@@ -66,7 +66,7 @@ function s.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,s.eqfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	if bit.band(g:GetFirst():GetOriginalAttribute(),ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)~=0 then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_GRAVE_SPSUMMON)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON+CATEGORY_GRAVE_SPSUMMON)
 	else
 		e:SetCategory(0)
 	end

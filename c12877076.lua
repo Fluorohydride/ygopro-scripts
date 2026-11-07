@@ -73,7 +73,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_TOGRAVE+CATEGORY_DECKDES)
 	end
 	if op&2>0 then
-		e:SetCategory(e:GetCategory()|CATEGORY_SPECIAL_SUMMON)
+		e:SetCategory(e:GetCategory()|CATEGORY_SPECIAL_SUMMON|CATEGORY_DECK_SPSUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE+LOCATION_SZONE)
 	end
 end

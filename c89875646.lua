@@ -4,7 +4,7 @@ function s.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
-	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_DECKDES+CATEGORY_GRAVE_ACTION)
+	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(s.target)
@@ -37,7 +37,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 	if op==1 then
 		if e:IsCostChecked() then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK+CATEGORY_DECKDES)
+			e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 			Duel.RegisterFlagEffect(tp,id,RESET_PHASE+PHASE_END,0,1)
 		end
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_GRAVE)

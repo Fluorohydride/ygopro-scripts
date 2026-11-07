@@ -13,7 +13,7 @@ function c291414.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(291414,0))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DRAW)
 	e2:SetCost(c291414.spcost)

@@ -3,7 +3,7 @@ function c67223587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c67223587.condition)
 	e1:SetTarget(c67223587.target)
