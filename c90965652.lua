@@ -43,7 +43,7 @@ function c90965652.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(90965652,3)
+		ops[off]=aux.Stringid(90965652,2)
 		opval[off-1]=1
 		off=off+1
 	end
@@ -99,7 +99,7 @@ end
 function c90965652.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
 	if #g<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90965652,4))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90965652,3))
 	local g1=g:FilterSelect(tp,c90965652.atkfilter,1,1,nil)
 	if #g1<1 then return end
 	local tc1=g1:GetFirst()

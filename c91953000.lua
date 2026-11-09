@@ -2,7 +2,7 @@
 function c91953000.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(91953000,0))
+	e1:SetDescription(aux.Stringid(91953000,1))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -16,7 +16,7 @@ function c91953000.initial_effect(c)
 	c:RegisterEffect(e2)
 	--mill
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(91953000,1))
+	e3:SetDescription(aux.Stringid(91953000,0))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

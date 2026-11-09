@@ -3,7 +3,7 @@ function c71595845.initial_effect(c)
 	aux.AddCodeList(c,44190146,81587028,75574498)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(71595845,0))
+	e1:SetDescription(aux.Stringid(71595845,3))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

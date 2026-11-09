@@ -52,7 +52,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)>0 then
 		local proc=c:IsCode(id) and tc.Metallization_material and tc.Metallization_material(ft,lv,race,att)
 		if proc then tc:CompleteProcedure() end
-		if ft==1 and c:IsOnField() and c:IsRelateToEffect(e) and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		if ft==1 and c:IsOnField() and c:IsRelateToEffect(e) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
 			c:CancelToGrave(true)
 			if Duel.Equip(tp,c,tc) then

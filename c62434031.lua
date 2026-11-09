@@ -2,7 +2,7 @@
 function c62434031.initial_effect(c)
 	--deck check
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(62434031,0))
+	e1:SetDescription(aux.Stringid(62434031,1))
 	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
@@ -12,7 +12,7 @@ function c62434031.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(62434031,1))
+	e2:SetDescription(aux.Stringid(62434031,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)

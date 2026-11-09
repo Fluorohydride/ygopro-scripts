@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,3))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -64,7 +64,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	for p in aux.TurnPlayers() do
 		if Duel.GetLocationCount(p,LOCATION_MZONE)>0
 			and Duel.IsExistingMatchingCard(s.spfilter,p,LOCATION_HAND,0,1,nil,e,p)
-			and Duel.SelectYesNo(p,aux.Stringid(id,3)) then
+			and Duel.SelectYesNo(p,aux.Stringid(id,4)) then
 			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_SPSUMMON)
 			local sc=Duel.SelectMatchingCard(p,s.spfilter,p,LOCATION_HAND,0,1,1,nil,e,p):GetFirst()
 			if Duel.SpecialSummonStep(sc,0,p,p,false,false,POS_FACEUP_ATTACK) then

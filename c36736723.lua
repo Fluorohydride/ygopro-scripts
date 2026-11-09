@@ -2,7 +2,7 @@
 function c36736723.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(36736723,0))
+	e1:SetDescription(aux.Stringid(36736723,2))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetRange(LOCATION_HAND)
@@ -13,7 +13,7 @@ function c36736723.initial_effect(c)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(36736723,1))
+	e2:SetDescription(aux.Stringid(36736723,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

@@ -8,7 +8,7 @@ function c78933589.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(78933589,0))
+	e1:SetDescription(aux.Stringid(78933589,1))
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)

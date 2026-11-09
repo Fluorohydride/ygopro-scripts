@@ -21,7 +21,7 @@ function c72192100.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetDescription(aux.Stringid(72192100,0))
+	e3:SetDescription(aux.Stringid(72192100,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_TO_GRAVE)
@@ -37,7 +37,7 @@ end
 function c72192100.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckLPCost(tp,500) or Duel.IsPlayerAffectedByEffect(tp,94585852) then
 		if not Duel.IsPlayerAffectedByEffect(tp,94585852)
-			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,1)) then
+			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,2)) then
 			Duel.PayLPCost(tp,500)
 		end
 	else

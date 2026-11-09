@@ -30,7 +30,7 @@ function c38167722.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsChainDisablable(0) then
 		local sel=1
 		local g=Duel.GetMatchingGroup(c38167722.cfilter,p,0,LOCATION_HAND,nil)
-		Duel.Hint(HINT_SELECTMSG,1-p,aux.Stringid(38167722,0))
+		Duel.Hint(HINT_SELECTMSG,1-p,aux.Stringid(38167722,1))
 		if g:GetCount()>0 then
 			sel=Duel.SelectOption(1-p,1213,1214)
 		else

@@ -45,7 +45,7 @@ function c81269231.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if bit.band(flag,0x1)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(81269231,3))
+		e1:SetDescription(aux.Stringid(81269231,0))
 		e1:SetCategory(CATEGORY_REMOVE)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 		e1:SetCode(EVENT_DAMAGE_STEP_END)

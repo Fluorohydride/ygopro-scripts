@@ -52,12 +52,12 @@ function c88021907.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local opval={}
 		off=1
 		if b1 then
-			ops[off]=aux.Stringid(88021907,3)
+			ops[off]=aux.Stringid(88021907,2)
 			opval[off-1]=1
 			off=off+1
 		end
 		if b2 then
-			ops[off]=aux.Stringid(88021907,4)
+			ops[off]=aux.Stringid(88021907,2)
 			opval[off-1]=2
 			off=off+1
 		end

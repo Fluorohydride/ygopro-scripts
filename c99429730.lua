@@ -12,7 +12,7 @@ function c99429730.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(99429730,2))
+	e2:SetDescription(aux.Stringid(99429730,1))
 	e2:SetCategory(CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -32,7 +32,7 @@ function c99429730.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct>3 then ct=3 end
 	local t={}
 	for i=1,ct do t[i]=i end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(99429730,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(99429730,2))
 	local ac=Duel.AnnounceNumber(tp,table.unpack(t))
 	Duel.ConfirmDecktop(tp,ac)
 	local g=Duel.GetDecktopGroup(tp,ac)

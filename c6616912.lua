@@ -9,7 +9,7 @@ function c6616912.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(6616912,4))
+	e2:SetDescription(aux.Stringid(6616912,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
 	e2:SetCondition(c6616912.ntcon)

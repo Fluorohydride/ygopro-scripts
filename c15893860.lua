@@ -37,7 +37,7 @@ function c15893860.operation(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		tc:AddCounter(0x1015,1)
 	end
-	if ct>=3 and Duel.SelectYesNo(tp,aux.Stringid(15893860,2)) then
+	if ct>=3 and Duel.SelectYesNo(tp,aux.Stringid(15893860,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local dg=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)

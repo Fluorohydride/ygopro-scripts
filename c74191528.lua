@@ -23,9 +23,9 @@ function c74191528.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<5 or Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)<5
 		or not Duel.IsExistingMatchingCard(c74191528.filter,tp,LOCATION_DECK,0,1,nil,tp)
 		or not Duel.IsExistingMatchingCard(c74191528.filter,1-tp,LOCATION_DECK,0,1,nil,1-tp) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,1))
 	local g1=Duel.SelectMatchingCard(tp,c74191528.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,3))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,1))
 	local g2=Duel.SelectMatchingCard(1-tp,c74191528.filter,1-tp,LOCATION_DECK,0,1,1,nil,1-tp)
 	Duel.BreakEffect()
 	--[[ need Duel.RandomSelect to be updated for manually select
@@ -48,9 +48,9 @@ function c74191528.activate(e,tp,eg,ep,ev,re,r,rp)
 	g2:Merge(og2)
 	Duel.ShuffleDeck(tp)
 	Duel.ShuffleDeck(1-tp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191528,1))
 	local sg2=g2:Select(tp,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,2))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191528,1))
 	local sg1=g1:Select(1-tp,1,1,nil)
 	--
 	Duel.SendtoHand(sg1,tp,REASON_EFFECT)

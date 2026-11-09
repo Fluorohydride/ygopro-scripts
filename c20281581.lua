@@ -21,7 +21,7 @@ function c20281581.initial_effect(c)
 	c:RegisterEffect(e2)
 	--flip
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(20281581,2))
+	e3:SetDescription(aux.Stringid(20281581,0))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

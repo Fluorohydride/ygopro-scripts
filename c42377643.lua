@@ -2,7 +2,7 @@
 function c42377643.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(42377643,0))
+	e1:SetDescription(aux.Stringid(42377643,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -13,7 +13,7 @@ function c42377643.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change level
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(42377643,1))
+	e2:SetDescription(aux.Stringid(42377643,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -48,7 +48,7 @@ function c42377643.spop(e,tp,eg,ep,ev,re,r,rp)
 		if not tc:IsRelateToEffect(e) then return end
 		if tc:IsCode(24639891) then
 			if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-				and Duel.SelectYesNo(tp,aux.Stringid(42377643,2)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(42377643,3)) then
 				Duel.BreakEffect()
 				Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 			end
@@ -76,11 +76,11 @@ function c42377643.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	if not (tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
 	local sel=0
 	if tc:IsLevel(4) then
-		sel=Duel.SelectOption(tp,aux.Stringid(42377643,4))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(42377643,5))+1
 	elseif tc:IsLevel(5) then
-		sel=Duel.SelectOption(tp,aux.Stringid(42377643,3))
+		sel=Duel.SelectOption(tp,aux.Stringid(42377643,4))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(42377643,3),aux.Stringid(42377643,4))
+		sel=Duel.SelectOption(tp,aux.Stringid(42377643,4),aux.Stringid(42377643,5))
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -94,7 +94,7 @@ function c42377643.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	tc:RegisterEffect(e1)
 	if Duel.IsExistingMatchingCard(c42377643.thfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(42377643,5)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(42377643,6)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c42377643.thfilter,tp,LOCATION_DECK,0,1,1,nil)

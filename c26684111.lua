@@ -47,7 +47,7 @@ function c26684111.activate(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(26684111,4)
+		ops[off]=aux.Stringid(26684111,3)
 		opval[off]=1
 		off=off+1
 	end

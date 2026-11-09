@@ -13,7 +13,7 @@ function c10060427.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon with 1 tribute
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(10060427,3))
+	e2:SetDescription(aux.Stringid(10060427,4))
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
@@ -26,7 +26,7 @@ function c10060427.initial_effect(c)
 	c:RegisterEffect(e3)
 	--summon success
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(10060427,4))
+	e3:SetDescription(aux.Stringid(10060427,0))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -52,14 +52,14 @@ function c10060427.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c10060427.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(10060427,0),aux.Stringid(10060427,1),aux.Stringid(10060427,2))
+		select=Duel.SelectOption(tp,aux.Stringid(10060427,1),aux.Stringid(10060427,2),aux.Stringid(10060427,3))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(10060427,0),aux.Stringid(10060427,2))
+		select=Duel.SelectOption(tp,aux.Stringid(10060427,1),aux.Stringid(10060427,3))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(10060427,1),aux.Stringid(10060427,2))+1
+		select=Duel.SelectOption(tp,aux.Stringid(10060427,2),aux.Stringid(10060427,3))+1
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(10060427,2))
+		select=Duel.SelectOption(tp,aux.Stringid(10060427,3))
 		select=2
 	end
 	if select==0 then

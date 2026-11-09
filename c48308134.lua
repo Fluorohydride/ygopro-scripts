@@ -2,7 +2,7 @@
 function c48308134.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(48308134,0))
+	e1:SetDescription(aux.Stringid(48308134,2))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -80,7 +80,7 @@ function c48308134.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Equip(tp,c,tc)
 			Duel.SpecialSummonComplete()
 			local g=Duel.GetMatchingGroup(c48308134.posfilter,tp,0,LOCATION_MZONE,nil)
-			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(48308134,2)) then
+			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(48308134,3)) then
 				Duel.BreakEffect()
 				local sg=g:Select(tp,1,1,nil)
 				Duel.ChangePosition(sg,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,0,0)

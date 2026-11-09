@@ -3,7 +3,7 @@ function c18865703.initial_effect(c)
 	c:SetUniqueOnField(1,0,18865703)
 	--equip
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(18865703,0))
+	e1:SetDescription(aux.Stringid(18865703,2))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_EQUIP)

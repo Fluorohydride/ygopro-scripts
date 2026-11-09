@@ -35,7 +35,7 @@ function c58153103.regop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(58153103,2))
+	e4:SetDescription(aux.Stringid(58153103,0))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

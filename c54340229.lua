@@ -2,7 +2,7 @@
 function c54340229.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(54340229,0))
+	e1:SetDescription(aux.Stringid(54340229,2))
 	e1:SetCategory(CATEGORY_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCountLimit(1,54340229+EFFECT_COUNT_CODE_OATH)

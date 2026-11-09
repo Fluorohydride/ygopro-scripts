@@ -167,7 +167,7 @@ function c50907446.FShaddollOperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 		mg:Sub(g)
 	end
 	if exg and exg:IsExists(c50907446.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),chkf)
-		and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,3)))) then
+		and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,2)))) then
 		fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg=exg:FilterSelect(tp,c50907446.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),chkf)

@@ -50,7 +50,7 @@ end
 function c18210764.tetg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and c18210764.tefilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c18210764.tefilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(18210764,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(18210764,2))
 	local g=Duel.SelectTarget(tp,c18210764.tefilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,1,0,0)
 	if g:GetFirst():IsLocation(LOCATION_GRAVE) then

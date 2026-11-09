@@ -102,7 +102,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if b4 then
-		ops[off]=aux.Stringid(id,3)
+		ops[off]=aux.Stringid(id,2)
 		opval[off-1]=4
 		off=off+1
 	end

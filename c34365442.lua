@@ -22,7 +22,7 @@ function c34365442.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(34365442,2))
+	e3:SetDescription(aux.Stringid(34365442,1))
 	e3:SetCategory(CATEGORY_DISABLE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)

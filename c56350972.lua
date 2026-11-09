@@ -33,7 +33,7 @@ end
 function c56350972.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(56350972,4))
+	e1:SetDescription(aux.Stringid(56350972,2))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetCountLimit(1,56350972)
@@ -60,12 +60,12 @@ function c56350972.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(56350972,2)
+		ops[off]=aux.Stringid(56350972,1)
 		opval[off-1]=2
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(56350972,3)
+		ops[off]=aux.Stringid(56350972,1)
 		opval[off-1]=3
 		off=off+1
 	end

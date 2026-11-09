@@ -59,7 +59,7 @@ function c57761191.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Group.CreateGroup()
 	local ct=3
 	while mg:GetCount()>0 and (ct>2 and Duel.CheckTribute(c,ct-2) or ct>1 and Duel.CheckTribute(c,ct-1) or ct>0 and ft>0)
-		and (not Duel.CheckTribute(c,ct) or Duel.SelectYesNo(tp,aux.Stringid(57761191,5))) do
+		and (not Duel.CheckTribute(c,ct) or Duel.SelectYesNo(tp,aux.Stringid(57761191,3))) do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local g1=mg:Select(tp,1,1,nil)
 		g:Merge(g1)
@@ -106,10 +106,10 @@ function c57761191.regop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,2))
 	end
 	if bit.band(typ,TYPE_SPELL)~=0 then
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,3))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,2))
 	end
 	if bit.band(typ,TYPE_TRAP)~=0 then
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,4))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,2))
 	end
 end
 function c57761191.efilter(e,te)

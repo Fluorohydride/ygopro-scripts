@@ -95,12 +95,12 @@ function c45420955.eop(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(45420955,3)
+		ops[off]=aux.Stringid(45420955,2)
 		opval[off]=1
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(45420955,4)
+		ops[off]=aux.Stringid(45420955,2)
 		opval[off]=2
 		off=off+1
 	end

@@ -12,13 +12,13 @@ function c59494222.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 and not Duel.CheckPhaseActivity()
 end
 function c59494222.activate(e,tp,eg,ep,ev,re,r,rp)
-	local op=Duel.SelectOption(tp,aux.Stringid(59494222,3),aux.Stringid(59494222,1),aux.Stringid(59494222,2))
+	local op=Duel.SelectOption(tp,aux.Stringid(59494222,1),aux.Stringid(59494222,2),aux.Stringid(59494222,3))
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CLIENT_HINT)
 	e1:SetTargetRange(1,1)
 	if op==0 then
-		e1:SetDescription(aux.Stringid(59494222,3))
+		e1:SetDescription(aux.Stringid(59494222,1))
 		e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 		e1:SetValue(c59494222.actlimit)
 	elseif op==1 then
@@ -26,7 +26,7 @@ function c59494222.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_REMOVE)
 		e1:SetTarget(c59494222.rmlimit)
 	else
-		e1:SetDescription(aux.Stringid(59494222,2))
+		e1:SetDescription(aux.Stringid(59494222,1))
 		e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 		e1:SetTarget(c59494222.splimit)
 	end

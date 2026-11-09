@@ -40,7 +40,7 @@ function c296499.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c296499.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_MAINTENANCE,false,nil) and Duel.SelectYesNo(tp,aux.Stringid(296499,0)) then
+	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_MAINTENANCE,false,nil) and Duel.SelectYesNo(tp,aux.Stringid(296499,1)) then
 		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_MAINTENANCE,false,nil)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else

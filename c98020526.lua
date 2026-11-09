@@ -3,7 +3,7 @@ function c98020526.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(98020526,3))
+	e1:SetDescription(aux.Stringid(98020526,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
@@ -20,7 +20,7 @@ function c98020526.initial_effect(c)
 	e2:SetOperation(c98020526.activate)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetDescription(aux.Stringid(98020526,4))
+	e3:SetDescription(aux.Stringid(98020526,3))
 	e3:SetType(EFFECT_TYPE_ACTIVATE)
 	c:RegisterEffect(e3)
 end
@@ -54,7 +54,7 @@ function c98020526.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(98020526,5)
+		ops[off]=aux.Stringid(98020526,1)
 		opval[off-1]=1
 		off=off+1
 	end
@@ -64,7 +64,7 @@ function c98020526.activate(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(98020526,2)
+		ops[off]=aux.Stringid(98020526,1)
 		opval[off-1]=3
 		off=off+1
 	end

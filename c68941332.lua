@@ -2,7 +2,7 @@
 function c68941332.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(68941332,0))
+	e1:SetDescription(aux.Stringid(68941332,1))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -13,7 +13,7 @@ function c68941332.initial_effect(c)
 	c:RegisterEffect(e1)
 	--cost
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(68941332,1))
+	e2:SetDescription(aux.Stringid(68941332,0))
 	e2:SetCategory(CATEGORY_CONTROL)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)

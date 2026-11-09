@@ -31,8 +31,8 @@ function c9780364.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sel=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if cg:GetCount()==0 then
-		sel=Duel.SelectOption(tp,aux.Stringid(9780364,0))
-	else sel=Duel.SelectOption(tp,aux.Stringid(9780364,0),aux.Stringid(9780364,1)) end
+		sel=Duel.SelectOption(tp,aux.Stringid(9780364,1))
+	else sel=Duel.SelectOption(tp,aux.Stringid(9780364,1),aux.Stringid(9780364,2)) end
 	if sel==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 		local sg=g:Select(tp,1,1,nil)

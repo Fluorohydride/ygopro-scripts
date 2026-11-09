@@ -55,7 +55,7 @@ end
 function c4694209.addct2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc:IsCanAddCounter(0x1021,1) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),0x1021,1) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(4694209,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(4694209,3))
 	Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),0x1021,1)
 end
 function c4694209.addc2(e,tp,eg,ep,ev,re,r,rp)

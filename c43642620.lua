@@ -10,7 +10,7 @@ function c43642620.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(43642620,0))
+	e2:SetDescription(aux.Stringid(43642620,1))
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_LEAVE_FIELD)

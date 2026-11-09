@@ -2,7 +2,7 @@
 function c10204849.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(10204849,0))
+	e1:SetDescription(aux.Stringid(10204849,3))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -19,7 +19,7 @@ function c10204849.initial_effect(c)
 	c:RegisterEffect(e3)
 	--equip
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(10204849,2))
+	e4:SetDescription(aux.Stringid(10204849,0))
 	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_TO_GRAVE)

@@ -87,7 +87,7 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 			elseif b2 and not b3 then
 				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,4))
 			elseif not b2 and b3 then
-				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,5))
+				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,4))
 				if op==1 then op=2 end
 			else
 				op=0

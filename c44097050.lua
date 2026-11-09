@@ -84,12 +84,12 @@ function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(44097050,3)
+		ops[off]=aux.Stringid(44097050,2)
 		opval[off-1]=2
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(44097050,4)
+		ops[off]=aux.Stringid(44097050,2)
 		opval[off-1]=3
 		off=off+1
 	end

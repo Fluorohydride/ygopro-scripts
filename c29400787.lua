@@ -23,7 +23,7 @@ function c29400787.initial_effect(c)
 	c:RegisterEffect(e3)
 	--tohand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(29400787,0))
+	e4:SetDescription(aux.Stringid(29400787,1))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)

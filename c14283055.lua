@@ -51,7 +51,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and g:IsExists(s.sfilter1,1,nil,e,tp,g) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 		local sc=g:FilterSelect(tp,s.sfilter1,1,1,nil,e,tp,g):GetFirst()
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 		local oc=g:FilterSelect(tp,s.sfilter2,1,1,sc,e,tp,sc):GetFirst()
 		Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
 		Duel.SpecialSummonStep(oc,0,tp,1-tp,false,false,POS_FACEUP)

@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,2))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e1:SetCondition(s.syncon)
@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Summon Tuner
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)
@@ -24,7 +24,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Material Effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,5))
+	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BE_MATERIAL)
@@ -80,8 +80,8 @@ function s.eftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,2),1},
-		{b2,aux.Stringid(id,3),2})
+		{b1,aux.Stringid(id,3),1},
+		{b2,aux.Stringid(id,4),2})
 	e:SetLabel(op)
 	if op==1 then
 		if e:IsCostChecked() then
@@ -108,7 +108,7 @@ function s.efop(e,tp,eg,ep,ev,re,r,rp)
 		if #g>0 then
 			Duel.ConfirmCards(tp,g)
 			local sg=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
-			if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
+			if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,5)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local tg=sg:Select(tp,1,1,nil)

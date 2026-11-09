@@ -20,7 +20,7 @@ function c52263685.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(1-p,3)
 	local ct=g:GetCount()
 	if ct>0 then
-		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(52263685,0))
+		Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(52263685,1))
 		local sg=g:Select(p,1,1,nil)
 		Duel.MoveSequence(sg:GetFirst(),SEQ_DECKBOTTOM)
 		Duel.ConfirmCards(1-p,sg)

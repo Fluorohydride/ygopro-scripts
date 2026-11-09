@@ -21,7 +21,7 @@ function c98162021.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(98162021,0))
+	e3:SetDescription(aux.Stringid(98162021,1))
 	e3:SetCategory(CATEGORY_COUNTER)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)

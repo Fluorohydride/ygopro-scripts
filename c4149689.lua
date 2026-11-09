@@ -15,7 +15,7 @@ function c4149689.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(4149689,1))
+	e3:SetDescription(aux.Stringid(4149689,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
 	e3:SetRange(LOCATION_SZONE)

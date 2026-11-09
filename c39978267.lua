@@ -32,8 +32,8 @@ function c39978267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.IsExistingMatchingCard(c39978267.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) then sel=sel+1 end
 	if Duel.IsExistingMatchingCard(c39978267.eqfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil,e:GetHandler()) then sel=sel+2 end
 	if sel==3 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39978267,0))
-		sel=Duel.SelectOption(tp,aux.Stringid(39978267,1),aux.Stringid(39978267,2))+1
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39978267,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(39978267,2),aux.Stringid(39978267,3))+1
 	end
 	e:SetLabel(sel)
 	if sel==1 then

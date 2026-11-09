@@ -27,7 +27,7 @@ function c2461031.initial_effect(c)
 	c:RegisterEffect(e4)
 	--lvup
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(2461031,1))
+	e5:SetDescription(aux.Stringid(2461031,2))
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_SZONE)
@@ -82,7 +82,7 @@ end
 function c2461031.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local opt=Duel.SelectOption(tp,aux.Stringid(2461031,2),aux.Stringid(2461031,3))
+		local opt=Duel.SelectOption(tp,aux.Stringid(2461031,3),aux.Stringid(2461031,4))
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)

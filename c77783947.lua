@@ -14,7 +14,7 @@ function c77783947.initial_effect(c)
 	c:RegisterEffect(e2)
 	--synchro effect
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(77783947,1))
+	e4:SetDescription(aux.Stringid(77783947,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

@@ -2,7 +2,7 @@
 function c15545291.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(15545291,0))
+	e1:SetDescription(aux.Stringid(15545291,1))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
@@ -15,7 +15,7 @@ function c15545291.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(15545291,1))
+	e3:SetDescription(aux.Stringid(15545291,0))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

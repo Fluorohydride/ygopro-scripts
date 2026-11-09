@@ -13,7 +13,7 @@ function c41201555.initial_effect(c)
 	c:RegisterEffect(e1)
 	--send to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(41201555,3))
+	e2:SetDescription(aux.Stringid(41201555,0))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)
@@ -40,14 +40,14 @@ function c41201555.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c41201555.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(41201555,0),aux.Stringid(41201555,1),aux.Stringid(41201555,2))
+		select=Duel.SelectOption(tp,aux.Stringid(41201555,1),aux.Stringid(41201555,2),aux.Stringid(41201555,3))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(41201555,0),aux.Stringid(41201555,2))
+		select=Duel.SelectOption(tp,aux.Stringid(41201555,1),aux.Stringid(41201555,3))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(41201555,1),aux.Stringid(41201555,2))+1
+		select=Duel.SelectOption(tp,aux.Stringid(41201555,2),aux.Stringid(41201555,3))+1
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(41201555,2))
+		select=Duel.SelectOption(tp,aux.Stringid(41201555,3))
 		select=2
 	end
 	if select==0 then

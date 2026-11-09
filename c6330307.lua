@@ -19,7 +19,7 @@ function c6330307.initial_effect(c)
 	c:RegisterEffect(e2)
 	--chain attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(6330307,1))
+	e3:SetDescription(aux.Stringid(6330307,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
 	e3:SetRange(LOCATION_SZONE)

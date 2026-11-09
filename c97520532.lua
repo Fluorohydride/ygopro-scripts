@@ -50,7 +50,7 @@ function c97520532.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		local g2=Duel.GetMatchingGroup(c97520532.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 		if res and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and not Duel.IsExistingMatchingCard(c97520532.cfilter,tp,LOCATION_MZONE,0,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(97520532,2)) then
+			and not Duel.IsExistingMatchingCard(c97520532.cfilter,tp,LOCATION_MZONE,0,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(97520532,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g2:Select(tp,1,1,nil)

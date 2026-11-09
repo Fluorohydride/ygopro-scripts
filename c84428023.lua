@@ -29,7 +29,7 @@ function c84428023.initial_effect(c)
 	c:RegisterEffect(e4)
 	--atkup
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(84428023,0))
+	e4:SetDescription(aux.Stringid(84428023,1))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_DAMAGE)

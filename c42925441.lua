@@ -2,7 +2,7 @@
 function c42925441.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(42925441,0))
+	e1:SetDescription(aux.Stringid(42925441,1))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
@@ -10,7 +10,7 @@ function c42925441.initial_effect(c)
 	c:RegisterEffect(e1)
 	--effect
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(42925441,5))
+	e4:SetDescription(aux.Stringid(42925441,0))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
@@ -27,7 +27,7 @@ function c42925441.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	--destroy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(42925441,4))
+	e1:SetDescription(aux.Stringid(42925441,5))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -91,13 +91,13 @@ function c42925441.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b3=Duel.IsExistingMatchingCard(c42925441.costfilter3,tp,LOCATION_MZONE,0,1,nil,e,tp)
 	local op=0
 	if b1 and b2 and b3 then
-		op=Duel.SelectOption(tp,aux.Stringid(42925441,1),aux.Stringid(42925441,2),aux.Stringid(42925441,3))
+		op=Duel.SelectOption(tp,aux.Stringid(42925441,2),aux.Stringid(42925441,3),aux.Stringid(42925441,4))
 	elseif b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(42925441,1),aux.Stringid(42925441,2))
+		op=Duel.SelectOption(tp,aux.Stringid(42925441,2),aux.Stringid(42925441,3))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(42925441,1))
+		op=Duel.SelectOption(tp,aux.Stringid(42925441,2))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(42925441,2))+1
+		op=Duel.SelectOption(tp,aux.Stringid(42925441,3))+1
 	end
 	e:SetLabel(op)
 	if op==0 then

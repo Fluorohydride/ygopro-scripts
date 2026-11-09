@@ -51,7 +51,7 @@ function c63845230.initial_effect(c)
 	c:RegisterEffect(e9)
 	--remove
 	local ea=Effect.CreateEffect(c)
-	ea:SetDescription(aux.Stringid(63845230,2))
+	ea:SetDescription(aux.Stringid(63845230,0))
 	ea:SetCategory(CATEGORY_REMOVE)
 	ea:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	ea:SetCode(EVENT_BATTLE_START)

@@ -23,7 +23,7 @@ function c69155991.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to grave
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(69155991,0))
+	e4:SetDescription(aux.Stringid(69155991,1))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_TO_GRAVE)

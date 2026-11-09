@@ -40,7 +40,7 @@ function c91422370.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		local atk=g:GetFirst():GetAttack()
 		local sg=Duel.GetMatchingGroup(c91422370.filter2,tp,LOCATION_DECK,0,nil,atk,e,tp)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(91422370,0)) then
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(91422370,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local dg=sg:Select(tp,1,1,nil)

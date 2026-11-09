@@ -30,7 +30,7 @@ function c82315403.initial_effect(c)
 	c:RegisterEffect(e3)
 	--fusion protection
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(82315403,2))
+	e4:SetDescription(aux.Stringid(82315403,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
 	e4:SetCost(aux.bfgcost)

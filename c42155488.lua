@@ -2,7 +2,7 @@
 function c42155488.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(42155488,0))
+	e1:SetDescription(aux.Stringid(42155488,3))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c42155488.ntcon)
@@ -10,7 +10,7 @@ function c42155488.initial_effect(c)
 	c:RegisterEffect(e1)
 	--declear
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(42155488,1))
+	e2:SetDescription(aux.Stringid(42155488,2))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)

@@ -2,7 +2,7 @@
 function c51124303.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(51124303,0))
+	e1:SetDescription(aux.Stringid(51124303,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -12,7 +12,7 @@ function c51124303.initial_effect(c)
 	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(51124303,1))
+	e2:SetDescription(aux.Stringid(51124303,0))
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
@@ -90,7 +90,7 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local b1=sg:IsExists(c51124303.rfilter,1,nil,mc)
 	local b2=sg:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),1,ft)
-	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,2))) then
+	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,3))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=sg:Filter(c51124303.rfilter,nil,mc):SelectUnselect(nil,tp,false,true,1,1)
 		if not tc then goto cancel end

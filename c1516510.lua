@@ -32,7 +32,7 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetDescription(aux.Stringid(1516510,2))
 			e1:SetValue(1)
 		else
-			e1:SetDescription(aux.Stringid(1516510,3))
+			e1:SetDescription(aux.Stringid(1516510,2))
 			e1:SetValue(2)
 		end
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

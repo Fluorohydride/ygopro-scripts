@@ -3,7 +3,7 @@ function c90642597.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(90642597,0))
+	e1:SetDescription(aux.Stringid(90642597,1))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

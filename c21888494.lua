@@ -22,7 +22,7 @@ function c21888494.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.GetMatchingGroup(c21888494.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 	local g2=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND,0,nil,TYPE_SPELL+TYPE_TRAP)
 	if g1:GetCount()==0 or g2:GetCount()<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(21888494,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(21888494,1))
 	local sg1=g1:Select(tp,1,1,nil)
 	local sc=sg1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(21888494,1))

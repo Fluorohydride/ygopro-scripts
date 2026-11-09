@@ -11,7 +11,7 @@ function c73551138.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate trap
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(73551138,1))
+	e4:SetDescription(aux.Stringid(73551138,0))
 	e4:SetCategory(CATEGORY_DISABLE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_SUMMON_SUCCESS)

@@ -45,7 +45,7 @@ function c49158617.activate(e,tp,eg,ep,ev,re,r,rp)
 			local ops={}
 			local opval={}
 			if b1 then
-				ops[off]=aux.Stringid(49158617,3)
+				ops[off]=aux.Stringid(49158617,1)
 				opval[off-1]=1
 				off=off+1
 			end
@@ -54,7 +54,7 @@ function c49158617.activate(e,tp,eg,ep,ev,re,r,rp)
 				opval[off-1]=2
 				off=off+1
 			end
-			ops[off]=aux.Stringid(49158617,2)
+			ops[off]=aux.Stringid(49158617,1)
 			opval[off-1]=3
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
 			local op=Duel.SelectOption(tp,table.unpack(ops))

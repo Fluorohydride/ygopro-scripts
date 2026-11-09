@@ -20,7 +20,7 @@ function c18720257.initial_effect(c)
 	c:RegisterEffect(e2)
 	--summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(18720257,2))
+	e3:SetDescription(aux.Stringid(18720257,1))
 	e3:SetCategory(CATEGORY_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_FZONE)

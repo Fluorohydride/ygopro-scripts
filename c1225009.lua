@@ -73,11 +73,11 @@ function c1225009.drop(e,tp,eg,ep,ev,re,r,rp)
 			off=off+1
 		end
 		if #stg>0 then
-			ops[off]=aux.Stringid(1225009,3)
+			ops[off]=aux.Stringid(1225009,2)
 			opval[off-1]=2
 			off=off+1
 		end
-		ops[off]=aux.Stringid(1225009,4)
+		ops[off]=aux.Stringid(1225009,2)
 		opval[off-1]=0
 		local op=Duel.SelectOption(tp,table.unpack(ops))
 		if opval[op]==1 then

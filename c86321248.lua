@@ -47,7 +47,7 @@ function c86321248.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if bit.band(flag,0x2)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(86321248,2))
+		e1:SetDescription(aux.Stringid(86321248,0))
 		e1:SetCategory(CATEGORY_DAMAGE)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetCode(EVENT_BATTLE_DAMAGE)

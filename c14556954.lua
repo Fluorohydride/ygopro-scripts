@@ -4,7 +4,7 @@ function s.initial_effect(c)
 	c:EnableCounterPermit(0x75)
 	--summon proc
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,3))
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(s.sumcon)

@@ -53,7 +53,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if bit.band(att,ATTRIBUTE_FIRE)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(52709508,5))
+		e1:SetDescription(aux.Stringid(52709508,0))
 		e1:SetCategory(CATEGORY_DAMAGE)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)
@@ -63,7 +63,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c52709508.damop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,3))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,2))
 	end
 	if bit.band(att,ATTRIBUTE_LIGHT)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -77,7 +77,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c52709508.spop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,4))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,2))
 	end
 end
 function c52709508.aclimit(e,re,tp)

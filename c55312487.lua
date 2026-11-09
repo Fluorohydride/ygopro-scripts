@@ -2,7 +2,7 @@
 function c55312487.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(55312487,0))
+	e1:SetDescription(aux.Stringid(55312487,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,55312487+EFFECT_COUNT_CODE_OATH)
@@ -32,7 +32,7 @@ end
 function c55312487.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.CheckReleaseGroup(tp,c55312487.spfilter1,1,nil,e,tp)
-		and Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(55312487,2)) then
+		and Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(55312487,3)) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetOperation(c55312487.activate)
 		local rg=Duel.SelectReleaseGroup(tp,c55312487.spfilter1,1,1,nil,e,tp)

@@ -48,7 +48,7 @@ function c39823987.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c39823987.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetDescription(aux.Stringid(39823987,2))
+	e1:SetDescription(aux.Stringid(39823987,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)

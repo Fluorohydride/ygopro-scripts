@@ -30,7 +30,7 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	elseif t1 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2))
 	elseif t2 then
-		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,3))
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2))
 		if op==1 then op=2 end
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1))

@@ -53,7 +53,7 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local res=Duel.IsPlayerAffectedByEffect(tp,16625614) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,SUMMON_VALUE_DARK_SANCTUARY)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 and not res then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94212438,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94212438,2))
 	local g=Duel.SelectMatchingCard(tp,c94212438.plfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
 	local tc=g:GetFirst()
 	if tc and res and Duel.SelectYesNo(tp,aux.Stringid(16625614,2)) then

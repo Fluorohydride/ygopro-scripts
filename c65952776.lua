@@ -28,7 +28,7 @@ function c65952776.initial_effect(c)
 	c:RegisterEffect(e3)
 	--grave to equip
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(65952776,2))
+	e4:SetDescription(aux.Stringid(65952776,1))
 	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_TO_GRAVE)

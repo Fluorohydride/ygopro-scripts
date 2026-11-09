@@ -2,7 +2,7 @@
 function c10032958.initial_effect(c)
 	--to defense
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(10032958,0))
+	e1:SetDescription(aux.Stringid(10032958,1))
 	e1:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetOperation(c10032958.effop)
@@ -13,22 +13,22 @@ function c10032958.effop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,10032958)
 	if ct>3 then ct=3 end
 	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
-		local opt1=Duel.SelectOption(tp,aux.Stringid(10032958,1),aux.Stringid(10032958,2),aux.Stringid(10032958,3))
+		local opt1=Duel.SelectOption(tp,aux.Stringid(10032958,2),aux.Stringid(10032958,3),aux.Stringid(10032958,4))
 		local opt2=0
 		local opt3=0
 		c10032958.reg(c,opt1)
 		if ct<2 then return end
-		if opt1==0 then opt2=Duel.SelectOption(tp,aux.Stringid(10032958,2),aux.Stringid(10032958,3))+1
-		elseif opt1==2 then opt2=Duel.SelectOption(tp,aux.Stringid(10032958,1),aux.Stringid(10032958,2))
+		if opt1==0 then opt2=Duel.SelectOption(tp,aux.Stringid(10032958,3),aux.Stringid(10032958,4))+1
+		elseif opt1==2 then opt2=Duel.SelectOption(tp,aux.Stringid(10032958,2),aux.Stringid(10032958,3))
 		else
-			opt2=Duel.SelectOption(tp,aux.Stringid(10032958,1),aux.Stringid(10032958,3))
+			opt2=Duel.SelectOption(tp,aux.Stringid(10032958,2),aux.Stringid(10032958,4))
 			if opt2==1 then opt2=2 end
 		end
 		c10032958.reg(c,opt2)
 		if ct<3 then return end
-		if opt1~=0 and opt2~=0 then opt3=Duel.SelectOption(tp,aux.Stringid(10032958,1))
-		elseif opt1~=1 and opt2~=1 then opt3=Duel.SelectOption(tp,aux.Stringid(10032958,2))+1
-		else opt3=Duel.SelectOption(tp,aux.Stringid(10032958,3))+2 end
+		if opt1~=0 and opt2~=0 then opt3=Duel.SelectOption(tp,aux.Stringid(10032958,2))
+		elseif opt1~=1 and opt2~=1 then opt3=Duel.SelectOption(tp,aux.Stringid(10032958,3))+1
+		else opt3=Duel.SelectOption(tp,aux.Stringid(10032958,4))+2 end
 		c10032958.reg(c,opt3)
 	end
 end
@@ -43,7 +43,7 @@ function c10032958.reg(c,opt)
 	elseif opt==1 then
 		--chain attack
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(10032958,2))
+		e1:SetDescription(aux.Stringid(10032958,3))
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)
 		e1:SetCondition(c10032958.atcon)
@@ -53,7 +53,7 @@ function c10032958.reg(c,opt)
 	else
 		--damage
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(10032958,3))
+		e1:SetDescription(aux.Stringid(10032958,0))
 		e1:SetCategory(CATEGORY_DAMAGE)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

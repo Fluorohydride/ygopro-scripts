@@ -12,7 +12,7 @@ function c36046926.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(36046926,2))
+	e2:SetDescription(aux.Stringid(36046926,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -31,7 +31,7 @@ function c36046926.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 then return end
 	local ac=1
 	if ct>1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36046926,1))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36046926,2))
 		ac=Duel.AnnounceNumber(tp,1,2)
 	end
 	Duel.ConfirmDecktop(tp,ac)

@@ -65,7 +65,7 @@ function c63049052.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		--material
 		local e2=Effect.CreateEffect(c)
-		e2:SetDescription(aux.Stringid(63049052,0))
+		e2:SetDescription(aux.Stringid(63049052,1))
 		e2:SetType(EFFECT_TYPE_QUICK_O)
 		e2:SetCode(EVENT_FREE_CHAIN)
 		e2:SetRange(LOCATION_SZONE)

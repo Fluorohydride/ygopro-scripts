@@ -2,7 +2,7 @@
 function c5466615.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(5466615,0))
+	e1:SetDescription(aux.Stringid(5466615,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,5466615+EFFECT_COUNT_CODE_OATH)
@@ -31,7 +31,7 @@ function c5466615.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	if Duel.IsExistingMatchingCard(c5466615.tgfilter,tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(5466615,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(5466615,3)) then
 		e:SetCategory(CATEGORY_REMOVE+CATEGORY_DISABLE)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c5466615.activate)

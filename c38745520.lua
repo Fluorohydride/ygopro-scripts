@@ -4,7 +4,7 @@ function c38745520.initial_effect(c)
 	c:SetUniqueOnField(1,0,38745520)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(38745520,0))
+	e1:SetDescription(aux.Stringid(38745520,3))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

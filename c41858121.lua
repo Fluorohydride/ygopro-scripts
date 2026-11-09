@@ -35,9 +35,9 @@ function c41858121.activate(e,tp,eg,ep,ev,re,r,rp)
 	local b1=Duel.IsPlayerCanDraw(tp,1)
 	local b2=Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,0)
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(41858121,0),aux.Stringid(41858121,1))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(41858121,0))
-	elseif b2 then Duel.SelectOption(tp,aux.Stringid(41858121,1)) op=1
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(41858121,1),aux.Stringid(41858121,2))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(41858121,1))
+	elseif b2 then Duel.SelectOption(tp,aux.Stringid(41858121,2)) op=1
 	else return end
 	if op==0 then
 		Duel.Draw(tp,1,REASON_EFFECT)

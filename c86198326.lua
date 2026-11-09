@@ -29,7 +29,7 @@ function c86198326.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c86198326.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local opt=0
-	if g:GetFirst():IsDefenseAbove(0) then opt=Duel.SelectOption(tp,aux.Stringid(86198326,0),aux.Stringid(86198326,1)) end
+	if g:GetFirst():IsDefenseAbove(0) then opt=Duel.SelectOption(tp,aux.Stringid(86198326,1),aux.Stringid(86198326,2)) end
 	e:SetLabel(opt)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end

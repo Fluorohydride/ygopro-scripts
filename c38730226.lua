@@ -16,7 +16,7 @@ function c38730226.con(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38730226.op(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetDescription(aux.Stringid(38730226,1))
+	e1:SetDescription(aux.Stringid(38730226,0))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

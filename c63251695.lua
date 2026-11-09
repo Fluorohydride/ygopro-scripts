@@ -4,7 +4,7 @@ function c63251695.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(63251695,6))
+	e2:SetDescription(aux.Stringid(63251695,0))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_CHAIN_SOLVING)

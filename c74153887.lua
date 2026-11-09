@@ -28,7 +28,7 @@ function c74153887.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SelectOption(tp,aux.Stringid(74153887,2))
 		op=1
 	else
-		Duel.SelectOption(tp,aux.Stringid(74153887,1))
+		Duel.SelectOption(tp,aux.Stringid(74153887,2))
 		op=0
 	end
 	e:SetLabel(op)

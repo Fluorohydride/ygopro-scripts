@@ -20,7 +20,7 @@ function c52128900.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c52128900.filter1,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(c52128900.filter2,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(52128900,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(52128900,1))
 	local g1=Duel.SelectTarget(tp,c52128900.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(52128900,1))
 	local g2=Duel.SelectTarget(tp,c52128900.filter2,tp,LOCATION_MZONE,0,1,1,nil)

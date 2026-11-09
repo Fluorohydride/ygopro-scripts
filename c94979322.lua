@@ -15,7 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--avoid dmg
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,3))
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 	e2:SetValue(1)

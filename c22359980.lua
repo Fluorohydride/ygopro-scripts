@@ -2,7 +2,7 @@
 function c22359980.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(22359980,0))
+	e1:SetDescription(aux.Stringid(22359980,1))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -66,7 +66,7 @@ function c22359980.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c22359980.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,2000) and Duel.SelectYesNo(tp,aux.Stringid(22359980,1)) then
+	if Duel.CheckLPCost(tp,2000) and Duel.SelectYesNo(tp,aux.Stringid(22359980,2)) then
 		Duel.PayLPCost(tp,2000)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

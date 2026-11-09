@@ -64,7 +64,7 @@ function c40493210.activate(e,tp,eg,ep,ev,re,r,rp)
 		local off=1
 		local ops,opval={},{}
 		if b1 then
-			ops[off]=aux.Stringid(40493210,3)
+			ops[off]=aux.Stringid(40493210,1)
 			opval[off]=0
 			off=off+1
 		end
@@ -73,7 +73,7 @@ function c40493210.activate(e,tp,eg,ep,ev,re,r,rp)
 			opval[off]=1
 			off=off+1
 		end
-		ops[off]=aux.Stringid(40493210,2)
+		ops[off]=aux.Stringid(40493210,1)
 		opval[off]=2
 		local op=Duel.SelectOption(tp,table.unpack(ops))+1
 		local sel=opval[op]

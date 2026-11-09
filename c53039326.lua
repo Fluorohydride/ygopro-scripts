@@ -19,7 +19,7 @@ function c53039326.initial_effect(c)
 	--search
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-	e4:SetDescription(aux.Stringid(53039326,2))
+	e4:SetDescription(aux.Stringid(53039326,0))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_EVENT_PLAYER)
@@ -48,9 +48,9 @@ function c53039326.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c53039326.cfilter,tp,LOCATION_HAND,0,nil)
 	local sel=1
 	if g:GetCount()~=0 then
-		sel=Duel.SelectOption(tp,aux.Stringid(53039326,0),aux.Stringid(53039326,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(53039326,1),aux.Stringid(53039326,2))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(53039326,1))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(53039326,2))+1
 	end
 	if sel==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)

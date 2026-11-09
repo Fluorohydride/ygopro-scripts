@@ -2,7 +2,7 @@
 function c80044027.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(80044027,0))
+	e1:SetDescription(aux.Stringid(80044027,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -45,7 +45,7 @@ function c80044027.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(c80044027.eqlimit)
 		c:RegisterEffect(e1)
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsCanBeSpecialSummoned),tp,0,LOCATION_GRAVE,nil,e,0,tp,false,false,POS_FACEUP,1-tp)
-		if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(80044027,2)) then
+		if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(80044027,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=sg:Select(tp,1,1,nil):GetFirst()

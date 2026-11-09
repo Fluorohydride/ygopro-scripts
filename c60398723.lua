@@ -28,7 +28,7 @@ function c60398723.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and tc:IsFaceup()
 		and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)>0 then
 		local rg=Duel.GetMatchingGroup(c60398723.rfilter,tp,LOCATION_FZONE,LOCATION_FZONE,nil)
-		if rg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(60398723,0)) then
+		if rg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(60398723,1)) then
 			Duel.BreakEffect()
 			Duel.SendtoHand(rg,nil,REASON_EFFECT)
 		end

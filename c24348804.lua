@@ -2,7 +2,7 @@
 function c24348804.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(24348804,0))
+	e1:SetDescription(aux.Stringid(24348804,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_SPSUMMON)
@@ -42,11 +42,11 @@ function c24348804.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_SPSUMMON_SUCCESS,true)
 	if res then
 		local g=teg:Filter(c24348804.filter1,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24348804,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24348804,3)) then
 			Duel.SetTargetCard(g)
 			Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 			e:SetLabel(1)
-			e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(24348804,3))
+			e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(24348804,4))
 		end
 	end
 end

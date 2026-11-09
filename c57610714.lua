@@ -16,7 +16,7 @@ function c57610714.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pos Change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(57610714,0))
+	e3:SetDescription(aux.Stringid(57610714,1))
 	e3:SetCategory(CATEGORY_POSITION)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)

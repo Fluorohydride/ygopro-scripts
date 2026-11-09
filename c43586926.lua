@@ -13,7 +13,7 @@ function c43586926.regop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD) then
 		--spsummon
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(43586926,1))
+		e1:SetDescription(aux.Stringid(43586926,0))
 		e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 		e1:SetRange(LOCATION_GRAVE)

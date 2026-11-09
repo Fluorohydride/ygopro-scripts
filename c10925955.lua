@@ -27,13 +27,13 @@ function c10925955.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.IsExistingMatchingCard(c10925955.filter,tp,0,LOCATION_SZONE,1,nil) then sel=sel+1 end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>1 or Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>1 then sel=sel+2 end
 	if sel==1 then
-		ac=Duel.SelectOption(tp,aux.Stringid(10925955,0))
+		ac=Duel.SelectOption(tp,aux.Stringid(10925955,1))
 	elseif sel==2 then
-		ac=Duel.SelectOption(tp,aux.Stringid(10925955,1))+1
+		ac=Duel.SelectOption(tp,aux.Stringid(10925955,2))+1
 	elseif Duel.IsExistingMatchingCard(c10925955.cfilter,tp,LOCATION_MZONE,0,1,nil,true) then
-		ac=Duel.SelectOption(tp,aux.Stringid(10925955,0),aux.Stringid(10925955,1),aux.Stringid(10925955,2))
+		ac=Duel.SelectOption(tp,aux.Stringid(10925955,1),aux.Stringid(10925955,2),aux.Stringid(10925955,3))
 	else
-		ac=Duel.SelectOption(tp,aux.Stringid(10925955,0),aux.Stringid(10925955,1))
+		ac=Duel.SelectOption(tp,aux.Stringid(10925955,1),aux.Stringid(10925955,2))
 	end
 	e:SetLabel(ac)
 end
@@ -45,7 +45,7 @@ function c10925955.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if ac==1 or ac==2 then
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>1 and Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>1 then
-			local st=Duel.SelectOption(tp,aux.Stringid(10925955,3),aux.Stringid(10925955,4))
+			local st=Duel.SelectOption(tp,aux.Stringid(10925955,4),aux.Stringid(10925955,5))
 			if st==0 then Duel.SortDecktop(tp,tp,2)
 			else Duel.SortDecktop(tp,1-tp,2) end
 		elseif Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>1 then

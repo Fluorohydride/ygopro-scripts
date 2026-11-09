@@ -49,7 +49,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Draw(tp,1,REASON_EFFECT)
 		if tc:IsType(TYPE_PENDULUM) then
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,2))
+			e1:SetDescription(aux.Stringid(id,3))
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_EXTRA_PENDULUM_SUMMON)
 			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

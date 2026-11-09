@@ -46,7 +46,7 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=g:GetFirst()
 	e:SetLabel(tc:GetOriginalLevel())
 	local fid=c:GetFieldID()
-	tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,fid,aux.Stringid(id,2))
+	tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,fid,aux.Stringid(id,3))
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
@@ -70,7 +70,7 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()>0 and Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tg=Duel.GetMatchingGroup(Card.IsCanBeSpecialSummoned,tp,0,LOCATION_HAND,nil,e,0,1-tp,false,false)
 		if tg:GetCount()>0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
-			and Duel.SelectYesNo(1-tp,aux.Stringid(id,1)) then
+			and Duel.SelectYesNo(1-tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 			local ssg=tg:Select(1-tp,1,1,nil)

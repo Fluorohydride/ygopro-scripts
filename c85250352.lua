@@ -3,7 +3,7 @@ function c85250352.initial_effect(c)
 	c:SetUniqueOnField(1,0,85250352)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(85250352,0))
+	e1:SetDescription(aux.Stringid(85250352,3))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c85250352.cost)

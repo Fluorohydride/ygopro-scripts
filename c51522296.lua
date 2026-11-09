@@ -58,7 +58,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(id,3)
+		ops[off]=aux.Stringid(id,2)
 		opval[off]=0
 		off=off+1
 	end

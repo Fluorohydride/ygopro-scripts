@@ -8,11 +8,11 @@ function c23927567.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23927567.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(23927567,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(23927567,2))
 	local g=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,TYPE_FIELD)
 	local tc=g:GetFirst()
 	if tc then
-		if Duel.IsEnvironment(47355498) and tc:IsAbleToHand() and Duel.SelectOption(tp,1190,aux.Stringid(23927567,0))==0 then
+		if Duel.IsEnvironment(47355498) and tc:IsAbleToHand() and Duel.SelectOption(tp,1190,aux.Stringid(23927567,1))==0 then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else

@@ -24,7 +24,7 @@ function c13032689.initial_effect(c)
 	c:RegisterEffect(e3)
 	--remove overlay replace
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(13032689,0))
+	e4:SetDescription(aux.Stringid(13032689,1))
 	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_OVERLAY_REMOVE_REPLACE)
 	e4:SetRange(LOCATION_SZONE)

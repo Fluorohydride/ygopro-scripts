@@ -16,11 +16,11 @@ function c74191942.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74191942.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191942,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191942,1))
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,5,5,nil)
 	if g:GetCount()<5 then return end
 	Duel.ConfirmCards(1-tp,g)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191942,1))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191942,2))
 	local sg=g:Select(1-tp,1,1,nil)
 	sg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 	Duel.SendtoHand(sg,nil,REASON_EFFECT)

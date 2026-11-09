@@ -53,14 +53,14 @@ function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	if Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_ONFIELD,3,nil) then
 		--destroy
-		ops[off]=aux.Stringid(70219023,2)
+		ops[off]=aux.Stringid(70219023,1)
 		opval[off]=2
 		off=off+1
 	end
 	local ops_lp_equal={table.unpack(ops)}
 	local opval_lp_equal={table.unpack(opval)}
 	--attack up
-	ops[off]=aux.Stringid(70219023,3)
+	ops[off]=aux.Stringid(70219023,1)
 	opval[off]=4
 	off=off+1
 	if chk==0 then return off>1 end
@@ -78,9 +78,9 @@ function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 		if pay==0 then
 			--stop
-			ops[off]=aux.Stringid(70219023,4)
+			ops[off]=aux.Stringid(70219023,1)
 			opval[off]=0
-			ops_lp_equal[off-1]=aux.Stringid(70219023,4)
+			ops_lp_equal[off-1]=aux.Stringid(70219023,2)
 			opval_lp_equal[off-1]=0
 		end
 		if selval==0 then break end
@@ -93,7 +93,7 @@ function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.PayLPCost(tp,pay,true)
 	e:SetLabel(op)
-	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(70219023,5))
+	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(70219023,3))
 end
 function c70219023.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

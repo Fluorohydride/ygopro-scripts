@@ -32,7 +32,7 @@ function c53291093.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local g=Duel.GetMatchingGroup(c53291093.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(53291093,0)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(53291093,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.BreakEffect()

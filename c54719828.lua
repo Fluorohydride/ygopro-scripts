@@ -32,13 +32,13 @@ function c54719828.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetTargetRange(1,1)
 	if e:GetLabel()==0 then
-		e1:SetDescription(aux.Stringid(54719828,2))
+		e1:SetDescription(aux.Stringid(54719828,1))
 		e1:SetValue(c54719828.aclimit1)
 	elseif e:GetLabel()==1 then
-		e1:SetDescription(aux.Stringid(54719828,3))
+		e1:SetDescription(aux.Stringid(54719828,1))
 		e1:SetValue(c54719828.aclimit2)
 	else
-		e1:SetDescription(aux.Stringid(54719828,4))
+		e1:SetDescription(aux.Stringid(54719828,1))
 		e1:SetValue(c54719828.aclimit3)
 	end
 	e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,1)

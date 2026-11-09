@@ -20,7 +20,7 @@ function c8581705.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atkup
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(8581705,0))
+	e3:SetDescription(aux.Stringid(8581705,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -36,7 +36,7 @@ end
 function c8581705.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckLPCost(tp,500) or Duel.IsPlayerAffectedByEffect(tp,94585852) then
 		if not Duel.IsPlayerAffectedByEffect(tp,94585852)
-			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,1)) then
+			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,2)) then
 			Duel.PayLPCost(tp,500)
 		end
 	else

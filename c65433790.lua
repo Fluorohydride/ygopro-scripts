@@ -2,7 +2,7 @@
 function c65433790.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(65433790,0))
+	e1:SetDescription(aux.Stringid(65433790,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
@@ -73,7 +73,7 @@ end
 function c65433790.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(ep,LOCATION_MZONE)<=0 then return end
 	local g=Duel.GetMatchingGroup(c65433790.spfilter,ep,LOCATION_HAND+LOCATION_DECK,0,nil,e,ep)
-	if g:GetCount()>0 and Duel.SelectYesNo(ep,aux.Stringid(65433790,2)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(ep,aux.Stringid(65433790,3)) then
 		Duel.Hint(HINT_SELECTMSG,ep,HINTMSG_SPSUMMON)
 		local sc=g:Select(ep,1,1,nil)
 		if Duel.SpecialSummon(sc,0,ep,ep,false,false,POS_FACEUP)>0 then

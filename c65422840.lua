@@ -2,7 +2,7 @@
 function c65422840.initial_effect(c)
 	--Draw
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(65422840,0))
+	e1:SetDescription(aux.Stringid(65422840,1))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
@@ -14,7 +14,7 @@ function c65422840.initial_effect(c)
 	c:RegisterEffect(e1)
 	--todeck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(65422840,1))
+	e2:SetDescription(aux.Stringid(65422840,0))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCategory(CATEGORY_TODECK)
 	e2:SetRange(LOCATION_MZONE)

@@ -9,7 +9,7 @@ function c97769122.initial_effect(c)
 	c:RegisterEffect(e1)
 	--copy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(97769122,0))
+	e2:SetDescription(aux.Stringid(97769122,1))
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c97769122.condition)
@@ -19,7 +19,7 @@ function c97769122.initial_effect(c)
 	c:RegisterEffect(e2)
 	--xyz summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(97769122,2))
+	e3:SetDescription(aux.Stringid(97769122,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_ACTIVATE)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -34,7 +34,7 @@ function c97769122.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c97769122.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.SelectYesNo(tp,aux.Stringid(97769122,1)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(97769122,2)) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_PUBLIC)

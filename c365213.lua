@@ -3,7 +3,7 @@ function c365213.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--to deck
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(365213,0))
+	e1:SetDescription(aux.Stringid(365213,3))
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -82,9 +82,9 @@ function c365213.opop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c365213.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.GetFlagEffect(tp,365214)==0
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(365213,3),aux.Stringid(365213,4))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(365213,3))
-	elseif b2 then op=Duel.SelectOption(tp,aux.Stringid(365213,4))+1
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(365213,4),aux.Stringid(365213,5))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(365213,4))
+	elseif b2 then op=Duel.SelectOption(tp,aux.Stringid(365213,5))+1
 	else return end
 	if op==0 then
 		Duel.Draw(tp,1,REASON_EFFECT)

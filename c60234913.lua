@@ -3,7 +3,7 @@ function c60234913.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,61757117)
 	--untargetable
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(60234913,0))
+	e1:SetDescription(aux.Stringid(60234913,1))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)

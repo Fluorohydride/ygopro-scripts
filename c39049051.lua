@@ -2,7 +2,7 @@
 function c39049051.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(39049051,0))
+	e1:SetDescription(aux.Stringid(39049051,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -62,7 +62,7 @@ function c39049051.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(c39049051.eqlimit)
 		c:RegisterEffect(e1)
 		local hg=Duel.GetMatchingGroup(c39049051.drfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		if hg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(39049051,2)) then
+		if hg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(39049051,3)) then
 			Duel.BreakEffect()
 			Duel.SendtoHand(hg,nil,REASON_EFFECT)
 		end

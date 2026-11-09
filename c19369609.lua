@@ -24,7 +24,7 @@ function c19369609.initial_effect(c)
 	c:RegisterEffect(e2)
 	--attack up
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(19369609,2))
+	e3:SetDescription(aux.Stringid(19369609,0))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_START)

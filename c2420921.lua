@@ -11,7 +11,7 @@ function c2420921.initial_effect(c)
 	--discard deck
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e2:SetDescription(aux.Stringid(2420921,0))
+	e2:SetDescription(aux.Stringid(2420921,1))
 	e2:SetCategory(CATEGORY_DECKDES)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
 	e2:SetRange(LOCATION_MZONE)

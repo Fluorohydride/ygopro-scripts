@@ -2,7 +2,7 @@
 function c12678601.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(12678601,0))
+	e1:SetDescription(aux.Stringid(12678601,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
@@ -14,7 +14,7 @@ function c12678601.initial_effect(c)
 	c:RegisterEffect(e1)
 	--flip
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(12678601,1))
+	e2:SetDescription(aux.Stringid(12678601,0))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)

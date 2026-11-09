@@ -24,7 +24,7 @@ function c3300267.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(3300267,2))
+	e3:SetDescription(aux.Stringid(3300267,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetCode(EVENT_RELEASE)

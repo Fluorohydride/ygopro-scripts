@@ -79,7 +79,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 				if tc:IsType(TYPE_TRAP)
 					and (tc:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
 					and tc:IsSSetable(true)
-					and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+					and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 					Duel.SSet(tp,tc)
 				end
 			end

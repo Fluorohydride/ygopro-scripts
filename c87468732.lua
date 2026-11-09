@@ -55,7 +55,7 @@ function c87468732.initial_effect(c)
 	c:RegisterEffect(e6)
 	--to pzone
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(87468732,4))
+	e7:SetDescription(aux.Stringid(87468732,2))
 	e7:SetCategory(CATEGORY_DESTROY)
 	e7:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e7:SetCode(EVENT_PHASE+PHASE_END)

@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,5))
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_RECOVER+CATEGORY_DESTROY+CATEGORY_DAMAGE+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -29,8 +29,8 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
 		local chk=Duel.IsExistingMatchingCard(s.afilter,tp,LOCATION_MZONE,0,1,nil)
 		op=aux.SelectFromOptions(tp,
 			{true,aux.Stringid(id,1)},
-			{true,aux.Stringid(id,2)},
-			{chk,aux.Stringid(id,3)})
+			{true,aux.Stringid(id,1)},
+			{chk,aux.Stringid(id,2)})
 	end
 	if op&1>0 and Duel.Recover(tp,500,REASON_EFFECT)>0 then
 		local e1=Effect.CreateEffect(c)
@@ -45,7 +45,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
 	end
 	if op&2>0 and Duel.Damage(tp,500,REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,nil)
-		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
+		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.HintSelection(sg)

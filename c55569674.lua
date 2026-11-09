@@ -2,7 +2,7 @@
 function c55569674.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(55569674,0))
+	e1:SetDescription(aux.Stringid(55569674,2))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -25,7 +25,7 @@ function c55569674.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atk
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(55569674,1))
+	e4:SetDescription(aux.Stringid(55569674,0))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

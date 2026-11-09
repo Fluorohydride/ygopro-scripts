@@ -3,7 +3,7 @@ function c34834619.initial_effect(c)
 	aux.AddRitualProcEqualCode(c,85346853)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(34834619,0))
+	e1:SetDescription(aux.Stringid(34834619,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)

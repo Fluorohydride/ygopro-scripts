@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--activate
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,0))
+	e4:SetDescription(aux.Stringid(id,2))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1)
@@ -101,7 +101,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		op=1
 	end
 	if b2 and not b1 then
-		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,4))
+		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,3))
 		op=2
 	end
 	if b1 and b2 then

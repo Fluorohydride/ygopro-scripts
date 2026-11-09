@@ -55,7 +55,7 @@ function c67267333.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=g:GetFirst()
 	if not rc then return end
 	local e1=Effect.CreateEffect(rc)
-	e1:SetDescription(aux.Stringid(67267333,3))
+	e1:SetDescription(aux.Stringid(67267333,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)

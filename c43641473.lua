@@ -19,7 +19,7 @@ end
 function c43641473.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c43641473.ecfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43641473,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43641473,1))
 	local g=Duel.SelectTarget(tp,c43641473.ecfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
 	local ec=g:GetFirst()
 	e:SetLabelObject(ec)

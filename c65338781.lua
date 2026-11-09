@@ -28,7 +28,7 @@ function c65338781.initial_effect(c)
 	c:RegisterEffect(e3)
 	--counter
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(65338781,2))
+	e4:SetDescription(aux.Stringid(65338781,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)

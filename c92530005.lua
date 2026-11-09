@@ -25,7 +25,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,2))
+	e3:SetDescription(aux.Stringid(id,3))
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
@@ -38,7 +38,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(id,3))
+	e5:SetDescription(aux.Stringid(id,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -116,7 +116,7 @@ function s.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	elseif sel==1 then
 		Duel.SelectOption(tp,aux.Stringid(id,5))
 	elseif sel==2 then
-		Duel.SelectOption(tp,aux.Stringid(id,6))
+		Duel.SelectOption(tp,aux.Stringid(id,5))
 	end
 	e:SetLabel(sel)
 	if sel==1 then

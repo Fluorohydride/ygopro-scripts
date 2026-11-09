@@ -16,7 +16,7 @@ function c70222318.initial_effect(c)
 	c:RegisterEffect(e2)
 	--deck check
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(70222318,3))
+	e3:SetDescription(aux.Stringid(70222318,0))
 	e3:SetCategory(CATEGORY_DECKDES)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_FZONE)
@@ -40,7 +40,7 @@ function c70222318.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0x90) end
 end
 function c70222318.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(70222318,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(70222318,2))
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0x90)
 	local tc=g:GetFirst()
 	if tc then
@@ -64,7 +64,7 @@ function c70222318.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
 	else
-		local opt=Duel.SelectOption(tp,aux.Stringid(70222318,1),aux.Stringid(70222318,2))
+		local opt=Duel.SelectOption(tp,aux.Stringid(70222318,3),aux.Stringid(70222318,4))
 		if opt==1 then
 			Duel.MoveSequence(tc,opt)
 		end

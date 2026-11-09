@@ -25,7 +25,7 @@ function c95784434.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atkup
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(95784434,0))
+	e4:SetDescription(aux.Stringid(95784434,1))
 	e4:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_DAMAGE_STEP_END)

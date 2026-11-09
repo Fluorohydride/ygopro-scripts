@@ -46,7 +46,7 @@ function c49514333.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local count=eg:FilterCount(c49514333.repfilter,e:GetHandler(),tp)
 		return count>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=count
 	end
-	if Duel.SelectYesNo(tp,aux.Stringid(49514333,0)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(49514333,1)) then
 		local container=e:GetLabelObject()
 		container:Clear()
 		local g=eg:Filter(c49514333.repfilter,e:GetHandler(),tp)

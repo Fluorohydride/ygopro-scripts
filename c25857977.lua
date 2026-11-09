@@ -57,9 +57,9 @@ function c25857977.spop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local res=0
 			if c:GetLevel()==1 then
-				res=Duel.SelectOption(tp,aux.Stringid(25857977,7),aux.Stringid(25857977,3))
+				res=Duel.SelectOption(tp,aux.Stringid(25857977,6),aux.Stringid(25857977,3))
 			else
-				res=Duel.SelectOption(tp,aux.Stringid(25857977,7),aux.Stringid(25857977,3),aux.Stringid(25857977,4))
+				res=Duel.SelectOption(tp,aux.Stringid(25857977,6),aux.Stringid(25857977,3),aux.Stringid(25857977,4))
 			end
 			if res>0 then
 				local e1=Effect.CreateEffect(c)
@@ -88,7 +88,7 @@ function c25857977.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local e1=Effect.CreateEffect(rc)
-	e1:SetDescription(aux.Stringid(25857977,6))
+	e1:SetDescription(aux.Stringid(25857977,2))
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_DESTROY+CATEGORY_RECOVER)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

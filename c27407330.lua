@@ -12,7 +12,7 @@ function c27407330.initial_effect(c)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(27407330,0))
+	e2:SetDescription(aux.Stringid(27407330,1))
 	e2:SetCategory(CATEGORY_REMOVE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)

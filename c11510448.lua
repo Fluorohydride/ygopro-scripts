@@ -17,7 +17,7 @@ function c11510448.initial_effect(c)
 	c:RegisterEffect(e2)
 	--xyz material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(11510448,1))
+	e3:SetDescription(aux.Stringid(11510448,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCountLimit(1)

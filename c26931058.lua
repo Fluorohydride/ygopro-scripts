@@ -30,14 +30,14 @@ function c26931058.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(26931058,0),aux.Stringid(26931058,1))
+		op=Duel.SelectOption(tp,aux.Stringid(26931058,1),aux.Stringid(26931058,2))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(26931058,0))
-	else op=Duel.SelectOption(tp,aux.Stringid(26931058,1))+1 end
+		op=Duel.SelectOption(tp,aux.Stringid(26931058,1))
+	else op=Duel.SelectOption(tp,aux.Stringid(26931058,2))+1 end
 	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(0)
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26931058,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26931058,3))
 		Duel.SelectTarget(tp,c26931058.filter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)

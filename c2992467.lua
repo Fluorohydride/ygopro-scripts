@@ -39,7 +39,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e6)
 	--reveal hand
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(id,3))
+	e7:SetDescription(aux.Stringid(id,2))
 	e7:SetType(EFFECT_TYPE_FIELD)
 	e7:SetCode(EFFECT_PUBLIC)
 	e7:SetRange(LOCATION_MZONE)

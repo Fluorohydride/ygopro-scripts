@@ -33,7 +33,7 @@ function c7180418.atklimit(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c7180418.ccost(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_COST) and Duel.SelectYesNo(tp,aux.Stringid(7180418,0)) then
+	if Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_COST) and Duel.SelectYesNo(tp,aux.Stringid(7180418,1)) then
 		Duel.RemoveCounter(tp,1,0,0x1,1,REASON_COST)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

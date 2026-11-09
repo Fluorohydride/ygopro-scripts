@@ -4,7 +4,7 @@ function s.initial_effect(c)
 	c:EnableCounterPermit(0x6f)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,2))
 	e1:SetCategory(CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -50,10 +50,10 @@ function s.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b3=Duel.IsCanRemoveCounter(tp,1,0,0x6f,3,REASON_COST) and aux.NegateEffectMonsterFilter(tc)
 	local b4=Duel.IsCanRemoveCounter(tp,1,0,0x6f,4,REASON_COST)
 	local op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,5),1},
-			{b2,aux.Stringid(id,2),2},
-			{b3,aux.Stringid(id,3),3},
-			{b4,aux.Stringid(id,4),4})
+			{b1,aux.Stringid(id,6),1},
+			{b2,aux.Stringid(id,3),2},
+			{b3,aux.Stringid(id,4),3},
+			{b4,aux.Stringid(id,5),4})
 	Duel.RemoveCounter(tp,1,0,0x6f,op,REASON_COST)
 	e:SetLabel(op)
 	if op==1 or op==2 then

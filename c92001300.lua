@@ -27,7 +27,7 @@ function c92001300.initial_effect(c)
 	c:RegisterEffect(e4)
 	--summon proc
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(92001300,3))
+	e4:SetDescription(aux.Stringid(92001300,0))
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_SUMMON_PROC)
 	e4:SetRange(LOCATION_SZONE)

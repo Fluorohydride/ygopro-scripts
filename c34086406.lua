@@ -16,7 +16,7 @@ function c34086406.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck top
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(34086406,2))
+	e2:SetDescription(aux.Stringid(34086406,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
@@ -46,7 +46,7 @@ function c34086406.operation1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c34086406.operation2(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34086406,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34086406,2))
 	local g=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,TYPE_MONSTER)
 	local tc=g:GetFirst()
 	if tc then

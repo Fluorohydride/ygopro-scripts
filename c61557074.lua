@@ -28,7 +28,7 @@ function c61557074.initial_effect(c)
 	c:RegisterEffect(e4)
 	--change cost
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(61557074,3))
+	e5:SetDescription(aux.Stringid(61557074,2))
 	e5:SetType(EFFECT_TYPE_FIELD)
 	e5:SetCode(61557074)
 	e5:SetRange(LOCATION_FZONE)

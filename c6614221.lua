@@ -2,7 +2,7 @@
 function c6614221.initial_effect(c)
 	--summon with 1 tribute
 	local e0=Effect.CreateEffect(c)
-	e0:SetDescription(aux.Stringid(6614221,0))
+	e0:SetDescription(aux.Stringid(6614221,3))
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetCode(EFFECT_SUMMON_PROC)
 	e0:SetCondition(c6614221.ttcon)
@@ -11,7 +11,7 @@ function c6614221.initial_effect(c)
 	c:RegisterEffect(e0)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(6614221,1))
+	e1:SetDescription(aux.Stringid(6614221,4))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c6614221.ntcon)

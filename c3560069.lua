@@ -27,7 +27,7 @@ function c3560069.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(3560069,2))
+		e1:SetDescription(aux.Stringid(3560069,1))
 		e1:SetCategory(CATEGORY_DRAW)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_DELAY)

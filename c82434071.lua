@@ -35,7 +35,7 @@ function c82434071.optg(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(82434071,2)
+		ops[off]=aux.Stringid(82434071,1)
 		opval[off]=1
 		off=off+1
 	end
@@ -52,7 +52,7 @@ function c82434071.opop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local sel=e:GetLabel()
 	if sel==0 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(82434071,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(82434071,2))
 		local g=Duel.SelectMatchingCard(tp,c82434071.ttopfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=g:GetFirst()
 		if tc then

@@ -3,7 +3,7 @@ function c46294982.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(46294982,3))
+	e1:SetDescription(aux.Stringid(46294982,0))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)

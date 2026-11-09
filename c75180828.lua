@@ -23,7 +23,7 @@ function c75180828.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(75180828,2))
+	e3:SetDescription(aux.Stringid(75180828,3))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c75180828.atkcon)
@@ -97,7 +97,7 @@ function c75180828.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		--destroy
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(75180828,3))
+		e1:SetDescription(aux.Stringid(75180828,2))
 		e1:SetCategory(CATEGORY_DESTROY)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_BATTLE_START)

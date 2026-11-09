@@ -2,7 +2,7 @@
 function c2547033.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(2547033,0))
+	e1:SetDescription(aux.Stringid(2547033,2))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -25,7 +25,7 @@ function c2547033.initial_effect(c)
 	c:RegisterEffect(e2)
 	--act in set turn
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(2547033,2))
+	e3:SetDescription(aux.Stringid(2547033,0))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

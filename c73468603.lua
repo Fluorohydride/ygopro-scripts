@@ -20,7 +20,7 @@ end
 function c73468603.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c73468603.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,1))
 	local tg1=g:Select(tp,1,1,nil)
 	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,1))

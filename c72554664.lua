@@ -43,11 +43,11 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.spfilter2),tp,0,LOCATION_GRAVE,nil,e,tp)
 		if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and #g1>0 and #g2>0
-			and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
 			local sg1=g1:Select(tp,1,1,nil):GetFirst()
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
 			local sg2=g2:Select(tp,1,1,nil):GetFirst()
 			Duel.SpecialSummonStep(sg1,0,tp,tp,false,false,POS_FACEUP)
 			Duel.SpecialSummonStep(sg2,0,tp,1-tp,false,false,POS_FACEUP)

@@ -2,7 +2,7 @@
 function c31571902.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(31571902,2))
+	e1:SetDescription(aux.Stringid(31571902,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c31571902.ntcon)
@@ -16,7 +16,7 @@ end
 function c31571902.ntop(e,tp,eg,ep,ev,re,r,rp,c)
 	--to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(31571902,3))
+	e1:SetDescription(aux.Stringid(31571902,1))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetRange(LOCATION_MZONE)

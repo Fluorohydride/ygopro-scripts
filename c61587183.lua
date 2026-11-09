@@ -18,15 +18,15 @@ function c61587183.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0
 		or Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(61587183,0))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(61587183,1))
 	if Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0 then
-		op=Duel.SelectOption(tp,aux.Stringid(61587183,1),aux.Stringid(61587183,2))
+		op=Duel.SelectOption(tp,aux.Stringid(61587183,2),aux.Stringid(61587183,3))
 	elseif Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0 then
-		Duel.SelectOption(tp,aux.Stringid(61587183,2))
+		Duel.SelectOption(tp,aux.Stringid(61587183,3))
 		op=1
 	else
-		Duel.SelectOption(tp,aux.Stringid(61587183,1))
+		Duel.SelectOption(tp,aux.Stringid(61587183,3))
 		op=0
 	end
 	e:SetLabel(op)
@@ -48,7 +48,7 @@ function c61587183.operation(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			Duel.ConfirmCards(tp,g)
 			Duel.Hint(HINT_SELECTMSG,tp,0)
-			local ac=Duel.SelectOption(tp,aux.Stringid(61587183,3),aux.Stringid(61587183,4))
+			local ac=Duel.SelectOption(tp,aux.Stringid(61587183,4),aux.Stringid(61587183,5))
 			if ac==1 then Duel.MoveSequence(g:GetFirst(),SEQ_DECKBOTTOM) end
 		end
 	end

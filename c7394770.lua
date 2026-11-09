@@ -2,7 +2,7 @@
 function c7394770.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(7394770,0))
+	e1:SetDescription(aux.Stringid(7394770,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -19,7 +19,7 @@ function c7394770.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(7394770,1))
+	e3:SetDescription(aux.Stringid(7394770,0))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)

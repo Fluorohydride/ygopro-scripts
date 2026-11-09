@@ -3,7 +3,7 @@ function c59514116.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(59514116,0))
+	e1:SetDescription(aux.Stringid(59514116,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -48,13 +48,13 @@ function c59514116.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return res1 or res2 end
 	local s=0
 	if res1 and not res2 then
-		s=Duel.SelectOption(tp,aux.Stringid(59514116,2))
+		s=Duel.SelectOption(tp,aux.Stringid(59514116,3))
 	end
 	if not res1 and res2 then
-		s=Duel.SelectOption(tp,aux.Stringid(59514116,1))+1
+		s=Duel.SelectOption(tp,aux.Stringid(59514116,2))+1
 	end
 	if res1 and res2 then
-		s=Duel.SelectOption(tp,aux.Stringid(59514116,2),aux.Stringid(59514116,1))
+		s=Duel.SelectOption(tp,aux.Stringid(59514116,3),aux.Stringid(59514116,2))
 	end
 	e:SetLabel(s)
 	if s==0 then

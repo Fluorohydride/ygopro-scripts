@@ -9,7 +9,7 @@ function c35371948.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lock
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(35371948,0))
+	e2:SetDescription(aux.Stringid(35371948,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

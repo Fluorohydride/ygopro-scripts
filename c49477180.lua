@@ -60,7 +60,7 @@ function c49477180.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=g:GetFirst()
 	if not rc then return end
 	local e1=Effect.CreateEffect(rc)
-	e1:SetDescription(aux.Stringid(49477180,3))
+	e1:SetDescription(aux.Stringid(49477180,1))
 	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLED)

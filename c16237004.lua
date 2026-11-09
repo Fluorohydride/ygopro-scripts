@@ -16,7 +16,7 @@ function s.initial_effect(c)
 	e1:SetOperation(s.xyzop)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetDescription(aux.Stringid(id,0))
+	e2:SetDescription(aux.Stringid(id,2))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_REMOVE)
@@ -82,7 +82,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	lvt[pc]=nil
 	if chk==0 then return res end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	e:GetHandler():RemoveOverlayCard(tp,lv,lv,REASON_COST)
 	e:SetLabel(lv)

@@ -27,7 +27,7 @@ function c91650245.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c91650245.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		local opt=Duel.SelectOption(tp,aux.Stringid(91650245,0),aux.Stringid(91650245,1))
+		local opt=Duel.SelectOption(tp,aux.Stringid(91650245,1),aux.Stringid(91650245,2))
 		Duel.SendtoDeck(g,nil,opt,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c91650245.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,tc,e,tp)
@@ -56,7 +56,7 @@ end
 function c91650245.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsExtraDeckMonster()
-		or Duel.SelectOption(tp,aux.Stringid(91650245,0),aux.Stringid(91650245,1))==0 then
+		or Duel.SelectOption(tp,aux.Stringid(91650245,1),aux.Stringid(91650245,2))==0 then
 		Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 	else
 		Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)

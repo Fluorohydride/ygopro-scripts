@@ -30,11 +30,11 @@ function c54289683.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
 	local op=0
 	if t1 and t2 then
-		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,1),aux.Stringid(93130021,1))
 	elseif t1 then
-		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2))
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,1))
 	elseif t2 then
-		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,3))
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,1))
 		if op==1 then op=2 end
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1))

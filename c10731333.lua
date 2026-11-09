@@ -11,7 +11,7 @@ function c10731333.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk down
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(10731333,1))
+	e2:SetDescription(aux.Stringid(10731333,0))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e2:SetCode(EVENT_PRE_DAMAGE_CALCULATE)

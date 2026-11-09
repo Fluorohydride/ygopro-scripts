@@ -13,7 +13,7 @@ function c72491806.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand and spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(72491806,1))
+	e2:SetDescription(aux.Stringid(72491806,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

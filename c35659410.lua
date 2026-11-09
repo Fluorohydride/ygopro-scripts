@@ -3,7 +3,7 @@ function c35659410.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(35659410,0))
+	e1:SetDescription(aux.Stringid(35659410,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,35659410+EFFECT_COUNT_CODE_OATH)
@@ -12,7 +12,7 @@ function c35659410.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(35659410,1))
+	e2:SetDescription(aux.Stringid(35659410,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
@@ -33,7 +33,7 @@ function c35659410.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c35659410.showfilter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.IsExistingMatchingCard(c35659410.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(35659410,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(35659410,3)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local g=Duel.SelectMatchingCard(tp,c35659410.showfilter,tp,LOCATION_HAND,0,1,1,nil)
 		Duel.ConfirmCards(1-tp,g)
@@ -74,7 +74,7 @@ function c35659410.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local g1=Duel.GetMatchingGroup(c35659410.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 		if code==89631139 and #g1>0
-			and Duel.SelectYesNo(tp,aux.Stringid(35659410,3)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(35659410,4)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg1=g1:Select(tp,1,1,nil)
@@ -82,7 +82,7 @@ function c35659410.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		local g2=Duel.GetMatchingGroup(c35659410.spfilter2,tp,LOCATION_HAND,0,nil,e,tp)
 		if code~=89631139 and #g2>0
-			and Duel.SelectYesNo(tp,aux.Stringid(35659410,3)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(35659410,4)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg2=g2:Select(tp,1,1,nil)

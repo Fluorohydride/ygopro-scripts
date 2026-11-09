@@ -2,7 +2,7 @@
 function c60162470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(60162470,0))
+	e1:SetDescription(aux.Stringid(60162470,3))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -18,7 +18,7 @@ function c60162470.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atkup
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(60162470,1))
+	e4:SetDescription(aux.Stringid(60162470,0))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)

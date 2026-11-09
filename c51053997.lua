@@ -54,7 +54,7 @@ function c51053997.operation(e,tp,eg,ep,ev,re,r,rp)
 		local ct=1
 		if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY then ct=2 end
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(51053997,4))
+		e1:SetDescription(aux.Stringid(51053997,2))
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)

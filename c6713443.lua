@@ -45,7 +45,7 @@ function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ct>0 then
 		local ft2=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		local sg=Duel.GetMatchingGroup(c6713443.sfilter,tp,LOCATION_DECK,0,nil)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6713443,0)) then
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6713443,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local setg=sg:SelectSubGroup(tp,c6713443.fselect,false,1,math.min(ct,ft2+1),ft2)

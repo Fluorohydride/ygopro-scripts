@@ -12,7 +12,7 @@ function c31383545.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD) then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(31383545,1))
+		e1:SetDescription(aux.Stringid(31383545,0))
 		e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

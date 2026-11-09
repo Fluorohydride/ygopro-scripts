@@ -97,6 +97,6 @@ function c31525442.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	if r==REASON_SUMMON and rc:IsFaceup() and c:IsLocation(LOCATION_GRAVE) then
-		rc:RegisterFlagEffect(31525442,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,c:GetFieldID(),aux.Stringid(31525442,4))
+		rc:RegisterFlagEffect(31525442,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,c:GetFieldID(),aux.Stringid(31525442,2))
 	end
 end

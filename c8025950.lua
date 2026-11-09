@@ -3,7 +3,7 @@ function c8025950.initial_effect(c)
 	c:EnableCounterPermit(0x8)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(8025950,0))
+	e1:SetDescription(aux.Stringid(8025950,2))
 	e1:SetCategory(CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

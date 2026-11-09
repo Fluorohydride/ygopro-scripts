@@ -13,7 +13,7 @@ function c80367387.initial_effect(c)
 	c:RegisterEffect(e1)
 	--chain attack
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(80367387,3))
+	e2:SetDescription(aux.Stringid(80367387,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
 	e2:SetCondition(c80367387.atcon)
@@ -37,14 +37,14 @@ function c80367387.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local select=2
 	Duel.Hint(HINT_SELECTMSG,tp,0)
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(80367387,0),aux.Stringid(80367387,1),aux.Stringid(80367387,2))
+		select=Duel.SelectOption(tp,aux.Stringid(80367387,1),aux.Stringid(80367387,2),aux.Stringid(80367387,3))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(80367387,0),aux.Stringid(80367387,2))
+		select=Duel.SelectOption(tp,aux.Stringid(80367387,1),aux.Stringid(80367387,3))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(80367387,1),aux.Stringid(80367387,2))+1
+		select=Duel.SelectOption(tp,aux.Stringid(80367387,2),aux.Stringid(80367387,3))+1
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(80367387,2))
+		select=Duel.SelectOption(tp,aux.Stringid(80367387,3))
 		select=2
 	end
 	if select==0 then

@@ -2,7 +2,7 @@
 function c73956664.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(73956664,0))
+	e1:SetDescription(aux.Stringid(73956664,1))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -16,7 +16,7 @@ function c73956664.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(73956664,1))
+	e3:SetDescription(aux.Stringid(73956664,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

@@ -3,7 +3,7 @@ function c67159705.initial_effect(c)
 	aux.EnableUnionAttribute(c,c67159705.filter)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(67159705,0))
+	e5:SetDescription(aux.Stringid(67159705,1))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_IGNITION)

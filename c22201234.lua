@@ -8,7 +8,7 @@ function c22201234.initial_effect(c)
 	--quick
 	local e2=Effect.CreateEffect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetDescription(aux.Stringid(22201234,1))
+	e2:SetDescription(aux.Stringid(22201234,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)

@@ -39,7 +39,7 @@ function c40044918.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	elseif sel==1 then
 		Duel.SelectOption(tp,aux.Stringid(40044918,1))
 	else
-		Duel.SelectOption(tp,aux.Stringid(40044918,2))
+		Duel.SelectOption(tp,aux.Stringid(40044918,1))
 	end
 	e:SetLabel(sel)
 	if sel==1 then

@@ -32,7 +32,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SendtoHand(sg,nil,REASON_EFFECT)>0 and sg:GetFirst():IsLocation(LOCATION_HAND) then
 			Duel.ConfirmCards(1-tp,sg)
 			local g2=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
-			if #g2>0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,5)) then
+			if #g2>0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local sg2=g2:Select(tp,1,1,nil)
 				Duel.BreakEffect()
@@ -76,7 +76,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if #g2>0 then
-		ops[off]=aux.Stringid(id,4)
+		ops[off]=aux.Stringid(id,3)
 		opval[off]=1
 		off=off+1
 	end

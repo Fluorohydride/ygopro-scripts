@@ -25,7 +25,7 @@ function c27863269.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atkdown
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(27863269,0))
+	e4:SetDescription(aux.Stringid(27863269,1))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetRange(LOCATION_SZONE)

@@ -2,7 +2,7 @@
 function c63717421.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(63717421,0))
+	e1:SetDescription(aux.Stringid(63717421,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,63717421+EFFECT_COUNT_CODE_OATH)
@@ -28,7 +28,7 @@ function c63717421.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if Duel.IsExistingTarget(c63717421.spfilter,tp,LOCATION_SZONE,0,1,nil,e,tp)
-		and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(63717421,2)) then
+		and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(63717421,3)) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c63717421.activate)

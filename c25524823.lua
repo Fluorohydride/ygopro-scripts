@@ -2,7 +2,7 @@
 function c25524823.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(25524823,7))
+	e1:SetDescription(aux.Stringid(25524823,5))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
@@ -23,7 +23,7 @@ function c25524823.initial_effect(c)
 	--summon success
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(25524823,0))
-	e1:SetDescription(aux.Stringid(25524823,6))
+	e1:SetDescription(aux.Stringid(25524823,4))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetCondition(c25524823.condition)
@@ -100,12 +100,12 @@ function c25524823.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			off=off+1
 		end
 		if b2 then
-			ops[off]=aux.Stringid(25524823,3)
+			ops[off]=aux.Stringid(25524823,2)
 			opval[off-1]=2
 			off=off+1
 		end
 		if b3 then
-			ops[off]=aux.Stringid(25524823,4)
+			ops[off]=aux.Stringid(25524823,2)
 			opval[off-1]=3
 			off=off+1
 		end
@@ -121,7 +121,7 @@ function c25524823.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			b3=false
 		end
 		ct=ct-1
-	until ct==0 or off<3 or not Duel.SelectYesNo(tp,aux.Stringid(25524823,5))
+	until ct==0 or off<3 or not Duel.SelectYesNo(tp,aux.Stringid(25524823,3))
 	e:SetLabel(sel)
 	if bit.band(sel,2)~=0 then
 		local g=Duel.GetMatchingGroup(c25524823.filter,tp,0,LOCATION_MZONE,nil)

@@ -32,7 +32,7 @@ function c74640994.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(74640994,4)
+		ops[off]=aux.Stringid(74640994,1)
 		opval[off-1]=1
 		off=off+1
 	end
@@ -42,12 +42,12 @@ function c74640994.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(74640994,2)
+		ops[off]=aux.Stringid(74640994,1)
 		opval[off-1]=3
 		off=off+1
 	end
 	if b4 then
-		ops[off]=aux.Stringid(74640994,3)
+		ops[off]=aux.Stringid(74640994,1)
 		opval[off-1]=4
 		off=off+1
 	end

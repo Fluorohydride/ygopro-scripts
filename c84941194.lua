@@ -23,7 +23,7 @@ function c84941194.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Leave Field
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(84941194,2))
+	e3:SetDescription(aux.Stringid(84941194,0))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

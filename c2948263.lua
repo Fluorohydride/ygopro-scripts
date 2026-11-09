@@ -25,7 +25,7 @@ function c2948263.initial_effect(c)
 	c:RegisterEffect(e3)
 	--disable
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(2948263,0))
+	e4:SetDescription(aux.Stringid(2948263,2))
 	e4:SetCategory(CATEGORY_DISABLE)
 	e4:SetType(EFFECT_TYPE_QUICK_F)
 	e4:SetCode(EVENT_CHAINING)

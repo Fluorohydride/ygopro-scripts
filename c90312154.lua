@@ -4,7 +4,7 @@ function c90312154.initial_effect(c)
 	aux.EnableChangeCode(c,56433456,LOCATION_SZONE+LOCATION_GRAVE)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(90312154,0))
+	e1:SetDescription(aux.Stringid(90312154,3))
 	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

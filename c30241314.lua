@@ -2,7 +2,7 @@
 function c30241314.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(30241314,0))
+	e1:SetDescription(aux.Stringid(30241314,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -28,7 +28,7 @@ end
 function c30241314.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cg=Duel.GetMatchingGroup(c30241314.filter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,e,tp)
 	if cg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
-		if Duel.SelectYesNo(tp,aux.Stringid(30241314,2)) then
+		if Duel.SelectYesNo(tp,aux.Stringid(30241314,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=cg:Select(tp,1,1,nil)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

@@ -7,7 +7,7 @@ function c15447747.initial_effect(c)
 	c:RegisterEffect(e1)
 	--link
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(15447747,0))
+	e2:SetDescription(aux.Stringid(15447747,2))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
