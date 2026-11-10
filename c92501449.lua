@@ -29,10 +29,8 @@ function s.initial_effect(c)
 		ge:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge:SetCode(EVENT_PHASE+PHASE_END)
 		ge:SetCountLimit(1)
-		ge:SetOperation(function(e,tp)
-			if Duel.GetTurnPlayer()~=tp then
-				s.resolved_codes[tp]={}
-			end
+		ge:SetOperation(function()
+			s.resolved_codes[1-Duel.GetTurnPlayer()]={}
 		end)
 		Duel.RegisterEffect(ge,0)
 	end
