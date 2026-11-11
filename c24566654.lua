@@ -32,20 +32,27 @@ function c24566654.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_CHANGE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
-	e2:SetLabel(cid)
+	e2:SetLabel(0)
 	e2:SetValue(c24566654.dammul)
 	e2:SetReset(RESET_CHAIN)
 	Duel.RegisterEffect(e2,tp)
+	e1:SetLabelObject(e2)
 end
 function c24566654.refcon(e,re,val,r,rp,rc)
 	local cc=Duel.GetCurrentChain()
 	if cc==0 or bit.band(r,REASON_EFFECT)==0 then return end
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-	return cid==e:GetLabel()
+	if cid~=e:GetLabel() then return false end
+	e:GetLabelObject():SetLabel(cid)
+	return true
 end
 function c24566654.dammul(e,re,val,r,rp,rc)
 	local cc=Duel.GetCurrentChain()
 	if cc==0 or bit.band(r,REASON_EFFECT)==0 then return end
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-	return cid==e:GetLabel() and val*2 or val
+	if cid==e:GetLabel() then
+		e:SetLabel(0)
+		return val*2
+	end
+	return val
 end
