@@ -73,16 +73,16 @@ function c62320425.disop(e,tp,eg,ep,ev,re,r,rp)
 		local ops={}
 		local opval={}
 		if Duel.IsPlayerCanDiscardDeck(tp,5) then
-			ops[off]=aux.Stringid(62320425,3)
+			ops[off]=aux.Stringid(62320425,4)
 			opval[off-1]=tp
 			off=off+1
 		end
 		if Duel.IsPlayerCanDiscardDeck(1-tp,5) then
-			ops[off]=aux.Stringid(62320425,3)
+			ops[off]=aux.Stringid(62320425,5)
 			opval[off-1]=1-tp
 			off=off+1
 		end
-		ops[off]=aux.Stringid(62320425,3)
+		ops[off]=aux.Stringid(62320425,6)
 		opval[off-1]=-1
 		local op=Duel.SelectOption(tp,table.unpack(ops))
 		local sel=opval[op]

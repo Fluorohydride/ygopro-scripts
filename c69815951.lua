@@ -33,7 +33,7 @@ function c69815951.initial_effect(c)
 	e0:SetLabelObject(e3)
 	--to grave
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(69815951,2))
+	e4:SetDescription(aux.Stringid(69815951,0))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
@@ -60,7 +60,7 @@ function c69815951.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) and e:GetLabel()==1
 end
 function c69815951.matop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(69815951,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(69815951,3))
+	e:GetHandler():RegisterFlagEffect(69815951,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(69815951,1))
 end
 function c69815951.lvfilter(c,rc)
 	return c:GetRitualLevel(rc)>0

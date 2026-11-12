@@ -43,7 +43,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local op=0
 	if b1 or b2 then
 		op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,4),1},
+			{b1,aux.Stringid(id,1),1},
 			{b2,aux.Stringid(id,2),2})
 	end
 	e:SetLabel(op)

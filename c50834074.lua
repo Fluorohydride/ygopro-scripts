@@ -11,7 +11,7 @@ function c50834074.initial_effect(c)
 	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(50834074,1))
+	e2:SetDescription(aux.Stringid(50834074,0))
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -67,7 +67,7 @@ function c50834074.spop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50834074.thfilter),tp,LOCATION_GRAVE,0,nil)
 		if #g==0 then return end
-		if Duel.SelectYesNo(tp,aux.Stringid(50834074,3)) then
+		if Duel.SelectYesNo(tp,aux.Stringid(50834074,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50834074.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 			Duel.BreakEffect()

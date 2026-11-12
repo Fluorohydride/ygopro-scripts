@@ -40,7 +40,7 @@ function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	for p=1,ct do
 		if Duel.CheckLPCost(tp,1000*p,true) then table.insert(pay_list,p) end
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17956906,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17956906,0))
 	local pay=Duel.AnnounceNumber(tp,table.unpack(pay_list))
 	Duel.PayLPCost(tp,pay*1000,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

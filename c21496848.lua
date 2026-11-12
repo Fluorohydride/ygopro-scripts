@@ -21,7 +21,7 @@ function c21496848.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21496848.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 and Duel.IsChainDisablable(0)
-		and Duel.SelectYesNo(1-tp,aux.Stringid(21496848,1)) then
+		and Duel.SelectYesNo(1-tp,aux.Stringid(21496848,4)) then
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 		Duel.NegateEffect(0)
 		return

@@ -62,17 +62,17 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(id,1)
+		ops[off]=aux.Stringid(id,2)
 		opval[off-1]=2
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(id,1)
+		ops[off]=aux.Stringid(id,3)
 		opval[off-1]=3
 		off=off+1
 	end
 	if b4 then
-		ops[off]=aux.Stringid(id,1)
+		ops[off]=aux.Stringid(id,4)
 		opval[off-1]=4
 		off=off+1
 	end

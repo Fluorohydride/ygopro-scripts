@@ -36,7 +36,7 @@ function c5697558.thfilter(c)
 end
 function c5697558.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c5697558.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,3)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
@@ -72,7 +72,7 @@ function c5697558.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		local pos=Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEUP_DEFENSE)
-		if Duel.ChangePosition(tc,pos)~=0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,4)) then
+		if Duel.ChangePosition(tc,pos)~=0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,2)) then
 			Duel.BreakEffect()
 			Duel.NegateAttack()
 		end

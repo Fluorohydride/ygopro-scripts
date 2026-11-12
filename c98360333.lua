@@ -33,7 +33,7 @@ function c98360333.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) or Duel.GetMZoneCount(tp)<1
 		or Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	local g=Duel.GetMatchingGroup(c98360333.linkfilter,tp,LOCATION_EXTRA,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(98360333,1)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(98360333,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=g:Select(tp,1,1,nil):GetFirst()

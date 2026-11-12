@@ -14,7 +14,7 @@ function c35638627.initial_effect(c)
 	c:RegisterEffect(e2)
 	--chain attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(35638627,1))
+	e3:SetDescription(aux.Stringid(35638627,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetCondition(c35638627.atcon)

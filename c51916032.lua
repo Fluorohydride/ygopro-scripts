@@ -4,7 +4,7 @@ function c51916032.initial_effect(c)
 	aux.EnableChangeCode(c,77585513,LOCATION_MZONE+LOCATION_GRAVE)
 	--tohand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(51916032,1))
+	e2:SetDescription(aux.Stringid(51916032,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -46,7 +46,7 @@ function c51916032.operation(e,tp,eg,ep,ev,re,r,rp)
 		local ct=cg:FilterCount(Card.IsType,nil,TYPE_TRAP)
 		if ct>ft then ct=ft end
 		local sg=Duel.GetMatchingGroup(c51916032.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-		if ct>0 and sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(51916032,2)) then
+		if ct>0 and sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(51916032,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local tg=sg:Select(tp,1,ct,nil)
 			Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)

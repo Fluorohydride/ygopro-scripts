@@ -3,7 +3,7 @@ function c26082117.initial_effect(c)
 	c:SetUniqueOnField(1,0,26082117)
 	--lv change
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(26082117,1))
+	e1:SetDescription(aux.Stringid(26082117,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)
@@ -21,7 +21,7 @@ end
 function c26082117.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local lv=e:GetHandler():GetLevel()
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26082117,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26082117,1))
 	e:SetLabel(Duel.AnnounceLevel(tp,1,8,lv))
 end
 function c26082117.op(e,tp,eg,ep,ev,re,r,rp)

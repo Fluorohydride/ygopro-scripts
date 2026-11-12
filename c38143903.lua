@@ -2,7 +2,7 @@
 function c38143903.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)
-	e0:SetDescription(aux.Stringid(38143903,2))
+	e0:SetDescription(aux.Stringid(38143903,0))
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	e0:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)

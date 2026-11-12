@@ -17,7 +17,7 @@ function c70479321.initial_effect(c)
 	c:RegisterEffect(e2)
 	--summon with no tribute
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(70479321,4))
+	e3:SetDescription(aux.Stringid(70479321,0))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e3:SetCode(EFFECT_SUMMON_PROC)

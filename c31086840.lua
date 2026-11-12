@@ -3,11 +3,11 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,2407234,77571454)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,4,4,s.ovfilter,aux.Stringid(id,1))
+	aux.AddXyzProcedure(c,nil,4,4,s.ovfilter,aux.Stringid(id,0))
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)

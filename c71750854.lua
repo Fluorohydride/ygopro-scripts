@@ -45,7 +45,7 @@ function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(s.tgfilter2,tp,LOCATION_MZONE,0,1,nil,tp)
 	if chk==0 then return b1 or b2 end
 	local label=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,2),1},
+		{b1,aux.Stringid(id,0),1},
 		{b2,aux.Stringid(id,1),2})
 	e:SetLabel(label)
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)

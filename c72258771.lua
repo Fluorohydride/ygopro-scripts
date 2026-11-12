@@ -13,7 +13,7 @@ function c72258771.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon with 1 tribute
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(72258771,4))
+	e2:SetDescription(aux.Stringid(72258771,2))
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
@@ -47,9 +47,9 @@ function c72258771.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.GetMatchingGroup(c72258771.cfilter1,tp,LOCATION_HAND,0,nil)
 	local select=1
 	if g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(72258771,2),aux.Stringid(72258771,3))
+		select=Duel.SelectOption(tp,aux.Stringid(72258771,0),aux.Stringid(72258771,1))
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(72258771,3))+1
+		select=Duel.SelectOption(tp,aux.Stringid(72258771,1))+1
 	end
 	if select==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

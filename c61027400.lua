@@ -11,7 +11,7 @@ function c61027400.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand or special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(61027400,1))
+	e2:SetDescription(aux.Stringid(61027400,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -45,7 +45,7 @@ function c61027400.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmDecktop(tp,3)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		local tg=g:Filter(c61027400.filter,nil,e,tp,ft)
-		if #tg>0 and Duel.SelectYesNo(tp,aux.Stringid(61027400,2)) then
+		if #tg>0 and Duel.SelectYesNo(tp,aux.Stringid(61027400,1)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 			local sg=tg:Select(tp,1,1,nil)
 			local tc=sg:GetFirst()

@@ -28,7 +28,7 @@ function c22047978.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsChainDisablable(0) then
 		local sel=1
 		local g=Duel.GetMatchingGroup(c22047978.cfilter,1-tp,LOCATION_HAND,0,nil)
-		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(22047978,1))
+		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(22047978,0))
 		if g:GetCount()>0 then
 			sel=Duel.SelectOption(1-tp,1213,1214)
 		else

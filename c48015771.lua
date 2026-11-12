@@ -25,7 +25,7 @@ function c48015771.initial_effect(c)
 	c:RegisterEffect(e3)
 	--tograve
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(48015771,2))
+	e4:SetDescription(aux.Stringid(48015771,0))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_BOTH_SIDE)

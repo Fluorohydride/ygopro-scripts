@@ -16,9 +16,9 @@ function c15552258.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local opt=0
 	if g:GetCount()==0 then
-		opt=Duel.SelectOption(1-tp,aux.Stringid(15552258,2))+1
+		opt=Duel.SelectOption(1-tp,aux.Stringid(15552258,1))+1
 	else
-		opt=Duel.SelectOption(1-tp,aux.Stringid(15552258,1),aux.Stringid(15552258,2))
+		opt=Duel.SelectOption(1-tp,aux.Stringid(15552258,0),aux.Stringid(15552258,1))
 	end
 	if opt==1 then
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)

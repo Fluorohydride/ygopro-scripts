@@ -21,7 +21,7 @@ function c90885155.initial_effect(c)
 	c:RegisterEffect(e3)
 	--summon with no tribute
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(90885155,6))
+	e4:SetDescription(aux.Stringid(90885155,0))
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_SUMMON_PROC)
 	e4:SetCondition(c90885155.ntcon)

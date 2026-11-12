@@ -36,7 +36,7 @@ function c25067275.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
 		else return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25067275,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25067275,0))
 	local g=Duel.SelectTarget(tp,c25067275.ecfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	local ec=g:GetFirst()
 	e:SetLabelObject(ec)

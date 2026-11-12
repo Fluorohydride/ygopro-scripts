@@ -3,7 +3,7 @@ function c25726386.initial_effect(c)
 	c:EnableReviveLimit()
 	--ritual summon
 	local e1=aux.AddRitualProcGreater2(c,c25726386.filter,nil,nil,c25726386.matfilter,true)
-	e1:SetDescription(aux.Stringid(25726386,2))
+	e1:SetDescription(aux.Stringid(25726386,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)

@@ -2,7 +2,7 @@
 function c93854893.initial_effect(c)
 	c:SetSPSummonOnce(93854893)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,8,2,c93854893.ovfilter,aux.Stringid(93854893,3))
+	aux.AddXyzProcedure(c,nil,8,2,c93854893.ovfilter,aux.Stringid(93854893,0))
 	c:EnableReviveLimit()
 	--effect
 	local e1=Effect.CreateEffect(c)
@@ -36,7 +36,7 @@ function c93854893.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local off=1
 	local ops,opval={},{}
 	if b1 then
-		ops[off]=aux.Stringid(93854893,4)
+		ops[off]=aux.Stringid(93854893,1)
 		opval[off]=0
 		off=off+1
 	end

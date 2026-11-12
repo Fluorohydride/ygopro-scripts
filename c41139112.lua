@@ -38,7 +38,7 @@ function c41139112.activate(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.TossDice(tp,1)
 	if d==1 or d==2 then
 		local g=Duel.GetMatchingGroup(c41139112.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			Duel.Summon(tp,tc,true,nil)
@@ -54,7 +54,7 @@ function c41139112.activate(e,tp,eg,ep,ev,re,r,rp)
 		return
 	else
 		local g=Duel.GetMatchingGroup(c41139112.filter3,tp,LOCATION_HAND,0,nil,e,tp)
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,1)) then
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local tc=g:Select(tp,1,1,nil):GetFirst()
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

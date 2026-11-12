@@ -3,7 +3,7 @@ function c40998517.initial_effect(c)
 	c:SetUniqueOnField(1,0,40998517)
 	--destroy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(40998517,1))
+	e1:SetDescription(aux.Stringid(40998517,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -44,7 +44,7 @@ function c40998517.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.Destroy(tg,REASON_EFFECT)==0 then return end
 	local ct=Duel.GetOperatedGroup():FilterCount(Card.IsPreviousControler,nil,1-tp)
-	if ct>0 and Duel.IsPlayerCanDraw(1-tp,ct) and Duel.SelectYesNo(1-tp,aux.Stringid(40998517,2)) then
+	if ct>0 and Duel.IsPlayerCanDraw(1-tp,ct) and Duel.SelectYesNo(1-tp,aux.Stringid(40998517,1)) then
 		Duel.BreakEffect()
 		Duel.Draw(1-tp,ct,REASON_EFFECT)
 	end

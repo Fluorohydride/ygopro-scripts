@@ -27,7 +27,7 @@ function c40217358.initial_effect(c)
 	c:RegisterEffect(e5)
 	--banish
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(40217358,2))
+	e6:SetDescription(aux.Stringid(40217358,0))
 	e6:SetCategory(CATEGORY_REMOVE)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_DESTROYED)

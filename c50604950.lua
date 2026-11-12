@@ -10,7 +10,7 @@ function c50604950.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate attack
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(50604950,1))
+	e2:SetDescription(aux.Stringid(50604950,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
 	e2:SetCost(c50604950.cost)

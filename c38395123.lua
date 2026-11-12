@@ -63,7 +63,7 @@ function c38395123.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==2 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		Duel.ConfirmCards(1-tp,g)
 		local og=Duel.GetOperatedGroup():Filter(Card.IsSummonable,nil,true,nil)
-		if og:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(38395123,2)) then
+		if og:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(38395123,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local sg=og:Select(tp,1,1,nil):GetFirst()

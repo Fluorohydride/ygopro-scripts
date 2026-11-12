@@ -24,7 +24,7 @@ function c57734012.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c57734012.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.SelectYesNo(tp,aux.Stringid(57734012,1)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(57734012,0)) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_PUBLIC)

@@ -27,7 +27,7 @@ function c62121.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(aux.Stringid(62121,2))
+		e3:SetDescription(aux.Stringid(62121,1))
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
 		e3:SetRange(LOCATION_MZONE)

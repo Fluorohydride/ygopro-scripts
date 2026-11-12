@@ -29,7 +29,7 @@ function c32448765.initial_effect(c)
 	c:RegisterEffect(e4)
 	--atk
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(32448765,2))
+	e5:SetDescription(aux.Stringid(32448765,0))
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_DAMAGE)
 	e5:SetRange(LOCATION_MZONE)

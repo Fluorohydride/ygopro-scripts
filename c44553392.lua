@@ -34,7 +34,7 @@ function c44553392.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.GetMatchingGroup(c44553392.spfilter,tp,LOCATION_REMOVED,0,nil,e,tp)
 		local ag=Duel.GetMatchingGroup(aux.AND(Card.IsFaceup,Card.IsCode),tp,LOCATION_MZONE,0,nil,65815684)
 		if tc:IsOriginalCodeRule(65815684) and ft>0 and #sg>0
-			and Duel.SelectYesNo(tp,aux.Stringid(44553392,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(44553392,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg1=sg:Select(tp,1,1,nil)

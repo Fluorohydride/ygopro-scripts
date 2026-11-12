@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e0)
 	--tohand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,1))
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
@@ -25,7 +25,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,0))
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_REMOVE+CATEGORY_GRAVE_ACTION)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -85,7 +85,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(sg,REASON_EFFECT)~=0
 		and c:IsRelateToChain() and c:GetSequence()>4
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.rmfilter),tp,0,LOCATION_GRAVE,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.rmfilter),tp,0,LOCATION_GRAVE,nil)
 		if g:GetCount()>0 then

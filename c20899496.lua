@@ -57,7 +57,7 @@ function c20899496.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if res then
 		local g=Duel.GetMatchingGroup(c20899496.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		if g:CheckSubGroup(c20899496.fselect,2,2) and Duel.SelectYesNo(tp,aux.Stringid(20899496,1)) then
+		if g:CheckSubGroup(c20899496.fselect,2,2) and Duel.SelectYesNo(tp,aux.Stringid(20899496,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local sg=g:SelectSubGroup(tp,c20899496.fselect,false,2,2)

@@ -47,7 +47,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.Draw(tp,1,REASON_EFFECT)==0 then return end
 		local dc=Duel.GetOperatedGroup():GetFirst()
 		if dc:IsSetCard(0x87) and dc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(dc,0,tp,tp,false,false,POS_FACEUP)
 		end

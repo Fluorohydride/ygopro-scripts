@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,0))
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
@@ -52,7 +52,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.hgrfilter,tp,LOCATION_DECK,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,3,3,tp)
 	if sg and sg:GetCount()>2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

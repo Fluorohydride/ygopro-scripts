@@ -39,11 +39,11 @@ function c3160805.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(3160805,1),aux.Stringid(3160805,2))
+		op=Duel.SelectOption(tp,aux.Stringid(3160805,2),aux.Stringid(3160805,3))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(3160805,1))
+		op=Duel.SelectOption(tp,aux.Stringid(3160805,2))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(3160805,2))+1
+		op=Duel.SelectOption(tp,aux.Stringid(3160805,3))+1
 	end
 	e:SetLabel(op)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)

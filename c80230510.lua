@@ -15,7 +15,7 @@ end
 function c80230510.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(80230510,1))
+	e1:SetDescription(aux.Stringid(80230510,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetTargetRange(LOCATION_HAND,0)

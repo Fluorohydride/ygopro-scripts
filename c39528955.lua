@@ -21,7 +21,7 @@ function c39528955.initial_effect(c)
 	c:RegisterEffect(e2)
 	--move
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(39528955,2))
+	e3:SetDescription(aux.Stringid(39528955,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -57,7 +57,7 @@ function c39528955.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c39528955.seqfilter(chkc) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c39528955.seqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39528955,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39528955,1))
 	Duel.SelectTarget(tp,c39528955.seqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,c)
 end
 function c39528955.seqop(e,tp,eg,ep,ev,re,r,rp)

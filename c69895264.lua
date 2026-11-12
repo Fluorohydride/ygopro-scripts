@@ -33,7 +33,7 @@ function c69895264.activate(e,tp,eg,ep,ev,re,r,rp)
 		local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		if ct>0 and Duel.IsExistingMatchingCard(c69895264.demfilter,tp,LOCATION_MZONE,0,1,nil)
 			and sg:GetClassCount(Card.GetCode)>=ct and ft>=ct
-			and Duel.SelectYesNo(tp,aux.Stringid(69895264,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(69895264,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local stg=sg:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
 			Duel.SSet(tp,stg)

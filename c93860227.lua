@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--equip or draw
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_MZONE)
@@ -51,9 +51,9 @@ function s.tstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,2))
+		op=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(id,3))
+		op=Duel.SelectOption(tp,aux.Stringid(id,1))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(id,2))+1
 	end

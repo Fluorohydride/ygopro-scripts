@@ -48,13 +48,13 @@ function c59514116.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return res1 or res2 end
 	local s=0
 	if res1 and not res2 then
-		s=Duel.SelectOption(tp,aux.Stringid(59514116,3))
+		s=Duel.SelectOption(tp,aux.Stringid(59514116,0))
 	end
 	if not res1 and res2 then
-		s=Duel.SelectOption(tp,aux.Stringid(59514116,2))+1
+		s=Duel.SelectOption(tp,aux.Stringid(59514116,1))+1
 	end
 	if res1 and res2 then
-		s=Duel.SelectOption(tp,aux.Stringid(59514116,3),aux.Stringid(59514116,2))
+		s=Duel.SelectOption(tp,aux.Stringid(59514116,0),aux.Stringid(59514116,1))
 	end
 	e:SetLabel(s)
 	if s==0 then

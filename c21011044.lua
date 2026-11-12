@@ -99,7 +99,7 @@ function c21011044.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1,true)
 		local attr=tc:GetAttribute()
 		if tc:IsFaceup() and Duel.IsExistingMatchingCard(c21011044.tgfilter,tp,0,LOCATION_MZONE,1,nil,attr)
-			and Duel.SelectYesNo(tp,aux.Stringid(21011044,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(21011044,0)) then
 			Duel.BreakEffect()
 			local g=Duel.SelectMatchingCard(tp,c21011044.tgfilter,tp,0,LOCATION_MZONE,1,1,nil,attr)
 			Duel.HintSelection(g)

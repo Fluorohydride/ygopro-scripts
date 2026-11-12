@@ -50,7 +50,7 @@ function c65326118.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c65326118.filter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c65326118.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(65326118,3))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(65326118,0))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c65326118.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
@@ -71,7 +71,7 @@ function c65326118.sccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c65326118.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler()) end
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(65326118,4))
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(65326118,2))
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c65326118.scop(e,tp,eg,ep,ev,re,r,rp)

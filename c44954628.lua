@@ -20,7 +20,7 @@ function c44954628.initial_effect(c)
 	aux.EnableBESRemove(c)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(44954628,1))
+	e5:SetDescription(aux.Stringid(44954628,3))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_IGNITION)

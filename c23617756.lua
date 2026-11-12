@@ -52,9 +52,9 @@ function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,2))
+		op=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(id,3))
+		op=Duel.SelectOption(tp,aux.Stringid(id,1))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(id,2))+1
 	end

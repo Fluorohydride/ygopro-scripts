@@ -31,7 +31,7 @@ function c9238125.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local fe=Duel.IsPlayerAffectedByEffect(tp,14108995)
 	local b2=Duel.IsExistingMatchingCard(c9238125.costfilter,tp,LOCATION_HAND,0,1,c)
 	if chk==0 then return c:IsDiscardable() and (fe or b2) end
-	if fe and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(14108995,2))) then
+	if fe and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(14108995,0))) then
 		Duel.Hint(HINT_CARD,0,14108995)
 		fe:UseCountLimit(tp)
 		Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
@@ -56,7 +56,7 @@ function c9238125.drop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Draw(p,d,REASON_EFFECT)>0 then
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c9238125.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(9238125,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(9238125,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=sg:Select(tp,1,1,nil)
@@ -91,7 +91,7 @@ function c9238125.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(9238125,3))
+		e1:SetDescription(aux.Stringid(9238125,1))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CLIENT_HINT)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)

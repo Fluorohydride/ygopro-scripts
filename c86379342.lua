@@ -13,7 +13,7 @@ function c86379342.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(86379342,1))
+	e2:SetDescription(aux.Stringid(86379342,0))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_GRAVE)

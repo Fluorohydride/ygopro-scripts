@@ -2,7 +2,7 @@
 function c11449436.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(11449436,1))
+	e1:SetDescription(aux.Stringid(11449436,0))
 	e1:SetCategory(CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_START)
@@ -14,7 +14,7 @@ function c11449436.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(11449436,0))
+	e2:SetDescription(aux.Stringid(11449436,1))
 	e2:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_START)

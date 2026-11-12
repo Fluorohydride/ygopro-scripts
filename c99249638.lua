@@ -3,7 +3,7 @@ function c99249638.initial_effect(c)
 	aux.EnableUnionAttribute(c,aux.TRUE)
 	--reequip
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(99249638,0))
+	e4:SetDescription(aux.Stringid(99249638,2))
 	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

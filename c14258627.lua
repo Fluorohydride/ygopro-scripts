@@ -76,7 +76,7 @@ function c14258627.mtcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c14258627.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsExistingMatchingCard(c14258627.filter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(14258627,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(14258627,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,c14258627.filter,tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Remove(g,POS_FACEUP,REASON_COST)

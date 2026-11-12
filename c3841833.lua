@@ -2,7 +2,7 @@
 function c3841833.initial_effect(c)
 	--sset
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(3841833,2))
+	e1:SetDescription(aux.Stringid(3841833,0))
 	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -13,7 +13,7 @@ function c3841833.initial_effect(c)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(3841833,0))
+	e2:SetDescription(aux.Stringid(3841833,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

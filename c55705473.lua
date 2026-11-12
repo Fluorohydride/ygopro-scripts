@@ -2,7 +2,7 @@
 function c55705473.initial_effect(c)
 	--draw and replace
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(55705473,2))
+	e1:SetDescription(aux.Stringid(55705473,0))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -15,7 +15,7 @@ function c55705473.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(55705473,0))
+	e3:SetDescription(aux.Stringid(55705473,3))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -38,7 +38,7 @@ function c55705473.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
-		if Duel.SelectOption(tp,aux.Stringid(55705473,4),aux.Stringid(55705473,3))==0 then
+		if Duel.SelectOption(tp,aux.Stringid(55705473,1),aux.Stringid(55705473,2))==0 then
 			Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
 			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)

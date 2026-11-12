@@ -68,7 +68,7 @@ function c43839002.retop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:GetFlagEffectLabel(43839002)==e:GetLabel() and Duel.ReturnToField(tc) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetDescription(aux.Stringid(43839002,1))
+		e1:SetDescription(aux.Stringid(43839002,0))
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
 		e1:SetValue(1)

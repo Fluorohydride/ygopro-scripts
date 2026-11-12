@@ -13,7 +13,7 @@ function c84388461.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=aux.AddRitualProcEqual2(c,c84388461.filter,nil,nil,c84388461.mfilter,true)
-	e3:SetDescription(aux.Stringid(84388461,2))
+	e3:SetDescription(aux.Stringid(84388461,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCode(0)
 	e3:SetCountLimit(1,84388461)

@@ -21,7 +21,7 @@ function c67196946.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[l]=l*500
 		l=l+1
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(67196946,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(67196946,0))
 	local announce=Duel.AnnounceNumber(tp,table.unpack(t))
 	Duel.PayLPCost(tp,announce,true)
 	e:SetLabel(announce/500)
@@ -33,7 +33,7 @@ function c67196946.op(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	local g=Duel.GetMatchingGroup(Card.IsLevelAbove,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,ct+1)
 	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(67196946,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(67196946,1))
 		local sg=g:Select(tp,1,1,nil)
 		local tc=sg:GetFirst()
 		if tc:IsLocation(LOCATION_MZONE) then

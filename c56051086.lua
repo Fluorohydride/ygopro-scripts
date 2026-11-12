@@ -28,7 +28,7 @@ function c56051086.initial_effect(c)
 	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(56051086,2))
+	e4:SetDescription(aux.Stringid(56051086,1))
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_RECOVER)

@@ -12,7 +12,7 @@ function c84941194.initial_effect(c)
 	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(84941194,1))
+	e2:SetDescription(aux.Stringid(84941194,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)
@@ -23,7 +23,7 @@ function c84941194.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Leave Field
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(84941194,0))
+	e3:SetDescription(aux.Stringid(84941194,1))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -66,7 +66,7 @@ end
 function c84941194.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetFirstMatchingCard(c84941194.filter,tp,LOCATION_DECK,0,nil)
 	if tg and Duel.SendtoHand(tg,nil,REASON_EFFECT)~=0 and Duel.ConfirmCards(1-tp,tg)~=0
-		and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(84941194,3)) then
+		and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(84941194,2)) then
 			Duel.ShuffleDeck(tp)
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)

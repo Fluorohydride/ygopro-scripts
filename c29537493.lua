@@ -2,7 +2,7 @@
 function c29537493.initial_effect(c)
 	--special summon
 	local e1=aux.AddUrsarcticSpSummonEffect(c)
-	e1:SetDescription(aux.Stringid(29537493,2))
+	e1:SetDescription(aux.Stringid(29537493,0))
 	e1:SetCountLimit(1,29537493)
 	--search
 	local e2=Effect.CreateEffect(c)

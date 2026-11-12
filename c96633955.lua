@@ -35,7 +35,7 @@ function c96633955.initial_effect(c)
 	c:RegisterEffect(e5)
 	--remove
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(96633955,1))
+	e6:SetDescription(aux.Stringid(96633955,0))
 	e6:SetCategory(CATEGORY_REMOVE)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetProperty(EFFECT_FLAG_DELAY)

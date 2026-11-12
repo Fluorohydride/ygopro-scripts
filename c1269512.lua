@@ -1,6 +1,6 @@
 --FA－ホープ・レイ・ランサー
 function c1269512.initial_effect(c)
-	aux.AddXyzProcedure(c,nil,4,3,c1269512.ovfilter,aux.Stringid(1269512,3),3,c1269512.xyzop)
+	aux.AddXyzProcedure(c,nil,4,3,c1269512.ovfilter,aux.Stringid(1269512,0),3,c1269512.xyzop)
 	c:EnableReviveLimit()
 	--
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +12,7 @@ function c1269512.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(1269512,1))
+	e2:SetDescription(aux.Stringid(1269512,2))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
@@ -23,7 +23,7 @@ function c1269512.initial_effect(c)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1269512,2))
+	e3:SetDescription(aux.Stringid(1269512,3))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetCountLimit(1)

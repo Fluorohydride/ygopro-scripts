@@ -43,7 +43,7 @@ function c42548470.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(lv1)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc2:RegisterEffect(e1)
-			if lv1<lv2 and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(42548470,1)) then Duel.Draw(tp,1,REASON_EFFECT) end
+			if lv1<lv2 and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(42548470,0)) then Duel.Draw(tp,1,REASON_EFFECT) end
 		else
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -51,7 +51,7 @@ function c42548470.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(lv2)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc1:RegisterEffect(e1)
-			if lv2<lv1 and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(42548470,1)) then Duel.Draw(tp,1,REASON_EFFECT) end
+			if lv2<lv1 and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(42548470,0)) then Duel.Draw(tp,1,REASON_EFFECT) end
 		end
 	end
 end

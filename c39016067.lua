@@ -30,7 +30,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	-- target 1 pendulum monster card you control and 1 card your opponent controls; return them to the hand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,2))
+	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
@@ -55,7 +55,7 @@ function s.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,4),1},
+			{b1,aux.Stringid(id,2),1},
 			{b2,aux.Stringid(id,3),2})
 	e:SetLabel(op)
 	if op==1 then

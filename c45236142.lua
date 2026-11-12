@@ -20,7 +20,7 @@ function c45236142.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(45236142,1))
+	e3:SetDescription(aux.Stringid(45236142,0))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_HAND+LOCATION_MZONE)
@@ -30,7 +30,7 @@ function c45236142.initial_effect(c)
 	c:RegisterEffect(e3)
 	--return deck
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(45236142,2))
+	e4:SetDescription(aux.Stringid(45236142,1))
 	e4:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
@@ -93,7 +93,7 @@ function c45236142.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if tc:IsAbleToHand() and (not tc:IsAbleToDeck()
-			or Duel.SelectOption(tp,aux.Stringid(45236142,4),aux.Stringid(45236142,5))==0) then
+			or Duel.SelectOption(tp,aux.Stringid(45236142,2),aux.Stringid(45236142,3))==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		else
 			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)

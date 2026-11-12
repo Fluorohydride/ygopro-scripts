@@ -37,7 +37,7 @@ function c60709218.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=g:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local g2=Duel.GetMatchingGroup(c60709218.setfilter,tp,LOCATION_DECK,0,nil)
-		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60709218,1)) then
+		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60709218,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local tc=g2:Select(tp,1,1,nil)

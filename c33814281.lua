@@ -65,10 +65,10 @@ function c33814281.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTarget(c33814281.sumlimit)
 		c:RegisterEffect(e1)
 		if (rtype&TYPE_FUSION)>0 and c:GetFlagEffect(33814281)==0 then
-			c:RegisterFlagEffect(33814281,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,4))
+			c:RegisterFlagEffect(33814281,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,0))
 		end
 		if (rtype&TYPE_SYNCHRO)>0 and c:GetFlagEffect(33814282)==0 then
-			c:RegisterFlagEffect(33814282,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,5))
+			c:RegisterFlagEffect(33814282,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,1))
 		end
 		if (rtype&TYPE_XYZ)>0 and c:GetFlagEffect(33814283)==0 then
 			c:RegisterFlagEffect(33814283,reset,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(33814281,2))

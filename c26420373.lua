@@ -4,7 +4,7 @@ function c26420373.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale change
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(26420373,4))
+	e1:SetDescription(aux.Stringid(26420373,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1)
@@ -22,7 +22,7 @@ function c26420373.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(26420373,0))
+	e3:SetDescription(aux.Stringid(26420373,3))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -56,9 +56,9 @@ function c26420373.scop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	local sel=0
 	if c:GetLeftScale()==1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(26420373,5))
+		sel=Duel.SelectOption(tp,aux.Stringid(26420373,1))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(26420373,5),aux.Stringid(26420373,6))
+		sel=Duel.SelectOption(tp,aux.Stringid(26420373,1),aux.Stringid(26420373,2))
 	end
 	if sel==1 then
 		ct=-math.min(ct,c:GetLeftScale()-1)

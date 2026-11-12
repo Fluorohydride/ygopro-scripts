@@ -27,7 +27,7 @@ function c545781.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-		local opt=Duel.SelectOption(tp,aux.Stringid(545781,2),aux.Stringid(545781,1))
+		local opt=Duel.SelectOption(tp,aux.Stringid(545781,0),aux.Stringid(545781,1))
 		if opt==0 then
 			Duel.Recover(tp,ev,REASON_EFFECT)
 		else

@@ -35,7 +35,7 @@ function c1781310.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) then
-		ops[off]=aux.Stringid(1781310,1)
+		ops[off]=aux.Stringid(1781310,0)
 		opval[off-1]=1
 		off=off+1
 	end
@@ -45,12 +45,12 @@ function c1781310.activate(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>=2 then
-		ops[off]=aux.Stringid(1781310,1)
+		ops[off]=aux.Stringid(1781310,2)
 		opval[off-1]=3
 		off=off+1
 	end
 	if Duel.IsPlayerCanDraw(tp,2) then
-		ops[off]=aux.Stringid(1781310,1)
+		ops[off]=aux.Stringid(1781310,3)
 		opval[off-1]=4
 		off=off+1
 	end

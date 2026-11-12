@@ -3,7 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,5))
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--activate
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,2))
+	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1)
@@ -40,7 +40,7 @@ function s.ssfilter(c,tp)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.ssfilter,tp,LOCATION_DECK,0,nil,tp)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,6)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SSet(tp,sg:GetFirst())
@@ -101,7 +101,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		op=1
 	end
 	if b2 and not b1 then
-		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,3))
+		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,4))
 		op=2
 	end
 	if b1 and b2 then

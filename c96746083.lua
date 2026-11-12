@@ -86,7 +86,7 @@ function c96746083.spop(e,tp,eg,ep,ev,re,r,rp)
 			return
 		end
 		local rg=Duel.GetMatchingGroup(c96746083.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil)
-		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96746083,2)) then
+		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96746083,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local tg=rg:Select(tp,1,1,nil)
 			Duel.HintSelection(tg)

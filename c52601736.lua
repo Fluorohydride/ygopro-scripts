@@ -17,7 +17,7 @@ function c52601736.initial_effect(c)
 	c:RegisterEffect(e2)
 	--direct atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(52601736,2))
+	e3:SetDescription(aux.Stringid(52601736,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(c52601736.dacon)

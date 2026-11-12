@@ -12,7 +12,7 @@ function c47766694.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(47766694,0))
+	e2:SetDescription(aux.Stringid(47766694,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
@@ -37,7 +37,7 @@ function c47766694.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local dp=tc:GetControler()
 		local g=Duel.GetMatchingGroup(Card.IsSSetable,dp,LOCATION_HAND,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(dp,aux.Stringid(47766694,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(dp,aux.Stringid(47766694,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(dp,1,1,nil)

@@ -13,7 +13,7 @@ function c69394324.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(69394324,1))
+	e2:SetDescription(aux.Stringid(69394324,2))
 	e2:SetCategory(CATEGORY_DRAW)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -25,7 +25,7 @@ function c69394324.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(69394324,2))
+	e3:SetDescription(aux.Stringid(69394324,3))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
@@ -46,11 +46,11 @@ function c69394324.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not b1 and not b2 then return end
 	local op=nil
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(69394324,3),aux.Stringid(69394324,4))
+		op=Duel.SelectOption(tp,aux.Stringid(69394324,0),aux.Stringid(69394324,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(69394324,3))
+		op=Duel.SelectOption(tp,aux.Stringid(69394324,0))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(69394324,4))+1
+		op=Duel.SelectOption(tp,aux.Stringid(69394324,1))+1
 	end
 	local p=op==0 and tp or 1-tp
 	Duel.SortDecktop(tp,p,5)

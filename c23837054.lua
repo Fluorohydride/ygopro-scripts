@@ -36,7 +36,7 @@ function c23837054.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c23837054.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 	local res1=Duel.IsPlayerCanSpecialSummonMonster(tp,23837055,0,TYPES_TOKEN_MONSTER,0,0,2,RACE_REPTILE,ATTRIBUTE_DARK)
 	local res2=cg:GetClassCount(Card.GetCode)>=8 and tg:GetClassCount(Card.GetCode)>=2
-	if res2 and (not res1 or Duel.SelectYesNo(tp,aux.Stringid(23837054,1))) then
+	if res2 and (not res1 or Duel.SelectYesNo(tp,aux.Stringid(23837054,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=tg:SelectSubGroup(tp,aux.dncheck,false,2,2)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

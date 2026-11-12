@@ -29,7 +29,7 @@ function c38960450.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g1)
 		local g2=Duel.GetMatchingGroup(c38960450.eqfilter,tp,LOCATION_MZONE,0,nil,tc)
 		if tc:CheckUniqueOnField(tp) and not tc:IsForbidden() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(38960450,1)) then
+			and g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(38960450,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			local sg=g2:Select(tp,1,1,nil)

@@ -2,7 +2,7 @@
 function c43748308.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(43748308,1))
+	e2:SetDescription(aux.Stringid(43748308,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetCategory(CATEGORY_SSET)
@@ -15,7 +15,7 @@ function c43748308.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(43748308,0))
+	e3:SetDescription(aux.Stringid(43748308,1))
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)

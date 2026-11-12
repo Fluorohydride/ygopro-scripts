@@ -24,7 +24,7 @@ function c55154048.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Search
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(55154048,1))
+	e4:SetDescription(aux.Stringid(55154048,0))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)

@@ -33,7 +33,7 @@ end
 function c65029288.immop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(65029288,2))
+	e1:SetDescription(aux.Stringid(65029288,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 	e1:SetCode(EFFECT_IMMUNE_EFFECT)

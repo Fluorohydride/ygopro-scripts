@@ -12,7 +12,7 @@ function c28692962.initial_effect(c)
 	c:RegisterEffect(e1)
 	--banish & search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(28692962,1))
+	e2:SetDescription(aux.Stringid(28692962,0))
 	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -66,7 +66,7 @@ function c28692962.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0
 		and tc:IsLocation(LOCATION_REMOVED) then
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(28692962,2))
+		e1:SetDescription(aux.Stringid(28692962,1))
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
 		e1:SetLabelObject(tc)

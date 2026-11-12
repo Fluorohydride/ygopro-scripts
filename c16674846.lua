@@ -24,7 +24,7 @@ function c16674846.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	Duel.RegisterEffect(e1,tp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16674846.filter),tp,LOCATION_GRAVE,0,nil)
-	if g:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(16674846,1)) then
+	if g:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(16674846,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

@@ -16,11 +16,11 @@ end
 function c76922029.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 or Duel.IsPlayerCanDiscardDeck(1-tp,2) end
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(76922029,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(76922029,0))
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 and Duel.IsPlayerCanDiscardDeck(1-tp,2) then
-		op=Duel.SelectOption(tp,aux.Stringid(76922029,2),aux.Stringid(76922029,3))
+		op=Duel.SelectOption(tp,aux.Stringid(76922029,1),aux.Stringid(76922029,2))
 	elseif Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 then
-		Duel.SelectOption(tp,aux.Stringid(76922029,2))
+		Duel.SelectOption(tp,aux.Stringid(76922029,1))
 		op=0
 	else
 		Duel.SelectOption(tp,aux.Stringid(76922029,2))

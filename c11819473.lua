@@ -47,7 +47,7 @@ function c11819473.activate(e,tp,eg,ep,ev,re,r,rp)
 			off=off+1
 		end
 		if Duel.IsExistingMatchingCard(c11819473.thfilter2,tp,0,LOCATION_DECK,1,nil,1-tp) then
-			ops[off]=aux.Stringid(11819473,2)
+			ops[off]=aux.Stringid(11819473,3)
 			opval[off-1]=1
 			off=off+1
 		end

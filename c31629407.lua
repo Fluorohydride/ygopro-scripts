@@ -2,7 +2,7 @@
 function c31629407.initial_effect(c)
 	--activate from hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(31629407,2))
+	e1:SetDescription(aux.Stringid(31629407,1))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e1:SetRange(LOCATION_MZONE)
@@ -15,7 +15,7 @@ function c31629407.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(31629407,1))
+	e3:SetDescription(aux.Stringid(31629407,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

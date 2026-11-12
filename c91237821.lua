@@ -15,7 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,0))
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_RELEASE)
@@ -39,7 +39,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local op=0
 	if b1 or b2 then
 		op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,3),1},
+			{b1,aux.Stringid(id,1),1},
 			{b2,aux.Stringid(id,2),2})
 	end
 	e:SetLabel(op)

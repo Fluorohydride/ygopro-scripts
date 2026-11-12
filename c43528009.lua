@@ -16,7 +16,7 @@ function c43528009.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c43528009.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43528009,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43528009,0))
 	local ag=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,2,2,nil)
 	if ag:GetCount()==2 then
 		Duel.SendtoHand(ag,1-tp,REASON_EFFECT)

@@ -34,7 +34,7 @@ function c22007085.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleHand(tp)
 		if Duel.IsExistingMatchingCard(c22007085.cfilter,tp,0,LOCATION_MZONE,1,nil) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 			and Duel.IsExistingMatchingCard(c22007085.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
-			and Duel.SelectYesNo(tp,aux.Stringid(22007085,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(22007085,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=Duel.SelectMatchingCard(tp,c22007085.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)

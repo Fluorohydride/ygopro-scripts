@@ -29,10 +29,10 @@ function c84442536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sel=0
 	if Duel.IsChainNegatable(ev) and tc:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-		sel=Duel.SelectOption(tp,aux.Stringid(84442536,2),aux.Stringid(84442536,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(84442536,0),aux.Stringid(84442536,1))
 	elseif tc:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-		sel=Duel.SelectOption(tp,aux.Stringid(84442536,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(84442536,0))
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 		sel=Duel.SelectOption(tp,aux.Stringid(84442536,1))+1

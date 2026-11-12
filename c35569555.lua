@@ -11,7 +11,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--send to gy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,2))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
@@ -26,13 +26,13 @@ function s.thfilter(c,specify)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil,true)
-	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		if Duel.SendtoHand(sg,nil,REASON_EFFECT)>0 and sg:GetFirst():IsLocation(LOCATION_HAND) then
 			Duel.ConfirmCards(1-tp,sg)
 			local g2=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
-			if #g2>0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
+			if #g2>0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local sg2=g2:Select(tp,1,1,nil)
 				Duel.BreakEffect()
@@ -76,7 +76,7 @@ function s.tgop(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if #g2>0 then
-		ops[off]=aux.Stringid(id,3)
+		ops[off]=aux.Stringid(id,4)
 		opval[off]=1
 		off=off+1
 	end

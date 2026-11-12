@@ -13,7 +13,7 @@ function c91742238.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_SSET)
-	e2:SetDescription(aux.Stringid(91742238,1))
+	e2:SetDescription(aux.Stringid(91742238,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)

@@ -86,7 +86,7 @@ function c19508728.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c19508728.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		local opt=Duel.SelectOption(tp,aux.Stringid(19508728,3),aux.Stringid(19508728,4))
+		local opt=Duel.SelectOption(tp,aux.Stringid(19508728,0),aux.Stringid(19508728,1))
 		Duel.SendtoDeck(e:GetHandler(),nil,opt,REASON_EFFECT)
 	end
 end

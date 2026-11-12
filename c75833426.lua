@@ -32,7 +32,7 @@ function c75833426.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.IsExistingMatchingCard(c75833426.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(75833426,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(75833426,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)

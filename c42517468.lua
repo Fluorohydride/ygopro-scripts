@@ -2,7 +2,7 @@
 function c42517468.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(42517468,0))
+	e1:SetDescription(aux.Stringid(42517468,1))
 	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -38,7 +38,7 @@ function c42517468.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 	end
 	if groundcollapse and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
-		and Duel.SelectYesNo(tp,aux.Stringid(42517468,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(42517468,0)) then
 		Duel.BreakEffect()
 		local zone=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0)
 		if tp==1 then

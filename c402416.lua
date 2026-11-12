@@ -25,7 +25,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.HintSelection(g)
 		local e1=Effect.CreateEffect(tc)
-		e1:SetDescription(aux.Stringid(id,0))
+		e1:SetDescription(aux.Stringid(id,1))
 		e1:SetCategory(CATEGORY_DESTROY)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetRange(LOCATION_MZONE)
@@ -47,7 +47,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e3)
 		end
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,2))
+		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,0))
 	end
 end
 function s.aclimit(e,re,tp)

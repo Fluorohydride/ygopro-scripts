@@ -55,7 +55,7 @@ function c96857854.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ft2>ct then ft2=ct end
 	local ct2=ct-ft1
 	local tc=nil
-	if ft2>0 and (ct2>0 or Duel.SelectYesNo(tp,aux.Stringid(96857854,2))) then
+	if ft2>0 and (ct2>0 or Duel.SelectYesNo(tp,aux.Stringid(96857854,0))) then
 		if ct2<=0 then ct2=1 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg1=g:FilterSelect(tp,Card.IsCanBeSpecialSummoned,ct2,ft2,nil,e,0,tp,false,false,POS_FACEUP,1-tp)

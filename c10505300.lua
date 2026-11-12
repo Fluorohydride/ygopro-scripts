@@ -11,7 +11,7 @@ function c10505300.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(10505300,1))
+	e2:SetDescription(aux.Stringid(10505300,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c10505300.cost)

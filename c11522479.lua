@@ -58,8 +58,8 @@ function c11522479.lgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(c11522479.setfilter,tp,LOCATION_GRAVE,0,1,nil)
 	if chk==0 then return b1 or b2 end
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(11522479,3),aux.Stringid(11522479,2))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(11522479,3))
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(11522479,1),aux.Stringid(11522479,2))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(11522479,1))
 	else op=Duel.SelectOption(tp,aux.Stringid(11522479,2))+1 end
 	e:SetLabel(op)
 	if op==0 then

@@ -12,7 +12,7 @@ function c20447641.initial_effect(c)
 	c:RegisterEffect(e1)
 	--triple tribute
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(20447641,2))
+	e3:SetDescription(aux.Stringid(20447641,0))
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_LIMIT_SUMMON_PROC)
 	e3:SetRange(LOCATION_MZONE)

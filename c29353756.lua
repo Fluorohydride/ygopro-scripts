@@ -11,7 +11,7 @@ function c29353756.initial_effect(c)
 	c:RegisterEffect(e1)
 	--equip
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(29353756,2))
+	e2:SetDescription(aux.Stringid(29353756,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCategory(CATEGORY_EQUIP)

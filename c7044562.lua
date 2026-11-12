@@ -22,7 +22,7 @@ function c7044562.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()<1 then return end
 	Duel.ConfirmCards(tp,g)
 	local lp=Duel.GetLP(tp)
-	if g:IsExists(c7044562.filter,1,nil,lp) and Duel.SelectYesNo(tp,aux.Stringid(7044562,1)) then
+	if g:IsExists(c7044562.filter,1,nil,lp) and Duel.SelectYesNo(tp,aux.Stringid(7044562,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:FilterSelect(tp,c7044562.filter,1,1,nil,lp)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

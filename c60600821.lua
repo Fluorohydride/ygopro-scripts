@@ -26,7 +26,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3)
 	--set
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,2))
+	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
@@ -50,7 +50,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ct do
 		t[i]=ct-i+1
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,2))
 	local dsc=Duel.AnnounceNumber(tp,table.unpack(t))
 	local dis=Duel.SelectDisableField(tp,dsc,LOCATION_MZONE,0,0xe000e0)
 	e:SetLabel(dis)

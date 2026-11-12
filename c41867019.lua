@@ -58,7 +58,7 @@ function c41867019.effop(e,tp,eg,ep,ev,re,r,rp)
 	local b3=Duel.IsExistingMatchingCard(c41867019.tgfilter,tp,0,LOCATION_MZONE,1,nil) and bit.band(flag,0x4)==0
 	local b4=bit.band(flag,0x8)==0
 	if b1 then
-		ops[off]=aux.Stringid(41867019,1)
+		ops[off]=aux.Stringid(41867019,0)
 		opval[off-1]=1
 		off=off+1
 	end
@@ -68,12 +68,12 @@ function c41867019.effop(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if b3 then
-		ops[off]=aux.Stringid(41867019,1)
+		ops[off]=aux.Stringid(41867019,2)
 		opval[off-1]=3
 		off=off+1
 	end
 	if b4 then
-		ops[off]=aux.Stringid(41867019,1)
+		ops[off]=aux.Stringid(41867019,3)
 		opval[off-1]=4
 		off=off+1
 	end

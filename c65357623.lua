@@ -15,7 +15,7 @@ function c65357623.initial_effect(c)
 	--Shuffle to set from GY
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_SSET)
-	e2:SetDescription(aux.Stringid(65357623,1))
+	e2:SetDescription(aux.Stringid(65357623,3))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,65357623)
@@ -36,7 +36,7 @@ function c65357623.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local atk=1000
-		if Duel.SelectOption(tp,aux.Stringid(65357623,3),aux.Stringid(65357623,2))==1 then atk=-1000 end
+		if Duel.SelectOption(tp,aux.Stringid(65357623,1),aux.Stringid(65357623,2))==1 then atk=-1000 end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

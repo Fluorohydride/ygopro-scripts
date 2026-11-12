@@ -80,8 +80,8 @@ function s.eftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,3),1},
-		{b2,aux.Stringid(id,4),2})
+		{b1,aux.Stringid(id,2),1},
+		{b2,aux.Stringid(id,3),2})
 	e:SetLabel(op)
 	if op==1 then
 		if e:IsCostChecked() then
@@ -108,7 +108,7 @@ function s.efop(e,tp,eg,ep,ev,re,r,rp)
 		if #g>0 then
 			Duel.ConfirmCards(tp,g)
 			local sg=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil)
-			if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,5)) then
+			if #sg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local tg=sg:Select(tp,1,1,nil)

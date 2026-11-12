@@ -31,7 +31,7 @@ function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(s.slfilter,tp,LOCATION_MZONE,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(id,2),0},
+		{b1,aux.Stringid(id,0),0},
 		{b2,aux.Stringid(id,1),1})
 	e:SetLabel(op)
 	if op==0 then

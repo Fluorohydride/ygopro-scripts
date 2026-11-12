@@ -34,7 +34,7 @@ function c88554436.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,tc,TYPE_SPELL+TYPE_TRAP)
-		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(88554436,2)) then
+		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(88554436,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local dg=g:Select(tp,1,1,nil)

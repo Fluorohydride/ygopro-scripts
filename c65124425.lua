@@ -31,7 +31,7 @@ function c65124425.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE)
 		and Duel.IsExistingMatchingCard(c65124425.thcfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c65124425.thfilter,tp,LOCATION_DECK,0,1,nil,tc)
-		and Duel.SelectYesNo(tp,aux.Stringid(65124425,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(65124425,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c65124425.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
 		Duel.BreakEffect()

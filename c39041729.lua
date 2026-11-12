@@ -38,7 +38,7 @@ function c39041729.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if g:IsExists(c39041729.spfilter,1,nil,e,tp,i) then lvt[pc]=i pc=pc+1 end
 	end
 	lvt[pc]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39041729,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39041729,0))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	local rg=Duel.GetMatchingGroup(c39041729.cfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

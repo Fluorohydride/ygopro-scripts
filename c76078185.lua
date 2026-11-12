@@ -63,7 +63,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
-		if tc:GetBattledGroupCount()>0 and tc:IsControlerCanBeChanged() and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		if tc:GetBattledGroupCount()>0 and tc:IsControlerCanBeChanged() and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			Duel.BreakEffect()
 			Duel.GetControl(tc,tp,PHASE_END,1)
 		end

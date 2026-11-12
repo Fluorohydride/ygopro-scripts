@@ -63,7 +63,7 @@ function c38904695.disop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e3)
 		end
-		if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and Duel.SelectYesNo(tp,aux.Stringid(38904695,3)) then
+		if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and Duel.SelectYesNo(tp,aux.Stringid(38904695,1)) then
 			Duel.BreakEffect()
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
@@ -79,7 +79,7 @@ function c38904695.exaop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(38904695,4))
+	e1:SetDescription(aux.Stringid(38904695,2))
 	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)

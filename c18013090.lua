@@ -21,7 +21,7 @@ function c18013090.initial_effect(c)
 	c:RegisterEffect(e2)
 	--chain attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(18013090,1))
+	e3:SetDescription(aux.Stringid(18013090,0))
 	e3:SetCategory(CATEGORY_POSITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

@@ -2,7 +2,7 @@
 function c47106439.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(47106439,1))
+	e1:SetDescription(aux.Stringid(47106439,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)

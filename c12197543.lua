@@ -23,9 +23,9 @@ function c12197543.activate(e,tp,eg,ep,ev,re,r,rp)
 			local g=Duel.GetMatchingGroup(c12197543.dfilter,tp,0,LOCATION_ONFIELD,nil)
 			local opt=0
 			if g:GetCount()==0 then
-				opt=Duel.SelectOption(tp,aux.Stringid(12197543,1))
+				opt=Duel.SelectOption(tp,aux.Stringid(12197543,0))
 			else
-				opt=Duel.SelectOption(tp,aux.Stringid(12197543,1),aux.Stringid(12197543,2))
+				opt=Duel.SelectOption(tp,aux.Stringid(12197543,0),aux.Stringid(12197543,1))
 			end
 			if opt==0 then Duel.SendtoGrave(tc,REASON_EFFECT+REASON_DISCARD)
 			else

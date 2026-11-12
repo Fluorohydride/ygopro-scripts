@@ -25,7 +25,7 @@ function c90587641.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(90587641,2))
+	e3:SetDescription(aux.Stringid(90587641,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -104,7 +104,7 @@ function c90587641.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Select(tp,1,1,nil)
 	if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)>0
 		and c:IsRelateToEffect(e) and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
-		and Duel.SelectYesNo(tp,aux.Stringid(90587641,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(90587641,2)) then
 		Duel.BreakEffect()
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end

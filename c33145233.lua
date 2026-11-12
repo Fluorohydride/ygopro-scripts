@@ -24,7 +24,7 @@ function c33145233.operation(e,tp,eg,ep,ev,re,r,rp)
 		if rc:GetFlagEffect(33145233)==0 then
 			--untargetable
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(33145233,2))
+			e1:SetDescription(aux.Stringid(33145233,0))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT+EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetRange(LOCATION_MZONE)

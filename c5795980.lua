@@ -14,7 +14,7 @@ function c5795980.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(5795980,2))
+	e2:SetDescription(aux.Stringid(5795980,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCost(aux.bfgcost)

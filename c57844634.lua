@@ -2,7 +2,7 @@
 function c57844634.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(57844634,1))
+	e1:SetDescription(aux.Stringid(57844634,0))
 	e1:SetCategory(CATEGORY_DAMAGE+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
@@ -35,7 +35,7 @@ function c57844634.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(c57844634.filter,tp,LOCATION_DECK,0,nil,e,tp)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(57844634,2)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(57844634,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,ft,nil)

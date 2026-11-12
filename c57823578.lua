@@ -24,7 +24,7 @@ function c57823578.initial_effect(c)
 	c:RegisterEffect(e3)
 	--tohand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(57823578,1))
+	e4:SetDescription(aux.Stringid(57823578,0))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

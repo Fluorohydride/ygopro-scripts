@@ -2,7 +2,7 @@
 function c48372950.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(48372950,2))
+	e1:SetDescription(aux.Stringid(48372950,0))
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)

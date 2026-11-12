@@ -88,13 +88,13 @@ function c76075139.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(76075139,3))
+		s=Duel.SelectOption(tp,aux.Stringid(76075139,0))
 	end
 	if not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(76075139,4))+1
+		s=Duel.SelectOption(tp,aux.Stringid(76075139,1))+1
 	end
 	if b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(76075139,3),aux.Stringid(76075139,4))
+		s=Duel.SelectOption(tp,aux.Stringid(76075139,0),aux.Stringid(76075139,1))
 	end
 	e:SetLabel(s)
 	if s==0 then

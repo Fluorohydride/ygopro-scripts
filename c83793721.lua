@@ -62,7 +62,7 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	local ct=#og
 	local thg=Duel.GetMatchingGroup(s.rfilter,tp,0,LOCATION_ONFIELD,nil)
-	if ct*#thg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+	if ct*#thg>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local sg2=thg:Select(tp,1,math.min(ct,#thg),nil)

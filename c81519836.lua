@@ -29,7 +29,7 @@ function c81519836.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local fe=Duel.IsPlayerAffectedByEffect(tp,14108995)
 	local b2=Duel.IsExistingMatchingCard(c81519836.costfilter,tp,LOCATION_HAND,0,1,c)
 	if chk==0 then return c:IsDiscardable() and (fe or b2) end
-	if fe and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(14108995,2))) then
+	if fe and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(14108995,0))) then
 		Duel.Hint(HINT_CARD,0,14108995)
 		fe:UseCountLimit(tp)
 		Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
@@ -57,7 +57,7 @@ function c81519836.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c81519836.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 		if sg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(81519836,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(81519836,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sc=sg:Select(tp,1,1,nil)

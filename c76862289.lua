@@ -11,7 +11,7 @@ function c76862289.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(76862289,0))
+	e4:SetDescription(aux.Stringid(76862289,1))
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_BATTLE_DAMAGE)

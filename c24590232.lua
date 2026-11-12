@@ -30,7 +30,7 @@ end
 function c24590232.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c24590232.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(24590232,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(24590232,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=Duel.SelectMatchingCard(tp,c24590232.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)

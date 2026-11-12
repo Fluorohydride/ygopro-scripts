@@ -63,7 +63,7 @@ end
 function c13291886.altg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c13291886.alfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c13291886.alfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(13291886,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(13291886,0))
 	Duel.SelectTarget(tp,c13291886.alfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
 end
 function c13291886.alop(e,tp,eg,ep,ev,re,r,rp)

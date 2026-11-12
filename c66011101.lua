@@ -31,7 +31,7 @@ function c66011101.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b3=Duel.IsExistingMatchingCard(c66011101.atkfilter,tp,LOCATION_MZONE,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 or b3 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(66011101,3)},
+		{b1,aux.Stringid(66011101,0)},
 		{b2,aux.Stringid(66011101,1)},
 		{b3,aux.Stringid(66011101,2)})
 	e:SetLabel(op)

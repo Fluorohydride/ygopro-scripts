@@ -26,7 +26,7 @@ function c60082869.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsSSetable,tp,LOCATION_HAND,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60082869,1)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60082869,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(tp,1,1,nil)

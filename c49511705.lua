@@ -16,7 +16,7 @@ function c49511705.initial_effect(c)
 	c:RegisterEffect(e2)
 	--coin result
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(49511705,1))
+	e3:SetDescription(aux.Stringid(49511705,0))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_GRAVE)

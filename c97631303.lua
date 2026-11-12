@@ -39,11 +39,11 @@ function c97631303.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(97631303,3))
+		s=Duel.SelectOption(tp,aux.Stringid(97631303,0))
 	elseif not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(97631303,4))+1
+		s=Duel.SelectOption(tp,aux.Stringid(97631303,1))+1
 	elseif b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(97631303,3),aux.Stringid(97631303,4))
+		s=Duel.SelectOption(tp,aux.Stringid(97631303,0),aux.Stringid(97631303,1))
 	end
 	e:SetLabel(s)
 	if s==0 then

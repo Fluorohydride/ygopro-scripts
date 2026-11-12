@@ -14,7 +14,7 @@ function c20265095.initial_effect(c)
 	c:RegisterEffect(e1)
 	--control
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(20265095,1))
+	e2:SetDescription(aux.Stringid(20265095,0))
 	e2:SetCategory(CATEGORY_CONTROL)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -38,7 +38,7 @@ function c20265095.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c20265095.costfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		or Duel.IsPlayerAffectedByEffect(tp,46241344) end
 	if Duel.IsExistingMatchingCard(c20265095.costfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,2))) then
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c20265095.costfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 		Duel.SendtoGrave(g,REASON_COST)

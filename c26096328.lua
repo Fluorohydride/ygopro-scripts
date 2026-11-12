@@ -1,7 +1,7 @@
 --超弩級砲塔列車ジャガーノート・リーベ
 function c26096328.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,11,3,c26096328.ovfilter,aux.Stringid(26096328,2),3,c26096328.xyzop)
+	aux.AddXyzProcedure(c,nil,11,3,c26096328.ovfilter,aux.Stringid(26096328,0),3,c26096328.xyzop)
 	c:EnableReviveLimit()
 	--boost
 	local e1=Effect.CreateEffect(c)

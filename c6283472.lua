@@ -51,7 +51,7 @@ end
 function c6283472.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.HintSelection(Group.FromCards(c))
-	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_MAINTENANCE,false,c) and Duel.SelectYesNo(tp,aux.Stringid(6283472,2)) then
+	if Duel.CheckReleaseGroupEx(tp,nil,1,REASON_MAINTENANCE,false,c) and Duel.SelectYesNo(tp,aux.Stringid(6283472,0)) then
 		local g=Duel.SelectReleaseGroupEx(tp,nil,1,1,REASON_MAINTENANCE,false,c)
 		Duel.Release(g,REASON_MAINTENANCE)
 	else Duel.Destroy(c,REASON_COST) end

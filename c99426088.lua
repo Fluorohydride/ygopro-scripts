@@ -119,7 +119,7 @@ function c99426088.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if fsg1:GetCount()>0 or (fsg2~=nil and fsg2:GetCount()>0) then
-		ops[off]=aux.Stringid(99426088,1)
+		ops[off]=aux.Stringid(99426088,0)
 		opval[off-1]=1
 		off=off+1
 	end

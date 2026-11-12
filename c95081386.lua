@@ -15,7 +15,7 @@ function c95081386.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c95081386.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local op=Duel.SelectOption(tp,aux.Stringid(95081386,3),aux.Stringid(95081386,1),aux.Stringid(95081386,2))
+	local op=Duel.SelectOption(tp,aux.Stringid(95081386,0),aux.Stringid(95081386,1),aux.Stringid(95081386,2))
 	e:SetLabel(op)
 end
 function c95081386.activate(e,tp,eg,ep,ev,re,r,rp)

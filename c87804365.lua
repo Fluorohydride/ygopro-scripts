@@ -40,9 +40,9 @@ function c87804365.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(87804365,2),aux.Stringid(87804365,1))
+		op=Duel.SelectOption(tp,aux.Stringid(87804365,0),aux.Stringid(87804365,1))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(87804365,2))
+		op=Duel.SelectOption(tp,aux.Stringid(87804365,0))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(87804365,1))+1
 	end

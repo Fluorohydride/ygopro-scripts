@@ -13,7 +13,7 @@ function c39037517.initial_effect(c)
 	c:RegisterEffect(e1)
 	--poschange
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(39037517,0))
+	e2:SetDescription(aux.Stringid(39037517,3))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -38,14 +38,14 @@ function c39037517.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c39037517.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(39037517,1),aux.Stringid(39037517,2),aux.Stringid(39037517,3))
+		select=Duel.SelectOption(tp,aux.Stringid(39037517,0),aux.Stringid(39037517,1),aux.Stringid(39037517,2))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(39037517,1),aux.Stringid(39037517,3))
+		select=Duel.SelectOption(tp,aux.Stringid(39037517,0),aux.Stringid(39037517,2))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(39037517,2),aux.Stringid(39037517,3))+1
+		select=Duel.SelectOption(tp,aux.Stringid(39037517,1),aux.Stringid(39037517,2))+1
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(39037517,3))
+		select=Duel.SelectOption(tp,aux.Stringid(39037517,2))
 		select=2
 	end
 	if select==0 then

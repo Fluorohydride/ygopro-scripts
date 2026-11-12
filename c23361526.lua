@@ -67,7 +67,7 @@ function c23361526.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(23361526,1)
+		ops[off]=aux.Stringid(23361526,2)
 		opval[off]=1
 		off=off+1
 	end

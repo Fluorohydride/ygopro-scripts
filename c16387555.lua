@@ -93,7 +93,7 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck(true)
 		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 		g:Sub(sg)
-		if #g>0 and Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,4))==1 then
+		if #g>0 and Duel.SelectOption(tp,aux.Stringid(id,2),aux.Stringid(id,3))==1 then
 			Duel.MoveSequence(g:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end

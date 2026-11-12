@@ -23,7 +23,7 @@ function c2930675.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c2930675.thfilter(chkc) end
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(c2930675.thfilter,tp,LOCATION_REMOVED,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(2930675,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(2930675,0)) then
 		e:SetCategory(CATEGORY_TOHAND)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c2930675.activate)

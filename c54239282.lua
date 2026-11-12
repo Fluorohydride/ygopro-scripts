@@ -27,7 +27,7 @@ function c54239282.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c54239282.filter,tp,LOCATION_HAND,0,nil,type)
 	local op=0
 	if g:GetCount()>0 and tc:IsDiscardable(REASON_EFFECT) and c:IsRelateToEffect(e) and c:GetLeaveFieldDest()==0 and Duel.IsPlayerCanDraw(tp,1) then
-		op=Duel.SelectOption(tp,aux.Stringid(54239282,2),aux.Stringid(54239282,1))
+		op=Duel.SelectOption(tp,aux.Stringid(54239282,0),aux.Stringid(54239282,1))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(54239282,1))+1
 	end

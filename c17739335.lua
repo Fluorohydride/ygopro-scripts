@@ -26,7 +26,7 @@ function c17739335.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(17739335,1))
+	e4:SetDescription(aux.Stringid(17739335,0))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -40,7 +40,7 @@ function c17739335.initial_effect(c)
 	c:RegisterEffect(e4)
 	--disable
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(17739335,2))
+	e5:SetDescription(aux.Stringid(17739335,1))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -55,7 +55,7 @@ function c17739335.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and e:GetLabel()==1
 end
 function c17739335.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(17739336,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17739335,3))
+	e:GetHandler():RegisterFlagEffect(17739336,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17739335,2))
 end
 function c17739335.macon(e)
 	return e:GetHandler():GetFlagEffect(17739336)>0

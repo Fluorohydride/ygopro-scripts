@@ -15,7 +15,7 @@ function c37021315.initial_effect(c)
 	e2:SetOperation(c37021315.regop)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(37021315,1))
+	e3:SetDescription(aux.Stringid(37021315,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_GRAVE_ACTION)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
@@ -51,7 +51,7 @@ function c37021315.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c37021315.cfilter),tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(37021315,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(37021315,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c37021315.cfilter),tp,LOCATION_GRAVE,0,1,1,nil)

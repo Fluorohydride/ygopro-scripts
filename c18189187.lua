@@ -14,7 +14,7 @@ function c18189187.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(18189187,1))
+	e2:SetDescription(aux.Stringid(18189187,3))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_TOHAND+CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -40,7 +40,7 @@ function c18189187.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and not c:IsAttribute(ATTRIBUTE_DARK)
-			and Duel.SelectYesNo(tp,aux.Stringid(18189187,3)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(18189187,1)) then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

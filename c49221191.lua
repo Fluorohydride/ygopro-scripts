@@ -2,10 +2,10 @@
 function c49221191.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),4,4,c49221191.ovfilter,aux.Stringid(49221191,1))
+	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),4,4,c49221191.ovfilter,aux.Stringid(49221191,0))
 	--atk/def
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(49221191,0))
+	e1:SetDescription(aux.Stringid(49221191,1))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetType(EFFECT_TYPE_QUICK_O)

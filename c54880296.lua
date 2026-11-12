@@ -32,7 +32,7 @@ function c54880296.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoHand(sg,nil,REASON_EFFECT)>0 then
 		local ct=5-Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 		if ct>0 and Duel.IsPlayerCanDraw(tp,ct)
-			and Duel.SelectYesNo(tp,aux.Stringid(54880296,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(54880296,0)) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,ct,REASON_EFFECT)
 		end

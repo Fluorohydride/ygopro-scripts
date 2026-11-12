@@ -16,7 +16,7 @@ function c58199906.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58199906.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetDescription(aux.Stringid(58199906,1))
+	e1:SetDescription(aux.Stringid(58199906,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHAIN_MATERIAL)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

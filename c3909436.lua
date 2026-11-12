@@ -49,10 +49,10 @@ function c3909436.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetDescription(aux.Stringid(3909436,2))
 		e1:SetValue(c3909436.aclimit1)
 	elseif e:GetLabel()==1 then
-		e1:SetDescription(aux.Stringid(3909436,2))
+		e1:SetDescription(aux.Stringid(3909436,3))
 		e1:SetValue(c3909436.aclimit2)
 	else
-		e1:SetDescription(aux.Stringid(3909436,2))
+		e1:SetDescription(aux.Stringid(3909436,4))
 		e1:SetValue(c3909436.aclimit3)
 	end
 	e1:SetReset(RESET_PHASE+PHASE_END)

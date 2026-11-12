@@ -4,7 +4,7 @@ function c37354507.initial_effect(c)
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x2b),2,2)
 	--set
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(37354507,1))
+	e1:SetDescription(aux.Stringid(37354507,0))
 	e1:SetCategory(CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

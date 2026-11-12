@@ -18,7 +18,7 @@ function c2204038.initial_effect(c)
 	c:RegisterEffect(e2)
 	--protect battle
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(2204038,2))
+	e3:SetDescription(aux.Stringid(2204038,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetRange(LOCATION_MZONE)

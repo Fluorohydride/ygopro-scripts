@@ -20,7 +20,7 @@ function c63583431.initial_effect(c)
 	c:RegisterEffect(e3)
 	--indes
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(63583431,1))
+	e4:SetDescription(aux.Stringid(63583431,0))
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)

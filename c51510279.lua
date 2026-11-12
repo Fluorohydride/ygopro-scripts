@@ -52,7 +52,7 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 	local off=1
 	local ops={}
 	local opval={}
-	ops[off]=aux.Stringid(51510279,1)
+	ops[off]=aux.Stringid(51510279,0)
 	opval[off-1]=0
 	off=off+1
 	if fsg1:GetCount()>0 or (fsg2~=nil and fsg2:GetCount()>0) then
@@ -61,7 +61,7 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 		off=off+1
 	end
 	if rsg:GetCount()>0 then
-		ops[off]=aux.Stringid(51510279,1)
+		ops[off]=aux.Stringid(51510279,2)
 		opval[off-1]=2
 		off=off+1
 	end

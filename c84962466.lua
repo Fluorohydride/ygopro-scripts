@@ -7,7 +7,7 @@ function c84962466.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(84962466,0))
+	e2:SetDescription(aux.Stringid(84962466,1))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)

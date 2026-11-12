@@ -39,7 +39,7 @@ end
 function c79400597.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.IsExistingMatchingCard(c79400597.costfilter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(79400597,4)) then
+		and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(79400597,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,c79400597.costfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Remove(g,POS_FACEUP,REASON_COST)
@@ -78,7 +78,7 @@ end
 function c79400597.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and c79400597.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c79400597.filter,tp,LOCATION_REMOVED,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79400597,5))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79400597,1))
 	local g=Duel.SelectTarget(tp,c79400597.filter,tp,LOCATION_REMOVED,0,1,3,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end

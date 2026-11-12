@@ -28,7 +28,7 @@ function c67288539.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(67288539,0))
+	e4:SetDescription(aux.Stringid(67288539,1))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_START)
@@ -61,7 +61,7 @@ function c67288539.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67288539.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(67288539,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(67288539,3))
+	c:RegisterFlagEffect(67288539,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(67288539,0))
 end
 function c67288539.valcheck(e,c)
 	local g=c:GetMaterial()

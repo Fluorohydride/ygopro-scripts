@@ -21,7 +21,7 @@ function c89320376.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pos (face-up)
 	local e3=e2:Clone()
-	e3:SetDescription(aux.Stringid(89320376,4))
+	e3:SetDescription(aux.Stringid(89320376,1))
 	e3:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e3:SetCost(c89320376.poscost)
 	e3:SetTarget(c89320376.postg2)
@@ -46,11 +46,11 @@ function c89320376.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
 		local op=0
 		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(89320376,3),aux.Stringid(89320376,4))
+			op=Duel.SelectOption(tp,aux.Stringid(89320376,0),aux.Stringid(89320376,1))
 		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(89320376,3))
+			op=Duel.SelectOption(tp,aux.Stringid(89320376,0))
 		else
-			op=Duel.SelectOption(tp,aux.Stringid(89320376,4))+1
+			op=Duel.SelectOption(tp,aux.Stringid(89320376,1))+1
 		end
 		e:SetLabel(op)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)

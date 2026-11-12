@@ -60,9 +60,9 @@ function c14756848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local sel=e:GetLabel()
 	if sel==3 then
-		sel=Duel.SelectOption(tp,aux.Stringid(14756848,2),aux.Stringid(14756848,3))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(14756848,1),aux.Stringid(14756848,2))+1
 	elseif sel==1 then
-		Duel.SelectOption(tp,aux.Stringid(14756848,2))
+		Duel.SelectOption(tp,aux.Stringid(14756848,1))
 	else
 		Duel.SelectOption(tp,aux.Stringid(14756848,2))
 	end
@@ -88,7 +88,7 @@ function c14756848.desop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.Destroy(g,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 			and not tc:IsLocation(LOCATION_HAND+LOCATION_DECK)
 			and tc:IsType(TYPE_SPELL+TYPE_TRAP) and tc:IsSSetable()
-			and Duel.SelectYesNo(tp,aux.Stringid(14756848,4)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(14756848,3)) then
 			Duel.BreakEffect()
 			Duel.SSet(tp,tc)
 		end

@@ -46,7 +46,7 @@ function c23649496.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c23649496.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(23649496,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(23649496,1))
 	local g=Duel.SelectMatchingCard(tp,c23649496.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then

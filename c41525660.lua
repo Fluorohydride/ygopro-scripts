@@ -67,7 +67,7 @@ end
 function c41525660.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c41525660.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c41525660.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(41525660,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(41525660,0))
 	Duel.SelectTarget(tp,c41525660.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler())
 end
 function c41525660.seqop(e,tp,eg,ep,ev,re,r,rp)

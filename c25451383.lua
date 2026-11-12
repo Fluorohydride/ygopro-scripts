@@ -4,7 +4,7 @@ function c25451383.initial_effect(c)
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)
 	--to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(25451383,1))
+	e1:SetDescription(aux.Stringid(25451383,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,25451383)

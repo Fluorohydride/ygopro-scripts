@@ -17,7 +17,7 @@ function c19025379.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy spell & trap
 	local e2=e1:Clone()
-	e2:SetDescription(aux.Stringid(19025379,2))
+	e2:SetDescription(aux.Stringid(19025379,1))
 	e2:SetTarget(c19025379.destg2)
 	e2:SetOperation(c19025379.desop2)
 	c:RegisterEffect(e2)

@@ -41,9 +41,9 @@ function c84211599.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(84211599,2),aux.Stringid(84211599,1))
+		op=Duel.SelectOption(tp,aux.Stringid(84211599,0),aux.Stringid(84211599,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(84211599,2))
+		op=Duel.SelectOption(tp,aux.Stringid(84211599,0))
 	end
 	local ct= op==0 and 3 or 6
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

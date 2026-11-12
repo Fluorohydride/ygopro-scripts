@@ -43,7 +43,7 @@ function c29296344.operation(e,tp,eg,ep,ev,re,r,rp)
 		if ct>0 then
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 			local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c29296344.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
-			if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(29296344,1)) then
+			if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(29296344,0)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)

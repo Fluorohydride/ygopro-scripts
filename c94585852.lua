@@ -16,7 +16,7 @@ function c94585852.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(94585852,1))
+	e4:SetDescription(aux.Stringid(94585852,0))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetRange(LOCATION_FZONE)

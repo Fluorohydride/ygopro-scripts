@@ -43,7 +43,7 @@ function c42469671.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(g,REASON_EFFECT)
 	local dc=Duel.GetOperatedGroup():FilterCount(c42469671.sgfilter,nil,1-tp)
 	if dc~=0 and Duel.IsTurnPlayer(tp) and Duel.IsMainPhase() and Duel.IsPlayerCanDraw(tp,dc)
-		and Duel.SelectYesNo(tp,aux.Stringid(42469671,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(42469671,0)) then
 		Duel.BreakEffect()
 		Duel.Draw(tp,dc,REASON_EFFECT)
 		--cannot attack

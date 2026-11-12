@@ -15,7 +15,7 @@ function c72498838.initial_effect(c)
 	c:RegisterEffect(e2)
 	--equip
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(72498838,1))
+	e3:SetDescription(aux.Stringid(72498838,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_GRAVE)
@@ -43,11 +43,11 @@ function c72498838.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sel=e:GetLabel()
 	if sel==3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-		sel=Duel.SelectOption(tp,aux.Stringid(72498838,2),aux.Stringid(72498838,3))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(72498838,0),aux.Stringid(72498838,1))+1
 	elseif sel==1 then
-		Duel.SelectOption(tp,aux.Stringid(72498838,2))
+		Duel.SelectOption(tp,aux.Stringid(72498838,0))
 	else
-		Duel.SelectOption(tp,aux.Stringid(72498838,3))
+		Duel.SelectOption(tp,aux.Stringid(72498838,1))
 	end
 	e:SetLabel(sel)
 	if sel==1 then

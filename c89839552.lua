@@ -7,7 +7,7 @@ function c89839552.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(89839552,1))
+	e2:SetDescription(aux.Stringid(89839552,0))
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DAMAGE)
@@ -18,7 +18,7 @@ function c89839552.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(89839552,2))
+	e3:SetDescription(aux.Stringid(89839552,1))
 	e3:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
@@ -62,7 +62,7 @@ function c89839552.thop2(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		Duel.ConfirmCards(1-tp,g)
 		local og=Duel.GetMatchingGroup(c89839552.thfilter3,tp,0,LOCATION_DECK,nil,tp)
-		if og:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(89839552,3)) then
+		if og:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(89839552,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 			local sg=og:Select(1-tp,1,1,nil)

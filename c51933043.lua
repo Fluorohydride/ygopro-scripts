@@ -2,7 +2,7 @@
 function c51933043.initial_effect(c)
 	--self ss
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(51933043,0))
+	e1:SetDescription(aux.Stringid(51933043,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)

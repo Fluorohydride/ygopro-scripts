@@ -36,7 +36,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		mg=mg:Filter(aux.NecroValleyFilter(s.mgfilter),nil,e,tp,tc)
 		if sumtype==SUMMON_TYPE_LINK and tc:IsLocation(LOCATION_EXTRA)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>0
-			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=mg:Select(tp,1,1,nil)
 			Duel.BreakEffect()

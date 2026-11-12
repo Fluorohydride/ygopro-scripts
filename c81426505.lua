@@ -33,12 +33,12 @@ function c81426505.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local t={}
 	local p=1
-	if Duel.IsExistingMatchingCard(c81426505.filter1,tp,0,LOCATION_MZONE,1,nil) then t[p]=aux.Stringid(81426505,1) p=p+1 end
-	if Duel.IsExistingMatchingCard(c81426505.filter2,tp,0,LOCATION_ONFIELD,1,nil) then t[p]=aux.Stringid(81426505,2) p=p+1 end
-	if Duel.IsExistingMatchingCard(c81426505.filter3,tp,0,LOCATION_SZONE,1,nil) then t[p]=aux.Stringid(81426505,3) p=p+1 end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(81426505,4))
+	if Duel.IsExistingMatchingCard(c81426505.filter1,tp,0,LOCATION_MZONE,1,nil) then t[p]=aux.Stringid(81426505,0) p=p+1 end
+	if Duel.IsExistingMatchingCard(c81426505.filter2,tp,0,LOCATION_ONFIELD,1,nil) then t[p]=aux.Stringid(81426505,1) p=p+1 end
+	if Duel.IsExistingMatchingCard(c81426505.filter3,tp,0,LOCATION_SZONE,1,nil) then t[p]=aux.Stringid(81426505,2) p=p+1 end
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(81426505,3))
 	local sel=Duel.SelectOption(tp,table.unpack(t))+1
-	local opt=t[sel]-aux.Stringid(81426505,1)
+	local opt=t[sel]-aux.Stringid(81426505,0)
 	local sg=nil
 	if opt==0 then sg=Duel.GetMatchingGroup(c81426505.filter1,tp,0,LOCATION_MZONE,nil)
 	elseif opt==1 then sg=Duel.GetMatchingGroup(c81426505.filter2,tp,0,LOCATION_ONFIELD,nil)

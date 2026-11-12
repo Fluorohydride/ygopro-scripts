@@ -20,7 +20,7 @@ function c60921537.extraop(e,tp,eg,ep,ev,re,r,rp,tc)
 	local g2=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 	if Duel.IsExistingMatchingCard(c60921537.opfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,40352445)
 		and Duel.IsExistingMatchingCard(c60921537.opfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,48654323)
-		and (#g1~=0 or #g2~=0) and Duel.SelectYesNo(tp,aux.Stringid(60921537,3)) then
+		and (#g1~=0 or #g2~=0) and Duel.SelectYesNo(tp,aux.Stringid(60921537,0)) then
 		Duel.BreakEffect()
 		local g=nil
 		if #g1~=0 and (#g2==0 or Duel.SelectOption(tp,aux.Stringid(60921537,1),aux.Stringid(60921537,2))==0) then

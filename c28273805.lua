@@ -47,12 +47,12 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(id,2)
+		ops[off]=aux.Stringid(id,0)
 		opval[off-1]=1
 		off=off+1
 	end
 	if b2 then
-		ops[off]=aux.Stringid(id,2)
+		ops[off]=aux.Stringid(id,1)
 		opval[off-1]=2
 		off=off+1
 	end

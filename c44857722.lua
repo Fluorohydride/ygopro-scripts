@@ -17,7 +17,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 	--effect
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(id,1))
+	e3:SetDescription(aux.Stringid(id,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
@@ -64,7 +64,7 @@ function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(s.spfilter2,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 or b3 end
 	local op=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,4),1},
+			{b1,aux.Stringid(id,1),1},
 			{b2,aux.Stringid(id,2),3},
 			{b3,aux.Stringid(id,3),5})
 	c:RemoveCounter(tp,0x74,op,REASON_COST)

@@ -2,7 +2,7 @@
 function c60950180.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(60950180,2))
+	e1:SetDescription(aux.Stringid(60950180,0))
 	e1:SetCategory(CATEGORY_POSITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
@@ -14,7 +14,7 @@ function c60950180.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(60950180,0))
+	e2:SetDescription(aux.Stringid(60950180,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)

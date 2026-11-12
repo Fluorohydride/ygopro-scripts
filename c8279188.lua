@@ -9,7 +9,7 @@ function c8279188.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(8279188,0))
+	e2:SetDescription(aux.Stringid(8279188,1))
 	e2:SetCategory(CATEGORY_HANDES_SELF)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
@@ -40,7 +40,7 @@ function c8279188.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,3)
 	e:GetHandler():RegisterEffect(e1)
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() and tg:IsOnField() and tg:IsCanBeEffectTarget(e)
-		and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)~=0 and Duel.SelectYesNo(tp,aux.Stringid(8279188,1)) then
+		and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)~=0 and Duel.SelectYesNo(tp,aux.Stringid(8279188,0)) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.SetTargetCard(tg)
 	else e:SetProperty(0) end

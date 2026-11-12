@@ -7,7 +7,7 @@ function c9109991.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change pos
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(9109991,1))
+	e2:SetDescription(aux.Stringid(9109991,0))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)

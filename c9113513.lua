@@ -127,7 +127,7 @@ function c9113513.desop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=mg:GetCount()
 		and mg:IsExists(aux.NecroValleyFilter(c9113513.mgfilter),mg:GetCount(),nil,e,tp,tc,mg)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.SelectYesNo(tp,aux.Stringid(9113513,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(9113513,0)) then
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

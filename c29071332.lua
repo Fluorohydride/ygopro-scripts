@@ -34,7 +34,7 @@ function c29071332.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.Equip(tp,c,tc,false) then return end
 	--unequip
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(29071332,2))
+	e1:SetDescription(aux.Stringid(29071332,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_SZONE)
@@ -51,7 +51,7 @@ function c29071332.eqop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(29071332,1))
+	e3:SetDescription(aux.Stringid(29071332,2))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)

@@ -30,7 +30,7 @@ function c43618262.cfop(e,tp,eg,ep,ev,re,r,rp)
 		t[i]=i*100
 	end
 	local val=Duel.AnnounceNumber(tp,table.unpack(t))
-	if Duel.SelectYesNo(1-p,aux.Stringid(43618262,1)) then
+	if Duel.SelectYesNo(1-p,aux.Stringid(43618262,0)) then
 		if Duel.Recover(1-p,val,REASON_EFFECT)>0 then
 			Duel.SetLP(tp,Duel.GetLP(tp)-val)
 			Duel.DisableShuffleCheck(true)

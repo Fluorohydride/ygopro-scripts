@@ -3,7 +3,7 @@ function c43114901.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--search
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(43114901,1))
+	e1:SetDescription(aux.Stringid(43114901,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)

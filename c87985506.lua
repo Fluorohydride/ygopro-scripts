@@ -34,7 +34,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local b2=Duel.IsExistingMatchingCard(s.cspfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.IsExistingMatchingCard(s.cfilter,tp,LOCATION_EXTRA,0,1,nil)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(id,1))) then
+	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(id,0))) then
 		local g=Duel.GetMatchingGroup(s.cspfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,e,tp)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ft>0 and #g>0 then

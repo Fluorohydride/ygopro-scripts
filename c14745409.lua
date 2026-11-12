@@ -35,7 +35,7 @@ function c14745409.initial_effect(c)
 	c:RegisterEffect(e4)
 	--equip
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(14745409,1))
+	e5:SetDescription(aux.Stringid(14745409,0))
 	e5:SetCategory(CATEGORY_EQUIP)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

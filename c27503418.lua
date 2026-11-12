@@ -35,7 +35,7 @@ function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsAbleToRemove() and not tc:IsImmuneToEffect(e)
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc)
-		and Duel.SelectYesNo(tp,aux.Stringid(27503418,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=Duel.SelectMatchingCard(tp,c27503418.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)

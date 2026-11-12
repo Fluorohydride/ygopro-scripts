@@ -45,9 +45,9 @@ function c99092624.activate(e,tp,eg,ep,ev,re,r,rp)
 		if not (b1 or b2) then break end
 		local op=0
 		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(99092624,4),aux.Stringid(99092624,2))
+			op=Duel.SelectOption(tp,aux.Stringid(99092624,1),aux.Stringid(99092624,2))
 		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(99092624,4))
+			op=Duel.SelectOption(tp,aux.Stringid(99092624,1))
 		else
 			op=Duel.SelectOption(tp,aux.Stringid(99092624,2))+1
 		end
@@ -56,7 +56,7 @@ function c99092624.activate(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,99092625)
 		Duel.SpecialSummonStep(token,0,tp,p,false,false,POS_FACEUP_DEFENSE)
 		ct=ct-1
-	until ct==0 or not Duel.SelectYesNo(tp,aux.Stringid(99092624,3))
+	until ct==0 or not Duel.SelectYesNo(tp,aux.Stringid(99092624,0))
 	Duel.SpecialSummonComplete()
 end
 function c99092624.rmfilter(c)

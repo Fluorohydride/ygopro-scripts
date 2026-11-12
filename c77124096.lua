@@ -44,7 +44,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		op=1
 	end
 	if b2 and not b1 then
-		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,1))
+		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(id,2))
 		op=2
 	end
 	if b1 and b2 then

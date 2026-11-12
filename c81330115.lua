@@ -5,7 +5,7 @@ function c81330115.initial_effect(c)
 	c:EnableReviveLimit()
 	--remove material
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(81330115,2))
+	e1:SetDescription(aux.Stringid(81330115,0))
 	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -44,7 +44,7 @@ function c81330115.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c81330115.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) and Duel.SelectYesNo(tp,aux.Stringid(81330115,3)) then
+	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) and Duel.SelectYesNo(tp,aux.Stringid(81330115,1)) then
 		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 	else
 		Duel.Damage(tp,2000,REASON_EFFECT)

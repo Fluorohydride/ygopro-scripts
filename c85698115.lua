@@ -46,7 +46,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.HintSelection(sg)
@@ -80,7 +80,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if rc:IsRelateToEffect(e) and Duel.SendtoDeck(rc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and rc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3))then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1))then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local sg=g:Select(tp,1,1,nil)
 			Duel.SSet(tp,sg)

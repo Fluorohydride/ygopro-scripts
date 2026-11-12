@@ -14,7 +14,7 @@ function c64276752.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(64276752,1))
+	e2:SetDescription(aux.Stringid(64276752,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetRange(LOCATION_MZONE)

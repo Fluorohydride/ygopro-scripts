@@ -5,7 +5,7 @@ function c21915012.initial_effect(c)
 	c:EnableReviveLimit()
 	--lv up/down
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(21915012,0))
+	e1:SetDescription(aux.Stringid(21915012,4))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c21915012.lvcon)
@@ -27,7 +27,7 @@ function c21915012.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(21915012,2))
+	e3:SetDescription(aux.Stringid(21915012,0))
 	e3:SetCategory(CATEGORY_DAMAGE+CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BE_MATERIAL)
@@ -76,9 +76,9 @@ function c21915012.lvop(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 then return end
 	local sel=nil
 	if c:IsLevel(1) then
-		sel=Duel.SelectOption(tp,aux.Stringid(21915012,4))
+		sel=Duel.SelectOption(tp,aux.Stringid(21915012,1))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(21915012,4),aux.Stringid(21915012,5))
+		sel=Duel.SelectOption(tp,aux.Stringid(21915012,1),aux.Stringid(21915012,2))
 	end
 	if sel==1 then
 		ct=ct*-1

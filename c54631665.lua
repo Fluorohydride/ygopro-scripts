@@ -17,7 +17,7 @@ function c54631665.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(54631665,1))
+	e3:SetDescription(aux.Stringid(54631665,0))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_FZONE)
@@ -66,7 +66,7 @@ function c54631665.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c54631665.cfilter,tp,LOCATION_GRAVE,0,nil)
 	local sel=1
 	if g:GetCount()~=0 then
-		sel=Duel.SelectOption(tp,aux.Stringid(54631665,3),aux.Stringid(54631665,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(54631665,1),aux.Stringid(54631665,2))
 	else
 		sel=Duel.SelectOption(tp,aux.Stringid(54631665,2))+1
 	end

@@ -14,7 +14,7 @@ function c95856586.initial_effect(c)
 	c:RegisterEffect(e2)
 	--material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(95856586,1))
+	e3:SetDescription(aux.Stringid(95856586,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -25,7 +25,7 @@ function c95856586.initial_effect(c)
 	c:RegisterEffect(e3)
 	--deck top
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(95856586,2))
+	e4:SetDescription(aux.Stringid(95856586,1))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_PREDRAW)
@@ -89,7 +89,7 @@ function c95856586.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95856586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<=1 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(95856586,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(95856586,2))
 	local dc=Duel.SelectMatchingCard(tp,c95856586.tdfilter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	if dc then
 		Duel.ShuffleDeck(tp)

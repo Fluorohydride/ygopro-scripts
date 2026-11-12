@@ -4,7 +4,7 @@ function c46239604.initial_effect(c)
 	aux.EnableChangeCode(c,84451804)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(46239604,2))
+	e2:SetDescription(aux.Stringid(46239604,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)

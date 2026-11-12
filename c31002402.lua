@@ -53,7 +53,7 @@ function c31002402.activate(e,tp,eg,ep,ev,re,r,rp)
 		else
 			mg:RemoveCard(tc)
 		end
-		if g1:IsContains(tc) and (not g2:IsContains(tc) or not Duel.SelectYesNo(tp,aux.Stringid(31002402,1))) then
+		if g1:IsContains(tc) and (not g2:IsContains(tc) or not Duel.SelectYesNo(tp,aux.Stringid(31002402,0))) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
 			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")

@@ -19,7 +19,7 @@ function c36894320.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(36894320,1))
+	e3:SetDescription(aux.Stringid(36894320,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -31,7 +31,7 @@ function c36894320.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to deck
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(36894320,4))
+	e4:SetDescription(aux.Stringid(36894320,1))
 	e4:SetCategory(CATEGORY_TODECK+CATEGORY_SSET)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
@@ -65,11 +65,11 @@ function c36894320.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local op=-1
 	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
 		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(36894320,3),aux.Stringid(36894320,4))
+			op=Duel.SelectOption(tp,aux.Stringid(36894320,0),aux.Stringid(36894320,1))
 		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(36894320,3))
+			op=Duel.SelectOption(tp,aux.Stringid(36894320,0))
 		else
-			op=Duel.SelectOption(tp,aux.Stringid(36894320,4))+1
+			op=Duel.SelectOption(tp,aux.Stringid(36894320,1))+1
 		end
 	end
 	if op==0 then

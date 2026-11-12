@@ -50,9 +50,9 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sel=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if b1 and b2 then
-		sel=Duel.SelectOption(tp,aux.Stringid(98045062,2),aux.Stringid(98045062,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(98045062,0),aux.Stringid(98045062,1))
 	elseif b1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(98045062,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(98045062,0))
 	else
 		sel=Duel.SelectOption(tp,aux.Stringid(98045062,1))+1
 	end

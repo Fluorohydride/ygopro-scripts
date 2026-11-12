@@ -3,7 +3,7 @@ function c35026117.initial_effect(c)
 	aux.AddCodeList(c,25955164,62340868,98434877)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(35026117,3))
+	e1:SetDescription(aux.Stringid(35026117,0))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
@@ -17,7 +17,7 @@ function c35026117.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to field
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(35026117,2))
+	e3:SetDescription(aux.Stringid(35026117,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1,35026117)
@@ -63,7 +63,7 @@ function c35026117.tfop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		if Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 			and Duel.IsExistingMatchingCard(c35026117.desfilter,tp,LOCATION_ONFIELD,0,1,nil)
-			and Duel.SelectYesNo(tp,aux.Stringid(35026117,4)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(35026117,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local tg=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)

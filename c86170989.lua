@@ -19,14 +19,14 @@ function c86170989.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c86170989.filter2(chkc,e,tp) end
 	if chk==0 then return true end
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(86170989,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(86170989,0))
 	local t1=Duel.IsExistingMatchingCard(c86170989.filter1,tp,LOCATION_DECK,0,1,nil)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c86170989.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	if t1 and t2 then
-		op=Duel.SelectOption(tp,aux.Stringid(86170989,2),aux.Stringid(86170989,3))+1
+		op=Duel.SelectOption(tp,aux.Stringid(86170989,1),aux.Stringid(86170989,2))+1
 	elseif t1 then
-		Duel.SelectOption(tp,aux.Stringid(86170989,2))
+		Duel.SelectOption(tp,aux.Stringid(86170989,1))
 		op=1
 	elseif t2 then
 		Duel.SelectOption(tp,aux.Stringid(86170989,2))

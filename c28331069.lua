@@ -2,7 +2,7 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,8,3,s.ovfilter,aux.Stringid(id,3),3,s.xyzop)
+	aux.AddXyzProcedure(c,nil,8,3,s.ovfilter,aux.Stringid(id,0),3,s.xyzop)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -55,7 +55,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local ovchk=c:IsRelateToChain() and c:IsType(TYPE_XYZ) and tc:IsCanOverlay()
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
-			and (not ovchk or Duel.SelectYesNo(tp,aux.Stringid(id,4))) then
+			and (not ovchk or Duel.SelectYesNo(tp,aux.Stringid(id,1))) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		elseif ovchk then
 			Duel.Overlay(c,Group.FromCards(tc))

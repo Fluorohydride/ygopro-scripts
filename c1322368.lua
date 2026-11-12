@@ -7,7 +7,7 @@ function c1322368.initial_effect(c)
 	aux.EnableChangeCode(c,41091257,LOCATION_MZONE+LOCATION_GRAVE)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(1322368,1))
+	e2:SetDescription(aux.Stringid(1322368,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

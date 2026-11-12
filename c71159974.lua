@@ -24,7 +24,7 @@ function c71159974.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(71159974,1))
+	e3:SetDescription(aux.Stringid(71159974,0))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -36,7 +36,7 @@ function c71159974.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(71159974,2))
+	e4:SetDescription(aux.Stringid(71159974,1))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DESTROYED)
@@ -151,5 +151,5 @@ function c71159974.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION) and e:GetLabel()==1
 end
 function c71159974.matop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(71159975,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(71159974,3))
+	e:GetHandler():RegisterFlagEffect(71159975,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(71159974,2))
 end

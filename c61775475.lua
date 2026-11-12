@@ -89,7 +89,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetOperatedGroup()
 	local ct=g:GetCount()
 	local dg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
-	if ct>0 and dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+	if ct>0 and dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg2=dg:Select(tp,1,ct,nil)

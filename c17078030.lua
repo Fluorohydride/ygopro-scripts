@@ -26,7 +26,7 @@ function c17078030.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[l]=l*1000
 		l=l+1
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17078030,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17078030,0))
 	local announce=Duel.AnnounceNumber(tp,table.unpack(t))
 	Duel.PayLPCost(tp,announce,true)
 	e:GetLabelObject():SetLabel(announce)

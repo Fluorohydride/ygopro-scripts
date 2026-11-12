@@ -12,7 +12,7 @@ function c80250319.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon from deck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(80250319,1))
+	e2:SetDescription(aux.Stringid(80250319,2))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DESTROYED)
@@ -40,7 +40,7 @@ function c80250319.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(c80250319.spfilter2,tp,LOCATION_HAND,0,nil,e,tp,tc:GetLevel())
 		if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(80250319,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(80250319,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)

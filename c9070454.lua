@@ -31,7 +31,7 @@ function c9070454.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(c9070454.filter,tp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and rc:IsType(TYPE_MONSTER) and rc:IsLocation(LOCATION_GRAVE) and aux.NecroValleyFilter()(rc)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and rc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and Duel.SelectYesNo(tp,aux.Stringid(9070454,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(9070454,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local sg=g:Select(tp,1,1,nil)

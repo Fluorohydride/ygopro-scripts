@@ -24,7 +24,7 @@ function c8903700.operation(e,tp,eg,ep,ev,re,r,rp)
 		if rc:GetFlagEffect(8903700)==0 then
 			--cannot special summon
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(8903700,2))
+			e1:SetDescription(aux.Stringid(8903700,0))
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT+EFFECT_FLAG_PLAYER_TARGET)
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetRange(LOCATION_MZONE)

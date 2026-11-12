@@ -16,7 +16,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--second pendulum summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,3))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DRAW)
 	e2:SetCost(s.expcost)
@@ -38,7 +38,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		local opt=aux.SelectFromOptions(tp,
-			{true,aux.Stringid(id,3),SEQ_DECKTOP},
+			{true,aux.Stringid(id,1),SEQ_DECKTOP},
 			{true,aux.Stringid(id,2),SEQ_DECKBOTTOM})
 		Duel.SendtoDeck(c,nil,opt,REASON_EFFECT)
 	end

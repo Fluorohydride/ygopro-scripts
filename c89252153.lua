@@ -2,7 +2,7 @@
 function c89252153.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(89252153,1))
+	e1:SetDescription(aux.Stringid(89252153,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetTargetRange(LOCATION_HAND,0)

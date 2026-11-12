@@ -11,7 +11,7 @@ function c39261576.initial_effect(c)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
-	e2:SetDescription(aux.Stringid(39261576,1))
+	e2:SetDescription(aux.Stringid(39261576,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_CUSTOM+39261576)
@@ -101,7 +101,7 @@ function c39261576.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local mat=tc:GetMaterial()
 	if chkc then return chkc:IsSetCard(0x1047) and mat:IsContains(chkc) end
 	if chk==0 then return mat:IsExists(Card.IsSetCard,1,nil,0x1047) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39261576,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(39261576,1))
 	local g=mat:FilterSelect(tp,Card.IsSetCard,1,1,nil,0x1047)
 	tc:CreateEffectRelation(e)
 	Duel.SetTargetCard(g)

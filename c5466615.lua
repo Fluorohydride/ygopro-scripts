@@ -31,7 +31,7 @@ function c5466615.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	if Duel.IsExistingMatchingCard(c5466615.tgfilter,tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(5466615,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(5466615,0)) then
 		e:SetCategory(CATEGORY_REMOVE+CATEGORY_DISABLE)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c5466615.activate)

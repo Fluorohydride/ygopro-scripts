@@ -24,7 +24,7 @@ function c77848740.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to deck
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(77848740,2))
+	e3:SetDescription(aux.Stringid(77848740,0))
 	e3:SetCategory(CATEGORY_TODECK)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_TO_GRAVE)

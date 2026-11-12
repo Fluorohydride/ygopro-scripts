@@ -21,7 +21,7 @@ function c15308295.initial_effect(c)
 	c:RegisterEffect(e3)
 	--control
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(15308295,2))
+	e4:SetDescription(aux.Stringid(15308295,1))
 	e4:SetCategory(CATEGORY_CONTROL)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -33,7 +33,7 @@ function c15308295.initial_effect(c)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(15308295,3))
+	e5:SetDescription(aux.Stringid(15308295,2))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_CONTROL_CHANGED)
@@ -95,7 +95,7 @@ end
 function c15308295.desop(e,tp,eg,ep,ev,re,r,rp)
 	local p=e:GetHandler():GetOwner()
 	local g=Duel.GetMatchingGroup(c15308295.desfilter,p,LOCATION_SZONE,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(15308295,4)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(15308295,3)) then
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_DESTROY)
 		local sg=g:Select(p,1,1,nil)
 		Duel.Destroy(sg,REASON_EFFECT)

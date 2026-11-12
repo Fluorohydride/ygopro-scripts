@@ -1,7 +1,7 @@
 --銀河眼の光波刃竜
 function c2530830.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,9,3,c2530830.ovfilter,aux.Stringid(2530830,2))
+	aux.AddXyzProcedure(c,nil,9,3,c2530830.ovfilter,aux.Stringid(2530830,0))
 	c:EnableReviveLimit()
 	--xyzlimit
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +12,7 @@ function c2530830.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(2530830,0))
+	e2:SetDescription(aux.Stringid(2530830,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -24,7 +24,7 @@ function c2530830.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(2530830,1))
+	e3:SetDescription(aux.Stringid(2530830,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)

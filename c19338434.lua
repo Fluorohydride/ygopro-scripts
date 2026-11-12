@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,3))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
@@ -40,7 +40,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p=tc:GetOwner()
 	local a=tc:IsCanChangePosition()
 	local b=tc:IsAbleToGrave() and Duel.IsPlayerCanDraw(p,2)
-	local op=aux.SelectFromOptions(1-tp,{a,aux.Stringid(id,3)},{b,aux.Stringid(id,2)})
+	local op=aux.SelectFromOptions(1-tp,{a,aux.Stringid(id,1)},{b,aux.Stringid(id,2)})
 	if op==1 then
 		local pos1=0
 		if not tc:IsPosition(POS_FACEUP_ATTACK) then pos1=pos1+POS_FACEUP_ATTACK end

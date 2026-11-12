@@ -25,7 +25,7 @@ function c32543380.initial_effect(c)
 	c:RegisterEffect(e3)
 	--special summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(32543380,1))
+	e5:SetDescription(aux.Stringid(32543380,0))
 	e5:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_BATTLE_DESTROYING)

@@ -13,7 +13,7 @@ end
 function c8842266.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-	local op=Duel.SelectOption(tp,aux.Stringid(8842266,2),aux.Stringid(8842266,1))
+	local op=Duel.SelectOption(tp,aux.Stringid(8842266,0),aux.Stringid(8842266,1))
 	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(CATEGORY_RECOVER)

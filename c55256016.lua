@@ -40,7 +40,7 @@ function c55256016.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 	local dg=Duel.GetMatchingGroup(c55256016.desfilter,tp,0,LOCATION_MZONE,nil)
-	if dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(55256016,1)) then
+	if dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(55256016,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local des=dg:Select(tp,1,1,nil)
 		Duel.HintSelection(des)

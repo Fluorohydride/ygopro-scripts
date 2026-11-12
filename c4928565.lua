@@ -79,13 +79,13 @@ function s.ddop(e,tp,eg,ep,ev,re,r,rp)
 	if not b1 and not b2 then return end
 	local opt=0
 	if b1 and not b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(id,3))
+		opt=Duel.SelectOption(tp,aux.Stringid(id,1))
 	end
 	if not b1 and b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(id,4))+1
+		opt=Duel.SelectOption(tp,aux.Stringid(id,2))+1
 	end
 	if b1 and b2 then
-		opt=Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,4))
+		opt=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))
 	end
 	if opt==0 then
 		Duel.DiscardDeck(tp,3,REASON_EFFECT)

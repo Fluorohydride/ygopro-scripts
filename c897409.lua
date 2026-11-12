@@ -27,7 +27,7 @@ function c897409.filter(c)
 end
 function c897409.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c897409.filter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(897409,3)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(897409,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
@@ -56,7 +56,7 @@ function c897409.cfop(e,tp,eg,ep,ev,re,r,rp)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(897409,2)
+		ops[off]=aux.Stringid(897409,1)
 		opval[off-1]=1
 		off=off+1
 	end
@@ -65,7 +65,7 @@ function c897409.cfop(e,tp,eg,ep,ev,re,r,rp)
 		opval[off-1]=2
 		off=off+1
 	end
-	ops[off]=aux.Stringid(897409,2)
+	ops[off]=aux.Stringid(897409,3)
 	opval[off-1]=3
 	off=off+1
 	local op=Duel.SelectOption(tp,table.unpack(ops))

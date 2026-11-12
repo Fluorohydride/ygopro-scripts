@@ -70,7 +70,7 @@ function c87897777.dcop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,dc)
 	local dg=Duel.GetDecktopGroup(tp,dc)
 	local g=dg:Filter(c87897777.thfilter,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(87897777,3)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(87897777,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

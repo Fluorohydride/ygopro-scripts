@@ -18,7 +18,7 @@ function c4896788.drcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4896788.drop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsAttackPos() or not e:GetHandler():IsRelateToEffect(e) then return end
-	if Duel.IsPlayerCanDraw(rp,1) and Duel.SelectYesNo(rp,aux.Stringid(4896788,1)) then
+	if Duel.IsPlayerCanDraw(rp,1) and Duel.SelectYesNo(rp,aux.Stringid(4896788,0)) then
 		Duel.Draw(rp,1,REASON_EFFECT)
 	end
 end

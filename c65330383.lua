@@ -63,7 +63,7 @@ function c65330383.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1,true)
 		if e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)
-			and Duel.SelectYesNo(tp,aux.Stringid(65330383,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(65330383,1)) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end

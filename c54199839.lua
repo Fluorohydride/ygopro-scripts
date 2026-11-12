@@ -44,7 +44,7 @@ function c54199839.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(c54199839.filter,tp,LOCATION_DECK,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(54199839,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(54199839,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local sg=g:Select(tp,1,1,nil)

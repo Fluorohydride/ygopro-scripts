@@ -24,7 +24,7 @@ function c87240371.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)>0
 		and Duel.IsExistingMatchingCard(c87240371.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c87240371.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ec)
-		and Duel.SelectYesNo(tp,aux.Stringid(87240371,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(87240371,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg=Duel.SelectMatchingCard(tp,c87240371.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,ec)
 		Duel.BreakEffect()

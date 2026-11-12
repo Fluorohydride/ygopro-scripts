@@ -24,7 +24,7 @@ end
 function c93138457.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c93138457.filter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,e,tp)
 	if Duel.NegateAttack() and #g>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.SelectYesNo(tp,aux.Stringid(93138457,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(93138457,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)

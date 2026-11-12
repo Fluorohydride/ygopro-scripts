@@ -14,7 +14,7 @@ function c91272072.initial_effect(c)
 	c:RegisterEffect(e1)
 	--gain atk
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(91272072,1))
+	e2:SetDescription(aux.Stringid(91272072,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_DAMAGE)
 	e2:SetRange(LOCATION_MZONE)
@@ -23,7 +23,7 @@ function c91272072.initial_effect(c)
 	c:RegisterEffect(e2)
 	--recycle
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(91272072,2))
+	e3:SetDescription(aux.Stringid(91272072,1))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
@@ -85,7 +85,7 @@ function c91272072.operation(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c91272072.thfilter),tp,LOCATION_GRAVE,0,nil)
-		if chk and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(91272072,3)) then
+		if chk and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(91272072,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=g:Select(tp,1,1,nil)

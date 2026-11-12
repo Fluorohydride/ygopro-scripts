@@ -83,7 +83,7 @@ end
 function c35772782.diceop(e,tp,eg,ep,ev,re,r,rp)
 	local cc=Duel.GetCurrentChain()
 	local cid=Duel.GetChainInfo(cc,CHAININFO_CHAIN_ID)
-	if Duel.SelectYesNo(tp,aux.Stringid(35772782,3)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(35772782,1)) then
 		Duel.Hint(HINT_CARD,0,35772782)
 		e:GetHandler():RegisterFlagEffect(35772782,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		local dc={Duel.GetDiceResult()}

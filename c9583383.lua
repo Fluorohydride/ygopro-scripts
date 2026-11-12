@@ -15,7 +15,7 @@ function c9583383.initial_effect(c)
 	c:RegisterEffect(e2)
 	--level change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(9583383,1))
+	e3:SetDescription(aux.Stringid(9583383,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)

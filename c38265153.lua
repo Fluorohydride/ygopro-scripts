@@ -37,7 +37,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 		local off=1
 		local ops={}
 		local opval={}
-		ops[off]=aux.Stringid(38265153,1)
+		ops[off]=aux.Stringid(38265153,0)
 		opval[off-1]=0
 		off=off+1
 		if #g1>0 then
@@ -46,7 +46,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 			off=off+1
 		end
 		if #g2>0 then
-			ops[off]=aux.Stringid(38265153,1)
+			ops[off]=aux.Stringid(38265153,2)
 			opval[off-1]=2
 			off=off+1
 		end

@@ -49,7 +49,7 @@ function c66425726.initial_effect(c)
 	c:RegisterEffect(e4)
 	--disable
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(66425726,2))
+	e5:SetDescription(aux.Stringid(66425726,1))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_CHAINING)
@@ -130,7 +130,7 @@ function c66425726.disop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true) and c:IsLocation(LOCATION_PZONE) then
 			if Duel.NegateEffect(ev) and c:IsSummonType(SUMMON_TYPE_RITUAL)
 				and Duel.IsExistingMatchingCard(c66425726.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
-				and Duel.SelectYesNo(tp,aux.Stringid(66425726,3)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(66425726,2)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local g=Duel.SelectMatchingCard(tp,c66425726.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)

@@ -10,7 +10,7 @@ function c39648965.initial_effect(c)
 	c:RegisterEffect(e1)
 	--pierce
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(39648965,1))
+	e2:SetDescription(aux.Stringid(39648965,0))
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_MZONE)

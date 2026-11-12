@@ -76,7 +76,7 @@ function c30382214.drawop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-p,tc)
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
 			local sel=1
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30382214,2))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30382214,0))
 			if Duel.IsExistingMatchingCard(c30382214.sfilter,tp,LOCATION_DECK,0,1,nil,e,tp) then
 				sel=Duel.SelectOption(tp,1213,1214)
 			else

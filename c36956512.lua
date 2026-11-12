@@ -22,7 +22,7 @@ function c36956512.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Halve ATK
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(36956512,3))
+	e3:SetDescription(aux.Stringid(36956512,0))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

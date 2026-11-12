@@ -45,7 +45,7 @@ function c82738008.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mf=ce:GetValue()
 			sg2=Duel.GetMatchingGroup(c82738008.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
 		end
-		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(82738008,1)) then
+		if (sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0)) and Duel.SelectYesNo(tp,aux.Stringid(82738008,0)) then
 			Duel.BreakEffect()
 			Duel.ShuffleHand(tp)
 			local sg=sg1:Clone()

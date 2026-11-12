@@ -15,7 +15,7 @@ end
 function c58308221.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(58308221,1))
+	e1:SetDescription(aux.Stringid(58308221,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_EXTRA_PENDULUM_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

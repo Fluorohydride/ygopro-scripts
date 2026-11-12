@@ -30,7 +30,7 @@ end
 function c64659851.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sel=1
 	local g=Duel.GetMatchingGroup(c64659851.setfilter,tp,0,LOCATION_HAND+LOCATION_DECK,nil)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(64659851,1))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(64659851,0))
 	if g:GetCount()>0 and Duel.GetLocationCount(1-tp,LOCATION_SZONE)>0 then
 		sel=Duel.SelectOption(1-tp,1213,1214)
 	else

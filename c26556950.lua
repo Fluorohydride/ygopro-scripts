@@ -1,7 +1,7 @@
 --No.84 ペイン・ゲイナー
 function c26556950.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,11,2,c26556950.ovfilter,aux.Stringid(26556950,3),2)
+	aux.AddXyzProcedure(c,nil,11,2,c26556950.ovfilter,aux.Stringid(26556950,0),2)
 	c:EnableReviveLimit()
 	--atk/def
 	local e1=Effect.CreateEffect(c)
@@ -28,7 +28,7 @@ function c26556950.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(26556950,2))
+	e4:SetDescription(aux.Stringid(26556950,1))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

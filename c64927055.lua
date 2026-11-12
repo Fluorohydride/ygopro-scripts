@@ -37,7 +37,7 @@ function c64927055.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local g=Duel.GetMatchingGroup(c64927055.filter,tp,LOCATION_REMOVED,0,nil)
 		if Duel.IsEnvironment(56433456,PLAYER_ALL,LOCATION_ONFIELD+LOCATION_GRAVE)
-			and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(64927055,1)) then
+			and #g>0 and Duel.SelectYesNo(tp,aux.Stringid(64927055,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sc=g:Select(tp,1,1,nil)
 			Duel.BreakEffect()

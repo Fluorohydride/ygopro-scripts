@@ -20,7 +20,7 @@ function c28711704.initial_effect(c)
 	c:RegisterEffect(e2)
 	--banish
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(28711704,1))
+	e3:SetDescription(aux.Stringid(28711704,0))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)

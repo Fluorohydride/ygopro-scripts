@@ -10,7 +10,7 @@ function c42421606.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(42421606,1))
+	e2:SetDescription(aux.Stringid(42421606,0))
 	e2:SetCategory(CATEGORY_DICE+CATEGORY_DRAW+CATEGORY_HANDES_OPPO)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

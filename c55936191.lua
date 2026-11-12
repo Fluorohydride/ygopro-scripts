@@ -2,11 +2,11 @@
 function c55936191.initial_effect(c)
 	--spsummon
 	local e1=aux.AddUrsarcticSpSummonEffect(c)
-	e1:SetDescription(aux.Stringid(55936191,2))
+	e1:SetDescription(aux.Stringid(55936191,0))
 	e1:SetCountLimit(1,55936191)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(55936191,0))
+	e2:SetDescription(aux.Stringid(55936191,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
