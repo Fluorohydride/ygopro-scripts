@@ -25,7 +25,7 @@ function c31423101.initial_effect(c)
 	--to hand
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_TOHAND)
-	e4:SetDescription(aux.Stringid(31423101,0))
+	e4:SetDescription(aux.Stringid(31423101,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
 	e4:SetCost(c31423101.thcost)

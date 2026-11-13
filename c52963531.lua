@@ -4,7 +4,7 @@ function c52963531.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(52963531,2))
+	e2:SetDescription(aux.Stringid(52963531,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_PZONE)

@@ -135,7 +135,7 @@ function c88093706.efop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.GetFirstTarget()
 	if not rc:IsRelateToChain() then return end
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(88093706,2))
+	e1:SetDescription(aux.Stringid(88093706,1))
 	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EXTRA_ATTACK)

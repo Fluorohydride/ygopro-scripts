@@ -10,7 +10,7 @@ function c7093411.initial_effect(c)
 	c:RegisterEffect(e1)
 	--place
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(7093411,1))
+	e2:SetDescription(aux.Stringid(7093411,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)

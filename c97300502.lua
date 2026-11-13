@@ -22,7 +22,7 @@ function c97300502.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(97300502,2))
+	e4:SetDescription(aux.Stringid(97300502,1))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

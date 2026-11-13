@@ -138,7 +138,7 @@ function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
 		tc:SetMaterial(nil)
 		if Duel.SpecialSummonStep(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(c)
-			e1:SetDescription(aux.Stringid(30983281,2))
+			e1:SetDescription(aux.Stringid(30983281,1))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_IMMUNE_EFFECT)
 			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)

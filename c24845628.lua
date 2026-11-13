@@ -38,7 +38,7 @@ function c24845628.initial_effect(c)
 	c:RegisterEffect(e7)
 	--search
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(24845628,0))
+	e7:SetDescription(aux.Stringid(24845628,2))
 	e7:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e7:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e7:SetCode(EVENT_TO_GRAVE)

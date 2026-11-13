@@ -8,7 +8,7 @@ function c1050355.initial_effect(c)
 	c:RegisterEffect(e1)
 	--activate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(1050355,0))
+	e2:SetDescription(aux.Stringid(1050355,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
 	e2:SetRange(LOCATION_FZONE)

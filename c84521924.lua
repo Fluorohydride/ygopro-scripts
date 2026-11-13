@@ -20,7 +20,7 @@ function c84521924.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Effect 3
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(84521924,0))
+	e4:SetDescription(aux.Stringid(84521924,2))
 	e4:SetCategory(CATEGORY_NEGATE+CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)

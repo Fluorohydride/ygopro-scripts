@@ -19,7 +19,7 @@ function c27970830.initial_effect(c)
 	--atkup
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_ATKCHANGE)
-	e4:SetDescription(aux.Stringid(27970830,0))
+	e4:SetDescription(aux.Stringid(27970830,1))
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

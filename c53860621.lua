@@ -2,7 +2,7 @@
 function c53860621.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(53860621,0))
+	e1:SetDescription(aux.Stringid(53860621,3))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -42,7 +42,7 @@ function c53860621.initial_effect(c)
 	c:RegisterEffect(e5)
 	--tohand
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(53860621,1))
+	e6:SetDescription(aux.Stringid(53860621,2))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetProperty(EFFECT_FLAG_DELAY)

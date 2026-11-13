@@ -29,7 +29,7 @@ function c9888196.initial_effect(c)
 	c:RegisterEffect(e2)
 	--handes
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(9888196,2))
+	e3:SetDescription(aux.Stringid(9888196,0))
 	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)

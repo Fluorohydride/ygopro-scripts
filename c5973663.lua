@@ -17,7 +17,7 @@ function c5973663.initial_effect(c)
 	--atkup defup
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_ATKCHANGE)
-	e3:SetDescription(aux.Stringid(5973663,0))
+	e3:SetDescription(aux.Stringid(5973663,1))
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)

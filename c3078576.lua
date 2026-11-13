@@ -11,7 +11,7 @@ function c3078576.initial_effect(c)
 	c:RegisterEffect(e1)
 	--skip draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(3078576,1))
+	e4:SetDescription(aux.Stringid(3078576,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_BATTLE_DAMAGE)
 	e4:SetCondition(c3078576.skipcon)

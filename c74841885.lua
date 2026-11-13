@@ -42,7 +42,7 @@ function c74841885.valcheck(e,c)
 		elseif lbl==TYPE_TRAP then
 			e1:SetDescription(aux.Stringid(74841885,1))
 		else
-			e1:SetDescription(aux.Stringid(74841885,2))
+			e1:SetDescription(aux.Stringid(74841885,0))
 		end
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e1:SetType(EFFECT_TYPE_FIELD)

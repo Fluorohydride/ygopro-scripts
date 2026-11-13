@@ -59,7 +59,7 @@ function c10000080.initial_effect(c)
 	c:RegisterEffect(e8)
 	--spsummon
 	local e9=Effect.CreateEffect(c)
-	e9:SetDescription(aux.Stringid(10000080,2))
+	e9:SetDescription(aux.Stringid(10000080,1))
 	e9:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e9:SetType(EFFECT_TYPE_IGNITION)
 	e9:SetRange(LOCATION_MZONE)

@@ -14,7 +14,7 @@ function c85747929.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand or grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(85747929,0))
+	e2:SetDescription(aux.Stringid(85747929,1))
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

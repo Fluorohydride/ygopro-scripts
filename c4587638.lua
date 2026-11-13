@@ -15,7 +15,7 @@ function c4587638.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atkdown
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(4587638,0))
+	e3:SetDescription(aux.Stringid(4587638,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_BATTLE_DAMAGE)

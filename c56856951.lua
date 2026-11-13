@@ -13,7 +13,7 @@ function c56856951.initial_effect(c)
 	c:RegisterEffect(e1)
 	--salvage
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(56856951,0))
+	e2:SetDescription(aux.Stringid(56856951,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PREDRAW)

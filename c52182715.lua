@@ -27,7 +27,7 @@ function c52182715.initial_effect(c)
 	c:RegisterEffect(e5)
 	--tohand
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(52182715,0))
+	e6:SetDescription(aux.Stringid(52182715,2))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e6:SetProperty(EFFECT_FLAG_CARD_TARGET)

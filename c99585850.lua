@@ -45,7 +45,7 @@ function c99585850.initial_effect(c)
 	c:RegisterEffect(e5)
 	--special summon
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(99585850,1))
+	e6:SetDescription(aux.Stringid(99585850,3))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_PHASE+PHASE_END)

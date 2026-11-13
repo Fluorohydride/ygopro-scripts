@@ -3,7 +3,7 @@ function c40998517.initial_effect(c)
 	c:SetUniqueOnField(1,0,40998517)
 	--destroy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(40998517,0))
+	e1:SetDescription(aux.Stringid(40998517,1))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

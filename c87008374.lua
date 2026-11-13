@@ -14,7 +14,7 @@ function c87008374.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(87008374,1))
+	e3:SetDescription(aux.Stringid(87008374,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetRange(LOCATION_SZONE)

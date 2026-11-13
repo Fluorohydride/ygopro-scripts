@@ -7,7 +7,7 @@ function s.initial_effect(c)
 	aux.EnableChangeCode(c,52900000,LOCATION_HAND+LOCATION_MZONE)
 	--to hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

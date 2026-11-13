@@ -25,7 +25,7 @@ function c80949182.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk down
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(80949182,0))
+	e3:SetDescription(aux.Stringid(80949182,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DAMAGE)
 	e3:SetCountLimit(1,80949182)

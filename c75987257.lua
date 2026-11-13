@@ -13,7 +13,7 @@ function c75987257.initial_effect(c)
 	c:RegisterEffect(e1)
 	--pos
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(75987257,0))
+	e2:SetDescription(aux.Stringid(75987257,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetCode(EVENT_FREE_CHAIN)

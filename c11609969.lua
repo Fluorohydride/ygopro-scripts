@@ -13,7 +13,7 @@ function c11609969.initial_effect(c)
 	c:RegisterEffect(e2)
 	--scale change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(11609969,1))
+	e3:SetDescription(aux.Stringid(11609969,2))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_PZONE)

@@ -21,7 +21,7 @@ function c83656563.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(83656563,0))
+	e3:SetDescription(aux.Stringid(83656563,1))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)

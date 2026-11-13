@@ -8,7 +8,7 @@ function c41930553.initial_effect(c)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(41930553,1))
+	e2:SetDescription(aux.Stringid(41930553,0))
 	e2:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_REMOVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)

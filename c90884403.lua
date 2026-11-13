@@ -35,7 +35,7 @@ function c90884403.initial_effect(c)
 	c:RegisterEffect(e4)
 	--token
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(90884403,0))
+	e5:SetDescription(aux.Stringid(90884403,1))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_FREE_CHAIN)

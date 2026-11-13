@@ -69,7 +69,7 @@ function s.effop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		if tc and Duel.SSet(tp,tc)>0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,3))
+			e1:SetDescription(aux.Stringid(id,0))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 			if tc:IsType(TYPE_QUICKPLAY) then

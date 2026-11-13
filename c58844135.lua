@@ -33,7 +33,7 @@ function c58844135.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to graveyard
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(58844135,1))
+	e3:SetDescription(aux.Stringid(58844135,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetRange(LOCATION_MZONE)

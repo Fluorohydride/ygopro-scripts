@@ -12,7 +12,7 @@ function c58494728.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon success
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(58494728,1))
+	e2:SetDescription(aux.Stringid(58494728,0))
 	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_RECOVER)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

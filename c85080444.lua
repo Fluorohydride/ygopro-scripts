@@ -18,7 +18,7 @@ function c85080444.initial_effect(c)
 	c:RegisterEffect(e2)
 	--indes
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(85080444,1))
+	e3:SetDescription(aux.Stringid(85080444,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetCondition(c85080444.indcon)

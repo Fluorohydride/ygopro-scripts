@@ -16,7 +16,7 @@ function c70222318.initial_effect(c)
 	c:RegisterEffect(e2)
 	--deck check
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(70222318,3))
+	e3:SetDescription(aux.Stringid(70222318,1))
 	e3:SetCategory(CATEGORY_DECKDES)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_FZONE)

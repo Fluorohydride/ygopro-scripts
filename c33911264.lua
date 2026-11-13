@@ -12,7 +12,7 @@ function c33911264.initial_effect(c)
 	c:RegisterEffect(e1)
 	--level up
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(33911264,0))
+	e2:SetDescription(aux.Stringid(33911264,2))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)

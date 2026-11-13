@@ -38,7 +38,7 @@ function c30552375.initial_effect(c)
 	c:RegisterEffect(e5)
 	--equip
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(30552375,0))
+	e6:SetDescription(aux.Stringid(30552375,1))
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_TO_GRAVE)
 	e6:SetProperty(EFFECT_FLAG_DELAY)

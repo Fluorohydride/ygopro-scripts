@@ -33,7 +33,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 	--remove
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(id,1))
+	e5:SetDescription(aux.Stringid(id,2))
 	e5:SetCategory(CATEGORY_REMOVE+CATEGORY_DAMAGE)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)

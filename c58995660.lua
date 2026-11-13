@@ -42,7 +42,7 @@ function s.effop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if d==1 or d==4 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(id,4))
+		e1:SetDescription(aux.Stringid(id,0))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetRange(LOCATION_ONFIELD)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_COUNT)

@@ -16,7 +16,7 @@ function c38517737.initial_effect(c)
 	aux.EnableChangeCode(c,89631139,LOCATION_MZONE+LOCATION_GRAVE)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(38517737,0))
+	e3:SetDescription(aux.Stringid(38517737,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

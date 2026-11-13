@@ -30,7 +30,7 @@ function c24550676.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(24550676,0))
+	e4:SetDescription(aux.Stringid(24550676,2))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DAMAGE_STEP_END)

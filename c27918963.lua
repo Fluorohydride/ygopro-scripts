@@ -20,7 +20,7 @@ function c27918963.initial_effect(c)
 	c:RegisterEffect(e3)
 	--counter
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(27918963,0))
+	e4:SetDescription(aux.Stringid(27918963,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1,27918963)

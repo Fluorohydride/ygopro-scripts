@@ -3,7 +3,7 @@ function c80476891.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(80476891,0))
+	e1:SetDescription(aux.Stringid(80476891,1))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)

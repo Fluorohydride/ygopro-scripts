@@ -6,7 +6,7 @@ function c86124104.initial_effect(c)
 	aux.EnableChangeCode(c,72426662,LOCATION_MZONE+LOCATION_HAND)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(86124104,0))
+	e2:SetDescription(aux.Stringid(86124104,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

@@ -15,7 +15,7 @@ function c48996569.initial_effect(c)
 	aux.EnableNeosReturn(c,c48996569.retop)
 	--tohand
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(48996569,1))
+	e5:SetDescription(aux.Stringid(48996569,0))
 	e5:SetCategory(CATEGORY_TOHAND)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)

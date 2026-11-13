@@ -14,7 +14,7 @@ function c72291078.initial_effect(c)
 	c:RegisterEffect(e2)
 	--summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(72291078,0))
+	e3:SetDescription(aux.Stringid(72291078,2))
 	e3:SetCategory(CATEGORY_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)

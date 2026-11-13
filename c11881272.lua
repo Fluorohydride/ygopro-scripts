@@ -2,7 +2,7 @@
 function c11881272.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(11881272,0))
+	e1:SetDescription(aux.Stringid(11881272,3))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -33,7 +33,7 @@ function c11881272.initial_effect(c)
 	c:RegisterEffect(e4)
 	--activate field
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(11881272,0))
+	e5:SetDescription(aux.Stringid(11881272,2))
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e5:SetRange(LOCATION_SZONE)

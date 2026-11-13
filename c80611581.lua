@@ -23,7 +23,7 @@ function c80611581.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk/def
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(80611581,1))
+	e3:SetDescription(aux.Stringid(80611581,2))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetRange(LOCATION_MZONE)

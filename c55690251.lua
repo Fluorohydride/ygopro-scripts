@@ -22,7 +22,7 @@ function c55690251.initial_effect(c)
 	c:RegisterEffect(e3)
 	--send to grave
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(55690251,1))
+	e4:SetDescription(aux.Stringid(55690251,0))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetType(EFFECT_TYPE_IGNITION)

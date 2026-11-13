@@ -9,7 +9,7 @@ function c97769122.initial_effect(c)
 	c:RegisterEffect(e1)
 	--copy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(97769122,1))
+	e2:SetDescription(aux.Stringid(97769122,0))
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c97769122.condition)

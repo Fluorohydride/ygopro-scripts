@@ -68,7 +68,7 @@ function c15543940.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 		--indes
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(15543940,1))
+		e1:SetDescription(aux.Stringid(15543940,0))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT+EFFECT_FLAG_NO_TURN_RESET)
 		e1:SetRange(LOCATION_ONFIELD)

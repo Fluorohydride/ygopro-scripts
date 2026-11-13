@@ -32,7 +32,7 @@ function c50383626.initial_effect(c)
 	c:RegisterEffect(e4)
 	--to deck
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(50383626,1))
+	e5:SetDescription(aux.Stringid(50383626,2))
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetCountLimit(1,50383627)

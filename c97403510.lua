@@ -40,7 +40,7 @@ function c97403510.initial_effect(c)
 	c:RegisterEffect(e4)
 	--atkup
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(97403510,2))
+	e5:SetDescription(aux.Stringid(97403510,3))
 	e5:SetCategory(CATEGORY_ATKCHANGE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)

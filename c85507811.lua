@@ -15,7 +15,7 @@ function c85507811.initial_effect(c)
 	aux.EnableNeosReturn(c,c85507811.retop)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(85507811,1))
+	e5:SetDescription(aux.Stringid(85507811,0))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)

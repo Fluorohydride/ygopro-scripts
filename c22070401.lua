@@ -5,7 +5,7 @@ function c22070401.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	--counter
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(22070401,0))
+	e1:SetDescription(aux.Stringid(22070401,4))
 	e1:SetCategory(CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)

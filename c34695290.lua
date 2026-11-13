@@ -17,7 +17,7 @@ function c34695290.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(34695290,1))
+	e3:SetDescription(aux.Stringid(34695290,2))
 	e3:SetCategory(CATEGORY_NEGATE+CATEGORY_REMOVE)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetType(EFFECT_TYPE_QUICK_O)

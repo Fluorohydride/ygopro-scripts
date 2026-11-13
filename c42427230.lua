@@ -59,7 +59,7 @@ function c42427230.spop(e,tp,eg,ep,ev,re,r,rp)
 			local token=Duel.CreateToken(tp,42427231)
 			if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP) then
 				local e1=Effect.CreateEffect(e:GetHandler())
-				e1:SetDescription(aux.Stringid(42427230,3))
+				e1:SetDescription(aux.Stringid(42427230,0))
 				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CLIENT_HINT)
 				e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 				e1:SetCode(EVENT_LEAVE_FIELD)

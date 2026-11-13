@@ -43,7 +43,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 	--deckdes
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(id,1))
+	e5:SetDescription(aux.Stringid(id,2))
 	e5:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DECKDES)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)

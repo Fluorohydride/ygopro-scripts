@@ -36,7 +36,7 @@ function c71159974.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(71159974,1))
+	e4:SetDescription(aux.Stringid(71159974,2))
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DESTROYED)

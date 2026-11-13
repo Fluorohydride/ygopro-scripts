@@ -62,7 +62,7 @@ function s.fsop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 		if ng:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,1))
+			e1:SetDescription(aux.Stringid(id,0))
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EFFECT_CANNOT_TO_DECK)

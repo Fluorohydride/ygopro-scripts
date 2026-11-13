@@ -17,7 +17,7 @@ function c1218214.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Draw
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1218214,0))
+	e3:SetDescription(aux.Stringid(1218214,1))
 	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DRAW)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)

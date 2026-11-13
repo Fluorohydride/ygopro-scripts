@@ -29,7 +29,7 @@ function c9634146.initial_effect(c)
 	--damage
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_DAMAGE)
-	e4:SetDescription(aux.Stringid(9634146,1))
+	e4:SetDescription(aux.Stringid(9634146,2))
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

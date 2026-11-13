@@ -33,7 +33,7 @@ function c36898537.initial_effect(c)
 	c:RegisterEffect(e3)
 	--control
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(36898537,2))
+	e4:SetDescription(aux.Stringid(36898537,0))
 	e4:SetCategory(CATEGORY_CONTROL)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)

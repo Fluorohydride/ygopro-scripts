@@ -23,7 +23,7 @@ function c82913020.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Unclassified Effect as material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(82913020,2))
+	e3:SetDescription(aux.Stringid(82913020,0))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_XMATERIAL+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_CONFIRM)

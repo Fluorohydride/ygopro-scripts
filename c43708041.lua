@@ -16,7 +16,7 @@ function c43708041.initial_effect(c)
 	c:RegisterEffect(e2)
 	--salvage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(43708041,0))
+	e3:SetDescription(aux.Stringid(43708041,1))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

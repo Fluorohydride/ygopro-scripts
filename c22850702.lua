@@ -5,7 +5,7 @@ function c22850702.initial_effect(c)
 	aux.AddSynchroMixProcedure(c,c22850702.matfilter1,nil,nil,c22850702.matfilter2,1,99)
 	--remove
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(22850702,2))
+	e1:SetDescription(aux.Stringid(22850702,0))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

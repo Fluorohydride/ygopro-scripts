@@ -52,7 +52,7 @@ function s.initial_effect(c)
 	--destory
 	local e6=Effect.CreateEffect(c)
 	e6:SetCategory(CATEGORY_DESTROY)
-	e6:SetDescription(aux.Stringid(id,3))
+	e6:SetDescription(aux.Stringid(id,1))
 	e6:SetCountLimit(1,id)
 	e6:SetType(EFFECT_TYPE_IGNITION)
 	e6:SetRange(LOCATION_SZONE)
