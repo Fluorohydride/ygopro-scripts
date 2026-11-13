@@ -105,7 +105,7 @@ function c80335817.retop(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()>1 and sg:GetClassCount(Card.GetPreviousControler)==1 then
 		local ft=Duel.GetLocationCount(sg:GetFirst():GetPreviousControler(),LOCATION_MZONE)
 		if ft==1 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80335817,3))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80335817,0))
 			local tc=sg:Select(tp,1,1,nil):GetFirst()
 			Duel.ReturnToField(tc)
 			sg:RemoveCard(tc)

@@ -86,9 +86,9 @@ function c11609969.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=Duel.IsExistingMatchingCard(c11609969.filter2,tp,LOCATION_DECK,0,1,nil)
 	if chk==0 then return b1 or b2 end
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(11609969,3),aux.Stringid(11609969,4))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(11609969,3))
-	else op=Duel.SelectOption(tp,aux.Stringid(11609969,4))+1 end
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(11609969,0),aux.Stringid(11609969,1))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(11609969,0))
+	else op=Duel.SelectOption(tp,aux.Stringid(11609969,1))+1 end
 	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(CATEGORY_TOHAND)

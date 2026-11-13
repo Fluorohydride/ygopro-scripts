@@ -2,7 +2,7 @@
 function c65430555.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(65430555,1))
+	e1:SetDescription(aux.Stringid(65430555,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -16,7 +16,7 @@ function c65430555.initial_effect(c)
 	c:RegisterEffect(e1)
 	--th effect
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(65430555,0))
+	e2:SetDescription(aux.Stringid(65430555,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)

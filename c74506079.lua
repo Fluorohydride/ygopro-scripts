@@ -25,7 +25,7 @@ function c74506079.matcheck(e,c)
 	end
 	if ct>=2 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(74506079,1))
+		e1:SetDescription(aux.Stringid(74506079,0))
 		e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -38,7 +38,7 @@ function c74506079.matcheck(e,c)
 	end
 	if ct>=4 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(74506079,2))
+		e1:SetDescription(aux.Stringid(74506079,1))
 		e1:SetCategory(CATEGORY_TOGRAVE)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -51,7 +51,7 @@ function c74506079.matcheck(e,c)
 	end
 	if ct>=6 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(74506079,3))
+		e1:SetDescription(aux.Stringid(74506079,2))
 		e1:SetCategory(CATEGORY_DRAW)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

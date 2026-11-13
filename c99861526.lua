@@ -14,7 +14,7 @@ function c99861526.initial_effect(c)
 	c:RegisterEffect(e2)
 	--pos
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(99861526,1))
+	e3:SetDescription(aux.Stringid(99861526,0))
 	e3:SetCategory(CATEGORY_POSITION)
 	e3:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)

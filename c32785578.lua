@@ -34,7 +34,7 @@ function c32785578.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e) then
 		res=Duel.Destroy(tc,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(c32785578.stfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
-		if res>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(32785578,1)) then
+		if res>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(32785578,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(tp,1,1,nil)

@@ -52,7 +52,7 @@ function s.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local e1=Effect.CreateEffect(rc)
-	e1:SetDescription(aux.Stringid(id,1))
+	e1:SetDescription(aux.Stringid(id,2))
 	e1:SetCategory(CATEGORY_REMOVE)
 	-- Under Duel.SpecialSummon(SUMMON_TYPE_XYZ), BE_MATERIAL fires after the single SPSUMMON_SUCCESS;
 	-- use FIELD so it can catch the following field EVENT_SPSUMMON_SUCCESS (e.g. RUM - The Seventh One)
@@ -100,7 +100,7 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(s.rmfilter,tp,0,LOCATION_DECK,nil,1-tp)
 	aux.GCheckAdditional=s.rmgcheck
 	local res=g:IsExists(Card.IsType,1,nil,TYPE_SPELL) and g:CheckSubGroup(s.gcheck,5,5)
-	if res and Duel.SelectYesNo(1-tp,aux.Stringid(id,2)) then
+	if res and Duel.SelectYesNo(1-tp,aux.Stringid(id,3)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
 		local sg=g:SelectSubGroup(1-tp,s.gcheck,false,5,5)
 		aux.GCheckAdditional=nil

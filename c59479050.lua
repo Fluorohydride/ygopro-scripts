@@ -16,7 +16,7 @@ function c59479050.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck top
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(59479050,1))
+	e2:SetDescription(aux.Stringid(59479050,2))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
@@ -44,7 +44,7 @@ function c59479050.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
 		and c:IsRelateToEffect(e) and c:GetOverlayCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59479050,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59479050,1))
 		local mg=c:GetOverlayGroup():Select(tp,1,1,nil)
 		local oc=mg:GetFirst():GetOverlayTarget()
 		Duel.Overlay(tc,mg)

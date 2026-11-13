@@ -22,7 +22,7 @@ function c62200831.initial_effect(c)
 	c:RegisterEffect(e3)
 	--pay and spsummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(62200831,1))
+	e4:SetDescription(aux.Stringid(62200831,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_TO_GRAVE)
@@ -45,7 +45,7 @@ function c62200831.dttg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0x166) end
 end
 function c62200831.dtop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(62200831,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(62200831,1))
 	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0x166)
 	local tc=g:GetFirst()
 	if tc then

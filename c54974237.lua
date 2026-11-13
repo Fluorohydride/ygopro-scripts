@@ -26,7 +26,7 @@ end
 function c54974237.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(54974237,2))
-	local ac=Duel.SelectOption(tp,aux.Stringid(54974237,3),aux.Stringid(54974237,1))
+	local ac=Duel.SelectOption(tp,aux.Stringid(54974237,0),aux.Stringid(54974237,1))
 	local ty=TYPE_SPELL
 	if ac==1 then ty=TYPE_TRAP end
 	e:SetLabel(ty)

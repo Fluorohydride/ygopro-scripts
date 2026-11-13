@@ -23,7 +23,7 @@ function c91668401.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(91668401,2))
+	e3:SetDescription(aux.Stringid(91668401,1))
 	e3:SetCategory(CATEGORY_DESTROY+CATEGORY_TODECK)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)

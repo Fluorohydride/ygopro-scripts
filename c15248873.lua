@@ -22,7 +22,7 @@ function c15248873.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if not Duel.CheckPhaseActivity() then e:SetLabel(1) else e:SetLabel(0) end
 end
 function c15248873.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(15248873,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(15248873,0))
 	if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,15248873,RESET_CHAIN,0,1) end
 	local tc=Duel.SelectMatchingCard(tp,c15248873.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	Duel.ResetFlagEffect(tp,15248873)

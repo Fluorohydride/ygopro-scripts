@@ -38,7 +38,7 @@ function c25542642.initial_effect(c)
 	c:RegisterEffect(e6)
 	--spsummon
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(25542642,1))
+	e7:SetDescription(aux.Stringid(25542642,0))
 	e7:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e7:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e7:SetType(EFFECT_TYPE_QUICK_O)

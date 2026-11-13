@@ -32,7 +32,7 @@ function c82566662.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c82566662.condition1)
 		e1:SetValue(c82566662.aclimit1)
 		c:RegisterEffect(e1)
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(82566662,1))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(82566662,0))
 	end
 	if c:GetMaterial():FilterCount(Card.IsLinkType,nil,TYPE_SYNCHRO)>0 then
 		--activate limit - synchro -> spell/trap
@@ -60,7 +60,7 @@ function c82566662.regop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCondition(c82566662.condition3)
 		e3:SetValue(c82566662.aclimit3)
 		c:RegisterEffect(e3)
-		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(82566662,1))
+		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(82566662,2))
 	end
 end
 function c82566662.condition1(e)

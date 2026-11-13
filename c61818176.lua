@@ -12,7 +12,7 @@ function c61818176.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(61818176,1))
+	e2:SetDescription(aux.Stringid(61818176,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -41,7 +41,7 @@ function c61818176.activate(e,tp,eg,ep,ev,re,r,rp)
 		if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,15248873,RESET_CHAIN,0,1) end
 		local g=Duel.GetMatchingGroup(c61818176.actfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil,tp)
 		Duel.ResetFlagEffect(tp,15248873)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(61818176,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(61818176,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 			local sg=g:Select(tp,1,1,nil)

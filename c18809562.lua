@@ -19,7 +19,7 @@ function c18809562.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c18809562.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(18809562,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(18809562,0))
 	local ag=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_HAND,0,1,1,nil,TYPE_SPELL)
 	if ag:GetCount()>0 then
 		Duel.SendtoHand(ag,1-tp,REASON_EFFECT)

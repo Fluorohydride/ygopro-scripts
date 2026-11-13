@@ -35,7 +35,7 @@ function c64283880.spop(e,tp,eg,ep,ev,re,r,rp)
 		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ct<=0 then return end
 		local g=Duel.GetMatchingGroup(c64283880.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(64283880,1)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(64283880,0)) then
 			Duel.BreakEffect()
 			if ct>2 then ct=2 end
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end

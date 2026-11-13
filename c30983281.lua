@@ -102,7 +102,7 @@ function c30983281.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if b1 then rg:AddCard(c) end
 	if b2 then rg:Merge(g) end
 	if rg:GetCount()>1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84012625,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84012625,0))
 		rc=rg:Select(tp,1,1,nil):GetFirst()
 	else
 		rc=rg:GetFirst()

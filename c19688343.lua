@@ -42,7 +42,7 @@ function c19688343.activate(e,tp,eg,ep,ev,re,r,rp)
 			local c=e:GetHandler()
 			local g=Duel.GetMatchingGroup(c19688343.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc:GetCode())
 			if g:GetCount()>0 and c:IsRelateToChain() and c:IsCanOverlay()
-				and Duel.SelectYesNo(tp,aux.Stringid(19688343,1)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(19688343,0)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sc=g:Select(tp,1,1,nil):GetFirst()

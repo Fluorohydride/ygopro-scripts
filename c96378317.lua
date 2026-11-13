@@ -15,7 +15,7 @@ function c96378317.initial_effect(c)
 	c:RegisterEffect(e1)
 	--(2) Destroy Replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(96378317,2))
+	e2:SetDescription(aux.Stringid(96378317,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EFFECT_DESTROY_REPLACE)
 	e2:SetRange(LOCATION_GRAVE)

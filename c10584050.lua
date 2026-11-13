@@ -36,7 +36,7 @@ function c10584050.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ~fdzone&0x1f>0 end
 	local dis=Duel.SelectField(tp,1,0,LOCATION_MZONE,(fdzone|0x60)<<16)
 	if Duel.IsExistingMatchingCard(c10584050.cfilter,tp,LOCATION_MZONE,0,1,nil) and ~(fdzone|(dis>>16))&0x1f>0
-		and Duel.SelectYesNo(tp,aux.Stringid(10584050,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(10584050,0)) then
 		dis=dis|Duel.SelectField(tp,1,0,LOCATION_MZONE,(fdzone|(dis>>16)|0x60)<<16)
 	end
 	e:SetLabel(dis)

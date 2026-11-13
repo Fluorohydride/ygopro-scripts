@@ -38,7 +38,7 @@ function c33750025.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND)
 		and (tc:IsSummonable(true,nil,1) or tc:IsMSetable(true,nil,1))
-		and Duel.SelectYesNo(tp,aux.Stringid(33750025,2)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(33750025,0)) then
 		Duel.BreakEffect()
 		local s1=tc:IsSummonable(true,nil,1)
 		local s2=tc:IsMSetable(true,nil,1)

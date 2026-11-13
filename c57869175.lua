@@ -13,7 +13,7 @@ function c57869175.initial_effect(c)
 	c:RegisterEffect(e2)
 	--level up
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(57869175,1))
+	e3:SetDescription(aux.Stringid(57869175,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
@@ -23,7 +23,7 @@ function c57869175.initial_effect(c)
 	c:RegisterEffect(e3)
 	--remove,lvup
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(57869175,2))
+	e4:SetDescription(aux.Stringid(57869175,1))
 	e4:SetCategory(CATEGORY_REMOVE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -77,8 +77,8 @@ function c57869175.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local lv=og:FilterCount(Card.IsLocation,nil,LOCATION_REMOVED)
 		if lv>0 and tc:IsRelateToEffect(e) then
 			local op=0
-			if tc:IsLevelBelow(lv) then op=Duel.SelectOption(tp,aux.Stringid(57869175,4))
-			else op=Duel.SelectOption(tp,aux.Stringid(57869175,4),aux.Stringid(57869175,3)) end
+			if tc:IsLevelBelow(lv) then op=Duel.SelectOption(tp,aux.Stringid(57869175,2))
+			else op=Duel.SelectOption(tp,aux.Stringid(57869175,2),aux.Stringid(57869175,3)) end
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

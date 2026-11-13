@@ -11,7 +11,7 @@ function c29795530.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lvdown
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(29795530,1))
+	e2:SetDescription(aux.Stringid(29795530,0))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

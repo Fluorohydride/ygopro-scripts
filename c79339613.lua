@@ -74,7 +74,7 @@ function c79339613.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 and g:GetFirst():IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,g)
 		if Duel.IsExistingMatchingCard(c79339613.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
-			and Duel.SelectYesNo(tp,aux.Stringid(79339613,2)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(79339613,0)) then
 			Duel.BreakEffect()
 			Duel.ShuffleHand(tp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)

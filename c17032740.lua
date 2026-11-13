@@ -15,7 +15,7 @@ function c17032740.initial_effect(c)
 	aux.EnableNeosReturn(c,c17032740.retop,c17032740.set_category)
 	--coin
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(17032740,0))
+	e5:SetDescription(aux.Stringid(17032740,1))
 	e5:SetCategory(CATEGORY_COIN+CATEGORY_DESTROY+CATEGORY_TOHAND)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)

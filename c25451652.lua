@@ -28,7 +28,7 @@ function c25451652.initial_effect(c)
 	c:RegisterEffect(e3)
 	--discard deck
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(25451652,2))
+	e4:SetDescription(aux.Stringid(25451652,1))
 	e4:SetCategory(CATEGORY_DECKDES+CATEGORY_RECOVER)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

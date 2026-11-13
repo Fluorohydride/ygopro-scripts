@@ -11,7 +11,7 @@ function c12670770.initial_effect(c)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(12670770,0))
+	e2:SetDescription(aux.Stringid(12670770,2))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -22,7 +22,7 @@ function c12670770.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(12670770,1))
+	e3:SetDescription(aux.Stringid(12670770,3))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_TO_GRAVE)
@@ -58,10 +58,10 @@ function c12670770.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:SetTurnCounter(0)
 	if Duel.IsExistingMatchingCard(c12670770.filter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 		and Duel.IsExistingMatchingCard(c12670770.filter2,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(12670770,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(12670770,0)) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)
 		c:RegisterFlagEffect(12670770,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-		c:RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(12670770,5))
+		c:RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(12670770,1))
 	end
 end
 function c12670770.target2(e,tp,eg,ep,ev,re,r,rp,chk)

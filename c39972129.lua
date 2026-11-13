@@ -5,7 +5,7 @@ function c39972129.initial_effect(c)
 	c:EnableReviveLimit()
 	--token
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(39972129,1))
+	e1:SetDescription(aux.Stringid(39972129,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)

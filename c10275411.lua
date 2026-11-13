@@ -36,7 +36,7 @@ function c10275411.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g1=Duel.GetOverlayGroup(tp,0,1)
 		if g1:GetCount()==0 then return end
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(10275411,1))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(10275411,0))
 		local mg=g1:Select(tp,1,1,nil)
 		local oc=mg:GetFirst():GetOverlayTarget()
 		Duel.Overlay(tc,mg)

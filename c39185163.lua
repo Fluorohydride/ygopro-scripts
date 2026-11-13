@@ -14,7 +14,7 @@ function c39185163.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(39185163,1))
+	e2:SetDescription(aux.Stringid(39185163,3))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_GRAVE)
@@ -43,8 +43,8 @@ function c39185163.disrmop(e,tp,eg,ep,ev,re,r,rp)
 	local b2=Duel.IsExistingMatchingCard(c39185163.filter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,nil)
 		and Duel.GetFlagEffect(tp,39185164)==0
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(39185163,3),aux.Stringid(39185163,2))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(39185163,3))
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(39185163,1),aux.Stringid(39185163,2))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(39185163,1))
 	elseif b2 then op=Duel.SelectOption(tp,aux.Stringid(39185163,2))+1
 	else return end
 	if op==0 then

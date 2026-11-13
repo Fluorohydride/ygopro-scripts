@@ -19,7 +19,7 @@ function c84121302.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(84121302,2))
+	e3:SetDescription(aux.Stringid(84121302,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -36,7 +36,7 @@ function c84121302.setfilter(c)
 end
 function c84121302.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c84121302.setfilter,tp,LOCATION_DECK,0,nil)
-	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(84121302,3)) then
+	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(84121302,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
 		Duel.SSet(tp,sc)

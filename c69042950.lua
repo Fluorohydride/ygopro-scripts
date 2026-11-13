@@ -35,7 +35,7 @@ function c69042950.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c69042950.spfilter,1-tp,LOCATION_HAND,0,1,nil,e,1-tp)
-		and Duel.SelectYesNo(1-tp,aux.Stringid(69042950,1)) then
+		and Duel.SelectYesNo(1-tp,aux.Stringid(69042950,0)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(1-tp,c69042950.spfilter,1-tp,LOCATION_HAND,0,1,1,nil,e,1-tp)
 		if g:GetCount()~=0 then

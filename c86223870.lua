@@ -25,7 +25,7 @@ function c86223870.activate(e,tp,eg,ep,ev,re,r,rp)
 		local dlv=1
 		if lv==1 then return
 		elseif lv>2 then
-			dlv=Duel.SelectOption(tp,aux.Stringid(86223870,1),aux.Stringid(86223870,2))+1
+			dlv=Duel.SelectOption(tp,aux.Stringid(86223870,0),aux.Stringid(86223870,1))+1
 		end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

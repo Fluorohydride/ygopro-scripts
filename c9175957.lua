@@ -14,7 +14,7 @@ function c9175957.initial_effect(c)
 	c:RegisterEffect(e1)
 	--material
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(9175957,1))
+	e2:SetDescription(aux.Stringid(9175957,3))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -28,7 +28,7 @@ function c9175957.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local spct=0
 	if Duel.CheckRemoveOverlayCard(tp,LOCATION_MZONE,0,1,REASON_COST)
-		and Duel.SelectYesNo(tp,aux.Stringid(9175957,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(9175957,1)) then
 		spct=Duel.RemoveOverlayCard(tp,LOCATION_MZONE,0,1,3,REASON_COST)
 	end
 	e:SetLabel(spct)

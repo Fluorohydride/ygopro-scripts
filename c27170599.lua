@@ -35,7 +35,7 @@ function c27170599.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() then
 		local sel=1
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27170599,1))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27170599,0))
 		if c:IsRelateToEffect(e) and c:IsCanTurnSet() and Duel.CheckLPCost(1-tp,2000) then
 			sel=Duel.SelectOption(1-tp,1213,1214)
 		end

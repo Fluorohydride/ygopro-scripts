@@ -80,7 +80,7 @@ function c41114306.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(c41114306.thfilter,tp,LOCATION_DECK,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41114306,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41114306,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			g=g:Select(tp,1,1,nil)

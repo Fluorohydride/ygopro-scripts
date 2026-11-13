@@ -29,7 +29,7 @@ function c74402414.initial_effect(c)
 	c:RegisterEffect(e2)
 	--salvage
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(74402414,2))
+	e3:SetDescription(aux.Stringid(74402414,0))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)

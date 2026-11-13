@@ -24,7 +24,7 @@ function c4141820.operation(e,tp,eg,ep,ev,re,r,rp)
 		if rc:GetFlagEffect(4141820)==0 then
 			--discard
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(4141820,2))
+			e1:SetDescription(aux.Stringid(4141820,0))
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_BATTLE_DAMAGE)

@@ -32,7 +32,7 @@ end
 function c64961254.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c64961254.thfilter,tp,LOCATION_DECK,0,nil)
 	if #g>0 and c64961254.thcon(e,tp,eg,ep,ev,re,r,rp) and
-		Duel.SelectYesNo(tp,aux.Stringid(64961254,2)) then
+		Duel.SelectYesNo(tp,aux.Stringid(64961254,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

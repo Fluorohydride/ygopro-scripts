@@ -69,6 +69,6 @@ function c94703021.tkop2(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,94703022)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		ct=ct-1
-	until ct<=0 or not Duel.SelectYesNo(tp,aux.Stringid(94703021,2))
+	until ct<=0 or not Duel.SelectYesNo(tp,aux.Stringid(94703021,0))
 	Duel.SpecialSummonComplete()
 end

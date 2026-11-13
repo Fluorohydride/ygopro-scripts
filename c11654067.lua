@@ -27,7 +27,7 @@ function c11654067.activate(e,tp,eg,ep,ev,re,r,rp)
 		local b2=Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,11654068,0,TYPES_TOKEN_MONSTER,1000,1000,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP,1-tp)
 		local sel=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(11654067,3)},
+			{b1,aux.Stringid(11654067,0)},
 			{b2,aux.Stringid(11654067,1)},
 			{true,aux.Stringid(11654067,2)})
 		if sel==1 then

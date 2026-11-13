@@ -14,7 +14,7 @@ function c57722593.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act limit
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(57722593,1))
+	e3:SetDescription(aux.Stringid(57722593,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_PHASE+PHASE_END)

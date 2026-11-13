@@ -5,7 +5,7 @@ function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--decrease tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,4))
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetRange(LOCATION_MZONE)

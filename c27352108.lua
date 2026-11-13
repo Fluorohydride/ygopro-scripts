@@ -76,7 +76,7 @@ function c27352108.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c27352108.thfilter2),1-tp,LOCATION_GRAVE,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(27352108,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(27352108,0)) then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 			local sg=g:Select(1-tp,1,1,nil)
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)

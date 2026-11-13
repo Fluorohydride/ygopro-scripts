@@ -7,7 +7,7 @@ function c92300891.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to defense
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(92300891,1))
+	e3:SetDescription(aux.Stringid(92300891,0))
 	e3:SetCategory(CATEGORY_POSITION)
 	e3:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e3:SetCode(EVENT_BE_BATTLE_TARGET)

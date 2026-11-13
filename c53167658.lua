@@ -35,7 +35,7 @@ function c53167658.reptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		local sg=eg:Filter(c53167658.repfilter1,c,tp)
 		if sg:GetCount()>1 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53167658,2))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53167658,0))
 			sg=sg:Select(tp,1,1,nil)
 		end
 		sg:KeepAlive()
@@ -62,7 +62,7 @@ function c53167658.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		local sg=eg:Filter(c53167658.repfilter2,nil,tp)
 		if sg:GetCount()>1 then
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53167658,2))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53167658,0))
 			sg=sg:Select(tp,1,1,nil)
 		end
 		sg:KeepAlive()

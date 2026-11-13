@@ -58,11 +58,11 @@ function c81306186.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=tc:IsAbleToHand()
 	local sel=0
 	if b1 and b2 then
-		sel=Duel.SelectOption(tp,aux.Stringid(81306186,2),aux.Stringid(81306186,3))
+		sel=Duel.SelectOption(tp,aux.Stringid(81306186,0),aux.Stringid(81306186,1))
 	elseif b1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(81306186,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(81306186,0))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(81306186,3))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(81306186,1))+1
 	end
 	if sel==0 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)

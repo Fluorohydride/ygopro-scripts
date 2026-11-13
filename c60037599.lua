@@ -10,7 +10,7 @@ function c60037599.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=aux.AddDrytronSpSummonEffect(c,c60037599.extraop)
-	e2:SetDescription(aux.Stringid(60037599,2))
+	e2:SetDescription(aux.Stringid(60037599,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e2:SetCountLimit(1,60037599)
 end

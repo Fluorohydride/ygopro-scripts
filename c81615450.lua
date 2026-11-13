@@ -32,12 +32,12 @@ function c81615450.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	if Duel.IsExistingMatchingCard(c81615450.thfilter2,tp,LOCATION_DECK,0,1,nil) then
-		ops[off]=aux.Stringid(81615450,1)
+		ops[off]=aux.Stringid(81615450,2)
 		opval[off]=2
 		off=off+1
 	end
 	if Duel.IsExistingMatchingCard(aux.nzatk,tp,0,LOCATION_MZONE,1,nil) then
-		ops[off]=aux.Stringid(81615450,1)
+		ops[off]=aux.Stringid(81615450,3)
 		opval[off]=3
 		off=off+1
 	end

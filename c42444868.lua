@@ -50,7 +50,7 @@ function c42444868.activate(e,tp,eg,ep,ev,re,r,rp)
 		ec:CancelToGrave()
 		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			local g=Duel.GetMatchingGroup(c42444868.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)
-			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,1)) then
+			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,0)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sg=g:Select(tp,1,1,nil)

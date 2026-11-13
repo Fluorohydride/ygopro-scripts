@@ -18,8 +18,8 @@ function c55948544.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,14731897)
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(55948544,1)},
-		{b2,aux.Stringid(55948544,2)})
+		{b1,aux.Stringid(55948544,0)},
+		{b2,aux.Stringid(55948544,1)})
 	e:SetLabel(op)
 end
 function c55948544.operation(e,tp,eg,ep,ev,re,r,rp)

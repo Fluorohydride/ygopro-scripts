@@ -19,7 +19,7 @@ function c34029630.initial_effect(c)
 	c:RegisterEffect(e2)
 	--counter
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(34029630,0))
+	e3:SetDescription(aux.Stringid(34029630,1))
 	e3:SetCategory(CATEGORY_COUNTER)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
@@ -53,7 +53,7 @@ function c34029630.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	c:AddCounter(0x1,3)
 	if Duel.GetTurnPlayer()==tp and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT)
 		and Duel.IsExistingTarget(c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
-		and Duel.SelectYesNo(tp,aux.Stringid(34029630,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(34029630,0)) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
 		Duel.SelectTarget(tp,c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)

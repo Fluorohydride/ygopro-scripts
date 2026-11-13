@@ -41,6 +41,6 @@ function s.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.remop(e,tp,eg,ep,ev,re,r,rp)
 	local p=tp
-	if Duel.SelectYesNo(tp,aux.Stringid(id,2)) then p=1-tp end
+	if Duel.SelectYesNo(tp,aux.Stringid(id,1)) then p=1-tp end
 	Duel.Recover(p,1000,REASON_EFFECT)
 end

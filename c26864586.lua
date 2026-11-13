@@ -27,7 +27,7 @@ function c26864586.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
 	if g:FilterCount(Card.IsFaceup,nil)<2 then return end
 	if g:GetFirst():GetLevel()==g:GetNext():GetLevel() then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26864586,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26864586,0))
 	local tc2=g:Select(tp,1,1,nil):GetFirst()
 	local tc1=(g-tc2):GetFirst()
 	local lv=tc1:GetLevel()

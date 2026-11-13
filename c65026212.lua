@@ -24,7 +24,7 @@ function c65026212.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(65026212,0))
+	e3:SetDescription(aux.Stringid(65026212,3))
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
@@ -50,14 +50,14 @@ function c65026212.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c65026212.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(65026212,1),aux.Stringid(65026212,2),aux.Stringid(65026212,3))
+		select=Duel.SelectOption(tp,aux.Stringid(65026212,0),aux.Stringid(65026212,1),aux.Stringid(65026212,2))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(65026212,1),aux.Stringid(65026212,3))
+		select=Duel.SelectOption(tp,aux.Stringid(65026212,0),aux.Stringid(65026212,2))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(65026212,2),aux.Stringid(65026212,3))+1
+		select=Duel.SelectOption(tp,aux.Stringid(65026212,1),aux.Stringid(65026212,2))+1
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(65026212,3))
+		select=Duel.SelectOption(tp,aux.Stringid(65026212,2))
 		select=2
 	end
 	if select==0 then

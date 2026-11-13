@@ -9,7 +9,7 @@ function c90020065.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(90020065,0))
+	e1:SetDescription(aux.Stringid(90020065,1))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)

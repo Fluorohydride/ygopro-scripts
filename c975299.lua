@@ -41,7 +41,7 @@ function c975299.initial_effect(c)
 	c:RegisterEffect(e5)
 	--spsummon
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(975299,2))
+	e6:SetDescription(aux.Stringid(975299,1))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_IGNITION)
 	e6:SetRange(LOCATION_FZONE)
@@ -51,7 +51,7 @@ function c975299.initial_effect(c)
 	c:RegisterEffect(e6)
 	--counter
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(975299,3))
+	e7:SetDescription(aux.Stringid(975299,2))
 	e7:SetCategory(CATEGORY_COUNTER)
 	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e7:SetCode(EVENT_SUMMON_SUCCESS)
@@ -69,7 +69,7 @@ function c975299.thfilter(c)
 end
 function c975299.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c975299.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(975299,4)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(975299,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

@@ -65,7 +65,7 @@ function s.gyop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if #tg>0 and Duel.SendtoHand(tg,nil,REASON_EFFECT)~=0
 		and Duel.IsExistingMatchingCard(s.thfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if sg:GetCount()>0 then

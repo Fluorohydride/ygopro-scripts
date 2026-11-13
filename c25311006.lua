@@ -28,7 +28,7 @@ function c25311006.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(25311006,3)
+		ops[off]=aux.Stringid(25311006,0)
 		opval[off-1]=1
 		off=off+1
 	end

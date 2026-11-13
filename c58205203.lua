@@ -68,8 +68,8 @@ function s.spsop(e,tp,eg,ep,ev,re,r,rp)
 		local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		local b2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 		local toplayer=aux.SelectFromOptions(tp,
-			{b1,aux.Stringid(id,3),tp},
-			{b2,aux.Stringid(id,4),1-tp})
+			{b1,aux.Stringid(id,2),tp},
+			{b2,aux.Stringid(id,3),1-tp})
 		if toplayer~=nil then
 			Duel.SpecialSummon(c,0,tp,toplayer,false,false,POS_FACEUP)
 		else

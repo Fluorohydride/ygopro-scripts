@@ -39,7 +39,7 @@ function c53842431.initial_effect(c)
 	c:RegisterEffect(e4)
 	--remove
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(53842431,3))
+	e5:SetDescription(aux.Stringid(53842431,1))
 	e5:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_REMOVE)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)

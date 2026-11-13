@@ -28,12 +28,12 @@ function c86686671.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local op=0
 	if b1 and b2 then
 		if Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,3,nil,70095154) then
-			op=Duel.SelectOption(tp,aux.Stringid(86686671,3),aux.Stringid(86686671,1),aux.Stringid(86686671,2))
+			op=Duel.SelectOption(tp,aux.Stringid(86686671,0),aux.Stringid(86686671,1),aux.Stringid(86686671,2))
 		else
-			op=Duel.SelectOption(tp,aux.Stringid(86686671,3),aux.Stringid(86686671,1))
+			op=Duel.SelectOption(tp,aux.Stringid(86686671,0),aux.Stringid(86686671,1))
 		end
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(86686671,3))
+		op=Duel.SelectOption(tp,aux.Stringid(86686671,0))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(86686671,1))+1
 	end

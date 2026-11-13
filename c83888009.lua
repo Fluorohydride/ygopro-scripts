@@ -48,7 +48,7 @@ function c83888009.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83888009.ovfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,tc)
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
-		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(83888009,1)) then
+		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(83888009,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local sg=g:Select(tp,1,e:GetLabel()+1,nil)

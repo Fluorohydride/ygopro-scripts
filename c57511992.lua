@@ -48,9 +48,9 @@ function c57511992.operation(e,tp,eg,ep,ev,re,r,rp)
 	if b1 or b2 then
 		local s
 		if b1 and b2 then
-			s=Duel.SelectOption(tp,aux.Stringid(57511992,3),aux.Stringid(57511992,2))
+			s=Duel.SelectOption(tp,aux.Stringid(57511992,1),aux.Stringid(57511992,2))
 		elseif b1 then
-			s=Duel.SelectOption(tp,aux.Stringid(57511992,3))
+			s=Duel.SelectOption(tp,aux.Stringid(57511992,1))
 		else
 			s=Duel.SelectOption(tp,aux.Stringid(57511992,2))+1
 		end

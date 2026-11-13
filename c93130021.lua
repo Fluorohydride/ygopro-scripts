@@ -23,14 +23,14 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local t1=Duel.IsExistingTarget(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,4))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
 	local op=0
 	if t1 and t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))
 	elseif t1 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2))
 	elseif t2 then
-		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2))
+		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,3))
 		if op==1 then op=2 end
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1))

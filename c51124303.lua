@@ -90,7 +90,7 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local b1=sg:IsExists(c51124303.rfilter,1,nil,mc)
 	local b2=sg:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),1,ft)
-	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,3))) then
+	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=sg:Filter(c51124303.rfilter,nil,mc):SelectUnselect(nil,tp,false,true,1,1)
 		if not tc then goto cancel end

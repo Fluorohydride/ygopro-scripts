@@ -42,7 +42,7 @@ function c10691144.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local rg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_HAND,nil)
 		if rg:GetCount()>0 then
 			local ct=1
-			if rg:GetCount()>1 then ct=Duel.SelectOption(tp,aux.Stringid(10691144,1),aux.Stringid(10691144,2))+1 end
+			if rg:GetCount()>1 then ct=Duel.SelectOption(tp,aux.Stringid(10691144,3),aux.Stringid(10691144,4))+1 end
 			g:Merge(rg:RandomSelect(tp,ct))
 		end
 	end

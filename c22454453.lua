@@ -22,7 +22,7 @@ function c22454453.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then
 			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		else
-			local opt=Duel.SelectOption(tp,aux.Stringid(22454453,2),aux.Stringid(22454453,1))
+			local opt=Duel.SelectOption(tp,aux.Stringid(22454453,0),aux.Stringid(22454453,1))
 			if opt==0 then
 				Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else

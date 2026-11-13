@@ -12,7 +12,7 @@ function c34230233.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(34230233,1))
+	e2:SetDescription(aux.Stringid(34230233,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_TO_GRAVE)
@@ -70,7 +70,7 @@ function c34230233.desop(e,tp,eg,ep,ev,re,r,rp)
 			local cc=cg:GetFirst()
 			Duel.ConfirmCards(tp,cc)
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and cc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-				and Duel.SelectYesNo(tp,aux.Stringid(34230233,2)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(34230233,1)) then
 				Duel.SpecialSummon(cc,0,tp,tp,false,false,POS_FACEUP)
 			else Duel.ShuffleHand(1-tp) end
 		end

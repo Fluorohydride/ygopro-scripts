@@ -31,7 +31,7 @@ function c65872270.initial_effect(c)
 end
 function c65872270.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if c65872270.descon(e,tp,eg,ep,ev,re,r,rp) and c65872270.destg(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(65872270,3)) then
+	if c65872270.descon(e,tp,eg,ep,ev,re,r,rp) and c65872270.destg(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(65872270,0)) then
 		e:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND)
 		e:SetOperation(c65872270.desop)
 		c65872270.destg(e,tp,eg,ep,ev,re,r,rp,1)

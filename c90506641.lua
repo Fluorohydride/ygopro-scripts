@@ -28,7 +28,7 @@ function c90506641.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90506641.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanRemove(tp) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90506641,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90506641,0))
 	local g=Duel.SelectMatchingCard(tp,c90506641.filter,tp,LOCATION_DECK,0,5,5,nil)
 	if g:GetCount()<5 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

@@ -14,7 +14,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(id,1))
+	e2:SetDescription(aux.Stringid(id,3))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -82,9 +82,9 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 		local sel=0
 		local lvl=1
 		if tc:IsLevel(1) then
-			sel=Duel.SelectOption(tp,aux.Stringid(id,3))
+			sel=Duel.SelectOption(tp,aux.Stringid(id,1))
 		else
-			sel=Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,2))
+			sel=Duel.SelectOption(tp,aux.Stringid(id,1),aux.Stringid(id,2))
 		end
 		if sel==1 then
 			lvl=-1

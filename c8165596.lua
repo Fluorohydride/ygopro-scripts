@@ -14,7 +14,7 @@ function c8165596.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate activate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(8165596,1))
+	e2:SetDescription(aux.Stringid(8165596,0))
 	e2:SetCategory(CATEGORY_DISABLE+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)
@@ -28,7 +28,7 @@ function c8165596.initial_effect(c)
 	--search
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-	e3:SetDescription(aux.Stringid(8165596,2))
+	e3:SetDescription(aux.Stringid(8165596,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetCountLimit(1,8165597)
@@ -80,7 +80,7 @@ function c8165596.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c8165596.filter,tp,LOCATION_DECK,0,1,1,nil,c)
 	local tc=g:GetFirst()
 	if tc then
-		if c:IsType(TYPE_XYZ) and tc:IsCanOverlay() and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,aux.Stringid(8165596,3))==1) then
+		if c:IsType(TYPE_XYZ) and tc:IsCanOverlay() and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,aux.Stringid(8165596,2))==1) then
 			Duel.Overlay(c,Group.FromCards(tc))
 		else
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)

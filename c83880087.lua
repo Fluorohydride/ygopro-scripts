@@ -26,9 +26,9 @@ function c83880087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	local op=0
 	if Duel.IsExistingTarget(c83880087.filter,tp,LOCATION_MZONE,0,1,nil) then
-		op=Duel.SelectOption(tp,aux.Stringid(83880087,3),aux.Stringid(83880087,4))
+		op=Duel.SelectOption(tp,aux.Stringid(83880087,0),aux.Stringid(83880087,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(83880087,3))
+		op=Duel.SelectOption(tp,aux.Stringid(83880087,0))
 	end
 	e:SetLabel(op)
 	if op==0 then

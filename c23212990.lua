@@ -27,9 +27,9 @@ function c23212990.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil)
 	local op=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(23212990,1),aux.Stringid(23212990,2))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(23212990,1))
-	else op=Duel.SelectOption(tp,aux.Stringid(23212990,2))+1 end
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(23212990,0),aux.Stringid(23212990,1))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(23212990,0))
+	else op=Duel.SelectOption(tp,aux.Stringid(23212990,1))+1 end
 	e:SetLabel(op)
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

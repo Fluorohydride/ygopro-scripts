@@ -42,11 +42,11 @@ function c24348804.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_SPSUMMON_SUCCESS,true)
 	if res then
 		local g=teg:Filter(c24348804.filter1,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24348804,3)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24348804,0)) then
 			Duel.SetTargetCard(g)
 			Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 			e:SetLabel(1)
-			e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(24348804,4))
+			e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(24348804,1))
 		end
 	end
 end

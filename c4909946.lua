@@ -83,7 +83,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 				local tc=sg:GetFirst()
 				local ssp=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 				local osp=Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
-				if osp and (not ssp or Duel.SelectYesNo(tp,aux.Stringid(id,4))) then
+				if osp and (not ssp or Duel.SelectYesNo(tp,aux.Stringid(id,3))) then
 					Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP)
 				elseif ssp then
 					Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

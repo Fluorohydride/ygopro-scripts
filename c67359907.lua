@@ -70,7 +70,7 @@ function s.mtop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Overlay(c,g)
 		Duel.AdjustAll()
 		local xg=c:GetOverlayGroup()
-		if Duel.IsExistingMatchingCard(s.rmfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,nil,xg) and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+		if Duel.IsExistingMatchingCard(s.rmfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,nil,xg) and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 			local rg=Duel.GetMatchingGroup(s.rmfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,nil,xg)
 			if rg:GetCount()>0 then
 				Duel.BreakEffect()

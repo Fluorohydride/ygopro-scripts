@@ -29,7 +29,7 @@ function c91592030.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Select(tp,1,1,nil)
 	Duel.HintSelection(sg)
 	g:RemoveCard(sg:GetFirst())
-	local opt=Duel.SelectOption(1-tp,aux.Stringid(91592030,2),aux.Stringid(91592030,1))
+	local opt=Duel.SelectOption(1-tp,aux.Stringid(91592030,0),aux.Stringid(91592030,1))
 	if opt==0 then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	else

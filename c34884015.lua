@@ -57,9 +57,9 @@ function c34884015.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(Group.FromCards(tc))
 		local sel=0
 		if tc:GetLeftScale()<=1 then
-			sel=Duel.SelectOption(tp,aux.Stringid(34884015,5))
+			sel=Duel.SelectOption(tp,aux.Stringid(34884015,1))
 		else
-			sel=Duel.SelectOption(tp,aux.Stringid(34884015,5),aux.Stringid(34884015,6))
+			sel=Duel.SelectOption(tp,aux.Stringid(34884015,1),aux.Stringid(34884015,2))
 		end
 		local ct=1
 		if sel==1 then

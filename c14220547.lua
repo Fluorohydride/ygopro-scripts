@@ -47,7 +47,7 @@ function c14220547.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
 	if (#g1~=0 or #g2~=0) then
 		local g=nil
-		if #g1~=0 and (#g2==0 or Duel.SelectOption(tp,aux.Stringid(14220547,3),aux.Stringid(14220547,2))==0) then
+		if #g1~=0 and (#g2==0 or Duel.SelectOption(tp,aux.Stringid(14220547,1),aux.Stringid(14220547,2))==0) then
 			g=g1
 		else
 			g=g2

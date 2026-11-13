@@ -51,11 +51,11 @@ function c48680970.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(48680970,3),aux.Stringid(48680970,4))
+		op=Duel.SelectOption(tp,aux.Stringid(48680970,1),aux.Stringid(48680970,2))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(48680970,3))
+		op=Duel.SelectOption(tp,aux.Stringid(48680970,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(48680970,4))+1
+		op=Duel.SelectOption(tp,aux.Stringid(48680970,2))+1
 	end
 	e:SetLabel(op)
 	if op==0 then

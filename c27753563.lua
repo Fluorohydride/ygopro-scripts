@@ -73,7 +73,7 @@ function c27753563.cmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetMinGroup(Card.GetSequence):GetFirst()
 	Duel.MoveSequence(tc,SEQ_DECKTOP)
 	Duel.ConfirmDecktop(tp,1)
-	local opt=Duel.SelectOption(tp,aux.Stringid(27753563,2),aux.Stringid(27753563,3))
+	local opt=Duel.SelectOption(tp,aux.Stringid(27753563,1),aux.Stringid(27753563,2))
 	Duel.MoveSequence(tc,opt)
 	if tc:IsRace(RACE_DRAGON) or tc:IsRace(RACE_DINOSAUR) or tc:IsRace(RACE_SEASERPENT) or tc:IsRace(RACE_WYRM) then
 		local d=math.floor(tc:GetAttack()/1000)

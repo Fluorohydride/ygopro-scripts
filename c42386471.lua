@@ -29,7 +29,7 @@ function c42386471.initial_effect(c)
 	c:RegisterEffect(e5)
 	--handes
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(42386471,2))
+	e6:SetDescription(aux.Stringid(42386471,0))
 	e6:SetCategory(CATEGORY_HANDES_OPPO)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_BATTLE_DAMAGE)

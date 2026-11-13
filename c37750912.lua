@@ -13,7 +13,7 @@ function c37750912.initial_effect(c)
 	c:RegisterEffect(e1)
 	--increase / decrease
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(37750912,1))
+	e2:SetDescription(aux.Stringid(37750912,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
@@ -67,9 +67,9 @@ function c37750912.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		local opt=0
 		if tc:IsLevel(1) then
-			opt=Duel.SelectOption(tp,aux.Stringid(37750912,3))
+			opt=Duel.SelectOption(tp,aux.Stringid(37750912,1))
 		else
-			opt=Duel.SelectOption(tp,aux.Stringid(37750912,3),aux.Stringid(37750912,2))
+			opt=Duel.SelectOption(tp,aux.Stringid(37750912,1),aux.Stringid(37750912,2))
 		end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

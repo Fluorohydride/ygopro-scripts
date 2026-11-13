@@ -56,7 +56,7 @@ function c80921533.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local mi,ma=c80921533.get_targets(se,tp)
 	local ac=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80921533,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80921533,3))
 	if mi==ma then ac=Duel.AnnounceNumber(tp,mi*1000)
 	elseif ma>=2 and Duel.CheckLPCost(tp,2000) then ac=Duel.AnnounceNumber(tp,1000,2000)
 	else ac=Duel.AnnounceNumber(tp,1000) end

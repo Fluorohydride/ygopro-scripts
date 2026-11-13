@@ -78,7 +78,7 @@ function s.tdop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		local rc=re:GetHandler()
 		local res=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) and aux.IsCodeListed(tc,re:GetHandler():GetCode())
-		if res and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		if res and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		else
 			Duel.HintSelection(g)

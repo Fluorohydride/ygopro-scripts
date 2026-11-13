@@ -63,7 +63,7 @@ function c64116319.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
 		if #g>0 and Duel.IsExistingMatchingCard(c64116319.cfilter2,tp,LOCATION_ONFIELD,0,1,c)
-			and Duel.SelectYesNo(tp,aux.Stringid(64116319,3)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(64116319,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local sg=g:Select(tp,1,1,nil)

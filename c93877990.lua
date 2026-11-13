@@ -53,7 +53,7 @@ function c93877990.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c93877990.costfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		or Duel.IsPlayerAffectedByEffect(tp,46241344) end
 	if Duel.IsExistingMatchingCard(c93877990.costfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,2))) then
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c93877990.costfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 		Duel.SendtoGrave(g,REASON_COST)

@@ -75,7 +75,7 @@ function c57261568.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			local g=Duel.GetDecktopGroup(1-tp,ct)
 			Duel.ConfirmCards(tp,g)
-			local opt=Duel.SelectOption(tp,aux.Stringid(57261568,3),aux.Stringid(57261568,2))
+			local opt=Duel.SelectOption(tp,aux.Stringid(57261568,1),aux.Stringid(57261568,2))
 			Duel.SortDecktop(tp,1-tp,ct)
 			if opt==1 then
 				for i=1,ct do

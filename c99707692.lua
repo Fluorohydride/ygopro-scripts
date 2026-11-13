@@ -74,9 +74,9 @@ function s.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local sel=0
 	local lv=1
 	if not g:IsExists(Card.IsLevelAbove,1,nil,2) then
-		sel=Duel.SelectOption(tp,aux.Stringid(id,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(id,0))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(id,2),aux.Stringid(id,3))
+		sel=Duel.SelectOption(tp,aux.Stringid(id,0),aux.Stringid(id,1))
 	end
 	if sel==1 then
 		lv=-1

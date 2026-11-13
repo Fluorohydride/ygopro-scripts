@@ -16,7 +16,7 @@ function c967928.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c967928.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local op=Duel.SelectOption(tp,aux.Stringid(967928,1),aux.Stringid(967928,2))
+	local op=Duel.SelectOption(tp,aux.Stringid(967928,0),aux.Stringid(967928,1))
 	e:SetLabel(op)
 	Duel.SetTargetPlayer(1-tp)
 end

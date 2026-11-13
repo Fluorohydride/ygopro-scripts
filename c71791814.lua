@@ -48,16 +48,16 @@ function c71791814.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c71791814.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local op=0
-	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(71791814,2),aux.Stringid(71791814,3))
-	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(71791814,2))
-	else op=Duel.SelectOption(tp,aux.Stringid(71791814,3))+1 end
+	if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(71791814,0),aux.Stringid(71791814,1))
+	elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(71791814,0))
+	else op=Duel.SelectOption(tp,aux.Stringid(71791814,1))+1 end
 	e:SetLabel(op)
 	if op==0 then
-		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(71791814,2))
+		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(71791814,0))
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	else
-		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(71791814,3))
+		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(71791814,1))
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 	end

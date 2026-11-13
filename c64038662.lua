@@ -33,8 +33,8 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=Duel.IsExistingTarget(c64038662.filter2,tp,LOCATION_SZONE,0,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	if chk==0 then return b1 or b2 end
 	local op=aux.SelectFromOptions(tp,
-		{b1,aux.Stringid(64038662,1),1},
-		{b2,aux.Stringid(64038662,2),2})
+		{b1,aux.Stringid(64038662,2),1},
+		{b2,aux.Stringid(64038662,3),2})
 	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(0)
@@ -52,7 +52,7 @@ function c64038662.efop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetTargetsRelateToChain()
 		if g:FilterCount(Card.IsFaceup,nil)<2 then return end
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,4))
 		local tc1=g:Select(tp,1,1,nil):GetFirst()
 		local tc2=(g-tc1):GetFirst()
 		if Duel.Equip(tp,tc1,tc2,false) then

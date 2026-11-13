@@ -31,9 +31,9 @@ function c45653036.activate(e,tp,eg,ep,ev,re,r,rp)
 		local opt=0
 		local b1=atk>=1000 and g1:GetCount()>0
 		local b2=atk>=2000 and g2:GetCount()>1
-		if b1 and b2 then opt=Duel.SelectOption(tp,aux.Stringid(45653036,1),aux.Stringid(45653036,2))
-		elseif b1 then opt=Duel.SelectOption(tp,aux.Stringid(45653036,1))
-		elseif b2 then opt=Duel.SelectOption(tp,aux.Stringid(45653036,2))+1
+		if b1 and b2 then opt=Duel.SelectOption(tp,aux.Stringid(45653036,0),aux.Stringid(45653036,1))
+		elseif b1 then opt=Duel.SelectOption(tp,aux.Stringid(45653036,0))
+		elseif b2 then opt=Duel.SelectOption(tp,aux.Stringid(45653036,1))+1
 		else opt=2 end
 		if opt==0 then
 			local e1=Effect.CreateEffect(e:GetHandler())

@@ -25,7 +25,7 @@ function c80949182.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk down
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(80949182,1))
+	e3:SetDescription(aux.Stringid(80949182,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DAMAGE)
 	e3:SetCountLimit(1,80949182)
@@ -35,7 +35,7 @@ function c80949182.initial_effect(c)
 	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(80949182,2))
+	e4:SetDescription(aux.Stringid(80949182,1))
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -63,7 +63,7 @@ function c80949182.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()==1
 end
 function c80949182.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(80949182,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(80949182,3))
+	e:GetHandler():RegisterFlagEffect(80949182,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(80949182,2))
 end
 function c80949182.valcheck(e,c)
 	local g=c:GetMaterial()

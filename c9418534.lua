@@ -3,7 +3,7 @@ function c9418534.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(9418534,1))
+	e1:SetDescription(aux.Stringid(9418534,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

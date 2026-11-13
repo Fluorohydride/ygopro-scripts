@@ -17,8 +17,8 @@ function c86778566.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	local opt=0
 	if Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
-		opt=Duel.SelectOption(tp,aux.Stringid(86778566,1),aux.Stringid(86778566,2))
-	else opt=Duel.SelectOption(tp,aux.Stringid(86778566,2))+1 end
+		opt=Duel.SelectOption(tp,aux.Stringid(86778566,0),aux.Stringid(86778566,1))
+	else opt=Duel.SelectOption(tp,aux.Stringid(86778566,1))+1 end
 	e:SetLabel(opt)
 	if opt==0 then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)

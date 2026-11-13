@@ -36,12 +36,12 @@ function c47870325.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
 	local g1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter),tp,LOCATION_GRAVE,0,nil,tp)
 	local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c47870325.rmfilter),tp,0,LOCATION_GRAVE,nil,1-tp)
-	if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(47870325,4)) then
+	if g1:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(47870325,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local sg1=g1:Select(tp,1,5,nil)
 		g:Merge(sg1)
 	end
-	if g2:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(47870325,4)) then
+	if g2:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(47870325,0)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
 		local sg2=g2:Select(1-tp,1,5,nil)
 		g:Merge(sg2)
@@ -90,13 +90,13 @@ function c47870325.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if c:GetFlagEffect(47870325)==0 then return end
 	local p=1-ep
 	local g=e:GetLabelObject():Filter(c47870325.thfilter,nil,c,p)
-	if g:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(47870325,5)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(p,aux.Stringid(47870325,1)) then
 		local res=false
 		local sg=g:RandomSelect(1-p,1)
 		local tc=sg:GetFirst()
 		if Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 			Duel.ConfirmCards(1-p,tc)
-			if tc:IsControler(p) and tc:IsDiscardable(REASON_EFFECT) and Duel.SelectYesNo(p,aux.Stringid(47870325,3)) then
+			if tc:IsControler(p) and tc:IsDiscardable(REASON_EFFECT) and Duel.SelectYesNo(p,aux.Stringid(47870325,2)) then
 				Duel.BreakEffect()
 				if Duel.SendtoGrave(tc,REASON_EFFECT+REASON_DISCARD)~=0 then
 					res=true

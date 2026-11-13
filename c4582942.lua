@@ -28,12 +28,12 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
 		local chk=Duel.IsExistingMatchingCard(s.afilter,tp,LOCATION_MZONE,0,1,nil)
 		op=aux.SelectFromOptions(tp,
 			{true,aux.Stringid(id,1)},
-			{true,aux.Stringid(id,1)},
-			{chk,aux.Stringid(id,2)})
+			{true,aux.Stringid(id,2)},
+			{chk,aux.Stringid(id,3)})
 	end
 	if op&1>0 and Duel.Recover(tp,500,REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e),TYPE_SPELL+TYPE_TRAP)
-		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,4)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.HintSelection(sg)
@@ -44,7 +44,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
 	end
 	if op&2>0 and Duel.Damage(tp,500,REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(id,5)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.HintSelection(sg)

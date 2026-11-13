@@ -49,7 +49,7 @@ function c74202664.activate(e,tp,eg,ep,ev,re,r,rp)
 		local opval={}
 		off=1
 		if b1 then
-			ops[off]=aux.Stringid(74202664,1)
+			ops[off]=aux.Stringid(74202664,0)
 			opval[off-1]=1
 			off=off+1
 		end
@@ -59,7 +59,7 @@ function c74202664.activate(e,tp,eg,ep,ev,re,r,rp)
 			off=off+1
 		end
 		if b3 then
-			ops[off]=aux.Stringid(74202664,1)
+			ops[off]=aux.Stringid(74202664,2)
 			opval[off-1]=3
 			off=off+1
 		end

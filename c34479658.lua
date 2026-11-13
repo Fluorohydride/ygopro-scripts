@@ -2,7 +2,7 @@
 function c34479658.initial_effect(c)
 	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(34479658,3))
+	e1:SetDescription(aux.Stringid(34479658,0))
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
@@ -15,7 +15,7 @@ function c34479658.initial_effect(c)
 	c:RegisterEffect(e2)
 	--token
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(34479658,0))
+	e3:SetDescription(aux.Stringid(34479658,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

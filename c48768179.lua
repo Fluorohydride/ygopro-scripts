@@ -18,15 +18,15 @@ function c48768179.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(1-tp,1)
 		or Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_MZONE,1,nil) end
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48768179,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48768179,0))
 	if Duel.IsExistingTarget(Card.IsAbleToDeck,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.IsPlayerCanDiscardDeck(1-tp,1) then
-		op=Duel.SelectOption(tp,aux.Stringid(48768179,2),aux.Stringid(48768179,3))
+		op=Duel.SelectOption(tp,aux.Stringid(48768179,1),aux.Stringid(48768179,2))
 	elseif Duel.IsPlayerCanDiscardDeck(1-tp,1) then
-		Duel.SelectOption(tp,aux.Stringid(48768179,3))
+		Duel.SelectOption(tp,aux.Stringid(48768179,2))
 		op=1
 	else
-		Duel.SelectOption(tp,aux.Stringid(48768179,3))
+		Duel.SelectOption(tp,aux.Stringid(48768179,1))
 		op=0
 	end
 	e:SetLabel(op)

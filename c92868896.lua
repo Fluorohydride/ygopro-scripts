@@ -12,7 +12,7 @@ function c92868896.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(92868896,2))
+	e1:SetDescription(aux.Stringid(92868896,1))
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_DESTROY_REPLACE)
 	e2:SetRange(LOCATION_MZONE)

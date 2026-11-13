@@ -67,7 +67,7 @@ function c46925518.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local sg=Duel.GetMatchingGroup(c46925518.spfilter,tp,LOCATION_DECK,0,nil,e,tp,ct)
-	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(46925518,2)) then
+	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(46925518,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)

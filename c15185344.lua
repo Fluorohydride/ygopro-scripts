@@ -3,7 +3,7 @@ local s,id,o=GetID()
 local COUNTER_CROWN=0x77
 function s.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,3,2,s.ovfilter,aux.Stringid(id,1),2,s.xyzop)
+	aux.AddXyzProcedure(c,nil,3,2,s.ovfilter,aux.Stringid(id,0),2,s.xyzop)
 	c:EnableReviveLimit()
 	c:EnableCounterPermit(COUNTER_CROWN)
 	--cannot be xyz material
@@ -15,7 +15,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e0)
 	--add counter
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,0))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_TOEXTRA+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DESTROYING)

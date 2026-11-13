@@ -13,7 +13,7 @@ function c49680980.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Negate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(49680980,0))
+	e2:SetDescription(aux.Stringid(49680980,3))
 	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
@@ -42,14 +42,14 @@ function c49680980.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local select=2
 	Duel.Hint(HINT_SELECTMSG,tp,0)
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(49680980,1),aux.Stringid(49680980,2),aux.Stringid(49680980,3))
+		select=Duel.SelectOption(tp,aux.Stringid(49680980,0),aux.Stringid(49680980,1),aux.Stringid(49680980,2))
 	elseif g1:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(49680980,1),aux.Stringid(49680980,3))
+		select=Duel.SelectOption(tp,aux.Stringid(49680980,0),aux.Stringid(49680980,2))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(49680980,2),aux.Stringid(49680980,3))+1
+		select=Duel.SelectOption(tp,aux.Stringid(49680980,1),aux.Stringid(49680980,2))+1
 	else
-		select=Duel.SelectOption(tp,aux.Stringid(49680980,3))
+		select=Duel.SelectOption(tp,aux.Stringid(49680980,2))
 		select=2
 	end
 	if select==0 then

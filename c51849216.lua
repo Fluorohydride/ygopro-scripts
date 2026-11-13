@@ -30,7 +30,7 @@ function c51849216.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)~=0 and eg:GetFirst():IsLocation(LOCATION_REMOVED) then
 		local ct=Duel.GetMatchingGroupCount(Card.IsFaceup,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil)
 		if Duel.IsExistingMatchingCard(c51849216.cfilter,tp,LOCATION_MZONE,0,1,nil) and ct>0
-			and Duel.SelectYesNo(tp,aux.Stringid(51849216,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(51849216,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 			local g=Duel.SelectMatchingCard(tp,c51849216.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)

@@ -24,7 +24,7 @@ function c67712104.initial_effect(c)
 	c:RegisterEffect(e2)
 	--indestructable
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(67712104,2))
+	e3:SetDescription(aux.Stringid(67712104,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BE_BATTLE_TARGET)
 	e3:SetRange(LOCATION_MZONE)
@@ -47,7 +47,7 @@ end
 function c67712104.valcheck(e,c)
 	local g=c:GetMaterial()
 	if c:IsType(TYPE_LINK) and g:IsExists(Card.IsLinkCode,1,nil,67712104) then
-		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,3))
+		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,0))
 	end
 end
 function c67712104.immcon1(e)

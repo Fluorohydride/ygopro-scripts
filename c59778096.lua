@@ -2,7 +2,7 @@
 function c59778096.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(59778096,1))
+	e1:SetDescription(aux.Stringid(59778096,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
@@ -13,7 +13,7 @@ function c59778096.initial_effect(c)
 	c:RegisterEffect(e1)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(59778096,0))
+	e2:SetDescription(aux.Stringid(59778096,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)

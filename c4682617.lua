@@ -54,7 +54,7 @@ function c4682617.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sct=Duel.GetOperatedGroup():FilterCount(Card.IsControler,nil,tp)
 		local sg=Duel.GetMatchingGroup(c4682617.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 		local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),sg:GetClassCount(Card.GetCode))
-		if sct>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(4682617,1)) then
+		if sct>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(4682617,0)) then
 			Duel.BreakEffect()
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

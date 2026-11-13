@@ -5,7 +5,7 @@ function c37337327.initial_effect(c)
 	aux.AddLinkProcedure(c,c37337327.mfilter,2,2,c37337327.lcheck)
 	--synchro effect
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(37337327,1))
+	e1:SetDescription(aux.Stringid(37337327,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)

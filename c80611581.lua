@@ -23,7 +23,7 @@ function c80611581.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk/def
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(80611581,2))
+	e3:SetDescription(aux.Stringid(80611581,1))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetRange(LOCATION_MZONE)
@@ -51,7 +51,7 @@ function c80611581.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 		if Duel.IsExistingMatchingCard(Card.IsSummonable,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,true,nil)
-			and Duel.SelectYesNo(tp,aux.Stringid(80611581,3)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(80611581,2)) then
 			Duel.BreakEffect()
 			Duel.ShuffleHand(tp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)

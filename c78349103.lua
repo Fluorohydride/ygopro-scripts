@@ -3,7 +3,7 @@ function c78349103.initial_effect(c)
 	aux.EnableUnionAttribute(c,c78349103.filter)
 	--search
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(78349103,1))
+	e5:SetDescription(aux.Stringid(78349103,2))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e5:SetProperty(EFFECT_FLAG_DAMAGE_STEP)

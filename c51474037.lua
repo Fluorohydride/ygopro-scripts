@@ -33,11 +33,11 @@ function c51474037.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sel
 	local tc2=g2:GetFirst()
 	if tc2:IsAttack(0) then
-		sel=Duel.SelectOption(tp,aux.Stringid(51474037,2))
+		sel=Duel.SelectOption(tp,aux.Stringid(51474037,0))
 	elseif not (check and tc2:IsCanTurnSet()) then
 		sel=Duel.SelectOption(tp,aux.Stringid(51474037,1))+1
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(51474037,2),aux.Stringid(51474037,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(51474037,0),aux.Stringid(51474037,1))
 	end
 	e:SetLabel(sel)
 	if sel==0 then

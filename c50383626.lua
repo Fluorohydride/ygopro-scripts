@@ -32,7 +32,7 @@ function c50383626.initial_effect(c)
 	c:RegisterEffect(e4)
 	--to deck
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(50383626,2))
+	e5:SetDescription(aux.Stringid(50383626,1))
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetCountLimit(1,50383627)
@@ -74,7 +74,7 @@ function c50383626.tdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(1-tp,Card.IsAbleToDeck,1-tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then
-		if Duel.SelectOption(1-tp,aux.Stringid(50383626,4),aux.Stringid(50383626,3))==0 then
+		if Duel.SelectOption(1-tp,aux.Stringid(50383626,2),aux.Stringid(50383626,3))==0 then
 			Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
 			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)

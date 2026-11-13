@@ -33,7 +33,7 @@ end
 function c98904974.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0
-		and Duel.SelectYesNo(tp,aux.Stringid(98904974,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(98904974,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local attr=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)

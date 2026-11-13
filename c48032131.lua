@@ -77,7 +77,7 @@ function c48032131.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
 	local opt=0
 	if g1:GetCount()>0 and g2:GetCount()>0 then
-		opt=Duel.SelectOption(tp,aux.Stringid(48032131,4),aux.Stringid(48032131,3))
+		opt=Duel.SelectOption(tp,aux.Stringid(48032131,2),aux.Stringid(48032131,3))
 	elseif g1:GetCount()>0 then
 		opt=0
 	elseif g2:GetCount()>0 then

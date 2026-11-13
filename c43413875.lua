@@ -69,7 +69,7 @@ function c43413875.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
 			if tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 				and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-				and Duel.SelectYesNo(tp,aux.Stringid(43413875,2)) then
+				and Duel.SelectYesNo(tp,aux.Stringid(43413875,1)) then
 				Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 			end
 		else

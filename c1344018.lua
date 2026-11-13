@@ -18,7 +18,7 @@ function c1344018.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1344018,1))
+	e3:SetDescription(aux.Stringid(1344018,0))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -51,7 +51,7 @@ function c1344018.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.Destroy(g,REASON_EFFECT)~=2 then
 		local g2=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(1344018,2)) then
+		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(1344018,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 			local sg=g2:Select(tp,1,1,nil)

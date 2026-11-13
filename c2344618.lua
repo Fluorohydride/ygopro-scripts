@@ -104,14 +104,14 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,g)
 		local sg=Duel.GetMatchingGroup(Card.IsDiscardable,tp,LOCATION_HAND,0,nil,REASON_EFFECT+REASON_DISCARD)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 			local dg=sg:Select(tp,1,1,nil)
 			Duel.ShuffleHand(tp)
 			Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,4))
+			e1:SetDescription(aux.Stringid(id,3))
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_EXTRA_FUSION_MATERIAL)
 			e1:SetTargetRange(LOCATION_GRAVE,0)

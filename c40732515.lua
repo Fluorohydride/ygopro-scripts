@@ -12,7 +12,7 @@ function c40732515.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(40732515,1))
+	e2:SetDescription(aux.Stringid(40732515,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
@@ -24,7 +24,7 @@ function c40732515.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(40732515,2))
+	e3:SetDescription(aux.Stringid(40732515,1))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
@@ -58,7 +58,7 @@ function c40732515.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		g:GetFirst():RemoveCounter(tp,0x1,6,REASON_COST)
 	else
 		for i=1,6 do
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40732515,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40732515,2))
 		local tg=Duel.SelectMatchingCard(tp,c40732515.spcfilter,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
 		tg:GetFirst():RemoveCounter(tp,0x1,1,REASON_COST)
 		end

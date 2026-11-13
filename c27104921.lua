@@ -36,7 +36,7 @@ function c27104921.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		c:AddCounter(0x61,1)
 		local ct=c:GetCounter(0x61)
-		if ct==1 and Duel.SelectYesNo(tp,aux.Stringid(27104921,3)) then
+		if ct==1 and Duel.SelectYesNo(tp,aux.Stringid(27104921,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 			local ac=Duel.AnnounceCard(tp)

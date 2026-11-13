@@ -8,7 +8,7 @@ function c6733059.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(6733059,0))
+	e2:SetDescription(aux.Stringid(6733059,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
@@ -48,7 +48,7 @@ function c6733059.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		if lvt[i] then lvt[i]=nil lvt[pc]=i pc=pc+1 end
 	end
 	lvt[pc]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(6733059,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(6733059,2))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=cg:Select(tp,lv,lv,nil)

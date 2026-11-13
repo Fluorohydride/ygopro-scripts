@@ -47,7 +47,7 @@ function c39064822.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39064822.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)
-		and Duel.SelectYesNo(tp,aux.Stringid(39064822,3)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(39064822,1)) then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 	if Duel.GetFlagEffect(tp,39064822)~=0 then return end

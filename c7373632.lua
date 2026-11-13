@@ -79,7 +79,7 @@ function c7373632.activate(e,tp,eg,ep,ev,re,r,rp)
 			e6:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e6)
 		end
-		tc:RegisterFlagEffect(7373632,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(7373632,1))
+		tc:RegisterFlagEffect(7373632,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(7373632,0))
 	end
 end
 function c7373632.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -25,7 +25,7 @@ function c39980304.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39980304.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetDescription(aux.Stringid(39980304,1))
+	e1:SetDescription(aux.Stringid(39980304,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHAIN_MATERIAL)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

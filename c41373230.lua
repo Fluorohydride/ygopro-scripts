@@ -26,7 +26,7 @@ function c41373230.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to hand/spsummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(41373230,1))
+	e4:SetDescription(aux.Stringid(41373230,0))
 	e4:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_PHASE+PHASE_END)

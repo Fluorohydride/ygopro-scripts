@@ -42,7 +42,7 @@ function c35479109.activate(e,tp,eg,ep,ev,re,r,rp)
 			local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_HAND)
 			local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 			local g=Duel.GetMatchingGroup(Card.IsSSetable,tp,LOCATION_HAND,0,nil)
-			if #og>0 and g:CheckSubGroup(c35479109.fselect,#og,#og,ft) and Duel.SelectYesNo(tp,aux.Stringid(35479109,1)) then
+			if #og>0 and g:CheckSubGroup(c35479109.fselect,#og,#og,ft) and Duel.SelectYesNo(tp,aux.Stringid(35479109,0)) then
 				Duel.BreakEffect()
 				Duel.ShuffleHand(tp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)

@@ -31,7 +31,7 @@ function c78161960.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingMatchingCard(c78161960.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(78161960,1)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(78161960,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c78161960.filter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)

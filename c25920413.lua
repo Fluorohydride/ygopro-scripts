@@ -14,7 +14,7 @@ function c25920413.initial_effect(c)
 	c:RegisterEffect(e1)
 	--counter
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(25920413,1))
+	e2:SetDescription(aux.Stringid(25920413,0))
 	e2:SetCategory(CATEGORY_COUNTER)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

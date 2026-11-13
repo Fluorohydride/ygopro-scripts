@@ -56,13 +56,13 @@ function c40680521.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local s=0
 	if b1 and not b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(40680521,4))
+		s=Duel.SelectOption(tp,aux.Stringid(40680521,0))
 	end
 	if not b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(40680521,5))+1
+		s=Duel.SelectOption(tp,aux.Stringid(40680521,1))+1
 	end
 	if b1 and b2 then
-		s=Duel.SelectOption(tp,aux.Stringid(40680521,4),aux.Stringid(40680521,5))
+		s=Duel.SelectOption(tp,aux.Stringid(40680521,0),aux.Stringid(40680521,1))
 	end
 	e:SetLabel(s)
 	if s==0 then
@@ -77,7 +77,7 @@ function c40680521.pop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 	if e:GetLabel()==1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40680521,6))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40680521,2))
 		local sc=Duel.SelectMatchingCard(tp,c40680521.pfilter,tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
 		if sc then
 			local seq=sc:GetSequence()

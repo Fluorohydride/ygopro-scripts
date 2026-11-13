@@ -5,7 +5,7 @@ function c17412721.initial_effect(c)
 	aux.AddFusionProcFun2(c,c17412721.ffilter,c17412721.ffilter,true)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(17412721,0))
+	e1:SetDescription(aux.Stringid(17412721,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

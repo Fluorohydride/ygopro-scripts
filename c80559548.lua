@@ -8,7 +8,7 @@ function c80559548.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk down
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(80559548,1))
+	e2:SetDescription(aux.Stringid(80559548,0))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)

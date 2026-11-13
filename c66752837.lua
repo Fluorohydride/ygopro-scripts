@@ -53,7 +53,7 @@ function c66752837.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c66752837.thfilter),tp,LOCATION_GRAVE,0,nil)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and e:GetLabel()==1
-		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66752837,2)) then
+		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66752837,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)

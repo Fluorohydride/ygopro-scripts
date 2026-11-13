@@ -1,7 +1,7 @@
 --十二獣タイグリス
 function c11510448.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,4,3,c11510448.ovfilter,aux.Stringid(11510448,3),3,c11510448.xyzop)
+	aux.AddXyzProcedure(c,nil,4,3,c11510448.ovfilter,aux.Stringid(11510448,0),3,c11510448.xyzop)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)
@@ -17,7 +17,7 @@ function c11510448.initial_effect(c)
 	c:RegisterEffect(e2)
 	--xyz material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(11510448,0))
+	e3:SetDescription(aux.Stringid(11510448,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCountLimit(1)

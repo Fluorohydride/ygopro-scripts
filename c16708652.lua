@@ -46,10 +46,10 @@ end
 function c16708652.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
 	if #g==0 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,0))
 	local tc1=g:FilterSelect(tp,c16708652.atkfilter,1,1,nil):GetFirst()
 	if not tc1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,1))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16708652,0))
 		tc1=g:FilterSelect(tp,c16708652.atkfilter2,1,1,nil):GetFirst()
 	end
 	if not tc1 then return end

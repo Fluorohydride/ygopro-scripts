@@ -15,7 +15,7 @@ function c40080312.initial_effect(c)
 	aux.EnableNeosReturn(c,c40080312.retop,c40080312.set_category)
 	--draw
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(40080312,0))
+	e5:SetDescription(aux.Stringid(40080312,1))
 	e5:SetCategory(CATEGORY_DRAW+CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)

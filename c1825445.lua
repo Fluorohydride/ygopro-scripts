@@ -18,7 +18,7 @@ function c1825445.initial_effect(c)
 	c:RegisterEffect(e2)
 	--material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1825445,1))
+	e3:SetDescription(aux.Stringid(1825445,0))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

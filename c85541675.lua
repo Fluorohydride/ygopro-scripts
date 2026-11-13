@@ -18,7 +18,7 @@ function c85541675.initial_effect(c)
 	--draw
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_DRAW)
-	e3:SetDescription(aux.Stringid(85541675,1))
+	e3:SetDescription(aux.Stringid(85541675,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCost(c85541675.drcost)

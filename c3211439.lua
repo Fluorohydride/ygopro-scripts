@@ -21,7 +21,7 @@ function c3211439.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ops={}
 	local opval={}
 	if b1 then
-		ops[off]=aux.Stringid(3211439,3)
+		ops[off]=aux.Stringid(3211439,0)
 		opval[off-1]=TYPE_FUSION
 		off=off+1
 	end

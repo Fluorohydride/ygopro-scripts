@@ -52,7 +52,7 @@ end
 function c14001430.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return bit.band(r,REASON_EFFECT)~=0 and re and re:IsActiveType(TYPE_MONSTER)
 		and re:GetHandler():IsSetCard(0x71) and eg:IsExists(c14001430.repfilter,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(14001430,4)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(14001430,0)) then
 		local g=eg:Filter(c14001430.repfilter,nil,tp)
 		local ct=g:GetCount()
 		if ct>1 then

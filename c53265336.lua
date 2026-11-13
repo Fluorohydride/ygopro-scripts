@@ -37,7 +37,7 @@ function c53265336.operation(e,tp,eg,ep,ev,re,r,rp)
 	local b1=ct>=3 and Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,LOCATION_PZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c53265336.tpfilter,tp,LOCATION_EXTRA,0,1,nil)
 		and Duel.GetFieldGroupCount(tp,LOCATION_PZONE,0)>0
-	if b1 and Duel.SelectYesNo(tp,aux.Stringid(53265336,3)) then
+	if b1 and Duel.SelectYesNo(tp,aux.Stringid(53265336,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_PZONE,0,1,1,nil)
 		if Duel.SendtoHand(g,nil,REASON_EFFECT)~=0 then

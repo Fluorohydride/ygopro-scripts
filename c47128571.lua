@@ -35,7 +35,7 @@ function c47128571.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.GetOperatedGroup()
 		if sg:GetCount()>0 and Duel.NegateAttack() and sg:IsExists(c47128571.cfilter,1,nil,tp) then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47128571,1))
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47128571,0))
 			local cg=sg:FilterSelect(tp,c47128571.cfilter,1,1,nil,tp)
 			Duel.HintSelection(cg)
 			local dg=Duel.GetMatchingGroup(c47128571.desfilter,tp,0,LOCATION_MZONE,nil,cg:GetFirst():GetDefense())

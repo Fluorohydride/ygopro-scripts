@@ -5,7 +5,7 @@ function c63612442.initial_effect(c)
 	c:EnableReviveLimit()
 	--get effect
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(63612442,1))
+	e1:SetDescription(aux.Stringid(63612442,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCost(c63612442.cost)
@@ -24,11 +24,11 @@ function c63612442.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local t1=c:GetFlagEffect(63612442)
 	local t2=c:GetFlagEffect(63612443)
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63612442,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63612442,0))
 	if t1==0 and t2==0 then
-		op=Duel.SelectOption(tp,aux.Stringid(63612442,2),aux.Stringid(63612442,3))
-	elseif t1==0 then op=Duel.SelectOption(tp,aux.Stringid(63612442,2))
-	else Duel.SelectOption(tp,aux.Stringid(63612442,3)) op=1 end
+		op=Duel.SelectOption(tp,aux.Stringid(63612442,1),aux.Stringid(63612442,2))
+	elseif t1==0 then op=Duel.SelectOption(tp,aux.Stringid(63612442,1))
+	else Duel.SelectOption(tp,aux.Stringid(63612442,2)) op=1 end
 	e:SetLabel(op)
 	if op==0 then c:RegisterFlagEffect(63612442,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	else c:RegisterFlagEffect(63612443,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1) end
@@ -37,7 +37,7 @@ function c63612442.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(63612442,0))
+		e1:SetDescription(aux.Stringid(63612442,3))
 		e1:SetCategory(CATEGORY_DESTROY)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_BATTLE_START)

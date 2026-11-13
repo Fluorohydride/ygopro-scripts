@@ -84,7 +84,7 @@ function c39568067.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 then
 		if equip and tc:CheckUniqueOnField(tp) and not tc:IsForbidden()
-			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,aux.Stringid(39568067,3))==1) then
+			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,aux.Stringid(39568067,2))==1) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local sc=Duel.SelectMatchingCard(tp,c39568067.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 			Duel.Equip(tp,tc,sc:GetFirst())

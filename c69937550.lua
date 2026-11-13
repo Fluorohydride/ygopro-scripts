@@ -10,7 +10,7 @@ function c69937550.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change battle target
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(69937550,0))
+	e2:SetDescription(aux.Stringid(69937550,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
 	e2:SetRange(LOCATION_MZONE)

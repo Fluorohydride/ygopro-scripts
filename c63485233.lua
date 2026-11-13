@@ -20,8 +20,8 @@ function c63485233.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c63485233.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local tc=g:GetFirst()
 	local op=0
-	if tc:IsLevel(1) then op=Duel.SelectOption(tp,aux.Stringid(63485233,2))
-	else op=Duel.SelectOption(tp,aux.Stringid(63485233,2),aux.Stringid(63485233,1)) end
+	if tc:IsLevel(1) then op=Duel.SelectOption(tp,aux.Stringid(63485233,0))
+	else op=Duel.SelectOption(tp,aux.Stringid(63485233,0),aux.Stringid(63485233,1)) end
 	e:SetLabel(op)
 end
 function c63485233.operation(e,tp,eg,ep,ev,re,r,rp)

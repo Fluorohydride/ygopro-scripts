@@ -2,7 +2,7 @@
 function c86758915.initial_effect(c)
 	--Activate
 	local e1=aux.AddRitualProcGreater2(c,nil,nil,nil,c86758915.mfilter,true)
-	e1:SetDescription(aux.Stringid(86758915,2))
+	e1:SetDescription(aux.Stringid(86758915,0))
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)

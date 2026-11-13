@@ -47,11 +47,11 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			and tc:IsRace(RACE_MACHINE) and tc:IsLevelAbove(5)
 			and Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil)
 			and Duel.IsExistingMatchingCard(s.dcfilter,tp,LOCATION_SZONE+LOCATION_GRAVE,0,1,aux.ExceptThisCard(e))
-			and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
+			and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
 			Duel.BreakEffect()
 			local sg=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 			if sg:GetCount()>0 and Duel.Destroy(sg,REASON_EFFECT)~=0
-				and tc:GetBaseAttack()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,2)) then
+				and tc:GetBaseAttack()>0 and Duel.SelectYesNo(tp,aux.Stringid(id,3)) then
 				Duel.BreakEffect()
 				Duel.Damage(1-tp,tc:GetBaseAttack(),REASON_EFFECT)
 			end

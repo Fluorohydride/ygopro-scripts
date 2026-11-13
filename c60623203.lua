@@ -22,7 +22,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(s.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e)
 	if chk==0 then return g:CheckSubGroup(s.gcheck,2,2,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,0))
 	local sg=g:SelectSubGroup(tp,s.gcheck,false,2,2,tp)
 	Duel.SetTargetCard(sg)
 	local exlv=0

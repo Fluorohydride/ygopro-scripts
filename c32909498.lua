@@ -2,7 +2,7 @@
 function c32909498.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(32909498,3))
+	e1:SetDescription(aux.Stringid(32909498,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
@@ -21,7 +21,7 @@ function c32909498.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove when attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(32909498,4))
+	e3:SetDescription(aux.Stringid(32909498,2))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -18,7 +18,7 @@ function c9659580.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(9659580,0))
+	e3:SetDescription(aux.Stringid(9659580,2))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
@@ -38,7 +38,7 @@ function c9659580.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(c9659580.filter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c9659580.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(9659580,4)) then
+		and Duel.SelectYesNo(tp,aux.Stringid(9659580,0)) then
 		e:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_TOGRAVE)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c9659580.activate)

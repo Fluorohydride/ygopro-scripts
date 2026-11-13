@@ -85,7 +85,7 @@ function c7614732.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1,true)
 			--pierce
 			local e2=Effect.CreateEffect(tc)
-			e2:SetDescription(aux.Stringid(7614732,1))
+			e2:SetDescription(aux.Stringid(7614732,0))
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_PIERCE)
 			e2:SetProperty(EFFECT_FLAG_CLIENT_HINT)

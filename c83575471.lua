@@ -70,7 +70,7 @@ function c83575471.spop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 			local g=Duel.GetMatchingGroup(c83575471.filter,tp,LOCATION_SZONE,0,nil,e,tp)
 			local gc=g:GetCount()
-			if gc>0 and Duel.SelectYesNo(tp,aux.Stringid(83575471,3)) then
+			if gc>0 and Duel.SelectYesNo(tp,aux.Stringid(83575471,0)) then
 				Duel.DisableSelfDestroyCheck()
 				Duel.SpecialSummonComplete()
 				Duel.BreakEffect()

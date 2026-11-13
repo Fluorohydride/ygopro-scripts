@@ -26,7 +26,7 @@ function c69832741.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_MZONE,0,count,nil)
 	end
 	local count=eg:FilterCount(c69832741.repfilter,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(69832741,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(69832741,0))
 	local rg=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_MZONE,0,count,count,nil)
 	Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	return true

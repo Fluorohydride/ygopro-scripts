@@ -7,7 +7,7 @@ function c56535497.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(56535497,0))
+	e2:SetDescription(aux.Stringid(56535497,1))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
@@ -44,7 +44,7 @@ end
 function c56535497.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetTargetsRelateToChain()
 	if #g<2 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56535497,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56535497,2))
 	local tc1=g:FilterSelect(tp,c56535497.atkfilter,1,1,nil):GetFirst()
 	if not tc1 then return end
 	local tc2=(g-tc1):GetFirst()

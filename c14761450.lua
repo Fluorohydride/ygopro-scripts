@@ -67,11 +67,11 @@ function c14761450.spop(e,tp,eg,ep,ev,re,r,rp)
 		opval[off]=-1
 		off=off+1
 		if c:IsLevelAbove(3) then
-			ops[off]=aux.Stringid(14761450,2)
+			ops[off]=aux.Stringid(14761450,3)
 			opval[off]=-2
 			off=off+1
 		end
-		ops[off]=aux.Stringid(14761450,2)
+		ops[off]=aux.Stringid(14761450,4)
 		opval[off]=0
 		local op=Duel.SelectOption(tp,table.unpack(ops))+1
 		local sel=opval[op]

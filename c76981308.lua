@@ -86,7 +86,7 @@ function c76981308.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76981308.atkfilter,tp,LOCATION_HAND,0,1,nil) end
 end
 function c76981308.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(76981308,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(76981308,2))
 	local g=Duel.SelectMatchingCard(tp,c76981308.atkfilter,tp,LOCATION_HAND,0,1,99,nil)
 	if #g==0 then return end
 	for tc in aux.Next(g) do

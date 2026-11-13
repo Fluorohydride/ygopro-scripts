@@ -1,7 +1,7 @@
 --サイバー・ドラゴン・インフィニティ
 function c10443957.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,c10443957.mfilter,6,3,c10443957.ovfilter,aux.Stringid(10443957,3),3,c10443957.xyzop)
+	aux.AddXyzProcedure(c,c10443957.mfilter,6,3,c10443957.ovfilter,aux.Stringid(10443957,0),3,c10443957.xyzop)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)

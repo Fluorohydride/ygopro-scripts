@@ -57,7 +57,7 @@ function c64804316.disop(e,tp,eg,ep,ev,re,r,rp)
 		local off=1
 		local ops,opval={},{}
 		if b1 then
-			ops[off]=aux.Stringid(64804316,2)
+			ops[off]=aux.Stringid(64804316,1)
 			opval[off]=1
 			off=off+1
 		end
@@ -66,7 +66,7 @@ function c64804316.disop(e,tp,eg,ep,ev,re,r,rp)
 			opval[off]=2
 			off=off+1
 		end
-		ops[off]=aux.Stringid(64804316,2)
+		ops[off]=aux.Stringid(64804316,3)
 		opval[off]=0
 		local op=Duel.SelectOption(tp,table.unpack(ops))+1
 		local sel=opval[op]

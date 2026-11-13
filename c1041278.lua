@@ -88,7 +88,7 @@ function c1041278.activate(e,tp,eg,ep,ev,re,r,rp)
 			and g:IsExists(c1041278.spfilter1,1,nil,e,tp,g)
 		local b2=e:GetLabel()~=0 and ft1>1
 			and g:IsExists(c1041278.spfilter3,2,nil,e,tp)
-		if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(1041278,2))) then
+		if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(1041278,0))) then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		elseif b1 then
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(1041278,1))

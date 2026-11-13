@@ -29,7 +29,7 @@ function c61127349.initial_effect(c)
 	c:RegisterEffect(e4)
 	--Remove
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(61127349,2))
+	e5:SetDescription(aux.Stringid(61127349,0))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e5:SetCode(EVENT_LEAVE_FIELD)
 	e5:SetOperation(c61127349.rmop)

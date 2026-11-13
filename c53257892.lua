@@ -4,7 +4,7 @@ function c53257892.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
-	e1:SetDescription(aux.Stringid(53257892,1))
+	e1:SetDescription(aux.Stringid(53257892,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)

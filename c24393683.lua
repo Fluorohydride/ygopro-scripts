@@ -30,7 +30,7 @@ end
 function c24393683.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(c24393683.cfilter,tp,LOCATION_HAND,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24393683,2)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(24393683,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.ConfirmCards(1-tp,sg)

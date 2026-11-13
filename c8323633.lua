@@ -14,7 +14,7 @@ function c8323633.operation(e,tp,eg,ep,ev,re,r,rp)
 	c:SetHint(CHINT_CARD,ac)
 	--remove
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(8323633,2))
+	e1:SetDescription(aux.Stringid(8323633,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetRange(LOCATION_SZONE)

@@ -37,7 +37,7 @@ function c37364101.initial_effect(c)
 	c:RegisterEffect(e5)
 	--tograve
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(37364101,2))
+	e6:SetDescription(aux.Stringid(37364101,0))
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_PHASE+PHASE_END)
 	e6:SetRange(LOCATION_SZONE)

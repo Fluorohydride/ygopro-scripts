@@ -33,7 +33,7 @@ function c97970833.activate(e,tp,eg,ep,ev,re,r,rp)
 		local te=tc:GetActivateEffect()
 		te:UseCountLimit(tp,1,true)
 		Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
-		if fc and fc:IsFaceup() and Duel.IsPlayerCanDraw(1-tp,1) and Duel.SelectYesNo(1-tp,aux.Stringid(97970833,1)) then
+		if fc and fc:IsFaceup() and Duel.IsPlayerCanDraw(1-tp,1) and Duel.SelectYesNo(1-tp,aux.Stringid(97970833,0)) then
 			Duel.BreakEffect()
 			Duel.Draw(1-tp,1,REASON_EFFECT)
 		end

@@ -43,7 +43,7 @@ function c75311421.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,3)
 	local dg=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	local sg=g:Filter(c75311421.rmfilter,nil,dg)
-	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(75311421,2)) then
+	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(75311421,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local rc=sg:Select(tp,1,1,nil):GetFirst()
 		Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)

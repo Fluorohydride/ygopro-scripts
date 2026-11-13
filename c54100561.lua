@@ -12,7 +12,7 @@ function c54100561.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to extra
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(54100561,1))
+	e2:SetDescription(aux.Stringid(54100561,0))
 	e2:SetCategory(CATEGORY_TOEXTRA)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -41,7 +41,7 @@ function c54100561.tetg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,nil,1,tp,LOCATION_DECK)
 end
 function c54100561.teop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(54100561,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(54100561,1))
 	local g=Duel.SelectMatchingCard(tp,c54100561.tefilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoExtraP(g,nil,REASON_EFFECT)

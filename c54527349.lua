@@ -103,7 +103,7 @@ function c54527349.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 		local label,rec=e:GetLabel()
-		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and label==100 and rec>0 and Duel.SelectYesNo(tp,aux.Stringid(54527349,1)) then
+		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and label==100 and rec>0 and Duel.SelectYesNo(tp,aux.Stringid(54527349,0)) then
 			Duel.BreakEffect()
 			Duel.Recover(tp,rec,REASON_EFFECT)
 		end

@@ -1,7 +1,7 @@
 --ゴーストリックの駄天使
 function c53334641.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,4,2,c53334641.ovfilter,aux.Stringid(53334641,2))
+	aux.AddXyzProcedure(c,nil,4,2,c53334641.ovfilter,aux.Stringid(53334641,0))
 	c:EnableReviveLimit()
 	--win
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +16,7 @@ function c53334641.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(53334641,0))
+	e2:SetDescription(aux.Stringid(53334641,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -27,7 +27,7 @@ function c53334641.initial_effect(c)
 	c:RegisterEffect(e2)
 	--material
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(53334641,1))
+	e3:SetDescription(aux.Stringid(53334641,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)

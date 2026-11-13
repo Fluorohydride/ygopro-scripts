@@ -15,7 +15,7 @@ function c1082946.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c1082946.filter,tp,0x3f,0x3f,1,nil) end
 end
 function c1082946.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(1082946,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(1082946,0))
 	local g=Duel.SelectMatchingCard(tp,c1082946.filter,tp,0x3f,0x3f,1,1,nil)
 	if #g==0 then return end
 	local tc=g:GetFirst()

@@ -9,7 +9,7 @@ function c76218643.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lp recover
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(76218643,1))
+	e2:SetDescription(aux.Stringid(76218643,0))
 	e2:SetCategory(CATEGORY_RECOVER)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_LEAVE_FIELD)

@@ -10,7 +10,7 @@ function c93754402.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(93754402,1))
+	e2:SetDescription(aux.Stringid(93754402,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
@@ -28,7 +28,7 @@ function c93754402.activate(e,tp,eg,ep,ev,re,r,rp)
 	::cancel::
 	local mg=Duel.GetRitualMaterial(tp)
 	local g=Duel.GetMatchingGroup(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,nil,c93754402.filter,e,tp,mg,nil,Card.GetLevel,"Greater")
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(93754402,2)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(93754402,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)

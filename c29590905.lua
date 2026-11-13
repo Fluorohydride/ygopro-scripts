@@ -22,7 +22,7 @@ function c29590905.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ga=g1:GetMinGroup(Card.GetAttack)
 	local gd=g2:GetMinGroup(Card.GetDefense)
 	if ga:GetCount()>1 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29590905,1))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29590905,0))
 		ga=ga:Select(tp,1,1,nil)
 	end
 	if gd:GetCount()>1 then

@@ -11,7 +11,7 @@ function c99641328.initial_effect(c)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(99641328,1))
+	e2:SetDescription(aux.Stringid(99641328,2))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -31,7 +31,7 @@ function c99641328.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct>5 then ct=5 end
 	local t={}
 	for i=1,ct do t[i]=i end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(99641328,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(99641328,1))
 	local ac=Duel.AnnounceNumber(tp,table.unpack(t))
 	Duel.ConfirmDecktop(tp,ac)
 	local g=Duel.GetDecktopGroup(tp,ac)

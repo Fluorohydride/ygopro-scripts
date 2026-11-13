@@ -14,7 +14,7 @@ function c76754619.initial_effect(c)
 end
 function c76754619.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) end
-	local op=Duel.SelectOption(tp,aux.Stringid(76754619,1),aux.Stringid(76754619,2))
+	local op=Duel.SelectOption(tp,aux.Stringid(76754619,0),aux.Stringid(76754619,1))
 	e:SetLabel(op)
 end
 function c76754619.operation(e,tp,eg,ep,ev,re,r,rp)

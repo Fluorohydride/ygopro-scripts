@@ -33,7 +33,7 @@ function c11881272.initial_effect(c)
 	c:RegisterEffect(e4)
 	--activate field
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(11881272,1))
+	e5:SetDescription(aux.Stringid(11881272,0))
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e5:SetRange(LOCATION_SZONE)
@@ -43,7 +43,7 @@ function c11881272.initial_effect(c)
 	c:RegisterEffect(e5)
 	--chain atk
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(11881272,2))
+	e6:SetDescription(aux.Stringid(11881272,1))
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_BATTLE_DESTROYING)
 	e6:SetRange(LOCATION_SZONE)
@@ -85,7 +85,7 @@ function c11881272.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if not Duel.CheckPhaseActivity() then e:SetLabel(1) else e:SetLabel(0) end
 end
 function c11881272.actop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11881272,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11881272,2))
 	if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,11881272,RESET_CHAIN,0,1) end
 	local g=Duel.SelectMatchingCard(tp,c11881272.actfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)
 	Duel.ResetFlagEffect(tp,11881272)

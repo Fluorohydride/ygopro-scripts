@@ -28,7 +28,7 @@ function c87497553.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	if b1 then
 		e:SetLabel(1)
-		Duel.SelectOption(tp,aux.Stringid(87497553,2))
+		Duel.SelectOption(tp,aux.Stringid(87497553,0))
 		e:SetCategory(0)
 		e:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	else

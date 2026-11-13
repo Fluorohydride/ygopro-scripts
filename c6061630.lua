@@ -17,7 +17,7 @@ function c6061630.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(6061630,1))
+	e2:SetDescription(aux.Stringid(6061630,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
@@ -54,7 +54,7 @@ function c6061630.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		if lvt[i] then lvt[i]=nil lvt[pc]=i pc=pc+1 end
 	end
 	lvt[pc]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(6061630,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(6061630,1))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	e:GetHandler():RemoveCounter(tp,0x1,lv,REASON_COST)
 	e:SetLabel(lv)

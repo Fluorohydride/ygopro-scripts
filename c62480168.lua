@@ -26,7 +26,7 @@ end
 function c62480168.activate(e,tp,eg,ep,ev,re,r,rp)
 	local pcon=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
 	local g=Duel.GetMatchingGroup(c62480168.filter,tp,LOCATION_DECK,0,nil,tp,pcon)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(62480168,3)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(62480168,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
 		if sc then
@@ -34,13 +34,13 @@ function c62480168.activate(e,tp,eg,ep,ev,re,r,rp)
 			local b2=sc:IsType(TYPE_PENDULUM) and pcon
 			local s=0
 			if b1 and not b2 then
-				s=Duel.SelectOption(tp,aux.Stringid(62480168,4))
+				s=Duel.SelectOption(tp,aux.Stringid(62480168,1))
 			end
 			if not b1 and b2 then
 				s=Duel.SelectOption(tp,aux.Stringid(62480168,2))+1
 			end
 			if b1 and b2 then
-				s=Duel.SelectOption(tp,aux.Stringid(62480168,4),aux.Stringid(62480168,2))
+				s=Duel.SelectOption(tp,aux.Stringid(62480168,1),aux.Stringid(62480168,2))
 			end
 			if s==0 then
 				Duel.SendtoHand(sc,nil,REASON_EFFECT)

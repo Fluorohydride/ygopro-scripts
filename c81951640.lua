@@ -3,7 +3,7 @@ function c81951640.initial_effect(c)
 	aux.EnableUnionAttribute(c,aux.TRUE)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(81951640,0))
+	e4:SetDescription(aux.Stringid(81951640,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY)

@@ -10,7 +10,7 @@ function c30786387.initial_effect(c)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(30786387,1))
+	e2:SetDescription(aux.Stringid(30786387,2))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -34,7 +34,7 @@ end
 function c30786387.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c30786387.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)>=3 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30786387,2))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30786387,1))
 		local rg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		Duel.ConfirmCards(1-tp,rg)
 		Duel.ShuffleDeck(tp)

@@ -59,7 +59,7 @@ function c27870337.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local off=1
 	local ops,opval={},{}
 	if b1 then
-		ops[off]=aux.Stringid(27870337,4)
+		ops[off]=aux.Stringid(27870337,0)
 		opval[off]=0
 		off=off+1
 	end

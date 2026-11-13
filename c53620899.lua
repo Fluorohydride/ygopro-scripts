@@ -2,7 +2,7 @@
 function c53620899.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(53620899,1))
+	e1:SetDescription(aux.Stringid(53620899,0))
 	e1:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -11,7 +11,7 @@ function c53620899.initial_effect(c)
 	c:RegisterEffect(e1)
 	--turn set
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(53620899,0))
+	e2:SetDescription(aux.Stringid(53620899,1))
 	e2:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

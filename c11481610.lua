@@ -46,7 +46,7 @@ function c11481610.activate(e,tp,eg,ep,ev,re,r,rp)
 		local lsc=lc:GetLeftScale()
 		local rsc=rc:GetRightScale()
 		if lsc>rsc then lsc,rsc=rsc,lsc end
-		if Duel.IsExistingMatchingCard(c11481610.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,lsc,rsc) and Duel.SelectYesNo(tp,aux.Stringid(11481610,1)) then
+		if Duel.IsExistingMatchingCard(c11481610.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,lsc,rsc) and Duel.SelectYesNo(tp,aux.Stringid(11481610,0)) then
 			Duel.BreakEffect()
 			ct=math.min(ct,ft)
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end

@@ -86,7 +86,7 @@ function c55125728.discon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetFlagEffect(55125728)<=0
 end
 function c55125728.disop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(55125728,4)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(55125728,2)) then
 		Duel.Hint(HINT_CARD,0,55125728)
 		local rc=re:GetHandler()
 		if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then

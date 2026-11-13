@@ -30,7 +30,7 @@ function c62089826.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(62089826,2))
+	e4:SetDescription(aux.Stringid(62089826,3))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_TO_GRAVE)
@@ -56,11 +56,11 @@ function c62089826.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(62089826,3),aux.Stringid(62089826,4))
+		op=Duel.SelectOption(tp,aux.Stringid(62089826,1),aux.Stringid(62089826,2))
 	elseif b1 then
-		op=Duel.SelectOption(tp,aux.Stringid(62089826,3))
+		op=Duel.SelectOption(tp,aux.Stringid(62089826,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(62089826,4))+1
+		op=Duel.SelectOption(tp,aux.Stringid(62089826,2))+1
 	end
 	if op==0 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)

@@ -1,7 +1,7 @@
 --聖蛇の息吹
 function c98850929.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(98850929,0))
+	e1:SetDescription(aux.Stringid(98850929,4))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -41,7 +41,7 @@ function c98850929.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local opval={}
 		off=1
 		if ct>1 and g1:GetCount()>0 then
-			ops[off]=aux.Stringid(98850929,1)
+			ops[off]=aux.Stringid(98850929,0)
 			opval[off-1]=1
 			off=off+1
 		end
@@ -51,7 +51,7 @@ function c98850929.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			off=off+1
 		end
 		if ct>3 and g3:GetCount()>0 then
-			ops[off]=aux.Stringid(98850929,1)
+			ops[off]=aux.Stringid(98850929,2)
 			opval[off-1]=3
 			off=off+1
 		end
@@ -72,7 +72,7 @@ function c98850929.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			tg:Merge(sg)
 			g3:Clear()
 		end
-	until off<3 or not Duel.SelectYesNo(tp,aux.Stringid(98850929,2))
+	until off<3 or not Duel.SelectYesNo(tp,aux.Stringid(98850929,3))
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,tg:GetCount(),0,0)
 end

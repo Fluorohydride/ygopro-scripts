@@ -32,7 +32,7 @@ function c39913299.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsCode(ac) and tc:IsAbleToHand() then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(c39913299.filter,tp,LOCATION_DECK,0,nil,e,tp)
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(39913299,1)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(39913299,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 			local sg=g:Select(tp,1,1,nil)

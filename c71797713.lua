@@ -72,7 +72,7 @@ function c71797713.regop(e,tp,eg,ep,ev,re,r,rp)
 	e0:SetReset(RESET_EVENT+RESETS_STANDARD)
 	if bit.band(flag,0x1)~=0 then
 		local e1=e0:Clone()
-		e1:SetDescription(aux.Stringid(71797713,4))
+		e1:SetDescription(aux.Stringid(71797713,1))
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 		e1:SetValue(1)
 		c:RegisterEffect(e1)

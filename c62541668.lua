@@ -1,11 +1,11 @@
 --No.77 ザ・セブン・シンズ
 function c62541668.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,12,2,c62541668.ovfilter,aux.Stringid(62541668,2),2,c62541668.xyzop)
+	aux.AddXyzProcedure(c,nil,12,2,c62541668.ovfilter,aux.Stringid(62541668,0),2,c62541668.xyzop)
 	c:EnableReviveLimit()
 	--remove
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(62541668,0))
+	e1:SetDescription(aux.Stringid(62541668,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

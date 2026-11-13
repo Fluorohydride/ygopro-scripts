@@ -64,7 +64,7 @@ function c14291024.spcon(e,c)
 end
 function c14291024.spcost(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():Clear()
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14291024,1))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(14291024,0))
 	local g=Duel.SelectMatchingCard(tp,c14291024.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)

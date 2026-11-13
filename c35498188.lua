@@ -12,7 +12,7 @@ function c35498188.initial_effect(c)
 	c:RegisterEffect(e1)
 	--set
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(35498188,1))
+	e2:SetDescription(aux.Stringid(35498188,0))
 	e2:SetCategory(CATEGORY_SSET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
@@ -47,7 +47,7 @@ function c35498188.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler():IsChainAttackable()
 end
 function c35498188.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(35498188,2)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(35498188,1)) then
 		Duel.ChainAttack()
 	end
 end

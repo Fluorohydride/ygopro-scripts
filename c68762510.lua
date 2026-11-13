@@ -3,7 +3,7 @@ function c68762510.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--draw
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(68762510,1))
+	e1:SetDescription(aux.Stringid(68762510,0))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)

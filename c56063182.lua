@@ -25,7 +25,7 @@ function c56063182.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy1
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(56063182,2))
+	e4:SetDescription(aux.Stringid(56063182,1))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -41,7 +41,7 @@ function c56063182.filter(c)
 end
 function c56063182.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c56063182.filter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(56063182,3)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(56063182,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

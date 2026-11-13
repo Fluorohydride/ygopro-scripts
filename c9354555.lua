@@ -35,7 +35,7 @@ function c9354555.activate(e,tp,eg,ep,ev,re,r,rp)
 	local hg=sg:Select(tp,1,1,nil)
 	sg:RemoveCard(hg:GetFirst())
 	sg=sg:Filter(Card.IsCode,nil,hg:GetFirst():GetCode())
-	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9354555,1)) then
+	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9354555,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tg=sg:Select(tp,1,2,nil)
 		hg:Merge(tg)

@@ -11,7 +11,7 @@ function c66399653.initial_effect(c)
 	--equip
 	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,66399653,{EVENT_SUMMON_SUCCESS,EVENT_SPSUMMON_SUCCESS})
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(66399653,0))
+	e2:SetDescription(aux.Stringid(66399653,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(custom_code)
 	e2:SetRange(LOCATION_FZONE)
@@ -28,7 +28,7 @@ function c66399653.thfilter(c)
 end
 function c66399653.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c66399653.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66399653,2)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66399653,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)

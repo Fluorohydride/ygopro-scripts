@@ -12,7 +12,7 @@ function c58074572.initial_effect(c)
 end
 function c58074572.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local opt=Duel.SelectOption(tp,aux.Stringid(58074572,1),aux.Stringid(58074572,2))
+	local opt=Duel.SelectOption(tp,aux.Stringid(58074572,0),aux.Stringid(58074572,1))
 	local p=(opt==0 and tp or 1-tp)
 	Duel.SetTargetPlayer(p)
 	Duel.SetTargetParam(200)
