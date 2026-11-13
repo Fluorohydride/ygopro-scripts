@@ -34,7 +34,7 @@ function c29071332.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.Equip(tp,c,tc,false) then return end
 	--unequip
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(29071332,1))
+	e1:SetDescription(aux.Stringid(29071332,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_SZONE)

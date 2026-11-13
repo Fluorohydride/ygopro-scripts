@@ -30,7 +30,7 @@ function c33578406.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Equip
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(33578406,1))
+	e4:SetDescription(aux.Stringid(33578406,2))
 	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

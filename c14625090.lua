@@ -30,7 +30,7 @@ function c14625090.initial_effect(c)
 	c:RegisterEffect(e4)
 	--cannot be target
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(14625090,1))
+	e5:SetDescription(aux.Stringid(14625090,2))
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_TO_GRAVE)
 	e5:SetOperation(c14625090.tgop)

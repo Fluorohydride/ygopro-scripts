@@ -5,7 +5,7 @@ function c32559361.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(32559361,0))
+	e1:SetDescription(aux.Stringid(32559361,1))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_START)
 	e1:SetTarget(c32559361.target)
