@@ -31,7 +31,7 @@ function c57031794.initial_effect(c)
 	c:RegisterEffect(e3)
 	--material
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(57031794,1))
+	e4:SetDescription(aux.Stringid(57031794,2))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1)

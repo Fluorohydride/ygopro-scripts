@@ -16,7 +16,7 @@ function c86124104.initial_effect(c)
 	c:RegisterEffect(e2)
 	--actlimit
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(86124104,1))
+	e3:SetDescription(aux.Stringid(86124104,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_TO_GRAVE)

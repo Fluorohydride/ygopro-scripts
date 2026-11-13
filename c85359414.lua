@@ -2,7 +2,7 @@
 function c85359414.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(85359414,0))
+	e1:SetDescription(aux.Stringid(85359414,1))
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_IGNITION)

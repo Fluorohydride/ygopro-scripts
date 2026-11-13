@@ -47,7 +47,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
 		end
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(id,0))
+		e1:SetDescription(aux.Stringid(id,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)

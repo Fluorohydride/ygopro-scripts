@@ -21,7 +21,7 @@ function c53670497.initial_effect(c)
 	c:RegisterEffect(e2)
 	--return grave
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(53670497,0))
+	e3:SetDescription(aux.Stringid(53670497,1))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_SZONE)

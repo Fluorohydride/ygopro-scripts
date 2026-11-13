@@ -35,7 +35,7 @@ function c77102944.initial_effect(c)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(77102944,1))
+	e5:SetDescription(aux.Stringid(77102944,2))
 	e5:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_BATTLED)

@@ -43,7 +43,7 @@ function s.setop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.SSet(tp,tc)
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetDescription(aux.Stringid(id,1))
+		e1:SetDescription(aux.Stringid(id,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
