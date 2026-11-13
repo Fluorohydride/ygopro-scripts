@@ -111,7 +111,7 @@ function s.eaop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 		else
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,5))
+			e1:SetDescription(aux.Stringid(id,1))
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)

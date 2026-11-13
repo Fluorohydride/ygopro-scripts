@@ -25,7 +25,7 @@ function c11790356.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Equip
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(11790356,1))
+	e3:SetDescription(aux.Stringid(11790356,2))
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetHintTiming(0,TIMING_END_PHASE)

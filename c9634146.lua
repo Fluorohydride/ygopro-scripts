@@ -53,7 +53,7 @@ function c9634146.initial_effect(c)
 	--destroy
 	local e6=Effect.CreateEffect(c)
 	e6:SetCategory(CATEGORY_DESTROY)
-	e6:SetDescription(aux.Stringid(9634146,3))
+	e6:SetDescription(aux.Stringid(9634146,2))
 	e6:SetType(EFFECT_TYPE_IGNITION)
 	e6:SetRange(LOCATION_MZONE)
 	e6:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
