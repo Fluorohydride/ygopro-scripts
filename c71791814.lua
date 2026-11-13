@@ -5,6 +5,7 @@ function c71791814.initial_effect(c)
 	aux.AddLinkProcedure(c,c71791814.matfilter,1,1)
 	--effect
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(71791814,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)

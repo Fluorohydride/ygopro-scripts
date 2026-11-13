@@ -2,6 +2,7 @@
 function c23740893.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(23740893,0))
 	e1:SetCategory(CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
@@ -13,6 +14,7 @@ function c23740893.initial_effect(c)
 	c:RegisterEffect(e1)
 	--extra summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(23740893,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCost(aux.bfgcost)

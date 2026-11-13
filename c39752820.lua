@@ -5,6 +5,7 @@ function c39752820.initial_effect(c)
 	aux.AddLinkProcedure(c,nil,2,2)
 	--spsummon condition
 	local e0=Effect.CreateEffect(c)
+	e0:SetDescription(aux.Stringid(39752820,2))
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetCode(EFFECT_SPSUMMON_COST)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

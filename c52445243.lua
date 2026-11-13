@@ -5,6 +5,7 @@ function c52445243.initial_effect(c)
 	c:EnableReviveLimit()
 	--synchro summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(52445243,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY)

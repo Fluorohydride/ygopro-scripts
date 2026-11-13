@@ -34,6 +34,7 @@ function c38811586.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Special Summon itself
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(38811586,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)

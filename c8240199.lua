@@ -2,6 +2,7 @@
 function c8240199.initial_effect(c)
 	--To hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(8240199,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -10,6 +11,7 @@ function c8240199.initial_effect(c)
 	c:RegisterEffect(e1)
 	--To grave
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(8240199,1))
 	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

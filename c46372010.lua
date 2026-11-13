@@ -17,6 +17,7 @@ function c46372010.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(46372010,1))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_SZONE)

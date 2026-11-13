@@ -2,6 +2,7 @@
 function c50675040.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)
+	e0:SetDescription(aux.Stringid(50675040,1))
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	e0:SetProperty(EFFECT_FLAG_DAMAGE_STEP)

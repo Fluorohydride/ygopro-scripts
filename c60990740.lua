@@ -2,6 +2,7 @@
 function c60990740.initial_effect(c)
 	--sset
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(60990740,0))
 	e1:SetCategory(CATEGORY_DECKDES+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -15,6 +16,7 @@ function c60990740.initial_effect(c)
 	c:RegisterEffect(e1)
 	--sort
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(60990740,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)

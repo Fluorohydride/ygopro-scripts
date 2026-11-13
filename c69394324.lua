@@ -4,6 +4,7 @@ function c69394324.initial_effect(c)
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xc008),3,true)
 	--sort decktop
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(69394324,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,69394324)

@@ -2,6 +2,7 @@
 function c72498838.initial_effect(c)
 	--to hand/to grave
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(72498838,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY)

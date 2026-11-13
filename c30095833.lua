@@ -15,6 +15,7 @@ function c30095833.initial_effect(c)
 	c:RegisterEffect(e0)
 	--pzone specialsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(30095833,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)

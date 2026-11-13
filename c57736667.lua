@@ -2,6 +2,7 @@
 function c57736667.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(57736667,3))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -24,6 +25,7 @@ function c57736667.initial_effect(c)
 	c:RegisterEffect(e3)
 	--return to hand
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(57736667,1))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DAMAGE_STEP_END)
@@ -36,6 +38,7 @@ function c57736667.initial_effect(c)
 	c:RegisterEffect(e4)
 	--special summon
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(57736667,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_IGNITION)

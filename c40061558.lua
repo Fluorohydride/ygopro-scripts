@@ -36,6 +36,7 @@ function c40061558.initial_effect(c)
 	c:RegisterEffect(e5)
 	--control
 	local e6=Effect.CreateEffect(c)
+	e6:SetDescription(aux.Stringid(40061558,1))
 	e6:SetCategory(CATEGORY_CONTROL)
 	e6:SetType(EFFECT_TYPE_IGNITION)
 	e6:SetProperty(EFFECT_FLAG_CARD_TARGET)

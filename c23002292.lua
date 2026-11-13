@@ -2,6 +2,7 @@
 function c23002292.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(23002292,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_SSET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_CHAINING)

@@ -11,6 +11,7 @@ function c47027714.initial_effect(c)
 	c:RegisterEffect(e0)
 	--anti summon and remove
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(47027714,0))
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_SUMMON)

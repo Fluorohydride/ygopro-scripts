@@ -2,6 +2,7 @@
 function c50078320.initial_effect(c)
 	--Announce
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(50078320,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_HAND)

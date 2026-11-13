@@ -26,6 +26,7 @@ function c28168762.initial_effect(c)
 	c:RegisterEffect(e2)
 	--skip
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(28168762,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)
 	e3:SetOperation(c28168762.op)

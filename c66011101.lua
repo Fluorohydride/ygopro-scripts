@@ -5,6 +5,7 @@ function c66011101.initial_effect(c)
 	c:EnableReviveLimit()
 	--draw&spsummon&double attack
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(66011101,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,66011101)

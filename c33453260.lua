@@ -3,6 +3,7 @@ function c33453260.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	--Equip
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(33453260,3))
 	e1:SetCategory(CATEGORY_EQUIP+CATEGORY_CONTROL)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

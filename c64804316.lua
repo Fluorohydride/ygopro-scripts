@@ -20,6 +20,7 @@ function c64804316.initial_effect(c)
 	c:RegisterEffect(e3)
 	--turn set
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(64804316,1))
 	e4:SetCategory(CATEGORY_POSITION+CATEGORY_MSET)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

@@ -10,6 +10,7 @@ function c897409.initial_effect(c)
 	c:RegisterEffect(e1)
 	--confirm
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(897409,1))
 	e2:SetCategory(CATEGORY_REMOVE+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

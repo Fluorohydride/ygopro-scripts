@@ -24,6 +24,7 @@ function c73941492.initial_effect(c)
 	c:RegisterEffect(e3)
 	--synchro limit
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(73941492,2))
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

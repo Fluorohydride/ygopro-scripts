@@ -11,6 +11,7 @@ function c97417863.initial_effect(c)
 	c:RegisterEffect(e0)
 	--pendulum taking
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(97417863,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_CONTROL)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)

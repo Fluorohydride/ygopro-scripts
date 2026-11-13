@@ -13,6 +13,7 @@ function c72378329.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(72378329,0))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

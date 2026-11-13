@@ -2,6 +2,7 @@
 function c79400597.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(79400597,3))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -11,6 +12,7 @@ function c79400597.initial_effect(c)
 	c:RegisterEffect(e1)
 	--banish
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(79400597,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCategory(CATEGORY_REMOVE)
 	e2:SetCode(EVENT_BATTLED)
@@ -21,6 +23,7 @@ function c79400597.initial_effect(c)
 	c:RegisterEffect(e2)
 	--recycle
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(79400597,2))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DESTROYED)

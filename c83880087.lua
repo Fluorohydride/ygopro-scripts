@@ -2,6 +2,7 @@
 function c83880087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(83880087,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_DISABLED)
 	e1:SetTarget(c83880087.target)

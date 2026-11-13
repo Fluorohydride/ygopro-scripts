@@ -24,6 +24,7 @@ function c67173574.initial_effect(c)
 	c:RegisterEffect(e2)
 	--disable
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(67173574,2))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DISABLE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)

@@ -17,6 +17,7 @@ function c33541430.initial_effect(c)
 	c:RegisterEffect(e2)
 	--synchro level
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(33541430,3))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
 	e3:SetTarget(c33541430.syntg)

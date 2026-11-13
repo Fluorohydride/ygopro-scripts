@@ -62,6 +62,7 @@ function c16306932.initial_effect(c)
 	c:RegisterEffect(e7)
 	--todeck
 	local e8=Effect.CreateEffect(c)
+	e8:SetDescription(aux.Stringid(16306932,4))
 	e8:SetCategory(CATEGORY_TODECK)
 	e8:SetType(EFFECT_TYPE_IGNITION)
 	e8:SetRange(LOCATION_MZONE)

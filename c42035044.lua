@@ -2,6 +2,7 @@
 function c42035044.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(42035044,1))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_ATTACK_COST)
 	e1:SetCost(c42035044.atcost)

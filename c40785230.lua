@@ -13,6 +13,7 @@ function c40785230.initial_effect(c)
 	c:RegisterEffect(e0)
 	--counter set
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(40785230,0))
 	e1:SetCategory(CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_DESTROYED)

@@ -2,6 +2,7 @@
 function c60004971.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(60004971,2))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -30,6 +31,7 @@ function c60004971.initial_effect(c)
 	c:RegisterEffect(e4)
 	--equip
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(60004971,0))
 	e5:SetCategory(CATEGORY_EQUIP)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_SZONE)

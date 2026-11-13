@@ -20,6 +20,7 @@ function c46358784.initial_effect(c)
 	c:RegisterEffect(e2)
 	--position
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(46358784,1))
 	e3:SetCategory(CATEGORY_POSITION)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

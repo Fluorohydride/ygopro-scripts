@@ -2,6 +2,7 @@
 function c81119816.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(81119816,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BE_MATERIAL)

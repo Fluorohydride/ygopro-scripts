@@ -2,6 +2,7 @@
 function c65899613.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(65899613,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -12,6 +13,7 @@ function c65899613.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(65899613,1))
 	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)

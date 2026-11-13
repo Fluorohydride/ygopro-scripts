@@ -7,6 +7,7 @@ function c15758127.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand/spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(15758127,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)

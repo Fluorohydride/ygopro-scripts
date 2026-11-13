@@ -4,6 +4,7 @@ function c96708940.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--on attack
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(96708940,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)
 	e1:SetRange(LOCATION_PZONE)

@@ -31,6 +31,7 @@ function c34137269.initial_effect(c)
 	c:RegisterEffect(e5)
 	--LP
 	local e6=Effect.CreateEffect(c)
+	e6:SetDescription(aux.Stringid(34137269,1))
 	e6:SetCategory(CATEGORY_DAMAGE)
 	e6:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)

@@ -4,6 +4,7 @@ function c31178212.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--tohand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(31178212,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

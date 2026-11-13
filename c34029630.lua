@@ -10,6 +10,7 @@ function c34029630.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Activate
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(34029630,4))
 	e2:SetCategory(CATEGORY_COUNTER)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)

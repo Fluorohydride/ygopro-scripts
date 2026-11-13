@@ -2,6 +2,7 @@
 function c66947913.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(66947913,2))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -32,6 +33,7 @@ function c66947913.initial_effect(c)
 	c:RegisterEffect(e4)
 	--remove
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(66947913,1))
 	e5:SetCategory(CATEGORY_REMOVE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)

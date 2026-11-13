@@ -13,6 +13,7 @@ function c89743495.initial_effect(c)
 	c:RegisterEffect(e1)
 	--half attack
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(89743495,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)

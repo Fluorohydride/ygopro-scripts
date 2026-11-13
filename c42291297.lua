@@ -32,6 +32,7 @@ function c42291297.initial_effect(c)
 	c:RegisterEffect(e4)
 	--ep effects
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(42291297,2))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_PHASE+PHASE_END)

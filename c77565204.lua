@@ -2,12 +2,14 @@
 function c77565204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(77565204,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c77565204.reg)
 	c:RegisterEffect(e1)
 	--Turn 1
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(77565204,0))
 	e2:SetCategory(CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)

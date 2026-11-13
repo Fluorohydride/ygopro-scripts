@@ -2,6 +2,7 @@
 function c24348804.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(24348804,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_SPSUMMON)
@@ -11,6 +12,7 @@ function c24348804.initial_effect(c)
 	c:RegisterEffect(e1)
 	--pos
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(24348804,1))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

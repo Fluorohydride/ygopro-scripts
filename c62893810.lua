@@ -2,6 +2,7 @@
 function c62893810.initial_effect(c)
 	--dice
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(62893810,0))
 	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO+CATEGORY_DICE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

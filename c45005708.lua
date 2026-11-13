@@ -4,6 +4,7 @@ function c45005708.initial_effect(c)
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)
 	--control or special summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(45005708,1))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)

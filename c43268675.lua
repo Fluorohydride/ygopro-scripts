@@ -11,6 +11,7 @@ function c43268675.initial_effect(c)
 	c:RegisterEffect(e2)
 	--indes
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(43268675,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BE_MATERIAL)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)

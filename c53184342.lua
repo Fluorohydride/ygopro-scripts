@@ -24,6 +24,7 @@ function c53184342.initial_effect(c)
 	c:RegisterEffect(e2)
 	--equip
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(53184342,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)
 	e3:SetCountLimit(1,53184344)

@@ -22,6 +22,7 @@ function c31817415.initial_effect(c)
 	c:RegisterEffect(e1)
 	--get effect
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(31817415,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
 	e2:SetCondition(c31817415.regcon)

@@ -2,6 +2,7 @@
 function c35884610.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(35884610,4))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -43,6 +44,7 @@ function c35884610.initial_effect(c)
 	c:RegisterEffect(e6)
 	--remove
 	local e7=Effect.CreateEffect(c)
+	e7:SetDescription(aux.Stringid(35884610,2))
 	e7:SetCategory(CATEGORY_REMOVE)
 	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e7:SetRange(LOCATION_SZONE)

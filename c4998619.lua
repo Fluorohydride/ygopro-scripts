@@ -25,6 +25,7 @@ function c4998619.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Special Summon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(4998619,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
