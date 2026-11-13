@@ -7,7 +7,7 @@ function c41418852.initial_effect(c)
 	c:RegisterEffect(e0)
 	--copy
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(41418852,1))
+	e1:SetDescription(aux.Stringid(41418852,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_FZONE)
 	e1:SetCountLimit(1,41418852)

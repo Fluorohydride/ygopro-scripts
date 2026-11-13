@@ -98,7 +98,7 @@ function c45014450.copyop(e,tp,eg,ep,ev,re,r,rp)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
 			local cid=c:CopyEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,1)
 			local e3=Effect.CreateEffect(c)
-			e3:SetDescription(aux.Stringid(45014450,2))
+			e3:SetDescription(aux.Stringid(45014450,3))
 			e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e3:SetCode(EVENT_PHASE+PHASE_END)
 			e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

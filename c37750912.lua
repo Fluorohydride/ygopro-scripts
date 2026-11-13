@@ -13,7 +13,7 @@ function c37750912.initial_effect(c)
 	c:RegisterEffect(e1)
 	--increase / decrease
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(37750912,0))
+	e2:SetDescription(aux.Stringid(37750912,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
