@@ -5,7 +5,7 @@ function c28346136.initial_effect(c)
 	c:EnableReviveLimit()
 	--CANNOT be tg
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(28346136,1))
+	e1:SetDescription(aux.Stringid(28346136,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCost(c28346136.cost)

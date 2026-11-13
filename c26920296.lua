@@ -21,7 +21,7 @@ function c26920296.initial_effect(c)
 	c:RegisterEffect(e2)
 	--lv
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(26920296,1))
+	e3:SetDescription(aux.Stringid(26920296,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetRange(LOCATION_FZONE)
