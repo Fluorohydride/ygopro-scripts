@@ -67,7 +67,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if bit.band(att,ATTRIBUTE_LIGHT)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(52709508,1))
+		e1:SetDescription(aux.Stringid(52709508,0))
 		e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_MSET)
 		e1:SetType(EFFECT_TYPE_IGNITION)
 		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

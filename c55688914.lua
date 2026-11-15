@@ -30,7 +30,7 @@ function c55688914.initial_effect(c)
 	c:RegisterEffect(e2)
 	--show earth and dark for atk up
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(55688914,2))
+	e3:SetDescription(aux.Stringid(55688914,0))
 	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

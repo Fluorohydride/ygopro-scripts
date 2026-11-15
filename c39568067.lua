@@ -18,7 +18,7 @@ function c39568067.initial_effect(c)
 	c:RegisterEffect(e1)
 	--equip
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(39568067,2))
+	e2:SetDescription(aux.Stringid(39568067,1))
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)

@@ -20,7 +20,7 @@ function c39512984.initial_effect(c)
 	c:RegisterEffect(e2)
 	--copy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(39512984,0))
+	e3:SetDescription(aux.Stringid(39512984,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)
 	e3:SetRange(LOCATION_MZONE)

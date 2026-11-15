@@ -29,7 +29,7 @@ function c99585850.initial_effect(c)
 	c:RegisterEffect(e3)
 	--remove
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(99585850,0))
+	e4:SetDescription(aux.Stringid(99585850,2))
 	e4:SetCategory(CATEGORY_REMOVE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)

@@ -26,7 +26,7 @@ function c81788994.initial_effect(c)
 	c:RegisterEffect(e3)
 	--
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(81788994,2))
+	e4:SetDescription(aux.Stringid(81788994,0))
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e4:SetRange(LOCATION_FZONE)

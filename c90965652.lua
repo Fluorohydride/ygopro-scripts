@@ -13,7 +13,7 @@ function c90965652.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(90965652,3))
+	e2:SetDescription(aux.Stringid(90965652,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

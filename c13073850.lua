@@ -23,7 +23,7 @@ function c13073850.initial_effect(c)
 	c:RegisterEffect(e3)
 	--summon with no tribute
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(13073850,2))
+	e4:SetDescription(aux.Stringid(13073850,0))
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_SUMMON_PROC)
 	e4:SetCondition(c13073850.ntcon)

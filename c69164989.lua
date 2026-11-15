@@ -12,7 +12,7 @@ function c69164989.initial_effect(c)
 	c:RegisterEffect(e1)
 	--cost
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(69164989,1))
+	e2:SetDescription(aux.Stringid(69164989,0))
 	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_FREE_CHAIN)

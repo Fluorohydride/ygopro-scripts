@@ -43,7 +43,7 @@ function c11881272.initial_effect(c)
 	c:RegisterEffect(e5)
 	--chain atk
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(11881272,1))
+	e6:SetDescription(aux.Stringid(11881272,2))
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_BATTLE_DESTROYING)
 	e6:SetRange(LOCATION_SZONE)

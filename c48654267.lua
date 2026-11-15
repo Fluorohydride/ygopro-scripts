@@ -18,7 +18,7 @@ function c48654267.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(48654267,1))
+	e2:SetDescription(aux.Stringid(48654267,2))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

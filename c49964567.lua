@@ -2,7 +2,7 @@
 function c49964567.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(49964567,1))
+	e1:SetDescription(aux.Stringid(49964567,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -51,7 +51,7 @@ function c49964567.indop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(g)
 		if Duel.SendtoGrave(sc,REASON_EFFECT)~=0 and sc:IsLocation(LOCATION_GRAVE) and tc:IsRelateToEffect(e) then
 			local e1=Effect.CreateEffect(c)
-			e1:SetDescription(aux.Stringid(49964567,0))
+			e1:SetDescription(aux.Stringid(49964567,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CLIENT_HINT)
 			e1:SetCode(EFFECT_INDESTRUCTABLE_COUNT)

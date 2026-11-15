@@ -4,7 +4,7 @@ function c37256334.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--defup
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(37256334,1))
+	e1:SetDescription(aux.Stringid(37256334,0))
 	e1:SetCategory(CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

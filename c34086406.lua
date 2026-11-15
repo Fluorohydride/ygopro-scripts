@@ -16,7 +16,7 @@ function c34086406.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck top
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(34086406,2))
+	e2:SetDescription(aux.Stringid(34086406,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)

@@ -23,7 +23,7 @@ function c50793215.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to deck
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(50793215,0))
+	e3:SetDescription(aux.Stringid(50793215,2))
 	e3:SetCategory(CATEGORY_TODECK)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

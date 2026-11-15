@@ -7,7 +7,7 @@ function c75690317.initial_effect(c)
 	c:RegisterEffect(e1)
 	--position change
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(75690317,2))
+	e2:SetDescription(aux.Stringid(75690317,1))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)

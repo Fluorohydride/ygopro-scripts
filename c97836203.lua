@@ -32,7 +32,7 @@ function c97836203.initial_effect(c)
 	c:RegisterEffect(e4)
 	--Special Summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(97836203,3))
+	e5:SetDescription(aux.Stringid(97836203,1))
 	e5:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)

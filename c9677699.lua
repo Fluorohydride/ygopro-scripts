@@ -24,7 +24,7 @@ function c9677699.initial_effect(c)
 	c:RegisterEffect(e3)
 	--equip
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(9677699,0))
+	e4:SetDescription(aux.Stringid(9677699,1))
 	e4:SetCategory(CATEGORY_EQUIP)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY)

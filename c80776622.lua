@@ -28,7 +28,7 @@ function c80776622.initial_effect(c)
 	c:RegisterEffect(e3)
 	--disable
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(80776622,0))
+	e4:SetDescription(aux.Stringid(80776622,2))
 	e4:SetCategory(CATEGORY_DISABLE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)

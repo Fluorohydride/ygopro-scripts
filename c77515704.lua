@@ -19,7 +19,7 @@ function c77515704.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(77515704,1))
+	e4:SetDescription(aux.Stringid(77515704,0))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)

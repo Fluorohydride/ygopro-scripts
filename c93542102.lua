@@ -13,7 +13,7 @@ function c93542102.initial_effect(c)
 	c:RegisterEffect(e1)
 	--confirm
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(93542102,1))
+	e2:SetDescription(aux.Stringid(93542102,0))
 	e2:SetCategory(CATEGORY_DICE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)

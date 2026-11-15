@@ -31,7 +31,7 @@ function c60222213.initial_effect(c)
 	c:RegisterEffect(e5)
 	--LP
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(60222213,1))
+	e6:SetDescription(aux.Stringid(60222213,2))
 	e6:SetCategory(CATEGORY_DAMAGE)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_PHASE+PHASE_BATTLE)

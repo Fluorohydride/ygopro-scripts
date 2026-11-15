@@ -2,7 +2,7 @@
 function c30907810.initial_effect(c)
 	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(30907810,2))
+	e1:SetDescription(aux.Stringid(30907810,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
@@ -12,7 +12,7 @@ function c30907810.initial_effect(c)
 	c:RegisterEffect(e1)
 	--activate from hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(30907810,0))
+	e3:SetDescription(aux.Stringid(30907810,2))
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e3:SetRange(LOCATION_MZONE)

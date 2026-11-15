@@ -41,7 +41,7 @@ function c7733560.initial_effect(c)
 	c:RegisterEffect(e6)
 	--to deck
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(7733560,1))
+	e7:SetDescription(aux.Stringid(7733560,3))
 	e7:SetCategory(CATEGORY_TODECK)
 	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e7:SetCode(EVENT_PHASE+PHASE_STANDBY)

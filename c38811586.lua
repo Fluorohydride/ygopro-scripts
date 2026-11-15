@@ -20,7 +20,7 @@ function c38811586.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon grave 2
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(38811586,0))
+	e3:SetDescription(aux.Stringid(38811586,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

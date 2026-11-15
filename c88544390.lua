@@ -16,7 +16,7 @@ function c88544390.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetDescription(aux.Stringid(88544390,0))
+	e2:SetDescription(aux.Stringid(88544390,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,88544391)

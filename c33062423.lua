@@ -46,7 +46,7 @@ function c33062423.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct==3 then
 		tc:RegisterFlagEffect(33062423,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,0,1)
 		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(aux.Stringid(33062423,1))
+		e3:SetDescription(aux.Stringid(33062423,0))
 		e3:SetCategory(CATEGORY_DESTROY)
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e3:SetCode(EVENT_BATTLED)

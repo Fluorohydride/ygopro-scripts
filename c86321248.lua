@@ -60,7 +60,7 @@ function c86321248.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if bit.band(flag,0x4)~=0 then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(86321248,1))
+		e1:SetDescription(aux.Stringid(86321248,0))
 		e1:SetCategory(CATEGORY_DAMAGE)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)

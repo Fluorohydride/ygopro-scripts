@@ -36,7 +36,7 @@ function c24151924.initial_effect(c)
 	c:RegisterEffect(e4)
 	--disable
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(24151924,1))
+	e5:SetDescription(aux.Stringid(24151924,3))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_DESTROYED)

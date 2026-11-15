@@ -17,7 +17,7 @@ function c61728808.initial_effect(c)
 	c:RegisterEffect(e1)
 	--(2) Destroy and Special Summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(61728808,1))
+	e2:SetDescription(aux.Stringid(61728808,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)

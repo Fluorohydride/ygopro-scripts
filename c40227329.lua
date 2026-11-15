@@ -46,7 +46,7 @@ function c40227329.initial_effect(c)
 	c:RegisterEffect(e6)
 	--reduce tribute
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(40227329,1))
+	e7:SetDescription(aux.Stringid(40227329,4))
 	e7:SetType(EFFECT_TYPE_FIELD)
 	e7:SetTargetRange(LOCATION_HAND,0)
 	e7:SetCode(EFFECT_SUMMON_PROC)

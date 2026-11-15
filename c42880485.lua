@@ -37,7 +37,7 @@ function c42880485.initial_effect(c)
 	c:RegisterEffect(e5)
 	--normal summon with 1 tribute
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(42880485,4))
+	e6:SetDescription(aux.Stringid(42880485,0))
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e6:SetType(EFFECT_TYPE_SINGLE)
 	e6:SetCode(EFFECT_SUMMON_PROC)

@@ -29,7 +29,7 @@ function c30864377.initial_effect(c)
 	c:RegisterEffect(e4)
 	--special summon
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(30864377,4))
+	e6:SetDescription(aux.Stringid(30864377,1))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_PHASE+PHASE_BATTLE)

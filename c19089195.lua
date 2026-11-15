@@ -8,7 +8,7 @@ function c19089195.initial_effect(c)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(19089195,1))
+	e2:SetDescription(aux.Stringid(19089195,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)

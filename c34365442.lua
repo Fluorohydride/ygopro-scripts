@@ -7,7 +7,7 @@ function c34365442.initial_effect(c)
 	c:RegisterEffect(e0)
 	--attack
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(34365442,1))
+	e1:SetDescription(aux.Stringid(34365442,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)

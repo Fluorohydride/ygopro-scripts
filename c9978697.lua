@@ -102,7 +102,7 @@ function s.eaop(e,tp,eg,ep,ev,re,r,rp)
 		local op=Duel.SelectOption(tp,aux.Stringid(id,2),aux.Stringid(id,3))
 		if op==0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(id,1))
+			e1:SetDescription(aux.Stringid(id,4))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_EXTRA_ATTACK)
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)

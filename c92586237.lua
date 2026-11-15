@@ -24,7 +24,7 @@ function c92586237.initial_effect(c)
 	c:RegisterEffect(e2)
 	--tograve
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(92586237,2))
+	e3:SetDescription(aux.Stringid(92586237,0))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
