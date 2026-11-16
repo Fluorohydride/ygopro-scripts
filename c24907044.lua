@@ -16,7 +16,7 @@ function c24907044.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=e1:Clone()
-	e2:SetDescription(aux.Stringid(24907044,1))
+	e2:SetDescription(aux.Stringid(24907044,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetTarget(c24907044.thtg)
 	e2:SetOperation(c24907044.thop)

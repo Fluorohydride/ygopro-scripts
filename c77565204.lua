@@ -2,7 +2,7 @@
 function c77565204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(77565204,2))
+	e1:SetDescription(aux.Stringid(77565204,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c77565204.reg)

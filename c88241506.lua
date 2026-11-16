@@ -3,7 +3,7 @@ function c88241506.initial_effect(c)
 	aux.AddCodeList(c,89631139)
 	--negate attack
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(88241506,0))
+	e1:SetDescription(aux.Stringid(88241506,1))
 	e1:SetCategory(CATEGORY_POSITION+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)

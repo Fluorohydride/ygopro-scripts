@@ -64,7 +64,7 @@ function c16313112.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(16313112,1))
+		e1:SetDescription(aux.Stringid(16313112,2))
 		e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_BATTLE_START)

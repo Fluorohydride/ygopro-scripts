@@ -18,7 +18,7 @@ function c4810585.initial_effect(c)
 	c:RegisterEffect(e1)
 	--can not be attack target
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(4810585,0))
+	e2:SetDescription(aux.Stringid(4810585,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e2:SetRange(LOCATION_SZONE)

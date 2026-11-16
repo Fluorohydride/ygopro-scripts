@@ -38,7 +38,7 @@ function c63092423.initial_effect(c)
 	c:RegisterEffect(e4)
 	--counter
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(63092423,2))
+	e5:SetDescription(aux.Stringid(63092423,0))
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e5:SetRange(LOCATION_MZONE)

@@ -4,7 +4,7 @@ function c67754901.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(67754901,0))
+	e1:SetDescription(aux.Stringid(67754901,1))
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)

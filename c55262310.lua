@@ -14,7 +14,7 @@ function c55262310.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(55262310,0))
+	e2:SetDescription(aux.Stringid(55262310,1))
 	e2:SetCategory(CATEGORY_POSITION+CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

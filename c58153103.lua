@@ -52,7 +52,7 @@ function c58153103.regop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e4)
 	--destroy2
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(58153103,0))
+	e5:SetDescription(aux.Stringid(58153103,1))
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)
