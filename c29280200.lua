@@ -31,7 +31,7 @@ function c29280200.initial_effect(c)
 	c:RegisterEffect(e3)
 	--show earth and dark for rtohand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(29280200,0))
+	e4:SetDescription(aux.Stringid(29280200,2))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

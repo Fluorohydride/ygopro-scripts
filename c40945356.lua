@@ -14,7 +14,7 @@ function c40945356.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(40945356,0))
+	e2:SetDescription(aux.Stringid(40945356,1))
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

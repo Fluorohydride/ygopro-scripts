@@ -28,7 +28,7 @@ function c77498348.initial_effect(c)
 	e3:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
-	e4:SetDescription(aux.Stringid(77498348,2))
+	e4:SetDescription(aux.Stringid(77498348,1))
 	e4:SetLabel(ATTRIBUTE_DARK)
 	c:RegisterEffect(e4)
 	--remove

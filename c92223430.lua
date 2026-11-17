@@ -19,7 +19,7 @@ function c92223430.initial_effect(c)
 	c:RegisterEffect(e5)
 	--decrease tribute
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(92223430,1))
+	e3:SetDescription(aux.Stringid(92223430,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCountLimit(1,92223430)

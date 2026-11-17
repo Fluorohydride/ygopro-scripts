@@ -12,7 +12,7 @@ function c23068051.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Activate2
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(23068051,0))
+	e2:SetDescription(aux.Stringid(23068051,1))
 	e2:SetCategory(CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

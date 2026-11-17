@@ -25,7 +25,7 @@ function c66401502.initial_effect(c)
 	c:RegisterEffect(e2)
 	--show earth and fire for destroy
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(66401502,1))
+	e3:SetDescription(aux.Stringid(66401502,2))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

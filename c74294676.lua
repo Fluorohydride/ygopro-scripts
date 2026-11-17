@@ -18,7 +18,7 @@ function c74294676.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(74294676,0))
+	e2:SetDescription(aux.Stringid(74294676,1))
 	e2:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)

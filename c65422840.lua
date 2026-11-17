@@ -14,7 +14,7 @@ function c65422840.initial_effect(c)
 	c:RegisterEffect(e1)
 	--todeck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(65422840,0))
+	e2:SetDescription(aux.Stringid(65422840,1))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCategory(CATEGORY_TODECK)
 	e2:SetRange(LOCATION_MZONE)

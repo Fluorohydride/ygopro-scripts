@@ -13,7 +13,7 @@ function c69757518.initial_effect(c)
 	c:RegisterEffect(e1)
 	--chain attack
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(69757518,1))
+	e2:SetDescription(aux.Stringid(69757518,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
 	e2:SetCondition(c69757518.atcon)
