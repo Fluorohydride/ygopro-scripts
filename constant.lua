@@ -615,6 +615,7 @@ EFFECT_ADD_CARD_TYPE			=377	--增加卡片种类（当作通常怪兽与当作�
 EFFECT_REMOVE_CARD_TYPE			=378	--删除卡片种类
 EFFECT_CHANGE_CARD_TYPE			=379	--改变卡片种类
 EFFECT_OPPO_SELECT_SPSUMMON_ZONE	=380	--特殊召唤到的区域改为对手选择
+EFFECT_SYNCHRO_MATERIAL_REQUIRE	=381	--同调素材必须包含特定卡
 EFFECT_FLAG_EFFECT				=0x20000000	--标记类效果，即RegisterFlagEffect()创建的效果
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）

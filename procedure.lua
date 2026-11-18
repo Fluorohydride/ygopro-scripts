@@ -2280,9 +2280,10 @@ function Auxiliary.MustMaterialCounterFilter(c,g)
 end
 
 --Synchro Summon must use a monster that meets f as material (リペア・ジェネクス・コントローラー)
-EFFECT_SYNCHRO_MATERIAL_REQUIRE=8173184
+
 --requirements of each player cached during SynMix material checks; non-nil also lifts the material limit fallback
 Auxiliary.SynchroRequireState={}
+
 ---@param c Card
 ---@param tp integer
 ---@param f fun(c:Card):boolean
