@@ -36,7 +36,7 @@ end
 function s.filter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_MONSTER)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
-		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
+		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsFaceupEx()
 end
 function s.atkfilter(c)
 	return c:IsType(TYPE_TUNER) and c:IsFaceup()
