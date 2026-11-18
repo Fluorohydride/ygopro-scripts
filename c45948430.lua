@@ -31,7 +31,8 @@ function c45948430.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c45948430.check(g)
-	return aux.dabcheck(g) and g:GetClassCount(Card.GetLocation)==#g and g:GetSum(Card.GetLevel)==8
+	--属性各1只：保持原判定
+	return g:GetClassCount(Card.GetAttribute)==#g and g:GetClassCount(Card.GetLocation)==#g and g:GetSum(Card.GetLevel)==8
 end
 function c45948430.mfilter(c,rc)
 	return c:IsLevelBelow(7) and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK) and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc)

@@ -29,13 +29,13 @@ function s.thfilter(c)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
-	if chk==0 then return g:GetClassCount(Card.GetAttribute)>=4 end
+	if chk==0 then return g:CheckSubGroup(aux.dabcheck,4,4) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,4,tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,2,tp,LOCATION_HAND)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
-	if g:GetClassCount(Card.GetAttribute)<4 then return end
+	if not g:CheckSubGroup(aux.dabcheck,4,4) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,4,4)
 	if Duel.SendtoHand(sg,nil,REASON_EFFECT)>0 then
