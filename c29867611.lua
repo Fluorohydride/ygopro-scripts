@@ -26,7 +26,6 @@ function c29867611.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(c29867611.desrepcon)
 	e3:SetTarget(c29867611.desreptg)
-	e3:SetValue(c29867611.desrepval)
 	e3:SetOperation(c29867611.desrepop)
 	c:RegisterEffect(e3)
 	--atk down
@@ -110,9 +109,6 @@ function c29867611.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ec and ec:IsReason(REASON_BATTLE+REASON_EFFECT) and not ec:IsReason(REASON_REPLACE)
 		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED) end
 	return Duel.SelectEffectYesNo(tp,c,96)
-end
-function c29867611.desrepval(e,c)
-	return c29867611.repfilter(c,e:GetHandlerPlayer())
 end
 function c29867611.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
