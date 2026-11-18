@@ -11,30 +11,38 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lv up
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_SUMMON_SUCCESS)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_UPDATE_LEVEL)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetProperty(EFFECT_FLAG_DELAY)
-	e2:SetCondition(s.lvcon)
-	e2:SetOperation(s.lvop)
+	e2:SetTargetRange(0,LOCATION_MZONE)
+	e2:SetTarget(s.lvfilter)
+	e2:SetValue(7)
 	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	--record
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_SUMMON_SUCCESS)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCondition(s.lvcon)
+	e3:SetOperation(s.lvop)
 	c:RegisterEffect(e3)
-	--negate
-	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(id,2))
-	e4:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
-	e4:SetType(EFFECT_TYPE_QUICK_O)
-	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
-	e4:SetCode(EVENT_CHAINING)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetCountLimit(1,id)
-	e4:SetCondition(s.negcon)
-	e4:SetCost(s.negcost)
-	e4:SetTarget(s.negtg)
-	e4:SetOperation(s.negop)
+	local e4=e3:Clone()
+	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e4)
+	--negate
+	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(id,2))
+	e5:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
+	e5:SetType(EFFECT_TYPE_QUICK_O)
+	e5:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
+	e5:SetCode(EVENT_CHAINING)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetCountLimit(1,id)
+	e5:SetCondition(s.negcon)
+	e5:SetCost(s.negcost)
+	e5:SetTarget(s.negtg)
+	e5:SetOperation(s.negop)
+	c:RegisterEffect(e5)
 end
 function s.cfilter(c)
 	return c:IsFaceup() and c:GetOriginalType()&TYPE_MONSTER==TYPE_MONSTER
@@ -52,18 +60,23 @@ end
 function s.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.lvcfilter,1,nil,1-tp) and not eg:IsContains(e:GetHandler())
 end
-function s.lvop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(s.lvcfilter,nil,1-tp)
-	if g:GetCount()>0 then
-		Duel.Hint(HINT_CARD,0,id)
-		for tc in aux.Next(g) do
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_LEVEL)
-			e1:SetValue(7)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e1)
+function s.lvfilter(e,c)
+	local fid=c:GetRealFieldID()
+	local labels={e:GetHandler():GetFlagEffectLabel(id)}
+	for i=1,#labels do
+		if labels[i]==fid then
+			return true
 		end
+	end
+	return false
+end
+function s.lvop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local g=eg:Filter(s.lvcfilter,nil,1-tp)
+	if g:GetCount()==0 then return end
+	Duel.Hint(HINT_CARD,0,id)
+	for tc in aux.Next(g) do
+		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,0,tc:GetRealFieldID())
 	end
 end
 function s.negcon(e,tp,eg,ep,ev,re,r,rp)
