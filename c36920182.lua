@@ -32,7 +32,7 @@ function s.gcheck(g)
 end
 function s.synfilter(c,e,tp,g)
 	return c:IsSetCard(0x198) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
-		and (g==nil or Duel.GetLocationCountFromEx(tp,tp,g,c)>0) and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
+		and (g==nil or Duel.GetLocationCountFromEx(tp,tp,g,c)>0)
 end
 function s.tdfilter(c)
 	return (s.tdfilter1(c) or s.tdfilter2(c)) and c:IsFaceupEx() and c:IsAbleToDeck()
@@ -43,7 +43,8 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 and b1 then return true end
 	local g=Duel.GetMatchingGroup(s.tdfilter,tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
 	aux.GCheckAdditional=s.gcheck
-	local b2=Duel.IsExistingMatchingCard(s.synfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
+	local b2=aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
+		and Duel.IsExistingMatchingCard(s.synfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
 		and g:CheckSubGroup(s.tdcheck,5,5,e,tp)
 	aux.GCheckAdditional=nil
 	if chk==0 then return b1 or b2 end
@@ -73,6 +74,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	else
+		if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(s.tdfilter),tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,0,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local sg=g:SelectSubGroup(tp,s.tdcheck,false,5,5,e,tp)
