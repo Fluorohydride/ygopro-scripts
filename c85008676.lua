@@ -35,7 +35,7 @@ function c85008676.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c85008676.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetBattleDamage(tp)>0 and Duel.GetAttacker()~=tp
+	return Duel.GetBattleDamage(tp)>0 and Duel.GetAttacker():IsControler(1-tp)
 end
 function c85008676.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
