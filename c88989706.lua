@@ -20,7 +20,7 @@ function c88989706.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(88989706,0))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES+CATEGORY_DECK_SPSUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c88989706.spcon)
