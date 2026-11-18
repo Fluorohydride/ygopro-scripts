@@ -1,5 +1,6 @@
 --エマージェンシー・サイバー
 function c60600126.initial_effect(c)
+	aux.AddCodeList(c,70095154)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

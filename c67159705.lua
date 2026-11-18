@@ -1,6 +1,7 @@
 --アーマード・サイバーン
 function c67159705.initial_effect(c)
 	aux.EnableUnionAttribute(c,c67159705.filter)
+	aux.AddCodeList(c,70095154)
 	--destroy
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(67159705,2))
