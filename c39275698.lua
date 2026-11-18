@@ -1,6 +1,6 @@
 --ハーピィの羽根休め
 function c39275698.initial_effect(c)
-	aux.AddCodeList(c,12206212)
+	aux.AddCodeList(c,76812113,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

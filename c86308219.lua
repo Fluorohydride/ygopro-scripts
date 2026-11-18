@@ -1,6 +1,6 @@
 --ハーピィ・レディ －鳳凰の陣－
 function c86308219.initial_effect(c)
-	aux.AddCodeList(c,12206212)
+	aux.AddCodeList(c,76812113,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
