@@ -179,128 +179,133 @@ function Auxiliary.GetSynMaterials(tp,syncard)
 	return mg
 end
 function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
-	--check the materials with the synchro material requirements cached (see Auxiliary.SynchroRequireCall)
-	local condition=function(e,c,smat,mg1,min,max)
-		if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-		local minc=minct
-		local maxc=maxct
-		if min then
-			local exct=0
-			if f2 then exct=exct+1 end
-			if f3 then exct=exct+1 end
-			if min-exct>minc then minc=min-exct end
-			if max-exct<maxc then maxc=max-exct end
-			if minc>maxc then return false end
-		end
-		local tp=c:GetControler()
-		if smat and not smat:IsCanBeSynchroMaterial(c) then return false end
-		local mg
-		local mgchk=false
-		local goalchk=false
-		if mg1 then
-			mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
-			mgchk=true
-			if min and min==max and #mg==#mg1 and #mg==min+1 then
-				goalchk=Auxiliary.SynMixCheckGoal(tp,mg,0,0,c,Group.CreateGroup(),smat,gc,mgchk,goalchk)
-				if not goalchk then return false end
-			end
-		else
-			mg=Auxiliary.GetSynMaterials(tp,c)
-		end
-		if smat~=nil then mg:AddCard(smat) end
-		if not Auxiliary.SynchroRequireCheck(tp,mg) then return false end
-		return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk)
-	end
 	return	function(e,c,smat,mg1,min,max)
 				if c==nil then return true end
-				return Auxiliary.SynchroRequireCall(c:GetControler(),condition,e,c,smat,mg1,min,max)
+				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+				local minc=minct
+				local maxc=maxct
+				if min then
+					local exct=0
+					if f2 then exct=exct+1 end
+					if f3 then exct=exct+1 end
+					if min-exct>minc then minc=min-exct end
+					if max-exct<maxc then maxc=max-exct end
+					if minc>maxc then return false end
+				end
+				local tp=c:GetControler()
+				Auxiliary.SynchroRequireState[tp]={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_MATERIAL_REQUIRE)}
+				if smat and not smat:IsCanBeSynchroMaterial(c) then
+					Auxiliary.SynchroRequireState[tp]=nil
+					return false
+				end
+				local mg
+				local mgchk=false
+				local goalchk=false
+				if mg1 then
+					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
+					mgchk=true
+					if min and min==max and #mg==#mg1 and #mg==min+1 then
+						goalchk=Auxiliary.SynMixCheckGoal(tp,mg,0,0,c,Group.CreateGroup(),smat,gc,mgchk,goalchk)
+						if not goalchk then
+							Auxiliary.SynchroRequireState[tp]=nil
+							return false
+						end
+					end
+				else
+					mg=Auxiliary.GetSynMaterials(tp,c)
+				end
+				if smat~=nil then mg:AddCard(smat) end
+				local res=Auxiliary.SynchroRequireCheck(tp,mg)
+					and mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk)
+				Auxiliary.SynchroRequireState[tp]=nil
+				return res
 			end
 end
 function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
-	--select the materials with the synchro material requirements cached (see Auxiliary.SynchroRequireCall)
-	local target=function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg1,min,max)
-		local minc=minct
-		local maxc=maxct
-		if min then
-			local exct=0
-			if f2 then exct=exct+1 end
-			if f3 then exct=exct+1 end
-			if min-exct>minc then minc=min-exct end
-			if max-exct<maxc then maxc=max-exct end
-			if minc>maxc then return false end
-		end
-		::SynMixTargetSelectStart::
-		local cancel=Duel.IsSummonCancelable()
-		local g=Group.CreateGroup()
-		local mg
-		local mgchk=false
-		local goalchk=false
-		if mg1 then
-			mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
-			mgchk=true
-			if min and min==max and #mg==#mg1 and #mg==min+1 and not cancel then
-				g:Merge(mg)
-				g:KeepAlive()
-				e:SetLabelObject(g)
-				return true
-			end
-		else
-			mg=Auxiliary.GetSynMaterials(tp,c)
-		end
-		if smat~=nil then mg:AddCard(smat) end
-		local c1
-		local c2
-		local c3
-		local g4=Group.CreateGroup()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
-		if not c1 then goto SynMixTargetSelectCancel end
-		g:AddCard(c1)
-		if f2 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-			c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
-			if not c2 then goto SynMixTargetSelectCancel end
-			if g:IsContains(c2) then goto SynMixTargetSelectStart end
-			g:AddCard(c2)
-			if f3 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
-				if not c3 then goto SynMixTargetSelectCancel end
-				if g:IsContains(c3) then goto SynMixTargetSelectStart end
-				g:AddCard(c3)
-			end
-		end
-		for i=0,maxc-1 do
-			local mg2=mg:Clone()
-			if f4 then
-				mg2=mg2:Filter(f4,g,c,c1,c2,c3)
-			else
-				mg2:Sub(g)
-			end
-			local fulltraversal=mg:IsExists(Card.IsHasEffect,1,nil,89818984)
-			local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk,goalchk,fulltraversal)
-			if cg:GetCount()==0 then break end
-			local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk,goalchk)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-			local c4=cg:SelectUnselect(g+g4,tp,finish,cancel,minc,maxc)
-			if not c4 then
-				if finish then break
-				else goto SynMixTargetSelectCancel end
-			end
-			if g:IsContains(c4) or g4:IsContains(c4) then goto SynMixTargetSelectStart end
-			g4:AddCard(c4)
-		end
-		g:Merge(g4)
-		if g:GetCount()>0 then
-			g:KeepAlive()
-			e:SetLabelObject(g)
-			return true
-		end
-		::SynMixTargetSelectCancel::
-		return false
-	end
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg1,min,max)
-				return Auxiliary.SynchroRequireCall(tp,target,e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg1,min,max)
+				local minc=minct
+				local maxc=maxct
+				if min then
+					local exct=0
+					if f2 then exct=exct+1 end
+					if f3 then exct=exct+1 end
+					if min-exct>minc then minc=min-exct end
+					if max-exct<maxc then maxc=max-exct end
+					if minc>maxc then return false end
+				end
+				Auxiliary.SynchroRequireState[tp]={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_MATERIAL_REQUIRE)}
+				::SynMixTargetSelectStart::
+				local cancel=Duel.IsSummonCancelable()
+				local g=Group.CreateGroup()
+				local mg
+				local mgchk=false
+				local goalchk=false
+				if mg1 then
+					mg=mg1:Filter(Card.IsCanBeSynchroMaterial,nil,c)
+					mgchk=true
+					if min and min==max and #mg==#mg1 and #mg==min+1 and not cancel then
+						g:Merge(mg)
+						g:KeepAlive()
+						e:SetLabelObject(g)
+						Auxiliary.SynchroRequireState[tp]=nil
+						return true
+					end
+				else
+					mg=Auxiliary.GetSynMaterials(tp,c)
+				end
+				if smat~=nil then mg:AddCard(smat) end
+				local c1
+				local c2
+				local c3
+				local g4=Group.CreateGroup()
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+				c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
+				if not c1 then goto SynMixTargetSelectCancel end
+				g:AddCard(c1)
+				if f2 then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+					c2=mg:Filter(Auxiliary.SynMixFilter2,g,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
+					if not c2 then goto SynMixTargetSelectCancel end
+					if g:IsContains(c2) then goto SynMixTargetSelectStart end
+					g:AddCard(c2)
+					if f3 then
+						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+						c3=mg:Filter(Auxiliary.SynMixFilter3,g,f3,f4,minc,maxc,c,mg,smat,c1,c2,gc,mgchk,goalchk):SelectUnselect(g,tp,false,cancel,1,1)
+						if not c3 then goto SynMixTargetSelectCancel end
+						if g:IsContains(c3) then goto SynMixTargetSelectStart end
+						g:AddCard(c3)
+					end
+				end
+				for i=0,maxc-1 do
+					local mg2=mg:Clone()
+					if f4 then
+						mg2=mg2:Filter(f4,g,c,c1,c2,c3)
+					else
+						mg2:Sub(g)
+					end
+					local fulltraversal=mg:IsExists(Card.IsHasEffect,1,nil,89818984)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc,mgchk,goalchk,fulltraversal)
+					if cg:GetCount()==0 then break end
+					local finish=Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc,mgchk,goalchk)
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+					local c4=cg:SelectUnselect(g+g4,tp,finish,cancel,minc,maxc)
+					if not c4 then
+						if finish then break
+						else goto SynMixTargetSelectCancel end
+					end
+					if g:IsContains(c4) or g4:IsContains(c4) then goto SynMixTargetSelectStart end
+					g4:AddCard(c4)
+				end
+				g:Merge(g4)
+				if g:GetCount()>0 then
+					g:KeepAlive()
+					e:SetLabelObject(g)
+					Auxiliary.SynchroRequireState[tp]=nil
+					return true
+				end
+				::SynMixTargetSelectCancel::
+				Auxiliary.SynchroRequireState[tp]=nil
+				return false
 			end
 end
 function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxct,gc)
@@ -2329,14 +2334,6 @@ function Auxiliary.SynchroRequireCheck(tp,g)
 		if not g or not g:IsExists(te:GetValue(),1,nil) then return false end
 	end
 	return true
-end
---call f(...) with the requirements of tp cached, which also lifts the fallback for SynMix (it checks the requirements itself)
-function Auxiliary.SynchroRequireCall(tp,f,...)
-	local old=Auxiliary.SynchroRequireState[tp]
-	Auxiliary.SynchroRequireState[tp]={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_MATERIAL_REQUIRE)}
-	local res=f(...)
-	Auxiliary.SynchroRequireState[tp]=old
-	return res
 end
 
 --Summon Condition
