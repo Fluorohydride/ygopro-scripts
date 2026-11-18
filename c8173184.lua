@@ -74,43 +74,8 @@ function s.smop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.Summon(tp,g:GetFirst(),true,nil)
 	end
-	--splimit
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetTargetRange(1,0)
-	e1:SetTarget(s.splimit)
-	e1:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e1,tp)
-	--
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
-	e2:SetProperty(EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e2:SetTarget(s.tlmtg)
-	e2:SetValue(s.tlmval)
-	e2:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e2,tp)
-	--
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(id)
-	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e3:SetTargetRange(1,0)
-	e3:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e3,tp)
+	aux.RegisterSynchroMaterialRequire(c,tp,s.tlmfilter,RESET_PHASE+PHASE_END)
 end
-function s.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsLocation(LOCATION_EXTRA) and bit.band(sumtype,SUMMON_TYPE_SYNCHRO)~=SUMMON_TYPE_SYNCHRO
-end
-function s.tlmtg(e,c)
-	return c:IsType(TYPE_TUNER) and not c:IsSetCard(0x2)
-end
-function s.tlmval(e,sync)
-	local tp=e:GetHandlerPlayer()
-	if sync:GetControler()==tp then
-		return Duel.GetFlagEffect(tp,id+1)==0
-	end
-	return false
+function s.tlmfilter(c)
+	return c:IsSetCard(0x2) and c:IsType(TYPE_TUNER)
 end
