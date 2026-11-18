@@ -70,7 +70,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 					e2:SetValue(RESET_TURN_SET)
 					e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 					nc:RegisterEffect(e2)
-					if tc:IsType(TYPE_TRAPMONSTER) then
+					if nc:IsType(TYPE_TRAPMONSTER) then
 						local e3=Effect.CreateEffect(c)
 						e3:SetType(EFFECT_TYPE_SINGLE)
 						e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
