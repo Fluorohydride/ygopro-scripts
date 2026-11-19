@@ -13,6 +13,7 @@ function c34614289.initial_effect(c)
 	c:RegisterEffect(e1)
 	--position change
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(34614289,1))
 	e2:SetCategory(CATEGORY_DISABLE+CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

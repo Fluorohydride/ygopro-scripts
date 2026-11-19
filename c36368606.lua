@@ -2,6 +2,7 @@
 function c36368606.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(36368606,0))
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
@@ -11,6 +12,7 @@ function c36368606.initial_effect(c)
 	c:RegisterEffect(e1)
 	--immune
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(36368606,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_GRAVE)

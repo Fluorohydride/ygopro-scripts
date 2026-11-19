@@ -29,7 +29,7 @@ function c2129638.initial_effect(c)
 	c:RegisterEffect(e4)
 	--remove
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(2129638,0))
+	e7:SetDescription(aux.Stringid(2129638,2))
 	e7:SetCategory(CATEGORY_REMOVE)
 	e7:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e7:SetCode(EVENT_DAMAGE_STEP_END)

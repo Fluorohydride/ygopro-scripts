@@ -15,7 +15,7 @@ function c28677304.initial_effect(c)
 	aux.EnableNeosReturn(c,c28677304.retop)
 	--disable
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(28677304,1))
+	e5:SetDescription(aux.Stringid(28677304,0))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)

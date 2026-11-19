@@ -2,6 +2,7 @@
 function c9069157.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(9069157,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,9069157)
@@ -11,6 +12,7 @@ function c9069157.initial_effect(c)
 	c:RegisterEffect(e1)
 	--race change
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(9069157,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1)

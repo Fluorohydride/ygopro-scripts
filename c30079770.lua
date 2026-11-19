@@ -3,6 +3,7 @@ function c30079770.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(30079770,1))
 	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_BATTLE)

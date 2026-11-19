@@ -21,6 +21,7 @@ function c28112535.initial_effect(c)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(28112535,2))
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetCategory(CATEGORY_DESTROY+CATEGORY_COIN)
 	e5:SetType(EFFECT_TYPE_IGNITION)

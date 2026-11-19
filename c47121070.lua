@@ -2,6 +2,7 @@
 function c47121070.initial_effect(c)
 	--to field
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(47121070,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCondition(c47121070.tfcon)

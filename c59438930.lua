@@ -2,6 +2,7 @@
 function c59438930.initial_effect(c)
 	--double
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(59438930,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)

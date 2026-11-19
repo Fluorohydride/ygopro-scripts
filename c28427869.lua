@@ -2,6 +2,7 @@
 function c28427869.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(28427869,0))
 	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
@@ -13,6 +14,7 @@ function c28427869.initial_effect(c)
 	c:RegisterEffect(e1)
 	--level change
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(28427869,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,28427870)

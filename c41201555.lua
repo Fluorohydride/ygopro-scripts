@@ -13,7 +13,7 @@ function c41201555.initial_effect(c)
 	c:RegisterEffect(e1)
 	--send to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(41201555,3))
+	e2:SetDescription(aux.Stringid(41201555,0))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)

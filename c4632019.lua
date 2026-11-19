@@ -32,7 +32,7 @@ function c4632019.efop(e,tp,eg,ep,ev,re,r,rp)
 	if lv>0 and lv<=8 then
 		--atkup
 		local e1=Effect.CreateEffect(rc)
-		e1:SetDescription(aux.Stringid(4632019,0))
+		e1:SetDescription(aux.Stringid(4632019,1))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)

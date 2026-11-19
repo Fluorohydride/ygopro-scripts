@@ -30,7 +30,7 @@ function c80959027.initial_effect(c)
 	c:RegisterEffect(e3)
 	--tohand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(80959027,1))
+	e4:SetDescription(aux.Stringid(80959027,2))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

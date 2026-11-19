@@ -33,7 +33,7 @@ function c69815951.initial_effect(c)
 	e0:SetLabelObject(e3)
 	--to grave
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(69815951,0))
+	e4:SetDescription(aux.Stringid(69815951,2))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

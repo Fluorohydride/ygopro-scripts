@@ -48,6 +48,7 @@ function c27279764.initial_effect(c)
 	c:RegisterEffect(e7)
 	--to grave
 	local e8=Effect.CreateEffect(c)
+	e8:SetDescription(aux.Stringid(27279764,2))
 	e8:SetCategory(CATEGORY_TOGRAVE)
 	e8:SetType(EFFECT_TYPE_IGNITION)
 	e8:SetRange(LOCATION_MZONE)

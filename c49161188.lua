@@ -32,7 +32,7 @@ function c49161188.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atk up
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(49161188,1))
+	e4:SetDescription(aux.Stringid(49161188,2))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_PRE_DAMAGE_CALCULATE)

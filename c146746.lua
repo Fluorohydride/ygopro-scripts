@@ -20,6 +20,7 @@ function c146746.initial_effect(c)
 	c:RegisterEffect(e1)
 	--revive
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(146746,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

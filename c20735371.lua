@@ -2,6 +2,7 @@
 function c20735371.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(20735371,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetCondition(c20735371.condition)

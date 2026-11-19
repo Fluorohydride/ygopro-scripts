@@ -16,6 +16,7 @@ function c21452275.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Recover
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(21452275,1))
 	e3:SetCategory(CATEGORY_RECOVER)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PHASE+PHASE_END)

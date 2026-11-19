@@ -11,7 +11,7 @@ function c40695128.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon success
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(40695128,1))
+	e4:SetDescription(aux.Stringid(40695128,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_SUMMON_SUCCESS)
 	e4:SetOperation(c40695128.regop)

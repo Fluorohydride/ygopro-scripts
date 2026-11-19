@@ -30,7 +30,7 @@ function c27354732.initial_effect(c)
 	c:RegisterEffect(e3)
 	--negate
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(27354732,1))
+	e4:SetDescription(aux.Stringid(27354732,2))
 	e4:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)

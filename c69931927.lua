@@ -24,7 +24,7 @@ function c69931927.initial_effect(c)
 	c:RegisterEffect(e6)
 	--damage
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(69931927,0))
+	e7:SetDescription(aux.Stringid(69931927,4))
 	e7:SetCategory(CATEGORY_DAMAGE)
 	e7:SetType(EFFECT_TYPE_IGNITION)
 	e7:SetRange(LOCATION_MZONE)

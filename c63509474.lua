@@ -18,6 +18,7 @@ function c63509474.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand or special summon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(63509474,1))
 	e3:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)

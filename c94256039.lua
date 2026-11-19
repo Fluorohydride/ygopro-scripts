@@ -22,7 +22,7 @@ function c94256039.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy&damage
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(94256039,0))
+	e4:SetDescription(aux.Stringid(94256039,1))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_CUSTOM+94256039)

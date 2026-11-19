@@ -35,6 +35,7 @@ function c15449853.initial_effect(c)
 	c:RegisterEffect(e6)
 	--to deck
 	local e7=Effect.CreateEffect(c)
+	e7:SetDescription(aux.Stringid(15449853,2))
 	e7:SetCategory(CATEGORY_TODECK)
 	e7:SetType(EFFECT_TYPE_IGNITION)
 	e7:SetRange(LOCATION_SZONE)

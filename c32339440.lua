@@ -3,7 +3,7 @@ function c32339440.initial_effect(c)
 	c:SetUniqueOnField(1,0,32339440)
 	--to hand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(32339440,0))
+	e1:SetDescription(aux.Stringid(32339440,1))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)

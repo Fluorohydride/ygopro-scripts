@@ -2,6 +2,7 @@
 function c57940938.initial_effect(c)
 	--Search
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(57940938,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -13,6 +14,7 @@ function c57940938.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(57940938,1))
 	e2:SetCategory(CATEGORY_GRAVE_ACTION)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

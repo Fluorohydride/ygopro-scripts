@@ -30,6 +30,7 @@ function c63053267.initial_effect(c)
 	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(63053267,2))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_GRAVE)

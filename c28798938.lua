@@ -14,6 +14,7 @@ function c28798938.initial_effect(c)
 	c:RegisterEffect(e0)
 	--special summon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(28798938,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
@@ -50,7 +51,7 @@ function c28798938.regop(e,tp,eg,ep,ev,re,r,rp)
 	if g:IsExists(Card.IsOriginalCodeRule,1,nil,284224) then
 		--remove
 		local e2=Effect.CreateEffect(c)
-		e2:SetDescription(aux.Stringid(28798938,2))
+		e2:SetDescription(aux.Stringid(28798938,0))
 		e2:SetCategory(CATEGORY_REMOVE)
 		e2:SetType(EFFECT_TYPE_QUICK_O)
 		e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

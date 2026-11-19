@@ -20,7 +20,7 @@ function c5126490.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage&recover
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(5126490,0))
+	e3:SetDescription(aux.Stringid(5126490,1))
 	e3:SetCategory(CATEGORY_DAMAGE+CATEGORY_RECOVER)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)

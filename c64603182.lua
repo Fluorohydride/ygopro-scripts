@@ -3,7 +3,7 @@ function c64603182.initial_effect(c)
 	aux.EnableChangeCode(c,83104731,LOCATION_MZONE+LOCATION_GRAVE)
 	--
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(64603182,0))
+	e1:SetDescription(aux.Stringid(64603182,1))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_HANDES_SELF)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)

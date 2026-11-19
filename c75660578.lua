@@ -3,7 +3,7 @@ function c75660578.initial_effect(c)
 	c:SetUniqueOnField(1,0,75660578)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(75660578,0))
+	e1:SetDescription(aux.Stringid(75660578,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

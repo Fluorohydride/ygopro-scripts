@@ -28,7 +28,7 @@ function c16958382.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to extra
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(16958382,0))
+	e3:SetDescription(aux.Stringid(16958382,1))
 	e3:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)

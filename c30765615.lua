@@ -2,6 +2,7 @@
 function c30765615.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(30765615,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -12,6 +13,7 @@ function c30765615.initial_effect(c)
 	c:RegisterEffect(e1)
 	--token
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(30765615,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)

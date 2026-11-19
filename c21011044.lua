@@ -7,6 +7,7 @@ function c21011044.initial_effect(c)
 	c:RegisterEffect(e0)
 	--fusion summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(21011044,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON+CATEGORY_REMOVE+CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)

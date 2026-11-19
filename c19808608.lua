@@ -2,6 +2,7 @@
 function c19808608.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(19808608,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)

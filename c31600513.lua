@@ -27,6 +27,7 @@ function c31600513.initial_effect(c)
 	c:RegisterEffect(e2)
 	--token 2
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(31600513,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)

@@ -2,6 +2,7 @@
 function c15800838.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(15800838,0))
 	e1:SetCategory(CATEGORY_HANDES_SELF+CATEGORY_HANDES_OPPO)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)

@@ -9,6 +9,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e0)
 	--self_destroy & set
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetRange(LOCATION_FZONE)
 	e1:SetType(EFFECT_TYPE_IGNITION)

@@ -3,6 +3,7 @@ function c44595286.initial_effect(c)
 	aux.AddCodeList(c,56433456)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(44595286,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(0,TIMING_TOHAND+TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)

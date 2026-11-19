@@ -3,6 +3,7 @@ function c14094090.initial_effect(c)
 	aux.AddRitualProcEqual(c,c14094090.ritual_filter)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(14094090,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)

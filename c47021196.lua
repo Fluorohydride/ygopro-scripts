@@ -18,6 +18,7 @@ function c47021196.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy/disable
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(47021196,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

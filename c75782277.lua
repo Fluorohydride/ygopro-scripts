@@ -9,7 +9,7 @@ function c75782277.initial_effect(c)
 	--trigger
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_DESTROY)
-	e4:SetDescription(aux.Stringid(75782277,0))
+	e4:SetDescription(aux.Stringid(75782277,1))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_EVENT_PLAYER)

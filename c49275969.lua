@@ -3,7 +3,7 @@ function c49275969.initial_effect(c)
 	c:SetUniqueOnField(1,0,49275969)
 	--disable special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(49275969,0))
+	e1:SetDescription(aux.Stringid(49275969,1))
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_SPSUMMON)

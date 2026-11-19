@@ -2,6 +2,7 @@
 function c77421977.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(77421977,2))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CONTINUOUS_TARGET)
@@ -35,6 +36,7 @@ function c77421977.initial_effect(c)
 	c:RegisterEffect(e4)
 	--draw
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(77421977,1))
 	e5:SetCategory(CATEGORY_DRAW)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_TO_GRAVE)

@@ -4,6 +4,7 @@ function c48829461.initial_effect(c)
 	c:SetUniqueOnField(1,1,c48829461.uqfilter,LOCATION_MZONE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(48829461,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

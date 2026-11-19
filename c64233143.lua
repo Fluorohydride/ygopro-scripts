@@ -4,6 +4,7 @@ function s.initial_effect(c)
 	aux.AddCodeList(c,38391684,22702055)
 	--Negate Normal Summon or Special Summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON)

@@ -18,7 +18,7 @@ function c93449450.initial_effect(c)
 	c:RegisterEffect(e2)
 	--lv up
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(93449450,0))
+	e3:SetDescription(aux.Stringid(93449450,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_CHAINING)

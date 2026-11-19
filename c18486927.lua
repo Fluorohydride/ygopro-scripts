@@ -2,6 +2,7 @@
 function c18486927.initial_effect(c)
 	--declare card
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(18486927,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -13,7 +14,7 @@ function c18486927.initial_effect(c)
 	c:RegisterEffect(e2)
 	--name change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(18486927,0))
+	e3:SetDescription(aux.Stringid(18486927,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)

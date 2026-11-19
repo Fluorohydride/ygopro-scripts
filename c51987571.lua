@@ -2,7 +2,7 @@
 function c51987571.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(51987571,0))
+	e1:SetDescription(aux.Stringid(51987571,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)

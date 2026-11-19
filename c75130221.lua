@@ -11,7 +11,7 @@ function c75130221.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(75130221,0))
+	e3:SetDescription(aux.Stringid(75130221,1))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DISABLE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)

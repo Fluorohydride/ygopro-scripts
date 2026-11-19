@@ -17,7 +17,7 @@ function c25163979.initial_effect(c)
 	c:RegisterEffect(e2)
 	--move
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(25163979,0))
+	e3:SetDescription(aux.Stringid(25163979,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCountLimit(1)

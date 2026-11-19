@@ -18,6 +18,7 @@ function c1003840.initial_effect(c)
 	c:RegisterEffect(e2)
 	--todeck
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(1003840,1))
 	e3:SetCategory(CATEGORY_TODECK)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)

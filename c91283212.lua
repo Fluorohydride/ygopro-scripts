@@ -2,6 +2,7 @@
 function c91283212.initial_effect(c)
 	--damge
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(91283212,0))
 	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLED)
@@ -14,6 +15,7 @@ function c91283212.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change tuner
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(91283212,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)

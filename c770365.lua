@@ -13,7 +13,7 @@ function c770365.initial_effect(c)
 	c:RegisterEffect(e1)
 	--confiem
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(770365,0))
+	e2:SetDescription(aux.Stringid(770365,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)

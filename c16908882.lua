@@ -52,7 +52,7 @@ function s.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local e1=Effect.CreateEffect(rc)
-	e1:SetDescription(aux.Stringid(id,2))
+	e1:SetDescription(aux.Stringid(id,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	-- Under Duel.SpecialSummon(SUMMON_TYPE_XYZ), BE_MATERIAL fires after the single SPSUMMON_SUCCESS;
 	-- use FIELD so it can catch the following field EVENT_SPSUMMON_SUCCESS (e.g. RUM - The Seventh One)

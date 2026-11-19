@@ -5,6 +5,7 @@ function c27873305.initial_effect(c)
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x10af),2,true)
 	--tohand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(27873305,0))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

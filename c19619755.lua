@@ -3,6 +3,7 @@ function c19619755.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--scale
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(19619755,2))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_SSET)

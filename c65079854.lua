@@ -39,7 +39,7 @@ function c65079854.initial_effect(c)
 	c:RegisterEffect(e5)
 	--battle
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(65079854,0))
+	e6:SetDescription(aux.Stringid(65079854,3))
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e6:SetRange(LOCATION_SZONE)
 	e6:SetCode(EVENT_BATTLED)

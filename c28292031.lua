@@ -38,6 +38,7 @@ function c28292031.initial_effect(c)
 	c:RegisterEffect(e7)
 	--negate damage
 	local e0=Effect.CreateEffect(c)
+	e0:SetDescription(aux.Stringid(28292031,1))
 	e0:SetType(EFFECT_TYPE_QUICK_O)
 	e0:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e0:SetRange(LOCATION_GRAVE)

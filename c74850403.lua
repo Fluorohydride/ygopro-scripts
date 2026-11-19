@@ -17,6 +17,7 @@ function c74850403.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Search
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(74850403,1))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_LEAVE_FIELD)

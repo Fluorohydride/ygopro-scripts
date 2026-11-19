@@ -2,6 +2,7 @@
 function c58981727.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(58981727,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -13,6 +14,7 @@ function c58981727.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to field
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(58981727,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

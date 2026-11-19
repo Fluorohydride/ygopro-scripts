@@ -11,6 +11,7 @@ function c85967160.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk & def
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(85967160,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_RECOVER)

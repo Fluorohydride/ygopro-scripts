@@ -10,7 +10,7 @@ function c99328137.initial_effect(c)
 	c:RegisterEffect(e1)
 	--extra normal summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(99328137,0))
+	e2:SetDescription(aux.Stringid(99328137,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)

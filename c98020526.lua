@@ -9,6 +9,7 @@ function c98020526.initial_effect(c)
 	c:RegisterEffect(e1)
 	--apply
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(98020526,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON+CATEGORY_GRAVE_ACTION)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_LEAVE_FIELD)

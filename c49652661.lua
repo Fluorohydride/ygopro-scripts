@@ -67,7 +67,7 @@ function s.eqop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.Equip(tp,ec,tc,true,true) then
 				local e1=Effect.CreateEffect(e:GetHandler())
 				e1:SetType(EFFECT_TYPE_EQUIP)
-				e1:SetDescription(aux.Stringid(id,2))
+				e1:SetDescription(aux.Stringid(id,1))
 				e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 				e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 				e1:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))

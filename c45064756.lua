@@ -7,6 +7,7 @@ function c45064756.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Activate
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(45064756,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)

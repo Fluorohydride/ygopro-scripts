@@ -18,7 +18,7 @@ function c34029630.initial_effect(c)
 	c:RegisterEffect(e2)
 	--counter
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(34029630,1))
+	e3:SetDescription(aux.Stringid(34029630,0))
 	e3:SetCategory(CATEGORY_COUNTER)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_QUICK_O)

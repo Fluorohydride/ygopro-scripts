@@ -2,6 +2,7 @@
 function c38601126.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(38601126,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -21,6 +22,7 @@ function c38601126.initial_effect(c)
 	c:RegisterEffect(e2)
 	--direct atk
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(38601126,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(c38601126.condition)

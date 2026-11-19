@@ -13,6 +13,7 @@ function c5067884.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Attack
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(5067884,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c5067884.atkcon)

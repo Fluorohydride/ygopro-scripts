@@ -13,7 +13,7 @@ function c78586116.initial_effect(c)
 	--attack up
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
-	e2:SetDescription(aux.Stringid(78586116,0))
+	e2:SetDescription(aux.Stringid(78586116,2))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_CUSTOM+78586116)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

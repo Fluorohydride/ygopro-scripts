@@ -37,7 +37,7 @@ function c9030160.initial_effect(c)
 	c:RegisterEffect(e7)
 	--damage
 	local e8=Effect.CreateEffect(c)
-	e8:SetDescription(aux.Stringid(9030160,0))
+	e8:SetDescription(aux.Stringid(9030160,1))
 	e8:SetCategory(CATEGORY_DAMAGE)
 	e8:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e8:SetCode(EVENT_PHASE+PHASE_STANDBY)

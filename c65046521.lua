@@ -13,7 +13,7 @@ function c65046521.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to field
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(65046521,2))
+	e2:SetDescription(aux.Stringid(65046521,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)

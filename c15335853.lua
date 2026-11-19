@@ -22,7 +22,7 @@ function c15335853.initial_effect(c)
 	c:RegisterEffect(e3)
 	--banish
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(15335853,0))
+	e4:SetDescription(aux.Stringid(15335853,3))
 	e4:SetCategory(CATEGORY_REMOVE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)

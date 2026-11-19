@@ -2,6 +2,7 @@
 function c17141718.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(17141718,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
@@ -11,6 +12,7 @@ function c17141718.initial_effect(c)
 	c:RegisterEffect(e1)
 	--shuffle
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(17141718,1))
 	e2:SetCategory(CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)

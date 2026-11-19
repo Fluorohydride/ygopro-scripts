@@ -7,6 +7,7 @@ function c80666118.initial_effect(c)
 	aux.EnableChangeCode(c,70902743,LOCATION_MZONE+LOCATION_GRAVE)
 	--destroy
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(80666118,1))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

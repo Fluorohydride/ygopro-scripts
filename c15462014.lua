@@ -16,6 +16,7 @@ function c15462014.initial_effect(c)
 	c:RegisterEffect(e2)
 	--send to GY
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(15462014,1))
 	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)

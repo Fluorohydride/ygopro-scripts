@@ -2,6 +2,7 @@
 function c17956906.initial_effect(c)
 	--activate
 	local e1 = Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(17956906,0))
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

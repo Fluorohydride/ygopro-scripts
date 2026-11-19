@@ -13,7 +13,7 @@ function c2645637.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(2645637,0))
+	e2:SetDescription(aux.Stringid(2645637,2))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_CHAINING)

@@ -22,6 +22,7 @@ function c24429467.initial_effect(c)
 	c:RegisterEffect(e3)
 	--search
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(24429467,1))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)

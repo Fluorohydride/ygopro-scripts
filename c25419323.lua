@@ -2,6 +2,7 @@
 function c25419323.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(25419323,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -14,6 +15,7 @@ function c25419323.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate damage
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(25419323,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e2:SetRange(LOCATION_GRAVE)

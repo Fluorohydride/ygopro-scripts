@@ -32,7 +32,7 @@ function c6511113.initial_effect(c)
 	c:RegisterEffect(e4)
 	--copy trap
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(6511113,0))
+	e5:SetDescription(aux.Stringid(6511113,2))
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetCode(EVENT_FREE_CHAIN)

@@ -15,6 +15,7 @@ function c55878038.initial_effect(c)
 	c:RegisterEffect(e1)
 	--Destroy/Shuffle/Special summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(55878038,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_MZONE)

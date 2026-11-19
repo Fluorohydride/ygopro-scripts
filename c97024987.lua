@@ -4,6 +4,7 @@ function c97024987.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--tohand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(97024987,0))
 	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_PZONE)

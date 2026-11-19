@@ -42,6 +42,7 @@ function c98076754.initial_effect(c)
 	c:RegisterEffect(e4)
 	--todeck
 	local e5=Effect.CreateEffect(c)
+	e5:SetDescription(aux.Stringid(98076754,0))
 	e5:SetCategory(CATEGORY_TODECK)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_FREE_CHAIN)

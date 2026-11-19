@@ -49,7 +49,7 @@ function c66425726.initial_effect(c)
 	c:RegisterEffect(e4)
 	--disable
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(66425726,1))
+	e5:SetDescription(aux.Stringid(66425726,2))
 	e5:SetCategory(CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_CHAINING)

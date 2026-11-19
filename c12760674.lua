@@ -2,6 +2,7 @@
 function c12760674.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(12760674,0))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
@@ -24,6 +25,7 @@ function c12760674.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atk
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(12760674,1))
 	e4:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_PRE_DAMAGE_CALCULATE)

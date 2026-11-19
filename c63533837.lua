@@ -5,7 +5,7 @@ function c63533837.initial_effect(c)
 	c:EnableReviveLimit()
 	--repeat attack
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(63533837,0))
+	e1:SetDescription(aux.Stringid(63533837,1))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_START)

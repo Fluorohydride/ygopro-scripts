@@ -2,6 +2,7 @@
 function c49249907.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(49249907,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
@@ -11,6 +12,7 @@ function c49249907.initial_effect(c)
 	c:RegisterEffect(e1)
 	--return
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(49249907,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_MZONE)

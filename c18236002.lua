@@ -2,6 +2,7 @@
 function c18236002.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(18236002,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCategory(CATEGORY_DAMAGE+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetCode(EVENT_BE_MATERIAL)

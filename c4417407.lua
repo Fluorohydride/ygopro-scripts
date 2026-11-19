@@ -31,7 +31,7 @@ function c4417407.initial_effect(c)
 	c:RegisterEffect(e4)
 	--pos
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(4417407,1))
+	e5:SetDescription(aux.Stringid(4417407,3))
 	e5:SetCategory(CATEGORY_POSITION)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetRange(LOCATION_MZONE)

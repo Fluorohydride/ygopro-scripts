@@ -14,7 +14,7 @@ function c8198620.initial_effect(c)
 	c:RegisterEffect(e1)
 	--battle
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(8198620,0))
+	e2:SetDescription(aux.Stringid(8198620,2))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)

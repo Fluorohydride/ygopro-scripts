@@ -2,6 +2,7 @@
 function c33245030.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(33245030,0))
 	e1:SetCategory(CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)

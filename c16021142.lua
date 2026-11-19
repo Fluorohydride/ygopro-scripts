@@ -11,7 +11,7 @@ function c16021142.initial_effect(c)
 	c:RegisterEffect(e1)
 	--pos
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(16021142,0))
+	e2:SetDescription(aux.Stringid(16021142,1))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

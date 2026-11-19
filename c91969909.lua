@@ -22,7 +22,7 @@ function c91969909.initial_effect(c)
 	--remove
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_REMOVE)
-	e4:SetDescription(aux.Stringid(91969909,0))
+	e4:SetDescription(aux.Stringid(91969909,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetCountLimit(1)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)

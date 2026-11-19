@@ -24,7 +24,7 @@ function c48654323.initial_effect(c)
 	c:RegisterEffect(e2)
 	--tograve
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(48654323,1))
+	e3:SetDescription(aux.Stringid(48654323,2))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)

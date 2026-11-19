@@ -25,6 +25,7 @@ function c65446452.initial_effect(c)
 	c:RegisterEffect(e5)
 	--spsummon
 	local e6=Effect.CreateEffect(c)
+	e6:SetDescription(aux.Stringid(65446452,2))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_TO_GRAVE)

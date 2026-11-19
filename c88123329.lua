@@ -3,6 +3,7 @@ function c88123329.initial_effect(c)
 	c:SetSPSummonOnce(88123329)
 	--tohand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(88123329,0))
 	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

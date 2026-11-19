@@ -10,7 +10,7 @@ function c18859369.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(18859369,0))
+	e2:SetDescription(aux.Stringid(18859369,1))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1,18859369)

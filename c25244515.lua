@@ -2,6 +2,7 @@
 function c25244515.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(25244515,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_HAND)
@@ -14,6 +15,7 @@ function c25244515.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(25244515,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -21,7 +21,7 @@ function c46796664.initial_effect(c)
 	c:RegisterEffect(e2)
 	--send to grave
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(46796664,0))
+	e3:SetDescription(aux.Stringid(46796664,2))
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)

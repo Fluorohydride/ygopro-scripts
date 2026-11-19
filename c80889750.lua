@@ -5,6 +5,7 @@ function c80889750.initial_effect(c)
 	aux.AddFusionProcFunFunRep(c,c80889750.mfilter1,c80889750.mfilter2,1,127,true)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(80889750,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

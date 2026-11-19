@@ -2,6 +2,7 @@
 function c90299015.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(90299015,0))
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -13,6 +14,7 @@ function c90299015.initial_effect(c)
 	c:RegisterEffect(e1)
 	--summon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(90299015,1))
 	e2:SetCategory(CATEGORY_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

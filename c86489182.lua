@@ -26,7 +26,7 @@ function c86489182.initial_effect(c)
 	c:RegisterEffect(e4)
 	--summon success
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(86489182,0))
+	e5:SetDescription(aux.Stringid(86489182,2))
 	e5:SetCategory(CATEGORY_TOHAND)
 	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)

@@ -2,6 +2,7 @@
 function c33314479.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(33314479,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -15,6 +16,7 @@ function c33314479.initial_effect(c)
 	c:RegisterEffect(e1)
 	--SpecialSummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(33314479,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)

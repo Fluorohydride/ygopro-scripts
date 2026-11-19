@@ -21,7 +21,7 @@ function c39528955.initial_effect(c)
 	c:RegisterEffect(e2)
 	--move
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(39528955,0))
+	e3:SetDescription(aux.Stringid(39528955,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
