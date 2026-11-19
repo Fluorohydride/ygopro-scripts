@@ -111,6 +111,7 @@ function c29867611.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c29867611.desrepop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,29867611)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end
 function c29867611.atkcon(e)
