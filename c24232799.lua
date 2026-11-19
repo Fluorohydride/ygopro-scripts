@@ -4,7 +4,7 @@ function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
 	aux.AddMaterialCodeList(c,12275533,99733359)
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionCode,12275533,99733359),aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE+RACE_DINOSAUR),true)
+	aux.AddFusionProcMix(c,true,true,{12275533,99733359},aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE+RACE_DINOSAUR))
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
