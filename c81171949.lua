@@ -5,6 +5,8 @@ function c81171949.initial_effect(c)
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetCost(c81171949.cost)
+	e1:SetTarget(c81171949.target)
 	e1:SetOperation(c81171949.activate)
 	c:RegisterEffect(e1)
 	--remove
@@ -17,6 +19,19 @@ function c81171949.initial_effect(c)
 	e2:SetTarget(c81171949.rmtg)
 	e2:SetOperation(c81171949.rmop)
 	c:RegisterEffect(e2)
+end
+function c81171949.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
+	return true
+end
+function c81171949.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		if e:GetLabel()==0 then return false end
+		e:SetLabel(0)
+		return not Duel.IsPlayerAffectedByEffect(tp,4130270)
+	end
+	e:SetLabel(0)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c81171949.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
