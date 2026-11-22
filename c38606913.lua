@@ -40,7 +40,9 @@ function c38606913.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
-		local tc=g:Select(tp,1,1,nil):GetFirst()
+		local sg=g:Select(tp,i==1 and 1 or 0,1,nil)
+		if #sg==0 then break end
+		local tc=sg:GetFirst()
 		tc:AddCounter(0x1038,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
