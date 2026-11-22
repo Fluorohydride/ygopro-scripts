@@ -44,8 +44,7 @@ end
 function c1329620.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
 	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
-		ec:CancelToGrave()
-		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 			local g=Duel.SelectMatchingCard(tp,c1329620.cfilter,tp,LOCATION_HAND,0,1,1,nil)
 			if #g>0 then
