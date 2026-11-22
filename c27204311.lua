@@ -54,7 +54,7 @@ function c27204311.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsPlayerCanRelease(tp)
 		and Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,TYPES_TOKEN_MONSTER,g:GetSum(c27204311.adfilter,Card.GetTextAttack),g:GetSum(c27204311.adfilter,Card.GetTextDefense),11,RACE_ROCK,ATTRIBUTE_LIGHT,POS_FACEUP,1-tp) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,TYPES_TOKEN_MONSTER,-2,-2,11,RACE_ROCK,ATTRIBUTE_LIGHT,POS_FACEUP,1-tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),2,0,0)
 end
@@ -68,7 +68,7 @@ function c27204311.spop(e,tp,eg,ep,ev,re,r,rp)
 			local atk=og:GetSum(c27204311.adfilter,Card.GetTextAttack)
 			local def=og:GetSum(c27204311.adfilter,Card.GetTextDefense)
 			if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
-				and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,TYPES_TOKEN_MONSTER,atk,def,11,RACE_ROCK,ATTRIBUTE_LIGHT,POS_FACEUP,1-tp) then
+				and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,TYPES_TOKEN_MONSTER,-2,-2,11,RACE_ROCK,ATTRIBUTE_LIGHT,POS_FACEUP,1-tp) then
 				Duel.BreakEffect()
 				local token=Duel.CreateToken(tp,27204312)
 				local e1=Effect.CreateEffect(c)
