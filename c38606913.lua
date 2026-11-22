@@ -69,36 +69,45 @@ function c38606913.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		--record the battle target with a counter as it leaves the field
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_LEAVE_FIELD_P)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetTargetRange(0,LOCATION_MZONE)
-		e1:SetRange(LOCATION_MZONE)
+		e1:SetLabel(tc:GetFieldID(),0,0)
+		e1:SetLabelObject(tc)
 		e1:SetOperation(c38606913.regop)
-		tc:RegisterEffect(e1)
+		e1:SetReset(RESET_PHASE+PHASE_END)
+		Duel.RegisterEffect(e1,tp)
+		--damage, also when the target monster is destroyed in the same battle
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e2:SetRange(LOCATION_MZONE)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetCode(EVENT_BATTLE_DESTROYING)
-		e2:SetOperation(c38606913.damop2)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD+EVENT_PHASE+PHASE_END)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetLabelObject(e1)
-		tc:RegisterEffect(e2)
-		tc:RegisterFlagEffect(38606913,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		e2:SetCondition(c38606913.damcon2)
+		e2:SetOperation(c38606913.damop2)
+		e2:SetReset(RESET_PHASE+PHASE_END)
+		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c38606913.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=eg:GetFirst()
-	local ct=c:GetCounter(0x1038)
-	e:SetLabel(ct)
+	local fid=e:GetLabel()
+	local tc=e:GetLabelObject()
+	if tc:GetFieldID()~=fid then return end
+	local bc=tc:GetBattleTarget()
+	if bc and eg:IsContains(bc) and bc:IsReason(REASON_BATTLE) and bc:GetCounter(0x1038)>0 then
+		e:SetLabel(fid,1,bc:GetBaseAttack())
+	end
+end
+function c38606913.damcon2(e,tp,eg,ep,ev,re,r,rp)
+	local te=e:GetLabelObject()
+	local _,ct=te:GetLabel()
+	return ct==1 and eg:IsContains(te:GetLabelObject())
 end
 function c38606913.damop2(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=c:GetBattleTarget()
-	local ct=e:GetLabelObject():GetLabel()
-	if c:GetFlagEffect(38606913)>0 and ct>0 then
-		local atk=tc:GetBaseAttack()
-		Duel.Damage(1-tp,atk,REASON_EFFECT)
-	end
+	local te=e:GetLabelObject()
+	local fid,_,atk=te:GetLabel()
+	te:SetLabel(fid,0,0)
+	Duel.Damage(1-tp,atk,REASON_EFFECT)
 end
