@@ -86,8 +86,8 @@ function s.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
 		if tc:IsPosition(POS_FACEUP_ATTACK) and tc:IsCanChangePosition() then
-			Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
-		elseif tc:IsPosition(POS_FACEUP_DEFENCE) and tc:IsCanChangePosition() then
+			Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
+		elseif tc:IsPosition(POS_FACEUP_DEFENSE) and tc:IsCanChangePosition() then
 			Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
 		else
 			local pos=Duel.SelectPosition(tp,tc,POS_FACEUP)

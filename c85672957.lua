@@ -44,7 +44,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.spfilter(c,e,tp)
-	return c:IsFaceupEx() and not c:IsAttribute(ATTRIBUTE_FIRE) and c:IsSetCard(0xa008) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP_DEFENCE)
+	return c:IsFaceupEx() and not c:IsAttribute(ATTRIBUTE_FIRE) and c:IsSetCard(0xa008) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP_DEFENSE)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and s.spfilter(chkc,e,tp) end
@@ -57,7 +57,7 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToChain() and aux.NecroValleyFilter()(tc) then
-		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 	end
 end
 function s.indct(e,re,r,rp)

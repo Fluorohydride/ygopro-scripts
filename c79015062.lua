@@ -19,7 +19,7 @@ function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.thdfilter(c)
 	return c:IsAbleToHand() and not c:IsAttribute(ATTRIBUTE_DARK)
-		and c:IsLevelBelow(4) and c:IsRace(RACE_CYBERS)
+		and c:IsLevelBelow(4) and c:IsRace(RACE_CYBERSE)
 end
 function s.thndfilter(c,att)
 	return c:IsAbleToHand() and not c:IsAttribute(att) and c:IsSetCard(0x135)
