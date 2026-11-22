@@ -36,6 +36,7 @@ function s.initial_effect(c)
 	e5:SetOperation(s.repop)
 	c:RegisterEffect(e5)
 end
+s.counter_add_list={0x6e}
 s.mentioned_counter={
 	[0x6e]=true,
 }
