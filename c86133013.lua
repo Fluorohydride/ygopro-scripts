@@ -15,7 +15,7 @@ function c86133013.tgfilter(c,e,tp,rp,g,ft)
 	local lv=c:GetLevel()
 	if not ((c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
-		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsCanBeEffectTarget(e)
+		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsFaceupEx() and c:IsCanBeEffectTarget(e)
 		and lv>0) then return false end
 	local sg=g:Filter(Card.IsLevelBelow,nil,lv)
 	aux.GCheckAdditional=c86133013.gcheck(lv)
