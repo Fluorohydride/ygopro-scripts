@@ -107,7 +107,7 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_DISABLE)
 		e1:SetValue(atk)
 		c:RegisterEffect(e1)
-		if not c:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+		if not c:IsHasEffect(EFFECT_REVERSE_UPDATE) and tc:IsCanBeDisabledByEffect(e) then
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)

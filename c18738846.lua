@@ -87,9 +87,12 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
+function s.disfilter(c,e)
+	return c:IsFaceup() and c:IsCanBeDisabledByEffect(e,false)
+end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local dg=Duel.GetTargetsRelateToChain()
+	local dg=Duel.GetTargetsRelateToChain():Filter(s.disfilter,nil,e)
 	for tc in aux.Next(dg) do
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)

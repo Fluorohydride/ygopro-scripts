@@ -79,9 +79,12 @@ function c29726552.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c29726552.filter,nil,1-tp)
 	Duel.SetTargetCard(g)
 end
+function c29726552.disfilter(c,e)
+	return c:IsFaceup() and c:IsCanBeDisabledByEffect(e)
+end
 function c29726552.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetTargetsRelateToChain():Filter(c29726552.disfilter,nil,e)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
