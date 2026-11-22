@@ -52,7 +52,7 @@ function c24557335.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c24557335.descfilter,1,nil,tp)
 end
 function c24557335.tgfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c24557335.descfilter(c,tp)
+	return c:IsFaceupEx() and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c24557335.descfilter(c,tp)
 		and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function c24557335.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -69,7 +69,7 @@ end
 function c77202120.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
-		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsFaceupEx() and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c77202120.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

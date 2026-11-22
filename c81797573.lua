@@ -55,8 +55,9 @@ function s.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToChain() and tc:IsType(TYPE_MONSTER)
-		and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0
-		and c:IsRelateToChain() then
+		and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToChain()
+		and (tc:IsLocation(LOCATION_REMOVED) or tc:IsType(TYPE_TOKEN)) then
+		Duel.BreakEffect()
 		local seq=4-aux.MZoneSequence(c:GetSequence())
 		local zone=0
 		if seq>0 then

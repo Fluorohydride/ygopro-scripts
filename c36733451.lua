@@ -33,6 +33,8 @@ end
 function c36733451.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetDecktopGroup(tp,1)
+	local tc=g:GetFirst()
+	if not tc or not tc:IsAbleToRemove() then return end
 	Duel.DisableShuffleCheck()
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then

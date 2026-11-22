@@ -57,6 +57,8 @@ function s.condition1(e,tp,eg,ep,ev,re,r,rp)
 		local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 		if (LOCATION_HAND+LOCATION_ONFIELD)&loc~=0 then return true end
 	end
+	if re:IsHasCategory(CATEGORY_NEGATE)
+		and Duel.GetChainInfo(ev-1,CHAININFO_TRIGGERING_EFFECT):IsHasType(EFFECT_TYPE_ACTIVATE) then return false end
 	local ex,tg,tc=Duel.GetOperationInfo(ev,CATEGORY_DESTROY)
 	return ex and tg~=nil and tc+tg:FilterCount(Card.IsOnField,nil)-tg:GetCount()>0
 end
