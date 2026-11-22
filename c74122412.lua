@@ -32,7 +32,7 @@ function c74122412.initial_effect(c)
 	e3:SetOperation(c74122412.desop)
 	c:RegisterEffect(e3)
 end
-function c74122412.mat_filter(c)
+function c74122412.ritual_mat_filter(c)
 	return not c:IsLevel(7)
 end
 function c74122412.indcost(e,tp,eg,ep,ev,re,r,rp,chk)

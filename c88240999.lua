@@ -35,7 +35,7 @@ function c88240999.initial_effect(c)
 	e3:SetOperation(c88240999.desop)
 	c:RegisterEffect(e3)
 end
-function c88240999.mat_filter(c)
+function c88240999.ritual_mat_filter(c)
 	return not c:IsLevel(10)
 end
 function c88240999.adcost(e,tp,eg,ep,ev,re,r,rp,chk)
