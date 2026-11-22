@@ -75,8 +75,20 @@ function c30270176.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	rg:DeleteGroup()
 end
 function c30270176.immval(e,te)
-	return te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
-		and te:GetOwner():GetBaseAttack()<=3000 and te:GetOwner():GetBaseAttack()>=0
+	if te:GetOwner()==e:GetHandler() or not te:IsActiveType(TYPE_MONSTER) or not te:IsActivated() then return false end
+	local tc=te:GetOwner()
+	--activated in the Monster Zone and still there face-up since: the original ATK at resolution;
+	--otherwise the printed ATK ("?" is not 3000 or less)
+	for i=Duel.GetCurrentChain(),1,-1 do
+		local ce,loc=Duel.GetChainInfo(i,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_LOCATION)
+		if ce==te then
+			if loc==LOCATION_MZONE and tc:IsRelateToChain(i) and tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() then
+				return tc:GetBaseAttack()<=3000
+			end
+			break
+		end
+	end
+	return tc:GetTextAttack()>=0 and tc:GetTextAttack()<=3000
 end
 function c30270176.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler() and aux.bdcon(e,tp,eg,ep,ev,re,r,rp)
