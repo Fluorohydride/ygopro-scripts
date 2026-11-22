@@ -71,12 +71,12 @@ function c38606913.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		--record the battle target with a counter as it leaves the field
+		--record that the battle target leaves the field with a counter
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_LEAVE_FIELD_P)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetLabel(tc:GetFieldID(),0,0)
+		e1:SetLabel(tc:GetFieldID(),0)
 		e1:SetLabelObject(tc)
 		e1:SetOperation(c38606913.regop)
 		e1:SetReset(RESET_PHASE+PHASE_END)
@@ -99,7 +99,7 @@ function c38606913.regop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:GetFieldID()~=fid then return end
 	local bc=tc:GetBattleTarget()
 	if bc and eg:IsContains(bc) and bc:IsReason(REASON_BATTLE) and bc:GetCounter(0x1038)>0 then
-		e:SetLabel(fid,1,bc:GetBaseAttack())
+		e:SetLabel(fid,1)
 	end
 end
 function c38606913.damcon2(e,tp,eg,ep,ev,re,r,rp)
@@ -109,7 +109,12 @@ function c38606913.damcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38606913.damop2(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
-	local fid,_,atk=te:GetLabel()
-	te:SetLabel(fid,0,0)
-	Duel.Damage(1-tp,atk,REASON_EFFECT)
+	local tc=te:GetLabelObject()
+	te:SetLabel(te:GetLabel(),0)
+	--the destroyed monster's original ATK where it is now
+	local bc=Duel.GetAttacker()
+	if bc==tc then bc=Duel.GetAttackTarget() end
+	if bc then
+		Duel.Damage(1-tp,bc:GetBaseAttack(),REASON_EFFECT)
+	end
 end
