@@ -19,7 +19,7 @@ function c1082946.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c1082946.filter,tp,0x3f,0x3f,1,1,nil)
 	if #g==0 then return end
 	local tc=g:GetFirst()
-	local turne=tc[tc]
+	local turne=c1082946[tc]
 	local op=turne:GetOperation()
 	op(turne,turne:GetOwnerPlayer(),nil,0,0,0,0,0)
 end
