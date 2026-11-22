@@ -50,7 +50,7 @@ function s.tgfilter(c,e,tp)
 		if not c:IsAbleToChangeControler() then return false end
 		r=LOCATION_REASON_CONTROL
 	end
-	return Duel.GetLocationCount(tp,LOCATION_SZONE,tp,r)>0 and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return Duel.GetLocationCount(tp,LOCATION_SZONE,tp,r)>0 and c:IsCanBePlacedOnField(tp)
 		and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

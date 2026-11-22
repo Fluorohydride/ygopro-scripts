@@ -29,7 +29,7 @@ function s.initial_effect(c)
 end
 function s.pfilter(c,tp)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsType(TYPE_TRAP) and c:IsSetCard(0x1df)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.cfilter(c,ec,tp)
 	return c:IsFaceup() and c:IsRace(RACE_THUNDER) and c:IsAbleToHandAsCost()

@@ -61,7 +61,7 @@ function s.dktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.filter(c,p)
 	local r=LOCATION_REASON_TOFIELD
-	return not c:IsForbidden() and c:CheckUniqueOnField(c:GetOwner())
+	return c:IsCanBePlacedOnField(c:GetOwner())
 		and Duel.GetLocationCount(p,LOCATION_SZONE,1-p,r)>0
 end
 function s.dkop(e,tp,eg,ep,ev,re,r,rp)

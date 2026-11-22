@@ -86,7 +86,7 @@ function s.tfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function s.pfilter(c,tp)
 	return c:IsAllTypes(TYPE_TRAP+TYPE_CONTINUOUS) and aux.IsCodeListed(c,33599853)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

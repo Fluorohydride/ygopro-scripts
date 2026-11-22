@@ -23,7 +23,7 @@ function s.initial_effect(c)
 end
 function s.thfilter(c,tp)
 	return c:IsCode(27564031)
-		and (c:IsAbleToHand() or (c:IsType(TYPE_FIELD) and not c:IsForbidden() and c:CheckUniqueOnField(tp)))
+		and (c:IsAbleToHand() or (c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(tp)))
 end
 function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x23) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP_DEFENSE) and c:IsType(TYPE_MONSTER)
@@ -43,7 +43,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
 	if tc then
 		local res=false
-		local tfchk=not tc:IsForbidden() and tc:CheckUniqueOnField(tp)
+		local tfchk=tc:IsCanBePlacedOnField(tp)
 		if tc:IsAbleToHand() and (not tfchk or Duel.SelectOption(tp,1190,aux.Stringid(id,1))==0) then
 			if Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 				res=true

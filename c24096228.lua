@@ -17,9 +17,13 @@ function c24096228.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c24096228.cfilter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.DiscardHand(tp,c24096228.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
+function c24096228.plfilter(c,tp)
+	return not (c:IsType(TYPE_EQUIP+TYPE_CONTINUOUS+TYPE_FIELD) or c:IsHasEffect(EFFECT_REMAIN_FIELD))
+		or c:IsCanBePlacedOnField(tp)
+end
 function c24096228.filter1(c,e,tp,eg,ep,ev,re,r,rp)
 	local te=c:CheckActivateEffect(false,false,false)
-	if c:IsType(TYPE_SPELL) and te then
+	if c:IsType(TYPE_SPELL) and c24096228.plfilter(c,tp) and te then
 		if c:IsSetCard(0x95) then
 			local tg=te:GetTarget()
 			return not tg or tg(e,tp,eg,ep,ev,re,r,rp,0)
@@ -31,7 +35,8 @@ function c24096228.filter1(c,e,tp,eg,ep,ev,re,r,rp)
 end
 function c24096228.filter2(c,e,tp,eg,ep,ev,re,r,rp)
 	local te=c:CheckActivateEffect(false,false,false)
-	if c:IsType(TYPE_SPELL) and not c:IsType(TYPE_EQUIP+TYPE_CONTINUOUS) and te then
+	if c:IsType(TYPE_SPELL) and not c:IsType(TYPE_EQUIP+TYPE_CONTINUOUS)
+		and c24096228.plfilter(c,tp) and te then
 		if c:IsSetCard(0x95) then
 			local tg=te:GetTarget()
 			return not tg or tg(e,tp,eg,ep,ev,re,r,rp,0)

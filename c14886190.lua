@@ -12,7 +12,7 @@ function c14886190.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14886190.tffilter(c,tp)
-	return c:IsSetCard(0x114e) and not c:IsType(TYPE_FIELD+TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsSetCard(0x114e) and not c:IsType(TYPE_FIELD+TYPE_MONSTER) and c:IsCanBePlacedOnField(tp)
 end
 function c14886190.gtfilter(c)
 	return c:IsSetCard(0x114e) and c:IsFaceup()

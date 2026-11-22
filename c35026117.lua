@@ -39,7 +39,7 @@ function c35026117.atklimit(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35026117.tffilter(c,tp)
 	return c:IsFaceupEx() and c:IsCode(25955164,62340868,98434877)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c35026117.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

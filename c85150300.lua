@@ -36,7 +36,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
 end
 function s.pfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(tp)
 end
 function s.sfilter(c,e,tp)
 	return c:GetOriginalType()&TYPE_MONSTER>0 and c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEUP,1-tp)

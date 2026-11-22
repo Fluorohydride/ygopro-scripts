@@ -81,7 +81,7 @@ end
 function s.pfilter(c,tp)
 	return bit.band(c:GetType(),TYPE_SPELL+TYPE_CONTINUOUS)==TYPE_SPELL+TYPE_CONTINUOUS
 		and c:IsSetCard(0x1c0)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.gcheck2(g,tp)
 	return g:GetCount()<=Duel.GetLocationCount(tp,LOCATION_SZONE)

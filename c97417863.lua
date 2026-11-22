@@ -43,13 +43,16 @@ function c97417863.initial_effect(c)
 	e3:SetOperation(c97417863.atkop)
 	c:RegisterEffect(e3)
 end
+function c97417863.plfilter(c,tp)
+	return c:IsAbleToChangeControler() and c:IsCanBePlacedOnField(tp)
+end
 function c97417863.pltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToChangeControler() end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(1-tp) and c97417863.plfilter(chkc,tp) end
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToChangeControler,tp,0,LOCATION_PZONE,1,nil)
+	if chk==0 then return Duel.IsExistingTarget(c97417863.plfilter,tp,0,LOCATION_PZONE,1,nil,tp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,true,true) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,Card.IsAbleToChangeControler,tp,0,LOCATION_PZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c97417863.plfilter,tp,0,LOCATION_PZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end

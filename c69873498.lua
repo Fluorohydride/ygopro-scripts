@@ -43,7 +43,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.tofilter(c,tp)
-	return c:IsCode(id) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(id) and c:IsCanBePlacedOnField(tp)
 end
 function s.totg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

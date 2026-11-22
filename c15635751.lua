@@ -57,7 +57,7 @@ function s.repval(e,c)
 	return s.filter(c,e:GetHandlerPlayer())
 end
 function s.pfilter(c,tp)
-	return c:IsCode(55742055) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(55742055) and c:IsCanBePlacedOnField(tp)
 end
 function s.rptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

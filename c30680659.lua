@@ -71,7 +71,7 @@ function c30680659.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c30680659.stfilter(c,tp)
-	return aux.IsCodeListed(c,3285552) and c:IsType(TYPE_FIELD) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return aux.IsCodeListed(c,3285552) and c:IsType(TYPE_FIELD) and c:IsCanBePlacedOnField(tp)
 end
 function c30680659.stg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c30680659.stfilter,tp,LOCATION_DECK,0,1,nil,tp) end

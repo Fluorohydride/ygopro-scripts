@@ -59,12 +59,12 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.mvfilter(c)
 	return c:IsFaceup() and (c:IsControler(c:GetOwner()) or c:IsAbleToChangeControler())
-		and not c:IsForbidden() and c:CheckUniqueOnField(c:GetOwner())
+		and c:IsCanBePlacedOnField(c:GetOwner())
 end
 function s.mvfilter2(c,e)
 	return c:IsType(TYPE_MONSTER) and (c:IsControler(c:GetOwner()) or c:IsAbleToChangeControler())
 		and not c:IsImmuneToEffect(e)
-		and not c:IsForbidden() and c:CheckUniqueOnField(c:GetOwner())
+		and c:IsCanBePlacedOnField(c:GetOwner())
 end
 function s.isowner(c,tp)
 	return c:GetOwner()==tp
@@ -120,7 +120,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.pfilter(c,tp)
 	return c:IsAllTypes(TYPE_CONTINUOUS+TYPE_TRAP) and c:IsSetCard(0x1d1)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

@@ -95,7 +95,7 @@ function c40680521.stcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c40680521.stfilter(c)
 	local seq=c:GetSequence()
-	return seq<=4 and c:IsType(TYPE_EFFECT) and c:IsFaceup()
+	return seq<=4 and c:IsType(TYPE_EFFECT) and c:IsFaceup() and c:IsCanBePlacedOnField(c:GetControler())
 end
 function c40680521.sttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c40680521.stfilter(chkc) end

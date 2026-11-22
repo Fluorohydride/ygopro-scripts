@@ -29,7 +29,8 @@ function c15936370.pencon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c15936370.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,1,nil) end
+	if chk==0 then return e:GetHandler():IsAbleToChangeControler()
+		and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_PZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -38,7 +39,8 @@ function c15936370.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
+		and c:IsAbleToChangeControler() then
 		Duel.MoveToField(c,tp,1-tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

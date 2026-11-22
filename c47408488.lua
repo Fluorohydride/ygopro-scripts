@@ -77,7 +77,7 @@ function c47408488.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c47408488.plfilter(c)
-	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function c47408488.plop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)

@@ -28,8 +28,8 @@ function c19501924.zones(e,tp,eg,ep,ev,re,r,rp)
 	if b2 and p1 then zone=zone-0x10 end
 	return zone
 end
-function c19501924.cfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
+function c19501924.cfilter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsCanBePlacedOnField(tp)
 end
 function c19501924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=0
@@ -40,10 +40,10 @@ function c19501924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=not b and ft>0
 	local b2=b and ft==1 and st-ft>0
 	local b3=b and ft==2
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c19501924.cfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c19501924.cfilter,tp,LOCATION_MZONE,0,1,nil) and (b1 or b2 or b3) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c19501924.cfilter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c19501924.cfilter,tp,LOCATION_MZONE,0,1,nil,tp) and (b1 or b2 or b3) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	Duel.SelectTarget(tp,c19501924.cfilter,tp,LOCATION_MZONE,0,1,ft,nil)
+	Duel.SelectTarget(tp,c19501924.cfilter,tp,LOCATION_MZONE,0,1,ft,nil,tp)
 end
 function c19501924.mfilter(c,e)
 	return c:IsFaceup() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)

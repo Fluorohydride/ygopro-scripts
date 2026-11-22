@@ -34,7 +34,7 @@ end
 function s.filter(c,tp)
 	local r=LOCATION_REASON_TOFIELD
 	if not c:IsControler(c:GetOwner()) then r=LOCATION_REASON_CONTROL end
-	return c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(c:GetOwner())
+	return c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField(c:GetOwner())
 		and c:IsFaceupEx() and Duel.GetLocationCount(c:GetOwner(),LOCATION_SZONE,tp,r)>0
 end
 function s.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

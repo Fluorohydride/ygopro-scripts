@@ -39,7 +39,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.pfilter(c,tp)
-	return c:IsSetCard(0x1144) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsSetCard(0x1144) and c:IsCanBePlacedOnField(tp)
 		and (c:IsType(TYPE_CONTINUOUS) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 			or c:IsType(TYPE_FIELD))
 end

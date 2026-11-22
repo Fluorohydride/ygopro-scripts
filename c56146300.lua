@@ -39,7 +39,7 @@ function s.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,s.costfilter,1,1,REASON_COST+REASON_DISCARD,e:GetHandler())
 end
 function s.acfilter(c,tp)
-	return c:IsCode(67441879) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+	return c:IsCode(67441879) and c:IsCanBePlacedOnField(tp)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

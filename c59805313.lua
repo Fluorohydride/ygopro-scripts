@@ -19,7 +19,7 @@ function c59805313.rmfilter(c,tp)
 end
 function c59805313.setfilter(c,tp)
 	return c:IsSetCard(0xb9) and c:IsType(TYPE_CONTINUOUS)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function c59805313.optg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

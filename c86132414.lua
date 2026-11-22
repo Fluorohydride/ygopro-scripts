@@ -49,7 +49,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.tffilter(c,tp)
 	return c:IsCode(id)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>1

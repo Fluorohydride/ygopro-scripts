@@ -36,7 +36,7 @@ function s.initial_effect(c)
 end
 function s.pfilter(c,tp)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsSetCard(0x1a6)
-		and not c:IsForbidden() and c:CheckUniqueOnField(tp)
+		and c:IsCanBePlacedOnField(tp)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

@@ -15,7 +15,7 @@ function c9334391.thfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c9334391.plfilter,tp,LOCATION_DECK,0,1,nil,c:GetCode())
 end
 function c9334391.plfilter(c,code)
-	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsCode(code) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsCode(code) and c:IsCanBePlacedOnField()
 end
 function c9334391.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=0

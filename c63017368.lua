@@ -32,10 +32,10 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function s.filter(c)
-	return c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function s.setfilter(c)
-	return c:IsSetCard(0x1ae) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x1ae) and c:IsType(TYPE_MONSTER) and c:IsCanBePlacedOnField()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_HAND,0,1,nil) and Duel.IsExistingMatchingCard(s.setfilter,tp,LOCATION_DECK,0,1,nil)

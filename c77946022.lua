@@ -75,7 +75,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function s.setfilter(c)
-	return c:IsCode(39730727) and not c:IsForbidden()
+	return c:IsCode(39730727) and c:IsCanBePlacedOnField()
 end
 function s.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc,exc)
 	if chk==0 then return e:GetHandler():IsAbleToGrave()
