@@ -22,7 +22,7 @@ function c96012004.initial_effect(c)
 end
 function c96012004.coincon(e,tp,eg,ep,ev,re,r,rp)
 	local ex,eg,et,cp,ct=Duel.GetOperationInfo(ev,CATEGORY_COIN)
-	if ex and ct==1 and re:IsActiveType(TYPE_MONSTER) then
+	if ex and cp~=PLAYER_ALL and ct==1 and re:IsActiveType(TYPE_MONSTER) then
 		e:SetLabelObject(re)
 		return true
 	else return false end
@@ -34,7 +34,7 @@ function c96012004.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if cc==1 then return end
 	local te=Duel.GetChainInfo(cc-1,CHAININFO_TRIGGERING_EFFECT)
 	local ex,eg,et,cp,ct=Duel.GetOperationInfo(cc-1,CATEGORY_COIN)
-	if ex and ct==1 and te:IsActiveType(TYPE_MONSTER) and Duel.SelectYesNo(tp,94) then
+	if ex and cp~=PLAYER_ALL and ct==1 and te:IsActiveType(TYPE_MONSTER) and Duel.SelectYesNo(tp,94) then
 		e:SetLabel(1)
 		e:SetLabelObject(te)
 	end
