@@ -13,7 +13,7 @@ function c78651105.initial_effect(c)
 	c:RegisterEffect(e2)
 	--summon with 3 tribute
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(78651105,1))
+	e3:SetDescription(aux.Stringid(78651105,2))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_SUMMON_PROC)
 	e3:SetCondition(c78651105.ttcon)
