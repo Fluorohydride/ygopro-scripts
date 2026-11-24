@@ -1,5 +1,6 @@
 --ヒステリック・パーティー
 function c77778835.initial_effect(c)
+	aux.AddCodeList(c,76812113)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77778835,0))

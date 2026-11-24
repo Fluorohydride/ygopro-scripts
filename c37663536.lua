@@ -1,6 +1,6 @@
 --古代の機械超巨人
 function c37663536.initial_effect(c)
-	aux.AddCodeList(c,83104731)
+	aux.AddCodeList(c,83104731,95735217,12652643)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x7),3,true)
 	--multi attack

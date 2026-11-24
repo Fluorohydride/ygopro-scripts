@@ -158,8 +158,9 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
+	if ev<2 then return false end
 	local te,p=Duel.GetChainInfo(ev-1,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	return te and te:GetHandlerPlayer()==tp and ep~=tp and e:GetHandler():IsFacedown()
+	return te and p==tp and ep~=tp and e:GetHandler():IsFacedown()
 end
 function s.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

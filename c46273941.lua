@@ -64,13 +64,13 @@ function s.spfilter(c,e,tp,m)
 	aux.GCheckAdditional=nil
 	return res
 end
-function s.matfilter(c)
+function s.matfilter(c,e)
 	return c:IsAllCardTypes(TYPE_NORMAL+TYPE_MONSTER)
-		and c:IsFaceupEx() and c:IsAbleToGrave()
+		and c:IsFaceupEx() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetMatchingGroup(s.matfilter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_ONFIELD,0,nil)
+		local mg=Duel.GetMatchingGroup(s.matfilter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_ONFIELD,0,nil,e)
 		return Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp,mg)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
@@ -80,7 +80,7 @@ function s.eqfilter(c,tp)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	::cancel::
-	local mg=Duel.GetMatchingGroup(s.matfilter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_ONFIELD,0,nil)
+	local mg=Duel.GetMatchingGroup(s.matfilter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_ONFIELD,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,mg)
 	if tg:GetCount()>0 then

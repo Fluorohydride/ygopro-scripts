@@ -1,6 +1,6 @@
 --万華鏡－華麗なる分身－
 function c90219263.initial_effect(c)
-	aux.AddCodeList(c,12206212)
+	aux.AddCodeList(c,76812113,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(90219263,0))

@@ -69,6 +69,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToChain()
 		and aux.NecroValleyFilter()(tc) and Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)>0
 		and tc:IsLocation(LOCATION_EXTRA)
+		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and tc:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,tc)>0
 		and Duel.SelectYesNo(tp,aux.Stringid(id,1)) then
 		Duel.BreakEffect()
