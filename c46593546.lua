@@ -8,7 +8,7 @@ function c46593546.initial_effect(c)
 	c:SetUniqueOnField(1,0,46593546,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(46593546,0))
+	e1:SetDescription(aux.Stringid(46593546,1))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

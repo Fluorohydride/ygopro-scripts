@@ -2,7 +2,6 @@
 function c1187243.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(1187243,3))
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
@@ -25,7 +24,7 @@ function c1187243.initial_effect(c)
 	c:RegisterEffect(e3)
 	--spsummon1
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(1187243,1))
+	e4:SetDescription(aux.Stringid(1187243,0))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

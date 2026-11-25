@@ -39,7 +39,7 @@ function c68140974.initial_effect(c)
 	c:RegisterEffect(e4)
 	--negate spell
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(68140974,3))
+	e5:SetDescription(aux.Stringid(68140974,2))
 	e5:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_CHAINING)
