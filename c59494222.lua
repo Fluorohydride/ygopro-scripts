@@ -26,7 +26,7 @@ function c59494222.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_REMOVE)
 		e1:SetTarget(c59494222.rmlimit)
 	else
-		e1:SetDescription(aux.Stringid(59494222,0))
+		e1:SetDescription(aux.Stringid(59494222,2))
 		e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 		e1:SetTarget(c59494222.splimit)
 	end

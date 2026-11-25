@@ -15,7 +15,7 @@ function c69230391.initial_effect(c)
 	c:RegisterEffect(e2)
 	--handes
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(69230391,0))
+	e3:SetDescription(aux.Stringid(69230391,1))
 	e3:SetCategory(CATEGORY_HANDES_OPPO+CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
