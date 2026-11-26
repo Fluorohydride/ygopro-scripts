@@ -17,10 +17,10 @@ function c39978267.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c39978267.desfilter(c)
-	return c:GetEquipTarget() or c:IsFaceup() and c:IsType(TYPE_EQUIP)
+	return c:GetEquipTarget()
 end
 function c39978267.eqfilter(c,ec)
-	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(ec)
+	return c:GetEquipTarget() and c:CheckEquipTarget(ec)
 end
 function c39978267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
