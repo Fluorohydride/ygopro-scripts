@@ -193,11 +193,9 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 					if minc>maxc then return false end
 				end
 				local tp=c:GetControler()
-				if Duel.IsPlayerAffectedByEffect(tp,8173184) then
-					Duel.RegisterFlagEffect(tp,8173184+1,0,0,1)
-				end
+				Auxiliary.SynchroRequireState[tp]={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_MATERIAL_REQUIRE)}
 				if smat and not smat:IsCanBeSynchroMaterial(c) then
-					Duel.ResetFlagEffect(tp,8173184+1)
+					Auxiliary.SynchroRequireState[tp]=nil
 					return false
 				end
 				local mg
@@ -209,7 +207,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 					if min and min==max and #mg==#mg1 and #mg==min+1 then
 						goalchk=Auxiliary.SynMixCheckGoal(tp,mg,0,0,c,Group.CreateGroup(),smat,gc,mgchk,goalchk)
 						if not goalchk then
-							Duel.ResetFlagEffect(tp,8173184+1)
+							Auxiliary.SynchroRequireState[tp]=nil
 							return false
 						end
 					end
@@ -217,8 +215,9 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minct,maxct,gc)
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
-				local res=mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk)
-				Duel.ResetFlagEffect(tp,8173184+1)
+				local res=Auxiliary.SynchroRequireCheck(tp,mg)
+					and mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc,mgchk,goalchk)
+				Auxiliary.SynchroRequireState[tp]=nil
 				return res
 			end
 end
@@ -234,10 +233,8 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 					if max-exct<maxc then maxc=max-exct end
 					if minc>maxc then return false end
 				end
+				Auxiliary.SynchroRequireState[tp]={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_MATERIAL_REQUIRE)}
 				::SynMixTargetSelectStart::
-				if Duel.IsPlayerAffectedByEffect(tp,8173184) then
-					Duel.RegisterFlagEffect(tp,8173184+1,0,0,1)
-				end
 				local cancel=Duel.IsSummonCancelable()
 				local g=Group.CreateGroup()
 				local mg
@@ -250,7 +247,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 						g:Merge(mg)
 						g:KeepAlive()
 						e:SetLabelObject(g)
-						Duel.ResetFlagEffect(tp,8173184+1)
+						Auxiliary.SynchroRequireState[tp]=nil
 						return true
 					end
 				else
@@ -303,11 +300,11 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minct,maxct,gc)
 				if g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
-					Duel.ResetFlagEffect(tp,8173184+1)
+					Auxiliary.SynchroRequireState[tp]=nil
 					return true
 				end
 				::SynMixTargetSelectCancel::
-				Duel.ResetFlagEffect(tp,8173184+1)
+				Auxiliary.SynchroRequireState[tp]=nil
 				return false
 			end
 end
@@ -418,8 +415,6 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk,goalc
 	if gc and not gc(g,syncard,tp) then return false end
 	if smat and not g:IsContains(smat) then return false end
 	if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL) then return false end
-	if Duel.IsPlayerAffectedByEffect(tp,8173184)
-		and not g:IsExists(Auxiliary.Tuner(Card.IsSetCard,0x2),1,nil,syncard) then return false end
 	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
 		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
@@ -2272,16 +2267,74 @@ end
 
 --Must use X as material
 function Auxiliary.MustMaterialCheck(v,tp,code)
+	if code==EFFECT_MUST_BE_SMATERIAL and not Auxiliary.SynchroRequireCheck(tp,v) then return false end
 	local g=Duel.GetMustMaterial(tp,code)
 	if not v then
 		if code==EFFECT_MUST_BE_XMATERIAL and Duel.IsPlayerAffectedByEffect(tp,67120578) then return false end
-		if code==EFFECT_MUST_BE_SMATERIAL and Duel.IsPlayerAffectedByEffect(tp,8173184) then return false end
 		return #g==0
 	end
 	return Duel.CheckMustMaterial(tp,v,code)
 end
 function Auxiliary.MustMaterialCounterFilter(c,g)
 	return not g:IsContains(c)
+end
+
+--Synchro Summon must use a monster that meets f as material (リペア・ジェネクス・コントローラー)
+
+--requirements of each player cached during SynMix material checks; non-nil also lifts the material limit fallback
+Auxiliary.SynchroRequireState={}
+
+---@param c Card
+---@param tp integer
+---@param f fun(c:Card):boolean
+---@param reset integer
+function Auxiliary.RegisterSynchroMaterialRequire(c,tp,f,reset)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetTargetRange(1,0)
+	e1:SetTarget(Auxiliary.SynchroRequireSummonLimit)
+	e1:SetReset(reset)
+	Duel.RegisterEffect(e1,tp)
+	--fallback for the synchro procedures checked by the core (AddSynchroProcedure): the tuner must meet f
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e2:SetTarget(Auxiliary.SynchroRequireTunerLimit(f))
+	e2:SetValue(Auxiliary.SynchroRequireMaterialLimit)
+	e2:SetReset(reset)
+	Duel.RegisterEffect(e2,tp)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_SYNCHRO_MATERIAL_REQUIRE)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e3:SetTargetRange(1,0)
+	e3:SetValue(f)
+	e3:SetReset(reset)
+	Duel.RegisterEffect(e3,tp)
+end
+function Auxiliary.SynchroRequireSummonLimit(e,c,sump,sumtype,sumpos,targetp,se)
+	return c:IsLocation(LOCATION_EXTRA) and sumtype&SUMMON_TYPE_SYNCHRO~=SUMMON_TYPE_SYNCHRO
+end
+--tuners that don't meet f
+function Auxiliary.SynchroRequireTunerLimit(f)
+	return	function(e,c)
+				return c:IsType(TYPE_TUNER) and not f(c)
+			end
+end
+function Auxiliary.SynchroRequireMaterialLimit(e,sc)
+	local tp=e:GetHandlerPlayer()
+	return sc:GetControler()==tp and Auxiliary.SynchroRequireState[tp]==nil
+end
+---@param g Group|nil
+function Auxiliary.SynchroRequireCheck(tp,g)
+	local reqs=Auxiliary.SynchroRequireState[tp] or {Duel.IsPlayerAffectedByEffect(tp,EFFECT_SYNCHRO_MATERIAL_REQUIRE)}
+	for _,te in ipairs(reqs) do
+		if not g or not g:IsExists(te:GetValue(),1,nil) then return false end
+	end
+	return true
 end
 
 --Summon Condition
