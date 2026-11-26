@@ -3,8 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddMaterialCodeList(c,12275533,99733359)
-	aux.AddFusionProcMix(c,true,true,{12275533,99733359},aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE+RACE_DINOSAUR))
+	aux.AddFusionProcCodeFun(c,{12275533,99733359},aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE+RACE_DINOSAUR),1,true,true)
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
