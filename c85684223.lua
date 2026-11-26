@@ -48,11 +48,18 @@ function c85684223.initial_effect(c)
 	e6:SetOperation(c85684223.desop3)
 	e6:SetLabelObject(e4)
 	c:RegisterEffect(e6)
-	--direct attack
 	local e7=Effect.CreateEffect(c)
-	e7:SetType(EFFECT_TYPE_SINGLE)
-	e7:SetCode(EFFECT_DIRECT_ATTACK)
+	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e7:SetRange(LOCATION_MZONE)
+	e7:SetCode(EVENT_CHAIN_END)
+	e7:SetOperation(c85684223.clearop)
+	e7:SetLabelObject(e4)
 	c:RegisterEffect(e7)
+	--direct attack
+	local e8=Effect.CreateEffect(c)
+	e8:SetType(EFFECT_TYPE_SINGLE)
+	e8:SetCode(EFFECT_DIRECT_ATTACK)
+	c:RegisterEffect(e8)
 end
 function c85684223.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and Duel.GetAttackTarget()==nil
@@ -79,13 +86,17 @@ function c85684223.desop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85684223.desop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re==e:GetLabelObject():GetLabelObject() and c:IsRelateToEffect(re) then
+	if re==e:GetLabelObject():GetLabelObject() and :IsFaceup() then
+		e:GetLabelObject():SetLabelObject(nil)
 		if Duel.GetCurrentPhase()==PHASE_DAMAGE and not Duel.IsDamageCalculated() then
 			e:GetLabelObject():SetLabel(1)
 		else
 			if not c:IsDisabled() then Duel.Destroy(c,REASON_EFFECT) end
 		end
 	end
+end
+function c85684223.clearop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():SetLabelObject(nil)
 end
 function c85684223.desop3(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

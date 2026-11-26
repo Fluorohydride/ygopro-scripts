@@ -29,15 +29,23 @@ function c16008155.initial_effect(c)
 	e4:SetOperation(c16008155.desop3)
 	e4:SetLabelObject(e2)
 	c:RegisterEffect(e4)
-	--cannot summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_CANNOT_SUMMON)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e5:SetTargetRange(1,1)
-	e5:SetValue(1)
+	e5:SetCode(EVENT_CHAIN_END)
+	e5:SetOperation(c16008155.clearop)
+	e5:SetLabelObject(e2)
 	c:RegisterEffect(e5)
+	--cannot summon
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_FIELD)
+	e6:SetCode(EFFECT_CANNOT_SUMMON)
+	e6:SetRange(LOCATION_MZONE)
+	e6:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e6:SetTargetRange(1,1)
+	e6:SetValue(1)
+	c:RegisterEffect(e6)
+
 end
 function c16008155.sdcon(e)
 	return e:GetHandler():GetOwnerTargetCount()>0
@@ -52,13 +60,17 @@ function c16008155.desop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c16008155.desop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re==e:GetLabelObject():GetLabelObject() and c:IsRelateToEffect(re) then
+	if re==e:GetLabelObject():GetLabelObject() and c:IsFaceup() then
+		e:GetLabelObject():SetLabelObject(nil)
 		if Duel.GetCurrentPhase()==PHASE_DAMAGE and not Duel.IsDamageCalculated() then
 			e:GetLabelObject():SetLabel(1)
 		else
 			if not c:IsDisabled() then Duel.Destroy(c,REASON_EFFECT) end
 		end
 	end
+end
+function c16008155.clearop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():SetLabelObject(nil)
 end
 function c16008155.desop3(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
