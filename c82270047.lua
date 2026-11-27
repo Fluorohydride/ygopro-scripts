@@ -39,7 +39,7 @@ function c82270047.initial_effect(c)
 	c:RegisterEffect(e7)
 	--tohand
 	local e8=Effect.CreateEffect(c)
-	e8:SetDescription(aux.Stringid(82270047,1))
+	e8:SetDescription(aux.Stringid(82270047,0))
 	e8:SetCategory(CATEGORY_TOHAND)
 	e8:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e8:SetCode(EVENT_TO_GRAVE)

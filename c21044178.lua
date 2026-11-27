@@ -15,7 +15,7 @@ function c21044178.initial_effect(c)
 	c:RegisterEffect(e1)
 	--activate limit
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(21044178,1))
+	e2:SetDescription(aux.Stringid(21044178,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMING_DRAW_PHASE)

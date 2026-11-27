@@ -3,7 +3,7 @@ function c75064463.initial_effect(c)
 	aux.AddCodeList(c,75782277)
 	--search
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(75064463,1))
+	e1:SetDescription(aux.Stringid(75064463,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)

@@ -24,7 +24,7 @@ function c1174075.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1174075,2))
+	e3:SetDescription(aux.Stringid(1174075,1))
 	e3:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e3:SetType(EFFECT_TYPE_QUICK_O)

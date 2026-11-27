@@ -20,7 +20,7 @@ function c63665606.initial_effect(c)
 	c:RegisterEffect(e3)
 	--discard
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(63665606,1))
+	e4:SetDescription(aux.Stringid(63665606,0))
 	e4:SetCategory(CATEGORY_TOGRAVE)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

@@ -3,7 +3,7 @@ function c52913738.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,30646525)
 	--To Deck
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(52913738,1))
+	e1:SetDescription(aux.Stringid(52913738,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c52913738.regcon)

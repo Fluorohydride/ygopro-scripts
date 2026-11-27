@@ -10,7 +10,7 @@ function c28201945.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(28201945,1))
+	e3:SetDescription(aux.Stringid(28201945,0))
 	e3:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_CHAINING)

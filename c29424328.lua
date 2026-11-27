@@ -22,7 +22,7 @@ function c29424328.initial_effect(c)
 	c:RegisterEffect(e3)
 	--confirm deck
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(29424328,1))
+	e4:SetDescription(aux.Stringid(29424328,0))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCode(EVENT_PREDRAW)

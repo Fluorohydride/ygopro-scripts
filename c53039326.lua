@@ -19,7 +19,7 @@ function c53039326.initial_effect(c)
 	--search
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-	e4:SetDescription(aux.Stringid(53039326,0))
+	e4:SetDescription(aux.Stringid(53039326,2))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_EVENT_PLAYER)

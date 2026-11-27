@@ -25,7 +25,7 @@ function c31480215.initial_effect(c)
 	c:RegisterEffect(e3)
 	--lvup
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(31480215,2))
+	e4:SetDescription(aux.Stringid(31480215,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1,31480215)

@@ -17,7 +17,7 @@ function c35058857.initial_effect(c)
 	c:RegisterEffect(e2)
 	--level change
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(35058857,1))
+	e3:SetDescription(aux.Stringid(35058857,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

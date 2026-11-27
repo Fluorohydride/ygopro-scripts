@@ -31,7 +31,7 @@ function c57793869.initial_effect(c)
 	c:RegisterEffect(e5)
 	--Eraser
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(57793869,2))
+	e6:SetDescription(aux.Stringid(57793869,0))
 	e6:SetCategory(CATEGORY_DESTROY)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_TO_GRAVE)

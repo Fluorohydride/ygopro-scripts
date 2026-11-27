@@ -57,7 +57,7 @@ function c15684835.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 		--damage
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(15684835,1))
+		e1:SetDescription(aux.Stringid(15684835,0))
 		e1:SetCategory(CATEGORY_DAMAGE)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

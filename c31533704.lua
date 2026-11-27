@@ -34,7 +34,7 @@ function c31533704.initial_effect(c)
 	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(31533704,3))
+	e5:SetDescription(aux.Stringid(31533704,1))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_MZONE)

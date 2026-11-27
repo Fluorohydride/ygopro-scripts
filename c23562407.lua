@@ -25,7 +25,7 @@ function c23562407.initial_effect(c)
 	c:RegisterEffect(e3)
 	--lp
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(23562407,2))
+	e4:SetDescription(aux.Stringid(23562407,0))
 	e4:SetCategory(CATEGORY_RECOVER)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)

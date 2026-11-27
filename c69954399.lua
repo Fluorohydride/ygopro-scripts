@@ -44,7 +44,7 @@ function c69954399.initial_effect(c)
 	c:RegisterEffect(e5)
 	--tohand
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(69954399,2))
+	e6:SetDescription(aux.Stringid(69954399,1))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_CUSTOM+69954400)

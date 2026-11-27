@@ -25,7 +25,7 @@ function c10004783.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to field
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(10004783,1))
+	e4:SetDescription(aux.Stringid(10004783,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCode(EVENT_TO_GRAVE)

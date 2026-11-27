@@ -3,7 +3,7 @@ function c46159582.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c46159582.ritual_filter)
 	--salvage
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(46159582,1))
+	e1:SetDescription(aux.Stringid(46159582,0))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)

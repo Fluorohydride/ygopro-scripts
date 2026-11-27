@@ -13,7 +13,7 @@ function c39037517.initial_effect(c)
 	c:RegisterEffect(e1)
 	--poschange
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(39037517,0))
+	e2:SetDescription(aux.Stringid(39037517,3))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)

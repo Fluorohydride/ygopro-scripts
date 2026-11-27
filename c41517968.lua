@@ -24,7 +24,7 @@ function c41517968.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(41517968,2))
+	e4:SetDescription(aux.Stringid(41517968,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)

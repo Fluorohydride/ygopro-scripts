@@ -23,7 +23,7 @@ function c78512663.initial_effect(c)
 	c:RegisterEffect(e5)
 	--tohand
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(78512663,2))
+	e6:SetDescription(aux.Stringid(78512663,1))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_TO_DECK)

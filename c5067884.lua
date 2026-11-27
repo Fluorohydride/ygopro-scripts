@@ -54,11 +54,11 @@ function c5067884.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return con1 or con2 end
 	local op=0
 	if con1 and con2 then
-		op=Duel.SelectOption(tp,aux.Stringid(5067884,1),aux.Stringid(5067884,2))
+		op=Duel.SelectOption(tp,aux.Stringid(5067884,1),aux.Stringid(5067884,0))
 	elseif con1 then
 		op=Duel.SelectOption(tp,aux.Stringid(5067884,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(5067884,2))+1
+		op=Duel.SelectOption(tp,aux.Stringid(5067884,0))+1
 	end
 	e:SetLabel(op)
 end

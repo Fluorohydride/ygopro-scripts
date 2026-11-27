@@ -26,7 +26,7 @@ function c10060427.initial_effect(c)
 	c:RegisterEffect(e3)
 	--summon success
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(10060427,0))
+	e3:SetDescription(aux.Stringid(10060427,4))
 	e3:SetCategory(CATEGORY_DESTROY)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

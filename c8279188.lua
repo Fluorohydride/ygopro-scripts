@@ -9,7 +9,7 @@ function c8279188.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(8279188,0))
+	e2:SetDescription(aux.Stringid(8279188,1))
 	e2:SetCategory(CATEGORY_HANDES_SELF)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)

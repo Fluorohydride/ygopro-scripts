@@ -3,7 +3,7 @@ function c38468214.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(38468214,1))
+	e1:SetDescription(aux.Stringid(38468214,0))
 	e1:SetCategory(CATEGORY_CONTROL)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)

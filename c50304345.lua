@@ -26,7 +26,7 @@ function c50304345.regop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=e:GetHandler():GetReasonCard()
 	if r==REASON_SUMMON and rc:IsSetCard(0x8) then
 		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(50304345,1))
+		e1:SetDescription(aux.Stringid(50304345,0))
 		e1:SetCategory(CATEGORY_DRAW)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

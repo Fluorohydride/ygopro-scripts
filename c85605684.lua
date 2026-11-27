@@ -16,7 +16,7 @@ function c85605684.initial_effect(c)
 	c:RegisterEffect(e2)
 	--cost
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(85605684,1))
+	e3:SetDescription(aux.Stringid(85605684,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCode(EVENT_PHASE+PHASE_END)

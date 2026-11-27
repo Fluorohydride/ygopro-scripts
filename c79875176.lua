@@ -29,7 +29,7 @@ function c79875176.initial_effect(c)
 	c:RegisterEffect(e5)
 	--damage
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(79875176,2))
+	e6:SetDescription(aux.Stringid(79875176,0))
 	e6:SetCategory(CATEGORY_DAMAGE)
 	e6:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e6:SetType(EFFECT_TYPE_IGNITION)

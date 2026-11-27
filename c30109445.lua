@@ -44,7 +44,7 @@ function s.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if b1 or b2 then
 		op=aux.SelectFromOptions(tp,
 			{b1,aux.Stringid(id,1),1},
-			{b2,aux.Stringid(id,2),2})
+			{b2,aux.Stringid(id,0),2})
 	end
 	e:SetLabel(op)
 	if op==1 then

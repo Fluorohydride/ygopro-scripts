@@ -55,7 +55,7 @@ function c63730624.initial_effect(c)
 	--destroy
 	local e6=Effect.CreateEffect(c)
 	e6:SetCategory(CATEGORY_DESTROY)
-	e6:SetDescription(aux.Stringid(63730624,1))
+	e6:SetDescription(aux.Stringid(63730624,0))
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_DAMAGE_STEP_END)
 	e6:SetRange(LOCATION_SZONE)

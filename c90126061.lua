@@ -20,7 +20,7 @@ function c90126061.initial_effect(c)
 	c:RegisterEffect(e2)
 	--attach
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(90126061,2))
+	e3:SetDescription(aux.Stringid(90126061,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_PHASE+PHASE_BATTLE)

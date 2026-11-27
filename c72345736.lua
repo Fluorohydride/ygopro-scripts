@@ -20,7 +20,7 @@ function c72345736.initial_effect(c)
 	--draw
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_DRAW)
-	e4:SetDescription(aux.Stringid(72345736,1))
+	e4:SetDescription(aux.Stringid(72345736,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCost(c72345736.drcost)

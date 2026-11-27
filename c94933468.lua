@@ -19,7 +19,7 @@ function c94933468.initial_effect(c)
 	c:RegisterEffect(e2)
 	--discard deck
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(94933468,1))
+	e3:SetDescription(aux.Stringid(94933468,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCategory(CATEGORY_DECKDES)
 	e3:SetCountLimit(1)

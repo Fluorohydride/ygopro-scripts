@@ -25,7 +25,7 @@ function c47819246.initial_effect(c)
 	c:RegisterEffect(e3)
 	--multi attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(47819246,2))
+	e4:SetDescription(aux.Stringid(47819246,0))
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_SZONE)

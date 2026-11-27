@@ -18,7 +18,7 @@ function c76589815.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(76589815,2))
+	e3:SetDescription(aux.Stringid(76589815,0))
 	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)

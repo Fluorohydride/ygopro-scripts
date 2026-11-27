@@ -17,7 +17,7 @@ function c89194033.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atkup
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(89194033,2))
+	e3:SetDescription(aux.Stringid(89194033,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetCondition(c89194033.atkcon)

@@ -5,7 +5,7 @@ function c27383110.initial_effect(c)
 	--salvage
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TOHAND)
-	e2:SetDescription(aux.Stringid(27383110,1))
+	e2:SetDescription(aux.Stringid(27383110,0))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_CUSTOM+27383110)

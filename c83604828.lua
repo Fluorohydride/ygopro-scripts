@@ -18,7 +18,7 @@ function c83604828.initial_effect(c)
 	c:RegisterEffect(e3)
 	--counter
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(83604828,1))
+	e4:SetDescription(aux.Stringid(83604828,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_BATTLE_DESTROYED)
 	e4:SetOperation(c83604828.ctop)

@@ -5,7 +5,7 @@ function c81330115.initial_effect(c)
 	c:EnableReviveLimit()
 	--remove material
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(81330115,2))
+	e1:SetDescription(aux.Stringid(81330115,0))
 	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)

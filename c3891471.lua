@@ -26,7 +26,7 @@ function c3891471.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Destroy2
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(3891471,2))
+	e4:SetDescription(aux.Stringid(3891471,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetTarget(c3891471.damtg)

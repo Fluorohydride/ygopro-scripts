@@ -8,7 +8,7 @@ function c53956001.initial_effect(c)
 	c:RegisterEffect(e1)
 	--effect gain
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(53956001,1))
+	e2:SetDescription(aux.Stringid(53956001,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

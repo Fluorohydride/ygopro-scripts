@@ -117,7 +117,7 @@ function s.desop(e,tp,eg,ep,ev,re,r,rp)
 	local hg=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 	local fg=Duel.GetFieldGroup(tp,0,LOCATION_ONFIELD)
 	local g
-	if #hg>0 and (#fg==0 or Duel.SelectOption(tp,aux.Stringid(id,4),aux.Stringid(id,5))==0) then
+	if #hg>0 and (#fg==0 or Duel.SelectOption(tp,aux.Stringid(id,3),aux.Stringid(id,5))==0) then
 		g=hg:RandomSelect(tp,1)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

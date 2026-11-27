@@ -18,7 +18,7 @@ function c40101111.initial_effect(c)
 	c:RegisterEffect(e3)
 	--fusion success
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(40101111,2))
+	e4:SetDescription(aux.Stringid(40101111,0))
 	e4:SetCategory(CATEGORY_RECOVER)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)

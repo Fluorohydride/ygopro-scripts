@@ -25,7 +25,7 @@ function c29612557.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(29612557,1))
+	e4:SetDescription(aux.Stringid(29612557,0))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_LEAVE_FIELD)

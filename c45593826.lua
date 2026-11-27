@@ -21,7 +21,7 @@ function c45593826.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to deck top
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(45593826,2))
+	e3:SetDescription(aux.Stringid(45593826,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_TO_GRAVE)

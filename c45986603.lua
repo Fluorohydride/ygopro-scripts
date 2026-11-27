@@ -12,7 +12,7 @@ function c45986603.initial_effect(c)
 	c:RegisterEffect(e1)
 	--recover
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(45986603,1))
+	e2:SetDescription(aux.Stringid(45986603,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCategory(CATEGORY_RECOVER)
 	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)

@@ -29,7 +29,7 @@ function c71315423.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.Equip(tp,c,tc,false) then return end
 	--damage
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(71315423,1))
+	e1:SetDescription(aux.Stringid(71315423,0))
 	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)

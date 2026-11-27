@@ -12,7 +12,7 @@ function c55554175.initial_effect(c)
 	c:RegisterEffect(e1)
 	--scale
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(55554175,1))
+	e2:SetDescription(aux.Stringid(55554175,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

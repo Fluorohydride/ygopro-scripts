@@ -13,7 +13,7 @@ function c78835747.initial_effect(c)
 	c:RegisterEffect(e2)
 	--attack all
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(78835747,1))
+	e3:SetDescription(aux.Stringid(78835747,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)

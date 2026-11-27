@@ -26,7 +26,7 @@ function c56074358.initial_effect(c)
 	--special summon
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e4:SetDescription(aux.Stringid(56074358,2))
+	e4:SetDescription(aux.Stringid(56074358,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCode(EVENT_TO_GRAVE)
