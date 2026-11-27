@@ -39,10 +39,16 @@ end
 function s.otfilter(c,tp)
 	return c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_PENDULUM+TYPE_LINK) and (c:IsControler(tp) or c:IsFaceup())
 end
+function s.otexfilter(c,mg)
+	return c:IsHasEffect(EFFECT_EXTRA_RELEASE) and not mg:IsContains(c)
+end
 function s.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(s.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
+	if Duel.IsExistingMatchingCard(s.otexfilter,tp,0,LOCATION_MZONE,1,nil,mg) then
+		return false
+	end
 	return c:IsLevelAbove(7) and minc<=1 and Duel.CheckTribute(c,1,1,mg)
 end
 function s.otop(e,tp,eg,ep,ev,re,r,rp,c)
