@@ -6,7 +6,7 @@ function c29537493.initial_effect(c)
 	e1:SetCountLimit(1,29537493)
 	--search
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(29537493,1))
+	e2:SetDescription(aux.Stringid(29537493,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_DELAY)

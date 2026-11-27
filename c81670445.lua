@@ -26,7 +26,7 @@ function c81670445.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atkup
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(81670445,1))
+	e4:SetDescription(aux.Stringid(81670445,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)

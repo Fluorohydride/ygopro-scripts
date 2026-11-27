@@ -27,7 +27,7 @@ function c93473606.initial_effect(c)
 	c:RegisterEffect(e2)
 	--switch
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(93473606,1))
+	e3:SetDescription(aux.Stringid(93473606,2))
 	e3:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)

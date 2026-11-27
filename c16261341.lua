@@ -24,7 +24,7 @@ function c16261341.initial_effect(c)
 	c:RegisterEffect(e5)
 	--search
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(16261341,2))
+	e6:SetDescription(aux.Stringid(16261341,1))
 	e6:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_BATTLE_DAMAGE)

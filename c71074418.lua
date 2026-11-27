@@ -27,7 +27,7 @@ function c71074418.initial_effect(c)
 	c:RegisterEffect(e2)
 	--return
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(71074418,1))
+	e3:SetDescription(aux.Stringid(71074418,2))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_MZONE)

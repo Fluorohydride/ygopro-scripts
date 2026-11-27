@@ -22,7 +22,7 @@ function c82257671.initial_effect(c)
 	c:RegisterEffect(e2)
 	--immune
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(82257671,2))
+	e3:SetDescription(aux.Stringid(82257671,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

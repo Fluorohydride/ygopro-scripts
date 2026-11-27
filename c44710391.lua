@@ -29,7 +29,7 @@ function c44710391.initial_effect(c)
 	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(44710391,2))
+	e5:SetDescription(aux.Stringid(44710391,0))
 	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DELAY)

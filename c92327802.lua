@@ -14,7 +14,7 @@ function c92327802.initial_effect(c)
 	--atkup
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
-	e2:SetDescription(aux.Stringid(92327802,1))
+	e2:SetDescription(aux.Stringid(92327802,0))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)

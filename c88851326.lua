@@ -40,7 +40,7 @@ function c88851326.initial_effect(c)
 	c:RegisterEffect(e5)
 	--add tohand
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(88851326,2))
+	e6:SetDescription(aux.Stringid(88851326,1))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_PREDRAW)

@@ -3,7 +3,7 @@ function c81599449.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--to grave/search
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(81599449,1))
+	e1:SetDescription(aux.Stringid(81599449,0))
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1,81599449)

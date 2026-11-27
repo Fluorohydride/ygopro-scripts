@@ -19,7 +19,7 @@ function c95793022.initial_effect(c)
 	c:RegisterEffect(e3)
 	--attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(95793022,1))
+	e4:SetDescription(aux.Stringid(95793022,0))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)

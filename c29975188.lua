@@ -4,7 +4,7 @@ function c29975188.initial_effect(c)
 	aux.EnableChangeCode(c,70095154,LOCATION_MZONE+LOCATION_GRAVE)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(29975188,1))
+	e2:SetDescription(aux.Stringid(29975188,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)

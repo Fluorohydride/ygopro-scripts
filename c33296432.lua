@@ -21,7 +21,7 @@ function c33296432.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon2
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(33296432,2))
+	e3:SetDescription(aux.Stringid(33296432,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)

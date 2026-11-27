@@ -13,7 +13,7 @@ function c3966653.initial_effect(c)
 	c:RegisterEffect(e2)
 	--activate limit
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(3966653,1))
+	e3:SetDescription(aux.Stringid(3966653,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)
 	e3:SetRange(LOCATION_MZONE)

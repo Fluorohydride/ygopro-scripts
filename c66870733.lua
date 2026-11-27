@@ -15,7 +15,7 @@ function c66870733.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk/def down
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(66870733,2))
+	e2:SetDescription(aux.Stringid(66870733,0))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)

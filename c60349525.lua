@@ -8,7 +8,7 @@ function c60349525.initial_effect(c)
 	c:RegisterEffect(e1)
 	--reduce
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(60349525,1))
+	e2:SetDescription(aux.Stringid(60349525,0))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)

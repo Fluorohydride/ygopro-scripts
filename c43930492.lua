@@ -25,7 +25,7 @@ function c43930492.initial_effect(c)
 	c:RegisterEffect(e2)
 	--set
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(43930492,2))
+	e3:SetDescription(aux.Stringid(43930492,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCategory(CATEGORY_SSET)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
