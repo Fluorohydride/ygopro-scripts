@@ -26,7 +26,7 @@ function c65285459.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate attack
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(65285459,2))
+	e4:SetDescription(aux.Stringid(65285459,1))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BE_BATTLE_TARGET)
 	e4:SetRange(LOCATION_MZONE)

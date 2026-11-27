@@ -16,7 +16,7 @@ function c27143874.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk clear
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(27143874,2))
+	e3:SetDescription(aux.Stringid(27143874,1))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_BATTLED)
 	e3:SetCondition(c27143874.retcon)

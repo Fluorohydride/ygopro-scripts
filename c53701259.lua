@@ -64,7 +64,7 @@ function c53701259.initial_effect(c)
 	c:RegisterEffect(e7)
 	--to hand
 	local e8=Effect.CreateEffect(c)
-	e8:SetDescription(aux.Stringid(53701259,1))
+	e8:SetDescription(aux.Stringid(53701259,0))
 	e8:SetCategory(CATEGORY_TOHAND)
 	e8:SetType(EFFECT_TYPE_QUICK_O)
 	e8:SetCode(EVENT_FREE_CHAIN)
