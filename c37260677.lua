@@ -28,6 +28,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 s.material_type=TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK
+function s.synchro_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionSetCard,0x150,Card.IsFusionType,TYPE_SYNCHRO)
+end
 function s.mfilter(c)
 	return c:IsFusionType(TYPE_FUSION|TYPE_SYNCHRO|TYPE_XYZ|TYPE_LINK)
 end

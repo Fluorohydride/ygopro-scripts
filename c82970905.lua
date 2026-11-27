@@ -65,7 +65,7 @@ function s.ngtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function s.ngop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelatedToChain(ev) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
