@@ -23,7 +23,7 @@ function c77967790.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk limit
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(77967790,0))
+	e3:SetDescription(aux.Stringid(77967790,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_PHASE+PHASE_BATTLE_START)

@@ -12,7 +12,7 @@ function c80250319.initial_effect(c)
 	c:RegisterEffect(e1)
 	--special summon from deck
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(80250319,1))
+	e2:SetDescription(aux.Stringid(80250319,2))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DESTROYED)

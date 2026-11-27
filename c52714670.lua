@@ -20,7 +20,7 @@ function c52714670.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(52714670,1))
+	e4:SetDescription(aux.Stringid(52714670,2))
 	e4:SetCategory(CATEGORY_REMOVE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_REMOVE)

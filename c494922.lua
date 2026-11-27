@@ -11,7 +11,7 @@ function c494922.initial_effect(c)
 	c:RegisterEffect(e1)
 	--set
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(494922,0))
+	e2:SetDescription(aux.Stringid(494922,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCategory(CATEGORY_SSET)

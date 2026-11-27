@@ -21,7 +21,7 @@ function c78135071.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(78135071,1))
+	e3:SetDescription(aux.Stringid(78135071,2))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1,78135072)

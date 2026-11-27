@@ -24,7 +24,7 @@ function c26873574.initial_effect(c)
 	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(26873574,0))
+	e3:SetDescription(aux.Stringid(26873574,1))
 	e3:SetCategory(CATEGORY_REMOVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)

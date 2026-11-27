@@ -13,7 +13,7 @@ function c879958.initial_effect(c)
 	c:RegisterEffect(e1)
 	--extra attack
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(879958,1))
+	e2:SetDescription(aux.Stringid(879958,0))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

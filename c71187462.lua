@@ -13,7 +13,7 @@ function c71187462.initial_effect(c)
 	c:RegisterEffect(e1)
 	--speical summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(71187462,0))
+	e2:SetDescription(aux.Stringid(71187462,1))
 	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)

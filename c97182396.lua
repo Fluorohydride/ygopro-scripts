@@ -26,7 +26,7 @@ function c97182396.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(97182396,2))
+	e3:SetDescription(aux.Stringid(97182396,1))
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_CHAINING)

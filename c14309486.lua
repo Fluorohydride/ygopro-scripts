@@ -13,7 +13,7 @@ function c14309486.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable spsummon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(14309486,0))
+	e2:SetDescription(aux.Stringid(14309486,3))
 	e2:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)

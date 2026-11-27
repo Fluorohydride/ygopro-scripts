@@ -40,7 +40,7 @@ function c87460579.initial_effect(c)
 	c:RegisterEffect(e7)
 	--special summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(87460579,1))
+	e5:SetDescription(aux.Stringid(87460579,2))
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)

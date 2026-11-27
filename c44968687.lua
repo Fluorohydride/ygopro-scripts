@@ -47,7 +47,7 @@ function c44968687.initial_effect(c)
 	c:RegisterEffect(e6)
 	--double damage
 	local e7=Effect.CreateEffect(c)
-	e7:SetDescription(aux.Stringid(44968687,1))
+	e7:SetDescription(aux.Stringid(44968687,2))
 	e7:SetType(EFFECT_TYPE_IGNITION)
 	e7:SetRange(LOCATION_MZONE)
 	e7:SetCountLimit(1)

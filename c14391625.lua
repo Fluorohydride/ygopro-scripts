@@ -4,7 +4,7 @@ function c14391625.initial_effect(c)
 	aux.EnableChangeCode(c,56099748,LOCATION_MZONE+LOCATION_GRAVE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(14391625,0))
+	e1:SetDescription(aux.Stringid(14391625,1))
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)

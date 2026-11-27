@@ -23,7 +23,7 @@ function c64184058.initial_effect(c)
 	c:RegisterEffect(e3)
 	--neg damage
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(64184058,1))
+	e4:SetDescription(aux.Stringid(64184058,2))
 	e4:SetCategory(CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_QUICK_F)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)

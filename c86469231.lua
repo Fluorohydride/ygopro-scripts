@@ -12,7 +12,7 @@ function c86469231.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to grave
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(86469231,0))
+	e2:SetDescription(aux.Stringid(86469231,1))
 	e2:SetCategory(CATEGORY_TOGRAVE+CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)

@@ -20,7 +20,7 @@ function c66078354.initial_effect(c)
 	c:RegisterEffect(e2)
 	--set card
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(66078354,1))
+	e3:SetDescription(aux.Stringid(66078354,2))
 	e3:SetCategory(CATEGORY_SSET)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_PHASE+PHASE_BATTLE)

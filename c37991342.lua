@@ -50,7 +50,7 @@ function c37991342.initial_effect(c)
 	c:RegisterEffect(e7)
 	--destroy
 	local e8=Effect.CreateEffect(c)
-	e8:SetDescription(aux.Stringid(37991342,0))
+	e8:SetDescription(aux.Stringid(37991342,1))
 	e8:SetCategory(CATEGORY_DESTROY)
 	e8:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e8:SetCode(EVENT_RELEASE)

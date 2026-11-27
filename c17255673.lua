@@ -29,7 +29,7 @@ function c17255673.initial_effect(c)
 	c:RegisterEffect(e4)
 	--extra attack
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(17255673,0))
+	e5:SetDescription(aux.Stringid(17255673,2))
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e5:SetRange(LOCATION_FZONE)
 	e5:SetCode(EVENT_DAMAGE_STEP_END)

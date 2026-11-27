@@ -17,7 +17,7 @@ function c79698395.initial_effect(c)
 	c:RegisterEffect(e2)
 	--eff gain/direct attack/cannot be battle target
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(79698395,0))
+	e3:SetDescription(aux.Stringid(79698395,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_SZONE)

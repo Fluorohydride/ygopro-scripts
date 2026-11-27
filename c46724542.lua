@@ -8,7 +8,7 @@ function c46724542.initial_effect(c)
 	aux.EnableChangeCode(c,70095154,LOCATION_MZONE+LOCATION_GRAVE)
 	--atk/def
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(46724542,0))
+	e2:SetDescription(aux.Stringid(46724542,1))
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e2:SetCode(EVENT_FREE_CHAIN)

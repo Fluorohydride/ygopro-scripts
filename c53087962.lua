@@ -27,7 +27,7 @@ function c53087962.initial_effect(c)
 	c:RegisterEffect(e3)
 	--to hand
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(53087962,0))
+	e4:SetDescription(aux.Stringid(53087962,1))
 	e4:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)

@@ -28,7 +28,7 @@ function c32965616.initial_effect(c)
 	c:RegisterEffect(e4)
 	--disable special summon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(32965616,0))
+	e5:SetDescription(aux.Stringid(32965616,1))
 	e5:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_SPSUMMON)

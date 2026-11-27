@@ -10,7 +10,7 @@ function c81974607.initial_effect(c)
 	c:RegisterEffect(e1)
 	--lvup
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(81974607,0))
+	e2:SetDescription(aux.Stringid(81974607,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c81974607.lvcost)
