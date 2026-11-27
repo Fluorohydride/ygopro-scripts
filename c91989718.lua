@@ -1,5 +1,6 @@
 --アタック・リフレクター・ユニット
 function c91989718.initial_effect(c)
+	aux.AddCodeList(c,70095154,68774379)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

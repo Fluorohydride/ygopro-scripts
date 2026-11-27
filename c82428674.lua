@@ -1,5 +1,6 @@
 --サイバネティック・オーバーフロー
 function c82428674.initial_effect(c)
+	aux.AddCodeList(c,70095154)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_REMOVE)

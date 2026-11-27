@@ -1,5 +1,6 @@
 --エヴォリューション・バースト
 function c52875873.initial_effect(c)
+	aux.AddCodeList(c,70095154)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY)

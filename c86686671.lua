@@ -1,5 +1,6 @@
 --サイバー・リペア・プラント
 function c86686671.initial_effect(c)
+	aux.AddCodeList(c,70095154)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

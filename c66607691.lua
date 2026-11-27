@@ -1,5 +1,6 @@
 --フォトン・ジェネレーター・ユニット
 function c66607691.initial_effect(c)
+	aux.AddCodeList(c,70095154,4162088)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
