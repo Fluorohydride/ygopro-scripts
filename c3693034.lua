@@ -14,7 +14,7 @@ function c3693034.initial_effect(c)
 	c:RegisterEffect(e1)
 	--position change
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(3693034,0))
+	e2:SetDescription(aux.Stringid(3693034,1))
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
