@@ -14,7 +14,7 @@ function c9175957.initial_effect(c)
 	c:RegisterEffect(e1)
 	--material
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(9175957,0))
+	e2:SetDescription(aux.Stringid(9175957,3))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
