@@ -73,19 +73,22 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	end
 end
+function s.cfilter(c)
+	return c:GetPreviousTypeOnField()&TYPE_MONSTER~=0
+end
 function s.calfilter(c,p)
-	return c:GetTextAttack()>0 and c:IsType(TYPE_MONSTER) and c:IsPreviousControler(p)
+	return c:GetTextAttack()>0 and aux.covcheck(c) and c:IsPreviousControler(p)
 end
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsType,1,nil,TYPE_MONSTER)
+	return eg:IsExists(s.cfilter,1,nil)
 end
 function s.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local tg,pct,player=eg:Filter(Card.IsType,nil,TYPE_MONSTER),0,0
+	local pct,player=0,0
 	local map={}
 	for p in aux.TurnPlayers() do
 		local dmg=0
-		local dg=tg:Filter(s.calfilter,nil,p)
+		local dg=eg:Filter(s.calfilter,nil,p)
 		if dg:GetCount()>0 then
 			dmg=dg:GetSum(Card.GetTextAttack)
 			pct=pct+1
@@ -95,7 +98,9 @@ function s.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(map[tp],map[1-tp])
 	if pct==2 then player=PLAYER_ALL end
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,player,map[tp]+map[1-tp])
+	if pct>0 then
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,player,map[tp]+map[1-tp])
+	end
 end
 function s.damop(e,tp,eg,ep,ev,re,r,rp)
 	local dmg1,dmg2=e:GetLabel()
