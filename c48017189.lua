@@ -42,7 +42,7 @@ function s.cfilter(c,tp,se)
 end
 function s.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local se=e:GetLabelObject():GetLabelObject()
-	return eg:IsExists(s.cfilter,1,nil,tp,se)
+	return eg:IsExists(s.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsAbleToHand() end

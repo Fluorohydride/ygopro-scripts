@@ -11,6 +11,7 @@ function c79402185.initial_effect(c)
 	e1:SetOperation(c79402185.activate)
 	c:RegisterEffect(e1)
 	--to hand
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -18,6 +19,7 @@ function c79402185.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,79402185)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c79402185.thcon)
 	e2:SetTarget(c79402185.thtg)
 	e2:SetOperation(c79402185.thop)
@@ -60,10 +62,12 @@ function c79402185.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79402185.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c79402185.thfilter,1,nil) and not eg:IsContains(e:GetHandler())
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c79402185.thfilter,1,nil,se) and not eg:IsContains(e:GetHandler())
 end
-function c79402185.thfilter(c)
+function c79402185.thfilter(c,se)
 	return (c:IsCode(85066822) or c:IsCode(6022371)) and c:IsPreviousLocation(LOCATION_ONFIELD)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c79402185.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

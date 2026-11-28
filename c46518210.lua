@@ -35,7 +35,7 @@ function s.cfilter(c,se)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local se=e:GetLabelObject():GetLabelObject()
-	return eg:IsExists(s.cfilter,1,e:GetHandler(),se)
+	return eg:IsExists(s.cfilter,1,nil,se) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

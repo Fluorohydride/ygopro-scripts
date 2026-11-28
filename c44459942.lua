@@ -13,6 +13,7 @@ function s.initial_effect(c)
 	e1:SetOperation(s.activate)
 	c:RegisterEffect(e1)
 	--special summon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON|CATEGORY_TOKEN)
@@ -21,6 +22,7 @@ function s.initial_effect(c)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,id)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(s.spcon)
 	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(s.sptg)
@@ -53,15 +55,17 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function s.cspfilter(c,tp)
+function s.cspfilter(c,tp,se)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0
 		and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_DARK)
 		and c:IsType(TYPE_MONSTER) and not c:IsReason(REASON_BATTLE)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cspfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(s.cspfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

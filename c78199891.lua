@@ -13,6 +13,7 @@ function c78199891.initial_effect(c)
 	e1:SetOperation(c78199891.activate)
 	c:RegisterEffect(e1)
 	--to hand
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(78199891,1))
 	e2:SetCategory(CATEGORY_TOHAND)
@@ -21,6 +22,7 @@ function c78199891.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,78199892)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c78199891.thcon)
 	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c78199891.thtg)
@@ -60,11 +62,13 @@ function c78199891.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c78199891.ctfilter(c,tp)
+function c78199891.ctfilter(c,tp,se)
 	return c:IsControler(tp) and c:IsType(TYPE_EQUIP)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c78199891.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c78199891.ctfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c78199891.ctfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c78199891.thfilter(c)
 	return c:IsType(TYPE_EQUIP) and c:IsAbleToHand()

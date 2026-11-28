@@ -12,6 +12,7 @@ function c51617185.initial_effect(c)
 	e1:SetOperation(c51617185.spop1)
 	c:RegisterEffect(e1)
 	--spsummon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(51617185,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -20,6 +21,8 @@ function c51617185.initial_effect(c)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,51617185)
+	e2:SetLabelObject(e0)
+	e2:SetCondition(c51617185.spcon2)
 	e2:SetCost(c51617185.spcost2)
 	e2:SetTarget(c51617185.sptg2)
 	e2:SetOperation(c51617185.spop2)
@@ -45,15 +48,20 @@ function c51617185.spop1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c51617185.cfilter(c,tp)
+function c51617185.cfilter(c,tp,se)
 	return c:IsCode(5556499) and c:IsControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsPreviousControler(tp) and c:IsAbleToRemoveAsCost()
+		and c:IsPreviousControler(tp) and (se==nil or c:GetReasonEffect()~=se)
+end
+function c51617185.spcon2(e,tp,eg,ep,ev,re,r,rp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c51617185.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c51617185.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not eg:IsContains(e:GetHandler()) and eg:IsExists(c51617185.cfilter,1,nil,tp) end
+	local g=eg:Filter(c51617185.cfilter,nil,tp):Filter(Card.IsAbleToRemoveAsCost,nil)
+	if chk==0 then return g:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=eg:FilterSelect(tp,c51617185.cfilter,1,1,nil,tp)
+	g=g:Select(tp,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c51617185.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)

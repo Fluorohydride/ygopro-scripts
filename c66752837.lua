@@ -7,6 +7,7 @@ function c66752837.initial_effect(c)
 	e1:SetValue(c66752837.tricon)
 	c:RegisterEffect(e1)
 	--spsummon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -14,6 +15,7 @@ function c66752837.initial_effect(c)
 	e2:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,66752837)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c66752837.spcon)
 	e2:SetTarget(c66752837.sptg)
 	e2:SetOperation(c66752837.spop)
@@ -23,14 +25,19 @@ function c66752837.tricon(e,c)
 	local ec=e:GetHandler()
 	return c:IsRace(RACE_DRAGON) and (ec:IsFaceup() or c:GetControler()==ec:GetControler())
 end
-function c66752837.cfilter(c)
+function c66752837.cfilter(c,se)
 	return c:IsRace(RACE_DRAGON) and c:GetPreviousRaceOnField()==RACE_DRAGON
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsCode(66752837)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c66752837.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsContains(e:GetHandler()) then return false end
-	local g=eg:Filter(c66752837.cfilter,nil)
+	local se=nil
+	if not e:GetHandler():IsLocation(LOCATION_HAND) then
+		if eg:IsContains(e:GetHandler()) then return false end
+		se=e:GetLabelObject():GetLabelObject()
+	end
+	local g=eg:Filter(c66752837.cfilter,nil,se)
 	if g:GetCount()==0 then return false end
 	e:SetLabel(0)
 	if g:IsExists(Card.IsType,1,nil,TYPE_NORMAL) then

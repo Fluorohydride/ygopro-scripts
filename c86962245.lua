@@ -14,6 +14,7 @@ function c86962245.initial_effect(c)
 	e1:SetOperation(c86962245.operation)
 	c:RegisterEffect(e1)
 	--spsummon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(86962245,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -22,6 +23,7 @@ function c86962245.initial_effect(c)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,86962245)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c86962245.spcon)
 	e2:SetTarget(c86962245.sptg)
 	e2:SetOperation(c86962245.spop)
@@ -64,12 +66,14 @@ function c86962245.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(sc,REASON_EFFECT)
 	end
 end
-function c86962245.spfilter(c,tp)
+function c86962245.spfilter(c,tp,se)
 	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_SZONE)
 		and c:IsPreviousControler(1-tp) and c:GetPreviousSequence()<5
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c86962245.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c86962245.spfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c86962245.spfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c86962245.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
