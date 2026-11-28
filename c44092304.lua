@@ -78,7 +78,8 @@ function s.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local race=ec:GetOriginalRace()
 	local attr=ec:GetOriginalAttribute()
 	local atk=ec:GetBaseAttack()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return ec:IsType(TYPE_MONSTER)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,id+o,0,TYPES_TOKEN_MONSTER,atk,0,1,race,attr) end
 	e:SetLabel(race,attr,atk)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
