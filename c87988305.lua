@@ -15,6 +15,7 @@ function c87988305.initial_effect(c)
 	e1:SetOperation(c87988305.operation)
 	c:RegisterEffect(e1)
 	--tohand
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(87988305,1))
 	e2:SetCategory(CATEGORY_TOHAND)
@@ -23,6 +24,7 @@ function c87988305.initial_effect(c)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,87988306)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c87988305.thcon)
 	e2:SetTarget(c87988305.thtg)
 	e2:SetOperation(c87988305.thop)
@@ -64,11 +66,13 @@ function c87988305.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	Duel.SpecialSummonComplete()
 end
-function c87988305.cfilter(c,tp)
+function c87988305.cfilter(c,tp,se)
 	return c:IsLevel(8) and c:IsRace(RACE_FIEND) and c:IsControler(tp)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c87988305.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c87988305.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c87988305.cfilter,1,nil,tp,se)
 end
 function c87988305.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

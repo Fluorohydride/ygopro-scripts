@@ -59,7 +59,7 @@ function s.spfilter2(c,re,tp)
 		and (not c:IsPreviousLocation(LOCATION_ONFIELD) or bit.band(c:GetPreviousTypeOnField(),TYPE_SPELL+TYPE_TRAP)~=0)
 end
 function s.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.spfilter2,1,nil,re,tp)
+	return eg:IsExists(s.spfilter2,1,nil,re,tp) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

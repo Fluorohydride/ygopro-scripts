@@ -1,6 +1,7 @@
 --魔晶龍ジルドラス
 function c11074235.initial_effect(c)
 	--special summon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(11074235,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SSET)
@@ -9,6 +10,7 @@ function c11074235.initial_effect(c)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,11074235)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c11074235.spcon)
 	e1:SetTarget(c11074235.sptg)
 	e1:SetOperation(c11074235.spop)
@@ -17,12 +19,14 @@ function c11074235.initial_effect(c)
 	e2:SetCode(EVENT_REMOVE)
 	c:RegisterEffect(e2)
 end
-function c11074235.cfilter(c,tp)
+function c11074235.cfilter(c,tp,se)
 	return bit.band(c:GetPreviousTypeOnField(),TYPE_SPELL+TYPE_TRAP)~=0 and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c11074235.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c11074235.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c11074235.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c11074235.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

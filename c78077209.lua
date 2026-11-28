@@ -2,6 +2,7 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--special summon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -10,6 +11,7 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,id)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(s.spcon)
 	e1:SetTarget(s.sptg)
 	e1:SetOperation(s.spop)
@@ -27,11 +29,13 @@ function s.initial_effect(c)
 	e2:SetOperation(s.thop)
 	c:RegisterEffect(e2)
 end
-function s.cfilter(c,tp)
+function s.cfilter(c,tp,se)
 	return c:IsRace(RACE_FIEND) and c:IsReason(REASON_EFFECT) and c:IsControler(tp) and not c:IsCode(id)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(s.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(s.cfilter,1,nil,tp,se)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
