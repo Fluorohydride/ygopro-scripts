@@ -32,6 +32,9 @@ function s.cfilter(c,se)
 	return c:IsLevel(10) and not c:IsCode(id) and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsLocation(LOCATION_HAND) then
+		return eg:IsExists(s.cfilter,1,nil)
+	end
 	local se=e:GetLabelObject():GetLabelObject()
 	return eg:IsExists(s.cfilter,1,nil,se) and not eg:IsContains(e:GetHandler())
 end

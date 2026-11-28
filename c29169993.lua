@@ -23,6 +23,7 @@ function c29169993.initial_effect(c)
 	e2:SetOperation(c29169993.thop)
 	c:RegisterEffect(e2)
 	--special summon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(29169993,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -31,6 +32,7 @@ function c29169993.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCountLimit(1,29169993)
+	e3:SetLabelObject(e0)
 	e3:SetCondition(c29169993.spcon)
 	e3:SetTarget(c29169993.sptg)
 	e3:SetOperation(c29169993.spop)
@@ -61,11 +63,13 @@ function c29169993.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
-function c29169993.cfilter(c,tp)
+function c29169993.cfilter(c,tp,se)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x9f) and c:IsPreviousLocation(LOCATION_HAND) and c:IsControler(tp)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c29169993.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c29169993.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c29169993.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c29169993.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

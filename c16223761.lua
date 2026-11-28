@@ -1,6 +1,7 @@
 --サンダー・ハンド
 function c16223761.initial_effect(c)
 	--spsummon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(16223761,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)
@@ -9,19 +10,24 @@ function c16223761.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,16223761)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c16223761.spcon)
 	e1:SetTarget(c16223761.sptg)
 	e1:SetOperation(c16223761.spop)
 	c:RegisterEffect(e1)
 end
-function c16223761.cfilter(c,tp)
+function c16223761.cfilter(c,tp,se)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:GetBaseAttack()==1600 or c:GetBaseDefense()==1600)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c16223761.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return eg:IsExists(c16223761.cfilter,1,nil,tp) and (c:IsLocation(LOCATION_HAND) or not eg:IsContains(c))
+	if e:GetHandler():IsLocation(LOCATION_HAND) then
+		return eg:IsExists(c16223761.cfilter,1,nil,tp)
+	end
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c16223761.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c16223761.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

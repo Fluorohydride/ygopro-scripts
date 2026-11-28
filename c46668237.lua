@@ -1,24 +1,32 @@
 --森の番人グリーン・バブーン
 function c46668237.initial_effect(c)
 	--spsummon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(46668237,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCode(EVENT_TO_GRAVE)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c46668237.condition)
 	e1:SetCost(c46668237.cost)
 	e1:SetTarget(c46668237.target)
 	e1:SetOperation(c46668237.operation)
 	c:RegisterEffect(e1)
 end
-function c46668237.cfilter(c,tp)
+function c46668237.cfilter(c,tp,se)
 	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_BEAST) and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetPreviousRaceOnField(),RACE_BEAST)~=0
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c46668237.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c46668237.cfilter,1,nil,tp) and bit.band(r,REASON_DESTROY+REASON_EFFECT)==REASON_DESTROY+REASON_EFFECT
+	if bit.band(r,REASON_DESTROY+REASON_EFFECT)~=REASON_DESTROY+REASON_EFFECT then return false end
+	if e:GetHandler():IsLocation(LOCATION_HAND) then
+		return eg:IsExists(c46668237.cfilter,1,nil,tp)
+	end
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c46668237.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c46668237.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end

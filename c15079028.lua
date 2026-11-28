@@ -13,6 +13,7 @@ function c15079028.initial_effect(c)
 	e1:SetOperation(c15079028.thop)
 	c:RegisterEffect(e1)
 	--to deck
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(15079028,1))
 	e2:SetCategory(CATEGORY_TODECK)
@@ -21,6 +22,7 @@ function c15079028.initial_effect(c)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,15079028)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c15079028.tdcon)
 	e2:SetTarget(c15079028.tdtg)
 	e2:SetOperation(c15079028.tdop)
@@ -49,12 +51,14 @@ function c15079028.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c15079028.cfilter(c,tp)
+function c15079028.cfilter(c,tp,se)
 	return c:IsRace(RACE_FAIRY)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c15079028.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c15079028.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c15079028.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function c15079028.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeck() end

@@ -25,6 +25,9 @@ function c11074235.cfilter(c,tp,se)
 		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c11074235.spcon(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsLocation(LOCATION_HAND) then
+		return eg:IsExists(c11074235.cfilter,1,nil,tp)
+	end
 	local se=e:GetLabelObject():GetLabelObject()
 	return eg:IsExists(c11074235.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end

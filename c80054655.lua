@@ -3,6 +3,7 @@ local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,60800381)
 	--spsummon
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_POSITION)
@@ -11,16 +12,22 @@ function s.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetRange(LOCATION_GRAVE+LOCATION_HAND)
 	e1:SetCountLimit(1,id)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(s.spcon)
 	e1:SetTarget(s.sptg)
 	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
 end
-function s.cfilter(c,tp)
+function s.cfilter(c,tp,se)
 	return c:GetOwner()==tp and c:IsType(TYPE_TUNER)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	if e:GetHandler():IsLocation(LOCATION_HAND) then
+		return eg:IsExists(s.cfilter,1,nil,tp)
+	end
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(s.cfilter,1,nil,tp,se) and not eg:IsContains(e:GetHandler())
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
