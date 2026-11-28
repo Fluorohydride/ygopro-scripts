@@ -50,7 +50,8 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(s.disfilter,nil,tp,e)
 	local dg=Duel.GetMatchingGroup(s.desfilter,tp,LOCATION_MZONE,0,nil)
 	if chkc then return g:IsContains(chkc) end
-	if chk==0 then return g:GetCount()>0 and (dg:GetCount()>1 or dg~=g) end
+	if chk==0 then return dg:GetCount()>0
+		and Duel.IsExistingTarget(s.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,g,dg) end
 	local sg
 	if g:GetCount()==1 then
 		sg=g:Clone()
@@ -60,9 +61,7 @@ function s.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		sg=Duel.SelectTarget(tp,s.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,g,dg)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,sg,1,0,0)
-	if dg:GetCount()>0 then
-		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	end
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,1,0,0)
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tgc=Duel.GetFirstTarget()
@@ -70,6 +69,9 @@ function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	if tgc and tgc:IsRelateToChain() then tc=tgc end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local sg=Duel.SelectMatchingCard(tp,s.desfilter,tp,LOCATION_MZONE,0,1,1,tc)
+	if sg:GetCount()==0 then
+		sg=Duel.SelectMatchingCard(tp,s.desfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	end
 	if sg:GetCount()>0 then
 		Duel.HintSelection(sg)
 		if Duel.Destroy(sg,REASON_EFFECT)~=0
